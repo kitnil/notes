@@ -1,0 +1,4 @@
+ЛЭТИ
+====
+
+[Минимальное количество баллов для каждого вступительного испытания](http://eltech.ru/assets/files/ru/postupaushim/normativnye-dokumenty/2014/priyom-na-1-y-kurs/minimalnoe-kolichestvo-ballov-dlya-kazhdogo-vstupitelnogo-ispytaniya.pdf)

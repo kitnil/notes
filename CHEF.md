@@ -1,0 +1,74 @@
+Setup
+=====
+
+1. Ensure that the server is accessible by hostname.
+2. Download and install chef server software.
+
+Create an admin user
+
+    chef-server-ctl user-create USERNAME FIRST_NAME LAST_NAME EMAIL PASSWORD
+
+* Username: admin
+* First Name: admin
+* Last Name: admin
+* Email: admin@example.com
+* Password: examplepass
+* Filename: admin.pem
+
+Create an organization
+
+    chef-server-ctl org-create SHORTNAME LONGNAME --association_user USERNAME
+
+* Short Name: digitalocean
+* Long Name: DigitalOcean, Inc.
+* Association User: admin
+* Filename: digitalocean-validator.pem
+
+Configure a chef workstation
+============================
+
+    git clone https://github.com/chef/chef-repo.git
+
+Putting repo under version control
+
+    git config --global user.name "Your Name"
+    git config --global user.email "username@domain.com"
+	
+    echo ".chef" >> ~/chef-repo/.gitignore
+	
+    cd ~/chef-repo
+    git add .
+    git commit -m "Excluding the ./.chef directory from version control"
+	
+Development Kit
+===============
+
+1. Download and install development kit.
+
+Verify that all of the components are available in their expected location
+
+    chef verify
+
+    echo 'eval "$(chef shell-init bash)"' >> ~/.bash_profile
+	source ~/.bash_profile
+	
+Download the Authentication Keys to the Workstation
+
+~/chef-repo/.chef/knife.rb
+
+    current_dir = File.dirname(__FILE__)
+	log_level                :info
+	log_location             STDOUT
+	node_name                "name_for_workstation"
+	client_key               "#{current_dir}/name_of_user_key"
+	validation_client_name   "organization_validator_name"
+	validation_key           "#{current_dir}/organization_validator_key"
+	chef_server_url          "https://server_domain_or_IP/organizations/organization_name"
+	syntax_check_cache_path  "#{ENV['HOME']}/.chef/syntaxcache"
+	cookbook_path            ["#{current_dir}/../cookbooks"]
+
+* node_name: This specifies the name that knife will use to connect to your Chef server. This should match your user name.
+* client_key: This should be the name and path to the user key that you copied over from the Chef server. We can use the #{current_dir} snippet to fill in the path if the key is in the same directory as the knife.rb file.
+* validation_client_name: This is the name of the validation client that knife will use to bootstrap new nodes. This will take the form of your organization short name, followed by -validator.
+* validation_key: Like the client_key, this includes the name and path to the validation key you copied from the Chef server. Again, you can use the #{current_dir} Ruby snippet to specify the current directory if the validation key is in the same directory as the knife.rb file.
+* chef_server_url: This is the URL where the Chef server can be reached. It should begin with https://, followed by your Chef server's domain name or IP address. Afterwards, the path to your organization should be specified by appending /organizations/your_organization_name.
