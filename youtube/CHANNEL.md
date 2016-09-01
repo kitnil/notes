@@ -1,6 +1,5 @@
 # Channel description
 
-Channel country USA, email me go.wigust@gmail.com
 
 
 
