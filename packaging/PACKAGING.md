@@ -25,3 +25,11 @@ Build a package properly , without GPG signing the package
 Install and enjoy !
 
     sudo dpkg -i ../mame_0.148-1_amd64.deb
+
+Articles
+========
+
+torkve
+------
+
+[Стать мэинтейнером Debian/Ubuntu](https://habrahabr.ru/users/torkve/topics/page3/)
