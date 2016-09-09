@@ -1,7 +1,7 @@
 <!-- markdown-toc start - Don't edit this section. Run M-x markdown-toc-generate-toc again -->
 **Table of Contents**
 
-- [Введение](#введение)
+- [Absible - конфигурация без головной боли](#absible---конфигурация-без-головной-боли)
 - [Решаемые задачи](#решаемые-задачи)
 - [Решение в лоб](#решение-в-лоб)
 - [Проблемы](#проблемы)
