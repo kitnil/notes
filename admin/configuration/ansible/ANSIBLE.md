@@ -1,8 +1,3 @@
-
-TODO:
-=====
-
-1. Добавить изображение командной строки.
 <!-- markdown-toc start - Don't edit this section. Run M-x markdown-toc-generate-toc again -->
 **Table of Contents**
 
@@ -27,6 +22,11 @@ TODO:
 - [Итог](#итог)
 
 <!-- markdown-toc end -->
+
+TODO:
+=====
+
+1. Добавить изображение командной строки.
 2. Побольше раскрыть преимущества.
 3. Добавить установка Ansible в ROSA.
 4. Побольше раскрыть итог.
