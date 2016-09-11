@@ -2,10 +2,18 @@
 #+AUTHOR: Oleg Pykhalov
 #+EMAIL: go.wigust@gmail.com
 
+http://spacemacs.org/
+
 * Documentation
-[[https://github.com/syl20bnr/spacemacs/tree/master/layers/org][spacemacs]]
-* Video
-[[https://www.youtube.com/watch?v=SzA2YODtgK4][YouTube]]
+[[https://github.com/syl20bnr/spacemacs/tree/master/layers/org][Official documentation]]
+
+** layers
+[[https://github.com/syl20bnr/spacemacs/tree/master/layers/%2Btools/ranger][Ranger]]
+
+* Video Tutorials
+** English
+*** How to by Harry Schwartz
+https://www.youtube.com/watch?v=SzA2YODtgK4
 
 Harry Schwartz demonstrates some of the nifty features of Org mode
 
@@ -18,6 +26,17 @@ In other words, Org is taking over my life.
 I’ll be introducing some of the functionality of Org, demonstrating what it can
 do, and showing how you, too, can become pleasantly obsessed with a wacky,
 overgrown outlining tool."
+
+*** Embedding code snippets
+Embedding code snippets within Org Mode couldn't be easier when using these neat
+little tricks.
+
+https://www.youtube.com/watch?v=lsYdK0C2RvQ
+** Russian
+
+Дмитрий Бушенко
+
+[[https://www.youtube.com/watch?v=lpPS6JPUUME][Изучаем Emacs. Эпизод 10: Базовые возможности Org-mode, literate programming и экспорт в html/pdf]]
 
 * Visibility cycling
 | Key             | Function                   |
@@ -83,6 +102,17 @@ Show all including utilities
 
 :tangle yes
 :tangle no
+
+<s tab -- insert begin_src
+
+#+begin_src -n -- add line numbering
+
+** References
+C-c l -- org-store-link -- reference
+#+begin_src -r -- add tugging feature
+
+C-c C-l -- access to reference
+
 * Exporting
 
 C-c C-e -- export
@@ -90,7 +120,6 @@ C-c C-e -- export
 org2blog - export to WordPress
 
 org-publish
-
 * Header
 
 + TITLE: Python programming example
@@ -100,3 +129,24 @@ org-publish
 + DESCRIPTION: Demonstration of org-mode
 + KEYWORDS: org-mode, python
 + LANGUAGE: en
+
+* HTML Tags
+
+** One line
++HTML: My email: <b>go.wigust@gmail.com</b>
+** Multiple lines
++BEGIN_HTML
+<h3>02.09.2013</h3>
++END_HTML
+* Images and links
+
++CAPTION: Python Tutorial
++ATTR_HTML: title="Python!" style="float:left;"
+file:python-logo.gif
+
+* Tables
+#+CAPTION: This is a table with lines around and between cells
+| 1 | 2 | 3 | 4 |  5 |
+|---+---+---+---+----|
+| 6 | 7 | 8 | 9 | 10 |
+
