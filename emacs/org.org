@@ -19,12 +19,6 @@ I’ll be introducing some of the functionality of Org, demonstrating what it ca
 do, and showing how you, too, can become pleasantly obsessed with a wacky,
 overgrown outlining tool."
 
-* Nice modules
-
-org2blog - export to WordPress
-
-org-publish
-
 * Visibility cycling
 | Key             | Function                   |
 | Tab             | show current               |
@@ -83,10 +77,26 @@ Show all including utilities
 #+SRC_CODE
 (setq org-todo-keywords'((sequence "TODO" "FEEDBACK" "VERIFY" "|" "DONE" "DELEGATED")))
 #+END_SRC
-
 * Code editing
 | C-c '     | open code block in pop up buffer |
 | C-c C-v t | export to code file              |
 
 :tangle yes
 :tangle no
+* Exporting
+
+C-c C-e -- export
+
+org2blog - export to WordPress
+
+org-publish
+
+* Header
+
++ TITLE: Python programming example
++ AUTHOR: Oleg Pykhalov
++ DATE: 11.09.2016
++ EMAIL: go.wigust@gmail.com
++ DESCRIPTION: Demonstration of org-mode
++ KEYWORDS: org-mode, python
++ LANGUAGE: en
