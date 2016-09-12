@@ -166,3 +166,6 @@ read buffer from stdin on start
 #+BEGIN_SRC bash
 emacs --insert <(echo 123)
 #+END_SRC
+* Wrapping
+visual-line-mode -- line wrap
+smartparens-mode -- auto close parens
