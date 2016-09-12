@@ -8,7 +8,9 @@ http://spacemacs.org/
 [[https://github.com/syl20bnr/spacemacs/tree/master/layers/org][Official documentation]]
 
 ** layers
-[[https://github.com/syl20bnr/spacemacs/tree/master/layers/%2Btools/ranger][Ranger]]
+[[https://github.com/syl20bnr/spacemacs/tree/master/layers/%2Btools/ranger][ranger]]
+[[https://github.com/syl20bnr/spacemacs/tree/master/layers/shell][shell]]
+[[https://github.com/syl20bnr/spacemacs/tree/master/layers/auto-completion][auto-completion]]
 
 * Video Tutorials
 ** English
@@ -150,3 +152,6 @@ file:python-logo.gif
 |---+---+---+---+----|
 | 6 | 7 | 8 | 9 | 10 |
 
+* Links & URL
+Is this SPC m l which does evil-org-open-links . There is a pending pull request
+about this: evil-org-mode/issue/14
