@@ -12,6 +12,11 @@ http://spacemacs.org/
 [[https://github.com/syl20bnr/spacemacs/tree/master/layers/shell][shell]]
 [[https://github.com/syl20bnr/spacemacs/tree/master/layers/auto-completion][auto-completion]]
 
+** Russian
+
+*** Habrahabr
+[[http://www.gnu.org/software/emacs/manual/html_mono/eintr.html][An Introduction to Programming in Emacs Lisp]]
+
 * Video Tutorials
 ** English
 *** How to by Harry Schwartz
@@ -155,3 +160,9 @@ file:python-logo.gif
 * Links & URL
 Is this SPC m l which does evil-org-open-links . There is a pending pull request
 about this: evil-org-mode/issue/14
+
+* Buffer
+read buffer from stdin on start
+#+BEGIN_SRC bash
+emacs --insert <(echo 123)
+#+END_SRC
