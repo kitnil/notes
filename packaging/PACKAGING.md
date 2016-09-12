@@ -33,3 +33,12 @@ torkve
 ------
 
 [Стать мэинтейнером Debian/Ubuntu](https://habrahabr.ru/users/torkve/topics/page3/)
+
+Notes
+=====
+
+### Listing all packages installed from experimental ###
+
+To check which experimental packages are currently installed on your system, do:
+
+    aptitude search ~S~i~Aexperimental
