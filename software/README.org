@@ -29,3 +29,9 @@ https://krita.org/en/
 * CLI
 [[https://www.commandlinefu.com/commands/browse][All commands]]
 
+** Read random news on the internet
+[[https://www.commandlinefu.com/commands/view/17619/read-random-news-on-the-internet#comment][source]]
+
+#+BEGIN_SRC bash
+links `lynx -dump -listonly "http://news.google.com" | grep -Eo "(http|https)://[a-zA-Z0-9./?=_-]*" | grep -v "google.com" | sort -R | uniq | head -n1`
+#+END_SRC
