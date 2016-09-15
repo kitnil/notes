@@ -169,3 +169,58 @@ emacs --insert <(echo 123)
 * Wrapping
 visual-line-mode -- line wrap
 smartparens-mode -- auto close parens
+* LaTex
+** Math mode
+$somemath$
+$$somemath$$ -- на отдельной строке
+** Exponents
+
+*** superscripts
+
+#+BEGIN_SRC latex
+\documentclass[11pt]{article}
+
+\begin
+
+superscripts: $2x^3$
+superscripts: $2x^(34)$ != superscripts: $2x^34$
+$$2x^(3x+4)$$
+$$2x^(3x^4+5)$$
+
+\end{document}
+#+END_SRC
+
+*** subscripts
+
+Underline "_" instead of caret brace "^"
+
+#+BEGIN_SRC latex
+\documentclass[11pt]{article}
+
+\begin
+
+$$x_1$$
+$$x_(12)$$
+$$x_1_2$$
+$$(x_1)_2$$
+$$((x_1)_2)_3$$
+
+\end{document}
+#+END_SRC
+
+** Greek letters
+
+#+BEGIN_SRC latex
+\documentclass[11pt]{article}
+
+\begin
+
+$$\pi$$
+$$\alpha$$
+$$A=\pi r^2$$
+
+\end{document}
+#+END_SRC
+
+* How to force a syntax-highlighting refresh
+M-x -- font-lock-fontify-buffer
