@@ -222,10 +222,17 @@ $$A=\pi r^2$$
 \end{document}
 #+END_SRC
 
-** Trig functions
+** trig functions
 
 #+BEGIN_SRC latex
 $$\sin{x}$$
+#+END_SRC
+
+** log functions
+#+BEGIN_SRC latex
+$$\log{x}$$
+$$\ln{x}$$
+$$\log_5{x}$$
 #+END_SRC
 
 * How to force a syntax-highlighting refresh
