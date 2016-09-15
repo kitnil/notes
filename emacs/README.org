@@ -200,10 +200,10 @@ Underline "_" instead of caret brace "^"
 \begin
 
 $$x_1$$
-$$x_(12)$$
+$$x_{12}$$
 $$x_1_2$$
-$$(x_1)_2$$
-$$((x_1)_2)_3$$
+$${x_1}_2$$
+$${{x_1}_2}_3$$
 
 \end{document}
 #+END_SRC
@@ -220,6 +220,12 @@ $$\alpha$$
 $$A=\pi r^2$$
 
 \end{document}
+#+END_SRC
+
+** Trig functions
+
+#+BEGIN_SRC latex
+$$\sin{x}$$
 #+END_SRC
 
 * How to force a syntax-highlighting refresh
