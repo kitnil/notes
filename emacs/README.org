@@ -173,21 +173,23 @@ smartparens-mode -- auto close parens
 ** Math mode
 $somemath$
 $$somemath$$ -- на отдельной строке
-** Exponents
-
-*** superscripts
-
+** LaTeX document template
 #+BEGIN_SRC latex
 \documentclass[11pt]{article}
 
 \begin
 
+\end{document}
+#+END_SRC
+** Exponents
+
+*** superscripts
+
+#+BEGIN_SRC latex
 superscripts: $2x^3$
 superscripts: $2x^(34)$ != superscripts: $2x^34$
 $$2x^(3x+4)$$
 $$2x^(3x^4+5)$$
-
-\end{document}
 #+END_SRC
 
 *** subscripts
@@ -195,31 +197,19 @@ $$2x^(3x^4+5)$$
 Underline "_" instead of caret brace "^"
 
 #+BEGIN_SRC latex
-\documentclass[11pt]{article}
-
-\begin
-
 $$x_1$$
 $$x_{12}$$
 $$x_1_2$$
 $${x_1}_2$$
 $${{x_1}_2}_3$$
-
-\end{document}
 #+END_SRC
 
 ** Greek letters
 
 #+BEGIN_SRC latex
-\documentclass[11pt]{article}
-
-\begin
-
 $$\pi$$
 $$\alpha$$
 $$A=\pi r^2$$
-
-\end{document}
 #+END_SRC
 
 ** trig functions
@@ -233,6 +223,13 @@ $$\sin{x}$$
 $$\log{x}$$
 $$\ln{x}$$
 $$\log_5{x}$$
+#+END_SRC
+
+** square roots
+#+BEGIN_SRC latex
+$$\sqrt{2}$$
+$$\sqrt[3]{2}$$
+$$\sqrt{x^2+y^2}$$
 #+END_SRC
 
 * How to force a syntax-highlighting refresh
