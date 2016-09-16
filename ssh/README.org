@@ -1,0 +1,37 @@
+* Avoid typing the password phrase
+Adding your SSH keys to an SSH agent to avoid typing the password phrase
+
+Generate a key with password phrase:
+#+BEGIN_SRC bash
+mkdir ~/.ssh/ubuntu-vm-pf/
+ssh-keygen -f ~/.ssh/ubuntu-vm-pf/id_rsa
+ssh-copy-id -i ~/.ssh/ubuntu-vm-pf/id_rsa liviu@http.liviubalan.com
+ssh -i ~/.ssh/ubuntu-vm-pf/id_rsa liveu@http.liviubalan.com
+#+END_SRC
+
+Start SSH agent and place it into the background:
+#+BEGIN_SRC bash
+eval $(ssh-agent)
+#+END_SRC
+
+Add private key to the agent:
+#+BEGIN_SRC bash
+ssh-add ~/.ssh/ubuntu-vm-pf/id_rsa
+#+END_SRC
+
+Lists public key parameters of all identities currently represented by the agent:
+#+BEGIN_SRC bash
+ssh-add -L
+#+END_SRC
+
+Connect without typing password phrase:
+#+BEGIN_SRC bash
+ssh -i ~/.ssh/ubuntu-vm-pf/id_rsa liviu@http.liviubalan.com
+#+END_SRC
+
+Connect without SSH agent:
+#+BEGIN_SRC bash
+ps aux | grep agent
+kill <PID>
+ssh -i ~/.ssh/ubuntu-vm-pf/id_rsa liviu@http.liviubalan.com
+#+END_SRC
