@@ -230,7 +230,31 @@ $$\log_5{x}$$
 $$\sqrt{2}$$
 $$\sqrt[3]{2}$$
 $$\sqrt{x^2+y^2}$$
+$$\sqrt{1+\sqrt{x}}$$
 #+END_SRC
+
+** fractions
+About 2/3 of the glass is full.
+#+BEGIN_SRC latex
+$$2/3$$
+$\frac{2}{3}$
+#+END_SRC
+
+** Make something larger
+\displaystyle
+
+#+BEGIN_SRC latex
+About $\displaystyle[\frac{2}{3}]$ of the glass is full.
+#+END_SRC
+
+** complex fractions
+#+BEGIN_SRC latex
+$$\frac{x}{x^2+x+1}$$
+#+END_SRC
+
 
 * How to force a syntax-highlighting refresh
 M-x -- font-lock-fontify-buffer
+
+* Cheat sheets
+[[https://www.cheatography.com/logcat/cheat-sheets/spacemacs-basics/][cheatography | spacemacs-basics]]
