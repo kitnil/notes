@@ -1,0 +1,2100 @@
+#+LATEX_HEADER: \usepackage{amsmath}
+#+STARTUP: showeverything
+#+STARTUP: latexpreview
+#+STARTUP: inlineimages
+
+
+
+$$1+1=2$$
+$2 \cdot 2 = 4$
+$\alpha$
+$$\beta$$
+$\gamma$
+* test
+$\gamma$
+$2 \cdot 2 = 4$
+$$(a + bi) + (c + di) = (a + c) + (b + d)i$$
+
+* Introduction
+A *complex number* is a [[number]] that can be expressed in the form $a + bi$, where:
+- $a$ and $b$ are [[real_number][real numbers]];
+- $i$ is the imaginary unit, that satisfies the equation $i^{2} = -1$.
+
+In this expression:
+- $a$ is the [[real part]];
+- $b$ is the the [[imaginary part]] of complex number.
+
+Complex numbers extend the concept of
+the [[one-dimensional]] [[number_line][number line]] to the [[two-dimensional]] [[complex_plane][complex plane]] by using:
+- the horizontal axis for the real part;
+- the vertical axis for the imaginary part.
+
+The complex number $a + bi$ can be identified with the point $(a, b)$ in the complex plane.
+
+A complex number whose real part is zero is said to be purely [[imaginary_number][imaginary]].
+Whereas a complex number whose imaginary part is zero is a real number.
+
+In this way, the complex numbers [[Field_extension][contain]] the ordinary real numbers
+while extending them in order to solve problems that cannot be solved with real numbers alone.
+
+As well as their use within mathematics, complex numbers have practical
+applications in many fields, including:
+- [[physics]]
+- [[chemistry]]
+- [[biology]]
+- [[economics]]
+- [[electrical_engineering][electrical engineering]]
+- [[statistics]]
+
+The Italian mathematician [[Gerolamo_Cardano][Gerolamo Cardano]] is the first known to have introduced complex numbers.
+He called them "fictitious" during his attempts to find solutions to [[cubic_equations][cubic equations]] in the 16th century.
+
+* TODO Overview
+
+Complex numbers allow solutions to certain equations that have no solutions in [[real_numbers][real numbers]].
+
+For example, the equation $$(x+1)^2 = -9 \,$$ has no real solution,
+since the square of a real number cannot be negative.
+
+Complex numbers provide a solution to this problem.
+
+The idea is to [[field_extension][extend]] the real numbers with the [[imaginary_unit][imaginary unit]] $i$ where $i^{2} = -1$,
+so that solutions to equations like the preceding one can be found.
+
+In this case the solutions are $-1 +3i$ and $-1 -3i$, as can be verified using the fact that $i^{2} = -1$:
+
+$$((-1+3i)+1)^2 = (3i)^2 = (3^2)(i^2) = 9(-1) = -9,$$
+
+$$((-1-3i)+1)^2 = (-3i)^2 = (-3)^2(i^2) = 9(-1) = -9.$$
+
+According to [[the_fundamental_theorem_of_algebra][the fundamental theorem of algebra]],
+all [[polynomial_equation][polynomial equations]] with real or complex coefficients in a single variable have a solution in complex numbers.
+
+** TODO Definition
+
+A complex number is a number of the form $a + bi$,
+- $a$ and $b$ are real numbers
+- $i$ is the /imaginary unit/, satisfying $i^{2} = -1$.
+
+For example: $-3.5 + 2i$ is a complex number.
+
+The real number $a$ is called the /real part/ of the complex number $a + bi$;
+the real number $b$ is called the /imaginary part/ of $a + bi$.
+
+By this convention the imaginary part does not include the imaginary unit:
+hence $b$, not $bi$, is the imaginary part.
+
+The real part of a complex number $z$ is denoted by $\operatorname{Re}(z)$ or $\Re\left(z\right)$;
+the imaginary part of a complex number $z$ is denoted by $\operatorname{Im}(z)$ or $ℑ(z)$.
+
+For example:
+\begin{align}
+  \operatorname{Re}(-3.5 + 2i) &= -3.5 \\
+  \operatorname{Im}(-3.5 + 2i) &= 2.
+\end{align}
+
+Hence, in terms of its real and imaginary parts,
+a complex number is equal to $\operatorname{Re}(z) + \operatorname{Im}(z) \cdot i$.
+This expression is sometimes known as the Cartesian form of $z$.
+
+A real number can be regarded as a complex number whose imaginary part is 0.
+
+A purely [[imaginary_number][imaginary number]] is a complex number whose real part is zero.
+
+It is common to write for $a$ and for $a + 0i$ and $bi$ for $0 + bi$.
+
+Moreover, when the imaginary part is negative,
+it is common to write $a -bi$ with $b > 0$ instead of $a + (-b)i$.
+
+For example $3 -4i$ instead of $3 +(-4i)$.
+
+The [[Set_(mathematics)][set]] of all complex numbers is denoted by: $mathℂ$ or $\mathbf{C}$ or $\mathbb{C}$.
+
+** Notation
+
+Some authors write instead of , particularly when /b/ is a radical.
+In some disciplines, in particular [[electromagnetism]] and
+[[electrical_engineering][electrical engineering]], is used instead of
+, [6] since is frequently used for [[electric_current][electric
+current]]. In these cases complex numbers are written as or .
+
+** Complex plane
+
+[[A plus bi.svg]] A complex number can be viewed as a point or
+[[Vector_(geometric)][position vector]] in a two-dimensional
+[[Cartesian_coordinate_system][Cartesian coordinate system]] called the
+complex plane or [[Argand_diagram][Argand diagram]] (see and ), named
+after [[Jean-Robert_Argand][Jean-Robert Argand]]. The numbers are
+conventionally plotted using the real part as the horizontal component,
+and imaginary part as vertical (see Figure 1). These two values used to
+identify a given complex number are therefore called its /Cartesian/,
+/rectangular/, or /algebraic form/.
+
+A position vector may also be defined in terms of its magnitude and
+direction relative to the origin. These are emphasized in a complex
+number's /[[#Polar_form][polar form]]/. Using the polar form of the
+complex number in calculations may lead to a more intuitive
+interpretation of mathematical results. Notably, the operations of
+addition and multiplication take on a very natural geometric character
+when complex numbers are viewed as position vectors: addition
+corresponds to [[Euclidean_vector#Addition_and_subtraction][vector
+addition]] while multiplication corresponds to multiplying their
+magnitudes and adding their arguments (i.e. the angles they make with
+the /x/ axis). Viewed in this way the multiplication of a complex number
+by corresponds to rotating the position vector
+[[orientation_(geometry)][counterclockwise]] by a quarter
+[[turn_(geometry)][turn]] ([[right_angle][90°]]) about the origin: =
+^{2} = .
+
+** History in brief
+
+-   :: /Main section: [[#History][History]]/
+
+The solution in radicals (without
+[[trigonometric_functions][trigonometric functions]]) of a general cubic
+equation contains the square roots of [[negative_numbers][negative
+numbers]] when all three roots are real numbers, a situation that cannot
+be rectified by factoring aided by the [[rational_root_test][rational
+root test]] if the cubic is [[irreducible_polynomial][irreducible]] (the
+so-called [[casus_irreducibilis][casus irreducibilis]]). This conundrum
+led Italian mathematician [[Gerolamo_Cardano][Gerolamo Cardano]] to
+conceive of complex numbers in around 1545, though his understanding was
+rudimentary.
+
+Work on the problem of general polynomials ultimately led to the
+[[fundamental_theorem_of_algebra][fundamental theorem of algebra]],
+which shows that with complex numbers, a solution exists to every
+[[polynomial]] equation of degree one or higher. Complex numbers thus
+form an [[algebraically_closed_field][algebraically closed field]],
+where any [[polynomial]] equation has a [[Root_of_a_function][root]].
+
+Many mathematicians contributed to the full development of complex
+numbers. The rules for addition, subtraction, multiplication, and
+division of complex numbers were developed by the Italian mathematician
+[[Rafael_Bombelli][Rafael Bombelli]]. [7] A more abstract formalism for
+the complex numbers was further developed by the Irish mathematician
+[[William_Rowan_Hamilton][William Rowan Hamilton]], who extended this
+abstraction to the theory of [[quaternions]].
+
+* Relations
+
+** Equality
+
+Two complex numbers are equal [[iff][if and only if]] both their real
+and imaginary parts are equal. In symbols:
+
+$$z_{1} = z_{2} \, \, \leftrightarrow \, \, ( \operatorname{Re}(z_{1}) = \operatorname{Re}(z_{2}) \, \and \, \operatorname{Im} (z_{1}) = \operatorname{Im} (z_{2})).$$
+
+** Ordering
+
+Because complex numbers are naturally thought of as existing on a
+two-dimensional plane, there is no natural [[linear_ordering][linear
+ordering]] on the set of complex numbers. [8]
+
+There is no [[linear_ordering][linear ordering]] on the complex numbers
+that is compatible with addition and multiplication. Formally, we say
+that the complex numbers cannot have the structure of an
+[[ordered_field][ordered field]]. This is because any square in an
+ordered field is at least , but .
+
+* Elementary operations
+
+** Conjugate
+
+[[Complex conjugate picture.svg]] The /[[complex_conjugate][complex
+conjugate]]/ of the complex number is defined to be . It is denoted by
+either $\bar{z}$ or .
+
+Formally, for any complex number /z/:
+
+$$\bar{z} = \operatorname{Re}(z) - \operatorname{Im}(z) \cdot i .$$
+
+Geometrically, $\bar{z}$ is the [[reflection_symmetry]["reflection"]] of
+about the real axis. Conjugating twice gives the original complex
+number: $\bar{\bar{z}}=z$.
+
+The real and imaginary parts of a complex number can be extracted using
+the conjugate:
+
+-   :: $\operatorname{Re}\,(z) = \tfrac{1}{2}(z+\bar{z}), \,$
+   $\operatorname{Im}\,(z) = \tfrac{1}{2i}(z-\bar{z}). \,$
+
+Moreover, a complex number is real if and only if it equals its
+conjugate.
+
+Conjugation distributes over the standard arithmetic operations:
+
+-   :: $\overline{z+w} = \bar{z} + \bar{w}, \,$
+   $\overline{z-w} = \bar{z} - \bar{w}, \,$
+   $\overline{z w} = \bar{z} \bar{w}, \,$
+   $\overline{(z/w)} = \bar{z}/\bar{w}. \,$
+
+** Addition and subtraction
+
+[[Vector Addition.svg]] Complex numbers are [[addition][added]] by
+separately adding the real and imaginary parts of the summands. That is
+to say:
+
+$$(a+bi) + (c+di) = (a+c) + (b+d)i.\$$ Similarly, [[subtraction]] is
+defined by
+
+$$(a+bi) - (c+di) = (a-c) + (b-d)i.\$$ Using the visualization of
+complex numbers in the complex plane, the addition has the following
+geometric interpretation: the sum of two complex numbers /A/ and /B/,
+interpreted as points of the complex plane, is the point /X/ obtained by
+building a [[parallelogram]], three of whose vertices are /O/, /A/ and
+/B/. Equivalently, /X/ is the point such that the
+[[triangle][triangles]] with vertices /O/, /A/, /B/, and /X/, /B/, /A/,
+are [[Congruence_(geometry)][congruent]].
+
+** Multiplication and division
+
+The multiplication of two complex numbers is defined by the following
+formula:
+
+$$(a+bi) (c+di) = (ac-bd) + (bc+ad)i.\$$ In particular, the
+[[square_(algebra)][square]] of the imaginary unit is −1:
+
+$$i^2 = i \times i = -1.\$$
+
+The preceding definition of multiplication of general complex numbers
+follows naturally from this fundamental property of the imaginary unit.
+Indeed, if is treated as a number so that means times , the above
+multiplication rule is identical to the usual rule for multiplying two
+sums of two terms.
+
+$$(a+bi) (c+di) = ac + bci + adi + bidi$$ ([[distributive_property][distributive
+property]])
+
+-   :: -   :: $= ac + bidi + bci + adi$ ([[commutative_property][commutative
+      property]] of addition---the order of the summands can be changed)
+      $= ac + bdi^2 + (bc+ad)i$ (commutative and distributive
+      properties)
+      $= (ac-bd) + (bc+ad)i$ (fundamental property of the imaginary
+      unit).
+
+The division of two complex numbers is defined in terms of complex
+multiplication, which is described above, and real division. When at
+least one of and is non-zero, we have
+
+$$\,\frac{a + bi}{c + di} = \left({ac + bd \over c^2 + d^2}\right) + \left( {bc - ad \over c^2 + d^2} \right)i.$$
+Division can be defined in this way because of the following
+observation:
+
+$$\,\frac{a + bi}{c + di} = \frac{\left(a + bi\right) \cdot \left(c - di\right)}{\left (c + di\right) \cdot \left (c - di\right)} = \left({ac + bd \over c^2 + d^2}\right) + \left( {bc - ad \over c^2 + d^2} \right)i.$$
+As shown earlier, is the complex conjugate of the denominator . At least
+one of the real part and the imaginary part of the [[denominator]] must
+be nonzero for division to be defined. This is called
+"[[rationalisation_(mathematics)][rationalization]]" of the denominator
+(although the denominator in the final expression might be an irrational
+real number).
+
+** Reciprocal
+
+The [[Multiplicative_inverse][reciprocal]] of a nonzero complex number
+is given by
+
+-   :: $\frac{1}{z}=\frac{\bar{z}}{z \bar{z}}=\frac{\bar{z}}{x^2+y^2}=\frac{x}{x^2+y^2} -\frac{y}{x^2+y^2}i.$
+
+This formula can be used to compute the multiplicative inverse of a
+complex number if it is given in rectangular coordinates.
+[[Inversive_geometry][Inversive geometry]], a branch of geometry
+studying reflections more general than ones about a line, can also be
+expressed in terms of complex numbers. In the
+[[Network_analysis_(electrical_circuits)][network analysis of electrical
+circuits]], the complex conjugate is used in finding the equivalent
+impedance when the [[maximum_power_transfer_theorem][maximum power
+transfer theorem]] is used.
+
+** Square root
+
+The square roots of (with ) are $\pm (\gamma + \delta i)$, where
+
+$$\gamma = \sqrt{\frac{a + \sqrt{a^2 + b^2}}{2}}$$
+
+and
+
+$$\delta = \sgn (b) \sqrt{\frac{-a + \sqrt{a^2 + b^2}}{2}},$$
+
+where sgn is the [[sign_function][signum]] function. This can be seen by
+squaring $\pm (\gamma + \delta i)$ to obtain . [9] [10] Here
+$\sqrt{a^2 + b^2}$ is called the [[absolute_value][modulus]] of , and
+the square root sign indicates the square root with non-negative real
+part, called the *principal square root*; also
+$\sqrt{a^2 + b^2}= \sqrt{z\bar{z}}$, where $z = a + bi$. [11]
+
+* Polar form
+
+#+CAPTION: Figure 2: The argument and modulus locate a point on an
+Argand diagram; $r(\cos \varphi + i \sin \varphi)$ or $r e^{i\varphi}$
+are /polar/ expressions of the point.
+
+[[Complex number illustration modarg.svg]]
+** Absolute value and argument
+
+An alternative way of defining a point /P/ in the complex plane, other
+than using the /x/- and /y/-coordinates, is to use the distance of the
+point from /O/, the point whose coordinates are (the
+[[origin_(mathematics)][origin]]), together with the angle subtended
+between the [[positive_real_axis][positive real axis]] and the line
+segment /OP/ in a counterclockwise direction. This idea leads to the
+polar form of complex numbers.
+
+The /[[absolute_value][absolute value]]/ (or /modulus/ or /magnitude/)
+of a complex number is
+
+$$\textstyle r=|z|=\sqrt{x^2+y^2}.\,$$ If is a real number (i.e., ),
+then  /x/ {{!}}}}. In general, by [[Pythagoras'_theorem][Pythagoras'
+theorem]], is the distance of the point /P/ representing the complex
+number to the origin. The square of the absolute value is
+
+$$\textstyle |z|^2=z\bar{z}=x^2+y^2.\,$$ where $\bar{z}$ is the
+[[#Conjugation][complex conjugate]] of $z$.
+
+The /[[arg_(mathematics)][argument]]/ of (in many applications referred
+to as the "phase") is the angle of the [[radius]] /OP/ with the positive
+real axis, and is written as $\arg(z)$. As with the modulus, the
+argument can be found from the rectangular form $x+yi$: [12]
+
+$$\varphi = \arg(z) =
+\begin{cases}
+\arctan(\frac{y}{x}) & \mbox{if } x > 0 \\
+\arctan(\frac{y}{x}) + \pi & \mbox{if } x < 0 \mbox{ and } y \ge 0\\
+\arctan(\frac{y}{x}) - \pi & \mbox{if } x < 0 \mbox{ and } y < 0\\
+\frac{\pi}{2} & \mbox{if } x = 0 \mbox{ and } y > 0\\
+-\frac{\pi}{2} & \mbox{if } x = 0 \mbox{ and } y < 0\\
+\mbox{indeterminate } & \mbox{if } x = 0 \mbox{ and } y = 0.
+\end{cases}$$
+
+Normally, as given above, the [[principal_value][principal value]] in
+the interval is chosen. Values in the range are obtained by adding if
+the value is negative. The value of is expressed in [[radian][radians]]
+in this article. It can increase by any integer multiple of and still
+give the same angle. Hence, the arg function is sometimes considered as
+[[Multivalued_function][multivalued]]. The polar angle for the complex
+number 0 is indeterminate, but arbitrary choice of the angle 0 is
+common.
+
+The value of equals the result of [[atan2]]:
+$\varphi = \mbox{atan2}(\mbox{imaginary}, \mbox{real})$.
+
+Together, and give another way of representing complex numbers, the
+/polar form/, as the combination of modulus and argument fully specify
+the position of a point on the plane. Recovering the original
+rectangular co-ordinates from the polar form is done by the formula
+called /trigonometric form/
+
+$$z = r(\cos \varphi + i\sin \varphi ).\,$$
+
+Using [[Euler's_formula][Euler's formula]] this can be written as
+
+$$z = r e^{i \varphi}.\,$$
+
+Using the [[Cis_(mathematics)][cis]] function, this is sometimes
+abbreviated to
+
+$$z = r \operatorname{cis} \varphi. \,$$
+
+In [[angle_notation][angle notation]], often used in [[electronics]] to
+represent a [[Phasor_(sine_waves)][phasor]] with amplitude and phase ,
+it is written as [13]
+
+$$z = r \ang \varphi . \,$$
+
+** Multiplication and division in polar form
+
+[[Complex multi.svg]] Formulas for multiplication, division and
+exponentiation are simpler in polar form than the corresponding formulas
+in Cartesian coordinates. Given two complex numbers and , because of the
+well-known trigonometric identities
+
+$$\cos(a)\cos(b) - \sin(a)\sin(b) = \cos(a + b)$$
+
+$$\cos(a)\sin(b) + \sin(a)\cos(b) = \sin(a + b)$$
+
+we may derive
+
+$$z_1 z_2 = r_1 r_2 (\cos(\varphi_1 + \varphi_2) + i \sin(\varphi_1 + \varphi_2)).\,$$
+In other words, the absolute values are multiplied and the arguments are
+added to yield the polar form of the product. For example, multiplying
+by corresponds to a quarter-[[turn_(geometry)][turn]] counter-clockwise,
+which gives back . The picture at the right illustrates the
+multiplication of
+
+$$(2+i)(3+i)=5+5i. \,$$ Since the real and imaginary part of are equal,
+the argument of that number is 45 degrees, or π/4 (in [[radian]]). On
+the other hand, it is also the sum of the angles at the origin of the
+red and blue triangles are [[arctan]](1/3) and arctan(1/2),
+respectively. Thus, the formula
+
+$$\frac{\pi}{4} = \arctan\frac{1}{2} + \arctan\frac{1}{3}$$ holds. As
+the [[arctan]] function can be approximated highly efficiently, formulas
+like this---known as [[Machin-like_formulas][Machin-like
+formulas]]---are used for high-precision approximations of [[pi][π]].
+
+Similarly, division is given by
+
+$$\frac{z_1}{ z_2} = \frac{r_1}{ r_2} \left(\cos(\varphi_1 - \varphi_2) + i \sin(\varphi_1 - \varphi_2)\right).$$
+
+* Exponentiation
+
+** Euler's formula
+
+[[Euler's_formula][Euler's formula]] states that, for any real number ,
+
+-   :: $e^{ix} = \cos x + i\sin x \$,
+
+where is the [[e_(mathematical_constant)][base of the natural
+logarithm]]. This can be proved through induction by observing that
+
+-   :: \begin{align}
+
+i\^0 &{}= 1, \quad & i\^1 &{}= i, \quad & i\^2 &{}= -1, \quad & i\^3
+&{}= -i, \\ i\^4 &={} 1, \quad & i\^5 &={} i, \quad & i\^6 &{}= -1,
+\quad & i\^7 &{}= -i, \end{align}
+
+and so on, and by considering the [[Taylor_series][Taylor series]]
+expansions of , and :
+
+-   :: \begin{align}
+
+=e^{ix} &{}= 1 + ix + \frac{(ix)^2}{2!} + \frac{(ix)^3}{3!} + \frac{(ix)^4}{4!} + \frac{(ix)^5}{5!} + \frac{(ix)^6}{6!} + \frac{(ix)^7}{7!} + \frac{(ix)^8}{8!} + \cdots \\[8pt]=\\
+=       &{}= 1 + ix - \frac{x^2}{2!} - \frac{ix^3}{3!} + \frac{x^4}{4!} + \frac{ix^5}{5!} -\frac{x^6}{6!} - \frac{ix^7}{7!} + \frac{x^8}{8!} + \cdots \\[8pt]=\\
+=       &{}= \left( 1 - \frac{x^2}{2!} + \frac{x^4}{4!} - \frac{x^6}{6!} + \frac{x^8}{8!} - \cdots \right) + i\left( x - \frac{x^3}{3!} + \frac{x^5}{5!} - \frac{x^7}{7!} + \cdots \right) \\[8pt]=\\
+=       &{}= \cos x + i\sin x \ .=
+
+\end{align}
+
+The rearrangement of terms is justified because each series is
+[[absolute_convergence][absolutely convergent]].
+
+** Natural logarithm
+
+Euler's formula allows us to observe that, for any complex number
+
+$$z = r(\cos \varphi + i\sin \varphi ).\,$$
+
+where /r/ is a non-negative real number, one possible value for /z/'s
+[[natural_logarithm][natural logarithm]] is
+
+$$\ln (z)= \ln(r) + \varphi i$$
+
+Because cos and sin are periodic functions, the natural logarithm may be
+considered a multi-valued function, with:
+
+$$\ln(z) = \left\{ \ln(r) + (\varphi + 2\pi k)i \;|\; k \in \mathbb{Z}\right\}$$
+
+** Integer and fractional exponents
+
+We may use the identity
+
+$$\ln(a^{b}) = b \ln(a)$$
+
+to define complex exponentiation, which is likewise multi-valued:
+
+$$\ln (z^n)=\ln((r(\cos \varphi + i\sin \varphi ))^{n})$$
+
+$$= n \ln(r(\cos \varphi + i\sin \varphi))$$
+
+$$= \{ n (\ln(r) + (\varphi + k2\pi) i) | k \in \mathbb{Z} \}$$
+
+$$= \{ n \ln(r) + n \varphi i + nk2\pi i | k \in \mathbb{Z} \}.$$
+
+When /n/ is an integer, this simplifies to [[de_Moivre's_formula][de
+Moivre's formula]]:
+
+$$z^{n}=(r(\cos \varphi + i\sin \varphi ))^{n} = r^n\,(\cos n\varphi + i \sin n \varphi).$$
+
+The th [[Nth_root][roots]] of are given by
+
+$$\sqrt[n]{z} = \sqrt[n]r \left( \cos \left(\frac{\varphi+2k\pi}{n}\right) + i \sin \left(\frac{\varphi+2k\pi}{n}\right)\right)$$
+for any integer satisfying . Here is the usual (positive) th root of the
+positive real number . While the th root of a positive real number is
+chosen to be the /positive/ real number satisfying there is no natural
+way of distinguishing one particular complex th root of a complex
+number. Therefore, the th root of is considered as a
+[[multivalued_function][multivalued function]] (in ), as opposed to a
+usual function , for which is a uniquely defined number. Formulas such
+as
+
+$$\sqrt[n]{z^n} = z$$ (which holds for positive real numbers), do in
+general not hold for complex numbers.
+
+* Properties
+
+** Field structure
+
+The set *C* of complex numbers is a [[field_(mathematics)][field]].
+Briefly, this means that the following facts hold: first, any two
+complex numbers can be added and multiplied to yield another complex
+number. Second, for any complex number , its
+[[additive_inverse][additive inverse]] is also a complex number; and
+third, every nonzero complex number has a
+[[Multiplicative_inverse][reciprocal]] complex number. Moreover, these
+operations satisfy a number of laws, for example the law of
+[[commutativity]] of addition and multiplication for any two complex
+numbers and :
+
+$$z_1+ z_2 = z_2 + z_1,$$
+
+$$z_1 z_2 = z_2 z_1.$$ These two laws and the other requirements on a
+field can be proven by the formulas given above, using the fact that the
+real numbers themselves form a field.
+
+Unlike the reals, *C* is not an [[ordered_field][ordered field]], that
+is to say, it is not possible to define a relation that is compatible
+with the addition and multiplication. In fact, in any ordered field, the
+square of any element is necessarily positive, so precludes the
+existence of an [[total_order][ordering]] on *C*.
+
+When the underlying field for a mathematical topic or construct is the
+field of complex numbers, the topic's name is usually modified to
+reflect that fact. For example: [[complex_analysis][complex analysis]],
+complex [[matrix_(mathematics)][matrix]], complex [[polynomial]], and
+complex [[Lie_algebra][Lie algebra]].
+
+** Solutions of polynomial equations
+
+Given any complex numbers (called [[coefficient][coefficients]]) , the
+equation
+
+$$a_n z^n + \dotsb + a_1 z + a_0 = 0$$ has at least one complex solution
+/z/, provided that at least one of the higher coefficients is nonzero.
+This is the statement of the
+/[[fundamental_theorem_of_algebra][fundamental theorem of algebra]]/.
+Because of this fact, *C* is called an
+[[algebraically_closed_field][algebraically closed field]]. This
+property does not hold for the [[rational_number][field of rational
+numbers]] *Q* (the polynomial does not have a rational root, since
+[[square_root_of_2][]] is not a rational number) nor the real numbers
+*R* (the polynomial does not have a real root for , since the square of
+is positive for any real number ).
+
+There are various proofs of this theorem, either by analytic methods
+such as [[Liouville's_theorem_(complex_analysis)][Liouville's theorem]],
+or [[topology][topological]] ones such as the [[winding_number][winding
+number]], or a proof combining [[Galois_theory][Galois theory]] and the
+fact that any real polynomial of /odd/ degree has at least one real
+root.
+
+Because of this fact, theorems that hold /for any algebraically closed
+field/, apply to *C*. For example, any non-empty complex
+[[square_matrix][square matrix]] has at least one (complex)
+[[eigenvalue]].
+
+** Algebraic characterization
+
+The field *C* has the following three properties: first, it has
+[[characteristic_(algebra)][characteristic]] 0. This means that for any
+number of summands (all of which equal one). Second, its
+[[transcendence_degree][transcendence degree]] over *Q*, the
+[[prime_field][prime field]] of *C*, is the
+[[cardinality_of_the_continuum][cardinality of the continuum]]. Third,
+it is [[algebraically_closed][algebraically closed]] (see above). It can
+be shown that any field having these properties is [[isomorphic]] (as a
+field) to *C*. For example, the [[algebraic_closure][algebraic closure]]
+of [[p-adic_numbers][*Q*_{/p/}]] also satisfies these three properties,
+so these two fields are isomorphic. Also, *C* is isomorphic to the field
+of complex [[Puiseux_series][Puiseux series]]. However, specifying an
+isomorphism requires the [[axiom_of_choice][axiom of choice]]. Another
+consequence of this algebraic characterization is that *C* contains many
+proper subfields that are isomorphic to *C*.
+
+** Characterization as a topological field
+
+The preceding characterization of *C* describes only the algebraic
+aspects of *C*. That is to say, the properties of
+[[neighborhood_(topology)][nearness]] and
+[[continuity_(topology)][continuity]], which matter in areas such as
+[[Mathematical_analysis][analysis]] and [[topology]], are not dealt
+with. The following description of *C* as a
+[[topological_ring][topological field]] (that is, a field that is
+equipped with a [[topological_space][topology]], which allows the notion
+of convergence) does take into account the topological properties. *C*
+contains a subset (namely the set of positive real numbers) of nonzero
+elements satisfying the following three conditions:
+
+-  is closed under addition, multiplication and taking inverses.
+
+-  If and are distinct elements of , then either or is in .
+-  If is any nonempty subset of , then for some in *C*.
+
+Moreover, *C* has a nontrivial [[involution_(mathematics)][involutive]]
+[[automorphism]] (namely the complex conjugation), such that is in for
+any nonzero in *C*.
+
+Any field with these properties can be endowed with a topology by taking
+the sets /p/ − (/y/ − /x/)(/y/ − /x/)* ∈ /P/ } }} as a
+[[base_(topology)][base]], where ranges over the field and ranges over .
+With this topology is isomorphic as a /topological/ field to *C*.
+
+The only [[connected_space][connected]] [[locally_compact][locally
+compact]] [[topological_ring][topological fields]] are *R* and *C*. This
+gives another characterization of *C* as a topological field, since *C*
+can be distinguished from *R* because the nonzero complex numbers are
+[[connected_space][connected]], while the nonzero real numbers are not.
+
+* Formal construction
+
+** Formal development
+
+Above, complex numbers have been defined by introducing , the imaginary
+unit, as a symbol. More rigorously, the set of complex numbers can be
+defined as the set of [[ordered_pairs][ordered pairs]] of real numbers.
+In this notation, the above formulas for addition and multiplication
+read
+
+-   :: \begin{align}
+
+(a, b) + (c, d) &= (a + c, b + d)\\ (a, b) \cdot (c, d) &= (ac - bd, bc
++ ad). \end{align}
+
+It is then just a matter of notation to express as .
+
+Though this low-level construction does accurately describe the
+structure of the complex numbers, the following equivalent definition
+reveals the algebraic nature of more immediately. This characterization
+relies on the notion of fields and polynomials. A field is a set endowed
+with addition, subtraction, multiplication and division operations that
+behave as is familiar from, say, rational numbers. For example, the
+[[distributive_law][distributive law]]
+
+$$(x+y) z = xz + yz$$ must hold for any three elements , and of a field.
+The set of real numbers does form a field. A polynomial with real
+[[coefficient][coefficients]] is an expression of the form
+
+$$a_nX^n+\dotsb+a_1X+a_0$$, where the are real numbers. The usual
+addition and multiplication of polynomials endows the set of all such
+polynomials with a [[ring_(mathematics)][ring]] structure. This ring is
+called [[polynomial_ring][polynomial ring]].
+
+The [[quotient_ring][quotient ring]] can be shown to be a field. This
+extension field contains two square roots of , namely (the
+[[coset][cosets]] of) and , respectively. (The cosets of) and form a
+basis of as a real [[vector_space][vector space]], which means that each
+element of the extension field can be uniquely written as a
+[[linear_combination][linear combination]] in these two elements.
+Equivalently, elements of the extension field can be written as ordered
+pairs of real numbers. Moreover, the above formulas for addition etc.
+correspond to the ones yielded by this [[abstract_algebra][abstract
+algebraic]] approach---the two definitions of the field are said to be
+[[isomorphism][isomorphic]] (as fields). Together with the
+above-mentioned fact that is algebraically closed, this also shows that
+is an [[algebraic_closure][algebraic closure]] of .
+
+** Matrix representation of complex numbers
+
+Complex numbers can also be represented by
+[[matrix_(mathematics)][matrices]] that have the following form:
+
+$$\begin{pmatrix}
+  a &   -b  \\
+  b & \;\; a
+\end{pmatrix}.$$ Here the entries and are real numbers. The sum and
+product of two such matrices is again of this form, and the sum and
+product of complex numbers corresponds to the sum and
+[[matrix_multiplication][product]] of such matrices. The geometric
+description of the multiplication of complex numbers can also be
+expressed in terms of [[rotation_matrix][rotation matrices]] by using
+this correspondence between complex numbers and such matrices. Moreover,
+the square of the absolute value of a complex number expressed as a
+matrix is equal to the [[determinant]] of that matrix:
+
+$$|z|^2 =
+\begin{vmatrix}
+  a & -b  \\
+  b &  a
+\end{vmatrix}
+= (a^2) - ((-b)(b)) = a^2 + b^2.$$ The conjugate $\overline z$
+corresponds to the [[transpose]] of the matrix.
+
+Though this representation of complex numbers with matrices is the most
+common, many other representations arise from matrices /other than/
+$\bigl(\begin{smallmatrix}0 & -1 \\1 & 0 \end{smallmatrix}\bigr)$ that
+square to the negative of the [[identity_matrix][identity matrix]]. See
+the article on [[2_×_2_real_matrices][2 × 2 real matrices]] for other
+representations of complex numbers.
+
+* Complex analysis
+
+[[Sin1perz.png]]
+
+The study of functions of a complex variable is known as
+[[complex_analysis][complex analysis]] and has enormous practical use in
+[[applied_mathematics][applied mathematics]] as well as in other
+branches of mathematics. Often, the most natural proofs for statements
+in [[real_analysis][real analysis]] or even [[number_theory][number
+theory]] employ techniques from complex analysis (see
+[[prime_number_theorem][prime number theorem]] for an example). Unlike
+real functions, which are commonly represented as two-dimensional
+graphs, [[complex_function][complex functions]] have four-dimensional
+graphs and may usefully be illustrated by color-coding a
+[[three-dimensional_graph][three-dimensional graph]] to suggest four
+dimensions, or by animating the complex function's dynamic
+transformation of the complex plane.
+
+** Complex exponential and related functions
+
+The notions of [[convergent_series][convergent series]] and
+[[continuous_function][continuous functions]] in (real) analysis have
+natural analogs in complex analysis. A sequence of complex numbers is
+said to [[convergent_sequence][converge]] if and only if its real and
+imaginary parts do. This is equivalent to the
+[[(ε,_δ)-definition_of_limit][(ε, δ)-definition of limits]], where the
+absolute value of real numbers is replaced by the one of complex
+numbers. From a more abstract point of view, *C*, endowed with the
+[[metric_(mathematics)][metric]]
+
+$$\operatorname{d}(z_1, z_2) = |z_1 - z_2| \,$$ is a complete
+[[metric_space][metric space]], which notably includes the
+[[triangle_inequality][triangle inequality]]
+
+$$|z_1 + z_2| \le |z_1| + |z_2|$$ for any two complex numbers and .
+
+Like in real analysis, this notion of convergence is used to construct a
+number of [[elementary_function][elementary functions]]: the
+/[[exponential_function][exponential function]]/ , also written , is
+defined as the [[infinite_series][infinite series]]
+
+$$\exp(z):= 1+z+\frac{z^2}{2\cdot 1}+\frac{z^3}{3\cdot 2\cdot 1}+\cdots = \sum_{n=0}^{\infty} \frac{z^n}{n!}. \,$$
+and the series defining the real trigonometric functions [[sine]] and
+[[cosine]], as well as [[hyperbolic_functions][hyperbolic functions]]
+such as [[sinh]] also carry over to complex arguments without change.
+/[[Euler's_identity][Euler's identity]]/ states:
+
+$$\exp(i\varphi) = \cos(\varphi) + i\sin(\varphi) \,$$ for any real
+number /φ/, in particular
+
+$$\exp(i \pi) = -1 \,$$ Unlike in the situation of real numbers, there
+is an [[infinite_set][infinitude]] of complex solutions of the equation
+
+$$\exp(z) = w \,$$ for any complex number . It can be shown that any
+such solution ---called [[complex_logarithm][complex logarithm]] of
+---satisfies
+
+$$\log(x+iy)=\ln|w| + i\arg(w), \,$$ where arg is the
+[[arg_(mathematics)][argument]] defined [[#Polar_form][above]], and ln
+the (real) [[natural_logarithm][natural logarithm]]. As arg is a
+[[multivalued_function][multivalued function]], unique only up to a
+multiple of 2/π/, log is also multivalued. The
+[[principal_value][principal value]] of log is often taken by
+restricting the imaginary part to the
+[[interval_(mathematics)][interval]] .
+
+Complex [[exponentiation]] is defined as
+
+$$z^\omega = \exp(\omega \log z). \,$$ Consequently, they are in general
+multi-valued. For , for some natural number , this recovers the
+non-uniqueness of th roots mentioned above.
+
+Complex numbers, unlike real numbers, do not in general satisfy the
+unmodified power and logarithm identities, particularly when naïvely
+treated as single-valued functions; see
+[[Exponentiation#Failure_of_power_and_logarithm_identities][failure of
+power and logarithm identities]]. For example, they do not satisfy
+
+$$\,a^{bc} = (a^b)^c.$$ Both sides of the equation are multivalued by
+the definition of complex exponentiation given here, and the values on
+the left are a subset of those on the right.
+
+** Holomorphic functions
+
+A function /f/ : *C* → *C* is called
+[[Holomorphic_function][holomorphic]] if it satisfies the
+[[Cauchy–Riemann_equations][Cauchy--Riemann equations]]. For example,
+any
+[[Linear_transformation#Definition_and_first_consequences][*R*-linear]]
+map *C* → *C* can be written in the form
+
+$$f(z)=az+b\overline{z}$$ with complex coefficients and . This map is
+holomorphic [[if_and_only_if][if and only if]] . The second summand
+$b \overline z$ is real-differentiable, but does not satisfy the
+[[Cauchy–Riemann_equations][Cauchy--Riemann equations]].
+
+Complex analysis shows some features not apparent in real analysis. For
+example, any two holomorphic functions and that agree on an arbitrarily
+small [[open_subset][open subset]] of *C* necessarily agree everywhere.
+[[Meromorphic_function][Meromorphic functions]], functions that can
+locally be written as with a holomorphic function , still share some of
+the features of holomorphic functions. Other functions have
+[[essential_singularity][essential singularities]], such as at .
+
+* Applications
+
+Complex numbers have essential concrete applications in a variety of
+scientific and related areas such as [[signal_processing][signal
+processing]], [[control_theory][control theory]], [[electromagnetism]],
+[[fluid_dynamics][fluid dynamics]], [[quantum_mechanics][quantum
+mechanics]], [[cartography]], and
+[[Vibration#Vibration_analysis][vibration analysis]]. Some applications
+of complex numbers are:
+
+** Control theory
+
+In [[control_theory][control theory]], systems are often transformed
+from the [[time_domain][time domain]] to the
+[[frequency_domain][frequency domain]] using the
+[[Laplace_transform][Laplace transform]]. The system's
+[[pole_(complex_analysis)][poles]] and
+[[zero_(complex_analysis)][zeros]] are then analyzed in the /complex
+plane/. The [[root_locus][root locus]], [[Nyquist_plot][Nyquist plot]],
+and [[Nichols_plot][Nichols plot]] techniques all make use of the
+complex plane.
+
+In the root locus method, it is especially important whether the
+[[pole_(complex_analysis)][poles]] and
+[[zero_(complex_analysis)][zeros]] are in the left or right half planes,
+i.e. have real part greater than or less than zero. If a linear,
+time-invariant (LTI) system has poles that are
+
+-  in the right half plane, it will be [[unstable]],
+-  all in the left half plane, it will be [[BIBO_stability][stable]],
+-  on the imaginary axis, it will have [[marginal_stability][marginal
+   stability]].
+
+If a system has zeros in the right half plane, it is a
+[[nonminimum_phase][nonminimum phase]] system.
+
+** Improper integrals
+
+In applied fields, complex numbers are often used to compute certain
+real-valued [[improper_integral][improper integrals]], by means of
+complex-valued functions. Several methods exist to do this; see
+[[methods_of_contour_integration][methods of contour integration]].
+
+** Fluid dynamics
+
+In [[fluid_dynamics][fluid dynamics]], complex functions are used to
+describe [[potential_flow_in_two_dimensions][potential flow in two
+dimensions]].
+
+** Dynamic equations
+
+In [[differential_equations][differential equations]], it is common to
+first find all complex roots of the
+[[Linear_differential_equation#Homogeneous_equations_with_constant_coefficients][characteristic
+equation]] of a [[linear_differential_equation][linear differential
+equation]] or equation system and then attempt to solve the system in
+terms of base functions of the form . Likewise, in
+[[difference_equations][difference equations]], the complex roots of the
+characteristic equation of the difference equation system are used, to
+attempt to solve the system in terms of base functions of the form .
+
+** Electromagnetism and electrical engineering
+
+In [[electrical_engineering][electrical engineering]], the
+[[Fourier_transform][Fourier transform]] is used to analyze varying
+[[voltage][voltages]] and [[Electric_current][currents]]. The treatment
+of [[resistor][resistors]], [[capacitor][capacitors]], and
+[[inductor][inductors]] can then be unified by introducing imaginary,
+frequency-dependent resistances for the latter two and combining all
+three in a single complex number called the
+[[Electrical_impedance][impedance]]. This approach is called [[phasor]]
+calculus.
+
+In electrical engineering, the imaginary unit is denoted by , to avoid
+confusion with , which is generally in use to denote
+[[electric_current][electric current]], or, more particularly, , which
+is generally in use to denote instantaneous electric current.
+
+Since the [[voltage]] in an AC [[electric_circuit][circuit]] is
+oscillating, it can be represented as
+
+$$V(t) = V_0 e^{j \omega t} = V_0 \left (\cos \omega t + j \sin\omega t \right ),$$
+
+To obtain the measurable quantity, the real part is taken:
+
+$$v(t) = \mathrm{Re}(V) = \mathrm{Re}\left [ V_0 e^{j \omega t} \right ] = V_0 \cos \omega t.$$
+
+The complex-valued signal $V(t)$ is called the
+[[analytic_signal][analytic]] representation of the real-valued,
+measurable signal $v(t)$.  [14]
+
+** Signal analysis
+
+Complex numbers are used in [[signal_analysis][signal analysis]] and
+other fields for a convenient description for periodically varying
+signals. For given real functions representing actual physical
+quantities, often in terms of sines and cosines, corresponding complex
+functions are considered of which the real parts are the original
+quantities. For a [[sine_wave][sine wave]] of a given [[frequency]], the
+absolute value  /z/ {{!}}}} of the corresponding is the [[amplitude]]
+and the [[Argument_(complex_analysis)][argument]] is the
+[[phase_(waves)][phase]].
+
+If [[Fourier_analysis][Fourier analysis]] is employed to write a given
+real-valued signal as a sum of periodic functions, these periodic
+functions are often written as complex valued functions of the form
+
+$$x(t) = Re \{X( t ) \} \,$$
+
+and
+
+$$X( t ) = A e^{i\omega t} = a e^{ i \phi } e^{i\omega t} = a e^{i (\omega t + \phi) } \,$$
+
+where ω represents the [[angular_frequency][angular frequency]] and the
+complex number /A/ encodes the phase and amplitude as explained above.
+
+This use is also extended into [[digital_signal_processing][digital
+signal processing]] and [[digital_image_processing][digital image
+processing]], which utilize digital versions of Fourier analysis (and
+[[wavelet]] analysis) to transmit, [[Data_compression][compress]],
+restore, and otherwise process [[Digital_data][digital]]
+[[Sound][audio]] signals, still images, and [[video]] signals.
+
+Another example, relevant to the two side bands of
+[[amplitude_modulation][amplitude modulation]] of AM radio, is:
+
+$$\begin{align}
+\cos((\omega+\alpha)t)+\cos\left((\omega-\alpha)t\right) & = \operatorname{Re}\left(e^{i(\omega+\alpha)t} + e^{i(\omega-\alpha)t}\right) \\
+& = \operatorname{Re}\left((e^{i\alpha t} + e^{-i\alpha t})\cdot e^{i\omega t}\right) \\
+& = \operatorname{Re}\left(2\cos(\alpha t) \cdot e^{i\omega t}\right) \\
+& = 2 \cos(\alpha t) \cdot \operatorname{Re}\left(e^{i\omega t}\right) \\
+& = 2 \cos(\alpha t)\cdot \cos\left(\omega t\right)\,.
+\end{align}$$
+
+** Quantum mechanics
+
+The complex number field is intrinsic to the
+[[mathematical_formulations_of_quantum_mechanics][mathematical
+formulations of quantum mechanics]], where complex
+[[Hilbert_space][Hilbert spaces]] provide the context for one such
+formulation that is convenient and perhaps most standard. The original
+foundation formulas of quantum mechanics---the
+[[Schrödinger_equation][Schrödinger equation]] and Heisenberg's
+[[matrix_mechanics][matrix mechanics]]---make use of complex numbers.
+
+** Relativity
+
+In [[special_relativity][special]] and [[general_relativity][general
+relativity]], some formulas for the metric on [[spacetime]] become
+simpler if one takes the time component of the spacetime continuum to be
+imaginary. (This approach is no longer standard in classical relativity,
+but is [[Wick_rotation][used in an essential way]] in
+[[quantum_field_theory][quantum field theory]].) Complex numbers are
+essential to [[spinor][spinors]], which are a generalization of the
+[[tensor][tensors]] used in relativity.
+
+** Geometry
+
+*** Fractals
+
+Certain [[fractal][fractals]] are plotted in the complex plane, e.g. the
+[[Mandelbrot_set][Mandelbrot set]] and [[Julia_set][Julia sets]].
+
+*** Triangles
+
+Every triangle has a unique [[Steiner_inellipse][Steiner
+inellipse]]---an [[ellipse]] inside the triangle and tangent to the
+midpoints of the three sides of the triangle. The
+[[Focus_(geometry)][foci]] of a triangle's Steiner inellipse can be
+found as follows, according to [[Marden's_theorem][Marden's
+theorem]]: [15] [16] Denote the triangle's vertices in the complex plane
+as , , and . Write the [[cubic_equation][cubic equation]]
+$\scriptstyle (x-a)(x-b)(x-c)=0$, take its derivative, and equate the
+(quadratic) derivative to zero. [[Marden's_Theorem][Marden's Theorem]]
+says that the solutions of this equation are the complex numbers
+denoting the locations of the two foci of the Steiner inellipse.
+
+** Algebraic number theory
+
+[[Pentagon construct.gif]] As mentioned above, any nonconstant
+polynomial equation (in complex coefficients) has a solution in *C*. A
+fortiori, the same is true if the equation has rational coefficients.
+The roots of such equations are called [[algebraic_number][algebraic
+numbers]] -- they are a principal object of study in
+[[algebraic_number_theory][algebraic number theory]]. Compared to , the
+algebraic closure of *Q*, which also contains all algebraic numbers, *C*
+has the advantage of being easily understandable in geometric terms. In
+this way, algebraic methods can be used to study geometric questions and
+vice versa. With algebraic methods, more specifically applying the
+machinery of [[field_theory_(mathematics)][field theory]] to the
+[[number_field][number field]] containing [[root_of_unity][roots of
+unity]], it can be shown that it is not possible to construct a regular
+[[nonagon]] [[compass_and_straightedge_constructions][using only compass
+and straightedge]] -- a purely geometric problem.
+
+Another example are [[Gaussian_integer][Gaussian integers]], that is,
+numbers of the form , where and are integers, which can be used to
+classify [[Fermat's_theorem_on_sums_of_two_squares][sums of squares]].
+
+** Analytic number theory
+
+Analytic number theory studies numbers, often integers or rationals, by
+taking advantage of the fact that they can be regarded as complex
+numbers, in which analytic methods can be used. This is done by encoding
+number-theoretic information in complex-valued functions. For example,
+the [[Riemann_zeta_function][Riemann zeta function]] is related to the
+distribution of [[prime_number][prime numbers]].
+
+* History
+
+The earliest fleeting reference to [[square_root][square roots]] of
+[[negative_number][negative numbers]] can perhaps be said to occur in
+the work of the [[Hellenistic_mathematics][Greek mathematician]]
+[[Hero_of_Alexandria][Hero of Alexandria]] in the 1st century [[AD]],
+where in his /[[Hero_of_Alexandria#Bibliography][Stereometrica]]/ he
+considers, apparently in error, the volume of an impossible [[frustum]]
+of a [[pyramid]] to arrive at the term
+$\scriptstyle \sqrt{81 - 144} = 3i\sqrt{7}$ in his calculations,
+although negative quantities were not conceived of in
+[[Greek_Mathematics][Hellenistic mathematics]] and Heron merely replaced
+it by its positive ($\scriptstyle \sqrt{144 - 81} = 3\sqrt{7}$). [17]
+
+The impetus to study complex numbers proper first arose in the 16th
+century when [[algebraic_solution][algebraic solutions]] for the roots
+of [[Cubic_equation][cubic]] and [[Quartic_equation][quartic]]
+[[polynomial][polynomials]] were discovered by Italian mathematicians
+(see [[Niccolò_Fontana_Tartaglia][Niccolò Fontana Tartaglia]],
+[[Gerolamo_Cardano][Gerolamo Cardano]]). It was soon realized that these
+formulas, even if one was only interested in real solutions, sometimes
+required the manipulation of square roots of negative numbers. As an
+example, Tartaglia's formula for a cubic equation of the form
+$\scriptstyle x^3 = px + q$ [18] gives the solution to the equation as
+
+$$\frac{1}{\sqrt{3}}\left((\sqrt{-1})^{1/3}+\frac{1}{(\sqrt{-1})^{1/3}}\right).$$
+
+At first glance this looks like nonsense. However formal calculations
+with complex numbers show that the equation has solutions ,
+${\scriptstyle\frac{\sqrt{3}}{2}}+{\scriptstyle\frac{1}{2}}i$ and
+${\scriptstyle\frac{-\sqrt{3}}{2}}+{\scriptstyle\frac{1}{2}}i$.
+Substituting these in turn for ${\scriptstyle\sqrt{-1}^{1/3}}$ in
+Tartaglia's cubic formula and simplifying, one gets 0, 1 and −1 as the
+solutions of . Of course this particular equation can be solved at sight
+but it does illustrate that when general formulas are used to solve
+cubic equations with real roots then, as later mathematicians showed
+rigorously, the use of complex numbers [[casus_irreducibilis][is
+unavoidable]]. [[Rafael_Bombelli][Rafael Bombelli]] was the first to
+explicitly address these seemingly paradoxical solutions of cubic
+equations and developed the rules for complex arithmetic trying to
+resolve these issues.
+
+The term "imaginary" for these quantities was coined by
+[[René_Descartes][René Descartes]] in 1637, although he was at pains to
+stress their imaginary nature [19] A further source of confusion was
+that the equation $\scriptstyle \sqrt{-1}^2=\sqrt{-1}\sqrt{-1}=-1$
+seemed to be capriciously inconsistent with the algebraic identity
+$\scriptstyle \sqrt{a}\sqrt{b}=\sqrt{ab}$, which is valid for
+non-negative real numbers and , and which was also used in complex
+number calculations with one of , positive and the other negative. The
+incorrect use of this identity (and the related identity
+$\scriptstyle \frac{1}{\sqrt{a}}=\sqrt{\frac{1}{a}}$) in the case when
+both and are negative even bedeviled Euler. This difficulty eventually
+led to the convention of using the special symbol in place of to guard
+against this mistake. Even so, Euler considered it natural to introduce
+students to complex numbers much earlier than we do today. In his
+elementary algebra text book, [[Elements_of_Algebra][Elements of
+Algebra]], he introduces these numbers almost at once and then uses them
+in a natural way throughout.
+
+In the 18th century complex numbers gained wider use, as it was noticed
+that formal manipulation of complex expressions could be used to
+simplify calculations involving trigonometric functions. For instance,
+in 1730 [[Abraham_de_Moivre][Abraham de Moivre]] noted that the
+complicated identities relating trigonometric functions of an integer
+multiple of an angle to powers of trigonometric functions of that angle
+could be simply re-expressed by the following well-known formula which
+bears his name, [[de_Moivre's_formula][de Moivre's formula]]:
+
+$$(\cos \theta + i\sin \theta)^{n} = \cos n \theta + i\sin n \theta. \,$$
+
+In 1748 [[Leonhard_Euler][Leonhard Euler]] went further and obtained
+[[Euler's_formula][Euler's formula]] of [[complex_analysis][complex
+analysis]]:
+
+$$\cos \theta + i\sin \theta = e ^{i\theta } \,$$
+
+by formally manipulating complex [[power_series][power series]] and
+observed that this formula could be used to reduce any trigonometric
+identity to much simpler exponential identities.
+
+The idea of a complex number as a point in the complex plane
+([[#Complex_plane][above]]) was first described by
+[[Caspar_Wessel][Caspar Wessel]] in 1799, although it had been
+anticipated as early as 1685 in [[John_Wallis][Wallis's]] /De Algebra
+tractatus/.
+
+Wessel's memoir appeared in the Proceedings of the
+[[Copenhagen_Academy][Copenhagen Academy]] but went largely unnoticed.
+In 1806 [[Jean-Robert_Argand][Jean-Robert Argand]] independently issued
+a pamphlet on complex numbers and provided a rigorous proof of the
+[[Fundamental_theorem_of_algebra#History][fundamental theorem of
+algebra]]. Gauss had earlier published an essentially
+[[topology][topological]] proof of the theorem in 1797 but expressed his
+doubts at the time about "the true metaphysics of the square root of
+−1". It was not until 1831 that he overcame these doubts and published
+his treatise on complex numbers as points in the plane, largely
+establishing modern notation and terminology. In the beginning of 19th
+century, other mathematicians discovered independently the geometrical
+representation of the complex numbers: Buée, [[C._V._Mourey][Mourey]],
+[[John_Warren_(mathematician)][Warren]],
+[[Jacques_Frédéric_Français][Français]] and his brother,
+[[Giusto_Bellavitis][Bellavitis]]. [20]
+
+The English mathematician [[G._H._Hardy][G. H. Hardy]] remarked that
+Gauss was the first mathematician to use complex numbers in 'a really
+confident and scientific way' although mathematicians such as
+[[Niels_Henrik_Abel][Niels Henrik Abel]] and
+[[Carl_Gustav_Jacob_Jacobi][Carl Gustav Jacob Jacobi]] were necessarily
+using them routinely before Gauss published his 1831 treatise. [21]
+[[Augustin_Louis_Cauchy][Augustin Louis Cauchy]] and
+[[Bernhard_Riemann][Bernhard Riemann]] together brought the fundamental
+ideas of [[#Complex_analysis][complex analysis]] to a high state of
+completion, commencing around 1825 in Cauchy's case.
+
+The common terms used in the theory are chiefly due to the founders.
+Argand called $\scriptstyle \cos \phi + i\sin \phi$ the /direction
+factor/, and $\scriptstyle r = \sqrt{a^2+b^2}$ the /modulus/; Cauchy
+(1828) called $\cos \phi + i\sin \phi$ the /reduced form/ (l'expression
+réduite) and apparently introduced the term /argument/; Gauss used for
+$\scriptstyle \sqrt{-1}$, introduced the term /complex number/ for , and
+called the /norm/. The expression /direction coefficient/, often used
+for $\cos \phi + i\sin \phi$, is due to Hankel (1867), and /absolute
+value,/ for /modulus,/ is due to Weierstrass.
+
+Later classical writers on the general theory include
+[[Richard_Dedekind][Richard Dedekind]], [[Otto_Hölder][Otto Hölder]],
+[[Felix_Klein][Felix Klein]], [[Henri_Poincaré][Henri Poincaré]],
+[[Hermann_Schwarz][Hermann Schwarz]], [[Karl_Weierstrass][Karl
+Weierstrass]] and many others.
+
+* Generalizations and related notions
+
+The process of extending the field *R* of reals to *C* is known as
+[[Cayley–Dickson_construction][Cayley--Dickson construction]]. It can be
+carried further to higher dimensions, yielding the
+[[quaternion][quaternions]] *H* and [[octonion][octonions]] *O* which
+(as a real vector space) are of dimension 4 and 8, respectively. In this
+context the complex numbers have been called the *binarions*. [22]
+
+However, just as applying the construction to reals loses the property
+of [[ordered_field][ordering]], more properties familiar from real and
+complex numbers vanish with increasing dimension. The [[quaternions]]
+are only a [[skew_field][skew field]], i.e. for some : for two
+quaternions, the multiplication of [[octonions]] fails (in addition to
+not being commutative) to be associative: for some : .
+
+Reals, complex numbers, quaternions and octonions are all
+[[normed_division_algebra][normed division algebras]] over *R*. However,
+by [[Hurwitz's_theorem_(normed_division_algebras)][Hurwitz's theorem]]
+they are the only ones. The next step in the Cayley--Dickson
+construction, the [[sedenion][sedenions]], in fact fails to have this
+structure.
+
+The Cayley--Dickson construction is closely related to the
+[[regular_representation][regular representation]] of *C*, thought of as
+an *R*-[[Algebra_(ring_theory)][algebra]] (an *R*-vector space with a
+multiplication), with respect to the basis . This means the following:
+the *R*-linear map
+
+$$\mathbb{C} \rightarrow \mathbb{C}, z \mapsto wz$$ for some fixed
+complex number can be represented by a matrix (once a basis has been
+chosen). With respect to the basis , this matrix is
+
+$$\begin{pmatrix}
+  \operatorname{Re}(w) & -\operatorname{Im}(w) \\
+  \operatorname{Im}(w) & \;\; \operatorname{Re}(w)
+\end{pmatrix}$$ i.e., the one mentioned in the section on matrix
+representation of complex numbers above. While this is a
+[[linear_representation][linear representation]] of *C* in the
+[[2_×_2_real_matrices][2 × 2 real matrices]], it is not the only one.
+Any matrix
+
+$$J = \begin{pmatrix}p & q \\ r & -p \end{pmatrix}, \quad p^2 + qr + 1 = 0$$
+has the property that its square is the negative of the identity matrix:
+. Then
+
+$$\{ z = a I + b J : a,b \in R \}$$ is also isomorphic to the field *C*,
+and gives an alternative complex structure on *R*^{2}. This is
+generalized by the notion of a [[linear_complex_structure][linear
+complex structure]].
+
+[[Hypercomplex_number][Hypercomplex numbers]] also generalize *R*, *C*,
+*H*, and *O*. For example, this notion contains the
+[[split-complex_number][split-complex numbers]], which are elements of
+the ring (as opposed to ). In this ring, the equation has four
+solutions.
+
+The field *R* is the completion of *Q*, the field of
+[[rational_number][rational numbers]], with respect to the usual
+[[absolute_value][absolute value]] [[metric_(mathematics)][metric]].
+Other choices of [[metric_(mathematics)][metrics]] on *Q* lead to the
+fields *Q*_{/p/} of [[p-adic_number][/p/-adic numbers]] (for any
+[[prime_number][prime number]] /p/), which are thereby analogous to *R*.
+There are no other nontrivial ways of completing *Q* than *R* and
+*Q*_{/p/}, by [[Ostrowski's_theorem][Ostrowski's theorem]]. The
+algebraic closures $\overline {\mathbf{Q}_p}$ of *Q*_{/p/} still carry a
+norm, but (unlike *C*) are not complete with respect to it. The
+completion $\mathbf{C}_p$ of $\overline {\mathbf{Q}_p}$ turns out to be
+algebraically closed. This field is called /p/-adic complex numbers by
+analogy.
+
+The fields *R* and *Q*_{/p/} and their finite field extensions,
+including *C*, are [[local_field][local fields]].
+
+* See also
+
+-  [[Algebraic_surface][Algebraic surface]]
+-  [[Circular_motion#Using_complex_numbers][Circular motion using
+   complex numbers]]
+-  [[Complex-base_system][Complex-base system]]
+-  [[Complex_geometry][Complex geometry]]
+-  [[Complex_square_root][Complex square root]]
+-  [[Domain_coloring][Domain coloring]]
+-  [[Eisenstein_integer][Eisenstein integer]]
+-  [[Euler's_identity][Euler's identity]]
+-  [[Gaussian_integer][Gaussian integer]]
+-  [[Mandelbrot_set][Mandelbrot set]]
+-  [[Quaternion]]
+-  [[Riemann_sphere][Riemann sphere]] (extended complex plane)
+-  [[Root_of_unity][Root of unity]]
+-  [[Unit_complex_number][Unit complex number]]
+
+* Notes
+
+* References
+
+** Mathematical references
+
+-  
+-  
+-  
+-  
+-  
+-  
+
+** Historical references
+
+-  
+-  
+-  -   :: A gentle introduction to the history of complex numbers and
+      the beginnings of complex analysis.
+
+-  -   :: An advanced perspective on the historical development of the
+      concept of number.
+
+* Further reading
+
+-  /The Road to Reality: A Complete Guide to the Laws of the Universe/,
+   by [[Roger_Penrose][Roger Penrose]]; Alfred A. Knopf, 2005; ISBN
+   0-679-45443-8. Chapters 4--7 in particular deal extensively (and
+   enthusiastically) with complex numbers.
+-  /Unknown Quantity: A Real and Imaginary History of Algebra/, by John
+   Derbyshire; Joseph Henry Press; ISBN 0-309-09657-X (hardcover 2006).
+   A very readable history with emphasis on solving polynomial equations
+   and the structures of modern algebra.
+-  /Visual Complex Analysis/, by [[Tristan_Needham][Tristan Needham]];
+   Clarendon Press; ISBN 0-19-853447-7 (hardcover, 1997). History of
+   complex numbers and complex analysis with compelling and useful
+   visual interpretations.
+-  Conway, John B., /Functions of One Complex Variable I/ (Graduate
+   Texts in Mathematics), Springer; 2 edition (12 September 2005). ISBN
+   0-387-90328-3.
+
+* External links
+
+-  
+-  [[https://www.khanacademy.org/math/precalculus/imaginary-and-complex-numbers/the-complex-numbers/v/complex-number-intro][Introduction
+   to Complex Numbers from Khan Academy]]
+-  
+-  [[http://www.maa.org/press/periodicals/convergence/eulers-investigations-on-the-roots-of-equations][Euler's
+   Investigations on the Roots of Equations]] at Convergence. MAA
+   Mathematical Sciences Digital Library.
+-  [[http://mathforum.org/johnandbetty/][John and Betty's Journey
+   Through Complex Numbers]]
+-  [[http://mathfaculty.fullerton.edu/mathews/c2003/ComplexNumberOrigin.html][The
+   Origin of Complex Numbers by John H. Mathews and Russell W. Howell]]
+-  [[http://www.dimensions-math.org/Dim_regarder_E.htm][Dimensions: a
+   math film.]] Chapter 5 presents an introduction to complex arithmetic
+   and [[stereographic_projection][stereographic projection]]. Chapter 6
+   discusses transformations of the complex plane, [[Julia_set][Julia
+   sets]], and the [[Mandelbrot_set][Mandelbrot set]].
+
+[[Category:Composition_algebras][Category:Composition algebras]]
+[[Category:Complex_numbers][ ]]
+
+[1] 
+
+[2] 
+
+[3] Complex Variables (2nd Edition), M.R. Spiegel, S. Lipschutz, J.J.
+    Schiller, D. Spellman, Schaum's Outline Series, Mc Graw Hill (USA),
+    ISBN 978-0-07-161569-3
+
+[4] 
+
+[5] For example .
+
+[6] 
+
+[7] 
+
+[8] [[http://mathworld.wolfram.com/ComplexNumber.html]]
+
+[9] , [[http://www.math.sfu.ca/~cbm/aands/page_17.htm][Section 3.7.26,
+    p. 17]]
+
+[10] ,
+     [[https://books.google.com/books?id=lUcTsYopfhkC&pg=PA59][Extract:
+     page 59]]
+
+[11] 
+
+[12] 
+
+[13] 
+
+[14] Electromagnetism (2nd edition), I.S. Grant, W.R. Phillips,
+     Manchester Physics Series, 2008 ISBN 0-471-92712-0
+
+[15] 
+
+[16] 
+
+[17] 
+
+[18] In modern notation, Tartaglia's solution is based on expanding the
+     cube of the sum of two cube roots:
+     $\scriptstyle \left(\sqrt[3]{u} + \sqrt[3]{v}\right)^3 = 3 \sqrt[3]{uv} \left(\sqrt[3]{u} + \sqrt[3]{v}\right) + u + v$
+     With $\scriptstyle x = \sqrt[3]{u} + \sqrt[3]{v}$,
+     $\scriptstyle p = 3 \sqrt[3]{uv}$, $\scriptstyle q = u + v$, and
+     can be expressed in terms of and as
+     $\scriptstyle u = q/2 + \sqrt{(q/2)^2-(p/3)^3}$ and
+     $\scriptstyle v = q/2 - \sqrt{(q/2)^2-(p/3)^3}$, respectively.
+     Therefore,
+     $\scriptstyle x = \sqrt[3]{q/2 + \sqrt{(q/2)^2-(p/3)^3}} + \sqrt[3]{q/2 - \sqrt{(q/2)^2-(p/3)^3}}$.
+     When $\scriptstyle (q/2)^2-(p/3)^3$ is negative (casus
+     irreducibilis), the second cube root should be regarded as the
+     complex conjugate of the first one.
+
+[19] 
+
+[20]  [[https://books.google.com/books?id=voFsJ1EhCnYC&pg=PA139][Extract
+     of page 139]]
+
+[21] 
+
+[22] Kevin McCrimmon (2004) /A Taste of Jordan Algebras/, pp 64,
+     Universitext, Springer ISBN 0-387-95447-3 
+
+* Tutorials
+
+* Examples
+
+** Example
+$$\sqrt{-1}$$
+
+$$\sqrt{-9}$$
+
+*** If imaginary unit is $i$
+$$i^{2} = -1$$
+
+*** then
+
+$$\sqrt{-9} = i \sqrt{9} = 3i$$
+
+** Example
+
+$$(3i)^{2} = 3^{2} \cdot i^{2} = 9 \cdot -1 \cdot -9$$
+$$(3i)^{2} = -9$$
+$3i = \sqrt{-9}$
+
+So, $3i$ is /imaginary number or unit/.
+
+** Example
+$$5 + 2i$$
+
+You can't add real number to imaginary number.
+
+** Graph
+
+[[file:img/0fjbZIgAAAABJRU5ErkJggg%3D%3D][Graph of complex number $5+2i$]]
+
+
+* Links
+[[http://www.mathprofi.ru/kompleksnye_chisla_dlya_chainikov.html][mathprofi.ru | Комплексные числа для чайников]]
+
+* Check python version
+#+BEGIN_SRC python
+import sys
+return sys.version
+#+END_SRC
+
+#+RESULTS:
+: 3.5.2 (default, Sep 18 2016, 03:17:32) 
+: [GCC 5.4.0 20160609]
+
+* Formulas
+Addition: $$(a + bi) + (c + di) = (a + c) + (b + d)i$$
+Subtraction: $$(a + bi) - (c + di) = (a - c) + (b - d)i$$
+Multiplication: $$(a + bi)(c + di) = (ac - bd) + (bc + ad)i$$
+
+* Definition
+#+BEGIN_SRC python
+complex = 2 + 3j
+output = complex.imag
+#output = dir(1j)
+return output
+#+END_SRC
+
+#+RESULTS:
+: 3.0
+
+* Addition
+Complex numbers are [[added]] by separately adding the real and imaginary parts of the summands.
+$$(a + bi) + (c + di) = (a + c) + (b + d)i$$
+
+#+BEGIN_SRC python
+complex1 = 5 + 4j
+complex2 = 3 + 2j
+output = (complex1) + (complex2)
+return output
+#+END_SRC
+
+#+RESULTS:
+| 8+6j |
+
+#+BEGIN_SRC python
+complex1 = 5 + 3j
+complex2 = -2 -1j
+output = (complex1) + (complex2)
+return output
+#+END_SRC
+
+#+RESULTS:
+| 3+2j |
+
+* Subtraction
+Similarly as [[Addition]].
+$$(a + bi) - (c + di) = (a - c) + (b - d)i$$
+
+#+BEGIN_SRC python
+complex1 = 5 + 4j
+complex2 = 3 + 2j
+output = (complex1) - (complex2)
+return output
+#+END_SRC
+
+#+RESULTS:
+| 2+2j |
+
+* Multiplication and division
+The multiplication of two complex numbers is defined by the following formula:
+$$(a + bi)(c + di) = (ac - bd) + (bc + ad)i$$
+
+#+BEGIN_SRC python
+complex1 = 5 + 4j
+complex2 = 3 + 2j
+output = (complex1) * (complex2)
+return 'complex1 = {}\ncomplex2 = {}\nanswer = {}'.format(complex1, complex2, output)
+#+END_SRC
+
+#+RESULTS:
+: complex1 = (5+4j)
+: complex2 = (3+2j)
+: answer = (7+22j)
+
+* Addition and multiplication
+
+#+BEGIN_SRC python
+complex1 = 3 + 4j
+complex2 = 5 - 3j
+complex3 = 1 + 2j
+output = 2 * (complex1) + (complex2) * (complex3)
+output2 = 2 * (complex1)
+output = (complex2) * (complex3) 
+output = (output2) + (output)
+return 'complex1 = {}\ncomplex2 = {}\ncomplex3 = {}\nanswer = {}'.format(complex1, complex2, complex3, output)
+#+END_SRC
+
+#+RESULTS:
+: complex1 = (3+4j)
+: complex2 = (5-3j)
+: complex3 = (1+2j)
+: answer = (17+15j)
+
+#+BEGIN_SRC python
+from sympy import solve
+from sympy.abc import x, y
+
+#output = solve([x + 5*y - 2, -3*x + 6*y - 15], [x, y])
+output = solve([(1 + 2j)*x + (3 - 5j)*y, 1 - 3j], [x, y])
+
+return output
+#+END_SRC
+
+#+RESULTS:
+: []
+
+* Videos
+
+** What Are Polynomials]
+[[https://www.youtube.com/watch?v=ffLLmV4mZwU][mathantics | Algebra Basics: What Are Polynomials]]
+
+*** Subtitles
+
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:06.857 --> 00:00:09.108
+Hi, I’m Rob. Welcome to Math Antics.
+
+00:00:09.108 --> 00:00:11.925
+In this video, we’re going to learn about Polynomials.
+
+00:00:11.925 --> 00:00:16.627
+That’s a big math word for a really big concept in Algebra, so pay attention.
+
+00:00:16.627 --> 00:00:22.963
+Now before we can understand what polynomials are, we need to learn about what mathematicians call “terms”.
+
+00:00:22.963 --> 00:00:28.900
+In Algebra, terms are mathematical expressions that are made up of two different parts:
+
+00:00:28.900 --> 00:00:31.440
+a number part and a variable part.
+
+00:00:31.448 --> 00:00:36.300
+In a term, the number part and the variable part are multiplied together,
+
+00:00:36.300 --> 00:00:38.800
+but since multiplication is implied in Algebra,
+
+00:00:38.802 --> 00:00:44.237
+the two parts of a term are usually written right next to each other with no times symbol between them.
+
+00:00:44.237 --> 00:00:49.824
+The number part is pretty simple… it’s just a number, like 2 or 5 or 1.4
+
+00:00:49.824 --> 00:00:53.974
+And the number part has an official name… it’s called the “coefficient”.
+
+00:00:53.974 --> 00:00:57.394
+Now there’s another cool math word that you can use to impress your friends at parties!
+
+00:00:57.540 --> 00:00:59.540
+[party music, crowd noise]
+
+00:00:59.542 --> 00:01:04.310
+…and then I said, “That’s not my wife… that’s my coefficient!”
+
+00:01:04.310 --> 00:01:07.450
+[silence / crickets chirping]
+
+00:01:07.979 --> 00:01:11.014
+The variable part of a term is a little more complicated.
+
+00:01:11.014 --> 00:01:14.898
+It can be made up of one or more variables that are raised to a power.
+
+00:01:14.898 --> 00:01:19.738
+Like… the variable part could be 'x squared'.  That’s a variable raised to a power.
+
+00:01:19.740 --> 00:01:22.533
+Or, the variable part could be just ‘y’.
+
+00:01:22.533 --> 00:01:28.970
+If you remember what we learned in our last video, you’ll realize that that also qualifies as a variable raised to a power.
+
+00:01:28.970 --> 00:01:31.904
+‘y’ is the same as ‘y’ to the 1st power.
+
+00:01:31.904 --> 00:01:37.188
+But since the exponent ‘1’ doesn’t change anything, we don’t need to actually show it.
+
+00:01:37.188 --> 00:01:42.607
+Or… the variable part of a term could be some tricky combination of variables that are raised to powers,
+
+00:01:42.607 --> 00:01:44.858
+like ‘x squared’ times ‘y squared’.
+
+00:01:44.858 --> 00:01:48.359
+…or ‘a’ times ‘b squared’ times ‘c cubed’.
+
+00:01:48.359 --> 00:01:53.612
+Terms can have any number of variables like that, but the good news is that most of the time,
+
+00:01:53.612 --> 00:01:59.280
+you’ll only need to deal with terms that have one variable. …or maybe two in complicated problems.
+
+00:01:59.280 --> 00:02:02.713
+Oh, and there’s one thing I should point out before we move on…
+
+00:02:02.713 --> 00:02:09.767
+if you have a term like 6y, even though it would be fine to do the multiplication the other way around and write y6,
+
+00:02:09.767 --> 00:02:15.347
+it’s conventional to always write the number part of the term first and the variable part of the term second.
+
+00:02:15.347 --> 00:02:18.200
+Okay, so that’s the basic idea of a term.
+
+00:02:18.203 --> 00:02:20.971
+But there’s a little more to terms that we’ll learn in a minute.
+
+00:02:20.971 --> 00:02:27.372
+First, let’s see how this basic idea of a term helps us understand the basic idea of a polynomial.
+
+00:02:27.372 --> 00:02:30.825
+A polynomial is a combination of many terms.
+
+00:02:30.825 --> 00:02:35.860
+It’s kind of like a chain of terms that are all linked together using addition or subtraction.
+
+00:02:35.860 --> 00:02:44.212
+The terms themselves contain multiplication, but each term in a polynomial must be joined by either addition or subtraction.
+
+00:02:44.212 --> 00:02:48.414
+And polynomials can be made from any number of terms joined together,
+
+00:02:48.414 --> 00:02:53.866
+but there are a few specific names that are used to describe polynomials with a certain number of terms.
+
+00:02:53.866 --> 00:03:01.068
+If there’s only one term (which isn’t really a chain) then we call it a “monomial” because the prefix “mono” means “one”.
+
+00:03:01.068 --> 00:03:06.687
+If there are just two terms, then we call it a “binomial” because the prefix “bi” means “two”,
+
+00:03:06.687 --> 00:03:12.506
+and if there are three terms, then we call it a “trinomial” since the prefix “tri” means “three”.
+
+00:03:12.506 --> 00:03:17.774
+Beyond three terms, we usually just say “polynomial” since “poly” means “many”,
+
+00:03:17.774 --> 00:03:23.777
+and in fact, it’s common to simply use the term “polynomial” even when there are just 2 or 3 terms.
+
+00:03:23.777 --> 00:03:26.927
+Okay, so that’s the basic idea of a polynomial.
+
+00:03:26.927 --> 00:03:31.462
+It’s a series of terms that are joined together by addition or subtraction.
+
+00:03:31.462 --> 00:03:41.533
+Now, let’s see a typical example of a polynomial that will help us learn a little more about terms:  3 ‘x squared’ plus ‘x’ minus 5
+
+00:03:41.533 --> 00:03:44.167
+How many terms does this polynomial have?
+
+00:03:44.167 --> 00:03:48.118
+Well, based on what we’ve learned so far, you’re probably not quit sure.
+
+00:03:48.118 --> 00:03:54.237
+If the terms are the parts that are joined together by addition or subtraction, then this should have three terms,
+
+00:03:54.237 --> 00:03:57.788
+but it looks like there’s something missing with the last two terms.
+
+00:03:57.788 --> 00:04:03.340
+This middle term is missing its number part, and this last term is missing its variable part.
+
+00:04:03.340 --> 00:04:08.091
+That doesn’t seem to fit with our original definition of a term.  What’s up with that?
+
+00:04:08.091 --> 00:04:10.476
+Well, the middle term is easy to explain.
+
+00:04:10.476 --> 00:04:13.977
+There really is a number part there, but it’s just ‘1’.
+
+00:04:13.977 --> 00:04:17.395
+Do you remember how ‘1’ is always a factor of any number?
+
+00:04:17.395 --> 00:04:24.135
+But, since multiplying by ‘1’ has no effect on a number or variable, we don’t need to show it.
+
+00:04:24.140 --> 00:04:33.620
+So, if you see a term in a polynomial that has only a variable part, you know that the number part (or coefficient) of that term is just ‘1’.
+
+00:04:33.620 --> 00:04:37.935
+Okay, but what about this last term that’s missing its variable part?
+
+00:04:37.935 --> 00:04:43.454
+Well, that’s a little trickier. Do you remember in our last video about exponents in Algebra,
+
+00:04:43.454 --> 00:04:49.641
+we learned that any number or variable that’s raised to the 0th power just equals ‘1’?
+
+00:04:49.641 --> 00:04:56.021
+That means we can think of this last term as having a variable ‘x’ that’s being raised to the 0th power.
+
+00:04:56.021 --> 00:05:00.940
+Since that would always just equal ‘1’, it’s not really a variable in the true sense of the word,
+
+00:05:00.944 --> 00:05:03.779
+and it has no effect on the value of the term.
+
+00:05:03.779 --> 00:05:07.996
+But it makes sense, especially if you remember the other rule from the last video.
+
+00:05:07.996 --> 00:05:13.115
+That rule says that any number raised to the 1st power is just itself,
+
+00:05:13.115 --> 00:05:19.550
+which helps us see that this middle term is basically the same as ‘1x’ raised to the 1st power.
+
+00:05:19.550 --> 00:05:21.168
+Now do you see the pattern?
+
+00:05:21.168 --> 00:05:28.820
+Each term has a number part and each term has a variable part that is raised to a power: 0, 1 and 2.
+
+00:05:28.820 --> 00:05:31.605
+But since ‘x’ to the ‘0’ is just ‘1’,
+
+00:05:31.605 --> 00:05:33.973
+and ‘x’ to the ‘1’ is just ‘x’,
+
+00:05:33.973 --> 00:05:37.740
+and anything multiplied by ‘1’ is just itself,
+
+00:05:37.740 --> 00:05:43.826
+the polynomial gets simplified so that it no longer looks exactly like the pattern it comes from.
+
+00:05:43.826 --> 00:05:47.977
+Oh, and this last term… the one that doesn’t have a truly variable part…
+
+00:05:47.977 --> 00:05:52.857
+it’s called a CONSTANT term because its value always stays the same.
+
+00:05:52.860 --> 00:06:01.232
+Alright… Now that you know what a Polynomial is, let’s talk about an important property of terms and polynomials called their “degree”.
+
+00:06:01.232 --> 00:06:07.985
+Now that might sound like the units we use to measure temperature or angles, but the degree we’re talking about here is different.
+
+00:06:07.985 --> 00:06:12.302
+The degree of a term is determined by the power of the variable part.
+
+00:06:12.302 --> 00:06:20.589
+For example, in this term, since the power of the variable is 4, we say that the degree of the term is 4, or that it’s a 4th degree term.
+
+00:06:20.589 --> 00:06:25.374
+And in this term, the power of the variable is 3, so it’s a 3rd degree term.
+
+00:06:25.374 --> 00:06:30.260
+Likewise, this would be a 2nd degree term and this would be a 1st degree term.
+
+00:06:30.260 --> 00:06:35.200
+Oh, and I suppose you could call a term with no variable part a “zero degree” term,
+
+00:06:35.200 --> 00:06:38.878
+but it’s usually just referred to as a “constant term”.
+
+00:06:38.878 --> 00:06:43.247
+Things are a little more complicated when you have terms with more that one variable.
+
+00:06:43.247 --> 00:06:47.916
+In that case, you add up the powers of each variable to get the degree of the term.
+
+00:06:47.916 --> 00:06:54.818
+Since the powers in this term are 3 and 2, it’s a 5th degree term because 3 + 2 = 5.
+
+00:06:54.818 --> 00:06:58.418
+Okay, but why do we care about the degree of terms?
+
+00:06:58.418 --> 00:07:04.421
+Well, it’s because polynomials are often referred to by the degree of their highest term.
+
+00:07:04.421 --> 00:07:10.923
+If a polynomial contains a 4th degree term (but no higher terms), then it’s called a “4th degree” polynomial.
+
+00:07:10.923 --> 00:07:17.110
+But if its highest term is only a 2nd degree term, then it’s called a “2nd degree” polynomial.
+
+00:07:17.110 --> 00:07:22.993
+Another reason that we care about the degree of the terms is that it helps us decide the arrangement of a polynomial.
+
+00:07:22.993 --> 00:07:28.046
+We arrange the terms in a polynomial in order from the highest degree to the lowest.
+
+00:07:28.046 --> 00:07:31.126
+…ya know, cuz, mathematicians like to keep things organized…
+
+00:07:37.900 --> 00:07:43.400
+[mumbeling] …nice… let’s see…double check…
+
+00:07:45.469 --> 00:07:46.689
+Perfect!
+
+00:07:47.120 --> 00:07:50.700
+For example, this polynomial (which has 5 terms)
+
+00:07:50.704 --> 00:07:57.160
+should be rearranged so that the highest degree term is on the left, and the lowest degree term is on the right.
+
+00:07:57.160 --> 00:08:01.320
+But of course, not every polynomial has a term of every degree.
+
+00:08:01.320 --> 00:08:05.593
+This is a 5th degree polynomial, but it only has 3 terms.
+
+00:08:05.593 --> 00:08:11.211
+We should still put them in order from highest to lowest, even though it has terms that are missing.
+
+00:08:11.211 --> 00:08:14.863
+So, the “4x to the fifth” should come first.
+
+00:08:14.863 --> 00:08:17.364
+And then the “minus 10x”.
+
+00:08:17.364 --> 00:08:19.698
+And finally, the “plus 8”.
+
+00:08:19.698 --> 00:08:24.583
+By the way, it’s totally fine for a polynomial to have “missing” terms like that.
+
+00:08:24.583 --> 00:08:30.401
+And it’s sometimes helpful to think of those missing terms as just having coefficients that are all zeros.
+
+00:08:30.401 --> 00:08:38.254
+If the coefficient of a term is zero, then the whole term has a value of zero so it wouldn’t effect the polynomial at all.
+
+00:08:38.254 --> 00:08:39.988
+And speaking of coefficients…
+
+00:08:39.988 --> 00:08:45.757
+What if we need to re-arrange this polynomial so that its terms are in order from highest degree to lowest degree?
+
+00:08:45.757 --> 00:08:52.175
+The highest degree term is ‘5x squared’ but before we just move it to the front of the polynomial,
+
+00:08:52.175 --> 00:08:55.555
+it’s important to notice that it’s got a minus sign in front of it.
+
+00:08:55.560 --> 00:09:01.095
+Normally when we see a minus sign, we think of subtraction, but when it comes to polynomials,
+
+00:09:01.095 --> 00:09:09.616
+it’s best to think of a minus sign as a NEGATIVE SIGN that means the term right after it has a negative value (or a negative coefficient).
+
+00:09:09.616 --> 00:09:15.268
+In fact, instead of thinking of a polynomial as having terms that are added OR subtracted,
+
+00:09:15.268 --> 00:09:19.088
+it’s best to think of ALL of the terms as being ADDED,
+
+00:09:19.088 --> 00:09:27.355
+but that each term has either a POSITIVE or a NEGATIVE coefficient which is determined by the operator right in front of that term.
+
+00:09:27.355 --> 00:09:33.623
+For example, if you have this Polynomial, you should treat it as if all of the terms are being added together,
+
+00:09:33.623 --> 00:09:39.843
+and use the sign that’s directly in front of each term to tell you if it’s a positive or a negative term.
+
+00:09:39.843 --> 00:09:44.911
+This first term has a coefficient of ‘negative 4’, so it’s a negative term.
+
+00:09:44.911 --> 00:09:49.880
+The next term has a coefficient of ‘positive 6’, so it’s positive.
+
+00:09:49.880 --> 00:09:54.015
+The next term has a coefficient of ‘negative 8’, so it’s negative.
+
+00:09:54.015 --> 00:09:57.299
+And the constant term is just ‘positive 2’.
+
+00:09:57.299 --> 00:10:01.751
+And recognizing positive and negative coefficients helps us a lot when
+
+00:10:01.751 --> 00:10:07.686
+rearranging polynomials that have a mixture of positive and negative terms like our example here.
+
+00:10:07.686 --> 00:10:13.546
+If you think of the negative sign in front of the ‘5x squared’ term as part of its coefficient,
+
+00:10:13.546 --> 00:10:20.200
+then you’ll realize that when we move it to the front of the polynomial, the negative sign has to come with it.
+
+00:10:20.207 --> 00:10:23.759
+It has to come with it because it’s really a NEGATIVE term.
+
+00:10:23.759 --> 00:10:28.642
+If we don’t bring the negative sign along with it, we’ll be changing it into a positive term
+
+00:10:28.642 --> 00:10:32.111
+which would actually change the value of the polynomial.
+
+00:10:32.111 --> 00:10:34.863
+And in addition to helping us re-arrange them,
+
+00:10:34.863 --> 00:10:42.215
+treating a polynomial as a combination of positive and negative terms will be very helpful when we need to simplify them,
+
+00:10:42.215 --> 00:10:46.633
+which just so happens to be the subject of our next basic Algebra video.
+
+00:10:46.633 --> 00:10:50.268
+Alright, we’ve learned a LOT about polynomials in this video,
+
+00:10:50.268 --> 00:10:55.204
+and if you’re a little overwhelmed, don’t worry… it might just take some time for it all to make sense.
+
+00:10:55.204 --> 00:10:58.186
+Remember, you can always re-watch this video a few times,
+
+00:10:58.186 --> 00:11:01.439
+and doing some of the practice problems will help it all sink in.
+
+00:11:01.440 --> 00:11:04.800
+As always, thanks for watching Math Antics, 
+and I’ll see ya next time.
+
+00:11:05.720 --> 00:11:08.000
+Learn more at www.mathantics.com
+
+* Polynomials is a big concept in Algebra
+
+Before we can understand what polynomials are,
+we need to learn about what mathematicians call "terms".
+
+* Terms
+In Algebra, *terms* are *mathematical expressions*
+that are made up of two different parts:
+- a number part;
+- and a variable part.
+
+In a term. the number part and the variable part are multiplied together.
+
+But sine multiplication is implied in Algebra,
+the two parts of a term are usually written right next to each other with no times symbol between them.
+
+Number part is called
+
+
+$$3x^{2} + x - 5$$
+$$3x^{2} + 1x^{1} - 5x^{0}$$
+
+$$7x^{4}$$ is a $4^{th}$ degree term
+$$7a^{3}$$ is a $3^{th}$ degree term
+$$3x^{2}$$ is a $2^{th}$ degree term
+$$2b^{1} = 2b$$ is a $1^{st}$ degree term
+$$6x^{0} = 6$$ is a constant term or 0 degree term
+
+* Complicated
+
+$$8x^{3}y^{2}$$
+
+*Add* up the *powers* of each *variable*
+to get the *degree* of the term.
+
+$$8x^{3}y^{2}$$ is a $5^{th}$ degree term, because $3 + 2 = 5$.
+
+
+Polynomials *referred to by the* degree *of their highest* term.
+
+$$7x^{4} + 3y^{2}$$ is a $4^{th}$ degree polynomial.
+
+$$3a^{2} + b$$ is a $2^{nd}$ degree polynomial.
+
+* Arrangement of polynomial
+
+highest degree to the lowest degree
+
+$$x^{3} + 3x^{4} + 5 + x + 4x^{2}$$ -> $$3x^{4} + x^{3} + 4x^{2} + x + 5$$
+
+$$4x^{5} + 8 - 10x$$ -> $$4x^{5} - 10x + 8$$
+
+$$4x^{5} + 0x^{4} + 0x^{3} + 0x^{2} - 10x + 8$$
+
+Normally, when we see a minus sign, we think it's a subtraction.
+
+But when in polynomials, it's best to think about minus sign as a *negative sign*.
+
+*negative value or negative coefficient*
+
+Polynomial is a combination of positive and negative terms.
+
+* order of operations
+
+1. () Groups or parensinsins
+2. Exponents
+3. Multiplication and division
+4. Addition and subtraction
+
+* Distributive property
+* factored out
+factor out that 2
+
+* even number
+
+* simplifying mathematical expressions or equations
+
+* solving equations
+Solving an equation is different,
+because we are trying to UNDO any operations,
+that the unknown value is involved with.
+
+So that the unknown value will be all by itself.
+
+* factor
+
+** testing for divisibility
+We only need to test numbers that are less than half of the number we're testing.
+
+* evenly
+Divide evenly - it will divide in without a remainder
+
+* Algebraic basic equations
+The key to solving an algebraic equation is to get the unknown value all by itself on one side of the equal sign.
+Getting an unknown by itself means we need to isolate it from any other numbers AND operators so that it's completely by itself.
+
+To keep equation in balance, we need to do the same thing to both sides.
+
+* Odd roots
+
+* Even and odd numbers
+
+* Common factors
+
+* rearrange equations
+
+* unknown taken away from number
+
+the minus sign really belongs to the $x$ since it's the $x$ *that is being subtracted*
+
+* Negative numbers
+
+more negative - bigger
+more negative - smaller
+
+* exponents and roots
+
+* equation
+An equation is just a mathematical statement that two things are equal.
+
+* goals of algebra
+goals: figure out what the unknown values in equations are
+and when you do that, it's called [[solving the equations]]
+
+* how to solve equations
+
+* different symbols
+If you wanted symbols to stand for two different numbers at the same time,
+you need to use two different symbols, like $x$ and $y$.
+
+But we can use two different letters to represent the same number.
+
+* algebra
+In algebra, multiplication is the 'default' operation.
+
+That means, if no other arithmetic operation is shown between two symbols,
+then you can just assume they're being multiplied. The multiplication is 'implied'.
+
+* multiplication sign
+
+There are some cases in Algebra where still need to use a multiplication symbol.
+
+But you can use groups to get rid of the multiplication sign.
+
+An alternative way that you could do the same thing would be to put just one of the numbers in parentheses, like this.
+$$(2)5$$
+
+* Graphing an equation
+Graphing an equation is like using its different solutions to draw simple lines and curves the can be used to describe and predict things in real life.
+
+** linear equations
+** quadratic equations
