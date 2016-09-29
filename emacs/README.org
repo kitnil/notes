@@ -251,6 +251,8 @@ About $\displaystyle[\frac{2}{3}]$ of the glass is full.
 #+BEGIN_SRC latex
 $$\frac{x}{x^2+x+1}$$
 #+END_SRC
+* VIM
+[[http://vim.wikia.com/wiki/Best_Vim_Tips][Best tips]]
 * Handy things
 ** Force a syntax-highlighting refresh
  M-x -- font-lock-fontify-buffer
