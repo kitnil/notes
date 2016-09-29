@@ -2,17 +2,16 @@
 #+AUTHOR: Oleg Pykhalov
 #+EMAIL: go.wigust@gmail.com
 
-http://spacemacs.org/
-
 * Documentation
 ** [[https://github.com/syl20bnr/spacemacs/tree/master/layers/org][Spacemacs]]
 *** [[https://github.com/syl20bnr/spacemacs/tree/master/layers/org][Official documentation]]
 *** [[https://github.com/syl20bnr/spacemacs/blob/master/doc/QUICK_START.org][Quick start]]
 
 *** Layers
-[[https://github.com/syl20bnr/spacemacs/tree/master/layers/%2Btools/ranger][ranger]]
-[[https://github.com/syl20bnr/spacemacs/tree/master/layers/shell][shell]]
-[[https://github.com/syl20bnr/spacemacs/tree/master/layers/auto-completion][auto-completion]]
+
+**** [[https://github.com/syl20bnr/spacemacs/tree/master/layers/%2Btools/ranger][ranger]]
+**** [[https://github.com/syl20bnr/spacemacs/tree/master/layers/shell][shell]]
+**** [[https://github.com/syl20bnr/spacemacs/tree/master/layers/auto-completion][auto-completion]]
 
 ** Cheat sheets
  [[https://www.cheatography.com/logcat/cheat-sheets/spacemacs-basics/][cheatography | spacemacs-basics]]
