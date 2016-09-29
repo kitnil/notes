@@ -5,17 +5,24 @@
 http://spacemacs.org/
 
 * Documentation
-[[https://github.com/syl20bnr/spacemacs/tree/master/layers/org][Official documentation]]
+** [[https://github.com/syl20bnr/spacemacs/tree/master/layers/org][Spacemacs]]
+*** [[https://github.com/syl20bnr/spacemacs/tree/master/layers/org][Official documentation]]
+*** [[https://github.com/syl20bnr/spacemacs/blob/master/doc/QUICK_START.org][Quick start]]
 
-** layers
+*** Layers
 [[https://github.com/syl20bnr/spacemacs/tree/master/layers/%2Btools/ranger][ranger]]
 [[https://github.com/syl20bnr/spacemacs/tree/master/layers/shell][shell]]
 [[https://github.com/syl20bnr/spacemacs/tree/master/layers/auto-completion][auto-completion]]
+
+** Cheat sheets
+ [[https://www.cheatography.com/logcat/cheat-sheets/spacemacs-basics/][cheatography | spacemacs-basics]]
 
 ** Russian
 
 *** Habrahabr
 [[http://www.gnu.org/software/emacs/manual/html_mono/eintr.html][An Introduction to Programming in Emacs Lisp]]
+** Help
+ describe-mode -- <f1> m
 
 * Video Tutorials
 ** English
@@ -44,66 +51,66 @@ https://www.youtube.com/watch?v=lsYdK0C2RvQ
 Дмитрий Бушенко
 
 [[https://www.youtube.com/watch?v=lpPS6JPUUME][Изучаем Emacs. Эпизод 10: Базовые возможности Org-mode, literate programming и экспорт в html/pdf]]
+* org-mode
+** Visibility cycling
+ | Key             | Function                   |
+ | Tab             | show current               |
+ | S-Tab           | show all children          |
+ | C-u C-u C-u Tab | show all including drawers |
+** Editing
+ | Key         | Function                      |
+ | M-Ret       | add element on the same level |
+ | M-S-Ret     | insert TODO element           |
+ | M-Left      | promote current element       |
+ | M-S-Left    | promote current subtree       |
+ | M-Right     | demote current element        |
+ | M-S-Right   | demote current subtree        |
+ | M-S-Up      | move current tree up          |
+ | M-S-Down    | move current tree down        |
+ | C-c C-x C-w | kill current subtree          |
+ | C-c C-x M-w | copy current subtree          |
+ | C-c C-x C-y | yank subtree                  |
+** Plain lists
+ Use M-Ret to add list item
 
-* Visibility cycling
-| Key             | Function                   |
-| Tab             | show current               |
-| S-Tab           | show all children          |
-| C-u C-u C-u Tab | show all including drawers |
-* Editing
-| Key         | Function                      |
-| M-Ret       | add element on the same level |
-| M-S-Ret     | insert TODO element           |
-| M-Left      | promote current element       |
-| M-S-Left    | promote current subtree       |
-| M-Right     | demote current element        |
-| M-S-Right   | demote current subtree        |
-| M-S-Up      | move current tree up          |
-| M-S-Down    | move current tree down        |
-| C-c C-x C-w | kill current subtree          |
-| C-c C-x M-w | copy current subtree          |
-| C-c C-x C-y | yank subtree                  |
-* Plain lists
-Use M-Ret to add list item
+ Ordered list:
+ 1. First
+ 2. Second
+ 3. Third
 
-Ordered list:
-1. First
-2. Second
-3. Third
+ Unordered lists:
+ - abc
+ - abd
+ - afg
+ - asd
 
-Unordered lists:
-- abc
-- abd
-- afg
-- asd
+ List with checkouts (M-S-Ret)
+ - [ ] Element with checkbox (C-c - togle checkbox state)
+** More devices (drawers) 
+ - C-c C-z - time-stamped drawer
+ - C-c C-x f - footnote
+** Start up options
 
-List with checkouts (M-S-Ret)
-- [ ] Element with checkbox (C-c - togle checkbox state)
-* More devices (drawers) 
-- C-c C-z - time-stamped drawer
-- C-c C-x f - footnote
-* Start up options
+ Hide all trees
+ ~#+STARTUP: overview~
 
-Hide all trees
-~#+STARTUP: overview~
+ Show all in trees
+ ~#+STARTUP: showall~
 
-Show all in trees
-~#+STARTUP: showall~
+ Show only content
+ ~#+STARTUP: content~
 
-Show only content
-~#+STARTUP: content~
+ Show all including utilities
+ ~#+STARTUP: showeverything~
+** ToDo functionality
+ | C-c C-t         | rotate TODO state    |
+ | S-Left, S-Right | rotate TODO state    |
+ | S-M-Ret         | insert new TODO note |
 
-Show all including utilities
-~#+STARTUP: showeverything~
-* ToDo functionality
-| C-c C-t         | rotate TODO state    |
-| S-Left, S-Right | rotate TODO state    |
-| S-M-Ret         | insert new TODO note |
-
-#+SRC_CODE
-(setq org-todo-keywords'((sequence "TODO" "FEEDBACK" "VERIFY" "|" "DONE" "DELEGATED")))
-#+END_SRC
-* Code editing
+ #+SRC_CODE
+ (setq org-todo-keywords'((sequence "TODO" "FEEDBACK" "VERIFY" "|" "DONE" "DELEGATED")))
+ #+END_SRC
+** Code editing
 | C-c '     | open code block in pop up buffer |
 | C-c C-v t | export to code file              |
 
@@ -120,56 +127,49 @@ C-c l -- org-store-link -- reference
 
 C-c C-l -- access to reference
 
-* Exporting
+** Exporting
 
-C-c C-e -- export
+ C-c C-e -- export
 
-org2blog - export to WordPress
+ org2blog - export to WordPress
 
-org-publish
-* Header
+ org-publish
+** Header
 
-+ TITLE: Python programming example
-+ AUTHOR: Oleg Pykhalov
-+ DATE: 11.09.2016
-+ EMAIL: go.wigust@gmail.com
-+ DESCRIPTION: Demonstration of org-mode
-+ KEYWORDS: org-mode, python
-+ LANGUAGE: en
+ + TITLE: Python programming example
+ + AUTHOR: Oleg Pykhalov
+ + DATE: 11.09.2016
+ + EMAIL: go.wigust@gmail.com
+ + DESCRIPTION: Demonstration of org-mode
+ + KEYWORDS: org-mode, python
+ + LANGUAGE: en
 
-* HTML Tags
+** HTML Tags ** One line +HTML: My email: <b>go.wigust@gmail.com</b> ** Multiple lines +BEGIN_HTML <h3>02.09.2013</h3> +END_HTML
+** Images and links
 
-** One line
-+HTML: My email: <b>go.wigust@gmail.com</b>
-** Multiple lines
-+BEGIN_HTML
-<h3>02.09.2013</h3>
-+END_HTML
-* Images and links
+ +CAPTION: Python Tutorial
+ +ATTR_HTML: title="Python!" style="float:left;"
+ file:python-logo.gif
 
-+CAPTION: Python Tutorial
-+ATTR_HTML: title="Python!" style="float:left;"
-file:python-logo.gif
+** Tables
+ #+CAPTION: This is a table with lines around and between cells
+ | 1 | 2 | 3 | 4 |  5 |
+ |---+---+---+---+----|
+ | 6 | 7 | 8 | 9 | 10 |
 
-* Tables
-#+CAPTION: This is a table with lines around and between cells
-| 1 | 2 | 3 | 4 |  5 |
-|---+---+---+---+----|
-| 6 | 7 | 8 | 9 | 10 |
+** Links & URL
+ Is this SPC m l which does evil-org-open-links . There is a pending pull request
+ about this: evil-org-mode/issue/14
 
-* Links & URL
-Is this SPC m l which does evil-org-open-links . There is a pending pull request
-about this: evil-org-mode/issue/14
-
-* Buffer
-read buffer from stdin on start
-#+BEGIN_SRC bash
-emacs --insert <(echo 123)
-#+END_SRC
-* Wrapping
-visual-line-mode -- line wrap
-smartparens-mode -- auto close parens
-* LaTex
+** Buffer
+ #+BEGIN_SRC bash
+ read buffer from stdin on start
+ emacs --insert <(echo 123)
+ #+END_SRC
+** Wrapping
+ visual-line-mode -- line wrap
+ smartparens-mode -- auto close parens
+** LaTex
 ** Math mode
 $somemath$
 $$somemath$$ -- на отдельной строке
@@ -251,13 +251,6 @@ About $\displaystyle[\frac{2}{3}]$ of the glass is full.
 #+BEGIN_SRC latex
 $$\frac{x}{x^2+x+1}$$
 #+END_SRC
-
-
-* How to force a syntax-highlighting refresh
-M-x -- font-lock-fontify-buffer
-
-* Cheat sheets
-[[https://www.cheatography.com/logcat/cheat-sheets/spacemacs-basics/][cheatography | spacemacs-basics]]
-
-* Help
-describe-mode -- <f1> m
+* Handy things
+** Force a syntax-highlighting refresh
+ M-x -- font-lock-fontify-buffer
