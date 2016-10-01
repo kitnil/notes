@@ -1,0 +1,37 @@
+* Links
+http://www.list.org/download.html
+https://en.m.wikipedia.org/wiki/GNU_Mailman
+
+* Requirements
+
+Mailman currently runs only on GNU/Linux and any other POSIX-compliant operating system, such as BSD-based, Solaris, MacOS X, etc. It probably does not work on Windows, and while you might be able to get it running on a Cygwin system, it is not recommended or supported.
+
+You must have the Python interpreter installed somewhere on your system. For Mailman 2.1, Python 2.7 is recommended. For Mailman 3, you will need Python 3.4 or newer to run the core, and Python 2.7 to run the web user interface and archiver.
+
+You must have a mail server (MTA) that you can send messages to, and for Mailman 3, supports delivery to a local agent over LMTP. You will need a web server that supports the CGI/1.1 API for Mailman 2.1, and WSGI for Mailman 3. Apache makes a fine choice for web server, and MTAs such as Postfix, Exim, Sendmail, and qmail should work just fine.
+
+For Mailman 2.1, you will also need an ANSI C compiler to build Mailman's security wrappers. All modern versions of the GNU C compiler should work well. This is not required for Mailman 3.
+
+* Installation
+
+Mailman 3 is available from the Python Package Index (PyPI).
+
+* Components
+
+Here's a list of the names of the Mailman 3 components:
+
+Mailman Suite refers to the collection of related Mailman projects that provide all the pieces of a typical mailing list management setup.
+Mailman Core is the part that delivers the emails and handles the mailing list and user data
+Postorius is the web interface that allows users (list members, list admins, moderators) to change their user settings and the settings for their lists.
+HyperKitty is the archiver which provides a web interface to access GNU Mailman v3 archives as well as ways interact with the lists. It can behave a little like a web forum, for those who prefer not to use email.
+MailmanClient is the library that provides official Python bindings for the GNU Mailman 3 REST API. This allows you to write your own front end or scripts for interacting with Mailman. (It's also what Postorius uses to interact with Mailman Core.)
+Mailman Bundler is a tool to help you install all of Mailman Suite via PyPI
+
+* Signing keys
+
+We always sign releases with the GPG keys of one of the core developers: Barry Warsaw or Mark Sapiro. Our public keys are available from all the public keyservers. For cross referencing, here are the keys we use to sign releases:
+
+Developer	GPG key id	GPG fingerprint
+Barry Warsaw	A74B06BF	8417 157E DBE7 3D9E AC1E  539B 126E B563 A74B 06BF
+Mark Sapiro	953B8693	C638 CAEF 0AC2 1563 736B  5A22 555B 975E 953B 8693
+
