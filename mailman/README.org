@@ -326,3 +326,40 @@ lmtp_port: 8024
 smtp_host: mail.example.com
 smtp_port: 25
 #+END_SRC
+
+* Help
+
+The Mailman home page is:
+http://www.list.org
+
+with mirrors at:
+- http://www.gnu.org/software/mailman
+- http://mailman.sf.net
+
+The community driven wiki (including the FAQ_) is at:
+http://wiki.list.org
+
+Other help resources, such as on-line documentation, links to the mailing
+lists and archives, etc., are available at:
+http://www.list.org/help.html
+
+* Bits and pieces
+
+Mailman 3 is really a suite of 5 projects:
+
+** Core
+The core message processing and delivery system, exposing a REST API
+for administrative control.  Requires `Python 3.4`_ or newer.
+
+** Postorius
+The new web user interfaces built on `Django`_.
+
+** HyperKitty
+The new archiver, also built on `Django`_.
+
+** mailman.client
+A Python binding to the core's REST API.
+Compatible with both Python 2 and Python 3.
+
+** Bundler
+A convenient installer.
