@@ -258,5 +258,29 @@ $$\frac{x}{x^2+x+1}$$
 * Handy things
 ** Force a syntax-highlighting refresh
  M-x -- font-lock-fontify-buffer
+** [[https://www.gnu.org/software/emacs/manual/html_node/efaq/Inserting-text-at-the-beginning-of-each-line.html][GNU Emacs FAQ: Inserting text at the beginning of each line]]
+
+How do I insert <some text> at the beginning of every line?
+
+To do this to an entire buffer,
+type M-< M-x replace-regexp RET ^ RET your text RET.
+
+To do this to a region,
+use string-insert-rectangle.
+
+Set the mark (C-SPC) at the beginning of the first line you want to prefix, move
+the cursor to last line to be prefixed, and type M-x string-insert-rectangle
+RET. To do this for the whole buffer, type C-x h M-x string-insert-rectangle
+RET.
+
+If you are trying to prefix a yanked mail message with ‘>’,
+you might want to set the variable mail-yank-prefix.
+
+In Message buffers,
+you can even use M-;
+to cite yanked messages (M-; runs the function comment-region,
+it is a general-purpose mechanism to comment regions)
+(see Changing the included text prefix).
+
 * Git (Magit)
 [[http://daemianmack.com/magit-cheatsheet.html][cheatsheet]]
