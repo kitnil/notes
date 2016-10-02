@@ -39,12 +39,13 @@ In other words, Org is taking over my life.
 I’ll be introducing some of the functionality of Org, demonstrating what it can
 do, and showing how you, too, can become pleasantly obsessed with a wacky,
 overgrown outlining tool."
-
 *** Embedding code snippets
 Embedding code snippets within Org Mode couldn't be easier when using these neat
 little tricks.
 
 https://www.youtube.com/watch?v=lsYdK0C2RvQ
+
+*** [[https://www.youtube.com/watch?v=2t925KRBbFc][Introduction to org-ref]]
 ** Russian
 
 Дмитрий Бушенко
@@ -85,7 +86,7 @@ https://www.youtube.com/watch?v=lsYdK0C2RvQ
 
  List with checkouts (M-S-Ret)
  - [ ] Element with checkbox (C-c - togle checkbox state)
-** More devices (drawers) 
+** More devices (drawers)
  - C-c C-z - time-stamped drawer
  - C-c C-x f - footnote
 ** Start up options
