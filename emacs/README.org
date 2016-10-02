@@ -23,34 +23,31 @@
 ** Help
  describe-mode -- <f1> m
 
-* Video Tutorials
-** English
-*** How to by Harry Schwartz
-https://www.youtube.com/watch?v=SzA2YODtgK4
+** Video
 
-Harry Schwartz demonstrates some of the nifty features of Org mode
+*** org-mode
 
-"Org mode is an outliner, markup language, task manager, calendar, contact
-manager, and who-knows-what-else. I use it to write documents and presentations,
-manage my todo list, and I even write my Emacs configuration in it.
+**** [[https://www.youtube.com/watch?v=2t925KRBbFc][Introduction to org-ref]]
+  org-ref features that are available in the package on Melpa
 
-In other words, Org is taking over my life.
+**** [[https://www.youtube.com/watch?v=lpPS6JPUUME][Изучаем Emacs. Эпизод 10: Базовые возможности Org-mode, literate programming и экспорт в html/pdf]]
+**** [[https://www.youtube.com/watch?v=lsYdK0C2RvQ][Embedding code snippets]]
+  Embedding code snippets within Org Mode couldn't be easier when using these neat
+  little tricks.
+**** [[https://www.youtube.com/watch?v=SzA2YODtgK4][How to by Harry Schwartz]]
 
-I’ll be introducing some of the functionality of Org, demonstrating what it can
-do, and showing how you, too, can become pleasantly obsessed with a wacky,
-overgrown outlining tool."
-*** Embedding code snippets
-Embedding code snippets within Org Mode couldn't be easier when using these neat
-little tricks.
+  Harry Schwartz demonstrates some of the nifty features of Org mode
 
-https://www.youtube.com/watch?v=lsYdK0C2RvQ
+  "Org mode is an outliner, markup language, task manager, calendar, contact
+  manager, and who-knows-what-else. I use it to write documents and presentations,
+  manage my todo list, and I even write my Emacs configuration in it.
 
-*** [[https://www.youtube.com/watch?v=2t925KRBbFc][Introduction to org-ref]]
-** Russian
+  In other words, Org is taking over my life.
 
-Дмитрий Бушенко
+  I’ll be introducing some of the functionality of Org, demonstrating what it can
+  do, and showing how you, too, can become pleasantly obsessed with a wacky,
+  overgrown outlining tool."
 
-[[https://www.youtube.com/watch?v=lpPS6JPUUME][Изучаем Emacs. Эпизод 10: Базовые возможности Org-mode, literate programming и экспорт в html/pdf]]
 * org-mode
 ** Visibility cycling
  | Key             | Function                   |
@@ -253,7 +250,7 @@ $$\frac{x}{x^2+x+1}$$
 #+END_SRC
 
 ** [[http://orgmode.org/worg/org-contrib/babel/intro.html][Babel]] code execution
-* VIM
+* Evil
 [[http://vim.wikia.com/wiki/Best_Vim_Tips][Best tips]]
 * Handy things
 ** Force a syntax-highlighting refresh
