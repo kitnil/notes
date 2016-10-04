@@ -284,3 +284,13 @@ it is a general-purpose mechanism to comment regions)
 
 * Git (Magit)
 [[http://daemianmack.com/magit-cheatsheet.html][cheatsheet]]
+
+* Sites
+** [[https://melpa.org][Melpa (Milkypostman’s Emacs Lisp Package Archive)]]
+*** Up-to-date packages built on our servers from upstream source
+*** Installable in any Emacs with 'package.el' - no local version-control tools needed
+*** Curated - no obsolete, renamed, forked or randomly hacked packages
+*** Comprehensive - more packages than any other archive
+*** Automatic updates - new commits result in new packages
+*** Extensible - contribute recipes via github, and we'll build the packages
+
