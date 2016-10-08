@@ -8,25 +8,21 @@
 #+LATEX_HEADER: \hypersetup{colorlinks, citecolor=black, filecolor=black, linkcolor=black, urlcolor=blue}
 #+LaTeX_HEADER: \usepackage{amssymb}
 
-* [[http://www.math24.ru/%D0%BA%D0%BE%D0%BC%D0%BF%D0%BB%D0%B5%D0%BA%D1%81%D0%BD%D1%8B%D0%B5-%D1%87%D0%B8%D1%81%D0%BB%D0%B0.html][Комплексные числа]] :noexport:
+* [[http://www.math24.ru/%D0%BA%D0%BE%D0%BC%D0%BF%D0%BB%D0%B5%D0%BA%D1%81%D0%BD%D1%8B%D0%B5-%D1%87%D0%B8%D1%81%D0%BB%D0%B0.html][Комплексные числа]]
 
+** Выполнить действия
+
+$$\frac{3 - i}{2 + i} + i^{11}(-2 + 3i)$$
+
+*** python
 #+BEGIN_SRC python
-result = (3 - 1j)/(2 + 1j) + 1j ** 11 * (-2 + 3j)
-# result = (3 - 1j)/(2 + 1j)
-# result = 1j ** 11
-
-return result
+return ((3 - 1j)/(2 + 1j)) + 1j**11 * (-2 + 3j)
 #+END_SRC
 
 #+RESULTS:
 | 4+1j |
 
-
-* Выполните действия
-
-$$\frac{3 - i}{2 + i} + i^{11}(-2 + 3i)$$
-
-** Разделим комплексные числа используя формулу
+*** Разделим комплексные числа используя формулу
 
 \begin{equation}
 \frac{a + bi}{c + di} =
@@ -42,7 +38,7 @@ $$\frac{3 - i}{2 + i} + i^{11}(-2 + 3i)$$
 1 - 1i
 \end{equation}
 
-** Согласно представлению о мнимой единицы
+*** Согласно представлению о мнимой единицы
 
 $$-i = \sqrt{-1}$$
 $$i = \sqrt{-1}$$
@@ -66,7 +62,7 @@ $$i^{11} = i^{10} \cdot i = -1 \cdot i = -i$$
 3i^{2} - i - 1
 \end{equation}
 
-** Согласно преобразование мнимой единицы
+*** Согласно преобразование мнимой единицы
 
 $$i^{2} = -1$$
 
@@ -77,7 +73,7 @@ $$i^{2} = -1$$
 4 + i
 \end{equation}
 
-* Решим уравнение :noexport:
+** Найти решения уравнения и нарисовать их на комплексной прямой
 
 $$2z^{2} + (5 - 4i)z - 5i = 0$$
 
@@ -89,10 +85,6 @@ $$2z^{2} + (5 - 4i)z - 5i = 0$$
   z = Symbol('z')
 
   answer = solve(2*z**2 + (5-4j)*z - 5j, z)
-  #result = (5 - 4j)*(5 - 4j)
-  d = (5 - 4j)**2 - 4*2*(-5j)
-  d = cmath.sqrt(d)
-  result = (-5 -4j +d)/4
   return answer
 #+END_SRC
 
@@ -101,17 +93,17 @@ $$2z^{2} + (5 - 4i)z - 5i = 0$$
 
 $$2z^{2} + (5 - 4i)z - 5i = 0$$
 
-** Воспользуемся формулой нахождения дескриминанта
+*** Воспользуемся формулой нахождения дескриминанта
 
 $$\Delta = b^2-4ac$$
 
 $$\Delta = (5 - 4i)^{2} - 4 \cdot 2 \cdot (-5i)$$
 
-*** Представм квадрат в виде умножения
+**** Представм квадрат в виде умножения
 
 $$(5 - 4i)(5 - 4i)$$
 
-*** Воспользуемся формулой умножения комплексных чисел
+**** Воспользуемся формулой умножения комплексных чисел
 
 $$(a+bi)(c+di) = (ac-bd) + (bc+ad)i$$
 
@@ -123,7 +115,7 @@ $$(a+bi)(c+di) = (ac-bd) + (bc+ad)i$$
 9 - 40i
 \end{equation}
 
-*** Найдем дескриминант
+**** Найдем дескриминант
 
 \begin{equation}
 \Delta = 9 - 40j - 4 \cdot 2 \cdot (-5i) =
@@ -134,13 +126,13 @@ $$(a+bi)(c+di) = (ac-bd) + (bc+ad)i$$
 9
 \end{equation}
 
-** Воспользуемся формулой нахождения корней квадратного уравнения
+*** Воспользуемся формулой нахождения корней квадратного уравнения
 
 $$x_{1,2} = \frac{-b \pm \sqrt {\Delta}}{2a}$$
 
 $$x_{1,2} = \frac{-(5 - 4j) \pm \sqrt {9}}{2 \cdot 2}$$
 
-*** Раскоем скобки
+**** Раскоем скобки
 
 \begin{equation}
 -(5 - 4i) =
@@ -149,19 +141,19 @@ $$x_{1,2} = \frac{-(5 - 4j) \pm \sqrt {9}}{2 \cdot 2}$$
 -5 + 4i
 \end{equation}
 
-*** Избавимся от корня
+**** Избавимся от корня
 
 $$x_{1,2} = \frac{-5 + 4i \pm 3}{2 \cdot 2}$$
 
-*** Посчитаем знаменатель
+**** Посчитаем знаменатель
 
 $$x_{1,2} = \frac{-5 + 4i \pm 3}{4}$$
 
-*** Найдем x1 и x2
+**** Найдем x1 и x2
 
 $$x_{1,2} = \frac{-5 + 4i \pm 3}{4}$$
 
-**** x1
+***** x1
 
 \begin{equation}
 x_{1} = \frac{-5 + 4i + 3}{4} =
@@ -170,7 +162,7 @@ x_{1} = \frac{-5 + 4i + 3}{4} =
 -0,5 + i
 \end{equation}
 
-**** x2
+***** x2
 
 \begin{equation}
 x_{1} = \frac{-5 + 4i - 3}{4} =
@@ -178,159 +170,60 @@ x_{1} = \frac{-5 + 4i - 3}{4} =
 -2 + i
 \end{equation}
 
-* Найти все значения
+
+** Найти все значения и записать ответ в показательной форме
+
+$\sqrt[4]{16i}$
 
 #+BEGIN_SRC python
   from mpmath import *
 
   result = root(16j,4)
+  
+  test1 = (4j - (-2 + 2j)) * (4j + (-2 + 2j))
 
-  return result
+  return test1
 #+END_SRC
 
 #+RESULTS:
-| 1.84775906502257 | + | 0.76536686473018j |
+| -16+8j |
 
 * Links
 
-** [[https://www.youtube.com/watch?v=KhdZvfH6fGg][Imaginary numbers - Simplifying large exponents - YouTube]]
-** [[https://www.youtube.com/watch?v=gkW9PxDvKKk][Trigonometric Form of Complex Numbers - YouTube]]
-** [[https://www.youtube.com/watch?v=HhlD7sX5Tp8][Roots of Complex Numbers, Ex 1 - YouTube]]
-** [[https://math.stackexchange.com/questions/487739/determine-the-fourth-roots-of-16][complex numbers - Determine the fourth roots of -16 - Mathematics Stack Exchange]]
-** [[https://www.youtube.com/watch?v=-quFMa04rBc][Square Roots of Complex Numbers (1 of 2: Establishing their nature) - YouTube]]
-** [[http://www.freemathhelp.com/algebra-formulas.html][Algebra Formulas - Free Math Help]]
-** [[https://www.youtube.com/watch?v=BHtE3JyZ-UQ][Understanding the Vocabulary of Algebra For Dummies - YouTube]]
-** [[http://www.tiger-algebra.com/drill][About Tiger Algebera - The world's best Algebra Solver]]
-** [[http://orion.math.iastate.edu/trig/sp/xcurrent/applets/complexfourthroot.html][Complex 4th Roots]]
-** [[https://www.youtube.com/watch?v=kEf9gt3umnU][Understanding and Using DeMoivre's Theorem - YouTube]]
-** [[https://www.youtube.com/watch?v=X5uFqpypDy4][❤︎² Basic Trigonometry: Sin, Cos, Tan (mathbff) - YouTube]]
-** [[https://www.youtube.com/watch?v=wfYsiJcVWy0][What is a Logarithm : Logarithms, Lesson 1 - YouTube]]
-** [[https://www.youtube.com/watch?v=zyGUw70FE6M][The complex fourth roots of -16i - YouTube]]
-** [[https://www.youtube.com/watch?v=w-PCBJYBbGo][Converting Complex Numbers to Polar form - YouTube]]
-** [[https://www.youtube.com/watch?v=-dhHrg-KbJ0][e to the pi i for dummies - YouTube]]
-** [[https://www.youtube.com/watch?v=F_0yfvm0UoU][Understanding e to the pi i - YouTube]]
-** [[https://www.youtube.com/watch?v=pg827uDPFqA][What is the number "e" and where does it come from? - YouTube]]
-** [[https://www.youtube.com/watch?v=cC0fZ_lkFpQ][Math Antics - Circles, What Is PI? - YouTube]]
-** [[https://www.youtube.com/watch?v=C_iKTTI1E34][Math Antics - Exponents & Square Roots - YouTube]]
-** [[https://www.youtube.com/watch?v=8RasCV_Lggg][Rectangular to polar form of complex number | Precalculus | Khan Academy - YouTube]]
-** [[https://www.youtube.com/watch?v=T647CGsuOVU][Imaginary Numbers Are Real Part 1: Introduction - YouTube]]
+- [[https://www.youtube.com/watch?v=KhdZvfH6fGg][Imaginary numbers - Simplifying large exponents - YouTube]]
+- [[https://www.youtube.com/watch?v=gkW9PxDvKKk][Trigonometric Form of Complex Numbers - YouTube]]
+- [[https://www.youtube.com/watch?v=HhlD7sX5Tp8][Roots of Complex Numbers, Ex 1 - YouTube]]
+- [[https://math.stackexchange.com/questions/487739/determine-the-fourth-roots-of-16][complex numbers - Determine the fourth roots of -16 - Mathematics Stack Exchange]]
+- [[https://www.youtube.com/watch?v=-quFMa04rBc][Square Roots of Complex Numbers (1 of 2: Establishing their nature) - YouTube]]
+- [[http://www.freemathhelp.com/algebra-formulas.html][Algebra Formulas - Free Math Help]]
+- [[https://www.youtube.com/watch?v=BHtE3JyZ-UQ][Understanding the Vocabulary of Algebra For Dummies - YouTube]]
+- [[http://www.tiger-algebra.com/drill][About Tiger Algebera - The world's best Algebra Solver]]
+- [[http://orion.math.iastate.edu/trig/sp/xcurrent/applets/complexfourthroot.html][Complex 4th Roots]]
+- [[https://www.youtube.com/watch?v=kEf9gt3umnU][Understanding and Using DeMoivre's Theorem - YouTube]]
+- [[https://www.youtube.com/watch?v=X5uFqpypDy4][❤︎² Basic Trigonometry: Sin, Cos, Tan (mathbff) - YouTube]]
+- [[https://www.youtube.com/watch?v=wfYsiJcVWy0][What is a Logarithm : Logarithms, Lesson 1 - YouTube]]
+- [[https://www.youtube.com/watch?v=zyGUw70FE6M][The complex fourth roots of -16i - YouTube]]
+- [[https://www.youtube.com/watch?v=w-PCBJYBbGo][Converting Complex Numbers to Polar form - YouTube]]
+- [[https://www.youtube.com/watch?v=-dhHrg-KbJ0][e to the pi i for dummies - YouTube]]
+- [[https://www.youtube.com/watch?v=F_0yfvm0UoU][Understanding e to the pi i - YouTube]]
+- [[https://www.youtube.com/watch?v=pg827uDPFqA][What is the number "e" and where does it come from? - YouTube]]
+- [[https://www.youtube.com/watch?v=cC0fZ_lkFpQ][Math Antics - Circles, What Is PI? - YouTube]]
+- [[https://www.youtube.com/watch?v=C_iKTTI1E34][Math Antics - Exponents & Square Roots - YouTube]]
+- [[https://www.youtube.com/watch?v=8RasCV_Lggg][Rectangular to polar form of complex number | Precalculus | Khan Academy - YouTube]]
+- [[https://www.youtube.com/watch?v=T647CGsuOVU][Imaginary Numbers Are Real Part 1: Introduction - YouTube]]
+- [[https://www.youtube.com/watch?v=DThAoT3q2V4][Imaginary Numbers Are Real Part 4: Bombelli's Solution - YouTube]]
+- [[https://www.youtube.com/watch?v=d8-LO6FCna0][Fundamental theorem of algebra | Polynomial and rational functions | Algebra II | Khan Academy - YouTube]]
+
 *** Foundamental theorem of Algebra
-** [[https://www.youtube.com/watch?v=2HrSG0fdxLY][Imaginary Numbers Are Real Part 2: A Little History - YouTube]]
-** [[https://www.youtube.com/watch?v=N9QOLrfcKNc][Imaginary Numbers Are Real Part 3: Cardan's Problem  - YouTube]]
-*** In Algebra problems with $x$ only like terms can be added and subtracted
+**** [[https://www.youtube.com/watch?v=2HrSG0fdxLY][Imaginary Numbers Are Real Part 2: A Little History - YouTube]]
+**** [[https://www.youtube.com/watch?v=N9QOLrfcKNc][Imaginary Numbers Are Real Part 3: Cardan's Problem  - YouTube]]
+***** In Algebra problems with $x$ only like terms can be added and subtracted
 $$2x + 3x = 5x$$
 $$2 + 3x = 2 + 3x$$
 
 $$2 \sqrt{-1} + 3 \sqrt{-1} = 5 \sqrt{-1}$$
 $$2 + 3 \sqrt{-1} = 2 + 3 \sqrt{-1}$$
 
-*** Some cases where new numbers behave strangely
-
+***** Some cases where new numbers behave strangely
 $$\sqrt{5} \cdot \sqrt{2} = \sqrt{10}$$
 
-* Backup tabs
-
-- [[https://www.google.ru/search?num=30&newwindow=1&q=algebra+graphing+&oq=algebra+graphing+&gs_l=serp.3..0l10.191487.195509.0.195886.16.16.0.0.0.0.127.1190.12j3.15.0....0...1c.1.64.serp..1.15.1187...35i39k1j0i46i67k1j46i67k1j0i67k1j0i10k1j0i13k1.-YNtb6AnCm0][algebra graphing - Google Search]]
-- [[https://www.google.ru/search?q=latex+algebra+graphing&ie=utf-8&oe=utf-8&gws_rd=cr&ei=-mP2V-WBEcilsAHk2LaACg][latex algebra graphing - Google Search]]
-- [[https://www.youtube.com/results?search_query=latex+algebra+graphing][latex algebra graphing - YouTube]]
-- [[https://www.youtube.com/watch?v=o6tk09v88os][Including function graphs into latex documents - YouTube]]
-- [[https://www.youtube.com/watch?v=J3ebFLX_J0g][Plots in Matlab and Latex - YouTube]]
-- [[https://www.google.ru/search?q=math+reverse+exponent&ie=utf-8&oe=utf-8&gws_rd=cr&ei=52X2V8LNJoGqswHB97bQAw][math reverse exponent - Google Search]]
-- [[https://math.stackexchange.com/questions/956776/whats-the-inverse-operation-of-exponents][exponentiation - What's the inverse operation of exponents? - Mathematics Stack Exchange]]
-- [[https://www.google.ru/search?q=math+square+root&ie=utf-8&oe=utf-8&gws_rd=cr&ei=-mX2V_bUPMj8sQGNyIqICg][math square root - Google Search]]
-- [[https://math.stackexchange.com/questions/487739/determine-the-fourth-roots-of-16][complex numbers - Determine the fourth roots of -16 - Mathematics Stack Exchange]]
-- [[https://en.wikipedia.org/wiki/Square_root][Square root - Wikipedia, the free encyclopedia]]
-- [[https://www.youtube.com/results?search_query=square+root+of+complex+numbers][square root of complex numbers - YouTube]]
-- [[https://en.wikipedia.org/wiki/Complex_number#Exponentiation][Complex number - Wikipedia, the free encyclopedia]]
-- [[https://ru.wikipedia.org/wiki/%D0%9A%D0%BE%D0%BC%D0%BF%D0%BB%D0%B5%D0%BA%D1%81%D0%BD%D0%BE%D0%B5_%D1%87%D0%B8%D1%81%D0%BB%D0%BE#.D0.9F.D0.BE.D0.BA.D0.B0.D0.B7.D0.B0.D1.82.D0.B5.D0.BB.D1.8C.D0.BD.D0.B0.D1.8F_.D1.84.D0.BE.D1.80.D0.BC.D0.B0][Комплексное число — Википедия]]
-- [[https://www.youtube.com/results?search_query=euler%27s+formula][euler's formula - YouTube]]
-- [[https://www.google.ru/search?q=sympy+polar&ie=utf-8&oe=utf-8&gws_rd=cr&ei=zmr2V6T4EIW2sQGVh7mgCg][sympy polar - Google Search]]
-- [[https://www.google.ru/search?num=30&newwindow=1&q=python+cmath+sqrt&oq=python+cmath+sqrt&gs_l=serp.3..0i30k1.3978.4591.0.4790.7.7.0.0.0.0.152.684.2j4.6.0....0...1c.1.64.serp..3.4.454...0i7i30k1j0i13k1j0i8i7i30k1j0i13i30k1j0i13i5i30k1j0i8i13i30k1.HOh6iODbPgM][python cmath sqrt - Google Search]]
-- [[https://docs.python.org/2/library/cmath.html][9.3. cmath — Mathematical functions for complex numbers — Python 2.7.12 documentation]]
-- [[https://en.wikipedia.org/wiki/Square_root][Square root - Wikipedia, the free encyclopedia]]
-- [[https://www.youtube.com/results?search_query=square+root][square root - YouTube]]
-- [[https://ru.wikipedia.org/wiki/%D0%9A%D0%B2%D0%B0%D0%B4%D1%80%D0%B0%D1%82%D0%BD%D1%8B%D0%B9_%D0%BA%D0%BE%D1%80%D0%B5%D0%BD%D1%8C][Квадратный корень — Википедия]]
-- [[https://ru.wikipedia.org/wiki/%D0%9A%D0%BE%D1%80%D0%B5%D0%BD%D1%8C_(%D0%BC%D0%B0%D1%82%D0%B5%D0%BC%D0%B0%D1%82%D0%B8%D0%BA%D0%B0)][Корень (математика) — Википедия]]
-- [[https://en.wikipedia.org/wiki/Nth_root][nth root - Wikipedia, the free encyclopedia]]
-- [[https://www.google.ru/search?num=30&newwindow=1&q=python+cube+root&oq=python+cube+root&gs_l=serp.3..0j0i22i30k1l4.3441.4792.0.4926.9.8.0.1.1.0.97.573.7.7.0....0...1c.1.64.serp..1.8.573...35i39k1j0i67k1j0i20k1j0i22i10i30k1.vkeupQdBi-M][python cube root - Google Search]]
-- [[https://stackoverflow.com/questions/28014241/how-to-find-cube-root-using-python][How to find cube root using Python? - Stack Overflow]]
-- [[https://www.google.ru/search?num=30&newwindow=1&q=sympy+cube+root&oq=sympy+cube+root&gs_l=serp.3..0i13k1j0i30k1j0i13i5i30k1.24321.25353.0.25456.4.4.0.0.0.0.114.388.2j2.4.0....0...1c.1.64.serp..1.3.283...0i7i30k1.S_MpXzxDbA8][sympy cube root - Google Search]]
-- [[http://docs.sympy.org/0.7.5/modules/mpmath/functions/powers.html][Powers and logarithms — SymPy 0.7.5 documentation]]
-- [[https://www.youtube.com/results?search_query=complex+number+exponent][complex number exponent - YouTube]]
-- [[https://www.youtube.com/results?search_query=complex+number+in+trigonometric+form][complex number in trigonometric form - YouTube]]
-- [[https://www.youtube.com/watch?v=gkW9PxDvKKk][Trigonometric Form of Complex Numbers - YouTube]]
-- [[https://www.google.ru/search?num=30&newwindow=1&q=trigonometry+angle+symbol&spell=1&sa=X&ved=0ahUKEwjC8cebwsbPAhXKCCwKHVr5AqUQvwUIGygA&biw=1024&bih=697][trigonometry angle symbol - Google Search]]
-- [[https://en.wikipedia.org/w/index.php?title=List_of_trigonometric_identities&action=edit][Editing List of trigonometric identities - Wikipedia, the free encyclopedia]]
-- [[https://www.google.ru/search?num=30&newwindow=1&q=trigonometry+theta&oq=trigonometry+theta&gs_l=serp.3..0i7i30k1l9j0.20402.20565.0.20796.2.2.0.0.0.0.97.190.2.2.0....0...1c.1.64.serp..0.2.189.RpQREbie7gQ][trigonometry theta - Google Search]]
-- [[https://www.youtube.com/watch?v=xPn8pHCZL18][De Moivre's Theorem Roots of Polar Complex Numbers - YouTube]]
-- [[https://math.stackexchange.com/questions/487739/determine-the-fourth-roots-of-16][complex numbers - Determine the fourth roots of -16 - Mathematics Stack Exchange]]
-- [[https://www.google.ru/search?q=algebra+formulas&ie=utf-8&oe=utf-8&gws_rd=cr&ei=wYL2V8-YEoyvsAGxw7ugDw][algebra formulas - Google Search]]
-- [[http://www.freemathhelp.com/algebra-formulas.html][Algebra Formulas - Free Math Help]]
-- [[https://www.youtube.com/results?search_query=how+to+understand+algebra][how to understand algebra - YouTube]]
-- [[https://www.google.ru/search?q=MathIsFun.com+explaining+algebra&ie=utf-8&oe=utf-8&gws_rd=cr&ei=RIX2V-CvBIGdsAHyzIjAAw][MathIsFun.com explaining algebra - Google Search]]
-- [[https://www.youtube.com/watch?v=BHtE3JyZ-UQ][Understanding the Vocabulary of Algebra For Dummies - YouTube]]
-- [[https://www.youtube.com/watch?v=UAwbipJtbuQ][How to Learn Algebra Fast - YouTube]]
-- [[https://www.google.ru/search?q=a%5E2-b%5E2&ie=utf-8&oe=utf-8&gws_rd=cr&ei=qYv2V5jzFYLXsAGd-bTwAQ][a^2-b^2 - Google Search]]
-- [[https://en.wikibooks.org/wiki/Basic_Algebra/Factoring/Factoring_a%5E2-b%5E2_Binomials][Basic Algebra/Factoring/Factoring a^2-b^2 Binomials - Wikibooks, open books for an open world]]
-- [[https://www.google.ru/search?q=square+equation&ie=utf-8&oe=utf-8&gws_rd=cr&ei=uIz2V8zGGYinsAHf45jYAw][square equation - Google Search]]
-- [[https://en.wikipedia.org/wiki/Quadratic_equation][Quadratic equation - Wikipedia, the free encyclopedia]]
-- [[https://www.youtube.com/results?search_query=root+number][root number - YouTube]]
-- [[https://www.google.ru/search?q=%D1%87%D1%82%D0%BE+%D0%B7%D0%BD%D0%B0%D1%87%D0%B8%D1%82+%D0%BD%D0%B0%D0%B9%D1%82%D0%B8+%D0%B2%D1%81%D0%B5+%D0%B7%D0%BD%D0%B0%D1%87%D0%B5%D0%BD%D0%B8%D1%8F&ie=utf-8&oe=utf-8&gws_rd=cr&ei=XpD2V8nXBcjRswGE8oTwDQ][что значит найти все значения - Google Search]]
-- [[http://www.cleverstudents.ru/expressions/finding_value_of_expression.html][Учимся находить значения выражений.]]
-- [[https://www.youtube.com/results?search_query=complex+number+in+trigonometric+form+][complex number in trigonometric form - YouTube]]
-- [[https://www.youtube.com/watch?v=7z9NMWDUhUQ][Trigonometric Form of a Complex Number - YouTube]]
-- [[https://www.google.ru/search?q=Fourth+root+complex+number&ie=utf-8&oe=utf-8&gws_rd=cr&ei=sJf2V-6RKIaOsAGHzJbIDA][Fourth root complex number - Google Search]]
-- [[http://orion.math.iastate.edu/trig/sp/xcurrent/applets/complexfourthroot.html][Complex 4th Roots]]
-- [[https://www.youtube.com/results?search_query=DeMoivre][DeMoivre - YouTube]]
-- [[https://www.youtube.com/watch?v=kEf9gt3umnU][Understanding and Using DeMoivre's Theorem - YouTube]]
-- [[https://www.youtube.com/results?search_query=trigonometry][trigonometry - YouTube]]
-- [[https://www.youtube.com/watch?v=X5uFqpypDy4][❤︎² Basic Trigonometry: Sin, Cos, Tan (mathbff) - YouTube]]
-- [[https://www.google.ru/search?num=30&newwindow=1&q=trigonometry+vocabulary&oq=trigonometry+voca&gs_l=serp.3.0.0l3j0i22i30k1l7.848.6790.0.8942.19.19.0.0.0.0.111.1450.16j3.19.0....0...1c.1.64.serp..0.17.1343.0..46j30i10k1j0i30k1j35i39k1j0i67k1j0i46k1j0i10k1.4MkfNDDZ3qs][trigonometry vocabulary - Google Search]]
-- [[https://quizlet.com/12385533/trig-vocabulary-flash-cards/][Trig Vocabulary Flashcards | Quizlet]]
-- [[https://www.google.ru/search?q=algebra+find+all+solutions&ie=utf-8&oe=utf-8&gws_rd=cr&ei=9rL2V9L_AYj_swGVjY3oDg][algebra find all solutions - Google Search]]
-- [[https://www.google.ru/search?num=30&newwindow=1&q=algebra+formulas&spell=1&sa=X&ved=0ahUKEwiXzL3sg8fPAhVIjywKHclcCkoQvwUIGygA][algebra formulas - Google Search]]
-- [[http://www.freemathhelp.com/algebra-formulas.html][Algebra Formulas - Free Math Help]]
-- [[https://www.google.ru/search?num=30&newwindow=1&q=equation+divide+from+both+sides&spell=1&sa=X&ved=0ahUKEwjYubWahcfPAhXDXCwKHU8IAQAQvwUIGygA&biw=1024&bih=697][equation divide from both sides - Google Search]]
-- [[https://www.khanacademy.org/math/algebra/one-variable-linear-equations/alg1-solving-equations/v/intuition-why-we-divide-both-sides][Dividing both sides of an equation | Why we do the same thing to both sides of an equation | One-variable linear equations | Algebra I | Khan Academy]]
-- [[https://en.wikipedia.org/wiki/Series_(mathematics)][Series (mathematics) - Wikipedia, the free encyclopedia]]
-- [[https://www.google.ru/search?q=series+(mathematics)&newwindow=1&tbm=vid&source=lnms&sa=X&ved=0ahUKEwjft8y4hsfPAhVK3SwKHcWqA0MQ_AUICSgC&biw=1024&bih=697&dpr=1][series (mathematics) - Google Search]]
-- [[https://www.google.ru/search?num=30&newwindow=1&q=quadratic+equations+&oq=quadratic+equations+&gs_l=serp.3..0l3j0i20k1j0j0i20k1j0l4.272.4087.0.4582.15.12.2.1.1.0.187.949.8j2.10.0....0...1c.1.64.serp..2.13.967...35i39k1j0i67k1.j0bZHBBFAGY][quadratic equations - Google Search]]
-- [[https://en.wikipedia.org/wiki/Quadratic_equation][Quadratic equation - Wikipedia, the free encyclopedia]]
-- [[https://www.google.ru/search?num=30&newwindow=1&q=Difference+of+Squares+find+roots&oq=Difference+of+Squares+find+roots&gs_l=serp.3...8599.10228.0.10394.11.11.0.0.0.0.86.775.11.11.0....0...1c.1.64.serp..0.7.488...0j0i20k1j0i22i30k1.ieG6-D5PaPs][Difference of Squares find roots - Google Search]]
-- [[http://www.purplemath.com/modules/solvquad2.htm][Solving Quadratic Equations: Solving by Taking Roots]]
-- [[https://www.wolframalpha.com/input/?i=Root%5B16i,4%5D][Root16i,4] - Wolfram|Alpha]]
-- [[https://reference.wolfram.com/language/ref/Root.html][Root—Wolfram Language Documentation]]
-- [[https://www.google.ru/search?q=wolfram+complex+number&ie=utf-8&oe=utf-8&gws_rd=cr&ei=xbz2V_a3L4KlsAGI2YjoAQ][wolfram complex number - Google Search]]
-- [[https://www.wolframalpha.com/examples/ComplexNumbers.html][Wolfram|Alpha Examples: Complex Numbers]]
-- [[https://www.google.ru/search?num=30&newwindow=1&q=e+in+mathematics&oq=e+in+math&gs_l=serp.3.0.0i20k1j0l5j0i10k1j0l3.55504.55851.0.57747.4.4.0.0.0.0.88.256.4.4.0....0...1c.1.64.serp..0.4.253.EP82AnXrS_w][e in mathematics - Google Search]]
-- [[https://en.wikipedia.org/wiki/List_of_trigonometric_identities][List of trigonometric identities - Wikipedia, the free encyclopedia]]
-- [[http://www.math.com/tables/trig/hyperbolics.htm][Proof:Trigonometric Identities]]
-- [[https://en.wikipedia.org/wiki/E_(mathematical_constant)][e (mathematical constant) - Wikipedia, the free encyclopedia]]
-- [[https://www.google.ru/search?num=30&newwindow=1&biw=1024&bih=697&tbm=vid&q=what+is+e+in+trigonometry&oq=what+is+e+in+trigonomet&gs_l=serp.3.0.33i21k1.9490.11653.0.12581.10.10.0.0.0.0.73.598.10.10.0....0...1c.1.64.serp..0.4.241.TZqMhKHxUzI][what is e in trigonometry - Google Search]]
-- [[https://www.google.ru/search?q=wolframalpha+desktop&ie=utf-8&oe=utf-8&gws_rd=cr&ei=ub_2V-SaIoa9sQGLxr24Cw][wolframalpha desktop - Google Search]]
-- [[https://www.google.ru/search?q=wolfram+fourth+root&ie=utf-8&oe=utf-8&gws_rd=cr&ei=Q7z2V-m0F4KbsAGBgIPABw][wolfram fourth root - Google Search]]
-- [[https://www.google.ru/search?q=Root%5B16i,4%5D&ie=utf-8&oe=utf-8&gws_rd=cr&ei=H8D2V8ylD8OvsAHjqK-ICQ][Root16i,4] - Google Search]]
-- [[https://www.youtube.com/watch?v=zyGUw70FE6M][The complex fourth roots of -16i - YouTube]]
-- [[https://www.google.ru/search?num=30&newwindow=1&biw=1024&bih=697&tbm=vid&q=complex+number+convert&oq=complex+number+convert&gs_l=serp.3..33i21k1.5537.6354.0.6496.7.6.0.1.1.0.95.418.6.6.0....0...1c.1.64.serp..0.7.418...0.ZsLyg-ogDZk][complex number convert - Google Search]]
-- [[https://www.youtube.com/watch?v=w-PCBJYBbGo][Converting Complex Numbers to Polar form - YouTube]]
-- [[https://en.wikipedia.org/wiki/Euler%27s_formula][Euler's formula - Wikipedia, the free encyclopedia]]
-- [[https://www.youtube.com/watch?v=a4kaAbTPzmw][Ex: Find the Square Root of a Complex Number (DeMoivre's Theorem) - YouTube]]
-- [[https://www.youtube.com/watch?v=mgNtPOgFje0][Euler's Formula and Euler's Identity - YouTube]]
-- [[https://www.youtube.com/watch?v=zLzLxVeqdQg][Euler's Formula Poem - YouTube]]
-- [[https://www.youtube.com/watch?v=F_0yfvm0UoU][Understanding e to the pi i - YouTube]]
-- [[https://www.youtube.com/channel/UC1_uAIS3r8Vu6JjXWvastJg/videos][Mathologer - YouTube]]
-- [[https://www.youtube.com/watch?v=pg827uDPFqA][What is the number "e" and where does it come from? - YouTube]]
-- [[https://www.youtube.com/results?search_query=what+is+pi][what is pi - YouTube]]
-- [[https://www.youtube.com/watch?v=O-cawByg2aA][Math Antics - Circles, Circumference And Area - YouTube]]
-- [[https://www.youtube.com/results?search_query=square+number+dumm][square number dumm - YouTube]]
-- [[https://www.youtube.com/watch?v=ZJDb7E6aCrA][Math Antics - Intro To Exponents (aka Indices) - YouTube]]
-- [[https://www.youtube.com/results?sp=QgIIAUgU6gMA&q=polynominal+exponent][polynominal exponent - YouTube]]
-- [[http://byjus.com/square-root-property-formula][Square root property steps | Square root property calculator]]
-- [[https://en.wikipedia.org/wiki/Algebra][Algebra - Wikipedia, the free encyclopedia]]
-- [[https://www.youtube.com/results?search_query=polar+form][polar form - YouTube]]
-- [[https://www.youtube.com/watch?v=8RasCV_Lggg][Rectangular to polar form of complex number | Precalculus | Khan Academy - YouTube]]
-- [[https://www.youtube.com/feed/history][History - YouTube]]
-- [[https://www.youtube.com/watch?v=F_0yfvm0UoU][Understanding e to the pi i - YouTube]]
-- [[https://www.youtube.com/watch?v=1rVHLZm5Aho][A Crash Course on Complex Derivatives and e^x - YouTube]]
-- [[https://www.youtube.com/watch?v=XFDM1ip5HdU][What does it feel like to invent math? - YouTube]]
-- [[https://www.youtube.com/watch?v=T647CGsuOVU][Imaginary Numbers Are Real Part 1: Introduction] - YouTube]]
