@@ -22,7 +22,8 @@
 [[http://www.gnu.org/software/emacs/manual/html_mono/eintr.html][An Introduction to Programming in Emacs Lisp]]
 ** Help
  describe-mode -- <f1> m
-
+** cheatsheets
+- [[http://orgmode.org/worg/orgcard.html][Org-Mode Reference Card]]
 * Video
 
 ** org-mode
@@ -283,8 +284,8 @@ it is a general-purpose mechanism to comment regions)
 (see Changing the included text prefix).
 
 * Git (Magit)
-[[http://daemianmack.com/magit-cheatsheet.html][cheatsheet]]
-
+** [[http://daemianmack.com/magit-cheatsheet.html][cheatsheet]]
+** [[https://www.emacswiki.org/emacs/Magit][Emacs wiki]]
 * Sites
 ** [[https://melpa.org][Melpa (Milkypostman’s Emacs Lisp Package Archive)]]
 *** Up-to-date packages built on our servers from upstream source
@@ -293,4 +294,5 @@ it is a general-purpose mechanism to comment regions)
 *** Comprehensive - more packages than any other archive
 *** Automatic updates - new commits result in new packages
 *** Extensible - contribute recipes via github, and we'll build the packages
+** [[https://spin.atomicobject.com/2016/05/27/write-emacs-package/][A Simple Guide to Writing & Publishing Emacs Packages]]
 
