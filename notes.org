@@ -173,6 +173,7 @@ x_{1} = \frac{-5 + 4i - 3}{4} =
 
 ** Найти все значения и записать ответ в показательной форме
 
+
 $\sqrt[4]{16i}$
 
 #+BEGIN_SRC python
@@ -187,6 +188,56 @@ $\sqrt[4]{16i}$
 
 #+RESULTS:
 | -16+8j |
+
+$$r = |z| = \sqrt{x^{2} + y^{2}}$$
+
+\begin{equation}
+r =
+\sqrt{0^{2} + 16^{2}} =
+16
+\end{equation}
+
+\begin{equation}
+\varphi = \frac{\pi}{2}
+\end{equation}
+
+\begin{equation}
+\omega_{k} =
+\sqrt[n]{r}(\cos \frac{\varphi + 2 \pi k}{n} + i \sin \frac{\varphi + 2 \pi k}{n}) =
+\sqrt[n]{r}^{i \varphi}
+\end{equation}
+
+$$\sqrt[4]{16}=2$$
+
+\begin{equation}
+\omega_{0} =
+2(\cos \frac{\varphi + 2 \pi \cdot 0}{4} + i \sin \frac{\varphi + 2 \pi \cdot 0}{4}) =
+2(\cos \frac{\pi}{8} + i \sin \frac{\pi}{8}) =
+2e^{\frac{i \pi}{8}}
+\end{equation}
+
+\begin{equation}
+\omega_{1} =
+2(\cos \frac{\varphi + 2 \pi \cdot 1}{4} + i \sin \frac{\varphi + 2 \pi \cdot 1}{4}) =
+2(\cos \frac{5 \pi}{8} + i \sin \frac{5 \pi}{8}) =
+2e^{\frac{5 i \pi}{8}}
+\end{equation}
+
+\begin{equation}
+\omega_{2} =
+2(\cos \frac{\varphi + 2 \pi 2}{4} + i \sin \frac{\varphi + 2 \pi 2}{4}) =
+2(\cos \frac{9 \pi}{8} + i \sin \frac{9 \pi}{8}) =
+2(\cos \frac{-7 \pi}{8} + i \sin \frac{-7 \pi}{8}) =
+2e^{-\frac{7 i \pi}{8}}
+\end{equation}
+
+\begin{equation}
+\omega_{3} =
+2(\cos \frac{\varphi + 2 \pi 3}{4} + i \sin \frac{\varphi + 2 \pi 3}{4}) =
+2(\cos \frac{13 \pi}{8} + i \sin \frac{13 \pi}{8}) =
+2(\cos \frac{-3 \pi}{8} + i \sin \frac{-3 \pi}{8}) =
+2e^{-\frac{3 i \pi}{8}}
+\end{equation}
 
 ** Разложите на множители многочлен
 
