@@ -242,8 +242,96 @@ $$\sqrt[4]{16}=2$$
 \end{equation}
 
 ** Разложите на множители многочлен
-
+*** Дано
 $$f(x) = x^{4} + x^{3} + x^{2} + x -1$$
+
+*** Solve
+
+**** Check $x$
+#+NAME: initial
+#+BEGIN_SRC python
+  x = 11
+  return x
+#+END_SRC
+
+#+RESULTS: initialize
+: 11
+
+**** Without $f(x)$
+
+$$x^{4} + x^{3} + x^{2} + x -1$$
+
+#+BEGIN_SRC python :var x=initial
+  a = x**4 + x**3 -x**2 +x -2
+
+  return a
+#+END_SRC
+
+#+RESULTS:
+: 15860
+
+**** Simplify
+
+***** Factor all $x$
+
+$$x(x^{3} + x^{2} - x + 1) -2$$
+
+#+BEGIN_SRC python :var x=initial
+  return x * (x**3 + x**2 - x + 1) - 2
+#+END_SRC
+
+#+RESULTS:
+: 15860
+
+****** Factor in brackets
+
+$$x(x^{2} (x + 1) - x + 1) -2$$
+
+#+BEGIN_SRC python :var x=initial
+  return x * (x**2 * (x + 1) - x + 1) - 2
+#+END_SRC
+
+#+RESULTS:
+: 15860
+
+****** Defactor
+
+******* first
+#+BEGIN_SRC python :var x=initial
+  return x**2*(x**2+x)-x**2+x-2
+#+END_SRC
+
+#+RESULTS:
+: 15860
+
+******* second
+#+BEGIN_SRC python :var x=initial
+  return x**3*(x+1)-x**2+x-2
+#+END_SRC
+
+#+RESULTS:
+: 15860
+
+******* third
+#+BEGIN_SRC python :var x=initial
+  return x**3*(x+1)-x*(x-1)-2
+#+END_SRC
+
+#+RESULTS:
+: 15860
+
+
+***** Factor by grouping
+
+$$x^{2}(x^{2} + x) - x^{2} + x -2$$
+
+#+BEGIN_SRC python :var x=initial
+  return x**2 * (x**2 + x) - x**2 + x -2
+#+END_SRC
+
+#+RESULTS:
+: 15860
+
 
 ** Выделите целую часть дроби
 
@@ -279,7 +367,13 @@ $$\frac{2x^{2} - 4}{x^{3} - 4x}$$
 - [[https://www.youtube.com/watch?v=T647CGsuOVU][Imaginary Numbers Are Real Part 1: Introduction - YouTube]]
 - [[https://www.youtube.com/watch?v=DThAoT3q2V4][Imaginary Numbers Are Real Part 4: Bombelli's Solution - YouTube]]
 - [[https://www.youtube.com/watch?v=d8-LO6FCna0][Fundamental theorem of algebra | Polynomial and rational functions | Algebra II | Khan Academy - YouTube]]
+- [[https://www.youtube.com/watch?v=l6zdtKrv2nk][What's a Term in a Polynomial? - YouTube]]
+- [[https://www.youtube.com/watch?v=RIHqIjt9jy0][How to factorise a cubic polynomial (Method 1) : ExamSolutions - YouTube]]
 
+** math channels
+- [[https://www.youtube.com/user/VirtualNerd/videos][Virtual Nerd: Real Help - YouTube]]
+** dictionary
+- [[http://searchdatacenter.techtarget.com/definition/Mathematical-Symbols][What is Mathematical Symbols? - Definition from WhatIs.com]]
 ** Wiki
 - [[https://en.wikibooks.org/wiki/Calculus/Complex_numbers][Calculus/Complex numbers - Wikibooks, open books for an open world]]
 
