@@ -1,15 +1,14 @@
 #+LATEX_HEADER: \usepackage{amsmath}
 #+STARTUP: showeverything
 #+STARTUP: latexpreview
-#+STARTUP: inlineimages
 
-
-
+$$1+1=2$$
 $$1+1=2$$
 $2 \cdot 2 = 4$
 $\alpha$
 $$\beta$$
 $\gamma$
+
 * test
 $\gamma$
 $2 \cdot 2 = 4$
@@ -2098,3 +2097,14 @@ Graphing an equation is like using its different solutions to draw simple lines 
 
 ** linear equations
 ** quadratic equations
+
+* Solving
+** Group
+** Exponent
+** Multiplication and devision
+** Addition and subtraction
+
+* Complex numbers
+
+** Devision
+$$\frac{a + bi}{c + di} = \left({ac + bd \over c^2 + d^2}\right) + \left( {bc - ad \over c^2 + d^2} \right)i$$
