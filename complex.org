@@ -187,6 +187,38 @@ x_{1} = \frac{-5 + 4i - 3}{4} &= \\
 -2 + i
 \end{aligned}
 \end{equation}
+** График
+
+#+begin_src gnuplot :file file.png
+reset
+
+set xlabel "Re"
+set ylabel "Im"
+set xrange [-10:10]
+set yrange [-10:10]
+
+set grid
+unset xtics
+unset ytics
+unset ztics
+
+set xtics -10,1,10
+set ytics -10,1,10
+
+set arrow 1 from -7,0 to 7,0
+set arrow 2 from 0,-7 to 0,7
+set label r at 8,0
+set label i at 0,8
+set label 1 'Re' at 8.0,0.0 point pointtype 0
+set label 2 'Im' at 0.0,8.0 point pointtype 0
+set label 3 '-0,5+i' at -0.5,1.0 point pointtype 7
+set label 4 '-2+i' at -2.0,1.0 point pointtype 7
+set key off
+plot 1/0
+#+end_src
+
+#+RESULTS:
+[[file:file.png]]
 
 * Найти все значения и записать ответ в показательной форме
 
@@ -411,34 +443,4 @@ A = 1
 * TODO 2 задание комплекная прямая
 
 
-* TODO 5 задание записать
-
-#+begin_src gnuplot :exports code :file file.png
-reset
-
-set xlabel "Re"
-set ylabel "Im"
-set xrange [-10:10]
-set yrange [-10:10]
-
-set grid
-unset xtics
-unset ytics
-unset ztics
-
-set xtics -10,1,10
-set ytics -10,1,10
-
-set arrow 1 from -7,0 to 7,0
-set arrow 2 from 0,-7 to 0,7
-set label r at 8,0
-set label i at 0,8
-set label 1 '-0,5+i' at -0.5,1.0 point pointtype 7
-set label 2 '-2+i' at -2.0,1.0 point pointtype 7
-set key off
-plot 1/0
-#+end_src
-
-#+RESULTS:
-[[file:file.png]]
 
