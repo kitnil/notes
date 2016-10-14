@@ -7,18 +7,11 @@
 #+LaTeX_HEADER: \usepackage[unicode]{hyperref}
 #+LATEX_HEADER: \hypersetup{colorlinks, citecolor=black, filecolor=black, linkcolor=black, urlcolor=blue}
 #+LaTeX_HEADER: \usepackage{amssymb}
+#+LaTeX_HEADER: \usepackage{amsmath}
 
 * Выполнить действия
 
 $$\frac{3 - i}{2 + i} + i^{11}(-2 + 3i)$$
-
-** python
-#+BEGIN_SRC python
-return ((3 - 1j)/(2 + 1j)) + 1j**11 * (-2 + 3j)
-#+END_SRC
-
-#+RESULTS:
-| 4+1j |
 
 ** Разделим комплексные числа используя формулу
 
@@ -38,28 +31,32 @@ return ((3 - 1j)/(2 + 1j)) + 1j**11 * (-2 + 3j)
 
 ** Согласно представлению о мнимой единицы
 
-\begin{equation*}
--i = \sqrt{-1}\\
-i = \sqrt{-1}\\
-i^{2} = -1\\
-i^{3} = i^{2} \cdot i = (-1) \cdot i = -i\\
-i^{4} = i^{3} \cdot i = -i^{2} = 1\\
-i^{5} = i^{4} \cdot i = 1 \cdot i = i\\
-i^{6} = i^{5} \cdot i = i \cdot i = i^{2} = -1\\
-i^{7} = i^{6} \cdot i = i^{2} \cdot i = -1 \cdot i = -1\\
-i^{8} = i^{7} \cdot i = -i \cdot i = -i^{2} = 1\\
-i^{9} = i^{8} \cdot i = 1 \cdot i = i\\
-i^{10} = i^{9} \cdot i = i \cdot i = i^{2} = -1\\
-i^{11} = i^{10} \cdot i = -1 \cdot i = -i
-\end{equation*}
+\begin{equation}
+\begin{aligned}
+-i &= \sqrt{-1} \\
+i &= \sqrt{-1} \\
+i^{2} &= -1 \\
+i^{3} &= i^{2} \cdot i = (-1) \cdot i = -i \\
+i^{4} &= i^{3} \cdot i = -i^{2} = 1 \\
+i^{5} &= i^{4} \cdot i = 1 \cdot i = i \\
+i^{6} &= i^{5} \cdot i = i \cdot i = i^{2} = -1 \\
+i^{7} &= i^{6} \cdot i = i^{2} \cdot i = -1 \cdot i = -1 \\
+i^{8} &= i^{7} \cdot i = -i \cdot i = -i^{2} = 1 \\
+i^{9} &= i^{8} \cdot i = 1 \cdot i = i \\
+i^{10} &= i^{9} \cdot i = i \cdot i = i^{2} = -1 \\
+i^{11} &= i^{10} \cdot i = -1 \cdot i = -i
+\end{aligned}
+\end{equation}
 
 \begin{equation}
-1 - i - i(-2 + 3i) =
-1 - i - i \cdot (-2) - i \cdot 3i =
-1 - i + 2i - 3i^{2} =
--3i^{2} + 2i - i + 1 =
-3i^{2} - 2i + i - 1 =
-3i^{2} - i - 1
+\begin{aligned}
+1 - i - i(-2 + 3i) = \\
+1 - i - i \cdot (-2) - i \cdot 3i \\
+1 - i + 2i - 3i^{2} \\
+-3i^2 + 2i - i + 1 \\
+3i^2 - 2i + i - 1 \\
+3i^2 - i - 1
+\end{aligned}
 \end{equation}
 
 ** Согласно преобразование мнимой единицы
