@@ -1,0 +1,497 @@
+#+LaTeX_CLASS: article
+#+LaTeX_CLASS_OPTIONS: [a4paper]
+
+#+LaTeX_HEADER: \usepackage[utf8]{inputenc}
+#+LaTeX_HEADER: \usepackage[T1,T2A]{fontenc}
+#+LaTeX_HEADER: \usepackage[english,russian]{babel}
+#+LaTeX_HEADER: \usepackage[unicode]{hyperref}
+#+LATEX_HEADER: \hypersetup{colorlinks, citecolor=black, filecolor=black, linkcolor=black, urlcolor=blue}
+#+LaTeX_HEADER: \usepackage{amssymb}
+
+* Выполнить действия
+
+$$\frac{3 - i}{2 + i} + i^{11}(-2 + 3i)$$
+
+** python
+#+BEGIN_SRC python
+return ((3 - 1j)/(2 + 1j)) + 1j**11 * (-2 + 3j)
+#+END_SRC
+
+#+RESULTS:
+| 4+1j |
+
+** Разделим комплексные числа используя формулу
+
+\begin{equation}
+\frac{a + bi}{c + di} =
+\frac{ac + bd}{c^{2} + d^{2}} + \frac{bc - ad}{c^{2} + d^{2}}i
+\end{equation}
+
+\begin{equation}
+\frac{3 - i}{2 + i} =
+\frac{3 - 1i}{2 + 1i} =
+\frac{3 \cdot 2 + (-1) \cdot 1}{2^{2} + 1^{2}} + \frac{(-1) \cdot 2 - 3 \cdot 1}{2^{2} + 1^{2}}i = 
+\frac{6 + (-1)}{4 + 1} + \frac{-2 - 3}{4 + 1}i =
+\frac{5}{5} + \frac{-5}{5}i = 
+1 - 1i
+\end{equation}
+
+** Согласно представлению о мнимой единицы
+
+\begin{equation*}
+-i = \sqrt{-1}\\
+i = \sqrt{-1}\\
+i^{2} = -1\\
+i^{3} = i^{2} \cdot i = (-1) \cdot i = -i\\
+i^{4} = i^{3} \cdot i = -i^{2} = 1\\
+i^{5} = i^{4} \cdot i = 1 \cdot i = i\\
+i^{6} = i^{5} \cdot i = i \cdot i = i^{2} = -1\\
+i^{7} = i^{6} \cdot i = i^{2} \cdot i = -1 \cdot i = -1\\
+i^{8} = i^{7} \cdot i = -i \cdot i = -i^{2} = 1\\
+i^{9} = i^{8} \cdot i = 1 \cdot i = i\\
+i^{10} = i^{9} \cdot i = i \cdot i = i^{2} = -1\\
+i^{11} = i^{10} \cdot i = -1 \cdot i = -i
+\end{equation*}
+
+\begin{equation}
+1 - i - i(-2 + 3i) =
+1 - i - i \cdot (-2) - i \cdot 3i =
+1 - i + 2i - 3i^{2} =
+-3i^{2} + 2i - i + 1 =
+3i^{2} - 2i + i - 1 =
+3i^{2} - i - 1
+\end{equation}
+
+** Согласно преобразование мнимой единицы
+
+$$i^{2} = -1$$
+
+\begin{equation}
+3 (-1) - i - 1 =
+-3 - i - 1 =
+-4 - i =
+4 + i
+\end{equation}
+
+
+* Найти решения уравнения и нарисовать их на комплексной прямой
+
+$$2z^{2} + (5 - 4i)z - 5i = 0$$
+
+** Воспользуемся формулой нахождения дескриминанта
+
+$$\Delta = b^2-4ac$$
+
+$$\Delta = (5 - 4i)^{2} - 4 \cdot 2 \cdot (-5i)$$
+
+*** Представм квадрат в виде умножения
+
+$$(5 - 4i)(5 - 4i)$$
+
+*** Воспользуемся формулой умножения комплексных чисел
+
+$$(a+bi)(c+di) = (ac-bd) + (bc+ad)i$$
+
+\begin{equation}
+(5 - 4i)(5 - 4i) =
+(5 \cdot 5 - (-4) \cdot (-4)) + ((-4) \cdot 5 + 5 \cdot (-4))i =
+(25 - 16) + ((-20) + (-20))i =
+9 + (-40)i =
+9 - 40i
+\end{equation}
+
+*** Найдем дескриминант
+
+\begin{equation}
+\Delta = 9 - 40j - 4 \cdot 2 \cdot (-5i) =
+9 - 40i - 4 \cdot 2 \cdot (-5i) =
+9 - 40i - 8 \cdot (-5i) =
+9 - 40i - (-40i) =
+9 - 40i + 40i =
+9
+\end{equation}
+
+** Воспользуемся формулой нахождения корней квадратного уравнения
+
+$$x_{1,2} = \frac{-b \pm \sqrt {\Delta}}{2a}$$
+
+$$x_{1,2} = \frac{-(5 - 4j) \pm \sqrt {9}}{2 \cdot 2}$$
+
+*** Раскоем скобки
+
+\begin{equation}
+-(5 - 4i) =
+-1(5 - 4i) =
+-1 \cdot 5 - 1 \cdot (-4i) =
+-5 + 4i
+\end{equation}
+
+*** Избавимся от корня
+
+$$x_{1,2} = \frac{-5 + 4i \pm 3}{2 \cdot 2}$$
+
+*** Посчитаем знаменатель
+
+$$x_{1,2} = \frac{-5 + 4i \pm 3}{4}$$
+
+*** Найдем $x1$ и $x2$
+
+$$x_{1,2} = \frac{-5 + 4i \pm 3}{4}$$
+
+**** x1
+
+\begin{equation}
+x_{1} = \frac{-5 + 4i + 3}{4} =
+\frac{-2 + 4i}{4} =
+\frac{-1 + 2i}{2} =
+-0,5 + i
+\end{equation}
+
+**** x2
+
+\begin{equation}
+x_{1} = \frac{-5 + 4i - 3}{4} =
+\frac{-8 + 4i}{4} =
+-2 + i
+\end{equation}
+
+
+* Найти все значения и записать ответ в показательной форме
+
+$\sqrt[4]{16i}$
+
+$$r = |z| = \sqrt{x^{2} + y^{2}}$$
+
+\begin{equation}
+r =
+\sqrt{0^{2} + 16^{2}} =
+16
+\end{equation}
+
+\begin{equation}
+\varphi = \frac{\pi}{2}
+\end{equation}
+
+** Формула Муавра и извлечение корней из комплексных чисел
+
+\begin{equation}
+\omega_{k} =
+\sqrt[n]{r}(\cos \frac{\varphi + 2 \pi k}{n} + i \sin \frac{\varphi + 2 \pi k}{n}) =
+\sqrt[n]{r}^{i \varphi}
+\end{equation}
+
+$$k = 0, 1, 2, 3$$
+
+$$\sqrt[4]{16}=2$$
+
+** Корни
+
+*** Первый
+\begin{equation}
+\omega_{0} =
+2(\cos \frac{\varphi + 2 \pi \cdot 0}{4} + i \sin \frac{\varphi + 2 \pi \cdot 0}{4}) =
+2(\cos \frac{\pi}{8} + i \sin \frac{\pi}{8}) =
+2e^{\frac{i \pi}{8}}
+\end{equation}
+
+*** Второй
+\begin{equation}
+\omega_{1} =
+2(\cos \frac{\varphi + 2 \pi \cdot 1}{4} + i \sin \frac{\varphi + 2 \pi \cdot 1}{4}) =
+2(\cos \frac{5 \pi}{8} + i \sin \frac{5 \pi}{8}) =
+2e^{\frac{5 i \pi}{8}}
+\end{equation}
+
+*** Третий
+\begin{equation}
+\omega_{2} =
+2(\cos \frac{\varphi + 2 \pi 2}{4} + i \sin \frac{\varphi + 2 \pi 2}{4}) =
+2(\cos \frac{9 \pi}{8} + i \sin \frac{9 \pi}{8}) =
+2(\cos \frac{-7 \pi}{8} + i \sin \frac{-7 \pi}{8}) =
+2e^{-\frac{7 i \pi}{8}}
+\end{equation}
+
+*** Четвертый
+\begin{equation}
+\omega_{3} =
+2(\cos \frac{\varphi + 2 \pi 3}{4} + i \sin \frac{\varphi + 2 \pi 3}{4}) =
+2(\cos \frac{13 \pi}{8} + i \sin \frac{13 \pi}{8}) =
+2(\cos \frac{-3 \pi}{8} + i \sin \frac{-3 \pi}{8}) =
+2e^{-\frac{3 i \pi}{8}}
+\end{equation}
+
+** Ответ
+
+\begin{align}
+2e^{\frac{i \pi}{8}}\\
+2e^{\frac{5 i \pi}{8}}\\
+2e^{-\frac{7 i \pi}{8}}\\
+2e^{-\frac{3 i \pi}{8}}
+\end{align}
+
+* Разложите на множители многочлен
+** Дано
+$$f(x) = x^{4} + x^{3} + x^{2} + x -1$$
+
+** Solve
+
+*** Check $x$
+#+NAME: initial
+#+BEGIN_SRC python
+  from sympy.solvers import solve
+  from sympy import Symbol
+
+  x = Symbol('x')
+
+  return solve(x**2 - 1, x)
+  #+END_SRC
+
+#+RESULTS: initial
+| -1 | 1 |
+
+*** Without $f(x)$
+
+$$x^{4} + x^{3} + x^{2} + x -1$$
+
+#+BEGIN_SRC python
+  from sympy.solvers import solve
+  from sympy import Symbol
+
+  x = Symbol('x')
+
+  return solve(x**4 + x**3 -x**2 +x -2, x)
+#+END_SRC
+
+#+RESULTS:
+| -2 | 1 | -I | I |
+
+*** Simplify
+
+**** Factor all $x$
+$$x(x^{3} + x^{2} - x + 1) -2$$
+
+#+BEGIN_SRC python
+  from sympy.solvers import solve
+  from sympy import Symbol
+
+  x = Symbol('x')
+
+  return solve(x * (x**3 + x**2 - x + 1) - 2, x)
+#+END_SRC
+
+#+RESULTS:
+| -2 | 1 | -I | I |
+
+***** Factor in brackets
+$$x(x^{2} (x + 1) - x + 1) -2$$
+
+#+BEGIN_SRC python
+  from sympy.solvers import solve
+  from sympy import Symbol
+
+  x = Symbol('x')
+
+  return solve(x * (x**2 * (x + 1) - x + 1) - 2)
+#+END_SRC
+
+#+RESULTS:
+| -2 | 1 | -I | I |
+
+****** Defactor
+
+******* first
+
+$$x^2(x^2+x)-x^2+x-2$$
+
+#+BEGIN_SRC python
+  from sympy.solvers import solve
+  from sympy import Symbol
+
+  x = Symbol('x')
+  
+  return solve(x**2*(x**2+x)-x**2+x-2)
+#+END_SRC
+
+#+RESULTS:
+| -2 | 1 | -I | I |
+
+******* second
+
+$$x^3(x+1)-x^2+x-2$$
+
+******** src
+#+BEGIN_SRC python
+  from sympy.solvers import solve
+  from sympy import Symbol
+
+  x = Symbol('x')
+
+  return solve(x**3*(x+1)-x**2+x-2)
+#+END_SRC
+
+#+RESULTS:
+| -2 | 1 | -I | I |
+
+******* third
+
+$$x^3(x+1)-x(x-1)-2$$
+
+******** src
+#+BEGIN_SRC python
+  from sympy.solvers import solve
+  from sympy import Symbol
+
+  x = Symbol('x')
+  
+  return solve(x**3*(x+1)-x*(x-1)-2)
+#+END_SRC
+
+#+RESULTS:
+| -2 | 1 | -I | I |
+
+******* Next
+#+BEGIN_SRC python
+  from sympy.solvers import solve
+  from sympy import Symbol
+
+  x = Symbol('x')
+  
+  return solve((x+1)*(x**3-x)-2)
+#+END_SRC
+
+#+RESULTS:
+| -1/4 | - | sqrt | (-10/ (9* (-91/216 + sqrt (201) /24) ** (1/3)) + 11/12 + 2* (-91/216 + sqrt (201) /24) ** (1/3)) | /2 | - | sqrt | (-3/ (4*sqrt (-10/ (9* (-91/216 + sqrt (201) /24) ** (1/3)) + 11/12 + 2* (-91/216 + sqrt (201) /24) ** (1/3))) - 2* (-91/216 + sqrt (201) /24) ** (1/3) + 11/6 + 10/ (9* (-91/216 + sqrt (201) /24) ** (1/3))) | /2 | -1/4 | - | sqrt | (-10/ (9* (-91/216 + sqrt (201) /24) ** (1/3)) + 11/12 + 2* (-91/216 + sqrt (201) /24) ** (1/3)) | /2 | + | sqrt | (-3/ (4*sqrt (-10/ (9* (-91/216 + sqrt (201) /24) ** (1/3)) + 11/12 + 2* (-91/216 + sqrt (201) /24) ** (1/3))) - 2* (-91/216 + sqrt (201) /24) ** (1/3) + 11/6 + 10/ (9* (-91/216 + sqrt (201) /24) ** (1/3))) | /2 | -1/4 | + | sqrt | (-10/ (9* (-91/216 + sqrt (201) /24) ** (1/3)) + 11/12 + 2* (-91/216 + sqrt (201) /24) ** (1/3)) | /2 | + | sqrt | (-2* (-91/216 + sqrt (201) /24) ** (1/3) + 11/6 + 10/ (9* (-91/216 + sqrt (201) /24) ** (1/3)) + 3/ (4*sqrt (-10/ (9* (-91/216 + sqrt (201) /24) ** (1/3)) + 11/12 + 2* (-91/216 + sqrt (201) /24) ** (1/3)))) | /2 | -sqrt | (-2* (-91/216 + sqrt (201) /24) ** (1/3) + 11/6 + 10/ (9* (-91/216 + sqrt (201) /24) ** (1/3)) + 3/ (4*sqrt (-10/ (9* (-91/216 + sqrt (201) /24) ** (1/3)) + 11/12 + 2* (-91/216 + sqrt (201) /24) ** (1/3)))) | /2 | - | 1/4 | + | sqrt | (-10/ (9* (-91/216 + sqrt (201) /24) ** (1/3)) + 11/12 + 2* (-91/216 + sqrt (201) /24) ** (1/3)) | /2 |
+
+****** Next
+
+#+BEGIN_SRC python :var x=initial
+  return (x+1)*x*(x**2-1)-2
+#+END_SRC
+
+#+RESULTS:
+: 15838
+
+
+
+**** Factor by grouping
+
+$$x^{2}(x^{2} + x) - x^{2} + x -2$$
+
+#+BEGIN_SRC python :var x=initial
+  return x**2 * (x**2 + x) - x**2 + x -2
+#+END_SRC
+
+#+RESULTS:
+: 15860
+
+
+* Выделите целую часть дроби
+
+$$\frac{x^{3} + 6x^{2} + 1}{x^{2} + 2}$$
+
+\(
+
+\)
+
+\begin{align*}
+
+\end{align*}
+
+* Разложите дробь на простейшие
+
+$$\frac{2x^{2} - 4}{x^{3} - 4x}$$
+
+** Factorize denominator
+
+\begin{equation}
+x^{3} - 4x =
+x^2 \cdot x-4x =
+x(x^2-4) =
+x(x^2-2^2) =
+x((x-2)(x+2)) =
+x(x-2)(x+2)
+\end{equation}
+
+\begin{equation}
+\frac{2x^{2} - 4}{x^{3} - 4x} =
+\frac{2x^{2} - 4}{x(x-2)(x+2)}
+\end{equation}
+
+** By formula
+
+\begin{equation}
+\frac{2x^2-4}{x(x-2)(x+2)} =
+\frac{A}{x} + \frac{B}{x-2} + \frac{C}{x+2} =
+\frac{A(x-2)(x+2)}{x(x-2)(x+2)} + \frac{B(x+2)x}{x(x-2)(x+2)} + \frac{C(x-2)x}{x(x-2)(x+2)} =
+\frac{A(x-2)(x+2) + B(x+2)x + C(x-2)x}{x(x-2)(x+2)}
+\end{equation}
+
+$$A(x-2)(x+2) + B(x+2)x + C(x-2)x$$
+
+\begin{equation}
+2x^2 - 4 = A(x-2)(x+2) + B(x+2)x + C(x-2)x
+\end{equation}
+
+** if x = -2
+
+\begin{equation}
+2 \cdot -2^2 - 4 = 2 \cdot 4 - 4 = 8 - 4 = 4
+\end{equation}
+
+\begin{equation}
+A(-2-2)(-2+2)+B(-2+2)\cdot(-2)+C(-2-2)\cdot(-2) =
+C(-2-2)\cdot(-2)
+\end{equation}
+
+\begin{align*}
+4 = C(-4)\cdot(-2)\\
+4 = C8\\
+4 = 8C\\
+C = \frac{4}{8} = \frac{1}{2}
+\end{align*}
+
+** if x = 2
+
+\begin{equation}
+2 \cdot 2^2 - 4 = 2 \cdot 4 - 4 = 8 - 4 = 4
+\end{equation}
+
+\begin{equation}
+A(2-2)(2+2)+B(2+2)\cdot(2)+C(2-2)\cdot(2) =
+B(2+2)\cdot(2)
+\end{equation}
+
+\begin{align*}
+4 = B(2+2)\cdot(2)\\
+4 = B(4)\cdot(2)\\
+4 = B(8)\\
+4 = 8B\\
+B = \frac{4}{8} = \frac{1}{2}
+\end{align*}
+
+** if x = 0
+
+\begin{equation}
+2 \cdot 0^2 - 4 = -4
+\end{equation}
+
+\begin{equation}
+A(0-2)(0+2)+B(0+2)\cdot0+C(0-2)\cdot0 =
+A(0-2)(0+2)
+\end{equation}
+
+\begin{align*}
+-4 = A(0-2)(0+2)\\
+-4 = A(-2)\cdot2\\
+-4 = A(-4)\\
+-4 = -4A\\
+A = 1
+\end{align*}
+
+** Final answer
+
+\begin{equation}
+\frac{1}{x} + \frac{\frac{1}{2}}{x-2} + \frac{\frac{1}{2}}{x+2} =
+\frac{1}{x} + \frac{1}{2(x-2)} + \frac{1}{2(x+2)}
+\end{equation}
+
