@@ -8,13 +8,11 @@
 #+LATEX_HEADER: \hypersetup{colorlinks, citecolor=black, filecolor=black, linkcolor=black, urlcolor=blue}
 #+LaTeX_HEADER: \usepackage{amssymb}
 
-* [[http://www.math24.ru/%D0%BA%D0%BE%D0%BC%D0%BF%D0%BB%D0%B5%D0%BA%D1%81%D0%BD%D1%8B%D0%B5-%D1%87%D0%B8%D1%81%D0%BB%D0%B0.html][Комплексные числа]]
-
-** Выполнить действия
+* Выполнить действия
 
 $$\frac{3 - i}{2 + i} + i^{11}(-2 + 3i)$$
 
-*** python
+** python
 #+BEGIN_SRC python
 return ((3 - 1j)/(2 + 1j)) + 1j**11 * (-2 + 3j)
 #+END_SRC
@@ -22,7 +20,7 @@ return ((3 - 1j)/(2 + 1j)) + 1j**11 * (-2 + 3j)
 #+RESULTS:
 | 4+1j |
 
-*** Разделим комплексные числа используя формулу
+** Разделим комплексные числа используя формулу
 
 \begin{equation}
 \frac{a + bi}{c + di} =
@@ -38,7 +36,7 @@ return ((3 - 1j)/(2 + 1j)) + 1j**11 * (-2 + 3j)
 1 - 1i
 \end{equation}
 
-*** Согласно представлению о мнимой единицы
+** Согласно представлению о мнимой единицы
 
 $$-i = \sqrt{-1}$$
 $$i = \sqrt{-1}$$
@@ -62,7 +60,7 @@ $$i^{11} = i^{10} \cdot i = -1 \cdot i = -i$$
 3i^{2} - i - 1
 \end{equation}
 
-*** Согласно преобразование мнимой единицы
+** Согласно преобразование мнимой единицы
 
 $$i^{2} = -1$$
 
@@ -73,7 +71,8 @@ $$i^{2} = -1$$
 4 + i
 \end{equation}
 
-** Найти решения уравнения и нарисовать их на комплексной прямой
+
+* Найти решения уравнения и нарисовать их на комплексной прямой
 
 $$2z^{2} + (5 - 4i)z - 5i = 0$$
 
@@ -93,17 +92,17 @@ $$2z^{2} + (5 - 4i)z - 5i = 0$$
 
 $$2z^{2} + (5 - 4i)z - 5i = 0$$
 
-*** Воспользуемся формулой нахождения дескриминанта
+** Воспользуемся формулой нахождения дескриминанта
 
 $$\Delta = b^2-4ac$$
 
 $$\Delta = (5 - 4i)^{2} - 4 \cdot 2 \cdot (-5i)$$
 
-**** Представм квадрат в виде умножения
+*** Представм квадрат в виде умножения
 
 $$(5 - 4i)(5 - 4i)$$
 
-**** Воспользуемся формулой умножения комплексных чисел
+*** Воспользуемся формулой умножения комплексных чисел
 
 $$(a+bi)(c+di) = (ac-bd) + (bc+ad)i$$
 
@@ -115,7 +114,7 @@ $$(a+bi)(c+di) = (ac-bd) + (bc+ad)i$$
 9 - 40i
 \end{equation}
 
-**** Найдем дескриминант
+*** Найдем дескриминант
 
 \begin{equation}
 \Delta = 9 - 40j - 4 \cdot 2 \cdot (-5i) =
@@ -126,13 +125,13 @@ $$(a+bi)(c+di) = (ac-bd) + (bc+ad)i$$
 9
 \end{equation}
 
-*** Воспользуемся формулой нахождения корней квадратного уравнения
+** Воспользуемся формулой нахождения корней квадратного уравнения
 
 $$x_{1,2} = \frac{-b \pm \sqrt {\Delta}}{2a}$$
 
 $$x_{1,2} = \frac{-(5 - 4j) \pm \sqrt {9}}{2 \cdot 2}$$
 
-**** Раскоем скобки
+*** Раскоем скобки
 
 \begin{equation}
 -(5 - 4i) =
@@ -141,19 +140,19 @@ $$x_{1,2} = \frac{-(5 - 4j) \pm \sqrt {9}}{2 \cdot 2}$$
 -5 + 4i
 \end{equation}
 
-**** Избавимся от корня
+*** Избавимся от корня
 
 $$x_{1,2} = \frac{-5 + 4i \pm 3}{2 \cdot 2}$$
 
-**** Посчитаем знаменатель
+*** Посчитаем знаменатель
 
 $$x_{1,2} = \frac{-5 + 4i \pm 3}{4}$$
 
-**** Найдем x1 и x2
+*** Найдем x1 и x2
 
 $$x_{1,2} = \frac{-5 + 4i \pm 3}{4}$$
 
-***** x1
+**** x1
 
 \begin{equation}
 x_{1} = \frac{-5 + 4i + 3}{4} =
@@ -162,7 +161,7 @@ x_{1} = \frac{-5 + 4i + 3}{4} =
 -0,5 + i
 \end{equation}
 
-***** x2
+**** x2
 
 \begin{equation}
 x_{1} = \frac{-5 + 4i - 3}{4} =
@@ -171,7 +170,7 @@ x_{1} = \frac{-5 + 4i - 3}{4} =
 \end{equation}
 
 
-** Найти все значения и записать ответ в показательной форме
+* Найти все значения и записать ответ в показательной форме
 
 
 $\sqrt[4]{16i}$
@@ -241,87 +240,152 @@ $$\sqrt[4]{16}=2$$
 2e^{-\frac{3 i \pi}{8}}
 \end{equation}
 
-** Разложите на множители многочлен
-*** Дано
+
+* Разложите на множители многочлен
+** Дано
 $$f(x) = x^{4} + x^{3} + x^{2} + x -1$$
 
-*** Solve
+** Solve
 
-**** Check $x$
+*** Check $x$
 #+NAME: initial
 #+BEGIN_SRC python
-  x = 11
-  return x
-#+END_SRC
+  from sympy.solvers import solve
+  from sympy import Symbol
 
-#+RESULTS: initialize
-: 11
+  x = Symbol('x')
 
-**** Without $f(x)$
+  return solve(x**2 - 1, x)
+  #+END_SRC
+
+#+RESULTS: initial
+| -1 | 1 |
+
+*** Without $f(x)$
 
 $$x^{4} + x^{3} + x^{2} + x -1$$
 
-#+BEGIN_SRC python :var x=initial
-  a = x**4 + x**3 -x**2 +x -2
+#+BEGIN_SRC python
+  from sympy.solvers import solve
+  from sympy import Symbol
 
-  return a
+  x = Symbol('x')
+
+  return solve(x**4 + x**3 -x**2 +x -2, x)
 #+END_SRC
 
 #+RESULTS:
-: 15860
+| -2 | 1 | -I | I |
 
-**** Simplify
+*** Simplify
 
-***** Factor all $x$
-
+**** Factor all $x$
 $$x(x^{3} + x^{2} - x + 1) -2$$
 
-#+BEGIN_SRC python :var x=initial
-  return x * (x**3 + x**2 - x + 1) - 2
+#+BEGIN_SRC python
+  from sympy.solvers import solve
+  from sympy import Symbol
+
+  x = Symbol('x')
+
+  return solve(x * (x**3 + x**2 - x + 1) - 2, x)
 #+END_SRC
 
 #+RESULTS:
-: 15860
+| -2 | 1 | -I | I |
 
-****** Factor in brackets
-
+***** Factor in brackets
 $$x(x^{2} (x + 1) - x + 1) -2$$
 
-#+BEGIN_SRC python :var x=initial
-  return x * (x**2 * (x + 1) - x + 1) - 2
+#+BEGIN_SRC python
+  from sympy.solvers import solve
+  from sympy import Symbol
+
+  x = Symbol('x')
+
+  return solve(x * (x**2 * (x + 1) - x + 1) - 2)
 #+END_SRC
 
 #+RESULTS:
-: 15860
+| -2 | 1 | -I | I |
 
 ****** Defactor
 
 ******* first
-#+BEGIN_SRC python :var x=initial
-  return x**2*(x**2+x)-x**2+x-2
+
+$$x^2(x^2+x)-x^2+x-2$$
+
+#+BEGIN_SRC python
+  from sympy.solvers import solve
+  from sympy import Symbol
+
+  x = Symbol('x')
+  
+  return solve(x**2*(x**2+x)-x**2+x-2)
 #+END_SRC
 
 #+RESULTS:
-: 15860
+| -2 | 1 | -I | I |
 
 ******* second
-#+BEGIN_SRC python :var x=initial
-  return x**3*(x+1)-x**2+x-2
+
+$$x^3(x+1)-x^2+x-2$$
+
+******** src
+#+BEGIN_SRC python
+  from sympy.solvers import solve
+  from sympy import Symbol
+
+  x = Symbol('x')
+
+  return solve(x**3*(x+1)-x**2+x-2)
 #+END_SRC
 
 #+RESULTS:
-: 15860
+| -2 | 1 | -I | I |
 
 ******* third
-#+BEGIN_SRC python :var x=initial
-  return x**3*(x+1)-x*(x-1)-2
+
+$$x^3(x+1)-x(x-1)-2$$
+
+******** src
+#+BEGIN_SRC python
+  from sympy.solvers import solve
+  from sympy import Symbol
+
+  x = Symbol('x')
+  
+  return solve(x**3*(x+1)-x*(x-1)-2)
 #+END_SRC
 
 #+RESULTS:
-: 15860
+| -2 | 1 | -I | I |
+
+******* Next
+#+BEGIN_SRC python
+  from sympy.solvers import solve
+  from sympy import Symbol
+
+  x = Symbol('x')
+  
+  return solve((x+1)*(x**3-x)-2)
+#+END_SRC
+
+#+RESULTS:
+| -1/4 | - | sqrt | (-10/ (9* (-91/216 + sqrt (201) /24) ** (1/3)) + 11/12 + 2* (-91/216 + sqrt (201) /24) ** (1/3)) | /2 | - | sqrt | (-3/ (4*sqrt (-10/ (9* (-91/216 + sqrt (201) /24) ** (1/3)) + 11/12 + 2* (-91/216 + sqrt (201) /24) ** (1/3))) - 2* (-91/216 + sqrt (201) /24) ** (1/3) + 11/6 + 10/ (9* (-91/216 + sqrt (201) /24) ** (1/3))) | /2 | -1/4 | - | sqrt | (-10/ (9* (-91/216 + sqrt (201) /24) ** (1/3)) + 11/12 + 2* (-91/216 + sqrt (201) /24) ** (1/3)) | /2 | + | sqrt | (-3/ (4*sqrt (-10/ (9* (-91/216 + sqrt (201) /24) ** (1/3)) + 11/12 + 2* (-91/216 + sqrt (201) /24) ** (1/3))) - 2* (-91/216 + sqrt (201) /24) ** (1/3) + 11/6 + 10/ (9* (-91/216 + sqrt (201) /24) ** (1/3))) | /2 | -1/4 | + | sqrt | (-10/ (9* (-91/216 + sqrt (201) /24) ** (1/3)) + 11/12 + 2* (-91/216 + sqrt (201) /24) ** (1/3)) | /2 | + | sqrt | (-2* (-91/216 + sqrt (201) /24) ** (1/3) + 11/6 + 10/ (9* (-91/216 + sqrt (201) /24) ** (1/3)) + 3/ (4*sqrt (-10/ (9* (-91/216 + sqrt (201) /24) ** (1/3)) + 11/12 + 2* (-91/216 + sqrt (201) /24) ** (1/3)))) | /2 | -sqrt | (-2* (-91/216 + sqrt (201) /24) ** (1/3) + 11/6 + 10/ (9* (-91/216 + sqrt (201) /24) ** (1/3)) + 3/ (4*sqrt (-10/ (9* (-91/216 + sqrt (201) /24) ** (1/3)) + 11/12 + 2* (-91/216 + sqrt (201) /24) ** (1/3)))) | /2 | - | 1/4 | + | sqrt | (-10/ (9* (-91/216 + sqrt (201) /24) ** (1/3)) + 11/12 + 2* (-91/216 + sqrt (201) /24) ** (1/3)) | /2 |
+
+****** Next
+
+#+BEGIN_SRC python :var x=initial
+  return (x+1)*x*(x**2-1)-2
+#+END_SRC
+
+#+RESULTS:
+: 15838
 
 
-***** Factor by grouping
+
+**** Factor by grouping
 
 $$x^{2}(x^{2} + x) - x^{2} + x -2$$
 
@@ -333,13 +397,131 @@ $$x^{2}(x^{2} + x) - x^{2} + x -2$$
 : 15860
 
 
-** Выделите целую часть дроби
+* Выделите целую часть дроби
 
 $$\frac{x^{3} + 6x^{2} + 1}{x^{2} + 2}$$
 
-** Разложите дробь на простейшие
+\(
+
+\)
+
+\begin{align*}
+
+\end{align*}
+
+#+name: hello-world
+#+BEGIN_SRC latex
+\LaTeX
+x + 1
+#+END_SRC
+
+#+RESULTS: hello-world
+#+BEGIN_LaTeX
+\LaTeX
+x + 1
+#+END_LaTeX
+
+
+#+INCLUDE: "test.tex" src latex
+
+
+* Разложите дробь на простейшие
 
 $$\frac{2x^{2} - 4}{x^{3} - 4x}$$
+
+** Factorize denominator
+
+\begin{equation}
+x^{3} - 4x =
+x^2 \cdot x-4x =
+x(x^2-4) =
+x(x^2-2^2) =
+x((x-2)(x+2)) =
+x(x-2)(x+2)
+\end{equation}
+
+\begin{equation}
+\frac{2x^{2} - 4}{x^{3} - 4x} =
+\frac{2x^{2} - 4}{x(x-2)(x+2)}
+\end{equation}
+
+** By formula
+
+\begin{equation}
+\frac{2x^2-4}{x(x-2)(x+2)} =
+\frac{A}{x} + \frac{B}{x-2} + \frac{C}{x+2} =
+\frac{A(x-2)(x+2)}{x(x-2)(x+2)} + \frac{B(x+2)x}{x(x-2)(x+2)} + \frac{C(x-2)x}{x(x-2)(x+2)} =
+\frac{A(x-2)(x+2) + B(x+2)x + C(x-2)x}{x(x-2)(x+2)}
+\end{equation}
+
+$$A(x-2)(x+2) + B(x+2)x + C(x-2)x$$
+
+\begin{equation}
+2x^2 - 4 = A(x-2)(x+2) + B(x+2)x + C(x-2)x
+\end{equation}
+
+** if x = -2
+
+\begin{equation}
+2 \cdot -2^2 - 4 = 2 \cdot 4 - 4 = 8 - 4 = 4
+\end{equation}
+
+\begin{equation}
+A(-2-2)(-2+2)+B(-2+2)\cdot(-2)+C(-2-2)\cdot(-2) =
+C(-2-2)\cdot(-2)
+\end{equation}
+
+\begin{align*}
+4 = C(-4)\cdot(-2)\\
+4 = C8\\
+4 = 8C\\
+C = \frac{4}{8} = \frac{1}{2}
+\end{align*}
+
+** if x = 2
+
+\begin{equation}
+2 \cdot 2^2 - 4 = 2 \cdot 4 - 4 = 8 - 4 = 4
+\end{equation}
+
+\begin{equation}
+A(2-2)(2+2)+B(2+2)\cdot(2)+C(2-2)\cdot(2) =
+B(2+2)\cdot(2)
+\end{equation}
+
+\begin{align*}
+4 = B(2+2)\cdot(2)\\
+4 = B(4)\cdot(2)\\
+4 = B(8)\\
+4 = 8B\\
+B = \frac{4}{8} = \frac{1}{2}
+\end{align*}
+
+** if x = 0
+
+\begin{equation}
+2 \cdot 0^2 - 4 = -4
+\end{equation}
+
+\begin{equation}
+A(0-2)(0+2)+B(0+2)\cdot0+C(0-2)\cdot0 =
+A(0-2)(0+2)
+\end{equation}
+
+\begin{align*}
+-4 = A(0-2)(0+2)\\
+-4 = A(-2)\cdot2\\
+-4 = A(-4)\\
+-4 = -4A\\
+A = 1
+\end{align*}
+
+** Final answer
+
+\begin{equation}
+\frac{1}{x} + \frac{\frac{1}{2}}{x-2} + \frac{\frac{1}{2}}{x+2} =
+\frac{1}{x} + \frac{1}{2(x-2)} + \frac{1}{2(x+2)}
+\end{equation}
 
 * Links
 
@@ -369,6 +551,8 @@ $$\frac{2x^{2} - 4}{x^{3} - 4x}$$
 - [[https://www.youtube.com/watch?v=d8-LO6FCna0][Fundamental theorem of algebra | Polynomial and rational functions | Algebra II | Khan Academy - YouTube]]
 - [[https://www.youtube.com/watch?v=l6zdtKrv2nk][What's a Term in a Polynomial? - YouTube]]
 - [[https://www.youtube.com/watch?v=RIHqIjt9jy0][How to factorise a cubic polynomial (Method 1) : ExamSolutions - YouTube]]
+- [[https://www.youtube.com/watch?v=JCq1XFDVZA4][Long Division Song (Ho Hey Parody) - YouTube]]
+- [[https://www.youtube.com/watch?v=FXgV9ySNusc][Polynomial division | Polynomial and rational functions | Algebra II | Khan Academy - YouTube]]
 
 ** math channels
 - [[https://www.youtube.com/user/VirtualNerd/videos][Virtual Nerd: Real Help - YouTube]]
@@ -389,4 +573,17 @@ $$2 + 3 \sqrt{-1} = 2 + 3 \sqrt{-1}$$
 
 ***** Some cases where new numbers behave strangely
 $$\sqrt{5} \cdot \sqrt{2} = \sqrt{10}$$
+
+
+* Partial fraction expausion
+
+[[https://www.khanacademy.org/math/algebra-home/alg-rational-expr-eq-func/alg-partial-fraction/v/partial-fraction-expansion-1][(1) Intro to partial fraction expansion | Partial fraction expansion | Rational expressions, equations, & functions | Algebra | Khan Academy]]
+
+$$\frac{x^2-2x-37}{x^2-3x-40}$$
+
+** Be sure numerator is lower degree the denominator
+
+To check this, you can devide denominator by numerator
+
+$$\frac{x^2-3x-40}{x^2-2x-37}$$
 
