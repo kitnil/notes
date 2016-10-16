@@ -1,0 +1,24 @@
+#+TITLE: Комплексные числа и многочлены
+
+* Выполните действия
+
+#+BEGIN_SRC python
+  from sympy.solvers import solve
+  from sympy import Symbol
+
+  i = Symbol('i')
+
+  #complex_number1 = 3 - i
+  #complex_number2 = 2 + i
+  #complex_number3 = -2 +3*i
+  #exponentiation1 = i**11
+  result = solve((3-i)/(2+i)+i**11*(-2+3*i), i)
+
+  return result
+
+#+END_SRC
+
+#+RESULTS:
+: None
+
+$$(3 - i)$$
