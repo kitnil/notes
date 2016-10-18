@@ -264,7 +264,7 @@ x_{1} = \frac{-5 + 4i - 3}{4} &= \\
 \end{equation}
 ** График
 
-#+begin_src gnuplot :file file.png
+#+begin_src gnuplot :file plot1.png
 reset
 
 set xlabel "Re"
@@ -293,7 +293,7 @@ plot 1/0
 #+end_src
 
 #+RESULTS:
-[[file:file.png]]
+[[file:plot1.png]]
 
 ** Ответ
 
