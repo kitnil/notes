@@ -76,17 +76,22 @@ $$4 + i$$
 
 $$2z^{2} + (5 - 4i)z - 5i = 0$$
 
-** Воспользуемся формулой нахождения дескриминанта
+** Формула нахождения дескриминанта (Discriminant)
 
 $$\Delta = b^2-4ac$$
 
 $$\Delta = (5 - 4i)^{2} - 4 \cdot 2 \cdot (-5i)$$
 
-*** Представим квадрат в виде умножения
+*** Представить квадрат в виде умножения
 
-$$(5 - 4i)(5 - 4i)$$
+\begin{equation}
+\begin{aligned}
+(5 - 4)^2 &= \\
+&=(5 - 4i)(5 - 4i)
+\end{aligned}
+\end{equation}
 
-*** Воспользуемся формулой умножения комплексных чисел
+*** Умножение комплексных чисел (Complex numbers multiplication)
 
 $$(a + bi)(c + di) = (ac - bd) + (bc + ad)i$$
 
@@ -100,19 +105,20 @@ $$(a + bi)(c + di) = (ac - bd) + (bc + ad)i$$
 \end{aligned}
 \end{equation}
 
-*** Найдем дескриминант
+*** Дескриминант (Discriminant)
 
 \begin{equation}
 \begin{aligned}
-\Delta = 9 - 40i - 4 \cdot 2 \cdot (-5i) &= \\
-                                         &= 9 - 40i - 4 \cdot 2 \cdot (-5i) \\
-                                         &= 9 - 40i - 8 \cdot (-5i) \\
-                                         &= 9 - 40i - (-40i) \\
-                                         &= 9 - 40i + 40i \\
+\Delta &= \\
+&= (5 - 4i)(5 - 4i) - 4 \cdot 2 \cdot (-5i) \\
+&= 9 - 40i - 4 \cdot 2 \cdot (-5i) \\
+&= 9 - 40i - 8 \cdot (-5i) \\
+&= 9 - 40i - (-40i) \\
+&= 9 - 40i + 40i \\
 \end{aligned}
 \end{equation}
 
-**** Сложение комплексных чисел (Complex number addition)
+*** Сложение комплексных чисел (Complex number addition)
 $$(a + bi) + (c + di) = (a + c) + (b + d)i$$
 
 \begin{equation}
@@ -125,13 +131,16 @@ $$(a + bi) + (c + di) = (a + c) + (b + d)i$$
 \end{aligned}
 \end{equation}
 
+*** Дескриминант (Discriminant)
+$$\Delta = 9$$
+
 ** Формула нахождения корней квадратного уравнения (Quadratic formula)
 
 $$x_{1,2} = \frac{-b \pm \sqrt {\Delta}}{2a}$$
 
 $$x_{1,2} = \frac{-(5 - 4i) \pm \sqrt {9}}{2 \cdot 2}$$
 
-*** Раскоем скобки
+*** (Factoring)
 
 \begin{equation}
 \begin{aligned}
@@ -142,15 +151,15 @@ $$x_{1,2} = \frac{-(5 - 4i) \pm \sqrt {9}}{2 \cdot 2}$$
 \end{aligned}
 \end{equation}
 
-*** Избавимся от корня
+*** Квадратный корень (Square root)
 
 $$x_{1,2} = \frac{-5 + 4i \pm 3}{2 \cdot 2}$$
 
-*** Посчитаем знаменатель
+*** Знаменатель (Denominator)
 
 $$x_{1,2} = \frac{-5 + 4i \pm 3}{4}$$
 
-*** Найдем $x1$ и $x2$
+*** $x1$ и $x2$
 
 $$x_{1,2} = \frac{-5 + 4i \pm 3}{4}$$
 
