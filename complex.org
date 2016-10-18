@@ -295,10 +295,22 @@ $$\sqrt[4]{16}=2$$
 \end{align}
 
 * TODO Разложите на множители многочлен
-** Дано
-$$f(x) = x^{4} + x^{3} + x^{2} + x -1$$
+$$f(x) = x^{4} + x^{3} - x^{2} + x - 2$$
 
-** Solve
+** Решение
+
+*** Теорема Безу (Polynomial remainder theorem)
+
+\begin{equation}
+\begin{aligned}
+f(1) = 1^{4} + 1^{3} - 1^{2} + 1 - 2 &= \\
+                                     &= 1^4 + 1^3 -(1)^2 + 1^2 - 2 = \\
+                                     &= 1 + 1 - 1 + 1 - 2 = \\
+                                     &= 2 - 2 = \\
+                                     &= 0
+\end{aligned}
+\end{equation}
+$$\Rightarrow x - 1$$
 
 *** Without $f(x)$
 
