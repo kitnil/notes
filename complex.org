@@ -163,8 +163,6 @@ $$x_{1,2} = \frac{-5 + 4i \pm 3}{4}$$
 
 $$x_{1,2} = \frac{-5 + 4i \pm 3}{4}$$
 
-**** $x_1$
-
 \begin{equation}
 \begin{aligned}
 x_{1} = \frac{-5 + 4i + 3}{4} &= \\
@@ -173,8 +171,6 @@ x_{1} = \frac{-5 + 4i + 3}{4} &= \\
                               &= -0,5 + i
 \end{aligned}
 \end{equation}
-
-**** $x_2$
 
 \begin{equation}
 \begin{aligned}
@@ -337,7 +333,12 @@ $$(x + 2)(x^2 + 1)(x - 1)$$
 
 $$\frac{x^{3} + 6x^{2} + 1}{x^{2} + 2}$$
 
+** (Polynomial long division)
+
 $$\polylongdiv{x^3 + 6x^2 + 1}{x^2 + 2}$$
+
+** Ответ
+$$-2x - 11$$
 
 * Разложите дробь на простейшие
 
@@ -361,7 +362,7 @@ x^{3} - 4x &= \\
 \frac{2x^{2} - 4}{x(x-2)(x+2)}
 \end{equation}
 
-** By formula
+** Разложение дроби на простейшие, используя неопределенные коэффициенты
 
 \begin{equation}
 \begin{aligned}
@@ -378,28 +379,42 @@ $$A(x-2)(x+2) + B(x+2)x + C(x-2)x$$
 2x^2 - 4 = A(x-2)(x+2) + B(x+2)x + C(x-2)x
 \end{equation}
 
-** if x = -2
+** if $x = -2$
 
 \begin{equation}
-2 \cdot -2^2 - 4 = 2 \cdot 4 - 4 = 8 - 4 = 4
+\begin{aligned}
+2x^2-4 &= \\
+&= 2 \cdot -2^2 - 4 \\
+&= 2 \cdot 4 - 4 \\
+&= 8 - 4 \\
+&= 4
+\end{aligned}
 \end{equation}
 
 \begin{equation}
-A(-2-2)(-2+2)+B(-2+2)\cdot(-2)+C(-2-2)\cdot(-2) =
-C(-2-2)\cdot(-2)
+\begin{aligned}
+A(-2-2)(-2+2)+B(-2+2)\cdot(-2)+C(-2-2)\cdot(-2) &= \\
+&= C(-2-2)\cdot(-2)
+\end{aligned}
 \end{equation}
 
-\begin{align*}
-4 = C(-4)\cdot(-2)\\
-4 = C8\\
-4 = 8C\\
-C = \frac{4}{8} = \frac{1}{2}
-\end{align*}
+\begin{aligned}
+4 &= C(-4)\cdot(-2)\\
+4 &= C8\\
+4 &= 8C\\
+C &= \frac{4}{8} = \frac{1}{2}
+\end{aligned}
 
-** if x = 2
+** if $x = 2$
 
 \begin{equation}
-2 \cdot 2^2 - 4 = 2 \cdot 4 - 4 = 8 - 4 = 4
+\begin{aligned}
+2x^2-4 &= \\
+&= 2 \cdot 2^2 - 4 \\
+&= 2 \cdot 4 - 4 \\
+&= 8 - 4 \\
+&= 4
+\end{aligned}
 \end{equation}
 
 \begin{equation}
@@ -407,18 +422,20 @@ A(2-2)(2+2)+B(2+2)\cdot(2)+C(2-2)\cdot(2) =
 B(2+2)\cdot(2)
 \end{equation}
 
-\begin{align*}
-4 = B(2+2)\cdot(2)\\
-4 = B(4)\cdot(2)\\
-4 = B(8)\\
-4 = 8B\\
-B = \frac{4}{8} = \frac{1}{2}
-\end{align*}
+\begin{aligned}
+4 &= B(2+2)\cdot(2)\\
+4 &= B(4)\cdot(2)\\
+4 &= B(8)\\
+4 &= 8B\\
+B &= \frac{4}{8} = \frac{1}{2}
+\end{aligned}
 
-** if x = 0
+** if $x = 0$
 
 \begin{equation}
-2 \cdot 0^2 - 4 = -4
+2x^2-4 &= \\
+&= 2 \cdot 0^2 - 4 \\
+&= -4
 \end{equation}
 
 \begin{equation}
@@ -426,15 +443,15 @@ A(0-2)(0+2)+B(0+2)\cdot0+C(0-2)\cdot0 =
 A(0-2)(0+2)
 \end{equation}
 
-\begin{align*}
--4 = A(0-2)(0+2)\\
--4 = A(-2)\cdot2\\
--4 = A(-4)\\
--4 = -4A\\
-A = 1
-\end{align*}
+\begin{aligned}
+-4 &= A(0-2)(0+2)\\
+-4 &= A(-2)\cdot2\\
+-4 &= A(-4)\\
+-4 &= -4A\\
+A &= 1
+\end{aligned}
 
-** Final answer
+** Ответ
 
 \begin{equation}
 \frac{1}{x} + \frac{\frac{1}{2}}{x-2} + \frac{\frac{1}{2}}{x+2} =
