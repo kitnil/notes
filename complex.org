@@ -312,38 +312,13 @@ f(1) = 1^{4} + 1^{3} - 1^{2} + 1 - 2 &= \\
 \end{equation}
 $$\Rightarrow x - 1$$
 
-*** Without $f(x)$
+** (Polynomial synthetic division)
 
 $$x^{4} + x^{3} + x^{2} + x -1$$
 
-*** Simplify
-
-**** Factor all $x$
-$$x(x^{3} + x^{2} - x + 1) -2$$
-
-***** Factor in brackets
-$$x(x^{2} (x + 1) - x + 1) -2$$
-
-****** Defactor
-
-******* first
-
-$$x^2(x^2+x)-x^2+x-2$$
-
-******* second
-
-$$x^3(x+1)-x^2+x-2$$
-
-******* third
-
-$$x^3(x+1)-x(x-1)-2$$
 
 
-****** Next
 
-**** Factor by grouping
-
-$$x^{2}(x^{2} + x) - x^{2} + x -2$$
 
 * Выделите целую часть дроби
 
