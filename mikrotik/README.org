@@ -1,0 +1,39 @@
+#+TITLE: Mikrotik notes
+
+* [[http://forum.mikrotik.com/viewtopic.php?t=32721][Create Schedule for WiFi - MikroTik RouterOS]]
+** CLI "code" to create the scripts:
+#+BEGIN_EXAMPLE
+/system script
+
+add name=EnableWLAN policy=ftp,reboot,read,write,policy,test,winbox,password,sniff source="interface wireless enable wlan1"
+add name=DisableWLAN policy=ftp,reboot,read,write,policy,test,winbox,password,sniff source="interface wireless disable wlan1"
+#+END_EXAMPLE
+
+NOTE: change the name of "wlan1" to match the PHYSICAL interface you
+want to turn off and on.
+
+After you paste the lines into a terminal session,
+go to system/scripts and verify the scripts created correctly.
+
+You can test run the scripts by pressing run.
+
+Remember, you will be turning off and on an interface when you test.
+
+Then go to system/schedual.
+
+Next, create two scheduals.
+
+One will run the "EnableWLAN"
+the other will run the "DisableWLAN" and be schedualed to run accordingly.
+
+Make sure the local clock is set.
+
+** Screenshots
+- http://i.imgur.com/VBsYdkBh.png
+- http://i.imgur.com/W7TLdzbh.png
+- http://i.imgur.com/v8ppS26h.png
+- http://i.imgur.com/dCKLF4Hh.png
+- http://i.imgur.com/hucjOyIh.png
+- http://i.imgur.com/VSknwXyh.png
+- http://i.imgur.com/OOAPghwh.png
+- http://i.imgur.com/lkfQRG8h.png

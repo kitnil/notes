@@ -2,6 +2,9 @@
 #+AUTHOR: Oleg Pykhalov
 #+EMAIL: go.wigust@gmail.com
 
+* [[https://www.reddit.com/r/emacs/comments/1m73gs/how_do_you_manage_multiple_workspaces/][How do you manage multiple workspaces? : emacs]]
+* gnus
+- [[https://www.gnu.org/software/emacs/manual/gnus.html][Gnus Manual]]
 * Documentation
 ** [[https://github.com/syl20bnr/spacemacs/tree/master/layers/org][Spacemacs]]
 *** [[https://github.com/syl20bnr/spacemacs/tree/master/layers/org][Official documentation]]
@@ -22,7 +25,8 @@
 [[http://www.gnu.org/software/emacs/manual/html_mono/eintr.html][An Introduction to Programming in Emacs Lisp]]
 ** Help
  describe-mode -- <f1> m
-
+** cheatsheets
+- [[http://orgmode.org/worg/orgcard.html][Org-Mode Reference Card]]
 * Video
 
 ** org-mode
@@ -49,9 +53,11 @@
 *** [[https://www.youtube.com/watch?v=JyvpSVl4_dg][org ref show]]
 *** [[https://www.youtube.com/watch?v=2t925KRBbFc][Introduction to org-ref]]
  org-ref features that are available in the package on Melpa
-
+* magit
+- [[https://github.com/magit/magit/wiki/Cheatsheet][Cheatsheet · magit/magit Wiki]]
 
 * org-mode
+** [[http://ehneilsen.net/notebook/orgExamples/org-examples.html][Emacs org-mode examples and cookbook]]
 ** Visibility cycling
  | Key             | Function                   |
  | Tab             | show current               |
@@ -283,4 +289,15 @@ it is a general-purpose mechanism to comment regions)
 (see Changing the included text prefix).
 
 * Git (Magit)
-[[http://daemianmack.com/magit-cheatsheet.html][cheatsheet]]
+** [[http://daemianmack.com/magit-cheatsheet.html][cheatsheet]]
+** [[https://www.emacswiki.org/emacs/Magit][Emacs wiki]]
+* Sites
+** [[https://melpa.org][Melpa (Milkypostman’s Emacs Lisp Package Archive)]]
+*** Up-to-date packages built on our servers from upstream source
+*** Installable in any Emacs with 'package.el' - no local version-control tools needed
+*** Curated - no obsolete, renamed, forked or randomly hacked packages
+*** Comprehensive - more packages than any other archive
+*** Automatic updates - new commits result in new packages
+*** Extensible - contribute recipes via github, and we'll build the packages
+** [[https://spin.atomicobject.com/2016/05/27/write-emacs-package/][A Simple Guide to Writing & Publishing Emacs Packages]]
+
