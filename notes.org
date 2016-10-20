@@ -1,0 +1,8 @@
+* Quick how to load only magit
+
+SPC q D then enter magit then RET
+This will restart stock emacs with just magit loaded
+M-x magit-status RET
+And try to commit from there (? in magit status window to have the help if needed).
+
+Сергей и Аня
