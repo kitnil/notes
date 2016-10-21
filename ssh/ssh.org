@@ -37,3 +37,8 @@ ssh -i ~/.ssh/ubuntu-vm-pf/id_rsa liviu@http.liviubalan.com
 #+END_SRC
 * Keys
 [[https://blog.g3rt.nl/upgrade-your-ssh-keys.html][Upgrade your SSH keys!]]
+
+* cheatsheet
+
+In ssh, using ~C to enter command mode and make port forwards or
+whatever right there in your ssh session.
