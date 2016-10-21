@@ -27,10 +27,14 @@
     :BEAMER_ENV: block
     :END:
     for contributing to the discussion
+
 **** This will be formatted as a beamer note                       :B_note:
      :PROPERTIES:
      :BEAMER_env: note
      :END:
 ** Frame 2 (where we will not use columns)
-*** Request
+*** Reques
+    #+ATTR_LATEX: :width 0.38\textwidth
+    [[./emacs.png]]
+*** Omg
     Please test this stuff!
