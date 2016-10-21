@@ -1,0 +1,17 @@
+#+TITLE: bash notes
+
+* Execute from history
+#+BEGIN_SRC bash
+!<first few letters of command to look> 
+#+END_SRC
+
+* Repeat last command.
+#+BEGIN_SRC bash
+!! 
+#+END_SRC
+
+* Equal to cd ~/test
+#+BEGIN_SRC bash
+mkdir ~/test
+cd !$
+#+END_SRC
