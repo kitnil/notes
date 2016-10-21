@@ -3,11 +3,13 @@
 #+OPTIONS: H:2 toc:t num:t
 #+LATEX_CLASS: beamer
 #+LATEX_CLASS_OPTIONS: [presentation]
-#+BEAMER_THEME: Madrid
+#+LATEX_CLASS_OPTIONS: [aspectratio=169]
+#+BEAMER_THEME: default
+#+BEAMER_COLOR_THEME: crane
 #+COLUMNS: %45ITEM %10BEAMER_ENV(Env) %10BEAMER_ACT(Act) %4BEAMER_COL(Col) %8BEAMER_OPT(Opt)
 
 # C-c C-e l P -- (org-beamer-export-to-pdf) -- Export as LaTeX and then process to PDF.
-
+# https://www.hartwork.org/beamer-theme-matrix/
 * This is the first structural section
 
 ** Frame 1
