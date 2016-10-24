@@ -1,0 +1,17 @@
+#+TITLE: Pulseaudio notes
+
+* [[https://habrahabr.ru/post/243977/][Давим шумы средствами PulseAudio / Хабрахабр]]
+#+BEGIN_EXAMPLE
+PULSE_PROP="filter.want=echo-cancel" skype
+#+END_EXAMPLE
+
+Append to file /etc/pulse/default.pa
+#+BEGIN_EXAMPLE
+load-module module-echo-cancel source_name=noechosource sink_name=noechosink
+set-default-source noechosource
+#+END_EXAMPLE
+
+
+
+
+
