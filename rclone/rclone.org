@@ -1,5 +1,5 @@
-#+TITLE: Бесконечные облачные хранилища
-#+AUTHOR: Олег Пыхалов
+#+TITLE: rclone
+#+AUTHOR: fossmap
 #+OPTIONS: H:2 toc:t num:t
 #+LATEX_CLASS: beamer
 #+LATEX_CLASS_OPTIONS: [presentation]
@@ -8,87 +8,7 @@
 #+BEAMER_THEME: default
 #+BEAMER_COLOR_THEME: crane
 #+COLUMNS: %45ITEM %10BEAMER_ENV(Env) %10BEAMER_ACT(Act) %4BEAMER_COL(Col) %8BEAMER_OPT(Opt)
-#+LaTeX_HEADER: \usepackage[utf8]{inputenc}
-#+LaTeX_HEADER: \usepackage[T1,T2A]{fontenc}
-#+LaTeX_HEADER: \usepackage[english,russian]{babel}
 
-* Введение
+* Overview
 
-** Rclone программа командной строки для синхронизации файлов и директорий
-- Google Drive
-- Amazon S3
-- Openstack Swift / Rackspace cloud files / Memset Memstore
-- Dropbox
-- Google Cloud Storage
-- Amazon Drive
-- Microsoft One Drive
-- Hubic
-- Backblaze B2
-- Yandex Disk
-- The local filesystem
-
-** Особенности
-- Постоянная проверка MD5/SHA1 хэшэй для целостности файлов
-- Сохранение временных меток файлов
-- Partial syncs supported on a whole file basis
-- Copy mode to just copy new/changed files
-- Sync (one way) mode to make a directory identical
-- Check mode to check for file hash equality
-- Can sync to and from network, eg two different cloud accounts
-- Optional encryption (Crypt)
-- Optional FUSE mount (rclone mount)
-
-** Ресурсы
-- [[http://rclone.org/][rclone - rsync for cloud storage]]
-- [[http://rclone.org/commands/rclone_config/][rclone config]]
-- [[http://rclone.org/crypt/][Crypt]]
-
-* Установка
-
-** Системы требования
-
-*** Установить компилятор языка go не меньше версии 1.5
-#+BEGIN_EXAMPLE
-sudo apt-get install -t jessie-backports golang
-#+END_EXAMPLE
-
-*** Добавить переменную GOPATH в $HOME/.profile
-#+BEGIN_EXAMPLE
-export GOPATH=$HOME/.go >> $HOME/.profile
-#+END_EXAMPLE
-
-*** Перелогиниться для примениня $HOME/.profile
-#+BEGIN_EXAMPLE
-gnome-session-quit
-#+END_EXAMPLE
-
-** Установка или обновление
-
-*** Установка из исходников
-#+BEGIN_EXAMPLE
-go get github.com/ncw/rclone
-#+END_EXAMPLE
-
-*** Обновление
-#+BEGIN_EXAMPLE
-go get -u -v github.com/ncw/rclone/...
-#+END_EXAMPLE
-
-* Настройка
-
-** Привязка учетной записи
-#+BEGIN_EXAMPLE
-rclone config
-#+END_EXAMPLE
-
-** Шифрование настроек
-
-*** Войти в интерактивную сессию настройки
-#+BEGIN_EXAMPLE
-rclone config
-#+END_EXAMPLE
-
-*** Выбрать
-s) Set configuration password
-
-
+** 
