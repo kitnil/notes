@@ -311,3 +311,12 @@ it is a general-purpose mechanism to comment regions)
 - [[https://github.com/purcell/emacs.d][purcell/emacs.d: An Emacs configuration bundle with batteries included]]
 * Bad things
 - [[https://emacs.stackexchange.com/questions/4237/how-to-prevent-emacs-from-breaking-hard-links][files - How to prevent Emacs from breaking hard links? - Emacs Stack Exchange]]
+* Howto
+** [[https://stackoverflow.com/questions/3527142/how-do-you-redo-changes-after-undo-with-emacs][How do you 'redo' changes after 'undo' with Emacs? - Stack Overflow]]
+
+To undo: C-_
+
+To redo after a undo: C-g C-_
+
+Type multiple times on C-_ to redo what have been undone by C-_ To redo an emacs command multiple times, execute your command then type C-xz and then type many times on z key to repeat the command (interesting when you want to execute multiple times a macro)
+
