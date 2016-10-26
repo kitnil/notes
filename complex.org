@@ -1,6 +1,6 @@
 #+TITLE: Заочное, 6005, Вычислительная техника, Алгебра, Контрольная работа №1, Комплексные числа и многочлены, 1 вариант
-#+AUTHOR: Пыхалов Олег Витальевич
-#+EMAIL: opykhalov@yandex.ru
+#+AUTHOR: 
+#+EMAIL: 
 #+DATE:
 #+OPTIONS: email:t
 
@@ -83,7 +83,7 @@ $$\Delta = b^2-4ac$$
 
 $$\Delta = (5 - 4i)^{2} - 4 \cdot 2 \cdot (-5i)$$
 
-*** Представить квадрат в виде умножения
+*** Представить квадрат в виде умножения (Difference of squares)
 
 \begin{equation}
 \begin{aligned}
@@ -180,7 +180,7 @@ x_{1} = \frac{-5 + 4i - 3}{4} &= \\
                               &= -2 + i
 \end{aligned}
 \end{equation}
-** График
+** График (Plot)
 
 #+begin_src gnuplot :file plot1.png
 reset
