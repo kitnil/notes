@@ -1,0 +1,4 @@
+#+TITLE: git notes
+
+* [[https://stackoverflow.com/questions/4110652/how-to-substitute-text-from-files-in-git-history][version control - How to substitute text from files in git history? - Stack Overflow]]
+git filter-branch --tree-filter "find . -name '*.php' -exec sed -i -e \ 's/originalpassword/newpassword/g' {} \;"
