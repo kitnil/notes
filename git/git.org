@@ -1,4 +1,11 @@
 #+TITLE: git notes
 
 * [[https://stackoverflow.com/questions/4110652/how-to-substitute-text-from-files-in-git-history][version control - How to substitute text from files in git history? - Stack Overflow]]
+#+BEGIN_EXAMPLE
 git filter-branch --tree-filter "find . -name '*.php' -exec sed -i -e \ 's/originalpassword/newpassword/g' {} \;"
+#+END_EXAMPLE
+
+* [[https://stackoverflow.com/questions/5816134/finding-a-git-commit-that-introduced-a-string-in-any-branch][search - Finding a Git commit that introduced a string in any branch - Stack Overflow]]
+#+BEGIN_EXAMPLE
+git log -S 'hello world' --source --all
+#+END_EXAMPLE
