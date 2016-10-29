@@ -2,8 +2,76 @@
 
 * [[https://www.debian.org/doc/devel-manuals#policy][Debian -- Debian Developers' Manuals]]
 * [[http://piotrkosoft.net/pub/mirrors/debian-www/doc/packaging-manuals/debian-emacs-policy][debian-emacs-policy]]
-* [[https://onion.debian.org/][onion.debian.org]]
 * [[https://bits.debian.org/][Bits from Debian]]
 * [[http://updo.debian.net/][Planet Debian upstream]]
 * [[https://security-tracker.debian.org/tracker/][Security Bug Tracker]]
 * [[http://sources.debian.net/patches/][Debian Sources | Debian Sources]]
+* [[https://onion.debian.org/][onion.debian.org]]
+
+This is a list of
+[[https://www.torproject.org/docs/hidden-services][onion services]] run
+by the [[https://www.debian.org/][Debian project]]. Most of them are
+served from several backends using
+[[https://github.com/DonnchaC/onionbalance][OnionBalance]].
+
+-  *10years.debconf.org*: [[http://b5tearqs4v4nvbup.onion/]]
+-  *appstream.debian.org*: [[http://5j7saze5byfqccf3.onion/]]
+-  *backports.debian.org*: [[http://6f6ejaiiixypfqaf.onion/]]
+-  *bits.debian.org*: [[http://4ypuji3wwrg5zoxm.onion/]]
+-  *blends.debian.org*: [[http://bcwpy5wca456u7tz.onion/]]
+-  *bootstrap.debian.net*: [[http://ihdhoeoovbtgutfm.onion/]]
+-  *d-i.debian.org*: [[http://f6syxyjdgzbeacry.onion/]]
+-  *debaday.debian.net*: [[http://ammd7ytxcpeavif2.onion/]]
+-  *debconf0.debconf.org*: [[http://ynr7muu3263jikep.onion/]]
+-  *debconf1.debconf.org*: [[http://4do6yq4iwstidagh.onion/]]
+-  *debconf16.debconf.org*: [[http://6nhxqcogfcwqzgnm.onion/]]
+-  *debconf2.debconf.org*: [[http://ugw3zjsayleoamaz.onion/]]
+-  *debconf3.debconf.org*: [[http://zdfsyv3rubuhpql3.onion/]]
+-  *debconf4.debconf.org*: [[http://eeblrw5eh2is36az.onion/]]
+-  *debconf5.debconf.org*: [[http://3m2tlhjsoxws2akz.onion/]]
+-  *debconf6.debconf.org*: [[http://gmi5gld3uk5ozvrv.onion/]]
+-  *debconf7.debconf.org*: [[http://465rf3c2oskkqc24.onion/]]
+-  *debdeltas.debian.net*: [[http://vral2uljb3ndhhxr.onion/]]
+-  *debug.mirrors.debian.org*: [[http://ktqxbqrhg5ai2c7f.onion/]]
+-  *dsa.debian.org*: [[http://f7bphdxlqca3sevt.onion/]]
+-  *es.debconf.org*: [[http://nwvk3svshonwqfjs.onion/]]
+-  *fr.debconf.org*: [[http://ythg247lqkx2gpgx.onion/]]
+-  *ftp.debian.org*: [[http://vwakviie2ienjx6t.onion/]]
+-  *ftp.ports.debian.org*: [[http://nbybwh4atabu6xq3.onion/]]
+-  *incoming.debian.org*: [[http://oscbw3h7wrfxqi4m.onion/]]
+-  *incoming.ports.debian.org*: [[http://vyrxto4jsgoxvilf.onion/]]
+-  *lintian.debian.org*: [[http://ohusanrieoxsxlmh.onion/]]
+-  *metadata.ftp-master.debian.org*: [[http://cmgvqnxjoiqthvrc.onion/]]
+-  *micronews.debian.org*: [[http://n7jzk5wpel4tdog2.onion/]]
+-  *miniconf10.debconf.org*: [[http://tpez4zz5a4civ6ew.onion/]]
+-  *mozilla.debian.net*: [[http://fkbjngvraoici6k7.onion/]]
+-  *news.debian.net*: [[http://tz4732fxpkehod36.onion/]]
+-  *onion.debian.org*: [[http://5nca3wxl33tzlzj5.onion/]]
+-  *people.debian.org*: [[http://hd37oiauf5uoz7gg.onion/]]
+-  *planet.debian.org*: [[http://gnvweaoe2xzjqldu.onion/]]
+-  *release.debian.org*: [[http://6nvqpgx7bih375fx.onion/]]
+-  *rtc.debian.org*: [[http://ex4gh7cig5ssn2xm.onion/]]
+-  *security-team.debian.org*: [[http://ynvs3km32u33agwq.onion/]]
+-  *security.debian.org*: [[http://sgvtcaew4bxjd7ln.onion/]]
+-  *timeline.debian.net*: [[http://qqvyib4j3fz66nuc.onion/]]
+-  *tracker.debian.org*: [[http://2qlvvvnhqyda2ahd.onion/]]
+-  *wnpp-by-tags.debian.net*: [[http://gl3n4wtekbfaubye.onion/]]
+-  *www.debian.org*: [[http://sejnfjrq6szgca7v.onion/]]
+-  *www.ports.debian.org*: [[http://lljrzrimek6if67j.onion/]]
+
+In particular, once you have the
+[[https://packages.debian.org/apt-transport-tor][=apt-transport-tor=]]
+package installed, the following entries should work in your sources
+list for a stable system:
+
+#+BEGIN_EXAMPLE
+    deb  tor+http://vwakviie2ienjx6t.onion/debian          jessie            main
+    deb  tor+http://vwakviie2ienjx6t.onion/debian          jessie-updates    main
+    deb  tor+http://sgvtcaew4bxjd7ln.onion/debian-security jessie/updates    main
+
+    #deb tor+http://vwakviie2ienjx6t.onion/debian          jessie-backports  main
+#+END_EXAMPLE
+
+--------------
+
+Peter Palfrader/DSA
