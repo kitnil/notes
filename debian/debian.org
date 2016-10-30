@@ -1,5 +1,11 @@
 #+TITLE: Debian Overview
 #+AUTHOR: Oleg Pykhalov
+
+#+LANGUAGE: ru
+#+LaTeX_HEADER: \usepackage[utf8]{inputenc}
+#+LaTeX_HEADER: \usepackage[T1,T2A]{fontenc}
+#+LaTeX_HEADER: \usepackage[english,russian]{babel}
+
 #+OPTIONS: H:2 toc:t num:t
 #+LATEX_CLASS: beamer
 #+LATEX_CLASS_OPTIONS: [presentation]
@@ -33,8 +39,12 @@ them are served from several backends using [[https://github.com/DonnchaC/onionb
 - [[http://rtc.debian.org]]
 - [[http://timeline.debian.net]]
 - [[http://www.debian.org]]
+- [[https://wiki.debian.org/][Wiki]]
+- [[https://wiki.debian.org/ru/FrontPage][ru/Wiki]]
 
-** Packages
+** [[https://www.debian.org/international/Russian.ru.html][Русскоязычное сообщество]]
+
+** [[https://www.debian.org/distrib/packages][Packages]]
 
 - [[http://security-team.debian.org]]
 - [[http://security.debian.org]]
