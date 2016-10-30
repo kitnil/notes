@@ -10,7 +10,7 @@
 #+LATEX_CLASS: beamer
 #+LATEX_CLASS_OPTIONS: [presentation]
 #+LATEX_CLASS_OPTIONS: [aspectratio=169]
-#+LATEX_HEADER: \beamertemplatenavigationsymbolsempty
+n#+LATEX_HEADER: \beamertemplatenavigationsymbolsempty
 #+BEAMER_THEME: default
 #+BEAMER_COLOR_THEME: crane
 #+COLUMNS: %45ITEM %10BEAMER_ENV(Env) %10BEAMER_ACT(Act) %4BEAMER_COL(Col) %8BEAMER_OPT(Opt)
@@ -80,3 +80,72 @@
 - [[http://micronews.debian.org][Micronews]]
 - [[http://debconf16.debconf.org][Debconf]]
 
+* Packages
+
+** Browsers
+
+- firefox
+- torbrowser-launcher
+- chromium
+- google chrome
+- eww
+
+** Mail
+
+- icedove
+- gnus
+
+** Editors
+
+- emacs
+- libreoffice
+
+** PDF
+
+- evince
+
+** Password Management
+
+- keepassx
+- gpg
+
+** Virtual Machines
+
+- libvirt
+- qemu
+- lvm
+- virt-manager
+
+** Video Recording
+
+- ffmpeg
+- obs-studio
+
+** Video Players
+
+- vlc
+- mpv
+- totem
+
+** Music Players
+
+- vlc
+
+** Torrents
+
+- eiskaltdcpp
+- qbittorrent
+
+** Package Management
+
+- apt-get
+- synaptic
+- aptitude
+
+** FTP
+
+- filezilla
+
+** Dictionary
+
+- goldendict
