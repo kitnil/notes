@@ -1,5 +1,5 @@
-#+TITLE: Debian notes
-#+AUTHOR: Carsten Dominik
+#+TITLE: Debian Overview
+#+AUTHOR: Oleg Pykhalov
 #+OPTIONS: H:2 toc:t num:t
 #+LATEX_CLASS: beamer
 #+LATEX_CLASS_OPTIONS: [presentation]
@@ -12,45 +12,59 @@
 # C-c C-e l P -- (org-beamer-export-to-pdf) -- Export as LaTeX and then process to PDF.
 # https://www.hartwork.org/beamer-theme-matrix/
 
-* [[https://www.debian.org/doc/devel-manuals#policy][Debian -- Debian Developers' Manuals]]
-* [[http://piotrkosoft.net/pub/mirrors/debian-www/doc/packaging-manuals/debian-emacs-policy][debian-emacs-policy]]
-* [[https://bits.debian.org/][Bits from Debian]]
-* [[http://updo.debian.net/][Planet Debian upstream]]
-* [[https://security-tracker.debian.org/tracker/][Security Bug Tracker]]
-* [[http://sources.debian.net/patches/][Debian Sources | Debian Sources]]
-* [[https://onion.debian.org/][onion.debian.org]]
-
+* Think :noexport:
+** [[https://www.debian.org/doc/devel-manuals#policy][Debian -- Debian Developers' Manuals]]
+** [[http://piotrkosoft.net/pub/mirrors/debian-www/doc/packaging-manuals/debian-emacs-policy][debian-emacs-policy]]
+** [[https://bits.debian.org/][Bits from Debian]]
+** [[http://updo.debian.net/][Planet Debian upstream]]
+** [[https://security-tracker.debian.org/tracker/][Security Bug Tracker]]
+** [[http://sources.debian.net/patches/][Debian Sources | Debian Sources]]
 This is a list of [[https://www.torproject.org/docs/hidden-services][onion services]] run by the [[https://www.debian.org/][Debian project]]. Most of
 them are served from several backends using [[https://github.com/DonnchaC/onionbalance][OnionBalance]].
 
-** Links
-- [[http://backports.debian.org]]
-- [[http://bits.debian.org]]
-- [[http://bootstrap.debian.net]]
-- [[http://debconf16.debconf.org]]
-- [[http://debdeltas.debian.net]]
-- [[http://debug.mirrors.debian.org]]
+* [[https://onion.debian.org/][onion.debian.org]]
+
+** Main
 - [[http://dsa.debian.org]]
 - [[http://ftp.ports.debian.org]]
 - [[http://ftp.debian.org]]
-- [[http://incoming.debian.org]]
-- [[http://incoming.ports.debian.org]]
-- [[http://lintian.debian.org]]
-- [[http://metadata.ftp-master.debian.org]]
-- [[http://micronews.debian.org]]
-- [[http://mozilla.debian.net]]
 - [[http://onion.debian.org]]
-- [[http://planet.debian.org]]
-- [[http://people.debian.org]]
 - [[http://release.debian.org]]
 - [[http://rtc.debian.org]]
+- [[http://timeline.debian.net]]
+- [[http://www.debian.org]]
+
+** Packages
+
 - [[http://security-team.debian.org]]
 - [[http://security.debian.org]]
-- [[http://timeline.debian.net]]
+- [[http://debug.mirrors.debian.org]]
+- [[http://metadata.ftp-master.debian.org]]
+- [[http://lintian.debian.org]]
+- [[http://bootstrap.debian.net]]
+- [[http://debdeltas.debian.net]]
+- [[http://mozilla.debian.net]]
+- [[http://backports.debian.org]]
+- [[http://incoming.debian.org]]
+- [[http://incoming.ports.debian.org]]
 - [[http://tracker.debian.org]]
-- [[http://wnpp-by-tags.debian.net]]
-- [[http://www.debian.org]]
 - [[http://www.ports.debian.org]]
+- https://www.debian.org/distrib/packages
+- https://debtags.debian.org/search/
+
+** Social
+
+- [[http://people.debian.org]]
+- http://lists.debian.org
+- http://forums.debian.net
+- https://wiki.debian.org/IRC
+
+** News
+
+- [[http://planet.debian.org]]
+- [[http://bits.debian.org]]
+- [[http://micronews.debian.org]]
+- [[http://debconf16.debconf.org]]
 
 ** Links :noexport:
 
