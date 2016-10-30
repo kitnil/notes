@@ -19,26 +19,24 @@
 # https://www.hartwork.org/beamer-theme-matrix/
 
 * Think :noexport:
-** [[https://www.debian.org/doc/devel-manuals#policy][Debian -- Debian Developers' Manuals]]
-** [[http://piotrkosoft.net/pub/mirrors/debian-www/doc/packaging-manuals/debian-emacs-policy][debian-emacs-policy]]
-** [[https://bits.debian.org/][Bits from Debian]]
-** [[http://updo.debian.net/][Planet Debian upstream]]
-** [[https://security-tracker.debian.org/tracker/][Security Bug Tracker]]
-** [[http://sources.debian.net/patches/][Debian Sources | Debian Sources]]
-This is a list of [[https://www.torproject.org/docs/hidden-services][onion services]] run by the [[https://www.debian.org/][Debian project]]. Most of
-them are served from several backends using [[https://github.com/DonnchaC/onionbalance][OnionBalance]].
+- [[https://www.debian.org/doc/devel-manuals#policy][Debian -- Debian Developers' Manuals]]
+- [[http://piotrkosoft.net/pub/mirrors/debian-www/doc/packaging-manuals/debian-emacs-policy][debian-emacs-policy]]
+- [[https://bits.debian.org/][Bits from Debian]]
+- [[http://updo.debian.net/][Planet Debian upstream]]
+- [[https://security-tracker.debian.org/tracker/][Security Bug Tracker]]
+- [[http://sources.debian.net/patches/][Debian Sources | Debian Sources]]
 
-* [[https://onion.debian.org/][onion.debian.org]]
+* Community
 
 ** Main
-- [[http://dsa.debian.org]]
-- [[http://ftp.ports.debian.org]]
-- [[http://ftp.debian.org]]
-- [[http://onion.debian.org]]
-- [[http://release.debian.org]]
-- [[http://rtc.debian.org]]
-- [[http://timeline.debian.net]]
-- [[http://www.debian.org]]
+- [[http://dsa.debian.org][Debian System Admin]]
+- [[http://ftp.ports.debian.org][FTP Ports]]
+- [[http://ftp.debian.org][FTP]]
+- [[http://onion.debian.org][Onion Sites]]
+- [[http://release.debian.org][Releases]]
+- [[http://rtc.debian.org][VoIP]]
+- [[http://timeline.debian.net][Releases Timeline]]
+- [[http://www.debian.org][Main Page]]
 - [[https://wiki.debian.org/][Wiki]]
 
 ** [[https://www.debian.org/international/Russian.ru.html][Русскоязычное сообщество]]
@@ -52,37 +50,40 @@ them are served from several backends using [[https://github.com/DonnchaC/onionb
 
 ** [[https://www.debian.org/distrib/packages][Packages]]
 
-- [[http://security-team.debian.org]]
-- [[http://security.debian.org]]
-- [[http://debug.mirrors.debian.org]]
-- [[http://metadata.ftp-master.debian.org]]
-- [[http://lintian.debian.org]]
-- [[http://bootstrap.debian.net]]
-- [[http://debdeltas.debian.net]]
-- [[http://mozilla.debian.net]]
-- [[http://backports.debian.org]]
-- [[http://incoming.debian.org]]
-- [[http://incoming.ports.debian.org]]
-- [[http://tracker.debian.org]]
-- [[http://www.ports.debian.org]]
-- https://www.debian.org/distrib/packages
-- https://debtags.debian.org/search/
+- [[http://security.debian.org][Security]]
+- [[http://debug.mirrors.debian.org][Debug Symbols]]
+- [[http://metadata.ftp-master.debian.org][FTP Master Metadata]]
+- [[http://lintian.debian.org][Lintian]]
+- [[http://bootstrap.debian.net][Bootstrap]]
+- [[http://debdeltas.debian.net][Delta Updates]]
+- [[http://mozilla.debian.net][Mozilla]]
+- [[http://backports.debian.org][Packages Backports]]
+- [[http://incoming.debian.org][Incoming]]
+- [[http://incoming.ports.debian.org][Incoming Ports]]
+- [[http://tracker.debian.org][Tracker]]
+- [[http://www.ports.debian.org][Packages Ports]]
+- [[https://www.debian.org/distrib/packages][Packages]]
+- [[https://debtags.debian.org/search/][Tags]]
 
 ** Social
 
-- [[http://people.debian.org]]
-- http://lists.debian.org
-- http://forums.debian.net
-- https://wiki.debian.org/IRC
+- [[http://people.debian.org][People]]
+- [[http://lists.debian.org][Mailing Lists]]
+- [[http://forums.debian.net][Forums]]
+- [[https://wiki.debian.org/IRC][IRC Channels]]
+- [[http://security-team.debian.org][Security Team]]
 
 ** News
 
-- [[http://planet.debian.org]]
-- [[http://bits.debian.org]]
-- [[http://micronews.debian.org]]
-- [[http://debconf16.debconf.org]]
+- [[http://planet.debian.org/][Planet]]
+- [[http://bits.debian.org][Bits]]
+- [[http://micronews.debian.org][Micronews]]
+- [[http://debconf16.debconf.org][Debconf]]
 
+* [[https://onion.debian.org/][onion.debian.org]] :noexport:
 ** Links :noexport:
+This is a list of [[https://www.torproject.org/docs/hidden-services][onion services]] run by the [[https://www.debian.org/][Debian project]]. Most of
+them are served from several backends using [[https://github.com/DonnchaC/onionbalance][OnionBalance]].
 
 - [[http://10years.debconf.org]]: [[http://b5tearqs4v4nvbup.onion/]]
 - [[http://appstream.debian.org]]: [[http://5j7saze5byfqccf3.onion/]]
