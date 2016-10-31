@@ -1,11 +1,7 @@
-#+TITLE: Заочное, 6005, Вычислительная техника, Алгебра, Контрольная работа №1, Комплексные числа и многочлены, 1 вариант
-#+AUTHOR: 
-#+EMAIL: 
-#+DATE:
+#+TITLE: Контрольная работа № 2 Матрицы 1 вариант
+#+AUTHOR: Студент группы № 6005 Пыхалов Олег Витальевич
+#+EMAIL: opykhalov@yandex.ru
 #+OPTIONS: email:t
-
-#+LaTeX_CLASS: article
-#+LaTeX_CLASS_OPTIONS: [a4paper]
 
 #+LaTeX_HEADER: \usepackage[utf8]{inputenc}
 #+LaTeX_HEADER: \usepackage[T1,T2A]{fontenc}
@@ -14,4 +10,34 @@
 #+LaTeX_HEADER: \usepackage{amssymb}
 #+LaTeX_HEADER: \usepackage{amsmath}
 #+LaTeX_HEADER: \usepackage{polynom}
+
+#+OPTIONS: H:2 toc:t num:t
+#+LATEX_CLASS: beamer
+#+LATEX_CLASS_OPTIONS: [presentation]
+#+LATEX_CLASS_OPTIONS: [aspectratio=169]
+#+LATEX_HEADER: \beamertemplatenavigationsymbolsempty
+#+BEAMER_THEME: default
+#+BEAMER_COLOR_THEME: crane
+#+COLUMNS: %45ITEM %10BEAMER_ENV(Env) %10BEAMER_ACT(Act) %4BEAMER_COL(Col) %8BEAMER_OPT(Opt)
+
+* See also
+
+** Inverse Matrix
+
+- [[https://www.youtube.com/watch?v=pKZyszzmyeQ][Inverse of 3x3 matrix - YouTube]]
+- [[https://www.youtube.com/watch?v=JwT1FrLzEOQ][Algebra - Matrices - Gauss Jordan Method Part 1 Augmented Matrix - YouTube]]
+- [[https://www.youtube.com/watch?v=2GKESu5atVQ][Algebra 54 - Gaussian Elimination - YouTube]]
+- [[https://www.youtube.com/watch?v=2j5Ic2V7wq4][Gaussian Elimination - YouTube]]
+- [[https://www.youtube.com/watch?v=0fTSBIBD7Cs][Gauss-Jordan Elimination - YouTube]]
+- [[https://www.youtube.com/watch?v=LuVzd3NdRhg][Pre-Calculus - Gaussian Elimination - YouTube]]
+- [[https://www.youtube.com/watch?v=cJg2AuSFdjw][Inverse Matrix Using Gauss-Jordan / Row Reduction , Example 1 - YouTube]]
+- [[https://en.wikipedia.org/wiki/Gaussian_elimination][Gaussian elimination - Wikipedia]]
+- [[https://en.wikipedia.org/wiki/Invertible_matrix][Invertible matrix]]
+
+** Matrix
+
+- [[https://en.wikipedia.org/wiki/Matrix_(mathematics)][Matrix (mathematics) - Wikipedia]]
+- [[https://www.youtube.com/watch?v=IrggOvOSZr4][Linear Algebra - Matrix Transformations - YouTube]]
+
+
 
