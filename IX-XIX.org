@@ -7,7 +7,7 @@
 #+LaTeX_HEADER: \usepackage[utf8]{inputenc}
 #+LaTeX_HEADER: \usepackage[T1,T2A]{fontenc}
 #+LaTeX_HEADER: \usepackage[english,russian]{babel}
-#+LATEX_HEADER: \hypersetup{colorlinks, citecolor=black, filecolor=black, linkcolor=black, urlcolor=blue}
+#+LATEX_HEADER: \hypersetup{colorlinks, citecolor=black, filecolor=black, linkcolor=black, urlcolor=blue, , pdfpagemode=FullScreen}
 
 #+OPTIONS: H:2 toc:t num:t
 #+LATEX_CLASS: beamer
