@@ -1,1 +1,0 @@
-http://awesome-ruby.com

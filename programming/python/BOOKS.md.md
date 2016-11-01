@@ -1,2 +1,0 @@
-Jeff Knupper
-Idiomatic Python

@@ -159,3 +159,58 @@
 
 - aria2c
 - wget
+* Debian
+
+-  [[https://en.wikipedia.org/wiki/Debian_build_toolchain][Build
+   toolchain]]
+-  [[https://paste.debian.net][Pastezone]]
+-  [[http://webchat.freenode.net/?channels=debian][Connect - freenode
+   Web IRC]]
+-  [[http://benchmarksgame.alioth.debian.org/][The Computer Language
+   Benchmarks Game]] Toy benchmark programs written in ~24 programming
+   languages: which are smaller? which are faster? which use less CPU?
+   Contribute your own programs.
+-  [[http://meetings-archive.debian.net/pub/debian-meetings/][Index of
+   /pub/debian-meetings]]
+
+** Mailing
+
+-  [[https://lists.debian.org/debian-russian/][Mailing Lists -- Index
+   for debian-russian]]
+
+** Tracking
+
+-  [[https://wiki.debian.org/RecentChanges][RecentChanges]]
+-  [[https://tracker.debian.org/][Package Tracker]]
+-  [[https://security-tracker.debian.org/tracker/][Security Bug
+   Tracker]]
+
+** Help
+
+-  [[https://www.debian.org/doc/manuals/debian-faq/index.en.html][FAQ]]
+-  [[http://manpages.debian.net/][Man pages]]
+-  [[https://manpages.debian.org/cgi-bin/man.cgi][Hypertext Man Pages]]
+-  [[https://kernel-handbook.alioth.debian.org/][Linux Kernel Handbook]]
+-  [[https://www.debian.org/doc/manuals/aptitude/ch02s04s05.en.html#tableSearchTermQuickGuide][Search
+   term reference]]
+-  [[https://wiki.debian.org/Bash][Bash - Debian Wiki]]
+
+** Developement
+
+-  [[https://www.debian.org/doc/manuals/maint-guide/][New Maintainers'
+   Guide]]
+-  [[https://www.debian.org/doc/debian-policy/][Policy Manual]]
+
+** Bugs
+
+-  [[https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=825358][#825358 -
+   privoxy.service doesn't start at boot if not declared
+   After=network.target - Debian Bug report logs]]
+
+* Onion
+
+[[https://onion.debian.org][Onion services]]
+
+* Video
+
+[[http://meetings-archive.debian.net/pub/debian-meetings][DebConf]]

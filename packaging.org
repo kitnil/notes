@@ -1,2 +1,59 @@
 - [[https://wiki.debian.org/RFP][RFP - Debian Wiki]]
 - [[https://www.debian.org/devel/wnpp/][Debian -- Work-Needing and Prospective Packages]]
+* Backporting
+
+Install Debian packaging tools
+
+#+BEGIN_EXAMPLE
+    sudo apt-get install packaging-dev debian-keyring devscripts equivs
+#+END_EXAMPLE
+
+Find which version is available in the debian archive
+
+#+BEGIN_EXAMPLE
+    rmadison mame --architecture amd64
+#+END_EXAMPLE
+
+Download the .dsc file from the sid release
+
+#+BEGIN_EXAMPLE
+    dget -x http://ftp.de.debian.org/debian/pool/non-free/m/mame/mame_0.148-1.dsc
+#+END_EXAMPLE
+
+Find and Install missing build dependencies as found in debian/control
+
+#+BEGIN_EXAMPLE
+    cd mame-0.14
+    sudo mk-build-deps --install --remove
+#+END_EXAMPLE
+
+Build a package properly , without GPG signing the package
+
+#+BEGIN_EXAMPLE
+    dpkg-buildpackage -us -uc
+#+END_EXAMPLE
+
+Install and enjoy !
+
+#+BEGIN_EXAMPLE
+    sudo dpkg -i ../mame_0.148-1_amd64.deb
+#+END_EXAMPLE
+
+* Articles
+
+** torkve
+
+[[https://habrahabr.ru/users/torkve/topics/page3/][Стать мэинтейнером
+Debian/Ubuntu]]
+
+* Notes
+
+*** Listing all packages installed from experimental
+
+To check which experimental packages are currently installed on your
+system, do:
+
+#+BEGIN_EXAMPLE
+    aptitude search ~S~i~Aexperimental
+#+END_EXAMPLE
+

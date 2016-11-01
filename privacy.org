@@ -1,0 +1,1359 @@
+Check this ========== SSL Guidelines
+
+CSR --- Certificate signing request public key with parameters, which
+identifies sender
+
+CA -- Certificate authority (Удостоверяющий центр).
+
+Подписывает CSR своим приватным ключом, выпуская сертификат пользователя
+(peer'a).
+
+CRL --- Certificate revocation list
+
+* list of series numbers with blacklist certificates
+
+* reason (about 6 reasons)
+
+* hold (приостановление действия сертификата).
+
+Cons:
+
+* CRL is offline.
+
+OCSP ---- Online certificate status protocol (проверка валидности
+сертификата в режиме реального времени).
+
+Other
+
+--------------
+
+ROOT Certificates
+
+Applications
+
+--------------
+
+linux: cearufus
+
+* Check this
+
+SSL Guidelines
+
+** CSR
+
+Certificate signing request public key with parameters, which identifies
+sender
+
+** CA
+
+Certificate authority (Удостоверяющий центр).
+
+Подписывает CSR своим приватным ключом, выпуская сертификат пользователя
+(peer'a).
+
+** CRL
+
+Certificate revocation list
+
+-  list of series numbers with blacklist certificates
+-  reason (about 6 reasons)
+-  hold (приостановление действия сертификата).
+
+Cons: * CRL is offline.
+
+** OCSP
+
+Online certificate status protocol (проверка валидности сертификата в
+режиме реального времени).
+
+** Other
+
+ROOT Certificates
+
+** Applications
+
+linux: cearufus
+
+[[http://www.alsigned.ru/?p=782][Шифрование дисков с использованием
+LUKS]]
+
+[[http://blog.neutrino.es/2013/howto-properly-activate-trim-for-your-ssd-on-linux-fstrim-lvm-and-dmcrypt][trim]]
+
+[[https://wiki.debian.org/SSDOptimization][Debian Wiki -
+SSDOptimization]]
+
+[[https://gitlab.com/cryptsetup/cryptsetup/wikis/FrequentlyAskedQuestions][GitLab
+- cryptsetup]]
+
+[[https://malwr.com][Online virtual machine vm]]
+
+[[https://www.exploit-db.com][Offensive Security Exploit Database
+Archive]] [[https://www.exploit-db.com/google-hacking-database][Google
+Hacking Database (GHDB)]] *
+[[https://www.youtube.com/user/DesignerMix][DesignerMix]] *
+[[https://www.youtube.com/watch?v=ovfZXeGvjN8][Уязвимость BadUSB теория
+и практика. Theory and Practice of BadUSB.]]
+
+-  [[https://www.youtube.com/user/LarionovTVs][LarionovTVs]]
+-  [[http://vk.cc/4OfmCB][4RTEMY]]
+
+[[https://www.youtube.com/channel/UCt1h35bkVr8xv_uutACAiuA][Fanto Mask]]
+
+[[https://www.youtube.com/playlist?list=PLW5y1tjAOzI3n4KRN_ic8N8Qv_ss_dh_F][Metasploit
+Minute - Mondays with Mubix]]
+
+[[https://community.rapid7.com/community/metasploit/blog/2016/07/22/weekly-metasploit-wrapup][Weekly
+Metasploit Wrapup]]
+
+* Google
+
+-  [[https://www.google.ru/search?as_q=metasploit&as_epq=&as_oq=&as_eq=&as_nlo=&as_nhi=&lr=&cr=&as_qdr=w&as_sitesearch=&as_occt=any&safe=images&as_filetype=&as_rights=][All]]
+-  [[https://www.google.ru/search?q=metasploit&num=30&lr=&newwindow=1&source=lnms&tbm=vid&tbs=qdr:w&sa=X&ved=0ahUKEwiltNjftJHOAhWoFJoKHenqC-QQ_AUICCgB&biw=934&bih=950][Videos]]
+
+[[http://www.metasploit.cn][Chinese]]
+
+[[https://whoer.net]]
+
+[[https://www.youtube.com/watch?v=o0FKILPqyt8][Набор программ]]
+
+[[https://www.wireshark.org/docs/wsug_html_chunked/ChAppFilesConfigurationSection.html][Configuration
+Files and Folders]]
+
+[Шифрование дисков с использованием
+LUKS]([[http://www.alsigned.ru/?p=782]])
+
+[trim]([[http://blog.neutrino.es/2013/howto-properly-activate-trim-for-your-ssd-on-linux-fstrim-lvm-and-dmcrypt]])
+
+[Debian Wiki -
+SSDOptimization]([[https://wiki.debian.org/SSDOptimization]])
+
+[GitLab -
+cryptsetup]([[https://gitlab.com/cryptsetup/cryptsetup/wikis/FrequentlyAskedQuestions]])
+
+Check this ========== SSL Guidelines
+
+CSR --- Certificate signing request public key with parameters, which
+identifies sender
+
+CA -- Certificate authority (Удостоверяющий центр).
+
+Подписывает CSR своим приватным ключом, выпуская сертификат пользователя
+(peer'a).
+
+CRL --- Certificate revocation list
+
+* list of series numbers with blacklist certificates
+
+* reason (about 6 reasons)
+
+* hold (приостановление действия сертификата).
+
+Cons:
+
+* CRL is offline.
+
+OCSP ---- Online certificate status protocol (проверка валидности
+сертификата в режиме реального времени).
+
+Other
+
+--------------
+
+ROOT Certificates
+
+Applications
+
+--------------
+
+linux: cearufus
+
+* Check this
+
+SSL Guidelines
+
+** CSR
+
+Certificate signing request public key with parameters, which identifies
+sender
+
+** CA
+
+Certificate authority (Удостоверяющий центр).
+
+Подписывает CSR своим приватным ключом, выпуская сертификат пользователя
+(peer'a).
+
+** CRL
+
+Certificate revocation list
+
+-  list of series numbers with blacklist certificates
+-  reason (about 6 reasons)
+-  hold (приостановление действия сертификата).
+
+Cons: * CRL is offline.
+
+** OCSP
+
+Online certificate status protocol (проверка валидности сертификата в
+режиме реального времени).
+
+** Other
+
+ROOT Certificates
+
+** Applications
+
+linux: cearufus
+
+[[http://www.alsigned.ru/?p=782][Шифрование дисков с использованием
+LUKS]]
+
+[[http://blog.neutrino.es/2013/howto-properly-activate-trim-for-your-ssd-on-linux-fstrim-lvm-and-dmcrypt][trim]]
+
+[[https://wiki.debian.org/SSDOptimization][Debian Wiki -
+SSDOptimization]]
+
+[[https://gitlab.com/cryptsetup/cryptsetup/wikis/FrequentlyAskedQuestions][GitLab
+- cryptsetup]]
+
+[[https://malwr.com][Online virtual machine vm]]
+
+[[https://www.exploit-db.com][Offensive Security Exploit Database
+Archive]] [[https://www.exploit-db.com/google-hacking-database][Google
+Hacking Database (GHDB)]] *
+[[https://www.youtube.com/user/DesignerMix][DesignerMix]] *
+[[https://www.youtube.com/watch?v=ovfZXeGvjN8][Уязвимость BadUSB теория
+и практика. Theory and Practice of BadUSB.]]
+
+-  [[https://www.youtube.com/user/LarionovTVs][LarionovTVs]]
+-  [[http://vk.cc/4OfmCB][4RTEMY]]
+
+[[https://www.youtube.com/channel/UCt1h35bkVr8xv_uutACAiuA][Fanto Mask]]
+
+[[https://www.youtube.com/playlist?list=PLW5y1tjAOzI3n4KRN_ic8N8Qv_ss_dh_F][Metasploit
+Minute - Mondays with Mubix]]
+
+[[https://community.rapid7.com/community/metasploit/blog/2016/07/22/weekly-metasploit-wrapup][Weekly
+Metasploit Wrapup]]
+
+* Google
+
+-  [[https://www.google.ru/search?as_q=metasploit&as_epq=&as_oq=&as_eq=&as_nlo=&as_nhi=&lr=&cr=&as_qdr=w&as_sitesearch=&as_occt=any&safe=images&as_filetype=&as_rights=][All]]
+-  [[https://www.google.ru/search?q=metasploit&num=30&lr=&newwindow=1&source=lnms&tbm=vid&tbs=qdr:w&sa=X&ved=0ahUKEwiltNjftJHOAhWoFJoKHenqC-QQ_AUICCgB&biw=934&bih=950][Videos]]
+
+[[http://www.metasploit.cn][Chinese]]
+
+[[https://whoer.net]]
+
+[[https://www.youtube.com/watch?v=o0FKILPqyt8][Набор программ]]
+
+[[https://www.wireshark.org/docs/wsug_html_chunked/ChAppFilesConfigurationSection.html][Configuration
+Files and Folders]]
+
+[Шифрование дисков с использованием
+LUKS]([[http://www.alsigned.ru/?p=782]])
+
+[trim]([[http://blog.neutrino.es/2013/howto-properly-activate-trim-for-your-ssd-on-linux-fstrim-lvm-and-dmcrypt]])
+
+[Debian Wiki -
+SSDOptimization]([[https://wiki.debian.org/SSDOptimization]])
+
+[GitLab -
+cryptsetup]([[https://gitlab.com/cryptsetup/cryptsetup/wikis/FrequentlyAskedQuestions]])
+
+[Online virtual machine vm]([[https://malwr.com]])
+
+[Offensive Security Exploit Database
+Archive]([[https://www.exploit-db.com]]) [Google Hacking Database
+(GHDB)]([[https://www.exploit-db.com/google-hacking-database]])
+
+* [DesignerMix]([[https://www.youtube.com/user/DesignerMix]])
+
+-  [Уязвимость BadUSB теория и практика. Theory and Practice of
+   BadUSB.]([[https://www.youtube.com/watch?v=ovfZXeGvjN8]])
+
+-  [LarionovTVs]([[https://www.youtube.com/user/LarionovTVs]])
+-  [4RTEMY]([[http://vk.cc/4OfmCB]])
+
+[Fanto
+Mask]([[https://www.youtube.com/channel/UCt1h35bkVr8xv_uutACAiuA]])
+
+[Metasploit Minute - Mondays with
+Mubix]([[https://www.youtube.com/playlist?list=PLW5y1tjAOzI3n4KRN_ic8N8Qv_ss_dh_F]])
+
+[Weekly Metasploit
+Wrapup]([[https://community.rapid7.com/community/metasploit/blog/2016/07/22/weekly-metasploit-wrapup]])
+
+Google ======
+
+* [All]([[https://www.google.ru/search?as_q=metasploit&as_epq]]=&as_{oq}=&as_{eq}=&as_{nlo}=&as_{nhi}=&lr=&cr=&as_{qdr}=w&as_{sitesearch}=&as_{occt}=any&safe=images&as_{filetype}=&as_{rights}=)
+
+* [Videos]([[https://www.google.ru/search?q=metasploit&num=30&lr]]=&newwindow=1&source=lnms&tbm=vid&tbs=qdr:w&sa=X&ved=0ahUKEwiltNjftJHOAhWoFJoKHenqC-QQ_{AUICCgB}&biw=934&bih=950)
+
+[Chinese]([[http://www.metasploit.cn]])
+
+[[https://whoer.net]]
+
+[Набор программ]([[https://www.youtube.com/watch?v=o0FKILPqyt8]])
+
+[Configuration Files and
+Folders]([[https://www.wireshark.org/docs/wsug_html_chunked/ChAppFilesConfigurationSection.html]])
+
+[Online virtual machine vm]([[https://malwr.com]])
+
+[Offensive Security Exploit Database
+Archive]([[https://www.exploit-db.com]]) [Google Hacking Database
+(GHDB)]([[https://www.exploit-db.com/google-hacking-database]])
+
+* [DesignerMix]([[https://www.youtube.com/user/DesignerMix]])
+
+-  [Уязвимость BadUSB теория и практика. Theory and Practice of
+   BadUSB.]([[https://www.youtube.com/watch?v=ovfZXeGvjN8]])
+
+-  [LarionovTVs]([[https://www.youtube.com/user/LarionovTVs]])
+-  [4RTEMY]([[http://vk.cc/4OfmCB]])
+
+[Fanto
+Mask]([[https://www.youtube.com/channel/UCt1h35bkVr8xv_uutACAiuA]])
+
+Check this ========== SSL Guidelines
+
+CSR --- Certificate signing request public key with parameters, which
+identifies sender
+
+CA -- Certificate authority (Удостоверяющий центр).
+
+Подписывает CSR своим приватным ключом, выпуская сертификат пользователя
+(peer'a).
+
+CRL --- Certificate revocation list
+
+* list of series numbers with blacklist certificates
+
+* reason (about 6 reasons)
+
+* hold (приостановление действия сертификата).
+
+Cons:
+
+* CRL is offline.
+
+OCSP ---- Online certificate status protocol (проверка валидности
+сертификата в режиме реального времени).
+
+Other
+
+--------------
+
+ROOT Certificates
+
+Applications
+
+--------------
+
+linux: cearufus
+
+* Check this
+
+SSL Guidelines
+
+** CSR
+
+Certificate signing request public key with parameters, which identifies
+sender
+
+** CA
+
+Certificate authority (Удостоверяющий центр).
+
+Подписывает CSR своим приватным ключом, выпуская сертификат пользователя
+(peer'a).
+
+** CRL
+
+Certificate revocation list
+
+-  list of series numbers with blacklist certificates
+-  reason (about 6 reasons)
+-  hold (приостановление действия сертификата).
+
+Cons: * CRL is offline.
+
+** OCSP
+
+Online certificate status protocol (проверка валидности сертификата в
+режиме реального времени).
+
+** Other
+
+ROOT Certificates
+
+** Applications
+
+linux: cearufus
+
+[[http://www.alsigned.ru/?p=782][Шифрование дисков с использованием
+LUKS]]
+
+[[http://blog.neutrino.es/2013/howto-properly-activate-trim-for-your-ssd-on-linux-fstrim-lvm-and-dmcrypt][trim]]
+
+[[https://wiki.debian.org/SSDOptimization][Debian Wiki -
+SSDOptimization]]
+
+[[https://gitlab.com/cryptsetup/cryptsetup/wikis/FrequentlyAskedQuestions][GitLab
+- cryptsetup]]
+
+[[https://malwr.com][Online virtual machine vm]]
+
+[[https://www.exploit-db.com][Offensive Security Exploit Database
+Archive]] [[https://www.exploit-db.com/google-hacking-database][Google
+Hacking Database (GHDB)]] *
+[[https://www.youtube.com/user/DesignerMix][DesignerMix]] *
+[[https://www.youtube.com/watch?v=ovfZXeGvjN8][Уязвимость BadUSB теория
+и практика. Theory and Practice of BadUSB.]]
+
+-  [[https://www.youtube.com/user/LarionovTVs][LarionovTVs]]
+-  [[http://vk.cc/4OfmCB][4RTEMY]]
+
+[[https://www.youtube.com/channel/UCt1h35bkVr8xv_uutACAiuA][Fanto Mask]]
+
+[[https://www.youtube.com/playlist?list=PLW5y1tjAOzI3n4KRN_ic8N8Qv_ss_dh_F][Metasploit
+Minute - Mondays with Mubix]]
+
+[[https://community.rapid7.com/community/metasploit/blog/2016/07/22/weekly-metasploit-wrapup][Weekly
+Metasploit Wrapup]]
+
+* Google
+
+-  [[https://www.google.ru/search?as_q=metasploit&as_epq=&as_oq=&as_eq=&as_nlo=&as_nhi=&lr=&cr=&as_qdr=w&as_sitesearch=&as_occt=any&safe=images&as_filetype=&as_rights=][All]]
+-  [[https://www.google.ru/search?q=metasploit&num=30&lr=&newwindow=1&source=lnms&tbm=vid&tbs=qdr:w&sa=X&ved=0ahUKEwiltNjftJHOAhWoFJoKHenqC-QQ_AUICCgB&biw=934&bih=950][Videos]]
+
+[[http://www.metasploit.cn][Chinese]]
+
+[[https://whoer.net]]
+
+[[https://www.youtube.com/watch?v=o0FKILPqyt8][Набор программ]]
+
+[[https://www.wireshark.org/docs/wsug_html_chunked/ChAppFilesConfigurationSection.html][Configuration
+Files and Folders]]
+
+[Шифрование дисков с использованием
+LUKS]([[http://www.alsigned.ru/?p=782]])
+
+[trim]([[http://blog.neutrino.es/2013/howto-properly-activate-trim-for-your-ssd-on-linux-fstrim-lvm-and-dmcrypt]])
+
+[Debian Wiki -
+SSDOptimization]([[https://wiki.debian.org/SSDOptimization]])
+
+[GitLab -
+cryptsetup]([[https://gitlab.com/cryptsetup/cryptsetup/wikis/FrequentlyAskedQuestions]])
+
+Check this ========== SSL Guidelines
+
+CSR --- Certificate signing request public key with parameters, which
+identifies sender
+
+CA -- Certificate authority (Удостоверяющий центр).
+
+Подписывает CSR своим приватным ключом, выпуская сертификат пользователя
+(peer'a).
+
+CRL --- Certificate revocation list
+
+* list of series numbers with blacklist certificates
+
+* reason (about 6 reasons)
+
+* hold (приостановление действия сертификата).
+
+Cons:
+
+* CRL is offline.
+
+OCSP ---- Online certificate status protocol (проверка валидности
+сертификата в режиме реального времени).
+
+Other
+
+--------------
+
+ROOT Certificates
+
+Applications
+
+--------------
+
+linux: cearufus
+
+* Check this
+
+SSL Guidelines
+
+** CSR
+
+Certificate signing request public key with parameters, which identifies
+sender
+
+** CA
+
+Certificate authority (Удостоверяющий центр).
+
+Подписывает CSR своим приватным ключом, выпуская сертификат пользователя
+(peer'a).
+
+** CRL
+
+Certificate revocation list
+
+-  list of series numbers with blacklist certificates
+-  reason (about 6 reasons)
+-  hold (приостановление действия сертификата).
+
+Cons: * CRL is offline.
+
+** OCSP
+
+Online certificate status protocol (проверка валидности сертификата в
+режиме реального времени).
+
+** Other
+
+ROOT Certificates
+
+** Applications
+
+linux: cearufus
+
+[[http://www.alsigned.ru/?p=782][Шифрование дисков с использованием
+LUKS]]
+
+[[http://blog.neutrino.es/2013/howto-properly-activate-trim-for-your-ssd-on-linux-fstrim-lvm-and-dmcrypt][trim]]
+
+[[https://wiki.debian.org/SSDOptimization][Debian Wiki -
+SSDOptimization]]
+
+[[https://gitlab.com/cryptsetup/cryptsetup/wikis/FrequentlyAskedQuestions][GitLab
+- cryptsetup]]
+
+[[https://malwr.com][Online virtual machine vm]]
+
+[[https://www.exploit-db.com][Offensive Security Exploit Database
+Archive]] [[https://www.exploit-db.com/google-hacking-database][Google
+Hacking Database (GHDB)]] *
+[[https://www.youtube.com/user/DesignerMix][DesignerMix]] *
+[[https://www.youtube.com/watch?v=ovfZXeGvjN8][Уязвимость BadUSB теория
+и практика. Theory and Practice of BadUSB.]]
+
+-  [[https://www.youtube.com/user/LarionovTVs][LarionovTVs]]
+-  [[http://vk.cc/4OfmCB][4RTEMY]]
+
+[[https://www.youtube.com/channel/UCt1h35bkVr8xv_uutACAiuA][Fanto Mask]]
+
+[[https://www.youtube.com/playlist?list=PLW5y1tjAOzI3n4KRN_ic8N8Qv_ss_dh_F][Metasploit
+Minute - Mondays with Mubix]]
+
+[[https://community.rapid7.com/community/metasploit/blog/2016/07/22/weekly-metasploit-wrapup][Weekly
+Metasploit Wrapup]]
+
+* Google
+
+-  [[https://www.google.ru/search?as_q=metasploit&as_epq=&as_oq=&as_eq=&as_nlo=&as_nhi=&lr=&cr=&as_qdr=w&as_sitesearch=&as_occt=any&safe=images&as_filetype=&as_rights=][All]]
+-  [[https://www.google.ru/search?q=metasploit&num=30&lr=&newwindow=1&source=lnms&tbm=vid&tbs=qdr:w&sa=X&ved=0ahUKEwiltNjftJHOAhWoFJoKHenqC-QQ_AUICCgB&biw=934&bih=950][Videos]]
+
+[[http://www.metasploit.cn][Chinese]]
+
+[[https://whoer.net]]
+
+[[https://www.youtube.com/watch?v=o0FKILPqyt8][Набор программ]]
+
+[[https://www.wireshark.org/docs/wsug_html_chunked/ChAppFilesConfigurationSection.html][Configuration
+Files and Folders]]
+
+[Шифрование дисков с использованием
+LUKS]([[http://www.alsigned.ru/?p=782]])
+
+[trim]([[http://blog.neutrino.es/2013/howto-properly-activate-trim-for-your-ssd-on-linux-fstrim-lvm-and-dmcrypt]])
+
+[Debian Wiki -
+SSDOptimization]([[https://wiki.debian.org/SSDOptimization]])
+
+[GitLab -
+cryptsetup]([[https://gitlab.com/cryptsetup/cryptsetup/wikis/FrequentlyAskedQuestions]])
+
+[Online virtual machine vm]([[https://malwr.com]])
+
+[Offensive Security Exploit Database
+Archive]([[https://www.exploit-db.com]]) [Google Hacking Database
+(GHDB)]([[https://www.exploit-db.com/google-hacking-database]])
+
+* [DesignerMix]([[https://www.youtube.com/user/DesignerMix]])
+
+-  [Уязвимость BadUSB теория и практика. Theory and Practice of
+   BadUSB.]([[https://www.youtube.com/watch?v=ovfZXeGvjN8]])
+
+-  [LarionovTVs]([[https://www.youtube.com/user/LarionovTVs]])
+-  [4RTEMY]([[http://vk.cc/4OfmCB]])
+
+[Fanto
+Mask]([[https://www.youtube.com/channel/UCt1h35bkVr8xv_uutACAiuA]])
+
+[Metasploit Minute - Mondays with
+Mubix]([[https://www.youtube.com/playlist?list=PLW5y1tjAOzI3n4KRN_ic8N8Qv_ss_dh_F]])
+
+[Weekly Metasploit
+Wrapup]([[https://community.rapid7.com/community/metasploit/blog/2016/07/22/weekly-metasploit-wrapup]])
+
+Google ======
+
+* [All]([[https://www.google.ru/search?as_q=metasploit&as_epq]]=&as_{oq}=&as_{eq}=&as_{nlo}=&as_{nhi}=&lr=&cr=&as_{qdr}=w&as_{sitesearch}=&as_{occt}=any&safe=images&as_{filetype}=&as_{rights}=)
+
+* [Videos]([[https://www.google.ru/search?q=metasploit&num=30&lr]]=&newwindow=1&source=lnms&tbm=vid&tbs=qdr:w&sa=X&ved=0ahUKEwiltNjftJHOAhWoFJoKHenqC-QQ_{AUICCgB}&biw=934&bih=950)
+
+[Chinese]([[http://www.metasploit.cn]])
+
+[[https://whoer.net]]
+
+[Набор программ]([[https://www.youtube.com/watch?v=o0FKILPqyt8]])
+
+[Configuration Files and
+Folders]([[https://www.wireshark.org/docs/wsug_html_chunked/ChAppFilesConfigurationSection.html]])
+
+[Online virtual machine vm]([[https://malwr.com]])
+
+[Offensive Security Exploit Database
+Archive]([[https://www.exploit-db.com]]) [Google Hacking Database
+(GHDB)]([[https://www.exploit-db.com/google-hacking-database]])
+
+* [DesignerMix]([[https://www.youtube.com/user/DesignerMix]])
+
+-  [Уязвимость BadUSB теория и практика. Theory and Practice of
+   BadUSB.]([[https://www.youtube.com/watch?v=ovfZXeGvjN8]])
+
+-  [LarionovTVs]([[https://www.youtube.com/user/LarionovTVs]])
+-  [4RTEMY]([[http://vk.cc/4OfmCB]])
+
+[Fanto
+Mask]([[https://www.youtube.com/channel/UCt1h35bkVr8xv_uutACAiuA]])
+
+[Metasploit Minute - Mondays with
+Mubix]([[https://www.youtube.com/playlist?list=PLW5y1tjAOzI3n4KRN_ic8N8Qv_ss_dh_F]])
+
+[Weekly Metasploit
+Wrapup]([[https://community.rapid7.com/community/metasploit/blog/2016/07/22/weekly-metasploit-wrapup]])
+
+Google ======
+
+* [All]([[https://www.google.ru/search?as_q=metasploit&as_epq]]=&as_{oq}=&as_{eq}=&as_{nlo}=&as_{nhi}=&lr=&cr=&as_{qdr}=w&as_{sitesearch}=&as_{occt}=any&safe=images&as_{filetype}=&as_{rights}=)
+
+* [Videos]([[https://www.google.ru/search?q=metasploit&num=30&lr]]=&newwindow=1&source=lnms&tbm=vid&tbs=qdr:w&sa=X&ved=0ahUKEwiltNjftJHOAhWoFJoKHenqC-QQ_{AUICCgB}&biw=934&bih=950)
+
+[Chinese]([[http://www.metasploit.cn]])
+
+[[https://whoer.net]]
+
+[Набор программ]([[https://www.youtube.com/watch?v=o0FKILPqyt8]])
+
+[Configuration Files and
+Folders]([[https://www.wireshark.org/docs/wsug_html_chunked/ChAppFilesConfigurationSection.html]])
+
+[Metasploit Minute - Mondays with
+Mubix]([[https://www.youtube.com/playlist?list=PLW5y1tjAOzI3n4KRN_ic8N8Qv_ss_dh_F]])
+
+[Weekly Metasploit
+Wrapup]([[https://community.rapid7.com/community/metasploit/blog/2016/07/22/weekly-metasploit-wrapup]])
+
+Google ======
+
+* [All]([[https://www.google.ru/search?as_q=metasploit&as_epq]]=&as_{oq}=&as_{eq}=&as_{nlo}=&as_{nhi}=&lr=&cr=&as_{qdr}=w&as_{sitesearch}=&as_{occt}=any&safe=images&as_{filetype}=&as_{rights}=)
+
+* [Videos]([[https://www.google.ru/search?q=metasploit&num=30&lr]]=&newwindow=1&source=lnms&tbm=vid&tbs=qdr:w&sa=X&ved=0ahUKEwiltNjftJHOAhWoFJoKHenqC-QQ_{AUICCgB}&biw=934&bih=950)
+
+[Chinese]([[http://www.metasploit.cn]])
+
+Check this ========== SSL Guidelines
+
+CSR --- Certificate signing request public key with parameters, which
+identifies sender
+
+CA -- Certificate authority (Удостоверяющий центр).
+
+Подписывает CSR своим приватным ключом, выпуская сертификат пользователя
+(peer'a).
+
+CRL --- Certificate revocation list
+
+* list of series numbers with blacklist certificates
+
+* reason (about 6 reasons)
+
+* hold (приостановление действия сертификата).
+
+Cons:
+
+* CRL is offline.
+
+OCSP ---- Online certificate status protocol (проверка валидности
+сертификата в режиме реального времени).
+
+Other
+
+--------------
+
+ROOT Certificates
+
+Applications
+
+--------------
+
+linux: cearufus
+
+* Check this
+
+SSL Guidelines
+
+** CSR
+
+Certificate signing request public key with parameters, which identifies
+sender
+
+** CA
+
+Certificate authority (Удостоверяющий центр).
+
+Подписывает CSR своим приватным ключом, выпуская сертификат пользователя
+(peer'a).
+
+** CRL
+
+Certificate revocation list
+
+-  list of series numbers with blacklist certificates
+-  reason (about 6 reasons)
+-  hold (приостановление действия сертификата).
+
+Cons: * CRL is offline.
+
+** OCSP
+
+Online certificate status protocol (проверка валидности сертификата в
+режиме реального времени).
+
+** Other
+
+ROOT Certificates
+
+** Applications
+
+linux: cearufus
+
+[[http://www.alsigned.ru/?p=782][Шифрование дисков с использованием
+LUKS]]
+
+[[http://blog.neutrino.es/2013/howto-properly-activate-trim-for-your-ssd-on-linux-fstrim-lvm-and-dmcrypt][trim]]
+
+[[https://wiki.debian.org/SSDOptimization][Debian Wiki -
+SSDOptimization]]
+
+[[https://gitlab.com/cryptsetup/cryptsetup/wikis/FrequentlyAskedQuestions][GitLab
+- cryptsetup]]
+
+[[https://malwr.com][Online virtual machine vm]]
+
+[[https://www.exploit-db.com][Offensive Security Exploit Database
+Archive]] [[https://www.exploit-db.com/google-hacking-database][Google
+Hacking Database (GHDB)]] *
+[[https://www.youtube.com/user/DesignerMix][DesignerMix]] *
+[[https://www.youtube.com/watch?v=ovfZXeGvjN8][Уязвимость BadUSB теория
+и практика. Theory and Practice of BadUSB.]]
+
+-  [[https://www.youtube.com/user/LarionovTVs][LarionovTVs]]
+-  [[http://vk.cc/4OfmCB][4RTEMY]]
+
+[[https://www.youtube.com/channel/UCt1h35bkVr8xv_uutACAiuA][Fanto Mask]]
+
+[[https://www.youtube.com/playlist?list=PLW5y1tjAOzI3n4KRN_ic8N8Qv_ss_dh_F][Metasploit
+Minute - Mondays with Mubix]]
+
+[[https://community.rapid7.com/community/metasploit/blog/2016/07/22/weekly-metasploit-wrapup][Weekly
+Metasploit Wrapup]]
+
+* Google
+
+-  [[https://www.google.ru/search?as_q=metasploit&as_epq=&as_oq=&as_eq=&as_nlo=&as_nhi=&lr=&cr=&as_qdr=w&as_sitesearch=&as_occt=any&safe=images&as_filetype=&as_rights=][All]]
+-  [[https://www.google.ru/search?q=metasploit&num=30&lr=&newwindow=1&source=lnms&tbm=vid&tbs=qdr:w&sa=X&ved=0ahUKEwiltNjftJHOAhWoFJoKHenqC-QQ_AUICCgB&biw=934&bih=950][Videos]]
+
+[[http://www.metasploit.cn][Chinese]]
+
+[[https://whoer.net]]
+
+[[https://www.youtube.com/watch?v=o0FKILPqyt8][Набор программ]]
+
+[[https://www.wireshark.org/docs/wsug_html_chunked/ChAppFilesConfigurationSection.html][Configuration
+Files and Folders]]
+
+[Шифрование дисков с использованием
+LUKS]([[http://www.alsigned.ru/?p=782]])
+
+[trim]([[http://blog.neutrino.es/2013/howto-properly-activate-trim-for-your-ssd-on-linux-fstrim-lvm-and-dmcrypt]])
+
+[Debian Wiki -
+SSDOptimization]([[https://wiki.debian.org/SSDOptimization]])
+
+[GitLab -
+cryptsetup]([[https://gitlab.com/cryptsetup/cryptsetup/wikis/FrequentlyAskedQuestions]])
+
+Check this ========== SSL Guidelines
+
+CSR --- Certificate signing request public key with parameters, which
+identifies sender
+
+CA -- Certificate authority (Удостоверяющий центр).
+
+Подписывает CSR своим приватным ключом, выпуская сертификат пользователя
+(peer'a).
+
+CRL --- Certificate revocation list
+
+* list of series numbers with blacklist certificates
+
+* reason (about 6 reasons)
+
+* hold (приостановление действия сертификата).
+
+Cons:
+
+* CRL is offline.
+
+OCSP ---- Online certificate status protocol (проверка валидности
+сертификата в режиме реального времени).
+
+Other
+
+--------------
+
+ROOT Certificates
+
+Applications
+
+--------------
+
+linux: cearufus
+
+* Check this
+
+SSL Guidelines
+
+** CSR
+
+Certificate signing request public key with parameters, which identifies
+sender
+
+** CA
+
+Certificate authority (Удостоверяющий центр).
+
+Подписывает CSR своим приватным ключом, выпуская сертификат пользователя
+(peer'a).
+
+** CRL
+
+Certificate revocation list
+
+-  list of series numbers with blacklist certificates
+-  reason (about 6 reasons)
+-  hold (приостановление действия сертификата).
+
+Cons: * CRL is offline.
+
+** OCSP
+
+Online certificate status protocol (проверка валидности сертификата в
+режиме реального времени).
+
+** Other
+
+ROOT Certificates
+
+** Applications
+
+linux: cearufus
+
+[[http://www.alsigned.ru/?p=782][Шифрование дисков с использованием
+LUKS]]
+
+[[http://blog.neutrino.es/2013/howto-properly-activate-trim-for-your-ssd-on-linux-fstrim-lvm-and-dmcrypt][trim]]
+
+[[https://wiki.debian.org/SSDOptimization][Debian Wiki -
+SSDOptimization]]
+
+[[https://gitlab.com/cryptsetup/cryptsetup/wikis/FrequentlyAskedQuestions][GitLab
+- cryptsetup]]
+
+[[https://malwr.com][Online virtual machine vm]]
+
+[[https://www.exploit-db.com][Offensive Security Exploit Database
+Archive]] [[https://www.exploit-db.com/google-hacking-database][Google
+Hacking Database (GHDB)]] *
+[[https://www.youtube.com/user/DesignerMix][DesignerMix]] *
+[[https://www.youtube.com/watch?v=ovfZXeGvjN8][Уязвимость BadUSB теория
+и практика. Theory and Practice of BadUSB.]]
+
+-  [[https://www.youtube.com/user/LarionovTVs][LarionovTVs]]
+-  [[http://vk.cc/4OfmCB][4RTEMY]]
+
+[[https://www.youtube.com/channel/UCt1h35bkVr8xv_uutACAiuA][Fanto Mask]]
+
+[[https://www.youtube.com/playlist?list=PLW5y1tjAOzI3n4KRN_ic8N8Qv_ss_dh_F][Metasploit
+Minute - Mondays with Mubix]]
+
+[[https://community.rapid7.com/community/metasploit/blog/2016/07/22/weekly-metasploit-wrapup][Weekly
+Metasploit Wrapup]]
+
+* Google
+
+-  [[https://www.google.ru/search?as_q=metasploit&as_epq=&as_oq=&as_eq=&as_nlo=&as_nhi=&lr=&cr=&as_qdr=w&as_sitesearch=&as_occt=any&safe=images&as_filetype=&as_rights=][All]]
+-  [[https://www.google.ru/search?q=metasploit&num=30&lr=&newwindow=1&source=lnms&tbm=vid&tbs=qdr:w&sa=X&ved=0ahUKEwiltNjftJHOAhWoFJoKHenqC-QQ_AUICCgB&biw=934&bih=950][Videos]]
+
+[[http://www.metasploit.cn][Chinese]]
+
+[[https://whoer.net]]
+
+[[https://www.youtube.com/watch?v=o0FKILPqyt8][Набор программ]]
+
+[[https://www.wireshark.org/docs/wsug_html_chunked/ChAppFilesConfigurationSection.html][Configuration
+Files and Folders]]
+
+[Шифрование дисков с использованием
+LUKS]([[http://www.alsigned.ru/?p=782]])
+
+[trim]([[http://blog.neutrino.es/2013/howto-properly-activate-trim-for-your-ssd-on-linux-fstrim-lvm-and-dmcrypt]])
+
+[Debian Wiki -
+SSDOptimization]([[https://wiki.debian.org/SSDOptimization]])
+
+[GitLab -
+cryptsetup]([[https://gitlab.com/cryptsetup/cryptsetup/wikis/FrequentlyAskedQuestions]])
+
+[Online virtual machine vm]([[https://malwr.com]])
+
+[Offensive Security Exploit Database
+Archive]([[https://www.exploit-db.com]]) [Google Hacking Database
+(GHDB)]([[https://www.exploit-db.com/google-hacking-database]])
+
+* [DesignerMix]([[https://www.youtube.com/user/DesignerMix]])
+
+-  [Уязвимость BadUSB теория и практика. Theory and Practice of
+   BadUSB.]([[https://www.youtube.com/watch?v=ovfZXeGvjN8]])
+
+-  [LarionovTVs]([[https://www.youtube.com/user/LarionovTVs]])
+-  [4RTEMY]([[http://vk.cc/4OfmCB]])
+
+[Fanto
+Mask]([[https://www.youtube.com/channel/UCt1h35bkVr8xv_uutACAiuA]])
+
+[Metasploit Minute - Mondays with
+Mubix]([[https://www.youtube.com/playlist?list=PLW5y1tjAOzI3n4KRN_ic8N8Qv_ss_dh_F]])
+
+[Weekly Metasploit
+Wrapup]([[https://community.rapid7.com/community/metasploit/blog/2016/07/22/weekly-metasploit-wrapup]])
+
+Google ======
+
+* [All]([[https://www.google.ru/search?as_q=metasploit&as_epq]]=&as_{oq}=&as_{eq}=&as_{nlo}=&as_{nhi}=&lr=&cr=&as_{qdr}=w&as_{sitesearch}=&as_{occt}=any&safe=images&as_{filetype}=&as_{rights}=)
+
+* [Videos]([[https://www.google.ru/search?q=metasploit&num=30&lr]]=&newwindow=1&source=lnms&tbm=vid&tbs=qdr:w&sa=X&ved=0ahUKEwiltNjftJHOAhWoFJoKHenqC-QQ_{AUICCgB}&biw=934&bih=950)
+
+[Chinese]([[http://www.metasploit.cn]])
+
+[[https://whoer.net]]
+
+[Набор программ]([[https://www.youtube.com/watch?v=o0FKILPqyt8]])
+
+[Configuration Files and
+Folders]([[https://www.wireshark.org/docs/wsug_html_chunked/ChAppFilesConfigurationSection.html]])
+
+[Online virtual machine vm]([[https://malwr.com]])
+
+[Offensive Security Exploit Database
+Archive]([[https://www.exploit-db.com]]) [Google Hacking Database
+(GHDB)]([[https://www.exploit-db.com/google-hacking-database]])
+
+* [DesignerMix]([[https://www.youtube.com/user/DesignerMix]])
+
+-  [Уязвимость BadUSB теория и практика. Theory and Practice of
+   BadUSB.]([[https://www.youtube.com/watch?v=ovfZXeGvjN8]])
+
+-  [LarionovTVs]([[https://www.youtube.com/user/LarionovTVs]])
+-  [4RTEMY]([[http://vk.cc/4OfmCB]])
+
+[Fanto
+Mask]([[https://www.youtube.com/channel/UCt1h35bkVr8xv_uutACAiuA]])
+
+Check this ========== SSL Guidelines
+
+CSR --- Certificate signing request public key with parameters, which
+identifies sender
+
+CA -- Certificate authority (Удостоверяющий центр).
+
+Подписывает CSR своим приватным ключом, выпуская сертификат пользователя
+(peer'a).
+
+CRL --- Certificate revocation list
+
+* list of series numbers with blacklist certificates
+
+* reason (about 6 reasons)
+
+* hold (приостановление действия сертификата).
+
+Cons:
+
+* CRL is offline.
+
+OCSP ---- Online certificate status protocol (проверка валидности
+сертификата в режиме реального времени).
+
+Other
+
+--------------
+
+ROOT Certificates
+
+Applications
+
+--------------
+
+linux: cearufus
+
+* Check this
+
+SSL Guidelines
+
+** CSR
+
+Certificate signing request public key with parameters, which identifies
+sender
+
+** CA
+
+Certificate authority (Удостоверяющий центр).
+
+Подписывает CSR своим приватным ключом, выпуская сертификат пользователя
+(peer'a).
+
+** CRL
+
+Certificate revocation list
+
+-  list of series numbers with blacklist certificates
+-  reason (about 6 reasons)
+-  hold (приостановление действия сертификата).
+
+Cons: * CRL is offline.
+
+** OCSP
+
+Online certificate status protocol (проверка валидности сертификата в
+режиме реального времени).
+
+** Other
+
+ROOT Certificates
+
+** Applications
+
+linux: cearufus
+
+[[http://www.alsigned.ru/?p=782][Шифрование дисков с использованием
+LUKS]]
+
+[[http://blog.neutrino.es/2013/howto-properly-activate-trim-for-your-ssd-on-linux-fstrim-lvm-and-dmcrypt][trim]]
+
+[[https://wiki.debian.org/SSDOptimization][Debian Wiki -
+SSDOptimization]]
+
+[[https://gitlab.com/cryptsetup/cryptsetup/wikis/FrequentlyAskedQuestions][GitLab
+- cryptsetup]]
+
+[[https://malwr.com][Online virtual machine vm]]
+
+[[https://www.exploit-db.com][Offensive Security Exploit Database
+Archive]] [[https://www.exploit-db.com/google-hacking-database][Google
+Hacking Database (GHDB)]] *
+[[https://www.youtube.com/user/DesignerMix][DesignerMix]] *
+[[https://www.youtube.com/watch?v=ovfZXeGvjN8][Уязвимость BadUSB теория
+и практика. Theory and Practice of BadUSB.]]
+
+-  [[https://www.youtube.com/user/LarionovTVs][LarionovTVs]]
+-  [[http://vk.cc/4OfmCB][4RTEMY]]
+
+[[https://www.youtube.com/channel/UCt1h35bkVr8xv_uutACAiuA][Fanto Mask]]
+
+[[https://www.youtube.com/playlist?list=PLW5y1tjAOzI3n4KRN_ic8N8Qv_ss_dh_F][Metasploit
+Minute - Mondays with Mubix]]
+
+[[https://community.rapid7.com/community/metasploit/blog/2016/07/22/weekly-metasploit-wrapup][Weekly
+Metasploit Wrapup]]
+
+* Google
+
+-  [[https://www.google.ru/search?as_q=metasploit&as_epq=&as_oq=&as_eq=&as_nlo=&as_nhi=&lr=&cr=&as_qdr=w&as_sitesearch=&as_occt=any&safe=images&as_filetype=&as_rights=][All]]
+-  [[https://www.google.ru/search?q=metasploit&num=30&lr=&newwindow=1&source=lnms&tbm=vid&tbs=qdr:w&sa=X&ved=0ahUKEwiltNjftJHOAhWoFJoKHenqC-QQ_AUICCgB&biw=934&bih=950][Videos]]
+
+[[http://www.metasploit.cn][Chinese]]
+
+[[https://whoer.net]]
+
+[[https://www.youtube.com/watch?v=o0FKILPqyt8][Набор программ]]
+
+[[https://www.wireshark.org/docs/wsug_html_chunked/ChAppFilesConfigurationSection.html][Configuration
+Files and Folders]]
+
+[Шифрование дисков с использованием
+LUKS]([[http://www.alsigned.ru/?p=782]])
+
+[trim]([[http://blog.neutrino.es/2013/howto-properly-activate-trim-for-your-ssd-on-linux-fstrim-lvm-and-dmcrypt]])
+
+[Debian Wiki -
+SSDOptimization]([[https://wiki.debian.org/SSDOptimization]])
+
+[GitLab -
+cryptsetup]([[https://gitlab.com/cryptsetup/cryptsetup/wikis/FrequentlyAskedQuestions]])
+
+Check this ========== SSL Guidelines
+
+CSR --- Certificate signing request public key with parameters, which
+identifies sender
+
+CA -- Certificate authority (Удостоверяющий центр).
+
+Подписывает CSR своим приватным ключом, выпуская сертификат пользователя
+(peer'a).
+
+CRL --- Certificate revocation list
+
+* list of series numbers with blacklist certificates
+
+* reason (about 6 reasons)
+
+* hold (приостановление действия сертификата).
+
+Cons:
+
+* CRL is offline.
+
+OCSP ---- Online certificate status protocol (проверка валидности
+сертификата в режиме реального времени).
+
+Other
+
+--------------
+
+ROOT Certificates
+
+Applications
+
+--------------
+
+linux: cearufus
+
+* Check this
+
+SSL Guidelines
+
+** CSR
+
+Certificate signing request public key with parameters, which identifies
+sender
+
+** CA
+
+Certificate authority (Удостоверяющий центр).
+
+Подписывает CSR своим приватным ключом, выпуская сертификат пользователя
+(peer'a).
+
+** CRL
+
+Certificate revocation list
+
+-  list of series numbers with blacklist certificates
+-  reason (about 6 reasons)
+-  hold (приостановление действия сертификата).
+
+Cons: * CRL is offline.
+
+** OCSP
+
+Online certificate status protocol (проверка валидности сертификата в
+режиме реального времени).
+
+** Other
+
+ROOT Certificates
+
+** Applications
+
+linux: cearufus
+
+[[http://www.alsigned.ru/?p=782][Шифрование дисков с использованием
+LUKS]]
+
+[[http://blog.neutrino.es/2013/howto-properly-activate-trim-for-your-ssd-on-linux-fstrim-lvm-and-dmcrypt][trim]]
+
+[[https://wiki.debian.org/SSDOptimization][Debian Wiki -
+SSDOptimization]]
+
+[[https://gitlab.com/cryptsetup/cryptsetup/wikis/FrequentlyAskedQuestions][GitLab
+- cryptsetup]]
+
+[[https://malwr.com][Online virtual machine vm]]
+
+[[https://www.exploit-db.com][Offensive Security Exploit Database
+Archive]] [[https://www.exploit-db.com/google-hacking-database][Google
+Hacking Database (GHDB)]] *
+[[https://www.youtube.com/user/DesignerMix][DesignerMix]] *
+[[https://www.youtube.com/watch?v=ovfZXeGvjN8][Уязвимость BadUSB теория
+и практика. Theory and Practice of BadUSB.]]
+
+-  [[https://www.youtube.com/user/LarionovTVs][LarionovTVs]]
+-  [[http://vk.cc/4OfmCB][4RTEMY]]
+
+[[https://www.youtube.com/channel/UCt1h35bkVr8xv_uutACAiuA][Fanto Mask]]
+
+[[https://www.youtube.com/playlist?list=PLW5y1tjAOzI3n4KRN_ic8N8Qv_ss_dh_F][Metasploit
+Minute - Mondays with Mubix]]
+
+[[https://community.rapid7.com/community/metasploit/blog/2016/07/22/weekly-metasploit-wrapup][Weekly
+Metasploit Wrapup]]
+
+* Google
+
+-  [[https://www.google.ru/search?as_q=metasploit&as_epq=&as_oq=&as_eq=&as_nlo=&as_nhi=&lr=&cr=&as_qdr=w&as_sitesearch=&as_occt=any&safe=images&as_filetype=&as_rights=][All]]
+-  [[https://www.google.ru/search?q=metasploit&num=30&lr=&newwindow=1&source=lnms&tbm=vid&tbs=qdr:w&sa=X&ved=0ahUKEwiltNjftJHOAhWoFJoKHenqC-QQ_AUICCgB&biw=934&bih=950][Videos]]
+
+[[http://www.metasploit.cn][Chinese]]
+
+[[https://whoer.net]]
+
+[[https://www.youtube.com/watch?v=o0FKILPqyt8][Набор программ]]
+
+[[https://www.wireshark.org/docs/wsug_html_chunked/ChAppFilesConfigurationSection.html][Configuration
+Files and Folders]]
+
+[Шифрование дисков с использованием
+LUKS]([[http://www.alsigned.ru/?p=782]])
+
+[trim]([[http://blog.neutrino.es/2013/howto-properly-activate-trim-for-your-ssd-on-linux-fstrim-lvm-and-dmcrypt]])
+
+[Debian Wiki -
+SSDOptimization]([[https://wiki.debian.org/SSDOptimization]])
+
+[GitLab -
+cryptsetup]([[https://gitlab.com/cryptsetup/cryptsetup/wikis/FrequentlyAskedQuestions]])
+
+[Online virtual machine vm]([[https://malwr.com]])
+
+[Offensive Security Exploit Database
+Archive]([[https://www.exploit-db.com]]) [Google Hacking Database
+(GHDB)]([[https://www.exploit-db.com/google-hacking-database]])
+
+* [DesignerMix]([[https://www.youtube.com/user/DesignerMix]])
+
+-  [Уязвимость BadUSB теория и практика. Theory and Practice of
+   BadUSB.]([[https://www.youtube.com/watch?v=ovfZXeGvjN8]])
+
+-  [LarionovTVs]([[https://www.youtube.com/user/LarionovTVs]])
+-  [4RTEMY]([[http://vk.cc/4OfmCB]])
+
+[Fanto
+Mask]([[https://www.youtube.com/channel/UCt1h35bkVr8xv_uutACAiuA]])
+
+[Metasploit Minute - Mondays with
+Mubix]([[https://www.youtube.com/playlist?list=PLW5y1tjAOzI3n4KRN_ic8N8Qv_ss_dh_F]])
+
+[Weekly Metasploit
+Wrapup]([[https://community.rapid7.com/community/metasploit/blog/2016/07/22/weekly-metasploit-wrapup]])
+
+Google ======
+
+* [All]([[https://www.google.ru/search?as_q=metasploit&as_epq]]=&as_{oq}=&as_{eq}=&as_{nlo}=&as_{nhi}=&lr=&cr=&as_{qdr}=w&as_{sitesearch}=&as_{occt}=any&safe=images&as_{filetype}=&as_{rights}=)
+
+* [Videos]([[https://www.google.ru/search?q=metasploit&num=30&lr]]=&newwindow=1&source=lnms&tbm=vid&tbs=qdr:w&sa=X&ved=0ahUKEwiltNjftJHOAhWoFJoKHenqC-QQ_{AUICCgB}&biw=934&bih=950)
+
+[Chinese]([[http://www.metasploit.cn]])
+
+[[https://whoer.net]]
+
+[Набор программ]([[https://www.youtube.com/watch?v=o0FKILPqyt8]])
+
+[Configuration Files and
+Folders]([[https://www.wireshark.org/docs/wsug_html_chunked/ChAppFilesConfigurationSection.html]])
+
+[Online virtual machine vm]([[https://malwr.com]])
+
+[Offensive Security Exploit Database
+Archive]([[https://www.exploit-db.com]]) [Google Hacking Database
+(GHDB)]([[https://www.exploit-db.com/google-hacking-database]])
+
+* [DesignerMix]([[https://www.youtube.com/user/DesignerMix]])
+
+-  [Уязвимость BadUSB теория и практика. Theory and Practice of
+   BadUSB.]([[https://www.youtube.com/watch?v=ovfZXeGvjN8]])
+
+-  [LarionovTVs]([[https://www.youtube.com/user/LarionovTVs]])
+-  [4RTEMY]([[http://vk.cc/4OfmCB]])
+
+[Fanto
+Mask]([[https://www.youtube.com/channel/UCt1h35bkVr8xv_uutACAiuA]])
+
+[Metasploit Minute - Mondays with
+Mubix]([[https://www.youtube.com/playlist?list=PLW5y1tjAOzI3n4KRN_ic8N8Qv_ss_dh_F]])
+
+[Weekly Metasploit
+Wrapup]([[https://community.rapid7.com/community/metasploit/blog/2016/07/22/weekly-metasploit-wrapup]])
+
+Google ======
+
+* [All]([[https://www.google.ru/search?as_q=metasploit&as_epq]]=&as_{oq}=&as_{eq}=&as_{nlo}=&as_{nhi}=&lr=&cr=&as_{qdr}=w&as_{sitesearch}=&as_{occt}=any&safe=images&as_{filetype}=&as_{rights}=)
+
+* [Videos]([[https://www.google.ru/search?q=metasploit&num=30&lr]]=&newwindow=1&source=lnms&tbm=vid&tbs=qdr:w&sa=X&ved=0ahUKEwiltNjftJHOAhWoFJoKHenqC-QQ_{AUICCgB}&biw=934&bih=950)
+
+[Chinese]([[http://www.metasploit.cn]])
+
+[[https://whoer.net]]
+
+[Набор программ]([[https://www.youtube.com/watch?v=o0FKILPqyt8]])
+
+[Configuration Files and
+Folders]([[https://www.wireshark.org/docs/wsug_html_chunked/ChAppFilesConfigurationSection.html]])
+
+[Metasploit Minute - Mondays with
+Mubix]([[https://www.youtube.com/playlist?list=PLW5y1tjAOzI3n4KRN_ic8N8Qv_ss_dh_F]])
+
+[Weekly Metasploit
+Wrapup]([[https://community.rapid7.com/community/metasploit/blog/2016/07/22/weekly-metasploit-wrapup]])
+
+Google ======
+
+* [All]([[https://www.google.ru/search?as_q=metasploit&as_epq]]=&as_{oq}=&as_{eq}=&as_{nlo}=&as_{nhi}=&lr=&cr=&as_{qdr}=w&as_{sitesearch}=&as_{occt}=any&safe=images&as_{filetype}=&as_{rights}=)
+
+* [Videos]([[https://www.google.ru/search?q=metasploit&num=30&lr]]=&newwindow=1&source=lnms&tbm=vid&tbs=qdr:w&sa=X&ved=0ahUKEwiltNjftJHOAhWoFJoKHenqC-QQ_{AUICCgB}&biw=934&bih=950)
+
+[Chinese]([[http://www.metasploit.cn]])
+
+[[https://whoer.net]]
+
+[Набор программ]([[https://www.youtube.com/watch?v=o0FKILPqyt8]])
+
+[Configuration Files and
+Folders]([[https://www.wireshark.org/docs/wsug_html_chunked/ChAppFilesConfigurationSection.html]])
+
+[[https://whoer.net]]
+
+[Набор программ]([[https://www.youtube.com/watch?v=o0FKILPqyt8]])
+
+[Configuration Files and
+Folders]([[https://www.wireshark.org/docs/wsug_html_chunked/ChAppFilesConfigurationSection.html]])

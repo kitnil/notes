@@ -322,3 +322,239 @@ To redo after a undo: C-g C-_
 
 Type multiple times on C-_ to redo what have been undone by C-_ To redo an emacs command multiple times, execute your command then type C-xz and then type many times on z key to repeat the command (interesting when you want to execute multiple times a macro)
 
+Setup =====
+
+1. Ensure that the server is accessible by hostname.
+2. Download and install chef server software.
+
+Create an admin user
+
+chef-server-ctl user-create USERNAME FIRST_{NAME} LAST_{NAME} EMAIL
+PASSWORD
+
+* Username: admin
+
+* First Name: admin
+
+* Last Name: admin
+
+* Email: admin@example.com
+
+* Password: examplepass
+
+* Filename: admin.pem
+
+Create an organization
+
+chef-server-ctl org-create SHORTNAME LONGNAME --association_{user}
+USERNAME
+
+* Short Name: digitalocean
+
+* Long Name: DigitalOcean, Inc.
+
+* Association User: admin
+
+* Filename: digitalocean-validator.pem
+
+Configure a chef workstation ============================
+
+git clone [[https://github.com/chef/chef-repo.git]]
+
+Putting repo under version control
+
+git config --global user.name "Your Name" git config --global user.email
+"username@domain.com"
+
+echo ".chef" >> ~/chef-repo/.gitignore
+
+cd ~/chef-repo git add . git commit -m "Excluding the ./.chef directory
+from version control"
+
+Development Kit ===============
+
+1. Download and install development kit.
+
+Verify that all of the components are available in their expected
+location
+
+chef verify
+
+echo 'eval "$(chef shell-init bash)"' >> ~/.bash_{profile} source
+~/.bash_{profile}
+
+Download the Authentication Keys to the Workstation
+
+~/chef-repo/.chef/knife.rb
+
+current_{dir} = File.dirname(*_{FILE}\_*) log_{level} :info
+log_{location} STDOUT node_{name} "name_{forworkstation}" client_{key}
+"#{current_{dir}}/name_{ofuserkey}" validation_{clientname}
+"organization_{validatorname}" validation_{key}
+"#{current_{dir}}/organization_{validatorkey}" chef_{serverurl}
+"[[https://server_domain_or_IP/organizations/organization_name]]"
+syntax_{checkcachepath} "#{ENV['HOME']}/.chef/syntaxcache"
+cookbook_{path} ["#{current_{dir}}/../cookbooks"]
+
+* node_{name}: This specifies the name that knife will use to connect to
+your Chef server. This should match your user name.
+
+* client_{key}: This should be the name and path to the user key that
+you copied over from the Chef server. We can use the #{current_{dir}}
+snippet to fill in the path if the key is in the same directory as the
+knife.rb file.
+
+* validation_{clientname}: This is the name of the validation client
+that knife will use to bootstrap new nodes. This will take the form of
+your organization short name, followed by -validator.
+
+* validation_{key}: Like the client_{key}, this includes the name and
+path to the validation key you copied from the Chef server. Again, you
+can use the #{current_{dir}} Ruby snippet to specify the current
+directory if the validation key is in the same directory as the knife.rb
+file.
+
+* chef_{serverurl}: This is the URL where the Chef server can be
+reached. It should begin with [[https://]], followed by your Chef
+server's domain name or IP address. Afterwards, the path to your
+organization should be specified by appending
+/organizations/your_{organizationname}.
+
+* Setup
+
+1. Ensure that the server is accessible by hostname.
+2. Download and install chef server software.
+
+Create an admin user
+
+#+BEGIN_EXAMPLE
+        chef-server-ctl user-create USERNAME FIRST_NAME LAST_NAME EMAIL PASSWORD
+#+END_EXAMPLE
+
+-  Username: admin
+-  First Name: admin
+-  Last Name: admin
+-  Email: admin@example.com
+-  Password: examplepass
+-  Filename: admin.pem
+
+Create an organization
+
+#+BEGIN_EXAMPLE
+        chef-server-ctl org-create SHORTNAME LONGNAME --association_user USERNAME
+#+END_EXAMPLE
+
+-  Short Name: digitalocean
+-  Long Name: DigitalOcean, Inc.
+-  Association User: admin
+-  Filename: digitalocean-validator.pem
+
+-  Configure a chef workstation
+
+#+BEGIN_EXAMPLE
+        git clone https://github.com/chef/chef-repo.git
+#+END_EXAMPLE
+
+Putting repo under version control
+
+#+BEGIN_EXAMPLE
+        git config --global user.name "Your Name"
+        git config --global user.email "username@domain.com"
+
+        echo ".chef" >> ~/chef-repo/.gitignore
+
+        cd ~/chef-repo
+        git add .
+        git commit -m "Excluding the ./.chef directory from version control"
+#+END_EXAMPLE
+
+* Development Kit
+
+1. Download and install development kit.
+
+Verify that all of the components are available in their expected
+location
+
+#+BEGIN_EXAMPLE
+        chef verify
+
+        echo 'eval "$(chef shell-init bash)"' >> ~/.bash_profile
+        source ~/.bash_profile
+#+END_EXAMPLE
+
+Download the Authentication Keys to the Workstation
+
+~/chef-repo/.chef/knife.rb
+
+#+BEGIN_EXAMPLE
+        current_dir = File.dirname(__FILE__)
+        log_level                :info
+        log_location             STDOUT
+        node_name                "name_for_workstation"
+        client_key               "#{current_dir}/name_of_user_key"
+        validation_client_name   "organization_validator_name"
+        validation_key           "#{current_dir}/organization_validator_key"
+        chef_server_url          "https://server_domain_or_IP/organizations/organization_name"
+        syntax_check_cache_path  "#{ENV['HOME']}/.chef/syntaxcache"
+        cookbook_path            ["#{current_dir}/../cookbooks"]
+#+END_EXAMPLE
+
+-  node\_{name}: This specifies the name that knife will use to connect
+   to your Chef server. This should match your user name.
+-  client\_{key}: This should be the name and path to the user key that
+   you copied over from the Chef server. We can use the
+   #{current\_{dir}} snippet to fill in the path if the key is in the
+   same directory as the knife.rb file.
+-  validation\_{client}\_{name}: This is the name of the validation
+   client that knife will use to bootstrap new nodes. This will take the
+   form of your organization short name, followed by -validator.
+-  validation\_{key}: Like the client\_{key}, this includes the name and
+   path to the validation key you copied from the Chef server. Again,
+   you can use the #{current\_{dir}} Ruby snippet to specify the current
+   directory if the validation key is in the same directory as the
+   knife.rb file.
+-  chef\_{server}\_{url}: This is the URL where the Chef server can be
+   reached. It should begin with [[https://]], followed by your Chef
+   server's domain name or IP address. Afterwards, the path to your
+   organization should be specified by appending
+   /organizations/your\_{organization}\_{name}.
+
+-  spacemacs
+
+[[https://github.com/syl20bnr/spacemacs][GitHub]]
+
+[[https://github.com/syl20bnr/spacemacs/blob/master/layers/LAYERS.org][Layers]]
+
+[[https://addons.mozilla.org/ru/firefox/addon/chrome-store-foxified][chrome
+extensions]]
+
+Кто подключился к моему компьютеру
+
+#+BEGIN_EXAMPLE
+        netstat -tlnp
+#+END_EXAMPLE
+
+nohup > /dev/null 2>&1&
+
+Running find with two or more commands to -exec
+
+#+BEGIN_EXAMPLE
+        find . -exec command {} \; -exec other command {} \;
+#+END_EXAMPLE
+
+[GitHub]([[https://github.com/syl20bnr/spacemacs]])
+
+[Layers]([[https://github.com/syl20bnr/spacemacs/blob/master/layers/LAYERS.org]])
+
+[chrome
+extensions]([[https://addons.mozilla.org/ru/firefox/addon/chrome-store-foxified]])
+
+Кто подключился к моему компьютеру
+
+netstat -tlnp
+
+nohup <COMMAND> > /dev/null 2>&1&
+
+Running find with two or more commands to -exec
+
+find . -exec command {} \; -exec other command {} \;
