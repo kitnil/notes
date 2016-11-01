@@ -3,13 +3,11 @@
 #+EMAIL: opykhalov@yandex.ru
 #+OPTIONS: email:t
 
+#+LANGUAGE: ru
 #+LaTeX_HEADER: \usepackage[utf8]{inputenc}
 #+LaTeX_HEADER: \usepackage[T1,T2A]{fontenc}
 #+LaTeX_HEADER: \usepackage[english,russian]{babel}
-#+LATEX_HEADER: \hypersetup{colorlinks, citecolor=black, filecolor=black, linkcolor=black, urlcolor=blue}
-#+LaTeX_HEADER: \usepackage{amssymb}
-#+LaTeX_HEADER: \usepackage{amsmath}
-#+LaTeX_HEADER: \usepackage{polynom}
+#+LATEX_HEADER: \hypersetup{colorlinks, citecolor=black, filecolor=black, linkcolor=black, urlcolor=blue, , pdfpagemode=FullScreen}
 
 #+OPTIONS: H:2 toc:t num:t
 #+LATEX_CLASS: beamer
@@ -38,9 +36,11 @@
 - [[https://www.youtube.com/watch?v=YvjkPF6C_LI][Finding the Inverse of a 3 x 3 Matrix using Determinants and Cofactors - Example 1 - YouTube]]
 - [[https://www.youtube.com/watch?v=iUQR0enP7RQ][Idea behind inverting a 2x2 matrix | Matrices | Precalculus | Khan Academy - YouTube]]
 
-** Matrix of minors
+** Minor of matrix
 
 - [[https://www.youtube.com/watch?v=xZBbfLLfVV4][Inverting 3x3 part 1: Calculating matrix of minors and cofactor matrix | Precalculus | Khan Academy]]
+- [[https://www.youtube.com/watch?v=vQ58OoaR9J0][Minor of Matrix - YouTube]]
+- [[https://www.youtube.com/watch?v=KMKd993vG9Q][Matrices – Minors and Cofactors - YouTube]]
 
 ** Matrix multiplication
 
@@ -77,10 +77,12 @@
 - [[https://www.youtube.com/watch?v=QV0jsTiobU4][Simpler 4x4 determinant | Matrix transformations | Linear Algebra | Khan Academy]]
 - [[https://www.youtube.com/watch?v=EqVt9pROpdM][preCalculus (SAGE) 1104 What is a determinant? - YouTube]]
 - [[https://www.youtube.com/watch?v=Ip3X9LOh2dk][The determinant | Essence of linear algebra, chapter 5 - YouTube]]
+- [[https://www.youtube.com/watch?v=WkR7m7AraQ0][Determinants for 4x4 Matrices (Minor & Cofactor)]]
+- [[https://www.youtube.com/watch?v=G7aug142hu8][Determinants for 3x3 Matrices and Above  (Minor & Cofactor)]]
 
-** Laplace's formula
+** Laplace formula
 
-- [[https://en.wikipedia.org/wiki/Determinant#Laplace.27s_formula_and_the_adjugate_matrix][2.2 Laplace's formula and the adjugate matrix]]
+- [[https://en.wikipedia.org/wiki/Determinant][2.2 Laplace's formula and the adjugate matrix]]
 - [[https://www.youtube.com/watch?v=OiNh2DswFt4][Laplace transform 1 | Laplace transform | Differential Equations | Khan Academy - YouTube]]
 
 ** Identity matrix
@@ -90,3 +92,7 @@
 ** Defined and undefined matrix operations
 
 - [[https://www.youtube.com/watch?v=O1-9f1g0OsI][Defined and undefined matrix operations | Matrices | Precalculus | Khan Academy - YouTube]]
+
+** Rank of matrix
+
+- [[https://www.youtube.com/watch?v=eRUf9VRbw5U][Rank of Matrix (Part 1)]]
