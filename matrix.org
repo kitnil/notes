@@ -18,6 +18,223 @@
 #+BEAMER_COLOR_THEME: crane
 #+COLUMNS: %45ITEM %10BEAMER_ENV(Env) %10BEAMER_ACT(Act) %4BEAMER_COL(Col) %8BEAMER_OPT(Opt)
 
+* Inverse Matrix
+
+** We can calculate the Inverse of a Matrix by:
+
+1. calculating the Matrix of Minors,
+2. then turn that into the Matrix of Cofactors,
+3. then the Adjugate, and.
+4. multiply that by 1/Determinant.
+
+** Original
+
+#+ATTR_LATEX: :mode math :environment bmatrix
+|  1 | -1 | -2 |
+| -1 | -1 |  3 |
+| -1 |  0 |  6 |
+
+** 
+
+*** Minor $M_{11}$
+
+#+ATTR_LATEX: :mode math :environment bmatrix
+| n |  n | n |
+| n | -1 | 3 |
+| n |  0 | 6 |
+#+ATTR_LATEX: :mode math :environment bmatrix :math-prefix =
+| -1 | 3 |
+|  0 | 6 |
+
+*** Compute the minor $M_{11}$
+
+#+BEGIN_LaTeX
+\begin{equation}
+-1 \cdot 6 - 0 \cdot 3 = -6 - 0 = -6
+\end{equation}
+#+END_LaTeX
+
+** 
+
+*** Minor $M_{12}$
+
+#+ATTR_LATEX:  :mode math :environment bmatrix
+|  n | n | n |
+| -1 | n | 3 |
+| -1 | n | 6 |
+#+ATTR_LATEX: :mode math :environment bmatrix :math-prefix =
+| -1 | 3 |
+| -1 | 6 |
+
+*** Compute the minor $M_{11}$
+
+#+BEGIN_LaTeX
+\begin{equation}
+-1 \cdot 6 - 1 \cdot 3 = -6 - 3 = -9
+\end{equation}
+#+END_LaTeX
+
+** 
+
+*** Minor $M_{13}$
+
+#+ATTR_LATEX: :mode math :environment bmatrix
+|  n |  n | n |
+| -1 | -1 | n |
+| -1 |  0 | n |
+#+ATTR_LATEX: :mode math :environment bmatrix :math-prefix =
+| -1 | -1 |
+| -1 |  0 |
+
+*** Compute the minor $M_{13}$
+
+#+BEGIN_LaTeX
+\begin{equation}
+-1 \cdot 0 - (-1) \cdot (-1) = 0 - 1 = -1
+\end{equation}
+#+END_LaTeX
+
+** 
+
+*** Minor $M_{21}$
+
+#+ATTR_LATEX: :mode math :environment bmatrix
+| n | -1 | -2 |
+| n |  n |  n |
+| n |  0 |  6 |
+#+ATTR_LATEX: :mode math :environment bmatrix :math-prefix =
+| -1 | -2 |
+|  0 |  6 |
+
+*** Compute the minor $M_{21}$
+
+#+BEGIN_LaTeX
+\begin{equation}
+-1 \cdot 6 - (-2) \cdot 0 = -6 - 0 = -6
+\end{equation}
+#+END_LaTeX
+
+** 
+
+*** Minor $M_{22}$
+
+#+ATTR_LATEX: :mode math :environment bmatrix
+|  1 | n | -2 |
+|  n | n |  n |
+| -1 | n |  6 |
+#+ATTR_LATEX: :mode math :environment bmatrix :math-prefix =
+|  1 | -2 |
+| -1 |  6 |
+
+*** Compute the minor $M_{22}$
+
+#+BEGIN_LaTeX
+\begin{equation}
+1 \cdot 6 - (-1) \cdot (-2) = 6 - 2 = 4
+\end{equation}
+#+END_LaTeX
+
+** 
+
+*** Minor $M_{23}$
+
+#+ATTR_LATEX: :mode math :environment bmatrix
+|  1 | -1 | n |
+|  n |  n | n |
+| -1 |  0 | n |
+#+ATTR_LATEX: :mode math :environment bmatrix :math-prefix =
+|  1 | -1 |
+| -1 |  0 |
+
+*** Compute the minor $M_{23}$
+
+#+BEGIN_LaTeX
+\begin{equation}
+1 \cdot 0 - (-1) \cdot (-1) = 0 - 1 = -1
+\end{equation}
+#+END_LaTeX
+
+** 
+
+*** Minor $M_{31}$
+
+#+ATTR_LATEX: :mode math :environment bmatrix
+| n | -1 | -2 |
+| n | -1 |  3 |
+| n |  n |  n |
+#+ATTR_LATEX: :mode math :environment bmatrix :math-prefix =
+| -1 | -2 |
+| -1 |  3 |
+
+*** Compute the minor $M_{31}$
+
+#+BEGIN_LaTeX
+\begin{equation}
+-1 \cdot 3 - (-1) \cdot (-2) = -3 - 2 = -5
+\end{equation}
+#+END_LaTeX
+
+** 
+
+*** Minor $M_{32}$
+
+#+ATTR_LATEX: :mode math :environment bmatrix
+|  1 | n | -2 |
+| -1 | n |  3 |
+|  n | n |  n |
+#+ATTR_LATEX: :mode math :environment bmatrix :math-prefix =
+|  1 | -1 |
+| -2 |  3 |
+
+*** Compute the minor $M_{32}$
+
+#+BEGIN_LaTeX
+\begin{equation}
+1 \cdot 3 - (-2) \cdot -1 = 3 - 2 = 1
+\end{equation}
+#+END_LaTeX
+
+** 
+
+*** Minor $M_{33}$
+
+#+ATTR_LATEX: :mode math :environment bmatrix
+|  1 | -1 | n |
+| -1 | -1 | n |
+|  n |  n | n |
+#+ATTR_LATEX: :mode math :environment bmatrix :math-prefix =
+|  1 | -1 |
+| -1 | -1 |
+
+*** Compute the minor $M_{33}$
+
+#+BEGIN_LaTeX
+\begin{equation}
+1 \cdot (-1) - (-1) \cdot (-1) = -1 - 1 = -2
+\end{equation}
+#+END_LaTeX
+
+** Convert to Matrix of Minors
+
+#+ATTR_LATEX: :mode math :environment bmatrix
+|  1 | -1 | -2 |
+| -1 |  0 |  1 |
+| -2 |  1 |  2 |
+
+** Template Matrix of Cofactors
+
+#+ATTR_LATEX: :mode math :environment bmatrix
+| + | - | + |
+| - | + | - |
+| + | - | + |
+
+** Matrix of Cofactors
+
+#+ATTR_LATEX: :mode math :environment bmatrix
+|  1 |  1 | -2 |
+|  1 |  0 | -1 |
+| -2 | -1 |  2 |
+
 * See also
 
 ** Inverse Matrix
