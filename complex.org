@@ -10,7 +10,6 @@
 #+LaTeX_HEADER: \usepackage[utf8]{inputenc}
 #+LaTeX_HEADER: \usepackage[T1,T2A]{fontenc}
 #+LaTeX_HEADER: \usepackage[english,russian]{babel}
-#+LaTeX_HEADER: \usepackage[unicode]{hyperref}
 #+LATEX_HEADER: \hypersetup{colorlinks, citecolor=black, filecolor=black, linkcolor=black, urlcolor=blue}
 #+LaTeX_HEADER: \usepackage{amssymb}
 #+LaTeX_HEADER: \usepackage{amsmath}
