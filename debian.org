@@ -1,5 +1,11 @@
-#+TITLE: Debian Overview
+#+TITLE: Debian
 #+AUTHOR: Oleg Pykhalov
+#+EMAIL: go.wigust@gmail.com
+#+DATE: 2016/11/02 04:10
+#+DESCRIPTION: description text
+#+KEYWORDS: debian
+#+OPTIONS: author:nil
+#+NIKOLA_TYPE: text
 
 #+LANGUAGE: ru
 #+LaTeX_HEADER: \usepackage[utf8]{inputenc}
@@ -17,6 +23,13 @@
 
 # C-c C-e l P -- (org-beamer-export-to-pdf) -- Export as LaTeX and then process to PDF.
 # https://www.hartwork.org/beamer-theme-matrix/
+
+Debian is a free operating system (OS) for your computer.
+
+An operating system is the set of basic programs and utilities that make your
+computer run.
+
+#+RST: .. TEASER_END
 
 * Think :noexport:
 - [[https://www.debian.org/doc/devel-manuals#policy][Debian -- Debian Developers' Manuals]]
