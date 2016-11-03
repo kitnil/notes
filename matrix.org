@@ -39,7 +39,7 @@
 ** Construct matrix of minors
 
 #+BEGIN_LaTeX
-\begin{align*}
+\begin{equation}
   \begin{pmatrix}
     \begin{vmatrix} -1 & 3 \\ 0 & 6 \end{vmatrix} &
     \begin{vmatrix} -1 & 3 \\ -1 & 6 \end{vmatrix} &
@@ -53,7 +53,7 @@
     \begin{vmatrix} 1 & -1 \\ -2 & 3 \end{vmatrix} &
     \begin{vmatrix} 1 & -1 \\ -1 & -1 \end{vmatrix}
   \end{pmatrix}
-\end{align*}
+\end{equation}
 #+END_LaTeX
 
 ** DONE Minor $M_{11}$
