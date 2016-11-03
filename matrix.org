@@ -265,9 +265,13 @@ diagonal stay the same. Flip across the diagonal.
 *** 
 
 #+ATTR_LATEX: :mode math :environment bmatrix
-|  1 |  1 | -2 |
-|  1 |  0 | -1 |
-| -2 | -1 |  2 |
+| -6 |  9 | -1 |
+|  6 |  4 |  1 |
+| -5 | -1 | -2 |
+#+ATTR_LATEX: :mode math :environment bmatrix :math-prefix \Leftrightarrow \mathrm{adj}(\mathbf{A}) = 
+| -6 | 6 | -5 |
+|  9 | 4 | -1 |
+| -1 | 1 | -1 |
 
 * See also
 
