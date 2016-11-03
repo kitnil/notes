@@ -223,6 +223,32 @@ return g
 #+RESULTS:
 : -7
 
+** TODO Inverse matrix
+
+#+BEGIN_LaTeX
+\begin{equation}
+  \begin{aligned}
+    \mathbf{A}^{-1} = \frac{1}{-7} \cdot \mathrm{adj}(\mathbf{A}) = \\
+    \frac{1}{-7} \cdot
+    \begin{bmatrix}
+      -6 &
+      6 &
+      -5 \\
+      & & \\
+      3 &
+      4 &
+      -1 \\
+      & & \\
+      -1 &
+      1 &
+      -2
+    \end{bmatrix}
+  \end{aligned}
+\end{equation}
+#+END_LaTeX
+
+$\mathrm{adj}(\mathbf{A})$ is a traspose of cofactor matrix
+
 ** DONE Minor $M_{11}$
    CLOSED: [2016-11-03 Thu 03:57]
 
