@@ -429,12 +429,6 @@ return g
 |  6 |  4 |  1 |
 | -5 | -1 | -2 |
 
-** DONE Adjugate matrix
-   CLOSED: [2016-11-03 Thu 04:14]
-
-Transpose of the matrix of cofactors. Switch rows and columns. Anything on
-diagonal stay the same. Flip across the diagonal.
-
 ** DONE Convert Matrix of Minors to Matrix of Cofactors
    CLOSED: [2016-11-03 Thu 04:06]
 
