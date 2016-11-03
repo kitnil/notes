@@ -226,9 +226,13 @@
    CLOSED: [2016-11-03 Thu 04:06]
 
 #+ATTR_LATEX: :mode math :environment bmatrix
-|  1 | -1 | -2 |
-| -1 |  0 |  1 |
-| -2 |  1 |  2 |
+| M_{11} | M_{12} | M_{13} |
+| M_{21} | M_{22} | M_{23} |
+| M_{31} | M_{32} | M_{33} |
+#+ATTR_LATEX: :mode math :environment bmatrix :math-prefix =
+| -6 | -9 | -1 |
+| -6 |  4 | -1 |
+| -5 |  1 | -2 |
 
 ** DONE Pattern any 3x3 Matrix of Cofactors
    CLOSED: [2016-11-03 Thu 04:06]
