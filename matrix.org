@@ -292,6 +292,23 @@ diagonal stay the same. Flip across the diagonal.
 |  1 | 0 | n |
 | -2 | n | 2 |
 
+
+** TODO Last step
+
+The inverse of matrix $\mathbf{A}$ is equal to one over the determenant of
+$\mathbf{A}$ times the adjugate matrix $\mathbf{A}$.
+
+Now let's solve for the determinant.
+
+\begin{equation}
+\mathbf{A}^{-1} = \frac{1}{|\mathbf{A}|} \cdot \mathrm{adj}(\mathbf{A})
+\end{equation}
+
+#+BEGIN_LaTeX
+\begin{equation}
+|\mathbf{A}| = 1 \cdot 1 + (-1) \cdot 1 + (-2) \cdot (-2) = 1 + (-1) + 4 = 4
+\end{equation}
+#+END_LaTeX
 * See also
 
 ** Inverse Matrix
