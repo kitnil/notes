@@ -223,7 +223,8 @@ return g
 #+RESULTS:
 : -7
 
-** TODO Inverse matrix
+** DONE Inverse matrix
+   CLOSED: [2016-11-03 Thu 11:57]
 
 #+BEGIN_LaTeX
 \begin{equation}
@@ -242,6 +243,34 @@ return g
       -1 &
       1 &
       -2
+    \end{bmatrix}
+    =
+    \begin{bmatrix}
+      \frac{-6}{-7} &
+      \frac{6}{-7}&
+      \frac{-5}{-7} \\
+      & & \\
+      \frac{3}{-7}&
+      \frac{4}{-7}&
+      \frac{-1}{-7} \\
+      & & \\
+      \frac{-1}{-7} &
+      \frac{1}{-7}&
+      \frac{-2}{-7}      
+    \end{bmatrix}
+    =
+    \begin{bmatrix}
+      \frac{6}{7} &
+      -\frac{6}{7}&
+      \frac{5}{7} \\
+      & & \\
+      -\frac{3}{7}&
+      -\frac{4}{7}&
+      \frac{1}{7} \\
+      & & \\
+      \frac{1}{7} &
+      -\frac{1}{7}&
+      \frac{2}{7}      
     \end{bmatrix}
   \end{aligned}
 \end{equation}
