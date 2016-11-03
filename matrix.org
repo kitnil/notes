@@ -34,7 +34,8 @@
 | -1 | -1 |  3 |
 | -1 |  0 |  6 |
 
-** 
+** DONE Minor $M_{11}$
+   CLOSED: [2016-11-03 Thu 03:57]
 
 *** Minor $M_{11}$
 
@@ -54,7 +55,8 @@
 \end{equation}
 #+END_LaTeX
 
-** 
+** DONE Minor $M_{12}$
+   CLOSED: [2016-11-03 Thu 03:59]
 
 *** Minor $M_{12}$
 
@@ -66,7 +68,7 @@
 | -1 | 3 |
 | -1 | 6 |
 
-*** Compute the minor $M_{11}$
+*** Compute the minor $M_{12}$
 
 #+BEGIN_LaTeX
 \begin{equation}
@@ -74,7 +76,8 @@
 \end{equation}
 #+END_LaTeX
 
-** 
+** DONE Minor $M_{13}$
+   CLOSED: [2016-11-03 Thu 03:59]
 
 *** Minor $M_{13}$
 
@@ -94,7 +97,8 @@
 \end{equation}
 #+END_LaTeX
 
-** 
+** DONE Minor $M_{21}$
+   CLOSED: [2016-11-03 Thu 03:59]
 
 *** Minor $M_{21}$
 
@@ -114,7 +118,8 @@
 \end{equation}
 #+END_LaTeX
 
-** 
+** DONE Minor $M_{22}$
+   CLOSED: [2016-11-03 Thu 03:59]
 
 *** Minor $M_{22}$
 
@@ -134,7 +139,8 @@
 \end{equation}
 #+END_LaTeX
 
-** 
+** DONE Minor $M_{23}$
+   CLOSED: [2016-11-03 Thu 03:59]
 
 *** Minor $M_{23}$
 
@@ -154,8 +160,8 @@
 \end{equation}
 #+END_LaTeX
 
-** 
-
+** DONE Minor $M_{31}$
+   CLOSED: [2016-11-03 Thu 03:59]
 *** Minor $M_{31}$
 
 #+ATTR_LATEX: :mode math :environment bmatrix
@@ -174,7 +180,8 @@
 \end{equation}
 #+END_LaTeX
 
-** 
+** DONE Minor $M_{32}$
+   CLOSED: [2016-11-03 Thu 04:00]
 
 *** Minor $M_{32}$
 
@@ -190,11 +197,12 @@
 
 #+BEGIN_LaTeX
 \begin{equation}
-1 \cdot 3 - (-2) \cdot -1 = 3 - 2 = 1
+1 \cdot 3 - (-2) \cdot (-1) = 3 - 2 = 1
 \end{equation}
 #+END_LaTeX
 
-** 
+** DONE Minor $M_{33}$
+   CLOSED: [2016-11-03 Thu 04:00]
 
 *** Minor $M_{33}$
 
@@ -214,21 +222,32 @@
 \end{equation}
 #+END_LaTeX
 
-** Convert to Matrix of Minors
+** DONE Convert Matrix to Matrix of Minors
+   CLOSED: [2016-11-03 Thu 04:06]
 
 #+ATTR_LATEX: :mode math :environment bmatrix
 |  1 | -1 | -2 |
 | -1 |  0 |  1 |
 | -2 |  1 |  2 |
 
-** Template Matrix of Cofactors
+** DONE Pattern any 3x3 Matrix of Cofactors
+   CLOSED: [2016-11-03 Thu 04:06]
 
 #+ATTR_LATEX: :mode math :environment bmatrix
 | + | - | + |
 | - | + | - |
 | + | - | + |
 
-** Matrix of Cofactors
+** DONE Convert Matrix of Minors to Matrix of Cofactors
+   CLOSED: [2016-11-03 Thu 04:06]
+
+** DONE Adjugate matrix
+   CLOSED: [2016-11-03 Thu 04:14]
+
+Transpose of the matrix of cofactors. Switch rows and columns. Anything on
+diagonal stay the same. Flip across the diagonal.
+
+*** 
 
 #+ATTR_LATEX: :mode math :environment bmatrix
 |  1 |  1 | -2 |
