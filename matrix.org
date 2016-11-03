@@ -262,7 +262,7 @@
 Transpose of the matrix of cofactors. Switch rows and columns. Anything on
 diagonal stay the same. Flip across the diagonal.
 
-*** 
+*** Adjugate matrix
 
 #+ATTR_LATEX: :mode math :environment bmatrix
 | -6 |  9 | -1 |
