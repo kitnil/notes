@@ -234,8 +234,8 @@
 | -6 |  4 | -1 |
 | -5 |  1 | -2 |
 
-** DONE Pattern any 3x3 Matrix of Cofactors
-   CLOSED: [2016-11-03 Thu 04:06]
+** DONE Convert matrix of minors to matrix of cofactors
+*** Pattern any 3x3 Matrix of Cofactors
 
 #+ATTR_LATEX: :mode math :environment bmatrix
 | + | - | + |
