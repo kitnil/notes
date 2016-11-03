@@ -8,6 +8,8 @@
 #+LaTeX_HEADER: \usepackage[T1,T2A]{fontenc}
 #+LaTeX_HEADER: \usepackage[english,russian]{babel}
 #+LATEX_HEADER: \hypersetup{colorlinks, citecolor=black, filecolor=black, linkcolor=black, urlcolor=blue, , pdfpagemode=FullScreen}
+#+LATEX_HEADER: \usepackage{mathtools}
+#+LATEX_HEADER: \mathtoolsset{showonlyrefs}
 
 #+OPTIONS: H:2 toc:t num:t
 #+LATEX_CLASS: beamer
