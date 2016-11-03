@@ -273,6 +273,25 @@ diagonal stay the same. Flip across the diagonal.
 |  9 | 4 | -1 |
 | -1 | 1 | -1 |
 
+*** Example                                                        :noexport:
+
+#+ATTR_LATEX: :mode math :environment bmatrix :math-prefix \Leftrightarrow  
+| 1 | 1 | n |
+| n | 0 | n |
+| n | n | 2 | 
+#+ATTR_LATEX: :mode math :environment bmatrix :math-prefix \Leftrightarrow  
+| 1 | n | n |
+| 1 | 0 | n |
+| n | n | 2 | 
+#+ATTR_LATEX: :mode math :environment bmatrix :math-prefix \Leftrightarrow  
+| 1 | n | -2 |
+| 1 | 0 |  n |
+| n | n |  2 |
+#+ATTR_LATEX: :mode math :environment bmatrix :math-prefix \Leftrightarrow  
+|  1 | n | n |
+|  1 | 0 | n |
+| -2 | n | 2 |
+
 * See also
 
 ** Inverse Matrix
