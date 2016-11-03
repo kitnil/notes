@@ -265,12 +265,12 @@ diagonal stay the same. Flip across the diagonal.
 *** Adjugate matrix
 
 #+ATTR_LATEX: :mode math :environment bmatrix
-| -6 |  9 | -1 |
+| -6 |  3 | -1 |
 |  6 |  4 |  1 |
 | -5 | -1 | -2 |
 #+ATTR_LATEX: :mode math :environment bmatrix :math-prefix \Leftrightarrow \mathrm{adj}(\mathbf{A}) = 
 | -6 | 6 | -5 |
-|  9 | 4 | -1 |
+|  3 | 4 | -1 |
 | -1 | 1 | -1 |
 
 *** Example                                                        :noexport:
