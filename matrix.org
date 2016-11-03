@@ -56,7 +56,7 @@
 #+END_LaTeX
 
 ** DONE Minor $M_{12}$
-   CLOSED: [2016-11-03 Thu 03:59]
+   CLOSED: [2016-11-03 Thu 04:34]
 
 *** Minor $M_{12}$
 
@@ -72,7 +72,7 @@
 
 #+BEGIN_LaTeX
 \begin{equation}
--1 \cdot 6 - 1 \cdot 3 = -6 - 3 = -9
+-1 \cdot 6 - (-1) \cdot 3 = -6 - (-3) = -6 + 3 = -3
 \end{equation}
 #+END_LaTeX
 
