@@ -56,7 +56,7 @@
 #+END_LaTeX
 
 ** DONE Minor $M_{12}$
-   CLOSED: [2016-11-03 Thu 03:59]
+   CLOSED: [2016-11-03 Thu 04:34]
 
 *** Minor $M_{12}$
 
@@ -72,12 +72,12 @@
 
 #+BEGIN_LaTeX
 \begin{equation}
--1 \cdot 6 - 1 \cdot 3 = -6 - 3 = -9
+-1 \cdot 6 - (-1) \cdot 3 = -6 - (-3) = -6 + 3 = -3
 \end{equation}
 #+END_LaTeX
 
 ** DONE Minor $M_{13}$
-   CLOSED: [2016-11-03 Thu 03:59]
+   CLOSED: [2016-11-03 Thu 04:33]
 
 *** Minor $M_{13}$
 
@@ -98,7 +98,7 @@
 #+END_LaTeX
 
 ** DONE Minor $M_{21}$
-   CLOSED: [2016-11-03 Thu 03:59]
+   CLOSED: [2016-11-03 Thu 04:33]
 
 *** Minor $M_{21}$
 
@@ -119,7 +119,7 @@
 #+END_LaTeX
 
 ** DONE Minor $M_{22}$
-   CLOSED: [2016-11-03 Thu 03:59]
+   CLOSED: [2016-11-03 Thu 04:33]
 
 *** Minor $M_{22}$
 
@@ -222,7 +222,7 @@
 \end{equation}
 #+END_LaTeX
 
-** DONE Convert Matrix to Matrix of Minors
+** DONE Convert matrix to matrix of minors
    CLOSED: [2016-11-03 Thu 04:06]
 
 #+ATTR_LATEX: :mode math :environment bmatrix
@@ -230,29 +230,28 @@
 | M_{21} | M_{22} | M_{23} |
 | M_{31} | M_{32} | M_{33} |
 #+ATTR_LATEX: :mode math :environment bmatrix :math-prefix =
-| -6 | -9 | -1 |
+| -6 | -3 | -1 |
 | -6 |  4 | -1 |
 | -5 |  1 | -2 |
 
-** DONE Pattern any 3x3 Matrix of Cofactors
-   CLOSED: [2016-11-03 Thu 04:06]
+** DONE Convert matrix of minors to matrix of cofactors
+*** Pattern any 3x3 Matrix of Cofactors
+
+ #+ATTR_LATEX: :mode math :environment bmatrix
+ | + | - | + |
+ | - | + | - |
+ | + | - | + |
+
+    CLOSED: [2016-11-03 Thu 04:06]
+
+*** Convert matrix of minors to matrix of cofactors
 
 #+ATTR_LATEX: :mode math :environment bmatrix
-| + | - | + |
-| - | + | - |
-| + | - | + |
-
-** DONE Convert Matrix of Minors to Matrix of Cofactors
-   CLOSED: [2016-11-03 Thu 04:06]
-
-*** Convert Matrix of Minors to Matrix of Cofactors
-
-#+ATTR_LATEX: :mode math :environment bmatrix
-| -6 | -9 | -1 |
+| -6 | -3 | -1 |
 | -6 |  4 | -1 |
 | -5 |  1 | -2 |
 #+ATTR_LATEX: :mode math :environment bmatrix :math-prefix \Leftrightarrow
-| -6 |  9 | -1 |
+| -6 |  3 | -1 |
 |  6 |  4 |  1 |
 | -5 | -1 | -2 |
 
@@ -262,15 +261,15 @@
 Transpose of the matrix of cofactors. Switch rows and columns. Anything on
 diagonal stay the same. Flip across the diagonal.
 
-*** 
+*** Adjugate matrix
 
 #+ATTR_LATEX: :mode math :environment bmatrix
-| -6 |  9 | -1 |
+| -6 |  3 | -1 |
 |  6 |  4 |  1 |
 | -5 | -1 | -2 |
 #+ATTR_LATEX: :mode math :environment bmatrix :math-prefix \Leftrightarrow \mathrm{adj}(\mathbf{A}) = 
 | -6 | 6 | -5 |
-|  9 | 4 | -1 |
+|  3 | 4 | -1 |
 | -1 | 1 | -1 |
 
 *** Example                                                        :noexport:
@@ -305,9 +304,13 @@ Now let's solve for the determinant.
 \end{equation}
 
 #+BEGIN_LaTeX
-\begin{equation}
-|\mathbf{A}| = 1 \cdot 1 + (-1) \cdot 1 + (-2) \cdot (-2) = 1 + (-1) + 4 = 4
-\end{equation}
+\begin{align*}
+  |\mathbf{A}|
+  = 1 \cdot (-6) + (-1) \cdot (-3) + (-2) \cdot (-1) &= \\
+  &= -6 + 3 + 2 \\
+  &= -6 + 5 \\
+  &= -1
+\end{align*}
 #+END_LaTeX
 
 ** Working
