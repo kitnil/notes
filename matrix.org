@@ -143,12 +143,14 @@
 \end{equation}
 #+END_LaTeX
 
-** Find a determenant
+** DONE Find a determenant
+   CLOSED: [2016-11-03 Thu 11:35]
 
 #+BEGIN_LaTeX
 \begin{equation}
   \begin{aligned}
-    \begin{pmatrix}
+    \mathrm{det}(\mathbf{A}) =
+    \begin{bmatrix}
       1 &
       -1 &
       -2 \\
@@ -160,9 +162,9 @@
       -1 &
       0 &
       6
-    \end{pmatrix}
+    \end{bmatrix}
     =
-    \begin{pmatrix}
+    \begin{bmatrix}
       1 &
       -1 &
       -2 \\
@@ -174,7 +176,7 @@
       -1 &
       0 &
       6
-    \end{pmatrix}
+    \end{bmatrix}
     \begin{matrix}
       1 &
       -1 &
@@ -188,15 +190,16 @@
       0 &
       & & \\
     \end{matrix} \\
-    1 \cdot (-1) \cdot 6
+    \mathrm{det}(\mathbf{A})
+    = 1 \cdot (-1) \cdot 6
     + (-1) \cdot 3 \cdot (-1)
     + (-2) \cdot (-1) \cdot 0 \\
     - (-1) \cdot (-1) \cdot 6
     - 1 \cdot 3 \cdot 0
     - (-2) \cdot (-1) \cdot (-1) \\
-    = -6 + 3 + 0 - 6 - 0 - (-2)
-    = -6 + 3 - 6 + 2
-    = -12 + 5
+    = -6 + 3 + 0 - 6 - 0 - (-2) \\
+    = -6 + 3 - 6 + 2 \\
+    = -12 + 5 \\
     = -7
   \end{aligned}
 \end{equation}
