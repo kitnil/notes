@@ -305,9 +305,13 @@ Now let's solve for the determinant.
 \end{equation}
 
 #+BEGIN_LaTeX
-\begin{equation}
-|\mathbf{A}| = 1 \cdot 1 + (-1) \cdot 1 + (-2) \cdot (-2) = 1 + (-1) + 4 = 4
-\end{equation}
+\begin{align*}
+  |\mathbf{A}|
+  = 1 \cdot (-6) + (-1) \cdot (-3) + (-2) \cdot (-1) &= \\
+  &= -6 + 3 + 2 \\
+  &= -6 + 5 \\
+  &= -1
+\end{align*}
 #+END_LaTeX
 
 ** Working
