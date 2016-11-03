@@ -107,6 +107,42 @@
 \end{equation}
 #+END_LaTeX
 
+** Get cofactor matrix from matrix of minors
+
+#+BEGIN_LaTeX
+\begin{equation}
+  \begin{aligned}
+    \begin{pmatrix}
+      -6 &
+      -3 &
+      - 1 \\
+      & & \\
+      -6 &
+      4 &
+      - 1 \\
+      & & \\
+      -5 &
+      1 &
+      -2
+    \end{pmatrix}
+    =
+    \begin{pmatrix}
+      -6 &
+      3 &
+      - 1 \\
+      & & \\
+      6 &
+      4 &
+      1 \\
+      & & \\
+      -5 &
+      -1 &
+      -2
+    \end{pmatrix}    
+  \end{aligned}
+\end{equation}
+#+END_LaTeX
+
 ** DONE Minor $M_{11}$
    CLOSED: [2016-11-03 Thu 03:57]
 
