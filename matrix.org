@@ -714,6 +714,16 @@ Now let's solve for the determinant.
 \end{equation}
 #+END_LaTeX
 
+** TODO Convert system of linear equations to matrix
+
+#+BEGIN_LaTeX
+\begin{equation}
+  \begin{aligned}
+    \mathbf{A}\mathbf{X} = \mathbf{B} \\
+    \mathbf{A}^{-1} \cdot \mathbf{A}\mathbf{B} = \mathbf{A}^{-1} \cdot \mathbf{B}
+  \end{aligned}
+\end{equation}
+#+END_LaTeX
 ** See also
 
 *** System of linear equations
