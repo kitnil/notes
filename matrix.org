@@ -735,6 +735,26 @@ Now let's solve for the determinant.
 \end{equation}
 #+END_LaTeX
 
+** TODO Reduced row echelon form
+
+#+BEGIN_LaTeX
+\begin{equation}
+  \begin{aligned}
+    \mathbf{A} =
+    \begin{bmatrix}
+      1 & -1 & 2 & 0 & -1 \\
+      0 & 1 & 0 & -1 & 0 \\
+      0 & 0 & 1 & 1 & 1 \\
+      0 & 0 & 0 & 1 & -1 \\
+    \end{bmatrix}
+    \sim
+    \begin{bmatrix}
+
+    \end{bmatrix}
+  \end{aligned}
+\end{equation}
+#+END_LaTeX
+
 ** See also
 
 *** System of linear equations
