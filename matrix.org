@@ -134,7 +134,7 @@
       -5 &
       -1 &
       -2
-    \end{pmatrix}    
+    \end{pmatrix}
   \end{aligned}
 \end{equation}
 #+END_LaTeX
@@ -249,7 +249,7 @@ return g
       & & \\
       \frac{-1}{-7} &
       \frac{1}{-7}&
-      \frac{-2}{-7}      
+      \frac{-2}{-7}
     \end{bmatrix}
     =
     \begin{bmatrix}
@@ -263,7 +263,7 @@ return g
       & & \\
       \frac{1}{7} &
       -\frac{1}{7}&
-      \frac{2}{7}      
+      \frac{2}{7}
     \end{bmatrix}
   \end{aligned}
 \end{equation}
@@ -503,32 +503,32 @@ $\mathrm{adj}(\mathbf{A})$ is a traspose of cofactor matrix
 Transpose of the matrix of cofactors. Switch rows and columns. Anything on
 diagonal stay the same. Flip across the diagonal.
 
-*** 
+***
 
 #+ATTR_LATEX: :mode math :environment bmatrix
 | -6 |  9 | -1 |
 |  6 |  4 |  1 |
 | -5 | -1 | -2 |
-#+ATTR_LATEX: :mode math :environment bmatrix :math-prefix \Leftrightarrow \mathrm{adj}(\mathbf{A}) = 
+#+ATTR_LATEX: :mode math :environment bmatrix :math-prefix \Leftrightarrow \mathrm{adj}(\mathbf{A}) =
 | -6 | 6 | -5 |
 |  9 | 4 | -1 |
 | -1 | 1 | -1 |
 
 *** Example                                                        :noexport:
 
-#+ATTR_LATEX: :mode math :environment bmatrix :math-prefix \Leftrightarrow  
+#+ATTR_LATEX: :mode math :environment bmatrix :math-prefix \Leftrightarrow
 | 1 | 1 | n |
 | n | 0 | n |
-| n | n | 2 | 
-#+ATTR_LATEX: :mode math :environment bmatrix :math-prefix \Leftrightarrow  
+| n | n | 2 |
+#+ATTR_LATEX: :mode math :environment bmatrix :math-prefix \Leftrightarrow
 | 1 | n | n |
 | 1 | 0 | n |
-| n | n | 2 | 
-#+ATTR_LATEX: :mode math :environment bmatrix :math-prefix \Leftrightarrow  
+| n | n | 2 |
+#+ATTR_LATEX: :mode math :environment bmatrix :math-prefix \Leftrightarrow
 | 1 | n | -2 |
 | 1 | 0 |  n |
 | n | n |  2 |
-#+ATTR_LATEX: :mode math :environment bmatrix :math-prefix \Leftrightarrow  
+#+ATTR_LATEX: :mode math :environment bmatrix :math-prefix \Leftrightarrow
 |  1 | n | n |
 |  1 | 0 | n |
 | -2 | n | 2 |
@@ -689,21 +689,21 @@ Now let's solve for the determinant.
       0x_1 + 0x_2 + 0x_3 + 1x_4 - 1x_5 = 0b^0 \\
     \end{cases}
     \\
-    \mathbf{A} = 
+    \mathbf{A} =
     \begin{bmatrix}
       1 & -1 & 2 & 0 & -1 \\
       0 & 1 & 0 & -1 & 0 \\
       0 & 0 & 1 & 1 & 1 \\
       0 & 0 & 0 & 1 & -1 \\
     \end{bmatrix}
-    \mathbf{B} = 
+    \mathbf{B} =
     \begin{bmatrix}
       1 \\
       2 \\
       1 \\
       0 \\
     \end{bmatrix}
-    \mathbf{X} = 
+    \mathbf{X} =
     \begin{bmatrix}
       x_1 & -x_2 & x_3 & x_4 & -x_5 \\
       x_1 & x_2 & x_3 & -x_4 & x_5 \\
