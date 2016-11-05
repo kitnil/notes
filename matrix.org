@@ -660,7 +660,23 @@ Now let's solve for the determinant.
 *** Rank of matrix
 
  - [[https://www.youtube.com/watch?v=eRUf9VRbw5U][Rank of Matrix (Part 1)]]
+
 * System of linear equations
+
+** Original
+
+#+BEGIN_LaTeX
+\begin{equation}
+  \begin{aligned}
+    \begin{cases}
+    x_1 - x_2 + 2x_3 - x_5 = 1 \\
+    x_2 + x_3 - x_4 = 2 \\
+    x_3 + x_4 + x_5 = 1 \\
+    x_4 - x_5 = 0 \\
+    \end{cases}
+  \end{aligned}
+\end{equation}
+#+END_LaTeX
 
 ** See also
 
