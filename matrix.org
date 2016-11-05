@@ -13,13 +13,6 @@
 #+LATEX_HEADER: \mathtoolsset{showonlyrefs}
 
 #+OPTIONS: H:2 toc:t num:t
-#+LATEX_CLASS: beamer
-#+LATEX_CLASS_OPTIONS: [presentation]
-#+LATEX_CLASS_OPTIONS: [aspectratio=169]
-#+LATEX_HEADER: \beamertemplatenavigationsymbolsempty
-#+BEAMER_THEME: default
-#+BEAMER_COLOR_THEME: crane
-#+COLUMNS: %45ITEM %10BEAMER_ENV(Env) %10BEAMER_ACT(Act) %4BEAMER_COL(Col) %8BEAMER_OPT(Opt)
 
 * Inverse Matrix
 
