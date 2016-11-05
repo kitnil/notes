@@ -667,13 +667,52 @@ Now let's solve for the determinant.
 
 #+BEGIN_LaTeX
 \begin{equation}
-  \begin{aligned}
-    \begin{cases}
+  \begin{cases}
     x_1 - x_2 + 2x_3 - x_5 = 1 \\
     x_2 + x_3 - x_4 = 2 \\
     x_3 + x_4 + x_5 = 1 \\
     x_4 - x_5 = 0 \\
+  \end{cases}
+\end{equation}
+#+END_LaTeX
+
+** Convert system of linear equations to matrix
+
+#+BEGIN_LaTeX
+\begin{equation}
+  \begin{aligned}
+    \begin{cases}
+      x_1 - x_2 + 2x_3 - x_5 = 1 \\
+      x_2 + x_3 - x_4 = 2 \\
+      x_3 + x_4 + x_5 = 1 \\
+      x_4 - x_5 = 0 \\
     \end{cases}
+    =
+    \begin{cases}
+      1x_1 - 1x_2 + 2x_3 + 0x_4 - 1x_5 = 1b^0 \\
+      0x_1 + 1x_2 + 0x_3 - 1x_4 + 0x_5 = 2b^0 \\
+      0x_1 + 0x_2 + 1x_3 + 1x_4 + 1x_5 = 1b^0 \\
+      0x_1 + 0x_2 + 0x_3 + 1x_4 - 1x_5 = 0b^0 \\
+    \end{cases}
+    \\
+    \begin{bmatrix}
+      1 & -1 & 2 & 0 & -1 \\
+      0 & 1 & 0 & -1 & 0 \\
+      0 & 0 & 1 & 1 & 1 \\
+      0 & 0 & 0 & 1 & -1 \\
+    \end{bmatrix}
+    \begin{bmatrix}
+      1 \\
+      2 \\
+      1 \\
+      0 \\
+    \end{bmatrix}
+    \begin{bmatrix}
+      x_1 & -x_2 & x_3 & x_4 & -x_5 \\
+      x_1 & x_2 & x_3 & -x_4 & x_5 \\
+      x_1 & x_2 & x_3 & x_4 & x_5 \\
+      x_1 & x_2 & x_3 & x_4 & -x_5 \\
+    \end{bmatrix}
   \end{aligned}
 \end{equation}
 #+END_LaTeX
