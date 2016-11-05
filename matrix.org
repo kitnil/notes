@@ -724,6 +724,17 @@ Now let's solve for the determinant.
   \end{aligned}
 \end{equation}
 #+END_LaTeX
+
+** TODO Check if determinant is not equal to null
+
+#+BEGIN_LaTeX
+\begin{equation}
+  \begin{aligned}
+    \mathrm{det}(\mathbf{A}) \ne 0
+  \end{aligned}
+\end{equation}
+#+END_LaTeX
+
 ** See also
 
 *** System of linear equations
