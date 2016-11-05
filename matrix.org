@@ -12,7 +12,7 @@
 #+LATEX_HEADER: \usepackage{mathtools}
 #+LATEX_HEADER: \mathtoolsset{showonlyrefs}
 
-#+OPTIONS: H:2 toc:t num:t
+#+OPTIONS: H:2 toc:t num:t todo:nil
 
 * Inverse Matrix
 
