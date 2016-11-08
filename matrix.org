@@ -437,6 +437,7 @@ Reduced row echelon form
     \end{array}
     % 1
     \\
+    \\
     \xrightarrow{R_2 + R_1 \rightarrow R_1}
     \begin{array}{rrrrrr}
       1 & 0 & 3 & -1 & -1 & 3 \\
@@ -445,7 +446,8 @@ Reduced row echelon form
       0 & 0 & 0 & 1 & -1 & 0
     \end{array}
     % 2
-    \\ 
+    \\
+    \\
     \xrightarrow{-1 R_3 + R_2 \rightarrow R_2}
     \begin{array}{rrrrrr}
       1 & 0 & 3 & -1 & -1 & 3 \\
@@ -454,6 +456,7 @@ Reduced row echelon form
       0 & 0 & 0 & 1 & -1 & 0
     \end{array}
     % 3
+    \\
     \\
     \xrightarrow{-1 R_4 + R_3 \rightarrow R_3}
     \begin{array}{rrrrrr}
@@ -464,6 +467,7 @@ Reduced row echelon form
     \end{array}
     % 4
     \\
+    \\
     \xrightarrow{-3 R_3 + R_1 \rightarrow R_1}
     \begin{array}{rrrrrr}
       1 & 0 & 0 & -1 & -7 & 0 \\
@@ -473,6 +477,7 @@ Reduced row echelon form
     \end{array}
     % 5
     \\
+    \\
     \xrightarrow{1 R_4 + R_1 \rightarrow R_1}
     \begin{array}{rrrrrr}
       1 & 0 & 0 & 0 & -8 & 0\\
@@ -481,6 +486,7 @@ Reduced row echelon form
       0 & 0 & 0 & 1 & -1 & 0
     \end{array}
     % 6
+    \\
     \\
     \xrightarrow{2 R_4 + R_2 \rightarrow R_2}
     \begin{array}{rrrrrr}
@@ -762,6 +768,26 @@ $$\mathbf{X} \cdot \mathbf{A}$$
 $$\mathbf{B} \cdot \mathbf{C} \cdot \mathbf{A}$$
 
 * Dimension of the column space or rank
+
+** Orininal
+
+Ранг матрицы
+
+#+BEGIN_EXPORT latex
+\begin{equation}
+  \begin{bmatrix}
+    1 & -1 & 2 & 0 \\
+    0 & 1 & -2 & 3 \\
+    0 & 0 & 0 & 4 \\
+    0 & 0 & 0 & 0
+  \end{bmatrix}
+\end{equation}
+#+END_EXPORT
+
+** Answer
+
+$3)$
+
 * See also                                                         :noexport:
 
 ** Calc
