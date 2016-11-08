@@ -965,3 +965,17 @@ print(answer)
 #+RESULTS:
 | 0 | 1 | 0 | 0 | -3 | 1 |
 * Matrix multiplication
+
+** Column row rule
+
+Make sure that the the number of columns in the 1st one equals the number of
+rows in the 2nd one
+
+** Multiply
+
+Multiply the elements of each row of the first matrix by the elements of each
+column in the second matrix
+
+** Add
+
+Add the products
