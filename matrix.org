@@ -16,24 +16,36 @@
 
 * Inverse Matrix
 
-** We can calculate the Inverse of a Matrix by:
+** Plan
 
-1. calculating the Matrix of Minors,
-2. then turn that into the Matrix of Cofactors,
-3. then the Adjugate, and.
-4. multiply that by 1/Determinant.
+We can calculate the inverse of a matrix by:
+
+1. Calculating the matrix of minors
+2. Turn that into the matrix of cofactors
+3. Adjugate
+4. Multiply that by 1/determinant
 
 ** Original
 
-#+ATTR_LATEX: :mode math :environment bmatrix
-|  1 | -1 | -2 |
-| -1 | -1 |  3 |
-| -1 |  0 |  6 |
+Методом Гаусса и методом алгебраических дополнений найдите матрицу, обратную к
+
+#+BEGIN_EXPORT latex
+\begin{equation}
+  \begin{aligned}
+  \mathbf{А} =
+    \begin{bmatrix}
+    1 & -1 & -2 \\
+    -1 & -1 & 3 \\
+    -1 & 0 & 6
+    \end{bmatrix}
+  \end{aligned}
+\end{equation}
+#+END_EXPORT
 
 ** DONE Construct matrix of minors
    CLOSED: [2016-11-03 Thu 11:35]
 
-#+BEGIN_LaTeX
+#+BEGIN_EXPORT latex
 \begin{equation}
   \begin{pmatrix}
     \begin{vmatrix} -1 & 3 \\ 0 & 6 \end{vmatrix} &
@@ -49,12 +61,12 @@
     \begin{vmatrix} 1 & -1 \\ -1 & -1 \end{vmatrix}
   \end{pmatrix}
 \end{equation}
-#+END_LaTeX
+#+END_EXPORT
 
 ** DONE Evaluate to get a matrix of minors
    CLOSED: [2016-11-03 Thu 11:35]
 
-#+BEGIN_LaTeX
+#+BEGIN_EXPORT latex
 \begin{equation}
   \begin{aligned}
     \begin{pmatrix}
@@ -100,49 +112,47 @@
     \end{pmatrix}
   \end{aligned}
 \end{equation}
-#+END_LaTeX
+#+END_EXPORT
 
 ** DONE Get cofactor matrix from matrix of minors
    CLOSED: [2016-11-03 Thu 11:35]
 
-#+BEGIN_LaTeX
+Pattern any 3x3 Matrix of Cofactors
+#+BEGIN_EXPORT latex
+\begin{equation}
+  \begin{pmatrix}
+    + & - & + \\
+    - & + & - \\
+    + & - & + 
+  \end{pmatrix}
+\end{equation}
+#+END_EXPORT
+
+#+BEGIN_EXPORT latex
 \begin{equation}
   \begin{aligned}
     \begin{pmatrix}
-      -6 &
-      -3 &
-      - 1 \\
+      -6 & -3 & - 1 \\
       & & \\
-      -6 &
-      4 &
-      - 1 \\
-      & & \\
-      -5 &
-      1 &
-      -2
+      -6 & 4 & - 1 \\
+      & & \\ -5 & 1 & -2
     \end{pmatrix}
     =
     \begin{pmatrix}
-      -6 &
-      3 &
-      - 1 \\
+      -6 & 3 & - 1 \\
       & & \\
-      6 &
-      4 &
-      1 \\
+      6 & 4 & 1 \\
       & & \\
-      -5 &
-      -1 &
-      -2
+      -5 & -1 & -2
     \end{pmatrix}
   \end{aligned}
 \end{equation}
-#+END_LaTeX
+#+END_EXPORT
 
 ** DONE Find a determenant
    CLOSED: [2016-11-03 Thu 11:35]
 
-#+BEGIN_LaTeX
+#+BEGIN_EXPORT latex
 \begin{equation}
   \begin{aligned}
     \mathrm{det}(\mathbf{A}) =
@@ -199,7 +209,7 @@
     = -7
   \end{aligned}
 \end{equation}
-#+END_LaTeX
+#+END_EXPORT
 
 #+BEGIN_SRC python :exports none
 original = 1*(-1)*6+(-1)*3*(-1)+(-2)*(-1)*0-(-1)*(-1)*6-1*3*0-(-2)*(-1)*(-1)
@@ -219,7 +229,13 @@ return g
 ** DONE Inverse matrix
    CLOSED: [2016-11-03 Thu 11:57]
 
-#+BEGIN_LaTeX
+#+BEGIN_EXPORT latex
+\begin{equation}
+A^{-1} = \frac{1}{det(\mathbf{A})} \cdot adj(\mathbf{A})
+\end{equation}
+#+END_EXPORT
+
+#+BEGIN_EXPORT latex
 \begin{equation}
   \begin{aligned}
     \mathbf{A}^{-1} = \frac{1}{-7} \cdot \mathrm{adj}(\mathbf{A}) = \\
@@ -267,7 +283,7 @@ return g
     \end{bmatrix}
   \end{aligned}
 \end{equation}
-#+END_LaTeX
+#+END_EXPORT
 
 $\mathrm{adj}(\mathbf{A})$ is a traspose of cofactor matrix
 
@@ -471,18 +487,6 @@ $\mathrm{adj}(\mathbf{A})$ is a traspose of cofactor matrix
 | -6 |  4 | -1 |
 | -5 |  1 | -2 |
 
-** DONE Pattern any 3x3 Matrix of Cofactors
-   CLOSED: [2016-11-03 Thu 04:06]
-
-#+ATTR_LATEX: :mode math :environment bmatrix
-| -6 | -3 | -1 |
-| -6 |  4 | -1 |
-| -5 |  1 | -2 |
-#+ATTR_LATEX: :mode math :environment bmatrix :math-prefix \Leftrightarrow
-| -6 |  3 | -1 |
-|  6 |  4 |  1 |
-| -5 | -1 | -2 |
-
 ** DONE Convert Matrix of Minors to Matrix of Cofactors
    CLOSED: [2016-11-03 Thu 04:06]
 
@@ -594,7 +598,6 @@ Now let's solve for the determinant.
 3. Если система определенна, то как найти ее единственное решение (используются
    метод Крамера, метод обратной матрицы или метод Жордана-Гаусса).
 4. Если система неопределенна, то как описать множество ее решений.
-
 
 ** DONE Convert system of linear equations to matrix
    CLOSED: [2016-11-05 Sat 04:08]
@@ -823,6 +826,57 @@ Reduced row echelon form
 
 $2)$
 
+** TODO Second task sagemath code                                  :noexport:
+ #+BEGIN_SRC python
+   var('x1 x2 x3 x4 x5')
+   eq1 = x1-x2+2*x3-x5==1
+   eq2 = x2+x3-x4==2
+   eq3 = x3+x4+x5==1
+   eq4 = x4-x5=0
+   solve([eq1,eq2,eq3,eq4],x1,x2,x3,x4,x5)
+
+ [ 1  0  0  0 -6  1]
+ [ 0  1  0  0 -1  2]
+ [ 0  0  1  0  2  1]
+ [ 0  0  0  1 -1  0]
+
+   x1 == 8*r1
+   x2 == 3*r1 + 1
+   x3 == -2*r1 + 1
+   x4 == r1
+   x5 == r1
+ #+END_SRC
+
+** Solving with python                                             :noexport:
+
+ #+BEGIN_SRC python
+   from numpy import matrix
+   a = matrix((1,-1,2,0,-1,1))
+   b = matrix((0,1,1,-1,0,2))
+
+   a = matrix((0,0,-1,-1,-1,-1))
+   b = matrix((0,1,1,-1,0,2))
+
+   a = matrix((0,0,0,-1,1,0))
+   b = matrix((0,0,1,1,1,1))
+
+   a = matrix((0,0,-3,0,-6,-3))
+   b = matrix((1,0,3,-1,-1,3))
+
+   a = matrix((0,0,0,1,-1,0))
+   b = matrix((1,0,0,-1,-7,0))
+
+   a = matrix((0,1,0,-2,-1,1))
+   b = matrix((0,0,0,2,-2,0))
+
+   ret = a + b
+
+   return ret
+ #+END_SRC
+
+ #+RESULTS:
+ | 0 | 1 | 0 | 0 | -3 | 1 |
+
 * Matrices multiplication
 
 ** Column row rule
@@ -975,60 +1029,8 @@ $$\mathbf{X} \cdot \mathbf{A}$$
 
 $$\mathbf{B} \cdot \mathbf{C} \cdot \mathbf{A}$$
 
-* TODO Second task sagemath code
-#+BEGIN_SRC python
-  var('x1 x2 x3 x4 x5')
-  eq1 = x1-x2+2*x3-x5==1
-  eq2 = x2+x3-x4==2
-  eq3 = x3+x4+x5==1
-  eq4 = x4-x5=0
-  solve([eq1,eq2,eq3,eq4],x1,x2,x3,x4,x5)
-
-[ 1  0  0  0 -6  1]
-[ 0  1  0  0 -1  2]
-[ 0  0  1  0  2  1]
-[ 0  0  0  1 -1  0]
-
-  x1 == 8*r1
-  x2 == 3*r1 + 1
-  x3 == -2*r1 + 1
-  x4 == r1
-  x5 == r1
-#+END_SRC
-
-* Solving with python
-
-#+BEGIN_SRC python
-  from numpy import matrix
-  a = matrix((1,-1,2,0,-1,1))
-  b = matrix((0,1,1,-1,0,2))
-
-  a = matrix((0,0,-1,-1,-1,-1))
-  b = matrix((0,1,1,-1,0,2))
-
-  a = matrix((0,0,0,-1,1,0))
-  b = matrix((0,0,1,1,1,1))
-
-  a = matrix((0,0,-3,0,-6,-3))
-  b = matrix((1,0,3,-1,-1,3))
-
-  a = matrix((0,0,0,1,-1,0))
-  b = matrix((1,0,0,-1,-7,0))
-
-  a = matrix((0,1,0,-2,-1,1))
-  b = matrix((0,0,0,2,-2,0))
-
-  ret = a + b
-
-  return ret
-#+END_SRC
-
-#+RESULTS:
-| 0 | 1 | 0 | 0 | -3 | 1 |
-
 * Dimension of the column space or rank
-
-* See also
+* See also                                                         :noexport:
 
 ** Calc
 
