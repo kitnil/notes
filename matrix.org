@@ -834,6 +834,63 @@ Reduced row echelon form
 \end{equation}
 #+END_EXPORT
 
+** Something
+
+#+BEGIN_EXPORT latex
+\begin{equation}
+  \begin{cases}
+    x_1 - 8x_5 = 0 \\
+    x_2 - 3x_5 = 1 \\
+    x_3 + 2x_5 = 1 \\
+    x_4 - x_5 = 1 \\
+    x_5 = x_5
+  \end{cases}
+  \begin{cases}
+    x_1 = 8x_5 \\
+    x_2 = 1 + 3x_5 \\
+    x_3 = 1 - 2x_5 \\
+    x_4 = x_5 \\
+    x_5 = x_5
+  \end{cases}
+\end{equation}
+#+END_EXPORT
+
+** Something
+
+#+BEGIN_EXPORT latex
+\begin{equation}
+  \begin{aligned}
+    \begin{bmatrix}
+      x_1 \\
+      x_2 \\
+      x_3 \\
+      x_4 \\
+      x_5 \\
+    \end{bmatrix}
+    =
+    \begin{bmatrix}
+      0 \\
+      1 \\
+      1 \\
+      0 \\
+      0 \\
+    \end{bmatrix}
+    + x_5
+    \begin{bmatrix}
+      8 \\
+      3 \\
+      -2 \\
+      1 \\
+      1 \\      
+    \end{bmatrix}
+  \end{aligned}
+\end{equation}
+#+END_EXPORT
+
+** Answer
+
+$2)$
+
 ** See also
 
 *** Channels
