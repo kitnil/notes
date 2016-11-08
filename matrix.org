@@ -913,3 +913,55 @@ print(answer)
 *** Linear equation slop
 
 - [[https://www.youtube.com/watch?v=x6qIPml2xRI][Finding the Slope of a Linear Equation fbt - YouTube]]
+
+* TODO Second task sagemath code
+#+BEGIN_SRC python
+  var('x1 x2 x3 x4 x5')
+  eq1 = x1-x2+2*x3-x5==1
+  eq2 = x2+x3-x4==2
+  eq3 = x3+x4+x5==1
+  eq4 = x4-x5=0
+  solve([eq1,eq2,eq3,eq4],x1,x2,x3,x4,x5)
+
+[ 1  0  0  0 -6  1]
+[ 0  1  0  0 -1  2]
+[ 0  0  1  0  2  1]
+[ 0  0  0  1 -1  0]
+
+  x1 == 8*r1
+  x2 == 3*r1 + 1
+  x3 == -2*r1 + 1
+  x4 == r1
+  x5 == r1
+#+END_SRC
+
+* Solving with python
+
+#+BEGIN_SRC python
+  from numpy import matrix
+  a = matrix((1,-1,2,0,-1,1))
+  b = matrix((0,1,1,-1,0,2))
+
+  a = matrix((0,0,-1,-1,-1,-1))
+  b = matrix((0,1,1,-1,0,2))
+
+  a = matrix((0,0,0,-1,1,0))
+  b = matrix((0,0,1,1,1,1))
+
+  a = matrix((0,0,-3,0,-6,-3))
+  b = matrix((1,0,3,-1,-1,3))
+
+  a = matrix((0,0,0,1,-1,0))
+  b = matrix((1,0,0,-1,-7,0))
+
+  a = matrix((0,1,0,-2,-1,1))
+  b = matrix((0,0,0,2,-2,0))
+
+  ret = a + b
+
+  return ret
+#+END_SRC
+
+#+RESULTS:
+| 0 | 1 | 0 | 0 | -3 | 1 |
+* Matrix multiplication
