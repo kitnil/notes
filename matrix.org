@@ -732,7 +732,8 @@ Now let's solve for the determinant.
 
 ** TODO Reduced row echelon form
 
-#+BEGIN_LaTeX
+
+#+BEGIN_EXPORT latex
 \begin{equation}
   \begin{aligned}
     \mathbf{A} =
@@ -748,7 +749,25 @@ Now let's solve for the determinant.
     \end{bmatrix}
   \end{aligned}
 \end{equation}
+#+END_EXPORT
+
+#+BEGIN_LaTeX
+[ 1  0  0  0 -6  1]
+[ 0  1  0  0 -1  2]
+[ 0  0  1  0  2  1]
+[ 0  0  0  1 -1  0]
 #+END_LaTeX
+
+var('x1 x2 x3 x4')
+
+eq1 = 2 * x1 - 9 * x2 - 4 * x3 - 4 * x4 == -5
+eq2 = x1 - 6 * x2 - 5 * x3 - 2 * x4 == -4
+eq3 = x1 - 3 * x2 + x3 - 2 * x4 == -1
+eq4 = 3 * x1 - 8 * x2 + 5 * x3 - 6 * x4 == -2
+
+answer = solve([eq1,eq2,eq3,eq4],x1,x2,x3,x4)
+
+print(answer)
 
 ** See also
 
