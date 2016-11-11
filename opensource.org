@@ -1,51 +1,105 @@
-* [[https://www.greyhole.net/][Greyhole]]
+#+TITLE: opensource software
+#+DATE: 2016-11-11
+#+PROPERTY: TAGS oss
+#+OPTIONS: toc:nil
 
-An application that uses Samba to create a storage pool of all your available hard drives,
-and allows you to create redundant copies of the files you store,
-in order to prevent data loss when part of your hardware fails.
+* sshpt
 
-Not a replacement for RAID.
+Execute command and upload files to many servers simultaneosly via SSH *without*
+using pre-shared keys.
 
-* [[http://www.openmediavault.org/][openmediavault]]
+* Gruik
 
-By creator of freeNas
+- [[https://www.google.ru/url?sa=t&rct=j&q=&esrc=s&source=web&cd=1&cad=rja&uact=8&ved=0ahUKEwjovqXy4pjQAhUFDiwKHTG7BOkQFggdMAA&url=http%3A%2F%2Fgruik.io%2F&usg=AFQjCNHTRo760XCUpWSOv50hydS-cFimTQ&sig2=d9JjsbIz978qZRYMtdqGtQ][Gruik.]]
 
-[[https://goo.gl/photos/w9j2RdASif8BGmXK9][Google Photos]]
+Note taking service.
 
-* [[http://cockpit-project.org/running.html][Running Cockpit]]
-- [[https://www.passwordstore.org/][Pass: The Standard Unix Password Manager]]
-* Android
-- [[https://github.com/proninyaroslav/libretorrent][proninyaroslav/libretorrent: Free as in Freedom torrent client for Android 4+, based on libtorrent]]
-* [[https://github.com/blog][The GitHub Blog]]
-* [[https://nextcloud.com/][Nextcloud]]
-* [[https://education.github.com/pack][Learn How to Code Using the Student Developer Pack - GitHub Education]]
-* [[http://www.django-rest-framework.org/topics/3.5-announcement/][3.5 Announcement - Django REST framework]]
-* [[https://sched.org/?utm_campaign=web&utm_medium=referral&utm_content=header&utm_source=flock2016][Event Schedule & Agenda Builder App | Sched]]
-* [[http://www.tldp.org/guides.html][The Linux Documentation Project: Guides]]
-* [[https://www.reddit.com/r/Python/comments/58j1oi/what_are_the_most_sought_out_skills_in_python/][What are the most sought out skills in Python? : Python]]
+* Less Pass
 
-Data analysis, scipy, numpy, web
+Next-gen open source password manager
 
-- https://www.youtube.com/watch?v=wf-BqAjZb8M
-- https://www.youtube.com/watch?v=OSGv2VnC0go
-- https://www.youtube.com/watch?v=bpZS9ehw98k
-- https://www.youtube.com/watch?v=JlrkizEBjXk
-- http://noamelf.com/2016/08/05/designing-pythonic-apis/
-* [[https://github.com/soimort/you-get][soimort/you-get: Dumb downloader that scrapes the web]]
-tiny command-line utility to download media contents (videos, audios, images) from the Web, in case there is no other handy way to do it.
-* [[https://jekyllrb.com/][Jekyll • Simple, blog-aware, static sites - Transform your plain text into static websites and blogs]]
+* PDFtkServer
 
-** Simple
+- [[https://www.pdflabs.com/tools/pdftk-server/][PDFtk Server]]
 
-No more databases, comment moderation, or pesky updates to install—just your content.
-How Jekyll works →
+* Paperwork
 
-** Static
+- [[http://paperwork.rocks/][Paperwork by twostairs]]
 
-Markdown (or Textile), Liquid, HTML & CSS go in. Static sites come out ready for deployment.
-Jekyll template guide →
+* Kodi
 
-** Blog-aware
+- [[https://torrentfreak.com/pirate-kodi-add-ons-gain-massive-popularity-161007/][Pirate Kodi Add-Ons Gain Massive Popularity - TorrentFreak]]
+* netdata
 
-Permalinks, categories, pages, posts, and custom layouts are all first-class citizens here.
-Migrate your blog → 
+- [[https://github.com/firehol/netdata][firehol/netdata: Real-time performance monitoring, done right!]]
+
+netdata is a system for distributed real-time performance and health monitoring.
+It provides unparalleled insights, in real-time, of everything happening on the
+system it runs (including applications such as web, or database servers), using
+modern interactive web dashboards.
+
+netdata is fast and efficient, designed to permanently run on all systems
+(physical & virtual servers, containers, IoT devices), without disrupting their
+core function.
+
+* sentry
+
+- [[https://github.com/getsentry/sentry][getsentry/sentry: Sentry is cross-platform crash reporting built with love]]
+
+Sentry is a modern error logging and aggregation platform.
+
+* Python
+
+** Python cheatsheet
+
+- [[https://github.com/crazyguitar/pysheeet][crazyguitar/pysheeet: Python Cheatsheet]]
+- [[https://github.com/tartley/python-regex-cheatsheet][tartley/python-regex-cheatsheet: Python 2.7 Regular Expression cheatsheet, as a restructured text document and Makefile to convert it to PDF]]
+
+* C language
+
+** C language cheatsheet
+
+- [[https://github.com/cirosantilli/cpp-cheat][cirosantilli/cpp-cheat: C and C++ minimal examples. Asserts used wherever possible. Hello worlds for cool third party libraries. Cheatsheets, tutorials and mini-projects.]]
+
+* GitHub
+
+** Trending
+
+- [[https://github.com/josephyzhou/github-trending][josephyzhou/github-trending: Tracking the most popular Github repos, updated daily]]
+- [[https://github.com/devfreebooks/devfreebooks.github.io][devfreebooks/devfreebooks.github.io: A huge collection of free books for developers]]
+- [[https://github.com/trending/python][Trending Python repositories on GitHub today]]
+
+** Showcases
+
+- [[https://github.com/showcases/devops-tools][DevOps tools]]
+- [[https://github.com/showcases/web-application-frameworks][Web application frameworks]]
+- [[https://github.com/showcases/projects-that-power-github][Projects that power GitHub]]
+- [[https://github.com/showcases/github-browser-extensions][GitHub Browser Extensions]]
+- [[https://github.com/showcases/open-data][Open data]]
+- [[https://github.com/showcases/text-editors][Text editors]]
+- [[https://github.com/showcases/package-managers][Package managers]]
+- [[https://github.com/showcases/clean-code-linters][Clean code linters]]
+- [[https://github.com/showcases/github-pages-examples][GitHub Pages examples]]
+- [[https://github.com/showcases/javascript-game-engines][JavaScript game engines]]
+- [[https://github.com/showcases/web-games][Web games]]
+- [[https://github.com/showcases/music][Music]]
+- [[https://github.com/showcases/open-source-organizations][Open source organizations]]
+- [[https://github.com/showcases/video-tools][Video tools]]
+- [[https://github.com/showcases/science][Science]]
+- [[https://github.com/showcases/projects-with-great-wikis][Projects with great wikis]]
+- [[https://github.com/showcases/writing][Writing]]
+- [[https://github.com/showcases/software-development-tools][Software development tools]]
+- [[https://github.com/showcases/nosql-databases][NoSQL databases]]
+- [[https://github.com/showcases/3d-modeling][3D modeling]]
+
+* tmux
+
+- [[https://github.com/tony/tmuxp][tony/tmuxp: tmux session manager built on libtmux]]
+
+* Programming books
+
+- [[https://github.com/vhf/free-programming-books][vhf/free-programming-books: Freely available programming books]]
+
+* Google
+
+- [[https://github.com/jwasham/google-interview-university#unix-command-line-tools][jwasham/google-interview-university: A complete daily plan for studying to become a Google software engineer.]]
