@@ -16,7 +16,7 @@
 
 * Inverse Matrix
 
-** Plan
+** Plan                                                            :noexport:
 
 We can calculate the inverse of a matrix by:
 
@@ -42,271 +42,274 @@ We can calculate the inverse of a matrix by:
 \end{equation}
 #+END_EXPORT
 
-** DONE Construct matrix of minors
-   CLOSED: [2016-11-03 Thu 11:35]
 
-#+BEGIN_EXPORT latex
-\begin{equation}
-  \begin{pmatrix}
-    \begin{vmatrix} -1 & 3 \\ 0 & 6 \end{vmatrix} &
-    \begin{vmatrix} -1 & 3 \\ -1 & 6 \end{vmatrix} &
-    \begin{vmatrix} -1 & -1 \\ -1 & 0 \end{vmatrix} \\
-    & & \\
-    \begin{vmatrix} -1 & -2 \\ 0 & 6 \end{vmatrix} &
-    \begin{vmatrix} 1 & -2 \\ -1 & 6 \end{vmatrix} &
-    \begin{vmatrix} 1 & -1 \\ -1 & 0 \end{vmatrix} \\
-    & & \\
-    \begin{vmatrix} -1 & -2 \\ -1 & 3 \end{vmatrix} &
-    \begin{vmatrix} 1 & -1 \\ -2 & 3 \end{vmatrix} &
-    \begin{vmatrix} 1 & -1 \\ -1 & -1 \end{vmatrix}
-  \end{pmatrix}
-\end{equation}
-#+END_EXPORT
+** Using elimination by addition
+** Gaussian method
+*** DONE Construct matrix of minors
+    CLOSED: [2016-11-03 Thu 11:35]
 
-** DONE Evaluate to get a matrix of minors
-   CLOSED: [2016-11-03 Thu 11:35]
+ #+BEGIN_EXPORT latex
+ \begin{equation}
+   \begin{pmatrix}
+     \begin{vmatrix} -1 & 3 \\ 0 & 6 \end{vmatrix} &
+     \begin{vmatrix} -1 & 3 \\ -1 & 6 \end{vmatrix} &
+     \begin{vmatrix} -1 & -1 \\ -1 & 0 \end{vmatrix} \\
+     & & \\
+     \begin{vmatrix} -1 & -2 \\ 0 & 6 \end{vmatrix} &
+     \begin{vmatrix} 1 & -2 \\ -1 & 6 \end{vmatrix} &
+     \begin{vmatrix} 1 & -1 \\ -1 & 0 \end{vmatrix} \\
+     & & \\
+     \begin{vmatrix} -1 & -2 \\ -1 & 3 \end{vmatrix} &
+     \begin{vmatrix} 1 & -1 \\ -2 & 3 \end{vmatrix} &
+     \begin{vmatrix} 1 & -1 \\ -1 & -1 \end{vmatrix}
+   \end{pmatrix}
+ \end{equation}
+ #+END_EXPORT
 
-#+BEGIN_EXPORT latex
-\begin{equation}
-  \begin{aligned}
-    \begin{pmatrix}
-      -1 \cdot 6 - 0 \cdot 3 &
-      -1 \cdot 6 - (-1) \cdot 3 &
-      -1 \cdot 0 - (-1) \cdot (-1) \\
-      & & \\
-      -1 \cdot 6 - 0 \cdot (-2) &
-      1 \cdot 6 - (-1) \cdot (-2) &
-      1 \cdot 0 - (-1) \cdot (-1) \\
-      & & \\
-      -1 \cdot 3 - (-1) \cdot (-2) &
-      1 \cdot 3 - (-2) \cdot (-1) &
-      1 \cdot (-1) - (-1) \cdot (-1)
-    \end{pmatrix} \\
-    =
-    \begin{pmatrix}
-      -6 - 0 &
-      -6 - (-3) &
-      0 - 1 \\
-      & & \\
-      -6 - 0 &
-      6 - 2 &
-      0 - 1 \\
-      & & \\
-      -3 - 2 &
-      3 - 2 &
-      -1 - 1
-    \end{pmatrix}
-    =
-    \begin{pmatrix}
-      -6 &
-      -3 &
-      - 1 \\
-      & & \\
-      -6 &
-      4 &
-      - 1 \\
-      & & \\
-      -5 &
-      1 &
-      -2
-    \end{pmatrix}
-  \end{aligned}
-\end{equation}
-#+END_EXPORT
+*** DONE Evaluate to get a matrix of minors
+    CLOSED: [2016-11-03 Thu 11:35]
 
-** DONE Get cofactor matrix from matrix of minors
-   CLOSED: [2016-11-03 Thu 11:35]
+ #+BEGIN_EXPORT latex
+ \begin{equation}
+   \begin{aligned}
+     \begin{pmatrix}
+       -1 \cdot 6 - 0 \cdot 3 &
+       -1 \cdot 6 - (-1) \cdot 3 &
+       -1 \cdot 0 - (-1) \cdot (-1) \\
+       & & \\
+       -1 \cdot 6 - 0 \cdot (-2) &
+       1 \cdot 6 - (-1) \cdot (-2) &
+       1 \cdot 0 - (-1) \cdot (-1) \\
+       & & \\
+       -1 \cdot 3 - (-1) \cdot (-2) &
+       1 \cdot 3 - (-2) \cdot (-1) &
+       1 \cdot (-1) - (-1) \cdot (-1)
+     \end{pmatrix} \\
+     =
+     \begin{pmatrix}
+       -6 - 0 &
+       -6 - (-3) &
+       0 - 1 \\
+       & & \\
+       -6 - 0 &
+       6 - 2 &
+       0 - 1 \\
+       & & \\
+       -3 - 2 &
+       3 - 2 &
+       -1 - 1
+     \end{pmatrix}
+     =
+     \begin{pmatrix}
+       -6 &
+       -3 &
+       - 1 \\
+       & & \\
+       -6 &
+       4 &
+       - 1 \\
+       & & \\
+       -5 &
+       1 &
+       -2
+     \end{pmatrix}
+   \end{aligned}
+ \end{equation}
+ #+END_EXPORT
 
-Pattern any 3x3 Matrix of Cofactors
-#+BEGIN_EXPORT latex
-\begin{equation}
-  \begin{pmatrix}
-    + & - & + \\
-    - & + & - \\
-    + & - & + 
-  \end{pmatrix}
-\end{equation}
-#+END_EXPORT
+*** DONE Get cofactor matrix from matrix of minors
+    CLOSED: [2016-11-03 Thu 11:35]
 
-#+BEGIN_EXPORT latex
-\begin{equation}
-  \begin{aligned}
-    \begin{pmatrix}
-      -6 & -3 & - 1 \\
-      & & \\
-      -6 & 4 & - 1 \\
-      & & \\ -5 & 1 & -2
-    \end{pmatrix}
-    =
-    \begin{pmatrix}
-      -6 & 3 & - 1 \\
-      & & \\
-      6 & 4 & 1 \\
-      & & \\
-      -5 & -1 & -2
-    \end{pmatrix}
-  \end{aligned}
-\end{equation}
-#+END_EXPORT
+ Pattern any 3x3 Matrix of Cofactors
+ #+BEGIN_EXPORT latex
+ \begin{equation}
+   \begin{pmatrix}
+     + & - & + \\
+     - & + & - \\
+     + & - & + 
+   \end{pmatrix}
+ \end{equation}
+ #+END_EXPORT
 
-** DONE Find a determenant
-   CLOSED: [2016-11-03 Thu 11:35]
+ #+BEGIN_EXPORT latex
+ \begin{equation}
+   \begin{aligned}
+     \begin{pmatrix}
+       -6 & -3 & - 1 \\
+       & & \\
+       -6 & 4 & - 1 \\
+       & & \\ -5 & 1 & -2
+     \end{pmatrix}
+     =
+     \begin{pmatrix}
+       -6 & 3 & - 1 \\
+       & & \\
+       6 & 4 & 1 \\
+       & & \\
+       -5 & -1 & -2
+     \end{pmatrix}
+   \end{aligned}
+ \end{equation}
+ #+END_EXPORT
 
-#+BEGIN_EXPORT latex
-\begin{equation}
-  \begin{aligned}
-    \mathrm{det}(\mathbf{A}) =
-    \begin{bmatrix}
-      1 &
-      -1 &
-      -2 \\
-      & & \\
-      -1 &
-      -1 &
-      3 \\
-      & & \\
-      -1 &
-      0 &
-      6
-    \end{bmatrix}
-    =
-    \begin{bmatrix}
-      1 &
-      -1 &
-      -2 \\
-      & & \\
-      -1 &
-      -1 &
-      3 \\
-      & & \\
-      -1 &
-      0 &
-      6
-    \end{bmatrix}
-    \begin{matrix}
-      1 &
-      -1 &
-      & & \\
-      & & \\
-      -1 &
-      -1 &
-      & & \\
-      & & \\
-      -1 &
-      0 &
-      & & \\
-    \end{matrix} \\
-    \mathrm{det}(\mathbf{A})
-    = 1 \cdot (-1) \cdot 6
-    + (-1) \cdot 3 \cdot (-1)
-    + (-2) \cdot (-1) \cdot 0 \\
-    - (-1) \cdot (-1) \cdot 6
-    - 1 \cdot 3 \cdot 0
-    - (-2) \cdot (-1) \cdot (-1) \\
-    = -6 + 3 + 0 - 6 - 0 - (-2) \\
-    = -6 + 3 - 6 + 2 \\
-    = -12 + 5 \\
-    = -7
-  \end{aligned}
-\end{equation}
-#+END_EXPORT
+*** DONE Find a determenant
+    CLOSED: [2016-11-03 Thu 11:35]
 
-#+BEGIN_SRC python :exports none
-original = 1*(-1)*6+(-1)*3*(-1)+(-2)*(-1)*0-(-1)*(-1)*6-1*3*0-(-2)*(-1)*(-1)
-a = 1*(-1)*6
-b = -1*3*-1
-c = -2*-1*0
-d = -1*-1*6
-e = -1*3*0
-f = -2*-1*-1
-g = a + b + c - d - e - f
-return g
-#+END_SRC
+ #+BEGIN_EXPORT latex
+ \begin{equation}
+   \begin{aligned}
+     \mathrm{det}(\mathbf{A}) =
+     \begin{bmatrix}
+       1 &
+       -1 &
+       -2 \\
+       & & \\
+       -1 &
+       -1 &
+       3 \\
+       & & \\
+       -1 &
+       0 &
+       6
+     \end{bmatrix}
+     =
+     \begin{bmatrix}
+       1 &
+       -1 &
+       -2 \\
+       & & \\
+       -1 &
+       -1 &
+       3 \\
+       & & \\
+       -1 &
+       0 &
+       6
+     \end{bmatrix}
+     \begin{matrix}
+       1 &
+       -1 &
+       & & \\
+       & & \\
+       -1 &
+       -1 &
+       & & \\
+       & & \\
+       -1 &
+       0 &
+       & & \\
+     \end{matrix} \\
+     \mathrm{det}(\mathbf{A})
+     = 1 \cdot (-1) \cdot 6
+     + (-1) \cdot 3 \cdot (-1)
+     + (-2) \cdot (-1) \cdot 0 \\
+     - (-1) \cdot (-1) \cdot 6
+     - 1 \cdot 3 \cdot 0
+     - (-2) \cdot (-1) \cdot (-1) \\
+     = -6 + 3 + 0 - 6 - 0 - (-2) \\
+     = -6 + 3 - 6 + 2 \\
+     = -12 + 5 \\
+     = -7
+   \end{aligned}
+ \end{equation}
+ #+END_EXPORT
 
-#+RESULTS:
-: -7
+ #+BEGIN_SRC python :exports none
+ original = 1*(-1)*6+(-1)*3*(-1)+(-2)*(-1)*0-(-1)*(-1)*6-1*3*0-(-2)*(-1)*(-1)
+ a = 1*(-1)*6
+ b = -1*3*-1
+ c = -2*-1*0
+ d = -1*-1*6
+ e = -1*3*0
+ f = -2*-1*-1
+ g = a + b + c - d - e - f
+ return g
+ #+END_SRC
 
-** DONE Inverse matrix
-   CLOSED: [2016-11-03 Thu 11:57]
+ #+RESULTS:
+ : -7
 
-#+BEGIN_EXPORT latex
-\begin{equation}
-A^{-1} = \frac{1}{det(\mathbf{A})} \cdot adj(\mathbf{A})
-\end{equation}
-#+END_EXPORT
+*** DONE Inverse matrix
+    CLOSED: [2016-11-03 Thu 11:57]
 
-#+BEGIN_EXPORT latex
-\begin{equation}
-  \begin{aligned}
-    \mathbf{A}^{-1} = \frac{1}{-7} \cdot \mathrm{adj}(\mathbf{A}) = \\
-    \frac{1}{-7} \cdot
-    \begin{bmatrix}
-      -6 &
-      6 &
-      -5 \\
-      & & \\
-      3 &
-      4 &
-      -1 \\
-      & & \\
-      -1 &
-      1 &
-      -2
-    \end{bmatrix}
-    =
-    \begin{bmatrix}
-      \frac{-6}{-7} &
-      \frac{6}{-7}&
-      \frac{-5}{-7} \\
-      & & \\
-      \frac{3}{-7}&
-      \frac{4}{-7}&
-      \frac{-1}{-7} \\
-      & & \\
-      \frac{-1}{-7} &
-      \frac{1}{-7}&
-      \frac{-2}{-7}
-    \end{bmatrix}
-    =
-    \begin{bmatrix}
-      \frac{6}{7} &
-      -\frac{6}{7}&
-      \frac{5}{7} \\
-      & & \\
-      -\frac{3}{7}&
-      -\frac{4}{7}&
-      \frac{1}{7} \\
-      & & \\
-      \frac{1}{7} &
-      -\frac{1}{7}&
-      \frac{2}{7}
-    \end{bmatrix}
-  \end{aligned}
-\end{equation}
-#+END_EXPORT
+ #+BEGIN_EXPORT latex
+ \begin{equation}
+ A^{-1} = \frac{1}{det(\mathbf{A})} \cdot adj(\mathbf{A})
+ \end{equation}
+ #+END_EXPORT
 
-$\mathrm{adj}(\mathbf{A})$ is a traspose of cofactor matrix
+ #+BEGIN_EXPORT latex
+ \begin{equation}
+   \begin{aligned}
+     \mathbf{A}^{-1} = \frac{1}{-7} \cdot \mathrm{adj}(\mathbf{A}) = \\
+     \frac{1}{-7} \cdot
+     \begin{bmatrix}
+       -6 &
+       6 &
+       -5 \\
+       & & \\
+       3 &
+       4 &
+       -1 \\
+       & & \\
+       -1 &
+       1 &
+       -2
+     \end{bmatrix}
+     =
+     \begin{bmatrix}
+       \frac{-6}{-7} &
+       \frac{6}{-7}&
+       \frac{-5}{-7} \\
+       & & \\
+       \frac{3}{-7}&
+       \frac{4}{-7}&
+       \frac{-1}{-7} \\
+       & & \\
+       \frac{-1}{-7} &
+       \frac{1}{-7}&
+       \frac{-2}{-7}
+     \end{bmatrix}
+     =
+     \begin{bmatrix}
+       \frac{6}{7} &
+       -\frac{6}{7}&
+       \frac{5}{7} \\
+       & & \\
+       -\frac{3}{7}&
+       -\frac{4}{7}&
+       \frac{1}{7} \\
+       & & \\
+       \frac{1}{7} &
+       -\frac{1}{7}&
+       \frac{2}{7}
+     \end{bmatrix}
+   \end{aligned}
+ \end{equation}
+ #+END_EXPORT
 
-** Answer
+ $\mathrm{adj}(\mathbf{A})$ is a traspose of cofactor matrix
 
-#+BEGIN_EXPORT latex
-\begin{equation}
-  \mathbf{A}^{-1} =
-  \begin{bmatrix}
-    \frac{6}{7} &
-    -\frac{6}{7}&
-    \frac{5}{7} \\
-    & & \\
-    -\frac{3}{7}&
-    -\frac{4}{7}&
-    \frac{1}{7} \\
-    & & \\
-    \frac{1}{7} &
-    -\frac{1}{7}&
-    \frac{2}{7}
-  \end{bmatrix}
-\end{equation}
-#+END_EXPORT
+*** Answer
+
+ #+BEGIN_EXPORT latex
+ \begin{equation}
+   \mathbf{A}^{-1} =
+   \begin{bmatrix}
+     \frac{6}{7} &
+     -\frac{6}{7}&
+     \frac{5}{7} \\
+     & & \\
+     -\frac{3}{7}&
+     -\frac{4}{7}&
+     \frac{1}{7} \\
+     & & \\
+     \frac{1}{7} &
+     -\frac{1}{7}&
+     \frac{2}{7}
+   \end{bmatrix}
+ \end{equation}
+ #+END_EXPORT
 
 * System of linear equations
 
@@ -381,7 +384,7 @@ $\mathrm{adj}(\mathbf{A})$ is a traspose of cofactor matrix
 4) Нет решений
 #+END_EXPORT
 
-** Plan
+** Plan                                                            :noexport:
 
 1. Является ли система совместной.
 2. Если система совместна, то определенна или неопределенна (критерий
@@ -422,9 +425,7 @@ $\mathrm{adj}(\mathbf{A})$ is a traspose of cofactor matrix
 \end{equation}
 #+END_EXPORT
 
-** TODO rref
-
-Reduced row echelon form
+** TODO Reduced row echelon form
 
 #+BEGIN_EXPORT latex
 \begin{equation}
@@ -435,9 +436,8 @@ Reduced row echelon form
       0 & 0 & 1 & 1 & 1 & 1 \\
       0 & 0 & 0 & 1 & -1 & 0
     \end{array}
+    \\
     % 1
-    \\
-    \\
     \xrightarrow{R_2 + R_1 \rightarrow R_1}
     \begin{array}{rrrrrr}
       1 & 0 & 3 & -1 & -1 & 3 \\
@@ -784,6 +784,13 @@ $$\mathbf{B} \cdot \mathbf{C} \cdot \mathbf{A}$$
 \end{equation}
 #+END_EXPORT
 
+** Defenition
+
+The maximum number of linearly independent vectors in a matrix is equal to the
+number of non-zero rows in its row echelon matrix. Therefore, to find the rank
+of a matrix, we simply transform the matrix to its row echelon form and count
+the number of non-zero rows.
+
 ** Answer
 
 $3)$
@@ -942,10 +949,6 @@ $3)$
 - [[https://www.youtube.com/playlist?list=PLZcI2rZdDGQrb4VjOoMm2-o7Fu_mvij8F][Lorenzo Sadun Linear Algebra - YouTube]]
 - [[https://www.youtube.com/watch?v=ivP-6oicIWU&list=PLF895BD9018BDCDF9][The Span of a Set of Vectors - YouTube]]
 
-** Rank of matrix
-
-- [[https://www.youtube.com/watch?v=eRUf9VRbw5U][Rank of Matrix (Part 1)]]
-
 ** Rank of the matrix
 
 - [[https://en.wikipedia.org/wiki/Rank_(linear_algebra)][Rank (linear algebra) - Wikipedia]]
@@ -960,6 +963,8 @@ $3)$
 - [[https://www.youtube.com/watch?v=N33SOw1A5fo][How to Calculate Rank using Row Reduced Echelon Form - YouTube]]
 - [[https://www.youtube.com/watch?v=njDiwB43w80][Rank of Matrices, Rank by Echelon Form, Rank of Matrix by Using Normal Form - YouTube]]
 - [[http://stattrek.com/matrix-algebra/matrix-rank.aspx][Matrix Rank]]
+- [[https://www.youtube.com/watch?v=R8a2HCQU7Vo][Linear Algebra 10e: An Application of the Matrix Rank - YouTube]]
+- [[https://www.youtube.com/watch?v=eRUf9VRbw5U][Rank of Matrix (Part 1)]]
 
 ** Raw reduction
 
