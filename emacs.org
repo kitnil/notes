@@ -92,3 +92,28 @@ treated the same when you exit the summary though.
 ** gmail
 
 - [[https://www.emacswiki.org/emacs/GnusGmail#toc11][EmacsWiki: Gnus Gmail]]
+
+** Posting styles
+
+Configuration is based on articles:
+- [[http://gnus.org/manual/gnus_76.html#Posting-Styles][Gnus Manual: 5.6 Posting Styles]]
+- [[https://www.gnu.org/software/emacs/manual/html_node/message/Mail-Variables.html#Mail-Variables][Message Manual: Mail Variables]]
+
+TODO more information HERE
+
+Configuration snippet of multiple SMTP depended on current gnus group
+~/.gnus.el:
+#+BEGIN_SRC lisp
+(setq gnus-posting-styles
+      '(("opykhalov@yandex.ru"
+         (address "opykhalov@yandex.ru")
+         ("X-Message-SMTP-Method" "smtp smtp.yandex.com 465")
+         (signature-file "~/.signature-yandex")
+         (name "Пыхалов Олег Витальевич")
+         (organization "СПбГЭТУ «ЛЭТИ» 6005"))))
+#+END_SRC
+
+Cannot send mail because Emacs hangs with message in buffer:
+#+BEGIN_EXAMPLE
+Sending via mail...
+#+END_EXAMPLE
