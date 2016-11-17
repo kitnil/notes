@@ -16,9 +16,8 @@ sudo lvremove neon-vg/rootfs-before
 * bup
 
 #+BEGIN_EXAMPLE
-BUP_DIR=/media/hdd1/opykhalov/Backups bup save -n local-opykhalov .
-BUP_DIR=/media/hdd1/opykhalov/Backups bup init
-BUP_DIR=/media/hdd1/opykhalov/Backups bup save -n local-opykhalov .
-BUP_DIR=/media/hdd1/opykhalov/Backups bup index --exclude-from=/home/opykhalov/Documents/rsync-homedir-excludes/rsync-homedir-excludes.txt .
-BUP_DIR=/media/hdd1/opykhalov/Backups bup save -n local-opykhalov .
+export BUP_DIR=/media/hdd1/opykhalov/Backups
+bup init
+bup index --exclude-from=/home/opykhalov/Documents/rsync-homedir-excludes/rsync-homedir-excludes.txt .
+bup save -n local-opykhalov .
 #+END_EXAMPLE
