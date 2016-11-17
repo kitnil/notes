@@ -29,7 +29,6 @@ We can calculate the inverse of a matrix by:
 
 Методом Гаусса и методом алгебраических дополнений найдите матрицу, обратную к
 
-#+BEGIN_EXPORT latex
 \begin{equation}
   \begin{aligned}
   \mathbf{А} =
@@ -40,13 +39,11 @@ We can calculate the inverse of a matrix by:
     \end{bmatrix}
   \end{aligned}
 \end{equation}
-#+END_EXPORT
 
 ** Gaussian method
 *** DONE Construct matrix of minors
     CLOSED: [2016-11-03 Thu 11:35]
 
- #+BEGIN_EXPORT latex
  \begin{equation}
    \begin{pmatrix}
      \begin{vmatrix} -1 & 3 \\ 0 & 6 \end{vmatrix} &
@@ -62,12 +59,10 @@ We can calculate the inverse of a matrix by:
      \begin{vmatrix} 1 & -1 \\ -1 & -1 \end{vmatrix}
    \end{pmatrix}
  \end{equation}
- #+END_EXPORT
 
 *** DONE Evaluate to get a matrix of minors
     CLOSED: [2016-11-03 Thu 11:35]
 
- #+BEGIN_EXPORT latex
  \begin{equation}
    \begin{aligned}
      \begin{pmatrix}
@@ -113,13 +108,12 @@ We can calculate the inverse of a matrix by:
      \end{pmatrix}
    \end{aligned}
  \end{equation}
- #+END_EXPORT
 
 *** DONE Get cofactor matrix from matrix of minors
     CLOSED: [2016-11-03 Thu 11:35]
 
  Pattern any 3x3 Matrix of Cofactors
- #+BEGIN_EXPORT latex
+
  \begin{equation}
    \begin{pmatrix}
      + & - & + \\
@@ -127,9 +121,7 @@ We can calculate the inverse of a matrix by:
      + & - & + 
    \end{pmatrix}
  \end{equation}
- #+END_EXPORT
 
- #+BEGIN_EXPORT latex
  \begin{equation}
    \begin{aligned}
      \begin{pmatrix}
@@ -148,12 +140,10 @@ We can calculate the inverse of a matrix by:
      \end{pmatrix}
    \end{aligned}
  \end{equation}
- #+END_EXPORT
 
 *** DONE Find a determenant
     CLOSED: [2016-11-03 Thu 11:35]
 
- #+BEGIN_EXPORT latex
  \begin{equation}
    \begin{aligned}
      \mathrm{det}(\mathbf{A}) =
@@ -210,7 +200,6 @@ We can calculate the inverse of a matrix by:
      = -7
    \end{aligned}
  \end{equation}
- #+END_EXPORT
 
  #+BEGIN_SRC python :exports none
  original = 1*(-1)*6+(-1)*3*(-1)+(-2)*(-1)*0-(-1)*(-1)*6-1*3*0-(-2)*(-1)*(-1)
@@ -230,13 +219,10 @@ We can calculate the inverse of a matrix by:
 *** DONE Inverse matrix
     CLOSED: [2016-11-03 Thu 11:57]
 
- #+BEGIN_EXPORT latex
  \begin{equation}
  A^{-1} = \frac{1}{det(\mathbf{A})} \cdot adj(\mathbf{A})
  \end{equation}
- #+END_EXPORT
 
- #+BEGIN_EXPORT latex
  \begin{equation}
    \begin{aligned}
      \mathbf{A}^{-1} = \frac{1}{-7} \cdot \mathrm{adj}(\mathbf{A}) = \\
@@ -284,13 +270,11 @@ We can calculate the inverse of a matrix by:
      \end{bmatrix}
    \end{aligned}
  \end{equation}
- #+END_EXPORT
 
  $\mathrm{adj}(\mathbf{A})$ is a traspose of cofactor matrix
 
 *** Answer
 
- #+BEGIN_EXPORT latex
  \begin{equation}
    \mathbf{A}^{-1} =
    \begin{bmatrix}
@@ -307,7 +291,6 @@ We can calculate the inverse of a matrix by:
      \frac{2}{7}
    \end{bmatrix}
  \end{equation}
- #+END_EXPORT
 
 * System of linear equations
 
@@ -316,7 +299,6 @@ We can calculate the inverse of a matrix by:
 Какое из следующих выражений является общим решением системы линейных уравнений
 и почему
 
-#+BEGIN_EXPORT latex
 \begin{equation}
   \begin{cases}
     x_1 - x_2 + 2x_3 - x_5 = 1 \\
@@ -325,8 +307,7 @@ We can calculate the inverse of a matrix by:
     x_4 - x_5 = 0 \\
   \end{cases}
 \end{equation}
-#+END_EXPORT
-#+BEGIN_EXPORT latex
+
 \begin{equation}
   \begin{aligned}
     1)
@@ -380,7 +361,6 @@ We can calculate the inverse of a matrix by:
   \end{aligned}
 \end{equation}
 4) Нет решений
-#+END_EXPORT
 
 ** Plan                                                            :noexport:
 
@@ -394,7 +374,6 @@ We can calculate the inverse of a matrix by:
 ** DONE Convert system of linear equations to matrix
    CLOSED: [2016-11-05 Sat 04:08]
 
-#+BEGIN_EXPORT latex
 \begin{equation}
   \begin{aligned}
     \begin{cases}
@@ -421,11 +400,9 @@ We can calculate the inverse of a matrix by:
     0 & 0 & 0 & 1 & -1 & 0\\
   \end{bmatrix}
 \end{equation}
-#+END_EXPORT
 
 ** TODO Reduced row echelon form
 
-#+BEGIN_EXPORT latex
 \begin{equation}
   \begin{aligned}
     \begin{array}{rrrrrr}
@@ -495,11 +472,9 @@ We can calculate the inverse of a matrix by:
     \end{array}
   \end{aligned}
 \end{equation}
-#+END_EXPORT
 
 ** Convert matrix to linear equation
 
-#+BEGIN_EXPORT latex
 \begin{equation}
   \begin{bmatrix}
     1 & 0 & 0 & 0 & -8 & 0\\
@@ -524,11 +499,9 @@ We can calculate the inverse of a matrix by:
     x_5 = x_5
   \end{cases}
 \end{equation}
-#+END_EXPORT
 
 ** Convert to vector form
 
-#+BEGIN_EXPORT latex
 \begin{equation}
   \begin{aligned}
     \begin{bmatrix}
@@ -556,7 +529,6 @@ We can calculate the inverse of a matrix by:
     \end{bmatrix}
   \end{aligned}
 \end{equation}
-#+END_EXPORT
 
 ** Answer
 
@@ -633,7 +605,6 @@ Add the products
 
 $$\mathbf{A} \cdot \mathbf{B} \cdot \mathbf{C}$$
 
-#+BEGIN_EXPORT latex
 \begin{equation}
   \begin{aligned}
     \mathbf{A} =
@@ -656,11 +627,8 @@ $$\mathbf{A} \cdot \mathbf{B} \cdot \mathbf{C}$$
   \end{aligned}
 \end{equation}
 
-#+END_EXPORT
-
 $$\mathbf{A} \cdot \mathbf{B} = \mathbf{X}$$
 
-#+BEGIN_EXPORT latex
 \begin{equation}
   \begin{aligned}
     \begin{bmatrix}
@@ -681,11 +649,8 @@ $$\mathbf{A} \cdot \mathbf{B} = \mathbf{X}$$
   \end{aligned}
 \end{equation}
 
-#+END_EXPORT
-
 $$\mathbf{X} \cdot \mathbf{C}$$
 
-#+BEGIN_EXPORT latex
 \begin{equation}
   \begin{aligned}
     \begin{bmatrix}
@@ -706,7 +671,6 @@ $$\mathbf{X} \cdot \mathbf{C}$$
     \end{bmatrix}
   \end{aligned}
 \end{equation}
-#+END_EXPORT
 
 ** BCA
 
@@ -714,7 +678,6 @@ $$\mathbf{B} \cdot \mathbf{C} \cdot \mathbf{A}$$
 
 $$\mathbf{B} \cdot \mathbf{C} = \mathbf{X}$$
 
-#+BEGIN_EXPORT latex
 \begin{equation}
   \begin{aligned}
     \begin{bmatrix}
@@ -734,11 +697,9 @@ $$\mathbf{B} \cdot \mathbf{C} = \mathbf{X}$$
     \end{bmatrix}
   \end{aligned}
 \end{equation}
-#+END_EXPORT
 
 $$\mathbf{X} \cdot \mathbf{A}$$
 
-#+BEGIN_EXPORT latex
 \begin{equation}
   \begin{aligned}
     \begin{bmatrix}
@@ -758,7 +719,6 @@ $$\mathbf{X} \cdot \mathbf{A}$$
     \end{bmatrix}
   \end{aligned}
 \end{equation}
-#+END_EXPORT
 
 ** Answer
 
@@ -770,7 +730,6 @@ $$\mathbf{B} \cdot \mathbf{C} \cdot \mathbf{A}$$
 
 Ранг матрицы
 
-#+BEGIN_EXPORT latex
 \begin{equation}
   \begin{bmatrix}
     1 & -1 & 2 & 0 \\
@@ -779,14 +738,16 @@ $$\mathbf{B} \cdot \mathbf{C} \cdot \mathbf{A}$$
     0 & 0 & 0 & 0
   \end{bmatrix}
 \end{equation}
-#+END_EXPORT
 
 ** Defenition
 
 The maximum number of linearly independent vectors in a matrix is equal to the
-number of non-zero rows in its row echelon matrix. Therefore, to find the rank
+number of non-zero rows in its row echelon matrix. Therefore, *to find the rank
 of a matrix, we simply transform the matrix to its row echelon form and count
-the number of non-zero rows.
+the number of non-zero rows.*
+
+Чтобы найти ранг матрицы, нужно упростить ее с помощью преобразования в row
+echelon form и посчитать количество не нулевых строк.
 
 ** Answer
 
