@@ -1,0 +1,1002 @@
+#+TITLE: Контрольная работа № 2 Матрицы 1 вариант
+#+AUTHOR: Студент группы № 6005 Пыхалов Олег Витальевич
+#+EMAIL: opykhalov@yandex.ru
+#+OPTIONS: email:t
+
+#+LANGUAGE: ru
+#+LaTeX_HEADER: \usepackage[T1,T2A]{fontenc}
+#+LaTeX_HEADER: \usepackage[english,russian]{babel}
+#+LATEX_HEADER: \hypersetup{colorlinks, citecolor=black, filecolor=black, linkcolor=black, urlcolor=blue, unicode}
+#+LATEX_HEADER: \usepackage{anyfontsize}
+
+#+LATEX_HEADER: \usepackage{mathtools}
+#+LATEX_HEADER: \mathtoolsset{showonlyrefs}
+
+#+OPTIONS: H:2 toc:t num:t todo:nil
+
+* Inverse Matrix
+
+** Plan                                                            :noexport:
+
+We can calculate the inverse of a matrix by:
+
+1. Calculating the matrix of minors
+2. Turn that into the matrix of cofactors
+3. Adjugate
+4. Multiply that by 1/determinant
+
+** Original
+
+Методом Гаусса и методом алгебраических дополнений найдите матрицу, обратную к
+
+\begin{equation}
+  \begin{aligned}
+  \mathbf{А} =
+    \begin{bmatrix}
+    1 & -1 & -2 \\
+    -1 & -1 & 3 \\
+    -1 & 0 & 6
+    \end{bmatrix}
+  \end{aligned}
+\end{equation}
+
+** Gaussian method
+*** DONE Construct matrix of minors
+    CLOSED: [2016-11-03 Thu 11:35]
+
+ \begin{equation}
+   \begin{pmatrix}
+     \begin{vmatrix} -1 & 3 \\ 0 & 6 \end{vmatrix} &
+     \begin{vmatrix} -1 & 3 \\ -1 & 6 \end{vmatrix} &
+     \begin{vmatrix} -1 & -1 \\ -1 & 0 \end{vmatrix} \\
+     & & \\
+     \begin{vmatrix} -1 & -2 \\ 0 & 6 \end{vmatrix} &
+     \begin{vmatrix} 1 & -2 \\ -1 & 6 \end{vmatrix} &
+     \begin{vmatrix} 1 & -1 \\ -1 & 0 \end{vmatrix} \\
+     & & \\
+     \begin{vmatrix} -1 & -2 \\ -1 & 3 \end{vmatrix} &
+     \begin{vmatrix} 1 & -1 \\ -2 & 3 \end{vmatrix} &
+     \begin{vmatrix} 1 & -1 \\ -1 & -1 \end{vmatrix}
+   \end{pmatrix}
+ \end{equation}
+
+*** DONE Evaluate to get a matrix of minors
+    CLOSED: [2016-11-03 Thu 11:35]
+
+ \begin{equation}
+   \begin{aligned}
+     \begin{pmatrix}
+       -1 \cdot 6 - 0 \cdot 3 &
+       -1 \cdot 6 - (-1) \cdot 3 &
+       -1 \cdot 0 - (-1) \cdot (-1) \\
+       & & \\
+       -1 \cdot 6 - 0 \cdot (-2) &
+       1 \cdot 6 - (-1) \cdot (-2) &
+       1 \cdot 0 - (-1) \cdot (-1) \\
+       & & \\
+       -1 \cdot 3 - (-1) \cdot (-2) &
+       1 \cdot 3 - (-2) \cdot (-1) &
+       1 \cdot (-1) - (-1) \cdot (-1)
+     \end{pmatrix} \\
+     =
+     \begin{pmatrix}
+       -6 - 0 &
+       -6 - (-3) &
+       0 - 1 \\
+       & & \\
+       -6 - 0 &
+       6 - 2 &
+       0 - 1 \\
+       & & \\
+       -3 - 2 &
+       3 - 2 &
+       -1 - 1
+     \end{pmatrix}
+     =
+     \begin{pmatrix}
+       -6 &
+       -3 &
+       - 1 \\
+       & & \\
+       -6 &
+       4 &
+       - 1 \\
+       & & \\
+       -5 &
+       1 &
+       -2
+     \end{pmatrix}
+   \end{aligned}
+ \end{equation}
+
+*** DONE Get cofactor matrix from matrix of minors
+    CLOSED: [2016-11-03 Thu 11:35]
+
+ Pattern any 3x3 Matrix of Cofactors
+
+ \begin{equation}
+   \begin{pmatrix}
+     + & - & + \\
+     - & + & - \\
+     + & - & + 
+   \end{pmatrix}
+ \end{equation}
+
+ \begin{equation}
+   \begin{aligned}
+     \begin{pmatrix}
+       -6 & -3 & - 1 \\
+       & & \\
+       -6 & 4 & - 1 \\
+       & & \\ -5 & 1 & -2
+     \end{pmatrix}
+     =
+     \begin{pmatrix}
+       -6 & 3 & - 1 \\
+       & & \\
+       6 & 4 & 1 \\
+       & & \\
+       -5 & -1 & -2
+     \end{pmatrix}
+   \end{aligned}
+ \end{equation}
+
+*** DONE Find a determenant
+    CLOSED: [2016-11-03 Thu 11:35]
+
+ \begin{equation}
+   \begin{aligned}
+     \mathrm{det}(\mathbf{A}) =
+     \begin{bmatrix}
+       1 &
+       -1 &
+       -2 \\
+       & & \\
+       -1 &
+       -1 &
+       3 \\
+       & & \\
+       -1 &
+       0 &
+       6
+     \end{bmatrix}
+     =
+     \begin{bmatrix}
+       1 &
+       -1 &
+       -2 \\
+       & & \\
+       -1 &
+       -1 &
+       3 \\
+       & & \\
+       -1 &
+       0 &
+       6
+     \end{bmatrix}
+     \begin{matrix}
+       1 &
+       -1 &
+       & & \\
+       & & \\
+       -1 &
+       -1 &
+       & & \\
+       & & \\
+       -1 &
+       0 &
+       & & \\
+     \end{matrix} \\
+     \mathrm{det}(\mathbf{A})
+     = 1 \cdot (-1) \cdot 6
+     + (-1) \cdot 3 \cdot (-1)
+     + (-2) \cdot (-1) \cdot 0 \\
+     - (-1) \cdot (-1) \cdot 6
+     - 1 \cdot 3 \cdot 0
+     - (-2) \cdot (-1) \cdot (-1) \\
+     = -6 + 3 + 0 - 6 - 0 - (-2) \\
+     = -6 + 3 - 6 + 2 \\
+     = -12 + 5 \\
+     = -7
+   \end{aligned}
+ \end{equation}
+
+ #+BEGIN_SRC python :exports none
+ original = 1*(-1)*6+(-1)*3*(-1)+(-2)*(-1)*0-(-1)*(-1)*6-1*3*0-(-2)*(-1)*(-1)
+ a = 1*(-1)*6
+ b = -1*3*-1
+ c = -2*-1*0
+ d = -1*-1*6
+ e = -1*3*0
+ f = -2*-1*-1
+ g = a + b + c - d - e - f
+ return g
+ #+END_SRC
+
+ #+RESULTS:
+ : -7
+
+*** DONE Inverse matrix
+    CLOSED: [2016-11-03 Thu 11:57]
+
+ \begin{equation}
+ A^{-1} = \frac{1}{det(\mathbf{A})} \cdot adj(\mathbf{A})
+ \end{equation}
+
+ \begin{equation}
+   \begin{aligned}
+     \mathbf{A}^{-1} = \frac{1}{-7} \cdot \mathrm{adj}(\mathbf{A}) = \\
+     \frac{1}{-7} \cdot
+     \begin{bmatrix}
+       -6 &
+       6 &
+       -5 \\
+       & & \\
+       3 &
+       4 &
+       -1 \\
+       & & \\
+       -1 &
+       1 &
+       -2
+     \end{bmatrix}
+     =
+     \begin{bmatrix}
+       \frac{-6}{-7} &
+       \frac{6}{-7}&
+       \frac{-5}{-7} \\
+       & & \\
+       \frac{3}{-7}&
+       \frac{4}{-7}&
+       \frac{-1}{-7} \\
+       & & \\
+       \frac{-1}{-7} &
+       \frac{1}{-7}&
+       \frac{-2}{-7}
+     \end{bmatrix}
+     =
+     \begin{bmatrix}
+       \frac{6}{7} &
+       -\frac{6}{7}&
+       \frac{5}{7} \\
+       & & \\
+       -\frac{3}{7}&
+       -\frac{4}{7}&
+       \frac{1}{7} \\
+       & & \\
+       \frac{1}{7} &
+       -\frac{1}{7}&
+       \frac{2}{7}
+     \end{bmatrix}
+   \end{aligned}
+ \end{equation}
+
+ $\mathrm{adj}(\mathbf{A})$ is a traspose of cofactor matrix
+
+*** Answer
+
+ \begin{equation}
+   \mathbf{A}^{-1} =
+   \begin{bmatrix}
+     \frac{6}{7} &
+     -\frac{6}{7}&
+     \frac{5}{7} \\
+     & & \\
+     -\frac{3}{7}&
+     -\frac{4}{7}&
+     \frac{1}{7} \\
+     & & \\
+     \frac{1}{7} &
+     -\frac{1}{7}&
+     \frac{2}{7}
+   \end{bmatrix}
+ \end{equation}
+
+* System of linear equations
+
+** Original
+
+Какое из следующих выражений является общим решением системы линейных уравнений
+и почему
+
+\begin{equation}
+  \begin{cases}
+    x_1 - x_2 + 2x_3 - x_5 = 1 \\
+    x_2 + x_3 - x_4 = 2 \\
+    x_3 + x_4 + x_5 = 1 \\
+    x_4 - x_5 = 0 \\
+  \end{cases}
+\end{equation}
+
+\begin{equation}
+  \begin{aligned}
+    1)
+    \begin{bmatrix}
+      0 \\
+      1 \\
+      1 \\
+      0 \\
+      0
+    \end{bmatrix}
+    2)
+    \begin{bmatrix}
+      0 \\
+      1 \\
+      1 \\
+      0 \\
+      0
+    \end{bmatrix}
+    + \upsilon
+    \begin{bmatrix}
+      8 \\
+      3 \\
+      -2 \\
+      1 \\
+      1
+    \end{bmatrix}
+    3)
+    \begin{bmatrix}
+      8 \\
+      4 \\
+      -1 \\
+      1 \\
+      1
+    \end{bmatrix}
+    + \upsilon
+    \begin{bmatrix}
+      4 \\
+      1,5 \\
+      -1 \\
+      0,5 \\
+      0,5
+    \end{bmatrix}
+    + \nu
+    \begin{bmatrix}
+      8 \\
+      3 \\
+      -2 \\
+      1 \\
+      1
+    \end{bmatrix}
+  \end{aligned}
+\end{equation}
+4) Нет решений
+
+** Plan                                                            :noexport:
+
+1. Является ли система совместной.
+2. Если система совместна, то определенна или неопределенна (критерий
+   совместности системы определяется по теореме).
+3. Если система определенна, то как найти ее единственное решение (используются
+   метод Крамера, метод обратной матрицы или метод Жордана-Гаусса).
+4. Если система неопределенна, то как описать множество ее решений.
+
+** DONE Convert system of linear equations to matrix
+   CLOSED: [2016-11-05 Sat 04:08]
+
+\begin{equation}
+  \begin{aligned}
+    \begin{cases}
+      x_1 - x_2 + 2x_3 - x_5 = 1 \\
+      x_2 + x_3 - x_4 = 2 \\
+      x_3 + x_4 + x_5 = 1 \\
+      x_4 - x_5 = 0 \\
+    \end{cases}
+    \Leftrightarrow
+    \begin{cases}
+      1x_1 - 1x_2 + 2x_3 + 0x_4 - 1x_5 = 1b^0 \\
+      0x_1 + 1x_2 + 0x_3 - 1x_4 + 0x_5 = 2b^0 \\
+      0x_1 + 0x_2 + 1x_3 + 1x_4 + 1x_5 = 1b^0 \\
+      0x_1 + 0x_2 + 0x_3 + 1x_4 - 1x_5 = 0b^0 \\
+    \end{cases}
+  \end{aligned}
+\end{equation}
+\begin{equation}
+  \mathbf{A} =
+  \begin{bmatrix}
+    1 & -1 & 2 & 0 & -1 & 1 \\
+    0 & 1 & 0 & -1 & 0 & 2 \\
+    0 & 0 & 1 & 1 & 1 & 1 \\
+    0 & 0 & 0 & 1 & -1 & 0\\
+  \end{bmatrix}
+\end{equation}
+
+** TODO Reduced row echelon form
+
+\begin{equation}
+  \begin{aligned}
+    \begin{array}{rrrrrr}
+      1 & -1 & 2 & 0 & -1 & 1 \\
+      0 & 1 & 1 & -1 & 0 & 2 \\
+      0 & 0 & 1 & 1 & 1 & 1 \\
+      0 & 0 & 0 & 1 & -1 & 0
+    \end{array}
+    \\
+    % 1
+    \xrightarrow{R_2 + R_1 \rightarrow R_1}
+    \begin{array}{rrrrrr}
+      1 & 0 & 3 & -1 & -1 & 3 \\
+      0 & 1 & 1 & -1 & 0 & 2 \\
+      0 & 0 & 1 & 1 & 1 & 1 \\
+      0 & 0 & 0 & 1 & -1 & 0
+    \end{array}
+    % 2
+    \\
+    \\
+    \xrightarrow{-1 R_3 + R_2 \rightarrow R_2}
+    \begin{array}{rrrrrr}
+      1 & 0 & 3 & -1 & -1 & 3 \\
+      0 & 1 & 0 & -2 & -1 & 1 \\
+      0 & 0 & 1 & 1 & 1 & 1 \\
+      0 & 0 & 0 & 1 & -1 & 0
+    \end{array}
+    % 3
+    \\
+    \\
+    \xrightarrow{-1 R_4 + R_3 \rightarrow R_3}
+    \begin{array}{rrrrrr}
+      1 & 0 & 3 & -1 & -1 & 3 \\
+      0 & 1 & 0 & -2 & -1 & 1 \\
+      0 & 0 & 1 & 0 & 2 & 0 \\
+      0 & 0 & 0 & 1 & -1 & 0
+    \end{array}
+    % 4
+    \\
+    \\
+    \xrightarrow{-3 R_3 + R_1 \rightarrow R_1}
+    \begin{array}{rrrrrr}
+      1 & 0 & 0 & -1 & -7 & 0 \\
+      0 & 1 & 0 & -2 & -1 & 1 \\
+      0 & 0 & 1 & 0 & 2 & 0 \\
+      0 & 0 & 0 & 1 & -1 & 0
+    \end{array}
+    % 5
+    \\
+    \\
+    \xrightarrow{1 R_4 + R_1 \rightarrow R_1}
+    \begin{array}{rrrrrr}
+      1 & 0 & 0 & 0 & -8 & 0\\
+      0 & 1 & 0 & -2 & -1 & 1 \\
+      0 & 0 & 1 & 0 & 2 & 0 \\
+      0 & 0 & 0 & 1 & -1 & 0
+    \end{array}
+    % 6
+    \\
+    \\
+    \xrightarrow{2 R_4 + R_2 \rightarrow R_2}
+    \begin{array}{rrrrrr}
+      1 & 0 & 0 & 0 & -8 & 0\\
+      0 & 1 & 0 & 0 & -3 & 1 \\
+      0 & 0 & 1 & 0 & 2 & 0 \\
+      0 & 0 & 0 & 1 & -1 & 0
+    \end{array}
+  \end{aligned}
+\end{equation}
+
+** Convert matrix to linear equation
+
+\begin{equation}
+  \begin{bmatrix}
+    1 & 0 & 0 & 0 & -8 & 0\\
+    0 & 1 & 0 & 0 & -3 & 1 \\
+    0 & 0 & 1 & 0 & 2 & 0 \\
+    0 & 0 & 0 & 1 & -1 & 0
+  \end{bmatrix}
+  \rightarrow
+  \begin{cases}
+    x_1 - 8x_5 = 0 \\
+    x_2 - 3x_5 = 1 \\
+    x_3 + 2x_5 = 1 \\
+    x_4 - x_5 = 1 \\
+    x_5 = x_5
+  \end{cases}
+  \Leftrightarrow
+  \begin{cases}
+    x_1 = 8x_5 \\
+    x_2 = 1 + 3x_5 \\
+    x_3 = 1 - 2x_5 \\
+    x_4 = x_5 \\
+    x_5 = x_5
+  \end{cases}
+\end{equation}
+
+** Convert to vector form
+
+\begin{equation}
+  \begin{aligned}
+    \begin{bmatrix}
+      x_1 \\
+      x_2 \\
+      x_3 \\
+      x_4 \\
+      x_5 \\
+    \end{bmatrix}
+    =
+    \begin{bmatrix}
+      0 \\
+      1 \\
+      1 \\
+      0 \\
+      0 \\
+    \end{bmatrix}
+    + x_5
+    \begin{bmatrix}
+      8 \\
+      3 \\
+      -2 \\
+      1 \\
+      1 \\      
+    \end{bmatrix}
+  \end{aligned}
+\end{equation}
+
+** Answer
+
+$2)$
+
+** TODO Second task sagemath code                                  :noexport:
+ #+BEGIN_SRC python
+   var('x1 x2 x3 x4 x5')
+   eq1 = x1-x2+2*x3-x5==1
+   eq2 = x2+x3-x4==2
+   eq3 = x3+x4+x5==1
+   eq4 = x4-x5=0
+   solve([eq1,eq2,eq3,eq4],x1,x2,x3,x4,x5)
+
+ [ 1  0  0  0 -6  1]
+ [ 0  1  0  0 -1  2]
+ [ 0  0  1  0  2  1]
+ [ 0  0  0  1 -1  0]
+
+   x1 == 8*r1
+   x2 == 3*r1 + 1
+   x3 == -2*r1 + 1
+   x4 == r1
+   x5 == r1
+ #+END_SRC
+
+** Solving with python                                             :noexport:
+
+ #+BEGIN_SRC python
+   from numpy import matrix
+   a = matrix((1,-1,2,0,-1,1))
+   b = matrix((0,1,1,-1,0,2))
+
+   a = matrix((0,0,-1,-1,-1,-1))
+   b = matrix((0,1,1,-1,0,2))
+
+   a = matrix((0,0,0,-1,1,0))
+   b = matrix((0,0,1,1,1,1))
+
+   a = matrix((0,0,-3,0,-6,-3))
+   b = matrix((1,0,3,-1,-1,3))
+
+   a = matrix((0,0,0,1,-1,0))
+   b = matrix((1,0,0,-1,-7,0))
+
+   a = matrix((0,1,0,-2,-1,1))
+   b = matrix((0,0,0,2,-2,0))
+
+   ret = a + b
+
+   return ret
+ #+END_SRC
+
+ #+RESULTS:
+ | 0 | 1 | 0 | 0 | -3 | 1 |
+
+* Matrices multiplication
+
+** Column row rule
+
+Make sure that the the number of columns in the 1st one equals the number of
+rows in the 2nd one
+
+** Multiply
+
+Multiply the elements of each row of the first matrix by the elements of each
+column in the second matrix
+
+** Add
+
+Add the products
+
+** $ABC$
+
+$$\mathbf{A} \cdot \mathbf{B} \cdot \mathbf{C}$$
+
+\begin{equation}
+  \begin{aligned}
+    \mathbf{A} =
+    \begin{bmatrix}
+      1 & -1 \\
+      2 & 3 \\
+      0 & 0
+    \end{bmatrix}
+    \mathbf{B} =
+    \begin{bmatrix}
+      0 & 2 & 1 \\
+      2 & 3 & 1
+    \end{bmatrix}
+    \mathbf{C} =
+    \begin{bmatrix}
+      1 & -4 & 2 \\
+      0 & 1 & 0 \\
+      3 & 6 & 1
+    \end{bmatrix}
+  \end{aligned}
+\end{equation}
+
+$$\mathbf{A} \cdot \mathbf{B} = \mathbf{X}$$
+
+\begin{equation}
+  \begin{aligned}
+    \begin{bmatrix}
+      x & x \\
+      x & x \\
+      x & x
+    \end{bmatrix}
+    \begin{bmatrix}
+      x & x & x \\
+      x & x & x
+    \end{bmatrix}
+    =
+    \begin{bmatrix}
+      x & x & x \\
+      x & x & x \\
+      x & x & x
+    \end{bmatrix}
+  \end{aligned}
+\end{equation}
+
+$$\mathbf{X} \cdot \mathbf{C}$$
+
+\begin{equation}
+  \begin{aligned}
+    \begin{bmatrix}
+      x & x & x \\
+      x & x & x \\
+      x & x & x
+    \end{bmatrix}
+    \begin{bmatrix}
+      x & x & x \\
+      x & x & x \\
+      x & x & x
+    \end{bmatrix}
+    =
+    \begin{bmatrix}
+      x & x & x \\
+      x & x & x \\
+      x & x & x
+    \end{bmatrix}
+  \end{aligned}
+\end{equation}
+
+** BCA
+
+$$\mathbf{B} \cdot \mathbf{C} \cdot \mathbf{A}$$
+
+$$\mathbf{B} \cdot \mathbf{C} = \mathbf{X}$$
+
+\begin{equation}
+  \begin{aligned}
+    \begin{bmatrix}
+      x & x & x \\
+      x & x & x
+    \end{bmatrix}
+    \cdot
+    \begin{bmatrix}
+      x & x & x \\
+      x & x & x \\
+      x & x & x
+    \end{bmatrix}
+    =
+    \begin{bmatrix}
+      x & x & x \\
+      x & x & x
+    \end{bmatrix}
+  \end{aligned}
+\end{equation}
+
+$$\mathbf{X} \cdot \mathbf{A}$$
+
+\begin{equation}
+  \begin{aligned}
+    \begin{bmatrix}
+      x & x & x \\
+      x & x & x
+    \end{bmatrix}
+    \cdot
+    \begin{bmatrix}
+      x & x \\
+      x & x \\
+      x & x
+    \end{bmatrix}    
+    =
+    \begin{bmatrix}
+      x & x \\
+      x & x
+    \end{bmatrix}
+  \end{aligned}
+\end{equation}
+
+** Answer
+
+$$\mathbf{B} \cdot \mathbf{C} \cdot \mathbf{A}$$
+
+* Dimension of the column space or rank
+
+** Orininal
+
+Ранг матрицы
+
+\begin{equation}
+  \begin{bmatrix}
+    1 & -1 & 2 & 0 \\
+    0 & 1 & -2 & 3 \\
+    0 & 0 & 0 & 4 \\
+    0 & 0 & 0 & 0
+  \end{bmatrix}
+\end{equation}
+
+** Defenition
+
+The maximum number of linearly independent vectors in a matrix is equal to the
+number of non-zero rows in its row echelon matrix. Therefore, *to find the rank
+of a matrix, we simply transform the matrix to its row echelon form and count
+the number of non-zero rows.*
+
+Чтобы найти ранг матрицы, нужно упростить ее с помощью преобразования в row
+echelon form и посчитать количество не нулевых строк.
+
+** Answer
+
+$3)$
+
+* See also                                                         :noexport:
+
+** Calc
+
+- [[https://www.youtube.com/watch?v=GKuYyuBVXoU][Introduction to Sage for Matrix Operations - YouTube]]
+- [[https://ask.sagemath.org/question/7833/matrix-multiplication/][Matrix Multiplication - ASKSAGE: Sage Q&A Forum]]
+- [[https://wiki.sagemath.org/quickref][quickref - Sage Wiki]]
+- [[https://trac.sagemath.org/][Sage]]
+- [[https://wiki.sagemath.org/quickref?action=AttachFile&do=get&target=quickref-linalg.pdf][sagemath quickref]]
+- [[http://math.semestr.ru/gauss/system.php][Исследование систем линейных уравнений онлайн]]
+
+** Channels
+
+- [[https://www.youtube.com/channel/UCjLQwN2vud390JcLOnh2Unw][Randy Anderson - Youtube]]
+- [[https://www.youtube.com/user/sirtylertarver][Tarver Academy - YouTube]]
+- [[https://www.youtube.com/channel/UCj2IXyczummSoco64S1R9QQ][Megan MathTeacher Snow]]
+- [[https://www.youtube.com/user/SocraticaStudios/featured][Socratica - YouTube]]
+
+** Cramer's rule
+
+- [[https://en.wikipedia.org/wiki/Cramer%27s_rule][Cramer's rule - Wikipedia]]
+- [[https://www.youtube.com/watch?v=Er7FuODBNqU][Cramer's Rule - YouTube]]
+
+** Defined and undefined matrix operations
+
+- [[https://www.youtube.com/watch?v=O1-9f1g0OsI][Defined and undefined matrix operations | Matrices | Precalculus | Khan Academy - YouTube]]
+
+** Determinant
+
+- [[https://en.wikipedia.org/wiki/Determinant][Determinant - Wikipedia]]
+- [[https://www.youtube.com/watch?v=OU9sWHk_dlw][Finding the determinant of a 2x2 matrix | Matrices | Precalculus | Khan Academy]]
+- [[https://www.youtube.com/watch?v=0c7dt2SQfLw][3 x 3 determinant | Matrix transformations | Linear Algebra | Khan Academy]]
+- [[https://www.youtube.com/watch?v=H9BWRYJNIv4][n x n determinant | Matrix transformations | Linear Algebra | Khan Academy]]
+- [[https://www.youtube.com/watch?v=QV0jsTiobU4][Simpler 4x4 determinant | Matrix transformations | Linear Algebra | Khan Academy]]
+- [[https://www.youtube.com/watch?v=EqVt9pROpdM][preCalculus (SAGE) 1104 What is a determinant? - YouTube]]
+- [[https://www.youtube.com/watch?v=Ip3X9LOh2dk][The determinant | Essence of linear algebra, chapter 5 - YouTube]]
+- [[https://www.youtube.com/watch?v=WkR7m7AraQ0][Determinants for 4x4 Matrices (Minor & Cofactor)]]
+- [[https://www.youtube.com/watch?v=G7aug142hu8][Determinants for 3x3 Matrices and Above  (Minor & Cofactor)]]
+
+** Distributive property
+
+- [[https://www.youtube.com/watch?v=oMWTMj78cwc][Distributive property of matrix products | Matrix transformations | Linear Algebra | Khan Academy - YouTube]]
+
+** Elementary matrix
+
+- [[https://en.wikipedia.org/wiki/Elementary_matrix#Operations][Elementary matrix Operations - Wikipedia]]
+
+** Find the set of solutions to the homogeneous system
+
+- [[https://www.youtube.com/watch?v=JlJWyWJARRU][Homogeneous Systems of Linear Equations - Trivial and Nontrivial Solutions, Part 1 - YouTube]]
+
+** Finding the general solution
+
+- [[https://www.youtube.com/results?search_query=matrix+general+solution][matrix general solution - YouTube Search]]
+- [[https://www.youtube.com/watch?v=jvp4fRv7jeU][EXAMPLE: Finding the general solution to a vector-matrix equation using a particular solution - YouTube]]
+- [[https://www.youtube.com/watch?v=75Q0ZN2njGQ][Solving Ax=b | MIT 18.06SC Linear Algebra, Fall 2011 - YouTube]]
+- [[https://math.stackexchange.com/questions/1639369/general-solution-of-a-system-of-equations-given-a-set-of-specific-solutions][linear algebra - General solution of a system of equations given a set of specific solutions - Mathematics Stack Exchange]]
+- [[https://math.stackexchange.com/questions/602927/solve-a-linear-system-with-more-variables-than-equations][Solve a linear system with more variables than equations - Mathematics Stack Exchange]]
+- [[https://www.youtube.com/watch?v=8j7HMET3M5g][Unizor - Matrices - General Solution - YouTube]]
+- [[https://www.youtube.com/watch?v=jVw-OCy0Rqs][Linear Algebra Example Problems - General Solution of Augmented Matrix - YouTube]]
+
+** General solution of augmented matrix
+
+- [[https://www.youtube.com/watch?v=jVw-OCy0Rqs][Linear Algebra Example Problems - General Solution of Augmented Matrix - YouTube]]
+- [[https://www.youtube.com/watch?v=jGOgdkeGVyA][EXAMPLE: Finding the general solution to linear equations by first finding a particular solution - YouTube]]
+
+** How to understand math
+
+- [[https://www.youtube.com/watch?v=V6yixyiJcos][Math isn't hard, it's a language | Randy Palisoc | TEDxManhattanBeach - YouTube]]
+- [[https://www.youtube.com/watch?v=SEiSloE1r-A][The surprising beauty of mathematics | Jonathan Matte | TEDxGreensFarmsAcademy - YouTube]]
+- [[https://www.youtube.com/watch?v=H2vN2QXZGnc][Mathematics and sex | Clio Cresswell | TEDxSydney - YouTube]]
+- [[https://www.youtube.com/watch?v=TyOdLqHJqRY][These animations will help you understand the math concepts you never got in high school - YouTube]]
+- [[https://www.youtube.com/watch?v=fIBw3BgjgwI][Understanding the Language of The Universe | Mathematics Documentary | World Documentary Movies - YouTube]]
+
+** Identity matrix
+
+- [[https://en.wikipedia.org/wiki/Identity_matrix][Identity matrix - Wikipedia]]
+
+** Inconsistent equation system
+
+- [[https://en.wikipedia.org/wiki/System_of_linear_equations#Matrix_solution][Matrix solution]]
+- [[https://www.youtube.com/watch?v=Ix8Nne-a-KQ][Consistent and inconsistent systems | Algebra II | Khan Academy - YouTube]]
+
+** Inverse Matrix
+
+- [[https://www.youtube.com/watch?v=pKZyszzmyeQ][Inverse of 3x3 matrix - YouTube]]
+- [[https://www.youtube.com/watch?v=JwT1FrLzEOQ][Algebra - Matrices - Gauss Jordan Method Part 1 Augmented Matrix - YouTube]]
+- [[https://www.youtube.com/watch?v=2GKESu5atVQ][Algebra 54 - Gaussian Elimination - YouTube]]
+- [[https://www.youtube.com/watch?v=2j5Ic2V7wq4][Gaussian Elimination - YouTube]]
+- [[https://www.youtube.com/watch?v=0fTSBIBD7Cs][Gauss-Jordan Elimination - YouTube]]
+- [[https://www.youtube.com/watch?v=LuVzd3NdRhg][Pre-Calculus - Gaussian Elimination - YouTube]]
+- [[https://www.youtube.com/watch?v=cJg2AuSFdjw][Inverse Matrix Using Gauss-Jordan / Row Reduction , Example 1 - YouTube]]
+- [[https://en.wikipedia.org/wiki/Gaussian_elimination][Gaussian elimination - Wikipedia]]
+- [[https://en.wikipedia.org/wiki/Invertible_matrix][Invertible matrix]]
+- [[https://www.youtube.com/watch?v=uQhTuRlWMxw][Inverse matrices, column space and null space | Essence of linear algebra, chapter 6 - YouTube]]
+- [[https://www.youtube.com/watch?v=S4n-tQZnU6o][Classic video on inverting a 3x3 matrix part 1 | Matrices | Precalculus | Khan Academy - YouTube]]
+- [[https://www.youtube.com/watch?v=YvjkPF6C_LI][Finding the Inverse of a 3 x 3 Matrix using Determinants and Cofactors - Example 1 - YouTube]]
+- [[https://www.youtube.com/watch?v=iUQR0enP7RQ][Idea behind inverting a 2x2 matrix | Matrices | Precalculus | Khan Academy - YouTube]]
+- [[https://www.mathsisfun.com/algebra/matrix-inverse-minors-cofactors-adjugate.html][Inverse of a Matrix using Minors, Cofactors and Adjugate]]
+- [[https://en.wikipedia.org/wiki/Adjugate_matrix][Adjugate matrix - Wikipedia]]
+- [[https://www.youtube.com/watch?v=ArcrdMkEmKo][Inverting 3x3 part 2: Determinant and adjugate of a matrix | Matrices | Precalculus | Khan Academy - YouTube]]
+
+** Laplace formula
+
+- [[https://en.wikipedia.org/wiki/Determinant][2.2 Laplace's formula and the adjugate matrix]]
+- [[https://www.youtube.com/watch?v=OiNh2DswFt4][Laplace transform 1 | Laplace transform | Differential Equations | Khan Academy - YouTube]]
+
+** Linear Algebra
+
+- [[https://en.wikibooks.org/wiki/Linear_Algebra][Linear Algebra - Wikibooks, open books for an open world]]
+- [[https://www.youtube.com/watch?v=xyAuNHPsq-g&list=PLFD0EB975BA0CC1E0][Linear Algebra - Youtube]]
+- [[https://www.youtube.com/watch?v=kjBOesZCoqc&list=PLZHQObOWTQDPD3MizzM2xVFitgF8hE_ab][Essence of linear algebra preview - YouTube]]
+
+** Linear equation slop
+
+- [[https://www.youtube.com/watch?v=x6qIPml2xRI][Finding the Slope of a Linear Equation fbt - YouTube]]
+
+** Math frequent use variables
+
+- [[https://en.wikipedia.org/wiki/Variable_(mathematics)#Notation][4 Notation - Wikipedia]]
+
+** Matrix
+
+- [[https://en.wikipedia.org/wiki/Matrix_(mathematics)][Matrix (mathematics) - Wikipedia]]
+- [[https://www.youtube.com/watch?v=IrggOvOSZr4][Linear Algebra - Matrix Transformations - YouTube]]
+- [[https://www.youtube.com/watch?v=fkZj8QoYjq8][Day 3: Matrix algebra overview - YouTube]]
+- [[https://www.youtube.com/watch?v=xyAuNHPsq-g][Introduction to matrices - YouTube]]
+
+** Matrix multiplication
+
+ - [[https://www.youtube.com/watch?v=XkY2DOUCWMU][Matrix multiplication as composition | Essence of linear algebra, chapter 4 - YouTube]]
+ - [[https://www.youtube.com/watch?v=kT4Mp9EdVqs][Matrix multiplication introduction | Matrices | Precalculus | Khan Academy - YouTube]]
+ - [[https://www.youtube.com/watch?v=OMA2Mwo0aZg][Multiplying a matrix by a matrix | Matrices | Precalculus | Khan Academy - YouTube]]
+
+** Minor of matrix
+
+- [[https://www.youtube.com/watch?v=xZBbfLLfVV4][Inverting 3x3 part 1: Calculating matrix of minors and cofactor matrix | Precalculus | Khan Academy]]
+- [[https://www.youtube.com/watch?v=vQ58OoaR9J0][Minor of Matrix - YouTube]]
+- [[https://www.youtube.com/watch?v=KMKd993vG9Q][Matrices – Minors and Cofactors - YouTube]]
+- [[https://www.youtube.com/watch?v=uq1tAexdMQw][Find the minors of a matrix - YouTube]]
+
+** Other
+
+- [[http://www.ee.buffalo.edu/faculty/paololiu/edtech/roaldi/References/matrix.htm][Matrix Methods]]
+
+** Parametric vector form of solution
+
+- [[https://www.youtube.com/watch?v=TKnbTcsuy6k][Example - Parametric Vector Form of Solution - YouTube]]
+
+** Playlists
+
+- [[https://www.youtube.com/playlist?list=PLZcI2rZdDGQrb4VjOoMm2-o7Fu_mvij8F][Lorenzo Sadun Linear Algebra - YouTube]]
+- [[https://www.youtube.com/watch?v=ivP-6oicIWU&list=PLF895BD9018BDCDF9][The Span of a Set of Vectors - YouTube]]
+
+** Rank of the matrix
+
+- [[https://en.wikipedia.org/wiki/Rank_(linear_algebra)][Rank (linear algebra) - Wikipedia]]
+- [[https://www.youtube.com/watch?v=5oDdSb9Jv6c][Mathematics: Finding Rank of Matrix - YouTube]]
+- [[https://www.youtube.com/watch?v=59z6eBynJuw][Introduction To Rank Of A Matrix / Matrices / Maths Algebra - YouTube]]
+- [[https://www.youtube.com/watch?v=G4F-DmnC3jg][Rank of Matrix (Examples) - YouTube]]
+- [[https://www.youtube.com/watch?v=5iQzfVG8k7s][Linear Algebra : Rank of a Matrix - YouTube]]
+- [[https://www.youtube.com/watch?v=JUgrBkPteTg][Dimension of the column space or rank | Vectors and spaces | Linear Algebra | Khan Academy - YouTube]]
+- [[https://www.youtube.com/watch?v=anFQP_AVFIA][Finding the rank of the matrix using determinants - YouTube]]
+- [[https://www.youtube.com/watch?v=all5y-PN0z0][Short trick of Rank of matrix - YouTube]]
+- [[https://www.youtube.com/watch?v=6XyUexBKU38][Find Rank of Matrices Part 1 - YouTube]]
+- [[https://www.youtube.com/watch?v=N33SOw1A5fo][How to Calculate Rank using Row Reduced Echelon Form - YouTube]]
+- [[https://www.youtube.com/watch?v=njDiwB43w80][Rank of Matrices, Rank by Echelon Form, Rank of Matrix by Using Normal Form - YouTube]]
+- [[http://stattrek.com/matrix-algebra/matrix-rank.aspx][Matrix Rank]]
+- [[https://www.youtube.com/watch?v=R8a2HCQU7Vo][Linear Algebra 10e: An Application of the Matrix Rank - YouTube]]
+- [[https://www.youtube.com/watch?v=eRUf9VRbw5U][Rank of Matrix (Part 1)]]
+
+** Raw reduction
+
+- [[http://wikivirgil.wikidot.com/reduced-row-echelon-form-of-4x5-matrix-justin-k][Reduced Row Echelon Form Of 4x5 Matrix - Justin K - WikiVirgil]]
+- [[https://www.youtube.com/watch?v=9LYVi-n-6Jw][Row Reducing a Matrix - Systems of Linear Equations - Part 1 - YouTube]]
+- [[https://www.youtube.com/watch?v=cPIcBbh6qoo][Row Reducing a Matrix - Systems of Linear Equations - Part 2 - YouTube]]
+
+** Reduced row echelon form
+
+- [[https://www.youtube.com/watch?v=L0CmbneYETs][Matrices: Reduced row echelon form 1 | Vectors and spaces | Linear Algebra | Khan Academy - YouTube]]
+- [[https://www.youtube.com/watch?v=lP1DGtZ8Wys][Matrices: Reduced row echelon form 2 | Vectors and spaces | Linear Algebra | Khan Academy - YouTube]]
+
+** Rouche–Capelli theorem
+
+- [[https://en.wikipedia.org/wiki/Rouch%C3%A9%E2%80%93Capelli_theorem][Rouche–Capelli theorem - Wikipedia]]
+- [[https://www.youtube.com/watch?v=V21_Xzjb6k4][Rouche's Theorem - YouTube]]
+- [[https://www.youtube.com/watch?v=hMJG82131W0][Complex Analysis - Rouché's Theorem - YouTube]]
+- [[https://www.youtube.com/watch?v=R8LIEhFMWDaE][Rouche's example - YouTube]]
+- [[https://www.youtube.com/watch?v=Da4rMUWPu6I][Complex Analysis: Lecture 33: argument principal, Rouche's Theorem - YouTube]]
+- [[https://www.youtube.com/watch?v=zR-_vAdGixQ][How to Pronounce Rouche's Theorem - YouTube]]
+- [[https://www.youtube.com/watch?v=y-kHuYvLoOI&list=PLjT85-oLKuGPAKALJchTpqFtLxyUG58QU][Popular Videos - Complex analysis & Theorem]]
+- [[https://www.youtube.com/watch?v=Fqt08o8ikRU][Теорема Кронекера - YouTube]]
+- [[https://www.youtube.com/watch?v=XllbMJ2ya7g][§32 Исследование на совместность СЛАУ - YouTube]]
+- [[https://www.youtube.com/watch?v=gXtZs4uxjW8][§33 Матричный метод решения СЛАУ - YouTube]]
+
+** Row echelon form
+
+- [[https://en.wikipedia.org/wiki/Row_echelon_form][Row echelon form - Wikipedia]]
+
+** Row operations
+
+- [[https://www.youtube.com/watch?v=NlIx51qKcgI][Matrices - Row Operations (1 of 4).mov - YouTube]]
+- [[https://www.youtube.com/watch?v=k1YZwkhIweY][Matrices - Row Operations (2 of 4).mov - YouTube]]
+- [[https://www.youtube.com/watch?v=9g0hggec4Jk][Matrices - Row Operations (3 of 4).mov - YouTube]]
+
+** Sage
+
+- [[http://doc.sagemath.org/html/en/reference/][Contents — Sage Reference Manual v7.4]]
+- [[http://doc.sagemath.org/html/en/reference/matrices/index.html][Matrices and Spaces of Matrices — Sage Reference Manual v7.4: Matrices and Spaces of Matrices]]
+
+** Solve a system of three linear equations
+
+- [[https://www.youtube.com/watch?v=CsTOUbeMPUo][Using Gauss-Jordan to Solve a System of Three Linear Equations - Example 1 - YouTube]]
+- [[https://www.youtube.com/watch?v=MJE4EPbQMD0][Solving a System of Equations Involving 3 Variables Using Elimination by Addition - Example 1 - YouTube]]
+- [[https://www.youtube.com/watch?v=JZDQRJVxw30][System of 3 Equations, 3 Unknowns Using Elimination- Ex 2 - YouTube]]
+- [[https://www.youtube.com/watch?v=aPKz7011lAA][Solving a System of Equations Involving 3 Variables Using Elimination by Addition - Example 3 - YouTube]]
+
+** Solving systems of linear equations using substitution
+
+- [[https://www.youtube.com/watch?v=cwHR_B9zK7k][Solving Linear Systems of Equations Using Substitution - YouTube]]
+- [[https://www.youtube.com/watch?v=8SFk17Ea5wo][How to Solve Systems of Linear Equations by Substitution - YouTube]]
+
+** Solving systems of linear equations with elimination
+
+- [[https://www.youtube.com/watch?v=QrHsibKBVwI][Solving systems of linear equations with elimination example 1 | Algebra II | Khan Academy - YouTube]]
+- [[https://www.youtube.com/watch?v=vA-55wZtLeE][Solving systems of equations by elimination | Algebra Basics | Khan Academy - YouTube]]
+- [[https://www.youtube.com/watch?v=V7H1oUHXPkg][Solving linear systems by substitution | Algebra Basics | Khan Academy - YouTube]]
+
+** Sub-Matrix
+
+** System of linear equations
+
+- [[https://en.wikipedia.org/wiki/System_of_linear_equations][System of linear equations - Wikipedia]]
+- [[https://www.youtube.com/watch?v=AUqeb9Z3y3k][Matrices to solve a system of equations | Matrices | Precalculus | Khan Academy - YouTube]]
+- [[https://www.youtube.com/watch?v=RYP9Bg-03Gg][How to Use Matrices to Solve Linear Equations : Math Fundamentals - YouTube]]
+- [[https://www.youtube.com/watch?v=qqPwFvErfcQ][Cramer's Rule with 2x2 Matrices - YouTube]]
+- [[https://www.youtube.com/watch?v=C2QI3eeIiVc][Solving Linear Systems Using Matrices.mp4]]
+- [[https://www.youtube.com/watch?v=QV0jsTiobU4][Simpler 4x4 determinant | Matrix transformations | Linear Algebra | Khan Academy]]
+
+** Vector space
+
+- [[https://www.youtube.com/watch?v=ozwodzD5bJM][What is a Vector Space? (Abstract Algebra) - YouTube]]
+
+** Vector span
+
+- [[https://www.youtube.com/watch?v=Qm_OS-8COwU][Linear combinations and span | Vectors and spaces | Linear Algebra | Khan Academy - YouTube]]
+

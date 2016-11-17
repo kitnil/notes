@@ -1,0 +1,552 @@
+#+TITLE: Заочное, 6005, Вычислительная техника, Алгебра, Контрольная работа №1, Комплексные числа и многочлены, 1 вариант
+#+AUTHOR: 
+#+EMAIL: 
+#+DATE:
+#+OPTIONS: email:t
+
+#+LaTeX_CLASS: article
+#+LaTeX_CLASS_OPTIONS: [a4paper]
+
+#+LaTeX_HEADER: \usepackage[utf8]{inputenc}
+#+LaTeX_HEADER: \usepackage[T1,T2A]{fontenc}
+#+LaTeX_HEADER: \usepackage[english,russian]{babel}
+#+LATEX_HEADER: \hypersetup{colorlinks, citecolor=black, filecolor=black, linkcolor=black, urlcolor=blue}
+#+LaTeX_HEADER: \usepackage{amssymb}
+#+LaTeX_HEADER: \usepackage{amsmath}
+#+LaTeX_HEADER: \usepackage{polynom}
+
+#+OPTIONS: H:2 toc:t num:t
+#+LATEX_CLASS: beamer
+#+LATEX_CLASS_OPTIONS: [presentation]
+#+LATEX_CLASS_OPTIONS: [aspectratio=169]
+#+LATEX_HEADER: \beamertemplatenavigationsymbolsempty
+#+BEAMER_THEME: default
+#+BEAMER_COLOR_THEME: crane
+#+COLUMNS: %45ITEM %10BEAMER_ENV(Env) %10BEAMER_ACT(Act) %4BEAMER_COL(Col) %8BEAMER_OPT(Opt)
+
+* Выполнить действия
+$$\frac{3 - i}{2 + i} + i^{11}(-2 + 3i)$$
+
+** Деление комплексных чисел (Complex numbers division)
+\begin{equation}
+\frac{a + bi}{c + di} =
+\frac{ac + bd}{c^{2} + d^{2}} + \frac{bc - ad}{c^{2} + d^{2}}i
+\end{equation}
+
+\begin{equation}
+\begin{aligned}
+\frac{3 - i}{2 + i} &= \\
+&= \frac{3 - 1i}{2 + 1i} \\
+&= \frac{3 \cdot 2 + (-1) \cdot 1}{2^{2} + 1^{2}} + \frac{(-1) \cdot 2 - 3 \cdot 1}{2^{2} + 1^{2}}i \\
+&= \frac{6 + (-1)}{4 + 1} + \frac{-2 - 3}{4 + 1}i \\
+&= \frac{5}{5} + \frac{-5}{5}i \\
+&= 1 - 1i \\
+&= 1 - i
+\end{aligned}
+\end{equation}
+
+$$1 - 1i + i^{11}(-2 + 3i)$$
+** Мнимая единица (Imaginary unit)
+
+\begin{equation}
+\begin{aligned}
+-i &= \sqrt{-1} \\
+i &= \sqrt{-1} \\
+i^{2} &= -1 \\
+i^{3} &= i^{2} \cdot i = (-1) \cdot i = -i \\
+i^{4} &= i^{3} \cdot i = -i^{2} = 1 \\
+i^{5} &= i^{4} \cdot i = 1 \cdot i = i \\
+i^{6} &= i^{5} \cdot i = i \cdot i = i^{2} = -1 \\
+i^{7} &= i^{6} \cdot i = i^{2} \cdot i = -1 \cdot i = -1 \\
+i^{8} &= i^{7} \cdot i = -i \cdot i = -i^{2} = 1 \\
+i^{9} &= i^{8} \cdot i = 1 \cdot i = i \\
+i^{10} &= i^{9} \cdot i = i \cdot i = i^{2} = -1 \\
+i^{11} &= i^{10} \cdot i = -1 \cdot i = -i
+\end{aligned}
+\end{equation}
+
+\begin{equation}
+\begin{aligned}
+1 - i + i^{11}(-2 + 3i)  &= \\
+&= 1 - i + (-i)(-2 + 3i) \\
+&= 1 - i -i(-2 + 3i) \\
+&= 1 - i + 2i -3i^2 \\
+&= 1 + i - 3i^2 \\
+&= 1 + i - 3 \cdot (-1) \\
+&= 1 + i + 3 \\
+&= 4 + i
+\end{aligned}
+\end{equation}
+
+** Ответ
+$$4 + i$$
+
+* Найти решения уравнения и нарисовать их на комплексной прямой
+
+$$2z^{2} + (5 - 4i)z - 5i = 0$$
+
+** Формула нахождения дескриминанта (Discriminant)
+
+$$\Delta = b^2-4ac$$
+
+$$\Delta = (5 - 4i)^{2} - 4 \cdot 2 \cdot (-5i)$$
+
+*** Представить квадрат в виде умножения (Difference of squares)
+
+\begin{equation}
+\begin{aligned}
+(5 - 4)^2 &= \\
+&=(5 - 4i)(5 - 4i)
+\end{aligned}
+\end{equation}
+
+*** Умножение комплексных чисел (Complex numbers multiplication)
+
+$$(a + bi)(c + di) = (ac - bd) + (bc + ad)i$$
+
+\begin{equation}
+\begin{aligned}
+(5 - 4i)(5 - 4i) &= \\
+                 &= (5 \cdot 5 - (-4) \cdot (-4)) + ((-4) \cdot 5 + 5 \cdot (-4))i \\
+                 &= (25 - 16) + ((-20) + (-20))i \\
+                 &= 9 + (-40)i \\
+                 &= 9 - 40i
+\end{aligned}
+\end{equation}
+
+*** Дескриминант (Discriminant)
+
+\begin{equation}
+\begin{aligned}
+\Delta &= \\
+&= (5 - 4i)(5 - 4i) - 4 \cdot 2 \cdot (-5i) \\
+&= 9 - 40i - 4 \cdot 2 \cdot (-5i) \\
+&= 9 - 40i - 8 \cdot (-5i) \\
+&= 9 - 40i - (-40i) \\
+&= 9 - 40i + 40i \\
+\end{aligned}
+\end{equation}
+
+*** Сложение комплексных чисел (Complex number addition)
+$$(a + bi) + (c + di) = (a + c) + (b + d)i$$
+
+\begin{equation}
+\begin{aligned}
+9 - 40i + 40i &= \\
+              &= 9 - 40i + 0 + 40i \\
+              &= (9 + 0) + (-40 + 40)i \\
+              &= 9 + 0i \\
+              &= 9 \\
+\end{aligned}
+\end{equation}
+
+*** Дескриминант (Discriminant)
+$$\Delta = 9$$
+
+** Формула нахождения корней квадратного уравнения (Quadratic formula)
+
+$$x_{1,2} = \frac{-b \pm \sqrt {\Delta}}{2a}$$
+
+$$x_{1,2} = \frac{-(5 - 4i) \pm \sqrt {9}}{2 \cdot 2}$$
+
+*** (Factoring)
+
+\begin{equation}
+\begin{aligned}
+-(5 - 4i) &= \\
+          &= -1(5 - 4i) \\
+          &= -1 \cdot 5 - 1 \cdot (-4i) \\
+          &= -5 + 4i
+\end{aligned}
+\end{equation}
+
+*** Квадратный корень (Square root)
+
+$$x_{1,2} = \frac{-5 + 4i \pm 3}{2 \cdot 2}$$
+
+*** Знаменатель (Denominator)
+
+$$x_{1,2} = \frac{-5 + 4i \pm 3}{4}$$
+
+*** Корни $x1$ и $x2$
+
+$$x_{1,2} = \frac{-5 + 4i \pm 3}{4}$$
+
+\begin{equation}
+\begin{aligned}
+x_{1} = \frac{-5 + 4i + 3}{4} &= \\
+                              &= \frac{-2 + 4i}{4} \\
+                              &= \frac{-1 + 2i}{2} = \\
+                              &= -0,5 + i
+\end{aligned}
+\end{equation}
+
+\begin{equation}
+\begin{aligned}
+x_{1} = \frac{-5 + 4i - 3}{4} &= \\
+                              &= \frac{-8 + 4i}{4} \\
+                              &= -2 + i
+\end{aligned}
+\end{equation}
+** График (Plot)
+
+#+begin_src gnuplot :file plot1.png
+reset
+
+set xlabel "Re"
+set ylabel "Im"
+set xrange [-10:10]
+set yrange [-10:10]
+
+set grid
+unset xtics
+unset ytics
+unset ztics
+
+set xtics -10,1,10
+set ytics -10,1,10
+
+set arrow 1 from -7,0 to 7,0
+set arrow 2 from 0,-7 to 0,7
+set label r at 8,0
+set label i at 0,8
+set label 1 'Re' at 8.0,0.0 point pointtype 0
+set label 2 'Im' at 0.0,8.0 point pointtype 0
+set label 3 '-0,5+i' at -0.5,1.0 point pointtype 7
+set label 4 '-2+i' at -2.0,1.0 point pointtype 7
+set key off
+plot 1/0
+#+end_src
+
+#+RESULTS:
+[[file:plot1.png]]
+
+** Ответ
+
+\begin{equation}
+\begin{aligned}
+-0,5 + i\\
+-2 + i
+\end{aligned}
+\end{equation}
+
+* Найти все значения и записать ответ в показательной форме
+
+$$\sqrt[4]{16i}$$
+
+** Polar form
+
+*** Абсолютная величина (Absolute value)
+
+$$r = |z| = \sqrt{x^{2} + y^{2}}$$
+
+\begin{equation}
+r =
+\sqrt{0^{2} + 16^{2}} =
+16
+\end{equation}
+
+*** Угол
+
+\begin{equation}
+\varphi = \frac{\pi}{2}
+\end{equation}
+
+** Формула Муавра и извлечение корней из комплексных чисел (De Moivre's formula)
+
+\begin{equation}
+\omega_{k} =
+\sqrt[n]{r}(\cos \frac{\varphi + 2 \pi k}{n} + i \sin \frac{\varphi + 2 \pi k}{n}) =
+\sqrt[n]{r}^{i \varphi}
+\end{equation}
+
+$$k = 0, 1, 2, 3$$
+
+$$\sqrt[4]{16}=2$$
+
+** Корни
+
+\begin{equation}
+\omega_{0} =
+2(\cos \frac{\varphi + 2 \pi \cdot 0}{4} + i \sin \frac{\varphi + 2 \pi \cdot 0}{4}) =
+2(\cos \frac{\pi}{8} + i \sin \frac{\pi}{8}) =
+2e^{\frac{i \pi}{8}}
+\end{equation}
+
+\begin{equation}
+\omega_{1} =
+2(\cos \frac{\varphi + 2 \pi \cdot 1}{4} + i \sin \frac{\varphi + 2 \pi \cdot 1}{4}) =
+2(\cos \frac{5 \pi}{8} + i \sin \frac{5 \pi}{8}) =
+2e^{\frac{5 i \pi}{8}}
+\end{equation}
+
+\begin{equation}
+\omega_{2} =
+2(\cos \frac{\varphi + 2 \pi 2}{4} + i \sin \frac{\varphi + 2 \pi 2}{4}) =
+2(\cos \frac{9 \pi}{8} + i \sin \frac{9 \pi}{8}) =
+2(\cos \frac{-7 \pi}{8} + i \sin \frac{-7 \pi}{8}) =
+2e^{-\frac{7 i \pi}{8}}
+\end{equation}
+
+\begin{equation}
+\omega_{3} =
+2(\cos \frac{\varphi + 2 \pi 3}{4} + i \sin \frac{\varphi + 2 \pi 3}{4}) =
+2(\cos \frac{13 \pi}{8} + i \sin \frac{13 \pi}{8}) =
+2(\cos \frac{-3 \pi}{8} + i \sin \frac{-3 \pi}{8}) =
+2e^{-\frac{3 i \pi}{8}}
+\end{equation}
+
+** Ответ
+
+\begin{align}
+2e^{\frac{i \pi}{8}}\\
+2e^{\frac{5 i \pi}{8}}\\
+2e^{-\frac{7 i \pi}{8}}\\
+2e^{-\frac{3 i \pi}{8}}
+\end{align}
+
+* Разложить на множители многочлен
+$$f(x) = x^{4} + x^{3} - x^{2} + x - 2$$
+
+** Теорема Безу (Polynomial remainder theorem)
+\begin{equation}
+\begin{aligned}
+f(1) = 1^{4} + 1^{3} - 1^{2} + 1 - 2 &= \\
+                                     &= 1^4 + 1^3 -(1)^2 + 1^2 - 2 \\
+                                     &= 1 + 1 - 1 + 1 - 2 \\
+                                     &= 2 - 2 \\
+                                     &= 0
+\end{aligned}
+\end{equation}
+$$\Rightarrow x - 1$$
+
+** (Polynomial synthetic division)
+$$\polyhornerscheme[x=1]{x^{4} + x^{3} - x^{2} + x - 2}$$
+
+** Разложение многочлена на множители (Polynomial factoring)
+\begin{equation}
+\begin{aligned}
+x^3 + 2x^2 + x + 2 &= \\
+&= x^3 + x + 2(x^2 + 1) \\
+&= x(x^2 + 1) + 2(x^2 + 1) \\
+&= (x + 2)(x^2 + 1)
+\end{aligned}
+\end{equation}
+
+** Ответ
+$$(x + 2)(x^2 + 1)(x - 1)$$
+
+* Выделить целую часть дроби
+
+$$\frac{x^{3} + 6x^{2} + 1}{x^{2} + 2}$$
+
+** (Polynomial long division)
+
+$$\polylongdiv{x^3 + 6x^2 + 1}{x^2 + 2}$$
+
+** Ответ
+$$x + 6$$
+
+* Разложить дробь на простейшие
+
+$$\frac{2x^{2} - 4}{x^{3} - 4x}$$
+
+** Factorize denominator
+
+\begin{equation}
+\begin{aligned}
+x^{3} - 4x &= \\
+           &= x^2 \cdot x-4x \\
+           &= x(x^2-4) \\
+           &= x(x^2-2^2) \\
+           &= x((x-2)(x+2)) \\
+           &= x(x-2)(x+2)
+\end{aligned}
+\end{equation}
+
+\begin{equation}
+\frac{2x^{2} - 4}{x^{3} - 4x} =
+\frac{2x^{2} - 4}{x(x-2)(x+2)}
+\end{equation}
+
+** Разложение дроби на простейшие, используя неопределенные коэффициенты
+
+\begin{equation}
+\begin{aligned}
+\frac{2x^2-4}{x(x-2)(x+2)} &= \\
+                           &= \frac{A}{x} + \frac{B}{x-2} + \frac{C}{x+2} \\
+                           &= \frac{A(x-2)(x+2)}{x(x-2)(x+2)} + \frac{B(x+2)x}{x(x-2)(x+2)} + \frac{C(x-2)x}{x(x-2)(x+2)} \\
+                           &= \frac{A(x-2)(x+2) + B(x+2)x + C(x-2)x}{x(x-2)(x+2)} \\
+\end{aligned}
+\end{equation}
+
+$$A(x-2)(x+2) + B(x+2)x + C(x-2)x$$
+
+\begin{equation}
+2x^2 - 4 = A(x-2)(x+2) + B(x+2)x + C(x-2)x
+\end{equation}
+
+** if $x = -2$
+
+\begin{equation}
+\begin{aligned}
+2x^2-4 &= \\
+&= 2 \cdot -2^2 - 4 \\
+&= 2 \cdot 4 - 4 \\
+&= 8 - 4 \\
+&= 4
+\end{aligned}
+\end{equation}
+
+\begin{equation}
+\begin{aligned}
+A(-2-2)(-2+2)+B(-2+2)\cdot(-2)+C(-2-2)\cdot(-2) &= \\
+&= C(-2-2)\cdot(-2)
+\end{aligned}
+\end{equation}
+
+\begin{aligned}
+4 &= C(-4)\cdot(-2)\\
+4 &= C8\\
+4 &= 8C\\
+C &= \frac{4}{8} = \frac{1}{2}
+\end{aligned}
+
+** if $x = 2$
+
+\begin{equation}
+\begin{aligned}
+2x^2-4 &= \\
+&= 2 \cdot 2^2 - 4 \\
+&= 2 \cdot 4 - 4 \\
+&= 8 - 4 \\
+&= 4
+\end{aligned}
+\end{equation}
+
+\begin{equation}
+A(2-2)(2+2)+B(2+2)\cdot(2)+C(2-2)\cdot(2) =
+B(2+2)\cdot(2)
+\end{equation}
+
+\begin{aligned}
+4 &= B(2+2)\cdot(2)\\
+4 &= B(4)\cdot(2)\\
+4 &= B(8)\\
+4 &= 8B\\
+B &= \frac{4}{8} = \frac{1}{2}
+\end{aligned}
+
+** if $x = 0$
+
+\begin{equation}
+2x^2-4 &= \\
+&= 2 \cdot 0^2 - 4 \\
+&= -4
+\end{equation}
+
+\begin{equation}
+A(0-2)(0+2)+B(0+2)\cdot0+C(0-2)\cdot0 =
+A(0-2)(0+2)
+\end{equation}
+
+\begin{aligned}
+-4 &= A(0-2)(0+2)\\
+-4 &= A(-2)\cdot2\\
+-4 &= A(-4)\\
+-4 &= -4A\\
+A &= 1
+\end{aligned}
+
+** (Simplifying)
+
+\begin{equation}
+\begin{aligned}
+\frac{1}{x} + \frac{\frac{1}{2}}{x-2} + \frac{\frac{1}{2}}{x+2} &= \\
+&= \frac{1}{x} + \frac{1}{2(x-2)} + \frac{1}{2(x+2)}
+\end{aligned}
+\end{equation}
+** Ответ
+$$\frac{1}{x} + \frac{1}{2(x-2)} + \frac{1}{2(x+2)}$$
+
+* Help
+
+** Calc
+
+- [[http://www.wolframalpha.com/][Wolfram|Alpha: Computational Knowledge Engine]]     
+- [[https://calc.loviotvet.ru/][calc.loviotvet.ru | Онлайн программа для решения примеров и уравнений]]
+
+** Video tutorials
+
+- [[http://mathprofi.ru/index.html][mathprofi.ru | Высшая математика – просто и доступно]]
+- [[http://mathprofi.net/][mathprofi.net | Высшая математика – просто и доступно | 2 зеркало]]
+- [[http://www.webmath.ru/poleznoe.php][www.webmath.ru | Портал по высшей математике]]
+
+** Terms
+
+- [[http://searchdatacenter.techtarget.com/definition/Mathematical-Symbols][What is Mathematical Symbols? - Definition from WhatIs.com]]
+
+** Sites
+
+- [[http://www.mathprofi.ru/kompleksnye_chisla_dlya_chainikov.html][www.mathprofi.ru | Комплексные числа для чайников]]
+
+** Wiki
+
+- [[https://en.wikibooks.org/wiki/Calculus/Complex_numbers][Calculus/Complex numbers - Wikibooks, open books for an open world]]
+- [[https://en.wikipedia.org/wiki/Synthetic_division][Synthetic division - Wikipedia]]
+
+** Video channels
+
+- [[https://www.youtube.com/user/VirtualNerd/videos][Virtual Nerd: Real Help - YouTube]]
+
+** Complex numbers and polynomials
+
+- [[https://www.youtube.com/watch?v=2HrSG0fdxLY][Imaginary Numbers Are Real Part 2: A Little History - YouTube]]
+- [[https://www.youtube.com/watch?v=N9QOLrfcKNc][Imaginary Numbers Are Real Part 3: Cardan's Problem  - YouTube]]
+- [[https://www.youtube.com/watch?v=KhdZvfH6fGg][Imaginary numbers - Simplifying large exponents - YouTube]]
+- [[https://www.youtube.com/watch?v=gkW9PxDvKKk][Trigonometric Form of Complex Numbers - YouTube]]
+- [[https://www.youtube.com/watch?v=HhlD7sX5Tp8][Roots of Complex Numbers, Ex 1 - YouTube]]
+- [[https://math.stackexchange.com/questions/487739/determine-the-fourth-roots-of-16][complex numbers - Determine the fourth roots of -16 - Mathematics Stack Exchange]]
+- [[https://www.youtube.com/watch?v=-quFMa04rBc][Square Roots of Complex Numbers (1 of 2: Establishing their nature) - YouTube]]
+- [[http://www.freemathhelp.com/algebra-formulas.html][Algebra Formulas - Free Math Help]]
+- [[https://www.youtube.com/watch?v=BHtE3JyZ-UQ][Understanding the Vocabulary of Algebra For Dummies - YouTube]]
+- [[http://www.tiger-algebra.com/drill][About Tiger Algebera - The world's best Algebra Solver]]
+- [[http://orion.math.iastate.edu/trig/sp/xcurrent/applets/complexfourthroot.html][Complex 4th Roots]]
+- [[https://www.youtube.com/watch?v=kEf9gt3umnU][Understanding and Using DeMoivre's Theorem - YouTube]]
+- [[https://www.youtube.com/watch?v=X5uFqpypDy4][❤︎² Basic Trigonometry: Sin, Cos, Tan (mathbff) - YouTube]]
+- [[https://www.youtube.com/watch?v=wfYsiJcVWy0][What is a Logarithm : Logarithms, Lesson 1 - YouTube]]
+- [[https://www.youtube.com/watch?v=zyGUw70FE6M][The complex fourth roots of -16i - YouTube]]
+- [[https://www.youtube.com/watch?v=w-PCBJYBbGo][Converting Complex Numbers to Polar form - YouTube]]
+- [[https://www.youtube.com/watch?v=-dhHrg-KbJ0][e to the pi i for dummies - YouTube]]
+- [[https://www.youtube.com/watch?v=F_0yfvm0UoU][Understanding e to the pi i - YouTube]]
+- [[https://www.youtube.com/watch?v=pg827uDPFqA][What is the number "e" and where does it come from? - YouTube]]
+- [[https://www.youtube.com/watch?v=cC0fZ_lkFpQ][Math Antics - Circles, What Is PI? - YouTube]]
+- [[https://www.youtube.com/watch?v=C_iKTTI1E34][Math Antics - Exponents & Square Roots - YouTube]]
+- [[https://www.youtube.com/watch?v=8RasCV_Lggg][Rectangular to polar form of complex number | Precalculus | Khan Academy - YouTube]]
+- [[https://www.youtube.com/watch?v=T647CGsuOVU][Imaginary Numbers Are Real Part 1: Introduction - YouTube]]
+- [[https://www.youtube.com/watch?v=DThAoT3q2V4][Imaginary Numbers Are Real Part 4: Bombelli's Solution - YouTube]]
+- [[https://www.youtube.com/watch?v=d8-LO6FCna0][Fundamental theorem of algebra | Polynomial and rational functions | Algebra II | Khan Academy - YouTube]]
+- [[https://www.youtube.com/watch?v=l6zdtKrv2nk][What's a Term in a Polynomial? - YouTube]]
+- [[https://www.youtube.com/watch?v=RIHqIjt9jy0][How to factorise a cubic polynomial (Method 1) : ExamSolutions - YouTube]]
+- [[https://www.youtube.com/watch?v=JCq1XFDVZA4][Long Division Song (Ho Hey Parody) - YouTube]]
+- [[https://www.youtube.com/watch?v=FXgV9ySNusc][Polynomial division | Polynomial and rational functions | Algebra II | Khan Academy - YouTube]]
+- [[https://www.youtube.com/watch?v=sPSGkNrShTk][Factor Polynomials Using Synthetic Division - YouTube]]
+- [[https://www.youtube.com/watch?v=lLgRS0mUZLw][❤︎² How to Do Synthetic Division (mathbff) - YouTube]]
+- [[https://www.youtube.com/watch?v=vVWm2gyROQQ][Factoring Trinomials-Algebra - YouTube]]
+- [[https://www.youtube.com/watch?v=nz058Hil6rA][Criss Cross Factoring - YouTube]]
+- [[https://www.youtube.com/watch?v=r1JAJfmRG5w][Factoring Trinomials with Leading Coefficient not 1 (fast way) - YouTube]]
+- [[https://www.youtube.com/watch?v=TeuRCouKxW4][Precalculus 3.3.27 Factor f(x) into linear factor given k is a zero. f(x)=x^4+2x^3-7x^2-20x-12 - YouTube]]
+- [[https://www.youtube.com/watch?v=xJvrhlqwCr0][Finding Zeros and Factors of Polynomial Functions - YouTube]]
+- [[https://www.youtube.com/watch?v=VqUCsv59CWs][How to solve Higher Degree Polynomials 4 terms factoring Algebra 2 Common Core Al2hU3L5 Real Roots - YouTube]]
+- [[https://www.youtube.com/watch?v=wvJm2TjxML4][Master how to find the zeros of a polynomial function by factoring and determine multiplicity - YouTube]]
+- [[https://www.youtube.com/watch?v=OrLz7yide2g][ZEROS of Hard-to-Factor/Non-Factorable Polynomial Functions: PART1 - YouTube]]
+- [[https://www.youtube.com/watch?v=1kcRMgTYIyc][Factoring Polynomials Grade 12 Advanced Functions Lesson 3 6 10 17 12 - YouTube]]
+- [[https://www.youtube.com/watch?v=QKU-H8VRzEA][1.5.1 Zeros Of A Function - YouTube]]
+- [[https://www.youtube.com/watch?v=1byR9UEQJN0][Synthetic division | Polynomial and rational functions | Algebra II | Khan Academy - YouTube]]
+- [[https://www.youtube.com/watch?v=-nlMXVrgtjw][Why synthetic division works | Polynomial and rational functions | Algebra II | Khan Academy - YouTube]]
+- [[https://www.youtube.com/watch?v=mdgWnxohHNg][Dividing a Polynomial by a Trinomial Using Synthetic Division.mp4 - YouTube]]
+- [[https://www.youtube.com/watch?v=cihil9dUZsE][Algebra 2 - find all of the zeros of a polynomial f(x) = x^2 +3x^2 - 25x + 21 - YouTube]]
+- [[https://www.youtube.com/watch?v=rP-__zFngio][❖ Finding all the Zeros of a Polynomial - Example 3 ❖ - YouTube]]
+- [[https://www.khanacademy.org/math/algebra-home/alg-rational-expr-eq-func/alg-partial-fraction/v/partial-fraction-expansion-1][(1) Intro to partial fraction expansion | Partial fraction expansion | Rational expressions, equations, & functions | Algebra | Khan Academy]]
+
+
