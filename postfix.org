@@ -60,3 +60,25 @@ myorigin = /etc/mailname
 myhostname = <hostname>
 mydestination = $myhostname, localhost.localdomain, localhost
 #+END_EXAMPLE
+
+** relayhost_map
+
+#+BEGIN_EXAMPLE
+# Per-sender provider
+user@gmail.com [smtp.gmail.com]
+user@yandex.ru [smtp.yandex.com]
+#+END_EXAMPLE
+
+** bbc
+
+#+BEGIN_EXAMPLE
+# Backup all outgoing mail
+opykhalov@yandex.ru opykhalov@magnolia
+#+END_EXAMPLE
+
+** sasl_passwd
+
+#+BEGIN_EXAMPLE
+[smtp.gmail.com] user@gmail.com:<pass>
+[smtp.yandex.com] user@yandex.ru:<pass>
+#+END_EXAMPLE
