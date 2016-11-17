@@ -14,3 +14,49 @@
 - [[http://www.postfix.org/SOHO_README.html#client_sasl_sender][Postfix Small/Home Office Hints and Tips]]
 - [[https://www.cyberciti.biz/faq/postfix-multiple-isp-accounts-smarthost-smtp-client/][Postfix Configure Multiple ISP Client SMTP Authentication]]
 - [[https://marcelog.github.io/articles/configure_postfix_forward_email_regex_subject_transport_relay.html][Different SMTP relays in postfix based on regular expressions]]
+
+* Configuration
+
+** mailbox
+
+#+BEGIN_EXAMPLE
+home_mailbox = Mail/
+#+END_EXAMPLE
+
+** bcc
+
+#+BEGIN_EXAMPLE
+sender_bcc_maps = hash:/etc/postfix/sender_bcc_maps
+#+END_EXAMPLE
+
+** ipv4 only
+
+#+BEGIN_EXAMPLE
+inet_protocols = ipv4
+mynetworks = 127.0.0.0/8
+#+END_EXAMPLE
+
+** multiple smtp
+
+#+BEGIN_EXAMPLE
+smtp_sender_dependent_authentication = yes
+sender_dependent_relayhost_maps = hash:/etc/postfix/relayhost_map
+smtp_sasl_auth_enable = yes
+smtp_sasl_password_maps = hash:/etc/postfix/sasl_passwd
+relayhost = [smtp.gmail.com]
+smtp_use_tls=yes
+smtp_sasl_security_options = noanonymous
+#+END_EXAMPLE
+
+** origin
+
+#+BEGIN_EXAMPLE
+myorigin = /etc/mailname
+#+END_EXAMPLE
+
+** destination
+
+#+BEGIN_EXAMPLE
+myhostname = <hostname>
+mydestination = $myhostname, localhost.localdomain, localhost
+#+END_EXAMPLE
