@@ -46,3 +46,11 @@ projects, most notably the Linux kernel.
 git filter-branch -f --index-filter 'git rm --cached --ignore-unmatch LICENSE.md' HEAD
 #+END_EXAMPLE
 
+
+** pull or merge local repository
+
+- [[https://stackoverflow.com/questions/1651985/git-merge-with-repository-on-local-filesystem][gitosis - git-merge with repository on local filesystem - Stack Overflow]]
+
+#+BEGIN_EXAMPLE
+git pull ../gitosis-admin-old/ master
+#+END_EXAMPLE
