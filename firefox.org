@@ -1,9 +1,5 @@
 #+TITLE: Firefox
 
-* Table of content :TOC_1:
- - [[#web-checks][WEB checks]]
- - [[#addons][Addons]]
-
 * WEB checks
 ** [[http://downdetector.com/][Status overview | Down Detector]]
 * Addons
@@ -492,3 +488,9 @@ nohup <COMMAND> > /dev/null 2>&1&
 Running find with two or more commands to -exec
 
 find . -exec command {} \; -exec other command {} \;
+
+* Configuration
+
+** IPv6
+
+Set ~network.dns.disableIPv6~ to true
