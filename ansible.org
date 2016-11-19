@@ -10,3 +10,9 @@
 #+BEGIN_EXAMPLE
   when: (ansible_distribution == "Debian" and ansible_distribution_major_version == "8")
 #+END_EXAMPLE
+
+* Books
+
+** Free
+
+- [[https://www.ansible.com/ansible-devops-book?utm_campaign=ebook%20excerpt&utm_content=44111352&utm_medium=social&utm_source=twitter][Ansible for DevOps eBook Preview | Ansible.com]]
