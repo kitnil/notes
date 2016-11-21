@@ -494,3 +494,9 @@ find . -exec command {} \; -exec other command {} \;
 ** IPv6
 
 Set ~network.dns.disableIPv6~ to true
+
+* Recover
+
+** Cookies
+
+/home/oleg/.mozilla/firefox/icdrttf2.default/places.sqlite
