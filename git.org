@@ -81,3 +81,10 @@ git subtree to extract a project
 git subtree split --prefix <project> --branch <branch>
 #+END_EXAMPLE
 
+#+BEGIN_SRC bash
+#!/bin/bash
+
+for x in $(ls -1 roles/)
+do git subtree split -P roles/$x -b roles/$x
+done
+#+END_SRC
