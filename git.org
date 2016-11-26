@@ -54,3 +54,30 @@ git filter-branch -f --index-filter 'git rm --cached --ignore-unmatch LICENSE.md
 #+BEGIN_EXAMPLE
 git pull ../gitosis-admin-old/ master
 #+END_EXAMPLE
+
+** subtree
+
+#+BEGIN_EXAMPLE
+git subtree add --prefix <target_folder> <url> <branch/tag> --squash
+#+END_EXAMPLE
+
+To keep the sub-project up to date
+#+BEGIN_EXAMPLE
+git subtree pull --prefix <target_folder> <url> <branch/tag> --squash
+#+END_EXAMPLE
+
+Find the symbolic ref matching a hash (sha-1)
+#+BEGIN_EXAMPLE
+git ls-remote <url> | grep <sha-1>
+#+END_EXAMPLE
+
+[[https://bitbucket.org/durdn/cfg/src/master/.gitconfig?at=master&fileviewer=file-view-default][Nicola Paolucci git aliases]]
+#+BEGIN_EXAMPLE
+git sba <url> <destination-folder>
+#+END_EXAMPLE
+
+git subtree to extract a project
+#+BEGIN_EXAMPLE
+git subtree split --prefix <project> --branch <branch>
+#+END_EXAMPLE
+
