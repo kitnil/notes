@@ -2675,3 +2675,20 @@ Scientific illustration and analysis of socio-technical approaches that make up 
 * Software comparisons
 
 - [[https://www.slant.co/][Home - Slant]]
+
+* Filemanagers
+
+** ranger
+
+- [[https://github.com/ralesi/ranger.el][ralesi/ranger.el: Bringing the goodness of ranger to dired!]]
+
+* VPN
+
+** sshuttle
+
+#+BEGIN_QUOTE
+Transparent proxy server that works as a poor man's VPN. Forwards over ssh.
+Doesn't require admin. Works with Linux and MacOS. Supports DNS tunneling.
+#+END_QUOTE
+
+- [[https://github.com/apenwarr/sshuttle][apenwarr/sshuttle: Transparent proxy server that works as a poor man's VPN. Forwards over ssh. Doesn't require admin. Works with Linux and MacOS. Supports DNS tunneling.]]
