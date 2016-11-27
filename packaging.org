@@ -62,3 +62,25 @@ system, do:
 ** Multi distributable packages
 
 - [[https://packagecloud.io/repositories/new][Create a New Repository | packagecloud]]
+* dget error
+
+- [[http://askubuntu.com/questions/56841/gpg-cant-check-signature][11.04 - GPG can't check signature - Ask Ubuntu]]
+
+ #+BEGIN_QUOTE
+ # dpkg-source -x libevent_2.0.12-stable-1.dsc
+ gpgv: Signature made Fri Jun 17 07:12:50 2011 PDT using DSA key ID 7ADF9466
+ gpgv: Can't check signature: public key not found
+ dpkg-source: warning: failed to verify signature on ./libevent_2.0.12-stable-1.dsc
+ #+END_QUOTE
+
+#+BEGIN_QUOTE
+I know this is old question but I wanted to post the solution that I have found somewhere else here in case anyone else is also having this problem
+
+First of all, you should import the key to local keyring as @enzotib instructed
+
+gpg --keyserver keyserver.ubuntu.com --recv-keys 7ADF9466
+
+Then export the key to your local trustedkeys to make it trusted
+
+gpg --no-default-keyring -a --export 7ADF9466 | gpg --no-default-keyring --keyring ~/.gnupg/trustedkeys.gpg --import -
+#+END_QUOTE
