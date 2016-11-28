@@ -210,3 +210,95 @@ Source: [[https://www.youtube.com/watch?v=bOGmYvtw-kk&index=7&list=PLQVvvaa0QuDf
 
   [print(i, j) for i, j in enumerate(example_dict)]
 #+END_SRC
+
+** zip
+
+#+BEGIN_SRC python
+  x = [1, 2, 3, 4]
+  y = [7, 6, 2, 1]
+  z = ['a', 'b', 'c', 'd']
+
+  for a,b in zip(x,y):
+      print(a,b)
+
+  print(zip(x,y,z))
+
+  for i in zip(x,y,z):
+      print(i)
+
+  list(zip(x,y,z))                # convert zip to list
+
+  dict(zip(z,y,z))                # convert zip of two to dict
+
+  [print(a,b,c) for a,b,c in zip(x,y,z)]  # combine with list comprehension
+#+END_SRC
+
+*WARNING*:
+#+BEGIN_QUOTE
+for loop overwrite variable
+list comprehension doesn't
+#+END_QUOTE
+
+#+BEGIN_SRC python
+  x = [1, 2, 3, 4]
+  y = [7, 6, 2, 1]
+  z = ['a', 'b', 'c', 'd']
+
+  [print(x,y) for x,y in zip(x,y)]
+
+  for x,y in zip(x,y):
+      print(x,y)
+#+END_SRC
+
+#+BEGIN_QUOTE
+so don't use the same variable name as you iterate over
+#+END_QUOTE
+
+#+BEGIN_SRC python
+  # Ugly
+  for x,y in zip(x,y)
+
+  # Awesome
+  for a,b in zip(x,y)
+#+END_SRC
+
+** Writing our own Generator
+
+Before this we used generator expressions.
+
+Now we will create our own generator function.
+
+#+BEGIN_SRC python
+  def simple_gen():
+      yield 'Oh'
+      yield 'hello'
+      yield 'there'
+
+  return [i for i in simple_gen()]
+#+END_SRC
+
+The same of terms processing:
+#+BEGIN_SRC python
+  for i in range(5)
+#+END_SRC
+
+Example where generator is better than for loop or list comprehension:
+#+BEGIN_SRC python
+  # Ugly
+
+  CORRECT_COMBO = (3, 6, 1)
+
+  found_combo = False
+  for c1 in range(10):
+      if found_combo:
+          break
+      for c3 in range(10):
+          if (c1, c2, c3) == CORRECT_COMBO:
+              print('Found the combo: {}'. format((c1, c2, c3)))
+              found_combo = True
+              break
+          print(c1, c2, c3)
+
+  # Awesome
+  # TODO
+#+END_SRC
