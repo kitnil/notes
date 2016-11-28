@@ -79,3 +79,12 @@ Source: [[https://www.youtube.com/watch?v=0twL6MXCLdQ&list=PLQVvvaa0QuDfju7ADVp5
   if __name__ == '__main__':
       main()
 #+END_SRC
+
+** List comprehension and generator expressions
+
+Source: [[https://www.youtube.com/watch?v=ZoWgzG_r2qo&list=PLQVvvaa0QuDfju7ADVp5W1GF9jVhjbX-_&index=4][List comprehension and generator expressions - Intermediate Python Programming p.4 - YouTube]]
+
+#+BEGIN_SRC python
+  list_in_memory = [i for i in range(500)]
+  generator = (i for i in range(500))
+#+END_SRC
