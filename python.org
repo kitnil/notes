@@ -82,9 +82,86 @@ Source: [[https://www.youtube.com/watch?v=0twL6MXCLdQ&list=PLQVvvaa0QuDfju7ADVp5
 
 ** List comprehension and generator expressions
 
-Source: [[https://www.youtube.com/watch?v=ZoWgzG_r2qo&list=PLQVvvaa0QuDfju7ADVp5W1GF9jVhjbX-_&index=4][List comprehension and generator expressions - Intermediate Python Programming p.4 - YouTube]]
+Sources:
+- [[https://www.youtube.com/watch?v=ZoWgzG_r2qo&list=PLQVvvaa0QuDfju7ADVp5W1GF9jVhjbX-_&index=4][List comprehension and generator expressions - Intermediate Python Programming p.4 - YouTube]]
+- [[https://www.youtube.com/watch?v=MJUbUDa-YCA&index=5&list=PLQVvvaa0QuDfju7ADVp5W1GF9jVhjbX-_][More on list comp and generators - Intermediate Python Programming p.5 - YouTube]]
 
 #+BEGIN_SRC python
   list_in_memory = [i for i in range(500)]
   generator = (i for i in range(500))
+#+END_SRC
+
+#+BEGIN_SRC python
+  def div_by_five(num):
+      if num % 5 == 0:
+          return True
+      else:
+          return False
+
+  input_list = [5,6,2,10,15,20,5,2,1,3]
+  xyz = (i for i in input_list if div_by_five(i))
+
+  [print(i) for i in xyz]
+#+END_SRC
+
+Generator logic:
+#+BEGIN_SRC python
+  xyz = (i for i in input_list if div_by_five(i))
+
+  xyz = []
+  for i in input_list:
+      if div_by_five(i):
+          xyz.append(i)
+#+END_SRC
+
+** Imbend one line for loops
+
+Origin:
+#+BEGIN_SRC python
+  [[print(i, ii) for ii in range(7)] for i in range(5)]
+#+END_SRC
+
+The same as:
+#+BEGIN_SRC python
+  for i in range(5):
+      for ii in range(7):
+          print(i, ii)
+#+END_SRC
+
+*Steps to reproduce logic*
+
+First step:
+#+BEGIN_SRC python
+  print(i, ii)
+#+END_SRC
+
+Second step:
+#+BEGIN_SRC python
+  [print(i, ii) for ii in range(7)]
+#+END_SRC
+
+Third step:
+#+BEGIN_SRC python
+  [[print(i, ii) for ii in range(7)] for i in range(5)]
+#+END_SRC
+
+Generator:
+#+BEGIN_SRC python
+  xyz = ([[i, ii] for ii in range(7)] for i in range(5))
+
+  print([i for i in xyz])
+#+END_SRC
+
+Think about it:
+#+BEGIN_QUOTE
+With list comprehension we will run out of memory.
+With generators we well run out of time.
+#+END_QUOTE
+
+Interesting thing that it will work:
+#+BEGIN_SRC python
+  xyz = (print(i) for i in range(5))
+
+  for i in xyz:
+      i
 #+END_SRC
