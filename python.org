@@ -169,6 +169,8 @@ because *print(i)* is *i*.
 
 ** Timeit Module
 
+Source: [[https://www.youtube.com/watch?v=Fw7u3fKFDqI&index=6&list=PLQVvvaa0QuDfju7ADVp5W1GF9jVhjbX-_][Timeit Module - Intermediate Python Programming p.6 sentdex]]
+
 #+BEGIN_SRC python
   import timeit
 
@@ -187,4 +189,24 @@ Interesting thing:
 
   for i in xyz:
       print(i)
+#+END_SRC
+
+** Enumerate
+
+Source: [[https://www.youtube.com/watch?v=bOGmYvtw-kk&index=7&list=PLQVvvaa0QuDfju7ADVp5W1GF9jVhjbX-_][Enumerate - Intermediate Python Programming p.7 - YouTube]]
+
+#+BEGIN_SRC python
+  example = ['left', 'right', 'up', 'down']
+
+  # Ugly
+  for i in range(len(example)):
+      print(i, example[i])
+
+  # Awesome
+  for i, j in enumerate(example):
+      print(i, j)
+
+  example_dict = dict(enumerate(example))
+
+  [print(i, j) for i, j in enumerate(example_dict)]
 #+END_SRC
