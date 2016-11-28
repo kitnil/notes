@@ -165,3 +165,26 @@ Interesting thing that it will work:
   for i in xyz:
       i
 #+END_SRC
+because *print(i)* is *i*.
+
+** Timeit Module
+
+#+BEGIN_SRC python
+  import timeit
+
+  time = timeit.timeit('1+3', number=5000000)
+
+  return time
+#+END_SRC
+
+Interesting thing:
+#+BEGIN_SRC python
+  xyz = list(i for i in input_list if div_by_five(i))
+
+  # Output is equal to
+
+  xyz = list((i for i in input_list if div_by_five(i)))
+
+  for i in xyz:
+      print(i)
+#+END_SRC
