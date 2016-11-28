@@ -19,3 +19,15 @@
 
 - [[https://www.youtube.com/channel/UCfzlCWGWYyIQ0aLC5w48gBQ][sentdex]]
 
+* Examples
+
+** Read a file
+
+#+BEGIN_SRC python
+  import os
+
+  location_of_files = '/path/to/file'
+  file_name = 'example.txt'
+  with open(os.path.join(location_of_files, file_name)) as f:
+      print(f.read())
+#+END_SRC
