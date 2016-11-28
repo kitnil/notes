@@ -31,3 +31,14 @@
   with open(os.path.join(location_of_files, file_name)) as f:
       print(f.read())
 #+END_SRC
+
+** Print multiple variables
+
+String formating:
+#+BEGIN_SRC python
+  who = 'Gary'
+  how_many = 12
+  print('{} bought {} apples today!'.format(who, how_many))
+#+END_SRC
+
+Put {0} and {1} in python2.
