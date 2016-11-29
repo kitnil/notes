@@ -126,3 +126,27 @@ Sending via mail...
 - GitGutter
 - GitTimemachine
 - Smerge
+
+* Wishlist
+** [[https://github.com/syl20bnr/spacemacs/issues/5996#issuecomment-219238127][Add natural languages layer · Issue #5996 · syl20bnr/spacemacs]]
+#+BEGIN_QUOTE
+WIP wishlist. I think we can put most of it behind SPC x (text) and SPC t (toggle)
+
+- wordsmith-mode highlight nouns, verbs.
+- babel provides an Emacs interface to different translation
+- services available on the Internet. - google translate doesn't work sometimes, should be more reliable + more choice.
+- dictcc translation with helm
+- interface. I'll compare it with babel and see if it has big decent amount of non-overlapping features.
+- helm-flyspell Helm extension for correcting words with Flyspell.
+- langtool based on http://www.languagetool.org/ - will check it out.
+- synosaurus Synosaurus is a thesaurus fontend for Emacs with pluggable backends.
+- helm-dictionary look up words in local (offline) dictionaries. It also provides short-cuts for various online dictionaries.
+- define-word lets you see the definition of a word or a phrase at point, powered by http://wordnik.com/
+- typo insert typographically useful unicode characters.
+
+Also hookup company-ispell and mb look at ac-ispell
+
+And the layers documentation probably should have references for other really useful stuff that Spacemacs provides like org-mode. avy for buffer and window navigation.
+
+Not sure if all this stuff should go into a single layer.
+#+END_QUOTE
