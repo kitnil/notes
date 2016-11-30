@@ -42,7 +42,7 @@ https://yt3.ggpht.com/--9ikefEeztQ/AAAAAAAAAAI/AAAAAAAAAAA/hIvt8tJrcO8/s100-c-k-
 
 - Суббота и воскрсенье -- новые игры
 
-* Проблемы
+* Troubleshooting
 
 ** CPU
 
@@ -55,3 +55,19 @@ New CPU Installed Please enter setup to configure your system
 ** Brands
 
 - [[https://www.youtube.com/watch?v=P_xTeT_0Hv4][выбор бренда и донаты - YouTube]]
+
+** Intel screen tearing
+ You can try to solve an issue with sometimes flashing X server on video.
+
+ Just create a file =/etc/X11/xorg.conf.d/20-intel.conf= with:
+ #+BEGIN_EXAMPLE
+ Section "Device"
+    Identifier  "Intel Graphics"
+    Driver      "intel"
+    Option      "AccelMethod"  "uxa"
+ EndSection
+ #+END_EXAMPLE
+
+ If something goes wrong remove a file via tty or ssh.
+
+ Work on my Intel HD4000.
