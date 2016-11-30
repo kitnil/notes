@@ -19,314 +19,318 @@
 
 - [[https://www.youtube.com/channel/UCfzlCWGWYyIQ0aLC5w48gBQ][sentdex]]
 
-* Examples
-
-** Read a file
-
-Source: [[https://www.youtube.com/watch?v=jA5LW3bR0Us&list=PLQVvvaa0QuDfju7ADVp5W1GF9jVhjbX-_&index=2][String Concatenation and Formatting - Intermediate Python Programming p.2 sentdex]]
-
-#+BEGIN_SRC python
-  import os
-
-  location_of_files = '/path/to/file'
-  file_name = 'example.txt'
-  with open(os.path.join(location_of_files, file_name)) as f:
-      print(f.read())
-#+END_SRC
-
-** Print multiple variables
-
-Source: [[https://www.youtube.com/watch?v=jA5LW3bR0Us&list=PLQVvvaa0QuDfju7ADVp5W1GF9jVhjbX-_&index=2][String Concatenation and Formatting - Intermediate Python Programming p.2 sentdex]]
-
-String formating:
-#+BEGIN_SRC python
-  who = 'Gary'
-  how_many = 12
-  print('{} bought {} apples today!'.format(who, how_many))
-#+END_SRC
-
-Put {0} and {1} in python2.
-
-** Argparse for CLI
-
-Source: [[https://www.youtube.com/watch?v=0twL6MXCLdQ&list=PLQVvvaa0QuDfju7ADVp5W1GF9jVhjbX-_&index=3][Argparse for CLI - Intermediate Python Programming p.3 - YouTube]]
-
-#+BEGIN_SRC python
-  import argparse
-  import sys
-
-  def main():
-      parser = argparse.ArgumentParser()
-      parser.add_argument('--x', type=float, default=1.0,
-                          help='What is the first number?')
-      parser.add_argument('--y', type=float, default=1.0,
-                          help='What is the second number?')
-      parser.add_argument('--operation', type=str, default='add',
-                          help='What operation? Can choose add, sub, mul, or div')
-      args = parser.parse_args()
-      sys.stdout.write(str(calc(args)))
-
-  def calc(args):
-      if args.operation == 'add':
-          return args.x + args.y
-      elif args.operation == 'sub':
-          return args.x - args.y
-      elif args.operation == 'mul':
-          return args.x * args.y
-      elif args.operation == 'div':
-          return args.x / args.y
-
-  if __name__ == '__main__':
-      main()
-#+END_SRC
+* How to
+** sentdex
+*** Read a file
+
+ Source: [[https://www.youtube.com/watch?v=jA5LW3bR0Us&list=PLQVvvaa0QuDfju7ADVp5W1GF9jVhjbX-_&index=2][String Concatenation and Formatting - Intermediate Python Programming p.2 sentdex]]
+
+ #+BEGIN_SRC python
+   import os
+
+   location_of_files = '/path/to/file'
+   file_name = 'example.txt'
+   with open(os.path.join(location_of_files, file_name)) as f:
+       print(f.read())
+ #+END_SRC
+
+*** Print multiple variables
+
+ Source: [[https://www.youtube.com/watch?v=jA5LW3bR0Us&list=PLQVvvaa0QuDfju7ADVp5W1GF9jVhjbX-_&index=2][String Concatenation and Formatting - Intermediate Python Programming p.2 sentdex]]
+
+ String formating:
+ #+BEGIN_SRC python
+   who = 'Gary'
+   how_many = 12
+   print('{} bought {} apples today!'.format(who, how_many))
+ #+END_SRC
+
+ Put {0} and {1} in python2.
+
+*** Argparse for CLI
+
+ Source: [[https://www.youtube.com/watch?v=0twL6MXCLdQ&list=PLQVvvaa0QuDfju7ADVp5W1GF9jVhjbX-_&index=3][Argparse for CLI - Intermediate Python Programming p.3 - YouTube]]
+
+ #+BEGIN_SRC python
+   import argparse
+   import sys
+
+   def main():
+       parser = argparse.ArgumentParser()
+       parser.add_argument('--x', type=float, default=1.0,
+                           help='What is the first number?')
+       parser.add_argument('--y', type=float, default=1.0,
+                           help='What is the second number?')
+       parser.add_argument('--operation', type=str, default='add',
+                           help='What operation? Can choose add, sub, mul, or div')
+       args = parser.parse_args()
+       sys.stdout.write(str(calc(args)))
+
+   def calc(args):
+       if args.operation == 'add':
+           return args.x + args.y
+       elif args.operation == 'sub':
+           return args.x - args.y
+       elif args.operation == 'mul':
+           return args.x * args.y
+       elif args.operation == 'div':
+           return args.x / args.y
+
+   if __name__ == '__main__':
+       main()
+ #+END_SRC
+
+*** List comprehension and generator expressions
+
+ Sources:
+ - [[https://www.youtube.com/watch?v=ZoWgzG_r2qo&list=PLQVvvaa0QuDfju7ADVp5W1GF9jVhjbX-_&index=4][List comprehension and generator expressions - Intermediate Python Programming p.4 - YouTube]]
+ - [[https://www.youtube.com/watch?v=MJUbUDa-YCA&index=5&list=PLQVvvaa0QuDfju7ADVp5W1GF9jVhjbX-_][More on list comp and generators - Intermediate Python Programming p.5 - YouTube]]
+
+ #+BEGIN_SRC python
+   list_in_memory = [i for i in range(500)]
+   generator = (i for i in range(500))
+ #+END_SRC
+
+ #+BEGIN_SRC python
+   def div_by_five(num):
+       if num % 5 == 0:
+           return True
+       else:
+           return False
 
-** List comprehension and generator expressions
-
-Sources:
-- [[https://www.youtube.com/watch?v=ZoWgzG_r2qo&list=PLQVvvaa0QuDfju7ADVp5W1GF9jVhjbX-_&index=4][List comprehension and generator expressions - Intermediate Python Programming p.4 - YouTube]]
-- [[https://www.youtube.com/watch?v=MJUbUDa-YCA&index=5&list=PLQVvvaa0QuDfju7ADVp5W1GF9jVhjbX-_][More on list comp and generators - Intermediate Python Programming p.5 - YouTube]]
+   input_list = [5,6,2,10,15,20,5,2,1,3]
+   xyz = (i for i in input_list if div_by_five(i))
 
-#+BEGIN_SRC python
-  list_in_memory = [i for i in range(500)]
-  generator = (i for i in range(500))
-#+END_SRC
+   [print(i) for i in xyz]
+ #+END_SRC
 
-#+BEGIN_SRC python
-  def div_by_five(num):
-      if num % 5 == 0:
-          return True
-      else:
-          return False
+ Generator logic:
+ #+BEGIN_SRC python
+   xyz = (i for i in input_list if div_by_five(i))
 
-  input_list = [5,6,2,10,15,20,5,2,1,3]
-  xyz = (i for i in input_list if div_by_five(i))
+   xyz = []
+   for i in input_list:
+       if div_by_five(i):
+           xyz.append(i)
+ #+END_SRC
 
-  [print(i) for i in xyz]
-#+END_SRC
+*** Imbend one line for loops
 
-Generator logic:
-#+BEGIN_SRC python
-  xyz = (i for i in input_list if div_by_five(i))
+ Origin:
+ #+BEGIN_SRC python
+   [[print(i, ii) for ii in range(7)] for i in range(5)]
+ #+END_SRC
 
-  xyz = []
-  for i in input_list:
-      if div_by_five(i):
-          xyz.append(i)
-#+END_SRC
+ The same as:
+ #+BEGIN_SRC python
+   for i in range(5):
+       for ii in range(7):
+           print(i, ii)
+ #+END_SRC
 
-** Imbend one line for loops
+ *Steps to reproduce logic*
 
-Origin:
-#+BEGIN_SRC python
-  [[print(i, ii) for ii in range(7)] for i in range(5)]
-#+END_SRC
+ First step:
+ #+BEGIN_SRC python
+   print(i, ii)
+ #+END_SRC
 
-The same as:
-#+BEGIN_SRC python
-  for i in range(5):
-      for ii in range(7):
-          print(i, ii)
-#+END_SRC
+ Second step:
+ #+BEGIN_SRC python
+   [print(i, ii) for ii in range(7)]
+ #+END_SRC
 
-*Steps to reproduce logic*
+ Third step:
+ #+BEGIN_SRC python
+   [[print(i, ii) for ii in range(7)] for i in range(5)]
+ #+END_SRC
 
-First step:
-#+BEGIN_SRC python
-  print(i, ii)
-#+END_SRC
+ Generator:
+ #+BEGIN_SRC python
+   xyz = ([[i, ii] for ii in range(7)] for i in range(5))
 
-Second step:
-#+BEGIN_SRC python
-  [print(i, ii) for ii in range(7)]
-#+END_SRC
+   print([i for i in xyz])
+ #+END_SRC
 
-Third step:
-#+BEGIN_SRC python
-  [[print(i, ii) for ii in range(7)] for i in range(5)]
-#+END_SRC
+ Think about it:
+ #+BEGIN_QUOTE
+ With list comprehension we will run out of memory.
+ With generators we well run out of time.
+ #+END_QUOTE
 
-Generator:
-#+BEGIN_SRC python
-  xyz = ([[i, ii] for ii in range(7)] for i in range(5))
+ Interesting thing that it will work:
+ #+BEGIN_SRC python
+   xyz = (print(i) for i in range(5))
 
-  print([i for i in xyz])
-#+END_SRC
+   for i in xyz:
+       i
+ #+END_SRC
+ because *print(i)* is *i*.
 
-Think about it:
-#+BEGIN_QUOTE
-With list comprehension we will run out of memory.
-With generators we well run out of time.
-#+END_QUOTE
+*** Timeit Module
 
-Interesting thing that it will work:
-#+BEGIN_SRC python
-  xyz = (print(i) for i in range(5))
+ Source: [[https://www.youtube.com/watch?v=Fw7u3fKFDqI&index=6&list=PLQVvvaa0QuDfju7ADVp5W1GF9jVhjbX-_][Timeit Module - Intermediate Python Programming p.6 sentdex]]
 
-  for i in xyz:
-      i
-#+END_SRC
-because *print(i)* is *i*.
+ #+BEGIN_SRC python
+   import timeit
 
-** Timeit Module
+   time = timeit.timeit('1+3', number=5000000)
 
-Source: [[https://www.youtube.com/watch?v=Fw7u3fKFDqI&index=6&list=PLQVvvaa0QuDfju7ADVp5W1GF9jVhjbX-_][Timeit Module - Intermediate Python Programming p.6 sentdex]]
+   return time
+ #+END_SRC
 
-#+BEGIN_SRC python
-  import timeit
+ Interesting thing:
+ #+BEGIN_SRC python
+   xyz = list(i for i in input_list if div_by_five(i))
 
-  time = timeit.timeit('1+3', number=5000000)
+   # Output is equal to
 
-  return time
-#+END_SRC
+   xyz = list((i for i in input_list if div_by_five(i)))
 
-Interesting thing:
-#+BEGIN_SRC python
-  xyz = list(i for i in input_list if div_by_five(i))
+   for i in xyz:
+       print(i)
+ #+END_SRC
 
-  # Output is equal to
+*** Enumerate
 
-  xyz = list((i for i in input_list if div_by_five(i)))
+ Source: [[https://www.youtube.com/watch?v=bOGmYvtw-kk&index=7&list=PLQVvvaa0QuDfju7ADVp5W1GF9jVhjbX-_][Enumerate - Intermediate Python Programming p.7 - YouTube]]
 
-  for i in xyz:
-      print(i)
-#+END_SRC
+ #+BEGIN_SRC python
+   example = ['left', 'right', 'up', 'down']
 
-** Enumerate
+   # Ugly
+   for i in range(len(example)):
+       print(i, example[i])
 
-Source: [[https://www.youtube.com/watch?v=bOGmYvtw-kk&index=7&list=PLQVvvaa0QuDfju7ADVp5W1GF9jVhjbX-_][Enumerate - Intermediate Python Programming p.7 - YouTube]]
+   # Awesome
+   for i, j in enumerate(example):
+       print(i, j)
 
-#+BEGIN_SRC python
-  example = ['left', 'right', 'up', 'down']
+   example_dict = dict(enumerate(example))
 
-  # Ugly
-  for i in range(len(example)):
-      print(i, example[i])
+   [print(i, j) for i, j in enumerate(example_dict)]
+ #+END_SRC
 
-  # Awesome
-  for i, j in enumerate(example):
-      print(i, j)
+*** zip
 
-  example_dict = dict(enumerate(example))
+ Source: [[https://www.youtube.com/watch?v=bMxEU0iG-KA&list=PLQVvvaa0QuDfju7ADVp5W1GF9jVhjbX-_&index=8][Zip - Intermediate Python Programming p.8 sentdex]]
 
-  [print(i, j) for i, j in enumerate(example_dict)]
-#+END_SRC
+ #+BEGIN_SRC python
+   x = [1, 2, 3, 4]
+   y = [7, 6, 2, 1]
+   z = ['a', 'b', 'c', 'd']
 
-** zip
+   for a,b in zip(x,y):
+       print(a,b)
 
-Source: [[https://www.youtube.com/watch?v=bMxEU0iG-KA&list=PLQVvvaa0QuDfju7ADVp5W1GF9jVhjbX-_&index=8][Zip - Intermediate Python Programming p.8 sentdex]]
+   print(zip(x,y,z))
 
-#+BEGIN_SRC python
-  x = [1, 2, 3, 4]
-  y = [7, 6, 2, 1]
-  z = ['a', 'b', 'c', 'd']
+   for i in zip(x,y,z):
+       print(i)
 
-  for a,b in zip(x,y):
-      print(a,b)
+   list(zip(x,y,z))                # convert zip to list
 
-  print(zip(x,y,z))
+   dict(zip(z,y,z))                # convert zip of two to dict
 
-  for i in zip(x,y,z):
-      print(i)
+   [print(a,b,c) for a,b,c in zip(x,y,z)]  # combine with list comprehension
+ #+END_SRC
 
-  list(zip(x,y,z))                # convert zip to list
+ *WARNING*:
+ #+BEGIN_QUOTE
+ for loop overwrite variable
+ list comprehension doesn't
+ #+END_QUOTE
 
-  dict(zip(z,y,z))                # convert zip of two to dict
+ #+BEGIN_SRC python
+   x = [1, 2, 3, 4]
+   y = [7, 6, 2, 1]
+   z = ['a', 'b', 'c', 'd']
 
-  [print(a,b,c) for a,b,c in zip(x,y,z)]  # combine with list comprehension
-#+END_SRC
+   [print(x,y) for x,y in zip(x,y)]
 
-*WARNING*:
-#+BEGIN_QUOTE
-for loop overwrite variable
-list comprehension doesn't
-#+END_QUOTE
+   for x,y in zip(x,y):
+       print(x,y)
+ #+END_SRC
 
-#+BEGIN_SRC python
-  x = [1, 2, 3, 4]
-  y = [7, 6, 2, 1]
-  z = ['a', 'b', 'c', 'd']
+ #+BEGIN_QUOTE
+ so don't use the same variable name as you iterate over
+ #+END_QUOTE
 
-  [print(x,y) for x,y in zip(x,y)]
+ #+BEGIN_SRC python
+   # Ugly
+   for x,y in zip(x,y)
 
-  for x,y in zip(x,y):
-      print(x,y)
-#+END_SRC
+   # Awesome
+   for a,b in zip(x,y)
+ #+END_SRC
 
-#+BEGIN_QUOTE
-so don't use the same variable name as you iterate over
-#+END_QUOTE
+*** TODO Writing our own Generator
 
-#+BEGIN_SRC python
-  # Ugly
-  for x,y in zip(x,y)
+ Source: [[https://www.youtube.com/watch?v=PewCyZSrnOI&list=PLQVvvaa0QuDfju7ADVp5W1GF9jVhjbX-_&index=9][Writing our own Generator - Intermediate Python Programming p.9 sentdex]]
 
-  # Awesome
-  for a,b in zip(x,y)
-#+END_SRC
+ Before this we used generator expressions.
 
-** TODO Writing our own Generator
+ Now we will create our own generator function.
 
-Source: [[https://www.youtube.com/watch?v=PewCyZSrnOI&list=PLQVvvaa0QuDfju7ADVp5W1GF9jVhjbX-_&index=9][Writing our own Generator - Intermediate Python Programming p.9 sentdex]]
+ #+BEGIN_SRC python
+   def simple_gen():
+       yield 'Oh'
+       yield 'hello'
+       yield 'there'
 
-Before this we used generator expressions.
+   return [i for i in simple_gen()]
+ #+END_SRC
 
-Now we will create our own generator function.
+ The same of terms processing:
+ #+BEGIN_SRC python
+   for i in range(5)
+ #+END_SRC
 
-#+BEGIN_SRC python
-  def simple_gen():
-      yield 'Oh'
-      yield 'hello'
-      yield 'there'
+ Example where generator is better than for loop or list comprehension:
+ #+BEGIN_SRC python
+   # Ugly
 
-  return [i for i in simple_gen()]
-#+END_SRC
+   CORRECT_COMBO = (3, 6, 1)
 
-The same of terms processing:
-#+BEGIN_SRC python
-  for i in range(5)
-#+END_SRC
+   found_combo = False
+   for c1 in range(10):
+       if found_combo:
+           break
+       for c3 in range(10):
+           if (c1, c2, c3) == CORRECT_COMBO:
+               print('Found the combo: {}'. format((c1, c2, c3)))
+               found_combo = True
+               break
+           print(c1, c2, c3)
 
-Example where generator is better than for loop or list comprehension:
-#+BEGIN_SRC python
-  # Ugly
+   # Awesome
+   # TODO
+ #+END_SRC
 
-  CORRECT_COMBO = (3, 6, 1)
+*** TODO Multiprocessing
 
-  found_combo = False
-  for c1 in range(10):
-      if found_combo:
-          break
-      for c3 in range(10):
-          if (c1, c2, c3) == CORRECT_COMBO:
-              print('Found the combo: {}'. format((c1, c2, c3)))
-              found_combo = True
-              break
-          print(c1, c2, c3)
+ Source: [[https://www.youtube.com/watch?v=oEYDqQ1pq9o&list=PLQVvvaa0QuDfju7ADVp5W1GF9jVhjbX-_&index=10][Multiprocessing - Intermediate Python Programming p.10 - YouTube]]
 
-  # Awesome
-  # TODO
-#+END_SRC
+*** TODO Getting returned values from Processes
 
-** TODO Multiprocessing
+ Source: [[https://www.youtube.com/watch?v=kUKOEuPJXGc&list=PLQVvvaa0QuDfju7ADVp5W1GF9jVhjbX-_&index=11][Getting returned values from Processes - Intermediate Python Programming p.11 - YouTube]]
 
-Source: [[https://www.youtube.com/watch?v=oEYDqQ1pq9o&list=PLQVvvaa0QuDfju7ADVp5W1GF9jVhjbX-_&index=10][Multiprocessing - Intermediate Python Programming p.10 - YouTube]]
+*** TODO Multiprocessing spider example
 
-** TODO Getting returned values from Processes
+ Source: [[https://www.youtube.com/watch?v=N0ph2a6Vd7M&list=PLQVvvaa0QuDfju7ADVp5W1GF9jVhjbX-_&index=12][Multiprocessing spider example - Intermediate Python Programming p.12 - YouTube]]
 
-Source: [[https://www.youtube.com/watch?v=kUKOEuPJXGc&list=PLQVvvaa0QuDfju7ADVp5W1GF9jVhjbX-_&index=11][Getting returned values from Processes - Intermediate Python Programming p.11 - YouTube]]
+*** TODO Object Oriented Programming Introduction
 
-** TODO Multiprocessing spider example
+ Source: [[https://www.youtube.com/watch?v=ekA6hvk-8H8&list=PLQVvvaa0QuDfju7ADVp5W1GF9jVhjbX-_&index=13][Object Oriented Programming Introduction - Intermediate Python Programming p.13 - YouTube]]
 
-Source: [[https://www.youtube.com/watch?v=N0ph2a6Vd7M&list=PLQVvvaa0QuDfju7ADVp5W1GF9jVhjbX-_&index=12][Multiprocessing spider example - Intermediate Python Programming p.12 - YouTube]]
+*** TODO Creating an Environment for our Object
 
-** TODO Object Oriented Programming Introduction
+ Source: [[https://www.youtube.com/watch?v=hLJfNuPg_oI&list=PLQVvvaa0QuDfju7ADVp5W1GF9jVhjbX-_&index=14][Creating an Environment for our Object - Intermediate Python Programming p.14 - YouTube]]
 
-Source: [[https://www.youtube.com/watch?v=ekA6hvk-8H8&list=PLQVvvaa0QuDfju7ADVp5W1GF9jVhjbX-_&index=13][Object Oriented Programming Introduction - Intermediate Python Programming p.13 - YouTube]]
+*** TODO Many Blob Objects
 
-** TODO Creating an Environment for our Object
+ Source: [[https://www.youtube.com/watch?v=Cf9r5oOe5CY&index=15&list=PLQVvvaa0QuDfju7ADVp5W1GF9jVhjbX-_][Many Blob Objects - Intermediate Python Programming p.15 - YouTube]]
 
-Source: [[https://www.youtube.com/watch?v=hLJfNuPg_oI&list=PLQVvvaa0QuDfju7ADVp5W1GF9jVhjbX-_&index=14][Creating an Environment for our Object - Intermediate Python Programming p.14 - YouTube]]
-
-** TODO Many Blob Objects
-
-Source: [[https://www.youtube.com/watch?v=Cf9r5oOe5CY&index=15&list=PLQVvvaa0QuDfju7ADVp5W1GF9jVhjbX-_][Many Blob Objects - Intermediate Python Programming p.15 - YouTube]]
+** Sebastiaan Mathôt
+- [[https://www.youtube.com/playlist?list=PLR-r0edywujd8D-R2Kue1C_wYEK_4Ii71][Sebastiaan Mathôt - Youtube Playlists]]
+- [[https://www.youtube.com/watch?v=VBokjWj_cEA][7 Simple Tricks to Write Better Python Code]]
