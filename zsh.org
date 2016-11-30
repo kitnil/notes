@@ -21,3 +21,10 @@
 ** zshexpn(1)
 
 ** zshmisc(1)
+
+** Benchmark start up time
+- [[http://superuser.com/questions/606643/how-to-benchmark-bashrc-zshrc-and-prompt-rendering-time][bash - How to benchmark bashrc / zshrc and prompt rendering time? - Super User]]
+#+BEGIN_SRC bash
+time zsh -i -c "print -n"
+#+END_SRC
+
