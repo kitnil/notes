@@ -1,0 +1,32 @@
+#+TITLE: bup
+
+* Description
+[[https://bup.github.io/][bup, it backs things up! - GitHub]]
+#+BEGIN_QUOTE
+Very efficient backup system based on the git packfile format, providing fast
+incremental saves and global deduplication (among and within files, including
+virtual machine images). Current release is 0.28.1, and the development branch
+is master. Please post problems or patches to the mailing list for discussion
+(see the end of the README below). https://bup.github.io/
+#+END_QUOTE
+
+* Installation
+#+BEGIN_SRC bash
+<PACKAGE_MANAGER> bup
+#+END_SRC
+
+* Help
+#+BEGIN_SRC bash
+bup help <COMMAND>
+#+END_SRC
+
+* Use
+#+BEGIN_SRC bash
+export BUP_DIR=<BACKUP_DESTINATION>
+bup init
+bup index --exclude-from=<EXCLUDE_FILE> <BACKUP_SOURCE>
+bup save -n <BRANCH_NAME> <BACKUP_SOURCE>
+#+END_SRC
+
+* See also
+- [[https://www.youtube.com/watch?v=N5qj94B3WkE&t=580s][28C3: bup - git for backups]]
