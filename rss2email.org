@@ -1,0 +1,29 @@
+#+TITLE: How to get rss in email
+#+BEAMER_HEADER: \subtitle{open-source tool for Windows, Mac OS and UNIX for getting news from RSS feeds in email}
+#+BEAMER_HEADER: \institute[INST]{whyfree.gitlab.io}
+#+AUTHOR: Oleg Pykhalov
+#+EMAIL: go.wigust@gmail.com
+#+OPTIONS: author:nil date:nil toc:nil
+#+LATEX_CLASS: beamer
+#+LATEX_CLASS_OPTIONS: [presentation]
+#+LATEX_CLASS_OPTIONS: [aspectratio=169]
+
+* Description
+#+BEGIN_QUOTE
+We highly recommend that you subscribe to the rss2email project feed so you can
+keep up to date with the latest version, bugfixes and features.
+#+END_QUOTE
+
+* Installation
+You should first check if your distribution already packages rss2email for you.
+
+** Arch
+#+BEGIN_SRC bash
+  sudo yaourt -S rss2email-git
+#+END_SRC
+
+** Debian/Ubuntu
+#+BEGIN_SRC bash
+  sudo apt install rss2email
+#+END_SRC
+
