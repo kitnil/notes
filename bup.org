@@ -1,32 +1,87 @@
 #+TITLE: bup
+#+BEAMER_HEADER: \subtitle{git like backup system}
+#+BEAMER_HEADER: \institute[INST]{whyfree.gitlab.io}
+#+AUTHOR: Oleg Pykhalov
+#+EMAIL: go.wigust@gmail.com
+#+OPTIONS: author:nil date:nil toc:nil
+#+LATEX_CLASS: beamer
+#+LATEX_CLASS_OPTIONS: [presentation]
+#+LATEX_CLASS_OPTIONS: [aspectratio=169]
 
 * Description
-[[https://bup.github.io/][bup, it backs things up! - GitHub]]
+You know that having a backup of your important files, folders and documents is
+super important.
+
+I want to talk with you about bup.
+
+As a description on github says:
 #+BEGIN_QUOTE
-Very efficient backup system based on the git packfile format, providing fast
-incremental saves and global deduplication (among and within files, including
-virtual machine images). Current release is 0.28.1, and the development branch
-is master. Please post problems or patches to the mailing list for discussion
-(see the end of the README below). https://bup.github.io/
+Backup system based on the git packfile format. Provides fast incremental saves
+and global deduplication.
 #+END_QUOTE
 
+* Popularity
+bup has a strong development community behind:
+- Top backup software on GitHub.
+- About 70 code contributors.
+- Released in 2010. So it has some time pass.
+- Written in Python and includes some C for optimizations.
+
+* Software based on bup
+
+** Bups
+A GTK3 front end.
+- [[Https://github.com/emersion/bups][Bups - Official Website]]
+
+** Kups
+A KDE front end.
+- [[http://kde-apps.org/content/show.php/Kup+Backup+System?content=147465][Kups - Official Website]]
+
+** git-annex
+git-annex manages distributed copies of files using git (particularly large
+files, e.g. audio, video, images). Among other things, it supports partial
+checkouts and automatic checks to make sure that deleting a local copy of a file
+won't break rules you've established, like "there must always be at least 3
+copies of any given photo, across all of my known checkouts". git-annex has
+configurable storage backends, and bup is one of the options.
+
 * Installation
+
+** Arch
 #+BEGIN_SRC bash
-<PACKAGE_MANAGER> bup
+  sudo pacman -S bup
+#+END_SRC
+
+** Debian/Ubuntu
+#+BEGIN_SRC bash
+  sudo apt install bup
+#+END_SRC
+
+** Fedora
+#+BEGIN_SRC bash
+  sudo dnf install bup
 #+END_SRC
 
 * Help
 #+BEGIN_SRC bash
-bup help <COMMAND>
+  bup help <COMMAND>
+#+END_SRC
+#+BEGIN_SRC bash
+  bup help init
+  bup help index
+  bup help save
+  bup help restore
 #+END_SRC
 
 * Use
 #+BEGIN_SRC bash
-export BUP_DIR=<BACKUP_DESTINATION>
-bup init
-bup index --exclude-from=<EXCLUDE_FILE> <BACKUP_SOURCE>
-bup save -n <BRANCH_NAME> <BACKUP_SOURCE>
+  echo 'export BUP_DIR=<BACKUP_DESTINATION>' >> ~/.profile # Relogin
+  bup init
+  bup index --exclude-from=<EXCLUDE_FILE> <BACKUP_SOURCE>
+  bup save -n <BRANCH_NAME> <BACKUP_SOURCE>
 #+END_SRC
 
 * See also
-- [[https://www.youtube.com/watch?v=N5qj94B3WkE&t=580s][28C3: bup - git for backups]]
+- [[https://www.youtube.com/watch?v=N5qj94B3WkE&t=580s][28C3: bup: git for backups - YouTube]]
+- [[https://github.com/bup/bup][bup - GitHub repository]]
+- [[https://bup.github.io/][bup - Official Website]]
