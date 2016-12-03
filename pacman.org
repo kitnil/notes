@@ -1,0 +1,25 @@
+#+TITLE: pacman
+
+* Verify all the packages
+- https://pierre-schmitz.com/verify-all-the-packages/
+
+#+BEGIN_SRC bash
+  pacman -Syu archlinux-keyring
+  pacman-key --init
+  pacman-key --populate archlinux
+#+END_SRC
+
+/etc/pacman.conf
+#+BEGIN_EXAMPLE
+  [core]
+  SigLevel = PackageRequired
+  Include = /etc/pacman.d/mirrorlist
+
+  [extra]
+  SigLevel = PackageRequired
+  Include = /etc/pacman.d/mirrorlist
+
+  [community]
+  SigLevel = PackageRequired
+  Include = /etc/pacman.d/mirrorlist
+#+END_EXAMPLE
