@@ -22,7 +22,7 @@ This allows reading your email offline without the need for your mail reader
 internet connection? No problem, the message is still there.
 #+END_QUOTE
 
-** Why should I use OfflineIMAP?
+Why should I use OfflineIMAP?
 - fast
 - reliable
 - flexible
@@ -46,6 +46,111 @@ you.
 #+BEGIN_SRC bash
   sudo dnf install offlineimap
 #+END_SRC
+
+* Configuration
+** Official example
+Depending on your distribution offlineimap you can check offlineimap.conf example.
+On arch it's located in: /usr/share/offlineimap/offlineimap.conf
+
+** Example
+#+BEGIN_EXAMPLE
+  # Offlineimap configuration file
+  # More details can be found at http://www.offlineimap.org
+
+  ##################################################
+  # General definitions
+  ##################################################
+
+  [general]
+
+  accounts = Gmail, Yandex
+  maxsyncaccounts = 2
+
+  socktimeout = 120
+
+  ##################################################
+  # Accounts
+  ##################################################
+
+  [Account Gmail]
+
+  localrepository = GmailLocal
+  remoterepository = GmailRemote
+  status_backend = sqlite
+  autorefresh = 0.5
+  quick = 10
+  synclabels = yes
+
+  [Account Yandex]
+  localrepository = YandexLocal
+  remoterepository = YandexRemote
+  status_backend = sqlite
+  autorefresh = 0.5
+  quick = 10
+
+  [Repository YandexLocal]
+  type = Maildir
+  localfolders = ~/Mail/Yandex
+
+  [Repository GmailLocal]
+  type = GmailMaildir
+  localfolders = ~/Mail/Gmail
+
+  [Repository GmailRemote]
+
+  # Instead of closing the connection once a sync is complete, offlineimap will
+  # send empty data to the server to hold the connection open. A value of 60
+  # attempts to hold the connection for a minute between syncs (both quick and
+  # autorefresh).This setting has no effect if autorefresh and holdconnectionopen
+  # are not both set.
+  keepalive = 60
+
+  # OfflineIMAP normally closes IMAP server connections between refreshes if
+  # the global option autorefresh is specified.  If you wish it to keep the
+  # connection open, set this to true. This setting has no effect if autorefresh
+  # is not set.
+  holdconnectionopen = yes
+
+  keepalive = 60
+  type = IMAP
+  remotehost = imap.gmail.com
+  remoteuser = <USER>@gmail.com
+  ssl = yes
+  maxconnections = 1
+  realdelete = no
+  folderfilter = lambda foldername: foldername in ['INBOX']
+  sslcacertfile = /etc/ssl/certs/ca-certificates.crt
+  auth_mechanisms = LOGIN
+
+  [Repository YandexRemote]
+  localfolders = ~/Mail/Yandex
+  #
+  # Instead of closing the connection once a sync is complete, offlineimap will
+  # send empty data to the server to hold the connection open. A value of 60
+  # attempts to hold the connection for a minute between syncs (both quick and
+  # autorefresh).This setting has no effect if autorefresh and holdconnectionopen
+  # are not both set.
+  #
+  keepalive = 60
+  #
+  # OfflineIMAP normally closes IMAP server connections between refreshes if
+  # the global option autorefresh is specified.  If you wish it to keep the
+  # connection open, set this to true. This setting has no effect if autorefresh
+  # is not set.
+  #
+  holdconnectionopen = yes
+  #
+  keepalive = 60
+  type = IMAP
+  remotehost = imap.yandex.com
+  remoteuser = <USER>@yandex.ru
+  ssl = yes
+  maxconnections = 1
+  realdelete = no
+  folderfilter = lambda foldername: foldername in ['INBOX']
+  sslcacertfile = /etc/ssl/certs/ca-certificates.crt
+  auth_mechanisms = LOGIN
+#+END_EXAMPLE
 
 * See also
 - [[https://github.com/OfflineIMAP/offlineimap][offlineimap - Github repository]]
