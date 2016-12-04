@@ -5,8 +5,8 @@
 (require 'org)
 (require 'ox-publish)
 (setq org-publish-use-timestamps-flag nil)
-(setq user-full-name "Rasmus")
-(setq user-mail-address "gitlab-pages@pank.eu")
+(setq user-full-name "Oleg Pykhalov")
+(setq user-mail-address "go.wigust@gmail.com")
 
 (setq org-export-with-section-numbers nil
       org-export-with-smart-quotes t
