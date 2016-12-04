@@ -25,12 +25,8 @@ A KDE front end.
 - [[http://kde-apps.org/content/show.php/Kup+Backup+System?content=147465][Kups - Official Website]]
 
 ** git-annex
-git-annex manages distributed copies of files using git (particularly large
-files, e.g. audio, video, images). Among other things, it supports partial
-checkouts and automatic checks to make sure that deleting a local copy of a file
-won't break rules you've established, like "there must always be at least 3
-copies of any given photo, across all of my known checkouts". git-annex has
-configurable storage backends, and bup is one of the options.
+Manage large files with git. (This github mirror is not used for development.
+- [[https://github.com/joeyh/git-annex][git-annex - GitHub Repository]]
 
 * Installation
 
@@ -50,10 +46,8 @@ configurable storage backends, and bup is one of the options.
 #+END_SRC
 
 * Help
-#+BEGIN_SRC bash
+#+BEGIN_SRC bash -n
   bup help <COMMAND>
-#+END_SRC
-#+BEGIN_SRC bash
   bup help init
   bup help index
   bup help save
@@ -61,11 +55,11 @@ configurable storage backends, and bup is one of the options.
 #+END_SRC
 
 * Use
-#+BEGIN_SRC bash
-  echo 'export BUP_DIR=<BACKUP_DESTINATION>' >> ~/.profile # Relogin
+#+BEGIN_SRC bash -n
+  echo 'export BUP_DIR=BACKUP_DESTINATION' >> ~/.profile
   bup init
-  bup index --exclude-from=<EXCLUDE_FILE> <BACKUP_SOURCE>
-  bup save -n <BRANCH_NAME> <BACKUP_SOURCE>
+  bup index [--exclude-from=FILE] BACKUP_SOURCE
+  bup save -n BRANCH_NAME BACKUP_SOURCE
 #+END_SRC
 
 * See also
