@@ -35,7 +35,7 @@
              :exclude (regexp-opt '("README" "draft"))
              :auto-sitemap t
              :sitemap-filename "index.org"
-             :sitemap-file-entry-format "%d *%t*"
+             :sitemap-file-entry-format "%t"
              :html-head-extra "<link rel=\"icon\" type=\"image/x-icon\" href=\"/favicon.ico\"/>"
              :sitemap-style 'list
              :sitemap-sort-files 'anti-chronologically)
