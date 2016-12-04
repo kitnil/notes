@@ -44,5 +44,8 @@
              :base-extension site-attachments
              :publishing-directory "./public"
              :publishing-function 'org-publish-attachment
-             :recursive t)
+             :recursive t
+             :email nil
+             :creator nil
+             :author nil)
        (list "site" :components '("site-org"))))
