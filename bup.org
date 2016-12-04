@@ -2,9 +2,11 @@
 #+AUTHOR: Oleg Pykhalov
 #+EMAIL: go.wigust@gmail.com
 #+DATE: 2016-12-04
+#+OPTIONS: html-postamble:nil
+
 #+BEAMER_HEADER: \subtitle{git like backup system}
 #+BEAMER_HEADER: \institute[INST]{whyfree.gitlab.io}
-#+OPTIONS: author:nil date:nil toc:nil
+
 #+LATEX_CLASS: beamer
 #+LATEX_CLASS_OPTIONS: [presentation]
 #+LATEX_CLASS_OPTIONS: [aspectratio=169]
