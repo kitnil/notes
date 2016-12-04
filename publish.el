@@ -10,7 +10,8 @@
 
 (setq org-export-with-section-numbers nil
       org-export-with-smart-quotes t
-      org-export-with-toc nil)
+      org-export-with-toc t
+      org-html-validation-link nil)
 
 (setq org-html-divs '((preamble "header" "top")
                       (content "main" "content")
