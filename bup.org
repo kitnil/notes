@@ -1,4 +1,4 @@
-#+TITLE: How to backup files in Linux with bup on the command line
+#+TITLE: bup
 #+BEAMER_HEADER: \subtitle{git like backup system}
 #+BEAMER_HEADER: \institute[INST]{whyfree.gitlab.io}
 #+AUTHOR: Oleg Pykhalov
@@ -9,23 +9,10 @@
 #+LATEX_CLASS_OPTIONS: [aspectratio=169]
 
 * Description
-You know that having a backup of your important files, folders and documents is
-super important.
-
-I want to talk with you about bup.
-
-As a description on github says:
 #+BEGIN_QUOTE
 Backup system based on the git packfile format. Provides fast incremental saves
 and global deduplication.
 #+END_QUOTE
-
-* Popularity
-bup has a strong development community behind:
-- Top backup software on GitHub.
-- About 70 code contributors.
-- Released in 2010. So it has some time pass.
-- Written in Python and includes some C for optimizations.
 
 * Software based on bup
 
