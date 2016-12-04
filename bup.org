@@ -1,0 +1,69 @@
+#+TITLE: bup
+#+AUTHOR: Oleg Pykhalov
+#+EMAIL: go.wigust@gmail.com
+#+DATE: 2016-12-04
+#+BEAMER_HEADER: \subtitle{git like backup system}
+#+BEAMER_HEADER: \institute[INST]{whyfree.gitlab.io}
+#+OPTIONS: author:nil date:nil toc:nil
+#+LATEX_CLASS: beamer
+#+LATEX_CLASS_OPTIONS: [presentation]
+#+LATEX_CLASS_OPTIONS: [aspectratio=169]
+
+* Description
+#+BEGIN_QUOTE
+Backup system based on the git packfile format. Provides fast incremental saves
+and global deduplication.
+#+END_QUOTE
+
+* Software based on bup
+
+** Bups
+A GTK3 front end.
+- [[Https://github.com/emersion/bups][Bups - Official Website]]
+
+** Kups
+A KDE front end.
+- [[http://kde-apps.org/content/show.php/Kup+Backup+System?content=147465][Kups - Official Website]]
+
+** git-annex
+Manage large files with git.
+- [[https://github.com/joeyh/git-annex][git-annex - GitHub Repository]]
+
+* Installation
+
+** Arch
+#+BEGIN_SRC bash
+  sudo pacman -S bup
+#+END_SRC
+
+** Debian/Ubuntu
+#+BEGIN_SRC bash
+  sudo apt install bup
+#+END_SRC
+
+** Fedora
+#+BEGIN_SRC bash
+  sudo dnf install bup
+#+END_SRC
+
+* Help
+#+BEGIN_SRC bash -n
+  bup help <COMMAND>
+  bup help init
+  bup help index
+  bup help save
+  bup help restore
+#+END_SRC
+
+* Use
+#+BEGIN_SRC bash -n
+  echo 'export BUP_DIR=BACKUP_DESTINATION' >> ~/.profile
+  bup init
+  bup index [--exclude-from=FILE] BACKUP_SOURCE
+  bup save -n BRANCH_NAME BACKUP_SOURCE
+#+END_SRC
+
+* See also
+- [[https://www.youtube.com/watch?v=N5qj94B3WkE&t=580s][28C3: bup: git for backups - YouTube]]
+- [[https://github.com/bup/bup][bup - GitHub Repository]]
+- [[https://bup.github.io/][bup - Official Website]]
