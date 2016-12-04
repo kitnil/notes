@@ -45,7 +45,7 @@
              :publishing-directory "./public"
              :publishing-function 'org-publish-attachment
              :recursive t
-             :email nil
-             :creator nil
-             :author nil)
+             :with-email nil
+             :with-creator nil
+             :with-author nil)
        (list "site" :components '("site-org"))))
