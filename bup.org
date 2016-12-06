@@ -1,43 +1,46 @@
 #+TITLE: bup
 
 * Description
+** Description
 #+BEGIN_QUOTE
 Backup system based on the git packfile format. Provides fast incremental saves
 and global deduplication.
 #+END_QUOTE
 
 * Software based on bup
+** Software based on bup
 
-** Bups
-A GTK3 front end.
-- [[Https://github.com/emersion/bups][Bups - Official Website]]
+*** Bups
+ A GTK3 front end.
+ - [[Https://github.com/emersion/bups][Bups - Official Website]]
 
-** Kups
-A KDE front end.
-- [[http://kde-apps.org/content/show.php/Kup+Backup+System?content=147465][Kups - Official Website]]
+*** Kups
+ A KDE front end.
+ - [[http://kde-apps.org/content/show.php/Kup+Backup+System?content=147465][Kups - Official Website]]
 
-** git-annex
-Manage large files with git.
-- [[https://github.com/joeyh/git-annex][git-annex - GitHub Repository]]
+*** git-annex
+ Manage large files with git.
+ - [[https://github.com/joeyh/git-annex][git-annex - GitHub Repository]]
 
-* Installation
+* Install
+** Installation
+*** Arch
+ #+BEGIN_SRC bash
+   sudo pacman -S bup
+ #+END_SRC
 
-** Arch
-#+BEGIN_SRC bash
-  sudo pacman -S bup
-#+END_SRC
+*** Debian/Ubuntu
+ #+BEGIN_SRC bash
+   sudo apt install bup
+ #+END_SRC
 
-** Debian/Ubuntu
-#+BEGIN_SRC bash
-  sudo apt install bup
-#+END_SRC
-
-** Fedora
-#+BEGIN_SRC bash
-  sudo dnf install bup
-#+END_SRC
+*** Fedora
+ #+BEGIN_SRC bash
+   sudo dnf install bup
+ #+END_SRC
 
 * Help
+** Help
 #+BEGIN_SRC bash -n
   bup help <COMMAND>
   bup help init
@@ -47,6 +50,7 @@ Manage large files with git.
 #+END_SRC
 
 * Use
+** Use
 #+BEGIN_SRC bash -n
   echo 'export BUP_DIR=BACKUP_DESTINATION' >> ~/.profile
   bup init
@@ -55,6 +59,10 @@ Manage large files with git.
 #+END_SRC
 
 * See also
-- [[https://www.youtube.com/watch?v=N5qj94B3WkE&t=580s][28C3 Webcast - YouTube]]
+** See also
+*** Official
 - [[https://github.com/bup/bup][bup - GitHub]]
 - [[https://bup.github.io/][bup - Website]]
+
+*** Video
+- [[https://www.youtube.com/watch?v=N5qj94B3WkE&t=580s][28C3 Webcast - YouTube]]
