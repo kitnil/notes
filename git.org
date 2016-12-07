@@ -56,7 +56,7 @@ Find the symbolic ref matching a hash (sha-1)
 git ls-remote <url> | grep <sha-1>
 #+END_EXAMPLE
 
-[[https://bitbucket.org/durdn/cfg/src/master/.gitconfig?at=master&fileviewer=file-view-default][Nicola Paolucci git aliases]]
+- [[https://bitbucket.org/durdn/cfg/src/master/.gitconfig?at=master&fileviewer=file-view-default][Nicola Paolucci git aliases]]
 #+BEGIN_EXAMPLE
 git sba <url> <destination-folder>
 #+END_EXAMPLE
