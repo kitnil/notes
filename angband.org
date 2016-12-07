@@ -1,0 +1,37 @@
+#+TITLE: angband
+
+* Key bindings
+
+| Key Binding | Description                         |
+|-------------+-------------------------------------|
+| ~l~         | look around                         |
+| ~i~         | character inventory                 |
+| ~e~         | what you are wearing                |
+| ~t~         | take something off                  |
+| ~g~         | get items from monster              |
+| ~o~         | open the door                       |
+| ~L~         | look at other pieces of map         |
+| ~.~         | run through the dungeon             |
+| ~R~         | rest until recovered                |
+| ~M~         | see the enter dungeon level at once |
+| ~E~         | eat some food                       |
+
+* Hints
+- Any time you see the ~-more-~ prompt, read the message and press space.
+- If your food rations are still at index 'a' in your inventory, press 'E', 'a'
+  to eat some food.
+- If your oil is still at index 'b' in your inventory, and there is a monster
+  nearby, press 'v', 'b', ''' to throw a flask of oil at the nearest monster.
+- To drop an item from your inventory, press 'd' plus the index of that item.
+- You can use the '^X' key to quit and save the game.
+
+* Buildings
+
+| Symbol | Means                 |
+|--------+-----------------------|
+| ~1~    | general store         |
+| ~8~    | home                  |
+| ~+~    | closed door           |
+| ~'''~  | open door             |
+| ~.~    | open exit in the wall |
+|        |                       |
