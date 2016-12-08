@@ -1,0 +1,79 @@
+#+TITLE: Debian after installation
+#+DATE: 2016-11-04
+#+PROPERTY: TAGS debian
+#+OPTIONS: toc:nil
+
+Important things after installation.
+
+* memtest
+
+- memtest86+
+  badblocks -swo out /dev/sdX
+
+* Unnattended upgrades
+
+- apticron
+- unnattended-upgrades
+
+* Cleaners
+
+- deborphan
+- debfoster
+
+* Security
+
+- debian-security-support
+
+* Logs
+
+- logcheck
+
+* Hardware
+
+- smartmontools
+- mcelog
+- lm-sensors
+
+* System monitoring
+
+- sysstat
+- molly-guard
+
+* Remove
+
+#+BEGIN_EXAMPLE
+rm -rf /usr/lib/libfoo.so
+#+END_EXAMPLE
+
+- safe-rm
+#+BEGIN_EXAMPLE
+rm -rf /usr/lib
+safe-rm: skipping /usr/lib
+#+END_EXAMPLE
+
+* Configs
+
+- etckeeper
+
+* TV
+
+- mythtv-status
+
+* Fun
+
+- sl
+
+* apparmor
+
+- apparmor
+- apparmor-profiles
+- apparmor-profiles-extra
+
+* Packages
+
+- debsums
+
+* Filesystem
+
+- fcheck
+
