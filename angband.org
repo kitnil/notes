@@ -24,10 +24,12 @@
   nearby, press 'v', 'b', ''' to throw a flask of oil at the nearest monster.
 - To drop an item from your inventory, press 'd' plus the index of that item.
 - You can use the '^X' key to quit and save the game.
+- If you attack a monster with specific elemental attacks you will learn if the
+  monster resists that element or if they are immune.
 
 * Buildings
 
-| Symbol | Means                 |
+| Symbol | Meaning               |
 |--------+-----------------------|
 | ~1~    | general store         |
 | ~8~    | home                  |
@@ -35,3 +37,11 @@
 | ~'''~  | open door             |
 | ~.~    | open exit in the wall |
 |        |                       |
+
+* Resistance
+
+| Color           | Meaning                 |
+|-----------------+-------------------------|
+| ~red or orange~ | you do not resist it    |
+| ~yellow~        | partially resist it     |
+| ~green~         | resist it or are immune |
