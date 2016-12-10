@@ -1,3 +1,160 @@
+#+TITLE: Emacs
+
+* Clipboard
+
+- [[http://pragmaticemacs.com/emacs/add-the-system-clipboard-to-the-emacs-kill-ring/][Add the system clipboard to the Emacs kill-ring]]
+
+* ormode
+
+** News
+- [[http://kitchingroup.cheme.cmu.edu/blog/2016/11/04/New-link-features-in-org-9/?utm_source=feedburner&utm_medium=twitter&utm_campaign=Feed:+TheKitchinResearchGroup+(The+Kitchin+Research+Group)][New link features in org 9]]
+
+** Howtos
+- C-c l and C-c C-l -- Store links
+
+* Spacemacs
+
+** Themes
+
+[[https://github.com/nashamri/spacemacs-theme][nashamri/spacemacs-theme: Light and dark theme for spacemacs that supports GUI and terminal]]
+
+** Docker
+
+ - [[https://github.com/syl20bnr/spacemacs/blob/develop/layers/%2Bdistributions/spacemacs-docker/README.org][spacemacs/README.org at develop · syl20bnr/spacemacs]]
+
+* ivy
+
+- C-c C-o (ivy-occur) -- Saves the current candidates to a new buffer and exits completion.
+- C-m r l -- (ivy-resume)
+* Howtos
+
+- [[https://www.youtube.com/watch?v=ZP_wXNQsydI][Open a file with su/sudo inside Emacs using Spacemacs Distribution - YouTube]]
+
+* Elisp
+
+- [[http://harryrschwartz.com/2014/04/08/an-introduction-to-emacs-lisp.html][Harry R. Schwartz]]
+* gnus
+
+** Show read articles
+
+*** shortcut
+
+L -- show all articles
+B DEL -- remove article
+
+*** stack
+
+[[https://lists.gnu.org/archive/html/info-gnus-english/2012-03/msg00188.html][Re: gnus newbie question: why do read articles disappear from summary?]]
+
+Brendan Miller <address@hidden> writes:
+
+> After reading an article in summary it gets marked with 'R'. If I leave
+> the summary buffer for my group with q and log back in, that article
+> disappears. Why is this? Also, is there a way to prevent this behavior?
+
+If you enter the summary with a prefix (like C-u RET), it'll show up
+again. Within a summary buffer, you can do C-u M-g to show read
+articles. 
+
+But if anyone's got a handy "show me ten older articles" elisp snippet
+hanging around, I'd love to get a copy …
+
+> I really only want articles to disappear if I manually ask for it.
+
+With news groups, you may have 27102 "read" articles, showing all of
+them each time you enter would take a while … but I guess you could bind
+a key to do the equivalent of C-u 20 RET to always show you the 20 last
+when you enter.
+
+> Also, I've noticed there is a way to mark an article read using d, but
+> it makes it with a lower case 'r' flag. What's the difference between
+> this lower case 'r' flag and the upper case 'R' flag?
+
+r is manually marked read, R is really read ;) I'm pretty sure they're
+treated the same when you exit the summary though.
+
+-Kevin
+
+** Setup local gmail imap server with dovecot and offlineimap
+
+- [[https://www.gnu.org/software/emacs/manual/html_node/gnus/Mail-Source-Specifiers.html][Gnus Manual: Mail Source Specifiers]]
+- [[http://sachachua.com/blog/2008/05/geek-how-to-use-offlineimap-and-the-dovecot-mail-server-to-read-your-gmail-in-emacs-efficiently/][Geek: How to use offlineimap and the dovecot mail server to read your Gmail in Emacs efficiently - sacha chua :: living an awesome life]]
+- [[https://github.com/OfflineIMAP/offlineimap][OfflineIMAP/offlineimap: Read/sync your IMAP mailboxes Python]]]
+
+** Speedup
+
+- [[https://www.emacswiki.org/emacs/GnusSpeed][EmacsWiki: Gnus Speed]]
+
+** xface
+
+- [[http://www.dairiki.org/xface/][Online X-Face Converter]]
+
+** gmail
+
+- [[https://www.emacswiki.org/emacs/GnusGmail#toc11][EmacsWiki: Gnus Gmail]]
+
+** Posting styles
+
+Configuration is based on articles:
+- [[http://gnus.org/manual/gnus_76.html#Posting-Styles][Gnus Manual: 5.6 Posting Styles]]
+- [[https://www.gnu.org/software/emacs/manual/html_node/message/Mail-Variables.html#Mail-Variables][Message Manual: Mail Variables]]
+
+TODO more information HERE
+
+Configuration snippet of multiple SMTP depended on current gnus group
+~/.gnus.el:
+#+BEGIN_SRC lisp
+(setq gnus-posting-styles
+      '(("opykhalov@yandex.ru"
+         (address "opykhalov@yandex.ru")
+         ("X-Message-SMTP-Method" "smtp smtp.yandex.com 465")
+         (signature-file "~/.signature-yandex")
+         (name "Пыхалов Олег Витальевич")
+         (organization "СПбГЭТУ «ЛЭТИ» 6005"))))
+#+END_SRC
+
+Cannot send mail because Emacs hangs with message in buffer:
+#+BEGIN_EXAMPLE
+Sending via mail...
+#+END_EXAMPLE
+
+* git
+
+- [[https://www.youtube.com/watch?v=OMIxZhLU71U][Magit: Git in Emacs - Grumpy Gits SG - YouTube]]
+
+- Magit
+- GitGutter
+- GitTimemachine
+- Smerge
+
+* Wishlist
+** [[https://github.com/syl20bnr/spacemacs/issues/5996#issuecomment-219238127][Add natural languages layer · Issue #5996 · syl20bnr/spacemacs]]
+#+BEGIN_QUOTE
+WIP wishlist. I think we can put most of it behind SPC x (text) and SPC t (toggle)
+
+- wordsmith-mode highlight nouns, verbs.
+- babel provides an Emacs interface to different translation
+- services available on the Internet. - google translate doesn't work sometimes, should be more reliable + more choice.
+- dictcc translation with helm
+- interface. I'll compare it with babel and see if it has big decent amount of non-overlapping features.
+- helm-flyspell Helm extension for correcting words with Flyspell.
+- langtool based on http://www.languagetool.org/ - will check it out.
+- synosaurus Synosaurus is a thesaurus fontend for Emacs with pluggable backends.
+- helm-dictionary look up words in local (offline) dictionaries. It also provides short-cuts for various online dictionaries.
+- define-word lets you see the definition of a word or a phrase at point, powered by http://wordnik.com/
+- typo insert typographically useful unicode characters.
+
+Also hookup company-ispell and mb look at ac-ispell
+
+And the layers documentation probably should have references for other really useful stuff that Spacemacs provides like org-mode. avy for buffer and window navigation.
+
+Not sure if all this stuff should go into a single layer.
+#+END_QUOTE
+
+** helm-dictionary
+- [[https://github.com/emacs-helm/helm-dictionary][emacs-helm/helm-dictionary: Helm source for looking up dictionaries]]
+- [[http://wiktionary-export.nataraj.su/en/][http://wiktionary-export.nataraj.su/en/]]
+
 * Links
 ** How to use org-mode tables and structures in emails and elsewhere. Check out [[http://pragmaticemacs.com/emacs/use-org-mode-tables-and-structures-in-emails-and-elsewhere/][pragmaticemacs blog post]] :org:mode:tables:lists:email:mode: 
  <2016-12-08 Thu 19:41>
