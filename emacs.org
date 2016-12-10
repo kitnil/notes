@@ -1,11 +1,9 @@
 #+TITLE: Emacs
 
 * Clipboard
-
 - [[http://pragmaticemacs.com/emacs/add-the-system-clipboard-to-the-emacs-kill-ring/][Add the system clipboard to the Emacs kill-ring]]
 
 * ormode
-
 ** News
 - [[http://kitchingroup.cheme.cmu.edu/blog/2016/11/04/New-link-features-in-org-9/?utm_source=feedburner&utm_medium=twitter&utm_campaign=Feed:+TheKitchinResearchGroup+(The+Kitchin+Research+Group)][New link features in org 9]]
 
@@ -13,39 +11,32 @@
 - C-c l and C-c C-l -- Store links
 
 * Spacemacs
-
 ** Themes
-
 [[https://github.com/nashamri/spacemacs-theme][nashamri/spacemacs-theme: Light and dark theme for spacemacs that supports GUI and terminal]]
 
 ** Docker
-
  - [[https://github.com/syl20bnr/spacemacs/blob/develop/layers/%2Bdistributions/spacemacs-docker/README.org][spacemacs/README.org at develop · syl20bnr/spacemacs]]
 
 * ivy
-
 - C-c C-o (ivy-occur) -- Saves the current candidates to a new buffer and exits completion.
 - C-m r l -- (ivy-resume)
-* Howtos
 
+* Howtos
 - [[https://www.youtube.com/watch?v=ZP_wXNQsydI][Open a file with su/sudo inside Emacs using Spacemacs Distribution - YouTube]]
 
 * Elisp
-
 - [[http://harryrschwartz.com/2014/04/08/an-introduction-to-emacs-lisp.html][Harry R. Schwartz]]
+
 * gnus
-
 ** Show read articles
-
 *** shortcut
-
 L -- show all articles
 B DEL -- remove article
 
 *** stack
-
 [[https://lists.gnu.org/archive/html/info-gnus-english/2012-03/msg00188.html][Re: gnus newbie question: why do read articles disappear from summary?]]
 
+#+BEGIN_QUOTE
 Brendan Miller <address@hidden> writes:
 
 > After reading an article in summary it gets marked with 'R'. If I leave
@@ -74,27 +65,23 @@ r is manually marked read, R is really read ;) I'm pretty sure they're
 treated the same when you exit the summary though.
 
 -Kevin
+#+END_QUOTE
 
 ** Setup local gmail imap server with dovecot and offlineimap
-
 - [[https://www.gnu.org/software/emacs/manual/html_node/gnus/Mail-Source-Specifiers.html][Gnus Manual: Mail Source Specifiers]]
 - [[http://sachachua.com/blog/2008/05/geek-how-to-use-offlineimap-and-the-dovecot-mail-server-to-read-your-gmail-in-emacs-efficiently/][Geek: How to use offlineimap and the dovecot mail server to read your Gmail in Emacs efficiently - sacha chua :: living an awesome life]]
 - [[https://github.com/OfflineIMAP/offlineimap][OfflineIMAP/offlineimap: Read/sync your IMAP mailboxes Python]]]
 
 ** Speedup
-
 - [[https://www.emacswiki.org/emacs/GnusSpeed][EmacsWiki: Gnus Speed]]
 
 ** xface
-
 - [[http://www.dairiki.org/xface/][Online X-Face Converter]]
 
 ** gmail
-
 - [[https://www.emacswiki.org/emacs/GnusGmail#toc11][EmacsWiki: Gnus Gmail]]
 
 ** Posting styles
-
 Configuration is based on articles:
 - [[http://gnus.org/manual/gnus_76.html#Posting-Styles][Gnus Manual: 5.6 Posting Styles]]
 - [[https://www.gnu.org/software/emacs/manual/html_node/message/Mail-Variables.html#Mail-Variables][Message Manual: Mail Variables]]
@@ -119,9 +106,7 @@ Sending via mail...
 #+END_EXAMPLE
 
 * git
-
 - [[https://www.youtube.com/watch?v=OMIxZhLU71U][Magit: Git in Emacs - Grumpy Gits SG - YouTube]]
-
 - Magit
 - GitGutter
 - GitTimemachine
