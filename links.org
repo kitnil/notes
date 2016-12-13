@@ -1,4 +1,14 @@
 * Links
+** Use [[https://anonscm.debian.org/cgit/][Debian Git Alioth]]                          :debian:develop:git:alioth: 
+ <2016-12-13 Tue 09:08>
+** If docker failes to start at boot [[https://github.com/docker/docker/issues/23630#issue-160719709%0A][{Solved} Docker ERROR bridge have same name]] :systemd:docker:error:bridge:network:solved: 
+ <2016-12-13 Tue 08:29>
+shishir-a412ed commented on 16 Jun
+#+BEGIN_QUOTE
+rm -rf /var/lib/docker/network
+#+END_QUOTE
+** Watch tutorials [[https://www.google.ru/search?q=Maildir&num=30&newwindow=1&source=lnms&tbm=vid&sa=X&ved=0ahUKEwizypXKsvDQAhUI3SwKHW96CxkQ_AUICSgC&biw=1105&bih=628][Maildir Videos Google Search]] :google:search:videos:maildir: 
+ <2016-12-13 Tue 08:05>
 ** Learn [[https://en.wikipedia.org/wiki/C_standard_library][C Standart Library Wikipedia]] :programming:c:lang:clang:lib:standart:wiki: 
  <2016-12-13 Tue 02:47>
 ** Check good configuration for mu4e [[https://github.com/xgarrido/emacs-starter-kit/blob/master/starter-kit-mu4e.org][xgarrido emacs-starter-kit]] :emacs:mu4e:config: 
