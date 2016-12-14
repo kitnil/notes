@@ -901,3 +901,63 @@ sites by category.
  The open-source core of Pinry, a tiling image board system for people who want to save, tag, and share images, videos and webpages in an easy to skim through format.
 
  For more information and a working demo board visit getpinry.com.
+** [[https://github.com/rasguanabana/ytfs][rasguanabana/ytfs: YouTube File System]]                                  :python:github:top:youtube:filesystem: 
+ <2016-12-14 Wed 09:33>
+
+ YTFS - File system which enables you to search and play movies from YouTube as files - with tools of your choice. Based on FUSE, written in Python 3.
+** [[https://github.com/python-diamond/Diamond][python-diamond/Diamond: Diamond is a python daemon that collects system metrics and publishes them to Graphite (and others). It is capable of collecting cpu, memory, network, i/o, load and disk metrics. Additionally, it features an API for implementing custom collectors for gathering metrics from almost any source.]]                    :python:github:top:system:information:graph:collect: 
+ <2016-12-14 Wed 09:42>
+
+  Diamond is a python daemon that collects system metrics and publishes them to Graphite (and others). It is capable of collecting cpu, memory, network, i/o, load and disk metrics. Additionally, it features an API for implementing custom collectors for gathering metrics from almost any source. http://diamond.readthedocs.org/
+** [[https://github.com/dropbox/changes][dropbox/changes: A dashboard for your code. A build system.]]                                  :python:github:top:code:dashboard:git: 
+ <2016-12-14 Wed 09:44>
+
+ Changes is a build coordinator and reporting solution written in Python.
+
+ The project is primarily built on top of Jenkins, but efforts are underway to replace the underlying dependency. The current work-in-progress tooling exists under several additional repositories:
+
+     https://github.com/dropbox/changes-client
+     https://github.com/dropbox/changes-mesos-framework
+
+ Note
+
+ Changes is under extremely active and rapid development, and you probably shouldn't use it unless you like broken software.
+** [[https://github.com/saffsd/langid.py][saffsd/langid.py: Stand-alone language identification system]]                     :python:github:top:language:eidentification:system: 
+ <2016-12-14 Wed 09:45>
+
+ langid.py is a standalone Language Identification (LangID) tool.
+
+ The design principles are as follows:
+
+     Fast
+     Pre-trained over a large number of languages (currently 97)
+     Not sensitive to domain-specific features (e.g. HTML/XML markup)
+     Single .py file with minimal dependencies
+     Deployable as a web service
+
+ All that is required to run langid.py is >= Python 2.7 and numpy. The main script langid/langid.py is cross-compatible with both Python2 and Python3, but the accompanying training tools are still Python2-only.
+** [[https://github.com/an0/Letterpress][an0/Letterpress: A minimal, Markdown based blogging system written in Python.]]                               :python:github:top:static:blog:generator: 
+ <2016-12-14 Wed 09:46>
+
+ Letterpress is a minimal, Markdown based blogging system written in Python.
+ Why Letterpress?
+
+     Letterpress is lighter than WordPress.
+     Python is prettier than PHP.
+     Static/text is more reliable than dynamic/database.
+     Markdown is more human-friendly than HTML.
+     Math writing is much easier in ASCIIMathML than in MathML.
+** [[https://github.com/guardian/alerta][guardian/alerta: Alerta monitoring system]]                             :python:github:top:monitoring:system:alert: 
+ <2016-12-14 Wed 09:47>
+
+ The Alerta monitoring tool was developed with the following aims in mind:
+
+     distributed and de-coupled so that it is SCALABLE
+     minimal CONFIGURATION that easily accepts alerts from any source
+     quick at-a-glance VISUALISATION with drill-down to detail
+** [[https://github.com/danielmagnussons/orgmode][danielmagnussons/orgmode: orgmode is for keeping notes, maintaining TODO lists, planning projects, and authoring documents with a fast and effective plain-text system.]]                                :python:github:top:sublimetext:org:mode: 
+ <2016-12-14 Wed 09:47>
+
+ Adds support for Org mode's .org syntax files to Sublime Text.
+
+ Tested on Windows 7 and Ubuntu 12.04 and Mac OS X 10.7.5 with Sublime Text 2 & 3
