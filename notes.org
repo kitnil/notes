@@ -1027,3 +1027,161 @@ sites by category.
      Orchestra website
      A blog post introducing Orchestra v0.1.0 to the world
      Subscribe to the Orchestra mailing list
+** [[https://github.com/michael-lazar/rtv][michael-lazar/rtv: Browse Reddit from your terminal]]                                   :python:github:top:reddit:cli:client: 
+ <2016-12-14 Wed 10:03>
+
+
+ RTV provides an interface to view and interact with reddit from your terminal.
+ It's compatible with most terminal emulators on Linux and OS X.
+** [[https://github.com/rossem/RedditStorage][rossem/RedditStorage: Store files onto reddit subreddits.]]                       :python:github:top:reddit:store:files:subreddits: 
+ <2016-12-14 Wed 10:03>
+
+ RedditStorage is an application that allows you to store on reddit subreddits via raw bytes. The file is encoded into characters and encrypted using AES encryption, after which it can be stored on a subreddit of choice (ideally your own private subreddit). To retrieve the file, the process is simply reversed. Unfortunately, reddit comments have a character limit of 10000. If your file exceeds that amount, it will be split up among comments in the same thread which form links by replying to each other.
+** [[https://github.com/ssimunic/Daily-Reddit-Wallpaper][ssimunic/Daily-Reddit-Wallpaper: Change your wallpaper to the most upvoted image of the day from /r/wallpapers or any other subreddit on system startup]]                :python:github:top:reddit:wallpaper:changer:gnome:daily: 
+ <2016-12-14 Wed 10:04>
+
+ This script changes your wallpaper to most upvoted image of the day on /r/wallpapers or from any other subreddit.
+
+ Run it on startup for new wallpaper on every session.
+
+ Supported: Linux (gnome, kde, mate, lxde), Windows and OS X
+** [[https://github.com/rhiever/reddit-analysis][rhiever/reddit-analysis: A Python script that parses post titles, self-texts, and comments on reddit and makes word clouds out of the word frequencies.]]                 :python:github:top:reddit:cloud:analysis:visualisation: 
+ <2016-12-14 Wed 10:10>
+
+  A Python script that parses post titles, self-texts, and comments on reddit and makes word clouds out of the word frequencies.
+** [[https://github.com/sisimai/p5-Sisimai][sisimai/p5-Sisimai: Mail Analyzing Interface for email bounce: A Perl module to parse RFC5322 bounce mails and generating structured data as JSON from parsed results. Formerly known as bounceHammer 4: an error mail analyzer.]]                                        :perl:github:top:mail:analyzing: 
+ <2016-12-14 Wed 10:24>
+
+  Mail Analyzing Interface for email bounce: A Perl module to parse RFC5322 bounce mails and generating structured data as JSON from parsed results. Formerly known as bounceHammer 4: an error mail analyzer. http://libsisimai.org
+** [[https://github.com/HoverHell/RedditImageGrab][HoverHell/RedditImageGrab: Downloads images from sub-reddits of reddit.com.]]                        :python:github:top:reddit:image:download:script: 
+ <2016-12-14 Wed 10:26>
+
+ I created this script to download the latest (and greatest) wallpapers off of image subreddits like wallpaper to keep my desktop wallpaper fresh and interesting. The main idea is that the script would download any JPEG or PNG formatted image that it found listed in the specified subreddit and download them to a folder.
+** [[https://github.com/myusuf3/octogit][myusuf3/octogit: giving git more tentacles]]                                    :python:github:top:interface:client: 
+ <2016-12-14 Wed 10:27>
+
+ A free and open source interface to github from the command line. Avoid the usual copy and paste when creating repositories, keep up to date on issues, and much more.
+** [[https://github.com/alixander/PyScribe][alixander/PyScribe: A Python library to make debugging with print statements simpler and more effective.]]                                      :python:github:top:print:analysis: 
+ <2016-12-14 Wed 10:28>
+
+ A Python library to make debugging with print statements simpler and more effective.
+
+ PyScribe.com for full documentation. (Work in progress)
+
+ Warning: This project is currently in a pre-release state. Open to contributions and collaborators.
+** [[https://github.com/liris/websocket-client][liris/websocket-client: websocket client for python]]                                       :python:github:top:socket:client: 
+ <2016-12-14 Wed 10:31>
+
+ websocket-client module is WebSocket client for python. This provide the low level APIs for WebSocket. All APIs are the synchronous functions.
+
+ websocket-client supports only hybi-13.
+** [[https://github.com/guyzmo/git-repo][guyzmo/git-repo: Git-Repo: CLI utility to manage git services from your workspace]]                         :python:github:top:git:control:manage:gitlab:services: 
+ <2016-12-14 Wed 10:31>
+
+ Control your remote git hosting services from the git commandline. The usage is very simple. To clone a new project, out of GitHub, just issue:
+** [[https://github.com/pimutils/khal][pimutils/khal: CLI calendar application]]                                     :python:github:top:calendar:CalDAV: 
+ <2016-12-14 Wed 10:33>
+
+ Khal is a standards based CLI and terminal calendar program, able to synchronize with CalDAV servers through vdirsyncer.
+** [[https://github.com/fagga/transmission-remote-cli][fagga/transmission-remote-cli: Curses interface for the daemon of the BitTorrent client Transmission]]                             :python:github:top:transmission:client:cli: 
+ <2016-12-14 Wed 10:33>
+
+  Curses interface for the daemon of the BitTorrent client Transmission
+** [[https://github.com/andreafrancia/trash-cli][andreafrancia/trash-cli: Command line interface to the freedesktop.org trashcan.]]                               :python:github:top:freedesktop:trash:cli: 
+ <2016-12-14 Wed 10:33>
+
+  Command line interface to the freedesktop.org trashcan.
+** [[https://github.com/TailorDev/Watson][TailorDev/Watson: A wonderful CLI to track your time!]]                       :python:github:top:project:management:time:track: 
+ <2016-12-14 Wed 10:34>
+
+ Watson is here to help you manage your time. You want to know how much time you are spending on your projects? You want to generate a nice report for your client? Watson is here for you.
+** [[https://github.com/richrd/suplemon][richrd/suplemon: Console (CLI) text editor with multi cursor support. Suplemon replicates Sublime Text like functionality in the terminal. Try it out, give feedback, fork it!]]                      :python:github:top:editor:sublimetext:alternative: 
+ <2016-12-14 Wed 10:35>
+
+  :lemon: Console (CLI) text editor with multi cursor support. Suplemon replicates Sublime Text like functionality in the terminal. Try it out, give feedback, fork it!
+** [[https://github.com/streamlink/streamlink][streamlink/streamlink: CLI for extracting streams from various websites to a video player of your choosing]]                        :python:github:top:livestreamer:fork:stream:cli: 
+ <2016-12-14 Wed 10:36>
+
+ Streamlink is a CLI utility that pipes flash videos from online streaming services to a variety of video players such as VLC, or alternatively, a browser.
+
+ The main purpose of streamlink is to convert CPU-heavy flash plugins to a less CPU-intensive format.
+
+ Streamlink is a fork of the livestreamer project.
+** [[https://github.com/j-bennet/wharfee][j-bennet/wharfee: A CLI with autocompletion and syntax highlighting for Docker commands.]]                           :python:github:top:docker:cli:autocompletion: 
+ <2016-12-14 Wed 10:37>
+
+ A shell for Docker that can do autocompletion and syntax highlighting.
+** [[https://github.com/rcaloras/bashhub-client][rcaloras/bashhub-client: Bash history in the cloud. Indexed and searchable.]]                                     :python:github:git:bash:cloud:sync: 
+ <2016-12-14 Wed 10:38>
+
+ Bashhub saves every terminal command entered across all sessions and systems and provides powerful querying across all commands.
+** [[https://github.com/iamale/bashhub-server][iamale/bashhub-server: Unofficial Bashhub server (and also a REST API example in Kyoukai)]]                           :python:github:top:bashhub:unofficial:client: 
+ <2016-12-14 Wed 10:40>
+
+  Unofficial Bashhub server (and also a REST API example in Kyoukai)
+** [[https://github.com/dvorka/hstr][dvorka/hstr: Bash and Zsh shell history suggest box - easily view, navigate, search and manage your command history.]]                                        :c:lang:github:top:bash:history: 
+ <2016-12-14 Wed 10:48>
+
+  Bash and Zsh shell history suggest box - easily view, navigate, search and manage your command history. http://www.mindforger.com
+** [[https://github.com/crazy-max/ftp-sync][crazy-max/ftp-sync: A shell script to synchronize files between a remote FTP server and your local server/computer.]]                               :shell:github:top:ftp:sync:automatically: 
+ <2016-12-14 Wed 10:50>
+
+  A shell script to synchronize files between a remote FTP server and your local server/computer.
+** [[https://github.com/trengrj/recent][trengrj/recent: log bash history to an sqlite database]]                                 :python:github:top:bash:history:recent: 
+ <2016-12-14 Wed 10:51>
+
+  log bash history to an sqlite database
+** [[https://github.com/sanjujosh/auto-image-renamer][sanjujosh/auto-image-renamer: Rename images using deep learning]]                         :python:github:top:deep:learning:rename:images: 
+ <2016-12-14 Wed 10:52>
+
+ Rename images using deep learning
+** [[https://github.com/serialoverflow/demimove][serialoverflow/demimove: A cross-platform file browser for mass renaming]]                                      :python:github:top:qt:rename:mass: 
+ <2016-12-14 Wed 10:54>
+
+ Demimove is a mass renaming file browser for Linux and Windows, written with python2.7 and PyQt4.
+
+ A couple of features you might find interesting:
+
+     Interactivity: Demimove allows adding/removing of (multiple) targets quickly by mouse interaction (instead of or complementary to matching via regex/globbing patterns).
+     Automatic Previews: Demimove provides an automatic and immediate preview of any change.
+     Performance: Demimove is fast, thanks to Qt and its QFileSystemModel. Even thousands of files are no problem (although there's a ceiling, as always).
+     Commit History: You can undo any commit, although currently only in order of last to first.
+     Multiple Pattern Support: You can have any number of match and filter patterns by separating them with a slash ("/").
+     Recursive support: Demimove supports recursive lookups and renames. You can specify the depth of the recursion.
+     Config File: You can save and restore options to and from a file (~/.config/demimove/demimove.ini).
+
+ Other than that, it hopefully comes with everything you'd expect from a standard mass renamer, including regex/globbing support and preconfigured actions.
+** [[https://github.com/emanuelfeld/poirot][emanuelfeld/poirot: CLI to search a Git repo's revision history for text patterns (e.g. passwords, tokens, IP addresses, and names)]] :python:github:top:penetration:passwords:tokens:search:git:repositories: 
+ <2016-12-14 Wed 10:55>
+
+ Poirot helps you investigate your repositories. Give him a set of clues (e.g. strings or regular expressions) and he will report back any place they appear in your repository's revision history.
+
+ When used as a pre-commit hook, Poirot can warn you if you're about to commit something you might not intend (think passwords, private keys, tokens, and other bits of sensitive or personally identifiable information).
+
+ Poirot began as a fork of CFPB's fellow gumshoe, Clouseau.
+** [[https://github.com/jlevy/the-art-of-command-line][jlevy/the-art-of-command-line: Master the command line, in one page]]                                               :markdown:master:onepage:cli: 
+ <2016-12-14 Wed 10:59>
+
+  Master the command line, in one page
+** [[https://github.com/marcusbuffett/command-line-chess][marcusbuffett/command-line-chess: A python program to play chess against an AI in the terminal.]]                                         :python:github:top:chess:games:cli: 
+ <2016-12-14 Wed 11:00>
+
+  A python program to play chess against an AI in the terminal.
+** [[https://github.com/zk-phi/sublimity][zk-phi/sublimity: emacs]] smooth-scrolling and minimap like sublime editor]] :emacs:sublime:minimap: 
+ <2016-12-14 Wed 11:02>
+
+ smooth-scrolling, minimap and distraction-free mode (inspired by the sublime editor)
+** [[https://github.com/rakanalh/emacs-dashboard][rakanalh/emacs-dashboard: A shameless extraction of Spacemac's startup screen]]                                                       :emacs:dashboard: 
+ <2016-12-14 Wed 11:05>
+
+ A shameless extraction of Spacemacs’ startup screen.
+ Features
+
+     Displays an awesome Emacs banner!
+     Recent files
+     Bookmarks list
+     Recent projectile projects list (Depends on `projectile` package)
+** [[https://github.com/rejeep/drag-stuff.el][rejeep/drag-stuff.el: Drag stuff around in Emacs]]                                                            :emacs:drag: 
+ <2016-12-14 Wed 11:12>
+
+ Drag Stuff is a minor mode for Emacs that makes it possible to drag stuff (words, region, lines) around in Emacs.
