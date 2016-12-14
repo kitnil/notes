@@ -113,3 +113,158 @@ sites by category.
 ** [[https://github.com/nvbn/thefuck][nvbn/thefuck: Magnificent app which corrects your previous console command.]]                  :python:github:top:shell:completion:fix:correct:spell: 
  <2016-12-14 Wed 06:52>
  Magnificent app which corrects your previous console command, inspired by a @liamosaur tweet.
+** [[https://github.com/faif/python-patterns][faif/python-patterns: A collection of design patterns/idioms in Python]]                          :python:github:top:patterns:study:programming: 
+ <2016-12-14 Wed 06:55>
+ python-patterns
+
+ A collection of design patterns and idioms in Python.
+
+ When an implementation is added or modified, be sure to update this file and rerun append_output.sh (eg. ./append_output.sh borg.py) to keep the output comments at the bottom up to date.
+** [[https://github.com/fchollet/keras][fchollet/keras: Deep Learning library for Python. Convnets, recurrent neural networks, and more. Runs on Theano or TensorFlow.]]                                       :python:github:top:deep:learning: 
+ <2016-12-14 Wed 06:56>
+ You have just found Keras.
+
+ Keras is a high-level neural networks library, written in Python and capable of running on top of either TensorFlow or Theano. It was developed with a focus on enabling fast experimentation. Being able to go from idea to result with the least possible delay is key to doing good research.
+
+ Use Keras if you need a deep learning library that:
+
+     Allows for easy and fast prototyping (through total modularity, minimalism, and extensibility).
+     Supports both convolutional networks and recurrent networks, as well as combinations of the two.
+     Supports arbitrary connectivity schemes (including multi-input and multi-output training).
+     Runs seamlessly on CPU and GPU.
+
+ Read the documentation at Keras.io.
+
+ Keras is compatible with: Python 2.7-3.5.
+** [[https://github.com/jonathanslenders/python-prompt-toolkit][jonathanslenders/python-prompt-toolkit: Library for building powerful interactive command lines in Python]]                   :python:github:top:commandline:cli:build:programming: 
+ <2016-12-14 Wed 06:59>
+
+ prompt_toolkit is a library for building powerful interactive command lines and terminal applications in Python.
+
+ Read the documentation on readthedocs.
+** [[https://github.com/binux/pyspider][binux/pyspider: A Powerful Spider(Web Crawler) System in Python.]]                                          :python:github:top:spider:web: 
+ <2016-12-14 Wed 07:00>
+
+ A Powerful Spider(Web Crawler) System in Python. TRY IT NOW!
+
+     Write script in Python
+     Powerful WebUI with script editor, task monitor, project manager and result viewer
+     MySQL, MongoDB, Redis, SQLite, Elasticsearch; PostgreSQL with SQLAlchemy as database backend
+     RabbitMQ, Beanstalk, Redis and Kombu as message queue
+     Task priority, retry, periodical, recrawl by age, etc...
+     Distributed architecture, Crawl Javascript pages, Python 2&3, etc...
+
+ Tutorial: http://docs.pyspider.org/en/latest/tutorial/
+ Documentation: http://docs.pyspider.org/
+ Release notes: https://github.com/binux/pyspider/releases
+** [[https://github.com/soimort/you-get][soimort/you-get: Dumb downloader that scrapes the web]]                       :python:github:top:downloader:scrape:web:youtube: 
+ <2016-12-14 Wed 07:17>
+
+ You-Get is a tiny command-line utility to download media contents (videos, audios, images) from the Web, in case there is no other handy way to do it.
+
+ Here's how you use you-get to download a video from this web page:
+
+ $ you-get http://www.fsf.org/blogs/rms/20140407-geneva-tedx-talk-free-software-free-society
+ Site:       fsf.org
+ Title:      TEDxGE2014_Stallman05_LQ
+ Type:       WebM video (video/webm)
+ Size:       27.12 MiB (28435804 Bytes)
+
+ Downloading TEDxGE2014_Stallman05_LQ.webm ...
+ 100.0% ( 27.1/27.1 MB) ├████████████████████████████████████████┤[0/0]   12 MB/s
+
+ And here's why you might want to use it:
+
+     You enjoyed something on the Internet, and just want to download them for your own pleasure.
+     You watch your favorite videos online from your computer, but you are prohibited from saving them. You feel that you have no control over your own computer. (And it's not how an open Web is supposed to work.)
+     You want to get rid of any closed-source technology or proprietary JavaScript code, and disallow things like Flash running on your computer.
+     You are an adherent of hacker culture and free software.
+
+ What you-get can do for you:
+
+     Download videos / audios from popular websites such as YouTube, Youku, Niconico, and a bunch more. (See the full list of supported sites)
+     Stream an online video in your media player. No web browser, no more ads.
+     Download images (of interest) by scraping a web page.
+     Download arbitrary non-HTML contents, i.e., binary files.
+
+ Interested? Install it now and get started by examples.
+
+ Are you a Python programmer? Then check out the source and fork it!
+** [[https://github.com/miguelgrinberg/flasky][miguelgrinberg/flasky: Companion code to my O'Reilly book "Flask Web Development".]]                                         :python:github:top:flasky:book: 
+ <2016-12-14 Wed 07:18>
+
+ Flasky
+
+ This repository contains the source code examples for my O'Reilly book Flask Web Development.
+
+ The commits and tags in this repository were carefully created to match the sequence in which concepts are presented in the book. Please read the section titled "How to Work with the Example Code" in the book's preface for instructions.
+** [[https://github.com/alexjc/neural-doodle][alexjc/neural-doodle: Turn your two-bit doodles into fine artworks with deep neural networks, generate seamless textures from photos, transfer style from one image to another, perform example-based upscaling, but wait... there's more! (An implementation of Semantic Style Transfer.)]]                             :python:github:top:neural:image:drawing:ia: 
+ <2016-12-14 Wed 07:19>
+
+ Use a deep neural network to borrow the skills of real artists and turn your two-bit doodles into masterpieces! This project is an implementation of Semantic Style Transfer (Champandard, 2016), based on the Neural Patches algorithm (Li, 2016). Read more about the motivation in this in-depth article and watch this workflow video for inspiration.
+
+ The doodle.py script generates a new image by using one, two, three or four images as inputs depending what you're trying to do: the original style and its annotation, and a target content image (optional) with its annotation (a.k.a. your doodle). The algorithm extracts annotated patches from the style image, and incrementally transfers them over to the target image based on how closely they match.
+
+ NOTE: Making a #NeuralDoodle is a skill. The parameters in the script were adjusted to work well by default and with the examples below. For new images, you may need to adjust values and modify on your input data too. It takes practice, but you can reach almost photo-realistic results if you iterate! (Ask for advice here or see examples.)
+** [[https://github.com/toastdriven/restless][toastdriven/restless: A lightweight REST miniframework for Python.]]                                            :python:github:top:rest:api: 
+ <2016-12-14 Wed 07:20>
+
+ A lightweight REST miniframework for Python.
+
+ Documentation is at http://restless.readthedocs.org/.
+
+ Works great with Django, Flask, Pyramid, Tornado & Itty, but should be useful for many other Python web frameworks. Based on the lessons learned from Tastypie & other REST libraries.
+ Features
+
+     Small, fast codebase
+     JSON output by default, but overridable
+     RESTful
+     Python 3.2+ (with shims to make broke-ass Python 2.6+ work)
+     Flexible
+
+ Anti-Features
+
+ (Things that will never be added...)
+
+     Automatic ORM integration
+     Authorization (per-object or not)
+     Extensive filtering options
+     XML output (though you can implement your own)
+     Metaclasses
+     Mixins
+     HATEOAS
+
+ Why?
+
+ Quite simply, I care about creating flexible & RESTFul APIs. In building Tastypie, I tried to create something extremely complete & comprehensive. The result was writing a lot of hook methods (for easy extensibility) & a lot of (perceived) bloat, as I tried to accommodate for everything people might want/need in a flexible/overridable manner.
+
+ But in reality, all I really ever personally want are the RESTful verbs, JSON serialization & the ability of override behavior.
+
+ This one is written for me, but maybe it's useful to you.
+** [[https://github.com/coleifer/peewee][coleifer/peewee: a small, expressive orm -- supports postgresql, mysql and sqlite]]                    :python:github:top:database:mysql:sqlite:postgresql: 
+ <2016-12-14 Wed 07:20>
+
+ Peewee is a simple and small ORM. It has few (but expressive) concepts, making it easy to learn and intuitive to use.
+
+     A small, expressive ORM
+     Written in python with support for versions 2.6+ and 3.2+.
+     built-in support for sqlite, mysql and postgresql
+     tons of extensions available in the playhouse
+         Postgresql HStore, JSON, arrays and more
+         SQLite full-text search, user-defined functions, virtual tables and more
+         Schema migrations and model code generator
+         Connection pool
+         Encryption
+         and much, much more...
+** [[https://github.com/nvie/rq][nvie/rq: Simple job queues for Python]]                            :python:github:top:job:processing:multitask: 
+ <2016-12-14 Wed 07:21>
+
+ RQ (Redis Queue) is a simple Python library for queueing jobs and processing them in the background with workers. It is backed by Redis and it is designed to have a low barrier to entry. It should be integrated in your web stack easily.
+
+ RQ requires Redis >= 2.7.0.
+** [[https://github.com/nicolargo/glances][nicolargo/glances: Glances an Eye on your system. A top/htop alternative.]]                                         :python:github:top:system:info: 
+ <2016-12-14 Wed 07:22>
+
+ Follow Glances on Twitter: @nicolargo or @glances_system
+
+ Glances is a cross-platform curses-based system monitoring tool written in Python.
