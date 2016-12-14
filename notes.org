@@ -268,3 +268,182 @@ sites by category.
  Follow Glances on Twitter: @nicolargo or @glances_system
 
  Glances is a cross-platform curses-based system monitoring tool written in Python.
+** [[https://github.com/eliangcs/http-prompt][eliangcs/http-prompt: HTTPie + prompt_toolkit = an interactive command-line HTTP client featuring autocomplete and syntax highlighting]]                                     :python:github:top:http:prompt:cli: 
+ <2016-12-14 Wed 07:22>
+
+ HTTP Prompt is an interactive command-line HTTP client featuring autocomplete and syntax highlighting, built on HTTPie and prompt_toolkit.
+** [[https://github.com/a1studmuffin/SpaceshipGenerator][a1studmuffin/SpaceshipGenerator: A Blender script to procedurally generate 3D spaceships]]                            :python:github:top:blender:spaceship:script: 
+ <2016-12-14 Wed 07:24>
+
+
+     Start with a box.
+     Build the hull: Extrude the front/rear faces several times, adding random translation/scaling/rotation along the way.
+     Add asymmetry to the hull: Pick random faces and extrude them out in a similar manner, reducing in scale each time.
+     Add detail to the hull: Categorize each face by its orientation and generate details on it such as engines, antenna, weapon turrets, lights etc.
+     Sometimes apply horizontal symmetry.
+     Add a Bevel modifier to angularize the shape a bit.
+     Apply materials to the final result.
+     Take over the universe with your new infinite fleet of spaceships.
+** [[https://github.com/StijnMiroslav/top-starred-devs-and-repos-to-follow][StijnMiroslav/top-starred-devs-and-repos-to-follow: The Top-Starred Python GitHub Devs, Orgs, and Repos to Follow (All-Time and Trending)]]                                             :python:github:top:starred: 
+ <2016-12-14 Wed 07:24>
+
+ top-starred-devs-and-repos-to-follow
+
+     The Top-Starred Python GitHub Devs, Orgs, and Repos to Follow (All-Time and Trending)
+
+ Why?
+
+ Why follow the top-starred Python GitHub devs?
+
+     Following influencers is usually a good practice. It has helped me in multiple ways:
+
+         Whenever I run out of inspiration, I look at these influencers and see what they have achieved. This brings back the energy and I am back on my projects
+
+         You can follow these influencers to see which events are they attending, what are they reading and what are they working on. This can quickly become a wealth of knowledge in itself.
+
+         To some extent, it also provides a human touch to these influencers. By just looking at their profiles, they might come across as some one out of the world. But, when you start following them regularly, you tend to relate yourself with the influencers.
+
+     Inspired by the following Reddit post.
+
+ After reading through the post, I was curious to see a similar list for Python GitHub devs, orgs, and repos.
+ 'Top-Starred'?
+
+ There's no definitive way to determine 'top' devs, orgs, and repos by language. Every metric has its flaws. The lists below look at total number of stars in Python repositories, which seems to be a decent metric that is readily available/easy to mine.
+
+ Dev stats are for individual contributors. Org stats are also provided: viewing the org link shows the devs who are part of the org. Not sure how you'd measure stats for each dev part of an org, or similarly, devs contributing to other projects.
+
+ GitHub is not perfect in classifying repos as Python. The lists below try to manually filter out mis-classified repos.
+
+ I found it interesting to track 'all time' and 'trending' stats, so lists for each are included. Sources are provided after each list.
+** [[https://github.com/reinderien/mimic][reinderien/mimic: {ab}using Unicode to create tragedy]]                             :python:github:top:mimic:problems:generate: 
+ <2016-12-14 Wed 07:26>
+
+ mimic
+
+ [ab]using Unicode to create tragedy
+ Introduction
+
+ monster
+
+ mimic provokes:
+
+     fun
+     frustration
+     curiosity
+     murderous rage
+
+ It's inspired by this terrible idea floating around:
+
+     MT: Replace a semicolon (;) with a greek question mark (;) in your friend's C# code and watch them pull their hair out over the syntax error
+     — Peter Ritchie (@peterritchie) November 16, 2014
+
+ There are many more characters in the Unicode character set that look, to some extent or another, like others – homoglyphs. Mimic substitutes common ASCII characters for obscure homoglyphs.
+
+ Fun games to play with mimic:
+
+     Pipe some source code through and see if you can find all of the problems
+     Pipe someone else's source code through without telling them
+     Be fired, and then killed
+** [[https://github.com/pavelgonchar/colornet][pavelgonchar/colornet: Neural Network to colorize grayscale images]]                              :python:github:top:neuron:colorize:images: 
+ <2016-12-14 Wed 07:26>
+
+ colornet
+
+ Neural Network to colorize grayscale images
+** [[https://github.com/cyrus-and/gdb-dashboard][cyrus-and/gdb-dashboard: Modular visual interface for GDB in Python]]                                         :python:github:top:gdb:debug:c: 
+ <2016-12-14 Wed 07:32>
+
+ Modular visual interface for GDB in Python.
+
+ This comes as a standalone single-file .gdbinit which, among the other things, enables a configurable dashboard showing the most relevant information during the program execution. Its main goal is to reduce the number of GDB commands issued to inspect the current program status allowing the programmer to focus on the control flow instead.
+** [[https://github.com/jayfk/statuspage][jayfk/statuspage: A statuspage generator that lets you host your statuspage for free on Github.]]                                         :python:github:top:status:page: 
+ <2016-12-14 Wed 07:34>
+
+ A statuspage generator that lets you host your statuspage for free on GitHub. Uses issues to display incidents and labels for severity.
+** [[https://github.com/nlintz/TensorFlow-Tutorials][nlintz/TensorFlow-Tutorials: Simple tutorials using Google's TensorFlow Framework]]                             :python:github:top:google:learn:study:deep: 
+ <2016-12-14 Wed 07:35>
+
+ Introduction to deep learning based on Google's TensorFlow framework. These tutorials are direct ports of Newmu's Theano Tutorials.
+** [[https://github.com/ujjwalkarn/DataSciencePython][ujjwalkarn/DataSciencePython: common data analysis and machine learning tasks using python]]                    :python:github:top:collection:data:science:analysis: 
+ <2016-12-14 Wed 07:35>
+
+ Python Data Science Tutorials
+
+     This repo contains a curated list of Python tutorials for Data Science, NLP and Machine Learning.
+
+     Curated list of R tutorials for Data Science, NLP and Machine Learning.
+
+     Comprehensive topic-wise list of Machine Learning and Deep Learning tutorials, codes, articles and other resources.
+** [[https://github.com/scrapy/scrapy][scrapy/scrapy: Scrapy, a fast high-level web crawling & scraping framework for Python.]]                         :python:github:top:scrapy:web:spider:framework: 
+ <2016-12-14 Wed 07:36>
+
+ Scrapy is a fast high-level web crawling and web scraping framework, used to crawl websites and extract structured data from their pages. It can be used for a wide range of purposes, from data mining to monitoring and automated testing.
+
+ For more information including a list of features check the Scrapy homepage at: http://scrapy.org
+** [[https://github.com/certbot/certbot][certbot/certbot: Certbot, previously the Let's Encrypt Client, is EFF's tool to obtain certs from Let's Encrypt, and (optionally) auto-enable HTTPS on your server. It can also act as a client for any other CA that uses the ACME protocol.]]                                  :python:github:top:ssl:encryption:web: 
+ <2016-12-14 Wed 07:37>
+
+  Certbot, previously the Let's Encrypt Client, is EFF's tool to obtain certs from Let's Encrypt, and (optionally) auto-enable HTTPS on your server. It can also act as a client for any other CA that uses the ACME protocol.
+** [[https://github.com/reddit/reddit][reddit/reddit: the code that powers reddit.com]]                                        :python:github:top:reddit:power: 
+ <2016-12-14 Wed 07:38>
+
+ Greetings!
+
+ This is the primary codebase that powers reddit.com.
+
+ For notices about major changes and general discussion of reddit development, subscribe to the /r/redditdev and /r/changelog subreddits.
+
+ You can also chat with us via IRC in #reddit-dev on freenode.
+** [[https://github.com/pandas-dev/pandas][pandas-dev/pandas: Flexible and powerful data analysis / manipulation library for Python, providing labeled data structures similar to R data.frame objects, statistical functions, and much more]]                               :python:github:top:data:analysis:library: 
+ <2016-12-14 Wed 07:42>
+
+ What is it
+
+ pandas is a Python package providing fast, flexible, and expressive data structures designed to make working with "relational" or "labeled" data both easy and intuitive. It aims to be the fundamental high-level building block for doing practical, real world data analysis in Python. Additionally, it has the broader goal of becoming the most powerful and flexible open source data analysis / manipulation tool available in any language. It is already well on its way toward this goal.
+ Main Features
+
+ Here are just a few of the things that pandas does well:
+
+     Easy handling of missing data (represented as NaN) in floating point as well as non-floating point data
+     Size mutability: columns can be inserted and deleted from DataFrame and higher dimensional objects
+     Automatic and explicit data alignment: objects can be explicitly aligned to a set of labels, or the user can simply ignore the labels and let Series, DataFrame, etc. automatically align the data for you in computations
+     Powerful, flexible group by functionality to perform split-apply-combine operations on data sets, for both aggregating and transforming data
+     Make it easy to convert ragged, differently-indexed data in other Python and NumPy data structures into DataFrame objects
+     Intelligent label-based slicing, fancy indexing, and subsetting of large data sets
+     Intuitive merging and joining data sets
+     Flexible reshaping and pivoting of data sets
+     Hierarchical labeling of axes (possible to have multiple labels per tick)
+     Robust IO tools for loading data from flat files (CSV and delimited), Excel files, databases, and saving/loading data from the ultrafast HDF5 format
+     Time series-specific functionality: date range generation and frequency conversion, moving window statistics, moving window linear regressions, date shifting and lagging, etc.
+** [[https://github.com/scikit-learn/scikit-learn][scikit-learn/scikit-learn: scikit-learn: machine learning in Python]]                                    :python:github:top:machine:learning: 
+ <2016-12-14 Wed 07:43>
+
+ scikit-learn is a Python module for machine learning built on top of SciPy and distributed under the 3-Clause BSD license.
+
+ The project was started in 2007 by David Cournapeau as a Google Summer of Code project, and since then many volunteers have contributed. See the AUTHORS.rst file for a complete list of contributors.
+
+ It is currently maintained by a team of volunteers.
+
+ Website: http://scikit-learn.org
+** [[https://github.com/airbnb/superset][airbnb/superset: Superset is a data exploration platform designed to be visual, intuitive, and interactive]]                    :python:github:top:data:exploration:platform:visual: 
+ <2016-12-14 Wed 07:45>
+
+ Superset is a data exploration platform designed to be visual, intuitive and interactive.
+
+ [this project used to be named Caravel, and Panoramix in the past]
+** [[https://github.com/XX-net/XX-Net][XX-net/XX-Net: a web proxy tool]]                                   :python:github:top:proxy:google:free: 
+ <2016-12-14 Wed 07:46>
+
+
+     XX-Net is a free desktop application that delivers fast, reliable and secure access to the open Internet for users in censored regions. It uses google app engine (GAE) as a proxy server through the firewall.
+** [[https://github.com/cmusatyalab/openface][cmusatyalab/openface: Face recognition with deep neural networks.]]                        :python:github:top:face:recognition:deep:neural: 
+ <2016-12-14 Wed 07:47>
+
+ Free and open source face recognition with deep neural networks.
+
+     Website: http://cmusatyalab.github.io/openface/
+     API Documentation
+     Join the cmu-openface group or the gitter chat for discussions and installation issues.
+     Development discussions and bugs reports are on the issue tracker.
+
+ This research was supported by the National Science Foundation (NSF) under grant number CNS-1518865. Additional support was provided by the Intel Corporation, Google, Vodafone, NVIDIA, and the Conklin Kistler family fund. Any opinions, findings, conclusions or recommendations expressed in this material are those of the authors and should not be attributed to their employers or funding sources.
