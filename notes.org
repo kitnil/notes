@@ -447,3 +447,188 @@ sites by category.
      Development discussions and bugs reports are on the issue tracker.
 
  This research was supported by the National Science Foundation (NSF) under grant number CNS-1518865. Additional support was provided by the Intel Corporation, Google, Vodafone, NVIDIA, and the Conklin Kistler family fund. Any opinions, findings, conclusions or recommendations expressed in this material are those of the authors and should not be attributed to their employers or funding sources.
+** [[https://github.com/mailpile/Mailpile][mailpile/Mailpile: A free & open modern, fast email client with user-friendly encryption and privacy features]]                                     :python:github:top:mailLclient:web: 
+ <2016-12-14 Wed 07:50>
+
+ Mailpile (https://www.mailpile.is/) is a modern, fast web-mail client with user-friendly encryption and privacy features. The development of Mailpile is funded by a large community of backers and all code related to the project is and will be released under an OSI approved Free Software license.
+
+ Mailpile places great emphasis on providing a clean, elegant user interface and pleasant user experience. In particular, Mailpile aims to make it easy and convenient to receive and send PGP encrypted or signed e-mail.
+
+ Mailpile's primary user interface is web-based, but it also has a basic command-line interface and an API for developers. Using web technology for the interface allows Mailpile to function both as a local desktop application (accessed by visiting localhost in the browser) or a remote web-mail on a personal server or VPS.
+
+ The core of Mailpile is a fast search engine, custom written to deal with large volumes of e-mail on consumer hardware. The search engine allows e-mail to be organized using tags (similar to GMail's labels) and the application can be configured to automatically tag incoming mail either based on static rules or bayesian classifiers.
+
+ Note: We are currently "in beta", which means the app's basic features are (mostly) in place and packages are available for popular operating systems, for people who would like to help test and debug. For more details follow @MailpileTeam on Twitter or read our blog.
+** [[https://github.com/mail-in-a-box/mailinabox][mail-in-a-box/mailinabox: Mail-in-a-Box helps individuals take back control of their email by defining a one-click, easy-to-deploy SMTP+everything else server: a mail server in a box.]]                                         :python:github:top:mail:script: 
+ <2016-12-14 Wed 07:53>
+
+ Mail-in-a-Box helps individuals take back control of their email by defining a one-click, easy-to-deploy SMTP+everything else server: a mail server in a box.
+
+ Please see https://mailinabox.email for the project's website and setup guide!
+
+ Our goals are to:
+
+     Make deploying a good mail server easy.
+     Promote decentralization, innovation, and privacy on the web.
+     Have automated, auditable, and idempotent configuration.
+     Not make a totally unhackable, NSA-proof server.
+     Not make something customizable by power users.
+
+ Additionally, this project has a Code of Conduct, which supersedes the goals above. Please review it when joining our community.
+** [[https://github.com/charlierguo/gmail][charlierguo/gmail: A Pythonic interface for Google Mail]]                                     :python:github:top:gmail:interface: 
+ <2016-12-14 Wed 07:54>
+
+ GMail for Python
+
+ A Pythonic interface to Google's GMail, with all the tools you'll need. Search, read and send multipart emails, archive, mark as read/unread, delete emails, and manage labels.
+
+ This library is still under development, so please forgive some of the rough edges
+
+ Heavily inspired by Kriss "nu7hatch" Kowalik's GMail for Ruby library
+** [[https://github.com/laramies/theHarvester][laramies/theHarvester: E-mail, subdomain and people names harvester]]          :python:github:top:analysis:penetration:mail:subdomain:people: 
+ <2016-12-14 Wed 07:54>
+
+ What is this?
+ -------------
+
+ theHarvester is a tool for gathering e-mail accounts, subdomain names, virtual
+ hosts, open ports/ banners, and employee names from different public sources
+ (search engines, pgp key servers).
+
+ Is a really simple tool, but very effective for the early stages of a penetration
+ test or just to know the visibility of your company in the Internet.
+
+ The sources are:
+
+ Passive:
+ --------
+ -google: google search engine  - www.google.com
+
+ -googleCSE: google custom search engine
+
+ -google-profiles: google search engine, specific search for Google profiles
+
+ -bing: microsoft search engine  - www.bing.com
+
+ -bingapi: microsoft search engine, through the API (you need to add your Key in
+           the discovery/bingsearch.py file)
+
+ -dogpile: Dogpile search engine - www.dogpile.com
+
+ -pgp: pgp key server - mit.edu
+
+ -linkedin: google search engine, specific search for Linkedin users
+
+
+ -vhost: Bing virtual hosts search
+
+ -twitter: twitter accounts related to an specific domain (uses google search)
+
+ -googleplus: users that works in target company (uses google search)
+
+ -yahoo: Yahoo search engine
+
+ -baidu: Baidu search engine
+
+ -shodan: Shodan Computer search engine, will search for ports and banner of the
+          discovered hosts  (http://www.shodanhq.com/)
+** [[https://github.com/tomekwojcik/envelopes][tomekwojcik/envelopes: Mailing for human beings]]                                     :python:github:top:mail:human:easy: 
+ <2016-12-14 Wed 07:55>
+
+ Envelopes is a wrapper for Python's email and smtplib modules. It aims to make working with outgoing e-mail in Python simple and fun.
+** [[https://github.com/EFForg/starttls-everywhere][EFForg/starttls-everywhere: A system for ensuring & authenticating STARTTLS encryption between mail servers]]                           :python:github:top:mail:ttls:security:ensure: 
+ <2016-12-14 Wed 07:56>
+
+ STARTTLS Everywhere
+ Example usage
+
+ WARNING: this is a pre-alpha codebase. Do not run it on production mailservers!!!
+
+ If you have a Postfix server you're willing to endanger deliverability on, you can try obtain a certificate with the Let's Encrypt Python Client, note the directory it lives in below /etc/letsencrypt/live and then do:
+
+ git clone https://github.com/EFForg/starttls-everywhere
+ cd starttls-everywhere
+ # Promise you don't care if deliverability breaks on this mail server
+ letsencrypt-postfix/PostfixConfigGenerator.py examples/starttls-everywhere.json /etc/postfix /etc/letsencrypt/live/YOUR.DOMAIN.EXAMPLE.COM
+
+ This will:
+
+     Ensure your mail server initiates STARTTLS encryption
+     Install the Let's Encrypt cert in Postfix
+     Enforce mandatory TLS to some major email domains
+     Enforce minimum TLS versions to some major email domains
+** [[https://github.com/eugene-eeo/mailthon][eugene-eeo/mailthon: elegant email sending for Python]]                                       :python:github:top:mail:send:lib: 
+ <2016-12-14 Wed 07:57>
+
+ Useful links: Documentation (outdated) | Issue Tracker | PyPI Page
+
+ Mailthon is an MIT licensed email library for Python that aims to be highly extensible and composable. Mailthon is unicode aware and supports internationalised headers and email addresses. Also it aims to be transport agnostic, meaning that SMTP can be swapped out for other transports:
+** [[https://github.com/pulb/mailnag][pulb/mailnag: An extensible mail notification daemon]]                         :python:github:top:mail:notification:gnome:gtk: 
+ <2016-12-14 Wed 07:57>
+
+ Mailnag is a daemon program that checks POP3 and IMAP servers for new mail.
+ On mail arrival it performs various actions provided by plugins.
+ Mailnag comes with a set of desktop-independent default plugins for
+ visual/sound notifications, script execution etc. and can be extended
+ with additional plugins easily.
+** [[https://github.com/git-multimail/git-multimail][git-multimail/git-multimail: Send notification emails for pushes to a git repository (an improved version of post-receive-mail)]]                        :python:github:top:git:pushes:notification:mail: 
+ <2016-12-14 Wed 07:58>
+
+ git-multimail is a tool for sending notification emails on pushes to a Git repository. It includes a Python module called git_multimail.py, which can either be used as a hook script directly or can be imported as a Python module into another script.
+
+ git-multimail is derived from the Git project's old contrib/hooks/post-receive-email, and is mostly compatible with that script. See README.migrate-from-post-receive-email for details about the differences and for how to migrate from post-receive-email to git-multimail.
+** [[https://github.com/hmason/introbot][hmason/introbot: A python script to generate the text of intro e-mails.]]                                 :python:github:mail:introductury:intro: 
+ <2016-12-14 Wed 08:00>
+
+ Introbot is a quick python script to write an introductory e-mail between n parties.
+
+ To use, edit settings.py and swap in your info.
+** [[https://github.com/kdeldycke/maildir-deduplicate][kdeldycke/maildir-deduplicate: :e-mail: CLI to deduplicate mails from maildir folders.]]                              :python:github:top:mail:deduplication:cli: 
+ <2016-12-14 Wed 08:00>
+
+ Command-line tool to deduplicate mails from a set of maildir folders.
+** [[https://github.com/schweikert/mailgraph][schweikert/mailgraph: Mail plotting script]]                            :perl:github:top:mail:plotting:script:graph: 
+ <2016-12-14 Wed 08:05>
+
+ mailgraph is a very simple mail statistics RRDtool frontend for Postfix
+ that produces daily, weekly, monthly and yearly graphs of received/sent 
+ and bounced/rejected mail (SMTP traffic).
+** [[https://github.com/Gilwyad/mailnesia.com][Gilwyad/mailnesia.com: Anonymous Email in Seconds]]                                    :perl:github:top:anonymous:mail:com: 
+ <2016-12-14 Wed 08:06>
+
+ Mailnesia is a fully featured disposable email provider. Just like a real email service but without any password or the ability to send mail. Features at a glance:
+
+     Automatically visits registration/activation links in emails, completing any registration process instantly
+     Alternate mailbox names (aliases) for extra anonymity, use any name you want
+     Alternative domain names (all mail is accepted regardless of domain name)
+     Displaying HTML emails correctly including attached images, files
+     Multiple encodings supported: Chinese, Japanese, Korean, Russian etc
+     RSS feed for every mailbox
+     New emails appear as they arrive, without needing to refresh the page
+     Fast, easy to use interface
+     Translated to 10+ languages
+
+ This repository contains the source code of Mailnesia. What it includes:
+
+     The website including everything: images, CSS, JavaScript etc
+     The email receiving server
+     Additional utilities for maintenance, testing etc
+     How to set up the SQL tables
+
+ What is not included:
+
+     Configuration for web server, database server or any other external utility
+     Scripts to start and monitor the website/RSS/email server processes
+** [[https://www.youtube.com/watch?v=yzIMircGU5I&list=PL5-da3qGB5ICCsgW1MxlZ0Hq8LL5U3u9y][What is pandas? (Introduction to the Q&A series) - YouTube]]                                                       :youtube:channel: 
+ <2016-12-14 Wed 08:28>
+
+
+ What is pandas? (Introduction to the Q&A series)
+** [[https://www.youtube.com/watch?v=POe1cufDWFs][Data Science with Python Pandas by Athena Kan - YouTube]]                                                 :youtube:python:pandas: 
+ <2016-12-14 Wed 08:32>
+
+ Harvard Business Review named data scientist "the sexiest job of the 21st century." Python pandas is a commonly-used tool in the industry to easily and efficiently clean, analyze, and visualize data of varying sizes and types. In this seminar, we'll learn how to use pandas to extract meaningful insights and recommendations from real-world datasets.
+** [[http://orgmode.org/manual/index.html][The Org Manual]]                                                  :org:mode:manual:official:long: 
+ <2016-12-14 Wed 08:35>
+
+ This manual is a printed edition of the official Org reference documentation from the Org 7.3 distribution.
