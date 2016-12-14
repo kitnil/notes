@@ -1185,3 +1185,67 @@ sites by category.
  <2016-12-14 Wed 11:12>
 
  Drag Stuff is a minor mode for Emacs that makes it possible to drag stuff (words, region, lines) around in Emacs.
+** [[https://github.com/emcrisostomo/fswatch][emcrisostomo/fswatch: A cross-platform file change monitor with multiple backends: Apple OS X File System Events, *BSD kqueue, Solaris/Illumos File Events Notification, Linux inotify, Microsoft Windows and a stat()-based backend.]]                                               :cpp:file:change:watcher: 
+ <2016-12-14 Wed 11:19>
+
+  A cross-platform file change monitor with multiple backends: Apple OS X File System Events, *BSD kqueue, Solaris/Illumos File Events Notification, Linux inotify, Microsoft Windows and a stat()-based backend. http://emcrisostomo.github.io/fswatch/
+** [[https://github.com/CleverRaven/Cataclysm-DDA][CleverRaven/Cataclysm-DDA: Cataclysm - Dark Days Ahead. A fork/variant of Cataclysm Roguelike by Whales.]]                                             :github:top:game:roguelike: 
+ <2016-12-14 Wed 11:21>
+
+ Cataclysm: Dark Days Ahead is a roguelike set in a post-apocalyptic world. While some have described it as a "zombie game", there is far more to Cataclysm than that. Struggle to survive in a harsh, persistent, procedurally generated world. Scavenge the remnants of a dead civilization for food, equipment, or, if you are lucky, a vehicle with a full tank of gas to get you the hell out of Dodge. Fight to defeat or escape from a wide variety of powerful monstrosities, from zombies to giant insects to killer robots and things far stranger and deadlier, and against the others like yourself, that want what you have...
+** [[https://github.com/orf/gping][orf/gping: Ping, but with a graph]]                                          :python:github:top:ping:graph: 
+ <2016-12-14 Wed 11:23>
+
+ My apartments internet is all 4g, and while it's normally pretty fast it can be a bit flakey. I often found myself running ping -t google.com in a command window to get a rough idea of the network speed, and I thought a graph would be a great way to visualize the data. I still wanted to just use the command line though, so I decided to try and write a cross platform one that I could use. And here we are.
+** [[https://github.com/smira/aptly][smira/aptly: aptly - Debian repository management tool]]                       :go:lang:github:top:debian:repository:management: 
+ <2016-12-14 Wed 11:27>
+
+ Aptly is a swiss army knife for Debian repository management.
+ http://www.aptly.info/img/aptly_logo.png
+
+ Documentation is available at http://www.aptly.info/. For support use mailing list aptly-discuss.
+
+ Aptly features: ("+" means planned features)
+
+     make mirrors of remote Debian/Ubuntu repositories, limiting by components/architectures
+     take snapshots of mirrors at any point in time, fixing state of repository at some moment of time
+     publish snapshot as Debian repository, ready to be consumed by apt
+     controlled update of one or more packages in snapshot from upstream mirror, tracking dependencies
+     merge two or more snapshots into one
+     filter repository by search query, pulling dependencies when required
+     publish self-made packages as Debian repositories
+     REST API for remote access
+     mirror repositories "as-is" (without resigning with user's key) (+)
+     support for yum repositories (+)
+
+ Current limitations:
+
+     translations are not supported yet
+** [[https://notabug.org/koz.ross/awesome-c][koz.ross/awesome-c: A curated list of awesome C frameworks, libraries, resources and other shiny things. Inspired by all the other awesome-... projects out there. - NotABug.org: Free code hosting]]                                                  :c:lang:awesome:links: 
+ <2016-12-14 Wed 11:36>
+
+ A curated list of C good stuff. This list contains only free software for code, and sellers who aren't evil for physical resources.
+
+ This is released under a Creative Commons-Attribution-ShareAlike license, version 4. You can find its text in the LICENSE file.
+
+ This project is part of Peers - a community for growing our freedom. Support us today!
+
+ An important note: This project does not index anything C++-related; only pure C stuff is considered.
+
+ Note for contributors: If you want to make a pull request, please read CONTRIBUTING.md first.
+** [[https://www.youtube.com/watch?v=DR3dBWZWaGg&list=PLG9dLrY9JZKgXfVYlg_0lq6s-i5r0Lw0w&index=14][Программирование на Си. #14. Указатели. - YouTube]]                                 :c:lang:tutorial:youtube:video:russian: 
+ <2016-12-14 Wed 11:41>
+
+ В данном видео-уроке мы познакомимся с указателями. Одна из важнейших тем в программировании на C и C++.
+** [[https://habrahabr.ru/post/265635/][Навигация в крупных проектах для Vim и Emacs / Хабрахабр]]                                                   :gtags:howto:russian: 
+ <2016-12-14 Wed 13:16>
+
+  Лучше всего установить плагин ggtags, взять его можно здесь или в elpa, melpa или marmalade. Потом откройте один из файлов проекта и нажмите M-x ggtags-mode, затем M-x ggtags-visit-project-root и выберите папку где тэги лежат. Все, дальше в рамках файлов проекта если вы нажмете M-., то сработает переход к определению символа, который в данный момент под курсором. Хотите ввести имя символа вручную — C-u M-.. Если у символа больше одного определения, то нажимайте M-n и M-p для переключения между определениями. Чтобы обновить файл тэгов нажмите M-x ggtags-update-tags находясь на одном из файлов проекта.
+** [[https://github.com/vinszent/gnome-twitch][vinszent/gnome-twitch: Enjoy Twitch on your GNU/Linux desktop]]                                      :gnome:twitch:video:stream:gaming: 
+ <2016-12-14 Wed 13:52>
+
+  Enjoy Twitch on your GNU/Linux desktop http://gnome-twitch.vinszent.com
+** [[https://github.com/docker/docker/issues/23630][Bug: docker daemon failing to start · Issue #23630 · docker/docker]]                            :docker:error:systemd:fail:start:bug:networking: 
+ <2016-12-14 Wed 14:07>
+
+  rm -rf /var/lib/docker/network and restart daemon.
