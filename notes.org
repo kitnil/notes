@@ -632,3 +632,272 @@ sites by category.
  <2016-12-14 Wed 08:35>
 
  This manual is a printed edition of the official Org reference documentation from the Org 7.3 distribution.
+** [[https://github.com/jlevy/repren][jlevy/repren: Rename anything]]                           :python:github:top:rename:files:organization: 
+ <2016-12-14 Wed 08:44>
+
+ Repren is a simple but flexible, command-line tool for rewriting file contents according to a set of regular expression patterns, and renaming or moving files. Essentially, it is a general-purpose, brute-force text file refactoring tool.
+
+ For example, repren can perform a Java refactor that involves renaming the Java class filename, as well as every occurrence of that class name in code or documentation. Or it can change the naming scheme for files, so every path like foo.1.jpg is renamed foo-1.jpg. Or it can move files by rewriting parent directories.
+
+ It's strives to be more powerful and thoughtful than usual options like perl -pie, rpl, sed, or rename:
+
+     It can do search-and-replace, file renaming, or both.
+     It allows file renaming on full paths, including moving files, creating directories, or rewriting directory hierarchies.
+     It supports fully expressive regular expressions, with capturing groups and back substitutions.
+     It performs simultaneous group renamings, i.e. rename "foo" as "bar", and "bar" as "foo" at once, without requiring a temporary intermediate rename.
+     It is careful. It has a nondestructive mode, and prints clear stats on its changes. It leaves backups. File operations are done atomically, so interruptions never leave a previously existing file truncated or partly edited.
+     It supports helpful variations like an option to replace on word breaks, so you avoid splitting a word, and "case-preserving" renames that let you find and rename identifiers with case variants (lowerCamel, UpperCamel, lower_underscore, and UPPER_UNDERSCORE) consistently.
+     It has this nice documentaion!
+** [[https://github.com/wting/autojump][wting/autojump: A cd command that learns - easily navigate directories from the command line]]                                  :python:github:top:cd:naviation:shell: 
+ <2016-12-14 Wed 08:45>
+
+ autojump - a faster way to navigate your filesystem
+ DESCRIPTION
+
+ autojump is a faster way to navigate your filesystem. It works by maintaining a database of the directories you use the most from the command line.
+
+ Directories must be visited first before they can be jumped to.
+** [[https://github.com/docopt/docopt][docopt/docopt: Pythonic command line arguments parser, that will make you smile]]                       :python:github:top:fun:smile:shell:cli:arguments: 
+ <2016-12-14 Wed 08:48>
+
+ Hell no! You know what's awesome? It's when the option parser is generated based on the beautiful help message that you write yourself! This way you don't need to write this stupid repeatable parser-code, and instead can write only the help message--the way you want it.
+
+ docopt helps you create most beautiful command-line interfaces easily:
+** [[https://github.com/gleitz/howdoi][gleitz/howdoi: howdoi - instant coding answers via the command line]]                       :python:github:top:hack:answers:questions:stackoverflowgoogle: 
+ <2016-12-14 Wed 08:49>
+
+ Are you a hack programmer? Do you find yourself constantly Googling for how to do basic programing tasks?
+
+ Suppose you want to know how to format a date in bash. Why open your browser and read through blogs (risking major distraction) when you can simply stay in the console and ask howdoi:
+** [[https://github.com/sivel/speedtest-cli][sivel/speedtest-cli: Command line interface for testing internet bandwidth using speedtest.net]]                              :python:github:top:speedtest:internet:cli: 
+ <2016-12-14 Wed 08:51>
+
+ Command line interface for testing internet bandwidth using speedtest.net
+** [[https://github.com/chriskiehl/Gooey][chriskiehl/Gooey: Turn (almost) any Python command line program into a full GUI application with one line]]                             :python:github:top:cli:gui:convert:oneline: 
+ <2016-12-14 Wed 08:51>
+
+  Turn (almost) any Python command line program into a full GUI application with one line
+** [[https://github.com/idank/explainshell][idank/explainshell: match command-line arguments to their help text]]                                   :python:github:top:explain:cli:man:shell: 
+ <2016-12-14 Wed 08:52>
+
+ explainshell is a tool (with a web interface) capable of parsing man pages, extracting options and explain a given command-line by matching each argument to the relevant help text in the man page.
+ How?
+
+ explainshell is built from the following components:
+
+     man page reader which converts a given man page from raw format to html (manpage.py)
+     classifier which goes through every paragraph in the man page and classifies it as contains options or not (algo/classifier.py)
+     an options extractor that scans classified paragraphs and looks for options (options.py)
+     a storage backend that saves processed man pages to mongodb (store.py)
+     a matcher that walks the command's AST (parsed by bashlex) and contextually matches each node to the relevant help text (matcher.py)
+
+ When querying explainshell, it:
+
+     parses the query into an AST
+     visits interesting nodes in the AST, such as:
+         command nodes - these nodes represent a simple command
+         shell related nodes - these nodes represent something the shell interprets such as '|', '&&'
+     for every command node we check if we know how to explain the current program, and then go through the rest of the tokens, trying to match each one to the list of known options
+     returns a list of matches that are rendered with Flask
+** [[https://github.com/chrippa/livestreamer][chrippa/livestreamer: Command-line utility that extracts streams from various services and pipes them into a video player of choice.]]                                 :python:github:top:stream:live:youtube: 
+ <2016-12-14 Wed 08:54>
+
+ Livestreamer is a command-line utility that pipes video streams from various services into a video player, such as VLC. The main purpose of Livestreamer is to allow the user to avoid buggy and CPU heavy flash plugins but still be able to enjoy various streamed content. There is also an API available for developers who want access to the video stream data.
+
+     Documentation: http://docs.livestreamer.io/
+     Issue tracker: https://github.com/chrippa/livestreamer/issues
+     PyPI: https://pypi.python.org/pypi/livestreamer
+     Discussions: https://groups.google.com/forum/#!forum/livestreamer
+     IRC: #livestreamer @ Freenode
+     Free software: Simplified BSD license
+** [[https://github.com/chrisallenlane/cheat][chrisallenlane/cheat: cheat allows you to create and view interactive cheatsheets on the command-line. It was designed to help remind *nix system administrators of options for commands that they use frequently, but not frequently enough to remember.]]                                          :python:github:top:cheatsheat: 
+ <2016-12-14 Wed 08:55>
+
+ cheat allows you to create and view interactive cheatsheets on the command-line. It was designed to help remind *nix system administrators of options for commands that they use frequently, but not frequently enough to remember.
+** [[https://github.com/Russell91/pythonpy][Russell91/pythonpy: the swiss army knife of the command line]]                               :python:github:top:swiss:knife:cli:shell: 
+ <2016-12-14 Wed 09:13>
+
+  the swiss army knife of the command line
+** [[https://github.com/maebert/jrnl][maebert/jrnl: A simple command line journal application that stores your journal in a plain text file.]]                                    :python:github:top:journal:cli:text: 
+ <2016-12-14 Wed 09:14>
+
+ For news on updates or to get help, read the docs, follow @maebert or submit an issue on Github.
+
+ jrnl is a simple journal application for your command line. Journals are stored as human readable plain text files - you can put them into a Dropbox folder for instant syncing and you can be assured that your journal will still be readable in 2050, when all your fancy iPad journal applications will long be forgotten.
+
+ jrnl also plays nice with the fabulous DayOne and can read and write directly from and to DayOne Journals.
+
+ Optionally, your journal can be encrypted using the 256-bit AES.
+ Why keep a journal?
+
+ Journals aren't only for 13-year old girls and people who have too much time on their summer vacation. A journal helps you to keep track of the things you get done and how you did them. Your imagination may be limitless, but your memory isn't. For personal use, make it a good habit to write at least 20 words a day. Just to reflect what made this day special, why you haven't wasted it. For professional use, consider a text-based journal to be the perfect complement to your GTD todo list - a documentation of what and how you've done it.
+** [[https://github.com/kennethreitz/clint][kennethreitz/clint: Python Command-line Application Tools]]                                 :python:github:top:develop:cli:library: 
+ <2016-12-14 Wed 09:15>
+
+ Clint is awesome. Crazy awesome. It supports colors, but detects if the session is a TTY, so doesn't render the colors if you're piping stuff around. Automagically.
+
+ Awesome nest-able indentation context manager. Example: (with indent(4): puts('indented text')). It supports custom email-style quotes. Of course, it supports color too, if and when needed.
+
+ It has an awesome Column printer with optional auto-expanding columns. It detects how wide your current console is and adjusts accordingly. It wraps your words properly to fit the column size. With or without colors mixed in. All with a single function call.
+
+ The world's easiest to use implicit argument system w/ chaining methods for filtering. Seriously.
+
+ Run the various executables in examples to get a good feel for what Clint offers.
+
+ You'll never want to not use it.
+** [[https://github.com/donnemartin/haxor-news][donnemartin/haxor-news: Browse Hacker News like a haxor: A Hacker News command line interface (CLI).]]                                     :python:github:top:cli:hacker:news: 
+ <2016-12-14 Wed 09:15>
+
+  Browse Hacker News like a haxor: A Hacker News command line interface (CLI).
+** [[https://github.com/sympy/sympy][sympy/sympy: A computer algebra system written in pure Python]]                                :python:github:top:algebra:math:library: 
+ <2016-12-14 Wed 09:19>
+
+  A computer algebra system written in pure Python http://sympy.org/
+** [[https://github.com/nylas/sync-engine][nylas/sync-engine: IMAP/SMTP sync system with modern APIs]]                          :python:github:top:sync:imap:stmp:engine:rest: 
+ <2016-12-14 Wed 09:20>
+
+ The Nylas Sync Engine provides a RESTful API on top of a powerful email sync platform, making it easy to build apps on top of email. See the full API documentation for more details.
+** [[https://github.com/Supervisor/supervisor][Supervisor/supervisor: Supervisor process control system for UNIX]]                                  :python:github:top:system:conrol:unix: 
+ <2016-12-14 Wed 09:20>
+
+ Supervisor is a client/server system that allows its users to control a number of processes on UNIX-like operating systems.
+** [[https://github.com/facebookarchive/huxley][facebookarchive/huxley: A testing system for catching visual regressions in Web applications.]]                                       :python:github:top:watch:browser: 
+ <2016-12-14 Wed 09:21>
+
+ Watches you browse, takes screenshots, tells you when they change
+
+ Huxley is a test-like system for catching visual regressions in Web applications. It was built by Pete Hunt with input from Maykel Loomans at Instagram.
+ Archived Repo
+
+ This is an archived project and is no longer supported or updated by Facebook or Instagram. Please do not file issues or pull-requests against this repo. If you wish to continue to develop this code yourself, we recommend you fork it.
+** [[https://github.com/tschellenbach/Stream-Framework][tschellenbach/Stream-Framework: Stream Framework is a Python library, which allows you to build newsfeed and notification systems using Cassandra and/or Redis.]] :python:github:top:stream:framework:android:newsfeed:notification:redis: 
+ <2016-12-14 Wed 09:22>
+
+ Stream Framework is a python library which allows you to build activity streams & newsfeeds using Cassandra and/or Redis. If you're not using python have a look at Stream, which supports Node, Ruby, PHP, Python, Go, Scala, Java and REST.
+
+ Examples of what you can build are:
+
+     Activity streams such as seen on Github
+     A Twitter style newsfeed
+     A feed like Instagram/ Pinterest
+     Facebook style newsfeeds
+     A notification system
+
+ (Feeds are also commonly called: Activity Streams, activity feeds, news streams.)
+** [[https://github.com/cuckoosandbox/cuckoo][cuckoosandbox/cuckoo: Cuckoo Sandbox is an automated dynamic malware analysis system]]                                      :python:github:top:malware:system: 
+ <2016-12-14 Wed 09:23>
+
+ In three words, Cuckoo Sandbox is a malware analysis system.
+
+ What does that mean? It simply means that you can throw any suspicious file at it and in a matter of seconds Cuckoo will provide you back some detailed results outlining what such file did when executed inside an isolated environment.
+
+ If you want to contribute to development, please read this and this first. Make sure you check our Issues and Pull Requests and that you join our IRC channel.
+** [[https://github.com/giampaolo/psutil][giampaolo/psutil: A cross-platform process and system utilities module for Python]]                                  :python:github:top:system:information: 
+ <2016-12-14 Wed 09:23>
+
+ psutil (process and system utilities) is a cross-platform library for retrieving information on running processes and system utilization (CPU, memory, disks, network) in Python. It is useful mainly for system monitoring, profiling and limiting process resources and management of running processes. It implements many functionalities offered by command line tools such as: ps, top, lsof, netstat, ifconfig, who, df, kill, free, nice, ionice, iostat, iotop, uptime, pidof, tty, taskset, pmap. It currently supports Linux, Windows, OSX, Sun Solaris, FreeBSD, OpenBSD and NetBSD, both 32-bit and 64-bit architectures, with Python versions from 2.6 to 3.5 (users of Python 2.4 and 2.5 may use 2.1.3 version). PyPy is also known to work.
+** [[https://github.com/Jahaja/psdash][Jahaja/psdash: A linux system information web dashboard using psutils and flask]]                    :python:github:top:web:system:information:dashboard: 
+ <2016-12-14 Wed 09:24>
+
+ psdash is a system information web dashboard for linux using data mainly served by psutil - hence the name.
+
+     Features
+     Installation
+     Getting started
+     Configuration
+     Screenshots
+     License
+
+ Features
+
+     Overview
+     Dashboard overview of the system displaying data on cpu, disks, network, users, memory, swap and network.
+
+     Processes
+     List processes (top like) and view detailed process information about each process.
+
+     Apart from a detailed process overview this is also available for each process:
+         Open files
+         Open connections
+         Memory maps
+         Child processes
+         Resource limits
+     Disks
+     List info on all disks and partitions.
+     Network
+     List info on all network interfaces and the current throughput. System-wide open connections listing with filtering. Somewhat like netstat.
+     Logs
+     Tail and search logs. The logs are added by patterns (like /var/log/*.log) which are checked periodically to account for new or deleted files.
+     Multi-node/Cluster Support for multiple agent nodes that is either specified by a config or will register themselves on start-up to a common psdash node that runs the web interface.
+     All data is updated automatically, no need to refresh
+
+ The GUI is pretty much a modified bootstrap example as I'm no designer at all. If you got a feel for design and like to improve the UI parts of psdash, please create a pull request with your changes. It would be much appreciated as there's much room for improvements.
+** [[https://github.com/stamparm/maltrail][stamparm/maltrail: Malicious traffic detection system]]                  :python:github:top:traffic:malicious:detection:system: 
+ <2016-12-14 Wed 09:24>
+
+ Maltrail is a malicious traffic detection system, utilizing publicly available (black)lists containing malicious and/or generally suspicious trails, along with static trails compiled from various AV reports and custom user defined lists, where trail can be anything from domain name (e.g. zvpprsensinaix.com for Banjori malware), URL (e.g. http://109.162.38.120/harsh02.exe for known malicious executable), IP address (e.g. 185.130.5.231 for known attacker) or HTTP User-Agent header value (e.g. sqlmap for automatic SQL injection and database takeover tool). Also, it uses (optional) advanced heuristic mechanisms that can help in discovery of unknown threats (e.g. new malware).
+** [[https://github.com/NVIDIA/DIGITS][NVIDIA/DIGITS: Deep Learning GPU Training System]]                       :python:github:top:nvidia:gpu:deep:learning:tool: 
+ <2016-12-14 Wed 09:25>
+
+  Deep Learning GPU Training System https://developer.nvidia.com/digits
+** [[https://github.com/luispedro/BuildingMachineLearningSystemsWithPython][luispedro/BuildingMachineLearningSystemsWithPython: Source Code for the book Building Machine Learning Systems with Python]]              :python:github:top:book:building:machine:learning:systems: 
+ <2016-12-14 Wed 09:25>
+
+ Source Code for the book Building Machine Learning Systems with Python by Luis Pedro Coelho and Willi Richert.
+
+ The book was published in 2013 (second edition in 2015) by Packt Publishing and is available from their website.
+
+ The code in the repository corresponds to the second edition. Code for the first edition is available in first_edition branch.
+** [[https://github.com/Yelp/dumb-init][Yelp/dumb-init: A minimal init system for Linux containers]]                :python:github:top:docker:container:minimal:init:system: 
+ <2016-12-14 Wed 09:26>
+
+ dumb-init is a simple process supervisor and init system designed to run as PID 1 inside minimal container environments (such as Docker). It is deployed as a small, statically-linked binary written in C.
+
+ Lightweight containers have popularized the idea of running a single process or service without normal init systems like systemd or sysvinit. However, omitting an init system often leads to incorrect handling of processes and signals, and can result in problems such as containers which can't be gracefully stopped, or leaking containers which should have been destroyed.
+
+ dumb-init enables you to simply prefix your command with dumb-init. It acts as PID 1 and immediately spawns your command as a child process, taking care to properly handle and forward signals as they are received.
+** [[https://github.com/quokkaproject/quokka][quokkaproject/quokka: CMS (Content Management System) - Python, Flask and MongoDB]]                            :python:github:top:cms:django:flask:mongodb: 
+ <2016-12-14 Wed 09:27>
+
+  CMS (Content Management System) - Python, Flask and MongoDB http://www.quokkaproject.org
+** [[https://github.com/ckan/ckan][ckan/ckan: CKAN is an open-source DMS (data management system) for powering data hubs and data portals. CKAN makes it easy to publish, share and use data. It powers datahub.io, catalog.data.gov and data.gov.uk among many other sites.]]                                  :python:github:top:data:manage:system: 
+ <2016-12-14 Wed 09:27>
+
+ CKAN is the world’s leading open-source data portal platform. CKAN makes it easy to publish, share and work with data. It's a data management system that provides a powerful platform for cataloging, storing and accessing datasets with a rich front-end, full API (for both data and catalog), visualization tools and more. Read more at ckan.org.
+** [[https://github.com/mathics/Mathics][mathics/Mathics: a general-purpose computer algebra system]]                                 :python:github:top:math:compute:system: 
+ <2016-12-14 Wed 09:28>
+
+ Mathics is a general-purpose computer algebra system (CAS). It is meant to be a free, lightweight alternative to Mathematica.
+
+ The home page of Mathics is http://mathics.github.io.
+
+- [[https://mathics.angusgriffith.com/][Mathics]]
+
+** [[https://github.com/sdg-mit/gitless][sdg-mit/gitless: A version control system built on top of Git]]                     :python:github:top:git:less:version:control:system: 
+ <2016-12-14 Wed 09:28>
+
+ Gitless is an experimental version control system built on top of Git. Many people complain that Git is hard to use. We think the problem lies deeper than the user interface, in the concepts underlying Git. Gitless is an experiment to see what happens if you put a simple veneer on an app that changes the underlying concepts. Because Gitless is implemented on top of Git (could be considered what Git pros call a "porcelain" of Git), you can always fall back on Git. And of course your coworkers you share a repository with need never know that you're not a Git aficionado.
+
+- [[http://gitless.com/][Gitless]]
+** [[https://github.com/PressLabs/gitfs][PressLabs/gitfs: Version controlled file system]]                                      :python:github:top:git:filesystem: 
+ <2016-12-14 Wed 09:31>
+
+ gitfs is a FUSE file system that fully integrates with git. You can mount a remote repository's branch locally, and any subsequent changes made to the files will be automatically committed to the remote.
+ What's its purpose?
+
+ gitfs was designed to bring the full powers of git to everyone, no matter how little they know about versioning. A user can mount any repository and all the his changes will be automatically converted into commits. gitfs will also expose the history of the branch you're currently working on by simulating snapshots of every commit.
+
+ gitfs is useful in places where you want to keep track of all your files, but at the same time you don't have the possibility of organizing everything into commits yourself. A FUSE filesystem for git repositories, with local cache
+ Features
+
+     Automatically commits changes: create, delete, update files and their metadata
+     Browse through working index and commit history
+     Merges with upstream by automatically accepting local changes
+     Caching commits reduces the memory footprint and speeds up navigation
+     Reduces the number of pushes by batching commits
+** [[https://github.com/pinry/pinry][pinry/pinry: The open-source core of Pinry, a tiling image board system for people who want to save, tag, and share images, videos and webpages in an easy to skim through format.]]                                    :python:github:top:image:tag:pinterest:tiling: 
+ <2016-12-14 Wed 09:32>
+
+ The open-source core of Pinry, a tiling image board system for people who want to save, tag, and share images, videos and webpages in an easy to skim through format.
+
+ For more information and a working demo board visit getpinry.com.
