@@ -1289,3 +1289,246 @@ sites by category.
  <2016-12-15 Thu 06:51>
 
  These are my configuration files for UNIX home directories. If you clone this, be aware that I break stuff randomly and will happily use git push --force. You’ve been warned.
+** [[https://www.packtpub.com/networking-and-servers/extending-ansible][Extending Ansible | PACKT Books]]                                     :ansible:book:official:recommended: 
+ <2016-12-15 Thu 08:38>
+
+
+ Extending Ansible
+ Learning
+ Rishabh Das
+ March 2016
+ 2 customer reviews
+ Discover how to efficiently deploy and customize Ansible in the way your platform demands
+** [[https://github.com/chaica/feed2tweet][chaica/feed2tweet: Parse rss feed and tweet new posts to Twitter]]                                 :python:github:top:feed:tweet:rss:atom: 
+ <2016-12-15 Thu 08:44>
+
+ Feed2tweet automatically parses rss feeds, identifies new posts and posts them on Twitter. For the full documentation, read it online.
+** [[https://github.com/chaica][chaica]]                               :python:github:user:developer:feed2tweet: 
+ <2016-12-15 Thu 08:47>
+
+
+     feed2tweet
+
+     Parse rss feed and tweet new posts to Twitter
+
+     Python 63 3
+     retweet
+
+     Retweet automatically retweets tweets from a Twitter user
+
+     Python 56 15
+     db2twitter
+
+     Build and send tweets with data from your database
+
+     Python 30 1
+     twitterwatch
+
+     Twitter bot to watch the activity of a Twitter user timeline
+
+     Python 11 2
+     persistentlist
+
+     Python 5 1
+** Настоящая консоль                  :youtube:future:channel:title:thoughts: 
+ <2016-12-15 Thu 08:49>
+** [[https://github.com/cloudson/gitql][cloudson/gitql: A git query language]]                                  :go:github:top:git:query:language:sql: 
+ <2016-12-15 Thu 09:10>
+
+ Gitql is a Git query language.
+ In a repository path ...
+** [[https://github.com/zeit/hyper][zeit/hyper: A terminal built on web technologies]]                              :javascript:github:top:shell:terminal:web: 
+ <2016-12-15 Thu 09:10>
+
+  A terminal built on web technologies https://hyper.is
+** [[https://github.com/mawww/kakoune][mawww/kakoune: mawww's experiment for a better code editor]]                                    :cpp:gihtub:top:vim:editor:inspired: 
+ <2016-12-15 Thu 09:11>
+
+
+
+ Kakoune is a code editor heavily inspired by Vim, as such most of its commands are similar to vi’s ones, and it shares Vi’s "keystrokes as a text editing language" model.
+
+ Kakoune can operate in two modes, normal and insertion. In insertion mode, keys are directly inserted into the current buffer. In normal mode, keys are used to manipulate the current selection and to enter insertion mode.
+
+ Kakoune has a strong focus on interactivity, most commands provide immediate and incremental results, while still being competitive (as in keystroke count) with Vim.
+
+ Kakoune works on selections, which are oriented, inclusive range of characters, selections have an anchor and a cursor character. Most commands move both of them, except when extending selection where the anchor character stays fixed and the cursor one moves around.
+** [[https://github.com/tensorflow/tensorflow][tensorflow/tensorflow: Computation using data flow graphs for scalable machine learning]]                                :python:cpp:github:top:computation:math: 
+ <2016-12-15 Thu 09:12>
+
+ TensorFlow is an open source software library for numerical computation using data flow graphs. Nodes in the graph represent mathematical operations, while the graph edges represent the multidimensional data arrays (tensors) that flow between them. This flexible architecture lets you deploy computation to one or more CPUs or GPUs in a desktop, server, or mobile device without rewriting code. TensorFlow also includes TensorBoard, a data visualization toolkit.
+
+ TensorFlow was originally developed by researchers and engineers working on the Google Brain team within Google's Machine Intelligence research organization for the purposes of conducting machine learning and deep neural networks research. The system is general enough to be applicable in a wide variety of other domains, as well.
+** [[https://github.com/firehol/netdata][firehol/netdata: Get control of your servers. Simple. Effective. Awesome. https://my-netdata.io/]]                                :c:github:top:web:system:monitoring:web: 
+ <2016-12-15 Thu 09:14>
+
+ netdata is a system for distributed real-time performance and health monitoring. It provides unparalleled insights, in real-time, of everything happening on the system it runs (including applications such as web and database servers), using modern interactive web dashboards.
+
+ netdata is fast and efficient, designed to permanently run on all systems (physical & virtual servers, containers, IoT devices), without disrupting their core function.
+** [[https://github.com/Bilibili/ijkplayer][Bilibili/ijkplayer: Android/iOS video player based on FFmpeg n3.2, with MediaCodec, VideoToolbox support.]]                            :cpp:android:github:top:video:player:ffmpeg: 
+ <2016-12-15 Thu 09:21>
+
+  Android/iOS video player based on FFmpeg n3.2, with MediaCodec, VideoToolbox support.
+** [[https://github.com/antirez/redis][antirez / redis]]                                           :c:github:top:database:redis: 
+ <2016-12-15 Thu 09:22>
+
+
+
+ Redis is an in-memory database that persists on disk. The data model is key-value, but many different kind of values are supported: Strings, Lists, Sets, Sorted Sets, Hashes, HyperLogLogs, Bitmaps.
+** [[https://github.com/swilly22/redis-module-graph][swilly22/redis-module-graph]]                                     :c:github:top:redis:graph:database: 
+ <2016-12-15 Thu 09:22>
+
+ This project is an attempt to build a graph database ontop of Redis using Redis modules, where the nodes in the graph represents entities such as a person or a place and connections such as 'visit' are made between the different entities.
+
+ As entities might have several attributes Redis hashes seems ideal to hold them, as such a node in the graph is named after an entity's key, for example supose we had a persone entity representing Barack Obama, our entity's key within redis would be "Barack Obama" and two of its attributes could be Age (55) and profession, we could also have another entity under the key Hawaii. with an attribute population (1,442,949). Finally we could construct a simple graph by connecting Barak Obama with an edge representing the relation born to Hawaii.
+
+ This is one of the key ideas behind this project; a node in the graph is simply a reference to an entity stored as Redis hash.
+** [[https://github.com/jp9000/obs-studio][jp9000 / obs-studio]]                                              :c:github:top:obs:streaming: 
+ <2016-12-15 Thu 09:23>
+
+
+
+ OBS - Free and open source software for live streaming and screen recording
+** [[https://github.com/SamyPesse/How-to-Make-a-Computer-Operating-System][SamyPesse/How-to-Make-a-Computer-Operating-System: How to Make a Computer Operating System in C++]]                         :c:github:top:book:programming:operatingsystem: 
+ <2016-12-15 Thu 09:25>
+
+ Online book about how to write a computer operating system in C/C++ from scratch.
+
+ Caution: This repository is a remake of my old course. It was written several years ago as one of my first projects when I was in High School, I'm still refactoring some parts. The original course was in French and I'm not an English native. I'm going to continue and improve this course in my free-time.
+
+ Book: An online version is available at http://samypesse.gitbooks.io/how-to-create-an-operating-system/ (PDF, Mobi and ePub). It was generated using GitBook.
+
+ Source Code: All the system source code will be stored in the src directory. Each step will contain links to the different related files.
+
+ Contributions: This course is open to contributions, feel free to signal errors with issues or directly correct the errors with pull-requests.
+
+ Questions: Feel free to ask any questions by adding issues or commenting sections.
+
+ You can follow me on Twitter @SamyPesse or GitHub.
+** [[https://github.com/jameysharp/corrode][jameysharp/corrode: C to Rust translator]]                                         :haskell:c:rust:github:top:translation: 
+ <2016-12-15 Thu 09:27>
+
+ This program reads a C source file and prints an equivalent module in Rust syntax. It's intended to be useful for two different purposes:
+
+     Partial automation for migrating legacy code that was implemented in C. (This tool does not fully automate the job because its output is only as safe as the input was; you should clean up the output afterward to use Rust features and idioms where appropriate.)
+
+     A new, complementary approach to static analysis for C programs. If this program can't translate your C source to equivalent Rust, you might consider whether your program is too complicated and hiding bugs. Or, if translation succeeds, the Rust compiler may report warnings and errors that your C compiler misses, or you may be able to use a custom Rust linter to detect project-specific problems.
+** [[https://github.com/koalaman/shellcheck][koalaman/shellcheck: ShellCheck, a static analysis tool for shell scripts]]                                  :haskell:shell:gihtub:top:spell:check: 
+ <2016-12-15 Thu 09:27>
+
+ ShellCheck is a GPLv3 tool that gives warnings and suggestions for bash/sh shell scripts:
+
+ Screenshot of a terminal showing problematic shell script lines highlighted.
+
+ The goals of ShellCheck are
+
+     To point out and clarify typical beginner's syntax issues that cause a shell to give cryptic error messages.
+
+     To point out and clarify typical intermediate level semantic problems that cause a shell to behave strangely and counter-intuitively.
+
+     To point out subtle caveats, corner cases and pitfalls that may cause an advanced user's otherwise working script to fail under future circumstances.
+
+ See the gallery of bad code for examples of what ShellCheck can help you identify!
+** [[https://github.com/lukasmartinelli/hadolint][lukasmartinelli/hadolint: Dockerfile linter written in Haskell]]                                         :haskell:github:top:dockerfile:linter: 
+ <2016-12-15 Thu 09:30>
+
+ A smarter Dockerfile linter that helps you build best practice Docker images. The linter is parsing the Dockerfile into an AST and performs rules on top of the AST. It is standing on the shoulders of Shellcheck to lint the Bash code inside RUN instructions.
+
+ :globe_with_meridians: Check the online version on hadolint.lukasmartinelli.ch
+** [[https://github.com/gitql/gitql][gitql/gitql: SQL interface to Git repositories, written in Go.]]                                       :go:github:top:git:interface:sql: 
+ <2016-12-15 Thu 09:31>
+
+ gitql is a SQL interface to Git repositories, written in Go.
+
+ WARNING: gitql is still in a very early stage of development. It is considered experimental.
+** [[https://github.com/o1egl/govatar][o1egl/govatar: Avatar generator library for GO language]]                                        :go:github:top:avatar:generator: 
+ <2016-12-15 Thu 09:32>
+
+ GOvatar image
+ Overview
+
+ GOvatar is an avatar generator writen in GO
+** [[https://github.com/gogits/gogs][gogits/gogs: Gogs (Go Git Service) is a painless self-hosted Git service.]]                                   :go:github:top:web:git:web:interface: 
+ <2016-12-15 Thu 09:33>
+
+  Gogs (Go Git Service) is a painless self-hosted Git service. https://gogs.io
+** [[https://github.com/getlantern/lantern][getlantern/lantern: Open Internet for everyone. Lantern is a free application that delivers fast, reliable and secure access to the open Internet for users in censored regions. It uses a variety of techniques to stay unblocked, including domain fronting, p2p, and pluggable transports.]]                                :go:github:top:p2p:internet:tor:freedom: 
+ <2016-12-15 Thu 09:35>
+
+  :izakaya_lantern: Open Internet for everyone. Lantern is a free application that delivers fast, reliable and secure access to the open Internet for users in censored regions. It uses a variety of techniques to stay unblocked, including domain fronting, p2p, and pluggable transports. https://getlantern.org
+** [[https://github.com/astaxie/build-web-application-with-golang][astaxie/build-web-application-with-golang: A golang ebook intro how to build a web with golang]]                                    :go:github:top:web:book:programming: 
+ <2016-12-15 Thu 09:36>
+
+  A golang ebook intro how to build a web with golang
+** [[https://github.com/rancher/rancher][rancher/rancher: A Platform for Operating Docker in Production]]                                    :shell:github:top:docker:management: 
+ <2016-12-15 Thu 09:38>
+
+ Rancher is an open source project that provides a complete platform for operating Docker in production. It provides infrastructure services such as multi-host networking, global and local load balancing, and volume snapshots. It integrates native Docker management capabilities such as Docker Machine and Docker Swarm. It offers a rich user experience that enables devops admins to operate Docker in production at large scale.
+** [[https://github.com/laradock/laradock][laradock/laradock: A Docker PHP development environment.]]                               :shell:github:top:docker:php:environment: 
+ <2016-12-15 Thu 09:38>
+
+ Laradock is a Docker PHP development environment. It facilitate running PHP Apps on Docker.
+
+ Laradock is configured to run Laravel Apps by default, and it can be modified to run all kinds of PHP Apps (Symfony, CodeIgniter, Wordpress, Drupal...).
+** [[https://github.com/icefox/git-map][icefox/git-map: Executes git commands in multiple Git repositories at the same time.]]                     :shell:github:top:git:multiple:repositories:manage: 
+ <2016-12-15 Thu 09:39>
+
+ git map is a tool to execute a Git command in multiple Git directories at the same time.
+
+ WHY?
+ =======
+
+ Occasionally I have projects made up of several Git repositories.  Running 'git map branch' quickly confirms everyone is on the correct branch, 'git map clean -dxf' to clean them all, and 'git map fetch' to make sure they all have the latest objects before going off line is very handy.  This tool will work on all the Git repositories that are at the same level in the file system relative to the current directory or current repository you are in.
+** [[https://github.com/nicolashery/mac-dev-setup][nicolashery/mac-dev-setup: A beginner's guide to setting up a development environment on Mac OS X]]                          :shell:github:top:mac:development:environment: 
+ <2016-12-15 Thu 09:41>
+
+  A beginner's guide to setting up a development environment on Mac OS X
+** [[https://github.com/sstephenson/bats][sstephenson/bats: Bash Automated Testing System]]                                :shell:github:top:bash:automated:system: 
+ <2016-12-15 Thu 09:42>
+
+ Bats is a TAP-compliant testing framework for Bash. It provides a simple way to verify that the UNIX programs you write behave as expected.
+
+ A Bats test file is a Bash script with special syntax for defining test cases. Under the hood, each test case is just a function with a description.
+** [[https://github.com/jwilder/nginx-proxy][jwilder/nginx-proxy: Automated nginx proxy for Docker containers using docker-gen]]                                   :shell:github:top:docker:nginx:proxy: 
+ <2016-12-15 Thu 09:43>
+
+ nginx-proxy sets up a container running nginx and docker-gen. docker-gen generates reverse proxy configs for nginx and reloads nginx when containers are started and stopped.
+** [[https://github.com/thoughtbot/dotfiles][thoughtbot/dotfiles: A set of vim, zsh, git, and tmux configuration files.]]                                       :shell:github:top:configurations: 
+ <2016-12-15 Thu 09:44>
+
+  A set of vim, zsh, git, and tmux configuration files. https://thoughtbot.com/open-source
+** [[https://github.com/soimort/translate-shell][soimort/translate-shell: Command-line translator using Google Translate, Bing Translator, Yandex.Translate, etc.]]                                              :awk:github:top:translate: 
+ <2016-12-15 Thu 09:46>
+
+ Translate Shell (formerly Google Translate CLI) is a command-line translator powered by Google Translate (default), Bing Translator, Yandex.Translate and Apertium. It gives you easy access to one of these translation engines your terminal:
+** [[https://github.com/dumblob/mysql2sqlite][dumblob/mysql2sqlite: Converts MySQL dump to SQLite3 compatible dump]]                                  :awk:github:top:mysql:sqlite:converts: 
+ <2016-12-15 Thu 09:47>
+
+ Converts MySQL dump to SQLite3 compatible dump (including MySQL KEY xxxxx statements from the CREATE block).
+** [[https://github.com/step-/JSON.awk][step-/JSON.awk: Practical JSON parser written in awk]]                                            :awk:github:top:json:parser: 
+ <2016-12-15 Thu 09:48>
+
+ A practical JSON parser written in awk.
+ Quick Start
+
+ This software is based on JSON.sh, a pipeable JSON parser written in Bash, retrieved on 2013-03-13 and herein ported to awk. JSON.awk is a self-contained script with no external dependencies.
+** [[https://github.com/archan937/jsonv.sh][archan937/jsonv.sh: A Bash command line tool for converting JSON to CSV]]                                    :awk:github:top:json:csv:converting: 
+ <2016-12-15 Thu 09:48>
+
+ A Bash command line tool for converting JSON to CSV
+** [[https://github.com/PaulReiber/Log-Dissector][PaulReiber/Log-Dissector: awk-based tool for extracting knowledge from logfiles]]                                              :awk:github:top:log:parse: 
+ <2016-12-15 Thu 09:49>
+
+ LogDissector is an AWK script for making sense of very large logfiles.
+
+ It creates a bunch of other files from the data it collects as it passes over the logfile.
+
+ Make sure you have sufficient disk space before running it.
+
+ LogDissector was written both to showcase the power of AWK's associative arrays, and as a tool for daily use in systems administration.
+** [[https://github.com/deuill/fawkss][deuill/fawkss: Fawkss is a CSS preprocessor for people who dislike CSS preprocessors]]                                       :awk:github:top:css:preprocessor: 
+ <2016-12-15 Thu 09:50>
+
+ Fawkss [fɔːks] is a simple CSS preprocessor built as a single AWK (nawk/gawk/mawk) script. Syntactically, it borrows as much as possible from the SASS language, for convenience and familiarity.
+
+ This is more of a fun project than a production-ready piece of software, though it may find some use for people needing simple additions to CSS without pulling in the massive ecosystem that comes with Less.js/SASS etc.
