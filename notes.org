@@ -1669,3 +1669,85 @@ sites by category.
  <2016-12-15 Thu 10:24>
 
   github like contributions calendar on terminal
+** [[https://github.com/baedert/corebird][baedert/corebird: Native Gtk+ Twitter Client]]                                    :vala:github:top:gtk:twitter:client: 
+ <2016-12-15 Thu 10:27>
+
+  Native Gtk+ Twitter Client http://corebird.baedert.org
+** [[https://github.com/codito/gnome-pomodoro][codito/gnome-pomodoro: A time management utility for GNOME based on the pomodoro technique!]]                                    :vala:github:top:gtk:gnome:pomodoro: 
+ <2016-12-15 Thu 10:28>
+
+  A time management utility for GNOME based on the pomodoro technique! http://gnomepomodoro.org/
+** [[https://github.com/phw/peek][phw/peek: Simple animated Gif screen recorder for Linux]]                                  :vala:github:top:gtk:gnome:record:gif: 
+ <2016-12-15 Thu 10:28>
+
+ A simple tool that allows you to record short animated GIF images from your screen.
+
+ Currently only Linux with X11 is supported. Other Unix like systems using X11 should work as well. It is planned to also support Wayland and maybe other operating systems in the future.
+** [[https://github.com/GNOME/vala][GNOME/vala: vala]]                                                :vala:github:top:source: 
+ <2016-12-15 Thu 10:29>
+
+ Vala is a programming language that aims to bring modern programming
+ language features to GNOME developers without imposing any additional
+ runtime requirements and without using a different ABI compared to
+ applications and libraries written in C.
+
+ valac, the Vala compiler, is a self-hosting compiler that translates
+ Vala source code into C source and header files. It uses the GObject
+ type system to create classes and interfaces declared in the Vala source
+ code.
+** [[https://github.com/pdfpc/pdfpc][pdfpc/pdfpc: A presenter console with multi-monitor support for PDF files.]]                         :vala:github:top:gnome:gtk:presentation:viewer: 
+ <2016-12-15 Thu 10:30>
+
+ pdfpc is a GTK based presentation viewer application for GNU/Linux which uses Keynote like multi-monitor output to provide meta information to the speaker during the presentation. It is able to show a normal presentation window on one screen, while showing a more sophisticated overview on the other one providing information like a picture of the next slide, as well as the left over time till the end of the presentation. The input files processed by pdfpc are PDF documents, which can be created using nearly any of today's presentation software.
+
+ More information, including screenshots and a demo presentation, can be found at https://pdfpc.github.io/
+** [[https://github.com/jessevdk/gitg][jessevdk/gitg: A GitX clone for gtk+/GNOME (**moved to git.gnome.org**)]]                                     :vala:github:top:git:interface:gnome:gui: 
+ <2016-12-15 Thu 10:31>
+
+ gitg is a graphical user interface for git. It aims at being a small,
+ fast and convenient tool to visualize the history of git repositories.
+ Besides visualization, gitg also provides several utilities to manage your
+ repository and commit your work.
+** [[https://github.com/tiliado/nuvolaplayer][tiliado/nuvolaplayer: The third generation of Nuvola Player - cloud music integration for your Linux desktop]]                                          :vala:github:top:player:cloud: 
+ <2016-12-15 Thu 10:32>
+
+  The third generation of Nuvola Player - cloud music integration for your Linux desktop https://tiliado.eu/nuvolaplayer/
+** [[https://github.com/jangernert/FeedReader][jangernert/FeedReader: Modern desktop application designed to complement existing web-based RSS accounts.]]                                  :vala:github:top:feed:rss:atom:gnome:reader: 
+ <2016-12-15 Thu 10:32>
+
+ FeedReader is a modern desktop application designed to complement existing web-based RSS accounts. It combines all the advantages of web based services like synchronisation across all your devices with everything you expect from a modern desktop application.
+** [[https://github.com/holylobster/nuntius-linux][holylobster/nuntius-linux: Nuntius delivers notifications from your phone or tablet to your computer]]                    :vala:github:top:gnome:nautilus:phone:notifications: 
+ <2016-12-15 Thu 10:33>
+
+ Nuntius delivers notifications from your phone or tablet to your computer over Bluetooth.
+
+ Nuntius is an Open Source project from HolyLobster.
+
+ To use Nuntius you will need to install a companion tool on your phone or tablet and pair it via Bluetooth. You will also need to restart your session to auto-start nuntius.
+
+ For more information on the project and the companion tools to install on the computer check https://github.com/holylobster
+** [[https://github.com/Valama/valama][Valama/valama: Next generation Vala IDE]]                                                   :vala:github:top:ide: 
+ <2016-12-15 Thu 10:34>
+
+  Next generation Vala IDE
+** [[https://github.com/GNOME/geary][GNOME/geary: email client]]                                     :vala:github:top:mail:client:gnome: 
+ <2016-12-15 Thu 10:34>
+
+     Geary Email Client
+     ------------------
+
+   * Introduction
+
+     Geary is an IMAP email client built for the GNOME desktop environment.  It
+     allows you to read and send email with a simple, modern interface.
+
+     Visit https://wiki.gnome.org/Apps/Geary to read about the current state of
+     Geary's development and to make sure you're running the latest version.
+** [[https://github.com/voldyman/MarkMyWords][voldyman/MarkMyWords: Markdown editor]]                                 :vala:github:top:editor:markdown:gnome: 
+ <2016-12-15 Thu 10:35>
+
+ A minimal markdown editor
+** [[https://github.com/valum-framework/valum][valum-framework/valum: Web micro-framework written in Vala]]                                   :vala:github:top:web:micro:framework: 
+ <2016-12-15 Thu 10:37>
+
+ Valum is a Web micro-framework entirely written in the Vala programming language.
