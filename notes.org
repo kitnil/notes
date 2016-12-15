@@ -1532,3 +1532,140 @@ sites by category.
  Fawkss [fɔːks] is a simple CSS preprocessor built as a single AWK (nawk/gawk/mawk) script. Syntactically, it borrows as much as possible from the SASS language, for convenience and familiarity.
 
  This is more of a fun project than a production-ready piece of software, though it may find some use for people needing simple additions to CSS without pulling in the massive ecosystem that comes with Less.js/SASS etc.
+** [[https://github.com/miloyip/game-programmer][miloyip/game-programmer: A Study Path for Game Programmer]]                      :makefile:github:top:gaming:programmer:study:path: 
+ <2016-12-15 Thu 09:52>
+
+  A Study Path for Game Programmer
+** [[https://github.com/Kickball/awesome-selfhosted][Kickball/awesome-selfhosted: This is a list of Free Software network services and web applications which can be hosted locally. Selfhosting is the process of locally hosting and managing applications instead of renting from SaaS providers.]]                         :makefile:github:top:list:selfhosting:services: 
+ <2016-12-15 Thu 09:52>
+
+  This is a list of Free Software network services and web applications which can be hosted locally. Selfhosting is the process of locally hosting and managing applications instead of renting from SaaS providers. https://reddit.com/r/selfhosted
+** [[https://github.com/gitbucket/gitbucket][gitbucket/gitbucket: A Git platform powered by Scala with easy installation, high extensibility & github API compatibility]]                         :cpp:github:top:clone:service:repository:local: 
+ <2016-12-15 Thu 09:53>
+
+
+     easy installation
+     high extensibility by plugins
+     API compatibility with Github
+
+ Features
+
+ The current version of GitBucket provides a basic features below:
+
+     Public / Private Git repository (http and ssh access)
+     Repository viewer and online file editing
+     Wiki
+     Issues / Pull request
+     Email notification
+     Simple user and group management with LDAP integration
+     Plug-in system
+
+ If you want to try the development version of GitBucket, see Developer's Guide.
+** [[https://github.com/ccrisan/motioneyeos][ccrisan/motioneyeos: A Video Surveillance OS For Single-board Computers]]                             :makefile:github:top:surveillance:video:os: 
+ <2016-12-15 Thu 09:55>
+
+ motionEyeOS is a Linux distribution that turns your single board computer into a video surveillance system. Check out the wiki for more details.
+
+ Follow us on facebook: https://www.facebook.com/motioneyeos.
+** [[https://github.com/phodal/developer][phodal/developer: developer roadmap. use growth https://github.com/phodal/growth replace this]]                            :makefile:github:top:developer:roadmap:path: 
+ <2016-12-15 Thu 09:56>
+
+  developer roadmap. use growth https://github.com/phodal/growth replace this http://developer.phodal.com/
+** [[https://github.com/Polytonic/Glitter][Polytonic/Glitter: Dead Simple OpenGL (Graphics)]]                                               :cmake:github:top:OpenGL: 
+ <2016-12-15 Thu 09:58>
+
+ Glitter is a dead simple boilerplate for OpenGL, intended as a starting point for the tutorials on learnopengl.com and open.gl. Glitter compiles and statically links every required library, so you can jump right into doing what you probably want: how to get started with OpenGL.
+** [[https://github.com/rpavlik/cmake-modules][rpavlik/cmake-modules: My collection of CMake modules]]                                   :cmake:github:top:collection:modules: 
+ <2016-12-15 Thu 09:59>
+
+ Ryan A. Pavlik, Ph.D.
+
+ ryan.pavlik@gmail.com abiryan@ryand.net http://academic.cleardefinition.com
+ Introduction
+
+ This is a collection of CMake modules that I've produced during the course of a variety of software development. There are a number of find modules, especially for virtual reality and physical simulation packages, some utility modules of more general interest, and some patches or workarounds for CMake itself.
+
+ Each module is generally documented, and depending on how busy I was when I created it, the documentation can be fairly complete.
+
+ By now, it also includes contributions both from open-source projects I work on, as well as friendly strangers on the Internet contributing their modules. I am very grateful for improvements/fixes/pull requests!
+** [[https://github.com/Akagi201/learning-cmake][Akagi201/learning-cmake: learning cmake]]                                             :cmake:github:top:learning: 
+ <2016-12-15 Thu 10:00>
+
+ This is a simple CMake practice project which contains some different scenarios.
+
+     hello-world
+
+     Demo a simplest CMake project.
+
+     hello-world-clear
+
+     Separate the output files and src files.
+
+     hello-world-lib
+
+     Demo how to make a static/shared library.
+
+     hello-world-shared
+
+     Demo how to utilize external static/shared library.
+
+     curl
+
+     Demo how to use cmake with curl.
+
+     hello-module
+
+     Demo how to use cmake find module.
+
+     config-file
+
+     Demo how to work with config.h.
+** [[https://github.com/webmin/webmin][webmin/webmin: Webmin source code]]                    :perl:github:top:webmin:system:manage:web:interface: 
+ <2016-12-15 Thu 10:01>
+
+ Webmin is a web-based interface for system administration for Unix. 
+ Using any browser that supports tables and forms, you can setup user
+ accounts, Apache, internet services, DNS, file sharing and so on. 
+
+ Webmin consists of a simple web server, and a number of CGI programs
+ which directly update system files like /etc/inetd.conf and /etc/passwd.
+ The web server and all CGI programs are written in Perl version 5, and use
+ only the standard perl modules.
+** [[https://github.com/mozilla-bteam/bmo][mozilla-bteam/bmo: bugzilla.mozilla.org source]]                                              :perl:github:top:bugzilla: 
+ <2016-12-15 Thu 10:02>
+
+ Bugzilla is a free bug-tracking system that is developed by an active
+ community of volunteers in the Mozilla community. You can install and
+ use it without having to pay any license fee.
+** [[https://github.com/sitaramc/gitolite][sitaramc/gitolite: Hosting git repositories -- Gitolite allows you to setup git hosting on a central server, with very fine-grained access control and many (many!) more powerful features.]]                                     :perl:github:top:git:hosting:local: 
+ <2016-12-15 Thu 10:04>
+
+  Hosting git repositories -- Gitolite allows you to setup git hosting on a central server, with very fine-grained access control and many (many!) more powerful features. http://wiki.github.com/sitaramc/gitol…
+** [[https://github.com/Jack000/Expose][Jack000/Expose: A simple static site generator for photoessays]]                  :perl:github:top:photos:gallery:static:site:generator: 
+ <2016-12-15 Thu 10:04>
+
+ A simple static site generator for photoessays
+** [[https://github.com/major/MySQLTuner-perl][major/MySQLTuner-perl: MySQLTuner is a script written in Perl that will assist you with your MySQL configuration and make recommendations for increased performance and stability.]]                                  :perl:github:top:mysql:assist:suggest: 
+ <2016-12-15 Thu 10:08>
+
+  MySQLTuner is a script written in Perl that will assist you with your MySQL configuration and make recommendations for increased performance and stability. http://mysqltuner.com
+** [[https://github.com/thoughtbot/rcm][thoughtbot/rcm: rc file (dotfile) management]]                                    :perl:github:top:dotfiles:management: 
+ <2016-12-15 Thu 10:23>
+
+ This is a management suite for dotfiles. See the tutorial to get started quickly.
+
+ It assumes that you have a separate dotfiles directory, or are interested in creating one.
+
+ The programs provided are rcup(1), mkrc(1), rcdn(1), and lsrc(1). They are explained in the tutorial and configured using rcrc(5).
+** [[https://github.com/sullo/nikto][sullo/nikto: Nikto web server scanner]]                                    :perl:github:top:web:server:scanner: 
+ <2016-12-15 Thu 10:23>
+
+ Nikto web server scanner - https://cirt.net/Nikto2
+
+ Full documentation - https://cirt.net/nikto2-docs/
+
+ Basic usage:
+** [[https://github.com/k4rthik/git-cal][k4rthik/git-cal: github like contributions calendar on terminal]]                           :perl:github:top:contributions:visualization: 
+ <2016-12-15 Thu 10:24>
+
+  github like contributions calendar on terminal
