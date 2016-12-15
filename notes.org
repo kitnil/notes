@@ -1249,3 +1249,43 @@ sites by category.
  <2016-12-14 Wed 14:07>
 
   rm -rf /var/lib/docker/network and restart daemon.
+** [[https://github.com/Valloric/YouCompleteMe][Valloric/YouCompleteMe: A code-completion engine for Vim]]                                      :python:github:top:vim:completion: 
+ <2016-12-15 Thu 00:12>
+
+ YouCompleteMe is a fast, as-you-type, fuzzy-search code completion engine for Vim. It has several completion engines:
+
+     an identifier-based engine that works with every programming language,
+     a Clang-based engine that provides native semantic code completion for C/C++/Objective-C/Objective-C++ (from now on referred to as "the C-family languages"),
+     a Jedi-based completion engine for Python 2 and 3 (using the JediHTTP wrapper),
+     an OmniSharp-based completion engine for C#,
+     a combination of Gocode and Godef semantic engines for Go,
+     a TSServer-based completion engine for TypeScript,
+     a Tern-based completion engine for JavaScript,
+     a racer-based completion engine for Rust,
+     and an omnifunc-based completer that uses data from Vim's omnicomplete system to provide semantic completions for many other languages (Ruby, PHP etc.).
+** [[https://github.com/abingham/emacs-ycmd][abingham/emacs-ycmd: Emacs client for ycmd, the code completion system.]]                                    :emacs:github:top:completion:client: 
+ <2016-12-15 Thu 00:13>
+
+ emacs-ycmd is a client for ycmd, the code completion system. It takes care of managing a ycmd server and fetching completions from that server.
+
+ emacs-ycmd comprises a core set of functionality for communicating with ycmd as well as integration with the Emacs completion framework company-mode.
+
+ A lot of the concepts behind emacs-ycmd are actually concepts from ycmd itself, so if you feel lost you might read the ycmd documentation and/or the the original YouCompleteMe documentation.
+
+ Important: The ycmd package itself doesn't provide a real UI for selecting and inserting completions into your files. For that you need to use company-ycmd or another "completion framework".
+** [[https://github.com/Valloric/ycmd#building][Valloric/ycmd: A code-completion & code-comprehension server]]                           :cpp:github:top:compilation:server:emacs:vim: 
+ <2016-12-15 Thu 00:16>
+
+ ycmd is a server that provides APIs for code-completion and other code-comprehension use-cases like semantic GoTo commands (and others). For certain filetypes, ycmd can also provide diagnostic errors and warnings.
+
+ ycmd was originally part of YouCompleteMe's codebase, but has been split out into a separate project so that it can be used in editors other than Vim.
+
+ The best way to learn how to interact with ycmd is by reading through (and running) the example_client.py file. See the README for the examples folder for details on how to run the example client.
+** [[https://github.com/jorgenschaefer/elpy][jorgenschaefer/elpy: Emacs Python Development Environment]]                                               :emacs:github:top:python: 
+ <2016-12-15 Thu 06:49>
+
+ Elpy is an Emacs package to bring powerful Python editing to Emacs. It combines and configures a number of other packages, both written in Emacs Lisp as well as Python.
+** [[https://github.com/jorgenschaefer/Config][jorgenschaefer/Config: Personal configuration files]]                                      :emacs:config:jorgenschaefer:elpy: 
+ <2016-12-15 Thu 06:51>
+
+ These are my configuration files for UNIX home directories. If you clone this, be aware that I break stuff randomly and will happily use git push --force. You’ve been warned.
