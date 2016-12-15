@@ -1751,3 +1751,219 @@ sites by category.
  <2016-12-15 Thu 10:37>
 
  Valum is a Web micro-framework entirely written in the Vala programming language.
+** [[https://github.com/vhf/free-programming-books][vhf/free-programming-books: Freely available programming books]]                            :markdown:github:top:books:free:programming: 
+ <2016-12-15 Thu 10:45>
+
+ This list initially was a clone of stackoverflow - List of Freely Available Programming Books by George Stocker. Now updated, with dead links gone and new content.
+** [[https://github.com/karan/Projects][karan/Projects: A list of practical projects that anyone can solve in any programming language.]]                               :markdown:github:top:list:projects:solve: 
+ <2016-12-15 Thu 10:47>
+
+ A list of practical projects that anyone can solve in any programming language (See solutions). These projects are divided in multiple categories, and each category has its own folder.
+** [[https://github.com/Developer-Y/cs-video-courses][Developer-Y/cs-video-courses: List of Computer Science courses with video lectures.]]                                     :markdown:github:top:courses:video: 
+ <2016-12-15 Thu 10:50>
+
+  List of Computer Science courses with video lectures.
+** [[https://github.com/JoshCheek/seeing_is_believing#editor-integration][JoshCheek/seeing_is_believing: Displays the results of every line of code in your file]]                                       :ruby:github:top:evaluates:debug: 
+ <2016-12-15 Thu 10:53>
+
+ Evaluates Ruby code, recording the results of each line. Integrates with any extensible editor (I've integrated it with many already, see the list). If you like Swift Playgrounds, you'll like SiB.
+** [[https://github.com/tldr-pages/tldr][tldr-pages/tldr: Simplified and community-driven man pages]]                                                    :tex:github:top:man: 
+ <2016-12-15 Thu 10:55>
+
+ A collection of simplified and community-driven man pages.
+** [[https://github.com/AllenDowney/ThinkPython2][AllenDowney/ThinkPython2: LaTeX source and supporting code for Think Python, 2nd edition, by Allen Downey.]]                                            :tex:github:top:python:book: 
+ <2016-12-15 Thu 10:56>
+
+ LaTeX source, code examples, and exercise solutions for Think Python, 2nd edition, by Allen Downey.
+** [[https://github.com/dennis714/RE-for-beginners][dennis714/RE-for-beginners: "Reverse Engineering for Beginners" free book]]                               :tex:github:top:reverse:engineering:book: 
+ <2016-12-15 Thu 10:57>
+
+  "Reverse Engineering for Beginners" free book http://beginners.re
+** [[https://github.com/cplusplus/draft][cplusplus/draft: C++ standards drafts]]                              :tex:cpp:github:top:book:drafts:standards: 
+ <2016-12-15 Thu 10:57>
+
+  C++ standards drafts http://www.open-std.org/jtc1/sc22/wg21/
+** [[https://github.com/matze/mtheme][matze/mtheme: A modern LaTeX Beamer theme]]                                           :tex:beamer:theme:github:top: 
+ <2016-12-15 Thu 10:58>
+
+ Metropolis is a simple, modern Beamer theme suitable for anyone to use. It tries to minimize noise and maximize space for content; the only visual flourish it offers is an (optional) progress bar added to each slide. The core design principles of the theme were described in a blog post here.
+** [[https://github.com/crypto101/book][crypto101/book: Crypto 101, the introductory book on cryptography.]]                                      :tex:github:top:cryptography:book: 
+ <2016-12-15 Thu 10:58>
+
+  Crypto 101, the introductory book on cryptography. https://www.crypto101.io/
+** [[https://github.com/soulmachine/machine-learning-cheat-sheet][soulmachine/machine-learning-cheat-sheet: Classical equations and diagrams in machine learning]]                                  :tex:github:top:machine:learning:cheatsheets: 
+ <2016-12-15 Thu 10:59>
+
+  Classical equations and diagrams in machine learning http://soulmachine.me
+** [[https://github.com/jbrownlee/CleverAlgorithms][jbrownlee/CleverAlgorithms: An open source book that describes a large number of algorithmic techniques from the the fields of Biologically Inspired Computation, Computational Intelligence and Metaheuristics in a complete, consistent, and centralized manner such that they are accessible, usable, and understandable.]]                                       :tex:github:top:book:algorithmic: 
+ <2016-12-15 Thu 10:59>
+
+  An open source book that describes a large number of algorithmic techniques from the the fields of Biologically Inspired Computation, Computational Intelligence and Metaheuristics in a complete, consistent, and centralized manner such that they are accessible, usable, and understandable. http://CleverAlgorithms.com
+** [[https://github.com/Microsoft/checkedc][Microsoft/checkedc: Checked C is an extension of C that adds bounds checking to C. This repo contains the specification for the extension, test code, and samples.]]                 :tex:c:github:book:checking:prevent:programming:errors: 
+ <2016-12-15 Thu 11:01>
+
+ Checked C is an extension to C that adds static and dynamic checking to detect or prevent common programming errors such as buffer overruns, out-of-bounds memory accesses, and incorrect type casts. This repo contains the specification for the extension, test code, and samples. For the latest version of the specification and the draft of the next version, see the Checked C releases page.
+
+ We are creating a modified version of LLVM/clang that supports Checked C. The code for the modified version of LLVM/clang lives in the Checked C clang repo and the Checked C LLVM repo.
+** [[https://github.com/karlseguin/the-little-mongodb-book][karlseguin/the-little-mongodb-book: The Little MongoDB Book]]                                           :tex:github:top:MongoDB:book: 
+ <2016-12-15 Thu 11:01>
+
+  The Little MongoDB Book http://openmymind.net/2011/3/28/The-L…
+** [[https://github.com/mavam/stat-cookbook][mavam/stat-cookbook: The probability and statistics cookbook]]                        :tex:github:top:probability:statistics:cookbook: 
+ <2016-12-15 Thu 11:02>
+
+ The probability and statistics cookbook contains a succinct representation of various topics in probability theory and statistics. It provides a comprehensive mathematical reference reduced to its essence, rather than aiming for elaborate explanations.
+
+ Feel encouraged to extend the cookbook by forking it and submitting pull requests
+** [[https://github.com/HoTT/book][HoTT/book: A textbook on informal homotopy type theory]]                                     :tex:github:top:math:homotopy:book: 
+ <2016-12-15 Thu 11:02>
+
+ This is a textbook on informal homotopy type theory. It is part of the Univalent foundations of mathematics project that took place at the Institute for Advanced Study in 2012/13.
+** [[https://github.com/karlseguin/the-little-redis-book][karlseguin/the-little-redis-book]]                                             :tex:github:top:book:redis: 
+ <2016-12-15 Thu 11:03>
+
+ The Little Redis Book is a free book introducing Redis.
+
+ The book was written by Karl Seguin, with Perry Neal's assistance.
+
+ If you liked this book, maybe you'll also like The Little MongoDB Book.
+** [[https://github.com/soulmachine/acm-cheat-sheet][soulmachine/acm-cheat-sheet: Acm Cheat Sheet]]                                      :tex:github:top:c:cpp:acm:cheatsheets: 
+ <2016-12-15 Thu 11:03>
+
+  Acm Cheat Sheet
+** [[https://github.com/ieure/sicp][ieure/sicp: Structure and Interpretation of Computer Programs, Second Edition]]                       :tex:github:top:computer:programs:structure:book: 
+ <2016-12-15 Thu 11:03>
+
+  Structure and Interpretation of Computer Programs, Second Edition http://mitpress.mit.edu/sicp/
+** [[https://github.com/manuels/texlive.js][manuels/texlive.js: Compiling LaTeX (TeX live) in your browser]]                                :tex:github:top:LaTeX:browser:compiling: 
+ <2016-12-15 Thu 11:04>
+
+  Compiling LaTeX (TeX live) in your browser http://manuels.github.com/texlive.js/
+** [[https://github.com/airbnb/javascript][airbnb/javascript: JavaScript Style Guide]]                                     :JavaScript:github:top:style:guide: 
+ <2016-12-15 Thu 11:05>
+
+  JavaScript Style Guide
+** [[https://github.com/isocpp/CppCoreGuidelines][isocpp/CppCoreGuidelines: The C++ Core Guidelines are a set of tried-and-true guidelines, rules, and best practices about coding in C++]]                                             :cpp:github:top:guidelines: 
+ <2016-12-15 Thu 11:06>
+
+ The C++ Core Guidelines are a collaborative effort led by Bjarne Stroustrup, much like the C++ language itself. They are the result of many person-years of discussion and design across a number of organizations. Their design encourages general applicability and broad adoption but they can be freely copied and modified to meet your organization's needs.
+** [[https://github.com/raywenderlich/objective-c-style-guide][raywenderlich/objective-c-style-guide: A style guide that outlines the coding conventions for raywenderlich.com]]                                              :c:github:top:style:guide: 
+ <2016-12-15 Thu 11:06>
+
+ This style guide outlines the coding conventions for raywenderlich.com.
+** [[https://github.com/trending/jupyter-notebook][Trending Jupyter Notebook repositories on GitHub today]]                                           :jupyter:github:top:trending: 
+ <2016-12-15 Thu 11:07>
+** [[https://github.com/rougier/numpy-100][rougier/numpy-100: 100 numpy exercises (100% complete)]]                                    :jupyter:github:top:numpy:exercises: 
+ <2016-12-15 Thu 11:08>
+
+  100 numpy exercises (100% complete)
+** [[https://github.com/gentoo/gentoo][gentoo/gentoo: The official mirror the Gentoo ebuild repository]]                                   :gentoo:github:top:ebuild:repository:official: 
+ <2016-12-15 Thu 11:09>
+
+  The official mirror the Gentoo ebuild repository https://wiki.gentoo.org/wiki/Gentoo_G…
+** [[https://github.com/gentoo/portage][gentoo/portage: Portage Package Manager - this is just a mirror, send patches to <gentoo-portage-dev@lists.gentoo.org>]]                               :python:gentoo:github:top:portage:source: 
+ <2016-12-15 Thu 11:10>
+
+  Portage Package Manager - this is just a mirror, send patches to <gentoo-portage-dev@lists.gentoo.org>
+
+Portage is a package management system based on ports collections. The
+Package Manager Specification Project (PMS) standardises and documents
+the behaviour of Portage so that the Portage tree can be used by other
+package managers.
+** [[https://github.com/fabric/fabric][fabric/fabric: Simple, Pythonic remote execution and deployment.]]                       :python:github:top:ssh:multiple:remote:executing: 
+ <2016-12-15 Thu 11:11>
+
+ Fabric is a Python (2.5-2.7) library and command-line tool for streamlining the use of SSH for application deployment or systems administration tasks.
+
+ It provides a basic suite of operations for executing local or remote shell commands (normally or via sudo) and uploading/downloading files, as well as auxiliary functionality such as prompting the running user for input, or aborting execution.
+
+ Typical use involves creating a Python module containing one or more functions, then executing them via the fab command-line tool. Below is a small but complete "fabfile" containing a single task:
+** [[https://github.com/joke2k/faker][joke2k/faker: Faker is a Python package that generates fake data for you.]]                                 :python:github:top:fake:data:generates: 
+ <2016-12-15 Thu 11:12>
+
+ Faker is a Python package that generates fake data for you. Whether you need to bootstrap your database, create good-looking XML documents, fill-in your persistence to stress test it, or anonymize data taken from a production service, Faker is for you.
+** [[https://github.com/ryanoasis/nerd-fonts][ryanoasis/nerd-fonts: Collection of 35+ patched fonts (over 74.5k possible variations) with a FontForge font patcher python script for Powerline, Font Awesome, Octicons, Devicons, and other icon fonts. Includes fonts: SourceCodePro, Hack, Droid Sans, Meslo, AnonymousPro, ProFont, Inconsolata, and more]]                                               :python:github:top:fonts: 
+ <2016-12-15 Thu 11:13>
+
+  :abcd: Collection of 35+ patched fonts (over 74.5k possible variations) with a FontForge font patcher python script for Powerline, Font Awesome, Octicons, Devicons, and other icon fonts. Includes fonts: SourceCodePro, Hack, Droid Sans, Meslo, AnonymousPro, ProFont, Inconsolata, and more http://ryanlmcintyre.com/nerd-fonts/
+
+Nerd Fonts is a project that patches developer targeted fonts with a high number of glyphs (icons). Specifically to add a high number of extra glyphs from popular 'iconic fonts' such as Font Awesome, Devicons, Octicons, and others.
+** [[https://github.com/seatgeek/fuzzywuzzy][seatgeek/fuzzywuzzy: Fuzzy String Matching in Python]]                         :python:github:top:string:differences:matching: 
+ <2016-12-15 Thu 11:14>
+
+ Fuzzy string matching like a boss. It uses Levenshtein Distance to calculate the differences between sequences in a simple-to-use package.
+ Requirements
+
+     Python 2.4 or higher
+     difflib
+     python-Levenshtein (optional, provides a 4-10x speedup in String Matching, though may result in [differing results for certain cases](https://github.com/seatgeek/fuzzywuzzy/issues/128))
+** [[https://github.com/ClusterHQ/flocker][ClusterHQ/flocker: Container data volume manager for your Dockerized application]]                        :python:github:top:docker:container:data:manage: 
+ <2016-12-15 Thu 11:15>
+
+ Flocker is an open-source Container Data Volume Manager for your Dockerized applications.
+
+ By providing tools for data migrations, Flocker gives ops teams the tools they need to run containerized stateful services like databases in production.
+
+ Unlike a Docker data volume which is tied to a single server, a Flocker data volume, called a dataset, is portable and can be used with any container, no matter where that container is running.
+
+ Flocker manages Docker containers and data volumes together. When you use Flocker to manage your stateful microservice, your volumes will follow your containers when they move between different hosts in your cluster.
+
+ You can also use Flocker to manage only your volumes, while continuing to manage your containers however you choose.
+** [[https://github.com/ajalt/fuckitpy][ajalt/fuckitpy: The Python error steamroller.]]                                          :python:github:top:error:fuck: 
+ <2016-12-15 Thu 11:15>
+
+ FuckIt.py uses state-of-the-art technology to make sure your Python code runs whether it has any right to or not. Some code has an error? Fuck it.
+** [[https://github.com/lengstrom/fast-style-transfer][lengstrom/fast-style-transfer: Fast Style Transfer in TensorFlow ⚡🖥🎨🖼]]                                  :python:github:top:image:video:styles: 
+ <2016-12-15 Thu 11:17>
+
+ Add styles from famous paintings to any photo in a fraction of a second! You can even style videos!
+
+ It takes 100ms on a 2015 Titan X to style the MIT Stata Center (1024×680) like Udnie, by Francis Picabia.
+
+ Our implementation is based off of a combination of Gatys' A Neural Algorithm of Artistic Style, Johnson's Perceptual Losses for Real-Time Style Transfer and Super-Resolution, and Ulyanov's Instance Normalization.
+** [[https://github.com/emacs-mirror/emacs][emacs-mirror/emacs: Mirror of GNU Emacs]]                                        :emacs:github:top:source:mirror: 
+ <2016-12-15 Thu 11:21>
+
+  Mirror of GNU Emacs http://www.gnu.org/software/emacs/
+** [[https://github.com/jorgenschaefer/elpy][jorgenschaefer/elpy: Emacs Python Development Environment]]                                           :emacs:github:top:python:ide: 
+ <2016-12-15 Thu 11:22>
+
+ Elpy is an Emacs package to bring powerful Python editing to Emacs. It combines and configures a number of other packages, both written in Emacs Lisp as well as Python.
+** [[https://github.com/gabrielelanaro/emacs-for-python][gabrielelanaro/emacs-for-python: Collection of emacs extensions specifically collected for python development, with workflow guidelines!]]                                    :emacs:github:top:python:collection: 
+ <2016-12-15 Thu 11:22>
+
+  Collection of emacs extensions specifically collected for python development, with workflow guidelines! http://gabrielelanaro.github.com/emac…
+** [[https://github.com/ch11ng/exwm][ch11ng/exwm: Emacs X Window Manager]]                                  :emacs:github:top:window:manager:xorg: 
+ <2016-12-15 Thu 11:23>
+
+  Emacs X Window Manager
+** [[https://github.com/pashky/restclient.el][pashky/restclient.el: HTTP REST client tool for emacs]]                                 :emacs:github:top:http:rest:web:client: 
+ <2016-12-15 Thu 11:24>
+
+ This is a tool to manually explore and test HTTP REST webservices. Runs queries from a plain-text query sheet, displays results as a pretty-printed XML, JSON and even images.
+** [[https://github.com/magnars/dash.el][magnars/dash.el: A modern list library for Emacs]]                                         :emacs:github:top:library:list: 
+ <2016-12-15 Thu 11:25>
+
+  A modern list library for Emacs
+** [[https://github.com/wking/rss2email][wking/rss2email: open-source tool for Windows, Mac OS and UNIX for getting news from RSS feeds in email]]                                 :python:github:top:rss:email:atom:feed: 
+ <2016-12-15 Thu 11:41>
+
+  open-source tool for Windows, Mac OS and UNIX for getting news from RSS feeds in email http://pypi.python.org/pypi/rss2email/
+** [[https://github.com/JakeWharton/pidcat][JakeWharton/pidcat: Colored logcat script which only shows log entries for a specific application package.]]                        :python:github:top:log:pid:process:color:logcat: 
+ <2016-12-15 Thu 11:51>
+
+ An update to Jeff Sharkey's excellent logcat color script which only shows log entries for processes from a specific application package.
+
+ During application development you often want to only display log messages coming from your app. Unfortunately, because the process ID changes every time you deploy to the phone it becomes a challenge to grep for the right thing.
+
+ This script solves that problem by filtering by application package. Supply the target package as the sole argument to the python script and enjoy a more convenient development process.
+** [[https://github.com/etsy/logster][etsy/logster: Parse log files, generate metrics for Graphite and Ganglia]]                           :python:github:top:log:read:metrics:Graphite:Ganglia: 
+ <2016-12-15 Thu 11:51>
+
+ Logster is a utility for reading log files and generating metrics to configurable outputs. It is ideal for visualizing trends of events that are occurring in your application/system/error logs. For example, you might use logster to graph the number of occurrences of HTTP response code that appears in your web server logs.
+
+ Logster maintains a cursor, via a tailer, on each log file that it reads so that each successive execution only inspects new log entries. In other words, a 1 minute crontab entry for logster would allow you to generate near real-time trends in the configured output for anything you want to measure from your logs.
+
+ This tool is made up of a framework script, logster, and parsing classes that are written to accommodate your specific log format. Sample parsers are included in this distribution. The parser classes essentially read a log file line by line, apply a regular expression to extract useful data from the lines you are interested in, and then aggregate that data into metrics that will be submitted to the configured output. The sample parsers should give you some idea of how to get started writing your own. A list of available parsers can be found on the Parsers page.
+
+ Graphite, Ganglia, Amazon CloudWatch, Nagios, StatsD and stdout outputs are provided, and Logster also supports the use of third-party output classes. A list of available output classes can be found on the Outputs page.
