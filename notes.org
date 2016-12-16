@@ -1967,3 +1967,136 @@ Nerd Fonts is a project that patches developer targeted fonts with a high number
  This tool is made up of a framework script, logster, and parsing classes that are written to accommodate your specific log format. Sample parsers are included in this distribution. The parser classes essentially read a log file line by line, apply a regular expression to extract useful data from the lines you are interested in, and then aggregate that data into metrics that will be submitted to the configured output. The sample parsers should give you some idea of how to get started writing your own. A list of available parsers can be found on the Parsers page.
 
  Graphite, Ganglia, Amazon CloudWatch, Nagios, StatsD and stdout outputs are provided, and Logster also supports the use of third-party output classes. A list of available output classes can be found on the Outputs page.
+** [[https://github.com/karandesai-96/yolog][karandesai-96/yolog: Beautify your Git Logs ! { v0.3.0 pre release! Better features upcoming soon- "Watch" to keep a track }]]                              :python:github:top:git:log:beautify:color: 
+ <2016-12-15 Thu 12:25>
+
+  Beautify your Git Logs ! { v0.3.0 pre release! Better features upcoming soon- "Watch" to keep a track }
+** [[https://pr0git.blogspot.ru/2015/02/git_4.html][Pro Git: Настройка русских шрифтов в Git]]                              :git:configuration:russian:files:encoding: 
+ <2016-12-15 Thu 15:02>
+
+ Вот как выводит консоль имена файлов на русском языке.
+
+ Чтобы это подправить дадим команду
+
+ $ git config --local core.quotepath false
+** [[https://weblate.org/en/][Weblate - web-based translation]]                   :web:translation:tool:version:control:checks:linking: 
+ <2016-12-16 Fri 02:43>
+
+  Weblate is a free web-based translation tool with tight version control integration. It features simple and clean user interface, propagation of translations across components, quality checks and automatic linking to source files.
+** [[https://weblate.org/en/hosting/][Hosting Weblate]]                                                  :weblate:hosting:free: 
+ <2016-12-16 Fri 02:48>
+
+  We can host translations for your commercial or free software projects. You can see summary of hosting plans below. Should you have any questions or look for hosting of bigger projects, don't hesitate to get in touch with us.
+** [[http://dirk.eddelbuettel.com/code/anytime.html][anytime: Convert Any Input to Parsed Date or Datetime]]                                                :R:time:date:conversion: 
+ <2016-12-16 Fri 02:49>
+
+ anytime
+
+ Convert Any Input to Parsed Date or Datetime
+ Motivation
+
+ R excels at computing with dates, and times. Using typed representation for your data is highly recommended not only because of the functionality offered but also because of the added safety stemming from proper representation.
+
+ But there is a small nuisance cost in interactive work as well as in programming. Users must have told as.POSIXct() about a million times that the origin is (of course) the epoch. Do we really have to say it a million more times? Similarly, when parsing dates that are some recogniseable form of YYYYMMDD format, do we really have to manually convert from integer or numeric or factor or ordered to character first? Having one of several common separators and/or date / time month forms (YYYY-MM-DD, YYYY/MM/DD, YYYYMMDD, YYYY-mon-DD and so on, with or without times), do we really need a format string?
+
+ Or could a smart converter function do this? anytime() aims to be that general purpose converter returning a proper POSIXct (or Date) object nomatter the input (provided it was somewhat parseable), relying on Boost date_time for the (efficient, performant) conversion.
+** [[https://wammu.eu/][Wammu and Gammu]]                 :python:phone:manage:system:contacts:calendar:messages: 
+ <2016-12-16 Fri 02:52>
+
+
+
+ Wammu is a program to manage data in your cell phone such as contacts, calendar or messages. Gammu SMSD is a service to mass send and receive SMS messages. Both these are built on top of Gammu library, which provides abstraction layer to work with different cell phones from different vendors (including Nokia, Sony-Ericsson, Motorola, Samsung, Siemens, Huawei and others).
+** [[https://github.com/joeyh/ikiwiki][joeyh/ikiwiki: A wiki compiler. (This github mirror is not used for development. Please use https://ikiwiki.info/bugs/ for bug reports and pull requests.)]]                             :perl:github:top:wiki:static:site:compiler: 
+ <2016-12-16 Fri 02:54>
+
+  A wiki compiler. (This github mirror is not used for development. Please use https://ikiwiki.info/bugs/ for bug reports and pull requests.) https://ikiwiki.info/
+** [[https://github.com/ecpolley/SuperLearner][ecpolley/SuperLearner: Current version of the SuperLearner R package]]                                               :R:github:top:algorithms: 
+ <2016-12-16 Fri 04:35>
+
+ This is the current version of the SuperLearner R package (version 2.*).
+
+ Features
+
+     Automatic optimal predictor ensembling via cross-validation.
+     Includes dozens of algorithms including Random Forest, GBM, XGBoost, BART, Elastic Net, and Neural Networks.
+     Integrates with caret to support even more algorithms.
+     Includes framework to quickly add custom algorithms to the ensemble
+     Visualize the performance of each algorithm using built-in plotting.
+     Easily incorporate multiple hyperparameter configurations for each algorithm into the ensemble.
+     Add new algorithms or change the default parameters for existing ones.
+     Screen variables (feature selection) based on univariate association, Random Forest, Elastic Net, et al. or a custom screening algorithms.
+     Multi-core and multi-node parallelization for scalability.
+     External cross-validation to estimate the performance of the ensembling predictor.
+     Ensemble can optimize for any target metric: mean-squared error, AUC, log likelihood, etc.
+     Includes framework to provide custom loss functions and stacking algorithms
+** [[https://github.com/csgillespie/efficientR][csgillespie/efficientR: Efficient R programming: a book]]                                     :tex:R:github:top:book:programming: 
+ <2016-12-16 Fri 04:36>
+
+  Efficient R programming: a book https://csgillespie.github.io/efficie…
+** [[https://github.com/johnmyleswhite/ML_for_Hackers][johnmyleswhite/ML_for_Hackers: Code accompanying the book "Machine Learning for Hackers"]]                                               :R:github:top:book:addon: 
+ <2016-12-16 Fri 04:37>
+
+  Code accompanying the book "Machine Learning for Hackers" http://shop.oreilly.com/product/06369…
+** [[https://github.com/hadley/devtools][hadley/devtools: Tools to make an R developer's life easier]]                                               :R:github:top:begin:easy: 
+ <2016-12-16 Fri 04:38>
+
+ The aim of devtools is to make package development easier by providing R functions that simplify common tasks.
+
+ An R package is actually quite simple. A package is a template or set of conventions that structures your code. This not only makes sharing code easy, it reduces the time and effort required to complete you project: following a template removes the need to have to think about how to organize things and paves the way for the creation of standardised tools that can further accelerate your progress.
+
+ While package development in R can feel intimidating, devtools does every thing it can to make it less so. In fact, devtools comes with a small guarantee: if you get an angry e-mail from an R-core member because of a bug in devtools, forward me the email and your address and I'll mail you a card with a handwritten apology.
+
+ devtools is opinionated about package development. It requires that you use roxygen2 for documentation and testthat for testing. Not everyone would agree with this approach, and they are by no means perfect. But they have evolved out of the experience of writing over 30 R packages.
+
+ I'm always happy to hear about what doesn't work for you and where devtools gets in your way. Either send an email to the rdevtools mailing list or file an issue at the GitHub repository.
+** [[https://github.com/gnunn1/terminix][gnunn1/terminix: A tiling terminal emulator for Linux using GTK+ 3]]                               :D:github:top:gnome:terminal:alternative: 
+ <2016-12-16 Fri 04:39>
+
+ Terminix is a tiling terminal emulator which uses the VTE GTK+ 3 widget with the following features:
+
+     Layout terminals in any fashion by splitting them horizontally or vertically
+     Terminals can be re-arranged using drag and drop both within and between windows
+     Terminals can be detached into a new window via drag and drop
+     Input can be synchronized between terminals so commands typed in one terminal are replicated to the others
+     The grouping of terminals can be saved and loaded from disk
+     Terminals support custom titles
+     Color schemes are stored in files and custom color schemes can be created by simply creating a new file
+     Transparent background
+     Background images
+     Quake mode support (i.e. drop-down terminal)
+     Custom hyperlinks
+     Automatic (triggered) profile switches based on hostname and directory
+     Supports notifications when processes are completed out of view. Requires the Fedora notification patches for VTE
+     Experimental trigger support (Requires patched VTE, see wiki )
+     Experimental badge support (Requires patched VTE, see wiki
+** [[https://github.com/revolunet/PythonBooks][revolunet/PythonBooks: Directory of free Python ebooks]]                                                :python:github:top:book: 
+ <2016-12-16 Fri 04:40>
+
+ PythonBooks is a showcase of the best free ebooks about Python.
+
+ Learn Python, discover new fields, and muscle your brain for free !
+
+ check it out : http://pythonbooks.revolunet.com
+
+ We also have a javascript version : http://jsbooks.revolunet.com
+** [[https://github.com/AndreyAkinshin/Russian-Phd-LaTeX-Dissertation-Template][AndreyAkinshin/Russian-Phd-LaTeX-Dissertation-Template: LaTeX-template for russian Phd thesis]]                                                :tex:github:top:template:russian: 
+ <2016-12-16 Fri 04:44>
+
+  LaTeX-template for russian Phd thesis
+** [[https://github.com/jdavis/latex-homework-template][jdavis/latex-homework-template: The LaTeX file that I use as the base for all my homeworks in university.]]                                   :tex:github:top:homeworks:university: 
+ <2016-12-16 Fri 04:45>
+
+ The LaTeX file that I use as the base for all my homeworks in university.
+ Features
+
+ Here are just a few features of this homework template.
+
+     Title page.
+     Problem markers.
+     Configurable problem numbers (see the last 3 problems for an example).
+     Some commonly used math macros.
+** [[http://www.latextemplates.com/][LaTeX Templates]]                                                     :tex:templates:com: 
+ <2016-12-16 Fri 04:47>
+
+ The best source of free quality LaTeX templates
+
