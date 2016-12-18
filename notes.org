@@ -2374,3 +2374,158 @@ Nerd Fonts is a project that patches developer targeted fonts with a high number
  <2016-12-17 Sat 09:58>
 
  side effect
+** Emacs evaluate in scratch buffer         :emacs:scratch:buffer:evaluation: 
+ <2016-12-17 Sat 10:32>
+
+    Incidentally, if you are in the ‘*scratch*’ buffer and want the value
+ returned by an expression to appear in the ‘*scratch*’ buffer itself
+ rather than in the echo area, type ‘C-u C-x C-e’ instead of ‘C-x C-e’.
+ This causes the value returned to appear after the expression.  The
+ buffer will look like this:
+** [[https://www.masteringemacs.org/article/complete-guide-mastering-eshell][Mastering Eshell - Mastering Emacs]]                                                :emacs:mastering:eshell: 
+ <2016-12-17 Sat 11:32>
+
+ notebooks
+** [[https://www.youtube.com/watch?v=kt-wLpz-9PA][Emacs transpose-words and defadvice - YouTube]]                :video:youtube:tutorial:transpose:words:function:advice: 
+ <2016-12-17 Sat 13:06>
+
+ Hacking Emacs to change the behavior of existing functions. Essentially, I show a little trick, but then show how to use defadvice to change the behavior of transpose-words.
+** [[https://www.youtube.com/watch?v=OjbkCEkboA8][C/C++ in Spacemacs - YouTube]]      :emacs:video:tutorial:youtube:c:cpp:setup:configure:first:initial: 
+ <2016-12-17 Sat 16:34>
+
+ How to get a decent environment for C/C++ development in Spacemacs.
+** GNU Licence short description from Emacs Lisp Introduction :emacs:licence:gnu:short:description: 
+ <2016-12-17 Sat 16:58>
+
+    Finally, if you have code that everyone who uses Emacs may want, you
+ can post it on a computer network or send a copy to the Free Software
+ Foundation.  (When you do this, please license the code and its
+ documentation under a license that permits other people to run, copy,
+ study, modify, and redistribute the code and which protects you from
+ having your work taken from you.)  If you send a copy of your code to
+ the Free Software Foundation, and properly protect yourself and others,
+ it may be included in the next release of Emacs.  In large part, this is
+ how Emacs has grown over the past years, by donations.
+** [[https://stackoverflow.com/questions/8271022/using-elisp-how-to-start-send-keys-to-and-stop-a-command-in-emacs-terminal-em][linux - Using elisp, how to start, send-keys-to, and stop a command in emacs terminal emulator? - Stack Overflow]]                                        :emacs:write:to:terminal:buffer: 
+ <2016-12-17 Sat 18:10>
+
+ (progn
+   (set-buffer "*terminal*")
+   (term-send-raw-string "ls -l\n"))
+** [[https://github.com/kgshank/gse-sound-output-device-chooser][kgshank/gse-sound-output-device-chooser: Gnome Shell Extension to show a simple chooser to select Input & Output device based on gnome control center]]                           :emacs:github:top:extensions:audio:switching: 
+ <2016-12-18 Sun 06:08>
+
+ A simple selector to enabled selection of sound source and sink based on Gnome Control Center
+ Install URL: extensions.gnome.org
+ Gnome shell versions compatible
+
+     3.18
+     3.20
+     3.22
+
+ Notes:
+
+     May conflict with extensions which modify volume menu.
+     Extension works with Volume Mixer extension. Restart shell, if errors encountered.
+** [[https://mkvtoolnix.download/][MKVToolNix news – Matroska tools for Linux/Unix and Windows]]                                                :mkv:matroska:tool:unix: 
+ <2016-12-18 Sun 06:44>
+
+ MKVToolNix is a set of tools to create, alter and inspect Matroska files under Linux, other Unices and Windows.
+
+ Since May 1st 2003, the Matroska libraries themselves and my Matroska tools are officially available. I urge you to download the software, use it and report any errors you encounter to me. I'm always grateful for good bug reports because I make mistakes and you guys normally find them. Your feedback is important to me :)
+** [[https://github.com/koreader/koreader][koreader/koreader: An ebook reader application supporting PDF, DjVu, EPUB, FB2 and many more formats, running on Kindle, Kobo, PocketBook, Ubuntu Touch and Android devices]]                          :lua:github:top:pdf:DjVu:epub:fb2:reader:book: 
+ <2016-12-18 Sun 11:09>
+
+ KOReader is a document viewer application, originally created for Kindle e-ink readers. It currently runs on Kindle, Kobo, PocketBook, Ubuntu Touch and Android (2.3+) devices. Developers can also run KOReader emulator for development purpose on desktop PC with Linux and Windows and Mac OSX (experimental for now).
+ Main features for users
+
+     supports multi-format documents including:
+         paged fixed-layout formats: PDF, DjVu and CBZ
+         reflowable e-book formats: ePub, fb2, mobi, doc, chm and plain text
+         scanned PDF/DjVu documents can also be reflowed with built-in K2pdfopt
+     use StarDict dictionaries / Wikipedia to lookup words
+     highlights can be exported to Evernote cloud account
+     highly customizable reader view and typeset
+         setting arbitrary page margins / line space
+         choosing external fonts and styles
+         built-in multi-lingual hyphenation dictionaries
+     supports adding custom online OPDS catalogs
+     calibre integration
+         search calibre metadata on your koreader device
+         send ebooks from calibre library to your koreader device wirelessly
+         browser calibre library and download ebooks via calibre OPDS server
+     can share ebooks with other koreader devices wirelessly
+     various optimizations for e-ink devices
+         paginated menus without animation
+         adjustable text contrast
+     multi-lingual user interface
+     online Over-The-Air software update
+** [[https://www.emacswiki.org/emacs/MakingPackages][EmacsWiki: Making Packages]]                                            :emacs:wiki:howto:packaging: 
+ <2016-12-18 Sun 11:19>
+
+ ELPA packages come in two forms. The first is a relatively simple single file package, the second is a more complicated multi-file format. Most of this page discusses the multi-file format because it causes the most problems.
+** [[https://www.emacswiki.org/emacs/ELPA][EmacsWiki: ELPA]]                                                 :emacs:wiki:howto:elpa: 
+ <2016-12-18 Sun 11:20>
+
+     Whenever Emacs starts up, it automatically calls the function ‘package-initialize’ to load installed packages. This is done after loading the init file and abbrev file (if any) and before running ‘after-init-hook’ (see Startup Summary). Automatic package loading is disabled if the user option package-enable-at-startup is nil.
+** [[https://github.com/nagadomi/waifu2x][nagadomi/waifu2x: Image Super-Resolution for Anime-Style Art]]                         :lua:github:top:anime:deep:learning:image:size: 
+ <2016-12-18 Sun 11:30>
+
+ Image Super-Resolution for Anime-style art using Deep Convolutional Neural Networks. And it supports photo.
+
+ The demo application can be found at http://waifu2x.udp.jp/ .
+** [[https://www.youtube.com/watch?v=LMNTBeVh_ZQ][{C++} Алгоритмы - Пузырьковая сортировка (Bubble sort) - YouTube]]                              :cpp:youtube:video:tutorial:howto:sorting: 
+ <2016-12-18 Sun 12:29>
+
+ В этом видео вы узнаете, что такое пузырьковая сортировка, как она работает, где и когда используется. Познакомитесь с основными принципами сортировки массива.
+** [[https://www.youtube.com/watch?v=_VYWoIaJZpU][ЗОРмания - ТОП 10 лучших АНИМЕ осени 2016! (Metalrus) - YouTube]]                                               :anime:top:anidub:autumn: 
+ <2016-12-18 Sun 13:45>
+
+ Аниме из ТОПа:
+ 10) Keijo!!!!!!!!
+ 09) Shuumatsu no Izetta
+ 08) Occultic;Nine
+ 07) Watashi ga Motete Dousunda / Я требую яоя!
+ 06) Mahou Shoujo Ikusei Keikaku
+ 05) Udon no Kuni no Kiniro Kemari
+ 04) Flip Flappers
+ 03) Yuri!!! on Ice
+ 02) 3-gatsu no Lion
+ 01) Drifters
+** [[http://indexp.ru/][Почтовые индексы России: почтовые индексы Москвы, почтовые индексы Петербурга, почтовые индексы других городов, областей, поиск почтового индекса по адресу]]                                                 :russia:mail:index:zip: 
+ <2016-12-18 Sun 14:02>
+
+
+
+ Здесь представлена самая полная и точная база почтовых индексов России, в том числе индексы Москвы. Информация о почтовых индексах России представлена на основе последних версий базы почтовых индексов Почты России и Классификатора адресов России ФНС России. Вы можете воспользоваться как поиском индекса по адресу или адреса по индексу, так и иерархическим рубрикатором адресов России, чтобы найти необходимый индекс почтового адреса.
+
+ Почтовые индексы Москвы, почтовые индексы Санкт-Петербурга и почтовые индексы большинства других городов России можно найти прямо для конкретного дома. То есть у нас представлены почтовые индексы областей, почтовые индексы районов, почтовые индексы городов, почтовые индексы улиц, почтовые индексы домов.
+
+ Изменения почтовых индексов происходят регулярно. Хотим заметить, что в отличие от других сайтов с базами почтовых индексов у нас представлены только реально действующие индексы, нет устаревшей информации, и вы можете быть абсолютно точно уверены, что найденный на нашем сайте индекс будет точно действующим и соответствовать выбранному адресу.
+
+ Последнее обновление базы почтовых индексов Почты России: 18.11.2016. Последнее обновление Классификатора адресов России ФНС России: 01.12.2016.
+** [[https://github.com/roman-mazhut/emacs-vkontakte][roman-mazhut/emacs-vkontakte: Simple implementation of vk messaging for emacs]]                                                 :emacs:vk:client:elisp: 
+ <2016-12-18 Sun 14:42>
+
+ Simple implementation of vk messaging for emacs
+** [[https://github.com/spegoraro/org-alert][spegoraro/org-alert: System notifications of org agenda items]]       :emacs:github:top:org:mode:org:alert:notifications:desktop:clock: 
+ <2016-12-18 Sun 15:49>
+
+ Provides notifications for scheduled or deadlined agenda entries.
+
+ Screenshot
+** [[https://github.com/syl20bnr/spacemacs/issues/7038][UI freezes when you type in Emacs 25 · Issue #7038 · syl20bnr/spacemacs]]          :emacs:bug:spacemacs:company:mode:freeze:elisp:comment:string: 
+ <2016-12-18 Sun 15:58>
+
+ Emacs-lisp mode in Emacs 25 freezes. I suspect it has something to do with company-mode.
+ I do not see this in Emacs 24.
+ I am not sure yet, but I think disabling company-mode "fixes" this. It might be an upstream issue with company.el
+
+#+BEGIN_SRC emacs-lisp
+(eval-after-load 'semantic
+    (add-hook 'semantic-mode-hook
+              (lambda ()
+                (dolist (x (default-value 'completion-at-point-functions))
+                  (when (string-prefix-p "semantic-" (symbol-name x))
+                    (remove-hook 'completion-at-point-functions x))))))
+#+END_SRC
