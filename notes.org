@@ -2581,3 +2581,132 @@ Nerd Fonts is a project that patches developer targeted fonts with a high number
                                                                          [07:55]
  <quicknir> @jamieaus88_twitter yeah it's pretty cool. @as well. And !. ! works
             everywhere use it a lot when searching for files
+** [[https://github.com/euske/pdfminer][euske/pdfminer: Python PDF Parser]]                                          :python:github:top:pdf:parser: 
+ <2016-12-19 Mon 10:49>
+
+ PDFMiner is a tool for extracting information from PDF documents. Unlike other PDF-related tools, it focuses entirely on getting and analyzing text data. PDFMiner allows one to obtain the exact location of text in a page, as well as other information such as fonts or lines. It includes a PDF converter that can transform PDF files into other text formats (such as HTML). It has an extensible PDF parser that can be used for other purposes than text analysis.
+
+     Webpage: https://euske.github.io/pdfminer/
+     Download (PyPI): https://pypi.python.org/pypi/pdfminer/
+     Demo WebApp: http://pdf2html.tabesugi.net:8080/
+
+ Features
+
+     Written entirely in Python.
+     Parse, analyze, and convert PDF documents.
+     PDF-1.7 specification support. (well, almost)
+     CJK languages and vertical writing scripts support.
+     Various font types (Type1, TrueType, Type3, and CID) support.
+     Basic encryption (RC4) support.
+     Outline (TOC) extraction.
+     Tagged contents extraction.
+     Automatic layout analysis.
+** [[http://alexarmstrong.net/2015/01/pushing-to-multiple-git-repos/][Pushing to multiple git repos - Alex Armstrong]]                                      :git:multiple:remote:repositories: 
+ <2016-12-19 Mon 11:19>
+
+ How to push a git repo to multiple remote repositories, such as GitLab & BitBucket, with a single command.
+ Background
+
+ I’ve been using BitBucket, which offers unlimited private repositories for free, to backup my git repos in the cloud.
+
+ Recently I switched to GitLab. They offer a similar service, also for free, but with a nicer UI. In particular, GitLab can search inside files, not just the filenames. This feature is curiously missing from BitBucket, although it was logged back in 2011.
+
+ Unfortunately, GitLab’s shiny UI baulks when confronted with my notes repository: a single folder containing several hundred markdown files. BitBucket, meanwhile, handles it without a hitch.
+
+ I wanted to keep both repos updated so that I can use whichever service is more useful for a given task. Having redundant copies of my files also offers some peace of mind.
+** [[http://www.alexa.com/topsites/category/Computers/Internet/E-mail/Mailing_Lists][Alexa - Top Sites by Category: Computers/Internet/E-mail/Mailing Lists]]                                               :alexa:top:mailing:lists: 
+ <2016-12-19 Mon 11:25>
+
+  This particular provider is free of cost and is available in three different languages.
+** [[https://www.reddit.com/r/usenet/wiki/providers][providers - usenet]]                          :usenet:mail:lists:archives:gmane:alternative: 
+ <2016-12-19 Mon 11:32>
+
+ Below is a list of usenet service providers. This list makes it easy to see which backbones are located in which geographic locations. The list also provides you with information on who runs the backbone, if the backbone provider sells direct to individuals through its own subsidiary providers and if they resell services through a third party. This allows you to see if your primary usenet account is in on the same backbone as your secondary account (see block accounts wiki for additional details). For more information, please see the FAQ
+** [[https://www.reddit.com/r/emacs/comments/5f83cj/how_can_we_add_nongmane_newsgroups_to_gnus/][How can we add non-Gmane newsgroups to Gnus? : emacs]]                                             :usenet:recommended:server: 
+ <2016-12-19 Mon 11:33>
+
+ There are many NNTP servers, a lot of them are listed in the Usenet Providers Wiki of /r/usenet!
+
+ For a free one that seems to fit your requirements, check out Aioe.org:
+
+     free
+     supports SSL
+     reasonable limits
+     most importantly: supports comp.lang.prolog.
+** How to sort org table                         :emacs:org:mode:sort:tables: 
+ <2016-12-19 Mon 12:32>
+
+ You can quickly sort tables in org-mode by using C-c ^ with the point inside a table. You’ll be prompted for a sorting type, where you can choose e.g. a for alphabetic or n for numeric. You can use capital letter
+ versions of these options to reverse the sort. 
+
+ The table is sorted based on the column that the point is in, and from the documentation: 
+
+  The range of lines is the range between the nearest horizontal separator lines, or the entire table of no such lines exist.
+** [[https://github.com/sabnzbd/sabnzbd][sabnzbd/sabnzbd: SABnzbd - The automated Usenet download tool]]                           :python:github:top:usenet:downloader:grabber: 
+ <2016-12-19 Mon 14:18>
+
+ SABnzbd - The automated Usenet download tool
+
+ This Unicode release is not compatible with 0.7.x queues!
+
+ There is also an issue with upgrading of the "sabnzbd.ini" file. Make sure that you have a backup!
+
+ Saved queues may not be compatible after updates.
+
+ SABnzbd is an Open Source Binary Newsreader written in Python.
+
+ It's totally free, incredibly easy to use, and works practically everywhere.
+
+ SABnzbd makes Usenet as simple and streamlined as possible by automating everything we can. All you have to do is add an .nzb. SABnzbd takes over from there, where it will be automatically downloaded, verified, repaired, extracted and filed away with zero human interaction.
+
+ If you want to know more you can head over to our website: http://sabnzbd.org.
+** [[https://github.com/jarun/googler][jarun/googler: Google Search, Google Site Search, Google News from the terminal.]]                                   :python:github:top:google:search:cli: 
+ <2016-12-19 Mon 14:32>
+
+ googler is a power tool to Google (Web & News) and Google Site Search from the command-line. It shows the title, URL and abstract for each result, which can be directly opened in a browser from the terminal. Results are fetched in pages (with page navigation). Supports sequential searches in a single googler instance.
+
+ googler was initially written to cater to headless servers without X. You can integrate it with a text-based browser. However, it has grown into a very handy and flexible utility that delivers much more. For example, fetch any number of results or start anywhere, limit search by any duration, define aliases to google search any number of websites, switch domains easily... all of this in a very clean interface without ads or stray URLs. The shell completion scripts make sure you don't need to remember any options.
+
+ googler isn't affiliated to Google in any way.
+** [[https://github.com/xiaoxu193/PyTeaser][xiaoxu193/PyTeaser: Summarizes news articles]]                                        :python:github:top:news:summary: 
+ <2016-12-19 Mon 14:32>
+
+ PyTeaser takes any news article and extract a brief summary from it. It's based on the original Scala project.
+
+ Summaries are created by ranking sentences in a news article according to how relevant they are to the entire text. The top 5 sentences are used to form a "summary". Each sentence is ranked by using four criteria:
+
+     Relevance to the title
+     Relevance to keywords in the article
+     Position of the sentence
+     Length of the sentence
+** [[http://tools.kali.org/information-gathering/dmitry][DMitry | Penetration Testing Tools]]                                 :kali:DMitry:dns:scan:discovery:lookup: 
+ <2016-12-19 Mon 15:14>
+
+ DMitry (Deepmagic Information Gathering Tool) is a UNIX/(GNU)Linux Command Line Application coded in C. DMitry has the ability to gather as much information as possible about a host. Base functionality is able to gather possible subdomains, email addresses, uptime information, tcp port scan, whois lookups, and more.
+
+ The following is a list of the current features:
+
+     An Open Source Project.
+     Perform an Internet Number whois lookup.
+     Retrieve possible uptime data, system and server data.
+     Perform a SubDomain search on a target host.
+     Perform an E-Mail address search on a target host.
+     Perform a TCP Portscan on the host target.
+     A Modular program allowing user specified modules
+
+ Source: http://mor-pah.net/software/dmitry-deepmagic-information-gathering-tool/
+ DMitry Homepage | Kali DMitry Repo
+** [[https://github.com/darkoperator/dnsrecon][darkoperator/dnsrecon: DNS Enumeration Script]]                                          :python:github:top:dns:lookup: 
+ <2016-12-19 Mon 15:22>
+
+  DNS Enumeration Script
+** [[https://github.com/TheRook/subbrute][TheRook/subbrute: A DNS meta-query spider that enumerates DNS records, and subdomains.]]                               :python:github:top:subdomain:brute:force: 
+ <2016-12-19 Mon 15:25>
+
+ SubBrute is a community driven project with the goal of creating the fastest, and most accurate subdomain enumeration tool. Some of the magic behind SubBrute is that it uses open resolvers as a kind of proxy to circumvent DNS rate-limiting (https://www.us-cert.gov/ncas/alerts/TA13-088A). This design also provides a layer of anonymity, as SubBrute does not send traffic directly to the target's name servers.
+** [[https://github.com/m57/dnsteal][m57/dnsteal: DNS Exfiltration tool for stealthily sending files over DNS requests.]]                              :python:github:top:dns:security:sendfiles: 
+ <2016-12-19 Mon 15:26>
+
+ This is a fake DNS server that allows you to stealthily extract files from a victim machine through DNS requests.
+
+ Below are a couple of different images showing examples of multiple file transfer and single verbose file transfer:
