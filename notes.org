@@ -2529,3 +2529,55 @@ Nerd Fonts is a project that patches developer targeted fonts with a high number
                   (when (string-prefix-p "semantic-" (symbol-name x))
                     (remove-hook 'completion-at-point-functions x))))))
 #+END_SRC
+** Debian IRC bot                                       :debian:irc:bot:dpkg: 
+ <2016-12-18 Sun 16:08>
+
+ <dpkg> Please visit http://wiki.debian.org/IRC/DpkgBot to learn how to
+        effectively search the factoids database for FAQ, and not flood in the
+        channel with !tell <who> about <what>.  Also ask me about <msg the
+        bot>.  We ask that you learn to search for yourself first, unless it is
+        a specific problem.  Many questions are asked repeatedly, and the
+        factoid database can be of great help to you.  Ask me about <search
+        dpkg>.
+** How to ask questions properly in IRC    :irc:howto:ask:questions:properly: 
+ <2016-12-18 Sun 16:52>
+
+ <dpkg> If you have a question, just ask! For example: "I have a problem with
+        ___; I'm running Debian version ___. When I try to do ___ I get the
+        following output ___. I expected it to do ___." Don't ask if you can
+        ask, if anyone uses it, or pick one person to ask. We're all
+        volunteers; make it easy for us to help you. If you don't get an answer
+        try a few hours later or on debian-user@lists.debian.org. See <smart
+        questions><errors>.
+** How to effectively use helm        :emacs:spacemacs:helm:howto:files:grep: 
+ <2016-12-19 Mon 07:55>
+
+ <quicknir> There's also a few special things you can use in SPC b b hthat
+            don't work in most helm contets  [07:46]
+ <quicknir> you can do * to match major mode
+ <jamieaus88_twitter> yeah. I like how there's a recent list in there as well.
+                  I barely have to use SPC f f 
+ <quicknir> *Python will show you only python files
+ <jamieaus88_twitter> neat
+ <quicknir> and @ will show you things that contain that text  [07:49]
+ <quicknir> `@hello` will filter down to buffers that contain hello somewhere
+ <quicknir> ! is negation, works basically everywhere
+ <jamieaus88_twitter> I can't get *Python to work
+ <jamieaus88_twitter> do you literally type *Python?
+ <quicknir> yah  [07:52]
+ <quicknir> SPC b b
+ <quicknir> *Python
+ <quicknir> Should only show you your python buffers  [07:53]
+ <quicknir> If you have any open
+ <quicknir> it won't work in SPC f f etc
+ <lijingjiang> Hey guys, I would love to know is there some way to always hide
+               some specific buffer like `Async Shell Command buffer`  [07:54]
+ <jamieaus88_twitter> yeah got it!
+ <quicknir> @lijingjiang why do you want to hide it? Hide it from where, SPC b
+            b?
+ <gitter> [Github] angry-bird commented in syl20bnr/spacemacs on issue: Org
+          mode hangs very sporadically when using mini-buffers
+          https://github.com/syl20bnr/spacemacs/issues/5778#issuecomment-267881946
+                                                                         [07:55]
+ <quicknir> @jamieaus88_twitter yeah it's pretty cool. @as well. And !. ! works
+            everywhere use it a lot when searching for files
