@@ -2710,3 +2710,133 @@ Nerd Fonts is a project that patches developer targeted fonts with a high number
  This is a fake DNS server that allows you to stealthily extract files from a victim machine through DNS requests.
 
  Below are a couple of different images showing examples of multiple file transfer and single verbose file transfer:
+** [[https://github.com/h5bp/Front-end-Developer-Interview-Questions][h5bp/Front-end-Developer-Interview-Questions: A list of helpful front-end related questions you can use to interview potential candidates, test yourself or completely ignore.]]                                        :front:end:github:top:questions: 
+ <2016-12-19 Mon 18:55>
+
+ This file contains a number of front-end interview questions that can be used when vetting potential candidates. It is by no means recommended to use every single question here on the same candidate (that would take hours). Choosing a few items from this list should help you vet the intended skills you require.
+
+ Note: Keep in mind that many of these questions are open-ended and could lead to interesting discussions that tell you more about the person's capabilities than a straight answer would.
+** [[https://github.com/vermiculus/sx.el][vermiculus/sx.el: Stack Exchange for Emacs]]                                        :emacs:github:top:stackexchange: 
+ <2016-12-19 Mon 19:19>
+
+ SX is a full-featured Stack Exchange mode for GNU Emacs 24+. Using the official API, it provides a versatile experience for the Stack Exchange network within Emacs itself.
+** [[https://github.com/emacs-helm/helm-mu][emacs-helm/helm-mu: Helm sources for searching emails and contacts using mu]]                                     :emacs:github:top:mu4e:helm:search: 
+ <2016-12-20 Tue 06:31>
+
+ Mu is an indexer for maildirs and mu4e is a mutt-like MUA for Emacs build on top of mu. Mu is highly efficient, which makes it possible to get instant search results even for huge maildirs. It also provides search operators similar to Google mail, e.g:
+
+ from:Titus to:Anne flag:attach vacation photos
+** Check redhat testing program                              :redhat:testing: 
+ <2016-12-20 Tue 06:42>
+
+Приглашаем Вам пройти БЕСПЛАТНОЕ online тестирование по продуктам Red Hat,
+котороепозволит более точно оценить уровень Вашего мастерства.
+
+Online тестирование для специалистов, заинтересованных в повышении навыков и
+сертификации по продуктам Red Hat, займет около 20 минут.
+
+Мы предлагаем online тестирование по следующим продуктам:
+- Red Hat Satellite
+- Ansible by Red Hat
+- Red Hat JBoss AEP
+- Red Hat Gluster Storage
+- Red Hat OpenShift    
+- Red Hat OpenStack Platform
+- Red Hat Enterprise Linux 7  
+
+Это поможет вам:
+- Проверить свои навыки и получить персональные рекомендации
+- Определить свои сильные стороны и направления для развития
+- Открыть новые возможности в своей карьере
+
+Проверьте себя: [[http://app.engage.redhat.com/e/er?s=1795&lid=49975&elqTrackId=699e62c2aece4d85bcc33eda3a55e83d&elq=fd1825aaca8447ec82dbadb9491f6781&elqaid=33770&elqat=1][www.redhat.com/rhtapps/assessment/]]
+** [[https://www.mail-archive.com/debian-bugs-dist%40lists.debian.org/][debian-bugs-dist]]                                              :mailing:list:debian:bugs: 
+ <2016-12-20 Tue 06:49>
+** mu4e bug report conventions                              :mu4e:bug:report: 
+ <2016-12-20 Tue 06:58>
+
+    Sometimes, you might encounter some unexpected behavior while using
+ mu4e.  It could be a bug in mu4e, it could be an issue in other
+ software.  Or it could just be a misunderstanding.  In any case, if you
+ want to report this (either to the mailing list or to
+ <https://github.com/djcb/mu/issues>, the latter is preferred), please
+ always include the following information:
+
+    • what did you expect that should happen?  what actually happened?
+    • can you provide some exact steps to reproduce?
+    • what version of mu4e and emacs were you using?  What operating
+      system?
+    • can you reproduce it with emacs -q and only loading mu4e?
+    • if the problem is related to some specific message, please include
+      the raw message file (appropriately anonimized, of course)
+
+    (1) <http://groups.google.com/group/mu-discuss>
+** How to search email with mu or mu4e            :emacs:mu4e:mu:mail:search: 
+ <2016-12-20 Tue 07:04>
+
+    which lists all messages that match hello.  For more examples of
+ searches, see *note Queries::, or check the mu-find and mu-easy man
+ pages.  If all of this worked well, we are well on our way setting
+ things up; the next step is to do some basic configuration for mu4e.
+** [[https://github.com/Alir3z4/html2text][Alir3z4/html2text: Convert HTML to Markdown-formatted text.]]                          :python:github:top:html:to:markdown:converter: 
+ <2016-12-20 Tue 08:32>
+
+ html2text is a Python script that converts a page of HTML into clean, easy-to-read plain ASCII text. Better yet, that ASCII also happens to be valid Markdown (a text-to-HTML format).
+** [[https://github.com/theSage21/handwritten][theSage21/handwritten: Plain text to handwriting generator.]]                    :python:github:plain:text:to:handwriting:generation: 
+ <2016-12-20 Tue 09:13>
+
+ Homework could have been so much easier if only it could be submitted as a typed copy.
+ Using Alex Graves' paper on handwriting generation is a step I liked. This script uses his amazing paper (actually the free service he has set up online) to generate handwritten homework for given text.
+** [[http://etest.lspace.etu.ru/][Questionmark Perception -]]                                                 :leti:test:information: 
+ <2016-12-20 Tue 11:11>
+
+  Questionmark Perception licensed to St.-Petersburg Electrotechnical University
+** [[https://github.com/jasonlong/cayman-theme][jasonlong/cayman-theme: A responsive theme for GitHub Pages]]                                                :pages:github:top:theme: 
+ <2016-12-20 Tue 11:53>
+
+ Cayman is a clean, responsive theme for GitHub Pages. This theme is available as an option if you use the Automatic Page Generator or you can copy the template and styles to use on your own.
+
+ You can preview the theme at http://jasonlong.github.io/cayman-theme or with real content at http://jasonlong.github.io/geo_pattern.
+** [[https://github.com/ArcticaProject/nx-libs][ArcticaProject/nx-libs: nx-libs]]                                 :c:cpp:github:top:remote:xorg:terminal: 
+ <2016-12-20 Tue 13:58>
+
+ This source tree started as a re-distribution of those NX packages needed to setup FreeNX and/or X2Go on a Linux server.
+
+ In the past, the NX re-distribution (3.5.0.x) had been maintained by the X2Go Project: http://wiki.x2go.org
+
+ In 2014, the QVD project run by the company Qindel joined the group of people being interested in NX maintenance and improvement.
+
+ Since 2015, the Arctica Project has joined in the NX development. The core devs of X2Go, Arctica and TheQVD have agreed on stopping to redistribute NX and to continue the development of NX 3.x as the new upstream instead. The package will see a slight name change to nx-libs starting with version 3.5.99.0.
+
+ Our intentions for nx-libs are:
+
+     provide one tarball that builds NX projects via a common Makefile
+     provide one tarball for distribution packagers
+     provide support for security issues
+     provide support for latest X11 extensions
+     improve NX where possible
+
+ This source tree is maintained on Github:
+
+ https://github.com/ArcticaProject/nx-libs (3.6.x branch)
+
+ For the the post-NoMachine era of nx-libs, we will focus on two release phases for the upcoming two years (06/2015 - 06/2017).
+** [[http://ftp.acc.umu.se/pub/debian-meetings/][Index of /pub/debian-meetings]]                               :debian:meetings:archive:video:cambridge: 
+ <2016-12-20 Tue 14:18>
+** [[http://sachachua.com/blog/2016/12/using-categories-organize-org-agenda/][Using categories to organize your Org agenda - sacha chua :: living an awesome life]]                                        :emacs:org:mode:agenda:category: 
+ <2016-12-20 Tue 15:08>
+
+ I've just discovered that it helps to add a :CATEGORY: property to the top-level, non-TODO heading that identifies the project.  Using your example:
+** [[https://github.com/haecker-felix/gradio][haecker-felix/gradio: A GTK3 app for finding and listening to internet radio stations]]                                           :gnome:vala:github:top:radio: 
+ <2016-12-20 Tue 16:49>
+
+ A GTK3 app for finding and listening to internet radio stations.
+** [[http://wiki.calculate-linux.org/ru/nastroika_firefox][Настройка Firefox]]                           :ru:wiki:calculate:firefox:performance:boost: 
+ <2016-12-20 Tue 17:10>
+
+ Настройка Firefox
+** [[https://github.com/abo-abo/define-word][abo-abo/define-word: Display the definition of word at point in Emacs]]                                          :emacs:github:word:definition: 
+ <2016-12-20 Tue 17:17>
+
+ define-word is a GNU Emacs package that lets you see the definition of a word or a phrase at point, without having to switch to a browser:
+
