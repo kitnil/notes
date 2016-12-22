@@ -2839,4 +2839,285 @@ Online тестирование для специалистов, заинтер�
  <2016-12-20 Tue 17:17>
 
  define-word is a GNU Emacs package that lets you see the definition of a word or a phrase at point, without having to switch to a browser:
+** [[http://ergoemacs.org/emacs/elisp_hash_table.html][Emacs Lisp: Hash Table]]                                            :emacs:tutorial:hash:tables: 
+ <2016-12-20 Tue 19:12>
 
+ This page is a tutorial on emacs lisp hash table.
+
+ Emacs lisp has 2 types of list of key/value pairs.
+
+     Association List (aka alist).
+     Hash Table.
+
+ What's the Difference Between Alist and Hash Table?
+
+     Alist items are ordered, and can have duplicate keys.
+     Hash Table entries are unique. Hash Table items are not ordered. Hash Table is usually faster for random access when there are huge number of items (tens of thousands).
+
+ Alist is actually a list, with each element being a cons pair (cons key val). The element may repeat. The list is ordered. Emacs provides high level functions to let you use it as a key value pairs. See (info "(elisp) Association Lists")
+** [[https://github.com/jordonbiondo/quake-mode][jordonbiondo/quake-mode: Quake/Unreal style text killing sprees for Emacs.]]                         :emacs:github:lol:unreal:quake:multikill:sound: 
+ <2016-12-20 Tue 23:27>
+
+ Minor mode providing Quake/Unreal-style killing sprees in Emacs.
+** [[https://www.youtube.com/watch?v=97NcG8hj9WE][The History of Online Communication - YouTube]]                            :youtube:video:history:online:communication: 
+ <2016-12-21 Wed 10:06>
+
+ Before Google Hangouts and Snapchat were the norm, how did people communicate using computers and the Internet?
+
+ TunnelBear message: TunnelBear is the easy-to-use VPN app for mobile and desktop. Visit http://tunnelbear.com/linus to try it free and save 10% when you sign up for unlimited TunnelBear data.
+
+ Follow: http://twitter.com/linustech
+
+ Join the community: http://linustech.com
+** [[https://github.com/darktrojan/openwith][darktrojan/openwith: Open With add-on for Firefox]]                                          :firefox:githup:top:open:with: 
+ <2016-12-21 Wed 10:15>
+
+ Released versions can be downloaded from https://addons.mozilla.org/firefox/addon/open-with/
+
+ See https://darktrojan.github.io/openwith/ for information about contributing code/translations/money.
+** [[https://github.com/OctoLinker/browser-extension][OctoLinker/browser-extension: OctoLinker – Available on Chrome, Firefox and Opera]]                                     :firefox:github:top:git:OctoLinker: 
+ <2016-12-21 Wed 10:21>
+
+ First of all, it's a browser extension. Once installed, it allows you to navigate through projects on GitHub.com efficiently.
+
+ Most projects consist of many files and third party dependencies. Files are referencing other files and / or dependencies by language specific statements like include or require. Dependencies are most likely declared in a file called manifest e.g. package.json or Gemfile. The OctoLinker browser extensions makes these references clickable. No more copy and search.
+** [[https://github.com/stripe/gaps][stripe/gaps: Easy management of your Google Groups subscriptions.]]                              :ruby:github:top:google:groups:management: 
+ <2016-12-21 Wed 10:46>
+
+ At Stripe, we've long had many more Google Group mailing lists than employees. As the number of lists grew, so too did the complexity of managing your email setup: which lists were you on? Why are you receiving email for this list you're not subscribed to? How do you set up your filters to usually archive email to a list, but only if you're not present on the CC?
+
+ Gaps is the main tool we've used to help make these questions manageable. The core functionality is surprisingly simple: a single list of all your Google Groups in one place, which lets you view your subscriptions (including whether you're receiving mail from a list being subscribed to another list), and subscribe or unsubscribe by the click of a button.
+
+ More recently, we've also added filter generation and maintenance. Unfortunately Google's email settings API only allows you to create new filters, so it's up to the user to delete their old ones.
+** [[https://github.com/benma/visual-regexp-steroids.el][benma/visual-regexp-steroids.el: Extends visual-regexp to support other regexp engines]]                                        :emacs:github:top:regexp:visual: 
+ <2016-12-21 Wed 13:47>
+
+ visual-regexp-steroids is an extension to visual-regexp which enables the use of modern regexp engines (no more escaped group parentheses, and other goodies!). In addition to that, you can optionally use the better regexp syntax to power isearch-forward-regexp and isearch-backward-regexp.
+
+ For now, Python and pcre2el is supported out of the box (tested on Linux and Windows). If you want to add custom scripts to enable your favorite language, please get in touch.
+** [[https://github.com/RaymiiOrg/NoPriv][RaymiiOrg/NoPriv: NoPriv.py is a python script to backup any IMAP capable email account to a HTML archive, nicely browsable, instead of weird folders (Maildir), one huge file (mbox), only needing a web browser to view (thunderbird) and no propritary code, so you can make sure I don't steal your password.]]                                        :python:github:top:mbox:to:html: 
+ <2016-12-21 Wed 22:32>
+
+  NoPriv.py is a python script to backup any IMAP capable email account to a HTML archive, nicely browsable, instead of weird folders (Maildir), one huge file (mbox), only needing a web browser to view (thunderbird) and no propritary code, so you can make sure I don't steal your password.
+** [[https://github.com/python/mypy][python/mypy: Optional static typing for Python 2 and 3 (PEP484)]]                                       :python:github:top:type:checking: 
+ <2016-12-22 Thu 00:41>
+
+ We don't have a mailing list; but we are always happy to answer questions on gitter chat or filed as issues in our trackers:
+
+     mypy tracker for mypy isues
+     typeshed tracker for issues with specific modules
+     typing tracker for discussion of new type system features (PEP 484 changes) and runtime bugs in the typing module
+
+ What is mypy?
+
+ Mypy is an optional static type checker for Python. You can add type hints to your Python programs using the standard for type annotations introduced in Python 3.5 (PEP 484), and use mypy to type check them statically. Find bugs in your programs without even running them!
+
+ The type annotation standard has also been backported to earlier Python 3.x versions. Mypy supports Python 3.3 and later.
+
+ For Python 2.7, you can add annotations as comments (this is also specified in PEP 484).
+
+ You can mix dynamic and static typing in your programs. You can always fall back to dynamic typing when static typing is not convenient, such as for legacy code.
+
+ Here is a small example to whet your appetite:
+** [[https://github.com/YoSmudge/dnsyo][YoSmudge/dnsyo: Check your DNS against over 1000 global DNS servers]]                                      :python:github:top:dns:check:1000: 
+ <2016-12-22 Thu 00:43>
+
+ DNSYO is a little tool I built to help me keep track of DNS propagation.
+
+ In short, it's dig, if dig queried over 1000 servers and collated their results.
+
+ Here's what it does
+** [[https://github.com/ValdikSS/blockcheck][ValdikSS/blockcheck: Checks Russian ISP blocking type]]                            :python:github:top:russia:blocking:internet: 
+ <2016-12-22 Thu 00:44>
+
+ Утилита для определения типа блокировок сайтов из единого реестра запрещенной информации на стороне провайдера.
+
+ Данная утилита позволяет определить:
+
+     Подмену DNS-ответов
+     Перенаправление DNS-серверов
+     Блокировку DNS-серверов
+     Блокировку всей зоны (поддоменов) заблокированного домена
+     "Обычный" DPI (фильтрация URL на определенных IP-адресах и портах)
+     "Полный" DPI (фильтрация URL на всех IP-адресах и/или портах)
+     Подмену SSL (HTTPS)-сертификата (прослушивание HTTPS-трафика)
+     Блокировку по IP-адресу
+
+ Также приложение выполняет тесты для обхода DPI, если он обнаружен на стороне провайдера. На данный момент реализованы следующие техники:
+
+     Дополнительный пробел после GET
+     Фрагментирование заголовка
+     Точка в конце домена
+     Заголовок host вместо Host
+     Перенос строки в заголовках в UNIX-стиле
+
+ Более подробно о видах DPI и типах подключения читайте в Wiki проекта: Типы DPI
+
+ Приложение автоматически отправляет статистику об используемом типе блокировки на сервер.
+
+ http://habrahabr.ru/post/229377/ — статистика по провайдерам
+** [[https://github.com/amperser/proselint][amperser/proselint: A linter for prose.]]                                :python:github:top:prose:writing:linter: 
+ <2016-12-22 Thu 00:46>
+
+ Writing is notoriously hard, even for the best writers, and it's not for lack of good advice — a tremendous amount of knowledge about the craft is strewn across usage guides, dictionaries, technical manuals, essays, pamphlets, websites, and the hearts and minds of great authors and editors. But poring over Strunk & White hardly makes one a better writer — it turns you into neither Strunk nor White. And nobody has the capacity to apply all the advice from Garner’s Modern American Usage, a 975-page usage guide, to everything they write. In fact, the whole notion that one becomes a better writer by reading advice on writing rests on untenable assumptions about learning and memory. The traditional formats of knowledge about writing are thus essentially inert, waiting to be transformed.
+
+ We devised a simple solution: proselint, a linter for prose. (A linter is a computer program that, like a spell checker, scans through a document and analyzes it.)
+
+ proselint places the world’s greatest writers and editors by your side, where they whisper suggestions on how to improve your prose. You’ll be guided by advice inspired by Bryan Garner, David Foster Wallace, Chuck Palahniuk, Steve Pinker, Mary Norris, Mark Twain, Elmore Leonard, George Orwell, Matthew Butterick, William Strunk, E.B. White, Philip Corbett, Ernest Gowers, and the editorial staff of the world’s finest literary magazines and newspapers, among others. Our goal is to aggregate knowledge about best practices in writing and to make that knowledge immediately accessible to all authors in the form of a linter for prose.
+
+ proselint is a command-line utility that can be integrated into existing tools.
+** [[https://github.com/willthames/ansible-lint][willthames/ansible-lint: Best practices checker for Ansible]]                                      :python:github:top:ansible:linter: 
+ <2016-12-22 Thu 01:02>
+
+ ansible-lint checks playbooks for practices and behaviour that could potentially be improved
+** [[https://github.com/twolfson/restructuredtext-lint][twolfson/restructuredtext-lint: reStructuredText linter]]                                         :python:github:top:rest:linter: 
+ <2016-12-22 Thu 01:04>
+
+ This was created out of frustration with PyPI; it sucks finding out your reST is invalid after uploading it. It is being developed in junction with a Sublime Text linter.
+** [[https://github.com/pixelb/fslint][pixelb/fslint: Linux file system lint checker/cleaner]]                             :python:github:top:filesystem:linux:linter: 
+ <2016-12-22 Thu 01:04>
+** [[https://github.com/jorisroovers/gitlint][jorisroovers/gitlint: Linting for your git commit messages]]                                          :python:github:top:git:linter: 
+ <2016-12-22 Thu 01:05>
+
+ Git commit message linter written in python, checks your commit messages for style.
+** [[https://github.com/sk-/git-lint][sk-/git-lint: improving source code one step at a time]]                                          :python:github:top:git:linter: 
+ <2016-12-22 Thu 01:06>
+
+ Git-lint is a tool for improving source code one step at a time.
+ Motivation
+
+ Often times enforcing coding styles to an existing project can be a nightmare. Some reasons may include:
+
+     the codebase is already a mess and the output of the tools is overwhelming.
+     developers don't feel confident changing lines they do not own.
+     or they just don't know what tool to use.
+
+ Features
+
+ This tool tackles all the 3 problems mentioned above by providing just a single tool that lints all the modified files. For each filetype it may use even more than one linter or tool. Furthermore by default it only report problems of lines that were added or modified.
+** [[https://github.com/btford/write-good][btford/write-good: Naive linter for English prose]]                                  :javascript:github:top:linter:english: 
+ <2016-12-22 Thu 01:08>
+
+ Naive linter for English prose for developers who can't write good and wanna learn to do other stuff good too.
+** [[https://www.youtube.com/playlist?list=PLYx7XA2nY5Gf37zYZMw6OqGFRPjB1jCy6][SciPy 2016: Scientific Computing with Python Conference - YouTube]]                                                 :python:meetings:conference:scipy: 
+ <2016-12-22 Thu 01:12>
+
+  SciPy 2016, the fifteenth annual Scientific Computing with Python conference, was held July 11-17, 2016 in Austin, Texas. SciPy is a community dedicated to the advancement of scientific computing through open source Python software for mathematics...
+** [[https://github.com/wummel/linkchecker][wummel/linkchecker: check links in web documents or full websites]]                                          :python:github:top:link:check: 
+ <2016-12-22 Thu 01:13>
+
+ Check for broken links in web sites.
+ Features
+
+     recursive and multithreaded checking and site crawling
+     output in colored or normal text, HTML, SQL, CSV, XML or a sitemap graph in different formats
+     HTTP/1.1, HTTPS, FTP, mailto:, news:, nntp:, Telnet and local file links support
+     restrict link checking with regular expression filters for URLs
+     proxy support
+     username/password authorization for HTTP, FTP and Telnet
+     honors robots.txt exclusion protocol
+     Cookie support
+     HTML5 support
+     a command line and web interface
+     various check plugins available, eg. HTML syntax and antivirus checks.
+** [[https://github.com/mattalcock/blog/blob/master/2012/12/5/python-spell-checker.rst][blog/python-spell-checker.rst at master · mattalcock/blog]]                           :python:github:top:development:spell:checker: 
+ <2016-12-22 Thu 01:15>
+
+ Have you ever been really impressed with Googles 'Did you mean....' spell checker? Have you ever just typed something into google to help you with your spelling?
+
+ My answer to the above questions above would be Yes, all the time!
+
+ In a fantastic post I read some years ago Peter Norvig outlined how Google’s ‘did you mean’ spelling corrector uses probability theory, large training sets and some elegant statistical language processing to be so effective. Type in a search like 'speling' and Google comes back in 0.1 seconds or so with Did you mean: 'spelling'. Below is a toy spelling corrector in python that achieves 80 to 90% accuracy and is very fast. It's written in a fanstically impressive 21 lines of code. It uses list comprehensions, and some of my favorite data structures (sets and default dictionaries).
+
+ The code and supporting data files can be found in my hacks public repo under the spellcheck folder.
+
+ The data seed comes from a big.txt file that consists of about a million words. The file is a concatenation of several public domain books from Project Gutenberg and lists of most frequent words from Wiktionary and the British National Corpus. It uses a simple training method of just counting the occurrences of each word in the big text file. Obviously Google has a lot more data to seed this spelling checker with but I was suprised at how effective this relatively small seed was.
+** [[https://github.com/flycheck/flycheck][flycheck/flycheck: On the fly syntax checking for GNU Emacs]]                                               :emacs:github:top:linter: 
+ <2016-12-22 Thu 11:28>
+
+ Modern on-the-fly syntax checking extension for GNU Emacs. Try it!
+** [[https://github.com/showcases/clean-code-linters][Clean code linters]]                                           :github:top:category:linters: 
+ <2016-12-22 Thu 11:31>
+
+
+
+ Make sure your code is style guide compliant with these essential code linters, many of which are already supported in your editor.
+** [[https://github.com/pre-commit/pre-commit][pre-commit/pre-commit: A framework for managing and maintaining multi-language pre-commit hooks.]]                                   :python:github:top:git:commit:linter: 
+ <2016-12-22 Thu 11:33>
+
+  A framework for managing and maintaining multi-language pre-commit hooks.
+** [[https://github.com/madisonmay/CommonRegex][madisonmay/CommonRegex: A collection of common regular expressions bundled with an easy to use interface.]]                                           :python:github:top:regex:lib: 
+ <2016-12-22 Thu 11:37>
+
+  A collection of common regular expressions bundled with an easy to use interface.
+** [[https://github.com/StefanSchroeder/Golang-Regex-Tutorial][StefanSchroeder/Golang-Regex-Tutorial: Golang - Regular Expression Tutorial]]                                          :go:github:top:regex:tutorial: 
+ <2016-12-22 Thu 11:38>
+
+ Golang - Regular Expression Tutorial
+
+ This is a regular expression tutorial for Go, the language.
+
+     Introduction
+     Part 1: The basics
+     Part 2: Advanced
+     Part 3: Cookbook
+     Part 4: Alternatives
+
+ Go to http://www.golang.org for more information about Go.
+
+ This work is licensed under the Creative Commons Attribution-NonCommercial-ShareAlike 3.0 License.
+
+ I am planning to setup gh-pages: http://stefanschroeder.github.io/Golang-Regex-Tutorial/
+
+ A Chinese version translated by B1nj0y.
+** [[https://github.com/joaoricardo000/whatsapp-bot-seed][joaoricardo000/whatsapp-bot-seed: A small python framework to create a whatsapp bot, with regex-callback message routing.]]                                        :python:github:top:whatsapp:bot: 
+ <2016-12-22 Thu 11:39>
+
+ A small python seed to create a Whatsapp Bot, with regex-callback routes (just like a web framework).
+ (practical extension of the examples on https://github.com/tgalal/yowsup)
+ ⚠️ Warning ⚠️
+
+ Unfortunately, after some updates in the whatsapp servers, bots are beeing banned real quickly. Some just last a couple hours.
+ Whatsapp does not have an open protocol, so yowsup -- the core implementation behind this seed -- relies on reverse engineering to understand the messages exchange. Right now there is a lot of issues with this implementation.
+ This project had a good run, was really useful and bots prior to the server update could run for months without any trouble. Right now is very unstable and unreliable due the ban problem.
+ If a new library/protocol update solves this issue, the work will return. Until then, sadly, the project will be on hold.
+** [[https://github.com/openresty/sregex][openresty/sregex: A non-backtracking NFA/DFA-based Perl-compatible regex engine matching on large data streams]]                                                :c:github:top:regex:lib: 
+ <2016-12-22 Thu 11:39>
+
+ This library is already quite usable and some people are already using it in production.
+
+ Nevertheless this library is still under heavy development. The API is still in flux and may be changed quickly without notice.
+
+ This is a pure C library that is designed to have zero dependencies.
+
+ No pathological regexes exist for this regex engine because it does not use a backtracking algorithm at all.
+
+ Already rewrote the code base of Russ Cox's re1 library using the nginx coding style (yes, I love it!), also incorporated a clone of the nginx memory pool into it for memory management.
+
+ Already ported the Thompson and Pike VM backends to sregex. The former is just for yes-or-no matching, and the latter also supports sub-match capturing.
+
+ Implemented the case-insensitive matching mode via the SRE_REGEX_CASELESS flag.
+
+ The full streaming matching API for the sregex engine has already been implemented, for both the Pike and Thompson regex VMs. The sub-match capturing also supports streaming processing. When the state machine is yielded (that is, returning SRE_AGAIN on the current input data chunk), sregex will always output the current value range for the $& sub-match capture in the user-supplied ovector array.
+
+ Almost all the relevant test cases for PCRE 8.32 and Perl 5.16.2 have been imported into sregex's test suite and all tests are passing right now.
+
+ Already implemented an API for assembling multiple user regexes and returning an ID indicating exactly which regex is matched (first), as well as the corresponding sub-match captures.
+
+ There is also a Just-in-Time (JIT) compiler targeting x86_64 for the Thompson VM.
+** [[https://github.com/tartley/python-regex-cheatsheet][tartley/python-regex-cheatsheet: Python 2.7 Regular Expression cheatsheet, as a restructured text document and Makefile to convert it to PDF]]                                    :python:github:top:regex:cheatsheat: 
+ <2016-12-22 Thu 11:39>
+
+  Python 2.7 Regular Expression cheatsheet, as a restructured text document and Makefile to convert it to PDF
+** [[https://github.com/laurikari/tre][laurikari/tre: The approximate regex matching library and agrep command line tool.]]                                                :c:github:top:regex:lib: 
+ <2016-12-22 Thu 11:40>
+
+ TRE is a lightweight, robust, and efficient POSIX compliant regexp matching library with some exciting features such as approximate (fuzzy) matching.
+
+ The matching algorithm used in TRE uses linear worst-case time in the length of the text being searched, and quadratic worst-case time in the length of the used regular expression.
+
+ In other words, the time complexity of the algorithm is O(M^2N), where M is the length of the regular expression and N is the length of the text. The used space is also quadratic on the length of the regex, but does not depend on the searched string. This quadratic behaviour occurs only on pathological cases which are probably very rare in practice.
+** [[http://www.eltech.ru/ru/fakultety/otkrytyy-fakultet/obyavleniya1/obyavleniya3][http://www.eltech.ru/ru/fakultety/otkrytyy-fakultet/obyavleniya1/obyavleniya3]]                                                             :leti:duty: 
+ <2016-12-22 Thu 11:57>
+
+ in background bash
