@@ -3121,3 +3121,39 @@ Online тестирование для специалистов, заинтер�
  <2016-12-22 Thu 11:57>
 
  in background bash
+** [[https://www.emacswiki.org/emacs/CategoryWriting][EmacsWiki: Category Writing]]                                                :emacs:wiki:for:writers: 
+ <2016-12-22 Thu 12:28>
+
+ Clicking the title heading to search for pages about writing in natural languages with Emacs.
+** [[https://www.reddit.com/r/emacs/comments/5jpyeu/fastest_way_to_jump_to_bookmarks/][Fastest way to jump to bookmarks : emacs]]                                  :emacs:reddit:fastest:bookmarks:jumps: 
+ <2016-12-22 Thu 14:07>
+
+ Fastest way to jump to bookmarks (
+** [[https://github.com/tsgates/pylookup][tsgates/pylookup: Emacs mode for searching python documents with convenience]]                                  :emacs:python:github:top:documentation: 
+ <2016-12-22 Thu 15:07>
+
+ Pylookup stole idea from 'http://furius.ca/haddoc', one of my favorite emacs mode for python documentation lookup. I reimplemented python code and elisp code not just to support new version of python 2.7 but also to extend it for other documentation lookup interfaces with easy. Importantly, pylookup mode is much faster and supports fancy highlighting.
+
+ Please check, Web : http://taesoo.org/proj/pylookup.html Repo : http://github.com/tsgates/pylookup
+** [[https://github.com/gabrielelanaro/emacs-for-python][gabrielelanaro/emacs-for-python: Collection of emacs extensions specifically collected for python development, with workflow guidelines!]]                                               :emacs:python:github:top: 
+ <2016-12-22 Thu 15:18>
+
+ I’m collecting and customizing the perfect environment for python development, using the most beautiful emacs customization to obtain a really modern and exciting (yet stable) way to edit text files.
+
+ In the package are included also a lot of other packages and configurations, it’s an upstart for clean emacs installations, these configuration however are very similar to emacs-starter-kit and I suggest you to give it a try, emacs-for-python is designed to work with it (instruction below).
+** [[https://www.animemusic.me/senpaiscript][SenpaiScript - room script for AnimeMusic.me]]                                             :japan:music:check:plug:dj: 
+ <2016-12-24 Sat 18:21>
+
+ SenpaiScript.
+
+
+ SenpaiScript is a script that will help you determine if your next song is against the rules or if it was played recently.
+ 
+
+ It is important to note that the script will only have data on versions of the song that have been played.
+
+ That means if a song has many youtube/soundcloud versions, we might not have information on every version, and we might not have all of the versions labeled correctly.
+
+ It's especially important to check your song manually if it says "Unknown".
+
+ Overplayed songs and songs that break the rules can easily have over 30 versions, with new versions being added all the time. It's important to check the overplayed list, check it wasn't played today and to read our rules!
