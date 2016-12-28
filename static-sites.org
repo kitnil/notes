@@ -1,6 +1,6 @@
 #+TITLE: static site
 
-** [[https://www.getlektor.com/][Lektor GitHub repository]]                        :python:static:site:generator:cms:
+** Lektor                                  :python:static:site:generator:cms:
    <2016-12-14 Wed 00:49>
 *** Description
 A flexible and powerful static content management system for building complex
@@ -8,7 +8,9 @@ and beautiful websites out of flat files — for people who do not want to make 
 compromise between a CMS and a static blog engine.
 
 Getting your ideas implemented is as easy as frying an egg.
-** Letterpress                                          :python:static:site:generator: 
+*** Links
+- [[https://www.getlektor.com/][Lektor GitHub repository]]
+** Letterpress                                 :python:static:site:generator: 
  <2016-12-14 Wed 09:46>
 *** Description
 Letterpress is a minimal, Markdown based blogging system written in Python.
@@ -20,15 +22,18 @@ Letterpress is a minimal, Markdown based blogging system written in Python.
 - Math writing is much easier in ASCIIMathML than in MathML.
 *** Links
 - [[https://github.com/an0/Letterpress][Letterpress GitHub repository]]
-** [[https://github.com/Jack000/Expose][Expose GitHub repository]]               :perl:photo:gallery:static:site:generator: 
+** Expose                          :perl:photo:gallery:static:site:generator: 
  <2016-12-15 Thu 10:04>
+*** Links
+- [[https://github.com/Jack000/Expose][Expose GitHub repository]]
 *** Description
 A simple static site generator for photoessays
-** [[https://github.com/joeyh/ikiwiki][ikiwiki GitHub repository]]      :perl:github:top:wiki:static:site:compiler: 
+** ikiwiki                                  :perl:wiki:static:site:generator: 
  <2016-12-16 Fri 02:54>
 *** Description
 A wiki compiler.
 *** Links
-  - [[https://ikiwiki.info/bugs/][ikiwiki Bug reports and pull requests]]
-  - [[https://ikiwiki.info/][ikiwiki Official website]]
+- [[https://github.com/joeyh/ikiwiki][ikiwiki GitHub repository]]
+- [[https://ikiwiki.info/bugs/][ikiwiki Bug reports and pull requests]]
+- [[https://ikiwiki.info/][ikiwiki Official website]]
 
