@@ -1,4 +1,23 @@
 #+TITLE: static site
 
-** [[https://www.getlektor.com/][lektor]] cms:python:static:site:generator:lector:github:top:cms: 
+** [[https://www.getlektor.com/][lektor]]                                  :python:static:site:generator:cms:
    <2016-12-14 Wed 00:49>
+
+*** Description
+ A flexible and powerful static content management system for building complex
+ and beautiful websites out of flat files — for people who do not want to make a
+ compromise between a CMS and a static blog engine.
+
+ Getting your ideas implemented is as easy as frying an egg.
+
+** [[https://github.com/an0/Letterpress][Letterpress]]                                 :python:static:site:generator: 
+ <2016-12-14 Wed 09:46>
+*** Description
+ Letterpress is a minimal, Markdown based blogging system written in Python.
+
+*** Features
+ - Letterpress is lighter than WordPress.
+ - Python is prettier than PHP.
+ - Static/text is more reliable than dynamic/database.
+ - Markdown is more human-friendly than HTML.
+ - Math writing is much easier in ASCIIMathML than in MathML.
