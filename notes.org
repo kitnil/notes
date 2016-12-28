@@ -3334,3 +3334,7 @@ Online тестирование для специалистов, заинтер�
  Our flagship is Liquidsoap, a swiss-army knife for multimedia streaming, notably used for netradios and webtvs. It has tons of features, it's free and it's open-source!
 
  Liquidsoap is a powerful and flexible language for describing your streams. It offers a rich collection of operators that you can combine at will, giving you more power than you need for creating or transforming streams. But liquidsoap is still very light and easy to use, in the Unix tradition of simple strong components working together.
+** [[https://github.com/krisajenkins/ob-translate][krisajenkins/ob-translate: Allows you to translate blocks of text within org-mode.]]                                        :emacs:org:mode:translate:block: 
+ <2016-12-28 Wed 06:52>
+
+ Translate text in Emacs’ org-mode blocks, like so:
