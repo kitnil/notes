@@ -1,0 +1,16 @@
+#+TITLE: Hakyll
+#+TAGS: haskell pandoc
+
+* Description
+Static sites are fast, secure, easy to deploy, and manageable using version
+control.
+
+Hakyll is a Haskell library for generating static sites, mostly aimed at
+small-to-medium sites and personal blogs. It is written in a very configurable
+way and uses an xmonad-like DSL for configuration.
+
+Integration with pandoc gives us markdown and TeX support, including syntax
+highlighting and other goodies.
+
+* Links
+- [[https://jaspervdj.be/hakyll/][Hakyll Official website]]
