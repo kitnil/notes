@@ -34,8 +34,6 @@ sudo mk-build-deps --install --remove
 #+BEGIN_QUOTE
 See what a program does before deciding whether you really want it to happen.
 #+END_QUOTE
-** [[https://www.getlektor.com/][lektor]] static site generator with cms:python:static:site:generator:lector:github:top:cms: 
- <2016-12-14 Wed 00:49>
 ** [[https://github.com/etsy/logster][logster]] parse log files                 :python:system:log:metrics:parser: 
  <2016-12-14 Wed 00:51>
   Parse log files, generate metrics for Graphite and Ganglia
