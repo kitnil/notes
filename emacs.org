@@ -1,9 +1,35 @@
 #+TITLE: Emacs
+#+FILETAGS: :emacs:
 
 * Clipboard
-- [[http://pragmaticemacs.com/emacs/add-the-system-clipboard-to-the-emacs-kill-ring/][Add the system clipboard to the Emacs kill-ring]]
+*** Description
+Add the system clipboard to the Emacs kill-ring
 
-* ormode
+This post was originally titled “Prevent Emacs wiping the system clipboard”,
+which was a rubbish description of what this tip actually covers, so I renamed
+it! Apologies if you see it twice in your RSS reader.
+
+I wrote previously about adding mouse selections in Emacs to the system
+clipboard, and here is another tip to integrate the system clipboard more nicely
+with Emacs. This comes from the fantastic Emacs operating system set of
+configuration files, which are full of gems like this (thanks to Irreal for
+pointing me to EOS).
+
+By default, if you copy something to the system clipboard (e.g. some text in
+firefox) and then copy or kill some text in Emacs, then the text from firefox is
+lost. If you set the option below in your emacs config file then copying or
+killing text in Emacs will add the system clipboard text to the kill-ring so
+that you can find it when you cycle through your clipboard history in Emacs.
+*** Code
+#+BEGIN_SRC emacs-lisp
+;; Save whatever’s in the current (system) clipboard before
+;; replacing it with the Emacs’ text.
+;; https://github.com/dakrone/eos/blob/master/eos.org
+(setq save-interprogram-paste-before-kill t)
+#+END_SRC
+*** Links
+- [[http://pragmaticemacs.com/emacs/add-the-system-clipboard-to-the-emacs-kill-ring/][Add the system clipboard to the Emacs kill-ring]]
+* org-mode
 ** News
 - [[http://kitchingroup.cheme.cmu.edu/blog/2016/11/04/New-link-features-in-org-9/?utm_source=feedburner&utm_medium=twitter&utm_campaign=Feed:+TheKitchinResearchGroup+(The+Kitchin+Research+Group)][New link features in org 9]]
 
