@@ -1,0 +1,19 @@
+#+TITLE: pages
+
+* Description
+
+* Features
+- Create websites for your GitLab projects, groups, or user account.
+- Use any static website generator: Jekyll, Middleman, Hexo, Hugo, Pelican, and
+  more.
+- Connect your [[http://doc.gitlab.com/ee/pages/README.html#add-a-custom-domain-to-your-pages-website][custom domain(s) and TLS certificates]].
+- Host your static websites on GitLab.com for free, or on your own GitLab
+  Enterprise Edition instance.
+- Latest [[https://docker.com/][Docker Engine]]
+- Fork one of our [[https://gitlab.com/pages/][example projects]]
+- [[http://doc.gitlab.com/ee/pages/README.html#custom-error-codes-pages][Custom error pages]]
+- Project page https://username.gitlab.io/projectname
+- User page https://username.gitlab.io
+
+* Links
+- [[https://pages.gitlab.io/][GitLab pages Official website]]
