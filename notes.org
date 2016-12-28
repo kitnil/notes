@@ -1310,8 +1310,6 @@ See what a program does before deciding whether you really want it to happen.
      persistentlist
 
      Python 5 1
-** Настоящая консоль                  :youtube:future:channel:title:thoughts: 
- <2016-12-15 Thu 08:49>
 ** [[https://github.com/cloudson/gitql][cloudson/gitql: A git query language]] :go:github:top:git:query:language:sql: 
  <2016-12-15 Thu 09:10>
 
@@ -3341,4 +3339,24 @@ Online тестирование для специалистов, заинтер�
 
 * Firefox
 ** TODO [[https://www.reddit.com/r/emacs/comments/5jhwlu/getting_things_from_outside_emacs_into/][Getting things from outside Emacs into org-mode/Emacs : emacs]]
+** TODO [[https://stackoverflow.com/questions/11902620/org-mode-how-do-i-create-a-new-file-with-org-capture][emacs - Org-Mode - How do I create a new file with org-capture? - Stack Overflow]]
+You'll have to use (read-string ...) in capture-report-data-file to generate the
+filename on the fly.
+
+#+BEGIN_SRC emacs-lisp
+ (defun capture-report-data-file (path)
+   (let ((name (read-string "Name: ")))
+     (expand-file-name (format "%s-%s.txt"
+                               (format-time-string "%Y-%m-%d")
+                               name) path)))
+
+ '(("t"
+    "todo"
+    entry
+    (file (capture-report-date-file  "~/path/path/name"))
+    "* TODO")))
+#+END_SRC
+
+This will prompt on capture for the file name, and then open the capture buffer
+will be created.
 
