@@ -3328,3 +3328,9 @@ Online тестирование для специалистов, заинтер�
  This is an Emacs configuration file written in Org mode. It is an attempt to keep my ~/.emacs.d tidy, but still be able to keep it all in one file. I aim to briefly explain all my configurations as I go along!
 
  I would not recommend using this configuration as-is, because it probably contains a lot you don’t really need. I do, however, hope people find some golden nuggets that they can smuggle into their own configs.
+** [[https://github.com/savonet/liquidsoap][savonet/liquidsoap: Audio and video streaming language]]                                                    :streaming:language: 
+ <2016-12-28 Wed 06:01>
+
+ Our flagship is Liquidsoap, a swiss-army knife for multimedia streaming, notably used for netradios and webtvs. It has tons of features, it's free and it's open-source!
+
+ Liquidsoap is a powerful and flexible language for describing your streams. It offers a rich collection of operators that you can combine at will, giving you more power than you need for creating or transforming streams. But liquidsoap is still very light and easy to use, in the Unix tradition of simple strong components working together.
