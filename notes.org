@@ -3349,3 +3349,9 @@ Online тестирование для специалистов, заинтер�
  Adapted from http://www.emacswiki.org/PersonalDiary
 
  Functions to maintain a simple personal diary / journal in Emacs. Feel free to use, modify and improve the code! — mtvoid, bastibe
+** [[https://github.com/larstvei/dot-emacs/blob/master/init.org][dot-emacs/init.org at master · larstvei/dot-emacs]]                  :emacs:github:top:org:mode:configuration:init:example: 
+ <2016-12-28 Wed 05:13>
+
+ This is an Emacs configuration file written in Org mode. It is an attempt to keep my ~/.emacs.d tidy, but still be able to keep it all in one file. I aim to briefly explain all my configurations as I go along!
+
+ I would not recommend using this configuration as-is, because it probably contains a lot you don’t really need. I do, however, hope people find some golden nuggets that they can smuggle into their own configs.
