@@ -3315,3 +3315,19 @@ Online тестирование для специалистов, заинтер�
  <2016-12-28 Wed 00:51>
 
  [[https://github.com/igrigorik/ga-beacon][igrigorik/ga-beacon: Google Analytics collector-as-a-service (using GA measurement protocol).]]
+** [[https://github.com/matburt/mobileorg-android][matburt/mobileorg-android: An implementation of MobileOrg for the Android platform]]                                           :android:github:top:org:mode: 
+ <2016-12-28 Wed 00:57>
+
+ A new implementation of MobileOrg, an Org mode app for Android.
+
+ The app is under heavy refactoring and is not out yet: a first release should be out in the following weeks.
+** [[https://github.com/novoid/Memacs][novoid/Memacs: What did I do on February 14th 2007? Visualize your (digital) life in Org-mode]]                           :emacs:github:top:orgmode:history:time:stamp: 
+ <2016-12-28 Wed 02:03>
+
+ ## Time-stamp: <2015-03-29 13:20:39 vk> ## This file is best viewed with GNU Emacs Org-mode: http://orgmode.org/
+
+ What were you doing on February 14th of 2007? On which tasks were you working on that very day you met your girl friend? When was the last appointments with your dentist? Who called you on telephone during that meeting with your customer last month?
+
+ Most people can not answer such questions. With Memacs you can!
+
+ Memacs extracts metadata (subjects, timestamps, contact information, …) from many different existing data sources (file names, emails, tweets, bookmarks, …) on your computer and generates files which are readable by GNU Emacs with Org-mode.
