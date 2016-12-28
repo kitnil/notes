@@ -1,6 +1,8 @@
-#+TITLE: static site
+#+TITLE: Static site
+#+FILETAGS: :static:site:
 
-** Lektor                                  :python:static:site:generator:cms:
+* Generator                                                       :generator:
+** Lektor                                                        :python:cms:
    <2016-12-14 Wed 00:49>
 *** Description
 A flexible and powerful static content management system for building complex
@@ -10,7 +12,7 @@ compromise between a CMS and a static blog engine.
 Getting your ideas implemented is as easy as frying an egg.
 *** Links
 - [[https://www.getlektor.com/][Lektor GitHub repository]]
-** Letterpress                                 :python:static:site:generator: 
+** Letterpress                                                       :python: 
  <2016-12-14 Wed 09:46>
 *** Description
 Letterpress is a minimal, Markdown based blogging system written in Python.
@@ -22,13 +24,13 @@ Letterpress is a minimal, Markdown based blogging system written in Python.
 - Math writing is much easier in ASCIIMathML than in MathML.
 *** Links
 - [[https://github.com/an0/Letterpress][Letterpress GitHub repository]]
-** Expose                          :perl:photo:gallery:static:site:generator: 
+** Expose                                                :perl:photo:gallery: 
  <2016-12-15 Thu 10:04>
 *** Links
 - [[https://github.com/Jack000/Expose][Expose GitHub repository]]
 *** Description
 A simple static site generator for photoessays
-** ikiwiki                                  :perl:wiki:static:site:generator: 
+** ikiwiki                                                        :perl:wiki: 
  <2016-12-16 Fri 02:54>
 *** Description
 A wiki compiler.
