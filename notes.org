@@ -3331,3 +3331,21 @@ Online тестирование для специалистов, заинтер�
  Most people can not answer such questions. With Memacs you can!
 
  Memacs extracts metadata (subjects, timestamps, contact information, …) from many different existing data sources (file names, emails, tweets, bookmarks, …) on your computer and generates files which are readable by GNU Emacs with Org-mode.
+** [[https://github.com/coldnew/org-ioslide][coldnew/org-ioslide: Export org-mode to Google I/O HTML5 slide.]]                    :emacs:github:top:org:mode:export:presentation:html: 
+ <2016-12-28 Wed 04:47>
+
+ Export your Org document to Google I/O HTML5 slide. See DEMO slide.
+** [[https://github.com/bjonnh/PyOrgMode][bjonnh/PyOrgMode: A python class for reading and writing orgmode files]]                            :python:github:top:org:mode:file:parse:read: 
+ <2016-12-28 Wed 04:48>
+
+ PyOrgMode is a small python library able to do simple tasks with your org files. It allows you to generate org files or treat them in an automated fashion.
+
+ This project is not my top priority, but I’m more than happy to receive pull requests. Don’t worry, even if it takes some time, I go through all of them ;)
+
+ I’d like to thank all the people that contributes (see AUTHORS file).
+** [[https://github.com/bastibe/org-journal][bastibe/org-journal: A simple org-mode based journaling mode]]                                     :emacs:github:top:journal:org:mode: 
+ <2016-12-28 Wed 04:49>
+
+ Adapted from http://www.emacswiki.org/PersonalDiary
+
+ Functions to maintain a simple personal diary / journal in Emacs. Feel free to use, modify and improve the code! — mtvoid, bastibe
