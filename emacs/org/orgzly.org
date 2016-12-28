@@ -1,0 +1,27 @@
+#+TITLE: Orgzly
+#+TAGS: android
+
+* Description
+Orgzly is an outliner for notes and tasks. It stores notebooks in plain-text and
+keeps them where you choose to.
+
+* Features
+- Create, edit and delete notes and tasks
+- Collapse and expand sub-notes
+- Schedule tasks and set their deadlines
+- Set priorities and tags for notes
+- Fling notes left or right to open quick-menus
+- Search notes by various properties
+- Create and save searches for quick access
+- Synchronize notebooks
+
+Notebooks can be synchronized with one or more directories. Directories on your
+mobile device (like SD card) or Dropbox and are currently supported. Git, Google
+Drive, SSH and more are coming soon.
+
+Notebooks are saved in Org mode's file format. “Org mode is for keeping notes,
+maintaining TODO lists, planning projects, and authoring documents with a fast
+and effective plain-text system.” See http://orgmode.org for more information.
+
+* Links
+- [[https://play.google.com/store/apps/details?id=com.orgzly][Orgzly Google Play]]
