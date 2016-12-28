@@ -3419,4 +3419,6 @@ filename on the fly.
 
 This will prompt on capture for the file name, and then open the capture buffer
 will be created.
-
+** TODO [[https://blog.sleeplessbeastie.eu/2016/04/22/how-to-use-org-capture-from-system-tray/][How to use org-capture from system tray]]
+ These shell scripts are designed to verify that emacs daemon process is running
+ and then intercept call from emacsclient to trigger custom capture action.
