@@ -74,3 +74,70 @@
 
  Recorded at TNG Technology Consulting / http://www.tngtech.com at 2nd of
  September 2016 at Unterföhring near Munich
+** TODO [[http://ergoemacs.org/emacs/emacs_eww_web_browser.html][Emacs: Using Eww Web Browser]]
+ How to make emacs always use eww?
+** TODO [[https://github.com/appleshan/my-spacemacs-config][appleshan/my-spacemacs-config: My personal Spacemacs config]]
+ Hacking 始于 2012 年。2015 年爱上 Spacemacs 😄 💖
+
+ 我的 Spacemacs 配置一共有两部分： 一个 .emacs.d 目录，是 Spacemacs 的原始代码，未做任何修改； 一个 .spacemacs.d 目录，存放私有 layer。
+** TODO [[https://github.com/Fanael/rainbow-identifiers][Fanael/rainbow-identifiers: Rainbow identifier highlighting for Emacs]]
+ Rainbow identifiers mode is an Emacs minor mode providing highlighting of identifiers based on their names. Each identifier gets a color based on a hash of its name.
+** TODO [[https://github.com/ankurdave/color-identifiers-mode][ankurdave/color-identifiers-mode: Emacs minor mode to highlight each source code identifier uniquely based on its name]]
+ Color Identifiers is a minor mode for Emacs that highlights each source code identifier uniquely based on its name. It is inspired by a post by Evan Brooks.
+
+ Currently it supports Scala (scala-mode2), JavaScript (js-mode and js2-mode), Ruby, Python, Emacs Lisp, Clojure, C, C++, and Java. You can add support for your favorite mode by modifying color-identifiers:modes-alist and optionally calling color-identifiers:set-declaration-scan-fn.
+
+ Check out the demo.
+** TODO [[https://julien.danjou.info/projects/emacs-packages][Emacs packages | Julien Danjou]]
+ rainbow-mode is a minor mode for Emacs which displays strings representing colors with the color they represent as background.
+** TODO [[https://github.com/syl20bnr/nyan-mode][syl20bnr/nyan-mode: Nyan Cat for Emacs! Nyanyanyanyanyanyanyanyanyan!]]
+ Fork modifications
+
+     the starting nyan cat image has no rainbow behind it,
+     the starting rainbow image has zigzags,
+     the animation loop is not endless and occurs only when nyan cat moves.
+
+ Introduction
+
+ WARNING, MIND DUMBING CONTENT INSIDE.
+
+ “Nyan-mode. It’s things like this that make me proud to be an emacs user.” - mitchellh
+
+ Nyanmacs is expanding!! Read the story so far! :).
+** TODO [[https://github.com/petervanderdoes/gitflow-avh][petervanderdoes/gitflow-avh: AVH Edition of the git extensions to provide high-level repository operations for Vincent Driessen's branching model]]
+ A collection of Git extensions to provide high-level repository operations for Vincent Driessen's branching model. This fork adds functionality not added to the original branch.
+** TODO [[https://github.com/jtatarik/magit-gitflow][jtatarik/magit-gitflow: GitFlow plugin for magit.el]]
+ GitFlow plugin for magit.el
+** TODO [[https://www.youtube.com/watch?v=Qve7g0LB7ao&list=PLIcAMDxr6tppz0MDTAj7aj23_E6FwrRfO&index=1][Javascript - #1 - Прототипное наследование - YouTube]]
+ В этом уроке мы разберем как реализуются классы, что такое прототипы, как создавать экземпляры классов и как реализовывать наследование в Javascript.
+ Смотрите больше видео по AngularJS на нашем сайте.
+ Текст и исходный код урока смотрите на http://monsterlessons.com/project/les...
+** TODO [[http://jblevins.org/projects/deft/][Deft for Emacs]]
+ Deft is an Emacs mode for quickly browsing, filtering, and editing directories of plain text notes, inspired by Notational Velocity. It was designed for increased productivity when writing and taking notes by making it fast and simple to find the right file at the right time and by automating many of the usual tasks such as creating new files and saving files.
+** TODO [[https://github.com/rejeep/prodigy.el][rejeep/prodigy.el: Manage external services from within Emacs]]
+ Manage external services from within Emacs
+
+ I came up with the idea when I got to work one Monday morning and before I could start working I had to manually start ten or so services.
+
+ To get rid of this tedious work, I started working on this Emacs plugin, which provides a nice and simple GUI to manage services.
+** TODO [[https://www.youtube.com/watch?v=FWrxJpLxyk8][{Инженерная графика} Как выполнить разрез детали - YouTube]]
+ В видео рассказано, что такое разрез и чем он отличается от сечения, описаны типы разрезов, правила выполнения простых и сложных разрезов, в том числе совмещенных с видом. Даны рекомендации по выполнению разрезов, если на ось симметрии детали попадает ребро (внешнее или внутреннее)...Изложенный материал закрепляется контрольными заданиями.
+
+ Как проставить размеры детали:
+ https://youtu.be/jqV9e_8WnOI
+ Как выполнить изокруг в программе AutoCAD:
+ https://youtu.be/xWNIWcTI40M
+** TODO [[http://robot.bmstu.ru/files/GOST/gost-eskd.html][ГОСТы ЕСКД.]]
+ Единая система конструкторской документации
+** TODO [[http://www.propro.ru/graphbook/eskd/eskd/gost/GOST.htm][Единая система контструкторской документации]]
+  Единая система конструкторской документации
+** TODO [[https://www.youtube.com/watch?v=0nz4kI4LB5g][14 Компас 3D Ошибки при создании эскиза - YouTube]]
+ Ошибки при создании эскиза в 3d модели.
+** TODO [[https://www.youtube.com/watch?v=EUrfyfQc_2o][4 Free Resources: Save Time Choosing Your Next Machine Vision Camera - YouTube]]
+ Welcome to the Point Grey Youtube Channel where we talk about all things related to machine vision cameras. As a thank you for stopping by here are 4 links to our time-saving resources.
+ 1) Camera Sensor Review: http://www.ptgrey.com/point-grey/10845
+ 2) How to Calculate Camera Sensitivity - Understanding and using the EMVA1288 standard (Video and White Paper): http://www.ptgrey.com/white-paper/id/...
+ 3) Camera Selector Tool: http://www.ptgrey.com/Camera-selector
+ 4) Resolution vs Frame Rates:https://www.ptgrey.com/point-grey/10902
+
+ Want to talk cameras? Email me at michael.jacoby(at)ptgrey.com or @mikeyjacoby (twitter)
