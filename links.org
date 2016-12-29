@@ -1,0 +1,76 @@
+#+TITLE: links
+
+* Links
+** TODO [[https://www.youtube.com/watch?v=mqpGuSWunuc&index=7&list=PLryKLyMkG0mL1BpqoeuWgt29rWZou4HAA][Оформление чертежей в Компас-3D. Урок 7.Разрезы и сечения - YouTube]]
+ Учимся создавать разрезы и сечения.
+** TODO [[https://www.youtube.com/watch?v=NmBSDYve6tk][Пол вида пол разреза с 3D-модели в КОМПАС 14 - YouTube]]
+ Создание чертежа с 3D-модели детали с выполнением разреза половины вида в программе КОМПАС 14.
+** TODO [[https://github.com/mooz/keysnail][mooz/keysnail: Allows you to bind commands to key sequences in Mozilla Firefox]]
+ KeySnail is an add-on for Mozilla Firefox that aims to be a competitor and lightweight alternative to Vimperator. Unlike Vimperator, KeySnail provides comfortable browsing experience for Emacs users, but its target users are not limited to.
+** TODO [[https://github.com/viewvc/viewvc][viewvc/viewvc: ViewVC is a browser interface for CVS and Subversion version control repositories.]]
+ ViewVC is a browser interface for CVS and Subversion version control repositories. It generates templatized HTML to present navigable directory, revision, and change log listings. It can display specific versions of files as well as diffs between those versions. Basically, ViewVC provides the bulk of the report-like functionality you expect out of your version control tool, but much more prettily than the average textual command-line program output.
+ Features
+
+     Support for filesystem-accessible CVS and Subversion repositories.
+     Support for path-based authorization, including parsing and honoring Subversion authz configuration files.
+     RSS feed generation for tracking changes to repositories or individual items within repositories.
+     Individually configurable virtual host support.
+     Line-based annotation/blame display.
+     Revision graph capabilities (via integration with CvsGraph) (CVS only).
+     Syntax highlighting support.
+     Bonsai-like repository query facilities.
+     Template-driven output generation.
+     Colorized, side-by-side differences.
+     Tarball generation (by tag/branch for CVS, by revision for Subversion).
+     Localization support based on the Accept-Language request header.
+     Ability to run either as CGI script or as a standalone server.
+     Regexp-based file searching.
+     INI-like configuration file (as opposed to requiring actual code tweaks).
+
+ Requirements
+
+ The only hard software requirement for running ViewVC is a suitable version of Python. The specifics of that, as well as all other requirements, depend on what you want to do with the tool. As those have changed somewhat over the years, it's best to consult the INSTALL file of the specific ViewVC release you wish to evaluate for its exact requirements. Here are pointers to the INSTALL files for the current major release lines:
+
+     ViewVC 1.1.x
+     Unreleased bleeding edge (1.2-dev)
+** TODO [[https://discordapp.com/][Discord - Free Voice and Text Chat for Gamers]]
+ It’s time to ditch Skype and TeamSpeak.
+
+ All-in-one voice and text chat for gamers that’s free, secure, and works on
+ both your desktop and phone. Stop paying for TeamSpeak servers and hassling
+ with Skype. Simplify your life.
+** TODO [[https://github.com/ZZROTDesign/docker-clean][ZZROTDesign/docker-clean: A script that cleans docker containers, images, volumes, and networks.]]
+ A simple Shell script to clean up the Docker Daemon.
+** TODO [[https://github.com/dmgerman/org-manage][dmgerman/org-manage: org-manage]]
+ This is a module to help managing a large collection of org files. It is based
+ on org-octopress by Yoshinari Nomura.
+** TODO [[https://github.com/kiwanami/emacs-ctable][kiwanami/emacs-ctable: Table Component for elisp]]
+ ctable.el is a table component for emacs lisp. Emacs lisp programs can display
+ a nice table view from an abstract data model. The many emacs programs have the
+ code for displaying table views, such as dired, list-process, buffer-list and
+ so on. So, ctable.el would provide functions and a table framework for the
+ table views.
+** TODO [[https://www.youtube.com/watch?v=Y8VNiybERVU][Сравнение императивного и функционального программирования на примере Python и Haskell (Артём Канев) - YouTube]]
+ Выступление Артёма Канева 6 августа 2015 г. "Сравнение императивного и
+ функционального программирования на примере Python и Haskell. Плюсы и минусы"
+
+ Большей частью внимание уделено Haskell. Поскольку в Haskell нет циклов и
+ переменных (переменные эмулируются другими средствами языка), то имеет смысл
+ начать с самого начала, то есть с управления состоянием и обхода разного рода
+ массивов. По восходящей подберемся к созданию простенького REST приложения на
+ обоих языках. Надеюсь, получится отразить как можно больше косяков обоих
+ подходов.
+** TODO [[https://www.youtube.com/watch?v=t8gim17hryw][MuniHac 2016: Hakyll - YouTube]]
+ A keynote talk at MuniHac 2016 given by Jasper Van der Jeugt.
+
+ Hakyll is a static site generator written in Haskell. It is more like a library
+ than a conventional application, since the configuration is done in Haskell as
+ well -- a bit like Xmonad. In this talk, we will give a high-level overview of
+ the advantages of static site generators in general and build a quick site
+ together. After that, we will dive a bit deeper and examine how semi-automatic
+ dependency tracking works in the library.
+
+ See also MuniHac 2016: http://www.munihac.de
+
+ Recorded at TNG Technology Consulting / http://www.tngtech.com at 2nd of
+ September 2016 at Unterföhring near Munich
