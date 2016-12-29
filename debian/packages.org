@@ -83,3 +83,16 @@ Debian packages for daily use.
 ** Latest kernel
 
 - [[https://wiki.debian.org/HowToUpgradeKernel][HowToUpgradeKernel - Debian Wiki]]
+* pkgcheck                        :python:restore:permissions:
+ <2016-12-27 Tue 20:48>
+** Description
+pkgcore-based QA utility
+
+pkgcheck is developed alongside pkgcore. To run the development version of
+pkgcheck you will need the development version of pkgcore.
+
+** Requirements
+The metadata.xml checks require lxml to be installed.
+
+** Links
+- [[https://github.com/pkgcore/pkgcheck][pkgcore GitHub repository]]
