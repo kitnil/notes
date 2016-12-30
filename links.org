@@ -219,3 +219,17 @@
  Сайт кафедры: http://omgtu.ru/general_information/f...
 ** TODO [[https://www.youtube.com/watch?v=GSJ4BXsR5Xw][GPL LGPL BSD MIT EULA MADNESS! - YouTube]]
  The differences between common software licenses in use today.
+** TODO [[http://kodi.wiki/view/backup][Just a moment...]]
+  DDoS protection by CloudFlare
+** TODO [[https://github.com/spiderbit/kodi-remote.el][spiderbit/kodi-remote.el: Emacs Remote Control functions for Kodi]]
+ Emacs Remote Control for Kodi Including a function to send youtube and other urls to kodi
+
+     see youtube-dl for supported sites
+** TODO [[https://github.com/K0HAX/spacemacs-emms][K0HAX/spacemacs-emms: Emms layer for Spacemacs]]
+ The main purpose of this elisp is to install EMMS inside Spacemacs.
+** TODO [[https://github.com/dochang/emms-player-mpv][dochang/emms-player-mpv: mpv support for EMMS]]
+ This library provides a player that uses mpv for EMMS. It supports pause and seeking. For loading subtitles automatically, try adding autosub-match=fuzzy to your ~/.mpv/config, see mpv manual for more.
+
+ This library is based on `emms-player-mplayer.el' in EMMS.
+** TODO [[https://github.com/pft/mingus][pft/mingus: GNU Emacs control of Music Player Daemon (MPD)]]
+ Mingus is a frontend for GNU Emacs to the Music Player daemon. The interface closely, though not strictly, resembles that of ncmpc, which I had been using before (the main drawback of ncmpc for me was it’s apparent lack of support for unicode). It has some advantages over other clients, mainly in the field of playlist editing. This is achieved through marking and regions as you are used too in emacs and in dired. Mingus also provides a point-of-insertion for inserting new songs. This can be handy to drop a song after the currently playing one (enqueue), but is more flexible. Mingus is distributed under the GPL.
