@@ -233,3 +233,128 @@
  This library is based on `emms-player-mplayer.el' in EMMS.
 ** TODO [[https://github.com/pft/mingus][pft/mingus: GNU Emacs control of Music Player Daemon (MPD)]]
  Mingus is a frontend for GNU Emacs to the Music Player daemon. The interface closely, though not strictly, resembles that of ncmpc, which I had been using before (the main drawback of ncmpc for me was it’s apparent lack of support for unicode). It has some advantages over other clients, mainly in the field of playlist editing. This is achieved through marking and regions as you are used too in emacs and in dired. Mingus also provides a point-of-insertion for inserting new songs. This can be handy to drop a song after the currently playing one (enqueue), but is more flexible. Mingus is distributed under the GPL.
+** TODO [[https://www.gnu.org/manual/manual.html][GNU Manuals Online - GNU Project - Free Software Foundation]]
+ This table lists official GNU packages with links to their primary documentation, where available. When a package has several associated manuals, they are all listed. If a package has no specific manual online, the link just goes to the package's home page (which is also linked to explicitly).
+** TODO [[https://www.gnu.org/software/libc/][The GNU C Library]]
+ What is glibc?
+
+ The GNU C Library project provides the core libraries for the GNU system and GNU/Linux systems, as well as many other systems that use Linux as the kernel. These libraries provide critical APIs including ISO C11, POSIX.1-2008, BSD, OS-specific APIs and more. These APIs include such foundational facilities as open, read, write, malloc, printf, getaddrinfo, dlopen, pthread_create, crypt, login, exit and more.
+
+ The GNU C Library is designed to be a backwards compatible, portable, and high performance ISO C library. It aims to follow all relevant standards including ISO C11, POSIX.1-2008, and IEEE 754-2008.
+
+ The project was started circa 1988 and is almost 30 years old. You can see the complete project release history on the wiki.
+
+ Despite the project's age there is still a lot to do so please Get Started and Get Involved!
+ Current Status
+
+ The GNU C Library releases every 6 months. See the NEWS file in the glibc sources for more information.
+
+     The current stable version of glibc is 2.24, released on August 5, 2016.
+     The current development version of glibc 2.25, releasing on or around February 1, 2017.
+** TODO [[http://cherch.ru/chtenie_i_vipolnenie_chertezhey/razrezi.html][Разрезы: горизонтальный, профильный, фронтальный - Черчение]]
+ Разрез — изображение, полученное при мысленном рассече­нии предмета секущей плоскостью (секущими плоскостями) и состоящее из изображения фигуры сечения и той части детали, которая расположена за секущей плоскостью (секущими плоско­стями).
+** TODO [[https://www.youtube.com/watch?v=NmBSDYve6tk][Пол вида пол разреза с 3D-модели в КОМПАС 14 - YouTube]]
+ Published on Jan 6, 2016
+
+ Создание чертежа с 3D-модели детали с выполнением разреза половины вида в программе КОМПАС 14.
+** TODO [[https://github.com/franziskuskiefer/app-keys-gnome-shell-extension][franziskuskiefer/app-keys-gnome-shell-extension: Unity-like shortcuts for gnome dock applications]]
+ Adds Super+NUM shortcuts for activating applications from dash. Extension can be installed from https://extensions.gnome.org/extension/413/dash-hotkeys/
+** TODO [[https://github.com/phocean/TopIcons-plus][phocean/TopIcons-plus]]
+ Topicons Plus is an alternative to the Gnome Shell Legacy Tray, which is hidden most of the time and generally considered inconvenient.
+
+ It brings all icons to back to the top panel, as with most desktop environments.
+** TODO [[https://www.youtube.com/channel/UCTF-G2t8p9toWdhe3777waw/about][Simple BSD - YouTube]]
+  Joined Mar 10, 2015
+** TODO [[https://www.gnu.org/manual/manual.html][GNU Manuals Online - GNU Project - Free Software Foundation]]
+ This table lists official GNU packages with links to their primary documentation, where available. When a package has several associated manuals, they are all listed. If a package has no specific manual online, the link just goes to the package's home page (which is also linked to explicitly).
+
+ Many packages could be listed in any of several categories, but for the table here just one has to be chosen, usually following the Free Software Directory.
+** TODO [[https://www.gnu.org/software/gnu-c-manual/][The GNU C Reference Manual - GNU Project - Free Software Foundation]]
+  The GNU C Reference Manual is a reference for the C programming language, as implemented by the GNU C Compiler.
+
+ This manual is strictly a reference, not a tutorial. Its aim is to cover every linguistic construct in GNU C, but not the library functions (which are documented elsewhere). This manual would probably not make a good introductory book for new programmers, although those who know languages other than C should be able to learn C using it.
+
+ The v0.2.5 release of the manual is now available, which includes a number of corrections suggested by readers. If you don't feel like building the manual from the Texinfo source, you can also read an HTML version or PDF version of the manual.
+
+ For additional information, please see the manual's project page at Savannah.
+** TODO [[https://gcc.gnu.org/onlinedocs/][GCC online documentation - GNU Project - Free Software Foundation (FSF)]]
+ GCC online documentation
+ Latest releases
+
+ These are manuals for the latest full releases.
+** TODO [[https://www.gnu.org/software/libc/manual/][The GNU C Library - GNU Project - Free Software Foundation (FSF)]]
+ This manual (libc, aka glibc) is available in the following formats:
+
+     HTML - entirely on one web page.
+     HTML - one web page per node.
+     HTML compressed (gzipped tar file) - with one web page per node.
+     Info document (gzipped tar file).
+     ASCII text compressed (gzipped).
+     TeX dvi file (gzipped).
+     PDF file.
+     Texinfo source (gzipped tar file).
+** TODO [[https://www.reddit.com/r/emacs/comments/2d37bo/info_manuals_in_debian_and_ubuntu_some_information/][Info Manuals in Debian and Ubuntu some information : emacs]]
+
+
+ Almost all GNU project languages and utilities have manuals in Info format. Unfortunately for us users, the Debian people decided that the GNU Free Documentation License is a "non-free" license. When the GNU project switched to using it for manuals the Debian people put them in a non-free repository. In my opinion, the behaviour of both sides was bad. Debian derivatives like Ubuntu keep that structure.
+** TODO [[https://github.com/politza/python-info/][politza/python-info]]
+
+     Install the latest sphinx with python2 .
+     Download the desired python distribution.
+     Build the info file as follows.
+** TODO [[https://github.com/iammeat/POSTAL-1-Open-Source][iammeat/POSTAL-1-Open-Source]]
+
+
+     C++ 61.8% Objective-C 27.9% C 10.0% Other 0.3%
+** TODO [[https://proglib.io/p/youtube-python-channels/][9 Youtube-каналов для изучения Python - Библиотека программиста]]
+ Мы собрали 9 лучших каналов на YouTube для освоения и дальнейшего изучения языка программирования Python.
+ 1. sentdex
+
+ Туториалы по Питону для продвинутых. На канале можно найти материалы по машинному обучению, анализу данных, робототехнике, веб-разработке, разработке игр и многое другое.
+ 2. Chris Hawkes
+
+ На данном канале вы сможете найти материалы не только по языку программирования Python, но узнать подробнее, что такое ReactJS, Django и прочее.
+ 3. ИМКН УрФУ
+
+ Языки сценариев — видеолекции по курсу «Языки сценариев», читаемому в Институте математики и компьютерных наук Уральского федерального университета. Курс посвящен третьей версии языка программирования Python.
+ 4. Moscow Python
+
+ MoscowPython — сообщество, появившееся в 2012-м году под именем MoscowDjango. Сегодня на встречи собирается больше 200 человек, и сообщество активно сотрудничает с такими компаниями, как Mail.Ru Group, Rambler&Co, Яндекс, #tceh и другими.
+ 5. PyCon 2016
+
+ Большая коллекция записей докладов с конференции PyCon 2016, проходившей в Портленде.
+ 6. PyCon 2015
+
+ Огромная коллекция докладов c международной конференции по самым различным темам, которые связаны с языком программирования Питон.
+ 7. PyCon 2014
+
+ Доклады с конференции PyCon 2014, которая проходила в Монреале.
+ 8. Next Day Video
+
+ Коллекция лекций и докладов по Питону.
+ 9. PyData
+
+ PyData – собрание пользователей и разработчиков инструментов для анализа данных в Python. Цель — предоставить разработчикам-энтузиастам место для того, чтобы делиться друг c другом идеями и опытом о применении языка программирования и его инструментов для решения задач в управлении, обработке, аналитике и визуализации данных.
+** TODO [[https://www.slac.stanford.edu/comp/unix/gnu-info/emacs_26.html][GNU Emacs Manual - Compiling and Testing Programs]]
+  The previous chapter discusses the Emacs commands that are useful for making changes in programs. This chapter deals with commands that assist in the larger process of developing and maintaining programs.
+** TODO [[https://github.com/nick96/basic-c-compile][nick96/basic-c-compile: Emacs package to create a Makefile, compile and run a C file]]
+ The purpose of this package is to automate come of the basic and repetetive tasks involved in C programming. All the tasks that this pacakge automate are language agnostic and whilst the defaults are C specific you can set them to any statically compiled language.
+** TODO [[https://github.com/syohex/emacs-quickrun][syohex/emacs-quickrun: Run command quickly. This packages is inspired quickrun.vim]]
+ quickrun.el is a extension to execute editing buffer. quickrun.el is similar to executable-interpret, but quickrun.el provides more convenient commands. quickrun.el execute not only script languages(Perl, Ruby, Python etc), but also compiling languages(C, C++, Go, Java etc) and markup language.
+** TODO [[https://github.com/bbatsov/projectile][bbatsov/projectile: Project Interaction Library for Emacs]]
+ Projectile is a project interaction library for Emacs. Its goal is to provide a nice set of features operating on a project level without introducing external dependencies (when feasible). For instance - finding project files has a portable implementation written in pure Emacs Lisp without the use of GNU find (but for performance sake an indexing mechanism backed by external commands exists as well).
+** TODO [[https://www.youtube.com/watch?v=o_RKfLrmCEs][C Programming Tutorial 56, String Functions pt.7 - YouTube]]
+ Uploaded on Feb 5, 2012
+** TODO [[https://github.com/jlsutherland/doc2text][jlsutherland/doc2text: Detect text blocks and OCR poorly scanned PDFs in bulk. Python module available via pip.]]
+ Developing text corpora can be a massive pain in the butt. Much of the text data we are interested in as scientists are locked away in pdfs that are poorly scanned. These scans can be off kilter, poor resolution, have a hand in them... and if you OCR these scans without fixing these errors, the OCR doesn't turn out so well. doc2text was created to help researchers fix these errors and extract the highest quality text from their pdfs as possible.
+** TODO [[https://github.com/politza/python-info][politza/python-info]]
+
+     Install the latest sphinx with python2 .
+     Download the desired python distribution.
+     Build the info file as follows.
+
+ cd Python-x.y.z/Doc
+ sphinx-build -b texinfo -d build/doctrees . build/texinfo
+ cd build/texinfo && make
+
+ Or use the Makefile.
