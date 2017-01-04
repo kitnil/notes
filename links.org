@@ -358,3 +358,92 @@
  cd build/texinfo && make
 
  Or use the Makefile.
+** TODO [[https://www.youtube.com/watch?v=Gn0YiN8uzrg][Xubuntu on Nexus 7 {native, multiROM} - it's actually useful - YouTube]]
+ Published on Sep 29, 2013
+
+ Xubuntu = ubuntu +Xfce, and its running awesomely on the nexus 7 (the old one). In this in-depth video I will describe my experience with it and show how well some common tasks work so you could decide if its worth the effort of getting it running (it definitely is).
+
+ This video was moved from a different (removed) account - originally uploaded at August 29th, 2013.
+
+ Links & tips:
+
+ http://forum.xda-developers.com/showt... - multiROM, you can get pretty much everything from there, there is also a short guide on how to get Ubuntu working with multiROM which includes link to download Ubuntu 13.04 for he N7. There are also links for kernels with kexec-hardboot patch (required by multiROM) and other guides for related things...
+
+ Install Xfce: "sudo apt-get install xubuntu-desktop" in ubuntu terminal or just search "xubuntu-desktop" in ubuntu software center.
+
+ Remove Unity after installing Xfce (you don't have to): http://askubuntu.com/questions/292394... (it's in the first answer...)
+
+ Get Flash player working: http://hwswbits.blogspot.cz/2013/04/f...
+
+ Fix touchscreen rotation:
+ in the terminal: xinput (to find id of elan-touchscreen device - 7 in my case)
+ xinput set-prop 7 "Coordinate Transformation Matrix" 0 1 0 -1 0 1 0 0 1 (to rotate the touchscreen right - same rotation as the display obviously)
+
+ Running Windows and Age of Empires: http://www.youtube.com/watch?v=zN3_td...
+
+ If you are bored with your (now old) nexus 7, this is a great way to revive it and make it do new cool (and most importantly useful) things... Nothing from the process of getting it running was particularly difficult, but if you don't have basic knowledge about flashing roms & kernels, don't know what a custom recovery is, etc. - than you should start with tutorials on that, just use google. The same thing applies about using Ubuntu/Linux.
+
+ I encourage you to make questions, I will answer any question which isn't answered in the video or in this description, if it will be important i will also add the answer to this description.
+** TODO [[https://habrahabr.ru/post/303600/][Emacs как редактор кода для Python и Golang / Хабрахабр]]
+ Когда полгода назад я решил перейти с Vim на Emacs сначала я решил поискать статьи по настройке последнего на хабре. К моему удивлению нашлась всего одна статья в которой рассказывали, как настроить данный редактор для работы с Python. У меня было 2 года опыта работы с vim и имелись определенные требования, которые не были затронуты в данной статье. Вообще рускоязычных статей про работу в Emacs над Python очень мало на просторах интернета. Я не буду рассказывать про тонкости настройки самого Emacs, для этого не хватит даже отдельной статьи.
+** TODO [[https://letsencrypt.org/][Let's Encrypt - Free SSL/TLS Certificates]]
+ Let’s Encrypt is a free, automated, and open Certificate Authority.
+
+ We are a 501(c)(3) nonprofit. We're running a crowdfunding campaign to support our operations, please consider contributing now!
+** TODO [[https://github.com/doxygen/doxygen][doxygen/doxygen: Official doxygen git repository]]
+ Doxygen is the de facto standard tool for generating documentation from annotated C++ sources, but it also supports other popular programming languages such as C, Objective-C, C#, PHP, Java, Python, IDL (Corba, Microsoft, and UNO/OpenOffice flavors), Fortran, VHDL, Tcl, and to some extent D.
+** TODO [[http://ogp.me/][The Open Graph protocol]]
+ The Open Graph protocol enables any web page to become a rich object in a social graph. For instance, this is used on Facebook to allow any web page to have the same functionality as any other object on Facebook.
+** TODO [[https://en.wikipedia.org/wiki/Piwik][Piwik - Wikipedia]]
+ Piwik (pronounced /ˈpiːwiːk/[1]) is a free and open source web analytics application written by a team of international developers that runs on a PHP/MySQL webserver. It tracks online visits to one or more websites and displays reports on these visits for analysis. As of September 2015, Piwik was used by nearly 900 thousand websites,[2] or 1.3% of all websites,[3] and has been translated to more than 45 languages.[4] New versions are regularly released every few weeks.[5]
+** TODO [[https://github.com/python-pillow/Pillow][python-pillow/Pillow: The friendly PIL fork (Python Imaging Library)]]
+ Pillow is the friendly PIL fork by Alex Clark and Contributors. PIL is the Python Imaging Library by Fredrik Lundh and Contributors.
+** TODO [[https://github.com/ChrisAntaki/visited-links-firefox][ChrisAntaki/visited-links-firefox: Disables visited link styles.]]
+ This plugin cleanly disables visited link styles.
+** TODO [[https://github.com/Malabarba/camcorder.el][Malabarba/camcorder.el: Tool for capturing screencasts directly from Emacs.]]
+ Tool for capturing screencasts directly from Emacs.
+
+     To use it, simply call M-x camcorder-record.
+     A new smaller frame will popup and recording starts.
+     When you’re finished, hit F12.
+
+ View screencasts are generated in ogv format, and you can even pause the recording with F11! You can also convert the .ogv file to a gif by issuing the command M-x camcorder-convert-to-gif.
+
+ If you want to record without a popup frame, use M-x camcorder-mode.
+** TODO [[http://jr0cket.co.uk/2017/01/spacemacs-creating-animated-gifs-videos.html][camcorder.el - Creating Animated Gifs & Videos for Spacemacs | jr0cket]]
+ Using animated gifs are a lightweight way to show Emacs in action, as can be seen at Emacs Gifs.
+** TODO [[https://github.com/caiorss/clip.jar][caiorss/clip.jar: Utility to paste images from clipboard to Emacs org-mode or any markdown.]]
+ Clip is a self-contained command line utility written in Scala to extract images from clipboard and save it to a file. It is a module of org-wiki project.
+** TODO [[https://html5up.net/][HTML5 UP! Responsive HTML5 and CSS3 Site Templates]]
+ ... makes spiffy HTML5
+ site templates that are:
+
+     Fully
+     Responsive Built on intelligent
+     HTML5 + CSS3 Super
+     Customizable100% Free under the
+     Creative Commons
+** TODO [[https://github.com/ctfs/write-ups-2014][ctfs/write-ups-2014: Wiki-like CTF write-ups repository, maintained by the community. 2014]]
+ There are some problems with CTF write-ups in general:
+
+     they’re scattered across the interwebs
+     they don’t usually include the original files needed to solve the challenge
+     some of them are incomplete or skip ‘obvious’ parts of the explanation, and are therefore not as helpful for newcomers
+     often they disappear when the owner forgets to renew their domain or shuts down their blog
+
+ This repository aims to solve those problems.
+
+ It’s a collection of CTF source files and write-ups that anyone can contribute to. Did you just publish a CTF write-up? Let us know, and we’ll add a link to your post — or just add the link yourself and submit a pull request. Spot an issue with a solution? Correct it, and send a pull request.
+** TODO [[https://github.com/joshnewlan/say_what][joshnewlan/say_what: Using speech-to-text to fully check out during con calls]]
+ This script listens to meetings I'm supposed to be paying attention to and pings me on hipchat when my name is mentioned.
+
+ It sends me a transcript of what was said in the minute before my name was mentioned and some time after.
+
+ It also plays an audio file out loud 15 seconds after my name was mentioned which is a recording of me saying, "Sorry, I didn't realize my mic was on mute there."
+
+ Uses IBM's Speech to Text Watson API for the audio-to-text.
+
+ Currently relies on Splunk as a data store, but can be extended to use an open-source tool instead.
+
+ Relies on Uberi's SpeechRecognition PyAudio and API wrapper: https://github.com/Uberi/speech_recognition
+
