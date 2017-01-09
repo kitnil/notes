@@ -1,13 +1,13 @@
 #+TITLE: links
 
 * Links
-** TODO [[https://www.youtube.com/watch?v=mqpGuSWunuc&index=7&list=PLryKLyMkG0mL1BpqoeuWgt29rWZou4HAA][Оформление чертежей в Компас-3D. Урок 7.Разрезы и сечения - YouTube]]
+** [[https://www.youtube.com/watch?v=mqpGuSWunuc&index=7&list=PLryKLyMkG0mL1BpqoeuWgt29rWZou4HAA][Оформление чертежей в Компас-3D. Урок 7.Разрезы и сечения - YouTube]]
  Учимся создавать разрезы и сечения.
-** TODO [[https://www.youtube.com/watch?v=NmBSDYve6tk][Пол вида пол разреза с 3D-модели в КОМПАС 14 - YouTube]]
+** [[https://www.youtube.com/watch?v=NmBSDYve6tk][Пол вида пол разреза с 3D-модели в КОМПАС 14 - YouTube]]
  Создание чертежа с 3D-модели детали с выполнением разреза половины вида в программе КОМПАС 14.
-** TODO [[https://github.com/mooz/keysnail][mooz/keysnail: Allows you to bind commands to key sequences in Mozilla Firefox]]
+** [[https://github.com/mooz/keysnail][mooz/keysnail: Allows you to bind commands to key sequences in Mozilla Firefox]]
  KeySnail is an add-on for Mozilla Firefox that aims to be a competitor and lightweight alternative to Vimperator. Unlike Vimperator, KeySnail provides comfortable browsing experience for Emacs users, but its target users are not limited to.
-** TODO [[https://github.com/viewvc/viewvc][viewvc/viewvc: ViewVC is a browser interface for CVS and Subversion version control repositories.]]
+** [[https://github.com/viewvc/viewvc][viewvc/viewvc: ViewVC is a browser interface for CVS and Subversion version control repositories.]]
  ViewVC is a browser interface for CVS and Subversion version control repositories. It generates templatized HTML to present navigable directory, revision, and change log listings. It can display specific versions of files as well as diffs between those versions. Basically, ViewVC provides the bulk of the report-like functionality you expect out of your version control tool, but much more prettily than the average textual command-line program output.
  Features
 
@@ -33,24 +33,24 @@
 
      ViewVC 1.1.x
      Unreleased bleeding edge (1.2-dev)
-** TODO [[https://discordapp.com/][Discord - Free Voice and Text Chat for Gamers]]
+** [[https://discordapp.com/][Discord - Free Voice and Text Chat for Gamers]]
  It’s time to ditch Skype and TeamSpeak.
 
  All-in-one voice and text chat for gamers that’s free, secure, and works on
  both your desktop and phone. Stop paying for TeamSpeak servers and hassling
  with Skype. Simplify your life.
-** TODO [[https://github.com/ZZROTDesign/docker-clean][ZZROTDesign/docker-clean: A script that cleans docker containers, images, volumes, and networks.]]
+** [[https://github.com/ZZROTDesign/docker-clean][ZZROTDesign/docker-clean: A script that cleans docker containers, images, volumes, and networks.]]
  A simple Shell script to clean up the Docker Daemon.
-** TODO [[https://github.com/dmgerman/org-manage][dmgerman/org-manage: org-manage]]
+** [[https://github.com/dmgerman/org-manage][dmgerman/org-manage: org-manage]]
  This is a module to help managing a large collection of org files. It is based
  on org-octopress by Yoshinari Nomura.
-** TODO [[https://github.com/kiwanami/emacs-ctable][kiwanami/emacs-ctable: Table Component for elisp]]
+** [[https://github.com/kiwanami/emacs-ctable][kiwanami/emacs-ctable: Table Component for elisp]]
  ctable.el is a table component for emacs lisp. Emacs lisp programs can display
  a nice table view from an abstract data model. The many emacs programs have the
  code for displaying table views, such as dired, list-process, buffer-list and
  so on. So, ctable.el would provide functions and a table framework for the
  table views.
-** TODO [[https://www.youtube.com/watch?v=Y8VNiybERVU][Сравнение императивного и функционального программирования на примере Python и Haskell (Артём Канев) - YouTube]]
+** [[https://www.youtube.com/watch?v=Y8VNiybERVU][Сравнение императивного и функционального программирования на примере Python и Haskell (Артём Канев) - YouTube]]
  Выступление Артёма Канева 6 августа 2015 г. "Сравнение императивного и
  функционального программирования на примере Python и Haskell. Плюсы и минусы"
 
@@ -60,7 +60,7 @@
  массивов. По восходящей подберемся к созданию простенького REST приложения на
  обоих языках. Надеюсь, получится отразить как можно больше косяков обоих
  подходов.
-** TODO [[https://www.youtube.com/watch?v=t8gim17hryw][MuniHac 2016: Hakyll - YouTube]]
+** [[https://www.youtube.com/watch?v=t8gim17hryw][MuniHac 2016: Hakyll - YouTube]]
  A keynote talk at MuniHac 2016 given by Jasper Van der Jeugt.
 
  Hakyll is a static site generator written in Haskell. It is more like a library
@@ -74,23 +74,23 @@
 
  Recorded at TNG Technology Consulting / http://www.tngtech.com at 2nd of
  September 2016 at Unterföhring near Munich
-** TODO [[http://ergoemacs.org/emacs/emacs_eww_web_browser.html][Emacs: Using Eww Web Browser]]
+** [[http://ergoemacs.org/emacs/emacs_eww_web_browser.html][Emacs: Using Eww Web Browser]]
  How to make emacs always use eww?
-** TODO [[https://github.com/appleshan/my-spacemacs-config][appleshan/my-spacemacs-config: My personal Spacemacs config]]
+** [[https://github.com/appleshan/my-spacemacs-config][appleshan/my-spacemacs-config: My personal Spacemacs config]]
  Hacking 始于 2012 年。2015 年爱上 Spacemacs 😄 💖
 
  我的 Spacemacs 配置一共有两部分： 一个 .emacs.d 目录，是 Spacemacs 的原始代码，未做任何修改； 一个 .spacemacs.d 目录，存放私有 layer。
-** TODO [[https://github.com/Fanael/rainbow-identifiers][Fanael/rainbow-identifiers: Rainbow identifier highlighting for Emacs]]
+** [[https://github.com/Fanael/rainbow-identifiers][Fanael/rainbow-identifiers: Rainbow identifier highlighting for Emacs]]
  Rainbow identifiers mode is an Emacs minor mode providing highlighting of identifiers based on their names. Each identifier gets a color based on a hash of its name.
-** TODO [[https://github.com/ankurdave/color-identifiers-mode][ankurdave/color-identifiers-mode: Emacs minor mode to highlight each source code identifier uniquely based on its name]]
+** [[https://github.com/ankurdave/color-identifiers-mode][ankurdave/color-identifiers-mode: Emacs minor mode to highlight each source code identifier uniquely based on its name]]
  Color Identifiers is a minor mode for Emacs that highlights each source code identifier uniquely based on its name. It is inspired by a post by Evan Brooks.
 
  Currently it supports Scala (scala-mode2), JavaScript (js-mode and js2-mode), Ruby, Python, Emacs Lisp, Clojure, C, C++, and Java. You can add support for your favorite mode by modifying color-identifiers:modes-alist and optionally calling color-identifiers:set-declaration-scan-fn.
 
  Check out the demo.
-** TODO [[https://julien.danjou.info/projects/emacs-packages][Emacs packages | Julien Danjou]]
+** [[https://julien.danjou.info/projects/emacs-packages][Emacs packages | Julien Danjou]]
  rainbow-mode is a minor mode for Emacs which displays strings representing colors with the color they represent as background.
-** TODO [[https://github.com/syl20bnr/nyan-mode][syl20bnr/nyan-mode: Nyan Cat for Emacs! Nyanyanyanyanyanyanyanyanyan!]]
+** [[https://github.com/syl20bnr/nyan-mode][syl20bnr/nyan-mode: Nyan Cat for Emacs! Nyanyanyanyanyanyanyanyanyan!]]
  Fork modifications
 
      the starting nyan cat image has no rainbow behind it,
@@ -104,36 +104,36 @@
  “Nyan-mode. It’s things like this that make me proud to be an emacs user.” - mitchellh
 
  Nyanmacs is expanding!! Read the story so far! :).
-** TODO [[https://github.com/petervanderdoes/gitflow-avh][petervanderdoes/gitflow-avh: AVH Edition of the git extensions to provide high-level repository operations for Vincent Driessen's branching model]]
+** [[https://github.com/petervanderdoes/gitflow-avh][petervanderdoes/gitflow-avh: AVH Edition of the git extensions to provide high-level repository operations for Vincent Driessen's branching model]]
  A collection of Git extensions to provide high-level repository operations for Vincent Driessen's branching model. This fork adds functionality not added to the original branch.
-** TODO [[https://github.com/jtatarik/magit-gitflow][jtatarik/magit-gitflow: GitFlow plugin for magit.el]]
+** [[https://github.com/jtatarik/magit-gitflow][jtatarik/magit-gitflow: GitFlow plugin for magit.el]]
  GitFlow plugin for magit.el
-** TODO [[https://www.youtube.com/watch?v=Qve7g0LB7ao&list=PLIcAMDxr6tppz0MDTAj7aj23_E6FwrRfO&index=1][Javascript - #1 - Прототипное наследование - YouTube]]
+** [[https://www.youtube.com/watch?v=Qve7g0LB7ao&list=PLIcAMDxr6tppz0MDTAj7aj23_E6FwrRfO&index=1][Javascript - #1 - Прототипное наследование - YouTube]]
  В этом уроке мы разберем как реализуются классы, что такое прототипы, как создавать экземпляры классов и как реализовывать наследование в Javascript.
  Смотрите больше видео по AngularJS на нашем сайте.
  Текст и исходный код урока смотрите на http://monsterlessons.com/project/les...
-** TODO [[http://jblevins.org/projects/deft/][Deft for Emacs]]
+** [[http://jblevins.org/projects/deft/][Deft for Emacs]]
  Deft is an Emacs mode for quickly browsing, filtering, and editing directories of plain text notes, inspired by Notational Velocity. It was designed for increased productivity when writing and taking notes by making it fast and simple to find the right file at the right time and by automating many of the usual tasks such as creating new files and saving files.
-** TODO [[https://github.com/rejeep/prodigy.el][rejeep/prodigy.el: Manage external services from within Emacs]]
+** [[https://github.com/rejeep/prodigy.el][rejeep/prodigy.el: Manage external services from within Emacs]]
  Manage external services from within Emacs
 
  I came up with the idea when I got to work one Monday morning and before I could start working I had to manually start ten or so services.
 
  To get rid of this tedious work, I started working on this Emacs plugin, which provides a nice and simple GUI to manage services.
-** TODO [[https://www.youtube.com/watch?v=FWrxJpLxyk8][{Инженерная графика} Как выполнить разрез детали - YouTube]]
+** [[https://www.youtube.com/watch?v=FWrxJpLxyk8][{Инженерная графика} Как выполнить разрез детали - YouTube]]
  В видео рассказано, что такое разрез и чем он отличается от сечения, описаны типы разрезов, правила выполнения простых и сложных разрезов, в том числе совмещенных с видом. Даны рекомендации по выполнению разрезов, если на ось симметрии детали попадает ребро (внешнее или внутреннее)...Изложенный материал закрепляется контрольными заданиями.
 
  Как проставить размеры детали:
  https://youtu.be/jqV9e_8WnOI
  Как выполнить изокруг в программе AutoCAD:
  https://youtu.be/xWNIWcTI40M
-** TODO [[http://robot.bmstu.ru/files/GOST/gost-eskd.html][ГОСТы ЕСКД.]]
+** [[http://robot.bmstu.ru/files/GOST/gost-eskd.html][ГОСТы ЕСКД.]]
  Единая система конструкторской документации
-** TODO [[http://www.propro.ru/graphbook/eskd/eskd/gost/GOST.htm][Единая система контструкторской документации]]
+** [[http://www.propro.ru/graphbook/eskd/eskd/gost/GOST.htm][Единая система контструкторской документации]]
   Единая система конструкторской документации
-** TODO [[https://www.youtube.com/watch?v=0nz4kI4LB5g][14 Компас 3D Ошибки при создании эскиза - YouTube]]
+** [[https://www.youtube.com/watch?v=0nz4kI4LB5g][14 Компас 3D Ошибки при создании эскиза - YouTube]]
  Ошибки при создании эскиза в 3d модели.
-** TODO [[https://www.youtube.com/watch?v=EUrfyfQc_2o][4 Free Resources: Save Time Choosing Your Next Machine Vision Camera - YouTube]]
+** [[https://www.youtube.com/watch?v=EUrfyfQc_2o][4 Free Resources: Save Time Choosing Your Next Machine Vision Camera - YouTube]]
  Welcome to the Point Grey Youtube Channel where we talk about all things related to machine vision cameras. As a thank you for stopping by here are 4 links to our time-saving resources.
  1) Camera Sensor Review: http://www.ptgrey.com/point-grey/10845
  2) How to Calculate Camera Sensitivity - Understanding and using the EMVA1288 standard (Video and White Paper): http://www.ptgrey.com/white-paper/id/...
@@ -141,42 +141,42 @@
  4) Resolution vs Frame Rates:https://www.ptgrey.com/point-grey/10902
 
  Want to talk cameras? Email me at michael.jacoby(at)ptgrey.com or @mikeyjacoby (twitter)
-** TODO [[https://www.youtube.com/user/MrBrainMurder/about][Светослав Нинов - YouTube]]
+** [[https://www.youtube.com/user/MrBrainMurder/about][Светослав Нинов - YouTube]]
 
 
  Autodesk Advance Steel видео, уроки, туториалы
-** TODO [[https://www.youtube.com/channel/UCDJBKl1AuqVcXpf9PMDV7rQ][Bal5.info - YouTube]]
+** [[https://www.youtube.com/channel/UCDJBKl1AuqVcXpf9PMDV7rQ][Bal5.info - YouTube]]
   Наша команда представляет вам: -Видео уроки Инженерной графики и Начертательной геометрии
-** TODO [[http://www.swrit.ru/gost-eskd.html][Стандарты ЕСКД - Единая система конструкторской документации]]
+** [[http://www.swrit.ru/gost-eskd.html][Стандарты ЕСКД - Единая система конструкторской документации]]
  Стандарты ЕСКД
-** TODO [[https://github.com/getpelican/pelican-plugins/tree/master/sitemap][pelican-plugins/sitemap at master · getpelican/pelican-plugins]]
+** [[https://github.com/getpelican/pelican-plugins/tree/master/sitemap][pelican-plugins/sitemap at master · getpelican/pelican-plugins]]
  This plugin generates plain-text or XML sitemaps. You can use the SITEMAP variable in your settings file to configure the behavior of the plugin.
-** TODO [[https://support.google.com/webmasters/answer/156184][Learn about sitemaps - Search Console Help]]
+** [[https://support.google.com/webmasters/answer/156184][Learn about sitemaps - Search Console Help]]
  A sitemap is a file where you can list the web pages of your site to tell Google and other search engines about the organization of your site content. Search engine web crawlers like Googlebot read this file to more intelligently crawl your site.
-** TODO [[https://support.google.com/webmasters/answer/182072?hl=en][Googlebot - Search Console Help]]
+** [[https://support.google.com/webmasters/answer/182072?hl=en][Googlebot - Search Console Help]]
  Googlebot is Google's web crawling bot (sometimes also called a "spider"). Crawling is the process by which Googlebot discovers new and updated pages to be added to the Google index.
-** TODO [[https://www.youtube.com/watch?v=O0UgY-DmFbU][Emacs Rocks! Episode 01: From var to this - YouTube]]
+** [[https://www.youtube.com/watch?v=O0UgY-DmFbU][Emacs Rocks! Episode 01: From var to this - YouTube]]
  http://emacsrocks.com - Rocking emacs tricks and tips screencast.
-** TODO [[https://www.flickr.com/photos/tags/emacs][emacs photos on Flickr | Flickr]]
+** [[https://www.flickr.com/photos/tags/emacs][emacs photos on Flickr | Flickr]]
  Sacha Chua's photos
-** TODO [[https://media.libreplanet.org/][GNU MediaGoblin]]
+** [[https://media.libreplanet.org/][GNU MediaGoblin]]
   This site hosts media about free software and the amazing community that uses and builds it. Much of the media is from our yearly LibrePlanet conference in Cambridge, MA, USA, but some is from other events.
 
  This site and the conference are run by the Free Software Foundation, a nonprofit with three decades of experience promoting and defending computer user freedom. The site itself is running GNU MediaGoblin, a wonderful free media hosting platform. Enjoy!
-** TODO [[https://www.youtube.com/watch?v=WARpRQ3XBEY][10 Самых ожидаемых аниме зимы 2017 года по мнению японцев - YouTube]]
+** [[https://www.youtube.com/watch?v=WARpRQ3XBEY][10 Самых ожидаемых аниме зимы 2017 года по мнению японцев - YouTube]]
  10 Самых ожидаемых аниме зимы 2017 года по мнению японцев
  HelloPal: https://goo.gl/dblmhl
  В этом видео я рассказываю о 10 самых ожидаемых аниме зимы 2017 года по мнению японцев. Этой зимой выходит довольно много картин различного жанра, но пользовательским голосованием в Японии были выбраны именно эти 10 аниме. Согласны ли вы с этим рейтингом? Какой у вас топ 10 самых ожидаемых аниме зимы 2017 года?
-** TODO [[http://vimgolf.com/][VimGolf - real Vim ninjas count every keystroke!]]
+** [[http://vimgolf.com/][VimGolf - real Vim ninjas count every keystroke!]]
  Real Vim ninjas count every keystroke - do you?
-** TODO [[https://www.youtube.com/watch?v=wQiobWLa6k4][Можно ли припаять 6 пин разъём на видеокарту если его нет - YouTube]]
+** [[https://www.youtube.com/watch?v=wQiobWLa6k4][Можно ли припаять 6 пин разъём на видеокарту если его нет - YouTube]]
 
  Можно ли припаять 6 пин разъём на видеокарту если его нет
-** TODO [[https://www.youtube.com/watch?v=f6ji-QcOo_U][Learn Python Programming for Free Today! - YouTube]]
+** [[https://www.youtube.com/watch?v=f6ji-QcOo_U][Learn Python Programming for Free Today! - YouTube]]
  Learn Python Programming and take your programming skills to the next level in this free screen capture HD video tutorial course. You will start with installing Python and going through your first program, before navigating through the interfaces and moving into Object Orientated Programming. Get access to the full course at a huge 95% discount, which has 8+ hours of HD video at https://www.udemy.com/learn-python-3-...
 
  You get a comprehensive free course here covering the basics of Python Programming. The amazing thing is that you will be able to learn this in one day and take your skills to an expert level. Here is a complete list of what you will learn so that you can skip to any important parts.
-** TODO [[https://www.youtube.com/user/anilibriatv/about][AniLibria.Tv - YouTube]]
+** [[https://www.youtube.com/user/anilibriatv/about][AniLibria.Tv - YouTube]]
 
 
  AniLibria - некоммерческий проект по озвучиванию и адаптации зарубежных сериалов, мультфильмов и аниме, аниме-обзорам, видеоблогам, рецензиям.
@@ -184,18 +184,18 @@
  Нашей особенностью является стабильная и качественная работа над тем контентом, который мы предоставляем пользователям.
  Нашей целью является достижение большой популярности ресурса AniLibria.Tv, чтобы впоследствии начать озвучивать аниме в дубляже по лицензии от Японцев и/или выпускать на постоянной основе собственные мультфильме в стиле, максимально приближенном к аниме.
  Наши успехи на данном этапе: сейчас мы обошли большинство своих конкурентов в озвучивании, впереди остаются лишь наши вечные конкуренты по имени AniDub.
-** TODO [[http://www.anilibria.tv/][AniLibria.TV - Так звучит аниме! Озвучка аниме для домашнего просмотра.]]
+** [[http://www.anilibria.tv/][AniLibria.TV - Так звучит аниме! Озвучка аниме для домашнего просмотра.]]
   Вы можете смотреть аниме онлайн или скачать аниме с трекера, а так же заказать аниме на озвучку для бесплатного домашнего ознакомительного просмотра. Все материалы на сайте предоставлены только для ознакомления, вы обязаны удалить их в течение суток после скачивания, в случаях нарушения авторских прав - обращайтесь на почту lupin@anilibria.tv и мы решим вашу проблему. Самая качественная озвучка для бесплатного просмотра на бесплатной основе - AniLibria.TV, заходите к нам, у нас вам всегда рады!
-** TODO [[http://dic.academic.ru/][Словари и энциклопедии на Академике]]
+** [[http://dic.academic.ru/][Словари и энциклопедии на Академике]]
  Экспорт словарей на сайты, сделанные на PHP,
  Joomla,
  Drupal,
  WordPress, MODx.
-** TODO [[http://www.blinn.edu/brazos/matheng/jcoffelt/graphics/files/ege/ortho/ortho_page5.htm][Line Creation]]
+** [[http://www.blinn.edu/brazos/matheng/jcoffelt/graphics/files/ege/ortho/ortho_page5.htm][Line Creation]]
  Rules of Line Creation and Use
-** TODO [[http://www.artrecept.com/risunok/zhivotnye/][Как рисовать животных: кошку собаку медведя слона]]
+** [[http://www.artrecept.com/risunok/zhivotnye/][Как рисовать животных: кошку собаку медведя слона]]
  Нашу планету населяет огромное количество видов животных, и все они обладают своими особенностями, яркими отличительными чертами. Каждое живое существо по-своему интересно, красиво и уникально.
-** TODO [[http://cadinstructor.org/cg/kompas_3d/6-assotciativni-cherteg/][Создание ассоциативного чертежа детали по выполненной модели | CADInstructor]]
+** [[http://cadinstructor.org/cg/kompas_3d/6-assotciativni-cherteg/][Создание ассоциативного чертежа детали по выполненной модели | CADInstructor]]
  6.1 Цель
 
  Получить навыки создания ассоциативного чертежа детали с выполнением основных видов, необходимых разрезов, сечений, выносных элементов, местных разрезов по построенной её 3-D модели.
@@ -206,36 +206,36 @@
      изучить по конспекту лекций требования ГОСТ 2.305–68 по вопросам основных видов и разрезов, служащих для изображения предметов;
      по двум заданным видам построить третий и выполнить простой разрез на месте главного изображения;
      нанести необходимые размеры согласно ГОСТ 2.307-68.
-** TODO [[https://www.youtube.com/watch?v=deyWZvcobps][4 1 2 профильный разрез - YouTube]]
+** [[https://www.youtube.com/watch?v=deyWZvcobps][4 1 2 профильный разрез - YouTube]]
  Published on Oct 9, 2016
-** TODO [[https://www.youtube.com/watch?v=hDyZ0gtO5NU][Создание Ребра жесткости - YouTube]]
+** [[https://www.youtube.com/watch?v=hDyZ0gtO5NU][Создание Ребра жесткости - YouTube]]
  Published on Aug 19, 2013
-** TODO [[https://www.youtube.com/watch?v=4DTYYFowMrY][Разрезы - YouTube]]
+** [[https://www.youtube.com/watch?v=4DTYYFowMrY][Разрезы - YouTube]]
  Published on Mar 9, 2016
 
  Автор видеоурока: к.пед.н., доцент кафедры ИГиСАПР Кайгородцева Н.В.
  Материалы курса размещены на портале дистанционного обучения ОмГТУ (http://de.omgtu.com)
  Студенты, выпускники вузов и все желающие могут пройти обучение и получить сертификат в научно-образовательном центре "Autodesk-ОмГТУ" (http://autodesk.omgtu.ru).
  Сайт кафедры: http://omgtu.ru/general_information/f...
-** TODO [[https://www.youtube.com/watch?v=GSJ4BXsR5Xw][GPL LGPL BSD MIT EULA MADNESS! - YouTube]]
+** [[https://www.youtube.com/watch?v=GSJ4BXsR5Xw][GPL LGPL BSD MIT EULA MADNESS! - YouTube]]
  The differences between common software licenses in use today.
-** TODO [[http://kodi.wiki/view/backup][Just a moment...]]
+** [[http://kodi.wiki/view/backup][Just a moment...]]
   DDoS protection by CloudFlare
-** TODO [[https://github.com/spiderbit/kodi-remote.el][spiderbit/kodi-remote.el: Emacs Remote Control functions for Kodi]]
+** [[https://github.com/spiderbit/kodi-remote.el][spiderbit/kodi-remote.el: Emacs Remote Control functions for Kodi]]
  Emacs Remote Control for Kodi Including a function to send youtube and other urls to kodi
 
      see youtube-dl for supported sites
-** TODO [[https://github.com/K0HAX/spacemacs-emms][K0HAX/spacemacs-emms: Emms layer for Spacemacs]]
+** [[https://github.com/K0HAX/spacemacs-emms][K0HAX/spacemacs-emms: Emms layer for Spacemacs]]
  The main purpose of this elisp is to install EMMS inside Spacemacs.
-** TODO [[https://github.com/dochang/emms-player-mpv][dochang/emms-player-mpv: mpv support for EMMS]]
+** [[https://github.com/dochang/emms-player-mpv][dochang/emms-player-mpv: mpv support for EMMS]]
  This library provides a player that uses mpv for EMMS. It supports pause and seeking. For loading subtitles automatically, try adding autosub-match=fuzzy to your ~/.mpv/config, see mpv manual for more.
 
  This library is based on `emms-player-mplayer.el' in EMMS.
-** TODO [[https://github.com/pft/mingus][pft/mingus: GNU Emacs control of Music Player Daemon (MPD)]]
+** [[https://github.com/pft/mingus][pft/mingus: GNU Emacs control of Music Player Daemon (MPD)]]
  Mingus is a frontend for GNU Emacs to the Music Player daemon. The interface closely, though not strictly, resembles that of ncmpc, which I had been using before (the main drawback of ncmpc for me was it’s apparent lack of support for unicode). It has some advantages over other clients, mainly in the field of playlist editing. This is achieved through marking and regions as you are used too in emacs and in dired. Mingus also provides a point-of-insertion for inserting new songs. This can be handy to drop a song after the currently playing one (enqueue), but is more flexible. Mingus is distributed under the GPL.
-** TODO [[https://www.gnu.org/manual/manual.html][GNU Manuals Online - GNU Project - Free Software Foundation]]
+** [[https://www.gnu.org/manual/manual.html][GNU Manuals Online - GNU Project - Free Software Foundation]]
  This table lists official GNU packages with links to their primary documentation, where available. When a package has several associated manuals, they are all listed. If a package has no specific manual online, the link just goes to the package's home page (which is also linked to explicitly).
-** TODO [[https://www.gnu.org/software/libc/][The GNU C Library]]
+** [[https://www.gnu.org/software/libc/][The GNU C Library]]
  What is glibc?
 
  The GNU C Library project provides the core libraries for the GNU system and GNU/Linux systems, as well as many other systems that use Linux as the kernel. These libraries provide critical APIs including ISO C11, POSIX.1-2008, BSD, OS-specific APIs and more. These APIs include such foundational facilities as open, read, write, malloc, printf, getaddrinfo, dlopen, pthread_create, crypt, login, exit and more.
@@ -251,25 +251,25 @@
 
      The current stable version of glibc is 2.24, released on August 5, 2016.
      The current development version of glibc 2.25, releasing on or around February 1, 2017.
-** TODO [[http://cherch.ru/chtenie_i_vipolnenie_chertezhey/razrezi.html][Разрезы: горизонтальный, профильный, фронтальный - Черчение]]
+** [[http://cherch.ru/chtenie_i_vipolnenie_chertezhey/razrezi.html][Разрезы: горизонтальный, профильный, фронтальный - Черчение]]
  Разрез — изображение, полученное при мысленном рассече­нии предмета секущей плоскостью (секущими плоскостями) и состоящее из изображения фигуры сечения и той части детали, которая расположена за секущей плоскостью (секущими плоско­стями).
-** TODO [[https://www.youtube.com/watch?v=NmBSDYve6tk][Пол вида пол разреза с 3D-модели в КОМПАС 14 - YouTube]]
+** [[https://www.youtube.com/watch?v=NmBSDYve6tk][Пол вида пол разреза с 3D-модели в КОМПАС 14 - YouTube]]
  Published on Jan 6, 2016
 
  Создание чертежа с 3D-модели детали с выполнением разреза половины вида в программе КОМПАС 14.
-** TODO [[https://github.com/franziskuskiefer/app-keys-gnome-shell-extension][franziskuskiefer/app-keys-gnome-shell-extension: Unity-like shortcuts for gnome dock applications]]
+** [[https://github.com/franziskuskiefer/app-keys-gnome-shell-extension][franziskuskiefer/app-keys-gnome-shell-extension: Unity-like shortcuts for gnome dock applications]]
  Adds Super+NUM shortcuts for activating applications from dash. Extension can be installed from https://extensions.gnome.org/extension/413/dash-hotkeys/
-** TODO [[https://github.com/phocean/TopIcons-plus][phocean/TopIcons-plus]]
+** [[https://github.com/phocean/TopIcons-plus][phocean/TopIcons-plus]]
  Topicons Plus is an alternative to the Gnome Shell Legacy Tray, which is hidden most of the time and generally considered inconvenient.
 
  It brings all icons to back to the top panel, as with most desktop environments.
-** TODO [[https://www.youtube.com/channel/UCTF-G2t8p9toWdhe3777waw/about][Simple BSD - YouTube]]
+** [[https://www.youtube.com/channel/UCTF-G2t8p9toWdhe3777waw/about][Simple BSD - YouTube]]
   Joined Mar 10, 2015
-** TODO [[https://www.gnu.org/manual/manual.html][GNU Manuals Online - GNU Project - Free Software Foundation]]
+** [[https://www.gnu.org/manual/manual.html][GNU Manuals Online - GNU Project - Free Software Foundation]]
  This table lists official GNU packages with links to their primary documentation, where available. When a package has several associated manuals, they are all listed. If a package has no specific manual online, the link just goes to the package's home page (which is also linked to explicitly).
 
  Many packages could be listed in any of several categories, but for the table here just one has to be chosen, usually following the Free Software Directory.
-** TODO [[https://www.gnu.org/software/gnu-c-manual/][The GNU C Reference Manual - GNU Project - Free Software Foundation]]
+** [[https://www.gnu.org/software/gnu-c-manual/][The GNU C Reference Manual - GNU Project - Free Software Foundation]]
   The GNU C Reference Manual is a reference for the C programming language, as implemented by the GNU C Compiler.
 
  This manual is strictly a reference, not a tutorial. Its aim is to cover every linguistic construct in GNU C, but not the library functions (which are documented elsewhere). This manual would probably not make a good introductory book for new programmers, although those who know languages other than C should be able to learn C using it.
@@ -277,12 +277,12 @@
  The v0.2.5 release of the manual is now available, which includes a number of corrections suggested by readers. If you don't feel like building the manual from the Texinfo source, you can also read an HTML version or PDF version of the manual.
 
  For additional information, please see the manual's project page at Savannah.
-** TODO [[https://gcc.gnu.org/onlinedocs/][GCC online documentation - GNU Project - Free Software Foundation (FSF)]]
+** [[https://gcc.gnu.org/onlinedocs/][GCC online documentation - GNU Project - Free Software Foundation (FSF)]]
  GCC online documentation
  Latest releases
 
  These are manuals for the latest full releases.
-** TODO [[https://www.gnu.org/software/libc/manual/][The GNU C Library - GNU Project - Free Software Foundation (FSF)]]
+** [[https://www.gnu.org/software/libc/manual/][The GNU C Library - GNU Project - Free Software Foundation (FSF)]]
  This manual (libc, aka glibc) is available in the following formats:
 
      HTML - entirely on one web page.
@@ -293,20 +293,20 @@
      TeX dvi file (gzipped).
      PDF file.
      Texinfo source (gzipped tar file).
-** TODO [[https://www.reddit.com/r/emacs/comments/2d37bo/info_manuals_in_debian_and_ubuntu_some_information/][Info Manuals in Debian and Ubuntu some information : emacs]]
+** [[https://www.reddit.com/r/emacs/comments/2d37bo/info_manuals_in_debian_and_ubuntu_some_information/][Info Manuals in Debian and Ubuntu some information : emacs]]
 
 
  Almost all GNU project languages and utilities have manuals in Info format. Unfortunately for us users, the Debian people decided that the GNU Free Documentation License is a "non-free" license. When the GNU project switched to using it for manuals the Debian people put them in a non-free repository. In my opinion, the behaviour of both sides was bad. Debian derivatives like Ubuntu keep that structure.
-** TODO [[https://github.com/politza/python-info/][politza/python-info]]
+** [[https://github.com/politza/python-info/][politza/python-info]]
 
      Install the latest sphinx with python2 .
      Download the desired python distribution.
      Build the info file as follows.
-** TODO [[https://github.com/iammeat/POSTAL-1-Open-Source][iammeat/POSTAL-1-Open-Source]]
+** [[https://github.com/iammeat/POSTAL-1-Open-Source][iammeat/POSTAL-1-Open-Source]]
 
 
      C++ 61.8% Objective-C 27.9% C 10.0% Other 0.3%
-** TODO [[https://proglib.io/p/youtube-python-channels/][9 Youtube-каналов для изучения Python - Библиотека программиста]]
+** [[https://proglib.io/p/youtube-python-channels/][9 Youtube-каналов для изучения Python - Библиотека программиста]]
  Мы собрали 9 лучших каналов на YouTube для освоения и дальнейшего изучения языка программирования Python.
  1. sentdex
 
@@ -335,19 +335,19 @@
  9. PyData
 
  PyData – собрание пользователей и разработчиков инструментов для анализа данных в Python. Цель — предоставить разработчикам-энтузиастам место для того, чтобы делиться друг c другом идеями и опытом о применении языка программирования и его инструментов для решения задач в управлении, обработке, аналитике и визуализации данных.
-** TODO [[https://www.slac.stanford.edu/comp/unix/gnu-info/emacs_26.html][GNU Emacs Manual - Compiling and Testing Programs]]
+** [[https://www.slac.stanford.edu/comp/unix/gnu-info/emacs_26.html][GNU Emacs Manual - Compiling and Testing Programs]]
   The previous chapter discusses the Emacs commands that are useful for making changes in programs. This chapter deals with commands that assist in the larger process of developing and maintaining programs.
-** TODO [[https://github.com/nick96/basic-c-compile][nick96/basic-c-compile: Emacs package to create a Makefile, compile and run a C file]]
+** [[https://github.com/nick96/basic-c-compile][nick96/basic-c-compile: Emacs package to create a Makefile, compile and run a C file]]
  The purpose of this package is to automate come of the basic and repetetive tasks involved in C programming. All the tasks that this pacakge automate are language agnostic and whilst the defaults are C specific you can set them to any statically compiled language.
-** TODO [[https://github.com/syohex/emacs-quickrun][syohex/emacs-quickrun: Run command quickly. This packages is inspired quickrun.vim]]
+** [[https://github.com/syohex/emacs-quickrun][syohex/emacs-quickrun: Run command quickly. This packages is inspired quickrun.vim]]
  quickrun.el is a extension to execute editing buffer. quickrun.el is similar to executable-interpret, but quickrun.el provides more convenient commands. quickrun.el execute not only script languages(Perl, Ruby, Python etc), but also compiling languages(C, C++, Go, Java etc) and markup language.
-** TODO [[https://github.com/bbatsov/projectile][bbatsov/projectile: Project Interaction Library for Emacs]]
+** [[https://github.com/bbatsov/projectile][bbatsov/projectile: Project Interaction Library for Emacs]]
  Projectile is a project interaction library for Emacs. Its goal is to provide a nice set of features operating on a project level without introducing external dependencies (when feasible). For instance - finding project files has a portable implementation written in pure Emacs Lisp without the use of GNU find (but for performance sake an indexing mechanism backed by external commands exists as well).
-** TODO [[https://www.youtube.com/watch?v=o_RKfLrmCEs][C Programming Tutorial 56, String Functions pt.7 - YouTube]]
+** [[https://www.youtube.com/watch?v=o_RKfLrmCEs][C Programming Tutorial 56, String Functions pt.7 - YouTube]]
  Uploaded on Feb 5, 2012
-** TODO [[https://github.com/jlsutherland/doc2text][jlsutherland/doc2text: Detect text blocks and OCR poorly scanned PDFs in bulk. Python module available via pip.]]
+** [[https://github.com/jlsutherland/doc2text][jlsutherland/doc2text: Detect text blocks and OCR poorly scanned PDFs in bulk. Python module available via pip.]]
  Developing text corpora can be a massive pain in the butt. Much of the text data we are interested in as scientists are locked away in pdfs that are poorly scanned. These scans can be off kilter, poor resolution, have a hand in them... and if you OCR these scans without fixing these errors, the OCR doesn't turn out so well. doc2text was created to help researchers fix these errors and extract the highest quality text from their pdfs as possible.
-** TODO [[https://github.com/politza/python-info][politza/python-info]]
+** [[https://github.com/politza/python-info][politza/python-info]]
 
      Install the latest sphinx with python2 .
      Download the desired python distribution.
@@ -358,7 +358,7 @@
  cd build/texinfo && make
 
  Or use the Makefile.
-** TODO [[https://www.youtube.com/watch?v=Gn0YiN8uzrg][Xubuntu on Nexus 7 {native, multiROM} - it's actually useful - YouTube]]
+** [[https://www.youtube.com/watch?v=Gn0YiN8uzrg][Xubuntu on Nexus 7 {native, multiROM} - it's actually useful - YouTube]]
  Published on Sep 29, 2013
 
  Xubuntu = ubuntu +Xfce, and its running awesomely on the nexus 7 (the old one). In this in-depth video I will describe my experience with it and show how well some common tasks work so you could decide if its worth the effort of getting it running (it definitely is).
@@ -384,23 +384,23 @@
  If you are bored with your (now old) nexus 7, this is a great way to revive it and make it do new cool (and most importantly useful) things... Nothing from the process of getting it running was particularly difficult, but if you don't have basic knowledge about flashing roms & kernels, don't know what a custom recovery is, etc. - than you should start with tutorials on that, just use google. The same thing applies about using Ubuntu/Linux.
 
  I encourage you to make questions, I will answer any question which isn't answered in the video or in this description, if it will be important i will also add the answer to this description.
-** TODO [[https://habrahabr.ru/post/303600/][Emacs как редактор кода для Python и Golang / Хабрахабр]]
+** [[https://habrahabr.ru/post/303600/][Emacs как редактор кода для Python и Golang / Хабрахабр]]
  Когда полгода назад я решил перейти с Vim на Emacs сначала я решил поискать статьи по настройке последнего на хабре. К моему удивлению нашлась всего одна статья в которой рассказывали, как настроить данный редактор для работы с Python. У меня было 2 года опыта работы с vim и имелись определенные требования, которые не были затронуты в данной статье. Вообще рускоязычных статей про работу в Emacs над Python очень мало на просторах интернета. Я не буду рассказывать про тонкости настройки самого Emacs, для этого не хватит даже отдельной статьи.
-** TODO [[https://letsencrypt.org/][Let's Encrypt - Free SSL/TLS Certificates]]
+** [[https://letsencrypt.org/][Let's Encrypt - Free SSL/TLS Certificates]]
  Let’s Encrypt is a free, automated, and open Certificate Authority.
 
  We are a 501(c)(3) nonprofit. We're running a crowdfunding campaign to support our operations, please consider contributing now!
-** TODO [[https://github.com/doxygen/doxygen][doxygen/doxygen: Official doxygen git repository]]
+** [[https://github.com/doxygen/doxygen][doxygen/doxygen: Official doxygen git repository]]
  Doxygen is the de facto standard tool for generating documentation from annotated C++ sources, but it also supports other popular programming languages such as C, Objective-C, C#, PHP, Java, Python, IDL (Corba, Microsoft, and UNO/OpenOffice flavors), Fortran, VHDL, Tcl, and to some extent D.
-** TODO [[http://ogp.me/][The Open Graph protocol]]
+** [[http://ogp.me/][The Open Graph protocol]]
  The Open Graph protocol enables any web page to become a rich object in a social graph. For instance, this is used on Facebook to allow any web page to have the same functionality as any other object on Facebook.
-** TODO [[https://en.wikipedia.org/wiki/Piwik][Piwik - Wikipedia]]
+** [[https://en.wikipedia.org/wiki/Piwik][Piwik - Wikipedia]]
  Piwik (pronounced /ˈpiːwiːk/[1]) is a free and open source web analytics application written by a team of international developers that runs on a PHP/MySQL webserver. It tracks online visits to one or more websites and displays reports on these visits for analysis. As of September 2015, Piwik was used by nearly 900 thousand websites,[2] or 1.3% of all websites,[3] and has been translated to more than 45 languages.[4] New versions are regularly released every few weeks.[5]
-** TODO [[https://github.com/python-pillow/Pillow][python-pillow/Pillow: The friendly PIL fork (Python Imaging Library)]]
+** [[https://github.com/python-pillow/Pillow][python-pillow/Pillow: The friendly PIL fork (Python Imaging Library)]]
  Pillow is the friendly PIL fork by Alex Clark and Contributors. PIL is the Python Imaging Library by Fredrik Lundh and Contributors.
-** TODO [[https://github.com/ChrisAntaki/visited-links-firefox][ChrisAntaki/visited-links-firefox: Disables visited link styles.]]
+** [[https://github.com/ChrisAntaki/visited-links-firefox][ChrisAntaki/visited-links-firefox: Disables visited link styles.]]
  This plugin cleanly disables visited link styles.
-** TODO [[https://github.com/Malabarba/camcorder.el][Malabarba/camcorder.el: Tool for capturing screencasts directly from Emacs.]]
+** [[https://github.com/Malabarba/camcorder.el][Malabarba/camcorder.el: Tool for capturing screencasts directly from Emacs.]]
  Tool for capturing screencasts directly from Emacs.
 
      To use it, simply call M-x camcorder-record.
@@ -410,11 +410,11 @@
  View screencasts are generated in ogv format, and you can even pause the recording with F11! You can also convert the .ogv file to a gif by issuing the command M-x camcorder-convert-to-gif.
 
  If you want to record without a popup frame, use M-x camcorder-mode.
-** TODO [[http://jr0cket.co.uk/2017/01/spacemacs-creating-animated-gifs-videos.html][camcorder.el - Creating Animated Gifs & Videos for Spacemacs | jr0cket]]
+** [[http://jr0cket.co.uk/2017/01/spacemacs-creating-animated-gifs-videos.html][camcorder.el - Creating Animated Gifs & Videos for Spacemacs | jr0cket]]
  Using animated gifs are a lightweight way to show Emacs in action, as can be seen at Emacs Gifs.
-** TODO [[https://github.com/caiorss/clip.jar][caiorss/clip.jar: Utility to paste images from clipboard to Emacs org-mode or any markdown.]]
+** [[https://github.com/caiorss/clip.jar][caiorss/clip.jar: Utility to paste images from clipboard to Emacs org-mode or any markdown.]]
  Clip is a self-contained command line utility written in Scala to extract images from clipboard and save it to a file. It is a module of org-wiki project.
-** TODO [[https://html5up.net/][HTML5 UP! Responsive HTML5 and CSS3 Site Templates]]
+** [[https://html5up.net/][HTML5 UP! Responsive HTML5 and CSS3 Site Templates]]
  ... makes spiffy HTML5
  site templates that are:
 
@@ -423,7 +423,7 @@
      HTML5 + CSS3 Super
      Customizable100% Free under the
      Creative Commons
-** TODO [[https://github.com/ctfs/write-ups-2014][ctfs/write-ups-2014: Wiki-like CTF write-ups repository, maintained by the community. 2014]]
+** [[https://github.com/ctfs/write-ups-2014][ctfs/write-ups-2014: Wiki-like CTF write-ups repository, maintained by the community. 2014]]
  There are some problems with CTF write-ups in general:
 
      they’re scattered across the interwebs
@@ -434,7 +434,7 @@
  This repository aims to solve those problems.
 
  It’s a collection of CTF source files and write-ups that anyone can contribute to. Did you just publish a CTF write-up? Let us know, and we’ll add a link to your post — or just add the link yourself and submit a pull request. Spot an issue with a solution? Correct it, and send a pull request.
-** TODO [[https://github.com/joshnewlan/say_what][joshnewlan/say_what: Using speech-to-text to fully check out during con calls]]
+** [[https://github.com/joshnewlan/say_what][joshnewlan/say_what: Using speech-to-text to fully check out during con calls]]
  This script listens to meetings I'm supposed to be paying attention to and pings me on hipchat when my name is mentioned.
 
  It sends me a transcript of what was said in the minute before my name was mentioned and some time after.
@@ -446,4 +446,50 @@
  Currently relies on Splunk as a data store, but can be extended to use an open-source tool instead.
 
  Relies on Uberi's SpeechRecognition PyAudio and API wrapper: https://github.com/Uberi/speech_recognition
+** [[https://github.com/malb/emacs.d/tree/48508219453ebb542e6fec370bb49fba9980c2a2][malb/emacs.d at 48508219453ebb542e6fec370bb49fba9980c2a2]]
+ These are the relevant bits of my emacs config. Some stuff not suitable for general consumption is missing. Hence, you cannot just clone this repository and try it. I have no intention of changing this.
+** [[http://orgmode.org/worg/org-contrib/org-protocol.html][org-protocol.el – Intercept calls from emacsclient to trigger custom actions]]
+ Intercept calls from emacsclient to trigger
+** [[http://docs.getpelican.com/en/stable/settings.html][Settings — Pelican 3.7.0 documentation]]
+ If you want to use FeedBurner for your feed, you will likely need to decide upon a unique identifier. For example, if your site were called “Thyme” and hosted on the www.example.com domain, you might use “thymefeeds” as your unique identifier, which we’ll use throughout this section for illustrative purposes. In your Pelican settings, set the FEED_ATOM attribute to thymefeeds/main.xml to create an Atom feed with an original address of http://www.example.com/thymefeeds/main.xml. Set the FEED_DOMAIN attribute to http://feeds.feedburner.com, or http://feeds.example.com if you are using a CNAME on your own domain (i.e., FeedBurner’s “MyBrand” feature).
 
+ There are two fields to configure in the FeedBurner interface: “Original Feed” and “Feed Address”. In this example, the “Original Feed” would be http://www.example.com/thymefeeds/main.xml and the “Feed Address” suffix would be thymefeeds/main.xml.
+** [[https://github.com/bitlbee/bitlbee][bitlbee/bitlbee: An IRC to other chat networks gateway]]
+ An IRC to other chat networks gateway
+** [[https://vk.com/im?sel=c2][Conversations]]
+ помогло конвертированием шрифта otf-->ttf и его положение не в системе. а непосредственно в папку в префиксе вайна запихал. кажется. Или наоборот, не помню
+** [[https://www.youtube.com/watch?v=L_0x3lYpoNY][ЭРА RADEONa: Native games {06.01.2017, 23.00 MSK}-stream 720p - YouTube]]
+ Купил AMD Radeon RX 460 3Gb NITRO OC
+ Задаем вопросы, делимся своим мнением, обсуждаем что будет интересно увидеть в серии видео о АМД карте)
+** [[https://www.maketecheasier.com/install-flatpak-on-ubuntu/][How to Install FlatPak on Ubuntu - Make Tech Easier]]
+ Luckily, there’s a Flatpak for that. Fedora users has taken it upon themselves to serve up the official Telegram chat client in the form of a Flatpak. This means it’ll always have up-to-date binaries, and installing Telegram on new machines can be just a few commands away.
+** [[https://github.com/fgallina/mu4e-multi][fgallina/mu4e-multi: Multiple account facilities for mu4e]]
+ mu4e-multi just depends on setting the mu4e-multi-account-alist properly and calling mu4e-multi-enable.
+
+ As an example let's assume you have two email accounts: personal and work. For handling such accounts mu4e-multi assumes your maildir's layout is as follows:
+** [[https://github.com/myuhe/org-gcal.el][myuhe/org-gcal.el: Org sync with Google Calendar]]
+
+     Fetch google calendar event
+     Post/edit org element
+     Sync between Org and Gcal
+** [[https://github.com/anishathalye/git-remote-dropbox][anishathalye/git-remote-dropbox: A transparent bridge between Git and Dropbox - use a Dropbox (shared) folder as a Git remote!]]
+ git-remote-dropbox is a transparent bidirectional bridge between Git and Dropbox. It lets you use a Dropbox folder or a shared folder as a Git remote!
+
+ This Git remote helper makes Dropbox act like a true Git remote. It maintains all guarantees that are provided by a traditional Git remote while using Dropbox as a backing store. This means that it works correctly even when there are multiple people operating on the repository at once, making it possible to use a Dropbox shared folder as a Git remote for collaboration.
+
+ Once the helper is installed, using it is as simple as adding a remote like dropbox://path/to/repo.
+** [[https://github.com/lxde/pavucontrol-qt][lxde/pavucontrol-qt: A Pulseaudio mixer in Qt (port of pavucontrol)]]
+ pavucontrol-qt is the Qt port of volume control pavucontrol of sound server PulseAudio.
+
+ As such it can be used to adjust all controls provided by PulseAudio as well as some additional settings.
+
+ The software belongs to the LXQt project but its usage isn't limited to this desktop environment.
+** [[https://github.com/equalsraf/neovim-qt][equalsraf/neovim-qt: Neovim client library and GUI, in Qt5.]]
+ Neovim client library and GUI, in Qt5.
+** [[https://github.com/jonian/acestream-launcher][jonian/acestream-launcher: Acestream Launcher allows you to open Acestream links with a Media Player of your choice]]
+ Acestream Launcher allows you to open Acestream links with a Media Player of your choice
+** [[http://hakunin.com/six-ansible-practices][6 practices for super smooth Ansible experience by Maxim Chernyak]]
+ I started porting my setup from Chef to Ansible a few weeks ago. Having had plenty of experience with Chef gave me a pretty good idea of what I wanted to achieve. One of the main advantages I see in Ansible is the ability to drive your server setup via ssh from your own machine. If you don’t have 100s of servers (update: actually more like tens of thousands, see the comment by mpdehaan), this agentless “push” approach is very powerful. You get to simplify things tremendously in ways like
+** [[https://vk.com/im?sel=c5][Conversations]]
+ Расписание. На 2 этаже слева в коридоре. В том корпусе где деканат
+ на 3.
