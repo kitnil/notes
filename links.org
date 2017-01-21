@@ -1,10 +1,6 @@
 #+TITLE: links
 
 * Links
-** [[https://www.youtube.com/watch?v=mqpGuSWunuc&index=7&list=PLryKLyMkG0mL1BpqoeuWgt29rWZou4HAA][Оформление чертежей в Компас-3D. Урок 7.Разрезы и сечения - YouTube]]
- Учимся создавать разрезы и сечения.
-** [[https://www.youtube.com/watch?v=NmBSDYve6tk][Пол вида пол разреза с 3D-модели в КОМПАС 14 - YouTube]]
- Создание чертежа с 3D-модели детали с выполнением разреза половины вида в программе КОМПАС 14.
 ** [[https://github.com/mooz/keysnail][mooz/keysnail: Allows you to bind commands to key sequences in Mozilla Firefox]]
  KeySnail is an add-on for Mozilla Firefox that aims to be a competitor and lightweight alternative to Vimperator. Unlike Vimperator, KeySnail provides comfortable browsing experience for Emacs users, but its target users are not limited to.
 ** [[https://github.com/viewvc/viewvc][viewvc/viewvc: ViewVC is a browser interface for CVS and Subversion version control repositories.]]
@@ -120,19 +116,6 @@
  I came up with the idea when I got to work one Monday morning and before I could start working I had to manually start ten or so services.
 
  To get rid of this tedious work, I started working on this Emacs plugin, which provides a nice and simple GUI to manage services.
-** [[https://www.youtube.com/watch?v=FWrxJpLxyk8][{Инженерная графика} Как выполнить разрез детали - YouTube]]
- В видео рассказано, что такое разрез и чем он отличается от сечения, описаны типы разрезов, правила выполнения простых и сложных разрезов, в том числе совмещенных с видом. Даны рекомендации по выполнению разрезов, если на ось симметрии детали попадает ребро (внешнее или внутреннее)...Изложенный материал закрепляется контрольными заданиями.
-
- Как проставить размеры детали:
- https://youtu.be/jqV9e_8WnOI
- Как выполнить изокруг в программе AutoCAD:
- https://youtu.be/xWNIWcTI40M
-** [[http://robot.bmstu.ru/files/GOST/gost-eskd.html][ГОСТы ЕСКД.]]
- Единая система конструкторской документации
-** [[http://www.propro.ru/graphbook/eskd/eskd/gost/GOST.htm][Единая система контструкторской документации]]
-  Единая система конструкторской документации
-** [[https://www.youtube.com/watch?v=0nz4kI4LB5g][14 Компас 3D Ошибки при создании эскиза - YouTube]]
- Ошибки при создании эскиза в 3d модели.
 ** [[https://www.youtube.com/watch?v=EUrfyfQc_2o][4 Free Resources: Save Time Choosing Your Next Machine Vision Camera - YouTube]]
  Welcome to the Point Grey Youtube Channel where we talk about all things related to machine vision cameras. As a thank you for stopping by here are 4 links to our time-saving resources.
  1) Camera Sensor Review: http://www.ptgrey.com/point-grey/10845
@@ -147,8 +130,6 @@
  Autodesk Advance Steel видео, уроки, туториалы
 ** [[https://www.youtube.com/channel/UCDJBKl1AuqVcXpf9PMDV7rQ][Bal5.info - YouTube]]
   Наша команда представляет вам: -Видео уроки Инженерной графики и Начертательной геометрии
-** [[http://www.swrit.ru/gost-eskd.html][Стандарты ЕСКД - Единая система конструкторской документации]]
- Стандарты ЕСКД
 ** [[https://github.com/getpelican/pelican-plugins/tree/master/sitemap][pelican-plugins/sitemap at master · getpelican/pelican-plugins]]
  This plugin generates plain-text or XML sitemaps. You can use the SITEMAP variable in your settings file to configure the behavior of the plugin.
 ** [[https://support.google.com/webmasters/answer/156184][Learn about sitemaps - Search Console Help]]
@@ -195,28 +176,6 @@
  Rules of Line Creation and Use
 ** [[http://www.artrecept.com/risunok/zhivotnye/][Как рисовать животных: кошку собаку медведя слона]]
  Нашу планету населяет огромное количество видов животных, и все они обладают своими особенностями, яркими отличительными чертами. Каждое живое существо по-своему интересно, красиво и уникально.
-** [[http://cadinstructor.org/cg/kompas_3d/6-assotciativni-cherteg/][Создание ассоциативного чертежа детали по выполненной модели | CADInstructor]]
- 6.1 Цель
-
- Получить навыки создания ассоциативного чертежа детали с выполнением основных видов, необходимых разрезов, сечений, выносных элементов, местных разрезов по построенной её 3-D модели.
- 6.2 Содержание
-
-     ознакомиться с заданием в соответствии с номером варианта (см. Приложение 1);
-     ознакомиться с правилами построения ассоциативного чертежа по выполненной модели детали в КОМПАС-3D;
-     изучить по конспекту лекций требования ГОСТ 2.305–68 по вопросам основных видов и разрезов, служащих для изображения предметов;
-     по двум заданным видам построить третий и выполнить простой разрез на месте главного изображения;
-     нанести необходимые размеры согласно ГОСТ 2.307-68.
-** [[https://www.youtube.com/watch?v=deyWZvcobps][4 1 2 профильный разрез - YouTube]]
- Published on Oct 9, 2016
-** [[https://www.youtube.com/watch?v=hDyZ0gtO5NU][Создание Ребра жесткости - YouTube]]
- Published on Aug 19, 2013
-** [[https://www.youtube.com/watch?v=4DTYYFowMrY][Разрезы - YouTube]]
- Published on Mar 9, 2016
-
- Автор видеоурока: к.пед.н., доцент кафедры ИГиСАПР Кайгородцева Н.В.
- Материалы курса размещены на портале дистанционного обучения ОмГТУ (http://de.omgtu.com)
- Студенты, выпускники вузов и все желающие могут пройти обучение и получить сертификат в научно-образовательном центре "Autodesk-ОмГТУ" (http://autodesk.omgtu.ru).
- Сайт кафедры: http://omgtu.ru/general_information/f...
 ** [[https://www.youtube.com/watch?v=GSJ4BXsR5Xw][GPL LGPL BSD MIT EULA MADNESS! - YouTube]]
  The differences between common software licenses in use today.
 ** [[http://kodi.wiki/view/backup][Just a moment...]]
@@ -251,12 +210,6 @@
 
      The current stable version of glibc is 2.24, released on August 5, 2016.
      The current development version of glibc 2.25, releasing on or around February 1, 2017.
-** [[http://cherch.ru/chtenie_i_vipolnenie_chertezhey/razrezi.html][Разрезы: горизонтальный, профильный, фронтальный - Черчение]]
- Разрез — изображение, полученное при мысленном рассече­нии предмета секущей плоскостью (секущими плоскостями) и состоящее из изображения фигуры сечения и той части детали, которая расположена за секущей плоскостью (секущими плоско­стями).
-** [[https://www.youtube.com/watch?v=NmBSDYve6tk][Пол вида пол разреза с 3D-модели в КОМПАС 14 - YouTube]]
- Published on Jan 6, 2016
-
- Создание чертежа с 3D-модели детали с выполнением разреза половины вида в программе КОМПАС 14.
 ** [[https://github.com/franziskuskiefer/app-keys-gnome-shell-extension][franziskuskiefer/app-keys-gnome-shell-extension: Unity-like shortcuts for gnome dock applications]]
  Adds Super+NUM shortcuts for activating applications from dash. Extension can be installed from https://extensions.gnome.org/extension/413/dash-hotkeys/
 ** [[https://github.com/phocean/TopIcons-plus][phocean/TopIcons-plus]]
@@ -493,3 +446,283 @@
 ** [[https://vk.com/im?sel=c5][Conversations]]
  Расписание. На 2 этаже слева в коридоре. В том корпусе где деканат
  на 3.
+** [[https://en.wikipedia.org/wiki/SpinRite][SpinRite - Wikipedia]]
+ SpinRite is a computer program for scanning magnetic data storage devices such as hard disks, recovering data from them and refreshing their surfaces. The first version was released in 1987 by Steve Gibson. Version 6.0, still current as of January 2017, was released in 2004.[1] SpinRite is run from a bootable medium (floppy disc, optical disc, bootable external storage device such as a USB stick) on a PC-compatible computer. Spinrite uses its own operating system and ignores any boot loader or file system structure that may be on the drive being examined.
+** [[https://tldrlegal.com/][TLDRLegal - Software Licenses Explained in Plain English]]
+ Lookup popular software licenses summarized at-a-glance.
+** [[https://github.com/eonpatapon/gnome-shell-extension-caffeine/issues/67][Caffeine causes gnome-session-quit time out in GNOME 3.20 · Issue #67 · eonpatapon/gnome-shell-extension-caffeine]]
+ The issue only happened once when you first call power off button, and second time or more is fine.
+
+     GUI
+
+     if click "power off" button in control menu, which is located on the right-top of main screen, it will take long time (about 20 second) to start power off menu and I couldn't do nothing during this time but move cursor.
+
+     Command-Line
+
+ Try to use command line to call the power off menu with "gnome-session-quit --power-off" in terminal to check the error information. it still take long time and only could move cursor. the error message below:
+** [[https://github.com/eonpatapon/gnome-shell-extension-caffeine/issues/76][delay time between shutdown select and when windows appears · Issue #76 · eonpatapon/gnome-shell-extension-caffeine]]
+ On click on shutdown button inside the top menu (ref. attach. n.1) the delay time until the windows appear are about 30 seconds. Occur only on the first time on the session.
+ Case 1: caffeine disabled
+ instantly windows appear.
+ Case 2: caffeine enabled
+ first selection 30 seconds for windows appear.
+ Case 3: caffeine enabled - with the second attempt
+ first selection 30 seconds for windows appear, then i press cancel button. On second attempt the windows appear instantly.
+ Case 4: caffeine enabled - gnome-shell restarted
+ after case 3 i restart gnome-shell and the issue return.
+** [[https://github.com/plone/planet.plone.org][plone/planet.plone.org: Planet Plone Site Configuration and buildout. Add your feed here.]]
+ This is the buildout for Planet Venus (an RSS aggregator) for Plone, the content management system. This buildout provides the configuration for Planet Venus, normally served at http://planet.plone.org/.
+** [[http://planetperl.ru/][Русский Перл]]
+
+ Язык занятный. Параллелить и устраивать межпроцессное общение просто.
+** [[http://www.planetplanet.org/][Planet Feed Reader]]
+  Planet is an awesome 'river of news' feed reader. It downloads news feeds published by web sites and aggregates their content together into a single combined feed, latest news first.
+** [[https://github.com/insanum/gcalcli][insanum/gcalcli: Google Calendar Command Line Interface]]
+ gcalcli is a Python application that allows you to access your Google Calendar(s) from a command line. It's easy to get your agenda, search for events, add new events, delete events, edit events, and even import those annoying ICS/vCal invites from Microsoft Exchange and/or other sources. Additionally, gcalcli can be used as a reminder service and execute any application you want when an event is coming up.
+** [[http://pragmaticemacs.com/emacs/how-i-view-my-google-calendar-agenda-in-emacs/][How I view my google calendar agenda in Emacs | Pragmatic Emacs]]
+  I use gcalcli to access my google calendar from the command line, and run it as a cron job using gcalcli agenda and redirecting the output to a file. Then in Emacs I have a simple function to display the contents of that file.
+** [[https://www.khanacademy.org/math/precalculus/imaginary-and-complex-numbers/the-imaginary-numbers/v/calculating-i-raised-to-arbitrary-exponents][Powers of the imaginary unit | What are the imaginary numbers? | Imaginary and complex numbers | Precalculus | Khan Academy]]
+ Sal gives several examples of how we simplify high powers of i. For instance, i^100=1. Created by Sal Khan.
+** [[https://www.symbolab.com/solver/complex-numbers-calculator/i%255E%257B15%257D][i^{15} - Complex Numbers Calculator - Symbolab]]
+ Simplify complex expressions using algebraic rules step-by-step
+** [[https://www.khanacademy.org/math/algebra2/rational-expressions-equations-and-functions/simplify-rational-expressions/v/simplifying-rational-expressions-introduction][Intro to rational expression simplification | Simplifying rational expressions | Rational expressions, equations, and functions | Algebra II | Khan Academy]]
+ Sal explains what it means to simplify a rational expression and why we would want to do that. Just don't forget the excluded values! Created by Sal Khan and CK-12 Foundation.
+** [[http://www.emathhelp.net/notes/algebra-2/trigonometry/short-multiplication-formulas/][Short Multiplication Formulas on eMathHelp]]
+ In some cases the transformation of integral expression into the standart form of polynomial realize with the using of identities:
+** [[https://www.sharelatex.com/learn/List_of_Greek_letters_and_math_symbols][List of Greek letters and math symbols - ShareLaTeX, Online LaTeX Editor]]
+
+
+     1 Greek letters
+     2 Arrows
+     3 Miscellaneous symbols
+     4 Binary Operation/Relation Symbols
+     5 Further reading
+** [[https://www.sharelatex.com/learn/Subscripts_and_superscripts][Subscripts and superscripts - ShareLaTeX, Online LaTeX Editor]]
+ The use of superscripts and subscripts is very common in mathematical expressions involving exponents, indexes, and in some special operators. This article explains how to write superscripts and subscripts in simple expressions, integrals, summations, etcetera.
+** [[https://www.youtube.com/watch?v=3N9beoPmbEQ][Как правильно разговаривать с гопниками? - YouTube]]
+ Published on Aug 21, 2016
+
+ Ты идешь по чужому району, и тут тебе свистят - "братан, подойди поговорим" что делать в такой ситуации? Как правильно разговаривать с гопниками?
+** [[http://www.freeorion.org/index.php/Main_Page][FreeOrionWiki]]
+ FreeOrion is a free, open source, turn-based space empire and galactic conquest (4X) computer game being designed and built by the FreeOrion project. FreeOrion is inspired by the tradition of the Master of Orion games, but is not a clone or remake of that series or any other game.
+** [[https://www.khanacademy.org/math/algebra-home/alg-polynomials/alg-polynomial-remainder-theorem/v/polynomial-remainder-theorem][Intro to the Polynomial Remainder Theorem | Polynomial Remainder Theorem | Polynomial expressions, equations, & functions | Algebra | Khan Academy]]
+ The Polynomial Remainder Theorem allows us to determine whether a linear expression is a factor of a polynomial expression easily. Check it out!
+** [[https://github.com/viktomas/godu][viktomas/godu: Simple golang utility helping to discover large files/folders.]]
+ Tired of looking like a noob with Disk Inventory X or SpaceMonger? Do you want something that
+
+     can do the job
+     works in terminal
+     makes you look cool
+     is written in Golang
+     you can contribute to
+** [[https://github.com/livibetter/READYT][livibetter/READYT: A CLI lover wants you to READYT]]
+ Mostly short, but not tutorials, almost all without audio tracks, no horrible music, no terribly unnecessary transitioning texts. Go straight to the points of what I want to show you about a program.
+
+ There will be description about my thoughts, possibly some short notes about controls or command-line options. My video includes the description, video and description together are the whole video, so be sure to read the description.
+
+ In the end of description, links and information about version, programming languages and major dependencies or libraries, the author(s), and the license.
+** [[https://github.com/nielssp/colorgrab][nielssp/colorgrab: A cross-platform color picker]]
+
+     Pick colors from screen.
+     Magnify screen.
+     Convert between color models and representations.
+     Palette tool.
+** [[https://www.khanacademy.org/math/algebra2/arithmetic-with-polynomials/long-division-of-polynomials/v/polynomial-division][Intro to long division of polynomials | Long division of polynomials | Arithmetic with polynomials | Algebra II | Khan Academy]]
+ [[https://www.khanacademy.org/math/algebra2/arithmetic-with-polynomials/long-division-of-polynomials/v/polynomial-division][Intro to long division of polynomials | Long division of polynomials | Arithmetic with polynomials | Algebra II | Khan Academy]]
+** [[https://www.khanacademy.org/math/algebra/algebra-functions/evaluating-functions/v/what-is-a-function][(3) What is a function? | Evaluating functions | Functions | Algebra I | Khan Academy]]
+ Functions assign a single unique output for each of their inputs. In this video, we see examples of various kinds of functions. Created by Sal Khan.
+** [[https://vk.com/eltech6871?from=top][ЛЭТИ, группа 6871]]
+ Электроэнергетика и электротехника, 1 курс
+** [[https://www.youtube.com/watch?v=UsIHdrpNSbE][СТУДИИ КОТОРЫЕ ПОГУБИЛА ELECTRONIC ARTS - YouTube]]
+ Published on Jan 2, 2017
+
+ Electronic Arts может и исправляется, но за ней всё ещё следует кличка самой ужасной игровой корпорации в мире. Так что сегодня мы решили вспомнить, за что они эту кличку получили.
+** [[https://zblock.co/][zBlock]]
+  Forum software by XenForo™ ©2010-2016 XenForo Ltd.
+ Перевод: XF-Russia.ru
+** [[https://youpartnerwsp.com/join][Медиа сеть партнерских каналов VSP Group - Официальный агрегатор партнерских каналов на YouTube]]
+ Партнерская программа VSP Group предоставляет возможность монетизации вашего канала и получения "Премиум аккаунта" на платформе YouTube в составе нашей Медиа сети.
+** [[https://www.emacswiki.org/emacs/OpenWith][EmacsWiki: Open With]]
+ Open files with external applications. Works from everywhere (find-file, dired, etc.).
+** [[https://www.reddit.com/r/emacs/comments/5mff61/anyone_got_any_good_advanced_orgmode_resources/][Anyone got any good advanced org-mode resources? : emacs]]
+ I'm starting to get into org-mode, and am wondering if anyone's got a good blog or otherwise educational resource to point me to. I know I can just read the emacs/org manual, but a more enjoyable exposition would be pretty cool
+** [[https://www.youtube.com/watch?v=P_cDP4ZGIhE][Cheat For Test - YouTube]]
+ Uploaded on Nov 12, 2008
+
+ One more way to make a cheat sheet
+** [[https://www.youtube.com/watch?v=SNQ08e1xGC0][Делаем резьбу в программе КОМПАС 3D - YouTube]]
+ Published on Feb 26, 2014
+
+ КОМПАС V14. Создаем болт с произвольной резьбой и шляпкой.
+** [[http://www.eltech.ru/ru/fakultety/otkrytyy-fakultet/uchebn-dlya-studentov-zaochnoy-formy-obucheniya/pamjatka][http://www.eltech.ru/ru/fakultety/otkrytyy-fakultet/uchebn-dlya-studentov-zaochnoy-formy-obucheniya/pamjatka]]
+ ПАМЯТКА
+
+ для студентов 1-го курса 1-го семестра заочной формы обучения
+
+  (прием 2016 года)
+
+ Деканат Открытого факультета (заочное обучение) СПбГЭТУ  расположен в 3 корпусе, 3 этаж, комн. 3309
+** [[https://www.symbolab.com/solver/complex-numbers-calculator/%255Cleft(8-6i%255Cright)%255Cleft(8%252B6i%255Cright)][(8-6i)(8+6i) - Complex Numbers Calculator - Symbolab]]
+  Simplify complex expressions using algebraic rules step-by-step
+** [[https://www.youtube.com/watch?v=wed_lYcslRM][Complex Numbers in Polar Form - YouTube]]
+ I explain the relationhip between complex numbers in rectangular form and polar form. I also do an example of converting back and forth between the two forms.
+** [[https://www.youtube.com/watch?v=wed_lYcslRM][Complex Numbers in Polar Form - YouTube]]
+ Uploaded on Jan 13, 2012
+
+ I explain the relationhip between complex numbers in rectangular form and polar form. I also do an example of converting back and forth between the two forms.
+ At time 9:57 I should say...Converting from Polar to Rectangular is very simple. Converting from Rectangular to Polar requires you to think about the final theta measure.
+
+ Check out http://www.ProfRobBob.com, there you will find my lessons organized by class/subject and then by topics within each class. Find free review test, useful notes and more at http://www.mathplane.com
+** [[https://www.youtube.com/watch?v=tbWfxuV-IeE&list=PLAC5EA62150BD3A5A][Rewriting Powers of ' i ' - Ex 2 - YouTube]]
+ Published on May 10, 2010
+
+ Rewriting Powers of ' i ' - In this video, I take the complex number ' i ', raise it to some different powers, and simplify!
+** [[https://www.youtube.com/watch?v=2bMKu1CXyB0][How do we Plot Root 2 on a Number Line? - YouTube]]
+ Published on Dec 19, 2014
+
+ View this video to understand how the square root of 2 can be plotted on a number line. To know more about Rational, Irrational and Real Numbers, please visit https://DontMemorise.com
+
+ Don’t Memorise brings learning to life through its captivating FREE educational videos.
+
+ New videos every week. To stay updated, subscribe to our YouTube channel : http://bit.ly/DontMemoriseYouTube
+
+ Register on our website to gain access to all videos and quizzes:
+ http://bit.ly/DontMemoriseRegister
+
+ Subscribe to our Newsletter: http://bit.ly/DontMemoriseNewsLetter
+
+ Join us on Facebook: http://bit.ly/DontMemoriseFacebook
+
+ Follow us : http://bit.ly/DontMemoriseBlog
+** [[https://www.youtube.com/watch?v=jXXSRzliprg][HSC Maths Ext2 - Complex Numbers - Finding Square Roots of Complex Numbers - YouTube]]
+ Published on Nov 27, 2013
+
+ Welcome to my HSC 4 Unit maths: Complex Numbers series. In this video, we see how to find the square roots of complex numbers, which will be useful for solving quadratics with complex coefficients.
+** [[https://www.youtube.com/watch?v=nUyLnjgGumg][Square root in 3 seconds - math trick - YouTube]]
+ Published on Mar 24, 2015
+
+ Finding the square root is easy for any perfect square under 100! You'll be able to calculate squares faster than ever and amaze everyone with your utter genius!
+ To find the square root of non perfect squares follow this link: https://www.youtube.com/watch?v=PJHtq...
+** [[https://www.youtube.com/watch?v=fF5qbbAoMHc][Complex Numbers (How to find the nth root) : ExamSolutions Maths Video Tutorials - YouTube]]
+ Published on Mar 11, 2013
+
+ Go to http://www.examsolutions.net/maths-re... to see the main index of maths video tutorials and others on complex numbers and de Moivre's theorem
+** [[https://www.youtube.com/watch?v=eYmHMib6fhg][Solving for Complex Numbers and Roots - YouTube]]
+ Published on Mar 20, 2012
+
+ http://tylertarver.com/math
+
+ Solving for Complex Numbers and Roots
+** [[https://www.youtube.com/watch?v=MO6qU3SCLbM][DeMoivre's Theorem: Raising a Complex Number to a Power, Ex 1 - YouTube]]
+ Published on Jan 5, 2011
+
+ DeMoivre's Theorem: Raising a Complex Number to a Power, Ex 1. In this video I give DeMoivre's theorem and use it to raise a complex number to a power. Note that our number must be in polar form!
+** [[https://www.youtube.com/watch?v=C-lsvE8Rxgg][DeMoivre's Theorem - YouTube]]
+ Uploaded on May 18, 2010
+
+ Watch more videos on http://www.brightstorm.com/math/preca...
+
+ SUBSCRIBE FOR All OUR VIDEOS!
+ https://www.youtube.com/subscription_...
+
+ VISIT BRIGHTSTORM.com FOR TONS OF VIDEO TUTORIALS AND OTHER FEATURES!
+ http://www.brightstorm.com/
+
+ LET'S CONNECT!
+ Facebook ► https://www.facebook.com/brightstorm
+ Pinterest ► https://www.pinterest.com/brightstorm/
+ Google+ ► https://plus.google.com/+brightstorm/
+ Twitter ► https://twitter.com/brightstorm_
+ Brightstorm website ► https://www.brightstorm.com/
+** [[https://www.youtube.com/watch?v=k4ZddA4e3a4][DeMoivre's Theorem (Mathematical Induction) - YouTube]]
+ Published on Jul 25, 2012
+
+ A quick look at DeMoivre's theorem and a qualitative explanation on how to prove something with mathematical induction
+
+ DeMoivre's theorem (0:00)
+ Mathematical Induction (2:28)
+** [[https://www.youtube.com/watch?v=ZkWbvZ0yjT8][De Moivre's Theorem Example 1 - YouTube]]
+ Published on May 21, 2016
+
+ Example of how to expand a complex number using DeMoivre's Theorem
+** [[http://www.mathportal.org/calculators/complex-numbers-calculator/complex-unary-operations-calculator.php][Complex numbers calculator - with detailed explanation]]
+
+
+ This calculator extracts the square root, calculate the modulus, finds inverse, finds conjugate and transform complex number to polar form. The calculator will generate a detailed explanation for each operation.
+** [[http://kitchingroup.cheme.cmu.edu/blog/2015/06/29/Getting-Emacs-to-read-to-me/][Getting Emacs to read to me]]
+  I thought it would be interesting to have Emacs read text on the screen. Why? Sometimes I get tired of reading ;) Seriously though, this has applications in accessibility, learning to read, translation, taking a break from looking at the screen, reading emails out loud, fun and games, etc… Seems like a worthwhile endeavor!
+** [[https://vk.com/im?peers=384426051_13368088&sel=c4][Диалоги]]
+ 23.01 я буду в 14.30-16.00 в а.5143
+ 26.01 я буду в 1200-13.30 в а. 5143
+ 1.02 я буду в 14.30-16.00 в а.5423
+ В это время вы можете придти ко мне с направлением и пересдать
+** [[http://window.edu.ru/resource/396/62396][Начертательная геометрия: Конспект лекций. Скачать бесплатно онлайн в электронном виде | Единое окно]]
+
+
+ В пособии рассмотрены следующие темы курса начертательной геометрии: комплексные чертежи фигур; позиционные задачи; метрические задачи; развертки поверхностей; ортогональная аксонометрия. Приведены примеры решения основных задач и даны условия задач для самостоятельного решения. Пособие предназначено для студентов всех специальностей вечерней и заочной форм обучения технических вузов.
+** [[https://www.youtube.com/watch?v=SpEnXMzDZAI][Perpendicular Vectors: Dot Product - YouTube]]
+ Published on Feb 28, 2013
+
+ Determine if two vectors are perpendicular by checking if the inner product (dot product) is equal to zero.
+** [[http://www.cleverstudents.ru/vectors/condition_of_vectors_perpendicularity.html][Условие перпендикулярности векторов.]]
+
+
+ Для перпендикулярности двух ненулевых векторов формула и формула необходимо и достаточно, чтобы их скалярное произведение равнялось нулю, то есть, чтобы выполнялось равенство формула.
+** [[http://www.webmath.ru/poleznoe/formules_13_14.php][Как найти вектор перпендикулярный вектору? Ответ на webmath.ru]]
+ Для того чтобы вектор был перпендикулярен вектору необходимо, чтобы их скалярное произведение было равно нулю, то есть
+** [[https://www.youtube.com/watch?v=51vgIfdBlAk][1.1 Vectors with 3 components (3 dimensions) - YouTube]]
+ Uploaded on Aug 5, 2011
+
+ http://www.rootmath.org | Linear Algebra
+
+ We'll look at how to graph vectors with 3 components using 3-dimensional axes.
+** [[https://www.khanacademy.org/math/algebra-home/alg-system-of-equations/alg-equivalent-systems-of-equations/v/king-s-cupcakes-solving-systems-by-elimination][(17) Systems of equations with elimination: King's cupcakes | Equivalent systems of equations and the elimination method | System of equations | Algebra | Khan Academy]]
+ Sal uses simple elimination to figure out how many cupcakes are eaten by children and adults. Created by Sal Khan.
+** [[http://ru.onlinemschool.com/math/assistance/matrix/inverse1/][Онлайн калькулятор. Обратная матрица методом алгебраических дополнений.]]
+ Используя этот онлайн калькулятор для вычисления обратной матрицы методом алгебраических дополнений, вы сможете очень просто и быстро найти обратную матрицу.
+
+ Воспользовавшись онлайн калькулятором для вычисления обратной матрицы методом алгебраических дополнений, вы получите детальное решение вашей задачи, которое позволит понять алгоритм решения задач на вычисления обратной матрицы, а также закрепить пройденный материал.
+** [[https://github.com/jsvine/waybackpack][jsvine/waybackpack: Download the entire Wayback Machine archive for a given URL.]]
+ Waybackpack is a command-line tool that lets you download the entire Wayback Machine archive for a given URL.
+
+ For instance, to download every copy of the Department of Labor's homepage through 1996 (which happens to be the first year the site was archived), you'd run:
+** [[https://github.com/yask123/Instant-Music-Downloader][yask123/Instant-Music-Downloader: 🎷 Downloads Music From The Web]]
+
+
+     Please use gitter for all communications. I won't be able to respond individually via emailuntill Jan (busy). But I will try my best to answer all your questions via gitter.
+** [[https://github.com/EvilCult/Video-Downloader][EvilCult/Video-Downloader: 下载youku,letv,sohu,tudou,bilibili,acfun,iqiyi等网站分段视频文件，提供mac&win独立App。]]
+  下载youku,letv,sohu,tudou,bilibili,acfun,iqiyi等网站分段视频文件，提供mac&win独立App。 http://evilcult.github.io/Video-Downl…
+** [[https://github.com/sabnzbd/sabnzbd][sabnzbd/sabnzbd: SABnzbd - The automated Usenet download tool]]
+ SABnzbd is an Open Source Binary Newsreader written in Python.
+
+ It's totally free, incredibly easy to use, and works practically everywhere.
+
+ SABnzbd makes Usenet as simple and streamlined as possible by automating everything we can. All you have to do is add an .nzb. SABnzbd takes over from there, where it will be automatically downloaded, verified, repaired, extracted and filed away with zero human interaction.
+** [[https://github.com/np1/mps][np1/mps: Terminal based MP3 search, playback and download]]
+
+     Search and stream music
+     Search albums or single tracks
+     Create playlists
+     Download tracks
+     Works with Python 2.7+ and 3.3+
+     Works with Windows, Linux and Mac OS X
+     No Python dependencies
+     Requires mplayer
+** [[https://github.com/pyload/pyload][pyload/pyload: Free and Open Source download manager written in Python and designed to be extremely lightweight, fully customizable and remotely manageable]]
+ pyLoad is a free and open source downloader for 1-click-hosting sites
+ like rapidshare.com or uploaded.to.
+ It supports link decryption as well as all important container formats.
+** [[https://github.com/nishad/udemy-dl][nishad/udemy-dl: Python script to download a udemy.com course, for personal offline use.]]
+ Python script to download a udemy.com course, for personal offline use.
+** [[https://www.khanacademy.org/math/precalculus/prob-comb/basic-prob-precalc/v/basic-probability][(17) Intro to theoretical probability | Basic probability | Probability and combinatorics | Precalculus | Khan Academy]]
+ We give you an introduction to probability through the example of flipping a quarter and rolling a die. Created by Sal Khan.
+** [[https://www.youtube.com/watch?v=QudbrUcVPxk][Abstract Algebra: The definition of a Group - YouTube]]
+ Published on Sep 1, 2013
+
+ Learn the definition of a group - one of the most fundamental ideas from abstract algebra.
+** [[https://www.youtube.com/watch?v=6RC70C9FNXI][Abstract Algebra: The definition of a Ring - YouTube]]
+ Published on Dec 29, 2013
+
+ Learn the definition of a ring, one of the central objects in abstract algebra. We give several examples to illustrate this concept including matrices and polynomials.
+** [[https://play.google.com/store/apps/details?id=com.orgzly][Orgzly: Notes & To-Do Lists - Android Apps on Google Play]]
+ Orgzly is an outliner for notes and tasks. It stores notebooks in plain-text and keeps them where you choose to.
