@@ -726,3 +726,21 @@
  Learn the definition of a ring, one of the central objects in abstract algebra. We give several examples to illustrate this concept including matrices and polynomials.
 ** [[https://play.google.com/store/apps/details?id=com.orgzly][Orgzly: Notes & To-Do Lists - Android Apps on Google Play]]
  Orgzly is an outliner for notes and tasks. It stores notebooks in plain-text and keeps them where you choose to.
+** [2017-01-21 Sat 18:01] [[about:reader?url=http%3A%2F%2Fcarper.ca%2Fblog%2F170%2Flets-try-to-learn-japanese-for-the-87th-time-plus-a-wanikani-review][Let's try to learn Japanese for the 87th time. Plus a WaniKani review.]]
+ I've been trying to learn Japanese for a looong time, with varying degrees of success. It's hard in ways that might be surprising. The main problem is motivation. This is a tale of my minor successes and major failures, and then a review of my latest flavor-of-the-week, WaniKani.
+** [2017-01-21 Sat 18:09] [[https://github.com/avendael/emacs-geeknote][avendael/emacs-geeknote: Use Evernote in Emacs through geeknote]]
+ Use Evernote in Emacs through geeknote
+** [2017-01-21 Sat 19:15] [[https://www.emacswiki.org/emacs/IncrementalReading#toc10][EmacsWiki: Incremental Reading]]
+ #+BEGIN_QUOTE
+ Save a buffer of text you want to incrementally read.
+ For HTML, use M-! lynx -dump URL (Does anyone know of a way to get numbered links with either links or w3m?).
+
+ #+END_QUOTE
+** [2017-01-21 Sat 20:03] [[https://github.com/defunkt/gist.el][defunkt/gist.el: Yet another Emacs paste mode, this one for Gist.]]
+ #+BEGIN_QUOTE
+ Uses your local GitHub config if it can find it.
+
+ Go to your GitHub Settings and generate a personal access token with gist scope
+
+
+ #+END_QUOTE
