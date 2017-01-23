@@ -50,3 +50,4 @@ int myArray[10];
   PUSH, POP, etc
 - EBP: Base pointer aka frame pointer.
 - ESI and EDI: ESI = source instruction, EDI = destination instruction.
+* assembly language calls
