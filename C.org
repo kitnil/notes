@@ -51,9 +51,16 @@ int myArray[10];
 - EBP: Base pointer aka frame pointer.
 - ESI and EDI: ESI = source instruction, EDI = destination instruction.
 * assembly language calls
-- can be of the form [opcode][dest], [source]
+** can be of the form [opcode][dest], [source]
 
 moves the value "1" into the EAX register
 #+BEGIN_EXAMPLE
 MOV EAX, 1
+#+END_EXAMPLE
+** can be of the form [opcode][operand]
+
+- jumps to and address in memory
+- in this case the hex address is 0xDEADBEEF
+#+BEGIN_EXAMPLE
+JMP 0xDEADBEEF
 #+END_EXAMPLE
