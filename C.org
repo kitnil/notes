@@ -64,3 +64,8 @@ MOV EAX, 1
 #+BEGIN_EXAMPLE
 JMP 0xDEADBEEF
 #+END_EXAMPLE
+** stack-related mneumonic
+- PUSH [register]
+- POP [register]
+- CALL [function]
+- RET
