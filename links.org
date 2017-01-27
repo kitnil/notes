@@ -744,3 +744,371 @@
 
 
  #+END_QUOTE
+** [2017-01-22 Sun 19:43] [[http://www.eltech.ru/ru/fakultety/fakultet-informacionno-izmeritelnyh-i-biotehnicheskih-sistem/sostav-fakulteta/kafedra-prikladnoy-mehaniki-i-inzhenernoy-grafiki/rukovodstvo-sostav-kafedry?searched=%25D0%25BF%25D0%25BE%25D0%25BF%25D0%25BE%25D0%25B2+%25D0%25B2%25D0%25BB%25D0%25B0%25D0%25B4%25D0%25B8%25D0%25BC%25D0%25B8%25D1%2580+%25D0%25BD%25D0%25B8%25D0%25BA%25D0%25B0%25D0%25BD%25D0%25BE%25D1%2580%25D0%25BE%25D0%25B2%25D0%25B8%25D1%2587&advsearch=oneword&highlight=ajaxSearch_highlight+ajaxSearch_highlight1+ajaxSearch_highlight2+ajaxSearch_highlight3][Руководство, состав кафедры прикладной механики и инженерной графики]]
+ #+BEGIN_QUOTE
+ В настоящее время профессорско-преподавательский состав кафедры 24 сотрудника из них 2 профессора, 9 доцентов, 7 старших преподавателей 1 ассистент.
+
+
+ #+END_QUOTE
+** [2017-01-22 Sun 21:47] [[https://www.youtube.com/watch?v=FYFs8fXJbSg][Задняя втулка велосипеда передняя втулка - что это? - YouTube]]
+ #+BEGIN_QUOTE
+ Published on Aug 15, 2015
+ Задняя втулка велосипеда, передняя втулка велосипеда - что это за компонент, за что отвечает и как устроен? Об этом мы расскажем в своем новом видео, созданном в формате ВелоБлога! Нюансы, тонкости и советы по выбору велосипеда для начинающих! Рассматриваем мелочи и комплектующие, а не весь велосипед! Выбирайте с умом! Смотрите ВелоБлоги и подписывайтесь на канал!
+
+ #+END_QUOTE
+** [2017-01-22 Sun 23:27] [[https://vk.com/im?peers=110591865&sel=c4][Диалоги]]
+ #+BEGIN_QUOTE
+
+ Олег Пыхалов 23:15
+ Инженерка завтра в какой аудитории? 1244?
+ 
+ Павел Шубин 23:15
+ 1244 прога. инженерка в подвале всегда
+ УК 3
+ 
+ Артём Валерьевич 23:16
+ а поточнее местоположение этого укз?
+ 
+ Анастасия Смирнова 23:17
+ А к какому числу инженерку сдавать надо?
+ 
+ Егор Васин 23:17
+ третий корпус, по главной лестнице вниз
+ там будут учебные классы
+ #+END_QUOTE
+** [2017-01-22 Sun 23:54] [[https://vk.com/im?msgid=34279&peers=110591865&sel=c4][Диалоги]]
+ #+BEGIN_QUOTE
+ какими способами надо все эти куски перекодить?
+
+ 1. переменные
+ 2. массивы
+ 3. поинтеры
+ 4. динамические массивы
+
+ так?
+ 
+ Анастасия Смирнова 2:20
+ Без указателей
+ 
+ Олег Пыхалов 2:21
+ а первую задачу?
+ printf и cout?
+ 
+ Анастасия Смирнова 2:21
+ Да
+ 
+ Иван Долгов 2:21
+ да
+ 2-я 1 вариант - линейно, 2 вариант - массивы: это все оформляется как практика
+ 
+ Олег Пыхалов 2:23
+ что означает линейно?
+ 
+ Иван Долгов 2:24
+ 3-й вариант - динамические массивы или malloc или calloc
+ оформляется в отдельную лабу -я скидывал
+ линейно значит:
+ #include <iostream> 
+ #include <cmath> 
+ #include <iomanip> 
+ using namespace std; 
+ int main() 
+ { 
+ int i; double x, s, a, eps; 
+ cout « "Avtor: Dolgov gr. 6006" « endl; 
+ cout « "Vvedite x" « endl; 
+ cin » x; 
+ cout « "Vvedite eps" « endl; 
+ cin » eps; 
+ if ((eps > 0) && (eps <= 1)) 
+ { 
+ i = 1; 
+ a = 1.5; 
+ s = a; 
+ cout « " _______________________________________________" « endl; 
+ cout « " || " « setw(4) « setiosflags(ios::left) « i « " || " « 
+ setw(15) « setprecision(6) « setiosflags(ios::left) « a « " || " « setw(15) « setprecision(6) « 
+ setiosflags(ios::left) « s « "||" « endl; 
+ cout « " _______________________________________________" « endl; 
+ while ((i < 100) && (fabs(a) > eps)) 
+ { 
+ a *= x * (7 * i - 9) / (7 * i - 4); 
+ s += a; 
+ i++; 
+ cout « " || " « setw(4) « setiosflags(ios::left) « i « " || " « setw(15) « setprecision(6) « 
+ setiosflags(ios::left) « a « " || " « setw(15) « setprecision(6) « setiosflags(ios::left) « s « "||" « endl; 
+ cout « " _______________________________________________" « endl; 
+ } 
+ } 
+ else 
+ return 0; 
+ }
+ тут, может быть, уже можно использовать <math.h> мне не пригодилось - не уточнял
+ или cmath или math в зависимости от компилятора
+ 
+ Олег Пыхалов 2:28
+ кинь файлом пожалуйста
+ #+END_QUOTE
+** [2017-01-23 Mon 09:01] [[https://www.youtube.com/watch?v=xDVC3wKjS64][Dynamic memory allocation in C - malloc calloc realloc free - YouTube]]
+ #+BEGIN_QUOTE
+ Published on Mar 4, 2013
+ See complete series on pointers here:
+ http://www.youtube.com/playlist?list=...
+
+ In this lesson, we will be discussing the use of library functions in C for dynamic memory allocation and deallocation. These functions are malloc, calloc, realloc and free.
+
+ Feel free to drop your comments, feedback and suggestions. 
+
+ For practice problems and more, visit: http://www.mycodeschool.com 
+
+ Like us on Facebook: https://www.facebook.com/MyCodeSchool
+
+ Follow us on twitter: https://twitter.com/mycodeschool
+ #+END_QUOTE
+** [2017-01-23 Mon 09:32] [[https://www.youtube.com/watch?v=CZJ-6IiXoMs][Understanding malloc - YouTube]]
+ #+BEGIN_QUOTE
+ Published on Oct 8, 2014
+ Programming in C ain't easy. Take a walk in Memoryland, to see how we use malloc to control our program's memory usage.
+ Category
+ Education
+ License
+ Standard YouTube License
+ #+END_QUOTE
+** [2017-01-23 Mon 09:46] [[https://www.youtube.com/watch?v=HPDBOhiKaD8][The Heap: what does malloc() do? - bin 0x14 - YouTube]]
+ #+BEGIN_QUOTE
+ Published on Sep 27, 2016
+ Introducing the heap by looking at what malloc() does.
+ #+END_QUOTE
+** [2017-01-23 Mon 09:52] [[https://www.youtube.com/watch?v=TfJrU95q1J4][The Heap: How to exploit a Heap Overflow - bin 0x15 - YouTube]]
+ #+BEGIN_QUOTE
+ Published on Sep 30, 2016
+ We are solving heap1 from exploit-exercises.com by exploiting a heap overflow.
+
+ Join the discussion: https://www.reddit.com/r/LiveOverflow...
+
+ #+END_QUOTE
+** [2017-01-23 Mon 09:54] [[https://www.youtube.com/watch?v=3JX6TyLOmGQ][C: malloc and functions returning pointers - YouTube]]
+ #+BEGIN_QUOTE
+ Published on Jul 25, 2012
+ BLOG POST: Contains all code with thorough explanation.
+ http://vertstudios.com/blog/malloc-fu...
+ #+END_QUOTE
+*** [10:00] void pointers
+** [2017-01-23 Mon 10:54] [[https://askubuntu.com/questions/424225/setting-up-lvm-snapshot-as-a-backup-restore-point-in-ubuntu][mount - Setting up LVM Snapshot as a backup/restore point in ubuntu - Ask Ubuntu]]
+ Well, as I see it, with all the great usefulness of Linux, its biggest drawback is with its mixed up way of installing apps. All the dlls go to one directory. All the configuration files to another. And the binaries are also put in a bunch. Yes, Windows works the same way more or less, but with the nature of system/server software installed on Linux, being that most of the software installed is only about 95% mature at any given time, messing up your system twice a month is very probable..
+** [2017-01-23 Mon 19:59] [[https://www.youtube.com/watch?v=t0Cq6tVNRBA][Data Structures: Heaps - YouTube]]
+ Published on Sep 27, 2016
+
+ Learn about heaps. This video is a part of HackerRank's Cracking The Coding Interview Tutorial with Gayle Laakmann McDowell. http://www.hackerrank.com/domains/tut...
+** [2017-01-23 Mon 20:02] [[https://www.youtube.com/watch?v=wlJJgjdgvYE][Stack vs Heap - YouTube]]
+ #+BEGIN_QUOTE
+ Published on Apr 29, 2012
+ The stack and the heap and memory management in C++. Presentation starts with a short PowerPoint but the meat walks through actual dissasembled C++ code in the debugger.
+
+ #+END_QUOTE
+** [2017-01-23 Mon 21:19] [[http://www.studytonight.com/c/dynamic-memory-allocation-in-c.php][malloc() and calloc() Functions | C Language Tutorial | Studytonight]]
+ #+BEGIN_QUOTE
+ The process of allocating memory at runtime is known as dynamic memory allocation. Library routines known as "memory management functions" are used for allocating and freeing memory during execution of a program. These functions are defined in stdlib.h.
+
+
+ #+END_QUOTE
+** [2017-01-23 Mon 22:24] [[https://www.youtube.com/watch?v=FHhcSncuHEI][C++ Tutorial 27 - Dynamic Arrays - YouTube]]
+ #+BEGIN_QUOTE
+ Published on Jun 17, 2012
+ http://www.programminghelp.org/
+ Watch in 720p
+
+ This tutorial will cover hot to dynamically create arrays as well as deallocate variables and arrays from memory (heap).
+
+ #+END_QUOTE
+** [2017-01-23 Mon 22:31] [[https://www.youtube.com/watch?v=scyEeX8XVPQ][malloc and calloc - YouTube]]
+ #+BEGIN_QUOTE
+ Published on Nov 22, 2015
+
+ #+END_QUOTE
+** [2017-01-23 Mon 22:49] [[https://www.youtube.com/watch?v=i8852MOA_Xg][C programming Tutorial 2-8: Type Conversions - YouTube]]
+ #+BEGIN_QUOTE
+ Uploaded on Nov 7, 2009
+ This is a tutorial for C programming. it is also a good lesson for c++ learners.
+
+ #+END_QUOTE
+** [2017-01-23 Mon 23:45] [[https://www.youtube.com/watch?v=wLxhYj7kMyc][calloc in C language - YouTube]]
+ #+BEGIN_QUOTE
+ Published on Jun 2, 2014
+ The demonstration of calloc function in dynamic memory allocation in C language.
+
+ #+END_QUOTE
+** [2017-01-24 Tue 00:06] [[https://www.youtube.com/watch?v=BSYmajttVDw][Xnest - Create a new Display in a Window - Linux - YouTube]]
+ #+BEGIN_QUOTE
+ Uploaded on Jul 8, 2010
+ http://FilmsByKris.com
+
+ #+END_QUOTE
+** [2017-01-24 Tue 01:17] [[https://www.youtube.com/watch?v=UEaSy56XGVc][Информатика. Язык Си: Системные вызовы malloc() и free() в Си. Центр онлайн-обучения «Фоксфорд» - YouTube]]
+ #+BEGIN_QUOTE
+ Published on Jan 20, 2015
+ Лучшие учителя страны преподают в центре онлайн-обучения «Фоксфорд». Запишитесь на первое занятие по информатике бесплатно: http://foxford.ru/I/vN
+
+ Тема: Язык Си, Системные вызовы malloc() и free() в Си
+
+ Из этого занятия вы узнаете:
+
+ - Определение сегмента 
+ - Сегмент code
+ - Сегмент data
+ - Сегмент stack
+ - Механизм системного вызова
+ - Системный вызов malloc()
+ - Сегмент heap
+ - Системный вызов free()
+ - Функция sizeof
+ - Значение null
+ - Разбор примеров
+
+ Занятие ведет Тимофей Федорович Хирьянов, преподаватель «Фоксфорд», преподаватель кафедры информатики МФТИ, разработчик системного программного обеспечения Samsung Electronics и Parallels.
+ #+END_QUOTE
+** [2017-01-24 Tue 01:36] [[https://www.youtube.com/watch?v=ywqB3ZTf8OE][Dynamic Memory Allocation - YouTube]]
+ #+BEGIN_QUOTE
+ Published on Oct 7, 2015
+ This is CS50
+
+ #+END_QUOTE
+** [2017-01-24 Tue 01:44] [[https://www.youtube.com/watch?v=yOdd3uYC--A][Pointers - YouTube]]
+ #+BEGIN_QUOTE
+ Published on Oct 7, 2015
+ This is CS50
+
+ #+END_QUOTE
+** [2017-01-24 Tue 03:33] [[https://www.youtube.com/playlist?list=PLTFFcor5E1KzuQuGi_GMU3ztN-lQ6wk_L][CS50-Doug Lloyd - YouTube]]
+ #+BEGIN_QUOTE
+ Sithu Thwin48 videos380 viewsLast updated on Oct 3, 2016
+
+ #+END_QUOTE
+** [2017-01-24 Tue 03:50] [[https://www.youtube.com/watch?v=Rd6RftMjZZ8][Lunduke Hour: Jan-23-2017, Wire secure messaging w/Alan Duric - YouTube]]
+ #+BEGIN_QUOTE
+ Published on Jan 23, 2017
+ I get the chance to talk with Alan Duric, CTO and Co-Founder of Wire -- a company that provides end-to-end encrypted messaging across multiple platforms (including Android, Linux, Windows, and others).
+
+ Like what I do? It's made possible thanks to my amazing supporters:
+ https://www.patreon.com/bryanlunduke
+
+ My free e-books, DRM-free, under the Creative Commons license:
+ http://lunduke.com/book-store/
+ #+END_QUOTE
+** [2017-01-24 Tue 18:30] [[http://eltech.ru/ru/studentam/dokumenty-dlya-ucheby1][Документы для учебы]]
+ #+BEGIN_QUOTE
+ Требования к оформлению научно-технических отчетов (Распоряжение от 09.11.2015 № 3003)
+
+ Шаблоны оформления студенческих работ (Распоряжение от 09.11.2015 № 3004):
+
+ Шаблон оформления отчета по лабораторной работе
+ Шаблон оформления реферата
+ Шаблон оформления курсовой работы (курсового проекта)
+ Шаблон оформления отчета по практике
+ Шаблон оформления междисциплинарного проекта
+ Шаблон оформления отчета по научно-исследовательской работе
+ Шаблон индивидуального плана магистранта
+ Материалы для подготовки ВКР
+
+
+ Приказ Минобрнауки России от 27.11.2015 N 1383 "Об утверждении Положения о практике обучающихся, осваивающих основные профессиональные образовательные программы высшего образования"
+ #+END_QUOTE
+** [2017-01-25 Wed 08:23] [[https://www.youtube.com/watch?v=woqq3Sls1d8][Solving 3 Equations with 3 Unknowns - YouTube]]
+ #+BEGIN_QUOTE
+ Uploaded on Apr 11, 2009
+ Solving 3 equations with 3 unknowns (old video from July 2008)
+ #+END_QUOTE
+** [2017-01-25 Wed 08:28] [[https://www.youtube.com/watch?v=EFApWAl3NJw][Matrix Operations - YouTube]]
+ Published on Mar 23, 2008
+
+ Matrix Operations - Adding, Subtracting, and Multiplying by a constant for matrices is discussed. For more free math videos, visit http://PatrickJMT.com!
+** [2017-01-25 Wed 08:35] [[https://www.youtube.com/watch?v=2j5Ic2V7wq4][❖ Gaussian Elimination ❖ - YouTube]]
+ Published on Jul 12, 2012
+
+ Please consider supporting me on Patreon! Be a Patron of Mathematics! https://www.patreon.com/patrickjmt?ty=h
+ Gaussian Elimination. Here we solve a system of 3 linear equations with 3 unknowns using Gaussian Elimination.
+** [2017-01-25 Wed 08:43] [[https://www.youtube.com/watch?v=9LYVi-n-6Jw][Row Reducing a Matrix - Systems of Linear Equations - Part 1 - YouTube]]
+ #+BEGIN_QUOTE
+ Published on Apr 8, 2008
+ Row Reducing a Matrix - Systems of Linear Equations - Part 1. Basic notation and procedure as well as a full example are shown. The last part of the second part got cut off, but is finished in another video!!! For more free math videos, visit http://PatrickJMT.com
+
+
+ #+END_QUOTE
+** [2017-01-25 Wed 10:59] [[https://www.youtube.com/watch?v=G0XijJUooHE][Как начертить оси для аксонометрии. Уроки черчения. - YouTube]]
+ #+BEGIN_QUOTE
+ Published on Jan 13, 2016
+ Сегодня чертим оси для аксонометрии. Уроки черчения.
+
+ #+END_QUOTE
+** [2017-01-25 Wed 11:01] [[https://www.youtube.com/watch?v=kH2ETrEBfNE][Как начертить аксонометрию. Наглядный пример. Уроки черчения. - YouTube]]
+ #+BEGIN_QUOTE
+ Published on Jan 16, 2017
+ Как начертить аксонометрию. Наглядный пример. Уроки черчения.
+
+ #+END_QUOTE
+** [2017-01-25 Wed 11:56] [[https://www.youtube.com/watch?v=uXSeb0C5qT0][Создание аксонометрической проекции в KOMPAS 3D LT - YouTube]]
+ #+BEGIN_QUOTE
+ Published on Jan 7, 2013
+ Видеоуроки по работе в программе kompas 3d lt на сайте fganiev.ru
+
+ #+END_QUOTE
+** [2017-01-25 Wed 11:56] [[https://www.youtube.com/results?search_query=%25D1%2587%25D0%25B5%25D1%2580%25D1%2587%25D0%25B5%25D0%25BD%25D0%25B8%25D0%25B5+%25D0%25B0%25D0%25BA%25D1%2581%25D0%25BE%25D0%25BD%25D0%25BE%25D0%25BC%25D0%25B5%25D1%2582%25D1%2580%25D0%25B8%25D1%258F&page=&utm_source=opensearch][черчение аксонометрия - YouTube]]
+ #+BEGIN_QUOTE
+ черчение аксонометрия
+ #+END_QUOTE
+** [2017-01-25 Wed 11:57] [[https://www.youtube.com/watch?v=G0XijJUooHE][Как начертить оси для аксонометрии. Уроки черчения. - YouTube]]
+ #+BEGIN_QUOTE
+ Published on Jan 13, 2016
+ Сегодня чертим оси для аксонометрии. Уроки черчения.
+
+ #+END_QUOTE
+** [2017-01-25 Wed 11:57] [[https://www.youtube.com/watch?v=kH2ETrEBfNE][Как начертить аксонометрию. Наглядный пример. Уроки черчения. - YouTube]]
+ #+BEGIN_QUOTE
+ Published on Jan 16, 2017
+ Как начертить аксонометрию. Наглядный пример. Уроки черчения.
+
+ #+END_QUOTE
+** [2017-01-25 Wed 20:00] [[https://vk.com/im?msgid=31801&peers=113006911_384426051_110591865&sel=c4][Диалоги]]
+ #+BEGIN_QUOTE
+ 5005-1 все у кого нет зачёта по английскому :29 января в 12.55 быть в начале кафедры ин.яза 3 этаж 3 корпус, лучше пораньше, в час она свалит на собрание...ну и с зачеткой само собой
+ #+END_QUOTE
+** [2017-01-25 Wed 20:05] [[https://vk.com/im?msgid=32251&peers=113006911_384426051_110591865&sel=c4][Диалоги]]
+ #+BEGIN_QUOTE
+ 23.01 я буду в 14.30-16.00 в а.5143
+ 26.01 я буду в 1200-13.30 в а. 5143
+ 1.02 я буду в 14.30-16.00 в а.5423
+ В это время вы можете придти ко мне с направлением и пересдать
+ #+END_QUOTE
+** [2017-01-25 Wed 20:57] [[https://spb.hh.ru/vacancy/19384143?query=Python%2520Junior][Вакансия Python (junior) программист в Санкт-Петербурге, работа в Деньга]]
+ #+BEGIN_QUOTE
+ Обязанности:
+ Участие в проектах по разработке программного обеспечения для внутренних нужд компании;
+ Разработка и тестирование кода;
+ Документирование проектов;
+ Администрирование сопутствующих сервисов;
+ Требования:
+ Знание python, linux.
+ Опыт работы в команде, использование систем контроля версий git или svn
+ Знание других языков программирования - Опыт PostgreSQL, Redis, Docker, DevOps
+ Опыт работы с фронтендом (JQuery\Angular\React\Vanilla JS)
+ Условия:
+ Интересные крупные корпоративные проекты в активно растущей компании
+ Территориальное расположение – В.О., современный комфортный офис
+ Официальное трудоустройство с первого рабочего дня, заработная плата вся белая
+ График работы: 5/2, с 9:00 до 18:00
+ Работа в молодом коллективе профессионалов, перспектива роста и развития
+ Предпочтение тем кандидатам, которые готовы предоставить пример кода или свои проекты, например на github!
+ #+END_QUOTE
+** [2017-01-26 Thu 15:45] [[https://vk.com/im?sel=c4][Диалоги]]
+- Определители и свойства
+- Прямая на плоскости
+- Векторы
+- Комплексные числа. Форма записи. Действия с комплексными числами
+- Определитель и его свойства
+- Из заданий. 1 теория. 2 квадратное уравнение с комплексными
+  числамм. 3 выделить целую часть из дроби. 4 умножение матрицы на
+  матрицу. 5 система уравнений. 6 векторная алгебра.
+** [2017-01-27 Fri 04:44] [[https://wiki.archlinux.org/index.php/x11vnc][X11vnc - ArchWiki]]
+ #+BEGIN_QUOTE
+ ssh -t -L 5900:localhost:5900 remote_host 'sudo x11vnc -display :0 -auth /home/USER/.Xauthority'
+ #+END_QUOTE
