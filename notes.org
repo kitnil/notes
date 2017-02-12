@@ -1,10 +1,10 @@
 #+TITLE: notes
 
 * Tasks
-** TODO Arch packaging tutorial on irc
+** DONE Arch packaging tutorial on irc
    [2016-12-03 Sat]
    [[gnus:INBOX#91dac71e-4a12-4306-8f99-74ec6cd32167@dev.null.invalid][Email to go wigust: Any programmers here who don't]]
-** TODO Watch Red Hat webinar
+** DONE Watch Red Hat webinar
    [2016-12-03 Sat]
    [[gnus:INBOX#ff3304$ddjdj@smtp.theonlinexpo.com][Email from Red Hat Webcasts: Daily development with Docker,]]
 
@@ -3392,8 +3392,8 @@ rm -rf /var/lib/docker/network
  <2016-12-09 Fri 02:34>
 
 * Firefox
-** TODO [[https://www.reddit.com/r/emacs/comments/5jhwlu/getting_things_from_outside_emacs_into/][Getting things from outside Emacs into org-mode/Emacs : emacs]]
-** TODO [[https://stackoverflow.com/questions/11902620/org-mode-how-do-i-create-a-new-file-with-org-capture][emacs - Org-Mode - How do I create a new file with org-capture? - Stack Overflow]]
+** [[https://www.reddit.com/r/emacs/comments/5jhwlu/getting_things_from_outside_emacs_into/][Getting things from outside Emacs into org-mode/Emacs : emacs]]
+** [[https://stackoverflow.com/questions/11902620/org-mode-how-do-i-create-a-new-file-with-org-capture][emacs - Org-Mode - How do I create a new file with org-capture? - Stack Overflow]]
 You'll have to use (read-string ...) in capture-report-data-file to generate the
 filename on the fly.
 
@@ -3413,7 +3413,7 @@ filename on the fly.
 
 This will prompt on capture for the file name, and then open the capture buffer
 will be created.
-** TODO [[https://blog.sleeplessbeastie.eu/2016/04/22/how-to-use-org-capture-from-system-tray/][How to use org-capture from system tray]]
+** [[https://blog.sleeplessbeastie.eu/2016/04/22/how-to-use-org-capture-from-system-tray/][How to use org-capture from system tray]]
  These shell scripts are designed to verify that emacs daemon process is running
  and then intercept call from emacsclient to trigger custom capture action.
 * YouTube frame width
@@ -3428,5 +3428,33 @@ will be created.
 * bug
 http://i.imgur.com/Agoj7C6.png
 * check what is segmentation fault
-* TODO Переписать чертежи на флешку
-
+* 2017-02-02 Зайти в деканат 3309 13:00-19:00
+- за направлением на пересдачу по истории в четверг 13:30
+- сколько можно иметь задолжностей, если очень хочется сдать
+- по поводу зачетной книжки, сдавать или нет, как проставить оценки на
+  пересдачах если она сдана
+- по поводу даты в студенческом билете, подпись декана факультета
+* TODO Узнать оценку по алгебре 6005 Никита Викторович Викулов
+* TODO Узнать когда пересдача по инженерной графике 6005 Виктория Путро
+* Вторник физика
+* Вторник инженерная графика с 17:00
+* linux partition example
+magnolia--vg-swap_1 3.7G
+magnolia--vg-root 952M
+magnolia--vg-usr 17.3G
+magnolia--vg-home 20G
+magnolia--vg-opt 2G
+magnolia--vg-var 2.8G
+sda1 /boot 244M
+* Термин философии
+03
+04
+* Поговорка tales of zesteria
+У настоящик товарищей взгляды одинаковые, но точки зрения разные
+* WATCH Буря потерь                                                   :anime:
+* Пословица Эдны
+Говорят, хорошие отношения длятся лишь до тех пор, пока в твоем кошельке есть монеты.
+* WATCH Пожиратели богов                                        :anime:games:
+* WATCH Metal Gear Rising                                             :games:
+* 10 fingers position keyboard fast typing
+[[https://thisissavo.github.io/assets/Klavaro1.png]]
