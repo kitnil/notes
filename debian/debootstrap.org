@@ -1,0 +1,17 @@
+* lilac mount
+#+BEGIN_SRC bash
+cryptsetup open /dev/sda5 encryptedlvm
+mount /dev/mapper/lilac--vg-root /mnt
+mount /dev/mapper/lilac--vg-var /mnt/var
+mount /dev/mapper/lilac--vg-usr /mnt/usr
+mount /dev/mapper/lilac--vg-opt /mnt/opt
+mount /dev/mapper/lilac--vg-home /mnt/home
+mount /dev/sda3 /mnt/boot
+mount -t sysfs /sys /mnt/sys
+mount -t proc none /mnt/proc
+mount -o bind /dev /mnt/dev
+chroot /mnt /bin/bash
+export PS1="(chroot) $PS1"
+#+END_SRC
+* update-initramfs
+update-initramfs -u -k all
