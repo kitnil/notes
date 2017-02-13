@@ -59,3 +59,161 @@ rm -rf /var/lib/docker/network
  <2016-12-09 Fri 14:09>
 ** Watch [[https://www.youtube.com/watch?v=aUf5GzD7xnM&index=27&list=RDkm8zL7VzBh0][TheNafig]]                                      :youtube:fun:ru:games: 
  <2016-12-09 Fri 02:34>
+** [2017-02-12 Sun 16:17] [[https://apricityos.com/][Apricity OS]]
+ #+BEGIN_QUOTE
+ Break free with Apricity OS, the operating system with a customizable, clean, and easy setup. Apps like ICE, which creates site-specific browsers, and Syncthing, which makes remote file sharing easier than ever, enable a more productive lifestyle. Prebuilt packages from the AUR along with the Pamac updater and Wine, allow for the most up-to-date experience. Finally, the no-frills integration with the GNOME and Cinnamon environments keep your desktop looking beautiful, leaving you everything you want, and nothing you don’t.
+
+ Download
+
+ #+END_QUOTE
+** [2017-02-12 Sun 17:36] [[https://www.youtube.com/watch?v=_iUd2IKMk1w&feature=em-lbcastemail][Стрим. Проходим новеллу Lucy -The Eternity She Wished For- часть 3 - YouTube]]
+ #+BEGIN_QUOTE
+
+ Нет Фантазии
+ Started streaming 29 minutes ago
+ SUBSCRIBED 133K
+ Поддержать канал (донат с голосом): http://www.donationalerts.ru/r/tsukas...
+
+ Наш паблик: https://vk.com/nfanime
+ Я в ВК: https://vk.com/maxfanfan
+ SHOW MORE
+
+ #+END_QUOTE
+** [2017-02-12 Sun 19:12] [[https://www.openhub.net/p/emacs][The GNU Emacs Open Source Project on Open Hub]]
+
+
+ Emacs is the extensible, customizable, self-documenting real-time display editor.
+** [2017-02-12 Sun 22:05] [[http://pragmaticemacs.com/emacs/master-your-inbox-with-mu4e-and-org-mode/][Master your inbox with mu4e and org-mode | Pragmatic Emacs]]
+  In the following I will put forward my philosophy on handling emails and then show how this is realised in emacs using mu4e and org-mode.
+
+ I couple of years ago I read an article by the economist Tim Harford which hugely influenced the way I handle my emails. The ideas in the article are not unique but they really struck a chord with me. My email philosophy can be distilled down to one key concept:
+
+     your inbox is not a todo list
+** [2017-02-12 Sun 22:11] [[https://www.youtube.com/watch?v=Vss3nofHpZI&list=PL61533C166E8B0028][Lec 1 | MIT 14.01SC Principles of Microeconomics - YouTube]]
+  Lecture 1: Introduction to Microeconomics
+ Instructor: Jon Gruber, 14.01 students
+ View the complete course: http://ocw.mit.edu/14-01SCF10
+
+ License: Creative Commons BY-NC-SA
+ More information at http://ocw.mit.edu/terms
+ More courses at http://ocw.mit.edu
+** [2017-02-12 Sun 23:24] [[https://www.youtube.com/channel/UC-KY8MRtc-0CAGqYy0lc3JA/about][From the LAMER to the Programmer - YouTube]]
+ #+BEGIN_QUOTE
+ Канал посвящён видео урокам по программированию и работе в операционных системах Linux. Канал создан для тех людей, кто хочет научиться программировать и пройти путь от Ламера до Программиста, кто хочет более детально разобраться в интересном компьютерном мире. Канал постоянно обновляется. 
+
+ Видео уроки идут Курсами. И каждый курс идет отдельным плейлистом для удобства просмотра. Каждый курс имеет свой уровень сложности. Обучение идёт с самых основ и все объясняется простым и понятным языком. Мы с Вами изучим основы программирования, поймём, что нужно знать, чтобы стать программистом. Разберём популярные ошибки у начинающих разработчиков. Научимся эффективно работать с компьютером и полученными знаниями. 
+
+ На канале запланированы курсы по  языкам: C(Си), Python 3;
+ А также работа и настройка операционных системах: Linux, Windows;
+ Уделено внимание безопасности;
+
+ Подписывайтесь!
+ Программируем, Бро?
+ Донат/Donat RUB R939373054553 USD Z657301568665
+
+ #+END_QUOTE
+** [2017-02-12 Sun 23:57] [[https://github.com/tiimgreen/github-cheat-sheet][tiimgreen/github-cheat-sheet: A list of cool features of Git and GitHub.]]
+ A collection of cool hidden and not so hidden features of Git and GitHub. This cheat sheet was inspired by Zach Holman's Git and GitHub Secrets talk at Aloha Ruby Conference 2012 (slides) and his More Git and GitHub Secrets talk at WDCNZ 2013 (slides).
+** [2017-02-12 Sun 23:59] [[https://github.com/git-tips/tips][git-tips/tips: Most commonly used git tips and tricks.]]
+
+     git-tip - A handy CLI to make optimum use of these tips. (Here in Docker container)
+
+ P.S: All these commands are tested on git version 2.7.4 (Apple Git-66).
+** [2017-02-13 Mon 00:00] [[https://github.com/so-fancy/diff-so-fancy][so-fancy/diff-so-fancy: Good-lookin' diffs. Actually… nah… The best-lookin' diffs.]]
+ AppVeyor build
+
+ diff-so-fancy builds on the good-lookin' output of git contrib's diff-highlight to upgrade your diffs' appearances.
+
+     Output will not be in standard patch format, but will be readable.
+     No pesky + or - at line-start, making for easier copy-paste.
+** [2017-02-13 Mon 00:09] [[https://github.com/pcottle/learnGitBranching][pcottle/learnGitBranching: An interactive git visualization to challenge and educate!]]
+ LearnGitBranching is a git repository visualizer, sandbox, and series of educational tutorials and challenges. Its primary purpose is to help developers understand git through the power of visualization (something that's absent when working on the command line).
+** [2017-02-13 Mon 00:13] [[https://github.com/kennethreitz/legit][kennethreitz/legit: Git for Humans, Inspired by GitHub for Mac™.]]
+ Inspired by GitHub for Mac.
+** [2017-02-13 Mon 00:14] [[https://github.com/IonicaBizau/git-stats][IonicaBizau/git-stats: Local git statistics including GitHub-like contributions calendars.]]
+ I'd be curious to see your calendar with all your commits. Ping me on Twitter (@IonicaBizau). 😄 Until then, here's my calendar:
+** [2017-02-13 Mon 00:39] [[https://github.com/jayphelps/git-blame-someone-else][jayphelps/git-blame-someone-else: Blame someone else for your bad code.]]
+
+
+     "I love git-blame-someone-else!!" -Linus Torvalds says*
+** [2017-02-13 Mon 02:42] [[https://github.com/sameersbn/docker-gitlab][sameersbn/docker-gitlab: Dockerized GitLab]]
+ Dockerfile to build a GitLab image for the Docker opensource container platform.
+
+ GitLab CE is set up in the Docker image using the install from source method as documented in the the official GitLab documentation.
+
+ For other methods to install GitLab please refer to the Official GitLab Installation Guide which includes a GitLab image for Docker.
+** [2017-02-13 Mon 02:42] [[https://github.com/agis-/git-style-guide][agis-/git-style-guide: A Git Style Guide]]
+ This is a Git Style Guide inspired by How to Get Your Change Into the Linux Kernel, the git man pages and various practices popular among the community.
+
+ Translations are available in the following languages:
+** [2017-02-13 Mon 02:46] [[https://github.com/git-ftp/git-ftp][git-ftp/git-ftp: Uses Git to upload only changed files to FTP servers.]]
+ If you use Git and you need to upload your files to an FTP server, Git-ftp can save you some time and bandwidth by uploading only those files that changed since the last upload.
+
+ It keeps track of the uploaded files by storing the commit id in a log file on the server. It uses Git to determine which local files have changed.
+
+ You can easily deploy another branch or go back in the Git history to upload an older version.
+** [2017-02-13 Mon 03:04] [[https://github.com/k88hudson/git-flight-rules][k88hudson/git-flight-rules: Flight rules for git - a work in progress!]]
+ What are "flight rules"?
+
+ A guide for astronauts (now, programmers using git) about what to do when things go wrong.
+
+     Flight Rules are the hard-earned body of knowledge recorded in manuals that list, step-by-step, what to do if X occurs, and why. Essentially, they are extremely detailed, scenario-specific standard operating procedures. [...]
+
+     NASA has been capturing our missteps, disasters and solutions since the early 1960s, when Mercury-era ground teams first started gathering "lessons learned" into a compendium that now lists thousands of problematic situations, from engine failure to busted hatch handles to computer glitches, and their solutions.
+
+ — Chris Hadfield, An Astronaut's Guide to Life.
+** [2017-02-13 Mon 03:04] [[https://github.com/magicmonty/bash-git-prompt][magicmonty/bash-git-prompt: An informative and fancy bash prompt for Git users]]
+ This prompt is a port of the "Informative git prompt for zsh" which you can find here
+
+ A bash prompt that displays information about the current git repository. In particular the branch name, difference with remote branch, number of files staged, changed, etc.
+
+ (an original idea from this blog post).
+
+ gitstatus.sh and git-prompt-help.sh added by AKS.
+** [2017-02-13 Mon 03:05] [[https://github.com/michaeldfallen/git-radar][michaeldfallen/git-radar: A heads up display for git]]
+ A heads up display for git.
+
+ An example of git-radar
+
+ Git-radar is a tool you can add to your prompt to provide at-a-glance information on your git repo. It's a labour of love I've been dogfooding for the last few years. Maybe it can help you too.
+** [2017-02-13 Mon 03:06] [[https://github.com/klaussilveira/gitlist][klaussilveira/gitlist: An elegant and modern git repository viewer]]
+ GitList is an elegant and modern web interface for interacting with multiple git repositories. It allows you to browse repositories using your favorite browser, viewing files under different revisions, commit history, diffs. It also generates RSS feeds for each repository, allowing you to stay up-to-date with the latest changes anytime, anywhere. GitList was written in PHP, on top of the Silex microframework and powered by the Twig template engine. This means that GitList is easy to install and easy to customize. Also, the GitList gorgeous interface was made possible due to Bootstrap.
+** [2017-02-13 Mon 03:14] [[https://github.com/git-game/git-game][git-game/git-game: terminal game to test git skills]]
+ This is a terminal game designed to test your knowledge of git commands. Each level in the game is a task to perform on this repo. Once you perform that task, you will be given your next task. There are a total of ten levels, each one harder than last!
+** [2017-02-13 Mon 03:16] [[https://github.com/kamranahmedse/git-standup][kamranahmedse/git-standup: Recall what you did on the last working day. Psst! or be nosy and find what someone else in your team did ;-)]]
+
+
+     Recall what you did on the last working day ..or be nosy and find what someone else did.
+** [2017-02-13 Mon 05:02] [[https://github.com/oguzhaninan/Stacer][oguzhaninan/Stacer: Ubuntu System Optimizer]]
+ Debian Linux x86 (Ubuntu)
+
+     Download Stacer_1.0.3_i386.deb from the Stacer releases page.
+     Run sudo dpkg --install Stacer_1.0.3_i386.deb on the downloaded package.
+     Launch Stacer using the installed Stacer command.
+** [2017-02-13 Mon 05:05] [[https://keepassxc.org/][KeePassXC Password Manager]]
+ The thing computers can do best is storing information.
+ You shouldn't waste your time trying to remember and type your passwords.
+ KeePassXC can store your passwords safely and auto-type them into your everyday websites and applications.
+** [2017-02-13 Mon 05:25] [[https://uappexplorer.com/apps?type=snappy][uApp Explorer]]
+ All Apps
+** [2017-02-13 Mon 05:33] [[https://github.com/Swordfish90/cool-retro-term][Swordfish90/cool-retro-term: A good looking terminal emulator which mimics the old cathode display...]]
+ cool-retro-term is a terminal emulator which mimics the look and feel of the old cathode tube screens. It has been designed to be eye-candy, customizable, and reasonably lightweight.
+
+ It uses the QML port of qtermwidget (Konsole) developed by me: https://github.com/Swordfish90/qmltermwidget .
+
+ This terminal emulator works under Linux and OSX and requires Qt 5.2 or higher.
+** [2017-02-13 Mon 05:51] [[https://superuser.com/questions/599561/prevent-gnome-from-expanding-windows][Prevent GNOME from expanding windows - Super User]]
+ gsettings set org.gnome.shell.overrides edge-tiling false
+** [2017-02-13 Mon 05:52] [[https://wiki.gnome.org/Projects/GnomeShell/Annoyances][Projects/GnomeShell/Annoyances - GNOME Wiki!]]
+ Annoyances are something that are not a direct bug. Those are situations which are hard/annoying "by design". Solving those situation requires careful thinking. Also, annoyances are related to an action, not to the overal look. As a rule of thumb, the title of your annoyance should always be an action that you are trying to do.
+** [2017-02-13 Mon 16:35] [[https://superuser.com/questions/865070/migrating-existing-debinan-installation-to-lvm-on-luks-with-encrypted-boot][debian - Migrating existing Debinan installation to LVM on LUKS with encrypted /boot - Super User]]
+ I have a VirtualBox with Debian Jessie. After some point I decided to create new virtual drive, encrypt it with LUKS, and copy old system to it without reinstalling. I've used several guides (1,2,3,4) to do this, but something goes wrong - when I'm trying to boot from the second drive, I'm getting black screen with cursor (not even sure if it blinks). Looks like that is some kind of a grub related problem.
+** [2017-02-13 Mon 16:43] [[http://www.pavelkogan.com/2014/05/23/luks-full-disk-encryption/][Full disk encryption with LUKS (including /boot) · Pavel Kogan]]
+ While looking for information about how to encrypt my laptop’s hard drive, among the repeated claims that the partition on which /boot resides must remain unencrypted, I found the suggestion that GRUB should be able to handle cryptography since it can be set up with a hashed password.
+** [2017-02-13 Mon 17:25] [[https://wiki.sabayon.org/index.php?title=HOWTO:_Restore_Grub2][HOWTO: Restore Grub2 - Sabayon Wiki]]
+ # mkdir -p /mnt/sabayon/boot
+ # mount /dev/hda3 /mnt/sabayon
+ # mount /dev/hda1 /mnt/sabayon/boot
+ # mount -t proc none /mnt/sabayon/proc
+ # mount -t sysfs sys /mnt/sabayon/sys
+ # mount -o bind /dev /mnt/sabayon/dev
