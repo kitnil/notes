@@ -1,3 +1,27 @@
+* partitioning
+#+BEGIN_EXAMPLE
+  └─sda3_crypt                  254:0    0 111.1G  0 crypt 
+    ├─magnolia--vg-var-real     254:1    0   2.8G  0 lvm   
+    │ ├─magnolia--vg-var        254:2    0   2.8G  0 lvm   /var
+    │ └─magnolia--vg-snapvar    254:4    0   2.8G  0 lvm   
+    ├─magnolia--vg-snapvar-cow  254:3    0     1G  0 lvm   
+    │ └─magnolia--vg-snapvar    254:4    0   2.8G  0 lvm   
+    ├─magnolia--vg-swap_1       254:5    0   3.7G  0 lvm   [SWAP]
+    ├─magnolia--vg-root-real    254:6    0   952M  0 lvm   
+    │ ├─magnolia--vg-root       254:7    0   952M  0 lvm   /
+    │ └─magnolia--vg-snaproot   254:9    0   952M  0 lvm   
+    ├─magnolia--vg-snaproot-cow 254:8    0   956M  0 lvm   
+    │ └─magnolia--vg-snaproot   254:9    0   952M  0 lvm   
+    ├─magnolia--vg-usr-real     254:10   0  17.3G  0 lvm   
+    │ ├─magnolia--vg-usr        254:11   0  17.3G  0 lvm   /usr
+    │ └─magnolia--vg-snapusr    254:13   0  17.3G  0 lvm   
+    ├─magnolia--vg-snapusr-cow  254:12   0     1G  0 lvm   
+    │ └─magnolia--vg-snapusr    254:13   0  17.3G  0 lvm   
+    ├─magnolia--vg-home         254:14   0    20G  0 lvm   /home
+    ├─magnolia--vg-docker       254:15   0    14G  0 lvm   /var/lib/docker
+    ├─magnolia--vg-gnome        254:16   0     4G  0 lvm   
+    └─magnolia--vg-opt          254:17   0     2G  0 lvm   /opt
+#+END_EXAMPLE
 * lilac mount
 #+BEGIN_SRC bash
 cryptsetup open /dev/sda5 encryptedlvm
