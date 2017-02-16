@@ -2739,3 +2739,538 @@
 
  (when (boundp 'package-pinned-packages)
  (setq package-pinned-packages
+** [2017-02-13 Mon 22:02] [[https://en.wikipedia.org/wiki/List_of_open-source_video_games][List of open-source video games - Wikipedia]]
+ This is a selected list of free/libre and open-source video games. Open-source video games are games assembled from and are themselves open-source software, including public domain games with published source code. This list includes games in which the game engine is open-source but the game content (media and levels, for example) may be under a different license.
+** [2017-02-13 Mon 22:06] [[https://github.com/NetHack/NetHack][NetHack/NetHack: Official NetHack Git Repository]]
+ NetHack 3.6 is an enhancement to the dungeon exploration game NetHack.
+ It is a distant descendent of Rogue and Hack, and a direct descendent of
+ NetHack 3.4. In order to avoid confusion with interim development code 
+ that was posted online in 2014 by others, there is no NetHack 3.5 release.
+
+ NetHack 3.6.1 contains several dozen bugfixes.
+
+ The file doc/fixes36.1 in the source distribution has a full list of each. 
+ The text in there was written for the development team's own use and is 
+ provided "as is", so please do not ask us to further explain the entries 
+ in that file. Some entries might be considered "spoilers", particularly
+ in the "new features" section.
+
+ Here are some additional general notes that are not considered spoilers:
+  * Some code paths and long-established game features have been made 
+    part of the base build and no longer conditional on compile settings.
+  * Several treasured NetHack community patches, or a variation of 
+    them, have been rolled in to the base NetHack source tree, incuding: 
+    menucolors, pickup thrown, statue glyphs, dungeon overview, sortloot.
+** [2017-02-14 Tue 02:13] [[https://www.gnu.org/software/emacs/manual/html_node/emacs/Shell-Commands-in-Dired.html][GNU Emacs Manual: Shell Commands in Dired]]
+ The Dired command ! (dired-do-shell-command) reads a shell command string in the minibuffer, and runs that shell command on one or more files. The files that the shell command operates on are determined in the usual way for Dired commands (see Operating on Files). The command X is a synonym for !.
+** [2017-02-14 Tue 02:26] [[http://mbork.pl/2017-02-13_Sorting_Org_entries_by_most_recent_activity][Marcin Borkowski: 2017-02-13 Sorting Org entries by most recent activity]]
+ Interestingly enough, there is almost no need to write such a function. Deep in the Org-mode guts, in org-clock.el, there lies hidden a function called org-clock-get-last-clock-out-time. It’s almost never really used, but it does what we want. The only problem is that it returns a time value, i.e. not sth you can feed into org-sort. But this is easy to remedy:
+** [2017-02-14 Tue 02:26] [[http://irreal.org/blog/?p=5929][Resetting a defvar Value | Irreal]]
+  Apropos of yesterday’s post, I came across this query on Reddit and learned a new keystroke. One of the counterintuitive peculiarities of Elisp—and Lisps in general—is that a value defined by defvar or defcustom is immutable: once set it can’t be changed without restarting the process.
+** [2017-02-14 Tue 02:27] [[http://cialu.net/blog/how-to-rotate-phone-video.html][How to rotate videos taken from smartphone]]
+ On my Linux machines, a very easy way to do that is to use FFmpeg. You can install it on your distribution with a one command by terminal.
+** [2017-02-14 Tue 02:27] [[http://cialu.net/blog/how-to-rotate-phone-video.html][How to rotate videos taken from smartphone]]
+ ffmpeg -i '/home/user/Videos/video-to-rotate.mp4'  -c copy -metadata:s:v:0 rotate=180 '/home/user/Videos/rotated-video.mp4'
+** [2017-02-14 Tue 02:29] [[http://dustymabe.com/2017/02/12/fedora-btrfssnapper-the-fedora-25-edition/][Fedora BTRFS+Snapper – The Fedora 25 Edition « A Random Walk Down Tech Street]]
+ Setting up System with LUKS + LVM + BTRFS
+
+ The manual steps for setting up the system are detailed in the part1 blog post from Fedora 22. This time around I have created a script that will quickly configure the system with LUKS + LVM + BTRFS. The script will need to be run in an Anaconda environment just like the manual steps were done in part1 last time.
+
+ You can easily enable ssh access to your Anaconda booted machine by adding inst.sshd to the kernel command line arguments. After booting up you can scp the script over and then execute it to build the system. Please read over the script and modify it to your liking.
+
+ Alternatively, for an automated install I have embedded that same script into a kickstart file that you can use. The kickstart file doesn't really leverage Anaconda at all because it simply runs a %pre script and then reboots the box. It's basically like just telling Anaconda to run a bash script, but allows you to do it in an automated way. None of the kickstart directives at the top of the kickstart file actually get used.
+** [2017-02-14 Tue 03:45] [[https://github.com/kparal/gkeyring][kparal/gkeyring: A small Python tool for shell access to GNOME keyring. It provides a simple way to query and create keyring items.]]
+ A small Python tool for shell access to GNOME keyring. It provides simple querying for and creating of keyring items.
+** [2017-02-14 Tue 03:50] [[https://github.com/muflone/gnome-appfolders-manager][muflone/gnome-appfolders-manager: Manage GNOME Shell applications folders]]
+
+
+ From the GNOME App Folders Manager main window you can define your custom folders to group your applications by clicking the Create folder button on the header bar.
+** [2017-02-14 Tue 03:51] [[https://github.com/brunelli/gnome-shell-extension-installer][brunelli/gnome-shell-extension-installer: A bash script to search and install extensions from extensions.gnome.org]]
+ A bash script to install and search extensions from extensions.gnome.org.
+** [2017-02-14 Tue 03:51] [[https://github.com/lestcape/Configurable-Menu][lestcape/Configurable-Menu: A Configurable Menu for the Gnome Shell desktop enviroment.]]
+ This applet have not support for cinnamon desktop anymore, will be migrated to Gnome Shell soon.
+** [2017-02-14 Tue 03:54] [[https://github.com/sciancio/searchfirefoxbookmarks][sciancio/searchfirefoxbookmarks: A gnome-shell extension which searches the firefox bookmarks and provides results in your shell overview]]
+ Search Firefox Bookmarks (SFB) is a GNOME Shell extension which searches the firefox bookmarks and provides results in your shell overview
+** [2017-02-14 Tue 03:56] [[https://github.com/search?p=2&q=gnome-shell+search+pushed%253A%253E2016-06-01&ref=searchresults&type=Repositories&utf8=%25E2%259C%2593][Search · gnome-shell search pushed:>2016-06-01]]
+ gnome-shell search pushed:>2016-06-01
+** [2017-02-14 Tue 03:59] [[https://www.wiktionary.org/][Wiktionary]]
+ Wiktionary
+** [2017-02-14 Tue 03:59] [[https://github.com/search?utf8=%25E2%259C%2593&q=language%253Aelisp+pushed%253A%253E2017-01-01&type=Repositories&ref=searchresults][Search · language:elisp pushed:>2017-01-01]]
+  Emacs Lisp
+** [2017-02-14 Tue 04:00] [[https://github.com/search?o=desc&q=language%253Aelisp+pushed%253A%253E2017-01-01+stars%253A%253E10&ref=searchresults&s=updated&type=Repositories&utf8=%25E2%259C%2593][Search · language:elisp pushed:>2017-01-01 stars:>10]]
+  We’ve found 519 repository results
+** [2017-02-14 Tue 04:07] [[https://github.com/rmuslimov/browse-at-remote][rmuslimov/browse-at-remote: Browse target page on github/bitbucket from emacs buffers]]
+ This package is easiest way to open particular link on github/gitlab/bitbucket from Emacs. It supports various kind of emacs buffer, like:
+
+     file buffer
+     dired buffer
+     magit-mode buffers represinting code
+     vc-annotate mode (use get there by pressing C-x v g by default)
+** [2017-02-14 Tue 04:10] [[https://github.com/tvraman/emacspeak][tvraman/emacspeak: Automatically exported from code.google.com/p/emacspeak]]
+ Blog Articles --- including emacspeak.blogspot.com posts.
+ Manual Info manual for emacspeak.
+ Web Emacspeak Web Site.
+ Videos Video demos.
+** [2017-02-14 Tue 04:11] [[https://github.com/skk-dev/ddskk][skk-dev/ddskk: Simple Kana to Kanji conversion program]]
+ Daredevil SKK is a version of SKK (Simple Kana to Kanji conversion program, an input method of Japanese) maintained by the SKK development team at
+
+ http://openlab.jp/skk
+
+ It consists of a simple core and many optional programs which provide extensive features. Though it has been well developed, our target is more simplified core, and much more optional features.
+
+ If you want to join development of Daredevil SKK, you can access its sources by git repository on the GitHub. see
+
+ https://github.com/skk-dev/ddskk
+
+ If you want to join the SKK Openlab Mailing list, see a description below.
+
+ Daredevil SKK is under the GNU General Public License. See COPYING for its details.
+** [2017-02-14 Tue 04:12] [[https://github.com/arthurnn/howdoi-emacs][arthurnn/howdoi-emacs: Search code from StackOverflow and paste it in emacs.]]
+ Search code from StackOverflow and paste it in emacs.
+** [2017-02-14 Tue 04:13] [[https://github.com/Malabarba/emacs-google-this][Malabarba/emacs-google-this: A set of emacs functions and bindings to google under point.]]
+ google-this.el is a package that provides a set of functions and keybindings for launching google searches from within emacs.
+
+ The main function is google-this (bound to C-c / g). It does a google search using the currently selected region, or the expression under point. All functions are bound under C-c / prefix, in order to comply with emacs' standards. To see all keybindings type C-c / C-h.
+
+ If you don't like this keybind, just reassign the google-this-mode-submap variable. My personal preference is C-x g:
+** [2017-02-14 Tue 04:14] [[https://github.com/skeeto/skewer-mode][skeeto/skewer-mode: Live web development in Emacs]]
+ Provides live interaction with JavaScript, CSS, and HTML in a web browser. Expressions are sent on-the-fly from an editing buffer to be evaluated in the browser, just like Emacs does with an inferior Lisp process in Lisp modes.
+
+     Watch the demo video on YouTube (webm)
+
+ Skewer is available from MELPA, which will install the dependencies for you. This package and its dependencies are pure Elisp, meaning setup is a breeze, the whole thing is highly portable, and it works with many browsers.
+
+ Dependencies:
+
+     simple-httpd (available on MELPA)
+     js2-mode (available on ELPA)
+
+ Skewer requires Emacs 24.3 or later.
+** [2017-02-14 Tue 04:15] [[https://github.com/bbatsov/zenburn-emacs][bbatsov/zenburn-emacs: The Zenburn colour theme ported to Emacs]]
+ Zenburn for Emacs is a direct port of the popular Zenburn theme for vim, developed by Jani Nurminen. It's my personal belief (and that of its many users I presume) that it's one of the best low contrast color themes out there and that it is exceptionally easy on the eyes.
+** [2017-02-14 Tue 04:17] [[https://trello.com/][Trello]]
+ Trello’s boards, lists, and cards enable you to organize and prioritize your projects in a fun, flexible and rewarding way.
+** [2017-02-14 Tue 04:19] [[https://github.com/org-trello/org-trello][org-trello/org-trello: Org minor mode - 2-way sync org & trello]]
+ The full documentation is maintained!
+
+     Demo
+
+     Standard Install
+
+     Org-trello Setup
+
+     Quick start
+
+     Migration
+
+     Bindings
+
+     Usage
+
+     Downloads
+
+     Contribute
+
+     Having trouble?
+
+     License
+** [2017-02-14 Tue 04:24] [[http://editorconfig.org/][EditorConfig]]
+ EditorConfig helps developers define and maintain consistent coding styles between different editors and IDEs. The EditorConfig project consists of a file format for defining coding styles and a collection of text editor plugins that enable editors to read the file format and adhere to defined styles. EditorConfig files are easily readable and they work nicely with version control systems.
+** [2017-02-14 Tue 04:26] [[https://github.com/bnbeckwith/writegood-mode][bnbeckwith/writegood-mode: Minor mode for Emacs to improve English writing]]
+ This is a minor mode to aid in finding common writing problems. Matt Might’s weaselwords scripts inspired this mode.
+
+ It highlights text based on a set of weasel-words, passive-voice and duplicate words.
+** [2017-02-14 Tue 05:23] [[https://github.com/remvee/android-mode][remvee/android-mode: Emacs minor mode for Android application development]]
+android-mode.el -- Minor mode for Android application development
+
+Provides support for running Android SDK subprocesses like the
+emulator, logcat, ddms and ant.
+
+Copyright (C) 2009, 2010, 2011, 2012, 2013, 2014 R.W van 't Veer
+
+This program is free software; you can redistribute it and/or
+modify it under the terms of the GNU General Public License
+as published by the Free Software Foundation; either version 3
+of the License, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with GNU Emacs; see the file COPYING.  If not, write to the
+Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
+Boston, MA 02110-1301, USA.
+** [2017-02-14 Tue 05:25] [[https://zhangda.wordpress.com/2016/02/15/configurations-for-beautifying-emacs-org-mode/][Configurations for beautifying Emacs org mode | Da's recipes on Emacs, IT, and more]]
+Purpose of the configuration: to beautify org-mode’s appearance with some eye-candies
+The configuration contains the following parts
+
+    choose the right font and fall-back font
+    enable utf coding
+    select org-bullet symbol set
+    select org-ellipsis symbol
+    define the faces of org-bullet
+** [2017-02-14 Tue 05:27] [[https://github.com/Wilfred/emacs-refactor][Wilfred/emacs-refactor: language-specific refactoring in Emacs]]
+Emacs Refactor (EMR) is a framework for providing language-specific refactoring in Emacs. It includes refactoring commands for a variety of languages, including elisp itself!
+** [2017-02-14 Tue 05:28] [[https://github.com/DarwinAwardWinner/ido-ubiquitous][DarwinAwardWinner/ido-ubiquitous: Fancy completion all over Emacs, not just for buffers and files.]]
+Gimme some ido... everywhere! This package replaces stock emacs completion with ido completion wherever it is possible to do so without breaking things.
+** [2017-02-14 Tue 05:29] [[https://github.com/nonsequitur/smex][nonsequitur/smex: A smart M-x enhancement for Emacs.]]
+Smex is a M-x enhancement for Emacs. Built on top of Ido, it provides a convenient interface to your recently and most frequently used commands. And to all the other commands, too.
+** [2017-02-14 Tue 05:30] [[https://github.com/cpitclaudel/company-coq][cpitclaudel/company-coq: IDE extensions for Proof General's Coq mode]]
+A collection of extensions for Proof General's Coq mode.
+
+See screenshots below, or jump right to setup instructions and try the tutorial with M-x company-coq-tutorial after setting up!
+** [2017-02-14 Tue 05:30] [[https://github.com/porterjamesj/virtualenvwrapper.el][porterjamesj/virtualenvwrapper.el: virtualenv tool for emacs]]
+
+    Works with the new python.el, which is the default on Emacs 24.3 and up. Does not support the older python modes.
+    Python shells, interactive shells, eshell, and any other subprocesses can be made aware of your virtualenvs.
+    Implements a large subset of the functionality of virtualenvwrapper.
+** [2017-02-14 Tue 05:31] [[https://github.com/expez/company-quickhelp][expez/company-quickhelp: Documentation popup for Company]]
+One of the things I missed the most when moving from auto-complete to company was the documentation popups that would appear when idling on a completion candidate. This package remedies that situation.
+
+auto-complete uses popup-el to do its thing and this results in quite a few glitches. This package uses the much better pos-tip to display the popups. I recommend installing pos-tip using MELPA which fetches the version of pos-tip which is located here. This version contains a few bugfixes not included in the original on EmacsWiki.
+** [2017-02-14 Tue 05:31] [[https://github.com/DogLooksGood/parinfer-mode][DogLooksGood/parinfer-mode: Parinfer for Emacs :)]]
+Parinfer is a proof-of-concept editor mode for Lisp programming languages. It will infer some changes to keep Parens and Indentation inline with one another. Parinfer consists of two modes:
+
+Indent Mode
+    Indent Mode gives you full control of indentation, while Parinfer corrects parens.
+Paren Mode
+    Paren Mode gives you full control of parens, while Parinfer corrects indentation.
+
+To learn more about Parinfer, please take a look at its home page.
+
+And the parinfer-mode is the implementation on Emacs with parinfer-elisp.
+** [2017-02-14 Tue 05:32] [[https://github.com/jschaf/esup][jschaf/esup: ESUP - Emacs Start Up Profiler]]
+Benchmark Emacs Startup time without ever leaving your Emacs.
+** [2017-02-14 Tue 05:32] [[https://github.com/noctuid/general.el][noctuid/general.el: More convenient key definitions in emacs]]
+general.el provides a more convenient way to bind keys in emacs for both evil and non-evil users. general-define-key allows defining multiple keys at once, implicitly wrapping key strings with (kbd ...), having named prefix key sequences (like the leader key in vim), and more.
+** [2017-02-14 Tue 05:32] [[https://github.com/rnkn/fountain-mode][rnkn/fountain-mode: Emacs major mode for screenwriting in Fountain plaintext markup]]
+Fountain Mode is a complete screenwriting environment for GNU Emacs using the Fountain markup format. For more information on the Fountain markup format, visit http://fountain.io.
+** [2017-02-14 Tue 05:33] [[https://github.com/Bad-ptr/persp-mode.el][Bad-ptr/persp-mode.el: named perspectives(set of buffers/window configs) for emacs]]
+Perspectives for emacs, based on the perspective-el by Natalie Weizenbaum.
+But the perspectives are shared among frames + ability to save/restore its state from/to a file.
+** [2017-02-14 Tue 06:12] [[https://groups.google.com/forum/#!searchin/mu-discuss/gnome|sort:relevance/mu-discuss/RAxVY87rX8E/-8oSo7MlAgAJ][Setting mu4e as default email program in Gnome 3? - Google Groups]]
+I'm using a script for this. I seem to remember that it was possible to add a command in the default applications of Fedora/Gnome, but it does not appear to be possible now. You can write a script such as:
+
+#!/bin/bash
+emacsclient -c --eval "(browse-url-mail \"$@\")"
+** [2017-02-14 Tue 07:48] [[https://extensions.gnome.org/extension/1160/dash-to-panel/][Dash to Panel - GNOME Shell Extensions]]
+An icon taskbar for the Gnome Shell. This extension moves the dash into the gnome main panel so that the application launchers and system tray are combined into a single panel, similar to that found in KDE Plasma and Windows 7+. A separate dock is no longer needed for easy access to running and favorited applications.
+** [2017-02-14 Tue 07:48] [[https://extensions.gnome.org/extension/708/panel-osd/][Panel OSD - GNOME Shell Extensions]]
+Configuring where on the (main) screen notifications will appear, instead of just above the message tray
+** [2017-02-14 Tue 07:48] [[https://github.com/jderose9/dash-to-panel][jderose9/dash-to-panel: An icon taskbar for the Gnome Shell. This extension moves the dash into the gnome main panel so that the application launchers and system tray are combined into a single panel, similar to that found in KDE Plasma and Windows 7+. A separate dock is no longer needed for easy access to running and favorited applications.]]
+How do I embed my bottom left notification drawer into the panel like a system tray? Top Icons Plus
+
+How do I add a traditional start menu? Gno-Menu
+
+How do I disable the hot corner? No Topleft Hot Corner
+
+How do I move the notifications to somewhere other than the top center? Panel OSD
+
+How do I add transparency to the panel? Dynamic Panel Transparency
+
+How do I change workspaces by scrolling the mouse wheel in the empty space? Top Panel Workspace Scroll
+
+Why can't I put the panel vertically on the left or right of the display? Gnome-shell and it's numerous extensions add widgets to the panel. These widgets have been designed using padding and absolute positioning assuming a horizontal layout. At this point in time, I don't think it is possible to allow for a vertical layout and still maintain any sort of reasonable compatibility with many of the other features of Gnome.
+** [2017-02-14 Tue 22:47] [[https://spb.rabota.ru/vacancy38598453.html?vac_page=view&vac=100][Помощник системного администратора (работа в Санкт-Петербурге) | Вакансия компании Тэсонэро]]
+#+BEGIN_QUOTE
+Компании, работающей в сфере IT-Аутсорсинга (выездного обслуживания), требуется помощник системного администратора. Ищем человека, желающего работать и развиваться в сфере IT-Аутсорсинга (можно без опыта работы). Со студентами обсуждается индивидуальный график работы, есть возможность прохождения учебной практики, написание диплома и преддипломной практики.
+
+#+END_QUOTE
+** [2017-02-14 Tue 23:11] [[https://vk.com/id336959][Виктория Казакевич]]
+#+BEGIN_QUOTE
+Виктория Казакевич
+Спасибо, друзья!!!
+День рождения:
+17 ноября 1982 г.
+Город:
+Санкт-Петербург
+Семейное положение:
+замужем за Сергеем Колоницким
+Место работы:
+ЛЭТИ
+Веб-сайт:
+http://socratt_owl.livejournal.com
+Скрыть подробную информацию
+Основная информация
+Родной город:
+Ленинград
+Языки:
+Русский
+Родители:
+Надежда Казакевич и Григорий Казакевич
+Братья, сестры:
+Mark Rubanovich, Леонид Казакевич
+Контактная информация
+Моб. телефон:
+Информация скрыта
+Skype:
+sokratt_vgk
+Карьера
+Место работы:
+ЛЭТИ
+Санкт-Петербург, с 2005 г.
+Ассистент кафедры ВМ-2
+Образование
+Вуз:
+СПбГУ '05
+Факультет:
+Математико-механический
+Кафедра/направление:
+Высшей алгебры и теории чисел
+Форма обучения:
+Очное отделение
+Статус:
+Аспирантка
+Школа:
+Школа №583 '00
+Санкт-Петербург, 1992–2000 (а)
+математика
+Школа:
+Школа №217
+Санкт-Петербург, 1989–1991 (ш)
+Жизненная позиция
+Полит. предпочтения:
+Либеральные
+Мировоззрение:
+Научное
+Вдохновляют:
+Жизнь!
+Личная информация
+Деятельность:
+Мат-мех СПбГУ - аспирантка (специальность - мат. логика, алгебра и теория чисел); кружок при 239, СПб матцентр - бо-ольшое жюри; ЛЭТИ - ассистент кафедры ВМ-2, "Что? Где? Когда?" - команда "МУР-ЛЭТИ", сертифицированный арбитр МАК; клуб старинного танца Historycaldances, аргентинское танго и т.д.
+Интересы:
+Жить интересно!!!
+Любимая музыка:
+Классика, рок. Оркестр Поля Мариа, Р. Клэйдерман, Ф. Гойя и т.д.
+Любимые фильмы:
+"Д'Артаньян и три мушкетера", весь Шерлок Холмс (наш, ясное дело), "Служебный роман", "31 июня", Гайдай, "Мертвый сезон", "Щит и меч", "Dirty dancing" и т.д.
+Любимые телешоу:
+"Не забудьте выключить телевизор!"
+Любимые книги:
+"Три мушкетера", всяческая фантастика, классический детектив, Дж. Хэрриот, И. Губерман, Крылов "Мои воспоминания", SGA и т.д.
+Любимые игры:
+Всевозможные интеллектуальные (в кавычках и без оных :))
+Любимые цитаты:
+"Жизнь описывается двумя понятиями: дедлайн и форсмажор" (Н.А. Вавилов)
+"Если партия скажет: "Есть контакт!", - будем есть контакт!"
+"Начнем пораньше, закончим попозже. Для компенсации будем работать без перерыва"
+"Инквизиция жжет!!!"
+О себе:
+Не была, на состояла, не привлекалась.
+Национальность: таки да!!!
+Характер: есть.
+
+С Богом я общаюсь без нытья
+и не причиняя беспокойства:
+глупо на устройство бытия
+жаловаться автору устройства.
+(Игорь Губерман)
+
+Иду я против топора,
+в руке сжимая лом
+как символ торжества добра
+в его борьбе со злом.
+(Игорь Губерман)
+Группы:
+Добрая группа ツ, А мне прожить без музыки нельзя, Студия авторского стекла Богатый Кот, Зоослово всё о животных помощь пиар новости., Антресоль винтаж, Город которого больше нет, XII Танго Фестиваль Невская Милонга 2017, РетроПитер Музей транспорта для Вас, Встреча в защиту Исаакиевского собора 28.01.17, Клуб Любителей Кошек, Помогите спасти кошку Мяву, Помощь бездомным животным, Примор Приморский район СПб, МУЗЕЙ КОШКИ, Естественные науки natural sciences
+показать полный список
+717
+друзей
+192
+подписчика
+154
+фотографии
+791
+отметка
+123
+
+#+END_QUOTE
+** [2017-02-14 Tue 23:12] [[https://vk.com/im?peers=1927657_71521315_c7&sel=6858533][Диалоги]]
+#+BEGIN_QUOTE
+Только без флуда.
+Во вторник она точно скажет когда занятие будет
+#+END_QUOTE
+** [2017-02-15 Wed 00:33] [[http://spb.rosrabota.ru/vac-full/33575490][Работа в Санкт-Петербурге: вакансия Помощник системного администратора в компании Тэсонэро]]
+#+BEGIN_QUOTE
+Компании, работающей в сфере It-Аутсорсинга (выездного обслуживания), требуется помощник системного администратора. Ищем человека, желающего работать и развиваться в сфере It-Аутсорсинга (можно без опыта работы). Со студентами обсуждается индивидуальный график работы, есть возможность прохождения учебной практики, написание диплома и преддипломной практики.
+Обязанности:
+Сборка, настройка Пк и установка По на местах;
+поддержка пользователей (в том числе и в удаленных офисах);
+обеспечение бесперебойной работы техники и программного обеспечения (сервера, рабочие станции, сетевое оборудование), удаленное администрирование сети, поддержка телефонии и оргтехники;
+администрирование Ms Windows, Linux систем, *nix систем, прокладка и настройка сетевого оборудования;
+проведение монтажных работ.
+Требования:
+Высшее или незаконченное техническое образование.
+Базовые знания принципов обслуживания и настройки системного (Windows, Linux систем, *nix систем), прикладного программного обеспечения, сетевых настроек (Tcp/Ip), локальных сетей, диагностика “железа” компьютера.
+Знание основ построения Скс.
+Коммуникабельность, дисциплинированность и желание обучаться новому.
+Предлагаем:
+Ищем людей, желающих работать и развиваться в сфере It-Аутсорсинга (можно без опыта работы).
+График работы: пятидневка 10-18, 11-19 или 12-20. Со студентами обсуждается индивидуальный график работы.
+Испытательный срок 3 месяца, з/п 18000 руб. Оплачиваемый проезд + сотовая связь. При показанной хорошей работе испытательный срок сокращается до 1 месяца. После прохождения испытательного срока з/п от 20000-35000 и выше, обсуждается по итогам в зависимости от показанной работы и знаний. Оформление по Тк Рф, оплачиваемый отпуск 28 дней, оплачиваемые больничные. Карьерный рост до руководителя технического отдела.
+
+#+END_QUOTE
+** [2017-02-15 Wed 03:51] [[https://www.youtube.com/watch?v=F5YFInzcPG0][Как Работает Центральный Банк - YouTube]]
+#+BEGIN_QUOTE
+Центральные банки называют регуляторами рынка и гарантом стабильности, но, на самом деле, эта система с заранее проигрышным результатом для страны. Ну как страна может полностью выплатить долг Центральному банку, если изначально у страны нет денег? 
+
+#+END_QUOTE
+** [2017-02-15 Wed 04:58] [[https://github.com/GNOME/recipes][GNOME/recipes: GNOME likes to cook]]
+#+BEGIN_QUOTE
+This app is about cooking and recipes.
+
+The main objects of interest are
+
+recipes
+ingredients
+cuisines
+chefs
+The design can be found here: https://wiki.gnome.org/Design/Apps/Recipes
+
+
+#+END_QUOTE
+** [2017-02-15 Wed 06:50] [[http://rsync.net/#fourthpage][rsync.net Enterprise Cloud Storage]]
+We give you a regular filesystem that you can access with any SSH tool
+
+ 
+
+Our platform is built on ZFS which provides unparalleled data security and fault tolerance
+
+ 
+
+rsync.net can scale to Petabyte size and Gigabit speeds
+
+ 
+
+rsync / sftp / scp / git-annex / duplicity / rdiff-backup / unison
+** [2017-02-15 Wed 14:50] [[https://www.youtube.com/watch?v=pVRIVd0kjWU&list=PLhnCei31lj_TnZVLvzdwFk8Rx8L4zdMee][Философия. Лекция 1.1 Введение в философию-1 - YouTube]]
+#+BEGIN_QUOTE
+Курс лекций преподавателей «Политеха» на онлайн-платформе «Открытое образование», openedu.ru 
+
+#+END_QUOTE
+** [2017-02-15 Wed 14:50] [[https://www.youtube.com/watch?v=pVRIVd0kjWU&list=PLhnCei31lj_TnZVLvzdwFk8Rx8L4zdMee][Философия. Лекция 1.1 Введение в философию-1 - YouTube]]
+#+BEGIN_QUOTE
+Курс лекций преподавателей «Политеха» на онлайн-платформе «Открытое образование», openedu.ru 
+
+#+END_QUOTE
+** [2017-02-15 Wed 14:53] [[https://openedu.ru/course/urfu/CALC/][Открытое образование - Математический анализ]]
+#+BEGIN_QUOTE
+Курс посвящен изучению методов дифференциального исчисления функции одной и нескольких действительных переменных и интегрального исчисления функции действительного аргумента, которые являются мощным инструментом для решения задач в физике, технике, медицине, экономике, статистике и других областях.
+
+
+#+END_QUOTE
+** [2017-02-15 Wed 14:53] [[https://www.youtube.com/results?q=%25D0%259E%25D1%2582%25D0%25BA%25D1%2580%25D1%258B%25D1%2582%25D0%25BE%25D0%25B5+%25D0%259E%25D0%25B1%25D1%2580%25D0%25B0%25D0%25B7%25D0%25BE%25D0%25B2%25D0%25B0%25D0%25BD%25D0%25B8%25D0%25B5&sp=EgIQAw%25253D%25253D][Открытое Образование - YouTube]]
+#+BEGIN_QUOTE
+Открытое Образование
+#+END_QUOTE
+** [2017-02-15 Wed 15:11] [[https://github.com/adam-p/markdown-here][adam-p/markdown-here: Google Chrome, Firefox, and Thunderbird extension that lets you write email in Markdown and render it before sending.]]
+#+BEGIN_QUOTE
+Markdown Here is a Google Chrome, Firefox, Safari, Opera, and Thunderbird extension that lets you write email† in Markdown‡ and render them before sending. It also supports syntax highlighting (just specify the language in a fenced code block).
+
+
+#+END_QUOTE
+** [2017-02-15 Wed 15:11] [[https://github.com/YePpHa/YouTubeCenter][YePpHa/YouTubeCenter: YouTube Center is a userscript designed to expand the functionality of YouTube. It includes the ability to download the video you're watching, auto selecting your preferred video quality and much more.]]
+#+BEGIN_QUOTE
+YouTube Center is a userscript designed to expand the functionality of YouTube. It includes the ability to download the video you're watching, auto selecting your preferred video quality and much more.
+
+#+END_QUOTE
+** [2017-02-15 Wed 15:12] [[https://github.com/mauricecruz/chrome-devtools-zerodarkmatrix-theme][mauricecruz/chrome-devtools-zerodarkmatrix-theme: A highly customized dark theme for Chrome]]
+#+BEGIN_QUOTE
+A highly customized dark theme for Google Chrome.
+
+Stable and Canary channels are officially supported. Beta and Dev channels will work, but I'm not testing on them.
+
+
+#+END_QUOTE
+** [2017-02-15 Wed 15:13] [[https://github.com/segmentio/daydream][segmentio/daydream: A chrome extension to record your actions into a nightmare script]]
+#+BEGIN_QUOTE
+Just click the black daydream icon (it should turn green to indicate that it is actively recording), run all the tasks you wish to automate, and then click the green icon and open the popup.
+
+
+#+END_QUOTE
+** [2017-02-15 Wed 15:27] [[https://github.com/1c7/Youtube-Auto-Subtitle-Download][1c7/Youtube-Auto-Subtitle-Download: Download Youtube Subtitle ( Chrome Tempermonkey Script )]]
+First, you need use Chrome(Web browser) and Tampermonkey (Tampermonkey is a Chrome extension)
+** [2017-02-15 Wed 15:27] [[https://github.com/csu/export-saved-reddit][csu/export-saved-reddit: Export saved Reddit posts into a HTML file for import into Google Chrome.]]
+Exports saved and/or upvoted Reddit posts into a HTML file that is ready to be imported into Google Chrome. Sorts items into folders by subreddit.
+** [2017-02-15 Wed 15:30] [[https://github.com/Tampermonkey/tampermonkey][Tampermonkey/tampermonkey: Tampermonkey is a free browser extension and the most popular userscript manager for Blink- and WebKit-based Browsers like Chrome, Opera Next and Safari.]]
+
+Tampermonkey is a free browser extension and the most popular userscript manager for Blink- and WebKit-based Browsers like Chrome, Opera Next and Safari.
+** [2017-02-15 Wed 15:44] [[https://openedu.ru/course/#status=current&sort=new_first&dir=up][Открытое образование - Курсы]]
+#+BEGIN_QUOTE
+Отсортировано: сначала новые
+#+END_QUOTE
+** [2017-02-15 Wed 16:31] [[https://github.com/alebedev/git-media][alebedev/git-media: Handling large media files in Git]]
+#+BEGIN_QUOTE
+GitMedia extension allows you to use Git with large media files without storing the media in Git itself.
+
+
+#+END_QUOTE
+** [2017-02-15 Wed 16:38] [[https://github.com/haiwen/seafile][haiwen/seafile: File syncing and sharing software with file encryption and group sharing, emphasis on reliability and high performance.]]
+#+BEGIN_QUOTE
+File syncing and sharing software with file encryption and group sharing, emphasis on reliability and high performance. http://seafile.com/
+
+#+END_QUOTE
+** [2017-02-15 Wed 21:27] [[https://vk.com/gradusminus][Градус Минус]]
+#+BEGIN_QUOTE
+Градус Минус
+У моего бога хер больше чем у твоего...
+Город:
+Санкт-Петербург
+Место работы:
+Работники "НИИ командных приборов"
+3
+общих друга
+124
+друга
+78
+подписчиков
+69
+фотографий
+389
+видеозаписей
+
+#+END_QUOTE
+** [2017-02-16 Thu 05:49] [[https://turtlapp.com/][Turtl: A secure, encrypted Evernote alternative | Turtl]]
+ Yes. All of Turtl's source code for its clients and server are available online on our Github. Turtl's code is licensed GPLv3, meaning anybody can download and run their own version personally or in their company's intranet.
+** [2017-02-16 Thu 05:51] [[https://gitlab.com/fengshaun/syncopoli][fengshaun / syncopoli · GitLab]]
+
+    Server address - The IP address of your server
+    Protocol - Rsync or SSH
+    Port - Self explanatory
+    User - This should be your rsync user or ssh user (depending on protocol)
+    Additional Options - Any additional options you want to give rsync
+    Private key - Should be your dropbear-compatible ssh key (see below)
+    Rsync Password - password used to authenticate with the Rsync daemon
+    Frequency - How often you want to run all the sync profiles (in hours)
+** [2017-02-16 Thu 05:57] [[https://github.com/RichiH/vcsh][RichiH/vcsh: config manager based on Git]]
+While it may appear that there's an overwhelming amount of documentation and while the explanation of the concepts behind vcsh needs to touch a few gory details of git internals, getting started with vcsh is extremely simple.
+** [2017-02-16 Thu 06:06] [[https://en.wikisource.org/wiki/Main_Page][Wikisource, the free library]]
+
+
+    Wikimedia Commons
+    MediaWiki
+    Meta-Wiki
+    Wikispecies
+    Wikibooks
+    Wikidata
+    Wikinews
+    Wikipedia
+    Wikiquote
+    Wikiversity
+    Wikivoyage
+** [2017-02-16 Thu 06:09] [[https://en.wikipedia.org/wiki/List_of_free_and_open-source_software_packages][List of free and open-source software packages - Wikipedia]]
+This is a list of free and open-source software packages, computer software licensed under free software licenses and open-source licenses. Software that fits the Free Software Definition may be more appropriately called free software; the GNU project in particular objects to their works being referred to as open-source.[1] For more information about the philosophical background for open-source software, see free software movement and Open Source Initiative. However, nearly all software meeting the Free Software Definition also meets the Open Source Definition and vice versa. A small fraction of the software that meets either definition is listed here.
+** [2017-02-16 Thu 06:20] [[https://github.com/Kozea/Radicale][Kozea/Radicale: A simple CalDAV (calendar) and CardDAV (contact) server.]]
+Radicale is a free and open-source CalDAV and CardDAV server.
+
+For complete documentation, please visit the Radicale online documentation
+** [2017-02-16 Thu 06:32] [[http://radicale.org/user_documentation/][Radicale - CalDAV and CardDAV Server - Contents]]
+Radicale is written in pure Python and does not depend on any library. It is known to work on Python 2.6, 2.7, 3.1, 3.2, 3.3, 3.4 and PyPy > 1.9. The dependencies are optional, as they are only needed for various authentication methods [1].
+** [2017-02-16 Thu 07:00] [[https://github.com/pimutils/vdirsyncer][pimutils/vdirsyncer: Synchronize calendars and contacts]]
+Vdirsyncer synchronizes your calendars and addressbooks between two storages. The most popular purpose is to synchronize a CalDAV/CardDAV server with a local folder or file. The local data can then be accessed via a variety of programs, none of which have to know or worry about syncing to a server.
+** [2017-02-16 Thu 07:00] [[https://github.com/Kozea/Radicale][Kozea/Radicale: A simple CalDAV (calendar) and CardDAV (contact) server.]]
+ A simple CalDAV (calendar) and CardDAV (contact) server. http://radicale.org
+** [2017-02-16 Thu 07:01] [[http://www.courier-mta.org/][The Courier Mail Server]]
+The Courier mail transfer agent (MTA) is an integrated mail/groupware server based on open commodity protocols, such as ESMTP, IMAP, POP3, LDAP, SSL, and HTTP. Courier provides ESMTP, IMAP, POP3, webmail, and mailing list services within a single, consistent, framework. Individual components can be enabled or disabled at will. The Courier mail server now implements basic web-based calendaring and scheduling services integrated in the webmail module. Advanced groupware calendaring services will follow soon.
