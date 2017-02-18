@@ -726,7 +726,7 @@
  Learn the definition of a ring, one of the central objects in abstract algebra. We give several examples to illustrate this concept including matrices and polynomials.
 ** [[https://play.google.com/store/apps/details?id=com.orgzly][Orgzly: Notes & To-Do Lists - Android Apps on Google Play]]
  Orgzly is an outliner for notes and tasks. It stores notebooks in plain-text and keeps them where you choose to.
-** [2017-01-21 Sat 18:01] [[about:reader?url=http%3A%2F%2Fcarper.ca%2Fblog%2F170%2Flets-try-to-learn-japanese-for-the-87th-time-plus-a-wanikani-review][Let's try to learn Japanese for the 87th time. Plus a WaniKani review.]]
+** [2017-01-21 Sat 18:01] [[http://carper.ca/blog/170/lets-try-to-learn-japanese-for-the-87th-time-plus-a-wanikani-review][Let's try to learn Japanese for the 87th time. Plus a WaniKani review.]]
  I've been trying to learn Japanese for a looong time, with varying degrees of success. It's hard in ways that might be surprising. The main problem is motivation. This is a tale of my minor successes and major failures, and then a review of my latest flavor-of-the-week, WaniKani.
 ** [2017-01-21 Sat 18:09] [[https://github.com/avendael/emacs-geeknote][avendael/emacs-geeknote: Use Evernote in Emacs through geeknote]]
  Use Evernote in Emacs through geeknote
@@ -1464,9 +1464,7 @@
  14. Прямая и плоскость в пространстве.
  15. Кривые второго порядка на плоскости и п
  #+END_QUOTE
-** [2017-01-31 Tue 20:10] [[http://advance-club.ru/eng_free_webinar_2/?utm_medium=social&utm_source=VK&utm_campaign=31_01_eng_online&utm_content=proglib&utm_term=Learn][Центр образовательных технологий Advance]]#+BEGIN_QUOTE
-
- #+END_QUOTE
+** [2017-01-31 Tue 20:10] [[http://advance-club.ru/eng_free_webinar_2/?utm_medium=social&utm_source=VK&utm_campaign=31_01_eng_online&utm_content=proglib&utm_term=Learn][Центр образовательных технологий Advance]]
 ** [2017-01-31 Tue 21:11] [[https://www.youtube.com/watch?v=s7R8HXpgiHA][09 - Введение в алгоритмы. Машина Тьюринга - YouTube]]
  #+BEGIN_QUOTE
 
@@ -2251,11 +2249,7 @@
 ** [2017-02-10 Fri 23:46] [[https://github.com/pump-io/pump.io][pump-io/pump.io: Social server with an ActivityStreams API]]
  This is pump.io. It's a stream server that does most of what people really want from a social network.
 ** [2017-02-10 Fri 23:47] [[https://github.com/mikutter/mikutter][mikutter/mikutter: なにかあった時のためのバックアップです。リリース毎にミラーしてます]]
- # -*- mode: org; coding: utf-8 -*-
  mikutter - simple, powerful and moeful twitter client
- file:core/skin/data/icon.png
- 全てのミク廃、そしてTwitter中毒者へ贈る、至高のTwitter Clientを目指すTwitter Client。
- 略して至高のTwitter Client。
 ** [2017-02-10 Fri 23:52] [[https://github.com/hbons/SparkleShare][hbons/SparkleShare: Share and collaborate by syncing with any Git repository instantly. Linux, macOS, and Windows.]]
  #+BEGIN_QUOTE
  SparkleShare is an Open Source collaboration and sharing tool that is designed to keep things simple and to stay out of your way. It's available for Linux distributions, macOS, and Windows.
@@ -3274,3 +3268,68 @@ Vdirsyncer synchronizes your calendars and addressbooks between two storages. Th
  A simple CalDAV (calendar) and CardDAV (contact) server. http://radicale.org
 ** [2017-02-16 Thu 07:01] [[http://www.courier-mta.org/][The Courier Mail Server]]
 The Courier mail transfer agent (MTA) is an integrated mail/groupware server based on open commodity protocols, such as ESMTP, IMAP, POP3, LDAP, SSL, and HTTP. Courier provides ESMTP, IMAP, POP3, webmail, and mailing list services within a single, consistent, framework. Individual components can be enabled or disabled at will. The Courier mail server now implements basic web-based calendaring and scheduling services integrated in the webmail module. Advanced groupware calendaring services will follow soon.
+** [2017-02-16 Thu 07:54] [[https://github.com/Malabarba/elisp-bug-hunter][Malabarba/elisp-bug-hunter: Hunt down errors in elisp files.]]
+#+BEGIN_QUOTE
+Automatically debug and bisect your init (.emacs) file!
+
+The Bug Hunter is an Emacs library that finds the source of an error or unexpected behavior inside an elisp configuration file (typically init.el or .emacs).
+#+END_QUOTE
+** [2017-02-16 Thu 08:12] [[https://github.com/astahlman/ob-async][astahlman/ob-async: Asynchronous src_block execution for org-babel]]
+ob-async enables asynchronous execution of org-babel src blocks, like this:
+** [2017-02-16 Thu 16:52] [[https://github.com/mofarrell/p2pvc][mofarrell/p2pvc: A point to point color terminal video chat.]]
+A point to point color terminal video chat.
+** [2017-02-16 Thu 20:08] [[https://www.youtube.com/watch?v=NG9v68Vzwk4][Функции Центрального Банка РФ - ШОК! Вся правда! - YouTube]]
+#+BEGIN_QUOTE
+Обязанность каждого, повысить уровень своей финансовой грамотности и стать на защиту своих интересов перед произволом банковских систем!
+
+Не можете платить за кредит? Попали в сложную ситуацию и не знаете, что делать? Банк задалбывает звонками и намерен подать в суд? Угрожают коллекторы и вы в страхе, что лишитесь всего? Спасение есть!
+Снизить платежи по кредиту, остановит рост банковских долгов и вовсе списать банковскую задолженность - это реально!
+
+#+END_QUOTE
+** [2017-02-16 Thu 20:08] [[https://www.youtube.com/watch?v=NG9v68Vzwk4][Функции Центрального Банка РФ - ШОК! Вся правда! - YouTube]]
+#+BEGIN_QUOTE
+Обязанность каждого, повысить уровень своей финансовой грамотности и стать на защиту своих интересов перед произволом банковских систем!
+
+Не можете платить за кредит? Попали в сложную ситуацию и не знаете, что делать? Банк задалбывает звонками и намерен подать в суд? Угрожают коллекторы и вы в страхе, что лишитесь всего? Спасение есть!
+Снизить платежи по кредиту, остановит рост банковских долгов и вовсе списать банковскую задолженность - это реально!
+
+Решаем любые проблемы с кредитами в рамках закона!
+Свяжись с нами, консультация бесплатная!
+Телефон: 8 (914) 665-32-15
+Заполнить заявку: http://eskalatdv.ru
+Skype: eskalat.dv
+
+#+END_QUOTE
+** [2017-02-18 Sat 02:55] [[https://www.youtube.com/channel/UC7P9rGN3iFD_LLK9eI2kqAg/about][NCS Music 2017 / Музыка без авторских прав 2017 - YouTube]]
+#+BEGIN_QUOTE
+На канале выкладываются самые новые и популярные треки без авторских прав, для работы с Youtube! 
+Если вы использовали трек с данного канала и через некоторое время на него появился автор, не спешите обвинять канал в своих бедах так некоторые авторы все же решаются присвоить себе свое творение, это может произойти через день, неделю месяц, год, и то это в редких случаев. Те треки которые обретут на канале авторское право будут удаляться а информация об обретение авторства будет опубликована в группе вконтакте.
+
+#+END_QUOTE
+** [2017-02-18 Sat 02:56] [[https://www.youtube.com/watch?v=SS9uhfIl01g][Warriyo - Mortals (feat. Laura Brehm) {NCS Release} {Future Bass} - YouTube]]
+#+BEGIN_QUOTE
+Группа в вк. https://vk.com/musicncs2017
+
+#+END_QUOTE
+** [2017-02-18 Sat 03:00] [[https://www.zotero.org/][Zotero | Home]]
+#+BEGIN_QUOTE
+Zotero [zoh-TAIR-oh] is a free, easy-to-use tool to help you collect, organize, cite, and share your research sources.
+
+#+END_QUOTE
+** [2017-02-18 Sat 03:01] [[https://www.lyx.org/][LyX | LyX – The Document Processor]]
+#+BEGIN_QUOTE
+LyX is a document processor that encourages an approach to writing based on the structure of your documents (WYSIWYM) and not simply their appearance (WYSIWYG).
+
+#+END_QUOTE
+** [2017-02-18 Sat 04:01] [[https://www.reddit.com/r/emacs/comments/5tqn61/orgrefiletargets_based_on_current_org_file/][org-refile-targets based on current org file : emacs]]
+All that should be required is to call org-refile inside a let, like:
+
+(let ((org-refile-targets 'whatever))
+  (org-refile ...
+** [2017-02-18 Sat 04:04] [[https://github.com/aritra-b-11/schedule-mode][aritra-b-11/schedule-mode]]
+Schedule mode is a derived mode of org. This is intended for haveing a table format for scheduling. This buffer will have folloing parts:
+
+    Comments for usage help
+    effort table for calculating total man days
+    schedule table for checking milestone, resource, work, planned & actual dates
+    owner table describing owners
