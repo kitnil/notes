@@ -3378,3 +3378,17 @@ There is more to Git than magic. A list of Git related Emacs packages, compiled 
 
 
 #+END_QUOTE
+** [2017-02-18 Sat 19:56] [[http://www.ideasonboard.org/uvc/][Linux UVC driver & tools]]
+#+BEGIN_QUOTE
+Welcome to the USB Video Class Linux device driver home.
+
+The goal of this project is to provide all necessary software components to fully support UVC compliant devices in Linux. This include a V4L2 kernel device driver and patches for user-space tools.
+
+The USB Device Class Definition for Video Devices, or USB Video Class, defines video streaming functionality on the Universal Serial Bus. Much like nearly all mass storage devices (USB flash disks, external SATA disk enclosures, ...) can be managed by a single driver because they conform to the USB Mass Storage specification, UVC compliant peripherals only need a generic driver.
+
+The UVC specification covers webcams, digital camcorders, analog video converters, analog and digital television tuners, and still-image cameras that support video streaming for both video input and output.
+
+Due to the limited available man power and the broad scope of the UVC specification, the Linux UVC project will concentrate the development efforts on video input devices, especially webcams. Video output devices are supported in bulk mode only.
+
+
+#+END_QUOTE
