@@ -3343,4 +3343,13 @@ Then read the feeds with a news reader via news.gwene.org.
    improvements.  Please refer to the current edition of the "Internet
    Official Protocol Standards" (STD 1) for the standardization state
    and status of this protocol.  Distribution of this memo is unlimited.
+** [2017-02-18 Sat 19:17] [[https://github.com/tarsius/magit-rockstar/blob/master/magit-rockstar.el][magit-rockstar/magit-rockstar.el at master · tarsius/magit-rockstar]]
+#+BEGIN_QUOTE
+;; This package provides two commands which manipulate author and
+;; committer dates.  You could use it to make yourself look like
+;; a rockstar programmer who hammers out commits at one commit per
+;; minute.  But the real purpose is to recover from heavy
+;; re-arrangements of commits, that have causes the existing author
+;; and committer dates to become meaningless.
 
+#+END_QUOTE
