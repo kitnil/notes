@@ -3458,3 +3458,29 @@ sda1 /boot 244M
 * WATCH Metal Gear Rising                                             :games:
 * 10 fingers position keyboard fast typing
 [[https://thisissavo.github.io/assets/Klavaro1.png]]
+* TODO Article about latex mu4e plotting
+#+BEGIN_QUOTE
+Install for latex
+
+.. code-block:: identifier
+
+   sudo apt install dvipng
+
+Install for plotting graphs
+
+.. code-block:: identifier
+
+   sudo apt install gnuplot gnuplot-mode
+
+Install for tls credentials store
+
+.. code-block:: identifier
+
+   sudo apt install gnuplot gnutls-bin
+
+Install for mu4e email client   
+
+.. code-block:: identifier
+
+   sudo apt install mu4e
+#+END_QUOTE
