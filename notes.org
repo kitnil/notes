@@ -3488,3 +3488,5 @@ Install for mu4e email client
 org-attach.el:42:1:Error: Symbol’s function definition is void: org-link-set-parameters
 * org error compile
 org-drill.el:50:1:Error: Symbol’s function definition is void: org-link-set-parameters
+* org error compile
+org-lint.el:107:1:Error: Symbol’s function definition is void: org-define-error
