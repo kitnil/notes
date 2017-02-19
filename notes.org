@@ -3484,3 +3484,5 @@ Install for mu4e email client
 
    sudo apt install mu4e
 #+END_QUOTE
+* org error compile
+org-attach.el:42:1:Error: Symbol’s function definition is void: org-link-set-parameters
