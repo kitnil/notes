@@ -3425,3 +3425,5 @@ My .emacs.el file and other personal Emacs goodies http://www.newartisans.com
 #+END_QUOTE
 ** [2017-02-20 Mon 14:26] [[https://github.com/jborg/attic][jborg/attic: Deduplicating backup program]]
 Attic is a deduplicating backup program. The main goal of Attic is to provide an efficient and secure way to backup data. The data deduplication technique used makes Attic suitable for daily backups since only changes are stored.
+** [2017-02-20 Mon 14:27] [[https://github.com/rsnapshot/rsnapshot][rsnapshot/rsnapshot: a tool for backing up your data using rsync (if you want to get help, use https://lists.sourceforge.net/lists/listinfo/rsnapshot-discuss)]]
+ a tool for backing up your data using rsync (if you want to get help, use https://lists.sourceforge.net/lists/listinfo/rsnapshot-discuss) http://rsnapshot.org
