@@ -3449,3 +3449,30 @@ Attic is a deduplicating backup program. The main goal of Attic is to provide an
 In this video i will explain what a RESTful API is along with HTTP and endpoints. We will look at the Github API as an example
 
 #+END_QUOTE
+** [2017-02-20 Mon 23:57] [[https://emacs.stackexchange.com/questions/5298/reading-mailing-list-archives-in-emacs][email - Reading mailing list archives in Emacs? - Emacs Stack Exchange]]
+up vote
+19
+down vote
+accepted
+        
+
+Sure GNUS is an answer. From emacswiki
+
+M-x gnus
+B
+nntp
+news.gmane.org
+
+And select gmane.emacs.devel. From here you can browse through the threads using GNUs NNTP interface (which is what it was originally written to do). This is probably the best solution for browsing through historical mailing lists.
+
+As others have mentioned you may only want to read a small set of emails perhaps attached to a bug or patchwork. In this case if you can download the mbox file you can browse it directly without dealing with network latency. Again Emacs has many solutions for email however built in you can use Rmail quite easily. The steps for this are:
+
+M-x rmail
+
+This will bring up your default inbox (most likely your systems /var/mail/$USER and copy it in ~/RMAIL). However to load in a "foreign" mail box you type:
+
+i
+path/to/mbox
+h
+
+This will put you at the summary view of the mail box which you can then browse with the usual Emacs navigation.
