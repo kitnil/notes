@@ -3490,3 +3490,5 @@ Requirements to run full setup with applets...
     vnstat - for network applet statistics
     xdotool - to get current mouse position
     tint2 - to get windowlist on statusbar
+** [2017-02-22 Wed 01:32] [[https://github.com/theanalyst/ix.el][theanalyst/ix.el: An emacs client to http://ix.io pastebin]]
+ix.el is available as a package via MELPA or Marmalade. If MELPA/Marmalade is already added to your package archives install the package ix.el from there. Otherwise do this in a *scratch* buffer:
