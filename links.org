@@ -3476,3 +3476,17 @@ path/to/mbox
 h
 
 This will put you at the summary view of the mail box which you can then browse with the usual Emacs navigation.
+** [2017-02-21 Tue 08:30] [[https://github.com/windelicato/dotfiles/][windelicato/dotfiles: arch linux configuration files]]
+Arch Linux configuration files for programs and BSPWM
+
+Requirements to run full setup with applets...
+
+    dzen2 - for the clickable applets
+    conky - for the top bar
+    mpd - for the music applet
+    mpc - for the music applet
+    gmrun - to run programs
+    docky - dock launcher at the bottom
+    vnstat - for network applet statistics
+    xdotool - to get current mouse position
+    tint2 - to get windowlist on statusbar
