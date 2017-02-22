@@ -3492,3 +3492,11 @@ Requirements to run full setup with applets...
     tint2 - to get windowlist on statusbar
 ** [2017-02-22 Wed 01:32] [[https://github.com/theanalyst/ix.el][theanalyst/ix.el: An emacs client to http://ix.io pastebin]]
 ix.el is available as a package via MELPA or Marmalade. If MELPA/Marmalade is already added to your package archives install the package ix.el from there. Otherwise do this in a *scratch* buffer:
+** [2017-02-22 Wed 06:25] [[https://github.com/ankurdave/color-identifiers-mode][ankurdave/color-identifiers-mode: Emacs minor mode to highlight each source code identifier uniquely based on its name]]
+#+BEGIN_QUOTE
+Color Identifiers is a minor mode for Emacs that highlights each source code identifier uniquely based on its name. It is inspired by a post by Evan Brooks.
+
+Currently it supports Scala (scala-mode2), JavaScript (js-mode and js2-mode), Ruby, Python, Emacs Lisp, Clojure, C, C++, and Java. You can add support for your favorite mode by modifying color-identifiers:modes-alist and optionally calling color-identifiers:set-declaration-scan-fn.
+
+
+#+END_QUOTE
