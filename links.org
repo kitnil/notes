@@ -1,3 +1,8 @@
-#+TITLE: links
-
-
+* Links
+** [2017-02-23 Thu 10:38] [[http://fgiasson.com/blog/index.php/2016/06/21/optimal-emacs-settings-for-org-mode-for-literate-programming/][Optimal Emacs Settings for Org-mode for Literate Programming | Frederick Giasson]]
+;; Let's have pretty source code blocks
+(setq org-edit-src-content-indentation 0
+      org-src-tab-acts-natively t
+      org-src-fontify-natively t
+      org-confirm-babel-evaluate nil
+      org-support-shift-select 'always)
