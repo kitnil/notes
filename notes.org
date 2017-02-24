@@ -7102,3 +7102,22 @@ Install for mu4e email client
 забьют время, которого не хватает для стабильных выпусков, к тому же
 поучительные.
 * Философию обычно относят к отдельной отрасли научной мысли
+* cruft
+#+BEGIN_SRC bash
+cruft --ignore "/dev \
+ /proc \
+ /sys \
+ /root \
+ /home \
+ /tmp \
+ /srv \
+ /run \
+ /var \
+/cache \
+ /var/lib/docker"
+#+END_SRC
+
+#+BEGIN_SRC bash
+declare -a Unix=('Debian' 'Red hat' 'Red hat' 'Suse' 'Fedora');
+echo ${Unix[@]}
+#+END_SRC
