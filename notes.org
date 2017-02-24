@@ -7104,16 +7104,18 @@ Install for mu4e email client
 * Философию обычно относят к отдельной отрасли научной мысли
 * cruft
 #+BEGIN_SRC bash
-  declare -a PATHS=('/dev'
-		    '/proc'
-		    '/sys'
-		    '/root'
-		    '/home'
-		    '/tmp'
-		    '/srv'
-		    '/run'
-		    '/var/cache'
-		    '/var/lib/docker');
-cruft --ignore ${PATHS[@]}
+    declare -a PATHS=('/dev'
+		      '/proc'
+		      '/sys'
+		      '/root'
+		      '/home'
+		      '/tmp'
+		      '/srv'
+		      '/run'
+		      '/var/cache'
+		      '/var/lib/docker'
+                      '/opt'
+  '/var/lib/samba');
+  cruft --ignore ${PATHS[@]}
 #+END_SRC
 
