@@ -7025,13 +7025,14 @@ will be created.
 * TODO Узнать оценку по алгебре 6005 Никита Викторович Викулов
 * Вторник физика
 * linux partition example
-magnolia--vg-swap_1 3.7G
-magnolia--vg-root 952M
-magnolia--vg-usr 17.3G
-magnolia--vg-home 20G
-magnolia--vg-opt 2G
-magnolia--vg-var 2.8G
-sda1 /boot 244M
+| name--vg-swap_1 | 3.7G      |
+| name--vg-       | root 952M |
+| name--vg-usr    | 17.3G     |
+| name--vg-       | home 20G  |
+| name--vg-       | opt 2G    |
+| name--vg-var    | 2.8G      |
+| sdax /          | boot 244M |
+   
 * Bywords
 ** Tales of zesteria
 "У настоящик товарищей взгляды одинаковые, но точки зрения разные.", -
