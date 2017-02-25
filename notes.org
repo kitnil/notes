@@ -7158,3 +7158,5 @@ rm -rf /var/lib/docker/network
  <2016-12-09 Fri 02:34>
 ** [2017-02-25 Sat 14:17] [[http://lighttable.com/][Light Table]]
 The next generation code editor
+** [2017-02-25 Sat 18:01] [[https://github.com/Fanael/rainbow-delimiters][Fanael/rainbow-delimiters: Emacs rainbow delimiters mode]]
+rainbow-delimiters is a "rainbow parentheses"-like mode which highlights delimiters such as parentheses, brackets or braces according to their depth. Each successive level is highlighted in a different color. This makes it easy to spot matching delimiters, orient yourself in the code, and tell which statements are at a given depth.
