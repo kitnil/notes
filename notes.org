@@ -3566,6 +3566,14 @@ ack is a code-searching tool, similar to grep but optimized for programmers sear
 ripgrep is a line oriented search tool that combines the usability of The Silver Searcher (similar to ack) with the raw speed of GNU grep. ripgrep works by recursively searching your current directory for a regex pattern. ripgrep has first class support on Windows, Mac and Linux, with binary downloads available for every release.
 ** [2017-02-25 Sat 10:05] [[https://github.com/rgleichman/glance][rgleichman/glance: A visual Haskell]]
 Glance is a visual syntax for the programming language Haskell. The goal of this project is to increase programmer happiness and productivity by allowing programmers to create and understand programs in new and different ways. Currently, the Glance executable produces a visual representation of your code in the form of an SVG image when given a textual Haskell source file. In the future, I hope to create a visual editor for Haskell. Please scroll down to see some example images.
+** [2017-02-25 Sat 10:05] [[https://github.com/koalaman/shellcheck][koalaman/shellcheck: ShellCheck, a static analysis tool for shell scripts]]
+The goals of ShellCheck are
+
+    To point out and clarify typical beginner's syntax issues that cause a shell to give cryptic error messages.
+
+    To point out and clarify typical intermediate level semantic problems that cause a shell to behave strangely and counter-intuitively.
+
+    To point out subtle caveats, corner cases and pitfalls that may cause an advanced user's otherwise working script to fail under future circumstances.
 * Tasks
 ** DONE Arch packaging tutorial on irc
    [2016-12-03 Sat]
