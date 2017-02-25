@@ -3596,6 +3596,8 @@ Animation engine for explanatory math videos
 For those who want to play around with this tool, I should be upfront that I've mostly had my own use cases (i.e. 3b1b videos) in mind while building it, and it might not be the most friendly thing to get up and running. In particular, I have not done a great job tracking requirements, and documentation, to put it euphamistically, almost exclusively takes the form of naming conventions.
 
 For 9/10 math animation needs, you'd probably be better off using a more well-maintained tool, like mathplotlib or mathematica. I happen to think the program "Grapher" built into osx is really great, and surprisingly versatile for many needs. My own reasons for building this tool and using it for videos are twofold, and I'm not sure how well they apply to other people's use cases.
+** [2017-02-25 Sat 13:05] [[https://github.com/LightTable/LightTable][LightTable/LightTable: The Light Table IDE]]
+Light Table is a next generation code editor that connects you to your creation with instant feedback. Light Table is very customizable and can display anything a Chromium browser can.
 * Tasks
 ** DONE Arch packaging tutorial on irc
    [2016-12-03 Sat]
