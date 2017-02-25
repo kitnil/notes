@@ -3562,6 +3562,8 @@ This repository contains the sources of the perlfaq as maintained by perl-doc-ca
 This repository contains the core code responsible for triggering and handling the DuckDuckHack Instant Answers. It is the base of the DuckDuckHack Instant Answer infrastructure.
 ** [2017-02-25 Sat 09:12] [[https://github.com/petdance/ack2][petdance/ack2: ack 2.0 is a greplike tool optimized for programmers searching large heterogeneous trees of source code.]]
 ack is a code-searching tool, similar to grep but optimized for programmers searching large trees of source code. It runs in pure Perl, is highly portable, and runs on any platform that runs Perl.
+** [2017-02-25 Sat 09:12] [[https://github.com/BurntSushi/ripgrep][BurntSushi/ripgrep: ripgrep combines the usability of The Silver Searcher with the raw speed of grep.]]
+ripgrep is a line oriented search tool that combines the usability of The Silver Searcher (similar to ack) with the raw speed of GNU grep. ripgrep works by recursively searching your current directory for a regex pattern. ripgrep has first class support on Windows, Mac and Linux, with binary downloads available for every release.
 * Tasks
 ** DONE Arch packaging tutorial on irc
    [2016-12-03 Sat]
