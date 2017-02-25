@@ -7160,3 +7160,5 @@ rm -rf /var/lib/docker/network
 The next generation code editor
 ** [2017-02-25 Sat 18:01] [[https://github.com/Fanael/rainbow-delimiters][Fanael/rainbow-delimiters: Emacs rainbow delimiters mode]]
 rainbow-delimiters is a "rainbow parentheses"-like mode which highlights delimiters such as parentheses, brackets or braces according to their depth. Each successive level is highlighted in a different color. This makes it easy to spot matching delimiters, orient yourself in the code, and tell which statements are at a given depth.
+** [2017-02-25 Sat 18:03] [[https://github.com/Fanael/rainbow-identifiers][Fanael/rainbow-identifiers: Rainbow identifier highlighting for Emacs]]
+Rainbow identifiers mode is an Emacs minor mode providing highlighting of identifiers based on their names. Each identifier gets a color based on a hash of its name.
