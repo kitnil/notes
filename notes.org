@@ -7032,7 +7032,7 @@ magnolia--vg-home 20G
 magnolia--vg-opt 2G
 magnolia--vg-var 2.8G
 sda1 /boot 244M
-* Поговорки
+* Bywords
 ** Tales of zesteria
 "У настоящик товарищей взгляды одинаковые, но точки зрения разные.", -
 дед.
@@ -7044,35 +7044,29 @@ sda1 /boot 244M
 *** Буря потерь
 *** Пожиратели богов                                            
 *** Metal Gear Rising
-* 10 fingers position keyboard fast typing
-[[https://thisissavo.github.io/assets/Klavaro1.png]]
-* TODO Article about latex mu4e plotting
-#+BEGIN_QUOTE
-Install for latex
+* Temp
+[[https://thisissavo.github.io/assets/Klavaro1.png][10 fingers position keyboard fast typing]]
 
-.. code-block:: identifier
+Философию обычно относят к отдельной отрасли научной мысли
 
-   sudo apt install dvipng
+** cruft
+#+BEGIN_SRC bash
+    declare -a PATHS=('/dev'
+		      '/proc'
+		      '/sys'
+		      '/root'
+		      '/home'
+		      '/tmp'
+		      '/srv'
+		      '/run'
+		      '/var/cache'
+		      '/var/lib/docker'
+                      '/opt'
+  '/var/lib/samba');
+  cruft --ignore ${PATHS[@]}
+#+END_SRC
 
-Install for plotting graphs
-
-.. code-block:: identifier
-
-   sudo apt install gnuplot gnuplot-mode
-
-Install for tls credentials store
-
-.. code-block:: identifier
-
-   sudo apt install gnuplot gnutls-bin
-
-Install for mu4e email client   
-
-.. code-block:: identifier
-
-   sudo apt install mu4e
-#+END_QUOTE
-* org error compile
+** org error compile
 #+BEGIN_EXAMPLE
   org-attach.el:42:1:Error: Symbol’s function definition is void: org-link-set-parameters
 
@@ -7142,47 +7136,29 @@ Install for mu4e email client
 
   Compiling file /home/opykhalov/.emacs.d/elpa/org-plus-contrib-20170210/ox.el at Sun Feb 19 19:02:10 2017
 #+END_EXAMPLE
-* TALK [[https://www.youtube.com/watch?v=2jQHBfDNkY0][Ubuntarium by Redroot: Portal 2? LInux Native {22.02.2017, 23.15 MSK}-stream 720p]]
-- 0:12:00 :: Чего не сказал что восстанавливаешь EFI от Antegros в
-             отдельном видео или VK? Помогли бы.
-- 0:15:30 :: Правду говоришь. Antegros или Arch не нестабильные
-             дистрибутивы. В них только стабильные версии программ, но
-             они обновляются, а не заморожены до следующей версии ОС
-             (Ubuntu, Fedora). Также могу порекомендовать Debian Sid
-             (unstable), который тоже говорят что "не стабильный". На
-             самом деле в нем точно такие же версии софта как Arch. В
-             итоге слово стабильность в смысле дистрибутивов, означает
-             отсутствие новой функциональности (для домашних PC).
-- 0:34:00 :: Сижу на Debian, нету такого пакетного менеджера, где надо
-             регистрироваться. :)
-- 0:42:20 :: В Antegros GNOME разве есть графическая утилита для
-             установки драйверов? На сколько я знаю, это чисто Ubuntu
-             программа и она присутствует во всех ее DE. То есть GNOME
-             VS Xfce не причем, скорее Antegros VS Ubuntu.
-- 1:07:30 :: Хочется видео по отдельной теме "не все есть файл, есть
-             все объект" и "нет понятия программа выключилась, а есть
-             программа в системе или нет".
+** TODO Article about latex mu4e plotting
+#+BEGIN_QUOTE
+Install for latex
 
-Что думаешь на счет формата "во время работы"? Трансляция также как
-было с ремонтом ноутбуков. То есть во время редактирования видео,
-каких-то установок или обновлений. Возможно не большие получатся, но
-забьют время, которого не хватает для стабильных выпусков, к тому же
-поучительные.
-* Философию обычно относят к отдельной отрасли научной мысли
-* cruft
-#+BEGIN_SRC bash
-    declare -a PATHS=('/dev'
-		      '/proc'
-		      '/sys'
-		      '/root'
-		      '/home'
-		      '/tmp'
-		      '/srv'
-		      '/run'
-		      '/var/cache'
-		      '/var/lib/docker'
-                      '/opt'
-  '/var/lib/samba');
-  cruft --ignore ${PATHS[@]}
-#+END_SRC
+.. code-block:: identifier
 
+   sudo apt install dvipng
+
+Install for plotting graphs
+
+.. code-block:: identifier
+
+   sudo apt install gnuplot gnuplot-mode
+
+Install for tls credentials store
+
+.. code-block:: identifier
+
+   sudo apt install gnuplot gnutls-bin
+
+Install for mu4e email client   
+
+.. code-block:: identifier
+
+   sudo apt install mu4e
+#+END_QUOTE
