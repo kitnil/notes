@@ -35,9 +35,6 @@ will be created.
 ** [[https://blog.sleeplessbeastie.eu/2016/04/22/how-to-use-org-capture-from-system-tray/][How to use org-capture from system tray]]
  These shell scripts are designed to verify that emacs daemon process is running
  and then intercept call from emacsclient to trigger custom capture action.
-* Notes
-** Подвал
-Первый корпус 1244 кабинет и напротив него спуск в подвал
 * Bywords
 ** Tales of zesteria
 "У настоящик товарищей взгляды одинаковые, но точки зрения разные.", -
@@ -178,6 +175,7 @@ Install for mu4e email client
 
    sudo apt install mu4e
 #+END_QUOTE
+** Подвал Первый корпус 1244 кабинет и напротив него спуск в подвал
 * Links
 ** [[https://github.com/mooz/keysnail][mooz/keysnail: Allows you to bind commands to key sequences in Mozilla Firefox]]
  KeySnail is an add-on for Mozilla Firefox that aims to be a competitor and lightweight alternative to Vimperator. Unlike Vimperator, KeySnail provides comfortable browsing experience for Emacs users, but its target users are not limited to.
