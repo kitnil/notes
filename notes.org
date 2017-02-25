@@ -3598,6 +3598,8 @@ For those who want to play around with this tool, I should be upfront that I've 
 For 9/10 math animation needs, you'd probably be better off using a more well-maintained tool, like mathplotlib or mathematica. I happen to think the program "Grapher" built into osx is really great, and surprisingly versatile for many needs. My own reasons for building this tool and using it for videos are twofold, and I'm not sure how well they apply to other people's use cases.
 ** [2017-02-25 Sat 13:05] [[https://github.com/LightTable/LightTable][LightTable/LightTable: The Light Table IDE]]
 Light Table is a next generation code editor that connects you to your creation with instant feedback. Light Table is very customizable and can display anything a Chromium browser can.
+** [2017-02-25 Sat 13:14] [[http://mads-hartmann.com/2016/07/03/exporting-org-from-make.html][Exporting org from Make]]
+ Recently I've been quite obsessed with Make. I think it might be the perfect tool to deal with complex software projects that consist of many different systems that are build using various languages (my team at issuu uses it to the build, test, & deploy our frontend, backend and various internal tools). However, I'll save that rant for another blog post but given my fascination with Make I recently set out to write a Makefile for this blog.
 * Tasks
 ** DONE Arch packaging tutorial on irc
    [2016-12-03 Sat]
