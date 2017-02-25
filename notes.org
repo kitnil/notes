@@ -3574,6 +3574,8 @@ The goals of ShellCheck are
     To point out and clarify typical intermediate level semantic problems that cause a shell to behave strangely and counter-intuitively.
 
     To point out subtle caveats, corner cases and pitfalls that may cause an advanced user's otherwise working script to fail under future circumstances.
+** [2017-02-25 Sat 10:05] [[https://github.com/facebook/Haxl][facebook/Haxl: A Haskell library that simplifies access to remote data, such as databases or web-based services.]]
+Haxl is a Haskell library that simplifies access to remote data, such as databases or web-based services. Haxl can automatically
 * Tasks
 ** DONE Arch packaging tutorial on irc
    [2016-12-03 Sat]
