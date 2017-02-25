@@ -7162,3 +7162,9 @@ The next generation code editor
 rainbow-delimiters is a "rainbow parentheses"-like mode which highlights delimiters such as parentheses, brackets or braces according to their depth. Each successive level is highlighted in a different color. This makes it easy to spot matching delimiters, orient yourself in the code, and tell which statements are at a given depth.
 ** [2017-02-25 Sat 18:03] [[https://github.com/Fanael/rainbow-identifiers][Fanael/rainbow-identifiers: Rainbow identifier highlighting for Emacs]]
 Rainbow identifiers mode is an Emacs minor mode providing highlighting of identifiers based on their names. Each identifier gets a color based on a hash of its name.
+** [2017-02-25 Sat 18:03] [[https://github.com/martanne/vis][martanne/vis: a vim like text editor]]
+Vis aims to be a modern, legacy free, simple yet efficient editor combining the strengths of both vi(m) and sam.
+
+It extends vi's modal editing with built-in support for multiple cursors/selections and combines it with sam's structural regular expression based command language.
+
+As an universal editor it has decent Unicode support and should cope with arbitrary files including: large, binary or single-line ones.
