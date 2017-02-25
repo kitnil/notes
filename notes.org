@@ -1,5 +1,185 @@
 #+TITLE: notes
 
+* Tasks
+** DONE Arch packaging tutorial on irc
+   [2016-12-03 Sat]
+   [[gnus:INBOX#91dac71e-4a12-4306-8f99-74ec6cd32167@dev.null.invalid][Email to go wigust: Any programmers here who don't]]
+** DONE Watch Red Hat webinar
+   [2016-12-03 Sat]
+   [[gnus:INBOX#ff3304$ddjdj@smtp.theonlinexpo.com][Email from Red Hat Webcasts: Daily development with Docker,]]
+* Firefox
+** [[https://www.reddit.com/r/emacs/comments/5jhwlu/getting_things_from_outside_emacs_into/][Getting things from outside Emacs into org-mode/Emacs : emacs]]
+** [[https://stackoverflow.com/questions/11902620/org-mode-how-do-i-create-a-new-file-with-org-capture][emacs - Org-Mode - How do I create a new file with org-capture? - Stack Overflow]]
+You'll have to use (read-string ...) in capture-report-data-file to generate the
+filename on the fly.
+
+#+BEGIN_SRC emacs-lisp
+ (defun capture-report-data-file (path)
+   (let ((name (read-string "Name: ")))
+     (expand-file-name (format "%s-%s.txt"
+                               (format-time-string "%Y-%m-%d")
+                               name) path)))
+
+ '(("t"
+    "todo"
+    entry
+    (file (capture-report-date-file  "~/path/path/name"))
+    "* TODO")))
+#+END_SRC
+
+This will prompt on capture for the file name, and then open the capture buffer
+will be created.
+** [[https://blog.sleeplessbeastie.eu/2016/04/22/how-to-use-org-capture-from-system-tray/][How to use org-capture from system tray]]
+ These shell scripts are designed to verify that emacs daemon process is running
+ and then intercept call from emacsclient to trigger custom capture action.
+* YouTube frame width
+** 16:9
+   :width: 760
+   :height: 428
+* Anime Пожиратель богов
+* Tales of Zesteria 24
+* Notes
+** Подвал
+Первый корпус 1244 кабинет и напротив него спуск в подвал
+* TODO Узнать оценку по алгебре 6005 Никита Викторович Викулов
+* Bywords
+** Tales of zesteria
+"У настоящик товарищей взгляды одинаковые, но точки зрения разные.", -
+дед.
+
+"Говорят, хорошие отношения длятся лишь до тех пор, пока в твоем
+кошельке есть монеты.", - Эдна.
+* Watch
+** Anime
+*** Буря потерь
+*** Пожиратели богов                                            
+*** Metal Gear Rising
+* Temp
+** [[https://thisissavo.github.io/assets/Klavaro1.png][10 fingers position keyboard fast typing]]
+** Философию обычно относят к отдельной отрасли научной мысли
+** Каждый вторник консультация по физике
+** linux partition example
+| name--vg-swap_1 | 3.7G      |
+| name--vg-       | root 952M |
+| name--vg-usr    | 17.3G     |
+| name--vg-       | home 20G  |
+| name--vg-       | opt 2G    |
+| name--vg-var    | 2.8G      |
+| sdax /          | boot 244M |
+   
+** cruft
+#+BEGIN_SRC bash
+    declare -a PATHS=('/dev'
+		      '/proc'
+		      '/sys'
+		      '/root'
+		      '/home'
+		      '/tmp'
+		      '/srv'
+		      '/run'
+		      '/var/cache'
+		      '/var/lib/docker'
+                      '/opt'
+  '/var/lib/samba');
+  cruft --ignore ${PATHS[@]}
+#+END_SRC
+
+** org error compile
+#+BEGIN_EXAMPLE
+  org-attach.el:42:1:Error: Symbol’s function definition is void: org-link-set-parameters
+
+  org-drill.el:50:1:Error: Symbol’s function definition is void: org-link-set-parameters
+
+  org-lint.el:107:1:Error: Symbol’s function definition is void: org-define-error
+
+  ox-ascii.el:30:1:Error: Symbol’s function definition is void: org-define-error
+
+  Compiling file /home/opykhalov/.emacs.d/elpa/org-plus-contrib-20170210/ox-beamer.el at Sun Feb 19 19:02:09 2017
+  ox-beamer.el:33:1:Error: Symbol’s function definition is void: org-define-error
+
+  Compiling file /home/opykhalov/.emacs.d/elpa/org-plus-contrib-20170210/ox-bibtex.el at Sun Feb 19 19:02:09 2017
+
+  ox-confluence.el:36:1:Error: Symbol’s function definition is void: org-define-error
+
+  Compiling file /home/opykhalov/.emacs.d/elpa/org-plus-contrib-20170210/ox-deck.el at Sun Feb 19 19:02:09 2017
+  ox-deck.el:47:1:Error: Symbol’s function definition is void: org-define-error
+
+  Compiling file /home/opykhalov/.emacs.d/elpa/org-plus-contrib-20170210/ox-extra.el at Sun Feb 19 19:02:09 2017
+  ox-extra.el:58:1:Error: Symbol’s function definition is void: org-define-error
+
+  Compiling file /home/opykhalov/.emacs.d/elpa/org-plus-contrib-20170210/ox-freemind.el at Sun Feb 19 19:02:09 2017
+  ox-freemind.el:39:1:Error: Symbol’s function definition is void: org-define-error
+
+  Compiling file /home/opykhalov/.emacs.d/elpa/org-plus-contrib-20170210/ox-groff.el at Sun Feb 19 19:02:09 2017
+  ox-groff.el:41:1:Error: Symbol’s function definition is void: org-define-error
+
+  Compiling file /home/opykhalov/.emacs.d/elpa/org-plus-contrib-20170210/ox-html.el at Sun Feb 19 19:02:09 2017
+  ox-html.el:35:1:Error: Symbol’s function definition is void: org-define-error
+
+  Compiling file /home/opykhalov/.emacs.d/elpa/org-plus-contrib-20170210/ox-icalendar.el at Sun Feb 19 19:02:09 2017
+  ox-icalendar.el:35:1:Error: Symbol’s function definition is void: org-define-error
+
+  Compiling file /home/opykhalov/.emacs.d/elpa/org-plus-contrib-20170210/ox-koma-letter.el at Sun Feb 19 19:02:09 2017
+  ox-koma-letter.el:124:1:Error: Symbol’s function definition is void: org-define-error
+
+  Compiling file /home/opykhalov/.emacs.d/elpa/org-plus-contrib-20170210/ox-latex.el at Sun Feb 19 19:02:09 2017
+  ox-latex.el:30:1:Error: Symbol’s function definition is void: org-define-error
+
+  Compiling file /home/opykhalov/.emacs.d/elpa/org-plus-contrib-20170210/ox-man.el at Sun Feb 19 19:02:09 2017
+  ox-man.el:41:1:Error: Symbol’s function definition is void: org-define-error
+
+  Compiling file /home/opykhalov/.emacs.d/elpa/org-plus-contrib-20170210/ox-md.el at Sun Feb 19 19:02:10 2017
+  ox-md.el:32:1:Error: Symbol’s function definition is void: org-define-error
+
+  Compiling file /home/opykhalov/.emacs.d/elpa/org-plus-contrib-20170210/ox-odt.el at Sun Feb 19 19:02:10 2017
+  ox-odt.el:30:1:Error: Symbol’s function definition is void: org-define-error
+
+  Compiling file /home/opykhalov/.emacs.d/elpa/org-plus-contrib-20170210/ox-org.el at Sun Feb 19 19:02:10 2017
+  ox-org.el:27:1:Error: Symbol’s function definition is void: org-define-error
+
+  Compiling file /home/opykhalov/.emacs.d/elpa/org-plus-contrib-20170210/ox-publish.el at Sun Feb 19 19:02:10 2017
+  ox-publish.el:43:1:Error: Symbol’s function definition is void: org-define-error
+
+  Compiling file /home/opykhalov/.emacs.d/elpa/org-plus-contrib-20170210/ox-rss.el at Sun Feb 19 19:02:10 2017
+  ox-rss.el:75:1:Error: Symbol’s function definition is void: org-define-error
+
+  Compiling file /home/opykhalov/.emacs.d/elpa/org-plus-contrib-20170210/ox-s5.el at Sun Feb 19 19:02:10 2017
+  ox-s5.el:57:1:Error: Symbol’s function definition is void: org-define-error
+
+  Compiling file /home/opykhalov/.emacs.d/elpa/org-plus-contrib-20170210/ox-taskjuggler.el at Sun Feb 19 19:02:10 2017
+  ox-taskjuggler.el:150:1:Error: Symbol’s function definition is void: org-define-error
+
+  Compiling file /home/opykhalov/.emacs.d/elpa/org-plus-contrib-20170210/ox-texinfo.el at Sun Feb 19 19:02:10 2017
+  ox-texinfo.el:29:1:Error: Symbol’s function definition is void: org-define-error
+
+  Compiling file /home/opykhalov/.emacs.d/elpa/org-plus-contrib-20170210/ox.el at Sun Feb 19 19:02:10 2017
+#+END_EXAMPLE
+** TODO Article about latex mu4e plotting
+#+BEGIN_QUOTE
+Install for latex
+
+.. code-block:: identifier
+
+   sudo apt install dvipng
+
+Install for plotting graphs
+
+.. code-block:: identifier
+
+   sudo apt install gnuplot gnuplot-mode
+
+Install for tls credentials store
+
+.. code-block:: identifier
+
+   sudo apt install gnuplot gnutls-bin
+
+Install for mu4e email client   
+
+.. code-block:: identifier
+
+   sudo apt install mu4e
+#+END_QUOTE
 * Links
 ** [[https://github.com/mooz/keysnail][mooz/keysnail: Allows you to bind commands to key sequences in Mozilla Firefox]]
  KeySnail is an add-on for Mozilla Firefox that aims to be a competitor and lightweight alternative to Vimperator. Unlike Vimperator, KeySnail provides comfortable browsing experience for Emacs users, but its target users are not limited to.
@@ -6981,183 +7161,3 @@ rm -rf /var/lib/docker/network
  <2016-12-09 Fri 14:09>
 ** Watch [[https://www.youtube.com/watch?v=aUf5GzD7xnM&index=27&list=RDkm8zL7VzBh0][TheNafig]]                                      :youtube:fun:ru:games: 
  <2016-12-09 Fri 02:34>
-* Tasks
-** DONE Arch packaging tutorial on irc
-   [2016-12-03 Sat]
-   [[gnus:INBOX#91dac71e-4a12-4306-8f99-74ec6cd32167@dev.null.invalid][Email to go wigust: Any programmers here who don't]]
-** DONE Watch Red Hat webinar
-   [2016-12-03 Sat]
-   [[gnus:INBOX#ff3304$ddjdj@smtp.theonlinexpo.com][Email from Red Hat Webcasts: Daily development with Docker,]]
-* Firefox
-** [[https://www.reddit.com/r/emacs/comments/5jhwlu/getting_things_from_outside_emacs_into/][Getting things from outside Emacs into org-mode/Emacs : emacs]]
-** [[https://stackoverflow.com/questions/11902620/org-mode-how-do-i-create-a-new-file-with-org-capture][emacs - Org-Mode - How do I create a new file with org-capture? - Stack Overflow]]
-You'll have to use (read-string ...) in capture-report-data-file to generate the
-filename on the fly.
-
-#+BEGIN_SRC emacs-lisp
- (defun capture-report-data-file (path)
-   (let ((name (read-string "Name: ")))
-     (expand-file-name (format "%s-%s.txt"
-                               (format-time-string "%Y-%m-%d")
-                               name) path)))
-
- '(("t"
-    "todo"
-    entry
-    (file (capture-report-date-file  "~/path/path/name"))
-    "* TODO")))
-#+END_SRC
-
-This will prompt on capture for the file name, and then open the capture buffer
-will be created.
-** [[https://blog.sleeplessbeastie.eu/2016/04/22/how-to-use-org-capture-from-system-tray/][How to use org-capture from system tray]]
- These shell scripts are designed to verify that emacs daemon process is running
- and then intercept call from emacsclient to trigger custom capture action.
-* YouTube frame width
-** 16:9
-   :width: 760
-   :height: 428
-* Anime Пожиратель богов
-* Tales of Zesteria 24
-* Notes
-** Подвал
-Первый корпус 1244 кабинет и напротив него спуск в подвал
-* TODO Узнать оценку по алгебре 6005 Никита Викторович Викулов
-* Bywords
-** Tales of zesteria
-"У настоящик товарищей взгляды одинаковые, но точки зрения разные.", -
-дед.
-
-"Говорят, хорошие отношения длятся лишь до тех пор, пока в твоем
-кошельке есть монеты.", - Эдна.
-* Watch
-** Anime
-*** Буря потерь
-*** Пожиратели богов                                            
-*** Metal Gear Rising
-* Temp
-** [[https://thisissavo.github.io/assets/Klavaro1.png][10 fingers position keyboard fast typing]]
-** Философию обычно относят к отдельной отрасли научной мысли
-** Каждый вторник консультация по физике
-** linux partition example
-| name--vg-swap_1 | 3.7G      |
-| name--vg-       | root 952M |
-| name--vg-usr    | 17.3G     |
-| name--vg-       | home 20G  |
-| name--vg-       | opt 2G    |
-| name--vg-var    | 2.8G      |
-| sdax /          | boot 244M |
-   
-** cruft
-#+BEGIN_SRC bash
-    declare -a PATHS=('/dev'
-		      '/proc'
-		      '/sys'
-		      '/root'
-		      '/home'
-		      '/tmp'
-		      '/srv'
-		      '/run'
-		      '/var/cache'
-		      '/var/lib/docker'
-                      '/opt'
-  '/var/lib/samba');
-  cruft --ignore ${PATHS[@]}
-#+END_SRC
-
-** org error compile
-#+BEGIN_EXAMPLE
-  org-attach.el:42:1:Error: Symbol’s function definition is void: org-link-set-parameters
-
-  org-drill.el:50:1:Error: Symbol’s function definition is void: org-link-set-parameters
-
-  org-lint.el:107:1:Error: Symbol’s function definition is void: org-define-error
-
-  ox-ascii.el:30:1:Error: Symbol’s function definition is void: org-define-error
-
-  Compiling file /home/opykhalov/.emacs.d/elpa/org-plus-contrib-20170210/ox-beamer.el at Sun Feb 19 19:02:09 2017
-  ox-beamer.el:33:1:Error: Symbol’s function definition is void: org-define-error
-
-  Compiling file /home/opykhalov/.emacs.d/elpa/org-plus-contrib-20170210/ox-bibtex.el at Sun Feb 19 19:02:09 2017
-
-  ox-confluence.el:36:1:Error: Symbol’s function definition is void: org-define-error
-
-  Compiling file /home/opykhalov/.emacs.d/elpa/org-plus-contrib-20170210/ox-deck.el at Sun Feb 19 19:02:09 2017
-  ox-deck.el:47:1:Error: Symbol’s function definition is void: org-define-error
-
-  Compiling file /home/opykhalov/.emacs.d/elpa/org-plus-contrib-20170210/ox-extra.el at Sun Feb 19 19:02:09 2017
-  ox-extra.el:58:1:Error: Symbol’s function definition is void: org-define-error
-
-  Compiling file /home/opykhalov/.emacs.d/elpa/org-plus-contrib-20170210/ox-freemind.el at Sun Feb 19 19:02:09 2017
-  ox-freemind.el:39:1:Error: Symbol’s function definition is void: org-define-error
-
-  Compiling file /home/opykhalov/.emacs.d/elpa/org-plus-contrib-20170210/ox-groff.el at Sun Feb 19 19:02:09 2017
-  ox-groff.el:41:1:Error: Symbol’s function definition is void: org-define-error
-
-  Compiling file /home/opykhalov/.emacs.d/elpa/org-plus-contrib-20170210/ox-html.el at Sun Feb 19 19:02:09 2017
-  ox-html.el:35:1:Error: Symbol’s function definition is void: org-define-error
-
-  Compiling file /home/opykhalov/.emacs.d/elpa/org-plus-contrib-20170210/ox-icalendar.el at Sun Feb 19 19:02:09 2017
-  ox-icalendar.el:35:1:Error: Symbol’s function definition is void: org-define-error
-
-  Compiling file /home/opykhalov/.emacs.d/elpa/org-plus-contrib-20170210/ox-koma-letter.el at Sun Feb 19 19:02:09 2017
-  ox-koma-letter.el:124:1:Error: Symbol’s function definition is void: org-define-error
-
-  Compiling file /home/opykhalov/.emacs.d/elpa/org-plus-contrib-20170210/ox-latex.el at Sun Feb 19 19:02:09 2017
-  ox-latex.el:30:1:Error: Symbol’s function definition is void: org-define-error
-
-  Compiling file /home/opykhalov/.emacs.d/elpa/org-plus-contrib-20170210/ox-man.el at Sun Feb 19 19:02:09 2017
-  ox-man.el:41:1:Error: Symbol’s function definition is void: org-define-error
-
-  Compiling file /home/opykhalov/.emacs.d/elpa/org-plus-contrib-20170210/ox-md.el at Sun Feb 19 19:02:10 2017
-  ox-md.el:32:1:Error: Symbol’s function definition is void: org-define-error
-
-  Compiling file /home/opykhalov/.emacs.d/elpa/org-plus-contrib-20170210/ox-odt.el at Sun Feb 19 19:02:10 2017
-  ox-odt.el:30:1:Error: Symbol’s function definition is void: org-define-error
-
-  Compiling file /home/opykhalov/.emacs.d/elpa/org-plus-contrib-20170210/ox-org.el at Sun Feb 19 19:02:10 2017
-  ox-org.el:27:1:Error: Symbol’s function definition is void: org-define-error
-
-  Compiling file /home/opykhalov/.emacs.d/elpa/org-plus-contrib-20170210/ox-publish.el at Sun Feb 19 19:02:10 2017
-  ox-publish.el:43:1:Error: Symbol’s function definition is void: org-define-error
-
-  Compiling file /home/opykhalov/.emacs.d/elpa/org-plus-contrib-20170210/ox-rss.el at Sun Feb 19 19:02:10 2017
-  ox-rss.el:75:1:Error: Symbol’s function definition is void: org-define-error
-
-  Compiling file /home/opykhalov/.emacs.d/elpa/org-plus-contrib-20170210/ox-s5.el at Sun Feb 19 19:02:10 2017
-  ox-s5.el:57:1:Error: Symbol’s function definition is void: org-define-error
-
-  Compiling file /home/opykhalov/.emacs.d/elpa/org-plus-contrib-20170210/ox-taskjuggler.el at Sun Feb 19 19:02:10 2017
-  ox-taskjuggler.el:150:1:Error: Symbol’s function definition is void: org-define-error
-
-  Compiling file /home/opykhalov/.emacs.d/elpa/org-plus-contrib-20170210/ox-texinfo.el at Sun Feb 19 19:02:10 2017
-  ox-texinfo.el:29:1:Error: Symbol’s function definition is void: org-define-error
-
-  Compiling file /home/opykhalov/.emacs.d/elpa/org-plus-contrib-20170210/ox.el at Sun Feb 19 19:02:10 2017
-#+END_EXAMPLE
-** TODO Article about latex mu4e plotting
-#+BEGIN_QUOTE
-Install for latex
-
-.. code-block:: identifier
-
-   sudo apt install dvipng
-
-Install for plotting graphs
-
-.. code-block:: identifier
-
-   sudo apt install gnuplot gnuplot-mode
-
-Install for tls credentials store
-
-.. code-block:: identifier
-
-   sudo apt install gnuplot gnutls-bin
-
-Install for mu4e email client   
-
-.. code-block:: identifier
-
-   sudo apt install mu4e
-#+END_QUOTE
