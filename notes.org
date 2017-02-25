@@ -11,30 +11,6 @@
    [2016-12-03 Sat]
    [[gnus:INBOX#ff3304$ddjdj@smtp.theonlinexpo.com][Email from Red Hat Webcasts: Daily development with Docker,]]
 * Firefox
-** [[https://www.reddit.com/r/emacs/comments/5jhwlu/getting_things_from_outside_emacs_into/][Getting things from outside Emacs into org-mode/Emacs : emacs]]
-** [[https://stackoverflow.com/questions/11902620/org-mode-how-do-i-create-a-new-file-with-org-capture][emacs - Org-Mode - How do I create a new file with org-capture? - Stack Overflow]]
-You'll have to use (read-string ...) in capture-report-data-file to generate the
-filename on the fly.
-
-#+BEGIN_SRC emacs-lisp
- (defun capture-report-data-file (path)
-   (let ((name (read-string "Name: ")))
-     (expand-file-name (format "%s-%s.txt"
-                               (format-time-string "%Y-%m-%d")
-                               name) path)))
-
- '(("t"
-    "todo"
-    entry
-    (file (capture-report-date-file  "~/path/path/name"))
-    "* TODO")))
-#+END_SRC
-
-This will prompt on capture for the file name, and then open the capture buffer
-will be created.
-** [[https://blog.sleeplessbeastie.eu/2016/04/22/how-to-use-org-capture-from-system-tray/][How to use org-capture from system tray]]
- These shell scripts are designed to verify that emacs daemon process is running
- and then intercept call from emacsclient to trigger custom capture action.
 * Bywords
 ** Tales of zesteria
 "У настоящик товарищей взгляды одинаковые, но точки зрения разные.", -
@@ -177,6 +153,31 @@ Install for mu4e email client
 #+END_QUOTE
 ** Подвал Первый корпус 1244 кабинет и напротив него спуск в подвал
 * Links
+** [[https://www.reddit.com/r/emacs/comments/5jhwlu/getting_things_from_outside_emacs_into/][Getting things from outside Emacs into org-mode/Emacs : emacs]]
+** [[https://stackoverflow.com/questions/11902620/org-mode-how-do-i-create-a-new-file-with-org-capture][emacs - Org-Mode - How do I create a new file with org-capture? - Stack Overflow]]
+You'll have to use (read-string ...) in capture-report-data-file to generate the
+filename on the fly.
+
+#+BEGIN_SRC emacs-lisp
+ (defun capture-report-data-file (path)
+   (let ((name (read-string "Name: ")))
+     (expand-file-name (format "%s-%s.txt"
+                               (format-time-string "%Y-%m-%d")
+                               name) path)))
+
+ '(("t"
+    "todo"
+    entry
+    (file (capture-report-date-file  "~/path/path/name"))
+    "* TODO")))
+#+END_SRC
+
+This will prompt on capture for the file name, and then open the capture buffer
+will be created.
+** [[https://blog.sleeplessbeastie.eu/2016/04/22/how-to-use-org-capture-from-system-tray/][How to use org-capture from system tray]]
+These shell scripts are designed to verify that emacs daemon process is running
+and then intercept call from emacsclient to trigger custom capture action.
+
 ** [[https://github.com/mooz/keysnail][mooz/keysnail: Allows you to bind commands to key sequences in Mozilla Firefox]]
  KeySnail is an add-on for Mozilla Firefox that aims to be a competitor and lightweight alternative to Vimperator. Unlike Vimperator, KeySnail provides comfortable browsing experience for Emacs users, but its target users are not limited to.
 ** [[https://github.com/viewvc/viewvc][viewvc/viewvc: ViewVC is a browser interface for CVS and Subversion version control repositories.]]
