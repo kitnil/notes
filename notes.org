@@ -3600,15 +3600,6 @@ For 9/10 math animation needs, you'd probably be better off using a more well-ma
 Light Table is a next generation code editor that connects you to your creation with instant feedback. Light Table is very customizable and can display anything a Chromium browser can.
 ** [2017-02-25 Sat 13:14] [[http://mads-hartmann.com/2016/07/03/exporting-org-from-make.html][Exporting org from Make]]
  Recently I've been quite obsessed with Make. I think it might be the perfect tool to deal with complex software projects that consist of many different systems that are build using various languages (my team at issuu uses it to the build, test, & deploy our frontend, backend and various internal tools). However, I'll save that rant for another blog post but given my fascination with Make I recently set out to write a Makefile for this blog.
-* Tasks
-** DONE Arch packaging tutorial on irc
-   [2016-12-03 Sat]
-   [[gnus:INBOX#91dac71e-4a12-4306-8f99-74ec6cd32167@dev.null.invalid][Email to go wigust: Any programmers here who don't]]
-** DONE Watch Red Hat webinar
-   [2016-12-03 Sat]
-   [[gnus:INBOX#ff3304$ddjdj@smtp.theonlinexpo.com][Email from Red Hat Webcasts: Daily development with Docker,]]
-
-* Notes
 ** Note read a book PAM Mastery by Michael W Lucas
  <2016-12-13 Tue 01:46>
 ** Note Checkout Unmark do something with your bookmarks 
@@ -6990,7 +6981,13 @@ rm -rf /var/lib/docker/network
  <2016-12-09 Fri 14:09>
 ** Watch [[https://www.youtube.com/watch?v=aUf5GzD7xnM&index=27&list=RDkm8zL7VzBh0][TheNafig]]                                      :youtube:fun:ru:games: 
  <2016-12-09 Fri 02:34>
-
+* Tasks
+** DONE Arch packaging tutorial on irc
+   [2016-12-03 Sat]
+   [[gnus:INBOX#91dac71e-4a12-4306-8f99-74ec6cd32167@dev.null.invalid][Email to go wigust: Any programmers here who don't]]
+** DONE Watch Red Hat webinar
+   [2016-12-03 Sat]
+   [[gnus:INBOX#ff3304$ddjdj@smtp.theonlinexpo.com][Email from Red Hat Webcasts: Daily development with Docker,]]
 * Firefox
 ** [[https://www.reddit.com/r/emacs/comments/5jhwlu/getting_things_from_outside_emacs_into/][Getting things from outside Emacs into org-mode/Emacs : emacs]]
 ** [[https://stackoverflow.com/questions/11902620/org-mode-how-do-i-create-a-new-file-with-org-capture][emacs - Org-Mode - How do I create a new file with org-capture? - Stack Overflow]]
