@@ -3584,6 +3584,12 @@ IHaskell is a kernel for the Jupyter project, which allows you to use Haskell in
 github-backup is a simple tool you run in a git repository you cloned from GitHub. It backs up everything GitHub publishes about the repository, including branches, tags, other forks, issues, comments, wikis, milestones, pull requests, watchers, and stars.
 ** [2017-02-25 Sat 10:08] [[https://github.com/jgm/gitit][jgm/gitit: A wiki using HAppS, pandoc, and git]]
 Gitit is a wiki program written in Haskell. It uses Happstack for the web server and pandoc for markup processing. Pages and uploaded files are stored in a git, darcs, or mercurial repository and may be modified either by using the VCS's command-line tools or through the wiki's web interface. By default, pandoc's extended version of markdown is used as a markup language, but reStructuredText, LaTeX, HTML, DocBook, or Emacs Org-mode markup can also be used. Pages can be exported in a number of different formats, including LaTeX, RTF, OpenOffice ODT, and MediaWiki markup. Gitit can be configured to display TeX math (using texmath) and highlighted source code (using highlighting-kate).
+** [2017-02-25 Sat 10:10] [[https://github.com/3b1b/manim][3b1b/manim: Animation engine for explanatory math videos]]
+Animation engine for explanatory math videos
+
+For those who want to play around with this tool, I should be upfront that I've mostly had my own use cases (i.e. 3b1b videos) in mind while building it, and it might not be the most friendly thing to get up and running. In particular, I have not done a great job tracking requirements, and documentation, to put it euphamistically, almost exclusively takes the form of naming conventions.
+
+For 9/10 math animation needs, you'd probably be better off using a more well-maintained tool, like mathplotlib or mathematica. I happen to think the program "Grapher" built into osx is really great, and surprisingly versatile for many needs. My own reasons for building this tool and using it for videos are twofold, and I'm not sure how well they apply to other people's use cases.
 * Tasks
 ** DONE Arch packaging tutorial on irc
    [2016-12-03 Sat]
