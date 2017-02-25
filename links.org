@@ -24,3 +24,11 @@
 
 
 #+END_QUOTE
+** [2017-02-25 Sat 18:43] [[https://github.com/so-fancy/diff-so-fancy][so-fancy/diff-so-fancy: Good-lookin' diffs. Actually… nah… The best-lookin' diffs.]]
+#+BEGIN_QUOTE
+diff-so-fancy builds on the good-lookin' output of git contrib's diff-highlight to upgrade your diffs' appearances.
+
+Output will not be in standard patch format, but will be readable.
+No pesky + or - at line-start, making for easier copy-paste.
+
+#+END_QUOTE
