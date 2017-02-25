@@ -3582,6 +3582,8 @@ The purpose of this tutorial is to illustrate functional programming concepts in
 IHaskell is a kernel for the Jupyter project, which allows you to use Haskell inside Jupyter frontends (including the console and notebook).
 ** [2017-02-25 Sat 10:07] [[https://github.com/joeyh/github-backup][joeyh/github-backup: backs up everything github knows about a repository, to the repository]]
 github-backup is a simple tool you run in a git repository you cloned from GitHub. It backs up everything GitHub publishes about the repository, including branches, tags, other forks, issues, comments, wikis, milestones, pull requests, watchers, and stars.
+** [2017-02-25 Sat 10:08] [[https://github.com/jgm/gitit][jgm/gitit: A wiki using HAppS, pandoc, and git]]
+Gitit is a wiki program written in Haskell. It uses Happstack for the web server and pandoc for markup processing. Pages and uploaded files are stored in a git, darcs, or mercurial repository and may be modified either by using the VCS's command-line tools or through the wiki's web interface. By default, pandoc's extended version of markdown is used as a markup language, but reStructuredText, LaTeX, HTML, DocBook, or Emacs Org-mode markup can also be used. Pages can be exported in a number of different formats, including LaTeX, RTF, OpenOffice ODT, and MediaWiki markup. Gitit can be configured to display TeX math (using texmath) and highlighted source code (using highlighting-kate).
 * Tasks
 ** DONE Arch packaging tutorial on irc
    [2016-12-03 Sat]
