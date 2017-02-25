@@ -3560,6 +3560,8 @@ This repository contains the sources of the perlfaq as maintained by perl-doc-ca
     https://github.com/perl-doc-cats/perlfaq
 ** [2017-02-25 Sat 09:11] [[https://github.com/duckduckgo/duckduckgo][duckduckgo/duckduckgo: DuckDuckGo Instant Answer Infrastructure]]
 This repository contains the core code responsible for triggering and handling the DuckDuckHack Instant Answers. It is the base of the DuckDuckHack Instant Answer infrastructure.
+** [2017-02-25 Sat 09:12] [[https://github.com/petdance/ack2][petdance/ack2: ack 2.0 is a greplike tool optimized for programmers searching large heterogeneous trees of source code.]]
+ack is a code-searching tool, similar to grep but optimized for programmers searching large trees of source code. It runs in pure Perl, is highly portable, and runs on any platform that runs Perl.
 * Tasks
 ** DONE Arch packaging tutorial on irc
    [2016-12-03 Sat]
