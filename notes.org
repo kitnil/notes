@@ -7173,3 +7173,6 @@ It extends vi's modal editing with built-in support for multiple cursors/selecti
 As an universal editor it has decent Unicode support and should cope with arbitrary files including: large, binary or single-line ones.
 ** [2017-02-25 Sat 18:56] [[https://rtime.felk.cvut.cz/~sojka/blog/compile-on-save/]["Compile on save" in Emacs]]
 When one writes programs or TeX documents, it is quite useful to compile the program/document quite often to be sure that there are no syntactical or other errors. I use Emacs and have the F9 key set to invoke the compile command which, by default, calls make and allows easy navigation through the detected errors, if there are some. One disadvantage of this command is that when there is unsaved buffer, it asks whether to save the modified file. This means that one have to either save the file by C-x C-s and then press F9 or press directly F9 and confirm the saving of the file by y. Neither variant is ideal because I do not like pressing unnecessary keys. (Yes, I know that I should switch to vim, but that’s another story.)
+** Идеальные пропорции теории и практики 80% к 20% 4/1
+8 ч. в день практика
+2 ч. в день теория (что-то прочитать)
