@@ -7321,3 +7321,5 @@ asus x55a, msi cx600
 #+BEGIN_QUOTE
 enovo g580﻿ LMCinnamon 18.1 летает,всёработает - Intel HD Graphic + NVIDIA 635M+ Nvidia Prime
 #+END_QUOTE
+** [2017-02-26 Sun 15:06] [[https://github.com/clojure-emacs/cider][clojure-emacs/cider: The Clojure Interactive Development Environment that Rocks for Emacs]]
+CIDER extends Emacs with support for interactive programming in Clojure. The features are centered around cider-mode, an Emacs minor-mode that complements clojure-mode. While clojure-mode supports editing Clojure source files, cider-mode adds support for interacting with a running Clojure process for compilation, debugging, definition and documentation lookup, running tests and so on.
