@@ -7237,3 +7237,7 @@ This program run without arguments will perform a 'uname -r' to grab the Linux O
 Additionally possible to provide '-k' flag to manually enter the Kernel Version/Operating System Release Version.
 
 This script has been extremely useful on site and in exams. Now Open-sourced under GPLv2.
+** [2017-02-26 Sun 06:47] [[https://github.com/SamyPesse/devos][SamyPesse/devos: (Very) basic UNIX-like operating system built when I was younger]]
+This code was written several years ago as one of my first projects when I was in High School so it's normal if some parts of the code looks like "crap".
+
+But some parts of the code are useful to learn how to create a bootable operating system with memory pagination, multitasking, virtual memory, EXT2, ...
