@@ -7241,3 +7241,7 @@ This script has been extremely useful on site and in exams. Now Open-sourced und
 This code was written several years ago as one of my first projects when I was in High School so it's normal if some parts of the code looks like "crap".
 
 But some parts of the code are useful to learn how to create a bootable operating system with memory pagination, multitasking, virtual memory, EXT2, ...
+** [2017-02-26 Sun 06:51] [[https://github.com/openSUSE/open-build-service][openSUSE/open-build-service: A generic system to build and distribute packages from sources in an automatic, consistent and reproducible way. Release your software for a wide range of operating systems and hardware architectures.]]
+The Open Build Service (OBS) is a generic system to build and distribute binary packages from sources in an automatic, consistent and reproducible way. You can release packages as well as updates, add-ons, appliances and entire distributions for a wide range of operating systems and hardware architectures. More information can be found on openbuildservice.org.
+
+The OBS consists of a backend and a frontend. The backend implements all the core functionality (i.e. building packages). The frontend provides a web application and XML API for interacting with the backend. Additionally there is a command line client (osc) for the API which is developed in a separate repository.
