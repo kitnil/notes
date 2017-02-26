@@ -7216,4 +7216,12 @@ Complete interactive development program for Haskell
 
 
 #+END_QUOTE
+** [2017-02-26 Sun 06:44] [[https://github.com/lra/mackup][lra/mackup: Keep your application settings in sync (OS X/Linux)]]
 
+    Back ups your application settings in a safe directory (e.g. Dropbox)
+    Syncs your application settings among all your workstations
+    Restores your configuration on any fresh install in one command line
+
+By only tracking pure configuration files, it keeps the crap out of your freshly new installed workstation (no cache, temporary and locally specific files are transfered).
+
+Mackup makes setting up the environment easy and simple, saving time for your family, great ideas, and all the cool stuff you like.
