@@ -7325,3 +7325,5 @@ enovo g580﻿ LMCinnamon 18.1 летает,всёработает - Intel HD Gra
 CIDER extends Emacs with support for interactive programming in Clojure. The features are centered around cider-mode, an Emacs minor-mode that complements clojure-mode. While clojure-mode supports editing Clojure source files, cider-mode adds support for interacting with a running Clojure process for compilation, debugging, definition and documentation lookup, running tests and so on.
 ** [2017-02-26 Sun 15:16] [[https://github.com/clojure-emacs/clojure-cheatsheet][clojure-emacs/clojure-cheatsheet: The Clojure Cheatsheet for Emacs]]
 The incredibly handy Clojure Cheatsheet, updated for Clojure 1.7.0 and packaged into an easy, fast, searchable, offline form:
+** [2017-02-26 Sun 15:17] [[https://github.com/clojure/clojurescript][clojure/clojurescript: Clojure to JS compiler]]
+ClojureScript is a compiler for Clojure that targets JavaScript. It is designed to emit JavaScript code which is compatible with the advanced compilation mode of the Google Closure optimizing compiler.
