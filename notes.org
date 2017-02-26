@@ -7229,3 +7229,11 @@ By only tracking pure configuration files, it keeps the crap out of your freshly
 Mackup makes setting up the environment easy and simple, saving time for your family, great ideas, and all the cool stuff you like.
 ** [2017-02-26 Sun 06:46] [[https://github.com/search?o=desc&q=operating+system&ref=searchresults&s=stars&type=Repositories&utf8=%25E2%259C%2593][Search · operating system]]
  We’ve found 12,968 repository results
+** [2017-02-26 Sun 06:47] [[https://github.com/PenturaLabs/Linux_Exploit_Suggester][PenturaLabs/Linux_Exploit_Suggester: Linux Exploit Suggester; based on operating system release number]]
+Linux Exploit Suggester; based on operating system release number.
+
+This program run without arguments will perform a 'uname -r' to grab the Linux Operating Systems release version, and return a suggestive list of possible exploits. Nothing fancy, so a patched/back-ported patch may fool this script.
+
+Additionally possible to provide '-k' flag to manually enter the Kernel Version/Operating System Release Version.
+
+This script has been extremely useful on site and in exams. Now Open-sourced under GPLv2.
