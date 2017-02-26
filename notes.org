@@ -7275,3 +7275,9 @@ See Compile.md if you intend to compile Attract-Mode from source.
 In this video Sam Aaron gives a fast-paced introduction to a number of key live programming techniques such as triggering instruments, scheduling future events and synth design. Finally, the viewer is shown how a simple musical sequence may be composed and then converted into an intricate Reich phase. The main body of the video was recorded in one take and features an Emacs buffer (using Emacs Live overtone.github.io/emacs-live/) for editing text and communicating with Overtone (overtone.github.io/), an expressive Clojure front-end to SuperCollider. Clojure is a state-of-the-art functional lisp emphasising immutability and concurrency (clojure.org).
 
 #+END_QUOTE
+** [2017-02-26 Sun 11:14] [[http://gigamonkeys.com/book/][Practical Common Lisp]]
+#+BEGIN_QUOTE
+This page, and the pages it links to, contain text of the Common Lisp book Practical Common Lisp published by Apress These pages now contain the final text as it appears in the book. If you find errors in these pages, please send email to book@gigamonkeys.com. These pages will remain online in perpetuity—I hope they will serve as a useful introduction to Common Lisp for folks who are curious about Lisp but maybe not yet curious enough to shell out big bucks for a dead-tree book and a good Common Lisp tutorial for folks who want to get down to real coding right away. However, don't let that stop you from buying the printed version available from Apress at your favorite local or online bookseller. For the complete bookstore browsing experience, you can read the letter to the reader that appears on the back cover of the treeware edition of the book.
+
+
+#+END_QUOTE
