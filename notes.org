@@ -7408,3 +7408,5 @@ Note: The videos on this channel are instructional videos developed for the clas
 Want access to all of our ClojureScript training videos? Visit our Learning Library, which features all of our training courses and tutorials at http://learn.infiniteskills.com?utm_s...
 
 #+END_QUOTE
+** [2017-02-27 Mon 07:05] [[https://github.com/paul-issartel/nnreddit][paul-issartel/nnreddit: Reddit backend for Gnus]]
+NOTE: currently for reading only, login and posting not yet implemented. Message status (read vs. unread, new, flagged) is also not yet handled. Contributions welcome!
