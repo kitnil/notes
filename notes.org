@@ -7442,4 +7442,4 @@ Shell Extension that let window that demand attention to steal focus
 ** [2017-02-27 Mon 13:00] [[https://www.gnu.org/software/emacs/manual/html_node/elisp/Defining-Functions.html][GNU Emacs Lisp Reference Manual: Defining Functions]]
 defun is the usual way to define new Lisp functions. It defines the symbol name as a function with argument list args and body forms given by body. Neither name nor args should be quoted.
 * test
-
+* test note
