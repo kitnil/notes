@@ -7432,3 +7432,5 @@ UPDATE:
 To be perfectly clear, This video has nothing to do with Matthew Moore (I don't pay attention to him, not subscribed or on his G+). I've heard this myth from countless sources over the years and it is not aimed at or about any one specifically. If anything I said in this video matches anyone or appears at a specific point in time as to seem like a rebuke, it is simply a coincidence.
 
 #+END_QUOTE
+** [2017-02-27 Mon 09:14] [[https://github.com/boot-clj/boot][boot-clj/boot: Build tooling for Clojure.]]
+Boot is a Clojure build framework and ad-hoc Clojure script evaluator. Boot provides a runtime environment that includes all of the tools needed to build Clojure projects from scripts written in Clojure that run in the context of the project.
