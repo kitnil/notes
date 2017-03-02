@@ -7444,16 +7444,6 @@ The Kali NetHunter is an Android penetration testing platform targeted towards N
 Shell Extension that let window that demand attention to steal focus
 ** [2017-02-27 Mon 13:00] [[https://www.gnu.org/software/emacs/manual/html_node/elisp/Defining-Functions.html][GNU Emacs Lisp Reference Manual: Defining Functions]]
 defun is the usual way to define new Lisp functions. It defines the symbol name as a function with argument list args and body forms given by body. Neither name nor args should be quoted.
-** [2017-03-02 Thu 18:43] [[http://emacs.stackexchange.com/questions/7890/org-plus-contrib-and-org-with-require-or-use-package][org mode - org-plus-contrib and org with `require` or `use-package` - Emacs Stack Exchange]]
-
-
-The correct way to do this with use-package is as follows:
-
-(use-package org
-  :ensure org-plus-contrib
- ...
-
-The first argument makes sure that it is the org.el file being sourced. The :ensure argument makes sure that you are getting the version with all the extras. Of course you also need to have ("org" . "http://orgmode.org/elpa/") in your package-archives alist.
 ** [2017-03-02 Thu 18:44] [[http://emacs.stackexchange.com/questions/7890/org-plus-contrib-and-org-with-require-or-use-package][org mode - org-plus-contrib and org with `require` or `use-package` - Emacs Stack Exchange]]
 
 
