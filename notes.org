@@ -7454,3 +7454,9 @@ The correct way to do this with use-package is as follows:
  ...
 
 The first argument makes sure that it is the org.el file being sourced. The :ensure argument makes sure that you are getting the version with all the extras. Of course you also need to have ("org" . "http://orgmode.org/elpa/") in your package-archives alist.
+** [2017-03-02 Thu 18:47] [[http://vkontakte-feed.appspot.com/][ВКонтакте RSS]]
+
+
+В связи с слишком большим количеством приходящих на сервис запросов, которые невозможно обработать в рамках бесплатного аккаунта Google App Engine и отсутствием у автора времени и желания как-либо дальше поддерживать и развивать данный проект, сервис прекращает свою работу.
+
+Вы можете запустить для себя свой экземпляр ВКонтакте RSS в рамках своего (бесплатного) аккаунта Google App Engine. Все необходимые для этого действия описаны здесь. Однако, просьба обратить внимание на то, что автор не оказывает помощь и консультации по настройке Google App Engine - всю необходимую информацию вы можете найти в документации.
