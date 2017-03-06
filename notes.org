@@ -7487,3 +7487,4 @@ Strange thing is that counsel-org-tag doesn't list tags even in a widened buffer
 (require 'server)
 (unless (server-running-p)
     (server-start))
+
