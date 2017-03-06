@@ -7483,3 +7483,4 @@ through emacs package management system.
 I'm assuming you mean you want to open the link in a new frame.  (Emacs terminology is a bit different from other GUI apps, because Emacs predates X11.  What would be called a "window" in other apps is called a "frame" in Emacs, because "window" already had a specific meaning in Emacs, and was used in the names of lots of functions.)  What's happening now is that you have a frame containing one window, and Emacs is splitting that window to form two windows.
 * test
 Strange thing is that counsel-org-tag doesn't list tags even in a widened buffer (C-x C-f ~/org/test.org).
+
