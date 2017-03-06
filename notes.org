@@ -7471,3 +7471,5 @@ bindsym Shift+XF86AudioRaiseVolume exec pactl set-sink-volume \
                 $(pactl list sinks | grep -B 1 RUNNING | sed '1q;d' | sed 's/[^0-9]\+//g') +5%
 * GNOME allow new windows to steal focus in
 gsettings set org.gnome.desktop.wm.preferences focus-new-windows 'strict'
+* test
+You need install one of the following firefox extensions, then config it.
