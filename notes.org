@@ -7475,3 +7475,4 @@ gsettings set org.gnome.desktop.wm.preferences focus-new-windows 'strict'
 org-capture-pop-frame is now available from the famous emacs package repo
 melpa, so the recommended way is to install it
 through emacs package management system.
+
