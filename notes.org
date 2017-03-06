@@ -7475,3 +7475,7 @@ gsettings set org.gnome.desktop.wm.preferences focus-new-windows 'strict'
 You need install one of the following firefox extensions, then config it.
 * test
 If you want to install this extension to your firefox, please go to
+* test
+org-capture-pop-frame is now available from the famous emacs package repo
+[[http://melpa.milkbox.net/][melpa]], so the recommended way is to install it
+through emacs package management system.
