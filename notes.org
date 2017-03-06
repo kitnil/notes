@@ -7475,4 +7475,7 @@ gsettings set org.gnome.desktop.wm.preferences focus-new-windows 'strict'
 org-capture-pop-frame is now available from the famous emacs package repo
 melpa, so the recommended way is to install it
 through emacs package management system.
-
+* test
+org-capture-pop-frame is an extension of org-capture, when it is enabled,
+org-capure will capture things in a new pop frame, after capture finish or abort.
+the poped frame will be delete.
