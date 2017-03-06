@@ -7473,4 +7473,5 @@ bindsym Shift+XF86AudioRaiseVolume exec pactl set-sink-volume \
 gsettings set org.gnome.desktop.wm.preferences focus-new-windows 'strict'
 * test
 You need install one of the following firefox extensions, then config it.
-
+* test
+If you want to install this extension to your firefox, please go to
