@@ -7469,4 +7469,5 @@ The first argument makes sure that it is the org.el file being sourced. The :ens
 * sway pulse audio volume control
 bindsym Shift+XF86AudioRaiseVolume exec pactl set-sink-volume \
                 $(pactl list sinks | grep -B 1 RUNNING | sed '1q;d' | sed 's/[^0-9]\+//g') +5%
-
+* GNOME allow new windows to steal focus in
+gsettings set org.gnome.desktop.wm.preferences focus-new-windows 'strict'
