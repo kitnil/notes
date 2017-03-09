@@ -7562,3 +7562,7 @@ Let's make some tests:
 - https://wiki.archlinux.org/index.php/Intel_graphics#Tear-free_video
 - [[https://www.youtube.com/watch?v=3esPpe-fclI][Display compositing? What is it and which one should you use? by GrayWolfTech]]
 * test
+* Emacs set frame transparency
+#+BEGIN_SRC emacs-lisp
+  (set-frame-parameter (selected-frame) 'alpha '(80 80))
+#+END_SRC
