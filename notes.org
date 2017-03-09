@@ -7492,6 +7492,9 @@ Thank. My old problem with Firefox screen tearing on Intel HD
 Graphics 4000 solved. As I understand, it's for SNA acceleration
 method only (don't know exactly). Also I didn't test it much, but it
 passed tests on Fedora 25 GNOME Session.
+
+Videos on YouTube, autoscrolling and smooth scrolling in
+about:preferences#advanced are all smooth now.
 ** Check X11 logs
 First of all you need to check Xorg.0.log. You can find it with locate
 command.
@@ -7526,6 +7529,18 @@ Section "Device"
    Driver      "intel"
    Option      "TearFree" "true"
 EndSection
+#+END_EXAMPLE
+
+Relogin and check if TearFree is enabled (was disabled before we
+change X11 config):
+#+BEGIN_SRC bash
+grep -i tearfree /home/wigust/.local/share/xorg/Xorg.0.log
+#+END_SRC
+
+Output:
+#+BEGIN_EXAMPLE
+[ 56821.514] (**) intel(0): Option "TearFree" "true"
+[ 56821.515] (**) intel(0): TearFree enabled
 #+END_EXAMPLE
 ** Configure Firefox
 In Firefox URL address bar:
