@@ -7491,7 +7491,7 @@ Strange thing is that counsel-org-tag doesn't list tags even in a widened buffer
 Thank. My old problem with Firefox screen tearing on Intel HD
 Graphics 4000 solved. As I understand, it's for SNA acceleration
 method only (don't know exactly). Also I didn't test it much, but it
-passed tests.
+passed tests on Fedora 25 GNOME Session.
 ** Check X11 logs
 First of all you need to check Xorg.0.log. You can find it with locate
 command.
