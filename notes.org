@@ -7487,4 +7487,20 @@ Strange thing is that counsel-org-tag doesn't list tags even in a widened buffer
 (require 'server)
 (unless (server-running-p)
     (server-start))
+* Tearing
+/etc/X11/xorg.conf.d/20-intel.conf
+#+BEGIN_EXAMPLE
+Section "Device"
+   Identifier  "Intel Graphics"
+   Driver      "intel"
+   Option      "TearFree" "true"
+EndSection
+#+END_EXAMPLE
 
+about:config
+#+BEGIN_EXAMPLE
+layers.acceleration.force-enabled
+#+END_EXAMPLE
+
+- https://bugzilla.mozilla.org/show_bug.cgi?id=1134077
+- https://www.youtube.com/watch?v=3esPpe-fclI
