@@ -7488,7 +7488,7 @@ Strange thing is that counsel-org-tag doesn't list tags even in a widened buffer
 (unless (server-running-p)
     (server-start))
 * TODO Publish Tearing Solve on Firefox https://www.youtube.com/watch?v=3esPpe-fclI
-Thanks.  My old problem with Firefox screen tearing on Intel HD
+Thanks. My old problem with Firefox screen tearing on Intel HD
 Graphics 4000 solved. As I understand, it's for SNA acceleration
 method only (don't know exactly).
 
