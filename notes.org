@@ -7489,17 +7489,41 @@ Strange thing is that counsel-org-tag doesn't list tags even in a widened buffer
     (server-start))
 * Tearing
 Thanks.  My old problem with Firefox screen tearing on Intel HD
-Graphics 4000 solved.
+Graphics 4000 solved. As I understand, it's for SNA acceleration
+method only (don't know exactly).
 
 ** Check X11 logs
 Firs of all you need to check Xorg.0.log. You can find it with locate
 command.
+
+*** Find where logs are:
 #+BEGIN_SRC bash
 locate Xorg | grep log
 #+END_SRC
 
+Output:
+#+BEGIN_EXAMPLE
+
+#+END_EXAMPLE
+
+So, I find it in /home/wigust/.local/share/xorg/Xorg.0.log on Fedora 25.
+
+*** Check accelerate method
+Check if acceleration method is SNA:
+#+BEGIN_SRC bash
+grep backend /home/wigust/.local/share/xorg/Xorg.0.log
+#+END_SRC
+
+Output:
+#+BEGIN_EXAMPLE
+[ 56821.515] (II) intel(0): SNA initialized with Ivybridge (gen7, gt2) backend
+#+END_EXAMPLE
+
 ** Configure X11
-/etc/X11/xorg.conf.d/20-intel.conf
+#+BEGIN_SRC 
+sudoedit /etc/X11/xorg.conf.d/20-intel.conf
+#+END_SRC
+
 #+BEGIN_EXAMPLE
 Section "Device"
    Identifier  "Intel Graphics"
@@ -7509,7 +7533,12 @@ EndSection
 #+END_EXAMPLE
 
 ** Configure Firefox
+In Firefox URL address bar:
+#+BEGIN_EXAMPLE
 about:config
+#+END_EXAMPLE
+
+Set to true:
 #+BEGIN_EXAMPLE
 layers.acceleration.force-enabled
 #+END_EXAMPLE
