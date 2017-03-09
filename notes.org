@@ -7502,10 +7502,8 @@ locate Xorg | grep log
 
 Output:
 #+BEGIN_EXAMPLE
-
+/home/wigust/.local/share/xorg/Xorg.0.log
 #+END_EXAMPLE
-
-So, I find it in /home/wigust/.local/share/xorg/Xorg.0.log on Fedora 25.
 *** Check accelerate method
 Check if acceleration method is SNA:
 #+BEGIN_SRC bash
