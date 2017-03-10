@@ -7553,3 +7553,5 @@ Let's make some tests:
 #+BEGIN_SRC emacs-lisp
   (set-frame-parameter (selected-frame) 'alpha '(80 80))
 #+END_SRC
+* [[https://github.com/vspinu/polymode][vspinu/polymode: Object oriented framework for multiple emacs modes based on indirect buffers]]
+Object oriented framework for multiple emacs modes based on indirect buffers
