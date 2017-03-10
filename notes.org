@@ -7470,18 +7470,6 @@ bindsym Shift+XF86AudioRaiseVolume exec pactl set-sink-volume \
                 $(pactl list sinks | grep -B 1 RUNNING | sed '1q;d' | sed 's/[^0-9]\+//g') +5%
 * GNOME allow new windows to steal focus in
 gsettings set org.gnome.desktop.wm.preferences focus-new-windows 'strict'
-* test
-You need install one of the following firefox extensions, then config it.
-* test
-If you want to install this extension to your firefox, please go to
-* test
-org-capture-pop-frame is now available from the famous emacs package repo
-[[http://melpa.milkbox.net/][melpa]], so the recommended way is to install it
-through emacs package management system.
-* good
-I'm assuming you mean you want to open the link in a new frame.  (Emacs terminology is a bit different from other GUI apps, because Emacs predates X11.  What would be called a "window" in other apps is called a "frame" in Emacs, because "window" already had a specific meaning in Emacs, and was used in the names of lots of functions.)  What's happening now is that you have a frame containing one window, and Emacs is splitting that window to form two windows.
-* test
-Strange thing is that counsel-org-tag doesn't list tags even in a widened buffer (C-x C-f ~/org/test.org).
 * Start emacs server if not running
 (require 'server)
 (unless (server-running-p)
@@ -7561,7 +7549,6 @@ Let's make some tests:
 - https://bugzilla.mozilla.org/show_bug.cgi?id=1134077
 - https://wiki.archlinux.org/index.php/Intel_graphics#Tear-free_video
 - [[https://www.youtube.com/watch?v=3esPpe-fclI][Display compositing? What is it and which one should you use? by GrayWolfTech]]
-* test
 * Emacs set frame transparency
 #+BEGIN_SRC emacs-lisp
   (set-frame-parameter (selected-frame) 'alpha '(80 80))
