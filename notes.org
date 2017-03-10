@@ -7506,7 +7506,7 @@ Output:
 #+END_EXAMPLE
 ** Configure X11
 Create with root permissions:
-#+BEGIN_SRC 
+#+BEGIN_SRC bash
 sudoedit /etc/X11/xorg.conf.d/20-intel.conf
 #+END_SRC
 
