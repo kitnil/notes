@@ -7467,6 +7467,23 @@ The first argument makes sure that it is the org.el file being sourced. The :ens
 Вы можете запустить для себя свой экземпляр ВКонтакте RSS в рамках своего (бесплатного) аккаунта Google App Engine. Все необходимые для этого действия описаны здесь. Однако, просьба обратить внимание на то, что автор не оказывает помощь и консультации по настройке Google App Engine - всю необходимую информацию вы можете найти в документации.
 ** [2017-03-11 Sat 17:26] [[https://ask.fedoraproject.org/en/question/57529/show-changelog-of-packages-in-dnf/][Show changelog of packages in dnf - Ask Fedora: Community Knowledge Base and Support Forum]]
 c
+#+BEGIN_QUOTE
+While dnf doesn't offer changelog display inline with the update
+process (via a --changelog argument, as yum-plugin-changelog
+provided), a fedoraforum user pointed out that dnf updateinfo info
+will display the text of update advisory notices, which covers most of
+the former yum --changelog upgrade output.
+
+You don't get the detailed changelogs for packages that don't use
+update advisories, but it's at least a workable substitute. You can
+also use dnf updateinfo list to get a short listing of advisories, and
+a simple dnf updateinfo will produce a brief summary with counts of
+the outstanding update advisories.
+
+Note that because dnf updateinfo doesn't refresh metadata by default,
+the most equivalent command to yum --changelog upgrade is probably
+something like dnf --refresh updateinfo info; dnf upgrade.
+#+END_QUOTE
 * sway pulse audio volume control
 bindsym Shift+XF86AudioRaiseVolume exec pactl set-sink-volume \
                 $(pactl list sinks | grep -B 1 RUNNING | sed '1q;d' | sed 's/[^0-9]\+//g') +5%
