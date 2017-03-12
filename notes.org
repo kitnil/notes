@@ -7495,6 +7495,11 @@ I quickly tired of opening a shell, setting the directory, entering the command,
     (term-send-string
      proc
      (concat "cd ~/Downloads && youtube-dl " str "\n"))))
+** [2017-03-12 Sun 20:53] [[https://github.com/syl20bnr/spacemacs/blob/master/layers/%252Bchat/erc/packages.el][spacemacs/packages.el at master · syl20bnr/spacemacs]]
+        "aie" 'erc
+        "aiE" 'erc-tls
+        "aii" 'erc-track-switch-buffer
+"aiD" 'erc/default-servers)
 * sway pulse audio volume control
 bindsym Shift+XF86AudioRaiseVolume exec pactl set-sink-volume \
                 $(pactl list sinks | grep -B 1 RUNNING | sed '1q;d' | sed 's/[^0-9]\+//g') +5%
