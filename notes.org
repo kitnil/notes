@@ -7484,6 +7484,9 @@ Note that because dnf updateinfo doesn't refresh metadata by default,
 the most equivalent command to yum --changelog upgrade is probably
 something like dnf --refresh updateinfo info; dnf upgrade.
 #+END_QUOTE
+** [2017-03-12 Sun 05:49] * 
+
+O
 * sway pulse audio volume control
 bindsym Shift+XF86AudioRaiseVolume exec pactl set-sink-volume \
                 $(pactl list sinks | grep -B 1 RUNNING | sed '1q;d' | sed 's/[^0-9]\+//g') +5%
