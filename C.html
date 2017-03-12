@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2017-03-12 Sun 16:18 -->
+<!-- 2017-03-12 Sun 16:19 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>C language notes</title>
@@ -233,44 +233,44 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org9e53626">1. heap</a>
+<li><a href="#orgec60525">1. heap</a>
 <ul>
-<li><a href="#org3049bce">1.1. allocate memory on the heap</a></li>
+<li><a href="#org444e0d7">1.1. allocate memory on the heap</a></li>
 </ul>
 </li>
-<li><a href="#orgbac119c">2. stack</a>
+<li><a href="#orge5fd6b8">2. stack</a>
 <ul>
-<li><a href="#org76eab2f">2.1. stack frames</a></li>
+<li><a href="#orge6a869b">2.1. stack frames</a></li>
 </ul>
 </li>
-<li><a href="#orgd4a0e61">3. chip architecture and assembly language review</a>
+<li><a href="#orgde53332">3. chip architecture and assembly language review</a>
 <ul>
-<li><a href="#org4570e11">3.1. what is assembly</a></li>
-<li><a href="#orgf5f75f8">3.2. registers</a>
+<li><a href="#org680a504">3.1. what is assembly</a></li>
+<li><a href="#org3a62149">3.2. registers</a>
 <ul>
-<li><a href="#org9ffa3a3">3.2.1. general purpose registers</a></li>
-<li><a href="#orgfb290da">3.2.2. special purpose registers</a></li>
+<li><a href="#org1d5a592">3.2.1. general purpose registers</a></li>
+<li><a href="#org1e94edb">3.2.2. special purpose registers</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#org52efb80">4. assembly language calls</a>
+<li><a href="#org20a6978">4. assembly language calls</a>
 <ul>
-<li><a href="#orgb544c2d">4.1. can be of the form [opcode][dest], [source]</a></li>
-<li><a href="#orgef15bbe">4.2. can be of the form [opcode][operand]</a></li>
-<li><a href="#org9cf9b17">4.3. stack-related mneumonic</a></li>
+<li><a href="#org63984a5">4.1. can be of the form [opcode][dest], [source]</a></li>
+<li><a href="#orgfd6e60f">4.2. can be of the form [opcode][operand]</a></li>
+<li><a href="#org4ae36d8">4.3. stack-related mneumonic</a></li>
 </ul>
 </li>
-<li><a href="#org0d4ad20">5. Videos</a>
+<li><a href="#org0bec1b3">5. Videos</a>
 <ul>
-<li><a href="#org6cad6bb">5.1. C</a>
+<li><a href="#org8960868">5.1. C</a>
 <ul>
-<li><a href="#org9732f1d">5.1.1. Channels</a></li>
+<li><a href="#orge38cb0b">5.1.1. Channels</a></li>
 </ul>
 </li>
-<li><a href="#orgef1bead">5.2. Penetration</a>
+<li><a href="#org8334a4a">5.2. Penetration</a>
 <ul>
-<li><a href="#org484f809">5.2.1. Channels</a></li>
+<li><a href="#orgd9cf6d2">5.2.1. Channels</a></li>
 </ul>
 </li>
 </ul>
@@ -279,16 +279,16 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div id="outline-container-org9e53626" class="outline-2">
-<h2 id="org9e53626"><span class="section-number-2">1</span> heap</h2>
+<div id="outline-container-orgec60525" class="outline-2">
+<h2 id="orgec60525"><span class="section-number-2">1</span> heap</h2>
 <div class="outline-text-2" id="text-1">
 <ul class="org-ul">
 <li>large pool of operating system memory</li>
 <li>used in dynamic memory allocation</li>
 </ul>
 </div>
-<div id="outline-container-org3049bce" class="outline-3">
-<h3 id="org3049bce"><span class="section-number-3">1.1</span> allocate memory on the heap</h3>
+<div id="outline-container-org444e0d7" class="outline-3">
+<h3 id="org444e0d7"><span class="section-number-3">1.1</span> allocate memory on the heap</h3>
 <div class="outline-text-3" id="text-1-1">
 <ul class="org-ul">
 <li>the <code>new</code> keyword in C++</li>
@@ -300,8 +300,8 @@ int * myArray = new int 10;
 </div>
 </div>
 </div>
-<div id="outline-container-orgbac119c" class="outline-2">
-<h2 id="orgbac119c"><span class="section-number-2">2</span> stack</h2>
+<div id="outline-container-orge5fd6b8" class="outline-2">
+<h2 id="orge5fd6b8"><span class="section-number-2">2</span> stack</h2>
 <div class="outline-text-2" id="text-2">
 <ul class="org-ul">
 <li>each process gets its own stack (assume single-threaded processes)</li>
@@ -309,8 +309,8 @@ int * myArray = new int 10;
 <li>contiguos block of memory (the process's address space)</li>
 </ul>
 </div>
-<div id="outline-container-org76eab2f" class="outline-3">
-<h3 id="org76eab2f"><span class="section-number-3">2.1</span> stack frames</h3>
+<div id="outline-container-orge6a869b" class="outline-3">
+<h3 id="orge6a869b"><span class="section-number-3">2.1</span> stack frames</h3>
 <div class="outline-text-3" id="text-2-1">
 <ul class="org-ul">
 <li>the stack consists of stack frames</li>
@@ -331,11 +331,11 @@ int myArray[10];
 </div>
 </div>
 </div>
-<div id="outline-container-orgd4a0e61" class="outline-2">
-<h2 id="orgd4a0e61"><span class="section-number-2">3</span> chip architecture and assembly language review</h2>
+<div id="outline-container-orgde53332" class="outline-2">
+<h2 id="orgde53332"><span class="section-number-2">3</span> chip architecture and assembly language review</h2>
 <div class="outline-text-2" id="text-3">
-</div><div id="outline-container-org4570e11" class="outline-3">
-<h3 id="org4570e11"><span class="section-number-3">3.1</span> what is assembly</h3>
+</div><div id="outline-container-org680a504" class="outline-3">
+<h3 id="org680a504"><span class="section-number-3">3.1</span> what is assembly</h3>
 <div class="outline-text-3" id="text-3-1">
 <ul class="org-ul">
 <li>assembly = machine instructions</li>
@@ -350,16 +350,16 @@ this location in memory"</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgf5f75f8" class="outline-3">
-<h3 id="orgf5f75f8"><span class="section-number-3">3.2</span> registers</h3>
+<div id="outline-container-org3a62149" class="outline-3">
+<h3 id="org3a62149"><span class="section-number-3">3.2</span> registers</h3>
 <div class="outline-text-3" id="text-3-2">
 <dl class="org-dl">
 <dt>definition</dt><dd>extremely high-performance memory located directly on
 the chip</dd>
 </dl>
 </div>
-<div id="outline-container-org9ffa3a3" class="outline-4">
-<h4 id="org9ffa3a3"><span class="section-number-4">3.2.1</span> general purpose registers</h4>
+<div id="outline-container-org1d5a592" class="outline-4">
+<h4 id="org1d5a592"><span class="section-number-4">3.2.1</span> general purpose registers</h4>
 <div class="outline-text-4" id="text-3-2-1">
 <ul class="org-ul">
 <li>EAX, EBX, ECX, EDX</li>
@@ -367,8 +367,8 @@ the chip</dd>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgfb290da" class="outline-4">
-<h4 id="orgfb290da"><span class="section-number-4">3.2.2</span> special purpose registers</h4>
+<div id="outline-container-org1e94edb" class="outline-4">
+<h4 id="org1e94edb"><span class="section-number-4">3.2.2</span> special purpose registers</h4>
 <div class="outline-text-4" id="text-3-2-2">
 <ul class="org-ul">
 <li>ESP: Stack pointer, points to the top of the stack. Manipulated by
@@ -380,11 +380,11 @@ PUSH, POP, etc</li>
 </div>
 </div>
 </div>
-<div id="outline-container-org52efb80" class="outline-2">
-<h2 id="org52efb80"><span class="section-number-2">4</span> assembly language calls</h2>
+<div id="outline-container-org20a6978" class="outline-2">
+<h2 id="org20a6978"><span class="section-number-2">4</span> assembly language calls</h2>
 <div class="outline-text-2" id="text-4">
-</div><div id="outline-container-orgb544c2d" class="outline-3">
-<h3 id="orgb544c2d"><span class="section-number-3">4.1</span> can be of the form [opcode][dest], [source]</h3>
+</div><div id="outline-container-org63984a5" class="outline-3">
+<h3 id="org63984a5"><span class="section-number-3">4.1</span> can be of the form [opcode][dest], [source]</h3>
 <div class="outline-text-3" id="text-4-1">
 <p>
 moves the value "1" into the EAX register
@@ -394,8 +394,8 @@ MOV EAX, 1
 </pre>
 </div>
 </div>
-<div id="outline-container-orgef15bbe" class="outline-3">
-<h3 id="orgef15bbe"><span class="section-number-3">4.2</span> can be of the form [opcode][operand]</h3>
+<div id="outline-container-orgfd6e60f" class="outline-3">
+<h3 id="orgfd6e60f"><span class="section-number-3">4.2</span> can be of the form [opcode][operand]</h3>
 <div class="outline-text-3" id="text-4-2">
 <ul class="org-ul">
 <li>jumps to and address in memory</li>
@@ -406,8 +406,8 @@ JMP 0xDEADBEEF
 </pre>
 </div>
 </div>
-<div id="outline-container-org9cf9b17" class="outline-3">
-<h3 id="org9cf9b17"><span class="section-number-3">4.3</span> stack-related mneumonic</h3>
+<div id="outline-container-org4ae36d8" class="outline-3">
+<h3 id="org4ae36d8"><span class="section-number-3">4.3</span> stack-related mneumonic</h3>
 <div class="outline-text-3" id="text-4-3">
 <ul class="org-ul">
 <li>PUSH [register]</li>
@@ -418,16 +418,16 @@ JMP 0xDEADBEEF
 </div>
 </div>
 </div>
-<div id="outline-container-org0d4ad20" class="outline-2">
-<h2 id="org0d4ad20"><span class="section-number-2">5</span> Videos</h2>
+<div id="outline-container-org0bec1b3" class="outline-2">
+<h2 id="org0bec1b3"><span class="section-number-2">5</span> Videos</h2>
 <div class="outline-text-2" id="text-5">
-</div><div id="outline-container-org6cad6bb" class="outline-3">
-<h3 id="org6cad6bb"><span class="section-number-3">5.1</span> C</h3>
+</div><div id="outline-container-org8960868" class="outline-3">
+<h3 id="org8960868"><span class="section-number-3">5.1</span> C</h3>
 <div class="outline-text-3" id="text-5-1">
-</div><div id="outline-container-org9732f1d" class="outline-4">
-<h4 id="org9732f1d"><span class="section-number-4">5.1.1</span> Channels</h4>
+</div><div id="outline-container-orge38cb0b" class="outline-4">
+<h4 id="orge38cb0b"><span class="section-number-4">5.1.1</span> Channels</h4>
 <div class="outline-text-4" id="text-5-1-1">
-</div><ol class="org-ol"><li><a id="org85c4aba"></a><a href="https://www.youtube.com/channel/UC-KY8MRtc-0CAGqYy0lc3JA">From the LAMER to the Programmer</a><br /><div class="outline-text-5" id="text-5-1-1-1">
+</div><ol class="org-ol"><li><a id="orgc29f863"></a><a href="https://www.youtube.com/channel/UC-KY8MRtc-0CAGqYy0lc3JA">From the LAMER to the Programmer</a><br /><div class="outline-text-5" id="text-5-1-1-1">
 
 <div class="figure">
 <p><img src="https://yt3.ggpht.com/-VHZOSfz2_TI/AAAAAAAAAAI/AAAAAAAAAAA/206oac7PEgM/s288-c-k-no-mo-rj-c0xffffff/photo.jpg" alt="photo.jpg" />
@@ -436,13 +436,13 @@ JMP 0xDEADBEEF
 </div></li></ol>
 </div>
 </div>
-<div id="outline-container-orgef1bead" class="outline-3">
-<h3 id="orgef1bead"><span class="section-number-3">5.2</span> Penetration</h3>
+<div id="outline-container-org8334a4a" class="outline-3">
+<h3 id="org8334a4a"><span class="section-number-3">5.2</span> Penetration</h3>
 <div class="outline-text-3" id="text-5-2">
-</div><div id="outline-container-org484f809" class="outline-4">
-<h4 id="org484f809"><span class="section-number-4">5.2.1</span> Channels</h4>
+</div><div id="outline-container-orgd9cf6d2" class="outline-4">
+<h4 id="orgd9cf6d2"><span class="section-number-4">5.2.1</span> Channels</h4>
 <div class="outline-text-4" id="text-5-2-1">
-</div><ol class="org-ol"><li><a id="org5e5f554"></a><a href="https://www.youtube.com/channel/UCJItQmwUrcW4VdUqWaRUNIg">DemmSec</a><br /><div class="outline-text-5" id="text-5-2-1-1">
+</div><ol class="org-ol"><li><a id="org5da2394"></a><a href="https://www.youtube.com/channel/UCJItQmwUrcW4VdUqWaRUNIg">DemmSec</a><br /><div class="outline-text-5" id="text-5-2-1-1">
 
 <div class="figure">
 <p><img src="https://yt3.ggpht.com/-eUVlKQsatXw/AAAAAAAAAAI/AAAAAAAAAAA/KNokBLSk-Kw/s88-c-k-no-mo-rj-c0xffffff/photo.jpg" alt="photo.jpg" />
@@ -455,7 +455,7 @@ JMP 0xDEADBEEF
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Oleg Pykhalov</p>
-<p class="date">Created: 2017-03-12 Sun 16:18</p>
+<p class="date">Created: 2017-03-12 Sun 16:19</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
