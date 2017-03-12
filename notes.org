@@ -7484,6 +7484,17 @@ Note that because dnf updateinfo doesn't refresh metadata by default,
 the most equivalent command to yum --changelog upgrade is probably
 something like dnf --refresh updateinfo info; dnf upgrade.
 #+END_QUOTE
+** [2017-03-12 Sun 15:28] [[https://oremacs.com/2015/01/05/youtube-dl/][Yet another youtube-dl interface for Emacs · (or emacs]]
+I quickly tired of opening a shell, setting the directory, entering the command, and pasting the link. So I wrote some Elisp code that does it for me. It's nothing too sophisticated, but I've been using this version for a couple months:
+
+(defun youtube-dl ()
+  (interactive)
+  (let* ((str (current-kill 0))
+         (default-directory "~/Downloads")
+         (proc (get-buffer-process (ansi-term "/bin/bash"))))
+    (term-send-string
+     proc
+     (concat "cd ~/Downloads && youtube-dl " str "\n"))))
 * sway pulse audio volume control
 bindsym Shift+XF86AudioRaiseVolume exec pactl set-sink-volume \
                 $(pactl list sinks | grep -B 1 RUNNING | sed '1q;d' | sed 's/[^0-9]\+//g') +5%
