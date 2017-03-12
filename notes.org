@@ -7584,4 +7584,7 @@ Enables the Google Chrome Store for Firefox. Point and click to install Chrome e
 *** Repositories
 ** Codecs
 ** Misc
+* Patch
+file:/usr/lib/python2.7/site-packages/html2text/config.py
 
+file:/usr/share/rss2email/rss2email.py
