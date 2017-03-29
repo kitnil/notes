@@ -6941,6 +6941,16 @@ For a few more bucks a year, Pinboard offers an archiving service which saves a 
 Improved JavaScript editing mode for GNU Emacs (description here).
 
 For some of the latest changes, see latest user-visible changes.
+** [2017-03-30 Thu 01:22] [[https://github.com/yuya373/emacs-slack][yuya373/emacs-slack: slack client for emacs]]
+
+    websocket
+    request
+    oauth2
+        do package install
+    circe (for the Linewise User Interface library).
+    alert
+    emojify (optional)
+        required if you want to show emoji
 * Patch
 - file:/usr/lib/python2.7/site-packages/html2text/config.py
 - file:/usr/share/rss2email/rss2email.py
