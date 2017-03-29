@@ -6953,6 +6953,12 @@ For some of the latest changes, see latest user-visible changes.
         required if you want to show emoji
 ** [2017-03-30 Thu 01:22] [[https://github.com/Sarcasm/irony-mode][Sarcasm/irony-mode: A C/C++ minor mode for Emacs powered by libclang]]
 irony-mode is an Emacs minor-mode that aims at improving the editing experience for the C, C++ and Objective-C languages. It works by using a combination of an Emacs package and a C++ program (irony-server) that uses libclang.
+** [2017-03-30 Thu 01:23] [[https://github.com/edkolev/evil-lion][edkolev/evil-lion: Evil align operator]]
+This package provides gl and gL align operators: gl MOTION CHAR and right-align gL MOTION CHAR.
+
+Use CHAR / to enter regular expression if a single character wouldn't suffice.
+
+Use CHAR RET to align with align.el's default rules for the active major mode.
 * Patch
 - file:/usr/lib/python2.7/site-packages/html2text/config.py
 - file:/usr/share/rss2email/rss2email.py
