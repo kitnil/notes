@@ -6883,6 +6883,9 @@ firewall-cmd --permanent --direct --passthrough ipv4 -I FORWARD -o bridge0 -j AC
 firewall-cmd --reload
 
 I wish there was a way to get the same result with firewalld without directly changing iptables but I couldn't find any better solution
+** [2017-03-30 Thu 01:13] [[https://github.com/zweifisch/ob-http][zweifisch/ob-http: make http request within org-mode babel]]
+
+make http request within org-mode babel
 * Patch
 - file:/usr/lib/python2.7/site-packages/html2text/config.py
 - file:/usr/share/rss2email/rss2email.py
