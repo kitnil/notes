@@ -7037,6 +7037,30 @@ Best case scenario: the analyst drops a sample, waits for a few minutes, and FAM
 FAME should be seen as a framework that will empower your malware analysis development efforts.
 
 You can get more information (and screenshots !) on the website and in the documentation.
+** [2017-03-30 Thu 01:30] [[https://github.com/starlight/swan-desktop][starlight/swan-desktop: Xfce4 desktop for Windows]]
+X Window system
+
+    Window's window-manager, taskbar and alt-tab integration
+    Shared clipboard
+    Access to Windows fonts in X
+
+Xfce 4.12 desktop
+
+    Arc GTK theme and Paper icon theme as defaults
+    Uses Window's default browser as Xfce's default browser
+    pulseaudio support available with swan-desktop-audio package
+
+Thunar file-manager
+
+    "Open here" for terminal, cmd.exe and Windows explorer
+    "Open with Windows" to use Windows file-type associations in Xfce
+    Symlinks created in Cygwin are navigable from Windows
+
+Xfce terminal
+
+    Bash shell with sensible defaults and colors
+    Git shell prompt
+    UTF-8 support
 * Patch
 - file:/usr/lib/python2.7/site-packages/html2text/config.py
 - file:/usr/share/rss2email/rss2email.py
