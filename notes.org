@@ -7104,6 +7104,20 @@ Since I posted this request for help, I've had a dozen or so responses which I a
     文章中用到的一些安装包归纳整理：http://pan.baidu.com/s/1skAwrFn
     学得越多越是明白一个人的力量是不够的，我只是起了一个引子，希望你能一起参与，真心希望！！！（鞠躬）
     2016-06，这段期间自己在写一个项目，教程暂时无法继续更新，后面写好项目会再继续完善。
+** [2017-03-30 Thu 02:59] [[https://github.com/miyagawa/AnyEvent-Redis][miyagawa/AnyEvent-Redis: Asynchronous Redis client]]
+NAME
+    AnyEvent::Redis - Non-blocking Redis client
+
+SYNOPSIS
+      use AnyEvent::Redis;
+
+      my $redis = AnyEvent::Redis->new(
+          host => '127.0.0.1',
+          port => 6379,
+          encoding => 'utf8',
+          on_error => sub { warn @_ },
+          on_cleanup => sub { warn "Connection closed: @_" },
+      );
 * Patch
 - file:/usr/lib/python2.7/site-packages/html2text/config.py
 - file:/usr/share/rss2email/rss2email.py
