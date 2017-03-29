@@ -6900,6 +6900,22 @@ Currently, the focus is primarily on supporting the AWS cloud stack.
 LocalStack spins up the following core Cloud APIs on your local machine:
 ** [2017-03-30 Thu 01:16] [[https://github.com/oneuijs/You-Dont-Need-jQuery][oneuijs/You-Dont-Need-jQuery: Examples of how to do query, style, dom, ajax, event etc like jQuery with plain javascript.]]
 Frontend environments evolve rapidly nowadays, modern browsers have already implemented a great deal of DOM/BOM APIs which are good enough. We don't have to learn jQuery from scratch for DOM manipulation or events. In the meantime, thanks to the prevailment of frontend libraries such as React, Angular and Vue, manipulating DOM directly becomes anti-pattern, jQuery has never been less important. This project summarizes most of the jQuery method alternatives in native implementation, with IE 10+ support.
+** [2017-03-30 Thu 01:16] [[https://github.com/getify/You-Dont-Know-JS][getify/You-Dont-Know-JS: A book series on JavaScript. @YDKJS on twitter.]]
+This is a series of books diving deep into the core mechanisms of the JavaScript language. The first edition of the series is now complete.
+
+         
+
+Please feel free to contribute to the quality of this content by submitting PR's for improvements to code snippets, explanations, etc. While typo fixes are welcomed, they will likely be caught through normal editing processes, and are thus not necessarily as important for this repository.
+
+To read more about the motivations and perspective behind this book series, check out the Preface.
+Titles
+
+    Read online (free!): ["Up & Going"](up & going/README.md#you-dont-know-js-up--going), Published: Buy Now in print, but the ebook format is free!
+    Read online (free!): ["Scope & Closures"](scope & closures/README.md#you-dont-know-js-scope--closures), Published: Buy Now
+    Read online (free!): ["this & Object Prototypes"](this & object prototypes/README.md#you-dont-know-js-this--object-prototypes), Published: Buy Now
+    Read online (free!): ["Types & Grammar"](types & grammar/README.md#you-dont-know-js-types--grammar), Published: Buy Now
+    Read online (free!): ["Async & Performance"](async & performance/README.md#you-dont-know-js-async--performance), Published: Buy Now
+    Read online (free!): ["ES6 & Beyond"](es6 & beyond/README.md#you-dont-know-js-es6--beyond), Published: Buy Now
 * Patch
 - file:/usr/lib/python2.7/site-packages/html2text/config.py
 - file:/usr/share/rss2email/rss2email.py
