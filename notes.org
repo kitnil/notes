@@ -7021,6 +7021,12 @@ Advanced Usage
 This repository contains machine learning models implemented in TensorFlow. The models are maintained by their respective authors.
 
 To propose a model for inclusion please submit a pull request.
+** [2017-03-30 Thu 01:29] [[https://github.com/ageitgey/face_recognition][ageitgey/face_recognition: The world's simplest facial recognition api for Python and the command line]]
+Recognize and manipulate faces from Python or from the command line with the world's simplest face recognition library.
+
+Built using dlib's state-of-the-art face recognition built with deep learning. The model has an accuracy of 99.38% on the Labeled Faces in the Wild benchmark.
+
+This also provides a simple face_recognition command line tool that lets you do face recognition on a folder of images from the command line!
 * Patch
 - file:/usr/lib/python2.7/site-packages/html2text/config.py
 - file:/usr/share/rss2email/rss2email.py
