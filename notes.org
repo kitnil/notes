@@ -6963,6 +6963,10 @@ Use CHAR RET to align with align.el's default rules for the active major mode.
 This mode derives from js2-jsx-mode, extending its parser to support JSX syntax according to the official spec. This means you get all of the js2 features plus proper syntax checking and highlighting of JSX code blocks.
 
 Here's a screenshot of it in action:
+** [2017-03-30 Thu 01:23] [[https://github.com/abo-abo/lispy][abo-abo/lispy: vi-like Paredit]]
+This package reimagines Paredit - a popular method to navigate and edit LISP code in Emacs.
+
+The killer-feature are the short bindings:
 * Patch
 - file:/usr/lib/python2.7/site-packages/html2text/config.py
 - file:/usr/share/rss2email/rss2email.py
