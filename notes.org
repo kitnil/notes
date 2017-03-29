@@ -7087,6 +7087,13 @@ Set up your own IPsec VPN server in just a few minutes, with both IPsec/L2TP and
 An IPsec VPN encrypts your network traffic, so that nobody between you and the VPN server can eavesdrop on your data as it travels via the Internet. This is especially useful when using unsecured networks, e.g. at coffee shops, airports or hotel rooms.
 
 We will use Libreswan as the IPsec server, and xl2tpd as the L2TP provider.
+** [2017-03-30 Thu 01:38] [[https://github.com/dokku/dokku][dokku/dokku: A docker-powered PaaS that helps you build and manage the lifecycle of applications]]
+Docker powered mini-Heroku. The smallest PaaS implementation you've ever seen.
+Sponsors
+
+See our list of past sponsors in the SPONSORS file.
+
+Become a sponsor and get your logo on our README on Github with a link to your site. [Become a sponsor]
 * Patch
 - file:/usr/lib/python2.7/site-packages/html2text/config.py
 - file:/usr/share/rss2email/rss2email.py
