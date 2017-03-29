@@ -6973,6 +6973,14 @@ LBRY is an open-source protocol providing distribution, discovery, and purchase 
 This repo is a reference implementation of the LBRY API.
 
 It provides a daemon that can interact with the network via a json-rpc interface over HTTP.
+** [2017-03-30 Thu 01:26] [[https://github.com/donnemartin/system-design-primer][donnemartin/system-design-primer: Learn how to design large-scale systems. Prep for the system design interview.]]
+Learn how to design large scale systems
+
+Learning how to design scalable systems will help you become a better engineer.
+
+System design is a broad topic. There is a vast amount of resources scattered throughout the web on system design principles.
+
+This repo is an organized collection of resources to help you learn how to build systems at scale.
 * Patch
 - file:/usr/lib/python2.7/site-packages/html2text/config.py
 - file:/usr/share/rss2email/rss2email.py
