@@ -6922,6 +6922,16 @@ Simple terminal based sequence editor for git interactive rebase. Written in Nod
 org-brain implements a variant of concept mapping in Emacs, using org-mode. It is heavily inspired by a piece of software called The Brain (but currently with a more limited feature set), you can view an introduction to that program here.
 
 You can think of org-brain as a combination of a wiki and a mind map, where each wiki page / mind-map node is an org-mode file which resides in your org-brain-path (a directory containing all your org-brain files). These files are called entries. Entries can link to other entries, and you can then view the network of links as a mind map, using M-x org-brain-visualize.
+** [2017-03-30 Thu 01:17] [[https://github.com/scallywag/org-board][scallywag/org-board: Org mode's web archiver.]]
+
+ org-board is a bookmarking and web archival system for Emacs Org
+ mode, building on ideas from Pinboard <https://pinboard.in>.  It
+ archives your bookmarks so that you can access them even when
+ you're not online, or when the site hosting them goes down.
+ `wget' is used as a backend for archival, so any of its options
+ can be used directly from org-board.  This means you can download
+ whole sites for archival with a couple of keystrokes, while
+ keeping track of your archives from a simple Org file.
 * Patch
 - file:/usr/lib/python2.7/site-packages/html2text/config.py
 - file:/usr/share/rss2email/rss2email.py
