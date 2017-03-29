@@ -7006,6 +7006,17 @@ This is a distributed implementation of the algorithm described in Evolution Str
 The implementation here uses a master-worker architecture: at each iteration, the master broadcasts parameters to the workers, and the workers send returns back to the master. The humanoid scaling experiment in the paper was generated with an implementation similar to this one.
 
 The code here runs on EC2, so you need an AWS account. It's resilient to worker termination, so it's safe to run the workers on spot instances.
+** [2017-03-30 Thu 01:28] [[https://github.com/Qix-/better-exceptions][Qix-/better-exceptions: Pretty and useful exceptions in Python, automatically.]]
+Install better_exceptions via pip:
+
+$ pip install better_exceptions
+
+And import it somewhere:
+
+import better_exceptions
+
+That's it!
+Advanced Usage
 * Patch
 - file:/usr/lib/python2.7/site-packages/html2text/config.py
 - file:/usr/share/rss2email/rss2email.py
