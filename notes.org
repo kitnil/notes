@@ -6918,76 +6918,6 @@ I wish there was a way to get the same result with firewalld without directly ch
   cruft --ignore ${PATHS[@]}
 #+END_SRC
 
-** org error compile
-#+BEGIN_EXAMPLE
-  org-attach.el:42:1:Error: Symbol’s function definition is void: org-link-set-parameters
-
-  org-drill.el:50:1:Error: Symbol’s function definition is void: org-link-set-parameters
-
-  org-lint.el:107:1:Error: Symbol’s function definition is void: org-define-error
-
-  ox-ascii.el:30:1:Error: Symbol’s function definition is void: org-define-error
-
-  Compiling file /home/opykhalov/.emacs.d/elpa/org-plus-contrib-20170210/ox-beamer.el at Sun Feb 19 19:02:09 2017
-  ox-beamer.el:33:1:Error: Symbol’s function definition is void: org-define-error
-
-  Compiling file /home/opykhalov/.emacs.d/elpa/org-plus-contrib-20170210/ox-bibtex.el at Sun Feb 19 19:02:09 2017
-
-  ox-confluence.el:36:1:Error: Symbol’s function definition is void: org-define-error
-
-  Compiling file /home/opykhalov/.emacs.d/elpa/org-plus-contrib-20170210/ox-deck.el at Sun Feb 19 19:02:09 2017
-  ox-deck.el:47:1:Error: Symbol’s function definition is void: org-define-error
-
-  Compiling file /home/opykhalov/.emacs.d/elpa/org-plus-contrib-20170210/ox-extra.el at Sun Feb 19 19:02:09 2017
-  ox-extra.el:58:1:Error: Symbol’s function definition is void: org-define-error
-
-  Compiling file /home/opykhalov/.emacs.d/elpa/org-plus-contrib-20170210/ox-freemind.el at Sun Feb 19 19:02:09 2017
-  ox-freemind.el:39:1:Error: Symbol’s function definition is void: org-define-error
-
-  Compiling file /home/opykhalov/.emacs.d/elpa/org-plus-contrib-20170210/ox-groff.el at Sun Feb 19 19:02:09 2017
-  ox-groff.el:41:1:Error: Symbol’s function definition is void: org-define-error
-
-  Compiling file /home/opykhalov/.emacs.d/elpa/org-plus-contrib-20170210/ox-html.el at Sun Feb 19 19:02:09 2017
-  ox-html.el:35:1:Error: Symbol’s function definition is void: org-define-error
-
-  Compiling file /home/opykhalov/.emacs.d/elpa/org-plus-contrib-20170210/ox-icalendar.el at Sun Feb 19 19:02:09 2017
-  ox-icalendar.el:35:1:Error: Symbol’s function definition is void: org-define-error
-
-  Compiling file /home/opykhalov/.emacs.d/elpa/org-plus-contrib-20170210/ox-koma-letter.el at Sun Feb 19 19:02:09 2017
-  ox-koma-letter.el:124:1:Error: Symbol’s function definition is void: org-define-error
-
-  Compiling file /home/opykhalov/.emacs.d/elpa/org-plus-contrib-20170210/ox-latex.el at Sun Feb 19 19:02:09 2017
-  ox-latex.el:30:1:Error: Symbol’s function definition is void: org-define-error
-
-  Compiling file /home/opykhalov/.emacs.d/elpa/org-plus-contrib-20170210/ox-man.el at Sun Feb 19 19:02:09 2017
-  ox-man.el:41:1:Error: Symbol’s function definition is void: org-define-error
-
-  Compiling file /home/opykhalov/.emacs.d/elpa/org-plus-contrib-20170210/ox-md.el at Sun Feb 19 19:02:10 2017
-  ox-md.el:32:1:Error: Symbol’s function definition is void: org-define-error
-
-  Compiling file /home/opykhalov/.emacs.d/elpa/org-plus-contrib-20170210/ox-odt.el at Sun Feb 19 19:02:10 2017
-  ox-odt.el:30:1:Error: Symbol’s function definition is void: org-define-error
-
-  Compiling file /home/opykhalov/.emacs.d/elpa/org-plus-contrib-20170210/ox-org.el at Sun Feb 19 19:02:10 2017
-  ox-org.el:27:1:Error: Symbol’s function definition is void: org-define-error
-
-  Compiling file /home/opykhalov/.emacs.d/elpa/org-plus-contrib-20170210/ox-publish.el at Sun Feb 19 19:02:10 2017
-  ox-publish.el:43:1:Error: Symbol’s function definition is void: org-define-error
-
-  Compiling file /home/opykhalov/.emacs.d/elpa/org-plus-contrib-20170210/ox-rss.el at Sun Feb 19 19:02:10 2017
-  ox-rss.el:75:1:Error: Symbol’s function definition is void: org-define-error
-
-  Compiling file /home/opykhalov/.emacs.d/elpa/org-plus-contrib-20170210/ox-s5.el at Sun Feb 19 19:02:10 2017
-  ox-s5.el:57:1:Error: Symbol’s function definition is void: org-define-error
-
-  Compiling file /home/opykhalov/.emacs.d/elpa/org-plus-contrib-20170210/ox-taskjuggler.el at Sun Feb 19 19:02:10 2017
-  ox-taskjuggler.el:150:1:Error: Symbol’s function definition is void: org-define-error
-
-  Compiling file /home/opykhalov/.emacs.d/elpa/org-plus-contrib-20170210/ox-texinfo.el at Sun Feb 19 19:02:10 2017
-  ox-texinfo.el:29:1:Error: Symbol’s function definition is void: org-define-error
-
-  Compiling file /home/opykhalov/.emacs.d/elpa/org-plus-contrib-20170210/ox.el at Sun Feb 19 19:02:10 2017
-#+END_EXAMPLE
 ** TODO Article about latex mu4e plotting
 #+BEGIN_QUOTE
 Install for latex
@@ -7015,7 +6945,6 @@ Install for mu4e email client
    sudo apt install mu4e
 #+END_QUOTE
 ** Подвал Первый корпус 1244 кабинет и напротив него спуск в подвал
-** broadcom drivers suck
 ** sway pulse audio volume control
 bindsym Shift+XF86AudioRaiseVolume exec pactl set-sink-volume \
                 $(pactl list sinks | grep -B 1 RUNNING | sed '1q;d' | sed 's/[^0-9]\+//g') +5%
