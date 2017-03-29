@@ -7077,6 +7077,10 @@ Simple MPD server with Spotify connection.
 Currently non-functional. Working on Pulseaudio integration
 ** [2017-03-30 Thu 01:36] [[https://github.com/0xl3vi/hostsctl][0xl3vi/hostsctl: Control your /etc/hosts file easily, block ads, social networks, and more.]]
 hostsctl allows you to block advertisements, trackers, and other malicious activity by manipulating /etc/hosts. By taking advantage of curated lists of known bad hosts and providing an interface to easily manipulate host definitions, you can save bandwidth and stay safer online.
+** [2017-03-30 Thu 01:37] [[https://github.com/tj/git-extras][tj/git-extras: GIT utilities -- repo summary, repl, changelog population, author commit percentages and more]]
+Just getting started? Check out these screencasts:
+
+    introduction -- covering git-ignore, git-setup, git-changelog, git-release, git-effort and more
 * Patch
 - file:/usr/lib/python2.7/site-packages/html2text/config.py
 - file:/usr/share/rss2email/rss2email.py
