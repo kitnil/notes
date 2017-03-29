@@ -7017,6 +7017,10 @@ import better_exceptions
 
 That's it!
 Advanced Usage
+** [2017-03-30 Thu 01:29] [[https://github.com/tensorflow/models][tensorflow/models: Models built with TensorFlow]]
+This repository contains machine learning models implemented in TensorFlow. The models are maintained by their respective authors.
+
+To propose a model for inclusion please submit a pull request.
 * Patch
 - file:/usr/lib/python2.7/site-packages/html2text/config.py
 - file:/usr/share/rss2email/rss2email.py
