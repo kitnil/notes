@@ -172,3 +172,1333 @@ Not sure if all this stuff should go into a single layer.
 ** Blogs
 - [[https://cestlaz.github.io/][Mike Zamansky C'est la Z]]
 ** Videos
+* Links
+** [[https://www.reddit.com/r/emacs/comments/5jhwlu/getting_things_from_outside_emacs_into/][Getting things from outside Emacs into org-mode/Emacs : emacs]]
+** [[https://stackoverflow.com/questions/11902620/org-mode-how-do-i-create-a-new-file-with-org-capture][emacs - Org-Mode - How do I create a new file with org-capture? - Stack Overflow]]
+You'll have to use (read-string ...) in capture-report-data-file to generate the
+filename on the fly.
+
+#+BEGIN_SRC emacs-lisp
+ (defun capture-report-data-file (path)
+   (let ((name (read-string "Name: ")))
+     (expand-file-name (format "%s-%s.txt"
+                               (format-time-string "%Y-%m-%d")
+                               name) path)))
+
+ '(("t"
+    "todo"
+    entry
+    (file (capture-report-date-file  "~/path/path/name"))
+    "* TODO")))
+#+END_SRC
+
+This will prompt on capture for the file name, and then open the capture buffer
+will be created.
+** [[https://blog.sleeplessbeastie.eu/2016/04/22/how-to-use-org-capture-from-system-tray/][How to use org-capture from system tray]]
+These shell scripts are designed to verify that emacs daemon process is running
+and then intercept call from emacsclient to trigger custom capture action.
+
+** [[https://github.com/mooz/keysnail][mooz/keysnail: Allows you to bind commands to key sequences in Mozilla Firefox]]
+ KeySnail is an add-on for Mozilla Firefox that aims to be a competitor and lightweight alternative to Vimperator. Unlike Vimperator, KeySnail provides comfortable browsing experience for Emacs users, but its target users are not limited to.
+** [[https://github.com/kiwanami/emacs-ctable][kiwanami/emacs-ctable: Table Component for elisp]]
+ ctable.el is a table component for emacs lisp. Emacs lisp programs can display
+ a nice table view from an abstract data model. The many emacs programs have the
+ code for displaying table views, such as dired, list-process, buffer-list and
+ so on. So, ctable.el would provide functions and a table framework for the
+ table views.
+** [[http://ergoemacs.org/emacs/emacs_eww_web_browser.html][Emacs: Using Eww Web Browser]]
+ How to make emacs always use eww?
+** [[https://github.com/appleshan/my-spacemacs-config][appleshan/my-spacemacs-config: My personal Spacemacs config]]
+ Hacking 始于 2012 年。2015 年爱上 Spacemacs 😄 💖
+
+ 我的 Spacemacs 配置一共有两部分： 一个 .emacs.d 目录，是 Spacemacs 的原始代码，未做任何修改； 一个 .spacemacs.d 目录，存放私有 layer。
+** [[https://github.com/Fanael/rainbow-identifiers][Fanael/rainbow-identifiers: Rainbow identifier highlighting for Emacs]]
+ Rainbow identifiers mode is an Emacs minor mode providing highlighting of identifiers based on their names. Each identifier gets a color based on a hash of its name.
+** [[https://github.com/ankurdave/color-identifiers-mode][ankurdave/color-identifiers-mode: Emacs minor mode to highlight each source code identifier uniquely based on its name]]
+ Color Identifiers is a minor mode for Emacs that highlights each source code identifier uniquely based on its name. It is inspired by a post by Evan Brooks.
+
+ Currently it supports Scala (scala-mode2), JavaScript (js-mode and js2-mode), Ruby, Python, Emacs Lisp, Clojure, C, C++, and Java. You can add support for your favorite mode by modifying color-identifiers:modes-alist and optionally calling color-identifiers:set-declaration-scan-fn.
+
+ Check out the demo.
+** [[https://julien.danjou.info/projects/emacs-packages][Emacs packages | Julien Danjou]]
+ rainbow-mode is a minor mode for Emacs which displays strings representing colors with the color they represent as background.
+** [[https://github.com/syl20bnr/nyan-mode][syl20bnr/nyan-mode: Nyan Cat for Emacs! Nyanyanyanyanyanyanyanyanyan!]]
+ Fork modifications
+
+     the starting nyan cat image has no rainbow behind it,
+     the starting rainbow image has zigzags,
+     the animation loop is not endless and occurs only when nyan cat moves.
+
+ Introduction
+
+ WARNING, MIND DUMBING CONTENT INSIDE.
+
+ “Nyan-mode. It’s things like this that make me proud to be an emacs user.” - mitchellh
+
+ Nyanmacs is expanding!! Read the story so far! :).
+** [[http://jblevins.org/projects/deft/][Deft for Emacs]]
+ Deft is an Emacs mode for quickly browsing, filtering, and editing directories of plain text notes, inspired by Notational Velocity. It was designed for increased productivity when writing and taking notes by making it fast and simple to find the right file at the right time and by automating many of the usual tasks such as creating new files and saving files.
+** [[https://github.com/rejeep/prodigy.el][rejeep/prodigy.el: Manage external services from within Emacs]]
+ Manage external services from within Emacs
+
+ I came up with the idea when I got to work one Monday morning and before I could start working I had to manually start ten or so services.
+
+ To get rid of this tedious work, I started working on this Emacs plugin, which provides a nice and simple GUI to manage services.
+** [[https://www.youtube.com/watch?v=O0UgY-DmFbU][Emacs Rocks! Episode 01: From var to this - YouTube]]
+ http://emacsrocks.com - Rocking emacs tricks and tips screencast.
+** [[https://www.flickr.com/photos/tags/emacs][emacs photos on Flickr | Flickr]]
+ Sacha Chua's photos
+** [[https://github.com/spiderbit/kodi-remote.el][spiderbit/kodi-remote.el: Emacs Remote Control functions for Kodi]]
+ Emacs Remote Control for Kodi Including a function to send youtube and other urls to kodi
+
+     see youtube-dl for supported sites
+** [[https://github.com/K0HAX/spacemacs-emms][K0HAX/spacemacs-emms: Emms layer for Spacemacs]]
+ The main purpose of this elisp is to install EMMS inside Spacemacs.
+** [[https://github.com/pft/mingus][pft/mingus: GNU Emacs control of Music Player Daemon (MPD)]]
+ Mingus is a frontend for GNU Emacs to the Music Player daemon. The interface closely, though not strictly, resembles that of ncmpc, which I had been using before (the main drawback of ncmpc for me was it’s apparent lack of support for unicode). It has some advantages over other clients, mainly in the field of playlist editing. This is achieved through marking and regions as you are used too in emacs and in dired. Mingus also provides a point-of-insertion for inserting new songs. This can be handy to drop a song after the currently playing one (enqueue), but is more flexible. Mingus is distributed under the GPL.
+** [[https://www.reddit.com/r/emacs/comments/2d37bo/info_manuals_in_debian_and_ubuntu_some_information/][Info Manuals in Debian and Ubuntu some information : emacs]]
+
+
+ Almost all GNU project languages and utilities have manuals in Info format. Unfortunately for us users, the Debian people decided that the GNU Free Documentation License is a "non-free" license. When the GNU project switched to using it for manuals the Debian people put them in a non-free repository. In my opinion, the behaviour of both sides was bad. Debian derivatives like Ubuntu keep that structure.
+** [[https://www.slac.stanford.edu/comp/unix/gnu-info/emacs_26.html][GNU Emacs Manual - Compiling and Testing Programs]]
+  The previous chapter discusses the Emacs commands that are useful for making changes in programs. This chapter deals with commands that assist in the larger process of developing and maintaining programs.
+** [[https://github.com/nick96/basic-c-compile][nick96/basic-c-compile: Emacs package to create a Makefile, compile and run a C file]]
+ The purpose of this package is to automate come of the basic and repetetive tasks involved in C programming. All the tasks that this pacakge automate are language agnostic and whilst the defaults are C specific you can set them to any statically compiled language.
+** [[https://github.com/syohex/emacs-quickrun][syohex/emacs-quickrun: Run command quickly. This packages is inspired quickrun.vim]]
+ quickrun.el is a extension to execute editing buffer. quickrun.el is similar to executable-interpret, but quickrun.el provides more convenient commands. quickrun.el execute not only script languages(Perl, Ruby, Python etc), but also compiling languages(C, C++, Go, Java etc) and markup language.
+** [[https://github.com/bbatsov/projectile][bbatsov/projectile: Project Interaction Library for Emacs]]
+ Projectile is a project interaction library for Emacs. Its goal is to provide a nice set of features operating on a project level without introducing external dependencies (when feasible). For instance - finding project files has a portable implementation written in pure Emacs Lisp without the use of GNU find (but for performance sake an indexing mechanism backed by external commands exists as well).
+** [[https://habrahabr.ru/post/303600/][Emacs как редактор кода для Python и Golang / Хабрахабр]]
+ Когда полгода назад я решил перейти с Vim на Emacs сначала я решил поискать статьи по настройке последнего на хабре. К моему удивлению нашлась всего одна статья в которой рассказывали, как настроить данный редактор для работы с Python. У меня было 2 года опыта работы с vim и имелись определенные требования, которые не были затронуты в данной статье. Вообще рускоязычных статей про работу в Emacs над Python очень мало на просторах интернета. Я не буду рассказывать про тонкости настройки самого Emacs, для этого не хватит даже отдельной статьи.
+** [[https://github.com/Malabarba/camcorder.el][Malabarba/camcorder.el: Tool for capturing screencasts directly from Emacs.]]
+ Tool for capturing screencasts directly from Emacs.
+
+     To use it, simply call M-x camcorder-record.
+     A new smaller frame will popup and recording starts.
+     When you’re finished, hit F12.
+
+ View screencasts are generated in ogv format, and you can even pause the recording with F11! You can also convert the .ogv file to a gif by issuing the command M-x camcorder-convert-to-gif.
+
+ If you want to record without a popup frame, use M-x camcorder-mode.
+** [[http://jr0cket.co.uk/2017/01/spacemacs-creating-animated-gifs-videos.html][camcorder.el - Creating Animated Gifs & Videos for Spacemacs | jr0cket]]
+ Using animated gifs are a lightweight way to show Emacs in action, as can be seen at Emacs Gifs.
+** [[https://github.com/caiorss/clip.jar][caiorss/clip.jar: Utility to paste images from clipboard to Emacs org-mode or any markdown.]]
+ Clip is a self-contained command line utility written in Scala to extract images from clipboard and save it to a file. It is a module of org-wiki project.
+** [[https://github.com/malb/emacs.d/tree/48508219453ebb542e6fec370bb49fba9980c2a2][malb/emacs.d at 48508219453ebb542e6fec370bb49fba9980c2a2]]
+ These are the relevant bits of my emacs config. Some stuff not suitable for general consumption is missing. Hence, you cannot just clone this repository and try it. I have no intention of changing this.
+** [[http://orgmode.org/worg/org-contrib/org-protocol.html][org-protocol.el – Intercept calls from emacsclient to trigger custom actions]]
+ Intercept calls from emacsclient to trigger
+** [[http://pragmaticemacs.com/emacs/how-i-view-my-google-calendar-agenda-in-emacs/][How I view my google calendar agenda in Emacs | Pragmatic Emacs]]
+  I use gcalcli to access my google calendar from the command line, and run it as a cron job using gcalcli agenda and redirecting the output to a file. Then in Emacs I have a simple function to display the contents of that file.
+** [[https://www.emacswiki.org/emacs/OpenWith][EmacsWiki: Open With]]
+ Open files with external applications. Works from everywhere (find-file, dired, etc.).
+** [[https://www.reddit.com/r/emacs/comments/5mff61/anyone_got_any_good_advanced_orgmode_resources/][Anyone got any good advanced org-mode resources? : emacs]]
+ I'm starting to get into org-mode, and am wondering if anyone's got a good blog or otherwise educational resource to point me to. I know I can just read the emacs/org manual, but a more enjoyable exposition would be pretty cool
+** [[http://kitchingroup.cheme.cmu.edu/blog/2015/06/29/Getting-Emacs-to-read-to-me/][Getting Emacs to read to me]]
+  I thought it would be interesting to have Emacs read text on the screen. Why? Sometimes I get tired of reading ;) Seriously though, this has applications in accessibility, learning to read, translation, taking a break from looking at the screen, reading emails out loud, fun and games, etc… Seems like a worthwhile endeavor!
+** [2017-01-21 Sat 18:09] [[https://github.com/avendael/emacs-geeknote][avendael/emacs-geeknote: Use Evernote in Emacs through geeknote]]
+ Use Evernote in Emacs through geeknote
+** [2017-01-21 Sat 19:15] [[https://www.emacswiki.org/emacs/IncrementalReading#toc10][EmacsWiki: Incremental Reading]]
+ #+BEGIN_QUOTE
+ Save a buffer of text you want to incrementally read.
+ For HTML, use M-! lynx -dump URL (Does anyone know of a way to get numbered links with either links or w3m?).
+
+ #+END_QUOTE
+** [2017-01-21 Sat 20:03] [[https://github.com/defunkt/gist.el][defunkt/gist.el: Yet another Emacs paste mode, this one for Gist.]]
+ #+BEGIN_QUOTE
+ Uses your local GitHub config if it can find it.
+
+ Go to your GitHub Settings and generate a personal access token with gist scope
+
+
+ #+END_QUOTE
+** [2017-01-30 Mon 08:03] [[https://github.com/politza/pdf-tools][politza/pdf-tools: Emacs support library for PDF files.]]
+ PDF Tools is, among other things, a replacement of DocView for PDF files. The key difference is, that pages are not pre-rendered by e.g. ghostscript and stored in the file-system, but rather created on-demand and stored in memory.
+
+ This rendering is performed by a special library named, for whatever reason, poppler, running inside a server program. This program is called epdfinfo and its job is it to successively read requests from Emacs and produce the proper results, i.e. the PNG image of a PDF page.
+
+ Actually, displaying PDF files is just one part of PDF Tools. Since poppler can provide us with all kinds of information about a document and is also able to modify it, there is a lot more we can do with it. Watch
+** [2017-02-03 Fri 12:09] [[https://www.youtube.com/watch?v=P8U9D5pI8pg][Integration of Rebar, EUnit and Emacs Workflows - Zachary Kessin - YouTube]]
+ #+BEGIN_QUOTE
+ Many developers have gotten used to powerful tools such as IDE's on other platforms. For Erlang developers emacs can have as much or more power by combining emacs lisp and distel with native Erlang code. I will use the integration of Rebar, eunit to show how to build powerful tools in Emacs to make Erlang development more productive and more fun.
+
+ #+END_QUOTE
+** [2017-02-03 Fri 16:57] [[https://github.com/ch11ng/xelb][ch11ng/xelb: X protocol Emacs Lisp Binding]]
+ XELB (X protocol Emacs Lisp Binding) is a pure Elisp implementation of X11 protocol based on the XML description files from XCB project. It features an object-oriented API and permits a certain degree of concurrency. It should enable you to implement some low-level X11 applications. Please refer to xelb.el for more details.
+** [2017-02-03 Fri 16:59] [[https://github.com/jtamagnan/.emacs.d/blob/e2bd08535eda9bcabd413cc40a6ac72b0371546f/config.org][.emacs.d/config.org at e2bd08535eda9bcabd413cc40a6ac72b0371546f · jtamagnan/.emacs.d]]
+ Jules Tamagnan Config File
+** [2017-02-04 Sat 00:30] [[https://github.com/schmendrik/OrgClockTray][schmendrik/OrgClockTray: Display your org-mode clock time in a tray icon in Windows' Taskbar]]
+ OrgClockTray displays your org-mode clock time in a tray icon in Windows' Taskbar.
+
+ If you use org-mode to clock your work time, and your work requires you to use tools other than emacs, you may find yourself switching back and forth to check the time, or make sure that you've clocked-in at all and didn't clock-out by mistake.
+
+ If this is the case, OrgClockTray is for you.
+** [2017-02-04 Sat 00:38] [[https://expoundite.net/dotfile-management/][Dotfile Management and Documentation with Org-Mode | Expoundite.net]]
+ One day 'polm23' asked on Hacker News, what do the readers use to manage dotfiles. I was just experimenting with my method and contributed my two cents. Turns out, rare for me, I stumbled upon an original way to edit, document and deploy dotfiles. Although we Emacs users have been using Org-Mode to wrap our .emacs and document our settings for years, few people that I know have used it for managing more dotfiles.
+** [2017-02-04 Sat 00:40] [[http://fortune-teller-amy-88756.netlify.com/knusper][Knusper's Emacs configuration]]
+ Knusper's Emacs configuration
+** [2017-02-04 Sat 00:42] [[https://github.com/jd/offlineimap.el][jd/offlineimap.el: OfflineIMAP support for Emacs]]
+
+ OfflineIMAP support for Emacs
+** [2017-02-04 Sat 00:43] [[https://www.emacswiki.org/emacs/PrintingPackage][EmacsWiki: Printing Package]]
+ With printing you can preview or print a PostScript file. You can also print a text file using PostScript, and preview or print buffers that use certain special modes like mh-folder-mode, rmail-summary-mode, gnus-summary-mode, etc. This package also includes a PostScript/text printer database.
+** [2017-02-04 Sat 00:45] [[https://www.emacswiki.org/emacs/MidnightMode][EmacsWiki: Midnight Mode]]
+ Midnight mode is a package by SamSteingold that comes with Emacs for running configured actions at every “midnight”.
+** [2017-02-04 Sat 00:49] [[http://fasciism.com/2017/01/24/x509-mode/][X509 Mode]]
+  As part of my job, I often have to look at X.509 (SSL/TLS) certificates. I almost never want to see them in their raw state, a blob of unintelligible Base64 or binary. When opening an image in Emacs, the image is displayed in the window by default, and C-c C-c toggles between the image and its representation on disk. I want to have the same thing for X.509 certificates.
+** [2017-02-04 Sat 01:33] [[https://www.reddit.com/r/emacs/comments/5p4oia/free_emacs_lisp_learning_resources/][Free Emacs Lisp learning Resources : emacs]]
+ If you want to learn more about Emacs Lisp programming and don't know how to start here are some recommendations which helped me and might be useful for others:
+** [2017-02-04 Sat 01:33] [[https://www.reddit.com/r/emacs/comments/5p475u/is_there_a_way_to_invoke_a_command_only_when_the/][Is there a way to invoke a command only when the *first* time a package is being loaded? : emacs]]
+ I use jedi, irony-mode and pdf-tools all of which have a command that needs to be run once after they are loaded (jedi:install-server, irony-install-server and pdf-tools-install) respectively. Is there any way to do this automatically, but only once - the first time the package is loaded or right after its installation?
+** [2017-02-04 Sat 01:37] [[https://www.emacswiki.org/emacs/DedicatedKeys][EmacsWiki: Dedicated Keys]]
+ MeatBall:HumaneInterface argues for dedicated keys. These facilitate habit formation. Unless you can hack hardware, though, that means using the FunctionKeys.
+** [2017-02-04 Sat 01:44] [[https://github.com/Wilfred/remacs][Wilfred/remacs: Rust Emacs]]
+ A community-driven port of Emacs to Rust.
+** [2017-02-04 Sat 01:46] [[https://github.com/jakoblind/github-pullrequest][jakoblind/github-pullrequest: Emacs package to create and fetch Github pull requests]]
+ Emacs package to smoothly create and checkout Github pull requests. Uses the Github access token for authorization to Github. This means you can use this package even if your Github account uses Two-Factor Authentication.
+** [2017-02-04 Sat 01:46] [[http://www.thinknix.net/2015/02/19/cross-platform-system-wide-org-capture/][Cross Platform System-wide Org-Capture – Think *NIX]]
+ Here’s how I leverage Emacs org-capture from wherever I am in Windows, OS X, and other Unix and Unix-like operating systems.
+** [2017-02-04 Sat 01:54] [[https://www.youtube.com/results?search_query=emacs&search_sort=video_date_uploaded][emacs - YouTube]]
+ About 31,300 results
+** [2017-02-04 Sat 01:56] [[https://lists.gnu.org/archive/html/emacs-devel/2017-01/][emacs-devel (date)]]
+  Archives are refreshed every 30 minutes - for details, please visit the main index.
+ You can also download the archives in mbox format.
+** [2017-02-04 Sat 20:31] [[https://github.com/chrisdone/god-mode/][chrisdone/god-mode: Global minor mode for entering Emacs commands without modifier keys]]
+ This is a global minor mode for entering Emacs commands without modifier keys. It's similar to Vim's separation of commands and insertion mode.
+** [2017-02-05 Sun 20:23] [[https://manuel-uberti.github.io/emacs/2017/02/04/guess-language/][Automatic language detection for Flyspell – Manuel Uberti]]
+ I am always looking for new ways to improve my Emacs experience. Months ago, it happened to my spell-checking configuration thanks to the work of Nicolas Petton.
+** [2017-02-05 Sun 20:30] [[https://github.com/tmalsburg/guess-language.el][tmalsburg/guess-language.el: Emacs mode that detects the language of what you're typing. Automatically switches spell checker. Supports multiple languages per document.]]
+  Emacs mode that detects the language of what you're typing. Automatically switches spell checker. Supports multiple languages per document.
+** [2017-02-05 Sun 20:47] [[https://github.com/Malabarba/smart-mode-line][Malabarba/smart-mode-line: A powerful and beautiful mode-line for Emacs.]]
+ Smart Mode Line is a sexy mode-line for Emacs. It aims to be easy to read from small to large monitors by using colors, a prefix feature, and smart truncation.
+** [2017-02-05 Sun 20:53] [[https://github.com/purcell/emacs.d][purcell/emacs.d: An Emacs configuration bundle with batteries included]]
+ This is my emacs configuration tree, continually used and tweaked since 2000, and it may be a good starting point for other Emacs users, especially those who are web developers. These days it's somewhat geared towards OS X, but it is known to also work on Linux and Windows.
+
+ Emacs itself comes with support for many programming languages. This config adds improved defaults and extended support for the following:
+
+     Ruby / Ruby on Rails
+     CSS / LESS / SASS / SCSS
+     HAML / Markdown / Textile / ERB
+     Clojure (with Cider and nRepl)
+     Javascript / Coffeescript
+     Python
+     PHP
+     Haskell
+     Elm
+     Erlang
+     Common Lisp (with Slime)
+** [2017-02-05 Sun 20:55] [[https://github.com/overtone/emacs-live][overtone/emacs-live: M-x start-hacking]]
+ An opinionated set of defaults for getting started with a specific focus on live coding with Overtone and Quil. However, it's not just a one trick pony. It also happens to be:
+
+     a jolly good generic Clojure hacking config
+     a nice structured approach to organising your Emacs config
+     modular in that functionality is organised by discrete packs
+     a decent starting point for live coding in general
+     a goldmine of config snippets to plunder and add to your own config
+** [2017-02-05 Sun 20:55] [[https://github.com/magnars/.emacs.d][magnars/.emacs.d: My personal emacs settings, and the ones used in @emacsrocks]]
+ An ever-changing set of emacs settings. Micro-optimizations are super fun. These are used in the Emacs Rocks screencasts. You can also see some thoughts behind the settings on my What the .emacs.d!?-blog.
+** [2017-02-05 Sun 20:56] [[https://github.com/domtronn/all-the-icons.el][domtronn/all-the-icons.el: A utility package to collect various Icon Fonts and propertize them within Emacs.]]
+ You should be able to install this package in the standard way, add it to the load path and then calling
+** [2017-02-05 Sun 20:58] [[https://github.com/emacs-ess/ESS][emacs-ess/ESS: Emacs Speaks Statistics: ESS]]
+ Git development branch of Emacs Speaks Statistics: ESS.
+ For more info, see our web page at http://ess.r-project.org/
+** [2017-02-05 Sun 22:19] [[https://github.com/vermiculus/sx.el][vermiculus/sx.el: Stack Exchange for Emacs]]
+ As always, C-h m is the definitive resource for functionality, but here are a few highlights:
+** [2017-02-05 Sun 22:19] [[https://github.com/Sarcasm/irony-mode][Sarcasm/irony-mode: A C/C++ minor mode for Emacs powered by libclang]]
+ irony-mode is an Emacs minor-mode that aims at improving the editing experience for the C, C++ and Objective-C languages. It works by using a combination of an Emacs package and a C++ program (irony-server) that uses libclang.
+** [2017-02-05 Sun 22:20] [[https://github.com/jacktasia/dumb-jump][jacktasia/dumb-jump: an Emacs "jump to definition" package]]
+ Dumb Jump is an Emacs "jump to definition" package with support for multiple programming languages that favors "just working". This means minimal -- and ideally zero -- configuration with absolutely no stored indexes (TAGS) or persistent background processes. Dumb Jump requires at least GNU Emacs 24.3.
+** [2017-02-05 Sun 22:21] [[https://github.com/novoid/Memacs][novoid/Memacs: What did I do on February 14th 2007? Visualize your (digital) life in Org-mode]]
+ What were you doing on February 14th of 2007? On which tasks were you working on that very day you met your girl friend? When was the last appointments with your dentist? Who called you on telephone during that meeting with your customer last month?
+** [2017-02-05 Sun 22:22] [[https://github.com/CodeFalling/blog-admin][CodeFalling/blog-admin: Write blog in emacs with hexo/org-page/nikola]]
+ https://github.com/CodeFalling/blog-admin/issues Write blog in emacs with hexo, org-page or nikola.
+** [2017-02-06 Mon 19:05] [[https://github.com/zk-phi/magic-latex-buffer][zk-phi/magic-latex-buffer: {Emacs} magical syntax highlighting for LaTeX-mode buffers]]
+ #+BEGIN_QUOTE
+ Magically enhance LaTeX-mode font-locking for semi-WYSIWYG editing.
+
+
+ #+END_QUOTE
+** [2017-02-08 Wed 14:31] [[http://nullprogram.com/blog/2017/01/30/][How to Write Fast(er) Emacs Lisp « null program]]
+ Not everything written in Emacs Lisp needs to be fast. Most of Emacs itself — around 82% — is written in Emacs Lisp because those parts are generally not performance-critical. Otherwise these functions would be built-ins written in C. Extensions to Emacs don’t have a choice and — outside of a few exceptions like dynamic modules and inferior processes — must be written in Emacs Lisp, including their performance-critical bits. Common performance hot spots are automatic indentation, AST parsing, and interactive completion.
+** [2017-02-08 Wed 14:32] [[http://mbork.pl/2017-01-30_Current_Emacs_version][Marcin Borkowski: 2017-01-30 Current Emacs version]]
+ When mailing to the Emacs devs about bugs, you should obviously mention the version of Emacs you are using. This is usually done with M-x emacs-version, which displays the version info in the minibuffer (or inserts it at point when invoked with a prefix argument). However, if you happen to use a development version of Emacs, compiled from source, this is not very meaningful – it does not contain any information about the actual commit hash. I asked about it on the mailing list, and learned about the emacs-repository-get-version funtion (which is not interactive, btw), which returns the VCS’s idea of the “current version” (nowadays it is just Git’s commit hash).
+** [2017-02-08 Wed 14:33] [[http://www.holgerschurig.de/en/emacs-tayloring-the-built-in-mode-line/][Tayloring the built-in Emacs Mode line · Holger's Computer Calisthenics and Orthodontia]]
+ For some time, I used smart-mode-line. And then powerline. And than, for just some hours, I tried spaceline, because powerline was a tad to unwieldy for me. After all those experiments with fancy mode-lines I wondered “What don’t I just customization the built-in mode-line to my need, it can’t be hard!”
+** [2017-02-08 Wed 17:12] [[https://www.reddit.com/r/emacs/comments/5rsxua/how_to_do_structured_search_on_thousands_of/][How to do structured search on thousands of org-syntax files? : emacs]]
+ At a non-profit museum where I help, they use tens of thousands of using org-syntax text files to annotate each item in the collections of the archive.
+** [2017-02-10 Fri 12:31] [[https://github.com/ProofGeneral/PG/][ProofGeneral/PG: This repo is the new home of Proof General]]
+ Proof General is a generic Emacs interface for proof assistants. The aim of the Proof General project is to provide a powerful, generic environment for using interactive proof assistants.
+** [2017-02-10 Fri 15:12] [[https://github.com/fourier/ztree][fourier/ztree: Directory tree comparison mode for Emacs]]
+ Ztree is a project dedicated to implementation of several text-tree applications inside GNU Emacs. It consists of 2 subprojects: ztree-diff and ztree-dir (the basis of ztree-diff). Available in GNU ELPA and MELPA.
+** [2017-02-10 Fri 15:19] [[https://github.com/magnars/multiple-cursors.el][magnars/multiple-cursors.el: Multiple cursors for emacs.]]
+ Multiple cursors for Emacs. This is some pretty crazy functionality, so yes, there are kinks. Don't be afraid tho, I've been using it since 2011 with great success and much merriment.
+** [2017-02-10 Fri 15:19] [[https://github.com/fxbois/web-mode][fxbois/web-mode: web template editing mode for emacs]]
+ web-mode.el is an emacs major mode for editing web templates aka HTML files embedding parts (CSS/JavaScript) and blocks (pre rendered by client/server side engines).
+
+ web-mode.el is compatible with many template engines: PHP, JSP, ASP, Django, Twig, Jinja, Mustache, ERB, FreeMarker, Velocity, Cheetah, Smarty, CTemplate, Mustache, Blade, ErlyDTL, Go Template, Dust.js, Google Closure (soy), React/JSX, Angularjs, ejs, Nunjucks, etc.
+** [2017-02-10 Fri 15:52] [[https://github.com/mickeynp/smart-scan][mickeynp/smart-scan: Jumps between other symbols found at point in Emacs]]
+ Smart Scan will try to infer the symbol your point is on and let you jump to other, identical, symbols elsewhere in your current buffer with a single key stroke. The advantage over isearch is its unintrusiveness; there are no menus, prompts or other UI elements that require your attention.
+** [2017-02-10 Fri 15:59] [[https://github.com/purcell/whitespace-cleanup-mode][purcell/whitespace-cleanup-mode: In Emacs, intelligently call whitespace-cleanup on save]]
+ This Emacs library minor mode will intelligently call whitespace-cleanup before buffers are saved.
+
+ whitespace-cleanup is a handy function, but putting it in before-save-hook for every buffer is overkill, and causes messy diffs when editing third-party code that did not initially have clean whitespace.
+
+ Additionally, whitespace preferences are often project-specific, and it's inconvenient to set up before-save-hook in a .dir-locals.el file.
+
+ whitespace-cleanup-mode is a minor mode which calls whitespace-cleanup before saving the current buffer, but only if the whitespace in the buffer was initially clean. It determines this by quickly checking to see if whitespace-cleanup would have any effect on the buffer.
+** [2017-02-10 Fri 16:05] [[https://github.com/zk-phi/indent-guide][zk-phi/indent-guide: {emacs} show vertical lines to guide indentation]]
+ show vertical lines to guide indentation
+** [2017-02-10 Fri 16:05] [[https://github.com/antonj/Highlight-Indentation-for-Emacs][antonj/Highlight-Indentation-for-Emacs: Minor modes to highlight indentation guides in emacs.]]
+ Provides two minor modes highlight-indentation-mode and highlight-indentation-current-column-mode
+
+     highlight-indentation-mode displays guidelines indentation (space indentation only).
+     highlight-indentation-current-column-mode displays guidelines for the current-point indentation (space indentation only).
+** [2017-02-10 Fri 16:07] [[https://github.com/gregsexton/origami.el][gregsexton/origami.el: A folding minor mode for Emacs]]
+ A text folding minor mode for Emacs.
+
+ With this minor mode enabled, you can collapse and expand regions of text.
+
+ The actual buffer contents are never changed in any way. This works by using overlays to affect how the buffer is presented. This also means that all of your usual editing commands should work with folded regions. For example killing and yanking folded text works as you would expect.
+
+ There are many commands provided to make expanding and collapsing text convenient.
+** [2017-02-10 Fri 16:14] [[https://github.com/syohex/emacs-git-gutter-fringe][syohex/emacs-git-gutter-fringe: Fringe version of git-gutter.el]]
+ git-gutter-fringe.el is fringe version of of git-gutter.el.
+
+ git-gutter.el does not work with linum-mode but git-gutter-fringe.el can work with linum-mode. In contrast, git-gutter-fringe.el does not work in tty frame(emacs -nw), but git-gutter.el can work in tty frame.
+
+ NOTE: You can not use both git-gutter.el and git-gutter-fringe.el
+** [2017-02-10 Fri 16:17] [[https://github.com/syohex/emacs-git-messenger][syohex/emacs-git-messenger: Emacs Port of git-messenger.vim]]
+ git-messenger.el provides function that popup commit message at current line. This is useful when you want to know why this line was changed.
+** [2017-02-10 Fri 16:20] [[https://github.com/rmuslimov/browse-at-remote][rmuslimov/browse-at-remote: Browse target page on github/bitbucket from emacs buffers]]
+ This package is easiest way to open particular link on github/gitlab/bitbucket from Emacs. It supports various kind of emacs buffer, like:
+
+     file buffer
+     dired buffer
+     magit-mode buffers represinting code
+     vc-annotate mode (use get there by pressing C-x v g by default)
+** [2017-02-10 Fri 16:21] [[https://github.com/sshaw/git-link][sshaw/git-link: Emacs package to get the GitHub/Bitbucket/GitLab/... URL for a buffer location]]
+ Interactive Emacs functions that create URLs for files and commits in GitHub/Bitbucket/GitLab/... repositories.
+
+ git-link returns the URL for the current buffer's file location at the current line number or active region.
+
+ git-link-commit returns the URL for the commit at point.
+
+ git-link-homepage returns the URL for the repository's homepage.
+
+ URLs are added to the kill ring.
+** [2017-02-10 Fri 16:21] [[https://github.com/magit/git-modes][magit/git-modes: Emacs major modes for various Git configuration files]]
+ Emacs major modes for various Git configuration files.
+
+ The list of contributors can be found here.
+
+ All modes are maintained by Jonas Bernoulli.
+** [2017-02-10 Fri 16:22] [[https://github.com/peterwvj/eshell-up][peterwvj/eshell-up: Quickly go to a specific parent directory in eshell]]
+ Emacs package for quickly navigating to a specific parent directory in eshell without having to repeatedly typing cd ...
+** [2017-02-10 Fri 16:23] [[https://github.com/zk-phi/symon/][zk-phi/symon: {Emacs} tiny graphical system monitor]]
+ tiny graphical system monitor
+** [2017-02-10 Fri 16:23] [[https://github.com/mhayashi1120/Emacs-wgrep][mhayashi1120/Emacs-wgrep: Writable grep buffer and apply the changes to files]]
+ wgrep allows you to edit a grep buffer and apply those changes to the file buffer.
+** [2017-02-10 Fri 16:26] [[https://github.com/Silex/docker.el][Silex/docker.el: Manage docker from Emacs.]]
+ The recommended way to install docker.el is through MELPA.
+
+ Otherwise, simply add the files to your load-path and then (require 'docker).
+** [2017-02-11 Sat 02:27] [[https://github.com/bbatsov/solarized-emacs][bbatsov/solarized-emacs: The Solarized colour theme, ported to Emacs.]]
+ Solarized for Emacs is an Emacs port of the Solarized theme for vim, developed by Ethan Schoonover.
+
+ Solarized for Emacs is tested only under Emacs 24, but should be working under Emacs 23 as well. The theme is implemented in terms of customizations and deftheme and does not require the color-theme-package.
+** [2017-02-11 Sat 04:33] [[https://github.com/atgreen/paperless][atgreen/paperless: Emacs assisted PDF document filing]]
+ You've just scanned a stack of papers that have been cluttering up your desk. Now what? Paperless mode is an Emacs major mode designed to assist with the filing of scanned documents into a hierarchy of folders.
+** [2017-02-11 Sat 04:38] [[https://vxlabs.com/2017/02/07/mu4e-0-9-18-e-mailing-with-emacs-now-even-better/][mu4e 0.9.18: E-Mailing with Emacs now even better. – vxlabs]]
+  In this post I talk about three great new features in the latest release of mu4e, an email programme that runs in Emacs. I also show my mu4e configuration as an example to others who would like a similar setup.
+** [2017-02-11 Sat 04:38] [[https://www.reddit.com/r/emacs/comments/5swirb/when_migrating_to_a_new_file_system_which_files_i/][When migrating to a new file system, which files I need to backup so I could have all my customization if emacs : emacs]]
+ Assuming prelude works similarly to vanilla emacs:
+
+     Personally installed packages (e.g. by M-x package-install) are stored under package-user-dir , this is ~/.emacs.d/elpa by default.
+
+     Packages installed by the (operating system) package manager (yum, apt, pacman, portage etc.) are installed under package-directory-list, which is usually a list of directories under /usr/share/emacs/.
+
+ Copying over your .emacs.d will be enough 99% of the time. If you want to be sure just take another linux installation (say in a virtual machine), copy over your config and see if everything works.
+** [2017-02-11 Sat 04:41] [[https://www.reddit.com/r/emacs/comments/5s306p/keyboard_recommendation/][Keyboard recommendation? : emacs]]
+ I love my POK3R 60% keyboard... A bit pricy but definitely worth it.
+
+ https://www.amazon.com/gp/aw/d/B00OFM51L2?psc=1
+** [2017-02-11 Sat 04:46] [[http://batsov.com/prelude/][Prelude by bbatsov]]
+ Prelude is an Emacs distribution that aims to enhance the default Emacs experience. Prelude alters a lot of the default settings, bundles a plethora of additional packages and adds its own core library to the mix. The final product offers an easy to use Emacs configuration for Emacs newcomers and lots of additional power for Emacs power users.
+** [2017-02-11 Sat 04:53] [[https://github.com/jkitchin/scimax][jkitchin/scimax: An emacs starterkit for scientists and engineers]]
+ Scimax is a rewrite of jmax, with lessons learned, and improvements.
+** [2017-02-11 Sat 04:53] [[https://github.com/vikasrawal/orgpaper/blob/master/orgpapers.org][orgpaper/orgpapers.org at master · vikasrawal/orgpaper]]
+ This guide introduces an open-source toolkit for writing research papers and monographs. The main features of this toolkit centered around Emacs and Org-mode are:
+** [2017-02-11 Sat 04:54] [[https://www.youtube.com/watch?v=CGnt_PWoM5Y][Org-mode for Reproducible Research - YouTube]]
+  The amazing Emacs org-mode has myriad uses and features including outlining, note-taking, table management, and publishing to HTML and LaTeX. It’s also a fabulous tool to help make your research reproducible. From Wikipedia (http://en.wikipedia.org/wiki/Reproduc...
+ In 2012, a survey done for Nature found that 47 out of 53 medical research papers on the subject of cancer were irreproducible (http://www.nature.com/nature/journal/...)… Researchers explained in a 2006 study that, of 249 data sets from American Psychology Association (APA) empirical articles, 73% of contacted authors did not respond with their data (http://www.ncbi.nlm.nih.gov/pubmed/17...) over a 6-month period.
+** [2017-02-11 Sat 04:55] [[https://hn.algolia.com/?query=emacs&sort=byDate&prefix&page=0&dateRange=all&type=story][HN Search powered by Algolia]]
+  Show HN: Paperless – Emacs assisted PDF document filing
+** [2017-02-11 Sat 17:04] [[https://github.com/syohex/emacs-anzu][syohex/emacs-anzu: Emacs Port of anzu.vim]]
+ anzu.el is an Emacs port of anzu.vim. anzu.el provides a minor mode which displays current match and total matches information in the mode-line in various search modes.
+** [2017-02-11 Sat 17:05] [[https://github.com/emacsfodder/move-text][emacsfodder/move-text: move current line or region up or down]]
+ MoveText is extracted from Basic edit toolkit. It allows you to move the current line using M-up / M-down (or any other bindings you choose) if a region is marked, it will move the region instead.
+** [2017-02-11 Sat 17:34] [[https://github.com/bmag/imenu-list][bmag/imenu-list: Emacs plugin to show the current buffer's imenu entries in a seperate buffer]]
+ Emacs plugin to show the current buffer's imenu entries in a seperate buffer
+
+ To activate imenu-list manually, use M-x imenu-list-minor-mode.
+ To activate it automatically on startup, add this to your init file: (imenu-list-minor-mode)
+
+ You can also use M-x imenu-list-minor-mode to toggle imenu-list (and its window) on and off. You may wish to bind it to a key, for example C-':
+** [2017-02-11 Sat 17:51] [[https://github.com/trending/emacs-lisp?since=daily][Trending Emacs Lisp repositories on GitHub today]]
+ See what the GitHub community is most excited about today.
+** [2017-02-11 Sat 17:51] [[https://github.com/emacs-tw/awesome-emacs][emacs-tw/awesome-emacs: A community driven list of useful Emacs packages, libraries and others.]]
+ A community driven list of useful Emacs packages, libraries and others.
+** [2017-02-11 Sat 21:52] [[https://github.com/xuchunyang/gitter.el][xuchunyang/gitter.el: An Emacs Gitter client]]
+ gitter.el is available from Melpa. After setting up Melpa as a repository and update the local package list, you can install gitter.el and its dependencies using M-x package-install gitter.
+** [2017-02-12 Sun 00:46] [[https://www.masteringemacs.org/article/complete-guide-mastering-eshell][Mastering Eshell - Mastering Emacs]]
+ Eshell has a handful of commands written in Emacs-Lisp that closely emulate a large subset of what the real GNU Coreutils (or your favorite shell) has. Those commands are called “Alias functions.”
+** [2017-02-12 Sun 06:17] [[https://github.com/rexim/org-cliplink][rexim/org-cliplink: Insert org-mode links from clipboard]]
+ A simple command that takes a URL from the clipboard and inserts an org-mode link with a title of a page found by the URL into the current buffer.
+
+ This code was a part of my Emacs config almost a year. I decided to publish it as a separate package in case someone needs this feature too.
+** [2017-02-12 Sun 06:58] [[https://github.com/sri/activity-log][sri/activity-log: An activity log for Emacs's org-mode]]
+
+
+ Currently tested under GNU Emacs 25.1.1 on OS X.
+
+ I use this to keep track of what I've done, issues that I have solved, and everything else while at work. Originally, this was a part of my ~/.emacs but it seemed ripe for extraction into its own library.
+** [2017-02-14 Tue 02:13] [[https://www.gnu.org/software/emacs/manual/html_node/emacs/Shell-Commands-in-Dired.html][GNU Emacs Manual: Shell Commands in Dired]]
+ The Dired command ! (dired-do-shell-command) reads a shell command string in the minibuffer, and runs that shell command on one or more files. The files that the shell command operates on are determined in the usual way for Dired commands (see Operating on Files). The command X is a synonym for !.
+** [2017-02-14 Tue 03:59] [[https://github.com/search?utf8=%25E2%259C%2593&q=language%253Aelisp+pushed%253A%253E2017-01-01&type=Repositories&ref=searchresults][Search · language:elisp pushed:>2017-01-01]]
+  Emacs Lisp
+** [2017-02-14 Tue 04:07] [[https://github.com/rmuslimov/browse-at-remote][rmuslimov/browse-at-remote: Browse target page on github/bitbucket from emacs buffers]]
+ This package is easiest way to open particular link on github/gitlab/bitbucket from Emacs. It supports various kind of emacs buffer, like:
+
+     file buffer
+     dired buffer
+     magit-mode buffers represinting code
+     vc-annotate mode (use get there by pressing C-x v g by default)
+** [2017-02-14 Tue 04:10] [[https://github.com/tvraman/emacspeak][tvraman/emacspeak: Automatically exported from code.google.com/p/emacspeak]]
+ Blog Articles --- including emacspeak.blogspot.com posts.
+ Manual Info manual for emacspeak.
+ Web Emacspeak Web Site.
+ Videos Video demos.
+** [2017-02-14 Tue 04:12] [[https://github.com/arthurnn/howdoi-emacs][arthurnn/howdoi-emacs: Search code from StackOverflow and paste it in emacs.]]
+ Search code from StackOverflow and paste it in emacs.
+** [2017-02-14 Tue 04:13] [[https://github.com/Malabarba/emacs-google-this][Malabarba/emacs-google-this: A set of emacs functions and bindings to google under point.]]
+ google-this.el is a package that provides a set of functions and keybindings for launching google searches from within emacs.
+
+ The main function is google-this (bound to C-c / g). It does a google search using the currently selected region, or the expression under point. All functions are bound under C-c / prefix, in order to comply with emacs' standards. To see all keybindings type C-c / C-h.
+
+ If you don't like this keybind, just reassign the google-this-mode-submap variable. My personal preference is C-x g:
+** [2017-02-14 Tue 04:14] [[https://github.com/skeeto/skewer-mode][skeeto/skewer-mode: Live web development in Emacs]]
+ Provides live interaction with JavaScript, CSS, and HTML in a web browser. Expressions are sent on-the-fly from an editing buffer to be evaluated in the browser, just like Emacs does with an inferior Lisp process in Lisp modes.
+
+     Watch the demo video on YouTube (webm)
+
+ Skewer is available from MELPA, which will install the dependencies for you. This package and its dependencies are pure Elisp, meaning setup is a breeze, the whole thing is highly portable, and it works with many browsers.
+
+ Dependencies:
+
+     simple-httpd (available on MELPA)
+     js2-mode (available on ELPA)
+
+ Skewer requires Emacs 24.3 or later.
+** [2017-02-14 Tue 04:15] [[https://github.com/bbatsov/zenburn-emacs][bbatsov/zenburn-emacs: The Zenburn colour theme ported to Emacs]]
+ Zenburn for Emacs is a direct port of the popular Zenburn theme for vim, developed by Jani Nurminen. It's my personal belief (and that of its many users I presume) that it's one of the best low contrast color themes out there and that it is exceptionally easy on the eyes.
+** [2017-02-14 Tue 04:26] [[https://github.com/bnbeckwith/writegood-mode][bnbeckwith/writegood-mode: Minor mode for Emacs to improve English writing]]
+ This is a minor mode to aid in finding common writing problems. Matt Might’s weaselwords scripts inspired this mode.
+
+ It highlights text based on a set of weasel-words, passive-voice and duplicate words.
+** [2017-02-14 Tue 05:23] [[https://github.com/remvee/android-mode][remvee/android-mode: Emacs minor mode for Android application development]]
+android-mode.el -- Minor mode for Android application development
+
+Provides support for running Android SDK subprocesses like the
+emulator, logcat, ddms and ant.
+
+Copyright (C) 2009, 2010, 2011, 2012, 2013, 2014 R.W van 't Veer
+
+This program is free software; you can redistribute it and/or
+modify it under the terms of the GNU General Public License
+as published by the Free Software Foundation; either version 3
+of the License, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with GNU Emacs; see the file COPYING.  If not, write to the
+Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
+Boston, MA 02110-1301, USA.
+** [2017-02-14 Tue 05:25] [[https://zhangda.wordpress.com/2016/02/15/configurations-for-beautifying-emacs-org-mode/][Configurations for beautifying Emacs org mode | Da's recipes on Emacs, IT, and more]]
+Purpose of the configuration: to beautify org-mode’s appearance with some eye-candies
+The configuration contains the following parts
+
+    choose the right font and fall-back font
+    enable utf coding
+    select org-bullet symbol set
+    select org-ellipsis symbol
+    define the faces of org-bullet
+** [2017-02-14 Tue 05:27] [[https://github.com/Wilfred/emacs-refactor][Wilfred/emacs-refactor: language-specific refactoring in Emacs]]
+Emacs Refactor (EMR) is a framework for providing language-specific refactoring in Emacs. It includes refactoring commands for a variety of languages, including elisp itself!
+** [2017-02-14 Tue 05:28] [[https://github.com/DarwinAwardWinner/ido-ubiquitous][DarwinAwardWinner/ido-ubiquitous: Fancy completion all over Emacs, not just for buffers and files.]]
+Gimme some ido... everywhere! This package replaces stock emacs completion with ido completion wherever it is possible to do so without breaking things.
+** [2017-02-14 Tue 05:29] [[https://github.com/nonsequitur/smex][nonsequitur/smex: A smart M-x enhancement for Emacs.]]
+Smex is a M-x enhancement for Emacs. Built on top of Ido, it provides a convenient interface to your recently and most frequently used commands. And to all the other commands, too.
+** [2017-02-14 Tue 05:30] [[https://github.com/porterjamesj/virtualenvwrapper.el][porterjamesj/virtualenvwrapper.el: virtualenv tool for emacs]]
+
+    Works with the new python.el, which is the default on Emacs 24.3 and up. Does not support the older python modes.
+    Python shells, interactive shells, eshell, and any other subprocesses can be made aware of your virtualenvs.
+    Implements a large subset of the functionality of virtualenvwrapper.
+** [2017-02-14 Tue 05:31] [[https://github.com/expez/company-quickhelp][expez/company-quickhelp: Documentation popup for Company]]
+One of the things I missed the most when moving from auto-complete to company was the documentation popups that would appear when idling on a completion candidate. This package remedies that situation.
+
+auto-complete uses popup-el to do its thing and this results in quite a few glitches. This package uses the much better pos-tip to display the popups. I recommend installing pos-tip using MELPA which fetches the version of pos-tip which is located here. This version contains a few bugfixes not included in the original on EmacsWiki.
+** [2017-02-14 Tue 05:31] [[https://github.com/DogLooksGood/parinfer-mode][DogLooksGood/parinfer-mode: Parinfer for Emacs :)]]
+Parinfer is a proof-of-concept editor mode for Lisp programming languages. It will infer some changes to keep Parens and Indentation inline with one another. Parinfer consists of two modes:
+
+Indent Mode
+    Indent Mode gives you full control of indentation, while Parinfer corrects parens.
+Paren Mode
+    Paren Mode gives you full control of parens, while Parinfer corrects indentation.
+
+To learn more about Parinfer, please take a look at its home page.
+
+And the parinfer-mode is the implementation on Emacs with parinfer-elisp.
+** [2017-02-14 Tue 05:32] [[https://github.com/jschaf/esup][jschaf/esup: ESUP - Emacs Start Up Profiler]]
+Benchmark Emacs Startup time without ever leaving your Emacs.
+** [2017-02-14 Tue 05:32] [[https://github.com/noctuid/general.el][noctuid/general.el: More convenient key definitions in emacs]]
+general.el provides a more convenient way to bind keys in emacs for both evil and non-evil users. general-define-key allows defining multiple keys at once, implicitly wrapping key strings with (kbd ...), having named prefix key sequences (like the leader key in vim), and more.
+** [2017-02-14 Tue 05:32] [[https://github.com/rnkn/fountain-mode][rnkn/fountain-mode: Emacs major mode for screenwriting in Fountain plaintext markup]]
+Fountain Mode is a complete screenwriting environment for GNU Emacs using the Fountain markup format. For more information on the Fountain markup format, visit http://fountain.io.
+** [2017-02-14 Tue 05:33] [[https://github.com/Bad-ptr/persp-mode.el][Bad-ptr/persp-mode.el: named perspectives(set of buffers/window configs) for emacs]]
+Perspectives for emacs, based on the perspective-el by Natalie Weizenbaum.
+But the perspectives are shared among frames + ability to save/restore its state from/to a file.
+** [2017-02-14 Tue 06:12] [[https://groups.google.com/forum/#!searchin/mu-discuss/gnome|sort:relevance/mu-discuss/RAxVY87rX8E/-8oSo7MlAgAJ][Setting mu4e as default email program in Gnome 3? - Google Groups]]
+I'm using a script for this. I seem to remember that it was possible to add a command in the default applications of Fedora/Gnome, but it does not appear to be possible now. You can write a script such as:
+
+#!/bin/bash
+emacsclient -c --eval "(browse-url-mail \"$@\")"
+** [2017-02-16 Thu 07:54] [[https://github.com/Malabarba/elisp-bug-hunter][Malabarba/elisp-bug-hunter: Hunt down errors in elisp files.]]
+#+BEGIN_QUOTE
+Automatically debug and bisect your init (.emacs) file!
+
+The Bug Hunter is an Emacs library that finds the source of an error or unexpected behavior inside an elisp configuration file (typically init.el or .emacs).
+#+END_QUOTE
+** [2017-02-18 Sat 04:01] [[https://www.reddit.com/r/emacs/comments/5tqn61/orgrefiletargets_based_on_current_org_file/][org-refile-targets based on current org file : emacs]]
+All that should be required is to call org-refile inside a let, like:
+
+(let ((org-refile-targets 'whatever))
+  (org-refile ...
+** [2017-02-18 Sat 08:49] [[https://github.com/emacs-pe/markdown-edit-indirect.el][emacs-pe/markdown-edit-indirect.el: Edit markdown code block in a separate buffer]]
+Edit markdown code block in a separate buffer like org-edit-src-code.
+** [2017-02-18 Sat 19:24] [[https://github.com/javaguirre/ghost-blog-emacs][javaguirre/ghost-blog-emacs: Ghost mode for Emacs]]
+#+BEGIN_QUOTE
+The package uses markdown-mode for highlighting.
+
+
+#+END_QUOTE
+** [2017-02-18 Sat 19:25] [[https://github.com/tarsius/git-elisp-overview][tarsius/git-elisp-overview: Git-related Emacs packages]]
+#+BEGIN_QUOTE
+There is more to Git than magic. A list of Git related Emacs packages, compiled by the maintainer of Magit. The intention is to list all such packages in existence. Please tell me about packages that I have missed.
+
+
+#+END_QUOTE
+** [2017-02-19 Sun 22:00] [[https://github.com/jwiegley/dot-emacs][jwiegley/dot-emacs: My .emacs.el file and other personal Emacs goodies]]
+#+BEGIN_QUOTE
+My .emacs.el file and other personal Emacs goodies http://www.newartisans.com
+
+#+END_QUOTE
+** [2017-02-20 Mon 23:57] [[https://emacs.stackexchange.com/questions/5298/reading-mailing-list-archives-in-emacs][email - Reading mailing list archives in Emacs? - Emacs Stack Exchange]]
+up vote
+19
+down vote
+accepted
+        
+
+Sure GNUS is an answer. From emacswiki
+
+M-x gnus
+B
+nntp
+news.gmane.org
+
+And select gmane.emacs.devel. From here you can browse through the threads using GNUs NNTP interface (which is what it was originally written to do). This is probably the best solution for browsing through historical mailing lists.
+
+As others have mentioned you may only want to read a small set of emails perhaps attached to a bug or patchwork. In this case if you can download the mbox file you can browse it directly without dealing with network latency. Again Emacs has many solutions for email however built in you can use Rmail quite easily. The steps for this are:
+
+M-x rmail
+
+This will bring up your default inbox (most likely your systems /var/mail/$USER and copy it in ~/RMAIL). However to load in a "foreign" mail box you type:
+
+i
+path/to/mbox
+h
+
+This will put you at the summary view of the mail box which you can then browse with the usual Emacs navigation.
+** [2017-02-22 Wed 01:32] [[https://github.com/theanalyst/ix.el][theanalyst/ix.el: An emacs client to http://ix.io pastebin]]
+ix.el is available as a package via MELPA or Marmalade. If MELPA/Marmalade is already added to your package archives install the package ix.el from there. Otherwise do this in a *scratch* buffer:
+** [2017-02-22 Wed 06:25] [[https://github.com/ankurdave/color-identifiers-mode][ankurdave/color-identifiers-mode: Emacs minor mode to highlight each source code identifier uniquely based on its name]]
+#+BEGIN_QUOTE
+Color Identifiers is a minor mode for Emacs that highlights each source code identifier uniquely based on its name. It is inspired by a post by Evan Brooks.
+
+Currently it supports Scala (scala-mode2), JavaScript (js-mode and js2-mode), Ruby, Python, Emacs Lisp, Clojure, C, C++, and Java. You can add support for your favorite mode by modifying color-identifiers:modes-alist and optionally calling color-identifiers:set-declaration-scan-fn.
+
+
+#+END_QUOTE
+** [2017-02-25 Sat 10:08] [[https://github.com/jgm/gitit][jgm/gitit: A wiki using HAppS, pandoc, and git]]
+Gitit is a wiki program written in Haskell. It uses Happstack for the web server and pandoc for markup processing. Pages and uploaded files are stored in a git, darcs, or mercurial repository and may be modified either by using the VCS's command-line tools or through the wiki's web interface. By default, pandoc's extended version of markdown is used as a markup language, but reStructuredText, LaTeX, HTML, DocBook, or Emacs Org-mode markup can also be used. Pages can be exported in a number of different formats, including LaTeX, RTF, OpenOffice ODT, and MediaWiki markup. Gitit can be configured to display TeX math (using texmath) and highlighted source code (using highlighting-kate).
+** [[https://github.com/zk-phi/sublimity][zk-phi/sublimity: emacs]] smooth-scrolling and minimap like sublime editor]] :emacs:sublime:minimap: 
+ <2016-12-14 Wed 11:02>
+
+ smooth-scrolling, minimap and distraction-free mode (inspired by the sublime editor)
+** [[https://github.com/rakanalh/emacs-dashboard][rakanalh/emacs-dashboard: A shameless extraction of Spacemac's startup screen]] :emacs:dashboard: 
+ <2016-12-14 Wed 11:05>
+
+ A shameless extraction of Spacemacs’ startup screen.
+ Features
+
+     Displays an awesome Emacs banner!
+     Recent files
+     Bookmarks list
+     Recent projectile projects list (Depends on `projectile` package)
+** [[https://github.com/rejeep/drag-stuff.el][rejeep/drag-stuff.el: Drag stuff around in Emacs]]             :emacs:drag: 
+ <2016-12-14 Wed 11:12>
+
+ Drag Stuff is a minor mode for Emacs that makes it possible to drag stuff (words, region, lines) around in Emacs.
+** [[https://habrahabr.ru/post/265635/][Навигация в крупных проектах для Vim и Emacs / Хабрахабр]] :gtags:howto:russian: 
+ <2016-12-14 Wed 13:16>
+
+  Лучше всего установить плагин ggtags, взять его можно здесь или в elpa, melpa или marmalade. Потом откройте один из файлов проекта и нажмите M-x ggtags-mode, затем M-x ggtags-visit-project-root и выберите папку где тэги лежат. Все, дальше в рамках файлов проекта если вы нажмете M-., то сработает переход к определению символа, который в данный момент под курсором. Хотите ввести имя символа вручную — C-u M-.. Если у символа больше одного определения, то нажимайте M-n и M-p для переключения между определениями. Чтобы обновить файл тэгов нажмите M-x ggtags-update-tags находясь на одном из файлов проекта.
+** [[https://github.com/abingham/emacs-ycmd][abingham/emacs-ycmd: Emacs client for ycmd, the code completion system.]] :emacs:github:top:completion:client: 
+ <2016-12-15 Thu 00:13>
+
+ emacs-ycmd is a client for ycmd, the code completion system. It takes care of managing a ycmd server and fetching completions from that server.
+
+ emacs-ycmd comprises a core set of functionality for communicating with ycmd as well as integration with the Emacs completion framework company-mode.
+
+ A lot of the concepts behind emacs-ycmd are actually concepts from ycmd itself, so if you feel lost you might read the ycmd documentation and/or the the original YouCompleteMe documentation.
+
+ Important: The ycmd package itself doesn't provide a real UI for selecting and inserting completions into your files. For that you need to use company-ycmd or another "completion framework".
+** [[https://github.com/Valloric/ycmd#building][Valloric/ycmd: A code-completion & code-comprehension server]] :cpp:github:top:compilation:server:emacs:vim: 
+ <2016-12-15 Thu 00:16>
+
+ ycmd is a server that provides APIs for code-completion and other code-comprehension use-cases like semantic GoTo commands (and others). For certain filetypes, ycmd can also provide diagnostic errors and warnings.
+
+ ycmd was originally part of YouCompleteMe's codebase, but has been split out into a separate project so that it can be used in editors other than Vim.
+
+ The best way to learn how to interact with ycmd is by reading through (and running) the example_client.py file. See the README for the examples folder for details on how to run the example client.
+** [[https://github.com/jorgenschaefer/elpy][jorgenschaefer/elpy: Emacs Python Development Environment]] :emacs:github:top:python: 
+ <2016-12-15 Thu 06:49>
+
+ Elpy is an Emacs package to bring powerful Python editing to Emacs. It combines and configures a number of other packages, both written in Emacs Lisp as well as Python.
+** [[https://github.com/jorgenschaefer/Config][jorgenschaefer/Config: Personal configuration files]] :emacs:config:jorgenschaefer:elpy: 
+ <2016-12-15 Thu 06:51>
+
+ These are my configuration files for UNIX home directories. If you clone this, be aware that I break stuff randomly and will happily use git push --force. You’ve been warned.
+** [[https://github.com/emacs-mirror/emacs][emacs-mirror/emacs: Mirror of GNU Emacs]] :emacs:github:top:source:mirror: 
+ <2016-12-15 Thu 11:21>
+
+  Mirror of GNU Emacs http://www.gnu.org/software/emacs/
+** [[https://github.com/jorgenschaefer/elpy][jorgenschaefer/elpy: Emacs Python Development Environment]] :emacs:github:top:python:ide: 
+ <2016-12-15 Thu 11:22>
+
+ Elpy is an Emacs package to bring powerful Python editing to Emacs. It combines and configures a number of other packages, both written in Emacs Lisp as well as Python.
+** [[https://github.com/gabrielelanaro/emacs-for-python][gabrielelanaro/emacs-for-python: Collection of emacs extensions specifically collected for python development, with workflow guidelines!]] :emacs:github:top:python:collection: 
+ <2016-12-15 Thu 11:22>
+
+  Collection of emacs extensions specifically collected for python development, with workflow guidelines! http://gabrielelanaro.github.com/emac…
+** [[https://github.com/ch11ng/exwm][ch11ng/exwm: Emacs X Window Manager]] :emacs:github:top:window:manager:xorg: 
+ <2016-12-15 Thu 11:23>
+
+  Emacs X Window Manager
+** [[https://github.com/pashky/restclient.el][pashky/restclient.el: HTTP REST client tool for emacs]] :emacs:github:top:http:rest:web:client: 
+ <2016-12-15 Thu 11:24>
+
+ This is a tool to manually explore and test HTTP REST webservices. Runs queries from a plain-text query sheet, displays results as a pretty-printed XML, JSON and even images.
+** [[https://github.com/magnars/dash.el][magnars/dash.el: A modern list library for Emacs]] :emacs:github:top:library:list: 
+ <2016-12-15 Thu 11:25>
+
+  A modern list library for Emacs
+** [[https://www.youtube.com/watch?v=3T00X_sNg4Q][Learn You Some Lisp for Great Good - YouTube]] :emacs:video:youtube:lisp:programming:tutorial: 
+ <2016-12-16 Fri 15:42>
+
+ Slides and audio from a presentation given by Howard Abrams at the Open Source Bridge (@osbridge) on 24 Jun 2014 in Portland, Oregon.
+
+ The thesis for the presentation encouraged programmers to learn Lisp in order to be a better programmer.
+** [[https://github.com/rlister/org-present][rlister/org-present: Ultra-minimalist presentation minor-mode for Emacs org-mode.]] :emacs:github:top:org:mode:presentation:mode: 
+ <2016-12-16 Fri 16:29>
+
+ This is meant to be an extremely minimalist presentation tool for Emacs org-mode. Simply layout your presentation with each slide under a top-level header, start the minor mode with 'org-present', and page through each slide with left/right keys.
+** [[https://www.gnu.org/software/emacs/manual/html_mono/eintr.html][Programming in Emacs Lisp]]        :emacs:github:top:lisp:introduction:gnu: 
+ <2016-12-16 Fri 16:44>
+
+ The homepage for GNU Emacs is at http://www.gnu.org/software/emacs/.
+ To view this manual in other formats, click here.
+
+ This is an Introduction to Programming in Emacs Lisp, for people who are not programmers.
+** Emacs Lisp features                                 :emacs:lisp:features: 
+ <2016-12-16 Fri 16:50>
+
+    Because Emacs Lisp is designed for use in an editor, it has special
+ features for scanning and parsing text as well as features for handling
+ files, buffers, displays, subprocesses, and so on.  Emacs Lisp is
+ closely integrated with the editing facilities; thus, editing commands
+ are functions that can also conveniently be called from Lisp programs,
+ and parameters for customization are ordinary Lisp variables.
+** An Introduction to Emacs Lisp Programming :emacs:lisp:introduction:beginner: 
+ <2016-12-16 Fri 16:52>
+** [[https://github.com/seanirby/evalator][seanirby/evalator: Emacs package for interactive evaluation and transformation of data.]] :emacs:github:top:debugging:keybindings:functions: 
+ <2016-12-17 Sat 02:00>
+
+ Evalator is a new kind of REPL for Emacs.
+
+ What makes it different from a normal REPL? With evalator you can:
+
+     Evaluate expressions using any language*
+     See the results of an expression as it is typed
+     Transform data in a stepwise fashion
+     Generate code
+     Interact with Emacs using a language other than Elisp
+
+** M-x view-lossage                      :emacs:keybind:debugging:functions: 
+ <2016-12-17 Sat 03:48>
+
+ то есть chroot
+** [[https://github.com/fniessen/emacs-leuven-theme][fniessen/emacs-leuven-theme: Awesome Emacs color theme for white backgrounds --- Added in Emacs 24.4]] :emacs:org:mode:color:theme:amazing: 
+ <2016-12-17 Sat 04:05>
+
+ Looking for an awesome Emacs color theme? Looking for one of the best light themes for Org mode, and for other modes too? Here’s the place to find one!
+
+ Welcome to the custom Leuven theme, an elegant and popular color theme for light backgrounds, with built-in style for many components such as Org mode, Gnus, Dired+ and EDiff. Make it yours!
+** [[https://www.youtube.com/watch?v=-wPfxuxIfeU&t=1s][Using Emacs 23 - capture - YouTube]]    :emacs:org:mode:howto:encrypt:file: 
+ <2016-12-17 Sat 04:19>
+
+ emacs also works great with gpg, filename.org.gpg will encrypt/dencrypt first then load org-mode, i use this to encrypt my journal.﻿
+** [[https://www.youtube.com/watch?v=-wPfxuxIfeU&t=1s][Using Emacs 23 - capture - YouTube]]          :emacs:howto:livecoding:mode: 
+ <2016-12-17 Sat 05:02>
+
+ Neat! didn't know most of this, so great video! Remember when I told you about my live-coding setup? I will help with the small font in the mode-line :) (defun live-coding () (interactive) (set-face-attribute 'default nil :font "Hack-16") (add-hook 'prog-mode-hook 'command-log-mode))﻿
+** [[https://github.com/abo-abo/avy][abo-abo/avy: Jump to things in Emacs tree-style]] :emacs:github:top:avy:jump:visible:text:char:based:desision:tree: 
+ <2016-12-17 Sat 05:14>
+
+ avy is a GNU Emacs package for jumping to visible text using a char-based decision tree. See also ace-jump-mode and vim-easymotion - avy uses the same idea.
+** [[https://www.youtube.com/watch?v=8RwQNXOjSis][Using Emacs 19 - moving to a live config - YouTube]] :emacs:youtube:video:howto:load:file: 
+ <2016-12-17 Sat 05:23>
+
+
+ Using Emacs 19 - moving to a live config
+** [[https://www.youtube.com/watch?v=pSjrwSI4OHk][Emacs and Remote Shell - YouTube]] :emacs:youtube:video:tutorial:function:wrapping:tramp: 
+ <2016-12-17 Sat 06:44>
+
+ Quick demonstration of some wrapper functions around Tramp and Shell commands that allow me to kick off commands on multiple remote hosts.
+
+ To grab the source code, hop over to https://github.com/howardabrams/dot-f...
+
+ I promised that I would give the source to the function that populates the map of hosts and their IP address. Keep in mind, you could just hard-code those values if you wish (as it is just a hash-table). However, this is what I wrote to call to an OpenStack system to populate that hashmap, so to see that, check out this gist: https://gist.github.com/howardabrams/...
+** [[https://www.youtube.com/watch?v=dljNabciEGg][Literate Devops with Emacs - YouTube]] :emacs:video:youtube:literate:programming:tutorial: 
+ <2016-12-17 Sat 06:46>
+
+ A demonstration originally given at EmacsConf 2015 that describes how I use org-mode's Babel project and Tramp to configure and work with remote servers in my data center, prior to copying code off into Chef cookbooks and whatnot.
+
+** My initial essay that started this presentation: http://howardism.org/Technical/Emacs/...
+** Emacs code used to make this demonstration: http://github.com/howardabrams/demo-it
+** My Emacs configuration files: http://github.com/howardabrams/dot-files
+** [[https://github.com/howardabrams/demo-it][howardabrams/demo-it: An Emacs package for running demonstrations and presentations from within Emacs.]] :emacs:github:top:presentations: 
+ <2016-12-17 Sat 07:01>
+
+ At the end of each sprint, each of us demonstrate accomplishments. These reviews often incorporate the following trifecta:
+
+     Presentations explaining the technology and other frobnications
+     Source code, correctly highlighted and perhaps interactive
+     Executing the code, preferably in a shell to maintain nerd cred
+
+ During my sprint reviews, I noticed I used my org-mode-formatted files, eshell and source code buffers… always in Emacs. However, fat-fingering or mentally burping delayed the gratification for my audience while I laboriously typed. I solved this problem by predefining each “step” as an Emacs Lisp function, and had another function execute each step function when I hit an advance key (F12).
+
+ After I had amassed a small army of helper functions, I packaged it as demo-it, because I lack the imagination to come up with anything more clever.
+
+ See the following videos as examples of what can be done:
+
+     Emacs: An Introduction for the Curious
+     Literate DevOps Programming
+     Learn You Some Lisp for Great Good
+
+ Click the following image for a quicker example:
+** Author of Emacs Elisp Introduction info page :emacs:author:elisp:introduction: 
+ <2016-12-17 Sat 07:40>
+
+ Thank You
+ =========
+
+ My thanks to all who helped me with this book.  My especial thanks to
+ Jim Blandy, Noah Friedman, Jim Kingdon, Roland McGrath, Frank Ritter,
+ Randy Smith, Richard M. Stallman, and Melissa Weisshaus.  My thanks also
+ go to both Philip Johnson and David Stampe for their patient
+ encouragement.  My mistakes are my own.
+
+                                                      Robert J. Chassell
+                                                           <bob@gnu.org>
+** What is side effect in Emacs Lisp                 :emacs:whatis:question: 
+ <2016-12-17 Sat 09:58>
+
+ side effect
+** Emacs evaluate in scratch buffer        :emacs:scratch:buffer:evaluation: 
+ <2016-12-17 Sat 10:32>
+
+    Incidentally, if you are in the ‘*scratch*’ buffer and want the value
+ returned by an expression to appear in the ‘*scratch*’ buffer itself
+ rather than in the echo area, type ‘C-u C-x C-e’ instead of ‘C-x C-e’.
+ This causes the value returned to appear after the expression.  The
+ buffer will look like this:
+** [[https://www.masteringemacs.org/article/complete-guide-mastering-eshell][Mastering Eshell - Mastering Emacs]]               :emacs:mastering:eshell: 
+ <2016-12-17 Sat 11:32>
+
+ notebooks
+** [[https://www.youtube.com/watch?v=kt-wLpz-9PA][Emacs transpose-words and defadvice - YouTube]] :video:youtube:tutorial:transpose:words:function:advice: 
+ <2016-12-17 Sat 13:06>
+
+ Hacking Emacs to change the behavior of existing functions. Essentially, I show a little trick, but then show how to use defadvice to change the behavior of transpose-words.
+** [[https://www.youtube.com/watch?v=OjbkCEkboA8][C/C++ in Spacemacs - YouTube]] :emacs:video:tutorial:youtube:c:cpp:setup:configure:first:initial: 
+ <2016-12-17 Sat 16:34>
+
+ How to get a decent environment for C/C++ development in Spacemacs.
+** GNU Licence short description from Emacs Lisp Introduction :emacs:licence:gnu:short:description: 
+ <2016-12-17 Sat 16:58>
+
+    Finally, if you have code that everyone who uses Emacs may want, you
+ can post it on a computer network or send a copy to the Free Software
+ Foundation.  (When you do this, please license the code and its
+ documentation under a license that permits other people to run, copy,
+ study, modify, and redistribute the code and which protects you from
+ having your work taken from you.)  If you send a copy of your code to
+ the Free Software Foundation, and properly protect yourself and others,
+ it may be included in the next release of Emacs.  In large part, this is
+ how Emacs has grown over the past years, by donations.
+** [[https://stackoverflow.com/questions/8271022/using-elisp-how-to-start-send-keys-to-and-stop-a-command-in-emacs-terminal-em][linux - Using elisp, how to start, send-keys-to, and stop a command in emacs terminal emulator? - Stack Overflow]] :emacs:write:to:terminal:buffer: 
+ <2016-12-17 Sat 18:10>
+
+ (progn
+   (set-buffer "*terminal*")
+   (term-send-raw-string "ls -l\n"))
+** [[https://github.com/kgshank/gse-sound-output-device-chooser][kgshank/gse-sound-output-device-chooser: Gnome Shell Extension to show a simple chooser to select Input & Output device based on gnome control center]] :emacs:github:top:extensions:audio:switching: 
+ <2016-12-18 Sun 06:08>
+
+ A simple selector to enabled selection of sound source and sink based on Gnome Control Center
+ Install URL: extensions.gnome.org
+ Gnome shell versions compatible
+
+     3.18
+     3.20
+     3.22
+
+ Notes:
+
+     May conflict with extensions which modify volume menu.
+     Extension works with Volume Mixer extension. Restart shell, if errors encountered.
+** [[https://www.emacswiki.org/emacs/MakingPackages][EmacsWiki: Making Packages]]                   :emacs:wiki:howto:packaging: 
+ <2016-12-18 Sun 11:19>
+
+ ELPA packages come in two forms. The first is a relatively simple single file package, the second is a more complicated multi-file format. Most of this page discusses the multi-file format because it causes the most problems.
+** [[https://www.emacswiki.org/emacs/ELPA][EmacsWiki: ELPA]]                                   :emacs:wiki:howto:elpa: 
+ <2016-12-18 Sun 11:20>
+
+     Whenever Emacs starts up, it automatically calls the function ‘package-initialize’ to load installed packages. This is done after loading the init file and abbrev file (if any) and before running ‘after-init-hook’ (see Startup Summary). Automatic package loading is disabled if the user option package-enable-at-startup is nil.
+** [[https://github.com/roman-mazhut/emacs-vkontakte][roman-mazhut/emacs-vkontakte: Simple implementation of vk messaging for emacs]] :emacs:vk:client:elisp: 
+ <2016-12-18 Sun 14:42>
+
+ Simple implementation of vk messaging for emacs
+** [[https://github.com/spegoraro/org-alert][spegoraro/org-alert: System notifications of org agenda items]] :emacs:github:top:org:mode:org:alert:notifications:desktop:clock: 
+ <2016-12-18 Sun 15:49>
+
+ Provides notifications for scheduled or deadlined agenda entries.
+
+ Screenshot
+** [[https://github.com/syl20bnr/spacemacs/issues/7038][UI freezes when you type in Emacs 25 · Issue #7038 · syl20bnr/spacemacs]] :emacs:bug:spacemacs:company:mode:freeze:elisp:comment:string: 
+ <2016-12-18 Sun 15:58>
+
+ Emacs-lisp mode in Emacs 25 freezes. I suspect it has something to do with company-mode.
+ I do not see this in Emacs 24.
+ I am not sure yet, but I think disabling company-mode "fixes" this. It might be an upstream issue with company.el
+
+#+BEGIN_SRC emacs-lisp
+(eval-after-load 'semantic
+    (add-hook 'semantic-mode-hook
+              (lambda ()
+                (dolist (x (default-value 'completion-at-point-functions))
+                  (when (string-prefix-p "semantic-" (symbol-name x))
+                    (remove-hook 'completion-at-point-functions x))))))
+#+END_SRC
+** How to effectively use helm       :emacs:spacemacs:helm:howto:files:grep: 
+ <2016-12-19 Mon 07:55>
+
+ <quicknir> There's also a few special things you can use in SPC b b hthat
+            don't work in most helm contets  [07:46]
+ <quicknir> you can do * to match major mode
+ <jamieaus88_twitter> yeah. I like how there's a recent list in there as well.
+                  I barely have to use SPC f f 
+ <quicknir> *Python will show you only python files
+ <jamieaus88_twitter> neat
+ <quicknir> and @ will show you things that contain that text  [07:49]
+ <quicknir> `@hello` will filter down to buffers that contain hello somewhere
+ <quicknir> ! is negation, works basically everywhere
+ <jamieaus88_twitter> I can't get *Python to work
+ <jamieaus88_twitter> do you literally type *Python?
+ <quicknir> yah  [07:52]
+ <quicknir> SPC b b
+ <quicknir> *Python
+ <quicknir> Should only show you your python buffers  [07:53]
+ <quicknir> If you have any open
+ <quicknir> it won't work in SPC f f etc
+ <lijingjiang> Hey guys, I would love to know is there some way to always hide
+               some specific buffer like `Async Shell Command buffer`  [07:54]
+ <jamieaus88_twitter> yeah got it!
+ <quicknir> @lijingjiang why do you want to hide it? Hide it from where, SPC b
+            b?
+ <gitter> [Github] angry-bird commented in syl20bnr/spacemacs on issue: Org
+          mode hangs very sporadically when using mini-buffers
+          https://github.com/syl20bnr/spacemacs/issues/5778#issuecomment-267881946
+                                                                         [07:55]
+ <quicknir> @jamieaus88_twitter yeah it's pretty cool. @as well. And !. ! works
+            everywhere use it a lot when searching for files
+** [[https://www.reddit.com/r/emacs/comments/5f83cj/how_can_we_add_nongmane_newsgroups_to_gnus/][How can we add non-Gmane newsgroups to Gnus? : emacs]] :usenet:recommended:server: 
+ <2016-12-19 Mon 11:33>
+
+ There are many NNTP servers, a lot of them are listed in the Usenet Providers Wiki of /r/usenet!
+
+ For a free one that seems to fit your requirements, check out Aioe.org:
+
+     free
+     supports SSL
+     reasonable limits
+     most importantly: supports comp.lang.prolog.
+** How to sort org table                        :emacs:org:mode:sort:tables: 
+ <2016-12-19 Mon 12:32>
+
+ You can quickly sort tables in org-mode by using C-c ^ with the point inside a table. You’ll be prompted for a sorting type, where you can choose e.g. a for alphabetic or n for numeric. You can use capital letter
+ versions of these options to reverse the sort. 
+
+ The table is sorted based on the column that the point is in, and from the documentation: 
+
+  The range of lines is the range between the nearest horizontal separator lines, or the entire table of no such lines exist.
+** [[https://github.com/vermiculus/sx.el][vermiculus/sx.el: Stack Exchange for Emacs]] :emacs:github:top:stackexchange: 
+ <2016-12-19 Mon 19:19>
+
+ SX is a full-featured Stack Exchange mode for GNU Emacs 24+. Using the official API, it provides a versatile experience for the Stack Exchange network within Emacs itself.
+** [[https://github.com/emacs-helm/helm-mu][emacs-helm/helm-mu: Helm sources for searching emails and contacts using mu]] :emacs:github:top:mu4e:helm:search: 
+ <2016-12-20 Tue 06:31>
+
+ Mu is an indexer for maildirs and mu4e is a mutt-like MUA for Emacs build on top of mu. Mu is highly efficient, which makes it possible to get instant search results even for huge maildirs. It also provides search operators similar to Google mail, e.g:
+
+ from:Titus to:Anne flag:attach vacation photos
+** mu4e bug report conventions                             :mu4e:bug:report: 
+ <2016-12-20 Tue 06:58>
+
+    Sometimes, you might encounter some unexpected behavior while using
+ mu4e.  It could be a bug in mu4e, it could be an issue in other
+ software.  Or it could just be a misunderstanding.  In any case, if you
+ want to report this (either to the mailing list or to
+ <https://github.com/djcb/mu/issues>, the latter is preferred), please
+ always include the following information:
+
+    • what did you expect that should happen?  what actually happened?
+    • can you provide some exact steps to reproduce?
+    • what version of mu4e and emacs were you using?  What operating
+      system?
+    • can you reproduce it with emacs -q and only loading mu4e?
+    • if the problem is related to some specific message, please include
+      the raw message file (appropriately anonimized, of course)
+
+    (1) <http://groups.google.com/group/mu-discuss>
+** How to search email with mu or mu4e           :emacs:mu4e:mu:mail:search: 
+ <2016-12-20 Tue 07:04>
+
+    which lists all messages that match hello.  For more examples of
+ searches, see *note Queries::, or check the mu-find and mu-easy man
+ pages.  If all of this worked well, we are well on our way setting
+ things up; the next step is to do some basic configuration for mu4e.
+** [[http://sachachua.com/blog/2016/12/using-categories-organize-org-agenda/][Using categories to organize your Org agenda - sacha chua :: living an awesome life]] :emacs:org:mode:agenda:category: 
+ <2016-12-20 Tue 15:08>
+
+ I've just discovered that it helps to add a :CATEGORY: property to the top-level, non-TODO heading that identifies the project.  Using your example:
+** [[https://github.com/abo-abo/define-word][abo-abo/define-word: Display the definition of word at point in Emacs]] :emacs:github:word:definition: 
+ <2016-12-20 Tue 17:17>
+
+ define-word is a GNU Emacs package that lets you see the definition of a word or a phrase at point, without having to switch to a browser:
+** [[http://ergoemacs.org/emacs/elisp_hash_table.html][Emacs Lisp: Hash Table]]                       :emacs:tutorial:hash:tables: 
+ <2016-12-20 Tue 19:12>
+
+ This page is a tutorial on emacs lisp hash table.
+
+ Emacs lisp has 2 types of list of key/value pairs.
+
+     Association List (aka alist).
+     Hash Table.
+
+ What's the Difference Between Alist and Hash Table?
+
+     Alist items are ordered, and can have duplicate keys.
+     Hash Table entries are unique. Hash Table items are not ordered. Hash Table is usually faster for random access when there are huge number of items (tens of thousands).
+
+ Alist is actually a list, with each element being a cons pair (cons key val). The element may repeat. The list is ordered. Emacs provides high level functions to let you use it as a key value pairs. See (info "(elisp) Association Lists")
+** [[https://github.com/jordonbiondo/quake-mode][jordonbiondo/quake-mode: Quake/Unreal style text killing sprees for Emacs.]] :emacs:github:lol:unreal:quake:multikill:sound: 
+ <2016-12-20 Tue 23:27>
+
+ Minor mode providing Quake/Unreal-style killing sprees in Emacs.
+** [[https://github.com/benma/visual-regexp-steroids.el][benma/visual-regexp-steroids.el: Extends visual-regexp to support other regexp engines]] :emacs:github:top:regexp:visual: 
+ <2016-12-21 Wed 13:47>
+
+ visual-regexp-steroids is an extension to visual-regexp which enables the use of modern regexp engines (no more escaped group parentheses, and other goodies!). In addition to that, you can optionally use the better regexp syntax to power isearch-forward-regexp and isearch-backward-regexp.
+
+ For now, Python and pcre2el is supported out of the box (tested on Linux and Windows). If you want to add custom scripts to enable your favorite language, please get in touch.
+** [[https://github.com/flycheck/flycheck][flycheck/flycheck: On the fly syntax checking for GNU Emacs]] :emacs:github:top:linter: 
+ <2016-12-22 Thu 11:28>
+
+ Modern on-the-fly syntax checking extension for GNU Emacs. Try it!
+** [[https://www.emacswiki.org/emacs/CategoryWriting][EmacsWiki: Category Writing]]                      :emacs:wiki:for:writers: 
+ <2016-12-22 Thu 12:28>
+
+ Clicking the title heading to search for pages about writing in natural languages with Emacs.
+** [[https://www.reddit.com/r/emacs/comments/5jpyeu/fastest_way_to_jump_to_bookmarks/][Fastest way to jump to bookmarks : emacs]] :emacs:reddit:fastest:bookmarks:jumps: 
+ <2016-12-22 Thu 14:07>
+
+ Fastest way to jump to bookmarks (
+** [[https://github.com/tsgates/pylookup][tsgates/pylookup: Emacs mode for searching python documents with convenience]] :emacs:python:github:top:documentation: 
+ <2016-12-22 Thu 15:07>
+
+ Pylookup stole idea from 'http://furius.ca/haddoc', one of my favorite emacs mode for python documentation lookup. I reimplemented python code and elisp code not just to support new version of python 2.7 but also to extend it for other documentation lookup interfaces with easy. Importantly, pylookup mode is much faster and supports fancy highlighting.
+
+ Please check, Web : http://taesoo.org/proj/pylookup.html Repo : http://github.com/tsgates/pylookup
+** [[https://github.com/gabrielelanaro/emacs-for-python][gabrielelanaro/emacs-for-python: Collection of emacs extensions specifically collected for python development, with workflow guidelines!]] :emacs:python:github:top: 
+ <2016-12-22 Thu 15:18>
+
+ I’m collecting and customizing the perfect environment for python development, using the most beautiful emacs customization to obtain a really modern and exciting (yet stable) way to edit text files.
+
+ In the package are included also a lot of other packages and configurations, it’s an upstart for clean emacs installations, these configuration however are very similar to emacs-starter-kit and I suggest you to give it a try, emacs-for-python is designed to work with it (instruction below).
+** [[http://sachachua.com/blog/2013/04/why-and-how-im-relearning-japanese/][Why and how I’m (re)learning Japanese - sacha chua :: living an awesome life]] :emacs:learning:japanese: 
+ <2016-12-25 Sun 16:53>
+
+ Clay Shirky has a great term for this: cognitive surplus, or what you can do when you have discretionary time and available brainspace. Hence Wikipedia and open source and I Can Has Cheezburger.
+** [[https://github.com/editorconfig/editorconfig-emacs#readme][editorconfig/editorconfig-emacs: EditorConfig plugin for emacs]] :multi:editor:style:code:configuration: 
+ <2016-12-26 Mon 18:25>
+** [[https://github.com/kuanyui/moe-theme.el][kuanyui/moe-theme.el: A customizable colorful eye-candy theme for Emacser. Moe, moe, kyun!]] :emacs:github:top:theme:easy:view: 
+ <2016-12-26 Mon 22:22>
+
+
+     Optimized for terminal's 256 color palettes.
+     Black-on-white & white-on-black.
+     Delightful and cheerful color palettes.
+     Quite completed (and reasonable) font faces for each mode.
+     Easy to customize!
+         Colorful Mode-line / Powerline.
+         Enlarge titles font sizes or not.
+         Automatically switch between dark and light moe-theme by local time! (optional)
+** [[https://github.com/novoid/lazyblorg][novoid/lazyblorg: Blogging with Org-mode for very lazy people]] :emacs:github:top:org:mode:blog: 
+ <2016-12-28 Wed 00:26>
+
+ [[https://github.com/novoid/lazyblorg][novoid/lazyblorg: Blogging with Org-mode for very lazy people]]
+** [[https://github.com/novoid/Memacs][novoid/Memacs: What did I do on February 14th 2007? Visualize your (digital) life in Org-mode]] :emacs:github:top:orgmode:history:time:stamp: 
+ <2016-12-28 Wed 02:03>
+
+ ## Time-stamp: <2015-03-29 13:20:39 vk> ## This file is best viewed with GNU Emacs Org-mode: http://orgmode.org/
+
+ What were you doing on February 14th of 2007? On which tasks were you working on that very day you met your girl friend? When was the last appointments with your dentist? Who called you on telephone during that meeting with your customer last month?
+
+ Most people can not answer such questions. With Memacs you can!
+
+ Memacs extracts metadata (subjects, timestamps, contact information, …) from many different existing data sources (file names, emails, tweets, bookmarks, …) on your computer and generates files which are readable by GNU Emacs with Org-mode.
+** [[https://github.com/coldnew/org-ioslide][coldnew/org-ioslide: Export org-mode to Google I/O HTML5 slide.]] :emacs:github:top:org:mode:export:presentation:html: 
+ <2016-12-28 Wed 04:47>
+
+ Export your Org document to Google I/O HTML5 slide. See DEMO slide.
+** [[https://github.com/bastibe/org-journal][bastibe/org-journal: A simple org-mode based journaling mode]] :emacs:github:top:journal:org:mode: 
+ <2016-12-28 Wed 04:49>
+
+ Adapted from http://www.emacswiki.org/PersonalDiary
+
+ Functions to maintain a simple personal diary / journal in Emacs. Feel free to use, modify and improve the code! — mtvoid, bastibe
+** [[https://github.com/larstvei/dot-emacs/blob/master/init.org][dot-emacs/init.org at master · larstvei/dot-emacs]] :emacs:github:top:org:mode:configuration:init:example: 
+ <2016-12-28 Wed 05:13>
+
+ This is an Emacs configuration file written in Org mode. It is an attempt to keep my ~/.emacs.d tidy, but still be able to keep it all in one file. I aim to briefly explain all my configurations as I go along!
+
+ I would not recommend using this configuration as-is, because it probably contains a lot you don’t really need. I do, however, hope people find some golden nuggets that they can smuggle into their own configs.
+** [[https://github.com/krisajenkins/ob-translate][krisajenkins/ob-translate: Allows you to translate blocks of text within org-mode.]] :emacs:org:mode:translate:block: 
+ <2016-12-28 Wed 06:52>
+
+ Translate text in Emacs’ org-mode blocks, like so:
+** Use [[https://addons.mozilla.org/en-US/firefox/addon/org-mode-capture/][org-capture in Firefox]] :emacs:org:mode:org:capture:firefox:notes: 
+ <2016-12-13 Tue 13:10>
+
+[[http://orgmode.org/worg/org-contrib/org-protocol.html#orgheadline1][org-protocol.el – Intercept calls from emacsclient to trigger custom actions]]
+
+[[https://addons.mozilla.org/en-US/firefox/addon/org-mode-capture/reviews/799772/][by marcowahl on June 4, 2016]]
+#+BEGIN_QUOTE
+The capturing can be triggered by a key-sequence (default: C-M-r) or by clicking
+the unicorn icon.
+#+END_QUOTE
+
+** Check good configuration for mu4e [[https://github.com/xgarrido/emacs-starter-kit/blob/master/starter-kit-mu4e.org][xgarrido emacs-starter-kit]] :emacs:mu4e:config: 
+ <2016-12-13 Tue 02:40>
+** [2017-02-25 Sat 18:01] [[https://github.com/Fanael/rainbow-delimiters][Fanael/rainbow-delimiters: Emacs rainbow delimiters mode]]
+rainbow-delimiters is a "rainbow parentheses"-like mode which highlights delimiters such as parentheses, brackets or braces according to their depth. Each successive level is highlighted in a different color. This makes it easy to spot matching delimiters, orient yourself in the code, and tell which statements are at a given depth.
+** [2017-02-25 Sat 18:03] [[https://github.com/Fanael/rainbow-identifiers][Fanael/rainbow-identifiers: Rainbow identifier highlighting for Emacs]]
+Rainbow identifiers mode is an Emacs minor mode providing highlighting of identifiers based on their names. Each identifier gets a color based on a hash of its name.
+** [2017-02-25 Sat 18:56] [[https://rtime.felk.cvut.cz/~sojka/blog/compile-on-save/]["Compile on save" in Emacs]]
+When one writes programs or TeX documents, it is quite useful to compile the program/document quite often to be sure that there are no syntactical or other errors. I use Emacs and have the F9 key set to invoke the compile command which, by default, calls make and allows easy navigation through the detected errors, if there are some. One disadvantage of this command is that when there is unsaved buffer, it asks whether to save the modified file. This means that one have to either save the file by C-x C-s and then press F9 or press directly F9 and confirm the saving of the file by y. Neither variant is ideal because I do not like pressing unnecessary keys. (Yes, I know that I should switch to vim, but that’s another story.)
+** [2017-02-23 Thu 10:38] [[http://fgiasson.com/blog/index.php/2016/06/21/optimal-emacs-settings-for-org-mode-for-literate-programming/][Optimal Emacs Settings for Org-mode for Literate Programming | Frederick Giasson]]
+;; Let's have pretty source code blocks
+(setq org-edit-src-content-indentation 0
+      org-src-tab-acts-natively t
+      org-src-fontify-natively t
+      org-confirm-babel-evaluate nil
+      org-support-shift-select 'always)
+** [2017-02-26 Sun 06:29] [[https://commercialhaskell.github.io/intero/][Intero for Emacs]]
+#+BEGIN_QUOTE
+Intero for Emacs
+Complete interactive development program for Haskell
+
+
+#+END_QUOTE
+** [2017-02-26 Sun 10:06] [[https://vimeo.com/22798433][Quick Intro to Live Programming with Overtone on Vimeo]]
+#+BEGIN_QUOTE
+In this video Sam Aaron gives a fast-paced introduction to a number of key live programming techniques such as triggering instruments, scheduling future events and synth design. Finally, the viewer is shown how a simple musical sequence may be composed and then converted into an intricate Reich phase. The main body of the video was recorded in one take and features an Emacs buffer (using Emacs Live overtone.github.io/emacs-live/) for editing text and communicating with Overtone (overtone.github.io/), an expressive Clojure front-end to SuperCollider. Clojure is a state-of-the-art functional lisp emphasising immutability and concurrency (clojure.org).
+
+#+END_QUOTE
+** [2017-02-26 Sun 11:34] [[https://emacs.zeef.com/ehartc][Emacs by Ernst de Hart (ehartc) | ZEEF]]
+#+BEGIN_QUOTE
+If you ask me for the most extensible and customizable editor that will fully mold to your programming needs, my answer would be Emacs.
+
+
+#+END_QUOTE
+** [2017-02-26 Sun 11:34] [[http://ergoemacs.org/][ErgoEmacs]]
+#+BEGIN_QUOTE
+For the most efficient emacs keybinding, see Emacs: Xah Fly Keys
+
+For ergoemacs-mode the keybinding package, please see https://ergoemacs.github.io/. It is part of GNU Emacs project, maintained by Matthew Fidler.
+
+
+#+END_QUOTE
+** [2017-02-26 Sun 11:39] [[http://kitchingroup.cheme.cmu.edu/blog/2014/08/08/What-we-are-using-org-mode-for/?utm_medium=referral&utm_campaign=ZEEF&utm_source=https%253A%252F%252Femacs.zeef.com%252Fehartc][What we are using org-mode for]]
+#+BEGIN_QUOTE
+About four years ago I picked up Emacs again, because of org-mode. It started as an experiment to see if org-mode might be a solution to managing my growing list of obligations. Since then I have learned alot about org-mode. I was feeling reflective today, so here I describe a few of the things we are doing with it now, besides just organizing my obligations! I have found org-mode useful for many other things.
+
+
+#+END_QUOTE
+** [2017-02-26 Sun 11:41] [[https://github.com/emacs-evil/evil][emacs-evil/evil: The extensible vi layer for Emacs.]]
+#+BEGIN_QUOTE
+Evil is an extensible vi layer for Emacs. It emulates the main features of Vim, and provides facilities for writing custom extensions. Also see our page on EmacsWiki.
+
+
+#+END_QUOTE
+** [2017-02-26 Sun 11:43] [[https://github.com/jrblevin/deft][jrblevin/deft: Deft for Emacs]]
+#+BEGIN_QUOTE
+Deft is an Emacs mode for quickly browsing, filtering, and editing directories of plain text notes, inspired by Notational Velocity. It was designed for increased productivity when writing and taking notes by making it fast and simple to find the right file at the right time and by automating many of the usual tasks such as creating new files and saving files.
+
+
+#+END_QUOTE
+** [2017-02-26 Sun 15:06] [[https://github.com/clojure-emacs/cider][clojure-emacs/cider: The Clojure Interactive Development Environment that Rocks for Emacs]]
+CIDER extends Emacs with support for interactive programming in Clojure. The features are centered around cider-mode, an Emacs minor-mode that complements clojure-mode. While clojure-mode supports editing Clojure source files, cider-mode adds support for interacting with a running Clojure process for compilation, debugging, definition and documentation lookup, running tests and so on.
+** [2017-02-26 Sun 15:16] [[https://github.com/clojure-emacs/clojure-cheatsheet][clojure-emacs/clojure-cheatsheet: The Clojure Cheatsheet for Emacs]]
+The incredibly handy Clojure Cheatsheet, updated for Clojure 1.7.0 and packaged into an easy, fast, searchable, offline form:
+** [2017-02-26 Sun 15:17] [[https://www.youtube.com/watch?v=efPPh2jUrkg][Clojure in Emacs from absolute zero - YouTube]]
+#+BEGIN_QUOTE
+There is quite a discussion on reddit (https://www.reddit.com/r/Clojure/comm...) due to a post about Emacs hurting Clojure. The idea being that it is too difficult to get started with both Emacs and Clojure. So, I explore what needs to be done to start from absolute zero to a productive Clojure environment.
+
+#+END_QUOTE
+** [2017-02-26 Sun 16:08] [[https://practicalli.github.io/spacemacs/][Introduction · Clojure development with Spacemacs & Cider]]
+#+BEGIN_QUOTE
+Spacemacs is the easiest way to unleash all the power of Emacs, the classic editor with designs on being an operating system.
+
+
+#+END_QUOTE
+** [2017-02-26 Sun 16:20] [[https://www.youtube.com/watch?v=mSRxiYNk3bY][Learning CIDER - 1 - Jacking into the REPL - YouTube]]
+#+BEGIN_QUOTE
+Want to learn how to be more productive in Clojure? CIDER is a world-class Clojure development environment for Emacs.
+
+#+END_QUOTE
+** [2017-02-26 Sun 16:20] [[https://www.youtube.com/watch?v=ePfEt7QE9d0][Productive Emacs (CIDER): Code Completion - YouTube]]
+#+BEGIN_QUOTE
+Learn how to setup and use Ciders' code completion within Emacs for Clojure and ClojureScript.
+
+#+END_QUOTE
+** [2017-02-27 Mon 13:00] [[https://www.gnu.org/software/emacs/manual/html_node/elisp/Defining-Functions.html][GNU Emacs Lisp Reference Manual: Defining Functions]]
+defun is the usual way to define new Lisp functions. It defines the symbol name as a function with argument list args and body forms given by body. Neither name nor args should be quoted.
+** [2017-03-02 Thu 18:44] [[http://emacs.stackexchange.com/questions/7890/org-plus-contrib-and-org-with-require-or-use-package][org mode - org-plus-contrib and org with `require` or `use-package` - Emacs Stack Exchange]]
+
+
+The correct way to do this with use-package is as follows:
+
+(use-package org
+  :ensure org-plus-contrib
+ ...
+
+The first argument makes sure that it is the org.el file being sourced. The :ensure argument makes sure that you are getting the version with all the extras. Of course you also need to have ("org" . "http://orgmode.org/elpa/") in your package-archives alist.
+** [2017-03-12 Sun 15:28] [[https://oremacs.com/2015/01/05/youtube-dl/][Yet another youtube-dl interface for Emacs · (or emacs]]
+I quickly tired of opening a shell, setting the directory, entering the command, and pasting the link. So I wrote some Elisp code that does it for me. It's nothing too sophisticated, but I've been using this version for a couple months:
+
+(defun youtube-dl ()
+  (interactive)
+  (let* ((str (current-kill 0))
+         (default-directory "~/Downloads")
+         (proc (get-buffer-process (ansi-term "/bin/bash"))))
+    (term-send-string
+     proc
+     (concat "cd ~/Downloads && youtube-dl " str "\n"))))
+** [2017-03-12 Sun 20:53] [[https://github.com/syl20bnr/spacemacs/blob/master/layers/%252Bchat/erc/packages.el][spacemacs/packages.el at master · syl20bnr/spacemacs]]
+        "aie" 'erc
+        "aiE" 'erc-tls
+        "aii" 'erc-track-switch-buffer
+"aiD" 'erc/default-servers)
+** [2017-03-13 Mon 19:48] [[https://github.com/kuanyui/hexo.el][kuanyui/hexo.el: A frontend UI of Hexo for Emacs!]]
+hexo.el now experimentally supports Org-mode via CodeFalling’s hexo-renderer-org. If you encounter any problem, please feel free to open issue for that. Thanks!
+** [2017-03-23 Thu 20:58] [[https://github.com/defunkt/gist.el/issues/99][gist-region results in `menu-bar-update-yank-menu: Wrong type argument: stringp, nil` · Issue #99 · defunkt/gist.el]]
+that seems to indicate a malformed gist object, since the html-url field is never optional in the github api responses.
+Any chance you can provide a dump of the gist object as given to gist-created-callback ?
+Preferably a public gist, so that I can try to make sense of whatever discrepancy there might be.
+@jwiegley
+jwiegley commented on 12 Nov 2016
+
+Sure, how do I dump such an object?
+@sigma
+Collaborator
+sigma commented on 12 Nov 2016
+
+just edebug the gist-created-callback function, and that should dump the object in the *edebug-trace* buffer
+@jwiegley
+jwiegley commented on 12 Nov 2016
+
+OK, I had to enable edebug tracing. The output is:
+
+{ gist-created-callback args: ([eieio-class-tag--gh-gist-gist nil nil nil nil nil nil nil nil nil nil nil
+   [eieio-class-tag--gh-user unbound unbound unbound unbound unbound] nil nil])
+
+@jwiegley
+jwiegley commented on 12 Nov 2016
+
+That seems like a pretty empty object; it makes me wonder why the callback was even invoked.
+@sigma
+Collaborator
+sigma commented on 12 Nov 2016
+
+yeah that's odd. could you run the following to see if you get something similar?
+
+(oref (gh-gist-get (make-instance 'gh-gist-api) "4b951b73220fb355887f6fd404f756b5") :data)
+
+I'm also going to add some more type-checking in gh.el. Hopefully that should make such issues generate errors earlier
+@jwiegley
+jwiegley commented on 14 Nov 2016
+
+For that command I get back a fully elaborated object:
+
+[eieio-class-tag--gh-gist-gist "4b951b73220fb355887f6fd404f756b5" "https://api.github.com/gists/4b951b73220fb355887f6fd404f756b5" "https://gist.github.com/4b951b73220fb355887f6fd404f756b5"
+                               ([eieio-class-tag--gh-gist-gist-file "*scratch*.el" 4 "https://gist.githubusercontent.com/sigma/4b951b73220fb355887f6fd404f756b5/raw/b6601b5f799d6851b5501181abd2f58b3c77259b/*scratch*.el" "plop"])
+                               nil "" "2016-11-12T01:48:52Z" "2016-11-12T06:39:26Z" "https://gist.github.com/4b951b73220fb355887f6fd404f756b5.git" "https://gist.github.com/4b951b73220fb355887f6fd404f756b5.git" 1
+                               [eieio-class-tag--gh-user 16090 "https://api.github.com/users/sigma" "https://github.com/sigma" "sigma" nil]
+                               ([eieio-class-tag--gh-gist-history-entry
+                                 [eieio-class-tag--gh-user 16090 "https://api.github.com/users/sigma" "https://github.com/sigma" "sigma" nil]
+                                 "8bc658b86fd8d81b0f27063d3a693e3c36102464" "2016-11-12T01:48:52Z"
+                                 [eieio-class-tag--gh-gist-history-change 1 1 0]
+                                 "https://api.github.com/gists/4b951b73220fb355887f6fd404f756b5/8bc658b86fd8d81b0f27063d3a693e3c36102464"])
+                               nil]
+
+@jwiegley
+jwiegley commented on 18 Nov 2016
+
+@sigma Further thoughts? I'm really missing effortless gist integration, powered by gh.el. :) Sending pastes to co-workers takes much longer now.
+@sigma
+Collaborator
+sigma commented on 18 Nov 2016
+
+so, the thing is I'm unable to reproduce this issue (on GNU Emacs 25.1.1). Which I suppose is good news cause there should be a way to make this work :)
+
+From there, there are a few things that might help (and shouldn't hurt anyway):
+
+    uninstalling/reinstalling gist/gh/pcache/marshal. This might help if for whatever reason there are inconsistencies between code compiled with various versions of EIEIO (which happens awfully frequently, as you probably know :))
+    removing the ~/.emacs.d/var/pcache/gh directory (after exiting Emacs). This might help if somehow the cache got corrupted and was polluting the returned objects (I'm not sure I see how that'd be the case, but...)
+    checking if you have any kind of proxy somewhere in the critical path? OK I'm just throwing random ideas at this point, I should stop :)
+
+@jwiegley
+jwiegley commented on 21 Nov 2016
+
+@sigma Try updating all the dependencies, and removing all pcache directories, but still get the same problem. I'm not using any proxies, since I'm trying this from home.
+@sigma
+Collaborator
+sigma commented on 22 Nov 2016
+
+@jwiegley which version(s) of Emacs did you try that with?
+@jwiegley
+jwiegley commented on 22 Nov 2016
+I'm using 25.2pre, basically.
+@sigma
+Collaborator
+sigma commented on 22 Nov 2016
+
+hmm that's really odd, I just built the tip of the emacs-25 branch (3f2b497cdddcf1f124f1c9f94354d5f457a4070f), started from an empty $HOME, installed gist.el from melpa, and still can't reproduce
+@jwiegley
+jwiegley commented on 22 Nov 2016
+
+@sigma Thanks for reminding me that I should have isolated it that way from the beginning. I'll narrow it down.
+@jwiegley
+jwiegley commented on 2 Jan
+
+@sigma I've pared down to just this init.el, with no other settings, and I'm still getting the same problem, even after deleting all cache products relating to any of these libraries. Here's the entirety of my configuration now:
+
+(add-to-list 'load-path "~/emacs/lisp/use-package")
+(require 'use-package)
+(use-package dash           :defer t :load-path "lib/dash-el")
+(use-package gh             :defer t :load-path "lib/gh-el")
+(use-package ht             :defer t :load-path "lib/ht-el")
+(use-package logito         :defer t :load-path "lib/logito")
+(use-package marshal        :defer t :load-path "lib/marshal-el")
+(use-package pcache         :defer t :load-path "lib/pcache")
+(use-package s              :defer t :load-path "lib/s-el")
+(use-package tablist        :defer t :load-path "lib/tablist")
+(use-package gist
+  :load-path "site-lisp/gist"
+  :bind ("C-c G" . gist-region-or-buffer))
+
+I'm not loading any customization settings, or any other file besides use-package and these libraries, all of which I updated just now.
+@jwiegley
+jwiegley commented on 23 Jan
+
+If you can't reproduce, I won't leave this open. I've restored my ability to gist by using a command-line gist utility that integrates nicely with Emacs.
+@jwiegley jwiegley closed this on 23 Jan
+@wigust
+
+Attach files by dragging & dropping,
+
+, or pasting from the clipboard.
+Styling with Markdown is supported
+** [2017-03-23 Thu 23:44] [[https://github.com/sprig/org-capture-extension/issues/16][broken when using xdg-open · Issue #16 · sprig/org-capture-extension]]
+Could you temporarily change the line emacsclient "%u" to echo "%u" > ~/org-protocol.log and try capturing a few urls, then report contents of ~/org-protocol.log
+
+Also, to confirm - is xdg-utils version 1.1.1-1 installed?
+** [2017-03-24 Fri 09:15] [[https://emacs.stackexchange.com/questions/506/debugging-a-frozen-emacs/649#649][quitting - Debugging a frozen Emacs - Emacs Stack Exchange]]
+
+
+Before resorting to gdb, if you're using a Unix-y operating system, you can try sending SIGUSR2 to the Emacs process, like documented in the DEBUG file mentioned in the other answer.
+
+$ kill -SIGUSR2 <emacs_pid_goes_here>
+
+This will make Emacs attempt to break out of its current loop into the Lisp debugger.
+
+Or use this one liner without typing emacs pid manually:
+
+$ ps aux | grep -ie emacs | grep -v grep | awk '{print $2}' | xargs kill -SIGUSR2
+
+Alternatively, if killall is available:
+
+$ killall -USR2 emacs
+** [2017-03-24 Fri 09:27] [[https://www.emacswiki.org/emacs/rx][EmacsWiki: rx]]
+A nifty macro that generates regular expressions for you, from reasonably-comprehensible s-expressions. Inspired by something similar in Olin Shivers’ “scsh”.
+** [2017-03-24 Fri 09:31] [[https://www.gnu.org/software/emacs/manual/html_node/emacs/Creating-Frames.html][GNU Emacs Manual: Creating Frames]]
+The prefix key C-x 5 is analogous to C-x 4. Whereas each C-x 4 command pops up a buffer in a different window in the selected frame (see Pop Up Window), the C-x 5 commands use a different frame. If an existing visible or iconified (a.k.a. “minimized”) frame already displays the requested buffer, that frame is raised and deiconified (“un-minimized”); otherwise, a new frame is created on the current display terminal.
+** [2017-03-26 Sun 13:46] [[https://github.com/jinzhu/zeal-at-point][jinzhu/zeal-at-point: Search the word at point with Zeal (Emacs)]]
+Search the word at point with Zeal
+
+Zeal is a simple offline API documentation browser inspired by Dash (OS X app), available for Linux and Windows.
+** [2017-03-26 Sun 13:47] [[https://github.com/stanaka/dash-at-point][stanaka/dash-at-point: a emacs lisp for searching the word at point with Dash]]
+dash-at-point.el --- Search the word at point with Dash
+
+Dash is an API Documentation Browser and Code Snippet Manager. dash-at-point make it easy to search the word at point with Dash.
+** [2017-03-28 Tue 18:52] [[http://tech.memoryimprintstudio.com/org-capture-from-external-applications/][Org Capture from External Applications – Emacs, Arduino, Raspberry Pi, Linux and Programming etc]]
+ This method should work with other browsers (e.g. Chrome) and applications (e.g. Acrobat), and it is a clean way of getting xdg-open (a tool for configuring default applications in Linux) to open org-protocol links and pass them to emacs. adopted and modified from those two links link1 , link2 and Registering Custom URI Handler
+** [2017-03-28 Tue 19:03] [[https://github.com/wsgac/kanji-mode][wsgac/kanji-mode: GNU Emacs minor mode for displaying stroke order of Japanese kanji signs]]
+This is a minor mode for GNU Emacs aiming to address a common need of Japanese language learners - getting the stroke order of a particular Kanji sign. It has a built-in collection of SVG images depicting stroke orders for all Kanji. The collection is a slightly modified and limited version of the SVGs provided by the KanjiVG project. The mode's operation is pretty simple. It retrieves the Unicode code of the character under the Emacs cursor and uses it to retrieve the proper SVG file (the files are happily named using Unicode numbers). It then displays the relevant SVG in a transient buffer.
