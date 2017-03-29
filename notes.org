@@ -6884,9 +6884,8 @@ firewall-cmd --reload
 
 I wish there was a way to get the same result with firewalld without directly changing iptables but I couldn't find any better solution
 * Patch
-file:/usr/lib/python2.7/site-packages/html2text/config.py
-
-file:/usr/share/rss2email/rss2email.py
+- file:/usr/lib/python2.7/site-packages/html2text/config.py
+- file:/usr/share/rss2email/rss2email.py
 [[https://www.youtube.com/watch?v=vRYeXoPmIxI][How to install i3 with Fedora 22]]
 * Bugs
 ** [[https://bugzilla.redhat.com/buglist.cgi?component=chromium&list_id=7209738&product=Fedora][Bug List chromium]]
