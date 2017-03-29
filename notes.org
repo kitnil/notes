@@ -164,6 +164,27 @@ Install for mu4e email client
 #+END_QUOTE
 ** Подвал Первый корпус 1244 кабинет и напротив него спуск в подвал
 ** broadcom drivers suck
+* Video channels
+** [2017-03-29 Wed 19:41] [[https://www.youtube.com/watch?v=xK2G6iGKO7Y][Learning the killer of C++ - YouTube]]
+#+BEGIN_QUOTE
+# Tsoding on the Internets
+
+- Website: https://tsoding.github.io/
+- GitHub: https://github.com/tsoding
+- Twitter: https://twitter.com/tsoding
+- Twitch: http://www.twitch.tv/tsoding
+- Youtube: http://www.youtube.com/channel/UCEbYh...
+- Patreon: https://www.patreon.com/tsoding
+
+# Schedule
+
+For stream schedule please see https://tsoding.github.io/schedule.html
+
+# Support
+
+The best kind of support is to visit the streams and ask interesting questions. But if you're too busy just enjoying the stream, here is our Patreon page: https://www.patreon.com/tsoding for you!
+
+#+END_QUOTE
 * Links
 ** [[https://www.reddit.com/r/emacs/comments/5jhwlu/getting_things_from_outside_emacs_into/][Getting things from outside Emacs into org-mode/Emacs : emacs]]
 ** [[https://stackoverflow.com/questions/11902620/org-mode-how-do-i-create-a-new-file-with-org-capture][emacs - Org-Mode - How do I create a new file with org-capture? - Stack Overflow]]
@@ -7500,6 +7521,679 @@ I quickly tired of opening a shell, setting the directory, entering the command,
         "aiE" 'erc-tls
         "aii" 'erc-track-switch-buffer
 "aiD" 'erc/default-servers)
+** [2017-03-13 Mon 19:48] [[https://github.com/kuanyui/hexo.el][kuanyui/hexo.el: A frontend UI of Hexo for Emacs!]]
+hexo.el now experimentally supports Org-mode via CodeFalling’s hexo-renderer-org. If you encounter any problem, please feel free to open issue for that. Thanks!
+** [2017-03-14 Tue 10:40] [[https://fedoramagazine.org/enhance-your-screencasts-with-key-mon-on-fedora/][Enhance your Screencasts with key-mon on Fedora - Fedora Magazine]]
+The workflow is a bit convoluted, but it works with most gifs:
+
+1. take the screencast with the gnome shell screencasting feature (results in a webm)
+2. convert the webm to a sequence of images with this gstreamer command:
+gst-launch-1.0 filesrc location="input.webm" ! decodebin ! videoconvert ! pngenc ! multifilesink location="pngs/%04d.png"
+3. convert the pngs to a gif with this imagemagick command:
+convert *.png animation.gif
+4. crunch the gif with:
+convert animation.gif -fuzz 5% -layers Optimize animation-optimized.gif
+This step is a bit of trial and error. you mess with the fuzz % value to get a gif that is a good size yet looks ok.
+
+5. If you want to crunch it even more, you can convert your animation to an indexed gif (specifying the number of colours — i chose 64 in this example)
+convert animation-optimized.gif -dither FloydSteinberg -colors 64 animation-optimized-indexed.gif
+
+Its all about trial and error to see which looks the best (yet keeping the size as small as possible 🙂 )
+** [2017-03-15 Wed 13:01] [[https://www.linux.org.ru/gallery/screenshots/13275022][gtk decoration — Скриншоты — Галерея]]
+Осиливаю decoration
+Вот так получилось
+
+decoration {
+        border-radius: 0px;
+        padding: 2px;
+        box-shadow: 0 2px 3px 1px black;
+}
+
+.ssd decoration .titlebar,
+decoration {
+        background: #464D4D;
+}
+
+.maximized decoration,
+.fullscreen decoration {
+        padding: 0px;
+}
+
+.tiled decoration {
+        box-shadow: 0 0 3px 3px black;
+}
+
+.popup decoration,
+.csd.popup decoration,
+tooltip decoration {
+        padding: 0px;
+        background: transparent;
+        box-shadow: none;
+        border: none;
+}
+
+Работает и для gtk2. А за padding-top, оказывается, можно перемещать окна.
+Какая-то темная материя ;)
+
+p.s. DE обычный Гном, font-size: 0; для панели, просто эксперименты.
+** [2017-03-15 Wed 22:28] Firefox 52 brings desktop apps to the web but could break your Google Hangouts
+
+Firefox 52 brings desktop apps to the web but could break your Google Hangouts
+** [2017-03-16 Thu 07:54] [[https://www.google.ru/search?q=gnome-keyring+pam&ie=utf-8&oe=utf-8&client=firefox-b-ab&gfe_rd=cr&ei=ixrKWJiXBbGIyAXQxaqoAg][gnome-keyring pam - Google Search]]
+https://www.reddit.com/r/Fedora
+** [2017-03-16 Thu 13:32] [[https://www.youtube.com/watch?v=0aX2lmcaMcA][Урок - 27# - Типы рыночных структур - YouTube]]
+#+BEGIN_QUOTE
+Что такое совершенная конкуренция? Какие существуют  виды несовершенной конкуренции? В чем отличительные черты монополистической конкуренции? Что такое олигополия и монополия?
+
+#+END_QUOTE
+** [2017-03-16 Thu 22:02] [[https://www.youtube.com/user/0420to/about][ТО «420» - YouTube]]
+#+BEGIN_QUOTE
+ТО «420» — это анимасьон де пута мадре каждый день, изо дня в день.
+
+#+END_QUOTE
+** [2017-03-17 Fri 08:53] [[http://newsstar.sourceforge.net/][Newsstar]]
+Newsstar fetches news and posts it to a local server; INN, s-news and sn are supported, and it should be easy to adapt for other servers with some configuration and extra scripts. It's designed for Unix-like systems, and all the development was done on Linux.
+
+There are already plenty of other programs to do this, but what makes newsstar special is that it can make multiple simultaneous connections, not only to one server, but to several, supporting up to 10 threads. Before fetching each article it checks that it hasn't already been downloaded by another thread or in a previous session. It can also pipeline article requests to make better use of available bandwidth.
+
+I wrote it because a number of ISPs I have used suffer from unreliable newsfeeds. There is an excellent free server made available by news.individual.net, but it can be a bit slow at times, and using external servers uses more bandwidth. Therefore I wanted a program which could fetch whatever articles my ISP has available, but use the foreign server to avoid missing posts or getting them very late, and to do it as fast as possible.
+
+Newsstar is distributed under the GPL. If you are reading this file offline you should have a file called COPYING with details. Due to a long-term illness I am unable to earn a living, either by programming or by any other means, so any gifts will be much appreciated. You can use the Sourceforge/Paypal donation scheme or see below to find out where to send cheques or cash etc.
+** [2017-03-17 Fri 08:53] [[https://gromnitsky.blogspot.ru/2016/09/inn-260-injection-info-posted.html][Alex Gromnitsky's blog: inn 2.6.0, Injection-Info & .POSTED]]
+I usually refrain myself from writing anything in the style of "How to setup foo", for it's quite silly, but my recent adventures in gmane forced me to break my rule for there is practically 0 info about the inn+newsstar "stack".
+
+The setup is:
+
+    Fedora 24.
+    We create newsgroup gmane.test in an INN installed on a localhost (this INN is lonely & isn't connected to any other NNTP servers out there).
+    We use newsstar (grab the .spec file from here) to connect to news.gmane.org machine, download articles from remote gmane.test group & post them to local gmane.test newsgroup.
+    We use our favourite newsreader (Mutt + nntp patch) to read local gmane.test newsgroup.
+    We post our message to local gmane.test newsgroup. Then we run newsstar again & it uses INN's spool of messages prepared to be sent away. newsstar grabs our message, connects to news.gmane.org machine & posts it.
+** [2017-03-17 Fri 11:40] [[http://www.bog.pp.ru/work/inn.html][Bog BOS: INN (news-сервер в стандарте NNTP)]]
+ hosts.nntp - здесь перечислены имена хостов, которые будут нас питать (ns.aha.ru, news.demos.su, news.rosprint.net, deolws.deol.ru), для всех других адресов будет запускаться nnrpd
+** [2017-03-17 Fri 11:43] [[http://www.bog.pp.ru/work/inn.html][Bog BOS: INN (news-сервер в стандарте NNTP)]]
+ /etc/news/incoming.conf (кому разрешено питать нас; раньше был hosts.nntp; определяются значения по умолчанию, для отдельных хостов и групп; значения задаются в виде: имя, двоеточие, пробел, значение:
+** [2017-03-17 Fri 11:46] [[http://newsfeed.neva.ru/][RUSnet Statistics server]]
+ goblin.stu.neva.ru (news.neva.ru) usenet server statistics
+** [2017-03-17 Fri 12:36] [[https://www.mail-archive.com/mozilla-mail-news@mozilla.org/msg10262.html][Re: How to setup a INN (internetwork news server) on RH Linux 7.2]]
+John Perander wrote:
+> Please if anyone knows the step by set process of what files to configure
+> and what can be left to default so that I can at least get the system up and
+> running to learn more it would be most appreicated...
+
+
+Wrong group, but here you are:
+
+Change only:
+newsfeeds
+storage.conf
+incoming.conf
+readers.conf
+inn.conf
+expire.ctl
+** [2017-03-17 Fri 12:37] [[http://www.linux-sxs.org/internet_serving/inn.html][Installing INN]]
+ Installing INN as a stand-alone news server on your Linux workstation is easy.
+** [2017-03-17 Fri 12:44] [[https://github.com/search?p=5&q=filename%253Aincoming.conf&ref=searchresults&type=Code&utf8=%25E2%259C%2593][Search · filename:incoming.conf]]
+inc
+** [2017-03-17 Fri 13:06] [[https://gitlab.com/leafnode-2/leafnode-2][leafnode-2 / Leafnode 2 · GitLab]]
+
+10e61c6e Merge branch 'systemd' into 'master' · 3 weeks ago by Matthias Andree
+** [2017-03-17 Fri 13:15] [[http://pan.rebelbase.com/screenshots/][Pan - A GNOME Newsreader]]
+This shows the groups pane on the left, the header pane in the top right, and the message body in the bottom right.
+** [2017-03-17 Fri 13:20] [[http://albasani.net/][albasani.net]]
+    Mit einer E-Mail oder über unser Kontaktformular.
+Im IRC
+    Wir chatten auf irc.freenode.net im Channel #albasani
+    Webinterface für IRC
+Im Usenet
+    news:albasani.announce ist für (offizielle) Neuigkeiten. news:albasani.usenet-friends for Tratsch.
+Spenden
+    Spenden fuer die Deckung der Kosten des Serverbetriebs sind über Paypal möglich. Die aktuellen monatlichen Kosten für die Servermiete betragen EUR 43.70 (ca. CHF 55).
+** [2017-03-17 Fri 13:36] [[http://forum.wfido.ru/showthread.php?t=11196][Покойся с миром, fido7.ru... - forum.wfido.ru]]
+ Там 4 адреса.
+1) news.fido7.ru AKA ddt.demos.su, работает, и умрет наверно, последним.
+2) news2.fido7.ru AKA news.gamma.ru, умер.
+3) news3.fido7.ru AKA news.rt.ru, после смерти news.rt.ru CNAME был
+переписан на news2.neva.ru, он пока живет, но только по этому имени.
+4) news4.fido7.ru AKA news.mtu.ru. NNTP-сервер на news.mtu.ru закрыт, на
+стандартном 119 порту его нет.
+** [2017-03-17 Fri 13:43] [[http://news.aioe.org/][Home - Aioe.org NEWS Server]]
+Aioe.org hosts a public news server, an USENET site that is intentionally kept open for all IP addresses without requiring any kind of authentication both for reading and posting. Each IP address is authorized to post maximum 25 messages per day and the posting rights are suspended for 24 hours if more than three messages are rejected in a day. Each post must be sent to less than three groups (crosspost) and each one can include at most three followup groups. Maximum allowed size is 32 KB per article and 2KB per header. Only four concurrent connections per IP address on nntp.aioe.org and 2 ones on news.aioe.org are allowed and 400 connections per day are accepted from each IP address.
+** [2017-03-17 Fri 14:11] [[https://www.dmoz.org/Computers/Usenet/Public_News_Servers/][DMOZ - Computers: Usenet: Public News Servers]]
+ A public news server which allows the users to post 25 messages per day from every IP without authentication. This is a text only server.
+** [2017-03-17 Fri 22:34] [[https://www.reddit.com/r/linuxquestions/comments/47t7y8/disabling_gnomes_compositor_and_using_compton_is/][Disabling gnome's compositor and using compton, is it possible? : linuxquestions]]
+Looking at your comment history, you seem to be using the radeon driver on Arch, is that right?
+
+I have an intel gpu and it had tearing out of the box until about a week ago when a Fedora update enabled DRI3 by default. (I was using CLUTTER_PAINT=disable-clipped-redraws:disable-culling as a workaround)
+
+The radeon driver has supported DRI3 and Present since version 7.6.0, but it doesn't appear to be enabled by default. You could try turning it on in an xorg.conf.d snippet as the Arch wiki describes.
+
+You could also try the new "TearFree" option, but to the best of my knowledge, it shouldn't be necessary with DRI3/Present.
+** [2017-03-18 Sat 00:19] [[https://community.skype.com/t5/Linux/Flatpak-of-Skype-1-16-for-Linux-Alpha/td-p/4570685][Flatpak of Skype 1.16 for Linux Alpha - Skype Community]]
+
+
+I have now updated the flatpak to use Skype 1.16 for Linux Alpha.
+
+ 
+
+Upgrade existing installation
+If you have installed a previous version of this flatpak you should just have to upgrade it by doing:
+
+flatpak update --user com.skype.Client
+
+ 
+
+Installation for the first time
+
+And if you are installing it for the first time, and have flatpak 0.8.0 or later, you should be able to install Skype Alpha by doing only:
+** [2017-03-18 Sat 00:39] [[https://www.youtube.com/watch?v=QSUWk4bnjcI][Setting up an Unreal Project Git Repository - YouTube]]
+ Hey guys! Just a quick video showing how you'd create a git repository for your Unreal Project!
+This video is part of the Game Tutorial series, but may as well be watched on it's own :)
+** [2017-03-18 Sat 08:52] [[https://tribaal.io/using-i3.html][Tribaal's blog : Using the i3 window manager]]
+A colleague of mine suggested that I should try tiling window managers, and proceeded to produce a list of them, including i3, awesome, wmii and xmonad.
+** [2017-03-23 Thu 20:23] [[https://ask.fedoraproject.org/en/question/57529/show-changelog-of-packages-in-dnf/][Show changelog of packages in dnf - Ask Fedora: Community Knowledge Base and Support Forum]]
+While dnf doesn't offer changelog display inline with the update process (via a --changelog argument, as yum-plugin-changelog provided), a fedoraforum user pointed out that dnf updateinfo info will display the text of update advisory notices, which covers most of the former yum --changelog upgrade output.
+
+You don't get the detailed changelogs for packages that don't use update advisories, but it's at least a workable substitute. You can also use dnf updateinfo list to get a short listing of advisories, and a simple dnf updateinfo will produce a brief summary with counts of the outstanding update advisories.
+
+Note that because dnf updateinfo doesn't refresh metadata by default, the most equivalent command to yum --changelog upgrade is probably something like dnf --refresh updateinfo info; dnf upgrade.
+** [2017-03-23 Thu 20:58] [[https://github.com/defunkt/gist.el/issues/99][gist-region results in `menu-bar-update-yank-menu: Wrong type argument: stringp, nil` · Issue #99 · defunkt/gist.el]]
+that seems to indicate a malformed gist object, since the html-url field is never optional in the github api responses.
+Any chance you can provide a dump of the gist object as given to gist-created-callback ?
+Preferably a public gist, so that I can try to make sense of whatever discrepancy there might be.
+@jwiegley
+jwiegley commented on 12 Nov 2016
+
+Sure, how do I dump such an object?
+@sigma
+Collaborator
+sigma commented on 12 Nov 2016
+
+just edebug the gist-created-callback function, and that should dump the object in the *edebug-trace* buffer
+@jwiegley
+jwiegley commented on 12 Nov 2016
+
+OK, I had to enable edebug tracing. The output is:
+
+{ gist-created-callback args: ([eieio-class-tag--gh-gist-gist nil nil nil nil nil nil nil nil nil nil nil
+   [eieio-class-tag--gh-user unbound unbound unbound unbound unbound] nil nil])
+
+@jwiegley
+jwiegley commented on 12 Nov 2016
+
+That seems like a pretty empty object; it makes me wonder why the callback was even invoked.
+@sigma
+Collaborator
+sigma commented on 12 Nov 2016
+
+yeah that's odd. could you run the following to see if you get something similar?
+
+(oref (gh-gist-get (make-instance 'gh-gist-api) "4b951b73220fb355887f6fd404f756b5") :data)
+
+I'm also going to add some more type-checking in gh.el. Hopefully that should make such issues generate errors earlier
+@jwiegley
+jwiegley commented on 14 Nov 2016
+
+For that command I get back a fully elaborated object:
+
+[eieio-class-tag--gh-gist-gist "4b951b73220fb355887f6fd404f756b5" "https://api.github.com/gists/4b951b73220fb355887f6fd404f756b5" "https://gist.github.com/4b951b73220fb355887f6fd404f756b5"
+                               ([eieio-class-tag--gh-gist-gist-file "*scratch*.el" 4 "https://gist.githubusercontent.com/sigma/4b951b73220fb355887f6fd404f756b5/raw/b6601b5f799d6851b5501181abd2f58b3c77259b/*scratch*.el" "plop"])
+                               nil "" "2016-11-12T01:48:52Z" "2016-11-12T06:39:26Z" "https://gist.github.com/4b951b73220fb355887f6fd404f756b5.git" "https://gist.github.com/4b951b73220fb355887f6fd404f756b5.git" 1
+                               [eieio-class-tag--gh-user 16090 "https://api.github.com/users/sigma" "https://github.com/sigma" "sigma" nil]
+                               ([eieio-class-tag--gh-gist-history-entry
+                                 [eieio-class-tag--gh-user 16090 "https://api.github.com/users/sigma" "https://github.com/sigma" "sigma" nil]
+                                 "8bc658b86fd8d81b0f27063d3a693e3c36102464" "2016-11-12T01:48:52Z"
+                                 [eieio-class-tag--gh-gist-history-change 1 1 0]
+                                 "https://api.github.com/gists/4b951b73220fb355887f6fd404f756b5/8bc658b86fd8d81b0f27063d3a693e3c36102464"])
+                               nil]
+
+@jwiegley
+jwiegley commented on 18 Nov 2016
+
+@sigma Further thoughts? I'm really missing effortless gist integration, powered by gh.el. :) Sending pastes to co-workers takes much longer now.
+@sigma
+Collaborator
+sigma commented on 18 Nov 2016
+
+so, the thing is I'm unable to reproduce this issue (on GNU Emacs 25.1.1). Which I suppose is good news cause there should be a way to make this work :)
+
+From there, there are a few things that might help (and shouldn't hurt anyway):
+
+    uninstalling/reinstalling gist/gh/pcache/marshal. This might help if for whatever reason there are inconsistencies between code compiled with various versions of EIEIO (which happens awfully frequently, as you probably know :))
+    removing the ~/.emacs.d/var/pcache/gh directory (after exiting Emacs). This might help if somehow the cache got corrupted and was polluting the returned objects (I'm not sure I see how that'd be the case, but...)
+    checking if you have any kind of proxy somewhere in the critical path? OK I'm just throwing random ideas at this point, I should stop :)
+
+@jwiegley
+jwiegley commented on 21 Nov 2016
+
+@sigma Try updating all the dependencies, and removing all pcache directories, but still get the same problem. I'm not using any proxies, since I'm trying this from home.
+@sigma
+Collaborator
+sigma commented on 22 Nov 2016
+
+@jwiegley which version(s) of Emacs did you try that with?
+@jwiegley
+jwiegley commented on 22 Nov 2016
+I'm using 25.2pre, basically.
+@sigma
+Collaborator
+sigma commented on 22 Nov 2016
+
+hmm that's really odd, I just built the tip of the emacs-25 branch (3f2b497cdddcf1f124f1c9f94354d5f457a4070f), started from an empty $HOME, installed gist.el from melpa, and still can't reproduce
+@jwiegley
+jwiegley commented on 22 Nov 2016
+
+@sigma Thanks for reminding me that I should have isolated it that way from the beginning. I'll narrow it down.
+@jwiegley
+jwiegley commented on 2 Jan
+
+@sigma I've pared down to just this init.el, with no other settings, and I'm still getting the same problem, even after deleting all cache products relating to any of these libraries. Here's the entirety of my configuration now:
+
+(add-to-list 'load-path "~/emacs/lisp/use-package")
+(require 'use-package)
+(use-package dash           :defer t :load-path "lib/dash-el")
+(use-package gh             :defer t :load-path "lib/gh-el")
+(use-package ht             :defer t :load-path "lib/ht-el")
+(use-package logito         :defer t :load-path "lib/logito")
+(use-package marshal        :defer t :load-path "lib/marshal-el")
+(use-package pcache         :defer t :load-path "lib/pcache")
+(use-package s              :defer t :load-path "lib/s-el")
+(use-package tablist        :defer t :load-path "lib/tablist")
+(use-package gist
+  :load-path "site-lisp/gist"
+  :bind ("C-c G" . gist-region-or-buffer))
+
+I'm not loading any customization settings, or any other file besides use-package and these libraries, all of which I updated just now.
+@jwiegley
+jwiegley commented on 23 Jan
+
+If you can't reproduce, I won't leave this open. I've restored my ability to gist by using a command-line gist utility that integrates nicely with Emacs.
+@jwiegley jwiegley closed this on 23 Jan
+@wigust
+
+Attach files by dragging & dropping,
+
+, or pasting from the clipboard.
+Styling with Markdown is supported
+** [2017-03-23 Thu 21:02] [[http://ask.xmodulo.com/check-changelog-package-linux.html][How to check the changelog of a package on Linux - Ask Xmodulo]]
+ $ rpm -q --changelog <package-name> | more
+** [2017-03-23 Thu 21:04] [[http://ask.xmodulo.com/check-changelog-package-linux.html][How to check the changelog of a package on Linux - Ask Xmodulo]]
+ $ repoquery --changelog <package-name> | more
+** [2017-03-23 Thu 21:04] [[http://ask.xmodulo.com/check-changelog-package-linux.html][How to check the changelog of a package on Linux - Ask Xmodulo]]
+ $ dnf updateinfo info | more
+** [2017-03-23 Thu 23:19] [[https://www.youtube.com/channel/UCVMd5hFLKj-gNx4SSl9GBKg/about][Ramy Zaycman - YouTube]]
+ Общий Шалом! Меня зовут Рами Зайцман, экономист на час.
+
+Именно так называется мой канал, посетив который, ты узнаешь о последних и самых актуальных экономических темах, а также о разнообразных и не менее важных экономических теориях.
+
+Подписывайся, оставляй комментарии, добавляй в друзья!
+
+Желаю богатства!
+** [2017-03-23 Thu 23:20] [[https://www.youtube.com/user/AleXDarkstalker98/about][Алекс Гуфовский - YouTube]]
+ Жил был я и был у меня канал на ютубе. И делал я видосы. А ты подписывался и было на Руси всем хорошо.
+** [2017-03-23 Thu 23:22] [[https://www.youtube.com/channel/UCv3zlYxlGhZvYjAdDMm4pNQ][Ariona Gamer - YouTube]]
+ Приветствую вас мои дорогие любители игр! На своем канале я буду записывать прохождение и выживание в своих любимых играх жанра survival, RPG, Horror, Fighting и не только... Буду рада видеть вас в своих подписчиках и комментариях.
+** [2017-03-23 Thu 23:22] [[https://www.youtube.com/channel/UCOawzL6asRbilpO6V2NEpWQ/about][Charlie FanGirl - YouTube]]
+ Валар моргулис! 
+Все об Игре Престолов/Песни Льда и Пламени: фанатские теории, интересные факты, обзоры серий 6 сезона, новости кастинга/съемок 7 сезона и многое другое √
+Новые видео каждый четверг!
+Подпишись на канал во имя всех богов, старых и новых!
+** [2017-03-23 Thu 23:23] [[https://www.youtube.com/user/JgeekChannel/about][Jgeek Ⅰ J&Greg channel - YouTube]]
+ Авторы канала: Юля (Джей) и Грег - парень и девушка, обожающие все что связано с гик миром и цифровыми развлечениями.
+По вопросам рекламы: https://vk.com/abegunkov
+** [2017-03-23 Thu 23:23] [[https://www.youtube.com/user/torwaldolafsen/about][Блог Торвальда - YouTube]]
+
+Links
+Twitter Google+ Курс саморазвития Торвальд в ВК
+Stats
+Joined Oct 16, 2011
+63,686,514 views
+Краткая теория близких отношений
+12:32
+Почему плохо при расставании
+Блог Торвальда
+12K views5 months ago
+14:08
+Недостающее звено твоих отношений
+Блог Торвальда
+16K views7 months ago
+23:09
+Как получить вечные отношения
+Блог Торвальда
+17K views7 months ago
+17:33
+На чем держится влюбленность
+Блог Торвальда
+21K views7 months ago
+10:58
+Простой тест на порядочность
+Блог Торвальда
+34K views7 months ago
+19:56
+Формула близких отношений
+Блог Торвальда
+24K views7 months ago
+Заработок на Ютубе
+1:16:21
+Как раскрутить группу или канал
+Блог Торвальда
+19K views6 months ago
+21:36
+Как максимально заработать на Ютубе
+Блог Торвальда
+194K views3 years ago
+1:17:33
+О партнерке на YouTube - полный гайд
+Блог Торвальда
+121K views3 years ago
+27:35
+Если заблокировали аккаунт YouTube
+Блог Торвальда
+90K views3 years ago
+19:02
+Обработка видеоролика для YouTube
+Блог Торвальда
+31K views3 years ago
+18:55
+Раскрутка на Ютубе
+Блог Торвальда
+14K views2 years ago
+Основы логики
+27:19
+Какую власть дает логика - [Логика #1]
+Блог Торвальда
+80K views1 year ago
+13:36
+Что такое логика - [Логика #2]
+Блог Торвальда
+34K views1 year ago
+38:32
+Четыре закона логики - [Логика #3]
+Блог Торвальда
+45K views1 year ago
+26:50
+Два метода построения вывода - [Логика #4]
+Блог Торвальда
+22K views1 year ago
+15:35
+Два способа познания мира - [Логика #5]
+Блог Торвальда
+16K views1 year ago
+36:58
+Ежедневные ошибки в логике - [Логика #6]
+Блог Торвальда
+21K views1 year ago
+Для юношей - Курс молодого бойца
+Полезные мысли для молодых людей, которые недостаточно уверены в своей позиции и жизненном пути.
+46:23
+Общий типаж мужчины
+Блог Торвальда
+95K views4 years ago
+50:50
+Идти служить или нет
+Блог Торвальда
+38K views4 years ago
+1:01:01
+Выбор стиля общения
+Блог Торвальда
+37K views4 years ago
+1:04:08
+Драка и бой: что нужно знать
+Блог Торвальда
+41K views4 years ago
+38:33
+Кто есть друг и кто есть враг
+Блог Торвальда
+23K views4 years ago
+41:04
+Готов ли ты к женитьбе?
+Блог Торвальда
+20K views4 years ago
+Created playlists
+7
+Play all
+Liked videos
+4
+Play all
+Устройство Вселенной
+Updated today
+15
+Play all
+Краткая теория близких отношений
+3
+Play all
+Чтение людей по внешности
+9
+Play all
+Курс интимной культуры
+29
+Play all
+Скандалы, интриги, расследования
+Updated 2 days ago
+Liked videos
+4:32
+Primitive Technology: Forge Blower
+Primitive Technology
+17M views7 months ago
+I invented the Bow Blower, a combination of the bow drill and forge blower to make a device that can force air into a fire while being easy to construct from commonly occurring natural materials us...
+CC
+14:49
+Миф о митохондриальной Еве. Мифы об эволюции человека.
+ScienceVideoLab
+209K views1 year ago
+Представляем вашему вниманию цикл программ в формате мини-лекций. В этом цикле мы обсуждаем мифы об эволюции человека вместе с редактором портала "АНТРОПОГЕНЕЗ.РУ" Александром Соколовым. В этом в...
+45:08
+Разгоняй свой мозг!!! - [правда об алкоголе]
+Блог Торвальда
+137K views2 years ago
+ВК: http://vk.com/torwaldolafsen Facebook: http://www.facebook.com/torwald.olafsen Мой лайв-канал: http://www.youtube.com/user/TorwaldLive Twitter: https://twitter.com/#!/TorwaldOlafsen Блог: http:...
+7:38
+О том, почему его дети не ходят в школу Джастас Уолкер Весели Молочни
+Justus Walker
+338K views2 years ago
+http://www.kommersant.ru/doc/2563289 Большое Спасибо! QIWI +7950 996 67 62 Yandex Денги 410012520593822 Webmoney R706168877897 WMZ Z398238999894 PayPal justusdwalker@hotmail.com СберБанк ФИО...
+Show more
+Каналы, которые я уважаю
+ScienceVideoLab
+50,167 subscribers
+Научный трибунал. "Катющик ТВ".
+25,335 subscribers
+1) Алексей Земсков (zems.pro)
+423,884 subscribers
+Денис Борисов
+493,555 subscribers
+proektKOZA
+211,709 subscribers
+Шамов Дмитрий
+555,999 subscribers
+** [2017-03-23 Thu 23:44] [[https://github.com/sprig/org-capture-extension/issues/16][broken when using xdg-open · Issue #16 · sprig/org-capture-extension]]
+Could you temporarily change the line emacsclient "%u" to echo "%u" > ~/org-protocol.log and try capturing a few urls, then report contents of ~/org-protocol.log
+
+Also, to confirm - is xdg-utils version 1.1.1-1 installed?
+** [2017-03-24 Fri 09:15] [[https://emacs.stackexchange.com/questions/506/debugging-a-frozen-emacs/649#649][quitting - Debugging a frozen Emacs - Emacs Stack Exchange]]
+
+
+Before resorting to gdb, if you're using a Unix-y operating system, you can try sending SIGUSR2 to the Emacs process, like documented in the DEBUG file mentioned in the other answer.
+
+$ kill -SIGUSR2 <emacs_pid_goes_here>
+
+This will make Emacs attempt to break out of its current loop into the Lisp debugger.
+
+Or use this one liner without typing emacs pid manually:
+
+$ ps aux | grep -ie emacs | grep -v grep | awk '{print $2}' | xargs kill -SIGUSR2
+
+Alternatively, if killall is available:
+
+$ killall -USR2 emacs
+** [2017-03-24 Fri 09:27] [[https://www.emacswiki.org/emacs/rx][EmacsWiki: rx]]
+A nifty macro that generates regular expressions for you, from reasonably-comprehensible s-expressions. Inspired by something similar in Olin Shivers’ “scsh”.
+** [2017-03-24 Fri 09:31] [[https://www.gnu.org/software/emacs/manual/html_node/emacs/Creating-Frames.html][GNU Emacs Manual: Creating Frames]]
+The prefix key C-x 5 is analogous to C-x 4. Whereas each C-x 4 command pops up a buffer in a different window in the selected frame (see Pop Up Window), the C-x 5 commands use a different frame. If an existing visible or iconified (a.k.a. “minimized”) frame already displays the requested buffer, that frame is raised and deiconified (“un-minimized”); otherwise, a new frame is created on the current display terminal.
+** [2017-03-24 Fri 11:21] [[https://www.adme.ru/svoboda-sdelaj-sam/20-hitrostej-na-yutub-o-kotoryh-malo-kto-znaet-928660/][20 хитростей на YouTube, о которых мало кто знает]]
+
+
+YouTube — очень крутой сервис, который позволяет нам просматривать миллионы роликов и фильмов. И, чтобы сделать работу с ним комфортнее и легче, AdMe.ru собрал список полезнейших настроек, которые помогут вам использовать его по полной.
+** [2017-03-24 Fri 11:22] [[http://www.mooma.sh/][Identify music in youtube videos - MooMa.sh]]
+ MooMash solves a common problem: Identifying music in Youtube videos.
+
+If you come across some great track or snippet of music on YouTube, but it's not labelled, just paste the YouTube link above, click "moo", and let MooMash do the work.
+
+Depending on how long the video is and how many videos are currently being analysed, it can take a couple of seconds or up to 15 minutes for our team of highly trained cows to go through the video and compare its sound to the 7 million songs they memorized.
+** [2017-03-24 Fri 15:29] [[https://github.com/fontforge/fontforge][fontforge/fontforge: Free (libre) font editor for Windows, Mac OS X and GNU+Linux]]
+FontForge is a free (libre) font editor for Windows, Mac OS X and GNU+Linux. Use it to create, edit and convert fonts in OpenType, TrueType, UFO, CID-keyed, Multiple Master, and many other formats.
+** [2017-03-24 Fri 15:38] [[https://github.com/lvc/pkgdiff][lvc/pkgdiff: A tool for visualizing changes in Linux software packages]]
+NAME:
+  Package Changes Analyzer (pkgdiff) - a tool for visualizing changes in Linux software packages (RPM, DEB, TAR.GZ, etc). The tool is intended for Linux maintainers who are interested in ensuring compatibility of old and new versions of packages.
+  
+  The tool can compare directories as well (with the help of the -d option).
+  
+  Sample report: https://abi-laboratory.pro/tracker/package_diff/libssh/0.6.5/0.7.0/report.html
+  
+  The tool is developed by Andrey Ponomarenko: https://abi-laboratory.pro/
+** [2017-03-24 Fri 18:05] [[https://media.xiph.org/][Xiph.org :: Test Media]]
+Our collection of test sequences and clips for evaluating compression technology.
+** [2017-03-24 Fri 18:06] A bugfix release of the anytime package arrived at CRAN earlier today. This is tenth release
+since the inaugural version late last summer, and the second (bugfix / feature) release this
+year.
+
+A bugfix release of the anytime package arrived at CRAN earlier today. This is tenth release
+since the inaugural version late last summer, and the second (bugfix / feature) release this
+year.
+** [2017-03-24 Fri 18:20] [[http://luisbg.blogalia.com/historias/76869][The Phrygian Cap]]
+ I spend most of my time writing and reading C code, but every once in a while I get to play with a C++ project and find myself doing frequent reference checks to cppreference.com. I wrote myself the most concise cheat sheet I could that still shaved off the majority of those quick checks. Maybe it helps other fellow programmers who occasionally dabble with C++.
+** [2017-03-25 Sat 00:41] [[https://github.com/fedora-infra/fedmsg-notify][fedora-infra/fedmsg-notify: Fedmsg Desktop Notifications]]
+Once installed the "Fedmsg Notification Configuration" should appear in your application menu. You can also run fedmsg-notify-config by hand, or python -m fedmsg_notify.gui from git.
+** [2017-03-25 Sat 11:42] [[https://bugzilla.redhat.com/show_bug.cgi?id=1409115][Bug 1409115 – Incorrect permissons in the RPM package and boomaga requires the SELinux security policy]]
+I can print to boomaga printer, but with a delay about 30 seconds per task. SELinux Troubleshooter reports an error.
+** [2017-03-25 Sat 12:21] [[https://www.youtube.com/watch?v=0aX2lmcaMcA&t=212s][Урок - 27# - Типы рыночных структур - YouTube]]
+Что такое совершенная конкуренция? Какие существуют виды несовершенной конкуренции? В чем отличительные черты монополистической конкуренции? Что такое олигополия и монополия? Все это вы узнаете посмотрев данный видео-урок, также в видео представлена таблица сводная таблица рыночных структур и их характеристик Содержание урока: 0:12 Отличительные черты каждой из четырех типов рыночных структур 1:05 Совершенная конкуренция: определение и характеристика 2:54 Монополистическая конкуренция : определение и характеристика 4:16 Олигополия: определение и характеристика 4:58 Монополия: определение и характеристика 6:07 Таблица сравнения рыночных структур
+** [2017-03-26 Sun 13:39] [[https://github.com/abo-abo/make-it-so][abo-abo/make-it-so: Transform files with Makefile recipes]]
+I'm sure you've encountered your share of "How do I transform X to Y?"-type questions on the web. I know I have. A lot of answers involve using kitchen-sink tools like ffmpeg or convert. These tools are great: they can transform almost anything into anything else. But they come with a price of a gazillion switches that are hard to remember (and to type in, for that matter).
+
+This package solves this problem by moving the complex command to a Makefile with customizable literate parameters at the top. Additionally it catalogs all available Makefiles by the file extension that they work on. It also creates a Makefile template for you when a selected action doesn't exist.
+Advantages
+
+    You write the command only once. All the other times, you just customize the literate switches.
+
+    It's possible to not have to write the command at all if it's available in the repository.
+
+    Since the command is meant to be written just once, you can have a more complex and optimized command, compared to the one that you would normally enter in the terminal.
+
+    In case of multiple files, make allows to use multiple cores without the actual command knowing about it. This means that people with different processors can use the same Makefile to the most efficiency, calling make -j8 or make -j2 where appropriate.
+
+    The Elisp layer of this package solves the problem of Makefiles and file names with spaces.
+** [2017-03-26 Sun 13:46] [[https://github.com/jinzhu/zeal-at-point][jinzhu/zeal-at-point: Search the word at point with Zeal (Emacs)]]
+Search the word at point with Zeal
+
+Zeal is a simple offline API documentation browser inspired by Dash (OS X app), available for Linux and Windows.
+** [2017-03-26 Sun 13:47] [[https://github.com/stanaka/dash-at-point][stanaka/dash-at-point: a emacs lisp for searching the word at point with Dash]]
+dash-at-point.el --- Search the word at point with Dash
+
+Dash is an API Documentation Browser and Code Snippet Manager. dash-at-point make it easy to search the word at point with Dash.
+** [2017-03-28 Tue 16:30] [[https://pagure.io/quick-fedora-mirror][Overview - quick-fedora-mirror - Pagure]]
+A full rsync of fedora-buffet0 can take hours just to receive the file list, due to the fact that there are over 11 million files. This has to happen for every client, every time they want to update, which is murderous on the download servers and worse on the backend NFS server. It also slows the propagation of important updates because mirrors simply can't poll often.
+** [2017-03-28 Tue 18:52] [[http://tech.memoryimprintstudio.com/org-capture-from-external-applications/][Org Capture from External Applications – Emacs, Arduino, Raspberry Pi, Linux and Programming etc]]
+ This method should work with other browsers (e.g. Chrome) and applications (e.g. Acrobat), and it is a clean way of getting xdg-open (a tool for configuring default applications in Linux) to open org-protocol links and pass them to emacs. adopted and modified from those two links link1 , link2 and Registering Custom URI Handler
+** [2017-03-28 Tue 19:03] [[https://github.com/wsgac/kanji-mode][wsgac/kanji-mode: GNU Emacs minor mode for displaying stroke order of Japanese kanji signs]]
+This is a minor mode for GNU Emacs aiming to address a common need of Japanese language learners - getting the stroke order of a particular Kanji sign. It has a built-in collection of SVG images depicting stroke orders for all Kanji. The collection is a slightly modified and limited version of the SVGs provided by the KanjiVG project. The mode's operation is pretty simple. It retrieves the Unicode code of the character under the Emacs cursor and uses it to retrieve the proper SVG file (the files are happily named using Unicode numbers). It then displays the relevant SVG in a transient buffer.
+** [2017-03-28 Tue 19:28] [[https://en.wikipedia.org/wiki/Kernel_same-page_merging][Kernel same-page merging - Wikipedia]]
+In computing, kernel same-page merging (abbreviated as KSM, and also known as kernel shared memory and memory merging) is a kernel feature that makes it possible for a hypervisor system to share identical memory pages amongst different processes or virtualized guests. While not directly linked, Kernel-based Virtual Machine (KVM) can use KSM to merge memory pages occupied by virtual machines.
+
+KSM performs the memory sharing by scanning through the main memory and finding duplicate pages. Each detected duplicate pair is then merged into a single page, and mapped into both original locations. The page is also marked as "copy-on-write" (COW), so the kernel will automatically separate them again should one process modify its data.[1]
+
+KSM was originally intended to run more virtual machines on one host by sharing memory between processes as well as virtual machines. Upon its implementation, different users found KSM to also be useful for non-virtualized environments in which memory is at a premium.[2][3] An experimental implementation of KSM by Red Hat found that 52 virtual instances of Windows XP with 1 GB of memory, could run on a host computer that had only 16 GB of RAM.[4]
+
+KSM was merged into the Linux kernel mainline in kernel version 2.6.32, which was released on December 3, 2009.[2][4] To be effective, the operating system kernel must find identical memory pages held by different processes. The kernel also needs to decide whether the pages are going to update infrequently enough that the merging would be an efficient use of processor resources.[3] A concern is that although memory usage is reduced, CPU usage is increased, thus negating potential increases in performance.[1]
+** [2017-03-28 Tue 19:31] [[https://habrahabr.ru/post/143083/][Экономим память с помощью UKSM / Хабрахабр]]
+ И тут приходит UKSM:
+
+    Сканирует память сам. Разработчикам не нужно править исходники.
+    Не тратит CPU зря. UKSM автоматически определяет несовмещенные страницы, основываясь на истории случайных выборок. Пространству с большим количеством известных несовмещенных страниц дается вся скорость, в то время как пространству с низким количеством совмещаемых страниц отдается низкий приоритет, практически не расходуя циклы процессора.
+    Очень высокая скорость работы. Для этого используется новый алгоритм хэширования. Обычно, чтобы отличить страницы одну от другой, достаточно прохэшировать только ее часть. В лучшем случае, алгоритму достаточно прохэшировать только одно 32-битное слово, а не всю страницу, а в худшем, его скорость сравнима с SuperFastHash. Скорость поиска страниц: 627 — 2445 МБ/с, а скорость совмещения: 477 — 923 МБ/с. Также, не тратится CPU и в зонах трешинга, что дает значительно меньшее использование процессорного времени взамен немного худшей экономии памяти.
+
+
+
+Какой выигрыш можно получить?
+На моем десктопе, потребляемая память сократилась на 50-100МБ. В идеале, 10 одинаковых виртуалок будут потреблять оперативную память, как одна.
+** [2017-03-28 Tue 19:36] [[https://github.com/metabrainz/picard][metabrainz/picard: MusicBrainz Picard]]
+MusicBrainz Picard is a cross-platform (Linux/Mac OS X/Windows) application written in Python and is the official MusicBrainz tagger.
+
+Picard supports the majority of audio file formats, is capable of using audio fingerprints (AcoustIDs), performing CD lookups and disc ID submissions, and it has excellent Unicode support. Additionally, there are several plugins available that extend Picard's features.
+
+When tagging files, Picard uses an album-oriented approach. This approach allows it to utilize the MusicBrainz data as effectively as possible and correctly tag your music. For more information, see the illustrated quick start guide to tagging.
+
+Picard is named after Captain Jean-Luc Picard from the TV series Star Trek: The Next Generation.
+** [2017-03-29 Wed 01:23] [[https://ask.fedoraproject.org/en/question/103563/dnf-and-packagekit-metadata-downloads-25gnome/][dnf and packagekit metadata downloads - 25/Gnome - Ask Fedora: Community Knowledge Base and Support Forum]]
+About the network bandwidth: If the issue here is that you are on a network with other devices and you don't want to take all the bandwidth (soho network), there are tools like "Wondershaper" which can be used to limit the bandwidth on your NIC.For example lets assume that your ISP provide you with 10Mbps download/1Mbps upload and you want to limit this to 1/3 for your system, then:
+
+sudo dnf install wondershaper
+sudo wondershaper enp2s0 300 3000
+
+This actually means: apply bandwidth limit to eth0 30Kbps upload/300Kbps download
+
+And with
+
+sudo wondershaper clear enp2s0
+
+You lift the bandwidth limit.
+
+About the downloads and the security: it's preferable to use
+
+sudo dnf update
+
+It will check for updates from the enabled repositories on your system, list them, and prompt if you want to continue with instalment or not. You can choose to install them all, or install specific ones, or even before do that to check each package with
+
+dnf info <package>
+rpm -qi <package>
+
+Also remember that dnf has built in gpg key verification.
+
+Finally, if you really are concerned about rootkits, you can find plenty of software in Fedora's Security Lab.
+** [2017-03-29 Wed 01:24] [[https://github.com/cjdelisle/cjdns][cjdelisle/cjdns]]
+Cjdns implements an encrypted IPv6 network using public-key cryptography for address allocation and a distributed hash table for routing. This provides near-zero-configuration networking, and prevents many of the security and scalability issues that plague existing networks.
+** [2017-03-29 Wed 14:20] [[https://github.com/mesonbuild/meson][mesonbuild/meson: The Meson Build System]]
+You can run Meson directly from a revision control checkout or an extracted tarball. If you wish you can install it locally with the standard Python distutils command python3 setup.py install <your options here>.
+
+Meson is also available from PyPi, so it can be installed with pip3 install meson (this does not require a source checkout, pip will download the package automatically). The exact command to type to install with pip can very between systems, be sure to use the Python 3 version of pip.
+** [2017-03-29 Wed 15:04] [[https://stackoverflow.com/questions/21008083/run-task-only-if-host-does-not-belong-to-a-group][ansible - Run task only if host does not belong to a group - Stack Overflow]]
+- name: my command
+  command: echo stuff
+  when: "'groupname' not in group_names"
+** [2017-03-29 Wed 15:43] [[https://linuxconfig.org/creating-a-package-repository-on-linux-fedora-and-debian][Creating a package repository on Linux : Fedora and Debian - LinuxConfig.org]]
+This article at is the logical continuation of our PXE article, because after reading this you will be able to network boot AND actually install the distribution of your choice. But there are other uses of creating your own repository. For example, bandwidth. If you manage a network and all the systems (or some) are running the same distribution, it's easier for you to just rsync in conjunction with a nearby mirror and serve updates yourself. Next, maybe you have some packages created by you that your distro won't accept in the main tree, but the users find them useful. Get a domain name, set up a webserver and there you go. We will not detail the setup of a webserver here, just basic installation tasks and the basic setup of a repository for Fedora or Debian systems. Hence you are expected to have the necessary hardware (the server and the necessary network equipment, depending on the situation) and some knowledge about Linux and webservers. So, let's start.
+** [2017-03-29 Wed 15:43] [[https://linuxconfig.org/creating-a-package-repository-on-linux-fedora-and-debian][Creating a package repository on Linux : Fedora and Debian - LinuxConfig.org]]
+This article at is the logical continuation of our PXE article, because after reading this you will be able to network boot AND actually install the distribution of your choice. But there are other uses of creating your own repository. For example, bandwidth. If you manage a network and all the systems (or some) are running the same distribution, it's easier for you to just rsync in conjunction with a nearby mirror and serve updates yourself. Next, maybe you have some packages created by you that your distro won't accept in the main tree, but the users find them useful. Get a domain name, set up a webserver and there you go. We will not detail the setup of a webserver here, just basic installation tasks and the basic setup of a repository for Fedora or Debian systems. Hence you are expected to have the necessary hardware (the server and the necessary network equipment, depending on the situation) and some knowledge about Linux and webservers. So, let's start.
+** [2017-03-29 Wed 16:24] [[https://www.youtube.com/watch?v=rSxK_08LSZw][Network Bridging for Virtual Machine Manager in Fedora - YouTube]]
+Network Bridging for Virtual Machine Manager in Fedora
+3,082 views
+** [2017-03-29 Wed 17:31] [[https://www.freedesktop.org/software/systemd/man/systemd-journal-remote.html][systemd-journal-remote]]
+systemd-journal-remote — Receive journal messages over the network
+Synopsis
+
+systemd-journal-remote [OPTIONS...] [-o/--output=DIR|FILE] [SOURCES...]
+Description
+
+systemd-journal-remote is a command to receive serialized journal events and store them to the journal. Input streams are in the Journal Export Format , i.e. like the output from journalctl --output=export. For transport over the network, this serialized stream is usually carried over an HTTPS connection.
+Sources
+
+Sources can be either "active" (systemd-journal-remote requests and pulls the data), or "passive" (systemd-journal-remote waits for a connection and then receives events pushed by the other side).
+
+systemd-journal-remote can read more than one event stream at a time. They will be interleaved in the output file. In case of "active" connections, each "source" is one stream, and in case of "passive" connections, each connection can result in a separate stream. Sockets can be configured in "accept" mode (i.e. only one connection), or "listen" mode (i.e. multiple connections, each resulting in a stream).
+
+When there are no more connections, and no more can be created (there are no listening sockets), then systemd-journal-remote will exit.
+** [2017-03-29 Wed 19:33] [[https://superuser.com/questions/990855/configure-firewalld-to-allow-bridged-virtual-machine-network-access][linux kvm - Configure FirewallD to allow bridged virtual machine network access - Super User]]
+
+
+I was having the same issue. and after digging around found that firewalld has direct passthrough to iptables
+
+so using you can use the same forward rules you had in your script but let firewalld set them up permanently
+
+firewall-cmd --permanent --direct --passthrough ipv4 -I FORWARD -i bridge0 -j ACCEPT
+firewall-cmd --permanent --direct --passthrough ipv4 -I FORWARD -o bridge0 -j ACCEPT
+firewall-cmd --reload
+
+I wish there was a way to get the same result with firewalld without directly changing iptables but I couldn't find any better solution
 * sway pulse audio volume control
 bindsym Shift+XF86AudioRaiseVolume exec pactl set-sink-volume \
                 $(pactl list sinks | grep -B 1 RUNNING | sed '1q;d' | sed 's/[^0-9]\+//g') +5%
@@ -7580,6 +8274,91 @@ Let's make some tests:
 - https://www.youtube.com/watch?v=cuXsupMuik4
 - https://www.youtube.com/watch?v=0RvIbVmCOxg
 - https://www.youtube.com/watch?v=5xkNy9gfKOg
+** OBS Studio
+OK, now tearing is missing in desktop. But what if you want to make
+screencast? Well, you will get tearing in obs studio. Why? Because
+GNOME Vsync.
+
+I solve this by switching to i3wm. Want to do it long time time
+ago. Then you can use compton to
+** Русский
+Fedora 25 GNOME Intel HD Graphics 4000. Tearing в Firefox (видео, плавная
+прокрутка), OBS Studio.
+
+Найти Xorg log:
+#+BEGIN_SRC bash
+locate Xorg | grep log
+#+END_SRC
+
+У меня:
+#+BEGIN_EXAMPLE
+/home/wigust/.local/share/xorg/Xorg.0.log
+#+END_EXAMPLE
+
+Проверить acceleration method должен быть SNA:
+#+BEGIN_SRC bash
+grep backend /home/wigust/.local/share/xorg/Xorg.0.log
+#+END_SRC
+
+У меня:
+#+BEGIN_EXAMPLE
+[ 56821.515] (II) intel(0): SNA initialized with Ivybridge (gen7, gt2) backend
+#+END_EXAMPLE
+
+Создать и вставить ~sudoedit /etc/X11/xorg.conf.d/20-intel.conf~:
+#+BEGIN_EXAMPLE
+Section "Device"
+   Identifier  "Intel Graphics"
+   Driver      "intel"
+   Option      "TearFree" "true"
+EndSection
+#+END_EXAMPLE
+
+Создать и вставить ~$HOME/.drirc~:
+#+BEGIN_SRC bash
+nano $HOME/.drirc
+#+END_SRC
+
+#+BEGIN_EXAMPLE
+<device screen="0" driver="dri2">
+    <application name="Default">
+        <option name="vblank_mode" value="0"/>
+    </application>
+</device>
+#+END_EXAMPLE
+
+Выйти из сессии, зайти и проверить TearFree is enabled:
+#+BEGIN_SRC bash
+grep -i tearfree /home/wigust/.local/share/xorg/Xorg.0.log
+#+END_SRC
+
+У меня:
+#+BEGIN_EXAMPLE
+[ 56821.514] (**) intel(0): Option "TearFree" "true"
+[ 56821.515] (**) intel(0): TearFree enabled
+#+END_EXAMPLE
+
+Возможно требующая настройка Firefox:
+#+BEGIN_EXAMPLE
+about:config
+#+END_EXAMPLE
+
+Set to true:
+#+BEGIN_EXAMPLE
+layers.acceleration.force-enabled
+#+END_EXAMPLE
+
+Тесты:
+- https://www.vsynctester.com/ - может быть не идеальным
+- https://www.youtube.com/watch?v=cuXsupMuik4
+- https://www.youtube.com/watch?v=0RvIbVmCOxg
+- https://www.youtube.com/watch?v=5xkNy9gfKOg
+- Запись в OBS Studio
+
+Другие источники:
+- https://bugzilla.mozilla.org/show_bug.cgi?id=1134077
+- https://wiki.archlinux.org/index.php/Intel_graphics#Tear-free_video
+- [[https://www.youtube.com/watch?v=3esPpe-fclI][Display compositing? What is it and which one should you use? by GrayWolfTech]]
 ** Sources
 - https://bugzilla.mozilla.org/show_bug.cgi?id=1134077
 - https://wiki.archlinux.org/index.php/Intel_graphics#Tear-free_video
@@ -7604,3 +8383,27 @@ Enables the Google Chrome Store for Firefox. Point and click to install Chrome e
 file:/usr/lib/python2.7/site-packages/html2text/config.py
 
 file:/usr/share/rss2email/rss2email.py
+[[https://www.youtube.com/watch?v=vRYeXoPmIxI][How to install i3 with Fedora 22]]
+* Tales
+https://te4.org/characters/217768/tome/77277c76-4d13-453b-a445-eab1986cbe18ah=1c563897-415c-4459-9439-cae3459f61bead=217768
+* [[https://lists.fedoraproject.org/archives/list/devel@lists.fedoraproject.org/message/7ULAG243UNGTOSL6URGNG23GC4B6X5GB/][PSA: Do not run 'dnf update' inside GNOME, KDE or any other graphical desktop on Fedora 24]]
+* Bugs
+** [[https://bugzilla.redhat.com/buglist.cgi?component=chromium&list_id=7209738&product=Fedora][Bug List chromium]]
+* rsync Fedora local mirror
+rsync://mirror.cc.vt.edu/fedora/linux/  /mirror/
+                 --exclude=development --exclude=extras (repeat as nessassary)
+** 
+
+<Southern_Gentlem> sudo rsync -av --delete
+                 rsync://mirror.cc.vt.edu/fedora/linux/ /mirror
+                 --exclude=development --exclude=extras --exclude=test*
+                 --exclude=7 --exclude=8 --exclude=9 --exclude=10 --exclude=11
+                 --exclude=12 --exclude=13 --exclude=14 --exclude=15
+                 --exclude=16 --exclude=17 --exclude=18 --exclude=19
+                 --exclude=20 --exclude=21 --exclude=22 --exclude=23
+                 --exclude=24 --exclude=CloudImages --exclude=Docker
+                 --exclude=Server --exclude=Workstation --
+<Southern_Gentlem> exclude=Spins --exclude=armhfp --exclude=i386
+<rizonz> Southern_Gentlem: ah you don't export the list
+<rizonz> thanks
+<Southern_Gentlem> to me that is a one time shot above
