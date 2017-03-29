@@ -7027,6 +7027,16 @@ Recognize and manipulate faces from Python or from the command line with the wor
 Built using dlib's state-of-the-art face recognition built with deep learning. The model has an accuracy of 99.38% on the Labeled Faces in the Wild benchmark.
 
 This also provides a simple face_recognition command line tool that lets you do face recognition on a folder of images from the command line!
+** [2017-03-30 Thu 01:29] [[https://github.com/certsocietegenerale/fame][certsocietegenerale/fame: FAME Automates Malware Evaluation]]
+FAME is a recursive acronym meaning “FAME Automates Malware Evaluation”.
+
+It is meant to facilitate analysis of malicious files, leveraging as much knowledge as possible in order to speed up and automate end-to-end analysis.
+
+Best case scenario: the analyst drops a sample, waits for a few minutes, and FAME is able to determine the malware family and extract its configuration and IOCs.
+
+FAME should be seen as a framework that will empower your malware analysis development efforts.
+
+You can get more information (and screenshots !) on the website and in the documentation.
 * Patch
 - file:/usr/lib/python2.7/site-packages/html2text/config.py
 - file:/usr/share/rss2email/rss2email.py
