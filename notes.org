@@ -6967,6 +6967,12 @@ Here's a screenshot of it in action:
 This package reimagines Paredit - a popular method to navigate and edit LISP code in Emacs.
 
 The killer-feature are the short bindings:
+** [2017-03-30 Thu 01:24] [[https://github.com/lbryio/lbry][lbryio/lbry: A fully decentralized network for distributing data]]
+LBRY is an open-source protocol providing distribution, discovery, and purchase of digital content (data) via a decentralized network.
+
+This repo is a reference implementation of the LBRY API.
+
+It provides a daemon that can interact with the network via a json-rpc interface over HTTP.
 * Patch
 - file:/usr/lib/python2.7/site-packages/html2text/config.py
 - file:/usr/share/rss2email/rss2email.py
