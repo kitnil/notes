@@ -7549,6 +7549,8 @@ To build locally install sphinx and run make html in the docs directory.
 Middleman is a static site generator using all the shortcuts and tools in modern web development. Check out middlemanapp.com for detailed tutorials, including a getting started guide. You can also follow @middlemanapp for updates.
 ** [2017-03-31 Fri 02:54] [[https://github.com/caesar0301/awesome-pcaptools][caesar0301/awesome-pcaptools: A collection of tools developed by other researchers in the Computer Science area to process network traces. All the right reserved for the original authors.]]
 This project does not contain any source code or files. I just want to make a list of tools to process pcap files in research of network traffic. For more awesome lists, see https://github.com/sindresorhus/awesome
+** [2017-03-31 Fri 02:57] [[http://www.cs.nyu.edu/trackmenot/][TrackMeNot]]
+ TrackMeNot is a lightweight browser extension that helps protect web searchers from surveillance and data-profiling by search engines. It does so not by means of concealment or encryption (i.e. covering one's tracks), but instead, paradoxically, by the opposite strategy: noise and obfuscation. With TrackMeNot, actual web searches, lost in a cloud of false leads, are essentially hidden in plain view. User-installed TrackMeNot works with Firefox and Chrome browsers and popular search engines (AOL, Yahoo!, Google, and Bing) and requires no 3rd-party servers or services.
 * Patch
 - file:/usr/lib/python2.7/site-packages/html2text/config.py
 - file:/usr/share/rss2email/rss2email.py
