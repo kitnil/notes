@@ -7172,6 +7172,12 @@ PackPack works best with GitHub, Travis CI and PackageCloud:
 Watch a demonstration of PackPack.
 ** [2017-03-30 Thu 03:19] [[https://github.com/msimacek/koschei][msimacek/koschei: Continuous integration for Fedora packages]]
 Koschei is a software for running a service for scratch-rebuilding RPM packages in Koji instance when their build-dependencies change or after some time elapse.
+** [2017-03-30 Thu 03:25] [[https://www.youtube.com/watch?v=5Paa-kIuQpM][Flock 2015 - Koschei - continuous integration for Fedora packages - Mikolaj Izdebski - YouTube]]
+#+BEGIN_QUOTE
+Koschei is a service for scratch-rebuilding RPM packages in Fedora Koji instance when their build-dependencies change or after some time elapse. This presentation is about the problem Koschei is trying to solve, design decisions, system structure, current status, plans for the nearest future and further evolution possibilities.
+SHOW MORE
+
+#+END_QUOTE
 * Patch
 - file:/usr/lib/python2.7/site-packages/html2text/config.py
 - file:/usr/share/rss2email/rss2email.py
