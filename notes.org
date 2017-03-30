@@ -7261,6 +7261,8 @@ Please see the libtaskotron docs for details on execution.
 This is rpmgrill, a set of analysis tests that run against a particular RPM build. It principally differs from rpmlint in that rpmgrill handles builds, that is, the entire set of RPMs built from one source RPM.
 
 For example, rpmgrill can warn about missing man pages; "make" errors or warnings buried in the build logs; or common spec file mistakes. rpmgrill does not know about baselines or previous builds; it does no comparisons, only isolated analysis of one build.
+** [2017-03-30 Thu 14:14] [[https://blogs.gnome.org/aklapper/2014/11/10/phabricator-on-fedora-20/][Locally installing Phabricator on Fedora 20 | andré klapper's blog.]]
+As announced in May 2014, Wikimedia will replace Bugzilla with Phabricator very soon for issue tracking. The Wikimedia Phabricator production instance is up and running and the migration from Bugzilla and RT is the next step on our migration timeline. A comparison between Bugzilla and Phabricator and documentation are available.
 * Patch
 - file:/usr/lib/python2.7/site-packages/html2text/config.py
 - file:/usr/share/rss2email/rss2email.py
