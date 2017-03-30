@@ -7241,6 +7241,10 @@ T933 Pass branch from trigger to buildbot in a better way
 ** [2017-03-30 Thu 13:56] [[https://github.com/giuspen/cherrytree][giuspen/cherrytree: cherrytree]]
 
 cherrytree http://www.giuspen.com/cherrytree/
+** [2017-03-30 Thu 14:02] [[https://phab.qa.fedoraproject.org/diffusion/FEDFIND/][fedfind · rFEDFIND]]
+Fedora has stable releases, archive releases, really old archive releases, 'milestone' releases (Alpha / Beta), release validation testing composes (TCs and RCs), unstable nightly composes, and post-release nightly composes, all in different places, with several different layouts. There is no canonical database of the locations and contents of all the various composes/releases. We in Fedora QA found we had several tools that needed to know where to find various images from various different types of releases, and little bits of knowledge about the locations and layouts of various releases/composes had been added to different tools. fedfind was written to consolidate all this esoteric knowledge in a single codebase with a consistent interface.
+
+fedfind lets you specify a release/compose using four values: 'release', 'milestone', 'compose', and 'respin'. It can then find the location for that compose, tell you whether it exists, and give you the locations of all the images that are part of the release and what each image actually contains. As an alternative to this versioning concept, you can also find releases by their Pungi 4 / productmd 'compose ID' or 'compose label' (see examples above).
 * Patch
 - file:/usr/lib/python2.7/site-packages/html2text/config.py
 - file:/usr/share/rss2email/rss2email.py
