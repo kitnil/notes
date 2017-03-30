@@ -7293,6 +7293,8 @@ Upgradepath is a constraint that ensures the ability to upgrade from Fedora rele
 In other words no package dependencies may break when the user wants to upgrade his/her Fedora. That is achieved by requiring the higher Fedora release to contain at least the same or higher package build versions (in N-V-R sense) than the lower Fedora release.
 
 Taskotron executes this test for any update that is proposed in Bodhi and reports the result to resultsDB.
+** [2017-03-30 Thu 14:17] [[https://github.com/default-to-open/rpmdeplint][default-to-open/rpmdeplint: Tool to find errors in RPM packages in the context of their dependency graph]]
+Rpmdeplint is a tool to find errors in RPM packages in the context of their dependency graph.
 * Patch
 - file:/usr/lib/python2.7/site-packages/html2text/config.py
 - file:/usr/share/rss2email/rss2email.py
