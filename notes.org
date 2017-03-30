@@ -7410,6 +7410,13 @@ Image manipulation
     Control compression level of an image
 
     convert input.png -quality 75 output.jpg
+** [2017-03-30 Thu 15:05] [[https://wordpress.org/plugins/postie/][Postie – WordPress Plugins]]
+Postie offers many advanced features for creating posts by email, including the ability to assign categories by name, included pictures and videos, and automatically strip off signatures.
+Postie supports both IMAP and POP including SSL/TLS.
+There is also an extensive set of filters/actions for developers to extend Postie’s functionality.
+For usage notes, see the other notes page.
+
+More info at http://PostiePlugin.com/
 * Patch
 - file:/usr/lib/python2.7/site-packages/html2text/config.py
 - file:/usr/share/rss2email/rss2email.py
