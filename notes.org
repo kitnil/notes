@@ -7238,6 +7238,9 @@ T933 Pass branch from trigger to buildbot in a better way
     Maniphest will let you see current tickets (bugs, requests) or create a new one (look into the upper right screen corner).
     Projects will show you a list of our projects. You will need this when creating a new ticket to provide a correct project name.
     Feed (available from Applications) will show you the latest changes in Phabricator.
+** [2017-03-30 Thu 13:56] [[https://github.com/giuspen/cherrytree][giuspen/cherrytree: cherrytree]]
+
+cherrytree http://www.giuspen.com/cherrytree/
 * Patch
 - file:/usr/lib/python2.7/site-packages/html2text/config.py
 - file:/usr/share/rss2email/rss2email.py
