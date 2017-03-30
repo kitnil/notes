@@ -7495,6 +7495,40 @@ Much like the leoger (a mix between a tiger and a leopard) in the logo, Pext mod
 #+END_QUOTE
 ** [2017-03-30 Thu 17:23] [[https://www.freeopenvpn.org/][Free OpenVPN - Бесплатный VPN-доступ без ограничений!]]
 Анонимное пребывание в Сети Интернет, безопасное соединение, полная свобода действий без географической привязки к стране пребывания (пользуйтесь ресурсами, доступными только для России, США, Европы или стран Азии) - все эти возможности вы можете получить благодаря технологии OpenVPN и нашему сервису. Ежедневные обновления списка серверов при появлении новых данных, множество стран на выбор, отсутствие ограничений - и все это совершенно бесплатно для посетителей нашего сайта!
+** [2017-03-30 Thu 17:32] [[https://ifttt.com/my_applets][Manage Applets - IFTTT]]
+ If new tweet from search for #emacs, then send me an email at go.wigust@gmail.com
+On
+works with
+
+    Email
+
+SoundCloud
+If new public like by wigust, then send me an email at go.wigust@gmail.com
+On
+works with
+
+    Email
+
+YouTube
+If new liked video, then send me an email at go.wigust@gmail.com
+On
+works with
+
+    Email
+
+reddit
+Mail me free games with Steam keys posted to /r/gamedeals
+On
+works with
+
+    Email
+
+Maker Webhooks
+Append to Dropbox from Maker
+Off
+works with
+
+    Dropbox
 * Patch
 - file:/usr/lib/python2.7/site-packages/html2text/config.py
 - file:/usr/share/rss2email/rss2email.py
