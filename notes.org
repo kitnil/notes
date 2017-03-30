@@ -7186,6 +7186,8 @@ Ever wanted to build Software in a controlled and reproducible manner? Ever wond
 #+END_QUOTE
 ** [2017-03-30 Thu 03:26] [[https://fedoraproject.org/wiki/Koschei][Koschei - FedoraProject]]
 Koschei (https://apps.fedoraproject.org/koschei) is a continuous integration service for RPM packages that tracks package dependency changes in Fedora Rawhide and rebuilds packages whose dependencies change too much. Packages are rebuilt in Koji from the latest available SRPM and the rebuilds are logged to display the dependency changes and current state to users.
+** [2017-03-30 Thu 03:27] [[https://fedoramagazine.org/koschei-reducing-bugs-saving-time/][Koschei: Reducing bugs and saving time - Fedora Magazine]]
+Koschei is a continuous integration service for RPM packages. It helps developers fix bugs as fast as possible. It tracks package dependency changes in Rawhide, the bleeding-edge, development version of Fedora. Packages whose dependencies change too much are rebuilt. Koschei logs these rebuilds, displaying dependency changes and current state.
 * Patch
 - file:/usr/lib/python2.7/site-packages/html2text/config.py
 - file:/usr/share/rss2email/rss2email.py
