@@ -7545,6 +7545,8 @@ This is the place for Flatpak developer documentation. It can be read at flatpak
 The docs are written in reStructuredText. Contributions are welcome!
 
 To build locally install sphinx and run make html in the docs directory.
+** [2017-03-30 Thu 19:07] [[https://github.com/middleman/middleman][middleman/middleman: Hand-crafted frontend development]]
+Middleman is a static site generator using all the shortcuts and tools in modern web development. Check out middlemanapp.com for detailed tutorials, including a getting started guide. You can also follow @middlemanapp for updates.
 * Patch
 - file:/usr/lib/python2.7/site-packages/html2text/config.py
 - file:/usr/share/rss2email/rss2email.py
