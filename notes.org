@@ -7533,6 +7533,12 @@ works with
 Here are my instructions on getting Arch Linux ARM natively booting on the Nexus 7 2013 Flo. Ideally this would be booting from a usb stick or a dedicated partition on the mmc but this is working for me now.
 
 If you cannot get it booting you will need to reboot into recovery and check /proc/last_kmsg for the errors. Or try and build the UART cable (which I failed at)
+** [2017-03-30 Thu 19:03] [[https://github.com/snapcore/snapd][snapcore/snapd: The snapd and snap tools enable systems to work with .snap files.]]
+Package any app for every Linux desktop, server, cloud or device.
+
+Snaps are faster to install, easier to create, safer to run, and they update automatically and transactionally so your app is always fresh and never broken. You can bring your own build infrastructure or use ours.
+
+Head over to snapcraft.io to get started.
 * Patch
 - file:/usr/lib/python2.7/site-packages/html2text/config.py
 - file:/usr/share/rss2email/rss2email.py
