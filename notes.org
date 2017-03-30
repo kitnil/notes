@@ -7448,6 +7448,29 @@ You can for example link the e-mail trigger to the Twitter action.
     You also have access to tweetymail's subscription features -- known as FULL access -- for free for the first month.
     If you enjoy FULL access, you can upgrade your account at any time to retain access to the entire feature set.
     If you decide not to upgrade by the end of the one month trial, your account will be converted to a standard FREE access account.
+** [2017-03-30 Thu 15:10] [[http://tweetymail.com/quickstart][Twitter + Email: Tweet via Email, Twitter Email Alerts, Twitter Notifications]]
+
+Linked Email Addresses
+The following email addresses are linked to your tweetymail account:
+go.wigust@gmail.com     
+(primary)
+        settings        remove  *unverified* (resend email)
+You can select a primary email address for receiving notifications and other correspondence from tweetymail.
+Link another email address
+General Settings
+General settings affect all of your email addresses. Go here to select a URL shortener and configure other useful settings.
+General settings
+Email Address Reference
+Use Twitter by sending emails from your linked email address to any of the following "@tweetymail.com" email addresses. Learn more about an email address by clicking on it.
+Email Address   Purpose
+tweet@tweetymail.com    Tweet text, pictures, and links
+post@tweetymail.com     Post tweets longer than 140 characters
+latest@tweetymail.com   Request the latest tweets from your friends
+message@tweetymail.com  Send or reply to a direct message
+follow@tweetymail.com   Start following a user
+block@tweetymail.com    Block a user from following you 
+unfollow@tweetymail.com Stop following a user
+All of these actions can be scheduled. See the scheduling instructions in the user guide for more information.
 * Patch
 - file:/usr/lib/python2.7/site-packages/html2text/config.py
 - file:/usr/share/rss2email/rss2email.py
