@@ -7529,6 +7529,10 @@ Off
 works with
 
     Dropbox
+** [2017-03-30 Thu 18:51] [[https://github.com/crondog/arch-flo][crondog/arch-flo: Arch Linux for Nexus Flo]]
+Here are my instructions on getting Arch Linux ARM natively booting on the Nexus 7 2013 Flo. Ideally this would be booting from a usb stick or a dedicated partition on the mmc but this is working for me now.
+
+If you cannot get it booting you will need to reboot into recovery and check /proc/last_kmsg for the errors. Or try and build the UART cable (which I failed at)
 * Patch
 - file:/usr/lib/python2.7/site-packages/html2text/config.py
 - file:/usr/share/rss2email/rss2email.py
