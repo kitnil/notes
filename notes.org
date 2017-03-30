@@ -7417,6 +7417,31 @@ There is also an extensive set of filters/actions for developers to extend Posti
 For usage notes, see the other notes page.
 
 More info at http://PostiePlugin.com/
+** [2017-03-30 Thu 15:06] [[https://webapps.stackexchange.com/questions/31119/post-to-twitter-by-email][Post to Twitter by email? - Web Applications Stack Exchange]]
+
+
+Built in to Twitter, no. There are several services that will facilitate this for you.
+
+The most popular seems to be Tweetymail. TwitterMail is another. Twitdom may have some more in their "email" tag.
+
+For what it's worth, Tweet to Email does the opposite. It lets you send your Tweets to your non-Twitter using friends.
+shareimprove this answer
+        
+answered Sep 14 '12 at 18:40
+ale
+34.9k1779160
+        
+add a comment
+up vote
+3
+down vote
+        
+
+Also consider If This Than That!
+
+It's really a cool service that supports a huge amount of web services you can link to each other by triggers and actions.
+
+You can for example link the e-mail trigger to the Twitter action.
 * Patch
 - file:/usr/lib/python2.7/site-packages/html2text/config.py
 - file:/usr/share/rss2email/rss2email.py
