@@ -7295,6 +7295,8 @@ In other words no package dependencies may break when the user wants to upgrade 
 Taskotron executes this test for any update that is proposed in Bodhi and reports the result to resultsDB.
 ** [2017-03-30 Thu 14:17] [[https://github.com/default-to-open/rpmdeplint][default-to-open/rpmdeplint: Tool to find errors in RPM packages in the context of their dependency graph]]
 Rpmdeplint is a tool to find errors in RPM packages in the context of their dependency graph.
+** [2017-03-30 Thu 14:17] [[https://pagure.io/fedora-qa/fedora_openqa][Overview - fedora-qa/fedora_openqa - Pagure]]
+This repository contains a Python library (fedora_openqa) and CLI tool (fedora-openqa) that handle scheduling jobs in Fedora's instances (production and staging) of openQA. The library contains several fedmsg consumers which together form a fully automated pipeline for running tests in Fedora's official openQA instances. Jobs are scheduled in response to fedmsgs from release engineering. When a job completes, a fedmsg is emitted, and the 'reporter' consumers forward results to Wikitcms and ResultsDB. The CLI allows manual triggering of jobs and reporting of results for testing with a local openQA deployment, or in case some issue in the automated pipeline requires manual intervention.
 * Patch
 - file:/usr/lib/python2.7/site-packages/html2text/config.py
 - file:/usr/share/rss2email/rss2email.py
