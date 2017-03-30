@@ -7471,6 +7471,14 @@ follow@tweetymail.com   Start following a user
 block@tweetymail.com    Block a user from following you 
 unfollow@tweetymail.com Stop following a user
 All of these actions can be scheduled. See the scheduling instructions in the user guide for more information.
+** [2017-03-30 Thu 15:55] [[https://github.com/OzymandiasTheGreat/emoji-keyboard][OzymandiasTheGreat/emoji-keyboard: Virtual keyboard-like emoji picker for Linux.]]
+#+BEGIN_QUOTE
+Virtual keyboard-like emoji picker for linux.
+
+This project uses artwork and data from the excellent EmojiOne project.
+
+
+#+END_QUOTE
 * Patch
 - file:/usr/lib/python2.7/site-packages/html2text/config.py
 - file:/usr/share/rss2email/rss2email.py
