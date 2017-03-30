@@ -7287,6 +7287,12 @@ Docker Autotest is a sub-framework for standalone testing of docker. It does not
 Test content and configuration is fully modular, supporting both included and external tests. The included content is primarily focused on continuous-integration testing of the Docker CLI client, with a very limited amount of negative and stress testing.
 
 As with other Autotest Client Tests the main entry point is the test control file. Docker Autotest’s control file utilizes Autotest’s steps-engine. This allows the overall testing state to be stored, recovered, and resumed should a host-kernel panic or if userspace become unresponsive. Consequently, rebooting the host system as a testing step is also supported.
+** [2017-03-30 Thu 14:17] [[https://fedoraproject.org/wiki/Taskotron/Tasks/upgradepath][Taskotron/Tasks/upgradepath - FedoraProject]]
+Upgradepath is a constraint that ensures the ability to upgrade from Fedora release N to Fedora release N+1.
+
+In other words no package dependencies may break when the user wants to upgrade his/her Fedora. That is achieved by requiring the higher Fedora release to contain at least the same or higher package build versions (in N-V-R sense) than the lower Fedora release.
+
+Taskotron executes this test for any update that is proposed in Bodhi and reports the result to resultsDB.
 * Patch
 - file:/usr/lib/python2.7/site-packages/html2text/config.py
 - file:/usr/share/rss2email/rss2email.py
