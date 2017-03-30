@@ -7281,6 +7281,12 @@ NOTE: Follow these instructions to use Apache. To use nginx or lighttpd, scroll 
 Get Apache running and verify it's serving a test page. Consult the Apache documentation for help. Make sure mod_php and mod_rewrite are enabled, and mod_ssl if you intend to set up SSL.
 
 If you haven't already, set up a domain name to point to the host you're installing on. You can either install Phabricator on a subdomain (like phabricator.example.com) or an entire domain, but you can not install it in some subdirectory of an existing website. Navigate to whatever domain you're going to use and make sure Apache serves you something to verify that DNS is correctly configured.
+** [2017-03-30 Thu 14:16] [[https://docker-autotest.readthedocs.io/en/latest/][1   Docker Autotest 0.8.6 — Docker Autotest Documentation]]
+Docker Autotest is a sub-framework for standalone testing of docker. It does not depend on docker itself. Functionally, testing occurs within any number of subtest modules, which in some cases also include further nested sub-subtests. It is designed to support both extremely simple, linear, and more complex, nested, iterative testing of arbitrary external docker commands.
+
+Test content and configuration is fully modular, supporting both included and external tests. The included content is primarily focused on continuous-integration testing of the Docker CLI client, with a very limited amount of negative and stress testing.
+
+As with other Autotest Client Tests the main entry point is the test control file. Docker Autotest’s control file utilizes Autotest’s steps-engine. This allows the overall testing state to be stored, recovered, and resumed should a host-kernel panic or if userspace become unresponsive. Consequently, rebooting the host system as a testing step is also supported.
 * Patch
 - file:/usr/lib/python2.7/site-packages/html2text/config.py
 - file:/usr/share/rss2email/rss2email.py
