@@ -7188,6 +7188,13 @@ Ever wanted to build Software in a controlled and reproducible manner? Ever wond
 Koschei (https://apps.fedoraproject.org/koschei) is a continuous integration service for RPM packages that tracks package dependency changes in Fedora Rawhide and rebuilds packages whose dependencies change too much. Packages are rebuilt in Koji from the latest available SRPM and the rebuilds are logged to display the dependency changes and current state to users.
 ** [2017-03-30 Thu 03:27] [[https://fedoramagazine.org/koschei-reducing-bugs-saving-time/][Koschei: Reducing bugs and saving time - Fedora Magazine]]
 Koschei is a continuous integration service for RPM packages. It helps developers fix bugs as fast as possible. It tracks package dependency changes in Rawhide, the bleeding-edge, development version of Fedora. Packages whose dependencies change too much are rebuilt. Koschei logs these rebuilds, displaying dependency changes and current state.
+** [2017-03-30 Thu 03:53] [[https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/6/html/Security-Enhanced_Linux/sect-Security-Enhanced_Linux-SELinux_Contexts_Labeling_Files-Persistent_Changes_semanage_fcontext.html][5.6.2. Persistent Changes: semanage fcontext]]
+ The semanage fcontext command is used to change the SELinux context of files. When using targeted policy, changes are written to files located in the /etc/selinux/targeted/contexts/files/ directory:
+
+    The file_contexts file specifies default contexts for many files, as well as contexts updated via semanage fcontext.
+    The file_contexts.local file stores contexts to newly created files and directories not found in file_contexts. 
+
+Two utilities read these files. The setfiles utility is used when a file system is relabeled and the restorecon utility restores the default SELinux contexts. This means that changes made by semanage fcontext are persistent, even if the file system is relabeled. SELinux policy controls whether users are able to modify the SELinux context for any given file.
 * Patch
 - file:/usr/lib/python2.7/site-packages/html2text/config.py
 - file:/usr/share/rss2email/rss2email.py
