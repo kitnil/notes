@@ -7178,6 +7178,12 @@ Koschei is a service for scratch-rebuilding RPM packages in Fedora Koji instance
 SHOW MORE
 
 #+END_QUOTE
+** [2017-03-30 Thu 03:25] [[https://www.youtube.com/watch?v=hUg6MMC4x0w][Building RPMS - How Fedora's Koji Works, and how you can use it to build your own software - YouTube]]
+#+BEGIN_QUOTE
+Ever wanted to build Software in a controlled and reproducible manner? Ever wondered how a distro is built? Need to build software internally? Are you a existing Fedora Contributor and want to know how the tools you use work?
+
+
+#+END_QUOTE
 * Patch
 - file:/usr/lib/python2.7/site-packages/html2text/config.py
 - file:/usr/share/rss2email/rss2email.py
