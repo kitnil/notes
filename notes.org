@@ -7152,6 +7152,24 @@ A note on the language:
     "Don't" means there's never a good reason.
     "Prefer" indicates a better option and its alternative to watch out for.
     "Use" is a positive instruction.
+** [2017-03-30 Thu 03:15] [[https://github.com/packpack/packpack][packpack/packpack: Simple building of RPMs & Debian packages from git repos]]
+PackPack is a simple tool to build RPM and Debian packages from git repositories:
+
+    Fast reproducible builds using Docker containers
+
+    Semantic versioning based on annotated git tags
+
+    Support for all major Linux distributions as targets
+
+PackPack works best with GitHub, Travis CI and PackageCloud:
+
+    Push your code to GitHub
+
+    Build packages using Travis CI
+
+    Host repositories on PackageCloud
+
+Watch a demonstration of PackPack.
 * Patch
 - file:/usr/lib/python2.7/site-packages/html2text/config.py
 - file:/usr/share/rss2email/rss2email.py
