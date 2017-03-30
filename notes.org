@@ -7255,6 +7255,12 @@ build and reports the results.
 While it can be run standalone, it is designed to be executed by the
 `libtaskotron <https://bitbucket.org/fedoraqa/libtaskotron>`_.
 Please see the libtaskotron docs for details on execution.
+** [2017-03-30 Thu 14:14] [[https://github.com/default-to-open/rpmgrill][default-to-open/rpmgrill: Static package analysis of RPM builds]]
+
+
+This is rpmgrill, a set of analysis tests that run against a particular RPM build. It principally differs from rpmlint in that rpmgrill handles builds, that is, the entire set of RPMs built from one source RPM.
+
+For example, rpmgrill can warn about missing man pages; "make" errors or warnings buried in the build logs; or common spec file mistakes. rpmgrill does not know about baselines or previous builds; it does no comparisons, only isolated analysis of one build.
 * Patch
 - file:/usr/lib/python2.7/site-packages/html2text/config.py
 - file:/usr/share/rss2email/rss2email.py
