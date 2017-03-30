@@ -7485,6 +7485,14 @@ Martin Fowler, who first wrote about Continuous Integration (short: CI) together
     Continuous Integration is a software development practice where members of a team integrate their work frequently, usually each person integrates at least daily - leading to multiple integrations per day. Each integration is verified by an automated build (including test) to detect integration errors as quickly as possible. Many teams find that this approach leads to significantly reduced integration problems and allows a team to develop cohesive software more rapidly.
 ** [2017-03-30 Thu 16:21] [[https://www.patternfly.org/][PatternFly | open interface project]]
  A community of designers and developers collaborating to build a UI framework for enterprise web applications.
+** [2017-03-30 Thu 17:00] [[https://github.com/Pext/Pext][Pext/Pext: Python-based extendable tool]]
+#+BEGIN_QUOTE
+Pext stands for Python-based extendable tool. It is built using Python 3 and Qt5 QML and intended to have its behaviour decided by modules. Pext provides a simple window with a search bar, allowing modules to define what data is shown and how it is manipulated.
+
+Much like the leoger (a mix between a tiger and a leopard) in the logo, Pext modules can turn Pext into a completely different beast. From password management to weather information, modules can harness the full power of Python to turn the simple user interface into an useful and powerful application.
+
+
+#+END_QUOTE
 * Patch
 - file:/usr/lib/python2.7/site-packages/html2text/config.py
 - file:/usr/share/rss2email/rss2email.py
