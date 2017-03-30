@@ -7301,6 +7301,8 @@ This repository contains a Python library (fedora_openqa) and CLI tool (fedora-o
 Wikitcms is a term used to refer to Fedora's use of this MediaWiki instance as an ad hoc test management system ('TCMS' stands for 'Test Case Management System', but that precise initialism is in fact quite rarely used). It is also the name of a Python module which provides an interface to the 'system'.
 ** [2017-03-30 Thu 14:19] [[https://wiki.debian.org/VMBuilder][VMBuilder - Debian Wiki]]
 VMBuilder is a Python-based software package for creating VM images of free software GNU/Linux-based operating systems. It's currently being developed by the Ubuntu Virtualization Team at this address https://launchpad.net/vmbuilder. It makes building and installing VMs a breeze. The vanilla / trunk release supports Ubuntu on Xen, VirtualBox, VMware, KVM and Amazon EC2.
+** [2017-03-30 Thu 14:26] [[https://www.phacility.com/][Phacility - Home]]
+Phabricator is a complete set of tools for developing software. Included apps help you manage tasks and sprints, review code, host git, svn, or mercurial repositories, build with continuous integration, review designs, discuss in internal chat channels, and much more. It's fast, scalable, and fully open source. Install it locally with no limitations, or have us host it for you.
 * Patch
 - file:/usr/lib/python2.7/site-packages/html2text/config.py
 - file:/usr/share/rss2email/rss2email.py
