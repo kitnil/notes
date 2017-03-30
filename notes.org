@@ -7539,6 +7539,12 @@ Package any app for every Linux desktop, server, cloud or device.
 Snaps are faster to install, easier to create, safer to run, and they update automatically and transactionally so your app is always fresh and never broken. You can bring your own build infrastructure or use ours.
 
 Head over to snapcraft.io to get started.
+** [2017-03-30 Thu 19:06] [[https://github.com/flatpak/flatpak-docs][flatpak/flatpak-docs: Flatpak documentation]]
+This is the place for Flatpak developer documentation. It can be read at flatpak.readthedocs.io.
+
+The docs are written in reStructuredText. Contributions are welcome!
+
+To build locally install sphinx and run make html in the docs directory.
 * Patch
 - file:/usr/lib/python2.7/site-packages/html2text/config.py
 - file:/usr/share/rss2email/rss2email.py
