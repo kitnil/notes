@@ -7233,6 +7233,11 @@ Please make sure you've read over and agree with the etiquette regarding communi
 No need to replicate the production environment with all its servers and configurations, the check authors can easily run and develop their checks on their local machine with no unnecessary software setup hassle.
 ** [2017-03-30 Thu 13:51] [[https://phab.qa.fedoraproject.org/][Home]]
 T933 Pass branch from trigger to buildbot in a better way
+** [2017-03-30 Thu 13:54] [[https://fedoraproject.org/wiki/QA:Phabricator][QA:Phabricator - FedoraProject]]
+     Differential will let you see all patch reviews or create a new one manually (see #issues-diffs for a better way to do this).
+    Maniphest will let you see current tickets (bugs, requests) or create a new one (look into the upper right screen corner).
+    Projects will show you a list of our projects. You will need this when creating a new ticket to provide a correct project name.
+    Feed (available from Applications) will show you the latest changes in Phabricator.
 * Patch
 - file:/usr/lib/python2.7/site-packages/html2text/config.py
 - file:/usr/share/rss2email/rss2email.py
