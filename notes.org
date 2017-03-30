@@ -7123,6 +7123,35 @@ SYNOPSIS
 The lm-sensors package, version 3, provides user-space support for the
 hardware monitoring drivers in Linux 2.6.5 and later. For older kernel
 versions, you have to use lm-sensors version 2.
+** [2017-03-30 Thu 03:07] [[https://github.com/thoughtbot/guides][thoughtbot/guides: A guide for programming in style.]]
+Guides for getting things done, programming well, and programming in style.
+
+    Best Practices
+    Code Review
+    How to
+    Protocol
+        Communication
+        Git
+        iOS
+        Open Source
+        Product Review
+        Rails
+    Security
+    Style
+
+High level guidelines:
+
+    Be consistent.
+    Don't rewrite existing code to follow this guide.
+    Don't violate a guideline without a good reason.
+    A reason is good when you can convince a teammate.
+
+A note on the language:
+
+    "Avoid" means don't do it unless you have good reason.
+    "Don't" means there's never a good reason.
+    "Prefer" indicates a better option and its alternative to watch out for.
+    "Use" is a positive instruction.
 * Patch
 - file:/usr/lib/python2.7/site-packages/html2text/config.py
 - file:/usr/share/rss2email/rss2email.py
