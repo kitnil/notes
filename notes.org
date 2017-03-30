@@ -7118,6 +7118,11 @@ SYNOPSIS
           on_error => sub { warn @_ },
           on_cleanup => sub { warn "Connection closed: @_" },
       );
+** [2017-03-30 Thu 03:00] [[https://github.com/groeck/lm-sensors][groeck/lm-sensors: Clone of lm-sensors svn repository]]
+
+The lm-sensors package, version 3, provides user-space support for the
+hardware monitoring drivers in Linux 2.6.5 and later. For older kernel
+versions, you have to use lm-sensors version 2.
 * Patch
 - file:/usr/lib/python2.7/site-packages/html2text/config.py
 - file:/usr/share/rss2email/rss2email.py
