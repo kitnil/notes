@@ -7299,6 +7299,8 @@ Rpmdeplint is a tool to find errors in RPM packages in the context of their depe
 This repository contains a Python library (fedora_openqa) and CLI tool (fedora-openqa) that handle scheduling jobs in Fedora's instances (production and staging) of openQA. The library contains several fedmsg consumers which together form a fully automated pipeline for running tests in Fedora's official openQA instances. Jobs are scheduled in response to fedmsgs from release engineering. When a job completes, a fedmsg is emitted, and the 'reporter' consumers forward results to Wikitcms and ResultsDB. The CLI allows manual triggering of jobs and reporting of results for testing with a local openQA deployment, or in case some issue in the automated pipeline requires manual intervention.
 ** [2017-03-30 Thu 14:19] [[https://fedoraproject.org/wiki/Wikitcms][Wikitcms - FedoraProject]]
 Wikitcms is a term used to refer to Fedora's use of this MediaWiki instance as an ad hoc test management system ('TCMS' stands for 'Test Case Management System', but that precise initialism is in fact quite rarely used). It is also the name of a Python module which provides an interface to the 'system'.
+** [2017-03-30 Thu 14:19] [[https://wiki.debian.org/VMBuilder][VMBuilder - Debian Wiki]]
+VMBuilder is a Python-based software package for creating VM images of free software GNU/Linux-based operating systems. It's currently being developed by the Ubuntu Virtualization Team at this address https://launchpad.net/vmbuilder. It makes building and installing VMs a breeze. The vanilla / trunk release supports Ubuntu on Xen, VirtualBox, VMware, KVM and Amazon EC2.
 * Patch
 - file:/usr/lib/python2.7/site-packages/html2text/config.py
 - file:/usr/share/rss2email/rss2email.py
