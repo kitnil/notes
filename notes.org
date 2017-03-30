@@ -7263,6 +7263,24 @@ This is rpmgrill, a set of analysis tests that run against a particular RPM buil
 For example, rpmgrill can warn about missing man pages; "make" errors or warnings buried in the build logs; or common spec file mistakes. rpmgrill does not know about baselines or previous builds; it does no comparisons, only isolated analysis of one build.
 ** [2017-03-30 Thu 14:14] [[https://blogs.gnome.org/aklapper/2014/11/10/phabricator-on-fedora-20/][Locally installing Phabricator on Fedora 20 | andré klapper's blog.]]
 As announced in May 2014, Wikimedia will replace Bugzilla with Phabricator very soon for issue tracking. The Wikimedia Phabricator production instance is up and running and the migration from Bugzilla and RT is the next step on our migration timeline. A comparison between Bugzilla and Phabricator and documentation are available.
+** [2017-03-30 Thu 14:15] [[https://secure.phabricator.com/book/phabricator/article/configuration_guide/][◉ Configuration Guide]]
+This document contains basic configuration instructions for Phabricator.
+Prerequisites
+
+This document assumes you've already installed all the components you need. If you haven't, see Installation Guide.
+
+The next steps are:
+
+    Configure your webserver (Apache, nginx, or lighttpd).
+    Access Phabricator with your browser.
+    Follow the instructions to complete setup.
+
+Webserver: Configuring Apache
+NOTE: Follow these instructions to use Apache. To use nginx or lighttpd, scroll down to their sections.
+
+Get Apache running and verify it's serving a test page. Consult the Apache documentation for help. Make sure mod_php and mod_rewrite are enabled, and mod_ssl if you intend to set up SSL.
+
+If you haven't already, set up a domain name to point to the host you're installing on. You can either install Phabricator on a subdomain (like phabricator.example.com) or an entire domain, but you can not install it in some subdirectory of an existing website. Navigate to whatever domain you're going to use and make sure Apache serves you something to verify that DNS is correctly configured.
 * Patch
 - file:/usr/lib/python2.7/site-packages/html2text/config.py
 - file:/usr/share/rss2email/rss2email.py
