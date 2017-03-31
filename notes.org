@@ -7571,6 +7571,8 @@ $ cat boomaga_local.cil
 #
 ** [2017-03-31 Fri 18:53] [[https://wiki.archlinux.org/index.php/DNSCrypt][DNSCrypt - ArchWiki]]
 Install the dnscrypt-proxy package.
+** [2017-03-31 Fri 18:53] [[https://tracker.debian.org/pkg/dnscrypt-proxy][Debian Package Tracker - dnscrypt-proxy]]
+Tool for securing communications between a client and a DNS resolver
 * Patch
 - file:/usr/lib/python2.7/site-packages/html2text/config.py
 - file:/usr/share/rss2email/rss2email.py
