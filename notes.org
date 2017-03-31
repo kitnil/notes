@@ -7580,6 +7580,8 @@ problems created from the keyboard site. Recently I experience combination of bo
 take out hard disk and connect it into working system, but then better idea appeared. The Fedora is delivered on
 boot-able live CD and I remembered that somewhere I have one. But will it work, and can I repair Fedora 25 from Fedora
 23 live CD? Lets see what happened.
+** [2017-03-31 Fri 21:44] [[https://github.com/danfolkes/Magnet2Torrent][danfolkes/Magnet2Torrent: This will convert a magnet link into a .torrent file]]
+A command line tool that converts magnet links in to .torrent files.
 * Patch
 - file:/usr/lib/python2.7/site-packages/html2text/config.py
 - file:/usr/share/rss2email/rss2email.py
