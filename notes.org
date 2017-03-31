@@ -7870,4 +7870,23 @@ https://te4.org/characters/217768/tome/77277c76-4d13-453b-a445-eab1986cbe18ah=1c
   (define-key the-map "g"  #'buffer-menu-files-only) )
 
 (provide 'buffer-menu)
+* redroot.gitlab.io bundle log
+Bundle complete! 23 Gemfile dependencies, 91 gems now installed.
+Use `bundle show [gemname]` to see where a bundled gem is installed.
+Post-install message from compass:
+    Compass is charityware. If you love it, please donate on our behalf at http://umdf.org/compass Thanks!
+Post-install message from haml:
 
+HEADS UP! Haml 4.0 has many improvements, but also has changes that may break
+your application:
+
+- Support for Ruby 1.8.6 dropped
+- Support for Rails 2 dropped
+- Sass filter now always outputs <style> tags
+- Data attributes are now hyphenated, not underscored
+- html2haml utility moved to the html2haml gem
+- Textile and Maruku filters moved to the haml-contrib gem
+
+For more info see:
+
+http://rubydoc.info/github/haml/haml/file/CHANGELOG.md
