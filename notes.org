@@ -7551,6 +7551,8 @@ Middleman is a static site generator using all the shortcuts and tools in modern
 This project does not contain any source code or files. I just want to make a list of tools to process pcap files in research of network traffic. For more awesome lists, see https://github.com/sindresorhus/awesome
 ** [2017-03-31 Fri 02:57] [[http://www.cs.nyu.edu/trackmenot/][TrackMeNot]]
  TrackMeNot is a lightweight browser extension that helps protect web searchers from surveillance and data-profiling by search engines. It does so not by means of concealment or encryption (i.e. covering one's tracks), but instead, paradoxically, by the opposite strategy: noise and obfuscation. With TrackMeNot, actual web searches, lost in a cloud of false leads, are essentially hidden in plain view. User-installed TrackMeNot works with Firefox and Chrome browsers and popular search engines (AOL, Yahoo!, Google, and Bing) and requires no 3rd-party servers or services.
+** [2017-03-31 Fri 15:07] [[https://lists.fedoraproject.org/archives/list/selinux@lists.fedoraproject.org/thread/VUOKKV77ETH45QIFED2XZWHEIAUJARND/][SELinux is preventing boomagabackend from 'sys_ptrace' accesses on the cap_userns Unknown. - selinux - Fedora Mailing-Lists]]
+I'll try to contact boomaga maintainer and provide patch for boomaga SELinux module.
 * Patch
 - file:/usr/lib/python2.7/site-packages/html2text/config.py
 - file:/usr/share/rss2email/rss2email.py
