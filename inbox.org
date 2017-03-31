@@ -2,3 +2,8 @@
 ** [2017-03-31 Fri 19:07] [[gnus:INBOX#fake+none+INBOX+1033][Email from Planet GNOME: Emacs as C IDE and JHBuild]] by [[mailto:gnome-sysadmin@gnome.org][Planet GNOME]]
 ** [2017-03-31 Fri 20:07] [[gnus:mail.list.emacs.help#yw.86o9wizkv6.fsf@zoho.com][Email from Emanuel Berg: Re: X11 signal to emacs]] by [[mailto:moasen@zoho.com][Emanuel Berg]]
 ** [2017-03-31 Fri 20:20] [[gnus:mail.list.fedora.users#1490635878.2769.18.camel@gmail.com][Email from Patrick O'Callaghan: Restoring a QEMU snapshot]] by [[mailto:pocallaghan@gmail.com][Patrick O'Callaghan]]
+** [2017-03-31 Fri 20:53] [[gnus:mail.list.fedora.users#CAG1svNjrFOFq3jhhaVO0BeKFRm0+uqvrTP4ndDQdKW8cdGQ0VQ@mail.gmail.com][Email from Jaroslav Mracek: Re: F24 system shutdown during]] by [[mailto:jmracek@redhat.com][Jaroslav Mracek]]
+
+I would recommend to get inspired by article http://dnf.baseurl.org/2016/12/15/repair-of-broken-system-with-dnf-2-0/
+where you can find how to repair broken system. With dnf-2.0 you can use "dnf check" command, that could reveal
+problems on your system.
