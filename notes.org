@@ -7573,6 +7573,13 @@ $ cat boomaga_local.cil
 Install the dnscrypt-proxy package.
 ** [2017-03-31 Fri 18:53] [[https://tracker.debian.org/pkg/dnscrypt-proxy][Debian Package Tracker - dnscrypt-proxy]]
 Tool for securing communications between a client and a DNS resolver
+** [2017-03-31 Fri 20:43] PlayOnLinux
+
+I think quite a lot of users know the situation when you are unable to boot or run a system due to broken upgrade or
+problems created from the keyboard site. Recently I experience combination of both, but what then? First idea was to
+take out hard disk and connect it into working system, but then better idea appeared. The Fedora is delivered on
+boot-able live CD and I remembered that somewhere I have one. But will it work, and can I repair Fedora 25 from Fedora
+23 live CD? Lets see what happened.
 * Patch
 - file:/usr/lib/python2.7/site-packages/html2text/config.py
 - file:/usr/share/rss2email/rss2email.py
