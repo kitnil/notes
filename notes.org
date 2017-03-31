@@ -7553,6 +7553,22 @@ This project does not contain any source code or files. I just want to make a li
  TrackMeNot is a lightweight browser extension that helps protect web searchers from surveillance and data-profiling by search engines. It does so not by means of concealment or encryption (i.e. covering one's tracks), but instead, paradoxically, by the opposite strategy: noise and obfuscation. With TrackMeNot, actual web searches, lost in a cloud of false leads, are essentially hidden in plain view. User-installed TrackMeNot works with Firefox and Chrome browsers and popular search engines (AOL, Yahoo!, Google, and Bing) and requires no 3rd-party servers or services.
 ** [2017-03-31 Fri 15:07] [[https://lists.fedoraproject.org/archives/list/selinux@lists.fedoraproject.org/thread/VUOKKV77ETH45QIFED2XZWHEIAUJARND/][SELinux is preventing boomagabackend from 'sys_ptrace' accesses on the cap_userns Unknown. - selinux - Fedora Mailing-Lists]]
 I'll try to contact boomaga maintainer and provide patch for boomaga SELinux module.
+** [2017-03-31 Fri 16:49] [[https://bugzilla.redhat.com/show_bug.cgi?id=1409115][Bug 1409115 – Incorrect permissons in the RPM package and boomaga requires the SELinux security policy]]
+i post a comment from Lukas Vrabec on the Fedora selinux forum:
+https://lists.fedoraproject.org/archives/list/selinux@lists.fedoraproject.org/thread/VUOKKV77ETH45QIFED2XZWHEIAUJARND/
+
+boomaga SELinux module is not part of selinux-policy package, which
+means it's not maintained by Fedora SELinux team. I cloned boomaga repo
+and boomaga policy is part of permissivedomains, which means that
+boomaga rules won't be enforced by kernel, even if your system is in
+enforcing state. If you would like to fix this issue you can create
+local module:
+
+$ cat boomaga_local.cil
+(allow boomaga_cups_t boomaga_cups_t(cap_userns (sys_ptrace)))
+
+# semodule -i boomaga_local.cil
+#
 * Patch
 - file:/usr/lib/python2.7/site-packages/html2text/config.py
 - file:/usr/share/rss2email/rss2email.py
