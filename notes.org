@@ -7655,6 +7655,13 @@ A command line tool that converts magnet links in to .torrent files.
 (global-set-key (kbd "C-c e s") 'erc-connect/slack)
 (global-set-key (kbd "C-c e m") 'erc-connect/mozilla)
 (global-set-key (kbd "C-c e g") 'erc-connect/gitter)
+** [2017-04-01 Sat 20:08] [[https://gaming.youtube.com/watch?v=YcyME_Gajr8][Ubuntarium by Redroot: Эксперемент с Ubuntu Studio {1.04.2017, 19.00 MSK}-stream 1080p - YouTube Gaming]]
+#+BEGIN_QUOTE
+MrAssociative​Mr. Marshall. После установки Nemo делаю еще 2-а шага - отключение реагирования на рабочий стол (gsettings﻿ set org.nemo.desktop show-desktop-icons false)
+
+MrAssociative​и врубаю Nemo по умолчанию (xdg-mime default nemo.desktop inode/directory﻿ application/x-gnome-saved-search)
+
+#+END_QUOTE
 * Patch
 - file:/usr/lib/python2.7/site-packages/html2text/config.py
 - file:/usr/share/rss2email/rss2email.py
