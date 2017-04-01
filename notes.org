@@ -7759,115 +7759,119 @@ rsync://mirror.cc.vt.edu/fedora/linux/  /mirror/
 ** Tales
 https://te4.org/characters/217768/tome/77277c76-4d13-453b-a445-eab1986cbe18ah=1c563897-415c-4459-9439-cae3459f61bead=217768
 ** [[https://www.youtube.com/watch?v=vRYeXoPmIxI][How to install i3 with Fedora 22]]
-* List Emacs packages
-;; This file: http://user.it.uu.se/~embe8573/conf/emacs-init/elpa.el
+** Customize buffer-menu
+#+BEGIN_SRC emacs-lisp
+  ;; This file: http://user.it.uu.se/~embe8573/conf/emacs-init/buffer-menu.el
 
-(require 'scroll)
-(require 'super)
-(require 'close)
+  (require 'dired)
+  (require 'scroll)
+  (require 'close)
+  (require 'super)
 
-(package-initialize)
+  (setq Buffer-menu-use-header-line nil)
 
-(defvar package-menu-mode-map)
-(let ((the-map package-menu-mode-map))
-  (set-close-key        the-map)
-  (set-pane-scroll-keys the-map)
-  (set-vertical-keys    the-map) )
+  (defvar buffer-menu-buffer-font-lock-keywords
+    '(
+      ("\\*\\(Errors\\|Backtrace\\)\\*"         .  font-lock-warning-face)
+      ("\\*\\(Group\\|Server\\|Packages\\)\\*"  .  font-lock-comment-face)
+      ("\\*\\(Help\\|Completions\\|Messages\\|info\\|Apropos\\)\\*"
+                                            .  font-lock-constant-face)
+      ("\\*\\(ielm\\|Article\\)\\*"         . 'font-lock-regexp-grouping-backslash)
+      (".* \\(.*\\.txt\\) "                 (1 font-lock-negation-char-face))
+      ("[[:space:]]+\\([[:digit:]]+\\) "    (1 font-lock-comment-delimiter-face))
+      ("<.*\\(>\\|\\.\\.\\.\\)"             . 'font-lock-regexp-grouping-construct)
+      ("Makefile"                           .  font-lock-comment-face)
+      ("\\(\\*Man\\) \\(.*\\)\\(\\*\\)"
+       (1  font-lock-type-face)
+       (2 'font-lock-regexp-grouping-construct)
+       (3  font-lock-type-face) )
+      (".* \\(.*\\.\\(el\\|cc?\\|cpp\\)\\) "(1 font-lock-string-face))
+      ("\\*w3m\\*"                          .  font-lock-function-name-face)
+      ("#[[:alnum:]]* "                     .  font-lock-doc-face)
+      (".* \\(.*\\.html?\\) "               (1 font-lock-doc-face))
+      (".* \\(.*\\.\\(hh?\\|tex\\)\\) "     (1 font-lock-variable-name-face))
+      (".* \\(\\.[[:alnum:]_.-]*\\) "       (1 font-lock-builtin-face))
+  ))
 
-(setq-default tabulated-list-use-header-line nil)
+  (defun buffer-menu-custom-font-lock ()
+    (interactive)
+    (let ((font-lock-unfontify-region-function
+           (lambda (start end)
+             (remove-text-properties start end '(font-lock-face nil)))))
+      (font-lock-unfontify-buffer)
+      (set (make-local-variable 'font-lock-defaults)
+           '(buffer-menu-buffer-font-lock-keywords t))
+      (font-lock-fontify-buffer)))
 
-(defun elpa ()
-  (interactive)
-  (package-list-packages) )
+  (defun buffer-menu-files-only ()
+    (interactive)
+    (switch-to-buffer
+     (list-buffers-noselect (not Buffer-menu-files-only)) )
+    (buffer-menu-custom-font-lock) )
 
-(defvar package-archives)
-(setq package-archives
-      '(( "elpa" . "http://elpa.gnu.org/packages/")
-        ("melpa" . "http://melpa.milkbox.net/packages/") ))
-* Customize buffer-menu
-;; This file: http://user.it.uu.se/~embe8573/conf/emacs-init/buffer-menu.el
+  (defun switch-buffer ()
+    (interactive)
+    (switch-to-buffer nil) ) ; BUFFER-OR-NAME
 
-(require 'dired)
-(require 'scroll)
-(require 'close)
-(require 'super)
+  (defun Buffer-menu-delete-and-execute ()
+    (interactive)
+    (Buffer-menu-delete)
+    (Buffer-menu-execute) )
 
-(setq Buffer-menu-use-header-line nil)
+  (defun buffer-menu-kill-and-open ()
+    (interactive)
+    (let*((menu-buffer (current-buffer))
+          (next-buffer (Buffer-menu-buffer nil))
+          (next-mode   (with-current-buffer next-buffer major-mode))
+          (is-dired    (string-equal next-mode "dired-mode")))
+      (when next-buffer
+	(switch-to-buffer next-buffer)
+	(if (and is-dired
+		 (dired-directory-changed-p dired-directory))
+            (revert-buffer) )
+	(kill-buffer menu-buffer) )))
 
-(defvar buffer-menu-buffer-font-lock-keywords
-  '(
-    ("\\*\\(Errors\\|Backtrace\\)\\*"         .  font-lock-warning-face)
-    ("\\*\\(Group\\|Server\\|Packages\\)\\*"  .  font-lock-comment-face)
-    ("\\*\\(Help\\|Completions\\|Messages\\|info\\|Apropos\\)\\*"
-                                          .  font-lock-constant-face)
-    ("\\*\\(ielm\\|Article\\)\\*"         . 'font-lock-regexp-grouping-backslash)
-    (".* \\(.*\\.txt\\) "                 (1 font-lock-negation-char-face))
-    ("[[:space:]]+\\([[:digit:]]+\\) "    (1 font-lock-comment-delimiter-face))
-    ("<.*\\(>\\|\\.\\.\\.\\)"             . 'font-lock-regexp-grouping-construct)
-    ("Makefile"                           .  font-lock-comment-face)
-    ("\\(\\*Man\\) \\(.*\\)\\(\\*\\)"
-     (1  font-lock-type-face)
-     (2 'font-lock-regexp-grouping-construct)
-     (3  font-lock-type-face) )
-    (".* \\(.*\\.\\(el\\|cc?\\|cpp\\)\\) "(1 font-lock-string-face))
-    ("\\*w3m\\*"                          .  font-lock-function-name-face)
-    ("#[[:alnum:]]* "                     .  font-lock-doc-face)
-    (".* \\(.*\\.html?\\) "               (1 font-lock-doc-face))
-    (".* \\(.*\\.\\(hh?\\|tex\\)\\) "     (1 font-lock-variable-name-face))
-    (".* \\(\\.[[:alnum:]_.-]*\\) "       (1 font-lock-builtin-face))
-))
+  (defun switch-to-messages-buffer ()
+    (interactive)
+    (switch-to-buffer (messages-buffer))
+    (goto-char (point-max)) )
 
-(defun buffer-menu-custom-font-lock ()
-  (interactive)
-  (let ((font-lock-unfontify-region-function
-         (lambda (start end)
-           (remove-text-properties start end '(font-lock-face nil)))))
-    (font-lock-unfontify-buffer)
-    (set (make-local-variable 'font-lock-defaults)
-         '(buffer-menu-buffer-font-lock-keywords t))
-    (font-lock-fontify-buffer)))
+  (let ((the-map Buffer-menu-mode-map))
+    (disable-super-global-keys the-map)
+    (set-vertical-keys         the-map)
+    (set-close-key             the-map)
+    (define-key the-map "m"  #'switch-to-messages-buffer)
+    (define-key the-map "\r" #'buffer-menu-kill-and-open)
+    (define-key the-map "d"  #'Buffer-menu-delete-and-execute)
+    (define-key the-map "g"  #'buffer-menu-files-only) )
 
-(defun buffer-menu-files-only ()
-  (interactive)
-  (switch-to-buffer
-   (list-buffers-noselect (not Buffer-menu-files-only)) )
-  (buffer-menu-custom-font-lock) )
+  (provide 'buffer-menu)
+#+END_SRC
+** List Emacs packages
+#+BEGIN_SRC emacs-lisp
+  ;; This file: http://user.it.uu.se/~embe8573/conf/emacs-init/elpa.el
 
-(defun switch-buffer ()
-  (interactive)
-  (switch-to-buffer nil) ) ; BUFFER-OR-NAME
+  (require 'scroll)
+  (require 'super)
+  (require 'close)
 
-(defun Buffer-menu-delete-and-execute ()
-  (interactive)
-  (Buffer-menu-delete)
-  (Buffer-menu-execute) )
+  (package-initialize)
 
-(defun buffer-menu-kill-and-open ()
-  (interactive)
-  (let*((menu-buffer (current-buffer))
-        (next-buffer (Buffer-menu-buffer nil))
-        (next-mode   (with-current-buffer next-buffer major-mode))
-        (is-dired    (string-equal next-mode "dired-mode")))
-    (when next-buffer
-      (switch-to-buffer next-buffer)
-      (if (and is-dired
-               (dired-directory-changed-p dired-directory))
-          (revert-buffer) )
-      (kill-buffer menu-buffer) )))
+  (defvar package-menu-mode-map)
+  (let ((the-map package-menu-mode-map))
+    (set-close-key        the-map)
+    (set-pane-scroll-keys the-map)
+    (set-vertical-keys    the-map) )
 
-(defun switch-to-messages-buffer ()
-  (interactive)
-  (switch-to-buffer (messages-buffer))
-  (goto-char (point-max)) )
+  (setq-default tabulated-list-use-header-line nil)
 
-(let ((the-map Buffer-menu-mode-map))
-  (disable-super-global-keys the-map)
-  (set-vertical-keys         the-map)
-  (set-close-key             the-map)
-  (define-key the-map "m"  #'switch-to-messages-buffer)
-  (define-key the-map "\r" #'buffer-menu-kill-and-open)
-  (define-key the-map "d"  #'Buffer-menu-delete-and-execute)
-  (define-key the-map "g"  #'buffer-menu-files-only) )
+  (defun elpa ()
+    (interactive)
+    (package-list-packages) )
 
-(provide 'buffer-menu)
+  (defvar package-archives)
+  (setq package-archives
+	'(( "elpa" . "http://elpa.gnu.org/packages/")
+          ("melpa" . "http://melpa.milkbox.net/packages/") ))
 
+#+END_SRC
