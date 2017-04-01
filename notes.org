@@ -7655,6 +7655,12 @@ A command line tool that converts magnet links in to .torrent files.
 (global-set-key (kbd "C-c e s") 'erc-connect/slack)
 (global-set-key (kbd "C-c e m") 'erc-connect/mozilla)
 (global-set-key (kbd "C-c e g") 'erc-connect/gitter)
+** [2017-04-01 Sat 03:36] [[https://github.com/jquery-ui-rails/jquery-ui-rails][jquery-ui-rails/jquery-ui-rails: jQuery UI for the Rails asset pipeline]]
+This gem packages the jQuery UI assets (JavaScripts, stylesheets, and images) for the Rails asset pipeline, so you never have to download a custom package through the web interface again.
+
+See VERSIONS.md to see which versions of jquery-ui-rails bundle which versions of jQuery UI.
+
+Warning: This gem is incompatible with the jquery-rails gem before version 3.0.0! Strange things will happen if you use an earlier jquery-rails version. Run bundle list to ensure that you either aren't using jquery-rails, or at least version 3.0.0 of jquery-rails.
 * Patch
 - file:/usr/lib/python2.7/site-packages/html2text/config.py
 - file:/usr/share/rss2email/rss2email.py
