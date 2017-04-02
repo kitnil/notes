@@ -7699,6 +7699,12 @@ Tito offers the following features:
     Define custom builder/releaser implementations for your own project needs.
     Build packages off an "upstream" git repository, where modifications in the "downstream" git repository will be applied as a patch in the source rpm.
     Manage all of the above for a git repository with many disjoint packages within it.
+** [2017-04-02 Sun 18:34] [[https://github.com/pypingou/dgroc][pypingou/dgroc: Daily Git Rebuild On Copr]]
+dgroc: Daily Git Rebuild On Copr
+
+This project aims at easily provide daily build of a project tracked via git and made available via copr.
+
+Contents
 * Patch
 - file:/usr/lib/python2.7/site-packages/html2text/config.py
 - file:/usr/share/rss2email/rss2email.py
