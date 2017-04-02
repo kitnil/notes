@@ -7677,6 +7677,8 @@ $ sudo pip install git+https://github.com/0xl3vi/we-get
 A command line tool that converts magnet links in to .torrent files.
 ** [2017-04-02 Sun 17:04] [[https://github.com/alyakhtar/Katastrophe][alyakhtar/Katastrophe: Command Line Tool to download torrents]]
 **A Command-Line Interface for scraping Kickass torrents (kickasstorrents.to). Provides options to scrape top torrents in given categories, or searching for specific torrents. The user can select single, multiple or even specify a range for the torrent to download from any category. It has an inbuilt bittorent client, if none exist on the system then the Command line bittorent client is used for downloading. **
+** [2017-04-02 Sun 17:12] [[https://github.com/sergiotapia/magnetissimo][sergiotapia/magnetissimo: Web application that indexes all popular torrent sites, and saves it to the local database.]]
+Web application that indexes all popular torrent sites, and saves it to the local database.
 * Patch
 - file:/usr/lib/python2.7/site-packages/html2text/config.py
 - file:/usr/share/rss2email/rss2email.py
