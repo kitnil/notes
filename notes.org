@@ -7735,6 +7735,12 @@ The encoder can be specialized to provide serialization in any kind of situation
 The decoder can handle incoming JSON strings of any specified encoding (UTF-8 by default). It can also be specialized to post-process JSON objects with the object_hook or object_pairs_hook kwargs. This is particularly useful for implementing protocols such as JSON-RPC that have a richer type system than JSON itself.
 
 For those of you that have legacy systems to maintain, there is a very old fork of simplejson in the python2.2 branch that supports Python 2.2. This is based off of a very old version of simplejson, is not maintained, and should only be used as a last resort.
+** [2017-04-02 Sun 19:18] [[https://github.com/fabric/fabric][fabric/fabric: Simple, Pythonic remote execution and deployment.]]
+Fabric is a Python (2.5-2.7) library and command-line tool for streamlining the use of SSH for application deployment or systems administration tasks.
+
+It provides a basic suite of operations for executing local or remote shell commands (normally or via sudo) and uploading/downloading files, as well as auxiliary functionality such as prompting the running user for input, or aborting execution.
+
+Typical use involves creating a Python module containing one or more functions, then executing them via the fab command-line tool. Below is a small but complete "fabfile" containing a single task:
 * Patch
 - file:/usr/lib/python2.7/site-packages/html2text/config.py
 - file:/usr/share/rss2email/rss2email.py
