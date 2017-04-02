@@ -7679,6 +7679,26 @@ A command line tool that converts magnet links in to .torrent files.
 **A Command-Line Interface for scraping Kickass torrents (kickasstorrents.to). Provides options to scrape top torrents in given categories, or searching for specific torrents. The user can select single, multiple or even specify a range for the torrent to download from any category. It has an inbuilt bittorent client, if none exist on the system then the Command line bittorent client is used for downloading. **
 ** [2017-04-02 Sun 17:12] [[https://github.com/sergiotapia/magnetissimo][sergiotapia/magnetissimo: Web application that indexes all popular torrent sites, and saves it to the local database.]]
 Web application that indexes all popular torrent sites, and saves it to the local database.
+** [2017-04-02 Sun 18:33] [[https://github.com/dgoodwin/tito][dgoodwin/tito: A tool for managing rpm based git projects.]]
+Tito is a tool for managing RPM based projects using git for their source code repository.
+
+Tito offers the following features:
+
+    Tag new releases with incremented RPM version or release.
+    Auto-generate spec file changelog based on git history since last tag.
+    Create reliable tar.gz's with consistent checksums from any tag.
+    Build source and binary rpms off any tag.
+    Build source and binary "test" rpms off most recently committed code.
+    Build multiple source rpms with appropriate disttag's for submission to the Koji build system
+    Build rpms via the "mock" tool.
+    On a per-branch basis in git:
+        Maintain concurrent version streams.
+        Vary the way packages are built/tagged.
+    Report on any diffs or commits messages missing since last tag.
+    Define release targets to publish your packages to yum repositories, or the Fedora build system.
+    Define custom builder/releaser implementations for your own project needs.
+    Build packages off an "upstream" git repository, where modifications in the "downstream" git repository will be applied as a patch in the source rpm.
+    Manage all of the above for a git repository with many disjoint packages within it.
 * Patch
 - file:/usr/lib/python2.7/site-packages/html2text/config.py
 - file:/usr/share/rss2email/rss2email.py
