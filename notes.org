@@ -7755,6 +7755,12 @@ Klein is a micro-framework for developing production-ready web services with Pyt
 A Klein bottle is an example of a non-orientable surface, and a glass Klein bottle looks like a twisted bottle or twisted flask. This, of course, made it too good of a pun to pass up.
 
 Klein's documentation can be found at Read The Docs.
+** [2017-04-02 Sun 19:47] [[https://github.com/mixu/singlepageappbook][mixu/singlepageappbook: Content and site generator for Single page apps in depth (my book on single page applications)]]
+I've added this repository to make it easier to work with the book, if you feel like it.
+
+I didn't include the commits from prior to the release, because book writing is a messy and painful process of revisions, deletions and rethinking things.
+
+I did all the writing directly as HTML inside a git repo:
 * Patch
 - file:/usr/lib/python2.7/site-packages/html2text/config.py
 - file:/usr/share/rss2email/rss2email.py
