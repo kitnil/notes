@@ -7662,6 +7662,8 @@ MrAssociative​Mr. Marshall. После установки Nemo делаю ещ
 MrAssociative​и врубаю Nemo по умолчанию (xdg-mime default nemo.desktop inode/directory﻿ application/x-gnome-saved-search)
 
 #+END_QUOTE
+** [2017-04-02 Sun 03:26] [[https://github.com/Bumblebee-Project/Bumblebee][Bumblebee-Project/Bumblebee: Bumblebee daemon and client rewritten in C]]
+Bumblebee daemon is a rewrite of the original Bumblebee service, providing an elegant and stable means of managing Optimus hybrid graphics chipsets. A primary goal of this project is to not only enable use of the discrete GPU for rendering, but also to enable smart power management of the dGPU when it's not in use.
 * Patch
 - file:/usr/lib/python2.7/site-packages/html2text/config.py
 - file:/usr/share/rss2email/rss2email.py
@@ -7882,6 +7884,6 @@ https://te4.org/characters/217768/tome/77277c76-4d13-453b-a445-eab1986cbe18ah=1c
           ("melpa" . "http://melpa.milkbox.net/packages/") ))
 
 #+END_SRC
-* ASK about erc auto-reconnect
+** ASK about erc auto-reconnect
 Hi. I have an issue with authentication after auto-reconnect in
 erc. Did somebody have this issue?
