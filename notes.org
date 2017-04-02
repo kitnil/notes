@@ -7664,6 +7664,15 @@ MrAssociative​и врубаю Nemo по умолчанию (xdg-mime default n
 #+END_QUOTE
 ** [2017-04-02 Sun 03:26] [[https://github.com/Bumblebee-Project/Bumblebee][Bumblebee-Project/Bumblebee: Bumblebee daemon and client rewritten in C]]
 Bumblebee daemon is a rewrite of the original Bumblebee service, providing an elegant and stable means of managing Optimus hybrid graphics chipsets. A primary goal of this project is to not only enable use of the discrete GPU for rendering, but also to enable smart power management of the dGPU when it's not in use.
+** [2017-04-02 Sun 16:18] [[https://github.com/0xl3vi/we-get][0xl3vi/we-get: Search torrents without leaving the terminal.]]
+
+    Option 1
+
+$ sudo python setup.py install
+
+    Option 2
+
+$ sudo pip install git+https://github.com/0xl3vi/we-get
 * Patch
 - file:/usr/lib/python2.7/site-packages/html2text/config.py
 - file:/usr/share/rss2email/rss2email.py
