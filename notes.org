@@ -7773,6 +7773,8 @@ This tutorial will guide you through the magic and fun of combining relational p
     See the open docker-related SageMathCloud issues, which may include several issues.
 ** [2017-04-02 Sun 23:07] [[https://askubuntu.com/questions/770513/intel-graphics-stock-driver-vs-modesetting-driver-vs-intel-download][Intel Graphics: stock driver vs modesetting driver vs Intel download - Ask Ubuntu]]
 теперь не
+** [2017-04-03 Mon 01:06] [[https://github.com/flycheck/emacs-travis][flycheck/emacs-travis: Install Emacs on Travis CI]]
+emacs-travis.mk is a small Makefile which provides targets to install Emacs stable and emacs-snapshot, Texinfo and Cask on the Docker-based infrastructure of Travis CI. It compiles a minimal Emacs and Texinfo from source and installs them into $HOME/bin.
 * Patch
 - file:/usr/lib/python2.7/site-packages/html2text/config.py
 - file:/usr/share/rss2email/rss2email.py
