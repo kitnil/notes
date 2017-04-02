@@ -7765,6 +7765,12 @@ I did all the writing directly as HTML inside a git repo:
 Open Government was published in 2010 by O'Reilly Media. The United States had just elected a president in 2008, who, on his first day in office, issued an executive order committing his administration to "an unprecedented level of openness in government." The contributors of Open Government had long fought for transparency and openness in government, as well as access to public information. Aaron Swartz was one of these contributors (Chapter 25: When is Transparency Useful?). Aaron was a hacker, an activist, a builder, and a respected member of the technology community. O'Reilly Media is making Open Government free to all to access in honor of Aaron. #PDFtribute
 ** [2017-04-02 Sun 19:48] [[https://github.com/swannodette/logic-tutorial][swannodette/logic-tutorial: A Very Gentle Introduction to Relational Programming]]
 This tutorial will guide you through the magic and fun of combining relational programming (also known as logic programming) with functional programming. This tutorial does not assume that you have any knowledge of Lisp, Clojure, Java, or even functional programming. The only thing this tutorial assumes is that you are not afraid of using the command line and you have used at least one programming language before in your life.
+** [2017-04-02 Sun 19:52] [[https://github.com/sagemathinc/smc/tree/master/src/dev/docker][smc/src/dev/docker at master · sagemathinc/smc]]
+
+    This is not blatantly insecure: the database has a long random password, user accounts are separate, ssl communication is supported by default, etc.
+    That said, a determined user with an account can very likely access or change files of other users in the same container! Use this for personal use, behind a firewall, or with an account creation token, so that only other people you trust create accounts. Don't make one of these publicly available with important data in it and no account creation token!
+    There are no quotas except idle timeout.
+    See the open docker-related SageMathCloud issues, which may include several issues.
 * Patch
 - file:/usr/lib/python2.7/site-packages/html2text/config.py
 - file:/usr/share/rss2email/rss2email.py
