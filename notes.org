@@ -7715,6 +7715,10 @@ Green recorder uses the default audio device you have to record. So if you want 
 By default, On Wayland only, Green Recorder uses the V8 encoder instead of the default V9 encoder in GNOME Shell because of the CPU & RAM consumption issue with V9. Which - now - should also give you better performance. On Xorg, each format uses its own default encoder.
 
 This is a recording sample for DOTA 2 running on Wayland: https://www.youtube.com/watch?v=kwCRBoOdJzU
+** [2017-04-02 Sun 18:41] [[https://github.com/travis-ci/travis-ci][travis-ci/travis-ci: Free continuous integration platform for GitHub projects.]]
+Travis CI is a hosted continuous integration and deployment system. There are two versions of it, travis-ci.com for private repositories, and travis-ci.org for public repositories.
+
+This repository contains the central issue tracker for the Travis CI project.
 * Patch
 - file:/usr/lib/python2.7/site-packages/html2text/config.py
 - file:/usr/share/rss2email/rss2email.py
