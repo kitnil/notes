@@ -7743,6 +7743,12 @@ It provides a basic suite of operations for executing local or remote shell comm
 Typical use involves creating a Python module containing one or more functions, then executing them via the fab command-line tool. Below is a small but complete "fabfile" containing a single task:
 ** [2017-04-02 Sun 19:19] [[https://github.com/samgiles/slumber][samgiles/slumber: A library that makes consuming a RESTful API easier and more convenient]]
 Slumber is a Python library that provides a convenient yet powerful object-oriented interface to ReSTful APIs. It acts as a wrapper around the excellent requests library and abstracts away the handling of URLs, serialization, and request processing.
+** [2017-04-02 Sun 19:19] [[https://github.com/dreid/cotools][dreid/cotools: functional tools for cooperative multitasking.]]
+cotools is a collection of functional programming primitives that make use of the cooperative multitasking facilities found in Twisted.
+
+The goal is to provide a more comfortable mechanism for breaking up and cooperatively scheduling computation than those discussed in my talk Cooperative Multitasking with Twisted (video) where I discuss how to break up and schedule work using reactor.callLater and twisted.internet.task.coiterate. The primitives provided by cotools utilize twisted.internet.task.coiterate and also attempt to be fully Deferred aware. Meaning that Deferreds are valid values as iterators, in iterators, and as return values of the functions to be applied to the items in the iterators.
+
+I admit that these examples are rather contrived and the implementation though having significant test coverage may not be optimal or performant. My goal is more to facilitate discussion about how to make Cooperative Multitasking a more comfortable programming paradigm and to attempt to give novice Twisted users some level of cooperation 'for free'.
 * Patch
 - file:/usr/lib/python2.7/site-packages/html2text/config.py
 - file:/usr/share/rss2email/rss2email.py
