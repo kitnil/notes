@@ -7783,6 +7783,10 @@ This repository houses the source code for CRYENGINE.
 Instructions on getting started with git can be found here, along with details on working with launcher projects and git source code.
 ** [2017-04-03 Mon 04:08] [[https://github.com/cocos2d/cocos2d-x][cocos2d/cocos2d-x: Cocos2d-x is a suite of open-source, cross-platform, game-development tools used by thousands of developers all over the world.]]
 cocos2d-x is a multi-platform framework for building 2d games, interactive books, demos and other graphical applications. It is based on cocos2d-iphone, but instead of using Objective-C, it uses C++. It works on iOS, Android, Tizen, Windows Phone and Store Apps, OS X, Windows, Linux and Web platforms.
+** [2017-04-03 Mon 04:08] [[https://github.com/PistonDevelopers/piston][PistonDevelopers/piston: A modular game engine written in Rust]]
+A modular game engine written in Rust
+
+Maintainers of Piston core libraries: @bvssvni
 * Patch
 - file:/usr/lib/python2.7/site-packages/html2text/config.py
 - file:/usr/share/rss2email/rss2email.py
