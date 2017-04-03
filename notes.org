@@ -7777,6 +7777,10 @@ This tutorial will guide you through the magic and fun of combining relational p
 emacs-travis.mk is a small Makefile which provides targets to install Emacs stable and emacs-snapshot, Texinfo and Cask on the Docker-based infrastructure of Travis CI. It compiles a minimal Emacs and Texinfo from source and installs them into $HOME/bin.
 ** [2017-04-03 Mon 01:07] [[https://github.com/cask/cask][cask/cask: Project management tool for Emacs]]
 Cask is a project management tool for Emacs that helps automate the package development cycle; development, dependencies, testing, building, packaging and more.
+** [2017-04-03 Mon 04:04] [[https://github.com/CRYTEK/CRYENGINE][CRYTEK/CRYENGINE: CRYENGINE is a powerful real-time game development platform created by Crytek.]]
+This repository houses the source code for CRYENGINE.
+
+Instructions on getting started with git can be found here, along with details on working with launcher projects and git source code.
 * Patch
 - file:/usr/lib/python2.7/site-packages/html2text/config.py
 - file:/usr/share/rss2email/rss2email.py
