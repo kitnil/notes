@@ -7787,6 +7787,22 @@ cocos2d-x is a multi-platform framework for building 2d games, interactive books
 A modular game engine written in Rust
 
 Maintainers of Piston core libraries: @bvssvni
+** [2017-04-03 Mon 04:10] [[https://github.com/PistonDevelopers/hematite][PistonDevelopers/hematite: A simple Minecraft written in Rust with the Piston game engine]]
+This method is only for personal use. Never distribute copyrighted content from Minecraft.
+
+    In the Minecraft Launcher, click the button “New Profile”
+
+    In the drop down "use version", select 1.8.8
+
+    Click “Save Profile”
+
+    Click “Play” (this will download the snapshot)
+
+    Quit Minecraft
+
+    Copy your world save to to the hematite directory (It may corrupt your world)
+
+    Save Locations:
 * Patch
 - file:/usr/lib/python2.7/site-packages/html2text/config.py
 - file:/usr/share/rss2email/rss2email.py
