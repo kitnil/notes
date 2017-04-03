@@ -7813,6 +7813,10 @@ There is a massive back catalog, spanning over two decades, containing thousands
 Freedoom is actually three games in one, consisting of two single-player oriented campaigns and one set of levels designed exclusively for multiplayer deathmatch:
 ** [2017-04-03 Mon 05:16] [[https://github.com/premake/premake-core][premake/premake-core: Premake]]
 Premake is a command line utility which reads a scripted definition of a software project and, most commonly, uses it to generate project files for toolsets like Visual Studio, Xcode, or GNU Make. Built-in and Third-Party Modules add support for even more toolsets.
+** [2017-04-03 Mon 19:35] [[https://github.com/immerrr/lua-mode][immerrr/lua-mode: Emacs major mode for editing Lua]]
+lua-mode is a major mode for editing Lua sources in Emacs.
+
+If you have a problem or a suggestion about lua-mode, please, let me know about it via github's Issue Tracker.
 * Patch
 - file:/usr/lib/python2.7/site-packages/html2text/config.py
 - file:/usr/share/rss2email/rss2email.py
