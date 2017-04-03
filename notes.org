@@ -7829,6 +7829,12 @@ When you change the contents of a buffer, if you add or delete definitions, you 
 You can customize the way the menus are sorted by setting the variable imenu-sort-function. By default, names are ordered as they occur in the buffer; if you want alphabetic sorting, use the symbol imenu--sort-by-name as the value. You can also define your own comparison function by writing Lisp code.
 
 Imenu provides the information to guide Which Function mode (see Which Function). The Speedbar can also use it (see Speedbar).
+** [2017-04-03 Mon 19:36] [[https://www.gnu.org/software/emacs/manual/html_node/emacs/Hideshow.html][GNU Emacs Manual: Hideshow]]
+Hideshow mode is a buffer-local minor mode that allows you to selectively display portions of a program, which are referred to as blocks. Type M-x hs-minor-mode to toggle this minor mode (see Minor Modes).
+
+When you use Hideshow mode to hide a block, the block disappears from the screen, to be replaced by an ellipsis (three periods in a row). Just what constitutes a block depends on the major mode. In C mode and related modes, blocks are delimited by braces, while in Lisp mode they are delimited by parentheses. Multi-line comments also count as blocks.
+
+Hideshow mode provides the following commands:
 * Patch
 - file:/usr/lib/python2.7/site-packages/html2text/config.py
 - file:/usr/share/rss2email/rss2email.py
