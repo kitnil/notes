@@ -7835,6 +7835,8 @@ Hideshow mode is a buffer-local minor mode that allows you to selectively displa
 When you use Hideshow mode to hide a block, the block disappears from the screen, to be replaced by an ellipsis (three periods in a row). Just what constitutes a block depends on the major mode. In C mode and related modes, blocks are delimited by braces, while in Lisp mode they are delimited by parentheses. Multi-line comments also count as blocks.
 
 Hideshow mode provides the following commands:
+** [2017-04-03 Mon 21:20] [[https://github.com/dbohdan/embedded-scripting-languages][dbohdan/embedded-scripting-languages: A list of embedded script languages]]
+The following is a list of reasonably mature open source embedded scripting languages to use in your application.
 * Patch
 - file:/usr/lib/python2.7/site-packages/html2text/config.py
 - file:/usr/share/rss2email/rss2email.py
