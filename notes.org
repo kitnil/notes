@@ -7817,6 +7817,18 @@ Premake is a command line utility which reads a scripted definition of a softwar
 lua-mode is a major mode for editing Lua sources in Emacs.
 
 If you have a problem or a suggestion about lua-mode, please, let me know about it via github's Issue Tracker.
+** [2017-04-03 Mon 19:36] [[https://www.gnu.org/software/emacs/manual/html_node/emacs/Imenu.html#Imenu][GNU Emacs Manual: Imenu]]
+The Imenu facility offers a way to find the major definitions in a file by name. It is also useful in text formatter major modes, where it treats each chapter, section, etc., as a definition. (See Xref, for a more powerful feature that handles multiple files together.)
+
+If you type M-x imenu, it reads the name of a definition using the minibuffer, then moves point to that definition. You can use completion to specify the name; the command always displays the whole list of valid names.
+
+Alternatively, you can bind the command imenu to a mouse click. Then it displays mouse menus for you to select a definition name. You can also add the buffer’s index to the menu bar by calling imenu-add-menubar-index. If you want to have this menu bar item available for all buffers in a certain major mode, you can do this by adding imenu-add-menubar-index to its mode hook. But if you have done that, you will have to wait a little while each time you visit a file in that mode, while Emacs finds all the definitions in that buffer.
+
+When you change the contents of a buffer, if you add or delete definitions, you can update the buffer’s index based on the new contents by invoking the ‘*Rescan*’ item in the menu. Rescanning happens automatically if you set imenu-auto-rescan to a non-nil value. There is no need to rescan because of small changes in the text.
+
+You can customize the way the menus are sorted by setting the variable imenu-sort-function. By default, names are ordered as they occur in the buffer; if you want alphabetic sorting, use the symbol imenu--sort-by-name as the value. You can also define your own comparison function by writing Lisp code.
+
+Imenu provides the information to guide Which Function mode (see Which Function). The Speedbar can also use it (see Speedbar).
 * Patch
 - file:/usr/lib/python2.7/site-packages/html2text/config.py
 - file:/usr/share/rss2email/rss2email.py
