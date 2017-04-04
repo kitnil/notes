@@ -8097,6 +8097,18 @@ Features
     A GUI is planned for later; at the moment this is a command line tool only.
     Incremental backups - if you run the tool at a later time, it will only download new messages / media.
     You will be able to use an HTML exporter to create static HTML files containing your chats. This feature is still in the works.
+** [2017-04-05 Wed 00:38] [[https://github.com/zmanda/amanda][zmanda/amanda: Amanda Network Backup]]
+Amanda (The Advanced Maryland Automatic Network Disk Archiver) Backup
+Software
+
+Copyright (c) 1991-1998 University of Maryland at College Park
+Copyright (c) 2007-2012 Zmanda, Inc.  All Rights Reserved.
+All Rights Reserved.
+
+PLEASE NOTE: THIS SOFTWARE IS BEING MADE AVAILABLE "AS-IS".  We make
+no warranties that it will work for you.  As such there is no support
+available other than users helping each other on the Amanda mailing
+lists or forums. Formal support may be available through vendors.
 * Patch
 - file:/usr/lib/python2.7/site-packages/html2text/config.py
 - file:/usr/share/rss2email/rss2email.py
