@@ -7983,6 +7983,8 @@ apt-get install make pkg-config check g++ \
 extra packages in order to generate the configure file:
 apt-get install autoconf automake libtool
 autoreconf -vif)
+** [2017-04-05 Wed 00:07] [[https://github.com/RaymiiOrg/NoPriv][RaymiiOrg/NoPriv: NoPriv.py is a python script to backup any IMAP capable email account to a HTML archive, nicely browsable, instead of weird folders (Maildir), one huge file (mbox), only needing a web browser to view (thunderbird) and no propritary code, so you can make sure I don't steal your password.]]
+NoPriv.py is a python script to backup any IMAP capable email account to a bowsable HTML archive and a Maildir folder. Not one huge file (mbox), only needing a web browser to view and no proprietary code, so you can make sure I won't steal your password.
 * Patch
 - file:/usr/lib/python2.7/site-packages/html2text/config.py
 - file:/usr/share/rss2email/rss2email.py
