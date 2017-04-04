@@ -8007,6 +8007,14 @@ Features:
     Ignores unwanted directories (like ".picasabackup" for Picasa users)
     Allows specific files to be ignored (via regular expressions)
     Convert RAW files (with an external tool)
+** [2017-04-05 Wed 00:12] [[https://github.com/sovereign/sovereign][sovereign/sovereign: A set of Ansible playbooks to build and maintain your own private cloud: email, calendar, contacts, file sync, IRC bouncer, VPN, and more.]]
+Sovereign is a set of Ansible playbooks that you can use to build and maintain your own personal cloud based entirely on open source software, so you’re in control.
+
+If you’ve never used Ansible before, you might find these playbooks useful to learn from, since they show off a fair bit of what the tool can do.
+
+The original author's background and motivations might be of interest. tl;dr: frustrations with Google Apps and concerns about privacy and long-term support.
+
+Sovereign offers useful cloud services while being reasonably secure and low-maintenance. Use it to set up your server, SSH in every couple weeks, but mostly forget about it.
 * Patch
 - file:/usr/lib/python2.7/site-packages/html2text/config.py
 - file:/usr/share/rss2email/rss2email.py
