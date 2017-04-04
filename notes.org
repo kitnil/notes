@@ -8017,6 +8017,10 @@ The original author's background and motivations might be of interest. tl;dr: fr
 Sovereign offers useful cloud services while being reasonably secure and low-maintenance. Use it to set up your server, SSH in every couple weeks, but mostly forget about it.
 ** [2017-04-05 Wed 00:14] [[https://github.com/boxen/our-boxen/#our-boxen][boxen/our-boxen: Copy me for your team.]]
 This is a template Boxen project designed for your organization to fork and modify appropriately. The Boxen rubygem and the Boxen puppet modules are only a framework for getting things done. This repository template is just a basic example of how to do things with them.
+** [2017-04-05 Wed 00:19] [[https://github.com/nylas/sync-engine][nylas/sync-engine: IMAP/SMTP sync system with modern APIs]]
+The Nylas Sync Engine provides a RESTful API on top of a powerful email sync platform, making it easy to build apps on top of email. See the full API documentation for more details.
+
+Need help? Join our Slack channel Slack Invite Button
 * Patch
 - file:/usr/lib/python2.7/site-packages/html2text/config.py
 - file:/usr/share/rss2email/rss2email.py
