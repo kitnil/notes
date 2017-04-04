@@ -8081,6 +8081,8 @@ Features:
     Supports multiple accounts per service
     Idempotent operations
     Separate additive and destructive commands
+** [2017-04-05 Wed 00:30] [[https://github.com/witten/borgmatic][witten/borgmatic: A simple wrapper script for the Borg backup software that creates and prunes backups]]
+borgmatic (formerly atticmatic) is a simple Python wrapper script for the Borg backup software that initiates a backup, prunes any old backups according to a retention policy, and validates backups for consistency. The script supports specifying your settings in a declarative configuration file rather than having to put them all on the command-line, and handles common errors.
 * Patch
 - file:/usr/lib/python2.7/site-packages/html2text/config.py
 - file:/usr/share/rss2email/rss2email.py
