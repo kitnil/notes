@@ -8052,6 +8052,20 @@ More details are given in the Internet Engineering Task Force (IETF) RFC 7914: T
 It has been demonstrated that scrypt is maximally memory-hard:
 
     J. Alwen, B. Chen, K. Pietrzak, L. Reyzin, S. Tessaro, Scrypt is Maximally Memory-Hard, Cryptology ePrint Archive: Report 2016/989.
+** [2017-04-05 Wed 00:29] [[https://github.com/samanyougarg/ABR-App-Backup-Restore][samanyougarg/ABR-App-Backup-Restore: A simple android app to backup and restore your android apps]]
+ABR App Backup & Restore is a fully open-source app that can Backup & Restore apk of apps to save phone space. Backup & Restore multi-versions to avoid unnecessary updates. Backup & Restore your apps for security by making a copy. Transfer & Share files between devices.
+
+    Install, backup multiple applications.
+    Uninstall, share, download multiple apks
+    Download apk files via your desktop browser.
+
+What you can do with App Backup & Restore
+
+    Backup and Restore your installed apps
+    Extract & Retrieve apk files of apps and export them as duplicates
+    Downgrade app versions if you dislike updated one
+    Manage apps
+    Recover apps after factor reset or in new a new device
 * Patch
 - file:/usr/lib/python2.7/site-packages/html2text/config.py
 - file:/usr/share/rss2email/rss2email.py
