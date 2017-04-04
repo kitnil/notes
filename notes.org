@@ -7915,6 +7915,8 @@ You only need to specify 3 things:
     where to save snapshots
     what folders to backup
     backup frequency (manual, every hour, every day, every month)
+** [2017-04-04 Tue 23:57] [[https://github.com/jborg/attic][jborg/attic: Deduplicating backup program]]
+Attic is a deduplicating backup program. The main goal of Attic is to provide an efficient and secure way to backup data. The data deduplication technique used makes Attic suitable for daily backups since only changes are stored.
 * Patch
 - file:/usr/lib/python2.7/site-packages/html2text/config.py
 - file:/usr/share/rss2email/rss2email.py
