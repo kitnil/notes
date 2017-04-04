@@ -7955,6 +7955,17 @@ I consider rdedup feature-complete for my needs. That means: I will accept patch
     Adding / editing / deleting repositories
     Restart / shutdown server
     Editing daemon settings
+** [2017-04-05 Wed 00:04] [[https://github.com/zbackup/zbackup][zbackup/zbackup: ZBackup, a versatile deduplicating backup tool]]
+The program has the following features:
+
+    Parallel LZMA or LZO compression of the stored data
+    Built-in AES encryption of the stored data
+    Possibility to delete old backup data
+    Use of a 64-bit rolling hash, keeping the amount of soft collisions to zero
+    Repository consists of immutable files. No existing files are ever modified
+    Written in C++ only with only modest library dependencies
+    Safe to use in production (see below)
+    Possibility to exchange data between repos without recompression
 * Patch
 - file:/usr/lib/python2.7/site-packages/html2text/config.py
 - file:/usr/share/rss2email/rss2email.py
