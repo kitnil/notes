@@ -8015,6 +8015,8 @@ If you’ve never used Ansible before, you might find these playbooks useful to 
 The original author's background and motivations might be of interest. tl;dr: frustrations with Google Apps and concerns about privacy and long-term support.
 
 Sovereign offers useful cloud services while being reasonably secure and low-maintenance. Use it to set up your server, SSH in every couple weeks, but mostly forget about it.
+** [2017-04-05 Wed 00:14] [[https://github.com/boxen/our-boxen/#our-boxen][boxen/our-boxen: Copy me for your team.]]
+This is a template Boxen project designed for your organization to fork and modify appropriately. The Boxen rubygem and the Boxen puppet modules are only a framework for getting things done. This repository template is just a basic example of how to do things with them.
 * Patch
 - file:/usr/lib/python2.7/site-packages/html2text/config.py
 - file:/usr/share/rss2email/rss2email.py
