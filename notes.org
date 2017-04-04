@@ -7942,6 +7942,12 @@ Check out the documentation to get started.
 The goal of BitCannon is to provide the tools to easily aggregate the content of many torrent sites into an easily browse-able format.
 
 BitCannon aims to be as user friendly as possible while still providing robustness and the features you would expect. We hope the average user will use BitCannon to keep personal bittorrent archives, but we strive to produce code that can stand up to running a public mirror as well.
+** [2017-04-05 Wed 00:03] [[https://github.com/dpc/rdedup][dpc/rdedup: Data deduplication engine, supporting optional compression and public key encryption.]]
+rdedup is a tool providing data deduplication with compression and public key encryption written in Rust programming language. The primary use case is storing deduplicated and encrypted backups.
+
+Warning: beta quality software ahead - I use rdedup personally for a long while and it works well and noone reported any problems. I would really appreciate feedback from people using rdedup.
+
+I consider rdedup feature-complete for my needs. That means: I will accept patches with fixes and new features, but I don't actively add new ones myself. I'm open for sharing or handing over it's development. Feel free to contact me.
 * Patch
 - file:/usr/lib/python2.7/site-packages/html2text/config.py
 - file:/usr/share/rss2email/rss2email.py
