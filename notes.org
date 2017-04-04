@@ -7841,6 +7841,19 @@ The following is a list of reasonably mature open source embedded scripting lang
 Company-lua is a company-mode completion backend for Lua.
 
 We use api files from ZeroBrane Studio as source for the completion candidates. Right now only Lua 5.1, 5.2, 5.3 and LÖVE are supported
+** [2017-04-04 Tue 21:06] [[https://stackoverflow.com/questions/385661/how-to-highlight-all-occurrences-of-a-word-in-an-emacs-buffer][highlighting - How to highlight all occurrences of a word in an Emacs buffer - Stack Overflow]]
+up vote
+61
+down vote
+        
+
+The hi-lock suggestions are good. I think it's easier to use the M-x versions, though:
+
+M-x highlight-regexp RET <REGEXP>
+
+M-x highlight-phrase RET <REGEXP>
+
+highlight-phrase is just a bit of sugar around highlight-regexp that ignores case and translates a space in the regex to match arbitrary whitespace. Handy.
 * Patch
 - file:/usr/lib/python2.7/site-packages/html2text/config.py
 - file:/usr/share/rss2email/rss2email.py
