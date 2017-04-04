@@ -8085,6 +8085,18 @@ Features:
 borgmatic (formerly atticmatic) is a simple Python wrapper script for the Borg backup software that initiates a backup, prunes any old backups according to a retention policy, and validates backups for consistency. The script supports specifying your settings in a declarative configuration file rather than having to put them all on the command-line, and handles common errors.
 ** [2017-04-05 Wed 00:31] [[https://github.com/backup/backup][backup/backup: Easy full stack backup operations on UNIX-like systems.]]
 Backup is a system utility for Linux and Mac OS X, distributed as a RubyGem, that allows you to easily perform backup operations. It provides an elegant DSL in Ruby for modeling your backups. Backup has built-in support for various databases, storage protocols/services, syncers, compressors, encryptors and notifiers which you can mix and match. It was built with modularity, extensibility and simplicity in mind.
+** [2017-04-05 Wed 00:32] [[https://github.com/fabianonline/telegram_backup][fabianonline/telegram_backup: Java app to download all your telegram data.]]
+This is a small Java app that allows you to download all your history from Telegram's servers and keep a local copy of them.
+Download
+
+You can find the whole app packed into one fat jar file under releases.
+Features
+
+    You can use multiple accounts with this tool.
+    Messages are saved in a SQLite database; media (documents, photos, videos, stickers, geolocations, audios) are downloaded and saved as files.
+    A GUI is planned for later; at the moment this is a command line tool only.
+    Incremental backups - if you run the tool at a later time, it will only download new messages / media.
+    You will be able to use an HTML exporter to create static HTML files containing your chats. This feature is still in the works.
 * Patch
 - file:/usr/lib/python2.7/site-packages/html2text/config.py
 - file:/usr/share/rss2email/rss2email.py
