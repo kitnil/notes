@@ -7917,6 +7917,27 @@ You only need to specify 3 things:
     backup frequency (manual, every hour, every day, every month)
 ** [2017-04-04 Tue 23:57] [[https://github.com/jborg/attic][jborg/attic: Deduplicating backup program]]
 Attic is a deduplicating backup program. The main goal of Attic is to provide an efficient and secure way to backup data. The data deduplication technique used makes Attic suitable for daily backups since only changes are stored.
+** [2017-04-05 Wed 00:02] [[https://github.com/tsileo/bakthat][tsileo/bakthat: Bakthat is a MIT licensed backup framework written in Python, it's both a command line tool and a Python module that helps you manage backups on Amazon S3/Glacier and OpenStack Swift. It automatically compress, encrypt (symmetric encryption) and upload your files.]]
+
+
+I stopped working on bakthat, I'm now working on another backup-related project: blobstash/blobsnap. If somebody want to be a collaborator and continue development, please open an issue.
+
+Bakthat is a MIT licensed backup framework written in Python, it's both a command line tool and a Python module that helps you manage backups on Amazon S3/Glacier and OpenStack Swift. It automatically compress, encrypt (symmetric encryption) and upload your files.
+
+Here are some features:
+
+    Compress with tarfile
+    Encrypt with beefish (optional)
+    Upload/download to S3 or Glacier with boto
+    Local backups inventory stored in a SQLite database with peewee
+    Delete older than, and Grandfather-father-son backup rotation supported
+    Possibility to sync backups database between multiple clients via a centralized server
+    Exclude files using .gitignore like file
+    Extendable with plugins
+
+You can restore backups with or without bakthat, you just have to download the backup, decrypt it with Beefish command-line tool and untar it.
+
+Check out the documentation to get started.
 * Patch
 - file:/usr/lib/python2.7/site-packages/html2text/config.py
 - file:/usr/share/rss2email/rss2email.py
