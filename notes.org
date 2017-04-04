@@ -8066,6 +8066,21 @@ What you can do with App Backup & Restore
     Downgrade app versions if you dislike updated one
     Manage apps
     Recover apps after factor reset or in new a new device
+** [2017-04-05 Wed 00:29] [[https://github.com/mholt/photobak][mholt/photobak: Back up your content from Google Photos]]
+Photobak is a media archiver. It downloads your photos and videos from cloud services like Google Photos so you have a local copy of your content. Run it on a regular basis to make sure you own all your memories.
+
+Features:
+
+    Integrity checks
+    De-duplication
+    Fast
+    Organizes photos on disk by album
+    Updates photos if changes are detected
+    Can run on a schedule
+    Concurrent downloads
+    Supports multiple accounts per service
+    Idempotent operations
+    Separate additive and destructive commands
 * Patch
 - file:/usr/lib/python2.7/site-packages/html2text/config.py
 - file:/usr/share/rss2email/rss2email.py
