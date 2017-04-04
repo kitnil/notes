@@ -8029,6 +8029,8 @@ Rsync+ssh is an advanced action configuration that uses a SSH to act file and di
 Fine-grained customization can be achieved through the config file. Custom action configs can even be written from scratch in cascading layers ranging from shell scripts to code written in the Lua language. This way simple, powerful and flexible configurations can be acheived. See the manual for details.
 
 Lsyncd 2.2.1 requires rsync >= 3.1 on all source and target machines.
+** [2017-04-05 Wed 00:26] [[https://github.com/samkuehn/bitbucket-backup][samkuehn/bitbucket-backup: A python script that will backup all your bitbucket repos locally (both git and mercurial)]]
+This python script will backup all of your bitbucket repos (both mercurial and git) locally. If the repository does not exist locally the repo will be cloned to the <local_backup_location>. If the repo does exist locally an hg pull will be run for mercurial repos, an git remote update will be run for git repos.
 * Patch
 - file:/usr/lib/python2.7/site-packages/html2text/config.py
 - file:/usr/share/rss2email/rss2email.py
