@@ -7985,6 +7985,13 @@ apt-get install autoconf automake libtool
 autoreconf -vif)
 ** [2017-04-05 Wed 00:07] [[https://github.com/RaymiiOrg/NoPriv][RaymiiOrg/NoPriv: NoPriv.py is a python script to backup any IMAP capable email account to a HTML archive, nicely browsable, instead of weird folders (Maildir), one huge file (mbox), only needing a web browser to view (thunderbird) and no propritary code, so you can make sure I don't steal your password.]]
 NoPriv.py is a python script to backup any IMAP capable email account to a bowsable HTML archive and a Maildir folder. Not one huge file (mbox), only needing a web browser to view and no proprietary code, so you can make sure I won't steal your password.
+** [2017-04-05 Wed 00:10] [[https://github.com/mwichary/twitter-export-image-fill][mwichary/twitter-export-image-fill: A script to download (backup locally) all the images accompanying your tweets]]
+Twitter allows you to download your tweet archive, but that archive doesn’t contain your images. Ergo, it is not really an archive.
+
+This script:
+
+    downloads all the images from your tweets locally
+    rewrites the archive files so that they point to the local images
 * Patch
 - file:/usr/lib/python2.7/site-packages/html2text/config.py
 - file:/usr/share/rss2email/rss2email.py
