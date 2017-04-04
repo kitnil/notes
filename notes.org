@@ -7837,6 +7837,10 @@ When you use Hideshow mode to hide a block, the block disappears from the screen
 Hideshow mode provides the following commands:
 ** [2017-04-03 Mon 21:20] [[https://github.com/dbohdan/embedded-scripting-languages][dbohdan/embedded-scripting-languages: A list of embedded script languages]]
 The following is a list of reasonably mature open source embedded scripting languages to use in your application.
+** [2017-04-04 Tue 04:30] [[https://github.com/ptrv/company-lua][ptrv/company-lua: company-mode completion backend for Lua]]
+Company-lua is a company-mode completion backend for Lua.
+
+We use api files from ZeroBrane Studio as source for the completion candidates. Right now only Lua 5.1, 5.2, 5.3 and LÖVE are supported
 * Patch
 - file:/usr/lib/python2.7/site-packages/html2text/config.py
 - file:/usr/share/rss2email/rss2email.py
