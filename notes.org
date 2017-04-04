@@ -7899,6 +7899,12 @@ Dropbox Uploader is a BASH script which can be used to upload, download, delete,
 It's written in BASH scripting language and only needs cURL.
 
 You can take a look to the GiHub project page.
+** [2017-04-04 Tue 23:24] [[https://github.com/borgbackup/borg][borgbackup/borg: Deduplicating backup program with compression and authenticated encryption.]]
+BorgBackup (short: Borg) is a deduplicating backup program. Optionally, it supports compression and authenticated encryption.
+
+The main goal of Borg is to provide an efficient and secure way to backup data. The data deduplication technique used makes Borg suitable for daily backups since only changes are stored. The authenticated encryption technique makes it suitable for backups to not fully trusted targets.
+
+See the installation manual or, if you have already downloaded Borg, docs/installation.rst to get started with Borg.
 * Patch
 - file:/usr/lib/python2.7/site-packages/html2text/config.py
 - file:/usr/share/rss2email/rss2email.py
