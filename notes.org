@@ -7992,6 +7992,21 @@ This script:
 
     downloads all the images from your tweets locally
     rewrites the archive files so that they point to the local images
+** [2017-04-05 Wed 00:10] [[https://github.com/trickortweak/flickr-uploader][trickortweak/flickr-uploader: Upload a directory of media to Flickr to use as a backup to your local storage]]
+Upload a directory of media to Flickr to use as a backup to your local storage.
+
+Interested in helping manage pull requests and issues? I need one or more collaborators since I no longer actively use this script.
+Features:
+
+    Uploads images in full resolution to Flickr account (JPG, PNG...)
+    Reuploads modified images
+    Removes images from Flickr when they are removed from your local hard drive
+    Uploads videos (AVI, MOV, MPG, MP4, 3GP...)
+    Stores image information locally using a simple SQLite database
+    Creates "Sets" based on the folder name the media is in (getting existing sets from Flickr is managed also)
+    Ignores unwanted directories (like ".picasabackup" for Picasa users)
+    Allows specific files to be ignored (via regular expressions)
+    Convert RAW files (with an external tool)
 * Patch
 - file:/usr/lib/python2.7/site-packages/html2text/config.py
 - file:/usr/share/rss2email/rss2email.py
