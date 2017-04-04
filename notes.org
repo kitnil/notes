@@ -7905,6 +7905,16 @@ BorgBackup (short: Borg) is a deduplicating backup program. Optionally, it suppo
 The main goal of Borg is to provide an efficient and secure way to backup data. The data deduplication technique used makes Borg suitable for daily backups since only changes are stored. The authenticated encryption technique makes it suitable for backups to not fully trusted targets.
 
 See the installation manual or, if you have already downloaded Borg, docs/installation.rst to get started with Borg.
+** [2017-04-04 Tue 23:39] [[https://github.com/bit-team/backintime][bit-team/backintime: Back In Time - A simple backup tool for Linux]]
+Back In Time is a simple backup tool for Linux, inspired by "flyback project".
+
+It provides a command line client 'backintime' and a Qt5 GUI 'backintime-qt' both written in Python3.
+
+You only need to specify 3 things:
+
+    where to save snapshots
+    what folders to backup
+    backup frequency (manual, every hour, every day, every month)
 * Patch
 - file:/usr/lib/python2.7/site-packages/html2text/config.py
 - file:/usr/share/rss2email/rss2email.py
