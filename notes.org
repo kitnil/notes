@@ -8035,6 +8035,8 @@ This python script will backup all of your bitbucket repos (both mercurial and g
 NOTE: THIS PROJECT HAS BEEN DEPRECATED. Holo Backup was an interesting experiment to see how much could be done with ADB Backup alone, but ADB Backup itself proved to be very unreliable in practical use, and as such it is not advised for actual use. Please, don't submit bug reports or pull requests, they will be ignored.
 
 A GUI for ADB backup in the form of a simple Qt-based Python application. Featured on Lifehacker, /r/Android, Redmond Pie, and more.
+** [2017-04-05 Wed 00:27] [[https://github.com/josegonzalez/python-github-backup][josegonzalez/python-github-backup: backup a github user or organization]]
+backup a github user or organization
 * Patch
 - file:/usr/lib/python2.7/site-packages/html2text/config.py
 - file:/usr/share/rss2email/rss2email.py
