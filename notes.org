@@ -8117,6 +8117,12 @@ Flacon extracts individual tracks from one big audio file containing the entire 
     git init --bare $HOME/.myconf
     alias config='/usr/bin/git --git-dir=$HOME/.myconf/ --work-tree=$HOME'
     config config status.showUntrackedFiles no
+** [2017-04-05 Wed 07:22] [[https://github.com/jedisct1/dnscrypt-proxy][jedisct1/dnscrypt-proxy: A tool for securing communications between a client and a DNS resolver]]
+DNSCrypt is a protocol for securing communications between a client and a DNS resolver, using high-speed high-security elliptic-curve cryptography.
+
+While not providing end-to-end security, it protects the local network, which is often the weakest point of the chain, against man-in-the-middle attacks.
+
+dnscrypt-proxy is a client-implementation of the protocol. It requires a DNSCrypt server on the other end.
 * Patch
 - file:/usr/lib/python2.7/site-packages/html2text/config.py
 - file:/usr/share/rss2email/rss2email.py
