@@ -15,6 +15,9 @@
 ** TODO Физика
 ** TODO Программирование
 ** TODO [2017-02-27 Mon] [[https://gogs.sr.ht/explore/repos][Explore - sr.ht git]] 
+* Read
+** [2017-04-05 Wed 08:52] [[https://www.centos.org/forums/viewtopic.php?f=16&t=52818][Bad practice to put interal in DNS zone files? - CentOS]]
+If you are going to run an authoritative public name server, then you really need to get a copy of DNS and BIND, 5th Edition By Cricket Liu, Paul Albitz and start reading.
 * Watch
 ** Anime
 *** Буря потерь
@@ -8123,8 +8126,6 @@ DNSCrypt is a protocol for securing communications between a client and a DNS re
 While not providing end-to-end security, it protects the local network, which is often the weakest point of the chain, against man-in-the-middle attacks.
 
 dnscrypt-proxy is a client-implementation of the protocol. It requires a DNSCrypt server on the other end.
-** [2017-04-05 Wed 08:52] [[https://www.centos.org/forums/viewtopic.php?f=16&t=52818][Bad practice to put interal in DNS zone files? - CentOS]]
-If you are going to run an authoritative public name server, then you really need to get a copy of DNS and BIND, 5th Edition By Cricket Liu, Paul Albitz and start reading.
 * Patch
 - file:/usr/lib/python2.7/site-packages/html2text/config.py
 - file:/usr/share/rss2email/rss2email.py
