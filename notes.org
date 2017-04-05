@@ -8126,6 +8126,12 @@ DNSCrypt is a protocol for securing communications between a client and a DNS re
 While not providing end-to-end security, it protects the local network, which is often the weakest point of the chain, against man-in-the-middle attacks.
 
 dnscrypt-proxy is a client-implementation of the protocol. It requires a DNSCrypt server on the other end.
+** [2017-04-06 Thu 00:41] [[https://github.com/vcrhonek/hwdata][vcrhonek/hwdata: hwdata contains various hardware identification and configuration data, such as the pci.ids and usb.ids databases.]]
+To update the various IDs files, run 'make download'.
+Requisities:
+  unoconf - python script using libreoffice to convert all office
+            documents to anything else
+    * used to update pnp.ids from MS database.
 * Patch
 - file:/usr/lib/python2.7/site-packages/html2text/config.py
 - file:/usr/share/rss2email/rss2email.py
