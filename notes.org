@@ -8134,6 +8134,8 @@ Requisities:
     * used to update pnp.ids from MS database.
 ** [2017-04-06 Thu 03:59] [[https://github.com/aspiers/smooth-scrolling][aspiers/smooth-scrolling: Emacs smooth scrolling package]]
 This package offers a minor mode which make emacs scroll smoothly. It keeps the point away from the top and bottom of the current buffer's window in order to keep lines of context around the point visible as much as possible, whilst minimising the frequency of sudden scroll jumps which are visually confusing.
+** [2017-04-06 Thu 17:54] [[https://github.com/krzysztof-magosa/company-ansible][krzysztof-magosa/company-ansible: Ansible keywords completion for Emacs]]
+This library enables the completion of Ansible keywords using Company Mode for Emacs.
 * Patch
 - file:/usr/lib/python2.7/site-packages/html2text/config.py
 - file:/usr/share/rss2email/rss2email.py
