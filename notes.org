@@ -8178,6 +8178,16 @@ For example, the following code will turn the minibuffer prompt green when you c
 (ad-activate 'other-window)
 
 Of course you are not limited to just setting the minibuffer prompt, but it's not clear to me exactly what effect your are trying to achieve.
+** [2017-04-07 Fri 09:34] [[http://www.zentut.com/c-tutorial][C Tutorial]]
+Welcome to the C Tutorial! the C developer’s resources for everything related to the C programming language.
+
+If you are…
+
+    Still struggling to get started with C.
+    Not knowing where to start learning C programming easily.
+    Not getting much out of the C language.
+
+This C tutorial was created to solve such problems.
 * Patch
 - file:/usr/lib/python2.7/site-packages/html2text/config.py
 - file:/usr/share/rss2email/rss2email.py
