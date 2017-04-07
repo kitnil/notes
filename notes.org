@@ -8341,6 +8341,10 @@ This document applies only to 'conventional' bugs - i.e., it does not apply to s
 Updated 17 March 2009 to reflect changes to the NEEDINFO representation.
 
 Updated March 2010 to reflect No Frozen Rawhide Implementation.
+** [2017-04-07 Fri 12:59] [[https://github.com/thomasluquet/playerctl.el][thomasluquet/playerctl.el: A major-module for play music from emacs with playerctl]]
+
+    Playerctl, let you control your music player (Spotify, vlc, audacious, bmp, xmms2, and others) from shell.
+    playerctl.el is just a simple binding to play your music from emacs
 * Patch
 - file:/usr/lib/python2.7/site-packages/html2text/config.py
 - file:/usr/share/rss2email/rss2email.py
