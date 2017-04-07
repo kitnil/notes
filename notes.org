@@ -8393,3 +8393,17 @@ Possible reasons for having this kind of units are:
    D-Bus, udev, scripted systemctl call, ...).
 4) In case of template units, the unit is meant to be enabled with some
    instance name specified.
+* How to create PDF from Emacs info pages
+
+   The Calc manual can be printed, but because the manual is so large,
+you should only make a printed copy if you really need it.  To print the
+manual, you will need the TeX typesetting program (this is a free
+program by Donald Knuth at Stanford University) as well as the
+‘texindex’ program and ‘texinfo.tex’ file, both of which can be obtained
+from the FSF as part of the ‘texinfo’ package.  To print the Calc manual
+in one huge tome, you will need the Emacs source, which contains the
+source code to this manual, ‘calc.texi’.  Change to the ‘doc/misc’
+subdirectory of the Emacs source distribution, which contains source
+code for this manual, and type ‘make calc.pdf’.  (Don’t worry if you get
+some “overfull box” warnings while TeX runs.)  The result will be this
+entire manual as a pdf file.
