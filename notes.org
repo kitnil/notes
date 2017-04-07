@@ -8136,6 +8136,14 @@ Requisities:
 This package offers a minor mode which make emacs scroll smoothly. It keeps the point away from the top and bottom of the current buffer's window in order to keep lines of context around the point visible as much as possible, whilst minimising the frequency of sudden scroll jumps which are visually confusing.
 ** [2017-04-06 Thu 17:54] [[https://github.com/krzysztof-magosa/company-ansible][krzysztof-magosa/company-ansible: Ansible keywords completion for Emacs]]
 This library enables the completion of Ansible keywords using Company Mode for Emacs.
+** [2017-04-07 Fri 03:21] [[https://github.com/0ad/0ad][0ad/0ad: Git mirror of the 0 A.D. source code (http://trac.wildfiregames.com/browser)]]
+0 A.D. (pronounced "zero ey-dee") is a free, open-source, cross-platform
+real-time strategy game of ancient warfare.
+
+This is currently an incomplete, under-development version of the game.
+We're always interested in getting more people involved, to help bring the game
+towards completion and to share the interesting experience of developing a
+project of this scope.
 * Patch
 - file:/usr/lib/python2.7/site-packages/html2text/config.py
 - file:/usr/share/rss2email/rss2email.py
