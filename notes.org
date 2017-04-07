@@ -8213,6 +8213,17 @@ Why we get peeved -- bofh
 Per the (then new(er)) Freenode policy we are in ##c. See the discussion page for some of the history.
 
 There is also a page on religion in C.
+** [2017-04-07 Fri 09:39] [[http://www.iso-9899.info/wiki/Books][Books - C]]
+Before buying any book that is not listed here we recommend that you read the ACCU review of the book in question.
+Stuff that should be avoided
+
+[summarized from the main page; full list with reasons here]
+
+    Books written by Herb Schildt. 
+
+    Books by Yashwant Kanetkar. 
+
+    Learn C The Hard Way by Zed A. Shaw.
 * Patch
 - file:/usr/lib/python2.7/site-packages/html2text/config.py
 - file:/usr/share/rss2email/rss2email.py
