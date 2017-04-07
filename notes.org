@@ -8325,6 +8325,8 @@ cd src
 ./emacs
 
 And then, M-x webkit-browse-url RET: xwidget-webkit
+** [2017-04-07 Fri 11:41] [[https://github.com/offby1/pyramid-tinyurl-doodle/][offby1/pyramid-tinyurl-doodle: "Hello, world" for the web. Live at http://teensy.info]]
+Ensure you've got Amazon AWS config and credentials, wherever boto expects to find them (tl;dr: mine are in ~/.aws/credentials). Then --- assuming you've got a virtualenv somewhere, and stored its location in the variable VENV --- do:
 * Patch
 - file:/usr/lib/python2.7/site-packages/html2text/config.py
 - file:/usr/share/rss2email/rss2email.py
