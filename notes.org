@@ -8351,6 +8351,23 @@ Opal is a Ruby to JavaScript source-to-source compiler. It also has an implement
 Opal is hosted on GitHub. Chat is available on Gitter at opal/opal (also available as IRC at irc.gitter.im) and the Freenode IRC channel at #opal. Ask questions on stackoverflow (tag #opalrb). Get the Opalist newsletter for updates and community news.
 ** [2017-04-07 Fri 13:02] [[https://sayakb.github.io/sticky-notes/pages/home/][Sticky Notes]]
 A powerful open-source pastebin application for effortless code sharing.
+** [2017-04-07 Fri 13:05] [[https://www.win.tue.nl/~aeb/linux/kbd/scancodes.html][Keyboard scancodes]]
+
+
+1. Keyboard scancodes
+
+    1.1 Key release
+    1.2 Protocol scancodes
+    1.3 Escape scancodes
+    1.4 Ordinary scancodes
+    1.5 Escaped scancodes
+    1.6 Fake shifts
+    1.7 Added non-fake shifts
+    1.8 Turbo Mode
+    1.9 Power Saving
+    1.10 Initializing special keyboards
+    1.11 Manipulating extra LEDs
+    1.12 The laptop FN key
 * Patch
 - file:/usr/lib/python2.7/site-packages/html2text/config.py
 - file:/usr/share/rss2email/rss2email.py
