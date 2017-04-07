@@ -8709,3 +8709,15 @@ entire manual as a pdf file.
 <twb> e.g. find -regextype posix-egrep -iregex
       '.*(urbanears|skullcandy|headphones|speaker|marshall|usb-cable).*'
       -delete
+* dnf provide example
+<zxd> hi  [13:34]
+<zxd> dnf repoquery  --arch x86_64  --whatprovides '*/libc.so'
+<zxd> dosen't return any result , but rpm -qf /usr/lib64/libc.so
+      glibc-devel-2.23.1-11.fc24.x86_64     does
+<zxd> glibc-devel-2.23.1-11.fc24.x86_64
+<zxd> why
+<seseri> works for me  [13:35]
+<seseri> dnf provides '*/libc.so'
+<zxd> does it print from x86_64 arch ?  [13:38]
+<seseri> nope  [13:41]
+<seseri> dnf provides */lib64/libc.so does
