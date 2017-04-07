@@ -8372,6 +8372,16 @@ A powerful open-source pastebin application for effortless code sharing.
  In certain situations, AVC denial messages may not be logged when SELinux denies access. Applications and system library functions often probe for more access than required to perform their tasks. To maintain least privilege without filling audit logs with AVC denials for harmless application probing, the policy can silence AVC denials without allowing a permission by using dontaudit rules. These rules are common in standard policy. The downside of dontaudit is that, although SELinux denies access, denial messages are not logged, making troubleshooting more difficult.
 ** [2017-04-07 Fri 13:21] [[https://fossies.org/][Fossies - The Fresh Open Source Software Archive]]
  This specialized software archive isn't designed to be a "complete" software archive like some other services but is just a collection of individually selected and hopefully useful software sources. Amongst other great features it allows to browse and search through the archive members in order to study both documentation and sources. This may avoid unnecessary file transfers and installation effort and may let you detect some otherwise undetected software treasures. As a new probably worldwide uniquely feature Fossies provides now additionally graph-visualized doxygen generated source code documentation for nearly all packages. The main focus of this archive is on internet applications and solutions for research, engineering and scientific workers. Have fun in browsing through our software archive!
+** [2017-04-07 Fri 13:25] [[https://stackoverflow.com/questions/559274/any-program-or-trick-to-find-the-definition-of-a-variable][c++ - Any program or trick to find the definition of a variable? - Stack Overflow]]
+
+
+Edit: OK, you say you're using C++. I'm editing my response. I would use the C preprocessor and then grep for the variable. It will appear in the first place.
+
+cpp -I...(preprocessor options here) file.cpp | grep variable
+
+The C preprocessor will join all the includes that the program uses, and the definition has to be before any usage of that variable in the file. Not a perfect thing, but without an IDE or a complete language description/managing tool, you only have the text.
+
+Another option would be using ctags. It understands the C and C++ syntaxes (among others), and can be searched for variables and functions using command line tools, emacs and vi, among others.
 * Patch
 - file:/usr/lib/python2.7/site-packages/html2text/config.py
 - file:/usr/share/rss2email/rss2email.py
