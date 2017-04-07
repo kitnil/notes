@@ -8471,6 +8471,12 @@ The Council is composed of a mix of representatives from different areas of the 
 The Council is ultimately accountable for the Fedora Project as a whole, and is responsible for providing advice to and oversight of other Fedora governance bodies and teams as needed.
 ** [2017-04-07 Fri 20:43] [[https://ipsilon-project.org/][Ipsilon]]
 Ipsilon is a server and a toolkit to configure Apache-based Service Providers. The server is a pluggable selfcontained mod_wsgi application that provides federated SSO to web applications. User authentication is always performed against a separate Identity Management system (for example a FreeIPA server), and communication with application is done using a supported federation protocol.
+** [2017-04-07 Fri 20:54] [[https://github.com/jwiegley/emacs-async][jwiegley/emacs-async: Simple library for asynchronous processing in Emacs]]
+async.el is a module for doing asynchronous processing in Emacs. Some async applications are provided as well with this package:
+
+    Dired-async
+    smtp-mail-async
+    async-bytecomp
 * Patch
 - file:/usr/lib/python2.7/site-packages/html2text/config.py
 - file:/usr/share/rss2email/rss2email.py
