@@ -8389,6 +8389,19 @@ These files make it possible to login to X without a desktop manager.
 ** [2017-04-07 Fri 14:10] [[https://pushall.ru/][PushAll - Все уведомления - одно приложение!]]
 Топ меценатов за месяц
 Чтобы попасть в раздел, пожертвуйте сумму больше 100 рублей через раздел "Пожертвовать" используя Яндекс-форму.
+** [2017-04-07 Fri 14:23] [[https://developer.gnome.org/jhbuild/stable/command-reference.html.en#command-reference-build][Command Reference]]
+-f, --file config
+
+    Use an alternative configuration file instead of the default ~/.config/jhbuildrc.
+-m, --moduleset moduleset
+
+    Use a module set other than the module set listed in the configuration file. This option can be a relative path if the module set is located in the JHBuild moduleset folder, or an absolute path if located elsewhere.
+--no-interact
+
+    Do not prompt the user for any input. This option is useful if leaving a build unattended, in order to ensure the build is not interrupted.
+--conditions
+
+    Modify the condition flags to be different than those determined on the basis of the OS and those specified in jhbuildrc. Modifications are specified like -wayland or +docs in order to remove or add conditions. Multiple modifications can be separated by a comma like --conditions=+docs,-wayland or you can split them across multiple --conditions arguments.
 * Patch
 - file:/usr/lib/python2.7/site-packages/html2text/config.py
 - file:/usr/share/rss2email/rss2email.py
