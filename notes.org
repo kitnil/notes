@@ -8384,6 +8384,8 @@ The C preprocessor will join all the includes that the program uses, and the def
 Another option would be using ctags. It understands the C and C++ syntaxes (among others), and can be searched for variables and functions using command line tools, emacs and vi, among others.
 ** [2017-04-07 Fri 13:27] [[https://endless-sky.github.io/][Endless Sky, an open source space trading and combat game.]]
 Endless Sky is a 2D space trading and combat game similar to the classic Escape Velocity series. Explore other star systems. Earn money by trading, carrying passengers, or completing missions. Use your earnings to buy a better ship or to upgrade the weapons and engines on your current one. Blow up pirates. Take sides in a civil war. Or leave human space behind and hope to find friendly aliens whose culture is more civilized than your own.
+** [2017-04-07 Fri 13:39] [[https://github.com/joukewitteveen/xlogin][joukewitteveen/xlogin: Automatic X login service for systemd]]
+These files make it possible to login to X without a desktop manager.
 * Patch
 - file:/usr/lib/python2.7/site-packages/html2text/config.py
 - file:/usr/share/rss2email/rss2email.py
