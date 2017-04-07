@@ -8345,6 +8345,10 @@ Updated March 2010 to reflect No Frozen Rawhide Implementation.
 
     Playerctl, let you control your music player (Spotify, vlc, audacious, bmp, xmms2, and others) from shell.
     playerctl.el is just a simple binding to play your music from emacs
+** [2017-04-07 Fri 13:00] [[https://github.com/opal/opal][opal/opal: Ruby in the Browser]]
+Opal is a Ruby to JavaScript source-to-source compiler. It also has an implementation of the Ruby corelib.
+
+Opal is hosted on GitHub. Chat is available on Gitter at opal/opal (also available as IRC at irc.gitter.im) and the Freenode IRC channel at #opal. Ask questions on stackoverflow (tag #opalrb). Get the Opalist newsletter for updates and community news.
 * Patch
 - file:/usr/lib/python2.7/site-packages/html2text/config.py
 - file:/usr/share/rss2email/rss2email.py
