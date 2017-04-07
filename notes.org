@@ -8239,6 +8239,55 @@ Stuff that should be avoided
         University of Strathclyde C Course
         Beej's Guide to Network Programming
         Cprogramming.com Advanced Tutorials
+** [2017-04-07 Fri 10:03] [[https://github.com/syl20bnr/spacemacs/issues/7641][Org-Mode Evaluation of code disabled · Issue #7641 · syl20bnr/spacemacs]]
+(require 'ob-python)
+(require 'ob-clojure)
+(require 'ob-perl)
+(require 'ob-dot)
+(require 'ob-R)
+(require 'ob-gnuplot)
+(require 'ob-lisp)
+(require 'ob-org)
+(require 'ob-screen)
+(require 'ob-calc)
+(require 'ob-js)
+(require 'ob-latex)
+(require 'ob-plantuml)
+(require 'ob-sh)
+(require 'ob-ditaa)
+(require 'ob-awk)
+(require 'ob-octave)
+(require 'ob-sed)
+(require 'ob-sql)
+(require 'ob-sqlite)
+
+(org-babel-do-load-languages
+ 'org-babel-load-languages
+ '( (perl . t)
+    (dot . t)
+    (R . t)
+    (gnuplot . t)
+    (clojure . t)
+;;    (graphviz . t)
+    (lisp . t)
+;;    (stan . t)
+    (org . t)
+    (screen . t)
+    (calc . t)
+    (js . t)
+    (latex . t)
+    (plantuml . t)
+    (ruby . t)
+    (sh . t)
+    (python . t)
+    (emacs-lisp . t)
+    (ditaa . t)
+    (awk . t)
+    (octave . t)
+    (sed . t)
+    (sql . t)
+    (sqlite . t)
+    ))
 * Patch
 - file:/usr/lib/python2.7/site-packages/html2text/config.py
 - file:/usr/share/rss2email/rss2email.py
