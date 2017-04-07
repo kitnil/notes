@@ -8600,3 +8600,30 @@ entire manual as a pdf file.
 <twb> e.g. find -regextype posix-egrep -iregex
       '.*(urbanears|skullcandy|headphones|speaker|marshall|usb-cable).*'
       -delete
+* 
+<twb> wigust: because rgrep is dumb  [11:32]
+<twb> wigust: just use M-x grep, then type in a smarter command
+<twb> wigust: just note that e.g. grep -r will have problem with device files
+      and named pipes  [11:33]
+<twb> e.g. grep -r will try to read everything in /proc/kmsg which is
+      petabytes long
+<twb> so when I am searching an entire filesystem I will do something like
+      this:
+<twb> find / -xdev -type f -exec grep -nH foo {} +  [11:34]
+<twb> For searching git repos, I usually do M-x grep RET, then type in a git
+      grep command, rather than just grep
+<remote> how can I find out which libraries I need to be able to compile emacs
+         with webkit?  [11:36]
+<josteink> i believe wasamasa once blogged about that
+<wigust> twb: I found M-x vc-git-grep useful too.  [11:37]
+<twb> hm, didn't know about that one
+<remote> I'm not trying to do that rigth now but remember I had a rough time
+         finding out before, rough time as-in any *lib*webkit* package in
+         debian caused emacs compilation with specification of webkit support
+         to not have support for webkit or something like that
+<twb> wigust: apt-get install libwebkitblah-dev ?  [11:38]
+<twb> Er remote
+<macrobat> is there a tool to search in sorted files? 
+<John[Lisbeth]> ugh
+<josteink> remote: how about just compiling it with the xwidgets configure
+           option and see what it complains about?
