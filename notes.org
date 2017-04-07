@@ -8411,6 +8411,14 @@ Red Hat, Red Hat Enterprise Linux, the Shadowman logo, JBoss, OpenShift, Fedora,
 Linux® is the registered trademark of Linus Torvalds in the United States and other countries.
 ** [2017-04-07 Fri 15:28] [[https://www.softwarecollections.org/en/][Software Collections — Software Collections]]
  Red Hat offers a set Software Collections with professional, enterprise-class support for Red Hat® Enterprise Linux®. You can find relevant information on the Red Hat Customer Portal and access the Red Hat Software Collection channels on the Red Hat Network (RHN).
+** [2017-04-07 Fri 15:42] [[https://access.redhat.com/solutions/2074][After an upstream project has released a newer version of a package when will the package on a Red Hat Enterprise Linux system be updated to this version? - Red Hat Customer Portal]]
+
+    Package provided in Red Hat Enterprise Linux (RHEL) is not latest, when the latest package will be available?
+    OpenSSL package provided in Red Hat Enterprise Linux 4 is old, when new package will be released?
+    The Python version that comes with RHEL 5.4 is way out of date.
+    How can I install a later upstream kernel on RHEL?
+    Is there a supported version of ELRepo's kernel-ml or kernel-lt packages?
+    How does RHEL packaging versioning and package versions work?
 * Patch
 - file:/usr/lib/python2.7/site-packages/html2text/config.py
 - file:/usr/share/rss2email/rss2email.py
