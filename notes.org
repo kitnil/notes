@@ -8573,3 +8573,30 @@ subdirectory of the Emacs source distribution, which contains source
 code for this manual, and type ‘make calc.pdf’.  (Don’t worry if you get
 some “overfull box” warnings while TeX runs.)  The result will be this
 entire manual as a pdf file.
+* IRC
+<remote> yay
+<twb> wigust: OK, the only reason you should get a non-zero from that is if
+      find crashes  [11:04]
+<remote> wigust: I doubt there's a difference between running rgrep in emacs
+         or in a shell, do you get non-zero output if you execute it in a
+         shell with the same arguments/etc after it completes and you execute
+         ``echo $?'' ?
+<twb> find will actually eat the exit status of grep
+<twb> wigust: are you on GNU/Linux?
+<remote> WELL, doesn't find return the exit code of whatever command it runs?
+<twb> remote: it does not
+<twb> If you want that, you have to do something baroque like test '' !=
+      $(find ... -exec my_test_program {} + -printf x)  [11:05]
+<remote> ok
+<twb> wigust: FWIW I generally prefer to rely on grep's internal capabilities:
+                                                                        [11:06]
+<twb> grep -r --include '*.[ch]' -nH GLIB_SIZEOF_SIZE_T *
+<twb> Actually you can skip the * in current version
+* remote thinks twb is a child of GNU who was bourne again in a shell
+<twb> I'm better at sh and bash than most of the dickheads who write scripts,
+      that's for sure  [11:07]
+<twb> I wonder if that long list of extensions would run faster in GNU find if
+      you experessed it as a regular expression  [11:08]
+<twb> e.g. find -regextype posix-egrep -iregex
+      '.*(urbanears|skullcandy|headphones|speaker|marshall|usb-cable).*'
+      -delete
