@@ -8627,7 +8627,7 @@ Manual_, by Bil Lewis and Dan LaLiberte.
           http://wayback.archive-it.org/5263/20150203070038/http://cm.bell-labs.com/cm/cs/cbook/
           -- errata: http://www.iso-9899.info/2ediffs.html
 <mfukar> C Programming: A Modern Approach, by King, ISBN: 0393969452  [09:36]
-* [wigust@magnolia develop]$ sudo systemctl enable cockpit.service
+** [wigust@magnolia develop]$ sudo systemctl enable cockpit.service
 
 The unit files have no installation config (WantedBy, RequiredBy, Also, Alias
 settings in the [Install] section, and DefaultInstance for template units).
