@@ -8327,6 +8327,8 @@ cd src
 And then, M-x webkit-browse-url RET: xwidget-webkit
 ** [2017-04-07 Fri 11:41] [[https://github.com/offby1/pyramid-tinyurl-doodle/][offby1/pyramid-tinyurl-doodle: "Hello, world" for the web. Live at http://teensy.info]]
 Ensure you've got Amazon AWS config and credentials, wherever boto expects to find them (tl;dr: mine are in ~/.aws/credentials). Then --- assuming you've got a virtualenv somewhere, and stored its location in the variable VENV --- do:
+** [2017-04-07 Fri 12:45] [[https://bugzilla.redhat.com/docs/en/html/][The Bugzilla Guide - 4.4.12+ Release]]
+ This is the documentation for Bugzilla, a bug-tracking system from mozilla.org. Bugzilla is an enterprise-class piece of software that tracks millions of bugs and issues for hundreds of organizations around the world.
 * Patch
 - file:/usr/lib/python2.7/site-packages/html2text/config.py
 - file:/usr/share/rss2email/rss2email.py
