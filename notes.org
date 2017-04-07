@@ -8447,6 +8447,12 @@ sphinx (http://sphinx.pocoo.org/) and it can be built with:
   $ make html
 
 Current documentation is available at http://tflink.github.com/python-yourls
+** [2017-04-07 Fri 16:57] [[https://github.com/0xAX/linux-insides][0xAX/linux-insides: A little bit about a linux kernel]]
+A book-in-progress about the linux kernel and its insides.
+
+The goal is simple - to share my modest knowledge about the insides of the linux kernel and help people who are interested in linux kernel insides, and other low-level subject matter.
+
+Questions/Suggestions: Feel free about any questions or suggestions by pinging me at twitter @0xAX, adding an issue or just drop me an email.
 * Patch
 - file:/usr/lib/python2.7/site-packages/html2text/config.py
 - file:/usr/share/rss2email/rss2email.py
