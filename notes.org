@@ -8304,6 +8304,27 @@ Psycopg is released under the terms of the GNU Lesser General Public License, al
     #kaiwa on Freenode: A small inactive channel for chatting in Japanese. Other languages aren't allowed. The purpose is to remove the easy fallback of English when things get difficult.
 ** [2017-04-07 Fri 10:54] [[http://catern.com/posts/terminal_quirks.html][Terminals Are Weird]]
  Terminals1 are quite weird. Most modern users assume that they can just have straightfoward keybindings. Right? To bind Ctrl+i to something, they listen for Ctrl+i in their application. If they want to bind Ctrl+Shift+i to something different, they certainly can, they just listen for Ctrl+Shift+i as well. Naturally, they can rebind Tab without rebinding Ctrl+i/Shift+i. And if they can bind something like Ctrl+\, surely they can also bind something like Ctrl+=. Of course, whether a keybinding like Alt+char is actually succesfully picked up by their terminal application is entirely independent of the quality of their network connection. They know that Ctrl+char and Ctrl+Shift+char are distinct keybindings, and that if those aren't distinct keybindings, certainly Alt+char and Alt+Shift+char must not be distinct either.
+** [2017-04-07 Fri 11:40] [[https://jiegec.github.io/programming/2016/02/18/building-emacs-git-version-with-xwidgets-and-modules-in-archlinux/][Building Emacs Git Version With Xwidgets And Modules In Archlinux]]
+sudo pacman -S git autoconf automake gtk3 webkitgtk
+git clone --depth 1 https://github.com/emacs-mirror/emacs.git (or git protocol if you like)
+cd emacs
+./autogen.sh all
+./configure --with-xwidgets --with-x --with-x-toolkit=gtk3 --with-modules
+make
+cd lisp
+make autoloads
+make
+make
+make
+
+Until you got everything ok.
+
+Then you can just:
+
+cd src
+./emacs
+
+And then, M-x webkit-browse-url RET: xwidget-webkit
 * Patch
 - file:/usr/lib/python2.7/site-packages/html2text/config.py
 - file:/usr/share/rss2email/rss2email.py
@@ -8592,15 +8613,7 @@ entire manual as a pdf file.
                                                                         [11:06]
 <twb> grep -r --include '*.[ch]' -nH GLIB_SIZEOF_SIZE_T *
 <twb> Actually you can skip the * in current version
-* remote thinks twb is a child of GNU who was bourne again in a shell
-<twb> I'm better at sh and bash than most of the dickheads who write scripts,
-      that's for sure  [11:07]
-<twb> I wonder if that long list of extensions would run faster in GNU find if
-      you experessed it as a regular expression  [11:08]
-<twb> e.g. find -regextype posix-egrep -iregex
-      '.*(urbanears|skullcandy|headphones|speaker|marshall|usb-cable).*'
-      -delete
-* 
+** 
 <twb> wigust: because rgrep is dumb  [11:32]
 <twb> wigust: just use M-x grep, then type in a smarter command
 <twb> wigust: just note that e.g. grep -r will have problem with device files
@@ -8627,3 +8640,11 @@ entire manual as a pdf file.
 <John[Lisbeth]> ugh
 <josteink> remote: how about just compiling it with the xwidgets configure
            option and see what it complains about?
+* remote thinks twb is a child of GNU who was bourne again in a shell
+<twb> I'm better at sh and bash than most of the dickheads who write scripts,
+      that's for sure  [11:07]
+<twb> I wonder if that long list of extensions would run faster in GNU find if
+      you experessed it as a regular expression  [11:08]
+<twb> e.g. find -regextype posix-egrep -iregex
+      '.*(urbanears|skullcandy|headphones|speaker|marshall|usb-cable).*'
+      -delete
