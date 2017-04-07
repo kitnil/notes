@@ -8411,6 +8411,24 @@ https://te4.org/characters/217768/tome/77277c76-4d13-453b-a445-eab1986cbe18ah=1c
 ** ASK about erc auto-reconnect
 Hi. I have an issue with authentication after auto-reconnect in
 erc. Did somebody have this issue?
+** Read this awesome books
+
+   Among the books used in the development of Calc were Knuth’s _Art of
+Computer Programming_ (especially volume II, _Seminumerical
+Algorithms_); _Numerical Recipes_ by Press, Flannery, Teukolsky, and
+Vetterling; Bevington’s _Data Reduction and Error Analysis for the
+Physical Sciences_; _Concrete Mathematics_ by Graham, Knuth, and
+Patashnik; Steele’s _Common Lisp, the Language_; the _CRC Standard Math
+Tables_ (William H. Beyer, ed.); and Abramowitz and Stegun’s venerable
+_Handbook of Mathematical Functions_.  Also, of course, Calc could not
+have been written without the excellent _GNU Emacs Lisp Reference
+Manual_, by Bil Lewis and Dan LaLiberte.
+** Recommend C books
+<candide> K&R is The C Programming Language, 2nd edition, by Kernighan and
+          Ritchie --
+          http://wayback.archive-it.org/5263/20150203070038/http://cm.bell-labs.com/cm/cs/cbook/
+          -- errata: http://www.iso-9899.info/2ediffs.html
+<mfukar> C Programming: A Modern Approach, by King, ISBN: 0393969452  [09:36]
 * [wigust@magnolia develop]$ sudo systemctl enable cockpit.service
 
 The unit files have no installation config (WantedBy, RequiredBy, Also, Alias
@@ -8439,21 +8457,3 @@ subdirectory of the Emacs source distribution, which contains source
 code for this manual, and type ‘make calc.pdf’.  (Don’t worry if you get
 some “overfull box” warnings while TeX runs.)  The result will be this
 entire manual as a pdf file.
-* Read this awesome books
-
-   Among the books used in the development of Calc were Knuth’s _Art of
-Computer Programming_ (especially volume II, _Seminumerical
-Algorithms_); _Numerical Recipes_ by Press, Flannery, Teukolsky, and
-Vetterling; Bevington’s _Data Reduction and Error Analysis for the
-Physical Sciences_; _Concrete Mathematics_ by Graham, Knuth, and
-Patashnik; Steele’s _Common Lisp, the Language_; the _CRC Standard Math
-Tables_ (William H. Beyer, ed.); and Abramowitz and Stegun’s venerable
-_Handbook of Mathematical Functions_.  Also, of course, Calc could not
-have been written without the excellent _GNU Emacs Lisp Reference
-Manual_, by Bil Lewis and Dan LaLiberte.
-* Recommend C books
-<candide> K&R is The C Programming Language, 2nd edition, by Kernighan and
-          Ritchie --
-          http://wayback.archive-it.org/5263/20150203070038/http://cm.bell-labs.com/cm/cs/cbook/
-          -- errata: http://www.iso-9899.info/2ediffs.html
-<mfukar> C Programming: A Modern Approach, by King, ISBN: 0393969452  [09:36]
