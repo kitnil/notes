@@ -8437,6 +8437,16 @@ Linux® is the registered trademark of Linus Torvalds in the United States and o
 shortuuid is a simple python library that generates concise, unambiguous, URL-safe UUIDs.
 
 Often, one needs to use non-sequential IDs in places where users will see them, but the IDs must be as concise and easy to use as possible. shortuuid solves this problem by generating uuids using Python's built-in uuid module and then translating them to base57 using lowercase and uppercase letters and digits, and removing similar-looking characters such as l, 1, I, O and 0.
+** [2017-04-07 Fri 16:55] [[https://github.com/tflink/python-yourls][tflink/python-yourls: Simple Python client for the YOURLS URL shortener]]
+python-yourls is a simple python based API client for the YOURLS URL shortener
+(http://yourls.org/).
+
+For more information on using the client, documentation has been written for
+sphinx (http://sphinx.pocoo.org/) and it can be built with:
+  $ cd doc
+  $ make html
+
+Current documentation is available at http://tflink.github.com/python-yourls
 * Patch
 - file:/usr/lib/python2.7/site-packages/html2text/config.py
 - file:/usr/share/rss2email/rss2email.py
