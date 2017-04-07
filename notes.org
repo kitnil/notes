@@ -8404,6 +8404,11 @@ These files make it possible to login to X without a desktop manager.
     Modify the condition flags to be different than those determined on the basis of the OS and those specified in jhbuildrc. Modifications are specified like -wayland or +docs in order to remove or add conditions. Multiple modifications can be separated by a comma like --conditions=+docs,-wayland or you can split them across multiple --conditions arguments.
 ** [2017-04-07 Fri 15:19] [[https://developers.redhat.com/blog][RHD Blog – Insights and news on Red Hat developer tools, platforms and more]]
 Ideally, a dispersed team will gather at least once a year in person and bond. That’s becoming more difficult with increased globalization. Here’s list of simple activities to liven things up and tighten up the group.
+** [2017-04-07 Fri 15:27] [[https://access.redhat.com/documentation/en-US/Red_Hat_Software_Collections/2/html-single/2.3_Release_Notes/index.html][2.3 Release Notes]]
+ This document is licensed by Red Hat under the Creative Commons Attribution-ShareAlike 3.0 Unported License. If you distribute this document, or a modified version of it, you must provide attribution to Red Hat, Inc. and provide a link to the original. If the document is modified, all Red Hat trademarks must be removed.
+Red Hat, as the licensor of this document, waives the right to enforce, and agrees not to assert, Section 4d of CC-BY-SA to the fullest extent permitted by applicable law.
+Red Hat, Red Hat Enterprise Linux, the Shadowman logo, JBoss, OpenShift, Fedora, the Infinity logo, and RHCE are trademarks of Red Hat, Inc., registered in the United States and other countries.
+Linux® is the registered trademark of Linus Torvalds in the United States and other countries.
 * Patch
 - file:/usr/lib/python2.7/site-packages/html2text/config.py
 - file:/usr/share/rss2email/rss2email.py
