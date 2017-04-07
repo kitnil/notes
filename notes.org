@@ -8641,7 +8641,7 @@ Possible reasons for having this kind of units are:
    D-Bus, udev, scripted systemctl call, ...).
 4) In case of template units, the unit is meant to be enabled with some
    instance name specified.
-* How to create PDF from Emacs info pages
+** How to create PDF from Emacs info pages
 
    The Calc manual can be printed, but because the manual is so large,
 you should only make a printed copy if you really need it.  To print the
