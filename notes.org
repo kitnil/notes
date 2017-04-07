@@ -8288,6 +8288,14 @@ Stuff that should be avoided
     (sql . t)
     (sqlite . t)
     ))
+** [2017-04-07 Fri 10:06] [[http://initd.org/psycopg/][PostgreSQL + Python | Psycopg]]
+
+
+Psycopg is released under the terms of the GNU Lesser General Public License, allowing use from both free and proprietary software.
+
+    Check the features list to see what Psycopg offers
+    Read the Psycopg documentation. Be sure to check the Frequently Asked Questions
+    Download Psycopg!
 * Patch
 - file:/usr/lib/python2.7/site-packages/html2text/config.py
 - file:/usr/share/rss2email/rss2email.py
