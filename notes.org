@@ -8701,15 +8701,7 @@ entire manual as a pdf file.
 <John[Lisbeth]> ugh
 <josteink> remote: how about just compiling it with the xwidgets configure
            option and see what it complains about?
-* remote thinks twb is a child of GNU who was bourne again in a shell
-<twb> I'm better at sh and bash than most of the dickheads who write scripts,
-      that's for sure  [11:07]
-<twb> I wonder if that long list of extensions would run faster in GNU find if
-      you experessed it as a regular expression  [11:08]
-<twb> e.g. find -regextype posix-egrep -iregex
-      '.*(urbanears|skullcandy|headphones|speaker|marshall|usb-cable).*'
-      -delete
-* dnf provide example
+** dnf provide example
 <zxd> hi  [13:34]
 <zxd> dnf repoquery  --arch x86_64  --whatprovides '*/libc.so'
 <zxd> dosen't return any result , but rpm -qf /usr/lib64/libc.so
@@ -8721,3 +8713,11 @@ entire manual as a pdf file.
 <zxd> does it print from x86_64 arch ?  [13:38]
 <seseri> nope  [13:41]
 <seseri> dnf provides */lib64/libc.so does
+* remote thinks twb is a child of GNU who was bourne again in a shell
+<twb> I'm better at sh and bash than most of the dickheads who write scripts,
+      that's for sure  [11:07]
+<twb> I wonder if that long list of extensions would run faster in GNU find if
+      you experessed it as a regular expression  [11:08]
+<twb> e.g. find -regextype posix-egrep -iregex
+      '.*(urbanears|skullcandy|headphones|speaker|marshall|usb-cable).*'
+      -delete
