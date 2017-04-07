@@ -8349,6 +8349,8 @@ Updated March 2010 to reflect No Frozen Rawhide Implementation.
 Opal is a Ruby to JavaScript source-to-source compiler. It also has an implementation of the Ruby corelib.
 
 Opal is hosted on GitHub. Chat is available on Gitter at opal/opal (also available as IRC at irc.gitter.im) and the Freenode IRC channel at #opal. Ask questions on stackoverflow (tag #opalrb). Get the Opalist newsletter for updates and community news.
+** [2017-04-07 Fri 13:02] [[https://sayakb.github.io/sticky-notes/pages/home/][Sticky Notes]]
+A powerful open-source pastebin application for effortless code sharing.
 * Patch
 - file:/usr/lib/python2.7/site-packages/html2text/config.py
 - file:/usr/share/rss2email/rss2email.py
