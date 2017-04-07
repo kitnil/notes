@@ -8368,6 +8368,8 @@ A powerful open-source pastebin application for effortless code sharing.
     1.10 Initializing special keyboards
     1.11 Manipulating extra LEDs
     1.12 The laptop FN key
+** [2017-04-07 Fri 13:08] [[https://docs.fedoraproject.org/en-US/Fedora/25/html-single/SELinux_Users_and_Administrators_Guide/index.html#sect-Security-Enhanced_Linux-Fixing_Problems-Possible_Causes_of_Silent_Denials][SELinux User's and Administrator's Guide]]
+ In certain situations, AVC denial messages may not be logged when SELinux denies access. Applications and system library functions often probe for more access than required to perform their tasks. To maintain least privilege without filling audit logs with AVC denials for harmless application probing, the policy can silence AVC denials without allowing a permission by using dontaudit rules. These rules are common in standard policy. The downside of dontaudit is that, although SELinux denies access, denial messages are not logged, making troubleshooting more difficult.
 * Patch
 - file:/usr/lib/python2.7/site-packages/html2text/config.py
 - file:/usr/share/rss2email/rss2email.py
