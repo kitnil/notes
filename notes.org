@@ -8156,6 +8156,28 @@ Wiki
 Report packaging issues here
 
 Report all other issues here
+** [2017-04-07 Fri 07:04] [[https://stackoverflow.com/questions/19544550/how-to-change-modeline-color-with-active-minibuffer-and-switch-to-other-window][emacs - How to change modeline color with active minibuffer and switch to other-window - Stack Overflow]]
+ 1
+down vote
+accepted
+        
+
+One option would be to "advise" the other-window function to execute some form when switching to the minibuffer.
+
+For example, the following code will turn the minibuffer prompt green when you cycle back to it using other-window, and if you land on a non minibuffer window it turns the prompt grey:
+
+(defadvice other-window (after adv-other-window-minibuffer
+                               (COUNT &optional ALL-FRAMES))
+  "Make minibuffer prompt green when switched to"
+  (if (minibufferp)
+      (set-face-attribute 'minibuffer-prompt nil
+                          :foreground "green" :background "black")
+    (set-face-attribute 'minibuffer-prompt nil
+                          :foreground "dark grey" :background "black")))
+
+(ad-activate 'other-window)
+
+Of course you are not limited to just setting the minibuffer prompt, but it's not clear to me exactly what effect your are trying to achieve.
 * Patch
 - file:/usr/lib/python2.7/site-packages/html2text/config.py
 - file:/usr/share/rss2email/rss2email.py
