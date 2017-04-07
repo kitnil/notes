@@ -8194,6 +8194,25 @@ This C tutorial was created to solve such problems.
 Although the committee is not required to begin work on revising the current standard, there is much happening that can or does influence C directly. Examples are the evolution of C-like programming languages (C++, Java, and C#), the rising security threat on the Internet, the increased awareness of programming language vulnerabilities, the slowing progress of Moore's law leading to a growing need to exploit increased parallelism and concurrency, and updates to standards in related areas such as floating-point arithmetic.
 ** [2017-04-07 Fri 09:39] [[https://ideone.com/][Ideone.com - Online Compiler and IDE >> C/C++, Java, PHP, Python, Perl and 40+ other compilers and interpreters]]
  Ideone is an online compiler and debugging tool which allows you to compile source code and execute it online in more than 60 programming languages.
+** [2017-04-07 Fri 09:39] [[http://www.iso-9899.info/wiki/Main_Page][Main Page - C]]
+We discuss all aspects of programming in C.
+
+C1x was adopted. All hail ISO/IEC 9899:2011!
+
+The Standard is available; it makes sense for a professional C programmer to have it at their side, and can be cheap enough for even a student or hobbyist.
+
+C++ and C# are off-topic. Come on, they aren't C.
+
+Related channels exist to cover things in more detail, are topical for your discussion or as an alternative, e.g., ##c++, ##csharp, #editor-wars, #emacs, #posix, #sockets, #tcpip, #vile, #vim, #workingset, #wxwidgets, #xemacs and #Xlib.
+
+    RTFM: MAN PAGES
+    Everything Else 
+
+Why we get peeved -- bofh
+
+Per the (then new(er)) Freenode policy we are in ##c. See the discussion page for some of the history.
+
+There is also a page on religion in C.
 * Patch
 - file:/usr/lib/python2.7/site-packages/html2text/config.py
 - file:/usr/share/rss2email/rss2email.py
