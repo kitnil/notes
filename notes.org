@@ -8477,6 +8477,10 @@ async.el is a module for doing asynchronous processing in Emacs. Some async appl
     Dired-async
     smtp-mail-async
     async-bytecomp
+** [2017-04-08 Sat 05:27] [[https://debbugs.gnu.org/][GNU Bug Tracker]]
+ This is a bug tracker for the GNU Operating System. We use this to keep records of bug reports, as well as feature requests and patches, submitted by users and developers. Each issue is given a number, and is kept open until it is marked as having been dealt with.
+
+See the usage notes if you are interested in using this tracker for your project. List of packages using this tracker.
 * Patch
 - file:/usr/lib/python2.7/site-packages/html2text/config.py
 - file:/usr/share/rss2email/rss2email.py
