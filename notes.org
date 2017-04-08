@@ -8667,6 +8667,10 @@ The order would be x z y.
 But ideally, you should design your Makefiles so that it wouldn't rely on the order in which prerequisites are specified. That is, if y should be executed after z, there must be a y : z dependence.
 ** [2017-04-09 Sun 00:40] [[https://www.google.ru/search?q=low+level+format+hdd&ie=utf-8&oe=utf-8&gws_rd=cr&ei=wljpWIr-GoT9UqPjm_AC][low level format hdd - Google Search]]
 HDD Low Level Format Tool is a utility for low-level hard disk drive formatting. ... This HDD Low Level Format utility is free for home use. It can erase and Low-Level Format a SATA, IDE, SAS, SCSI or SSD hard disk drive.
+** [2017-04-09 Sun 01:07] [[https://gaming.youtube.com/watch?v=oh8wEn0NDj8][Играем во всякое и вопросы по PlayOnLinux {08.04.2017, 23.20, MSK} -stream 1080p - YouTube Gaming]]
+#+BEGIN_QUOTE
+TLP — Linux Advanced﻿ Power Management
+#+END_QUOTE
 * Patch
 - file:/usr/lib/python2.7/site-packages/html2text/config.py
 - file:/usr/share/rss2email/rss2email.py
