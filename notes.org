@@ -8593,6 +8593,10 @@ $ export PATH="$HOME/.cask/bin:$PATH"
 $ cask
 ** [2017-04-08 Sat 13:47] [[https://github.com/jorgenschaefer/emacs-buttercup][jorgenschaefer/emacs-buttercup: Behavior-Driven Emacs Lisp Testing]]
 Buttercup is a behavior-driven development framework for testing Emacs Lisp code. It allows to group related tests so they can share common set-up and tear-down code, and allows the programmer to “spy” on functions to ensure they are called with the right arguments during testing.
+** [2017-04-08 Sat 13:59] [[https://github.com/travis-ci/travis-build][travis-ci/travis-build: .travis.yml => build.sh converter]]
+Travis Build is a library that Travis Workers use to generate a shell based build script which is then uploaded to the VMs using SSH and executed, with the resulting output streamed back to Travis.
+
+This code base has gone through several iterations of development, and was originally extracted from Travis Worker, before taking its current form.
 * Patch
 - file:/usr/lib/python2.7/site-packages/html2text/config.py
 - file:/usr/share/rss2email/rss2email.py
