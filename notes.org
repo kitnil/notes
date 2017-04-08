@@ -9020,3 +9020,4 @@ entire manual as a pdf file.
 <twb> e.g. find -regextype posix-egrep -iregex
       '.*(urbanears|skullcandy|headphones|speaker|marshall|usb-cable).*'
       -delete
+* bug 123.09 harddrive kernel
