@@ -8619,6 +8619,28 @@ test:
     echo $(KDIR)
 
 Would print "foo"
+** [2017-04-08 Sat 18:11] [[https://ask.fedoraproject.org/en/question/67231/retrieve-complete-list-of-manually-installed-packages/][Retrieve complete list of manually installed packages - Ask Fedora: Community Knowledge Base and Support Forum]]
+It turns out that Yum stores its history in an SQLite database in /var/lib/yum/history. I was able to concoct this simple query that does exactly what I need. The following command prints out every manually entered transaction id and yum command in history. Note that the database name will be different on your system.
+
+$ sudo sqlite3 /var/lib/yum/history/history-2014-12-03.sqlite "select tid, cmdline from trans_cmdline"
+
+For example (truncated for brevity):
+
+$ sudo sqlite3 /var/lib/yum/history/history-2014-12-03.sqlite "select tid, cmdline from trans_cmdline"
+
+4|install mutt wget emacs coreutils
+5|install firefox
+6|install pgp-tools
+
+You may notice that some ids are missing. That's because only the manually run yum commands are shown. Updates are not shown.
+
+You can get the installation date with the following join:
+
+$ sudo sqlite3 /var/lib/yum/history/history-2014-12-03.sqlite "select c.tid, datetime(t.timestamp, 'unixepoch'), c.cmdline from trans_cmdline as c join trans_beg as t where c.tid = t.tid"
+
+4|2015-02-21 20:28:03|install mutt wget emacs coreutils
+5|2015-02-21 20:28:37|install firefox
+6|2015-02-21 20:35:02|install pgp-tools
 * Patch
 - file:/usr/lib/python2.7/site-packages/html2text/config.py
 - file:/usr/share/rss2email/rss2email.py
