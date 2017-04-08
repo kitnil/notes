@@ -8652,6 +8652,19 @@ If you have just found Ansible or Fedora, you should start here:
     Ansible project -- see the examples directory
 
 A lot of playbooks in this repository are made and used with the Fedora Security Lab and the Fedora Security Lab Test bench. For all security-related playbooks please check the Fedora Security Lab Test bench git repository .
+** [2017-04-08 Sat 18:36] [[https://stackoverflow.com/questions/9159960/order-of-processing-components-in-makefile][gnu make - Order of processing components in makefile - Stack Overflow]]
+By default, the order of execution is the same as specified in the prerequisites list, unless there are any dependencies defined between these prerequisites.
+
+abc: x y z
+
+The order is x y z.
+
+abc: x y z
+y : z
+
+The order would be x z y.
+
+But ideally, you should design your Makefiles so that it wouldn't rely on the order in which prerequisites are specified. That is, if y should be executed after z, there must be a y : z dependence.
 * Patch
 - file:/usr/lib/python2.7/site-packages/html2text/config.py
 - file:/usr/share/rss2email/rss2email.py
