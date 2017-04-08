@@ -8505,6 +8505,10 @@ There is no need to download anything - Just click on the chapter you wish to be
 learn-c.org is still under construction - If you wish to contribute tutorials, please click on Contributing Tutorials down below.
 ** [2017-04-08 Sat 08:33] [[https://github.com/marcwebbie/auto-virtualenv][marcwebbie/auto-virtualenv: Automatically activate python virtualenv on Emacs]]
 Automatically activate python virtualenvs on emacs based on project name or .python-version file.
+** [2017-04-08 Sat 08:33] [[https://github.com/ssbb/pyenv-mode-auto][ssbb/pyenv-mode-auto: Automatically activates pyenv version within Emacs if .python-version file exists.]]
+It traverse directories up until .python-version file will be found and activates pyenv version defined there.
+
+Extracted from my blog post Automatically activate pyenv version from Emacs.
 * Patch
 - file:/usr/lib/python2.7/site-packages/html2text/config.py
 - file:/usr/share/rss2email/rss2email.py
