@@ -8641,6 +8641,17 @@ $ sudo sqlite3 /var/lib/yum/history/history-2014-12-03.sqlite "select c.tid, dat
 4|2015-02-21 20:28:03|install mutt wget emacs coreutils
 5|2015-02-21 20:28:37|install firefox
 6|2015-02-21 20:35:02|install pgp-tools
+** [2017-04-08 Sat 18:22] [[https://github.com/fabaff/fedora-ansible][fabaff/fedora-ansible]]
+This repository contains user-contributed real world examples for Ansible playbooks, especially for Fedora and its downstream (RHEL), as well as modules that are not a part of Ansible's core distribution.
+
+This is designed to be a resource to folks learning configuring Fedora with Ansible, as well as a way to share useful resources of all kinds.
+
+If you have just found Ansible or Fedora, you should start here:
+
+    Fedora
+    Ansible project -- see the examples directory
+
+A lot of playbooks in this repository are made and used with the Fedora Security Lab and the Fedora Security Lab Test bench. For all security-related playbooks please check the Fedora Security Lab Test bench git repository .
 * Patch
 - file:/usr/lib/python2.7/site-packages/html2text/config.py
 - file:/usr/share/rss2email/rss2email.py
