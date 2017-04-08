@@ -8830,3 +8830,23 @@ entire manual as a pdf file.
 <twb> e.g. find -regextype posix-egrep -iregex
       '.*(urbanears|skullcandy|headphones|speaker|marshall|usb-cable).*'
       -delete
+* org-mode include menu C-x C-e
+
+(org-export-define-derived-backend 'cmu-manuscript 'latex
+  :menu-entry
+  '(?j "Export with ox-manuscript"
+       ((?L "As LaTeX buffer" org-latex-export-as-latex)
+        (?l "As LaTeX file" org-latex-export-to-latex)
+        (?p "As manuscript PDF file" ox-manuscript-export-and-build)
+        (?o "As manuscript PDF and open" ox-manuscript-export-and-build-and-open)
+        (?e "As PDF and email" ox-manuscript-export-and-build-and-email)
+        (?s "As submission manuscript tex"
+            ox-manuscript-export-submission-manuscript)
+        (?M "As submission manuscript pdf"
+            ox-manuscript-build-submission-manuscript)
+        (?m "As submission manuscript pdf and open"
+            ox-manuscript-build-submission-manuscript-and-open)
+        (?c "As manuscript PDF with comments"
+            ox-manuscript-build-with-comments)
+        (?a "As submission archive"
+  ox-manuscript-make-submission-archive))))
