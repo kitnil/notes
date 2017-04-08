@@ -8503,6 +8503,8 @@ Whether you are an experienced programmer or not, this website is intended for e
 There is no need to download anything - Just click on the chapter you wish to begin from, and follow the instructions. Good luck!
 
 learn-c.org is still under construction - If you wish to contribute tutorials, please click on Contributing Tutorials down below.
+** [2017-04-08 Sat 08:33] [[https://github.com/marcwebbie/auto-virtualenv][marcwebbie/auto-virtualenv: Automatically activate python virtualenv on Emacs]]
+Automatically activate python virtualenvs on emacs based on project name or .python-version file.
 * Patch
 - file:/usr/lib/python2.7/site-packages/html2text/config.py
 - file:/usr/share/rss2email/rss2email.py
