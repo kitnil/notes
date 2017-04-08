@@ -8531,6 +8531,12 @@ Extracted from my blog post Automatically activate pyenv version from Emacs.
     Generate TAGS table for project to enable quick navigation
     Jump to template at point or from editing view [C-c C-p g t]
     Virtualenv integration
+** [2017-04-08 Sat 09:28] [[https://github.com/Fantomas42/django-blog-zinnia][Fantomas42/django-blog-zinnia: Simple yet powerful and really extendable application for managing a blog within your Django Web site.]]
+Simple yet powerful and really extendable application for managing a blog within your Django Web site.
+
+Zinnia has been made for publishing Weblog entries and designed to do it well.
+
+Basically any feature that can be provided by another reusable app has been left out. Why should we re-implement something that is already done and reviewed by others and tested?
 * Patch
 - file:/usr/lib/python2.7/site-packages/html2text/config.py
 - file:/usr/share/rss2email/rss2email.py
