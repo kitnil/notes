@@ -8566,6 +8566,8 @@ There is nice a Screenshot Tutorial, which describes every step.
 If you prefer using the command line, there is documentation of copr-cli.
 
 Note: you can only use Copr for FOSS projects. More details can be found in the What I can build in Copr section of Copr FAQ.
+** [2017-04-08 Sat 09:59] [[https://lime-technology.com/technology/][LimeTech – Technology]]
+SanDisk Cruzer FitunRAID® is an embedded operating system that boots off a USB flash device and loads into a root RAM file system.  unRAID utilizes a modern Linux kernel that has been built with up-to-date hardware drivers, which is what allows it to operate across a variety of different platforms. The OS is based on a customized build of Linux that has been tuned to minimize consumption of space in system memory and remain compatible with a wide variety of computing hardware.  All configuration data relating to the operating system is stored on the flash device and loaded at the same time as the operating system itself. Upon first boot, the operating system can be configured through a web interface that can be accessed by any capable browser (Internet Explorer, Firefox, Google Chrome, Safari, etc.). Once configured to manage your disk devices, you can then begin taking advantage of other system capabilities.
 * Patch
 - file:/usr/lib/python2.7/site-packages/html2text/config.py
 - file:/usr/share/rss2email/rss2email.py
