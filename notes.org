@@ -8585,6 +8585,12 @@ It also makes easy for you to:
     have only one configuration module to rule all your instances.
 
 It was originally designed for Django, but became an independent generic tool for separating settings from code.
+** [2017-04-08 Sat 13:10] [[https://github.com/nlamirault/emacs-travis][nlamirault/emacs-travis: An Emacs client for TravisCI]]
+emacs-travis use Cask for dependencies management. Install it and retrieve dependencies :
+
+$ curl -fsSkL https://raw.github.com/cask/cask/master/go | python
+$ export PATH="$HOME/.cask/bin:$PATH"
+$ cask
 * Patch
 - file:/usr/lib/python2.7/site-packages/html2text/config.py
 - file:/usr/share/rss2email/rss2email.py
