@@ -8605,6 +8605,20 @@ As Travis is moving towards a container-based infrastructure, hence sudo is not 
 All -bin versions will are deprecated and will be removed. Do not use them!
 
 To run EVM on Travis, set the EVM path to /tmp:
+** [2017-04-08 Sat 16:37] [[https://stackoverflow.com/questions/24777289/what-is-in-makefile][linux - What is ?= in Makefile - Stack Overflow]]
+
+
+?= indicates to set the KDIR variable only if it's not set/doesn't have a value.
+
+For example:
+
+KDIR ?= "foo"
+KDIR ?= "bar"
+
+test:
+    echo $(KDIR)
+
+Would print "foo"
 * Patch
 - file:/usr/lib/python2.7/site-packages/html2text/config.py
 - file:/usr/share/rss2email/rss2email.py
