@@ -8556,6 +8556,16 @@ Biggest advantages of packaging your application is:
     it standardize installation paths.
     it describes requirements, which are automatically resolved by system.
     it allows easy installation/upgrade/removal of your application.
+** [2017-04-08 Sat 09:41] [[https://developer.fedoraproject.org/deployment/copr/about.html][Copr Build Service — Fedora Developer Portal]]
+Copr is a service that builds your application as an RPM and provides you with your own Dnf/Yum repository.
+
+Before you start, you need to have a source RPM (SRPM). If you do not know how to create a SRPM, then please check RPM Packaging section of this documentation.
+
+There is nice a Screenshot Tutorial, which describes every step.
+
+If you prefer using the command line, there is documentation of copr-cli.
+
+Note: you can only use Copr for FOSS projects. More details can be found in the What I can build in Copr section of Copr FAQ.
 * Patch
 - file:/usr/lib/python2.7/site-packages/html2text/config.py
 - file:/usr/share/rss2email/rss2email.py
