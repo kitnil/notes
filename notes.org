@@ -8693,6 +8693,10 @@ codecov
 
 # all other CI and private repositories
 codecov --token=<repo token>
+** [2017-04-09 Sun 14:56] [[https://github.com/stickster/pulsecaster][stickster/pulsecaster: Simple PulseAudio-based tool for making podcast interviews]]
+A PulseAudio based podcasting application
+
+Thanks to Harry Karvonen for his Python ctypes-based bindings for PulseAudio. Thanks also to Jürgen Geuter for helping me understand distutils and contributing some fixes.
 * Patch
 - file:/usr/lib/python2.7/site-packages/html2text/config.py
 - file:/usr/share/rss2email/rss2email.py
