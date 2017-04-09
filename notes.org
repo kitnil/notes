@@ -8776,6 +8776,9 @@ Through our official Generators, we promote the "Yeoman workflow". This workflow
 I was tired of having my blog posts end up in a database off on some remote server. That is backwards. I've lost valuable posts that way. I want to author my posts locally in Textile or Markdown. My blog should be easily stylable and customizable any way I please. It should take care of creating a feed for me. And most of all, my site should be stored on GitHub so that I never lose data again.
 ** [2017-04-09 Sun 16:30] [[https://github.com/Gaohaoyang/gaohaoyang.github.io][Gaohaoyang/gaohaoyang.github.io: blog & blog theme🤘]]
 With the escalation of jekyll version, but I also want to reconstruct my older blog theme, so I did reconstruction and added some features recently. My new blog theme will still be stored in this repository. I will also use this theme in the future. Now I have done basically, then I will focus on issues that users opend to make theme better.
+** [2017-04-09 Sun 16:30] [[https://github.com/kuitos/kuitos.github.io][kuitos/kuitos.github.io: Kuitos's Blog https://github.com/kuitos/kuitos.github.io/issues http://kuitos.github.io/]]
+Kuitos's Blog
+站点正在建设中，请先移步issue列表
 * Patch
 - file:/usr/lib/python2.7/site-packages/html2text/config.py
 - file:/usr/share/rss2email/rss2email.py
