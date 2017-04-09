@@ -8805,6 +8805,17 @@ int main(){
 3- This command gcc -O2 -S -c foo.c will generate foo.s file which is called as GNU's assembler file.
 
 4- This command gcc -o foo.out foo.s will create our final excecutable code foo.out.
+** [2017-04-09 Sun 18:39] [[http://www.geeksforgeeks.org/what-is-the-purpose-of-a-function-prototype/][What is the purpose of a function prototype? - GeeksforGeeks]]
+The Function prototype serves the following purposes –
+
+1) It tells the return type of the data that the function will return.
+2) It tells the number of arguments passed to the function.
+3) It tells the data types of the each of the passed arguments.
+4) Also it tells the order in which the arguments are passed to the function.
+
+Therefore essentially, function prototype specifies the input/output interlace to the function i.e. what to give to the function and what to expect from the function.
+
+Prototype of a function is also called signature of the function.
 * Patch
 - file:/usr/lib/python2.7/site-packages/html2text/config.py
 - file:/usr/share/rss2email/rss2email.py
