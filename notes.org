@@ -8766,6 +8766,12 @@ Microsoft/CNTK
 c++
 
 Microsoft Cognitive Toolkit (CNTK), an open source deep-learning toolkit
+** [2017-04-09 Sun 16:29] [[http://yeoman.io/][The web's scaffolding tool for modern webapps | Yeoman]]
+Yeoman helps you to kickstart new projects, prescribing best practices and tools to help you stay productive.
+
+To do so, we provide a generator ecosystem. A generator is basically a plugin that can be run with the `yo` command to scaffold complete projects or useful parts.
+
+Through our official Generators, we promote the "Yeoman workflow". This workflow is a robust and opinionated client-side stack, comprising tools and frameworks that can help developers quickly build beautiful web applications. We take care of providing everything needed to get started without any of the normal headaches associated with a manual setup.
 * Patch
 - file:/usr/lib/python2.7/site-packages/html2text/config.py
 - file:/usr/share/rss2email/rss2email.py
