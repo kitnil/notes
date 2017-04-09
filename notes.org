@@ -8743,6 +8743,29 @@ Additionally, these STUN requests are made outside of the normal XMLHttpRequest 
  MQTT is a machine-to-machine (M2M)/"Internet of Things" connectivity protocol. It was designed as an extremely lightweight publish/subscribe messaging transport. It is useful for connections with remote locations where a small code footprint is required and/or network bandwidth is at a premium. For example, it has been used in sensors communicating to a broker via satellite link, over occasional dial-up connections with healthcare providers, and in a range of home automation and small device scenarios. It is also ideal for mobile applications because of its small size, low power usage, minimised data packets, and efficient distribution of information to one or many receivers (more...)
 ** [2017-04-09 Sun 16:28] [[http://typeplate.com/][Typeplate » A typographic starter kit encouraging great type on the Web]]
 Frameworks make decisions for you about how to organize, structure and design a site. Pattern libraries don’t separate styling and markup, making them tough to use in a truly modular fashion. We weren’t satisfied, so we made a thing that doesn’t do that.
+** [2017-04-09 Sun 16:29] [[https://opensource.microsoft.com/][Open Source - Microsoft]]
+Microsoft/vscode
+TypeScript
+
+Visual Studio Code
+
+256963508
+Microsoft/TypeScript
+TypeScript
+
+TypeScript is a superset of JavaScript that compiles to clean JavaScript output.
+
+206972952
+dotnet/corefx
+.NETc#dotnet
+
+This repo contains the .NET Core foundational libraries, called CoreFX. It includes classes for collections, file systems, console, XML, async and many others.
+
+115473035
+Microsoft/CNTK
+c++
+
+Microsoft Cognitive Toolkit (CNTK), an open source deep-learning toolkit
 * Patch
 - file:/usr/lib/python2.7/site-packages/html2text/config.py
 - file:/usr/share/rss2email/rss2email.py
