@@ -8709,6 +8709,10 @@ License: GNU GPLv3
 Pithos is not affiliated with or endorsed by Pandora Media, Inc.
 ** [2017-04-09 Sun 15:39] [[https://tunlr.com/services?check=1][Tunlr Smart DNS - Service Settings]]
 Tunlr is not setup on this device. Please click here for instructions.
+** [2017-04-09 Sun 15:43] [[https://github.com/Psiphon-Labs/psiphon-tunnel-core][Psiphon-Labs/psiphon-tunnel-core: Psiphon client and server components implemented in Go. These components provides core tunnel functionality, handling all aspects of evading blocking and relaying traffic through Psiphon.]]
+Psiphon client and server components implemented in Go. These components provides core tunnel functionality, handling all aspects of evading blocking and relaying traffic through Psiphon. In the client, local proxies provide an interface for routing traffic through the tunnel.
+
+The client component does not include a UI and does not handle capturing or routing local traffic. These major aspects are handled by other parts of Psiphon client applications.
 * Patch
 - file:/usr/lib/python2.7/site-packages/html2text/config.py
 - file:/usr/share/rss2email/rss2email.py
