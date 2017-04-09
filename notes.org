@@ -8721,6 +8721,8 @@ Agency is a one page agency portfolio theme for Bootstrap created by Start Boots
 Pelican theme based on Freelancer bootstrap theme , which was ported to Pelican by ondoheer from the Jekyll version.
 I modified it to resemble Agency bootstrap theme, so I named it "Free Agent", since it's kind of a "Frankenstein's monster" of the two themes.
 This README is based on Jerome Lachaud's version.
+** [2017-04-09 Sun 16:11] [[https://github.com/PurePelicanTheme/pure-single][PurePelicanTheme/pure-single: Single blogging theme for Pelican blogs]]
+Blogging theme based on Purecss for Pelican blogs. Theme is responsive.
 * Patch
 - file:/usr/lib/python2.7/site-packages/html2text/config.py
 - file:/usr/share/rss2email/rss2email.py
