@@ -8713,6 +8713,8 @@ Tunlr is not setup on this device. Please click here for instructions.
 Psiphon client and server components implemented in Go. These components provides core tunnel functionality, handling all aspects of evading blocking and relaying traffic through Psiphon. In the client, local proxies provide an interface for routing traffic through the tunnel.
 
 The client component does not include a UI and does not handle capturing or routing local traffic. These major aspects are handled by other parts of Psiphon client applications.
+** [2017-04-09 Sun 15:49] [[https://keybase.io/c0deous][Jesse Wallace (c0deous) | Keybase]]
+ Keybase is an open source app that comes with everything you need to manage your identity, create secure chats, and share files privately. It's free.
 * Patch
 - file:/usr/lib/python2.7/site-packages/html2text/config.py
 - file:/usr/share/rss2email/rss2email.py
