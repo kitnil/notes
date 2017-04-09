@@ -8735,6 +8735,10 @@ Bootflat is built on the foundations of Bootstrap, visioned in a stunning flat d
 Bootflat is compatible with the following browsers: IE8, IE9, IE10, IE11, Firefox, Safari, Opera, Chrome.
 
 Thanks for supporting our framework, and enjoy!
+** [2017-04-09 Sun 16:27] [[https://github.com/diafygi/webrtc-ips][diafygi/webrtc-ips: Demo: https://diafygi.github.io/webrtc-ips/]]
+Firefox and Chrome have implemented WebRTC that allow requests to STUN servers be made that will return the local and public IP addresses for the user. These request results are available to javascript, so you can now obtain a users local and public IP addresses in javascript. This demo is an example implementation of that.
+
+Additionally, these STUN requests are made outside of the normal XMLHttpRequest procedure, so they are not visible in the developer console or able to be blocked by plugins such as AdBlockPlus or Ghostery. This makes these types of requests available for online tracking if an advertiser sets up a STUN server with a wildcard domain.
 * Patch
 - file:/usr/lib/python2.7/site-packages/html2text/config.py
 - file:/usr/share/rss2email/rss2email.py
