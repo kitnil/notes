@@ -8784,6 +8784,27 @@ Your Waffle board shows your GitHub issues and pull requests in real time.Never 
 ** [2017-04-09 Sun 17:04] [[https://itemslide.github.io/][ItemSlide.js - JavaScript touch carousel]]
 simple & beautiful
 touch carousel
+** [2017-04-09 Sun 18:37] [[https://www.quora.com/Why-we-are-using-header-file-in-c-language][Why we are using header file in c language? - Quora]]
+A simple practice in C or C++ programs is that we keep all the constants, macros, system wide global variables, and function prototypes in a file called header files and include that header file wherever it is required.
+
+Why we use header file.
+
+The main goal is optimization. We wrap up common constants, macros, system wide global variables, and function prototypes in a single file and use when ever it is required via #include (pre-processing directive ).
+
+Different stages of a c file : From source file to object / executable file.
+
+1- We write our C source code in foo.c file like
+
+#include "stdio.h"
+int main(){
+
+}
+
+2- this command gcc -E foo.c -o foo.i will generate intermediate file often called as processed file or pure c file means at this stage gcc compiler expand the header files and include its source code to our .c file and generate a single .i file.
+
+3- This command gcc -O2 -S -c foo.c will generate foo.s file which is called as GNU's assembler file.
+
+4- This command gcc -o foo.out foo.s will create our final excecutable code foo.out.
 * Patch
 - file:/usr/lib/python2.7/site-packages/html2text/config.py
 - file:/usr/share/rss2email/rss2email.py
