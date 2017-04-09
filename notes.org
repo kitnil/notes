@@ -8683,6 +8683,16 @@ We strive to produce a genealogy program that is both intuitive for hobbyists an
 Please read the COPYING file first.
 
 Please read the INSTALL file if you intend to build from source.
+** [2017-04-09 Sun 14:53] [[https://github.com/codecov/example-python][codecov/example-python: Python coverage example]]
+# 1) install codecov
+pip install codecov
+
+# 2) next call "codecov" at end of CI build
+# public repo using Travis, CircleCI or AppVeyor
+codecov
+
+# all other CI and private repositories
+codecov --token=<repo token>
 * Patch
 - file:/usr/lib/python2.7/site-packages/html2text/config.py
 - file:/usr/share/rss2email/rss2email.py
