@@ -8699,6 +8699,14 @@ A PulseAudio based podcasting application
 Thanks to Harry Karvonen for his Python ctypes-based bindings for PulseAudio. Thanks also to Jürgen Geuter for helping me understand distutils and contributing some fixes.
 ** [2017-04-09 Sun 14:58] [[http://www.remmina.org/wp/][Remmina | Remote Desktop Client for Linux]]
 A feature rich Remote Desktop Application for Linux and other Unixes
+** [2017-04-09 Sun 15:23] [[https://github.com/pithos/pithos][pithos/pithos: A Pandora Radio Client]]
+Pithos is a native Pandora Radio client for Linux. It's much more lightweight than the Pandora.com web client, and integrates with desktop features such as media keys, notifications, and the sound menu.
+
+For screenshots, install instructions and more, see the Pithos home page.
+
+License: GNU GPLv3
+
+Pithos is not affiliated with or endorsed by Pandora Media, Inc.
 * Patch
 - file:/usr/lib/python2.7/site-packages/html2text/config.py
 - file:/usr/share/rss2email/rss2email.py
