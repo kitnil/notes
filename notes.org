@@ -9137,3 +9137,17 @@ entire manual as a pdf file.
       '.*(urbanears|skullcandy|headphones|speaker|marshall|usb-cable).*'
       -delete
 * bug 123.09 harddrive kernel
+* lisp.el
+backward-kill-sexp 	backward-list
+backward-sexp 	backward-up-list
+beginning-of-defun 	beginning-of-defun-raw
+buffer-end 	check-parens
+delete-pair 	down-list
+end-of-defun 	field-complete
+forward-list 	forward-sexp
+insert-pair 	insert-parentheses
+kill-backward-up-list 	kill-sexp
+lisp-complete-symbol 	mark-defun
+mark-sexp 	move-past-close-and-reindent
+narrow-to-defun 	raise-sexp
+up-list
