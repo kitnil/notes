@@ -8723,6 +8723,8 @@ I modified it to resemble Agency bootstrap theme, so I named it "Free Agent", si
 This README is based on Jerome Lachaud's version.
 ** [2017-04-09 Sun 16:11] [[https://github.com/PurePelicanTheme/pure-single][PurePelicanTheme/pure-single: Single blogging theme for Pelican blogs]]
 Blogging theme based on Purecss for Pelican blogs. Theme is responsive.
+** [2017-04-09 Sun 16:12] [[https://github.com/getpelican/pelican/wiki/Powered-by-Pelican][Powered by Pelican · getpelican/pelican Wiki]]
+Add your site to the bottom of this list, highlighting any features that may serve as examples for others.
 * Patch
 - file:/usr/lib/python2.7/site-packages/html2text/config.py
 - file:/usr/share/rss2email/rss2email.py
