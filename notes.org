@@ -8717,6 +8717,10 @@ The client component does not include a UI and does not handle capturing or rout
  Keybase is an open source app that comes with everything you need to manage your identity, create secure chats, and share files privately. It's free.
 ** [2017-04-09 Sun 16:09] [[https://github.com/BlackrockDigital/startbootstrap-agency][BlackrockDigital/startbootstrap-agency: A one page HTML theme for agencies created by Start Bootstrap]]
 Agency is a one page agency portfolio theme for Bootstrap created by Start Bootstrap. This theme features several content sections, a responsive portfolio grid with hover effects, full page portfolio item modals, a responsive timeline, and a working PHP contact form.
+** [2017-04-09 Sun 16:11] [[https://github.com/aroaminggeek/pelican-free-agent][aroaminggeek/pelican-free-agent: A one page portfolio theme for Pelican]]
+Pelican theme based on Freelancer bootstrap theme , which was ported to Pelican by ondoheer from the Jekyll version.
+I modified it to resemble Agency bootstrap theme, so I named it "Free Agent", since it's kind of a "Frankenstein's monster" of the two themes.
+This README is based on Jerome Lachaud's version.
 * Patch
 - file:/usr/lib/python2.7/site-packages/html2text/config.py
 - file:/usr/share/rss2email/rss2email.py
