@@ -8697,6 +8697,8 @@ codecov --token=<repo token>
 A PulseAudio based podcasting application
 
 Thanks to Harry Karvonen for his Python ctypes-based bindings for PulseAudio. Thanks also to Jürgen Geuter for helping me understand distutils and contributing some fixes.
+** [2017-04-09 Sun 14:58] [[http://www.remmina.org/wp/][Remmina | Remote Desktop Client for Linux]]
+A feature rich Remote Desktop Application for Linux and other Unixes
 * Patch
 - file:/usr/lib/python2.7/site-packages/html2text/config.py
 - file:/usr/share/rss2email/rss2email.py
