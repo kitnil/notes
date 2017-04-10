@@ -8834,6 +8834,10 @@ Global minor mode that centers the text of the window. If another window is visi
 A extensible, modular GNU Emacs front-end for interacting with external debuggers, brought to you by Rocky Bernstein (@rocky) and Clément Pit-Claudel (@cpitclaudel).
 ** [2017-04-10 Mon 19:27] [[http://emacslife.com/emacs-lisp-tutorial.html][Learn Emacs Lisp while customizing Emacs]]
 (fset 'yes-or-no-p 'y-or-n-p)
+** [2017-04-10 Mon 19:27] [[http://emacslife.com/emacs-lisp-tutorial.html][Learn Emacs Lisp while customizing Emacs]]
+ Here's another example. Let's say that you want to open a file whenever you start Emacs. The function to open a file is called find-file, and you can give it the name of the file to open. The code below switches to a buffer visiting file "todo.org" in your home directory. If the buffer doesn't exist, it will be created. If the file doesn't exist, it will be created automatically when the buffer is saved - for example, when you press C-x C-s (save-buffer) in that buffer.
+
+(find-file "~/todo.org")
 * Patch
 - file:/usr/lib/python2.7/site-packages/html2text/config.py
 - file:/usr/share/rss2email/rss2email.py
