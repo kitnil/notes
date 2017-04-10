@@ -8838,6 +8838,11 @@ A extensible, modular GNU Emacs front-end for interacting with external debugger
  Here's another example. Let's say that you want to open a file whenever you start Emacs. The function to open a file is called find-file, and you can give it the name of the file to open. The code below switches to a buffer visiting file "todo.org" in your home directory. If the buffer doesn't exist, it will be created. If the file doesn't exist, it will be created automatically when the buffer is saved - for example, when you press C-x C-s (save-buffer) in that buffer.
 
 (find-file "~/todo.org")
+** [2017-04-10 Mon 22:16] [[https://gitlab.com/wigust/emacs.d/pipelines][Pipelines · Oleg Pykhalov / emacs.d · GitLab]]
+
+# This is the 2nd commit message:
+
+Add commentary according to flycheck
 * Patch
 - file:/usr/lib/python2.7/site-packages/html2text/config.py
 - file:/usr/share/rss2email/rss2email.py
