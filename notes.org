@@ -8828,6 +8828,8 @@ Buy a unicorn
 Use Catberry in next project
 2 items left All Active Completed
 #+END_QUOTE
+** [2017-04-10 Mon 09:13] [[https://github.com/anler/centered-window-mode][anler/centered-window-mode: Keep your text centered when there's only one window.]]
+Global minor mode that centers the text of the window. If another window is visible the text goes back to normal if its width is less than cwm-centered-window-width.
 * Patch
 - file:/usr/lib/python2.7/site-packages/html2text/config.py
 - file:/usr/share/rss2email/rss2email.py
@@ -9131,6 +9133,16 @@ lisp-complete-symbol 	mark-defun
 mark-sexp 	move-past-close-and-reindent
 narrow-to-defun 	raise-sexp
 up-list
+** bug 123.09 harddrive kernel
+** emacs center window
+#+BEGIN_SRC emacs-lisp
+(use-package centered-window-mode :ensure t)
+(tool-bar-mode -1)
+(set-frame-parameter nil 'fullscreen 'fullboth)
+(scroll-bar-mode -1)
+(set-window-fringes nil 0 0)
+(add-to-list 'default-frame-alist '(background-color . "#102372"))
+#+END_SRC
 * IRC
 <remote> yay
 <twb> wigust: OK, the only reason you should get a non-zero from that is if
@@ -9197,4 +9209,4 @@ up-list
 <twb> e.g. find -regextype posix-egrep -iregex
       '.*(urbanears|skullcandy|headphones|speaker|marshall|usb-cable).*'
       -delete
-* bug 123.09 harddrive kernel
+* AMD Tearing solve
