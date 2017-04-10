@@ -8830,6 +8830,8 @@ Use Catberry in next project
 #+END_QUOTE
 ** [2017-04-10 Mon 09:13] [[https://github.com/anler/centered-window-mode][anler/centered-window-mode: Keep your text centered when there's only one window.]]
 Global minor mode that centers the text of the window. If another window is visible the text goes back to normal if its width is less than cwm-centered-window-width.
+** [2017-04-10 Mon 19:25] [[https://github.com/realgud/realgud][realgud/realgud: The Grand "Cathedral" Debugger rewrite]]
+A extensible, modular GNU Emacs front-end for interacting with external debuggers, brought to you by Rocky Bernstein (@rocky) and Clément Pit-Claudel (@cpitclaudel).
 * Patch
 - file:/usr/lib/python2.7/site-packages/html2text/config.py
 - file:/usr/share/rss2email/rss2email.py
