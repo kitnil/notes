@@ -8924,6 +8924,8 @@ We’ve had some great impromptu lightning talks, and we definitely want to see 
 Emacs major mode for writing blogs made with hugo by markdown or org-mode
 ** [2017-04-12 Wed 01:11] [[https://github.com/milkypostman/markdown-mode-plus][milkypostman/markdown-mode-plus]]
 Additional functions for Emacs [markdown-mode]. Default support for [pandoc]. Much of the functionality is tailored to OS X, with the end goal to extend markdown-mode in useful ways for all platforms.
+** [2017-04-12 Wed 01:12] [[https://github.com/yewton/hugo.el][yewton/hugo.el]]
+Some helper functions for creating a Website with Hugo.
 * Patch
 - file:/usr/lib/python2.7/site-packages/html2text/config.py
 - file:/usr/share/rss2email/rss2email.py
