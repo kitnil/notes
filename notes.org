@@ -8900,6 +8900,14 @@ Improvements, contributions, and comments welcomed.
     Save
     Unzip the .apkg file that has been generated
     Open the collection.anki2 with SQLiteBrowser
+** [2017-04-11 Tue 22:15] [[https://github.com/tumashu/org-webpage][tumashu/org-webpage: A static site generator based on org-mode]]
+#+BEGIN_QUOTE
+org-webpage is a static site generator based on org-mode, which code derived from Kelvin H's org-page.
+
+The main differents of two projects are as follow:
+
+
+#+END_QUOTE
 * Patch
 - file:/usr/lib/python2.7/site-packages/html2text/config.py
 - file:/usr/share/rss2email/rss2email.py
