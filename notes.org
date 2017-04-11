@@ -8865,6 +8865,13 @@ Add commentary according to flycheck
 GNOME To Do is a small application to manage your personal tasks. It
 ** [2017-04-11 Tue 21:32] [[https://github.com/NicolasPetton/org-gnome.el][NicolasPetton/org-gnome.el: Integrates orgmode with the GNOME desktop]]
 This package integrates orgmode with the GNOME desktop.
+** [2017-04-11 Tue 21:37] [[https://github.com/tkf/auto-complete-rst][tkf/auto-complete-rst: Auto-complete extension for ReST and Sphinx]]
+auto-complete-rst is a source for Auto Complete Mode to help editing reStructuredText including Sphinx document.
+
+Minimum setup:
+
+(require 'auto-complete-rst)
+(auto-complete-rst-init)
 * Patch
 - file:/usr/lib/python2.7/site-packages/html2text/config.py
 - file:/usr/share/rss2email/rss2email.py
