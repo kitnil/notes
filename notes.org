@@ -8886,6 +8886,12 @@ This is a "storage" package used by completion engines such as company-math.el a
 In order to export press C-c C-e a b or C-c C-e a f from an org-mode buffer.
 
 The exported format is tab separated text file which is ready for Anki import. The output file contains 4 tab separated columns: ID, H1, ..., Hn, HTAGS where H1, ..., Hn is the flattened representation of the org tree. "n" is org-export-headline-levels and is by default 3.
+** [2017-04-11 Tue 22:03] [[https://github.com/sboisen/anki-mode][sboisen/anki-mode: An Emacs mode for editing text files to import into Anki.]]
+Anki-mode is an Emacs mode for editing text files to import into Anki, a powerful, intelligent system for flashcards and learning.
+
+Note this provides none of Anki's capabilities for spaced repetition learning: use Anki for that. This is just a convenient way to edit files with your own notes before importing them into Anki.
+
+Improvements, contributions, and comments welcomed.
 * Patch
 - file:/usr/lib/python2.7/site-packages/html2text/config.py
 - file:/usr/share/rss2email/rss2email.py
