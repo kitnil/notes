@@ -8861,6 +8861,8 @@ Add commentary according to flycheck
 Как работает торрент?
 Торрент | torrent - это протокол для обмена файлами по сети Интернет. Торрент файлы разбиваются на небольшие части (как правило, от 16 до 4096 КБ), которые затем передаются по сети. Торрент клиенты скачивают эти малые части, таким образом, собирая исходный файл целиком.
 Так же у нас существуют магнет-ссылки | Magnet-url и полностью свободные раздачи. Их можно скачать без регистрации обычным торрент-клиентом. Такие раздачи помечены значком "магнита" и (или) "Free". Под них на трекере отведен целый большой раздел.
+** [2017-04-11 Tue 21:13] [[https://github.com/GNOME/gnome-todo][GNOME/gnome-todo: Task manager for GNOME]]
+GNOME To Do is a small application to manage your personal tasks. It
 * Patch
 - file:/usr/lib/python2.7/site-packages/html2text/config.py
 - file:/usr/share/rss2email/rss2email.py
