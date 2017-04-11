@@ -8878,6 +8878,8 @@ sphinx-doc is an emacs minor mode for inserting docstring skeleton for Python fu
 Minor mode providing sphinx support.
 ** [2017-04-11 Tue 21:38] [[https://github.com/kostafey/sphinx-frontend][kostafey/sphinx-frontend: Launch build process for rst documents via sphinx.]]
 sphinx-frontend provides a simple way to find closest Sphinx configuration file (conf.py) and run the Sphinx.
+** [2017-04-11 Tue 21:38] [[https://github.com/hexmode/mediawiki-el][hexmode/mediawiki-el: Emacs interface to edit any mediawiki site]]
+This version of mediawiki.el represents a merging of wikipedia-mode.el (maintained by Uwe Brauer) from EmacsWiki for its font-lock code, menu, draft mode, replying and convenience functions to produce mediawiki.el 2.0.
 * Patch
 - file:/usr/lib/python2.7/site-packages/html2text/config.py
 - file:/usr/share/rss2email/rss2email.py
