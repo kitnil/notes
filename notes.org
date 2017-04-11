@@ -8910,6 +8910,16 @@ The main differents of two projects are as follow:
 #+END_QUOTE
 ** [2017-04-11 Tue 23:18] [[https://github.com/roomorama/Caldroid][roomorama/Caldroid: A better calendar for Android]]
 Caldroid is a fragment that display calendar with dates in a month. Caldroid can be used as embedded fragment, or as dialog fragment. User can also swipe left/right to navigate to different months.
+** [2017-04-12 Wed 01:06] [[http://emacs-berlin.org/][Emacs Berlin]]
+    rs - Getting your ELisp on MELPA is simple and you can do it, too.
+
+    Stefan - @stka23 - Kamphausen
+
+On top of that we are celebrating our third birthday as a meetup! There will be some tasty cake 🎂 and some tasty talks.
+
+Once the scheduled talks are over it’s open mic! Did you discover a new package, learned something about Elisp, or just used Emacs for developing a cool project, then we want to hear about it!
+
+We’ve had some great impromptu lightning talks, and we definitely want to see more of those. Emacs Berlin is a friendly and inclusive community. If you have anything to share then
 * Patch
 - file:/usr/lib/python2.7/site-packages/html2text/config.py
 - file:/usr/share/rss2email/rss2email.py
