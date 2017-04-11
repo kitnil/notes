@@ -8930,6 +8930,8 @@ Some helper functions for creating a Website with Hugo.
 I use the static web-site generator Hugo to create my home page. I also use Emacs as my main editor. Hugo is good with Markdown. Emacs is good at Markdown, too. But much better with Org-Mode.
 ** [2017-04-12 Wed 01:14] [[https://vurt.co.uk/post/blogging-with-emacs-and-hugo/][Blogging with Emacs, org-mode and Hugo · Giles Paterson]]
 I’ve recently updated my blogging setup so that I can write my posts using org-mode from within Emacs. Why? So I can get into the habit of using org-mode more frequently, and because I had a spare half hour to tinker with my emacs setup…
+** [2017-04-12 Wed 01:15] [[http://endlessparentheses.com/how-i-blog-one-year-of-posts-in-a-single-org-file.html][How I blog with Emacs: One year of posts in a single org file · Endless Parentheses]]
+ When this blog was conceived, I decided that I wanted it to be entirely contained in a single org file, and that this would also be my Emacs init file. On the blog’s very first post I explained how to implement the latter, an init file that also serves other purposes. Today, Endless Parentheses turns 1 year old, and it’s time to explain the former, how to turn a file into a blog.
 * Patch
 - file:/usr/lib/python2.7/site-packages/html2text/config.py
 - file:/usr/share/rss2email/rss2email.py
