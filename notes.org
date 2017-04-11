@@ -8926,6 +8926,8 @@ Emacs major mode for writing blogs made with hugo by markdown or org-mode
 Additional functions for Emacs [markdown-mode]. Default support for [pandoc]. Much of the functionality is tailored to OS X, with the end goal to extend markdown-mode in useful ways for all platforms.
 ** [2017-04-12 Wed 01:12] [[https://github.com/yewton/hugo.el][yewton/hugo.el]]
 Some helper functions for creating a Website with Hugo.
+** [2017-04-12 Wed 01:14] [[http://www.holgerschurig.de/en/emacs-blog-from-org-to-hugo/][Blog from Org-Mode to Hugo · Holger's Computer Calisthenics and Orthodontia]]
+I use the static web-site generator Hugo to create my home page. I also use Emacs as my main editor. Hugo is good with Markdown. Emacs is good at Markdown, too. But much better with Org-Mode.
 * Patch
 - file:/usr/lib/python2.7/site-packages/html2text/config.py
 - file:/usr/share/rss2email/rss2email.py
