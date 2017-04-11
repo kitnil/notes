@@ -8908,6 +8908,8 @@ The main differents of two projects are as follow:
 
 
 #+END_QUOTE
+** [2017-04-11 Tue 23:18] [[https://github.com/roomorama/Caldroid][roomorama/Caldroid: A better calendar for Android]]
+Caldroid is a fragment that display calendar with dates in a month. Caldroid can be used as embedded fragment, or as dialog fragment. User can also swipe left/right to navigate to different months.
 * Patch
 - file:/usr/lib/python2.7/site-packages/html2text/config.py
 - file:/usr/share/rss2email/rss2email.py
