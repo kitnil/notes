@@ -8876,6 +8876,8 @@ Minimum setup:
 sphinx-doc is an emacs minor mode for inserting docstring skeleton for Python functions and methods. The structure of the docstring is as per the requirement of the Sphinx documentation generator.
 ** [2017-04-11 Tue 21:38] [[https://github.com/Fuco1/sphinx-mode][Fuco1/sphinx-mode: Minor mode providing sphinx support.]]
 Minor mode providing sphinx support.
+** [2017-04-11 Tue 21:38] [[https://github.com/kostafey/sphinx-frontend][kostafey/sphinx-frontend: Launch build process for rst documents via sphinx.]]
+sphinx-frontend provides a simple way to find closest Sphinx configuration file (conf.py) and run the Sphinx.
 * Patch
 - file:/usr/lib/python2.7/site-packages/html2text/config.py
 - file:/usr/share/rss2email/rss2email.py
