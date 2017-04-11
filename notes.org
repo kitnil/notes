@@ -8882,6 +8882,10 @@ sphinx-frontend provides a simple way to find closest Sphinx configuration file 
 This version of mediawiki.el represents a merging of wikipedia-mode.el (maintained by Uwe Brauer) from EmacsWiki for its font-lock code, menu, draft mode, replying and convenience functions to produce mediawiki.el 2.0.
 ** [2017-04-11 Tue 21:39] [[https://github.com/vspinu/math-symbol-lists][vspinu/math-symbol-lists: Lists of Unicode mathematical symbols and latex commands]]
 This is a "storage" package used by completion engines such as company-math.el and ac-math.el.
+** [2017-04-11 Tue 22:02] [[https://github.com/vspinu/ox-anki][vspinu/ox-anki: Org Anki Exporter]]
+In order to export press C-c C-e a b or C-c C-e a f from an org-mode buffer.
+
+The exported format is tab separated text file which is ready for Anki import. The output file contains 4 tab separated columns: ID, H1, ..., Hn, HTAGS where H1, ..., Hn is the flattened representation of the org tree. "n" is org-export-headline-levels and is by default 3.
 * Patch
 - file:/usr/lib/python2.7/site-packages/html2text/config.py
 - file:/usr/share/rss2email/rss2email.py
