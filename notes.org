@@ -8863,6 +8863,8 @@ Add commentary according to flycheck
 Так же у нас существуют магнет-ссылки | Magnet-url и полностью свободные раздачи. Их можно скачать без регистрации обычным торрент-клиентом. Такие раздачи помечены значком "магнита" и (или) "Free". Под них на трекере отведен целый большой раздел.
 ** [2017-04-11 Tue 21:13] [[https://github.com/GNOME/gnome-todo][GNOME/gnome-todo: Task manager for GNOME]]
 GNOME To Do is a small application to manage your personal tasks. It
+** [2017-04-11 Tue 21:32] [[https://github.com/NicolasPetton/org-gnome.el][NicolasPetton/org-gnome.el: Integrates orgmode with the GNOME desktop]]
+This package integrates orgmode with the GNOME desktop.
 * Patch
 - file:/usr/lib/python2.7/site-packages/html2text/config.py
 - file:/usr/share/rss2email/rss2email.py
