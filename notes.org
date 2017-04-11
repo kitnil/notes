@@ -9225,3 +9225,17 @@ up-list
       '.*(urbanears|skullcandy|headphones|speaker|marshall|usb-cable).*'
       -delete
 * AMD Tearing solve
+* caldav debug
+Debugger entered--Lisp error: (wrong-type-argument number-or-marker-p nil)
+  url-http-options("http://localhost:5232/wigust/org.ics/")
+  url-dav-supported-p("http://localhost:5232/wigust/org.ics/")
+  org-caldav-check-connection()
+  org-caldav-sync-calendar()
+  org-caldav-sync()
+  funcall-interactively(org-caldav-sync)
+  call-interactively(org-caldav-sync record nil)
+  command-execute(org-caldav-sync record)
+  execute-extended-command(nil "org-caldav-sync" nil)
+  funcall-interactively(execute-extended-command nil "org-caldav-sync" nil)
+  call-interactively(execute-extended-command nil nil)
+  command-execute(execute-extended-command)
