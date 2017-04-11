@@ -8880,6 +8880,8 @@ Minor mode providing sphinx support.
 sphinx-frontend provides a simple way to find closest Sphinx configuration file (conf.py) and run the Sphinx.
 ** [2017-04-11 Tue 21:38] [[https://github.com/hexmode/mediawiki-el][hexmode/mediawiki-el: Emacs interface to edit any mediawiki site]]
 This version of mediawiki.el represents a merging of wikipedia-mode.el (maintained by Uwe Brauer) from EmacsWiki for its font-lock code, menu, draft mode, replying and convenience functions to produce mediawiki.el 2.0.
+** [2017-04-11 Tue 21:39] [[https://github.com/vspinu/math-symbol-lists][vspinu/math-symbol-lists: Lists of Unicode mathematical symbols and latex commands]]
+This is a "storage" package used by completion engines such as company-math.el and ac-math.el.
 * Patch
 - file:/usr/lib/python2.7/site-packages/html2text/config.py
 - file:/usr/share/rss2email/rss2email.py
