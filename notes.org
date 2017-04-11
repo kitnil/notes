@@ -8845,6 +8845,14 @@ A extensible, modular GNU Emacs front-end for interacting with external debugger
 Add commentary according to flycheck
 ** [2017-04-11 Tue 11:16] [[http://usbtor.ru/viewtopic.php?t=1097][WinPE 10-8 Sergei Strelec (x86/x64/Native x86) 2017.04.03 {En} :: Usbtor.ru]]
  Описание: Загрузочный диск на базе Windows 10 и 8 PE - для обслуживания компьютеров, работы с жесткими дисками и разделами, резервного копирования и восстановления дисков и разделов, диагностики компьютера, восстановления данных, антивирусной профилактики и установки ОС Windows.
+** [2017-04-11 Tue 19:11] [[https://github.com/junegunn/fzf][junegunn/fzf: A command-line fuzzy finder written in Go]]
+
+    No dependencies
+    Blazingly fast
+    The most comprehensive feature set
+    Flexible layout using tmux panes
+    Batteries included
+        Vim/Neovim plugin, key bindings and fuzzy auto-completion
 * Patch
 - file:/usr/lib/python2.7/site-packages/html2text/config.py
 - file:/usr/share/rss2email/rss2email.py
@@ -9172,6 +9180,24 @@ Debugger entered--Lisp error: (wrong-type-argument number-or-marker-p nil)
   funcall-interactively(execute-extended-command nil "org-caldav-sync" nil)
   call-interactively(execute-extended-command nil nil)
   command-execute(execute-extended-command)
+** org-caldav-sync debug xml
+
+[[file:~/Downloads/bug_23440.mbox]]
+
+Debugger entered--Lisp error: (error "Error while getting eventlist from http://127.0.0.1:5232/wigust/org.ics/. Got status code: 207.")
+  signal(error ("Error while getting eventlist from http://127.0.0.1:5232/wigust/org.ics/. Got status code: 207."))
+  error("Error while getting eventlist from %s. Got status code: %d." "http://127.0.0.1:5232/wigust/org.ics/" 207)
+  org-caldav-get-event-etag-list()
+  org-caldav-update-events-in-cal(#<buffer org-caldav-7744vYw>)
+  org-caldav-sync-calendar()
+  org-caldav-sync()
+  funcall-interactively(org-caldav-sync)
+  call-interactively(org-caldav-sync record nil)
+  command-execute(org-caldav-sync record)
+  execute-extended-command(nil "org-caldav-sync" nil)
+  funcall-interactively(execute-extended-command nil "org-caldav-sync" nil)
+  call-interactively(execute-extended-command nil nil)
+  command-execute(execute-extended-command)
 * IRC
 <remote> yay
 <twb> wigust: OK, the only reason you should get a non-zero from that is if
@@ -9239,21 +9265,3 @@ Debugger entered--Lisp error: (wrong-type-argument number-or-marker-p nil)
       '.*(urbanears|skullcandy|headphones|speaker|marshall|usb-cable).*'
       -delete
 * AMD Tearing solve
-* org-caldav-sync debug xml
-
-[[file:~/Downloads/bug_23440.mbox]]
-
-Debugger entered--Lisp error: (error "Error while getting eventlist from http://127.0.0.1:5232/wigust/org.ics/. Got status code: 207.")
-  signal(error ("Error while getting eventlist from http://127.0.0.1:5232/wigust/org.ics/. Got status code: 207."))
-  error("Error while getting eventlist from %s. Got status code: %d." "http://127.0.0.1:5232/wigust/org.ics/" 207)
-  org-caldav-get-event-etag-list()
-  org-caldav-update-events-in-cal(#<buffer org-caldav-7744vYw>)
-  org-caldav-sync-calendar()
-  org-caldav-sync()
-  funcall-interactively(org-caldav-sync)
-  call-interactively(org-caldav-sync record nil)
-  command-execute(org-caldav-sync record)
-  execute-extended-command(nil "org-caldav-sync" nil)
-  funcall-interactively(execute-extended-command nil "org-caldav-sync" nil)
-  call-interactively(execute-extended-command nil nil)
-  command-execute(execute-extended-command)
