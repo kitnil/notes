@@ -8892,6 +8892,14 @@ Anki-mode is an Emacs mode for editing text files to import into Anki, a powerfu
 Note this provides none of Anki's capabilities for spaced repetition learning: use Anki for that. This is just a convenient way to edit files with your own notes before importing them into Anki.
 
 Improvements, contributions, and comments welcomed.
+** [2017-04-11 Tue 22:03] [[http://decks.wikia.com/wiki/Anki_APKG_format_documentation][Anki APKG format documentation | Anki decks collaboration Wiki | Fandom powered by Wikia]]
+    Install the latest Anki Desktop
+    Create a sample deck
+    File > Export
+    Uncheck the checkboxes
+    Save
+    Unzip the .apkg file that has been generated
+    Open the collection.anki2 with SQLiteBrowser
 * Patch
 - file:/usr/lib/python2.7/site-packages/html2text/config.py
 - file:/usr/share/rss2email/rss2email.py
