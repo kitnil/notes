@@ -8928,6 +8928,8 @@ Additional functions for Emacs [markdown-mode]. Default support for [pandoc]. Mu
 Some helper functions for creating a Website with Hugo.
 ** [2017-04-12 Wed 01:14] [[http://www.holgerschurig.de/en/emacs-blog-from-org-to-hugo/][Blog from Org-Mode to Hugo · Holger's Computer Calisthenics and Orthodontia]]
 I use the static web-site generator Hugo to create my home page. I also use Emacs as my main editor. Hugo is good with Markdown. Emacs is good at Markdown, too. But much better with Org-Mode.
+** [2017-04-12 Wed 01:14] [[https://vurt.co.uk/post/blogging-with-emacs-and-hugo/][Blogging with Emacs, org-mode and Hugo · Giles Paterson]]
+I’ve recently updated my blogging setup so that I can write my posts using org-mode from within Emacs. Why? So I can get into the habit of using org-mode more frequently, and because I had a spare half hour to tinker with my emacs setup…
 * Patch
 - file:/usr/lib/python2.7/site-packages/html2text/config.py
 - file:/usr/share/rss2email/rss2email.py
