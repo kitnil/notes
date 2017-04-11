@@ -9239,3 +9239,21 @@ Debugger entered--Lisp error: (wrong-type-argument number-or-marker-p nil)
       '.*(urbanears|skullcandy|headphones|speaker|marshall|usb-cable).*'
       -delete
 * AMD Tearing solve
+* org-caldav-sync debug xml
+
+[[file:~/Downloads/bug_23440.mbox]]
+
+Debugger entered--Lisp error: (error "Error while getting eventlist from http://127.0.0.1:5232/wigust/org.ics/. Got status code: 207.")
+  signal(error ("Error while getting eventlist from http://127.0.0.1:5232/wigust/org.ics/. Got status code: 207."))
+  error("Error while getting eventlist from %s. Got status code: %d." "http://127.0.0.1:5232/wigust/org.ics/" 207)
+  org-caldav-get-event-etag-list()
+  org-caldav-update-events-in-cal(#<buffer org-caldav-7744vYw>)
+  org-caldav-sync-calendar()
+  org-caldav-sync()
+  funcall-interactively(org-caldav-sync)
+  call-interactively(org-caldav-sync record nil)
+  command-execute(org-caldav-sync record)
+  execute-extended-command(nil "org-caldav-sync" nil)
+  funcall-interactively(execute-extended-command nil "org-caldav-sync" nil)
+  call-interactively(execute-extended-command nil nil)
+  command-execute(execute-extended-command)
