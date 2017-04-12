@@ -8793,3 +8793,9 @@ If COMMAND-LINE requests that gdb attaches to a process PID, gdb
 will run in *gud-PID*, otherwise it will run in *gud*; in these
 cases the initial working directory is the default-directory of
 the buffer in which this command was invoked.
+** [2017-04-12 Wed 23:58] [[https://wiki.list.org/DOC/How%2520do%2520I%2520make%2520the%2520archives%2520searchable][DOC/How do I make the archives searchable - Mailman Wiki]]
+The archives (unless made explicitly private) are indexable and searchable by standard web search tools (for example you could encourage google to index your archive pages and then do searches with google restricting results to your domain).
+
+  eg Search google for, "clever technique site:your.domain.dom"
+
+But you should note that Google does not index all your posts, especially the recent posts which have not yet been crawled and indexed yet. An alternative is to use a third-party mailing list archive service which usually index your messages up to the minute. These services are usually free, although some may run Google ads. Below is a list of providers:
