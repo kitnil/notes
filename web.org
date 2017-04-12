@@ -8745,3 +8745,20 @@ hwinfo is used to probe for the hardware present in the system. It can be used t
  Hello, one and all! This is my little how-to guide on network programming using Internet sockets, or "sockets programming", for those of you who prefer it. The sockets API, though started by the Berkeley folk, has been ported to many many platforms, including Unix, Linux, and even Windows.
 
 Unfortunately, it can be a little, um, "much" to digest the API, but as long as you know some C or C++, this guide should springboard you into the realm of network programming with hopefully as little hassle as humanly possible!
+** [2017-04-12 Wed 16:23] [[http://docs.huihoo.com/homepage/shredderyin/emacs24/emacs174.htm][Hour 20: Gnus Basics: Reading Mail and News]]
+
+(setq gnus-expiry-wait 'immediate)
+
+You might, however, be in a situation where you want Gnus to expire mail at once in some groups, wait for a month in others, and finally never do expiring in a third set of groups. This can be achieved by setting the variable Gnus-expiry-wait-function to a function that determines the value based on the name of the group. The following is an example of such a function:
+
+
+01: (setq nnmail-expiry-wait-function  
+02:       (lambda (group)  
+03:         (cond ((string= group "mail.private")  
+04:                31)  
+05:               ((string= group "mail.junk")  
+06:                'immediate)  
+07:               ((string= group "important")  
+08:                'never)  
+09:               (t  
+10:                6))))
