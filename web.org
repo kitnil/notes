@@ -8774,3 +8774,8 @@ The Android inside the container has no direct access to any hardware. All hardw
 This package allows to translate the strings using Google Translate service directly from GNU Emacs.
 ** [2017-04-12 Wed 21:26] [[http://mywiki.wooledge.org/ParsingLs][ParsingLs - Greg's Wiki]]
 The ls(1) command is pretty good at showing you the attributes of a single file (at least in some cases), but when you ask it for a list of files, there's a huge problem: Unix allows almost any character in a filename, including whitespace, newlines, commas, pipe symbols, and pretty much anything else you'd ever try to use as a delimiter except NUL. There are proposals to try and "fix" this within POSIX, but they won't help in dealing with the current situation (see also how to deal with filenames correctly). In its default mode, if standard output isn't a terminal, ls separates filenames with newlines. This is fine until you have a file with a newline in its name. And since I don't know of any implementation of ls that allows you to terminate filenames with NUL characters instead of newlines, this leaves us unable to get a list of filenames safely with ls.
+** [2017-04-12 Wed 21:33] [[https://hoxx.com/][Lightning fast vpn service | Hoxx Vpn | VPN Service for everyone]]
+#+BEGIN_QUOTE
+Use our VPN service to unblock geo- or government blocked websites such as Netflix, Spofity, Hulu and many more. A simple installation,  a few clicks, and you´re ready to go.
+
+#+END_QUOTE
