@@ -77,32 +77,6 @@ This is just a channel of some crazy russian dude doing crazy stuff with compute
   cruft --ignore ${PATHS[@]}
 #+END_SRC
 
-** TODO Article about latex mu4e plotting
-#+BEGIN_QUOTE
-Install for latex
-
-.. code-block:: identifier
-
-   sudo apt install dvipng
-
-Install for plotting graphs
-
-.. code-block:: identifier
-
-   sudo apt install gnuplot gnuplot-mode
-
-Install for tls credentials store
-
-.. code-block:: identifier
-
-   sudo apt install gnuplot gnutls-bin
-
-Install for mu4e email client   
-
-.. code-block:: identifier
-
-   sudo apt install mu4e
-#+END_QUOTE
 ** Подвал Первый корпус 1244 кабинет и напротив него спуск в подвал
 ** sway pulse audio volume control
 bindsym Shift+XF86AudioRaiseVolume exec pactl set-sink-volume \
