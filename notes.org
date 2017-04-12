@@ -8934,6 +8934,20 @@ I’ve recently updated my blogging setup so that I can write my posts using org
  When this blog was conceived, I decided that I wanted it to be entirely contained in a single org file, and that this would also be my Emacs init file. On the blog’s very first post I explained how to implement the latter, an init file that also serves other purposes. Today, Endless Parentheses turns 1 year old, and it’s time to explain the former, how to turn a file into a blog.
 ** [2017-04-12 Wed 01:27] [[https://github.com/Alexander-Miller/company-shell][Alexander-Miller/company-shell]]
 company mode completion backends for your shell functions:
+** [2017-04-12 Wed 10:45] [[https://github.com/hauckwill/linconnect-server][hauckwill/linconnect-server: Mirror Android notifications on a Linux desktop]]
+#+BEGIN_QUOTE
+Mirror Android notifications on a Linux desktop.
+
+LinConnect Client: https://github.com/hauckwill/linconnect-client/
+
+Introduction
+
+LinConnect is a project to mirror all Android notifications on a Linux desktop using LibNotify.
+
+Please note that this is my first time using Python (though I do have experience in other languages), so the code may still be messy. It's a WIP.
+
+
+#+END_QUOTE
 * Patch
 - file:/usr/lib/python2.7/site-packages/html2text/config.py
 - file:/usr/share/rss2email/rss2email.py
