@@ -8900,3 +8900,11 @@ Special shortcodes can be embedded in your email to configure various aspects of
     [poll]question and answers[/poll] – insert a Polldaddy poll into your post (see below)
 
 Shortcodes can be included anywhere in the body of your email and must be in lowercase. There should be no spaces between the left square braket and the shortcode content.
+** [2017-04-13 Thu 12:48] [[https://github.com/linuxhw/hw-probe][linuxhw/hw-probe: A tool to probe for hardware and upload result to the Linux Hardware Database]]
+#+BEGIN_QUOTE
+NAME:
+  Hardware Probe Tool (HW Probe) — a tool to probe for hardware, check its operability and upload result to the Linux hardware DB: https://linux-hardware.org
+  
+  You'll get an URL to view the probe of the computer. Probe — is a snapshot of your computer's hardware state and system logs.
+
+#+END_QUOTE
