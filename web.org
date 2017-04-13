@@ -8813,3 +8813,90 @@ Simple, light and respectful. Discover the social network as it should be.
 Create an account
 and check it out on one of the Movim pods we are already hosting.
 Just choose the one that you prefer!
+** [2017-04-13 Thu 03:32] [[https://en.support.wordpress.com/post-by-email/#shortcodes][Post by Email — Support — WordPress.com]]
+
+Writing & Editing
+Post by Email
+
+Post by Email is a way of publishing posts on your blog by email. Any email client can be used to send the email, allowing you to publish quickly and easily from devices such as cell phones. Please note you can only publish to one blog using one e-mail message at a time.
+
+    The instructions from this guide are referring to the WP Admin dashboard. You can get to this dashboard by adding /wp-admin to the end of your site’s url (e.g.: example.wordpress.com/wp-admin)
+
+Generating a Post by Email Address
+
+Before you can publish by email, you must generate a special email address. This address is unique to you and must be kept secret (anyone that knows the email address can publish a post to your blog).
+
+    First go to Dashboard -> My Blogs.
+    Screen Shot 2014-06-20 at 3.19.51 PM
+    Make sure Post by Email is enabled in your Screen Options.
+    Screen Shot 2014-06-20 at 3.16.02 PM
+    Locate the blog that you wish to post to and click Enable.
+    Screen Shot 2014-06-20 at 4.53.35 PM
+    You now have a special email address you can use for sending post by email. If you want to add the address to your address book, you can download it as a vCard:
+    Screen Shot 2014-06-20 at 3.36.06 PM
+
+    Note: The secret email address is per-user account, not per-blog. If you have a multiuser blog, each of your blog’s users can create their own Post by Email address, regardless of their user role.
+
+    For users in the Contributor user role, any emailed posts will be saved as pending, rather than published. They will receive confirmation of their post with the post content in the email, but will not receive a second email when their post is approved.
+
+↑ Table of Contents ↑
+Sending Emails
+
+Once you have your Post by Email address, sending an email is simple:
+
+The email subject is used as your post’s title. The body is the post’s contents. A few minutes after receiving your email, you should receive a notification email informing you of the published post’s details.
+
+    Note: Please remember to send the email to your secret email address, not to the example given in the image above.
+
+↑ Table of Contents ↑
+Mail Formatting
+
+Your email can be plain text or formatted. As much formatting as possible will be retained, although the Post by Email system will strip unnecessary HTML tags so that your email is displayed correctly. Note that you will need to use an email client that supports rich text or HTML formatting in order to make use of this feature. Most website based clients (Hotmail, Gmail) do support this, as do most desktop clients (Outlook, Mail). You may need to switch your client into rich text or formatted mode.
+
+↑ Table of Contents ↑
+Attachments
+
+Image attachments will be included in your published post as follows:
+
+    Single images will be displayed inline (a single image is defined as an image without an image immediately following it).
+    Multiple images will be displayed as a gallery.
+
+Multiple galleries and single images are allowed in the same post. Note that using the [nogallery] shortcode will disable all galleries.
+
+If you have purchased the Space Upgrade, then the following additional attachment types will be supported:
+
+    Supported audio files (mp3) will be displayed using the WordPress Audio player.
+    All other files (doc, PDF, etc) will be displayed as links to the attachment.
+
+Additionally, if you’ve purchased the VideoPress Upgrade, you’ll be able to send mp4, mov, wmv, avi, mpg, and m4v files as attachments, which will then be displayed using the WordPress video player.
+
+Note that you can send your attachments to:
+
+media+YOUR_SECRET_EMAIL@post.wordpress.com
+
+Your attachments will just be stored in your account without creating a new post – the attachments will appear alongside your other media.
+
+↑ Table of Contents ↑
+Shortcodes
+
+Special shortcodes can be embedded in your email to configure various aspects of the published post:
+
+    [category x,y,z]
+    [excerpt]some excerpt[/excerpt]
+    [tags x,y,z]
+    [delay +1 hour]
+    [comments on | off]
+    [status publish | pending | draft | private]
+    [password secret-password]
+    [slug some-url-name]
+    [title Your post title]
+    [end] – everything after this shortcode is ignored (i.e. signatures). Make sure it’s on its own line with a blank line above it.
+    [slideshow] – replaces the auto-gallery with a slideshow
+    [nogallery] – disables the auto-gallery and displays all images inline
+    [more] – more tag
+    [nextpage] – pagination
+    [geotag on | off] – override your geotagging privacy defaults to enable or disable the showing of geo information
+    [publicize off|twitter|facebook] – change Publicize options (see below)
+    [poll]question and answers[/poll] – insert a Polldaddy poll into your post (see below)
+
+Shortcodes can be included anywhere in the body of your email and must be in lowercase. There should be no spaces between the left square braket and the shortcode content.
