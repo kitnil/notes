@@ -8801,3 +8801,9 @@ The archives (unless made explicitly private) are indexable and searchable by st
 But you should note that Google does not index all your posts, especially the recent posts which have not yet been crawled and indexed yet. An alternative is to use a third-party mailing list archive service which usually index your messages up to the minute. These services are usually free, although some may run Google ads. Below is a list of providers:
 ** [2017-04-13 Thu 02:53] [[https://github.com/rhinstaller/blivet-gui][rhinstaller/blivet-gui: GUI tool for storage configuration using blivet library]]
 GUI tool for storage configuration using blivet library
+** [2017-04-13 Thu 03:14] [[https://github.com/tootsuite/mastodon][tootsuite/mastodon: A GNU Social-compatible microblogging server]]
+Mastodon is a free, open-source social network server. A decentralized solution to commercial platforms, it avoids the risks of a single company monopolizing your communication. Anyone can run Mastodon and participate in the social network seamlessly.
+
+An alternative implementation of the GNU social project. Based on ActivityStreams, Webfinger, PubsubHubbub and Salmon.
+
+Click on the screenshot to watch a demo of the UI:
