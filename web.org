@@ -8929,3 +8929,5 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with this program; if not, write to the Free Software
 Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+** [2017-04-14 Fri 11:31] [[https://anarc.at/blog/2016-05-12-email-setup/][Notmuch, offlineimap and Sieve setup - anarcat]]
+I've been using Notmuch since about 2011, switching away from Mutt to deal with the monstrous amount of emails I was, and still am dealing with on the computer. I have contributed a few patches and configs on the Notmuch mailing list, but basically, I have given up on merging patches, and instead have a custom config in Emacs that extend it the way I want. In the last 5 years, Notmuch has progressed significantly, so I haven't found the need to patch it or make sweeping changes.
