@@ -8933,3 +8933,10 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 I've been using Notmuch since about 2011, switching away from Mutt to deal with the monstrous amount of emails I was, and still am dealing with on the computer. I have contributed a few patches and configs on the Notmuch mailing list, but basically, I have given up on merging patches, and instead have a custom config in Emacs that extend it the way I want. In the last 5 years, Notmuch has progressed significantly, so I haven't found the need to patch it or make sweeping changes.
 ** [2017-04-14 Fri 15:50] [[https://github.com/m00natic/vlfi][m00natic/vlfi: View Large Files in Emacs]]
 Emacs minor mode that allows viewing, editing, searching and comparing large files in batches, trading memory for processor time. Batch size can be adjusted on the fly and bounds the memory that is to be used for operations on the file. This way multiple large files (like terabytes or whatever) can be instantly and simultaneously accessed without swapping and degraded performance.
+** [2017-04-15 Sat 16:31] [[https://github.com/imapsync/imapsync][imapsync/imapsync]]
+    imapsync - Email IMAP tool for syncing, copying and migrating email
+    mailboxes.
+
+    The imapsync command synchronises mailboxes between two imap servers.
+    More than 69 different IMAP server softwares supported with success, few
+    failures.
