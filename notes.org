@@ -362,6 +362,22 @@ Debugger entered--Lisp error: (error "Error while getting eventlist from http://
   funcall-interactively(execute-extended-command nil "org-caldav-sync" nil)
   call-interactively(execute-extended-command nil nil)
   command-execute(execute-extended-command)
+** Partition chroot recovery livecd
+#+BEGIN_SRC bash
+  mkdir /mnt/gnulinux
+  mount /dev/sda3 /mnt/gnulinux
+  mount --rbind /proc /mnt/gnulinux/proc
+  mount --rbind /dev /mnt/gnulinux/dev
+  mount --rbind /sys /mnt/gnulinux/sys
+  mount /dev/sda2 /mnt/gnulinux/boot
+  mount /dev/sda1 /mnt/gnulinux/boot/efi
+  chroot /mnt/gnulinux /bin/sh
+  source /etc/profile
+  mount -a
+  grub-install /dev/sda
+  update-grub
+  grub2-mkconfig -o /boot/grub/grub2.cfg
+#+END_SRC
 * IRC
 <remote> yay
 <twb> wigust: OK, the only reason you should get a non-zero from that is if
