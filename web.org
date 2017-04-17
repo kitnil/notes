@@ -8957,3 +8957,19 @@ sudo dnf versionlock add kernel-4.9.13-200.fc25
 If you want to remove the locked version, use the delete option:
 
 sudo dnf versionlock delete kernel-4.9.13-200.fc25
+** [2017-04-17 Mon 14:24] [[https://github.com/VitaliyRodnenko/geeknote][VitaliyRodnenko/geeknote: Console client for Evernote.]]
+#+BEGIN_QUOTE
+Geeknote is a command line client for Evernote that can be use on Linux, FreeBSD and OS X. It allows you to:
+
+create notes in your Evernote account;
+create tags, notebooks;
+use Evernote search in console with different filters;
+edit notes directly in console using any editor: nano, vim, emacs, mcedit;
+sync your local files, directories with Evernote;
+use Evernote with cron or any scripts.
+Geeknote is written in Python, so you can use the open source package anywhere you have Python, even in Windows if you like.
+
+Here we have documentation for Geeknote. We'll show basic commands how to work with notes, notebooks and tags in Evernote using Geeknote, also we'll show how to use search to find notes you want and give you some examples.
+
+
+#+END_QUOTE
