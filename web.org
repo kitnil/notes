@@ -8947,3 +8947,13 @@ Note Grabber is the perfect application to quickly jot down a note and get it of
 Just open the application and a brand new note is waiting - ready to be typed in.
 
 #+END_QUOTE
+** [2017-04-17 Mon 13:49] [[https://fedoramagazine.org/boot-earlier-kernel/][How to boot an earlier kernel on Fedora - Fedora Magazine]]
+sudo dnf install python3-dnf-plugins-extras-versionlock
+
+Then add a version lock for the version desired. For example:
+
+sudo dnf versionlock add kernel-4.9.13-200.fc25
+
+If you want to remove the locked version, use the delete option:
+
+sudo dnf versionlock delete kernel-4.9.13-200.fc25
