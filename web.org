@@ -9010,3 +9010,7 @@ Target Fan Speed - скорость вентилятора, когда темп�
 И CPUFan(1,2) и ChassisFan1 ориентируются на температуру процессора, но параметры настраиваются отдельно.
 Таким образом, вы имеете 3 разъема, пляшущих от температуры процессора.
 Грубо говоря рекомендации такие: Target Fan Speed - на минимум (Level 1), Target Temperature - 45-60 по желанию.
+** [2017-04-19 Wed 20:46] [[https://github.com/gskinner/regexr/][gskinner/regexr: RegExr is a HTML/JS based tool for creating, testing, and learning about Regular Expressions.]]
+
+
+This is the source for RegExr.com RegExr is a HTML/JS based tool for creating, testing, and learning about Regular Expressions.
