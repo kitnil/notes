@@ -8991,3 +8991,7 @@ automatic and manual symbol highlighting for Emacs
 The initial build went great and the system was working as soon I turned it on. However, I began to notice an intermittent freeze while doing "normal" HTPC stuff (mostly via Boxee). Originally, I just attributed it to Boxee issues, but then I ran into it outside of Boxee several times.
 
 Curious, I started by running MemTest86+ using the default tests. Interestingly, the tests run along fine for about an hour (and are on maybe the 3rd complete test cycle) when things go south. Out of nowhere, the screen goes black except for a vertical band of red, green, and blue "static" on the left edge of screen. At that point, a hard reset is needed.
+** [2017-04-19 Wed 07:13] [[https://forums.tweaktown.com/asrock/46460-asrock-h67m-ge-ht-build-unstable.html][New AsRock H67M-GE/HT build unstable]]
+
+
+    try one or two clicks more igpu voltage than what auto is using,same for imc or qpi/vtt voltage and set dram voltage to whats printed on your ram,either 1.5v or 1.65v
