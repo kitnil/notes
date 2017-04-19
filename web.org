@@ -8995,3 +8995,18 @@ Curious, I started by running MemTest86+ using the default tests. Interestingly,
 
 
     try one or two clicks more igpu voltage than what auto is using,same for imc or qpi/vtt voltage and set dram voltage to whats printed on your ram,either 1.5v or 1.65v
+** [2017-04-19 Wed 19:24] [[https://forums.overclockers.ru/viewtopic.php?p=8938168][Обсуждение материнских плат AsRock Z68 Extreme4 • Конференция Overclockers.ru]]
+
+На плате всего 6 разъемов для кулеров:
+PowerFan (3pin) - абсолютно тупой нерегулируемый разъем. Любой кулер дает максимальные обороты.
+ChassisFan2 (3pin), ChassisFan3 (3pin) - расположены под сокетом проца. Регулируемые - для любого кулера можно вручную выставить обороты. При этом ChassisFan3 имеет 10 уровней оборотов, а ChassisFan2 - всего 4.
+CPUFan1 (4pin), ChassisFan1 (4pin) - поддерживают автоматическую регулировку оборотов в зависимости от температуры проца, но лишь кулеров с PWM-регулировкой, т.е. 4-пиновых кулеров. 3-пиновые кулеры на этих разъемах крутятся максимально.
+CPUFan2 (3pin)-полностью дублирует параметры CPUFan1, но позволяет регулировать 3-пиновые кулеры.
+
+CPUFan(1,2) и ChassisFan1 настраиваются одинаково. Задаются 2 параметра:
+Target Temperature - "желаемая" температура, выше которой кулер начинает разгоняться, "пытаясь" ее поддерживать.
+Target Fan Speed - скорость вентилятора, когда температура процессора ниже Target Temperature.
+Грубо говоря Target Fan Speed - скорость в простое (минимальная), Target Temperature - температурный порог разгона вентиляторов.
+И CPUFan(1,2) и ChassisFan1 ориентируются на температуру процессора, но параметры настраиваются отдельно.
+Таким образом, вы имеете 3 разъема, пляшущих от температуры процессора.
+Грубо говоря рекомендации такие: Target Fan Speed - на минимум (Level 1), Target Temperature - 45-60 по желанию.
