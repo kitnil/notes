@@ -9034,3 +9034,13 @@ We're a community of local Wifi initiatives, programmers, and enthusiasts. We ru
 #+END_QUOTE
 ** [2017-04-20 Thu 22:28] [[https://docs.oracle.com/cd/E19563-01/819-4428/bgavl/index.html][18.15 To Debug User-level Filters (Sun Java System Messaging Server 6.3 Administration Guide)]]
 If a user complains that a Sieve filter is not behaving as expected, there are a number of steps you can take to debug the filters. These are described here.
+** [2017-04-20 Thu 22:29] [[https://github.com/dovecot/pigeonhole][dovecot/pigeonhole: Pigeonhole project: Sieve support for Dovecot.]]
+This package is part of the Pigeonhole project (http://pigeonhole.dovecot.org).
+It adds support for the Sieve language (RFC 5228) and the ManageSieve protocol
+(RFC 5804) to the Dovecot Secure IMAP Server. In the literal sense, a pigeonhole
+is a a hole or recess inside a dovecot for pigeons to nest in. It is, however,
+also the name for one of a series of small, open compartments in a cabinet used
+for filing or sorting mail. As a verb, it describes the act of putting an item
+into one of those pigeonholes. The name `Pigeonhole' therefore well describes an
+important part of the functionality that this project adds to Dovecot: sorting
+and filing e-mail messages.
