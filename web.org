@@ -9044,3 +9044,7 @@ for filing or sorting mail. As a verb, it describes the act of putting an item
 into one of those pigeonholes. The name `Pigeonhole' therefore well describes an
 important part of the functionality that this project adds to Dovecot: sorting
 and filing e-mail messages.
+** [2017-04-20 Thu 22:32] [[https://skrilnetz.net/][Taming the penguin |]]
+This tutorial will teach you how to set up your own robust email server. We are focusing on a small personal server with up to a few email accounts. After following this guide, you will have a fully functional mail server and you can connect with your favourite client to access, read and send emails. The Anti-Spam configuration will drop unwanted messages.
+
+This tutorial will use yourdomain.com as domain name and mail.yourdomain.com as hostname for our mail server. The desired email address will be yourname@yourdomain.com. We assume that our server has the IP address 1.2.3.4.
