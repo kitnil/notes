@@ -9059,3 +9059,11 @@ All the apps you need, all in one place.
     File Storage
 
     Store all your files and share them with others using Davros.
+** [2017-04-21 Fri 01:46] [[https://github.com/GNUSim8085/GNUSim8085][GNUSim8085/GNUSim8085: A graphical simulator, assembler and debugger for the Intel 8085 microprocessor]]
+
+GNUSim8085 is a graphical cross platform simulator plus assembler with
+debugger for the Intel 8085 microprocessor. 
+
+You have to enter assembly code in order to use the simulator.  The
+assembly syntax is not too hard to learn. For more information see
+"asm-guide.txt" in the doc/ directory.
