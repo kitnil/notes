@@ -9086,3 +9086,33 @@ Installing offlineIMAP and configuring it is pretty straightforward and well doc
 dovecot
 
 This doesn’t even have to run as a server - gnus can run it as a shell command directly. See config below
+** [2017-04-21 Fri 06:45] [[http://sugarshark.com/elisp/init/erc.el.html][erc.el]]
+;; -*- emacs-lisp -*-
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; $Id: erc.el,v 1.19 2006/03/06 12:07:06 ole Exp $
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;_* Emacs IRC client
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(require 'erc-menu)
+(require 'erc-bbdb)
+(require 'erc-notify)
+(require 'erc-lang)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;_* Connect
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(setq erc-server "localhost" 
+      erc-port 6667 
+      erc-nick "ole"
+      erc-user-full-name user-full-name
+      erc-email-userid user-mail-address
+      erc-prompt-for-password nil
+      erc-keywords '("sugarshark" "ole:")
+      erc-notify-list '("britta" "Sascha" "tina")
+
+      ;; autojoin channels
+      erc-autojoin-channels-alist
+      '(("freenode.net" "#emacs" "#lisp")
+        ("irc.irc-mania.de" "#netbiker")
