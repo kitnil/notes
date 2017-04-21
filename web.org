@@ -9079,3 +9079,10 @@ This repo demonstrate one complete and working solution to reading/writing mails
     helpful resource links.
 
 Note: although this solution is tested under Ubuntu, it should work fine for all Linux distributions provided each component be properly installed.
+** [2017-04-21 Fri 06:41] [[https://www.emacswiki.org/emacs/JamesFerguson][EmacsWiki: James Ferguson]]
+offlineIMAP
+
+Installing offlineIMAP and configuring it is pretty straightforward and well documented. I’m currently running it in a screen session, though it could just run in emacs.
+dovecot
+
+This doesn’t even have to run as a server - gnus can run it as a shell command directly. See config below
