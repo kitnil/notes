@@ -9121,3 +9121,22 @@ Lee's Emacs settings file
 Table of Contents
 
     Configuration
+** [2017-04-21 Fri 18:43] [[https://lists.gnu.org/archive/html/bug-gnu-emacs/2015-12/msg01414.html][bug#18527: 24.3; ERC does not reconnect when server disconnects me]]
+Thanks for getting back to me about this issue.  It's been several
+months since I reported the reconnection problem.  I have been
+able to work around it by setting erc-server-error-occurred to nil
+in a disconnect hook:
+
+(add-hook 'erc-disconnected-hook
+          #'(lambda (nick host-name reason)
+              ;; Re-establish the connection even if the server closed it.
+              (setq erc-server-error-occurred nil)))
+
+So yes, when the root cause of the disconnection is a server error,
+erc-server-error-occurred is set to true and the reconnect logic
+in erc-server-reconnect-p is bypassed ... so reconnection does not
+happen.
+
+In the example I sent you, I believe the server closed the connection
+and erc-server-error-occurred was set to true because of a ping
+timeout.
