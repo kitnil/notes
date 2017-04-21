@@ -9144,3 +9144,5 @@ timeout.
 This is a minor mode to provide a ‘wc’ function for Emacs buffers as well as a modeline addition with live word, line and character counts.
 
 Additionally, a user can set specific goals for adding or deleting words. These goals were partly inspired by 750words.com where the goal of the site is to encourage writing by setting a goal of 750 words at a time. I wanted the same functionality in Emacs.
+** [2017-04-21 Fri 22:43] [[http://www.clarkdonley.com/blog/2014-10-26-org-mode-and-writing-papers-some-tips.html][Org-Mode and Writing Papers: Some Tips - Clark R. Donley]]
+ You can easily use RefTeX to quickly insert citations from a .bib file. I modified some of this from Kieran Healy’s instructions. I keep my bibliography file at /Users/clarkdonley/Files/Academic/Bibliography/main.bib and I use biblatex. After a bit of fiddling, this configuration works. Again, it goes in your .emacs or Preferences.el and you’ll need to configure the specifics for your needs.
