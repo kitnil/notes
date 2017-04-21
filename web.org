@@ -9071,3 +9071,11 @@ assembly syntax is not too hard to learn. For more information see
 The best editor for translating apps and sites (that use gettext). Simple. Fast. Easy to use.
 ** [2017-04-21 Fri 01:50] [[http://home.gna.org/kbibtex/][KBibTeX]]
 KBibTeX is a BibTeX editor for KDE to edit bibliographies used with LaTeX. KBibTeX is released under the GNU Public License (GPL) version 2 or any later version.
+** [2017-04-21 Fri 06:19] [[https://github.com/gongzhitaao/GnusSolution][gongzhitaao/GnusSolution: A complete working solution of gnus+offlineimap+dovecot+msmtp+cron]]
+This repo demonstrate one complete and working solution to reading/writing mails in Gnus, with the help of offlineimap, dovecot, msmtp and cron. Concretely, this repo contains
+
+    necessary configuration files for each component,
+    a brief summary of the big picture and detailed explanation on how the components work together, and
+    helpful resource links.
+
+Note: although this solution is tested under Ubuntu, it should work fine for all Linux distributions provided each component be properly installed.
