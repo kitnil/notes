@@ -9295,3 +9295,5 @@ Try \bibliographystyle{unsrt} with a BibTeX entry like this:
 Then simply \cite{Test}.
 
 For more info on BibTeX entries and required fields, have a look at Section 3.1 of the BibTeX documentation :).
+** [2017-04-22 Sat 08:53] [[https://github.com/gbgar/company-bibtex][gbgar/company-bibtex: Emacs company-mode completion back-end for Bibtex keys.]]
+company-bibtex provides a backend for the company-mode framework, enabling completion of bibtex keys in modes used for prose writing. This backend activates for citation styles used by pandoc-mode (@), latex-mode (\cite{}), and org-mode (ebib:).
