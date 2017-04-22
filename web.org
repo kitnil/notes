@@ -9453,3 +9453,5 @@ So is using dired to open image files and draw galleries right inside the editor
 Use eww to run a reasonably capable web browser.
 
 Or try some of the games https://www.emacswiki.org/emacs/CategoryGames
+** [2017-04-22 Sat 23:12] [[https://github.com/krameshkrr/Emacs/tree/master/Turing-machine][Emacs/Turing-machine at master · krameshkrr/Emacs]]
+ To start the game M-x turing-machine and a puzzle will be loaded. Navigate through the states using left/right arrow and change its values using space and hit 'p' to process the states and match it with target. Help is always shown in game buffer as below.
