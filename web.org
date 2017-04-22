@@ -9297,3 +9297,16 @@ Then simply \cite{Test}.
 For more info on BibTeX entries and required fields, have a look at Section 3.1 of the BibTeX documentation :).
 ** [2017-04-22 Sat 08:53] [[https://github.com/gbgar/company-bibtex][gbgar/company-bibtex: Emacs company-mode completion back-end for Bibtex keys.]]
 company-bibtex provides a backend for the company-mode framework, enabling completion of bibtex keys in modes used for prose writing. This backend activates for citation styles used by pandoc-mode (@), latex-mode (\cite{}), and org-mode (ebib:).
+** [2017-04-22 Sat 19:23] [[https://github.com/Gexon/dotakiller][Gexon/dotakiller: dotakiler]]
+#+BEGIN_QUOTE
+Проект dotakiller.
+
+Смысл игры: Обучать аборигенов и помогать им в развитии поселения.
+
+Отличительные особенности:
+
+Саморазвивающийся мир. Растения и животные растут, едят, размножаются.
+Аборигены будут принимать решения самостоятельно. Сами выбирать место для строительства и строить. Развивать сельское хозяйство, сажать растения, собирать их. Самостоятельно создавать отряды воинов, вести "переговоры" с соседями.
+Мир живет и развивается даже если игрок оффлайн.
+Игрок может отбить поселение у другого игрока, либо взять под свою опеку незанятое никем, либо управлять совместно с другим игроком.
+#+END_QUOTE
