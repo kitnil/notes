@@ -9193,3 +9193,13 @@ On Tue, Jan 28, 2014 at 11:16 PM, Eric Schulte <address@hidden> wrote:
     There is not enough information to address your bug.  Please read [1]
     and re-send.  It sounds to me like your installation may be bad, in
     which case it may also be worthwhile to read [2].
+** [2017-04-22 Sat 03:37] [[https://www.tug.org/begin.html][Getting started with TeX, LaTeX, and friends - TeX Users Group]]
+This page is for the benefit of new TeX system users. As such, it tries to be short and simple. (An even shorter getting-started document is available.)
+What's going on here?
+
+TeX is a typesetting language. Instead of visually formatting your text, you enter your manuscript text intertwined with TeX commands in a plain text file. You then run TeX to produce formatted output, such as a PDF file. Thus, in contrast to standard word processors, your document is a separate file that does not pretend to be a representation of the final typeset output, and so can be easily edited and manipulated.
+
+Here are a couple of links with further background:
+
+    The levels of TeX web page explains some of the most common components and terms used throughout TeX.
+    The Wikipedia encyclopedia article on TeX gives a more detailed overview.
