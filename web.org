@@ -9150,3 +9150,46 @@ Additionally, a user can set specific goals for adding or deleting words. These 
  I want to explore using popup tips to display richer information about org-mode links. The idea is to have something like a tooltip that displays the bibtex entry when you hover over it, or click on it.
 ** [2017-04-21 Fri 23:55] [[http://kitchingroup.cheme.cmu.edu/blog/2014/05/13/Using-org-ref-for-citations-and-references/][Using org-ref for citations and references]]
  org-ref is an emacs-lisp module to handle bibliographic citations, and references to figures, tables and sections in org-mode. It was written first for use in org-mode, and for reasonable export to LaTeX. It does not work well for any other export (eg HTML) for now. The goal of org-ref is to make it easy to add citations, and that the citations be useful, clickable links. Below, I illustrate some of those features.
+** [2017-04-22 Sat 03:32] [[https://lists.gnu.org/archive/html/emacs-orgmode/2014-01/msg01406.html][Re: {O} How to use ox-bibtex]]
+A single doubt is left... the bibtex compilation is not performed during the exportation process, should be done manually, Am I write?
+
+***** For completeness ****
+
+$ cd ~/.emacs.d/
+
+Either create the repository
+
+$ git clone git://orgmode.org/org-mode.git
+$ cd org-mode
+
+or update it
+
+$ cd org-mode
+$make up1
+
+Then compile the sources
+
+$ make all
+$ sudo make install
+
+After this... I followed the advice of Eric,  open an emacs session without personal configuration
+
+$ make vanilla
+
+in the emacs session evaluate one line at the time, for that use =M-:=
+
+(add-to-list 'load-path "contrib/lisp/")
+(require 'ox-bibtex)
+
+Finally, open the =ox-bibtex-example.org= and export it!!!
+
+I did the work for me, however, the bibtex compilation should be done by hand.
+
+Cheers.
+
+
+On Tue, Jan 28, 2014 at 11:16 PM, Eric Schulte <address@hidden> wrote:
+
+    There is not enough information to address your bug.  Please read [1]
+    and re-send.  It sounds to me like your installation may be bad, in
+    which case it may also be worthwhile to read [2].
