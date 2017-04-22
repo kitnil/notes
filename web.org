@@ -9509,3 +9509,15 @@ Daniel Gopar
 #+END_QUOTE
 ** [2017-04-22 Sat 23:15] [[http://conkeror.org/][FrontPage - Conkeror.org]]
 Conkeror is a keyboard-oriented, highly-customizable, highly-extensible web browser based on Mozilla XULRunner, written mainly in JavaScript, and inspired by exceptional software such as Emacs and vi. Conkeror features a sophisticated keyboard system, allowing users to run commands and interact with content in powerful and novel ways. It is self-documenting, featuring a powerful interactive help system.
+** [2017-04-22 Sat 23:16] [[https://github.com/AdrieanKhisbe/spacemacs-anki-deck][AdrieanKhisbe/spacemacs-anki-deck: Basic spacemacs Anki deck generator.]]
+Basic spacemacs Anki deck generator.
+
+Generate the `apkg` deck with the following commands:
+
+node index.js
+
+Cards definitions are in the bindings folder.
+
+Board progress on waffle.
+
+A first deck is available in the release section.
