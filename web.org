@@ -9379,3 +9379,59 @@ This package lets you dedicate a major mode to a particular emacs window. Any ti
 You can dedicate multiple major modes to the same window, and all appropriate buffers will appear in that window (one at a time…). And you can dedicate the same major mode to multiple windows, in which case a sensible window will be chosen each time.
 
 And being based on major mode rather than particular buffer, it can also be useful for things like ag-mode or shell mode (which pop up multiple buffers, all with the same major mode).
+** [2017-04-22 Sat 23:03] [[https://www.reddit.com/r/emacs/comments/64pblw/impressive_emacs_plugins/][Impressive emacs plugins : emacs]]
+Stuff I use. Not everything a must-have but since I have it in my config I was at least so impressed to keep it there. Disclosure: I'm not a coder. Therefore all packages are of general usefulness. For coding I assume one would have some more packages. Use package is a double edged sword. I use it since imho using it not is worse.
+
+    Auctex
+    Auto-Dictionary
+    Auto-Update
+    Avy
+    BBDB
+    BBDB-VCard
+    Beacon
+    Command-Log-Mode
+    Company-Mode
+    Counsel
+    Counsel-BBDB
+    Drag-Stuff
+    Engine-Mode
+    Expand-Region
+    Fontawesome
+    German-Holydays
+    Highlight-Context-Line
+    HTMLize
+    Ido-vertical-mode
+    Ivy
+    Logview
+    Nlinum
+    Nlinum-relative
+    Org-bookmark-heading
+    Org-Download
+    Org-Outlook
+    Org-Pomodoro
+    Ox-Reveal
+    Ox-TWBS
+    Page-break-lines
+    Pandoc-Mode
+    Popwin
+    Powerline
+    Powershell
+    Rainbow-Mode
+    Register-List
+    Rotate
+    Shrink-Whitespace
+    Simpleclip
+    Smex
+    Spray
+    Syslog-Mode
+    Swiper
+    Temporary-Persistent
+    Typit
+    Undo-Tree
+    Vimish Fold
+    Vdiff
+    Volatile-highlights
+    WSD-mode
+    Which-Key
+    Xah-find
+    Yankpad
