@@ -9523,3 +9523,12 @@ Board progress on waffle.
 A first deck is available in the release section.
 ** [2017-04-22 Sat 23:21] [[https://github.com/brotzeitmacher/arch-packer][brotzeitmacher/arch-packer: Arch Linux package management frontend for pacman and pacaur]]
 Arch-packer provides a package menu and allows you to install, upgrade and delete packages. It can be used with pacman or the AUR helper pacaur.
+** [2017-04-22 Sat 23:32] [[https://github.com/acrisci/playerctl][acrisci/playerctl: mpris command-line controller and library for spotify, vlc, audacious, bmp, xmms2, and others.]]
+For true players only: spotify, vlc, audacious, bmp, xmms2, and others.
+About
+
+Playerctl is a command-line utility and library for controlling media players that implement the MPRIS D-Bus Interface Specification. Playerctl makes it easy to bind player actions, such as play and pause, to media keys.
+
+For more advanced users, Playerctl provides an introspectable library available in your favorite scripting language that allows more detailed control like the ability to subscribe to media player events or get metadata such as artist and title for the playing track.
+
+For examples, use cases, and project goals, see my blog post.
