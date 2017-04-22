@@ -9203,3 +9203,21 @@ Here are a couple of links with further background:
 
     The levels of TeX web page explains some of the most common components and terms used throughout TeX.
     The Wikipedia encyclopedia article on TeX gives a more detailed overview.
+** [2017-04-22 Sat 03:37] [[http://www.tex.ac.uk/faq/][UKTUG FAQ]]
+
+
+Introduction
+
+This is a set of Frequently Asked Questions (FAQ) for English-speaking users of TeX.
+
+The questions answered here cover a wide range of topics, but typesetting issues are mostly covered from the viewpoint of a LaTeX user. Some of the questions answered have little relevance to today’s users; this is inevitable — it’s easier to add information than it is to decide that information is no longer needed. The set of answered questions is therefore in a state of slow flux: new questions are answered, while old questions are deleted … but the whole process depends on the time available for FAQ maintenance.
+
+You may use the FAQ
+
+    by reading a printed document,
+    by viewing a PDF file, with hyperlinks to assist browsing: copies are available formatted so that they could be printed on A4 paper or on North American “letter” paper, or
+    via Scott Pakin’s Visual FAQ, which shows LaTeX constructions with links to FAQ explanations of how they may be created. 
+
+Licence of the FAQ
+
+The source of the FAQ, available in the FAQ's CTAN directory, and its derived representations (currently, the HTML found at http://www.tex.ac.uk/faq and PDF copies, also in the FAQ's CTAN directory) are all placed in the public domain.
