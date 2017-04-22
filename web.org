@@ -9521,3 +9521,5 @@ Cards definitions are in the bindings folder.
 Board progress on waffle.
 
 A first deck is available in the release section.
+** [2017-04-22 Sat 23:21] [[https://github.com/brotzeitmacher/arch-packer][brotzeitmacher/arch-packer: Arch Linux package management frontend for pacman and pacaur]]
+Arch-packer provides a package menu and allows you to install, upgrade and delete packages. It can be used with pacman or the AUR helper pacaur.
