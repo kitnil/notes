@@ -9532,3 +9532,18 @@ Playerctl is a command-line utility and library for controlling media players th
 For more advanced users, Playerctl provides an introspectable library available in your favorite scripting language that allows more detailed control like the ability to subscribe to media player events or get metadata such as artist and title for the playing track.
 
 For examples, use cases, and project goals, see my blog post.
+** [2017-04-23 Sun 00:15] [[https://github.com/hfiref0x/UACME][hfiref0x/UACME: Defeating Windows User Account Control]]
+#+BEGIN_QUOTE
+Defeating Windows User Account Control by abusing built-in Windows AutoElevate backdoor.
+System Requirements
+
+x86-32/x64 Windows 7/8/8.1/10TH1/10TH2/10RS1/10RS2 (client, some methods however works on server version too).
+Admin account with UAC set on default settings required.
+Usage
+
+Run executable from command line: akagi32 [Key] [Param] or akagi64 [Key] [Param]. See "Run examples" below for more info.
+
+First param is number of method to use, second is optional command (executable file name including full path) to run. Second param can be empty - in this case program will execute elevated cmd.exe from system32 folder.
+
+Keys (watch debug output with dbgview or similar for more info):
+#+END_QUOTE
