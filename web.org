@@ -9348,3 +9348,9 @@ I'm streaming in my own free time, so any encouragements are welcome!
 There are a couple of symbols the emacs‘ lisp interpreter gives special meaning to. Since for some reason these never made it into my long-term memory I collect them here for later reference. Quotes are copied from all over the internet. Reference to the source is given in the last column.
 ** [2017-04-22 Sat 21:32] [[https://github.com/davidshepherd7/terminal-here][davidshepherd7/terminal-here: An Emacs package to open an external terminal emulator in the current directory]]
 An Emacs package to open an external terminal emulator in directories associated with the current buffer.
+** [2017-04-22 Sat 22:15] [[https://github.com/localvoid/gnome-shell-emacsmanager][localvoid/gnome-shell-emacsmanager: Gnome Shell extension to manage emacs server instances]]
+Sometimes it is useful to launch emacs with a predefined environment variables (python virtual environments, go workspaces, etc).
+
+To preload environment variables, create a file my-venv.sh in the Virtual Environments directory ~/.emacs.d/virtualenv, where you can put all initialization in a simple shell script.
+
+For example, to activate python virtualenv, you can just use the source function.
