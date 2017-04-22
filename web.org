@@ -9455,3 +9455,11 @@ Use eww to run a reasonably capable web browser.
 Or try some of the games https://www.emacswiki.org/emacs/CategoryGames
 ** [2017-04-22 Sat 23:12] [[https://github.com/krameshkrr/Emacs/tree/master/Turing-machine][Emacs/Turing-machine at master · krameshkrr/Emacs]]
  To start the game M-x turing-machine and a puzzle will be loaded. Navigate through the states using left/right arrow and change its values using space and hit 'p' to process the states and match it with target. Help is always shown in game buffer as below.
+** [2017-04-22 Sat 23:12] [[https://github.com/magnars/multifiles.el][magnars/multifiles.el: Work in progress: View and edit parts of multiple files in one buffer]]
+Bind a key to mf/mirror-region-in-multifile, let's say C-!. Now mark a part of the buffer and press it. A new *multifile* buffer pops up. Mark some other part of another file, and press C-! again. This is added to the *multifile*.
+
+You can now edit the *multifile* buffer, and watch the original files change. Or you can edit the original files and watch the *multifile* buffer change.
+
+Saving the *multifile* buffer will save all the original files.
+
+Warning This API and functionality is highly volatile.
