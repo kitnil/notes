@@ -9277,3 +9277,21 @@ The source of the FAQ, available in the FAQ's CTAN directory, and its derived re
 Государственное регулирование рыночной экономики. (Учебник) Под ред. Кушлина В.И. (2005, 2-е из
 ** [2017-04-22 Sat 06:10] [[http://t2t.livejournal.com/77571.html][Руководство_Основы научного цитирования. Оформление ссылок и цитат, ч. 1.3.2 - Исследования рынка и внутренней среды организации]]
 При оформлении ссылок расстановка пробелов и знаков препинания подчиняется общим правилам пунктуации. При включении ссылки в текст работы пробел ставится между текстом и открывающей квадратной скобкой «[», затем без пробела следует номер ссылки, затем без пробела ставится закрывающая квадратная скобка «]», после которой следует пробел, если конструкция предложения не требует знака препинания.
+** [2017-04-22 Sat 08:36] [[https://tex.stackexchange.com/questions/302098/citation-with-page-number-does-not-work][bibtex - citation with page number does not work - TeX - LaTeX Stack Exchange]]
+ 1
+down vote
+        
+
+Try \bibliographystyle{unsrt} with a BibTeX entry like this:
+
+@book{Test, 
+    author= {Test, A.},
+    year=2016,
+    title= {A Book About BibTeX},
+    publisher= {A Publisher},
+    note = "pg. 4"
+}
+
+Then simply \cite{Test}.
+
+For more info on BibTeX entries and required fields, have a look at Section 3.1 of the BibTeX documentation :).
