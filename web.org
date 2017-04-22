@@ -9367,3 +9367,9 @@ a new window when opening man pages when there's already one, use
         (mode . Man-mode))))
 
 You can either use a development build of Emacs, or just copy the relevant function, display-buffer-reuse-mode-window, from the sources into your init file.
+** [2017-04-22 Sat 23:00] [[https://www.reddit.com/r/emacs/comments/65lf9y/show_manpages_always_in_the_same_window/][Show manpages always in the same window : emacs]]
+I use my major-mode-dedication package: https://github.com/tom-seddon/major-mode-dedication
+
+Once you've got it installed, with a man page visible in the window of your choice, do C-x D D with that window active. Future man buffers will then appear in that window. You can also set this up from code (I've got a function that creates a particular window layout).
+
+What's different about it from the other similar stuff I've seen: it uses a window parameter to hold the list of modes to show in that window, rather than just looking for a window that happens to show a buffer of the right mode. So the right window will be found, even if a buffer of the appropriate type isn't currently being shown there. This way, you can also have multiple modes associated with a given window. (e.g., my standard window layout has ag-mode and occur-mode popping up in the same window.) This may or may not be something you want, but personally I prefer it.
