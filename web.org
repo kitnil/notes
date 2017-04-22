@@ -9373,3 +9373,9 @@ I use my major-mode-dedication package: https://github.com/tom-seddon/major-mode
 Once you've got it installed, with a man page visible in the window of your choice, do C-x D D with that window active. Future man buffers will then appear in that window. You can also set this up from code (I've got a function that creates a particular window layout).
 
 What's different about it from the other similar stuff I've seen: it uses a window parameter to hold the list of modes to show in that window, rather than just looking for a window that happens to show a buffer of the right mode. So the right window will be found, even if a buffer of the appropriate type isn't currently being shown there. This way, you can also have multiple modes associated with a given window. (e.g., my standard window layout has ag-mode and occur-mode popping up in the same window.) This may or may not be something you want, but personally I prefer it.
+** [2017-04-22 Sat 23:00] [[https://github.com/tom-seddon/major-mode-dedication][tom-seddon/major-mode-dedication: Dedicate an emacs major mode to a particular emacs window]]
+This package lets you dedicate a major mode to a particular emacs window. Any time some elisp uses display-buffer or show-buffer-other-window to show a buffer with that major mode, that buffer will appear in its dedicated window. This fixes virtually all cases where windows might ordinarily pop up somewhere unexpected when using facilities like help, rgrep, compilation, and so on.
+
+You can dedicate multiple major modes to the same window, and all appropriate buffers will appear in that window (one at a time…). And you can dedicate the same major mode to multiple windows, in which case a sensible window will be chosen each time.
+
+And being based on major mode rather than particular buffer, it can also be useful for things like ag-mode or shell mode (which pop up multiple buffers, all with the same major mode).
