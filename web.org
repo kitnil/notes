@@ -10510,3 +10510,13 @@ libglvnd is a vendor-neutral dispatch layer for arbitrating OpenGL API calls bet
 
 
 #+END_QUOTE
+** [2017-04-23 Sun 20:58] [[https://www.emacswiki.org/emacs/ElectricPair][EmacsWiki: Electric Pair]]
+Then enable it by binding the appropriate characters to it in your favorite programming modes. For example, for PythonMode:
+
+    (add-hook 'python-mode-hook
+              (lambda ()
+                (define-key python-mode-map "\"" 'electric-pair)
+                (define-key python-mode-map "\'" 'electric-pair)
+                (define-key python-mode-map "(" 'electric-pair)
+                (define-key python-mode-map "[" 'electric-pair)
+                (define-key python-mode-map "{" 'electric-pair)))
