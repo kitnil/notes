@@ -9667,3 +9667,355 @@ Processors that support 64-bit computing on Intel® architecture require an Inte
     Company Information Our Commitment Communities Investor Relations Contact Us Newsroom Jobs 
 
     © Intel Corporation Terms of Use *Trademarks Privacy Cookies Supply Chain Transparency Site Map
+** [2017-04-23 Sun 05:36] [[http://www.cpu-world.com/CPUs/K10/AMD-Phenom%2520II%2520X4%2520945%2520-%2520HDX945WFK4DGM%2520(HDX945WFGMBOX).html][AMD Phenom II X4 945 - HDX945WFK4DGM / HDX945WFGMBOX]]
+
+CPU-World
+        News • CPUs / Chips • Benchmarks • Information • Forum • Links • About
+BSP • CPU • FPU • MCU • SoC • Other ICs • Compare CPUs • Curiosities
+Search CPU-World
+Search the site / Identify CPU / Quick CPU lookup:
+AMD Phenom II X4 945 - HDX945WFK4DGM / HDX945WFGMBOX
+CPU » AMD » K10 families » Phenom II X4 » 945
+Jump to
+  • Specifications
+  • Compare 2 CPUs
+  • FAQ
+  • CPUID
+  • Related CPUs
+  • Pictures
+  • Comments
+ 
+Related Links:
+  • Micro-Architecture
+ 
+Compare AMD 945 (95W, rev. C3) specs with one or more CPUs:  
+
+Get HTML and forum link code in case if you want to link to this page:
+
+Find CPUs
+
+Find Phenom II X4 CPUs with:
+
+Same socket
+
+Where to buy
+
+    Search on eBay
+
+AMD Phenom II X4 945 (95W, rev. C3) specifications
+
+The specs can be used for short-term
+listings on auction and classifieds sites
+General information
+Type    CPU / Microprocessor
+Market segment  Desktop
+Family  
+AMD Phenom II X4
+Model number  ?         945
+CPU part numbers        
+
+    HDX945WFK4DGM is an OEM/tray microprocessor
+    HDX945WFGMBOX is a boxed microprocessor with fan and heatsink
+
+Stepping codes  CACAC AC   CACDC AC
+Frequency  ?    3000 MHz
+Bus speed  ?    667 MHz Memory controller
+One 2000 MHz 16-bit HyperTransport link (4 GT/s)
+Clock multiplier  ?     15
+Package 938-pin organic micro-PGA
+Sockets Socket AM2+
+Socket AM3
+Introduction date       Nov 4, 2009
+Price at introduction   $165
+Architecture / Microarchitecture
+Microarchitecture       K10
+Platform        Dragon
+Processor core  ?       Deneb
+Core stepping  ?        RB-C3
+CPUID   100F43
+Manufacturing process   0.045 micron silicon-on-insulator (SOI) technology
+758 million transistors
+Die size        258mm2
+Data width      64 bit
+The number of CPU cores 4
+The number of threads   4
+Floating Point Unit     Integrated
+Level 1 cache size  ?   4 x 64 KB 2-way set associative instruction caches
+4 x 64 KB 2-way set associative data caches
+Level 2 cache size  ?   4 x 512 KB 16-way set associative exclusive caches
+Level 3 cache size      Shared 6 MB 48-way set associative cache
+Cache latency   3 (L1 cache)
+Virtual memory  256 TB
+Multiprocessing Uniprocessor
+Features        
+
+    MMX instructions
+    Extensions to MMX
+    3DNow! technology
+    Extensions to 3DNow!
+    SSE / Streaming SIMD Extensions
+    SSE2 / Streaming SIMD Extensions 2
+    SSE3 / Streaming SIMD Extensions 3
+    SSE4a  ? 
+    AMD64 / AMD 64-bit technology  ? 
+    EVP / Enhanced Virus Protection  ? 
+    AMD-V / AMD Virtualization technology
+
+Low power features      
+
+    Cool'n'Quiet 3.0
+    CoolCore Technology  ? 
+    Dual Dynamic Power Management  ? 
+    Core C1 and C1E states
+    Package S0, S1, S3, S4 and S5 states
+
+Integrated peripherals / components
+Integrated graphics     None
+Memory controller       The number of controllers: 1
+Memory channels: 2
+Channel width (bits): 72
+Supported memory: DDR2-1066, DDR3-1333
+DIMMs per channel: up to 2
+Maximum memory bandwidth (GB/s): 21.3
+Other peripherals       HyperTransport 3 technology
+Electrical / Thermal parameters
+V core  ?       0.85V - 1.4V
+Maximum operating temperature  ?        55°C - 70°C
+Thermal Design Power  ?         95 Watt
+
+Popular Phenom II X4 945 (95W, rev. C3) comparisons
+vs FX-4100
+vs FX-4300
+vs FX-6300
+vs FX-8350
+vs Q6600
+vs X2 5200+
+vs X4 640
+vs X4 965
+vs i5-3570K
+ 
+Detailed side-by-side comparison
+
+For detailed comparision of the AMD 945 (95W, rev. C3) and any other other chip from our CPU database type in a chip name and/or its partial specs:
+
+You can specify any of the following: manufacturer name, family name, model number, part number, core name, microarchitecture, manufacturing process, socket name, operating frequency, bus speed, the number of cores and threads, cache size, TDP and GPU type. Here are some examples of searches: HDX945WFK4DGM, AMD Phenom II X4 3GHz, Deneb 95 Watt, K10 4 cores 4 threads, 0.045 micron 6 MB noGPU
+
+FAQ
+Q: I have an AMD 945 (95W, rev. C3) CPU. Is it possible to upgrade it?
+A: Probably yes. Processor compatibility is determined by your motherboard. Please check CPU-Upgrade.com resource for CPU support list for your board.
+
+Phenom II X4 945 (95W, rev. C3) Overclocking
+
+Sorry, overclocking information is not available at this time.
+
+
+CPU ID information for the Phenom II X4 945 (95W, rev. C3)
+
+Detailed characteristics of processor's internals, including x86 instruction set extensions and individual instructions, high- and low-level technologies, are listed below. This list was acquired from an actual AMD Phenom II X4 945 processor with the help of the x86 CPUID instruction. Any discrepancies between CPUID features and official specifications are likely due to some features being disabled in BIOS, or due to a bug in our CPUID decoding algorithm.
+
+Our CPUID database contains 6 records for this microprocessor. See all submitted records.
+
+Use our CPU identification tool to check features of your processor.
+
+Submission details
+Manufacturer:   AMD     Measured frequency:     3000 MHz
+CPU Family:     Phenom II X4    Comment:        
+Model Number:   945      
+Part number (supplied): HDX945WFK4DGM   Submitted by:   JBCG
+Part number (guessed):  
+HDX945WFK4DGM
+        Submitted on:   
+Stepping Code:  RB-C3   CWID version:   0.4
+General information
+Vendor: AuthenticAMD
+Processor name (BIOS):  AMD Phenom(tm) II X4 945 Processor
+Cores:  4
+Logical processors:     4
+Processor type: Original OEM Processor
+Core stepping:  RB-C3
+CPUID signature:        100F43
+Family: 16 (010h)
+Model:  4 (04h)
+Stepping:       3 (03h)
+Socket: AM2+ and/or AM3
+
+Cache details
+Cache:  L1 data         L1 instruction  L2      L3
+Size:   4 x 64 KB       4 x 64 KB       4 x 512 KB      6 MB
+Associativity:  2-way set
+associative     2-way set
+associative     16-way set
+associative     48-way set
+associative
+Line size:      64 bytes        64 bytes        64 bytes        64 bytes
+Lines per tag:  1       1       1       1
+Comments:                               Shared between all cores
+
+Supported instructions
+Instruction set extensions      Additional instructions
+MMX     Advanced Bit manipulation
+AMD extensions to MMX   CLFLUSH
+3DNow!  CMOV
+Extensions to 3DNow!    CMPXCHG16B
+SSE     CMPXCHG8B
+SSE2    FXSAVE/FXRSTORE
+SSE3    MONITOR/MWAIT
+SSE4A   POPCNT
+        PREFETCH/PREFETCHW
+        RDTSCP
+        SKINIT/STGI support
+        SYSCALL/SYSRET
+        SYSENTER/SYSEXIT
+
+Integrated features and technologies
+Major features  Other features
+On-chip Floating Point Unit     1 GB large page support
+64-bit / Intel 64       100MHz multiplier control
+NX bit/XD-bit   128-bit SSE instructions
+Secure Virtual Machine (Virtualization)         36-bit page-size extensions
+PowerNow! / Cool'n'Quiet        Advanced programmable interrupt controller
+        Core multi-processing legacy mode
+        Debugging extensions
+        Extended APIC space
+        FXSAVE/FXRSTOR optimizations
+        Hardware P-state control
+        Hardware thermal control
+        Instruction based sampling
+        LAHF/SAHF support in 64-bit mode
+        LBR virtualization
+        LOCK MOV CR0 means MOV CR8
+        Machine check architecture
+        Machine check exception
+        Memory-type range registers
+        Misaligned SSE mode
+        Model-specific registers
+        Nested page tables
+        OS visible workaround
+        Page attribute table
+        Page global extension
+        Page-size extensions (4MB pages)
+        Physical address extensions
+        SVM lock
+        Software thermal control
+        Support for NRIP save
+        THERMTRIP
+        TSC rate is ensured to be invariant across all states
+        Temperature sensor
+        Time stamp counter
+        Virtual 8086-mode enhancements
+        Watchdog timer support
+
+CPUs, related to AMD Phenom II X4 945 (95W, rev. C3)
+
+The list of related CPUs does not include all models. For the complete list, please see the related "K10" processors for socket AM2+ / Socket AM3 page.
+Model   Cores /
+Threads         Frequency       Turbo
+frequency       L2
+cache   L3
+cache   TDP     Features         
+AMD Phenom II X4 family, Socket AM2+ / Socket AM3
+   Phenom II X4 945 (95W, rev. C3)      4 / 4   3 GHz           2 MB    6 MB    95W              
+   Phenom II X4 955 (95W, rev. C3, non-BE)      4 / 4   3.2 GHz         2 MB    6 MB    95W             >
+   Phenom II X4 B97     4 / 4   3.2 GHz         2 MB    6 MB    95W             >
+   Phenom II X4 850     4 / 4   3.3 GHz         2 MB            95W             >
+   Phenom II X4 955 (125W, rev. C2, BE) 4 / 4   3.2 GHz         2 MB    6 MB    125W    Unlock  >
+   Phenom II X4 955 (125W, rev. C3, BE) 4 / 4   3.2 GHz         2 MB    6 MB    125W    Unlock  >
+   Phenom II X4 960T    4 / 4   3 GHz   3.4 GHz 2 MB    6 MB    95W     TBT, Unlock     >
+   Phenom II X4 B99     4 / 4   3.3 GHz         2 MB    6 MB    95W             >
+   Phenom II X4 965 (125W, non-BE)      4 / 4   3.4 GHz         2 MB    6 MB    125W            >
+   Phenom II X4 965 (140W, BE)  4 / 4   3.4 GHz         2 MB    6 MB    140W    Unlock  >
+   Phenom II X4 965 (125W, BE)  4 / 4   3.4 GHz         2 MB    6 MB    125W    Unlock  >
+   Phenom II X4 970 (rev. C3)   4 / 4   3.5 GHz         2 MB    6 MB    125W    Unlock  >
+   Phenom II X4 970 (rev. E0)   4 / 4   3.5 GHz         2 MB    6 MB    125W    Unlock  >
+   Phenom II X4 975     4 / 4   3.6 GHz         2 MB    6 MB    125W    Unlock  >
+   Phenom II X4 980     4 / 4   3.7 GHz         2 MB    6 MB    125W    Unlock  >
+AMD Phenom II X4 family, K10 micro-architecture, Other sockets
+   Phenom II X4 920     4 / 4   2.8 GHz         2 MB    6 MB    140.8W          >
+   Phenom II X4 940     4 / 4   3 GHz           2 MB    6 MB    139.6W  Unlock  >
+Other families, K10 micro-architecture, Socket AM2+ / Socket AM3
+   Athlon II 170u       1 / 1   2 GHz           1 MB            20W             >
+   Athlon X2 5200+ (0.045 micron)       2 / 2   2.3 GHz         1 MB            65W             >
+   Sempron X2 190       2 / 2   2.5 GHz         1 MB            45W             >
+   Phenom II X2 570 BE  2 / 2   3.5 GHz         1 MB    6 MB    80W     Unlock  >
+   Athlon II X2 280     2 / 2   3.6 GHz         2 MB            65W             >
+   Phenom II X3 B77     3 / 3   3.2 GHz         1.5 MB  6 MB    95W             >
+   Athlon II X3 460     3 / 3   3.4 GHz         1.5 MB          95W             >
+ • Within each category, the CPUs are sorted from slower (at the top) to faster (at the bottom)
+ • Background color of specs and features indicate whether they are better or worse than similar spec/feature of the Phenom II X4 945 (95W, rev. C3)
+ • Click on the >  icon to compare any CPU in the table with the AMD Phenom II X4 945 (95W, rev. C3) (Javascript required).
+ • Features abbreviations:
+TBT - Dynamic Acceleration / Turbo Boost
+Unlock - Unlocked multiplier
+
+Pictures (13)
+AMD Phenom II X4 945
+2010-02-24 14:29:13
+Posted by: Morteza Hosseinzadeh
+
+perfect CPU     AMD Phenom II X4 945
+ 
+2010-02-24 14:30:28
+Posted by: Morteza Hosseinzadeh
+
+        &nbsp;
+ 
+2010-02-24 14:31:56
+Posted by: Morteza Hosseinzadeh
+
+        &nbsp;
+ 
+2010-02-24 14:32:37
+Posted by: Morteza Hosseinzadeh
+
+        &nbsp;
+ 
+2010-02-24 14:33:04
+Posted by: Morteza Hosseinzadeh
+
+        &nbsp;
+ 
+2010-02-24 14:33:29
+Posted by: Morteza Hosseinzadeh
+
+        &nbsp;
+ 
+2010-02-24 14:33:48
+Posted by: Morteza Hosseinzadeh
+
+        &nbsp;
+ 
+2010-02-24 14:34:42
+Posted by: Morteza Hosseinzadeh
+
+        &nbsp;
+ 
+2010-02-24 14:35:00
+Posted by: Morteza Hosseinzadeh
+
+        &nbsp;
+ 
+2011-02-15 11:42:43
+Posted by: larhome
+
+        &nbsp;
+i could not find this stepping code on your site
+2012-10-24 18:08:46
+Posted by: MarcG
+
+        i could not find this stepping code on your site
+ 
+2012-11-03 17:13:20
+Posted by: JBCG
+
+        &nbsp;
+ 
+2014-02-23 11:25:12
+Posted by: bougui
+
+        &nbsp;
+Comments (0)
+
+You're welcome to post suggestions, corrections, missing information, your own personal AMD Phenom II X4 945 (95W, rev. C3) review, or your experience with the microprocessor. For all other questions please proceed to the Phenom II X4 945 (95W, rev. C3) discussion page.
+
+Last modified: 16 Feb 2017
+Terms and Conditions · Privacy Policy · Contact Us      (c) Copyright 2003 - 2016 Gennadiy Shvets
