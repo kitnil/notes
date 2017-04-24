@@ -10873,3 +10873,9 @@ When talking privately, you can skip the initial comma, as above.
     hulu
     fbcdn (facebook)
     video.tumblr.com
+** [2017-04-24 Mon 23:14] [[https://github.com/reactiflux/discord-irc][reactiflux/discord-irc: Connects Discord and IRC channels by sending messages back and forth.]]
+#+BEGIN_QUOTE
+Before you can run discord-irc you need to create a configuration file by following the instructions here. After you've done that you can replace /path/to/config.json in the commands below with the path to your newly created configuration file - or just config.json if it's in the same directory as the one you're starting the bot from.
+
+
+#+END_QUOTE
