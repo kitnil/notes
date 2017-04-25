@@ -10883,3 +10883,5 @@ Before you can run discord-irc you need to create a configuration file by follow
 relative-line-numbers is an Emacs package that displays relative line numbers on the left margin.
 ** [2017-04-25 Tue 12:08] [[https://github.com/yasuyk/web-beautify][yasuyk/web-beautify: Format HTML, CSS and JavaScript/JSON by js-beautify]]
 web-beautify is a formatting package of HTML, CSS and JavaScript/JSON for Emacs. It uses the command-line/node.js javascript formatter from http://jsbeautifier.org/ to format whole html, css, js or json files, or region.
+** [2017-04-25 Tue 14:35] [[https://github.com/CodeFalling/nlinum-relative][CodeFalling/nlinum-relative: Emacs relative line number besed on nlinum-mode]]
+Emacs relative line number based on nlinum-mode
