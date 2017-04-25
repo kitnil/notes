@@ -10885,3 +10885,5 @@ relative-line-numbers is an Emacs package that displays relative line numbers on
 web-beautify is a formatting package of HTML, CSS and JavaScript/JSON for Emacs. It uses the command-line/node.js javascript formatter from http://jsbeautifier.org/ to format whole html, css, js or json files, or region.
 ** [2017-04-25 Tue 14:35] [[https://github.com/CodeFalling/nlinum-relative][CodeFalling/nlinum-relative: Emacs relative line number besed on nlinum-mode]]
 Emacs relative line number based on nlinum-mode
+** [2017-04-25 Tue 14:36] [[https://github.com/coldnew/linum-relative][coldnew/linum-relative: display relative line number in the left margin in emacs]]
+linum-relative lets you display relative line numbers for current buffer.
