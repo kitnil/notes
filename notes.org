@@ -379,6 +379,12 @@ Debugger entered--Lisp error: (error "Error while getting eventlist from http://
 #+END_SRC
 ** GPT UEFI Strange partition
 "В системе с GPT таблицей должен быть небольшой BIOS boot partition с типом файловой системы EF02 (не путать с EFI System Partition (ESP) у которой тип файловой системы EF00). 1 MiB должно быть достаточно для работы, но 2-4 MiB будет более безопасным вариантом. Этот BIOS boot раздел будет хранить в себе 2 стадию загрузчика. BIOS boot раздел не нужно форматировать в какую-либо файловую систему; команда grub-install перезапишет любую файловую систему на свою собственную. "
+** 2TB SSD
+<codingquark> I have EVO 850. Wonly 256GB though.  [16:51]
+<codingquark> 2TB SSD OMG
+<s00pcan> I know right? it's crazy fast too
+<s00pcan> what I haven't seen is a usb 3.1 adapter for these m.2 with that
+          keying  [16:52]
 * IRC
 <remote> yay
 <twb> wigust: OK, the only reason you should get a non-zero from that is if
@@ -446,9 +452,3 @@ Debugger entered--Lisp error: (error "Error while getting eventlist from http://
       '.*(urbanears|skullcandy|headphones|speaker|marshall|usb-cable).*'
       -delete
 * Notes
-** 2TB SSD
-<codingquark> I have EVO 850. Wonly 256GB though.  [16:51]
-<codingquark> 2TB SSD OMG
-<s00pcan> I know right? it's crazy fast too
-<s00pcan> what I haven't seen is a usb 3.1 adapter for these m.2 with that
-          keying  [16:52]
