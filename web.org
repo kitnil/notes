@@ -11607,3 +11607,9 @@ The Bullet 2.86 has improved Python bindings, pybullet, for robotics, machine le
 Furthermore, the PGS LCP constraint solver has a new option to terminate as soon as the residual (error) is below a specified tolerance (instead of terminating after a fixed number of iterations). There is preliminary support to load some MuJoCo MJCF xml files (see data/mjcf), and haptic experiments with a VR glove. Get the latest release from github here.App_SharedMemoryPhysics_VR_vs20 2017-01-26 10-12-45-16
 ** [2017-04-27 Thu 17:09] [[https://github.com/matplotlib/matplotlib][matplotlib/matplotlib: matplotlib: plotting with Python]]
 Matplotlib is a Python 2D plotting library which produces publication-quality figures in a variety of hardcopy formats and interactive environments across platforms. Matplotlib can be used in Python scripts, the Python and IPython shell (à la MATLAB or Mathematica), web application servers, and various graphical user interface toolkits.
+** [2017-04-27 Thu 19:08] [[http://blog.e-shell.org/221][Autocompletion for your python shell|console|interpreter]]
+
+
+One of the nice features of the django shell (that is, the python shell you get when you call ./manage.py shell inside a django project) is that it has tab autocompletion, that is, you can import a module and use tab-completion to see all the modules within it.
+
+A lot of people are using iPython these days because of the lack of this feature on the default Python shell, but this is only by default, and if you are using iPython only because of the tab completion, forget about installing extra stuff, you only have to do this little trick:
