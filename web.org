@@ -10887,3 +10887,15 @@ web-beautify is a formatting package of HTML, CSS and JavaScript/JSON for Emacs.
 Emacs relative line number based on nlinum-mode
 ** [2017-04-25 Tue 14:36] [[https://github.com/coldnew/linum-relative][coldnew/linum-relative: display relative line number in the left margin in emacs]]
 linum-relative lets you display relative line numbers for current buffer.
+** [2017-04-27 Thu 08:31] [[https://zwass.com/2012/02/06/emacs-send-to-email-command/][Emacs Send to Email Command | Zachary Wasserman]]
+I’ve been using Emacs for nearly all my editing for a couple years now, and I’m getting more hungry for highly personalized customizations. I often need to email files I’m working on, so I wrote up this little command (Throw it in your .emacs):
+
+(defun mail-current-buffer ()
+  "Send the current buffer to email (for Mac)"
+  (interactive)
+  (shell-command (format "open -a Sparrow %s" (buffer-file-name))))
+(define-key global-map "\C-cm" 'mail-current-buffer)
+
+This opens a new message with the file in the current buffer attached. If you use another mail app, replace Sparrow with its name. The last line binds the function to C-c C-m. Really, this will open the current buffer in any application you choose to put in that command besides Sparrow, so perhaps you have some other handy ideas?
+
+I guess the next step is just doing my email in Emacs.
