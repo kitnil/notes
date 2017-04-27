@@ -11605,3 +11605,5 @@ Mini Calculator Logo. Online Physics Calculators
 The Bullet 2.86 has improved Python bindings, pybullet, for robotics, machine learning and VR, see the pybullet quickstart guide.
 
 Furthermore, the PGS LCP constraint solver has a new option to terminate as soon as the residual (error) is below a specified tolerance (instead of terminating after a fixed number of iterations). There is preliminary support to load some MuJoCo MJCF xml files (see data/mjcf), and haptic experiments with a VR glove. Get the latest release from github here.App_SharedMemoryPhysics_VR_vs20 2017-01-26 10-12-45-16
+** [2017-04-27 Thu 17:09] [[https://github.com/matplotlib/matplotlib][matplotlib/matplotlib: matplotlib: plotting with Python]]
+Matplotlib is a Python 2D plotting library which produces publication-quality figures in a variety of hardcopy formats and interactive environments across platforms. Matplotlib can be used in Python scripts, the Python and IPython shell (à la MATLAB or Mathematica), web application servers, and various graphical user interface toolkits.
