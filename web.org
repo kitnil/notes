@@ -11601,3 +11601,7 @@ Joined
 ** [2017-04-27 Thu 17:03] [[http://www.calculators.org/math/physics.php#acceleration][Physics Calculators Guide: 204 Classical Mechanics Physics Calculators]]
 
 Mini Calculator Logo. Online Physics Calculators
+** [2017-04-27 Thu 17:08] [[http://bulletphysics.org/wordpress/][Real-Time Physics Simulation]]
+The Bullet 2.86 has improved Python bindings, pybullet, for robotics, machine learning and VR, see the pybullet quickstart guide.
+
+Furthermore, the PGS LCP constraint solver has a new option to terminate as soon as the residual (error) is below a specified tolerance (instead of terminating after a fixed number of iterations). There is preliminary support to load some MuJoCo MJCF xml files (see data/mjcf), and haptic experiments with a VR glove. Get the latest release from github here.App_SharedMemoryPhysics_VR_vs20 2017-01-26 10-12-45-16
