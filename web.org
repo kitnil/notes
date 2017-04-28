@@ -11668,3 +11668,5 @@ Share
 The Jupyter Notebook is an open-source web application that allows you to create and share documents that contain live code, equations, visualizations and explanatory text. Uses include: data cleaning and transformation, numerical simulation, statistical modeling, machine learning and much more.
 ** [2017-04-28 Fri 09:47] [[https://habrahabr.ru/post/312268/][Python для математических вычислений / Хабрахабр]]
 Для линейной алгебры в python принято использовать numpy, вектора и матрицы которого типизированы, в отличии от встроенный в язык списков. Для научных вычислений используется библиотека scipy.
+** [2017-04-28 Fri 09:58] [[https://github.com/sympy/sympy/wiki/Quick-examples][Quick examples · sympy/sympy Wiki]]
+This page gives quick examples of common symbolic calculations in SymPy. Print it and keep it under your pillow!
