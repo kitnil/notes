@@ -11676,3 +11676,5 @@ Pint is a Python package to define, operate and manipulate physical quantities: 
 It is distributed with a comprehensive list of physical units, prefixes and constants. Due to its modular design, you can extend (or even rewrite!) the complete list without changing the source code. It supports a lot of numpy mathematical operations without monkey patching or wrapping numpy.
 
 It has a complete test coverage. It runs in Python 2.6 and 3.X with no other dependency. It is licensed under BSD.
+** [2017-04-28 Fri 10:26] [[https://pint.readthedocs.io/en/0.7.2/tutorial.html][Tutorial — pint 0.7.2 documentation]]
+If you use Pint in multiple modules within your Python package, you normally want to avoid creating multiple instances of the unit registry. The best way to do this is by instantiating the registry in a single place. For example, you can add the following code to your package __init__.py:
