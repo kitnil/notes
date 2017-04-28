@@ -11706,3 +11706,13 @@ Elastix имеет веб-интерфейс и включает в себя т�
 
 Функциональность Elastix основана на проектах с открытым кодом, включая Asterisk, HylaFax, OpenFire, A2Billing, RoundCube, MySQL, vTiger CRM, FreePBX и Postf
 #+END_QUOTE
+** [2017-04-28 Fri 20:31] [[https://en.wikipedia.org/wiki/Elastix][Elastix - Wikipedia]]
+#+BEGIN_QUOTE
+Elastix is an unified communications server software that brings together IP PBX, email, IM, faxing and collaboration functionality. It has a Web interface and includes capabilities such as a call center software with predictive dialing.
+
+The Elastix 2.5 functionality is based on open source projects including Asterisk, FreePBX, HylaFAX, Openfire and Postfix. Those packages offer the PBX, fax, instant messaging and email functions, respectively.
+
+As of Elastix 5.0 all functionality is provided through 3CX, a software based private branch exchange (PBX) based on the SIP (Session Initiation Protocol) standard. It enables extensions to make calls via the public switched telephone network (PSTN) or via Voice over Internet Protocol (VoIP) services. Elastix 5.0 is an IP business phone system that supports standard SIP soft/hard phones, VoIP services and traditional PSTN phone lines.
+
+Elastix 2.5 is free software, released under the GNU General Public License. Elastix 5.0 is Proprietary released under the terms of the 3CX license
+#+END_QUOTE
