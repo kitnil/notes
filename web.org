@@ -11670,3 +11670,9 @@ The Jupyter Notebook is an open-source web application that allows you to create
 Для линейной алгебры в python принято использовать numpy, вектора и матрицы которого типизированы, в отличии от встроенный в язык списков. Для научных вычислений используется библиотека scipy.
 ** [2017-04-28 Fri 09:58] [[https://github.com/sympy/sympy/wiki/Quick-examples][Quick examples · sympy/sympy Wiki]]
 This page gives quick examples of common symbolic calculations in SymPy. Print it and keep it under your pillow!
+** [2017-04-28 Fri 10:21] [[https://github.com/hgrecco/pint][hgrecco/pint: Operate and manipulate physical quantities in Python]]
+Pint is a Python package to define, operate and manipulate physical quantities: the product of a numerical value and a unit of measurement. It allows arithmetic operations between them and conversions from and to different units.
+
+It is distributed with a comprehensive list of physical units, prefixes and constants. Due to its modular design, you can extend (or even rewrite!) the complete list without changing the source code. It supports a lot of numpy mathematical operations without monkey patching or wrapping numpy.
+
+It has a complete test coverage. It runs in Python 2.6 and 3.X with no other dependency. It is licensed under BSD.
