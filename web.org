@@ -11807,3 +11807,13 @@ Part I of a step by step reasoned porting of the Official React Tutorial to Reag
 Tutorial 20 - House Keeping
 
 Step by step guide for publishing a library to clojars repository by using boot.
+** [2017-04-30 Sun 00:58] [[https://github.com/jdenen/mastodon.el][jdenen/mastodon.el: Emacs client for Mastodon]]
+Clone this repository and add the lisp directory to your load path. Then, require it and go.
+
+(add-to-list 'load-path "/path/to/mastodon.el/lisp")
+(require 'mastodon)
+
+Or, with use-package:
+
+(use-package mastodon
+  :load-path "/path/to/mastodon.el/lisp")
