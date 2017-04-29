@@ -11730,3 +11730,9 @@ The game developed with Visual Studio 2015, and tested on Windows 10.
 #+END_QUOTE
 ** [2017-04-29 Sat 09:22] [[https://github.com/agendav/agendav][agendav/agendav: A CalDAV web client similar to Google Calendar]]
 AgenDAV is a CalDAV web client which features an AJAX interface to allow users to manage their own calendars and shared ones. It's released under the GPLv3 license.
+** [2017-04-29 Sat 09:23] [[https://github.com/pimutils/todoman][pimutils/todoman: A simple CalDAV-based todo manager.]]
+Todoman is a simple, standards-based, cli todo (aka: task) manager. Todos are stored into icalendar files, which means you can sync them via CalDAV using, for example, vdirsyncer.
+
+Todoman is now part of the pimutils project, and is hosted at GitHub.
+
+Todoman should run fine on any Unix-like OS. It's been tested on GNU/Linux, BSD, and macOS. We do not support windows, and very basic testing seems to indicate it does not work.
