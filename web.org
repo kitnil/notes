@@ -11890,3 +11890,18 @@ Get a quick idea of what figwheel does by watching the 6 minute flappy bird demo
 Learn even more by watching a 45 minute talk on Figwheel given at ClojureWest 2015.
 
 Read the introductory blog post.
+** [2017-04-30 Sun 14:25] [[https://github.com/limist/literate-programming-examples][limist/literate-programming-examples: A collection of literate programming examples using Emacs Org mode; these examples are directly usable (copy and start hacking), and/or can serve as educational literate programs. Clojure will be the preferred language.]]
+#+BEGIN_QUOTE
+A literate program combines code and prose (documentation) in one file format. The term was coined by Donald Knuth in his September 1983 paper, Literate Programming, available online. Decades later, Knuth asserts that literate programming:
+
+Was the most important outcome of creating TeX.
+Enables faster and more reliable creation of software.
+Manages complexity better than any other methodology he's aware of.
+Is a source of joy when programming.
+Enables extraordinary achievements in creating software.
+Can these claims be made by non-Knuth programmers who adopt literate programming (LP) for themselves? I believe the time is ripe to find out, as we finally have a tool that is simple (plain text), flexible, and powerful, with mature LP capabilities: Emacs Org mode.
+
+Thus this repository is a collection of literate programming (LP) examples, using Emacs Org mode. These examples are intended to be directly usable (copy and start hacking), and/or to serve as educational literate programs. The long-term goal is to collect and organize a corpus of useful LP examples that point towards Knuth's vision of programs-as-literature.
+
+
+#+END_QUOTE
