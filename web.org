@@ -11829,3 +11829,7 @@ This is a quick introduction to the Elixir syntax for Erlang developers and vice
 
 
 #+END_QUOTE
+** [2017-04-30 Sun 10:37] [[https://developer.android.com/studio/run/emulator.html#vm-linux][Run Apps on the Android Emulator | Android Studio]]
+The Android Emulator simulates a device and displays it on your development computer. It lets you prototype, develop, and test Android apps without using a hardware device. The emulator supports Android phone, tablet, Android Wear, and Android TV devices. It comes with predefined device types so you can get started quickly, and you can create your own device definitions and emulator skins.
+
+The Android Emulator is fast, powerful, and feature-rich. It can transfer information faster than using a connected hardware device, speeding up the development process. The multi-core feature lets the emulator take advantage of multiple core processors on your development computer to improve emulator performance even more.
