@@ -11911,3 +11911,17 @@ Incanter is a Clojure-based, R-like statistical computing and graphics environme
 Nightweb is an app for Android devices and PCs that connects you to an anonymous, peer-to-peer social network. It is written in Clojure and uses I2P and BitTorrent on the backend. Please see the website for a general overview, and the protocol page for a more in-depth explanation of how it works.
 ** [2017-04-30 Sun 17:12] [[https://github.com/lk-geimfari/awesomo][lk-geimfari/awesomo: An extensive list of interesting open source projects written in С, C++, Clojure, Lisp (Common/Emacs), Elixir, Erlang, Elm, Golang, Haskell, JavaScript, Lua, OCaml, Python, R, Ruby, Rust, Scala etc.]]
  An extensive list of interesting open source projects written in С, C++, Clojure, Lisp (Common/Emacs), Elixir, Erlang, Elm, Golang, Haskell, JavaScript, Lua, OCaml, Python, R, Ruby, Rust, Scala etc. https://lk-geimfari.github.io/awesomo/
+** [2017-04-30 Sun 17:14] [[https://github.com/tonini/alchemist.el][tonini/alchemist.el: Elixir Tooling Integration Into Emacs]]
+Alchemist comes with a bunch of features, which are:
+
+    Mix integration
+    Compile & Execution of Elixir code
+    Inline code evaluation
+    Inline macro expanding
+    Documentation lookup
+    Definition lookup
+    Powerful IEx integration
+    Smart code completion
+    Elixir project management
+    Phoenix support
+    Integration with company-mode
