@@ -11867,3 +11867,9 @@ Figwheel support is based on the brilliant solution developed by Will Decker dec
 For more ClojureScript React Native resources visit cljsrn.org.
 
 Contributions are very welcome.
+** [2017-04-30 Sun 12:23] [[https://github.com/clojure-emacs/cider-nrepl][clojure-emacs/cider-nrepl: nREPL middleware for CIDER]]
+A collection of nREPL middleware designed to enhance CIDER.
+
+If you're just a user trying to get started with CIDER, then you probably don't want to read this. You should follow the steps in CIDER's Readme instead.
+
+If you're trying to use cider-nrepl for some other purpose, the sections below outline how to include it in a project.
