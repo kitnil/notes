@@ -11882,3 +11882,11 @@ Two reasons:
 Piggieback provides an alternative ClojureScript REPL entry point (cemerick.piggieback/cljs-repl) that changes an nREPL session into a ClojureScript REPL for eval and load-file operations, while accepting all the same options as cljs.repl/repl. When the ClojureScript REPL is terminated (by sending :cljs/quit for evaluation), the nREPL session is restored to it original state.
 ** [2017-04-30 Sun 13:34] [[https://github.com/clojure-android/lein-droid][clojure-android/lein-droid: A Leiningen plugin for building Clojure/Android projects]]
 A Leiningen plugin to simplify Clojure development for Android platform. It acts as a build-tool for Clojure/Android projects.
+** [2017-04-30 Sun 13:38] [[https://github.com/bhauman/lein-figwheel][bhauman/lein-figwheel: Figwheel builds your ClojureScript code and hot loads it into the browser as you are coding!]]
+Figwheel builds your ClojureScript code and hot loads it into the browser as you are coding!
+
+Get a quick idea of what figwheel does by watching the 6 minute flappy bird demo of figwheel.
+
+Learn even more by watching a 45 minute talk on Figwheel given at ClojureWest 2015.
+
+Read the introductory blog post.
