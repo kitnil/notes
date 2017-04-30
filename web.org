@@ -11873,3 +11873,10 @@ A collection of nREPL middleware designed to enhance CIDER.
 If you're just a user trying to get started with CIDER, then you probably don't want to read this. You should follow the steps in CIDER's Readme instead.
 
 If you're trying to use cider-nrepl for some other purpose, the sections below outline how to include it in a project.
+** [2017-04-30 Sun 12:46] [[https://github.com/cemerick/piggieback][cemerick/piggieback: nREPL support for ClojureScript REPLs]]
+Two reasons:
+
+    The default ClojureScript REPL (as described in the "quick start" tutorial) assumes that it is running in a teletype environment. This works fine with nREPL tools in that environment (e.g. lein repl in Terminal.app or gnome-terminal, etc), but isn't suitable for development environments that have richer interaction models (including editors like vim [fireplace] and emacs [CIDER] and IDEs like Intellij [Cursive] and Eclipse [Counterclockwise]).
+    Most of the more advanced tool support for Clojure and ClojureScript (code completion, introspection and inspector utilities, refactoring tools, etc) is packaged and delivered as nREPL extensions.
+
+Piggieback provides an alternative ClojureScript REPL entry point (cemerick.piggieback/cljs-repl) that changes an nREPL session into a ClojureScript REPL for eval and load-file operations, while accepting all the same options as cljs.repl/repl. When the ClojureScript REPL is terminated (by sending :cljs/quit for evaluation), the nREPL session is restored to it original state.
