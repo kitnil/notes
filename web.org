@@ -11823,3 +11823,9 @@ This package provides basic interaction with a Clojure subprocess (REPL). It's b
 inf-clojure has two components - a nice Clojure REPL with auto-completion and a minor mode (inf-clojure-minor-mode), which extends clojure-mode with commands to evaluate forms directly in the REPL.
 
 For a more powerful/full-featured solution see CIDER.
+** [2017-04-30 Sun 10:05] [[http://elixir-lang.org/crash-course.html][Erlang/Elixir Syntax: A Crash Course - Elixir]]
+#+BEGIN_QUOTE
+This is a quick introduction to the Elixir syntax for Erlang developers and vice-versa. It is the absolute minimum amount of knowledge you need in order to understand Elixir/Erlang code, support interoperability, read the docs, sample code, etc.
+
+
+#+END_QUOTE
