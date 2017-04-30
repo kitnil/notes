@@ -11833,3 +11833,22 @@ This is a quick introduction to the Elixir syntax for Erlang developers and vice
 The Android Emulator simulates a device and displays it on your development computer. It lets you prototype, develop, and test Android apps without using a hardware device. The emulator supports Android phone, tablet, Android Wear, and Android TV devices. It comes with predefined device types so you can get started quickly, and you can create your own device definitions and emulator skins.
 
 The Android Emulator is fast, powerful, and feature-rich. It can transfer information faster than using a connected hardware device, speeding up the development process. The multi-core feature lets the emulator take advantage of multiple core processors on your development computer to improve emulator performance even more.
+** [2017-04-30 Sun 11:32] [[https://stackoverflow.com/questions/27202353/how-to-open-the-avd-manager-on-ubuntu-linux-from-the-command-line][android - How to open the AVD manager on Ubuntu Linux from the command line? - Stack Overflow]]
+Open Android Studio with a valid studio project (if you don't have one, simply create one empty). After you've your project open, go to Tools => Android => AVD Manager. Note that this menu does not appear if you don't have a valid Android Studio project open.
+
+Now you can safely close Android Studio if you only want the AVD Manager.
+From command line
+
+If you want to use the command line you'll first need to create the virtual device using avdmanager, located under $ANDROID_HOME/tools/bin/avdmanager like so:
+
+$ANDROID_HOME/tools/bin/avdmanager create avd --force --name testAVD --abi google_apis/x86_64 --package 'system-images;android-23;google_apis;x86_64'
+
+After you created the device to emulate, then you need to open it with emulator, which is located under $ANDROID_HOME/tools/emulator. The command for the previously created device should be something like:
+
+emulator -avd testAVD
+
+If it crashes saying something like...
+
+[140022905190208]:ERROR:./android/qt/qt_setup.cpp:28:Qt library not found at ../emulator/lib64/qt/lib
+
+Try running the emulator command inside the $ANDROID_HOME/tools folder, otherwise won't work.
