@@ -11857,3 +11857,13 @@ Try running the emulator command inside the $ANDROID_HOME/tools folder, otherwis
 
 Watchman exists to watch files and record when they actually change. It can also trigger actions (such as rebuilding assets) when matching files change.
 Documentation
+** [2017-04-30 Sun 11:55] [[https://github.com/drapanjanas/re-natal][drapanjanas/re-natal: Bootstrap ClojureScript React Native apps]]
+Re-Natal is a simple command-line utility that automates most of the process of setting up a React Native app running on ClojureScript with Reagent + re-frame, Om.Next or Rum.
+
+This project is a fork of dmotz/natal by Dan Motzenbecker.
+
+Figwheel support is based on the brilliant solution developed by Will Decker decker405/figwheel-react-native, which works on both platforms.
+
+For more ClojureScript React Native resources visit cljsrn.org.
+
+Contributions are very welcome.
