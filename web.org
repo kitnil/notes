@@ -11852,3 +11852,8 @@ If it crashes saying something like...
 [140022905190208]:ERROR:./android/qt/qt_setup.cpp:28:Qt library not found at ../emulator/lib64/qt/lib
 
 Try running the emulator command inside the $ANDROID_HOME/tools folder, otherwise won't work.
+** [2017-04-30 Sun 11:50] [[https://github.com/facebook/watchman][facebook/watchman: Watches files and records, or triggers actions, when they change.]]
+
+
+Watchman exists to watch files and record when they actually change. It can also trigger actions (such as rebuilding assets) when matching files change.
+Documentation
