@@ -11905,3 +11905,5 @@ Thus this repository is a collection of literate programming (LP) examples, usin
 
 
 #+END_QUOTE
+** [2017-04-30 Sun 17:02] [[https://github.com/incanter/incanter][incanter/incanter: Clojure-based, R-like statistical computing and graphics environment for the JVM]]
+Incanter is a Clojure-based, R-like statistical computing and graphics environment for the JVM. At the core of Incanter are the Parallel Colt numerics library, a multithreaded version of Colt, and the JFreeChart charting library, as well as several other Java and Clojure libraries.
