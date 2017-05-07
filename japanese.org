@@ -1,5 +1,7 @@
 #+TITLE: Japanese
 
+* Words
+
 おとこ	男	otoko	man
 おんあのひと	???	onnanohito	woman
 かぞく	家族	kazoku	family
@@ -21,7 +23,7 @@
 	おはようございます	ohayougozaimasu	good morning
 		kore ha	there is
 
-                        わたし	watashi	I
+                      わたし	watashi	I
 	あなた	anata	you
 	ひと	hito	human
 
@@ -34,11 +36,14 @@
 	それ	sore	this, that	это, то, предмет возле собеседника
 	あれ	are		то, предмет вдалеке от обоих или возле третьего лица
 
-* Частицы
+* Грамматика
 
-[[https://www.youtube.com/watch?v%3DNm45O8buf4A&index%3D4&list%3DPLUQ8IPIJSszABqsC8HliK-7Q4oYj7z7r1][Японский язык - Урок 1. Основные конструкции]]
+** Частицы
 
-** は
+- [[https://www.youtube.com/watch?v%3DNm45O8buf4A&index%3D4&list%3DPLUQ8IPIJSszABqsC8HliK-7Q4oYj7z7r1][Японский язык - Урок 1. Основные конструкции]]
+- [[https://www.youtube.com/watch?v%3DRGZIcOimQkM&index%3D3&list%3DPLUQ8IPIJSszABqsC8HliK-7Q4oYj7z7r1][Японский язык - Урок 2. Основные конструкции - #2]]
+
+*** Частица указывающая на тему предложения
 
 Частица は в предложении указывает на слово или сочетание слов,
 являющимся темой предложения.  То есть слово, стоящее перед этой
@@ -50,36 +55,50 @@
 предложения.
 
 #+BEGIN_EXAMPLE
-わたし は ひと です [watashi ha hito desu] - я человек. Что касается меня, я человек.
+  わたし は ひと です [watashi ha hito desu] - я человек. Что касается меня, я человек.
 
-あなた は ひと です [anata ha hito desu] - ты человек.
+  あなた は ひと です [anata ha hito desu] - ты человек.
 
-これ は ねこ です [kore ha neko desu] - это кошка (возле меня).
+  これ は ねこ です [kore ha neko desu] - это кошка (возле меня).
 
-それ は いぬ です [sore ha inu desu] - это собака (возле тебя).
+  それ は いぬ です [sore ha inu desu] - это собака (возле тебя).
 
-おれ は そかな です [ore ha sokana desu] - то рыба (находится в далеке от обоих лиц).
+  おれ は そかな です [ore ha sokana desu] - то рыба (находится в далеке от обоих лиц).
 #+END_EXAMPLE
 
-** Принадлежность или отношение предмета
+*** Частица показывая принадлежность или отношение предмета
 
 Частица の означает принадлежность или отношение одного предмета к другому.
 
 Существительное $x$ принадлежит существительному $y$: $x$ の $y$.
 
 #+BEGIN_EXAMPLE
-わたし の ねこ [watashi no neko] - моя кошка, то есть кошка которая принадлежит мне.
+  わたし の ねこ [watashi no neko] - моя кошка, то есть кошка которая принадлежит мне.
 
-これ は なたし の ねこ です [kore ha natashi no neku desu] - это моя кошка.
+  これ は なたし の ねこ です [kore ha natashi no neku desu] - это моя кошка.
 #+END_EXAMPLE
 
-** Вопросительная частица
+*** Вопросительная частица
 
 Вопросительная частица か [ka] - играет роль вопросительного знака.
 Добавив его после です [desu] в конце, мы предадим предложению
 вопросительный оттенок.  Интонация будет тоже с повышением в конце.
 
 #+BEGIN_EXAMPLE
-それ は あなた の いぬ です か [sore ha anata no inu desu ka] - Это твоя собака?
+  それ は あなた の いぬ です か [sore ha anata no inu desu ka] - Это твоя собака?
 #+END_EXAMPLE
 
+*** Закрепить
+
+**** Вопросы
+
+#+BEGIN_EXAMPLE
+  1. あなた は ひと です [anata ha hito desu] - ???
+
+  2. これ は いぬ です [kore ha inu desu] - ???
+#+END_EXAMPLE
+
+**** Ответы
+
+1. Ты человек.
+2. Это собака.
