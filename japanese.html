@@ -3,30 +3,23 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2017-05-07 Sun 18:21 -->
-<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Japanese</title>
-<meta name="generator" content="Org mode" />
-<meta name="author" content="Oleg Pykhalov" />
+<!-- 2017-05-07 Sun 18:44 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<meta  name="author" content="Oleg Pykhalov" />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
-  .title  { text-align: center;
-             margin-bottom: .2em; }
-  .subtitle { text-align: center;
-              font-size: medium;
-              font-weight: bold;
-              margin-top:0; }
+  .title  { text-align: center; }
   .todo   { font-family: monospace; color: red; }
-  .done   { font-family: monospace; color: green; }
-  .priority { font-family: monospace; color: orange; }
+  .done   { color: green; }
   .tag    { background-color: #eee; font-family: monospace;
             padding: 2px; font-size: 80%; font-weight: normal; }
   .timestamp { color: #bebebe; }
   .timestamp-kwd { color: #5f9ea0; }
-  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
-  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
-  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .center { margin-left: auto; margin-right: auto; text-align: center; }
   .underline { text-decoration: underline; }
   #postamble p, #preamble p { font-size: 90%; margin: .2em; }
   p.verse { margin-left: 3%; }
@@ -53,110 +46,27 @@
     border: 1px solid black;
   }
   pre.src:hover:before { display: inline;}
-  /* Languages per Org manual */
-  pre.src-asymptote:before { content: 'Asymptote'; }
-  pre.src-awk:before { content: 'Awk'; }
-  pre.src-C:before { content: 'C'; }
-  /* pre.src-C++ doesn't work in CSS */
-  pre.src-clojure:before { content: 'Clojure'; }
-  pre.src-css:before { content: 'CSS'; }
-  pre.src-D:before { content: 'D'; }
-  pre.src-ditaa:before { content: 'ditaa'; }
-  pre.src-dot:before { content: 'Graphviz'; }
-  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-sh:before    { content: 'sh'; }
+  pre.src-bash:before  { content: 'sh'; }
   pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
-  pre.src-fortran:before { content: 'Fortran'; }
-  pre.src-gnuplot:before { content: 'gnuplot'; }
-  pre.src-haskell:before { content: 'Haskell'; }
-  pre.src-java:before { content: 'Java'; }
-  pre.src-js:before { content: 'Javascript'; }
-  pre.src-latex:before { content: 'LaTeX'; }
-  pre.src-ledger:before { content: 'Ledger'; }
-  pre.src-lisp:before { content: 'Lisp'; }
-  pre.src-lilypond:before { content: 'Lilypond'; }
-  pre.src-lua:before { content: 'Lua'; }
-  pre.src-matlab:before { content: 'MATLAB'; }
-  pre.src-mscgen:before { content: 'Mscgen'; }
-  pre.src-ocaml:before { content: 'Objective Caml'; }
-  pre.src-octave:before { content: 'Octave'; }
-  pre.src-org:before { content: 'Org mode'; }
-  pre.src-oz:before { content: 'OZ'; }
-  pre.src-plantuml:before { content: 'Plantuml'; }
-  pre.src-processing:before { content: 'Processing.js'; }
-  pre.src-python:before { content: 'Python'; }
-  pre.src-R:before { content: 'R'; }
-  pre.src-ruby:before { content: 'Ruby'; }
-  pre.src-sass:before { content: 'Sass'; }
-  pre.src-scheme:before { content: 'Scheme'; }
-  pre.src-screen:before { content: 'Gnu Screen'; }
-  pre.src-sed:before { content: 'Sed'; }
-  pre.src-sh:before { content: 'shell'; }
-  pre.src-sql:before { content: 'SQL'; }
-  pre.src-sqlite:before { content: 'SQLite'; }
-  /* additional languages in org.el's org-babel-load-languages alist */
-  pre.src-forth:before { content: 'Forth'; }
-  pre.src-io:before { content: 'IO'; }
-  pre.src-J:before { content: 'J'; }
-  pre.src-makefile:before { content: 'Makefile'; }
-  pre.src-maxima:before { content: 'Maxima'; }
-  pre.src-perl:before { content: 'Perl'; }
-  pre.src-picolisp:before { content: 'Pico Lisp'; }
-  pre.src-scala:before { content: 'Scala'; }
-  pre.src-shell:before { content: 'Shell Script'; }
-  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
-  /* additional language identifiers per "defun org-babel-execute"
-       in ob-*.el */
-  pre.src-cpp:before  { content: 'C++'; }
-  pre.src-abc:before  { content: 'ABC'; }
-  pre.src-coq:before  { content: 'Coq'; }
-  pre.src-groovy:before  { content: 'Groovy'; }
-  /* additional language identifiers from org-babel-shell-names in
-     ob-shell.el: ob-shell is the only babel language using a lambda to put
-     the execution function name together. */
-  pre.src-bash:before  { content: 'bash'; }
-  pre.src-csh:before  { content: 'csh'; }
-  pre.src-ash:before  { content: 'ash'; }
-  pre.src-dash:before  { content: 'dash'; }
-  pre.src-ksh:before  { content: 'ksh'; }
-  pre.src-mksh:before  { content: 'mksh'; }
-  pre.src-posh:before  { content: 'posh'; }
-  /* Additional Emacs modes also supported by the LaTeX listings package */
-  pre.src-ada:before { content: 'Ada'; }
-  pre.src-asm:before { content: 'Assembler'; }
-  pre.src-caml:before { content: 'Caml'; }
-  pre.src-delphi:before { content: 'Delphi'; }
-  pre.src-html:before { content: 'HTML'; }
-  pre.src-idl:before { content: 'IDL'; }
-  pre.src-mercury:before { content: 'Mercury'; }
-  pre.src-metapost:before { content: 'MetaPost'; }
-  pre.src-modula-2:before { content: 'Modula-2'; }
-  pre.src-pascal:before { content: 'Pascal'; }
-  pre.src-ps:before { content: 'PostScript'; }
-  pre.src-prolog:before { content: 'Prolog'; }
-  pre.src-simula:before { content: 'Simula'; }
-  pre.src-tcl:before { content: 'tcl'; }
-  pre.src-tex:before { content: 'TeX'; }
-  pre.src-plain-tex:before { content: 'Plain TeX'; }
-  pre.src-verilog:before { content: 'Verilog'; }
-  pre.src-vhdl:before { content: 'VHDL'; }
-  pre.src-xml:before { content: 'XML'; }
-  pre.src-nxml:before { content: 'XML'; }
-  /* add a generic configuration mode; LaTeX export needs an additional
-     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
-  pre.src-conf:before { content: 'Configuration File'; }
+  pre.src-R:before     { content: 'R'; }
+  pre.src-perl:before  { content: 'Perl'; }
+  pre.src-java:before  { content: 'Java'; }
+  pre.src-sql:before   { content: 'SQL'; }
 
   table { border-collapse:collapse; }
   caption.t-above { caption-side: top; }
   caption.t-bottom { caption-side: bottom; }
   td, th { vertical-align:top;  }
-  th.org-right  { text-align: center;  }
-  th.org-left   { text-align: center;   }
-  th.org-center { text-align: center; }
-  td.org-right  { text-align: right;  }
-  td.org-left   { text-align: left;   }
-  td.org-center { text-align: center; }
+  th.right  { text-align: center;  }
+  th.left   { text-align: center;   }
+  th.center { text-align: center; }
+  td.right  { text-align: right;  }
+  td.left   { text-align: left;   }
+  td.center { text-align: center; }
   dt { font-weight: bold; }
-  .footpara { display: inline; }
+  .footpara:nth-child(2) { display: inline; }
+  .footpara { display: block; }
   .footdef  { margin-bottom: 1em; }
   .figure { padding: 1em; }
   .figure p { text-align: center; }
@@ -176,7 +86,6 @@
     { font-size: 10px; font-weight: bold; white-space: nowrap; }
   .org-info-js_search-highlight
     { background-color: #ffff00; color: #000000; font-weight: bold; }
-  .org-svg { width: 90%; }
   /*]]>*/-->
 </style>
 <script type="text/javascript">
@@ -184,7 +93,7 @@
 @licstart  The following is the entire license notice for the
 JavaScript code in this tag.
 
-Copyright (C) 2012-2017 Free Software Foundation, Inc.
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
 
 The JavaScript code in this tag is free software: you can
 redistribute it and/or modify it under the terms of the GNU
@@ -225,28 +134,48 @@ for the JavaScript code in this tag.
  }
 /*]]>*///-->
 </script>
-<script type="text/x-mathjax-config">
+<script type="text/javascript" src="http://orgmode.org/mathjax/MathJax.js"></script>
+<script type="text/javascript">
+<!--/*--><![CDATA[/*><!--*/
     MathJax.Hub.Config({
+        // Only one of the two following lines, depending on user settings
+        // First allows browser-native MathML display, second forces HTML/CSS
+        //  config: ["MMLorHTML.js"], jax: ["input/TeX"],
+            jax: ["input/TeX", "output/HTML-CSS"],
+        extensions: ["tex2jax.js","TeX/AMSmath.js","TeX/AMSsymbols.js",
+                     "TeX/noUndefined.js"],
+        tex2jax: {
+            inlineMath: [ ["\\(","\\)"] ],
+            displayMath: [ ['$$','$$'], ["\\[","\\]"], ["\\begin{displaymath}","\\end{displaymath}"] ],
+            skipTags: ["script","noscript","style","textarea","pre","code"],
+            ignoreClass: "tex2jax_ignore",
+            processEscapes: false,
+            processEnvironments: true,
+            preview: "TeX"
+        },
+        showProcessingMessages: true,
         displayAlign: "center",
-        displayIndent: "0em",
+        displayIndent: "2em",
 
-        "HTML-CSS": { scale: 100,
-                        linebreaks: { automatic: "false" },
-                        webFont: "TeX"
-                       },
-        SVG: {scale: 100,
-              linebreaks: { automatic: "false" },
-              font: "TeX"},
-        NativeMML: {scale: 100},
-        TeX: { equationNumbers: {autoNumber: "AMS"},
-               MultLineWidth: "85%",
-               TagSide: "right",
-               TagIndent: ".8em"
+        "HTML-CSS": {
+             scale: 100,
+             availableFonts: ["STIX","TeX"],
+             preferredFont: "TeX",
+             webFont: "TeX",
+             imageFont: "TeX",
+             showMathMenu: true,
+        },
+        MMLorHTML: {
+             prefer: {
+                 MSIE:    "MML",
+                 Firefox: "MML",
+                 Opera:   "HTML",
+                 other:   "HTML"
              }
-});
+        }
+    });
+/*]]>*///-->
 </script>
-<script type="text/javascript"
-        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
 </head>
 <body>
 <div id="content">
@@ -255,130 +184,132 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org7e6c902">1. Words</a></li>
-<li><a href="#org0f727c3">2. Вопросы</a></li>
-<li><a href="#org7e1fe2a">3. Грамматика</a>
+<li><a href="#sec-1">1. Words</a></li>
+<li><a href="#sec-2">2. Вопросы</a></li>
+<li><a href="#sec-3">3. Грамматика</a>
 <ul>
-<li><a href="#orgcdfcd26">3.1. Частицы</a>
+<li><a href="#sec-3-1">3.1. Частицы</a>
 <ul>
-<li><a href="#org1d58d6d">3.1.1. Частица указывающая на тему предложения</a></li>
-<li><a href="#orgff4e9a8">3.1.2. Частица показывая принадлежность или отношение предмета</a></li>
-<li><a href="#org79a7995">3.1.3. Вопросительная частица</a></li>
-<li><a href="#orgb3395b5">3.1.4. Закрепить</a></li>
-<li><a href="#org3229837">3.1.5. Частица указывающая на предмет к которому направлено действие</a></li>
-<li><a href="#org467542d">3.1.6. Частица указывающая на место или на транспорт</a></li>
+<li><a href="#sec-3-1-1">3.1.1. Частица указывающая на тему предложения</a></li>
+<li><a href="#sec-3-1-2">3.1.2. Частица показывая принадлежность или отношение предмета</a></li>
+<li><a href="#sec-3-1-3">3.1.3. Вопросительная частица</a></li>
+<li><a href="#sec-3-1-4">3.1.4. Закрепить</a></li>
+<li><a href="#sec-3-1-5">3.1.5. Частица указывающая на предмет к которому направлено действие</a></li>
+<li><a href="#sec-3-1-6">3.1.6. Частица указывающая на место или на транспорт</a></li>
 </ul>
 </li>
-<li><a href="#org2d671a2">3.2. Заимствованные слова из других языков</a></li>
-<li><a href="#org1c3fab7">3.3. Формы глаголов</a>
+<li><a href="#sec-3-2">3.2. Заимствованные слова из других языков</a></li>
+<li><a href="#sec-3-3">3.3. Формы глаголов</a>
 <ul>
-<li><a href="#org6fa6167">3.3.1. Глаголы в образованной вежливой форме</a></li>
+<li><a href="#sec-3-3-1">3.3.1. Глаголы в образованной вежливой форме</a></li>
 </ul>
 </li>
-<li><a href="#orgddefcdc">3.4. Указательные местоимения</a></li>
+<li><a href="#sec-3-4">3.4. Указательные местоимения</a></li>
 </ul>
 </li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org7e6c902" class="outline-2">
-<h2 id="org7e6c902"><span class="section-number-2">1</span> Words</h2>
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1"><span class="section-number-2">1</span> Words</h2>
 <div class="outline-text-2" id="text-1">
 <p>
-Hiragana OR Katakana		Type	English	Русский
+Hiragana OR Katakana                Type        English        Русский
 </p>
 
 <p>
-おとこ	男	otoko	man
-おんあのひと	???	onnanohito	woman
-かぞく	家族	kazoku	family
-あたま	頭	atama	head
-かお	顔	kao	face
-かみ	神	kami	hear
-やめて!			stop it!
+おとこ        男        otoko        man
+おんあのひと        ???        onnanohito        woman
+かぞく        家族        kazoku        family
+あたま        頭        atama        head
+かお        顔        kao        face
+かみ        神        kami        hear
+やめて!                        stop it!
 </p>
 
 <p>
-	手洗い		toilet
-わかりません		wakarimasen
-	英語	eigo	english
-	服	fuku	clothes
-	死にそう	shini sou	seems like I'm going to die
-	警察	keisatsu	police
-	亜部内	abunai	dangerous
-	危険	kiken	peril, hazard
-みます		mimasu	to see
-		ikimasu	to go
-おはようございます		ohayougozaimasu	good morning
-		kore ha	there is
+        手洗い                toilet
+わかりません                wakarimasen
+        英語        eigo        english
+        服        fuku        clothes
+        死にそう        shini sou        seems like I'm going to die
+        警察        keisatsu        police
+        亜部内        abunai        dangerous
+        危険        kiken        peril, hazard
+みます                mimasu        to see
+                ikimasu        to go
+おはようございます                ohayougozaimasu        good morning
+                kore ha        there is
 </p>
 
 <p>
-わたし		watashi	I	я
-あなた		anata	you	ты
-ひと		hito	human	человек
+わたし                watashi        I        я
+あなた                anata        you        ты
+ひと                hito        human        человек
 </p>
 
 <p>
-いぬ		inu	dog	собака
-ねこ		neko	cat	кошка
-さかな		sakana	fish	рыба
-は = わ		ha		частица
+いぬ                inu        dog        собака
+ねこ                neko        cat        кошка
+さかな                sakana        fish        рыба
+は = わ                ha                частица
 </p>
 
 <p>
-これ		kore	this	это, предмет возле говорящего
-それ		sore	this, that	это, то, предмет возле собеседника
-あれ		are		то, предмет вдалеке от обоих или возле третьего лица
+これ                kore        this        это, предмет возле говорящего
+それ                sore        this, that        это, то, предмет возле собеседника
+あれ                are                то, предмет вдалеке от обоих или возле третьего лица
 </p>
 
 <p>
-ジュス		jusu	juse	сок
-ペン		pen	pen	ручка
-でんしせ		denshise	train	электропоезд
-くつ		kutsu                   boots	обувь
-そら		sora	sky	небо
-がつこう		gatsukou	school	школа
-だいがくー		daigak-	university	университет
-にほん		nihon	Japan	Япония
-につぽんー		nipon	Japan	Япония
-にほんごー		nihongo	japanese	японский язык
-のみます		nomimas|u	drink	пить
-かいます		kaimas|u	buy	покупать
-へんきようしますー		henkiyoushimas|u-	learn	заниматься, учиться
-いきます		ikimas|u	go, ride	идти, ехать
-みます		mimas|u	see, watch	видеть, смотреть
-を		wo		частица
+ジュス                jusu        juse        сок
+ペン                pen        pen        ручка
+でんしせ                denshise        train        электропоезд
+くつ                kutsu                   boots        обувь
+そら                sora        sky        небо
+がつこう                gatsukou        school        школа
+だいがくー                daigak-        university        университет
+にほん                nihon        Japan        Япония
+につぽんー                nipon        Japan        Япония
+にほんごー                nihongo        japanese        японский язык
+のみます                nomimas|u        drink        пить
+かいます                kaimas|u        buy        покупать
+へんきようしますー                henkiyoushimas|u-        learn        заниматься, учиться
+いきます                ikimas|u        go, ride        идти, ехать
+みます                mimas|u        see, watch        видеть, смотреть
+を                wo                частица
 </p>
 </div>
 </div>
 
 
-<div id="outline-container-org0f727c3" class="outline-2">
-<h2 id="org0f727c3"><span class="section-number-2">2</span> Вопросы</h2>
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2"><span class="section-number-2">2</span> Вопросы</h2>
 <div class="outline-text-2" id="text-2">
 <p>
 Как правильно пишется?
-へんきようしますー		henkiyoushimasu-	learn	заниматься, учиться
+へんきようしますー                henkiyoushimasu-        learn        заниматься, учиться
 </p>
 </div>
 </div>
 
-<div id="outline-container-org7e1fe2a" class="outline-2">
-<h2 id="org7e1fe2a"><span class="section-number-2">3</span> Грамматика</h2>
+<div id="outline-container-sec-3" class="outline-2">
+<h2 id="sec-3"><span class="section-number-2">3</span> Грамматика</h2>
 <div class="outline-text-2" id="text-3">
-</div><div id="outline-container-orgcdfcd26" class="outline-3">
-<h3 id="orgcdfcd26"><span class="section-number-3">3.1</span> Частицы</h3>
+</div><div id="outline-container-sec-3-1" class="outline-3">
+<h3 id="sec-3-1"><span class="section-number-3">3.1</span> Частицы</h3>
 <div class="outline-text-3" id="text-3-1">
 <ul class="org-ul">
-<li><a href="https://www.youtube.com/watch?v=Nm45O8buf4A&amp;index=4&amp;list=PLUQ8IPIJSszABqsC8HliK-7Q4oYj7z7r1">Японский язык - Урок 1. Основные конструкции</a></li>
-<li><a href="https://www.youtube.com/watch?v=RGZIcOimQkM&amp;index=3&amp;list=PLUQ8IPIJSszABqsC8HliK-7Q4oYj7z7r1">Японский язык - Урок 2. Основные конструкции - #2</a></li>
+<li><a href="https://www.youtube.com/watch?v=Nm45O8buf4A&index=4&list=PLUQ8IPIJSszABqsC8HliK-7Q4oYj7z7r1">Японский язык - Урок 1. Основные конструкции</a>
+</li>
+<li><a href="https://www.youtube.com/watch?v=RGZIcOimQkM&index=3&list=PLUQ8IPIJSszABqsC8HliK-7Q4oYj7z7r1">Японский язык - Урок 2. Основные конструкции - #2</a>
+</li>
 </ul>
 </div>
 
-<div id="outline-container-org1d58d6d" class="outline-4">
-<h4 id="org1d58d6d"><span class="section-number-4">3.1.1</span> Частица указывающая на тему предложения</h4>
+<div id="outline-container-sec-3-1-1" class="outline-4">
+<h4 id="sec-3-1-1"><span class="section-number-4">3.1.1</span> Частица указывающая на тему предложения</h4>
 <div class="outline-text-4" id="text-3-1-1">
 <p>
 Частица は в предложении указывает на слово или сочетание слов,
@@ -403,8 +334,8 @@ Hiragana OR Katakana		Type	English	Русский
 </div>
 </div>
 
-<div id="outline-container-orgff4e9a8" class="outline-4">
-<h4 id="orgff4e9a8"><span class="section-number-4">3.1.2</span> Частица показывая принадлежность или отношение предмета</h4>
+<div id="outline-container-sec-3-1-2" class="outline-4">
+<h4 id="sec-3-1-2"><span class="section-number-4">3.1.2</span> Частица показывая принадлежность или отношение предмета</h4>
 <div class="outline-text-4" id="text-3-1-2">
 <p>
 Частица の означает принадлежность или отношение одного предмета к
@@ -419,8 +350,8 @@ Hiragana OR Katakana		Type	English	Русский
 </div>
 </div>
 
-<div id="outline-container-org79a7995" class="outline-4">
-<h4 id="org79a7995"><span class="section-number-4">3.1.3</span> Вопросительная частица</h4>
+<div id="outline-container-sec-3-1-3" class="outline-4">
+<h4 id="sec-3-1-3"><span class="section-number-4">3.1.3</span> Вопросительная частица</h4>
 <div class="outline-text-4" id="text-3-1-3">
 <p>
 Вопросительная частица か [ka] - играет роль вопросительного знака.
@@ -434,30 +365,36 @@ Hiragana OR Katakana		Type	English	Русский
 </div>
 </div>
 
-<div id="outline-container-orgb3395b5" class="outline-4">
-<h4 id="orgb3395b5"><span class="section-number-4">3.1.4</span> Закрепить</h4>
+<div id="outline-container-sec-3-1-4" class="outline-4">
+<h4 id="sec-3-1-4"><span class="section-number-4">3.1.4</span> Закрепить</h4>
 <div class="outline-text-4" id="text-3-1-4">
-</div><ol class="org-ol"><li><a id="org0957357"></a>Вопросы<br /><div class="outline-text-5" id="text-3-1-4-1">
+</div><ol class="org-ol"><li><a id="sec-3-1-4-1" name="sec-3-1-4-1"></a>Вопросы<br  /><div class="outline-text-5" id="text-3-1-4-1">
 <pre class="example">
 1. あなた は ひと です [anata ha hito desu] - ???
 2. これ は いぬ です [kore ha inu desu] - ???
 3. それ は なたし の さかな です [sore ha natashi no sakana desu] - ???
 4. あれ は あなた の ねこ です か [are ha anata no neko desu ka] - ???
 </pre>
-</div></li>
+</div>
+</li>
 
-<li><a id="org83ec260"></a>Ответы<br /><div class="outline-text-5" id="text-3-1-4-2">
+<li><a id="sec-3-1-4-2" name="sec-3-1-4-2"></a>Ответы<br  /><div class="outline-text-5" id="text-3-1-4-2">
 <ol class="org-ol">
-<li>Ты человек.</li>
-<li>Это собака (возле говорящего).</li>
-<li>Это моя рыба (возле собеседника).</li>
-<li>То (на расстоянии) твоя кошка?</li>
+<li>Ты человек.
+</li>
+<li>Это собака (возле говорящего).
+</li>
+<li>Это моя рыба (возле собеседника).
+</li>
+<li>То (на расстоянии) твоя кошка?
+</li>
 </ol>
-</div></li></ol>
+</div>
+</li></ol>
 </div>
 
-<div id="outline-container-org3229837" class="outline-4">
-<h4 id="org3229837"><span class="section-number-4">3.1.5</span> Частица указывающая на предмет к которому направлено действие</h4>
+<div id="outline-container-sec-3-1-5" class="outline-4">
+<h4 id="sec-3-1-5"><span class="section-number-4">3.1.5</span> Частица указывающая на предмет к которому направлено действие</h4>
 <div class="outline-text-4" id="text-3-1-5">
 <p>
 Слово стоящее перед частицей を [wo] находится в винительном падеже и
@@ -488,8 +425,8 @@ Hiragana OR Katakana		Type	English	Русский
 </div>
 </div>
 
-<div id="outline-container-org467542d" class="outline-4">
-<h4 id="org467542d"><span class="section-number-4">3.1.6</span> Частица указывающая на место или на транспорт</h4>
+<div id="outline-container-sec-3-1-6" class="outline-4">
+<h4 id="sec-3-1-6"><span class="section-number-4">3.1.6</span> Частица указывающая на место или на транспорт</h4>
 <div class="outline-text-4" id="text-3-1-6">
 <p>
 で [de]
@@ -532,32 +469,66 @@ TODO
 </div>
 </div>
 
-<div id="outline-container-org2d671a2" class="outline-3">
-<h3 id="org2d671a2"><span class="section-number-3">3.2</span> Заимствованные слова из других языков</h3>
+<div id="outline-container-sec-3-2" class="outline-3">
+<h3 id="sec-3-2"><span class="section-number-3">3.2</span> Заимствованные слова из других языков</h3>
 </div>
 
 
-<div id="outline-container-org1c3fab7" class="outline-3">
-<h3 id="org1c3fab7"><span class="section-number-3">3.3</span> Формы глаголов</h3>
+<div id="outline-container-sec-3-3" class="outline-3">
+<h3 id="sec-3-3"><span class="section-number-3">3.3</span> Формы глаголов</h3>
 <div class="outline-text-3" id="text-3-3">
-</div><div id="outline-container-org6fa6167" class="outline-4">
-<h4 id="org6fa6167"><span class="section-number-4">3.3.1</span> Глаголы в образованной вежливой форме</h4>
+</div><div id="outline-container-sec-3-3-1" class="outline-4">
+<h4 id="sec-3-3-1"><span class="section-number-4">3.3.1</span> Глаголы в образованной вежливой форме</h4>
 </div>
 </div>
 
-<div id="outline-container-orgddefcdc" class="outline-3">
-<h3 id="orgddefcdc"><span class="section-number-3">3.4</span> Указательные местоимения</h3>
+<div id="outline-container-sec-3-4" class="outline-3">
+<h3 id="sec-3-4"><span class="section-number-3">3.4</span> Указательные местоимения</h3>
 <div class="outline-text-3" id="text-3-4">
 <pre class="example">
   これ それ あれ [kore sore are] - этот, тот.
 </pre>
+
+<pre class="example">
+  この その あの [kono sono ano] - этот, тот.
+</pre>
+
+<p>
+Не стоит их путать.  この その あの [kono sono ano] требует связанного
+с ними существительного.  То есть, в отличии от самостоятельных これ
+それ あれ [kore sore are], この その あの [kono sono ano] будут
+употребляться только с существительными на которое мы хотим указать.
+</p>
+
+<p>
+Давайте сравним два ряда слов.
+</p>
+
+<pre class="example">
+  これ それ あれ [kore sore are] - этот, тот.
+  この その あの [kono sono ano] - этот, тот.
+</pre>
+
+<p>
+Не сложно заметить, что у них есть общие слоги в начале こ そ あ [ko
+so a].  Эти слоги и будут подсказывать нам, в каких случаях какое
+слово употреблять.
+</p>
+
+<p>
+これ [kore] как и この [kono] будут указывать на предмет в близости к
+говорящему.  それ [sore] その [sonu] будут указывать на предмет возле
+собеседника.  あれ [are] あの [ano] будут указывать на предмет на
+расстоянии от обоих.  В этом они схожи.
+</p>
 </div>
 </div>
 </div>
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Oleg Pykhalov</p>
-<p class="date">Created: 2017-05-07 Sun 18:21</p>
+<p class="date">Created: 2017-05-07 Sun 18:44</p>
+<p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 25.2.1 (<a href="http://orgmode.org">Org</a> mode 8.2.10)</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
