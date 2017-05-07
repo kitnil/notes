@@ -13135,11 +13135,12 @@ Remove visual distractions and focus on writing.
 ** [2017-05-07 Sun 10:12] [[https://github.com/rdallasgray/graphene][rdallasgray/graphene: A set of defaults for Emacs, for refugees from GUI text editors.]]
 It provides:
 
-    Some sensible defaults
-    A clean look
-    The basics you need to make Emacs functionality discoverable
-    A set of third-party packages that set the standard for the essential functionality they provide
-    Some plumbing to make the above 'just work', seamlessly and silently
+- Some sensible defaults
+- A clean look
+- The basics you need to make Emacs functionality discoverable
+- A set of third-party packages that set the standard for the
+  essential functionality they provide
+- Some plumbing to make the above 'just work', seamlessly and silently
 
 Although Graphene is intended to help users of GUI editors such as Textmate or Sublime Text find their feet quickly, it is not an attempt to turn Emacs into a sparkly GUI editor or IDE. It is minimal, lightweight, and respectful of the history and character of Emacs.
 ** [2017-05-07 Sun 10:12] [[https://github.com/michaelklishin/cucumber.el][michaelklishin/cucumber.el: Emacs mode for editing Cucumber plain text stories]]
