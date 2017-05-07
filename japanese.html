@@ -1,0 +1,564 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2017-05-07 Sun 18:20 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Japanese</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="Oleg Pykhalov" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2017 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "center",
+        displayIndent: "0em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Japanese</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org28405bc">1. Words</a></li>
+<li><a href="#org33ada5c">2. Вопросы</a></li>
+<li><a href="#org84edcfc">3. Грамматика</a>
+<ul>
+<li><a href="#org222e060">3.1. Частицы</a>
+<ul>
+<li><a href="#org3e6bc37">3.1.1. Частица указывающая на тему предложения</a></li>
+<li><a href="#org1b6b2f5">3.1.2. Частица показывая принадлежность или отношение предмета</a></li>
+<li><a href="#org1725fcc">3.1.3. Вопросительная частица</a></li>
+<li><a href="#orgf95279d">3.1.4. Закрепить</a></li>
+<li><a href="#org65bcbcf">3.1.5. </a></li>
+<li><a href="#org4c49ea0">3.1.6. </a></li>
+</ul>
+</li>
+<li><a href="#org8acb7a9">3.2. Заимствованные слова из других языков</a></li>
+<li><a href="#org62673e4">3.3. Формы глаголов</a>
+<ul>
+<li><a href="#org1150544">3.3.1. Глаголы в образованной вежливой форме</a></li>
+</ul>
+</li>
+<li><a href="#org4083394">3.4. Указательные местоимения</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org28405bc" class="outline-2">
+<h2 id="org28405bc"><span class="section-number-2">1</span> Words</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+Hiragana OR Katakana		Type	English	Русский
+</p>
+
+<p>
+おとこ	男	otoko	man
+おんあのひと	???	onnanohito	woman
+かぞく	家族	kazoku	family
+あたま	頭	atama	head
+かお	顔	kao	face
+かみ	神	kami	hear
+やめて!			stop it!
+</p>
+
+<p>
+	手洗い		toilet
+わかりません		wakarimasen
+	英語	eigo	english
+	服	fuku	clothes
+	死にそう	shini sou	seems like I'm going to die
+	警察	keisatsu	police
+	亜部内	abunai	dangerous
+	危険	kiken	peril, hazard
+みます		mimasu	to see
+		ikimasu	to go
+おはようございます		ohayougozaimasu	good morning
+		kore ha	there is
+</p>
+
+<p>
+わたし		watashi	I	я
+あなた		anata	you	ты
+ひと		hito	human	человек
+</p>
+
+<p>
+いぬ		inu	dog	собака
+ねこ		neko	cat	кошка
+さかな		sakana	fish	рыба
+は = わ		ha		частица
+</p>
+
+<p>
+これ		kore	this	это, предмет возле говорящего
+それ		sore	this, that	это, то, предмет возле собеседника
+あれ		are		то, предмет вдалеке от обоих или возле третьего лица
+</p>
+
+<p>
+ジュス		jusu	juse	сок
+ペン		pen	pen	ручка
+でんしせ		denshise	train	электропоезд
+くつ		kutsu                   boots	обувь
+そら		sora	sky	небо
+がつこう		gatsukou	school	школа
+だいがくー		daigak-	university	университет
+にほん		nihon	Japan	Япония
+につぽんー		nipon	Japan	Япония
+にほんごー		nihongo	japanese	японский язык
+のみます		nomimas|u	drink	пить
+かいます		kaimas|u	buy	покупать
+へんきようしますー		henkiyoushimas|u-	learn	заниматься, учиться
+いきます		ikimas|u	go, ride	идти, ехать
+みます		mimas|u	see, watch	видеть, смотреть
+を		wo		частица
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-org33ada5c" class="outline-2">
+<h2 id="org33ada5c"><span class="section-number-2">2</span> Вопросы</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+Как правильно пишется?
+へんきようしますー		henkiyoushimasu-	learn	заниматься, учиться
+</p>
+</div>
+</div>
+
+<div id="outline-container-org84edcfc" class="outline-2">
+<h2 id="org84edcfc"><span class="section-number-2">3</span> Грамматика</h2>
+<div class="outline-text-2" id="text-3">
+</div><div id="outline-container-org222e060" class="outline-3">
+<h3 id="org222e060"><span class="section-number-3">3.1</span> Частицы</h3>
+<div class="outline-text-3" id="text-3-1">
+<ul class="org-ul">
+<li><a href="https://www.youtube.com/watch?v=Nm45O8buf4A&amp;index=4&amp;list=PLUQ8IPIJSszABqsC8HliK-7Q4oYj7z7r1">Японский язык - Урок 1. Основные конструкции</a></li>
+<li><a href="https://www.youtube.com/watch?v=RGZIcOimQkM&amp;index=3&amp;list=PLUQ8IPIJSszABqsC8HliK-7Q4oYj7z7r1">Японский язык - Урок 2. Основные конструкции - #2</a></li>
+</ul>
+</div>
+
+<div id="outline-container-org3e6bc37" class="outline-4">
+<h4 id="org3e6bc37"><span class="section-number-4">3.1.1</span> Частица указывающая на тему предложения</h4>
+<div class="outline-text-4" id="text-3-1-1">
+<p>
+Частица は в предложении указывает на слово или сочетание слов,
+являющимся темой предложения.  То есть слово, стоящее перед этой
+частицей является темой предложения.
+</p>
+
+<p>
+です [desu] (des) であります быть или являться.  Указывает на уровень
+вежливости в предложении.  Часто может опускаться или заменяться
+другими.  На начальных этапах рекомендуется всегда ставить в конце
+предложения.
+</p>
+
+<pre class="example">
+  わたし は ひと です [watashi ha hito desu] - я человек. Что касается меня, я человек.
+  あなた は ひと です [anata ha hito desu] - ты человек.
+  これ は ねこ です [kore ha neko desu] - это кошка (возле меня).
+  それ は いぬ です [sore ha inu desu] - это собака (возле тебя).
+  おれ は そかな です [ore ha sokana desu] - то рыба (находится в далеке от обоих лиц).
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org1b6b2f5" class="outline-4">
+<h4 id="org1b6b2f5"><span class="section-number-4">3.1.2</span> Частица показывая принадлежность или отношение предмета</h4>
+<div class="outline-text-4" id="text-3-1-2">
+<p>
+Частица の означает принадлежность или отношение одного предмета к
+другому. Существительное \(x\) принадлежит существительному
+\(y\): \(x\) の \(y\).
+</p>
+
+<pre class="example">
+  わたし の ねこ [watashi no neko] - моя кошка, то есть кошка которая принадлежит мне.
+  これ は なたし の ねこ です [kore ha natashi no neku desu] - это моя кошка.
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org1725fcc" class="outline-4">
+<h4 id="org1725fcc"><span class="section-number-4">3.1.3</span> Вопросительная частица</h4>
+<div class="outline-text-4" id="text-3-1-3">
+<p>
+Вопросительная частица か [ka] - играет роль вопросительного знака.
+Добавив его после です [desu] в конце, мы предадим предложению
+вопросительный оттенок.  Интонация будет тоже с повышением в конце.
+</p>
+
+<pre class="example">
+  それ は あなた の いぬ です か [sore ha anata no inu desu ka] - Это твоя собака?
+</pre>
+</div>
+</div>
+
+<div id="outline-container-orgf95279d" class="outline-4">
+<h4 id="orgf95279d"><span class="section-number-4">3.1.4</span> Закрепить</h4>
+<div class="outline-text-4" id="text-3-1-4">
+</div><ol class="org-ol"><li><a id="org3be1e74"></a>Вопросы<br /><div class="outline-text-5" id="text-3-1-4-1">
+<pre class="example">
+1. あなた は ひと です [anata ha hito desu] - ???
+2. これ は いぬ です [kore ha inu desu] - ???
+3. それ は なたし の さかな です [sore ha natashi no sakana desu] - ???
+4. あれ は あなた の ねこ です か [are ha anata no neko desu ka] - ???
+</pre>
+</div></li>
+
+<li><a id="org3f3e228"></a>Ответы<br /><div class="outline-text-5" id="text-3-1-4-2">
+<ol class="org-ol">
+<li>Ты человек.</li>
+<li>Это собака (возле говорящего).</li>
+<li>Это моя рыба (возле собеседника).</li>
+<li>То (на расстоянии) твоя кошка?</li>
+</ol>
+</div></li></ol>
+</div>
+
+<div id="outline-container-org65bcbcf" class="outline-4">
+<h4 id="org65bcbcf"><span class="section-number-4">3.1.5</span> </h4>
+<div class="outline-text-4" id="text-3-1-5">
+<p>
+Слово стоящее перед частицей を [wo] находится в винительном падеже и
+является дополнением.  То есть を [wo] указывает на предмет, к
+которому направленно действие.  Соответственно, после слова частицы,
+нужно поставить глагол, который будет обозначать это действие.
+</p>
+
+<pre class="example">
+  ジュス を のみます [jusu wo nomimas|u] - пить сок.
+</pre>
+
+<p>
+Сок - это существительное, к которому направлено действие - пить.
+</p>
+
+<pre class="example">
+  くつ を かいます [kutsu wo kaimas|u] - покупать обувь.
+</pre>
+
+<p>
+Совершенно действие покупать к предмету обувь.
+</p>
+
+<pre class="example">
+  そら を みます [sora wo mimas|u] - смотреть на небо, видеть небо.
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org4c49ea0" class="outline-4">
+<h4 id="org4c49ea0"><span class="section-number-4">3.1.6</span> </h4>
+<div class="outline-text-4" id="text-3-1-6">
+<p>
+で [de]
+</p>
+
+<p>
+Чаще всего используется в значении: слово после которого стоит частица
+で [de] обычно существительное или местоимение.  В таком случае они
+будут обозначать место действия.  Можно сказать, что эта частица
+служет аналогом предлога "в" или "на" в русском языке.
+</p>
+
+<p>
+TODO
+</p>
+<pre class="example">
+  わたし は だいかがく で [watashi ha daigaku de] - Я учусь в университете.
+</pre>
+
+<p>
+После слова тайгаку (университет) стоит частица で [de].  Она указывает на то, что
+действие учиться совершается в этом месте.
+</p>
+
+<pre class="example">
+  わたし は でんしや で いきます [watashi ha denshiya de ikimasu] - Я еду на поезде.
+</pre>
+
+<p>
+Эта же частица может указывать на транспорт, на котором мы перемещаемся.
+</p>
+
+<p>
+В предложениях со сказуемым глаголом, です [des|u] в конце не
+ставится.  Ее роль выполняет окончание ます [mas|u].  В том числе и в
+вопросительном предложении частица か [ka] по прежнему остается в
+конце предложения, но уже после ます [mas|u].
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org8acb7a9" class="outline-3">
+<h3 id="org8acb7a9"><span class="section-number-3">3.2</span> Заимствованные слова из других языков</h3>
+</div>
+
+
+<div id="outline-container-org62673e4" class="outline-3">
+<h3 id="org62673e4"><span class="section-number-3">3.3</span> Формы глаголов</h3>
+<div class="outline-text-3" id="text-3-3">
+</div><div id="outline-container-org1150544" class="outline-4">
+<h4 id="org1150544"><span class="section-number-4">3.3.1</span> Глаголы в образованной вежливой форме</h4>
+</div>
+</div>
+
+<div id="outline-container-org4083394" class="outline-3">
+<h3 id="org4083394"><span class="section-number-3">3.4</span> Указательные местоимения</h3>
+<div class="outline-text-3" id="text-3-4">
+<pre class="example">
+  これ それ あれ [kore sore are] - этот, тот.
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Oleg Pykhalov</p>
+<p class="date">Created: 2017-05-07 Sun 18:20</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>
