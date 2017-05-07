@@ -13117,7 +13117,6 @@ A list of articles with mathematical proofs:
 ** [2017-05-06 Sat 20:55] [[https://github.com/pyeve/eve][pyeve/eve: REST API framework designed for human beings]]
 #+BEGIN_QUOTE
 Eve is an open source Python REST API framework designed for human beings. It allows to effortlessly build and deploy highly customizable, fully featured RESTful Web Services. Eve offers native support for MongoDB, and SQL backends via community extensions.
-
 #+END_QUOTE
 ** [2017-05-06 Sat 20:56] [[https://github.com/youtube/api-samples][youtube/api-samples: Code samples for YouTube APIs, including the YouTube Data API, YouTube Analytics API, and YouTube Live Streaming API. The repo contains language-specific directories that contain the samples.]]
 Code samples for YouTube APIs, including the YouTube Data API, YouTube Analytics API, and YouTube Live Streaming API. The repo contains language-specific directories that contain the samples.
@@ -13129,3 +13128,29 @@ You can find the latest version of this configuration at https://github.com/cred
 I modelled this set of files based off of the emacs-starter-kit at https://github.com/eschulte/emacs24-starter-kit.
 ** [2017-05-07 Sun 00:32] [[http://mbork.pl/2017-05-01_show-some-last-messages][Marcin Borkowski: 2017-05-01 show-some-last-messages]]
 I am pretty sure I am not the only one annoyed by the fact that I can’t see more than one message in the echo area at a time. I have some functions I put in some hooks which display certain messages, and of course only the last one is usually visible. Of course, I could switch to the *Messages* buffer (using C-h e, for instance), but then I’d have to press C-x 1 to delete its window. And what if I have more than one window and I press C-h e? Not fun. I’m pretty sure its configurable to some extent, but I wanted something different. I wanted to have something like momentary-string-display. I didn’t, however, like the fact that it mangled the text in the buffer I’m in, even if only temporarily. Well, actually the best thing to use would be… message.
+** [2017-05-07 Sun 10:00] [[https://github.com/rnkn/olivetti][rnkn/olivetti: Emacs minor mode for a nice writing environment]]
+Olivetti is a simple Emacs minor mode for a nice writing environment.
+** [2017-05-07 Sun 10:01] [[https://github.com/joaotavora/darkroom][joaotavora/darkroom: Simple distraction-free editing]]
+Remove visual distractions and focus on writing.
+** [2017-05-07 Sun 10:12] [[https://github.com/rdallasgray/graphene][rdallasgray/graphene: A set of defaults for Emacs, for refugees from GUI text editors.]]
+It provides:
+
+    Some sensible defaults
+    A clean look
+    The basics you need to make Emacs functionality discoverable
+    A set of third-party packages that set the standard for the essential functionality they provide
+    Some plumbing to make the above 'just work', seamlessly and silently
+
+Although Graphene is intended to help users of GUI editors such as Textmate or Sublime Text find their feet quickly, it is not an attempt to turn Emacs into a sparkly GUI editor or IDE. It is minimal, lightweight, and respectful of the history and character of Emacs.
+** [2017-05-07 Sun 10:12] [[https://github.com/michaelklishin/cucumber.el][michaelklishin/cucumber.el: Emacs mode for editing Cucumber plain text stories]]
+Copy all the files to ~/.emacs.d/elisp/feature-mode, for example, and add this to your .emacs to load the mode
+
+(add-to-list 'load-path "~/.emacs.d/elisp/feature-mode")
+** [2017-05-07 Sun 10:12] [[https://github.com/larstvei/Focus][larstvei/Focus: Dim the font color of text in surrounding paragraphs]]
+Focus provides focus-mode that dims the text of surrounding sections, similar to iA Writer's Focus Mode.
+** [2017-05-07 Sun 15:56] [[https://github.com/0rdy/kaolin-theme][0rdy/kaolin-theme: A dark jade Emacs theme inspired by Sierra.vim]]
+A dark jade Emacs theme inspired by Sierra.vim
+** [2017-05-07 Sun 15:57] [[https://github.com/MaxSt/challenger-deep][MaxSt/challenger-deep: Emacs Theme]]
+Add the emacs theme files to ~/.emacs.d/themes.
+
+To load a theme add the following to your init.el
