@@ -11929,3 +11929,1203 @@ Alchemist comes with a bunch of features, which are:
 Corange is a library, but to take a quick look at some of the things it does you can Look at some of the Demos. Warning: Some things shown are from a previous version and may not remain the same in this version.
 ** [2017-04-30 Sun 18:22] [[https://github.com/proofit404/company-anaconda][proofit404/company-anaconda: Anaconda backend for company-mode.]]
 You can install this package from Melpa:
+** [2017-05-01 Mon 08:53] [[https://zoneperfect.com/][ZonePerfect® Nutrition Bars | Protein You Need & Flavor You Want]]
+#+BEGIN_QUOTE
+Tasty and nutritious? Yes, please! Energizing green tea extract and choline get your mind and body moving while super scrumptious flavors make your taste buds happy.
+
+#+END_QUOTE
+** [2017-05-01 Mon 09:17] [[http://www.wilfred.me.uk/blog/2014/09/27/the-definitive-guide-to-syntax-highlighting/][The Definitive Guide To Syntax Highlighting – Wilfred Hughes::Blog]]
+There comes a point where automatic highlighting isn’t sufficient, and you want to explicitly highlight something. Emacs provides hi-lock-mode for this, and supports a special comment syntax that allows other readers to see the same highlighting.
+** [2017-05-01 Mon 09:17] [[http://www.wilfred.me.uk/blog/2014/09/27/the-definitive-guide-to-syntax-highlighting/][The Definitive Guide To Syntax Highlighting – Wilfred Hughes::Blog]]
+glasses-mode is a fun minor mode for users who don’t like CamelCase. It displays camel case symbols with underscores, so FooBar becomes Foo_Bar, without changing the underlying text.
+** [2017-05-01 Mon 09:19] [[https://github.com/dgutov/highlight-escape-sequences][dgutov/highlight-escape-sequences: Highlight escape sequences in Emacs]]
+Look inside for instructions.
+
+The theme on the screenshot is espresso, with the following addition:
+** [2017-05-01 Mon 09:38] [[https://github.com/tarsius/paren-face][tarsius/paren-face: A face dedicated to lisp parentheses]]
+This library defines a face named parenthesis used just for parentheses. The intended purpose of this face is to make parentheses less visible by dimming them.
+
+We lispers probably don't need to be constantly made aware of the existence of the parentheses. Dimming them might be even more useful for people new to lisp who have not yet learned to subconsciously blend out the parentheses.
+** [2017-05-01 Mon 09:40] [[https://github.com/vspinu/zotelo][vspinu/zotelo: Manage zotero collections from emacsemacs.]]
+Zotelo helps you efficiently export and synchronize local databases (bib, rdf, html, json etc) and Zotero collections directly from emacs.
+
+Zotelo can be used in conjunction with any emacs mode but is primarily intended for LaTeX/BibTeX users of RefTeX.
+** [2017-05-01 Mon 09:47] [[https://github.com/xahlee/xah-elisp-mode][xahlee/xah-elisp-mode]]
+A emacs major mode for editing emacs lisp code.
+** [2017-05-01 Mon 10:00] [[https://github.com/rolandwalker/anaphora][rolandwalker/anaphora: Anaphoric expressions for Emacs Lisp, providing implicit temporary variables.]]
+Anaphoric expressions for Emacs Lisp, providing implicit temporary variables.
+** [2017-05-01 Mon 10:00] [[https://github.com/rolandwalker/button-lock][rolandwalker/button-lock: clickable text in Emacs]]
+Mouseable text in Emacs.
+** [2017-05-01 Mon 10:02] [[https://github.com/abo-abo/auto-yasnippet][abo-abo/auto-yasnippet: quickly create disposable yasnippets]]
+This is a hybrid of keyboard macros and yasnippet. You create the snippet on the go, usually to be used just in the one place. It's fast, because you're not leaving the current buffer, and all you do is enter the code you'd enter anyway, just placing ~ where you'd like yasnippet fields and mirrors to be.
+** [2017-05-01 Mon 10:07] [[https://github.com/nschum/guess-style][nschum/guess-style: Emacs: automatic setting of code style variables]]
+Guess variables like c-basic-offset, tab-width and indent-tabs-mode automatically.
+** [2017-05-01 Mon 10:25] [[http://danmidwood.com/content/2014/11/21/animated-paredit.html][The Animated Guide to Paredit]]
+Paredit is great, it brings structural editing to lisps, maintaining the syntactical correctness of your code. I’ve been a fan for a long time, but still was only using a small subset of the functionality available, even afer spending time reading the manual and paper printing out cheat sheets.
+
+Lately I decided to work deliberately with Paredit and really understand it, and now I mostly do. Here is what I learned.
+
+Note: I've included my key-presses in the animations so you can see what I'm doing. However, they are shown as Mac keys, M- is ⌥, C- is ⌃, and shift is ⇧.
+** [2017-05-01 Mon 10:35] [[https://github.com/emacsmirror/redshank][emacsmirror/redshank: Common Lisp Editing Extensions]]
+Redshank - Common Lisp Editing Extensions (for Emacs)       -*- outline -*-
+
+** Installation Instructions
+See file redshank.el for setting up Redshank mode.
+
+** External Dependencies
+Redshank is developed and tested with GNU Emacs 22.2.50.1.  Patches to
+ensure interoperability with other versions of GNU Emacs and XEmacs
+are welcome.
+** [2017-05-01 Mon 10:40] [[https://github.com/company-mode/company-mode/wiki/Third-Party-Packages][Third Party Packages · company-mode/company-mode Wiki]]
+The following packages provide company-mode support through third-party backends, or by including extra properties in the return value of their completion-at-point-functions function, which are consumed via company-capf.
+** [2017-05-01 Mon 10:42] [[https://github.com/donkirkby/live-py-plugin][donkirkby/live-py-plugin: Live coding in Python implemented as an Eclipse plug in.]]
+Live coding in Python implemented as an Eclipse plugin or an Emacs minor mode.
+
+To see how to use it, watch the demo video or read the getting started page. You might also find some useful examples in the tools folder. To learn more, read about how it works.
+** [2017-05-01 Mon 11:34] [[https://en.wikibooks.org/wiki/Python_Programming/Modules][Python Programming/Modules - Wikibooks, open books for an open world]]
+Modules are a way to structure a program and create reusable libraries. A module is usually stored in and corresponds to a separate .py file. Many modules are available from the standard library. You can create your own modules. Python searches for modules in the current directory and other locations; the list of module search locations can be expanded by expanding PYTHONPATH environment variable and by other means.
+** [2017-05-01 Mon 13:42] [[https://github.com/CouchPotato/CouchPotatoServer][CouchPotato/CouchPotatoServer: Automatic Movie Downloading via NZBs & Torrents]]
+#+BEGIN_QUOTE
+CouchPotato (CP) is an automatic NZB and torrent downloader. You can keep a "movies I want"-list and it will search for NZBs/torrents of these movies every X hours. Once a movie is found, it will send it to SABnzbd or download the torrent to a specified directory.
+
+
+#+END_QUOTE
+** [2017-05-01 Mon 14:03] [[https://web.telegram.org/#/im?p=@ubunntariumbyredroot][Telegram Web]]
+#+BEGIN_QUOTE
+Фильмы на сайтах (HTML5): moonwalk.cc, tree.tv, zona.mobi, filmix.me,
+my-hit.org, tivio.net, kino-rex.com, kinokong.net, serials-now.ru
+
+torrenttv, acestream, iptv
+#+END_QUOTE
+** [2017-05-01 Mon 14:31] [[https://github.com/plotly/plotly.py][plotly/plotly.py: An interactive, browser-based graphing library for Python]]
+an interactive, browser-based charting library for python
+
+Plotly for Python is now entirely open source, free, and self-hosted.
+** [2017-05-01 Mon 14:50] [[https://www.youtube.com/user/schafer5/about][Corey Schafer - YouTube]]
+ Welcome to my Channel. This channel is focused on creating tutorials and walkthroughs for software developers, programmers, and engineers. We cover topics for all different skill levels, so whether you are a beginner or have many years of experience, this channel will have something for you.
+
+We've already released a wide variety of videos on topics that include: Python, Git, Development Environments, Terminal Commands, SQL, Programming Terms, JavaScript, Computer Science Fundamentals, and plenty of other tips and tricks which will help you in your career.
+
+
+If you enjoy these videos and would like to support my channel, I would greatly appreciate any assistance through my Patreon account:
+https://www.patreon.com/coreyms
+** [2017-05-01 Mon 15:41] [[https://en.wikipedia.org/wiki/Scala_(programming_language)][Scala (programming language) - Wikipedia]]
+#+BEGIN_QUOTE
+Scala (/ˈskɑːlɑː/ skah-lah)[9] is a general-purpose programming language providing support for functional programming and a strong static type system. Designed to be concise,[10] many of Scala's design decisions aimed to address criticisms of Java.[8]
+
+Scala source code is intended to be compiled to Java bytecode, so that the resulting executable code runs on a Java virtual machine. Scala provides language interoperability with Java, so that libraries written in both languages may be referenced directly in Scala or Java code.[11] Like Java, Scala is object-oriented, and uses a curly-brace syntax reminiscent of the C programming language. Unlike Java, Scala has many features of functional programming languages like Scheme, Standard ML and Haskell, including currying, type inference, immutability, lazy evaluation, and pattern matching. It also has an advanced type system supporting algebraic data types, covariance and contravariance, higher-order types (but not higher-rank types), and anonymous types. Other features of Scala not present in Java include operator overloading, optional parameters, named parameters, raw strings, and no checked exceptions.
+
+The name Scala is a portmanteau of scalable and language, signifying that it is designed to grow with the demands of its users.[12]
+
+
+#+END_QUOTE
+** [2017-05-01 Mon 15:43] [[https://www.sequelpro.com/][Sequel Pro]]
+#+BEGIN_QUOTE
+FULL MYSQL SUPPORT
+
+Sequel Pro is a fast, easy-to-use Mac database management application for working with MySQL databases.
+
+PERFECT WEB DEVELOPMENT COMPANION
+
+Whether you are a Mac Web Developer, Programmer or Software Developer your workflow will be streamlined with a native Mac OS X Application!
+
+FLEXIBLE CONNECTIVITY
+
+Sequel Pro gives you direct access to your MySQL Databases on local and remote servers.
+
+EASY INSTALLATION
+
+Simply download, and connect to your database. Use these guides to get started:
+
+Install MySQL on Mac OS X ↦
+#+END_QUOTE
+** [2017-05-01 Mon 15:43] [[https://robomongo.org/][Robomongo — native MongoDB management tool (Admin UI)]]
+#+BEGIN_QUOTE
+The Robomongo tool has been acquired by 3T Software Labs, the creators of Studio 3T (formerly MongoChef). 3T will continue development of Robomongo in parallel with its own MongoDB GUI and the good news is that it will be making Robomongo free for all users from now on. This is an exciting new step for Robomongo and its community, which will benefit users and the wider MongoDB ecosystem. Click here to read Dmitry’s blog explaining the reasons behind the deal and check the FAQ.
+
+#+END_QUOTE
+** [2017-05-01 Mon 17:12] [[https://github.com/bokeh/bokeh][bokeh/bokeh: Interactive Web Plotting for Python]]
+Bokeh, a Python interactive visualization library, enables beautiful and meaningful visual presentation of data in modern web browsers. With Bokeh, you can quickly and easily create interactive plots, dashboards, and data applications.
+** [2017-05-01 Mon 17:16] [[https://github.com/olgabot/prettyplotlib][olgabot/prettyplotlib: Painlessly create beautiful matplotlib plots.]]
+Thank you to everyone who has used prettyplotlib and made it what it is today! Unfortunately, I no longer have the bandwidth to maintain prettyplotlib. I recommend using seaborn. Using seaborn, to get the prettyplotlib style, do:
+** [2017-05-01 Mon 17:17] [[https://github.com/daleroberts/itermplot][daleroberts/itermplot: An awesome iTerm2 backend for Matplotlib, so you can plot directly in your terminal.]]
+An awesome iTerm2 backend for Matplotlib, so you can plot directly in your terminal.
+** [2017-05-01 Mon 17:18] [[https://github.com/reiinakano/scikit-plot][reiinakano/scikit-plot: An intuitive library to add plotting functionality to scikit-learn objects.]]
+Scikit-plot is the result of an unartistic data scientist's dreadful realization that visualization is one of the most crucial components in the data science process, not just a mere afterthought.
+
+Gaining insights is simply a lot easier when you're looking at a colored heatmap of a confusion matrix complete with class labels rather than a single-line dump of numbers enclosed in brackets. Besides, if you ever need to present your results to someone (virtually any time anybody hires you to do data science), you show them visualizations, not a bunch of numbers in Excel.
+** [2017-05-01 Mon 17:18] [[https://github.com/reiinakano/scikit-plot][reiinakano/scikit-plot: An intuitive library to add plotting functionality to scikit-learn objects.]]
+Scikit-plot is the result of an unartistic data scientist's dreadful realization that visualization is one of the most crucial components in the data science process, not just a mere afterthought.
+
+Gaining insights is simply a lot easier when you're looking at a colored heatmap of a confusion matrix complete with class labels rather than a single-line dump of numbers enclosed in brackets. Besides, if you ever need to present your results to someone (virtually any time anybody hires you to do data science), you show them visualizations, not a bunch of numbers in Excel.
+
+That said, there are a number of visualizations that frequently pop up in machine learning. Scikit-plot is a humble attempt to provide aesthetically-challenged programmers (such as myself) the opportunity to generate quick and beautiful graphs and plots with as little boilerplate as possible.
+** [2017-05-01 Mon 17:18] [[https://github.com/glamp/bashplotlib][glamp/bashplotlib: plotting in the terminal]]
+bashplotlib is a python package and command line tool for making basic plots in the terminal. It's a quick way to visualize data when you don't have a GUI. It's written in pure python and can quickly be installed anywhere using pip.
+** [2017-05-01 Mon 17:18] [[https://github.com/chartit/django-chartit][chartit/django-chartit: A Django app to plot charts and pivot charts directly from the models. Uses HighCharts and jQuery JavaScript libraries to render the charts on the webpage.]]
+Django Chartit is a Django app that can be used to easily create charts from the data in your database. The charts are rendered using Highcharts and jQuery JavaScript libraries. Data in your database can be plotted as simple line charts, column charts, area charts, scatter plots, and many more chart types. Data can also be plotted as Pivot Charts where the data is grouped and/or pivoted by specific column(s).
+** [2017-05-01 Mon 17:18] [[https://github.com/ioam/holoviews][ioam/holoviews: Stop plotting your data - annotate your data and let it visualize itself]]
+HoloViews requires Param and Numpy and is designed to work together with Matplotlib or Bokeh, making use of the Jupyter/IPython Notebook.
+
+You can get the latest version of HoloViews from the ioam conda channel:
+
+    conda install -c ioam holoviews
+
+Or clone holoviews directly from GitHub with:
+
+git clone git://github.com/ioam/holoviews.git
+
+Please visit our website for official releases, installation instructions, documentation, and many detailed example notebooks and tutorials. Additional user contributed notebooks may be found in the holoviews-contrib repository including examples that may be run live on mybinder.org.
+
+For general discussion, we have a gitter channel. In addition we have a user-contributed wiki describing current work-in-progress and experimental features. If you find any bugs or have any feature suggestions please file a GitHub Issue or submit a pull request.
+** [2017-05-01 Mon 17:19] [[https://github.com/plotdevice/plotdevice][plotdevice/plotdevice: Create 2D graphics on the Mac with Python code]]
+PlotDevice is a Macintosh application used for computational graphic design. It provides an interactive Python environment where you can create two-dimensional graphics and output them in a variety of vector, bitmap, and animation formats. It is meant both as a sketch environment for exploring generative design and as a general purpose graphics library for use in external Python programs.
+
+PlotDevice scripts can create images from simple geometric primitives, text, and external vector or bitmap images. Drawing commands provide a thin abstraction over Mac OS X's Quartz graphics engine, providing high-quality rendering of 2D imagery and powerful compositing operations.
+** [2017-05-01 Mon 17:19] [[https://github.com/edublancas/sklearn-evaluation][edublancas/sklearn-evaluation: scikit-learn model evaluation made easy: plots, tables and markdown reports.]]
+scikit-learn model evaluation made easy: plots, tables and markdown reports.
+
+Works with Python 2 and 3.
+** [2017-05-01 Mon 17:19] [[https://github.com/jwass/mplleaflet][jwass/mplleaflet: Easily convert matplotlib plots from Python into interactive Leaflet web maps.]]
+mplleaflet is a Python library that converts a matplotlib plot into a webpage containing a pannable, zoomable Leaflet map. It can also embed the Leaflet map in an IPython notebook. The goal of mplleaflet is to enable use of Python and matplotlib for visualizing geographic data on slippy maps without having to write any Javascript or HTML. You also don't need to worry about choosing the base map content i.e., coastlines, roads, etc.
+** [2017-05-01 Mon 17:19] [[https://github.com/enthought/chaco][enthought/chaco: Chaco is a Python package for building interactive and custom 2-D plots.]]
+Chaco is a Python plotting application toolkit that facilitates writing plotting applications at all levels of complexity, from simple scripts with hard-coded data to large plotting programs with complex data interrelationships and a multitude of interactive tools. While Chaco generates attractive static plots for publication and presentation, it also works well for interactive data visualization and exploration.
+** [2017-05-01 Mon 17:19] [[https://github.com/cuemacro/chartpy][cuemacro/chartpy: Easy to use Python API wrapper to plot charts with matplotlib, plotly, bokeh and more]]
+chartpy creates a simple easy to use API to plot in a number of great Python chart libraries like plotly (via cufflinks), bokeh and matplotlib, with a unified interface. You simply need to change a single keyword to change which chart engine to use (see below), rather than having to learn the low level details of each library. I've also created new stylesheets and formating to ensure that the default matplotlib styling looks more modern using Open Sans font.
+** [2017-05-01 Mon 17:20] [[https://github.com/pierrrrrrre/PyGeoIpMap][pierrrrrrre/PyGeoIpMap: Little Python script to show where IP addresses are coming from by plotting them on a World map]]
+A Python script to show where IP addresses are coming from by plotting them on a World map. Now compatible with Python3.
+** [2017-05-01 Mon 17:21] [[https://github.com/gboeing/pynamical][gboeing/pynamical: Pynamical is a Python package for modeling and visualizing discrete nonlinear dynamical systems, chaos, and fractals.]]
+Python package for modeling, simulating, visualizing, and animating discrete nonlinear dynamical systems and chaos
+
+pynamical uses pandas, numpy, and numba for fast simulation, and matplotlib for beautiful visualizations and animations to explore system behavior. Compatible with Python 2+3.
+
+You can read/cite the journal article about pynamical: Boeing, G. 2016. "Visual Analysis of Nonlinear Dynamical Systems: Chaos, Fractals, Self-Similarity and the Limits of Prediction." Systems, 4 (4), 37. doi:10.3390/systems4040037.
+** [2017-05-01 Mon 17:22] [[https://github.com/PawelTroka/Computator.NET][PawelTroka/Computator.NET: Computator.NET is a special kind of numerical software that is fast and easy to use but not worse than others feature-wise. It's features include: - Real and complex functions charts - Real and complex calculator - Real functions numerical calculations including different methods - Over 107 Elementary functions - Over 141 Special functions - Over 21 Matrix functions and operations - Scripting language with power to easy computations including matrices - You can declare your own custom functions with scripting language]]
+Computator.NET is a unique open numerical software that is fast and easy to use and stands up to other feature-wise software. Quick presentation of Computator.NET features
+** [2017-05-01 Mon 19:35] [[https://nbviewer.jupyter.org/github/twistedhardware/mltutorial/blob/master/notebooks/IPython-Tutorial/8%2520-%2520SymPy.ipynb][Jupyter Notebook Viewer]]
+#+BEGIN_QUOTE
+SymPy is symbolic mathematics library written completely in Python and doesn't require any dependencies.
+
+Finding Help:
+
+http://docs.sympy.org/latest/index.html
+http://sympy.org/en/features.html
+http://nbviewer.ipython.org/github/jrjohansson/scientific-python-lectures/blob/master/Lecture-5-Sympy.ipynb
+        
+NumPy
+Base N-dimensional array package                
+SciPy
+Fundamental library for scientific computing            
+Matplotlib
+Comprehensive 2D Plotting
+        
+IPython
+Enhanced Interactive Console            
+SymPy
+Symbolic mathematics            
+Pandas
+Data structures & analysis
+SymPy is a Python library for symbolic mathematics. It aims to become a full-featured computer algebra system (CAS) while keeping the code as simple as possible in order to be comprehensible and easily extensible. SymPy is written entirely in Python and does not require any external libraries.
+
+#+END_QUOTE
+** [2017-05-01 Mon 19:36] [[https://github.com/TwistedHardware/mltutorial][TwistedHardware/mltutorial: Machine Learning Tutorial in IPython Notebooks]]
+#+BEGIN_QUOTE
+View Notbooks here: http://nbviewer.ipython.org/github/twistedhardware/mltutorial/tree/master/notebooks/
+
+For video tutorial check: https://www.youtube.com/user/roshanRush
+
+#+END_QUOTE
+** [2017-05-01 Mon 19:39] [[https://jupyter.org/][Project Jupyter | Home]]
+#+BEGIN_QUOTE
+The Jupyter Notebook is an open-source web application that allows you to create and share documents that contain live code, equations, visualizations and explanatory text. Uses include: data cleaning and transformation, numerical simulation, statistical modeling, machine learning and much more.
+
+
+#+END_QUOTE
+** [2017-05-01 Mon 19:43] [[https://www.continuum.io/][Continuum | Home]]
+
+Committed to Open Source. Now and forever
+
+We believe in the power of open source, and you’ll never again experience vendor lock-in. Our team of active and committed Python ecosystem contributors inspire and innovate some of the most popular Python packages. Anaconda is now the standard Python distribution with over 11M downloads and embedded into Microsoft Azure ML, Intel High Performance Distribution Powered by Anaconda and IBM DataScience Experience.
+Tested and certified packages to cover your back
+
+Anaconda makes it easy for you to install and maintain Python environments. Our development team tests to ensure compatibility of Python packages in Anaconda. We support and provide open source assurance for packages in Anaconda to mitigate your risk in using open source and meet your regulatory compliance requirements.
+Explore and visualize complex data easily
+
+Use your experience and curiosity to explore and analyze your data. Choose from a rich set of interactive visualizations to bring your data to life and tell an insightful story. Discover new patterns and anomalies that empower your team to realize high impact value from your data.
+All the analytics you ever wanted and more
+
+Python is the fastest growing language for data science. Anaconda includes 720+ Python open source packages and now includes essential R packages. This powerful combination allows you to do everything you want from BI to advanced modeling on complex Big Data.
+** [2017-05-01 Mon 19:58] [[https://github.com/millejoh/emacs-ipython-notebook][millejoh/emacs-ipython-notebook: Jupyter and IPython 2.x/3.x notebook client in Emacs]]
+EIN works with IPython 2.x, 3.x, and Jupyter! Note that remote and password protected logins are working with IPython 3.x, but have not been tested with Jupyter.
+
+Note
+
+The code has been stable enough for my day to day work, but there are no guarantees for the safety for your notebook data. Please make sure that you back-up and back-up often!
+
+Note
+
+The code for testing EIN is horribly broken, but I regularly hand check the code running against IPython's suite of sample notebooks. It's a worse-is-better solution to problem requiring a time-consuming solution.
+** [2017-05-01 Mon 21:40] [[https://julialang.org/][The Julia Language]]
+Julia is a high-level, high-performance dynamic programming language for numerical computing. It provides a sophisticated compiler, distributed parallel execution, numerical accuracy, and an extensive mathematical function library. Julia’s Base library, largely written in Julia itself, also integrates mature, best-of-breed open source C and Fortran libraries for linear algebra, random number generation, signal processing, and string processing. In addition, the Julia developer community is contributing a number of external packages through Julia’s built-in package manager at a rapid pace. IJulia, a collaboration between the Jupyter and Julia communities, provides a powerful browser-based graphical notebook interface to Julia.
+** [2017-05-01 Mon 21:40] [[https://github.com/sympy/sympy/wiki/Plotting-capabilities][Plotting capabilities · sympy/sympy Wiki]]
+All this is about the new plotting module and mostly covers the matplotlib backend.
+
+Many examples of the plotting module capabilities are given in the docstrings and the IPython notebooks that are part of the module. However, there are many other types of plots that can be implemented and those are not listed anywhere. Hence this page on which the capabilities of other software packages will be compared to the current plotting module.
+
+All the syntax examples will be from the highest level convenience functions. No BaseSeries subclasses will be visible. The Plot class will not be called directly.
+
+The most explicit form of the arguments is given for the API examples (eg. plot(expr, (var, from, to)) instead of plot(expr) which finds the independent variable and uses a default range).
+
+Remark about the Plot class: The low-level way to create a plot is to create instances of BaseSeries and append them to a Plot instance. However, for convenience, Plot also supports creating these BaseSeries instances itself for a small subset of all BaseSeries subclasses. Check the factory class Series for details.
+
+Remark about the examples from other software packages: Their APIs will differ.
+** [2017-05-01 Mon 22:11] [[https://github.com/CamDavidsonPilon/Probabilistic-Programming-and-Bayesian-Methods-for-Hackers][CamDavidsonPilon/Probabilistic-Programming-and-Bayesian-Methods-for-Hackers: aka "Bayesian Methods for Hackers": An introduction to Bayesian methods + probabilistic programming with a computation/understanding-first, mathematics-second point of view. All in pure Python ;)]]
+#+BEGIN_QUOTE
+The Bayesian method is the natural approach to inference, yet it is hidden from readers behind chapters of slow, mathematical analysis. The typical text on Bayesian inference involves two to three chapters on probability theory, then enters what Bayesian inference is. Unfortunately, due to mathematical intractability of most Bayesian models, the reader is only shown simple, artificial examples. This can leave the user with a so-what feeling about Bayesian inference. In fact, this was the author's own prior opinion.
+
+After some recent success of Bayesian methods in machine-learning competitions, I decided to investigate the subject again. Even with my mathematical background, it took me three straight-days of reading examples and trying to put the pieces together to understand the methods. There was simply not enough literature bridging theory to practice. The problem with my misunderstanding was the disconnect between Bayesian mathematics and probabilistic programming. That being said, I suffered then so the reader would not have to now. This book attempts to bridge the gap.
+
+If Bayesian inference is the destination, then mathematical analysis is a particular path towards it. On the other hand, computing power is cheap enough that we can afford to take an alternate route via probabilistic programming. The latter path is much more useful, as it denies the necessity of mathematical intervention at each step, that is, we remove often-intractable mathematical analysis as a prerequisite to Bayesian inference. Simply put, this latter computational path proceeds via small intermediate jumps from beginning to end, where as the first path proceeds by enormous leaps, often landing far away from our target. Furthermore, without a strong mathematical background, the analysis required by the first path cannot even take place.
+
+
+#+END_QUOTE
+** [2017-05-01 Mon 23:14] [[http://www.leavingcertsolutions.com/junior_cert_maths_higher_algebra.htm][Rules for Algebra]]
+#+BEGIN_QUOTE
+Rules for Algebra _ www.juniorcertsolutions.com
+
+Rule 1 Addition of  two Numbers with the same sign The result is the sum of the numbers with the given sign ( the sign of the two numbers )  .
+
+ When we add two  plus numbers we get a plus number          Ex   :   3+6=9. 
+
+ When we add two minus numbers we get a minus number   Ex :  -5 + - 6 = - 11 .
+
+Example 5 + 6 + 8 = 19  .   Example    -5  +  -  8   +  -  6 =   -  19 .
+
+
+#+END_QUOTE
+** [2017-05-01 Mon 23:46] [[https://en.wikipedia.org/wiki/Continuous_function][Continuous function - Wikipedia]]
+#+BEGIN_QUOTE
+In mathematics, a continuous function is a function for which sufficiently small changes in the input result in arbitrarily small changes in the output. Otherwise, a function is said to be a discontinuous function. A continuous function with a continuous inverse function is called a homeomorphism.
+
+
+#+END_QUOTE
+** [2017-05-01 Mon 23:47] [[https://www.youtube.com/watch?v=InDHwh1CvOg][Calculus - Continuous functions - YouTube]]
+#+BEGIN_QUOTE
+This video will describe how calculus defines a continuous function using limits.  Some examples are used to find where a function is continuous, and where it is not continuous.  Remember to check that the value at c and the limit as x approaches c exist, and agree.  For more videos please visit http://www.mysecretmathtutor.com
+
+#+END_QUOTE
+** [2017-05-02 Tue 10:25] [[https://mathbitsnotebook.com/Algebra1/FunctionGraphs/FNGFunctionFeatures.html][Features of Function Graphs - MathBitsNotebook(A1 - CCSS Math)]]
+#+BEGIN_QUOTE
+The features of a function graph can show us many aspects of the relationship represented by the function. Let's take a look at the more popular graphical features. Be sure to pay attention to the vocabulary and the notation used in this section.
+
+#+END_QUOTE
+** [2017-05-02 Tue 11:53] [[https://www.youtube.com/watch?v=B1HEzNTGeZ4][Math Antics - Mean, Median and Mode - YouTube]]
+#+BEGIN_QUOTE
+Learn More at mathantics.com
+Visit http://www.mathantics.com for more Free math videos and additional subscription based content!
+
+#+END_QUOTE
+** [2017-05-02 Tue 12:41] [[https://github.com/scipy/scipy][scipy/scipy: Scipy library main repository]]
+SciPy (pronounced "Sigh Pie") is open-source software for mathematics, science, and engineering. It includes modules for statistics, optimization, integration, linear algebra, Fourier transforms, signal and image processing, ODE solvers, and more. It is also the name of a very popular conference on scientific programming with Python.
+
+The SciPy library depends on NumPy, which provides convenient and fast N-dimensional array manipulation. The SciPy library is built to work with NumPy arrays, and provides many user-friendly and efficient numerical routines such as routines for numerical integration and optimization. Together, they run on all popular operating systems, are quick to install, and are free of charge. NumPy and SciPy are easy to use, but powerful enough to be depended upon by some of the world's leading scientists and engineers. If you need to manipulate numbers on a computer and display or publish the results, give SciPy a try!
+** [2017-05-02 Tue 12:48] [[https://en.wikipedia.org/wiki/Posting_style][Posting style - Wikipedia]]
+When a message is replied to in e-mail, Internet forums, or Usenet, the original can often be included, or "quoted", in a variety of different posting styles.
+
+The main options are interleaved posting (also called inline replying, in which the different parts of the reply follow the relevant parts of the original post), bottom-posting (in which the reply follows the quote) or top-posting (in which the reply precedes the quoted original message). For each of those options, there is also the issue of whether trimming of the original text is allowed, required or preferred.
+
+For a long time the traditional style was to post the answer below as much of the quoted original as was necessary to understand the reply (bottom or inline). Many years later, when email became widespread in business communication, it became a widespread practice to reply above the entire original and leave it (supposedly untouched) below the reply.
+
+While each online community differs on which styles are appropriate or acceptable, within some communities the use of the "wrong" method risks being seen as a breach of netiquette, and can provoke vehement response from community regulars.
+** [2017-05-02 Tue 12:49] [[https://docs.scipy.org/doc/scipy-0.19.0/reference/stats.html][Statistical functions (scipy.stats) — SciPy v0.19.0 Reference Guide]]
+This module contains a large number of probability distributions as well as a growing library of statistical functions.
+
+Each univariate distribution is an instance of a subclass of rv_continuous (rv_discrete for discrete distributions):
+rv_continuous([momtype, a, b, xtol, ...])       A generic continuous random variable class meant for subclassing.
+rv_discrete([a, b, name, badvalue, ...])        A generic discrete random variable class meant for subclassing.
+rv_histogram(histogram, *args, **kwargs)        Generates a distribution given by a histogram.
+** [2017-05-02 Tue 12:53] [[https://www.scipy.org/getting-started.html][Getting Started — SciPy.org]]
+#+BEGIN_QUOTE
+$ ipython --pylab
+
+Python 2.7.4 (default, Apr 19 2013, 18:28:01)
+Type "copyright", "credits" or "license" for more information.
+
+IPython 0.13.2 -- An enhanced Interactive Python.
+?         -> Introduction and overview of IPython's features.
+%quickref -> Quick reference.
+help      -> Python's own help system.
+object?   -> Details about 'object', use 'object??' for extra details.
+
+Welcome to pylab, a matplotlib-based Python environment [backend: Agg].
+For more information, type 'help(pylab)'.
+
+In [1]: from scipy import special, optimize
+
+In [2]: f = lambda x: -special.jv(3, x)
+
+In [3]: sol = optimize.minimize(f, 1.0)
+
+In [4]: x = linspace(0, 10, 5000)
+
+In [5]: x
+Out[5]:
+array([  0.00000000e+00,   2.00040008e-03,   4.00080016e-03, ...,
+         9.99599920e+00,   9.99799960e+00,   1.00000000e+01])
+
+In [6]: plot(x, special.jv(3, x), '-', sol.x, -sol.fun, 'o')
+
+In [7]: savefig('plot.png', dpi=96)
+#+END_QUOTE
+** [2017-05-02 Tue 12:54] [[https://stackoverflow.com/questions/14960336/conventions-for-import-as][python - Conventions for 'import ... as' - Stack Overflow]]
+#+BEGIN_QUOTE
+SciPy recommends import scipy as sp in its documentation, though personally I find that rather useless since it only gives you access to re-exported NumPy functionality, not anything that SciPy adds to that. I find myself doing import scipy.sparse as sp much more often, but then I use that module heavily. Also
+
+import matplotlib as mpl
+import matplotlib.pyplot as plt
+import networkx as nx
+You might encounter more of these as you start using more libraries. There's no registry or anything for these shorthands and you're free to invent new ones as you see fit. There's also no general convention except that import lln as library_with_a_long_name obviously won't occur very often.
+
+
+#+END_QUOTE
+** [2017-05-02 Tue 15:59] [[https://www.youtube.com/user/MathMeeting/videos][Math Meeting - YouTube]]
+#+BEGIN_QUOTE
+
+4:22
+Calculus Limits - Factoring Example
+
+808 views
+1 week ago
+
+
+4:30
+Calculus Limits - Easy Problem and Introduction
+
+3.5K views
+3 weeks ago
+
+
+4:32
+Math Word problems - Solving triangles
+
+1.3K views
+1 month ago
+
+
+5:04
+Area of a Triangle - Fun challenging math problem
+
+1.2K views
+2 months ago
+
+
+4:55
+Solve the right triangle - Trigonometry Brain Teaser
+
+3.9K views
+2 months ago
+
+
+4:38
+Rubik's cube giveaway - Solution
+
+2.1K views
+3 months ago
+
+
+2:48
+How to win a Rubik's cube - Solve this math problem
+
+6.1K views
+3 months ago
+
+
+7:25
+Algebra Word Problem - Factoring
+
+1.4K views
+3 months ago
+
+
+5:24
+Math Challenge - Shrinking Pool Problem
+
+4.5K views
+4 months ago
+
+
+5:38
+Algebra word problem - Systems of Equations
+
+3.3K views
+4 months ago
+
+
+4:09
+Easy algebra word problem - But can you solve it?
+
+3.3K views
+5 months ago
+
+
+2:09
+Test your math IQ - Part 2
+
+4.3K views
+5 months ago
+
+
+1:51
+Test your math IQ - Part 1
+
+3K views
+6 months ago
+
+
+2:41
+Trick Question - True or False
+
+4.6K views
+6 months ago
+
+
+3:04
+Trick Question - Find the missing dollar
+
+46K views
+7 months ago
+
+
+2:21
+Trick Question - Test your math skills
+
+3.7K views
+8 months ago
+
+
+1:32
+Easy Puzzle - But can you solve it?
+
+10K views
+8 months ago
+
+
+3:29
+Mind blowing brain teaser - Folding paper to the moon
+
+11K views
+9 months ago
+
+
+4:33
+Can you solve Zeno's paradox? - Brain Teaser
+
+4.1K views
+10 months ago
+
+
+3:02
+Can you solve the never ending square root?
+
+4.3K views
+10 months ago
+
+
+1:36
+Are you smart enough to solve this simple brain teaser?
+
+10K views
+11 months ago
+
+
+3:59
+Vectors and Scalars - Physics
+
+3K views
+11 months ago
+
+
+9:12
+Multiplying - Large numbers
+
+40K views
+1 year ago
+
+
+7:28
+Subtracting - Large numbers
+
+12K views
+1 year ago
+
+
+1:07
+The Easiest Brain Teaser You Might Get Wrong
+
+27K views
+1 year ago
+
+
+1:27
+The Easiest Brain Teaser that will rack your brain
+
+185K views
+1 year ago
+
+
+3:11
+The Easiest Brain Teaser Driving the Internet Insane
+
+91K views
+1 year ago
+
+
+3:51
+Buzzkill - Brain Teaser
+
+4.4K views
+1 year ago
+
+
+1:48
+Cut Equal Shapes - Brain Teaser
+
+42K views
+1 year ago
+
+
+5:08
+Game Show - Brain Teaser
+
+42K views
+1 year ago
+
+
+#+END_QUOTE
+** [2017-05-02 Tue 16:53] [[https://en.wikipedia.org/wiki/Math_Kernel_Library][Math Kernel Library - Wikipedia]]
+#+BEGIN_QUOTE
+Intel Math Kernel Library (Intel MKL) is a library of optimized math routines for science, engineering, and financial applications. Core math functions include BLAS, LAPACK, ScaLAPACK, sparse solvers, fast Fourier transforms, and vector math.[3] The routines in MKL are hand-optimized specifically for Intel processors.[4][5]
+
+
+#+END_QUOTE
+** [2017-05-02 Tue 20:18] [[https://www.youtube.com/playlist?annotation_id=annotation_685147259&feature=iv&list=PLRmiFY80S4R2RyuJnIRJ0jZZwk5smtVo3&src_vid=hN76Psa--zE][YouTube]]
+#+BEGIN_QUOTE
+
+
+
+
+Уроки математики. Артур Шарифов
+Артур Шарифов
+PLAY ALL
+35 videos
+154,648 views
+Last updated on Dec 19, 2016
+1
+
+13:15
+Чего ждать от ЕГЭ 2017 по математике?
+Артур Шарифов
+13:15
+2
+
+47:01
+Числовая последовательность. Матан с Артуром Шарифовым
+Артур Шарифов
+47:01
+3
+
+18:06
+ПРЕДЕЛ ФУНКЦИИ. Артур Шарифов
+Артур Шарифов
+18:06
+4
+
+6:24
+ЧТО ТАКОЕ ЭКСТЕРНАТ? Артур Шарифов
+Артур Шарифов
+6:24
+5
+
+14:59
+РАЗБОР СЛОЖНОГО ЗАДАНИЯ С6, ЕГЭ с Артуром Шарифовым
+Артур Шарифов
+14:59
+6
+
+19:12
+РАЗБОР ЗАДАНИЯ C5, ЭКОНОМИЧЕСКАЯ ЗАДАЧА, Артур Шарифов, ЕГЭ 2016 по математике
+Артур Шарифов
+19:12
+7
+
+14:39
+РАЗБОР САМОГО СЛОЖНОГО ЗАДАНИЯ С6 ЕГЭ ПО МАТЕМАТИКЕ. Артур Шарифов
+Артур Шарифов
+14:39
+8
+
+10:26
+ЧТО ТАКОЕ ПАРАМЕТР. КАК РЕШАТЬ ЗАДАЧИ С ПАРАМЕТРОМ. Подготовка к ЕГЭ 2016 с Артуром Шарифовым
+Артур Шарифов
+10:26
+9
+
+19:32
+КАК ГОТОВИТЬСЯ К ОГЭ 2016, ГЕОМЕТРИЯ. Артур Шарифов
+Артур Шарифов
+19:32
+10
+
+19:21
+КАК РЕШАТЬ ЗАДАНИЕ 12 (ПРОФИЛЬ 2016), МАКСИМУМ И МИНИМУМ ФУНКЦИИ, ЕГЭ по математике. Артур Шарифов
+Артур Шарифов
+19:21
+11
+
+21:56
+КАК ГОТОВИТЬСЯ К ОГЭ 2016, АЛГЕБРА, ч2. Артур Шарифов
+Артур Шарифов
+21:56
+12
+
+14:45
+КАК ГОТОВИТЬСЯ К ОГЭ 2016, МОДУЛЬ АЛГЕБРА. Артур Шарифов
+Артур Шарифов
+14:45
+13
+
+11:00
+КАК РЕШАТЬ С3 (ЗАДАНИЕ 15) ПРОФИЛЬ 2016. АНАЛИТИЧЕСКИЙ СПОСОБ (Подготовка к ЕГЭ)
+Артур Шарифов
+11:00
+14
+
+7:57
+КАК РЕШАТЬ С5 (ЗАДАНИЕ 18) ПРОФИЛЬНЫЙ УРОВЕНЬ 2016 (ПАРАМЕТР)
+Артур Шарифов
+7:57
+15
+
+12:26
+УРАВНЕНИЕ ОКРУЖНОСТИ. ЗАДАНИЕ 18 (С5). АРТУР ШАРИФОВ
+Артур Шарифов
+12:26
+16
+
+13:09
+ПЕРВООБРАЗНАЯ И ИНТЕГРАЛ С НУЛЯ. ГЕОМЕТРИЧЕСКИЙ СМЫСЛ. Артур Шарифов
+Артур Шарифов
+13:09
+17
+
+8:25
+ФИЗИЧЕСКИЙ СМЫСЛ ПРОИЗВОДНОЙ. Подготовка к ЕГЭ по математике с Артуром Шарифовым
+Артур Шарифов
+8:25
+18
+
+5:05
+КАК СТРОИТЬ ПАРАБОЛУ. ОСЬ СИММЕТРИИ (Финальная часть саги о функциях)
+Артур Шарифов
+5:05
+19
+
+3:34
+КАК НАЙТИ ВЕРШИНУ ПАРАБОЛЫ
+Артур Шарифов
+3:34
+20
+
+6:03
+ГРАФИК КВАДРАТИЧНОЙ ФУНКЦИИ #2. Артур Шарифов
+Артур Шарифов
+6:03
+21
+
+8:16
+КАК СТРОИТЬ ГРАФИК КВАДРАТИЧНОЙ ФУНКЦИИ (ПАРАБОЛА). Артур Шарифов
+Артур Шарифов
+8:16
+22
+
+10:02
+ЧТО ТАКОЕ ФУНКЦИЯ. ОБЛАСТЬ ОПРЕДЕНИЯ И ОБЛАСТЬ ЗНАЧЕНИЙ. АРТУР ШАРИФОВ
+Артур Шарифов
+10:02
+23
+
+5:06
+ЧТО ТАКОЕ ЛОГАРИФМ. СВОЙСТВА. ОСНОВНОЕ ТОЖДЕСТВО. Артур Шарифов
+Артур Шарифов
+5:06
+24
+
+7:42
+РАЗБОР ДЕМОНСТРАЦИОННОГО ВАРИАНТА ЕГЭ 2016 ПО МАТЕМАТИКЕ, БАЗОВЫЙ УРОВЕНЬ #1
+Артур Шарифов
+7:42
+25
+
+7:30
+ТЕОРЕМА КОСИНУСОВ. Задачи на произвольные треугольники
+Артур Шарифов
+7:30
+26
+
+6:43
+РАЗБОР ЗАДАЧИ С1, ПРОФИЛЬНЫЙ УРОВЕНЬ С АРТУРОМ ШАРИФОВЫМ
+Артур Шарифов
+6:43
+27
+
+5:49
+ТРИГОНОМЕТРИЧЕСКИЕ УРАВНЕНИЯ. ЕГЭ С АРТУРОМ ШАРИФОВЫМ
+Артур Шарифов
+5:49
+28
+
+5:11
+ЧТО ТАКОЕ ТРИГОНОМЕТРИЯ
+Артур Шарифов
+5:11
+29
+
+7:28
+ЧТО ТАКОЕ ПЕРВООБРАЗНАЯ И ИНТЕГРАЛ. Артур Шарифов
+Артур Шарифов
+7:28
+30
+
+14:20
+ЧТО ТАКОЕ ПРОИЗВОДНАЯ. ТАБЛИЦА ПРОИЗВОДНЫЙ. Артур Шарифов
+Артур Шарифов
+14:20
+31
+
+4:41
+ГЕОМЕТРИЧЕСКАЯ ПРОГРЕССИЯ. КАК НАЙТИ ЛЮБОЙ ЕЁ ЭЛЕМЕНТ. СУММА
+Артур Шарифов
+4:41
+32
+
+8:20
+АРИФМЕТИЧЕСКАЯ ПРОГРЕССИЯ. КАК НАЙТИ ЛЮБОЙ ЕЁ ЭЛЕМЕНТ. Артур Шарифов
+Артур Шарифов
+8:20
+33
+
+12:25
+КВАДРАТНЫЕ УРАВНЕНИЯ. ПАРАБОЛА. Артур Шарифов
+Артур Шарифов
+12:25
+34
+
+9:50
+ЧТО ТАКОЕ ФУНКЦИЯ? КАК СТРОИТЬ ГРАФИК ФУНКЦИИ. ЕГЭ с Артуром Шарифовым
+Артур Шарифов
+9:50
+35
+
+18:35
+КАК ПОДГОТОВИТЬСЯ К ЕГЭ ПО МАТЕМАТИКЕ. АРТУР ШАРИФОВ
+Артур Шарифов
+18:35
+
+#+END_QUOTE
+** [2017-05-02 Tue 20:23] [[https://www.youtube.com/watch?v=G_dA732qFGw][Смысл интеграла и производной. В помощь студенту - YouTube]]
+#+BEGIN_QUOTE
+Оригинальный материал на английском: http://betterexplained.com/articles/a...
+Перевод на сайте "Школа ясности": http://ru.yasno.tv/article/math/42-ch...
+
+Курс саморазвития: http://vk.com/note13718575_12539280
+ВК: http://vk.com/torwaldolafsen
+Мой лайв-канал: http://www.youtube.com/user/TorwaldLive
+Twitter: https://twitter.com/#!/TorwaldOlafsen
+Блог: http://40tonn.blogspot.com
+
+#+END_QUOTE
+** [2017-05-02 Tue 20:52] [[https://en.m.wikipedia.org/wiki/The_Mechanical_Universe][The Mechanical Universe - Wikipedia]]
+#+BEGIN_QUOTE
+The Mechanical Universe... And Beyond, is a 52-part telecourse filmed at the California Institute of Technology, and produced by Caltech and INTELECOM Intelligent Telecommunications (a non-profit consortium of California community colleges). The series introduces university level physics, covering topics from Copernicus to quantum mechanics.
+
+Produced starting in 1985, the videos make heavy use of historical dramatizations and visual aids to explain physics concepts. The latter were state of the art at the time, incorporating almost 8 hours of computer animation created by computer graphics pioneer Jim Blinn. Each episode opens and closes with a "phantom" lecture by Caltech professor David Goodstein.[further explanation needed] After more than a quarter century, the series is still often used as a supplemental teaching aid, for its clear explanation of fundamental concepts such as special relativity.[1]
+
+The Mechanical Universe lectures are actual freshman physics lectures from Physics 1a and 1b courses at the California Institute of Technology. The room seen in the videos is the Bridge lecture hall.
+
+
+#+END_QUOTE
+** [2017-05-03 Wed 02:19] [[https://docs.scipy.org/doc/numpy/reference/routines.math.html][Mathematical functions — NumPy v1.12 Manual]]
+Mathematical functions¶
+** [2017-05-03 Wed 02:19] [[https://docs.scipy.org/doc/scipy-0.18.1/reference/misc.html][Miscellaneous routines (scipy.misc) — SciPy v0.18.1 Reference Guide]]
+Note that the Python Imaging Library (PIL) is not a dependency of SciPy and therefore the pilutil module is not available on systems that don’t have PIL installed.
+** [2017-05-03 Wed 11:13] [[https://github.com/jsinglet/latex-preview-pane][jsinglet/latex-preview-pane: Makes LaTeX editing less painful by providing a updatable preview pane]]
+latex-preview-pane is a minor mode for Emacs that enables you to preview your LaTeX files directly in Emacs. It supports PDF previews, your choice of pdflatex or xelatex, and it highlights errors in your LaTeX buffer.
+** [2017-05-03 Wed 11:39] [[https://github.com/tarsius/auto-compile][tarsius/auto-compile: Automatically compile Emacs Lisp libraries]]
+This package provides two minor modes which automatically recompile Emacs Lisp source files. Together these modes guarantee that Emacs never loads outdated byte code files.
+
+auto-compile-on-save-mode re-compiles source files when they are being saved and auto-compile-on-load-mode does so before they are being loaded (by advising load and require). Both modes only ever re-compile a source file when the respective byte code file already exists but is outdated. Otherwise they do not compile the source file.
+
+Even when using auto-compile-on-save-mode it can happen that some source file is newer than the respective byte code file, which is a problem because by default Emacs load the byte code file even when the respective source file has been modified more recently.
+
+Starting with Emacs version 24.4, setting load-prefer-newer to t prevents outdated byte code files from being loaded. However this does not cause re-compilation of the source file, to actually do that auto-compile-on-load-mode is still required.
+** [2017-05-03 Wed 11:57] [[https://github.com/tom-tan/auctex-latexmk][tom-tan/auctex-latexmk: This library adds LatexMk support to AUCTeX.]]
+This library adds LatexMk support to AUCTeX.
+
+Requirements:
+
+    AUCTeX
+    LatexMk
+    TeXLive (2011 or later if you write TeX source in Japanese)
+
+You can install it by using package-install via MELPA.
+** [2017-05-03 Wed 11:58] [[https://github.com/vspinu/ac-math][vspinu/ac-math: auto-complete sources for input of mathematical symbols and latex tags]]
+NOTE: Ac-math users are encouraged to switch to company-math. company-mode is a better framework and solves a number of notorious issues in auto-complete.
+** [2017-05-03 Wed 11:58] [[https://bitbucket.org/mortiferus/latex-pretty-symbols.el][mortiferus / latex-pretty-symbols.el — Bitbucket]]
+latex-pretty-symbols.el makes emacs display unicode characters instead of latex commands for a lot of the most usual symbols.
+
+It basically contains a list of many latex commands, and their unicode counterparts, and makes emacs display the unicode symbol instead of the latex code. So \vDash, \Sigma, \leq etc displays nicely. It also converts some sub/super-scripts into equivalent unicode symbols, so e.g $a_1$ becomes $a₁$. It is highly reminiscent, and based on, some of the pretty-lambda code that is floating around.
+** [2017-05-03 Wed 11:59] [[https://github.com/Malabarba/latex-extra][Malabarba/latex-extra: A series of usability improvements for Emacs latex-mode.]]
+Defines extra commands and keys for LaTeX-mode. To activate, install from melpa and add the following to your init.el file:
+
+(add-hook 'LaTeX-mode-hook #'latex-extra-mode)
+
+Note, this will move the key binds C-c C-q, C-c C-f, and C-c C-p. To understand why (or disable it) look into the variables latex/override-font-map, latex/override-fill-map, and latex/override-preview-map.
+
+The additions of this package fall into the following categories:
+** [2017-05-03 Wed 12:20] [[https://tex.stackexchange.com/questions/145318/how-to-make-auctex-not-prompt-me-on-c-c-c-c][How to make auctex not prompt me on C-c C-c - TeX - LaTeX Stack Exchange]]
+
+
+Set the TeX command you want, mine is XeLaTex. Then you don't need to hit return.
+
+(setq TeX-command-force "XeLaTeX")
+** [2017-05-03 Wed 17:35] [[https://www.youtube.com/watch?v=U_q7R5JJvb4][Why do integrals always have a dx? (KristaKingMath) - YouTube]]
+#+BEGIN_QUOTE
+► Subscribe to my channel // http://www.youtube.com/subscription_c...
+
+There's so much confusion around dx, especially among Calc 1 and Calc 2 students. And with good reason. dx doesn't start to feel relevant until later on, when you start working with multivariable functions, multiple integrals, and differential equations.
+
+But that's no reason not to at least address dx in an introductory way. In this video, we'll talk about a few of the simplest explanations for what dx does, what it tells us to do, and what it represents.
+
+When you're just starting out with integrals, for the most part, it's okay to think about dx as just notation. It just comes with the integral symbol, and you don't need to know exactly why it's there in order to know that you're supposed to integrate.
+
+Once you start changing variables, it's important to know that the dx always tells you which variable to integrate. That's why you'll see dx with a function in terms of x, dt with a function in terms of t, and dy with a function in terms of y. You'll also need to understand that your limits of integration (if you're dealing with a definite integral), will need to match the variable in your function and the variable in your dx/dt/dy/etc.
+
+When you get to multivariable calculus and multiple integrals, you'll need to realize that seeing dx dy at the end of the integral tells you to integrate first with respect to x, and then with respect to y.
+
+But most importantly, you'll want to understand that dx represents the differential, or the difference between two values of x. It's the distance between two values of x. So, when you use a Riemann sum, or trapezoidal rule to approximate the area under a curve, delta x is the width of each rectangle (or trapezoid).
+
+When you switch from these approximation methods, and start using the integral instead to find exact area, that delta x has to change to dx in order to match the integral. Essentially what you're doing is saying that delta x represents a larger width, which is why you can only get an approximation. But dx represents and infinitely small distance, which is why it gets paired with the integral, and allows you to find exact area, instead of just an approximation.
+
+And that's why you always need a dx whenever you're using an integral.
+
+● ● ● GET EXTRA HELP ● ● ●
+
+If you could use some extra help with your math class, then check out Krista’s website // http://www.kristakingmath.com
+
+● ● ● CONNECT WITH KRISTA ● ● ●
+
+Hi, I’m Krista! I make math courses to keep you from banging your head against the wall. ;)
+
+Math class was always so frustrating for me. I’d go to a class, spend hours on homework, and three days later have an “Ah-ha!” moment about how the problems worked that could have slashed my homework time in half. I’d think, “WHY didn’t my teacher just tell me this in the first place?!”
+
+So I started tutoring to keep other people out of the same aggravating, time-sucking cycle. Since then, I’ve recorded tons of videos and written out cheat-sheet style notes and formula sheets to help every math student—from basic middle school classes to advanced college calculus—figure out what’s going on, understand the important concepts, and pass their classes, once and for all. Interested in getting help? Learn more here: http://www.kristakingmath.com
+
+FACEBOOK // https://www.facebook.com/KristaKingMath
+TWITTER // https://twitter.com/KristaKingMath
+INSTAGRAM // https://www.instagram.com/kristakingm...
+PINTEREST // https://www.pinterest.com/KristaKingM...
+GOOGLE+ // https://plus.google.com/+Integralcalc/
+QUORA // https://www.quora.com/profile/Krista-...
+
+#+END_QUOTE
+** [2017-05-03 Wed 17:44] [[https://www.youtube.com/watch?v=8GmPOrsAkoY][What is the Difference Between dy/dx and d/dx - YouTube]]
+#+BEGIN_QUOTE
+This video explains the difference between dy/dx and d/dx
+
+Learn Math Tutorials Bookstore  http://amzn.to/1HdY8vm
+
+Donate http://bit.ly/19AHMvX
+
+#+END_QUOTE
+** [2017-05-03 Wed 17:47] [[https://www.youtube.com/watch?v=tvoY1zOqaCQ][What Do the Arrows Mean in Science Equations? : Physics & Math - YouTube]]
+#+BEGIN_QUOTE
+Subscribe Now:
+http://www.youtube.com/subscription_c...
+
+Watch More:
+http://www.youtube.com/ehoweducation
+
+The arrows in science equations can mean a variety of different things, like having two quantities in the equation. Find out what the arrows mean in science equations with help from a longtime experienced physics educator in this free video clip.
+
+Expert: Derek Hullinger
+Bio: Derek Hullinger received his PhD in physics from the University of Maryland in 2006.
+Filmmaker: Jeff Goodey
+
+Series Description: Physics is a concept that is typically introduced in middle school that will play an important role in a person's academic career through college and beyond. Get tips on physics and math with help from a longtime experienced physics educator in this free video series.
+Category
+Howto & Style
+License
+Standard YouTube License
+
+#+END_QUOTE
+** [2017-05-03 Wed 22:05] [[https://github.com/calamares/calamares][calamares/calamares: Distribution-independent installer framework]]
+#+BEGIN_QUOTE
+Main:
+
+Compiler with C++11 support: GCC >= 4.9.0 or Clang >= 3.5.1
+CMake >= 2.8.12
+Qt >= 5.6
+yaml-cpp >= 0.5.1
+Python >= 3.3
+Boost.Python >= 1.55.0
+dmidecode
+
+#+END_QUOTE
+** [2017-05-03 Wed 23:02] [[https://github.com/pashinin/workgroups2][pashinin/workgroups2: Create your workspaces in Emacs]]
+Workgroups is a session manager for Emacs.
+
+    It saves all your opened buffers, their location and sizes on disk to restore later
+    You can create several workspaces
+
+You can also restore such buffers as: org-agenda, shell, magit-status, help.
+
+Fork it, add more special buffers support. Or even better - fix bugs.
+** [2017-05-03 Wed 23:40] [[https://www.emacswiki.org/emacs/Registers][EmacsWiki: Registers]]
+Register Keybindings Overview
+text register
+C-x r s a       store region as “a”
+C-x r i a       insert region stored in “a”
+C-x r r a       store rectangle as “a”
+point register
+C-x r SPC a     store current point as “a”
+C-x r j a       move to point in “a”
+window register
+C-x r w a       store configuration of windows in frame
+C-x r j a       restore window configurations
+frame register
+C-x r f a       store window configuration for all frames
+C-x r j a       restore all window configurations
+number register
+C-u 1 C-x r n a store 1 in “a”
+C-u 1 C-x r + a add 1 to number in “a”
+C-x r i a       insert number in “a”
+position register
+C-x r m RET     save default
+C-x r m <NAME> RET      save as NAME
+C-x r b RET     move to default
+C-x r b <NAME> RET      move to NAME
+C-x r l list
+** [2017-05-04 Thu 02:09] [[https://github.com/shaunlebron/parinfer][shaunlebron/parinfer: Let's simplify the way we write Lisp]]
+Parinfer is a proof-of-concept editor mode for Lisp programming languages. It simplifies the way we write Lisp by auto-adjusting parens when indentation changes and vice versa. The hope is to make basic Lisp-editing easier for newcomers and experts alike, while still allowing existing plugins like Paredit to satisfy the need for more advanced operations.
+** [2017-05-04 Thu 02:49] [[https://github.com/gregsexton/ob-ipython][gregsexton/ob-ipython: org-babel integration with Jupyter for evaluation of (Python by default) code blocks]]
+An Emacs library that allows Org mode to evaluate code blocks using a Jupyter kernel (Python by default).
+** [2017-05-04 Thu 12:31] [[https://github.com/myrjola/diminish.el][myrjola/diminish.el: Diminished modes are minor modes with no modeline display]]
+
+
+    When we diminish a mode, we are saying we want it to continue doing its work for us, but we no longer want to be reminded of it. It becomes a night worker, like a janitor; it becomes an invisible man; it remains a component, perhaps an important one, sometimes an indispensable one, of the mechanism that maintains the day-people's world, but its place in their thoughts is diminished, usually to nothing. As we grow old we diminish more and more such thoughts, such people, usually to nothing. -- Will Mengarini
+** [2017-05-04 Thu 13:34] [[https://github.com/alexprengere/FormalSystems][alexprengere/FormalSystems: A Python implementation of Douglas Hofstadter formal systems, from his book "Gödel, Escher, Bach"]]
+This is a Python implementation of Douglas Hofstadter formal systems, from his book Gödel, Escher, Bach: An Eternal Golden Braid (commonly GEB).
+
+In fact, you may define your own formal systems using a quite simple syntax, close to free text. Examples for MIU, pg, fg and NDP formal systems from the book are implemented in directory definitions.
+
+A main Python script gives you possibilities to play with the formal system, including:
+
+    axiom schema support (iteration, decision procedure)
+    theorem step by step generation (using different algorithms)
+    theorem derivation
+** [2017-05-04 Thu 15:11] [[https://github.com/Z3Prover/z3][Z3Prover/z3: The Z3 Theorem Prover]]
+Z3 is a theorem prover from Microsoft Research. It is licensed under the MIT license.
+
+If you are not familiar with Z3, you can start here.
+
+Z3 can be built using Visual Studio, a Makefile or using CMake. It provides bindings for several programming languages.
+
+See the release notes for notes on various stable releases of Z3.
+** [2017-05-04 Thu 15:11] [[https://github.com/coq/coq][coq/coq: Coq is a formal proof management system. It provides a formal language to write mathematical definitions, executable algorithms and theorems together with an environment for semi-interactive development of machine-checked proofs.]]
+
+Coq is a formal proof management system. It provides a formal language to write mathematical definitions, executable algorithms and theorems together with an environment for semi-interactive development of machine-checked proofs. http://coq.inria.fr/
+** [2017-05-04 Thu 21:32] [[https://en.wikibooks.org/wiki/Discrete_Mathematics/Logic][Discrete Mathematics/Logic - Wikibooks, open books for an open world]]
+ In conventional algebra, letters and symbols are used to represent numbers and the operations associated with them: +, -, ×, ÷, etc. Doing so can help simplify and solve complex problems. In Logic, we seek to express statements, and the connections between them in algebraic symbols - again with the object of simplifying complicated ideas. Unfortunately, like ordinary algebra, the opposite seems true initially. This is probably because simple examples always seem easier to solve by common-sense methods!
+** [2017-05-04 Thu 21:34] [[https://en.wikipedia.org/wiki/Portal:Mathematics][Portal:Mathematics - Wikipedia]]
+Mathematics is the study of numbers, quantity, space, structure, and change. Mathematics is used throughout the world as an essential tool in many fields, including natural science, engineering, medicine, and the social sciences. Applied mathematics, the branch of mathematics concerned with application of mathematical knowledge to other fields, inspires and makes use of new mathematical discoveries and sometimes leads to the development of entirely new mathematical disciplines, such as statistics and game theory. Mathematicians also engage in pure mathematics, or mathematics for its own sake, without having any application in mind. There is no clear line separating pure and applied mathematics, and practical applications for what began as pure mathematics are often discovered.
+** [2017-05-05 Fri 05:07] [[https://github.com/ilyasergey/pnp][ilyasergey/pnp: Lecture notes for a short course on proving/programming in Coq via SSReflect.]]
+A Short Course on Interactive Proofs in Coq/Ssreflect
+
+This project contains the Coq sources, the lectures and the exercises for the course
+
+"Programs and Proofs: Mechanizing Mathematics with Dependent Types".
+
+The latest draft of the accompanying lecture notes can be downloaded from the official course page:
+
+http://ilyasergey.net/pnp
+
+Initial release: August 2014
+Building the project and the lecture notes
+
+Just run make. This will compile all lecture files, solutions and create the file latex/pnp.pdf with lecture notes.
+** [2017-05-05 Fri 14:59] [[https://github.com/DarthFennec/highlight-indent-guides][DarthFennec/highlight-indent-guides: Emacs minor mode to highlight indentation]]
+This minor mode highlights indentation levels via font-lock. Indent widths are dynamically discovered, which means this correctly highlights in any mode, regardless of indent width, even in languages with non-uniform indentation such as Haskell. By default, this mode also inspects your theme dynamically, and automatically chooses appropriate colors for highlighting. This mode works properly around hard tabs and mixed indentation, and it behaves well in large buffers.
+** [2017-05-05 Fri 16:52] [[https://github.com/et2010/org-edit-latex][et2010/org-edit-latex: Edit LaTeX fragments like editing src blocks]]
+org-edit-latex.el is an extension for org-mode. It let you edit a latex fragment/environment just like editing a src block.
+** [2017-05-05 Fri 23:08] [[https://ask.sagemath.org/question/10773/keyboard-shortcuts-for-sage-cloud/][Keyboard shortcuts for Sage Cloud - ASKSAGE: Sage Q&A Forum]]
+    extraKeys =
+        "Alt-Enter"    : (editor)   => @action_key(execute: true, advance:false, split:false)
+        "Cmd-Enter"    : (editor)   => @action_key(execute: true, advance:false, split:false)
+        "Ctrl-Enter"   : (editor)   => @action_key(execute: true, advance:true, split:true)
+        "Ctrl-;"       : (editor)   => @action_key(split:true, execute:false, advance:false)
+        "Cmd-;"        : (editor)   => @action_key(split:true, execute:false, advance:false)
+        "Ctrl-\\"      : (editor)   => @action_key(execute:false, toggle_input:true)
+        #"Cmd-x"  : (editor)   => @action_key(execute:false, toggle_input:true)
+        "Shift-Ctrl-\\" : (editor)   => @action_key(execute:false, toggle_output:true)
+        #"Shift-Cmd-y"  : (editor)   => @action_key(execute:false, toggle_output:true)
+
+        "Ctrl-S"       : (editor)   => @click_save_button()
+        "Cmd-S"        : (editor)   => @click_save_button()
+
+        "Ctrl-L"       : (editor)   => @goto_line(editor)
+        "Cmd-L"        : (editor)   => @goto_line(editor)
+
+        "Ctrl-I"       : (editor)   => @toggle_split_view(editor)
+        "Cmd-I"        : (editor)   => @toggle_split_view(editor)
+
+        "Shift-Ctrl-." : (editor)   => @change_font_size(editor, +1)
+        "Shift-Ctrl-," : (editor)   => @change_font_size(editor, -1)
+        "Shift-Cmd-."  : (editor)   => @change_font_size(editor, +1)
+        "Shift-Cmd-,"  : (editor)   => @change_font_size(editor, -1)
+
+        "Shift-Tab"    : (editor)   => editor.unindent_selection()
+
+        "Ctrl-Space"   : "indentAuto"
+        "Ctrl-'"       : "indentAuto"
+
+        "Tab"          : (editor)   => @press_tab_key(editor)
+        "Shift-Ctrl-C" : (editor)   => @interrupt_key()
+** [2017-05-06 Sat 01:05] [[https://github.com/wireservice/proof][wireservice/proof: A Python library for creating fast, repeatable and self-documenting data analysis pipelines.]]
+proof is a Python library for creating optimized, repeatable and self-documenting data analysis pipelines.
+** [2017-05-06 Sat 01:17] [[https://bitbucket.org/alanmi/abc][alanmi / ABC — Bitbucket]]
+ABC: System for Sequential Logic Synthesis and Formal Verification
+
+ABC is always changing but the current snapshot is believed to be stable.
+Compiling:
+
+To compile ABC as a binary, download and unzip the code, then type make. To compile ABC as a static library, type make libabc.a.
+
+When ABC is used as a static library, two additional procedures, Abc_Start() and Abc_Stop(), are provided for starting and quitting the ABC framework in the calling application. A simple demo program (file src/demo.c) shows how to create a stand-alone program performing DAG-aware AIG rewriting, by calling APIs of ABC compiled as a static library.
+
+To build the demo program
+
+    Copy demo.cc and libabc.a to the working directory
+    Run gcc -Wall -g -c demo.c -o demo.o
+    Run gcc -g -o demo demo.o libabc.a -lm -ldl -rdynamic -lreadline -ltermcap -lpthread
+** [2017-05-06 Sat 01:37] [[https://github.com/csvoss/onelinerizer][csvoss/onelinerizer: Convert any Python file into a single line of code.]]
+Convert any Python file into a single line of code which has the same functionality.
+
+No newlines allowed. No semicolons allowed, either.
+** [2017-05-06 Sat 01:37] [[https://onelinepy.herokuapp.com/][One-lined Python]]
+Puzzles? Puzzles! Here I present some of the challenges I had to solve while creating this, so that you can take some time to figure out its inner workings yourself.
+
+The inspiration for this project came from MIT’s nth Annual Python Bee, in which contestants are given a function to write and must spell out their code out loud, character-by-character, without looking. As I was competing, I noticed that many of the problems could be solved in one line, via judicious application of list comprehensions and lambda functions. Here’s an example of such a problem.
+** [2017-05-06 Sat 01:37] [[https://onelinepy.herokuapp.com/][One-lined Python]]
+Puzzles? Puzzles! Here I present some of the challenges I had to solve while creating this, so that you can take some time to figure out its inner workings yourself.
+
+The inspiration for this project came from MIT’s nth Annual Python Bee, in which contestants are given a function to write and must spell out their code out loud, character-by-character, without looking. As I was competing, I noticed that many of the problems could be solved in one line, via judicious application of list comprehensions and lambda functions. Here’s an example of such a problem.
+** [2017-05-06 Sat 04:40] [[https://github.com/uhub/awesome-coq][uhub/awesome-coq: A curated list of awesome Coq frameworks, libraries and software.]]
+A curated list of awesome Coq frameworks, libraries and software.
+** [2017-05-06 Sat 04:41] [[http://www.cs.ru.nl/%257Efreek/100/index.html][Formalizing 100 Theorems]]
+ There used to exist a "top 100" of mathematical theorems on the web, which is a rather arbitrary list (and most of the theorems seem rather elementary), but still is nice to look at. On the current page I will keep track of which theorems from this list have been formalized. Currently the fraction that already has been formalized seems to be
+** [2017-05-06 Sat 04:42] [[https://github.com/c-corn/corn/tree/master#c-corn][c-corn/corn at master]]
+C-CoRN
+
+    The Coq Constructive Repository at Nijmegen.
+
+Install with OPAM
+
+Make sure that you added the Coq repository:
+
+opam repo add coq-released https://coq.inria.fr/opam/released
+
+and run:
+
+opam install coq-corn
+
+Install from source
+Prerequisites
+
+This version of C-CoRN should follow Coq trunk and requires
+
+    SCons 1.2 or make
+** [2017-05-06 Sat 14:07] [[https://github.com/math-comp/mcb][math-comp/mcb: Mathematical Components (the Book)]]
+This is the "Mathematical Components" book.
+
+The tex/ directory contains the sources. TexLive 2014 is known to work.
+
+The coq/ directory contains snippets corresponding to the chapters of the book.
+
+The docs/ directory contains the website of the book.
+
+The artwork/ directory contains the graphics used in the book.
+** [2017-05-06 Sat 18:18] [[https://github.com/donnemartin/interactive-coding-challenges][donnemartin/interactive-coding-challenges: Huge update! Interactive Python coding interview challenges (algorithms and data structures). Includes Anki flashcards.]]
+Overhauled to now include 120 challenges and solutions and added Anki flashcards.
+
+Also included are unit tested reference implementations of various data structures and algorithms.
+** [2017-05-06 Sat 18:19] [[https://github.com/keon/algorithms][keon/algorithms: Minimal examples of data structures and algorithms in Python]]
+Minimal and clean example implementations of data structures and algorithms in Python.
+** [2017-05-06 Sat 18:19] [[https://github.com/rubysolo/dentaku][rubysolo/dentaku: math and logic formula parser and evaluator]]
+Dentaku is a parser and evaluator for a mathematical and logical formula language that allows run-time binding of values to variables referenced in the formulas. It is intended to safely evaluate untrusted expressions without opening security holes.
+** [2017-05-06 Sat 18:20] [[https://github.com/Theano/Theano][Theano/Theano: Theano is a Python library that allows you to define, optimize, and evaluate mathematical expressions involving multi-dimensional arrays efficiently. It can use GPUs and perform efficient symbolic differentiation.]]
+
+Theano is a Python library that allows you to define, optimize, and evaluate mathematical expressions involving multi-dimensional arrays efficiently. It can use GPUs and perform efficient symbolic differentiation. http://www.deeplearning.net/software/…
+** [2017-05-06 Sat 18:20] [[https://github.com/mathjax/MathJax][mathjax/MathJax: Beautiful math in all browsers]]
+MathJax is an open-source JavaScript display engine for LaTeX, MathML, and AsciiMath notation that works in all modern browsers. It was designed with the goal of consolidating the recent advances in web technologies into a single, definitive, math-on-the-web platform supporting the major browsers and operating systems. It requires no setup on the part of the user (no plugins to download or software to install), so the page author can write web documents that include mathematics and be confident that users will be able to view it naturally and easily. Simply include MathJax and some mathematics in a web page, and MathJax does the rest.
+
+Some of the main features of MathJax include:
+
+    High-quality display of LaTeX, MathML, and AsciiMath notation in HTML pages
+
+    Supported in most browsers with no plug-ins, extra fonts, or special setup for the reader
+
+    Easy for authors, flexible for publishers, extensible for developers
+
+    Supports math accessibility, cut-and-paste interoperability, and other advanced functionality
+
+    Powerful API for integration with other web applications
+
+See http://www.mathjax.org/ for additional details.
+** [2017-05-06 Sat 18:20] [[https://github.com/Jam3/math-as-code][Jam3/math-as-code: a cheat-sheet for mathematical notation in code form]]
+This is a reference to ease developers into mathematical notation by showing comparisons with JavaScript code.
+
+Motivation: Academic papers can be intimidating for self-taught game and graphics programmers. :)
+
+This guide is not yet finished. If you see errors or want to contribute, please open a ticket or send a PR.
+** [2017-05-06 Sat 18:21] [[https://github.com/amitkaps/hackermath][amitkaps/hackermath: Introduction to Statistics and Basics of Mathematics for Data Science - The Hacker's Way]]
+The following topics are covered at the workshop:
+
+Module 1: Basics of Statistics (Application: A/B Testing)
+Module 2: Basics of Linear Algebra (Application: Supervised Machine Learning: Linear Regression)
+Module 3: Basics of Linear Algebra -continued (Application: Unsupervised Machine Learning: Dimensionality Reduction)
+** [2017-05-06 Sat 18:22] [[https://github.com/rossant/awesome-math][rossant/awesome-math: A curated list of awesome mathematics resources]]
+A curated list of awesome mathematics resources.
+** [2017-05-06 Sat 18:31] [[http://byjus.com/maths/set-theory-symbols/][Set Theory Symbols | Read Maths Symbols with Examples @byjus]]
+Set theory was developed by mathematicians to be able to talk about collections of objects. It has turned out to be an invaluable tool for defining some of the more complicated mathematical structures.
+
+Let’s explore few common Set theory symbols used in more complicated math structures.
+** [2017-05-06 Sat 20:11] [[https://en.wikipedia.org/wiki/List_of_mathematical_proofs][List of mathematical proofs - Wikipedia]]
+List of mathematical proofs
+From Wikipedia, the free encyclopedia
+
+A list of articles with mathematical proofs:
+** [2017-05-06 Sat 20:55] [[https://github.com/pyeve/eve][pyeve/eve: REST API framework designed for human beings]]
+#+BEGIN_QUOTE
+Eve is an open source Python REST API framework designed for human beings. It allows to effortlessly build and deploy highly customizable, fully featured RESTful Web Services. Eve offers native support for MongoDB, and SQL backends via community extensions.
+
+#+END_QUOTE
+** [2017-05-06 Sat 20:56] [[https://github.com/youtube/api-samples][youtube/api-samples: Code samples for YouTube APIs, including the YouTube Data API, YouTube Analytics API, and YouTube Live Streaming API. The repo contains language-specific directories that contain the samples.]]
+Code samples for YouTube APIs, including the YouTube Data API, YouTube Analytics API, and YouTube Live Streaming API. The repo contains language-specific directories that contain the samples.
+** [2017-05-06 Sat 23:26] [[https://gitlab.com/buildfunthings/emacs-config/blob/master/loader.org][loader.org · master · buildfunthings / emacs-config · GitLab]]
+This is my version of an configuration file for GNU Emacs. I have been using GNU Emacs since 2000 when I was introduced to it by my mentor at Personify Inc. Sadly Personify Inc was victim to the dot com bust of 2001. I have been using GNU Emacs for everything since then though.
+
+You can find the latest version of this configuration at https://github.com/credmp/emacs-config or at https://gitlab.com/buildfunthings/emacs-config.
+
+I modelled this set of files based off of the emacs-starter-kit at https://github.com/eschulte/emacs24-starter-kit.
+** [2017-05-07 Sun 00:32] [[http://mbork.pl/2017-05-01_show-some-last-messages][Marcin Borkowski: 2017-05-01 show-some-last-messages]]
+I am pretty sure I am not the only one annoyed by the fact that I can’t see more than one message in the echo area at a time. I have some functions I put in some hooks which display certain messages, and of course only the last one is usually visible. Of course, I could switch to the *Messages* buffer (using C-h e, for instance), but then I’d have to press C-x 1 to delete its window. And what if I have more than one window and I press C-h e? Not fun. I’m pretty sure its configurable to some extent, but I wanted something different. I wanted to have something like momentary-string-display. I didn’t, however, like the fact that it mangled the text in the buffer I’m in, even if only temporarily. Well, actually the best thing to use would be… message.
