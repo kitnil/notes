@@ -13165,3 +13165,14 @@ This emacs lisp package lets you set a color-theme on a per-buffer basis.
 #+BEGIN_QUOTE
 3 Diagrams Per Page, my personal blog. Posts are written in Emacs Org-mode and then exported to HTML. The site is generated with Jekyll, using an adaption of the Lanyon theme. http://felix11h.github.io/blog/
 #+END_QUOTE
+** [2017-05-08 Mon 05:38] [[https://github.com/coldnew/hexo-renderer-org][coldnew/hexo-renderer-org: Hexo renderer plugin for emacs org-mode]]
+#+BEGIN_QUOTE
+Before I start to use hexo-renderer-org, I already have another tool called org-hexo, which can use org-mode’s publish method to generate html code then let hexo renderer it. However, since my posts grow large, the org-publish is more slow then I think. That’s why I try the hexo-renderer-org.
+
+The hexo-renderer-org is really greate but it doesn’t support use emacs’s htmlize to render my code block, and that’s the main reason I create my fork.
+
+This fork support both highlight.js and htmlize to work as syntax highlight backend, you can choose which you like.
+
+Some features will be PR back to CodeFalling/hexo-render-org one day, but some may not, since this fork is almost totally rewrited.
+
+#+END_QUOTE
