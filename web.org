@@ -13326,3 +13326,5 @@ I've created an agenda which omits todos so that all of my appointments of up to
 This is a project which aims to revitalize Emacs by providing core-friendly changes for an improved out-of-the-box experience.
 
 You can help, and you don't need to know a single bit of C! But how? Read one!
+** [2017-05-09 Tue 07:32] [[https://github.com/therockmandolinist/turing-machine][therockmandolinist/turing-machine: Turing machine simulator in emacs and python, inspired by http://morphett.info/turing/turing.html]]
+Implementation of a single tape turing machine simulator in emacs-lisp and python (separately).
