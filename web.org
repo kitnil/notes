@@ -13279,3 +13279,10 @@ Entire notes (160 pages): DVI, Postscript, PDF
     Chapter 8 - Effective ML: DVI, Postscript
     Chapter 9 - Examples: DVI, Postscript
     References: DVI, Postscript
+** [2017-05-09 Tue 05:34] [[https://github.com/MichielDerhaeg/build-linux][MichielDerhaeg/build-linux: A short tutorial about building Linux based operating systems.]]
+#+BEGIN_QUOTE
+This started out as a personal project to build a very small Linux based operating system that has very few moving parts but is still very complete and useful. Along the way of figuring out how to get the damn thing to boot and making it do something useful I learned quite a lot. Too much time has been spent reading very old and hard to find documentation. Or when there was none, the source code of how other people were doing it. So I thought, why not share what I have learned.
+
+This git repo contains a Makefile and scripts that automate everything that will be explained in this document. But it doesn't necessarily do everything in the same order as it's explained. You can also use that as reference if you'd like.
+
+#+END_QUOTE
