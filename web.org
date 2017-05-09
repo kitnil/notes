@@ -13328,3 +13328,8 @@ This is a project which aims to revitalize Emacs by providing core-friendly chan
 You can help, and you don't need to know a single bit of C! But how? Read one!
 ** [2017-05-09 Tue 07:32] [[https://github.com/therockmandolinist/turing-machine][therockmandolinist/turing-machine: Turing machine simulator in emacs and python, inspired by http://morphett.info/turing/turing.html]]
 Implementation of a single tape turing machine simulator in emacs-lisp and python (separately).
+** [2017-05-09 Tue 07:48] [[https://github.com/lolownia/org-pomodoro][lolownia/org-pomodoro: pomodoro technique for org-mode]]
+#+BEGIN_QUOTE
+You can start a pomodoro for the task at point or select one of the last tasks that you clocked time for. Each clocked-in pomodoro starts a timer of 25 minutes and after each pomodoro a break timer of 5 minutes is started automatically. Every 4 breaks a long break is started with 20 minutes. All values are customizable.
+
+#+END_QUOTE
