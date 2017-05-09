@@ -13318,3 +13318,5 @@ A list of people with nice emacs config files
 (add-hook 'pdf-tools-enabled-hook 'pdf-view-midnight-minor-mode) should work.
 ** [2017-05-09 Tue 07:11] [[https://github.com/dimitri/switch-window][dimitri/switch-window: Offer a *visual* way to choose a window to switch to]]
 switch-window is an emacs window switch tool, which offer a visual way to choose a window to switch to, delete, split or other operations.
+** [2017-05-09 Tue 07:13] [[http://tapoueh.org/projects.html#sec19][Expertise PostgreSQL]]
+Allows one to manage his local MTA queue with the common de facto interface for it, that is the sendmail compatible commands. Offers easy way to select a queue id or a site from a queue entry, either for copy/pasting or for selected delivery ( flush).
