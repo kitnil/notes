@@ -13322,3 +13322,7 @@ switch-window is an emacs window switch tool, which offer a visual way to choose
 Allows one to manage his local MTA queue with the common de facto interface for it, that is the sendmail compatible commands. Offers easy way to select a queue id or a site from a queue entry, either for copy/pasting or for selected delivery ( flush).
 ** [2017-05-09 Tue 07:15] [[https://www.reddit.com/r/emacs/comments/6995gh/exporting_orgagenda_to_mobile/][Exporting org-agenda to mobile : emacs]]
 I've created an agenda which omits todos so that all of my appointments of up to 60 days are visible on the screenshot I do: https://github.com/novoid/dot-emacs/blob/master/main.el#L2499 «agenda "no TODO events +60d"»
+** [2017-05-09 Tue 07:31] [[https://github.com/josteink/emacs-oob-reboot][josteink/emacs-oob-reboot: A project to revitalize Emacs by providing core-friendly changes for an improved out-of-the-box experience]]
+This is a project which aims to revitalize Emacs by providing core-friendly changes for an improved out-of-the-box experience.
+
+You can help, and you don't need to know a single bit of C! But how? Read one!
