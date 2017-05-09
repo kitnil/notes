@@ -13320,3 +13320,5 @@ A list of people with nice emacs config files
 switch-window is an emacs window switch tool, which offer a visual way to choose a window to switch to, delete, split or other operations.
 ** [2017-05-09 Tue 07:13] [[http://tapoueh.org/projects.html#sec19][Expertise PostgreSQL]]
 Allows one to manage his local MTA queue with the common de facto interface for it, that is the sendmail compatible commands. Offers easy way to select a queue id or a site from a queue entry, either for copy/pasting or for selected delivery ( flush).
+** [2017-05-09 Tue 07:15] [[https://www.reddit.com/r/emacs/comments/6995gh/exporting_orgagenda_to_mobile/][Exporting org-agenda to mobile : emacs]]
+I've created an agenda which omits todos so that all of my appointments of up to 60 days are visible on the screenshot I do: https://github.com/novoid/dot-emacs/blob/master/main.el#L2499 «agenda "no TODO events +60d"»
