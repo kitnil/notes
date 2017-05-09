@@ -13340,3 +13340,8 @@ When there's time for break, the task will be org-clock-out'ed
 If you call org-pomodoro during a pomodoro, you'll be asked to reset a pomodoro.
 If you call org-pomodoro outside org-mode, you'll be presented with list of recent tasks, as C-u org-clock-in would.
 #+END_QUOTE
+** [2017-05-09 Tue 07:54] [[https://github.com/abo-abo/gtk-pomodoro-indicator][abo-abo/gtk-pomodoro-indicator: A simple pomodoro indicator for the GTK tray]]
+#+BEGIN_QUOTE
+This is a Pomodoro timer indicator for your GTK panel.
+
+#+END_QUOTE
