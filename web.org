@@ -11738,13 +11738,6 @@ Note: I've included my key-presses in the animations so you can see what I'm doi
 ** [2017-05-01 Mon 10:35] [[https://github.com/emacsmirror/redshank][emacsmirror/redshank: Common Lisp Editing Extensions]]
 Redshank - Common Lisp Editing Extensions (for Emacs)       -*- outline -*-
 
-** Installation Instructions
-See file redshank.el for setting up Redshank mode.
-
-** External Dependencies
-Redshank is developed and tested with GNU Emacs 22.2.50.1.  Patches to
-ensure interoperability with other versions of GNU Emacs and XEmacs
-are welcome.
 ** [2017-05-01 Mon 10:40] [[https://github.com/company-mode/company-mode/wiki/Third-Party-Packages][Third Party Packages · company-mode/company-mode Wiki]]
 The following packages provide company-mode support through third-party backends, or by including extra properties in the return value of their completion-at-point-functions function, which are consumed via company-capf.
 ** [2017-05-01 Mon 10:42] [[https://github.com/donkirkby/live-py-plugin][donkirkby/live-py-plugin: Live coding in Python implemented as an Eclipse plug in.]]
