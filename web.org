@@ -14871,3 +14871,5 @@ Feel free to use this in any way you like, but your mileage may vary.
 #+BEGIN_QUOTE
 This seems to generate a lot of questions and queries so thought I’d do a quick walkthrough. Prerequisites A working LetsEncrypt container, with your DNS pointing towards your server. You will need port 443 forwarded to your Unraid and a subdomain »
 #+END_QUOTE
+** [2017-05-10 Wed 15:23] [[https://github.com/gallery/gallery3][gallery/gallery3: The simplest, most intuitive way to host your photos on your website.]]
+Gallery 3 is a web based software product that lets you manage your photos on your own website. You must have your own website with PHP and database support in order to install and use it. With Gallery you can easily create and share albums of photos via an intuitive interface.
