@@ -14896,3 +14896,8 @@ EDIT DETAILS
 #+END_QUOTE
 ** [2017-05-10 Wed 19:55] [[https://github.com/benma/visual-regexp.el][benma/visual-regexp.el: A regexp/replace command for Emacs with interactive visual feedback]]
 visual-regexp for Emacs is like replace-regexp, but with live visual feedback directly in the buffer. Check out visual-regexp-steroids if you want to use modern regular expressions instead of Emacs-style regular expressions.
+** [2017-05-10 Wed 22:14] [[https://github.com/cyrusimap/cyrus-imapd][cyrusimap/cyrus-imapd: Cyrus IMAP is an email, contacts and calendar server]]
+#+BEGIN_QUOTE
+No further development work will progress on anything older than version 2.3. Versions 2.3 and 2.4 still receive security updates, but new features or non-security bugfixes are unlikely to be backported. Version 2.5 still receives security updates and non-security bugfixes. Version 3.0 is under active development.
+
+#+END_QUOTE
