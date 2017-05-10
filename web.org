@@ -13841,3 +13841,9 @@ You can download the latest version 1.1 of linux command shelf in pdf format. Th
 You can navigate to each section using the index that is placed below. If you feel hard to understand any commands please let us know.
 
 #+END_QUOTE
+** [2017-05-10 Wed 12:21] [[https://en.wikipedia.org/wiki/Finger_protocol][Finger protocol - Wikipedia]]
+#+BEGIN_QUOTE
+The Name/Finger protocol, written by David Zimmerman, is based on Request for Comments document RFC 742 (December 1977) as an interface to the name and finger programs that provide status reports on a particular computer system or a particular person at network sites. The finger program was written in 1971 by Les Earnest who created the program to solve the need of users who wanted information on other users of the network. Information on who is logged-in was useful to check the availability of a person to meet. This was probably the earliest form of presence information for remote network users.
+Prior to the finger program, the only way to get this information was with a who program that showed IDs and terminal line numbers (the server's internal number of the communication line, over which the user's terminal is connected) for logged-in users. Earnest named his program after the idea that people would run their fingers down the who list to find what they were looking for.[1]
+The term "finger" had, in the 1970s, a connotation of "is a snitch": this made "finger" a good reminder/mnemonic to the semantic of the UNIX finger command (a client in the protocol context).
+#+END_QUOTE
