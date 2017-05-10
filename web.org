@@ -14867,3 +14867,7 @@ Those free tools allow you to easily produce high quality PDF files which are go
 These are the files I use to build the Atomic trees in use on my personal laptops.
 
 Feel free to use this in any way you like, but your mileage may vary.
+** [2017-05-10 Wed 14:27] [[https://linuxserver.io/][LinuxServer.io]]
+#+BEGIN_QUOTE
+This seems to generate a lot of questions and queries so thought I’d do a quick walkthrough. Prerequisites A working LetsEncrypt container, with your DNS pointing towards your server. You will need port 443 forwarded to your Unraid and a subdomain »
+#+END_QUOTE
