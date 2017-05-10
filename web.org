@@ -14894,3 +14894,5 @@ EDIT DETAILS
 The open-source Trello-like kanban.
 EDIT DETAILS
 #+END_QUOTE
+** [2017-05-10 Wed 19:55] [[https://github.com/benma/visual-regexp.el][benma/visual-regexp.el: A regexp/replace command for Emacs with interactive visual feedback]]
+visual-regexp for Emacs is like replace-regexp, but with live visual feedback directly in the buffer. Check out visual-regexp-steroids if you want to use modern regular expressions instead of Emacs-style regular expressions.
