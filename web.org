@@ -14911,3 +14911,5 @@ This is just a snapshot from the GIT repository and is NOT A STABLE version of R
 A fullstack but simple mail server (smtp, imap, antispam, antivirus...). Only configuration files, no SQL database. Keep it simple and versioned. Easy to deploy and upgrade.
 
 #+END_QUOTE
+** [2017-05-11 Thu 08:00] [[http://mp.vv.si/blog/emacs/emacs-init-performance-analysis/][Emacs init performance analysis – Matthias bloggt]]
+I recently wanted to have some more information about which of the packages I am using contributes more time to the total (emacs-init-time) I use to keep my emacs init code in a single file and I manually divide the file into sections of related code. A section is opened by entering a carefully prepared comment string and ended by another one so that it looks like this:
