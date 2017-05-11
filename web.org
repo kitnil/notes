@@ -14929,3 +14929,21 @@ Ignore built-in packages by default and use :pin built-in to load them
 Ensure that when a package gets pinned, that version is the one that's loaded
 Introduce a customize variable to control this
 #+END_QUOTE
+** [2017-05-11 Thu 21:17] [[https://github.com/hughsie/appstream-glib][hughsie/appstream-glib: This library provides objects and helper methods to help reading and writing AppStream metadata.]]
+#+BEGIN_QUOTE
+This library provides GObjects and helper methods to make it easy to read and
+write AppStream metadata. It also provides a simple DOM implementation that
+makes it easy to edit nodes and convert to and from the standardized XML
+representation. It also supports reading of Debian-style DEP-11 metadata.
+What this library allows you to do:
+
+Read and write compressed AppStream XML files
+Read compressed Debian YAML files
+Add and search for applications in an application store
+Get screenshot image data and release announcements
+Easily retrieve the best application data for the current locale
+Efficiently interface with more heavy-weight parsers like expat
+
+For more information about what AppStream is, please see the wiki here:
+[[http://www.freedesktop.org/wiki/Distributions/AppStream/][http://www.freedesktop.org/wiki/Distributions/AppStream/]]
+#+END_QUOTE
