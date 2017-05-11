@@ -14901,3 +14901,8 @@ visual-regexp for Emacs is like replace-regexp, but with live visual feedback di
 No further development work will progress on anything older than version 2.3. Versions 2.3 and 2.4 still receive security updates, but new features or non-security bugfixes are unlikely to be backported. Version 2.5 still receives security updates and non-security bugfixes. Version 3.0 is under active development.
 
 #+END_QUOTE
+** [2017-05-11 Thu 07:35] [[https://github.com/roundcube/roundcubemail][roundcube/roundcubemail: The Roundcube Webmail suite]]
+#+BEGIN_QUOTE
+This is just a snapshot from the GIT repository and is NOT A STABLE version of Roundcube. It's not recommended to replace an existing installation of Roundcube with this version. Also using a separate database for this installation is highly recommended.
+
+#+END_QUOTE
