@@ -15228,3 +15228,7 @@ Lightweight: ~300 loc for its core.
 Good Emacs integration: integrates well with existing Emacs
 infrastructure and takes advantage of it.
 #+END_QUOTE
+** [2017-05-12 Fri 16:31] [[https://github.com/chrisbarrett/kubernetes-el][chrisbarrett/kubernetes-el: Emacs porcelain for Kubernetes.]]
+#+BEGIN_QUOTE
+A magit-style interface to the Kubernetes command-line client.
+#+END_QUOTE
