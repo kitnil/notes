@@ -15107,3 +15107,12 @@ if you have a problem with the docs, telling us what question you had and
 where you expected to find the answer. Or come say hi on IRC, in #monte on
 irc.freenode.net!
 #+END_QUOTE
+** [2017-05-12 Fri 16:26] [[https://github.com/jorgenschaefer/circe][jorgenschaefer/circe: Circe, a Client for IRC in Emacs]]
+#+BEGIN_QUOTE
+Circe is a Client for IRC in Emacs. It tries to have sane defaults,
+and integrates well with the rest of the editor, using standard Emacs
+key bindings and indicating activity in channels in the status bar so
+it stays out of your way unless you want to use it.
+Complexity-wise, it is somewhere between rcirc (very minimal) and ERC
+(very complex).
+#+END_QUOTE
