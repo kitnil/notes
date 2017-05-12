@@ -15294,3 +15294,7 @@ shell will be asked to execute sh as a subshell in order to print
 out the variables in a format which can be reliably parsed. sh must
 be a POSIX-compliant shell in this case.
 #+END_QUOTE
+** [2017-05-12 Fri 16:32] [[https://github.com/ensime/emacs-sbt-mode][ensime/emacs-sbt-mode: An emacs mode for interacting with scala sbt and projects]]
+#+BEGIN_QUOTE
+Documentation is available at [[http://ensime.github.io/editors/emacs/sbt-mode/][ensime.org]].
+#+END_QUOTE
