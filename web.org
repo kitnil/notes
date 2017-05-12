@@ -15055,3 +15055,12 @@ This mode allows to paste whole buffers or parts of buffers to
 #+BEGIN_QUOTE
 pb is a lightweight pastebin (and url shortener) built using flask.
 #+END_QUOTE
+** [2017-05-12 Fri 16:23] [[https://github.com/leoliu/ggtags][leoliu/ggtags: Emacs frontend to GNU Global source code tagging system.]]
+#+BEGIN_QUOTE
+This package is part of [[http://elpa.gnu.org/][GNU ELPA]] (M-x
+list-packages) and is also available on [[https://melpa.org/#/ggtags][MELPA]].
+The goal is to make working with GNU Global in Emacs as effortlessly
+and intuitively as possible and to integrate tightly with standard
+emacs packages. ggtags.el is tested in Emacs 24 and 25. Patches,
+feature requests and bug reports are welcome. Thanks.
+#+END_QUOTE
