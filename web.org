@@ -15308,3 +15308,12 @@ To use this package, add these lines to your .emacs file:
 And by using M-x linum-mode, you can see line numbers with highlighting current line number.
 You can customize the color of highlighting current line by changing linum-highlight-face. By default, hlinum highlights current line only in the active buffer. To highlight current line in all buffers, change linum-highlight-in-all-buffersp to t.
 #+END_QUOTE
+** [2017-05-12 Fri 16:32] [[https://github.com/jart/disaster][jart/disaster: Disassemble C/C++ code under cursor in Emacs]]
+#+BEGIN_QUOTE
+Disaster lets you press C-c d to see the compiled assembly code for the
+C/C++ file you're currently editing. It even jumps to and highlights the
+line of assembly corresponding to the line beneath your cursor.
+It works by creating a .o file using make (if you have a Makefile) or the
+default system compiler. It then runs that file through objdump to generate
+the human-readable assembly.
+#+END_QUOTE
