@@ -15044,3 +15044,10 @@ A Collection of Ridiculously Useful eXtensions for Emacs.
 crux bundles a few useful interactive commands to enhance your
 overall Emacs experience.
 #+END_QUOTE
+** [2017-05-12 Fri 16:20] [[https://github.com/etu/webpaste.el][etu/webpaste.el: webpaste.el can paste whole buffers or parts of buffers to several pastebin-like services and supports failover if one service fails.]]
+#+BEGIN_QUOTE
+This mode allows to paste whole buffers or parts of buffers to
+  pastebin-like services. It supports more than one service and will
+  failover if one service fails. More services can easily be added
+  over time and prefered services can easily be configured.
+#+END_QUOTE
