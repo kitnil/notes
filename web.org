@@ -15160,3 +15160,28 @@ For Emacs users who don’t like evil and thus don’t use evil-surround,
   evil-surround commands even better! (Have you noticed that evil-surround
   doesn’t work on many custom pairs?)
 #+END_QUOTE
+** [2017-05-12 Fri 16:30] [[https://github.com/cute-jumper/parsec.el][cute-jumper/parsec.el: A parser combinator library for Emacs Lisp, similar to Haskell's Parsec library.]]
+#+BEGIN_QUOTE
+A parser combinator library for Emacs Lisp similar to Haskell’s Parsec library.
+[[moz-nullprincipal:{089519fd-6a3c-4d68-be79-25d120f180ea}]]Overview
+This work is based on [[https://github.com/jwiegley/][John Wiegley]]’s [[https://github.com/jwiegley/emacs-pl][emacs-pl]]. The original [[https://github.com/jwiegley/emacs-pl][emacs-pl]] is awesome,
+  but I found following problems when I tried to use it:
+
+  It only contains a very limited set of combinators
+  Some of its functions (combinators) have different behaviors than their
+    Haskell counterparts
+  It can’t show error messages when parsing fails
+
+So I decided to make a new library on top of it. This library, however, contains
+  most of the parser combinators in Text.Parsec.Combinator, which should be
+  enough in most use cases. Of course more combinators can be added if necessary!
+  Most of the parser combinators have the same behavior as their Haskell
+  counterparts. parsec.el also comes with a simple error handling mechanism so
+  that it can display an error message showing how the parser fails.
+So we can
+
+  use these parser combinators to write parsers easily from scratch in Emacs
+    Lisp like what we can do in Haskell
+  port existing Haskell program using Parsec to its equivalent Emacs Lisp
+    program easily
+#+END_QUOTE
