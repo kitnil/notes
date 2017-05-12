@@ -15116,3 +15116,10 @@ it stays out of your way unless you want to use it.
 Complexity-wise, it is somewhere between rcirc (very minimal) and ERC
 (very complex).
 #+END_QUOTE
+** [2017-05-12 Fri 16:27] [[https://github.com/cute-jumper/gscholar-bibtex][cute-jumper/gscholar-bibtex: Retrieve BibTeX entries from Google Scholar, ACM Digital Library, IEEE Xplore and DBLP]]
+#+BEGIN_QUOTE
+Retrieve BibTeX entries from Google Scholar, ACM Digital Library, IEEE Xplore
+  and DBLP by your query. All in Emacs Lisp!
+UPDATE: ACM Digital Library, IEEE Xplore, and DBLP are now supported though
+  the package name doesn’t suggest that.
+#+END_QUOTE
