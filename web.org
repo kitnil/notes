@@ -15146,3 +15146,17 @@ To be written...
 Slides in Japanese (@kansai-emacs #x06): [[http://up.orezdnu.org/papers/kansai-emacs/%23x06/slide/slide.pdf][http://up.orezdnu.org/papers/kansai-emacs/%23x06/slide/slide.pdf]]
 A blog post in Japanese: [[http://d.hatena.ne.jp/tarao/20121021/1350844264][http://d.hatena.ne.jp/tarao/20121021/1350844264]]
 #+END_QUOTE
+** [2017-05-12 Fri 16:30] [[https://github.com/cute-jumper/embrace.el][cute-jumper/embrace.el: Add/Change/Delete pairs based on `expand-region', similar to `evil-surround'.]]
+#+BEGIN_QUOTE
+Add/Change/Delete pairs based on [[https://github.com/magnars/expand-region.el][expand-region]].
+For evil-surround integration, see [[https://github.com/cute-jumper/evil-embrace.el][evil-embrace]].
+[[moz-nullprincipal:{7c18803d-ab8a-4ab7-a2d6-9c887af48a03}]]Overview
+This package is heavily inspired by [[https://github.com/timcharper/evil-surround][evil-surround]] (which is a port of the vim
+  plugin [[https://github.com/tpope/vim-surround][surround.vim]]). But instead of using evil and its text objects, this
+  package relies on another excellent package [[https://github.com/magnars/expand-region.el][expand-region]].
+For Emacs users who don’t like evil and thus don’t use evil-surround,
+  embrace provides similar commands that can be found in evil-surround. Evil
+  is absolutely not required. For evil-surround users, embrace can make your
+  evil-surround commands even better! (Have you noticed that evil-surround
+  doesn’t work on many custom pairs?)
+#+END_QUOTE
