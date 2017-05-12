@@ -15127,3 +15127,9 @@ UPDATE: ACM Digital Library, IEEE Xplore, and DBLP are now supported though
 #+BEGIN_QUOTE
 Emacs support for Chruby. It works identical to the shell command, after placing chruby.el in your load-path you can
 #+END_QUOTE
+** [2017-05-12 Fri 16:29] [[https://github.com/epost/psc-ide-emacs][epost/psc-ide-emacs: Emacs integration for PureScript's psc-ide tool.]]
+#+BEGIN_QUOTE
+The package is available on [[http://melpa.org/#/psc-ide][MELPA]]. Please read the MELPA’s [[http://melpa.org/#/getting-started][Getting Started]] guide
+  for more information. Once you have MELPA configured install psc-ide-emacs
+  via package.el:
+#+END_QUOTE
