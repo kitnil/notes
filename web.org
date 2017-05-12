@@ -14986,3 +14986,8 @@ a scratch buffer (M-x indium-scratch);
 JavaScript evaluation in JS buffers with indium-interaction-mode;
 a stepping Debugger, similar to edebug, or cider.
 #+END_QUOTE
+** [2017-05-12 Fri 15:52] [[https://github.com/tumashu/chinese-fonts-setup][tumashu/chinese-fonts-setup: emacs中文字体配置工具。可以快速方便的的实现中文字体和英文字体等宽（也就是常说的中英文对齐）。]]
+#+BEGIN_QUOTE
+Chinese-fonts-setup 是一个 emacs 中英文字体配置工具。可以比较方便地实 现中文字体和英文字体等宽（也就是大家常说的中英文对齐）。
+注： 这个 package 特别适用于需要处理中英文混合表格的中文 org-mode 用户。
+#+END_QUOTE
