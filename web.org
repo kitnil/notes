@@ -15004,3 +15004,13 @@ docker run -ti --rm -v $('pwd'):/mnt/workspace \
  -e TZ=UA \
  --name spacemacs jare/spacemacs
 #+END_QUOTE
+** [2017-05-12 Fri 15:56] [[https://github.com/alex-hhh/emacs-sql-indent][alex-hhh/emacs-sql-indent: Smart indentation for SQL files inside Emacs]]
+#+BEGIN_QUOTE
+This is an add-on to the SQL mode that allows smart indentation for SQL code,
+this works like the indentation for C and C++ code: hitting tab indents the
+current line at the correct position.
+The actual indentation rules are fully configurable, so they can be adjusted
+to your preferences. See [[https://github.com/alex-hhh/emacs-sql-indent/blob/master/customize-indentation.md][customize-indentation.md]]
+for how to customize the indentation rules.
+The package also supports aligning sql statements, like this:
+#+END_QUOTE
