@@ -15022,3 +15022,14 @@ The library is designed to integrate with existing Emacs IDE frameworks
 (completion-at-point, xref (beginning with Emacs 25.1), flycheck, etc).
 This package is still under development, and is not recommended for daily use.
 #+END_QUOTE
+** [2017-05-12 Fri 16:06] [[https://github.com/jaypei/emacs-neotree][jaypei/emacs-neotree: A emacs tree plugin like NerdTree for Vim.]]
+#+BEGIN_QUOTE
+You can install the plugin using the packages on [[http://melpa.org/][melpa]].
+Make sure you have something like the following in your Emacs startup file (~/.emacs.d/init.el, or ~/.emacs):
+    (add-to-list 'package-archives
+                 '("melpa" . "http://melpa.org/packages/"))
+To make that take effect, either evaluate that elisp expression or restart Emacs.
+Then use M-x package-list-packages, select neotree from
+the list by pressing i, then press x to execute the changes. At
+that point, the package will be installed.
+#+END_QUOTE
