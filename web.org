@@ -15081,3 +15081,7 @@ It is similar to ctags or etags, but is different from them in the following two
 independence of any editor
 capability to treat definition and reference
 #+END_QUOTE
+** [2017-05-12 Fri 16:25] [[https://github.com/scottaj/mocha.el][scottaj/mocha.el: Emacs mode for running mocha tests]]
+#+BEGIN_QUOTE
+Emacs helpers for running mocha tests. It lets you test an entire project, a particular file, or a particular test in that file.
+#+END_QUOTE
