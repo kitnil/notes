@@ -15245,3 +15245,26 @@ installation for you if you use many elisp libraries. If you have
 package.el but haven't added Marmalade, the community package source,
 yet, add this to ~/.emacs.d/init.el:
 #+END_QUOTE
+** [2017-05-12 Fri 16:31] [[https://github.com/mandoku/mandoku][mandoku/mandoku: A framework for premodern Chinese texts]]
+#+BEGIN_QUOTE
+Mandoku is a framework for supporting research on premodern Chinese
+  texts. This includes the tasks of
+
+  Philologically establishing a text, possibly by referencing and
+    collating multiple versions of a text and digital facsimile(s).
+  Reading, annotating, analyzing and translating a text.
+  Working with repositories of texts, compare, study and analyze
+    differences among these texts.
+  Establish and maintain metadata about such texts, for example
+    concerning the dates, authors, place of creation etc. of the texts.
+  Compare notes, share information with other researchers working on
+    these texts.
+
+Technically speaking this is achieved by
+
+  defining a text format.
+  establishing conventions for collaboration to use texts based on
+    this format.
+  developing a working environment and tools for handling these
+    texts.
+#+END_QUOTE
