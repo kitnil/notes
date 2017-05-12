@@ -15238,3 +15238,10 @@ This repository contains Emacs modes for Groovy and Grails. The major
 features are syntax highlighting with groovy-mode, REPL integration
 with run-groovy and Grails project navigation with grails-mode.
 #+END_QUOTE
+** [2017-05-12 Fri 16:31] [[https://github.com/mpenet/clojure-snippets][mpenet/clojure-snippets: yasnippet 0.7.0+ snippets for clojure]]
+#+BEGIN_QUOTE
+It can be more convenient to use Emacs's package manager to handle
+installation for you if you use many elisp libraries. If you have
+package.el but haven't added Marmalade, the community package source,
+yet, add this to ~/.emacs.d/init.el:
+#+END_QUOTE
