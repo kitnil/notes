@@ -15092,3 +15092,18 @@ Simply put, turn on this minor mode, and the namespace prefix of the
   The image to the left is what you normally see. The image to
   the right has nameless-mode turned on.
 #+END_QUOTE
+** [2017-05-12 Fri 16:26] [[https://github.com/monte-language/monte][monte-language/monte: A dynamic language inspired by Python and E.]]
+#+BEGIN_QUOTE
+Monte is a dynamic programming language inspired by Python and E.
+This repository houses information about the Monte language, but no actual
+implementation code. For a Monte implementation, see
+[[https://github.com/monte-language/typhon][Typhon]].
+[[http://monte.readthedocs.org/en/latest/index.html][Monte's documentation]] is
+on ReadTheDocs. Please remember that Monte is a very new language being worked
+on by a couple busy people in their free time, so the docs probably won't
+answer all of your questions yet.
+Please [[https://github.com/monte-language/monte/issues/new][submit an issue]]
+if you have a problem with the docs, telling us what question you had and
+where you expected to find the answer. Or come say hi on IRC, in #monte on
+irc.freenode.net!
+#+END_QUOTE
