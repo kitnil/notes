@@ -15218,3 +15218,13 @@ In short, Emacs-Guix provides the following features:
       package locations
       [[https://hydra.gnu.org/][Hydra build farm]]
 #+END_QUOTE
+** [2017-05-12 Fri 16:31] [[https://github.com/jyp/boon][jyp/boon: Ergonomic Command Mode for Emacs]]
+#+BEGIN_QUOTE
+Boon is a complete package for modal editing, which is not Evil.
+Selling points:
+
+Ergonomic: common commands are easy to type. (See below)
+Lightweight: ~300 loc for its core.
+Good Emacs integration: integrates well with existing Emacs
+infrastructure and takes advantage of it.
+#+END_QUOTE
