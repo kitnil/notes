@@ -15085,3 +15085,10 @@ capability to treat definition and reference
 #+BEGIN_QUOTE
 Emacs helpers for running mocha tests. It lets you test an entire project, a particular file, or a particular test in that file.
 #+END_QUOTE
+** [2017-05-12 Fri 16:26] [[https://github.com/Malabarba/Nameless][Malabarba/Nameless: Less is more. Hide package namespace in your emacs-lisp code]]
+#+BEGIN_QUOTE
+Simply put, turn on this minor mode, and the namespace prefix of the
+  package you’re editing will be hidden by a :. Here’s a comparison.
+  The image to the left is what you normally see. The image to
+  the right has nameless-mode turned on.
+#+END_QUOTE
