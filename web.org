@@ -15298,3 +15298,13 @@ be a POSIX-compliant shell in this case.
 #+BEGIN_QUOTE
 Documentation is available at [[http://ensime.github.io/editors/emacs/sbt-mode/][ensime.org]].
 #+END_QUOTE
+** [2017-05-12 Fri 16:32] [[https://github.com/tom-tan/hlinum-mode][tom-tan/hlinum-mode: This library extends linum-mode to highlight current line number.]]
+#+BEGIN_QUOTE
+This library extends linum-mode to highlight current line number.
+It requires Emacs 24.4 or later.
+To use this package, add these lines to your .emacs file:
+    (require 'hlinum)
+    (hlinum-activate)
+And by using M-x linum-mode, you can see line numbers with highlighting current line number.
+You can customize the color of highlighting current line by changing linum-highlight-face. By default, hlinum highlights current line only in the active buffer. To highlight current line in all buffers, change linum-highlight-in-all-buffersp to t.
+#+END_QUOTE
