@@ -15123,3 +15123,7 @@ Retrieve BibTeX entries from Google Scholar, ACM Digital Library, IEEE Xplore
 UPDATE: ACM Digital Library, IEEE Xplore, and DBLP are now supported though
   the package name doesn’t suggest that.
 #+END_QUOTE
+** [2017-05-12 Fri 16:28] [[https://github.com/plexus/chruby.el][plexus/chruby.el: Emacs support for the Chruby version switcher for Ruby]]
+#+BEGIN_QUOTE
+Emacs support for Chruby. It works identical to the shell command, after placing chruby.el in your load-path you can
+#+END_QUOTE
