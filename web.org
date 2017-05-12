@@ -15273,3 +15273,24 @@ Technically speaking this is achieved by
 Home page: [[http://www.mew.org/][http://www.mew.org/]]
 Installation: The github version is available via [[http://melpa.milkbox.net/][MELPA]] and the latest stable release is available via [[http://melpa-stable.milkbox.net/][MELPA Stable]].
 #+END_QUOTE
+** [2017-05-12 Fri 16:32] [[https://github.com/purcell/exec-path-from-shell][purcell/exec-path-from-shell: Make Emacs use the $PATH set up by the user's shell]]
+#+BEGIN_QUOTE
+[[moz-nullprincipal:{780074f4-bea0-47a7-9bc1-66e62a792461}]]exec-path-from-shell
+A GNU Emacs library to ensure environment variables inside Emacs look
+the same as in the user's shell.
+[[moz-nullprincipal:{780074f4-bea0-47a7-9bc1-66e62a792461}]]Motivation
+Ever find that a command works in your shell, but not in Emacs?
+This happens a lot on OS X, where an Emacs instance started from the GUI inherits a
+default set of environment variables.
+This library solves this problem by copying important environment
+variables from the user's shell: it works by asking your shell to print out the
+variables of interest, then copying them into the Emacs environment.
+[[moz-nullprincipal:{780074f4-bea0-47a7-9bc1-66e62a792461}]]Compatibility
+At a minimum, this package assumes that your shell is at least UNIX-y: if
+(getenv "SHELL") evaluates to something like ".../cmdproxy.exe", this
+package probably isn't for you.
+Further, if you use a non-POSIX-standard shell such as tcsh or fish, your
+shell will be asked to execute sh as a subshell in order to print
+out the variables in a format which can be reliably parsed. sh must
+be a POSIX-compliant shell in this case.
+#+END_QUOTE
