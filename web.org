@@ -15038,3 +15038,9 @@ that point, the package will be installed.
 [[moz-nullprincipal:{3d405e8a-9caf-4d45-9958-3d4f62c0d3eb}]]Why js-mode instead of js2-mode?
 js2-mode does not yet work with "multi-mode" modes such as mmm-mode. See [[https://github.com/mooz/js2-mode/issues/124][https://github.com/mooz/js2-mode/issues/124]].
 #+END_QUOTE
+** [2017-05-12 Fri 16:06] [[https://github.com/bbatsov/crux][bbatsov/crux: A Collection of Ridiculously Useful eXtensions for Emacs]]
+#+BEGIN_QUOTE
+A Collection of Ridiculously Useful eXtensions for Emacs.
+crux bundles a few useful interactive commands to enhance your
+overall Emacs experience.
+#+END_QUOTE
