@@ -15185,3 +15185,15 @@ So we can
   port existing Haskell program using Parsec to its equivalent Emacs Lisp
     program easily
 #+END_QUOTE
+** [2017-05-12 Fri 16:30] [[https://github.com/ocaml/tuareg][ocaml/tuareg: Emacs OCaml mode]]
+#+BEGIN_QUOTE
+This archive contains files to help editing [[http://ocaml.org/][OCaml]]
+code, to highlight important parts of the code, to run an OCaml
+toplevel, and to run the OCaml debugger within Emacs.
+[[moz-nullprincipal:{6acdd855-1667-4485-a34d-c37d176636cf}]]Contents
+README.md      — This file.
+HISTORY        — Differences with previous versions.
+tuareg.el      — A major mode for editing OCaml code in Emacs.
+ocamldebug.el  — To run the OCaml debugger under Emacs.
+sample.ml      — Sample file to check the indentation engine.
+#+END_QUOTE
