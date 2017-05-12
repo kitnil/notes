@@ -14971,3 +14971,7 @@ To avoid rebuilding themes if there was no change, the script caches identifiers
 If you already have themes of the same names installed in your .themes folder, they will be deleted, so backup the folder first if you want to keep them. Other themes will not be touched.
 Note that building the latest version of some themes is heavy work, and thus this script installs some big dependencies (for example, SASS is used to compile CSS and InkScape is used to render images). That's the price of living on the cutting edge.
 #+END_QUOTE
+** [2017-05-12 Fri 15:49] [[https://github.com/wolray/symbol-overlay][wolray/symbol-overlay: Highlight symbols with keymap-enabled overlays]]
+#+BEGIN_QUOTE
+Highlight symbols with overlays while providing a keymap for various operations about highlighted symbols.  It was originally inspired by the package highlight-symbol.  The fundamental difference is that in symbol-overlay every symbol is highlighted by the Emacs built-in function overlay-put rather than the font-lock mechanism used in highlight-symbol.
+#+END_QUOTE
