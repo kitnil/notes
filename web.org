@@ -14975,3 +14975,14 @@ Note that building the latest version of some themes is heavy work, and thus thi
 #+BEGIN_QUOTE
 Highlight symbols with overlays while providing a keymap for various operations about highlighted symbols.  It was originally inspired by the package highlight-symbol.  The fundamental difference is that in symbol-overlay every symbol is highlighted by the Emacs built-in function overlay-put rather than the font-lock mechanism used in highlight-symbol.
 #+END_QUOTE
+** [2017-05-12 Fri 15:50] [[https://github.com/NicolasPetton/Indium][NicolasPetton/Indium: A JavaScript development environment for Emacs]]
+#+BEGIN_QUOTE
+Indium connects to a browser tab or nodejs process and provides many features for
+JavaScript development, including:
+
+a REPL (with auto completion) & object inspection;
+an inspector, with history and navigation;
+a scratch buffer (M-x indium-scratch);
+JavaScript evaluation in JS buffers with indium-interaction-mode;
+a stepping Debugger, similar to edebug, or cider.
+#+END_QUOTE
