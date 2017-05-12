@@ -15232,3 +15232,9 @@ infrastructure and takes advantage of it.
 #+BEGIN_QUOTE
 A magit-style interface to the Kubernetes command-line client.
 #+END_QUOTE
+** [2017-05-12 Fri 16:31] [[https://github.com/Groovy-Emacs-Modes/groovy-emacs-modes][Groovy-Emacs-Modes/groovy-emacs-modes: A groovy major mode, grails minor mode, and a groovy inferior mode.]]
+#+BEGIN_QUOTE
+This repository contains Emacs modes for Groovy and Grails. The major
+features are syntax highlighting with groovy-mode, REPL integration
+with run-groovy and Grails project navigation with grails-mode.
+#+END_QUOTE
