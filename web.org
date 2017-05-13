@@ -15358,3 +15358,13 @@ history with the ability to mark ranges and/or single commits and
 operate on them. Mutiple branches/tags/ref interfaces can be active at
 the same time.
 #+END_QUOTE
+** [2017-05-13 Sat 04:53] [[https://github.com/emacscollective/borg][emacscollective/borg: Assimilate Emacs packages as Git submodules]]
+#+BEGIN_QUOTE
+Borg is a bare-bones package manager for Emacs packages.  It provides
+only a few essential features and should be combined with other tools
+such as [[https://github.com/magit/magit][Magit]], [[https://github.com/emacscollective/epkg][epkg]], [[https://github.com/jwiegley/use-package][use-package]], and [[https://github.com/tarsius/auto-compile][auto-compile]].
+Borg assimilates packages into the ~/.emacs.d repository as Git
+submodules.  An assimilated package is called a drone and a borg-based
+~/.emacs.d repository is called a collective.
+For more information see the [[https://emacsair.me/2016/05/17/assimilate-emacs-packages-as-git-submodules][announcement]] and the [[https://emacsmirror.net/manual/borg][manual]].
+#+END_QUOTE
