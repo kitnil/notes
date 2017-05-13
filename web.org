@@ -15435,3 +15435,14 @@ New in version 0.6.
 The “Short Names” field lists the identifiers that can be used with the
 get_lexer_by_name() function.
 #+END_QUOTE
+** [2017-05-13 Sat 08:57] [[https://github.com/eworm-de/pacredir][eworm-de/pacredir: redirect pacman requests, assisted by avahi service discovery]]
+#+BEGIN_QUOTE
+pacredir - redirect pacman requests, assisted by avahi service discovery
+By default every [[https://www.archlinux.org/][Arch Linux]] installation
+downloads its package files from online mirrors, transferring all the
+bits via WAN connection.
+But often other Arch systems may be around that already have the files
+available on local storage - just a fast LAN connection away. This is
+where pacredir can help. It uses [[http://avahi.org/][Avahi]] to find
+other instances and get the files there if available.
+#+END_QUOTE
