@@ -15385,3 +15385,18 @@ WARNING, MIND DUMBING CONTENT INSIDE.
 
 Nyanmacs is expanding!! [[http://temporal.pr0.pl/devblog/2011/08/25/introducing-nyan-mode-el-turn-your-emacs-into-nyanmacs/][Read the story so far]]! :).
 #+END_QUOTE
+** [2017-05-13 Sat 05:27] [[https://github.com/eduardschaeli/wget-image-scraper][eduardschaeli/wget-image-scraper: Scrapes images from a list of urls with wget]]
+#+BEGIN_QUOTE
+This shellscript scrapes all images, recursively, from the urls listed
+in the sites.txt file.
+It will be used in an art project by Stefan Baltensperger.
+Usage:
+
+Add urls to the sites.txt file like this
+[[http://www.yoursite.ch/][http://www.yoursite.ch]]
+The HTTP:// part ist important!
+Make the scraper.sh shell script executable:
+chmod +x scraper.sh
+Run it like this:
+./scraper.sh
+#+END_QUOTE
