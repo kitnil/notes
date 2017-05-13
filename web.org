@@ -15368,3 +15368,9 @@ submodules.  An assimilated package is called a drone and a borg-based
 ~/.emacs.d repository is called a collective.
 For more information see the [[https://emacsair.me/2016/05/17/assimilate-emacs-packages-as-git-submodules][announcement]] and the [[https://emacsmirror.net/manual/borg][manual]].
 #+END_QUOTE
+** [2017-05-13 Sat 04:53] [[https://github.com/xuchunyang/github-notifier.el][xuchunyang/github-notifier.el: Displays your GitHub notifications unread count in Emacs mode-line]]
+#+BEGIN_QUOTE
+github-notifier is a global minor-mode for Emacs that displays your GitHub
+  notifications unread count in mode-line. It checks the GitHub Notifications
+  API every minute.
+#+END_QUOTE
