@@ -15346,3 +15346,7 @@ Sort buffers by their VC status
           
     
 #+END_QUOTE
+** [2017-05-13 Sat 04:52] [[https://github.com/antham/helm-backup][antham/helm-backup: Backup all file changes in emacs through git and retrieve them using helm]]
+#+BEGIN_QUOTE
+This project aims to create a backup system for emacs using both power of git to store changes and power of helm to fetch backups easily.
+#+END_QUOTE
