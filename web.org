@@ -15350,3 +15350,11 @@ Sort buffers by their VC status
 #+BEGIN_QUOTE
 This project aims to create a backup system for emacs using both power of git to store changes and power of helm to fetch backups easily.
 #+END_QUOTE
+** [2017-05-13 Sat 04:52] [[https://github.com/jimhourihan/egit][jimhourihan/egit: Emacs git history interface]]
+#+BEGIN_QUOTE
+;; This file contains an interface to git commands which are not
+(currently) part of git.el. Primarily, this is a view of the git commit
+history with the ability to mark ranges and/or single commits and
+operate on them. Mutiple branches/tags/ref interfaces can be active at
+the same time.
+#+END_QUOTE
