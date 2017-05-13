@@ -15325,3 +15325,17 @@ the human-readable assembly.
           [[http://files.taesoo.org/git-emacs/git-emacs.html][http://files.taesoo.org/git-emacs/git…]]
     
 #+END_QUOTE
+** [2017-05-13 Sat 04:44] [[https://github.com/purcell/ibuffer-vc][purcell/ibuffer-vc: Let Emacs' ibuffer-mode group files by git project etc., and show file state]]
+#+BEGIN_QUOTE
+Emacs' ibuffer-mode is a wonderful replacement for the built-in
+list-buffer command, and allows buffers to be grouped
+programatically, e.g. by major mode.
+If, like me, you mostly work on version-controlled files, you might
+like to see your buffers grouped by the associated version control
+project.
+That's where ibuffer-vc comes in: it lets you:
+
+Group your buffers by their parent vc root directory
+See the VC status of the associated files
+Sort buffers by their VC status
+#+END_QUOTE
