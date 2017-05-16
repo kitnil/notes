@@ -463,3 +463,5 @@ rw_grim: https://en.wikipedia.org/wiki/Open_Letter_to_Hobbyists
 rw_grim: https://en.wikipedia.org/wiki/Embrace_extend_and_extinguish
 rw_grim: https://en.wikipedia.org/wiki/Halloween_documents
 ** Install rigrep
+** ssl error
+W: [SSL: SSLV3_ALERT_HANDSHAKE_FAILURE] sslv3 alert handshake failure (_ssl.c:661) [10] https://emacs-china.org/posts.rss
