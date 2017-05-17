@@ -15446,3 +15446,69 @@ available on local storage - just a fast LAN connection away. This is
 where pacredir can help. It uses [[http://avahi.org/][Avahi]] to find
 other instances and get the files there if available.
 #+END_QUOTE
+** [2017-05-16 Tue 14:22] [[https://github.com/abo-abo/swiper][abo-abo/swiper: Ivy - a generic completion frontend for Emacs, Swiper - isearch with an overview, and more. Oh, man!]]
+#+BEGIN_QUOTE
+flexible, simple tools for minibuffer completion in Emacs
+This repository contains:
+Ivy, a generic completion mechanism for Emacs.
+Counsel, a collection of Ivy-enhanced versions of common Emacs
+commands.
+Swiper, an Ivy-enhanced alternative to isearch.
+#+END_QUOTE
+** [2017-05-16 Tue 14:25] [[https://github.com/cjohansson/emacs-ssh-deploy][cjohansson/emacs-ssh-deploy: A deployment plugin for Emacs supporting FTP and SSH.]]
+#+BEGIN_QUOTE
+The ssh-deploy plug-in for Emacs makes it possible to effortlessly deploy local files and directories to remote hosts via SSH and FTP. It also makes it possible to define remote paths per directory and whether or not you want to deploy on explicit save actions or not and whether you want transfers to be asynchronous or not. For asynchronous transfers you need a setup which doesn't require a interactive authorization. The plug-in also enables manual upload and download of files and directories. It also features automatic detection of remote changes. You can also check differences between local files and remote files if you have ediff installed. You can rename and delete files and directories synced to remote host. You can also browse remote hosts. Lastly you can easily open remote hosts terminal if you have tramp-term installed. For asynchronous transfers you need to have a setup which allows automatic connections to servers via SSH and FTP and have async.el installed.
+#+END_QUOTE
+** [2017-05-16 Tue 17:36] [[https://github.com/processone/ejabberd][processone/ejabberd: Robust, ubiquitous and massively scalable Jabber / XMPP Instant Messaging platform]]
+#+BEGIN_QUOTE
+ejabberd is a distributed, fault-tolerant technology that allows the creation
+of large-scale instant messaging applications. The server can reliably support
+thousands of simultaneous users on a single node and has been designed to
+provide exceptional standards of fault tolerance. As an open source
+technology, based on industry-standards, ejabberd can be used to build bespoke
+solutions very cost effectively.
+#+END_QUOTE
+** [2017-05-16 Tue 23:51] [[https://caddyserver.com/][Caddy - The HTTP/2 Web Server with Automatic HTTPS]]
+#+BEGIN_QUOTE
+Caddy is the HTTP/2 web server
+                                                with automatic HTTPS.
+                                        
+#+END_QUOTE
+** [2017-05-17 Wed 11:57] [[http://aseman.co/en/products/cutegram/][Cutegram | Aseman]]
+#+BEGIN_QUOTE
+Cutegram is a free and opensource telegram clients for Linux, Windows, OS X and OpenBSD, focusing on user friendly, compatibility with desktop environments.
+Cutegram using Qt5, QML, libqtelegram, libappindication, AsemanQtTools technologies and Faenza icons and Twitter emojies graphic sets.
+It's free and released under GPLv3 license.
+#+END_QUOTE
+** [2017-05-17 Wed 13:30] [[http://osday.ru/][OS Day]]
+#+BEGIN_QUOTE
+Четвертая научно–практическая конференция OS DAY соберет разработчиков и заказчиков отечественных операционных систем. Цель конференции - определить задачи и возможности России в области разработки операционных платформ, выделить перспективные технологии, обменяться опытом, обозначить вызовы ИТ-отрасли и направления движения.
+#+END_QUOTE
+** [2017-05-17 Wed 14:13] [[https://github.com/mmohrhard/crash][mmohrhard/crash]]
+#+BEGIN_QUOTE
+Current LibreOffice crash reporting server
+Accepts crash reports from a LibreOffice instance, processes it and displays the information on a website. Additionally contains a number of helper tools around the crash reporting.
+#+END_QUOTE
+** [2017-05-17 Wed 19:38] [[https://github.com/tkf/emacs-request][tkf/emacs-request: Request.el -- Easy HTTP request for Emacs Lisp]]
+#+BEGIN_QUOTE
+Request.el is a HTTP request library with multiple backends.  It
+supports url.el which is shipped with Emacs and curl command line
+program.  User can use curl when s/he has it, as curl is more reliable
+than url.el.  Library author can use request.el to avoid imposing
+external dependencies such as curl to users while giving richer
+experience for users who have curl.
+As request.el is implemented in extensible manner, it is possible to
+implement other backend such as wget.  Also, if future version of
+Emacs support linking with libcurl, it is possible to implement a
+backend using it.  Libraries using request.el automatically can
+use these backend without modifying their code.
+Request.el also patches url.el dynamically, to fix bugs in url.el.
+See [[moz-nullprincipal:{a6755ab4-3c66-42b6-bb56-b08b687214eb}][`monkey patches for url.el`_]] for the bugs fixed by request.el.
+#+END_QUOTE
+** [2017-05-17 Wed 23:28] [[https://www.opennet.ru/tips/2999_iptables_block_tor.shtml][The OpenNET Project: Обход блокировки трафика провайдером при помощи iptables]]
+#+BEGIN_QUOTE
+Многие провайдеры и корпоративные системы инспектирования трафика применяют для
+блокирования доступа к сайтам подстановку пакетов, перенаправляющих браузер
+пользователя на страницу с информацией о блокировке, при этом не обрывая
+изначально установленное соединение к заблокированному ресурсу.
+#+END_QUOTE
