@@ -15585,3 +15585,7 @@ already installed.
 #+BEGIN_QUOTE
 Это — Jabber.ru, жаббер, мессенджер, чат.
 #+END_QUOTE
+** [2017-05-18 Thu 14:48] [[https://www.easycoding.org/2017/02/22/sobiraem-rpm-pakety-dlya-fedora-v-mock.html][Собираем RPM пакеты для Fedora в mock - Официальный сайт EasyCoding Team]]
+#+BEGIN_QUOTE
+Ранее мы уже многократно [[https://www.easycoding.org/tag/rpmbuild][описывали]] алгоритмы сборки RPM пакетов, однако делали это непосредственно внутри установленной системы при помощи прямого вызова инструмента rpmbuild. Существует и другой, более правильный, на наш взгляд, метод — mock.
+#+END_QUOTE
