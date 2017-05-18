@@ -15184,7 +15184,7 @@ So we can
 This archive contains files to help editing [[http://ocaml.org/][OCaml]]
 code, to highlight important parts of the code, to run an OCaml
 toplevel, and to run the OCaml debugger within Emacs.
-[[moz-nullprincipal:{6acdd855-1667-4485-a34d-c37d176636cf}]]Contents
+Contents
 README.md      — This file.
 HISTORY        — Differences with previous versions.
 tuareg.el      — A major mode for editing OCaml code in Emacs.
@@ -15269,17 +15269,17 @@ Installation: The github version is available via [[http://melpa.milkbox.net/][M
 #+END_QUOTE
 ** [2017-05-12 Fri 16:32] [[https://github.com/purcell/exec-path-from-shell][purcell/exec-path-from-shell: Make Emacs use the $PATH set up by the user's shell]]
 #+BEGIN_QUOTE
-[[moz-nullprincipal:{780074f4-bea0-47a7-9bc1-66e62a792461}]]exec-path-from-shell
+exec-path-from-shell
 A GNU Emacs library to ensure environment variables inside Emacs look
 the same as in the user's shell.
-[[moz-nullprincipal:{780074f4-bea0-47a7-9bc1-66e62a792461}]]Motivation
+Motivation
 Ever find that a command works in your shell, but not in Emacs?
 This happens a lot on OS X, where an Emacs instance started from the GUI inherits a
 default set of environment variables.
 This library solves this problem by copying important environment
 variables from the user's shell: it works by asking your shell to print out the
 variables of interest, then copying them into the Emacs environment.
-[[moz-nullprincipal:{780074f4-bea0-47a7-9bc1-66e62a792461}]]Compatibility
+Compatibility
 At a minimum, this package assumes that your shell is at least UNIX-y: if
 (getenv "SHELL") evaluates to something like ".../cmdproxy.exe", this
 package probably isn't for you.
@@ -15497,7 +15497,7 @@ Emacs support linking with libcurl, it is possible to implement a
 backend using it.  Libraries using request.el automatically can
 use these backend without modifying their code.
 Request.el also patches url.el dynamically, to fix bugs in url.el.
-See [[moz-nullprincipal:{a6755ab4-3c66-42b6-bb56-b08b687214eb}][`monkey patches for url.el`_]] for the bugs fixed by request.el.
+See for the bugs fixed by request.el.
 #+END_QUOTE
 ** [2017-05-17 Wed 23:28] [[https://www.opennet.ru/tips/2999_iptables_block_tor.shtml][The OpenNET Project: Обход блокировки трафика провайдером при помощи iptables]]
 #+BEGIN_QUOTE
