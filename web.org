@@ -15589,3 +15589,7 @@ already installed.
 #+BEGIN_QUOTE
 Ранее мы уже многократно [[https://www.easycoding.org/tag/rpmbuild][описывали]] алгоритмы сборки RPM пакетов, однако делали это непосредственно внутри установленной системы при помощи прямого вызова инструмента rpmbuild. Существует и другой, более правильный, на наш взгляд, метод — mock.
 #+END_QUOTE
+** [2017-05-18 Thu 15:12] [[http://rancher.com/microservices-block-storage/][Announcing Longhorn: open source project for microservices-based distributed block storage]]
+#+BEGIN_QUOTE
+[[http://cdn.rancher.com/wp-content/uploads/2017/04/14094800/project-longhorn-logo-blue.png]][[http://cdn.rancher.com/wp-content/uploads/2017/04/14094800/project-longhorn-logo-blue.png]]I’m super excited to unveil [[https://github.com/rancher/longhorn][Project Longhorn]], a new way to build distributed block storage for cloud- and container-based deployments. Following the principles of microservices, we have leveraged containers to build distributed block storage out of small independent components, and use container orchestration to coordinate these components to form a resilient distributed system.
+#+END_QUOTE
