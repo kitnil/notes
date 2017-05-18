@@ -15574,3 +15574,10 @@ Traveled recently? Want to tell us more about your trip planning and budget?
 #+BEGIN_QUOTE
 This is for a Debian based OS, such as: [[http://ubuntu.com/desktop][Ubuntu]], [[http://www.linuxmint.com/][Mint]], and [[http://elementaryos.org/][Elementary OS]]. I prefer Ubuntu 15.10
 #+END_QUOTE
+** [2017-05-18 Thu 13:42] [[https://github.com/legoscia/emacs-jabber][legoscia/emacs-jabber: Jabber client for Emacs]]
+#+BEGIN_QUOTE
+The file hexrgb.el ([[http://www.emacswiki.org/emacs/hexrgb.el][http://www.emacswiki.org/emacs/hexrgb.el]]) is
+needed for MUC nick coloring feature.  A copy is located in the compat
+directory, and used if the configure script doesn't find another copy
+already installed.
+#+END_QUOTE
