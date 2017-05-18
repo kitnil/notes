@@ -16046,3 +16046,18 @@ Graphite-Web, a Django-based web application that renders graphs and dashboards
 The [[https://github.com/graphite-project/carbon][Carbon]] metric processing daemons
 The [[https://github.com/graphite-project/whisper][Whisper]] time-series database library
 #+END_QUOTE
+** [2017-05-18 Thu 22:47] [[https://github.com/openstack/openstack][openstack/openstack: Repository containing OpenStack repositories]]
+#+BEGIN_QUOTE
+zuul gates all of the contained projects in an effective single
+timeline. This means that OpenStack, across all of the projects, does
+already have a sequence of combinations that have been explicitly
+tested, but it's non-trivial to go from a single commit of a particular
+project to the commits that were tested with it.
+Gerrit's submodule tracking feature will update a super project every
+time a subproject is updated, so the specific sequence created by zuul
+will be captured by the super project commits.
+This repo is intended to be used in a read-only manner. Any commit in this
+repo will get a collection of commits in the other repos that have
+explicitly been tested with each other, if that sort of thing is important
+to you.
+#+END_QUOTE
