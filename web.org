@@ -15994,3 +15994,13 @@ Check your project for common sources of contributor friction.
 [[moz-nullprincipal:{85069f9f-3d86-4fd0-b64e-65f0c94f180f}]]For the Non-Developer
 Flint checks if your project's folder contains the proper files and structure to allow potential contributors to understand: 1) the project's goals, 2) how to contribute, 3) usage guidelines, and 4) how to install the project.
 #+END_QUOTE
+** [2017-05-18 Thu 22:33] [[https://github.com/awslabs/chalice][awslabs/chalice: Python Serverless Microframework for AWS]]
+#+BEGIN_QUOTE
+The python serverless microframework for AWS allows you to quickly create and
+deploy applications that use Amazon API Gateway and AWS Lambda.
+It provides:
+
+A command line tool for creating, deploying, and managing your app
+A familiar and easy to use API for declaring views in python code
+Automatic IAM policy generation
+#+END_QUOTE
