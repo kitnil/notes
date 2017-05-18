@@ -15809,3 +15809,13 @@ git
 python3
 ansible (see [[http://docs.ansible.com/ansible/intro_installation.html][http://docs.ansible.com/ansible/intro_installation.html]])
 #+END_QUOTE
+** [2017-05-18 Thu 15:45] [[https://github.com/jcollard/elm-mode][jcollard/elm-mode: Elm mode for emacs]]
+#+BEGIN_QUOTE
+elm-mode indentation is based on cycling: every time you insert a new
+line there will be one or more indentation levels available for you to
+choose from. The exact number is printed in the minibuffer either as
+Sole indentation or Indent cycle (n)... where n is the number of
+available indentations to choose from. If the automatic indentation
+level was not the one you expected simply hit TAB to cycle through the
+list (note that hitting any other key will cancel the cycle).
+#+END_QUOTE
