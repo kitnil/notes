@@ -15601,3 +15601,8 @@ complements the standard lisp-mode. While lisp-mode supports editing Lisp
 source files, slime-mode adds support for interacting with a running Common
 Lisp process for compilation, debugging, documentation lookup, and so on.
 #+END_QUOTE
+** [2017-05-18 Thu 15:22] [[https://github.com/streamio/streamio-ffmpeg][streamio/streamio-ffmpeg: Simple yet powerful ruby ffmpeg wrapper for reading metadata and transcoding movies]]
+#+BEGIN_QUOTE
+Simple yet powerful wrapper around the ffmpeg command for reading metadata and transcoding movies.
+All work on this project is sponsored by the online video platform [[http://streamio.com/][Streamio]].
+#+END_QUOTE
