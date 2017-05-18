@@ -16145,3 +16145,17 @@ Welcome to [[https://kotlinlang.org/][Kotlin]]! Some handy links:
 [[https://kotlinslackin.herokuapp.com/][Public Slack channel]]
 [[https://teamcity.jetbrains.com/project.html?tab=projectOverview&projectId=Kotlin][TeamCity CI build]]
 #+END_QUOTE
+** [2017-05-18 Thu 22:59] [[https://github.com/desktop/desktop][desktop/desktop: Simple collaboration from your desktop]]
+#+BEGIN_QUOTE
+Download the installer for your OS:
+
+[[https://central.github.com/deployments/desktop/desktop/latest/darwin][macOS]]
+[[https://central.github.com/deployments/desktop/desktop/latest/win32][Windows]]
+[[https://central.github.com/deployments/desktop/desktop/latest/win32?format=msi][Windows machine-wide install]]
+
+You can install this alongside your existing GitHub Desktop for Mac or GitHub
+Desktop for Windows application.
+NOTE: there is no current migration path to import your existing
+repositories into the new application - you can drag-and-drop your repositories
+from disk onto the application to get started.
+#+END_QUOTE
