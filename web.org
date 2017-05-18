@@ -16210,3 +16210,22 @@ Elasticsearch is a distributed RESTful search engine built for the cloud. Featur
         
         Open Source under the Apache License, version 2 (“ALv2”)
 #+END_QUOTE
+** [2017-05-18 Thu 23:08] [[https://github.com/boramalper/magnetico][boramalper/magnetico: Autonomous (self-hosted) BitTorrent DHT search engine suite.]]
+#+BEGIN_QUOTE
+Autonomous (self-hosted) BitTorrent DHT search engine suite.
+[[https://gitter.im/magnetico-dev/magnetico-dev][{[https://camo.githubusercontent.com/20d7543bc8280bf8134b686c46c7b7e2c0a467fd/68747470733a2f2f6261646765732e6769747465722e696d2f67697474657248512f6769747465722e706e67}]]]
+magnetico is the first autonomous (self-hosted) BitTorrent DHT search engine suite that is designed for end-users.
+The suite consists of two packages:
+
+magneticod: Autonomous BitTorrent DHT crawler and metadata fetcher.
+magneticow: Lightweight web interface for magnetico.
+
+Both programs, combined together, allows anyone with a decent Internet connection to access the vast amount of torrents
+waiting to be discovered within the BitTorrent DHT space, without relying on any central entity.
+magnetico liberates BitTorrent from the yoke of centralised trackers & web-sites and makes it truly
+decentralised. Finally!
+
+NOTICE:
+I have finals coming in 3 weeks so I'll be away until 18 May. Wish me luck, and good luck to you too while using
+magnetico!
+#+END_QUOTE
