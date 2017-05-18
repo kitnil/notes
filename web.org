@@ -15157,7 +15157,7 @@ For Emacs users who don’t like evil and thus don’t use evil-surround,
 ** [2017-05-12 Fri 16:30] [[https://github.com/cute-jumper/parsec.el][cute-jumper/parsec.el: A parser combinator library for Emacs Lisp, similar to Haskell's Parsec library.]]
 #+BEGIN_QUOTE
 A parser combinator library for Emacs Lisp similar to Haskell’s Parsec library.
-[[moz-nullprincipal:{089519fd-6a3c-4d68-be79-25d120f180ea}]]Overview
+Overview
 This work is based on [[https://github.com/jwiegley/][John Wiegley]]’s [[https://github.com/jwiegley/emacs-pl][emacs-pl]]. The original [[https://github.com/jwiegley/emacs-pl][emacs-pl]] is awesome,
   but I found following problems when I tried to use it:
 
