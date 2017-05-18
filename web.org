@@ -15739,3 +15739,26 @@ This penetration testing tool allows an auditor to intercept SSH connections.  A
 Of course, the victim's SSH client will complain that the server's key has changed.  But because 99.99999% of the time this is caused by a legitimate action (OS re-install, configuration change, etc), many/most users will disregard the warning and continue on.
 NOTE: Only run the modified sshd in a VM or container!  Ad-hoc edits were made to the OpenSSH sources in critical regions, with no regard to their security implications.  Its not hard to imagine these edits introduce serious vulnerabilities.  Until the dependency on root privileges is removed, be sure to only run this code on throw-away VMs/containers.
 #+END_QUOTE
+** [2017-05-18 Thu 15:30] [[https://github.com/kshvmdn/fsql][kshvmdn/fsql: Search through your filesystem with SQL-esque queries.]]
+#+BEGIN_QUOTE
+Search through your file system with SQL-esque queries.
+
+
+[[moz-nullprincipal:{044056b8-e45f-40e8-9a1c-f99de0ef6f2c}][Demo]]
+[[moz-nullprincipal:{044056b8-e45f-40e8-9a1c-f99de0ef6f2c}][Installation]]
+[[moz-nullprincipal:{044056b8-e45f-40e8-9a1c-f99de0ef6f2c}][Usage]]
+
+[[moz-nullprincipal:{044056b8-e45f-40e8-9a1c-f99de0ef6f2c}][Query]]
+
+[[moz-nullprincipal:{044056b8-e45f-40e8-9a1c-f99de0ef6f2c}][Attribute]]
+[[moz-nullprincipal:{044056b8-e45f-40e8-9a1c-f99de0ef6f2c}][Source]]
+[[moz-nullprincipal:{044056b8-e45f-40e8-9a1c-f99de0ef6f2c}][Conditon]]
+
+
+[[moz-nullprincipal:{044056b8-e45f-40e8-9a1c-f99de0ef6f2c}][Examples]]
+
+
+[[moz-nullprincipal:{044056b8-e45f-40e8-9a1c-f99de0ef6f2c}][Contribute]]
+[[moz-nullprincipal:{044056b8-e45f-40e8-9a1c-f99de0ef6f2c}][Credits]]
+[[moz-nullprincipal:{044056b8-e45f-40e8-9a1c-f99de0ef6f2c}][License]]
+#+END_QUOTE
