@@ -15697,3 +15697,11 @@ A Tool/Toy for Non-Beginners
 by Lu Wang
 [[moz-nullprincipal:{1902e9fb-d31a-4b4f-9481-f027f1874caa}]][[http://coolwanglu.github.io/vim.js/emterpreter/vim.html][Try it online]]
 #+END_QUOTE
+** [2017-05-18 Thu 15:28] [[https://github.com/CodeboxIDE/codebox][CodeboxIDE/codebox: Open source cloud & desktop IDE]]
+#+BEGIN_QUOTE
+Codebox is a complete and modular Cloud IDE. It can run on any unix-like machine (Linux, Mac OS X). It is an open source component of [[https://www.codebox.io/][codebox.io]] (Cloud IDE as a Service).
+The IDE can run on your desktop (Linux or Mac), on your server or the cloud. You can use the [[https://www.codebox.io/][codebox.io]] service to host and manage IDE instances.
+Codebox is built with web technologies: node.js, javascript, html and less. The IDE possesses a very modular and extensible architecture, that allows you to build your own features with through add-ons. Codebox is the first open and modular IDE capable of running both on the Desktop and in the cloud (with offline support).
+The project is open source under the [[https://github.com/FriendCode/codebox/blob/master/LICENSE][Apache 2.0]] license.
+A screencast of the IDE is available on [[https://www.youtube.com/watch?v=xvPEngyXA2A][Youtube]].
+#+END_QUOTE
