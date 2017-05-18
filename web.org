@@ -15880,3 +15880,10 @@ almost all flavours of UNIX.  Porting to other systems should not be very
 difficult.  Older versions of Vim run on MS-DOS, MS-Windows 95/98/Me, Amiga
 DOS, Atari MiNT, BeOS, RISC OS and OS/2.  These are no longer maintained.
 #+END_QUOTE
+** [2017-05-18 Thu 21:32] [[https://github.com/odzhan/wanafork][odzhan/wanafork: WanaCryptor file encryption/decryption]]
+#+BEGIN_QUOTE
+This tool should only be used by security researchers studying the encryption and decryption process used by WanaCryptor ransomware.
+It should not be used to recover mission critical files and I'm not responsible in any way for files or data you happen to lose as a result of using this tool.
+I'm advising you don't use it. The only reason it's being released is that it may help others understand the encryption/decryption process.
+Right now, many people are trying to understand how this ransomware works so that's why I've decided to publish it early. In my opinion, it's not fit for release, but it may be of use to some.
+#+END_QUOTE
