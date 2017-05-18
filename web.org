@@ -16239,3 +16239,10 @@ Poseidon 系统是一个日志搜索平台，可以在数百万亿条、数百PB
 Poseidon 系统就是为了解决这个需求，能在几秒钟内从数百万亿条规模的数据集中找出我们需要的数据，大大提高工作效率；
 同时，这些数据不需要额外存储，仍然存放在Hadoop集群中，节省了大量存储和计算资源。该系统可以应用于任何结构化或非结构化海量(从万亿到千万亿规模)数据的查询检索需求。
 #+END_QUOTE
+** [2017-05-18 Thu 23:10] [[https://github.com/mrkamel/search_cop][mrkamel/search_cop: Search engine like fulltext query support for ActiveRecord]]
+#+BEGIN_QUOTE
+SearchCop extends your ActiveRecord models to support fulltext search
+engine like queries via simple query strings and hash-based queries. Assume you
+have a Book model having various attributes like title, author, stock,
+price, available. Using SearchCop you can perform:
+#+END_QUOTE
