@@ -15931,3 +15931,21 @@ In addition to the pure API implementation, this library features a number of hi
 make the development of bots easy and straightforward. These classes are contained in the
 telegram.ext submodule.
 #+END_QUOTE
+** [2017-05-18 Thu 21:50] [[https://github.com/sindresorhus/quick-look-plugins][sindresorhus/quick-look-plugins: List of useful Quick Look plugins for developers]]
+#+BEGIN_QUOTE
+List of useful [[http://en.wikipedia.org/wiki/Quick_Look][Quick Look]] plugins for developers
+
+[[moz-nullprincipal:{cb07cd68-39f9-46ce-830a-63e61414d961}]]Install
+[[moz-nullprincipal:{cb07cd68-39f9-46ce-830a-63e61414d961}]]Using [[https://github.com/phinze/homebrew-cask][Homebrew Cask]]
+
+Run brew cask install <package>
+
+[[moz-nullprincipal:{cb07cd68-39f9-46ce-830a-63e61414d961}]]Install all
+brew cask install qlcolorcode qlstephen qlmarkdown quicklook-json qlprettypatch quicklook-csv betterzipql qlimagesize webpquicklook suspicious-package quicklookase qlvideo
+
+[[moz-nullprincipal:{cb07cd68-39f9-46ce-830a-63e61414d961}]]Manually
+
+Click "download manually"
+Move the downloaded .qlgenerator file to ~/Library/QuickLook
+Run qlmanage -r
+#+END_QUOTE
