@@ -15783,3 +15783,9 @@ requests. Possible uses of howmanypeoplearearound include: monitoring foot traff
 with Raspberry Pis, seeing if your roommates are home, etc.
 Tested on Linux (Raspbian and Ubuntu) and macOS.
 #+END_QUOTE
+** [2017-05-18 Thu 15:36] [[https://github.com/schollz/find-lf][schollz/find-lf: Track the location of every Wi-Fi device ( ) in your house using Raspberry Pis and FIND]]
+#+BEGIN_QUOTE
+This is a extension of FIND, [[https://github.com/schollz/find][the Framework for Internal Navigation and Discovery]], which is based on the idea of [[http://batman.wikia.com/wiki/Lucius_Fox_(Morgan_Freeman)][Lucius Fox's sonar system in The Dark Knight]] that is used to track cellphones.
+The system uses a network of Raspberry Pis which sniff the WiFi probe requests from WiFi-enabled devices and sends these parcels to a central server which compiles and forwards the fingerprint to the [[https://github.com/schollz/find][FIND server]] which then uses machine learning to classify the location based on the unique WiFi fingerprints.
+This system does not require being logged into a particular WiFi - it will track any phone/device with WiFi enabled! (Caveat: for iOS devices it will only track if Wi-Fi is associated with a network - any network, though - because of [[http://blog.mojonetworks.com/ios8-mac-randomization-analyzed/][MAC spoofing]] it uses for security). This system also does not require installing any apps on a phone. Tracking occurs anytime a WiFi chip makes a probe request (which is every minute or so). For this to work, it requires a one-time setup to populate the system with known fingerprints of known locations before it can pinpoint locations (see #3 below).
+#+END_QUOTE
