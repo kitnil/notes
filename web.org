@@ -16107,3 +16107,7 @@ The [[https://github.com/nikitavoloboev/knowledge-map/wiki/Home-%F0%9F%8F%A1][ma
 #+BEGIN_QUOTE
 Insomnia is a cross-platform REST client, built on top of [[http://electron.atom.io/][Electron]].
 #+END_QUOTE
+** [2017-05-18 Thu 22:54] [[https://github.com/gisodal/cumodoro][gisodal/cumodoro: Curses interface to pomodoro timer]]
+#+BEGIN_QUOTE
+To execute simply type "./run.py" in the program directory. Upon first launch a folder .cumodoro will be created in your home directory that will contain a SQLITE database for holding all settings and pomodoros. No tasks will exist, so before assigning any pomodoro to a task, these will have to be created in the Settings window. Note that changing settings or pomodoros is only possible when the timer is not running.
+#+END_QUOTE
