@@ -15669,3 +15669,8 @@ only when it passes all the tests, it is merged into master.
 Note that Homu is not a replacement of Travis CI or Buildbot. It works on
 top of them. Homu itself doesn't have the ability to test pull requests.
 #+END_QUOTE
+** [2017-05-18 Thu 15:27] [[https://github.com/WeAllJS/weallbehave][WeAllJS/weallbehave: CODE_OF_CONDUCT.md generator]]
+#+BEGIN_QUOTE
+[[https://npm.im/weallbehave][weallbehave]] is a command-line tool for automatically generating and updating the [[https://help.github.com/articles/adding-a-code-of-conduct-to-your-project/][CODE_OF_CONDUCT.md]] for your projects.
+You can configure the maintainers that will enforce the CoC by adding author and contributors fields to package.json. Currently email and twitter are supported. You can exclude maintainers from enforcement duties by adding "coc-enforcer": false to their author/contributors entry.
+#+END_QUOTE
