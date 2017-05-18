@@ -16028,3 +16028,9 @@ entire infrastructure.
 This README focuses on developers who want to modify Chef source code.
 If you just want to use Chef, check out these resources:
 #+END_QUOTE
+** [2017-05-18 Thu 22:47] [[https://github.com/puppetlabs/puppet][puppetlabs/puppet: Server automation framework and application]]
+#+BEGIN_QUOTE
+Puppet, an automated administrative engine for your Linux, Unix, and Windows systems, performs
+administrative tasks (such as adding users, installing packages, and updating server
+configurations) based on a centralized specification.
+#+END_QUOTE
