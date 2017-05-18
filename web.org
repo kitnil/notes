@@ -15773,3 +15773,13 @@ Projects don't need to be big, actually, it's better if they are not, they just 
 Going indie does have lots of lifestyle perks :)
 All these resources might help inspire you and put you on the right track but in the end what matters is to MAKE and TRY stuff. So devour this content responsibly :)
 #+END_QUOTE
+** [2017-05-18 Thu 15:34] [[https://github.com/schollz/howmanypeoplearearound][schollz/howmanypeoplearearound: Count the number of people around you by monitoring wifi signals]]
+#+BEGIN_QUOTE
+Count the number of people around you 👨‍👨‍👦 by monitoring wifi signals 📡.
+howmanypeoplearearound calculates the number of people in the vicinity
+using the approximate number of smartphones as a proxy (since [[https://twitter.com/conradhackett/status/701798230619590656][~70% of people have smartphones nowadays]]).
+A cellphone is determined to be in proximity to the computer based on sniffing WiFi probe
+requests. Possible uses of howmanypeoplearearound include: monitoring foot traffic in your house
+with Raspberry Pis, seeing if your roommates are home, etc.
+Tested on Linux (Raspbian and Ubuntu) and macOS.
+#+END_QUOTE
