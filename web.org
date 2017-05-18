@@ -15531,3 +15531,39 @@ Gerrit && cgit && Jenkins
 Grafana is an open source, feature rich metrics dashboard and graph editor for
 Graphite, Elasticsearch, OpenTSDB, Prometheus and InfluxDB.
 #+END_QUOTE
+** [2017-05-18 Thu 08:52] [[https://fwknowledge.wordpress.com/2013/03/05/tcpdump-flags/][tcpdump flags | FW Knowledge]]
+#+BEGIN_QUOTE
+SYN
+s
+Syn packet, a session establishment request. The first part of any TCP connection.
+
+
+ACK
+ack
+Ack packet, used to acknowledge the receipt of data from the sender. May appear in conjunction with other flags.
+
+
+FIN
+f
+Finish flag, used to indicate the sender’s intention to terminate the connection to the receiving host.
+
+
+RESET
+r
+Indicates the sender’s intention to immediately abort the existing connection.
+
+
+PUSH
+p
+Signals the immediate push of data from the sending host to the receiving host. For interactive applications such as telnet, the main issue is the quickest response time, which this “push” flag signals.
+
+
+URGENT
+urg
+Urgent data should take precedence over other data. For example, a Ctrl-C to terminate a FTP download.
+
+
+Placeholder
+.
+If the connection does not have a syn, finish, reset, or push flag set, this placefolder flag will be found after the destination port. Note that it also appears in conjunction with the ack flag.
+#+END_QUOTE
