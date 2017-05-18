@@ -15144,7 +15144,7 @@ A blog post in Japanese: [[http://d.hatena.ne.jp/tarao/20121021/1350844264][http
 #+BEGIN_QUOTE
 Add/Change/Delete pairs based on [[https://github.com/magnars/expand-region.el][expand-region]].
 For evil-surround integration, see [[https://github.com/cute-jumper/evil-embrace.el][evil-embrace]].
-[[moz-nullprincipal:{7c18803d-ab8a-4ab7-a2d6-9c887af48a03}]]Overview
+Overview
 This package is heavily inspired by [[https://github.com/timcharper/evil-surround][evil-surround]] (which is a port of the vim
   plugin [[https://github.com/tpope/vim-surround][surround.vim]]). But instead of using evil and its text objects, this
   package relies on another excellent package [[https://github.com/magnars/expand-region.el][expand-region]].
