@@ -15910,3 +15910,14 @@ And Open Source projects:
 #+BEGIN_QUOTE
 Postal is a complete and fully featured mail server for use by websites & web servers. Think Sendgrid, Mailgun or Postmark but open source and ready for you to run on your own servers. Postal was developed by aTech Media to serve its own mail processing requirements and we have since decided that it should be released as an open source project for the community.
 #+END_QUOTE
+** [2017-05-18 Thu 21:35] [[https://github.com/mitchellh/vagrant][mitchellh/vagrant: Vagrant is a tool for building and distributing development environments.]]
+#+BEGIN_QUOTE
+Vagrant is a tool for building and distributing development environments.
+Development environments managed by Vagrant can run on local virtualized
+platforms such as VirtualBox or VMware, in the cloud via AWS or OpenStack,
+or in containers such as with Docker or raw LXC.
+Vagrant provides the framework and configuration format to create and
+manage complete portable development environments. These development
+environments can live on your computer or in the cloud, and are portable
+between Windows, Mac OS X, and Linux.
+#+END_QUOTE
