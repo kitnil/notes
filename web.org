@@ -15847,3 +15847,18 @@ favicon: reduced gif to 1/2 original frame count, applied lossy LZW compression.
 HTML mangling: closing tags are for losers.
 bespoke webserver written in C
 #+END_QUOTE
+** [2017-05-18 Thu 21:25] [[https://github.com/linuxkit/linuxkit][linuxkit/linuxkit: A toolkit for building secure, portable and lean operating systems for containers]]
+#+BEGIN_QUOTE
+LinuxKit, a toolkit for building custom minimal, immutable Linux distributions.
+
+Secure defaults without compromising usability
+Everything is replaceable and customisable
+Immutable infrastructure applied to building Linux distributions
+Completely stateless, but persistent storage can be attached
+Easy tooling, with easy iteration
+Built with containers, for running containers
+Designed for building and running clustered applications, including but not limited to container orchestration such as Docker or Kubernetes
+Designed from the experience of building Docker Editions, but redesigned as a general-purpose toolkit
+Designed to be managed by external tooling, such as [[https://github.com/docker/infrakit][Infrakit]] or similar tools
+Includes a set of longer-term collaborative projects in various stages of development to innovate on kernel and userspace changes, particularly around security
+#+END_QUOTE
