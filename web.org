@@ -15733,3 +15733,9 @@ Pyflakes can optionally check each file as it is written.
 Greatly simplified argument-handling for interactive commands.
 Documented how to do Test-Driven Development in Leo.
 #+END_QUOTE
+** [2017-05-18 Thu 15:29] [[https://github.com/jtesta/ssh-mitm][jtesta/ssh-mitm: SSH man-in-the-middle tool]]
+#+BEGIN_QUOTE
+This penetration testing tool allows an auditor to intercept SSH connections.  A patch applied to the OpenSSH v7.5p1 source code causes it to act as a proxy between the victim and their intended SSH server; all plaintext passwords and sessions are logged to disk.
+Of course, the victim's SSH client will complain that the server's key has changed.  But because 99.99999% of the time this is caused by a legitimate action (OS re-install, configuration change, etc), many/most users will disregard the warning and continue on.
+NOTE: Only run the modified sshd in a VM or container!  Ad-hoc edits were made to the OpenSSH sources in critical regions, with no regard to their security implications.  Its not hard to imagine these edits introduce serious vulnerabilities.  Until the dependency on root privileges is removed, be sure to only run this code on throw-away VMs/containers.
+#+END_QUOTE
