@@ -15640,3 +15640,8 @@ opportunity to respond to it, either by making direct API calls (such as
 manipulating PR labels) or using cross-handler features such as logging a
 warning (which are aggregated at the end and posted as a single comment).
 #+END_QUOTE
+** [2017-05-18 Thu 15:26] [[https://zulko.github.io/moviepy/][User Guide — MoviePy 0.2.3.2 documentation]]
+#+BEGIN_QUOTE
+MoviePy is a Python module for video editing, which can be used for basic operations (like cuts, concatenations, title insertions), video compositing (a.k.a. non-linear editing), video processing, or to create advanced effects. It can read and write the most common video formats, including GIF.
+Here it is in action (run in an IPython Notebook):
+#+END_QUOTE
