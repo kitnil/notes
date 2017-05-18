@@ -16013,3 +16013,18 @@ Once installed, Capistrano gives you a cap tool to perform your deployments from
 #+BEGIN_QUOTE
 Logstash is part of the [[https://www.elastic.co/products][Elastic Stack]] along with Beats, Elasticsearch and Kibana. Logstash is an open source, server-side data processing pipeline that ingests data from a multitude of sources simultaneously, transforms it, and then sends it to your favorite "stash." (Ours is Elasticsearch, naturally.). Logstash has over 200 plugins, and you can write your own very easily as well.
 #+END_QUOTE
+** [2017-05-18 Thu 22:46] [[https://github.com/chef/chef][chef/chef: A systems integration framework, built to bring the benefits of configuration management to your entire infrastructure.]]
+#+BEGIN_QUOTE
+Want to try Chef? Get started with [[https://learn.chef.io/][learnchef]]
+
+Documentation: [[https://docs.chef.io/][https://docs.chef.io]]
+Source: [[https://github.com/chef/chef/tree/master][https://github.com/chef/chef/tree/master]]
+Tickets/Issues: [[https://github.com/chef/chef/issues][https://github.com/chef/chef/issues]]
+Slack: [[https://community-slack.chef.io/][Chef Community Slack]]
+Mailing list: [[https://discourse.chef.io/][https://discourse.chef.io]]
+
+Chef is a configuration management tool designed to bring automation to your
+entire infrastructure.
+This README focuses on developers who want to modify Chef source code.
+If you just want to use Chef, check out these resources:
+#+END_QUOTE
