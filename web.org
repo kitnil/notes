@@ -16009,3 +16009,7 @@ Automatic IAM policy generation
 Capistrano is a framework for building automated deployment scripts. Although Capistrano itself is written in Ruby, it can easily be used to deploy projects of any language or framework, be it Rails, Java, or PHP.
 Once installed, Capistrano gives you a cap tool to perform your deployments from the comfort of your command line.
 #+END_QUOTE
+** [2017-05-18 Thu 22:46] [[https://github.com/elastic/logstash][elastic/logstash: Logstash - transport and process your logs, events, or other data]]
+#+BEGIN_QUOTE
+Logstash is part of the [[https://www.elastic.co/products][Elastic Stack]] along with Beats, Elasticsearch and Kibana. Logstash is an open source, server-side data processing pipeline that ingests data from a multitude of sources simultaneously, transforms it, and then sends it to your favorite "stash." (Ours is Elasticsearch, naturally.). Logstash has over 200 plugins, and you can write your own very easily as well.
+#+END_QUOTE
