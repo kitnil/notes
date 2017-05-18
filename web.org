@@ -15613,3 +15613,7 @@ shell's current branch and working directory. Works for GitHub,
 BitBucket, and GitLab repositories.
 Runs on Mac, Linux, Cygwin, and Windows.
 #+END_QUOTE
+** [2017-05-18 Thu 15:26] [[https://github.com/probot/configurer][probot/configurer: Pull Requests for GitHub repository settings]]
+#+BEGIN_QUOTE
+This GitHub Integration syncs repository settings defined in .github/config.yml to GitHub, enabling Pull Requests for repository settings.
+#+END_QUOTE
