@@ -15606,3 +15606,10 @@ Lisp process for compilation, debugging, documentation lookup, and so on.
 Simple yet powerful wrapper around the ffmpeg command for reading metadata and transcoding movies.
 All work on this project is sponsored by the online video platform [[http://streamio.com/][Streamio]].
 #+END_QUOTE
+** [2017-05-18 Thu 15:24] [[https://github.com/zeke/ghwd][zeke/ghwd: Open the github URL that matches your shell's current branch and working directory]]
+#+BEGIN_QUOTE
+A shell command to open a git URL in your browser that matches your
+shell's current branch and working directory. Works for GitHub,
+BitBucket, and GitLab repositories.
+Runs on Mac, Linux, Cygwin, and Windows.
+#+END_QUOTE
