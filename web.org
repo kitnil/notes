@@ -16004,3 +16004,8 @@ A command line tool for creating, deploying, and managing your app
 A familiar and easy to use API for declaring views in python code
 Automatic IAM policy generation
 #+END_QUOTE
+** [2017-05-18 Thu 22:46] [[https://github.com/capistrano/capistrano][capistrano/capistrano: Remote multi-server automation tool]]
+#+BEGIN_QUOTE
+Capistrano is a framework for building automated deployment scripts. Although Capistrano itself is written in Ruby, it can easily be used to deploy projects of any language or framework, be it Rails, Java, or PHP.
+Once installed, Capistrano gives you a cap tool to perform your deployments from the comfort of your command line.
+#+END_QUOTE
