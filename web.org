@@ -15887,3 +15887,22 @@ It should not be used to recover mission critical files and I'm not responsible 
 I'm advising you don't use it. The only reason it's being released is that it may help others understand the encryption/decryption process.
 Right now, many people are trying to understand how this ransomware works so that's why I've decided to publish it early. In my opinion, it's not fit for release, but it may be of use to some.
 #+END_QUOTE
+** [2017-05-18 Thu 21:33] [[https://github.com/oracle/docker-images][oracle/docker-images: Official source for Docker configurations, images, and examples of Dockerfiles for Oracle products and projects]]
+#+BEGIN_QUOTE
+This repository stores Dockerfiles and samples to build Docker images for Oracle products and Open Source projects.
+
+[[https://github.com/oracle/docker-images/tree/master/OracleCoherence][Oracle Coherence]]
+[[https://github.com/oracle/docker-images/tree/master/OracleDatabase][Oracle Database]]
+[[https://github.com/oracle/docker-images/tree/master/OracleJava][Oracle Java]]
+[[https://github.com/oracle/docker-images/tree/master/OracleHTTPServer][Oracle HTTP Server]]
+[[https://github.com/oracle/docker-images/tree/master/OracleTuxedo][Oracle Tuxedo]]
+[[https://github.com/oracle/docker-images/tree/master/OracleTSAM][Oracle TSAM Plus]]
+[[https://github.com/oracle/docker-images/tree/master/OracleWebLogic][Oracle WebLogic]]
+
+And Open Source projects:
+
+[[https://github.com/oracle/docker-images/tree/master/GlassFish][GlassFish]]
+[[https://github.com/mysql/mysql-docker/][MySQL]]
+[[https://github.com/oracle/docker-images/tree/master/NoSQL][NoSQL]]
+[[https://github.com/oracle/docker-images/blob/master/OpenJDK][OpenJDK]]
+#+END_QUOTE
