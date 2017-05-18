@@ -16246,3 +16246,8 @@ engine like queries via simple query strings and hash-based queries. Assume you
 have a Book model having various attributes like title, author, stock,
 price, available. Using SearchCop you can perform:
 #+END_QUOTE
+** [2017-05-18 Thu 23:11] [[https://github.com/cboxdoerfer/fsearch][cboxdoerfer/fsearch: A fast file search utility for Unix-like systems based on GTK+3]]
+#+BEGIN_QUOTE
+FSearch is a fast file search utility, inspired by Everything Search Engine. It's written in C and based on GTK+3.
+Note: The application is still in beta stage, but will see its first release as soon as localization support has been added
+#+END_QUOTE
