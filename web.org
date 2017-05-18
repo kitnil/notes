@@ -16111,3 +16111,14 @@ Insomnia is a cross-platform REST client, built on top of [[http://electron.atom
 #+BEGIN_QUOTE
 To execute simply type "./run.py" in the program directory. Upon first launch a folder .cumodoro will be created in your home directory that will contain a SQLITE database for holding all settings and pomodoros. No tasks will exist, so before assigning any pomodoro to a task, these will have to be created in the Settings window. Note that changing settings or pomodoros is only possible when the timer is not running.
 #+END_QUOTE
+** [2017-05-18 Thu 22:54] [[https://github.com/mozilla/nixpkgs-mozilla][mozilla/nixpkgs-mozilla: mozilla related nixpkgs (extends nixos/nixpkgs repo)]]
+#+BEGIN_QUOTE
+Gathering nix efforts in one repository.
+[[https://github.com/mozilla/nixpkgs-mozilla]]
+[[moz-nullprincipal:{4bffa356-863f-42f1-876a-41014c4b8d41}]]Current packages
+
+servo ([[https://github.com/servo/servo][https://github.com/servo/servo]])
+gecko ([[https://github.com/mozilla/gecko-dev][https://github.com/mozilla/gecko-dev]])
+firefox-dev-bin (Firefox Developer Edition <[[https://www.mozilla.org/en-US/firefox/developer/%3E][https://www.mozilla.org/en-US/firefox/developer/>]])
+VidyoDesktop ()
+#+END_QUOTE
