@@ -16257,3 +16257,15 @@ Note: The application is still in beta stage, but will see its first release as 
 Python for Scientists and Engineers was the first book I wrote, and the one I still get queries about. It was out of print for a long time, till now, and has been updated with help from the community.
 There are a few new sections, using the highly technical name of New Stuff. The biggest change has been to the Machine Learning section. I have added some of my best articles here, and some new stuff.
 #+END_QUOTE
+** [2017-05-19 Fri 18:23] [[https://github.com/mooz/percol][mooz/percol: adds flavor of interactive filtering to the traditional pipe concept of UNIX shell]]
+#+BEGIN_QUOTE
+percol is an interactive grep tool in your terminal. percol
+
+receives input lines from stdin or a file,
+lists up the input lines,
+waits for your input that filter/select the line(s),
+and finally outputs the selected line(s) to stdout.
+
+Since percol just filters the input and output the result to stdout,
+it can be used in command-chains with | in your shell (UNIX philosophy!).
+#+END_QUOTE
