@@ -16274,3 +16274,15 @@ it can be used in command-chains with | in your shell (UNIX philosophy!).
 NOTE: If you are viewing this on Github, this document refers to the state of peco in whatever current branch you are viewing, not necessarily the state of a currently released version. Please make sure to checkout the [[https://github.com/peco/peco/blob/master/Changes][Changes]] file for features and changes.
 This README is long and comprehensive. Use the [[moz-nullprincipal:{ebbe0c1f-324b-422d-9430-13ca231c55c1}][Table of Contents]] to navigate to the section that interests you. It has been placed at the bottom of the README file because of its length.
 #+END_QUOTE
+** [2017-05-19 Fri 19:01] [[https://partedmagic.com/][PartedMagic - Partitioning, Cloning, Rescue, and Erasing.]]
+#+BEGIN_QUOTE
+ PartedMagic has the tools to get the job done. With the Partition Editor you can re-size, copy, and move partitions. You can grow or shrink your C: drive. Create space for new operating systems. Attempt data rescue from lost partitions.
+Disk Cloning Clone a computer’s entire disk or a single partition. The cloned data could be saved as an image-file or as a duplicated copy of the data. The data could then be saved to a locally attached storage device, an [[https://en.wikipedia.org/wiki/Secure_Shell][SSH]] server, a Samba Server, or a Network File System share. The clone file can then be used to restore the original when needed.
+
+
+
+
+Data Rescue PartedMagic allows you to easily reset or change Windows passwords. Recover lost files. Rescue files from devices with disk read errors.
+Disk Erasing PartedMagic comes with easy to use solutions for conventional overwrite. Internal Secure Erase. Wiping of only Free Space.
+Benchmarking All the benchmarking tools you would ever need! Bonnie++, IOzone, Hard Info, System Stability Tester, mprime, and stress.
+#+END_QUOTE
