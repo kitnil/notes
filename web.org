@@ -16269,3 +16269,8 @@ and finally outputs the selected line(s) to stdout.
 Since percol just filters the input and output the result to stdout,
 it can be used in command-chains with | in your shell (UNIX philosophy!).
 #+END_QUOTE
+** [2017-05-19 Fri 18:23] [[https://github.com/peco/peco][peco/peco: Simplistic interactive filtering tool]]
+#+BEGIN_QUOTE
+NOTE: If you are viewing this on Github, this document refers to the state of peco in whatever current branch you are viewing, not necessarily the state of a currently released version. Please make sure to checkout the [[https://github.com/peco/peco/blob/master/Changes][Changes]] file for features and changes.
+This README is long and comprehensive. Use the [[moz-nullprincipal:{ebbe0c1f-324b-422d-9430-13ca231c55c1}][Table of Contents]] to navigate to the section that interests you. It has been placed at the bottom of the README file because of its length.
+#+END_QUOTE
