@@ -495,3 +495,31 @@ W: [SSL: SSLV3_ALERT_HANDSHAKE_FAILURE] sslv3 alert handshake failure (_ssl.c:66
 #+END_EXAMPLE
 ** ssh vpn tunnel
 ssh -D 8080 user@host -f -N
+** Emacs RPM developement
+Last metadata expiration check: 0:00:35 ago on Fri May 19 16:32:22 2017 MSK.
+Available Packages
+Name         : rpmdevtools
+Version      : 8.10
+Release      : 2.fc26
+Arch         : noarch
+Size         : 105 k
+Source       : rpmdevtools-8.10-2.fc26.src.rpm
+Repo         : fedora
+Summary      : RPM Development Tools
+URL          : https://pagure.io/rpmdevtools
+License      : GPLv2+ and GPLv2
+Description  : This package contains scripts and (X)Emacs support files to aid
+             : in development of RPM packages.
+             : rpmdev-setuptree    Create RPM build tree within user's home
+             : directory rpmdev-diff         Diff contents of two archives
+             : rpmdev-newspec      Creates new .spec from template
+             : rpmdev-rmdevelrpms  Find (and optionally remove) "development"
+             : RPMs rpmdev-checksig     Check package signatures using alternate
+             : RPM keyring rpminfo             Print information about
+             : executables and libraries rpmdev-md5/sha*     Display checksums
+             : of all files in an archive file rpmdev-vercmp       RPM version
+             : comparison checker spectool            Expand and download
+             : sources and patches in specfiles rpmdev-wipetree     Erase all
+             : files within dirs created by rpmdev-setuptree rpmdev-extract
+             : Extract various archives, "tar xvf" style rpmdev-bumpspec
+             : Bump revision in specfile ...and many more.
