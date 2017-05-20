@@ -16360,3 +16360,60 @@ SHOW MORE
 StartCom offers the free Class 1 [[https://en.wikipedia.org/wiki/X.509][X.509]] SSL certificate "StartSSL Free", which works for webservers ([[https://en.wikipedia.org/wiki/Transport_Layer_Security][SSL/TLS]]) as well as for [[https://en.wikipedia.org/wiki/E-mail_encryption][E-mail encryption]] ([[https://en.wikipedia.org/wiki/S/MIME][S/MIME]]). It also offers Class 2 and 3 certificates as well as [[https://en.wikipedia.org/wiki/Extended_Validation_Certificate][Extended Validation Certificates]], where a comprehensive validation (with costs) is mandatory.
 In June 2011, the company suffered a network breach which resulted in StartCom suspending issuance of digital certificates and related services for several weeks.[[moz-nullprincipal:{17cb2f76-e864-484a-b80e-3b89c5711c81}][{8}]] The attacker was unable to use this to issue certificates (and StartCom was the only breached provider, of six, where the attacker was blocked from doing so).[[moz-nullprincipal:{17cb2f76-e864-484a-b80e-3b89c5711c81}][{9}]]
 #+END_QUOTE
+** [2017-05-20 Sat 19:11] [[https://docs.fedoraproject.org/en-US/Fedora/25/html-single/Installation_Guide/index.html#pxe-repositories][Installation Guide]]
+#+BEGIN_QUOTE
+
+                                        Create a boot menu for BIOS clients at /var/lib/tftpboot/pxelinux.cfg/default.
+                                default vesamenu.c32
+prompt 1
+timeout 600
+
+label linux
+menu label ^Install Fedora 25 64-bit
+menu default
+kernel f25/vmlinuz
+append initrd=f25/initrd.img inst.stage2=http://download.fedoraproject.org/pub/fedora/linux/releases/25/Server/x86_64/os/ ip=dhcp
+
+label server
+menu label ^Install Fedora 25 ( Minimal Image )
+menu default
+kernel f25/vmlinuz
+append initrd=f25/initrd.img inst.stage2=http://download.fedoraproject.org/pub/fedora/linux/releases/25/Server/x86_64/os/ ip=dhcp ks=https://example.com/fedora/kickstarts/minimal.ks
+
+label rescue
+menu label ^Rescue installed system
+kernel f25/vmlinuz
+append initrd=f25initrd.img ip=dhcp root=live:http://download.fedoraproject.org/pub/fedora/linux/releases/25/Server/x86_64/os/LiveOS/squashfs.img rescue
+
+label local
+menu label Boot from ^local drive
+localboot 0xffff
+
+                                        Create a boot menu for UEFI clients at /var/lib/tftpboot/pxelinux/uefi.
+                                function load_video {
+insmod efi_gop
+insmod efi_uga
+insmod video_bochs
+insmod video_cirrus
+insmod all_video
+}
+
+load_video
+set gfxpayload=keep
+insmod gzio
+
+menuentry 'Install Fedora 64-bit'  --class fedora --class gnu-linux --class gnu --class os {
+linuxefi f25/vmlinuz ip=dhcp inst.repo=http://download.fedoraproject.org/pub/fedora/linux/releases/25/Server/x86_64/os/
+initrdefi f25/initrd.img
+}
+
+menuentry 'Install Fedora 25 Server'  --class fedora --class gnu-linux --class gnu --class os {
+kernel f25/vmlinuz
+append initrd=f25/initrd.img inst.repo=http://download.fedoraproject.org/pub/fedora/linux/releases/25/Server/x86_64/os/ ip=dhcp ks=https://git.fedorahosted.org/cgit/spin-kickstarts.git/plain/fedora-install-server.ks?h=f21
+}
+
+menuentry 'Rescue installed system'  --class fedora --class gnu-linux --class gnu --class os {
+kernel f25/vmlinuz
+append f25/initrd=initrd.img root=live:http://download.fedoraproject.org/pub/fedora/linux/releases/25/Server/x86_64/os/LiveOS/squashfs.img rescue
+}
+#+END_QUOTE
