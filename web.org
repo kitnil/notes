@@ -16322,3 +16322,7 @@ You can use tools such as xdotool(1) to simulate the above steps, I tried this w
 
 There is also [[http://orgmode.org/worg/org-contrib/org-protocol.html][org-protocol.el]]. Basically, you register a URL scheme / protocol for emacsclient, then you find some way (such as Bookmarklet in web browser) to activate URL in that scheme.
 #+END_QUOTE
+** [2017-05-20 Sat 15:33] [[https://github.com/jhawthorn/fzy][jhawthorn/fzy: A better fuzzy finder]]
+#+BEGIN_QUOTE
+fzy is a fast, simple fuzzy text selector for the terminal with an advanced [[moz-nullprincipal:{be81b272-655e-4508-bb4c-60a71b07491f}][scoringalgorithm]].
+#+END_QUOTE
