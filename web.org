@@ -16331,3 +16331,9 @@ fzy is a fast, simple fuzzy text selector for the terminal with an advanced [[mo
 I don't want donations, I work only for users and not for companies or communities that receive money or donations.
 This is a fork of an old extension I made for Cinnamon. The initial extension doesn't support Cinnamon anymore, as all extensions were forked by Clement
 #+END_QUOTE
+** [2017-05-20 Sat 15:47] [[https://github.com/amjith/fuzzyfinder][amjith/fuzzyfinder: Fuzzy Finder implemented in Python]]
+#+BEGIN_QUOTE
+Fuzzy Finder implemented in Python. Matches partial string entries from a list
+of strings. Works similar to fuzzy finder in SublimeText and Vim's Ctrl-P
+plugin.
+#+END_QUOTE
