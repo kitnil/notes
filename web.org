@@ -16337,3 +16337,15 @@ Fuzzy Finder implemented in Python. Matches partial string entries from a list
 of strings. Works similar to fuzzy finder in SublimeText and Vim's Ctrl-P
 plugin.
 #+END_QUOTE
+** [2017-05-20 Sat 16:17] [[http://oremacs.com/swiper/#commands][Ivy User Manual]]
+#+BEGIN_QUOTE
+Ivy is an interactive interface for completion in Emacs. Emacs uses
+completion mechanism in a variety of contexts: code, menus, commands,
+variables, functions, etc. Completion entails listing, sorting,
+filtering, previewing, and applying actions on selected items. When
+active, ivy-mode completes the selection process by narrowing
+available choices while previewing in the minibuffer. Selecting the
+final candidate is either through simple keyboard character inputs or
+through powerful regular expressions.
+
+#+END_QUOTE
