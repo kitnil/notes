@@ -16376,3 +16376,8 @@ If you get stuck, see this guide to registering a protocol handler and look at h
 #+BEGIN_QUOTE
 
 #+END_QUOTE
+** [2017-05-20 Sat 13:28] [[https://wiki.archlinux.org/index.php/GNOME/Tips_and_tricks#Redirect_certain_URLs_to_specific_web_browsers][GNOME/Tips and tricks - ArchWiki]]
+#+BEGIN_QUOTE
+OTHER_BROWSER='/usr/bin/chromium-browser'
+
+#+END_QUOTE
