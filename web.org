@@ -16291,3 +16291,34 @@ Benchmarking All the benchmarking tools you would ever need! Bonnie++, IOzone, H
 Org-protocol can now handle query-style parameters such as:
 
 #+END_QUOTE
+** [2017-05-20 Sat 11:12] [[https://emacs.stackexchange.com/questions/28607/copy-current-url-from-web-browser-from-emacs-while-editing][org mode - Copy current URL from web browser from Emacs while editing - Emacs Stack Exchange]]
+#+BEGIN_QUOTE
+Mac OS
+
+You can use [[http://orgmode.org/worg/org-contrib/org-mac-link.html][org-mac-link.el]], it produces an Org link since it can know not only URL but also TITLE by using AppleScript. You can install it via
+
+
+Install org-plus-contrib from [[http://orgmode.org/elpa.html][Org ELPA]]
+or install org-mac-link from MELPA
+or contrib/lisp/ under Org source code (get it via Git repo or tarball)
+
+
+by the way, even you install via ELPA, you still need to setup autoloads  for commands you need or simply require the feature since org-mac-link.el doesn't setup its autoload cookies.
+
+GNU/Linux
+
+As far as I know, X11 doesn't provide tool like AppleScript. So you need to do it manually or some automation tool. For example, to get URL:
+
+
+Switch to Google Chrome
+Move cursor to Address Bar and select (or copy) URL
+Switch to Emacs (or Terminal if you are running Emacs in it)
+Yank from PRIMARY selection (or clipboard)
+
+
+You can use tools such as xdotool(1) to simulate the above steps, I tried this way a few days ago in [[https://github.com/xuchunyang/grab-x-link][grab-x-link.el]], it supports Firefox and Chromium but not Chrome, it works for me in most cases.
+
+
+
+There is also [[http://orgmode.org/worg/org-contrib/org-protocol.html][org-protocol.el]]. Basically, you register a URL scheme / protocol for emacsclient, then you find some way (such as Bookmarklet in web browser) to activate URL in that scheme.
+#+END_QUOTE
