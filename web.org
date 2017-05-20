@@ -16322,3 +16322,27 @@ You can use tools such as xdotool(1) to simulate the above steps, I tried this w
 
 There is also [[http://orgmode.org/worg/org-contrib/org-protocol.html][org-protocol.el]]. Basically, you register a URL scheme / protocol for emacsclient, then you find some way (such as Bookmarklet in web browser) to activate URL in that scheme.
 #+END_QUOTE
+** [2017-05-20 Sat 11:17] [[https://github.com/sprig/org-capture-extension][sprig/org-capture-extension: A Chrome and firefox extension facilitating org-capture in emacs]]
+#+BEGIN_QUOTE
+Either via the [[https://chrome.google.com/webstore/detail/org-capture/kkkjlfejijcjgjllecmnejhogpbcigdc][Chrome App Store]] or by dragging the extension folder to the "Extensions" tab in Chrome. If the latter is the chosen procedure then one needs to enable developer mode first, if I'm not mistaken. Note that if you choose to have a local-install, then you need to choose some icon and name it org-mode-unicorn.png, placing it in the extension's folder. Or, you can name it anything you want, but then you need to update manifest.json.
+#+END_QUOTE
+** [2017-05-20 Sat 11:22] [[https://github.com/sprig/org-capture-extension][sprig/org-capture-extension: A Chrome and firefox extension facilitating org-capture in emacs]]
+#+BEGIN_QUOTE
+Either via the [[https://chrome.google.com/webstore/detail/org-capture/kkkjlfejijcjgjllecmnejhogpbcigdc][Chrome App Store]] or by dragging the extension folder to the "Extensions" tab in Chrome. If the latter is the chosen procedure then one needs to enable developer mode first, if I'm not mistaken. Note that if you choose to have a local-install, then you need to choose some icon and name it org-mode-unicorn.png, placing it in the extension's folder. Or, you can name it anything you want, but then you need to update manifest.json.
+#+END_QUOTE
+** [2017-05-20 Sat 11:28] [[https://github.com/sprig/org-capture-extension][sprig/org-capture-extension: A Chrome and firefox extension facilitating org-capture in emacs]]
+#+BEGIN_QUOTE
+Either via the [[https://chrome.google.com/webstore/detail/org-capture/kkkjlfejijcjgjllecmnejhogpbcigdc][Chrome App Store]] or by dragging the extension folder to the "Extensions" tab in Chrome. If the latter is the chosen procedure then one needs to enable developer mode first, if I'm not mistaken. Note that if you choose to have a local-install, then you need to choose some icon and name it org-mode-unicorn.png, placing it in the extension's folder. Or, you can name it anything you want, but then you need to update manifest.json.
+#+END_QUOTE
+** [2017-05-20 Sat 11:36] [[https://standards.freedesktop.org/desktop-entry-spec/desktop-entry-spec-latest.html][Desktop Entry Specification]]
+#+BEGIN_QUOTE
+The application must name its desktop file in accordance with the naming recommendations in the
+      introduction section (e.g. the filename must be like org.example.FooViewer.desktop).
+      The application must have a D-Bus service activatable at the well-known name that is equal to the desktop
+      file name with the .desktop portion removed (for our example,
+      org.example.FooViewer).  The above interface must be implemented at an object path
+      determined as follows: starting with the well-known D-Bus name of the application, change all dots to
+      slashes and prefix a slash.  If a dash ('-') is found, convert it to an underscore
+      ('_').  For our example, this is /org/example/FooViewer.
+    
+#+END_QUOTE
