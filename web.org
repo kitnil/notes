@@ -16322,7 +16322,3 @@ You can use tools such as xdotool(1) to simulate the above steps, I tried this w
 
 There is also [[http://orgmode.org/worg/org-contrib/org-protocol.html][org-protocol.el]]. Basically, you register a URL scheme / protocol for emacsclient, then you find some way (such as Bookmarklet in web browser) to activate URL in that scheme.
 #+END_QUOTE
-** [2017-05-20 Sat 11:16] [[file:~/debug.org::*]]
-#+BEGIN_QUOTE
-
-#+END_QUOTE
