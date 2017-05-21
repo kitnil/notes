@@ -16417,3 +16417,7 @@ kernel f25/vmlinuz
 append f25/initrd=initrd.img root=live:http://download.fedoraproject.org/pub/fedora/linux/releases/25/Server/x86_64/os/LiveOS/squashfs.img rescue
 }
 #+END_QUOTE
+** [2017-05-21 Sun 09:09] [[https://github.com/rust-lang/rust-by-example][rust-lang/rust-by-example: Learn Rust with examples (Live code editor included)]]
+#+BEGIN_QUOTE
+This is the source code of the [[http://rustbyexample.com/][Rust by Example]] website!
+#+END_QUOTE
