@@ -16492,3 +16492,28 @@ License
 Standard YouTube License
 
 #+END_QUOTE
+** [2017-05-21 Sun 14:25] [[https://github.com/skeeto/emacsql][skeeto/emacsql: A high-level Emacs Lisp RDBMS front-end]]
+#+BEGIN_QUOTE
+EmacSQL is a high-level Emacs Lisp front-end for SQLite (primarily),
+PostgreSQL, MySQL, and potentially other SQL databases.
+It works by maintaining a inferior process running (a "connection")
+for interacting with the back-end database. Connections are
+automatically cleaned up if they are garbage collected. All requests
+are synchronous.
+Any [[http://nullprogram.com/blog/2013/12/30/#almost_everything_prints_readably][readable lisp value]] can be stored as a value in
+EmacSQL, including numbers, strings, symbols, lists, vectors, and
+closures. EmacSQL has no concept of "TEXT" values; it's all just lisp
+objects. The lisp object nil corresponds 1:1 with NULL in the
+database.
+On MELPA, each backend is provided as a separate package, suffixed
+with the database name. In the case of emacsql-sqlite, on first use
+EmacSQL will attempt to compile a custom native binary for
+communicating with a SQLite database. If this fails (a C compiler is
+not available), it will attempt to download, with permission, a
+pre-built binary when the first database connection is attempted. The
+official sqlite3 command shell is incapable of correct interaction
+when linked with GNU Readline, or when run in Windows, so a custom
+build tool is required. If your own package depends on EmacSQL as a
+database, this means it doesn't have to rely on the user having any
+particular software installed.
+#+END_QUOTE
