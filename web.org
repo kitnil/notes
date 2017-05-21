@@ -16444,3 +16444,11 @@ If you're too deep into a directory tree, shortens the displayed path with an el
 Shows the current Python [[http://www.virtualenv.org/][virtualenv]] environment
 It's easy to customize and extend. See below for details.
 #+END_QUOTE
+** [2017-05-21 Sun 09:31] [[https://ask.fedoraproject.org/en/question/105649/openning-firewall-port/][Openning Firewall Port - Ask Fedora: Community Knowledge Base and Support Forum]]
+#+BEGIN_QUOTE
+usually this is the quickest way to get it working:
+
+sudo firewall-cmd --zone=public --add-port=7777/tcp --permanent 
+sudo firewall-cmd --reload
+
+#+END_QUOTE
