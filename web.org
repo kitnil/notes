@@ -16433,3 +16433,14 @@ Taskwarrior is Free and Open Source Software that manages your TODO
 bugwarrior is a command line utility for updating your local [[http://taskwarrior.org/][taskwarrior]] database from your forge issue trackers.
 It currently supports the following remote resources:
 #+END_QUOTE
+** [2017-05-21 Sun 09:20] [[https://github.com/banga/powerline-shell][banga/powerline-shell: A beautiful and useful prompt for your shell]]
+#+BEGIN_QUOTE
+A [[https://github.com/Lokaltog/vim-powerline][Powerline]] like prompt for Bash, ZSH and Fish:
+[[https://camo.githubusercontent.com/62467c4ea38001da03ff98e15657a72a030a918a/68747470733a2f2f7261772e6769746875622e636f6d2f6d696c6b62696b69732f646f7466696c65732d6d61632f6d61737465722f626173682d706f7765726c696e652d73637265656e73686f742e706e67][{[https://camo.githubusercontent.com/62467c4ea38001da03ff98e15657a72a030a918a/68747470733a2f2f7261772e6769746875622e636f6d2f6d696c6b62696b69732f646f7466696c65732d6d61632f6d61737465722f626173682d706f7765726c696e652d73637265656e73686f742e706e67}]]]
+
+Shows some important details about the git/svn/hg/fossil branch (see below)
+Changes color if the last command exited with a failure code
+If you're too deep into a directory tree, shortens the displayed path with an ellipsis
+Shows the current Python [[http://www.virtualenv.org/][virtualenv]] environment
+It's easy to customize and extend. See below for details.
+#+END_QUOTE
