@@ -16613,3 +16613,17 @@ Note that pq silently converts bigints and numerics your queries
   cast them to text and use, e.g., calc-eval to do arbitrary
   precision things with them.
 #+END_QUOTE
+** [2017-05-21 Sun 14:35] additional data
+#+BEGIN_QUOTE
+TFS is a modular, fast, and feature rich next-gen file system, employing modern techniques for high performance, high space efficiency, and high scalability.
+
+TFS was created out of the need for a modern file system for Redox OS, as a replacement for ZFS, which proved to be slow to implement because of its monolithic design.
+
+TFS is inspired by the ideas behind ZFS, but at the same time it aims to be modular and easier to implement.
+
+TFS is not related to the file system of the same name by terminalcloud.
+
+While many components are complete, TFS itself is not ready for use.
+
+
+#+END_QUOTE
