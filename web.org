@@ -16598,3 +16598,18 @@ Contents [[[moz-nullprincipal:{cf00bbdf-516d-4d3a-8bbe-8ec4714070ac}][hide]]] 
 [[moz-nullprincipal:{cf00bbdf-516d-4d3a-8bbe-8ec4714070ac}][4.15 gdb/MSVC tracepoints]]
 [[moz-nullprincipal:{cf00bbdf-516d-4d3a-8bbe-8ec4714070ac}][4.16 Why are my variables full of 0x7f bytes?]]
 #+END_QUOTE
+** [2017-05-21 Sun 14:29] [[https://github.com/anse1/emacs-libpq][anse1/emacs-libpq: An Emacs 25 module for accessing postgres via libpq.]]
+#+BEGIN_QUOTE
+An Emacs 25 module for accessing postgres via libpq.
+It doesn’t expose many libpq features yet, but what’s there should be
+  crash-safe no matter what you do in the lisp world.  I’ve been using
+  it half a year now for reading mail through my Gnus backend [[https://github.com/anse1/nnpg][nnpg]]
+  without incidents.
+See [[https://github.com/anse1/emacs-libpq/blob/master/test.el][./test.el]] for implemented functions and examples how to use it.
+If you make it crash, please report.
+Note that pq silently converts bigints and numerics your queries
+  return to lisp floats because they don’t fit into a lisp integer.
+  This looses precision on big values.  If you need the full precision,
+  cast them to text and use, e.g., calc-eval to do arbitrary
+  precision things with them.
+#+END_QUOTE
