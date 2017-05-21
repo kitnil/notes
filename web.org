@@ -16452,3 +16452,12 @@ sudo firewall-cmd --zone=public --add-port=7777/tcp --permanent
 sudo firewall-cmd --reload
 
 #+END_QUOTE
+** [2017-05-21 Sun 10:10] [[https://github.com/wasamasa/eyebrowse][wasamasa/eyebrowse: A simple-minded way of managing window configs in emacs]]
+#+BEGIN_QUOTE
+eyebrowse is a global minor mode for Emacs that allows you to
+manage your window configurations in a simple manner, just like tiling
+window managers like i3wm with their workspaces do.  It displays their
+current state in the modeline by default.  The behaviour is modeled
+after [[http://ranger.nongnu.org/][ranger]], a file manager written in
+Python.
+#+END_QUOTE
