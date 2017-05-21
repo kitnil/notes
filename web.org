@@ -16428,3 +16428,8 @@ Taskwarrior is Free and Open Source Software that manages your TODO
           It does its job then gets out of your way.
         
 #+END_QUOTE
+** [2017-05-21 Sun 09:16] [[https://github.com/ralphbean/bugwarrior][ralphbean/bugwarrior: Pull github, bitbucket, and trac issues into taskwarrior]]
+#+BEGIN_QUOTE
+bugwarrior is a command line utility for updating your local [[http://taskwarrior.org/][taskwarrior]] database from your forge issue trackers.
+It currently supports the following remote resources:
+#+END_QUOTE
