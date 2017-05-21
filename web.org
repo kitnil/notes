@@ -16461,3 +16461,16 @@ current state in the modeline by default.  The behaviour is modeled
 after [[http://ranger.nongnu.org/][ranger]], a file manager written in
 Python.
 #+END_QUOTE
+** [2017-05-21 Sun 14:07] JsonField postgresql
+#+BEGIN_QUOTE
+This directory contains the source code distribution of the PostgreSQL
+database management system.
+
+PostgreSQL is an advanced object-relational database management system
+that supports an extended subset of the SQL standard, including
+transactions, foreign keys, subqueries, triggers, user-defined types
+and functions.  This distribution also contains C language bindings.
+
+PostgreSQL has many language interfaces, many of which are listed here:
+
+#+END_QUOTE
