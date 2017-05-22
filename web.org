@@ -18129,3 +18129,7 @@ Danmachi: Sword Oratoria
 #+BEGIN_QUOTE
 vagrant-hostmanager is a Vagrant plugin that manages the hosts file on guest machines (and optionally the host). Its goal is to enable resolution of multi-machine environments deployed with a cloud provider where IP addresses are not known in advance.
 #+END_QUOTE
+** [2017-05-22 Mon 15:42] [[https://github.com/DNSPod/dnspod-sr][DNSPod/dnspod-sr: A faster recursive dns server from DNSPod]]
+#+BEGIN_QUOTE
+dnspod-sr 是一个运行在 Linux 平台上的高性能的递归 DNS 服务器软件，具备高性能、高负载、易扩展的优势，非 BIND 等软件可以比拟。
+#+END_QUOTE
