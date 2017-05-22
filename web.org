@@ -16832,3 +16832,10 @@ and queries foreign DNS servers to resolve foreign domains. It is smart
 enough to work only with a Chinese IP range file, which doesn't change often.
 In order to bypass IP blocking, you SHOULD use VPN software like [[https://github.com/clowwindy/ShadowVPN][ShadowVPN]].
 #+END_QUOTE
+** [2017-05-22 Mon 15:08] [[https://github.com/pirate/sites-using-cloudflare][pirate/sites-using-cloudflare: Archived list of domains using Cloudflare DNS at the time of the CloudBleed announcement]]
+#+BEGIN_QUOTE
+This is an (archived) list of sites on Cloudflare DNS at the time of the [[https://blog.cloudflare.com/incident-report-on-memory-leak-caused-by-cloudflare-parser-bug/][CloudBleed HTTPS traffic leak]] announcement.
+Original vuln [[https://bugs.chromium.org/p/project-zero/issues/detail?id=1139][thread]] by Google Project Zero.
+Cloudflare has posted a very detailed response, explaining exactly what the implications of this leak are.  It thoroughly explains their language in earlier statements, and I highly recommend reading it before looking through this list for domains:
+[[https://blog.cloudflare.com/quantifying-the-impact-of-cloudbleed/][https://blog.cloudflare.com/quantifying-the-impact-of-cloudbleed/]]
+#+END_QUOTE
