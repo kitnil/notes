@@ -18133,3 +18133,40 @@ vagrant-hostmanager is a Vagrant plugin that manages the hosts file on guest mac
 #+BEGIN_QUOTE
 dnspod-sr 是一个运行在 Linux 平台上的高性能的递归 DNS 服务器软件，具备高性能、高负载、易扩展的优势，非 BIND 等软件可以比拟。
 #+END_QUOTE
+** [2017-05-22 Mon 15:42] [[https://github.com/gamelinux/passivedns][gamelinux/passivedns: A network sniffer that logs all DNS server replies for use in a passive DNS setup]]
+#+BEGIN_QUOTE
+A tool to collect DNS records passively to aid Incident handling, Network
+Security Monitoring (NSM) and general digital forensics.
+
+PassiveDNS sniffs traffic from an interface or reads a pcap-file and outputs
+the DNS-server answers to a log file. PassiveDNS can cache/aggregate duplicate
+DNS answers in-memory, limiting the amount of data in the logfile without
+losing the essense in the DNS answer.
+
+Example output from version 1.0.0->Current in the log file (/var/log/passivedns.log):
+
+#timestamp||dns-client ||dns-server||RR class||Query||Query Type||Answer||TTL||Count
+1322849924.408856||10.1.1.1||8.8.8.8||IN||upload.youtube.com.||A||74.125.43.117||46587||5
+1322849924.408857||10.1.1.1||8.8.8.8||IN||upload.youtube.com.||A||74.125.43.116||420509||5
+1322849924.408858||10.1.1.1||8.8.8.8||IN||www.adobe.com.||CNAME||www.wip4.adobe.com.||43200||8
+1322849924.408859||10.1.1.1||8.8.8.8||IN||www.adobe.com.||A||193.104.215.61||43200||8
+1322849924.408860||10.1.1.1||8.8.8.8||IN||i1.ytimg.com.||CNAME||ytimg.l.google.com.||43200||3
+1322849924.408861||10.1.1.1||8.8.8.8||IN||clients1.google.com.||A||173.194.32.3||43200||2
+
+PassiveDNS works on IPv4 and IPv6 traffic and parse DNS traffic over TCP and UDP.
+
+*** How can PassiveDNS be used: **
+
+Typical usages:
+
+1) Search for domain or IP history when working on an incident.
+   Example:
+   Company has malware talking to bad.twittertoday.com.
+   At current time, the domain is resolving to say 202.29.94.200
+   You search your Flowdata and find the clients talking to that IP and
+   remidate. You look at the Flowdata, and you discover that the date
+   and time the clients first talked to that IP, and concludes that as
+   the time of infection...
+
+   But using PassiveDNS data, quering the domain, you get following history:
+#+END_QUOTE
