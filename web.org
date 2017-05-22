@@ -18170,3 +18170,8 @@ Typical usages:
 
    But using PassiveDNS data, quering the domain, you get following history:
 #+END_QUOTE
+** [2017-05-22 Mon 15:43] [[https://github.com/looterz/grimd][looterz/grimd: fast dns proxy that can run anywhere, built to black-hole internet advertisements and malware servers]]
+#+BEGIN_QUOTE
+⚡️ Fast dns proxy that can run anywhere, built to black-hole internet advertisements and malware servers.
+Based on [[https://github.com/kenshinx/godns][kenshinx/godns]] and [[https://github.com/miekg/dns][miekg/dns]].
+#+END_QUOTE
