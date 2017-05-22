@@ -16687,3 +16687,11 @@ or  docs/install.rst in this source distribution.
 For system packagers: Please install Astropy with the command:
 $ python setup.py --offline install
 #+END_QUOTE
+** [2017-05-22 Mon 09:10] [[https://github.com/MartinThoma/LaTeX-examples][MartinThoma/LaTeX-examples: Examples for the usage of LaTeX]]
+#+BEGIN_QUOTE
+More than 570 examples for the usage of LaTeX. You can check that with the
+following command:
+$ find . -type d | sort | awk '$0 !~ last "/" {print last} {last=$0} END {print last}' | grep -v .git | wc -l
+Many examples can be found on [[http://commons.wikimedia.org/wiki/User:MartinThoma#Galerie][my Wikpedia Commons user page]].
+You might also be interested in [[http://martin-thoma.com/tag/tikz/][my Blog]].
+#+END_QUOTE
