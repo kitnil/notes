@@ -18125,3 +18125,7 @@ Danmachi: Sword Oratoria
                 
                     
 #+END_QUOTE
+** [2017-05-22 Mon 15:42] [[https://github.com/devopsgroup-io/vagrant-hostmanager][devopsgroup-io/vagrant-hostmanager: A Vagrant plugin that manages hosts files within a multi-machine environment.]]
+#+BEGIN_QUOTE
+vagrant-hostmanager is a Vagrant plugin that manages the hosts file on guest machines (and optionally the host). Its goal is to enable resolution of multi-machine environments deployed with a cloud provider where IP addresses are not known in advance.
+#+END_QUOTE
