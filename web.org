@@ -18238,3 +18238,32 @@ Hosts 功能（支持通配符、CName 指定、网络 Hosts）；
 此版本保留了大部分 5 版本的功能，习惯 5 版本的朋友们可以到“5”分支内获取。
 [[https://github.com/holmium/dnsforwarder/wiki/%E5%AE%89%E8%A3%85%E5%92%8C%E9%83%A8%E7%BD%B2-%7C-Deployment][安装和部署]]
 #+END_QUOTE
+** [2017-05-22 Mon 15:50] [[https://github.com/StackExchange/dnscontrol][StackExchange/dnscontrol: Synchronize your DNS to multiple providers from a simple DSL]]
+#+BEGIN_QUOTE
+DNSControl is a system for maintaining DNS zones.  It has two parts:
+a domain specific language (DSL) for describing DNS zones plus
+software that processes the DSL and pushes the resulting zones to
+DNS providers such as Route53, CloudFlare, and Gandi.  It can talk
+to Microsoft ActiveDirectory and it generates the most beautiful
+BIND zone files ever.  It runs anywhere Go runs (Linux, macOS,
+Windows). The provider model is extensible, so more providers can be added.
+Currently supported DNS providers:
+
+Active Directory
+BIND
+CloudFlare
+DNSimple
+Gandi
+Google
+Namecheap
+Name.com
+Route 53
+
+At Stack Overflow, we use this system to manage hundreds of domains
+and subdomains across multiple registrars and DNS providers.
+You can think of it as a DNS compiler.  The configuration files are
+written in a DSL that looks a lot like JavaScript.  It is compiled
+to an intermediate representation (IR).  Compiler back-ends use the
+IR to update your DNS zones on services such as Route53, CloudFlare,
+and Gandi, or systems such as BIND and ActiveDirectory.
+#+END_QUOTE
