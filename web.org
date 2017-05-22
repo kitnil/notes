@@ -18180,3 +18180,10 @@ Based on [[https://github.com/kenshinx/godns][kenshinx/godns]] and [[https://git
 This is a fake DNS server that allows you to stealthily extract files from a victim machine through DNS requests.
 Below are a couple of different images showing examples of multiple file transfer and single verbose file transfer:
 #+END_QUOTE
+** [2017-05-22 Mon 15:43] [[https://github.com/elceef/dnstwist][elceef/dnstwist: Domain name permutation engine for detecting typo squatting, phishing and corporate espionage]]
+#+BEGIN_QUOTE
+See what sort of trouble users can get in trying to type your domain name.
+Find similar-looking domains that adversaries can use to attack you. Can detect
+typosquatters, phishing attacks, fraud and corporate espionage. Useful as an
+additional source of targeted threat intelligence.
+#+END_QUOTE
