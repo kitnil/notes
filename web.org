@@ -16666,3 +16666,11 @@ useful linear algebra, Fourier transform, and random number capabilities.
 It derives from the old Numeric code base and can be used as a replacement for Numeric. It also adds the features introduced by numarray and can be used to replace numarray.
 More information can be found at the website:
 #+END_QUOTE
+** [2017-05-22 Mon 09:09] [[https://github.com/bulutyazilim/awesome-datascience][bulutyazilim/awesome-datascience: An awesome Data Science repository to learn and apply for real world problems.]]
+#+BEGIN_QUOTE
+This part is for dummies who are new to Data Science
+This is a shortcut path to start studying Data Science. Just follow the steps to answer the questions, "What is Data Science and what should I study to learn Data Science?"
+First of all, Data Science is one of the hottest topics on the Computer and Internet farmland nowadays. People have gathered data from applications and systems until today and now is the time to analyze them. The next steps are producing suggestions from the data and creating predictions about the future. [[https://www.quora.com/Data-Science/What-is-data-science][Here]] you can find the biggest question for Data Science and hundreds of answers from experts. Our favorite data scientist is [[https://twitter.com/clarecorthell][Clare Corthell]]. She is an expert in data-related systems and a hacker, and has been working on a company as a data scientist. [[http://datasciencemasters.org/][Clare's blog]]. This website helps you to understand the exact way to study as a professional data scientist.
+Secondly, Our favorite programming language is Python nowadays for #DataScience. Python's - [[http://pandas.pydata.org/][Pandas]] library has full functionality for collecting and analyzing data. We use [[https://www.continuum.io/downloads][Anaconda]] to play with data and to create applications.
+This is the [[https://github.com/okulbilisim/awesome-datascience/blob/master/DataScience-Life-Cycle.md][Guide]] to begin a Data Science project.
+#+END_QUOTE
