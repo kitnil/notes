@@ -16653,3 +16653,16 @@ renamed to Helm during this period.
 #+BEGIN_QUOTE
 One problem that I used to have is to hide two main windows such as toolbox and tool-options that make my GIMP seems with nothing on it.
 #+END_QUOTE
+** [2017-05-22 Mon 09:07] [[https://github.com/numpy/numpy][numpy/numpy: Numpy main repository]]
+#+BEGIN_QUOTE
+NumPy is the fundamental package needed for scientific computing with Python.
+This package contains:
+
+a powerful N-dimensional array object
+sophisticated (broadcasting) functions
+tools for integrating C/C++ and Fortran code
+useful linear algebra, Fourier transform, and random number capabilities.
+
+It derives from the old Numeric code base and can be used as a replacement for Numeric. It also adds the features introduced by numarray and can be used to replace numarray.
+More information can be found at the website:
+#+END_QUOTE
