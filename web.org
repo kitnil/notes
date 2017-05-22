@@ -18204,3 +18204,11 @@ of DNS software. Nominum has generously allowed it to be open sourced under a
 BSD-style license, and helps support its future development by continuing to
 employ the author :).
 #+END_QUOTE
+** [2017-05-22 Mon 15:48] [[https://github.com/shadowsocks/ChinaDNS-Python][shadowsocks/ChinaDNS-Python: Protect yourself against DNS poisoning in China.]]
+#+BEGIN_QUOTE
+[[https://github.com/clowwindy/ChinaDNS][ChinaDNS-C]] is more advanced and well maintained. Please use it instead.
+Actually, I'm not working on the Python version anymore.
+New maintainers are welcome. Just send several pull requests and let
+me know. You can begin with some features that have already
+been implemented in ChinaDNS-C.
+#+END_QUOTE
