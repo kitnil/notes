@@ -16871,3 +16871,16 @@ This is a piece of software that lets you tunnel IPv4 data through a DNS
 server. This can be usable in different situations where internet access is
 firewalled, but DNS queries are allowed.
 #+END_QUOTE
+** [2017-05-22 Mon 15:11] [[https://github.com/felixonmars/dnsmasq-china-list][felixonmars/dnsmasq-china-list: Chinese-specific configuration to improve your favorite DNS server. Best partner for chnroutes.]]
+#+BEGIN_QUOTE
+Chinese-specific configuration to improve your favorite DNS server. Best partner for chnroutes.
+
+
+Improve resolve speed for Chinese domains.
+
+
+Get the best CDN node near you whenever possible, but don't compromise foreign CDN results so you also get best CDN node for your VPN at the same time.
+
+
+Block ISP ads on NXDOMAIN result (like 114so).
+#+END_QUOTE
