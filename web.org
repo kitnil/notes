@@ -18274,3 +18274,22 @@ In the vein of [[https://en.wikipedia.org/wiki/Infrastructure_as_Code][infrastru
 The architecture is pluggable and the tooling is flexible to make it applicable to a wide variety of use-cases. Effort has been made to make adding new providers as easy as possible. In the simple case that involves writing of a single class and a couple hundred lines of code, most of which is translating between the provider's schema and OctoDNS's. More on some of the ways we use it and how to go about extending it below and in the [[https://github.com/github/octodns/blob/master/docs][/docs directory]].
 It is similar to [[https://github.com/Netflix/denominator][Netflix/denominator]].
 #+END_QUOTE
+** [2017-05-22 Mon 15:51] [[https://github.com/henices/Tcp-DNS-proxy][henices/Tcp-DNS-proxy: A TCP dns proxy which can get the RIGHT ip address]]
+#+BEGIN_QUOTE
+change your dns server to 127.0.0.1
+
+$ vi /etc/resolve.conf  
+nameserver 127.0.0.1
+
+restart the network
+
+$ sudo /etc/init.d/networking restart
+
+run the script
+
+$ sudo python tcpdns.py -f tcpdns.json.example
+
+stop the daemon process
+
+$ sudo python tcpdns.py -s
+#+END_QUOTE
