@@ -16839,3 +16839,19 @@ Original vuln [[https://bugs.chromium.org/p/project-zero/issues/detail?id=1139][
 Cloudflare has posted a very detailed response, explaining exactly what the implications of this leak are.  It thoroughly explains their language in earlier statements, and I highly recommend reading it before looking through this list for domains:
 [[https://blog.cloudflare.com/quantifying-the-impact-of-cloudbleed/][https://blog.cloudflare.com/quantifying-the-impact-of-cloudbleed/]]
 #+END_QUOTE
+** [2017-05-22 Mon 15:09] [[https://github.com/twisted/twisted][twisted/twisted: Event-driven networking engine written in Python.]]
+#+BEGIN_QUOTE
+Twisted is an event-based framework for internet applications, supporting Python 2.7 and Python 3.3+.
+It includes modules for many different purposes, including the following:
+
+twisted.web: HTTP clients and servers, HTML templating, and a WSGI server
+twisted.conch: SSHv2 and Telnet clients and servers and terminal emulators
+twisted.words: Clients and servers for IRC, XMPP, and other IM protocols
+twisted.mail: IMAPv4, POP3, SMTP clients and servers
+twisted.positioning: Tools for communicating with NMEA-compatible GPS receivers
+twisted.names: DNS client and tools for making your own DNS servers
+twisted.trial: A unit testing framework that integrates well with Twisted-based code.
+
+Twisted supports all major system event loops -- select (all platforms), poll (most POSIX platforms), epoll (Linux), kqueue (FreeBSD, OS X), IOCP (Windows), and various GUI event loops (GTK+2/3, QT, wxWidgets).
+Third-party reactors can plug into Twisted, and provide support for additional event loops.
+#+END_QUOTE
