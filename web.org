@@ -18187,3 +18187,20 @@ Find similar-looking domains that adversaries can use to attack you. Can detect
 typosquatters, phishing attacks, fraud and corporate espionage. Useful as an
 additional source of targeted threat intelligence.
 #+END_QUOTE
+** [2017-05-22 Mon 15:43] [[https://github.com/rthalley/dnspython][rthalley/dnspython: a powerful DNS toolkit for python]]
+#+BEGIN_QUOTE
+dnspython is a DNS toolkit for Python. It supports almost all record types. It
+can be used for queries, zone transfers, and dynamic updates. It supports TSIG
+authenticated messages and EDNS0.
+dnspython provides both high and low level access to DNS. The high level classes
+perform queries for data of a given name, type, and class, and return an answer
+set. The low level classes allow direct manipulation of DNS zones, messages,
+names, and records.
+To see a few of the ways dnspython can be used, look in the examples/ directory.
+dnspython is a utility to work with DNS, /etc/hosts is thus not used. For
+simple forward DNS lookups, better use socket.gethostbyname().
+dnspython originated at Nominum where it was developed to facilitate the testing
+of DNS software. Nominum has generously allowed it to be open sourced under a
+BSD-style license, and helps support its future development by continuing to
+employ the author :).
+#+END_QUOTE
