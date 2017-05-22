@@ -18175,3 +18175,8 @@ Typical usages:
 ⚡️ Fast dns proxy that can run anywhere, built to black-hole internet advertisements and malware servers.
 Based on [[https://github.com/kenshinx/godns][kenshinx/godns]] and [[https://github.com/miekg/dns][miekg/dns]].
 #+END_QUOTE
+** [2017-05-22 Mon 15:43] [[https://github.com/m57/dnsteal][m57/dnsteal: DNS Exfiltration tool for stealthily sending files over DNS requests.]]
+#+BEGIN_QUOTE
+This is a fake DNS server that allows you to stealthily extract files from a victim machine through DNS requests.
+Below are a couple of different images showing examples of multiple file transfer and single verbose file transfer:
+#+END_QUOTE
