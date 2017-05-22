@@ -16777,3 +16777,45 @@ P.S. Что бы легче предствить разницу между git m
 git merge используйте для мержа фич и фиксов в master ветку (как и делает это Github)
 а git rebase используется для своей ветку в которой вы работаете над фичей что бы забрать последние изменения с master ветку (для этого есть очень удобная команда `git pull --rebase origin master`, аналог 3х команд (`git checkout master; git pull origin master; git checkout mybrach; git rebase master`)      
 #+END_QUOTE
+** [2017-05-22 Mon 15:05] [[https://en.anison.fm/catalog/][Order a song - ANISON.FM - anime radio #1 in the world]]
+#+BEGIN_QUOTE
+<!--
+new Image().src = "//counter.yadro.ru/hit?r"+
+escape(document.referrer)+((typeof(screen)=="undefined")?"":
+";s"+screen.width+"*"+screen.height+"*"+(screen.colorDepth?
+screen.colorDepth:screen.pixelDepth))+";u"+escape(document.URL)+
+";"+Math.random();//-->
+
+
+
+
+
+
+  
+    
+      
+        [[https://anison.fm/][{[https://anison-a.akamaihd.net/images/flag-russia.gif}]]]
+        [[https://cn.anison.fm/][{[https://anison-a.akamaihd.net/images/flag-china.gif}]]]
+        [[https://en.anison.fm/][HOME]]
+        [[https://en.anison.fm/catalog/][CATALOG]]
+        
+      
+      
+        LISTENERS NOW:
+        516
+      
+      
+        
+          [[https://en.anison.fm/catalog/1430/Kono+Subarashii+Sekai+ni+Shukufuku+o%21][Kono Subarashii Sekai ni Shukufuku o!]] —
+          TOMORROW
+        [[moz-nullprincipal:{6ba632bb-aa4b-4782-bebb-813348a30ab0}][{[https://anison-a.akamaihd.net/images/onair_list.png}]]]
+        
+          516
+           listeners
+        
+        
+          0:32
+        
+      
+      
+#+END_QUOTE
