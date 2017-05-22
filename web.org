@@ -16723,3 +16723,8 @@ PLOS Computational Biology,
  поскольку каждая установка OpenBSD является ещё и инсталлятором, то 500 мб занимают установочные файлы для i386 и amd64 + прошивки. подняты pxe-сервер и http/ftp/nfs: хошь с флешки ставь систему, хошь по сети
 
 #+END_QUOTE
+** [2017-05-22 Mon 09:27] [[http://www.sphinx-doc.org/en/stable/ext/autodoc.html][sphinx.ext.autodoc – Include documentation from docstrings — Sphinx 1.6.2+ documentation]]
+#+BEGIN_QUOTE
+This extension can import the modules you are documenting, and pull in
+documentation from docstrings in a semi-automatic way.
+#+END_QUOTE
