@@ -16674,3 +16674,16 @@ First of all, Data Science is one of the hottest topics on the Computer and Inte
 Secondly, Our favorite programming language is Python nowadays for #DataScience. Python's - [[http://pandas.pydata.org/][Pandas]] library has full functionality for collecting and analyzing data. We use [[https://www.continuum.io/downloads][Anaconda]] to play with data and to create applications.
 This is the [[https://github.com/okulbilisim/awesome-datascience/blob/master/DataScience-Life-Cycle.md][Guide]] to begin a Data Science project.
 #+END_QUOTE
+** [2017-05-22 Mon 09:09] [[https://github.com/astropy/astropy][astropy/astropy: Repository for the Astropy core package]]
+#+BEGIN_QUOTE
+Astropy ([[http://astropy.org/][http://astropy.org/]]) is a package intended to contain much of
+the core functionality and some common tools needed for performing
+astronomy and astrophysics with Python.
+Releases are [[http://pypi.python.org/pypi/astropy][registered on PyPI]],
+and development is occurring at the
+[[http://github.com/astropy/astropy][project's github page]].
+For installation instructions, see the [[http://docs.astropy.org/][online documentation]]
+or  docs/install.rst in this source distribution.
+For system packagers: Please install Astropy with the command:
+$ python setup.py --offline install
+#+END_QUOTE
