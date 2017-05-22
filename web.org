@@ -18267,3 +18267,10 @@ to an intermediate representation (IR).  Compiler back-ends use the
 IR to update your DNS zones on services such as Route53, CloudFlare,
 and Gandi, or systems such as BIND and ActiveDirectory.
 #+END_QUOTE
+** [2017-05-22 Mon 15:51] [[https://github.com/github/octodns][github/octodns: Tools for managing DNS across multiple providers]]
+#+BEGIN_QUOTE
+[[moz-nullprincipal:{90ba73a2-75a1-411c-bfba-fe7f8d85c24d}]]DNS as code - Tools for managing DNS across multiple providers
+In the vein of [[https://en.wikipedia.org/wiki/Infrastructure_as_Code][infrastructure ascode]] OctoDNS provides a set of tools & patterns that make it easy to manage your DNS records across multiple providers. The resulting config can live in a repository and be [[https://github.com/blog/1241-deploying-at-github][deployed]] just like the rest of your code, maintaining a clear history and using your existing review & workflow.
+The architecture is pluggable and the tooling is flexible to make it applicable to a wide variety of use-cases. Effort has been made to make adding new providers as easy as possible. In the simple case that involves writing of a single class and a couple hundred lines of code, most of which is translating between the provider's schema and OctoDNS's. More on some of the ways we use it and how to go about extending it below and in the [[https://github.com/github/octodns/blob/master/docs][/docs directory]].
+It is similar to [[https://github.com/Netflix/denominator][Netflix/denominator]].
+#+END_QUOTE
