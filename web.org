@@ -16711,3 +16711,15 @@ Ten Simple Rules for Better Figures
 Nicolas P. Rougier, Michael Droettboom, Philip E. Bourne
 PLOS Computational Biology,
 #+END_QUOTE
+** [2017-05-22 Mon 09:24] [[https://www.linux.org.ru/gallery/screenshots/13424147][Походно-боевой OpenBSD — Скриншоты — Галерея]]
+#+BEGIN_QUOTE
+ Разный полезный софт. Много. Спасательные вещи, сетевые вещи, разработчиковые вещи: от vim и git/hg/fossil до tesdisk и django с postgresql
+ Темы и шрифты из репов: pkg_add paper-icon-theme paper-gtk-theme ubuntu-fonts
+ Помимо дефолтных wm: fvwm, cwm, twm, установлены XFCE, awesome и icewm
+ Firefox и Links -g, tor, nmap
+ Libreoffice, evince, gimp. Qemu, DosBox
+ Игрушки: angband, nethack, stone-soup, chocolate-doom, pysol, freeciv, wesnoth, tbftss, mars
+ mplayer, cmus, mpd/ncmpcpp/ario, музыка из wesnoth,tbftss,mars выведена в mpd
+ поскольку каждая установка OpenBSD является ещё и инсталлятором, то 500 мб занимают установочные файлы для i386 и amd64 + прошивки. подняты pxe-сервер и http/ftp/nfs: хошь с флешки ставь систему, хошь по сети
+
+#+END_QUOTE
