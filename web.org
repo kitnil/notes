@@ -18222,3 +18222,19 @@ Update June/2016: HE TunnelBroker IPv6 endpoints are now also blocked. Your best
 Update March/2016: IPv6 addresses of common hosting providers are now blocked in the same way as IPv4 (incl. Digital Ocean and Vultr). Netflix could be "tagging" accounts[[moz-nullprincipal:{1f69d004-4416-4ecb-bfc5-fc5515d6be2d}][{n11}]]. Netflix and BBC iPlayer are also perfoming geo checks on their media hosts, so the relevant media domains are now proxied by default[[moz-nullprincipal:{1f69d004-4416-4ecb-bfc5-fc5515d6be2d}][{n8}]]. Please note, that proxying media delivery could increase the bandwidth bill you get from your VPS provider. However, since most VPS providers offer 1TB per month inclusive with each server and most home ISPs don't offer anywhere near that amount, it should be a moot point in most situations.
 Please see the [[https://github.com/ab77/netflix-proxy/wiki][Wiki]] page(s) for some common troubleshooting ideas.
 #+END_QUOTE
+** [2017-05-22 Mon 15:50] [[https://github.com/holmium/dnsforwarder][holmium/dnsforwarder: Just a DNS utility.]]
+#+BEGIN_QUOTE
+dnsforwarder
+[[moz-nullprincipal:{97650e5a-a1b9-4b06-8915-2ce95050ce58}]]一个简单的 DNS 转发代理
+主要功能：
+
+指定不同的域名使用不同的服务器（支持非标准端口）、不同的协议（UDP、TCP）进行查询；
+DNS 缓存及相关的控制（支持自定义 TTL）；
+屏蔽包含指定的 IP 的 DNS 数据包；
+Hosts 功能（支持通配符、CName 指定、网络 Hosts）；
+屏蔽指定的域名查询请求（广告屏蔽？）；
+跨平台（Windows、Linux）；
+
+此版本保留了大部分 5 版本的功能，习惯 5 版本的朋友们可以到“5”分支内获取。
+[[https://github.com/holmium/dnsforwarder/wiki/%E5%AE%89%E8%A3%85%E5%92%8C%E9%83%A8%E7%BD%B2-%7C-Deployment][安装和部署]]
+#+END_QUOTE
