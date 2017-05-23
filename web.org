@@ -18373,3 +18373,14 @@ the original one.
 simple in-buffer download manager for Emacs
 バッファ内で動作する簡易ダウンローダ
 #+END_QUOTE
+** [2017-05-23 Tue 21:53] [[https://github.com/jreybert/vimagit][jreybert/vimagit: Ease your git workflow within Vim]]
+#+BEGIN_QUOTE
+Ease your git workflow within vim.
+From a very single vim buffer, you can perform main git operations in few key press. To name a few:
+
+Visualize all diffs in your git repository.
+Stage file, hunks or even just parts of a hunk using a single key press.
+Write or amend your commit message and commit in the same buffer.
+
+Take a look at [[moz-nullprincipal:{728bbf3f-38d4-4fd5-acb5-807784394109}][TL;DR]] to start using it immediately.
+#+END_QUOTE
