@@ -18,3 +18,63 @@ problems on your system.
 ** TODO [2017-04-13 Thu 00:29] [[gnus:mail.noreply.redhat#b4166984caf4470491b028054b112717@1795][Email from Red Hat: Ваша регистрация для вебинара]] by [[mailto:email@engage.redhat.com][Red Hat]]
 ** TODO [2017-04-13 Thu 11:14] [[gnus:mail.misc#550448885.69285@mta02.estisrapid.pro][Email from Светлана Бычкова: ский язык. Вопрос-ответ} Как н]] by [[mailto:info@tensaigakkou.ru][Светлана Бычкова]]
 ** TODO [2017-05-11 Thu 21:28] Отправить преподавателю по английскому [[gnus:lists.googlegroups.leti-user#2325891494494253@web23j.yandex.ru][Email from Иван Волошин: Англ Волошин 6005]] by [[mailto:ivan-sever-ulica@yandex.ru][Иван Волошин]]
+** [2017-05-23 Tue 19:40] [[gnus:lists.gnu.help-gnu-emacs#CAP_d_8VtA_RoaJuFXvOFzcriAY_Tzs3XzsPNiUPk9htZcJCgag@mail.gmail.com][Email from Yuri Khan: Re: how to highlight block end]] by [[mailto:yuri.v.khan@gmail.com][Yuri Khan]]
+
+From: Yuri Khan <yuri.v.khan@gmail.com>
+Subject: Re: how to highlight block end in Python-mode indentation
+To: Krishnakant <krmane@openmailbox.org>
+Cc: Skip Montanaro <skip.montanaro@gmail.com>,
+        "help-gnu-emacs@gnu.org" <help-gnu-emacs@gnu.org>
+Date: Sun, 21 May 2017 19:04:47 +0700 (2 days, 4 hours, 34 minutes ago)
+
+On Sun, May 21, 2017 at 6:38 PM, Krishnakant <krmane@openmailbox.org> wrote:
+
+> The base is large enough, more than 1500 lines in a buffer (python module ).
+
+That is a lot. See if any top-level functions or classes want to live
+in separate modules.
+
+> There is a lot of nesting going on and we all know that we do get lost in
+> it.
+> Do you have some solution?
+
+Apply Torvalds’ razor: “if you need more than 3 levels of indentation,
+you’re screwed[…], and should fix your program”.
+
+See which deep-nested blocks carry out some action that could be given
+a name. Extract those as functions. If you see a block of code with an
+explanatory comment before it — that’s a function wanting to break
+out.
+
+Also, The Zen of Python, item 5: “Flat is better than nested.”
+
+See if you have this pattern:
+
+def …:
+    if some condition:
+        do something
+        …
+
+Rewrite this to:
+
+def …:
+    if not some condition:
+        return
+    do something
+    …
+
+Similarly with loops, using “continue”.
+
+Sometimes replacing conditions with conditional expressions (x if y
+else z) and loops with comprehensions and utility functions will do
+wonders to your nesting levels.
+
+> Basically I have now figured out that spaces instead of tabs makes elpy work
+> fine with highlight-indentation-mode.  So our team will have to switch to
+> using spaces again.
+
+You use tabs with Python in a *team*?
+
+Print out PEP8. Discuss it with your team. Unless you have good
+reasons, format according to that. (Unfortunately, having lots of
+existing code qualifies as “good reasons”.)
