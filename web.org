@@ -18395,3 +18395,14 @@ and Vim 8 while you edit your text files.
 
 The guidelines have moved: [[http://cssguidelin.es/][cssguidelin.es]]
 #+END_QUOTE
+** [2017-05-23 Tue 21:56] [[https://github.com/amix/vimrc][amix/vimrc: The ultimate Vim configuration: vimrc]]
+#+BEGIN_QUOTE
+[[moz-nullprincipal:{69765998-9382-48ae-b94a-ba1c81a073be}]]The Ultimate vimrc
+Over the last 10 years, I have used and tweaked Vim. This configuration is the ultimate vimrc (or at least my version of it).
+There are two versions:
+
+The Basic: If you want something small just copy [[https://github.com/amix/vimrc/blob/master/vimrcs/basic.vim][basic.vim]] into your ~/.vimrc and you will have a good basic setup
+The Awesome: Includes a ton of useful plugins, color schemes, and configurations
+
+I would, of course, recommend using the awesome version.
+#+END_QUOTE
