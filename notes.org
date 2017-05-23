@@ -557,4 +557,13 @@ https://github.com/jwiegley/use-package/issues/319
   (define-key key-translation-map [?\C-\M-h] [?\C-\M-?]) ; bind C-M-h to M-<backspace>
   (define-key key-translation-map [?\C-\M-?] [?\C-\M-h]) ; bind M-<backspace> to C-M-h
 
+  ;; (setq browse-url-chromium-arguments '("--enable-remote-extensions"))
+
+  ;; (setq eshell-glob-case-insensitive t)
+
+  ;; (setq epg-gpg-program "/usr/bin/gpg2")
+
+  ;; (setq mouse-drag-copy-region t)
+  ;; (setq save-interprogram-paste-before-kill t)
+
 #+END_SRC
