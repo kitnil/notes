@@ -18384,3 +18384,8 @@ Write or amend your commit message and commit in the same buffer.
 
 Take a look at [[moz-nullprincipal:{728bbf3f-38d4-4fd5-acb5-807784394109}][TL;DR]] to start using it immediately.
 #+END_QUOTE
+** [2017-05-23 Tue 21:54] [[https://github.com/w0rp/ale][w0rp/ale: Asynchronous Lint Engine]]
+#+BEGIN_QUOTE
+ALE (Asynchronous Lint Engine) is a plugin for providing linting in NeoVim
+and Vim 8 while you edit your text files.
+#+END_QUOTE
