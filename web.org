@@ -18339,3 +18339,7 @@ Spacevim provides 2 ways of using it. First you can use it as a vim distribution
 
 
 #+END_QUOTE
+** [2017-05-23 Tue 10:07] [[https://stackoverflow.com/questions/778716/how-can-i-make-emacs-start-up-faster][performance - How can I make Emacs start-up faster? - Stack Overflow]]
+#+BEGIN_QUOTE
+(setq message-log-max t)
+#+END_QUOTE
