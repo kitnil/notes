@@ -18429,3 +18429,12 @@ I would, of course, recommend using the awesome version.
 
 
  #+END_QUOTE
+** [2017-05-23 Tue 23:17] make -k 
+ #+BEGIN_QUOTE
+ 这份配置文件仓库记载了一台全新的 Mac OS X 机器的开发环境从无到有，从有到精的全过程。
+
+ 注意：本仓库的根路径实际上对应的实际路径应该是 ~/.config，如果你要直接拿去用的话，最好使用 ln 路径去做对应的软链接。例如 ~ $ ln -s .config/.bashrc .bashrc，这样的话会保证文件在正确的路径下并且编辑它们会直接改变位于 ~/.config 路径下对应文件的内容。这其中有一些文件是不需要做软链接的，因为它们本来就应该位于 ~/.config 下（比如 ~/.config/nvim/**）。后面我会写一个 ~/.config/install.sh 脚本来自动化做软链接的过程，但不是现在因为要补充的文件还有很多很多……
+ 至本仓库创建之前，已经完成的配置列举如下：
+
+
+ #+END_QUOTE
