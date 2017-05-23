@@ -544,3 +544,17 @@ https://github.com/jwiegley/use-package/issues/319
            (and (listp sf) (eq (car sf) 'autoload))))
         (fmakunbound S))))
 #+END_SRC
+#+BEGIN_SRC emacs-lisp
+  ;; Ignore case
+  (setq read-file-name-completion-ignore-case t
+        read-buffer-completion-ignore-case t
+        ido-case-fold t
+        eshell-cmpl-ignore-case t)
+
+  ;; Keys translations
+  (define-key key-translation-map [?\C-h] [?\C-?]) ; translate 'C-h' to DEL
+  (define-key key-translation-map [?\C-?] [?\C-h]) ; translate DEL to 'C-h'.
+  (define-key key-translation-map [?\C-\M-h] [?\C-\M-?]) ; bind C-M-h to M-<backspace>
+  (define-key key-translation-map [?\C-\M-?] [?\C-\M-h]) ; bind M-<backspace> to C-M-h
+
+#+END_SRC
