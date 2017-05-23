@@ -18349,3 +18349,15 @@ This is a simple benchmark of calls to Emacs require and load functions.
 It can be used to keep track of where time is being spent during Emacs
 startup in order to optimize startup times.
 #+END_QUOTE
+** [2017-05-23 Tue 11:25] [[https://github.com/emacs-jp/init-loader][emacs-jp/init-loader: Original is http://coderepos.org/share/browser/lang/elisp/init-loader/init-loader.el]]
+#+BEGIN_QUOTE
+init-loader.el is a loader of configuration files.  init-loader.el
+loads configuration files from specified directory.  It enables you to
+categorize your configurations and separate them into multiple files.
+The original code is
+[[http://coderepos.org/share/browser/lang/elisp/init-loader/init-loader.el][here]].
+The current version of init-loader.el is based on
+[[https://gist.github.com/tarao/4362564][tarao's fork version]], which
+have some issues fixed and some essential features added compared with
+the original one.
+#+END_QUOTE
