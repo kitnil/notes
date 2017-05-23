@@ -18333,3 +18333,9 @@ Maintainable against the PuTTY code; i.e. mostly independent with some hooks or 
 Are at least vaguely following the original design goals of PuTTY, and follow the coding style a bit, and
 Not security related, or, at least, there not being any visible security risk.  PuTTY is a security product, and the security is critical.  I want everyone, even very paranoid people, to be able to use PuTTYTray.
 #+END_QUOTE
+** [2017-05-23 Tue 09:35] , f(-x) \neq -f(x)$$
+#+BEGIN_QUOTE
+Spacevim provides 2 ways of using it. First you can use it as a vim distribution like Spacemacs. Or you can only install it as a set of key bindings and Spacevim will bring out the best of your currently installed plugin.
+
+
+#+END_QUOTE
