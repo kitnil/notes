@@ -18416,3 +18416,16 @@ I would, of course, recommend using the awesome version.
 
 
  #+END_QUOTE
+** [2017-05-23 Tue 23:17] make -k 
+ #+BEGIN_QUOTE
+ You should be able to install this package in the standard way, add it to the load path and then calling
+
+ (package-install 'spaceline-all-the-icons)
+
+ (require 'spaceline-all-the-icons)
+ ;; or
+ (use-package spaceline-all-the-icons)
+ N.B. This package is highly dependent on all-the-icons.el, so make sure you have the fonts installed correctly
+
+
+ #+END_QUOTE
