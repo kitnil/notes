@@ -557,13 +557,31 @@ https://github.com/jwiegley/use-package/issues/319
   (define-key key-translation-map [?\C-\M-h] [?\C-\M-?]) ; bind C-M-h to M-<backspace>
   (define-key key-translation-map [?\C-\M-?] [?\C-\M-h]) ; bind M-<backspace> to C-M-h
 
-  ;; (setq browse-url-chromium-arguments '("--enable-remote-extensions"))
+  (setq browse-url-chromium-arguments '("--enable-remote-extensions"))
 
-  ;; (setq eshell-glob-case-insensitive t)
+  (setq eshell-glob-case-insensitive t)
 
-  ;; (setq epg-gpg-program "/usr/bin/gpg2")
+  (setq epg-gpg-program "/usr/bin/gpg2")
 
-  ;; (setq mouse-drag-copy-region t)
-  ;; (setq save-interprogram-paste-before-kill t)
+  (setq mouse-drag-copy-region t)
+  (setq save-interprogram-paste-before-kill t)
 
+  (setq backup-directory-alist `(("." . ,(concat temporary-file-directory "emacs1000/backup"))))
+
+  (global-auto-revert-mode 1)
+  (setq font-use-system-font t)
+
+  (defalias 'list-buffers 'ibuffer-other-window)
+
+  (add-hook 'emacs-lisp-mode-hook (lambda () (electric-pair-mode 1)))
+
+  (require 'ox-extra)
+  (ox-extras-activate '(ignore-headlines))
+
+  (load-library "find-lisp")
+
+  (require 'org-protocol)
+
+  (add-hook 'markdown-mode-hook #'flycheck-mode)
+  (add-hook 'text-mode-hook #'flycheck-mode)
 #+END_SRC
