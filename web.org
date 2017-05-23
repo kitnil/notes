@@ -18343,3 +18343,9 @@ Spacevim provides 2 ways of using it. First you can use it as a vim distribution
 #+BEGIN_QUOTE
 (setq message-log-max t)
 #+END_QUOTE
+** [2017-05-23 Tue 11:17] [[https://github.com/dholm/benchmark-init-el][dholm/benchmark-init-el: Benchmark your Emacs initialization]]
+#+BEGIN_QUOTE
+This is a simple benchmark of calls to Emacs require and load functions.
+It can be used to keep track of where time is being spent during Emacs
+startup in order to optimize startup times.
+#+END_QUOTE
