@@ -525,3 +525,22 @@ Description  : This package contains scripts and (X)Emacs support files to aid
              : Bump revision in specfile ...and many more.
 * 
 - [[/run/media/opykhalov/hills/daily.0/magnolia/home/wigust][Daily Backup]]
+* Emacs
+
+** org-mode fix
+https://github.com/jwiegley/use-package/issues/319
+#+BEGIN_SRC emacs-lisp
+  (eval-and-compile
+    (let ((clp))
+      (while (setq clp (locate-library "org"))
+        (setq load-path
+          (delete
+           (directory-file-name (file-name-directory clp)) load-path))))
+
+    (dolist (S (append (apropos-internal (concat "^" (symbol-name 'org) "-"))
+               (apropos-internal (concat "^global-" (symbol-name 'org) "-"))))
+      (when (and (fboundp S)
+             (let ((sf (symbol-function S)))
+           (and (listp sf) (eq (car sf) 'autoload))))
+        (fmakunbound S))))
+#+END_SRC
