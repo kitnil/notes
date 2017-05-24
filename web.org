@@ -18597,3 +18597,7 @@ This package is an extended and actively maintained version of the
 This version brings, among other things, support for number sets across multiple
   frames, giving the user a smoother experience of multi-screen Emacs.
 #+END_QUOTE
+** [2017-05-24 Wed 08:57] [[https://github.com/waymondo/ace-jump-buffer][waymondo/ace-jump-buffer: Super fast Emacs buffer switching extension for avy]]
+#+BEGIN_QUOTE
+ace-jump-buffer is an extension for [[https://github.com/abo-abo/avy][avy]] and the native bs buffer menu that lets you hop to Emacs buffers in 2-3 key strokes.
+#+END_QUOTE
