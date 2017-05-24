@@ -18556,3 +18556,14 @@ Since the new type is user-visible, give it a predicate.
 Now we can easily support 'help-function-args' and 'func-arity'; add
 unit tests for these.
 #+END_QUOTE
+** [2017-05-24 Wed 08:53] [[https://git.savannah.gnu.org/cgit/emacs.git/commit/etc/NEWS?id=184d74ce002ecb7399cb2b47fc671bfb2feb9855][emacs.git - Emacs source repository]]
+#+BEGIN_QUOTE
+** lisp/vc/smerge-mode.el (smerge-refine-regions): Work in multi-bufsRename from smerge-refine-subst.  Allow the `beg's to be markers.
+Add autoload cookie.
+(smerge--refine-forward): Rename from smerge-refine-forward.
+(smerge--refine-chopup-region): Rename from smerge-refine-chopup-region.
+Assume that its `beg` arg is a marker.
+(smerge--refine-highlight-change): Rename from
+smerge-refine-highlight-change.  Remove `buf` arg.
+(smerge-refine-subst): Redefine as an obsolete alias.
+#+END_QUOTE
