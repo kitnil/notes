@@ -18601,3 +18601,7 @@ This version brings, among other things, support for number sets across multiple
 #+BEGIN_QUOTE
 ace-jump-buffer is an extension for [[https://github.com/abo-abo/avy][avy]] and the native bs buffer menu that lets you hop to Emacs buffers in 2-3 key strokes.
 #+END_QUOTE
+** [2017-05-24 Wed 08:58] [[https://linevi.ch/en/org-pygments.html?utm_source=reddit&amp;utm_medium=post&amp;utm_campaign=org_pygments][Syntax Highlighting with Pygments for Org-mode Src Blocks - Anton Linevych's blog]]
+#+BEGIN_QUOTE
+By default, Org mode does not highlight syntax in code blocks while exporting to HTML. Despite all the power of Org it becomes serious advantage in favor of Pelican + Markdown combination for blogging. Not finding any adequate solution that at least will be close to that what [[http://pygments.org/docs][Pygments]] proposes in Pelican I decided to add its support in Org-mode by myself. 
+#+END_QUOTE
