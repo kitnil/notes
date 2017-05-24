@@ -18567,3 +18567,7 @@ Assume that its `beg` arg is a marker.
 smerge-refine-highlight-change.  Remove `buf` arg.
 (smerge-refine-subst): Redefine as an obsolete alias.
 #+END_QUOTE
+** [2017-05-24 Wed 08:54] [[http://mp.vv.si/blog/emacs/emacs-memory-consumption/][Emacs memory consumption – Matthias bloggt]]
+#+BEGIN_QUOTE
+The Emacs built-in command ([[https://www.gnu.org/software/emacs/manual/html_node/elisp/Garbage-Collection.html][garbage-collect]]) gives detailed information about the data structures that currently consume memory. It is propably not the most usefull information but I wanted to collect the data and plot it. I started with writing functions to access the list returned from (garbage-collect):
+#+END_QUOTE
