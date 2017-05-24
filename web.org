@@ -18512,3 +18512,25 @@ require-final-newline.
 
 Trimming only happens when saving.
 #+END_QUOTE
+** [2017-05-24 Wed 08:52] [[https://git.savannah.gnu.org/cgit/emacs.git/commit/etc/NEWS?id=064b92d6e5a80f5435e2d941ec400ff9bd63d127][emacs.git - Emacs source repository]]
+#+BEGIN_QUOTE
+Support hscrolling only the current line* src/xdisp.c (hscrolling_current_line_p): New function.
+(init_iterator): If auto-hscrolling just the current line, don't
+increment the iterator's first_visible_x and last_visible_x
+variables.
+(hscroll_window_tree): Recompute window's hscroll when moving
+vertically to another screen line.
+(redisplay_window): If we are hscrolling only the current line,
+disable the optimizations that rely on the current matrix being
+up-to-date.
+(display_line): Accept an additional argument CURSOR_VPOS, the
+vertical position of the current screen line which might need
+hscrolling; all callers changed.  Compute first_visible_x and
+last_visible_x specially when auto-hscrolling current line, by
+repeating the calculation that is done in init_iterator in other
+modes.
+(syms_of_xdisp) <auto-hscroll-mode>: No longer boolean, it can now
+accept a 3rd value 'current-line, to turn on the mode where
+only the current line is hscrolled.
+
+#+END_QUOTE
