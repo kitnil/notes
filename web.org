@@ -18615,3 +18615,7 @@ What prompted me to make this post was that I just found out about flycheck-rtag
 
 Keep up with the great work guys.
 #+END_QUOTE
+** [2017-05-24 Wed 09:01] [[https://solarianprogrammer.com/2017/05/18/emacs-windows-subsystem-linux/][Emacs 25 on Windows Subsystem for Linux | Solarian Programmer]]
+#+BEGIN_QUOTE
+Recently, a reader of this blog asked me about using [[https://www.gnu.org/software/emacs/][Emacs]] under [[https://blogs.msdn.microsoft.com/wsl/][Windows Subsystem for Linux]]. According to the WSL documentation, Emacs, Vim and other Linux applications that run from console should work just fine. Turns out that the situation is a bit more complex. At the time of this writing, Emacs works fine for normal text editing. But, when you try to install a new package directly from Emacs, the program is stopped and sent to background and doesn’t seem to be able to cleanly recover when you use fg. From a practical point of view, this makes Emacs, under WSL, useless if you need to install any package that is not built in.
+#+END_QUOTE
