@@ -18503,3 +18503,12 @@ smerge-mode
 #+BEGIN_QUOTE
 selected.el provides the selected-minor-mode for Emacs. When selected-minor-mode is active, the keybindings in selected-keymap will be enabled when the region is active. This is useful for commands that operates on the region, which you only want bound to a key when the region is active. selected.el also provides selected-global-mode, if you want selected-minor-mode in every buffer.
 #+END_QUOTE
+** [2017-05-24 Wed 08:45] [[https://github.com/lewang/ws-butler][lewang/ws-butler: Unobtrusively trim extraneous white-space *ONLY* in lines edited.]]
+#+BEGIN_QUOTE
+Only lines touched get trimmed.  If the white space at end of buffer is
+changed, then blank lines at the end of buffer are truncated respecting
+require-final-newline.
+
+
+Trimming only happens when saving.
+#+END_QUOTE
