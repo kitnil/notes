@@ -18605,3 +18605,13 @@ ace-jump-buffer is an extension for [[https://github.com/abo-abo/avy][avy]] and 
 #+BEGIN_QUOTE
 By default, Org mode does not highlight syntax in code blocks while exporting to HTML. Despite all the power of Org it becomes serious advantage in favor of Pelican + Markdown combination for blogging. Not finding any adequate solution that at least will be close to that what [[http://pygments.org/docs][Pygments]] proposes in Pelican I decided to add its support in Org-mode by myself. 
 #+END_QUOTE
+** [2017-05-24 Wed 09:00] [[https://www.reddit.com/r/emacs/comments/6bnvk7/rtags_is_great/][Rtags is great : emacs]]
+#+BEGIN_QUOTE
+Not sure if the developers roam this subreddit, but I didn't want to open a github issue for this. 
+
+Rtags is great. I've been using it at work for code completion (with company-rtags) in a c++ software with a complex build (at least compared to my projects) and it works absolutely great. The only problem I had with my c++ workflow in emacs, was that I couldn't get flycheck-irony to work with this project.
+
+What prompted me to make this post was that I just found out about flycheck-rtags and it's a wonder, "out of the box".
+
+Keep up with the great work guys.
+#+END_QUOTE
