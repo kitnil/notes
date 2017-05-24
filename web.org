@@ -18571,3 +18571,11 @@ smerge-refine-highlight-change.  Remove `buf` arg.
 #+BEGIN_QUOTE
 The Emacs built-in command ([[https://www.gnu.org/software/emacs/manual/html_node/elisp/Garbage-Collection.html][garbage-collect]]) gives detailed information about the data structures that currently consume memory. It is propably not the most usefull information but I wanted to collect the data and plot it. I started with writing functions to access the list returned from (garbage-collect):
 #+END_QUOTE
+** [2017-05-24 Wed 08:55] [[https://github.com/nschum/window-numbering.el][nschum/window-numbering.el: Emacs: Numbered window shortcuts]]
+#+BEGIN_QUOTE
+Enable window-numbering-mode and use M-1 through M-0 to navigate.
+If you want to affect the numbers, use window-numbering-before-hook or
+window-numbering-assign-func.
+For instance, to always assign the calculator window the number 9, add the
+following to your .emacs:
+#+END_QUOTE
