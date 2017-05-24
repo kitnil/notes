@@ -18499,3 +18499,7 @@ smerge-mode
       
         
 #+END_QUOTE
+** [2017-05-24 Wed 08:36] [[https://github.com/Kungsgeten/selected.el][Kungsgeten/selected.el: Keymap for when region is active]]
+#+BEGIN_QUOTE
+selected.el provides the selected-minor-mode for Emacs. When selected-minor-mode is active, the keybindings in selected-keymap will be enabled when the region is active. This is useful for commands that operates on the region, which you only want bound to a key when the region is active. selected.el also provides selected-global-mode, if you want selected-minor-mode in every buffer.
+#+END_QUOTE
