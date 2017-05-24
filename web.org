@@ -18534,3 +18534,12 @@ accept a 3rd value 'current-line, to turn on the mode where
 only the current line is hscrolled.
 
 #+END_QUOTE
+** [2017-05-24 Wed 08:52] [[https://git.savannah.gnu.org/cgit/emacs.git/commit/etc/NEWS?id=021430f4b48ceb43a443fe805cfe0b21e7829760][emacs.git - Emacs source repository]]
+#+BEGIN_QUOTE
+New commands: find-library-other-window, find-library-other-frame* lisp/emacs-lisp/find-func.el (find-library-other-window)
+(find-library-other-frame): New commands to complement the
+existing 'find-library' command.  (Bug#26712)
+(read-library-name): New function to read a library name.
+** etc/NEWS: Mention 'find-library-other-window' and
+'find-library-other-frame'.
+#+END_QUOTE
