@@ -18477,3 +18477,14 @@ I would, of course, recommend using the awesome version.
 
   This restructures the data in the way I need, and I can now use org-table-export to export to other useful formats. 
  #+END_QUOTE
+** [2017-05-24 Wed 07:37] [[https://github.com/enomsg/vim-haskellConcealPlus][enomsg/vim-haskellConcealPlus: Extended Haskell Conceal feature for Vim]]
+ #+BEGIN_QUOTE
+ This bundle provides extended Haskell Conceal feature for Vim. The feature
+ is used to display unicode operators in Haskell code without changing the
+ underlying file.
+ This package offers more (and, more importantly, configurable) features
+ than the baseline vim-haskellConceal bundle. The baseline bundle has
+ numerous forks, which is possible to combine, so everyone is welcome to
+ share, improve or contribute new notations to this Conceal Plus package.
+ GitHub: [[https://github.com/enomsg/vim-haskellConcealPlus][https://github.com/enomsg/vim-haskellConcealPlus]]
+ #+END_QUOTE
