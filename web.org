@@ -18465,3 +18465,15 @@ I would, of course, recommend using the awesome version.
  SHOW MORE
 
  #+END_QUOTE
+** [2017-05-24 Wed 07:32] [[http://pragmaticemacs.com/emacs/reformatting-tabular-data/][Reformatting Tabular Data | Pragmatic Emacs]]
+ #+BEGIN_QUOTE
+ C-x h to select the whole buffer.
+ C-c | to run org-table-create-or-convert-from-region to convert the region to an org table. This doesn’t get me all the way to where I want to be, but I find it helpful to see the data clearly.
+ M-S-<left> to delete some unwanted columns
+ mc/mark-next-like-this from [[http://pragmaticemacs.com/emacs/multiple-cursors/][multiple cursors]] to give me a cursor on each line (I bind this to M-.)
+ M-f to move forward by word
+ shrink-whitespace to [[http://pragmaticemacs.com/emacs/delete-blank-lines-and-shrink-whitespace/][remove whitespace]] (I bind this to M-SPACE)
+ C-c - to run org-table-insert-hline to add a nice horizontal line to my table
+
+  This restructures the data in the way I need, and I can now use org-table-export to export to other useful formats. 
+ #+END_QUOTE
