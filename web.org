@@ -18543,3 +18543,16 @@ existing 'find-library' command.  (Bug#26712)
 ** etc/NEWS: Mention 'find-library-other-window' and
 'find-library-other-frame'.
 #+END_QUOTE
+** [2017-05-24 Wed 08:52] [[https://git.savannah.gnu.org/cgit/emacs.git/commit/etc/NEWS?id=31fded0370c3aa6d2c4370cae21cdb7475873483][emacs.git - Emacs source repository]]
+#+BEGIN_QUOTE
+Reimplement module functionsInstead of a lambda, create a new type containing all data required to
+call the function, and support it in the evaluator.  Because this type
+now also needs to store the function documentation, it is too big for
+Lisp_Misc; use a pseudovector instead.  That also has the nice benefit
+that we don't have to add special support to the garbage collector.
+
+Since the new type is user-visible, give it a predicate.
+
+Now we can easily support 'help-function-args' and 'func-arity'; add
+unit tests for these.
+#+END_QUOTE
