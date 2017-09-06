@@ -1,0 +1,221 @@
+* Packages
+ - Browsers
+   - chromium
+   - eww
+   - firefox
+   - google chrome
+   - torbrowser-launcher
+
+ - Dictionary
+   - goldendict
+
+ - Download
+   - aria2c
+   - wget
+
+ - Editors
+   - emacs
+   - libreoffice
+
+ - FTP
+   - filezilla
+
+ - Mail
+   - icedove
+   - gnus
+
+ - Music Players
+   - vlc
+
+ - Package Management
+   - apt-get
+   - aptitude
+   - pkgcheck
+   - synaptic
+
+ - Password Management
+   - keepassx
+   - gpg
+
+ - PDF
+   - evince
+
+ - System
+   - Apparmor
+     - apparmor
+     - apparmor-profiles
+     - apparmor-profiles-extra
+
+   - Cleaners
+     - deborphan
+     - debfoster
+
+   - Configs
+     - etckeeper
+
+   - Filesystem
+     - fcheck
+
+   - Fun
+     - sl
+
+   - Hardware
+     - smartmontools
+     - mcelog
+     - lm-sensors
+
+   - Logs
+     - logcheck
+
+   - memtest
+     - memtest86+
+       : badblocks -swo out /dev/sdX
+
+   - Packages
+     - debsums
+
+   - Remove
+     - safe-rm
+
+   - Security
+     - debian-security-support
+
+   - System monitoring
+     - molly-guard
+     - sysstat
+
+   - Unnattended upgrades
+     - apticron
+     - unnattended-upgrades
+
+ - Torrents
+   - eiskaltdcpp
+   - qbittorrent
+
+ - TV
+   - mythtv-status
+
+ - Video Players
+   - vlc
+   - mpv
+   - totem
+
+ - Video Recording
+   - ffmpeg
+   - obs-studio
+
+ - Virtual Machines
+   - libvirt
+   - lvm
+   - qemu
+   - virt-manager
+
+* Community
+ - Main
+   - [[http://dsa.debian.org][Debian System Administration]]
+   - [[http://ftp.ports.debian.org][FTP Ports]]
+   - [[http://ftp.debian.org][FTP]]
+   - [[http://onion.debian.org][Onion Services]]
+   - [[http://release.debian.org][Releases]]
+   - [[http://rtc.debian.org][VoIP]]
+   - [[http://timeline.debian.net][Releases Timeline]]
+   - [[http://www.debian.org][Main Page]]
+   - [[https://wiki.debian.org/][Wiki]]
+
+ - [[https://www.debian.org/international/Russian.ru.html][Русскоязычное сообщество]]
+   - [[https://wiki.debian.org/ru/FrontPage][Wiki RU]]
+   - [[https://vk.com/debiangroup][VK]]
+   - [[https://debianforum.ru/][Forum]]
+   - [[https://www.linux.org.ru/tag/debian][linux.org.ru TAG]]
+   - [[https://www.debian.org/support.ru.html][Support]]
+   - [[https://lists.debian.org/debian-russian/][Mailing Lists RU]]
+
+ - [[https://www.debian.org/distrib/packages][Packages]]
+   - [[http://security.debian.org][Security]]
+   - [[http://debug.mirrors.debian.org][Debug Symbols]]
+   - [[http://metadata.ftp-master.debian.org][FTP Master Metadata]]
+   - [[http://lintian.debian.org][Lintian]]
+   - [[http://bootstrap.debian.net][Bootstrap]]
+   - [[http://debdeltas.debian.net][Delta Updates]]
+   - [[http://mozilla.debian.net][Mozilla]]
+   - [[http://backports.debian.org][Packages Backports]]
+   - [[http://incoming.debian.org][Incoming]]
+   - [[http://incoming.ports.debian.org][Incoming Ports]]
+   - [[http://tracker.debian.org][Tracker]]
+   - [[http://www.ports.debian.org][Packages Ports]]
+   - [[https://www.debian.org/distrib/packages][Packages]]
+   - [[https://debtags.debian.org/search/][Tags]]
+   - [[https://www.debian.org/mirror/list][Worldwide mirror sites]]
+
+ - Developement
+   - [[https://anonscm.debian.org/cgit/][Git]]
+   - [[https://www.debian.org/doc/devel-manuals#policy][Developers Manuals]]
+   - [[http://piotrkosoft.net/pub/mirrors/debian-www/doc/packaging-manuals/debian-emacs-policy][Emacs Policy]]
+   - [[https://security-tracker.debian.org/tracker/][Security Bug Tracker]]
+   - [[http://sources.debian.net/patches/][Debian Sources]]
+
+ - Social
+   - [[http://people.debian.org][People]]
+   - [[http://lists.debian.org][Mailing Lists]]
+   - [[http://forums.debian.net][Forums]]
+   - [[https://wiki.debian.org/IRC][IRC Channels]]
+   - [[http://security-team.debian.org][Security Team]]
+
+ - News
+   - [[http://planet.debian.org/][Planet]]
+   - [[http://updo.debian.net/][Planet Upstream]]
+   - [[http://bits.debian.org][Bits]]
+   - [[http://micronews.debian.org][Micronews]]
+   - [[http://debconf16.debconf.org][Debconf]]
+
+ - [[https://ftp-master.debian.org/][ftp-master.debian.org]]
+   - [[https://ftp-master.debian.org/new.html][Debian NEW and BYHAND Packages]]
+   - [[https://wiki.debian.org/Teams/FTPMaster][Teams/FTPMaster - Debian Wiki]]
+
+ - Security
+   - [[https://www.debian.org/doc/manuals/securing-debian-howto/index.en.html][Securing Debian Manual]]
+
+* Debootstrap
+ - partitioning
+   #+BEGIN_EXAMPLE
+     └─sda3_crypt                  254:0    0 111.1G  0 crypt
+       ├─magnolia--vg-var-real     254:1    0   2.8G  0 lvm
+       │ ├─magnolia--vg-var        254:2    0   2.8G  0 lvm   /var
+       │ └─magnolia--vg-snapvar    254:4    0   2.8G  0 lvm
+       ├─magnolia--vg-snapvar-cow  254:3    0     1G  0 lvm
+       │ └─magnolia--vg-snapvar    254:4    0   2.8G  0 lvm
+       ├─magnolia--vg-swap_1       254:5    0   3.7G  0 lvm   [SWAP]
+       ├─magnolia--vg-root-real    254:6    0   952M  0 lvm
+       │ ├─magnolia--vg-root       254:7    0   952M  0 lvm   /
+       │ └─magnolia--vg-snaproot   254:9    0   952M  0 lvm
+       ├─magnolia--vg-snaproot-cow 254:8    0   956M  0 lvm
+       │ └─magnolia--vg-snaproot   254:9    0   952M  0 lvm
+       ├─magnolia--vg-usr-real     254:10   0  17.3G  0 lvm
+       │ ├─magnolia--vg-usr        254:11   0  17.3G  0 lvm   /usr
+       │ └─magnolia--vg-snapusr    254:13   0  17.3G  0 lvm
+       ├─magnolia--vg-snapusr-cow  254:12   0     1G  0 lvm
+       │ └─magnolia--vg-snapusr    254:13   0  17.3G  0 lvm
+       ├─magnolia--vg-home         254:14   0    20G  0 lvm   /home
+       ├─magnolia--vg-docker       254:15   0    14G  0 lvm   /var/lib/docker
+       ├─magnolia--vg-gnome        254:16   0     4G  0 lvm
+       └─magnolia--vg-opt          254:17   0     2G  0 lvm   /opt
+   #+END_EXAMPLE
+
+ - lilac mount
+   #+BEGIN_SRC shell
+     cryptsetup open /dev/sda5 encryptedlvm
+     mount /dev/mapper/lilac--vg-root /mnt
+     mount /dev/mapper/lilac--vg-var /mnt/var
+     mount /dev/mapper/lilac--vg-usr /mnt/usr
+     mount /dev/mapper/lilac--vg-opt /mnt/opt
+     mount /dev/mapper/lilac--vg-home /mnt/home
+     mount /dev/sda3 /mnt/boot
+     mount -t sysfs /sys /mnt/sys
+     mount -t proc none /mnt/proc
+     mount -o bind /dev /mnt/dev
+     chroot /mnt /bin/bash
+     export PS1="(chroot) $PS1"
+   #+END_SRC
+
+  - update-initramfs
+    : update-initramfs -u -k all

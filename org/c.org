@@ -1,0 +1,72 @@
+* Heap
+ - large pool of operating system memory
+ - used in dynamic memory allocation
+
+** Allocate memory on the heap
+ - the ~new~ keyword in C++
+ - the ~malloc~ in C
+
+ : int * myArray = new int 10;
+
+* Stack
+ - each process gets its own stack (assume single-threaded processes)
+ - LIFO, like the data structure
+ - contiguos block of memory (the process's address space)
+
+** Stack frames
+ - the stack consists of stack frames
+ - contains the parameters to a function, its local variables, and the
+   data necessary to recover the previous stack frame
+ - when a function is called, a frame for that function is *pushed*
+   onto the stack
+ - when the function is done, we pop the stack frame and return to the
+   caller
+ - contains *high-performance* memory
+ - usually *fixed* limits
+ - to clarify :: stack memory is high-performance in terms of
+		 ALLOCATION time, not ACCESS time
+
+ : int myArray[10];
+
+* Chip architecture and assembly language review
+** What is assembly
+ - assembly = machine instructions
+ - C is higher level language which gets translated into assembly by
+   the compiler
+ - key point :: assembly language tells the computer exactly what to do
+		and exactly HOW to do it
+ - C or C++ :: will say "allocate memory" or "perform addition" ~x += 1;~
+ - Assembly :: will say "put the byte from this address in memory into
+	       ~MOV EAX, x~ ~ADD EAX, 1~ this register" or "jump to
+	       this location in memory"
+
+** Registers
+- definition :: extremely high-performance memory located directly on
+		the chip
+
+*** General purpose registers
+ - EAX, EBX, ECX, EDX
+ - Used for performing operations on data
+
+*** Special purpose registers
+ - ESP: Stack pointer, points to the top of the stack. Manipulated by
+   PUSH, POP, etc
+ - EBP: Base pointer aka frame pointer.
+ - ESI and EDI: ESI = source instruction, EDI = destination instruction.
+
+* Assembly language calls
+** Can be of the form [opcode][dest], [source]
+Moves the value "1" into the EAX register
+ : MOV EAX, 1
+
+** Can be of the form [opcode][operand]
+ - jumps to and address in memory
+ - in this case the hex address is 0xDEADBEEF
+
+ : JMP 0xDEADBEEF
+
+** Stack-related mneumonic
+ - PUSH [register]
+ - POP [register]
+ - CALL [function]
+ - RET

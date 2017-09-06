@@ -1,0 +1,40 @@
+* Cheatsheet
+ - [[https://stackoverflow.com/questions/4110652/how-to-substitute-text-from-files-in-git-history][version control - How to substitute text from files in git history? - Stack Overflow]]
+   #+BEGIN_SRC shell
+     git filter-branch --tree-filter \
+         "find . -name '*.php' -exec sed -i -e \ 's/original/changed/g' {} \;"
+   #+END_SRC
+
+ - [[https://stackoverflow.com/questions/5816134/finding-a-git-commit-that-introduced-a-string-in-any-branch][Find a commit that introduced a string in any branch]]
+   : git log -S 'hello world' --source --all
+
+ - [[https://www.youtube.com/watch?v=Bo-8EfDpKxA][Remove a file from all git history - YouTube]]
+   : git filter-branch -f --index-filter 'git rm --cached --ignore-unmatch LICENSE.md' HEAD
+
+ - [[https://stackoverflow.com/questions/1651985/git-merge-with-repository-on-local-filesystem][gitosis - git-merge with repository on local filesystem - Stack Overflow]]
+   : git pull ../gitosis-admin-old/ master
+
+ - Subtree
+   : git subtree add --prefix <target_folder> <url> <branch/tag> --squash
+
+ - Keep the sub-project up to date
+   : git subtree pull --prefix <target_folder> <url> <branch/tag> --squash
+
+ - Find the symbolic ref matching a hash (sha-1)
+   : git ls-remote <url> | grep <sha-1>
+
+ - [[https://bitbucket.org/durdn/cfg/src/master/.gitconfig?at=master&fileviewer=file-view-default][Nicola Paolucci git aliases]]
+   : git sba <url> <destination-folder>
+
+ - Extract a project to subtree
+   : git subtree split --prefix <project> --branch <branch>
+   #+BEGIN_SRC shell
+     for file in $(ls -1 $1/); do
+	 git subtree split -P $1/$file -b $1/$file
+     done
+   #+END_SRC
+
+* Tutorials
+ - [[https://www.youtube.com/channel/UCshmCws1MijkZLMkPmOmzbQ][Dan Gitschooldude]]
+ - [[https://www.youtube.com/watch?v=8ET_gl1qAZ0][Advanced git Tutorial: Linus Torvalds - YouTube]]
+ - [[https://www.atlassian.com/git/tutorials/git-hooks/local-hooks][Git Hooks - Local hooks | Atlassian Git Tutorial]]
