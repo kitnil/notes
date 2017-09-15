@@ -1,0 +1,45 @@
+- Kill program using one port
+  : # fuser -k 8000/tcp
+
+- Limit memory usage for following commands (KB)
+  : ulimit -Sv 1000
+
+- Remove limit memory usage
+  : ulimit -Sv unlimited
+
+- Get full path of file
+  : readlink -f file.txt
+
+- Nice trace route
+  : mtr www.gnu.org
+
+- Find files by size (Bytes)
+  : find . -size 20c
+
+- Find files and process them one file by line
+  #+BEGIN_SRC shell
+    find . -exec echo {} \;
+    ./file1
+    ./file2
+    ./file3
+  #+END_SRC
+
+- Find files and process all of them in the same line
+  #+BEGIN_SRC shell
+    find . -exec echo {} \+
+    ./file1 ./file2 ./file3
+  #+END_SRC
+
+- Run command every time a file is modified
+  #+BEGIN_SRC shell
+    while inotifywait -e close_write document.tex
+    do
+        make
+    done
+  #+END_SRC
+
+- Spell and grammar check in Latex
+  : detex file.tex | diction -bs # Required packages: diction texlive-extra-utils
+
+- Create empty file of given size
+  : fallocate -l 1G test.img
