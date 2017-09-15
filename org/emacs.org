@@ -1,0 +1,5 @@
+- Save current (system) clipboard before replacing it with the Emacs's text
+  : (setq save-interprogram-paste-before-kill t)
+
+- Open file and close current buffer
+  : C-x C-v ffap-alternate-file
