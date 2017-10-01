@@ -70,3 +70,6 @@ Moves the value "1" into the EAX register
  - POP [register]
  - CALL [function]
  - RET
+* Compile and run
+ : echo '_Bool a;' | gcc -c -x c -
+ : echo $?
