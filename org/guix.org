@@ -1,0 +1,140 @@
+* Bugs
+
+  - [ ] GNU bug report logs - #27217 texlive is too big
+
+* Awesome
+
+** ng0
+   https://git.krosos.org
+
+** Alex Kost <alezost@gmail.com>
+   https://github.com/alezost/shepherd-config
+
+** David
+   https://git.dthompson.us/dotfiles.git/blob/HEAD:/dotfiles/.config/shepherd/init.scm
+
+** Christopher Baines <mail@cbaines.net> (aka Efraim)
+   https://gitlab.com/Efraim/guix/
+
+* Cheat sheet
+
+- Remove system generations
+  : (delete-generations* "/var/guix/profiles/system" '(134 135 136 137 138 139))
+
+- Switch system generation
+  : (switch-to-generation* "/var/guix/profiles/system" 133)
+
+- Grep
+  : 'guix package -A ^perl- | wc -l' 523. 'guix package -A ^perl- | xargs guix refresh -l' ~1500 packages
+
+- Manually failing package build
+  : (add-after 'compress-documentation 'stop (lambda _ #f))
+
+- [[file:bin/emacsmail::emacsclient%20-c%20--eval%20"(browse-url-mail%20\"$@\")"][Make share email in icecat with emacs]]
+
+* Guix packaging
+
+- [[shell:guix%20lint%20$PACKAGE][shell:guix lint $PACKAGE]]
+- [[shell:guix%20size%20$PACKAGE][shell:guix size $PACKAGE]]
+- [[shell:guix%20build%20--rounds%3D2%20$PACKAGE][shell:guix build --rounds=2 $PACKAGE]]
+- [[shell:git%20format-patch][shell:git format-patch]]
+- [[mailto:guix-patches@gnu.org]]
+- [[elisp:(writegood-grade-level)]]
+- [[elisp:(writegood-reading-ease)]]
+
+* How to use sneek on Gnunet IRC channels
+
+  #+BEGIN_EXAMPLE
+    <alice> Hi Guix
+    <sneek> alice, you have N message.
+    <sneek> alice, bob says: MESSAGE
+    <alice> sneek: later tell bob MESSAGE:
+    <sneek> Will do.
+  #+END_EXAMPLE
+
+* [[gnus:INBOX#87tw1zl0wy.fsf@bernoul.li][How to fix Org-mode tabs]]
+
+  #+begin_src emacs-lisp :tangle yes
+    (when (= source-tab-width 0)
+      (setq indent-tabs-mode nil))
+    #+end_src
+
+* [[gnus:INBOX#CALjrZwb16Cn1ygFYUhKDWdid1dYQabB6yB0p_eFu8YYf_00pOQ@mail.gmail.com][How to use Guix profiles]]
+
+  #+BEGIN_SRC shell
+    # 1) Install conda into a profile:
+    guix package --install=conda --profile=$HOME/guix_profiles/conda
+
+    # 2) Activate the profile:
+    source $HOME/guix_profiles/conda/etc/profile
+
+    # 3) Create an environment with conda and install biopython
+    conda create --name test-env biopython
+
+    # 4) Try to activate the environment (here's where it fails)
+    source activate test-env
+  #+END_SRC
+
+* How to mark patch in Emacs
+
+  Mark the entire patch in Emacs, then invoke "M-|", and type
+
+  #+BEGIN_SRC shell
+    patch -d /the/root/directory/of/the/project -pN
+  #+END_SRC
+
+  where N should be chosen by counting the slashes that you will want
+  patch to remove before looking for files relative to that root
+  directory.  For patches produced by "git diff" etc., N is typically 1.
+
+* Thinkpad Linux Kernel config
+
+  #+BEGIN_SRC scheme
+    (kernel-arguments (list "modprobe.blacklist=pcspkr" "quiet" "rhgb"
+                            "thinkpad_acpi.fan_control=1" "i195.modeset=1"))
+  #+END_SRC
+
+* guix upgrade exlude package
+
+  #+BEGIN_SRC shell
+    guix package -u . --do-no-upgrade=libreoffice
+  #+END_SRC
+
+* check if guix corrupted
+  #+BEGIN_EXAMPLE
+    <rekado_> solene: if you want to check that the store isn’t corrupt and repair
+              it, use “sudo -E guix gc --verify=repair,contents”  [16:30]
+  #+END_EXAMPLE
+
+* Static networking service
+  #+BEGIN_SRC scheme
+    (services (cons* …
+                     (static-networking-service "enp6s4f0"
+                                                "141.80.181.40"
+                                                #:netmask "255.255.255.0"
+                                                #:gateway "141.80.181.1")
+                     (static-networking-service "enp0s8"
+                                                "192.168.0.1"
+                                                #:netmask "255.255.255.0")
+                     …
+                     %base-services))
+
+  #+END_SRC
+
+* Guix on foreign distroes
+
+- Archlinux: https://aur.archlinux.org/packages/guix/
+- Gentoo: https://packages.gentoo.org/packages/sys-apps/guix
+- Debian: from past discussion and on request from Whonix iirc it is
+  currently not possible due to Debian Packaging Standards (expected
+  package behavior) or something along the lines, see guix-devel
+  archives.
+- Fedora: https://copr.fedorainfracloud.org/coprs/lantw44/guix/
+- Slackware: https://slackbuilds.org/repository/14.2/system/guix/ is
+  on 0.12, needs an update. Any slacker up for that task?  Otherwise,
+  ping the maintainer: > Maintained by: Hunter Sezen
+
+* GuixOps
+
+- Ganeti like guixops
+  https://grnet.github.io/ganetimgr/
