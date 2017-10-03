@@ -138,3 +138,11 @@
 
 - Ganeti like guixops
   https://grnet.github.io/ganetimgr/
+* Static vs dynamic binding
+
+Most of the time in Guix we favor static binding: it makes sure that
+programs work out of the box, regardless of what happens to be already
+installed on your system, and that the program will behave the same on
+all systems since its behavior does not depend on external state.
+There are exceptions where we want dynamic binding, for instance for
+plugins or optional/soft dependencies.
