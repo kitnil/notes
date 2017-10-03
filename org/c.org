@@ -73,3 +73,8 @@ Moves the value "1" into the EAX register
 * Compile and run
  : echo '_Bool a;' | gcc -c -x c -
  : echo $?
+
+* Debug
+
+- Compile flags
+  : -g3 -O0
