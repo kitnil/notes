@@ -1,0 +1,41 @@
+* Google
+
+- Related results (related websites)
+  : related:google.com
+
+- File type
+  : filetype:[pdf,doc, …]
+
+- Search operators
+  : +word
+  : -word
+
+- Words in order
+  : "SEARCH PHRASE"
+
+- Asterisk
+  : "SEARCH * PHRASE"
+
+- Results nearby
+  : PHRASE nearby
+
+- Image search
+  In Chromium right click on image OR through Google Images website.
+
+- Search within sites
+  : PHRASE site:phoronix.com
+  : PHRASE site:.edu
+
+- Stock prices
+  Company ticker OR stock symbol.
+  : aapl
+  : goog
+
+- Title search (title of web pages)
+  : intitle:TERM
+
+  At least 3 keywords.
+  : allintitle:PHRASE
+
+- URL search
+  : allinurl:PHRASE
