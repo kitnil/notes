@@ -141,6 +141,7 @@
 
 - Ganeti like guixops
   https://grnet.github.io/ganetimgr/
+
 * Static vs dynamic binding
 
 Most of the time in Guix we favor static binding: it makes sure that
@@ -149,3 +150,12 @@ installed on your system, and that the program will behave the same on
 all systems since its behavior does not depend on external state.
 There are exceptions where we want dynamic binding, for instance for
 plugins or optional/soft dependencies.
+- [[https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=877019][Debian Bug report logs - #877019 ITP: nix -- Purely functional package manager]]
+
+* ng0 plans
+
+<ng0> upcoming (as far as I remembered the list): Services for murmurd,
+      apache, mantis, buildbot, finishing my tlsdate service, and packages for
+      mantis + buildbot. there's more I think.
+
+* TODO ERROR: ivy-bibtex not such file
