@@ -1,0 +1,27 @@
+- r to reply
+- m to mention author
+- f to favourite
+- b to boost
+- enter to open status
+- p to open author's profile
+- up or k to move up in the list
+- down or j to move down in the list
+- 1-9 to focus a status in one of the columns
+- n to focus the compose textarea
+- alt+n to start a brand new toot
+- backspace to navigate back
+
+* Add navigational hotkeys
+
+The key g followed by:
+
+- s: start
+- h: home
+- n: notifications
+- l: local timeline
+- t: federated timeline
+- f: favourites
+- u: own profile
+- p: pinned toots
+- b: blocked users
+- m: muted users
