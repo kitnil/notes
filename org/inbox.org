@@ -119,3 +119,32 @@
 ** [2017-10-06 Fri 07:47] [[gnus:INBOX#87fubazdn8.fsf@gmail.com][Email from Chris Marusich: Re: Should I upgrade root user]] by [[mailto:cmmarusich@gmail.com][Chris Marusich]]
 ** [2017-10-06 Fri 07:48] [[gnus:INBOX#87a82c7vmf.fsf_-_@escafil][Email from Ian Dunn: Re: {ELPA} New package: Captai]] by [[mailto:dunni@gnu.org][Ian Dunn]]
 ** [2017-10-09 Mon 19:56] [[gnus:INBOX#20170918215906.2c32b61d@cbaines.net][Email from Christopher Baines: Building things other than Gui]] by [[mailto:mail@cbaines.net][Christopher Baines]]
+** [2017-11-03 Fri 19:50] [[gnus:nndoc+ephemeral:bug#29137#CAJ=RwfZbfzsg-TrFQkU48E6Mza0+PWDhTokGdzK9sXAReC7Ukw@mail.gmail.com][Email from David Thompson: Re: Interactive programming wi]] by [[mailto:dthompson2@worcester.edu][David Thompson]]
+
+ #+BEGIN_SRC scheme
+   (use-modules (chickadee)
+                (chickadee math vector)
+                (chickadee render sprite)
+                (chickadee render texture)
+                (system repl coop-server))
+
+   (define sprite #f)
+   (define repl #f)
+
+   (define (load)
+     (set! sprite (load-image "images/chickadee.png"))
+     (set! repl (spawn-coop-repl-server)))
+
+   (define (draw alpha)
+     (draw-sprite sprite (vec2 256.0 176.0)))
+
+   (define (update dt)
+     (poll-coop-repl-server repl))
+
+   (add-hook! load-hook load)
+   (add-hook! update-hook update)
+   (add-hook! draw-hook draw)
+   (add-hook! quit-hook abort-game)
+
+   (run-game)
+ #+END_SRC
