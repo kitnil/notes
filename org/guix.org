@@ -16,6 +16,9 @@
 ** Christopher Baines <mail@cbaines.net> (aka Efraim)
    https://gitlab.com/Efraim/guix/
 
+** Ludovic (aka civodul)
+http://web.fdn.fr/~lcourtes/
+
 ** Andy Wingo <wingo@igalia.com>
    https://gitlab.com/users/wingo/
 
@@ -159,3 +162,166 @@ plugins or optional/soft dependencies.
       mantis + buildbot. there's more I think.
 
 * TODO ERROR: ivy-bibtex not such file
+* TODO (debbugs-gnu-bugs 28004)
+* TODO (debbugs-gnu-bugs 28743)
+* TODO (debbugs-gnu-bugs 28772)
+
+* Build system monad
+
+  #+BEGIN_SRC scheme
+    (use-modules (gnu)
+                 (guix store))
+
+    ;; Deriviation
+    (define d
+      (run-with-store (open-connection) (operating-system-derivation %system-magnolia-bare)))
+
+    ;; Build deriviation
+    (define s (open-connection))
+
+    (build-derivations s (list d))
+  #+END_SRC
+
+* Guile trap (breakpoint)
+
+  #+BEGIN_SRC scheme
+    (use-modules (system vm trap-state))
+
+    (add-trap-at-procedure-call! strip-mount-point)
+  #+END_SRC
+
+* Stop stripping mount point if BTRFS
+  :LOGBOOK:
+  CLOCK: [2017-10-30 Mon 04:34]--[2017-10-30 Mon 04:59] =>  0:25
+  CLOCK: [2017-10-30 Mon 02:57]--[2017-10-30 Mon 03:22] =>  0:25
+  CLOCK: [2017-10-30 Mon 02:04]--[2017-10-30 Mon 02:29] =>  0:25
+  :END:
+
+[[file:~/src/guix/gnu/system.scm::(store-mount-point%20boot-parameters-store-mount-point)][Working file]]
+
+* report lint no fallback
+
+#+BEGIN_EXAMPLE
+  natsu@magnolia ~/src/guix$ ./pre-inst-env guix lint emacs-helm-make
+  substitute: updating list of substitutes from 'https://berlin.guixsd.org'... 100.0%
+  substitute: updating list of substitutes from 'https://mirror.hydra.gnu.org'... 100.0%
+  substitute: updating list of substitutes from 'https://hydra.gnu.org'... 100.0%
+  substitute: updating list of substitutes from 'https://berlin.guixsd.org'... 100.0%
+  substitute: updating list of substitutes from 'https://mirror.hydra.gnu.org'... 100.0%
+  substitute: updating list of substitutes from 'https://hydra.gnu.org'... 100.0%
+  fetching path `/gnu/store/15cbhk91mzvvmmpb9vjh3ylgivaxs89c-git-2.14.3.tar.xz'...
+  fetching path `/gnu/store/2xlz8v9ikrmr6pjnn6p4d0z51xywsx32-git-manpages-2.14.3.tar.xz'...
+  fetching path `/gnu/store/m04s88sd7731k94yjk20wrr4v8wc43ar-perl-gssapi-0.28'...
+  fetching path `/gnu/store/ikyw97ss19lp5y9060l02bxw2wp1bfwj-perl-term-readkey-2.37'...
+  fetching path `/gnu/store/589mq574illssy636ci66agcc3vp75zz-subversion-1.8.19.tar.bz2'...
+  fetching path `/gnu/store/xc1c8gwf8jc4ih4ivr32y010brxfj7ik-swig-3.0.12'...
+  Downloading https://berlin.guixsd.org/nar/2xlz8v9ikrmr6pjnn6p4d0z51xywsx32-git-manpages-2.14.3.tar.xz...
+  Downloading https://berlin.guixsd.org/nar/15cbhk91mzvvmmpb9vjh3ylgivaxs89c-git-2.14.3.tar.xz...
+  Downloading https://berlin.guixsd.org/nar/gzip/m04s88sd7731k94yjk20wrr4v8wc43ar-perl-gssapi-0.28...
+  Downloading https://berlin.guixsd.org/nar/gzip/ikyw97ss19lp5y9060l02bxw2wp1bfwj-perl-term-readkey-2.37...
+  Downloading https://berlin.guixsd.org/nar/589mq574illssy636ci66agcc3vp75zz-subversion-1.8.19.tar.bz2...
+  Downloading https://berlin.guixsd.org/nar/gzip/xc1c8gwf8jc4ih4ivr32y010brxfj7ik-swig-3.0.12...
+   perl-gssapi-0.28  48KiB            9.4MiB/s 00:00 [######              ]  33.4%guix substitute: error: download from 'https://berlin.guixsd.org/nar/589mq574illssy636ci66agcc3vp75zz-subversion-1.8.19.tar.bz2' failed: 404, "Not Found"
+  fetching path `/gnu/store/589mq574illssy636ci66agcc3vp75zz-subversion-1.8.19.tar.bz2' failed with exit code 1
+  fetching path `/gnu/store/6y7ky7g5nvmzr9bqghhnnxvlm0vjmwr6-scons-2.5.1'...
+  killing process 14872
+  killing process 14889
+  killing process 14857
+  killing process 14856
+  killing process 14852
+  killing process 14851
+  gnu/packages/emacs.scm:3902:4: emacs-helm-make@0.1.0-1.786104a: failed to create derivation: some substitutes for the outputs of derivation `/gnu/store/7cx09jdhqr9a996v931paijrh566l8an-subversion-1.8.19.tar.bz2.drv' failed (usually happens due to networking issues); try `--fallback' to build derivation from source 
+  fetching CVE database for 2017...
+#+END_EXAMPLE
+
+* Weather
+
+#+BEGIN_SRC scheme
+  (use-modules (guix scripts substitute)
+               (guix build utils)
+               (web request)
+               (web uri)
+               (srfi srfi-1)
+               (gnutls))
+
+  (define base-url
+    (or (getenv "URL")
+       "https://mirror.hydra.gnu.org"))
+
+  (define base-uri
+    (string->uri base-url))
+
+  (define index.html
+    (build-request
+     (string->uri (string-append base-url
+                                 "/nix-cache-info"
+                                 ;; "/eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee.narinfo"
+                                 ;; "/yihvhxv3xyyvl1m2cy1lnf1lyi9h76fk.narinfo"
+                                 ))))
+
+  (define http-multiple-get
+    (@@ (guix scripts substitute) http-multiple-get))
+
+  ;; (set-log-level! 5)
+  ;; (set-log-procedure! (lambda (level message)
+  ;;                       (display message)))
+
+  (let ((requests (make-list 100000 index.html)))
+    (http-multiple-get base-uri
+                       (lambda (req resp port result)
+                         (dump-port port (%make-void-port "w"))
+                         (cons 'x result))
+                       '()
+                       requests))
+#+END_SRC
+
+* Search path directory
+#+BEGIN_SRC scheme
+  ;; If you want to match a regular file instead of a directory (the
+  ;; default), you must write:
+
+  (search-path-specification
+   (variable "DRMAA_LIBRARY_PATH")
+   (files '("lib/libdrmaa.so"))
+   (file-type 'regular))
+
+  ;; This will match all the lib/libdrmaa.so files found in the environment.
+#+END_SRC
+
+* Unzip initial RAM disk
+
+#+BEGIN_SRC shell
+  gunzip -C < INITRD | cpio -tv
+#+END_SRC
+
+* guix-daemon from master
+
+#+BEGIN_SRC shell
+  sudo -E ./pre-inst-env guix-daemon …
+#+END_SRC
+
+* doc
+
+- [[https://hal.inria.fr/hal-01580582/document][Code Staging in GNU Guix]]
+- [[http://www.nongnu.org/geiser/][Geiser]]
+- [[https://alezost.github.io/guix.el/doc.html][Emacs Guix]]
+
+* Fix sendmail_path=/usr/sbin/sendmail
+* Laptop
+1) Avoid ones with hybrid dual graphics ie intel/nvidia aka optimus
+2) Avoid anything realtek
+3) If its got fancy Dolby sound or quad speakers they wont work on Debian
+4) Always check reviews for PWM flickering on screen dimming if you
+have sensitive eyes
+* network-manager-service-type
+
+#+BEGIN_SRC scheme
+  (network-manager-service-type
+   config =>
+   (network-manager-configuration
+    (inherit config)
+    (vpn-plugins (list (specification->package+output
+			"network-manager-openvpn")))))
+#+END_SRC
+success = false; } else { //Lock texture if( !gFooTexture.lockTexture() ) { printf( "Unable to lock Foo' texture!\n" ); }
+

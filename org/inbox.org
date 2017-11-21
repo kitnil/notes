@@ -148,3 +148,32 @@
 
    (run-game)
  #+END_SRC
+** Libpurple Bitlbee [[gnus:INBOX#20171004080427.13668-1-sleep_walker@gnu.org][Email from Tomáš Čech: {bug#28698} {PATCH} gnu: Enabl]] by [[mailto:sleep_walker@gnu.org][Tomáš Čech]]
+** [2017-11-14 Tue 00:57] [[gnus:INBOX#87vak1l11m.fsf@nicolasgoaziou.fr][Email from Nicolas Goaziou: Re: {O} function for inserting]] by [[mailto:mail@nicolasgoaziou.fr][Nicolas Goaziou]]
+** Replicant FOSDEM 2017
+
+   - [[gnus:INBOX#1510570651.1176.2.camel@paulk.fr][Email from Paul Kocialkowski: {Replicant} FOSDEM Hardware En]] by
+     [[mailto:contact@paulk.fr][Paul Kocialkowski]]
+** [2017-11-18 Sat 21:40] [[gnus:nndoc%2Bephemeral:bug#27271#fake%2Bnone%2Bnndoc%2Bephemeral:bug#27271%2B1][Email from bug: Status: {PATCH 0/4} Catch collisions]] by [[mailto:27271@debbugs.gnu.org][bug]]
+** Emacs with athena graphical toolkit
+
+   [[gnus:INBOX#87po8gwjpk.fsf@gmail.com][Email from Mekeor Melire: Re: error running emacs instal]] by [[mailto:mekeor.melire@gmail.com][Mekeor Melire]]
+
+   #+BEGIN_SRC scheme
+     (define-public own-emacs
+       (package
+         (inherit emacs)
+         (name "emacs")
+         (synopsis "The extensible, customizable, self-documenting text editor
+         with athena toolkit" )
+         (build-system gnu-build-system)
+         (inputs `(
+                   ("inotify-tools" ,inotify-tools)
+                   ("libxaw" ,libxaw)
+                   ,@(alist-delete "gtk+" (package-inputs emacs))))
+         (arguments `(
+                      #:configure-flags '("--with-x-toolkit=athena")
+                                        ,@(package-arguments emacs)))))
+   #+END_SRC
+** TODO GitHub highlight-escape-sequences
+   [2017-11-19 Sun 01:10] [[gnus:INBOX#dgutov/highlight-escape-sequences/issues/6/345467554@github.com][Email from Dmitry Gutov: Re: {dgutov/highlight-escape-s]] by [[mailto:notifications@github.com][Dmitry Gutov]]
