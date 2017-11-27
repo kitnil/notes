@@ -42,6 +42,9 @@ http://web.fdn.fr/~lcourtes/
   - Create a profile and export that recursively
     : guix archive --export --recursive $(readlink -f /project/.guix-profile) | gzip --stdout - > my-profile.nar.gz
 
+  - Multi monitor
+    : xrandr --output DP-2-2 --auto
+
   - [[file:bin/emacsmail::emacsclient%20-c%20--eval%20"(browse-url-mail%20\"$@\")"][Make share email in icecat with emacs]]
 
 * Guix packaging
@@ -417,3 +420,36 @@ success = false; } else { //Lock texture if( !gFooTexture.lockTexture() ) { prin
 * FSF
 
   - http://www.fsfla.org/ikiwiki/selibre/linux-libre/
+
+* How to check service configuration serialize
+
+  #+BEGIN_SRC scheme
+    (use-modules (guix derivations)
+                 (guix store))
+
+    (define-gexp-compiler (repository-cgit-configuration-compiler
+                           (configuration <repository-cgit-configuration>) system target)
+      (text-file* "test" (repository-cgit-configuration)))
+
+    (define wi-repo
+      (repository-cgit-configuration
+       (url "http//cgit.localhost/hello")))
+
+    (define wi-conf
+      ;; TODO:
+      ;; (cgit-configuration (project-list '("a/b/foo.git" "c/bar.git" "baz.git")))
+
+      (cgit-configuration))
+
+    (define (wi-build)
+      (build-derivations
+       (open-connection)
+       (list (run-with-store (open-connection) wi-conf))))
+
+    (define (wi-build-check)
+      (build-derivations
+       (open-connection)
+       (list (run-with-store (open-connection) wi-conf))
+       (build-mode check)))
+  #+END_SRC
+
