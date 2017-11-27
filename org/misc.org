@@ -8,3 +8,15 @@ find a logo designer before announcing them?
       -oG /dev/stdout 2>/dev/null | grep '70/open' | awk '{print $2}' | xargs -I
       '{}' sh -c "curl -m 3 -s 'gopher://{}' > /dev/null && echo '{}'"
   #+END_SRC
+
+* Dovecot
+
+  #+BEGIN_SRC shell
+    doveadm -c CONFIG search -A mailbox INBOX
+    doveadm -c CONFIG search -u 'natsu' mailbox '*' since 1d unseen
+  #+END_SRC
+
+  #+BEGIN_SRC shell
+    doveadm -c /gnu/store/5aj29xi3dznwdsf2g1jddgx51nxqy9kh-dovecot.conf fetch body mailbox-guid 08ad6405a8bffe591a340000d09efc50 uid UID
+    doveadm -c /gnu/store/5aj29xi3dznwdsf2g1jddgx51nxqy9kh-dovecot.conf expunge mailbox INBOX from MAIL_ADDRESS
+  #+END_SRC
