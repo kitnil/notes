@@ -1,0 +1,10 @@
+Why do I need to give flashy names to security vulnerabilities and
+find a logo designer before announcing them?
+
+* Scan all Internet
+
+  #+BEGIN_SRC shell
+    sudo nmap -Pn -sS -p 70 -iR 0 --open --min-parallelism=4096 -T5
+      -oG /dev/stdout 2>/dev/null | grep '70/open' | awk '{print $2}' | xargs -I
+      '{}' sh -c "curl -m 3 -s 'gopher://{}' > /dev/null && echo '{}'"
+  #+END_SRC
