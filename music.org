@@ -1,3 +1,5 @@
+https://www.metal-archives.com/
+
 - /srv/music/GARNiDELiA - Mirai-nziMTeijTZw.mkv
 - /srv/music/M_V 1NB(원앤비) - STALKER(스토커) (섹시 Sexy Ver.)-IST2JgPOlUI.mkv
 - /srv/music/Kizumonogatari [AMV] Hope Of Morning (Lyrics)-HOAQaPy5Hgs.mkv
@@ -76,6 +78,30 @@ uint32_t *val = (uint32_t *) value; means "declare val as a pointer to
 a 32-bit unsigned integer that points to an integer whose address is
 the same as the address of the char pointed to by value"
 
+** Keep PC busy
+
+   #+BEGIN_SRC c
+     #include <pthread.h>
+
+     static void *
+     foo (void *data)
+     {
+       while (1);
+     }
+
+     int main ()
+     {
+       pthread_t thr;
+
+       for (int i = 0; i < 31; i++)
+         pthread_create (&thr, NULL, foo, NULL);
+
+       while (1);
+     }
+
+     // gcc -o busy this-file.c -pthread
+   #+END_SRC
+
 * Little schemer
 
   - /italic/ :: variables and the names of primitive operations
@@ -97,3 +123,7 @@ the same as the address of the char pointed to by value"
 * Emacs
 
   - [[https://www.reddit.com/r/emacs/comments/52lnad/from_helm_to_ivy_a_user_perspective/d7pj9mz/][Setup ivy move,copy,rename]]
+
+* Pastebin
+
+  - http://sprunge.us/

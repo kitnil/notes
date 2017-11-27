@@ -16,3 +16,34 @@
 ** Mark H Weaver <mhw@netris.org>
    - https://sbp.io/
    - http://www.informatimago.com/linux/emacs-on-user-mode-linux.html
+
+* Gnus
+
+** Sent mail
+
+> The Gnus manual (Section 5.5, Archived Messages) explains how to archive
+> messages sent by me locally, in a "classic" mail kind of group; that is,
+> nnfolder, nnml or something of the sort.  But I would like to store them
+[ 4 more citation lines. Click/Enter to show. ]
+> on the IMAP server, in the Sent folder the server so handily provides.
+> GUI user agents such as Sylpheed and Claws seem to know how to do this,
+> can Gnus be told to do it?
+>
+> If not, I can hack it by always Bcc'ing myself and having a filter on
+> the server to direct those copies to the folder.  But I would rather not
+> have to.
+
+You can use gnus-message-archive-group to store messages in imap folder.
+
+I use three Sent folders: one for usenet posts, second for email to
+mailing lists and third for all other (standard emails).
+
+'(gnus-message-archive-group 
+   (quote (("^[^:]+$" "nnimap:Posted") 
+   ("^nnimap:Lists/" "nnimap:Posted-List") 
+   (".*" "nnimap:Sent"))))
+
+BTW I use "server less" dovecot to access Maildir folders via IMAP:
+
+'(gnus-secondary-select-methods 
+   (nnimap "" (nnimap-stream shell) (imap-shell-program "~/bin/imap")))

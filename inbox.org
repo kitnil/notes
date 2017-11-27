@@ -191,3 +191,24 @@
 ** [2017-12-18 Mon 02:26] [[gnus:nndoc+ephemeral:bug#28659#87r2uih3lx.fsf@gmail.com][Email from Maxim Cournoyer: bug#28659: v0.13: guix pull github arhives non determenistic]] by [[mailto:maxim.cournoyer@gmail.com][Maxim Cournoyer]]
 ** [2017-12-20 Wed 19:22] [[gnus:INBOX#877etkxufy.fsf@gnu.org][Email from Ludovic Courtès: Re: Dualbooting with guixsd no]] by [[mailto:ludo@gnu.org][Ludovic Courtès]]
 ** [2018-01-06 Sat 03:24] [[gnus:INBOX#20180105170034.6243-1-ludo@gnu.org][Email from Ludovic Courtès: {bug#29995} {PATCH 0/5} Publish build logs]] by [[mailto:ludo@gnu.org][Ludovic Courtès]]
+** [2018-01-06 Sat 22:25] [[gnus:INBOX#20171216201700.23564-1-mail@cbaines.net][Email from Christopher Baines: {bug#29741} {PATCH 1/2} gnu: httpd]] by [[mailto:mail@cbaines.net][Christopher Baines]]
+** [2018-01-06 Sat 23:03] [[gnus:INBOX#87r2sg3qxx.fsf@gnu.org][Email from Ludovic Courtès: bug#29255: "Profile collision]] by [[mailto:ludo@gnu.org][Ludovic Courtès]]
+** [2018-01-06 Sat 23:04] [[gnus:INBOX#87y3lretyh.fsf@gmail.com][Email from Alex Kost: {bug#29582} {PATCH} emacs- prerfix]] by [[mailto:alezost@gmail.com][Alex Kost]]
+** [[gnus:INBOX#87vag2wopo.fsf@gnu.org][Email from Mike Gerwitz: Running IceCat in a container]] by [[mailto:mtg@gnu.org][Mike Gerwitz]]
+
+   #+BEGIN_SRC sh
+   guix environment \
+        --container \
+        --network \
+        -r "$gc_root" \
+        --share=/tmp/.X11-unix/ \
+        --expose=/etc/machine-id \
+        --share=$HOME/.mozilla/ \
+        --share=$HOME/.cache/mozilla/ \
+        --share=$HOME/.Xauthority \
+        --share=$HOME/Downloads/icecat-container/=$HOME/Downloads/ \
+        --ad-hoc icecat coreutils
+        -- \
+        env DISPLAY="$DISPLAY" icecat "$@"
+   #+END_SRC
+** TODO [2018-01-16 Tue 11:47] [[gnus:INBOX#87shbbqiq5.fsf@gnu.org][Email from Ludovic Courtès: Re: {bug#30084} {PATCH} gnu: Add urho3d.]] by [[mailto:ludo@gnu.org][Ludovic Courtès]]
