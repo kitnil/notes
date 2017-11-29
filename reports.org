@@ -1,0 +1,63 @@
+* emacs-json-reformat
+
+https://github.com/gongo/json-reformat/issues/new
+
+#+BEGIN_SRC markdown
+  Hello @gongo,
+
+  `json-encode-string` **fails** `json-reformat-test:string-to-string`
+  `(should (string= "\"\\u2661\"" (json-reformat:string-to-string "\u2661")))`.
+
+
+  ``` emacs-lisp
+  (emacs-version)
+  "GNU Emacs 25.3.1 (x86_64-pc-linux-gnu, GTK+ Version 3.22.21)
+   of 2017-11-02"
+
+  ;; GuixSD version
+  (insert (shell-command-to-string "git -C ~/src/guix rev-parse origin/master"))
+  6df274073a15f33fcced306c068af9e84b96b8b9
+  nil
+
+
+  (require 'json)
+
+  (json-encode-string "\u2661")
+  "\"♡\""
+
+  (string= "\"\\u2661\"" (json-encode-string "\u2661"))
+  nil
+  ```
+
+
+  ``` emacs-lisp
+  (emacs-version)
+  "GNU Emacs 24.3.1 (x86_64-pc-linux-gnu, GTK+ Version 3.10.8)
+   of 2017-09-19 on lcy01-35, modified by Debian"
+
+
+  (insert-file-contents "/etc/os-release")
+  ("/etc/os-release" 269)
+  NAME="Trisquel GNU/Linux"
+  VERSION="7.0, Belenos"
+  ID=trisquel
+  ID_LIKE=debian
+  PRETTY_NAME="Trisquel GNU/Linux Belenos (7.0)"
+  VERSION_ID="7.0"
+  HOME_URL="https://trisquel.info/"
+  SUPPORT_URL="https://trisquel.info/wiki"
+  BUG_REPORT_URL="https://trisquel.info/project/issues"
+
+
+  (require 'json)
+
+  (json-encode-string "\u2661")
+  "\"\\u2661\""
+
+  (string= "\"\\u2661\"" (json-encode-string "\u2661"))
+  t
+  ```
+
+  Thanks,
+  @wigust.
+#+END_SRC

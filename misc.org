@@ -24,3 +24,7 @@ find a logo designer before announcing them?
 * Disk
 
   : dd if=/dev/sda bs=1M | pv | dd of=/dev/sdc bs=1M
+
+* Git
+
+  : git archive --prefix=$(git describe)/ HEAD | xz -9 > $(git describe).tar.xz
