@@ -31,6 +31,18 @@
 - Manually start GNOME Wayland
   : XDG_SESSION_TYPE=wayland dbus-run-session gnome-session
 
+- https://git.savannah.nongnu.org/cgit/
+- https://git.savannah.gnu.org/cgit/
+
+- https://directory.fsf.org
+- https://www.fsf.org/licensing/
+- https://www.defectivebydesign.org/
+- https://www.fsf.org/resources/hw/endorsement/respects-your-freedom
+- https://www.gnu.org/philosophy/open-source-misses-the-point.html
+
+- https://12starsmedia.com/video-production/how-to-download-archive-your-entire-youtube-library
+- https://www.google.com/takeout/#custom:youtube
+
 * Windows offline share
 
 Create a block device
@@ -74,3 +86,14 @@ the same as the address of the char pointed to by value"
 * Git
 
   - [[https://mikegerwitz.com/papers/git-horror-story#automate][A Git Horror Story: Repository Integrity With Signed Commits]]
+
+* TooSmart
+
+  - roguelike наоборот
+  - должен
+    - посмотреть в определенную сторону определенное время
+    - сказать глупую фразу
+
+* Emacs
+
+  - [[https://www.reddit.com/r/emacs/comments/52lnad/from_helm_to_ivy_a_user_perspective/d7pj9mz/][Setup ivy move,copy,rename]]

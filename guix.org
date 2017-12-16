@@ -39,6 +39,9 @@ http://web.fdn.fr/~lcourtes/
   - Graph a file
     : guix graph -e '(load "FILE")' | dot -Tps > OUTPUT_FILE.ps
 
+  - Create a profile and export that recursively
+    : guix archive --export --recursive $(readlink -f /project/.guix-profile) | gzip --stdout - > my-profile.nar.gz
+
   - [[file:bin/emacsmail::emacsclient%20-c%20--eval%20"(browse-url-mail%20\"$@\")"][Make share email in icecat with emacs]]
 
 * Guix packaging

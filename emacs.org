@@ -1,3 +1,10 @@
+- Get all agenda TODOs programmatically
+  #+BEGIN_SRC emacs-lisp
+    (org-map-entries '(cons (nth 4 (org-heading-components))
+                            (list (org-get-deadline-time nil)))
+                     "/!TODO" 'agenda)
+  #+END_SRC
+
 - Save current (system) clipboard before replacing it with the Emacs's text
   : (setq save-interprogram-paste-before-kill t)
 
