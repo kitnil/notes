@@ -185,6 +185,12 @@ plugins or optional/soft dependencies.
     (build-derivations s (list d))
   #+END_SRC
 
+* Build from Scheme expression
+
+  #+BEGIN_SRC sh
+    guix build -e '(@@ (gnu packages commencement) glibc-utf8-locales-final)'
+  #+END_SRC
+
 * Guile trap (breakpoint)
 
   #+BEGIN_SRC scheme
@@ -327,4 +333,84 @@ have sensitive eyes
 			"network-manager-openvpn")))))
 #+END_SRC
 success = false; } else { //Lock texture if( !gFooTexture.lockTexture() ) { printf( "Unable to lock Foo' texture!\n" ); }
+* GuixSD custom kernel
 
+  [[gnus:INBOX#877etk6xbu.fsf@fastmail.com][Email from Marius Bakke: Re: How to customize the kerne]] by [[mailto:mbakke@fastmail.com][Marius Bakke]]
+
+  #+BEGIN_SRC scheme
+    (define-module (my packages)
+      #:use-module (gnu packages linux))
+
+    (define kernel-config
+      (string-append (dirname (current-filename)) "/kernel.config"))
+
+    (define-public my-kernel
+      (package
+        (inherit linux-libre)
+        (native-inputs
+         `(("kconfig" ,kernel-config)
+           ,@(alist-delete "kconfig"
+                           (package-native-inputs linux-libre))))))
+
+    (use-modules (my packages))
+    (operating-system
+      [...]
+      (kernel my-kernel)
+  #+END_SRC
+
+  This lets me keep the kernel .config in version control along with the
+  system configuration.
+
+  > I am new to compiling the Linux kernel, so it is doubly difficult to
+  > learn how I should do it using Guix.  Any tips would be greatly
+  > appreciated.  I'm guessing one tip might be, "Try building a few Linux
+  > kernels on a more normal distribution, not using Guix, a few times to
+  > get the hang of doing it the 'traditional' way first."  I have not
+  > really done that yet.
+
+  Working with custom kernels in Guix is simpler than in many other
+  distros IMO.  Suppose you have a patched Linux-Libre tree, then you
+  could add e.g.:
+
+    (source "/path/to/custom/kernel")
+
+  to the package declaration above.  Be aware that rolling back to the
+  previous generation might not work if your computer implodes ;-)
+
+  For starting out, I would recommend copying the GuixSD default config[*]
+  to /your/kernel/tree/.config and run:
+
+    guix environment linux-libre --ad-hoc ncurses -- make nconfig
+
+  This will present a nice ncurses-based interface for configuring the
+  kernel.  Note that if the kernel major+minor is higher than the .config
+  (see top of file), you should run `make oldconfig` first which gives an
+  interactive "wizard" that walks you through all the new options.
+
+  Good luck! :-)
+
+  [*] You can also start from `make defconfig` if you feel adventurous.
+
+* Guix deployment
+
+  - [[https://github.com/BIMSBbioinfo/puppet-bimsb-guix][BIMSBbioinfo/puppet-bimsb-guix]] :: Puppet module for deploying Guix
+
+* Guix additional packages
+
+  - [[https://github.com/BIMSBbioinfo/guix-bimsb-nonfree][BIMSBbioinfo/guix-bimsb-nonfree]] :: GNU Guix package definitions
+       for proprietary software, or software with unclear licenses.
+
+  - [[https://github.com/BIMSBbioinfo/guix-bimsb][BIMSBbioinfo/guix-bimsb]] :: Packages for GNU Guix that have not yet
+       or will not be submitted upstream for various reasons
+
+  - [[https://github.com/UMCUGenetics/guix-additions][UMCUGenetics/guix-additions]] :: This repository contains additional
+       packages for GNU Guix to support the software in the pipelines
+       developed at the Cuppen research group.
+
+  - [[https://github.com/gds-attic/govuk-guix][gds-attic/govuk-guix]] :: Package, service and system definitions
+       using GNU Guix for software and systems related to
+       GOV.UK. Personal project.
+
+* FSF
+
+  - http://www.fsfla.org/ikiwiki/selibre/linux-libre/
