@@ -453,3 +453,40 @@ success = false; } else { //Lock texture if( !gFooTexture.lockTexture() ) { prin
        (build-mode check)))
   #+END_SRC
 
+* mcron
+
+  #+BEGIN_SRC scheme
+    (define (backup-home user)
+      #~(let ((borg (string-append #$borg "/bin/borg"))
+              (home (format #f "/home/~a" #$user)))
+          (system*
+           borg "--verbose" "create"
+           "--exclude-caches"
+           "--exclude" (format #f "~a/.cache/*" home)
+           "--stats" "--list"
+           "/mnt/borg::{hostname}-{utcnow}"
+           home)
+          (system*
+           borg "--verbose" "prune"
+           "--list"
+           "--prefix" "{hostname}-"
+           "--keep-within=1w" "--keep-daily=30" "--keep-monthly=6"
+           "/mnt/borg")))
+
+    ;; test like
+    ;; ,use (guix monad-repl)
+    ;; ,enter-store-monad
+    ;; (gexp->script "test" (backup-home "alex"))
+    ;; ;; and note what the derivation produces. That's the script to run.
+    ;; (mlet %store-monad ((script (gexp->script "test" (backup-home "alex"))))
+    ;;       (built-derivations (list script)))
+    ;; then, run the script to do a manual backup.
+
+    (define (backup-home-job user)
+      #~(job '(next-hour '(18))
+             #$(backup-home user)
+             #:user #$user))
+
+    ;; in your (services ...)
+    (mcron-service (list (backup-home-job "your-user-home-dir-name")))
+  #+END_SRC
