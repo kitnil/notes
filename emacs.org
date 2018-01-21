@@ -47,3 +47,6 @@ BTW I use "server less" dovecot to access Maildir folders via IMAP:
 
 '(gnus-secondary-select-methods 
    (nnimap "" (nnimap-stream shell) (imap-shell-program "~/bin/imap")))
+
+* Org
+  - [[http://kitchingroup.cheme.cmu.edu/blog/2014/02/04/Literate-programming-example-with-Fortran-and-org-mode/][Literate programing example]]
