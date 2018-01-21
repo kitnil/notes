@@ -48,5 +48,9 @@ BTW I use "server less" dovecot to access Maildir folders via IMAP:
 '(gnus-secondary-select-methods 
    (nnimap "" (nnimap-stream shell) (imap-shell-program "~/bin/imap")))
 
+** Gnus nnimap missing messages
+   C-u M-g in the Group buffer with the problematic group selected.
+   See <https://lists.gnu.org/archive/html/emacs-devel/2017-12/msg00624.html>.
+
 * Org
   - [[http://kitchingroup.cheme.cmu.edu/blog/2014/02/04/Literate-programming-example-with-Fortran-and-org-mode/][Literate programing example]]
