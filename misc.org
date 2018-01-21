@@ -26,3 +26,7 @@ find a logo designer before announcing them?
   : dd if=/dev/sda bs=1M | pv | dd of=/dev/sdc bs=1M
 
 * JPEG and PNG to ASCII jp2a
+
+* Scheme
+
+  - [[https://ecraven.github.io/r7rs-benchmarks/][r7s7 benchmarks]]
