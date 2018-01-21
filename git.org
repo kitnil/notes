@@ -1,38 +1,49 @@
 * Cheatsheet
- - [[https://stackoverflow.com/questions/4110652/how-to-substitute-text-from-files-in-git-history][version control - How to substitute text from files in git history? - Stack Overflow]]
-   #+BEGIN_SRC shell
-     git filter-branch --tree-filter \
-         "find . -name '*.php' -exec sed -i -e \ 's/original/changed/g' {} \;"
-   #+END_SRC
 
- - [[https://stackoverflow.com/questions/5816134/finding-a-git-commit-that-introduced-a-string-in-any-branch][Find a commit that introduced a string in any branch]]
-   : git log -S 'hello world' --source --all
+  - [[https://stackoverflow.com/questions/4110652/how-to-substitute-text-from-files-in-git-history][version control - How to substitute text from files in git history? - Stack Overflow]]
+    #+BEGIN_SRC shell
+      git filter-branch --tree-filter \
+          "find . -name '*.php' -exec sed -i -e \ 's/original/changed/g' {} \;"
+    #+END_SRC
 
- - [[https://www.youtube.com/watch?v=Bo-8EfDpKxA][Remove a file from all git history - YouTube]]
-   : git filter-branch -f --index-filter 'git rm --cached --ignore-unmatch LICENSE.md' HEAD
+  - [[https://stackoverflow.com/questions/5816134/finding-a-git-commit-that-introduced-a-string-in-any-branch][Find a commit that introduced a string in any branch]]
+    : git log -S 'hello world' --source --all
 
- - [[https://stackoverflow.com/questions/1651985/git-merge-with-repository-on-local-filesystem][gitosis - git-merge with repository on local filesystem - Stack Overflow]]
-   : git pull ../gitosis-admin-old/ master
+  - [[https://www.youtube.com/watch?v=Bo-8EfDpKxA][Remove a file from all git history - YouTube]]
+    : git filter-branch -f --index-filter 'git rm --cached --ignore-unmatch LICENSE.md' HEAD
 
- - Subtree
-   : git subtree add --prefix <target_folder> <url> <branch/tag> --squash
+  - [[https://stackoverflow.com/questions/1651985/git-merge-with-repository-on-local-filesystem][gitosis - git-merge with repository on local filesystem - Stack Overflow]]
+    : git pull ../gitosis-admin-old/ master
 
- - Keep the sub-project up to date
-   : git subtree pull --prefix <target_folder> <url> <branch/tag> --squash
+  - Subtree
+    : git subtree add --prefix <target_folder> <url> <branch/tag> --squash
 
- - Find the symbolic ref matching a hash (sha-1)
-   : git ls-remote <url> | grep <sha-1>
+  - Keep the sub-project up to date
+    : git subtree pull --prefix <target_folder> <url> <branch/tag> --squash
 
- - [[https://bitbucket.org/durdn/cfg/src/master/.gitconfig?at=master&fileviewer=file-view-default][Nicola Paolucci git aliases]]
-   : git sba <url> <destination-folder>
+  - Find the symbolic ref matching a hash (sha-1)
+    : git ls-remote <url> | grep <sha-1>
 
- - Extract a project to subtree
-   : git subtree split --prefix <project> --branch <branch>
-   #+BEGIN_SRC shell
-     for file in $(ls -1 $1/); do
-	 git subtree split -P $1/$file -b $1/$file
-     done
-   #+END_SRC
+  - [[https://bitbucket.org/durdn/cfg/src/master/.gitconfig?at=master&fileviewer=file-view-default][Nicola Paolucci git aliases]]
+    : git sba <url> <destination-folder>
+
+  - Extract a project to subtree
+    : git subtree split --prefix <project> --branch <branch>
+    #+BEGIN_SRC shell
+      for file in $(ls -1 $1/); do
+          git subtree split -P $1/$file -b $1/$file
+      done
+    #+END_SRC
+
+  - Whether <commit> (originally committed to emacs-26) has been
+    merged into master or any other local branch
+    : git branch --contains <commit>
+
+  - In order to list remote tracking branches add option '-r'
+    : git branch -r --contains <commit>
+
+  - Archive repository
+    : git archive --prefix=$(git describe)/ HEAD | xz -9 > $(git describe).tar.xz
 
 * Tutorials
  - [[https://www.youtube.com/channel/UCshmCws1MijkZLMkPmOmzbQ][Dan Gitschooldude]]
