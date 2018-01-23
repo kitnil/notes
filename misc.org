@@ -1,3 +1,5 @@
+https://www.youtube.com/watch?v=wHH4mbPliyc
+
 Why do I need to give flashy names to security vulnerabilities and
 find a logo designer before announcing them?
 
@@ -30,3 +32,107 @@ find a logo designer before announcing them?
 * Scheme
 
   - [[https://ecraven.github.io/r7rs-benchmarks/][r7s7 benchmarks]]
+
+: ,youtube.com,melpa.org,searx.tk,pagure.io,nixos.org,gitlab.com,github.com,fedoramagazine.org
+
+- [[https://repology.org/][Repology, the packaging hub]]
+
+- Manually start GNOME Wayland
+  : XDG_SESSION_TYPE=wayland dbus-run-session gnome-session
+
+- https://git.savannah.nongnu.org/cgit/
+- https://git.savannah.gnu.org/cgit/
+
+- https://directory.fsf.org
+- https://www.fsf.org/licensing/
+- https://www.defectivebydesign.org/
+- https://www.fsf.org/resources/hw/endorsement/respects-your-freedom
+- https://www.gnu.org/philosophy/open-source-misses-the-point.html
+
+- https://12starsmedia.com/video-production/how-to-download-archive-your-entire-youtube-library
+- https://www.google.com/takeout/#custom:youtube
+
+* Windows offline share
+
+Create a block device
+
+#+BEGIN_SRC sh
+  fallocate -l 1G drive.img
+#+END_SRC
+
+Boot virtual machine and partition it
+
+#+BEGIN_SRC sh
+  qemu-system-x86_64 -enable-kvm -m 4096 -cpu host -daemonize -smp 2 -net none -hda /tmp/windows-7.qcow2 -hdb drive.img 
+#+END_SRC
+
+Get partition offset
+
+#+BEGIN_SRC sh
+  fdisk -l /tmp/drive.img
+#+END_SRC
+
+Mount
+
+#+BEGIN_SRC sh
+  mount -t vfat -o loop,offset=$((128*512)) drive.img /mnt
+#+END_SRC
+
+
+* C
+
+uint32_t *val = (uint32_t *) value; means "declare val as a pointer to
+a 32-bit unsigned integer that points to an integer whose address is
+the same as the address of the char pointed to by value"
+
+** Keep PC busy
+
+   #+BEGIN_SRC c
+     #include <pthread.h>
+
+     static void *
+     foo (void *data)
+     {
+       while (1);
+     }
+
+     int main ()
+     {
+       pthread_t thr;
+
+       for (int i = 0; i < 31; i++)
+         pthread_create (&thr, NULL, foo, NULL);
+
+       while (1);
+     }
+
+     // gcc -o busy this-file.c -pthread
+   #+END_SRC
+
+* Little schemer
+
+  - /italic/ :: variables and the names of primitive operations
+  - sans serif :: basic data, including numbers and representations of
+                  thruth and falsehood
+  - *boldface* :: keywords, i.e., define, lambda, cond, else, and, quote
+  - typewriter :: ignore until chapter 10
+* TooSmart
+
+  - roguelike наоборот
+  - должен
+    - посмотреть в определенную сторону определенное время
+    - сказать глупую фразу
+
+* Emacs
+
+  - [[https://www.reddit.com/r/emacs/comments/52lnad/from_helm_to_ivy_a_user_perspective/d7pj9mz/][Setup ivy move,copy,rename]]
+
+* Pastebin
+
+  - http://sprunge.us/
+
+* Firefox
+
+  gfx.xrender.enabled=false in IceCat/GuixSD.  Enabling it made the
+  IceCat/GuixSD performance about the same as Firefox/Debian (which
+  comes w/ gfx.xrender.enabled=true).
