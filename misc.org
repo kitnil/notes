@@ -78,7 +78,6 @@ Mount
   mount -t vfat -o loop,offset=$((128*512)) drive.img /mnt
 #+END_SRC
 
-
 * C
 
 uint32_t *val = (uint32_t *) value; means "declare val as a pointer to
