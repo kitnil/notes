@@ -136,3 +136,9 @@ the same as the address of the char pointed to by value"
   gfx.xrender.enabled=false in IceCat/GuixSD.  Enabling it made the
   IceCat/GuixSD performance about the same as Firefox/Debian (which
   comes w/ gfx.xrender.enabled=true).
+
+* Replicant Andoid
+
+  In Android, starting from 6.0, there is a new feature called
+  safe-mode that can be triggered by keeping then volume up and volume
+  down buttons pressed during boot.
