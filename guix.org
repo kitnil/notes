@@ -54,6 +54,9 @@
     See <https://lists.gnu.org/archive/html/help-guix/2018-01/msg00080.html>.
     : guix build --no-substitutes --no-grafts --keep-going $(guix package -A | cut -f1,2 --output-delimiter=@) --sources=transitive
 
+  - Github mutated archives
+    See <https://notabug.org/apteryx/fiasco>
+
 * Guix packaging
 
 - [[shell:guix%20lint%20$PACKAGE][shell:guix lint $PACKAGE]]
