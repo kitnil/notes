@@ -141,3 +141,11 @@ the same as the address of the char pointed to by value"
   In Android, starting from 6.0, there is a new feature called
   safe-mode that can be triggered by keeping then volume up and volume
   down buttons pressed during boot.
+
+* Hydra
+
+  - URL examples
+    #+BEGIN_SRC emacs-lisp
+      (mapcar (lambda (query) (concat "https://hydra.gnu.org/" query))
+              '("queue" "status" "machines" "evals" "all" "build/2454846"))
+    #+END_SRC
