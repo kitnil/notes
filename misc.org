@@ -3,6 +3,10 @@ https://www.youtube.com/watch?v=wHH4mbPliyc
 Why do I need to give flashy names to security vulnerabilities and
 find a logo designer before announcing them?
 
+* Articles
+
+  - http://www.shakthimaan.com/downloads.html#gpg-in-10-minutes
+
 * Streams
 
 '("https://www.youtube.com/channel/UCK-d8Z08ElRz0zgKiAla5fg"
@@ -162,3 +166,30 @@ the same as the address of the char pointed to by value"
   - http://mltframework.org
   - http://shotcut.org
   - gneve
+* TODO geiser-connection-timeout
+                  <wigust> dustyweb: geiser-connection-timeout is interesting,
+                           let me know how it goes please :-)
+                         * dustyweb setq's and waits :)
+                <dustyweb> wigust: that fixed it!  [01:17]
+                <dustyweb> wigust: I set it to 100000 ... 100 seconds :)
+                  <wigust> dustyweb: cool, great to know about this variable,
+                           thx  [01:18]
+                <dustyweb> wigust: so you could also supply a higher value:
+                       *** catonano (~user@151.45.37.164) has joined channel
+                           #guix  [01:19]
+                <dustyweb> geiser-eval--send/wait takes a timeout value
+                <dustyweb> wigust: so you could possibly set something higher
+                           ;)
+                <dustyweb> but maybe you shouldn't :)
+                <dustyweb> I dunno :)
+                  <wigust> dustyweb: Maybe for guix-all-available-packages
+                           this should be greater by default
+                <dustyweb> wigust: yes  [01:20]
+                <dustyweb> probably!
+                <dustyweb> wigust: I'm on an old machine but I'm not sure if
+                           it's my profile making it slow
+                <dustyweb> or if just that guix has so many packages now..
+                <dustyweb> wigust: so what would happen if one of the synopsis
+                           fields had #t or #f in them? ;)  [01:21]
+                <dustyweb> would the regex replace it?
+
