@@ -149,3 +149,9 @@ the same as the address of the char pointed to by value"
       (mapcar (lambda (query) (concat "https://hydra.gnu.org/" query))
               '("queue" "status" "machines" "evals" "all" "build/2454846"))
     #+END_SRC
+
+* Video editors
+
+  - http://mltframework.org
+  - http://shotcut.org
+  - gneve
