@@ -196,4 +196,19 @@ the same as the address of the char pointed to by value"
                 <dustyweb> wigust: so what would happen if one of the synopsis
                            fields had #t or #f in them? ;)  [01:21]
                 <dustyweb> would the regex replace it?
+* Grub
 
+# Message-Id: <20180119100415.fe7d979f7c505a5e19dbce82@laposte.net>
+
+# /boot/grub/grub.cfg
+menuentry "Linux" {
+	insmod all_video
+	echo "Loading Linux..."
+	search --no-floppy -u --set=root 20f4d726-6cec-4f00-b941-bab03fdff981
+	linux /boot/vmlinuz root=/dev/sda3 ro
+}
+menuentry "Windows" {
+	echo "Loading Windows..."
+	search --no-floppy -u --set=root 7E75-0EC2
+	chainloader /EFI/Microsoft/Boot/bootmgfw.efi
+}
