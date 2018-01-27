@@ -181,6 +181,7 @@ plugins or optional/soft dependencies.
       mantis + buildbot. there's more I think.
 
 * TODO ERROR: ivy-bibtex not such file
+* TODO [[https://lists.gnu.org/archive/html/guix-devel/2015-08/msg00258.html][guix: git: Support shallow git clones if a tag is available]]
 * TODO (debbugs-gnu-bugs 28004)
 * TODO (debbugs-gnu-bugs 28743)
 * TODO (debbugs-gnu-bugs 28772)
@@ -499,4 +500,13 @@ success = false; } else { //Lock texture if( !gFooTexture.lockTexture() ) { prin
 
     ;; in your (services ...)
     (mcron-service (list (backup-home-job "your-user-home-dir-name")))
+  #+END_SRC
+
+* Reproducibility
+
+  #+BEGIN_SRC shell
+    wget -q -O - https://mirror.hydra.gnu.org/guix/nar/gzip/7drfxfiwif436bw908iy6jm3myrinn4m-xfce4-session-4.12.0 | gunzip -c | guix archive -x xfsession1
+    wget -q -O - https://berlin.guixsd.org/nar/gzip/7drfxfiwif436bw908iy6jm3myrinn4m-xfce4-session-4.12.0 | gunzip | guix archive -x xfsession2
+    diff -ru --no-dereference xfsession[12]
+    diffoscope xfsession[12]/share/icons/hicolor/icon-theme.cache
   #+END_SRC
