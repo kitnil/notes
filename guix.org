@@ -510,3 +510,26 @@ success = false; } else { //Lock texture if( !gFooTexture.lockTexture() ) { prin
     diff -ru --no-dereference xfsession[12]
     diffoscope xfsession[12]/share/icons/hicolor/icon-theme.cache
   #+END_SRC
+
+* Gexp
+#+BEGIN_EXAMPLE
+       <wigust> Hello Guix, How to take a look onto a file produced
+                by copy-file in Gexp?
+                E.g. https://git.savannah.gnu.org/cgit/guix.git/tree/gnu/services/messaging.scm?h=master#n662
+                                                             [22:07]
+       <wigust> Could I get to it with `guix gc`?            [22:09]
+       <wigust> If I build a system with prosody service.
+            ,*** ng0 (~ng0@gateway/tor-sasl/ng0) has quit: Quit:
+                Alexa, when is the end of world?             [22:15]
+          <atw> wigust: I believe you'll want to use
+                gexp->derivation, then "run" the derivation. Ludo
+                gave me some help with this here:
+                https://lists.gnu.org/archive/html/help-guix/2018-01/msg00058.html
+          <atw> Make a note of the output directory, then find the
+                file produced inside there                   [22:16]
+          <atw> I /think/ that's it, but I trip up often with gexps
+                :)
+            ,*** ng0 (~ng0@gateway/tor-sasl/ng0) has joined channel
+                #guix                                        [22:17]
+       <wigust> atw: Thank you!                              [22:19]
+#+END_EXAMPLE
