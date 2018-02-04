@@ -57,6 +57,9 @@
   - Github mutated archives
     See <https://notabug.org/apteryx/fiasco>
 
+  - Force fsck after reboot
+    : touch /forcefsck
+
 * Guix packaging
 
 - [[shell:guix%20lint%20$PACKAGE][shell:guix lint $PACKAGE]]

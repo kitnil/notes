@@ -214,3 +214,6 @@ menuentry "Windows" {
 	search --no-floppy -u --set=root 7E75-0EC2
 	chainloader /EFI/Microsoft/Boot/bootmgfw.efi
 }
+* Make
+  - Print the commands that are being run
+    : make V=1
