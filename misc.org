@@ -1,27 +1,42 @@
-https://www.youtube.com/watch?v=wHH4mbPliyc
+ - dd with progress bar
+   : dd if=/dev/sda bs=1M | pv | dd of=/dev/sdc bs=1M
 
-Why do I need to give flashy names to security vulnerabilities and
-find a logo designer before announcing them?
+ - Convert JPEG and PNG to ASCII
+   : guix package --install jp2a
 
-https://stockfishchess.org/
+ - Manually start GNOME Wayland
+   : XDG_SESSION_TYPE=wayland dbus-run-session gnome-session
+
+ - Print the commands that are being run during =make=
+   : make V=1
 
 * Articles
-
   - http://www.shakthimaan.com/downloads.html#gpg-in-10-minutes
 
 * Sites
-
   - https://www.bibsonomy.org/
+  - [[https://repology.org/][Repology, the packaging hub]]
+  - [[https://ecraven.github.io/r7rs-benchmarks/][r7s7 benchmarks]]
+  - https://git.savannah.nongnu.org/cgit/
+  - https://git.savannah.gnu.org/cgit/
+  - https://directory.fsf.org
+  - https://www.fsf.org/licensing/
+  - https://www.defectivebydesign.org/
+  - https://www.fsf.org/resources/hw/endorsement/respects-your-freedom
+  - https://www.gnu.org/philosophy/open-source-misses-the-point.html
+  - https://12starsmedia.com/video-production/how-to-download-archive-your-entire-youtube-library
+  - https://www.google.com/takeout/#custom:youtube
+  - https://stockfishchess.org/
+** Pastebin
+   - http://sprunge.us/
 
 * Streams
-
-'("https://www.youtube.com/channel/UCK-d8Z08ElRz0zgKiAla5fg"
-  "https://www.youtube.com/user/gameglaz"
-  "https://www.youtube.com/user/igroglaz"
-  "https://www.youtube.com/user/streamguild")
+  - https://www.youtube.com/channel/UCK-d8Z08ElRz0zgKiAla5fg
+  - https://www.youtube.com/user/gameglaz
+  - https://www.youtube.com/user/igroglaz
+  - https://www.youtube.com/user/streamguild
 
 * Scan all Internet
-
   #+BEGIN_SRC shell
     sudo nmap -Pn -sS -p 70 -iR 0 --open --min-parallelism=4096 -T5
       -oG /dev/stdout 2>/dev/null | grep '70/open' | awk '{print $2}' | xargs -I
@@ -29,71 +44,44 @@ https://stockfishchess.org/
   #+END_SRC
 
 * Dovecot
-
   #+BEGIN_SRC shell
     doveadm -c CONFIG search -A mailbox INBOX
     doveadm -c CONFIG search -u 'natsu' mailbox '*' since 1d unseen
   #+END_SRC
 
   #+BEGIN_SRC shell
-    doveadm -c /gnu/store/5aj29xi3dznwdsf2g1jddgx51nxqy9kh-dovecot.conf fetch body mailbox-guid 08ad6405a8bffe591a340000d09efc50 uid UID
-    doveadm -c /gnu/store/5aj29xi3dznwdsf2g1jddgx51nxqy9kh-dovecot.conf expunge mailbox INBOX from MAIL_ADDRESS
+    doveadm -c /gnu/store/…-dovecot.conf fetch body\
+            mailbox-guid 08ad6405a8bffe591a340000d09efc50 uid UID
+    doveadm -c /gnu/store/…-dovecot.conf expunge\
+            mailbox INBOX from MAIL_ADDRESS
   #+END_SRC
-
-* Disk
-
-  : dd if=/dev/sda bs=1M | pv | dd of=/dev/sdc bs=1M
-
-* JPEG and PNG to ASCII jp2a
-
-* Scheme
-
-  - [[https://ecraven.github.io/r7rs-benchmarks/][r7s7 benchmarks]]
-
-: ,youtube.com,melpa.org,searx.tk,pagure.io,nixos.org,gitlab.com,github.com,fedoramagazine.org
-
-- [[https://repology.org/][Repology, the packaging hub]]
-
-- Manually start GNOME Wayland
-  : XDG_SESSION_TYPE=wayland dbus-run-session gnome-session
-
-- https://git.savannah.nongnu.org/cgit/
-- https://git.savannah.gnu.org/cgit/
-
-- https://directory.fsf.org
-- https://www.fsf.org/licensing/
-- https://www.defectivebydesign.org/
-- https://www.fsf.org/resources/hw/endorsement/respects-your-freedom
-- https://www.gnu.org/philosophy/open-source-misses-the-point.html
-
-- https://12starsmedia.com/video-production/how-to-download-archive-your-entire-youtube-library
-- https://www.google.com/takeout/#custom:youtube
 
 * Windows offline share
 
-Create a block device
+  Create a block device
 
-#+BEGIN_SRC sh
-  fallocate -l 1G drive.img
-#+END_SRC
+  #+BEGIN_SRC sh
+    fallocate -l 1G drive.img
+  #+END_SRC
 
-Boot virtual machine and partition it
+  Boot virtual machine and partition it
 
-#+BEGIN_SRC sh
-  qemu-system-x86_64 -enable-kvm -m 4096 -cpu host -daemonize -smp 2 -net none -hda /tmp/windows-7.qcow2 -hdb drive.img 
-#+END_SRC
+  #+BEGIN_SRC sh
+    qemu-system-x86_64 -enable-kvm -m 4096 -cpu host -daemonize -smp 2\
+                       -net none -hda /tmp/windows-7.qcow2 -hdb drive.img
+  #+END_SRC
 
-Get partition offset
+  Get partition offset
 
-#+BEGIN_SRC sh
-  fdisk -l /tmp/drive.img
-#+END_SRC
+  #+BEGIN_SRC sh
+    fdisk -l /tmp/drive.img
+  #+END_SRC
 
-Mount
+  Mount
 
-#+BEGIN_SRC sh
-  mount -t vfat -o loop,offset=$((128*512)) drive.img /mnt
-#+END_SRC
+  #+BEGIN_SRC sh
+    mount -t vfat -o loop,offset=$((128*512)) drive.img /mnt
+  #+END_SRC
 
 * C
 
@@ -125,42 +113,17 @@ the same as the address of the char pointed to by value"
      // gcc -o busy this-file.c -pthread
    #+END_SRC
 
-* Little schemer
-
-  - /italic/ :: variables and the names of primitive operations
-  - sans serif :: basic data, including numbers and representations of
-                  thruth and falsehood
-  - *boldface* :: keywords, i.e., define, lambda, cond, else, and, quote
-  - typewriter :: ignore until chapter 10
-* TooSmart
-
-  - roguelike наоборот
-  - должен
-    - посмотреть в определенную сторону определенное время
-    - сказать глупую фразу
-
-* Emacs
-
-  - [[https://www.reddit.com/r/emacs/comments/52lnad/from_helm_to_ivy_a_user_perspective/d7pj9mz/][Setup ivy move,copy,rename]]
-
-* Pastebin
-
-  - http://sprunge.us/
-
 * Firefox
-
-  gfx.xrender.enabled=false in IceCat/GuixSD.  Enabling it made the
+  =gfx.xrender.enabled=false= in IceCat/GuixSD.  Enabling it made the
   IceCat/GuixSD performance about the same as Firefox/Debian (which
-  comes w/ gfx.xrender.enabled=true).
+  comes w/ =gfx.xrender.enabled=true=).
 
 * Replicant Andoid
-
   In Android, starting from 6.0, there is a new feature called
   safe-mode that can be triggered by keeping then volume up and volume
   down buttons pressed during boot.
 
 * Hydra
-
   - URL examples
     #+BEGIN_SRC emacs-lisp
       (mapcar (lambda (query) (concat "https://hydra.gnu.org/" query))
@@ -168,52 +131,52 @@ the same as the address of the char pointed to by value"
     #+END_SRC
 
 * Video editors
-
   - http://mltframework.org
   - http://shotcut.org
   - gneve
+
 * TODO geiser-connection-timeout
-                  <wigust> dustyweb: geiser-connection-timeout is interesting,
-                           let me know how it goes please :-)
-                         * dustyweb setq's and waits :)
-                <dustyweb> wigust: that fixed it!  [01:17]
-                <dustyweb> wigust: I set it to 100000 ... 100 seconds :)
-                  <wigust> dustyweb: cool, great to know about this variable,
-                           thx  [01:18]
-                <dustyweb> wigust: so you could also supply a higher value:
-                       *** catonano (~user@151.45.37.164) has joined channel
-                           #guix  [01:19]
-                <dustyweb> geiser-eval--send/wait takes a timeout value
-                <dustyweb> wigust: so you could possibly set something higher
-                           ;)
-                <dustyweb> but maybe you shouldn't :)
-                <dustyweb> I dunno :)
-                  <wigust> dustyweb: Maybe for guix-all-available-packages
-                           this should be greater by default
-                <dustyweb> wigust: yes  [01:20]
-                <dustyweb> probably!
-                <dustyweb> wigust: I'm on an old machine but I'm not sure if
-                           it's my profile making it slow
-                <dustyweb> or if just that guix has so many packages now..
-                <dustyweb> wigust: so what would happen if one of the synopsis
-                           fields had #t or #f in them? ;)  [01:21]
-                <dustyweb> would the regex replace it?
+  #+BEGIN_EXAMPLE
+      <wigust> dustyweb: geiser-connection-timeout is interesting,
+               let me know how it goes please :-)
+             ,* dustyweb setq's and waits :)
+    <dustyweb> wigust: that fixed it!  [01:17]
+    <dustyweb> wigust: I set it to 100000 ... 100 seconds :)
+      <wigust> dustyweb: cool, great to know about this variable,
+               thx  [01:18]
+    <dustyweb> wigust: so you could also supply a higher value:
+           ,*** catonano (~user@151.45.37.164) has joined channel
+               #guix  [01:19]
+    <dustyweb> geiser-eval--send/wait takes a timeout value
+    <dustyweb> wigust: so you could possibly set something higher
+               ;)
+    <dustyweb> but maybe you shouldn't :)
+    <dustyweb> I dunno :)
+      <wigust> dustyweb: Maybe for guix-all-available-packages
+               this should be greater by default
+    <dustyweb> wigust: yes  [01:20]
+    <dustyweb> probably!
+    <dustyweb> wigust: I'm on an old machine but I'm not sure if
+               it's my profile making it slow
+    <dustyweb> or if just that guix has so many packages now..
+    <dustyweb> wigust: so what would happen if one of the synopsis
+               fields had #t or #f in them? ;)  [01:21]
+    <dustyweb> would the regex replace it?
+  #+END_EXAMPLE
+
 * Grub
-
-# Message-Id: <20180119100415.fe7d979f7c505a5e19dbce82@laposte.net>
-
-# /boot/grub/grub.cfg
-menuentry "Linux" {
-	insmod all_video
-	echo "Loading Linux..."
-	search --no-floppy -u --set=root 20f4d726-6cec-4f00-b941-bab03fdff981
-	linux /boot/vmlinuz root=/dev/sda3 ro
-}
-menuentry "Windows" {
-	echo "Loading Windows..."
-	search --no-floppy -u --set=root 7E75-0EC2
-	chainloader /EFI/Microsoft/Boot/bootmgfw.efi
-}
-* Make
-  - Print the commands that are being run
-    : make V=1
+  Message-Id: <20180119100415.fe7d979f7c505a5e19dbce82@laposte.net>
+  file:/boot/grub/grub.cfg
+  #+BEGIN_EXAMPLE
+    menuentry "Linux" {
+            insmod all_video
+            echo "Loading Linux..."
+            search --no-floppy -u --set=root 20f4d726-6cec-4f00-b941-bab03fdff981
+            linux /boot/vmlinuz root=/dev/sda3 ro
+    }
+    menuentry "Windows" {
+            echo "Loading Windows..."
+            search --no-floppy -u --set=root 7E75-0EC2
+            chainloader /EFI/Microsoft/Boot/bootmgfw.efi
+    }
+  #+END_EXAMPLE
