@@ -10,6 +10,9 @@
  - Print the commands that are being run during =make=
    : make V=1
 
+ - Time conversion
+   : date -d 'TZ="US/Eastern" 9am tomorrow'
+
 * Articles
   - http://www.shakthimaan.com/downloads.html#gpg-in-10-minutes
 
@@ -190,3 +193,10 @@ the same as the address of the char pointed to by value"
 ** Mirrors
    - http://mirror.reismil.ch/gnu/
    - https://mirror.cyber-perikarp.eu/gnu/
+
+* Libraries
+  - http://libgen.io
+  - https://libraries.io/
+
+* Testing software
+  - https://systemundertest.org/xterm/

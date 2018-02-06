@@ -588,3 +588,11 @@ success = false; } else { //Lock texture if( !gFooTexture.lockTexture() ) { prin
 
   - notify on GUIX_PACKAGE_PATH
   - notify on failing package
+
+* Importers
+  - https://gitlab.com/htgoebel/guix-import-debian
+
+* Hydra
+  - https://hydra.gnu.org/status
+  - https://hydra.gnu.org/all
+  - https://hydra.gnu.org/queue
