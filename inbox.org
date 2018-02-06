@@ -214,3 +214,56 @@
 ** TODO [2018-01-16 Tue 11:47] [[gnus:INBOX#87shbbqiq5.fsf@gnu.org][Email from Ludovic Courtès: Re: {bug#30084} {PATCH} gnu: Add urho3d.]] by [[mailto:ludo@gnu.org][Ludovic Courtès]]
 ** [2018-01-21 Sun 19:42] [[gnus:INBOX#20171211173102.6279-1-tomi.ollila@iki.fi][Email from Tomi Ollila: {PATCH} make notmuch release archive reproducible]] by [[mailto:tomi.ollila@iki.fi][Tomi Ollila]]
 ** [2018-02-04 Sun 15:05] [[gnus:INBOX#87bmh5o8ux.fsf@librem.i-did-not-set--mail-host-address--so-tickle-me][Email from Alex ter Weele: Defining shepherd user service]] by [[mailto:alex.ter.weele@gmail.com][Alex ter Weele]]
+** [2018-02-06 Tue 07:12] [[gnus:INBOX#878tckvfro.fsf@mdc-berlin.de][Email from Ricardo Wurmus: Re: {PATCH} Add SELinux policy for guix-daemon.]] by [[mailto:ricardo.wurmus@mdc-berlin.de][Ricardo Wurmus]]
+
+   https://people.redhat.com/duffy/selinux/selinux-coloring-book_A4-Stapled.pdf
+
+   But I *really* don’t recommend it for learning SELinux.  Half of
+   the book doesn’t even apply to common SELinux installations, and
+   the bit that *does* apply really isn’t thorough enough.  All I
+   took away from it was that a dog shouldn’t eat cat food (and
+   that’s enforced by an angry penguin).
+** [2018-02-06 Tue 12:30] Maybe a Guix substitute server [[gnus:INBOX#20180204204945.GA2228@jurong][Email from Andreas Enge: Re: Redhill is back!]] by [[mailto:andreas@enge.fr][Andreas Enge]]
+
+   after switching internet providers, I brought redhill back online
+   under its new IP address. Testing the offload shows no problems
+   (with a changed machines.scm that contains only redhill):
+   hydra@20121227-hydra:~/maintenance$ guix offload test machines.scm
+   guix offload: testing 1 build machines defined in 'machines.scm'...
+   guix offload: 'redhill.guixsd.org' is running guile (GNU Guile)
+   2.2.2 guix offload: Guix is usable on 'redhill.guixsd.org' (test
+   returned "/gnu/store/883yjkl46dxw9mzykykmbs0yzwyxm17z-test")
+   sending 1 store item to 'redhill.guixsd.org'...  exporting path
+   `/gnu/store/ciq39nchn8pd4k4m1vgivmrmf6c5rg3g-export-test' guix
+   offload: 'redhill.guixsd.org' successfully imported
+   '/gnu/store/ciq39nchn8pd4k4m1vgivmrmf6c5rg3g-export-test'
+   retrieving 1 store item from 'redhill.guixsd.org'...  guix offload:
+   successfully imported
+   '/gnu/store/8a1509iirfaibm19ysc2ywg89vrz6v1r-import-test' from
+   'redhill.guixsd.org'
+** Emacs generate user dictionary from bunch of files
+   [[gnus:nnimap+USER:INBOX#877eu3bkv7.fsf@gnu.org][Email from Ian Dunn: {ELPA} New package: paced]] by [[mailto:dunni@gnu.org][Ian Dunn]]
+
+   I'd like to submit paced[1] to ELPA.
+
+   Paced (Predictive Abbreviation Completion and Expansion using Dictionaries)
+   scans a group of files (determined by "population commands") to construct a
+   usage table (dictionary).  Words (or symbols) are sorted by their usage, and may
+   be later presented to the user for completion.  A dictionary can then be saved
+   to a file, to be loaded later.
+
+   Population commands determine how a dictionary should be filled with words or
+   symbols.  A dictionary may have multiple population commands, and population may
+   be performed asynchronously.  Once population is finished, the contents are
+   sorted, with more commonly used words at the front.  Dictionaries may be edited
+   through EIEIO's customize-object interface.
+
+   Completion is done through `completion-at-point'.  The dictionary to use for
+   completion can be customized.
+
+   The code is on Bazaar on Savannah:
+
+   bzr branch https://bzr.savannah.gnu.org/r/paced-el/ paced
+
+   [1] http://nongnu.org/paced-el
+

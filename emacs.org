@@ -69,3 +69,4 @@ Origin: https://lists.gnu.org/archive/html/help-gnu-emacs/2017-12/msg00155.html
 #+BEGIN_SRC sh
   etags --language=none --regex="/[[:space:]]*Definition[[:space:]\n]+[[:space:]]*\([[:alnum:]_]+\)[[:space:]]*\n/\1/m" Homotopies.v
 #+END_SRC
+

@@ -559,3 +559,27 @@ success = false; } else { //Lock texture if( !gFooTexture.lockTexture() ) { prin
 * Failed builds
 
   https://hydra.gnu.org/job/gnu/master/gource-0.47.x86_64-linux
+
+* Dualboot
+
+  https://lists.gnu.org/archive/html/help-guix/2016-03/msg00083.html
+
+  Running all machines, I dunno.  I do dual-boot Debian and GuixSD
+  with them sharing the same user profile and store.  On Debian, I
+  bind-mount some directories from GuixSD's root partition.  From
+  /etc/fstab:
+
+  #+BEGIN_EXAMPLE
+    UUID=d9cc11f0-e548-4526-a541-4f631a10b73c /mnt/guix/      ext4    defaults
+      0       2
+    /mnt/guix/var/guix    /var/guix           none            defaults,bind
+      0       0
+    /mnt/guix/gnu    /gnu                     none            defaults,bind
+      0       0
+  #+END_EXAMPLE
+
+  Then /home/ is shared (and luks encrypted) on both distros.  It
+  works fine.
+
+  If you want to do "same profile and store across all things" Ricardo
+  Wurmus does some wild things using NFS.
