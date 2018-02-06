@@ -180,3 +180,13 @@ the same as the address of the char pointed to by value"
             chainloader /EFI/Microsoft/Boot/bootmgfw.efi
     }
   #+END_EXAMPLE
+
+* Linux
+  - [[https://www.kernel.org/doc/html/latest/admin-guide/kernel-parameters.html][Kernel parameters]]
+  - [[https://askubuntu.com/questions/992137/how-to-check-that-kpti-is-enabled-on-my-ubuntu][Check if KPTI is enabled]]
+
+* GNU
+
+** Mirrors
+   - http://mirror.reismil.ch/gnu/
+   - https://mirror.cyber-perikarp.eu/gnu/
