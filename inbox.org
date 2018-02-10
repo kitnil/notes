@@ -266,4 +266,23 @@
    bzr branch https://bzr.savannah.gnu.org/r/paced-el/ paced
 
    [1] http://nongnu.org/paced-el
+** [2018-02-10 Sat 21:28] [[gnus:INBOX#87h8qshkdf.fsf@gmx.us][Email from rasmus@gmx.us: Re: {O} Prompt org-capture for buffer?]] by mailto:rasmus@gmx.us
+   #+BEGIN_SRC emacs-lisp
+     (file+function "~/doc.org"
+                    (lambda ()
+                      (org-goto-local-search-headings
+                       (ido-completing-read
+                        "File note to: "
+                        (org-element-map
+                            (org-element-parse-buffer)
+                            'headline
+                          (lambda (hl)
+                            (and (= (org-element-property :level hl) 1)
+                                 (org-element-property :title hl)))))
+                       nil nil)
+                      (forward-line 1))
+                    :prepend t
+                    :empty-lines-after 1)
 
+
+   #+END_SRC

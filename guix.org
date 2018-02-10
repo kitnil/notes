@@ -596,3 +596,8 @@ success = false; } else { //Lock texture if( !gFooTexture.lockTexture() ) { prin
   - https://hydra.gnu.org/status
   - https://hydra.gnu.org/all
   - https://hydra.gnu.org/queue
+
+* Pitfalls
+
+  - Unbound variable: package-version
+    https://gnunet.org/bot/log/guix/2016-02-16
