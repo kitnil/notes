@@ -296,3 +296,36 @@
 
    [1] <https://notabug.org/adfeno/Org_LaTeX_intro>.
    [2] <https://notabug.org/adfeno/Trabalho_sobre_gestao_universitaria>.
+** [2018-02-14 Wed 14:12] [[gnus:nnimap+USER:INBOX#87h8qvivyv.fsf@gnu.org][Email from Ludovic Courtès: Re: Can we speed it up? Prev: compiling guix is too slow?]] by [[mailto:ludo@gnu.org][Ludovic Courtès]]
+
+ Pjotr Prins <pjotr.public12@thebird.nl> skribis:
+
+ > What will it be like with 15K packages? We will get there. We can
+ > actually try it now by doubling the package tree - anyone wants to try
+ > and create a simulation? I.e., not just double the tree, make sure
+ > there are cross references between the two graphs by modifying some of
+ > the inputs at random.
+ >
+ > This leads to the following thought: why don't we create a 'lazy'
+ > build. There are multiple ways to go about it (I think). One would be
+ > to parse scheme files for package names and only compile those that
+ > are needed when someone invokes a guix command (and have not been
+ > compiled yet). Or generate a meta list for a source tree.
+
+ Note that there are several things we could do:
+
+   • Not compile gnu/packages/*.scm at all and instead turn on Guile’s
+     auto-compilation.  As things are currently, the first ‘guix package’
+     invocation would take ages though.
+
+   • Never compile gnu/packages/*.scm and instead interpret it, though
+     that’s currently relatively slow and probably more memory-consuming.
+
+ I think with ‘wip-pull-reload’ (I’ll resume work on it, I promise!)
+ things should already be nicer, and then, we should keep improving the
+ compiler (Andy already significantly improved CPU consumption in Guile
+ 2.2.3).
+** [2018-02-14 Wed 15:33] [[gnus:INBOX#20180203093626.6c927477@alma-ubu][Email from Björn Höfling: bug#30107: How I got the core dump]] by [[mailto:bjoern.hoefling@bjoernhoefling.de][Björn Höfling]]
+   #+BEGIN_QUOTE
+   On request, I'm writing here how I got to that coredump.
+   #+END_QUOTE

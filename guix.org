@@ -601,3 +601,63 @@ success = false; } else { //Lock texture if( !gFooTexture.lockTexture() ) { prin
 
   - Unbound variable: package-version
     https://gnunet.org/bot/log/guix/2016-02-16
+
+* Web resources
+  - https://libreplanet.org/wiki/Group:Guix
+
+* Hacking
+  #+BEGIN_SRC scheme
+    ;; run.scm for hacking gnu/bootloader/grub.scm
+
+    (use-modules (ice-9 history)
+                 (gnu bootloader grub)
+                 (guix store)
+                 (guix derivations)
+                 (gnu))
+
+    (use-package-modules bootloaders)
+
+    (define %test-os
+      (operating-system
+        (host-name "gnu")
+        (timezone "Etc/UTC")
+        (locale "en_US.utf8")
+        (bootloader (bootloader-configuration
+                     (bootloader grub-bootloader)
+                     (target "/dev/sda")
+                     (terminal-outputs '(console))
+                     (menu-entries
+                      (list (menu-entry
+                             (label "NixOS's Grub")
+                             (linux "")
+                             (initrd "")
+                             (additional-options
+                              '("search --label --set nixos"
+                                "configfile /boot/grub/grub.cfg")))))))
+        (file-systems (cons (file-system
+                              (device "my-root")
+                              (title 'label)
+                              (mount-point "/")
+                              (type "ext4"))
+                            %base-file-systems))
+        (users %base-user-accounts)
+        (packages (cons grub %base-packages))))
+
+    (pk 'DEBUG-derivation
+        (let ((%connection (open-connection)))
+          (build-derivations
+           %connection
+           (list (run-with-store %connection
+                   (let ((%test-os-bootloader (operating-system-bootloader
+                                               %test-os)))
+                     ((@@ (gnu bootloader grub) grub-configuration-file)
+                      %test-os-bootloader
+                      (bootloader-configuration-menu-entries %test-os-bootloader)
+                      #:system "x86_64-linux")))))
+          (build-mode check)))
+
+    ;; ./pre-inst-env env GUIX_PACKAGE_PATH= guile --no-auto-compile -s ./run.scm
+  #+END_SRC
+#+BEGIN_SRC scheme
+  (call-with-values (lambda () (build-derivations %connection (list (run-with-store %connection (let ((%test-os-bootloader (operating-system-bootloader %test-os))) ((@@ (gnu bootloader grub) grub-configuration-file) %test-os-bootloader (bootloader-configuration-menu-entries %test-os-bootloader) #:system "x86_64-linux" #:old-entries '())))))) (lambda (a) a))
+#+END_SRC

@@ -77,3 +77,32 @@ Origin: https://lists.gnu.org/archive/html/help-gnu-emacs/2017-12/msg00155.html
   etags --language=none --regex="/[[:space:]]*Definition[[:space:]\n]+[[:space:]]*\([[:alnum:]_]+\)[[:space:]]*\n/\1/m" Homotopies.v
 #+END_SRC
 
+* Misc
+  Origin https://lists.gnu.org/archive/html/guix-devel/2017-07/msg00039.html.
+
+  Talk about:
+  - =require=
+  - =after-init-hook=
+  - Directory with Guix compiled files
+
+  Origin https://lists.gnu.org/archive/html/guix-devel/2017-07/msg00057.html.
+  #+BEGIN_SRC emacs-lisp
+    (unless (require 'foo nil t)
+      (message "Error during loading 'foo'!!!"))
+  #+END_SRC
+
+  Or like this:
+
+  #+BEGIN_SRC emacs-lisp
+    (with-demoted-errors "%S" (require 'foo))
+  #+END_SRC
+
+  If you want to have a warning in a pop-up buffer, then:
+
+  #+BEGIN_SRC emacs-lisp
+    (unless (require 'foo nil t)
+      (display-warning 'oops "Error during loading 'foo'!!!"))
+  #+END_SRC
+
+** #emacs bot
+   : g "validate.el"
