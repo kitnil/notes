@@ -200,6 +200,9 @@ the same as the address of the char pointed to by value"
   - https://arxiv.org/
   - http://ieeexplore.ieee.org/
 
+** Research
+   - https://zenodo.org/
+
 * Testing software
   - https://systemundertest.org/xterm/
 * TODO Typo in (guile) Creating a Procedure
@@ -207,3 +210,8 @@ the same as the address of the char pointed to by value"
    Before very long, though, you will want to create new procedures that
 encapsulate aspects of your own applications’ functionality.  To do
 this, you can use the famous ‘lambda’ syntax.
+- check the unread count directly
+  #+BEGIN_SRC shell
+    curl -s --insecure --url "imaps://whatever.imap.server" --user\
+    "myuserid:mypassword" --request "STATUS INBOX (UNSEEN)"
+  #+END_SRC
