@@ -21,40 +21,45 @@
    - https://sbp.io/
    - http://www.informatimago.com/linux/emacs-on-user-mode-linux.html
 
-* Gnus
+* Mailing
 
-** Sent mail
+** Mu4e
+   [[https://emacs.stackexchange.com/a/12932/15092][Setup mu4e and offlineimap]]
 
-> The Gnus manual (Section 5.5, Archived Messages) explains how to archive
-> messages sent by me locally, in a "classic" mail kind of group; that is,
-> nnfolder, nnml or something of the sort.  But I would like to store them
-[ 4 more citation lines. Click/Enter to show. ]
-> on the IMAP server, in the Sent folder the server so handily provides.
-> GUI user agents such as Sylpheed and Claws seem to know how to do this,
-> can Gnus be told to do it?
->
-> If not, I can hack it by always Bcc'ing myself and having a filter on
-> the server to direct those copies to the folder.  But I would rather not
-> have to.
+** Gnus
 
-You can use gnus-message-archive-group to store messages in imap folder.
+*** Sent mail
 
-I use three Sent folders: one for usenet posts, second for email to
-mailing lists and third for all other (standard emails).
+ > The Gnus manual (Section 5.5, Archived Messages) explains how to archive
+ > messages sent by me locally, in a "classic" mail kind of group; that is,
+ > nnfolder, nnml or something of the sort.  But I would like to store them
+ [ 4 more citation lines. Click/Enter to show. ]
+ > on the IMAP server, in the Sent folder the server so handily provides.
+ > GUI user agents such as Sylpheed and Claws seem to know how to do this,
+ > can Gnus be told to do it?
+ >
+ > If not, I can hack it by always Bcc'ing myself and having a filter on
+ > the server to direct those copies to the folder.  But I would rather not
+ > have to.
 
-'(gnus-message-archive-group 
-   (quote (("^[^:]+$" "nnimap:Posted") 
-   ("^nnimap:Lists/" "nnimap:Posted-List") 
-   (".*" "nnimap:Sent"))))
+ You can use gnus-message-archive-group to store messages in imap folder.
 
-BTW I use "server less" dovecot to access Maildir folders via IMAP:
+ I use three Sent folders: one for usenet posts, second for email to
+ mailing lists and third for all other (standard emails).
 
-'(gnus-secondary-select-methods 
-   (nnimap "" (nnimap-stream shell) (imap-shell-program "~/bin/imap")))
+ '(gnus-message-archive-group 
+    (quote (("^[^:]+$" "nnimap:Posted") 
+    ("^nnimap:Lists/" "nnimap:Posted-List") 
+    (".*" "nnimap:Sent"))))
 
-** Gnus nnimap missing messages
-   C-u M-g in the Group buffer with the problematic group selected.
-   See <https://lists.gnu.org/archive/html/emacs-devel/2017-12/msg00624.html>.
+ BTW I use "server less" dovecot to access Maildir folders via IMAP:
+
+ '(gnus-secondary-select-methods 
+    (nnimap "" (nnimap-stream shell) (imap-shell-program "~/bin/imap")))
+
+*** Gnus nnimap missing messages
+    C-u M-g in the Group buffer with the problematic group selected.
+    See <https://lists.gnu.org/archive/html/emacs-devel/2017-12/msg00624.html>.
 
 * Org
   - [[http://kitchingroup.cheme.cmu.edu/blog/2014/02/04/Literate-programming-example-with-Fortran-and-org-mode/][Literate programing example]]
