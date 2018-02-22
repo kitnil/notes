@@ -13,6 +13,25 @@
  - Time conversion
    : date -d 'TZ="US/Eastern" 9am tomorrow'
 
+ - Curl IMAP
+   #+BEGIN_SRC shell
+     curl -s --insecure --url "imaps://whatever.imap.server" --user\
+     "myuserid:mypassword" --request "STATUS INBOX (UNSEEN)"
+   #+END_SRC
+
+- [[https://docs.google.com/presentation/d/1PkeO_lC5WTPScSV3ZzEEjVuDWeQtL2eHK6jEcf7axA0/edit#slide=id.g2a3d5327f3_30_0][Rossmann Repair Training Guide]]
+- [[https://rutracker.org/forum/viewtopic.php?t=5355404][SHENZHEN I/O]]
+
+- https://fosdem.org/2018/schedule/event/vai_qemu_in_uefi/
+
+- https://brilliant.org/
+- https://www.youtube.com/channel/UCaTznQhurW5AaiYPbhEA-KA
+- https://www.youtube.com/watch?v=oVyx9L3IGfs
+
+- /gnu/store/3bmsc44drb7siv8bf7jxndmdwmvgpyip-tor-0.3.2.9/bin/torify: torsocks not found in your PATH.  Perhaps it isn't installed?  (tsocks is no longer supported, for security reasons.)
+
+- https://appdb.winehq.org/objectManager.php?sClass=version&iId=28786&iTestingId=91445
+
 * Articles
   - http://www.shakthimaan.com/downloads.html#gpg-in-10-minutes
 
@@ -199,6 +218,9 @@ the same as the address of the char pointed to by value"
   - https://libraries.io/
   - https://arxiv.org/
   - http://ieeexplore.ieee.org/
+
+** Mailing list archives
+  - http://www.nabble.com/
 
 ** Research
    - https://zenodo.org/

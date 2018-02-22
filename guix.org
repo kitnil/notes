@@ -661,3 +661,18 @@ success = false; } else { //Lock texture if( !gFooTexture.lockTexture() ) { prin
 #+BEGIN_SRC scheme
   (call-with-values (lambda () (build-derivations %connection (list (run-with-store %connection (let ((%test-os-bootloader (operating-system-bootloader %test-os))) ((@@ (gnu bootloader grub) grub-configuration-file) %test-os-bootloader (bootloader-configuration-menu-entries %test-os-bootloader) #:system "x86_64-linux" #:old-entries '())))))) (lambda (a) a))
 #+END_SRC
+
+* TOBLOG
+
+#+BEGIN_SRC markdown
+  # Preparation
+
+  If you have a [https://git.savannah.gnu.org/cgit/guix.git](Guix Git
+  repository) already, you can create a new [Git
+  Worktree](https://git-scm.com/docs/git-worktree).
+
+
+
+  [More info](https://www.gnu.org/software/guix/manual/html_node/Building-from-Git.html#Building-from-Git)
+
+#+END_SRC
