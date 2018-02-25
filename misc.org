@@ -19,6 +19,9 @@
      "myuserid:mypassword" --request "STATUS INBOX (UNSEEN)"
    #+END_SRC
 
+- Stumpwm get current window PID
+  : (xlib:get-property (window-xwin (current-window)) :_net_wm_pid)
+
 - [[http://jk.ozlabs.org/projects/patchwork/][Patchwork]] :: Patchwork is a web-based patch tracking system designed
      to facilitate the contribution and management of contributions to
      an open-source project.
