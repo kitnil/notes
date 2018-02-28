@@ -19,6 +19,8 @@
      "myuserid:mypassword" --request "STATUS INBOX (UNSEEN)"
    #+END_SRC
 
+- Zevenet :: Load balancer
+
 - Stumpwm get current window PID
   : (xlib:get-property (window-xwin (current-window)) :_net_wm_pid)
 
