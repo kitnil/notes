@@ -55,6 +55,8 @@
 
  - Zevenet :: Load balancer
 
+ - https://peers.community/
+
  - Stumpwm get current window PID
    : (xlib:get-property (window-xwin (current-window)) :_net_wm_pid)
 
