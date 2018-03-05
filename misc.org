@@ -19,27 +19,61 @@
      "myuserid:mypassword" --request "STATUS INBOX (UNSEEN)"
    #+END_SRC
 
-- Zevenet :: Load balancer
+ - [[/home/natsu/Downloads/ISO/05001-10000/ISO%2009660-1988%20scan.pdf][iso files]]
 
-- Stumpwm get current window PID
-  : (xlib:get-property (window-xwin (current-window)) :_net_wm_pid)
+ - https://unix.stackexchange.com/a/42933
+   #+BEGIN_SRC shell
+     #!/bin/bash
+     #
+     # L Nix <lornix@lornix.com>
+     # reload browser window
+     #
+     # whether to use SHIFT+CTRL+R to force reload without cache
+     RELOAD_KEYS="CTRL+R"
+     #RELOAD_KEYS="SHIFT+CTRL+R"
+     #
+     # set to whatever's given as argument
+     BROWSER=$1
+     #
+     # if was empty, default set to name of browser, firefox/chrome/opera/etc..
+     if [ -z "${BROWSER}" ]; then
+         BROWSER=firefox
+     fi
+     #
+     # get which window is active right now
+     MYWINDOW=$(xdotool getactivewindow)
+     #
+     # bring up the browser
+     xdotool search --name ${BROWSER} windowactivate --sync
+     # send the page-reload keys (C-R) or (S-C-R)
+     xdotool search --name ${BROWSER} key --clearmodifiers ${RELOAD_KEYS}
+     #
+     # sometimes the focus doesn't work, so follow up with activate
+     xdotool windowfocus --sync ${MYWINDOW}
+     xdotool windowactivate --sync ${MYWINDOW}
+   #+END_SRC
 
-- [[http://jk.ozlabs.org/projects/patchwork/][Patchwork]] :: Patchwork is a web-based patch tracking system designed
-     to facilitate the contribution and management of contributions to
-     an open-source project.
+ - Zevenet :: Load balancer
 
-- [[https://docs.google.com/presentation/d/1PkeO_lC5WTPScSV3ZzEEjVuDWeQtL2eHK6jEcf7axA0/edit#slide=id.g2a3d5327f3_30_0][Rossmann Repair Training Guide]]
-- [[https://rutracker.org/forum/viewtopic.php?t=5355404][SHENZHEN I/O]]
+ - Stumpwm get current window PID
+   : (xlib:get-property (window-xwin (current-window)) :_net_wm_pid)
 
-- https://fosdem.org/2018/schedule/event/vai_qemu_in_uefi/
+ - [[http://jk.ozlabs.org/projects/patchwork/][Patchwork]] :: Patchwork is a web-based patch tracking system designed
+      to facilitate the contribution and management of contributions to
+      an open-source project.
 
-- https://brilliant.org/
-- https://www.youtube.com/channel/UCaTznQhurW5AaiYPbhEA-KA
-- https://www.youtube.com/watch?v=oVyx9L3IGfs
+ - [[https://docs.google.com/presentation/d/1PkeO_lC5WTPScSV3ZzEEjVuDWeQtL2eHK6jEcf7axA0/edit#slide=id.g2a3d5327f3_30_0][Rossmann Repair Training Guide]]
+ - [[https://rutracker.org/forum/viewtopic.php?t=5355404][SHENZHEN I/O]]
 
-- /gnu/store/3bmsc44drb7siv8bf7jxndmdwmvgpyip-tor-0.3.2.9/bin/torify: torsocks not found in your PATH.  Perhaps it isn't installed?  (tsocks is no longer supported, for security reasons.)
+ - https://fosdem.org/2018/schedule/event/vai_qemu_in_uefi/
 
-- https://appdb.winehq.org/objectManager.php?sClass=version&iId=28786&iTestingId=91445
+ - https://brilliant.org/
+ - https://www.youtube.com/channel/UCaTznQhurW5AaiYPbhEA-KA
+ - https://www.youtube.com/watch?v=oVyx9L3IGfs
+
+ - /gnu/store/3bmsc44drb7siv8bf7jxndmdwmvgpyip-tor-0.3.2.9/bin/torify: torsocks not found in your PATH.  Perhaps it isn't installed?  (tsocks is no longer supported, for security reasons.)
+
+ - https://appdb.winehq.org/objectManager.php?sClass=version&iId=28786&iTestingId=91445
 
 * Articles
   - http://www.shakthimaan.com/downloads.html#gpg-in-10-minutes
@@ -250,6 +284,12 @@ this, you can use the famous ‘lambda’ syntax.
 * Standarts
 
   - [[http://standards.iso.org/ittf/PubliclyAvailableStandards/index.html][ISO]]
+
+* Translation
+
+  - http://www.iro.umontreal.ca/contrib/po/HTML/teams.html
+  - http://www.iro.umontreal.ca/contrib/po/HTML/leaders.html
+  - http://www.iro.umontreal.ca/contrib/po/HTML/index.html
 
 * Math
 

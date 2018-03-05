@@ -77,6 +77,36 @@ Origin: https://lists.gnu.org/archive/html/help-gnu-emacs/2017-12/msg00155.html
   etags --language=none --regex="/[[:space:]]*Definition[[:space:]\n]+[[:space:]]*\([[:alnum:]_]+\)[[:space:]]*\n/\1/m" Homotopies.v
 #+END_SRC
 
+* Dired
+
+  Origin https://peterreavy.wordpress.com/2011/05/04/emacs-dired-tips/
+
+  - I’m using Emacs 23.1, primarily on Windows 7, and want to make a
+    note of some Dired tips for my own use.
+    : ! will run a shell command on the marked files or the file at point.
+
+  - So, to look at the end of a log file on a remote server (and since
+    I have Cygwin installed):
+    : ! tail RET
+
+  - To copy the name of the file at point, in order to make use of it
+    elsewhere, use dired-copy-filename-as-kill, which is bound to
+    w. To make it copy the absolute path:
+    : 0 w
+
+  - To copy the path to the folder you’re looking at in dired:
+    : M-< w
+
+  - To create an archive of the currently marked files using 7zip:
+    : ! 7z a zipfilename * RET
+
+  - To extract the archive of the file at point:
+    : ! 7z e * RET
+
+  - From dired, to search for files containing a string, just do this,
+    remembering that your regexp will be case-sensitive:
+    : M-x find-grep-dired
+
 * Misc
   Origin https://lists.gnu.org/archive/html/guix-devel/2017-07/msg00039.html.
 
