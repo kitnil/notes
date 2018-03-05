@@ -246,6 +246,11 @@ this, you can use the famous ‘lambda’ syntax.
     curl -s --insecure --url "imaps://whatever.imap.server" --user\
     "myuserid:mypassword" --request "STATUS INBOX (UNSEEN)"
   #+END_SRC
+
+* Standarts
+
+  - [[http://standards.iso.org/ittf/PubliclyAvailableStandards/index.html][ISO]]
+
 * Math
 
 ** Phrases
