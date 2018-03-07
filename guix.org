@@ -60,6 +60,9 @@
   - Force fsck after reboot
     : touch /forcefsck
 
+  - Show dynamic libraries
+    : GUIX_LD_WRAPPER_DEBUG=yes
+
 * Guix packaging
 
 - [[shell:guix%20lint%20$PACKAGE][shell:guix lint $PACKAGE]]
