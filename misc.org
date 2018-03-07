@@ -19,6 +19,15 @@
      "myuserid:mypassword" --request "STATUS INBOX (UNSEEN)"
    #+END_SRC
 
+ - What file it tries and fails to dlopen
+   : LD_DEBUG=files emacs
+
+ - Show dynamic libraries
+   : ldd $(dirname $(readlink -f $(type -P emacs)))/.emacs-25.3-real | grep glibc
+
+ - Show object
+   : objdump -p /gnu/store/…-spectrwm-3.1.0/lib/libswmhack.so.0.0
+
  - [[/home/natsu/Downloads/ISO/05001-10000/ISO%2009660-1988%20scan.pdf][iso files]]
 
  - https://unix.stackexchange.com/a/42933
