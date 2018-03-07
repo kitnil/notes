@@ -588,6 +588,7 @@ success = false; } else { //Lock texture if( !gFooTexture.lockTexture() ) { prin
 
   - notify on GUIX_PACKAGE_PATH
   - notify on failing package
+  - guix lint -c gnu-descriptions global
 
 * Importers
   - https://gitlab.com/htgoebel/guix-import-debian
