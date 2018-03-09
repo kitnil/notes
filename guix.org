@@ -63,6 +63,9 @@
   - Show dynamic libraries
     : GUIX_LD_WRAPPER_DEBUG=yes
 
+  - See the most recent build logs for a given package
+    : ls -ltr /var/log/guix/drvs/*/*-icecat* | tail
+
 * Guix packaging
 
 - [[shell:guix%20lint%20$PACKAGE][shell:guix lint $PACKAGE]]
