@@ -66,6 +66,9 @@
   - See the most recent build logs for a given package
     : ls -ltr /var/log/guix/drvs/*/*-icecat* | tail
 
+  - Get all packges from a file
+    : guix package -A | grep 'compression\.scm' | cut -f1
+
 * Guix packaging
 
 - [[shell:guix%20lint%20$PACKAGE][shell:guix lint $PACKAGE]]
