@@ -345,3 +345,65 @@
 ** [2018-03-09 Fri 12:09] [[gnus:INBOX#CAFyQvY2U_rLCyj=jPUS20fByvAqmF1Pq3b9m3r=Nett6WPw9Vw@mail.gmail.com][Email from Kaushal Modi: Re: Teaching emacsclient to act as a pager, and more]] by [[mailto:kaushal.modi@gmail.com][Kaushal Modi]]
 ** [2018-03-10 Sat 13:18] [[gnus:INBOX#c275dcbc-18bf-16bd-54d1-da9d1031719b@gmail.com][Email from Matt Wette: {ANN} Nyacc version 0.83.0 released]] by [[mailto:matt.wette@gmail.com][Matt Wette]]
 ** [2018-03-10 Sat 13:20] [[gnus:INBOX#87fu6o2ge2.fsf@gmail.com][Email from Maxim Cournoyer: bug#30290: guix-daemon slows to a crawl when a substitute server is offline]] by [[mailto:maxim.cournoyer@gmail.com][Maxim Cournoyer]]
+** [2018-03-14 Wed 00:13] [[gnus:INBOX#5aa735e67ffa_1eed144184874@manage-worker-starter-us-east-2-87-1c8rn.mail][Email from Red Hat OpenShift io Team: Welcome to the OpenShift.io Early Access Program]] by [[mailto:no-reply@openshift.com][Red Hat OpenShift io Team]]
+** [2018-03-14 Wed 15:13] [[gnus:INBOX#87eflu2zoc.fsf@gnu.org][Email from Ludovic Courtès: Re: How best to set host key in vm]] by [[mailto:ludo@gnu.org][Ludovic Courtès]]
+   #+BEGIN_SRC scheme
+     (simple-service 'copy-private-key activation-service-type
+                     (with-imported-modules '((guix build utils))
+                       #~(begin
+                           (use-modules (guix build utils))
+                           (mkdir-p "/etc/ssh")
+                           (copy-file "/root/secrets/ssh_host_ed25519_key"
+                                      "/etc/ssh/ssh_host_ed25519_key'))))
+
+   #+END_SRC
+** TODO Ask about patch [2018-03-14 Wed 15:22] [[gnus:INBOX#CAOW35WRcvbUe8mik6zoB4GV1CODYCjaD+wzn6G+JWiUQx8iocA@mail.gmail.com][Email from Dang Duong: Re: VLC could not decode the format "ssa " (SubStation Alpha subtitles)]] by [[mailto:khanhduongdv@gmail.com][Dang Duong]]
+** [2018-03-14 Wed 15:36] [[gnus:INBOX#2fa37bd4-17ff-286b-80ce-948e0b87ee62@freenet.de][Email from Thorsten Wilms: Dual-booting solution with only one actual Grub installation]] by [[mailto:t_w_@freenet.de][Thorsten Wilms]]
+   #+BEGIN_SRC scheme
+     (bootloader
+      (bootloader-configuration
+       (bootloader
+        (bootloader (inherit grub-bootloader)
+                    (installer #~(const #t))))))
+   #+END_SRC
+** [2018-03-14 Wed 15:42] [[gnus:nnimap+USER:INBOX#874llp12ix.fsf@passepartout.tim-landscheidt.de][Email from Tim Landscheidt: Re: Changing language input method by addressee]] by [[mailto:tim@tim-landscheidt.de][Tim Landscheidt]]
+   #+BEGIN_SRC emacs-lisp
+     (set (make-local-variable 'sentence-end-double-space) nil)
+   #+END_SRC
+** [2018-03-14 Wed 15:44] [[gnus:nnimap+USER:INBOX#873719ujx2.fsf@bobnewell.net][Email from Bob Newell: Re: Changing language input method by addressee]] by [[mailto:bobnewell@bobnewell.net][Bob Newell]]
+   #+BEGIN_SRC emacs-lisp
+     (defun rjn-change-lang-by-addressee ()
+       (interactive)
+       (let ((addressee (message-fetch-field "To"))
+             netaddr person langpref)
+         (if addressee
+             (setq netaddr (cadr (mail-extract-address-components addressee))))
+         (if netaddr
+             (setq person (car (bbdb-search (bbdb-records) :mail netaddr))))
+         (if person
+             (setq langpref (bbdb-record-field person 'language)))
+         (if langpref
+             (set-input-method langpref))))
+
+     (add-hook 'message-setup-hook 'rjn-change-lang-by-addressee t)
+     (advice-add 'bbdb-complete-mail :after #'rjn-change-lang-by-addressee)
+   #+END_SRC
+** [2018-03-14 Wed 19:54] [[gnus:INBOX#87a7vejen7.fsf@netris.org][Email from Mark H. Weaver: Re: how to get the path of the logfile after an unsuccesful build?]] by [[mailto:mhw@netris.org][Mark H. Weaver]]
+** [2018-03-15 Thu 03:24] [[gnus:INBOX#87vae0g21v.fsf@librem.i-did-not-set--mail-host-address--so-tickle-me][Email from Alex ter Weele: {bug#30741} {PATCH} fix idris (was "Re: Incomplete work to upgrade Idris to 1.2.0")]] by [[mailto:alex.ter.weele@gmail.com][Alex ter Weele]]
+** [2018-03-15 Thu 03:25] [[gnus:INBOX#CAE4v=pj5qkabZ1rr-BOdjodomz-3LDe+iT4hi0wPnuSqNArV0A@mail.gmail.com][Email from Gábor Boskovits: Re: Regarding Outreachy round 16]] by [[mailto:boskovits@gmail.com][Gábor Boskovits]]
+** [2018-03-15 Thu 10:22] [[gnus:INBOX#294c0039f2dfa910162ec911ae128a48@hypermove.net][Email from Amirouche Boubekki: Re: Is there any security risk related to the use of the reader?]] by [[mailto:amirouche@hypermove.net][Amirouche Boubekki]] combinatorix.scm, streams.scm, read.scm
+** [2018-03-15 Thu 11:03] [[gnus:INBOX#20180304200014.29173-1-mail@cbaines.net][Email from Christopher Baines: {bug#30702} {PATCH} services: nginx: Support extra content in the http block.]] by [[mailto:mail@cbaines.net][Christopher Baines]]
+** [2018-03-15 Thu 11:06] [[gnus:INBOX#20180305114136.7207-1-h.goebel@crazy-compilers.com][Email from Hartmut Goebel: {bug#30711} {PATCH 1/1} guix: graph: Add Trival Graph Format (TGF) backend.]] by [[mailto:h.goebel@crazy-compilers.com][Hartmut Goebel]]
+** [2018-03-15 Thu 11:07] [[gnus:INBOX#87efkyqtet.fsf@dustycloud.org][Email from Christopher Lemmer Webber: bug#30714: Racket doesn't build any more, xform error]] by [[mailto:cwebber@dustycloud.org][Christopher Lemmer Webber]]
+** [2018-03-15 Thu 11:08] [[gnus:INBOX#20180305212912.625ecf29@alma-ubu][Email from Björn Höfling: bug#30716: guix pull: error: Git error: unable to parse OID - contains invalid characters when COMMIT-ID is shortened]] by [[mailto:bjoern.hoefling@bjoernhoefling.de][Björn Höfling]]
+** [2018-03-15 Thu 11:10] [[gnus:INBOX#87muzmw7lf.fsf@gnu.org][Email from Nala Ginrut: {ANN} artanis-0.2.3 released {stable}]] by [[mailto:mulei@gnu.org][Nala Ginrut]]
+** [2018-03-15 Thu 11:16] [[gnus:INBOX#20180312204019.GA21130@joshua.dnsalias.com][Email from Mike Gran: Re: Debugging Guile module loading]] by [[mailto:spk121@yahoo.com][Mike Gran]]
+   #+BEGIN_SRC shell
+     "LD_DEBUG=all guile"
+   #+END_SRC
+** [2018-03-15 Thu 11:53] [[gnus:INBOX#20180313175809.7d782c1a@alma-ubu][Email from Björn Höfling: {bug#30801} {PATCH 0/1} Add opencv]] by [[mailto:bjoern.hoefling@bjoernhoefling.de][Björn Höfling]]
+** [2018-03-15 Thu 11:53] [[gnus:INBOX#20180313185057.14044-1-mail@cbaines.net][Email from Christopher Baines: {bug#30802} {PATCH} gnu: Add python-prometheus-client.]] by [[mailto:mail@cbaines.net][Christopher Baines]]
+** [2018-03-15 Thu 11:54] [[gnus:INBOX#20180313191727.24508-2-mail@cbaines.net][Email from Christopher Baines: {bug#30803} {PATCH 2/2} services: Add elasticsearch.]] by [[mailto:mail@cbaines.net][Christopher Baines]]
+** [2018-03-15 Thu 11:55] [[gnus:INBOX#87woyfzmir.fsf@cbaines.net][Email from Christopher Baines: {bug#30809} {PATCH} Gitolite service]] by [[mailto:mail@cbaines.net][Christopher Baines]]
+** [2018-03-15 Thu 11:56] [[gnus:INBOX#e74fff06-9adc-468c-9080-ba9b80fc2f45@gmail.com][Email from Matt Wette: ffi-help: gtk demo updated]] by [[mailto:matt.wette@gmail.com][Matt Wette]]
+** [2018-03-15 Thu 12:08] [[gnus:INBOX#1520289147.15975.0@mail.gandi.net][Email from amirouche@hypermove.net: Re: neon: git for structured data {Was: Functional database}]] by [[mailto:amirouche@hypermove.net][]]
