@@ -476,3 +476,10 @@
    #+END_SRC
 ** [2018-03-19 Mon 07:21] [[gnus:INBOX#87vadsdcfv.fsf@gmail.com][Email from Maxim Cournoyer: {bug#30851} {PATCH} Add SuperCollider, related changes]] by [[mailto:maxim.cournoyer@gmail.com][Maxim Cournoyer]]
 ** [2018-03-23 Fri 19:47] [[gnus:INBOX#87muz0yodn.fsf@gnu.org][Email from Nala Ginrut: artanis-0.2.4 released {stable}]] by [[mailto:mulei@gnu.org][Nala Ginrut]]
+** [2018-03-23 Fri 21:47] [[gnus:INBOX#87a7uyd7qy.fsf@gmail.com][Email from Alex Kost: Re: Emacs in multiple profiles]] by [[mailto:alezost@gmail.com][Alex Kost]]
+   #+BEGIN_SRC emacs-lisp
+     (let ((guix-env (getenv "GUIX_ENVIRONMENT")))
+       (when (and guix-env
+                  (require 'guix-emacs nil t))
+         (guix-emacs-autoload-packages guix-env)))
+   #+END_SRC
