@@ -31,13 +31,14 @@
 * Cheat sheet
 
   - Remove system generations
-    : (delete-generations* "/var/guix/profiles/system" '(134 135 136 137 138 139))
+    : (delete-generations* "/var/guix/profiles/system" '(134 135))
 
   - Switch system generation
     : (switch-to-generation* "/var/guix/profiles/system" 133)
 
   - Grep
-    : 'guix package -A ^perl- | wc -l' 523. 'guix package -A ^perl- | xargs guix refresh -l' ~1500 packages
+    : guix package -A ^perl- | wc -l 523
+    : guix package -A ^perl- | xargs guix refresh -l
 
   - Manually failing package build
     : (add-after 'compress-documentation 'stop (lambda _ #f))
@@ -46,7 +47,12 @@
     : guix graph -e '(load "FILE")' | dot -Tps > OUTPUT_FILE.ps
 
   - Create a profile and export that recursively
-    : guix archive --export --recursive $(readlink -f /project/.guix-profile) | gzip --stdout - > my-profile.nar.gz
+    #+BEGIN_SRC shell
+      guix archive\
+           --export\
+           --recursive $(readlink -f /project/.guix-profile)\
+          | gzip --stdout - > my-profile.nar.gz
+    #+END_SRC
 
   - Multi monitor
     : xrandr --output DP-2-2 --auto
@@ -54,11 +60,14 @@
   - [[file:bin/emacsmail::emacsclient%20-c%20--eval%20"(browse-url-mail%20\"$@\")"][Make share email in icecat with emacs]]
 
   - Build all packages from sources.
-    See <https://lists.gnu.org/archive/html/help-guix/2018-01/msg00080.html>.
-    : guix build --no-substitutes --no-grafts --keep-going $(guix package -A | cut -f1,2 --output-delimiter=@) --sources=transitive
+    See [[https://lists.gnu.org/archive/html/help-guix/2018-01/msg00080.html]].
+    #+BEGIN_SRC shell
+      guix build --no-substitutes --no-grafts --keep-going\
+           $(guix package -A | cut -f1,2 --output-delimiter=@)\
+           --sources=transitive
+    #+END_SRC
 
-  - Github mutated archives
-    See <https://notabug.org/apteryx/fiasco>
+  - Github mutated archives.  See [[https://notabug.org/apteryx/fiasco]].
 
   - Force fsck after reboot
     : touch /forcefsck
@@ -72,15 +81,22 @@
   - Get all packges from a file
     : guix package -A | grep 'compression\.scm' | cut -f1
 
+  - Get substitutable kernels
+    #+BEGIN_SRC shell
+      guix build -n $(guix package -A 'linux-libre$'\
+                          | awk '{print $1"@"$2}'\
+                          | tr '\n' ' ')
+    #+END_SRC
+
 * Guix packaging
 
-- [[shell:guix%20lint%20$PACKAGE][shell:guix lint $PACKAGE]]
-- [[shell:guix%20size%20$PACKAGE][shell:guix size $PACKAGE]]
-- [[shell:guix%20build%20--rounds%3D2%20$PACKAGE][shell:guix build --rounds=2 $PACKAGE]]
-- [[shell:git%20format-patch][shell:git format-patch]]
-- [[mailto:guix-patches@gnu.org]]
-- [[elisp:(writegood-grade-level)]]
-- [[elisp:(writegood-reading-ease)]]
+  - [[shell:guix%20lint%20$PACKAGE][shell:guix lint $PACKAGE]]
+  - [[shell:guix%20size%20$PACKAGE][shell:guix size $PACKAGE]]
+  - [[shell:guix%20build%20--rounds%3D2%20$PACKAGE][shell:guix build --rounds=2 $PACKAGE]]
+  - [[shell:git%20format-patch][shell:git format-patch]]
+  - [[mailto:guix-patches@gnu.org]]
+  - [[elisp:(writegood-grade-level)]]
+  - [[elisp:(writegood-reading-ease)]]
 
 * How to use sneek on Gnunet IRC channels
 
@@ -94,10 +110,10 @@
 
 * [[gnus:INBOX#87tw1zl0wy.fsf@bernoul.li][How to fix Org-mode tabs]]
 
-  #+begin_src emacs-lisp :tangle yes
+  #+BEGIN_SRC emacs-lisp :tangle yes
     (when (= source-tab-width 0)
       (setq indent-tabs-mode nil))
-    #+end_src
+  #+END_SRC
 
 * [[gnus:INBOX#CALjrZwb16Cn1ygFYUhKDWdid1dYQabB6yB0p_eFu8YYf_00pOQ@mail.gmail.com][How to use Guix profiles]]
 
