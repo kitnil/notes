@@ -475,3 +475,4 @@
      guix package --search=. | recsel -e 'name ~ "-(git|next|dev|devel|cvs|svn)$"' 
    #+END_SRC
 ** [2018-03-19 Mon 07:21] [[gnus:INBOX#87vadsdcfv.fsf@gmail.com][Email from Maxim Cournoyer: {bug#30851} {PATCH} Add SuperCollider, related changes]] by [[mailto:maxim.cournoyer@gmail.com][Maxim Cournoyer]]
+** [2018-03-23 Fri 19:47] [[gnus:INBOX#87muz0yodn.fsf@gnu.org][Email from Nala Ginrut: artanis-0.2.4 released {stable}]] by [[mailto:mulei@gnu.org][Nala Ginrut]]
