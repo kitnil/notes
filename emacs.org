@@ -136,3 +136,27 @@ Origin: https://lists.gnu.org/archive/html/help-gnu-emacs/2017-12/msg00155.html
 
 ** #emacs bot
    : g "validate.el"
+
+* epkg
+
+attic/debian-changelog-mode
+attic/easy-lentic
+attic/malabar-mode
+attic/selftest
+attic/sql-mssql
+
+mirror/atom-one-dark-theme
+mirror/gnus-autocheck
+mirror/smartwin
+mirror/syslog-mode
+
+mirror/jda
+mirror/auth-password-store
+mirror/ob-clojurescript
+mirror/wanderlust
+mirror/zoutline
+#+BEGIN_EXAMPLE
+  natsu@magnolia /srv/src/epkgs$ git submodule update
+  error: Server does not allow request for unadvertised object 0a83b8fa074571023a10aed263d2ee7d865a49f7
+  Fetched in submodule path 'mirror/auth-password-store', but it did not contain 0a83b8fa074571023a10aed263d2ee7d865a49f7. Direct fetching of that commit failed.
+#+END_EXAMPLE
