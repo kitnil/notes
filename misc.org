@@ -1,3 +1,11 @@
+ - Implement builtins in lisp https://stackoverflow.com/q/3683388
+
+ - next browser
+   : LD_LIBRARY_PATH=/home/natsu/.guix-profile/lib sbcl
+   : (asdf:load-asd "/home/natsu/quicklisp/local-projects/nEXT/next/next.asd")
+   : (ql:quickload :next)
+   : "TLS/SSL support not available; install glib-networking"
+
  - dd with progress bar
    : dd if=/dev/sda bs=1M | pv | dd of=/dev/sdc bs=1M
 

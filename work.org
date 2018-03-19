@@ -1,0 +1,97 @@
+* DNS
+
+- RFC 1034, Domain Names - Concepts and Facilities
+- RFC 1035, Domain Names - Implementation and Specification
+- RFC 1123, Requirements for Internet Hosts—Application and Support
+- RFC 1995, Incremental Zone Transfer in DNS
+- RFC 1996, A Mechanism for Prompt Notification of Zone Changes (DNS NOTIFY)
+- RFC 2136, Dynamic Updates in the domain name system (DNS UPDATE)
+- RFC 2181, Clarifications to the DNS Specification
+- RFC 2308, Negative Caching of DNS Queries (DNS NCACHE)
+- RFC 2671, Extension Mechanisms for DNS (EDNS0)
+- RFC 2672, Non-Terminal DNS Name Redirection
+- RFC 2845, Secret Key Transaction Authentication for DNS (TSIG)
+- RFC 3225, Indicating Resolver Support of DNSSEC
+- RFC 3226, DNSSEC and IPv6 A6 aware server/resolver message size requirements
+- RFC 3597, Handling of Unknown DNS Resource Record (RR) Types
+- RFC 4343, Domain Name System (DNS) Case Insensitivity Clarification
+- RFC 4592, The Role of Wildcards in the Domain Name System
+- RFC 4635, HMAC SHA TSIG Algorithm Identifiers
+- RFC 5001, DNS Name Server Identifier (NSID) Option
+- RFC 5452, Measures for Making DNS More Resilient against Forged Answers
+- RFC 5890, Internationalized Domain Names for Applications (IDNA):Definitions and Document Framework
+- RFC 5891, Internationalized Domain Names in Applications (IDNA): Protocol
+- RFC 5892, The Unicode Code Points and Internationalized Domain Names for Applications (IDNA)
+- RFC 5893, Right-to-Left Scripts for Internationalized Domain Names for Applications (IDNA)
+- RFC 7766, DNS Transport over TCP - Implementation Requirements
+
+Security
+
+- RFC 4033, DNS Security Introduction and Requirements
+- RFC 4034, Resource Records for the DNS Security Extensions
+- RFC 4035, Protocol Modifications for the DNS Security Extensions
+- RFC 4509, Use of SHA-256 in DNSSEC Delegation Signer (DS) Resource Records
+- RFC 4470, Minimally Covering NSEC Records and DNSSEC On-line Signing
+- RFC 5011, Automated Updates of DNS Security (DNSSEC) Trust Anchors
+- RFC 5155, DNS Security (DNSSEC) Hashed Authenticated Denial of Existence
+- RFC 5702, Use of SHA-2 Algorithms with RSA in DNSKEY and RRSIG Resource Records for DNSSEC
+- RFC 5910, Domain Name System (DNS) Security Extensions Mapping for the Extensible Provisioning Protocol (EPP)
+- RFC 5933, Use of GOST Signature Algorithms in DNSKEY and RRSIG Resource Records for DNSSEC
+- RFC 7858, Specification for DNS over Transport Layer Security (TLS)
+
+Experimental
+
+- RFC 1183, New DNS RR Definitions
+
+Best Current Practices[edit]
+
+- RFC 2182, Selection and Operation of Secondary DNS Servers (BCP 16)
+- RFC 2317, Classless IN-ADDR.ARPA delegation (BCP 20)
+- RFC 5625, DNS Proxy Implementation Guidelines (BCP 152)
+- RFC 6895, Domain Name System (DNS) IANA Considerations (BCP 42)
+- RFC 7720, DNS Root Name Service Protocol and Deployment Requirements (BCP 40)
+
+Informational
+
+These RFCs are advisory in nature, but may provide useful information
+despite defining neither a standard or BCP. (RFC 1796)
+
+- RFC 1178, Choosing a Name for Your Computer (FYI 5)
+- RFC 1591, Domain Name System Structure and Delegation
+- RFC 1912, Common DNS Operational and Configuration Errors
+- RFC 2100, The Naming of Hosts
+- RFC 3696, Application Techniques for Checking and Transformation of Names
+- RFC 4892, Requirements for a Mechanism Identifying a Name Server Instance
+- RFC 5894, Internationalized Domain Names for Applications (IDNA):Background, Explanation, and Rationale
+- RFC 5895, Mapping Characters for Internationalized Domain Names in Applications (IDNA) 2008
+- RFC 7626, DNS Privacy Considerations
+- RFC 7706, Decreasing Access Time to Root Servers by Running One on Loopback
+
+Unknown
+
+These RFCs have an official status of Unknown, but due to their age
+are not clearly labeled as such.
+
+- RFC 920, Domain Requirements – Specified original top-level domains
+- RFC 1032, Domain Administrators Guide
+- RFC 1033, Domain Administrators Operations Guide
+- RFC 1101, DNS Encodings of Network Names and Other Types
+
+* Footnotes
+
+https://career.ru/vacancy/23262955?query=bash
+
+* f
+
+  - [[https://career.ru/vacancy/24473583?query=bash][Selectel]]
+  - [[https://career.ru/vacancy/24161574?query=bash][Services-group, сеть сервисных центров]]
+  - [[https://career.ru/vacancy/23298197?query=linux][Деньга]]
+  - [[https://career.ru/vacancy/24451079?query=linux][ООО СИРИУС]]
+  - [[https://career.ru/vacancy/24451079?query=linux][ООО Комфортел]]
+  - [[https://career.ru/vacancy/24755181?query=linux][404 Group]]
+  - [[https://career.ru/vacancy/24687741?query=linux][Группа компаний eLama]]
+  - [[https://career.ru/vacancy/24714649?query=linux][SPRINTHOST]]
+  - [[https://career.ru/vacancy/24147279?query=linux][Majordomo]]
+
+  - [[https://careers.veeam.ru/departments/support/faq][Список вопросов]]
+  - [[https://www.reg.com/company/jobs/testtask-techsupport][Вопросы для самопроверки]]

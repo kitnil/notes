@@ -451,3 +451,27 @@
 ** [2018-03-16 Fri 17:46] [[gnus:INBOX#m1r2okxgui.fsf@fastmail.net][Email from Konrad Hinsen: {bug#30837} {PATCH 3/3} guix import elpa: Fix typos in documentation strings]] by [[mailto:konrad.hinsen@fastmail.net][Konrad Hinsen]]
 ** [2018-03-16 Fri 23:48] [[gnus:INBOX#20180316185415.GI29079@tomato][Email from Assaf Gordon: GNU Datamash 1.3 released]] by [[mailto:assafgordon@gmail.com][Assaf Gordon]]
 ** [2018-03-17 Sat 00:44] [[gnus:INBOX#20180316220732.19c2375a@scratchpost.org][Email from Danny Milosavljevic: {bug#30572} {PATCH 2/7} tests: Add tests for "guix pack".]] by [[mailto:dannym@scratchpost.org][Danny Milosavljevic]]
+** [2018-03-17 Sat 18:21] [[gnus:INBOX#87h8pe4uh0.fsf@GlaDOS.home][Email from Diego Nicola Barbato: Re: keyboard layout and system locale]] by [[mailto:dnbarbato@posteo.de][Diego Nicola Barbato]]
+   #+BEGIN_SRC scheme
+     (modify-services %desktop-services
+      (slim-service-type config =>
+                         (slim-configuration
+                          (inherit config)
+                          (startx (xorg-start-command
+                                   #:configuration-file
+                                   (xorg-configuration-file
+                                    ;; Setup X to use a swiss german keyboard layout.
+                                    #:extra-config
+                                    '("Section \"InputClass\"
+             Identifier \"keyboard-all\"
+             Option \"XkbLayout\" \"ch\" ; <~ replace \"ch\" with \"it\"
+             MatchIsKeyboard \"on\"
+     EndSection")))))))
+   #+END_SRC
+** [2018-03-17 Sat 18:50] [[gnus:INBOX#20180317152552.eui5w7e275sx4ohu@abyayala][Email from ng0@n0.is: {bug#30259} {PATCH} gnu: octave: Add audio and Qt GUI support.]] by [[mailto:ng0@n0.is][]]
+** [2018-03-18 Sun 18:32] [[gnus:INBOX#47f555d4-0d01-bbc1-9a8d-0ce94ee2e3fb@gmail.com][Email from Matt Wette: ffi-help: dbus demo]] by [[mailto:matt.wette@gmail.com][Matt Wette]]
+** [2018-03-19 Mon 07:17] [[gnus:INBOX#87o9jku2gt.fsf@gmail.com][Email from Chris Marusich: Re: How to install prerelease package versions (particularly Emacs)]] by [[mailto:cmmarusich@gmail.com][Chris Marusich]]
+   #+BEGIN_SRC shell
+     guix package --search=. | recsel -e 'name ~ "-(git|next|dev|devel|cvs|svn)$"' 
+   #+END_SRC
+** [2018-03-19 Mon 07:21] [[gnus:INBOX#87vadsdcfv.fsf@gmail.com][Email from Maxim Cournoyer: {bug#30851} {PATCH} Add SuperCollider, related changes]] by [[mailto:maxim.cournoyer@gmail.com][Maxim Cournoyer]]
