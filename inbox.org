@@ -483,3 +483,5 @@
                   (require 'guix-emacs nil t))
          (guix-emacs-autoload-packages guix-env)))
    #+END_SRC
+** [2018-03-24 Sat 14:42] [[gnus:INBOX#20180324081234.GA14831@thebird.nl][Email from Pjotr Prins: Provide python:debug with --with-pydebug switch]] by [[mailto:pjotr.public12@thebird.nl][Pjotr Prins]]
+** TODO [2018-03-24 Sat 18:33] [[gnus:INBOX#87o9jdr5k0.fsf@gmail.com][Email from Pierre Neidhardt: Re: Вопрос по опциям монтирования SSD и logrotate]] by [[mailto:ambrevar@gmail.com][Pierre Neidhardt]]
