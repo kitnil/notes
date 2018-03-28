@@ -1,0 +1,706 @@
+* Binary match
+  #+BEGIN_EXAMPLE
+      <koala_man> # printf '\x00\x01\x02\xAA\xBB' | LC_ALL=C grep -ao
+                  $'\xAA'
+          <shbot> koala_man: no output
+              ,*** c3bolla
+                  (c3bolla@gateway/shell/panicbnc/x-lscmbjlppbrxdobd)
+                  has quit: Ping timeout: 276 seconds
+      <koala_man> # printf '\x00\x01\x02\xAA\xBB' | LC_ALL=C grep -ao
+                  $'\xAA'; echo $?
+          <shbot> koala_man:
+          <shbot> koala_man: 0
+      <koala_man> shbot doesn't like binary garbage output, but as
+                  you can see it matches
+                  WeeChat 2.0.1
+
+
+       <guest___> cat gdb.tar.gz | grep -abo $'\00'  [20:17]
+       <guest___> please try this
+       <guest___> with any binary file
+        <greycat> $'\00' is a nul byte which VANISHES when passed as
+                  an argument
+       <guest___> it will print the whole file
+        <greycat> THIS IS WHY YOU TELL US WHAT THE FUCK YOU ARE
+                  ,*ACTUALLY* DOING
+        <greycat> You cannot pass a NUL byte as an argument, or even
+                  part of an argument.  Arguments are C strings.
+       <guest___> greycat: i wan to search a signature in a memory
+                  dump
+        <greycat> wooledg:~$ args $'foo\000bar'
+        <greycat> 1 args: <foo>
+        <Soliton> if your grep supports '\x00' it might work.
+       <guest___> koala_man: if i changed \x00 to \xAA, it will warn
+                  illegal byte sequence
+        <greycat> one of the answers on
+                  https://superuser.com/questions/627862/how-can-i-grep-a-hex-value-in-a-string-in-a-binary-file
+                  suggests grep -P '\x...'
+        <greycat> of course -P is yet another GNU extension
+       <guest___> greycat: my builds on Mac and Linux can't use -P
+                  ... :(  [20:21]
+      <azizLIGHT> i suppose for my script i can just launch it again
+                  every hour
+        <greycat> you could implement your own string search in C
+                  using Boyer-Moore or whatever algorithm you prefer
+       <guest___> i saw this answer before
+      <azizLIGHT> but id rather not
+       <guest___> i tried to use hexdump/od/xdd to turn the binary to
+                  Hex first, but this process is very slow for large
+                  dump images  [20:22]
+        <greycat> or you could hex-dump or octal-dump the binary file
+                  and then grep on the resulting ASCII strings of
+                  digits
+              ,*** Vonter (~Vonter@49.207.58.179) has quit: Ping
+                  timeout: 256 seconds
+      <koala_man> guest___: good thing you're looking for AA and not
+                  00 then
+       <guest___> koala_man: why...?  [20:23]
+      <koala_man> because yes, this is an inherent problem with nul
+                  bytes in arguments
+              ,*** cjwelborn
+                  (cjwelborn@gateway/shell/firrre/x-edddbjnbaddspsaw)
+                  has quit: Ping timeout: 240 seconds
+              ,*** c3bolla
+                  (c3bolla@gateway/shell/panicbnc/x-hhipangejlerxohl)
+                  has quit: Ping timeout: 240 seconds
+      <koala_man> but you said you were looking for AA so it's fine
+        <Soliton> try grep -E on osx.
+              ,*** coolboy (~coolboy@136.62.217.5) has joined channel
+                  #bash  [20:24]
+              ,*** }ls{ (~kalle@unaffiliated/ls/x-8089558) has quit:
+                  Ping timeout: 248 seconds
+       <guest___> Soliton: thanks, i tried and it's what i said "it
+                  gave strange result"
+       <guest___> grep -aobE "\x00"  [20:25]
+       <guest___> it skipped a lot of occurences
+              ,*** daniloaugusto
+                  (~daniloaug@LMontsouris-656-1-12-250.w92-154.abo.wanadoo.fr)
+                  has joined channel #bash
+       <guest___> it DOES show some results but it SKIPPED most
+              ,*** daniloaugusto
+                  (~daniloaug@LMontsouris-656-1-12-250.w92-154.abo.wanadoo.fr)
+                  has quit: Client Quit
+        <greycat> what the fuck do you mean by "skipped"
+              ,*** ahmedelgabri
+                  (~ahmedelga@2a02:a441:9f5:1:e479:f98:60e1:3a8) has
+                  joined channel #bash
+        <greycat> how do you even KNOW what the output is?  did you
+                  pipe the output through a hex dumper?  you didn't
+                  show that!
+              ,*** x405
+                  (~x405@pool-173-66-3-126.washdc.fios.verizon.net)
+                  has quit: Ping timeout: 248 seconds
+        <greycat> !wayrttd  [20:26]
+        <greybot> What are you /REALLY/ trying to do!?
+       <guest___> greycat: i use hexdump to view the hex values of
+                  the binary file and tried to search a byte appeared
+                  in the first 10 bytes
+       <guest___> but the grep result showed me 29000 offset as the
+                  first result
+        <greycat> 13:08  greycat> and do what, once you find it?
+        <greycat> grep does not show offsets  [20:27]
+              ,*** nkuttler (~nkuttler@unaffiliated/nkuttler) has
+                  joined channel #bash
+       <guest___> greycat: -b
+              ,*** navy_seal9614_ (~navy_seal@159.89.227.112) has
+                  joined channel #bash
+       <guest___> --buyte-offset
+        <greycat> Jesus, fucking GNU.
+        <Soliton> bsd has it as well.
+        <Soliton> even has -o as well.
+       <guest___> greycat: it doesn't matter, it's the same even if i
+                  don't use -b  [20:28]
+       <guest___> i can't skip -o
+              ,*** navy_seal9614
+                  (~navy_seal@cpe-74-130-11-236.kya.res.rr.com) has
+                  quit: Ping timeout: 240 seconds
+              ,*** IndianArya (~Arya@103.5.133.13) has joined channel
+                  #bash
+        <Soliton> so do you even need to search the whole file? or
+                  are you just interested in some header?
+        <greycat> I think that's like the 5th attempt to get him to
+                  talk.  [20:29]
+              ,*** coolboy (~coolboy@136.62.217.5) has quit: Ping
+                  timeout: 260 seconds
+              ,*** lord_
+                  (~lord@dynamic-adsl-78-15-172-53.clienti.tiscali.it)
+                  has quit: Quit: Leaving
+         <geirha> as far as I know, only GNU grep is able to handle
+                  NULs in the data at all
+       <guest___> Soliton: i want to search for a header/signature in
+                  the dump image  [20:30]
+        <greycat> And do what, once you find it?
+       <guest___> grep -c $'\x00' and grep -c "\x00" give different
+                  results, is it normal?
+        <Soliton> yes.
+        <greycat> $'\x00' is the same as ''
+        <Soliton> as explained above.
+        <greycat> AS YOU HAVE BEEN TOLD
+        <greycat> AS YOU HAVE BEEN *SHOWN*
+              ,*** ahmedelgabri
+                  (~ahmedelga@2a02:a441:9f5:1:e479:f98:60e1:3a8) has
+                  quit: Ping timeout: 276 seconds  [20:31]
+              ,*** kallesbar (~kallesbar@95.175.104.40) has quit: Ping
+                  timeout: 264 seconds
+              ,*** renihs (~renihs@81.4.121.14) has quit: Quit: bye
+              ,*** gchristensen (~gchristen@unaffiliated/grahamc) has
+                  left channel #bash: "WeeChat 1.9.1"  [20:32]
+              ,*** renihs (~renihs@81.4.121.14) has joined channel
+                  #bash
+              ,*** rcdilorenzo
+                  (~rcdiloren@cpe-76-182-26-65.nc.res.rr.com) has
+                  quit: Ping timeout: 260 seconds
+              ,*** calamity_man (~calamity_@98.99.244.161) has joined
+                  channel #bash  [20:33]
+              ,*** merzo (~merzo@85.132.89.52) has joined channel
+                  #bash
+              ,*** tunekey (~tunekey@unaffiliated/tunekey) has joined
+                  channel #bash
+              ,*** fission6 (~textual@204.148.42.142) has quit: Quit:
+                  My MacBook has gone to sleep. ZZZzzz…
+              ,*** Mista_D (~Mista_D@66.207.203.114) has joined
+                  channel #bash  [20:34]
+              ,*** pajpax (~pajpax@adsl-dyn250.78-99-6.t-com.sk) has
+                  joined channel #bash
+       <guest___> i found that -b is buggy
+       <guest___> grep -c works
+        <greycat> Submit a bug report to your vendor, then.
+              ,*** ahmedelgabri
+                  (~ahmedelga@2a02:a441:9f5:1:e479:f98:60e1:3a8) has
+                  joined channel #bash  [20:35]
+           <djph> vendor redirects bug reports to /dev/null
+           <djph> :)
+              ,*** HarveyPwca
+                  (~HarveyPwc@ip-64-134-38-52.public.wayport.net) has
+                  joined channel #bash
+              ,*** tesseract (tesseract@nat/redhat/x-exnnhbtedpbnlyrw)
+                  has quit: Quit:
+                  ♪♫•*¨*•.¸¸♫♪♪♫•*¨*•.¸¸♫♪♪♫•*¨*•.¸¸♫♪♪♫•*¨*•.¸¸♫♪
+              ,*** migul (~mig@pdpc/supporter/student/migul) has
+                  joined channel #bash  [20:36]
+        <phy1729> find a new vendor
+        <apathor> inb4 BSD lol  [20:37]
+              ,*** Hdphn (~akira@gateway/tor-sasl/hdphn) has quit:
+                  Ping timeout: 268 seconds  [20:40]
+              ,*** x405
+                  (~x405@pool-173-66-3-126.washdc.fios.verizon.net)
+                  has joined channel #bash
+              ,*** ahmedelgabri
+                  (~ahmedelga@2a02:a441:9f5:1:e479:f98:60e1:3a8) has
+                  quit: Ping timeout: 276 seconds
+       <guest___> # printf '\x00\x01\x02\xAA\xBB' | LC_ALL=C grep -ao
+                  $'\xAA'; echo $?  [20:41]
+          <shbot> guest___:
+          <shbot> guest___: 0
+       <guest___> # printf '\x00\x01\x02\xAA\xBB' | LC_ALL=C grep -c
+                  $'\xAA'; echo $?
+          <shbot> guest___: 1
+          <shbot> guest___: 0
+       <guest___> # printf '\x00\x01\x02\xAA\xBB\xBB\xBB' | LC_ALL=C
+                  grep -c $'\xBB'
+          <shbot> guest___: 1
+       <guest___> why doesn't it show 3 ?
+       <guest___> # printf '\x00\x01\x02\xAA\xBB\xBB\xBB' | LC_ALL=C
+                  grep -bo $'\xBB'  [20:42]
+          <shbot> guest___: Binary file (standard input) matches
+              ,*** HarveyPwca
+                  (~HarveyPwc@ip-64-134-38-52.public.wayport.net) has
+                  quit: Quit: Leaving
+        <greycat> you didn't tell it to treat the input as a binary
+                  file, for starters
+       <guest___> # printf '\x00\x01\x02\xAA\xBB\xBB\xBB' | LC_ALL=C
+                  grep -abo $'\xBB'
+          <shbot> guest___: 4:
+          <shbot> guest___: 5:
+          <shbot> guest___: 6:
+       <guest___> # printf '\x00\x01\x02\xAA\xBB\xBB\xBB' | LC_ALL=C
+                  grep -ac $'\xBB'
+          <shbot> guest___: 1
+        <greycat> Please stop spamming the channel via the bot.
+                  Practice in /msg shbot, or on your local shell.
+              ,*** obiwan90 (~obiwan90@xdsl-31-164-183-32.adslplus.ch)
+                  has quit: Ping timeout: 240 seconds  [20:43]
+              ,*** fulminator
+                  (~Mutter@2600:380:181f:cb45:9980:7daa:79af:3c3c)
+                  has joined channel #bash
+              ,*** renihs (~renihs@81.4.121.14) has quit: Quit: bye
+              ,*** renihs (~renihs@81.4.121.14) has joined channel
+                  #bash  [20:44]
+       <guest___> i want to show you the bug
+              ,*** fission6 (~textual@204.148.42.142) has joined
+                  channel #bash
+       <guest___> greycat: koala_man:
+        <greycat> Pick ONE command that you think is a bug and we
+                  will try to dissect that ONE command.
+              ,*** ahmedelgabri
+                  (~ahmedelga@2a02:a441:9f5:1:e479:f98:60e1:3a8) has
+                  joined channel #bash
+       <guest___> -abo shows 3 results, -c shows 1
+              ,*** MagePsycho (~razen@bba523519.alshamil.net.ae) has
+                  joined channel #bash
+      <koala_man> -c counts number of lines with a match
+        <greycat> -c does not treat the input as a binary file for
+                  starters  [20:45]
+        <greycat> why didn't you include -a or other binary-input
+                  options when you used -c?
+     <MagePsycho> $_ vs $!
+              ,*** renihs (~renihs@81.4.121.14) has quit: Client Quit
+        <Soliton> !$_
+        <greybot> "$_" expands to the last argument to the previous
+                  command, after expansion (man bash, Special
+                  Parameters)
+        <Soliton> !$!
+        <greybot> $! expands to the process ID of the most recently
+                  executed background (asynchronous) command.
+              ,*** fulminator
+                  (~Mutter@2600:380:181f:cb45:9980:7daa:79af:3c3c)
+                  has quit: Client Quit
+              ,*** navy_seal9614
+                  (~navy_seal@cpe-74-130-11-236.kya.res.rr.com) has
+                  joined channel #bash  [20:49]
+              ,*** x405
+                  (~x405@pool-173-66-3-126.washdc.fios.verizon.net)
+                  has quit: 
+              ,*** gtristan (~tristanva@110.11.179.89) has joined
+                  channel #bash
+              ,*** peter222
+                  (~peter@ip5b439575.dynamic.kabel-deutschland.de)
+                  has quit: Quit: Leaving
+              ,*** coolboy (~coolboy@136.62.217.5) has joined channel
+                  #bash  [20:50]
+              ,*** IanLiu (~IanLiu@189-69-35-79.dsl.telesp.net.br) has
+                  quit: Quit: IanLiu  [20:51]
+              ,*** Qasker
+                  (Elite14787@gateway/shell/elitebnc/x-ddepecxbeolyxuzl)
+                  has quit: Ping timeout: 255 seconds  [20:52]
+       <guest___> Why "\xAA" and $'\xAA' are different !!!??
+        <greycat> The second one is interpreted by bash.
+              ,*** navy_seal9614_ (~navy_seal@159.89.227.112) has
+                  quit: Ping timeout: 260 seconds
+              ,*** IanLiu (~IanLiu@189-69-35-79.dsl.telesp.net.br) has
+                  joined channel #bash
+              ,*** nixfreak
+                  (32cac5d7@gateway/web/cgi-irc/kiwiirc.com/ip.50.202.197.215)
+                  has quit: Quit: Ping timeout (120 seconds)
+        <greycat> The first one is just the 4 literal bytes \ x A A
+                  and may or may not be interpreted by the program
+                  you send it to.
+              ,*** predmijat
+                  (~predmijat@cable-89-216-20-68.static.sbb.rs) has
+                  quit: Quit: bye  [20:53]
+              ,*** raz (~raz@107.191.104.145) has quit: Ping timeout:
+                  252 seconds
+              ,*** hiya (hiya@gateway/shell/qz/x-rdsqsnjhehsgjpys) has
+                  quit: Ping timeout: 240 seconds
+              ,*** giraffe
+                  (skarn@gateway/shell/firrre/x-jyfeyiivlyscrutn) has
+                  quit: Ping timeout: 240 seconds  [20:54]
+              ,*** raz (raz@2604:180:1::6193:c4c7) has joined channel
+                  #bash  [20:55]
+              ,*** raz (raz@2604:180:1::6193:c4c7) has quit: Changing
+                  host
+              ,*** raz (raz@unaffiliated/raz) has joined channel #bash
+              ,*** gef3233
+                  (~gef3233@static-149-195-62-95.ipcom.comunitel.net)
+                  has joined channel #bash
+              ,*** coolboy (~coolboy@136.62.217.5) has quit: Ping
+                  timeout: 256 seconds
+              ,*** bl4ckr41n
+                  (~bl4ckr41n@75-121-15-5.dyn.centurytel.net) has
+                  joined channel #bash
+       <guest___> greycat: thanks! which one is better?
+       <guest___> moreover, i found that \x00 is not good for testing
+                                                               [20:56]
+        <Soliton> the one that does what you want.
+        <greycat> Which color is better?  Black or white?
+       <guest___> searching \x00 doesn't work even if the whole file
+                  is 00 00 00 00
+        <greycat> 13:07  greycat> There may not be any standard tool
+                  capable of it.
+        <greycat> 13:21  greycat> you could implement your own string
+                  search in C using Boyer-Moore or whatever algorithm
+                  you prefer
+              ,*** dr3w_ (~dr3w_@abercs/dr3w) has joined channel #bash
+              ,*** docmax1 (~docmax@x4e339735.dyn.telefonica.de) has
+                  joined channel #bash  [20:57]
+       <guest___> Soliton: greycat thanks
+              ,*** fission6 (~textual@204.148.42.142) has quit: Quit:
+                  My MacBook has gone to sleep. ZZZzzz…
+              ,*** predmijat
+                  (~predmijat@cable-89-216-20-68.static.sbb.rs) has
+                  joined channel #bash
+              ,*** rememberYou (~user@unaffiliated/rememberyou) has
+                  joined channel #bash
+              ,*** hph^ (~Me@ip72-195-187-57.mc.at.cox.net) has quit:
+                  Ping timeout: 260 seconds
+              ,*** fission6 (~textual@204.148.42.142) has joined
+                  channel #bash  [20:58]
+              ,*** IndianArya (~Arya@103.5.133.13) has quit: Ping
+                  timeout: 246 seconds
+         <geirha> you could hack something up using bash, but you
+                  risk having to store the whole file in memory if it
+                  doesn't contain any NUL at all  [20:59]
+              ,*** ageis (~kevin@cointel.pro) has quit: Quit: exit(1);
+                  echo 'https://cointel.pro' > /dev/null;
+                  x-www-browser 'https://twitter.com/ageis'
+         <geirha> another option is to parse it out of od output
+              ,*** docmax (~docmax@x55b29f2b.dyn.telefonica.de) has
+                  quit: Ping timeout: 264 seconds
+              ,*** docmax1 (~docmax@x4e339735.dyn.telefonica.de) is
+                  now known as docmax
+              ,*** mujjingun
+                  (uid228218@gateway/web/irccloud.com/x-fjywizescfxgvrvc)
+                  has quit: Quit: Connection closed for inactivity
+                                                               [21:00]
+        <greycat> now we're going in circles!
+         <geirha> oh, guess I should read more backlog
+              ,*** longxia (~irc@unaffiliated/longxia) has joined
+                  channel #bash
+              ,*** cjwelborn
+                  (cjwelborn@gateway/shell/firrre/x-dzsmqhayxagptyqa)
+                  has joined channel #bash  [21:01]
+              ,*** rcdilorenzo
+                  (~rcdiloren@cpe-2606-A000-1118-8285-C856-5C25-944F-F935.dyn6.twc.com)
+                  has joined channel #bash
+              ,*** IndianArya (~Arya@103.5.133.13) has joined channel
+                  #bash  [21:02]
+              ,*** calamity_man (~calamity_@98.99.244.161) has quit:
+                  Ping timeout: 256 seconds
+          <Tecan> https://github.com/aizquier/typewriter-sounds
+              ,*** leerg319 (~alexey@94.19.176.250) has joined channel
+                  #bash
+              ,*** awang_ (awang@nat/redhat/x-rzwouebcuvtjqcti) has
+                  quit: Ping timeout: 276 seconds
+              ,*** ahmedelgabri
+                  (~ahmedelga@2a02:a441:9f5:1:e479:f98:60e1:3a8) has
+                  quit: Ping timeout: 276 seconds
+              ,*** calamity_man (~calamity_@98.99.244.161) has joined
+                  channel #bash  [21:03]
+              ,*** c3bolla
+                  (c3bolla@gateway/shell/panicbnc/x-jthhviazcsmtjlpp)
+                  has joined channel #bash  [21:04]
+              ,*** tymczenko (~tymczenko@unaffiliated/tymczenko) has
+                  joined channel #bash
+              ,*** TJ- (~root@2a02:8011:2007::5) has quit: Ping
+                  timeout: 245 seconds
+              ,*** lvdombrkr (~root@78.84.166.129) has joined channel
+                  #bash  [21:05]
+              ,*** marduk191 (marduk191@unaffiliated/marduk191) has
+                  joined channel #bash
+              ,*** arora (~ashok@109.177.144.110) has joined channel
+                  #bash
+              ,*** rendar (~rendar@unaffiliated/rendar) has quit: 
+              ,*** Qasker
+                  (Elite14787@gateway/shell/elitebnc/x-hxbhhfkoocrjjvxn)
+                  has joined channel #bash  [21:07]
+              ,*** ageis (~kevin@cointel.pro) has joined channel #bash
+              ,*** hiya (hiya@gateway/shell/qz/x-exlobvdrohsppwyk) has
+                  joined channel #bash
+              ,*** sbuj
+                  (~textual@2601:200:c000:dbaa:ce0:baae:3ad5:d2ad)
+                  has joined channel #bash
+              ,*** TJ- (~root@2a02:8011:2007::5) has joined channel
+                  #bash
+              ,*** irc50 (~Thunderbi@62.83.242.200.dyn.user.ono.com)
+                  has joined channel #bash  [21:09]
+              ,*** merzo (~merzo@85.132.89.52) has quit: Remote host
+                  closed the connection
+              ,*** Sasazuka (~Sasazuka@unaffiliated/sasazuka) has
+                  joined channel #bash  [21:10]
+              ,*** giraffe
+                  (skarn@gateway/shell/firrre/x-vfxmmlhzgcueqyhj) has
+                  joined channel #bash  [21:11]
+              ,*** kurahaupo_ (~kurahaupo@118.148.170.72) has joined
+                  channel #bash
+              ,*** MagePsycho (~razen@bba523519.alshamil.net.ae) has
+                  quit: Quit: MagePsycho  [21:13]
+              ,*** kurahaupo (~kurahaupo@121.99.156.44) has quit: Ping
+                  timeout: 276 seconds
+              ,*** kurahaupo_ (~kurahaupo@118.148.170.72) has quit:
+                  Read error: Connection reset by peer  [21:14]
+              ,*** kurahaupo (~kurahaupo@121.99.156.44) has joined
+                  channel #bash
+              ,*** ahmedelgabri
+                  (~ahmedelga@2a02:a441:9f5:1:e479:f98:60e1:3a8) has
+                  joined channel #bash  [21:15]
+              ,*** Alex-SF (~Alex-SF@208.115.86.69) has joined channel
+                  #bash  [21:16]
+              ,*** awang_ (awang@nat/redhat/x-hydggudfuodjnkpi) has
+                  joined channel #bash  [21:17]
+              ,*** merzo (~merzo@85.132.89.52) has joined channel
+                  #bash  [21:18]
+              ,*** yann-kaelig
+                  (~yann-kael@89-64-45-28.dynamic.chello.pl) has
+                  quit: 
+              ,*** coolboy (~coolboy@136.62.217.5) has joined channel
+                  #bash  [21:19]
+              ,*** gentunian (~seba@unaffiliated/gentunian) has quit:
+                  Ping timeout: 252 seconds
+              ,*** ahmedelgabri
+                  (~ahmedelga@2a02:a441:9f5:1:e479:f98:60e1:3a8) has
+                  quit: Ping timeout: 252 seconds
+              ,*** x1b4
+                  (~xD3C@ip1f134267.dynamic.kabel-deutschland.de) has
+                  joined channel #bash  [21:20]
+              ,*** Uqbar (~sandbox@unaffiliated/uqbar) has quit: Ping
+                  timeout: 252 seconds  [21:21]
+              ,*** gaab (~Gaaab@94.130.76.71) has quit: Remote host
+                  closed the connection
+              ,*** morningdoughnut (~morningdo@162.247.91.219) has
+                  joined channel #bash
+              ,*** skweek
+                  (~skweek@USF-Gold-Wifi-nat-57.laptops.usf.edu) has
+                  joined channel #bash
+              ,*** krukudilo (~krukudilo@gateway/tor-sasl/kurkudilo)
+                  has joined channel #bash
+              ,*** lvdombrkr (~root@78.84.166.129) has quit: Quit:
+                  Leaving  [21:22]
+              ,*** kurahaupo_ (~kurahaupo@118.148.170.72) has joined
+                  channel #bash
+              ,*** Uqbar (~sandbox@unaffiliated/uqbar) has joined
+                  channel #bash
+              ,*** Mista-D (~Mista_D@66.207.203.114) has joined
+                  channel #bash
+              ,*** sauvin_ (sauvin@about/linux/staff/sauvin) has quit:
+                  Remote host closed the connection
+              ,*** bray90820
+                  (~bray90820@173-25-193-72.client.mchsi.com) has
+                  quit: Read error: Connection reset by peer
+              ,*** bray9082_
+                  (~bray90820@173-25-193-72.client.mchsi.com) has
+                  joined channel #bash
+              ,*** AfroThundr
+                  (~AfroThund@pool-71-244-241-187.bltmmd.fios.verizon.net)
+                  has joined channel #bash  [21:24]
+              ,*** coolboy (~coolboy@136.62.217.5) has quit: Ping
+                  timeout: 240 seconds
+              ,*** morningdoughnut (~morningdo@162.247.91.219) has
+                  quit: Client Quit
+              ,*** stillsinn (~My_user_n@231.80-203-99.nextgentel.com)
+                  has quit: Ping timeout: 268 seconds
+              ,*** kurahaupo_ (~kurahaupo@118.148.170.72) has quit:
+                  Read error: Connection reset by peer
+              ,*** kurahaupo_ (~kurahaupo@121.99.156.44) has joined
+                  channel #bash  [21:25]
+              ,*** Mista_D (~Mista_D@66.207.203.114) has quit: Ping
+                  timeout: 264 seconds
+              ,*** coolboy (~coolboy@136.62.217.5) has joined channel
+                  #bash
+              ,*** renihs (~renihs@81.4.121.14) has joined channel
+                  #bash
+              ,*** kurahaupo (~kurahaupo@121.99.156.44) has quit: Ping
+                  timeout: 240 seconds  [21:26]
+              ,*** JackH (~laptop@i25091.upc-i.chello.nl) has joined
+                  channel #bash
+              ,*** CrazyH
+                  (~user@h57.7.187.173.dynamic.ip.windstream.net) has
+                  joined channel #bash
+              ,*** jwmann (~jwmann@orly.purecobalt.com) has quit:
+                  Quit: zZzZz
+              ,*** prite (~prite@124.155.246.53) has quit: Ping
+                  timeout: 248 seconds  [21:27]
+              ,*** gelignite (~gelignite@55d48775.access.ecotel.net)
+                  has joined channel #bash  [21:28]
+              ,*** Ignatev
+                  (5d5580ed@gateway/web/freenode/ip.93.85.128.237)
+                  has joined channel #bash  [21:30]
+              ,*** Naib (~j@fu/hw/naib) has joined channel #bash
+              ,*** _ng (~ngoldin@141.226.26.156) has joined channel
+                  #bash  [21:31]
+              ,*** grauzikas (bacarrdy@78-56-222-78.static.zebra.lt)
+                  has joined channel #bash
+      <grauzikas> hello
+      <grauzikas> is good way to use sed -i option? some one told me
+                  that this isnt a good way so im asking for you
+                  experts :)  [21:32]
+              ,*** tgburrin (~tgburrin@152.179.78.138) has joined
+                  channel #bash
+        <greycat> Start by describing what you actually want to DO.
+      <grauzikas> i want to remove some mached lines from file :)
+        <greycat> grep -v bad "$file" > tmp && mv tmp "$file"  [21:33]
+       <e36freak> printf '%s\n' 'g/bad/d' w | ed -s "$file"
+              ,*** hiya (hiya@gateway/shell/qz/x-exlobvdrohsppwyk) has
+                  quit: Quit: Leaving!
+      <grauzikas> i see, so moving file as tmp and modify it and then
+                  move back to original is the best way :) ?  [21:34]
+      <grauzikas> i`m wrong
+        <greycat> !editing
+        <greybot> In-place "editing" of files from a script is a
+                  really poorly thought-out idea. See
+                  <http://backreference.org/2011/01/29/in-place-editing-of-files/>
+                  and <sed-i> and <pf 13> and <faq 21>.
+      <grauzikas> create tmp correct file and then move it as
+                  original back
+              ,*** hiya (hiya@gateway/shell/qz/x-ivoasexfrbgrianj) has
+                  joined channel #bash
+              ,*** argusbr (~online@unaffiliated/argusbr) has quit:
+                  Ping timeout: 256 seconds
+        <greycat> The better question is "Why do you believe that you
+                  should write a shell script to modify this file?"
+              ,*** OS-34584
+                  (~OS-34584@host161-92-dynamic.49-79-r.retail.telecomitalia.it)
+                  has joined channel #bash  [21:35]
+      <grauzikas> because i need some automation and before i was
+                  using sed -i
+              ,*** RickDeckard (~tgburrin@108.60.152.194) has quit:
+                  Ping timeout: 260 seconds
+        <greycat> Why do you "need some automation"?  Why is the file
+                  wrong in the first place?  Why can't you just fix
+                  it by hgand?  [21:36]
+      <grauzikas> i just need to modify some services cfg files
+              ,*** Mista-D (~Mista_D@66.207.203.114) has quit: Ping
+                  timeout: 240 seconds
+              ,*** argusbr (~online@unaffiliated/argusbr) has joined
+                  channel #bash
+      <grauzikas> i cant do that by hand because i need to do same
+                  think for a lot of virtual servers
+       <OS-34584> hello everybody
+              ,*** erdave (~erdave@201.243.169.155) has joined channel
+                  #bash
+        <greycat> So you have a configuration management system in
+                  place, right?  Puppet or ansible or ...?
+              ,*** ZongvaX (~ole@217.170.203.137) has joined channel
+                  #bash  [21:37]
+      <grauzikas> no i`m never using automation tools like puppet or
+                  ansible, i`m doing everything by my hands and for
+                  example i need to modify VPN pptpd cfg to remove or
+                  replace some lines  [21:38]
+        <apathor> ansible's lineinfile is nice for the situations
+                  where one might turn to 'sed -i'
+              ,*** well_laid_lawn (~Jean-luc@61.68.6.221) has joined
+                  channel #bash
+              ,*** siroko
+                  (~siroko@86.red-83-43-124.dynamicip.rima-tde.net)
+                  has quit: Ping timeout: 264 seconds
+      <grauzikas> before i was using sed -i and now i`m recreating my
+                  bash script and want to make it as it should be :)
+                                                               [21:39]
+              ,*** Zongva (~ole@217.170.202.125) has quit: Ping
+                  timeout: 264 seconds
+        <greycat> How many servers are you managing in this way?
+      <grauzikas> but thanks in any way, i understand that i need to
+                  move all content of file to tmp file with modified
+                  line and then move it back to original file  [21:40]
+        <greycat> that's what sed -i does behind the curtain
+              ,*** Alex-SF (~Alex-SF@208.115.86.69) has quit: Quit:
+                  Alex-SF
+              ,*** zro (~zro@wikimedia/zro) has joined channel #bash
+                                                               [21:41]
+        <phy1729> grauzikas: if you're managing "a lot" of servers by
+                  hand, you're doing things terribly wrong.
+              ,*** saltystew
+                  (~saltystew@45-17-47-82.lightspeed.miamfl.sbcglobal.net)
+                  has joined channel #bash  [21:42]
+          <Tecan> life = whats bothering you ?
+              ,*** saltystew
+                  (~saltystew@45-17-47-82.lightspeed.miamfl.sbcglobal.net)
+                  has quit: Client Quit  [21:43]
+              ,*** saltystew
+                  (~saltystew@45-17-47-82.lightspeed.miamfl.sbcglobal.net)
+                  has joined channel #bash
+              ,*** neo219 (~anon@178.254.197.177) has joined channel
+                  #bash
+              ,*** The_Unknown
+                  (~The_Unkno@gateway/tor-sasl/theunknown/x-86092925)
+                  has joined channel #bash
+      <grauzikas> phy1729: can you explainn then how that should be
+                  done in correct way ?  [21:44]
+        <greycat> With some kind of configuration management system.
+        <phy1729> greycat: that's my line  [21:45]
+      <grauzikas> :)
+              ,*** dr3w_ (~dr3w_@abercs/dr3w) has quit: Quit:
+                  https://media3.giphy.com/media/3oKIPsx2VAYAgEHC12/giphy.gif
+              ,*** funksh0n (~funksh0n@62.102.148.181) has joined
+                  channel #bash
+              ,*** borkr (~borkr@static130-244.mimer.net) has quit:
+                  Quit: Leaving
+       <funksh0n> Hello all.
+       <funksh0n> How does one open a terminal emulator and run some
+                  program inside it from a bash script?  Essentially
+                  I want a script that will run `nvim
+                  /some/fixed/path` in a new window.  [21:46]
+    <The_Unknown> good day  [21:47]
+        <greycat> xterm -e nvim /some/file
+      <grauzikas> probably i cant use some cfg management tools
+                  because im setting up it on virtual machines and
+                  virtual machines templates has post-install
+                  scripting
+              ,*** Sonderblade
+                  (~bjourne@wlan-eduroam-130-237-240-126.su.se) has
+                  joined channel #bash
+        <phy1729> You can still do config management on VMs
+                ,* phy1729 guesses either AWS with cloud-init or
+                  docker
+        <greycat> A server is a server.
+              ,*** fulminator (~Mutter@50.110.132.253) has joined
+                  channel #bash
+        <greycat> Unless of course it's docker.  Then it's just
+                  /ignore.  [21:48]
+      <grauzikas> phy1729: you are wrong :)
+              ,*** magyar_ (~magyar@unaffiliated/magyar) has joined
+                  channel #bash
+       <funksh0n> Wonderful thankyou greycat
+      <grauzikas> it`s ovz 7 with ez templates
+      <grauzikas> :)
+              ,*** magyar (~magyar@unaffiliated/magyar) has quit: Ping
+                  timeout: 240 seconds
+    <The_Unknown> make sure you've added permissions
+              ,*** The_Unknown
+                  (~The_Unkno@gateway/tor-sasl/theunknown/x-86092925)
+                  has quit: Remote host closed the connection
+              ,*** The_Unknown
+                  (~The_Unkno@gateway/tor-sasl/theunknown/x-86092925)
+                  has joined channel #bash  [21:49]
+              ,*** Ignatev
+                  (5d5580ed@gateway/web/freenode/ip.93.85.128.237)
+                  has quit: Ping timeout: 260 seconds
+              ,*** wandering_vagran (~wandering@115.187.42.31) has
+                  quit: Remote host closed the connection
+              ,*** calamity_man (~calamity_@98.99.244.161) has quit:
+                  Ping timeout: 256 seconds  [21:50]
+              ,*** ClawOfLight (~bennett@vps1.piater.name) has joined
+                  channel #bash
+              ,*** ClawOfLight (~bennett@vps1.piater.name) has left
+                  channel #bash: #bash  [21:51]
+      <grauzikas> you mean cfg management tools like chef, pupper and
+                  so on or debconf if it is debian ?  [21:52]
+        <greycat> NOT debconf.  The other ones.  [21:53]
+      <grauzikas> can you provide an example ?  [21:54]
+        <greycat> You already gave two.
+              ,*** mckendricks (~mckendric@173.0.112.18) has quit:
+                  Quit: Textual IRC Client: www.textualapp.com
+              ,*** ClawOfLight (~bennett@vps1.piater.name) has joined
+                  channel #bash  [21:55]
+              ,*** dr3w_ (~dr3w_@abercs/dr3w) has joined channel #bash
+         <uplime> lol pupper
+              ,*** ClawOfLight (~bennett@vps1.piater.name) has left
+                  channel #bash: #bash
+       <OS-34584> I have a newbie question if someone care to help. I
+                  thought that every bash script need to have a she
+                  bang at the beginning
+         <uplime> no
+      <grauzikas> it was an mistake :) how you can see r is near t :)
+         <uplime> a shebang just tells the kernel how to execute the
+                  script  [21:56]
+         <uplime> otherwise you can just do `bash yourscript`
+        <greycat> Every script should have a shebang, yes.
+         <uplime> ^ it should, but its not required
+              ,*** clemens3 (~clemens@80-218-38-71.dclient.hispeed.ch)
+                  has joined channel #bash
+        <greycat> If you run it as "bash yourscript" then you are not
+                  really executing it.  You're executing a shell and
+                  passing the script's filename as an argument.
+              ,*** Strepsils (~textual@159.224.109.206) has quit:
+                  Quit: Textual IRC Client: www.textualapp.com
+              ,*** dendazen (~dendazen@128.177.29.242) has joined
+                  channel #bash
+        <phy1729> greycat: do you put a shebang at the top of your
+                  .bashrc?
+       <OS-34584> thank you :)
+        <greycat> Without a shebang you can't *REALLY* execute it,
+                  like find ... -exec myscript {} +  [21:57]
+         <uplime> phy1729: how do you define script?
+        <greycat> phy1729: that is not a script.  It's a dot file.
+        <phy1729> bash doesn't care about that distinction when
+                  sourcing the file
+  #+END_EXAMPLE
