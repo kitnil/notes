@@ -484,15 +484,12 @@
          (guix-emacs-autoload-packages guix-env)))
    #+END_SRC
 ** [2018-03-24 Sat 14:42] [[gnus:INBOX#20180324081234.GA14831@thebird.nl][Email from Pjotr Prins: Provide python:debug with --with-pydebug switch]] by [[mailto:pjotr.public12@thebird.nl][Pjotr Prins]]
-** TODO [2018-03-24 Sat 18:33] [[gnus:INBOX#87o9jdr5k0.fsf@gmail.com][Email from Pierre Neidhardt: Re: Вопрос по опциям монтирования SSD и logrotate]] by [[mailto:ambrevar@gmail.com][Pierre Neidhardt]]
-** TODO [2018-03-26 Mon 21:57] [[gnus:nnimap+USER:INBOX#87lgeehe5g.fsf@gmail.com][Email from Pierre Neidhardt: Re: How to install prerelease package versions (particularly Emacs)]] by [[mailto:ambrevar@gmail.com][Pierre Neidhardt]]
 ** [2018-03-26 Mon 22:01] [[gnus:INBOX#87muyuhebp.fsf@gmail.com][Email from Pierre Neidhardt: Fail to configure home-directory]] by [[mailto:ambrevar@gmail.com][Pierre Neidhardt]]
 ** [2018-03-27 Tue 08:30] [[gnus:INBOX#1522095505.3286349.1316797816.594CB0C5@webmail.messagingengine.com][Email from Mark Meyer: {orchestration} AWS public cloud images]] by [[mailto:mark@ofosos.org][Mark Meyer]]
 ** [2018-03-27 Tue 18:21] [[gnus:INBOX#87d0zpyj5d.fsf_-_@gnu.org][Email from Ludovic Courtès: bug#27284: ‘guix pull’ builds using multiple derivations]] by [[mailto:ludo@gnu.org][Ludovic Courtès]]
 ** [2018-03-27 Tue 18:42] [[gnus:INBOX#m1y3idwqfr.fsf@fastmail.net][Email from Konrad Hinsen: bug#30961: Byte compilation problem with emacs-org]] by [[mailto:konrad.hinsen@fastmail.net][Konrad Hinsen]]
 ** [2018-03-27 Tue 19:38] [[gnus:INBOX#1522167476.1298329.1317868904.779AEDB7@webmail.messagingengine.com][Email from Jostein Kjønigsen: Re: Windows snapshot builds]] by [[mailto:jostein@secure.kjonigsen.net][Jostein Kjønigsen]]
 ** [2018-03-28 Wed 10:24] [[gnus:INBOX#20180327213923.GA16676@jasmine.lan][Email from Leo Famulari: Annoying behaviour of the GPG signature verification pre-push hook]] by [[mailto:leo@famulari.name][Leo Famulari]]
-** TODO [2018-03-28 Wed 11:09] [[gnus:INBOX#87po3ois8d.fsf@gmail.com][Email from Pierre Neidhardt: Re: Missing pinentry-emacs for gpg-agent?]] by [[mailto:ambrevar@gmail.com][Pierre Neidhardt]]
 ** [2018-03-28 Wed 11:34] [[gnus:INBOX#877epxxqxt.fsf@gmail.com][Email from Artyom Poptsov: {ANN} Guile-SSH 0.11.3 released]] by [[mailto:poptsov.artyom@gmail.com][Artyom Poptsov]]
 ** [2018-03-28 Wed 17:14] [[gnus:INBOX#87h8p0wb6m.fsf@gmail.com][Email from Pierre Neidhardt: Package requests: fortune, gifsicle, inxi, uncrustify, unrar, vsftp, xss-lock]] by [[mailto:ambrevar@gmail.com][Pierre Neidhardt]]
 ** [2018-03-28 Wed 20:15] [[gnus:INBOX#87in9gth2u.fsf@gnu.org][Email from Ludovic Courtès: ‘guix weather’ reports CI stats]] by [[mailto:ludo@gnu.org][Ludovic Courtès]]
@@ -507,3 +504,4 @@
      udisksctl mount -b /dev/sdb2
      udisksctl unmount -b /dev/sdb2
    #+END_SRC
+** TODO [2018-03-30 Fri 10:18] [[gnus:INBOX#87d0zmhwkl.fsf@gmail.com][Email from Pierre Neidhardt: Re: How to install prerelease package versions (particularly Emacs)]] by [[mailto:ambrevar@gmail.com][Pierre Neidhardt]]
