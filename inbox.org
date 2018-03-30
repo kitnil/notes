@@ -497,3 +497,13 @@
 ** [2018-03-28 Wed 17:14] [[gnus:INBOX#87h8p0wb6m.fsf@gmail.com][Email from Pierre Neidhardt: Package requests: fortune, gifsicle, inxi, uncrustify, unrar, vsftp, xss-lock]] by [[mailto:ambrevar@gmail.com][Pierre Neidhardt]]
 ** [2018-03-28 Wed 20:15] [[gnus:INBOX#87in9gth2u.fsf@gnu.org][Email from Ludovic Courtès: ‘guix weather’ reports CI stats]] by [[mailto:ludo@gnu.org][Ludovic Courtès]]
 ** [2018-03-28 Wed 21:25] [[gnus:INBOX#CAGSZTjJvmWCju-4rpnxHrqeLN9N9cUd7OWhC1kHgSHagR1qDrA@mail.gmail.com][Email from Kevin Layer: Re: comint shell buffers autosaved to a file?]] by [[mailto:layer@known.net][Kevin Layer]]
+** TODO [2018-03-29 Thu 09:41] [[gnus:INBOX#CAE4v=pgjiRBTVVw5Lhavn8ST-Azp2L8tPXVqs3Z-CyKrUVjiWQ@mail.gmail.com][Email from Gábor Boskovits: Re: Test fail]] by [[mailto:boskovits@gmail.com][Gábor Boskovits]]
+** [2018-03-29 Thu 12:18] [[gnus:nnimap+USER:INBOX#87tvsz46f7.fsf@gmail.com][Email from Pierre Neidhardt: Re: Missing pinentry-emacs for gpg-agent?]] by [[mailto:ambrevar@gmail.com][Pierre Neidhardt]]
+** [2018-03-29 Thu 14:25] [[gnus:INBOX#87muyrdw3s.fsf@elephly.net][Email from Ricardo Wurmus: Re: Package requests: Udisks helpers (udiskie, udevil)]] by [[mailto:rekado@elephly.net][Ricardo Wurmus]]
+   #+BEGIN_SRC sh
+     # Even without Nautilus you can mount and unmount drives without the need
+     # for root privileges, e.g. with
+
+     udisksctl mount -b /dev/sdb2
+     udisksctl unmount -b /dev/sdb2
+   #+END_SRC
