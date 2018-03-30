@@ -137,6 +137,17 @@ Origin: https://lists.gnu.org/archive/html/help-gnu-emacs/2017-12/msg00155.html
 ** #emacs bot
    : g "validate.el"
 
+   #+BEGIN_EXAMPLE
+     <alephnull> You need a (progn (form1) (form2)) for that.
+            <tt> alephnull: progn?
+     <alephnull> ,progn
+         <fsbot> nil  ..(symbol)
+     <alephnull> ,g elisp progn  [10:13]
+         <fsbot> rudybot: g elisp progn
+       <rudybot> fsbot: progn - Programming in Emacs Lisp
+                 https://www.gnu.org/software/emacs/manual/html_node/eintr/progn.html
+   #+END_EXAMPLE
+
 * epkg
 
 attic/debian-changelog-mode
