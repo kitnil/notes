@@ -505,7 +505,6 @@
      udisksctl unmount -b /dev/sdb2
    #+END_SRC
 ** TODO [2018-03-30 Fri 10:18] [[gnus:INBOX#87d0zmhwkl.fsf@gmail.com][Email from Pierre Neidhardt: Re: How to install prerelease package versions (particularly Emacs)]] by [[mailto:ambrevar@gmail.com][Pierre Neidhardt]]
-** TODO [2018-03-30 Fri 18:25] [[gnus:INBOX#20180330074825.23711-1-ambrevar@gmail.com][Email from Pierre Neidhardt: {bug#30996} {PATCH} gnu: gnupg: Add pinentry-emacs.]] by [[mailto:ambrevar@gmail.com][Pierre Neidhardt]]
 ** [2018-04-01 Sun 11:24] [[gnus:INBOX#87605chtof.fsf@gnu.org][Email from Ludovic Courtès: Re: "guix environment --pure" different to guix-daemon's environment]] by [[mailto:ludo@gnu.org][Ludovic Courtès]]
    #+BEGIN_EXAMPLE
      > Can I get guix-daemon to make gcc dump core on SIGABRT? (setrlimit
@@ -522,3 +521,42 @@
 
      (From <https://gitlab.inria.fr/guix-hpc/guix-hpc/blob/master/modules/inria/storm.scm#L59>.)
    #+END_EXAMPLE
+** [2018-04-01 Sun 15:20] [[gnus:INBOX#87efjz15ti.fsf@gmail.com][Email from Pierre Neidhardt: Re: Package requests: fortune, gifsicle, inxi, uncrustify, unrar, vsftp, xss-lock]] by [[mailto:ambrevar@gmail.com][Pierre Neidhardt]]
+   #+BEGIN_SRC scheme
+     (use-modules (GNU)
+                  ; ...
+                  (gnu services networking)
+                  (gnu packages admin))
+
+     (operating-system
+      ; ...
+      (users (cons* (user-account
+                     (name "ambrevar")
+                     (group "users")
+                     (supplementary-groups '("wheel" "netdev"
+                                             "audio" "video"))
+                     (home-directory "/home/ambrevar"))
+                    (user-account
+                     (name "ftp")
+                     (group "nogroup")
+                     (home-directory "/home/ftp"))
+                    %base-user-accounts))
+
+      (services (cons* (service
+                        inetd-service-type
+                        (inetd-configuration
+                         (entries
+                          (list
+                           (inetd-entry
+                            (node "127.0.0.1")
+                            (name "ftp")
+                            (socket-type 'stream)
+                            (protocol "tcp")
+                            (wait? #f)
+                            (user "root")
+                            (program (file-append inetutils "/libexec/ftpd"))
+                            (arguments
+                             '("ftpd" "--anonymous-only" "-l"))
+                            )))))
+                       %my-services)))
+   #+END_SRC
