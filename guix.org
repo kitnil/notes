@@ -30,6 +30,10 @@
 
 * Cheat sheet
 
+  - Upgrade
+    : env GUILE_LOAD_PATH=$HOME/dotfiles:$GUILE_LOAD_PATH GUIX_PACKAGE_PATH= ./pre-inst-env guix environment --no-grafts -m $HOME/dotfiles/fiore/manifests/guix-collection-manifest.scm
+    : env GUILE_LOAD_PATH=$HOME/dotfiles:$HOME/src/guix-local:$HOME/src/guix-wigust:$GUILE_LOAD_PATH GUIX_PACKAGE_PATH= ./pre-inst-env guix environment --no-grafts -m ~/dotfiles/fiore/manifests/manifest.scm 
+
   - Remove system generations
     : (delete-generations* "/var/guix/profiles/system" '(134 135))
 
