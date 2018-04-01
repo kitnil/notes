@@ -562,3 +562,14 @@
    #+END_SRC
 ** TODO [2018-04-01 Sun 19:35] [[gnus:INBOX#20180401151502.26423-1-ambrevar@gmail.com][Email from Pierre Neidhardt: {bug#31017} {PATCH} gnu: Add subdl]] by [[mailto:ambrevar@gmail.com][Pierre Neidhardt]]
 ** [2018-04-02 Mon 20:03] [[gnus:INBOX#CAFyQvY1pgYZFGWCe5bvQAAX7U=Kp6q-D8nn9jC76eppQ7+raSQ@mail.gmail.com][Email from Kaushal Modi: Re: About the removal of pinentry.el]] by [[mailto:kaushal.modi@gmail.com][Kaushal Modi]]
+** [2018-04-03 Tue 09:55] [[gnus:INBOX#E1f3BMJ-0005vy-5a@crmserver2p.fsf.org][Email from Free Software Foundation: Free Software Supporter Issue 120, April 2018]] by [[mailto:info@fsf.org][Free Software Foundation]]
+** TODO [2018-04-03 Tue 10:09] [[gnus:INBOX#87efjwdg2f.fsf@gmail.com][Email from Pierre Neidhardt: Pros and cons of Emacs package management through Guix instead of package.el]] by [[mailto:ambrevar@gmail.com][Pierre Neidhardt]]
+** [2018-04-05 Thu 19:50] [[gnus:INBOX#87woxm2g7o.fsf@gnu.org][Email from Ludovic Courtès: Re: Вопрос по опциям монтирования SSD и logrotate]] by [[mailto:ludo@gnu.org][Ludovic Courtès]]
+   #+BEGIN_SRC scheme
+     (use-modules (gnu services desktop)
+                  (gnu services))
+
+     (map (compose service-type-name service-kind) %desktop-services)
+   #+END_SRC
+
+
