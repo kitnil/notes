@@ -6,3 +6,10 @@
 - <nckx> When people say ‘Unix philosophy’ what they really mean is
   ‘hammers duck-taped together to make bigger hammers’ so you're bound
   for greatness.
+
+* New contributor
+
+Check https://libreplanet.org/wiki/Group:Guix/GSoC-2018 and https://git.savannah.gnu.org/cgit/guix.git/tree/TODO
+You could start with https://www.gnu.org/software/guix/manual/html_node/Contributing.html
+People usually start with a packaging though, e.g. as you mentioned a Boehm garbage collector would be great to have in Guix package collection 
+Also, if people cannot answer here, you could ask more folks on help and devel mailing lists, see https://www.gnu.org/software/guix/contact/ 
