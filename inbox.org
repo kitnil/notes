@@ -571,5 +571,18 @@
 
      (map (compose service-type-name service-kind) %desktop-services)
    #+END_SRC
-
-
+** [2018-04-07 Sat 17:45] [[gnus:INBOX#20180405183523.GA1445@thebird.nl][Email from Pjotr Prins: Re: Treating tests as special case]] by [[mailto:pjotr.public12@thebird.nl][Pjotr Prins]]
+** [2018-04-07 Sat 18:01] [[gnus:INBOX#87zi2jdwoc.fsf@gnu.org][Email from Ludovic Courtès: {bug#31017} {PATCH} gnu: Add subdl]] by [[mailto:ludo@gnu.org][Ludovic Courtès]]
+   Guix contributors remain copyright holders in Guix, we don’t assign
+   copyright to the FSF, so no worries here!
+** [2018-04-07 Sat 19:00] [[gnus:INBOX#87sh87xcv5.fsf@gmail.com][Email from Alex Kost: bug#31069: emacs-smartparens: sp-forward-barf-sexp broken]] by [[mailto:alezost@gmail.com][Alex Kost]]
+   #+BEGIN_EXAMPLE
+     Sorry, I don't know what could cause your problem.  My only idea is
+     maybe you have some mixed (incompatible) packages both from Guix and
+     from (M)ELPA (for example, "dash.el" from Melpa and "smartparens" from
+     Guix).  Look at "M-x list-load-path-shadows".
+   #+END_EXAMPLE
+** TODO [2018-04-07 Sat 19:03] [[gnus:INBOX#20180405153617.1984-1-dannym@scratchpost.org][Email from Danny Milosavljevic: {bug#31070} {PATCH} gnu: Add uefitool.]] by [[mailto:dannym@scratchpost.org][Danny Milosavljevic]]
+** TODO [2018-04-07 Sat 20:25] [[gnus:INBOX#874lkn2c9v.fsf@gmail.com][Email from Pierre Neidhardt: Helm System Packages: New support for Guix]] by [[mailto:ambrevar@gmail.com][Pierre Neidhardt]]
+** TODO [2018-04-07 Sat 20:33] [[gnus:INBOX#874lknc5im.fsf@lassieur.org][Email from Clément Lassieur: {bug#31089} cgit service: add support for file-like objects]] by [[mailto:clement@lassieur.org][Clément Lassieur]]
+** TODO [2018-04-08 Sun 10:38] [[gnus:INBOX#20180408060921.GA17576@joshua.dnsalias.com][Email from Mike Gran: {ANN} Burro, a game engine]] by [[mailto:spk121@yahoo.com][Mike Gran]]

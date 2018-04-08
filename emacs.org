@@ -171,3 +171,19 @@ mirror/zoutline
   error: Server does not allow request for unadvertised object 0a83b8fa074571023a10aed263d2ee7d865a49f7
   Fetched in submodule path 'mirror/auth-password-store', but it did not contain 0a83b8fa074571023a10aed263d2ee7d865a49f7. Direct fetching of that commit failed.
 #+END_EXAMPLE
+
+* Snippets
+
+  https://www.bennee.com/~alex/blog/2018/04/07/working-with-dired/
+  #+BEGIN_SRC emacs-lisp
+    (defun my-dired-frame (directory)
+      "Open up a dired frame which closes on exit."
+      (interactive)
+      (switch-to-buffer (dired directory))
+      (local-set-key
+       (kbd "C-x C-c")
+       (lambda ()
+         (interactive)
+         (kill-this-buffer)
+         (save-buffers-kill-terminal 't))))
+  #+END_SRC
