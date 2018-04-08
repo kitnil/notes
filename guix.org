@@ -5,6 +5,10 @@
   : warning: could not locate elisp directory under `/gnu/store/…-emacs-dumb-jump-0.5.2.tar.gz'
   - [ ] https://hydra.gnu.org/build/2584263/nixlog/1/raw
 
+** TODO New ‘guix pull’ implementation
+
+   The spinner leaves garbage symbols in XTerm + Tmux while building ‘guix-daemon’.
+
 * Awesome
 
 ** ng0
