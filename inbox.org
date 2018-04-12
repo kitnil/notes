@@ -599,3 +599,7 @@
 ** [2018-04-11 Wed 21:18] [[gnus:INBOX#877epegxsc.fsf@gmail.com][Email from Chris Marusich: bug#31088: Use '@' as version number separator in guix output]] by [[mailto:cmmarusich@gmail.com][Chris Marusich]]
 ** [2018-04-11 Wed 21:18] [[gnus:INBOX#87d0z66a2b.fsf@gnu.org][Email from Ludovic Courtès: bug#31084: {PATCH 2/2} gnu: Add qBittorrent.]] by [[mailto:ludo@gnu.org][Ludovic Courtès]]
 ** [2018-04-12 Thu 20:36] [[gnus:INBOX#87efjkmvkl.fsf@elephly.net][Email from Ricardo Wurmus: Re: How to install prerelease package versions (particularly Emacs)]] by [[mailto:rekado@elephly.net][Ricardo Wurmus]]
+** [2018-04-12 Thu 21:39] [[gnus:INBOX#87y3hsbap2.fsf@fastmail.com][Email from Marius Bakke: Re: Package requests: fortune, gifsicle, inxi, uncrustify, unrar, vsftp, xss-lock]] by [[mailto:mbakke@fastmail.com][Marius Bakke]]
+   #+BEGIN_SRC sh
+     guix environment -C -N --ad-hoc python -- python3 -m http.server
+   #+END_SRC
