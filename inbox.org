@@ -603,3 +603,10 @@
    #+BEGIN_SRC sh
      guix environment -C -N --ad-hoc python -- python3 -m http.server
    #+END_SRC
+** [2018-04-12 Thu 21:39] [[gnus:INBOX#87bmeocofp.fsf@lassieur.org][Email from Clément Lassieur: Re: Package requests: fortune, gifsicle, inxi, uncrustify, unrar, vsftp, xss-lock]] by [[mailto:clement@lassieur.org][Clément Lassieur]]
+   And there is 'woof' (packaged by Guix), it's a small HTTP server too,
+   very handy.  I use it very often at work to share files with my
+   collegues.  It serves the file only once unless specifed otherwise, and
+   'woof -U' provides an upload form, so that users can upload files
+   without having to install anything.  And it auto-tar directories.
+
