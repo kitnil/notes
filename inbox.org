@@ -628,3 +628,4 @@
    3) If we have less specific types covering the same type, make the most
    specific win.  So if /etc/mailcap has "image/gif; xv" and ~/.mailcap has
    "image/*; feh", then "image/gif" wins because it's more specific.
+** [2018-04-13 Fri 09:09] [[gnus:INBOX#871sfjprn8.fsf@gmail.com][Email from Pierre Neidhardt: Does Linux 4.16.1 blast out battery time? (9h+ -> 3h+)]] by [[mailto:ambrevar@gmail.com][Pierre Neidhardt]]
