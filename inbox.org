@@ -619,3 +619,12 @@
          (source
           (local-file "/home/natsu/src/emacs" #:recursive? #t))))
    #+END_SRC
+** [2018-04-13 Fri 08:39] [[gnus:INBOX#87zi28f7cf.fsf@mouse.gnus.org][Email from Lars Ingebrigtsen: RFC: Make ~/.mailcap override other settings]] by [[mailto:larsi@gnus.org][Lars Ingebrigtsen]]
+   1) If it's in `mailcap-mime-data', use that.
+
+   2) If a specific type, say, "image/gif" is in both /etc/mailcap and
+   ~/.mailcap, make the ~/.mailcap version win.
+
+   3) If we have less specific types covering the same type, make the most
+   specific win.  So if /etc/mailcap has "image/gif; xv" and ~/.mailcap has
+   "image/*; feh", then "image/gif" wins because it's more specific.
