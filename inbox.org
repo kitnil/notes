@@ -609,4 +609,13 @@
    collegues.  It serves the file only once unless specifed otherwise, and
    'woof -U' provides an upload form, so that users can upload files
    without having to install anything.  And it auto-tar directories.
-
+** [2018-04-13 Fri 08:37] [[gnus:INBOX#871sfjzneh.fsf@gmail.com][Email from Chris Marusich: Re: How to install prerelease package versions (particularly Emacs)]] by [[mailto:cmmarusich@gmail.com][Chris Marusich]]
+   #+BEGIN_SRC scheme
+     (define-public emacs-dev
+       (package
+         (inherit emacs)
+         (name "emacs-dev")
+         (version "26.0.91")
+         (source
+          (local-file "/home/natsu/src/emacs" #:recursive? #t))))
+   #+END_SRC
