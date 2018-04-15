@@ -396,17 +396,7 @@ this, you can use the famous ‘lambda’ syntax.
   works on GNU Emacs.  Would you please give us equal mention by saying
   "GNU/Linux"?
 #+END_EXAMPLE
-<wigust> Трагичная концовка тоже концовка :-)  [1:19]
-<wigust> В Токийском гуле тоже не весело в конце
-http://debian-help.ru/web-servers/ab-apache-benchmark-test-proizvoditelnosti-servera/
-https://www.inmotionhosting.com/support/website/server-usage/view-level-of-traffic-with-apache-access-log
-http://bradthemad.org/tech/notes/exim_cheatsheet.php
-* TODO 12 апреля Корпаратив
-* Поправиться
 
-Я должен не много поправиться, чтобы собирать локально (тоесть не
-использовать substitute сервера) есть два способа:
-
-- ‘guix build --no-substitutes hello’
-- ‘guix build --check hello’
-SICP, HTDP and TLS
+- [[http://debian-help.ru/web-servers/ab-apache-benchmark-test-proizvoditelnosti-servera/][Howto Apache Benchmark]]
+- [[https://www.inmotionhosting.com/support/website/server-usage/view-level-of-traffic-with-apache-access-log][Howto Parse Apache logs]]
+- [[http://bradthemad.org/tech/notes/exim_cheatsheet.php][exim cheatsheet]]
