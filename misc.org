@@ -16,32 +16,6 @@
   - https://quitter.is/main/all
   - eternal-september.org
 
-#+BEGIN_SRC markdown
-  Until you switched to the dark M$ side, I want to show you an editor which could all the VIM can + more.
-
-  # pacman -S emacs
-  $ git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d
-  $ emacs
-
-  Getting started:
-
-  - https://github.com/syl20bnr/spacemacs/
-  - https://github.com/syl20bnr/spacemacs/tree/master/doc/QUICK_START.org
-  - https://github.com/syl20bnr/spacemacs/tree/master/doc/VIMUSERS.org
-
-  JavaScript:
-
-  - https://github.com/syl20bnr/spacemacs/tree/master/layers/%2Blang/javascript
-
-  Additional documentation:
-
-  - https://github.com/syl20bnr/spacemacs/tree/master/doc/BEGINNERS_TUTORIAL.org
-  - https://github.com/syl20bnr/spacemacs/tree/master/doc/CONVENTIONS.org
-  - https://github.com/syl20bnr/spacemacs/tree/master/doc/DOCUMENTATION.org
-  - https://github.com/syl20bnr/spacemacs/tree/master/doc/FAQ.org
-  - https://github.com/syl20bnr/spacemacs/tree/master/doc/LAYERS.org
-#+END_SRC
-
 #+BEGIN_EXAMPLE
   +To find a patch file at point invoke @kbd{M-x guix-devel-ffap-patch}
   +command.  If you want to do this with a @kbd{M-x ffap} command, you
