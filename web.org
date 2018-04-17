@@ -66,3 +66,5 @@
 - [[https://scripter.co/optimize-your-fontawesome/][Optimize your FontAwesome ❚ A Scripter's Notes]]
 - [[https://www.privateinternetaccess.com/][Private Internet Access | Anonymous VPN Service Provider]]
 - [[https://blog.josefsson.org/2017/03/04/gps-on-replicant-6/][GPS on Replicant 6 – Simon Josefsson's blog]]
+- [[https://unix.stackexchange.com/questions/10438/can-i-create-a-user-specific-hosts-file-to-complement-etc-hosts][Can I create a user-specific hosts file to complement /etc/hosts? - Unix & Linux Stack Exchange]]
+  HOSTALIASES=~/.hosts
