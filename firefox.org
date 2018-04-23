@@ -1,3 +1,7 @@
+: network.http.referer.XoriginPolicy 1
+
+* Cookies
+
 #+BEGIN_EXAMPLE
   network.cookie.cookieBehavior 0
   network.cookie.thirdparty.sessionOnly true
