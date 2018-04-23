@@ -647,3 +647,7 @@
 ** TODO [2018-04-23 Mon 06:51] [[gnus:INBOX#87r2n6gbpg.fsf@gnu.org][Email from Ludovic Courtès: Re: {bug#31178} {PATCH} gnu: Add inxi.]] by [[mailto:ludo@gnu.org][Ludovic Courtès]]
 ** TODO [2018-04-23 Mon 07:15] [[gnus:INBOX#20180422191345.1836dc69@lepiller.eu][Email from Julien Lepiller: {bug#31239} Make alsa find its plugins]] by [[mailto:julien@lepiller.eu][Julien Lepiller]]
 ** TODO [2018-04-23 Mon 10:11] [[gnus:INBOX#87tvs2mnmi.fsf@gmail.com][Email from Pierre Neidhardt: Multiple pulseaudio process after re-loging]] by [[mailto:ambrevar@gmail.com][Pierre Neidhardt]]
+** [2018-04-23 Mon 21:41] [[gnus:INBOX#20180423203035.0654ec81@merlin.browniehive.net][Email from Thomas Sigurdsen: Re: Guix does not understand config.scm]] by [[mailto:thomas.sigurdsen@gmail.com][Thomas Sigurdsen]]
+   #+BEGIN_SRC scheme
+     strace -o /tmp/strace.out -T -s 2000
+   #+END_SRC
