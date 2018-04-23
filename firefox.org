@@ -1,0 +1,5 @@
+network.cookie.cookieBehavior 0
+network.cookie.thirdparty.sessionOnly true
+privacy.clearOnShutdown.cookies false
+network.cookie.lifetimePolicy.days 3
+network.cookie.lifetime.days 5
