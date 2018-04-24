@@ -652,3 +652,10 @@
      strace -o /tmp/strace.out -T -s 2000
    #+END_SRC
 ** TODO [2018-04-24 Tue 09:39] [[gnus:INBOX#877eoximkd.fsf@gnu.org][Email from Roel Janssen: Re: Help needed updating vlc to version 3.0.1.]] by [[mailto:roel@gnu.org][Roel Janssen]]
+** [2018-04-24 Tue 15:27] [[gnus:INBOX#87k1sx2e61.fsf@gnu.org][Email from Ludovic Courtès: Re: Does Linux 4.16.1 blast out battery time? (9h+ -> 3h+)]] by [[mailto:ludo@gnu.org][Ludovic Courtès]]
+   #+BEGIN_SRC scheme
+     (simple-service 'my-/sys-tweaks activation-service-type
+                     #~(call-with-output-file "/sys/…"
+                         (lambda (port)
+                           (display "1" port))))
+   #+END_SRC
