@@ -664,3 +664,16 @@
 ** TODO [2018-04-25 Wed 12:40] [[gnus:INBOX#20180425090948.13904-1-ambrevar@gmail.com][Email from Pierre Neidhardt: {bug#31255} {PATCH} gnu: Add emacs-helm-system-packages]] by [[mailto:ambrevar@gmail.com][Pierre Neidhardt]]
 ** TODO [2018-04-25 Wed 12:40] [[gnus:INBOX#20180425091021.14188-1-ambrevar@gmail.com][Email from Pierre Neidhardt: {bug#31256} {PATCH} gnu: Add emacs-evil-collection]] by [[mailto:ambrevar@gmail.com][Pierre Neidhardt]]
 ** TODO [2018-04-27 Fri 08:36] [[gnus:INBOX#87fu3ij2a3.fsf@gmail.com][Email from Jone: xkblayout-state]] by [[mailto:yeger9@gmail.com][Jone]]
+** [2018-04-27 Fri 08:44] [[gnus:INBOX#877eoua9v1.fsf@gmail.com][Email from George myglc: Re: 'guix system vm-image' hangs]] by [[mailto:myglc2@gmail.com][George myglc]]
+   #+BEGIN_SRC scheme
+     (service openssh-service-type
+              (openssh-configuration
+               (x11-forwarding? #t)
+               (permit-root-login #t)
+               (allow-empty-passwords? #t)
+               (authorized-keys
+                `(
+                  ("g1" ,(local-file "glc.pub"))
+                  ("al" ,(local-file "glc.pub"))
+                  ("root" ,(local-file "glc.pub"))))))
+   #+END_SRC
