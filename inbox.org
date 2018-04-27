@@ -677,3 +677,19 @@
                   ("al" ,(local-file "glc.pub"))
                   ("root" ,(local-file "glc.pub"))))))
    #+END_SRC
+** [2018-04-27 Fri 20:08] [[gnus:INBOX#87a7tpc8vw.fsf@gmail.com][Email from Mathieu Othacehe: Building guix-modular with cuirass]] by [[mailto:m.othacehe@gmail.com][Mathieu Othacehe]]
+   #+BEGIN_SRC scheme
+     (define (build-guix-modular store arguments)
+       (let* ((source (assq-ref arguments 'file-name))
+              (revision (assq-ref arguments 'revision))
+              (build (primitive-load (string-append source "/build-aux/build-self.scm")))
+              (res (lambda ()
+                     `((#:job-name . ,(string-append "guix-" revision "-job"))
+                       (#:derivation . ,(derivation-file-name
+                                         (run-with-store store
+                                           (build source
+                                                  #:version revision
+                                                  #:guile-version "2.2"))))))))
+         (format (current-error-port) "---------> ~a|~a~%" arguments (res))
+         res)
+   #+END_SRC
