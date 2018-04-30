@@ -39,6 +39,19 @@
     : env GUILE_LOAD_PATH=$HOME/dotfiles:$HOME/src/guix-local:$HOME/src/guix-wigust:$GUILE_LOAD_PATH GUIX_PACKAGE_PATH= ./pre-inst-env guix environment --no-grafts -m ~/dotfiles/fiore/manifests/manifest.scm
     : env GUILE_LOAD_PATH=$HOME/src/guix-wigust:$HOME/src/guix-packages:$GUILE_LOAD_PATH ./pre-inst-env guix system build /home/natsu/dotfiles/fiore/clover.scm
 
+  - Patches
+    #+BEGIN_SRC scheme
+      (patches
+       (list (origin
+               (method url-fetch)
+               (uri "https://cgit.freedesktop.org/xorg/driver/\
+      xf86-video-voodoo/patch/?id=9172ae566a0e85313fc80ab62b4455393eefe593")
+               (sha256
+                (base32
+                 "0rndmxf5b8j3hjnhrwrnzsq5024fli134fj1mprhkcrvax2zq8db"))
+               (file-name "xf86-video-voodoo-pcitag.patch"))))
+    #+END_SRC
+
   - Remove system generations
     : (delete-generations* "/var/guix/profiles/system" '(134 135))
 
