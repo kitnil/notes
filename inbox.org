@@ -721,3 +721,4 @@ machine must be ‘inputs’.
      sqlite> select * from specifications where repo_name='guix-modular';
      guix-modular|https://git.savannah.gnu.org/git/guix.git||build-aux/cuirass/guix-modular.scm|cuirass-jobs|((systems "x86_64-linux" "i686-linux" "aarch64-linux"))|master|||1
    #+END_SRC
+** TODO [2018-04-30 Mon 23:31] [[gnus:INBOX#87o9i111jf.fsf@gnu.org][Email from Ludovic Courtès: {ANN} Skribilo 0.9.4 released]] by [[mailto:ludo@gnu.org][Ludovic Courtès]]
