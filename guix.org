@@ -110,6 +110,9 @@
                           | tr '\n' ' ')
     #+END_SRC
 
+  - Get logs
+    : wget -O log https://hydra.gnu.org/log/$(tail -n 1 <(env GUIX_PACKAGE_PATH= guix build --no-grafts hello) | cut -d '/' -f 4)
+
 * Guix packaging
 
   - [[shell:guix%20lint%20$PACKAGE][shell:guix lint $PACKAGE]]
