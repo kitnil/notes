@@ -725,3 +725,33 @@ machine must be ‘inputs’.
 ** TODO [2018-04-30 Mon 23:31] [[gnus:INBOX#20180430151309.GA10598@joshua.dnsalias.com][Email from Mike Gran: My Lisp Game Jam entry]] by [[mailto:spk121@yahoo.com][Mike Gran]]
 ** REVIEW [2018-05-01 Tue 13:31] [[gnus:INBOX#20180430205548.8930-1-contact@parouby.fr][Email from Pierre-Antoine Rouby: {bug#31323} {PATCH} gnu: Add nitrogen.]] by [[mailto:contact@parouby.fr][Pierre-Antoine Rouby]]
 ** TODO [2018-05-01 Tue 22:17] [[gnus:INBOX#87lgd35ivp.fsf@gnu.org][Email from Jan Nieuwenhuizen: wip-bootstrap updated]] by [[mailto:janneke@gnu.org][Jan Nieuwenhuizen]]
+** [2018-05-03 Thu 13:27] [[gnus:nnimap+USER:INBOX#877eolw9w7.fsf@gmail.com][Email from Chris Marusich: Re: Packaging a free Firefox]] by [[mailto:cmmarusich@gmail.com][Chris Marusich]]
+   This has not been my experience with IceCat.  With two exceptions,
+   IceCat has performed just as well as Firefox for me for everything I
+   have done, including credit card payments.  I sometimes watch YouTube
+   videos using IceCat, but I don't view many other videos, so I can't
+   really comment on how well IceCat handles videos.  If it requires DRM,
+   of course, it's not going to work in IceCat, which is a good thing.
+
+   When I use IceCat over TOR, it doesn't always work.  When I use IceCat
+   with extensions (plugins?  add-ons?  I'm not sure what the right
+   terminology is here) like NoScript enabled, it doesn't always work.  But
+   when I don't use TOR and I disable those add-ons, everything works just
+   as well as stock Firefox.  If you're still having trouble after
+   disabling those things, can you describe the specifics of what you're
+   having trouble with?
+
+   The exceptions I have experienced with IceCat:
+
+   1) A website failed for me because IceCat enables Referer spoofing by
+   default (network.http.referer.spoofSource in about:config).  I had to
+   disable that feature to use that website.
+
+   2) It used to be that IceCat would crash frequently for me.  However,
+   once I changed my gfx.canvas.azure.backends and
+   gfx.content.azure.backends from "cairo" to "skia", this problem stopped
+   for me.  I don't know if this is still an issue , since I haven't ever
+   switched it back to "cairo".  See here for details:
+
+   https://lists.gnu.org/archive/html/help-guix/2016-11/msg00008.html
+
