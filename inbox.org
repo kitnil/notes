@@ -754,4 +754,25 @@ machine must be ‘inputs’.
    switched it back to "cairo".  See here for details:
 
    https://lists.gnu.org/archive/html/help-guix/2016-11/msg00008.html
+** [2018-05-04 Fri 20:52] [[gnus:INBOX#87r2mrflf2.fsf@lassieur.org][Email from Clément Lassieur: Re: nginx et .htaccess]] by [[mailto:clement@lassieur.org][Clément Lassieur]]
+   #+BEGIN_SRC scheme
 
+     (nginx-server-configuration
+           (listen '("443 ssl" "[::]:443 ssl"))
+           (server-name (list "foo.org"))
+           (root "/var/www/foo")
+           (locations
+            (list
+             (nginx-location-configuration
+              (uri "/")
+              (body (list "index index.html;"
+                          "auth_basic \"closed site\";"
+                          ;; needs to be set manually
+                          "auth_basic_user_file /etc/nginx/htpasswd;")))))
+           (ssl-certificate ...)
+           (ssl-certificate-key ...))
+
+     /etc/nginx/htpasswd may contain:
+     user:<hashed-pwd>
+
+   #+END_SRC
