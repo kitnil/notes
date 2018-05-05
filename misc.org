@@ -1,4 +1,5 @@
   - [[https://superuser.com/questions/972233/how-do-i-convert-utf-8-special-characters-in-bash][How do I convert UTF-8 special characters in Bash?]]
+    : echo '=?UTF-8?B?U2Now7ZuZSBHcsO8w59lIQ==?=' | perl -CS -MEncode -ne 'print decode("MIME-Header", $_)'
 
   - [[https://www.zeitverschiebung.net/en/timezone/asia--bangkok][Timezone Linux Online]]
 
