@@ -778,3 +778,56 @@ machine must be ‘inputs’.
    #+END_SRC
 ** TODO [2018-05-05 Sat 08:42] [[gnus:INBOX#CADhE+R9OXxcWmdaX1_M8MKapEUM9+3qCLRW0ghVJjKytatC-4w@mail.gmail.com][Email from sidhu1f@gmail.com: Upgrade errors]] by [[mailto:sidhu1f@gmail.com][]]
 ** TODO [2018-05-05 Sat 08:44] [[gnus:INBOX#87efisr56r.fsf@gnu.org][Email from Mike Gerwitz: Re: Packaging a free Firefox]] by [[mailto:mtg@gnu.org][Mike Gerwitz]]
+** [2018-05-05 Sat 19:49] [[gnus:nnimap+USER:INBOX#877ep4z44b.fsf@gmail.com][Email from myglc2@gmail.com: Re: Emacs in multiple profiles]] by [[mailto:myglc2@gmail.com][]]
+
+I am revamping my emacs config approach and I came across your
+discussion. Following Alex's suggestions I found 2 approaches that seem
+to do what Konrad wanted ...
+
+1) guix profile approach ...
+
+#+BEGIN_SRC sh
+  guix package -m emacs.scm
+  emacs --no-init-file \
+        --eval="\
+  (let ((guix-env (getenv \"GUIX_ENVIRONMENT\")))
+    (when (and guix-env
+               (require 'guix-emacs nil t))
+      (guix-emacs-autoload-packages guix-env)))" \
+        --load=".emacs.d/init0.el"
+  guix package --roll-back
+#+END_SRC
+
+2) guix environment approach ...
+
+#+BEGIN_SRC sh
+  guix environment --ad-hoc emacs magit -- \
+  emacs --no-init-file --no-site-file \
+        --eval="\
+  (let ((guix-env (getenv \"GUIX_ENVIRONMENT\")))
+    (when (and guix-env
+               (require 'guix-emacs nil t))
+      (guix-emacs-autoload-packages guix-env)))" \
+        --load=".emacs.d/init0.el"
+#+END_SRC
+
+For my purposes 2) is better -- It starts more quickly and doesn't
+"infect" other login sessions. It also allows multiple, different,
+isolated Emacs environments to run simultaneously. Sweet ;-)
+
+#+BEGIN_SRC scheme
+  (use-modules (gnu packages))
+  (define usr-packages
+     '(
+       "font-dejavu"
+       "emacs"
+       "magit"
+     ))
+  (specifications->manifest usr-packages)
+#+END_SRC
+
+#+BEGIN_SRC scheme
+  (setq default-frame-alist
+        '((font . "-PfEd-DejaVu Sans Mono-bold-normal-normal-*-16-*-*-*-m-0-iso10646-1"))
+        )
+#+END_SRC
