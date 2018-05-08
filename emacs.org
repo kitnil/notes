@@ -1,3 +1,16 @@
+- Elisp Snippet - Kill Buffer and Window On Shell Process Termination
+  #+BEGIN_SRC emacs-lisp
+    (defun jt-shell-sentinel (process event)
+      "Kill buffer and window on shell process termination."
+      (when (not (process-live-p process))
+        (let ((buf (process-buffer process)))
+          (when (buffer-live-p buf)
+           (with-current-buffer buf
+              (kill-buffer)
+              (delete-window))))))
+    (add-hook 'shell-mode-hook (lambda () (set-process-sentinel (get-buffer-process (buffer-name) ) #'jt-shell-sentinel)))
+  #+END_SRC
+
 - Get all agenda TODOs programmatically
   #+BEGIN_SRC emacs-lisp
     (org-map-entries '(cons (nth 4 (org-heading-components))
