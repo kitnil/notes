@@ -851,3 +851,4 @@ isolated Emacs environments to run simultaneously. Sweet ;-)
      (add-after 'patch-elisp-shell-shebangs
                 (assoc-ref emacs:%standard-phases 'set-emacs-load-path))
    #+END_SRC
+** TODO [2018-05-11 Fri 11:30] [[gnus:nnimap+USER:INBOX#20180511044613.ldlgg72ytyp6pzwz@thebird.nl][Email from Pjotr Prins: Nairobi Guix talk]] by [[mailto:pjotr.public12@thebird.nl][Pjotr Prins]]
