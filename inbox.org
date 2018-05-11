@@ -840,3 +840,14 @@ isolated Emacs environments to run simultaneously. Sweet ;-)
 ** TODO [2018-05-08 Tue 21:00] [[gnus:INBOX#871sen8gpj.fsf@gnu.org][Email from Nala Ginrut: {ANN} GNU Artanis-0.2.5 stable released!]] by [[mailto:mulei@gnu.org][Nala Ginrut]]
 ** TODO [2018-05-09 Wed 11:32] [[gnus:INBOX#20180509082833.16435-1-arunisaac@systemreboot.net][Email from Arun Isaac: {bug#31389} {PATCH} gnu: Add pass-rotate.]] by [[mailto:arunisaac@systemreboot.net][Arun Isaac]]
 ** TODO [2018-05-11 Fri 10:41] [[gnus:INBOX#87lgcrqgvz.fsf@gmail.com][Email from João Távora: {ELPA} New package: eglot]] by [[mailto:joaotavora@gmail.com][João Távora]]
+** [2018-05-11 Fri 10:47] [[gnus:nndoc+ephemeral:bug#30884#877ep4ngst.fsf@gmail.com][Email from Maxim Cournoyer: {bug#30884} Status: {PATCH 0/6} gnu: Add emacs-epkg.]] by [[mailto:maxim.cournoyer@gmail.com][Maxim Cournoyer]]
+   #+BEGIN_SRC scheme
+     ;; Add this to the define-module top level definition:
+     ;; (define-module (gnu packages emacs)
+     ;; ...
+     ;; #:use-module ((guix build emacs-build-system) #:prefix emacs:)
+     ;; ...
+
+     (add-after 'patch-elisp-shell-shebangs
+                (assoc-ref emacs:%standard-phases 'set-emacs-load-path))
+   #+END_SRC
