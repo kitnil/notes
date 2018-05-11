@@ -737,3 +737,4 @@ success = false; } else { //Lock texture if( !gFooTexture.lockTexture() ) { prin
     doveconf: Warning: /etc/dovecot/dovecot.conf line 200: Global setting mail_plugins won't change the setting inside an earlier filter at /etc/dovecot/dovecot.conf line 5 (if this is intentional, avoid this warning by moving the global setting before /etc/dovecot/dovecot.conf line 5)
     Error: net_connect_unix(/var/run/dovecot//stats-writer) failed: Permission denied
   #+END_EXAMPLE
+
