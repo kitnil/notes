@@ -1,3 +1,8 @@
+* Cheatsheet
+
+  - Open ‘man’ on a word “READLINE”
+  : PAGER='less +/^READLINE' man bash
+
 * Binary match
   #+BEGIN_EXAMPLE
       <koala_man> # printf '\x00\x01\x02\xAA\xBB' | LC_ALL=C grep -ao
