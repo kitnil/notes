@@ -1,3 +1,5 @@
+- ditaa :: convert artist-mode to svg diagram
+
 - Elisp Snippet - Kill Buffer and Window On Shell Process Termination
   #+BEGIN_SRC emacs-lisp
     (defun jt-shell-sentinel (process event)
