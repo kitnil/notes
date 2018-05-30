@@ -1,5 +1,19 @@
 * Cheatsheet
 
+  - vc-dwim
+    #+BEGIN_SRC sh
+      # Requirements: coreutils, perl, vc-dwim.
+
+      case "$2,$3" in
+          merge,)
+              perl -i.bak -ne 's/^/# /, s/^# #/#/ if /^Conflicts/ .. /#/; print' "$1" ;;
+          ,|template,)
+              perl -i.bak -pe 'print `vc-chlog | tail +2 | sed "s/^[ \t]*//"`
+                       if /^#/ && $first++ == 0' "$1" ;;
+          ,*) ;;
+      esac
+    #+END_SRC
+
   - [[https://stackoverflow.com/questions/4110652/how-to-substitute-text-from-files-in-git-history][version control - How to substitute text from files in git history? - Stack Overflow]]
     #+BEGIN_SRC shell
       git filter-branch --tree-filter \
