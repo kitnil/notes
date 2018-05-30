@@ -1,3 +1,6 @@
+- Clone X window
+  : PID=$(ps -p $(xprop _NET_WM_PID | cut -d " " -f 3) -o command=)
+
 - Kill program using one port
   : # fuser -k 8000/tcp
 
