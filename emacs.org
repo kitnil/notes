@@ -26,6 +26,15 @@
 - Open file and close current buffer
   : C-x C-v ffap-alternate-file
 
+- Replace hex with decimal
+  #+BEGIN_SRC emacs-lisp
+    (defun hex2dec ()
+      (interactive)
+      (when (looking-at "[a-fA-F0-9]+")
+        (replace-match (format "%d" (string-to-number (match-string 0)
+                                                      16)))))
+  #+END_SRC
+
 - [[https://www.reddit.com/r/emacs/comments/52lnad/from_helm_to_ivy_a_user_perspective/d7pj9mz/][Setup ivy move,copy,rename]]
 
 - Refactor code [[http://manuel-uberti.github.io/emacs/2018/02/10/occur/][manuel-uberti.github.io]]
