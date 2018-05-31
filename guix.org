@@ -150,9 +150,6 @@
                                      "fe80::204:92:100:1" "dev" "ens18"))))
                (stop #~(lambda _
                          (display "Cannot stop iproute2 service.\n"))))))
-
-
-
     #+END_SRC
 
 * Guix packaging
