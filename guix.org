@@ -113,6 +113,21 @@
   - Get logs
     : wget -O log https://hydra.gnu.org/log/$(tail -n 1 <(env GUIX_PACKAGE_PATH= guix build --no-grafts hello) | cut -d '/' -f 4)
 
+  - Add file via union
+    #+BEGIN_SRC scheme
+      (arguments
+       '(#:modules
+         ((guix build union))
+         #:builder
+         (begin
+           (use-modules (ice-9 match)
+                        (guix build union))
+           (match %build-inputs
+             (((names . directories) ...)
+              (union-build (assoc-ref %outputs "out")
+                           directories))))))
+    #+END_SRC
+
 * Guix packaging
 
   - [[shell:guix%20lint%20$PACKAGE][shell:guix lint $PACKAGE]]
