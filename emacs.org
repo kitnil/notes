@@ -1,3 +1,22 @@
+- tramp colors
+  #+BEGIN_SRC emacs-lisp
+    (require 'tramp)
+
+     (defun pasztor-set-background-color ()
+        "*Set the background color according to the remote file name."
+        (interactive)
+        (if buffer-file-name
+            (with-parsed-tramp-file-name buffer-file-name 'tramp
+             (let ((host (tramp-host buffer-file-name)))
+               (cond ((equal tramp-host "foo") (set-background-color "blue"))
+                     ((equal tramp-host "bar") (set-background-color "red"))
+                     ...
+                     (t (set-background-color "black")))))))
+
+     (add-hook 'find-file-hooks 'pasztor-set-background-color)
+     (add-hook 'find-file-not-found-hooks 'pasztor-set-background-color)
+  #+END_SRC
+
 - ditaa :: convert artist-mode to svg diagram
 
 - Elisp Snippet - Kill Buffer and Window On Shell Process Termination
