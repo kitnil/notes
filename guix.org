@@ -128,6 +128,33 @@
                            directories))))))
     #+END_SRC
 
+  - Static networking service
+    #+BEGIN_SRC scheme
+      (define (iproute2-shepherd-service config)
+        (list (shepherd-service
+               (documentation "Run the iproute2 network service")
+               (provision '(networking))
+               (requirement '())
+               (start #~(lambda _
+                          (let ((ip (string-append #$iproute "/sbin/ip")))
+                            (system* ip "a" "add" "89.234.186.109/32" "dev"
+                                     "ens18")
+                            (system* ip "l" "set" "ens18" "up")
+                            (system* ip "-6" "a" "add"
+                                     "2a00:5884:8208::1/48" "dev" "ens18")
+                            (system* ip "r" "add" "89.234.186.1" "dev"
+                                     "ens18")
+                            (system* ip "r" "add" "default" "via"
+                                     "89.234.186.1" "dev" "ens18")
+                            (system* ip "-6" "r" "add" "default" "via"
+                                     "fe80::204:92:100:1" "dev" "ens18"))))
+               (stop #~(lambda _
+                         (display "Cannot stop iproute2 service.\n"))))))
+
+
+
+    #+END_SRC
+
 * Guix packaging
 
   - [[shell:guix%20lint%20$PACKAGE][shell:guix lint $PACKAGE]]
