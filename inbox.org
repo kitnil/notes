@@ -875,4 +875,9 @@ It may be this:
 
 A few videos are available at audio-video.gnu.org.  See
 <https://www.gnu.org/software/guix/blog/tags/talks/>.
-
+** [2018-06-06 Wed 12:17] [[gnus:INBOX#87po152evd.fsf@netris.org][Email from Mark H. Weaver: Re: Guix "days old" variable]] by [[mailto:mhw@netris.org][Mark H. Weaver]]
+   #+BEGIN_EXAMPLE
+     You can set the GUIX_DISTRO_AGE_WARNING environment variable to a
+     string like "9d" for 9 days.  The suffix can also be "w" or "m" for
+     weeks or months.
+   #+END_EXAMPLE
