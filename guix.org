@@ -647,6 +647,7 @@ success = false; } else { //Lock texture if( !gFooTexture.lockTexture() ) { prin
   - https://audio-video.gnu.org/video/misc/2016-01__GNU_Guix__Gentle_Introduction_to_Functional_Package_Management.webm
   - https://audio-video.gnu.org/video/misc/2016-01__GNU_Guix__Your_Distro_is_a_Scheme_Library.webm
   - https://www.gnu.org/ghm/2013/paris/v2/sylvain/output.webm
+  - https://www.gnu.org/software/guix/blog/tags/talks/
 
 * Failed builds
 
