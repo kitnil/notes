@@ -864,19 +864,6 @@ isolated Emacs environments to run simultaneously. Sweet ;-)
 ** TODO [2018-05-20 Sun 23:30] [[gnus:INBOX#20180518102339.26480-2-mail@cbaines.net][Email from Christopher Baines: {bug#31277} {PATCH 2/3} services: cgit: Improve handling of extra-options.]] by [[mailto:mail@cbaines.net][Christopher Baines]]
 ** TODO [2018-05-22 Tue 07:21] [[gnus:INBOX#871se9lyid.fsf_-_@gmail.com][Email from João Távora: New jrpc.el JSONRPC library (Was: {ELPA} New package: eglot)]] by [[mailto:joaotavora@gmail.com][João Távora]]
 ** TODO [2018-05-25 Fri 17:06] [[gnus:INBOX#20180524.101022.981642295161978602.post@thomasdanckaert.be][Email from Thomas Danckaert: capture stdout and stderr]] by [[mailto:post@thomasdanckaert.be][Thomas Danckaert]]
-** [2018-06-04 Mon 20:19] [[gnus:INBOX#87d0x6rcbm.fsf@gnu.org][Email from Ludovic Courtès: Re: videos]] by [[mailto:ludo@gnu.org][Ludovic Courtès]]
-
-> I remember a video in which Ludo demonstrated the store monad
-
-It may be this:
-<https://archive.fosdem.org/2016/schedule/event/guixdistro/>.
-
-> Some others in which Ludo demonstrated some other things
->
-> Where are those videos ?
-
-A few videos are available at audio-video.gnu.org.  See
-<https://www.gnu.org/software/guix/blog/tags/talks/>.
 ** [2018-06-06 Wed 12:17] [[gnus:INBOX#87po152evd.fsf@netris.org][Email from Mark H. Weaver: Re: Guix "days old" variable]] by [[mailto:mhw@netris.org][Mark H. Weaver]]
    #+BEGIN_EXAMPLE
      You can set the GUIX_DISTRO_AGE_WARNING environment variable to a
