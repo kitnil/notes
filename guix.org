@@ -795,6 +795,7 @@ success = false; } else { //Lock texture if( !gFooTexture.lockTexture() ) { prin
   
   https://gitlab.com/janneke/mes
 
-** ideas we haven't yet explored
+** Misc
 
-  https://bootstrapping.miraheze.org/wiki/Investigate
+  [[https://bootstrapping.miraheze.org/wiki/Investigate][ideas we haven't yet explored]]
+  https://cwiki.apache.org/confluence/pages/viewpage.action?pageId=74682318
