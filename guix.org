@@ -782,3 +782,11 @@ success = false; } else { //Lock texture if( !gFooTexture.lockTexture() ) { prin
 
   - Latest Emacs: https://lists.gnu.org/archive/html/help-guix/2018-04/msg00099.html
 
+* Reproducibility
+
+  #+BEGIN_EXAMPLE
+    <OriansJ`> well wigust; janneke  is working on getting mescc
+               to build a self-hosting gcc-2.95.3. I'm working on
+               reducing the binary seed we are currently using for
+               mescc-tools and rain1 thanks for that tcc testing
+  #+END_EXAMPLE
