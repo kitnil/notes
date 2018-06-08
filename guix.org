@@ -794,3 +794,7 @@ success = false; } else { //Lock texture if( !gFooTexture.lockTexture() ) { prin
   #+END_EXAMPLE
   
   https://gitlab.com/janneke/mes
+
+** ideas we haven't yet explored
+
+  https://bootstrapping.miraheze.org/wiki/Investigate
