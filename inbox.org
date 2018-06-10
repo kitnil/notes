@@ -902,3 +902,11 @@ details.
      all benefit from safer communications. Thanks for helping ensure that
      our emails stay private.
    #+END_EXAMPLE
+** [2018-06-10 Sun 23:33] [[gnus:INBOX#878t7mh9pc.fsf@gnu.org][Email from Ludovic Courtès: Re: Recovering from broken Guix due to GC'd derivations]] by [[mailto:ludo@gnu.org][Ludovic Courtès]]
+   #+BEGIN_EXAMPLE
+     Remember that the store consists of two elements: /gnu/store, and
+     $localstatedir/guix/db/db.sqlite (usually /var/guix/db/db.sqlite).  If
+     you somehow end up using a different database, it may be incorrect
+     compared to what’s actually available in /gnu/store (info "(guix) The
+     Store").
+   #+END_EXAMPLE
