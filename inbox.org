@@ -912,3 +912,22 @@ details.
    #+END_EXAMPLE
 ** READ [2018-06-11 Mon 11:22] [[gnus:INBOX#c09c2ef6-9939-977d-abf8-c730e9d67893@student.bham.ac.uk][Email from Ioannis Panagiotis Koutsidis: GSoC 2018 Syntax and semantics of systemd units in the Shepherd - 1st update]] by [[mailto:IXK680@student.bham.ac.uk][Ioannis Panagiotis Koutsidis]]
 ** BUG [2018-06-11 Mon 11:45] [[gnus:INBOX#87d0xezgdm.fsf@gnu.org][Email from Ludovic Courtès: bug#31642: Missing 'glib-pacrunner.service' causes Epiphany and Eolie to fail on GNOME]] by [[mailto:ludo@gnu.org][Ludovic Courtès]]
+** [2018-06-11 Mon 11:55] [[gnus:INBOX#874lim8ctt.fsf@gnu.org][Email from Ludovic Courtès: bug#31669: 'guix system' enhancements]] by [[mailto:ludo@gnu.org][Ludovic Courtès]]
+   #+BEGIN_EXAMPLE
+     scheme@(guile-user)> ,use(guix)
+     scheme@(guile-user)> ,use(gnu)
+     scheme@(guile-user)> (getcwd)
+     $2 = "/home/ludo/src/guix/guix"
+     scheme@(guile-user)> (define os (load "../gnu/system/examples/bare-bones.tmpl"))
+     scheme@(guile-user)> ,run-in-store (operating-system-derivation os)
+     $4 = #<derivation /gnu/store/x0ixll4myzk2s2g0lvq29qr5fx1hsgqi-system.drv => /gnu/store/4igvd1ynxjv3hk8qpf0l9bpb2v157hjf-system 4c209b0>
+     scheme@(guile-user)> ,use(gnu packages tls)
+     scheme@(guile-user)> ,run-in-store (package->derivation openssl)
+     $5 = #<derivation /gnu/store/8d4dim068nky5y8dls3p2nijc79jhhv1-openssl-1.0.2o.drv => /gnu/store/yvy6pj9b3rpb3wr98x0sjlxv5g9p5x5l-openssl-1.0.2o-doc /gnu/store/ggrpw6gh2rnqjwyjf99z8cdw5digc4hb-openssl-1.0.2o /gnu/store/9cdb2xydmm012v81l78jliird4f7dy25-openssl-1.0.2o-static 5594370>
+     scheme@(guile-user)> ,run-in-store (package->derivation libressl)
+     substitute: updating list of substitutes from 'https://berlin.guixsd.org'... 100.0%
+     $6 = #<derivation /gnu/store/2wds8bdyl25iqx63p2vv7fy05rbmq4s5-libressl-2.7.3.drv => /gnu/store/d9askfqx719bv3610kd6s3jqjh5rnfsh-libressl-2.7.3 538b1e0>
+     scheme@(guile-user)> (define s (open-connection))
+     scheme@(guile-user)> (map-derivation s $4 `((,$5 . ,$6)))
+     $7 = #<derivation /gnu/store/g9xxa9fkiaij5i9g8s71b04yswi69cig-system.drv => /gnu/store/x5gyjvmq663jhd1pc1pc5w46hpcghvwd-system 618bf00>
+   #+END_EXAMPLE
