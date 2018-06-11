@@ -151,6 +151,16 @@ Origin: https://lists.gnu.org/archive/html/help-gnu-emacs/2017-12/msg00155.html
     : M-x find-grep-dired
 
 * Misc
+
+  - Mouse yank
+    #+BEGIN_EXAMPLE
+      <HappyPonyLand> how do you feel about mouse-yank-at-point?
+                  ,*** tsdh (~Thunderbi@portal.shd.de) has quit: Quit:
+                      tsdh  [11:59]
+         <angrybacon> HappyPonyLand: Pretty mandatory when using
+                      `(mouse-avoidance-mode 'banish)`  [12:00]
+    #+END_EXAMPLE
+
   Origin https://lists.gnu.org/archive/html/guix-devel/2017-07/msg00039.html.
 
   Talk about:
