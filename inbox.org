@@ -935,3 +935,25 @@ details.
 ** READ [2018-06-11 Mon 12:41] [[gnus:INBOX#877enmc5of.fsf@netris.org][Email from Mark H. Weaver: Re: macroexpand-1]] by [[mailto:mhw@netris.org][Mark H. Weaver]]
 ** READ [2018-06-13 Wed 01:03] [[gnus:INBOX#874ligy5mh.fsf@cochranmail.com][Email from Robert Cochran: sql.el MariaDB support]] by [[mailto:robert-emacs@cochranmail.com][Robert Cochran]]
 ** [2018-06-13 Wed 16:37] [[gnus:INBOX#87zhzzqyys.fsf@fastmail.com][Email from Marius Bakke: Restarting 'staging']] by [[mailto:mbakke@fastmail.com][Marius Bakke]]
+** [2018-06-13 Wed 16:39] [[gnus:INBOX#df9dcbd1-094e-2a95-ccc2-0a2f620e696a@freenet.de][Email from Thorsten Wilms: Re: Chrooting into GuixSD]] by [[mailto:t_w_@freenet.de][Thorsten Wilms]]
+   #+BEGIN_EXAMPLE
+       cd /path/to/guix/root
+       sudo mount --bind /dev dev
+       sudo mount --bind /proc proc
+       sudo mount --bind /sys sys
+       sudo unshare -m sudo chroot . /run/current-system/profile/bin/bash
+       source /etc/profile
+
+       guix-daemon --build-users-group=guixbuild &
+
+     If you then `su` to a plain user, do `source /etc/profile` again.
+
+     I think all of `guix pull`. `reconfigure` and `package` search,
+     install and update worked here with that approach. `guix download`
+     failed due to nss certificates, until I added:
+       export SSL_CERT_DIR="$HOME/.guix-profile/etc/ssl/certs"
+       export
+     SSL_CERT_FILE="$HOME/.guix-profile/etc/ssl/certs/ca-certificates.crt"
+       export GIT_SSL_CAINFO="$SSL_CERT_FILE"
+
+   #+END_EXAMPLE
