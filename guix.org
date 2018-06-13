@@ -128,6 +128,14 @@
                            directories))))))
     #+END_SRC
 
+  - Upgrade guix-daemon
+
+    [13:54:40] <snape> castilma: I'm not 100% sure but my
+    understanding is that with GuixSD, doing 'sudo -E guix system
+    reconfigure config.scm' will use your current guix package for the
+    daemon, thus it'll be updated and you won't need to do 'guix pull'
+    as root.
+
   - Static networking service
     #+BEGIN_SRC scheme
       (define (iproute2-shepherd-service config)
