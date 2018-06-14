@@ -39,6 +39,14 @@
     : env GUILE_LOAD_PATH=$HOME/dotfiles:$HOME/src/guix-local:$HOME/src/guix-wigust:$GUILE_LOAD_PATH GUIX_PACKAGE_PATH= ./pre-inst-env guix environment --no-grafts -m ~/dotfiles/fiore/manifests/manifest.scm
     : env GUILE_LOAD_PATH=$HOME/src/guix-wigust:$HOME/src/guix-packages:$GUILE_LOAD_PATH ./pre-inst-env guix system build /home/natsu/dotfiles/fiore/clover.scm
 
+  - Substitutable
+    #+BEGIN_SRC sh
+      for item in $(guix gc -R $(readlink -f ~/.config/guix/current) | grep guix); do
+          echo $item;
+          curl -I https://berlin.guixsd.org/nar/gzip/$(echo $item | cut -d '/' -f 4);
+      done
+    #+END_SRC
+
   - Patches
     #+BEGIN_SRC scheme
       (patches
