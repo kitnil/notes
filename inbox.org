@@ -975,4 +975,21 @@ details.
                        (> char 127))
                      (ucs-normalize-NFKD-string string)))
 
+     (defun downcase-or-normalize-word (arg)
+       "Convert to lower case from point to end of word, moving over.
+     With ARG, normalize a word on point, moving over."
+       (interactive "p")
+       (require 'cl-lib)
+       (if (equal arg 4)
+           (let ((point0 (point)) string)
+             (forward-word 1)
+             (setq string (buffer-substring point0 (point)))
+             (delete-region point0 (point))
+             (insert
+              (cl-remove-if (lambda (char)
+                              (> char 127))
+                            (ucs-normalize-NFKD-string string))))
+         (downcase-word arg)))
+
+     (global-set-key [remap downcase-word] 'downcase-or-normalize-word)
    #+END_SRC
