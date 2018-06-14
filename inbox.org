@@ -969,4 +969,10 @@ details.
                               "iconv" t t nil "-t" "ASCII//TRANSLIT")
          (buffer-substring-no-properties (point-min) (point-max))))
 
+     (defun my-ascii-normalize-filter (string)
+       (require 'cl-lib)
+       (cl-remove-if (lambda (char)
+                       (> char 127))
+                     (ucs-normalize-NFKD-string string)))
+
    #+END_SRC
