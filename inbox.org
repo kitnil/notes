@@ -994,3 +994,4 @@ details.
      (global-set-key [remap downcase-word] 'downcase-or-normalize-word)
    #+END_SRC
 ** READ [2018-06-14 Thu 19:04] [[gnus:INBOX#87vaanor7p.fsf@gnu.org][Email from Jan Nieuwenhuizen: Mes 0.15 released]] by [[mailto:janneke@gnu.org][Jan Nieuwenhuizen]]
+** BUG [2018-06-15 Fri 14:00] [[gnus:INBOX#8736xopz0q.fsf@netris.org][Email from Mark H. Weaver: bug#31841: ./pre-inst-env guix system no longer works without ~/.config/guix]] by [[mailto:mhw@netris.org][Mark H. Weaver]]
