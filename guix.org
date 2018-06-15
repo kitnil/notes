@@ -34,6 +34,9 @@
 
 * Cheat sheet
 
+  - GDB
+    : sudo gdb --args guix-daemon --build-users-group=guixbuild
+
   - Upgrade
     : env GUILE_LOAD_PATH=$HOME/dotfiles:$GUILE_LOAD_PATH GUIX_PACKAGE_PATH= ./pre-inst-env guix environment --no-grafts -m $HOME/dotfiles/fiore/manifests/guix-collection-manifest.scm
     : env GUILE_LOAD_PATH=$HOME/dotfiles:$HOME/src/guix-local:$HOME/src/guix-wigust:$GUILE_LOAD_PATH GUIX_PACKAGE_PATH= ./pre-inst-env guix environment --no-grafts -m ~/dotfiles/fiore/manifests/manifest.scm
