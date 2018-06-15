@@ -1001,3 +1001,21 @@ details.
 ** NOTBUG [2018-06-15 Fri 15:00] [[gnus:INBOX#CAELvoty01695_8MCYtTL__DpBgLshydGYRmD=zi4f7HjALMz3w@mail.gmail.com][Email from Caleb Ristvedt: bug#31836: Installing bc downloads ghc]] by [[mailto:caleb.ristvedt@cune.org][Caleb Ristvedt]]
 ** BUG [2018-06-15 Fri 15:01] [[gnus:INBOX#599124aabcd5140179562c358198ecd1@lepiller.eu][Email from Julien Lepiller: bug#31843: guix pull corrupted current guix]] by [[mailto:julien@lepiller.eu][Julien Lepiller]]
 ** REPLY [2018-06-15 Fri 19:24] [[gnus:INBOX#871sd8urch.fsf@elephly.net][Email from Ricardo Wurmus: Re: preparing the next release v0.15.0]] by [[mailto:rekado@elephly.net][Ricardo Wurmus]]
+** [2018-06-15 Fri 19:27] [[gnus:INBOX#87lgc2cppx.fsf@netris.org][Email from Mark H. Weaver: Re: CPS mystery]] by [[mailto:mhw@netris.org][Mark H. Weaver]]
+   #+BEGIN_SRC scheme
+     scheme@(guile-user)> ,use (system base compile)
+     scheme@(guile-user)> (define intmap->alist (@@ (language cps intmap) intmap->alist))
+     scheme@(guile-user)> (define v (compile '(floor/ 3 7) #:from 'scheme #:to 'cps))
+     scheme@(guile-user)> ,pp (intmap->alist v)
+     $2 = ((0 . #<cps (kfun () 0 1 9)>)
+           (1 . #<cps (ktail)>)
+           (2 . #<cps (kargs (arg) (3) (continue 1 (call 1 2 3)))>)
+           (3 . #<cps (kargs (arg) (2) (continue 2 (const 7)))>)
+           (4 . #<cps (kargs (arg) (1) (continue 3 (const 3)))>)
+           (5 . #<cps (kargs (box) (4) (continue 4 (primcall box-ref 4)))>)
+           (6 . #<cps (kargs (bound?) (6) (continue 5 (primcall resolve 5 6)))>)
+           (7 . #<cps (kargs (name) (5) (continue 6 (const #t)))>)
+           (8 . #<cps (kargs () () (continue 7 (const floor/)))>)
+           (9 . #<cps (kclause (() () #f () #f) 8)>))
+     scheme@(guile-user)>
+   #+END_SRC
