@@ -193,6 +193,13 @@ rebase the patches on the master branch and send them again?
 
 Thanks!
 
+** patch example
+
+   #+BEGIN_SRC scheme
+     (patches (append (origin-patches (package-source perl))
+                      (search-patches "perl-archive-tar-CVE-2018-12015.patch")))
+   #+END_SRC
+
 * How to use sneek on Gnunet IRC channels
 
   #+BEGIN_EXAMPLE
