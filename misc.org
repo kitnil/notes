@@ -1,4 +1,4 @@
-  - mpv
+  - mpv debug
     : mpv -v -v --no-config https://www.youtube.com/watch?v=tKemIJ0G1C8
 
   - ffmpeg
