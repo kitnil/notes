@@ -1,3 +1,8 @@
+  - Nvidia
+    - GTX 970 ≤ GTX 1060 3GB
+    - GTX 980 ≤ GTX 1060 6GB
+    - GTX 980 Ti ≤ GTX 1070
+
   - mpv debug
     : mpv -v -v --no-config https://www.youtube.com/watch?v=tKemIJ0G1C8
 
