@@ -34,6 +34,9 @@
 
 * Cheat sheet
 
+  - Debug LD
+    : env GUIX_LD_WRAPPER_DEBUG=yes make
+
   - https://git.lassieur.org/cgit/
 
   - GDB
