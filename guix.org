@@ -34,6 +34,17 @@
 
 * Cheat sheet
 
+  - Use origin inside inputs
+    #+BEGIN_SRC scheme
+      ("pci.ids"
+       ,(origin
+          (method url-fetch)
+          (uri "https://github.com/pciutils/pciids/raw/ad02084f0bc143e3c15e31a6152a3dfb1d7a3156/pci.ids")
+          (sha256
+           (base32
+            "0kfhpj5rnh24hz2714qhfmxk281vwc2w50sm73ggw5d15af7zfsw"))))
+    #+END_SRC
+
   - Debug LD
     : env GUIX_LD_WRAPPER_DEBUG=yes make
 
