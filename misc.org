@@ -1,3 +1,9 @@
+  - gitlab command line interface
+    env GITLAB_API_ENDPOINT='https://gitlab.com/api/v4' GITLAB_API_PRIVATE_TOKEN=$(cat $HOME/.gitlab) gitlab shell
+    env GITLAB_API_ENDPOINT='https://gitlab.com/api/v4' GITLAB_API_PRIVATE_TOKEN=$(cat $HOME/.gitlab) gitlab create_project guix-misc "{visibility: public}"
+    project wigust/guix-misc
+    edit_project wigust/emacs-anywhere-mode "{visibility: public}"
+
   - Сменить дроссель или залить эпоксидной смолой
 
   - GTX 980 возможно сколот чип
