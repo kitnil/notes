@@ -1,3 +1,6 @@
+  - xorg keys https://cgit.freedesktop.org/xorg/proto/xproto/tree/keysymdef.h
+    Origin: <https://groups.google.com/forum/#!topic/keynav-users/0jowQ9z88dE>.
+
   - gitlab command line interface
     env GITLAB_API_ENDPOINT='https://gitlab.com/api/v4' GITLAB_API_PRIVATE_TOKEN=$(cat $HOME/.gitlab) gitlab shell
     env GITLAB_API_ENDPOINT='https://gitlab.com/api/v4' GITLAB_API_PRIVATE_TOKEN=$(cat $HOME/.gitlab) gitlab create_project guix-misc "{visibility: public}"
