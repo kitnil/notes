@@ -34,6 +34,17 @@
 
 * Cheat sheet
 
+  - Remove mingetty and use agetty
+    #+BEGIN_SRC scheme
+      (services (cons (agetty-service (agetty-configuration (tty "ttyS0")))
+                      (remove (lambda (service)
+                                (or (eq? (service-kind service)
+                                         mingetty-service-type)
+                                    (eq? (service-kind service)
+                                         console-font-service-type)))
+                              (operating-system-user-services os))))
+    #+END_SRC
+
   - Use origin inside inputs
     #+BEGIN_SRC scheme
       ("pci.ids"
