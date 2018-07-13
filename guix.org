@@ -34,6 +34,12 @@
 
 * Cheat sheet
 
+  - Shepherd strace
+    #+BEGIN_SRC scheme
+      #$(file-append strace "/bin/strace")
+      "-f" "-o" "/tmp/ddclient.strace" "-s" "1024"
+    #+END_SRC
+
   - Remove mingetty and use agetty
     #+BEGIN_SRC scheme
       (services (cons (agetty-service (agetty-configuration (tty "ttyS0")))
