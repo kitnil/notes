@@ -34,6 +34,9 @@
 
 * Cheat sheet
 
+  - Hydra JSON interface
+    : curl -i -H 'Accept: application/json' https://hydra.gnu.org/
+
   - Shepherd strace
     #+BEGIN_SRC scheme
       #$(file-append strace "/bin/strace")
