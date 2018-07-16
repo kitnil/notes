@@ -1063,3 +1063,8 @@ details.
 ** HACK [2018-07-11 Wed 23:16] [[gnus:INBOX#87wou1j41p.fsf@gnu.org][Email from Ludovic Courtès: bug#32110: Some Cuirass examples fail]] by [[mailto:ludo@gnu.org][Ludovic Courtès]]
 ** HACK [2018-07-13 Fri 07:32] [[gnus:INBOX#87wou0tpki.fsf@gnu.org][Email from Ludovic Courtès: Re: gnumaint changes]] by [[mailto:ludo@gnu.org][Ludovic Courtès]]
 ** REPLY [2018-07-13 Fri 19:22] [[gnus:INBOX#87r2k7dt35.fsf@gnu.org][Email from Ludovic Courtès: bug#32115: {PATCH 0/2} Add (guix inferior) and improve 'guix pull -l']] by [[mailto:ludo@gnu.org][Ludovic Courtès]]
+** HACK [2018-07-16 Mon 13:07] [[gnus:INBOX#878t6by60i.fsf@inria.fr][Email from Ludovic Courtès: Re: Store on NFS (was Re: ~/.config/guix/current)]] by [[mailto:ludovic.courtes@inria.fr][Ludovic Courtès]]
+   #+BEGIN_SRC scheme
+     (simple-service 'etc-exports etc-service-type
+                     `(("exports" ,(plain-file "exports" "…"))))
+   #+END_SRC
