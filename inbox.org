@@ -1068,3 +1068,4 @@ details.
      (simple-service 'etc-exports etc-service-type
                      `(("exports" ,(plain-file "exports" "…"))))
    #+END_SRC
+** READ [2018-07-16 Mon 17:10] [[gnus:INBOX#20180716100730.ixv5mqqlbl3tdleb@abyayala][Email from Nils Gillmann: {bug#32171} Update: Erlang and Elixir]] by [[mailto:ng0@n0.is][Nils Gillmann]]
