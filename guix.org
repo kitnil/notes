@@ -34,6 +34,18 @@
 
 * Cheat sheet
 
+  - io
+    #+BEGIN_SRC scheme
+      (call-with-output-file nethack-script
+        (lambda (port)
+          (format port "#!~a/bin/sh
+      first line
+      second line
+      …\n"
+                  (assoc-ref inputs "bash"))))
+
+    #+END_SRC
+
   - Hydra JSON interface
     : curl -i -H 'Accept: application/json' https://hydra.gnu.org/
 
