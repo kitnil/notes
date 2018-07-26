@@ -1,0 +1,11 @@
+* Configure telnet
+
+https://learningnetwork.cisco.com/thread/66649
+
+Under the switch go to the vlan1 interface: interface vlan 1
+
+(config-if) ip address x.x.x.x  x.x.x.x
+
+(config-if) no shut
+
+(config) ip default-gateway x.x.x.x
