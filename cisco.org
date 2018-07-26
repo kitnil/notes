@@ -1,3 +1,29 @@
+* 
+
+How to enable SSH CLI on Cisco 2960 Switch
+
+SSH config
+
+http://www.cisco.com/en/US/docs/switches/lan/catalyst2960/software/release/12.2_53_se/configuration/guide/swauthen.html#wp1227177
+
+Port security
+
+http://www.cisco.com/en/US/docs/switches/lan/catalyst2960/software/release/12.2_53_se/configuration/guide/swtrafc.html#wp1038501
+
+Port Protection
+
+http://www.cisco.com/en/US/docs/switches/lan/catalyst2960/software/release/12.2_53_se/configuration/guide/swtrafc.html#wp1175133
+
+RSTP
+
+http://www.cisco.com/en/US/docs/switches/lan/catalyst2960/software/release/12.2_53_se/configuration/guide/swstp.html#wp1166029
+
+TFTP
+
+http://www.cisco.com/en/US/products/sw/iosswrel/ps1835/products_tech_note09186a008020260d.shtml
+
+For TFTP you will need a TFTP server set up.  From the router you will issue the commands in the link I provided.
+
 * tcpdump
 
 tcpdump -v -s0 udp and port 520
