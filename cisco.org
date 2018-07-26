@@ -1,3 +1,7 @@
+* tcpdump
+
+tcpdump -v -s0 udp and port 520
+
 * Configure telnet
 
 https://learningnetwork.cisco.com/thread/66649
