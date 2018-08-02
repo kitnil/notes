@@ -1,0 +1,10 @@
+set interfaces ge-0/0/0.0 family inet address 192.168.60.3/24
+set interfaces ge-0/0/1.0 family inet address 192.168.60.71/24
+set interfaces ge-0/0/2.0 family inet address 192.168.60.72/24
+set interfaces ge-0/0/3.0 family inet address 192.168.60.73/24
+set interfaces ge-0/0/4.0 family inet address 192.168.60.74/24
+
+set security zones security-zone trust interfaces ge-0/0/1 host-inbouinterfaces ge-0/0/2 host-inbound-traffic system-services all
+set security zones security-zone trust interfaces ge-0/0/2 host-inbouinterfaces ge-0/0/2 host-inbound-traffic system-services all
+set security zones security-zone trust interfaces ge-0/0/3 host-inbouinterfaces ge-0/0/2 host-inbound-traffic system-services all
+set security zones security-zone trust interfaces ge-0/0/4 host-inbouinterfaces ge-0/0/2 host-inbound-traffic system-services all
