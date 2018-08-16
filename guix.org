@@ -34,6 +34,9 @@
 
 * Cheat sheet
 
+  - Disable quit in Guile REPL
+    : (catch 'quit (lambda () …) (const #f))
+
   - io
     #+BEGIN_SRC scheme
       (call-with-output-file nethack-script
