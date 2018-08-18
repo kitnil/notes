@@ -34,6 +34,14 @@
 
 * Cheat sheet
 
+  - Guix Wine
+    #+BEGIN_SRC sh
+      ./pre-inst-env\
+          guix environment -C --expose=/gnu/store/ --ad-hoc wine\
+          -- wine $(./pre-inst-env guix build hello --target=i686-w64-mingw32)\
+          /bin/hello.exe
+    #+END_SRC
+
   - Disable quit in Guile REPL
     : (catch 'quit (lambda () …) (const #f))
 
