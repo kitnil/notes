@@ -1109,3 +1109,48 @@ details.
 ** REPLY [2018-08-17 Fri 21:14] [[gnus:INBOX#20180817170248.3831e658@jasniac.instanton][Email from Marco van Hulten: how does mounting work?]] by [[mailto:marco@hulten.org][Marco van Hulten]]
 ** HACK [2018-08-18 Sat 13:44] [[gnus:INBOX#877eko5ayh.fsf@iotcl.com][Email from Toon Claes: {ELPA} New package: use-package-hydra]] by [[mailto:toon@iotcl.com][Toon Claes]]
 ** REPLY [2018-08-19 Sun 08:19] [[gnus:INBOX#87sh3b5ei7.fsf@jnanam.net][Email from Benjamin Slade: getting applications from Nix to have access to fonts]] by [[mailto:beoram@gmail.com][Benjamin Slade]]
+** [2018-08-30 Thu 15:21] [[gnus:INBOX#87a7pg9w6n.fsf@netris.org][Email from Mark H. Weaver: Re: Change interpreter from octets to hex?]] by [[mailto:mhw@netris.org][Mark H. Weaver]]
+   #+BEGIN_EXAMPLE
+     mhw@jojen ~$ guile
+     GNU Guile 2.2.3
+     Copyright (C) 1995-2017 Free Software Foundation, Inc.
+
+     Guile comes with ABSOLUTELY NO WARRANTY; for details type `,show w'.
+     This program is free software, and you are welcome to redistribute it
+     under certain conditions; type `,show c' for details.
+
+     Enter `,help' for help.
+     scheme@(guile-user)> ,help system
+     System Commands [abbrev]:
+
+      ,gc                               - Garbage collection.
+      ,statistics               [,stat] - Display statistics.
+      ,option [NAME] [EXP]         [,o] - List/show/set options.
+      ,quit        [,q ,continue ,cont] - Quit this session.
+
+     scheme@(guile-user)> ,option
+       compile-options       (#:warnings (unbound-variable macro-use-before-definition arity-mismatch format duplicate-case-datum bad-case-datum))
+       trace                 #f
+       interp                #f
+       prompt                #f
+       print                 #f
+       value-history         #t
+       on-error              debug
+     scheme@(guile-user)> (use-modules (rnrs bytevectors)
+                                       (ice-9 format))
+     scheme@(guile-user)> (define (format-octet octet)
+                            (format #f "#x~2,'0x" octet))
+     scheme@(guile-user)> (define (print-bytevector bv)
+                            (display "#vu8(")
+                            (display (string-join (map format-octet (bytevector->u8-list bv))))
+                            (display ")"))
+     scheme@(guile-user)> (define (my-repl-print repl val)
+                            (if (bytevector? val)
+                                (print-bytevector val)
+                                (write val))
+                            (newline))
+     scheme@(guile-user)> ,o print my-repl-print
+     scheme@(guile-user)> #vu8(0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20)
+     $1 = #vu8(#x00 #x01 #x02 #x03 #x04 #x05 #x06 #x07 #x08 #x09 #x0a #x0b #x0c #x0d #x0e #x0f #x10 #x11 #x12 #x13 #x14)
+     scheme@(guile-user)> 
+   #+END_EXAMPLE
