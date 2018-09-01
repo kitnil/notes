@@ -34,6 +34,18 @@
 
 * Cheat sheet
 
+  - Setuid Nix package on GuixSD
+    #+BEGIN_SRC scheme
+      (let ((nix-profile "/home/natsu/.nix-profile"))
+        (map (lambda (file)
+               (string-append (string-drop-right (readlink (string-append nix-profile "/bin/singularity"))
+                                                 (string-length "/bin/singularity"))
+                              "/libexec/singularity/bin/"
+                              file))
+             '("action-suid" "mount-suid" "start-suid")))
+
+    #+END_SRC
+
   - Rewrite package graph in manifest
     #+BEGIN_SRC scheme
       (use-modules (gnu packages cran)       ; provides r-factoextra and r-nbclust
