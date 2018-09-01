@@ -34,6 +34,43 @@
 
 * Cheat sheet
 
+  - Rewrite package graph in manifest
+    #+BEGIN_SRC scheme
+      (use-modules (gnu packages cran)       ; provides r-factoextra and r-nbclust
+                   (my packages variants)    ; provides “r-minimal-3.4.2”
+                   (guix packages)           ; for "package", "package-arguments"...
+                   (guix build-system))      ; for "build-system-name"
+
+      ;; This is a recursive package transformer.  When given a package
+      ;; "pkg" it checks if it is an R package by looking at its build
+      ;; system; if that is the case, it will return a package variant that
+      ;; is built with "r-minimal-3.4.2".  It does this recursively, so all
+      ;; dependencies are also modified.
+      (define use-old-r
+        (package-mapping
+         (lambda (pkg)
+           (if (eq? (build-system-name (package-build-system pkg)) 'r)
+               ;; It’s an R package!  Return a new package that inherits from
+               ;; the original, but build it with R 3.4.2 by adding a build
+               ;; system argument.
+               (package
+                 (inherit pkg)
+                 (arguments
+                  (append `(#:r ,r-minimal-3.4.2)
+                          (package-arguments pkg))))
+               ;; Not an R package.  Don’t change it.
+               pkg))))
+
+      ;; Apply the transformer to the list of R packages.
+      (define r-packages-with-old-r
+        (map use-old-r (list r-factoextra r-nbclust)))
+
+      ;; Build a manifest from the list of modified packages and the old R
+      ;; variant itself.
+      (packages->manifest
+       (cons r-minimal-3.4.2 r-packages-with-old-r))
+    #+END_SRC
+
   - [[http://issues.guix.info/][Guix issue tracker]]
 
   - Guix Wine
