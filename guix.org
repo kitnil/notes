@@ -34,6 +34,11 @@
 
 * Cheat sheet
 
+  - Search for a package in graph
+    #+BEGIN_SRC sh
+      for i in $(guix package -I | awk '{print $1}') ; do guix graph $i | grep -q qtwebkit && echo $i ; done
+    #+END_SRC
+
   - Setuid Nix package on GuixSD
     #+BEGIN_SRC scheme
       (let ((nix-profile "/home/natsu/.nix-profile"))
