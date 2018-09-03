@@ -1178,3 +1178,41 @@ details.
               (exports (matches-in-string "^[+] export \\(.*\\)" output)))
          (mapcar (lambda (line) (apply #'setenv (split-string line "="))) exports )))
    #+END_SRC
+** [2018-09-03 Mon 09:25] [[gnus:INBOX#c7lwKkQDhTMo8kvvYf5WwyWFGSrACIQmHswdjAxtd0D2zLK4HK8Xy0lpHOJ6kd9ILyBsVGe5C9Jr-vifmC10XcPsKauZKi99GnjYe5N371o=@protonmail.com][Email from Rene: guix system init question]] by [[mailto:pacoon@protonmail.com][Rene]]
+   #+BEGIN_SRC scheme
+     (use-modules (gnu))
+     (use-package-modules hurd)
+
+     (operating-system
+       (host-name "antelope")
+       (timezone "Europe/Paris")
+       (locale "en_US.utf8")
+  
+       ;; Assuming /dev/sdX is the target hard disk, and "my-root" is
+       ;; the label of the target root file system.
+       (bootloader (bootloader-configuration
+                    (bootloader grub-bootloader)
+                    (target "/dev/hd2s1")))
+  
+       (kernel gnumach)
+  
+       (file-systems (cons (file-system
+                             (device "my-root")
+                             (title 'label)
+                             (mount-point "/guix")
+                             (type "ext2"))
+                           %base-file-systems))
+  
+       (users (cons (user-account
+                     (name "prometheus")
+                     (comment "Welcome to the Hurd")
+                     (group "users")
+                     (home-directory "/home/prometheus"))
+                    %base-user-accounts))
+
+       (packages (cons* 
+                  %base-packages-hurd))
+  
+       (services %base-services-hurd))
+
+   #+END_SRC
