@@ -1160,3 +1160,21 @@ details.
 ** [2018-09-03 Mon 01:12] [[gnus:INBOX#040827fb533152726fb7c1d9c1df97d7@hypermove.net][Email from Amirouche Boubekki: Scheme @ FOSDEM 2019]] by [[mailto:amirouche@hypermove.net][Amirouche Boubekki]]
 ** [2018-09-03 Mon 01:12] [[gnus:INBOX#2adbb332-828d-f41b-c10b-54afdc8a1ed9@web.de][Email from Jonathan Brielmaier: Re: FOSDEM 2019 (ACTION: please register or mail)]] by [[mailto:jonathan.brielmaier@web.de][Jonathan Brielmaier]]
 ** [2018-09-03 Mon 01:15] [[gnus:INBOX#87wos9rp5y.fsf@gnu.org][Email from Jan Nieuwenhuizen: Re: Guix and Emacs Integration for Polyglot Development]] by [[mailto:janneke@gnu.org][Jan Nieuwenhuizen]]
+   #+BEGIN_SRC emacs-lisp
+     (defun guix-switch-profile (&optional profile)
+       "reset Emacs' environment by snarfing PROFILE/etc/profile"
+
+       (defun matches-in-string (regexp string)
+         "return a list of matches of REGEXP in STRING."
+         (let ((matches))
+           (save-match-data
+             (string-match "^" "")
+             (while (string-match regexp string (match-end 0))
+               (push (or (match-string 1 string) (match-string 0 string)) matches)))
+           matches))
+
+       (interactive "fprofile: ")
+       (let* ((output (shell-command-to-string (concat "GUIX_PROFILE= /bin/sh -x " profile "/etc/profile")))
+              (exports (matches-in-string "^[+] export \\(.*\\)" output)))
+         (mapcar (lambda (line) (apply #'setenv (split-string line "="))) exports )))
+   #+END_SRC
