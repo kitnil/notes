@@ -1013,5 +1013,5 @@ success = false; } else { //Lock texture if( !gFooTexture.lockTexture() ) { prin
 
   - [[https://bootstrapping.miraheze.org/wiki/Investigate][ideas we haven't yet explored]]
   - https://cwiki.apache.org/confluence/pages/viewpage.action?pageId=74682318
-- [2018-09-10 Mon 18:54] [[gnus:INBOX#87pnxqkbmg.fsf@gnu.org][Email from Ludovic Courtès: hpcguix-web, channels, and inferiors]] by [[mailto:ludovic.courtes@inria.fr][Ludovic Courtès]]
+  - [2018-09-10 Mon 18:54] [[gnus:INBOX#87pnxqkbmg.fsf@gnu.org][Email from Ludovic Courtès: hpcguix-web, channels, and inferiors]] by [[mailto:ludovic.courtes@inria.fr][Ludovic Courtès]]
 
