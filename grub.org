@@ -1,0 +1,20 @@
+#+BEGIN_EXAMPLE
+  menuentry "Fedora-Workstation-Live" {
+    set isofile="/home/natsu/Downloads/Fedora-Workstation-Live-x86_64-28-1.1.iso"
+    loopback loop $isofile
+    linux (loop)/isolinux/vmlinuz boot=isolinux iso-scan/filename=$isofile root=live:LABEL=Fedora-WS-Live-28-1-1 rd.live.image
+    initrd (loop)/isolinux/initrd.img
+  }
+  menuentry "Kali-XFCE-Live" {
+  set isofile="/home/natsu/Downloads/kali-linux-xfce-2018-3-amd64-iso/kali-linux-xfce-2018.3-amd64.iso"
+    loopback loop $isofile
+    linux (loop)/live/vmlinuz findiso=$isofile boot=live components username=root hostname=kali
+    initrd (loop)/live/initrd.img
+  }
+  menuentry "Debian-XFCE-Live" {
+  set isofile="/home/natsu/Downloads/debian-live-9.5.0-amd64-xfce.iso"
+    loopback loop $isofile
+    linux (loop)/live/vmlinuz-4.9.0-7-amd64 findiso=$isofile boot=live components
+    initrd (loop)/live/initrd.img-4.9.0-7-amd64
+  }
+#+END_EXAMPLE
