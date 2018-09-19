@@ -34,6 +34,10 @@
 
 * Cheat sheet
 
+  - Guix archive package source
+    Message-ID: <87h8isieke.fsf@gnu.org>
+    : guix archive --export -r hello $(guix build -S hello) > hello.nar
+
   - Environment
     Message-ID: <875zzczvn4.fsf@gmail.com>
 
