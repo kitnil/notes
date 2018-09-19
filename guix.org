@@ -34,6 +34,39 @@
 
 * Cheat sheet
 
+  - Environment
+    #+BEGIN_EXAMPLE
+      I have experimented with various schemes for managing projects in
+      guix. I have tried 'guix environment', 'guix package', and 'guix system
+      vm'. FWIW, I have ended up "running" projects with an script that
+      includes ...
+
+      GCP_ROOT=$gcp_root guix package \
+              --profile=$gcp_root/.guix-profile \
+              -m $gcp_root/.manifest.scm
+
+      eval $(guix package -p /var/guix/profiles/system/profile \
+              -p $gcp_root/.guix-profile --search-paths=exact)
+
+      ... where $gcp_root is the project directory.  This effectively replaces
+      the "default user profile" with a "custom project profile"
+      ($gcp_root/.guix-profile). I put the emacs project config in
+      $gcp_root/.emacs and run emacs with a script that includes ...
+
+      $GCP_ROOT/.guix-profile/bin/emacs \
+          --no-site-file \
+          --eval='(let ((guix-env (concat (getenv "GCP_ROOT") "/.guix-profile"))) (when (and guix-env (require (quote guix-emacs) nil t)) (guix-emacs-autoload-packages guix-env)))' \
+          --no-init-file \
+          --eval='(setq user-emacs-directory (concat (getenv "GCP_ROOT") "/.emacs.d/"))' \
+          --eval='(load (concat (getenv "GCP_ROOT") "/.emacs"))' \
+          --debug-init \
+          "$@"
+
+      The net effect: a custom emacs config running in a custom profile for
+      each project. I use Makefiles to maintain $gcp_root/.manifest.scm,
+      $gcp_root/.emacs, etc. and GNU screen to run/juggle these projects.
+    #+END_EXAMPLE
+
   - [[http://bayfront.guixsd.org/.well-known/logs/][Guix IRC channel logs]]
 
   - [[https://issues.guix.info/issue/22629#240][pull the latest commit that was fully built on berlin.guixsd.org]]
