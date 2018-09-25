@@ -1,0 +1,3 @@
+- ssh and sudo
+  : ssh -t web33s -- 'sudo -Sv <<< PASSWORD && sudo -i'
+  Origin https://unix.stackexchange.com/questions/435969/why-does-sudo-s-prevent-an-interactive-shell
