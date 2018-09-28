@@ -23,3 +23,5 @@ browser.ssl_override_behavior
 network.stricttransportsecurity.preloadlist
 
 browser.xul.error_pages.expert_bad_cert
+
+security.mixed_content.block_active_content
