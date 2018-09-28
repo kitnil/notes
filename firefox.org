@@ -22,8 +22,6 @@ security.ssl.enable_ocsp_stapling
 browser.ssl_override_behavior
 network.stricttransportsecurity.preloadlist
 
-security.warn_entering_weak false
-security.warn_viewing_mixed false
 browser.xul.error_pages.expert_bad_cert
 
 security.mixed_content.block_active_content
