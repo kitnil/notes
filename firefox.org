@@ -14,3 +14,12 @@
   network.cookie.lifetimePolicy.days 3
   network.cookie.lifetime.days 5
 #+END_EXAMPLE
+
+* SSL
+
+security.insecure_field_warning.contextual.enabled
+security.ssl.enable_ocsp_stapling
+browser.ssl_override_behavior
+network.stricttransportsecurity.preloadlist
+
+browser.xul.error_pages.expert_bad_cert
