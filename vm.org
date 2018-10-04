@@ -1,3 +1,5 @@
+: nohup vmkfstools -i /vmfs/volumes/datastore1/tmp/Zabbix-disk1.vmdk -d thin /vmfs/volumes/datastore1/tmp/Zabbix-disk1-converted-2.vmdk &
+
 #+BEGIN_EXAMPLE
   /system/vm/coverage.scm' -> `contents/gnu/store/id4mc41gyisvxnxfn63lvnn7ix64d87c-guile-static-stripped-2.2.3/share/guile/2.2/system/vm/coverage.scm'
   `/gnu/store/id4mc41gyisvxnxfn63lvnn7ix64d87c-guile-static-stripped-2.2.3/share/guile/2.2/system/vm/debug.scm' -> `contents/gnu/store/id4mc41gyisvxnxfn63lvnn7ix64d87c-guile-static-stripped-2.2.3/share/guile/2.2/system/vm/debug.scm'
