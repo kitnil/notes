@@ -34,6 +34,20 @@
 
 * Cheat sheet
 
+  - Manifest to manifest
+  #+BEGIN_SRC scheme
+    (use-modules (guix profiles)
+                 (ice-9 match)
+                 (ice-9 pretty-print))    
+
+    (match (command-line)
+      ((_ where)
+       (pretty-print
+        `(specifications->manifest
+          ',(map manifest-entry-name (manifest-entries (profile-manifest where))))))
+      (_ (error "Please provide the path to a Guix profile.")))
+  #+END_SRC
+
   - Import via SSH
     : guix archive --export --recursive /gnu/store/…-PACKAGE-VERSION | ssh REMOTE_MACHINE guix archive --import
 
