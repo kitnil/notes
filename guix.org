@@ -34,6 +34,9 @@
 
 * Cheat sheet
 
+  - Import via SSH
+    : guix archive --export --recursive /gnu/store/…-PACKAGE-VERSION | ssh REMOTE_MACHINE guix archive --import
+
   - Guix archive package source
     Message-ID: <87h8isieke.fsf@gnu.org>
     : guix archive --export -r hello $(guix build -S hello) > hello.nar
