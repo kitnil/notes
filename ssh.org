@@ -1,0 +1,9 @@
+https://habr.com/post/331348/
+
+ssh -R 9999:localhost:5432 host1
+https://www.ssh.com/ssh/tunneling/example#sec-Remote-Forwarding
+
+https://blog.trackets.com/2014/05/17/ssh-tunnel-local-and-remote-port-forwarding-explained-with-examples.html
+
+- Generate RSA key
+  : ssh-keygen -b 4096 -m pem -f ~/.ssh/id_rsa_pem
