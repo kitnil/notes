@@ -1238,3 +1238,13 @@ details.
 ** [2018-09-20 Thu 09:52] [[gnus:INBOX#78eaa661a19a611f60ec41e87a9e6c90@mail.secure-mail.biz][Email from SecUpwN: {Replicant} GitHub: Android IMSI-Catcher Detector]] by [[mailto:perfect-privacy@secure-mail.biz][SecUpwN]]
 ** READ [2018-09-20 Thu 10:15] [[gnus:INBOX#87tvmo4f1d.fsf@gnu.org][Email from Jan Nieuwenhuizen: bug#32749: package-with-explicit-inputs leaks-in additional inputs]] by [[mailto:janneke@gnu.org][Jan Nieuwenhuizen]]
 ** [2018-09-20 Thu 10:17] [[gnus:INBOX#3401551.pIYnLFp0Xl@aleksandar-ixtreme-m5740][Email from HiPhish: {ANN} guile-msgpack: MessagePack for GNU Guile (+ help needed)]] by [[mailto:hiphish@posteo.de][HiPhish]]
+** [2018-10-11 Thu 20:56] [[gnus:INBOX#87va6cy2o1.fsf@gnu.org][Email from Ludovic Courtès: Re: rootless Guix]] by [[mailto:ludo@gnu.org][Ludovic Courtès]]
+   
+   For the record, here’s what needs to be done to run guix-daemon and guix
+   as produced by ‘guix pack --relocatable guix’:
+
+   https://lists.gnu.org/archive/html/guix-devel/2018-05/msg00139.html
+
+   We could certainly arrange so that users don’t have to fiddle with
+   $NIX_STATE_DIR etc.
+
