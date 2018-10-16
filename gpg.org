@@ -1,3 +1,6 @@
 https://lists.gnupg.org/pipermail/gnupg-users/2017-January/057400.html
 
 gpg --output secret-subkeys --export-secret-subkeys SUBKEYID!
+
+- Reload gpg-agent
+  : gpg-connect-agent reloadagent /bye
