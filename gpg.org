@@ -4,3 +4,6 @@ gpg --output secret-subkeys --export-secret-subkeys SUBKEYID!
 
 - Reload gpg-agent
   : gpg-connect-agent reloadagent /bye
+
+- Dump gpg-agent config
+  : gpgconf --list-options gpg-agent
