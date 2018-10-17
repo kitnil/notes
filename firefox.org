@@ -25,3 +25,14 @@ network.stricttransportsecurity.preloadlist
 browser.xul.error_pages.expert_bad_cert
 
 security.mixed_content.block_active_content
+
+* Proxy
+
+#+BEGIN_EXAMPLE
+  [MM3-WebAssistant
+    http=127.0.0.1:8080
+    https=127.0.0.1:8080
+    ftp=127.0.0.1:8080
+    homepage=https://Proxy-Offline-Browser.com
+  ]
+#+END_EXAMPLE
