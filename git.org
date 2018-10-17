@@ -1,5 +1,9 @@
 * Cheatsheet
 
+  - Ignore file
+    : .git/info/exclude
+    You could also use [C-u i] in Emacs Magit
+
   - vc-dwim
     #+BEGIN_SRC sh
       # Requirements: coreutils, perl, vc-dwim.
