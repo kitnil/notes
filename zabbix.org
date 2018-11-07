@@ -1,0 +1,142 @@
+* http://admin-gu.ru/os/linux/ustanovka-i-nastrojka-snmp-snmpd-snmptrapd
+
+Установка и настройка snmp, snmpd, snmptrapd в Linux Mint, Ubuntu, Debian 
+
+Расскажу немно о пратоколе SNMP и основах работы с трапами (TRAP) на хостах под
+управление ОС Linux Mint, Ubuntu, Debian и.п. Рассмотрим процесс установки и
+настройки необходимых утилит и демонов, таких как, snmp, snmpd и snmptrapd.
+
+Протокол SNMP используется для удаленного мониторинга и изменения настроек
+различных сетевых железок, буть то сервера, коммутаторы или маршрутизаторы. 
+
+Установка snmp, snmpd snmptrapd в Ubuntu, Debian, Linux Mint
+
+Установим 3 пакета:
+
+1. Пакет snmp включает в себя базавый набор библиотек и утилит необходимых для
+работы и отладки (например утилиту snmpwalk).
+
+user@pc:~$ sudo apt-get install snmp
+
+2. Демон snmpd необходим для управления и получения данных с нашего хоста по
+протоколу snmp.
+
+user@pc:~$ sudo apt-get install snmpd
+
+3. Демон snmptrapd необходим для получения трапов от хостов.
+
+user@pc:~$ sudo apt-get install snmptrapd
+
+Настройка snmptrapd в Ubuntu, Debian, Linux Mint
+
+Файл настроек демона snmptrapd находиться в файле "/etc/snmp/snmptrapd.conf".
+
+1. Первым делом устанавливаем community, для этого правим файл настроек
+"/etc/snmp/snmptrapd.conf". В большинстве случаев в качестве community
+устанавливаем public, но это необязательно, можете поставить какой-нибудь свой.
+
+authCommunity log,execute,net public
+
+2. Далее включаем опцию на автоматический запуск snmptrapd в файле настроек
+"/etc/default/snmptrapd".
+
+TRAPRUN yes
+
+3. Перезапускаем snmptrapd.
+
+user@pc:~$ sudo /etc/init.d/snmptrapd restart
+[ ok ] Restarting snmptrapd (via systemctl): snmptrapd.service.
+или
+user@pc:~$ sudo service snmptrapd restart
+
+4. Проверяем слушет наш демон 162-q порт.
+
+user@pc:~$ sudo netstat -nlup | grep 162
+udp  0   0 0.0.0.0:162   0.0.0.0:*      2337/snmptrapd  
+
+5. Для проверки запустим тестовый trap на себя (127.0.0.1), с помощю утилиты
+snmptrap.
+
+user@pc:~$ sudo snmptrap -c public -v 2c 127.0.0.1 "" 1.3.3.3.3.3.3.3 1.2.2.2.2.2.2 s "My First TRAP"
+
+Смотрим файл сислога "/var/log/syslog", должна появиться строка о получение
+trap-а. Для просмотра syslog-а воспользуемся утилитой tail.
+
+user@pc:~$ sudo tail -n 1 /var/log/syslog
+Feb 12 15:26:59 pc snmptrapd[2337]: 2016-02-12 15:26:59 localhost [UDP: [127.0.0.1]:56096->[127.0.0.1]:162]:#012iso.3.6.1.2.1.1.3.0 = Timeticks: (2324004) 6:27:20.04#011iso.3.6.1.6.3.1.1.4.1.0 = OID: iso.3.3.3.3.3.3.3#011iso.2.2.2.2.2.2 = STRING: "My First TRAP"
+
+Видно что хост получил трап о чем свидетельствует запись в сислоге. Также
+проверим приходят ли трапы с удаленных хостов.
+
+user@pc:~$ sudo snmptrap -c public -v 2c 192.168.2.100 "" 1.3.3.3.3.3.3.3 1.2.2.2.2.2.2 s "My First TRAP REMOTE-HOST"
+
+где 192.168.2.100 -ip адрес хоста на который отправляем трап.
+
+Смотрим еще раз последнюю строку файла сислога "/var/log/syslog", должна
+появиться строка о получение trap-а с удалленого хоста.
+
+user@pc:~$ sudo tail -n 1 /var/log/syslog
+Feb 15 17:38:31 pc snmptrapd[7274]: 2016-02-15 17:38:31 remote.host [UDP: [192.168.100.100]:54159->[192.168.100.100]:162]:#012iso.3.6.1.2.1.1.3.0 = Timeticks: (1789468029) 207 days, 2:44:40.29#011iso.3.6.1.6.3.1.1.4.1.0 = OID: iso.3.3.3.3.3.3.3#011iso.2.2.2.2.2.2 = STRING: "My First REMOTE-HOST"
+
+Настройка snmpd в Ubuntu, Debian, Linux Mint
+
+Файла настроек демона snmpd находиться в "/etc/snmp/snmpd.conf". После установки
+snmpd, по умолчанию, он должен работать на localhost-е.
+
+1. Проверка работы snmpd с помощю утилиты snmpwalk.
+
+user@pc:~$ sudo snmpwalk -v 2c -c public localhost
+iso.3.6.1.2.1.1.1.0 = STRING: "Linux pc 4.2.0-27-generic #32-Ubuntu SMP Fri Jan 22 04:49:08 UTC 2016 x86_64"
+iso.3.6.1.2.1.1.2.0 = OID: iso.3.6.1.4.1.8072.3.2.10
+iso.3.6.1.2.1.1.3.0 = Timeticks: (81564) 0:13:35.64
+iso.3.6.1.2.1.1.4.0 = STRING: "Me <Этот адрес электронной почты защищён от спам-ботов. У вас должен быть включен JavaScript для просмотра.>"
+iso.3.6.1.2.1.1.5.0 = STRING: "pc"
+iso.3.6.1.2.1.1.6.0 = STRING: "Sitting on the Dock of the Bay"
+...
+
+Видно что по snmp отдаються данные с localhost.
+
+Если вам надо опрашивать ваш host с другого адреса (например с удаленного компа)
+или порта (нестандартного порта), то надо изменить в файле настроек
+"/etc/snmp/snmpd.conf" строку.
+
+Настройки по умолчанию:
+agentAddress udp:127.0.0.1:161
+Пример: 
+agentAddress udp:192.168.1.100:162
+
+где 192.168.1.100 - ip адрес вашего хоста, 162 - порт на хосте.
+
+2. Изменение параметров "sysLocation" и "sysContact", для более легкой
+идентификации трапа.
+
+Настройки по умолчанию:
+sysLocation    Sitting on the Dock of the Bay
+sysContact     Me
+Пример:
+sysLocation    MY HOST
+sysContact     MY EMAIL
+
+3. Изменение дефолтного значения community.
+
+По умолчанию в качестве community установлено public, это значение можно
+изменить в файле настроек "/etc/snmp/snmpd.conf".
+
+Настройки по умолчанию:
+rocommunity public  default    -V systemonly
+Пример:
+rocommunity private  default   -V systemonly
+
+где "private" - новое значение community. Параметры "default -V systemonly"
+являються необязательными, я рекомендую их оставить, т.к. без них, хост будет
+отдавать по snmp огромное количество всякой ненужной информации.
+
+4. Перезапускаем демон snmpd.
+
+user@pc:~$ sudo /etc/init.d/snmpd restart
+[ ok ] Restarting snmpd (via systemctl): snmpd.service.
+или
+user@pc:~$ sudo service snmpd restart
+
+Вот и все. Я постарался кратко рассказать о первоначальной настройки демонов
+snmpd и snmptrapd.  Комментируем, подписываемся ну и всем пока:)
