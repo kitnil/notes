@@ -1249,3 +1249,10 @@ details.
    $NIX_STATE_DIR etc.
 ** [2018-11-07 Wed 03:47] [[gnus:nnimap+USER:INBOX#CAL7_Mo9Qmn8=rfaE32xR5A_4Y=k5yzfJ16dSDKz6vS29QFvRuw@mail.gmail.com][Email from Amirouche Boubekki: Ubuntu 18.04 LTS Bionic - Installing Guix in an LXC]] by [[mailto:amirouche.boubekki@gmail.com][Amirouche Boubekki]]
 ** [2018-11-07 Wed 03:47] [[gnus:INBOX#20181031125428.GA814@doom][Email from Tomáš Čech: Re: Dual Boot GuixSd along side other preexisting distros]] by [[mailto:sleep_walker@gnu.org][Tomáš Čech]]
+** [2018-11-14 Wed 12:07] [[gnus:INBOX#-uG2OuTcvsm-Fop1DIG5bO5EiFqS6FJvPQ1xdP4A35k_2Zkm1eWzqbzl82h-imuTeXUaKTk7LOnrqXFOuNpb_z_dfjR3vlI7scjOZOeEzVg=@protonmail.com][Email from Tk: Re: Auto-detect Guile in a text editor]] by [[mailto:tk.code@protonmail.com][Tk]]
+   I prefer the approach where leaving a comment marker somewhere would
+activate the required functionality. For example, in Emacs, you could
+write something like,
+
+ ; -*- mode: Scheme; eval: (whatever-minor-guile-mode-is-used 1); -*- .
+
