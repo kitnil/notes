@@ -149,6 +149,30 @@
              (commit (pk 'commit (latest-commit-successfully-built)))))
     #+END_SRC
 
+  - input.tld channel
+    #+BEGIN_SRC scheme
+      (use-modules (ice-9 popen)
+                   (ice-9 rdelim)
+                   (ice-9 match)
+                   (guix channels))
+
+      (map (match-lambda
+             ((name . url)
+              (let* ((port (open-pipe* OPEN_READ "ssh" "input.tld" "--" "git"
+                                       "-C" (string-append "/srv/git/"
+                                                           (symbol->string name))
+                                       "rev-parse" "HEAD"))
+                     (output (read-string port)))
+                (close-port port)
+                (channel (name name)
+                         (url url)
+                         (commit (string-trim-right output #\newline))))))
+           '((guix . "https://git.savannah.gnu.org/git/guix.git")
+             (guix-chromium . "https://gitlab.com/mbakke/guix-chromium.git")
+             (guix-wigust . "https://cgit.duckdns.org/git/guix-wigust")))
+
+    #+END_SRC
+
   - Guix Graph system
     #+BEGIN_SRC sh
       guix graph -e '(begin (%current-system "i686-linux") (@@ ...))'
