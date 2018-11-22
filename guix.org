@@ -34,6 +34,8 @@
 
 * Cheat sheet
 
+  - https://exploring-data.com/info/npm-packages-dependencies/
+
   - Manifest to manifest
   #+BEGIN_SRC scheme
     (use-modules (guix profiles)
