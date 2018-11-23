@@ -1266,3 +1266,5 @@ write something like,
 ** REPLY [2018-11-18 Sun 14:47] [[gnus:INBOX#1980a93b-5316-b4b6-4c66-1da8e0af9d2c@riseup.net][Email from swedebugia: bug#33397: "guix environment" does not warn about stopped jobs]] by [[mailto:swedebugia@riseup.net][swedebugia]]
 ** [2018-11-18 Sun 14:47] [[gnus:INBOX#20181115144125.GA23468@joshua.dnsalias.com][Email from Mike Gran: {ANN} guile-gi v0.0.1 released]] by [[mailto:spk121@yahoo.com][Mike Gran]]
 ** REPLY [2018-11-20 Tue 18:16] [[gnus:INBOX#CA+k_chKep_DRpydqv0p-i9mp6id=vUz081WcfS92TGFsU5mPSw@mail.gmail.com][Email from Taegil Bae: Re: '--load-path' option not working for 'guix system' command]] by [[mailto:esrevinu@gmail.com][Taegil Bae]]
+** [2018-11-23 Fri 14:43] [[gnus:INBOX#874lcbzqqt.fsf@gnu.org][Email from Ludovic Courtès: bug#32779: Cuirass: Crash and unable to restart when an input is unreachable]] by [[mailto:ludo@gnu.org][Ludovic Courtès]]
+   Fixed in 27f14634102a73d4252d86b912f67e9ad464be1e
