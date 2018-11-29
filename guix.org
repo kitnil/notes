@@ -34,6 +34,9 @@
 
 * Cheat sheet
 
+  - Reset file timestamps to epoch
+    : sudo touch -t 197001010000.01 FILE
+
   - https://exploring-data.com/info/npm-packages-dependencies/
 
   - Manifest to manifest
