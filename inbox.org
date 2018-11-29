@@ -1269,3 +1269,23 @@ write something like,
 ** [2018-11-23 Fri 14:43] [[gnus:INBOX#874lcbzqqt.fsf@gnu.org][Email from Ludovic Courtès: bug#32779: Cuirass: Crash and unable to restart when an input is unreachable]] by [[mailto:ludo@gnu.org][Ludovic Courtès]]
    Fixed in 27f14634102a73d4252d86b912f67e9ad464be1e
 ** TODO [2018-11-25 Sun 10:24] [[gnus:INBOX#CABGw91dvdgeBmfsNibwcnvswOD9Y1G71gmn1zayRQEMRzTw+Hw@mail.gmail.com][Email from Bradley Haggerty: bug#33455: Zathura can't display PDF or epub]] by [[mailto:bradigger@gmail.com][Bradley Haggerty]]
+** [2018-11-30 Fri 02:13] [[gnus:INBOX#87o9a8yo8t.fsf@gnu.org][Email from Ludovic Courtès: Re: hydra.gnunet.org unreachable]] by [[mailto:ludo@gnu.org][Ludovic Courtès]]
+   #+BEGIN_QUOTE
+   Hello Guix,
+
+   Just a note to share information: as you know mirror.hydra.gnu.org is
+   hosted at TUM (Munich, Germany), where Christian Grothoff used to work
+   (the machines was donated by his team.)
+
+   We were able to fix the outage thanks to Christian’s help: when I
+   emailed him yesterday, Christian contacted the sysadmin at TUM in charge
+   of this, Andreas Korsten <korsten@net.in.tum.de>.  Andreas had fixed the
+   problem (powering issue IIUC) by 2PM CET today.
+
+   So now you know who to contact in the future if things go wrong with
+   that machine.  :-)
+
+   Thanks, Christian!
+
+   Ludo’.
+   #+END_QUOTE
