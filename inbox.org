@@ -1290,3 +1290,19 @@ write something like,
    Ludo’.
    #+END_QUOTE
 ** [2018-11-30 Fri 02:14] [[gnus:INBOX#87in0g5bqw.fsf@gnu.org][Email from Ludovic Courtès: ENOSPC on harbourfront]] by [[mailto:ludo@gnu.org][Ludovic Courtès]]
+** [2018-12-06 Thu 02:15] [[gnus:INBOX#87mupongx8.fsf@gnu.org][Email from Ludovic Courtès: Re: scheme shells (was Re: Failing to use guile-bash)]] by [[mailto:ludo@gnu.org][Ludovic Courtès]]
+   #+BEGIN_EXAMPLE
+     The good news is that the code has been archived by Software Heritage:
+
+     scheme@(guile-user)> ,use(guix swh)
+     scheme@(guile-user)> ,use(guix git-download)
+     scheme@(guile-user)> ,use(guix)
+     scheme@(guile-user)> ,use(gnu packages guile)
+     scheme@(guile-user)> (lookup-revision (git-reference-commit
+                                            (origin-uri (package-source guile-bash))))
+     $11 = #<<revision> id: "1eabc563ca5692b3e08d84f1f0e6fd2283284469" date: #<date nanosecond: 0 second: 35 minute: 27 hour: 9 day: 27 month: 2 year: 2015 zone-offset: 10800> directory: "ad8976564375ee55f645387bbcdf4b66e6582fbf" directory-url: "/api/1/directory/ad8976564375ee55f645387bbcdf4b66e6582fbf/">
+     scheme@(guile-user)> (revision-directory $11)
+     $12 = "ad8976564375ee55f645387bbcdf4b66e6582fbf"
+     scheme@(guile-user)> (query-vault $12 'directory)
+     $13 = #<<vault-reply> id: 3296879 fetch-url: "/api/1/vault/directory/ad8976564375ee55f645387bbcdf4b66e6582fbf/raw/" object-id: "ad8976564375ee55f645387bbcdf4b66e6582fbf" object-type: directory progress-message: #nil status: done>
+   #+END_EXAMPLE
