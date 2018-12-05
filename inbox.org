@@ -1306,3 +1306,4 @@ write something like,
      scheme@(guile-user)> (query-vault $12 'directory)
      $13 = #<<vault-reply> id: 3296879 fetch-url: "/api/1/vault/directory/ad8976564375ee55f645387bbcdf4b66e6582fbf/raw/" object-id: "ad8976564375ee55f645387bbcdf4b66e6582fbf" object-type: directory progress-message: #nil status: done>
    #+END_EXAMPLE
+** [2018-12-06 Thu 02:20] [[gnus:INBOX#52026808-0614-ebdf-36fd-2dc641d79de8@uni-bielefeld.de][Email from Florian Paul Schmidt: A hacky prototype for using ipfs to provide binary substitutes to users]] by [[mailto:florian_paul.schmidt@uni-bielefeld.de][Florian Paul Schmidt]]
