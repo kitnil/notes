@@ -1370,3 +1370,31 @@ write something like,
 ** [2018-12-08 Sat 04:57] [[gnus:INBOX#87pnudwdda.fsf@ngyro.com][Email from Timothy Sample: Building Bash with Geesh]] by [[mailto:samplet@ngyro.com][Timothy Sample]]
 ** [2018-12-09 Sun 10:20] [[gnus:INBOX#87ftv7l6gy.fsf@gmail.com][Email from Chris Marusich: Re: Using a CDN or some other mirror?]] by [[mailto:cmmarusich@gmail.com][Chris Marusich]]
 ** [2018-12-09 Sun 16:13] [[gnus:INBOX#9f876db761468c16d1a6e0ee27c30821@riseup.net][Email from swedebugia: New library: guile-wikidata]] by [[mailto:swedebugia@riseup.net][swedebugia]]
+** [2018-12-12 Wed 06:24] [[gnus:INBOX#CAMFYt2ap69m3dNmforZfTod92wBsiCQFBxRNpJSLYvhOZ2tTNA@mail.gmail.com][Email from Panicz Maciej Godek: Re: Send/link your favorite guile script]] by [[mailto:godek.maciek@gmail.com][Panicz Maciej Godek]]
+
+Here's my implementation of Held-Karp-Bellman dynamic programming approach
+to Travelling Salesman Problem:
+https://www.quora.com/How-do-I-solve-a-problem-using-dynamic-programming-approach-and-which-function-should-I-use-recursively-using-loops/answer/Panicz-Godek
+
+note that it also contains an implementation of "define/memoized" form,
+that has also been used in the definition of Levinshtein distance that I
+added to "Algorithm Implementations" Wikibook:
+https://en.wikibooks.org/wiki/Algorithm_Implementation/Strings/Levenshtein_distance#Scheme
+
+Here's my implementation of the A* search algorithm (compared with the one
+from Peter Norvig's book "Paradigms of Artificial Intelligence
+Programming"):
+https://www.quora.com/What-are-the-pros-and-cons-of-functional-programming-compared-to-imperative-programming/answer/Panicz-Godek
+
+Here's a simple "expression compiler":
+https://www.quora.com/What-lasting-effects-did-learning-LISP-have-on-you/answer/Panicz-Godek
+
+All these examples use the (grand scheme) glossary that I maintain, which -
+among other things - integrates the Scheme syntax with the (ice-9 match)
+module closely:
+https://github.com/plande/grand-scheme
+
+If you like to read code, you can also try reading a lousy booklet that I
+once wrote, titled "A Pamphlpet against R":
+https://github.com/panicz/pamphlet/
+
