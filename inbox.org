@@ -1397,4 +1397,14 @@ https://github.com/plande/grand-scheme
 If you like to read code, you can also try reading a lousy booklet that I
 once wrote, titled "A Pamphlpet against R":
 https://github.com/panicz/pamphlet/
+** [2018-12-14 Fri 19:44] [[gnus:INBOX#874lbg8qep.fsf@gnu.org][Email from Ludovic Courtès: Re: berlin: “herd” hangs]] by [[mailto:ludo@gnu.org][Ludovic Courtès]]
+We discussed this on IRC and fixed it in the meantime, but for those
+wondering: a mount error upon reconfigure led shepherd to spawn a REPL
+(see <https://issues.guix.info/issue/23697>).  Of course nobody is
+talking to shepherd’s stdin, so it would be stuck in read(0, …).
+
+I “fixed” the issue by, ahem, attaching gdb to PID 1 and doing
+“return -1” from that ’read’ call.
+
+That’s a bug we should really really fix…
 
