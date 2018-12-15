@@ -1409,3 +1409,4 @@ I “fixed” the issue by, ahem, attaching gdb to PID 1 and doing
 That’s a bug we should really really fix…
 ** [2018-12-15 Sat 08:30] [[gnus:INBOX#87d0q5yktf.fsf@gmail.com][Email from Chris Marusich: bug#33721: ci.guix.info does not return Cache-Control header for substitutes]] by [[mailto:cmmarusich@gmail.com][Chris Marusich]]
 ** [2018-12-15 Sat 08:31] [[gnus:INBOX#87efakyb26.fsf@elephly.net][Email from Ricardo Wurmus: bug#33737: do not attempt to build a package known to be broken]] by [[mailto:rekado@elephly.net][Ricardo Wurmus]]
+** [2018-12-15 Sat 08:37] [[gnus:INBOX#20181215001859.5acd13c3@mykolab.com][Email from Rutger Helling: bug#33750: Virt-manager missing USB/PCI host device options]] by [[mailto:rhelling@mykolab.com][Rutger Helling]]
