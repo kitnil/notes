@@ -34,29 +34,35 @@
 
 * Cheat sheet
 
-  - Reset password from LiveUSB
-      1. Boot live disk from usb
-      2. open terminal and run:
-              > passwd $(whoami)
-      2.1 enter the root passwd you want. Then run:
-              > sudo grep $(whoami) /etc/shadow
-      2.2 You'll get the password as the second field (separated by : the first
-              field is the username) e.g.:
-              test:$6$jugtjlt6Og/erxFa$FVQR3CNnv9g1aF6nIkGFtdFSeA.uerF4UfM/0/hSMQcz0vDhiV6R4xoX4vQaAHET34expirYLu6OvTbA8/5iM.:17866::::::
-      2.2 The password, or the password hash is (the password entered here is
-              actually "test password"):
-              $6$jugtjlt6Og/erxFa$FVQR3CNnv9g1aF6nIkGFtdFSeA.uerF4UfM/0/hSMQcz0vDhiV6R4xoX4vQaAHET34expirYLu6OvTbA8/5iM.
-      3 Mount your guixsd root partition.
-      3.1 Open the guixsd-root/etc/shadow in a text editor and change field 2 of
-              the line starting with root so it has the password hash you created
-              in step 2. In my case I would make it look like:
-              root:$6$jugtjlt6Og/erxFa$FVQR3CNnv9g1aF6nIkGFtdFSeA.uerF4UfM/0/hSMQcz0vDhiV6R4xoX4vQaAHET34expirYLu6OvTbA8/5iM.:14403::::::
-      3.2 Save the guixsd-root/etc/shadow file and reboot. You have now set a new
-              password for your root account.
+  - Select
+    #+BEGIN_SRC sh
+      ./pre-inst-env guix describe --profile=$HOME/.config/guix/current --format=json | jq --raw-output 'map(select(.name == "guix"))'[0].commit
+      ./pre-inst-env guix describe --profile=$HOME/.config/guix/current --format=recutils | recsel -e 'name = "guix"' -P commit
+    #+END_SRC
 
-      For documentation see
-      man passwd
-      man 5 shadow
+  - Reset password from LiveUSB
+    1. Boot live disk from usb
+    2. open terminal and run:
+            > passwd $(whoami)
+    2.1 enter the root passwd you want. Then run:
+            > sudo grep $(whoami) /etc/shadow
+    2.2 You'll get the password as the second field (separated by : the first
+            field is the username) e.g.:
+            test:$6$jugtjlt6Og/erxFa$FVQR3CNnv9g1aF6nIkGFtdFSeA.uerF4UfM/0/hSMQcz0vDhiV6R4xoX4vQaAHET34expirYLu6OvTbA8/5iM.:17866::::::
+    2.2 The password, or the password hash is (the password entered here is
+            actually "test password"):
+            $6$jugtjlt6Og/erxFa$FVQR3CNnv9g1aF6nIkGFtdFSeA.uerF4UfM/0/hSMQcz0vDhiV6R4xoX4vQaAHET34expirYLu6OvTbA8/5iM.
+    3 Mount your guixsd root partition.
+    3.1 Open the guixsd-root/etc/shadow in a text editor and change field 2 of
+            the line starting with root so it has the password hash you created
+            in step 2. In my case I would make it look like:
+            root:$6$jugtjlt6Og/erxFa$FVQR3CNnv9g1aF6nIkGFtdFSeA.uerF4UfM/0/hSMQcz0vDhiV6R4xoX4vQaAHET34expirYLu6OvTbA8/5iM.:14403::::::
+    3.2 Save the guixsd-root/etc/shadow file and reboot. You have now set a new
+            password for your root account.
+
+    For documentation see
+    man passwd
+    man 5 shadow
 
   - Reset file timestamps to epoch
     : sudo touch -t 197001010000.01 FILE
