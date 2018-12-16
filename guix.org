@@ -207,6 +207,16 @@
       guix graph -e '(begin (%current-system "i686-linux") (@@ ...))'
     #+END_SRC
 
+  - Guix reverse graph
+    #+BEGIN_SRC sh
+      guix graph --type=reverse-package webkitgtk | dot -Tsvg > ~/out.svg
+    #+END_SRC
+
+  - Guix reverse dependencies
+    #+BEGIN_SRC sh
+      guix refresh --list-dependent webkitgtk
+    #+END_SRC
+
   - Search for a package in graph
     #+BEGIN_SRC sh
       for i in $(guix package -I | awk '{print $1}') ; do guix graph $i | grep -q qtwebkit && echo $i ; done
