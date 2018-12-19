@@ -1427,3 +1427,16 @@ That’s a bug we should really really fix…
 ** BUG [2018-12-17 Mon 19:54] [[gnus:INBOX#878t0pqol1.fsf@dustycloud.org][Email from Christopher Lemmer Webber: bug#33772: StumpWM broken commands?]] by [[mailto:cwebber@dustycloud.org][Christopher Lemmer Webber]]
 ** BUG [2018-12-17 Mon 19:58] [[gnus:INBOX#87ftuxw08r.fsf@elephly.net][Email from Ricardo Wurmus: qemu-binfmt service cannot be started]] by [[mailto:rekado@elephly.net][Ricardo Wurmus]]
 ** REVIEW [2018-12-17 Mon 19:59] [[gnus:INBOX#cu78t0op7kk.fsf@systemreboot.net][Email from Arun Isaac: {bug#33777} ansible: Work around issues with Guix wrapper scripts]] by [[mailto:arunisaac@systemreboot.net][Arun Isaac]]
+** [2018-12-19 Wed 17:12] [[gnus:INBOX#87sgyug7zb.fsf@gnu.org][Email from Ludovic Courtès: bug#23697: guix system reconfigure hangs, shows repl in messages]] by [[mailto:ludo@gnu.org][Ludovic Courtès]]
+   A simple way to reproduce this is to run:
+
+  # herd eval root '(begin (use-modules (gnu build file-systems))
+(check-file-system "/dev/foo" "ext2"))'
+
+That command does not return because PID 1 is stuck in read(0, …), where
+stdin is connected to the console.  You can type “,q” in the console
+(usually tty1) and it should be fine.  Of course if you try this
+on a remote machine, you’re screwed…
+
+Anyway, commit 6ea6e1476ff4a18d4b4b864c3065d18ed99c69af fixes it, at last.
+
