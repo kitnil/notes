@@ -21,3 +21,36 @@ Check https://libreplanet.org/wiki/Group:Guix/GSoC-2018 and https://git.savannah
 You could start with https://www.gnu.org/software/guix/manual/html_node/Contributing.html
 People usually start with a packaging though, e.g. as you mentioned a Boehm garbage collector would be great to have in Guix package collection 
 Also, if people cannot answer here, you could ask more folks on help and devel mailing lists, see https://www.gnu.org/software/guix/contact/ 
+
+** 
+
+
+Could you run ‘guix lint’ on this package and address any issues it
+reports?
+
+> +     (origin
+> +       (method url-fetch)
+> +       (uri (string-append
+> +             "https://github.com/libvips/nip2/releases/download/v"
+> +             version "/nip2-" version ".tar.gz"))
+
+We now try to avoid GitHub-generated tarballs and instead use
+‘git-fetch’ to retrieve software from GitHub.  Could you make this
+change?
+
+> +    (arguments
+> +     `(#:tests? #f))                    ;; tests need $HOME/.nip2-8.7.0
+
+Could you try adding a phase that sets the “HOME” environment variable
+right before the ‘check’ phase?  See for example ‘python-biopython’ on
+how to do it.
+
+> +    (home-page "https://github.com/libvips/nip2")
+> +    (synopsis "A spreadsheet-like GUI for libvips")
+> +    (description "nip2 is a GUI for the VIPS image processing library.
+> +It's a little like a spreadsheet: you create a set of formula connecting your
+> +objects together, and on a change nip2 recalculates")
+> +    (license license:gpl2)))
+
+Source file headers contain the “or any later version” wording so it
+should be ‘license:gpl2+’.
