@@ -1474,3 +1474,29 @@ Ludo’.
 ** [2018-12-21 Fri 20:55] [[gnus:INBOX#de7a3438-ce43-cbd2-9655-adb9adcf96f3@riseup.net][Email from swedebugia: Re: Internet Archive APIs useful as fallback?]] by [[mailto:swedebugia@riseup.net][swedebugia]]
 ** [2018-12-21 Fri 20:59] [[gnus:INBOX#20181220160300.1140d486@alma-ubu][Email from Björn Höfling: How I got stuck (and ways to resolve)]] by [[mailto:bjoern.hoefling@bjoernhoefling.de][Björn Höfling]]
 ** [2018-12-21 Fri 21:00] [[gnus:INBOX#87y38isw77.fsf@gmail.com][Email from Meiyo Peng: {bug#33600} CDN performance]] by [[mailto:meiyo.peng@gmail.com][Meiyo Peng]]
+** [2018-12-21 Fri 21:09] [[gnus:INBOX#87tvjaeq3d.fsf@gnu.org][Email from Ludovic Courtès: Re: Best practices for processing s-expressions representing configurations/DSLs]] by [[mailto:ludo@gnu.org][Ludovic Courtès]]
+   > When representing application configurations or DSLs as s-expressions, what
+> are common or best strategies for processing them? For example, here's an
+> excerpt I found of the Guix package definition DSL to study as a prototype:
+>
+>     (package
+>       (name "hello")
+>       (version "2.10")
+>       (build-system gnu-build-system)
+>       (arguments '(#:configure-flags '("--enable-silent-rules")))
+>       (inputs `(("gawk" ,gawk)))
+>       (synopsis "Hello, GNU world: An example GNU package")
+>       (description "Guess what GNU Hello prints!")
+>       (home-page "http://www.gnu.org/software/hello/")
+>       (license gpl3+))
+>
+> Would this just be executed directly within the equivalent of a regular
+> Guile REPL (with the Guix extensions loaded, of course) ? Is each "key"
+> (e.g. "name" or "build-system") just a function call?
+
+The expression above expands to a (make-struct <package> …) call, which
+instantiates a record (also called a structure in some languages.)
+
+The article at <https://arxiv.org/pdf/1305.4584v1.pdf> explains it in
+more detail.
+
