@@ -1499,4 +1499,19 @@ instantiates a record (also called a structure in some languages.)
 
 The article at <https://arxiv.org/pdf/1305.4584v1.pdf> explains it in
 more detail.
+** [2018-12-21 Fri 21:12] [[gnus:INBOX#87zht3i0ae.fsf@gnu.org][Email from Ludovic Courtès: Re: berlin.guixsd.org rebooted]] by [[mailto:ludo@gnu.org][Ludovic Courtès]]
+
+Yes, but be careful, the ‘mount’ command does some interpretation:
+
+$ sudo strace -e mount mount -o bind,ro foo foo
+mount("/home/ludo/src/guix/foo", "/home/ludo/src/guix/foo", 0x205fc00, MS_MGC_VAL|MS_RDONLY|MS_BIND, NULL) = 0
+mount("none", "/home/ludo/src/guix/foo", NULL, MS_RDONLY|MS_REMOUNT|MS_BIND, NULL) = 0
++++ exited with 0 +++
+
+Roughly, “bind” is translated to the MS_BIND *flag* (not option), and
+“defaults” is translated to NULL for the options string.
+
+Confusing!
+
+Ludo’.
 
