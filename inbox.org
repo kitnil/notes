@@ -1514,4 +1514,14 @@ Roughly, “bind” is translated to the MS_BIND *flag* (not option), and
 Confusing!
 
 Ludo’.
+** [2018-12-21 Fri 21:12] [[gnus:INBOX#87a7l3uuqd.fsf@elephly.net][Email from Ricardo Wurmus: “index full” on berlin.guixsd.org]] by [[mailto:rekado@elephly.net][Ricardo Wurmus]]
+I just saw this message on the berlin.guixsd.org console:
 
+EXT4-fs warning (device sdb1): ext4_dx_add_entry:2187: Directory (ino:
+381288470) index full, reach max htree level :2
+EXT4-fs warning (device sdb1): ext4_dx_add_entry:2191: Large directory
+feature is not enabled on this filesystem
+
+To fix this I just ran this command:
+
+    tune2fs -O large_dir /dev/sdb1
