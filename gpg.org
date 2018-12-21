@@ -7,3 +7,6 @@ gpg --output secret-subkeys --export-secret-subkeys SUBKEYID!
 
 - Dump gpg-agent config
   : gpgconf --list-options gpg-agent
+
+- Update keys
+  : gpg --refresh-keys
