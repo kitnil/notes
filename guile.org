@@ -7,3 +7,10 @@
     scheme@(guile-user)> (split-and-decode-uri-path (uri-path $2))
     $4 = ("foo" "bar" "archive" "whatnot")
   #+END_EXAMPLE
+
+- List files in directory
+  #+BEGIN_EXAMPLE
+    scheme@(guile-user)> ,use (ice-9 ftw)
+    scheme@(guile-user)> (scandir "/")
+    $2 = ("." ".." "bin" "boot" "data" "dev" "etc" "gnu" "home" "lost+found" "mnt" "proc" "root" "run" "sys" "tmp" "var")
+  #+END_EXAMPLE
