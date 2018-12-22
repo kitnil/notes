@@ -1,0 +1,9 @@
+- Split URL
+  #+BEGIN_EXAMPLE
+    scheme@(guile-user)> (string->uri "https://github.com/foo/bar/archive/whatnot")
+    $2 = #<<uri> scheme: https userinfo: #f host: "github.com" port: #f path: "/foo/bar/archive/whatnot" query: #f fragment: #f>
+    scheme@(guile-user)> (uri-host $2)
+    $3 = "github.com"
+    scheme@(guile-user)> (split-and-decode-uri-path (uri-path $2))
+    $4 = ("foo" "bar" "archive" "whatnot")
+  #+END_EXAMPLE
