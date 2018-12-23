@@ -34,6 +34,9 @@
 
 * Cheat sheet
 
+  - Systemd =guix-daemon= service
+    : systemctl edit --full guix-daemon.service
+
   - Herd udev
     #+BEGIN_SRC sh
       sudo cat /proc/$(sudo herd status udev|grep Running|sed -es'/.*is \([0-9]\+\)\./\1/g')/environ
