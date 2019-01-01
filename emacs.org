@@ -152,6 +152,9 @@ Origin: https://lists.gnu.org/archive/html/help-gnu-emacs/2017-12/msg00155.html
 
 * Misc
 
+  - Prettify JSON with Python
+    : C-u M-| python3 -m json.tool
+
   - Emacs distributions:
     + Spacemacs is beautiful!  http://spacemacs.org/
     + prelude https://github.com/bbatsov/prelude
