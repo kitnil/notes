@@ -1575,3 +1575,15 @@ Stefan
    - https://secure.raptorcs.com/content/TL1BC1/purchase.html
    - https://www.xes-inc.com/product-category/processor-boards/
 ** READ [2019-01-04 Fri 11:15] [[gnus:INBOX#624ba072-d5fe-b159-46af-61e79caf22f1@gmail.com][Email from Florian Dold: {bug#33966} fcgiwrap: additional options for logging and unix domain sockets]] by [[mailto:florian.dold@gmail.com][Florian Dold]]
+** [2019-01-05 Sat 20:26] [[gnus:INBOX#87imz3rq3k.fsf@elephly.net][Email from Ricardo Wurmus: Re: Brain storming cool Guix features]] by [[mailto:rekado@elephly.net][Ricardo Wurmus]]
+   #+BEGIN_SRC scheme
+     (slim-service-type
+      config => (slim-configuration
+                 (inherit config)
+                 (startx (xorg-start-command
+                          #:configuration-file
+                          (xorg-configuration-file
+                           #:extra-config
+                           (list dvorak-evdev))))))
+
+   #+END_SRC
