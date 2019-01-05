@@ -1,1 +1,10 @@
 - http://adv-r.had.co.nz/
+
+* Parse logs
+
+  https://www.r-bloggers.com/log-file-analysis-with-r/
+  #+BEGIN_SRC r
+  l = read.table ('/tmp/input')
+  colnames(l)=c('host', 'ident', 'authuser', 'date', 'time', 'request', 'status', 'bytes', 'duration')
+  l$date=as.Date(l$date,"[%d/%b/%Y")
+  #+END_SRC
