@@ -1599,3 +1599,26 @@ Stefan
      guix package -I | awk '{printf("\"%s", $1); if($3!="out") {printf("%s", ":" $3)}; print "\""}' | LC_ALL=C sort >>"$PKG_ROOT/guix" echo "))" >>"$PKG_ROOT/guix"
    #+END_SRC
 ** [2019-01-11 Fri 21:33] [[gnus:INBOX#8736pzpnhg.fsf@elephly.net][Email from Ricardo Wurmus: {bug#34040} Suggest input changes when updating packages]] by [[mailto:rekado@elephly.net][Ricardo Wurmus]]
+** [2019-01-12 Sat 01:08] [[gnus:INBOX#87va2vng66.fsf@gmail.com][Email from Alex Kost: Re: Is it possible to display song durations in EMMS playlist?]] by [[mailto:alezost@gmail.com][Alex Kost]]
+   #+BEGIN_SRC emacs-lisp
+     ;; There is `emms-track-description-function' variable for this purpose.
+     ;; For example, you can add the playing time using the following code:
+
+     (defun my-emms-format-time (seconds)
+       "Convert SECONDS into a human readable string."
+       (let ((min (/ seconds 60))
+             (sec (% seconds 60)))
+         (format "%d:%02d" min sec)))
+
+     (defun my-emms-track-description (track)
+       ;; Note that (require 'emms-info) is needed for this function, but
+       ;; this feature is required automatically if you setup your EMMS with
+       ;; (emms-all).
+       (let ((time (emms-track-get track 'info-playing-time)))
+         (concat (emms-info-track-description track)
+                 (when time
+                   (format " (%s)" (my-emms-format-time time))))))
+
+     (setq emms-track-description-function 'my-emms-track-description)
+
+   #+END_SRC
