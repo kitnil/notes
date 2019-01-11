@@ -1598,3 +1598,4 @@ Stefan
      EOF
      guix package -I | awk '{printf("\"%s", $1); if($3!="out") {printf("%s", ":" $3)}; print "\""}' | LC_ALL=C sort >>"$PKG_ROOT/guix" echo "))" >>"$PKG_ROOT/guix"
    #+END_SRC
+** [2019-01-11 Fri 21:33] [[gnus:INBOX#8736pzpnhg.fsf@elephly.net][Email from Ricardo Wurmus: {bug#34040} Suggest input changes when updating packages]] by [[mailto:rekado@elephly.net][Ricardo Wurmus]]
