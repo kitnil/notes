@@ -1,2 +1,5 @@
 - load average graph
   : host =~ /$server$/ AND
+
+- cpu
+  : SELECT mean(usage_user) as "user", mean(usage_system) as "system", mean(usage_softirq) as "softirq", mean(usage_steal) as "steal", mean(usage_nice) as "nice", mean(usage_irq) as "irq", mean(usage_iowait) as "iowait", mean(usage_guest) as "guest", mean(usage_guest_nice) as "guest_nice"  FROM "cpu" WHERE "host" =~ /$server$/ and cpu = 'cpu-total' AND $timeFilter GROUP BY time($interval), *
