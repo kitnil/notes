@@ -34,6 +34,22 @@
 
 * Cheat sheet
 
+  - guix deterministic
+    <dongcarl> civodul: If I understand you
+     correctly... `guix build bitcoin-core
+     --check --no-grafts --keep-failed`
+     would let me know the determinism of
+     bitcoin-core relative to a specific
+     state of dependencies, as in, it
+     ignores the non-determinism of
+     bitcoin-core's dependencies by pinning
+     them to a specific hash/build, and
+     builds bitcoin-core on top of those
+     fixed dependencies several times to
+     check that bitcoin-core itself is
+     detemrinisti  [21:11]
+
+
   - Fetch patches
     #+BEGIN_SRC diff
       diff --git a/gnu/packages/inkscape.scm b/gnu/packages/inkscape.scm
