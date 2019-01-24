@@ -20,6 +20,9 @@
       cat <&3
     #+END_SRC
 
+  - SSH version on remote host
+    : exec 3</dev/tcp/192.168.0.10/22
+
 * Binary match
   #+BEGIN_EXAMPLE
       <koala_man> # printf '\x00\x01\x02\xAA\xBB' | LC_ALL=C grep -ao
