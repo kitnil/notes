@@ -13,6 +13,7 @@
     : PAGER='less +/^READLINE' man bash
 
   - TCP socket
+    Origin http://rus-linux.net/MyLDP/consol/tcp-udp-socket-bash-shell.html
     #+BEGIN_SRC bash
       exec 3<>/dev/tcp/gnu.org/80
       echo -e "GET / HTTP/1.1\r\nhost: www.gnu.org\r\nConnection: close\r\n\r\n" >&3
