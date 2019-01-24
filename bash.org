@@ -1,7 +1,16 @@
 * Cheatsheet
 
+  - Get the second argument from the first command
+    : !1:2
+
+  - Insert n argument
+    : M-n C-y
+
+  - Print first command from history
+    : !1:p
+
   - Open ‘man’ on a word “READLINE”
-  : PAGER='less +/^READLINE' man bash
+    : PAGER='less +/^READLINE' man bash
 
 * Binary match
   #+BEGIN_EXAMPLE
