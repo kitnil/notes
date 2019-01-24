@@ -12,6 +12,10 @@
   - Open ‘man’ on a word “READLINE”
     : PAGER='less +/^READLINE' man bash
 
+  - TCP socket
+    #+BEGIN_SRC
+    #+END_SRC
+
 * Binary match
   #+BEGIN_EXAMPLE
       <koala_man> # printf '\x00\x01\x02\xAA\xBB' | LC_ALL=C grep -ao
