@@ -1,0 +1,61 @@
+https://stackoverflow.com/a/53804057
+
+A relatively safe way to handle this situation is to store your credentials is the credentials system in Jenkins (that way you do not have to include the credentials in the JenkinsFile), and using a deploy token (available for Gitlab 10.7 and later) for the relevant repository. That token allows you to provide read-only rights to the repository.
+
+Step 1 - setup the deploy token in GitLab
+
+From the GitLab documentation
+
+    You can create as many deploy tokens as you like from the settings of your project:
+
+        Log in to your GitLab account.
+        Go to the project you want to create Deploy Tokens for.
+        Go to Settings > Repository.
+        Click on “Expand” on Deploy Tokens section.
+        Choose a name and optionally an expiry date for the token.
+        Choose the desired scopes.
+        Click on Create deploy token.
+        Save the deploy token somewhere safe. Once you leave or refresh the page, you won’t be able to access it again.
+
+Step 2 - Saving the deploy token in Jenkins' credentials system
+
+Since the deploy tokens have a username and password, pick that as the type in the steps below. Write down the id you will use in this step (see below) as you will need it in your pipeline declaration.
+
+From the Jenkins documentation
+
+    To add new global credentials to your Jenkins instance:
+
+        If required, ensure you are logged in to Jenkins (as a user with the Credentials > Create permission).
+        From the Jenkins home page (i.e. the Dashboard of the Jenkins classic UI), click Credentials > System on the left.
+        Under System, click the Global credentials (unrestricted) link to access this default domain.
+        Click Add Credentials on the left. Note: If there are no credentials in this default domain, you could also click the add some credentials link (which is the same as clicking the Add Credentials link).
+        From the Kind field, choose the type of credentials to add.
+        From the Scope field, choose either:
+
+                Global - if the credential/s to be added is/are for a Pipeline project/item. Choosing this option applies the scope of the credential/s to the Pipeline project/item "object" and all its descendent objects.
+                System - if the credential/s to be added is/are for the Jenkins instance itself to interact with system administration functions, such as email authentication, agent connection, etc. Choosing this option applies the scope of the credential/s to a single object only.
+
+        Add the credentials themselves into the appropriate fields for your chosen credential type:
+
+            (...)
+                Username and password - specify the credential’s Username and Password in their respective fields. (...)
+
+        In the ID field, specify a meaningful credential ID value - for example, jenkins-user-for-xyz-artifact-repository. You can use upper- or lower-case letters for the credential ID, as well as any valid separator character. However, for the benefit of all users on your Jenkins instance, it is best to use a single and consistent convention for specifying credential IDs. Note: This field is optional. If you do not specify its value, Jenkins assigns a globally unique ID (GUID) value for the credential ID. Bear in mind that once a credential ID is set, it can no longer be changed.
+        Specify an optional Description for the credential/s.
+        Click OK to save the credentials.
+
+Step 3 - Use the credentials in your pipeline declaration
+
+You can use the credentials in your jenkinsFile like so:
+
+pipeline {
+  stages {
+    stage('Clone stage') {
+       steps {
+         git url: 'https://gitlab.com/[username]/[my-repo].git', branch: 'master', credentialsId: 'my-gitlab-repo-creds'
+       }
+    }
+  }    
+}
+
+In the above example I assume you picked the id my-gitlab-repo-creds in step 2.
