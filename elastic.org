@@ -1,1 +1,2 @@
+: curl -H "Content-Type: application/json" -XPUT --data-binary '{"properties": {"upload_date": {"type": "date", "format": "yyyy-MM-dd"}}}' localhost:9200/youtube/_mapping/_doc ; echo
 : cat /tmp/dio.txt | jq -c '.entries[] | { index: { "_index": "youtube", "_type": "_doc", _id: .id }}, { upload_date: .upload_date, channel_id: .channel_id, title: .title, webpage_url: .webpage_url_basename }' | curl -H "Content-Type: application/json" -XPOST localhost:9200/_bulk --data-binary @-
