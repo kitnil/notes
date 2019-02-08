@@ -1,0 +1,3 @@
+[wigust@MikroTik] /ip firewall filter> add action=drop chain=forward content="Location: http://warning.rt.ru" protocol=tcp src
+-port=80                                                                                                                     
+[wigust@MikroTik] /ip firewall filter> add action=drop chain=forward protocol=tcp src-port=443 tcp-flags=rst packet-size=40 ttl=equal:120
