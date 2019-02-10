@@ -1,3 +1,4 @@
 : curl -H "Content-Type: application/json" -XPUT --data-binary '{"properties": {"upload_date": {"type": "date", "format": "yyyyMMdd"}}}' localhost:9200/youtube/_mapping/_doc ; echo
 : cat /tmp/dio.txt | jq -c '.entries[] | { index: { "_index": "youtube", "_type": "_doc", _id: .id }}, { upload_date: .upload_date, channel_id: .channel_id, title: .title, webpage_url: .webpage_url_basename }' | curl -H "Content-Type: application/json" -XPOST localhost:9200/_bulk --data-binary @-
 : youtube-dl --ignore-errors -J https://www.youtube.com/user/gotbletu/videos > /tmp/gotbletu.txt
+: curl -H "Content-Type: application/json" -XPUT 'http://localhost:9200/_snapshot/youtubee": "fs", "settings": {"compress": true, "location": "/mnt/backup"}}'
