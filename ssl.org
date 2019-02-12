@@ -1,0 +1,2 @@
+- Check certificate
+  : echo | openssl s_client -connect berlin.guixsd.org:443 | openssl x509 -text
