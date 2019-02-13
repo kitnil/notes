@@ -1,3 +1,5 @@
+https://serverfault.com/questions/625641/how-can-i-run-arbitrarily-complex-command-using-sudo-over-ssh
+
 https://habr.com/post/331348/
 
 ssh -R 9999:localhost:5432 host1
