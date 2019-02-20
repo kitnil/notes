@@ -152,6 +152,9 @@ Origin: https://lists.gnu.org/archive/html/help-gnu-emacs/2017-12/msg00155.html
 
 * Misc
 
+  - Read from feauture
+    : (read-from-minibuffer "Favorite food: " nil nil nil nil '("Ice Cream" "Cake"))
+
   - Prettify JSON with Python
     : C-u M-| python3 -m json.tool
 
