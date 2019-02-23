@@ -1,0 +1,103 @@
+https://gist.github.com/joepie91/043a51a7b70be5f50f1d
+
+This is an installation walkthrough for [the Nix package manager](https://nixos.org/nix/) in multi-user mode, on a non-NixOS system. While the walkthrough focuses on Debian, instructions on different platforms should be similar.
+
+## 1. Install dependencies.
+
+For recent Debian: 
+
+```sh
+apt-get install build-essential pkg-config autotools-dev dh-autoreconf libssl-dev libbz2-dev libsqlite3-dev libcurl4-openssl-dev liblzma-dev libgc-dev libdbi-perl libdbd-sqlite3-perl libwww-curl-perl libxml2 libxslt-dev
+```
+
+For other distributions, look for the equivalent packages.
+
+## 2. Set up build users.
+
+```sh
+groupadd -r nixbld
+for n in $(seq 1 10); do useradd -c "Nix build user $n" \
+    -d /var/empty -g nixbld -G nixbld -M -N -r -s "$(which nologin)" \
+    nixbld$n; done
+```
+
+## 3. Install Nix.
+
+```sh
+wget http://nixos.org/releases/nix/nix-1.11.2/nix-1.11.2.tar.xz
+tar -xvf nix-1.11.2.tar.xz
+cd nix-1.11.2/
+./configure --enable-gc
+make -j 2
+make install
+```
+
+If you have more than two CPU cores, you might want to increase the value of the `-j` flag for faster compilation.
+
+## 4. Create a systemd unit file, for managing the Nix daemon.
+
+Save this as `/etc/systemd/system/nix.service`:
+
+```
+[Unit]
+Description=Nix daemon
+
+[Service]
+EnvironmentFile=-/etc/default/nix
+ExecStart=/usr/local/bin/nix-daemon $EXTRA_OPTS
+IgnoreSIGPIPE=false
+KillMode=process
+
+[Install]
+WantedBy=multi-user.target
+```
+
+Create an empty `/etc/default/nix`:
+
+```sh
+touch /etc/default/nix
+```
+
+Enable and start the service:
+
+```sh
+systemctl enable nix
+systemctl start nix
+```
+
+## 5. Set up user configuration
+
+Source the following in your `/root/.bashrc`, either directly or indirectly:
+
+```sh
+nix-setup-user() {
+        TARGET_USER="$1"
+        SYMLINK_PATH="/home/$TARGET_USER/.nix-profile"
+        PROFILE_DIR="/nix/var/nix/profiles/per-user/$TARGET_USER"
+
+        echo "Creating profile $PROFILE_DIR..."
+        echo "Profile symlink: $SYMLINK_PATH"
+
+        rm "$SYMLINK_PATH"
+        mkdir -p "$PROFILE_DIR"
+        chown "$TARGET_USER:$TARGET_USER" "$PROFILE_DIR"
+        
+        ln -s "$PROFILE_DIR/profile" "$SYMLINK_PATH"
+        chown -h "$TARGET_USER:$TARGET_USER" "$SYMLINK_PATH"
+        
+        echo "export NIX_REMOTE=daemon" >> "/home/$TARGET_USER/.bashrc"
+        echo ". /usr/local/etc/profile.d/nix.sh" >> "/home/$TARGET_USER/.bashrc"
+        
+        su -lc "cd; . /usr/local/etc/profile.d/nix.sh; NIX_REMOTE=daemon nix-channel --update" "$TARGET_USER"
+}
+```
+
+Now, whenever you create a new user - say, `joepie91`, you can simply do something like the following:
+
+```sh
+nix-setup-user joepie91
+```
+
+... and a few minutes later, `joepie91` will be able to log in, and use Nix. Repeat for each user that needs access to Nix.
+
+https://nixos.org/nix-dev/2010-April.txt.gz
