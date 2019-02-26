@@ -1,0 +1,22 @@
+https://shurshun.ru/zabbix-optimizatsiya-i-chistka-bazyi-dannyih/
+#+BEGIN_EXAMPLE
+  SELECT
+   RESULT.table_name,
+   RESULT.freespace AS fororder,
+   pg_size_pretty(RESULT.size) AS SIZE,
+   pg_size_pretty(RESULT.freespace) AS freespace,
+   RESULT.freespace * 100 / RESULT.size AS percent_free
+   FROM
+   (SELECT
+   t.table_name,
+   pg_total_relation_size(t.table_name) AS SIZE,
+   SUM(s.avail) AS freespace
+   FROM
+   (SELECT TABLE_NAME FROM information_schema.tables WHERE table_schema = 'public') AS t,
+   LATERAL pg_freespace(t.table_name) AS s
+   GROUP BY
+   t.table_name) AS RESULT
+   ORDER BY
+   fororder DESC
+   LIMIT 20;
+#+END_EXAMPLE
