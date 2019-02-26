@@ -1646,3 +1646,18 @@ f** [2019-01-19 Sat 05:25] [[gnus:INBOX#87zhrx4mlu.fsf@web.de][Email from Arne B
 ** [2019-02-15 Fri 08:36] [[gnus:INBOX#20190213220006.40cd1f3a@alma-ubu][Email from Björn Höfling: Re: Getting a copy of the Cuirass (berlin.guixsd.org) database]] by [[mailto:bjoern.hoefling@bjoernhoefling.de][Björn Höfling]]
 ** [2019-02-16 Sat 14:13] [[gnus:INBOX#871s48eoi0.fsf@gmail.com][Email from Alex Kost: Re: How to start Xorg server with startx]] by [[mailto:alezost@gmail.com][Alex Kost]]
    [[xinit https://lists.gnu.org/archive/html/help-guix/2018-07/msg00080.html][xinit tutorial]]
+** [2019-02-26 Tue 08:49] [[gnus:INBOX#d017a05fe71682cae352ca96feb51a53@lepiller.eu][Email from Julien Lepiller: Renewing certificates with certbot]] by [[mailto:julien@lepiller.eu][Julien Lepiller]]
+   #+BEGIN_SRC scheme
+     ;; Find running nginx and reload its configuration (for certificates)
+     (define %my-deploy-hook
+       (program-file
+        "my-deploy-hook"
+        #~(let* ((pid (call-with-input-file "/var/run/nginx/pid" read))
+                 (cert-dir (getenv "RENEWED_LINEAGE"))
+                 (privkey (string-append cert-dir "/privkey.pem")))
+            ;; certbot private keys are world-readable by default, and
+            smtpd complains
+            ;; about that, refusing to start otherwise
+            (chmod privkey #o600)
+            (kill pid SIGHUP))))
+   #+END_SRC
