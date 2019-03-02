@@ -1661,3 +1661,28 @@ f** [2019-01-19 Sat 05:25] [[gnus:INBOX#87zhrx4mlu.fsf@web.de][Email from Arne B
             (chmod privkey #o600)
             (kill pid SIGHUP))))
    #+END_SRC
+** [2019-03-02 Sat 12:05] [[gnus:INBOX#CAJ3okZ2qCDYAdb909ZjJOgVan87Z5VEfziNXSPoT9oV81b=iGg@mail.gmail.com][Email from zimoun: Re: guix pack -f docker ...]] by [[mailto:zimon.toutoune@gmail.com][zimoun]]
+   
+To add pointers, I recommend you this blog post [1] by Ludo presenting
+`guix pack`.
+
+[1] https://www.gnu.org/software/guix/blog/2017/creating-bundles-with-guix-pack/
+
+
+Personally, I use something in this flavour:
+
+      guix pack -f docker \
+         -S /bin=bin -S /lib=lib -S /share=share  \
+         emacs guile geiser
+
+      docker load < /gnu/store/<hash>-docker-pack.tar.gz
+      docker image ls
+      docker run -ti <image-id> emacs
+
+And depending on your Guix commit (version), the hashes/id should be different.
+
+With `guix describe`, I have 89ea625, so `guix pull --commit=89ea625` then
+ - <hash> is pg66wnjsg7yyxc0gi5wbrk8dz0i2jyfp
+ - docker TAG is k2nml7smdflwzkgqhqnmy6s0lzambdvl
+ - docker IMAGE ID is 560c357dd4e3
+
