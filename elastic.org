@@ -1,4 +1,7 @@
 
+- Create index
+  : curl -XPUT localhost:9200/foo
+
 - List indexes
   : curl 'localhost:9200/_cat/indices?v&pretty'
 
