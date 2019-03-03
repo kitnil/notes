@@ -1,4 +1,7 @@
 
+- Get indexes
+  : curl 'localhost:9200/_cat/indices?v&pretty'
+
 - Map field
   #+BEGIN_SRC sh
     curl -H "Content-Type: application/json" -XPUT --data-binary \
