@@ -3,3 +3,10 @@ http://xmodulo.com/centos-bgp-router-quagga.html
 https://www.tldp.org/HOWTO/BRIDGE-STP-HOWTO/set-up-the-bridge.html
 https://lists.linuxfoundation.org/pipermail/bridge/2017-December/010832.html
 https://developers.redhat.com/blog/2018/10/22/introduction-to-linux-interfaces-for-virtual-networking/
+
+https://bugzilla.redhat.com/show_bug.cgi?id=542405
+oleg@guixsd ~$ sudo sysctl  net.bridge.bridge-nf-call-arptables=0
+net.bridge.bridge-nf-call-arptables = 0
+oleg@guixsd ~$ sudo sysctl net.bridge.bridge-nf-call-iptables=0
+net.bridge.bridge-nf-call-iptables = 0
+
