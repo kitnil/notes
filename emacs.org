@@ -408,4 +408,21 @@ mirror/zoutline
 
  - •
  - §
+#+BEGIN_EXAMPLE
+  Firefox key fixes for Emacs users
 
+  ,*
+
+  Hi all,
+
+  Ever closed a tab when you wanted to kill some text? Ever opened a new window
+  when you wanted to go to the next line? No more! Someone even compiled his own
+  firefox version to fix this. But the discussion of this article revealed, you
+  don't need to:
+
+  Goto about:config and
+
+  ,* Set ui.key.accelKey to 18 (swaps Ctrl and Alt basically)
+
+  ,* Set devtools.editor.keymap to emacs
+#+END_EXAMPLE
