@@ -1,1 +1,10 @@
 - https://salsa.debian.org/gq/python-docker
+
+https://stackoverflow.com/questions/2524853/python-try-statement-in-a-single-line#8061176
+#+BEGIN_SRC python3
+class trialContextManager:
+    def __enter__(self): pass
+    def __exit__(self, *args): return True
+trial = trialContextManager()
+with trial: a = 5
+#+END_SRC
