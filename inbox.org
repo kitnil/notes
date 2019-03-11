@@ -1686,3 +1686,17 @@ With `guix describe`, I have 89ea625, so `guix pull --commit=89ea625` then
  - docker TAG is k2nml7smdflwzkgqhqnmy6s0lzambdvl
  - docker IMAGE ID is 560c357dd4e3
 ** [2019-03-02 Sat 15:03] [[gnus:INBOX#20190224113050.GA67303@breton.holly.idiocy.org][Email from Alan Third: Native image rotation]] by [[mailto:alan@idiocy.org][Alan Third]]
+** [2019-03-11 Mon 20:58] [[gnus:nnimap+USER:INBOX#877eeoe8v2.fsf@ambrevar.xyz][Email from Pierre Neidhardt: Multi-monitors: arandr, autorandr, srandrd, screenconfig?]] by [[mailto:mail@ambrevar.xyz][Pierre Neidhardt]]
+   I'm trying to figure out convenient ways to manage multi-monitors,
+e.g. make profiles, auto-detect configurations, etc.
+
+We already have arandr on master.  Has anyone interesting tricks to
+share with it?
+
+I found other related projects:
+
+- https://github.com/phillipberndt/autorandr
+
+- https://github.com/jceb/screenconfig combined with
+  https://github.com/jceb/srandrd.
+
