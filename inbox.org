@@ -1700,3 +1700,52 @@ I found other related projects:
 - https://github.com/jceb/screenconfig combined with
   https://github.com/jceb/srandrd.
 ** [2019-03-12 Tue 22:16] [[gnus:INBOX#878sxkh8v8.fsf@ambrevar.xyz][Email from Pierre Neidhardt: {bug#34613} Acknowledgement ({PATCH} gnu: Add prometheus.)]] by [[mailto:mail@ambrevar.xyz][Pierre Neidhardt]]
+** [2019-03-12 Tue 22:27] [[gnus:INBOX#87pnqvor9l.fsf@ponder][Email from Vagrant Cascadian: Re: boot multiple Gnu/Linux Distributions from one USB key]] by [[mailto:vagrant@debian.org][Vagrant Cascadian]]
+   
+On 2019-03-12, Ricardo Wurmus wrote:
+> gnuforever <help@tuyizere.org> writes:
+>> For GuixSD, I came up with this configuration:
+>> I used label instead of uuid.
+>>
+>>     ## GUIXSD
+>>     menuentry "GUIXSD - Gnu/Linux" {
+>>         set isofile="/boot-isos/guixsd-install-0.16.0.x86_64-linux.iso"
+>>         loopback loop (hd0,1)$isofile
+>>         search --label --set GUIXSD_IMAGE
+>>         linux
+>> (loop)/gnu/store/0zajbn9q39yva4l0zzrcshlll8qikzba-linux-libre-4.19.6/bzImage9
+>> --root=GUIXSD_IMAGE
+>> --system=(loop)/gnu/store/l4hgd4l7acrqwi3imav9akcvv4sbj85j-system
+>> --load=(loop)/gnu/store/l4hgd4l7acrqwi3imav9akcvv4sbj85j-system/boot
+>>         initrd
+>> (loop)/gnu/store/9nqaksx40zh5d6cg5rim3f3spy56bfb9-raw-initrd/initrd.cpio.gz
+>>     }
+>>
+>> It doesn't work. I get the following error message:
+>>
+>> waiting for partition 'GUIXSD_IMAGE' to appear...
+>
+> Does a partition with this label exist?
+
+From the Guix initramfs you would need to run:
+
+  losetup /path/to/file
+
+If the image was in a partitioned loopback file:
+
+  losetup --partscan /path/to/file
+
+Then I suspect the labels would get populated. You may also need to add
+losetup to the initramfs, since it probably isn't yet present.
+
+I'm guessing you would also remove the (loop) from these arguments,
+which are passed to the Guix initramfs, not loaded from grub:
+
+  --system=/gnu/store...-system
+  --load=/gnu/store...-boot
+
+
+live well,
+  vagrant
+
+
