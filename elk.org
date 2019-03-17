@@ -1,1 +1,4 @@
 - [[https://youtu.be/HSXuGU6f0yo][Kibana Searches]]
+
+- setup filebeat templates for kibana
+  : filebeat setup -e -strict.perms=false -E output.elasticsearch.hosts=[elasticsearch:9200] -E setup.kibana.host="http://172.17.0.1:5601" -E name=guixsd
