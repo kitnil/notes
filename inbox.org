@@ -1747,5 +1747,16 @@ which are passed to the Guix initramfs, not loaded from grub:
 
 live well,
   vagrant
+** [2019-03-17 Sun 12:03] [[gnus:INBOX#alpine.DEB.2.20.1903162251591.16784@marsh.hcoop.net][Email from Jack Hill: Re: SANE / simple-scan working for anyone?]] by [[mailto:jackhill@jackhill.us][Jack Hill]]
+   
+Did you end up getting your scanning issue resolved? You may have seem
+my own scanning-related adventures over on help-guix [0] where I
+discovered that adding the udev rules from sane-backends was
+needed. The service definition that I used to add them is:
 
+(simple-service 'sane-udev-rules udev-service-type (list sane-backends))
+
+I found that looking at the output of `scanimage -L` from the
+sane-backends package (yes there are user-facing tools in there ☺) as
+both my user and root helpful.
 
