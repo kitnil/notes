@@ -26,3 +26,16 @@
 
 - Create alias
   : curl -X POST "localhost:9200/_aliases" -H 'Content-Type: application/json' -d'{"actions":[{"add":{"index":"yt-game","alias":"yt"}}]}'
+
+- Reindex
+  #+BEGIN_SRC python
+    import elasticsearch
+    import elasticsearch.helpers
+
+    elastic = elasticsearch.Elasticsearch([{"host": "localhost", "port": 9200}])
+
+    elasticsearch.helpers.reindex(client=elastic, 
+                                  target_client=elastic,
+                                  source_index="youtube-gaming",
+                                  target_index="yt-game")
+  #+END_SRC
