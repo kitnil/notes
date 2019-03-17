@@ -8,7 +8,7 @@
 - Map field
   #+BEGIN_SRC sh
     curl -H "Content-Type: application/json" -XPUT --data-binary \
-         '{"properties": {"upload_date": {"type": "date", "format": "yyyyMMdd"}, "title": {"type": "text"}}}' \
+         '{"properties": {"upload_date": {"type": "date", "format": "yyyyMMdd"}, "title": {"type": "text", "fields":{"keyword":{"type":"keyword","ignore_above":256}}}}}' \
          localhost:9200/youtube-2019.02.10/_mapping/_doc
   #+END_SRC
 
