@@ -1789,4 +1789,4 @@ In the meantime, to fix the Perl packages, you could maybe run:
 Then you could perhaps comment the ‘version>?’ test in (guix upstream)
 to force ‘guix package -u’ to update these seemingly up-to-date
 packages.
-
+** [2019-03-28 Thu 21:43] [[gnus:INBOX#87ef6v9f0h.fsf@mail.shannon-data.com][Email from Derek Zhou: {ELPA} New package: smalltalk-mode]] by [[mailto:derek@shannon-data.com][Derek Zhou]]
