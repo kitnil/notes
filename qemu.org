@@ -1,3 +1,5 @@
+ - qemu-bridge http://www.kaizou.org/2018/06/qemu-bridge/
+
  - serial port
    : qemu-system-x86_64 -hda /home/oleg/vm/ubuntu-16.04.qcow -smp 4 -m 8192 -enable-kvm -nographic -serial mon:stdio -append 'root=/dev/sda1 console=ttyS0' -kernel ./vmlinuz-4.4.0-142-generic 
 
