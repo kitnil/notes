@@ -1766,3 +1766,27 @@ both my user and root helpful.
 ** [2019-03-24 Sun 23:57] [[gnus:INBOX#20190319195908.1.979BB022D8DF2D73@mail.lbry.com][Email from LBRY: New Name, New Website - LBRY.com - Check It Out]] by [[mailto:mailbot@mail.lbry.com][LBRY]]
 ** [2019-03-28 Thu 20:37] [[gnus:INBOX#67c9d51c-6b52-4703-b87d-18225297eaf2@www.fastmail.com][Email from Linus Björnstam: Megacut - a clojure-like lambda shorthand]] by [[mailto:linus.internet@fastmail.se][Linus Björnstam]]
    https://bitbucket.org/bjoli/megacut
+** [2019-03-28 Thu 20:47] [[gnus:INBOX#87lg10eez7.fsf@gnu.org][Email from Ludovic Courtès: bug#35010: Many CPAN download URLs are no longer available]] by [[mailto:ludo@gnu.org][Ludovic Courtès]]
+   
+scheme@(guile-user)> (package-latest-release perl-uri (force %updaters))
+$6 = #<<upstream-source> package: "perl-uri" version: "1.76" urls: ("mirror://cpan/authors/id/O/OA/OALDERS/URI-1.76.tar.gz") signature-urls: #f input-changes: #<procedure 7fced1c44ca0 at guix/import/cpan.scm:308:7 (x)>>
+
+So with a bit of work we could change ‘package-update’ to automatically
+update the URL.
+
+(Time passes…)
+
+Commit 42314ffa072f31cc1cb44df38b1f8fcca19d9d3c should fix this.
+I should have let figure it out ;-), but somehow I ended up
+investigating too much, bah!
+
+Let me know what you think.
+
+In the meantime, to fix the Perl packages, you could maybe run:
+
+  guix lint -c source $(guix package -A ^perl-)
+
+Then you could perhaps comment the ‘version>?’ test in (guix upstream)
+to force ‘guix package -u’ to update these seemingly up-to-date
+packages.
+
