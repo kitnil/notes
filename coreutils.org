@@ -1,2 +1,2 @@
-- print certain number of lines
+- print certain number of lines https://serverfault.com/questions/133692/how-to-display-certain-lines-from-a-text-file-in-linux
   : sed -n "19,25p' 0001-gnu-Add-emacs-counsel-projectile.patch
