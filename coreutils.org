@@ -1,0 +1,2 @@
+- print certain number of lines
+  : sed -n "19,25p' 0001-gnu-Add-emacs-counsel-projectile.patch
