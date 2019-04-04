@@ -1,3 +1,17 @@
+
+** config examples
+
+   label clonezilla
+      linux memdisk
+      initrd clonezilla-live-2.6.0-37-i686.iso
+      append iso
+   label kali
+         linux memdisk
+         initrd kali-linux-2018.2-amd64.iso
+         append iso
+   label other
+         chain --autofree https://boot.netboot.xyz
+
 ** 
 
 https://serverdoma.ru/viewtopic.php?t=879
