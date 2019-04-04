@@ -1,2 +1,32 @@
 https://serverdoma.ru/viewtopic.php?t=879
+
 https://www.ameir.net/blog/archives/402-install-windows-using-netboot-xyz.html
+First, get source machine ready to provide Windows installer to target machine.
+
+ISO_DIR=~/Downloads
+
+# disable firewall (I’m on macOS; do the equivalent on your OS)
+sudo defaults write /Library/Preferences/com.apple.alf globalstate -int 0
+
+cd $ISO_DIR
+
+# launch Samba container to share mounted image
+docker run -d -p 139:139 -p 445:445 -v $ISO_DIR:/mount dperson/samba -s ‘public;/mount’ -u ‘user;password’
+
+# mount ISO image locally for use by netboot.xyz
+hdiutil mount -mountpoint ./win10/x64/ ./win10.iso
+
+# start local web server
+python -m SimpleHTTPServer 8000
+
+On target machine:
+Boot up netboot.xyz via USB or other media. Under “Signature Checks,” disable checking of Images. I was unable to get this to work correctly.
+Go to Windows section, and set base URL to “http://:8000/win10”.
+
+Select “Load Microsoft Windows Installer”.
+netboot.xyz will download some binaries from the internet, and load the remaining binaries from your source machine over HTTP. You’ll see those requests in the Python server console.
+remove usb after installer loads
+shift + f10
+wpeinit
+net use S: \\\public\win10 /user:user password # wasn’t able to do anonymous login (system error 58)
+S:\x64\sources\setup.exe
