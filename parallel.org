@@ -1,0 +1,2 @@
+- [[https://www.ameir.net/blog/archives/399-quick-and-easy-parallel-rsync.html][Quick and easy parallel rsync]]
+  : ls -a1 | tail -n +3 | parallel -u --progress rsync -avzP {} <remote host>:<remote path> --exclude .Trash --exclude *cache* --exclude *node_modules* --exclude vendor --delete
