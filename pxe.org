@@ -1,4 +1,103 @@
 
+** Windows 10 IPXE Boot
+
+   https://docs.j7k6.org/windows-10-pxe-installation/
+
+My Sysadmin Cheatsheet
+
+«Who were you, DenverCoder9? — What did you see?» (xkcd/979)
+PXE Boot & Install Windows 10 from a Samba Share
+Prerequirements
+
+This guide is based on this setup. The steps for configuring dnsmasq and pxelinux have to be completed to make booting the Windows Installer over the network work. There also needs to be a Windows 10 x64 ISO available on the Debian box.
+
+    Install packages:
+
+    apt-get update
+    apt-get install -y samba genisoimage wimtools cabextract
+
+    Link mkisofs:
+
+    ln -s /usr/bin/genisoimage /usr/bin/mkisofs
+
+    Create direcories:
+
+    mkdir -p /mnt/waik
+    mkdir -p /var/lib/tftpboot/windows
+
+Prepare Windows PE ISO
+
+    Download the Windows Automated Installation Kit (WAIK) ISO:
+
+    wget https://download.microsoft.com/download/8/E/9/8E9BBC64-E6F8-457C-9B8D-F6C9A16E6D6A/KB3AIK_EN.iso
+
+    Mount KB3AIK_EN.iso:
+
+    mount KB3AIK_EN.iso /mnt/waik
+
+    Generate Windows PE bootable ISO:
+
+    mkwinpeimg --iso --arch=amd64 --waik-dir=/mnt/waik /var/lib/tftpboot/winpe.iso
+
+    Unmount KB3AIK_EN.iso:
+
+    umount /mnt/waik
+
+Samba
+
+    Edit /etc/samba/smb.conf:
+
+    [global]
+      workgroup = WORKGROUP
+      map to guest = bad user
+      usershare allow guests = yes
+
+    [windows]
+      browsable = true
+      read only = yes
+      guest ok = yes
+      path = /var/lib/tftpboot/windows
+
+    Restart samba service:
+
+    systemctl restart smbd
+
+    Mount Windows 10 ISO onto samba share:
+
+    mount <WINDOWS_ISO> /var/lib/tftpboot/windows
+
+pxelinux
+
+    Link memdisk:
+
+    ln -s /usr/lib/syslinux/memdisk /var/lib/tftpboot/
+
+    Edit /var/lib/tftpboot/pxelinux.cfg/default:
+
+    LABEL windows10
+    MENU LABEL Windows 10
+    KERNEL /memdisk
+    INITRD /winpe.iso
+    APPEND iso raw
+
+Windows Installation
+
+    Boot with PXE
+    Wait for DHCP assigned IP (check with ipconfig)
+    Mount Samba share:
+
+    net use Z: \\192.168.1.10\windows
+
+    Run z:\setup.exe
+    Install Windows.
+
+    http://it-joe.com/windows/pxe_install
+    http://www.webupd8.org/2013/07/how-to-create-bootable-windows-pe-iso.html
+    https://www.savelono.com/linux/how-to-install-windows-7-over-a-network-using-linux-pxe-dnsmasq-and-samba.html
+    https://github.com/pimterry/rpi-pxe-server
+
+    ♥ 2013-2019 — @j7k6 
+
 ** config examples
 
    label clonezilla
