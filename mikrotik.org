@@ -1,3 +1,22 @@
 [wigust@MikroTik] /ip firewall filter> add action=drop chain=forward content="Location: http://warning.rt.ru" protocol=tcp src
 -port=80                                                                                                                     
 [wigust@MikroTik] /ip firewall filter> add action=drop chain=forward protocol=tcp src-port=443 tcp-flags=rst packet-size=40 ttl=equal:120
+
+* DHCP
+
+** TFTP
+
+http://xenhelp.blogspot.com/2017/06/mikrotik-routeros-set-custom-tftp.html
+
+Mikrotik RouterOS - Set custom TFTP server in DHCP
+With other DNS servers you set DHCP option 66 with the IP address of the TFTP server. Not with Mikrotik!! You must set DHCP option 150 and make the value the hex of the TFTP server IP.
+
+First work out the hex of the IP - you can use this online tool : http://www.miniwebtool.com/ip-address-to-hex-converter/
+
+e.g. for 192.168.4.9 the hex is 0xC0A80409 and for 10.10.10.10 the hex is 0x0A0A0A0A
+
+Then to add to RouterOS :
+/ip dhcp-server option add code=150 name=customtftp value=0xC0A80409
+If you want to add two IP addresses then you must add as follows (note the formatting of the value!) :
+/ip dhcp-server option add code=150 name=customtftp value=0xC0A804090A0A0A0A
+Then assign DHCP option customtftp to your Networks or static Leases.
