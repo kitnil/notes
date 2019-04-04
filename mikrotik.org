@@ -6,6 +6,8 @@
 
 ** TFTP
 
+   : /ip dhcp-server network set next-server=192.168.105.120 boot-file-name=pxelinux.0 numbers=0
+
 http://xenhelp.blogspot.com/2017/06/mikrotik-routeros-set-custom-tftp.html
 
 Mikrotik RouterOS - Set custom TFTP server in DHCP
