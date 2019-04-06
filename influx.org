@@ -1,0 +1,9 @@
+
+- Use 'telegraf' database
+  : use telegraf
+
+- Show series
+  : show series
+
+- Drop series for host
+  : drop series where "host" = 'workstation';
