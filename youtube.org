@@ -1,1 +1,3 @@
 - https://developers.google.com/youtube/v3/determine_quota_cost
+- https://developers.google.com/apis-explorer/#p/youtube/v3/youtube.subscriptions.list?part=snippet&channelId=UCfKUwWwKuq8iKaf3xmkZuBw&maxResults=50&fields=items%252Fsnippet%252FresourceId%252FchannelId%252CnextPageToken&_h=5&
+  - items/snippet/resourceId/channelId,nextPageToken
