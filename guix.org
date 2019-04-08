@@ -37,6 +37,9 @@
   - refcard
     : <civodul> you can do: cd doc/refcard; evince $(guix build -f build.scm)/*.pdf
 
+  - The lesson is: when inheriting from a package, do it in the module
+    where it’s defined.
+
   - guix deterministic
     [21:11] <dongcarl> civodul: If I understand you correctly... `guix
     build bitcoin-core --check --no-grafts --keep-failed` would let me
