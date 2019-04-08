@@ -1,0 +1,1 @@
+xterm & sleep 2 ; xdotool key type 'sudo -i' ; xdotool key Return ; sleep 2; xdotool type 'bla-bla' ;
