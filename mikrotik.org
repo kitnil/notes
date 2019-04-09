@@ -7,6 +7,13 @@
 ** TFTP
 
    : /ip dhcp-server network set next-server=192.168.105.120 boot-file-name=pxelinux.0 numbers=0
+   : /ip dhcp-server network set next-server= boot-file-name=netboot.xyz.kpxe numbers=0
+
+   : /ip dhcp-server network remove numbers=0
+   : /ip dhcp-server network add address=192.168.105.0/24 gateway=192.168.105.1 dns-server=192.168.105.1 wins-server="" ntp-server="" caps-manager="" boot-file-name="netboot.xyz.kpxe" dhcp-option=""
+
+   : /ip dhcp-server network remove numbers=0
+   : /ip dhcp-server network add address=192.168.105.0/24 gateway=192.168.105.1 dns-server=192.168.105.1 wins-server="" ntp-server="" caps-manager="" boot-file-name="pxelinux.0" dhcp-option="" next-server=192.168.105.120 
 
 http://xenhelp.blogspot.com/2017/06/mikrotik-routeros-set-custom-tftp.html
 
