@@ -34,8 +34,5 @@
 
     elastic = elasticsearch.Elasticsearch([{"host": "localhost", "port": 9200}])
 
-    elasticsearch.helpers.reindex(client=elastic, 
-                                  target_client=elastic,
-                                  source_index="youtube-gaming",
-                                  target_index="yt-game")
+    elasticsearch.helpers.reindex(client=elastic, target_client=elastic, source_index="youtube-gaming", target_index="yt-game")
   #+END_SRC
