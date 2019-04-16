@@ -34,6 +34,8 @@
 
 * Cheat sheet
 
+  - '((0 . succeeded) (1 . failed-build) (2 . failed-dependency) (3 . failed-other) (6 . failed-output) (4 . cancelled))
+
   - refcard
     : <civodul> you can do: cd doc/refcard; evince $(guix build -f build.scm)/*.pdf
 
