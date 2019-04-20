@@ -1,2 +1,5 @@
 - see what program handles magnet links
   : gio mime x-scheme-handler/magnet
+
+- make default program to handle links
+  : xdg-mime default de.haeckerfelix.Fragments.desktop x-scheme-handler/magnet
