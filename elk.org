@@ -4,3 +4,41 @@
 
 - setup filebeat templates for kibana
   : filebeat setup -e -strict.perms=false -E output.elasticsearch.hosts=[elasticsearch:9200] -E setup.kibana.host="http://172.17.0.1:5601" -E name=guixsd
+
+- Create index
+  : curl -XPUT localhost:9200/foo
+
+- List indexes
+  : curl 'localhost:9200/_cat/indices?v&pretty'
+
+- Map field
+  #+BEGIN_SRC sh
+    curl -H "Content-Type: application/json" -XPUT --data-binary \
+         '{"properties": {"upload_date": {"type": "date", "format": "yyyyMMdd"}, "title": {"type": "text", "fields":{"keyword":{"type":"keyword","ignore_above":256}}}}}' \
+         localhost:9200/youtube-2019.02.10/_mapping/_doc
+  #+END_SRC
+
+- Import JSON to Elasticsearch
+  : cat /tmp/dio.txt | jq -c '.entries[] | { index: { "_index": "youtube", "_type": "_doc", _id: .id }}, { upload_date: .upload_date, channel_id: .channel_id, title: .title, webpage_url: .webpage_url_basename }' | curl -H "Content-Type: application/json" -XPOST localhost:9200/_bulk --data-binary @-
+
+- Download YouTube channel JSON
+  : youtube-dl --ignore-errors -J https://www.youtube.com/user/gotbletu/videos > /tmp/gotbletu.txt
+
+- Create backup repository
+  : curl -H "Content-Type: application/json" -XPUT 'http://localhost:9200/_snapshot/youtubee": "fs", "settings": {"compress": true, "location": "/mnt/backup"}}'
+
+- Backup Index 
+  : curl -H "Content-Type: application/json" -XPUT 'http://localhost:9200/_snapshot/youtube_fs_backup/snapshot_1?wait_for_completion=true' -d '{"indices": "youtube", "ignore_unavailable": true, "include_global_state": false}'
+
+- Create alias
+  : curl -X POST "localhost:9200/_aliases" -H 'Content-Type: application/json' -d'{"actions":[{"add":{"index":"yt-game","alias":"yt"}}]}'
+
+- Reindex
+  #+BEGIN_SRC python
+    import elasticsearch
+    import elasticsearch.helpers
+
+    elastic = elasticsearch.Elasticsearch([{"host": "localhost", "port": 9200}])
+
+    elasticsearch.helpers.reindex(client=elastic, target_client=elastic, source_index="youtube-gaming", target_index="yt-game")
+  #+END_SRC
