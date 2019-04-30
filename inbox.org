@@ -1799,3 +1799,20 @@ packages.
 ** READ [2019-04-30 Tue 22:09] [[gnus:INBOX#88a15a6c-b3dc-f9d2-0f04-f52e80646741@s.rendaw.me][Email from rendaw: bug#35459: Installing secret files]] by [[mailto:7e9wc56emjakcm@s.rendaw.me][rendaw]]
 ** READ [2019-04-30 Tue 22:09] [[gnus:INBOX#e6456771-5f66-a032-a2e2-826295dd0a7a@s.rendaw.me][Email from rendaw: bug#35460: Self supplied SSH host keys]] by [[mailto:7e9wc56emjakcm@s.rendaw.me][rendaw]]
 ** [2019-04-30 Tue 22:19] [[gnus:INBOX#87imuzajdz.fsf@GlaDOS.home][Email from Diego Nicola Barbato: Starting SLiM on multiple ttys]] by [[mailto:dnbarbato@posteo.de][Diego Nicola Barbato]]
+** [2019-04-30 Tue 22:20] [[gnus:INBOX#87mukbq3x4.fsf@cbaines.net][Email from Christopher Baines: Re: Help with OpenVPN Plugin for Network Manager]] by [[mailto:mail@cbaines.net][Christopher Baines]]
+   #+BEGIN_SRC scheme
+     (modify-services %desktop-services
+       (network-manager-service-type
+        config => (network-manager-configuration
+                   (inherit config)
+                   (vpn-plugins
+                    (list network-manager-openvpn)))))
+
+     (services (cons* (service gnome-desktop-service-type)
+                      (modify-services %desktop-services
+                        (network-manager-service-type
+                         config => (network-manager-configuration
+                                    (inherit config)
+                                    (vpn-plugins
+                                     (list network-manager-openvpn)))))))
+   #+END_SRC
