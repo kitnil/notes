@@ -1,3 +1,9 @@
+- Debug
+  : ,backtrace #:full? #t
+
+  or shorter
+  : ,bt #:full? #t
+
 - Split URL
   #+BEGIN_EXAMPLE
     scheme@(guile-user)> (string->uri "https://github.com/foo/bar/archive/whatnot")
