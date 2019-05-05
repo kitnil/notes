@@ -1,0 +1,21 @@
+#+BEGIN_SRC xml
+
+          <Network p2p>
+                  Encoding = ^UTF-8
+                  FloodBurst = 4
+                  FloodRate = 1.00
+                  IRCConnectEnabled = true
+                  JoinDelay = 0
+                  RealName = wigust
+                  Server = irc.p2p-network.net +6697
+                  TrustAllCerts = false
+                  TrustPKI = true
+
+                  <Chan #rutracker.org>
+                  </Chan>
+
+                  <Chan #the_dilbobaggins>
+                  </Chan>
+          </Network>
+
+#+END_SRC
