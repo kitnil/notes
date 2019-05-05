@@ -35,4 +35,72 @@
                   </Chan>
           </Network>
 
+
+          <Network twitch>
+                  Encoding = ^UTF-8
+                  FloodBurst = 4
+                  FloodRate = 1.00
+                  IRCConnectEnabled = true
+                  JoinDelay = 0
+                  Server = irc.chat.twitch.tv +6697 oauth:***REMOVED***
+                  TrustAllCerts = false
+                  TrustPKI = true
+
+                  <Chan #arhont713>
+                          Disabled = true
+                  </Chan>
+
+                  <Chan #arhont_tv>
+                  </Chan>
+
+                  <Chan #carolinhr>
+                  </Chan>
+
+                  <Chan #dad1to>
+                  </Chan>
+
+                  <Chan #dardenthefirst>
+                  </Chan>
+
+                  <Chan #entr_ru>
+                          Detached = true
+                  </Chan>
+
+                  <Chan #goodcatbaby>
+                          Detached = true
+                  </Chan>
+
+                  <Chan #guix>
+                  </Chan>
+
+                  <Chan #heckpriest>
+                          Detached = true
+                  </Chan>
+
+                  <Chan #kashrafall021>
+                  </Chan>
+
+                  <Chan #magpiemcgraw>
+                  </Chan>
+
+                  <Chan #nekrovim>
+                  </Chan>
+
+                  <Chan #oaogigmaster>
+                          Detached = true
+                  </Chan>
+
+                  <Chan #omaigrundles>
+                  </Chan>
+
+                  <Chan #the_dilbobaggins>
+                  </Chan>
+
+                  <Chan #tragedy138>
+                          Detached = true
+                  </Chan>
+
+                  <Chan #xomachine>
+                  </Chan>
+          </Network>
 #+END_SRC
