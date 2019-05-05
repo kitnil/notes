@@ -1,38 +1,38 @@
 #+BEGIN_SRC xml
 
-          <Network p2p>
+  <Network p2p>
+          Encoding = ^UTF-8
+          FloodBurst = 4
+          FloodRate = 1.00
+          IRCConnectEnabled = true
+          JoinDelay = 0
+          RealName = wigust
+          Server = irc.p2p-network.net +6697
+          TrustAllCerts = false
+          TrustPKI = true
+
+          <Chan #rutracker.org>
+          </Chan>
+
+          <Chan #the_dilbobaggins>
+          </Chan>
+  </Network>
+
+          <Network perl>
                   Encoding = ^UTF-8
                   FloodBurst = 4
                   FloodRate = 1.00
                   IRCConnectEnabled = true
                   JoinDelay = 0
-                  RealName = wigust
-                  Server = irc.p2p-network.net +6697
+                  LoadModule = simple_away
+                  Server = ssl.irc.perl.org +7062
                   TrustAllCerts = false
                   TrustPKI = true
+                  TrustedServerFingerprint = c0:b8:03:65:93:b6:23:c2:0f:e7:e7:0c:e5:07:24:5f:cb:20:1c:ca:ee:e0:b5:76:a9:0e:6e:3c:a9:87:59:af
 
-                  <Chan #rutracker.org>
-                  </Chan>
-
-                  <Chan #the_dilbobaggins>
+                  <Chan #moose>
+                          Detached = true
                   </Chan>
           </Network>
-
-	<Network perl>
-		Encoding = ^UTF-8
-		FloodBurst = 4
-		FloodRate = 1.00
-		IRCConnectEnabled = true
-		JoinDelay = 0
-		LoadModule = simple_away
-		Server = ssl.irc.perl.org +7062
-		TrustAllCerts = false
-		TrustPKI = true
-		TrustedServerFingerprint = c0:b8:03:65:93:b6:23:c2:0f:e7:e7:0c:e5:07:24:5f:cb:20:1c:ca:ee:e0:b5:76:a9:0e:6e:3c:a9:87:59:af
-
-		<Chan #moose>
-			Detached = true
-		</Chan>
-	</Network>
 
 #+END_SRC
