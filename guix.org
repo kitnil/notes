@@ -34,6 +34,14 @@
 
 * Cheat sheet
 
+  - narinfo
+    #+BEGIN_EXAMPLE
+      $ wget -q -O - https://ci.guix.info/nrkm1683p1cqnkcmhlmhiig9q9qd7xqh.narinfo | head -3
+      StorePath: /gnu/store/nrkm1683p1cqnkcmhlmhiig9q9qd7xqh-sed-4.5
+      URL: nar/gzip/nrkm1683p1cqnkcmhlmhiig9q9qd7xqh-sed-4.5
+      Compression: gzip
+    #+END_EXAMPLE
+
   - '((0 . succeeded) (1 . failed-build) (2 . failed-dependency) (3 . failed-other) (6 . failed-output) (4 . cancelled))
 
   - refcard
