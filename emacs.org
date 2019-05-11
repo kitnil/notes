@@ -1,3 +1,14 @@
+- add new keywords
+  #+BEGIN_SRC elisp
+    (font-lock-add-keywords 'c++-mode
+       '(("\\<\\(override\\|noexcept\\)\\>") . font-lock-keyword-face))
+  #+END_SRC
+
+- jump to first parsed error in compilation buffer
+  #+BEGIN_SRC elisp
+    (setq compilation-scroll-output 'first-error)
+  #+END_SRC
+
 - tramp colors
   #+BEGIN_SRC emacs-lisp
     (require 'tramp)
