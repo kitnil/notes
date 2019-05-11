@@ -1,3 +1,5 @@
+- [[https://www.youtube.com/watch?v=GuEqRmCjy6E][2019-04-03: Emacs as a C++ IDE - Jeff Trull, Ben Deane, Dirk Jagdmann]]
+
 - add new keywords
   #+BEGIN_SRC elisp
     (font-lock-add-keywords 'c++-mode
