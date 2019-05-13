@@ -34,6 +34,17 @@
 
 * Cheat sheet
 
+  - This will generate and manage "grub.cfg" without installing grub bootloader on your disk.
+    Origin: <6aa8150643946007e24e2026467e2ef2@disroot.org>
+    #+BEGIN_SRC scheme
+      (bootloader
+       (bootloader-configuration
+        (bootloader
+         (bootloader
+          (inherit grub-bootloader)
+          (installer #~(const #t))))))
+    #+END_SRC
+
   - narinfo
     #+BEGIN_EXAMPLE
       $ wget -q -O - https://ci.guix.info/nrkm1683p1cqnkcmhlmhiig9q9qd7xqh.narinfo | head -3
