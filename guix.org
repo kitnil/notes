@@ -34,6 +34,21 @@
 
 * Cheat sheet
 
+  - skeleton create directory [2019-05-27 Mon 22:22] [[gnus:INBOX#87pno5m22l.fsf@gnu.org][Email from Ludovic Courtès: Re: skeleton files in sub-directories]] by [[mailto:ludo@gnu.org][Ludovic Courtès]]
+   #+BEGIN_SRC scheme
+     (define dot-config
+       (compute-file "dot-config-skeleton"
+                     #~(begin
+                         (mkdir #$output)
+                         (mkdir (string-append #$output "/guix"))
+                         …)))
+
+     and then add it in the list of skeletons like so:
+
+     `(…
+       (".config" ,dot-config))
+   #+END_SRC
+
   - This will generate and manage "grub.cfg" without installing grub bootloader on your disk.
     Origin: <6aa8150643946007e24e2026467e2ef2@disroot.org>
     #+BEGIN_SRC scheme
