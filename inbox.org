@@ -1827,3 +1827,14 @@ packages.
 ** [2019-06-04 Tue 00:16] [[gnus:INBOX#eb47241d-f234-6547-8fdb-a75bb54b5832@gmail.com][Email from Zelphir Kaltstahl: Re: Using UNIX sockets (Zelphir Kaltstahl)]] by [[mailto:zelphirkaltstahl@gmail.com][Zelphir Kaltstahl]]
 ** [2019-06-04 Tue 21:15] [[gnus:INBOX#87ftopg23r.fsf@gnu.org][Email from Ludovic Courtès: Testing needed for lzip substitutes!]] by [[mailto:ludo@gnu.org][Ludovic Courtès]]
 ** [2019-06-05 Wed 08:18] [[gnus:INBOX#20190604073406.9297-1-dannym@scratchpost.org][Email from Danny Milosavljevic: {bug#36086} {PATCH} services: Add auditd.]] by [[mailto:dannym@scratchpost.org][Danny Milosavljevic]]
+** [2019-06-05 Wed 09:51] [[gnus:nnimap+USER:INBOX#87imtq4kf5.fsf@fsf.org][Email from Ian Kelling: {Savannah-hackers-public} lists.gnu.org upgrade is planned for Monday June 3rd]] by [[mailto:iank@fsf.org][Ian Kelling]]
+   
+This will affect all these mailman sites:
+lists.gnu.org : lists.defectivebydesign.org : lists.endsoftpatents.org : 
+lists.libreplanet.org : lists.nongnu.org
+
+This should only result in about 5-10 minutes of downtime. Probably in
+the early afternoon eastern time. I will announce it on
+https://quitter.im/fsfstatus at least a few minutes beforehand. The main
+change will be a small version increase for mailman, and a large version
+upgrade for exim and apache.
