@@ -13,3 +13,11 @@
 * Корпуса
 
   - [[https://www.youtube.com/watch?v=EDohJRwmEIw][Модель корпуса Formula CL 505b]]
+
+* Beeline
+
+  https://spb.beeline.ru/shop/details/smartfon-samsung-galaxy-a30-64gb-white/promo/
+  scheme@(guile-user)> (+ (* 630 24) (* 99 24))
+  $3 = 17496
+  scheme@(guile-user)> (+ (* 630 24) (* 149 24))
+  $4 = 18696
