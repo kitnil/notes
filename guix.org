@@ -37,6 +37,10 @@
 
 * Cheat sheet
 
+  - <bavier`> EuAndreh[m]: you can use makeinfo to produce a docbook
+    output, then feed that to dbtoepub, apparently
+    https://kanru.info/blog/archives/2010/11/18/convert-texinfo-to-mobi/
+
   - please grab substitutes from https://qualif.ci.guix.gnu.org
     it provides lzipped substitutes in addition to gzipped substitutes
 
