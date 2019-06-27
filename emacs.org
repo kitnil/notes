@@ -1,3 +1,11 @@
+- org-mode evaluate code block in Docker container
+
+  You can use docker-tramp.
+
+  Then you would be able to run src blocks on docker using dir header
+  param like ‘:dir /docker:user@container:/‘ (similar to running src
+  blocks on remote machine using tramp)
+
 - [[http://www.emacs-bootstrap.com/][Emacs Bootstrap:. Select your favorite programming languages, and your init file will be generated for you]]
 
 - [[https://www.youtube.com/watch?v=GuEqRmCjy6E][2019-04-03: Emacs as a C++ IDE - Jeff Trull, Ben Deane, Dirk Jagdmann]]
