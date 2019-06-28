@@ -37,6 +37,9 @@
 
 * Cheat sheet
 
+  - Verify store contents
+    : guix gc --verify=contents 2>&1 |tee ~/verify.log
+
   - <bavier`> EuAndreh[m]: you can use makeinfo to produce a docbook
     output, then feed that to dbtoepub, apparently
     https://kanru.info/blog/archives/2010/11/18/convert-texinfo-to-mobi/
