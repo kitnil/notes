@@ -1,2 +1,3 @@
+- sudo /home/gitlab-runner/.nix-profile/bin/gitlab-runner run --working-directory=/home/gitlab-runner --config=/etc/gitlab-runner/config.toml --service=gitlab-runner --user=gitlab-runner
 - https://blog.stead.id.au/2017/03/synology-gitlab-error-502.html
 - 30805 messagebu 1143M 1128M  843M R 100.  3.5  1:59.76 git --git-dir /var/opt/gitlab/git-data/repositories/nix/nixpkgs.git fsck
