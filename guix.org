@@ -1315,3 +1315,23 @@ success = false; } else { //Lock texture if( !gFooTexture.lockTexture() ) { prin
   - [2018-09-10 Mon 18:54] [[gnus:INBOX#87pnxqkbmg.fsf@gnu.org][Email from Ludovic Courtès: hpcguix-web, channels, and inferiors]] by [[mailto:ludovic.courtes@inria.fr][Ludovic Courtès]]
 
 - 36162 remote-eval
+- Guix CI test
+
+#+BEGIN_EXAMPLE
+  $ ./pre-inst-env guile
+  GNU Guile 2.2.5
+  Copyright (C) 1995-2019 Free Software Foundation, Inc.
+
+  Guile comes with ABSOLUTELY NO WARRANTY; for details type `,show w'.
+  This program is free software, and you are welcome to redistribute it
+  under certain conditions; type `,show c' for details.
+
+  Enter `,help' for help.
+  scheme@(guile-user)> ,use(guix store)
+  scheme@(guile-user)> (use-modules (gnu ci) (ice-9 match))
+  scheme@(guile-user)> (define store (open-connection))
+  scheme@(guile-user)> (define jobs  (hydra-jobs store '((systems "x86_64-linux" "i686-linux"))))
+  evaluating for 'x86_64-linux' (heap size: 35.0 MiB)...
+  random seed for tests: 1562154761
+  evaluating for 'i686-linux' (heap size: 467.0 MiB)...
+#+END_EXAMPLE
