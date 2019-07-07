@@ -1335,3 +1335,5 @@ success = false; } else { //Lock texture if( !gFooTexture.lockTexture() ) { prin
   random seed for tests: 1562154761
   evaluating for 'i686-linux' (heap size: 467.0 MiB)...
 #+END_EXAMPLE
+- Build Guix documentation
+  : guix build -f doc/build.scm
