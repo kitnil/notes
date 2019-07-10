@@ -1,3 +1,5 @@
+* Misc
+
 https://stackoverflow.com/a/53804057
 
 A relatively safe way to handle this situation is to store your credentials is the credentials system in Jenkins (that way you do not have to include the credentials in the JenkinsFile), and using a deploy token (available for Gitlab 10.7 and later) for the relevant repository. That token allows you to provide read-only rights to the repository.
