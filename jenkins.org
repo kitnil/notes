@@ -19,6 +19,19 @@
       curl -XPOST "https://alerta.wugi.info/api/alert" -H "Authorization: Key NWEDx50esczaQEoIhPkJG_pG4ntQ8FENawq-tcDK" -H "Content-type: application/json" -d "{\"resource\": \"jenkins\", \"event\": \"job.success\", \"environment\": \"Production\", \"severity\": \"major\", \"correlate\": [], \"service\": [\"Linux servers\"], \"group\": null, \"value\": \"FAIL\", \"text\": \"fail job fiore https://jenkins.wugi.info/job/fiore/lastBuild/console\", \"tags\": [], \"attributes\": {}, \"origin\": null, \"type\": null, \"createTime\": \"2019-03-23T20:45:34.393Z\", \"timeout\": null, \"rawData\": null, \"customer\": null\"]\"}"
     #+END_SRC
 
+  - Git my packages
+    #+BEGIN_SRC groovy
+      node {
+          dir("${HOME}/src/guix") {
+              GIT_COMMIT_EMAIL = sh (
+                  script: "git log --author='Oleg Pykhalov' --format='%s' | awk '/gnu: Add/ { print substr($NF, 1, length($NF)-1) }'",
+                  returnStdout: true
+              ).trim()
+              echo "${GIT_COMMIT_EMAIL}"
+          }
+      }
+    #+END_SRC
+
 * Misc
 
 https://stackoverflow.com/a/53804057
