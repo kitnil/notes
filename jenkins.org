@@ -1,3 +1,18 @@
+
+* Cheatsheet
+
+  - Post build status to GitLab
+    #+BEGIN_SRC groovy
+      post {
+          success {
+              echo 'posting success to GitLab'updateGitlabCommitStatus(name: 'jenkins-build', state: 'success')
+          }
+          failure {
+              echo 'postinng failure to GitLab'updateGitlabCommitStatus(name: 'jenkins-build', state: 'failed')
+          }
+      }
+    #+END_SRC
+
 * Misc
 
 https://stackoverflow.com/a/53804057
