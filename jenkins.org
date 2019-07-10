@@ -32,6 +32,10 @@
       }
     #+END_SRC
 
+    #+BEGIN_SRC groovy
+      guix build $(PAGER= git log --author='go.wigust@gmail.com' --format='%s' --grep='gnu: Add' | grep -v 'Revert ' | awk '{ print $3 }' | sed 's|\.||' | sort | grep -v '^sound' | grep -v '^premake4' | tr '\n' ' ') premake
+    #+END_SRC
+
 * Misc
 
 https://stackoverflow.com/a/53804057
