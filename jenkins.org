@@ -2,6 +2,7 @@
 * Cheatsheet
 
   - Post build status to GitLab
+    https://github.com/jenkinsci/gitlab-plugin/issues/462
     #+BEGIN_SRC groovy
       post {
           success {
