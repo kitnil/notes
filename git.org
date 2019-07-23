@@ -1,5 +1,8 @@
 * Cheatsheet
 
+  - Ignore certificate
+    : git -c http.sslVerify=false
+
   - Ignore file
     : .git/info/exclude
     You could also use [C-u i] in Emacs Magit
