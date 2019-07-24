@@ -1,4 +1,4 @@
-https://habr.com/en/sandbox/80771/
+- [[https://habr.com/en/sandbox/80771/][Полезные команды]]
 
 set interfaces ge-0/0/0.0 family inet address 192.168.60.3/24
 set interfaces ge-0/0/1.0 family inet address 192.168.60.71/24
