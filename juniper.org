@@ -1,3 +1,5 @@
+https://habr.com/en/sandbox/80771/
+
 set interfaces ge-0/0/0.0 family inet address 192.168.60.3/24
 set interfaces ge-0/0/1.0 family inet address 192.168.60.71/24
 set interfaces ge-0/0/2.0 family inet address 192.168.60.72/24
