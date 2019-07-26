@@ -3,7 +3,7 @@
 [wigust@MikroTik] /ip firewall filter> add action=drop chain=forward protocol=tcp src-port=443 tcp-flags=rst packet-size=40 ttl=equal:120
 
 * DNS
-  : ip dns static add address=172.16.103.150 name=alerta.intr ttl=3600
+  : /ip dns static add address=172.16.103.150 name=alerta.intr ttl=3600
 
 * DHCP
 
