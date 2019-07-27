@@ -1345,4 +1345,18 @@ success = false; } else { //Lock texture if( !gFooTexture.lockTexture() ) { prin
 - [bug#36469] [PATCH 0/2] 'guix pack' records environment variables
   : guix pack -f docker guile guile-json --entry-point=bin/guile
   : docker run THE-IMAGE
+- Message-ID: <874l4254kv.fsf@gnu.org>
+#+BEGIN_SRC scheme
+  (define update-guix-hpc-web
+    (build-program "https://gitlab.inria.fr/guix-hpc/website.git"
+                   "/srv/guix-hpc"))
+
+  (operating-system
+    ;; …
+    (services (cons (simple-service 'update-guix-hpc-web
+                                    mcron-service-type
+                                    (list #~(job '(next-minute '(0))
+                                                 #$update-guix-hpc-web)))
+                    …)))
+#+END_SRC
 
