@@ -1345,6 +1345,7 @@ success = false; } else { //Lock texture if( !gFooTexture.lockTexture() ) { prin
 - [bug#36469] [PATCH 0/2] 'guix pack' records environment variables
   : guix pack -f docker guile guile-json --entry-point=bin/guile
   : docker run THE-IMAGE
+
 - Message-ID: <874l4254kv.fsf@gnu.org>
 #+BEGIN_SRC scheme
   (define update-guix-hpc-web
