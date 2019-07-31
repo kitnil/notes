@@ -457,11 +457,42 @@ mirror/zoutline
 
   ,* Set devtools.editor.keymap to emacs
 #+END_EXAMPLE
+
 - https://www.reddit.com/r/emacs/comments/ceyrkz/define_a_custom_keybinding_for_a_specific_project/
+
 - https://www.reddit.com/r/emacs/comments/cf8r83/easier_editing_of_elisp_regexps/eu8nzd4/
+
 #+BEGIN_SRC emacs-lisp
   (defun my-re-builder ()
     (setq reb-regexp (substring-no-properties (thing-at-point 'sexp))))
 
   (advice-add 're-builder :before #'my-re-builder)
+#+END_SRC
+
+#+BEGIN_SRC emacs-lisp
+  -*- lexical-binding: t -*-
+
+  (defun my-edit-regexp-re-builder ()
+    (interactive)
+    (save-excursion
+      (let* ((string-start (or (nth 8 (syntax-ppss))
+                               (error "not in a string")))
+             (string-end (progn
+                           (goto-char string-start)
+                           (forward-sexp 1)
+                           (point)))
+             (reb-regexp (read (buffer-substring-no-properties
+                                string-start
+                                string-end))))
+
+        (re-builder)
+
+        (let ((finisher (lambda ()
+                          (interactive)
+                          (reb-quit)
+                          (delete-region string-start string-end)
+                          (insert (let ((print-escape-newlines t))
+                                    (prin1-to-string reb-regexp))))))
+
+          (local-set-key (kbd "<f1>") finisher)))))
 #+END_SRC
