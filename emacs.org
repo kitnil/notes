@@ -1,3 +1,17 @@
+- Apply multiple Git patches
+
+Gnus way:
+Message-ID: <87h87i7dny.fsf@gmail.com>
+In Gnus, I press "#" to mark one or more messages with the "process
+mark" ((gnus) Other Marks), then I press "|" (gnus-summary-pipe-output),
+then I type "(cd ~/guix && git am)" to cd to my Guix checkout and apply
+the patches.  This works pretty well for me.
+
+Debbugs way:
+Message-ID: <87o91v7ela.fsf@ambrevar.xyz>
+From the summary view, I can press M-m (debbugs-gnu-apply-patch).
+It asks me for a directory, I point to guix, and then I get the error
+
 - https://libreneitor.com/how-to-set-up-emacs-to-edit-the-linux-kernel/
 
 - org-mode evaluate code block in Docker container
