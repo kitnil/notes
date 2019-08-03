@@ -652,6 +652,15 @@
     : guix package -p ~/.config/guix/current --delete-generations
     : guix gc --delete-generations
 
+  - ABI Incompatible
+    Message-ID: <878st8g7w0.fsf@gnu.org>
+    Things to have to be compiled at one point though.  We could let
+    Guile auto-compile code, but unfortunately that comes with its own
+    warts: the equivalent of “make clean-go”, for instance when an ABI
+    incompatibility pops up, is “rm -rf ~/.cache/guile/ccache”, and
+    that too is something a developer has too learn, and one could
+    argue that it’s less familiar than “make” or “make clean.”
+
   - Message-ID: <87v9wk275q.fsf@jlicht.xyz>
     https://notabug.org/jlicht/guile-semver
 
