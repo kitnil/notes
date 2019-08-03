@@ -648,6 +648,21 @@
                          (display "Cannot stop iproute2 service.\n"))))))
     #+END_SRC
 
+  - hash
+    Message-ID: <878ssmt4zw.fsf@gnu.org>
+    #+BEGIN_EXAMPLE
+      $ wget -qO - http://berlin.guix.gnu.org/32hy1jqkam201l7c4wg3bhxz4x5l5jy0.narinfo | grep Hash
+      NarHash: sha256:0vbkb5mcwzbz4lm1c1319pail61785sd3lj6526vl5hdnp1rxyad
+      $ wget -qO - http://berlin.guix.gnu.org/nar/lzip/32hy1jqkam201l7c4wg3bhxz4x5l5jy0-nss-certs-3.44.1 | lzip -d | guix hash -
+      0vbkb5mcwzbz4lm1c1319pail61785sd3lj6526vl5hdnp1rxyad
+      $ wget -qO - http://berlin.guix.gnu.org/nar/gzip/32hy1jqkam201l7c4wg3bhxz4x5l5jy0-nss-certs-3.44.1 | gunzip | guix hash -
+      0vbkb5mcwzbz4lm1c1319pail61785sd3lj6526vl5hdnp1rxyad
+      $ wget -qO - http://ci.guix.gnu.org/nar/lzip/32hy1jqkam201l7c4wg3bhxz4x5l5jy0-nss-certs-3.44.1 | lzip -d | guix hash -
+      0vbkb5mcwzbz4lm1c1319pail61785sd3lj6526vl5hdnp1rxyad
+      $ wget -qO - http://ci.guix.gnu.org/nar/gzip/32hy1jqkam201l7c4wg3bhxz4x5l5jy0-nss-certs-3.44.1 | gunzip | guix hash -
+      0vbkb5mcwzbz4lm1c1319pail61785sd3lj6526vl5hdnp1rxyad
+    #+END_EXAMPLE
+
 ** mumi
 
    Message-ID: <875zntc8ux.fsf@elephly.net>
