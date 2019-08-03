@@ -648,6 +648,10 @@
                          (display "Cannot stop iproute2 service.\n"))))))
     #+END_SRC
 
+  - Message-ID: <87blycvrz1.fsf@elephly.net>
+    : guix package -p ~/.config/guix/current --delete-generations
+    : guix gc --delete-generations
+
   - Message-ID: <87v9wk275q.fsf@jlicht.xyz>
     https://notabug.org/jlicht/guile-semver
 
