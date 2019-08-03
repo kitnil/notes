@@ -648,6 +648,18 @@
                          (display "Cannot stop iproute2 service.\n"))))))
     #+END_SRC
 
+** mumi
+
+   Message-ID: <875zntc8ux.fsf@elephly.net>
+   #+BEGIN_EXAMPLE
+         (use-modules (mumimu))
+         (mu:initialize (%config 'mail-dir))
+         (for-each
+          (lambda (msg)
+            (pk (mu:subject msg)))
+          (mu:message-list "bugid:31023"))
+   #+END_EXAMPLE
+    
 * Guix packaging
 
   - [[shell:guix%20lint%20$PACKAGE][shell:guix lint $PACKAGE]]
