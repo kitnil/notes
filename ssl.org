@@ -1,2 +1,4 @@
+- https://support.plesk.com/hc/en-us/articles/213961665-How-to-verify-that-SSL-for-IMAP-POP3-SMTP-works-and-a-proper-SSL-certificate-is-in-use
+
 - Check certificate
   : echo | openssl s_client -connect berlin.guixsd.org:443 | openssl x509 -text
