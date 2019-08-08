@@ -1,3 +1,6 @@
+- exclude rc-user
+  : service:rc-user AND log_level:ERROR AND -log_message:"ftp"
+
 - https://qbox.io/blog/indexing-emails-to-elasticsearch-logstash-imap
 
 - [[https://youtu.be/HSXuGU6f0yo][Kibana Searches]]
