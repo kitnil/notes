@@ -1,5 +1,15 @@
 - nix-prefetch-url
 
+#+BEGIN_SRC sh
+  nix-build -E 'with import <nixpkgs> {}; 
+                          fetchFromGitHub {
+                              owner = "bitcoinunlimited";
+                              repo = "bitcoinunlimited";
+                              rev = "v1.0.2.0";
+                              sha256 = "17cmy0s1908s2rqs0zwr05f3541nqm2pg08n2xn97g2k3yimdg5q";
+                          }'
+#+END_SRC
+
 documentation /gnu/store/90wc27m5rafga3zjzkg6xdbf49rrz3w1-nix-2.0.4/share/doc/nix/manual/index.html
 
 patchelf https://nixos.wiki/wiki/Packaging/Binaries#Creating_the_Derivation_for_upstream_Packaging
