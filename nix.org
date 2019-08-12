@@ -1,5 +1,6 @@
 - nix-prefetch-url
 
+https://github.com/NixOS/nix/issues/1880
 #+BEGIN_SRC sh
   nix-build -E 'with import <nixpkgs> {}; 
                           fetchFromGitHub {
