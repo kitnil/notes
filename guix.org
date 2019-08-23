@@ -1406,4 +1406,18 @@ success = false; } else { //Lock texture if( !gFooTexture.lockTexture() ) { prin
                                                  #$update-guix-hpc-web)))
                     …)))
 #+END_SRC
+#+BEGIN_SRC scheme
+  $ guix repl
+  GNU Guile 2.2.4
+  Copyright (C) 1995-2017 Free Software Foundation, Inc.
 
+  Guile comes with ABSOLUTELY NO WARRANTY; for details type `,show w'.
+  This program is free software, and you are welcome to redistribute it
+  under certain conditions; type `,show c' for details.
+
+  Enter `,help' for help.
+  scheme@(guix-user)> ,use(guix channels)
+  scheme@(guix-user)> ,use(guix describe)
+  scheme@(guix-user)> (profile-channels (current-profile))
+  $1 = (#<<channel> name: guix url: "https://git.savannah.gnu.org/git/guix.git" branch: "master" commit: "178f1d1f75a8d512b517f474f63da507beaebd49" location: ((line . 549) (column . 19) (filename . "guix/channels.scm"))>)
+#+END_SRC
