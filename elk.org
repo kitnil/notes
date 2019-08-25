@@ -1,3 +1,6 @@
+- Disable readonly
+  : curl -H Content-Type: application/json -XPUT http://localhost:9200/elastalert_status_status/_settings --data {"index":{"blocks": {"read_only_allow_delete": "false"}}}
+
 - exclude rc-user
   : service:rc-user AND log_level:ERROR AND -log_message:"ftp"
 
