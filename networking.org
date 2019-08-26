@@ -1,3 +1,10 @@
+* 
+
+- Find all clients connected to HTTP or HTTPS ports 
+  : ss -o state established '( dport = :http or sport = :https )'
+
+* 
+
 http://xmodulo.com/centos-bgp-router-quagga.html
 
 https://www.tldp.org/HOWTO/BRIDGE-STP-HOWTO/set-up-the-bridge.html
