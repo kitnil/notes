@@ -3,6 +3,9 @@
 - Find all clients connected to HTTP or HTTPS ports 
   : ss -o state established '( dport = :http or sport = :https )'
 
+-  Block all IPv4 addresses that has brute forcing our ssh server
+   : for idiots in "$(cat /var/log/auth.log|grep invalid| grep -oE '\b([0-9]{1,3}\.){3}[0-9]{1,3}\b')"; do iptables -A INPUT -s "$idiots" -j DROP; done
+
 * 
 
 http://xmodulo.com/centos-bgp-router-quagga.html
