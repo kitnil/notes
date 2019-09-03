@@ -37,6 +37,13 @@
 
 * Cheat sheet
 
+  - build manual only for specific language
+    #+BEGIN_EXAMPLE
+      make doc/guix.pt_BR.info
+      # or
+      make doc/guix.pt_BR.html
+    #+END_EXAMPLE
+
   - Verify store contents
     : guix gc --verify=contents 2>&1 |tee ~/verify.log
 
