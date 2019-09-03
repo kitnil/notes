@@ -37,6 +37,16 @@
 
 * Cheat sheet
 
+  - extend environment variables
+    
+    To add environment variables to /etc/environment, you would
+    “extend” ‘session-environment-service-type’, like so:
+    #+BEGIN_SRC scheme
+      (simple-service 'cogl-variable session-environment-service-type
+                      '(("COGL_ATLAS_DEFAULT_BLIT_MODE" . "framebuffer")))
+
+    #+END_SRC
+
   - build manual only for specific language
     #+BEGIN_EXAMPLE
       make doc/guix.pt_BR.info
