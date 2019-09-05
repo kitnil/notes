@@ -37,6 +37,12 @@
 
 * Cheat sheet
 
+  - Fix chromium audio capture
+    #+BEGIN_SRC sh
+      sed -i 's/"audio_capture_enabled":false/"audio_capture_enabled":true/' \
+              ~/.config/chromium/Default/Preferences 
+    #+END_SRC
+
   - extend environment variables
     
     To add environment variables to /etc/environment, you would
