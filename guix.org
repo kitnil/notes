@@ -37,6 +37,8 @@
 
 * Cheat sheet
 
+  - sudo strace -p 44043 -e openat,fcntl
+
   - Fix chromium audio capture
     #+BEGIN_SRC sh
       sed -i 's/"audio_capture_enabled":false/"audio_capture_enabled":true/' \
