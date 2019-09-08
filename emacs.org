@@ -1,3 +1,9 @@
+- Ignore errors during require
+  #+BEGIN_SRC emacs-lisp
+    (ignore-errors
+      (require 'google-contacts))
+  #+END_SRC
+  
 - Apply multiple Git patches
 
 Gnus way:
