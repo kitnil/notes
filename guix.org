@@ -1446,3 +1446,9 @@ success = false; } else { //Lock texture if( !gFooTexture.lockTexture() ) { prin
   scheme@(guix-user)> (profile-channels (current-profile))
   $1 = (#<<channel> name: guix url: "https://git.savannah.gnu.org/git/guix.git" branch: "master" commit: "178f1d1f75a8d512b517f474f63da507beaebd49" location: ((line . 549) (column . 19) (filename . "guix/channels.scm"))>)
 #+END_SRC
+#+BEGIN_SRC scheme
+  (for-each (lambda (file)
+              (rename-file file (string-append (dirname file) "/..")))
+            (find-files themes))
+#+END_SRC
+
