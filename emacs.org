@@ -1,3 +1,35 @@
+- chromium weather
+  #+BEGIN_SRC emacs
+  (setq lexical-binding t)
+
+(setq weather-timer      
+      (run-with-timer
+       0 900
+       (lambda ()
+         (let ((outfile "d:\\download\\weather.png"))
+           (start-process
+            "weather"
+            nil
+            "C:/Program Files (x86)/Google/Chrome/Application/chrome.exe"
+            "--headless"
+            (concat "--screenshot=" outfile)
+            "--window-size=1000,600"
+            "--hide-scrollbars"  
+            "https://www.bbc.co.uk/weather/2643743#daylink-0")
+
+           ;; wait a bit to make sure the new image is ready
+           (run-with-timer
+            10 nil
+            (lambda ()
+              (let ((img (create-image outfile)))
+                (with-current-buffer (get-buffer-create"*weather*")
+                  (erase-buffer)
+                  (image-flush img)
+                  (insert-image img)
+                  (setq cursor-type nil)))))
+           ))))
+  #+END_SRC
+
 - Ignore errors during require
   #+BEGIN_SRC emacs-lisp
     (ignore-errors
