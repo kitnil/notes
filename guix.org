@@ -37,6 +37,8 @@
 
 * Cheat sheet
 
+  - https://framagit.org/tyreunom/guix-home-manager
+
   - sudo strace -p 44043 -e openat,fcntl
 
   - Fix chromium audio capture
