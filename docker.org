@@ -1,2 +1,13 @@
 - exit from interactive shell without killing container
   : c-p-q
+
+* debug
+
+https://askubuntu.com/questions/1171460/how-to-fix-docker-error-response-from-daemon-cgroups-cannot-find-cgroup-moun
+#+BEGIN_EXAMPLE
+  time="2019-09-15T14:15:34.296089582+03:00" level=error msg="Handler for POST /v1.39/containers/ac8c02128338799ea871b09e086b86ebd20b184da898798ee7ea880aac4fb90b/start returned error: cgroups: cannot find cgroup mount destination: unknown"
+  time="2019-09-15T14:21:39.565368106+03:00" level=info msg="shim containerd-shim started" address="/containerd-shim/moby/3378573515fe9ff71f9bd19eca5732cb7af55ffd69e4f0f75d44bf246cba6dc5/shim.sock" debug=false pid=19346 
+  time="2019-09-15T14:21:39.928493318+03:00" level=info msg="shim reaped" id=3378573515fe9ff71f9bd19eca5732cb7af55ffd69e4f0f75d44bf246cba6dc5 
+  time="2019-09-15T14:21:40.089986491+03:00" level=error msg="3378573515fe9ff71f9bd19eca5732cb7af55ffd69e4f0f75d44bf246cba6dc5 cleanup: failed to delete container from containerd: no such container"
+  time="2019-09-15T14:21:40.097378260+03:00" level=error msg="Handler for POST /v1.39/containers/3378573515fe9ff71f9bd19eca5732cb7af55ffd69e4f0f75d44bf246cba6dc5/start returned error: cgroups: cannot find cgroup mount destination: unknown"
+#+END_EXAMPLE
