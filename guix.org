@@ -37,6 +37,15 @@
 
 * Cheat sheet
 
+  - guix daemon backtrace width
+    #+BEGIN_EXAMPLE
+      The daemon is run as 'root' on a Guix system, so you need to set this
+      environment variable for the 'root' user session.  As an example, I set
+      this in my /root/.bash_profile file:
+
+      export COLUMNS=160              # wider Guile backtraces
+    #+END_EXAMPLE
+
   - https://framagit.org/tyreunom/guix-home-manager
 
   - sudo strace -p 44043 -e openat,fcntl
