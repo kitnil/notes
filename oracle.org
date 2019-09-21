@@ -71,3 +71,8 @@ ORACLE_SUPPORT_PRODUCT_VERSION=7.7
     link/ether 02:00:17:06:ab:23 brd ff:ff:ff:ff:ff:ff
     inet 10.0.1.2/24 brd 10.0.1.255 scope global dynamic ens3
        valid_lft 85964sec preferred_lft 85964sec
+[opc@instance-20190921-1242 ~]$ ip r
+default via 10.0.1.1 dev ens3 
+10.0.1.0/24 dev ens3 proto kernel scope link src 10.0.1.2 
+169.254.0.0/16 dev ens3 proto static scope link 
+169.254.0.0/16 dev ens3 scope link metric 1002 
