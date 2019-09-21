@@ -1,3 +1,9 @@
+# [opc@instance-20190921-1242 ~]$ 
+Host oracle
+  HostName 130.61.52.156
+  IdentityFile /home/oleg/.ssh/id_rsa_oracle
+  User opc
+
 [opc@instance-20190921-1242 ~]$ df -h
 Filesystem      Size  Used Avail Use% Mounted on
 devtmpfs        459M     0  459M   0% /dev
