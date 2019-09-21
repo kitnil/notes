@@ -1,0 +1,38 @@
+[opc@instance-20190921-1242 ~]$ df -h
+Filesystem      Size  Used Avail Use% Mounted on
+devtmpfs        459M     0  459M   0% /dev
+tmpfs           486M     0  486M   0% /dev/shm
+tmpfs           486M   13M  473M   3% /run
+tmpfs           486M     0  486M   0% /sys/fs/cgroup
+/dev/sda3        39G  1.9G   37G   5% /
+/dev/sda1       200M  9.7M  191M   5% /boot/efi
+tmpfs            98M     0   98M   0% /run/user/1000
+[opc@instance-20190921-1242 ~]$ free -h 
+              total        used        free      shared  buff/cache   available
+Mem:           971M        253M        392M         12M        326M        557M
+Swap:          8.0G          0B        8.0G
+[opc@instance-20190921-1242 ~]$ lscpu 
+Architecture:          x86_64
+CPU op-mode(s):        32-bit, 64-bit
+Byte Order:            Little Endian
+CPU(s):                2
+On-line CPU(s) list:   0,1
+Thread(s) per core:    2
+Core(s) per socket:    1
+Socket(s):             1
+NUMA node(s):          1
+Vendor ID:             AuthenticAMD
+CPU family:            23
+Model:                 1
+Model name:            AMD EPYC 7551 32-Core Processor
+Stepping:              2
+CPU MHz:               1996.250
+BogoMIPS:              3992.50
+Hypervisor vendor:     KVM
+Virtualization type:   full
+L1d cache:             64K
+L1i cache:             64K
+L2 cache:              512K
+L3 cache:              16384K
+NUMA node0 CPU(s):     0,1
+Flags:                 fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ht syscall nx mmxext fxsr_opt pdpe1gb rdtscp lm rep_good nopl xtopology cpuid extd_apicid tsc_known_freq pni pclmulqdq ssse3 fma cx16 sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand hypervisor lahf_lm cmp_legacy cr8_legacy abm sse4a misalignsse 3dnowprefetch osvw topoext perfctr_core ssbd ibpb vmmcall fsgsbase tsc_adjust bmi1 avx2 smep bmi2 rdseed adx smap clflushopt sha_ni xsaveopt xsavec xgetbv1 virt_ssbd arat
