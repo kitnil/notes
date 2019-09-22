@@ -1,0 +1,46 @@
+// https://www.w3.org/wiki/Dynamic_style_-_manipulating_CSS_with_JavaScript
+
+var sheet = document.createElement('style')
+sheet.innerHTML = ".p-client_container_placeholder {width: 100px !important;}";
+document.body.appendChild(sheet);
+
+
+// --------------------------------------------------------------------------------
+
+var sheet = document.createElement('style')
+sheet.innerHTML = ".p-channel_sidebar__list {width: 100px !important;}";
+document.body.appendChild(sheet);
+
+var sheet = document.createElement('style')
+sheet.innerHTML = ".p-workspace__sidebar {width: 100px !important;}";
+document.body.appendChild(sheet);
+
+var sheet = document.createElement('style')
+sheet.innerHTML = ".p-workspace__channel_sidebar {width: 100px !important;}";
+document.body.appendChild(sheet);
+
+var sheet = document.createElement('style')
+sheet.innerHTML = ".p-channel_sidebar {width: 100px !important;}";
+document.body.appendChild(sheet);
+
+var sheet = document.createElement('style')
+sheet.innerHTML = "..p-channel_sidebar {width: 100px !important;}";
+document.body.appendChild(sheet);
+
+document.getElementsByClassName('p-channel_sidebar__navigation_bar')[0].remove()
+
+
+.p-workspace--context-pane-collapsed {
+	grid-template-columns: 0px auto;
+}
+
+// .p-client_container_placeholder {
+//     width: 120px !important;
+// }
+
+// --------------------------------------------------------------------------------
+.p-channel_sidebar--classic_nav
+
+var sheet = document.createElement('style')
+sheet.innerHTML = "div {border: 2px solid black; background-color: blue;}";
+document.body.appendChild(sheet);
