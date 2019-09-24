@@ -1,0 +1,1 @@
+: mount -t zfs tank/www@zfs-auto-snap_hourly-2012-02-11-1917 /mnt/snapshot/tank/www
