@@ -37,6 +37,8 @@
 
 * Cheat sheet
 
+  - guix environment --ad-hoc nix -- nix-store --dump $PWD | sha256sum
+
   - guix daemon backtrace width
     #+BEGIN_EXAMPLE
       The daemon is run as 'root' on a Guix system, so you need to set this
