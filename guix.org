@@ -37,7 +37,8 @@
 
 * Cheat sheet
 
-  - guix environment --ad-hoc nix -- nix-store --dump $PWD | sha256sum
+  - Create a NAR file without involving the Guix store
+    : guix environment --ad-hoc nix -- nix-store --dump $PWD | sha256sum
 
   - guix daemon backtrace width
     #+BEGIN_EXAMPLE
