@@ -3,6 +3,22 @@
 https://mycfg.net/articles/booting-from-a-cdrom-in-a-kvm-guest-with-libvirt.html
 https://gparted.org/livecd.php
 
+#+BEGIN_EXAMPLE
+  <disk type='file' device='cdrom'>
+    <driver name='qemu' type='raw'/>
+    <source file='/isos/systemresucecd-x86-2.2.0.iso'/>
+    <target dev='hdc' bus='ide'/>
+    <readonly/>
+    <address type='drive' controller='0' bus='1' unit='0'/>
+  </disk>
+
+  <os>
+    <type arch='x86_64' machine='pc-0.12'>hvm</type>
+    <boot dev='cdrom'/>
+    <boot dev='hd'/>
+  </os>
+#+END_EXAMPLE
+
 
 
 : nohup vmkfstools -i /vmfs/volumes/datastore1/tmp/Zabbix-disk1.vmdk -d thin /vmfs/volumes/datastore1/tmp/Zabbix-disk1-converted-2.vmdk &
