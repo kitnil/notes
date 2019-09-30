@@ -1,3 +1,10 @@
+* boot gparted liveiso in libvirt
+
+https://mycfg.net/articles/booting-from-a-cdrom-in-a-kvm-guest-with-libvirt.html
+https://gparted.org/livecd.php
+
+
+
 : nohup vmkfstools -i /vmfs/volumes/datastore1/tmp/Zabbix-disk1.vmdk -d thin /vmfs/volumes/datastore1/tmp/Zabbix-disk1-converted-2.vmdk &
 
 #+BEGIN_EXAMPLE
