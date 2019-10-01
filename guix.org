@@ -37,6 +37,24 @@
 
 * Cheat sheet
 
+  - Manifest
+    #+BEGIN_SRC scheme
+      (use-modules (guix channels)
+                   (guix inferior)
+                   (srfi srfi-1))
+
+      (define channels
+        (list (channel
+               (name 'guix)
+               (url "https://git.savannah.gnu.org/git/guix.git")
+               (commit "dec845606d2d184da31065fa26cd951b84b3ce2d"))))
+
+      (define inferior
+        (inferior-for-channels channels))
+
+      (packages->manifest (first (lookup-inferior-packages inferior "hello")))
+    #+END_SRC
+
   - Create a NAR file without involving the Guix store
     : guix environment --ad-hoc nix -- nix-store --dump $PWD | sha256sum
 
