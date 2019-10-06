@@ -1,3 +1,6 @@
+- Disable readonly for all indexes
+  : curl -XPUT -H "Content-Type: application/json" http://localhost:9200/_all/_settings -d '{"index.blocks.read_only_allow_delete": null}'
+
 - Disable readonly
   : curl -H 'Content-Type: application/json' -XPUT 'http://localhost:9200/filebeat-*/_settings' --data '{"index":{"blocks": {"read_only_allow_delete": "false"}}}'
   (could use “*” instead of “elastalert_status_status”)
