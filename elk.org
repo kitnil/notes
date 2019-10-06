@@ -1,5 +1,6 @@
 - Disable readonly for all indexes
   : curl -XPUT -H "Content-Type: application/json" http://localhost:9200/_all/_settings -d '{"index.blocks.read_only_allow_delete": null}'
+  https://techoverflow.net/2019/04/17/how-to-fix-elasticsearch-forbidden-12-index-read-only-allow-delete-api/
 
 - Disable readonly
   : curl -H 'Content-Type: application/json' -XPUT 'http://localhost:9200/filebeat-*/_settings' --data '{"index":{"blocks": {"read_only_allow_delete": "false"}}}'
