@@ -37,6 +37,19 @@
 
 * Cheat sheet
 
+  - Guix version
+    #+BEGIN_EXAMPLE
+      > +(define-public emacs-extempore-mode
+      > +  (let ((version "20190917")            ; no proper tag, use date
+      > of commit
+
+      We can't do this, since upstream could decide to release 0.1 tomorrow
+      and Guix would never consider it an upgrade: the number 20190917 is
+      larger than almost anything.
+
+      Hence we must use ‘0.0.0’ in such situations.
+    #+END_EXAMPLE
+
   - Manifest
     #+BEGIN_SRC scheme
       (use-modules (guix channels)
