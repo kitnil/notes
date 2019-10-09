@@ -1,4 +1,5 @@
 - https://docs.ansible.com/ansible/latest/plugins/callback/log_plays.html#log-plays-callback
+  : ANSIBLE_STDOUT_CALLBACK=log_plays ANSIBLE_LOAD_CALLBACK_PLUGINS=1 ansible localhost -a 'df -h'
 
 - http://tonkersten.com/2019/02/150-ansible-with-loops-or-lookup/
 
