@@ -11,6 +11,8 @@ set security zones security-zone trust interfaces ge-0/0/2 host-inbouinterfaces 
 set security zones security-zone trust interfaces ge-0/0/3 host-inbouinterfaces ge-0/0/2 host-inbound-traffic system-services all
 set security zones security-zone trust interfaces ge-0/0/4 host-inbouinterfaces ge-0/0/2 host-inbound-traffic system-services all
 
+* Cheat sheet
+
 - rollback
   origin: https://forums.juniper.net/t5/Ethernet-Switching/Discarding-uncommitted-changes/td-p/89828
   : show | compare rollback 0
