@@ -10,3 +10,73 @@ set security zones security-zone trust interfaces ge-0/0/1 host-inbouinterfaces 
 set security zones security-zone trust interfaces ge-0/0/2 host-inbouinterfaces ge-0/0/2 host-inbound-traffic system-services all
 set security zones security-zone trust interfaces ge-0/0/3 host-inbouinterfaces ge-0/0/2 host-inbound-traffic system-services all
 set security zones security-zone trust interfaces ge-0/0/4 host-inbouinterfaces ge-0/0/2 host-inbound-traffic system-services all
+
+- rollback
+  origin: https://forums.juniper.net/t5/Ethernet-Switching/Discarding-uncommitted-changes/td-p/89828
+  : show | compare rollback 0
+
+- set command length
+  : set cli screen-length 0
+
+- show routes advertised to neighbor
+  origin: http://xgu.ru/wiki/BGP_%D0%B2_Juniper
+  #+BEGIN_EXAMPLE
+    root@br1-mr14.intr> show route advertising-protocol bgp 78.108.80.191
+
+    inet.0: 773477 destinations, 963660 routes (773451 active, 2 holddown, 171 hidden)
+    Restart Complete
+      Prefix                  Nexthop              MED     Lclpref    AS path
+    ,* 78.108.80.0/24          Self                                    I
+    ,* 78.108.81.0/24          Self                                    I
+    ,* 78.108.82.0/23          Self                                    I
+    ,* 78.108.84.0/23          Self                                    I
+    ,* 78.108.86.0/23          Self                                    I
+    ,* 178.250.244.0/23        Self                                    I
+    ,* 178.250.246.0/23        Self                                    I
+    ,* 185.84.108.0/22         Self                                    I
+    ,* 185.84.108.0/23         Self                                    I
+    ,* 185.84.110.0/23         Self                                    I
+  #+END_EXAMPLE
+
+- show bgp groups
+  : show bgp group summary
+
+- show configuration in set commands
+  : show configuration | display set
+
+- show logings
+  : monitor start policy_session
+  : monitor stop
+
+#+BEGIN_EXAMPLE
+  edit routing-options static 87.1.2.3/32
+  discard
+#+END_EXAMPLE
+
+** commit compare
+
+#+BEGIN_EXAMPLE
+root@br1-mr14.intr> show system rollback 6 compare 11 
+[edit protocols bgp group DATAIX]
+-    export announce;
++    export announce-except-vlan111;
+[edit protocols bgp group COMFORTEL]
+-    export announce;
++    export announce-except-vlan111;
+[edit protocols bgp group SERVICE-PIPE]
+-    export [ then-reject announce-vlan109 ];
++    export [ announce-vlan111 then-reject ];
+#+END_EXAMPLE
+
+#+BEGIN_EXAMPLE
+root@br1-mr14.intr> show system rollback 25 compare 28    
+[edit protocols bgp group DATAIX]
+-    export announce-except-vlan109;
++    export announce;
+[edit protocols bgp group COMFORTEL]
+-    export announce-except-vlan109;
++    export announce;
+[edit protocols bgp group SERVICE-PIPE]
+-    export [ announce-vlan109 then-reject ];
++    export [ then-reject announce-vlan109 ];
+#+END_EXAMPLE
