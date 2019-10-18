@@ -14,3 +14,4 @@
 
 * Cheat sheet
   - https://en.wikiversity.org/wiki/DevOps/Ansible
+    : debug msg='sshpass -p{{ ansible_ssh_pass }} ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no {{ ansible_ssh_user }}@{{ ansible_host }}'
