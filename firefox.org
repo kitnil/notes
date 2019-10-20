@@ -1,7 +1,7 @@
 
 * Sessions
 
-Always resume session:
+Always resume session
 #+BEGIN_EXAMPLE
   browser.sessionstore.max_resumed_crashes -1
 #+END_EXAMPLE
