@@ -38,6 +38,7 @@
 * Cheat sheet
 
   - guix graph -e '(load "/path/to/file.scm")'
+    - https://lists.gnu.org/archive/html/guix-devel/2018-07/msg00212.html
 
   - Guix version
     #+BEGIN_EXAMPLE
