@@ -37,6 +37,8 @@
 
 * Cheat sheet
 
+  - guix graph -e '(load "/path/to/file.scm")'
+
   - Guix version
     #+BEGIN_EXAMPLE
       > +(define-public emacs-extempore-mode
