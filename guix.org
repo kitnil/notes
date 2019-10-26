@@ -37,6 +37,8 @@
 
 * Cheat sheet
 
+  - https://share.riseup.net
+
   - guix environment --ad-hoc imagemagick -- convert your-photo.jpg -quality 20% new-compressed-photo.jpg
 
   - env -i /bin/bash --login --noprofile --norc
