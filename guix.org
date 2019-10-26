@@ -37,6 +37,9 @@
 
 * Cheat sheet
 
+  - env -i /bin/bash --login --noprofile --norc
+    . ~/opt/my-tools-profile/etc/profile
+
   - guix graph -e '(load "/path/to/file.scm")'
     - https://lists.gnu.org/archive/html/guix-devel/2018-07/msg00212.html
 
