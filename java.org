@@ -1,1 +1,2 @@
 - Arrays.stream(new String[] {"hello", "world", "guys"}).sorted().findFirst()
+- Arrays.stream(new String[] {"where", "hello", "world", "guys"}).filter(str -> str.startsWith("w")).sorted().forEach(System.out::println))
