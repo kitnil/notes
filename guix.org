@@ -37,6 +37,15 @@
 
 * Cheat sheet
 
+  - Guix
+    #+BEGIN_SRC scheme
+      (lookup-inferior-packages (inferior-for-channels (cons (channel
+                                                              (name 'guix-majordomo)
+                                                              (url "file:///home/oleg/src/guix-majordomo"))
+                                                             %default-channels))
+                                "majordomo-ca")
+    #+END_SRC
+
   - https://share.riseup.net
 
   - guix environment --ad-hoc imagemagick -- convert your-photo.jpg -quality 20% new-compressed-photo.jpg
