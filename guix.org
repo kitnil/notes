@@ -37,6 +37,13 @@
 
 * Cheat sheet
 
+  - But that's not too big an issue for Emacs when using Emacs-Guix,
+    as one can do `guix-set-emacs-environment' and choose a profile to
+    re-read and set (in Emacs itself) its environment variables.
+    Re-running 'guix-emacs-autoload-packages' would then refresh the
+    autoloads corectly, given that EMACSLOADPATH would have been
+    refreshed with an updated profile.
+
   - Guix
     #+BEGIN_SRC scheme
       (lookup-inferior-packages (inferior-for-channels (cons (channel
