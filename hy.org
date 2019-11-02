@@ -1,0 +1,73 @@
+#+BEGIN_SRC hy
+  (import subprocess)
+  (subprocess.call ["pip" "install" "PyGithub"])
+  Github("user", "password")
+  (import Github)
+  (from github import Github)
+  (import github)
+  (github.Github "wigust" "Github("user", "password")
+  (github.Github "wigust" "")
+  (setv wigust (github.Github "wigust" ""))
+  wigust.get-users
+  (wigust.get-users)
+  (wigust.get-user)
+  ((wigust.get-user).get-repo)
+  (wigust.get-user.get-repo)
+  (wigust.get-user)
+  [(wigust.get-user)]
+  (help wigust.get-user)
+  (help wigust.get-user "wigsut")
+  (help wigust.get-user :login "wigsut")
+  (help wigust.get-user login="wigsut")
+  (help wigust.get-user [login="wigust"])
+  (help wigust.get-user)
+  (wigust.get-user login: "wigust")
+  (wigust.get-user :login "wigust")
+  (setv user (wigust.get-user :login "wigust"))
+  (user.get-repos)
+  (user.get-repos ())
+  (user.get-repos)
+  [1 2 3]
+  "(1 2 3)"
+  (map print [1 2 3])
+
+  (map (fn (x) x) [1 2 3])
+  (map (fn [x] x) [1 2 3])
+
+  (list (map (fn [x] x) (user.get-repos)))
+  (list (map (fn [x] x.full_name) (user.get-repos)))
+  (import readline)
+  (readline.get-current-history-length)
+  (readline.get-history-item)
+  (help readline.get-history-item)
+  (readline.get-history-item 1)
+  (range (readline.get-current-history-length))
+  (map (fn [x] x) (range (readline.get-current-history-length)))
+  (list (map (fn [x] x) (range (readline.get-current-history-length))))
+  ((list (map (fn [number] (readline.get-history-item number)) (range 
+   (readline.get-current-history-length)))))
+  (import pprint)
+  ((list (map (fn [number] (pprint (readline.get-history-item number))) (range (readline.get-current-history-length)))))
+#+END_SRC
+
+#+BEGIN_SRC hy
+  (map (lambda [x] x) '(1 2 3 4 5))
+
+  (lambda [x] x)
+
+  (setv a [0 1 2 3 4 5 6 7 8])
+
+  (defn display [list filter]
+    (for [x list] (if (filter x) (print x))))
+
+  (display a (lambda [x]
+               (= (% x 2) 0xo)))
+
+  (list (map (fn (x) (+ 1 x)) '(1 2)))
+
+  (help help)
+
+  (and True "1")
+
+  ((fn [x] x) 1)
+#+END_SRC
