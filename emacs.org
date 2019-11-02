@@ -557,4 +557,8 @@ tramp-auto-auth.el --- TRAMP automatic authentication library <877e74skek.fsf@oi
 
 * Magit
 
-- C-c C-t :: show how much function changed in diff
+** Procedures
+- magit-cherry
+
+** Keys
+ - C-c C-t :: show how much function changed in diff
