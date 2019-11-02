@@ -554,3 +554,7 @@ mirror/zoutline
 #+END_SRC
 tramp-auto-auth.el --- TRAMP automatic authentication library <877e74skek.fsf@oitofelix.com>
 - http://emacs.1067599.n8.nabble.com/
+
+* Magit
+
+- C-c C-t :: show how much function changed in diff
