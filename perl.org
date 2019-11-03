@@ -1,0 +1,3 @@
+
+- print a line matching "two"
+: perl -nle 'print if m~two~' file.txt
