@@ -1,5 +1,7 @@
 * Cheatsheet
 
+  - https://github.com/onceupon/Bash-Oneliner
+
   - new$ nc -w 5 -l -p 8888 | tar --numeric-owner -xSpf -
     old$ tar --numeric-owner -cSpf - / | nc new 8888
 
