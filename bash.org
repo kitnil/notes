@@ -2,6 +2,8 @@
 
   - https://github.com/onceupon/Bash-Oneliner
 
+  - https://iridakos.com/tutorials/2018/03/01/bash-programmable-completion-tutorial.html
+
   - new$ nc -w 5 -l -p 8888 | tar --numeric-owner -xSpf -
     old$ tar --numeric-owner -cSpf - / | nc new 8888
 
