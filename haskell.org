@@ -1,11 +1,17 @@
 
 * Cheat sheet
 
+https://stackoverflow.com/questions/4978578/how-to-split-a-string-in-haskell
+
 Split string
 #+BEGIN_SRC haskell
   import qualified Data.Text as T
   print $ T.splitOn (T.pack " ") (T.pack "this is a test")
 #+END_SRC
+
+Split string by REGEX
+: splitRegex :: Regex -> String -> [String]
+http://hackage.haskell.org/packages/archive/regex-compat/0.92/doc/html/Text-Regex.html
 
 * Helpers
 
