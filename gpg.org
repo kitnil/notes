@@ -12,5 +12,5 @@ gpg --output secret-subkeys --export-secret-subkeys SUBKEYID!
   : gpg --refresh-keys
 
 - Send updated keys
-  : gpg --keyserver certserver.pgp.com --send-key go.wigust@gmail.com
+  : gpg --keyserver keyserver.ubuntu.com --send-keys 921A97F4DC6D31F0 167F8EA5001AFA9C
   https://www.gnupg.org/gph/en/manual/x457.html
