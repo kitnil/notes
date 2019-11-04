@@ -11,3 +11,7 @@ https://askubuntu.com/questions/1171460/how-to-fix-docker-error-response-from-da
   time="2019-09-15T14:21:40.089986491+03:00" level=error msg="3378573515fe9ff71f9bd19eca5732cb7af55ffd69e4f0f75d44bf246cba6dc5 cleanup: failed to delete container from containerd: no such container"
   time="2019-09-15T14:21:40.097378260+03:00" level=error msg="Handler for POST /v1.39/containers/3378573515fe9ff71f9bd19eca5732cb7af55ffd69e4f0f75d44bf246cba6dc5/start returned error: cgroups: cannot find cgroup mount destination: unknown"
 #+END_EXAMPLE
+
+* lint
+
+- https://github.com/hadolint/hadolint
