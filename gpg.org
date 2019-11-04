@@ -14,3 +14,4 @@ gpg --output secret-subkeys --export-secret-subkeys SUBKEYID!
 - Send updated keys
   : gpg --keyserver pgp.key-server.io --send-key 921A97F4DC6D31F0
   https://www.gnupg.org/gph/en/manual/x457.html
+  https://pgp.key-server.io/search/go.wigust@gmail.com
