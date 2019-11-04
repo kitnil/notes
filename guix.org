@@ -37,9 +37,15 @@
 
 * Cheat sheet
 
+  - http://data.guix.gnu.org/
+
+  - https://hpc.guix.info/browse
+
   - eval `guix package --search-paths=prefix`
 
   - https://patchwork.cbaines.net/
+
+  - http://prototype-guix-weekly-news.cbaines.net/en_US/2019/44.html
 
   - But that's not too big an issue for Emacs when using Emacs-Guix,
     as one can do `guix-set-emacs-environment' and choose a profile to
