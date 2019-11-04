@@ -37,6 +37,8 @@
 
 * Cheat sheet
 
+  - https://patchwork.cbaines.net/
+
   - But that's not too big an issue for Emacs when using Emacs-Guix,
     as one can do `guix-set-emacs-environment' and choose a profile to
     re-read and set (in Emacs itself) its environment variables.
