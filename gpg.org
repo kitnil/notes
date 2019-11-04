@@ -10,3 +10,7 @@ gpg --output secret-subkeys --export-secret-subkeys SUBKEYID!
 
 - Update keys
   : gpg --refresh-keys
+
+- Send updated keys
+  : gpg --keyserver certserver.pgp.com --send-key blake@cyb.org
+  https://www.gnupg.org/gph/en/manual/x457.html
