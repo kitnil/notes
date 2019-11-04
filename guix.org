@@ -1295,12 +1295,6 @@ success = false; } else { //Lock texture if( !gFooTexture.lockTexture() ) { prin
   If you want to do "same profile and store across all things" Ricardo
   Wurmus does some wild things using NFS.
 
-* Lint
-
-  - notify on GUIX_PACKAGE_PATH
-  - notify on failing package
-  - guix lint -c gnu-descriptions global
-
 * Importers
   - https://gitlab.com/htgoebel/guix-import-debian
 
