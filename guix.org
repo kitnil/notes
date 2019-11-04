@@ -37,6 +37,8 @@
 
 * Cheat sheet
 
+  - eval `guix package --search-paths=prefix`
+
   - https://patchwork.cbaines.net/
 
   - But that's not too big an issue for Emacs when using Emacs-Guix,
