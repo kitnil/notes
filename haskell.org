@@ -1,4 +1,12 @@
 
+* Cheat sheet
+
+Split string
+#+BEGIN_SRC haskell
+  import qualified Data.Text as T
+  print $ T.splitOn (T.pack " ") (T.pack "this is a test")
+#+END_SRC
+
 * Helpers
 
 print type after evaluation
