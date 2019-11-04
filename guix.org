@@ -1271,10 +1271,6 @@ success = false; } else { //Lock texture if( !gFooTexture.lockTexture() ) { prin
   - https://www.gnu.org/ghm/2013/paris/v2/sylvain/output.webm
   - https://www.gnu.org/software/guix/blog/tags/talks/
 
-* Failed builds
-
-  https://hydra.gnu.org/job/gnu/master/gource-0.47.x86_64-linux
-
 * Dualboot
 
   https://lists.gnu.org/archive/html/help-guix/2016-03/msg00083.html
