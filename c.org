@@ -1,3 +1,11 @@
+
+* REPL
+
+: docker build -t bic https://github.com/hexagonal-sun/bic.git#master
+: docker run --rm -it bic:latest
+
+* URLS
+
 - [[https://github.com/topics][Topics on GitHub]]
 - [[https://github.com/ryanmjacobs/c][ryanmjacobs/c: Compile and execute C "scripts" in one go!]]
 - [[https://github.com/fragglet/c-algorithms][fragglet/c-algorithms: A library of common data structures and algorithms written in C.]]
