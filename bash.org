@@ -1,6 +1,6 @@
 * Cheatsheet
 
-  - make window transparent in gnome shell
+  - make window transparent in gnome shell (Set opacity via providing window id (obtained from xwininfo):)
 : xprop -format _NET_WM_WINDOW_OPACITY 32c -set _NET_WM_WINDOW_OPACITY 0x7FFFFFFF
 
   - top memory
