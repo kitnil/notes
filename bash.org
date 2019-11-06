@@ -1,5 +1,8 @@
 * Cheatsheet
 
+  - how old filesystem is
+: sudo tune2fs -l $(df -h / |(read; awk '{print $1; exit}')) | grep -i created
+
   - https://github.com/onceupon/Bash-Oneliner
 
   - [[https://iridakos.com/tutorials/2018/03/01/bash-programmable-completion-tutorial.html][Programming Bash completion tutorial]]
