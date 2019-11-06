@@ -1,5 +1,8 @@
 * Cheatsheet
 
+  - top memory
+: ps aux | sort -rk 4,4 | head -n 10 | awk '{print $4,$11}'
+
   - how old filesystem is
 : sudo tune2fs -l $(df -h / |(read; awk '{print $1; exit}')) | grep -i created
 
