@@ -1,6 +1,6 @@
 * Cheatsheet
 
-  -  save command output to image 
+  - save command output to image 
 : ifconfig | convert label:@- ip.png
 
   - make window transparent in gnome shell (Set opacity via providing window id (obtained from xwininfo):)
