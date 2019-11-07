@@ -1,5 +1,8 @@
 * Cheatsheet
 
+  - Convert seconds into minutes and seconds
+: bc <<< 'obase=60;299'
+
   - dd progress
 : C-t
 
