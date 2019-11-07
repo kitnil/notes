@@ -1,5 +1,8 @@
 * Cheatsheet
 
+  - lshw to HTML
+: lshw -html > hardware.html
+
   - SSH IP
 : echo ${SSH_CLIENT%% *}
 
