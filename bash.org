@@ -1,5 +1,8 @@
 * Cheatsheet
 
+  - Use file(1) to view device information
+: file -s /dev/sd*
+
   - List the number and type of active network connections
 : netstat -ant | awk '{print $NF}' | grep -v '[a-z]' | sort | uniq -c
 
