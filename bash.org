@@ -1,5 +1,8 @@
 * Cheatsheet
 
+  -  which program is this port belongs to ? 
+: lsof -i tcp:80
+
   - Retry the previous command until it exits successfully 
 : until !!; do :; done
 
