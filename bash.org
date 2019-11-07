@@ -1,5 +1,8 @@
 * Cheatsheet
 
+  - Retry the previous command until it exits successfully 
+: until !!; do :; done
+
   - define quick calc procedure
 : ? () { echo "$*" | bc -l; }
 
