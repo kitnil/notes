@@ -1,5 +1,8 @@
 * Cheatsheet
 
+  - Show ASCII key
+: showkey -a
+
   - Compare directory tries
 : diff <(cd dir1 && find | sort) <(cd dir2 && find | sort)
 
