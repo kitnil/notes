@@ -1,5 +1,8 @@
 * Cheatsheet
 
+  - watch STDOUT or STDIN of proces
+: strace -ff -e trace=write -e write=1,2 -p SOME_PID
+
   - tree directory
 : ls -R | grep ":$" | sed -e 's/:$//' -e 's/[^-][^\/]*\//--/g' -e 's/^/ /' -e 's/-/|/'
 
