@@ -1,5 +1,8 @@
 * Cheatsheet
 
+  - Kernel module dependency graph
+: lsmod | perl -e 'print "digraph \"lsmod\" {";<>;while(<>){@_=split/\s+/; print "\"$_[0]\" -> \"$_\"\n" for split/,/,$_[3]}print "}"' | dot -Tpng | feh -
+
   - Which program is this port belongs to ? 
 : lsof -i tcp:80
 
