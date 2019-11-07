@@ -1,5 +1,8 @@
 * Cheatsheet
 
+  - define quick calc procedure
+: ? () { echo "$*" | bc -l; }
+
   - watch STDOUT or STDIN of proces
 : strace -ff -e trace=write -e write=1,2 -p SOME_PID
 
