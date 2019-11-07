@@ -1,5 +1,8 @@
 * Cheatsheet
 
+  - Runs a bash script in debugging mode
+: bash -x ./post_to_commandlinefu.sh
+
   - A child process which survives the parent's death (for sure) 
 : ( command & )
 
