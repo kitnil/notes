@@ -1,5 +1,8 @@
 * Cheatsheet
 
+  - Prints line numbers 
+: nl
+
   - Prettify XML
 : tidy -xml -i -m [file]
 
