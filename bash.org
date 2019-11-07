@@ -1,5 +1,8 @@
 * Cheatsheet
 
+  - Press Any Key to Continue
+: read -sn 1 -p "Press any key to continue..."
+
   - Use file(1) to view device information
 : file -s /dev/sd*
 
