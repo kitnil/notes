@@ -1,5 +1,8 @@
 * Cheatsheet
 
+  - Monitor bandwidth by pid
+: nethogs -p eth0
+
   - exclude a column with cut
 : cut -f5 --complement
 
