@@ -1,5 +1,8 @@
 * Cheatsheet
 
+  - Screenshot from CLI
+: DISPLAY=:0.0 import -window root /tmp/shot.png
+
   - lshw to HTML
 : lshw -html > hardware.html
 
