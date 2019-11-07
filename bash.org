@@ -1,5 +1,8 @@
 * Cheatsheet
 
+  - grep PDF file
+: pdftotext [file] - | grep 'YourPattern'
+
   - Screenshot from CLI
 : DISPLAY=:0.0 import -window root /tmp/shot.png
 
