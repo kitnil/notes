@@ -1,5 +1,8 @@
 * Cheatsheet
 
+  - exclude a column with cut
+: cut -f5 --complement
+
   - Press Any Key to Continue
 : read -sn 1 -p "Press any key to continue..."
 
