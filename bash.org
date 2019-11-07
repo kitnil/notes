@@ -1,5 +1,8 @@
 * Cheatsheet
 
+  - Compare directory tries
+: diff <(cd dir1 && find | sort) <(cd dir2 && find | sort)
+
   - Backup all MySQL databases
 : for I in $(mysql -e 'show databases' -s --skip-column-names); do mysqldump $I | gzip > "$I.sql.gz"; done
 
