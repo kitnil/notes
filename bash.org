@@ -1,5 +1,8 @@
 * Cheatsheet
 
+  - A child process which survives the parent's death (for sure) 
+: ( command & )
+
   - Convert seconds into minutes and seconds
 : bc <<< 'obase=60;299'
 
