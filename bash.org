@@ -1,5 +1,8 @@
 * Cheatsheet
 
+  - Prettify XML
+: tidy -xml -i -m [file]
+
   - grep PDF file
 : pdftotext [file] - | grep 'YourPattern'
 
