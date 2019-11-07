@@ -1,5 +1,8 @@
 * Cheatsheet
 
+  - List the number and type of active network connections
+: netstat -ant | awk '{print $NF}' | grep -v '[a-z]' | sort | uniq -c
+
   - Runs a bash script in debugging mode
 : bash -x ./post_to_commandlinefu.sh
 
