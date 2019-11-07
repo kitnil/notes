@@ -1,5 +1,8 @@
 * Cheatsheet
 
+  - Delete blank lines
+: grep . filename
+
   - Show ASCII key
 : showkey -a
 
