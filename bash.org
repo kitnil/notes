@@ -1,5 +1,8 @@
 * Cheatsheet
 
+  - Pause Firefox
+: killall -STOP -m firefox
+
   - Prints line numbers 
 : nl
 
