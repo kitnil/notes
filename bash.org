@@ -1,5 +1,8 @@
 * Cheatsheet
 
+  - tree directory
+: ls -R | grep ":$" | sed -e 's/:$//' -e 's/[^-][^\/]*\//--/g' -e 's/^/ /' -e 's/-/|/'
+
   - save command output to image 
 : ifconfig | convert label:@- ip.png
 
