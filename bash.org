@@ -851,3 +851,7 @@
         <phy1729> bash doesn't care about that distinction when
                   sourcing the file
   #+END_EXAMPLE
+
+* Share terminal
+
+- [https://github.com/maxmcd/webtty][maxmcd/webtty: Share a terminal session over WebRTC]
