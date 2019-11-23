@@ -3,6 +3,31 @@
 - exit from interactive shell without killing container
   : c-p-q
 
+- xorg
+  #+BEGIN_SRC sh
+    docker run -it \
+           -w /opt/tome4 \
+           -v /tmp/.X11-unix:/tmp/.X11-unix \
+           -v /opt/tome4/rootfs/opt/tome4:/opt/tome4 \
+           -v /opt/tome4/rootfs/home/user:/home/user \
+           -v /home/oleg/.t-engine:/root/.t-engine \
+           -v /etc/localtime:/etc/localtime:ro \
+           -v "/srv/lib/Tales of Maj'Eyal - GOG Linux":/install \
+           -e DISPLAY \
+           --rm -u1000: \
+           --network=host \
+           --name tome4 \
+           --hostname tome4 \
+           --device /dev/snd \
+           --device /dev/input \
+           --device /dev/dri \
+           --env PULSE_SERVER=unix:/tmp/pulseaudio.socket \
+           --env PULSE_COOKIE=/tmp/pulseaudio.cookie \
+           --volume /tmp/pulseaudio.socket:/tmp/pulseaudio.socket \
+           --volume /tmp/pulseaudio.client.conf:/etc/pulse/client.conf \
+           tome4:1.6.0 ./start.sh
+  #+END_SRC
+
 * Awesome
 
 - https://github.com/hadolint/hadolint
