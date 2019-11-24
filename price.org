@@ -1,0 +1,1 @@
+guile -c '(display (+ 8940 4790 9200 7450 3400)) (newline)'
