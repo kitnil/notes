@@ -1,3 +1,9 @@
+* Bash alternatives
+
+- [https://github.com/ngs-lang/ngs][ngs-lang/ngs: Next Generation Shell (NGS)]
+
+* Cheatsheet
+
 - Clone X window
   : PID=$(ps -p $(xprop _NET_WM_PID | cut -d " " -f 3) -o command=)
 
