@@ -194,3 +194,3874 @@ Archived entries from file /home/oleg/org/inbox.org
   There are some more recent post of this maintainer
   at http://blog.ffwll.ch/
 
+
+* [2017-10-06 Fri 07:46] [[gnus:INBOX#87h8vd4p38.fsf@gnu.org][Email from Ludovic Courtès: Re: WIP gnu social package]] by [[mailto:ludo@gnu.org][Ludovic Courtès]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:49
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2017-10-06 Fri 07:47] [[gnus:INBOX#87fubazdn8.fsf@gmail.com][Email from Chris Marusich: Re: Should I upgrade root user]] by [[mailto:cmmarusich@gmail.com][Chris Marusich]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:49
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2017-10-06 Fri 07:48] [[gnus:INBOX#87a82c7vmf.fsf_-_@escafil][Email from Ian Dunn: Re: {ELPA} New package: Captai]] by [[mailto:dunni@gnu.org][Ian Dunn]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:49
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2017-10-09 Mon 19:56] [[gnus:INBOX#20170918215906.2c32b61d@cbaines.net][Email from Christopher Baines: Building things other than Gui]] by [[mailto:mail@cbaines.net][Christopher Baines]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:49
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2017-11-03 Fri 19:50] [[gnus:nndoc+ephemeral:bug#29137#CAJ=RwfZbfzsg-TrFQkU48E6Mza0+PWDhTokGdzK9sXAReC7Ukw@mail.gmail.com][Email from David Thompson: Re: Interactive programming wi]] by [[mailto:dthompson2@worcester.edu][David Thompson]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:49
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+#+BEGIN_SRC scheme
+  (use-modules (chickadee)
+               (chickadee math vector)
+               (chickadee render sprite)
+               (chickadee render texture)
+               (system repl coop-server))
+
+  (define sprite #f)
+  (define repl #f)
+
+  (define (load)
+    (set! sprite (load-image "images/chickadee.png"))
+    (set! repl (spawn-coop-repl-server)))
+
+  (define (draw alpha)
+    (draw-sprite sprite (vec2 256.0 176.0)))
+
+  (define (update dt)
+    (poll-coop-repl-server repl))
+
+  (add-hook! load-hook load)
+  (add-hook! update-hook update)
+  (add-hook! draw-hook draw)
+  (add-hook! quit-hook abort-game)
+
+  (run-game)
+#+END_SRC
+
+* [2017-11-14 Tue 00:57] [[gnus:INBOX#87vak1l11m.fsf@nicolasgoaziou.fr][Email from Nicolas Goaziou: Re: {O} function for inserting]] by [[mailto:mail@nicolasgoaziou.fr][Nicolas Goaziou]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:49
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* Replicant FOSDEM 2017
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:49
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+  - [[gnus:INBOX#1510570651.1176.2.camel@paulk.fr][Email from Paul Kocialkowski: {Replicant} FOSDEM Hardware En]] by
+    [[mailto:contact@paulk.fr][Paul Kocialkowski]]
+
+* [2017-11-18 Sat 21:40] [[gnus:nndoc%2Bephemeral:bug#27271#fake%2Bnone%2Bnndoc%2Bephemeral:bug#27271%2B1][Email from bug: Status: {PATCH 0/4} Catch collisions]] by [[mailto:27271@debbugs.gnu.org][bug]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:49
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* Emacs with athena graphical toolkit
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:49
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+  [[gnus:INBOX#87po8gwjpk.fsf@gmail.com][Email from Mekeor Melire: Re: error running emacs instal]] by [[mailto:mekeor.melire@gmail.com][Mekeor Melire]]
+
+  #+BEGIN_SRC scheme
+    (define-public own-emacs
+      (package
+        (inherit emacs)
+        (name "emacs")
+        (synopsis "The extensible, customizable, self-documenting text editor
+        with athena toolkit" )
+        (build-system gnu-build-system)
+        (inputs `(
+                  ("inotify-tools" ,inotify-tools)
+                  ("libxaw" ,libxaw)
+                  ,@(alist-delete "gtk+" (package-inputs emacs))))
+        (arguments `(
+                     #:configure-flags '("--with-x-toolkit=athena")
+                                       ,@(package-arguments emacs)))))
+  #+END_SRC
+
+* [2017-11-28 Tue 19:59] [[gnus:INBOX#20171128124143.3vvpsxzuhchuztqz@abyayala][Email from ng0@n0.is: bug#24279: XTerm menu doesn't]] by [[mailto:ng0@n0.is][ng0]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:49
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2017-11-29 Wed 06:17] [[gnus:nndoc+ephemeral:bug#24279#87shcyj2n9.fsf@gmail.com][Email to John Darrington: bug#24279: Bug in xterm and/or]] by [[mailto:go.wigust@gmail.com][Oleg Pykhalov]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:49
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2017-12-01 Fri 10:54] [[gnus:INBOX#877eu73dhv.fsf@gnu.org][Email from Ludovic Courtès: Re: isc-bind service draft]] by [[mailto:ludo@gnu.org][Ludovic Courtès]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:49
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2017-12-01 Fri 11:02] [[gnus:INBOX#87shcxqble.fsf@gnu.org][Email from Ludovic Courtès: Re: bug#29106: Build loop afte]] by [[mailto:ludo@gnu.org][Ludovic Courtès]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:49
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2017-12-04 Mon 13:41] [[gnus:INBOX#87h8t6rhip.fsf@gnu.org][Email from Ludovic Courtès: Re: fcgiwrap doesn't see gzip]] by [[mailto:ludo@gnu.org][Ludovic Courtès]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:49
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2017-12-12 Tue 17:26] [[gnus:INBOX#922234369.95863@mta02.estisrapid.pro][Email from Светлана Бычкова: {Японский язык} Онлайн-урок 14 декабря]] by [[mailto:mail@tensaigakkou.ru][Светлана Бычкова]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:49
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2017-12-12 Tue 18:57] [[gnus:INBOX#c2098c8f-7d0e-5067-abf5-02fd776878f7@gmail.com][Email from Manolis Ragkousis: Guix on FOSDEM 2018]] by [[mailto:manolis837@gmail.com][Manolis Ragkousis]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:49
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2017-12-13 Wed 05:05] [[gnus:INBOX#20171202172327.0db2d98b@uwaterloo.ca][Email from Andy Patterson: {bug#29540} {PATCH} gnu: spice opengl acceleration]] by [[mailto:ajpatter@uwaterloo.ca][Andy Patterson]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:49
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2017-12-13 Wed 05:21] [[gnus:INBOX#922234369.95863@mta02.estisrapid.pro][Email from Светлана Бычкова: {Японский язык} Онлайн-урок то]] by [[mailto:mail@tensaigakkou.ru][Светлана Бычкова]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:49
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2017-12-18 Mon 01:55] [[gnus:INBOX#87shc9tp1i.fsf@cbaines.net][Email from Christopher Baines: {bug#27438} {PATCH} vendor gems install in system]] by [[mailto:mail@cbaines.net][Christopher Baines]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:49
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2017-12-18 Mon 01:58] [[gnus:INBOX#E1eKiIe-0002ZC-Ex@duik.vrijschrift.org][Email from Translation Project Robot: New French PO file for 'guix']] by [[mailto:robot@translationproject.org][Translation Project Robot]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:49
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2017-12-18 Mon 02:26] [[gnus:nndoc+ephemeral:bug#28659#87r2uih3lx.fsf@gmail.com][Email from Maxim Cournoyer: bug#28659: v0.13: guix pull github arhives non determenistic]] by [[mailto:maxim.cournoyer@gmail.com][Maxim Cournoyer]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:49
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2017-12-20 Wed 19:22] [[gnus:INBOX#877etkxufy.fsf@gnu.org][Email from Ludovic Courtès: Re: Dualbooting with guixsd no]] by [[mailto:ludo@gnu.org][Ludovic Courtès]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:49
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2018-01-06 Sat 03:24] [[gnus:INBOX#20180105170034.6243-1-ludo@gnu.org][Email from Ludovic Courtès: {bug#29995} {PATCH 0/5} Publish build logs]] by [[mailto:ludo@gnu.org][Ludovic Courtès]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:49
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2018-01-06 Sat 22:25] [[gnus:INBOX#20171216201700.23564-1-mail@cbaines.net][Email from Christopher Baines: {bug#29741} {PATCH 1/2} gnu: httpd]] by [[mailto:mail@cbaines.net][Christopher Baines]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:49
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2018-01-06 Sat 23:03] [[gnus:INBOX#87r2sg3qxx.fsf@gnu.org][Email from Ludovic Courtès: bug#29255: "Profile collision]] by [[mailto:ludo@gnu.org][Ludovic Courtès]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:49
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2018-01-06 Sat 23:04] [[gnus:INBOX#87y3lretyh.fsf@gmail.com][Email from Alex Kost: {bug#29582} {PATCH} emacs- prerfix]] by [[mailto:alezost@gmail.com][Alex Kost]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:49
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [[gnus:INBOX#87vag2wopo.fsf@gnu.org][Email from Mike Gerwitz: Running IceCat in a container]] by [[mailto:mtg@gnu.org][Mike Gerwitz]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:49
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+  #+BEGIN_SRC sh
+  guix environment \
+       --container \
+       --network \
+       -r "$gc_root" \
+       --share=/tmp/.X11-unix/ \
+       --expose=/etc/machine-id \
+       --share=$HOME/.mozilla/ \
+       --share=$HOME/.cache/mozilla/ \
+       --share=$HOME/.Xauthority \
+       --share=$HOME/Downloads/icecat-container/=$HOME/Downloads/ \
+       --ad-hoc icecat coreutils
+       -- \
+       env DISPLAY="$DISPLAY" icecat "$@"
+  #+END_SRC
+
+* [2018-01-21 Sun 19:42] [[gnus:INBOX#20171211173102.6279-1-tomi.ollila@iki.fi][Email from Tomi Ollila: {PATCH} make notmuch release archive reproducible]] by [[mailto:tomi.ollila@iki.fi][Tomi Ollila]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:49
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2018-02-04 Sun 15:05] [[gnus:INBOX#87bmh5o8ux.fsf@librem.i-did-not-set--mail-host-address--so-tickle-me][Email from Alex ter Weele: Defining shepherd user service]] by [[mailto:alex.ter.weele@gmail.com][Alex ter Weele]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:49
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2018-02-06 Tue 07:12] [[gnus:INBOX#878tckvfro.fsf@mdc-berlin.de][Email from Ricardo Wurmus: Re: {PATCH} Add SELinux policy for guix-daemon.]] by [[mailto:ricardo.wurmus@mdc-berlin.de][Ricardo Wurmus]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:49
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+  https://people.redhat.com/duffy/selinux/selinux-coloring-book_A4-Stapled.pdf
+
+  But I *really* don’t recommend it for learning SELinux.  Half of
+  the book doesn’t even apply to common SELinux installations, and
+  the bit that *does* apply really isn’t thorough enough.  All I
+  took away from it was that a dog shouldn’t eat cat food (and
+  that’s enforced by an angry penguin).
+
+* [2018-02-06 Tue 12:30] Maybe a Guix substitute server [[gnus:INBOX#20180204204945.GA2228@jurong][Email from Andreas Enge: Re: Redhill is back!]] by [[mailto:andreas@enge.fr][Andreas Enge]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:49
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+  after switching internet providers, I brought redhill back online
+  under its new IP address. Testing the offload shows no problems
+  (with a changed machines.scm that contains only redhill):
+  hydra@20121227-hydra:~/maintenance$ guix offload test machines.scm
+  guix offload: testing 1 build machines defined in 'machines.scm'...
+  guix offload: 'redhill.guixsd.org' is running guile (GNU Guile)
+  2.2.2 guix offload: Guix is usable on 'redhill.guixsd.org' (test
+  returned "/gnu/store/883yjkl46dxw9mzykykmbs0yzwyxm17z-test")
+  sending 1 store item to 'redhill.guixsd.org'...  exporting path
+  `/gnu/store/ciq39nchn8pd4k4m1vgivmrmf6c5rg3g-export-test' guix
+  offload: 'redhill.guixsd.org' successfully imported
+  '/gnu/store/ciq39nchn8pd4k4m1vgivmrmf6c5rg3g-export-test'
+  retrieving 1 store item from 'redhill.guixsd.org'...  guix offload:
+  successfully imported
+  '/gnu/store/8a1509iirfaibm19ysc2ywg89vrz6v1r-import-test' from
+  'redhill.guixsd.org'
+
+* Emacs generate user dictionary from bunch of files
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:49
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+  [[gnus:nnimap+USER:INBOX#877eu3bkv7.fsf@gnu.org][Email from Ian Dunn: {ELPA} New package: paced]] by [[mailto:dunni@gnu.org][Ian Dunn]]
+
+  I'd like to submit paced[1] to ELPA.
+
+  Paced (Predictive Abbreviation Completion and Expansion using Dictionaries)
+  scans a group of files (determined by "population commands") to construct a
+  usage table (dictionary).  Words (or symbols) are sorted by their usage, and may
+  be later presented to the user for completion.  A dictionary can then be saved
+  to a file, to be loaded later.
+
+  Population commands determine how a dictionary should be filled with words or
+  symbols.  A dictionary may have multiple population commands, and population may
+  be performed asynchronously.  Once population is finished, the contents are
+  sorted, with more commonly used words at the front.  Dictionaries may be edited
+  through EIEIO's customize-object interface.
+
+  Completion is done through `completion-at-point'.  The dictionary to use for
+  completion can be customized.
+
+  The code is on Bazaar on Savannah:
+
+  bzr branch https://bzr.savannah.gnu.org/r/paced-el/ paced
+
+  [1] http://nongnu.org/paced-el
+
+* [2018-02-10 Sat 21:28] [[gnus:INBOX#87h8qshkdf.fsf@gmx.us][Email from rasmus@gmx.us: Re: {O} Prompt org-capture for buffer?]] by mailto:rasmus@gmx.us
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:49
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+  #+BEGIN_SRC emacs-lisp
+    (file+function "~/doc.org"
+                   (lambda ()
+                     (org-goto-local-search-headings
+                      (ido-completing-read
+                       "File note to: "
+                       (org-element-map
+                           (org-element-parse-buffer)
+                           'headline
+                         (lambda (hl)
+                           (and (= (org-element-property :level hl) 1)
+                                (org-element-property :title hl)))))
+                      nil nil)
+                     (forward-line 1))
+                   :prepend t
+                   :empty-lines-after 1)
+
+
+  #+END_SRC
+
+* [2018-02-11 Sun 11:05] [[gnus:INBOX#878tc13hnq.fsf@hyperbola.info][Email from Adonay Felipe Nogueira: Re: {O} do you need a separate LaTeX installation to export org mode files to pdf?]] by [[mailto:adfeno@hyperbola.info][Adonay Felipe Nogueira]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:49
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+  I have also been writing a guide for Org mode and LaTeX for
+  researchers and writers, it's currently in Brazilian Portuguese and
+  isn't as broad as the info page in GNU Emacs itself, see [1]. Also,
+  [2] has a more advanced example of a work being done using (mostly)
+  Org mode but also LaTeX, BibTeX, TikZ and abnTeX2.
+
+  [1] <https://notabug.org/adfeno/Org_LaTeX_intro>.
+  [2] <https://notabug.org/adfeno/Trabalho_sobre_gestao_universitaria>.
+
+* [2018-02-14 Wed 14:12] [[gnus:nnimap+USER:INBOX#87h8qvivyv.fsf@gnu.org][Email from Ludovic Courtès: Re: Can we speed it up? Prev: compiling guix is too slow?]] by [[mailto:ludo@gnu.org][Ludovic Courtès]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:49
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+Pjotr Prins <pjotr.public12@thebird.nl> skribis:
+
+> What will it be like with 15K packages? We will get there. We can
+> actually try it now by doubling the package tree - anyone wants to try
+> and create a simulation? I.e., not just double the tree, make sure
+> there are cross references between the two graphs by modifying some of
+> the inputs at random.
+>
+> This leads to the following thought: why don't we create a 'lazy'
+> build. There are multiple ways to go about it (I think). One would be
+> to parse scheme files for package names and only compile those that
+> are needed when someone invokes a guix command (and have not been
+> compiled yet). Or generate a meta list for a source tree.
+
+Note that there are several things we could do:
+
+  • Not compile gnu/packages/*.scm at all and instead turn on Guile’s
+    auto-compilation.  As things are currently, the first ‘guix package’
+    invocation would take ages though.
+
+  • Never compile gnu/packages/*.scm and instead interpret it, though
+    that’s currently relatively slow and probably more memory-consuming.
+
+I think with ‘wip-pull-reload’ (I’ll resume work on it, I promise!)
+things should already be nicer, and then, we should keep improving the
+compiler (Andy already significantly improved CPU consumption in Guile
+2.2.3).
+
+* [2018-02-14 Wed 15:33] [[gnus:INBOX#20180203093626.6c927477@alma-ubu][Email from Björn Höfling: bug#30107: How I got the core dump]] by [[mailto:bjoern.hoefling@bjoernhoefling.de][Björn Höfling]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:49
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+  #+BEGIN_QUOTE
+  On request, I'm writing here how I got to that coredump.
+  #+END_QUOTE
+
+* [2018-03-02 Fri 07:00] [[gnus:INBOX#20180301230003.C0FE514A713@mrelay-bulk1.hh.ru][Email from hh ru: Подходящие вакансии]] by [[mailto:no_reply@hh.ru][hh ru]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:49
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2018-03-06 Tue 11:20] [[gnus:INBOX#87sh9iegbl.fsf@gnu.org][Email from Ludovic Courtès: Re: Reinstall GuixSD from another distribution with chroot (Recover Grub)]] by [[mailto:ludo@gnu.org][Ludovic Courtès]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:49
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2018-03-07 Wed 13:49] [[gnus:INBOX#20180208171243.dnligzfvwsxvc4l3@floriannotebook][Email from pelzflorian@pelzflorian.de: Re: Haunt patches: Introduce page variants for translations]] by [[mailto:pelzflorian@pelzflorian.de][pelzflorian]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:49
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2018-03-07 Wed 17:31] [[gnus:INBOX#20180307124601.fjjvtkjw4ppcqxxk@abyayala][Email from ng0@n0.is: Re: torbrowser]] by [[mailto:ng0@n0.is][ng0]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:49
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2018-03-07 Wed 17:45] [[gnus:INBOX#87eflzfkwh.fsf@cbaines.net][Email from Christopher Baines: Package input loop detection]] by [[mailto:mail@cbaines.net][Christopher Baines]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:49
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2018-03-07 Wed 18:05] [[gnus:INBOX#20180216114753.0cd0d28b@mykolab.com][Email from Rutger Helling: Graphically isolating Guix containers with Xpra.]] by [[mailto:rhelling@mykolab.com][Rutger Helling]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:49
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2018-03-07 Wed 18:19] [[gnus:INBOX#20180226181914.18955-1-mbakke@fastmail.com][Email from Marius Bakke: {bug#28004} {PATCH} gnu: Add chromium.]] by [[mailto:mbakke@fastmail.com][Marius Bakke]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:49
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2018-03-08 Thu 01:04] [[gnus:INBOX#87y3j4l3xj.fsf@mdc-berlin.de][Email from Ricardo Wurmus: installing python 2 and python 3 in the same profile]] by [[mailto:ricardo.wurmus@mdc-berlin.de][Ricardo Wurmus]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:49
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2018-03-09 Fri 12:09] [[gnus:INBOX#CAFyQvY2U_rLCyj=jPUS20fByvAqmF1Pq3b9m3r=Nett6WPw9Vw@mail.gmail.com][Email from Kaushal Modi: Re: Teaching emacsclient to act as a pager, and more]] by [[mailto:kaushal.modi@gmail.com][Kaushal Modi]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:49
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2018-03-10 Sat 13:18] [[gnus:INBOX#c275dcbc-18bf-16bd-54d1-da9d1031719b@gmail.com][Email from Matt Wette: {ANN} Nyacc version 0.83.0 released]] by [[mailto:matt.wette@gmail.com][Matt Wette]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:49
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2018-03-10 Sat 13:20] [[gnus:INBOX#87fu6o2ge2.fsf@gmail.com][Email from Maxim Cournoyer: bug#30290: guix-daemon slows to a crawl when a substitute server is offline]] by [[mailto:maxim.cournoyer@gmail.com][Maxim Cournoyer]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:49
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2018-03-14 Wed 00:13] [[gnus:INBOX#5aa735e67ffa_1eed144184874@manage-worker-starter-us-east-2-87-1c8rn.mail][Email from Red Hat OpenShift io Team: Welcome to the OpenShift.io Early Access Program]] by [[mailto:no-reply@openshift.com][Red Hat OpenShift io Team]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:49
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2018-03-14 Wed 15:13] [[gnus:INBOX#87eflu2zoc.fsf@gnu.org][Email from Ludovic Courtès: Re: How best to set host key in vm]] by [[mailto:ludo@gnu.org][Ludovic Courtès]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:49
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+  #+BEGIN_SRC scheme
+    (simple-service 'copy-private-key activation-service-type
+                    (with-imported-modules '((guix build utils))
+                      #~(begin
+                          (use-modules (guix build utils))
+                          (mkdir-p "/etc/ssh")
+                          (copy-file "/root/secrets/ssh_host_ed25519_key"
+                                     "/etc/ssh/ssh_host_ed25519_key'))))
+
+  #+END_SRC
+
+* [2018-03-14 Wed 15:36] [[gnus:INBOX#2fa37bd4-17ff-286b-80ce-948e0b87ee62@freenet.de][Email from Thorsten Wilms: Dual-booting solution with only one actual Grub installation]] by [[mailto:t_w_@freenet.de][Thorsten Wilms]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:49
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+  #+BEGIN_SRC scheme
+    (bootloader
+     (bootloader-configuration
+      (bootloader
+       (bootloader (inherit grub-bootloader)
+                   (installer #~(const #t))))))
+  #+END_SRC
+
+* [2018-03-14 Wed 15:42] [[gnus:nnimap+USER:INBOX#874llp12ix.fsf@passepartout.tim-landscheidt.de][Email from Tim Landscheidt: Re: Changing language input method by addressee]] by [[mailto:tim@tim-landscheidt.de][Tim Landscheidt]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:49
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+  #+BEGIN_SRC emacs-lisp
+    (set (make-local-variable 'sentence-end-double-space) nil)
+  #+END_SRC
+
+* [2018-03-14 Wed 15:44] [[gnus:nnimap+USER:INBOX#873719ujx2.fsf@bobnewell.net][Email from Bob Newell: Re: Changing language input method by addressee]] by [[mailto:bobnewell@bobnewell.net][Bob Newell]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:49
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+  #+BEGIN_SRC emacs-lisp
+    (defun rjn-change-lang-by-addressee ()
+      (interactive)
+      (let ((addressee (message-fetch-field "To"))
+            netaddr person langpref)
+        (if addressee
+            (setq netaddr (cadr (mail-extract-address-components addressee))))
+        (if netaddr
+            (setq person (car (bbdb-search (bbdb-records) :mail netaddr))))
+        (if person
+            (setq langpref (bbdb-record-field person 'language)))
+        (if langpref
+            (set-input-method langpref))))
+
+    (add-hook 'message-setup-hook 'rjn-change-lang-by-addressee t)
+    (advice-add 'bbdb-complete-mail :after #'rjn-change-lang-by-addressee)
+  #+END_SRC
+
+* [2018-03-14 Wed 19:54] [[gnus:INBOX#87a7vejen7.fsf@netris.org][Email from Mark H. Weaver: Re: how to get the path of the logfile after an unsuccesful build?]] by [[mailto:mhw@netris.org][Mark H. Weaver]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:49
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2018-03-15 Thu 03:24] [[gnus:INBOX#87vae0g21v.fsf@librem.i-did-not-set--mail-host-address--so-tickle-me][Email from Alex ter Weele: {bug#30741} {PATCH} fix idris (was "Re: Incomplete work to upgrade Idris to 1.2.0")]] by [[mailto:alex.ter.weele@gmail.com][Alex ter Weele]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:49
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2018-03-15 Thu 03:25] [[gnus:INBOX#CAE4v=pj5qkabZ1rr-BOdjodomz-3LDe+iT4hi0wPnuSqNArV0A@mail.gmail.com][Email from Gábor Boskovits: Re: Regarding Outreachy round 16]] by [[mailto:boskovits@gmail.com][Gábor Boskovits]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:49
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2018-03-15 Thu 10:22] [[gnus:INBOX#294c0039f2dfa910162ec911ae128a48@hypermove.net][Email from Amirouche Boubekki: Re: Is there any security risk related to the use of the reader?]] by [[mailto:amirouche@hypermove.net][Amirouche Boubekki]] combinatorix.scm, streams.scm, read.scm
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:49
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2018-03-15 Thu 11:03] [[gnus:INBOX#20180304200014.29173-1-mail@cbaines.net][Email from Christopher Baines: {bug#30702} {PATCH} services: nginx: Support extra content in the http block.]] by [[mailto:mail@cbaines.net][Christopher Baines]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:49
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2018-03-15 Thu 11:06] [[gnus:INBOX#20180305114136.7207-1-h.goebel@crazy-compilers.com][Email from Hartmut Goebel: {bug#30711} {PATCH 1/1} guix: graph: Add Trival Graph Format (TGF) backend.]] by [[mailto:h.goebel@crazy-compilers.com][Hartmut Goebel]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:49
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2018-03-15 Thu 11:07] [[gnus:INBOX#87efkyqtet.fsf@dustycloud.org][Email from Christopher Lemmer Webber: bug#30714: Racket doesn't build any more, xform error]] by [[mailto:cwebber@dustycloud.org][Christopher Lemmer Webber]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:49
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2018-03-15 Thu 11:08] [[gnus:INBOX#20180305212912.625ecf29@alma-ubu][Email from Björn Höfling: bug#30716: guix pull: error: Git error: unable to parse OID - contains invalid characters when COMMIT-ID is shortened]] by [[mailto:bjoern.hoefling@bjoernhoefling.de][Björn Höfling]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:49
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2018-03-15 Thu 11:10] [[gnus:INBOX#87muzmw7lf.fsf@gnu.org][Email from Nala Ginrut: {ANN} artanis-0.2.3 released {stable}]] by [[mailto:mulei@gnu.org][Nala Ginrut]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:49
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2018-03-15 Thu 11:16] [[gnus:INBOX#20180312204019.GA21130@joshua.dnsalias.com][Email from Mike Gran: Re: Debugging Guile module loading]] by [[mailto:spk121@yahoo.com][Mike Gran]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:49
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+  #+BEGIN_SRC shell
+    "LD_DEBUG=all guile"
+  #+END_SRC
+
+* [2018-03-15 Thu 11:53] [[gnus:INBOX#20180313175809.7d782c1a@alma-ubu][Email from Björn Höfling: {bug#30801} {PATCH 0/1} Add opencv]] by [[mailto:bjoern.hoefling@bjoernhoefling.de][Björn Höfling]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:49
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2018-03-15 Thu 11:53] [[gnus:INBOX#20180313185057.14044-1-mail@cbaines.net][Email from Christopher Baines: {bug#30802} {PATCH} gnu: Add python-prometheus-client.]] by [[mailto:mail@cbaines.net][Christopher Baines]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:49
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2018-03-15 Thu 11:54] [[gnus:INBOX#20180313191727.24508-2-mail@cbaines.net][Email from Christopher Baines: {bug#30803} {PATCH 2/2} services: Add elasticsearch.]] by [[mailto:mail@cbaines.net][Christopher Baines]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:49
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2018-03-15 Thu 11:55] [[gnus:INBOX#87woyfzmir.fsf@cbaines.net][Email from Christopher Baines: {bug#30809} {PATCH} Gitolite service]] by [[mailto:mail@cbaines.net][Christopher Baines]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:49
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2018-03-15 Thu 11:56] [[gnus:INBOX#e74fff06-9adc-468c-9080-ba9b80fc2f45@gmail.com][Email from Matt Wette: ffi-help: gtk demo updated]] by [[mailto:matt.wette@gmail.com][Matt Wette]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:49
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2018-03-15 Thu 12:08] [[gnus:INBOX#1520289147.15975.0@mail.gandi.net][Email from amirouche@hypermove.net: Re: neon: git for structured data {Was: Functional database}]] by [[mailto:amirouche@hypermove.net][]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:49
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2018-03-15 Thu 12:18] [[gnus:INBOX#dcfe09ec-754b-69bc-d004-647723138a1c@yandex.ru][Email from Dmitry Gutov: Re: What's the canonical way to check "alistp"?]] by [[mailto:dgutov@yandex.ru][Dmitry Gutov]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:49
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2018-03-15 Thu 12:23] [[gnus:INBOX#20180309153356.26302-1-psachin@redhat.com][Email from Sachin Patil: {PATCH} Show channel name in ERC notifications]] by [[mailto:iclcoolster@gmail.com][Sachin Patil]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:49
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2018-03-15 Thu 12:25] [[gnus:INBOX#8xxk1ui1i4v.fsf@macross.sdf.jp][Email from Hikaru Ichijyo: logical not condition in ibuffer config]] by [[mailto:ichijyo@macross.sdf.jp][Hikaru Ichijyo]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:49
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+  #+BEGIN_SRC emacs-lisp
+    ibuffer-saved-filter-groups
+    (quote (("Default"
+             ("IRC" (mode . erc-mode))
+             ("Web" (mode . w3m-mode))
+             ("Mail & News" (or
+                             (mode . message-mode)
+                             (mode . mail-mode)
+                             (mode . gnus-group-mode)
+                             (mode . gnus-summary-mode)
+                             (mode . gnus-article-mode)))
+             ("Dired" (mode . dired-mode))
+             ("Text" (mode . text-mode))
+             ("HTML/CSS" (or
+                          (mode . html-mode)
+                          (mode . css-mode)))
+             ("Config" (or
+                        (mode . conf-space-mode)
+                        (mode . conf-unix-mode)
+                        (mode . conf-xdefaults-mode)))
+             ("Shell" (mode . shell-script-mode))
+             ("Perl" (mode . perl-mode))
+             ("Lisp & Emacs" (or
+                              (mode . emacs-lisp-mode)
+                              (mode . bookmark-bmenu-mode)
+                              (name . "^\\*Packages\\*$")))
+             ("Docs" (or
+                      (name . "^\\*info\\*$")
+                      (name . "^\\*Man "))))))
+
+  #+END_SRC
+
+* [2018-03-15 Thu 12:30] [[gnus:INBOX#20180314124321.13848-1-shizeeque@gmail.com][Email from shizeeque@gmail.com: {PATCH 1/2} cli: looking for config file in $XDG_CONFIG_HOME]] by [[mailto:shizeeque@gmail.com][]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:49
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2018-03-15 Thu 22:23] [[gnus:INBOX#87r2olqkzk.fsf@mdc-berlin.de][Email from Ricardo Wurmus: New branch for users of RHEL 6]] by [[mailto:ricardo.wurmus@mdc-berlin.de][Ricardo Wurmus]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:49
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2018-03-16 Fri 02:37] [[gnus:INBOX#87a7vbrqin.fsf@elephly.net][Email from Ricardo Wurmus: bug#30830: Allow disabling of collision checks]] by [[mailto:rekado@elephly.net][Ricardo Wurmus]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:49
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2018-03-16 Fri 17:14] [[gnus:INBOX#20180315232807.4f06bcb3@centurylink.net][Email from Eric Bavier: {bug#30833} {PATCH} git-download: Fix recursive checkouts.]] by [[mailto:ericbavier@centurylink.net][Eric Bavier]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:49
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2018-03-16 Fri 17:40] [[gnus:INBOX#87zi38w5oq.fsf@gnu.org][Email from Ludovic Courtès: Shepherd release!]] by [[mailto:ludo@gnu.org][Ludovic Courtès]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:49
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2018-03-16 Fri 17:46] [[gnus:INBOX#m1woycxgvp.fsf@fastmail.net][Email from Konrad Hinsen: {bug#30835} {PATCH 1/3} guix import elpa: use https in download URLs]] by [[mailto:konrad.hinsen@fastmail.net][Konrad Hinsen]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:49
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2018-03-16 Fri 17:46] [[gnus:INBOX#m1tvtgxgv4.fsf@fastmail.net][Email from Konrad Hinsen: {bug#30836} {PATCH 2/3} guix import elpa: use #f for license]] by [[mailto:konrad.hinsen@fastmail.net][Konrad Hinsen]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:49
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2018-03-16 Fri 17:46] [[gnus:INBOX#m1r2okxgui.fsf@fastmail.net][Email from Konrad Hinsen: {bug#30837} {PATCH 3/3} guix import elpa: Fix typos in documentation strings]] by [[mailto:konrad.hinsen@fastmail.net][Konrad Hinsen]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:49
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2018-03-16 Fri 23:48] [[gnus:INBOX#20180316185415.GI29079@tomato][Email from Assaf Gordon: GNU Datamash 1.3 released]] by [[mailto:assafgordon@gmail.com][Assaf Gordon]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:49
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2018-03-17 Sat 00:44] [[gnus:INBOX#20180316220732.19c2375a@scratchpost.org][Email from Danny Milosavljevic: {bug#30572} {PATCH 2/7} tests: Add tests for "guix pack".]] by [[mailto:dannym@scratchpost.org][Danny Milosavljevic]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:49
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2018-03-17 Sat 18:21] [[gnus:INBOX#87h8pe4uh0.fsf@GlaDOS.home][Email from Diego Nicola Barbato: Re: keyboard layout and system locale]] by [[mailto:dnbarbato@posteo.de][Diego Nicola Barbato]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:49
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+  #+BEGIN_SRC scheme
+    (modify-services %desktop-services
+     (slim-service-type config =>
+                        (slim-configuration
+                         (inherit config)
+                         (startx (xorg-start-command
+                                  #:configuration-file
+                                  (xorg-configuration-file
+                                   ;; Setup X to use a swiss german keyboard layout.
+                                   #:extra-config
+                                   '("Section \"InputClass\"
+            Identifier \"keyboard-all\"
+            Option \"XkbLayout\" \"ch\" ; <~ replace \"ch\" with \"it\"
+            MatchIsKeyboard \"on\"
+    EndSection")))))))
+  #+END_SRC
+
+* [2018-03-17 Sat 18:50] [[gnus:INBOX#20180317152552.eui5w7e275sx4ohu@abyayala][Email from ng0@n0.is: {bug#30259} {PATCH} gnu: octave: Add audio and Qt GUI support.]] by [[mailto:ng0@n0.is][]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:49
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2018-03-18 Sun 18:32] [[gnus:INBOX#47f555d4-0d01-bbc1-9a8d-0ce94ee2e3fb@gmail.com][Email from Matt Wette: ffi-help: dbus demo]] by [[mailto:matt.wette@gmail.com][Matt Wette]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:49
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2018-03-19 Mon 07:17] [[gnus:INBOX#87o9jku2gt.fsf@gmail.com][Email from Chris Marusich: Re: How to install prerelease package versions (particularly Emacs)]] by [[mailto:cmmarusich@gmail.com][Chris Marusich]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:49
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+  #+BEGIN_SRC shell
+    guix package --search=. | recsel -e 'name ~ "-(git|next|dev|devel|cvs|svn)$"' 
+  #+END_SRC
+
+* [2018-03-19 Mon 07:21] [[gnus:INBOX#87vadsdcfv.fsf@gmail.com][Email from Maxim Cournoyer: {bug#30851} {PATCH} Add SuperCollider, related changes]] by [[mailto:maxim.cournoyer@gmail.com][Maxim Cournoyer]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:49
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2018-03-23 Fri 19:47] [[gnus:INBOX#87muz0yodn.fsf@gnu.org][Email from Nala Ginrut: artanis-0.2.4 released {stable}]] by [[mailto:mulei@gnu.org][Nala Ginrut]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:49
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2018-03-23 Fri 21:47] [[gnus:INBOX#87a7uyd7qy.fsf@gmail.com][Email from Alex Kost: Re: Emacs in multiple profiles]] by [[mailto:alezost@gmail.com][Alex Kost]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:49
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+  #+BEGIN_SRC emacs-lisp
+    (let ((guix-env (getenv "GUIX_ENVIRONMENT")))
+      (when (and guix-env
+                 (require 'guix-emacs nil t))
+        (guix-emacs-autoload-packages guix-env)))
+  #+END_SRC
+
+* [2018-03-24 Sat 14:42] [[gnus:INBOX#20180324081234.GA14831@thebird.nl][Email from Pjotr Prins: Provide python:debug with --with-pydebug switch]] by [[mailto:pjotr.public12@thebird.nl][Pjotr Prins]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:49
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2018-03-26 Mon 22:01] [[gnus:INBOX#87muyuhebp.fsf@gmail.com][Email from Pierre Neidhardt: Fail to configure home-directory]] by [[mailto:ambrevar@gmail.com][Pierre Neidhardt]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:49
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2018-03-27 Tue 08:30] [[gnus:INBOX#1522095505.3286349.1316797816.594CB0C5@webmail.messagingengine.com][Email from Mark Meyer: {orchestration} AWS public cloud images]] by [[mailto:mark@ofosos.org][Mark Meyer]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:49
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2018-03-27 Tue 18:21] [[gnus:INBOX#87d0zpyj5d.fsf_-_@gnu.org][Email from Ludovic Courtès: bug#27284: ‘guix pull’ builds using multiple derivations]] by [[mailto:ludo@gnu.org][Ludovic Courtès]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:49
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2018-03-27 Tue 18:42] [[gnus:INBOX#m1y3idwqfr.fsf@fastmail.net][Email from Konrad Hinsen: bug#30961: Byte compilation problem with emacs-org]] by [[mailto:konrad.hinsen@fastmail.net][Konrad Hinsen]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:49
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2018-03-27 Tue 19:38] [[gnus:INBOX#1522167476.1298329.1317868904.779AEDB7@webmail.messagingengine.com][Email from Jostein Kjønigsen: Re: Windows snapshot builds]] by [[mailto:jostein@secure.kjonigsen.net][Jostein Kjønigsen]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:49
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2018-03-28 Wed 10:24] [[gnus:INBOX#20180327213923.GA16676@jasmine.lan][Email from Leo Famulari: Annoying behaviour of the GPG signature verification pre-push hook]] by [[mailto:leo@famulari.name][Leo Famulari]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2018-03-28 Wed 11:34] [[gnus:INBOX#877epxxqxt.fsf@gmail.com][Email from Artyom Poptsov: {ANN} Guile-SSH 0.11.3 released]] by [[mailto:poptsov.artyom@gmail.com][Artyom Poptsov]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2018-03-28 Wed 17:14] [[gnus:INBOX#87h8p0wb6m.fsf@gmail.com][Email from Pierre Neidhardt: Package requests: fortune, gifsicle, inxi, uncrustify, unrar, vsftp, xss-lock]] by [[mailto:ambrevar@gmail.com][Pierre Neidhardt]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2018-03-28 Wed 20:15] [[gnus:INBOX#87in9gth2u.fsf@gnu.org][Email from Ludovic Courtès: ‘guix weather’ reports CI stats]] by [[mailto:ludo@gnu.org][Ludovic Courtès]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2018-03-28 Wed 21:25] [[gnus:INBOX#CAGSZTjJvmWCju-4rpnxHrqeLN9N9cUd7OWhC1kHgSHagR1qDrA@mail.gmail.com][Email from Kevin Layer: Re: comint shell buffers autosaved to a file?]] by [[mailto:layer@known.net][Kevin Layer]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2018-03-29 Thu 12:18] [[gnus:nnimap+USER:INBOX#87tvsz46f7.fsf@gmail.com][Email from Pierre Neidhardt: Re: Missing pinentry-emacs for gpg-agent?]] by [[mailto:ambrevar@gmail.com][Pierre Neidhardt]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2018-03-29 Thu 14:25] [[gnus:INBOX#87muyrdw3s.fsf@elephly.net][Email from Ricardo Wurmus: Re: Package requests: Udisks helpers (udiskie, udevil)]] by [[mailto:rekado@elephly.net][Ricardo Wurmus]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+  #+BEGIN_SRC sh
+    # Even without Nautilus you can mount and unmount drives without the need
+    # for root privileges, e.g. with
+
+    udisksctl mount -b /dev/sdb2
+    udisksctl unmount -b /dev/sdb2
+  #+END_SRC
+
+* [2018-04-01 Sun 11:24] [[gnus:INBOX#87605chtof.fsf@gnu.org][Email from Ludovic Courtès: Re: "guix environment --pure" different to guix-daemon's environment]] by [[mailto:ludo@gnu.org][Ludovic Courtès]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+  #+BEGIN_EXAMPLE
+    > Can I get guix-daemon to make gcc dump core on SIGABRT? (setrlimit
+      in a build phase? :->)
+
+    Yes, you can!  :-)
+
+    Add a phase that does this:
+
+    ;; Allow us to dump core during the test suite so GDB
+    ;; can report backtraces.
+    (let ((MiB (* 1024 1024)))
+    (setrlimit 'core (* 300 MiB) (* 500 MiB)))
+
+    (From <https://gitlab.inria.fr/guix-hpc/guix-hpc/blob/master/modules/inria/storm.scm#L59>.)
+  #+END_EXAMPLE
+
+* [2018-04-01 Sun 15:20] [[gnus:INBOX#87efjz15ti.fsf@gmail.com][Email from Pierre Neidhardt: Re: Package requests: fortune, gifsicle, inxi, uncrustify, unrar, vsftp, xss-lock]] by [[mailto:ambrevar@gmail.com][Pierre Neidhardt]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+  #+BEGIN_SRC scheme
+    (use-modules (GNU)
+                 ; ...
+                 (gnu services networking)
+                 (gnu packages admin))
+
+    (operating-system
+     ; ...
+     (users (cons* (user-account
+                    (name "ambrevar")
+                    (group "users")
+                    (supplementary-groups '("wheel" "netdev"
+                                            "audio" "video"))
+                    (home-directory "/home/ambrevar"))
+                   (user-account
+                    (name "ftp")
+                    (group "nogroup")
+                    (home-directory "/home/ftp"))
+                   %base-user-accounts))
+
+     (services (cons* (service
+                       inetd-service-type
+                       (inetd-configuration
+                        (entries
+                         (list
+                          (inetd-entry
+                           (node "127.0.0.1")
+                           (name "ftp")
+                           (socket-type 'stream)
+                           (protocol "tcp")
+                           (wait? #f)
+                           (user "root")
+                           (program (file-append inetutils "/libexec/ftpd"))
+                           (arguments
+                            '("ftpd" "--anonymous-only" "-l"))
+                           )))))
+                      %my-services)))
+  #+END_SRC
+
+* [2018-04-02 Mon 20:03] [[gnus:INBOX#CAFyQvY1pgYZFGWCe5bvQAAX7U=Kp6q-D8nn9jC76eppQ7+raSQ@mail.gmail.com][Email from Kaushal Modi: Re: About the removal of pinentry.el]] by [[mailto:kaushal.modi@gmail.com][Kaushal Modi]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2018-04-03 Tue 09:55] [[gnus:INBOX#E1f3BMJ-0005vy-5a@crmserver2p.fsf.org][Email from Free Software Foundation: Free Software Supporter Issue 120, April 2018]] by [[mailto:info@fsf.org][Free Software Foundation]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2018-04-05 Thu 19:50] [[gnus:INBOX#87woxm2g7o.fsf@gnu.org][Email from Ludovic Courtès: Re: Вопрос по опциям монтирования SSD и logrotate]] by [[mailto:ludo@gnu.org][Ludovic Courtès]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+  #+BEGIN_SRC scheme
+    (use-modules (gnu services desktop)
+                 (gnu services))
+
+    (map (compose service-type-name service-kind) %desktop-services)
+  #+END_SRC
+
+* [2018-04-07 Sat 17:45] [[gnus:INBOX#20180405183523.GA1445@thebird.nl][Email from Pjotr Prins: Re: Treating tests as special case]] by [[mailto:pjotr.public12@thebird.nl][Pjotr Prins]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2018-04-07 Sat 18:01] [[gnus:INBOX#87zi2jdwoc.fsf@gnu.org][Email from Ludovic Courtès: {bug#31017} {PATCH} gnu: Add subdl]] by [[mailto:ludo@gnu.org][Ludovic Courtès]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+  Guix contributors remain copyright holders in Guix, we don’t assign
+  copyright to the FSF, so no worries here!
+
+* [2018-04-07 Sat 19:00] [[gnus:INBOX#87sh87xcv5.fsf@gmail.com][Email from Alex Kost: bug#31069: emacs-smartparens: sp-forward-barf-sexp broken]] by [[mailto:alezost@gmail.com][Alex Kost]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+  #+BEGIN_EXAMPLE
+    Sorry, I don't know what could cause your problem.  My only idea is
+    maybe you have some mixed (incompatible) packages both from Guix and
+    from (M)ELPA (for example, "dash.el" from Melpa and "smartparens" from
+    Guix).  Look at "M-x list-load-path-shadows".
+  #+END_EXAMPLE
+
+* [2018-04-08 Sun 21:34] [[gnus:INBOX#87zi2dvemk.fsf@gnu.org][Email from Ludovic Courtès: bug#27284: ‘guix pull’ builds using multiple derivations]] by [[mailto:ludo@gnu.org][Ludovic Courtès]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2018-04-08 Sun 21:34] [[gnus:INBOX#87fu45ve2z.fsf@gnu.org][Email from Ludovic Courtès: bug#22629: Towards a new 'guix pull']] by [[mailto:ludo@gnu.org][Ludovic Courtès]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2018-04-11 Wed 20:46] [[gnus:INBOX#87sh813fco.fsf@gmail.com][Email from Pierre Neidhardt: Re: How to install prerelease package versions (particularly Emacs)]] by [[mailto:ambrevar@gmail.com][Pierre Neidhardt]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2018-04-11 Wed 20:46] [[gnus:INBOX#87r2nl3f88.fsf@gmail.com][Email from Pierre Neidhardt: Re: How to install prerelease package versions (particularly Emacs)]] by [[mailto:ambrevar@gmail.com][Pierre Neidhardt]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2018-04-11 Wed 20:46] [[gnus:INBOX#87tvsh3fkt.fsf@gmail.com][Email from Pierre Neidhardt: Re: How to install prerelease package versions (particularly Emacs)]] by [[mailto:ambrevar@gmail.com][Pierre Neidhardt]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2018-04-11 Wed 20:49] [[gnus:INBOX#87y3huyxzj.fsf@gmail.com][Email from Pierre Neidhardt: `guix package -u` upgrades packages to themselves]] by [[mailto:ambrevar@gmail.com][Pierre Neidhardt]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2018-04-11 Wed 20:58] [[gnus:INBOX#874lkijhts.fsf@gnu.org][Email from Roel Janssen: Re: {PATCH} guix-daemon: Add option to disable garbage collection.]] by [[mailto:roel@gnu.org][Roel Janssen]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2018-04-11 Wed 21:15] [[gnus:nnimap+USER:INBOX#20180403023403.GA4430@sam][Email from Sohom Bhattacharjee: {bug#31036} {PATCH} gnu: Add Emacs dumb-jump]] by [[mailto:soham.bhattacharjee15@gmail.com][Sohom Bhattacharjee]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2018-04-11 Wed 21:18] [[gnus:INBOX#877epegxsc.fsf@gmail.com][Email from Chris Marusich: bug#31088: Use '@' as version number separator in guix output]] by [[mailto:cmmarusich@gmail.com][Chris Marusich]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2018-04-11 Wed 21:18] [[gnus:INBOX#87d0z66a2b.fsf@gnu.org][Email from Ludovic Courtès: bug#31084: {PATCH 2/2} gnu: Add qBittorrent.]] by [[mailto:ludo@gnu.org][Ludovic Courtès]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2018-04-12 Thu 20:36] [[gnus:INBOX#87efjkmvkl.fsf@elephly.net][Email from Ricardo Wurmus: Re: How to install prerelease package versions (particularly Emacs)]] by [[mailto:rekado@elephly.net][Ricardo Wurmus]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2018-04-12 Thu 21:39] [[gnus:INBOX#87y3hsbap2.fsf@fastmail.com][Email from Marius Bakke: Re: Package requests: fortune, gifsicle, inxi, uncrustify, unrar, vsftp, xss-lock]] by [[mailto:mbakke@fastmail.com][Marius Bakke]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+  #+BEGIN_SRC sh
+    guix environment -C -N --ad-hoc python -- python3 -m http.server
+  #+END_SRC
+
+* [2018-04-12 Thu 21:39] [[gnus:INBOX#87bmeocofp.fsf@lassieur.org][Email from Clément Lassieur: Re: Package requests: fortune, gifsicle, inxi, uncrustify, unrar, vsftp, xss-lock]] by [[mailto:clement@lassieur.org][Clément Lassieur]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+  And there is 'woof' (packaged by Guix), it's a small HTTP server too,
+  very handy.  I use it very often at work to share files with my
+  collegues.  It serves the file only once unless specifed otherwise, and
+  'woof -U' provides an upload form, so that users can upload files
+  without having to install anything.  And it auto-tar directories.
+
+* [2018-04-13 Fri 08:37] [[gnus:INBOX#871sfjzneh.fsf@gmail.com][Email from Chris Marusich: Re: How to install prerelease package versions (particularly Emacs)]] by [[mailto:cmmarusich@gmail.com][Chris Marusich]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+  #+BEGIN_SRC scheme
+    (define-public emacs-dev
+      (package
+        (inherit emacs)
+        (name "emacs-dev")
+        (version "26.0.91")
+        (source
+         (local-file "/home/natsu/src/emacs" #:recursive? #t))))
+  #+END_SRC
+
+* [2018-04-13 Fri 08:39] [[gnus:INBOX#87zi28f7cf.fsf@mouse.gnus.org][Email from Lars Ingebrigtsen: RFC: Make ~/.mailcap override other settings]] by [[mailto:larsi@gnus.org][Lars Ingebrigtsen]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+  1) If it's in `mailcap-mime-data', use that.
+
+  2) If a specific type, say, "image/gif" is in both /etc/mailcap and
+  ~/.mailcap, make the ~/.mailcap version win.
+
+  3) If we have less specific types covering the same type, make the most
+  specific win.  So if /etc/mailcap has "image/gif; xv" and ~/.mailcap has
+  "image/*; feh", then "image/gif" wins because it's more specific.
+
+* [2018-04-13 Fri 09:09] [[gnus:INBOX#871sfjprn8.fsf@gmail.com][Email from Pierre Neidhardt: Does Linux 4.16.1 blast out battery time? (9h+ -> 3h+)]] by [[mailto:ambrevar@gmail.com][Pierre Neidhardt]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2018-04-16 Mon 22:38] [[gnus:INBOX#87k1t7hvtv.fsf@santanas.co.za][Email from Divan Santana: Installing GuixSD on an external USB hard drive]] by [[mailto:divan@santanas.co.za][Divan Santana]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2018-04-23 Mon 21:41] [[gnus:INBOX#20180423203035.0654ec81@merlin.browniehive.net][Email from Thomas Sigurdsen: Re: Guix does not understand config.scm]] by [[mailto:thomas.sigurdsen@gmail.com][Thomas Sigurdsen]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+  #+BEGIN_SRC scheme
+    strace -o /tmp/strace.out -T -s 2000
+  #+END_SRC
+
+* [2018-04-24 Tue 15:27] [[gnus:INBOX#87k1sx2e61.fsf@gnu.org][Email from Ludovic Courtès: Re: Does Linux 4.16.1 blast out battery time? (9h+ -> 3h+)]] by [[mailto:ludo@gnu.org][Ludovic Courtès]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+  #+BEGIN_SRC scheme
+    (simple-service 'my-/sys-tweaks activation-service-type
+                    #~(call-with-output-file "/sys/…"
+                        (lambda (port)
+                          (display "1" port))))
+  #+END_SRC
+
+* [2018-04-27 Fri 08:44] [[gnus:INBOX#877eoua9v1.fsf@gmail.com][Email from George myglc: Re: 'guix system vm-image' hangs]] by [[mailto:myglc2@gmail.com][George myglc]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+  #+BEGIN_SRC scheme
+    (service openssh-service-type
+             (openssh-configuration
+              (x11-forwarding? #t)
+              (permit-root-login #t)
+              (allow-empty-passwords? #t)
+              (authorized-keys
+               `(
+                 ("g1" ,(local-file "glc.pub"))
+                 ("al" ,(local-file "glc.pub"))
+                 ("root" ,(local-file "glc.pub"))))))
+  #+END_SRC
+
+* [2018-04-27 Fri 20:08] [[gnus:INBOX#87a7tpc8vw.fsf@gmail.com][Email from Mathieu Othacehe: Building guix-modular with cuirass]] by [[mailto:m.othacehe@gmail.com][Mathieu Othacehe]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+  #+BEGIN_SRC scheme
+    (define (build-guix-modular store arguments)
+      (let* ((source (assq-ref arguments 'file-name))
+             (revision (assq-ref arguments 'revision))
+             (build (primitive-load (string-append source "/build-aux/build-self.scm")))
+             (res (lambda ()
+                    `((#:job-name . ,(string-append "guix-" revision "-job"))
+                      (#:derivation . ,(derivation-file-name
+                                        (run-with-store store
+                                          (build source
+                                                 #:version revision
+                                                 #:guile-version "2.2"))))))))
+        (format (current-error-port) "---------> ~a|~a~%" arguments (res))
+        res)
+  #+END_SRC
+
+* PUSH [2018-04-28 Sat 11:27] [[gnus:INBOX#BLUPR16MB05000314F86DBEEAE4763101928C0@BLUPR16MB0500.namprd16.prod.outlook.com][Email from Fis Trivial: {PATCH} gnu: python-yapf: Update to 0.21.0.]] by [[mailto:ybbs.daans@hotmail.com][Fis Trivial]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2018-04-29 Sun 22:04] [[gnus:INBOX#87604aym8m.fsf@netris.org][Email from Mark H. Weaver: Re: Should python-build-system packages have native-inputs?]] by [[mailto:mhw@netris.org][Mark H. Weaver]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+‘native-inputs’ are not only for testing.  More generally, when
+cross-compiling, any programs that must be run on the build machine
+must be ‘native-inputs’.  Any programs that must be run on the target
+machine must be ‘inputs’.
+
+* [2018-05-03 Thu 13:27] [[gnus:nnimap+USER:INBOX#877eolw9w7.fsf@gmail.com][Email from Chris Marusich: Re: Packaging a free Firefox]] by [[mailto:cmmarusich@gmail.com][Chris Marusich]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+  This has not been my experience with IceCat.  With two exceptions,
+  IceCat has performed just as well as Firefox for me for everything I
+  have done, including credit card payments.  I sometimes watch YouTube
+  videos using IceCat, but I don't view many other videos, so I can't
+  really comment on how well IceCat handles videos.  If it requires DRM,
+  of course, it's not going to work in IceCat, which is a good thing.
+
+  When I use IceCat over TOR, it doesn't always work.  When I use IceCat
+  with extensions (plugins?  add-ons?  I'm not sure what the right
+  terminology is here) like NoScript enabled, it doesn't always work.  But
+  when I don't use TOR and I disable those add-ons, everything works just
+  as well as stock Firefox.  If you're still having trouble after
+  disabling those things, can you describe the specifics of what you're
+  having trouble with?
+
+  The exceptions I have experienced with IceCat:
+
+  1) A website failed for me because IceCat enables Referer spoofing by
+  default (network.http.referer.spoofSource in about:config).  I had to
+  disable that feature to use that website.
+
+  2) It used to be that IceCat would crash frequently for me.  However,
+  once I changed my gfx.canvas.azure.backends and
+  gfx.content.azure.backends from "cairo" to "skia", this problem stopped
+  for me.  I don't know if this is still an issue , since I haven't ever
+  switched it back to "cairo".  See here for details:
+
+  https://lists.gnu.org/archive/html/help-guix/2016-11/msg00008.html
+
+* [2018-05-04 Fri 20:52] [[gnus:INBOX#87r2mrflf2.fsf@lassieur.org][Email from Clément Lassieur: Re: nginx et .htaccess]] by [[mailto:clement@lassieur.org][Clément Lassieur]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+  #+BEGIN_SRC scheme
+
+    (nginx-server-configuration
+          (listen '("443 ssl" "[::]:443 ssl"))
+          (server-name (list "foo.org"))
+          (root "/var/www/foo")
+          (locations
+           (list
+            (nginx-location-configuration
+             (uri "/")
+             (body (list "index index.html;"
+                         "auth_basic \"closed site\";"
+                         ;; needs to be set manually
+                         "auth_basic_user_file /etc/nginx/htpasswd;")))))
+          (ssl-certificate ...)
+          (ssl-certificate-key ...))
+
+    /etc/nginx/htpasswd may contain:
+    user:<hashed-pwd>
+
+  #+END_SRC
+
+* [2018-05-05 Sat 19:49] [[gnus:nnimap+USER:INBOX#877ep4z44b.fsf@gmail.com][Email from myglc2@gmail.com: Re: Emacs in multiple profiles]] by [[mailto:myglc2@gmail.com][]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+I am revamping my emacs config approach and I came across your
+discussion. Following Alex's suggestions I found 2 approaches that seem
+to do what Konrad wanted ...
+
+1) guix profile approach ...
+
+#+BEGIN_SRC sh
+  guix package -m emacs.scm
+  emacs --no-init-file \
+        --eval="\
+  (let ((guix-env (getenv \"GUIX_ENVIRONMENT\")))
+    (when (and guix-env
+               (require 'guix-emacs nil t))
+      (guix-emacs-autoload-packages guix-env)))" \
+        --load=".emacs.d/init0.el"
+  guix package --roll-back
+#+END_SRC
+
+2) guix environment approach ...
+
+#+BEGIN_SRC sh
+  guix environment --ad-hoc emacs magit -- \
+  emacs --no-init-file --no-site-file \
+        --eval="\
+  (let ((guix-env (getenv \"GUIX_ENVIRONMENT\")))
+    (when (and guix-env
+               (require 'guix-emacs nil t))
+      (guix-emacs-autoload-packages guix-env)))" \
+        --load=".emacs.d/init0.el"
+#+END_SRC
+
+For my purposes 2) is better -- It starts more quickly and doesn't
+"infect" other login sessions. It also allows multiple, different,
+isolated Emacs environments to run simultaneously. Sweet ;-)
+
+#+BEGIN_SRC scheme
+  (use-modules (gnu packages))
+  (define usr-packages
+     '(
+       "font-dejavu"
+       "emacs"
+       "magit"
+     ))
+  (specifications->manifest usr-packages)
+#+END_SRC
+
+#+BEGIN_SRC scheme
+  (setq default-frame-alist
+        '((font . "-PfEd-DejaVu Sans Mono-bold-normal-normal-*-16-*-*-*-m-0-iso10646-1"))
+        )
+#+END_SRC
+
+* [2018-05-05 Sat 20:41] [[gnus:INBOX#87vac3twbe.fsf@gnu.org][Email from Ludovic Courtès: Re: GSoC: Adding a web interface similar to the Hydra web interface]] by [[mailto:ludo@gnu.org][Ludovic Courtès]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+  https://berlin.guixsd.org/status/
+
+* [2018-05-11 Fri 10:47] [[gnus:nndoc+ephemeral:bug#30884#877ep4ngst.fsf@gmail.com][Email from Maxim Cournoyer: {bug#30884} Status: {PATCH 0/6} gnu: Add emacs-epkg.]] by [[mailto:maxim.cournoyer@gmail.com][Maxim Cournoyer]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+  #+BEGIN_SRC scheme
+    ;; Add this to the define-module top level definition:
+    ;; (define-module (gnu packages emacs)
+    ;; ...
+    ;; #:use-module ((guix build emacs-build-system) #:prefix emacs:)
+    ;; ...
+
+    (add-after 'patch-elisp-shell-shebangs
+               (assoc-ref emacs:%standard-phases 'set-emacs-load-path))
+  #+END_SRC
+
+* [2018-06-06 Wed 12:17] [[gnus:INBOX#87po152evd.fsf@netris.org][Email from Mark H. Weaver: Re: Guix "days old" variable]] by [[mailto:mhw@netris.org][Mark H. Weaver]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+  #+BEGIN_EXAMPLE
+    You can set the GUIX_DISTRO_AGE_WARNING environment variable to a
+    string like "9d" for 9 days.  The suffix can also be "w" or "m" for
+    weeks or months.
+  #+END_EXAMPLE
+
+* [2018-06-07 Thu 10:49] [[gnus:INBOX#87zi09wgk8.fsf@ngyro.com][Email from Timothy Sample: Re: Checking for substitutes]] by [[mailto:samplet@ngyro.com][Timothy Sample]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+   I looked into it some time ago, and there were a lot of blockers.  See
+https://lists.gnu.org/archive/html/guix-devel/2017-06/msg00190.html for
+details.
+
+* [2018-06-07 Thu 17:07] [[gnus:INBOX#1994571664.21912258.1528100333726.JavaMail.zimbra@inria.fr][Email from Pierre-Antoine Rouby: Re: {PATCH 0/1} Go importer]] by [[mailto:pierre-antoine.rouby@inria.fr][Pierre-Antoine Rouby]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2018-06-07 Thu 17:10] [[gnus:INBOX#87bmcvfy92.fsf@netris.org][Email from Mark H. Weaver: Regarding "Use Invoke" or "Return a boolean from phase" commits]] by [[mailto:mhw@netris.org][Mark H. Weaver]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2018-06-07 Thu 17:30] [[gnus:INBOX#20180531144337.16298-1-ludo@gnu.org][Email from Ludovic Courtès: bug#22629: {PATCH 0/4} 'guix pull' produces a self-contained Guix]] by [[mailto:ludo@gnu.org][Ludovic Courtès]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2018-06-08 Fri 00:39] [[gnus:INBOX#1528384722-2436-1-git-send-email-pgarlick@tourbillion-technology.com][Email from Paul Garlick: {bug#31748} {PATCH 0/2} enable ikiwiki 'Edit' and 'Preferences' links]] by [[mailto:pgarlick@tourbillion-technology.com][Paul Garlick]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2018-06-08 Fri 16:04] [[gnus:INBOX#E1fR6rJ-0006Ue-6U@crmserver2p.fsf.org][Email from Free Software Foundation: How to defend your encrypted emails against prying eyes]] by [[mailto:info@fsf.org][Free Software Foundation]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+  #+BEGIN_EXAMPLE
+    I'd like to send you a message using GPG, but first I want to make
+    sure that you've updated your version of Enigmail, due to the
+    potential for exploitation of flawed encryption clients described
+    here: https://www.efail.de/. Can you confirm that?
+
+    Also, disabling HTML and remote loading of media in your email helps
+    avoid email exploitation: https://www.fsf.org/blogs/community/how-to-defend-your-encrypted-emails-against-prying-eyes.
+
+    If everybody takes these steps to make their own email safer, we'll
+    all benefit from safer communications. Thanks for helping ensure that
+    our emails stay private.
+  #+END_EXAMPLE
+
+* [2018-06-10 Sun 23:33] [[gnus:INBOX#878t7mh9pc.fsf@gnu.org][Email from Ludovic Courtès: Re: Recovering from broken Guix due to GC'd derivations]] by [[mailto:ludo@gnu.org][Ludovic Courtès]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+  #+BEGIN_EXAMPLE
+    Remember that the store consists of two elements: /gnu/store, and
+    $localstatedir/guix/db/db.sqlite (usually /var/guix/db/db.sqlite).  If
+    you somehow end up using a different database, it may be incorrect
+    compared to what’s actually available in /gnu/store (info "(guix) The
+    Store").
+  #+END_EXAMPLE
+
+* [2018-06-11 Mon 11:55] [[gnus:INBOX#874lim8ctt.fsf@gnu.org][Email from Ludovic Courtès: bug#31669: 'guix system' enhancements]] by [[mailto:ludo@gnu.org][Ludovic Courtès]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+  #+BEGIN_EXAMPLE
+    scheme@(guile-user)> ,use(guix)
+    scheme@(guile-user)> ,use(gnu)
+    scheme@(guile-user)> (getcwd)
+    $2 = "/home/ludo/src/guix/guix"
+    scheme@(guile-user)> (define os (load "../gnu/system/examples/bare-bones.tmpl"))
+    scheme@(guile-user)> ,run-in-store (operating-system-derivation os)
+    $4 = #<derivation /gnu/store/x0ixll4myzk2s2g0lvq29qr5fx1hsgqi-system.drv => /gnu/store/4igvd1ynxjv3hk8qpf0l9bpb2v157hjf-system 4c209b0>
+    scheme@(guile-user)> ,use(gnu packages tls)
+    scheme@(guile-user)> ,run-in-store (package->derivation openssl)
+    $5 = #<derivation /gnu/store/8d4dim068nky5y8dls3p2nijc79jhhv1-openssl-1.0.2o.drv => /gnu/store/yvy6pj9b3rpb3wr98x0sjlxv5g9p5x5l-openssl-1.0.2o-doc /gnu/store/ggrpw6gh2rnqjwyjf99z8cdw5digc4hb-openssl-1.0.2o /gnu/store/9cdb2xydmm012v81l78jliird4f7dy25-openssl-1.0.2o-static 5594370>
+    scheme@(guile-user)> ,run-in-store (package->derivation libressl)
+    substitute: updating list of substitutes from 'https://berlin.guixsd.org'... 100.0%
+    $6 = #<derivation /gnu/store/2wds8bdyl25iqx63p2vv7fy05rbmq4s5-libressl-2.7.3.drv => /gnu/store/d9askfqx719bv3610kd6s3jqjh5rnfsh-libressl-2.7.3 538b1e0>
+    scheme@(guile-user)> (define s (open-connection))
+    scheme@(guile-user)> (map-derivation s $4 `((,$5 . ,$6)))
+    $7 = #<derivation /gnu/store/g9xxa9fkiaij5i9g8s71b04yswi69cig-system.drv => /gnu/store/x5gyjvmq663jhd1pc1pc5w46hpcghvwd-system 618bf00>
+  #+END_EXAMPLE
+
+* [2018-06-13 Wed 16:37] [[gnus:INBOX#87zhzzqyys.fsf@fastmail.com][Email from Marius Bakke: Restarting 'staging']] by [[mailto:mbakke@fastmail.com][Marius Bakke]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2018-06-13 Wed 16:39] [[gnus:INBOX#df9dcbd1-094e-2a95-ccc2-0a2f620e696a@freenet.de][Email from Thorsten Wilms: Re: Chrooting into GuixSD]] by [[mailto:t_w_@freenet.de][Thorsten Wilms]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+  #+BEGIN_EXAMPLE
+      cd /path/to/guix/root
+      sudo mount --bind /dev dev
+      sudo mount --bind /proc proc
+      sudo mount --bind /sys sys
+      sudo unshare -m sudo chroot . /run/current-system/profile/bin/bash
+      source /etc/profile
+
+      guix-daemon --build-users-group=guixbuild &
+
+    If you then `su` to a plain user, do `source /etc/profile` again.
+
+    I think all of `guix pull`. `reconfigure` and `package` search,
+    install and update worked here with that approach. `guix download`
+    failed due to nss certificates, until I added:
+      export SSL_CERT_DIR="$HOME/.guix-profile/etc/ssl/certs"
+      export
+    SSL_CERT_FILE="$HOME/.guix-profile/etc/ssl/certs/ca-certificates.crt"
+      export GIT_SSL_CAINFO="$SSL_CERT_FILE"
+
+  #+END_EXAMPLE
+
+* [2018-06-14 Thu 08:56] [[gnus:INBOX#871sdxgt05.fsf@iki.fi][Email from Teemu Likonen: Re: Is there a way to "asciify" a string?]] by [[mailto:tlikonen@iki.fi][Teemu Likonen]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+  #+BEGIN_SRC emacs-lisp
+    (defun my-iconv-ascii-translit (string)
+      (with-temp-buffer
+        (insert string)
+        (call-process-region (point-min) (point-max)
+                             "iconv" t t nil "-t" "ASCII//TRANSLIT")
+        (buffer-substring-no-properties (point-min) (point-max))))
+
+    (defun my-ascii-normalize-filter (string)
+      (require 'cl-lib)
+      (cl-remove-if (lambda (char)
+                      (> char 127))
+                    (ucs-normalize-NFKD-string string)))
+
+    (defun downcase-or-normalize-word (arg)
+      "Convert to lower case from point to end of word, moving over.
+    With ARG, normalize a word on point, moving over."
+      (interactive "p")
+      (require 'cl-lib)
+      (if (equal arg 4)
+          (let ((point0 (point)) string)
+            (forward-word 1)
+            (setq string (buffer-substring point0 (point)))
+            (delete-region point0 (point))
+            (insert
+             (cl-remove-if (lambda (char)
+                             (> char 127))
+                           (ucs-normalize-NFKD-string string))))
+        (downcase-word arg)))
+
+    (global-set-key [remap downcase-word] 'downcase-or-normalize-word)
+  #+END_SRC
+
+* [2018-06-15 Fri 19:27] [[gnus:INBOX#87lgc2cppx.fsf@netris.org][Email from Mark H. Weaver: Re: CPS mystery]] by [[mailto:mhw@netris.org][Mark H. Weaver]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+  #+BEGIN_SRC scheme
+    scheme@(guile-user)> ,use (system base compile)
+    scheme@(guile-user)> (define intmap->alist (@@ (language cps intmap) intmap->alist))
+    scheme@(guile-user)> (define v (compile '(floor/ 3 7) #:from 'scheme #:to 'cps))
+    scheme@(guile-user)> ,pp (intmap->alist v)
+    $2 = ((0 . #<cps (kfun () 0 1 9)>)
+          (1 . #<cps (ktail)>)
+          (2 . #<cps (kargs (arg) (3) (continue 1 (call 1 2 3)))>)
+          (3 . #<cps (kargs (arg) (2) (continue 2 (const 7)))>)
+          (4 . #<cps (kargs (arg) (1) (continue 3 (const 3)))>)
+          (5 . #<cps (kargs (box) (4) (continue 4 (primcall box-ref 4)))>)
+          (6 . #<cps (kargs (bound?) (6) (continue 5 (primcall resolve 5 6)))>)
+          (7 . #<cps (kargs (name) (5) (continue 6 (const #t)))>)
+          (8 . #<cps (kargs () () (continue 7 (const floor/)))>)
+          (9 . #<cps (kclause (() () #f () #f) 8)>))
+    scheme@(guile-user)>
+  #+END_SRC
+
+* [2018-06-16 Sat 09:40] [[gnus:INBOX#cdfdbf447d2235e71ad227da8d341cf5@riseup.net][Email from Jovany Leandro G. C.: GUIX HANDLING NPM PACKAGES: TIPS]] by [[mailto:bit4bit@riseup.net][Jovany Leandro G. C.]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2018-07-31 Tue 02:24] [[gnus:INBOX#87in4wpi0w.fsf@tullinup.koldfront.dk][Email from Adam Sjøgren: Re: {OT} does gmane still allow nntp posting?]] by [[mailto:asjo@koldfront.dk][Adam Sjøgren]] gmane.test
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2018-07-31 Tue 15:09] [[gnus:INBOX#87600w3ckc.fsf@fastmail.com][Email from Marius Bakke: Staging branch now live on Hydra!]] by [[mailto:mbakke@fastmail.com][Marius Bakke]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2018-08-02 Thu 00:43] [[gnus:INBOX#87a7q6rkub.fsf@elephly.net][Email from Ricardo Wurmus: core-updates schedule]] by [[mailto:rekado@elephly.net][Ricardo Wurmus]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2018-08-16 Thu 19:52] [[gnus:INBOX#87tvnu8g6c.fsf@fastmail.com][Email from Marius Bakke: Re: Closing issues from commits]] by [[mailto:mbakke@fastmail.com][Marius Bakke]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2018-08-30 Thu 15:21] [[gnus:INBOX#87a7pg9w6n.fsf@netris.org][Email from Mark H. Weaver: Re: Change interpreter from octets to hex?]] by [[mailto:mhw@netris.org][Mark H. Weaver]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+  #+BEGIN_EXAMPLE
+    mhw@jojen ~$ guile
+    GNU Guile 2.2.3
+    Copyright (C) 1995-2017 Free Software Foundation, Inc.
+
+    Guile comes with ABSOLUTELY NO WARRANTY; for details type `,show w'.
+    This program is free software, and you are welcome to redistribute it
+    under certain conditions; type `,show c' for details.
+
+    Enter `,help' for help.
+    scheme@(guile-user)> ,help system
+    System Commands [abbrev]:
+
+     ,gc                               - Garbage collection.
+     ,statistics               [,stat] - Display statistics.
+     ,option [NAME] [EXP]         [,o] - List/show/set options.
+     ,quit        [,q ,continue ,cont] - Quit this session.
+
+    scheme@(guile-user)> ,option
+      compile-options       (#:warnings (unbound-variable macro-use-before-definition arity-mismatch format duplicate-case-datum bad-case-datum))
+      trace                 #f
+      interp                #f
+      prompt                #f
+      print                 #f
+      value-history         #t
+      on-error              debug
+    scheme@(guile-user)> (use-modules (rnrs bytevectors)
+                                      (ice-9 format))
+    scheme@(guile-user)> (define (format-octet octet)
+                           (format #f "#x~2,'0x" octet))
+    scheme@(guile-user)> (define (print-bytevector bv)
+                           (display "#vu8(")
+                           (display (string-join (map format-octet (bytevector->u8-list bv))))
+                           (display ")"))
+    scheme@(guile-user)> (define (my-repl-print repl val)
+                           (if (bytevector? val)
+                               (print-bytevector val)
+                               (write val))
+                           (newline))
+    scheme@(guile-user)> ,o print my-repl-print
+    scheme@(guile-user)> #vu8(0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20)
+    $1 = #vu8(#x00 #x01 #x02 #x03 #x04 #x05 #x06 #x07 #x08 #x09 #x0a #x0b #x0c #x0d #x0e #x0f #x10 #x11 #x12 #x13 #x14)
+    scheme@(guile-user)> 
+  #+END_EXAMPLE
+
+* [2018-09-02 Sun 01:41] [[gnus:INBOX#878t4l0xsz.fsf@elephly.net][Email from Ricardo Wurmus: https://issues.guix.info]] by [[mailto:rekado@elephly.net][Ricardo Wurmus]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2018-09-03 Mon 01:03] [[gnus:INBOX#87pny8oxpf.fsf@gnu.org][Email from Ludovic Courtès: bug#32514: mailutils Guile bindings are broken]] by [[mailto:ludo@gnu.org][Ludovic Courtès]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2018-09-03 Mon 01:05] [[gnus:INBOX#852062e3-4589-4f75-9414-1c1c1caa2104@default][Email from Drew Adams: RE: Echo elisp commands in a buffer]] by [[mailto:drew.adams@oracle.com][Drew Adams]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2018-09-03 Mon 01:12] [[gnus:INBOX#040827fb533152726fb7c1d9c1df97d7@hypermove.net][Email from Amirouche Boubekki: Scheme @ FOSDEM 2019]] by [[mailto:amirouche@hypermove.net][Amirouche Boubekki]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2018-09-03 Mon 01:12] [[gnus:INBOX#2adbb332-828d-f41b-c10b-54afdc8a1ed9@web.de][Email from Jonathan Brielmaier: Re: FOSDEM 2019 (ACTION: please register or mail)]] by [[mailto:jonathan.brielmaier@web.de][Jonathan Brielmaier]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2018-09-03 Mon 01:15] [[gnus:INBOX#87wos9rp5y.fsf@gnu.org][Email from Jan Nieuwenhuizen: Re: Guix and Emacs Integration for Polyglot Development]] by [[mailto:janneke@gnu.org][Jan Nieuwenhuizen]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+  #+BEGIN_SRC emacs-lisp
+    (defun guix-switch-profile (&optional profile)
+      "reset Emacs' environment by snarfing PROFILE/etc/profile"
+
+      (defun matches-in-string (regexp string)
+        "return a list of matches of REGEXP in STRING."
+        (let ((matches))
+          (save-match-data
+            (string-match "^" "")
+            (while (string-match regexp string (match-end 0))
+              (push (or (match-string 1 string) (match-string 0 string)) matches)))
+          matches))
+
+      (interactive "fprofile: ")
+      (let* ((output (shell-command-to-string (concat "GUIX_PROFILE= /bin/sh -x " profile "/etc/profile")))
+             (exports (matches-in-string "^[+] export \\(.*\\)" output)))
+        (mapcar (lambda (line) (apply #'setenv (split-string line "="))) exports )))
+  #+END_SRC
+
+* [2018-09-03 Mon 09:25] [[gnus:INBOX#c7lwKkQDhTMo8kvvYf5WwyWFGSrACIQmHswdjAxtd0D2zLK4HK8Xy0lpHOJ6kd9ILyBsVGe5C9Jr-vifmC10XcPsKauZKi99GnjYe5N371o=@protonmail.com][Email from Rene: guix system init question]] by [[mailto:pacoon@protonmail.com][Rene]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+  #+BEGIN_SRC scheme
+    (use-modules (gnu))
+    (use-package-modules hurd)
+
+    (operating-system
+      (host-name "antelope")
+      (timezone "Europe/Paris")
+      (locale "en_US.utf8")
+  
+      ;; Assuming /dev/sdX is the target hard disk, and "my-root" is
+      ;; the label of the target root file system.
+      (bootloader (bootloader-configuration
+                   (bootloader grub-bootloader)
+                   (target "/dev/hd2s1")))
+  
+      (kernel gnumach)
+  
+      (file-systems (cons (file-system
+                            (device "my-root")
+                            (title 'label)
+                            (mount-point "/guix")
+                            (type "ext2"))
+                          %base-file-systems))
+  
+      (users (cons (user-account
+                    (name "prometheus")
+                    (comment "Welcome to the Hurd")
+                    (group "users")
+                    (home-directory "/home/prometheus"))
+                   %base-user-accounts))
+
+      (packages (cons* 
+                 %base-packages-hurd))
+  
+      (services %base-services-hurd))
+
+  #+END_SRC
+
+* [2018-09-03 Mon 09:41] [[gnus:INBOX#21036238.c6yQEfjfIL@aleksandar-ixtreme-m5740][Email from HiPhish: A value for "nothing"]] by [[mailto:hiphish@posteo.de][HiPhish]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2018-09-03 Mon 09:47] [[gnus:INBOX#87sh304d56.fsf@apteryx.i-did-not-set--mail-host-address--so-tickle-me][Email from Maxim Cournoyer: {bug#32538} {PATCH} Add emacs-elpy]] by [[mailto:maxim.cournoyer@gmail.com][Maxim Cournoyer]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2018-09-03 Mon 10:34] [[gnus:INBOX#87tvnemfjh.fsf@aikidev.net][Email from Vagrant Cascadian: bug#22883: Trustable "guix pull"]] by [[mailto:vagrant@debian.org][Vagrant Cascadian]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2018-09-03 Mon 16:47] [[gnus:INBOX#87h8jats4r.fsf@gnu.org][Email from Jan Nieuwenhuizen: bootstrap: i686-linux now builds without binutils, gcc seeds]] by [[mailto:janneke@gnu.org][Jan Nieuwenhuizen]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2018-09-03 Mon 18:40] [[gnus:INBOX#5B6F18CB-1C43-4B39-B332-A7DAB5C5105D@bluewin.ch][Email from Daniel Llorens: need help for new guile-cairo release]] by [[mailto:daniel.llorens@bluewin.ch][Daniel Llorens]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2018-09-04 Tue 16:02] [[gnus:INBOX#877ek2gszu.fsf@gnu.org][Email from Jan Nieuwenhuizen: bootstrap: i686-linux now builds without binutils, gcc, and glibc seeds]] by [[mailto:janneke@gnu.org][Jan Nieuwenhuizen]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2018-09-04 Tue 16:10] [[gnus:INBOX#20180904120925.23653-1-ludo@gnu.org][Email from Ludovic Courtès: {bug#32632} {PATCH 0/3} 'guix describe' and improved provenance tracking]] by [[mailto:ludo@gnu.org][Ludovic Courtès]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2018-09-14 Fri 18:39] [[gnus:INBOX#c881ed79-672b-4f59-8c93-f4fd62af9819@gmail.com][Email from Matt Wette: {ANN} nyacc version 0.86.0 released]] by [[mailto:matt.wette@gmail.com][Matt Wette]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2018-09-20 Thu 00:05] [[gnus:INBOX#20180919133027.12799-2-mbakke@fastmail.com][Email from Marius Bakke: {bug#32771} {PATCH 2/2} services: Add Varnish service.]] by [[mailto:mbakke@fastmail.com][Marius Bakke]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2018-09-20 Thu 00:41] [[gnus:INBOX#20180909204335.21400-1-ludo@gnu.org][Email from Ludovic Courtès: {bug#32674} {PATCH 0/1} Use gpgv and keybox files for 'guix refresh' & co.]] by [[mailto:ludo@gnu.org][Ludovic Courtès]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2018-09-20 Thu 01:53] [[gnus:INBOX#87bm8wp7pl.fsf@fastmail.com][Email from Marius Bakke: bug#32715: Chromium: scrolling doesn't work after a certain amount of time]] by [[mailto:mbakke@fastmail.com][Marius Bakke]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2018-09-20 Thu 01:55] [[gnus:INBOX#r3QLnSisAafIikvhSfbbCrHPv0Xg7G-esZ0vA94DhEMuET_nMGlReVpir8wVkx_7CjcSpkUcu1hbrHAyG2qvb69s2ij4omgVD7qIDFYV3gM=@protonmail.com][Email from Stewart M.: Inspekt3d: A 3D Model Viewer Prototype]] by [[mailto:sjm-mail@protonmail.com][Stewart M.]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2018-09-20 Thu 02:17] [[gnus:INBOX#20180917194246.1.9B58687FC8DC844A@mail.lbry.io][Email from LBRY: LBRY on Android is LIVE]] by [[mailto:mailbot@mail.lbry.io][LBRY]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2018-09-20 Thu 02:28] [[gnus:INBOX#20180918120408.27737-1-ludo@gnu.org][Email from Ludovic Courtès: {bug#32759} {PATCH 0/8} Seamless integration of inferior packages]] by [[mailto:ludo@gnu.org][Ludovic Courtès]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2018-09-20 Thu 09:52] [[gnus:INBOX#78eaa661a19a611f60ec41e87a9e6c90@mail.secure-mail.biz][Email from SecUpwN: {Replicant} GitHub: Android IMSI-Catcher Detector]] by [[mailto:perfect-privacy@secure-mail.biz][SecUpwN]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2018-09-20 Thu 10:17] [[gnus:INBOX#3401551.pIYnLFp0Xl@aleksandar-ixtreme-m5740][Email from HiPhish: {ANN} guile-msgpack: MessagePack for GNU Guile (+ help needed)]] by [[mailto:hiphish@posteo.de][HiPhish]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2018-10-11 Thu 20:56] [[gnus:INBOX#87va6cy2o1.fsf@gnu.org][Email from Ludovic Courtès: Re: rootless Guix]] by [[mailto:ludo@gnu.org][Ludovic Courtès]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+   
+  For the record, here’s what needs to be done to run guix-daemon and guix
+  as produced by ‘guix pack --relocatable guix’:
+
+  https://lists.gnu.org/archive/html/guix-devel/2018-05/msg00139.html
+
+  We could certainly arrange so that users don’t have to fiddle with
+  $NIX_STATE_DIR etc.
+
+* [2018-11-07 Wed 03:47] [[gnus:nnimap+USER:INBOX#CAL7_Mo9Qmn8=rfaE32xR5A_4Y=k5yzfJ16dSDKz6vS29QFvRuw@mail.gmail.com][Email from Amirouche Boubekki: Ubuntu 18.04 LTS Bionic - Installing Guix in an LXC]] by [[mailto:amirouche.boubekki@gmail.com][Amirouche Boubekki]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2018-11-07 Wed 03:47] [[gnus:INBOX#20181031125428.GA814@doom][Email from Tomáš Čech: Re: Dual Boot GuixSd along side other preexisting distros]] by [[mailto:sleep_walker@gnu.org][Tomáš Čech]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2018-11-14 Wed 12:07] [[gnus:INBOX#-uG2OuTcvsm-Fop1DIG5bO5EiFqS6FJvPQ1xdP4A35k_2Zkm1eWzqbzl82h-imuTeXUaKTk7LOnrqXFOuNpb_z_dfjR3vlI7scjOZOeEzVg=@protonmail.com][Email from Tk: Re: Auto-detect Guile in a text editor]] by [[mailto:tk.code@protonmail.com][Tk]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+   I prefer the approach where leaving a comment marker somewhere would
+activate the required functionality. For example, in Emacs, you could
+write something like,
+
+ ; -*- mode: Scheme; eval: (whatever-minor-guile-mode-is-used 1); -*- .
+
+* [2018-11-14 Wed 12:30] [[gnus:nnimap+USER:INBOX#5be518c7.1c69fb81.98814.f530SMTPIN_ADDED_BROKEN@mx.google.com][Email from Vladimir Sedach: Re: Shepherd and Guille]] by [[mailto:vas@oneofus.la][Vladimir Sedach]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+   
+¹ https://oneofus.la/have-emacs-will-hack/2012-01-11-the-personal-computer-you-havent-heard-of.html
+² http://www.logos.ic.i.u-tokyo.ac.jp/~chik/
+³ http://www.softwarepreservation.org/projects/LISP/utilisp/utilisp/IPSJ-JIP1303003.pdf
+⁴ https://researcher.watson.ibm.com/researcher/files/us-bacon/Bacon03Metronome.pdf
+
+* [2018-11-18 Sun 14:40] [[gnus:INBOX#871s7lx9lw.fsf@inria.fr][Email from Ludovic Courtès: Integration with Software Heritage]] by [[mailto:ludovic.courtes@inria.fr][Ludovic Courtès]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2018-11-18 Sun 14:47] [[gnus:INBOX#20181115144125.GA23468@joshua.dnsalias.com][Email from Mike Gran: {ANN} guile-gi v0.0.1 released]] by [[mailto:spk121@yahoo.com][Mike Gran]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2018-11-23 Fri 14:43] [[gnus:INBOX#874lcbzqqt.fsf@gnu.org][Email from Ludovic Courtès: bug#32779: Cuirass: Crash and unable to restart when an input is unreachable]] by [[mailto:ludo@gnu.org][Ludovic Courtès]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+  Fixed in 27f14634102a73d4252d86b912f67e9ad464be1e
+
+* [2018-11-30 Fri 02:13] [[gnus:INBOX#87o9a8yo8t.fsf@gnu.org][Email from Ludovic Courtès: Re: hydra.gnunet.org unreachable]] by [[mailto:ludo@gnu.org][Ludovic Courtès]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+  #+BEGIN_QUOTE
+  Hello Guix,
+
+  Just a note to share information: as you know mirror.hydra.gnu.org is
+  hosted at TUM (Munich, Germany), where Christian Grothoff used to work
+  (the machines was donated by his team.)
+
+  We were able to fix the outage thanks to Christian’s help: when I
+  emailed him yesterday, Christian contacted the sysadmin at TUM in charge
+  of this, Andreas Korsten <korsten@net.in.tum.de>.  Andreas had fixed the
+  problem (powering issue IIUC) by 2PM CET today.
+
+  So now you know who to contact in the future if things go wrong with
+  that machine.  :-)
+
+  Thanks, Christian!
+
+  Ludo’.
+  #+END_QUOTE
+
+* [2018-11-30 Fri 02:14] [[gnus:INBOX#87in0g5bqw.fsf@gnu.org][Email from Ludovic Courtès: ENOSPC on harbourfront]] by [[mailto:ludo@gnu.org][Ludovic Courtès]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2018-12-06 Thu 02:15] [[gnus:INBOX#87mupongx8.fsf@gnu.org][Email from Ludovic Courtès: Re: scheme shells (was Re: Failing to use guile-bash)]] by [[mailto:ludo@gnu.org][Ludovic Courtès]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+  #+BEGIN_EXAMPLE
+    The good news is that the code has been archived by Software Heritage:
+
+    scheme@(guile-user)> ,use(guix swh)
+    scheme@(guile-user)> ,use(guix git-download)
+    scheme@(guile-user)> ,use(guix)
+    scheme@(guile-user)> ,use(gnu packages guile)
+    scheme@(guile-user)> (lookup-revision (git-reference-commit
+                                           (origin-uri (package-source guile-bash))))
+    $11 = #<<revision> id: "1eabc563ca5692b3e08d84f1f0e6fd2283284469" date: #<date nanosecond: 0 second: 35 minute: 27 hour: 9 day: 27 month: 2 year: 2015 zone-offset: 10800> directory: "ad8976564375ee55f645387bbcdf4b66e6582fbf" directory-url: "/api/1/directory/ad8976564375ee55f645387bbcdf4b66e6582fbf/">
+    scheme@(guile-user)> (revision-directory $11)
+    $12 = "ad8976564375ee55f645387bbcdf4b66e6582fbf"
+    scheme@(guile-user)> (query-vault $12 'directory)
+    $13 = #<<vault-reply> id: 3296879 fetch-url: "/api/1/vault/directory/ad8976564375ee55f645387bbcdf4b66e6582fbf/raw/" object-id: "ad8976564375ee55f645387bbcdf4b66e6582fbf" object-type: directory progress-message: #nil status: done>
+  #+END_EXAMPLE
+
+* [2018-12-06 Thu 02:20] [[gnus:INBOX#52026808-0614-ebdf-36fd-2dc641d79de8@uni-bielefeld.de][Email from Florian Paul Schmidt: A hacky prototype for using ipfs to provide binary substitutes to users]] by [[mailto:florian_paul.schmidt@uni-bielefeld.de][Florian Paul Schmidt]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2018-12-06 Thu 02:31] [[gnus:INBOX#87muplbk7q.fsf@gmail.com][Email from Chris Marusich: Video of Talk: "Everyday Use of GNU Guix"]] by [[mailto:cmmarusich@gmail.com][Chris Marusich]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2018-12-06 Thu 02:31] [[gnus:INBOX#5ffe968620f1d2d940b7db2b1900dc43@riseup.net][Email from swedebugia: New library: guile-wikidata]] by [[mailto:swedebugia@riseup.net][swedebugia]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2018-12-06 Thu 02:44] [[gnus:INBOX#CAE4v=pguBE8AO2VZY7f33OYRtX2OOSjQoXVZkkgAgUrBSMBnow@mail.gmail.com][Email from Gábor Boskovits: qemu command line for installation]] by [[mailto:boskovits@gmail.com][Gábor Boskovits]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2018-12-06 Thu 02:52] [[gnus:INBOX#20181130071612.6268-3-arunisaac@systemreboot.net][Email from Arun Isaac: {bug#33540} {PATCH 3/3} gnu: Add apertium.]] by [[mailto:arunisaac@systemreboot.net][Arun Isaac]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2018-12-07 Fri 03:53] [[gnus:INBOX#ae98e017-3c69-1cdc-0a0b-7608fdf1ea18@cs.ucla.edu][Email from Paul Eggert: Re: emacsclient not working on RHEL 6.8 (non-sudo) {master branch}]] by [[mailto:eggert@cs.ucla.edu][Paul Eggert]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2018-12-07 Fri 03:53] [[gnus:INBOX#CAFyQvY3Yo8ON08pOPAqnJiOQ=-y=zt7kMkXj-h5XFkRdPm-==Q@mail.gmail.com][Email from Kaushal Modi: Re: emacsclient not working on RHEL 6.8 (non-sudo) {master branch}]] by [[mailto:kaushal.modi@gmail.com][Kaushal Modi]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2018-12-07 Fri 03:56] [[gnus:INBOX#25577ab1-6be8-c433-534b-f14e3f70908e@cs.ucla.edu][Email from Paul Eggert: Re: emacsclient socket ownership]] by [[mailto:eggert@cs.ucla.edu][Paul Eggert]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2018-12-07 Fri 03:59] [[gnus:nnimap+USER:INBOX#87y39dy28x.fsf@lassieur.org][Email from Clément Lassieur: Re: Configuring a service but not starting it on boot]] by [[mailto:clement@lassieur.org][Clément Lassieur]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+  #+BEGIN_SRC diff
+    commit 5ebc46a52e543c316924ac936bb65c3ae7f113bb
+    Author: Clément Lassieur <clement@lassieur.org>
+    Date:   Fri May 5 15:11:37 2017 +0200
+
+        guix: don't auto-start nginx
+
+    diff --git a/guix/configs/modules/rodion/web.scm b/guix/configs/modules/rodion/web.scm
+    index 5c26651..35fe3d3 100644
+    --- a/guix/configs/modules/rodion/web.scm
+    +++ b/guix/configs/modules/rodion/web.scm
+    @@ -1,6 +1,8 @@
+     (define-module (rodion web)
+       #:use-module (gnu services)
+       #:use-module (gnu services web)
+    +  #:use-module (srfi srfi-1) ; find
+    +  #:use-module (gnu services shepherd) ; shepherd-root-service-type
+       #:export (%my-nginx-service))
+ 
+     (define my-nginx-configuration
+    @@ -18,5 +20,29 @@
+              (uri "/")
+              (body (list "index index.html;"))))))))))
+ 
+    +(define (my-nginx-shepherd-service nginx-conf)
+    +  (let ((nginx-shepherd-service
+    +         (service-extension-compute
+    +          (find (lambda (ext)
+    +                  (eq? (service-extension-target ext)
+    +                       shepherd-root-service-type))
+    +                (service-type-extensions nginx-service-type)))))
+    +    (list
+    +     (shepherd-service
+    +      (inherit (car (nginx-shepherd-service nginx-conf)))
+    +      (auto-start? #f)))))
+    +
+    +(define my-nginx-service-type
+    +  (service-type
+    +   (inherit nginx-service-type)
+    +   (extensions
+    +    (cons
+    +     (service-extension shepherd-root-service-type
+    +                        my-nginx-shepherd-service)
+    +     (remove (lambda (ext)
+    +               (eq? (service-extension-target ext)
+    +                    shepherd-root-service-type))
+    +             (service-type-extensions nginx-service-type))))))
+    +
+     (define %my-nginx-service
+    -  (service nginx-service-type my-nginx-configuration))
+    +  (service my-nginx-service-type my-nginx-configuration))
+  #+END_SRC
+
+* [2018-12-08 Sat 04:57] [[gnus:INBOX#87pnudwdda.fsf@ngyro.com][Email from Timothy Sample: Building Bash with Geesh]] by [[mailto:samplet@ngyro.com][Timothy Sample]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2018-12-09 Sun 10:20] [[gnus:INBOX#87ftv7l6gy.fsf@gmail.com][Email from Chris Marusich: Re: Using a CDN or some other mirror?]] by [[mailto:cmmarusich@gmail.com][Chris Marusich]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2018-12-09 Sun 16:13] [[gnus:INBOX#9f876db761468c16d1a6e0ee27c30821@riseup.net][Email from swedebugia: New library: guile-wikidata]] by [[mailto:swedebugia@riseup.net][swedebugia]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2018-12-12 Wed 06:24] [[gnus:INBOX#CAMFYt2ap69m3dNmforZfTod92wBsiCQFBxRNpJSLYvhOZ2tTNA@mail.gmail.com][Email from Panicz Maciej Godek: Re: Send/link your favorite guile script]] by [[mailto:godek.maciek@gmail.com][Panicz Maciej Godek]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+Here's my implementation of Held-Karp-Bellman dynamic programming approach
+to Travelling Salesman Problem:
+https://www.quora.com/How-do-I-solve-a-problem-using-dynamic-programming-approach-and-which-function-should-I-use-recursively-using-loops/answer/Panicz-Godek
+
+note that it also contains an implementation of "define/memoized" form,
+that has also been used in the definition of Levinshtein distance that I
+added to "Algorithm Implementations" Wikibook:
+https://en.wikibooks.org/wiki/Algorithm_Implementation/Strings/Levenshtein_distance#Scheme
+
+Here's my implementation of the A* search algorithm (compared with the one
+from Peter Norvig's book "Paradigms of Artificial Intelligence
+Programming"):
+https://www.quora.com/What-are-the-pros-and-cons-of-functional-programming-compared-to-imperative-programming/answer/Panicz-Godek
+
+Here's a simple "expression compiler":
+https://www.quora.com/What-lasting-effects-did-learning-LISP-have-on-you/answer/Panicz-Godek
+
+All these examples use the (grand scheme) glossary that I maintain, which -
+among other things - integrates the Scheme syntax with the (ice-9 match)
+module closely:
+https://github.com/plande/grand-scheme
+
+If you like to read code, you can also try reading a lousy booklet that I
+once wrote, titled "A Pamphlpet against R":
+https://github.com/panicz/pamphlet/
+
+* [2018-12-14 Fri 19:44] [[gnus:INBOX#874lbg8qep.fsf@gnu.org][Email from Ludovic Courtès: Re: berlin: “herd” hangs]] by [[mailto:ludo@gnu.org][Ludovic Courtès]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+We discussed this on IRC and fixed it in the meantime, but for those
+wondering: a mount error upon reconfigure led shepherd to spawn a REPL
+(see <https://issues.guix.info/issue/23697>).  Of course nobody is
+talking to shepherd’s stdin, so it would be stuck in read(0, …).
+
+I “fixed” the issue by, ahem, attaching gdb to PID 1 and doing
+“return -1” from that ’read’ call.
+
+That’s a bug we should really really fix…
+
+* [2018-12-15 Sat 08:30] [[gnus:INBOX#87d0q5yktf.fsf@gmail.com][Email from Chris Marusich: bug#33721: ci.guix.info does not return Cache-Control header for substitutes]] by [[mailto:cmmarusich@gmail.com][Chris Marusich]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2018-12-15 Sat 08:31] [[gnus:INBOX#87efakyb26.fsf@elephly.net][Email from Ricardo Wurmus: bug#33737: do not attempt to build a package known to be broken]] by [[mailto:rekado@elephly.net][Ricardo Wurmus]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2018-12-15 Sat 08:37] [[gnus:INBOX#20181215001859.5acd13c3@mykolab.com][Email from Rutger Helling: bug#33750: Virt-manager missing USB/PCI host device options]] by [[mailto:rhelling@mykolab.com][Rutger Helling]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2018-12-15 Sat 08:45] [[gnus:INBOX#2138c273-b04d-c576-d8e3-6eb235bfb2a9@riseup.net][Email from swedebugia: Re: guile-jwt 0.1.0 released]] by [[mailto:swedebugia@riseup.net][swedebugia]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2018-12-15 Sat 08:47] [[gnus:INBOX#c086e9ee-bd75-c34b-21f7-0c657e20229f@stumbles.id.au][Email from Ben Sturmfels: bug#32709: Clojure doesn't provide "clojure" executable]] by [[mailto:ben@stumbles.id.au][Ben Sturmfels]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2018-12-15 Sat 08:49] [[gnus:INBOX#87tvjgeb12.fsf@ambrevar.xyz][Email from Pierre Neidhardt: Re: Using a CDN or some other mirror?]] by [[mailto:mail@ambrevar.xyz][Pierre Neidhardt]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2018-12-15 Sat 09:09] [[gnus:INBOX#72291bb2-4f56-f73f-d07d-ac27b7a50f9e@riseup.net][Email from swedebugia: Need help rdelim. Trying to add caching to the npm-explorer]] by [[mailto:swedebugia@riseup.net][swedebugia]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2018-12-15 Sat 09:10] [[gnus:INBOX#4cb5668a-8d76-dcb4-87b9-ccb7d14f509d@riseup.net][Email from swedebugia: 500+ Gnome-shell-extensions - how to handle?]] by [[mailto:swedebugia@riseup.net][swedebugia]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2018-12-15 Sat 09:11] [[gnus:INBOX#CAJ3okZ1Wy8eOGgnvFQN-ay-j37HCjFbYoT3EobkvRNULq0eJHA@mail.gmail.com][Email from zimoun: {GWL} (random) next steps?]] by [[mailto:zimon.toutoune@gmail.com][zimoun]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2018-12-15 Sat 09:16] [[gnus:INBOX#f5acd3f075775f3ca24bf18c81ca7702@posteo.de][Email from tantalum: Re: fibers usage]] by [[mailto:sph@posteo.eu][tantalum]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2018-12-15 Sat 09:23] [[gnus:INBOX#20181212084728.30089-1-efraim@flashner.co.il][Email from Efraim Flashner: {bug#33714} {PATCH} services: Add quassel.]] by [[mailto:efraim@flashner.co.il][Efraim Flashner]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2018-12-15 Sat 09:25] [[gnus:INBOX#CA+XASoU0WqYxp2qNuUEuMvHYvbHMyx6H2Gk67m2Hanfyr0ew9g@mail.gmail.com][Email from Aleix Conchillo Flaqué: guile-json 2.0.0 released]] by [[mailto:aconchillo@gmail.com][Aleix Conchillo Flaqué]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2018-12-15 Sat 17:54] [[gnus:INBOX#87imzuswvz.fsf@ambrevar.xyz][Email from Pierre Neidhardt: bug#27217: texlive is too big]] by [[mailto:mail@ambrevar.xyz][Pierre Neidhardt]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2018-12-15 Sat 17:54] [[gnus:INBOX#87k1kbrnlq.fsf@ambrevar.xyz][Email from Pierre Neidhardt: Re: Compressing nars with lzip or similar]] by [[mailto:mail@ambrevar.xyz][Pierre Neidhardt]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2018-12-19 Wed 17:12] [[gnus:INBOX#87sgyug7zb.fsf@gnu.org][Email from Ludovic Courtès: bug#23697: guix system reconfigure hangs, shows repl in messages]] by [[mailto:ludo@gnu.org][Ludovic Courtès]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+   A simple way to reproduce this is to run:
+
+  # herd eval root '(begin (use-modules (gnu build file-systems))
+(check-file-system "/dev/foo" "ext2"))'
+
+That command does not return because PID 1 is stuck in read(0, …), where
+stdin is connected to the console.  You can type “,q” in the console
+(usually tty1) and it should be fine.  Of course if you try this
+on a remote machine, you’re screwed…
+
+Anyway, commit 6ea6e1476ff4a18d4b4b864c3065d18ed99c69af fixes it, at last.
+
+* [2018-12-20 Thu 22:34] [[gnus:INBOX#20181219192926.GB2581@macbook41][Email from Efraim Flashner: Re: `guix lint' warn of GitHub autogenerated source tarballs]] by [[mailto:efraim@flashner.co.il][Efraim Flashner]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2018-12-21 Fri 20:30] [[gnus:INBOX#87zht1wrec.fsf@gnu.org][Email from Ludovic Courtès: Re: Stuck upgrading from Guix v0.12]] by [[mailto:ludo@gnu.org][Ludovic Courtès]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+   
+> I’m in the same situation upgrading a machine that didn’t have an
+> Internet connection for months.
+>
+> Here’s what I do:
+>
+> - use a git checkout to jump to commit
+>   b0cb92b2d43a2c4d5fa9b3f8c04c5732c60061e7, which adds guile-gcrypt
+>
+> - ./bootstrap && ./configure --localstatedir=/var && make clean && make
+>
+> - ./pre-inst-env guix package -i guile guile-sqlite3 guile-json
+>   guile-ssh guile-gcrypt
+>
+> - update to the latest version
+
+Just a reminder so people don’t run away ;-): the upgrade story got much
+better shortly before 0.15.0, when ‘guix pull’ got the ability to “build
+Guix from Guix” in a way that does not rely* on the currently installed
+Guix.  For example, you can run 0.15’s ‘guix pull’ and upgrade to
+today’s Guix without problems.
+
+Ludo’.
+
+ More specifically, ‘guix pull’ relies on a small subset of Guix
+  functionality that hasn’t changed in a couple of years, which is a lot
+  given Guix’s history.
+
+* [2018-12-21 Fri 20:51] [[gnus:INBOX#87ftuv3kkj.fsf@gnu.org][Email from Jan Nieuwenhuizen: Proposed bootstrap update: mes-minimal-stripped-tarball-0.19]] by [[mailto:janneke@gnu.org][Jan Nieuwenhuizen]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2018-12-21 Fri 20:53] [[gnus:INBOX#20181218140030.3545935e@alma-ubu][Email from Björn Höfling: IPFS trouble]] by [[mailto:bjoern.hoefling@bjoernhoefling.de][Björn Höfling]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2018-12-21 Fri 20:54] [[gnus:INBOX#161edf75-57b7-4d5b-8acf-a4c61358add1@riseup.net][Email from swedebugia: Internet Archive APIs useful as fallback?]] by [[mailto:swedebugia@riseup.net][swedebugia]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2018-12-21 Fri 20:55] [[gnus:INBOX#de7a3438-ce43-cbd2-9655-adb9adcf96f3@riseup.net][Email from swedebugia: Re: Internet Archive APIs useful as fallback?]] by [[mailto:swedebugia@riseup.net][swedebugia]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2018-12-21 Fri 20:59] [[gnus:INBOX#20181220160300.1140d486@alma-ubu][Email from Björn Höfling: How I got stuck (and ways to resolve)]] by [[mailto:bjoern.hoefling@bjoernhoefling.de][Björn Höfling]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2018-12-21 Fri 21:00] [[gnus:INBOX#87y38isw77.fsf@gmail.com][Email from Meiyo Peng: {bug#33600} CDN performance]] by [[mailto:meiyo.peng@gmail.com][Meiyo Peng]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2018-12-21 Fri 21:09] [[gnus:INBOX#87tvjaeq3d.fsf@gnu.org][Email from Ludovic Courtès: Re: Best practices for processing s-expressions representing configurations/DSLs]] by [[mailto:ludo@gnu.org][Ludovic Courtès]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+   > When representing application configurations or DSLs as s-expressions, what
+> are common or best strategies for processing them? For example, here's an
+> excerpt I found of the Guix package definition DSL to study as a prototype:
+>
+>     (package
+>       (name "hello")
+>       (version "2.10")
+>       (build-system gnu-build-system)
+>       (arguments '(#:configure-flags '("--enable-silent-rules")))
+>       (inputs `(("gawk" ,gawk)))
+>       (synopsis "Hello, GNU world: An example GNU package")
+>       (description "Guess what GNU Hello prints!")
+>       (home-page "http://www.gnu.org/software/hello/")
+>       (license gpl3+))
+>
+> Would this just be executed directly within the equivalent of a regular
+> Guile REPL (with the Guix extensions loaded, of course) ? Is each "key"
+> (e.g. "name" or "build-system") just a function call?
+
+The expression above expands to a (make-struct <package> …) call, which
+instantiates a record (also called a structure in some languages.)
+
+The article at <https://arxiv.org/pdf/1305.4584v1.pdf> explains it in
+more detail.
+
+* [2018-12-21 Fri 21:12] [[gnus:INBOX#87zht3i0ae.fsf@gnu.org][Email from Ludovic Courtès: Re: berlin.guixsd.org rebooted]] by [[mailto:ludo@gnu.org][Ludovic Courtès]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+Yes, but be careful, the ‘mount’ command does some interpretation:
+
+$ sudo strace -e mount mount -o bind,ro foo foo
+mount("/home/ludo/src/guix/foo", "/home/ludo/src/guix/foo", 0x205fc00, MS_MGC_VAL|MS_RDONLY|MS_BIND, NULL) = 0
+mount("none", "/home/ludo/src/guix/foo", NULL, MS_RDONLY|MS_REMOUNT|MS_BIND, NULL) = 0
++++ exited with 0 +++
+
+Roughly, “bind” is translated to the MS_BIND *flag* (not option), and
+“defaults” is translated to NULL for the options string.
+
+Confusing!
+
+Ludo’.
+
+* [2018-12-21 Fri 21:12] [[gnus:INBOX#87a7l3uuqd.fsf@elephly.net][Email from Ricardo Wurmus: “index full” on berlin.guixsd.org]] by [[mailto:rekado@elephly.net][Ricardo Wurmus]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+I just saw this message on the berlin.guixsd.org console:
+
+EXT4-fs warning (device sdb1): ext4_dx_add_entry:2187: Directory (ino:
+381288470) index full, reach max htree level :2
+EXT4-fs warning (device sdb1): ext4_dx_add_entry:2191: Large directory
+feature is not enabled on this filesystem
+
+To fix this I just ran this command:
+
+    tune2fs -O large_dir /dev/sdb1
+
+* [2018-12-21 Fri 21:14] [[gnus:INBOX#CAGua6m1R6mw_csUXvXv5aGmeZLGfQmRHDVvNxoq9P8QyWTzk0Q@mail.gmail.com][Email from Stefan Israelsson Tampe: guile persist]] by [[mailto:stefan.itampe@gmail.com][Stefan Israelsson Tampe]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+   Anouncement, version 0.1 of guile persist,
+
+     https://gitlab.com/tampe/guile-persist
+
+This is a serialization library for serilizing objects like classes and
+objects, closures and structs.
+The tool is used by guile-log and python-on-guile in order to complete
+features like pickle
+support. This does not support serilizing continuations or delimeted
+continuations currently.
+This library is a hack and introduce dangerous ideoms. Use it with care.
+
+The main reason for this library is to not demand guile-log  for compiling
+python-on-guile. But
+as always any happy hacker needs satisfied is an added bonus.
+
+Have fun!
+
+Stefan
+
+* [2018-12-21 Fri 21:15] [[gnus:INBOX#20181219201313.GC2581@macbook41][Email from Efraim Flashner: {bug#33805} {PATCH}: refresh: Allow searching recursively]] by [[mailto:efraim@flashner.co.il][Efraim Flashner]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2018-12-21 Fri 21:18] [[gnus:INBOX#idjimzo5dni.fsf@bimsb-sys02.mdc-berlin.net][Email from Ricardo Wurmus: no code for module (guix build utils)]] by [[mailto:ricardo.wurmus@mdc-berlin.de][Ricardo Wurmus]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+  GUILE_LOAD_COMPILED_PATH= guile --no-auto-compile ~/maintenance/hydra/install-berlin.scm
+
+* [2018-12-22 Sat 15:09] [[gnus:INBOX#87k1k2b0df.fsf@ngyro.com][Email from Timothy Sample: New Gash build Bash without Bash, Coreutils, and a few others]] by [[mailto:samplet@ngyro.com][Timothy Sample]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2018-12-22 Sat 17:12] [[gnus:INBOX#cu7y38han6g.fsf@systemreboot.net][Email from Arun Isaac: {bug#33801} import: github: Support source URIs that redirect to GitHub]] by [[mailto:arunisaac@systemreboot.net][Arun Isaac]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2018-12-23 Sun 00:26] [[gnus:INBOX#aa61cde5-b9af-7060-5dd1-a7a143c519fd@gmail.com][Email from Matt Wette: how to use ffi-help]] by [[mailto:matt.wette@gmail.com][Matt Wette]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2018-12-23 Sun 10:30] [[gnus:INBOX#87y38ir7hi.fsf@elephly.net][Email from Ricardo Wurmus: GNOME 3.30: help needed!]] by [[mailto:rekado@elephly.net][Ricardo Wurmus]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2018-12-27 Thu 21:22] [[gnus:INBOX#20181227160503.2d059a36@mykolab.com][Email from Rutger Helling: {bug#33888} {PATCH} gnu: Add sway.]] by [[mailto:rhelling@mykolab.com][Rutger Helling]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+  (screen-locker-service sway "swaylock") ; native Wayland screen locker
+
+* FEATURE [2018-12-28 Fri 22:10] [[gnus:nnimap+USER:INBOX#87lg4dwfmt.fsf@gmail.com][Email from Taylan Kammer: Better names for Guix versions from git?]] by [[mailto:taylan.kammer@gmail.com][Taylan Kammer]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2018-12-29 Sat 20:33] [[gnus:INBOX#20181228231205.8068-1-ludo@gnu.org][Email from Ludovic Courtès: {bug#33899} {PATCH 0/5} Distributing substitutes over IPFS]] by [[mailto:ludo@gnu.org][Ludovic Courtès]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2018-12-29 Sat 22:46] [[gnus:INBOX#2341c0f3571951a38f39305dc1e58f14@posteo.de][Email from tantalum: how to use gsl with the guile ffi]] by [[mailto:sph@posteo.eu][tantalum]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2018-12-30 Sun 09:43] [[gnus:INBOX#CA+XASoVmEy1Rt7w=pM21JkYL6dYJeGtW0_HjpnUa_eV5pGcvkQ@mail.gmail.com][Email from Aleix Conchillo Flaqué: guile-json 3.0.0 released]] by [[mailto:aconchillo@gmail.com][Aleix Conchillo Flaqué]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2018-12-30 Sun 11:52] [[gnus:INBOX#875zvbjvxv.fsf@gmail.com][Email from Gabriel Hondet: {bug#33920} {PATCH} gnu: Add gauche.]] by [[mailto:gabrielhondet@gmail.com][Gabriel Hondet]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2018-12-31 Mon 11:11] [[gnus:INBOX#877efrgceq.fsf@elephly.net][Email from Ricardo Wurmus: zabbix]] by [[mailto:rekado@elephly.net][Ricardo Wurmus]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2018-12-31 Mon 11:12] [[gnus:INBOX#875zvau251.fsf@gnu.org][Email from Nala Ginrut: {ANN} GNU Artanis-0.3.1 released!]] by [[mailto:mulei@gnu.org][Nala Ginrut]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2018-12-31 Mon 11:24] [[gnus:INBOX#87wonqu78c.fsf@gmail.com][Email from Taylan Kammer: Re: issues unit testing with srfi-64]] by [[mailto:taylan.kammer@gmail.com][Taylan Kammer]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2018-12-31 Mon 12:38] [[gnus:INBOX#87y387kl6v.fsf@ngyro.com][Email from Timothy Sample: GDM future work]] by [[mailto:samplet@ngyro.com][Timothy Sample]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2019-01-01 Tue 12:02] [[gnus:INBOX#CA+XASoXTfQL4sbJc7EhJmBQ9NZss_uB2TCztU+CmFxONy+qONQ@mail.gmail.com][Email from Aleix Conchillo Flaqué: Re: guile-json 3.0.0 released]] by [[mailto:aconchillo@gmail.com][Aleix Conchillo Flaqué]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2019-01-02 Wed 10:19] [[gnus:INBOX#CAE4v=pjaYN24tiMcya6jOQX3q=PZPrE-3dXhgws9s-UD2hdyDQ@mail.gmail.com][Email from Gábor Boskovits: Some utility functions]] by [[mailto:boskovits@gmail.com][Gábor Boskovits]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2019-01-02 Wed 10:19] [[gnus:INBOX#877efn8yi6.fsf@gmail.com][Email from Erik Edrosa: {ANN} Guile-Git version 0.2.0 released]] by [[mailto:erik.edrosa@gmail.com][Erik Edrosa]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2019-01-04 Fri 11:08] [[gnus:INBOX#LVIVy4b--3-1@tutanota.com][Email from znavko: Choosing Hardware: cpu, motherboard]] by [[mailto:znavko@tutanota.com][znavko]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+  - https://h-node.org/hardware/catalogue/en
+  - https://minifree.org/product/libreboot-x200-tablet/
+  - https://shop.libiquity.com/product/taurinus-x200
+  - https://secure.raptorcs.com/content/TL1BC1/purchase.html
+  - https://www.xes-inc.com/product-category/processor-boards/
+
+* [2019-01-05 Sat 20:26] [[gnus:INBOX#87imz3rq3k.fsf@elephly.net][Email from Ricardo Wurmus: Re: Brain storming cool Guix features]] by [[mailto:rekado@elephly.net][Ricardo Wurmus]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+  #+BEGIN_SRC scheme
+    (slim-service-type
+     config => (slim-configuration
+                (inherit config)
+                (startx (xorg-start-command
+                         #:configuration-file
+                         (xorg-configuration-file
+                          #:extra-config
+                          (list dvorak-evdev))))))
+
+  #+END_SRC
+
+* [2019-01-07 Mon 19:50] [[gnus:INBOX#87ftu430u6.fsf@petton.fr][Email from Nicolas Petton: Emacs pretest 26.1.91 is out]] by [[mailto:nicolas@petton.fr][Nicolas Petton]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2019-01-07 Mon 19:50] [[gnus:INBOX#87ftu4d2tk.fsf@gmx.de][Email from Michael Albinus: Re: filenotify-tests.el failing inside Docker debian:stretch]] by [[mailto:michael.albinus@gmx.de][Michael Albinus]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2019-01-08 Tue 22:56] [[gnus:INBOX#87muob5az4.fsf@ambrevar.xyz][Email from Pierre Neidhardt: Re: Some general guix questions]] by [[mailto:mail@ambrevar.xyz][Pierre Neidhardt]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+  #+BEGIN_SRC sh
+    cat<<EOF>"$PKG_ROOT/guix"
+    (specifications->manifest
+     '(
+    EOF
+    guix package -I | awk '{printf("\"%s", $1); if($3!="out") {printf("%s", ":" $3)}; print "\""}' | LC_ALL=C sort >>"$PKG_ROOT/guix" echo "))" >>"$PKG_ROOT/guix"
+  #+END_SRC
+
+* [2019-01-11 Fri 21:33] [[gnus:INBOX#8736pzpnhg.fsf@elephly.net][Email from Ricardo Wurmus: {bug#34040} Suggest input changes when updating packages]] by [[mailto:rekado@elephly.net][Ricardo Wurmus]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2019-01-12 Sat 01:08] [[gnus:INBOX#87va2vng66.fsf@gmail.com][Email from Alex Kost: Re: Is it possible to display song durations in EMMS playlist?]] by [[mailto:alezost@gmail.com][Alex Kost]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+   #+BEGIN_SRC emacs-lisp
+     ;; There is `emms-track-description-function' variable for this purpose.
+     ;; For example, you can add the playing time using the following code:
+
+     (defun my-emms-format-time (seconds)
+       "Convert SECONDS into a human readable string."
+       (let ((min (/ seconds 60))
+             (sec (% seconds 60)))
+         (format "%d:%02d" min sec)))
+
+     (defun my-emms-track-description (track)
+       ;; Note that (require 'emms-info) is needed for this function, but
+       ;; this feature is required automatically if you setup your EMMS with
+       ;; (emms-all).
+       (let ((time (emms-track-get track 'info-playing-time)))
+         (concat (emms-info-track-description track)
+                 (when time
+                   (format " (%s)" (my-emms-format-time time))))))
+
+     (setq emms-track-description-function 'my-emms-track-description)
+
+   #+END_SRC
+f** [2019-01-19 Sat 05:25] [[gnus:INBOX#87zhrx4mlu.fsf@web.de][Email from Arne Babenhauserheide: {bug#34128} {PATCH} add emacs built with xwidgets-support]] by [[mailto:arne_bab@web.de][Arne Babenhauserheide]]
+
+* [2019-01-21 Mon 16:43] [[gnus:INBOX#2226523.T4agAj5bdv@aleksandar-ixtreme-m5740][Email from HiPhish: Unofficial Neovim channel]] by [[mailto:hiphish@posteo.de][HiPhish]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+  https://gitlab.com/HiPhish/neovim-guix-channel/
+
+* [2019-01-23 Wed 20:20] [[gnus:INBOX#87o988n6tl.fsf@gnu.org][Email from Ludovic Courtès: Migrating to Guile-JSON 3.x]] by [[mailto:ludo@gnu.org][Ludovic Courtès]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2019-01-26 Sat 12:53] [[gnus:INBOX#20190126043738.focftyoqbmpacjem@WaraToNora][Email from Yoshinori Arai: mypaint package]] by [[mailto:kumagusu08@gmail.com][Yoshinori Arai]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2019-01-29 Tue 01:05] [[gnus:INBOX#87h8dshesk.fsf@cbaines.net][Email from Christopher Baines: {bug#30689} {PATCH 00/39} Add ruby-rails and depedencies.]] by [[mailto:mail@cbaines.net][Christopher Baines]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2019-02-02 Sat 01:14] [[gnus:INBOX#87sgx71xg8.fsf@cbaines.net][Email from Christopher Baines: Re: Patchwork + automated checking and testing of patches]] by [[mailto:mail@cbaines.net][Christopher Baines]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2019-02-02 Sat 12:51] [[gnus:INBOX#871s4rqk7u.fsf@gnu.org][Email from Tassilo Horn: {RFC}: replace-region-contents]] by [[mailto:tsdh@gnu.org][Tassilo Horn]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2019-02-12 Tue 23:13] [[gnus:INBOX#8736ouiw24.fsf@gmail.com][Email from Chris Marusich: guix copy fails due to "Protocol error"]] by [[mailto:cmmarusich@gmail.com][Chris Marusich]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2019-02-12 Tue 23:13] [[gnus:INBOX#87k1i518ea.fsf@gmail.com][Email from Chris Marusich: Re: guix copy fails due to "Protocol error"]] by [[mailto:cmmarusich@gmail.com][Chris Marusich]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2019-02-12 Tue 23:13] [[gnus:INBOX#87o97hgde5.fsf@gnu.org][Email from Ludovic Courtès: Re: guix copy fails due to "Protocol error"]] by [[mailto:ludo@gnu.org][Ludovic Courtès]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2019-02-12 Tue 23:14] [[gnus:INBOX#875ztqozv7.fsf@ericabrahamsen.net][Email from Eric Abrahamsen: Re: How can I protect the gnus structure?]] by [[mailto:eric@ericabrahamsen.net][Eric Abrahamsen]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2019-02-12 Tue 23:15] [[gnus:INBOX#87k1ia5sd4.fsf@cbaines.net][Email from Christopher Baines: Tracking and inspecting how Guix changes over time]] by [[mailto:mail@cbaines.net][Christopher Baines]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2019-02-12 Tue 23:32] [[gnus:INBOX#20190212155815.23817-1-mbakke@fastmail.com][Email from Marius Bakke: {PATCH v2} gnu: Add ungoogled-chromium.]] by [[mailto:mbakke@fastmail.com][Marius Bakke]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2019-02-12 Tue 23:33] [[gnus:INBOX#87h8da5u5k.fsf@dustycloud.org][Email from Christopher Lemmer Webber: It's time to build "guix deploy"]] by [[mailto:cwebber@dustycloud.org][Christopher Lemmer Webber]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2019-02-12 Tue 23:34] [[gnus:INBOX#87d0o4fr7q.fsf@elephly.net][Email from Ricardo Wurmus: {bug#29951} {PATCH}: guix: Add wrap-script.]] by [[mailto:rekado@elephly.net][Ricardo Wurmus]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2019-02-12 Tue 23:36] [[gnus:INBOX#871s4herxf.fsf@web.de][Email from Arne Babenhauserheide: Wisp 1.0 released]] by [[mailto:arne_bab@web.de][Arne Babenhauserheide]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2019-02-12 Tue 23:41] [[gnus:INBOX#trinity-e84838dd-4b91-4f88-9c95-4d391ccbb366-1549832772713@3c-app-mailcom-bs07][Email from Noneayour Business: sandboxing Guile extensions]] by [[mailto:pacificsymphony8@gmx.com][Noneayour Business]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2019-02-12 Tue 23:42] [[gnus:INBOX#ea59cf45-18d6-574c-f84a-315c39102817@posteo.eu][Email from tantalum: How do you format date-times in RFC 3339 style?]] by [[mailto:sph@posteo.eu][tantalum]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2019-02-12 Tue 23:46] [[gnus:nnimap+USER:INBOX#m2muna8mhs.fsf@gmail.com][Email from Robert Pluim: {PATCH} Implement texinfo @ref dwim]] by [[mailto:rpluim@gmail.com][Robert Pluim]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2019-02-15 Fri 08:36] [[gnus:INBOX#20190213220006.40cd1f3a@alma-ubu][Email from Björn Höfling: Re: Getting a copy of the Cuirass (berlin.guixsd.org) database]] by [[mailto:bjoern.hoefling@bjoernhoefling.de][Björn Höfling]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2019-02-16 Sat 14:13] [[gnus:INBOX#871s48eoi0.fsf@gmail.com][Email from Alex Kost: Re: How to start Xorg server with startx]] by [[mailto:alezost@gmail.com][Alex Kost]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+  [[xinit https://lists.gnu.org/archive/html/help-guix/2018-07/msg00080.html][xinit tutorial]]
+
+* [2019-02-26 Tue 08:49] [[gnus:INBOX#d017a05fe71682cae352ca96feb51a53@lepiller.eu][Email from Julien Lepiller: Renewing certificates with certbot]] by [[mailto:julien@lepiller.eu][Julien Lepiller]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+  #+BEGIN_SRC scheme
+    ;; Find running nginx and reload its configuration (for certificates)
+    (define %my-deploy-hook
+      (program-file
+       "my-deploy-hook"
+       #~(let* ((pid (call-with-input-file "/var/run/nginx/pid" read))
+                (cert-dir (getenv "RENEWED_LINEAGE"))
+                (privkey (string-append cert-dir "/privkey.pem")))
+           ;; certbot private keys are world-readable by default, and
+           smtpd complains
+           ;; about that, refusing to start otherwise
+           (chmod privkey #o600)
+           (kill pid SIGHUP))))
+  #+END_SRC
+
+* [2019-03-02 Sat 12:05] [[gnus:INBOX#CAJ3okZ2qCDYAdb909ZjJOgVan87Z5VEfziNXSPoT9oV81b=iGg@mail.gmail.com][Email from zimoun: Re: guix pack -f docker ...]] by [[mailto:zimon.toutoune@gmail.com][zimoun]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+   
+To add pointers, I recommend you this blog post [1] by Ludo presenting
+`guix pack`.
+
+[1] https://www.gnu.org/software/guix/blog/2017/creating-bundles-with-guix-pack/
+
+
+Personally, I use something in this flavour:
+
+      guix pack -f docker \
+         -S /bin=bin -S /lib=lib -S /share=share  \
+         emacs guile geiser
+
+      docker load < /gnu/store/<hash>-docker-pack.tar.gz
+      docker image ls
+      docker run -ti <image-id> emacs
+
+And depending on your Guix commit (version), the hashes/id should be different.
+
+With `guix describe`, I have 89ea625, so `guix pull --commit=89ea625` then
+ - <hash> is pg66wnjsg7yyxc0gi5wbrk8dz0i2jyfp
+ - docker TAG is k2nml7smdflwzkgqhqnmy6s0lzambdvl
+ - docker IMAGE ID is 560c357dd4e3
+
+* [2019-03-02 Sat 15:03] [[gnus:INBOX#20190224113050.GA67303@breton.holly.idiocy.org][Email from Alan Third: Native image rotation]] by [[mailto:alan@idiocy.org][Alan Third]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2019-03-11 Mon 20:58] [[gnus:nnimap+USER:INBOX#877eeoe8v2.fsf@ambrevar.xyz][Email from Pierre Neidhardt: Multi-monitors: arandr, autorandr, srandrd, screenconfig?]] by [[mailto:mail@ambrevar.xyz][Pierre Neidhardt]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+   I'm trying to figure out convenient ways to manage multi-monitors,
+e.g. make profiles, auto-detect configurations, etc.
+
+We already have arandr on master.  Has anyone interesting tricks to
+share with it?
+
+I found other related projects:
+
+- https://github.com/phillipberndt/autorandr
+
+- https://github.com/jceb/screenconfig combined with
+  https://github.com/jceb/srandrd.
+
+* [2019-03-12 Tue 22:16] [[gnus:INBOX#878sxkh8v8.fsf@ambrevar.xyz][Email from Pierre Neidhardt: {bug#34613} Acknowledgement ({PATCH} gnu: Add prometheus.)]] by [[mailto:mail@ambrevar.xyz][Pierre Neidhardt]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2019-03-12 Tue 22:27] [[gnus:INBOX#87pnqvor9l.fsf@ponder][Email from Vagrant Cascadian: Re: boot multiple Gnu/Linux Distributions from one USB key]] by [[mailto:vagrant@debian.org][Vagrant Cascadian]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+   
+On 2019-03-12, Ricardo Wurmus wrote:
+> gnuforever <help@tuyizere.org> writes:
+>> For GuixSD, I came up with this configuration:
+>> I used label instead of uuid.
+>>
+>>     ## GUIXSD
+>>     menuentry "GUIXSD - Gnu/Linux" {
+>>         set isofile="/boot-isos/guixsd-install-0.16.0.x86_64-linux.iso"
+>>         loopback loop (hd0,1)$isofile
+>>         search --label --set GUIXSD_IMAGE
+>>         linux
+>> (loop)/gnu/store/0zajbn9q39yva4l0zzrcshlll8qikzba-linux-libre-4.19.6/bzImage9
+>> --root=GUIXSD_IMAGE
+>> --system=(loop)/gnu/store/l4hgd4l7acrqwi3imav9akcvv4sbj85j-system
+>> --load=(loop)/gnu/store/l4hgd4l7acrqwi3imav9akcvv4sbj85j-system/boot
+>>         initrd
+>> (loop)/gnu/store/9nqaksx40zh5d6cg5rim3f3spy56bfb9-raw-initrd/initrd.cpio.gz
+>>     }
+>>
+>> It doesn't work. I get the following error message:
+>>
+>> waiting for partition 'GUIXSD_IMAGE' to appear...
+>
+> Does a partition with this label exist?
+
+From the Guix initramfs you would need to run:
+
+  losetup /path/to/file
+
+If the image was in a partitioned loopback file:
+
+  losetup --partscan /path/to/file
+
+Then I suspect the labels would get populated. You may also need to add
+losetup to the initramfs, since it probably isn't yet present.
+
+I'm guessing you would also remove the (loop) from these arguments,
+which are passed to the Guix initramfs, not loaded from grub:
+
+  --system=/gnu/store...-system
+  --load=/gnu/store...-boot
+
+
+live well,
+  vagrant
+
+* [2019-03-17 Sun 12:03] [[gnus:INBOX#alpine.DEB.2.20.1903162251591.16784@marsh.hcoop.net][Email from Jack Hill: Re: SANE / simple-scan working for anyone?]] by [[mailto:jackhill@jackhill.us][Jack Hill]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+   
+Did you end up getting your scanning issue resolved? You may have seem
+my own scanning-related adventures over on help-guix [0] where I
+discovered that adding the udev rules from sane-backends was
+needed. The service definition that I used to add them is:
+
+(simple-service 'sane-udev-rules udev-service-type (list sane-backends))
+
+I found that looking at the output of `scanimage -L` from the
+sane-backends package (yes there are user-facing tools in there ☺) as
+both my user and root helpful.
+
+* [2019-03-17 Sun 23:54] [[gnus:INBOX#4d892ffa-f2ae-422d-ea5d-0b3705ed15a7@riseup.net][Email from swedebugia: Libre games that might be worth packaging :)]] by [[mailto:swedebugia@riseup.net][swedebugia]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2019-03-21 Thu 08:30] [[gnus:INBOX#20190320223229.24417-1-ludo@gnu.org][Email from Ludovic Courtès: {bug#34929} {PATCH 00/12} Provide uniform keyboard layout configuration]] by [[mailto:ludo@gnu.org][Ludovic Courtès]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2019-03-21 Thu 08:38] [[gnus:INBOX#20190321001143.21045-1-pierre.langlois@gmx.com][Email from Pierre Langlois: {bug#34931} {PATCH 0/5} Add gPodder.]] by [[mailto:pierre.langlois@gmx.com][Pierre Langlois]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2019-03-24 Sun 23:23] [[gnus:INBOX#CAE4v=pj4S-adVXDJ6uBw-_p5zdhLd_NoN0-zauD5_N6P+c9TLA@mail.gmail.com][Email from Gábor Boskovits: wip-netlink]] by [[mailto:boskovits@gmail.com][Gábor Boskovits]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2019-03-24 Sun 23:57] [[gnus:INBOX#20190319195908.1.979BB022D8DF2D73@mail.lbry.com][Email from LBRY: New Name, New Website - LBRY.com - Check It Out]] by [[mailto:mailbot@mail.lbry.com][LBRY]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2019-03-28 Thu 20:37] [[gnus:INBOX#67c9d51c-6b52-4703-b87d-18225297eaf2@www.fastmail.com][Email from Linus Björnstam: Megacut - a clojure-like lambda shorthand]] by [[mailto:linus.internet@fastmail.se][Linus Björnstam]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+  https://bitbucket.org/bjoli/megacut
+
+* [2019-03-28 Thu 20:47] [[gnus:INBOX#87lg10eez7.fsf@gnu.org][Email from Ludovic Courtès: bug#35010: Many CPAN download URLs are no longer available]] by [[mailto:ludo@gnu.org][Ludovic Courtès]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+   
+scheme@(guile-user)> (package-latest-release perl-uri (force %updaters))
+$6 = #<<upstream-source> package: "perl-uri" version: "1.76" urls: ("mirror://cpan/authors/id/O/OA/OALDERS/URI-1.76.tar.gz") signature-urls: #f input-changes: #<procedure 7fced1c44ca0 at guix/import/cpan.scm:308:7 (x)>>
+
+So with a bit of work we could change ‘package-update’ to automatically
+update the URL.
+
+(Time passes…)
+
+Commit 42314ffa072f31cc1cb44df38b1f8fcca19d9d3c should fix this.
+I should have let figure it out ;-), but somehow I ended up
+investigating too much, bah!
+
+Let me know what you think.
+
+In the meantime, to fix the Perl packages, you could maybe run:
+
+  guix lint -c source $(guix package -A ^perl-)
+
+Then you could perhaps comment the ‘version>?’ test in (guix upstream)
+to force ‘guix package -u’ to update these seemingly up-to-date
+packages.
+
+* [2019-03-28 Thu 21:43] [[gnus:INBOX#87ef6v9f0h.fsf@mail.shannon-data.com][Email from Derek Zhou: {ELPA} New package: smalltalk-mode]] by [[mailto:derek@shannon-data.com][Derek Zhou]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2019-03-28 Thu 22:14] [[gnus:INBOX#87r2asweu1.fsf@roquette.mug.biscuolo.net][Email from Giovanni Biscuolo: XDG_DATA_DIRS issue in execution environment on LTSP]] by [[mailto:g@xelera.eu][Giovanni Biscuolo]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2019-04-08 Mon 23:14] [[gnus:INBOX#87mul1rdt1.fsf@gmail.com][Email from Boris A. Dekshteyn: Re: How to add an element 'Ungoogled Chromium with Tor' to Applications menu in Xfce4-panel on GuixSD?]] by [[mailto:boris.dekshteyn@gmail.com][Boris A. Dekshteyn]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2019-04-30 Tue 21:41] [[gnus:INBOX#871s1kad42.fsf@GlaDOS.home][Email from Diego Nicola Barbato: {bug#35493} {PATCH 0/3} Allow multiple SLiM services.]] by [[mailto:dnbarbato@posteo.de][Diego Nicola Barbato]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2019-04-30 Tue 21:48] [[gnus:INBOX#87y340hpbh.fsf@nicolasgoaziou.fr][Email from Nicolas Goaziou: {bug#35391} {PATCH} Add jumpnbump]] by [[mailto:mail@nicolasgoaziou.fr][Nicolas Goaziou]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2019-04-30 Tue 22:19] [[gnus:INBOX#87imuzajdz.fsf@GlaDOS.home][Email from Diego Nicola Barbato: Starting SLiM on multiple ttys]] by [[mailto:dnbarbato@posteo.de][Diego Nicola Barbato]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2019-04-30 Tue 22:20] [[gnus:INBOX#87mukbq3x4.fsf@cbaines.net][Email from Christopher Baines: Re: Help with OpenVPN Plugin for Network Manager]] by [[mailto:mail@cbaines.net][Christopher Baines]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+  #+BEGIN_SRC scheme
+    (modify-services %desktop-services
+      (network-manager-service-type
+       config => (network-manager-configuration
+                  (inherit config)
+                  (vpn-plugins
+                   (list network-manager-openvpn)))))
+
+    (services (cons* (service gnome-desktop-service-type)
+                     (modify-services %desktop-services
+                       (network-manager-service-type
+                        config => (network-manager-configuration
+                                   (inherit config)
+                                   (vpn-plugins
+                                    (list network-manager-openvpn)))))))
+  #+END_SRC
+
+* [2019-04-30 Tue 22:48] [[gnus:INBOX#trinity-c18fdafd-5920-4be7-aad8-33bc3f1c2c47-1556644577538@3c-app-mailcom-lxa02][Email from Dexter Morgan: Missing Secure and Private Communication Applications in Guix]] by [[mailto:dextermorgan@asia.com][Dexter Morgan]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2019-05-24 Fri 23:05] [[gnus:INBOX#87ftp9v2st.fsf@gnu.org][Email from Ludovic Courtès: Program to build the on-line manuals (HTML + PDF)]] by [[mailto:ludo@gnu.org][Ludovic Courtès]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2019-05-24 Fri 23:56] [[gnus:INBOX#87a7fmkbtv.fsf@invergo.net][Email from Brandon Invergo: {ANN} guile-file-names 0.2]] by [[mailto:brandon@invergo.net][Brandon Invergo]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2019-05-29 Wed 11:25] [[gnus:INBOX#878suq3k6t.fsf@gnu.org][Email from Ludovic Courtès: Guile Days in Strasbourg, France, June 21–22]] by [[mailto:ludo@gnu.org][Ludovic Courtès]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2019-05-31 Fri 22:22] [[gnus:INBOX#2086483542.30886731559308074711.JavaMail.no-reply@gosuslugi.ru][Email from Госуслуги: Получено сообщение от  МВД России]] by [[mailto:no-reply@gosuslugi.ru][Госуслуги]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2019-06-04 Tue 00:11] [[gnus:INBOX#87ftorhmoq.fsf@gnu.org][Email from Jan Nieuwenhuizen: Re: {ANN} guile-gi v0.0.1 released]] by [[mailto:janneke@gnu.org][Jan Nieuwenhuizen]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2019-06-04 Tue 00:16] [[gnus:INBOX#eb47241d-f234-6547-8fdb-a75bb54b5832@gmail.com][Email from Zelphir Kaltstahl: Re: Using UNIX sockets (Zelphir Kaltstahl)]] by [[mailto:zelphirkaltstahl@gmail.com][Zelphir Kaltstahl]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2019-06-04 Tue 21:15] [[gnus:INBOX#87ftopg23r.fsf@gnu.org][Email from Ludovic Courtès: Testing needed for lzip substitutes!]] by [[mailto:ludo@gnu.org][Ludovic Courtès]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2019-06-05 Wed 08:18] [[gnus:INBOX#20190604073406.9297-1-dannym@scratchpost.org][Email from Danny Milosavljevic: {bug#36086} {PATCH} services: Add auditd.]] by [[mailto:dannym@scratchpost.org][Danny Milosavljevic]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2019-06-05 Wed 09:51] [[gnus:nnimap+USER:INBOX#87imtq4kf5.fsf@fsf.org][Email from Ian Kelling: {Savannah-hackers-public} lists.gnu.org upgrade is planned for Monday June 3rd]] by [[mailto:iank@fsf.org][Ian Kelling]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+   
+This will affect all these mailman sites:
+lists.gnu.org : lists.defectivebydesign.org : lists.endsoftpatents.org : 
+lists.libreplanet.org : lists.nongnu.org
+
+This should only result in about 5-10 minutes of downtime. Probably in
+the early afternoon eastern time. I will announce it on
+https://quitter.im/fsfstatus at least a few minutes beforehand. The main
+change will be a small version increase for mailman, and a large version
+upgrade for exim and apache.
+
+* [2019-06-09 Sun 06:53] [[gnus:INBOX#875zpgrjqf.fsf@sdf.lonestar.org][Email from Jakob L. Kreuze: Progress on 'guix deploy']] by [[mailto:zerodaysfordays@sdf.lonestar.org][Jakob L. Kreuze]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2019-06-21 Fri 15:37] [[gnus:INBOX#20190616142915.GC12459@serpent][Email from Jeff Bauer: i3lock: problem and solution]] by [[mailto:jeffrubic@gmail.com][Jeff Bauer]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2019-06-22 Sat 17:07] [[gnus:INBOX#87wohewqu6.fsf@dustycloud.org][Email from Christopher Lemmer Webber: New episode of Libre Lounge out interviewing Ludovic about Guix!]] by [[mailto:cwebber@dustycloud.org][Christopher Lemmer Webber]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2019-06-25 Tue 21:07] [[gnus:INBOX#20190618160922.GA20229@jurong][Email from Andreas Enge: bug#32339: Nix import]] by [[mailto:andreas@enge.fr][Andreas Enge]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2019-06-25 Tue 21:09] [[gnus:INBOX#8742a314-c757-70b1-da94-b68272b323ec@riseup.net][Email from swedebugia@riseup.net: Filecoin source is now available]] by [[mailto:swedebugia@riseup.net][]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2019-07-03 Wed 20:12] [[gnus:INBOX#87imslvupr.fsf@gnu.org][Email from Jan Nieuwenhuizen: {ANN} Emacsy 0.4.1 released]] by [[mailto:janneke@gnu.org][Jan Nieuwenhuizen]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2019-07-20 Sat 10:40] [[gnus:INBOX#87ef2o72xc.fsf@gnu.org][Email from Ludovic Courtès: Web site moved to https://guix.gnu.org]] by [[mailto:ludo@gnu.org][Ludovic Courtès]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2019-08-03 Sat 11:19] [[gnus:INBOX#87a7ctbvdy.fsf@gmail.com][Email from Maxim Cournoyer: Re: A simple battery level alert mcron job for your Guix, v2]] by [[mailto:maxim.cournoyer@gmail.com][Maxim Cournoyer]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2019-08-03 Sat 12:07] [[gnus:INBOX#CAJ3okZ2PvKrSRRrF_JZ_Ewn1=WN4nLZXrDnhe=Cg0E9jPq_xNg@mail.gmail.com][Email from zimoun: Re: `guix search` feature or bug?]] by [[mailto:zimon.toutoune@gmail.com][zimoun]] (recsel tips)
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2019-08-03 Sat 20:35] [[gnus:INBOX#CAGua6m1LmSQSQNitggib05TEGc3G8TUMtWLSeSZu_47zdoB_Mg@mail.gmail.com][Email from Stefan Israelsson Tampe: python-on-guile]] by [[mailto:stefan.itampe@gmail.com][Stefan Israelsson Tampe]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2019-08-18 Sun 12:33] [[gnus:INBOX#cucef1mon0g.fsf@gmail.com][Email from Rene: Re: VNC]] by [[mailto:ikhuuma@gmail.com][Rene]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2019-08-30 Fri 10:43] [[gnus:INBOX#20190829215226.173a4812@sybil.lepiller.eu][Email from Julien Lepiller: {bug#37222} {PATCH} gnu: services: Add dkimproxy-out.]] by [[mailto:julien@lepiller.eu][Julien Lepiller]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2019-08-30 Fri 11:07] [[gnus:INBOX#87o9086ea0.fsf@oitofelix.com][Email from Bruno Félix Rezende Ribeiro: Re: tramp-auto-auth.el --- TRAMP automatic authentication library]] by [[mailto:oitofelix@gnu.org][Bruno Félix Rezende Ribeiro]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2019-08-30 Fri 11:11] [[gnus:INBOX#20190829172441.6849-3-dme@dme.org][Email from David Edmondson: {PATCH v1 2/2} emacs: Bind "u" to jump to the parent message in a thread]] by [[mailto:dme@dme.org][David Edmondson]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2019-09-01 Sun 16:24] [[gnus:INBOX#87ftlge4g1.fsf@gmail.com][Email from Maxim Cournoyer: {bug#37250} {PATCH} gnu: docker: Add support for tini.]] by [[mailto:maxim.cournoyer@gmail.com][Maxim Cournoyer]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2019-09-06 Fri 09:48] [[gnus:INBOX#87sgpby4p9.fsf@gmail.com][Email from Maxim Cournoyer: {bug#37305} {PATCH} Allow booting from a Btrfs subvolume.]] by [[mailto:maxim.cournoyer@gmail.com][Maxim Cournoyer]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2019-09-06 Fri 22:24] [[gnus:INBOX#87lfv1eqxg.fsf@gnu.org][Email from Ludovic Courtès: bug#31785: Multiple client 'build-paths' RPCs can lead to daemon deadlock]] by [[mailto:ludo@gnu.org][Ludovic Courtès]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2019-09-08 Sun 18:59] [[gnus:INBOX#87pnkb3pil.fsf@elephly.net][Email from Ricardo Wurmus: WIP Guix Cookbook]] by [[mailto:rekado@elephly.net][Ricardo Wurmus]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2019-09-08 Sun 19:00] [[gnus:INBOX#20190908113459.20232-2-h.goebel@crazy-compilers.com][Email from Hartmut Goebel: {bug#37341} {PATCH 2/2} gnu: Add debops.]] by [[mailto:h.goebel@crazy-compilers.com][Hartmut Goebel]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2019-09-11 Wed 11:29] [[gnus:INBOX#875zm1ji1b.fsf@gnu.org][Email from Jan Nieuwenhuizen: GNU Mes 0.20 released]] by [[mailto:janneke@gnu.org][Jan Nieuwenhuizen]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2019-09-12 Thu 15:58] [[gnus:INBOX#05840a988fb0592a67f8372650aba5cdc81b499e.camel@disroot.org][Email from Raghav Gururajan: Re: Help with Learning Programming and LISP]] by [[mailto:raghavgururajan@disroot.org][Raghav Gururajan]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+   
+PROGRAMMING CONCEPTS:
+1) Structure and Interpretation of Computer Programs
+2) How to Design Programs
+
+COMMON LISP:
+1) ANSI Common LISP
+
+EMACS LISP:
+1) An Introduction to Programming in Emacs LISP
+
+SCHEME:
+1) The Scheme Programming Language
+
+* [2019-09-12 Thu 16:00] [[gnus:INBOX#87pnk69ysz.fsf@member.fsf.org][Email from 宋文武: shepherd services have unwanted environment variables]] by [[mailto:iyzsong@member.fsf.org][宋文武]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2019-09-13 Fri 13:41] [[gnus:INBOX#FgJQtsz_TgDaM2lZNzgz-wAECYbMJQEg_SMD3g2to9MhHsd8Jt1Ak9aXJiOXbrLWr6Jx54YsU53cIwpe947gI4lFNlO42Nh3ZpA-h_pUrSg=@protonmail.com][Email from Todor Kondić via Guix-patches via: {bug#37394} {PATCH} gnu: Add tigervnc]] by [[mailto:guix-patches@gnu.org][Todor Kondić via Guix-patches via]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2019-09-13 Fri 13:43] [[gnus:INBOX#87a7b8fr25.fsf@member.fsf.org][Email from 宋文武: {bug#37398} {PATCH 0/2}: services: Add nftables-service-type.]] by [[mailto:iyzsong@member.fsf.org][宋文武]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2019-09-13 Fri 17:01] [[gnus:INBOX#20190913101754.4483-1-iyzsong@member.fsf.org][Email from 宋文武: {bug#37398} {PATCH 1/2} gnu: linux-libre: Enable all nftables family modules.]] by [[mailto:iyzsong@member.fsf.org][宋文武]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
+
+* [2019-09-15 Sun 21:36] [[gnus:INBOX#20190915182127.10525-1-mail@cbaines.net][Email from Christopher Baines: {bug#37412} {PATCH 1/2} gnu: Add guix-data-service.]] by [[mailto:mail@cbaines.net][Christopher Baines]]
+  :PROPERTIES:
+  :ARCHIVE_TIME: 2019-11-26 Tue 02:50
+  :ARCHIVE_FILE: ~/org/inbox.org
+  :ARCHIVE_OLPATH: Email
+  :ARCHIVE_CATEGORY: inbox
+  :END:
