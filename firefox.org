@@ -1,3 +1,61 @@
+* chrome
+
+#+BEGIN_SRC css
+/* to hide the native tabs */
+/* #TabsToolbar { */
+/*     visibility: collapse; */
+/* } */
+
+:root:not([customizing]) #navigator-toolbox {
+    /* background-color: #e2e2e2!important; */
+    background-color: #ffffff!important;
+}
+
+:root:not([customizing]) #navigator-toolbox #nav-bar {
+    /* min-height: 0!important; */
+    /* max-height: 0; */
+    /* height: 0; */
+    /* overflow: hidden; */
+    background-color: #ffffff!important;
+}
+
+:root:not([customizing]) #navigator-toolbox:focus-within #nav-bar {
+    max-height: 32px;
+    height: 32px;
+}
+
+:root:not([customizing]) .tabbrowser-tab:not([pinned="true"]) {
+    --tab-min-width: fit-content;
+    -moz-box-flex: 0!important;
+    max-width: 70px;
+}
+
+:root:not([customizing]) .tabbrowser-tab:not([pinned="true"]) .tab-stack {
+    flex-basis: 1;
+}
+
+:root:not([customizing]) .tab-content {
+    padding: 0 6px;
+}
+
+:root:not([customizing]) .tab-line,
+:root:not([customizing]) .tab-text,
+:root:not([customizing]) .tab-close-button {
+    display: none;
+}
+
+:root:not([customizing]) .tab-icon-image {
+    margin: 0!important;
+}
+
+/* https://www.reddit.com/r/bspwm/comments/7dmpck/is_this_issue_with_firefox_quantum_related_to/
+   https://bbs.archlinux.org/viewtopic.php?id=232176
+ */
+#contentAreaContextMenu {
+    margin-left: 4px;
+}
+
+#+END_SRC
 
 * Config examples
 
