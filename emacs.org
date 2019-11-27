@@ -574,3 +574,15 @@ tramp-auto-auth.el --- TRAMP automatic authentication library <877e74skek.fsf@oi
 * Conference
 
 https://emacsconf.org/videos/2019/
+* Java
+
+I use minimal setup of standard java-mode (for indentation, imenu
+support, etc) and javaimp package (available in GNU ELPA, see
+list-packages) which provides completion when adding imports (taking
+dependency info from Maven or Gradle).
+
+For more complete support I'd look at lsp or eglot, though I don't use
+them myself and thus cannot tell the details.
+
+JDEE I think is rather outdated and probably won't work :-(
+
