@@ -26,6 +26,14 @@ https://gitlab.com/janneke/guix.git
 
 * Cheat sheet
 
+  - docker pack
+    #+BEGIN_SRC bash
+      guix pack --manifest=your-manifest.scm \
+                         -f docker \
+                         -S /etc/profile=etc/profile \
+                         -S /bin=bin
+    #+END_SRC
+
   - http://ci.guix.info/
     - icecat spec:guix-master system:x86_64-linux
 
