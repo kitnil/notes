@@ -11,6 +11,8 @@
 
 * Cheatsheet
 
+  - find /gnu -type f -iname '*12x22*'|while read x;do vbr GxFont12x22- $x;done
+
   - Alternatives to coreutils: hexyl bat fd diskus
 
   - Monitor bandwidth by pid
