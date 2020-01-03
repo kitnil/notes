@@ -1488,6 +1488,7 @@ Will produce a <channel> record:
               (rename-file file (string-append (dirname file) "/..")))
             (find-files themes))
 #+END_SRC
+
 #+BEGIN_SRC scheme
   (let ((device-number (lambda (major minor)
                          (+ (* major 256) minor))))
@@ -1495,6 +1496,7 @@ Will produce a <channel> record:
            (device-number 5 0))
     (chmod "/dev/tty" #o666))
 #+END_SRC
+
 patchelf ld-linux-x86-64.so.2
 https://nixos.org/patchelf.html
 #+BEGIN_SRC scheme
