@@ -1495,4 +1495,11 @@ Will produce a <channel> record:
            (device-number 5 0))
     (chmod "/dev/tty" #o666))
 #+END_SRC
-
+patchelf ld-linux-x86-64.so.2
+https://nixos.org/patchelf.html
+#+BEGIN_SRC scheme
+  (invoke "patchelf"
+          "--set-interpreter"
+          (string-append (assoc-ref %build-inputs "glibc") "/lib/ld-linux-x86-64.so.2")
+          file-name)
+#+END_SRC
