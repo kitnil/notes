@@ -1488,4 +1488,11 @@ Will produce a <channel> record:
               (rename-file file (string-append (dirname file) "/..")))
             (find-files themes))
 #+END_SRC
+#+BEGIN_SRC scheme
+  (let ((device-number (lambda (major minor)
+                         (+ (* major 256) minor))))
+    (mknod "/dev/tty" 'char-special #o600
+           (device-number 5 0))
+    (chmod "/dev/tty" #o666))
+#+END_SRC
 
