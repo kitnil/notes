@@ -1505,3 +1505,19 @@ https://nixos.org/patchelf.html
           (string-append (assoc-ref %build-inputs "glibc") "/lib/ld-linux-x86-64.so.2")
           file-name)
 #+END_SRC
+* Guix system without bootloader
+
+‘--no-bootloader’ should definitely work for ‘reconfigure’; could you
+double-check and report a bug if it doesn’t work?
+
+Now, if that’s useful, we could easily define a “noop” bootloader in
+(gnu bootloader noop), along these lines:
+
+  (define noop-bootloader
+    (bootloader
+     (name 'noop)
+     (package #f)
+     (installer #~(cons #t))
+     (configuration-file #f)
+     (configuration-file-generator #f)))
+
