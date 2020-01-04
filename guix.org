@@ -1520,4 +1520,8 @@ Now, if that’s useful, we could easily define a “noop” bootloader in
      (installer #~(cons #t))
      (configuration-file #f)
      (configuration-file-generator #f)))
+I concur!  Actually, there’s a separate file already: the nar itself.
+
+  wget -q -O - https://ci.guix.gnu.org/nar/lzip/1gyi4i5lbpr7apm74p08dwy11fhzh4j7-sed-4.7 \
+     | lzip -d | guix archive -t
 
