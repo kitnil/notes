@@ -1,0 +1,152 @@
+* 
+
+https://medium.com/@thomas.shaw78/bash-functions-as-a-service-b4033bc1ee97
+
+Bash Functions as a Service
+Tom Shaw
+Tom Shaw
+Jan 2, 2019 · 6 min read
+Does what it says on the tin
+
+Serverless and FaaS (Functions as a Service) has been a hot topic over the past few years. Like any new approach FaaS has attracted it’s share of criticism while others may be a little more enthusiastic about its potential. As someone who wanted to evaluate some of the pros and cons of FaaS I decided to put together this “cheatsheet” to help folks get started quickly. This post will include links to setup instructions and code used to take a bash script and invoke it using OpenFaaS.
+
+Tools used :
+
+    Docker
+    Docker Swarm
+    OpenFaas
+
+The nice thing about using these tools is that they are relatively simple to debug and have active communities happy to help. They can be setup (and tore down) in minutes. This is perfect for the initial evaluation and prototyping rather than shelling out hard earned cash to use a cloud provider.
+Background
+
+While looking into existing tutorials and guides it became apparent that node and python were the most commonly used examples. I’m not a Pythonista or node … inista? In the interest of speed I wanted to use an existing bash script and treat it like a FaaS. There are some cool Bash scripts available here and I decided to use one of these for evaluation purposes.
+Setting Up
+
+The following links and steps “should just work”. If you see any issues please ping the page maintainers or myself on Twitter (@tomwillfixit) and I’ll follow up.
+
+    Install Docker
+    Install OpenFaas CLI and create single node Swarm
+    Download some scripts (or create your own). We will be pulling the “movies” script from : https://github.com/alexanderepstein/Bash-Snippets
+
+Getting Started
+
+We are ready to get started. We will be following this post by OpenFaaS creator Alex Ellis, “Turn Any CLI into a Function with OpenFaaS” for guidance. We will be creating a function from the “movies” script in Bash-Snippets.
+
+    Create scaffolding. I’ll use the prefix tshaw. Replace with your own name or username. When I first tried using OpenFaas without the “ — prefix” my function name was “bash”. This caused an issue which wasn’t immediately clear. Although the image was built successfully and named bash:latest, this image was not used by the function and instead bash:latest from DockerHub was pulled and used. Just something to be wary off. Using — prefix will solve this.
+
+faas new --lang dockerfile weather --prefix tshaw
+Folder: movies created.
+  ___                   _____           ____
+ / _ \ _ __   ___ _ __ |  ___|_ _  __ _/ ___|
+| | | | '_ \ / _ \ '_ \| |_ / _` |/ _` \___ \
+| |_| | |_) |  __/ | | |  _| (_| | (_| |___) |
+ \___/| .__/ \___|_| |_|_|  \__,_|\__,_|____/
+      |_|Function created in folder: movies
+Stack file written: movies.yml
+
+At this point we have a “movies” directory and a “movies.yml”. There is no need to update “movies.yml”. We will update the Dockerfile located in the “movies” directory to install bash and python in the container image. We will also add in the “movies” bash script and update the fprocess variable to call this script.
+
+Add in line : RUN apk add --no-cache bash pythonUpdate the fprocess variable to look like :ENV fprocess="xargs bash /tmp/movies"Update the "apk --no-cache add curl" code section to download the movie script. This was done to avoid permission problems when using ADD and a URL.The updated section should look like :RUN apk --no-cache add curl \
+    && echo "Pulling watchdog binary from Github." \
+    && curl -sSL https://github.com/openfaas/faas/releases/download/0.9.6/fwatchdog > /usr/bin/fwatchdog \
+    && chmod +x /usr/bin/fwatchdog \
+    && cp /usr/bin/fwatchdog /home/app \
+    && curl -sSL https://raw.githubusercontent.com/alexanderepstein/Bash-Snippets/master/movies/movies > /tmp/movies \
+    && chmod +x /tmp/movies \
+    && apk del curl --no-cache
+
+That’s it! Now we can build the function image and try executing the bash script as a function.
+
+Build the function image
+
+# faas build -f movies.yml
+
+Deploy the function service
+
+# faas deploy -f movies.yml
+
+At this point we should have one service replica running named “movies” and ready to work. Before we test this is working let’s check a few things.
+
+# faas listFunction                       Invocations     Replicas
+movies                         26              1# docker service lsdocker service ls |grep movies
+1zt0gbp97yif        movies              replicated          1/1                 tshaw/movies:latest
+
+If 0 replicas are running then it’s worth debugging why before attempting to move on. Try starting a container based on the function image and verify the script is working.
+
+# docker run -it --entrypoint /bin/bash tshaw/movies:latest
+bash-4.4$ /tmp/movies "The Net"==================================================
+| Title: The Net
+| Year: 1995
+| Runtime: 114 min
+| IMDB: 5.9/10
+| Tomato: 38%
+| Rated: PG-13
+| Genre: Action, Crime, Drama, Mystery, Thriller
+| Director: Irwin Winkler
+| Actors: Sandra Bullock, Jeremy Northam, Dennis Miller, Diane Baker
+| Plot: A computer programmer stumbles upon a conspiracy, putting her life and the lives of those around her in great danger.
+==================================================
+
+Verify the function is working
+
+We will use the “faas invoke” command to call the function and take an input. In this case the input will be a movie name.
+
+# echo -n "Swordfish" | faas invoke movies==================================================
+| Title: Swordfish
+| Year: 2001
+| Runtime: 99 min
+| IMDB: 6.5/10
+| Tomato: 26%
+| Rated: R
+| Genre: Action, Crime, Thriller
+| Director: Dominic Sena
+| Actors: John Travolta, Hugh Jackman, Halle Berry, Don Cheadle
+| Plot: A covert counter-terrorist unit called Black Cell led by Gabriel Shear wants the money to help finance their war against international terrorism, but it's all locked away. Gabriel brings in convicted hacker Stanley Jobson to help him.
+==================================================
+
+We can also use curl to verify the function is working.
+
+curl --user "admin:7e68e8b10474d735bbddeece28" --request POST --data "Hackers" http://127.0.0.1:8080/function/movies==================================================
+| Title: Hackers
+| Year: 1995
+| Runtime: 107 min
+| IMDB: 6.2/10
+| Tomato: 33%
+| Rated: PG-13
+| Genre: Comedy, Crime, Drama, Thriller
+| Director: Iain Softley
+| Actors: Jonny Lee Miller, Angelina Jolie, Jesse Bradford, Matthew Lillard
+| Plot: Hackers are blamed for making a virus that will capsize five oil tankers.
+==================================================
+
+Let’s try scaling up the number of replicas up to 3, scaling down to 0 and then invoking the function again for a cold start.
+
+# docker service scale movies=3movies scaled to 3
+overall progress: 3 out of 3 tasks 
+1/3: running   [==================================================>] 
+2/3: running   [==================================================>] 
+3/3: running   [==================================================>] 
+verify: Service converged # docker service ls |grep movies1zt0gbp97yif        movies              replicated          3/3                 tshaw/movies:function   
+            
+# docker service scale movies=0movies scaled to 0
+overall progress: 0 out of 0 tasks 
+verify: Service converged # echo -n "Lucy" | faas invoke movies==================================================
+| Title: Lucy
+| Year: 2014
+| Runtime: 89 min
+| IMDB: 6.4/10
+| Tomato: 67%
+| Rated: R
+| Genre: Action, Sci-Fi, Thriller
+| Director: Luc Besson
+| Actors: Scarlett Johansson, Morgan Freeman, Min-sik Choi, Amr Waked
+| Plot: A woman, accidentally caught in a dark deal, turns the tables on her captors and transforms into a merciless warrior evolved beyond human logic.
+==================================================# docker service ls |grep movies1zt0gbp97yif        movies              replicated          1/1                 tshaw/movies:function
+
+Summary
+
+Hopefully this helps some folks get started with OpenFaaS. It’s a great project which is backed by a community eager to help out.
+
+What’s next? Playing about with multiple functions per image and using a few lines of bash to select the relevant function when invoked. An example can be found here.
+
+There is some potential here for providing higher level functions as part of the CI pipeline while providing scale and distribution of tooling.
