@@ -44,3 +44,52 @@
 ** READ [2020-01-03 Fri 19:43] [[gnus:INBOX#87zhf4pzgh.fsf@gnu.org][Email from Ludovic Courtès: FOSDEM + Guix Days approaching!]] by [[mailto:ludo@gnu.org][Ludovic Courtès]]
 ** REVIEW [2020-01-03 Fri 19:53] [[gnus:INBOX#87o8vlwgpa.fsf@nicolasgoaziou.fr][Email from Nicolas Goaziou: {bug#38881} {PATCH} Add manuskript]] by [[mailto:mail@nicolasgoaziou.fr][Nicolas Goaziou]]
 ** WAIT [2020-01-03 Fri 20:07] [[gnus:INBOX#20200101160355.32604-1-mike.rosset@gmail.com][Email from Mike Rosset: {bug#35866} {PATCH 1/4} gnu: Add qtwebengine.]] by [[mailto:mike.rosset@gmail.com][Mike Rosset]]
+** TODO Watch Guix FOSDEM
+
+On Fri, Jan 03, 2020 at 12:10:54PM +0100, Ludovic Courtès wrote:
+> Hello Guix!
+> 
+> The Guix Days and FOSDEM are approaching!  For FOSDEM, these are the
+> Guix talks I know of:
+> 
+>   • “Sharing Reproducible Results in a Container” (Efraim),
+>     <https://fosdem.org/2020/schedule/event/reprod_container/>
+> 
+>   • “Towards reproducible Jupyter notebooks” (myself),
+>     <https://fosdem.org/2020/schedule/event/reprod_jupyter_guix/>
+> 
+>   • “GNU Guix as an alternative to the Yocto Project” (Mathieu),
+>     <https://fosdem.org/2020/schedule/event/ggaaattyp/>
+> 
+>   • “Universal package & service discovery with Guix” (Pierre),
+>     <https://fosdem.org/2020/schedule/event/gnuguixpackagemanager/>
+> 
+>   • “Introduction to G-Expressions” (Chris Marusich),
+>     <https://fosdem.org/2020/schedule/event/gexpressionsguile/>
+> 
+>   • “Lisp everywhere!” (Pjotr),
+>     <https://fosdem.org/2020/schedule/event/lispeverywhere/>
+> 
+>   • “GNU Mes, Scheme-only bootstrap and beyond” (janneke),
+>     <https://fosdem.org/2020/schedule/event/gnumes/>
+> 
+>   • “Guix: Unifying provisioning, deployment, and package management in
+>     the age of containers” (myself):
+>     <https://fosdem.org/2020/schedule/event/guix/>
+> 
+>   • “Celebrating Guile 2020” (Andy; not strictly Guix but noteworthy!),
+>     <https://fosdem.org/2020/schedule/event/guile2020/>
+> 
+> Woow, exciting program!  Are there others I’m missing?
+> 
+> Pjotr, Manolis: would you like to prepare a post similar to
+> <https://guix.gnu.org/blog/2019/meet-guix-at-fosdem-2019/> as Markdown
+> like
+> <https://git.savannah.gnu.org/cgit/guix/guix-artwork.git/tree/website/posts/meet-guix-at-fosdem-2019.md>?
+> If we publish it soon, that may give an opportunity to those who haven’t
+> made plans yet to join the Guix Days.
+> 
+
+I have another presentation:
+    "Packaging Rust programs in GNU Guix" (Efraim),
+    <https://fosdem.org/2020/schedule/event/rust_packaging_gnu_guix/>
