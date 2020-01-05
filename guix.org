@@ -1524,4 +1524,40 @@ I concur!  Actually, there’s a separate file already: the nar itself.
 
   wget -q -O - https://ci.guix.gnu.org/nar/lzip/1gyi4i5lbpr7apm74p08dwy11fhzh4j7-sed-4.7 \
      | lzip -d | guix archive -t
+* fonts
+
+From: Pierre Neidhardt <mail@ambrevar.xyz>
+Subject: Re: How to use foreign-distro fonts without symlink hack?
+To: "Jorge P. de Morais Neto" <jorge+list@disroot.org>, help-guix@gnu.org
+Date: Sun, 05 Jan 2020 19:34:24 +0100 (22 minutes, 15 seconds ago)
+Message-ID: <87tv59ycpb.fsf@ambrevar.xyz>
+
+Hi Jorge!
+
+jorge+list@disroot.org (Jorge P. de Morais Neto) writes:
+
+> 1. Could this symlink cause problems for Debian applications?
+
+Should be fine.
+
+> 2. Why does not Guix `fc-cache' look in `/usr/share/fonts'?
+
+Because Guix does not know about files outside the store or the home
+directory.  This is by design.
+
+Another way to change this behaviour is to add /usr/share/fonts to
+~/.config/fontconfig/fonts.conf:
+
+<?xml version="1.0"?>
+<!DOCTYPE fontconfig SYSTEM "fonts.dtd">
+<!-- /etc/fonts/fonts.conf file to configure system font access -->
+<fontconfig>
+<dir>/usr/share/fonts</dir>
+</fontconfig>
+
+Hope this helps! :)
+
+-- 
+Pierre Neidhardt
+https://ambrevar.xyz/
 
