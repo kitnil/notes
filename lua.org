@@ -1,0 +1,4 @@
+- list files in directory
+#+BEGIN_SRC lua
+  for dir in io.popen([[dir "/"]]):lines() do print(dir) end
+#+END_SRC
