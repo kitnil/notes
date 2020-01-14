@@ -1,2 +1,28 @@
 - https://mariadb.com/kb/en/upgrading-from-mariadb-55-to-mariadb-100/
 - https://jira.mariadb.org/browse/MDEV-3956?jql=text%20~%20%22upgrade%205%22
+
+#+BEGIN_EXAMPLE
+  root@web27 /home/u220783 # docker logs mariadb
+  2020-01-14 07:26:15+00:00 [Note] [Entrypoint]: Entrypoint script for MySQL Server 1:10.4.11+maria~bionic started.
+  2020-01-14 07:26:16+00:00 [Note] [Entrypoint]: Switching to dedicated user 'mysql'
+  2020-01-14 07:26:16+00:00 [Note] [Entrypoint]: Entrypoint script for MySQL Server 1:10.4.11+maria~bionic started.
+  2020-01-14  7:26:17 0 [Note] mysqld (mysqld 10.4.11-MariaDB-1:10.4.11+maria~bionic) starting as process 1 ...
+  2020-01-14  7:26:17 0 [Note] InnoDB: Using Linux native AIO
+  2020-01-14  7:26:17 0 [Note] InnoDB: Mutexes and rw_locks use GCC atomic builtins
+  2020-01-14  7:26:17 0 [Note] InnoDB: Uses event mutexes
+  2020-01-14  7:26:17 0 [Note] InnoDB: Compressed tables use zlib 1.2.11
+  2020-01-14  7:26:17 0 [Note] InnoDB: Number of pools: 1
+  2020-01-14  7:26:17 0 [Note] InnoDB: Using SSE2 crc32 instructions
+  2020-01-14  7:26:17 0 [Note] mysqld: O_TMPFILE is not supported on /tmp (disabling future attempts)
+  2020-01-14  7:26:17 0 [Note] InnoDB: Initializing buffer pool, total size = 256M, instances = 1, chunk size = 128M
+  2020-01-14  7:26:17 0 [Note] InnoDB: Completed initialization of buffer pool
+  2020-01-14  7:26:17 0 [Note] InnoDB: If the mysqld execution user is authorized, page cleaner thread priority can be changed. See the man page of setpriority().
+  2020-01-14  7:26:17 0 [ERROR] InnoDB: Upgrade after a crash is not supported. This redo log was created before MariaDB 10.2.2.
+  2020-01-14  7:26:17 0 [ERROR] InnoDB: Plugin initialization aborted with error Generic error
+  2020-01-14  7:26:18 0 [Note] InnoDB: Starting shutdown...
+  2020-01-14  7:26:18 0 [ERROR] Plugin 'InnoDB' init function returned error.
+  2020-01-14  7:26:18 0 [ERROR] Plugin 'InnoDB' registration as a STORAGE ENGINE failed.
+  2020-01-14  7:26:18 0 [Note] Plugin 'FEEDBACK' is disabled.
+  2020-01-14  7:26:18 0 [ERROR] Unknown/unsupported storage engine: InnoDB
+  2020-01-14  7:26:18 0 [ERROR] Aborting
+#+END_EXAMPLE
