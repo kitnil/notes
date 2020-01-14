@@ -6274,5 +6274,5 @@ information that should help you find out what is causing the crash.
 : docker exec -it mariadb mysql -p***REMOVED*** -e "$(printf "create database %s; " $(for file in *; do echo $file | sed 's/\.sql\.gz//'; done))"
 root@vm28873:/backup/backup2/mysqldump/web27.majordomo.ru/2020/01/14# for db in $(for file in *; do echo $file | sed 's/\.sql\.gz//'; done); do zcat $file.sql.gz | mysql -p***REMOVED*** $db; done
 
-cd /backup/backup2/mysqldump/web27.majordomo.ru/2020/01/14/
-for db in $(for file in *; do echo $file | sed 's/\.sql\.gz//'; done); do echo -e "\n@ $db"; zcat $db.sql.gz | mysql -p***REMOVED*** $db; done
+: cd /backup/backup2/mysqldump/web27.majordomo.ru/2020/01/14/
+: for db in $(for file in *; do echo $file | sed 's/\.sql\.gz//'; done); do echo -e "\n@ $db"; zcat $db.sql.gz | mysql -p***REMOVED*** $db; done
