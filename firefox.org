@@ -121,3 +121,7 @@ security.mixed_content.block_active_content
 * Package extension
 
 : zip -r -FS ../my-extension.zip *
+
+* Firefox SQLITE databases
+
+https://support.mozilla.org/en-US/kb/profiles-where-firefox-stores-user-data
