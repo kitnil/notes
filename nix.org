@@ -17,6 +17,11 @@ documentation /gnu/store/90wc27m5rafga3zjzkg6xdbf49rrz3w1-nix-2.0.4/share/doc/ni
 
 patchelf https://nixos.wiki/wiki/Packaging/Binaries#Creating_the_Derivation_for_upstream_Packaging
 
+* Install commands
+
+- ipmi
+: nix-env -p .nix-profile.d/ipmiview/ipmiview -iA nixos-unstable.ipmiview
+
 * 
 
 https://gist.github.com/joepie91/043a51a7b70be5f50f1d
