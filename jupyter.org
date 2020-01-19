@@ -1,1 +1,3 @@
 - [https://github.com/jupyter/jupyter/wiki/Jupyter-kernels][Jupyter kernels · jupyter/jupyter Wiki]
+- [https://github.com/ansible/ansible-jupyter-kernel][ansible/ansible-jupyter-kernel: Jupyter Notebook Kernel for running Ansible Tasks and Playbooks]
+docker run -p 8888:8888 benthomasson/ansible-jupyter-kernel
