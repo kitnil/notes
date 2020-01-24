@@ -16,3 +16,4 @@
   SCHEDULED: <2020-01-26 Sun>
 * TODO Если размер базы больше чем 1.5 ГБ, то ее размер не учитывается. Пример b213062_test
   SCHEDULED: <2020-01-31 Fri>
+* TODO rsync -av --exclude=storage rsync://127.0.0.1/mozilla/firefox/j56dvo43.default-1520714705340
