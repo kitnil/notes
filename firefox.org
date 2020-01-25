@@ -11,6 +11,10 @@
 - [https://addons.mozilla.org/en-US/firefox/addon/container-opener/?src=search][Container Opener – Get this Extension for 🦊 Firefox (en-US)]
 - [https://raw.githubusercontent.com/xiaoxiaoflood/firefox-scripts/master/screenshots/window.png][]
 
+* Nix
+
+: NIXPKGS_CONFIG=$HOME/majordomo/webservices/firefox-esr/config.nix nix-env -p .nix-profile.d/firefox-beta-bin/firefox-beta-bin -iA nixos-unstable.firefox-beta-bin
+
 * chrome
 
 #+BEGIN_SRC css
