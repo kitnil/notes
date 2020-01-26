@@ -18,12 +18,12 @@
 #+END_SRC
 
 #+BEGIN_EXAMPLE
-  mariadb root@192.168.105.121:a7web_2> show binary logs;                                    
-  +--------------------+-----------+
-  | Log_name           | File_size |
-  +--------------------+-----------+
-  | mariadb-bin.000007 | 678       |
-  +--------------------+-----------+
+  mariadb root@192.168.105.121:(none)> SHOW MASTER STATUS\G                                  
+  ,***************************[ 1. row ]***************************
+  File             | mariadb-bin.000007
+  Position         | 890
+  Binlog_Do_DB     | 
+  Binlog_Ignore_DB | 
 #+END_EXAMPLE
 
 - [https://habr.com/en/company/southbridge/blog/229731/][Использование Percona XtraBackup в повседневной жизни / Southbridge corporate blog / Habr]
