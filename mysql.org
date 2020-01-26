@@ -8,7 +8,9 @@
   flush tables with read lock;
 #+END_SRC
 
-: mysqldump -uroot -psecret --all-databases --lock-all-tables --events
+#+BEGIN_SRC bash
+  mysqldump -uroot -psecret --all-databases --lock-all-tables --events
+#+END_SRC
 
 #+BEGIN_SRC sql
   unlock tables;
