@@ -1,5 +1,5 @@
 : mysqldump --master-data=2 --flush-logs --single-transaction --quick --all-databases
-: docker run -p 3307:3306 --name mariadb-10.0 -v /mysql/db-10.0:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=PASS -d docker-registry.intr/webservices/mariadb:10.0
+: docker run --restart unless-stopped -p 3307:3306 --name mariadb-10.0 -v /mysql/db-10.0:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=PASS -d docker-registry.intr/webservices/mariadb:10.0
 : mysql --protocol=tcp --host=127.0.0.1 --port=3307 --user=root -p
 
 - [https://github.com/jenkinsci/configuration-as-code-plugin][jenkinsci/configuration-as-code-plugin: Jenkins Configuration as Code Plugin]
