@@ -26,6 +26,13 @@
   Binlog_Ignore_DB | 
 #+END_EXAMPLE
 
+#+BEGIN_SRC sql
+  mariadb root@192.168.105.122:(none)> change master to master_host='192.168.105.121', master
+                                       _user='replica',master_password='password',master_log_
+                                       file='mariadb-bin.000007',master_log_pos=890;         
+
+#+END_SRC
+
 - [https://habr.com/en/company/southbridge/blog/229731/][Использование Percona XtraBackup в повседневной жизни / Southbridge corporate blog / Habr]
 - [https://github.com/jenkinsci/configuration-as-code-plugin][jenkinsci/configuration-as-code-plugin: Jenkins Configuration as Code Plugin]
 - [https://github.com/jenkinsci/job-dsl-plugin][jenkinsci/job-dsl-plugin: A Groovy DSL for Jenkins Jobs - Sweeeeet!]
