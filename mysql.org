@@ -10,11 +10,9 @@
 
 : mysqldump -uroot -psecret --all-databases --lock-all-tables --events
 
-: unlock tables
-: show master status\g
-
 #+BEGIN_SRC sql
   unlock tables;
+  show master status\g
 #+END_SRC
 
 - [https://habr.com/en/company/southbridge/blog/229731/][Использование Percona XtraBackup в повседневной жизни / Southbridge corporate blog / Habr]
