@@ -14,7 +14,7 @@
 
 #+BEGIN_SRC sql
   unlock tables;
-  show master status\g
+  SHOW MASTER STATUS\G
 #+END_SRC
 
 - [https://habr.com/en/company/southbridge/blog/229731/][Использование Percona XtraBackup в повседневной жизни / Southbridge corporate blog / Habr]
