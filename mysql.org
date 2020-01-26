@@ -2,6 +2,7 @@
 : docker run --restart unless-stopped -p 3307:3306 --name mariadb-10.0 -v /mysql/db-10.0:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=PASS -d docker-registry.intr/webservices/mariadb:10.0
 : mysql --protocol=tcp --host=127.0.0.1 --port=3307 --user=root -p
 : web27
+# mysqldump: Error 2013: Lost connection to MySQL server during query when dumping table `dle_post` at row: 17
 
 - [https://github.com/jenkinsci/configuration-as-code-plugin][jenkinsci/configuration-as-code-plugin: Jenkins Configuration as Code Plugin]
 - [https://github.com/jenkinsci/job-dsl-plugin][jenkinsci/job-dsl-plugin: A Groovy DSL for Jenkins Jobs - Sweeeeet!]
