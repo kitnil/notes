@@ -1,3 +1,5 @@
+: mysqldump --master-data=2 --flush-logs --single-transaction --quick
+
 - [https://stackoverflow.com/questions/49504983/replication-between-mysql-5-5-and-mariadb-10-2][replication between mysql 5.5 and mariaDB 10.2 - Stack Overflow]
 - [http://planetmariadb.org/][Planet MariaDB]
 - [https://pento.net/2009/02/24/upgrading-mysql-with-minimal-downtime-through-replication/][Upgrading MySQL with minimal downtime through Replication – Gary Pendergast]
