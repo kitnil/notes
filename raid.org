@@ -1,1 +1,3 @@
 - [https://blog.tinned-software.net/replace-hard-disk-from-software-raid/][Replace hard disk from software RAID - Experiencing Technology]
+- # mdadm --create --verbose --level=5 --metadata=1.2 --chunk=256 --raid-devices=4 /dev/md/md0 /dev/sdb1 /dev/sdc1 /dev/sdd1 /dev/sde1
+  note that could use devices derictly
