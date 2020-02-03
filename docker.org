@@ -1,5 +1,8 @@
 * Cheat sheet
 
+- List running docker containers with image hashes
+  : docker inspect --format='{{.Id}} {{.Name}} {{.Image}}' $(docker ps -aq)
+
 - exit from interactive shell without killing container
   : c-p-q
 
