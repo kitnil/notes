@@ -6400,3 +6400,12 @@ information that should help you find out what is causing the crash.
 
 : cd /backup/backup2/mysqldump/web27.majordomo.ru/2020/01/14/
 : time for db in $(for file in *; do echo $file | sed 's/\.sql\.gz//'; done); do echo -e "\n@ $db"; zcat $db.sql.gz | mysql -p***REMOVED*** $db; done
+
+* Persone backup
+
+  #+BEGIN_SRC bash
+    echo 'deb http://repo.percona.com/apt trusty main' >> /etc/apt/sources.list
+    apt-key adv --keyserver keys.gnupg.net --recv-keys 9334A25F8507EFA5
+    apt update
+    apt install percona-xtrabackup
+  #+END_SRC
