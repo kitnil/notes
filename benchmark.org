@@ -1,0 +1,1 @@
+- sudo dd if=/dev/sda1 of=/dev/null bs=4096 count=409600 iflag=direct
