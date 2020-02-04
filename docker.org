@@ -1,5 +1,8 @@
 * Cheat sheet
 
+- Compose
+  : docker-compose --project-name pxe --file pxe.yml up -d --force
+
 - List running docker containers with image hashes
   : docker inspect --format='{{.Id}} {{.Name}} {{.Image}}' $(docker ps -aq)
 
