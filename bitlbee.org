@@ -1,2 +1,5 @@
+- Join Slack channel
+  : chat add slack #eng
+  : join #eng
 - Autojoin channel after network disconnect
-  : channel #git set auto_join true
+  : channel #eng set auto_join true
