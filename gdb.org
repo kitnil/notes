@@ -2,6 +2,7 @@
   : tui new-layout x src 1 regs 1 locator 0 cmd 1
 - Add horizontal layout
   : tui new-layout y { horizontal src 1 regs 1 locator 0 cmd 1 }
+  : layout y
 - Enable syntax highlighting
   : set style enable on
 
