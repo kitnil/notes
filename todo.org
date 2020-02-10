@@ -30,15 +30,3 @@
   SCHEDULED: <2020-12-13 Sun>
 * TODO debian9 $osVariant   = "debian8"; /ssh:kvm15.intr|sudo:root@kvm15.intr:/usr/local/repo/lib/kvm.pm
   SCHEDULED: <2020-02-05 Wed>
-* TODO Help support
-  SCHEDULED: <2020-02-10 Mon>
-#+BEGIN_EXAMPLE
-  <lazarev> Проблема и на виртуальном и на VPS
-  <lazarev> сейчас на VPS тестировали
-  <lazarev> https://78.108.94.118:1500/
-  <lazarev> root         Ao8Uw1vahM
-  <lazarev> fortest.change-web.ru
-  <lazarev> если зайти в админку
-  <lazarev> http://fortest.change-web.ru/login.php
-  <lazarev> выбрать "Модули" - "Каталог" - "Поиск изделий",  указать категорию и операицию "Экспорт в Exсel" то потребляется вся оперативная память
-#+END_EXAMPLE
