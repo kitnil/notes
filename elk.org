@@ -1,3 +1,9 @@
+- list hot threads
+  : curl '127.0.0.1:9200/_nodes/hot_threads'
+
+- kill threads
+  : for thread in $(curl '127.0.0.1:9200/_cat/tasks?detailed' | grep xsdCCWz | grep read | awk '{ print $2 }'); do curl -XPOST "127.0.0.1:9200/_tasks/$thread/_cancel"; done
+
 - [https://www.elastic.co/guide/en/elasticsearch/reference/6.8/indices-templates.html#indices-templates][Index Templates | Elasticsearch Reference [6.8] | Elastic]
 
 - Disable readonly for all indexes
