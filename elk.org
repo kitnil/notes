@@ -1,5 +1,6 @@
 - list hot threads
   : curl '127.0.0.1:9200/_nodes/hot_threads'
+  : e.g.: xsdCCWz
 
 - kill threads
   : for thread in $(curl '127.0.0.1:9200/_cat/tasks?detailed' | grep xsdCCWz | grep read | awk '{ print $2 }'); do curl -XPOST "127.0.0.1:9200/_tasks/$thread/_cancel"; done
