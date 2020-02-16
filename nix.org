@@ -1,3 +1,22 @@
+- [https://www.reddit.com/r/NixOS/comments/a3w67x/install_a_package_from_a_specific_version_of/][Install a package from a specific version of Nixpkgs : NixOS]
+
+Ad-hoc
+: nix run -f channel:nixos-unstable anki -c anki
+
+Imperatively
+: nix-env -f channel:nixos-unstable -iA anki
+
+#+BEGIN_SRC nix
+  systemPackages = [ (import (fetchTarball "channel:nixos-unstable") {}).anki ];
+
+  # or
+
+  builtins.fetchTarball {
+    url = "https://github.com/NixOS/nixpkgs/archive/<GIT_REVISION>.tar.gz";
+    sha256 = "asdfjhasdfhgasdhjkfagsdfjkhgasdfhjkagsdfhjagd";
+  }
+#+END_SRC
+
 - http://chriswarbo.net/projects/nixos/useful_hacks.html
 
 - nix-prefetch-url
