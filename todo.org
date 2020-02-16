@@ -30,27 +30,5 @@
   SCHEDULED: <2020-12-13 Sun>
 * TODO debian9 $osVariant   = "debian8"; /ssh:kvm15.intr|sudo:root@kvm15.intr:/usr/local/repo/lib/kvm.pm
   SCHEDULED: <2020-02-05 Wed>
-* TODO Fix Docker in Guix after GO upgrade
-  SCHEDULED: <2020-02-16 Sun>
-#+begin_example
-  oleg@spb ~/src/guix-build71$ git bisect good
-  48f57932a7e89c3aa13e550221813df1050a17dc is the first bad commit
-  commit 48f57932a7e89c3aa13e550221813df1050a17dc
-  Author: Jack Hill <jackhill@jackhill.us>
-  Date:   Tue Feb 11 16:36:49 2020 -0600
-
-      gnu: go: Update to 1.13.7.
-    
-      ,* gnu/packages/golang.scm (go-1.12): Rename to go-1.13.
-      (go-1.13)[version, source]: Update to 1.13.7.
-      (go-1.13)[arguments]: Don't delete ../pkg/bootstrap, as the file is no longer
-      generated during build.
-      (go): Update to go-1.13.
-    
-      Signed-off-by: Alex Griffin <a@ajgrf.com>
-
-   gnu/packages/golang.scm | 10 +++++-----
-   1 file changed, 5 insertions(+), 5 deletions(-)
-#+end_example
 * TODO Fix router4.intr connection as root in [https://jenkins.wugi.info/view/Failed/job/ansible/job/ansible-cmdb-majordomo/][Branches (1) [ansible » ansible-cmdb-majordomo] [Jenkins]]
   SCHEDULED: <2020-02-23 Sun>
