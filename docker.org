@@ -1,5 +1,8 @@
 * Cheat sheet
 
+- Remote docker host
+  : export DOCKER_HOST=ssh://sammy@your_server_ip
+
 - Compose
   : docker-compose --project-name pxe --file pxe.yml up -d --force
 
