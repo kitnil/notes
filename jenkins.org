@@ -296,3 +296,16 @@ In the background, Jenkins is launching the container and connecting to it via S
 You can see the progress using docker logs --tail=10 jenkins
 
 It's normal for this to take a few moments to complete.
+
+** View Console Output
+Once the build has completed you should see the Image and Tags using the Docker CLI docker images.
+
+What was built into the Docker Image was a small HTTP server. You can launch it using: docker run -d -p 80:80 katacoda/jenkins-demo:latest
+
+Using cURL you should see the server respond: curl host01
+
+Jenkins will have the console output of our build, available via the dashboard. You should be able to access it below:
+
+https://2886795316-8080-cykoria04.environments.katacoda.com/job/Katacoda%20Jenkins%20Demo/1/console
+
+If you rebuilt the project, you would see a version 2 image created and the :latest tag reattached.
