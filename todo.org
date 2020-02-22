@@ -34,3 +34,17 @@
   SCHEDULED: <2020-02-23 Sun>
 * TODO [[/home/oleg/majordomo/mail/freshclam/Jenkinsfile][Move Docker Swarm deploy to shared libs]]
   SCHEDULED: <2020-02-24 Mon>
+* TODO Push [https://lists.gnu.org/archive/html/guix-devel/2017-12/msg00290.html][[PATCH] etc: Add copyright.]
+  SCHEDULED: <2020-02-23 Sun>
+#+begin_example
+  <bricewge> I would like a probably, forgotten patch, 2 years old patch from wigust to be (re)evaluated https://lists.gnu.org/archive/html/guix-devel/2017-12/msg00290.html
+  <bricewge> It's a patch on how to setup emacs to auto-update the copyright notice.
+  <bricewge> Should I send it to guix-patches or ask the author to resubmit it?
+  <efraim> we haven't switched gdb on core-updates to 9.1
+  <efraim> bricewge: if it seems helpful and you'd like it to be reconsidered then go ahead
+  <-- emyles (~user@2a02:390:8458:1::1fa) has quit (Ping timeout: 272 seconds)
+  --> sirgazil (~sirgazil@179.15.13.185) has joined #guix
+  <efraim> is there a way to have shepherd read the files in ~/.config/shepherd/init.d/ ?
+  <civodul> bricewge, wigust: it LGTM; i think you can push it, wigust!
+  <civodul> efraim: not directly, but you can load whathever you want from your config file
+#+end_example
