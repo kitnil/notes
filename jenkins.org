@@ -285,3 +285,14 @@ At this point, or in an additional step, you could execute a docker push to uplo
 
 Our build is now complete. Click Save.
 
+** Build Project
+We now have a configured job that will build Docker Images based on our Git repository. The next stage is to test and try it.
+
+Task: Build
+On the left-hand side, select Build Now. You should see a build scheduled with a message "(pending—Waiting for next available executor)".
+
+In the background, Jenkins is launching the container and connecting to it via SSH. Sometimes this can take a while to configure the Docker Agent. The error "(pending—Jenkins doesn’t have label docker-agent)" is while Jenkins waits for the Docker Agent to start.
+
+You can see the progress using docker logs --tail=10 jenkins
+
+It's normal for this to take a few moments to complete.
