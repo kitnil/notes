@@ -558,4 +558,26 @@ The new container will be scheduled onto the second node.
 
 docker ps
 
+** Apply Rolling Updates Across Swarm Cluster
 
+In this scenario, you will learn how to apply rolling updates to your Services for configuration changes and new Docker Image versions without any downtime. The environment has been configured with two Docker Hosts.
+
+A service is a high-level concept relating to a collection of tasks to be executed by workers. An example of a service is an HTTP Server running as a Docker Container on three nodes.
+
+*** Step 1 - Update Limits
+Services can be updated dynamically to control various settings and options. Internally, Docker manages how the updates should be applied. For certain commands, Docker will stop, remove and re-create the container. Potentially having all containers stopped at once is an important consideration regarding managing connections and uptime.
+
+There are various settings you can control, view the help via docker service update --help
+
+Task
+To start, deploy a HTTP service. We will use this to update/modify the container settings.
+
+docker swarm init && docker service create --name http --replicas 2 -p 80:80 katacoda/docker-http-server:v1
+
+Once started, various properties can be updated. For example, adding a new environment variable to the containers. docker service update --env-add KEY=VALUE http
+
+Alternatively, updating the CPU and memory limits. docker service update --limit-cpu 2 --limit-memory 512mb http
+
+Once executed the results will be visible when you inspect the service. docker service inspect --pretty http
+
+However, listing all container, you will see that they have been recreated with every update. docker ps -a.
