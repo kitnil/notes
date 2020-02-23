@@ -234,4 +234,4 @@ Once the service is healthy again, Docker will update the status.
 
 docker ps
 
-docker
+docker inspect --format "{{json .State.Health.Status }}" srv
