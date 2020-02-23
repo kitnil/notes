@@ -77,3 +77,22 @@ docker swarm init
 After running the command, the Docker Engine knows how to work with a cluster and becomes the manager. The results of an initialisation is a token used to add additional nodes in a secure fashion. Keep this token safe and secure for future use when scaling your cluster.
 
 In the next step, we will add more nodes and deploy containers across these hosts.
+
+** Step 2 - Join Cluster
+With Swarm Mode enabled, it is possible to add additional nodes and issues commands across all of them. If nodes happen to disappear, for example, because of a crash, the containers which were running on those hosts will be automatically rescheduled onto other available nodes. The rescheduling ensures you do not lose capacity and provides high-availability.
+
+On each additional node, you wish to add to the cluster, use the Docker CLI to join the existing group. Joining is done by pointing the other host to a current manager of the cluster. In this case, the first host.
+
+Docker now uses an additional port, 2377, for managing the Swarm. The port should be blocked from public access and only accessed by trusted users and nodes. We recommend using VPNs or private networks to secure access.
+
+Task
+The first task is to obtain the token required to add a worker to the cluster. For demonstration purposes, we'll ask the manager what the token is via swarm join-token. In production, this token should be stored securely and only accessible by trusted individuals.
+
+token=$(ssh -o StrictHostKeyChecking=no 172.17.0.49 "docker swarm join-token -q worker") && echo $token
+
+On the second host, join the cluster by requesting access via the manager. The token is provided as an additional parameter.
+
+docker swarm join 172.17.0.49:2377 --token $token
+
+By default, the manager will automatically accept new nodes being added to the cluster. You can view all nodes in the cluster using docker node ls
+
