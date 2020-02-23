@@ -464,3 +464,23 @@ View the output with:
 docker logs $(docker ps -aqn1 -f status=exited)
 
 If the commands errors with "docker logs" requires exactly 1 argument(s). it means the container has not yet started and returned the secret.
+
+*** Step 5 - File Based Secret
+An alternate way of creating secrets is via files. In this case, we have a secret.crt file that needs to be accessed from the container.
+
+Task
+First, create the sample .crt file: echo "my-super-secure-cert" > secret.crt
+
+Secondly, update the docker-compose Stack to use the file based secret.
+
+Copy to Editorversion: '3.1'
+services:
+    test:
+        image: 'alpine'
+        command: 'cat /run/secrets/secretcert'
+        secrets:
+            - secretcert
+
+secrets:
+    secretcert:
+        file: ./secret.crt
