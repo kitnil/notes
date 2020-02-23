@@ -225,3 +225,13 @@ The Health state stores a log of all the failures and any output from the comman
 docker inspect --format "{{json .State.Health }}" srv
 
 The status of all the containers can be viewed using docker ps
+
+*** Step 4 - Fix Service
+Use an extra HTTP endpoint to make the service healthy again. curl http://docker/healthy
+
+View Healthy Status
+Once the service is healthy again, Docker will update the status.
+
+docker ps
+
+docker
