@@ -581,3 +581,13 @@ Alternatively, updating the CPU and memory limits. docker service update --limit
 Once executed the results will be visible when you inspect the service. docker service inspect --pretty http
 
 However, listing all container, you will see that they have been recreated with every update. docker ps -a.
+
+*** Step 2 - Update Replicas
+Not all updates require every container to be re-created. For example, scaling the number of replicas does not effect the existing containers.
+
+Task
+As an alternative to docker service scale, it is possible to use the update to define update how many replicas should be running. Below will update the replicas from two to six. Docker will then reschedule the additional four containers to be deployed.
+
+docker service update --replicas=6 http
+
+The number of replicas is viewable when inspecting the service docker service inspect --pretty http
