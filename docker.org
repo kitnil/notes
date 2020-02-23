@@ -700,3 +700,29 @@ Each container will still be given a unique IP addresses.
 docker inspect --format="{{.NetworkSettings.Networks.eg1.IPAddress}}" $(docker ps | grep docker-http-server | head -n1 | awk '{print $1}')
 
 This Virtual IP ensures that the load balancing works as expected within the cluster. While the IP address ensures it works outside the cluster.
+
+*** Step 4 - Multi-Host LB and Service Discovery
+Both the Virtual IP and Port Load Balancing and Service Discovery can be used in a multi-host scenario with applications communicating to different services on different hosts.
+
+In this step, we will deploy a replicated Node.js application that communicates with Redis to store data.
+
+Task
+To start there needs to be an overlay network that the application and data store can connect to.
+
+docker network create -d overlay app1-network
+
+When deploying Redis, the network can be attached. The application expects to be able to connect to a Redis instance, named Redis. To enable the application to discover the Virtual IP via the Embedded DNS we call the service Redis.
+
+docker service create --name redis --network app1-network redis:alpine
+
+When deploying the application, a public port can be exposed allowing it to load balance the requests between the two containers.
+
+docker service create --name app1-web --network app1-network --replicas 4 -p 80:3000 katacoda/redis-node-docker-example
+
+Each host should have a Node.js container instance with one host storing Redis. docker ps
+
+Calling the HTTP server will store the request in Redis and return the results. This is load balanced, with two containers talking across the overlay network to the Redis container.
+
+curl host01
+
+The application is now distributed across multiple hosts.
