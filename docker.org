@@ -43,119 +43,123 @@
 
 * Katacoda
 
-** What is Swarm Mode
+** Getting Started With Swarm Mode
+
+Learn how to initialise a two-node Swarm Cluster and deploy a service
+
+*** What is Swarm Mode
    
-In this scenario, you will learn how to initialise a Docker Swarm Mode cluster and deploy networked containers using the built-in Docker Orchestration. The environment has been configured with two Docker hosts.
+ In this scenario, you will learn how to initialise a Docker Swarm Mode cluster and deploy networked containers using the built-in Docker Orchestration. The environment has been configured with two Docker hosts.
 
-In 1.12, Docker introduced Swarm Mode. Swarm Mode enables the ability to deploy containers across multiple Docker hosts, using overlay networks for service discovery with a built-in load balancer for scaling the services.
+ In 1.12, Docker introduced Swarm Mode. Swarm Mode enables the ability to deploy containers across multiple Docker hosts, using overlay networks for service discovery with a built-in load balancer for scaling the services.
 
-Swarm Mode is managed as part of the Docker CLI, making it a seamless experience to the Docker ecosystem.
+ Swarm Mode is managed as part of the Docker CLI, making it a seamless experience to the Docker ecosystem.
 
-Key Concepts
-Docker Swarm Mode introduces three new concepts which we'll explore in this scenario.
+ Key Concepts
+ Docker Swarm Mode introduces three new concepts which we'll explore in this scenario.
 
-Node: A Node is an instance of the Docker Engine connected to the Swarm. Nodes are either managers or workers. Managers schedules which containers to run where. Workers execute the tasks. By default, Managers are also workers.
+ Node: A Node is an instance of the Docker Engine connected to the Swarm. Nodes are either managers or workers. Managers schedules which containers to run where. Workers execute the tasks. By default, Managers are also workers.
 
-Services: A service is a high-level concept relating to a collection of tasks to be executed by workers. An example of a service is an HTTP Server running as a Docker Container on three nodes.
+ Services: A service is a high-level concept relating to a collection of tasks to be executed by workers. An example of a service is an HTTP Server running as a Docker Container on three nodes.
 
-Load Balancing: Docker includes a load balancer to process requests across all containers in the service.
+ Load Balancing: Docker includes a load balancer to process requests across all containers in the service.
 
-This scenario will help you learn how to deploy these new concepts.
+ This scenario will help you learn how to deploy these new concepts.
 
-** Step 1 - Initialise Swarm Mode
-Turn single host Docker host into a Multi-host Docker Swarm Mode. Becomes Manager By default, Docker works as an isolated single-node. All containers are only deployed onto the engine. Swarm Mode turns it into a multi-host cluster-aware engine.
+*** Step 1 - Initialise Swarm Mode
+ Turn single host Docker host into a Multi-host Docker Swarm Mode. Becomes Manager By default, Docker works as an isolated single-node. All containers are only deployed onto the engine. Swarm Mode turns it into a multi-host cluster-aware engine.
 
-The first node to initialise the Swarm Mode becomes the manager. As new nodes join the cluster, they can adjust their roles between managers or workers. You should run 3-5 managers in a production environment to ensure high availability.
+ The first node to initialise the Swarm Mode becomes the manager. As new nodes join the cluster, they can adjust their roles between managers or workers. You should run 3-5 managers in a production environment to ensure high availability.
 
-Task: Create Swarm Mode Cluster
-Swarm Mode is built into the Docker CLI. You can find an overview the possibility commands via docker swarm --help
+ Task: Create Swarm Mode Cluster
+ Swarm Mode is built into the Docker CLI. You can find an overview the possibility commands via docker swarm --help
 
-The most important one is how to initialise Swarm Mode. Initialisation is done via init.
+ The most important one is how to initialise Swarm Mode. Initialisation is done via init.
 
-docker swarm init
+ docker swarm init
 
-After running the command, the Docker Engine knows how to work with a cluster and becomes the manager. The results of an initialisation is a token used to add additional nodes in a secure fashion. Keep this token safe and secure for future use when scaling your cluster.
+ After running the command, the Docker Engine knows how to work with a cluster and becomes the manager. The results of an initialisation is a token used to add additional nodes in a secure fashion. Keep this token safe and secure for future use when scaling your cluster.
 
-In the next step, we will add more nodes and deploy containers across these hosts.
+ In the next step, we will add more nodes and deploy containers across these hosts.
 
-** Step 2 - Join Cluster
-With Swarm Mode enabled, it is possible to add additional nodes and issues commands across all of them. If nodes happen to disappear, for example, because of a crash, the containers which were running on those hosts will be automatically rescheduled onto other available nodes. The rescheduling ensures you do not lose capacity and provides high-availability.
+*** Step 2 - Join Cluster
+ With Swarm Mode enabled, it is possible to add additional nodes and issues commands across all of them. If nodes happen to disappear, for example, because of a crash, the containers which were running on those hosts will be automatically rescheduled onto other available nodes. The rescheduling ensures you do not lose capacity and provides high-availability.
 
-On each additional node, you wish to add to the cluster, use the Docker CLI to join the existing group. Joining is done by pointing the other host to a current manager of the cluster. In this case, the first host.
+ On each additional node, you wish to add to the cluster, use the Docker CLI to join the existing group. Joining is done by pointing the other host to a current manager of the cluster. In this case, the first host.
 
-Docker now uses an additional port, 2377, for managing the Swarm. The port should be blocked from public access and only accessed by trusted users and nodes. We recommend using VPNs or private networks to secure access.
+ Docker now uses an additional port, 2377, for managing the Swarm. The port should be blocked from public access and only accessed by trusted users and nodes. We recommend using VPNs or private networks to secure access.
 
-Task
-The first task is to obtain the token required to add a worker to the cluster. For demonstration purposes, we'll ask the manager what the token is via swarm join-token. In production, this token should be stored securely and only accessible by trusted individuals.
+ Task
+ The first task is to obtain the token required to add a worker to the cluster. For demonstration purposes, we'll ask the manager what the token is via swarm join-token. In production, this token should be stored securely and only accessible by trusted individuals.
 
-token=$(ssh -o StrictHostKeyChecking=no 172.17.0.49 "docker swarm join-token -q worker") && echo $token
+ token=$(ssh -o StrictHostKeyChecking=no 172.17.0.49 "docker swarm join-token -q worker") && echo $token
 
-On the second host, join the cluster by requesting access via the manager. The token is provided as an additional parameter.
+ On the second host, join the cluster by requesting access via the manager. The token is provided as an additional parameter.
 
-docker swarm join 172.17.0.49:2377 --token $token
+ docker swarm join 172.17.0.49:2377 --token $token
 
-By default, the manager will automatically accept new nodes being added to the cluster. You can view all nodes in the cluster using docker node ls
+ By default, the manager will automatically accept new nodes being added to the cluster. You can view all nodes in the cluster using docker node ls
 
-** Step 3 - Create Overlay Network
-Swarm Mode also introduces an improved networking model. In previous versions, Docker required the use of an external key-value store, such as Consul, to ensure consistency across the network. The need for consensus and KV has now been incorporated internally into Docker and no longer depends on external services.
+*** Step 3 - Create Overlay Network
+ Swarm Mode also introduces an improved networking model. In previous versions, Docker required the use of an external key-value store, such as Consul, to ensure consistency across the network. The need for consensus and KV has now been incorporated internally into Docker and no longer depends on external services.
 
-The improved networking approach follows the same syntax as previously. The overlay network is used to enable containers on different hosts to communicate. Under the covers, this is a Virtual Extensible LAN (VXLAN), designed for large scale cloud based deployments.
+ The improved networking approach follows the same syntax as previously. The overlay network is used to enable containers on different hosts to communicate. Under the covers, this is a Virtual Extensible LAN (VXLAN), designed for large scale cloud based deployments.
 
-Task
-The following command will create a new overlay network called skynet. All containers registered to this network can communicate with each other, regardless of which node they are deployed onto.
+ Task
+ The following command will create a new overlay network called skynet. All containers registered to this network can communicate with each other, regardless of which node they are deployed onto.
 
-docker network create -d overlay skynet
+ docker network create -d overlay skynet
 
-** Step 4 - Deploy Service
-By default, Docker uses a spread replication model for deciding which containers should run on which hosts. The spread approach ensures that containers are deployed across the cluster evenly. This means that if one of the nodes is removed from the cluster, the instances would be already running on the other nodes. The workload on the removed node would be rescheduled across the remaining available nodes.
+*** Step 4 - Deploy Service
+ By default, Docker uses a spread replication model for deciding which containers should run on which hosts. The spread approach ensures that containers are deployed across the cluster evenly. This means that if one of the nodes is removed from the cluster, the instances would be already running on the other nodes. The workload on the removed node would be rescheduled across the remaining available nodes.
 
-A new concept of Services is used to run containers across the cluster. This is a higher-level concept than containers. A service allows you to define how applications should be deployed at scale. By updating the service, Docker updates the container required in a managed way.
+ A new concept of Services is used to run containers across the cluster. This is a higher-level concept than containers. A service allows you to define how applications should be deployed at scale. By updating the service, Docker updates the container required in a managed way.
 
-Task
-In this case, we are deploying the Docker Image katacoda/docker-http-server. We are defining a friendly name of a service called http and that it should be attached to the newly created skynet network.
+ Task
+ In this case, we are deploying the Docker Image katacoda/docker-http-server. We are defining a friendly name of a service called http and that it should be attached to the newly created skynet network.
 
-For ensuring replication and availability, we are running two instances, of replicas, of the container across our cluster.
+ For ensuring replication and availability, we are running two instances, of replicas, of the container across our cluster.
 
-Finally, we load balance these two containers together on port 80. Sending an HTTP request to any of the nodes in the cluster will process the request by one of the containers within the cluster. The node which accepted the request might not be the node where the container responds. Instead, Docker load-balances requests across all available containers.
+ Finally, we load balance these two containers together on port 80. Sending an HTTP request to any of the nodes in the cluster will process the request by one of the containers within the cluster. The node which accepted the request might not be the node where the container responds. Instead, Docker load-balances requests across all available containers.
 
-docker service create --name http --network skynet --replicas 2 -p 80:80 katacoda/docker-http-server
+ docker service create --name http --network skynet --replicas 2 -p 80:80 katacoda/docker-http-server
 
-You can view the services running on the cluster using the CLI command docker service ls
+ You can view the services running on the cluster using the CLI command docker service ls
 
-As containers are started you will see them using the ps command. You should see one instance of the container on each host.
+ As containers are started you will see them using the ps command. You should see one instance of the container on each host.
 
-List containers on the first host - docker ps
+ List containers on the first host - docker ps
 
-List containers on the second host - docker ps
+ List containers on the second host - docker ps
 
-If we issue an HTTP request to the public port, it will be processed by the two containers curl host01.
+ If we issue an HTTP request to the public port, it will be processed by the two containers curl host01.
 
-** Step 5 - Inspect State
-The Service concept allows you to inspect the health and state of your cluster and the running applications.
+*** Step 5 - Inspect State
+ The Service concept allows you to inspect the health and state of your cluster and the running applications.
 
-Task
-You can view the list of all the tasks associated with a service across the cluster. In this case, each task is a container docker service ps http
+ Task
+ You can view the list of all the tasks associated with a service across the cluster. In this case, each task is a container docker service ps http
 
-You can view the details and configuration of a service via docker service inspect --pretty http
+ You can view the details and configuration of a service via docker service inspect --pretty http
 
-On each node, you can ask what tasks it is currently running. Self refers to the manager node Leader: docker node ps self
+ On each node, you can ask what tasks it is currently running. Self refers to the manager node Leader: docker node ps self
 
-Using the ID of a node you can query individual hosts docker node ps $(docker node ls -q | head -n1)
+ Using the ID of a node you can query individual hosts docker node ps $(docker node ls -q | head -n1)
 
-In the next step, we will scale the service to run more instances of the container.
+ In the next step, we will scale the service to run more instances of the container.
 
-** Step 6 - Scale Service
-A Service allows us to scale how many instances of a task is running across the cluster. As it understands how to launch containers and which containers are running, it can easily start, or remove, containers as required. At the moment the scaling is manual. However, the API could be hooked up to an external system such as a metrics dashboard.
+*** Step 6 - Scale Service
+ A Service allows us to scale how many instances of a task is running across the cluster. As it understands how to launch containers and which containers are running, it can easily start, or remove, containers as required. At the moment the scaling is manual. However, the API could be hooked up to an external system such as a metrics dashboard.
 
-Task
-At present, we have two load-balanced containers running, which are processing our requests curl host01
+ Task
+ At present, we have two load-balanced containers running, which are processing our requests curl host01
 
-The command below will scale our http service to be running across five containers.
+ The command below will scale our http service to be running across five containers.
 
-docker service scale http=5
+ docker service scale http=5
 
-On each host, you will see additional nodes being started docker ps
+ On each host, you will see additional nodes being started docker ps
 
-The load balancer will automatically be updated. Requests will now be processed across the new containers. Try issuing more commands via curl host01
+ The load balancer will automatically be updated. Requests will now be processed across the new containers. Try issuing more commands via curl host01
 
-Try scaling the service down to see the result.
+ Try scaling the service down to see the result.
