@@ -408,3 +408,26 @@ By default, Docker works as an isolated single-node. All containers are only dep
 
 Task: Initialise Swarm Mode
 To use the secrets functionality, Docker has to be in "Swarm Mode". This is enabled via docker swarm init
+
+*** Step 2 - Cluster Based Secret
+Create Secret
+The following command will first create a random 64 character token, that will be stored in a file for testing purposes. The token file is used to create a secret called deep_thought_answer_secure.
+
+< /dev/urandom tr -dc A-Za-z0-9 | head -c64 > tokenfile
+docker secret create deep_thought_answer_secure tokenfile
+Creating a secret can also be done using stdin, for example echo "the_answer_is_42" | docker secret create lesssecure -. Note, this approach would leave the value the_answer_is_42 in the users bash history file.
+
+All the secrets names can be viewed using docker secret ls. This will not expose the underlying secret value.
+
+Using Secrets
+This secret can be used when deploying services via Swarm. For example, deploy gives the Redis service access to the secret.
+
+docker service create --name="redis" --secret="deep_thought_answer_secure" redis
+
+The secret appears as a file within the secrets directory.
+
+docker exec $(docker ps --filter name=redis -q) ls -l /run/secrets
+
+This can be read as a regular file from disk.
+
+docker exec $(docker ps --filter name=redis -q) cat /run/secrets/deep_thought_answer_secure
