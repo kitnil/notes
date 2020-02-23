@@ -253,3 +253,35 @@ You should only see one node processing requests as Swarm has automatically remo
 Swarm will now restart the unhealthy service automatically. docker ps
 
 After Swarm has restarted the service you should see two nodes again: curl host01
+
+** Deploying Portainer to Docker Swarm Cluster
+
+Portainer is a simple management solution for Docker. It consists of a web UI that allows you to easily manage your Docker containers, images, networks and volumes.
+
+In this scenario, you'll deploy Portainer and use the UI to manage a Docker Swarm cluster.
+
+*** Step 2 - Deploy Portainer
+With the cluster configured, the next stage is to deploy Portainer. Portainer is deployed as a container running on a Docker Swarm cluster or a Docker host.
+
+Task: Deploy as Swarm Service
+To complete this scenario, deploy Portainer as a Docker Service. By deploying as a Docker Service, Swarm will ensure that the service is always running on a manager, even if the host goes down.
+
+The service exposes the port 9000 and stores the internal Portainer data in the directory /host/data. When Portainer starts, it connects using the docker.sock file to the Docker Swarm Manger.
+
+There is an added constraint that the container should only run on a manager node.
+
+docker service create \
+    --name portainer \
+    --publish 9000:9000 \
+    --constraint 'node.role == manager' \
+    --mount type=bind,src=/host/data,dst=/data \
+     --mount type=bind,src=/var/run/docker.sock,dst=/var/run/docker.sock \
+    portainer/portainer \
+    -H unix:///var/run/docker.sock
+Deploy as Container
+An alternative way of running Portainer is directly on a host. In this case, the command exposes the Portainer dashboard on port 9000, persists data to the host and connects to the Docker host it's running on via the docker.sock file.
+
+docker run -d -p 9000:9000 --name=portainer \
+  -v "/var/run/docker.sock:/var/run/docker.sock" \
+  -v /host/data:/data \
+  portainer/portainer
