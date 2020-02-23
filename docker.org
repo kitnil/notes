@@ -474,16 +474,18 @@ First, create the sample .crt file: echo "my-super-secure-cert" > secret.crt
 Secondly, update the docker-compose Stack to use the file based secret.
 
 Copy to Editorversion: '3.1'
-services:
-    test:
-        image: 'alpine'
-        command: 'cat /run/secrets/secretcert'
-        secrets:
-            - secretcert
+#+BEGIN_SRC yaml
+  services:
+      test:
+          image: 'alpine'
+          command: 'cat /run/secrets/secretcert'
+          secrets:
+              - secretcert
 
-secrets:
-    secretcert:
-        file: ./secret.crt
+  secrets:
+      secretcert:
+          file: ./secret.crt
+#+END_SRC
 
 *** Step 6 - Deploy and Access Secret with Compose
 Task
