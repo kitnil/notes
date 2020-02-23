@@ -380,3 +380,24 @@ Fourth, update_config defines how updates should be applied and rolled out.
 Finally, placement allows us to add constraints to determine where the service should be deployed.
 
 More details can be found at https://docs.docker.com/compose/compose-file/#deploy
+
+*** Step 3 - Deploy Services
+The Docker Compose file is referred to as a Docker Compose Stack. Stacks can be deployed to Swarm using the CLI.
+
+Task
+The docker stack command is used to deploy a Docker Compose Stack via Swarm. In this case, it will prefix the services with myapp.
+
+docker stack deploy --compose-file docker-compose.yml myapp
+
+Once deployed it's possible to use the CLI to inspect the state.
+
+The command docker stack ls lists all stacks deployed.
+
+Details of the internal services can be discovered via docker stack services myapp
+
+Notice that the command indicates the Desired / Running state for the service. If the service cannot be deployed then this will be different.
+
+The details of each service container can be identified using docker stack ps myapp
+
+All of this information can still be discovered using docker ps
+
