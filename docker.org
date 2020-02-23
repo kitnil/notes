@@ -431,3 +431,22 @@ docker exec $(docker ps --filter name=redis -q) ls -l /run/secrets
 This can be read as a regular file from disk.
 
 docker exec $(docker ps --filter name=redis -q) cat /run/secrets/deep_thought_answer_secure
+
+*** Step 3 - Create Docker Stack with Compose
+The secrets functionality is also available using Docker Compose Stacks. In the example below, the viewer service has access to our Swarm Secret _deep_thoughtanswer. It's being mounted and made available called _deep_thoughtanswer.
+
+Task: Create Docker Compose Stack
+Copy the Docker Compose snippet to the file.
+
+Copy to Editorversion: '3.1'
+services:
+    viewer:
+        image: 'alpine'
+        command: 'cat /run/secrets/deep_thought_answer_secure'
+        secrets:
+            - deep_thought_answer_secure
+
+secrets:
+    deep_thought_answer_secure:
+        external: true
+In the next step, the Compose Stack will be deployed.
