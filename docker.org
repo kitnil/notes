@@ -629,3 +629,74 @@ Issuing HTTP requests to the load balancer will request it them being handled by
 curl http://docker
 
 It is important that your application can take this into account and handle two different versions being live concurrently.
+
+** Load Balance and Service Discover in Swarm Mode
+
+In this scenario, you will learn how to use Docker to load balance network traffic to different containers. With the introduction of Swarm Mode and Services, containers can now be logically grouped by a friendly name and port.
+
+Requests to this name/port will be load balanced across all available containers in the cluster. This increases availability and the load distribution.
+
+This functionality is provided as part of Swarm's routing mesh. Internally it's using the Linux IPVS, an in-kernel Layer 4 multi-protocol load balancer.
+
+The environment has been configured with two Docker Hosts.
+
+*** Step 1 - Initialise Cluster
+Before beginning, initialise Swarm Mode and add the second host to the cluster.
+
+Click the commands below to execute them.
+
+docker swarm init
+
+docker swarm join 172.17.0.46:2377 --token $(ssh -o StrictHostKeyChecking=no 172.17.0.46 "docker swarm join-token -q worker")
+
+*** Step 2 - Port Load Balance
+By default, requests to Services are load balanced based on the public port.
+
+Task
+The command below will create a new service called lbapp1 with two containers running. The service is exposed via port 81.
+
+docker service create --name lbapp1 --replicas 2 -p 81:80 katacoda/docker-http-server
+
+When requests are made to a node in our cluster on port 81, it will distribute the load across the two containers.
+
+curl host01:81
+
+The HTTP response indicates which container processed the request. Running the command on the second host has the same results, with it processing the request across both hosts.
+
+curl host01:81
+
+In the next step, we will explore how to use this to deploy a realistic application.
+
+*** Step 3 - Virtual IP and Service Discovery
+Docker Swarm Mode includes a Routing Mesh that enables multi-host networking. It allows containers on two different hosts to communicate as if they are on the same host. It does this by creating a Virtual Extensible LAN (VXLAN), designed for cloud-based networking.
+
+The routing works in two different ways. Firstly, based on the public port exposed on the service. Any requests to the port will be distributed. Secondly, the service is given a Virtual IP address that is routable only inside the Docker Network. When requests are made to the IP address, they are distributed to the underlying containers. This Virtual IP is registered with the Embedded DNS server in Docker. When a DNS lookup is made based on the service name, the Virtual IP is returned.
+
+In this step, you will create a load balanced http that is attached to an overlay network and look up it is Virtual IP.
+
+Task
+docker network create --attachable -d overlay eg1
+
+This network will be a "swarm-scoped network". This means that only containers launched as a service can attach itself to the network.
+
+docker service create --name http --network eg1 --replicas 2 katacoda/docker-http-server
+
+By calling the service http, Docker adds an entry to it is embedded DNS server. Other containers on the network can use the friendly name to discovery the IP address. Along with ports, it is this IP address which can be used inside the network to reach the load balanced.
+
+Use Dig to find the internal Virtual IP. By using the --attachable flag, a container outside of the Swarm service can access the network.
+
+docker run --name=dig --network eg1 benhall/dig dig http
+
+Pinging the name should also discover the IP address.
+
+docker run --name=ping --network eg1 alpine ping -c5 http
+
+This should match the Virtual IP given to the Service. You can discover this by inspecting the service.
+
+docker service inspect http --format="{{.Endpoint.VirtualIPs}}"
+
+Each container will still be given a unique IP addresses.
+
+docker inspect --format="{{.NetworkSettings.Networks.eg1.IPAddress}}" $(docker ps | grep docker-http-server | head -n1 | awk '{print $1}')
+
+This Virtual IP ensures that the load balancing works as expected within the cluster. While the IP address ensures it works outside the cluster.
