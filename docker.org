@@ -484,3 +484,13 @@ services:
 secrets:
     secretcert:
         file: ./secret.crt
+
+*** Step 6 - Deploy and Access Secret with Compose
+Task
+As before, deploy the Docker Compose Stack.
+
+docker stack deploy -c docker-compose.yml secrets2
+
+The command below will get the log file of the last container to have exited for the newly created service.
+
+docker logs $(docker ps -aqn1 -f name=secrets2 -f status=exited)
