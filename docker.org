@@ -235,3 +235,21 @@ Once the service is healthy again, Docker will update the status.
 docker ps
 
 docker inspect --format "{{json .State.Health.Status }}" srv
+
+*** Step 5 - Healthchecks with Swarm
+Docker Swarm can use these health checks to understand when services need to be restarted/recreated.
+
+Initialise a Swarm cluster and deploy the newly created image as a service with two replicas.
+
+docker rm -f $(docker ps -qa); 
+docker swarm init
+docker service create --name http --replicas 2 -p 80:80 http
+You should see two containers responding curl host01
+
+Randomly cause one of the nodes to be unhealthy with curl host01/unhealthy
+
+You should only see one node processing requests as Swarm has automatically removed it from the load balancer: curl host01
+
+Swarm will now restart the unhealthy service automatically. docker ps
+
+After Swarm has restarted the service you should see two nodes again: curl host01
