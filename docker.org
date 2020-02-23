@@ -591,3 +591,21 @@ As an alternative to docker service scale, it is possible to use the update to d
 docker service update --replicas=6 http
 
 The number of replicas is viewable when inspecting the service docker service inspect --pretty http
+
+*** Step 3 - Update Image
+The most common scenario where updates will be used is when releasing a new version of the application via an updated Docker Image. As the Docker Image is a property of a container, it can be updated like the previous steps.
+
+Task
+The following command will re-create the instances of our HTTP service with :v2 tag of the Docker Image.
+
+docker service update --image katacoda/docker-http-server:v2 http
+
+If you open a new terminal window, you will notice that Swarm is performing a rolling update.
+
+docker ps
+
+By having a rolling update with multiple replicas, the application never goes down and you can perform zero-downtime deployments.
+
+curl http://docker
+
+The next step discusses how to control the rollout and zero-downtime deployments.
