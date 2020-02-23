@@ -771,3 +771,28 @@ docker service create --name redis --network app1-network redis:alpine
 
 The next step will deploy a web app on a different node that will interact with Redis over the network.
 
+*** Step 4 - Deploy Frontend
+With the overlay network and Redis deployed, it's now possible to deploy a Web App to use Redis to persist data. The application is configured to look up Redis via DNS. The app is configured to listen on port 3000, but the service will be exposed to the public on port 80.
+
+Task
+Create the new service will the command below:
+
+docker service create \
+    --network app1-network -p 80:3000 \
+    --replicas 1 --name app1-web \
+    katacoda/redis-node-docker-example
+
+With a two-node deployment, each container will be deployed onto different hosts.
+
+docker ps
+
+They'll use the overlay network and DNS discovery to communicate.
+
+Test
+Sending a HTTP request will persist the IP of the client in Redis.
+
+curl host01
+
+As the service has been configured and deployed using Swarm Mode, it will take advantage of the load balancing discussing in our scenario Load Balance and Service Discover in Swarm Mode
+
+curl host01
