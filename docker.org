@@ -163,3 +163,41 @@ Learn how to initialise a two-node Swarm Cluster and deploy a service
  The load balancer will automatically be updated. Requests will now be processed across the new containers. Try issuing more commands via curl host01
 
  Try scaling the service down to see the result.
+
+** Add Healthcheck for Containers
+
+Learn how to add a Healthcheck instruction for containers
+
+*** Step 1 - Creating Service
+The new Healthcheck functionality is created as an extension to the Dockerfile and defined when a Docker image is built.
+
+Create HTTP Service with a Healthcheck
+The Dockerfile below extends an existing HTTP service and adds a healthcheck.
+
+The healthcheck will curl the HTTP server running every second to ensure it's up. If the server responds with a non-200 request, curl will fail and an exit code 1 will be returned. After three failures, Docker will mark the container as unhealthy.
+
+The format of the instruction is HEALTHCHECK [OPTIONS] CMD command.
+
+Copy to EditorFROM katacoda/docker-http-server:health
+HEALTHCHECK --timeout=1s --interval=1s --retries=3 \
+  CMD curl -s --fail http://localhost:80/ || exit 1
+Currently, Healthcheck supports three different options:
+
+interval=DURATION (default: 30s). This is the time interval between executing the healthcheck.
+
+timeout=DURATION (default: 30s). If the check does not finish before the timeout, consider it failed.
+
+retries=N (default: 3). How many times to recheck before marking a container as unhealthy.
+
+The command executing must be installed as part of the container deployment. Under the covers, Docker will use docker exec to execute the command.
+
+Build and Run
+Before continuing, build and run the HTTP service.
+
+docker build -t http .
+
+By default it will start in a healthy state.
+
+docker run -d -p 80:80 --name srv http
+
+In the next steps we'll cause the HTTP Server to start throwing errors.
