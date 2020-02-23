@@ -201,3 +201,13 @@ By default it will start in a healthy state.
 docker run -d -p 80:80 --name srv http
 
 In the next steps we'll cause the HTTP Server to start throwing errors.
+
+*** Step 2 - Crash Service
+With the HTTP server running as a container, the Docker Daemon will automatically check the healthcheck based on the options. It will return the status when you list all the running containers, for example docker ps.
+
+Set Unhealthy
+The HTTP server has a special endpoint which will cause it to start reporting errors.
+
+Make a http request to curl http://docker/unhealthy
+
+The service will now go into error mode. In the next step, we'll look at how Docker handles this.
