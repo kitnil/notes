@@ -401,3 +401,10 @@ The details of each service container can be identified using docker stack ps my
 
 All of this information can still be discovered using docker ps
 
+** Keeping Secrets with Docker Swarm
+
+*** Step 1 - Initialise Swarm Mode
+By default, Docker works as an isolated single-node. All containers are only deployed onto the engine. Swarm Mode turns it into a multi-host cluster-aware engine.
+
+Task: Initialise Swarm Mode
+To use the secrets functionality, Docker has to be in "Swarm Mode". This is enabled via docker swarm init
