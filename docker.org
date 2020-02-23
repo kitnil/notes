@@ -211,3 +211,17 @@ The HTTP server has a special endpoint which will cause it to start reporting er
 Make a http request to curl http://docker/unhealthy
 
 The service will now go into error mode. In the next step, we'll look at how Docker handles this.
+
+*** Step 3 - Verify Status
+As the HTTP server is in an error state, the healthcheck should fail. Docker will report this as part of the metadata.
+
+Detecting Errors
+Docker will report the health status in various different places. To get the raw text stream, useful during automation, use Docker Inspect to pull out the Health Status field.
+
+docker inspect --format "{{json .State.Health.Status }}" srv
+
+The Health state stores a log of all the failures and any output from the command. This is useful for debugging why a container is considered unhealthy.
+
+docker inspect --format "{{json .State.Health }}" srv
+
+The status of all the containers can be viewed using docker ps
