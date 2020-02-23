@@ -536,3 +536,26 @@ Setting the availability is done by updating the node. docker node update $worke
 The containers should now be both running on the single manager node. docker ps
 
 When viewing all the nodes, the availability will have changed. docker node ls
+
+*** Step 4: Turn off Maintenance Mode
+Once the work has been completed, the node should be made available for future workloads. This is done by settings the availability to active.
+
+docker node update $worker --availability=active
+
+The availability has now changed back.
+
+docker node ls
+
+It's important to note that Docker won't reschedule existing workloads. Looking at the containers, you will see that they're still both running on a single host.
+
+docker ps
+
+Instead, Swarm will only schedule new workloads onto the newly available host. This can be tested by scaling the number of replicas required.
+
+docker service scale lbapp1=3
+
+The new container will be scheduled onto the second node.
+
+docker ps
+
+
