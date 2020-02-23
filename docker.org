@@ -450,3 +450,17 @@ secrets:
     deep_thought_answer_secure:
         external: true
 In the next step, the Compose Stack will be deployed.
+
+*** Step 4 - Deploy and Access Secret with Compose
+Docker Compose Stack's are deployed using the Docker CLI. As part of the deployment, the stack will be configured with access to the secret.
+
+Task
+Deploy the task using the following command:
+
+docker stack deploy -c docker-compose.yml secrets1
+
+View the output with:
+
+docker logs $(docker ps -aqn1 -f status=exited)
+
+If the commands errors with "docker logs" requires exactly 1 argument(s). it means the container has not yet started and returned the secret.
