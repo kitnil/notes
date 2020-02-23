@@ -609,3 +609,23 @@ By having a rolling update with multiple replicas, the application never goes do
 curl http://docker
 
 The next step discusses how to control the rollout and zero-downtime deployments.
+
+*** Step 4 - Rolling Updates
+The aim is to deploy a new Docker Image without incurring any downtime. Zero downtime can be achieved by setting parallelism and a delay in the rollout. Docker can batch updates and perform them as a rollout across the cluster.
+
+update-parallelism defines how many containers Docker should update at once. Depending on the number of replicas depends on how large you would batch up the requests.
+
+update-delay defines how long to wait in-between each update batch. The delay is useful if you are application has a warm-up time, for example, starting the JVM or CLR. By specifying a delay, you can ensure that requests can still be processed while the process is starting.
+
+Task
+The two parameters are applied when running docker service update. In the example it will update one container at a time, waiting 10 seconds in-between each update. The update will be affecting the Docker Image used, but the parameters can apply to any of the possible update values
+
+docker service update --update-delay=10s --update-parallelism=1 --image katacoda/docker-http-server:v3 http
+
+After launching you will slowly see new v3 versions of the containers start and replace the existing v2. docker ps
+
+Issuing HTTP requests to the load balancer will request it them being handled by both v2 and v3 containers resulting in a different output.
+
+curl http://docker
+
+It is important that your application can take this into account and handle two different versions being live concurrently.
