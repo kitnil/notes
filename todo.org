@@ -18,8 +18,6 @@
   SCHEDULED: <2020-01-26 Sun>
 * TODO Если размер базы больше чем 1.5 ГБ, то ее размер не учитывается. Пример b213062_test
   SCHEDULED: <2020-01-31 Fri>
-* TODO rsync -av --exclude=storage rsync://127.0.0.1/mozilla/firefox/j56dvo43.default-1520714705340
-  SCHEDULED: <2020-01-27 Mon>
 * TODO [https://fosdem.org/2020/schedule/events/][FOSDEM 2020 - Events]
   SCHEDULED: <2020-02-09 Sun>
 * TODO Fix configs in [[https://gitlab.intr/utils/ipmiview][ipmiview]] (need to symlink them)
