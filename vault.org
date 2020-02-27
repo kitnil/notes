@@ -76,4 +76,6 @@ root@vm29653:~# curl -H "X-Vault-Token: s.41dmrkVHjUqLt8bqWtowXMn8" http://127.0
 
 root@vm29653:~# curl -H "X-Vault-Token: s.41dmrkVHjUqLt8bqWtowXMn8" http://127.0.0.1:8200/v1/kv/data/hello
 {"request_id":"01db14ce-f2c6-71ea-d6ec-5d409bb95386","lease_id":"","renewable":false,"lease_duration":0,"data":{"data":{"foo":"world"},"metadata":{"created_time":"2020-02-27T23:08:00.005380439Z","deletion_time":"","destroyed":false,"version":1}},"wrap_info":null,"warnings":null,"auth":null}
+
+ssh-root -fNL 8200:localhost:8200 78.108.83.111
 #+end_example
