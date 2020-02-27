@@ -19,6 +19,15 @@ Imperatively
 
 - http://chriswarbo.net/projects/nixos/useful_hacks.html
 
+- /etc/environment
+#+BEGIN_SRC nix
+  environment.etc.jenkins = {
+    source = pkgs.jenkins-jcasc-config;
+    target = "jenkins/jenkins.yml";
+  };
+
+#+END_SRC
+
 - nix-prefetch-url
 
 https://github.com/NixOS/nix/issues/1880
