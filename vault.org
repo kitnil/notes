@@ -1,0 +1,73 @@
+#+begin_example
+root@vm29653:~# docker exec -it vault /bin/vault operator init -address="http://127.0.0.1:8200" 
+Unseal Key 1: gK+nvFbHJ9ZrVX6qfRpVgHZMppCzZH6cPBecZh/ieNdC
+Unseal Key 2: fixdyRW29+vx+WCOjZzVOkkTuKHo+REGxymLO8o7fWrM
+Unseal Key 3: 0HQLsqIL8SFb9BNIKk1W4amNQbCO4ot+9aYcQkyfyjkl
+Unseal Key 4: Glsw2R5ToR2j2HyBak1UCC91bpmHmgdzeOU/lLQtJ+9T
+Unseal Key 5: G5vgwLLrVRFiAH9wh/6QtITTBQXweuPLW1fa1MSVJKaj
+
+Initial Root Token: s.41dmrkVHjUqLt8bqWtowXMn8
+
+Vault initialized with 5 key shares and a key threshold of 3. Please securely
+distribute the key shares printed above. When the Vault is re-sealed,
+restarted, or stopped, you must supply at least 3 of these keys to unseal it
+before it can start servicing requests.
+
+Vault does not store the generated master key. Without at least 3 key to
+reconstruct the master key, Vault will remain permanently sealed!
+
+It is possible to generate new unseal keys, provided you have a quorum of
+existing unseal keys shares. See "vault operator rekey" for more information.
+
+root@vm29653:~# docker exec -it vault /bin/vault operator unseal -address="http://127.0.0.1:8200" 'gK+nvFbHJ9ZrVX6qfRpVgHZMppCzZH6cPBecZh/ieNdC'
+Key                Value
+---                -----
+Seal Type          shamir
+Initialized        true
+Sealed             true
+Total Shares       5
+Threshold          3
+Unseal Progress    1/3
+Unseal Nonce       057a5491-f71c-27be-31f6-f2e3474379b8
+Version            1.2.3
+HA Enabled         false
+
+for key in 'gK+nvFbHJ9ZrVX6qfRpVgHZMppCzZH6cPBecZh/ieNdC' 'fixdyRW29+vx+WCOjZzVOkkTuKHo+REGxymLO8o7fWrM' '0HQLsqIL8SFb9BNIKk1W4amNQbCO4ot+9aYcQkyfyjkl' 'Glsw2R5ToR2j2HyBak1UCC91bpmHmgdzeOU/lLQtJ+9T' 'G5vgwLLrVRFiAH9wh/6QtITTBQXweuPLW1fa1MSVJKaj'; do docker exec -it vault /bin/vault operator unseal -address="http://127.0.0.1:8200" $key; done
+
+root@vm29653:~# docker exec -it vault /bin/env VAULT_TOKEN='s.41dmrkVHjUqLt8bqWtowXMn8' VAULT_ADDR="http://127.0.0.1:8200" /bin/vault secrets list
+Path          Type         Accessor              Description
+----          ----         --------              -----------
+cubbyhole/    cubbyhole    cubbyhole_c66ae8b8    per-token private secret storage
+identity/     identity     identity_917f7ae3     identity store
+sys/          system       system_cce74b06       system endpoints used for control, policy and debugging
+
+root@vm29653:~# docker exec -it vault /bin/env VAULT_TOKEN='s.41dmrkVHjUqLt8bqWtowXMn8' VAULT_ADDR="http://127.0.0.1:8200" /bin/vault secrets enable -version=2 kv
+Success! Enabled the kv secrets engine at: kv/
+
+root@vm29653:~# docker exec -it vault /bin/env VAULT_TOKEN='s.41dmrkVHjUqLt8bqWtowXMn8' VAULT_ADDR="http://127.0.0.1:8200" /bin/vault kv put kv/hello foo=world
+Key              Value
+---              -----
+created_time     2020-02-27T23:08:00.005380439Z
+deletion_time    n/a
+destroyed        false
+version          1
+
+root@vm29653:~# docker exec -it vault /bin/env VAULT_TOKEN='s.41dmrkVHjUqLt8bqWtowXMn8' VAULT_ADDR="http://127.0.0.1:8200" /bin/vault kv list kv
+Keys
+----
+hello
+
+root@vm29653:~# docker exec -it vault /bin/env VAULT_TOKEN='s.41dmrkVHjUqLt8bqWtowXMn8' VAULT_ADDR="http://127.0.0.1:8200" /bin/vault kv get kv/hello
+====== Metadata ======
+Key              Value
+---              -----
+created_time     2020-02-27T23:08:00.005380439Z
+deletion_time    n/a
+destroyed        false
+version          1
+
+=== Data ===
+Key    Value
+---    -----
+foo    world
+#+end_example
