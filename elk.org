@@ -69,3 +69,26 @@
 
     elasticsearch.helpers.reindex(client=elastic, target_client=elastic, source_index="youtube-gaming", target_index="yt-game")
   #+END_SRC
+
+* WIP
+
+oleg@guixsd ~$ curl -H 'Content-Type: application/json' -d '{"query": {"match": {"server": "web37", "OPERATION_IDENTITY": "LOCAL-SCHED"}}}' -s -X GET "elastic.intr:9200/logstash-te-2020.02.28/_search?pretty" 
+{
+  "error" : {
+    "root_cause" : [
+      {
+        "type" : "parsing_exception",
+        "reason" : "[match] query doesn't support multiple fields, found [server] and [OPERATION_IDENTITY]",
+        "line" : 1,
+        "col" : 63
+      }
+    ],
+    "type" : "parsing_exception",
+    "reason" : "[match] query doesn't support multiple fields, found [server] and [OPERATION_IDENTITY]",
+    "line" : 1,
+    "col" : 63
+  },
+  "status" : 400
+}
+
+curl -H 'Content-Type: application/json' -d '{"query": {"bool": {"must": {"term": {"server": "web37"}}}}}' -s -X GET "elastic.intr:9200/logstash-te-2020.02.28/_search?pretty" 
