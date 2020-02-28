@@ -35,6 +35,9 @@
 - List indexes
   : curl 'localhost:9200/_cat/indices?v&pretty'
 
+- Search
+  : curl -s -X GET "elastic.intr:9200/logstash-te-2020.02.28/_search?q=server:web37&pretty"
+
 - Map field
   #+BEGIN_SRC sh
     curl -H "Content-Type: application/json" -XPUT --data-binary \
