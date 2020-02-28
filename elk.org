@@ -38,6 +38,7 @@
 - Search
   : curl -s -X GET "elastic.intr:9200/logstash-te-2020.02.28/_search?q=server:web37&pretty"
   : curl -H 'Content-Type: application/json' -d '{"query": {"dis_max": {"queries": [{"match": {"server": "web37"}}, {"match": {"OPERATION_IDENTITY": "LOCAL-SCHED"}}]}}}' -s -X GET "elastic.intr:9200/logstash-te-2020.02.28/_search?pretty&size=1000" | jq -r '.hits.hits[] | ._source.ACTION_IDENTITY'
+  : curl -H 'Content-Type: application/json' -d '{"query": {"dis_max": {"queries": [{"match": {"server": "web37"}}, {"match": {"OPERATION_IDENTITY": "LOCAL-SCHED"}}]}}}' -s -X GET "elastic.intr:9200/logstash-te-2020.02.28/_search?pretty&size=2000" | jq --monochrome-output -r '.hits.hits[] | [._source.ACTION_IDENTITY, ._source.log_message] | @tsv' | grep -v 'malware_report\|saved in'
 
 - Map field
   #+BEGIN_SRC sh
