@@ -1,6 +1,6 @@
 - [https://www.reddit.com/r/NixOS/comments/a3w67x/install_a_package_from_a_specific_version_of/][Install a package from a specific version of Nixpkgs : NixOS]
 
-: with import <nixpkgs> {}; lib.filter (package: lib.hasAttrByPath ["src"] package) (import ./build.nix)
+: oleg@guixsd ~/majordomo/_ci/nixpkgs$ nix-instantiate --expr 'with import <nixpkgs> {}; lib.filter (package: lib.isDerivation package) (map (package: package.src) (lib.filter (package: lib.hasAttrByPath ["src"] package) (import ./build.nix)))'
 
 Ad-hoc
 : nix run -f channel:nixos-unstable anki -c anki
