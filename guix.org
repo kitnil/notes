@@ -26,6 +26,11 @@ https://gitlab.com/janneke/guix.git
 
 * Cheat sheet
 
+  - System tests
+Commit 5ec4156bbcaec8337f78411204d59e59e706103b adds a manifest for
+system tests.  Now “make check-system” simply does:
+: ./pre-inst-env guix build -m etc/system-tests.scm
+
   - docker pack
     #+BEGIN_SRC bash
       guix pack --manifest=your-manifest.scm \
