@@ -161,3 +161,33 @@ nix-setup-user joepie91
 ... and a few minutes later, `joepie91` will be able to log in, and use Nix. Repeat for each user that needs access to Nix.
 
 https://nixos.org/nix-dev/2010-April.txt.gz
+
+* Source
+
+** navi
+
+#+BEGIN_SRC nix
+  navi = (super.callPackage ((builtins.fetchGit {
+          url = "https://github.com/9999years/nix-config";
+          ref = "master";
+        }).outPath + "/rebeccapkgs/navi") { }).overrideAttrs (oldAttrs: with super.pkgs; {
+          version = "2.0.0";
+          src = super.fetchFromGitHub {
+            owner = "denisidoro";
+            repo = "navi";
+            rev = "v2.0.0";
+            sha256 = "0bmdywwsm3r250f6i5x46s9gqlv129aq7lavn07rfrv7ayq7ckpv";
+          };
+          installPhase = ''
+            mkdir -p $out/bin
+            mkdir -p $out/share/navi
+
+            cp -r cheats $out/share/navi/
+            cp -r src $out/share/navi/
+
+            makeWrapper ${bash}/bin/bash $out/bin/navi \
+                --argv0 navi \
+                --add-flags "$out/share/navi/navi"
+          '';
+        });
+#+END_SRC
