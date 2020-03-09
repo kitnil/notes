@@ -1,2 +1,8 @@
+* Tools
+
+- [https://github.com/chmln/sd][chmln/sd: Intuitive find & replace CLI (sed alternative)]
+
+* Cheatsheet
+
 - print certain number of lines https://serverfault.com/questions/133692/how-to-display-certain-lines-from-a-text-file-in-linux
   : sed -n "19,25p' 0001-gnu-Add-emacs-counsel-projectile.patch
