@@ -20,3 +20,9 @@
     scheme@(guile-user)> (scandir "/")
     $2 = ("." ".." "bin" "boot" "data" "dev" "etc" "gnu" "home" "lost+found" "mnt" "proc" "root" "run" "sys" "tmp" "var")
   #+END_EXAMPLE
+
+#+BEGIN_SRC guile
+(map (lambda (flag) (if (= (length flag) 2) (let ((value (last flag))) (if (store-file-name? value) (strip-store-file-name value) value)) (first flag))) (map (cut string-split <> #\=) (string-split (string-delete #\" (nix-output "build.nix" "--strict" "--eval" "-A" "overlay.php73.configureFlags")) #\space)))
+
+(begin (use-modules (srfi srfi-26) (ice-9 ftw) (ice-9 match)) (let ((dir "/gnu/store/xvm6m6d7vd55v5yc9v6apybrd5f9kxz2-swh-plugins-lv2-1.0.16/lib/lv2/")) (match (scandir dir) (("." ".." file ...) (string-join (map (cut string-append dir <>) file) ":")))))
+#+END_SRC
