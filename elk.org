@@ -95,3 +95,7 @@ oleg@guixsd ~$ curl -H 'Content-Type: application/json' -d '{"query": {"match": 
 }
 
 curl -H 'Content-Type: application/json' -d '{"query": {"bool": {"must": {"term": {"server": "web37"}}}}}' -s -X GET "elastic.intr:9200/logstash-te-2020.02.28/_search?pretty" 
+
+* Tools
+
+- [https://github.com/Cyb3rWard0g/HELK][Cyb3rWard0g/HELK: The Hunting ELK]
