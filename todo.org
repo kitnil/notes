@@ -76,8 +76,6 @@
 * TODO jenkins.majordomo.ru
   SCHEDULED: <2020-03-09 Mon>
   : curl 'https://jenkins.majordomo.ru/job/webservices/job/apache2-php73/job/master/35/artifact/result-test/coverage-data/vm-state-dockerNode/wordpress.png'
-* TODO Switch from GNU Stow to [https://github.com/twpayne/chezmoi][twpayne/chezmoi: Manage your dotfiles across multiple machines, securely.]
-  SCHEDULED: <2020-09-30 Wed>
 * TODO Install [https://github.com/raviqqe/muffet][raviqqe/muffet: Fast website link checker in Go]
   SCHEDULED: <2020-03-11 Wed>
 * TODO ~/majordomo/kvm-templates/packer/
