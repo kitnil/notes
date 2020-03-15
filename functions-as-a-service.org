@@ -36,24 +36,37 @@ We are ready to get started. We will be following this post by OpenFaaS creator 
 
 faas new --lang dockerfile weather --prefix tshaw
 Folder: movies created.
-  ___                   _____           ____
- / _ \ _ __   ___ _ __ |  ___|_ _  __ _/ ___|
-| | | | '_ \ / _ \ '_ \| |_ / _` |/ _` \___ \
-| |_| | |_) |  __/ | | |  _| (_| | (_| |___) |
- \___/| .__/ \___|_| |_|_|  \__,_|\__,_|____/
-      |_|Function created in folder: movies
-Stack file written: movies.yml
+
+#+begin_example
+    ___                   _____           ____
+   / _ \ _ __   ___ _ __ |  ___|_ _  __ _/ ___|
+  | | | | '_ \ / _ \ '_ \| |_ / _` |/ _` \___ \
+  | |_| | |_) |  __/ | | |  _| (_| | (_| |___) |
+   \___/| .__/ \___|_| |_|_|  \__,_|\__,_|____/
+        |_|Function created in folder: movies
+  Stack file written: movies.yml
+#+end_example
 
 At this point we have a “movies” directory and a “movies.yml”. There is no need to update “movies.yml”. We will update the Dockerfile located in the “movies” directory to install bash and python in the container image. We will also add in the “movies” bash script and update the fprocess variable to call this script.
 
-Add in line : RUN apk add --no-cache bash pythonUpdate the fprocess variable to look like :ENV fprocess="xargs bash /tmp/movies"Update the "apk --no-cache add curl" code section to download the movie script. This was done to avoid permission problems when using ADD and a URL.The updated section should look like :RUN apk --no-cache add curl \
-    && echo "Pulling watchdog binary from Github." \
-    && curl -sSL https://github.com/openfaas/faas/releases/download/0.9.6/fwatchdog > /usr/bin/fwatchdog \
-    && chmod +x /usr/bin/fwatchdog \
-    && cp /usr/bin/fwatchdog /home/app \
-    && curl -sSL https://raw.githubusercontent.com/alexanderepstein/Bash-Snippets/master/movies/movies > /tmp/movies \
-    && chmod +x /tmp/movies \
-    && apk del curl --no-cache
+Add in line :
+
+#+begin_example
+  RUN apk add --no-cache bash pythonUpdate the fprocess variable to look like :ENV fprocess="xargs bash /tmp/movies"Update the "apk --no-cache add curl"
+
+#+end_example
+
+code section to download the movie script. This was done to avoid permission problems when using ADD and a URL.The updated section should look like:
+#+begin_example
+  RUN apk --no-cache add curl \
+      && echo "Pulling watchdog binary from Github." \
+      && curl -sSL https://github.com/openfaas/faas/releases/download/0.9.6/fwatchdog > /usr/bin/fwatchdog \
+      && chmod +x /usr/bin/fwatchdog \
+      && cp /usr/bin/fwatchdog /home/app \
+      && curl -sSL https://raw.githubusercontent.com/alexanderepstein/Bash-Snippets/master/movies/movies > /tmp/movies \
+      && chmod +x /tmp/movies \
+      && apk del curl --no-cache
+#+end_example
 
 That’s it! Now we can build the function image and try executing the bash script as a function.
 
