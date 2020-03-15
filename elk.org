@@ -64,15 +64,15 @@
   : curl -X POST "localhost:9200/_aliases" -H 'Content-Type: application/json' -d'{"actions":[{"add":{"index":"yt-game","alias":"yt"}}]}'
 
 - Reindex
-  #+BEGIN_SRC python
+  #+begin_example
     import elasticsearch
     import elasticsearch.helpers
 
     elastic = elasticsearch.Elasticsearch([{"host": "localhost", "port": 9200}])
 
     elasticsearch.helpers.reindex(client=elastic, target_client=elastic, source_index="youtube-gaming", target_index="yt-game")
-  #+END_SRC
-
+  #+end_example
+  
 * WIP
 
 oleg@guixsd ~$ curl -H 'Content-Type: application/json' -d '{"query": {"match": {"server": "web37", "OPERATION_IDENTITY": "LOCAL-SCHED"}}}' -s -X GET "elastic.intr:9200/logstash-te-2020.02.28/_search?pretty" 
