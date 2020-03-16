@@ -10,10 +10,14 @@ Most system administrators understand the nice command, which may be used to cha
 
 The current nice value of a process can be shown in a variety of ways, with perhaps the simplest being to use top where the nice value is shown in the column labelled NI. We can also see the nice value with some forms of the ps command; for example, here we see the PID, the nice value and the command:
 
-$ ps -o pid,ni,comm 
-  PID  NI COMMAND 
- 1477   0 bash 
-18710   0 ps
+#+BEGIN_SRC bash
+  ps -o pid,ni,comm 
+#+END_SRC
+
+#+RESULTS:
+:   PID  NI COMMAND 
+:  1477   0 bash 
+: 18710   0 ps
 
 Perhaps confusingly, the lower the nice value the higher the priority. For most processes, the default nice value is zero. There are two versions of the command: nice (to start a process with a specific nice value), and renice (to alter the nice value of a running process). If your complex calculation running as PID 12345 is taking a lot of processing power, you can be a good server citizen by reducing its priority using renice:
 
@@ -22,8 +26,12 @@ $ renice 10 12345
 
 Or maybe your calculation is more important than everyone else’s work:
 
-$ renice -10 12345 
-renice: failed to set priority for 12345 (process ID): Permission denied
+#+BEGIN_SRC bash
+  renice -10 12345
+#+END_SRC
+
+#+RESULTS:
+: renice: failed to set priority for 12345 (process ID): Permission denied
 
 – but you’ll need to be root to do that.
 ionice
