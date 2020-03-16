@@ -47,7 +47,7 @@ Here we examine the class and priority used by PID 3467:
 #+END_SRC
 
 #+RESULTS:
-best-effort: prio 4
+: best-effort: prio 4
 
 If we are root, we could switch that to the Realtime class with a priority of 3:
 
