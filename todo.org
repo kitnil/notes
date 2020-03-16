@@ -73,3 +73,14 @@
   SCHEDULED: <2020-03-15 Sun>
 * TODO https://travis-ci.org/github/mkoppanen/imagick/jobs/527363899/config
   SCHEDULED: <2020-03-31 Tue>
+* TODO Switch to python test in Majordomo nixpkgs
+  SCHEDULED: <2020-09-01 Tue>
+#+begin_example
+      start_all()
+      server.wait_for_unit("mysql");
+      server.wait_for_unit("nginx");
+      sleep(5);
+      assert "This file is part of nginx" in succeed(
+          "curl --fail --header 'example.com' 127.0.0.1/index.php"
+      )
+#+end_example
