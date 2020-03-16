@@ -42,13 +42,18 @@ Examples
 
 Here we examine the class and priority used by PID 3467:
 
-$ ionice -p 3467 
+#+BEGIN_SRC bash
+  ionice -p 3467
+#+END_SRC
+
 best-effort: prio 4
 
 If we are root, we could switch that to the Realtime class with a priority of 3:
 
-ionice -c 1 -n 3 -p 3467 
-ionice  -p 3467 
+#+BEGIN_SRC bash
+  ionice -c 1 -n 3 -p 3467 
+  ionice  -p 3467
+#+END_SRC
 
 realtime: prio 3
 
@@ -56,5 +61,7 @@ Application
 
 So when might you use this? Maybe you have some rsync processes running on a production server, and they’re impacting performance. You don’t want to abort them, but you do want to reduce their impact, so you set the I/O scheduling class to Idle. The rsyncs will take longer, possibly a lot longer, but they will no longer cause a performance degradation:
 
-# for pid in $(pidof rsync); do ionice -c 3 -p $pid; done
+#+BEGIN_SRC bash
+  for pid in $(pidof rsync); do ionice -c 3 -p $pid; done
+#+END_SRC
 
