@@ -38,10 +38,10 @@ ionice
 
 Not so well understood is the ionice command, which sets or shows both the I/O class and, within that class, the priority. There are four classes:
 
-0: None
-1: Realtime
-2: Best-effort
-3: Idle
+0) None
+1) Realtime
+2) Best-effort
+3) Idle
 
 Confusingly, on a modern kernel, “None” and “Best-effort” are the same thing, and they are also the default. The Idle class does as you might expect: it executes I/O for the process in question when there is no other I/O scheduled, and, as such, it does not take a priority.
 
