@@ -84,3 +84,5 @@
           "curl --fail --header 'example.com' 127.0.0.1/index.php"
       )
 #+end_example
+* TODO [[https://cerberus.intr/index.php/profiles/ticket/EZ-75759-736/conversation/read_all][Mail notification in sieve]]
+  SCHEDULED: <2021-08-02 Mon>
