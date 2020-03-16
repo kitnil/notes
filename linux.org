@@ -47,8 +47,9 @@ best-effort: prio 4
 
 If we are root, we could switch that to the Realtime class with a priority of 3:
 
-# ionice -c 1 -n 3 -p 3467 
-# ionice  -p 3467 
+ionice -c 1 -n 3 -p 3467 
+ionice  -p 3467 
+
 realtime: prio 3
 
 Application
