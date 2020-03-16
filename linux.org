@@ -6,9 +6,16 @@
 
 - [[https://www.tiger-computing.co.uk/linux-tips-nice-and-ionice/][Linux Tips: nice and ionice - Tiger Computing]]
 
-Most system administrators understand the nice command, which may be used to change a process’s priority. Any user can change the priority of processes running under their UID, but only root may change others’ processes.
+Most system administrators understand the nice command, which may be
+used to change a process’s priority. Any user can change the priority
+of processes running under their UID, but only root may change others’
+processes.
 
-The current nice value of a process can be shown in a variety of ways, with perhaps the simplest being to use top where the nice value is shown in the column labelled NI. We can also see the nice value with some forms of the ps command; for example, here we see the PID, the nice value and the command:
+The current nice value of a process can be shown in a variety of ways,
+with perhaps the simplest being to use top where the nice value is
+shown in the column labelled NI. We can also see the nice value with
+some forms of the ps command; for example, here we see the PID, the
+nice value and the command:
 
 #+BEGIN_SRC bash
   ps -o pid,ni,comm 
@@ -19,10 +26,19 @@ The current nice value of a process can be shown in a variety of ways, with perh
 :  1477   0 bash 
 : 18710   0 ps
 
-Perhaps confusingly, the lower the nice value the higher the priority. For most processes, the default nice value is zero. There are two versions of the command: nice (to start a process with a specific nice value), and renice (to alter the nice value of a running process). If your complex calculation running as PID 12345 is taking a lot of processing power, you can be a good server citizen by reducing its priority using renice:
+Perhaps confusingly, the lower the nice value the higher the
+priority. For most processes, the default nice value is zero. There
+are two versions of the command: nice (to start a process with a
+specific nice value), and renice (to alter the nice value of a running
+process). If your complex calculation running as PID 12345 is taking a
+lot of processing power, you can be a good server citizen by reducing
+its priority using renice:
 
-$ renice 10 12345 
-12345 (process ID) old priority 0, new priority 10
+#+BEGIN_SRC bash
+  renice 10 12345
+#+END_SRC
+#+RESULTS:
+: 12345 (process ID) old priority 0, new priority 10
 
 Or maybe your calculation is more important than everyone else’s work:
 
@@ -36,17 +52,23 @@ Or maybe your calculation is more important than everyone else’s work:
 – but you’ll need to be root to do that.
 ionice
 
-Not so well understood is the ionice command, which sets or shows both the I/O class and, within that class, the priority. There are four classes:
+Not so well understood is the ionice command, which sets or shows both
+the I/O class and, within that class, the priority. There are four
+classes:
 
 0) None
 1) Realtime
 2) Best-effort
 3) Idle
 
-Confusingly, on a modern kernel, “None” and “Best-effort” are the same thing, and they are also the default. The Idle class does as you might expect: it executes I/O for the process in question when there is no other I/O scheduled, and, as such, it does not take a priority.
+Confusingly, on a modern kernel, “None” and “Best-effort” are the same
+thing, and they are also the default. The Idle class does as you might
+expect: it executes I/O for the process in question when there is no
+other I/O scheduled, and, as such, it does not take a priority.
 
-Both “Realtime” and “Best-effort” take a priority level from zero to 7, with zero having the highest priority. “Realtime” tries to give processes immediate access to the disk, ordered by priority.
-Examples
+Both “Realtime” and “Best-effort” take a priority level from zero to
+7, with zero having the highest priority. “Realtime” tries to give
+processes immediate access to the disk, ordered by priority.  Examples
 
 Here we examine the class and priority used by PID 3467:
 
@@ -57,7 +79,8 @@ Here we examine the class and priority used by PID 3467:
 #+RESULTS:
 : best-effort: prio 4
 
-If we are root, we could switch that to the Realtime class with a priority of 3:
+If we are root, we could switch that to the Realtime class with a
+priority of 3:
 
 #+BEGIN_SRC bash
   ionice -c 1 -n 3 -p 3467 
@@ -69,7 +92,12 @@ If we are root, we could switch that to the Realtime class with a priority of 3:
 
 Application
 
-So when might you use this? Maybe you have some rsync processes running on a production server, and they’re impacting performance. You don’t want to abort them, but you do want to reduce their impact, so you set the I/O scheduling class to Idle. The rsyncs will take longer, possibly a lot longer, but they will no longer cause a performance degradation:
+So when might you use this? Maybe you have some rsync processes
+running on a production server, and they’re impacting performance. You
+don’t want to abort them, but you do want to reduce their impact, so
+you set the I/O scheduling class to Idle. The rsyncs will take longer,
+possibly a lot longer, but they will no longer cause a performance
+degradation:
 
 #+BEGIN_SRC bash
   for pid in $(pidof rsync); do ionice -c 3 -p $pid; done
