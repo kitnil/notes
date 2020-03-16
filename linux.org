@@ -56,7 +56,8 @@ If we are root, we could switch that to the Realtime class with a priority of 3:
   ionice  -p 3467
 #+END_SRC
 
-realtime: prio 3
+#+RESULTS:
+: realtime: prio 3
 
 Application
 
