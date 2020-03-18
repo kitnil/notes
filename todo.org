@@ -7,6 +7,18 @@
          ${service}
     done
   #+END_SRC
+* TODO Xorg keyboard layout
+  SCHEDULED: <2020-03-18 Wed>
+#+begin_example
+  Section "InputClass"
+    Identifier "Keyboard catchall"
+    MatchIsKeyboard "on"
+    Option "XkbModel" "pc104"
+    Option "XkbLayout" "us,ru"
+    Option "XkbOptions" "grp:menu_toggle,grp_led:scroll"
+    Option "XkbVariant" ""
+  EndSection
+#+end_example
 * TODO Don't report webservices build success when invoked by cron
   SCHEDULED: <2020-03-01 Sun>
 * TODO Build overlay recursively by providing NIX_PATH parameter
