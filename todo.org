@@ -1,3 +1,12 @@
+* TODO Add docker alias
+  SCHEDULED: <2020-03-19 Thu>
+  #+BEGIN_SRC bash
+    for service in $(docker service ls -q); do
+      docker service inspect --format \
+         '{{.Spec.Name}}: {{range .Endpoint.VirtualIPs}}{{.Addr}} {{end}}' \
+         ${service}
+    done
+  #+END_SRC
 * TODO Don't report webservices build success when invoked by cron
   SCHEDULED: <2020-03-01 Sun>
 * TODO Build overlay recursively by providing NIX_PATH parameter
