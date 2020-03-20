@@ -78,7 +78,7 @@
                   stopJobs(child)
               }
           } else if (job in org.jenkinsci.plugins.workflow.job.WorkflowJob) {
-        
+
               if (job.isBuilding()) {
                   for (build in job.builds) {
                       build.doKill()
