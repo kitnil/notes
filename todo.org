@@ -120,3 +120,19 @@
   SCHEDULED: <2020-03-26 Thu>
 * TODO Test LSI on NixOS raid controller https://billing2.intr/servers/edit/42
   SCHEDULED: <2020-03-24 Tue>
+* TODO web36 php53-hardened
+  SCHEDULED: <2020-03-23 Mon>
+#+begin_example
+  root@web36 ~ # docker logs apache2-php53-hardened
+  [Wed Mar 18 05:15:18.007847 2020] [mpm_prefork:notice] [pid 24] AH00163: Apache/2.4.41 (Unix) mpm-itk/2.4.7-04 PHP/5.3.29 configured -- resuming normal operations
+  [Wed Mar 18 05:15:18.007892 2020] [mpm_prefork:info] [pid 24] AH00164: Server built: Aug  9 2019 13:36:47
+  [Wed Mar 18 05:15:18.007905 2020] [core:notice] [pid 24] AH00094: Command line: '/nix/store/xm89nf0qg88c7l2yxxnpagl5pib8qfrc-apache-httpd-2.4.41/bin/httpd -D FOREGROUND -d /nix/store/gncm5v57wlq48v5r1h49yxxfq48wv9nq-apache2-rootfs-php53/etc/httpd'
+  [Wed Mar 18 14:24:52.114603 2020] [mpm_prefork:notice] [pid 24] AH00171: Graceful restart requested, doing restart
+  [Wed Mar 18 14:24:52.360462 2020] [mpm_prefork:notice] [pid 24] AH00163: Apache/2.4.41 (Unix) mpm-itk/2.4.7-04 PHP/5.3.29 configured -- resuming normal operations
+  [Wed Mar 18 14:24:52.360479 2020] [mpm_prefork:info] [pid 24] AH00164: Server built: Aug  9 2019 13:36:47
+  [Wed Mar 18 14:24:52.360485 2020] [core:notice] [pid 24] AH00094: Command line: '/nix/store/xm89nf0qg88c7l2yxxnpagl5pib8qfrc-apache-httpd-2.4.41/bin/httpd -D FOREGROUND -d /nix/store/gncm5v57wlq48v5r1h49yxxfq48wv9nq-apache2-rootfs-php53/etc/httpd'
+  [Sun Mar 22 04:47:12.442742 2020] [reqtimeout:info] [pid 32692] [client 127.0.0.1:57438] AH01382: Request header read timeout
+  s6-svscan: warning: unable to exec finish script .s6-svscan/finish: Permission denied
+  s6-svscan: warning: executing into .s6-svscan/crash
+  s6-svscan: fatal: unable to exec .s6-svscan/crash: No such file or directory
+#+end_example
