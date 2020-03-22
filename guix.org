@@ -26,6 +26,15 @@ https://gitlab.com/janneke/guix.git
 
 * Cheat sheet
 
+  - The release process is documented at:
+
+  https://git.savannah.gnu.org/cgit/guix/maintenance.git/tree/doc/release.org
+
+As for nightly builds: CI currently builds things like:
+
+  https://ci.guix.gnu.org/search?query=guix-binary  ;binary tarball
+  https://ci.guix.gnu.org/search?query=disk-image   ;ISO9660 image
+
   - Guix prepare for a release
 
 Now we can do:
