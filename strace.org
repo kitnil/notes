@@ -14,3 +14,8 @@ strace -e trace=network
 [pid 14394] openat(AT_FDCWD, "/nix/store/nrhj8zy3dq4cla9nz75x2vkbvf9ah0wj-mj-nginx-config/lua/filter.lua", O_RDONLY) = 11
 [pid 14394] openat(AT_FDCWD, "/home/u70/php73.ru/www/hello.txt.gz", O_RDONLY|O_NONBLOCK) = -1 ENOENT (No such file or directory)
 [pid 14394] openat(AT_FDCWD, "/home/u70/php73.ru/www/hello.txt", O_RDONLY|O_NONBLOCK) = 11
+
+
+
+strace -ff вывод каждого пида в отдельный файл
+strace может завершать syscall согласно заданному параметру
