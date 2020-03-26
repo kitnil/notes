@@ -53,11 +53,6 @@
   SCHEDULED: <2020-02-05 Wed>
 * TODO [[/home/oleg/majordomo/mail/freshclam/Jenkinsfile][Move Docker Swarm deploy to shared libs]]
   SCHEDULED: <2020-02-24 Mon>
-* TODO nix-collect-garbage /home/oleg/majordomo/_ci/nix-store-gc/
-  SCHEDULED: <2020-03-02 Mon>
-#+begin_example
-  nix-store --realise $(nix-store --query --references $(nix-instantiate default.nix --show-trace --indirect)) --indirect --add-root $PWD/shell.dep
-#+end_example
 * TODO [https://github.com/NixOS/nix/issues/2208][nix-shell dependencies can be garbage collected any time now / persistent nix-shell envs ?? Issue #2208 ?? NixOS/nix]
   SCHEDULED: <2020-03-09 Mon>
 * TODO [[https://kibana.intr/goto/5b656d4c6b23e85df3a38a9aeb9744e9][logstash te userid as field]]
