@@ -100,7 +100,7 @@
 * TODO [[https://cerberus.intr/index.php/profiles/ticket/SZ-54634-812/message/14601190][kvm34 замена диска]]
 ** https://cerberus.intr/index.php/profiles/ticket/WK-81659-519/message/14601097
 ** https://cerberus.intr/index.php/profiles/ticket/AK-76963-724/message/14604601
-* TODO Add PHP update notification
+* TODO Add PHP update notification [[/home/oleg/archive/src/tmp/php-versions.org][script]]
   SCHEDULED: <2020-03-23 Mon>
   #+BEGIN_SRC bash
     for version in $(curl --silent 'https://news-web.php.net/group.php?group=php.announce&format=rss' | xq --raw-output '.rss.channel.item[] | .title' | awk '/Released/ { print $2 }'); do echo curl --request POST "https://alerta.intr/api/alert" --header "Authorization: Key xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" --header "Content-type: application/json" -d "{\"resource\": \"ci\", \"event\": \"php.version.$version\", \"environment\": \"Production\", \"severity\": \"info\", \"correlate\": [], \"service\": [\"webservices\"], \"group\": null, \"value\": \"$version\", \"text\": \"New PHP $version release\", \"tags\": [], \"attributes\": {}, \"origin\": null, \"type\": null, \"timeout\": 691200, \"rawData\": null, \"customer\": null}"; done
