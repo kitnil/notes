@@ -26,6 +26,8 @@ https://gitlab.com/janneke/guix.git
 
 * Cheat sheet
 
+  - flag for configure --enable-reproducible-build
+
   - The release process is documented at:
 
   https://git.savannah.gnu.org/cgit/guix/maintenance.git/tree/doc/release.org
