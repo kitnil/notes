@@ -1,3 +1,5 @@
+* TODO Replace Zabbix web interface with alerta
+  SCHEDULED: <2020-03-08 Sun>
 * TODO Add docker alias
   SCHEDULED: <2020-03-19 Thu>
   #+BEGIN_SRC bash
@@ -56,8 +58,6 @@
 * TODO [https://github.com/NixOS/nix/issues/2208][nix-shell dependencies can be garbage collected any time now / persistent nix-shell envs ?? Issue #2208 ?? NixOS/nix]
   SCHEDULED: <2020-03-09 Mon>
 * TODO [[https://kibana.intr/goto/5b656d4c6b23e85df3a38a9aeb9744e9][logstash te userid as field]]
-  SCHEDULED: <2020-03-08 Sun>
-* TODO Replace Zabbix web interface with alerta 
   SCHEDULED: <2020-03-08 Sun>
 * TODO Build by schedule but don't deploy /home/oleg/majordomo/_ci/nixpkgs/
   SCHEDULED: <2020-03-22 Sun>
