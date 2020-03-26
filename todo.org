@@ -134,11 +134,6 @@
 #+end_example
 * TODO [[https://issues.guix.info/issue/30084][[PATCH] gnu: Add urho3d.]]
   SCHEDULED: <2020-03-29 Sun>
-* TODO firefox esr nix
-  SCHEDULED: <2020-03-25 Wed>
-#+begin_example
-  NIXPKGS_CONFIG="$PWD/config.nix" ~/.nix-profile/bin/nix-build --no-out-link --expr '(import (builtins.fetchTarball {url = "https://github.com/nixos/nixpkgs/archive/9727da29b0e853ff154a63dc61c321c8bd0c62fa.tar.gz";}) {}).firefox-esr-52'
-#+end_example
 * TODO Use firefox-esr-nix instead ipmiview by launching javaws in icedtea, which has a missing SSL certificate
   SCHEDULED: <2020-03-25 Wed>
 * TODO fileserver test.nix [[https://www.youtube.com/results?search_query=rsocket][rsocket - YouTube]]
