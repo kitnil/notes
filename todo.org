@@ -51,8 +51,6 @@
   SCHEDULED: <2020-03-29 Sun>
 * TODO debian9 $osVariant   = "debian8"; /ssh:kvm15.intr|sudo:root@kvm15.intr:/usr/local/repo/lib/kvm.pm
   SCHEDULED: <2020-02-05 Wed>
-* TODO Fix router4.intr connection as root in [https://jenkins.wugi.info/view/Failed/job/ansible/job/ansible-cmdb-majordomo/][Branches (1) [ansible » ansible-cmdb-majordomo] [Jenkins]]
-  SCHEDULED: <2020-02-23 Sun>
 * TODO [[/home/oleg/majordomo/mail/freshclam/Jenkinsfile][Move Docker Swarm deploy to shared libs]]
   SCHEDULED: <2020-02-24 Mon>
 * TODO nix-collect-garbage /home/oleg/majordomo/_ci/nix-store-gc/
