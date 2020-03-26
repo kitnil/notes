@@ -132,3 +132,6 @@
 * TODO fileserver test.nix [[https://www.youtube.com/results?search_query=rsocket][rsocket - YouTube]]
   SCHEDULED: <2020-03-30 Mon>
 * TODO IPMI https://cerberus.intr/index.php/profiles/ticket/AQ-84438-978/conversation/read_all
+   - [[/home/oleg/src/nixpkgs-firefox-esr-52/pkgs/applications/networking/browsers/firefox/packages.nix][firefox]]
+   - [[/home/oleg/src/nixpkgs-firefox-esr-52/pkgs/development/compilers/adoptopenjdk-icedtea-web/default.nix][icedtea]]
+   - [[/home/oleg/src/nixpkgs-firefox-esr-52/jdk.nix][jdk]]
