@@ -18,6 +18,12 @@
 
 - [https://github.com/jessfraz/dotfiles/blob/master/.functions][dotfiles/.functions at master · jessfraz/dotfiles]
 
+* Misc
+
+#+BEGIN_SRC bash
+  (set -e; foo() { echo @ $1 $2; echo rm $1; echo ln -s $(printf $2 | sed 's@src/dotfiles/@.local/share/chezmoi/dotfiles/@') $1; echo; }; eval $(find -maxdepth 5 -type l -exec stat --format=%N {} + | grep 'dotfiles/' | grep -v chezmoi | awk '{ print $1, $3 }' | tr -d "'" | sed 's@^@foo @' | tr '\n' ';'))
+#+END_SRC
+
 * Cheatsheet
 
   - find /gnu -type f -iname '*12x22*'|while read x;do vbr GxFont12x22- $x;done
