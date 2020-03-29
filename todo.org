@@ -49,7 +49,7 @@
   SCHEDULED: <2020-08-31 Mon>
 * TODO Nixify PXE ~/majordomo/net/pxe/
   SCHEDULED: <2020-12-13 Sun>
-* TODO [[file:/ssh:dh3-mr.intr|sudo:root@dh3-mr.intr:/home/gfs_storage_pool/alerta-webui/js/controllers.js::$scope.ackAlert%20=%20function(id)%20{][Maybe replace ack with delete]]
+* TODO Maybe replace ack with delete in Alerta web interface
   SCHEDULED: <2020-03-29 Sun>
 * TODO debian9 $osVariant   = "debian8"; /ssh:kvm15.intr|sudo:root@kvm15.intr:/usr/local/repo/lib/kvm.pm
   SCHEDULED: <2020-02-05 Wed>
