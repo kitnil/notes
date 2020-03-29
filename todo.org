@@ -140,3 +140,4 @@
 #+begin_example
   fatal: [web30.intr]: FAILED! => {"changed": true, "cmd": ["/root/docker-pull.sh"], "delta": "0:00:04.814705", "end": "2020-03-27 14:01:40.079347", "msg": "non-zero return code", "rc": 1, "start": "2020-03-27 14:01:35.264642", "stderr": "++ docker images --format '{{ .Repository }}'\n+ for repo in '$(docker images  --format '\\''{{ .Repository }}'\\'')'\n+ docker pull sysdig/sysdig:master\nError response from daemon: manifest for sysdig/sysdig:master not found", "stderr_lines": ["++ docker images --format '{{ .Repository }}'", "+ for repo in '$(docker images  --format '\\''{{ .Repository }}'\\'')'", "+ docker pull sysdig/sysdig:master", "Error response from daemon: manifest for sysdig/sysdig:master not found"], "stdout": "", "stdout_lines": []}
 #+end_example
+* TODO [[https://cerberus.intr/index.php/profiles/ticket/SN-11785-238/comment/7124095][Запрос из панели AC_131779 (Тема запроса: Баг в SSL-сертификате от Let's Encrypt.)]]
