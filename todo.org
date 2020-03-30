@@ -165,4 +165,16 @@
   В контейнерах hms2_personmgr не вижу заявок и trace'ов.
 #+END_SRC
 * TODO Олег Пыхалов (pyhalov) opened !2 *Jenkinsfile: Add HOSTNAME parameter.* in office / ssl-certificates
+  SCHEDULED: <2020-04-05 Sun>
+https://gitlab.intr/office/ssl-certificates/-/merge_requests/2
+16:36
+Оно работает, но т.к. пароль добавлен через credentials'ы jenkins'а, то при удалении хомяка работать перестанет :b
+16:37
+А примеров с curl'ом я не вижу для генерации именно строки секрета, короче на потом.
+16:37
+Ну, мержить сейчас можно, не ломает ничего.
+16:38
+И еще надо будет job'ы удалять сразу, чтобы не палить серты :b
+
 * TODO Add note about NIX CHANNEL
+  SCHEDULED: <2020-03-31 Tue>
