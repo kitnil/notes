@@ -201,3 +201,4 @@ https://gitlab.intr/office/ssl-certificates/-/merge_requests/2
   nix-shell -p hello тоже
   --expr 'with import <nixpkgs> {}; pkgs.hello.overrideAttrs(old: { unpackPhase = "false"; } )' тоже
 #+end_example
+https://github.com/NixOS/nix/issues/262 -> https://github.com/NixOS/nix/issues/920
