@@ -199,4 +199,5 @@ https://gitlab.intr/office/ssl-certificates/-/merge_requests/2
   --option sandbox false тоже НЕ провоцирует создание /tmp/env-vars (edited) 
   11:43
   nix-shell -p hello тоже
+  --expr 'with import <nixpkgs> {}; pkgs.hello.overrideAttrs(old: { unpackPhase = "false"; } )' тоже
 #+end_example
