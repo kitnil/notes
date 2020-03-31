@@ -178,3 +178,25 @@ https://gitlab.intr/office/ssl-certificates/-/merge_requests/2
 
 * TODO Add note about NIX CHANNEL
   SCHEDULED: <2020-03-31 Tue>
+
+* TODO Don't create /tmp/env-vars on jenkins.intr
+  SCHEDULED: <2020-04-01 Wed>
+#+begin_example
+  [jenkins@nixos:~]$ (set -x; sudo rm -f /tmp/env-vars; ls -l /tmp/env-vars; time nix-build '<nixpkgs>' --no-out-link -A hello --check -K 2>/dev/null; ls -l /tmp/env-vars)
+  + sudo rm -f /tmp/env-vars
+  + ls --color=tty -l /tmp/env-vars
+  ls: cannot access '/tmp/env-vars': No such file or directory
+  + nix-build '<nixpkgs>' --no-out-link -A hello --check -K
+  /nix/store/4w99qz14nsahk0s798a5rw5l7qk1zwwf-hello-2.10
+  real    0m19.662s
+  user    0m0.266s
+  sys     0m0.045s
+  + ls --color=tty -l /tmp/env-vars
+  ls: cannot access '/tmp/env-vars': No such file or directory
+  11:41
+  ¯\_(ツ)_/¯
+  11:43
+  --option sandbox false тоже НЕ провоцирует создание /tmp/env-vars (edited) 
+  11:43
+  nix-shell -p hello тоже
+#+end_example
