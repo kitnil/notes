@@ -182,3 +182,11 @@ https://gitlab.intr/office/ssl-certificates/-/merge_requests/2
 * TODO filestash
   SCHEDULED: <2020-04-01 Wed>
 root@web99:~# docker run -it --network=host --rm --name filestash filestash-dev:4 bash
+
+* TODO when jenkins deploy to swarm and commit has't changed will be the unstash error
+  SCHEDULED: <2020-04-26 Sun>
+Олег Пыхалов (pyhalov at majordomo.ru)￼  14:38
+Это ок? Не может stash. https://jenkins.intr/job/monitoring/job/kapacitor/job/master/2/console
+￼
+14:39
+если коммит не изменился, там всегда фейл
