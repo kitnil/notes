@@ -22,3 +22,13 @@
 * Cheat sheet
   - https://en.wikiversity.org/wiki/DevOps/Ansible
     : debug msg='sshpass -p{{ ansible_ssh_pass }} ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no {{ ansible_ssh_user }}@{{ ansible_host }}'
+
+#+BEGIN_SRC yaml
+      - name: send a message with a report link using Slack markup
+        slack:
+          token: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+          msg: |
+            goaccess report is available at <https://malscan.intr/reports/access-{{ site }}.html> and you could generate it again by invoking:
+            ```curl "http://malscan:8052/api/v2/job_templates/10/launch/" -H "Authorization: Bearer xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" -H "Content-Type: application/json" --data '{"extra_vars":{"host":"{{ host }}","home":"{{ home }}","site":"{{ site }}"}}'```
+        delegate_to: localhost
+#+END_SRC
