@@ -26,6 +26,23 @@ https://gitlab.com/janneke/guix.git
 
 * Cheat sheet
 
+  - Slim auto login
+#+BEGIN_SRC scheme
+  (services
+   (cons* (service gnome-desktop-service-type)
+          (service openssh-service-type)
+          (set-xorg-configuration
+           (xorg-configuration
+            (keyboard-layout keyboard-layout))
+           slim-service-type)
+          (service slim-service-type (slim-configuration
+                                      (auto-login? #t)
+                                      (default-user "username")))
+          (remove (lambda (service)
+                    (eq? (service-kind service) gdm-service-type))
+                  %desktop-services)))
+#+END_SRC
+
   - flag for configure --enable-reproducible-build
 
   - The release process is documented at:
