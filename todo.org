@@ -196,4 +196,39 @@ root@web99:~# docker run -it --network=host --rm --name filestash filestash-dev:
 На dh2-mr нет бриков текущего гластера, но есть брики нового (тестового). В общем конкретно на dh2-mr не обращать внимания до тех пор, пока не сообщим о вводе нового гластера.
 
 * TODO Add script for git clone
+  SCHEDULED: <2020-04-05 Sun>
 : (f() { xterm -e "set -ex; cd $HOME/archive/src; git clone $1"; }; f "https://github.com/domtronn/all-the-icons.el")
+
+* TODO Rename buildwebservice
+  SCHEDULED: <2020-04-05 Sun>
+#+BEGIN_SRC emacs-lisp
+  (mapcar (lambda (file)
+            (find-file file))
+          '("/home/oleg/majordomo/apps/bitrix-start/Jenkinsfile"
+            "/home/oleg/majordomo/webservices/apache2-perl518/Jenkinsfile"
+            "/home/oleg/majordomo/webservices/apache2-php44/Jenkinsfile"
+            "/home/oleg/majordomo/webservices/apache2-php52/Jenkinsfile"
+            "/home/oleg/majordomo/webservices/apache2-php53/Jenkinsfile"
+            "/home/oleg/majordomo/webservices/apache2-php54/Jenkinsfile"
+            "/home/oleg/majordomo/webservices/apache2-php55/Jenkinsfile"
+            "/home/oleg/majordomo/webservices/apache2-php56/Jenkinsfile"
+            "/home/oleg/majordomo/webservices/apache2-php70/Jenkinsfile"
+            "/home/oleg/majordomo/webservices/apache2-php71/Jenkinsfile"
+            "/home/oleg/majordomo/webservices/apache2-php72/Jenkinsfile"
+            "/home/oleg/majordomo/webservices/apache2-php73/Jenkinsfile"
+            "/home/oleg/majordomo/webservices/apache2-php73-personal/Jenkinsfile"
+            "/home/oleg/majordomo/webservices/apache2-php74/Jenkinsfile"
+            "/home/oleg/majordomo/webservices/cron/Jenkinsfile"
+            "/home/oleg/majordomo/webservices/ftpserver/Jenkinsfile"
+            "/home/oleg/majordomo/webservices/http-fileserver/Jenkinsfile"
+            "/home/oleg/majordomo/webservices/nginx/Jenkinsfile"
+            "/home/oleg/majordomo/webservices/nginx-php73-private/Jenkinsfile"
+            "/home/oleg/majordomo/webservices/nodejs1213/Jenkinsfile"
+            "/home/oleg/majordomo/webservices/php4/Jenkinsfile"
+            "/home/oleg/majordomo/webservices/php52/Jenkinsfile"
+            "/home/oleg/majordomo/webservices/postfix/Jenkinsfile"
+            "/home/oleg/majordomo/webservices/ssh-guest-room/Jenkinsfile"
+            "/home/oleg/majordomo/webservices/ssh-sup-room/Jenkinsfile"
+            "/home/oleg/majordomo/webservices/uwsgi-python37/Jenkinsfile"
+            "/home/oleg/majordomo/webservices/webftp-new/Jenkinsfile"))
+#+END_SRC
