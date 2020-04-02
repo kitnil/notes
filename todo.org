@@ -194,3 +194,6 @@ root@web99:~# docker run -it --network=host --rm --name filestash filestash-dev:
 * TODO Gluster offline bricks found on dh2-mr
   SCHEDULED: <2020-05-18 Mon>
 На dh2-mr нет бриков текущего гластера, но есть брики нового (тестового). В общем конкретно на dh2-mr не обращать внимания до тех пор, пока не сообщим о вводе нового гластера.
+
+* TODO Add script for git clone
+: (f() { xterm -e "set -ex; cd $HOME/archive/src; git clone $1"; }; f "https://github.com/domtronn/all-the-icons.el")
