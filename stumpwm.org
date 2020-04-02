@@ -1,0 +1,5 @@
+#+BEGIN_SRC lisp
+  (if (screen-width (current-screen))
+      (progn (run-shell-command gnus))
+      (run-shell-command gnus))
+#+END_SRC
