@@ -21,8 +21,6 @@
     Option "XkbVariant" ""
   EndSection
 #+end_example
-* TODO Don't report webservices build success when invoked by cron
-  SCHEDULED: <2020-03-01 Sun>
 * TODO Build overlay recursively by providing NIX_PATH parameter
   SCHEDULED: <2020-03-09 Mon>
 * TODO Parser Lebedeva /usr/lib/x86_64-linux-gnu/libmysqlclient.so.18
