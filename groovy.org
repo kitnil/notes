@@ -4,3 +4,10 @@ https://groovy-lang.org/groovysh.html
 
 :set verbosity DEBUG
 :set interpreterMode true
+
+* Closure
+
+https://groovy-lang.org/closures.html
+
+groovy:000> ({ it })(2)
+===> 2
