@@ -1,1 +1,2 @@
 cat /tmp/input.json | jq '.mapping.email.properties | keys'
+jq --raw-output '.iso_urls // empty' vars/*.json
