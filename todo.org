@@ -121,8 +121,6 @@
   s6-svscan: warning: executing into .s6-svscan/crash
   s6-svscan: fatal: unable to exec .s6-svscan/crash: No such file or directory
 #+end_example
-* TODO Use firefox-esr-nix instead ipmiview by launching javaws in icedtea, which has a missing SSL certificate
-  SCHEDULED: <2020-03-25 Wed>
 * TODO fileserver test.nix [[https://www.youtube.com/results?search_query=rsocket][rsocket - YouTube]]
   SCHEDULED: <2020-03-30 Mon>
 * TODO IPMI https://cerberus.intr/index.php/profiles/ticket/AQ-84438-978/conversation/read_all
