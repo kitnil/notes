@@ -123,7 +123,7 @@
 #+end_example
 * TODO fileserver test.nix [[https://www.youtube.com/results?search_query=rsocket][rsocket - YouTube]]
   SCHEDULED: <2020-03-30 Mon>
-* TODO IPMI https://cerberus.intr/index.php/profiles/ticket/AQ-84438-978/conversation/read_all
+* TODO Подключение кабеля IPMI на серверах https://cerberus.intr/index.php/profiles/ticket/AQ-84438-978/conversation/read_all
   SCHEDULED: <2020-03-29 Sun>
    - [[/home/oleg/src/nixpkgs-firefox-esr-52/pkgs/applications/networking/browsers/firefox/packages.nix][firefox]]
    - [[/home/oleg/src/nixpkgs-firefox-esr-52/pkgs/development/compilers/adoptopenjdk-icedtea-web/default.nix][icedtea]]
