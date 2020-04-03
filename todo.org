@@ -226,3 +226,6 @@ root@web99:~# docker run -it --network=host --rm --name filestash filestash-dev:
             "/home/oleg/majordomo/webservices/uwsgi-python37/Jenkinsfile"
             "/home/oleg/majordomo/webservices/webftp-new/Jenkinsfile"))
 #+END_SRC
+
+* TODO STUMPWM добавить “дежурный мод” (переменную) который позволит игнорировать время
+  SCHEDULED: <2020-04-04 Sat>
