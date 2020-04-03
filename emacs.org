@@ -1,4 +1,10 @@
 - [[https://projectile.readthedocs.io/en/latest/projects/#configuring-projectiles-behavior][Projects - Projectile: The Project Interaction Library for Emacs]]
+There are a few variables that are intended to be customized via .dir-locals.el.
+    for compilation - projectile-project-compilation-cmd
+    for testing - projectile-project-test-cmd
+    for running - projectile-project-run-cmd
+When these variables have their default value of nil, Projectile runs the default command for the current project type. You can override this behavior by setting them to either a string to run an external command or an Emacs Lisp function:
+(setq projectile-test-cmd #'custom-test-function)
 
 - [https://github.com/xuchunyang/curl-to-elisp][xuchunyang/curl-to-elisp: Convert cURL command to Emacs Lisp code]
 
