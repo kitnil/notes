@@ -11,3 +11,8 @@ https://groovy-lang.org/closures.html
 
 groovy:000> ({ it })(2)
 ===> 2
+
+groovy:000> ({f1, f2 -> f1})("foo", "bar")
+===> foo
+groovy:000> ({f1, f2 -> f2})("foo", "bar")
+===> bar
