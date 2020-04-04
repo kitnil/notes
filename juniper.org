@@ -12,6 +12,19 @@ set security zones security-zone trust interfaces ge-0/0/2 host-inbouinterfaces 
 set security zones security-zone trust interfaces ge-0/0/3 host-inbouinterfaces ge-0/0/2 host-inbound-traffic system-services all
 set security zones security-zone trust interfaces ge-0/0/4 host-inbouinterfaces ge-0/0/2 host-inbound-traffic system-services all
 
+#+begin_example
+  root@br1-mr14.intr> show system rollback 5 compare 1    
+  [edit protocols bgp group COMFORTEL]
+  -    export announce-except-vlan80;
+  +    export announce;
+  [edit protocols bgp group SERVICE-PIPE]
+  -    export announce-vlan80;
+  +    export then-reject;
+  [edit protocols bgp group PROMETEY]
+  -    export announce-except-vlan80;
+  +    export announce;
+#+end_example
+
 * Cheat sheet
 
 - show previous commit
