@@ -28,6 +28,7 @@ set security zones security-zone trust interfaces ge-0/0/4 host-inbouinterfaces 
 * Cheat sheet
 
 - show previous commit
+  origin: https://www.juniper.net/documentation/en_US/junos/topics/reference/command-summary/show-system-rollback.html
   : show system rollback 2 compare 1
 
 - rollback
