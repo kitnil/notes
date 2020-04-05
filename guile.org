@@ -1,3 +1,16 @@
+- Binary
+
+You can't produce a pre-compiled machine code binary of your guile
+program.  I believe you can use the environment variable
+GUILE_JIT_THRESHOLD set to zero to have your code compiled to
+machine code on first use.
+
+$ GUILE_JIT_THRESHOLD=0 guile my-program.scm
+
+You can also start execution of your guile program from C using
+the techniques described in the section "Programming in C" in the
+Guile Reference Manual.
+
 - Debug (origin Message-ID: <87mukwlil1.fsf@ambrevar.xyz>)
   : ,backtrace #:full? #t
 
