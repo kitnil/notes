@@ -229,3 +229,7 @@ root@web99:~# docker run -it --network=host --rm --name filestash filestash-dev:
 
 * TODO STUMPWM добавить “дежурный мод” (переменную) который позволит игнорировать время
   SCHEDULED: <2020-04-04 Sat>
+
+* TODO xplanet
+  SCHEDULED: <2020-04-05 Sun>
+: xplanet -center '+960+540' -fov 1
