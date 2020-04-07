@@ -236,3 +236,17 @@ root@web99:~# docker run -it --network=host --rm --name filestash filestash-dev:
 
 * TODO jenkins disable host verification ("Host Key Verification Strategy")
   SCHEDULED: <2020-04-07 Tue>
+
+* TODO nginx
+  SCHEDULED: <2020-04-08 Wed>
+```
+oleg@guixsd ~/majordomo$ grep buildNpmStatic */*/Jenkinsfile
+hms/frontend-app/Jenkinsfile:buildNpmStatic dstpath: "/home/static/hms-frontend", unstashHosts: ["nginx1", "nginx2"]
+hms/mlp/Jenkinsfile:buildNpmStatic dstpath: "/home/gfs_storage_pool/mlp"
+hms/staff-frontend-app/Jenkinsfile:buildNpmStatic dstpath: "/home/static/hms-staff-frontend", unstashHosts: ["nginx1", "nginx2"]
+office/snoop-client/Jenkinsfile:buildNpmStatic dstpath: "/home/gfs_storage_pool/snoop-client"
+
+/home/gfs_storage_pool/alerta-webui
+
+```
+Файлы с gluster'a теперь лежат на nginx1, nginx2.  Конфиги и пайплайны поправлены
