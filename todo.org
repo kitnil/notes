@@ -239,14 +239,12 @@ root@web99:~# docker run -it --network=host --rm --name filestash filestash-dev:
 
 * TODO nginx
   SCHEDULED: <2020-04-08 Wed>
-```
-oleg@guixsd ~/majordomo$ grep buildNpmStatic */*/Jenkinsfile
-hms/frontend-app/Jenkinsfile:buildNpmStatic dstpath: "/home/static/hms-frontend", unstashHosts: ["nginx1", "nginx2"]
-hms/mlp/Jenkinsfile:buildNpmStatic dstpath: "/home/gfs_storage_pool/mlp"
-hms/staff-frontend-app/Jenkinsfile:buildNpmStatic dstpath: "/home/static/hms-staff-frontend", unstashHosts: ["nginx1", "nginx2"]
-office/snoop-client/Jenkinsfile:buildNpmStatic dstpath: "/home/gfs_storage_pool/snoop-client"
-
-/home/gfs_storage_pool/alerta-webui
-
-```
-Файлы с gluster'a теперь лежат на nginx1, nginx2.  Конфиги и пайплайны поправлены
+"/home/gfs_storage_pool/frontend"
+"/home/gfs_storage_pool/mlp"
+"/home/gfs_storage_pool/staff-frontend"
+"/home/gfs_storage_pool/snoop-client"
+"/home/gfs_storage_pool/alerta-webui"
+"/home/gfs_storage_pool/ci"
+"/home/gfs_storage_pool/beta-alerta-master"
+"/home/gfs_storage_pool/hms-const"
+"/home/gfs_storage_pool/oauth-registrant"
