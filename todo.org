@@ -260,3 +260,40 @@ root@web99:~# docker run -it --network=host --rm --name filestash filestash-dev:
   Apr  7 17:18:19 smtp-staff postfix/qmgr[2976]: 6141A31405E0: removed
   Apr  7 17:18:20 smtp-staff postfix/qmgr[2976]: 59B7131405B4: removed
 #+end_example
+
+* TODO Moodle
+  SCHEDULED: <2020-04-13 Mon>
+Коля насчет Moodle что-то написал?
+Юзер спрашивает доколе
+https://cerberus.intr/index.php/profiles/ticket/JN-93547-362/message/14746990
+Так выяснили же что либо 7.3, либо отключение опкэша
+```Резвов Александр И можешь подробности по сегфолту написать
+12:21
+Кондрашкин Николай Одна из ситуаций когда происходит сегфолт - этап проверки конфигурации сервера при установке последней версии Moodle.
+Пример стрейса: /home/u220037/yvloar.aq/strace.log на web26
+12:22
+Еще была жалоба на 502 от чувака с WP после того как он криво ссылки с http на https заменил и появились ссылки начинающиеся с httpss://, но как ее воспроизвести клиент не сообщил.
+12:25
+Резвов Александр А ссылки нет?
+12:25
+Кондрашкин Николай На что?
+12:25
+Резвов Александр На жалобу
+12:28
+Кондрашкин Николай https://cerberus.intr/index.php/profiles/ticket/LS-83644-341/conversation
+12:29
+Я его переключил на 7.3 но Дима все равно сказал сносить испорченную базу.
+12:30
+Резвов Александр Ладно, с мудлом будет проще воспроизвести
+12:31
+Кондрашкин Николай Вот http://moodle.majordomo-test.tk/admin/index.php
+12:36
+Резвов Александр А если выключить opcache, то работает
+14:12
+Кондрашкин Николай А как полностью выключить opcache?
+14:12
+Резвов Александр php_flag opcache.enable off```
+opcache не надо раде одной cms вырубать
+Так никто не предлагает его вырубать глобально
+free and open-source learning management system 
+Moodle is used for blended learning, distance education, flipped classroom and other e-learning projects in schools, universities, workplaces and other sectors
