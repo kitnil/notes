@@ -1,3 +1,6 @@
+- NixOS REPL 
+: oleg@guixsd ~/src/nixpkgs-master$ NIXOS_CONFIG="$HOME/src/nixpkgs-master/nixos/modules/virtualisation/qemu-vm.nix" nix repl .
+
 - Idea
 : nix-build --no-out-link --expr 'with import <nixpkgs> { config = { allowUnfree = true; }; }; idea.idea-ultimate'
 
