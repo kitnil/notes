@@ -1,6 +1,11 @@
 - NixOS REPL 
 : oleg@guixsd ~/src/nixpkgs-master$ NIXOS_CONFIG="$HOME/src/nixpkgs-master/nixos/modules/virtualisation/qemu-vm.nix" nix repl .
 
+- nix-repl> mynixos2 = nixos { services.mailman.enable = true; services.mailman.siteOwner="eng"; }
+
+nix-repl> mynixos2.config.environment.etc."mailman.cfg".text                                     
+"[mailman]\nsite_owner: eng\nlayout: fhs\n\n[paths.fhs]\nbin_dir: /nix/store/f93i81cd0gc0xlkiykmrss7bnikdchh2-python3.7-mailman-3.3.0/bin\nvar_dir: /var/lib/mailman\nqueue_dir: $var_dir/queue\ntemplate_dir: $var_dir/templates\nlog_dir: $var_dir/log\nlock_dir: $var_dir/lock\netc_dir: /etc\next_dir: $etc_dir/mailman.d\npid_file: /run/mailman/master.pid\n"
+
 - Idea
 : nix-build --no-out-link --expr 'with import <nixpkgs> { config = { allowUnfree = true; }; }; idea.idea-ultimate'
 
