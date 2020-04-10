@@ -104,3 +104,7 @@ degradation:
   for pid in $(pidof rsync); do ionice -c 3 -p $pid; done
 #+END_SRC
 
+* Networking
+
+oleg@guixsd ~$ ss --numeric --tcp --listening --no-header --oneline --processes '( sport = :5901 )'
+
