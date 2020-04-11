@@ -308,5 +308,5 @@ Moodle is used for blended learning, distance education, flipped classroom and o
 Он будет работать только на 37
 пока да
 
-* TODO mariadb --restart unless-stopped
+* TODO mariadb docker run --restart unless-stopped
   SCHEDULED: <2020-04-13 Mon>
