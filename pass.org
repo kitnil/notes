@@ -1,0 +1,1 @@
+- for dir in $(find $PWD/.password-store -type d -name '*.intr' -o -name '*majordomo*' -type d); do find $dir -type f -name '*.gpg' -a -not -name '*pyhalov*'; done
