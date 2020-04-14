@@ -1,0 +1,1 @@
+- timeout 2 ping --quiet --count=3 172.16.100.60 && echo 'foo' || echo 'bar'
