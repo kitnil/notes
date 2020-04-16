@@ -1893,3 +1893,76 @@ Hmm could something be wrong with the mapping of instruction pointers to
 source code location?
 
 Ludo’.
+
+* Columns
+
+
+Hello!
+
+Jan Nieuwenhuizen <janneke@gnu.org> skribis:
+
+> In procedure lstat: No such file or directory: "/tmp/guix-build-guix-1.0.1-18.11fc384.drv-0/source/gnu/../gnu/installer/~^m\x18 "
+
+This one is funny:
+
+$ (unset GUILE_LOAD_COMPILED_PATH; COLUMNS=200 XDG_CACHE_HOME=/nowhere guild compile --target=i586-pc-gnu -L . gnu/ci.scm -o foo.go)
+;;; note: auto-compilation is enabled, set GUILE_AUTO_COMPILE=0
+;;;       or pass the --no-auto-compile argument to disable.
+;;; compiling /home/ludo/.guix-profile/bin/guild
+;;; WARNING: compilation of /home/ludo/.guix-profile/bin/guild failed:
+;;; failed to create path for auto-compiled file "/home/ludo/.guix-profile/bin/guild"
+WARNING: Use of `load' in declarative module (guix ui).  Add #:declarative? #f to your define-module invocation.
+WARNING: (guix build emacs-build-system): imported module (guix build utils) overrides core binding `delete'
+WARNING: Use of `load' in declarative module (gnu system install).  Add #:declarative? #f to your define-module invocation.
+Backtrace:
+In ice-9/boot-9.scm:
+  3297:17 19 (resolve-interface (gnu system install) #:select _ #:hide _ #:prefix _ #:renamer _ #:version _)
+In ice-9/threads.scm:
+    390:8 18 (_ _)
+In ice-9/boot-9.scm:
+  3223:13 17 (_)
+In ice-9/threads.scm:
+    390:8 16 (_ _)
+In ice-9/boot-9.scm:
+  3507:20 15 (_)
+   2806:4 14 (save-module-excursion _)
+  3527:26 13 (_)
+In unknown file:
+          12 (primitive-load-path "gnu/system/install" #<procedure 7fb03993e6e0 at ice-9/boot-9.scm:3514:37 ()>)
+In ice-9/eval.scm:
+   626:19 11 (_ #<directory (gnu system install) 7fb03817caa0>)
+   173:47 10 (_ #(#(#<directory (gnu system install) 7fb03817caa0> #<<plain-file> name: "motd" content: "\n\x1b[1;37mWelcome to the installation of GNU Guix!\x1b[0m\n\n\x1b[2mUsing this shell…>) …))
+   196:43  9 (_ #(#(#<directory (gnu system install) 7fb03817caa0> #<<plain-file> name: "motd" content: "\n\x1b[1;37mWelcome to the installation of GNU Guix!\x1b[0m\n\n\x1b[2mUsing this shell…>) …))
+   293:34  8 (_ #(#(#(#<directory (gnu system install) 7fb03817caa0> #<<plain-file> name: "motd" content: "\n\x1b[1;37mWelcome to the installation of GNU Guix!\x1b[0m\n\n\x1b[2mUsing this …>) …) #))
+    619:8  7 (_ #(#(#(#<directory (gnu installer) 7fb03abbfe60>)) #<variable 7fb03f5d5110 value: #<gexp (begin (bindtextdomain "guix" (string-append #<gexp-input #<package guix@1.1.0 gnu/packag…> …))
+   626:19  6 (_ #(#(#(#<directory (gnu installer) 7fb03abbfe60>)) #<variable 7fb03f5d5110 value: #<gexp (begin (bindtextdomain "guix" (string-append #<gexp-input #<package guix@1.1.0 gnu/packag…> …))
+    159:9  5 (_ #(#(#(#<directory (guix discovery) 7fb04977f320>) "/home/ludo/src/guix/gnu/.." "gnu/installer") 26))
+In srfi/srfi-1.scm:
+   495:18  4 (fold-right #<procedure 7fb03f077e40 at ice-9/eval.scm:336:13 (a b)> () _ . _)
+In ice-9/eval.scm:
+   293:34  3 (_ #(#(#(#(#(#(#(#<directory (guix discovery) 7fb04977f320> ("ރl^ " (type . unknown) (inode . 17571939)) "/home/ludo/src/guix/gnu/../gnu/installer" #<variable 7fb03…> …)) …) …) …) …) …))
+    155:9  2 (_ #(#(#(#(#<directory (guix discovery) 7fb04977f320>) "/home/ludo/src/guix/gnu/../gnu/installer/ރl^ " ((type . unknown) (inode . 17571939))) unknown) #<procedure failure ()>))
+In unknown file:
+           1 (lstat "/home/ludo/src/guix/gnu/../gnu/installer/ރl^ ")
+In ice-9/boot-9.scm:
+  1669:16  0 (raise-exception _ #:continuable? _)
+
+ice-9/boot-9.scm:1669:16: In procedure raise-exception:
+In procedure lstat: Dosiero aŭ dosierujo ne ekzistas: "/home/ludo/src/guix/gnu/../gnu/installer/ރl^ "
+
+(A good opportunity to learn about THAANA LETTER RAA!
+<https://en.wikipedia.org/wiki/Thaana#Alphabet>)
+
+Here ‘scandir*’ from (guix build syscalls) is being interpreted and
+presumably it gets all the struct offsets wrong (32-bit instead of
+64-bit I guess), hence the funny file name.  (‘scandir*’ is called from
+‘scheme-modules*’ in (gnu installer), itself from the
+‘installer-program’ call in (gnu system install).)
+
+This bit is fixed in 82d8959e5d137b2061a68878d78a8f74a238ac44.
+
+To be continued…
+
+Thank you,
+Ludo’.
+
