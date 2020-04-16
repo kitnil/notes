@@ -1966,3 +1966,19 @@ To be continued…
 Thank you,
 Ludo’.
 
+* Pulseaudio
+
+
+Derp, I did not notice you had re-rolled the patches already :-)
+
+Please ignore the /etc/pulse related questions, this looks much better.
+
+> The second patch of this series differs from the one proposed there, in that
+> it uses environment variables to achieve its goal rather than rebuilding
+> pulseaudio.  As a result, pulseaudio-service will very likely ignore user
+> configuration in $XDG_CONFIG_DIR/pulse unless those variables are unset.
+> Doing so in ~/.profile or an equivalent to it should suffice.
+
+Sounds reasonable.  Users who wish to control pulseaudio outside of the
+configuration system can just exclude the service, or unset PULSE_CONFIG
+and PULSE_CLIENT_CONFIG in their profile.
