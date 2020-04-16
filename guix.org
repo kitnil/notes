@@ -1733,3 +1733,163 @@ Ludo’.
   (with-store store
     (run-with-store store (shoot-movie))))
 
+* Memory
+
+
+Ludovic Courtès <ludo@gnu.org> skribis:
+
+> Most of it seems to go in loading .go files:
+
+On x86_64, I’ve run:
+
+  ./pre-inst-env perf record guile -c '(use-modules (gnu packages libreoffice))'
+
+which shows mostly GC activity, along with symbol interning activity:
+
+  14.71%  guile    libgc.so.1.3.6         [.] GC_mark_from
+   7.49%  guile    libgc.so.1.3.6         [.] GC_header_cache_miss
+   5.56%  guile    libguile-3.0.so.1.1.1  [.] vm_regular_engine
+   5.42%  guile    libgc.so.1.3.6         [.] GC_add_to_black_list_normal
+   2.66%  guile    libpthread-2.29.so     [.] __pthread_mutex_unlock_usercnt
+   2.63%  guile    libgc.so.1.3.6         [.] GC_find_header
+   2.09%  guile    ld-2.29.so             [.] _dl_update_slotinfo
+   1.88%  guile    libguile-3.0.so.1.1.1  [.] scm_c_weak_set_lookup
+   1.68%  guile    libguile-3.0.so.1.1.1  [.] narrow_string_hash
+   1.64%  guile    libguile-3.0.so.1.1.1  [.] scm_i_is_narrow_string
+   1.55%  guile    libguile-3.0.so.1.1.1  [.] scm_ihashq
+   1.52%  guile    libguile-3.0.so.1.1.1  [.] scm_sloppy_assq
+   1.32%  guile    libgc.so.1.3.6         [.] GC_move_disappearing_link_inner
+   1.23%  guile    libgc.so.1.3.6         [.] GC_malloc_kind
+   1.23%  guile    libpthread-2.29.so     [.] __pthread_mutex_lock
+   1.22%  guile    libguile-3.0.so.1.1.1  [.] scm_hash_fn_get_handle
+   1.19%  guile    libpthread-2.29.so     [.] __pthread_mutex_trylock
+   1.12%  guile    libguile-3.0.so.1.1.1  [.] get_callee_vcode
+   1.12%  guile    libguile-3.0.so.1.1.1  [.] scm_equal_p
+
+
+Back on my A20 board, I get this (unhelpful) GC profile:
+
+scheme@(guix-user)> ,use(statprof)
+scheme@(guix-user)> (gcprof (lambda () (resolve-module '(gnu packages base))))
+%     cumulative   self
+time   seconds     seconds  procedure
+100.00      5.13      5.13  ice-9/boot-9.scm:2201:0:%load-announce
+  0.00   4081.53      0.00  ice-9/boot-9.scm:220:5:map1
+  0.00    621.21      0.00  ice-9/threads.scm:388:4
+  0.00    310.61      0.00  ice-9/boot-9.scm:2803:0:save-module-excursion
+  0.00    310.61      0.00  anon #x1b15600
+  0.00    310.61      0.00  ice-9/boot-9.scm:3211:7
+  0.00    310.61      0.00  ice-9/boot-9.scm:3500:5
+  0.00    310.61      0.00  ice-9/boot-9.scm:3508:21
+  0.00    305.47      0.00  ice-9/boot-9.scm:3256:0:resolve-interface
+  0.00    295.21      0.00  ice-9/boot-9.scm:3381:5
+  0.00    295.21      0.00  ice-9/boot-9.scm:3351:0:define-module*
+  0.00      5.13      0.00  anon #xb2d8d098
+  0.00      5.13      0.00  anon #xb32d0098
+  0.00      5.13      0.00  anon #xb2fca098
+  0.00      5.13      0.00  anon #xb32e2098
+  0.00      5.13      0.00  anon #xb3343098
+  0.00      5.13      0.00  ice-9/boot-9.scm:2557:0:call-with-deferred-observers
+[…]
+---
+Sample count: 2
+Total time: 5.134 seconds (0.44 seconds in GC)
+
+
+and this profile:
+
+scheme@(guix-user)> ,pr (resolve-module '(gnu packages base))
+%     cumulative   self
+time   seconds     seconds  procedure
+ 17.86      1.38      1.38  ice-9/boot-9.scm:2201:0:%load-announce
+  5.36      0.41      0.41  ice-9/boot-9.scm:3545:0:autoload-done!
+  4.76      0.37      0.37  ice-9/boot-9.scm:3540:0:autoload-done-or-in-progress?
+  4.76      0.37      0.37  anon #x1a671cc
+  4.17      0.32      0.32  ice-9/format.scm:113:2:format:format-work
+  3.57      0.28      0.28  ice-9/boot-9.scm:3552:0:autoload-in-progress!
+  2.98      0.55      0.23  ice-9/boot-9.scm:1396:0:symbol-append
+  2.98      0.23      0.23  anon #x1a65c28
+  1.79      0.32      0.14  ice-9/boot-9.scm:2729:0:module-make-local-var!
+  1.79      0.14      0.14  anon #x1a671a4
+  1.79      0.14      0.14  anon #x1a6c284
+  1.79      0.14      0.14  anon #x1a67644
+  1.79      0.14      0.14  ice-9/boot-9.scm:3209:4
+  1.19   6106.96      0.09  ice-9/boot-9.scm:220:5:map1
+  1.19    518.54      0.09  ice-9/boot-9.scm:3211:7
+  1.19    511.19      0.09  ice-9/boot-9.scm:3381:5
+  1.19      5.69      0.09  anon #xb13f9098
+  1.19      0.18      0.09  anon #xad994098
+  1.19      0.09      0.09  anon #x1a6848c
+  1.19      0.09      0.09  srfi/srfi-60.scm:57:0:bitwise-if
+  1.19      0.09      0.09  ice-9/boot-9.scm:2468:2
+  1.19      0.09      0.09  ice-9/boot-9.scm:2468:2
+  1.19      0.09      0.09  anon #x1a6e284
+  1.19      0.09      0.09  anon #x1a67cd4
+  1.19      0.09      0.09  anon #x1a6e87c
+[…]
+---
+Sample count: 168
+Total time: 7.714 seconds (1.279 seconds in GC)
+
+
+What’s the deal with ‘%load-announce’?  How many times is it called?
+
+$ guix repl
+GNU Guile 3.0.2
+Copyright (C) 1995-2020 Free Software Foundation, Inc.
+
+Guile comes with ABSOLUTELY NO WARRANTY; for details type `,show w'.
+This program is free software, and you are welcome to redistribute it
+under certain conditions; type `,show c' for details.
+
+Enter `,help' for help.
+scheme@(guix-user)> ,use(system vm vm)
+scheme@(guix-user)> (set-vm-engine! 'debug)
+scheme@(guix-user)> ,use(statprof)
+scheme@(guix-user)> (statprof (lambda () (resolve-module '(gnu packages base))) #:count-calls? #t)
+%     cumulative   self
+time   seconds    seconds   calls   procedure
+  5.31      4.39      4.39                            anon #x1ba81cc
+  3.84  98371.57      3.17   69196  ice-9/boot-9.scm:220:5:map1
+  3.32      2.75      2.75   57783  ice-9/boot-9.scm:2468:2
+  3.26      2.70      2.70                            anon #x1ba81a4
+  3.01      2.49      2.49   60626  ice-9/boot-9.scm:1299:5
+  2.94      9.23      2.43   44668  ice-9/boot-9.scm:2757:0:module-add!
+  2.85      4.39      2.35   47021  ice-9/boot-9.scm:2549:0:module-modified
+  2.53      2.09      2.09   44668  ice-9/boot-9.scm:2652:0:module-obarray-set!
+  2.33      1.93      1.93                            anon #x1ba6c28
+  2.24      1.85      1.85                            anon #x1baa1fc
+  2.21      1.83      1.83                            anon #x1bad284
+  2.11      1.75      1.75                            anon #x1ba8cd4
+  2.01      4.55      1.67   32603  ice-9/boot-9.scm:2790:0:module-ref-submodule
+  1.92      1.59      1.59                            anon #x1ba8f34
+  1.89      1.56      1.56   21349  ice-9/boot-9.scm:806:0:and=>
+  1.76      1.46      1.46   32184  ice-9/boot-9.scm:2468:2
+  1.69      1.40      1.40   33343  ice-9/boot-9.scm:2468:2
+  1.69      1.40      1.40                            anon #x1ba8080
+  1.50     15.24      1.24   19850  ice-9/boot-9.scm:3339:29
+  1.44   7457.26      1.19    7325  ice-9/boot-9.scm:3256:0:resolve-interface
+  1.44      1.19      1.19   19133  ice-9/boot-9.scm:3345:2
+  1.41      9.79      1.16   19217  ice-9/boot-9.scm:1396:0:symbol-append
+  1.37      1.14      1.14   20160  ice-9/boot-9.scm:2468:2
+  1.34      1.11      1.11   19850  ice-9/boot-9.scm:3303:48
+  1.34      1.11      1.11   14322  srfi/srfi-60.scm:57:0:bitwise-if
+  1.31      1.08      1.08   36200  anon #x1ba6c18
+  1.15      2.65      0.95    9672  ice-9/vlist.scm:544:0:vhash-assv
+  1.15      2.09      0.95   20671  ice-9/boot-9.scm:215:2:map
+  1.15      0.95      0.95   14210  ice-9/boot-9.scm:3209:4
+  1.12      7.09      0.93   12743  ice-9/boot-9.scm:2729:0:module-make-local-var!
+  1.05      0.87      0.87   11594  guix/utils.scm:810:0:source-properties->location
+  0.99      1.35      0.82   11559  ice-9/boot-9.scm:2746:0:module-ensure-local-variable!
+  0.90      0.74      0.74     370  ice-9/boot-9.scm:2201:0:%load-announce
+[…]
+---
+Sample count: 3128
+Total time: 82.752 seconds (16.401 seconds in GC)
+
+Only 370 times.
+
+Hmm could something be wrong with the mapping of instruction pointers to
+source code location?
+
+Ludo’.
