@@ -1632,3 +1632,104 @@ Hope this helps! :)
 Pierre Neidhardt
 https://ambrevar.xyz/
 
+* Video
+
+Here’s the script I used to make a QEMU animation of the installation
+process: it grabs screenshots at regular intervals through QEMU.
+
+You can then assemble them to form an animated GIF with:
+
+  convert -loop 0 -delay 20 /tmp/qemu-movie-0*ppm /tmp/install.gif
+
+The GIF can be compressed with:
+
+  mogrify -layers optimize-frame /tmp/install.gif
+
+On IRC, Ricardo came up with this command to produce the video at
+<https://guix.gnu.org/guix-videos/guix-system-install-1.1.0.webm> (with
+a fade-in, proper frame rate, etc.):
+
+  ffmpeg -framerate 30 -pattern_type glob -i \
+           'qemu-guix-install.selected/qemu-movie-*.ppm' -c:v libvpx-vp9 -vsync \
+           cfr -crf 31 -pix_fmt yuv420p -b:v 0 -filter_complex \
+           "setpts=5*PTS,loop=loop=60:size=1:start=0,fade=t=in:st=0:n=60" \
+           out3.webm
+
+Ludo’.
+
+;; Copyright © 2020 Ludovic Courtès <ludo@gnu.org>
+;; Released under the GNU General Public License, version 3 or later.
+
+(use-modules (ice-9 match)
+             (gnu system vm)
+             (gnu system install)
+             (guix)
+             (guix ui)
+             (gnu packages virtualization))
+
+
+(define O_CLOEXEC                                 ;missing in Guile 3.0.2
+  #o02000000)
+
+(define wait-for-monitor-prompt
+  (@@ (gnu build marionette) wait-for-monitor-prompt))
+
+(define (spawn command)
+  (match (primitive-fork)
+    (0   (dynamic-wind
+           (const #t)
+           (lambda ()
+             (apply execl (car command) command))
+           (lambda ()
+             (primitive-_exit 42))))
+    (pid pid)))
+
+(define (shoot-movie)
+  (mlet* %store-monad ((image (system-disk-image installation-os
+                                                 #:disk-image-size 'guess))
+                       (qemu  (lower-object qemu))
+                       (_     (built-derivations (list qemu image))))
+    (define disk
+      (begin
+        (system* (string-append (derivation->output-path qemu)
+                                "/bin/qemu-img")
+                 "create" "-f" "qcow2" "/tmp/disk.img" "2G")
+        "/tmp/disk.img"))
+
+    (define command
+      (list (string-append (derivation->output-path qemu)
+                           "/bin/qemu-system-x86_64")
+            "-enable-kvm" "-m" "512"
+            "-drive"
+            (string-append "file="
+                           (pk (derivation->output-path image))
+                           ",if=virtio,cache=writeback,readonly")
+            "-monitor" "unix:/tmp/monitor"
+            "-drive" "file=/tmp/disk.img,if=virtio"
+            "-snapshot"))
+
+    (define monitor
+      (socket AF_UNIX SOCK_STREAM 0))
+
+    (bind monitor AF_UNIX "/tmp/monitor")
+    (listen monitor 1)
+    (fcntl monitor F_SETFL
+           (logior O_CLOEXEC (fcntl monitor F_GETFL)))
+
+    (let ((pid (spawn command)))
+      (match (accept monitor)
+        ((sock . _)
+         (wait-for-monitor-prompt sock #:quiet? #f)
+         (let loop ((n 0))
+           (format sock "screendump /tmp/qemu-movie-~4,48d.ppm~%" n)
+           (force-output sock)
+           (wait-for-monitor-prompt sock #:quiet? #f)
+           (usleep 200000)
+           (loop (+ 1 n))))))))
+
+(false-if-exception (delete-file "/tmp/monitor"))
+
+(with-build-handler (build-notifier)
+  (with-store store
+    (run-with-store store (shoot-movie))))
+
