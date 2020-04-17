@@ -318,3 +318,40 @@ Moodle is used for blended learning, distance education, flipped classroom and o
 * TODO https://gitlab.intr/_ci/maintenance-github/-/blob/master/projects.tf#L14
   SCHEDULED: <2020-04-17 Fri>
 rename resource
+
+* TODO billing2
+  SCHEDULED: <2020-04-20 Mon>
+
+изначально меня интересовало как определить какой способ установки делает perl скрипт
+16:06
+ты говоришь если arhive.intr не доступен одна фигня, если доступен другая
+16:06
+как определить какая фигня для конкретной vm12345 была выбрана
+16:07
+вот я и хочу исключить arhive.intr чтобы не было этого выбора
+
+
+16:07
+или сделать его fallback
+
+16:08
+my $checkimage = $vds->checkimage;
+16:08
+if ( $checkimage eq 0 ) {
+                                       $vds->getimage ;
+                                       $vds->do_vol_from_image ;
+                               }
+16:09
+sub checkimage {
+       my $self = shift ;
+       system(sprintf("rsync --list-only rsync://archive.intr/images/jenkins-production/%s-%s.qcow2",  $self->{var}->{disk}->{template} , $self->{var}->{caps}->{disk}));
+       if ( $? >>8 == 0 ) {
+               print "Is available \n" ;
+               return 0 ;
+       }
+       else {
+               return 1 ;
+       }
+}
+16:12
+если будет локально, то рсинк на какой нить ls заменить и все
