@@ -20,6 +20,11 @@
 
 * Cheatsheet
 
+  - restart container based on cgroup memory
+#+BEGIN_SRC bash
+  while true; do (set -ex; MEMORY_LIMIT="25769803776"; (( $(grep --max-count=1 total_rss $(grep --max-count=1 --files-with-matches $MEMORY_LIMIT /sys/fs/cgroup/memory/docker/*/memory.stat) | cut --delimiter=" " --fields=2) > $(( MEMORY_LIMIT - 536870912 )) )); docker restart mariadb-10.4.12); done
+#+END_SRC
+
   - parse string as arguments to a function
 #+BEGIN_SRC bash
   (set -e; foo() { echo @ $1 $2; echo rm $1; echo ln -s $(printf $2 | sed 's@src/dotfiles/@.local/share/chezmoi/dotfiles/@') $1; echo; }; eval $(find -maxdepth 5 -type l -exec stat --format=%N {} + | grep 'dotfiles/' | grep -v chezmoi | awk '{ print $1, $3 }' | tr -d "'" | sed 's@^@foo @' | tr '\n' ';'))
