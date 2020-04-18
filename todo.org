@@ -355,3 +355,7 @@ sub checkimage {
 
 * TODO Clean up cerberus-slack
   SCHEDULED: <2020-04-20 Mon>
+
+* TODO move to script
+  SCHEDULED: <2020-04-19 Sun>
+: (set -ex; for remote in origin majordomo upstream; do git push $remote; done)
