@@ -1,3 +1,6 @@
+- [[https://www.percona.com/blog/2018/06/28/what-to-do-when-mysql-runs-out-of-memory-troubleshooting-guide/][What To Do When MySQL Runs Out of Memory - Percona Database Performance Blog]]
+
+
 : mysqldump --master-data=2 --flush-logs --single-transaction --quick --all-databases
 : docker run --restart unless-stopped -p 3307:3306 --name mariadb-10.0 -v /mysql/db-10.0:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=PASS -d docker-registry.intr/webservices/mariadb:10.0
 : mysql --protocol=tcp --host=127.0.0.1 --port=3307 --user=root -p
