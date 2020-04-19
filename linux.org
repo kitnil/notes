@@ -3,11 +3,12 @@
 - [[https://blog.tinned-software.net/modify-file-and-directory-date/][Modify file and directory date - Experiencing Technology]]
 - [[https://loicpefferkorn.net/2016/03/linux-network-metrics-why-you-should-use-nstat-instead-of-netstat/][Linux network metrics: why you should use nstat instead of netstat]]
 
-* Patches
+* Shebang
 
 - [[https://www.in-ulm.de/~mascheck/various/shebang/#splitting][The #! magic, details about the shebang/hash-bang mechanism]]
   - fs/binfmt_script.c
   - [[https://web.archive.org/web/20150923090050/http://lkml.org/lkml/2004/2/16/74][LKML: Hansjoerg Lipp: [PATCH] Linux 2.6: shebang handling in fs/binfmt_script.c]]
+  - [[https://linux.die.net/man/2/execve][execve(2): execute program - Linux man page]]
 
 * nice and ionice
 
