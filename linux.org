@@ -6,6 +6,7 @@
 * Patches
 
 - [[https://www.in-ulm.de/~mascheck/various/shebang/#splitting][The #! magic, details about the shebang/hash-bang mechanism]]
+  - fs/binfmt_script.c
   - [[https://web.archive.org/web/20150923090050/http://lkml.org/lkml/2004/2/16/74][LKML: Hansjoerg Lipp: [PATCH] Linux 2.6: shebang handling in fs/binfmt_script.c]]
 
 * nice and ionice
