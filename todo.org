@@ -307,6 +307,11 @@ Moodle is used for blended learning, distance education, flipped classroom and o
 * TODO mariadb docker run --restart unless-stopped
   SCHEDULED: <2020-04-13 Mon>
 
+2020-04-19 20:08:54 0 [ERROR] InnoDB: Downgrade after a crash is not supported. The redo log was created with MariaDB 10.4.12.
+2020-04-19 20:08:54 0 [ERROR] InnoDB: Plugin initialization aborted with error Generic error
+
+https://www.percona.com/blog/2013/09/11/how-to-move-the-innodb-log-sequence-number-lsn-forward/
+
 * TODO https://jenkins.intr/job/ci/job/bfg/job/master/16/console
   SCHEDULED: <2020-04-16 Thu>
   https://jenkins.intr/job/webservices/job/nixoverlay/job/master/46/console
