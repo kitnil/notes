@@ -632,3 +632,35 @@ browse-url with the b shortcut):
   (setq browse-url-browser-function '(("https:\\/\\/www\\.youtube." . browse-url-mpv)
       ("." . browse-url-firefox)))
 #+END_SRC
+
+* elfeed
+
+[[http://codingquark.com/emacs/2020/04/19/elfeed-protocol-ttrss.html][Elfeed with Tiny Tiny RSS]]
+
+
+If you have multiple computers and you subscribe to RSS feeds - which you probably do, it would be great if you could read the feeds from all your computers and have the feeds’ read state synchronized.
+
+Tiny Tiny RSS runs on a server, aggregates your feeds, shows them with a web interface and exposes API for clients - such as elfeed - to consume.
+
+To talk to ttrss, elfeed needs to know the APIs where comes elfeed-protocol to rescue. elfeed-protocol will authenticate with your ttrss server, fetch feeds and displays in elfeed like they were native feeds added to elfeed.
+
+The setup is short:
+
+    Install elfeed, elfeed-protocol (from melpa, or clone it)
+    Setup ttrss on your server
+    Configure elfeed-protocol to authenticate and fetch from ttrss
+
+(setq elfeed-use-curl nil)
+(setq elfeed-protocol-ttrss-maxsize 200) ;; bigger than 200 is invalid
+
+(setq elfeed-feeds
+      '(
+        ("ttrss+https://username@domain/tt-rss"
+         :password "")
+        ))
+        
+(elfeed-protocol-enable)
+
+I need to (setq elfeed-use-curl nil) because Freedombox requires me to sign in first before I can access the URL. This way, elfeed first asks me for my Freedombox creds, then uses :password to authenticate with ttrss.
+
+Here is my elfeed config on github: link.
