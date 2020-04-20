@@ -14,6 +14,12 @@
 - [[https://addons.mozilla.org/en-US/firefox/addon/container-opener/?src=search][Container Opener – Get this Extension for 🦊 Firefox (en-US)]]
 - [[https://raw.githubusercontent.com/xiaoxiaoflood/firefox-scripts/master/screenshots/window.png]]
 
+PS: A somewhat related bonus tip: Firefox has this very annoying
+behavior which steals window focus whenever you open a tab with
+something like elfeed. Switching the flag
+browser.tabs.loadDivertedInBackground to true in about:config disables
+that behavior.
+
 * Nix
 
 : NIXPKGS_CONFIG=$HOME/majordomo/webservices/firefox-esr/config.nix nix-env -p .nix-profile.d/firefox-beta-bin/firefox-beta-bin -iA nixos-unstable.firefox-beta-bin
