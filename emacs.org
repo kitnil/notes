@@ -650,16 +650,18 @@ The setup is short:
     Setup ttrss on your server
     Configure elfeed-protocol to authenticate and fetch from ttrss
 
-(setq elfeed-use-curl nil)
-(setq elfeed-protocol-ttrss-maxsize 200) ;; bigger than 200 is invalid
+#+BEGIN_SRC emacs-lisp
+  (setq elfeed-use-curl nil)
+  (setq elfeed-protocol-ttrss-maxsize 200) ;; bigger than 200 is invalid
 
-(setq elfeed-feeds
-      '(
-        ("ttrss+https://username@domain/tt-rss"
-         :password "")
-        ))
+  (setq elfeed-feeds
+        '(
+          ("ttrss+https://username@domain/tt-rss"
+           :password "")
+          ))
         
-(elfeed-protocol-enable)
+  (elfeed-protocol-enable)
+#+END_SRC
 
 I need to (setq elfeed-use-curl nil) because Freedombox requires me to sign in first before I can access the URL. This way, elfeed first asks me for my Freedombox creds, then uses :password to authenticate with ttrss.
 
