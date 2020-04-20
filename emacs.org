@@ -611,3 +611,24 @@ JDEE I think is rather outdated and probably won't work :-(
 * Python
 
 - [[https://github.com/muffinmad/emacs-pdb-capf][muffinmad/emacs-pdb-capf: Completion-at-point function for pdb (Python debugger)]]
+
+* Firefox
+
+A tiny tip for those using elfeed for youtube subs
+
+I recently switched from web-based feedbro to elfeed for managing my
+RSS/Atom feeds and while the default setup is close to perfect for my
+needs, it bugged me a bit that every link opened in firefox. I would
+like at the very least the youtube links to open directly in my media
+player without having to first copy the url and then pass it as an
+argument. As it turns out reading documentation helps, and you can
+pattern match which function opens links (by default elfeed uses
+browse-url with the b shortcut):
+
+#+BEGIN_SRC emacs-lisp
+  (defun browse-url-mpv (url &optional new-window)
+      (start-process "mpv" "*mpv*" "mpv" url))
+
+  (setq browse-url-browser-function '(("https:\\/\\/www\\.youtube." . browse-url-mpv)
+      ("." . browse-url-firefox)))
+#+END_SRC
