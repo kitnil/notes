@@ -364,3 +364,6 @@ sub checkimage {
 * TODO move to script
   SCHEDULED: <2020-04-19 Sun>
 : (set -ex; for remote in origin majordomo upstream; do git push $remote; done)
+
+* TODO nixpkgs badge
+  SCHEDULED: <2020-04-22 Wed>
