@@ -1,4 +1,38 @@
 
+* NGINX
+
+#+BEGIN_SRC nginx
+
+  server {
+      listen 80;
+      server_name  jenkins jenkins.intr;
+      rewrite ^(.*) https://jenkins.intr$1 permanent;
+  }
+  server {
+      listen 443 ssl;
+      server_name jenkins jenkins.intr;
+      ssl_certificate                 /etc/nginx/ssl/jenkins.intr.pem;
+      ssl_certificate_key             /etc/nginx/ssl/jenkins.intr.key;
+      ssl on;
+      location / {
+          include /etc/nginx/ipsets/mjnet.conf;
+          include /etc/nginx/ipsets/intr.conf;
+          deny all;
+          proxy_connect_timeout 480;
+          proxy_request_buffering off;
+          proxy_send_timeout 1800;
+          proxy_read_timeout 1800;
+          proxy_pass http://jenkins;
+          proxy_set_header Host $http_host;
+          proxy_set_header X-Real-IP $remote_addr;
+          proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+          proxy_set_header X-Forwarded-Proto https;
+          proxy_set_header Range $http_range;
+          proxy_set_header If-Range $http_if_range;
+      }
+  }
+#+END_SRC
+
 * Plugins
 
 ** Chromium
