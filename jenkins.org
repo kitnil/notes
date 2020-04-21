@@ -4,6 +4,65 @@
 #+BEGIN_SRC nginx
   server {
       listen 80;
+      server_name jenkins.majordomo.ru;
+      location / {
+          proxy_set_header Access-Control-Allow-Origin *;
+          rewrite     ^   https://$server_name$request_uri?;
+      }
+  }
+
+  server {
+      listen 443 ssl;
+      server_name jenkins.majordomo.ru;
+
+      ssl on;
+      ssl_certificate /etc/nginx/ssl/majordomo/majordomo.ru.pem;
+      ssl_certificate_key /etc/nginx/ssl/majordomo/majordomo.ru.key;
+      ssl_stapling on;
+      ssl_stapling_verify on;
+      ssl_trusted_certificate /etc/nginx/ssl/majordomo/ocsp-chain.pem;
+      resolver 172.16.103.2 172.16.102.2;
+      client_max_body_size 5m;
+
+      location ~ ^/job/webservices/job/apache2-php74/job/buildBadge/lastBuild/badge/ {
+          proxy_set_header Access-Control-Allow-Origin *;
+          proxy_set_header X-Real-IP $remote_addr;
+          proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+          proxy_set_header X-NginX-Proxy true;
+          proxy_set_header X-Forwarded-Proto https;
+          proxy_set_header If-Range $http_if_range;
+          proxy_pass http://jenkins.intr/$uri$is_args$args;
+          proxy_request_buffering off;
+          proxy_ssl_session_reuse off;
+          proxy_set_header Host jenkins.intr;
+          proxy_redirect off;
+          proxy_send_timeout 1800;
+          proxy_read_timeout 1800;
+          proxy_connect_timeout 480;
+      }
+
+      # # https://jenkins.intr/job/webservices/job/apache2-php73/job/master/lastSuccessfulBuild/artifact/result-test/coverage-data/vm-state-dockerNode/wordpress.png
+      # location ~ ^(/job/webservices/job/[0-9a-z]+/job/[0-9a-z]+/[0-9a-z]+/artifact/result-test/coverage-data/vm-state-dockerNode/[0-9a-z]+\.png)$ {
+      #     proxy_set_header Access-Control-Allow-Origin *;
+      #     proxy_set_header X-Real-IP $remote_addr;
+      #     proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+      #     proxy_set_header X-NginX-Proxy true;
+      #     proxy_pass https://jenkins.intr/$1;
+      #     proxy_ssl_session_reuse off;
+      #     proxy_set_header Host $http_host;
+      #     proxy_redirect off;
+      #     proxy_send_timeout 150;
+      #     proxy_read_timeout 150;
+      #     proxy_http_version 1.1;
+      #     proxy_set_header Connection "";
+      #     proxy_buffer_size 128k;
+      #     proxy_buffers 4 256k;
+      # }
+
+  }
+
+  server {
+      listen 80;
       server_name  jenkins jenkins.intr;
       rewrite ^(.*) https://jenkins.intr$1 permanent;
   }
@@ -28,8 +87,9 @@
           proxy_set_header X-Forwarded-Proto https;
           proxy_set_header Range $http_range;
           proxy_set_header If-Range $http_if_range;
-      }
+       }
   }
+
 #+END_SRC
 
 * Plugins
