@@ -376,3 +376,5 @@ sub checkimage {
 19:19
 ну или при следующем деплое все слетит)
 
+* TODO Jenkins job Chef Workstation fix knife
+https://jenkins.intr/job/ci/job/chef-workstation/job/master/5/console
