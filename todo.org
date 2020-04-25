@@ -365,8 +365,8 @@ sub checkimage {
   SCHEDULED: <2020-04-19 Sun>
 : (set -ex; for remote in origin majordomo upstream; do git push $remote; done)
 
-* TODO nixpkgs badge
-  SCHEDULED: <2020-04-22 Wed>
+* TODO delete nixpkgs badge
+  SCHEDULED: <2020-04-30 Wed>
 
 * TODO Jenkins job Chef Workstation fix knife
 https://jenkins.intr/job/ci/job/chef-workstation/job/master/5/console
