@@ -368,13 +368,5 @@ sub checkimage {
 * TODO nixpkgs badge
   SCHEDULED: <2020-04-22 Wed>
 
-* TODO jmx
-  SCHEDULED: <2020-04-23 Thu>
-мне надо свалить в магаз. Закончите тут без меня? Надо сделать пустым DEBUG в докерфайле, а в hms.yml перенести DEBUG="-Dcom.sun.management.jmxremote.port=28075 -Dcom.sun.management.jmxremote.authenticate=false  -Dcom.sun.management.jmxremote.ssl=false -Dcom.sun.management.jmxremote.rmi.port=28075 -Djava.rmi.server.hostname=172.16.103.158" для второго стека и DEBUG="-Dcom.sun.management.jmxremote.port=18075 -Dcom.sun.management.jmxremote.authenticate=false  -Dcom.sun.management.jmxremote.ssl=false -Dcom.sun.management.jmxremote.rmi.port=18075 -Djava.rmi.server.hostname=172.16.103.158" для первого
-19:18
-там же, рядом с HMS_INSTANCE_NAME
-19:19
-ну или при следующем деплое все слетит)
-
 * TODO Jenkins job Chef Workstation fix knife
 https://jenkins.intr/job/ci/job/chef-workstation/job/master/5/console
