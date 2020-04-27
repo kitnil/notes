@@ -795,3 +795,7 @@ https://jenkins.intr/job/ci/job/chef-workstation/job/master/5/console
           at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) [tomcat-embed-core-8.5.34.jar!/:8.5.34]
           at java.lang.Thread.run(Thread.java:748) [na:1.8.0_242]
 #+end_example
+
+[15:32] <rezvov:rezvov> Видео 10/10
+[15:32] <pyhalov:natsu> удобнее чем писать :b
+[15:35] <rezvov:rezvov> Не помню чтобы почта от мыла ломалась по другой причине. Мне кажется стоит добавить проверку на аккаунт к которому подключают и как-то обрабатывать эту ситуацию
