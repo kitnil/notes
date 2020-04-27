@@ -30,6 +30,20 @@
   (set -e; foo() { echo @ $1 $2; echo rm $1; echo ln -s $(printf $2 | sed 's@src/dotfiles/@.local/share/chezmoi/dotfiles/@') $1; echo; }; eval $(find -maxdepth 5 -type l -exec stat --format=%N {} + | grep 'dotfiles/' | grep -v chezmoi | awk '{ print $1, $3 }' | tr -d "'" | sed 's@^@foo @' | tr '\n' ';'))
 #+END_SRC
 
+  - delete single PATH from PATH variable
+#+BEGIN_SRC bash
+  directory_to_remove=/d/Programme/cygwin/bin
+  PATH=:$PATH:
+  PATH=${PATH//:$directory_to_remove:/:}
+  PATH=${PATH#:}; PATH=${PATH%:}
+
+  # If you don't use an intermediate variable, you need to protect the / characters in the directory to remove so that they aren't treated as the end of the search text.
+
+  PATH=:$PATH:
+  PATH=${PATH//:\/d\/Programme\/cygwin\/bin:/:}
+  PATH=${PATH#:}; PATH=${PATH%:}
+#+END_SRC
+
   - exec &> >(tee /tmp/bash.log)
 
   - find /gnu -type f -iname '*12x22*'|while read x;do vbr GxFont12x22- $x;done
