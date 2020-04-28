@@ -20,6 +20,9 @@
 
 * Cheatsheet
 
+  - one PATH per line
+    : echo -e ${PATH//:/\\n}
+
   - restart container based on cgroup memory
 #+BEGIN_SRC bash
   while true; do (set -ex; MEMORY_LIMIT="25769803776"; (( $(grep --max-count=1 total_rss $(grep --max-count=1 --files-with-matches $MEMORY_LIMIT /sys/fs/cgroup/memory/docker/*/memory.stat) | cut --delimiter=" " --fields=2) > $(( MEMORY_LIMIT - 536870912 )) )); docker restart mariadb-10.4.12); done
