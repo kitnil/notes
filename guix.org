@@ -48,6 +48,33 @@ https://gitlab.com/janneke/guix.git
   …)
 #+END_SRC
 
+  - alsa
+#+begin_example
+  > ALSA lib conf.c:3683:(snd_config_hooks_call) Cannot open shared
+  > library libasound_module_conf_pulse.so
+  > (/gnu/store/nyylgcnzmbw8wrn4sna2crl0g7zxxh33-alsa-lib-1.2.2/lib/alsa-lib/libasound_module_conf_pulse.so:
+  > libasound_module_conf_pulse.so: cannot open shared object file: No
+  > such file or directory)
+  > ------
+  >
+  > But, this file exists in the "pulseaudio" output of alsa-plugins, not
+  > alsa-lib:
+  >
+  > /gnu/store/pwsz9hf66na0s9x3ay9qk02vk8l4v8vi-alsa-plugins-1.2.2-pulseaudio/lib/alsa-lib/libasound_module_conf_pulse.so
+
+  Could it be that the problem is in Audacity and not in alsa-lib?
+
+  I can do this with mpg123:
+
+  $ cat ~/.asoundrc
+  pcm.!default {
+      type pulse
+  }
+  $ mpg123 -o alsa …
+
+  and the sound goes through PulseAudio.
+#+end_example
+
   - Slim auto login
 #+BEGIN_SRC scheme
   (services
