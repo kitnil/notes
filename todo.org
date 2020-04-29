@@ -795,3 +795,6 @@ https://jenkins.intr/job/ci/job/chef-workstation/job/master/5/console
 [15:32] <rezvov:rezvov> Видео 10/10
 [15:32] <pyhalov:natsu> удобнее чем писать :b
 [15:35] <rezvov:rezvov> Не помню чтобы почта от мыла ломалась по другой причине. Мне кажется стоит добавить проверку на аккаунт к которому подключают и как-то обрабатывать эту ситуацию
+
+* TODO Add to Redmine task to allow shared hosting users select only NGINX without proxy
+  SCHEDULED: <2020-04-30 Thu>
