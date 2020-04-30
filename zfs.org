@@ -10,3 +10,18 @@ kernel parameters:
 
 zfs_arc_max лучше поставить половину ОЗУ или еще меньше
 zfs_txg_timeout - не обязательно
+
+* .zfs directory
+
+solaire@home ~ $ mount | grep zfs
+pool on /pool type zfs (rw,relatime,xattr,noacl)
+pool/home on /home type zfs (rw,relatime,xattr,noacl)
+pool/cache on /home/solaire/zfscache type zfs (rw,relatime,xattr,noacl)
+solaire@home ~ $ ls /home/.zfs/snapshot/
+zfs-auto-snap_daily-2020-04-27-00h00   zfs-auto-snap_hourly-2020-04-29-14h00  zfs-auto-snap_hourly-2020-04-29-20h00  zfs-auto-snap_hourly-2020-04-30-02h00  zfs-auto-snap_hourly-2020-04-30-15h00
+zfs-auto-snap_daily-2020-04-28-00h00   zfs-auto-snap_hourly-2020-04-29-15h00  zfs-auto-snap_hourly-2020-04-29-21h00  zfs-auto-snap_hourly-2020-04-30-03h00  zfs-auto-snap_hourly-2020-04-30-16h00
+zfs-auto-snap_daily-2020-04-29-00h00   zfs-auto-snap_hourly-2020-04-29-16h00  zfs-auto-snap_hourly-2020-04-29-22h00  zfs-auto-snap_hourly-2020-04-30-11h19  zfs-auto-snap_hourly-2020-04-30-17h00
+zfs-auto-snap_daily-2020-04-30-00h00   zfs-auto-snap_hourly-2020-04-29-17h00  zfs-auto-snap_hourly-2020-04-29-23h00  zfs-auto-snap_hourly-2020-04-30-12h00  zfs-auto-snap_hourly-2020-04-30-18h00
+zfs-auto-snap_hourly-2020-04-29-12h00  zfs-auto-snap_hourly-2020-04-29-18h00  zfs-auto-snap_hourly-2020-04-30-00h00  zfs-auto-snap_hourly-2020-04-30-13h00  zfs-auto-snap_weekly-2020-04-27-00h00
+zfs-auto-snap_hourly-2020-04-29-13h00  zfs-auto-snap_hourly-2020-04-29-19h00  zfs-auto-snap_hourly-2020-04-30-01h00  zfs-auto-snap_hourly-2020-04-30-14h00
+￼
