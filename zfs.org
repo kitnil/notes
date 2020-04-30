@@ -9,3 +9,4 @@ kernel parameters:
 "zfs.zfs_txg_timeout=600"
 
 zfs_arc_max лучше поставить половину ОЗУ или еще меньше
+zfs_txg_timeout - не обязательно
