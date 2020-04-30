@@ -1,2 +1,8 @@
 https://askubuntu.com/questions/103369/ubuntu-how-to-mount-zfs-snapshot
 : mount -t zfs tank/www@zfs-auto-snap_hourly-2012-02-11-1917 /mnt/snapshot/tank/www
+
+kernel parameters:
+"zfs.zfs_arc_max=8589934592"
+"zfs.zfs_prefetch_disable=1"
+"zfs.zfs_txg_timeout=600"
+￼
