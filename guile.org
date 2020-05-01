@@ -1,3 +1,5 @@
+- $HOME/.guix-profile/bin/guile -q -L /gnu/store/…-geiser-0.9-1.9581e61/share/geiser/guile/ -L ~/src/guix
+
 - python-on-guile 1.2.1
 
 - Binary
