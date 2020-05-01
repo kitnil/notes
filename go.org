@@ -1,4 +1,28 @@
 
+* Webhook
+
+#+BEGIN_SRC bash
+  #!/bin/sh
+
+  notify-send "$*"
+#+END_SRC
+#+BEGIN_SRC json
+  [
+      {
+          "id": "notify-send",
+          "execute-command": "/home/oleg/src/hello-webhook/notify-send.sh",
+          "command-working-directory": "/home/oleg/src/hello-webhook",
+          "pass-arguments-to-command":
+          [
+              {
+                  "source": "url",
+                  "name": "text"
+              }
+          ]
+      }
+  ]
+#+END_SRC
+
 * Read
 
 - [https://github.com/enocom/gopher-reading-list][enocom/gopher-reading-list: A curated selection of blog posts on Go]
