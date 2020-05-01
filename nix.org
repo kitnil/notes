@@ -241,3 +241,46 @@ example job
     };
   in jobs
 #+END_SRC
+
+* Dictionary
+** Profile
+A general and convenient concept for realizing rollbacks.
+** Database
+/nix/var/nix/db/db.sqlite
+
+Keeps track of the dependencies between derivations.
+
+Made up of multiple "generations".
+
+* Commands
+
+** Show direct runtime dependencie
+#+BEGIN_SRC shell
+nix-store -q --references "$(command -v bassename)"
+#+END_SRC
+
+** Show reverse dependencies
+#+BEGIN_SRC shell
+nix-store -q --referrers "$(command -v basename)"
+#+END_SRC
+
+** Show catamorphed closure
+#+BEGIN_SRC shell
+nix-store -qR "$(command -v bassename)"
+#+END_SRC
+
+** Show tree of closure
+#+BEGIN_SRC shell
+nix-store -q --tree "$(command -v basename)"
+#+END_SRC
+
+** Recovering making rollback from store directory
+#+BEGIN_SRC shell
+/nix/store/<hash>-nix-<ver>/bin/nix-env --rollback
+#+END_SRC
+
+** Recover with reinstall from store directory
+#+BEGIN_SRC shell
+/nix/store/<hash>-nix-<ver>/bin/nix-env -i /nix/store/<hash>-nix-<ver>
+#+END_SRC
+
