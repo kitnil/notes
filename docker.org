@@ -814,3 +814,49 @@ curl host01
 As the service has been configured and deployed using Swarm Mode, it will take advantage of the load balancing discussing in our scenario Load Balance and Service Discover in Swarm Mode
 
 curl host01
+
+* Compose
+
+#+BEGIN_SRC yaml
+  version: "2"
+
+  networks:
+    gitea:
+      external: false
+
+  services:
+    server:
+      image: gitea/gitea:latest
+      extra_hosts:
+        - "db:192.168.105.120"
+      environment:
+        - USER_UID=1000
+        - USER_GID=1000
+        - DB_TYPE=postgres
+        - DB_HOST=db:5432
+        - DB_NAME=gitea
+        - DB_USER=gitea
+        - DB_PASSWD=gitea
+        - SSH_DOMAIN=gitea.wugi.info
+      restart: always
+      networks:
+        - gitea
+      volumes:
+        - /var/lib/gitea:/data
+      ports:
+        - "3000:3000"
+        - "222:22"
+  #    depends_on:
+  #      - db
+  #  db:
+  #    image: postgres:9.6
+  #    restart: always
+  #    environment:
+  #      - POSTGRES_USER=gitea
+  #      - POSTGRES_PASSWORD=gitea
+  #      - POSTGRES_DB=gitea
+  #    networks:
+  #      - gitea
+  #    volumes:
+  #      - ./postgres:/var/lib/postgresql/data
+#+END_SRC
