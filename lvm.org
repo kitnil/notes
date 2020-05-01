@@ -1,0 +1,2 @@
+- snapshot
+  : lvcreate --size 4G --snapshot --name magnolia--vg-root-01 /dev/mapper/magnolia--vg-root
