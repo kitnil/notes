@@ -1,4 +1,31 @@
-- [https://www.altlinux.org/Scheme][Scheme — ALT Linux Wiki]
+* 
+
+- [[https://www.altlinux.org/Scheme][Scheme — ALT Linux Wiki]]
 - [[http://mumble.net/%257Ecampbell/scheme/style.txt][Riastradh's Lisp Style Rules]]
 - http://library.readscheme.org
 - https://www.greghendershott.com/fear-of-macros/Transform_.html
+
+* Snippets
+
+#+BEGIN_SRC scheme
+  (use-modules (srfi srfi-9))
+  (define-record-type <foo>
+    (make-foo x)
+    foo?
+    (x foo-x))
+#+END_SRC
+#+begin_example
+  scheme@(guile-user)> ,expand (foo-x bar)
+  $2 = (let ((s bar))
+    (if ((@@ (srfi srfi-9) eq?)
+         ((@@ (srfi srfi-9) struct-vtable) s)
+         <foo>)
+      ((@@ (srfi srfi-9) struct-ref) s 0)
+      (let ((s* s))
+        ((@@ (srfi srfi-9) throw)
+         'wrong-type-arg
+         'foo-x
+         "Wrong type argument: ~S"
+         ((@@ (srfi srfi-9) list) s*)
+         ((@@ (srfi srfi-9) list) s*)))))
+#+end_example
