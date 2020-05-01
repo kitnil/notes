@@ -2024,3 +2024,12 @@ and PULSE_CLIENT_CONFIG in their profile.
 					(current-source-location)
 					'filename))))))))
    #+END_SRC
+** [2017-08-26 Sat 02:43] [[gnus:INBOX#87d17o7x5z.fsf@gnu.org][Email from Ludovic Courtès: Re: overriding essential-servi]] by [[mailto:ludo@gnu.org][Ludovic Courtès]]
+   #+BEGIN_SRC scheme
+   (services (cons (simple-service 'my-env
+				   session-environment-service-type
+				   `(("GUILE_LOAD_PATH"
+				      . ,(file-append guile-2.2 "/share/foo"))))
+		   %base-services))
+
+   #+END_SRC
