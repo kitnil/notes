@@ -56,6 +56,9 @@
   - [[https://stackoverflow.com/questions/1651985/git-merge-with-repository-on-local-filesystem][gitosis - git-merge with repository on local filesystem - Stack Overflow]]
     : git pull ../gitosis-admin-old/ master
 
+  - Merge another repository
+    : git subtree add --prefix=rails git://github.com/rails/rails.git master
+
   - Subtree
     : git subtree add --prefix <target_folder> <url> <branch/tag> --squash
 
