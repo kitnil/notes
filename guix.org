@@ -2009,3 +2009,18 @@ Please ignore the /etc/pulse related questions, this looks much better.
 Sounds reasonable.  Users who wish to control pulseaudio outside of the
 configuration system can just exclude the service, or unset PULSE_CONFIG
 and PULSE_CLIENT_CONFIG in their profile.
+
+* Tips
+
+** [2017-08-26 Sat 02:38] [[gnus:INBOX#871snzfl4s.fsf@gnu.org][Email from Ludovic Courtès: Tip of the day: storing your G]] by [[mailto:ludo@gnu.org][Ludovic Courtès]]
+   #+BEGIN_SRC scheme
+   (operating-system
+     (services
+      (cons
+       (simple-service 'store-my-config
+		       etc-service-type
+		       `(("config.scm"
+			  ,(local-file (assoc-ref
+					(current-source-location)
+					'filename))))))))
+   #+END_SRC
