@@ -1,0 +1,46 @@
+* A way to redirect certain URLs to specific web browsers in Linux
+
+Use Chromium for certain types of URLs while maintaining Firefox as
+default browser for all other tasks.
+
+** Setup xdg-open script
+
+sudoedit /usr/local/bin/xdg-open
+
+*** Check
+
+Check bash xdg-open calls /usr/local/bin/xdg-open and not
+/usr/bin/xdg-open
+
+Should return /usr/local/bin/xdg-open
+
+*** Configure domains for redirect to chromium
+
+#+BEGIN_EXAMPLE
+    $EDITOR `~/domains.txt`
+#+END_EXAMPLE
+
+#+BEGIN_EXAMPLE
+    stackexchange.com
+    stackoverflow.com
+    superuser.com
+    www.youtube.com
+    github.com
+#+END_EXAMPLE
+
+** Set /usr/local/bin/xdg-open as default WEB Browser in GNOME
+
+From now applications which use xdg-open will use browser depending on
+/usr/local/bin/xdg-open. But to use it in applications like
+gnome-terminal you need to setup this script as default WEB Browser.
+
+#+BEGIN_EXAMPLE
+    $EDITOR ~/.local/share/applications/xdg-open-web.desktop
+#+END_EXAMPLE
+
+Now open GNOME Settings > Details > Default Applications > and set Web
+to xdg-open web.
+
+** Inspired by
+
+[[https://superuser.com/questions/688063/is-there-a-way-to-redirect-certain-urls-to-specific-web-browsers-in-linux]]

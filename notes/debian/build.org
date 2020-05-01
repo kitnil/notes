@@ -1,0 +1,8 @@
+#+TITLE: Debian package building
+
+* Tutorial
+** Official documentation
+- [[https://www.debian.org/doc/manuals/maint-guide/build.en.html][Chapter 6. Building the package]]
+
+* Tools
+- debcheckout -- checkout the development repository of a Debian package

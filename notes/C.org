@@ -1,0 +1,80 @@
+#+TITLE: C language notes
+
+* heap
+- large pool of operating system memory
+- used in dynamic memory allocation
+** allocate memory on the heap
+- the ~new~ keyword in C++
+- the ~malloc~ in C
+#+BEGIN_EXAMPLE
+int * myArray = new int 10;
+#+END_EXAMPLE
+* stack
+- each process gets its own stack (assume single-threaded processes)
+- LIFO, like the data structure
+- contiguos block of memory (the process's address space)
+** stack frames
+- the stack consists of stack frames
+- contains the parameters to a function, its local variables, and the
+  data necessary to recover the previous stack frame
+- when a function is called, a frame for that function is *pushed*
+  onto the stack
+- when the function is done, we pop the stack frame and return to the
+  caller
+- contains *high-performance* memory
+- usually *fixed* limits
+- to clarify :: stack memory is high-performance in terms of
+                ALLOCATION time, not ACCESS time
+#+BEGIN_EXAMPLE
+int myArray[10];
+#+END_EXAMPLE
+* chip architecture and assembly language review
+** what is assembly
+- assembly = machine instructions
+- C is higher level language which gets translated into assembly by
+  the compiler
+- key point :: assembly language tells the computer exactly what to do
+               and exactly HOW to do it
+- C or C++ :: will say "allocate memory" or "perform addition" ~x += 1;~ 
+- Assembly :: will say "put the byte from this address in memory into
+              ~MOV EAX, x~ ~ADD EAX, 1~ this register" or "jump to
+              this location in memory"
+** registers
+- definition :: extremely high-performance memory located directly on
+                the chip
+***  general purpose registers
+- EAX, EBX, ECX, EDX
+- Used for performing operations on data
+*** special purpose registers
+- ESP: Stack pointer, points to the top of the stack. Manipulated by
+  PUSH, POP, etc
+- EBP: Base pointer aka frame pointer.
+- ESI and EDI: ESI = source instruction, EDI = destination instruction.
+* assembly language calls
+** can be of the form [opcode][dest], [source]
+
+moves the value "1" into the EAX register
+#+BEGIN_EXAMPLE
+MOV EAX, 1
+#+END_EXAMPLE
+** can be of the form [opcode][operand]
+
+- jumps to and address in memory
+- in this case the hex address is 0xDEADBEEF
+#+BEGIN_EXAMPLE
+JMP 0xDEADBEEF
+#+END_EXAMPLE
+** stack-related mneumonic
+- PUSH [register]
+- POP [register]
+- CALL [function]
+- RET
+* Videos
+** C
+*** Channels
+**** [[https://www.youtube.com/channel/UC-KY8MRtc-0CAGqYy0lc3JA][From the LAMER to the Programmer]]
+https://yt3.ggpht.com/-VHZOSfz2_TI/AAAAAAAAAAI/AAAAAAAAAAA/206oac7PEgM/s288-c-k-no-mo-rj-c0xffffff/photo.jpg
+** Penetration
+*** Channels
+**** [[https://www.youtube.com/channel/UCJItQmwUrcW4VdUqWaRUNIg][DemmSec]]
+[[https://yt3.ggpht.com/-eUVlKQsatXw/AAAAAAAAAAI/AAAAAAAAAAA/KNokBLSk-Kw/s88-c-k-no-mo-rj-c0xffffff/photo.jpg]]

@@ -1,0 +1,110 @@
+-*- mode: org; coding: utf-8; -*-
+
+#+STARTUP: content hidestars
+
+* Notes
+* Tasks
+** [[https://lists.gnu.org/archive/html/guix-devel/2017-07/msg00116.html][Guix Team]]
+#+BEGIN_QUOTE
+Here’s a shout out to Ludo who tirelessly fixes old and new bugs,
+implements new features, improves performance, deals with GSoC, and
+answers community questions; to Andy Wingo who continuously improves
+Guile performance, implements new Guix services, drafted and implemented
+the potluck faster than I could blink, …; to Leo and Mark and Marius who
+keep on top of security issues despite the fact that this is no fun; —
+the list goes on and on.
+#+END_QUOTE
+
+* How-to
+** [[gnus:INBOX#868tjccfvp.fsf@local.lan][Disable HTML in Gnus]]
+#+BEGIN_SRC emacs-lisp :tangle yes
+  (setq mm-automatic-display (remove "text/html" mm-automatic-display)
+	mm-discouraged-alternatives '("text/html" "text/richtext"))
+
+  (setq mm-inline-text-html-with-images t)
+#+END_SRC
+
+** [[https://www.quicklisp.org/beta/faq.html][Quicklisp setup]]
+   [[file:~/dotfiles/stumpwm/.stumpwm.d/init.lisp][file:~/dotfiles/stumpwm/.stumpwm.d/init.lisp]]
+
+** [[https://codearsonist.com/reading-for-programmers][Read efficiently]]
+
+   Verify the paper and its contents
+   
+   - Title
+   - Abstract
+   - Introduction
+   - Scan through the article focusing on
+     - Section headings
+     - Graphical elements
+     - Math formulas
+   - Read the results and discussion section
+
+   - Category :: what type of paper is this?
+   - Context :: which other papers it is related to? which theoretical
+		bases were used to analyze the problem?
+   - Correctness :: do the assumptions appear to be valid?
+   - Contributions :: what are the paper's main contributions?
+   - Clarity :: is it well written?
+
+   Whenever after the first pass I see a gaping hole of missing
+   background I mark article as TODO, tag with :advanced: and leave it
+   until I am able to read it or go through references and the
+   Internet and build up the background
+
+   Grasp the general ideas
+
+   Critique
+   
+   Get to know the concepts throughly and get your notes flowing
+
+* Watch later
+** TODO [[gnus:nntp+news.gwene.org:gwene.org.emacsen.planet#x1-a8oeH82Fp+jLn5TxShxSGtp3ZNs@gwene.org][John Wiegley and Sacha use-package]] 
+
+* README
+** Tree accumulation
+** Recursion
+** Динамическое программирование по поддеревьям
+   Планарность графа определяется формулой Эйлера
+
+** Автоматное программирование
+   Алфавит - конечное не пусток множество объектов (букв).
+   Слово - упорядоченный набор букв конечной длины.
+   Длина слова - 
+   Пустое слово -
+   Язык -
+
+** Цепь Маркова, Случайные процессы
+** Проверка автоматов структурной индукцией
+** Идиома (микро паттерны) и паттерны
+** Функция высшего порядка - это функция принимающая на вход команду (функцию)
+** Команда - это просто lambda
+** Фосад
+** Идемпотентность
+** Чистые функции
+** Operation immutable
+** Разделение побочных эффектов
+** Category theory
+Mathematician 	Programmer
+Morphism 	Arrow
+Monoid 	String-like
+Preorder 	Acyclic graph
+Isomorph 	The same
+Natural transformation 	rearrangement function
+Funny Category 	LOLCat 
+
+Category, Morphism, Associativity, Preorder, Functor, Endofunctor,
+Categorial property, Commutative diagram, Isomorph, Initial, Dual,
+Monoid, Natural transformation, Monad, Klesli arrows, κατα-morphism,
+
+Category - is a bunch of objects.
+
+** Emacs coding mode
+   - http://www.gnu.org/software/emacs/manual/html_node/emacs/Recognize-Coding.html
+   - http://www.gnu.org/software/emacs/manual/html_node/emacs/Specify-Coding.html 
+   - http://www.emacswiki.org/emacs/UnicodeEncoding 
+   - http://www.emacswiki.org/emacs/ChangingEncodings
+
+** Maintainers don't scale
+- http://blog.ffwll.ch/2017/01/maintainers-dont-scale.html
+- http://blog.ffwll.ch/2017/08/github-why-cant-host-the-kernel.html
