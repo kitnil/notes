@@ -1,0 +1,82 @@
+* Email
+** [2017-03-31 Fri 19:07] [[gnus:INBOX#fake+none+INBOX+1033][Email from Planet GNOME: Emacs as C IDE and JHBuild]] by [[mailto:gnome-sysadmin@gnome.org][Planet GNOME]]
+** [2017-03-31 Fri 20:07] [[gnus:mail.list.emacs.help#yw.86o9wizkv6.fsf@zoho.com][Email from Emanuel Berg: Re: X11 signal to emacs]] by [[mailto:moasen@zoho.com][Emanuel Berg]]
+** [2017-03-31 Fri 20:20] [[gnus:mail.list.fedora.users#1490635878.2769.18.camel@gmail.com][Email from Patrick O'Callaghan: Restoring a QEMU snapshot]] by [[mailto:pocallaghan@gmail.com][Patrick O'Callaghan]]
+** [2017-03-31 Fri 20:53] [[gnus:mail.list.fedora.users#CAG1svNjrFOFq3jhhaVO0BeKFRm0+uqvrTP4ndDQdKW8cdGQ0VQ@mail.gmail.com][Email from Jaroslav Mracek: Re: F24 system shutdown during]] by [[mailto:jmracek@redhat.com][Jaroslav Mracek]]
+
+I would recommend to get inspired by article http://dnf.baseurl.org/2016/12/15/repair-of-broken-system-with-dnf-2-0/
+where you can find how to repair broken system. With dnf-2.0 you can use "dnf check" command, that could reveal
+problems on your system.
+** [2017-03-31 Fri 21:14] [[gnus:mail.list.emacs.orgmode#m260ivvluu.fsf@andrew.cmu.edu][Email from John Kitchin: Re: {O} How to include menu en]] by [[mailto:jkitchin@andrew.cmu.edu][John Kitchin]]
+** [2017-04-01 Sat 17:05] [[gnus:mail.list.emacs.help#CAEySM9F2GFsyVOYDQLeiuNeuuq3qZN6RL-Zc4Zk7bX0=n3L-7w@mail.gmail.com][Email from Guido Van Hoecke: Re: emacsql-mysql - best way t]] by [[mailto:guivho@gmail.com][Guido Van Hoecke]]
+** TODO [2017-04-12 Wed 12:39] [[gnus:mail.misc#20170409041045.GJ786@Tower.ruck.lan][Email from Mike Ruckman: {Test-Announce} 2017-04-10 @ 1]] by [[mailto:roshi@fedoraproject.org][Mike Ruckman]]
+** TODO [2017-04-12 Wed 15:00] [[gnus:mail.misc#20170412103747.GB28199@flame.pingoured.fr][Email from Pierre-Yves Chibon: Fedora CI effort/Interest Grou]] by [[mailto:pingou@pingoured.fr][Pierre-Yves Chibon]]
+** TODO [2017-04-12 Wed 15:59] [[gnus:mail.noreply.redhat#bf045fd8da814102bb5be01b396551e5@1795][Email from Red Hat: Вебинар Red Hat Satellite: Сце]] by [[mailto:email@engage.redhat.com][Red Hat]]
+** TODO [2017-04-12 Wed 15:59] [[gnus:mail.noreply.redhat#eefcee93ee67444dbc49c6e0cccf24e1@1795][Email from Red Hat Webinars: You’re Invited: Cirque d'appli]] by [[mailto:email@engage.redhat.com][Red Hat Webinars]]
+** TODO [2017-04-12 Wed 18:30] [[gnus:mail.misc#7eb339$u7dm9@smtp.theonlinexpo.com][Email from Red Hat Webcasts: Registration Confirmation: Cir]] by [[mailto:RedHatWebcasts@theonlinexpo.com][Red Hat Webcasts]]
+** TODO [2017-04-12 Wed 18:30] [[gnus:mail.misc#ff3304$fsu3r@smtp.theonlinexpo.com][Email from Red Hat Webcasts: Reminder to attend: DevOps for]] by [[mailto:RedHatWebcasts@theonlinexpo.com][Red Hat Webcasts]]
+** TODO [2017-04-13 Thu 00:29] [[gnus:mail.noreply.redhat#b4166984caf4470491b028054b112717@1795][Email from Red Hat: Ваша регистрация для вебинара]] by [[mailto:email@engage.redhat.com][Red Hat]]
+** TODO [2017-04-13 Thu 11:14] [[gnus:mail.misc#550448885.69285@mta02.estisrapid.pro][Email from Светлана Бычкова: ский язык. Вопрос-ответ} Как н]] by [[mailto:info@tensaigakkou.ru][Светлана Бычкова]]
+** TODO [2017-05-11 Thu 21:28] Отправить преподавателю по английскому [[gnus:lists.googlegroups.leti-user#2325891494494253@web23j.yandex.ru][Email from Иван Волошин: Англ Волошин 6005]] by [[mailto:ivan-sever-ulica@yandex.ru][Иван Волошин]]
+** [2017-05-23 Tue 19:40] [[gnus:lists.gnu.help-gnu-emacs#CAP_d_8VtA_RoaJuFXvOFzcriAY_Tzs3XzsPNiUPk9htZcJCgag@mail.gmail.com][Email from Yuri Khan: Re: how to highlight block end]] by [[mailto:yuri.v.khan@gmail.com][Yuri Khan]]
+
+From: Yuri Khan <yuri.v.khan@gmail.com>
+Subject: Re: how to highlight block end in Python-mode indentation
+To: Krishnakant <krmane@openmailbox.org>
+Cc: Skip Montanaro <skip.montanaro@gmail.com>,
+        "help-gnu-emacs@gnu.org" <help-gnu-emacs@gnu.org>
+Date: Sun, 21 May 2017 19:04:47 +0700 (2 days, 4 hours, 34 minutes ago)
+
+On Sun, May 21, 2017 at 6:38 PM, Krishnakant <krmane@openmailbox.org> wrote:
+
+> The base is large enough, more than 1500 lines in a buffer (python module ).
+
+That is a lot. See if any top-level functions or classes want to live
+in separate modules.
+
+> There is a lot of nesting going on and we all know that we do get lost in
+> it.
+> Do you have some solution?
+
+Apply Torvalds’ razor: “if you need more than 3 levels of indentation,
+you’re screwed[…], and should fix your program”.
+
+See which deep-nested blocks carry out some action that could be given
+a name. Extract those as functions. If you see a block of code with an
+explanatory comment before it — that’s a function wanting to break
+out.
+
+Also, The Zen of Python, item 5: “Flat is better than nested.”
+
+See if you have this pattern:
+
+def …:
+    if some condition:
+        do something
+        …
+
+Rewrite this to:
+
+def …:
+    if not some condition:
+        return
+    do something
+    …
+
+Similarly with loops, using “continue”.
+
+Sometimes replacing conditions with conditional expressions (x if y
+else z) and loops with comprehensions and utility functions will do
+wonders to your nesting levels.
+
+> Basically I have now figured out that spaces instead of tabs makes elpy work
+> fine with highlight-indentation-mode.  So our team will have to switch to
+> using spaces again.
+
+You use tabs with Python in a *team*?
+
+Print out PEP8. Discuss it with your team. Unless you have good
+reasons, format according to that. (Unfortunately, having lots of
+existing code qualifies as “good reasons”.)
+** TODO [2017-05-24 Wed 07:44] [[gnus:planets.emacs#fake+none+planets.emacs+103][Email from Planet Emacsen: sachachua: 2017-05-22 Emacs ne]] by [[mailto:opykhalov@localhost][Planet Emacsen]]
+** [2017-05-24 Wed 08:49] [[gnus:planets.emacs#fake+none+planets.emacs+50][Email from Planet Emacsen: sachachua: 2017-05-08 Emacs ne]] by [[mailto:wigust@localhost][Planet Emacsen]]

@@ -1,0 +1,67 @@
+#+TITLE: Git
+
+Git is popular version control system designed to handle very large projects
+with speed and efficiency. It is used for many high profile open source
+projects, most notably the Linux kernel.
+
+* Video
+** Channels
+- [[https://www.youtube.com/channel/UCshmCws1MijkZLMkPmOmzbQ][Dan Gitschooldude]]
+** Tutorials
+- [[https://www.youtube.com/watch?v=8ET_gl1qAZ0][Advanced git Tutorial: Linus Torvalds - YouTube]]
+* Hooks
+** Tutorials
+- [[https://www.atlassian.com/git/tutorials/git-hooks/local-hooks][Git Hooks - Local hooks | Atlassian Git Tutorial]]
+* Cheatsheet
+** Substitute text from file in git history
+- [[https://stackoverflow.com/questions/4110652/how-to-substitute-text-from-files-in-git-history][version control - How to substitute text from files in git history? - Stack Overflow]]
+ #+BEGIN_EXAMPLE
+ git filter-branch --tree-filter "find . -name '*.php' -exec sed -i -e \ 's/originalpassword/newpassword/g' {} \;"
+ #+END_EXAMPLE
+** Find a commit that introduced a string in any branch
+- [[https://stackoverflow.com/questions/5816134/finding-a-git-commit-that-introduced-a-string-in-any-branch][search - Finding a Git commit that introduced a string in any branch - Stack Overflow]]
+ #+BEGIN_EXAMPLE
+ git log -S 'hello world' --source --all
+ #+END_EXAMPLE
+** Remove file from all commits in history
+- [[https://www.youtube.com/watch?v=Bo-8EfDpKxA][020 Remove a file from all git history - YouTube]]
+#+BEGIN_EXAMPLE
+git filter-branch -f --index-filter 'git rm --cached --ignore-unmatch LICENSE.md' HEAD
+#+END_EXAMPLE
+** pull or merge local repository
+- [[https://stackoverflow.com/questions/1651985/git-merge-with-repository-on-local-filesystem][gitosis - git-merge with repository on local filesystem - Stack Overflow]]
+#+BEGIN_EXAMPLE
+git pull ../gitosis-admin-old/ master
+#+END_EXAMPLE
+** subtree
+#+BEGIN_EXAMPLE
+git subtree add --prefix <target_folder> <url> <branch/tag> --squash
+#+END_EXAMPLE
+
+To keep the sub-project up to date
+#+BEGIN_EXAMPLE
+git subtree pull --prefix <target_folder> <url> <branch/tag> --squash
+#+END_EXAMPLE
+
+Find the symbolic ref matching a hash (sha-1)
+#+BEGIN_EXAMPLE
+git ls-remote <url> | grep <sha-1>
+#+END_EXAMPLE
+
+- [[https://bitbucket.org/durdn/cfg/src/master/.gitconfig?at=master&fileviewer=file-view-default][Nicola Paolucci git aliases]]
+#+BEGIN_EXAMPLE
+git sba <url> <destination-folder>
+#+END_EXAMPLE
+
+git subtree to extract a project
+#+BEGIN_EXAMPLE
+git subtree split --prefix <project> --branch <branch>
+#+END_EXAMPLE
+
+#+BEGIN_SRC bash
+#!/bin/bash
+
+for x in $(ls -1 roles/)
+do git subtree split -P roles/$x -b roles/$x
+done
+#+END_SRC

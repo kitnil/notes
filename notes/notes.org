@@ -1,0 +1,587 @@
+#+TITLE: Notes
+
+* Important
+** TODO Узнать оценку по алгебре 6005 Никита Викторович Викулов
+** TODO Отдать карту Сбербанка на проверку
+** Тревога
++7 906 263 65 29
+3 гудка. Режим тревоги. Сработала охранная зона отключения питания.
+* Tasks
+** DONE Arch packaging tutorial on irc
+   [2016-12-03 Sat]
+   [[gnus:INBOX#91dac71e-4a12-4306-8f99-74ec6cd32167@dev.null.invalid][Email to go wigust: Any programmers here who don't]]
+** DONE Watch Red Hat webinar
+   [2016-12-03 Sat]
+   [[gnus:INBOX#ff3304$ddjdj@smtp.theonlinexpo.com][Email from Red Hat Webcasts: Daily development with Docker,]]
+** TODO Философия
+** TODO Экономика
+** TODO Математика
+** TODO Физика
+** TODO Программирование
+** TODO [2017-02-27 Mon] [[https://gogs.sr.ht/explore/repos][Explore - sr.ht git]] 
+* Read
+** [2017-04-05 Wed 08:52] [[https://www.centos.org/forums/viewtopic.php?f=16&t=52818][Bad practice to put interal in DNS zone files? - CentOS]]
+If you are going to run an authoritative public name server, then you really need to get a copy of DNS and BIND, 5th Edition By Cricket Liu, Paul Albitz and start reading.
+* Watch
+** People
+*** [[https://www.youtube.com/channel/UCEbYhDd6c6vngsF5PQpFVWg/about][Tsoding - YouTube]]
+
+This is just a channel of some crazy russian dude doing crazy stuff with computers.
+
+- [[https://www.youtube.com/channel/UCEbYhDd6c6vngsF5PQpFVWg/about][YouTube]]
+- [[https://tsoding.github.io/][Website]]
+- [[https://tsoding.github.io/schedule.html][Schedule]]
+- [[https://github.com/tsoding][GitHub]]
+- [[https://twitter.com/tsoding][Twitter]]
+- [[http://www.twitch.tv/tsoding][Twitch]]
+- [[https://www.patreon.com/tsoding][Patreon]]
+
+** Anime
+*** Буря потерь
+*** Пожиратели богов                                            
+** YouTube
+*** Tales of Zesteria 24
+*** Metal Gear Rising
+** Films
+*** Число Pi
+:РЕЖИСЕР: Дарен Реновский
+Макс Койн математик программист ест всякую пробы, мариахуну 
+* Patch
+- file:/usr/lib/python2.7/site-packages/html2text/config.py
+- file:/usr/share/rss2email/rss2email.py
+* Bugs
+** [[https://bugzilla.redhat.com/buglist.cgi?component=chromium&list_id=7209738&product=Fedora][Bug List chromium]]
+* Temp
+** [[https://thisissavo.github.io/assets/Klavaro1.png][10 fingers position keyboard fast typing]]
+** Философию обычно относят к отдельной отрасли научной мысли
+** Каждый вторник консультация по физике
+** linux partition example
+| name--vg-swap_1 | 3.7G      |
+| name--vg-       | root 952M |
+| name--vg-usr    | 17.3G     |
+| name--vg-       | home 20G  |
+| name--vg-       | opt 2G    |
+| name--vg-var    | 2.8G      |
+| sdax /          | boot 244M |
+   
+** cruft
+#+BEGIN_SRC bash
+    declare -a PATHS=('/dev'
+		      '/proc'
+		      '/sys'
+		      '/root'
+		      '/home'
+		      '/tmp'
+		      '/srv'
+		      '/run'
+		      '/var/cache'
+		      '/var/lib/docker'
+                      '/opt'
+  '/var/lib/samba');
+  cruft --ignore ${PATHS[@]}
+#+END_SRC
+
+** Подвал Первый корпус 1244 кабинет и напротив него спуск в подвал
+** sway pulse audio volume control
+bindsym Shift+XF86AudioRaiseVolume exec pactl set-sink-volume \
+                $(pactl list sinks | grep -B 1 RUNNING | sed '1q;d' | sed 's/[^0-9]\+//g') +5%
+** GNOME allow new windows to steal focus in
+gsettings set org.gnome.desktop.wm.preferences focus-new-windows 'strict'
+** Start emacs server if not running
+(require 'server)
+(unless (server-running-p)
+    (server-start))
+** Emacs set frame transparency
+#+BEGIN_SRC emacs-lisp
+  (set-frame-parameter (selected-frame) 'alpha '(80 80))
+#+END_SRC
+** [[https://github.com/vspinu/polymode][vspinu/polymode: Object oriented framework for multiple emacs modes based on indirect buffers]]
+Object oriented framework for multiple emacs modes based on indirect buffers
+** [[https://addons.mozilla.org/en-US/firefox/addon/chrome-store-foxified/][Chrome Store Foxified :: Add-ons for Firefox]]
+Enables the Google Chrome Store for Firefox. Point and click to install Chrome extensions straight into Firefox.
+** [[https://lists.fedoraproject.org/archives/list/devel@lists.fedoraproject.org/message/7ULAG243UNGTOSL6URGNG23GC4B6X5GB/][PSA: Do not run 'dnf update' inside GNOME, KDE or any other graphical desktop on Fedora 24]]
+** rsync Fedora local mirror
+#+BEGIN_SRC bash
+rsync://mirror.cc.vt.edu/fedora/linux/  /mirror/
+                 --exclude=development --exclude=extras (repeat as nessassary)
+#+END_SRC
+
+#+BEGIN_EXAMPLE
+<Southern_Gentlem> sudo rsync -av --delete
+                 rsync://mirror.cc.vt.edu/fedora/linux/ /mirror
+                 --exclude=development --exclude=extras --exclude=test*
+                 --exclude=7 --exclude=8 --exclude=9 --exclude=10 --exclude=11
+                 --exclude=12 --exclude=13 --exclude=14 --exclude=15
+                 --exclude=16 --exclude=17 --exclude=18 --exclude=19
+                 --exclude=20 --exclude=21 --exclude=22 --exclude=23
+                 --exclude=24 --exclude=CloudImages --exclude=Docker
+                 --exclude=Server --exclude=Workstation --
+<Southern_Gentlem> exclude=Spins --exclude=armhfp --exclude=i386
+<rizonz> Southern_Gentlem: ah you don't export the list
+<rizonz> thanks
+<Southern_Gentlem> to me that is a one time shot above
+#+END_EXAMPLE
+** Tales
+https://te4.org/characters/217768/tome/77277c76-4d13-453b-a445-eab1986cbe18ah=1c563897-415c-4459-9439-cae3459f61bead=217768
+** [[https://www.youtube.com/watch?v=vRYeXoPmIxI][How to install i3 with Fedora 22]]
+** Customize buffer-menu
+#+BEGIN_SRC emacs-lisp
+  ;; This file: http://user.it.uu.se/~embe8573/conf/emacs-init/buffer-menu.el
+
+  (require 'dired)
+  (require 'scroll)
+  (require 'close)
+  (require 'super)
+
+  (setq Buffer-menu-use-header-line nil)
+
+  (defvar buffer-menu-buffer-font-lock-keywords
+    '(
+      ("\\*\\(Errors\\|Backtrace\\)\\*"         .  font-lock-warning-face)
+      ("\\*\\(Group\\|Server\\|Packages\\)\\*"  .  font-lock-comment-face)
+      ("\\*\\(Help\\|Completions\\|Messages\\|info\\|Apropos\\)\\*"
+                                            .  font-lock-constant-face)
+      ("\\*\\(ielm\\|Article\\)\\*"         . 'font-lock-regexp-grouping-backslash)
+      (".* \\(.*\\.txt\\) "                 (1 font-lock-negation-char-face))
+      ("[[:space:]]+\\([[:digit:]]+\\) "    (1 font-lock-comment-delimiter-face))
+      ("<.*\\(>\\|\\.\\.\\.\\)"             . 'font-lock-regexp-grouping-construct)
+      ("Makefile"                           .  font-lock-comment-face)
+      ("\\(\\*Man\\) \\(.*\\)\\(\\*\\)"
+       (1  font-lock-type-face)
+       (2 'font-lock-regexp-grouping-construct)
+       (3  font-lock-type-face) )
+      (".* \\(.*\\.\\(el\\|cc?\\|cpp\\)\\) "(1 font-lock-string-face))
+      ("\\*w3m\\*"                          .  font-lock-function-name-face)
+      ("#[[:alnum:]]* "                     .  font-lock-doc-face)
+      (".* \\(.*\\.html?\\) "               (1 font-lock-doc-face))
+      (".* \\(.*\\.\\(hh?\\|tex\\)\\) "     (1 font-lock-variable-name-face))
+      (".* \\(\\.[[:alnum:]_.-]*\\) "       (1 font-lock-builtin-face))
+  ))
+
+  (defun buffer-menu-custom-font-lock ()
+    (interactive)
+    (let ((font-lock-unfontify-region-function
+           (lambda (start end)
+             (remove-text-properties start end '(font-lock-face nil)))))
+      (font-lock-unfontify-buffer)
+      (set (make-local-variable 'font-lock-defaults)
+           '(buffer-menu-buffer-font-lock-keywords t))
+      (font-lock-fontify-buffer)))
+
+  (defun buffer-menu-files-only ()
+    (interactive)
+    (switch-to-buffer
+     (list-buffers-noselect (not Buffer-menu-files-only)) )
+    (buffer-menu-custom-font-lock) )
+
+  (defun switch-buffer ()
+    (interactive)
+    (switch-to-buffer nil) ) ; BUFFER-OR-NAME
+
+  (defun Buffer-menu-delete-and-execute ()
+    (interactive)
+    (Buffer-menu-delete)
+    (Buffer-menu-execute) )
+
+  (defun buffer-menu-kill-and-open ()
+    (interactive)
+    (let*((menu-buffer (current-buffer))
+          (next-buffer (Buffer-menu-buffer nil))
+          (next-mode   (with-current-buffer next-buffer major-mode))
+          (is-dired    (string-equal next-mode "dired-mode")))
+      (when next-buffer
+	(switch-to-buffer next-buffer)
+	(if (and is-dired
+		 (dired-directory-changed-p dired-directory))
+            (revert-buffer) )
+	(kill-buffer menu-buffer) )))
+
+  (defun switch-to-messages-buffer ()
+    (interactive)
+    (switch-to-buffer (messages-buffer))
+    (goto-char (point-max)) )
+
+  (let ((the-map Buffer-menu-mode-map))
+    (disable-super-global-keys the-map)
+    (set-vertical-keys         the-map)
+    (set-close-key             the-map)
+    (define-key the-map "m"  #'switch-to-messages-buffer)
+    (define-key the-map "\r" #'buffer-menu-kill-and-open)
+    (define-key the-map "d"  #'Buffer-menu-delete-and-execute)
+    (define-key the-map "g"  #'buffer-menu-files-only) )
+
+  (provide 'buffer-menu)
+#+END_SRC
+** List Emacs packages
+#+BEGIN_SRC emacs-lisp
+  ;; This file: http://user.it.uu.se/~embe8573/conf/emacs-init/elpa.el
+
+  (require 'scroll)
+  (require 'super)
+  (require 'close)
+
+  (package-initialize)
+
+  (defvar package-menu-mode-map)
+  (let ((the-map package-menu-mode-map))
+    (set-close-key        the-map)
+    (set-pane-scroll-keys the-map)
+    (set-vertical-keys    the-map) )
+
+  (setq-default tabulated-list-use-header-line nil)
+
+  (defun elpa ()
+    (interactive)
+    (package-list-packages) )
+
+  (defvar package-archives)
+  (setq package-archives
+	'(( "elpa" . "http://elpa.gnu.org/packages/")
+          ("melpa" . "http://melpa.milkbox.net/packages/") ))
+
+#+END_SRC
+** ASK about erc auto-reconnect
+Hi. I have an issue with authentication after auto-reconnect in
+erc. Did somebody have this issue?
+** Read this awesome books
+
+   Among the books used in the development of Calc were Knuth’s _Art of
+Computer Programming_ (especially volume II, _Seminumerical
+Algorithms_); _Numerical Recipes_ by Press, Flannery, Teukolsky, and
+Vetterling; Bevington’s _Data Reduction and Error Analysis for the
+Physical Sciences_; _Concrete Mathematics_ by Graham, Knuth, and
+Patashnik; Steele’s _Common Lisp, the Language_; the _CRC Standard Math
+Tables_ (William H. Beyer, ed.); and Abramowitz and Stegun’s venerable
+_Handbook of Mathematical Functions_.  Also, of course, Calc could not
+have been written without the excellent _GNU Emacs Lisp Reference
+Manual_, by Bil Lewis and Dan LaLiberte.
+** Recommend C books
+<candide> K&R is The C Programming Language, 2nd edition, by Kernighan and
+          Ritchie --
+          http://wayback.archive-it.org/5263/20150203070038/http://cm.bell-labs.com/cm/cs/cbook/
+          -- errata: http://www.iso-9899.info/2ediffs.html
+<mfukar> C Programming: A Modern Approach, by King, ISBN: 0393969452  [09:36]
+** [wigust@magnolia develop]$ sudo systemctl enable cockpit.service
+
+The unit files have no installation config (WantedBy, RequiredBy, Also, Alias
+settings in the [Install] section, and DefaultInstance for template units).
+This means they are not meant to be enabled using systemctl.
+Possible reasons for having this kind of units are:
+1) A unit may be statically enabled by being symlinked from another unit's
+   .wants/ or .requires/ directory.
+2) A unit's purpose may be to act as a helper for some other unit which has
+   a requirement dependency on it.
+3) A unit may be started when needed via activation (socket, path, timer,
+   D-Bus, udev, scripted systemctl call, ...).
+4) In case of template units, the unit is meant to be enabled with some
+   instance name specified.
+** How to create PDF from Emacs info pages
+
+   The Calc manual can be printed, but because the manual is so large,
+you should only make a printed copy if you really need it.  To print the
+manual, you will need the TeX typesetting program (this is a free
+program by Donald Knuth at Stanford University) as well as the
+‘texindex’ program and ‘texinfo.tex’ file, both of which can be obtained
+from the FSF as part of the ‘texinfo’ package.  To print the Calc manual
+in one huge tome, you will need the Emacs source, which contains the
+source code to this manual, ‘calc.texi’.  Change to the ‘doc/misc’
+subdirectory of the Emacs source distribution, which contains source
+code for this manual, and type ‘make calc.pdf’.  (Don’t worry if you get
+some “overfull box” warnings while TeX runs.)  The result will be this
+entire manual as a pdf file.
+** org-mode include menu C-x C-e
+
+(org-export-define-derived-backend 'cmu-manuscript 'latex
+  :menu-entry
+  '(?j "Export with ox-manuscript"
+       ((?L "As LaTeX buffer" org-latex-export-as-latex)
+        (?l "As LaTeX file" org-latex-export-to-latex)
+        (?p "As manuscript PDF file" ox-manuscript-export-and-build)
+        (?o "As manuscript PDF and open" ox-manuscript-export-and-build-and-open)
+        (?e "As PDF and email" ox-manuscript-export-and-build-and-email)
+        (?s "As submission manuscript tex"
+            ox-manuscript-export-submission-manuscript)
+        (?M "As submission manuscript pdf"
+            ox-manuscript-build-submission-manuscript)
+        (?m "As submission manuscript pdf and open"
+            ox-manuscript-build-submission-manuscript-and-open)
+        (?c "As manuscript PDF with comments"
+            ox-manuscript-build-with-comments)
+        (?a "As submission archive"
+  ox-manuscript-make-submission-archive))))
+** lisp.el
+backward-kill-sexp 	backward-list
+backward-sexp 	backward-up-list
+beginning-of-defun 	beginning-of-defun-raw
+buffer-end 	check-parens
+delete-pair 	down-list
+end-of-defun 	field-complete
+forward-list 	forward-sexp
+insert-pair 	insert-parentheses
+kill-backward-up-list 	kill-sexp
+lisp-complete-symbol 	mark-defun
+mark-sexp 	move-past-close-and-reindent
+narrow-to-defun 	raise-sexp
+up-list
+** bug 123.09 harddrive kernel
+** emacs center window
+#+BEGIN_SRC emacs-lisp
+(use-package centered-window-mode :ensure t)
+(tool-bar-mode -1)
+(set-frame-parameter nil 'fullscreen 'fullboth)
+(scroll-bar-mode -1)
+(set-window-fringes nil 0 0)
+(add-to-list 'default-frame-alist '(background-color . "#102372"))
+#+END_SRC
+** caldav debug
+Debugger entered--Lisp error: (wrong-type-argument number-or-marker-p nil)
+  url-http-options("http://localhost:5232/wigust/org.ics/")
+  url-dav-supported-p("http://localhost:5232/wigust/org.ics/")
+  org-caldav-check-connection()
+  org-caldav-sync-calendar()
+  org-caldav-sync()
+  funcall-interactively(org-caldav-sync)
+  call-interactively(org-caldav-sync record nil)
+  command-execute(org-caldav-sync record)
+  execute-extended-command(nil "org-caldav-sync" nil)
+  funcall-interactively(execute-extended-command nil "org-caldav-sync" nil)
+  call-interactively(execute-extended-command nil nil)
+  command-execute(execute-extended-command)
+** org-caldav-sync debug xml
+
+[[file:~/Downloads/bug_23440.mbox]]
+
+Debugger entered--Lisp error: (error "Error while getting eventlist from http://127.0.0.1:5232/wigust/org.ics/. Got status code: 207.")
+  signal(error ("Error while getting eventlist from http://127.0.0.1:5232/wigust/org.ics/. Got status code: 207."))
+  error("Error while getting eventlist from %s. Got status code: %d." "http://127.0.0.1:5232/wigust/org.ics/" 207)
+  org-caldav-get-event-etag-list()
+  org-caldav-update-events-in-cal(#<buffer org-caldav-7744vYw>)
+  org-caldav-sync-calendar()
+  org-caldav-sync()
+  funcall-interactively(org-caldav-sync)
+  call-interactively(org-caldav-sync record nil)
+  command-execute(org-caldav-sync record)
+  execute-extended-command(nil "org-caldav-sync" nil)
+  funcall-interactively(execute-extended-command nil "org-caldav-sync" nil)
+  call-interactively(execute-extended-command nil nil)
+  command-execute(execute-extended-command)
+** Partition chroot recovery livecd
+#+BEGIN_SRC bash
+  mkdir /mnt/gnulinux
+  mount /dev/sda2 /mnt/gnulinux
+  mount --rbind /proc /mnt/gnulinux/proc
+  mount --rbind /dev /mnt/gnulinux/dev
+  mount --rbind /sys /mnt/gnulinux/sys
+  mount /dev/sda1 /mnt/gnulinux/boot/efi
+  chroot /mnt/gnulinux /bin/sh
+  source /etc/profile
+  mount -a
+  grub-install /dev/sda
+  update-grub
+  grub2-mkconfig -o /boot/grub/grub2.cfg
+#+END_SRC
+** GPT UEFI Strange partition
+"В системе с GPT таблицей должен быть небольшой BIOS boot partition с типом файловой системы EF02 (не путать с EFI System Partition (ESP) у которой тип файловой системы EF00). 1 MiB должно быть достаточно для работы, но 2-4 MiB будет более безопасным вариантом. Этот BIOS boot раздел будет хранить в себе 2 стадию загрузчика. BIOS boot раздел не нужно форматировать в какую-либо файловую систему; команда grub-install перезапишет любую файловую систему на свою собственную. "
+** 2TB SSD
+<codingquark> I have EVO 850. Wonly 256GB though.  [16:51]
+<codingquark> 2TB SSD OMG
+<s00pcan> I know right? it's crazy fast too
+<s00pcan> what I haven't seen is a usb 3.1 adapter for these m.2 with that
+          keying  [16:52]
+* IRC
+<remote> yay
+<twb> wigust: OK, the only reason you should get a non-zero from that is if
+      find crashes  [11:04]
+<remote> wigust: I doubt there's a difference between running rgrep in emacs
+         or in a shell, do you get non-zero output if you execute it in a
+         shell with the same arguments/etc after it completes and you execute
+         ``echo $?'' ?
+<twb> find will actually eat the exit status of grep
+<twb> wigust: are you on GNU/Linux?
+<remote> WELL, doesn't find return the exit code of whatever command it runs?
+<twb> remote: it does not
+<twb> If you want that, you have to do something baroque like test '' !=
+      $(find ... -exec my_test_program {} + -printf x)  [11:05]
+<remote> ok
+<twb> wigust: FWIW I generally prefer to rely on grep's internal capabilities:
+                                                                        [11:06]
+<twb> grep -r --include '*.[ch]' -nH GLIB_SIZEOF_SIZE_T *
+<twb> Actually you can skip the * in current version
+** 
+<twb> wigust: because rgrep is dumb  [11:32]
+<twb> wigust: just use M-x grep, then type in a smarter command
+<twb> wigust: just note that e.g. grep -r will have problem with device files
+      and named pipes  [11:33]
+<twb> e.g. grep -r will try to read everything in /proc/kmsg which is
+      petabytes long
+<twb> so when I am searching an entire filesystem I will do something like
+      this:
+<twb> find / -xdev -type f -exec grep -nH foo {} +  [11:34]
+<twb> For searching git repos, I usually do M-x grep RET, then type in a git
+      grep command, rather than just grep
+<remote> how can I find out which libraries I need to be able to compile emacs
+         with webkit?  [11:36]
+<josteink> i believe wasamasa once blogged about that
+<wigust> twb: I found M-x vc-git-grep useful too.  [11:37]
+<twb> hm, didn't know about that one
+<remote> I'm not trying to do that rigth now but remember I had a rough time
+         finding out before, rough time as-in any *lib*webkit* package in
+         debian caused emacs compilation with specification of webkit support
+         to not have support for webkit or something like that
+<twb> wigust: apt-get install libwebkitblah-dev ?  [11:38]
+<twb> Er remote
+<macrobat> is there a tool to search in sorted files? 
+<John[Lisbeth]> ugh
+<josteink> remote: how about just compiling it with the xwidgets configure
+           option and see what it complains about?
+** dnf provide example
+<zxd> hi  [13:34]
+<zxd> dnf repoquery  --arch x86_64  --whatprovides '*/libc.so'
+<zxd> dosen't return any result , but rpm -qf /usr/lib64/libc.so
+      glibc-devel-2.23.1-11.fc24.x86_64     does
+<zxd> glibc-devel-2.23.1-11.fc24.x86_64
+<zxd> why
+<seseri> works for me  [13:35]
+<seseri> dnf provides '*/libc.so'
+<zxd> does it print from x86_64 arch ?  [13:38]
+<seseri> nope  [13:41]
+<seseri> dnf provides */lib64/libc.so does
+** remote thinks twb is a child of GNU who was bourne again in a shell
+<twb> I'm better at sh and bash than most of the dickheads who write scripts,
+      that's for sure  [11:07]
+<twb> I wonder if that long list of extensions would run faster in GNU find if
+      you experessed it as a regular expression  [11:08]
+<twb> e.g. find -regextype posix-egrep -iregex
+      '.*(urbanears|skullcandy|headphones|speaker|marshall|usb-cable).*'
+      -delete
+* Notes
+** Wiggle LOL
+<moobot> Playing ""Leedle"("Wiggle" Remix)(audio)-Jason Derulo, Snoop Dogg,
+         Patrick Star, Spongebob Squarepants", requested by cattzs
+** microsoft take a world
+rw_grim: https://en.wikipedia.org/wiki/Open_Letter_to_Hobbyists
+rw_grim: https://en.wikipedia.org/wiki/Embrace_extend_and_extinguish
+rw_grim: https://en.wikipedia.org/wiki/Halloween_documents
+** Install rigrep
+** ssl error
+W: [SSL: SSLV3_ALERT_HANDSHAKE_FAILURE] sslv3 alert handshake failure (_ssl.c:661) [10] https://emacs-china.org/posts.rss
+** how to braze
+1. для очистки жала лучше за 50 р. с китая заказать губок 10 шт которые надо мочить, может и дешевле, я заказывал первое что попалось с большим кол.вом заказов
+2. паяльники которые ты у себя показал - фуфловенькие, нагреватель сгорает у них на раз два (те что керамические)
+лучше купить паяльник который работает с жалом аналогом Hakko T12 там и нагрев лучше контролируется и есть индикатор температуры
+3. лично я лакированные провода наушников тупо мажу флюсом или опускаю в канифоль и каплей припоя лужу, лак сгорает  от температуры паяльника и припой тут же покрывает поверхность
+4. для пайки "люминия" есть спец.флюс для пайки люминия, который я использую для пайки всего (коричневого цвета он)﻿
+** javascript
+
+#+BEGIN_EXAMPLE
+  Всем привет!) Touch Instinct ищет себе в команду frontend-разработчика. #вакансия #frontend
+  Г. Санкт-Петербург, м. Спортивная-Горьковская
+  Формат работы: #офис или можно на первое время #удаленка
+  Полная занятость
+  ЗП вилка: 60 тыс.руб. на руки.
+  Описание вакансии:
+  Всем привет! Мы – Touch Instinct. Мы входим в тройку лучших мобильных разработчиков России по версии кучи рейтингов, сертифицированы Google, сотрудничаем с российскими (МТС, МегаФон, Связной, Meduza) и с международными компаниями (Riot Games, Rumble, Squawk Surveys). 
+  Мы ищем в команду Frontend-разработчика.
+  Требования:
+  ,* Знание JavaScript, включая ES6
+  ,* Понимание принципов функционального программирования
+  ,* Понимание html, css, dom
+  ,* Знакомство с React будет плюсом
+  ,* Понимание принципов построения RESTful API
+  ,* Опыт работы с общими инструментами, такими как babel, webpack, npm
+  ,* Знание основных алгоритмов и структур данных
+  ,* Английский на уровне чтения технической документации
+  ,* Опыт работы с какой-либо системой контроля версий (Git, Svn, Mercurial и т.д.)
+#+END_EXAMPLE
+** ssh vpn tunnel
+ssh -D 8080 user@host -f -N
+** Emacs RPM developement
+Last metadata expiration check: 0:00:35 ago on Fri May 19 16:32:22 2017 MSK.
+Available Packages
+Name         : rpmdevtools
+Version      : 8.10
+Release      : 2.fc26
+Arch         : noarch
+Size         : 105 k
+Source       : rpmdevtools-8.10-2.fc26.src.rpm
+Repo         : fedora
+Summary      : RPM Development Tools
+URL          : https://pagure.io/rpmdevtools
+License      : GPLv2+ and GPLv2
+Description  : This package contains scripts and (X)Emacs support files to aid
+             : in development of RPM packages.
+             : rpmdev-setuptree    Create RPM build tree within user's home
+             : directory rpmdev-diff         Diff contents of two archives
+             : rpmdev-newspec      Creates new .spec from template
+             : rpmdev-rmdevelrpms  Find (and optionally remove) "development"
+             : RPMs rpmdev-checksig     Check package signatures using alternate
+             : RPM keyring rpminfo             Print information about
+             : executables and libraries rpmdev-md5/sha*     Display checksums
+             : of all files in an archive file rpmdev-vercmp       RPM version
+             : comparison checker spectool            Expand and download
+             : sources and patches in specfiles rpmdev-wipetree     Erase all
+             : files within dirs created by rpmdev-setuptree rpmdev-extract
+             : Extract various archives, "tar xvf" style rpmdev-bumpspec
+             : Bump revision in specfile ...and many more.
+* 
+- [[/run/media/opykhalov/hills/daily.0/magnolia/home/wigust][Daily Backup]]
+* Emacs
+
+** org-mode fix
+https://github.com/jwiegley/use-package/issues/319
+#+BEGIN_SRC emacs-lisp
+  (eval-and-compile
+    (let ((clp))
+      (while (setq clp (locate-library "org"))
+        (setq load-path
+          (delete
+           (directory-file-name (file-name-directory clp)) load-path))))
+
+    (dolist (S (append (apropos-internal (concat "^" (symbol-name 'org) "-"))
+               (apropos-internal (concat "^global-" (symbol-name 'org) "-"))))
+      (when (and (fboundp S)
+             (let ((sf (symbol-function S)))
+           (and (listp sf) (eq (car sf) 'autoload))))
+        (fmakunbound S))))
+#+END_SRC
+#+BEGIN_SRC emacs-lisp
+  ;; Ignore case
+  (setq read-file-name-completion-ignore-case t
+        read-buffer-completion-ignore-case t
+        ido-case-fold t
+        eshell-cmpl-ignore-case t)
+
+  ;; Keys translations
+  (define-key key-translation-map [?\C-h] [?\C-?]) ; translate 'C-h' to DEL
+  (define-key key-translation-map [?\C-?] [?\C-h]) ; translate DEL to 'C-h'.
+  (define-key key-translation-map [?\C-\M-h] [?\C-\M-?]) ; bind C-M-h to M-<backspace>
+  (define-key key-translation-map [?\C-\M-?] [?\C-\M-h]) ; bind M-<backspace> to C-M-h
+
+  (setq browse-url-chromium-arguments '("--enable-remote-extensions"))
+
+  (setq eshell-glob-case-insensitive t)
+
+  (setq epg-gpg-program "/usr/bin/gpg2")
+
+  (setq mouse-drag-copy-region t)
+  (setq save-interprogram-paste-before-kill t)
+
+  (setq backup-directory-alist `(("." . ,(concat temporary-file-directory "emacs1000/backup"))))
+
+  (global-auto-revert-mode 1)
+  (setq font-use-system-font t)
+
+  (defalias 'list-buffers 'ibuffer-other-window)
+
+  (add-hook 'emacs-lisp-mode-hook (lambda () (electric-pair-mode 1)))
+
+  (require 'ox-extra)
+  (ox-extras-activate '(ignore-headlines))
+
+  (load-library "find-lisp")
+
+  (require 'org-protocol)
+
+  (add-hook 'markdown-mode-hook #'flycheck-mode)
+  (add-hook 'text-mode-hook #'flycheck-mode)
+#+END_SRC
