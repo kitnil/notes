@@ -215,3 +215,29 @@ https://nixos.org/nix-dev/2010-April.txt.gz
   { mailman-web = [ ... ]; }
 
 #+END_SRC
+
+* Hydra
+
+example job
+#+BEGIN_SRC nix
+  let
+    pkgs = import <nixpkgs> { };
+
+    jobs = rec {
+
+      tarball = pkgs.releaseTools.sourceTarball {
+        name = "hello-tarball";
+        src = "mirror://gnu/hello/hello-2.10.tar.gz";
+        buildInputs = (with pkgs; [ bash ]);
+      };
+
+      build = { system ? builtins.currentSystem }:
+
+        let pkgs = import <nixpkgs> { inherit system; };
+        in pkgs.releaseTools.nixBuild {
+          name = "hello";
+          src = jobs.tarball;
+        };
+    };
+  in jobs
+#+END_SRC
