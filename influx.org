@@ -11,3 +11,20 @@
 
 - Drop series for host
   : drop series where "host" = 'workstation';
+
+* Configuration examples
+
+influxdb.conf
+#+begin_example
+bind-address = ":8088"
+
+[data]
+  dir = "/var/lib/influxdb/data"
+  engine = "tsm1"
+  wal-dir = "/var/lib/influxdb/wal"
+
+[meta]
+  dir = "/var/lib/influxdb/meta"
+  retention-autocreate = true
+  logging-enabled = true
+#+end_example
