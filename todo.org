@@ -862,4 +862,9 @@ https://jenkins.intr/job/ci/job/chef-workstation/job/master/5/console
   наверное не сложно пропустить
 #+end_example
 
-* TODO hello-terraform runc src/erza
+* TODO Clean up src and archive/src
+
+- [ ] hello-terraform
+- [ ] runc
+- [ ] src/erza
+- [ ] src/docker-tftp move to src/docker-wigust
