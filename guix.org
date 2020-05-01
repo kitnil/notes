@@ -2033,3 +2033,31 @@ and PULSE_CLIENT_CONFIG in their profile.
 		   %base-services))
 
    #+END_SRC
+
+
+* Iptables
+
+#+BEGIN_SRC scheme
+  (define-module (iptables ru)
+    #:use-module (guix packages)
+    #:use-module (guix gexp)
+    #:use-module (guix monads)
+    #:use-module (guix store)
+    #:use-module (gnu packages)
+    #:use-module (gnu packages linux)
+    #:use-module (guix utils)
+    #:use-module (srfi srfi-1)
+    #:use-module (ice-9 match))
+
+  ;; Rules to throttle HTTP connection redirections.  Taken from
+  ;; <https://www.opennet.ru/tips/2999_iptables_block_tor.shtml>.
+
+  (define %iptables-rst
+    "-A INPUT -p tcp --sport 443 --tcp-flags RST RST -j DROP")
+
+  (define %iptables-warning
+    "-A INPUT -p tcp --sport 80 -m string --string \"Location: http://warning.rt.ru\" --algo bm -j DROP")
+
+  (define %iptables-promo
+    "-A INPUT -p tcp --sport 80 -m string --string \"Location: http://promo.nw.rt.ru\" --algo bm -j DROP")
+#+END_SRC
