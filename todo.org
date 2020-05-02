@@ -876,4 +876,4 @@ https://jenkins.intr/job/ci/job/chef-workstation/job/master/5/console
 warning: stray .go files: ./gnu/packages/ham-radio.go ./gnu/packages/sdr.go
 
 * TODO autossh
-  service autossh-service-type
+  - [ ] service autossh-service-type
