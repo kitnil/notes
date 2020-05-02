@@ -29,6 +29,21 @@ https://gitlab.com/janneke/guix.git
 
 * Cheat sheet
 
+  - Clean up store with find
+#+BEGIN_SRC bash
+  find /gnu/store/ -maxdepth 1 \
+       -name '*-disk-image' \
+       -o -name '*-qemu-image' \
+       -o -name '*-os' \
+       -o -name '*-os-encrypted' \
+       -o -name '*-installation' \
+       -o -name "*.squashfs" \
+       -o -name "*-test" \
+       -o -name "*docker-pack.tar.gz" \
+       -o -name "*docker-image.tar.gz" | xargs -P1 -n60 guix gc -D
+
+#+END_SRC
+
   - Grub custom image
 #+BEGIN_SRC scheme
 
