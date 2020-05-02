@@ -2079,3 +2079,46 @@ and PULSE_CLIENT_CONFIG in their profile.
   (define %iptables-promo
     "-A INPUT -p tcp --sport 80 -m string --string \"Location: http://promo.nw.rt.ru\" --algo bm -j DROP")
 #+END_SRC
+
+* QEMU
+
+#+BEGIN_SRC diff
+  diff --git a/gnu/system/examples/vm-image.tmpl b/gnu/system/examples/vm-image.tmpl
+  index bcb2ba614c..5db38911a1 100644
+  --- a/gnu/system/examples/vm-image.tmpl
+  +++ b/gnu/system/examples/vm-image.tmpl
+  @@ -41,10 +41,15 @@ accounts.\x1b[0m
+                  (bootloader grub-bootloader)
+                  (target "/dev/vda")
+                  (terminal-outputs '(console))))
+  -  (file-systems (cons (file-system
+  -                        (mount-point "/")
+  -                        (device "/dev/vda1")
+  -                        (type "ext4"))
+  +  (file-systems (append (list (file-system
+  +                                (mount-point "/")
+  +                                (device "/dev/vda1")
+  +                                (type "ext4"))
+  +                              (file-system
+  +                                (mount-point "/mnt")
+  +                                (device "TAG_ssh")
+  +                                (type "9p")
+  +                                (options "trans=virtio")))
+                         %base-file-systems))
+ 
+     (users (cons (user-account
+  @@ -78,7 +83,10 @@ root ALL=(ALL) ALL
+                                (keyboard-layout keyboard-layout)))))
+ 
+                    ;; Uncomment the line below to add an SSH server.
+  -                 ;;(service openssh-service-type)
+  +                 (service openssh-service-type
+  +                          (openssh-configuration
+  +                           (authorized-keys
+  +                            `(("guest" ,(local-file "/home/oleg/.ssh/id_rsa.pub"))))))
+ 
+                    ;; Use the DHCP client service rather than NetworkManager.
+                    (service dhcp-client-service-type))
+#+END_SRC
+
+oleg@guixsd ~/src/guix-master$ /gnu/store/dl0w9s9mchyg0ggj62yzd2szw200nsb3-run-vm.sh -m 2048 -smp 2 -nic user,model=virtio-net-pci,hostfwd=tcp::10022-:22 -daemonize -virtfs local,path="$HOME/.ssh",security_model=none,mount_tag="TAG_ssh"
