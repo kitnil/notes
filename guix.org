@@ -29,7 +29,7 @@ https://gitlab.com/janneke/guix.git
 
 * Cheat sheet
 
-  - (set -ex; for pkg in $(awk '/define-public/ { print $NF }' /home/oleg/src/music/music/j-fla.scm); do ./pre-inst-env guix build -L ~/src/music --no-grafts -e "(@@ (music j-fla) $pkg)" --no-offload -S; done)
+  - (set -x; for pkg in $(awk '/define-public/ { print $NF }' /home/oleg/src/music/music/j-fla.scm); do echo -e "\n\n@ $pkg"; ./pre-inst-env guix build -L ~/src/music --no-grafts -e "(@@ (music j-fla) $pkg)" --no-offload -S; done) |& less +F
 
   - Clean up store with find
 #+BEGIN_SRC bash
