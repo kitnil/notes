@@ -870,3 +870,7 @@ https://jenkins.intr/job/ci/job/chef-workstation/job/master/5/console
 - [ ] src/erza
 - [ ] src/docker-tftp move to src/docker-wigust
 - [ ] Move git repositories out of archive/src/tmp
+
+* TODO Stray
+  SCHEDULED: <2020-05-03 Sun>
+warning: stray .go files: ./gnu/packages/ham-radio.go ./gnu/packages/sdr.go
