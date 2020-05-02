@@ -1,3 +1,18 @@
+- catch example
+#+BEGIN_SRC scheme
+  (define (ensure-ownership file uid gid)
+    (catch 'system-error
+      (lambda ()
+        (chown file uid gid))
+      (lambda args
+        (if (= EPERM (system-error-errno args))
+            (let ((st (lstat file)))
+              (or (and (= uid (stat:uid st)) (= gid (stat:gid st)))
+                  (apply throw args)))
+            (apply throw args)))))
+
+#+END_SRC
+
 - $HOME/.guix-profile/bin/guile -q -L /gnu/store/…-geiser-0.9-1.9581e61/share/geiser/guile/ -L ~/src/guix
 
 - python-on-guile 1.2.1
