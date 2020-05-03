@@ -15614,7 +15614,7 @@ This GitHub Integration syncs repository settings defined in .github/config.yml 
 ** [2017-05-18 Thu 15:26] [[https://github.com/icecrime/poule][icecrime/poule: A framework for GitHub automation]]
 #+BEGIN_QUOTE
 🐔 Poule is a tool that helps automating tasks on GitHub issues and pull requests. It allows
-implementing snippets of behavior (called [[moz-nullprincipal:{b027ab6a-1198-4655-ab70-e5b6ae750bb2}][operations]]) once and be able to invoke them in three
+implementing snippets of behavior (called moz-nullprincipal:{b027ab6a-1198-4655-ab70-e5b6ae750bb2}[operations]) once and be able to invoke them in three
 different contexts:
 
 As a one-time operation, on the entire stock of GitHub items.
