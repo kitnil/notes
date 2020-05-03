@@ -10,6 +10,7 @@
          :auto-sitemap t
          :sitemap-filename "index.org")))
 
+(setq enable-dir-local-variables nil)
 (setq make-backup-files nil)
 (setq geiser-active-implementations '(guile))
 (setq *scheme-use-r7rs* nil)
