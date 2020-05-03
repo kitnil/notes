@@ -1,6 +1,6 @@
 pipeline {
     agent {
-        label "master"
+        label "guixsd"
     }
     stages {
         stage("Invoking emacs") {
