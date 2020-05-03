@@ -15627,7 +15627,7 @@ The project was created to manage automation on the [[https://github.com/moby/mo
 #+BEGIN_QUOTE
 GitHub hooks to provide an encouraging atmosphere for new contributors.
 Docs for the highfive instance for servo/servo repository live [[https://github.com/servo/servo/wiki/Highfive][on the Servowiki]].
-[[moz-nullprincipal:{173cae3e-2321-468e-bc0a-16121cecd727}]]Design
+moz-nullprincipal:{173cae3e-2321-468e-bc0a-16121cecd727}]]Design
 Highfive is built as a modular, loosely-coupled set of handlers for Github
 API events. Each time an API event is processed, each handler is given the
 opportunity to respond to it, either by making direct API calls (such as
@@ -15643,7 +15643,7 @@ Here it is in action (run in an IPython Notebook):
 #+BEGIN_QUOTE
 Homu is a bot that integrates with GitHub and your favorite continuous
 integration service, such as [[http://buildbot.net/][Buildbot]] or [[https://travis-ci.org/][Travis CI]].
-[[moz-nullprincipal:{5b52583f-c667-410c-b75b-48365166c517}]]Why is it needed?
+moz-nullprincipal:{5b52583f-c667-410c-b75b-48365166c517}]]Why is it needed?
 Let's take Travis CI as an example. If you send a pull request to a repository,
 Travis CI instantly shows you the test result, which is great. However, after
 several other pull requests are merged into the master branch, your pull
@@ -15689,7 +15689,7 @@ github-snooze-button can operate in two modes: deployed to AWS Lambda, or pollin
 #+BEGIN_QUOTE
 A Tool/Toy for Non-Beginners
 by Lu Wang
-[[moz-nullprincipal:{1902e9fb-d31a-4b4f-9481-f027f1874caa}]][[http://coolwanglu.github.io/vim.js/emterpreter/vim.html][Try it online]]
+moz-nullprincipal:{1902e9fb-d31a-4b4f-9481-f027f1874caa}]][[http://coolwanglu.github.io/vim.js/emterpreter/vim.html][Try it online]]
 #+END_QUOTE
 ** [2017-05-18 Thu 15:28] [[https://github.com/CodeboxIDE/codebox][CodeboxIDE/codebox: Open source cloud & desktop IDE]]
 #+BEGIN_QUOTE
@@ -15738,23 +15738,23 @@ NOTE: Only run the modified sshd in a VM or container!  Ad-hoc edits were made t
 Search through your file system with SQL-esque queries.
 
 
-[[moz-nullprincipal:{044056b8-e45f-40e8-9a1c-f99de0ef6f2c}][Demo]]
-[[moz-nullprincipal:{044056b8-e45f-40e8-9a1c-f99de0ef6f2c}][Installation]]
-[[moz-nullprincipal:{044056b8-e45f-40e8-9a1c-f99de0ef6f2c}][Usage]]
+moz-nullprincipal:{044056b8-e45f-40e8-9a1c-f99de0ef6f2c}][Demo]]
+moz-nullprincipal:{044056b8-e45f-40e8-9a1c-f99de0ef6f2c}][Installation]]
+moz-nullprincipal:{044056b8-e45f-40e8-9a1c-f99de0ef6f2c}][Usage]]
 
-[[moz-nullprincipal:{044056b8-e45f-40e8-9a1c-f99de0ef6f2c}][Query]]
+moz-nullprincipal:{044056b8-e45f-40e8-9a1c-f99de0ef6f2c}][Query]]
 
-[[moz-nullprincipal:{044056b8-e45f-40e8-9a1c-f99de0ef6f2c}][Attribute]]
-[[moz-nullprincipal:{044056b8-e45f-40e8-9a1c-f99de0ef6f2c}][Source]]
-[[moz-nullprincipal:{044056b8-e45f-40e8-9a1c-f99de0ef6f2c}][Conditon]]
-
-
-[[moz-nullprincipal:{044056b8-e45f-40e8-9a1c-f99de0ef6f2c}][Examples]]
+moz-nullprincipal:{044056b8-e45f-40e8-9a1c-f99de0ef6f2c}][Attribute]]
+moz-nullprincipal:{044056b8-e45f-40e8-9a1c-f99de0ef6f2c}][Source]]
+moz-nullprincipal:{044056b8-e45f-40e8-9a1c-f99de0ef6f2c}][Conditon]]
 
 
-[[moz-nullprincipal:{044056b8-e45f-40e8-9a1c-f99de0ef6f2c}][Contribute]]
-[[moz-nullprincipal:{044056b8-e45f-40e8-9a1c-f99de0ef6f2c}][Credits]]
-[[moz-nullprincipal:{044056b8-e45f-40e8-9a1c-f99de0ef6f2c}][License]]
+moz-nullprincipal:{044056b8-e45f-40e8-9a1c-f99de0ef6f2c}][Examples]]
+
+
+moz-nullprincipal:{044056b8-e45f-40e8-9a1c-f99de0ef6f2c}][Contribute]]
+moz-nullprincipal:{044056b8-e45f-40e8-9a1c-f99de0ef6f2c}][Credits]]
+moz-nullprincipal:{044056b8-e45f-40e8-9a1c-f99de0ef6f2c}][License]]
 #+END_QUOTE
 ** [2017-05-18 Thu 15:31] [[https://github.com/aalhour/awesome-compilers][aalhour/awesome-compilers: A curated list of awesome resources on Compilers, Interpreters and Runtimes.]]
 #+BEGIN_QUOTE
@@ -15929,15 +15929,15 @@ telegram.ext submodule.
 #+BEGIN_QUOTE
 List of useful [[http://en.wikipedia.org/wiki/Quick_Look][Quick Look]] plugins for developers
 
-[[moz-nullprincipal:{cb07cd68-39f9-46ce-830a-63e61414d961}]]Install
-[[moz-nullprincipal:{cb07cd68-39f9-46ce-830a-63e61414d961}]]Using [[https://github.com/phinze/homebrew-cask][Homebrew Cask]]
+moz-nullprincipal:{cb07cd68-39f9-46ce-830a-63e61414d961}]]Install
+moz-nullprincipal:{cb07cd68-39f9-46ce-830a-63e61414d961}]]Using [[https://github.com/phinze/homebrew-cask][Homebrew Cask]]
 
 Run brew cask install <package>
 
-[[moz-nullprincipal:{cb07cd68-39f9-46ce-830a-63e61414d961}]]Install all
+moz-nullprincipal:{cb07cd68-39f9-46ce-830a-63e61414d961}]]Install all
 brew cask install qlcolorcode qlstephen qlmarkdown quicklook-json qlprettypatch quicklook-csv betterzipql qlimagesize webpquicklook suspicious-package quicklookase qlvideo
 
-[[moz-nullprincipal:{cb07cd68-39f9-46ce-830a-63e61414d961}]]Manually
+moz-nullprincipal:{cb07cd68-39f9-46ce-830a-63e61414d961}]]Manually
 
 Click "download manually"
 Move the downloaded .qlgenerator file to ~/Library/QuickLook
@@ -15972,9 +15972,9 @@ Atmosphere addresses the growing needs for highly configurable and customized co
 ** [2017-05-18 Thu 21:55] [[https://github.com/swcarpentry/swcarpentry][swcarpentry/swcarpentry: A meta-repository to help navigate the many lessons and repos of the Software Carpentry Community]]
 #+BEGIN_QUOTE
 This is a meta repository to help navigate the numerous repositories and lessons of the [[http://software-carpentry.org/][Software Carpentry]] community on GitHub.
-[[moz-nullprincipal:{5cae68b3-e53c-44ec-8297-9b9c5980685d}]]What is Software Carpentry
+moz-nullprincipal:{5cae68b3-e53c-44ec-8297-9b9c5980685d}]]What is Software Carpentry
 Software Carpentry is a community of volunteer instructors who teach short workshops and develop lessons which empower researchers of all disciplines to learn about and improve the ways in which they create software and collaborate.
-[[moz-nullprincipal:{5cae68b3-e53c-44ec-8297-9b9c5980685d}]]Code of Conduct
+moz-nullprincipal:{5cae68b3-e53c-44ec-8297-9b9c5980685d}]]Code of Conduct
 We are an open and inviting community with an actively enforced [[http://software-carpentry.org/conduct/][Code ofConduct]].  We value the involvement of
 everyone in this community - learners, instructors, hosts, developers, steering
 committee members and staff. We are committed to creating a friendly and
@@ -15985,7 +15985,7 @@ others.
 ** [2017-05-18 Thu 22:32] [[https://github.com/pengwynn/flint][pengwynn/flint: Check your project for common sources of contributor friction.]]
 #+BEGIN_QUOTE
 Check your project for common sources of contributor friction.
-[[moz-nullprincipal:{85069f9f-3d86-4fd0-b64e-65f0c94f180f}]]For the Non-Developer
+moz-nullprincipal:{85069f9f-3d86-4fd0-b64e-65f0c94f180f}]]For the Non-Developer
 Flint checks if your project's folder contains the proper files and structure to allow potential contributors to understand: 1) the project's goals, 2) how to contribute, 3) usage guidelines, and 4) how to install the project.
 #+END_QUOTE
 ** [2017-05-18 Thu 22:33] [[https://github.com/awslabs/chalice][awslabs/chalice: Python Serverless Microframework for AWS]]
@@ -16109,7 +16109,7 @@ To execute simply type "./run.py" in the program directory. Upon first launch a 
 #+BEGIN_QUOTE
 Gathering nix efforts in one repository.
 [[https://github.com/mozilla/nixpkgs-mozilla]]
-[[moz-nullprincipal:{4bffa356-863f-42f1-876a-41014c4b8d41}]]Current packages
+moz-nullprincipal:{4bffa356-863f-42f1-876a-41014c4b8d41}]]Current packages
 
 servo ([[https://github.com/servo/servo][https://github.com/servo/servo]])
 gecko ([[https://github.com/mozilla/gecko-dev][https://github.com/mozilla/gecko-dev]])
@@ -16165,7 +16165,7 @@ Anko Coroutines: utilities based on the [[https://github.com/Kotlin/kotlinx.coro
 #+END_QUOTE
 ** [2017-05-18 Thu 23:06] [[https://github.com/elastic/elasticsearch][elastic/elasticsearch: Open Source, Distributed, RESTful Search Engine]]
 #+BEGIN_QUOTE
-[[moz-nullprincipal:{d6e3fcc0-af07-4cd9-85f1-92dc2171665b}]][[https://www.elastic.co/products/elasticsearch][https://www.elastic.co/products/elasticsearch]]
+moz-nullprincipal:{d6e3fcc0-af07-4cd9-85f1-92dc2171665b}]][[https://www.elastic.co/products/elasticsearch][https://www.elastic.co/products/elasticsearch]]
 Elasticsearch is a distributed RESTful search engine built for the cloud. Features include:
 
         Distributed and Highly Available Search Engine.
@@ -16266,7 +16266,7 @@ it can be used in command-chains with | in your shell (UNIX philosophy!).
 ** [2017-05-19 Fri 18:23] [[https://github.com/peco/peco][peco/peco: Simplistic interactive filtering tool]]
 #+BEGIN_QUOTE
 NOTE: If you are viewing this on Github, this document refers to the state of peco in whatever current branch you are viewing, not necessarily the state of a currently released version. Please make sure to checkout the [[https://github.com/peco/peco/blob/master/Changes][Changes]] file for features and changes.
-This README is long and comprehensive. Use the [[moz-nullprincipal:{ebbe0c1f-324b-422d-9430-13ca231c55c1}][Table of Contents]] to navigate to the section that interests you. It has been placed at the bottom of the README file because of its length.
+This README is long and comprehensive. Use the moz-nullprincipal:{ebbe0c1f-324b-422d-9430-13ca231c55c1}][Table of Contents]] to navigate to the section that interests you. It has been placed at the bottom of the README file because of its length.
 #+END_QUOTE
 ** [2017-05-19 Fri 19:01] [[https://partedmagic.com/][PartedMagic - Partitioning, Cloning, Rescue, and Erasing.]]
 #+BEGIN_QUOTE
@@ -16318,7 +16318,7 @@ There is also [[http://orgmode.org/worg/org-contrib/org-protocol.html][org-proto
 #+END_QUOTE
 ** [2017-05-20 Sat 15:33] [[https://github.com/jhawthorn/fzy][jhawthorn/fzy: A better fuzzy finder]]
 #+BEGIN_QUOTE
-fzy is a fast, simple fuzzy text selector for the terminal with an advanced [[moz-nullprincipal:{be81b272-655e-4508-bb4c-60a71b07491f}][scoringalgorithm]].
+fzy is a fast, simple fuzzy text selector for the terminal with an advanced moz-nullprincipal:{be81b272-655e-4508-bb4c-60a71b07491f}][scoringalgorithm]].
 #+END_QUOTE
 ** [2017-05-20 Sat 15:45] [[https://github.com/lestcape/Gnome-Global-AppMenu][lestcape/Gnome-Global-AppMenu: A Gnome Shell extension to provide a global application menu.]]
 #+BEGIN_QUOTE
@@ -16352,7 +16352,7 @@ SHOW MORE
 ** [2017-05-20 Sat 18:05] [[https://en.wikipedia.org/wiki/StartCom][StartCom - Wikipedia]]
 #+BEGIN_QUOTE
 StartCom offers the free Class 1 [[https://en.wikipedia.org/wiki/X.509][X.509]] SSL certificate "StartSSL Free", which works for webservers ([[https://en.wikipedia.org/wiki/Transport_Layer_Security][SSL/TLS]]) as well as for [[https://en.wikipedia.org/wiki/E-mail_encryption][E-mail encryption]] ([[https://en.wikipedia.org/wiki/S/MIME][S/MIME]]). It also offers Class 2 and 3 certificates as well as [[https://en.wikipedia.org/wiki/Extended_Validation_Certificate][Extended Validation Certificates]], where a comprehensive validation (with costs) is mandatory.
-In June 2011, the company suffered a network breach which resulted in StartCom suspending issuance of digital certificates and related services for several weeks.[[moz-nullprincipal:{17cb2f76-e864-484a-b80e-3b89c5711c81}][{8}]] The attacker was unable to use this to issue certificates (and StartCom was the only breached provider, of six, where the attacker was blocked from doing so).[[moz-nullprincipal:{17cb2f76-e864-484a-b80e-3b89c5711c81}][{9}]]
+In June 2011, the company suffered a network breach which resulted in StartCom suspending issuance of digital certificates and related services for several weeks.moz-nullprincipal:{17cb2f76-e864-484a-b80e-3b89c5711c81}][{8}]] The attacker was unable to use this to issue certificates (and StartCom was the only breached provider, of six, where the attacker was blocked from doing so).moz-nullprincipal:{17cb2f76-e864-484a-b80e-3b89c5711c81}][{9}]]
 #+END_QUOTE
 ** [2017-05-20 Sat 19:11] [[https://docs.fedoraproject.org/en-US/Fedora/25/html-single/Installation_Guide/index.html#pxe-repositories][Installation Guide]]
 #+BEGIN_QUOTE
@@ -16513,84 +16513,84 @@ particular software installed.
 #+END_QUOTE
 ** [2017-05-21 Sun 14:28] [[https://wiki.postgresql.org/wiki/Developer_FAQ][Developer FAQ - PostgreSQL wiki]]
 #+BEGIN_QUOTE
-Contents [[[moz-nullprincipal:{cf00bbdf-516d-4d3a-8bbe-8ec4714070ac}][hide]]] 
+Contents [moz-nullprincipal:{cf00bbdf-516d-4d3a-8bbe-8ec4714070ac}][hide]]] 
 
-[[moz-nullprincipal:{cf00bbdf-516d-4d3a-8bbe-8ec4714070ac}][1 Getting Involved]]
+moz-nullprincipal:{cf00bbdf-516d-4d3a-8bbe-8ec4714070ac}][1 Getting Involved]]
 
-[[moz-nullprincipal:{cf00bbdf-516d-4d3a-8bbe-8ec4714070ac}][1.1 How do I get involved in PostgreSQL development?]]
-[[moz-nullprincipal:{cf00bbdf-516d-4d3a-8bbe-8ec4714070ac}][1.2 How do I download/update the current source tree?]]
-[[moz-nullprincipal:{cf00bbdf-516d-4d3a-8bbe-8ec4714070ac}][1.3 What development environment is required to develop code?]]
-[[moz-nullprincipal:{cf00bbdf-516d-4d3a-8bbe-8ec4714070ac}][1.4 What areas need work?]]
-[[moz-nullprincipal:{cf00bbdf-516d-4d3a-8bbe-8ec4714070ac}][1.5 How do I get involved in PostgreSQL web site development?]]
-
-
-[[moz-nullprincipal:{cf00bbdf-516d-4d3a-8bbe-8ec4714070ac}][2 Development Tools and Help]]
-
-[[moz-nullprincipal:{cf00bbdf-516d-4d3a-8bbe-8ec4714070ac}][2.1 How is the source code organized?]]
-[[moz-nullprincipal:{cf00bbdf-516d-4d3a-8bbe-8ec4714070ac}][2.2 What tools are available for developers?]]
-[[moz-nullprincipal:{cf00bbdf-516d-4d3a-8bbe-8ec4714070ac}][2.3 What's the formatting style used in PostgreSQL source code?]]
-[[moz-nullprincipal:{cf00bbdf-516d-4d3a-8bbe-8ec4714070ac}][2.4 Is there a diagram of the system catalogs available?]]
-[[moz-nullprincipal:{cf00bbdf-516d-4d3a-8bbe-8ec4714070ac}][2.5 What books are good for developers?]]
-[[moz-nullprincipal:{cf00bbdf-516d-4d3a-8bbe-8ec4714070ac}][2.6 What is configure all about?]]
-[[moz-nullprincipal:{cf00bbdf-516d-4d3a-8bbe-8ec4714070ac}][2.7 How do I add a new port?]]
-[[moz-nullprincipal:{cf00bbdf-516d-4d3a-8bbe-8ec4714070ac}][2.8 Why don't you use threads, raw devices, async-I/O, <insert your favorite wizz-bang feature here>?]]
-[[moz-nullprincipal:{cf00bbdf-516d-4d3a-8bbe-8ec4714070ac}][2.9 How are branches managed?]]
-[[moz-nullprincipal:{cf00bbdf-516d-4d3a-8bbe-8ec4714070ac}][2.10 Where can I get a copy of the SQL standards?]]
-[[moz-nullprincipal:{cf00bbdf-516d-4d3a-8bbe-8ec4714070ac}][2.11 Where can I get technical assistance?]]
+moz-nullprincipal:{cf00bbdf-516d-4d3a-8bbe-8ec4714070ac}][1.1 How do I get involved in PostgreSQL development?]]
+moz-nullprincipal:{cf00bbdf-516d-4d3a-8bbe-8ec4714070ac}][1.2 How do I download/update the current source tree?]]
+moz-nullprincipal:{cf00bbdf-516d-4d3a-8bbe-8ec4714070ac}][1.3 What development environment is required to develop code?]]
+moz-nullprincipal:{cf00bbdf-516d-4d3a-8bbe-8ec4714070ac}][1.4 What areas need work?]]
+moz-nullprincipal:{cf00bbdf-516d-4d3a-8bbe-8ec4714070ac}][1.5 How do I get involved in PostgreSQL web site development?]]
 
 
-[[moz-nullprincipal:{cf00bbdf-516d-4d3a-8bbe-8ec4714070ac}][3 Development Process]]
+moz-nullprincipal:{cf00bbdf-516d-4d3a-8bbe-8ec4714070ac}][2 Development Tools and Help]]
 
-[[moz-nullprincipal:{cf00bbdf-516d-4d3a-8bbe-8ec4714070ac}][3.1 What do I do after choosing an item to work on?]]
-[[moz-nullprincipal:{cf00bbdf-516d-4d3a-8bbe-8ec4714070ac}][3.2 How do I test my changes?]]
-
-[[moz-nullprincipal:{cf00bbdf-516d-4d3a-8bbe-8ec4714070ac}][3.2.1 Basic system testing]]
-[[moz-nullprincipal:{cf00bbdf-516d-4d3a-8bbe-8ec4714070ac}][3.2.2 Runtime environment]]
-[[moz-nullprincipal:{cf00bbdf-516d-4d3a-8bbe-8ec4714070ac}][3.2.3 Regression test suite]]
-[[moz-nullprincipal:{cf00bbdf-516d-4d3a-8bbe-8ec4714070ac}][3.2.4 Isolation tests]]
-[[moz-nullprincipal:{cf00bbdf-516d-4d3a-8bbe-8ec4714070ac}][3.2.5 Valgrind]]
-[[moz-nullprincipal:{cf00bbdf-516d-4d3a-8bbe-8ec4714070ac}][3.2.6 Other run time testing]]
-[[moz-nullprincipal:{cf00bbdf-516d-4d3a-8bbe-8ec4714070ac}][3.2.7 What about unit testing, static analysis, model checking...?]]
-
-
-[[moz-nullprincipal:{cf00bbdf-516d-4d3a-8bbe-8ec4714070ac}][3.3 I have developed a patch, what next?]]
-[[moz-nullprincipal:{cf00bbdf-516d-4d3a-8bbe-8ec4714070ac}][3.4 What happens to my patch once it is submitted?]]
-[[moz-nullprincipal:{cf00bbdf-516d-4d3a-8bbe-8ec4714070ac}][3.5 How do I help with reviewing patches?]]
-[[moz-nullprincipal:{cf00bbdf-516d-4d3a-8bbe-8ec4714070ac}][3.6 Do I need to sign a copyright assignment?]]
-[[moz-nullprincipal:{cf00bbdf-516d-4d3a-8bbe-8ec4714070ac}][3.7 May I add my own copyright notice where appropriate?]]
-[[moz-nullprincipal:{cf00bbdf-516d-4d3a-8bbe-8ec4714070ac}][3.8 Doesn't the PostgreSQL license itself require to keep the copyright notice intact?]]
+moz-nullprincipal:{cf00bbdf-516d-4d3a-8bbe-8ec4714070ac}][2.1 How is the source code organized?]]
+moz-nullprincipal:{cf00bbdf-516d-4d3a-8bbe-8ec4714070ac}][2.2 What tools are available for developers?]]
+moz-nullprincipal:{cf00bbdf-516d-4d3a-8bbe-8ec4714070ac}][2.3 What's the formatting style used in PostgreSQL source code?]]
+moz-nullprincipal:{cf00bbdf-516d-4d3a-8bbe-8ec4714070ac}][2.4 Is there a diagram of the system catalogs available?]]
+moz-nullprincipal:{cf00bbdf-516d-4d3a-8bbe-8ec4714070ac}][2.5 What books are good for developers?]]
+moz-nullprincipal:{cf00bbdf-516d-4d3a-8bbe-8ec4714070ac}][2.6 What is configure all about?]]
+moz-nullprincipal:{cf00bbdf-516d-4d3a-8bbe-8ec4714070ac}][2.7 How do I add a new port?]]
+moz-nullprincipal:{cf00bbdf-516d-4d3a-8bbe-8ec4714070ac}][2.8 Why don't you use threads, raw devices, async-I/O, <insert your favorite wizz-bang feature here>?]]
+moz-nullprincipal:{cf00bbdf-516d-4d3a-8bbe-8ec4714070ac}][2.9 How are branches managed?]]
+moz-nullprincipal:{cf00bbdf-516d-4d3a-8bbe-8ec4714070ac}][2.10 Where can I get a copy of the SQL standards?]]
+moz-nullprincipal:{cf00bbdf-516d-4d3a-8bbe-8ec4714070ac}][2.11 Where can I get technical assistance?]]
 
 
-[[moz-nullprincipal:{cf00bbdf-516d-4d3a-8bbe-8ec4714070ac}][4 Technical Questions]]
+moz-nullprincipal:{cf00bbdf-516d-4d3a-8bbe-8ec4714070ac}][3 Development Process]]
 
-[[moz-nullprincipal:{cf00bbdf-516d-4d3a-8bbe-8ec4714070ac}][4.1 How do I efficiently access information in system catalogs from the backend code?]]
-[[moz-nullprincipal:{cf00bbdf-516d-4d3a-8bbe-8ec4714070ac}][4.2 Why are table, column, type, function, view names sometimes referenced as Name or NameData, and sometimes as char *?]]
-[[moz-nullprincipal:{cf00bbdf-516d-4d3a-8bbe-8ec4714070ac}][4.3 Why do we use Node and List to make data structures?]]
-[[moz-nullprincipal:{cf00bbdf-516d-4d3a-8bbe-8ec4714070ac}][4.4 I just added a field to a structure. What else should I do?]]
-[[moz-nullprincipal:{cf00bbdf-516d-4d3a-8bbe-8ec4714070ac}][4.5 Why do we use palloc() and pfree() to allocate memory?]]
-[[moz-nullprincipal:{cf00bbdf-516d-4d3a-8bbe-8ec4714070ac}][4.6 What is ereport()?]]
-[[moz-nullprincipal:{cf00bbdf-516d-4d3a-8bbe-8ec4714070ac}][4.7 What is CommandCounterIncrement()?]]
-[[moz-nullprincipal:{cf00bbdf-516d-4d3a-8bbe-8ec4714070ac}][4.8 I need to do some changes to query parsing. Can you succinctly explain the parser files?]]
-[[moz-nullprincipal:{cf00bbdf-516d-4d3a-8bbe-8ec4714070ac}][4.9 I get shift/reduce conflict I don't know how to deal with]]
-[[moz-nullprincipal:{cf00bbdf-516d-4d3a-8bbe-8ec4714070ac}][4.10 How do I look at a query plan or parsed query?]]
-[[moz-nullprincipal:{cf00bbdf-516d-4d3a-8bbe-8ec4714070ac}][4.11 What debugging features are available?]]
+moz-nullprincipal:{cf00bbdf-516d-4d3a-8bbe-8ec4714070ac}][3.1 What do I do after choosing an item to work on?]]
+moz-nullprincipal:{cf00bbdf-516d-4d3a-8bbe-8ec4714070ac}][3.2 How do I test my changes?]]
 
-[[moz-nullprincipal:{cf00bbdf-516d-4d3a-8bbe-8ec4714070ac}][4.11.1 Compile-time]]
-[[moz-nullprincipal:{cf00bbdf-516d-4d3a-8bbe-8ec4714070ac}][4.11.2 Run-time]]
-[[moz-nullprincipal:{cf00bbdf-516d-4d3a-8bbe-8ec4714070ac}][4.11.3 gdb]]
-
-[[moz-nullprincipal:{cf00bbdf-516d-4d3a-8bbe-8ec4714070ac}][4.11.3.1 Tools]]
-[[moz-nullprincipal:{cf00bbdf-516d-4d3a-8bbe-8ec4714070ac}][4.11.3.2 core dumps]]
+moz-nullprincipal:{cf00bbdf-516d-4d3a-8bbe-8ec4714070ac}][3.2.1 Basic system testing]]
+moz-nullprincipal:{cf00bbdf-516d-4d3a-8bbe-8ec4714070ac}][3.2.2 Runtime environment]]
+moz-nullprincipal:{cf00bbdf-516d-4d3a-8bbe-8ec4714070ac}][3.2.3 Regression test suite]]
+moz-nullprincipal:{cf00bbdf-516d-4d3a-8bbe-8ec4714070ac}][3.2.4 Isolation tests]]
+moz-nullprincipal:{cf00bbdf-516d-4d3a-8bbe-8ec4714070ac}][3.2.5 Valgrind]]
+moz-nullprincipal:{cf00bbdf-516d-4d3a-8bbe-8ec4714070ac}][3.2.6 Other run time testing]]
+moz-nullprincipal:{cf00bbdf-516d-4d3a-8bbe-8ec4714070ac}][3.2.7 What about unit testing, static analysis, model checking...?]]
 
 
-[[moz-nullprincipal:{cf00bbdf-516d-4d3a-8bbe-8ec4714070ac}][4.11.4 Standalone backend]]
+moz-nullprincipal:{cf00bbdf-516d-4d3a-8bbe-8ec4714070ac}][3.3 I have developed a patch, what next?]]
+moz-nullprincipal:{cf00bbdf-516d-4d3a-8bbe-8ec4714070ac}][3.4 What happens to my patch once it is submitted?]]
+moz-nullprincipal:{cf00bbdf-516d-4d3a-8bbe-8ec4714070ac}][3.5 How do I help with reviewing patches?]]
+moz-nullprincipal:{cf00bbdf-516d-4d3a-8bbe-8ec4714070ac}][3.6 Do I need to sign a copyright assignment?]]
+moz-nullprincipal:{cf00bbdf-516d-4d3a-8bbe-8ec4714070ac}][3.7 May I add my own copyright notice where appropriate?]]
+moz-nullprincipal:{cf00bbdf-516d-4d3a-8bbe-8ec4714070ac}][3.8 Doesn't the PostgreSQL license itself require to keep the copyright notice intact?]]
 
 
-[[moz-nullprincipal:{cf00bbdf-516d-4d3a-8bbe-8ec4714070ac}][4.12 I broke initdb, how do I debug it?]]
-[[moz-nullprincipal:{cf00bbdf-516d-4d3a-8bbe-8ec4714070ac}][4.13 Profiling to analyse performance, CPU use]]
-[[moz-nullprincipal:{cf00bbdf-516d-4d3a-8bbe-8ec4714070ac}][4.14 Examining backend memory use]]
-[[moz-nullprincipal:{cf00bbdf-516d-4d3a-8bbe-8ec4714070ac}][4.15 gdb/MSVC tracepoints]]
-[[moz-nullprincipal:{cf00bbdf-516d-4d3a-8bbe-8ec4714070ac}][4.16 Why are my variables full of 0x7f bytes?]]
+moz-nullprincipal:{cf00bbdf-516d-4d3a-8bbe-8ec4714070ac}][4 Technical Questions]]
+
+moz-nullprincipal:{cf00bbdf-516d-4d3a-8bbe-8ec4714070ac}][4.1 How do I efficiently access information in system catalogs from the backend code?]]
+moz-nullprincipal:{cf00bbdf-516d-4d3a-8bbe-8ec4714070ac}][4.2 Why are table, column, type, function, view names sometimes referenced as Name or NameData, and sometimes as char *?]]
+moz-nullprincipal:{cf00bbdf-516d-4d3a-8bbe-8ec4714070ac}][4.3 Why do we use Node and List to make data structures?]]
+moz-nullprincipal:{cf00bbdf-516d-4d3a-8bbe-8ec4714070ac}][4.4 I just added a field to a structure. What else should I do?]]
+moz-nullprincipal:{cf00bbdf-516d-4d3a-8bbe-8ec4714070ac}][4.5 Why do we use palloc() and pfree() to allocate memory?]]
+moz-nullprincipal:{cf00bbdf-516d-4d3a-8bbe-8ec4714070ac}][4.6 What is ereport()?]]
+moz-nullprincipal:{cf00bbdf-516d-4d3a-8bbe-8ec4714070ac}][4.7 What is CommandCounterIncrement()?]]
+moz-nullprincipal:{cf00bbdf-516d-4d3a-8bbe-8ec4714070ac}][4.8 I need to do some changes to query parsing. Can you succinctly explain the parser files?]]
+moz-nullprincipal:{cf00bbdf-516d-4d3a-8bbe-8ec4714070ac}][4.9 I get shift/reduce conflict I don't know how to deal with]]
+moz-nullprincipal:{cf00bbdf-516d-4d3a-8bbe-8ec4714070ac}][4.10 How do I look at a query plan or parsed query?]]
+moz-nullprincipal:{cf00bbdf-516d-4d3a-8bbe-8ec4714070ac}][4.11 What debugging features are available?]]
+
+moz-nullprincipal:{cf00bbdf-516d-4d3a-8bbe-8ec4714070ac}][4.11.1 Compile-time]]
+moz-nullprincipal:{cf00bbdf-516d-4d3a-8bbe-8ec4714070ac}][4.11.2 Run-time]]
+moz-nullprincipal:{cf00bbdf-516d-4d3a-8bbe-8ec4714070ac}][4.11.3 gdb]]
+
+moz-nullprincipal:{cf00bbdf-516d-4d3a-8bbe-8ec4714070ac}][4.11.3.1 Tools]]
+moz-nullprincipal:{cf00bbdf-516d-4d3a-8bbe-8ec4714070ac}][4.11.3.2 core dumps]]
+
+
+moz-nullprincipal:{cf00bbdf-516d-4d3a-8bbe-8ec4714070ac}][4.11.4 Standalone backend]]
+
+
+moz-nullprincipal:{cf00bbdf-516d-4d3a-8bbe-8ec4714070ac}][4.12 I broke initdb, how do I debug it?]]
+moz-nullprincipal:{cf00bbdf-516d-4d3a-8bbe-8ec4714070ac}][4.13 Profiling to analyse performance, CPU use]]
+moz-nullprincipal:{cf00bbdf-516d-4d3a-8bbe-8ec4714070ac}][4.14 Examining backend memory use]]
+moz-nullprincipal:{cf00bbdf-516d-4d3a-8bbe-8ec4714070ac}][4.15 gdb/MSVC tracepoints]]
+moz-nullprincipal:{cf00bbdf-516d-4d3a-8bbe-8ec4714070ac}][4.16 Why are my variables full of 0x7f bytes?]]
 #+END_QUOTE
 ** [2017-05-21 Sun 14:29] [[https://github.com/anse1/emacs-libpq][anse1/emacs-libpq: An Emacs 25 module for accessing postgres via libpq.]]
 #+BEGIN_QUOTE
@@ -16802,7 +16802,7 @@ screen.colorDepth:screen.pixelDepth))+";u"+escape(document.URL)+
         
           [[https://en.anison.fm/catalog/1430/Kono+Subarashii+Sekai+ni+Shukufuku+o%21][Kono Subarashii Sekai ni Shukufuku o!]] —
           TOMORROW
-        [[moz-nullprincipal:{6ba632bb-aa4b-4782-bebb-813348a30ab0}][{[https://anison-a.akamaihd.net/images/onair_list.png}]]]
+        moz-nullprincipal:{6ba632bb-aa4b-4782-bebb-813348a30ab0}][{[https://anison-a.akamaihd.net/images/onair_list.png}]]]
         
           516
            listeners
@@ -16851,13 +16851,13 @@ Third-party reactors can plug into Twisted, and provide support for additional e
 #+END_QUOTE
 ** [2017-05-22 Mon 15:10] [[https://github.com/milohr/babe-qt][milohr/babe-qt: Tiny Qt Babe Music Player]]
 #+BEGIN_QUOTE
-[[moz-nullprincipal:{5758d3cc-d7bc-4f1c-97e6-b27072e50e8c}]]Babe is a tiny Qt music player to keep your favorite songs at hand
+moz-nullprincipal:{5758d3cc-d7bc-4f1c-97e6-b27072e50e8c}]]Babe is a tiny Qt music player to keep your favorite songs at hand
 [[https://milohr.github.io/BabeIt/][https://milohr.github.io/BabeIt/]]
 Babe will handle your whole music collection, letting you create custom playlists to organize your music.
 You can also filter your music by artist, title, album, genre, date and location. Babe let's you babe-mark your favorite YouTube music videos into your local collection by using the Chromium extension.
 Think of Babe as the playlist where all your favorite tracks at the moment are. And when needed you also have an integrated collection manager.
 (a previous unfinished gtk3 version is still in my repository and I plan to turn it into a simple version of Noise for the Pantheon desktop of elementaryOS)
-[[moz-nullprincipal:{5758d3cc-d7bc-4f1c-97e6-b27072e50e8c}]]you need to have [ taglib - knotification lib - ki18n lib - qt 5.8 libs ]installed in order to compile this app from source
+moz-nullprincipal:{5758d3cc-d7bc-4f1c-97e6-b27072e50e8c}]]you need to have [ taglib - knotification lib - ki18n lib - qt 5.8 libs ]installed in order to compile this app from source
 #+END_QUOTE
 ** [2017-05-22 Mon 15:11] [[https://github.com/yarrick/iodine][yarrick/iodine: Official git repo for iodine dns tunnel]]
 #+BEGIN_QUOTE
@@ -17102,7 +17102,7 @@ Block ISP ads on NXDOMAIN result (like 114so).
             
         
         
-            [[moz-nullprincipal:{e886d4d0-1e3e-4a4e-b118-89fc6dfd91bd}][Войти]]
+            moz-nullprincipal:{e886d4d0-1e3e-4a4e-b118-89fc6dfd91bd}][Войти]]
         
     
 
@@ -17111,7 +17111,7 @@ Block ISP ads on NXDOMAIN result (like 114so).
 
 
     ВойтиНе верный логин или пароль.
-    [[moz-nullprincipal:{e886d4d0-1e3e-4a4e-b118-89fc6dfd91bd}]]
+    moz-nullprincipal:{e886d4d0-1e3e-4a4e-b118-89fc6dfd91bd}]]
 
     
         
@@ -17318,8 +17318,8 @@ background-size: cover;
 
 
         
-                [[moz-nullprincipal:{e886d4d0-1e3e-4a4e-b118-89fc6dfd91bd}][Новинки]]
-                        [[moz-nullprincipal:{e886d4d0-1e3e-4a4e-b118-89fc6dfd91bd}][Скоро]]
+                moz-nullprincipal:{e886d4d0-1e3e-4a4e-b118-89fc6dfd91bd}][Новинки]]
+                        moz-nullprincipal:{e886d4d0-1e3e-4a4e-b118-89fc6dfd91bd}][Скоро]]
         
 
 
@@ -17445,8 +17445,8 @@ background-size: cover;
                 
                                         
                 
-        [[moz-nullprincipal:{e886d4d0-1e3e-4a4e-b118-89fc6dfd91bd}][Prev]][[moz-nullprincipal:{e886d4d0-1e3e-4a4e-b118-89fc6dfd91bd}][Next]]
-[[moz-nullprincipal:{e886d4d0-1e3e-4a4e-b118-89fc6dfd91bd}][1]][[moz-nullprincipal:{e886d4d0-1e3e-4a4e-b118-89fc6dfd91bd}][2]][[moz-nullprincipal:{e886d4d0-1e3e-4a4e-b118-89fc6dfd91bd}][3]][[moz-nullprincipal:{e886d4d0-1e3e-4a4e-b118-89fc6dfd91bd}][4]][[moz-nullprincipal:{e886d4d0-1e3e-4a4e-b118-89fc6dfd91bd}][5]][[moz-nullprincipal:{e886d4d0-1e3e-4a4e-b118-89fc6dfd91bd}][6]][[moz-nullprincipal:{e886d4d0-1e3e-4a4e-b118-89fc6dfd91bd}][7]][[moz-nullprincipal:{e886d4d0-1e3e-4a4e-b118-89fc6dfd91bd}][8]]
+        moz-nullprincipal:{e886d4d0-1e3e-4a4e-b118-89fc6dfd91bd}][Prev]]moz-nullprincipal:{e886d4d0-1e3e-4a4e-b118-89fc6dfd91bd}][Next]]
+moz-nullprincipal:{e886d4d0-1e3e-4a4e-b118-89fc6dfd91bd}][1]]moz-nullprincipal:{e886d4d0-1e3e-4a4e-b118-89fc6dfd91bd}][2]]moz-nullprincipal:{e886d4d0-1e3e-4a4e-b118-89fc6dfd91bd}][3]]moz-nullprincipal:{e886d4d0-1e3e-4a4e-b118-89fc6dfd91bd}][4]]moz-nullprincipal:{e886d4d0-1e3e-4a4e-b118-89fc6dfd91bd}][5]]moz-nullprincipal:{e886d4d0-1e3e-4a4e-b118-89fc6dfd91bd}][6]]moz-nullprincipal:{e886d4d0-1e3e-4a4e-b118-89fc6dfd91bd}][7]]moz-nullprincipal:{e886d4d0-1e3e-4a4e-b118-89fc6dfd91bd}][8]]
 
 
 
@@ -17488,18 +17488,18 @@ background-size: cover;
 
         
 
-        [[http://animeonline.su/]]Свеженькое в аниме:[[moz-nullprincipal:{e886d4d0-1e3e-4a4e-b118-89fc6dfd91bd}][Сюда]]  1/6  [[moz-nullprincipal:{e886d4d0-1e3e-4a4e-b118-89fc6dfd91bd}][Туда]]
+        [[http://animeonline.su/]]Свеженькое в аниме:moz-nullprincipal:{e886d4d0-1e3e-4a4e-b118-89fc6dfd91bd}][Сюда]]  1/6  moz-nullprincipal:{e886d4d0-1e3e-4a4e-b118-89fc6dfd91bd}][Туда]]
         
         [[http://animeonline.su/anime-sub/tv-sub/16106-berserk-2017-berserk-2017.html][Берсерк (2017)  Berserk (2017)   ]] 
         
                 
                 
                 88
-                [[moz-nullprincipal:{e886d4d0-1e3e-4a4e-b118-89fc6dfd91bd}][1]]
-                [[moz-nullprincipal:{e886d4d0-1e3e-4a4e-b118-89fc6dfd91bd}][2]]
-                [[moz-nullprincipal:{e886d4d0-1e3e-4a4e-b118-89fc6dfd91bd}][3]]
-                [[moz-nullprincipal:{e886d4d0-1e3e-4a4e-b118-89fc6dfd91bd}][4]]
-                [[moz-nullprincipal:{e886d4d0-1e3e-4a4e-b118-89fc6dfd91bd}][5]]
+                moz-nullprincipal:{e886d4d0-1e3e-4a4e-b118-89fc6dfd91bd}][1]]
+                moz-nullprincipal:{e886d4d0-1e3e-4a4e-b118-89fc6dfd91bd}][2]]
+                moz-nullprincipal:{e886d4d0-1e3e-4a4e-b118-89fc6dfd91bd}][3]]
+                moz-nullprincipal:{e886d4d0-1e3e-4a4e-b118-89fc6dfd91bd}][4]]
+                moz-nullprincipal:{e886d4d0-1e3e-4a4e-b118-89fc6dfd91bd}][5]]
                 
         
         
@@ -17569,11 +17569,11 @@ background-size: cover;
                 
                 
                 88
-                [[moz-nullprincipal:{e886d4d0-1e3e-4a4e-b118-89fc6dfd91bd}][1]]
-                [[moz-nullprincipal:{e886d4d0-1e3e-4a4e-b118-89fc6dfd91bd}][2]]
-                [[moz-nullprincipal:{e886d4d0-1e3e-4a4e-b118-89fc6dfd91bd}][3]]
-                [[moz-nullprincipal:{e886d4d0-1e3e-4a4e-b118-89fc6dfd91bd}][4]]
-                [[moz-nullprincipal:{e886d4d0-1e3e-4a4e-b118-89fc6dfd91bd}][5]]
+                moz-nullprincipal:{e886d4d0-1e3e-4a4e-b118-89fc6dfd91bd}][1]]
+                moz-nullprincipal:{e886d4d0-1e3e-4a4e-b118-89fc6dfd91bd}][2]]
+                moz-nullprincipal:{e886d4d0-1e3e-4a4e-b118-89fc6dfd91bd}][3]]
+                moz-nullprincipal:{e886d4d0-1e3e-4a4e-b118-89fc6dfd91bd}][4]]
+                moz-nullprincipal:{e886d4d0-1e3e-4a4e-b118-89fc6dfd91bd}][5]]
                 
         
         
@@ -17641,11 +17641,11 @@ ONE PIECE　ワンピース
                 
                 
                 110
-                [[moz-nullprincipal:{e886d4d0-1e3e-4a4e-b118-89fc6dfd91bd}][1]]
-                [[moz-nullprincipal:{e886d4d0-1e3e-4a4e-b118-89fc6dfd91bd}][2]]
-                [[moz-nullprincipal:{e886d4d0-1e3e-4a4e-b118-89fc6dfd91bd}][3]]
-                [[moz-nullprincipal:{e886d4d0-1e3e-4a4e-b118-89fc6dfd91bd}][4]]
-                [[moz-nullprincipal:{e886d4d0-1e3e-4a4e-b118-89fc6dfd91bd}][5]]
+                moz-nullprincipal:{e886d4d0-1e3e-4a4e-b118-89fc6dfd91bd}][1]]
+                moz-nullprincipal:{e886d4d0-1e3e-4a4e-b118-89fc6dfd91bd}][2]]
+                moz-nullprincipal:{e886d4d0-1e3e-4a4e-b118-89fc6dfd91bd}][3]]
+                moz-nullprincipal:{e886d4d0-1e3e-4a4e-b118-89fc6dfd91bd}][4]]
+                moz-nullprincipal:{e886d4d0-1e3e-4a4e-b118-89fc6dfd91bd}][5]]
                 
         
         
@@ -17710,11 +17710,11 @@ ONE PIECE　ワンピース
                 
                 
                 110
-                [[moz-nullprincipal:{e886d4d0-1e3e-4a4e-b118-89fc6dfd91bd}][1]]
-                [[moz-nullprincipal:{e886d4d0-1e3e-4a4e-b118-89fc6dfd91bd}][2]]
-                [[moz-nullprincipal:{e886d4d0-1e3e-4a4e-b118-89fc6dfd91bd}][3]]
-                [[moz-nullprincipal:{e886d4d0-1e3e-4a4e-b118-89fc6dfd91bd}][4]]
-                [[moz-nullprincipal:{e886d4d0-1e3e-4a4e-b118-89fc6dfd91bd}][5]]
+                moz-nullprincipal:{e886d4d0-1e3e-4a4e-b118-89fc6dfd91bd}][1]]
+                moz-nullprincipal:{e886d4d0-1e3e-4a4e-b118-89fc6dfd91bd}][2]]
+                moz-nullprincipal:{e886d4d0-1e3e-4a4e-b118-89fc6dfd91bd}][3]]
+                moz-nullprincipal:{e886d4d0-1e3e-4a4e-b118-89fc6dfd91bd}][4]]
+                moz-nullprincipal:{e886d4d0-1e3e-4a4e-b118-89fc6dfd91bd}][5]]
                 
         
         
@@ -17780,11 +17780,11 @@ ONE PIECE　ワンピース
                 
                 
                 88
-                [[moz-nullprincipal:{e886d4d0-1e3e-4a4e-b118-89fc6dfd91bd}][1]]
-                [[moz-nullprincipal:{e886d4d0-1e3e-4a4e-b118-89fc6dfd91bd}][2]]
-                [[moz-nullprincipal:{e886d4d0-1e3e-4a4e-b118-89fc6dfd91bd}][3]]
-                [[moz-nullprincipal:{e886d4d0-1e3e-4a4e-b118-89fc6dfd91bd}][4]]
-                [[moz-nullprincipal:{e886d4d0-1e3e-4a4e-b118-89fc6dfd91bd}][5]]
+                moz-nullprincipal:{e886d4d0-1e3e-4a4e-b118-89fc6dfd91bd}][1]]
+                moz-nullprincipal:{e886d4d0-1e3e-4a4e-b118-89fc6dfd91bd}][2]]
+                moz-nullprincipal:{e886d4d0-1e3e-4a4e-b118-89fc6dfd91bd}][3]]
+                moz-nullprincipal:{e886d4d0-1e3e-4a4e-b118-89fc6dfd91bd}][4]]
+                moz-nullprincipal:{e886d4d0-1e3e-4a4e-b118-89fc6dfd91bd}][5]]
                 
         
         
@@ -17842,7 +17842,7 @@ Danmachi: Sword Oratoria
          
 
 
-Смотреть остальное аниме: [[http://animeonline.su/anime-sub/tv-sub/][Сериалы]] [[http://animeonline.su/anime-sub/films-sub/][Фильмы]] [[http://animeonline.su/anime-sub/ova-sub/][OVA]] [[moz-nullprincipal:{e886d4d0-1e3e-4a4e-b118-89fc6dfd91bd}][Сюда]]  1/6  [[moz-nullprincipal:{e886d4d0-1e3e-4a4e-b118-89fc6dfd91bd}][Туда]]
+Смотреть остальное аниме: [[http://animeonline.su/anime-sub/tv-sub/][Сериалы]] [[http://animeonline.su/anime-sub/films-sub/][Фильмы]] [[http://animeonline.su/anime-sub/ova-sub/][OVA]] moz-nullprincipal:{e886d4d0-1e3e-4a4e-b118-89fc6dfd91bd}][Сюда]]  1/6  moz-nullprincipal:{e886d4d0-1e3e-4a4e-b118-89fc6dfd91bd}][Туда]]
         
                 .banner-1 {
                         position: relative;
@@ -17880,11 +17880,11 @@ Danmachi: Sword Oratoria
                         
                 
                 88
-                [[moz-nullprincipal:{e886d4d0-1e3e-4a4e-b118-89fc6dfd91bd}][1]]
-                [[moz-nullprincipal:{e886d4d0-1e3e-4a4e-b118-89fc6dfd91bd}][2]]
-                [[moz-nullprincipal:{e886d4d0-1e3e-4a4e-b118-89fc6dfd91bd}][3]]
-                [[moz-nullprincipal:{e886d4d0-1e3e-4a4e-b118-89fc6dfd91bd}][4]]
-                [[moz-nullprincipal:{e886d4d0-1e3e-4a4e-b118-89fc6dfd91bd}][5]]
+                moz-nullprincipal:{e886d4d0-1e3e-4a4e-b118-89fc6dfd91bd}][1]]
+                moz-nullprincipal:{e886d4d0-1e3e-4a4e-b118-89fc6dfd91bd}][2]]
+                moz-nullprincipal:{e886d4d0-1e3e-4a4e-b118-89fc6dfd91bd}][3]]
+                moz-nullprincipal:{e886d4d0-1e3e-4a4e-b118-89fc6dfd91bd}][4]]
+                moz-nullprincipal:{e886d4d0-1e3e-4a4e-b118-89fc6dfd91bd}][5]]
                 
         
                 
@@ -17907,18 +17907,18 @@ Danmachi: Sword Oratoria
                  
 
 
-[[http://animeonline.su/]]Новое в публикациях:[[moz-nullprincipal:{e886d4d0-1e3e-4a4e-b118-89fc6dfd91bd}][Сюда]]  1/6  [[moz-nullprincipal:{e886d4d0-1e3e-4a4e-b118-89fc6dfd91bd}][Туда]]
+[[http://animeonline.su/]]Новое в публикациях:moz-nullprincipal:{e886d4d0-1e3e-4a4e-b118-89fc6dfd91bd}][Сюда]]  1/6  moz-nullprincipal:{e886d4d0-1e3e-4a4e-b118-89fc6dfd91bd}][Туда]]
                 
                 [[http://animeonline.su/news/anime/anime-news/16128-nyaase-pala.html][Возможны задержки серий "nyaa.se"         ]] 
                 
                         
                 
                 88
-                [[moz-nullprincipal:{e886d4d0-1e3e-4a4e-b118-89fc6dfd91bd}][1]]
-                [[moz-nullprincipal:{e886d4d0-1e3e-4a4e-b118-89fc6dfd91bd}][2]]
-                [[moz-nullprincipal:{e886d4d0-1e3e-4a4e-b118-89fc6dfd91bd}][3]]
-                [[moz-nullprincipal:{e886d4d0-1e3e-4a4e-b118-89fc6dfd91bd}][4]]
-                [[moz-nullprincipal:{e886d4d0-1e3e-4a4e-b118-89fc6dfd91bd}][5]]
+                moz-nullprincipal:{e886d4d0-1e3e-4a4e-b118-89fc6dfd91bd}][1]]
+                moz-nullprincipal:{e886d4d0-1e3e-4a4e-b118-89fc6dfd91bd}][2]]
+                moz-nullprincipal:{e886d4d0-1e3e-4a4e-b118-89fc6dfd91bd}][3]]
+                moz-nullprincipal:{e886d4d0-1e3e-4a4e-b118-89fc6dfd91bd}][4]]
+                moz-nullprincipal:{e886d4d0-1e3e-4a4e-b118-89fc6dfd91bd}][5]]
                 
         
                 
@@ -17957,11 +17957,11 @@ Danmachi: Sword Oratoria
                         
                 
                 88
-                [[moz-nullprincipal:{e886d4d0-1e3e-4a4e-b118-89fc6dfd91bd}][1]]
-                [[moz-nullprincipal:{e886d4d0-1e3e-4a4e-b118-89fc6dfd91bd}][2]]
-                [[moz-nullprincipal:{e886d4d0-1e3e-4a4e-b118-89fc6dfd91bd}][3]]
-                [[moz-nullprincipal:{e886d4d0-1e3e-4a4e-b118-89fc6dfd91bd}][4]]
-                [[moz-nullprincipal:{e886d4d0-1e3e-4a4e-b118-89fc6dfd91bd}][5]]
+                moz-nullprincipal:{e886d4d0-1e3e-4a4e-b118-89fc6dfd91bd}][1]]
+                moz-nullprincipal:{e886d4d0-1e3e-4a4e-b118-89fc6dfd91bd}][2]]
+                moz-nullprincipal:{e886d4d0-1e3e-4a4e-b118-89fc6dfd91bd}][3]]
+                moz-nullprincipal:{e886d4d0-1e3e-4a4e-b118-89fc6dfd91bd}][4]]
+                moz-nullprincipal:{e886d4d0-1e3e-4a4e-b118-89fc6dfd91bd}][5]]
                 
         
                 
@@ -17998,11 +17998,11 @@ Danmachi: Sword Oratoria
                         
                 
                 88
-                [[moz-nullprincipal:{e886d4d0-1e3e-4a4e-b118-89fc6dfd91bd}][1]]
-                [[moz-nullprincipal:{e886d4d0-1e3e-4a4e-b118-89fc6dfd91bd}][2]]
-                [[moz-nullprincipal:{e886d4d0-1e3e-4a4e-b118-89fc6dfd91bd}][3]]
-                [[moz-nullprincipal:{e886d4d0-1e3e-4a4e-b118-89fc6dfd91bd}][4]]
-                [[moz-nullprincipal:{e886d4d0-1e3e-4a4e-b118-89fc6dfd91bd}][5]]
+                moz-nullprincipal:{e886d4d0-1e3e-4a4e-b118-89fc6dfd91bd}][1]]
+                moz-nullprincipal:{e886d4d0-1e3e-4a4e-b118-89fc6dfd91bd}][2]]
+                moz-nullprincipal:{e886d4d0-1e3e-4a4e-b118-89fc6dfd91bd}][3]]
+                moz-nullprincipal:{e886d4d0-1e3e-4a4e-b118-89fc6dfd91bd}][4]]
+                moz-nullprincipal:{e886d4d0-1e3e-4a4e-b118-89fc6dfd91bd}][5]]
                 
         
                 
@@ -18034,11 +18034,11 @@ Danmachi: Sword Oratoria
                         
                 
                 88
-                [[moz-nullprincipal:{e886d4d0-1e3e-4a4e-b118-89fc6dfd91bd}][1]]
-                [[moz-nullprincipal:{e886d4d0-1e3e-4a4e-b118-89fc6dfd91bd}][2]]
-                [[moz-nullprincipal:{e886d4d0-1e3e-4a4e-b118-89fc6dfd91bd}][3]]
-                [[moz-nullprincipal:{e886d4d0-1e3e-4a4e-b118-89fc6dfd91bd}][4]]
-                [[moz-nullprincipal:{e886d4d0-1e3e-4a4e-b118-89fc6dfd91bd}][5]]
+                moz-nullprincipal:{e886d4d0-1e3e-4a4e-b118-89fc6dfd91bd}][1]]
+                moz-nullprincipal:{e886d4d0-1e3e-4a4e-b118-89fc6dfd91bd}][2]]
+                moz-nullprincipal:{e886d4d0-1e3e-4a4e-b118-89fc6dfd91bd}][3]]
+                moz-nullprincipal:{e886d4d0-1e3e-4a4e-b118-89fc6dfd91bd}][4]]
+                moz-nullprincipal:{e886d4d0-1e3e-4a4e-b118-89fc6dfd91bd}][5]]
                 
         
                 
@@ -18070,11 +18070,11 @@ Danmachi: Sword Oratoria
                         
                 
                 88
-                [[moz-nullprincipal:{e886d4d0-1e3e-4a4e-b118-89fc6dfd91bd}][1]]
-                [[moz-nullprincipal:{e886d4d0-1e3e-4a4e-b118-89fc6dfd91bd}][2]]
-                [[moz-nullprincipal:{e886d4d0-1e3e-4a4e-b118-89fc6dfd91bd}][3]]
-                [[moz-nullprincipal:{e886d4d0-1e3e-4a4e-b118-89fc6dfd91bd}][4]]
-                [[moz-nullprincipal:{e886d4d0-1e3e-4a4e-b118-89fc6dfd91bd}][5]]
+                moz-nullprincipal:{e886d4d0-1e3e-4a4e-b118-89fc6dfd91bd}][1]]
+                moz-nullprincipal:{e886d4d0-1e3e-4a4e-b118-89fc6dfd91bd}][2]]
+                moz-nullprincipal:{e886d4d0-1e3e-4a4e-b118-89fc6dfd91bd}][3]]
+                moz-nullprincipal:{e886d4d0-1e3e-4a4e-b118-89fc6dfd91bd}][4]]
+                moz-nullprincipal:{e886d4d0-1e3e-4a4e-b118-89fc6dfd91bd}][5]]
                 
         
                 
@@ -18099,7 +18099,7 @@ Danmachi: Sword Oratoria
                  
 
 
-Еще публикации: [[http://animeonline.su/news/anime/][Новости аниме]]  [[http://animeonline.su/news/nippon/][Япония]]  [[http://animeonline.su/news/topics/][Рубрики]]  [[http://animeonline.su/news/video/][Видео]]  [[http://animeonline.su/news/podcasts/][Подкасты]]  [[moz-nullprincipal:{e886d4d0-1e3e-4a4e-b118-89fc6dfd91bd}][Сюда]]  1/6  [[moz-nullprincipal:{e886d4d0-1e3e-4a4e-b118-89fc6dfd91bd}][Туда]]
+Еще публикации: [[http://animeonline.su/news/anime/][Новости аниме]]  [[http://animeonline.su/news/nippon/][Япония]]  [[http://animeonline.su/news/topics/][Рубрики]]  [[http://animeonline.su/news/video/][Видео]]  [[http://animeonline.su/news/podcasts/][Подкасты]]  moz-nullprincipal:{e886d4d0-1e3e-4a4e-b118-89fc6dfd91bd}][Сюда]]  1/6  moz-nullprincipal:{e886d4d0-1e3e-4a4e-b118-89fc6dfd91bd}][Туда]]
         
         
         
@@ -18208,18 +18208,18 @@ been implemented in ChinaDNS-C.
 #+END_QUOTE
 ** [2017-05-22 Mon 15:48] [[https://github.com/ab77/netflix-proxy][ab77/netflix-proxy: Smart DNS proxy to watch Netflix]]
 #+BEGIN_QUOTE
-netflix-proxy is a smart DNS proxy to watch Netflix, Hulu[[moz-nullprincipal:{1f69d004-4416-4ecb-bfc5-fc5515d6be2d}][{n2}]], HBO Now and others out of region. It is deployed using Docker and uses BIND and SNIProxy[[moz-nullprincipal:{1f69d004-4416-4ecb-bfc5-fc5515d6be2d}][{n1}]] to provide proxy and DNS functionality. It helps to bypass[[moz-nullprincipal:{1f69d004-4416-4ecb-bfc5-fc5515d6be2d}][{n17}]] [[https://github.com/ab77/netflix-proxy/issues/153#issuecomment-211442063][The Great Firewall]] and works for blocked sites too, such as [[http://www.pornhub.com/][PornHub]]. And if you happen to live in Germany and want to [[https://en.wikipedia.org/wiki/Blocking_of_YouTube_videos_in_Germany][watch]] YouTube like the rest of the world does, just add googlevideo.com to zones.override file and run docker restart bind.
-However, this solution will only work with devices supporting Server Name Indication (SNI)[[moz-nullprincipal:{1f69d004-4416-4ecb-bfc5-fc5515d6be2d}][{n7}]] and only if they honour DNS settings. To test SNI, open a web browser on the device you are planning to watch content and go to [[https://sni.velox.ch/][https://sni.velox.ch/]].
+netflix-proxy is a smart DNS proxy to watch Netflix, Hulumoz-nullprincipal:{1f69d004-4416-4ecb-bfc5-fc5515d6be2d}][{n2}]], HBO Now and others out of region. It is deployed using Docker and uses BIND and SNIProxymoz-nullprincipal:{1f69d004-4416-4ecb-bfc5-fc5515d6be2d}][{n1}]] to provide proxy and DNS functionality. It helps to bypassmoz-nullprincipal:{1f69d004-4416-4ecb-bfc5-fc5515d6be2d}][{n17}]] [[https://github.com/ab77/netflix-proxy/issues/153#issuecomment-211442063][The Great Firewall]] and works for blocked sites too, such as [[http://www.pornhub.com/][PornHub]]. And if you happen to live in Germany and want to [[https://en.wikipedia.org/wiki/Blocking_of_YouTube_videos_in_Germany][watch]] YouTube like the rest of the world does, just add googlevideo.com to zones.override file and run docker restart bind.
+However, this solution will only work with devices supporting Server Name Indication (SNI)moz-nullprincipal:{1f69d004-4416-4ecb-bfc5-fc5515d6be2d}][{n7}]] and only if they honour DNS settings. To test SNI, open a web browser on the device you are planning to watch content and go to [[https://sni.velox.ch/][https://sni.velox.ch/]].
 Update March/2017: Raspberry Pi un-blocking solution [[http://unzoner.com/][http://unzoner.com/]] is live and works on all devices. You'll need to supply your own [[https://www.raspberrypi.org/][Raspberry Pi]] or compatible device. You could also [[http://eepurl.com/cb4rUv][subscribe]] to the mailing list and be notified of new fetures, updates, outages, etc..
 If you have access to a high-speed residential Internet connection and would like to have your ISP fees paid in exchange for hosting a small piece of kit, please email [[mailto:blackbox@unzoner.com][blackbox@unzoner.com]] your interest.
 Update June/2016: HE TunnelBroker IPv6 endpoints are now also blocked. Your best bet now is to find a small VPS which offers native IPv6 support and which isn't yet blocked by Netflix (and keep it quiet 😬). For other, non-IPv6 enabled services that honour DNS settings, this solution should still work fine.
-Update March/2016: IPv6 addresses of common hosting providers are now blocked in the same way as IPv4 (incl. Digital Ocean and Vultr). Netflix could be "tagging" accounts[[moz-nullprincipal:{1f69d004-4416-4ecb-bfc5-fc5515d6be2d}][{n11}]]. Netflix and BBC iPlayer are also perfoming geo checks on their media hosts, so the relevant media domains are now proxied by default[[moz-nullprincipal:{1f69d004-4416-4ecb-bfc5-fc5515d6be2d}][{n8}]]. Please note, that proxying media delivery could increase the bandwidth bill you get from your VPS provider. However, since most VPS providers offer 1TB per month inclusive with each server and most home ISPs don't offer anywhere near that amount, it should be a moot point in most situations.
+Update March/2016: IPv6 addresses of common hosting providers are now blocked in the same way as IPv4 (incl. Digital Ocean and Vultr). Netflix could be "tagging" accountsmoz-nullprincipal:{1f69d004-4416-4ecb-bfc5-fc5515d6be2d}][{n11}]]. Netflix and BBC iPlayer are also perfoming geo checks on their media hosts, so the relevant media domains are now proxied by defaultmoz-nullprincipal:{1f69d004-4416-4ecb-bfc5-fc5515d6be2d}][{n8}]]. Please note, that proxying media delivery could increase the bandwidth bill you get from your VPS provider. However, since most VPS providers offer 1TB per month inclusive with each server and most home ISPs don't offer anywhere near that amount, it should be a moot point in most situations.
 Please see the [[https://github.com/ab77/netflix-proxy/wiki][Wiki]] page(s) for some common troubleshooting ideas.
 #+END_QUOTE
 ** [2017-05-22 Mon 15:50] [[https://github.com/holmium/dnsforwarder][holmium/dnsforwarder: Just a DNS utility.]]
 #+BEGIN_QUOTE
 dnsforwarder
-[[moz-nullprincipal:{97650e5a-a1b9-4b06-8915-2ce95050ce58}]]一个简单的 DNS 转发代理
+moz-nullprincipal:{97650e5a-a1b9-4b06-8915-2ce95050ce58}]]一个简单的 DNS 转发代理
 主要功能：
 
 指定不同的域名使用不同的服务器（支持非标准端口）、不同的协议（UDP、TCP）进行查询；
@@ -18263,7 +18263,7 @@ and Gandi, or systems such as BIND and ActiveDirectory.
 #+END_QUOTE
 ** [2017-05-22 Mon 15:51] [[https://github.com/github/octodns][github/octodns: Tools for managing DNS across multiple providers]]
 #+BEGIN_QUOTE
-[[moz-nullprincipal:{90ba73a2-75a1-411c-bfba-fe7f8d85c24d}]]DNS as code - Tools for managing DNS across multiple providers
+moz-nullprincipal:{90ba73a2-75a1-411c-bfba-fe7f8d85c24d}]]DNS as code - Tools for managing DNS across multiple providers
 In the vein of [[https://en.wikipedia.org/wiki/Infrastructure_as_Code][infrastructure ascode]] OctoDNS provides a set of tools & patterns that make it easy to manage your DNS records across multiple providers. The resulting config can live in a repository and be [[https://github.com/blog/1241-deploying-at-github][deployed]] just like the rest of your code, maintaining a clear history and using your existing review & workflow.
 The architecture is pluggable and the tooling is flexible to make it applicable to a wide variety of use-cases. Effort has been made to make adding new providers as easy as possible. In the simple case that involves writing of a single class and a couple hundred lines of code, most of which is translating between the provider's schema and OctoDNS's. More on some of the ways we use it and how to go about extending it below and in the [[https://github.com/github/octodns/blob/master/docs][/docs directory]].
 It is similar to [[https://github.com/Netflix/denominator][Netflix/denominator]].
@@ -18290,15 +18290,15 @@ $ sudo python tcpdns.py -s
 ** [2017-05-22 Mon 16:09] [[https://github.com/FauxFaux/PuTTYTray][FauxFaux/PuTTYTray: A continuation of Barry Haanstra (haanstra.eu)'s PuTTYTray]]
 #+BEGIN_QUOTE
 This is [[https://puttytray.goeswhere.com/][PuTTYTray]], a fork of [[http://www.chiark.greenend.org.uk/%7Esgtatham/putty/][Simon Tatham's PuTTY]].
-[[moz-nullprincipal:{019aa565-afeb-46d3-96e1-ed106938fe72}]]Usage
+moz-nullprincipal:{019aa565-afeb-46d3-96e1-ed106938fe72}]]Usage
 See [[https://github.com/FauxFaux/PuTTYTray/wiki/Usage-instructions][usage instructions]] in our wiki.
-[[moz-nullprincipal:{019aa565-afeb-46d3-96e1-ed106938fe72}]]Documentation
+moz-nullprincipal:{019aa565-afeb-46d3-96e1-ed106938fe72}]]Documentation
 
 For a list of current features, see the [[https://puttytray.goeswhere.com/][PuTTYTray website]].
 The [[https://github.com/FauxFaux/PuTTYTray/wiki][github wiki]] has documentation for some of these features, and help for other things, including contributing.
 Please feel free to report any problems or feature requests using the [[https://github.com/FauxFaux/PuTTYTray/issues][github issue tracker]].
 
-[[moz-nullprincipal:{019aa565-afeb-46d3-96e1-ed106938fe72}]]Aims
+moz-nullprincipal:{019aa565-afeb-46d3-96e1-ed106938fe72}]]Aims
 There are a lot of patches against PuTTY that have never been submitted to, or have been rejected from, upstream.  PuTTYTray is collecting these, with the aim of eventually getting them merged back in.
 I'm looking to take ownership of any patches that are:
 
@@ -18310,15 +18310,15 @@ Not security related, or, at least, there not being any visible security risk.  
 ** [2017-05-22 Mon 16:09] [[https://github.com/FauxFaux/PuTTYTray][FauxFaux/PuTTYTray: A continuation of Barry Haanstra (haanstra.eu)'s PuTTYTray]]
 #+BEGIN_QUOTE
 This is [[https://puttytray.goeswhere.com/][PuTTYTray]], a fork of [[http://www.chiark.greenend.org.uk/%7Esgtatham/putty/][Simon Tatham's PuTTY]].
-[[moz-nullprincipal:{0efad8ee-d846-4389-8919-0a74cf10e05a}]]Usage
+moz-nullprincipal:{0efad8ee-d846-4389-8919-0a74cf10e05a}]]Usage
 See [[https://github.com/FauxFaux/PuTTYTray/wiki/Usage-instructions][usage instructions]] in our wiki.
-[[moz-nullprincipal:{0efad8ee-d846-4389-8919-0a74cf10e05a}]]Documentation
+moz-nullprincipal:{0efad8ee-d846-4389-8919-0a74cf10e05a}]]Documentation
 
 For a list of current features, see the [[https://puttytray.goeswhere.com/][PuTTYTray website]].
 The [[https://github.com/FauxFaux/PuTTYTray/wiki][github wiki]] has documentation for some of these features, and help for other things, including contributing.
 Please feel free to report any problems or feature requests using the [[https://github.com/FauxFaux/PuTTYTray/issues][github issue tracker]].
 
-[[moz-nullprincipal:{0efad8ee-d846-4389-8919-0a74cf10e05a}]]Aims
+moz-nullprincipal:{0efad8ee-d846-4389-8919-0a74cf10e05a}]]Aims
 There are a lot of patches against PuTTY that have never been submitted to, or have been rejected from, upstream.  PuTTYTray is collecting these, with the aim of eventually getting them merged back in.
 I'm looking to take ownership of any patches that are:
 
@@ -18376,7 +18376,7 @@ Visualize all diffs in your git repository.
 Stage file, hunks or even just parts of a hunk using a single key press.
 Write or amend your commit message and commit in the same buffer.
 
-Take a look at [[moz-nullprincipal:{728bbf3f-38d4-4fd5-acb5-807784394109}][TL;DR]] to start using it immediately.
+Take a look at moz-nullprincipal:{728bbf3f-38d4-4fd5-acb5-807784394109}][TL;DR]] to start using it immediately.
 #+END_QUOTE
 ** [2017-05-23 Tue 21:54] [[https://github.com/w0rp/ale][w0rp/ale: Asynchronous Lint Engine]]
 #+BEGIN_QUOTE
@@ -18385,13 +18385,13 @@ and Vim 8 while you edit your text files.
 #+END_QUOTE
 ** [2017-05-23 Tue 21:55] [[https://github.com/csswizardry/CSS-Guidelines][csswizardry/CSS-Guidelines: High-level guidelines for writing manageable, maintainable CSS]]
 #+BEGIN_QUOTE
-[[moz-nullprincipal:{9bc39794-f885-45e0-9ace-26c09b307a56}]]General CSS notes, advice and guidelines
+moz-nullprincipal:{9bc39794-f885-45e0-9ace-26c09b307a56}]]General CSS notes, advice and guidelines
 
 The guidelines have moved: [[http://cssguidelin.es/][cssguidelin.es]]
 #+END_QUOTE
 ** [2017-05-23 Tue 21:56] [[https://github.com/amix/vimrc][amix/vimrc: The ultimate Vim configuration: vimrc]]
 #+BEGIN_QUOTE
-[[moz-nullprincipal:{69765998-9382-48ae-b94a-ba1c81a073be}]]The Ultimate vimrc
+moz-nullprincipal:{69765998-9382-48ae-b94a-ba1c81a073be}]]The Ultimate vimrc
 Over the last 10 years, I have used and tweaked Vim. This configuration is the ultimate vimrc (or at least my version of it).
 There are two versions:
 
