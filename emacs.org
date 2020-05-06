@@ -1,3 +1,5 @@
+- [[https://github.com/xuchunyang/another-emacs-server][xuchunyang/another-emacs-server: An Emacs server built on HTTP and JSON]]
+
 - (add-to-list 'display-buffer-alist '("^\\*shell\\*" . (display-buffer-same-window)))
 
 - helm-locate-create-db-command
