@@ -875,27 +875,6 @@ https://jenkins.intr/job/ci/job/chef-workstation/job/master/5/console
   SCHEDULED: <2020-05-03 Sun>
 warning: stray .go files: ./gnu/packages/ham-radio.go ./gnu/packages/sdr.go
 
-* TODO telegram
-
-2020-05-07 12:53:32.147 WARN [telegram,,,] 1 --- [ main]
-ConfigServletWebServerApplicationContext : Exception encountered
-during context initialization - cancelling refresh attempt:
-org.springframework.beans.factory.UnsatisfiedDependencyException:
-Error creating bean with name 'botController' defined in URL
-[jar:file:/telegram-0.0.1-SNAPSHOT.jar!/BOOT-INF/classes!/ru/majordomo/hms/telegram/controller/BotController.class]:
-Unsatisfied dependency expressed through constructor parameter 0;
-nested exception is
-org.springframework.beans.factory.UnsatisfiedDependencyException:
-Error creating bean with name 'telegramBot' defined in URL
-[jar:file:/telegram-0.0.1-SNAPSHOT.jar!/BOOT-INF/classes!/ru/majordomo/hms/telegram/service/TelegramBot.class]:
-Unsatisfied dependency expressed through constructor parameter 0;
-nested exception is
-org.springframework.beans.factory.NoSuchBeanDefinitionException: No
-qualifying bean of type
-'ru.majordomo.hms.telegram.config.telegram.TelegramBotOptionsAutoConfiguration'
-available: expected at least 1 bean which qualifies as autowire
-candidate. Dependency annotations: {}
-
 * TODO meta slash
   SCHEDULED: <2020-05-09 Sat>
     (define-key map (kbd "M-/") 'vterm-send-meta-sl)
