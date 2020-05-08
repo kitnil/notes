@@ -897,4 +897,5 @@ available: expected at least 1 bean which qualifies as autowire
 candidate. Dependency annotations: {}
 
 * TODO meta slash
+  SCHEDULED: <2020-05-09 Sat>
     (define-key map (kbd "M-/") 'vterm-send-meta-sl)
