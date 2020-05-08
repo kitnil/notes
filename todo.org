@@ -878,3 +878,7 @@ warning: stray .go files: ./gnu/packages/ham-radio.go ./gnu/packages/sdr.go
 * TODO meta slash
   SCHEDULED: <2020-05-09 Sat>
     (define-key map (kbd "M-/") 'vterm-send-meta-sl)
+
+* TODO mode-line show zombies count
+  SCHEDULED: <2020-05-09 Sat>
+: ps axo pid=,stat= | awk '$2~/^Z/ { print $1 }'
