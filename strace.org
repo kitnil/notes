@@ -8,6 +8,8 @@
 
 - strace -e trace=\!mmap -o strace.log uname
 
+- strace -f $(pidof apache2 | sed 's/\([0-9]*\)/\-p \1/g')
+
 [pid 25301] accept4(6, {sa_family=AF_INET, sin_port=htons(58332), sin_addr=inet_addr("172.16.100.60")}, [16], SOCK_NONBLOCK) = 3
 [pid 25301] getsockname(3, {sa_family=AF_INET, sin_port=htons(80), sin_addr=inet_addr("172.16.103.34")}, [16]) = 0
 [pid 25301] recvfrom(3, "GET /hello.txt HTTP/1.1\r\nHost: php73.ru\r\nUser-Agent: curl/7.64.0\r\nAccept: */*\r\n\r\n", 1024, 0, NULL, NULL) = 81
