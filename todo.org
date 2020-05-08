@@ -895,3 +895,6 @@ qualifying bean of type
 'ru.majordomo.hms.telegram.config.telegram.TelegramBotOptionsAutoConfiguration'
 available: expected at least 1 bean which qualifies as autowire
 candidate. Dependency annotations: {}
+
+* TODO meta slash
+    (define-key map (kbd "M-/") 'vterm-send-meta-sl)
