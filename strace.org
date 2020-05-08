@@ -8,6 +8,8 @@
 
 - strace -e trace=\!mmap -o strace.log uname
 
+- (set -ex; pid=$(pidof firefox); strace -f -p ${pid// / -s })
+
 - strace -f $(pidof apache2 | sed 's/\([0-9]*\)/\-p \1/g')
 
 - strace -f -e trace=network firefox xakep.ru
