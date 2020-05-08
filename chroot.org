@@ -1,0 +1,43 @@
+Сажаем nginx в песочницу
+
+Безопасности много не бывает, поэтому никакая дополнительная ступень защиты лишней не будет. Достаточно популярный и простой в реализации механизм минимизации урона от взлома — запуск приложения в chroot. Процесс переноса приложения в песочницу не сложен, если воспользоваться strace и еще одной полезной утилитой — ldd (показывает список совместно используемых библиотек ELFфайла). Покажу на примере, как запускать в chroot популярный на просторах рунета веб-сервер nginx.
+
+Предположим, что nginx (последней на момент написания статьи версии 0.8.40) уже собран с параметрами по умолчанию и лежит в /usr/local. Список библиотек, которые нужны ему для работы:
+
+# ldd /usr/local/nginx/sbin/nginx
+linux-gate.so.1 => (0xb7789000)
+libcrypt.so.1 => /lib/i686/cmov/libcrypt.so.1
+(0xb7751000)
+libpcre.so.3 => /usr/lib/libpcre.so.3 (0xb7728000)
+libssl.so.0.9.8 => /usr/lib/i686/cmov/libssl.so.0.9.8 (0xb75d4000)
+libcrypto.so.0.9.8 => /usr/lib/i686/cmov/libcrypto.so.0.9.8 (0xb7cde000)
+libz.so.1 => /usr/lib/libz.so.1 (0xb75bf000)
+libc.so.6 => /lib/i686/cmov/libc.so.6 (0xb7464000)
+libdl.so.2 => /lib/i686/cmov/libdl.so.2 (0xb7460000)
+/lib/ld-linux.so.2 (0xb778a000)
+
+Переносим эти библиотеки в заранее созданное chroot-окружение (например, /chroot/nginx). Дальше, чтобы удостовериться в том, что у нас есть все необходимые библиотеки, нужно с помощью ldd посмотреть также зависимости скопированных библиотек. Кроме библиотек nginx'у нужны еще некоторые конфиги и логи. Получим список необходимых файлов:
+
+# strace -e trace=open /usr/local/nginx/sbin/nginx
+open("/etc/ld.so.cache", O_RDONLY) = 3
+open("/lib/i686/cmov/libcrypt.so.1", O_RDONLY) = 3
+open("/usr/lib/libpcre.so.3", O_RDONLY) = 3
+open("/usr/lib/i686/cmov/libssl.so.0.9.8", O_RDONLY)
+= 3
+open("/usr/lib/i686/cmov/libcrypto.so.0.9.8",
+O_RDONLY) = 3
+…
+open("/etc/passwd", O_RDONLY|O_CLOEXEC) = 4
+open("/etc/group", O_RDONLY|O_CLOEXEC) = 4
+open("/usr/local/nginx/logs/access.log", O_WRONLY|O_CREAT|O_APPEND|O_LARGEFILE, 0644) = 4
+open("/usr/local/nginx/logs/error.log", O_WRONLY|O_CREAT|O_APPEND|O_LARGEFILE, 0644) = 5
+
+Скопируем недостающие файлы, удаляя при этом из конфигов ненужную информацию (например, лишних пользователей из /etc/ passwd).
+
+Создадим в chroot-окружении /dev/null, необходимый для нормального функционирования nginx'а:
+
+# mknod /chroot/nginx/dev/null c 1 3
+
+Вот и все. Теперь запускать nginx в chroot можно следующим образом:
+
+# chroot /chroot/nginx/ /usr/local/nginx/sbin/nginx
