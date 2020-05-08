@@ -2,7 +2,7 @@
 * Script
 https://stackoverflow.com/questions/2482348/run-c-or-c-file-as-a-script
 #+BEGIN_SRC c
-  //usr/bin/env gcc -o $HOME/.cache/gcc/hello-world "$0" && exec $HOME/.cache/gcc/hello-world "$@"
+  //usr/bin/env gcc -Wall -std=c99 -o $HOME/.cache/gcc/hello-world "$0" && exec $HOME/.cache/gcc/hello-world "$@"
   #include <stdio.h>
 
   int main ()
