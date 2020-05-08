@@ -1,6 +1,12 @@
-strace -e open |& grep -v SIGAL
+* Cheat sheet
 
-strace -e trace=network
+- strace -e open |& grep -v SIGAL
+
+- strace -e trace=network
+
+- strace -e trace=open,access -o strace.log uname
+
+- strace -e trace=\!mmap -o strace.log uname
 
 [pid 25301] accept4(6, {sa_family=AF_INET, sin_port=htons(58332), sin_addr=inet_addr("172.16.100.60")}, [16], SOCK_NONBLOCK) = 3
 [pid 25301] getsockname(3, {sa_family=AF_INET, sin_port=htons(80), sin_addr=inet_addr("172.16.103.34")}, [16]) = 0
