@@ -884,4 +884,6 @@ warning: stray .go files: ./gnu/packages/ham-radio.go ./gnu/packages/sdr.go
 : ps axo pid=,stat= | awk '$2~/^Z/ { print $1 }'
 
 * TODO vnc
-5f97103337eabadd95f913eb9300225b0c2cad2b
+  SCHEDULED: <2020-05-10 Sun>
+- good 5f97103337eabadd95f913eb9300225b0c2cad2b
+- Use package-version instead of %tigervnc-VARIABLES
