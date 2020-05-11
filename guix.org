@@ -29,6 +29,9 @@ https://gitlab.com/janneke/guix.git
 
 * Cheat sheet
 
+  - oleg@guixsd ~/src/guix$ grep -R 'define-public zlib\|define-public luajit\|define-public ncurses\|define-public jsoncpp\|define-public libb64\|define-public openssl\|define-public curl\|define-public jq\|define-public gcc\|define-public elfutils\|define-public tbb\|define-public c-ares\|define-public protobuf\|define-public grpc' gnu/packages/*.scm | cut -d: -f 1 | sort -u | xargs grep define-module  | cut -d: -f 2 | awk '{ print $2, $3, $4 }'
+
+
   - (set -x; for pkg in $(awk '/define-public/ { print $NF }' /home/oleg/src/music/music/j-fla.scm); do echo -e "\n\n@ $pkg"; ./pre-inst-env guix build -L ~/src/music --no-grafts -e "(@@ (music j-fla) $pkg)" --no-offload -S; done) |& less +F
 
   - Clean up store with find
