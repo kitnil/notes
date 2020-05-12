@@ -876,3 +876,5 @@ warning: stray .go files: ./gnu/packages/ham-radio.go ./gnu/packages/sdr.go
   SCHEDULED: <2020-05-12 Tue>
 - good 5f97103337eabadd95f913eb9300225b0c2cad2b
 - Use package-version instead of %tigervnc-VARIABLES
+
+* TODO Add projectile-known-projects to wi-project-ivy
