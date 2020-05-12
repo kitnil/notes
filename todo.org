@@ -867,3 +867,17 @@ warning: stray .go files: ./gnu/packages/ham-radio.go ./gnu/packages/sdr.go
 
 * TODO Add exec -a "SERVICE_NAME-java" to HMS projects
   SCHEDULED: <2020-06-01 Mon>
+
+* TODO StumpWM update mode-line after font change
+#+begin_quote
+[14:51] <#stumpwm:mood> Do you enable your mode line before setting the font?
+[14:52] <#stumpwm:boeg> yes
+[14:52] <#stumpwm:boeg> should i swithc that?
+[14:52] <#stumpwm:boeg> swithc*
+[14:52] <#stumpwm:boeg> switch*
+[14:52] <#stumpwm:mood> Ah. Then it's created with the old font, setting the height, and won't update until the next redraw
+[14:52] <#stumpwm:mood> So yes
+[14:52] <#stumpwm:boeg> alright
+[14:52] <#stumpwm:boeg> yes, seems to work
+[14:53] <#stumpwm:mood> Perhaps we could make set-font fix that automatically
+#+end_quote
