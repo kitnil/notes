@@ -62,7 +62,7 @@
 : (export PAGER=cat; for repository in apache*; do echo $repository; for branch in $(git -C $repository branch --remotes | grep -v 'HEAD\|master'); do [[ $(git -C $repository log --format='%ae' $branch | head -1) == "go.wigust@gmail.com" ]] && git -C $repository push --delete origin ${branch#origin/}; done; done)
 * TODO [[https://grafana.com/docs/grafana/latest/administration/image_rendering/][Image rendering | Grafana Labs]]
   SCHEDULED: <2020-03-02 Mon>
-* TODO [https://github.com/abrander/phpfpmtop][abrander/phpfpmtop: A top like interface for PHP-FPM]
+* TODO [[https://github.com/abrander/phpfpmtop][abrander/phpfpmtop: A top like interface for PHP-FPM]]
   SCHEDULED: <2020-03-08 Sun>
 * TODO jenkins.majordomo.ru
   SCHEDULED: <2020-03-09 Mon>
