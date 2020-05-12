@@ -754,3 +754,8 @@ Here is my elfeed config on github: link.
 
   (provide 'init-elfeed)
 #+END_SRC
+
+* eshell
+
+- C-c C-r :: move to output
+- C-u C-c C-r :: move to output and narrow
