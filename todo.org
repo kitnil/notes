@@ -933,3 +933,13 @@ warning: stray .go files: ./gnu/packages/ham-radio.go ./gnu/packages/sdr.go
 17:41 https://gitlab.intr/webservices/webftp-new/-/settings/repository#js-protected-branches-settings
 https://github.com/jenkinsci/gitlab-plugin/issues/883
 https://gitlab.com/gitlab-org/gitlab/-/issues/210389
+
+* TODO guix deploy
+  SCHEDULED: <2020-05-20 Wed>
+#+BEGIN_SRC groovy
+
+                          // Build system and manifest with current Guix
+                          sh (["guix system build $WORKSPACE/dotfiles/guixsd/${hostname}.scm",
+                               "guix environment --manifest=$WORKSPACE/dotfiles/manifests/${hostname}.scm -- sh -c exit"].join("; "))
+
+#+END_SRC
