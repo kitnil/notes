@@ -47,7 +47,7 @@
   SCHEDULED: <2020-12-13 Sun>
 * TODO debian9 $osVariant   = "debian8"; /ssh:kvm15.intr|sudo:root@kvm15.intr:/usr/local/repo/lib/kvm.pm
   SCHEDULED: <2020-02-05 Wed>
-* TODO [[/home/oleg/majordomo/mail/freshclam/Jenkinsfile][Move Docker Swarm deploy to shared libs]]
+* DONE [[/home/oleg/majordomo/mail/freshclam/Jenkinsfile][Move Docker Swarm deploy to shared libs]]
   SCHEDULED: <2020-02-24 Mon>
 * TODO [[https://github.com/NixOS/nix/issues/2208][nix-shell dependencies can be garbage collected any time now / persistent nix-shell envs ?? Issue #2208 ?? NixOS/nix]]
   SCHEDULED: <2020-03-09 Mon>
