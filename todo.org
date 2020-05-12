@@ -148,10 +148,6 @@ https://gitlab.intr/office/ssl-certificates/-/merge_requests/2
 * TODO Add note about NIX CHANNEL
   SCHEDULED: <2020-03-31 Tue>
 
-* TODO filestash
-  SCHEDULED: <2020-04-01 Wed>
-root@web99:~# docker run -it --network=host --rm --name filestash filestash-dev:4 bash
-
 * TODO when jenkins deploy to swarm and commit has't changed will be the unstash error
   SCHEDULED: <2020-04-26 Sun>
 Олег Пыхалов (pyhalov at majordomo.ru)￼  14:38
