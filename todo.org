@@ -162,7 +162,7 @@ https://gitlab.intr/office/ssl-certificates/-/merge_requests/2
 (тестового). В общем конкретно на dh2-mr не обращать внимания до тех
 пор, пока не сообщим о вводе нового гластера.
 
-* TODO Add script for git clone
+* TODO Add Bash script for git clone
   SCHEDULED: <2020-04-05 Sun>
 : (f() { xterm -e "set -ex; cd $HOME/archive/src; git clone $1"; }; f "https://github.com/domtronn/all-the-icons.el")
 
