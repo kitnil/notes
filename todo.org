@@ -798,7 +798,7 @@ https://jenkins.intr/job/ci/job/chef-workstation/job/master/5/console
   [[/ssh:web28.intr|sudo:root@web28.intr:/etc/nginx/sites-available/598c3a79bfae8f41261b26b1.conf]]
   [[https://cerberus.intr/index.php/profiles/ticket/FS-75156-842/message/14885050]]
 
-* TODO [[https://cerberus.intr/index.php/profiles/ticket/12133642-U-pierieniesiennykh-akkauntov-HMS-mieniaietsia-vladieliets-loghov][[#YW-56173-324] У перенесенных аккаунтов HMS меняется владелец логов - Cerberus Helpdesk :: Majordomo.ru mail]]
+* TODO [[#YW-56173-324][У перенесенных аккаунтов HMS меняется владелец логов - Cerberus Helpdesk :: Majordomo.ru mail]]
   SCHEDULED: <2020-04-30 Thu>
 [[file:~/majordomo/hms/taskexecutor/src/python/taskexecutor/resprocessor.py::os.makedirs(os.path.join(self.resource.homeDir,%20"logs"),%20mode=0o755,%20exist_ok=True)]]
 [[file:~/majordomo/hms/taskexecutor/src/python/taskexecutor/sysservice.py::os.chown(home_dir,%20uid,%20uid)]]
