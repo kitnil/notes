@@ -94,7 +94,7 @@
   #+END_SRC
 * TODO jenkins web32 linux4.4 fix smartctl
   SCHEDULED: <2020-03-26 Thu>
-* TODO web36 php53-hardened
+* TODO Add .s6-svscan/finish and .s6-svscan/crash
   SCHEDULED: <2020-03-23 Mon>
 #+begin_example
   root@web36 ~ # docker logs apache2-php53-hardened
