@@ -925,3 +925,11 @@ warning: stray .go files: ./gnu/packages/ham-radio.go ./gnu/packages/sdr.go
          at java.lang.Thread.run(Thread.java:748)
 #+end_example
 
+Понял почему 403 отдается на запросы с jenkins в gitlab - так происходит если включена защита у бранчи в gitlab (options -> repository) от force push'a
+
+17:39 gitlab upstream в курсе, наверное починят
+17:40 если защиту выключаешь, то все работает
+17:40 (unprotect)
+17:41 https://gitlab.intr/webservices/webftp-new/-/settings/repository#js-protected-branches-settings
+https://github.com/jenkinsci/gitlab-plugin/issues/883
+https://gitlab.com/gitlab-org/gitlab/-/issues/210389
