@@ -64,9 +64,6 @@
   SCHEDULED: <2020-03-02 Mon>
 * TODO [[https://github.com/abrander/phpfpmtop][abrander/phpfpmtop: A top like interface for PHP-FPM]]
   SCHEDULED: <2020-03-08 Sun>
-* DONE jenkins.majordomo.ru
-  SCHEDULED: <2020-03-09 Mon>
-  : curl 'https://jenkins.majordomo.ru/job/webservices/job/apache2-php73/job/master/35/artifact/result-test/coverage-data/vm-state-dockerNode/wordpress.png'
 * TODO Install [[https://github.com/raviqqe/muffet][raviqqe/muffet: Fast website link checker in Go]]
   SCHEDULED: <2020-03-11 Wed>
 * TODO split git commit to a separate stage in awesome
