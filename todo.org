@@ -884,6 +884,7 @@ warning: stray .go files: ./gnu/packages/ham-radio.go ./gnu/packages/sdr.go
 #+end_quote
 
 * TODO jenkins -> gitlab 403
+[[https://gitlab.com/gitlab-org/gitlab/-/issues/210389][#210389]]
 #+begin_example
   avax.ws.rs.ClientErrorException: HTTP 403 Forbidden
          at org.jboss.resteasy.client.jaxrs.internal.ClientInvocation.handleErrorStatus(ClientInvocation.java:216)
@@ -923,3 +924,4 @@ warning: stray .go files: ./gnu/packages/ham-radio.go ./gnu/packages/sdr.go
          at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
          at java.lang.Thread.run(Thread.java:748)
 #+end_example
+
