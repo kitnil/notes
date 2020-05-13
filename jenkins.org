@@ -1,4 +1,8 @@
 
+* Scripted pipeline
+** Mark as skipped
+   import org.jenkinsci.plugins.pipeline.modeldefinition.Utils
+   Utils.markStageSkippedForConditional(STAGE_NAME)
 * NGINX
 
 #+BEGIN_SRC nginx
