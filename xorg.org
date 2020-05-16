@@ -1,3 +1,6 @@
+- [[https://github.com/hanschen/ksuperkey][ksuperkey]]
+  Linux utility that allows you to use the Super key both to open the start menu and as a modifier key in keyboard shortcuts
+
 - swap caps
   : setxkbmap -option ctrl:swapcaps
 
