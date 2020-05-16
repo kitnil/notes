@@ -147,19 +147,11 @@
       Luckily there is a hudson.util.Secret.decrypt() function which can be used for this, so:
 
       In Jenkins, go to: /script page.
-
-      Run the following command:
-
-      println(hudson.util.Secret.decrypt("{XXX=}"))
-
-      or:
-
-      println(hudson.util.Secret.fromString("{XXX=}").getPlainText())
-
+      Run the following command: println(hudson.util.Secret.decrypt("{XXX=}"))
+      or: println(hudson.util.Secret.fromString("{XXX=}").getPlainText())
       where {XXX=} is your encrypted password. This will print the plain password.
 
       To do opposite, run:
-
       println(hudson.util.Secret.fromString("some_text").getEncryptedValue())
     #+end_example
 
