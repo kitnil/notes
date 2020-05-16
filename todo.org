@@ -946,3 +946,7 @@ https://gitlab.com/gitlab-org/gitlab/-/issues/210389
 
 * TODO Fix ci-chef-workstation jenkins job
   SCHEDULED: <2020-05-18 Mon>
+
+* TODO TRAMP
+  SCHEDULED: <2020-05-17 Sun>
+  (find-file "/ssh:web33.intr|sudo:web33.intr|docker:apache2-php73-unsafe:")
