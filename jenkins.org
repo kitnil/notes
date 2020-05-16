@@ -142,7 +142,7 @@
       }
     #+end_example
 
-  - [https://devops.stackexchange.com/questions/2191/how-to-decrypt-jenkins-passwords-from-credentials-xml][encryption - How to decrypt Jenkins passwords from credentials.xml? - DevOps Stack Exchange]
+  - [[https://devops.stackexchange.com/questions/2191/how-to-decrypt-jenkins-passwords-from-credentials-xml][encryption - How to decrypt Jenkins passwords from credentials.xml? - DevOps Stack Exchange]]
     #+begin_example
       Luckily there is a hudson.util.Secret.decrypt() function which can be used for this, so:
 
