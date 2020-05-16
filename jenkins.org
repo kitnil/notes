@@ -208,7 +208,7 @@
   - [[https://dzone.com/refcardz/continuous-delivery-with-jenkins-workflow?chapter=12][Continuous Delivery With Jenkins Workflow - DZone - Refcardz]]
 
   - Post build status to GitLab
-    https://github.com/jenkinsci/gitlab-plugin/issues/462
+    [[https://github.com/jenkinsci/gitlab-plugin/issues/462]]
     #+BEGIN_SRC groovy
       post {
           success {
