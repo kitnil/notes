@@ -202,13 +202,10 @@
       }
     #+END_SRC
 
-  - [https://docs.openstack.org/infra/jenkins-job-builder/project_workflow_multibranch.html?highlight=suppress][Multibranch Pipeline Project — jenkins-job-builder 3.2.1.dev2 documentation]
-
-  - [https://github.com/jenkinsci][Jenkins]
-
-  - [https://jenkins.io/solutions/pipeline/][Pipeline as Code with Jenkins]
-
-  - [https://dzone.com/refcardz/continuous-delivery-with-jenkins-workflow?chapter=12][Continuous Delivery With Jenkins Workflow - DZone - Refcardz]
+  - [[https://docs.openstack.org/infra/jenkins-job-builder/project_workflow_multibranch.html?highlight=suppress][Multibranch Pipeline Project — jenkins-job-builder 3.2.1.dev2 documentation]]
+  - [[https://github.com/jenkinsci][Jenkins]]
+  - [[https://jenkins.io/solutions/pipeline/][Pipeline as Code with Jenkins]]
+  - [[https://dzone.com/refcardz/continuous-delivery-with-jenkins-workflow?chapter=12][Continuous Delivery With Jenkins Workflow - DZone - Refcardz]]
 
   - Post build status to GitLab
     https://github.com/jenkinsci/gitlab-plugin/issues/462
