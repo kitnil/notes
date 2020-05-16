@@ -135,7 +135,7 @@
       }
     #+END_SRC
 
-  - declarative libraries
+  - Declarative libraries
     #+begin_example
       libraries {
         lib('f@1')
