@@ -25,7 +25,7 @@
 : git rerere forget index.html
 
 : rm -rf .git/rr-cache
-or removed automatically if older than rerere.rerereResolved
+or removed automatically if older than rerere.rerereResolved (60 days by default)
 
 * Misc
 
