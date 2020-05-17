@@ -40,7 +40,7 @@
 
 * Cheatsheet
 
-  - [https://github.com/begriffs/gitftp][begriffs/gitftp: Browse git over anonymous FTP]
+  - [[https://github.com/begriffs/gitftp][begriffs/gitftp: Browse git over anonymous FTP]]
 
   - Ignore certificate
     : git -c http.sslVerify=false
