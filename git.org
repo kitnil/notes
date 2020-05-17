@@ -24,6 +24,8 @@
 
 : git rerere forget index.html
 
+: rm -rf .git/rr-cache
+
 * Misc
 
 - [[https://github.com/rgburke/grv][rgburke/grv: GRV is a terminal interface for viewing git repositories]]
