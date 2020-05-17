@@ -40,6 +40,8 @@
 
 * Cheatsheet
 
+  - git reset --hard @~ (@~ is the same as HEAD~)
+
   - [[https://github.com/begriffs/gitftp][begriffs/gitftp: Browse git over anonymous FTP]]
 
   - Ignore certificate
