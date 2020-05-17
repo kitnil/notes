@@ -50,7 +50,7 @@ rerere-train.sh [COMMIT][--all]
 
 * Cheatsheet
 
-  - reflog :: feature@{1}
+  - reflog - feature@{1}
 
   - git reset --hard @~ (@~ is the same as HEAD~)
 
