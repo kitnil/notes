@@ -19,6 +19,8 @@
 
 [[https://www.youtube.com/watch?v=cuk3LQAG2PE][12.1 Скринкаст по Git – ReReRe – Авторазрешение повторных конфликтов - YouTube]]
 
+: git config rerere.enabled true
+
 * Misc
 
 - [[https://github.com/rgburke/grv][rgburke/grv: GRV is a terminal interface for viewing git repositories]]
