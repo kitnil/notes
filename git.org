@@ -22,6 +22,8 @@
 : git config rerere.enabled true
 : git config rerere.autoUpdate true
 
+: git rerere forget index.html
+
 * Misc
 
 - [[https://github.com/rgburke/grv][rgburke/grv: GRV is a terminal interface for viewing git repositories]]
