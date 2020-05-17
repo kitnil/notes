@@ -17,6 +17,8 @@
 [19:02] <#guix:mbakke> even with git rerere you need to 'git merge --abort' and run a new 'git merge' if the branch has moved
 #+end_quote
 
+[[https://www.youtube.com/watch?v=cuk3LQAG2PE][12.1 Скринкаст по Git – ReReRe – Авторазрешение повторных конфликтов - YouTube]]
+
 * Misc
 
 - [[https://github.com/rgburke/grv][rgburke/grv: GRV is a terminal interface for viewing git repositories]]
