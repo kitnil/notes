@@ -29,7 +29,7 @@ or removed automatically
 - if older than rerere.rerereResolved (60 days by default)
 - rerere.rerereUnresolved (15 days by default)
 
-rerere-train.sh
+rerere-train.sh [COMMIT][--all]
 
 * Misc
 
