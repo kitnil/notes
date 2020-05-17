@@ -958,3 +958,36 @@ https://gitlab.com/gitlab-org/gitlab/-/issues/210389
   - UC4RssVemaZlrfdWbp1Wx :: Стримы Тангара
   - UCVls1GmFKf6WlTraIb_IaJg :: DistroTube
   - UCK-d8Z08ElRz0zgKiAla5fg :: Tangar streams
+
+* TODO reevefresh
+#+begin_example
+  2020-05-17T16:41:30.926446285Z TWITCH_LIVE: tsoding
+  2020-05-17T16:41:30.926448830Z TWITCH_LIVE: rwxrob
+  2020-05-17T16:41:30.926451435Z Online users: tsoding,rwxrob
+  2020-05-17T16:41:30.926454060Z 
+  2020-05-17T16:41:30.926482824Z Traceback (most recent call last):
+  2020-05-17T16:41:30.926487352Z   File "/bin/reevefresh", line 42, in main
+  2020-05-17T16:41:30.926490378Z     if twitch.user(user).is_live:
+  2020-05-17T16:41:30.926493123Z   File "/usr/local/lib/python3.7/site-packages/twitch/helix/helix.py", line 46, in user
+  2020-05-17T16:41:30.926496049Z     return self.users(user)[0]
+  2020-05-17T16:41:30.926498674Z   File "/usr/local/lib/python3.7/site-packages/twitch/helix/helix.py", line 43, in users
+  2020-05-17T16:41:30.926503403Z     return helix.Users(self.api, *args)
+  2020-05-17T16:41:30.926506218Z   File "/usr/local/lib/python3.7/site-packages/twitch/helix/resources/users.py", line 49, in __init__
+  2020-05-17T16:41:30.926509123Z     for data in self._api.get(self._path, params=params, ignore_cache=True)['data']:
+  2020-05-17T16:41:30.926511858Z   File "/usr/local/lib/python3.7/site-packages/twitch/api.py", line 111, in get
+  2020-05-17T16:41:30.926514745Z     return self.request('GET', path, ignore_cache, params=params, headers=self._headers(headers), **kwargs)
+  2020-05-17T16:41:30.926517550Z   File "/usr/local/lib/python3.7/site-packages/twitch/api.py", line 100, in request
+  2020-05-17T16:41:30.926520385Z     response.raise_for_status()
+  2020-05-17T16:41:30.926523020Z   File "/usr/local/lib/python3.7/site-packages/requests/models.py", line 941, in raise_for_status
+  2020-05-17T16:41:30.926525826Z     raise HTTPError(http_error_msg, response=self)
+  2020-05-17T16:41:30.926530805Z requests.exceptions.HTTPError: 401 Client Error: Unauthorized for url: https://api.twitch.tv/helix/users?login=arhont_tv
+  2020-05-17T16:41:30.926533791Z 
+  2020-05-17T16:41:30.926536355Z During handling of the above exception, another exception occurred:
+  2020-05-17T16:41:30.926539121Z 
+  2020-05-17T16:41:30.926541725Z Traceback (most recent call last):
+  2020-05-17T16:41:30.926544410Z   File "/bin/reevefresh", line 61, in <module>
+  2020-05-17T16:41:30.926547586Z     main()
+  2020-05-17T16:41:30.926550271Z   File "/bin/reevefresh", line 52, in main
+  2020-05-17T16:41:30.926553017Z     except error.HTTPError as exception:
+  2020-05-17T16:41:30.926555682Z NameError: name 'error' is not defined
+#+end_example
