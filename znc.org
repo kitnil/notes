@@ -1,3 +1,10 @@
+#+begin_example
+[19:48] <Status Buffer:424fd95ada69> BitlBee-IRCd initialized, please go on
+[19:48] <*status:*status> You have several networks configured, but no network was specified for the connection.
+[19:48] <*status:*status> Selecting network freenode. To see list of all configured networks, use /znc ListNetworks
+[19:48] <*status:*status> If you want to choose another network, use /znc JumpNetwork <network>, or connect to ZNC with username natsu/<network> (instead of just natsu)
+#+end_example
+
 #+BEGIN_SRC xml
 
   <Network p2p>
