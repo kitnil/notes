@@ -1,4 +1,21 @@
 
+* rerere
+
+#+begin_quote
+[18:57] <#guix:nckx> mbakke: Does rebase destroy merge commits?
+[18:57] <#guix:mbakke> nckx: I think so.
+[18:58] <#guix:nckx> mbakke: How do you handle changes on c-u while you're working on them?
+[18:59] <#guix:mbakke> nckx: I used to abort and do a new merge (solving the same conflicts anew) for a long time, until I discovered 'git rerere'
+[19:00] <#guix:mbakke> nckx: though 'Merge: 8d33f263c1 ebbf915422' was the tip of the core-updates branch, no?
+[19:00] <#lisp:scymtym> phoe: can you try whether the above work for you?
+[19:00] <#guix:nckx> I'm not sure, I'm doing reflog autopsy at this point.
+[19:01] <#guix:nckx> Just when you mentioned ‘rerere’ I was reading ‘rere is not the solution, as you still have to resolve merges manually the first time across.’ although this was a conflict-free merge, so maybe not relevant.
+[19:01] <#guix:mbakke> right, 'git rerere' is only used to save merge resolutions and irrelevant when there are no conflicts
+[19:02] <#rwxrob:gwalterix> hey hey
+[19:02] <#lisp:phoe> scymtym: OK, one second.
+[19:02] <#guix:mbakke> even with git rerere you need to 'git merge --abort' and run a new 'git merge' if the branch has moved
+#+end_quote
+
 * Misc
 
 - [[https://github.com/rgburke/grv][rgburke/grv: GRV is a terminal interface for viewing git repositories]]
