@@ -991,3 +991,65 @@ https://gitlab.com/gitlab-org/gitlab/-/issues/210389
   2020-05-17T16:41:30.926553017Z     except error.HTTPError as exception:
   2020-05-17T16:41:30.926555682Z NameError: name 'error' is not defined
 #+end_example
+
+* TODO nix in guix
+  SCHEDULED: <2020-05-23 Sat>
+#+begin_example
+  <kamil_> Anyone, do you have an idea why does calling the bash binary fails with the error message "while setting up the build enviroment: executing '/gnu/store/*-bash-minimal-5.0.16/bin/bash': No such file or directory" when trying to build a Nix derivation? I've configured Nix as per the example in the Guix manual.
+  --> ecbrown (~user@fsf/member/ecbrown) has joined #guix
+  --> TZander (~zander@kde/zander) has joined #guix
+  <-- ArneBab (~quassel@freenet/developer/arnebab) has quit (Remote host closed the connection)
+  <-- jonsger (~Icedove@92.117.225.134) has quit (Ping timeout: 265 seconds)
+  --> ArneBab (~quassel@p200300F44F1057BEB3164B221AB514CE.dip0.t-ipconnect.de) has joined #guix
+  <-- ArneBab (~quassel@p200300F44F1057BEB3164B221AB514CE.dip0.t-ipconnect.de) has quit (Changing host)
+  --> ArneBab (~quassel@freenet/developer/arnebab) has joined #guix
+  <rekado> kamil_: does that file reference a loader at a location you don’t have?
+  <-- ArneBab (~quassel@freenet/developer/arnebab) has quit (Quit: No Ping reply in 180 seconds.)
+  <civodul> rekado: re https://gitlab.inria.fr/guix-hpc/website/-/blob/master/drafts/pack-fakechroot.md do you know the situation of national academic clusters in Germany?
+  --> ArneBab (~quassel@p200300f44f1057beb3164b221ab514ce.dip0.t-ipconnect.de) has joined #guix
+  <-- ArneBab (~quassel@p200300f44f1057beb3164b221ab514ce.dip0.t-ipconnect.de) has quit (Changing host)
+  --> ArneBab (~quassel@freenet/developer/arnebab) has joined #guix
+  --> mothacehe (~user@lfbn-ann-1-238-30.w86-200.abo.wanadoo.fr) has joined #guix
+  <-- ArneBab (~quassel@freenet/developer/arnebab) has quit (Remote host closed the connection)
+  --> ArneBab (~quassel@p200300F44F1057BEB3164B221AB514CE.dip0.t-ipconnect.de) has joined #guix
+  <-- ArneBab (~quassel@p200300F44F1057BEB3164B221AB514CE.dip0.t-ipconnect.de) has quit (Changing host)
+  --> ArneBab (~quassel@freenet/developer/arnebab) has joined #guix
+  <kamil_> rekado, the path is valid and the requested file exists there
+  <-- buffet (~buffet@vm-irc.spline.inf.fu-berlin.de) has left #guix ("Spline - https://spline.de")
+  <-- iyzsong (~iyzsong@fsf/member/iyzsong) has quit (Quit: ZNC 1.7.1 - https://znc.in)
+  --> iyzsong (~iyzsong@fsf/member/iyzsong) has joined #guix
+  <mbakke> kamil_: try running $(guix build glibc)/bin/ldd on that file, are there any missing references?
+  <-- vertigo_38 (~vertigo_3@178.165.128.28.wireless.dyn.drei.com) has quit (Ping timeout: 272 seconds)
+  <rekado> civodul: I don’t know.  I only know about the two clusters at the Berlin Institute of Health and the MDC
+  <rekado> they are both on CentOS 7 AFAIK
+  <kamil_> mbakke, "-bash: /gnu/store/*-glibc-2.31-debug: Is a directory"
+  <rekado> that trick won’t work because guix build glibc returns two values
+  <mbakke> kamil_: oh, whoops... use /gnu/store/1y7g7kj3zxg2p90g692wybqh9b6gv7q2-glibc-2.31/bin/ldd
+  <mbakke> would be neat if we could use guix build glibc:out, but that's not currently supported
+  <civodul> i started working on it some time ago but there were annoyances
+  <kamil_> mbakke, linux-vdso.so.1 (0x00007ffd629e1000), whilst 3 other *.so files point to something like this "=>".
+  --> xd1le (~xd1le@unaffiliated/xd1le) has joined #guix
+  <mbakke> only three?  is there a ld-linux-x86-64.so reference?
+  <mbakke> kamil_: can you execute that bash outside of the nix store?  not sure if the Nix service should be using anything from /gnu/store at all
+  <mbakke> perhaps wigust knows more :-)
+  <kamil_> I wasn't clear enough, sorry. There are 4 references, only one--linux-vdso.so.1, is missing a reference; whilst the other 3--libdl.so.2, libc.so.6 and /gnu/store/*-glibc2.31/lib/ld-linux-x86-64.so.2--don't have missing references.
+  <-- ArneBab (~quassel@freenet/developer/arnebab) has quit (Remote host closed the connection)
+  --> vertigo_38 (~vertigo_3@141.244.112.111) has joined #guix
+  <kamil_> mbakke, executing this bash file prints our an error: "bash: shopt: progcomp: invalid shell option name" and drops me into a new bash shell
+  --> ArneBab (~quassel@freenet/developer/arnebab) has joined #guix
+  <wigust> mbakke: well, when I installed there was no issue like this :b
+  <mbakke> kamil_:  ok, that sounds normal
+  <kamil_> mbakke, it should be noted that pressing arrow keys only prints symbols like this: ^[[C
+  <mbakke> wigust: perhaps the recent Nix update broke it?  have you tried using it since 13c18af1d835db11f3f4cf34e65c7da706625a3f ?
+  <-- andruSHA (~andruSHA@c83-252-29-60.bredband.comhem.se) has quit (Ping timeout: 240 seconds)
+  --> andruSHA (~andruSHA@host-78-79-232-216.mobileonline.telia.com) has joined #guix
+  <mbakke> kamil_: that's expected, bash-minimal does not include readline or many other things that your bashrc might expect
+  <wigust> mbakke: no, I installed it on couple machines before the update and then I switched to nix-daemon installed by Nix itself
+  <mbakke> right
+  <mbakke> kamil_: can you file a bug report?
+  -*- mbakke has to go
+  <kamil_> mbakke, I would love to, but I still can't. I really wish there was a gitlab bug tracker for the less adventurous
+  <-- roscoe_tw (~user@220-133-198-194.HINET-IP.hinet.net) has quit (Remote host closed the connection)
+  <mbakke> kamil_: most bug trackers require an email address too, no? :)
+  --> roscoe_tw (~user@220-133-198-194.HINET-IP.hinet.net) has joined #guix
+#+end_example
