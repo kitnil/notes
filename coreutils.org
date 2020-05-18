@@ -1,7 +1,22 @@
 * Tools
 
 - [[https://gcollazo.com/common-nix-commands-written-in-rust/][Common *nix commands written in Rust – gcollazo]]
+
+* Rust
+
 - [[https://github.com/chmln/sd][chmln/sd: Intuitive find & replace CLI (sed alternative)]]
+
+- cat :: [[https://github.com/sharkdp/bat][bat]]
+- du :: [[https://github.com/bootandy/dust][dust]]
+- find :: [[https://github.com/sharkdp/fd][fd]]
+- find :: [[https://github.com/lotabout/skim][skim]]
+- grep :: [[https://github.com/BurntSushi/ripgrep][ripgrep]]
+- ls :: [[https://the.exa.website][exa]]
+- ps :: [[https://github.com/dalance/procs][procs]]
+- sed :: [[https://github.com/chmln/sd][sd]]
+- time :: [[https://github.com/sharkdp/hyperfine][hyperfine]]
+- top :: [[https://github.com/bvaisvil/zenith][zenith]]
+- wc -l :: [[https://github.com/XAMPPRocky/tokei][tokei]]
 
 * Cheatsheet
 
