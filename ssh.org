@@ -12,3 +12,11 @@ https://blog.trackets.com/2014/05/17/ssh-tunnel-local-and-remote-port-forwarding
   : ssh-keygen -b 4096 -m pem -f ~/.ssh/id_rsa_pem
 
 - ssh-keygen -E md5 -l -f .ssh/git_repos_deploy_key
+
+- SOCKS5 proxy
+  : ssh -ND localhost:5555 example.com
+  or
+  #+BEGIN_SRC conf
+    Host tunnel
+    DynamicForward localhost:5555
+  #+END_SRC
