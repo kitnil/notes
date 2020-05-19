@@ -50,6 +50,14 @@ rerere-train.sh [COMMIT][--all]
 
 * Cheatsheet
 
+  - post-update
+#+BEGIN_SRC sh
+  #!/bin/sh
+  branch=$(git rev-parse --symbolic --abbrev-ref $1)
+  echo Update pushed to branch $branch
+  exec git update-server-info
+#+END_SRC
+
   - reflog - feature@{1}
 
   - git reset --hard @~ (@~ is the same as HEAD~)
