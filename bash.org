@@ -930,3 +930,49 @@
 * Share terminal
 
 - [[https://github.com/maxmcd/webtty][maxmcd/webtty: Share a terminal session over WebRTC]]
+
+* Parse arguments
+
+#+BEGIN_SRC bash
+  #!/bin/bash -e
+
+  if ! OPTS="$(getopt --options vhnbs: --long verbose,dry-run,bro,help,stack-size: --name parse-options -- "$@")"
+  then
+      echo "Failed parsing options."
+      exit 1
+  fi
+
+  eval set -- "$OPTS"
+
+  while true; do
+      case "$1" in
+          -v | --verbose )
+              echo "TODO: verbose."
+              ;;
+          -h | --help )
+              echo "TODO: Help page."
+              shift
+              ;;
+          -n | --dry-run )
+              echo "TODO: Dry-run."
+              shift
+              ;;
+          -b | --bro )
+              echo "HEY BRO!"
+              shift
+              ;;
+          -s | --stack-size )
+              echo "STACK_SIZE=\"$2\""
+              shift 2
+              ;;
+          -- )
+              shift
+              break
+              ;;
+          ,* ) 
+              break
+              ;;
+      esac
+  done
+
+#+END_SRC
