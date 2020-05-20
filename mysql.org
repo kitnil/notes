@@ -7,6 +7,14 @@
 : web27
 # mysqldump: Error 2013: Lost connection to MySQL server during query when dumping table `dle_post` at row: 17
 
+- Backup databases
+#+BEGIN_SRC bash
+  backup-mysql()
+  {
+      for I in $(mysql -e 'show databases' -s --skip-column-names); do mysqldump "$I" | gzip > "$I.sql.gz"; done
+  }
+#+END_SRC
+
 #+BEGIN_SRC sql
   flush tables with read lock;
 #+END_SRC
