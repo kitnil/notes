@@ -21,7 +21,7 @@
 * Cheatsheet
 
   - export a function to SSH session
-    : (set -ex; foo() { echo "Hello from foo!"; }; ssh -t web37s.majordomo.ru "$(declare -f foo); export -f foo; bash")
+    : (set -ex; foo() { echo "Hello from foo!"; }; ssh -t web37s.majordomo.ru "$(declare -f foo); export -f foo; exec bash")
 
   - meta data
 #+BEGIN_SRC bash
