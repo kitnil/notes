@@ -328,10 +328,6 @@ sub checkimage {
 16:12
 если будет локально, то рсинк на какой нить ls заменить и все
 
-* TODO move to script
-  SCHEDULED: <2020-04-19 Sun>
-: (set -ex; for remote in origin majordomo upstream; do git push $remote; done)
-
 * TODO Delete nixpkgs badge in https://github.com/mjuh projects
   SCHEDULED: <2020-04-30 Thu>
 
