@@ -342,57 +342,6 @@ warning: stray .go files: ./gnu/packages/ham-radio.go ./gnu/packages/sdr.go
 [14:53] <#stumpwm:mood> Perhaps we could make set-font fix that automatically
 #+end_quote
 
-* TODO jenkins -> gitlab 403
-[[https://gitlab.com/gitlab-org/gitlab/-/issues/210389][#210389]]
-#+begin_example
-  avax.ws.rs.ClientErrorException: HTTP 403 Forbidden
-         at org.jboss.resteasy.client.jaxrs.internal.ClientInvocation.handleErrorStatus(ClientInvocation.java:216)
-         at org.jboss.resteasy.client.jaxrs.internal.proxy.extractors.DefaultEntityExtractorFactory$3.extractEntity(DefaultEntityExtractorFactory.java:50)
-         at org.jboss.resteasy.client.jaxrs.internal.proxy.ClientInvoker.invoke(ClientInvoker.java:104)
-         at org.jboss.resteasy.client.jaxrs.internal.proxy.ClientProxy.invoke(ClientProxy.java:64)
-         at com.dabsquared.gitlabjenkins.gitlab.api.impl.$Proxy134.changeBuildStatus(Unknown Source)
-         at com.dabsquared.gitlabjenkins.gitlab.api.impl.ResteasyGitLabClient.changeBuildStatus(ResteasyGitLabClient.java:60)
-         at com.dabsquared.gitlabjenkins.gitlab.api.impl.AutodetectingGitLabClient$7.execute(AutodetectingGitLabClient.java:112)
-         at com.dabsquared.gitlabjenkins.gitlab.api.impl.AutodetectingGitLabClient$7.execute(AutodetectingGitLabClient.java:109)
-         at com.dabsquared.gitlabjenkins.gitlab.api.impl.AutodetectingGitLabClient$GitLabOperation.execute(AutodetectingGitLabClient.java:335)
-         at com.dabsquared.gitlabjenkins.gitlab.api.impl.AutodetectingGitLabClient$GitLabOperation.access$100(AutodetectingGitLabClient.java:332)
-         at com.dabsquared.gitlabjenkins.gitlab.api.impl.AutodetectingGitLabClient.execute(AutodetectingGitLabClient.java:328)
-         at com.dabsquared.gitlabjenkins.gitlab.api.impl.AutodetectingGitLabClient.changeBuildStatus(AutodetectingGitLabClient.java:108)
-         at com.dabsquared.gitlabjenkins.util.CommitStatusUpdater.updateCommitStatus(CommitStatusUpdater.java:85)
-         at com.dabsquared.gitlabjenkins.util.CommitStatusUpdater.updateCommitStatus(CommitStatusUpdater.java:97)
-         at com.dabsquared.gitlabjenkins.workflow.GitLabBuildsStep$GitLabBuildStepExecution$1.onStart(GitLabBuildsStep.java:85)
-         at org.jenkinsci.plugins.workflow.cps.CpsBodyExecution.launch(CpsBodyExecution.java:135)
-         at org.jenkinsci.plugins.workflow.cps.CpsBodyInvoker.launch(CpsBodyInvoker.java:187)
-         at org.jenkinsci.plugins.workflow.cps.DSL$ThreadTaskImpl.lambda$invokeBodiesAndSwitchToAsyncMode$0(DSL.java:660)
-         at org.jenkinsci.plugins.workflow.cps.CpsStepContext.withBodyInvokers(CpsStepContext.java:537)
-         at org.jenkinsci.plugins.workflow.cps.DSL$ThreadTaskImpl.invokeBodiesAndSwitchToAsyncMode(DSL.java:650)
-         at org.jenkinsci.plugins.workflow.cps.DSL$ThreadTaskImpl.eval(DSL.java:615)
-         at org.jenkinsci.plugins.workflow.cps.CpsThread.runNextChunk(CpsThread.java:195)
-         at org.jenkinsci.plugins.workflow.cps.CpsThreadGroup.run(CpsThreadGroup.java:405)
-         at org.jenkinsci.plugins.workflow.cps.CpsThreadGroup.access$400(CpsThreadGroup.java:96)
-         at org.jenkinsci.plugins.workflow.cps.CpsThreadGroup$2.call(CpsThreadGroup.java:317)
-         at org.jenkinsci.plugins.workflow.cps.CpsThreadGroup$2.call(CpsThreadGroup.java:281)
-         at org.jenkinsci.plugins.workflow.cps.CpsVmExecutorService$2.call(CpsVmExecutorService.java:67)
-         at java.util.concurrent.FutureTask.run(FutureTask.java:266)
-         at hudson.remoting.SingleLaneExecutorService$1.run(SingleLaneExecutorService.java:131)
-         at jenkins.util.ContextResettingExecutorService$1.run(ContextResettingExecutorService.java:28)
-         at jenkins.security.ImpersonatingExecutorService$1.run(ImpersonatingExecutorService.java:59)
-         at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
-         at java.util.concurrent.FutureTask.run(FutureTask.java:266)
-         at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
-         at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
-         at java.lang.Thread.run(Thread.java:748)
-#+end_example
-
-Понял почему 403 отдается на запросы с jenkins в gitlab - так происходит если включена защита у бранчи в gitlab (options -> repository) от force push'a
-
-17:39 gitlab upstream в курсе, наверное починят
-17:40 если защиту выключаешь, то все работает
-17:40 (unprotect)
-17:41 https://gitlab.intr/webservices/webftp-new/-/settings/repository#js-protected-branches-settings
-https://github.com/jenkinsci/gitlab-plugin/issues/883
-https://gitlab.com/gitlab-org/gitlab/-/issues/210389
-
 * TODO Fix ci-chef-workstation jenkins job
   SCHEDULED: <2020-05-18 Mon>
 
