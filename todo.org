@@ -117,30 +117,6 @@
    - [[/home/oleg/src/nixpkgs-firefox-esr-52/pkgs/applications/networking/browsers/firefox/packages.nix][firefox]]
    - [[/home/oleg/src/nixpkgs-firefox-esr-52/pkgs/development/compilers/adoptopenjdk-icedtea-web/default.nix][icedtea]]
    - [[/home/oleg/src/nixpkgs-firefox-esr-52/jdk.nix][jdk]]
-* TODO [[https://cerberus.intr/index.php/profiles/ticket/SN-11785-238/comment/7124095][Запрос из панели AC_131779 (Тема запроса: Баг в SSL-сертификате от Let's Encrypt.)]]
-* TODO [[https://cerberus.intr/index.php/profiles/ticket/SV-49154-232/comment/7124536][Появились аккаунты у которых не восстановились файлы после включения (оплаты)]]
-#+BEGIN_SRC markdown
-  Есть юзер AC_217132, который второй раз не успел оплатить до того как аккаунт выключится.  После оплаты, аккаунт включается, заявок на восстановление баз данных нет.
-
-  Смотрю свой аккаунт AC_208112, после включения нет тоже нет заявок. В дополнение нет заявки на создание базы данных.
-
-  https://hms.majordomo.ru/databases
-  ```
-  30.03.2020 11:34:29
-  Создание пользователя баз данных
-
-  30.03.2020 11:34:34
-  Создание базы данных
-  ```
-
-  robo3t
-  ```
-  db.getCollection('accountHistory').find({$and: [{"message": /Поступила заявка на создание базы данных/},{"personalAccountId":"208112"}]})
-  ```
-  https://imgur.com/PSjhAuw.png
-
-  В контейнерах hms2_personmgr не вижу заявок и trace'ов.
-#+END_SRC
 * TODO Олег Пыхалов (pyhalov) opened !2 *Jenkinsfile: Add HOSTNAME parameter.* in office / ssl-certificates
   SCHEDULED: <2020-04-05 Sun>
 https://gitlab.intr/office/ssl-certificates/-/merge_requests/2
