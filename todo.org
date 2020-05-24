@@ -504,3 +504,6 @@ warning: stray .go files: ./gnu/packages/ham-radio.go ./gnu/packages/sdr.go
   Tech-list@mailman.majordomo.ru
   http://mailman.majordomo.ru/mailman/listinfo/tech-list
 #+end_example
+
+* TODO obs is working on 8686922e68dfce2786722acad9593ad392297188 nixpkgs
+  SCHEDULED: <2020-05-31 Sun>
