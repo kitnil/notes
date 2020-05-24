@@ -8,21 +8,20 @@
 
 * Tools
 
-- [https://github.com/facebook/pyre-check][facebook/pyre-check: Performant type-checking for python.]
-- [https://github.com/Qix-/better-exceptions][Qix-/better-exceptions: Pretty and useful exceptions in Python, automatically.]
-- [https://github.com/PyCQA/bandit][PyCQA/bandit: Bandit is a tool designed to find common security issues in Python code.]
-- [https://github.com/psf/black][psf/black: The uncompromising Python code formatter]
-- [https://github.com/aws-cloudformation/cfn-python-lint][aws-cloudformation/cfn-python-lint: CloudFormation Linter]
-- [https://github.com/benfred/py-spy][benfred/py-spy: Sampling profiler for Python programs]
-- [https://github.com/indygreg/PyOxidizer][indygreg/PyOxidizer: A modern Python application packaging and distribution tool]
-- [https://github.com/alexmojaki/heartrate][alexmojaki/heartrate: Simple real time visualisation of the execution of a Python program.]
-
-- [https://github.com/julvo/reloading][julvo/reloading: Change Python code while it's running using a reloading loop]
-- [https://medium.com/@yeraydiazdiaz/what-the-mock-cheatsheet-mocking-in-python-6a71db997832][What the mock? — A cheatsheet for mocking in Python]
-- [https://medium.com/swlh/how-to-insert-data-from-csv-file-into-a-sqlite-database-using-python-82f7d447866a][How to insert data from CSV file into a SQLite Database using Python]
-- [https://medium.com/@peter.jp.xie/rest-api-testing-using-python-751022c364b8][REST API Testing Using Python - Peter Xie - Medium]
-- [https://medium.com/hackernoon/python-tricks-101-2836251922e0][Python Tricks 101🐍 - HackerNoon.com - Medium]
-- https://salsa.debian.org/gq/python-docker
+- [[https://github.com/facebook/pyre-check][facebook/pyre-check: Performant type-checking for python.]]
+- [[https://github.com/Qix-/better-exceptions][Qix-/better-exceptions: Pretty and useful exceptions in Python, automatically.]]
+- [[https://github.com/PyCQA/bandit][PyCQA/bandit: Bandit is a tool designed to find common security issues in Python code.]]
+- [[https://github.com/psf/black][psf/black: The uncompromising Python code formatter]]
+- [[https://github.com/aws-cloudformation/cfn-python-lint][aws-cloudformation/cfn-python-lint: CloudFormation Linter]]
+- [[https://github.com/benfred/py-spy][benfred/py-spy: Sampling profiler for Python programs]]
+- [[https://github.com/indygreg/PyOxidizer][indygreg/PyOxidizer: A modern Python application packaging and distribution tool]]
+- [[https://github.com/alexmojaki/heartrate][alexmojaki/heartrate: Simple real time visualisation of the execution of a Python program.]]
+- [[https://github.com/julvo/reloading][julvo/reloading: Change Python code while it's running using a reloading loop]]
+- [[https://medium.com/@yeraydiazdiaz/what-the-mock-cheatsheet-mocking-in-python-6a71db997832][What the mock? — A cheatsheet for mocking in Python]]
+- [[https://medium.com/swlh/how-to-insert-data-from-csv-file-into-a-sqlite-database-using-python-82f7d447866a][How to insert data from CSV file into a SQLite Database using Python]]
+- [[https://medium.com/@peter.jp.xie/rest-api-testing-using-python-751022c364b8][REST API Testing Using Python - Peter Xie - Medium]]
+- [[https://medium.com/hackernoon/python-tricks-101-2836251922e0][Python Tricks 101🐍 - HackerNoon.com - Medium]]
+- [[https://salsa.debian.org/gq/python-docker]]
 
 https://stackoverflow.com/questions/2524853/python-try-statement-in-a-single-line#8061176
 #+BEGIN_SRC python3
