@@ -551,3 +551,16 @@ zdetovetskiy is away: "away"
 после сверить что то которое у тебя в никсе такой же uid
 после в миране чтобы стояли возле кнопки на всякий
 #+end_quote
+
+* TODO NIXOPS on web
+  SCHEDULED: <2020-05-29 Fri>
+забери .nixos юзера jenkins на сервере jenkins, а потом клонь репу nixops с гитлаба и
+nixops modify ./test.nix -d shared-test-dp
+
+New
+13:33
+.nixops
+13:33
+не .nixos
+13:33
+))
