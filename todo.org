@@ -546,6 +546,8 @@ uid=83859(u226109) gid=83859(u226109) groups=83859(u226109),1999(hosting_account
 zdetovetskiy is away: "away"
 потерпит
 надо сначала найти uid максимальный в ядре
+(set -ex; max_uid=$(((2 ** 32) - 1)); sudo iptables -A OUTPUT -d 172.16.0.0/16 -p icmp -m owner --uid-owner 2000-$max_uid -j DROP)
+
 после сверить что то которое у тебя в никсе такой же uid
 после в миране чтобы стояли возле кнопки на всякий
 #+end_quote
