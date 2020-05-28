@@ -511,3 +511,40 @@ warning: stray .go files: ./gnu/packages/ham-radio.go ./gnu/packages/sdr.go
   SCHEDULED: <2020-05-31 Sun>
 
 * TODO web35 извлечен диск с s/n S251NX0H813096
+
+* TODO iptables
+#+begin_quote
+root@web29 ~ # sudo -u u226109 -i
+u226109@web29:~$ ping gitlab.intr
+PING gitlab.intr (172.16.103.139) 56(84) bytes of data.
+64 bytes from gitlab.intr (172.16.103.139): icmp_seq=1 ttl=64 time=0.167 ms
+^C
+--- gitlab.intr ping statistics ---
+1 packets transmitted, 1 received, 0% packet loss, time 0ms
+rtt min/avg/max/mdev = 0.167/0.167/0.167/0.000 ms
+u226109@web29:~$ 
+-A OUTPUT -d 172.16.0.0/16 -p icmp -m owner --uid-owner 2000-65535 -j DROP
+-A OUTPUT -p tcp -m tcp --dport 53 -m owner --uid-owner 2000-65535 -j ACCEPT
+-A OUTPUT -p udp -m udp --dport 53 -m owner --uid-owner 2000-65535 -j ACCEPT
+root@web29 ~ # id u226109
+uid=83859(u226109) gid=83859(u226109) groups=83859(u226109),1999(hosting_accounts)
+))
+поправишь по всем вебам?)
+я ничего не сделал
+я делаю iptables для вебов будущего
+и взял правила с прода
+и увидел, что мы блочим 172.16.0.0 для уидов 2000-65535
+а уиды в проде уже перевалили за 83859
+и как следствие им доступно 172.16.x.x
+тем кто случайно выше 65535
+--uid-owner 2000-65535 надо поменять на  --uid-owner  2000-524280 к примеру
+во всех /etc/iptables*
+на всех web*
+ну и потом iptables-restore сделать
+не я не буду сейчас
+zdetovetskiy is away: "away"
+потерпит
+надо сначала найти uid максимальный в ядре
+после сверить что то которое у тебя в никсе такой же uid
+после в миране чтобы стояли возле кнопки на всякий
+#+end_quote
