@@ -127,3 +127,6 @@ degradation:
 
 oleg@guixsd ~$ ss --numeric --tcp --listening --no-header --oneline --processes '( sport = :5901 )'
 
+* source
+
+/home/oleg/archive/src/linux/arch/x86/entry/syscalls/syscall_64.tbl
