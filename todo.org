@@ -574,3 +574,5 @@ nixops deploy -d shared-test-dp
 ** spb-zabbix add domain wugi.info to autossh
 
 ** spb-guix add zabbix automatic reboot
+
+** SSH tunnel oracle <-> spb-guix
