@@ -513,6 +513,7 @@ warning: stray .go files: ./gnu/packages/ham-radio.go ./gnu/packages/sdr.go
 * TODO web35 извлечен диск с s/n S251NX0H813096
 
 * TODO iptables
+  SCHEDULED: <2020-06-01 Mon>
 #+begin_quote
 root@web29 ~ # sudo -u u226109 -i
 u226109@web29:~$ ping gitlab.intr
