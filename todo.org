@@ -567,3 +567,10 @@ New
 после этого
 nixops deploy -d shared-test-dp
 будет тебе сразу все деплоить на оба веба
+
+* TODO spb
+  SCHEDULED: <2020-05-31 Sun>
+
+** spb-zabbix add domain wugi.info to autossh
+
+** spb-guix add zabbix automatic reboot
