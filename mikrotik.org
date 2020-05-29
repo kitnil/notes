@@ -32,3 +32,6 @@ Then to add to RouterOS :
 If you want to add two IP addresses then you must add as follows (note the formatting of the value!) :
 /ip dhcp-server option add code=150 name=customtftp value=0xC0A804090A0A0A0A
 Then assign DHCP option customtftp to your Networks or static Leases.
+
+- 100 d4:ca:6d:ba:6b:32
+- wan0 d4:ca:6d:ba:6b:33
