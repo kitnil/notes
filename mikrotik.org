@@ -35,3 +35,10 @@ Then assign DHCP option customtftp to your Networks or static Leases.
 
 - 100 d4:ca:6d:ba:6b:32
 - wan0 d4:ca:6d:ba:6b:33
+
+* Nat
+
+https://itproffi.ru/nastrojka-nat-na-marshrutizatorah-mikrotik/
+rule: srcnat
+out-interface: wan0
+actrion: masquarude
