@@ -41,4 +41,4 @@ Then assign DHCP option customtftp to your Networks or static Leases.
 https://itproffi.ru/nastrojka-nat-na-marshrutizatorah-mikrotik/
 - chain :: srcnat
 - out-interface :: wan0
-- actrion :: masquarude
+- actrion :: masquerade
