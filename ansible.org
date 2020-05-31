@@ -1,3 +1,25 @@
+- docker memory
+#+BEGIN_SRC yaml
+  #!/usr/bin/env ansible-playbook
+
+  - hosts: web30.intr
+    # vars:
+    #   ansible_become_pass: "{{ lookup('passwordstore', 'majordomo/ssh/eng') }}"
+    #   slack_token: "{{ lookup('passwordstore', 'majordomo/mjru.slack.com/tokens/ansible') }}"
+    tasks:
+      - shell: "{% raw %}docker stats --format '{{ .Name }} {{ .MemUsage }}' --no-stream | awk '/mariadb/ { print $2 }' | cut -d. -f 1{% endraw %}"
+        become: yes
+        register: docker
+
+      - debug: var=docker.stdout
+
+      - slack:
+          token: "{{ slack_token }}"
+          msg: "MySQL container memory took more than 22GB on web30.intr"
+          channel: "#test"
+        when: docker.stdout|int > 22
+#+END_SRC
+
 - Run docker playbook
   : ANSIBLE_HOST_KEY_CHECKING=false ansible-playbook -uroot -i78.108.86.238, -e 'host=78.108.86.238' docker.yml
 
