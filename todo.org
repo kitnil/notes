@@ -581,3 +581,48 @@ nixops deploy -d shared-test-dp
   SCHEDULED: <2020-06-01 Mon>
 
 https://gitlab.intr/webservices/apache2-php52/-/merge_requests/13
+
+* 
+
+ip 128 dhcp ipkvm
+
+* TODO kvm-test
+  SCHEDULED: <2020-06-01 Mon>
+#+BEGIN_SRC json
+  {
+      "_id" : ObjectId("5d3b27457b88850001d8c56c"),
+      "serviceTemplateId" : "5d24bca8c1af370001ace60c",
+      "templateId" : "5d8251523ddcc03e078e0d91",
+      "socketIds" : [ 
+          "5d3b242f7b88850001d8c567"
+      ],
+      "serviceSocketIds" : [ 
+          "5d3b242f7b88850001d8c567"
+      ],
+      "instanceProps" : {
+          "security_level" : "default"
+      },
+      "name" : "apache2-php72-default@kvm-test",
+      "switchedOn" : true,
+      "_class" : "ru.majordomo.hms.rc.staff.resources.Service",
+      "serverId" : "5d1cc4a6e1442a0001c88634"
+  }
+  {
+      "_id" : ObjectId("5d401fd8f7619300012fbb9e"),
+      "serviceTemplateId" : "5d401f9ef7619300012fbb9a",
+      "templateId" : "5d8251523ddcc03e078e0d96",
+      "socketIds" : [ 
+          "5d401edbf7619300012fbb96"
+      ],
+      "serviceSocketIds" : [ 
+          "5d401edbf7619300012fbb96"
+      ],
+      "instanceProps" : {
+          "security_level" : "unsafe"
+      },
+      "name" : "apache2-php73-unsafe@kvm-test",
+      "switchedOn" : true,
+      "_class" : "ru.majordomo.hms.rc.staff.resources.Service",
+      "serverId" : "5d1cc4a6e1442a0001c88634"
+  }
+#+END_SRC
