@@ -626,3 +626,5 @@ ip 128 dhcp ipkvm
       "serverId" : "5d1cc4a6e1442a0001c88634"
   }
 #+END_SRC
+
+* TODO [[file:~/majordomo/hms/rc-staff/src/main/java/ru/majordomo/hms/rc/staff/importing/ConfigTemplateDBSeedService.java::configTemplateNamesWithFileLink.forEach((name,%20fileLink)%20->%20{]]
