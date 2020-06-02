@@ -659,3 +659,5 @@ ip 128 dhcp ipkvm
   [Mon Jun 01 17:56:35.196275 2020] [mpm_event:notice] [pid 20:tid 47850140709312] AH00489: Apache/2.4.41 (Unix) configured -- resuming normal operations
   [Mon Jun 01 17:56:35.196307 2020] [mpm_event:info] [pid 20:tid 47850140709312] AH00490: Server built: Aug  9 2019 13:36:47
 #+end_example
+
+- /home/oleg/majordomo/hms/rc-user/src/main/java/ru/majordomo/hms/rc/user/resourceProcessor/impl/website/BaseWebsiteProcessor.java
