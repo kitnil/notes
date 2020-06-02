@@ -629,3 +629,33 @@ ip 128 dhcp ipkvm
 
 * TODO [[file:~/majordomo/hms/rc-staff/src/main/java/ru/majordomo/hms/rc/staff/importing/ConfigTemplateDBSeedService.java::configTemplateNamesWithFileLink.forEach((name,%20fileLink)%20->%20{]]
   SCHEDULED: <2020-06-01 Mon>
+
+* TODO php73-default web98
+
+#+begin_example
+  [Mon Jun 01 17:53:57.908612 2020] [mpm_event:notice] [pid 19:tid 47130020327872] AH00493: SIGUSR1 received.  Doing graceful restart
+  PHP:  syntax error, unexpected '=' in /etc/php73.d/smtp.ini on line 4
+  [Mon Jun 01 17:53:58.557864 2020] [mpm_event:notice] [pid 19:tid 47130020327872] AH00489: Apache/2.4.41 (Unix) configured -- resuming normal operations
+  [Mon Jun 01 17:53:58.557909 2020] [mpm_event:info] [pid 19:tid 47130020327872] AH00490: Server built: Aug  9 2019 13:36:47
+  [Mon Jun 01 17:53:58.557915 2020] [core:notice] [pid 19:tid 47130020327872] AH00094: Command line: '/nix/store/xm89nf0qg88c7l2yxxnpagl5pib8qfrc-apache-httpd-2.4.41/bin/httpd -D FOREGROUND -
+  d /nix/store/ymf0wgsf6g0cxnzy5i6l1s0kmanclr5v-apache2-rootfs-php73-personal/etc/httpd'
+  Mon Jun  1 17:54:06 2020 (47130143442688): Warning opcache cannot create directory for file '/opcache/df4fd8ab7f5c2a985ca4239512a99b44/nix/store/ymf0wgsf6g0cxnzy5i6l1s0kmanclr5v-apache2-roo
+  tfs-php73-personal/htdocs/phpinfo.php.bin', No such file or directory
+
+  Mon Jun  1 17:54:16 2020 (47130147645184): Warning opcache cannot create directory for file '/opcache/df4fd8ab7f5c2a985ca4239512a99b44/nix/store/ymf0wgsf6g0cxnzy5i6l1s0kmanclr5v-apache2-roo
+  tfs-php73-personal/htdocs/phpinfo.php.bin', No such file or directory
+
+  Mon Jun  1 17:54:26 2020 (47130151847680): Warning opcache cannot create directory for file '/opcache/df4fd8ab7f5c2a985ca4239512a99b44/nix/store/ymf0wgsf6g0cxnzy5i6l1s0kmanclr5v-apache2-roo
+  tfs-php73-personal/htdocs/phpinfo.php.bin', No such file or directory
+
+  s6-chown: usage: s6-chown [ -U ] [ -u uid ] [ -g gid ] file
+  PHP:  syntax error, unexpected '=' in /etc/php73.d/smtp.ini on line 4
+  [Mon Jun 01 17:56:27.721394 2020] [mpm_event:notice] [pid 20:tid 47850140709312] AH00489: Apache/2.4.41 (Unix) configured -- resuming normal operations
+  [Mon Jun 01 17:56:27.721547 2020] [mpm_event:info] [pid 20:tid 47850140709312] AH00490: Server built: Aug  9 2019 13:36:47
+  [Mon Jun 01 17:56:27.721620 2020] [core:notice] [pid 20:tid 47850140709312] AH00094: Command line: '/nix/store/xm89nf0qg88c7l2yxxnpagl5pib8qfrc-apache-httpd-2.4.41/bin/httpd -D FOREGROUND -
+  d /nix/store/ymf0wgsf6g0cxnzy5i6l1s0kmanclr5v-apache2-rootfs-php73-personal/etc/httpd'
+  [Mon Jun 01 17:56:35.007856 2020] [mpm_event:notice] [pid 20:tid 47850140709312] AH00493: SIGUSR1 received.  Doing graceful restart
+  PHP:  syntax error, unexpected '=' in /etc/php73.d/smtp.ini on line 4
+  [Mon Jun 01 17:56:35.196275 2020] [mpm_event:notice] [pid 20:tid 47850140709312] AH00489: Apache/2.4.41 (Unix) configured -- resuming normal operations
+  [Mon Jun 01 17:56:35.196307 2020] [mpm_event:info] [pid 20:tid 47850140709312] AH00490: Server built: Aug  9 2019 13:36:47
+#+end_example
