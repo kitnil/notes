@@ -130,3 +130,45 @@ oleg@guixsd ~$ ss --numeric --tcp --listening --no-header --oneline --processes 
 * source
 
 /home/oleg/archive/src/linux/arch/x86/entry/syscalls/syscall_64.tbl
+
+* reboot
+
+** proc
+
+$ sudo echo 1 > /proc/sys/kernel/sysrq
+
+To reboot, you can use either Alt+Sysrq+B or type:
+
+$ sudo echo b > /proc/sysrq-trigger
+
+This method is not a reasonable way to reboot your machine on a regular basis, but it gets the job done in a pinch.
+
+** sysctl
+
+sysctl --all
+sysctl --value kernel.panic
+
+If you get a 0 back, then the kernel you’re running has no special setting, at
+least by default, to reboot upon a kernel panic. That situation is fairly
+typical since rebooting immediately on a catastrophic system crash makes it
+difficult to diagnose the cause of the crash. Then again, systems that need to
+stay on no matter what might benefit from an automatic restart after a kernel
+failure, so it’s an option that does get switched on in some cases.
+
+You can activate this feature as an experiment (if you’re following along, try
+this in a virtual machine rather than on your actual computer):
+
+$ sudo sysctl kernel.reboot=1
+
+Now, should your computer experience a kernel panic, it is set to reboot
+instead of waiting patiently for you to diagnose the problem. You can test
+this by simulating a catastrophic crash with sysrq. First, make sure that
+Sysrq is enabled:
+
+$ sudo echo 1 > /proc/sys/kernel/sysrq
+
+And then simulate a kernel panic:
+
+$ sudo echo c > /proc/sysrq-trigger
+
+Your computer reboots immediately.
