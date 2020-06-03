@@ -661,3 +661,7 @@ ip 128 dhcp ipkvm
 #+end_example
 
 - /home/oleg/majordomo/hms/rc-user/src/main/java/ru/majordomo/hms/rc/user/resourceProcessor/impl/website/BaseWebsiteProcessor.java
+
+* TODO
+
+mongo mongodb://ci.intr:27017/staffResourceController --eval "var collection = 'server'" variety.js
