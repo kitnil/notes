@@ -665,3 +665,5 @@ ip 128 dhcp ipkvm
 * TODO
 
 mongo mongodb://ci.intr:27017/staffResourceController --eval "var collection = 'server'" variety.js
+
+root@ci ~/src/variety # mongo mongodb://ci.intr:27017/staffResourceController --eval "var collection = 'serviceTemplate'" variety.js 
