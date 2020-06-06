@@ -662,7 +662,8 @@ ip 128 dhcp ipkvm
 
 - /home/oleg/majordomo/hms/rc-user/src/main/java/ru/majordomo/hms/rc/user/resourceProcessor/impl/website/BaseWebsiteProcessor.java
 
-* TODO
+* TODO mongodb variety
+  SCHEDULED: <2020-06-07 Sun>
 
 mongo mongodb://ci.intr:27017/staffResourceController --eval "var collection = 'server'" variety.js
 
