@@ -1,4 +1,18 @@
 
+* Shebang
+
+#+BEGIN_SRC go
+  //bin/sh -c true && exec go run "$0" "$@"
+
+  package main
+
+  import "fmt"
+
+  func main() {
+      fmt.Println("hello world")
+  }
+#+END_SRC
+
 * Webhook
 
 #+BEGIN_SRC bash
