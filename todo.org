@@ -582,10 +582,6 @@ nixops deploy -d shared-test-dp
 
 https://gitlab.intr/webservices/apache2-php52/-/merge_requests/13
 
-* 
-
-ip 128 dhcp ipkvm
-
 * TODO kvm-test
   SCHEDULED: <2020-06-01 Mon>
 #+BEGIN_SRC json
