@@ -667,3 +667,8 @@ ip 128 dhcp ipkvm
 mongo mongodb://ci.intr:27017/staffResourceController --eval "var collection = 'server'" variety.js
 
 root@ci ~/src/variety # mongo mongodb://ci.intr:27017/staffResourceController --eval "var collection = 'serviceTemplate'" variety.js 
+
+* TODO Emacs Redmine API
+  SCHEDULED: <2020-06-07 Sun>
+
+[[https://github.com/leoc/elmine][leoc/elmine: Access redmine Rest API via elisp in your favorite editor.]]
