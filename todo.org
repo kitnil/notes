@@ -678,3 +678,15 @@ root@ci ~/src/variety # mongo mongodb://ci.intr:27017/staffResourceController --
   (invoke (string-append %output "/bin/bats")
           "--formatter" "tap" "test")
 #+END_SRC
+
+* TODO Guix bash-hosts add tests
+  SCHEDULED: <2020-06-14 Sun>
+#+BEGIN_SRC scheme
+  ;; ;; Test phase
+  (setenv "BATS_ROOT"
+          (string-append (assoc-ref %build-inputs "bats")
+                         "/libexec/bats-core"))
+  (invoke (string-append (assoc-ref %build-inputs "bats") "/bin/bats")
+          "--formatter" "tap" "test")
+
+#+END_SRC
