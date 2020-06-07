@@ -669,3 +669,12 @@ root@ci ~/src/variety # mongo mongodb://ci.intr:27017/staffResourceController --
   SCHEDULED: <2020-06-07 Sun>
 
 [[https://github.com/leoc/elmine][leoc/elmine: Access redmine Rest API via elisp in your favorite editor.]]
+
+* TODO Guix bats add tests
+  SCHEDULED: <2020-06-14 Sun>
+#+BEGIN_SRC scheme
+  ;; Test phase
+  (setenv "BATS_ROOT" (string-append %output "/libexec/bats-core"))
+  (invoke (string-append %output "/bin/bats")
+          "--formatter" "tap" "test")
+#+END_SRC
