@@ -155,30 +155,6 @@ https://gitlab.intr/office/ssl-certificates/-/merge_requests/2
 * TODO jenkins disable host verification ("Host Key Verification Strategy")
   SCHEDULED: <2020-04-07 Tue>
 
-* TODO postfix staff
-  SCHEDULED: <2020-04-08 Wed>
-#+begin_example
-  Apr  7 17:18:19 smtp-staff postfix/smtpd[1467]: 59B7131405B4: client=dh2-mr.intr[172.16.103.156]
-  Apr  7 17:18:19 smtp-staff postfix/cleanup[1470]: 59B7131405B4: message-id=<cbb33f72f0b719bbbd1ffef794ff8984@mail-manager.intr>
-  Apr  7 17:18:19 smtp-staff opendkim[9834]: 59B7131405B4: DKIM-Signature field added (s=dkim, d=majordomo.ru)
-  Apr  7 17:18:19 smtp-staff postfix/smtpd[9269]: connect from dh1-mr.intr[172.16.103.155]
-  Apr  7 17:18:19 smtp-staff postfix/smtpd[9269]: 6141A31405E0: client=dh1-mr.intr[172.16.103.155]
-  Apr  7 17:18:19 smtp-staff postfix/cleanup[9272]: 6141A31405E0: message-id=<aabef4654036414e257549a0a18f91ee@mail-manager.intr>
-  Apr  7 17:18:19 smtp-staff opendkim[9834]: 6141A31405E0: DKIM-Signature field added (s=dkim, d=majordomo.ru)
-  Apr  7 17:18:19 smtp-staff postfix/qmgr[2976]: 59B7131405B4: from=<noreply@majordomo.ru>, size=15097, nrcpt=2 (queue active)
-  Apr  7 17:18:19 smtp-staff postfix/smtpd[1467]: disconnect from dh2-mr.intr[172.16.103.156] ehlo=1 mail=1 rcpt=2 data=1 quit=1 commands=6
-  Apr  7 17:18:19 smtp-staff postfix/qmgr[2976]: 6141A31405E0: from=<noreply@majordomo.ru>, size=13367, nrcpt=2 (queue active)
-  Apr  7 17:18:19 smtp-staff postfix/smtpd[9269]: disconnect from dh1-mr.intr[172.16.103.155] ehlo=1 mail=1 rcpt=2 data=1 quit=1 commands=6
-  Apr  7 17:18:19 smtp-staff postfix-mailout/smtp[448]: 226823160AB1: to=<alumos@mail.ru>, relay=mxs.mail.ru[94.100.180.31]:25, delay=0.62, delays=0.11/0/0.05/0.45, dsn=2.0.0, status=sent (250 OK id=1jLp3T-0008U1-BR)
-  Apr  7 17:18:19 smtp-staff postfix-mailout/qmgr[5781]: 226823160AB1: removed
-  Apr  7 17:18:19 smtp-staff postfix/smtp[9265]: 6141A31405E0: to=<turm@turm2rm.ru>, relay=mmxs.majordomo.ru[78.108.80.147]:25, delay=0.41, delays=0.09/0.02/0.07/0.22, dsn=2.0.0, status=sent (250 OK id=1jLp3T-0000w6-Iq)
-  Apr  7 17:18:19 smtp-staff postfix/smtp[1471]: 6141A31405E0: to=<turm@mail.ru>, relay=mxs.mail.ru[94.100.180.31]:25, delay=0.59, delays=0.09/0.02/0.11/0.37, dsn=2.0.0, status=sent (250 OK id=1jLp3T-000AKw-Kx)
-  Apr  7 17:18:19 smtp-staff postfix/smtp[9266]: 59B7131405B4: to=<12volt.kr@mail.ru>, relay=mxs.mail.ru[94.100.180.31]:25, delay=0.62, delays=0.11/0.03/0.11/0.38, dsn=2.0.0, status=sent (250 OK id=1jLp3T-0006I1-M0)
-  Apr  7 17:18:19 smtp-staff postfix/smtp[9266]: 59B7131405B4: to=<art6.krasnodar@mail.ru>, relay=mxs.mail.ru[94.100.180.31]:25, delay=0.62, delays=0.11/0.03/0.11/0.38, dsn=2.0.0, status=sent (250 OK id=1jLp3T-0006I1-M0)
-  Apr  7 17:18:19 smtp-staff postfix/qmgr[2976]: 6141A31405E0: removed
-  Apr  7 17:18:20 smtp-staff postfix/qmgr[2976]: 59B7131405B4: removed
-#+end_example
-
 * TODO https://jenkins.intr/job/ci/job/bfg/job/master/16/console
   SCHEDULED: <2020-04-16 Thu>
   https://jenkins.intr/job/webservices/job/nixoverlay/job/master/46/console
