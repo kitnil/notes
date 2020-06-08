@@ -462,51 +462,6 @@ warning: stray .go files: ./gnu/packages/ham-radio.go ./gnu/packages/sdr.go
 * TODO Fix /workdir in MySQL Moodle
   SCHEDULED: <2020-05-22 Fri>
 
-* TODO web35
-#+begin_example
-  pyhalov@majordomo.ru
-  [Tech-list] web35 замена диска 02.01.2020
-  WN-92146-968
-
-  Диск Samsung SSD 860 PRO 256 S251NX0H812847P заменен на Samsung SSD 860
-  PRO 256 S418NF0KA16142.  Старый промаркирован (коробка промаркирована
-  также) как "bad web35" и убран в ЗИП.
-  Во время первого нашего обращения сотрудник Мирана не мог найти нашего
-  ЗИП хранилища.
-  Перед заменой диска потребовалось отключить сервер из-за отсутствия
-  изменений в индикации корзин (arcconf identify 1 device 0 1 и arcconf 
-  identify 1 all).
-  До замены диска:
-  $ arcconf getconfig 1 ld
-  Logical device number 1
-      Logical device name                      : mysql
-      Block Size of member drives              : 512 Bytes
-      RAID level                               : 1
-      Unique Identifier                        : ADB4E731
-      Status of logical device                 : Degraded
-      Size                                     : 244090 MB
-      Parity space                             : 244100 MB
-      Read-cache setting                       : Enabled
-      Read-cache status                        : On
-      Write-cache setting                      : Disabled
-      Write-cache status                       : Off
-      Partitioned                              : Yes
-      Protected by Hot-Spare                   : No
-      Bootable                                 : No
-      Failed stripes                           : No
-      Power settings                           : Disabled
-      --------------------------------------------------------
-      Logical device segment information
-      --------------------------------------------------------
-      Segment 0                                : Present 
-  (Controller:1,Connector:0,Device:0) S251NX0H813096R
-      Segment 1                                : Missing
-  _______________________________________________
-  Tech-list mailing list
-  Tech-list@mailman.majordomo.ru
-  http://mailman.majordomo.ru/mailman/listinfo/tech-list
-#+end_example
-
 * TODO obs is working on 8686922e68dfce2786722acad9593ad392297188 nixpkgs
   SCHEDULED: <2020-05-31 Sun>
 
