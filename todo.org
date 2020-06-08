@@ -510,8 +510,6 @@ warning: stray .go files: ./gnu/packages/ham-radio.go ./gnu/packages/sdr.go
 * TODO obs is working on 8686922e68dfce2786722acad9593ad392297188 nixpkgs
   SCHEDULED: <2020-05-31 Sun>
 
-* TODO web35 извлечен диск с s/n S251NX0H813096
-
 * TODO iptables
   SCHEDULED: <2020-06-01 Mon>
 #+begin_quote
@@ -554,19 +552,6 @@ zdetovetskiy is away: "away"
 
 * TODO NIXOPS on web
   SCHEDULED: <2020-05-29 Fri>
-забери .nixos юзера jenkins на сервере jenkins, а потом клонь репу nixops с гитлаба и
-nixops modify ./test.nix -d shared-test-dp
-
-New
-13:33
-.nixops
-13:33
-не .nixos
-13:33
-))
-после этого
-nixops deploy -d shared-test-dp
-будет тебе сразу все деплоить на оба веба
 
 * TODO spb
   SCHEDULED: <2020-05-31 Sun>
