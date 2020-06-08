@@ -606,4 +606,15 @@ root@ci ~/src/variety # mongo mongodb://ci.intr:27017/staffResourceController --
           "--formatter" "tap" "test")
 #+END_SRC
 
-* TODO merge ssh-sup-room nixoverlay
+* TODO tomorrow
+
+- merge
+  - ssh-sup-room
+  - nixoverlay
+- bfg
+  - add tests
+- nixops
+  - add nftables support to docker
+- jenkins.intr
+  - run vm and test reproducible
+
