@@ -2127,3 +2127,30 @@ and PULSE_CLIENT_CONFIG in their profile.
 #+END_SRC
 
 oleg@guixsd ~/src/guix-master$ /gnu/store/dl0w9s9mchyg0ggj62yzd2szw200nsb3-run-vm.sh -m 2048 -smp 2 -nic user,model=virtio-net-pci,hostfwd=tcp::10022-:22 -daemonize -virtfs local,path="$HOME/.ssh",security_model=none,mount_tag="TAG_ssh"
+
+#+BEGIN_SRC scheme
+  (use-modules (system vm elf)
+               (rnrs io ports)
+               (ice-9 match))
+
+  (define go
+    (search-path %load-compiled-path "gnu/packages/python-xyz.go"))
+
+  (define elf
+    (parse-elf (call-with-input-file go get-bytevector-all)))
+
+  (define (elf-section-name-as-string elf section)
+    (let ((off (elf-section-offset
+                (list-ref (elf-sections elf)
+                          (elf-shstrndx elf)))))
+      (string-table-ref (elf-bytes elf)
+                        (+ off (elf-section-name section)))))
+
+  (sort (map (lambda (section)
+               (cons (elf-section-name-as-string elf section)
+                     (elf-section-size section)))
+             (elf-sections elf))
+        (match-lambda*
+          (((name1 . size1) (name2 . size2))
+           (> size1 size2))))
+#+END_SRC
