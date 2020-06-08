@@ -605,3 +605,5 @@ root@ci ~/src/variety # mongo mongodb://ci.intr:27017/staffResourceController --
   (invoke (string-append (assoc-ref %build-inputs "bats") "/bin/bats")
           "--formatter" "tap" "test")
 #+END_SRC
+
+* TODO merge ssh-sup-room nixoverlay
