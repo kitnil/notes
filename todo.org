@@ -617,3 +617,7 @@ root@ci ~/src/variety # mongo mongodb://ci.intr:27017/staffResourceController --
   - TODO
   for job in ${pkgs.jenkins-jobs-config.out}/bin/*yml ; do ${
   *yml
+
+* TODO 
+
+-m 'reverse:https://notabug.org'
