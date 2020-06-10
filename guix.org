@@ -2035,6 +2035,8 @@ and PULSE_CLIENT_CONFIG in their profile.
 
 * Tips
 
+** [[http://issues.guix.gnu.org/41732#7][issue with emacs-lua-mode and emacs-next]]
+
 ** [2017-08-26 Sat 02:38] [[gnus:INBOX#871snzfl4s.fsf@gnu.org][Email from Ludovic Courtès: Tip of the day: storing your G]] by [[mailto:ludo@gnu.org][Ludovic Courtès]]
    #+BEGIN_SRC scheme
    (operating-system
