@@ -623,3 +623,5 @@ root@ci ~/src/variety # mongo mongodb://ci.intr:27017/staffResourceController --
 -m 'reverse:https://notabug.org'
 
 curl -X POST -vv -H "Content-Type: application/json" -H "Authorization: token $(pass show notabug.org/tokens/terraform)" https://notabug.org/api/v1/user/repos -d '{"name": "dotfiles"}'
+
+SELECT Db, User FROM mysql.db WHERE Db = b224436_yles
