@@ -7,3 +7,29 @@
   : set style enable on
 
 https://alex.dzyoba.com/blog/gdb-source-path/
+
+* Set environment variables
+
+It seems that putenv doesn't work now, but setenv does. I was testing the accepted answer while trying to set the variable in the current shell with no success
+
+$] sudo gdb -p $$
+(gdb) call putenv("TEST=1234")
+$1 = 0
+(gdb) call (char*) getenv("TEST")
+$2 = 0x0
+(gdb) detach
+(gdb) quit
+$] echo "TEST=$TEST"
+TEST=
+
+and the variant how it works:
+
+$] sudo gdb -p $$
+(gdb) call (int) setenv("TEST", "1234", 1)
+$1 = 0
+(gdb) call (char*) getenv("TEST")
+$2 = 0x55f19ff5edc0 "1234"
+(gdb) detach
+(gdb) quit
+$] echo "TEST=$TEST"
+TEST=1234
