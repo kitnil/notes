@@ -630,3 +630,33 @@ SELECT Db, User FROM mysql.db WHERE Db = b224436_yles
 
 - https://www.erlang-solutions.com/blog/rabbitmq-mirrored-queues-gotchas.html
 - https://rabbitmq.github.io/rabbitmq-perf-test/stable/htmlsingle/
+
+* TODO HMS
+
+https://kibana.intr/app/kibana#/doc/91047960-287e-11e8-9fc4-d7eee19a3ab7/logstash-hms-2020.06.13/doc/?id=qzHfrHIBCRVG0yqklxFP
+#+BEGIN_SRC json
+  {
+    "_index": "logstash-hms-2020.06.13",
+    "_type": "doc",
+    "_id": "qzHfrHIBCRVG0yqklxFP",
+    "_score": 1,
+    "_source": {
+      "service": "si",
+      "class_name": "r.m.h.s.s.BCryptOrMD5PasswordEncoder",
+      "log_message": "Encoded password does not look like BCrypt",
+      "stack": "hms2",
+      "sleuth_trace": "e47fd0c62790042d",
+      "sleuth_span": "12d335993729a7e8",
+      "thread_name": "nio-9999-exec-2",
+      "sleuth_exportable": "false",
+      "container_id": "869b044a4b2cfef6f11a2f82ecfc392e1bcfb9cf0218dd6507a96b9e31a699d9",
+      "@timestamp": "2020-06-13T08:49:52.532Z",
+      "log_level": "WARN"
+    },
+    "fields": {
+      "@timestamp": [
+        "2020-06-13T08:49:52.532Z"
+      ]
+    }
+  }
+#+END_SRC
