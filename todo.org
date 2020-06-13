@@ -633,6 +633,8 @@ SELECT Db, User FROM mysql.db WHERE Db = b224436_yles
 
 * TODO HMS
 
+-Hystrix AND -ftp-user AND -eureka1 AND -eureka2 AND -eureka3 AND -Cache AND -Discarding AND -Task AND -Роскомнадзором AND -InvalidTokenException AND -gogetssl AND -Данные AND -Someone
+
 https://kibana.intr/app/kibana#/doc/91047960-287e-11e8-9fc4-d7eee19a3ab7/logstash-hms-2020.06.13/doc/?id=qzHfrHIBCRVG0yqklxFP
 #+BEGIN_SRC json
   {
