@@ -27,6 +27,10 @@ https://mikegerwitz.com/projects/easejs/
 ** janneke
 https://gitlab.com/janneke/guix.git
 
+* Repository
+
+- [[https://github.com/UMCUGenetics/guix-additions][guix-additions]]
+
 * Cheat sheet
 
   - oleg@guixsd ~/src/guix$ grep -R 'define-public zlib\|define-public luajit\|define-public ncurses\|define-public jsoncpp\|define-public libb64\|define-public openssl\|define-public curl\|define-public jq\|define-public gcc\|define-public elfutils\|define-public tbb\|define-public c-ares\|define-public protobuf\|define-public grpc' gnu/packages/*.scm | cut -d: -f 1 | sort -u | xargs grep define-module  | cut -d: -f 2 | awk '{ print $2, $3, $4 }'
