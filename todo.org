@@ -669,3 +669,58 @@ add tests for majordomo passwords in 052d82a90d27d5fad97777d95c75d5d8d9cdd2a0
 
 * swank
 Does anyone uses swank on recent guix?  I got an error "don't know how to require sb-introspect" and not sure
+
+#+begin_example
+  This is SBCL 2.0.5, an implementation of ANSI Common Lisp.
+  More information about SBCL is available at <http://www.sbcl.org/>.
+
+  SBCL is free software, provided as is, with absolutely no warranty.
+  It is mostly in the public domain; some portions are provided under
+  BSD-style licenses.  See the CREDITS and COPYING files in the
+  distribution for more information.
+  ,* (require "asdf") (load "/gnu/store/8d8r03d2w023wzlagpkdzsazfgqbaidf-cl-slime-swank-2.24/share/common-lisp/systems/swank.asd")
+  ("ASDF" "asdf" "UIOP" "uiop")
+  ,* T
+  ,* (require :swank)
+  ; compiling file "/gnu/store/8d8r03d2w023wzlagpkdzsazfgqbaidf-cl-slime-swank-2.24/share/common-lisp/source/cl-slime-swank/swank-loader.lisp" (written 01 JAN 1970 03:00:01 AM):
+  ; processing (DEFPACKAGE :SWANK-LOADER ...)
+  ; processing (IN-PACKAGE :SWANK-LOADER)
+  ; processing (DEFVAR *STARTED-FROM-EMACS* ...)
+  ; processing (DEFVAR *SOURCE-DIRECTORY* ...)
+  ; processing (DEFPARAMETER *SYSDEP-FILES* ...)
+  ; processing (DEFPARAMETER *IMPLEMENTATION-FEATURES* ...)
+  ; processing (DEFPARAMETER *OS-FEATURES* ...)
+  ; processing (DEFPARAMETER *ARCHITECTURE-FEATURES* ...)
+  ; processing (DEFUN Q ...)
+  ; processing (DEFUN LISP-VERSION-STRING ...)
+  ; processing (DEFUN UNIQUE-DIR-NAME ...)
+  ; processing (DEFUN FILE-NEWER-P ...)
+  ; processing (DEFUN STRING-STARTS-WITH ...)
+  ; processing (DEFUN SLIME-VERSION-STRING ...)
+  ; processing (DEFUN DEFAULT-FASL-DIR ...)
+  ; processing (DEFVAR *FASL-DIRECTORY* ...)
+  ; processing (DEFUN BINARY-PATHNAME ...)
+  ; processing (DEFUN HANDLE-SWANK-LOAD-ERROR ...)
+  ; processing (DEFUN COMPILE-FILES ...)
+  ; processing (DEFUN LOAD-USER-INIT-FILE ...)
+  ; processing (DEFUN LOAD-SITE-INIT-FILE ...)
+  ; processing (DEFUN SRC-FILES ...)
+  ; processing (DEFVAR *SWANK-FILES* ...)
+  ; processing (DEFVAR *CONTRIBS* ...)
+  ; processing (DEFUN APPEND-DIR ...)
+  ; processing (DEFUN CONTRIB-DIR ...)
+  ; processing (DEFUN LOAD-SWANK ...)
+  ; processing (DEFUN DELETE-STALE-CONTRIB-FASL-FILES ...)
+  ; processing (DEFUN COMPILE-CONTRIBS ...)
+  ; processing (DEFUN LOADUP ...)
+  ; processing (DEFUN SETUP ...)
+  ; processing (DEFUN LIST-SWANK-PACKAGES ...)
+  ; processing (DEFUN DELETE-PACKAGES ...)
+  ; processing (DEFUN INIT ...)
+  ; processing (DEFUN DUMP-IMAGE ...)
+  ; processing (DEFUN LIST-FASLS ...)
+
+  ; wrote /home/oleg/.cache/common-lisp/sbcl-2.0.5-linux-x64/gnu/store/8d8r03d2w023wzlagpkdzsazfgqbaidf-cl-slime-swank-2.24/share/common-lisp/source/cl-slime-swank/swank-loader-tmpGHU3ALSV.fasl
+  ; compilation finished in 0:00:00.073
+  ("SB-BSD-SOCKETS" "SB-INTROSPECT" "SB-POSIX" "SB-CLTL2")
+#+end_example
