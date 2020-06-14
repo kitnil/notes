@@ -666,3 +666,7 @@ https://kibana.intr/app/kibana#/doc/91047960-287e-11e8-9fc4-d7eee19a3ab7/logstas
 * TODO dotfiles
   SCHEDULED: <2020-06-14 Sun>
 add tests for majordomo passwords in 052d82a90d27d5fad97777d95c75d5d8d9cdd2a0
+
+
+* swank
+Does anyone uses swank on recent guix?  I got an error "don't know how to require sb-introspect" and not sure
