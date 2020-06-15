@@ -724,3 +724,5 @@ Does anyone uses swank on recent guix?  I got an error "don't know how to requir
   ; compilation finished in 0:00:00.073
   ("SB-BSD-SOCKETS" "SB-INTROSPECT" "SB-POSIX" "SB-CLTL2")
 #+end_example
+
+* [[You can check this by doing][You can check this by doing 'telnet 127.0.0.1 3306']]
