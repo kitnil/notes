@@ -1,3 +1,8 @@
+Kill thread
+#+BEGIN_SRC lisp
+  (sb-thread:terminate-thread (cadr (sb-thread:list-all-threads)))
+#+END_SRC
+
 - http://lispcookbook.github.io/cl-cookbook/
 - [[https://github.com/ahungry/puny-gui][ahungry/puny-gui: A Puny GUI System]]
 - elsconf 2020-04-27
