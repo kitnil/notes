@@ -612,11 +612,6 @@ root@ci ~/src/variety # mongo mongodb://ci.intr:27017/staffResourceController --
   - add tests
 - nixops
   - add nftables support to docker
-- jenkins.intr
-  - run vm and test reproducible
-  - TODO
-  for job in ${pkgs.jenkins-jobs-config.out}/bin/*yml ; do ${
-  *yml
 
 * TODO notabug curl move to script
 
