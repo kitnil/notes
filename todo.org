@@ -626,7 +626,7 @@ curl -X POST -vv -H "Content-Type: application/json" -H "Authorization: token $(
 
 SELECT Db, User FROM mysql.db WHERE Db = b224436_yles
 
-* TODO
+* TODO rabbit multiple nodes
 
 - https://www.erlang-solutions.com/blog/rabbitmq-mirrored-queues-gotchas.html
 - https://rabbitmq.github.io/rabbitmq-perf-test/stable/htmlsingle/
