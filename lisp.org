@@ -3,6 +3,7 @@ Kill thread
   (sb-thread:terminate-thread (cadr (sb-thread:list-all-threads)))
 #+END_SRC
 
+- [[https://github.com/robpike/lisp][robpike/lisp: Toy Lisp 1.5 interpreter]]
 - http://lispcookbook.github.io/cl-cookbook/
 - [[https://github.com/ahungry/puny-gui][ahungry/puny-gui: A Puny GUI System]]
 - elsconf 2020-04-27
