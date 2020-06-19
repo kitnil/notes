@@ -220,59 +220,6 @@ https://jenkins.intr/job/ci/job/chef-workstation/job/master/5/console
 [[file:~/majordomo/hms/taskexecutor/src/python/taskexecutor/resprocessor.py::os.makedirs(os.path.join(self.resource.homeDir,%20"logs"),%20mode=0o755,%20exist_ok=True)]]
 [[file:~/majordomo/hms/taskexecutor/src/python/taskexecutor/sysservice.py::os.chown(home_dir,%20uid,%20uid)]]
 
-* TODO http-fileserver
-  SCHEDULED: <2020-04-30 Thu>
-#+begin_example
-  я чистый gz не юзал
-  ```gzip -c .emacs > emacs.gz
-  $(nix-build '<nixpkgs>' --no-out-link -A libarchive)/bin/bsdtar -xf emacs.gz```
-  `bsdtar: Error opening archive: Unrecognized archive format`
-  Сложна.
-  bsdtar наверное для tar
-  :kekw:
-  ```$(nix-build '<nixpkgs>' --no-out-link -A libarchive)/bin/bsdcat emacs.gz```
-  :aw_yeah:
-  ```oleg@guixsd ~$ file emacs.gz 
-  emacs.gz: gzip compressed data, was ".emacs", last modified: Wed Apr 29 14:04:10 2020, from Unix, original size 7706```
-  ```oleg@guixsd ~$ file --mime emacs.gz 
-  emacs.gz: application/x-gzip; charset=binary```
-  ```
-  3 matches for "format" in buffer: unarc.lua
-       48:function unarc(uid, dst_dir, arc_len, format)
-       66:  if format == 'application/x-rar-compressed' then
-       77:  elseif format == 'application/x-7z-compressed' then
-  [edit] ```3 matches for "format" in buffer: unarc.lua
-       48:function unarc(uid, dst_dir, arc_len, format)
-       66:  if format == 'application/x-rar-compressed' then
-       77:  elseif format == 'application/x-7z-compressed' then```
-  (Old message: ```
-  3 matches for "format" in buffer: unarc.lua
-       48:function unarc(uid, dst_dir, arc_len, format)
-       66:  if format == 'application/x-rar-compressed' then
-       77:  elseif format == 'application/x-7z-compressed' then)
-  ```  else
-      args = {'s6-setuidgid', uid..':'..uid,
-              'foreground',
-              ' redirfd', ' -w', ' 2', ' '..stderr_file,
-              ' bsdtar', ' -C', ' '..dst_dir, ' -xf', ' -',
-              '',
-              'redirfd', '-w', '1', exitcode_file, 'importas', '?', '?', 's6-echo', '${?}'}
-    end```
-  Эй, ну почти сделали же :b
-  fallocate, воу, а я dd юзал
-  ```
-      static contentTypesForArchiveUpload() {
-          return [
-              {name: 'application/x-tar', extensions: ['.tar']},
-              {name: 'application/x-compressed', extensions: ['.tar.gz', '.tgz']},
-              {name: 'application/x-rar-compressed', extensions: ['.rar']},
-              {name: 'application/x-zip-compressed', extensions: ['.zip']},
-              {name: 'application/x-7z-compressed', extensions: ['.7z']}
-          ]
-      }```
-  наверное не сложно пропустить
-#+end_example
-
 * TODO Clean up src and archive/src
   SCHEDULED: <2020-05-03 Sun>
 
