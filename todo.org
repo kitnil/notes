@@ -75,7 +75,7 @@
   SCHEDULED: <2020-03-15 Sun>
 * TODO https://travis-ci.org/github/mkoppanen/imagick/jobs/527363899/config
   SCHEDULED: <2020-03-31 Tue>
-* TODO Switch to python test in Majordomo nixpkgs
+* TODO Switch to python test in Majordomo nixpkgs after [[https://github.com/php/php-src/blob/master/.travis.yml][php-src/.travis.yml at master · php/php-src]]
   SCHEDULED: <2020-09-01 Tue>
 #+begin_example
       start_all()
