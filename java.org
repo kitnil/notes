@@ -1,3 +1,14 @@
+#+BEGIN_SRC java
+  //usr/bin/env javac "$0" && exec /usr/bin/env java HelloWorld
+
+  public class HelloWorld {
+     public static void main(String[] args) {
+        // Prints "Hello, World" in the terminal window.
+        System.out.println("Hello, World");
+     }
+  }
+#+END_SRC
+
 https://www.youtube.com/watch?v=t1-YZ6bF-g0
 - Arrays.stream(new String[] {"hello", "world", "guys"}).sorted().findFirst()
 - Arrays.stream(new String[] {"where", "hello", "world", "guys"}).filter(str -> str.startsWith("w")).sorted().forEach(System.out::println))
