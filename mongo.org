@@ -1,2 +1,33 @@
+#+BEGIN_SRC python
+#!/usr/bin/env python3
+
+from bson.objectid import ObjectId
+from pprint import pprint as pp
+import ipaddress
+import json
+import pymongo
+import sys
+
+myclient = pymongo.MongoClient("MONGO")
+websites = myclient["usersResourceController"]["webSites"].find({})
+service = myclient["staffResourceController"]["service"]
+
+def get_service(website):
+    try:
+        s = service.find_one({"_id": ObjectId(website["serviceId"])})
+        return [website["_id"], s.get("instanceProps").get("security_level")]
+    except:
+        sys.stderr.write("ERROR: {}".format(website["_id"]))
+
+for website in websites:
+    try:
+        s = get_service(website)
+        if s[1] is not None and s[1] != "default":
+            sys.stdout.write("{} {}\n".format(s[0], s[1]))
+    except:
+        sys.stderr.write("ERROR: {}".format(website["_id"]))
+
+#+END_SRC
+
 - [[https://www.shellhacks.com/ru/mongodb-create-user-database-admin-root/][MongoDB: Создать Пользователя - Для Базы Данных, Admin, Root - ShellHacks]]
 - [[https://github.com/variety/variety][variety/variety: A schema analyzer for MongoDB]]
