@@ -618,7 +618,7 @@ root@ci ~/src/variety # mongo mongodb://ci.intr:27017/staffResourceController --
   for job in ${pkgs.jenkins-jobs-config.out}/bin/*yml ; do ${
   *yml
 
-* TODO 
+* TODO notabug curl move to script
 
 -m 'reverse:https://notabug.org'
 
