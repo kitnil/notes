@@ -12,7 +12,7 @@ nix-repl> mynixos2.config.environment.etc."mailman.cfg".text
 - Build patched package without tests
 : $((git commit --amend -m 'patch' src/vulnix/output.py; git diff HEAD~..HEAD > 1.patch; nix repl /home/oleg/.nix-defexpr/channels/nixos-unstable <<< ':b (import (fetchgit {url = "https://cgit.duckdns.org/git/nixos/nixpkgs"; rev = "329102c47bd1c68f0acdf4feec64232202948c7a"; sha256 = "1y416j4bw46a40asdai3zcb4qim5f6pg46kr1n0pv0vy56mlbv8a";}) {}).vulnix.overrideAttrs(old: {patches = [./1.patch]; doCheck = false; checkPhase = ""; preCheckPhase = "rm -rf src/vulnix/tests; ls -la; ls -la src; ls -la src/vulnix"; installCheckPhase = ""; doInstallCheck = false;})') | awk '/out ->/ { print $NF }')/bin/vulnix --json /nix/store/zavn4np1jvm79f0rafkv0p1mrag09qkz-bash-4.4-p23/
 
-- [[https://github.com/nix-community/NUR][nix-community/NUR: Nix User Repository: User contributed nix packages [maintainer=@Mic92]]]
+- [[https://github.com/nix-community/NUR][nix-community/NUR: Nix User Repository: User contributed nix packages maintainer=@Mic92]]
 
 - [[https://github.com/cdepillabout/nix-query-tree-viewer][cdepillabout/nix-query-tree-viewer: GTK viewer for the output of `nix store --query --tree`]]
 
