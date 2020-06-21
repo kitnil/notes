@@ -655,3 +655,7 @@ Majordomo. Ориентировочно корпоратив перенесен 
   SCHEDULED: <2020-06-22 Mon>
 
   invoke groovy to clear jobs as bash function
+
+* TODO
+
+: select * from equip_servers where name not like "mj%" and name not like "nh%" order by name;
