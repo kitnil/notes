@@ -6422,3 +6422,14 @@ information that should help you find out what is causing the crash.
   #+END_SRC
 
   https://ru.bmstu.wiki/Percona_XtraBackup
+
+* join
+
+[[https://www.dummies.com/programming/databases/combine-information-from-multiple-mysql-tables-with-join/][Combine Information from Multiple MySQL Tables with JOIN]]
+
+Inner join: The results table produced by an inner join contains only rows
+that existed in both tables.
+
+Outer join: The combined table produced by an outer join contains all rows
+that existed in one table with blanks in the columns for the rows that did not
+exist in the second table.
