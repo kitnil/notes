@@ -1,0 +1,1 @@
+mount -t fuse -o rw,allow_other,debug sshfs#oleg@workstation:/home/oleg /mnt/test
