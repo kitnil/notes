@@ -1,5 +1,8 @@
 * Cheat sheet
 
+- config path
+  : /config/juniper.conf.gz
+
 - show previous commit
   origin: https://www.juniper.net/documentation/en_US/junos/topics/reference/command-summary/show-system-rollback.html
   : show system rollback 2 compare 1
