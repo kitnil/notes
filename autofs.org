@@ -1,1 +1,2 @@
 mount -t fuse -o rw,allow_other,debug sshfs#oleg@workstation:/home/oleg /mnt/test
+automount  -f -v -d -p /tmp/autofs.pid -t 5 /etc/autofs/auto.master
