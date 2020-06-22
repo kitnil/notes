@@ -659,3 +659,7 @@ Majordomo. Ориентировочно корпоратив перенесен 
 * TODO
 
 : select * from equip_servers where name not like "mj%" and name not like "nh%" order by name;
+
+* TODO
+
+  subscription on sieve directory via imap kills dovecot
