@@ -672,4 +672,8 @@ Majordomo. Ориентировочно корпоратив перенесен 
 
 * TODO autofs
 
-фгещаы
+#:environment-variables (list (string-append "PATH="
+                                                                   #$sshfs "/bin" ":"
+                                                                   #$openssh "/bin" ":"
+                                                                   #$fuse "/bin" ":"
+                                                                   #$autofs "/sbin"))
