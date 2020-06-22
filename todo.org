@@ -677,3 +677,7 @@ Majordomo. Ориентировочно корпоратив перенесен 
                                                                    #$openssh "/bin" ":"
                                                                    #$fuse "/bin" ":"
                                                                    #$autofs "/sbin"))
+
+* TODO search path
+
+echo $PATH | tr ':' '\n' | xargs -I{} find {} -name '*top*'
