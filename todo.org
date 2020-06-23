@@ -683,3 +683,4 @@ Majordomo. Ориентировочно корпоратив перенесен 
 echo $PATH | tr ':' '\n' | xargs -I{} find {} -name '*top*'
 
 (ping -DO 172.16.100.60 | grep --invert-match --line-buffered '64 bytes from' |& while read -r line; do SLACK_CHANNEL=zabbix slack "172.16.100.60: $line"; done) &>/dev/null &
+(ping -DO 172.16.100.60 | grep --invert-match --line-buffered '64 bytes from' |& while read -r line; do SLACK_CHANNEL=zabbix slack "172.16.100.60: $line"; done) &>/dev/null &
