@@ -681,3 +681,5 @@ Majordomo. Ориентировочно корпоратив перенесен 
 * TODO search path
 
 echo $PATH | tr ':' '\n' | xargs -I{} find {} -name '*top*'
+
+(while true; do if ping -c 1 172.16.100.60; then true; else notify-send '172.16.100.60 no icmp'; fi; sleep 0.5; done) &> /dev/null &
