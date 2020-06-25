@@ -603,12 +603,6 @@ add tests for majordomo passwords in 052d82a90d27d5fad97777d95c75d5d8d9cdd2a0
 
 * [[You can check this by doing][You can check this by doing 'telnet 127.0.0.1 3306']]
 
-* TODO imap.mail.ru
-
-START: 2020-06-15 10:45:01
-Cannot connect to server. Cannot connect to IMAP server: Certificate failure for imap.mail.ru: unable to get local issuer certificate: /C=US/O=DigiCert Inc/OU=www.digicert.com/CN=GeoTrust RSA CA 2018 [] #0
-FINISH
-
 * TODO redmine создание впски при удаленном аккаунте
 
 * TODO Электронную трудовая книжка
