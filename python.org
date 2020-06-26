@@ -70,6 +70,11 @@ https://docs.python.org/3/library/unittest.html
 
 - [[https://github.com/jmcs/py-password-store/blob/master/password_store/credentials.py][py-password-store/credentials.py at master · jmcs/py-password-store]]
 
+* ipython
+
+- %lsmagic
+- %timeit
+
 * sh
 
 #+BEGIN_SRC python
