@@ -2,7 +2,7 @@
 
 - strace -e open |& grep -v SIGAL
 
-- strace -e trace=network
+- strace -e trace=networkg
 
 - strace -e trace=open,access -o strace.log uname
 
