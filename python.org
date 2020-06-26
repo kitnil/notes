@@ -76,3 +76,9 @@ https://docs.python.org/3/library/unittest.html
   import sh
   sh.ssh("web30.intr", "sudo --stdin uptime", _in="SUDO_PASSWORD\n")
 #+END_SRC
+
+bake
+#+BEGIN_SRC python
+web30 = sh.ssh.bake("web30.intr")
+web30("sudo --stdin uptime", _in="SUDO_PASSWORD\n\n")
+#+END_SRC
