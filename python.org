@@ -66,6 +66,10 @@ https://docs.python.org/3/library/unittest.html
       unittest.main()
 #+END_SRC
 
+* password-store
+
+- [[https://github.com/jmcs/py-password-store/blob/master/password_store/credentials.py][py-password-store/credentials.py at master · jmcs/py-password-store]]
+
 * sh
 
 #+BEGIN_SRC python
