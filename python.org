@@ -83,4 +83,5 @@ web30 = sh.ssh.bake("web30.intr")
 web30("sudo --stdin uptime", _in="SUDO_PASSWORD\n")
 web30_sudo = web30.sudo.bake("--stdin", _in="SUDO_PASSWORD\n")
 web30_sudo("id")
+web33.ls(web33.getent("passwd u7590").stdout.split(b":")[5])
 #+END_SRC
