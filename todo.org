@@ -678,3 +678,7 @@ echo $PATH | tr ':' '\n' | xargs -I{} find {} -name '*top*'
 
 127.0.0.1 Мы есть в rbl
 127.0.0.76 Рейтинг
+
+* TODO
+- clitest
+- xautolock -time 1 -locker 'chromium --app="https://grafana.intr/d/6QgXJjmik/upstream-interfaces-traffic?orgId=1"'
