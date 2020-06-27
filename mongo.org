@@ -1,3 +1,8 @@
+* Cheatsheet
+
+- pipe to mongo
+: mongoimport --db=video --collection youtube --type json --jsonArray
+
 #+BEGIN_SRC python
 #!/usr/bin/env python3
 
