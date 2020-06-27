@@ -684,4 +684,6 @@ echo $PATH | tr ':' '\n' | xargs -I{} find {} -name '*top*'
 - xautolock -time 1 -locker 'chromium --app="https://grafana.intr/d/6QgXJjmik/upstream-interfaces-traffic?orgId=1"'
 #+BEGIN_SRC bash
   for host in web97.intr web98.intr; do connect ssh "$host" -- uptime | jc --uptime | jq "{host: \"$host\"} + ."; done | jq -s | jtbl
+
+  for file in $HOME/.ssh/*web??.intr:22; do host="$(basename $file | cut -d: -f 1 | cut -d@ -f 2)"; connect ssh "$host" -- uptime | jc --uptime | jq "{host: \"$host\"} + ."; done | jq -s | jtbl
 #+END_SRC
