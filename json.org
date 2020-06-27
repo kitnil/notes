@@ -1,3 +1,9 @@
+* jq and jtbl
+#+BEGIN_SRC bash
+  ssh web31.intr -- ifconfig | jc --ifconfig | jq --raw-output "[.[] | {\"interface\": .name, \"ipv4_addr\": .ipv4_addr}]" | jtbl
+#+END_SRC
+
+* Links
 - [[https://github.com/antonmedv/red][antonmedv/red: Terminal log analysis tools]]
 - [[https://github.com/kellyjonbrazil/jc][kellyjonbrazil/jc]] This tool
   serializes the output of popular gnu linux command line tools and file types
