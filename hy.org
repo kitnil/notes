@@ -4,7 +4,11 @@
 #+BEGIN_SRC hy
   (import sh)
   ((. ((. (sh.ssh.bake "web33.intr") sudo bake) "--stdin" :_in "SUDO_PASSWORD\n") id))
+
   (get (json.loads (. (sh.jc ((. ((. (sh.ssh.bake "web33.intr") sudo bake) "--stdin" :_in "SUDO_PASSWORD\n") uptime)) "--uptime") stdout)) "time")
+
+  (defn host-uptime [host] (get (json.loads (. (sh.jc ((. ((. (sh.ssh.bake host) sudo bake) "--stdin" :_in "SUDO_PASSWORD\n") uptime)) "--uptime") stdout)) "time"))
+  ;; [['web30.intr', '11:10:51'], ['web31.intr', '11:10:57']]
 #+END_SRC
 
 * Cheatsheet
