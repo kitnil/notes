@@ -1,0 +1,4 @@
+#+BEGIN_SRC bash
+  #!/usr/bin/env -S bash -c 'eval "$(fzf --preview-window=up:30%:wrap < $0)"'
+  for file in $HOME/.ssh/*web??.intr:22; do host="$(basename $file | cut -d: -f 1 | cut -d@ -f 2)"; connect ssh "$host" -- uptime | jc --uptime | jq "{host: \"$host\"} + ."; done | jq -s | jtbl # show uptime for all hosts
+#+END_SRC
