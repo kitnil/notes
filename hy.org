@@ -1,3 +1,13 @@
+
+* sh
+
+#+BEGIN_SRC hy
+  (import sh)
+  ((. ((. (sh.ssh.bake "web33.intr") sudo bake) "--stdin" :_in "SUDO_PASSWORD\n") id))
+#+END_SRC
+
+* Cheatsheet
+
 #+BEGIN_SRC hy
   (import subprocess)
   (subprocess.call ["pip" "install" "PyGithub"])
