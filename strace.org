@@ -4,6 +4,8 @@
 
 - strace -e trace=networkg
 
+- strace -e trace=file
+
 - strace -e trace=open,access -o strace.log uname
 
 - strace -e trace=\!mmap -o strace.log uname
