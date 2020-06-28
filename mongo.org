@@ -8,7 +8,7 @@
 * Cheatsheet
 
 - pipe to mongo
-: mongoimport --db=video --collection youtube --type json --jsonArray
+: youtube-dl --ignore-errors --dump-single-json $url | jq '.entries' | mongoimport --db=video --collection youtube --type json --jsonArray
 
 - mongo to json
 : mongo --quiet video --eval 'DBQuery.shellBatchSize = 300; db.getCollection("youtube").find({}, {_id:0, "title": "title", "webpage_url": "webpage_url"}).pretty()' | jq --raw-output '[.webpage_url, .title] | @tsv'
