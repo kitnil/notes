@@ -11,7 +11,7 @@
 : (set -ex; PATH=/gnu/store/b161g812k8mhch6qamvrjjgk04zn6wr7-youtube-dl-2020.06.16/bin:$PATH; for url in https://www.youtube.com/c/StrangeLoopConf https://www.youtube.com/user/fosdemtalks https://www.youtube.com/user/hitbsecconf https://www.youtube.com/c/CloudBeesTV https://www.youtube.com/user/dockerrun; do youtube-dl --ignore-errors --dump-single-json $url | jq '.entries' | mongoimport --db=video --collection youtube --type json --jsonArray; done)
 
 - mongo to json
-: mongo --quiet video --eval 'DBQuery.shellBatchSize = 300; db.getCollection("youtube").find({}, {_id:0, "title": "title", "webpage_url": "webpage_url"}).pretty()' | jq --raw-output '[.webpage_url, .title] | @tsv'
+: mongo --quiet video --eval 'DBQuery.shellBatchSize = 300; db.getCollection("youtube").find({"uploader_id" : "UCvRRgjjKvyLNB9yx3oGu2Xw"}, {_id:0, "title":1, "webpage_url":1, "description":1}).pretty()' | jq --raw-output '[.webpage_url, .title, .description] | @tsv' | sort -k 2
 
 - backup and restore
 [[https://github.com/arshadkazmi42/ak-cli#mongo][Mongo]]
