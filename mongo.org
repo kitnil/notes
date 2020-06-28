@@ -10,6 +10,9 @@
 - pipe to mongo
 : mongoimport --db=video --collection youtube --type json --jsonArray
 
+- backup and restore
+[[https://github.com/arshadkazmi42/ak-cli#mongo][Mongo]]
+
 #+BEGIN_SRC python
 #!/usr/bin/env python3
 
