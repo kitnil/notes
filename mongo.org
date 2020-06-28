@@ -10,6 +10,9 @@
 - pipe to mongo
 : mongoimport --db=video --collection youtube --type json --jsonArray
 
+- mongo to json
+: mongo --quiet video --eval 'DBQuery.shellBatchSize = 300; db.getCollection("youtube").find({}, {_id:0, "title": "title", "webpage_url": "webpage_url"}).pretty()'
+
 - backup and restore
 [[https://github.com/arshadkazmi42/ak-cli#mongo][Mongo]]
 
