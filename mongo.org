@@ -8,7 +8,7 @@
 * Cheatsheet
 
 - pipe to mongo
-: youtube-dl --ignore-errors --dump-single-json $url | jq '.entries' | mongoimport --db=video --collection youtube --type json --jsonArray
+: (set -ex; PATH=/gnu/store/b161g812k8mhch6qamvrjjgk04zn6wr7-youtube-dl-2020.06.16/bin:$PATH; for url in https://www.youtube.com/c/StrangeLoopConf https://www.youtube.com/user/fosdemtalks https://www.youtube.com/user/hitbsecconf https://www.youtube.com/c/CloudBeesTV https://www.youtube.com/user/dockerrun; do youtube-dl --ignore-errors --dump-single-json $url | jq '.entries' | mongoimport --db=video --collection youtube --type json --jsonArray; done)
 
 - mongo to json
 : mongo --quiet video --eval 'DBQuery.shellBatchSize = 300; db.getCollection("youtube").find({}, {_id:0, "title": "title", "webpage_url": "webpage_url"}).pretty()' | jq --raw-output '[.webpage_url, .title] | @tsv'
