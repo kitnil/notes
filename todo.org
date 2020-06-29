@@ -698,3 +698,6 @@ echo $PATH | tr ':' '\n' | xargs -I{} find {} -name '*top*'
         '())
 
 #+END_SRC
+
+* guix package [[https://github.com/mrsarm/mongotail/blob/master/setup.py][mongotail/setup.py at master · mrsarm/mongotail]]
+  SCHEDULED: <2020-07-04 Sat>
