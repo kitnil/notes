@@ -689,6 +689,22 @@ echo $PATH | tr ':' '\n' | xargs -I{} find {} -name '*top*'
 #+END_SRC
 
 * TODO bats on guix
+  SCHEDULED: <2020-07-04 Sat>
 
          ;; (substitute* "libexec/bats-core/bats"
          ;;   (("grep") (which "grep")))
+
+* TODO stumpwm loadavg
+  SCHEDULED: <2020-07-04 Sat>
+
+#+BEGIN_SRC lisp
+
+  ,@(if (> (temp-current) 60)
+        (list (make-string 4 :initial-element #\space))
+        '())
+
+  ,@(if (> (temp-current) 60)
+        (list '(:eval (format nil "LA: ~a" (loadavg))))
+        '())
+
+#+END_SRC
