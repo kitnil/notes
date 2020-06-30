@@ -698,3 +698,11 @@ echo $PATH | tr ':' '\n' | xargs -I{} find {} -name '*top*'
   SCHEDULED: <2020-07-04 Sat>
 
 * TODO 78.108.80.44 girls-frontline.ru www.girls-frontline.ru
+
+* TODO
+
+   JMS queues and AMQP queues have different semantics. For example, JMS  
+   sends queued messages to only one consumer. While AMQP queues do the same  
+   thing, AMQP producers do not send messages directly to queues. Instead, a  
+   message is sent to an exchange, which can go to a single queue or fan out  
+   to multiple queues, emulating the concept of JMS topics.   
