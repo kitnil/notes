@@ -1,0 +1,2 @@
+- delete comments
+: sed -e '/^[ \t]*#/d'
