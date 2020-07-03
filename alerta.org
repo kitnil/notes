@@ -1,0 +1,2 @@
+- alerta query --filter status=ack
+- alerta query --filter service=mysql.quota
