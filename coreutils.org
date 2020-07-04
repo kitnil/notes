@@ -16,7 +16,6 @@
 - du :: [[https://github.com/bootandy/dust][dust]]
 - find :: [[https://github.com/sharkdp/fd][fd]]
 - find :: [[https://github.com/lotabout/skim][skim]]
-- grep :: [[https://github.com/BurntSushi/ripgrep][ripgrep]]
 - ls :: [[https://the.exa.website][exa]]
 - ps :: [[https://github.com/dalance/procs][procs]]
 - time :: [[https://github.com/sharkdp/hyperfine][hyperfine]]
@@ -24,6 +23,9 @@
 - wc -l :: [[https://github.com/XAMPPRocky/tokei][tokei]]
 - cut :: [[https://github.com/theryangeary/choose][theryangeary/choose: A human-friendly and fast alternative to cut and (sometimes) awk]]
 
+- grep
+  - [[https://github.com/BurntSushi/ripgrep][ripgrep]]
+  - [[https://github.com/tomnomnom/gf][tomnomnom/gf: A wrapper around grep, to help you grep for things]]
 - sed
   - [[https://github.com/chmln/sd][sd]]
   - [[https://github.com/ms-jpq/sad][ms-jpq/sad: CLI search and replace | Space Age seD]]
