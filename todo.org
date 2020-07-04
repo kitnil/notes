@@ -720,3 +720,5 @@ echo $PATH | tr ':' '\n' | xargs -I{} find {} -name '*top*'
   }
 
 #+END_SRC
+
+* [[https://github.com/liushihao456/company-tip][liushihao456/company-tip: Popup documentation for completion candidates using emacs overlays]]
