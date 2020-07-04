@@ -708,3 +708,15 @@ echo $PATH | tr ':' '\n' | xargs -I{} find {} -name '*top*'
    to multiple queues, emulating the concept of JMS topics.   
 
 * TODO [[https://github.com/lu0/rofi-blurry-powermenu][lu0/rofi-blurry-powermenu: Blurry fullscreen Powermenu for Rofi]]
+
+* TODO
+#+BEGIN_SRC bash
+  mjru-nginx-sites()
+  {
+      connect ssh nginx1-mr.intr find /etc/nginx/sites-available -type f | while IFS= read -r file
+      do
+          connect ssh nginx1-mr.intr cat $file | nginx-server-name
+      done
+  }
+
+#+END_SRC
