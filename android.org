@@ -8,6 +8,7 @@
 
 #+BEGIN_SRC bash
   #!/bin/bash
+  # https://github.com/dwisiswant0/xiaomi-backup/blob/master/backup.sh
 
   PACKAGES=`adb shell pm list packages -f | cut -d ":" -f2`
 
