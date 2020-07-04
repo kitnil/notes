@@ -21,8 +21,10 @@
 - time :: [[https://github.com/sharkdp/hyperfine][hyperfine]]
 - top :: [[https://github.com/bvaisvil/zenith][zenith]]
 - wc -l :: [[https://github.com/XAMPPRocky/tokei][tokei]]
-- cut :: [[https://github.com/theryangeary/choose][theryangeary/choose: A human-friendly and fast alternative to cut and (sometimes) awk]]
 
+- cut
+  - [[https://github.com/theryangeary/choose][theryangeary/choose: A human-friendly and fast alternative to cut and (sometimes) awk]]
+  - [[https://github.com/greymd/teip][greymd/teip: Select partial standard input and replace with the result of another command efficiently]]
 - grep
   - [[https://github.com/BurntSushi/ripgrep][ripgrep]]
   - [[https://github.com/acheronfail/repgrep][acheronfail / repgrep]]
