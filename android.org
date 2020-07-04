@@ -3,3 +3,17 @@
 - [[https://github.com/aind-containers/aind][aind-containers/aind: AinD: Android in Docker. Ain't an emulator.]]
 - [[https://github.com/bitrise-io/android][bitrise-io/android: Android Docker image]]
 - [[https://github.com/google/bundletool][google/bundletool: Bundletool is a command-line tool to manipulate Android App Bundles]]
+
+* Backup
+
+#+BEGIN_SRC bash
+  #!/bin/bash
+
+  PACKAGES=`adb shell pm list packages -f | cut -d ":" -f2`
+
+  for package in ${PACKAGES}; do
+      apk=`echo ${package} | grep -Eo ".*\.apk"`
+      pkg=`echo ${package} | rev | cut -d "=" -f1 | rev`
+      [[ ${apk} =~ "/data"* ]] && adb pull "${apk}" "${PWD}/${pkg}.apk"
+  done
+#+END_SRC
