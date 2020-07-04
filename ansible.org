@@ -1,3 +1,5 @@
+- [[https://github.com/roles-ansible/role-grafana-kiosk][roles-ansible/role-grafana-kiosk: Ansible role to deploy the grafana-kiosk]]
+
 - docker memory
 #+BEGIN_SRC yaml
   #!/usr/bin/env ansible-playbook
