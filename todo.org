@@ -706,3 +706,5 @@ echo $PATH | tr ':' '\n' | xargs -I{} find {} -name '*top*'
    thing, AMQP producers do not send messages directly to queues. Instead, a  
    message is sent to an exchange, which can go to a single queue or fan out  
    to multiple queues, emulating the concept of JMS topics.   
+
+* TODO [[https://github.com/lu0/rofi-blurry-powermenu][lu0/rofi-blurry-powermenu: Blurry fullscreen Powermenu for Rofi]]
