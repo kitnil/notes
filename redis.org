@@ -1,1 +1,3 @@
+- [[https://github.com/diego3g/rocketredis][diego3g/rocketredis: A beautiful Redis GUI]]
+
 : redis-cli -h redis.intr hgetall "mailboxes:test@test.wugi.info"
