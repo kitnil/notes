@@ -124,6 +124,10 @@ degradation:
   for pid in $(pidof rsync); do ionice -c 3 -p $pid; done
 #+END_SRC
 
+* Memory
+
+[[https://github.com/0x0f0f0f/memplot][0x0f0f0f/memplot: Generate image plots of processes' memory usage very quickly, within a single binary.]]
+
 * Networking
 
 oleg@guixsd ~$ ss --numeric --tcp --listening --no-header --oneline --processes '( sport = :5901 )'
