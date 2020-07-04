@@ -13,6 +13,8 @@ https://stackoverflow.com/questions/2482348/run-c-or-c-file-as-a-script
 #+END_SRC
 http://drandom.blogspot.com/2013/12/shebang-for-c-programs.html
 
+[[https://github.com/alcover/runc][alcover/runc: compile and run C code]]
+
 Alternative way use [[https://bellard.org/tcc/][tcc]]
 : #!/usr/bin/tcc -run
 
