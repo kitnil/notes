@@ -866,6 +866,8 @@ curl host01
 
 * systemd containers
 
+https://developers.redhat.com/blog/2016/09/13/running-systemd-in-a-non-privileged-container/
+
 1. Create and mount systemd cgroup
 #+BEGIN_SRC bash
   mkdir /sys/fs/cgroup/systemd
