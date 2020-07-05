@@ -725,3 +725,34 @@ echo $PATH | tr ':' '\n' | xargs -I{} find {} -name '*top*'
 
 ** TODO [[https://github.com/liushihao456/company-tip][liushihao456/company-tip: Popup documentation for completion candidates using emacs overlays]]
 ** TODO [[https://github.com/chester755/logstash-sample-mode][chester755/logstash-sample-mode: logstash-conf-mode recreated version]]
+
+* TODO openvpn
+#+begin_example
+  Jul  5 14:02:19 guixsd shepherd[1]: Service vpn-client has been started. 
+  Jul  5 14:02:20 guixsd openvpn[13556]: SENT CONTROL [office]: 'PUSH_REQUEST' (status=1)
+  Jul  5 14:02:20 guixsd openvpn[13556]: PUSH: Received control message: 'PUSH_REPLY,route 172.16.103.0 255.255.255.0 vpn_gateway,route 172.16.100.0 255.255.255.0,route 172.16.102.0 255.255.255.0,route 172.16.0.0 255.255.0.0,route 192.168.102.0 255.255.255.0,route 192.168.103.0 255.255.255.0,dhcp-option DOMAIN intr,dhcp-option DOMAIN-SEARCH intr majordomo.ru,dhcp-option DNS 172.16.103.2,dhcp-option DNS 172.16.102.2,route-gateway 172.16.103.1,ifconfig 172.16.103.183 255.255.255.0,peer-id 8,cipher AES-256-GCM'
+  Jul  5 14:02:20 guixsd openvpn[13556]: Options error: Unrecognized option or missing or extra parameter(s) in [PUSH-OPTIONS]:8: dhcp-option (2.4.9)
+  Jul  5 14:02:20 guixsd openvpn[13556]: OPTIONS IMPORT: --ifconfig/up options modified
+  Jul  5 14:02:20 guixsd openvpn[13556]: OPTIONS IMPORT: route options modified
+  Jul  5 14:02:20 guixsd openvpn[13556]: OPTIONS IMPORT: route-related options modified
+  Jul  5 14:02:20 guixsd openvpn[13556]: OPTIONS IMPORT: --ip-win32 and/or --dhcp-option options modified
+  Jul  5 14:02:20 guixsd openvpn[13556]: OPTIONS IMPORT: peer-id set
+  Jul  5 14:02:20 guixsd openvpn[13556]: OPTIONS IMPORT: adjusting link_mtu to 1657
+  Jul  5 14:02:20 guixsd openvpn[13556]: OPTIONS IMPORT: data channel crypto options modified
+  Jul  5 14:02:20 guixsd openvpn[13556]: Data Channel: using negotiated cipher 'AES-256-GCM'
+  Jul  5 14:02:20 guixsd openvpn[13556]: Outgoing Data Channel: Cipher 'AES-256-GCM' initialized with 256 bit key
+  Jul  5 14:02:20 guixsd openvpn[13556]: Incoming Data Channel: Cipher 'AES-256-GCM' initialized with 256 bit key
+  Jul  5 14:02:20 guixsd openvpn[13556]: ROUTE_GATEWAY 192.168.100.1/255.255.255.0 IFACE=enp6s0 HWADDR=00:25:22:a6:f6:2a
+  Jul  5 14:02:20 guixsd openvpn[13556]: TUN/TAP device tap0 opened
+  Jul  5 14:02:20 guixsd openvpn[13556]: TUN/TAP TX queue length set to 100
+  Jul  5 14:02:20 guixsd openvpn[13556]: /gnu/store/fmy9w7kfa30bnh6v5hdvwml7j133dm87-iproute2-5.7.0/sbin/ip link set dev tap0 up mtu 1500
+  Jul  5 14:02:20 guixsd openvpn[13556]: /gnu/store/fmy9w7kfa30bnh6v5hdvwml7j133dm87-iproute2-5.7.0/sbin/ip addr add dev tap0 172.16.103.183/24 broadcast 172.16.103.255
+  Jul  5 14:02:20 guixsd openvpn[13556]: /gnu/store/fmy9w7kfa30bnh6v5hdvwml7j133dm87-iproute2-5.7.0/sbin/ip route add 172.16.103.0/24 via 172.16.103.1
+  Jul  5 14:02:20 guixsd openvpn[13556]: ERROR: Linux route add command failed: external program exited with error status: 2
+  Jul  5 14:02:20 guixsd openvpn[13556]: /gnu/store/fmy9w7kfa30bnh6v5hdvwml7j133dm87-iproute2-5.7.0/sbin/ip route add 172.16.100.0/24 via 172.16.103.1
+  Jul  5 14:02:20 guixsd openvpn[13556]: /gnu/store/fmy9w7kfa30bnh6v5hdvwml7j133dm87-iproute2-5.7.0/sbin/ip route add 172.16.102.0/24 via 172.16.103.1
+  Jul  5 14:02:20 guixsd openvpn[13556]: /gnu/store/fmy9w7kfa30bnh6v5hdvwml7j133dm87-iproute2-5.7.0/sbin/ip route add 172.16.0.0/16 via 172.16.103.1
+  Jul  5 14:02:20 guixsd openvpn[13556]: /gnu/store/fmy9w7kfa30bnh6v5hdvwml7j133dm87-iproute2-5.7.0/sbin/ip route add 192.168.102.0/24 via 172.16.103.1
+  Jul  5 14:02:20 guixsd openvpn[13556]: /gnu/store/fmy9w7kfa30bnh6v5hdvwml7j133dm87-iproute2-5.7.0/sbin/ip route add 192.168.103.0/24 via 172.16.103.1
+  Jul  5 14:02:20 guixsd openvpn[13556]: Initialization Sequence Completed
+#+end_example
