@@ -756,3 +756,5 @@ echo $PATH | tr ':' '\n' | xargs -I{} find {} -name '*top*'
   Jul  5 14:02:20 guixsd openvpn[13556]: /gnu/store/fmy9w7kfa30bnh6v5hdvwml7j133dm87-iproute2-5.7.0/sbin/ip route add 192.168.103.0/24 via 172.16.103.1
   Jul  5 14:02:20 guixsd openvpn[13556]: Initialization Sequence Completed
 #+end_example
+
+* TODO [[https://www.google.com/search?hl=en&q=%22Options%20error%3A%20Unrecognized%20option%20or%20missing%20or%20extra%20parameter(s)%20in%20%5BPUSH%2DOPTIONS%5D%3A8%3A%20dhcp%2Doption%22]["Options error: Unrecognized option or missing or extra parameter(s) in [PUSH-OPTIONS]:8: dhcp-option" - Google Search]]
