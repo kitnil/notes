@@ -863,3 +863,53 @@ curl host01
   #    volumes:
   #      - ./postgres:/var/lib/postgresql/data
 #+END_SRC
+
+* systemd containers
+
+1. Create and mount systemd cgroup
+#+BEGIN_SRC bash
+  mkdir /sys/fs/cgroup/systemd
+  mount -t cgroup cgroup -o none,name=systemd /sys/fs/cgroup/systemd
+#+END_SRC
+
+2. Run container
+#+BEGIN_SRC bash
+  docker run                                                              \
+          --name fedora                                                   \
+          --publish 8085:80 -d                                            \
+          --tmpfs /tmp                                                    \
+          --tmpfs /run                                                    \
+          -v /sys/fs/cgroup:/sys/fs/cgroup:ro                 \
+          httpd "$@"
+
+#+END_SRC
+
+1/2 ... dockerfile
+#+BEGIN_SRC dockerfile
+  FROM fedora:31
+  ENV container docker
+  RUN dnf -y install httpd; dnf clean all; systemctl enable httpd
+  STOPSIGNAL SIGRTMIN+3
+  EXPOSE 80
+  CMD [ "/sbin/init" ]
+#+END_SRC
+: docker build -t httpd .
+
+Misc
+#+begin_example
+  --entrypoint '' \
+  -it \
+  --tmpfs /sys/fs/cgroup                                          \
+  -v /run/j3K4a/systemd:/sys/fs/cgroup/systemd:rw                 \
+  -v /sys/fs/cgroup/blkio:/sys/fs/cgroup/blkio:ro                 \
+  -v /sys/fs/cgroup/cpu:/sys/fs/cgroup/cpu:ro                     \
+  -v /sys/fs/cgroup/cpuacct:/sys/fs/cgroup/cpuacct:ro             \
+  -v /sys/fs/cgroup/cpuset:/sys/fs/cgroup/cpuset:ro               \
+  -v /sys/fs/cgroup/devices:/sys/fs/cgroup/devices:ro             \
+  -v /sys/fs/cgroup/elogind:/sys/fs/cgroup/elogind:ro             \
+  -v /sys/fs/cgroup/freezer:/sys/fs/cgroup/freezer:ro             \
+  -v /sys/fs/cgroup/memory:/sys/fs/cgroup/memory:ro               \
+  -v /sys/fs/cgroup/perf_event:/sys/fs/cgroup/perf_event:ro       \
+  -v /sys/fs/cgroup/pids:/sys/fs/cgroup/pids:ro                   \
+  -v /sys/fs/cgroup/unified:/sys/fs/cgroup/unified:ro             \
+#+end_example
