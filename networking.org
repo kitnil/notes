@@ -3,33 +3,34 @@
 
 #+BEGIN_SRC yaml
   ethernet frame:
-    - preamble/sfd
-    - destination address
-    - source address
-    - ethernet type
-    - payload:
-        ip header:
-          1:
-            - version
-            - ihl
-            - type of service
-            - total length
-          2:
-            - identification
-            - flags
-            - fragment offset
-          3:
-            - time to live
-            - protocol
-            - header checksum
-          4:
-            - source address
-          5:
-            - destination address
-          6:
-            - options
-            - padding
-    - frame check sequence
+    preamble/sfd:
+    destination address:
+    source address:
+    ethernet type:
+    payload:
+      ip header:
+        1:
+          version:
+            size: 4 bytes
+          ihl:
+          type of service:
+          total length:
+        2:
+          identification:
+          flags:
+          fragment offset:
+        3:
+          time to live:
+          protocol:
+          header checksum:
+        4:
+          source address:
+        5:
+          destination address:
+        6: # rarely used
+          options:
+          padding:
+    frame check sequence:
 #+END_SRC
 
 * 
