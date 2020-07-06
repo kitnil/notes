@@ -1,7 +1,7 @@
 
 * ip
 
-#+BEGIN_SRC yaml
+#+BEGIN_SRC yaml :tangle /tmp/out.yaml
   ethernet frame:
     preamble/sfd:
     destination address:
@@ -31,6 +31,7 @@
           options:
           padding:
     frame check sequence:
+  # hello boy
 #+END_SRC
 
 * 
