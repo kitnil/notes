@@ -119,6 +119,8 @@ https://gitlab.com/janneke/guix.git
                   %desktop-services)))
 #+END_SRC
 
+  - guix system vm config.scm --nic=user,model=virtio-net-pci,hostfwd=tcp::10022-:22,hostfwd=tcp::8888-:80
+
   - flag for configure --enable-reproducible-build
 
   - The release process is documented at:
