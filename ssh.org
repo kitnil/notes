@@ -13,6 +13,9 @@ https://blog.trackets.com/2014/05/17/ssh-tunnel-local-and-remote-port-forwarding
 - Generate RSA key
   : ssh-keygen -b 4096 -m pem -f ~/.ssh/id_rsa_pem
 
+- Add or change password in private key
+  : ssh-keygen -p -f ~/.ssh/id_rsa
+
 - ssh-keygen -E md5 -l -f .ssh/git_repos_deploy_key
 
 - SOCKS5 proxy
