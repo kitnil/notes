@@ -1,3 +1,4 @@
+- [[https://github.com/yurug/get-gitlab-forks][yurug / get-gitlab-forks]]
 - https://gitlab.com/wigust/wigust.gitlab.io/pages/domains/wugi.info
 - sudo /home/gitlab-runner/.nix-profile/bin/gitlab-runner run --working-directory=/home/gitlab-runner --config=/etc/gitlab-runner/config.toml --service=gitlab-runner --user=gitlab-runner
 - https://blog.stead.id.au/2017/03/synology-gitlab-error-502.html
