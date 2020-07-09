@@ -744,3 +744,5 @@ echo $PATH | tr ':' '\n' | xargs -I{} find {} -name '*top*'
 * TODO [[https://www.google.com/search?hl=en&q=%22Options%20error%3A%20Unrecognized%20option%20or%20missing%20or%20extra%20parameter(s)%20in%20%5BPUSH%2DOPTIONS%5D%3A8%3A%20dhcp%2Doption%22]["Options error: Unrecognized option or missing or extra parameter(s) in [PUSH-OPTIONS]:8: dhcp-option" - Google Search]]
 
 * TODO https://jenkins.intr/view/Security/job/security/job/apache2-php73-personal/job/master/18/console
+
+* TODO https://kibana.intr/app/kibana#/doc/91047960-287e-11e8-9fc4-d7eee19a3ab7/logstash-te-2020.07.09/doc/?id=-WCcMnMBCRVG0yqk7DYN
