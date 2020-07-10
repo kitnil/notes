@@ -18,6 +18,8 @@ http://drandom.blogspot.com/2013/12/shebang-for-c-programs.html
 Alternative way use [[https://bellard.org/tcc/][tcc]]
 : #!/usr/bin/tcc -run
 
+[[https://github.com/onqtam/rcrl][rcrl]]
+
 * Concurency
 
 - [[https://libcsp.com/][| Libcsp]]
