@@ -744,3 +744,5 @@ echo $PATH | tr ':' '\n' | xargs -I{} find {} -name '*top*'
 * TODO [[https://www.google.com/search?hl=en&q=%22Options%20error%3A%20Unrecognized%20option%20or%20missing%20or%20extra%20parameter(s)%20in%20%5BPUSH%2DOPTIONS%5D%3A8%3A%20dhcp%2Doption%22]["Options error: Unrecognized option or missing or extra parameter(s) in [PUSH-OPTIONS]:8: dhcp-option" - Google Search]]
 
 * [[https://github.com/wintrmvte/VTSCAN][wintrmvte/VTSCAN: VirusTotal API script]]
+
+* [[https://github.com/pgilad/leasot][pgilad/leasot: Parse and output TODOs and FIXMEs from comments in your files]]
