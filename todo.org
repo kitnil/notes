@@ -746,3 +746,5 @@ echo $PATH | tr ':' '\n' | xargs -I{} find {} -name '*top*'
 * TODO https://jenkins.intr/view/Security/job/security/job/apache2-php73-personal/job/master/18/console
 
 * TODO https://kibana.intr/app/kibana#/doc/91047960-287e-11e8-9fc4-d7eee19a3ab7/logstash-te-2020.07.09/doc/?id=-WCcMnMBCRVG0yqk7DYN
+
+* u74866              10015               9993                0                   10:08               ?                   00:00:00            /nix/store/rm1hz1lybxangc8sdl7xvzs5dcvigvf7-bash-4.4-p23/bin/bash /nix/store/1i8nay264ilk3k3l9c7klp7nif95nic0-entrypoint/bin/entrypoint shell date > update.txt; echo hi > hi.txt
