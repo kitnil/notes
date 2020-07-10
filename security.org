@@ -1,6 +1,10 @@
-- [[https://github.com/vk496/sudo-stealer/blob/master/sudo][sudo-stealer/sudo at master · vk496/sudo-stealer]]
 - [[https://github.com/square/sudo_pair][square/sudo_pair: Plugin for sudo that requires another human to approve and monitor privileged sudo sessions]]
 - [[https://github.com/TH3xACE/SUDO_KILLER][TH3xACE/SUDO_KILLER: A tool to identify and exploit sudo rules' misconfigurations and vulnerabilities within sudo]]
 - [[https://github.com/wintrmvte/Bashark][wintrmvte/Bashark: Bash post exploitation toolkit]]
 - [[https://github.com/dwisiswant0/findom-xss][dwisiswant0/findom-xss: A fast DOM based XSS vulnerability scanner with simplicity.]]
 - [[https://github.com/berzerk0/Probable-Wordlists][berzerk0/Probable-Wordlists: Version 2 is live! Wordlists sorted by probability originally created for password generation and testing - make sure your passwords aren't popular!]]
+
+* Backdoor
+** sudo
+- [[https://github.com/ldionmarcil/sudo-backdoor][ldionmarcil/sudo-backdoor: Wraps sudo; transparently steals user's credentials and exfiltrate over DNS. For those annoying times when you get a shell/file write on a sudoers account and need to leverage their credentials.]]
+- [[https://github.com/vk496/sudo-stealer/blob/master/sudo][sudo-stealer/sudo at master · vk496/sudo-stealer]]
