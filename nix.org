@@ -14,6 +14,8 @@ nix-repl> mynixos2.config.environment.etc."mailman.cfg".text
 
 - [[https://github.com/Infinisil/all-hies][Infinisil/all-hies: Cached Haskell IDE Engine Nix builds for all GHC versions]]
 
+- [[https://github.com/nmattia/niv][nmattia/niv: Easy dependency management for Nix projects]]
+
 - [[https://github.com/pmiddend/nixos-manager][pmiddend/nixos-manager: Manage your NixOS packages and configuration via a simple, intuitive UI]]
 
 - [[https://github.com/utdemir/nix-tree][utdemir/nix-tree: Interactively browse the dependency graph of your Nix derivations.]]
