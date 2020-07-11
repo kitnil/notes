@@ -29,6 +29,8 @@ http://hackage.haskell.org/packages/archive/regex-compat/0.92/doc/html/Text-Rege
 
 * Helpers
 
+[[https://github.com/litxio/ptghci][litxio/ptghci: High-powered REPL for Haskell, inspired by IPython]]
+
 print type after evaluation
 :set +t
 
