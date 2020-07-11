@@ -30,6 +30,8 @@ nix-repl> mynixos2.config.environment.etc."mailman.cfg".text
 
 - [[https://github.com/Synthetica9/nix-linter][Synthetica9 / nix-linter]]
 
+- [[https://github.com/awakesecurity/nix-deploy][awakesecurity / nix-deploy (Haskell)]]
+
 - [[https://github.com/input-output-hk/nix-tools][input-output-hk/nix-tools: Translate Cabals Generic Package Description to a Nix expression]]
 
 - oleg@guixsd ~/majordomo/webservices/nginx-php73-private$ nix-build --option trusted-public-keys 'cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY=, cache.nixos.intr:6VD7bofl5zZFTEwsIDsUypprsgl7r9I+7OGY4WsubFA=' --substituters 'https://cache.nixos.org/ http://cache.nixos.intr/' --no-out-link --expr 'with (import (builtins.fetchTarball {url = "https://github.com/nixos/nixpkgs/archive/d0b3ab3b249.tar.gz";}) {overlays = [(import (builtins.fetchGit {url = "git@gitlab.intr:_ci/nixpkgs.git"; ref = "master";}))];}); (import ./test.nix {}).driver'
