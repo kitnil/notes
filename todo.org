@@ -746,3 +746,10 @@ echo $PATH | tr ':' '\n' | xargs -I{} find {} -name '*top*'
 * [[https://github.com/wintrmvte/VTSCAN][wintrmvte/VTSCAN: VirusTotal API script]]
 
 * [[https://github.com/pgilad/leasot][pgilad/leasot: Parse and output TODOs and FIXMEs from comments in your files]]
+
+* TODO
+
+  #+begin_example
+    2020-07-11T10:43:08.613912072Z billing2_control.2.ukn9v226z0u7@dh2-mr.intr    | ==> /var/log/app/app.log <==
+    2020-07-11T10:43:08.613922326Z billing2_control.2.ukn9v226z0u7@dh2-mr.intr    | 11-07-2020 13:43:07 CRIT (2): XML-RPC Fault: (84f3be8d): RpcClient.php:39 'file_get_contents(https://rpc.registrant.ru/): failed to open stream: HTTP request failed! HTTP/1.1 403 Forbidden
+  #+end_example
