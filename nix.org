@@ -40,6 +40,8 @@ nix-repl> mynixos2.config.environment.etc."mailman.cfg".text
 
 - [[https://github.com/Profpatsch/libnix-haskell][Profpatsch/libnix-haskell: Haskell library to interface with the nix package manager]]
 
+- [[https://github.com/bennofs/nix-index][bennofs/nix-index: Quickly locate nix packages with specific files]]
+
 - [[https://github.com/bennofs/nix-script][bennofs/nix-script: A shebang for running scripts inside nix-shell with defined dependencies]]
 
 - [[https://github.com/awakesecurity/hocker][awakesecurity / hocker Utilities for interacting with the docker registry and generating nix build instructions]]
