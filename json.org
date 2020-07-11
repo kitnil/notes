@@ -11,3 +11,4 @@
   to structured JSON output. This allows piping of output to tools like jq.
 - [[https://github.com/wlezzar/jtab][wlezzar/jtab: Print any json data as a table from the command line]]
 - [[https://github.com/fiatjaf/jqview][fiatjaf/jqview: simplest possible native GUI for inspecting JSON objects with jq]]
+- [[https://github.com/chrisdone/jl][chrisdone/jl: Functional sed for JSON]]
