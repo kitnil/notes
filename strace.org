@@ -24,6 +24,10 @@ https://xakep.ru/2011/01/13/54477/
 Для работы strace используется системный вызов ptrace.
 Для трассировки библиотечных вызовов есть отдельный инструмент — ltrace.
 
+* Tools
+
+- [[https://github.com/nh2/hatrace/find/master][Go to file]]
+
 * Misc
 
 [pid 25301] accept4(6, {sa_family=AF_INET, sin_port=htons(58332), sin_addr=inet_addr("172.16.100.60")}, [16], SOCK_NONBLOCK) = 3
