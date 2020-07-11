@@ -38,6 +38,10 @@ Split string by REGEX
 : splitRegex :: Regex -> String -> [String]
 http://hackage.haskell.org/packages/archive/regex-compat/0.92/doc/html/Text-Regex.html
 
+* Tools
+
+- [[https://github.com/tweag/ormolu][tweag / ormolu]]
+
 * Helpers
 
 [[https://github.com/litxio/ptghci][litxio/ptghci: High-powered REPL for Haskell, inspired by IPython]]
