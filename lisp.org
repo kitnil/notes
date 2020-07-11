@@ -3,6 +3,7 @@ Kill thread
   (sb-thread:terminate-thread (cadr (sb-thread:list-all-threads)))
  #+END_SRC
 
+- [[https://github.com/haskell-lisp/lisk][haskell-lisp / lisk]]
 - [[https://github.com/carp-lang/Carp][carp-lang/Carp: A statically typed lisp, without a GC, for real-time applications.]]
 - [[https://github.com/write-you-a-scheme-v2/scheme][write-you-a-scheme-v2/scheme: Write You a Scheme]]
 - [[https://github.com/axellang/axel][axellang/axel: Haskell + Lisp]]
