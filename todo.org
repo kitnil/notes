@@ -756,3 +756,5 @@ echo $PATH | tr ':' '\n' | xargs -I{} find {} -name '*top*'
     2020-07-11T08:06:52.138436378Z billing2_control.1.y4zkbu5m6azk@dh3-mr.intr    | ==> /var/log/app/app.log <==
     2020-07-11T08:06:52.138446100Z billing2_control.1.y4zkbu5m6azk@dh3-mr.intr    | 11-07-2020 11:06:51 CRIT (2): XML-RPC Fault: (c9b92aea): RpcClient.php:39 'file_get_contents(https://rpc.registrant.ru/): failed to open stream: HTTP request failed! HTTP/1.1 403 Forbidden
   #+end_example
+
+* TODO [[https://github.com/joomla/joomla-cms/blob/staging/.travis.yml][joomla-cms/.travis.yml at staging · joomla/joomla-cms]]
