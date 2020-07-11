@@ -758,3 +758,6 @@ echo $PATH | tr ':' '\n' | xargs -I{} find {} -name '*top*'
   #+end_example
 
 * TODO [[https://github.com/joomla/joomla-cms/blob/staging/.travis.yml][joomla-cms/.travis.yml at staging · joomla/joomla-cms]]
+
+* TODO HASKELL CMS [[https://github.com/clckwrks/clckwrks][clckwrks / clckwrks]]
+  SCHEDULED: <2020-07-21 Tue>
