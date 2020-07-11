@@ -35,6 +35,12 @@ https://gitlab.com/janneke/guix.git
 
   - ssh
   : eval ""$(sed 's,-nic user[^ ]* ,,' "$(./pre-inst-env guix system vm --no-offload ./gnu/tests/monitoring.scm)" | tail -1 | sed 's/\sexec\s//')" -m 4096  -smp 2 -nic user,model=virtio-net-pci,hostfwd=tcp::10022-:22"
+#+begin_example
+  (service openssh-service-type
+                     (openssh-configuration
+                      (permit-root-login #t)
+                      (allow-empty-passwords? #t)))
+#+end_example
 
   - oleg@guixsd ~/src/guix$ grep -R 'define-public zlib\|define-public luajit\|define-public ncurses\|define-public jsoncpp\|define-public libb64\|define-public openssl\|define-public curl\|define-public jq\|define-public gcc\|define-public elfutils\|define-public tbb\|define-public c-ares\|define-public protobuf\|define-public grpc' gnu/packages/*.scm | cut -d: -f 1 | sort -u | xargs grep define-module  | cut -d: -f 2 | awk '{ print $2, $3, $4 }'
 
