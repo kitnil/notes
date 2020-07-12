@@ -21,11 +21,11 @@ this behavior by setting them to either a string to run an external
 command or an Emacs Lisp function:
 (setq projectile-test-cmd #'custom-test-function)
 
-- [https://github.com/xuchunyang/curl-to-elisp][xuchunyang/curl-to-elisp: Convert cURL command to Emacs Lisp code]
+- [[https://github.com/xuchunyang/curl-to-elisp][xuchunyang/curl-to-elisp: Convert cURL command to Emacs Lisp code]]
 
-- [https://oremacs.com/2015/01/17/setting-up-ediff/][Setting up Ediff · (or emacs]
+- [[https://oremacs.com/2015/01/17/setting-up-ediff/][Setting up Ediff · (or emacs]]
 
-- [http://teaching.sociology.ul.ie/bhalpin/wordpress/?p=602][Emacs and org-mode for sending mailshots | Sociology, Statistics and Software]
+- [[http://teaching.sociology.ul.ie/bhalpin/wordpress/?p=602][Emacs and org-mode for sending mailshots | Sociology, Statistics and Software]]
 
 - elisp panel for exwm https://www.reddit.com/r/emacs/comments/cz3py2/pure_elisp_panel_for_exwm/
 
@@ -169,7 +169,7 @@ It asks me for a directory, I point to guix, and then I get the error
 * Awesome
 
 ** zk-phi
-- [https://github.com/zk-phi][zk-phi (zk-phi)]
+- [[https://github.com/zk-phi][zk-phi (zk-phi)]]
 
 ** Wilfred
 - https://github.com/Wilfred
@@ -603,7 +603,7 @@ tramp-auto-auth.el --- TRAMP automatic authentication library <877e74skek.fsf@oi
 https://emacsconf.org/videos/2019/
 
 * Podcasts
-- [https://emacscast.org/][EmacsCast | EmacsCast]
+- [[https://emacscast.org/][EmacsCast | EmacsCast]]
 * Java
 
 I use minimal setup of standard java-mode (for indentation, imenu
