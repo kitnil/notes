@@ -1,2 +1,7 @@
+To get LAN mode: ipmitool raw 0x30 0x70 0x0c 0.
+To set LAN mode dedicated: ipmitool raw 0x30 0x70 0x0c 1 0.
+To set LAN mode onboard/shared: ipmitool raw 0x30 0x70 0x0c 1 1.
+To set LAN mode failover: ipmitool raw 0x30 0x70 0x0c 1 2.
+
 - IPMI reset password to default (login is ADMIN)
   : ipmitool -I open lan set 1 password ADMIN
