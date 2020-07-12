@@ -1,4 +1,4 @@
-- [https://github.com/huntergregal/mimipenguin][huntergregal/mimipenguin: A tool to dump the login password from the current linux user]
+- [[https://github.com/huntergregal/mimipenguin][huntergregal/mimipenguin: A tool to dump the login password from the current linux user]]
 
 - Обход блокировки bt*. трекеров
   iptables -t nat -A PREROUTING -p tcp -m tcp --dport 80 -d 195.82.146.120/30 -j DNAT --to-destination 163.172.167.207:3128

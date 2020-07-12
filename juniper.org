@@ -79,7 +79,7 @@ root@br1-mr14.intr> show system rollback 25 compare 28
 
 * Misc
 
-- [https://www.fs.com/ru/products/11581.html][\u041c\u043e\u0434\u0443\u043b\u044c Juniper Networks EX-SFP-10GE-LR \u0421\u043e\u0432\u043c\u0435\u0441\u0442\u0438\u043c\u044b\u0439 10GBASE-LR SFP+ 1310\u043d\u043c 10\u043a\u043c \u041c\u043e\u0434\u0443\u043b\u044c SFP LR - FS \u0420\u043e\u0441\u0441\u0438\u044f]
+- [[https://www.fs.com/ru/products/11581.html][\u041c\u043e\u0434\u0443\u043b\u044c Juniper Networks EX-SFP-10GE-LR \u0421\u043e\u0432\u043c\u0435\u0441\u0442\u0438\u043c\u044b\u0439 10GBASE-LR SFP+ 1310\u043d\u043c 10\u043a\u043c \u041c\u043e\u0434\u0443\u043b\u044c SFP LR - FS \u0420\u043e\u0441\u0441\u0438\u044f]]
 - [[https://habr.com/en/sandbox/80771/][Полезные команды]]
 
 set interfaces ge-0/0/0.0 family inet address 192.168.60.3/24

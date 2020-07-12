@@ -1,10 +1,10 @@
 https://blog.rot13.org/2005/12/a-day-with-freebsd-via-qemu-th.html
 
 - [[file:~/archive/src/freebsd-ci/scripts/build/build-test_image-head.sh][UFS root]]
-- [https://eax.me/freebsd-packages/][Управление пакетами во FreeBSD при помощи утилиты pkg | Записки программиста]
+- [[https://eax.me/freebsd-packages/][Управление пакетами во FreeBSD при помощи утилиты pkg | Записки программиста]]
 
 
-- [https://erdgeist.org/arts/software/ezjail/#faq][ezjail | erdgeist.org]
+- [[https://erdgeist.org/arts/software/ezjail/#faq][ezjail | erdgeist.org]]
 - Delete jail:
   #+begin_example
     root@:~ # chflags -R noschg /jenkins

@@ -6,7 +6,7 @@
 - swap caps
   : setxkbmap -option ctrl:swapcaps
 
-- compton configs [https://blog.jguer.space/2018/09/compton-backend-config-optimization/][Compton backend config optimization]
+- compton configs [[https://blog.jguer.space/2018/09/compton-backend-config-optimization/][Compton backend config optimization]]
 
 - getg information about window by clicking on it
   : xprop
