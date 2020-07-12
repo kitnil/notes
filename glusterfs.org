@@ -1,0 +1,11 @@
+- find and touch split-brain files
+
+#+begin_src bash
+  for file in $(for id in $(grep 'gfid' /tmp/out.txt | cut -d: -f 2 | tr -d '>')
+                do
+                    echo "/srv/glusterfs_storage/.glusterfs/${id:0:2}/${id:2:2}/$id"
+                done)
+  do
+      find /srv/glusterfs_storage -samefile "$file"
+  done
+#+end_src
