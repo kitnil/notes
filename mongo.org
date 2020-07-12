@@ -18,6 +18,9 @@
 : db.getCollection('accountHistory').find({$and: [{"created":{"$gte": ISODate("2019-11-01")}}, {"operator":"pyhalov"}]})
 : db.getCollection('alerts').find({"service" : [ "RESOURCE_ARCHIVE_UPDATE"]})
 
+- remove example
+: db.getCollection('alerts').remove({"service" : [ "RESOURCE_ARCHIVE_UPDATE"]})
+
 - updateMany example
 : db.getCollection('processingBusinessOperation').updateMany({$and: [{"createdDate" : {"$gte": ISODate("2020-06-13")}}, {"state": "PROCESSING"}, {"name": {$ne: "Обновление архива"}}]}, {$set: {"state": "PROCESSED"}})
   #+begin_example
