@@ -1,0 +1,5 @@
+#+begin_src jsonnet
+  local objectValues (object) =
+    std.map(function(field) object[field]
+           , std.objectFields(object));
+#+end_src
