@@ -5,7 +5,7 @@ pipeline {
     stages {
         stage("Invoking emacs") {
             steps {
-                sh "emacs --batch --script ./export.el"
+                sh "emacs --quick --batch --script ./export.el"
             }
         }
    }
