@@ -3,3 +3,15 @@
     std.map(function(field) object[field]
            , std.objectFields(object));
 #+end_src
+
+#+begin_src jsonnet
+  local cartesian_product(lists) =
+    std.foldr(function(xs, ys)
+          std.join([], std.map(function(x)
+            std.map(function(y)
+              std.join([], [[x], y])
+            , ys)
+          , xs))
+      , lists
+      , [[]]);
+#+end_src
