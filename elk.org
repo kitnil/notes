@@ -2,7 +2,7 @@
 
 - root@web15 /etc/filebeat # filebeat -e -d "publish"
 
-- [https://www.elastic.co/guide/en/elasticsearch/reference/6.8/array.html][Arrays | Elasticsearch Reference [6.8] | Elastic]
+- [[https://www.elastic.co/guide/en/elasticsearch/reference/6.8/array.html][Arrays | Elasticsearch Reference [6.8] | Elastic]]
 
 - list hot threads
   : curl '127.0.0.1:9200/_nodes/hot_threads'
@@ -11,7 +11,7 @@
 - kill threads
   : for thread in $(curl '127.0.0.1:9200/_cat/tasks?detailed' | grep xsdCCWz | grep read | awk '{ print $2 }'); do curl -XPOST "127.0.0.1:9200/_tasks/$thread/_cancel"; done
 
-- [https://www.elastic.co/guide/en/elasticsearch/reference/6.8/indices-templates.html#indices-templates][Index Templates | Elasticsearch Reference [6.8] | Elastic]
+- [[https://www.elastic.co/guide/en/elasticsearch/reference/6.8/indices-templates.html#indices-templates][Index Templates | Elasticsearch Reference [6.8] | Elastic]]
 
 - Disable readonly for all indexes
   : curl -XPUT -H "Content-Type: application/json" http://localhost:9200/_all/_settings -d '{"index.blocks.read_only_allow_delete": null}'
@@ -100,4 +100,4 @@ curl -H 'Content-Type: application/json' -d '{"query": {"bool": {"must": {"term"
 
 * Tools
 
-- [https://github.com/Cyb3rWard0g/HELK][Cyb3rWard0g/HELK: The Hunting ELK]
+- [[https://github.com/Cyb3rWard0g/HELK][Cyb3rWard0g/HELK: The Hunting ELK]]
