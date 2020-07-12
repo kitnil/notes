@@ -207,11 +207,6 @@ sub checkimage {
 * TODO Jenkins job Chef Workstation fix knife
 https://jenkins.intr/job/ci/job/chef-workstation/job/master/5/console
 
-* TODO #YW-56173-324 У перенесенных аккаунтов HMS меняется владелец логов - Cerberus Helpdesk :: Majordomo.ru mail
-  SCHEDULED: <2020-04-30 Thu>
-[[file:~/majordomo/hms/taskexecutor/src/python/taskexecutor/resprocessor.py::os.makedirs(os.path.join(self.resource.homeDir,%20"logs"),%20mode=0o755,%20exist_ok=True)]]
-[[file:~/majordomo/hms/taskexecutor/src/python/taskexecutor/sysservice.py::os.chown(home_dir,%20uid,%20uid)]]
-
 * TODO Clean up src and archive/src
   SCHEDULED: <2020-05-03 Sun>
 
