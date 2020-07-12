@@ -16,8 +16,8 @@ https://habr.com/en/post/134590/
 #+END_SRC
 
 - find examples
-: db.getCollection('processingBusinessOperation').find({$and: [{"createdDate" : {"$gte": ISODate("2020-06-13")}}, {"state": "PROCESSING"}, {"name": {$ne: "Обновление архива"}}]})
 : db.getCollection('processingBusinessOperation').find({"createdDate" : {"$gte": ISODate("2020-06-13")}})
+: db.getCollection('processingBusinessOperation').find({$and: [{"createdDate" : {"$gte": ISODate("2020-06-13")}}, {"state": "PROCESSING"}, {"name": {$ne: "Обновление архива"}}]})
 
 - updateMany example
 : db.getCollection('processingBusinessOperation').updateMany({$and: [{"createdDate" : {"$gte": ISODate("2020-06-13")}}, {"state": "PROCESSING"}, {"name": {$ne: "Обновление архива"}}]}, {$set: {"state": "PROCESSED"}})
