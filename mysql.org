@@ -329,13 +329,13 @@ InnoDB: Your database may be corrupt or you may have copied the InnoDB
 InnoDB: tablespace but not the InnoDB log files. See
 InnoDB: http://dev.mysql.com/doc/refman/5.5/en/forcing-innodb-recovery.html
 InnoDB: for more information.
-200114  7:45:40  InnoDB: Error: page 51 log sequence number 20686910***REMOVED***5
+200114  7:45:40  InnoDB: Error: page 51 log sequence number 2068691098355
 InnoDB: is in the future! Current system log sequence number 1693682449932.
 InnoDB: Your database may be corrupt or you may have copied the InnoDB
 InnoDB: tablespace but not the InnoDB log files. See
 InnoDB: http://dev.mysql.com/doc/refman/5.5/en/forcing-innodb-recovery.html
 InnoDB: for more information.
-200114  7:45:40  InnoDB: Error: page 533 log sequence number 20686910***REMOVED***5
+200114  7:45:40  InnoDB: Error: page 533 log sequence number 2068691098355
 InnoDB: is in the future! Current system log sequence number 1693682449932.
 InnoDB: Your database may be corrupt or you may have copied the InnoDB
 InnoDB: tablespace but not the InnoDB log files. See
@@ -2505,7 +2505,7 @@ InnoDB: tablespace but not the InnoDB log files. See
 InnoDB: http://dev.mysql.com/doc/refman/5.5/en/forcing-innodb-recovery.html
 InnoDB: for more information.
 InnoDB: Cleaning up trx with id 17F8D4C16
-200114  7:45:40  InnoDB: Error: page 8 log sequence number 206867088***REMOVED***
+200114  7:45:40  InnoDB: Error: page 8 log sequence number 2068670889835
 InnoDB: is in the future! Current system log sequence number 1693682449932.
 InnoDB: Your database may be corrupt or you may have copied the InnoDB
 InnoDB: tablespace but not the InnoDB log files. See
@@ -3447,7 +3447,7 @@ InnoDB: Your database may be corrupt or you may have copied the InnoDB
 InnoDB: tablespace but not the InnoDB log files. See
 InnoDB: http://dev.mysql.com/doc/refman/5.5/en/forcing-innodb-recovery.html
 InnoDB: for more information.
-200114  7:45:40  InnoDB: Error: page 2244 log sequence number 206867088***REMOVED***
+200114  7:45:40  InnoDB: Error: page 2244 log sequence number 2068670889835
 InnoDB: is in the future! Current system log sequence number 1693682449932.
 InnoDB: Your database may be corrupt or you may have copied the InnoDB
 InnoDB: tablespace but not the InnoDB log files. See
@@ -6406,11 +6406,11 @@ information that should help you find out what is causing the crash.
   2020-01-14 12:19:01 0 [ERROR] Incorrect definition of table mysql.event: expected column 'sql_mode' at position 14 to have type set('REAL_AS_FLOAT','PIPES_AS_CONCAT','ANSI_QUOTES','IGNORE_SPACE','IGNORE_BAD_TABLE_OPTIONS','ONLY_FULL_GROUP_BY','NO_UNSIGNED_SUBTRACTION','NO_DIR_IN_CREATE','POSTGRESQL','ORACLE','MSSQL','DB2','MAXDB','NO_KEY_OPTIONS','NO_TABLE_OPTIONS','NO_FIELD_OPTIONS','MYSQL323','MYSQL40','ANSI','NO_AUTO_VALUE_ON_ZERO','NO_BACKSLASH_ESCAPES','STRICT_TRANS_TABLES','STRICT_ALL_TABLES','NO_ZERO_IN_DATE','NO_ZERO_DATE','INVALID_DATES','ERROR_FOR_DIVISION_BY_ZERO','TRADITIONAL','NO_AUTO_CREATE_USER','HIGH_NOT_PRECEDENCE','NO_ENGINE_SUBSTITUTION','PAD_CHAR_TO_FULL_LENGTH','EMPTY_STRING_IS_NULL','SIMULTANEOUS_ASSIGNMENT'), found type set('REAL_AS_FLOAT','PIPES_AS_CONCAT','ANSI_QUOTES','IGNORE_SPACE','IGNORE_BAD_TABLE_OPTIONS','ONLY_FULL_GROUP_BY','NO_UNSIGNED_SUBTRACTION','NO_DIR_IN_CREATE','POSTGRESQL','ORACLE','MSSQL','DB2','MAXDB','NO_KEY_OPTIONS','NO_TABLE_OPTIONS','NO_FIELD_OPTIONS','MYSQL323','MYSQL40','ANSI','NO_AUTO_VALU
 #+END_EXAMPLE
 
-: docker exec -it mariadb mysql -p***REMOVED*** -e "$(printf "create database %s; " $(for file in *; do echo $file | sed 's/\.sql\.gz//'; done))"
-: root@vm28873:/backup/backup2/mysqldump/web27.majordomo.ru/2020/01/14# for db in $(for file in *; do echo $file | sed 's/\.sql\.gz//'; done); do zcat $file.sql.gz | mysql -p***REMOVED*** $db; done
+: docker exec -it mariadb mysql -p**REMOVED** -e "$(printf "create database %s; " $(for file in *; do echo $file | sed 's/\.sql\.gz//'; done))"
+: root@vm28873:/backup/backup2/mysqldump/web27.majordomo.ru/2020/01/14# for db in $(for file in *; do echo $file | sed 's/\.sql\.gz//'; done); do zcat $file.sql.gz | mysql -p**REMOVED** $db; done
 
 : cd /backup/backup2/mysqldump/web27.majordomo.ru/2020/01/14/
-: time for db in $(for file in *; do echo $file | sed 's/\.sql\.gz//'; done); do echo -e "\n@ $db"; zcat $db.sql.gz | mysql -p***REMOVED*** $db; done
+: time for db in $(for file in *; do echo $file | sed 's/\.sql\.gz//'; done); do echo -e "\n@ $db"; zcat $db.sql.gz | mysql -p**REMOVED** $db; done
 
 * Persone backup
 
