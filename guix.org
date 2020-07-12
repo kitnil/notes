@@ -168,7 +168,7 @@ system tests.  Now “make check-system” simply does:
                          -S /bin=bin
     #+END_SRC
 
-  - [http://bayfront.guix.gnu.org/output/b9xkl8vbxbyblzkwp7xzwwmharswkbgy-guile-2.2.6-1][bayfront.guix.gnu.org/output/b9xkl8vbxbyblzkwp7xzwwmharswkbgy-guile-2.2.6-1]
+  - [[http://bayfront.guix.gnu.org/output/b9xkl8vbxbyblzkwp7xzwwmharswkbgy-guile-2.2.6-1][bayfront.guix.gnu.org/output/b9xkl8vbxbyblzkwp7xzwwmharswkbgy-guile-2.2.6-1]]
 
   - http://ci.guix.info/
     - icecat spec:guix-master system:x86_64-linux
@@ -1517,7 +1517,7 @@ success = false; } else { //Lock texture if( !gFooTexture.lockTexture() ) { prin
 #+BEGIN_SRC markdown
   # Preparation
 
-  If you have a [https://git.savannah.gnu.org/cgit/guix.git](Guix Git
+  If you have a [[https://git.savannah.gnu.org/cgit/guix.git]](Guix Git
   repository) already, you can create a new [Git
   Worktree](https://git-scm.com/docs/git-worktree).
 
