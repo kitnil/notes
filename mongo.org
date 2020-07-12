@@ -8,16 +8,14 @@
 
 * Cheatsheet
 
-https://habr.com/en/post/134590/
-#+BEGIN_SRC js
-  db.getCollection('processingBusinessAction').find({"personalAccountId":"73728", "state": {$ne: "PROCESSED"}});
-  db.getCollection('processingBusinessAction').find({"personalAccountId":"208112", $and: [{"state": {$ne: "PROCESSED"}}, {"state": {$ne: "ERROR"}}]});
-  db.getCollection('accountHistory').find({$and: [{"created":{"$gte": ISODate("2019-11-01")}}, {"operator":"pyhalov"}]})
-#+END_SRC
+- https://habr.com/en/post/134590/
 
 - find examples
 : db.getCollection('processingBusinessOperation').find({"createdDate" : {"$gte": ISODate("2020-06-13")}})
 : db.getCollection('processingBusinessOperation').find({$and: [{"createdDate" : {"$gte": ISODate("2020-06-13")}}, {"state": "PROCESSING"}, {"name": {$ne: "Обновление архива"}}]})
+: db.getCollection('processingBusinessAction').find({"personalAccountId":"73728", "state": {$ne: "PROCESSED"}});
+: db.getCollection('processingBusinessAction').find({"personalAccountId":"208112", $and: [{"state": {$ne: "PROCESSED"}}, {"state": {$ne: "ERROR"}}]});
+: db.getCollection('accountHistory').find({$and: [{"created":{"$gte": ISODate("2019-11-01")}}, {"operator":"pyhalov"}]})
 
 - updateMany example
 : db.getCollection('processingBusinessOperation').updateMany({$and: [{"createdDate" : {"$gte": ISODate("2020-06-13")}}, {"state": "PROCESSING"}, {"name": {$ne: "Обновление архива"}}]}, {$set: {"state": "PROCESSED"}})
