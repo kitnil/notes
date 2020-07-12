@@ -8,6 +8,31 @@
 
 * Cheatsheet
 
+https://habr.com/en/post/134590/
+#+BEGIN_SRC js
+  db.getCollection('processingBusinessAction').find({"personalAccountId":"73728", "state": {$ne: "PROCESSED"}});
+  db.getCollection('processingBusinessAction').find({"personalAccountId":"208112", $and: [{"state": {$ne: "PROCESSED"}}, {"state": {$ne: "ERROR"}}]});
+  db.getCollection('accountHistory').find({$and: [{"created":{"$gte": ISODate("2019-11-01")}}, {"operator":"pyhalov"}]})
+#+END_SRC
+db.getCollection('processingBusinessOperation').find({"createdDate" : {"$gte": ISODate("2020-06-13")}})
+зависшие процессы - processing business operations сменить state на PROCESSED
+
+db.getCollection('processingBusinessOperation').find({$and: [{"createdDate" : {"$gte": ISODate("2020-06-13")}}, {"state": "PROCESSING"}, {"name": {$ne: "Обновление архива"}}]})
+
+- updateMany example
+: db.getCollection('processingBusinessOperation').updateMany({$and: [{"createdDate" : {"$gte": ISODate("2020-06-13")}}, {"state": "PROCESSING"}, {"name": {$ne: "Обновление архива"}}]}, {$set: {"state": "PROCESSED"}})
+  #+begin_example
+    /* 1 */
+    {
+        "acknowledged" : true,
+        "matchedCount" : 42.0,
+        "modifiedCount" : 42.0
+    }
+  #+end_example
+
+- search by date
+: db.getCollection('request').find({"created" : {$gte : new ISODate("2020-06-29T15:14:02.233Z")}})
+
 - pipe to mongo
 : (set -ex; PATH=/gnu/store/b161g812k8mhch6qamvrjjgk04zn6wr7-youtube-dl-2020.06.16/bin:$PATH; for url in https://www.youtube.com/c/StrangeLoopConf https://www.youtube.com/user/fosdemtalks https://www.youtube.com/user/hitbsecconf https://www.youtube.com/c/CloudBeesTV https://www.youtube.com/user/dockerrun; do youtube-dl --ignore-errors --dump-single-json $url | jq '.entries' | mongoimport --db=video --collection youtube --type json --jsonArray; done)
 
