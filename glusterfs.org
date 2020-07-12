@@ -1,5 +1,9 @@
-- find and touch split-brain files
+- show split-brain
+#+begin_src bash
+  gluster volume heal gfs_storage_volume info | tee /tmp/out.txt
+#+end_src
 
+- find and touch split-brain files
 #+begin_src bash
   for file in $(for id in $(grep 'gfid' /tmp/out.txt | cut -d: -f 2 | tr -d '>')
                 do
