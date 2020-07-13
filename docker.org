@@ -820,6 +820,71 @@ curl host01
 
 * Compose
 
+#+begin_src yaml
+  version: '3.4'
+
+  x-rabbit: &rabbit
+    image: rabbitmq:3.8.5-management-alpine
+    ports:
+    - 4369:4369
+    - 5672:5672
+    - 5671:5671
+    - 25672:25672
+    - 35672-35682:35672-35682
+    - 15672:15672
+    - 61613:61613
+    - 61614:61614
+    - 1883:1883
+    - 8883:8883
+    - 15674:15674
+    - 15675:15675
+    - 15692:15692
+    environment:
+    - RABBITMQ_DEFAULT_USER=spring
+    - RABBITMQ_DEFAULT_PASS=spring
+    - RABBITMQ_NODENAME=rabbit@rabbit-dh
+    - RABBITMQ_ERLANG_COOKIE=EJHSDBCQHWCHBHSZPMIE
+    extra_hosts:
+    - "78.108.86.20 r1"
+    - "78.108.87.99 r2"
+    - "178.250.246.123 r3"
+    volumes:
+    - rabbit-data:/var/lib/rabbitmq
+    logging:
+      driver: json-file
+      options:
+        max-size: 100m
+        max-file: 2
+
+  services:
+    rabbit1:
+      <<: *rabbit
+      hostname: r1
+      deploy: 
+        placement:
+          constraints:
+          - node.hostname == r1
+
+    rabbit2:
+      <<: *rabbit
+      hostname: r2
+      deploy: 
+        placement:
+          constraints:
+          - node.hostname == r2
+
+    rabbit3:
+      <<: *rabbit
+      hostname: r3
+      deploy: 
+        placement:
+          constraints:
+          - node.hostname == r3
+
+  volumes:
+    rabbit-data:
+#+end_src
+
 #+BEGIN_SRC yaml
   version: "2"
 
