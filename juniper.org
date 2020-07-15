@@ -5,6 +5,7 @@
 
 - show previous commit
   origin: https://www.juniper.net/documentation/en_US/junos/topics/reference/command-summary/show-system-rollback.html
+  : show system rollback 1 compare 0
   : show system rollback 2 compare 1
 
 - rollback
