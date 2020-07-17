@@ -753,3 +753,6 @@ echo $PATH | tr ':' '\n' | xargs -I{} find {} -name '*top*'
 
 * TODO HASKELL CMS [[https://github.com/clckwrks/clckwrks][clckwrks / clckwrks]]
   SCHEDULED: <2020-07-21 Tue>
+
+* TODO Add script
+: ansible -uroot -i192.168.100.29,192.168.100.31,192.168.100.32, --extra-vars="ansible_ssh_common_args='-o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no'" 192.168.100.29,192.168.100.31,192.168.100.32 -m ping
