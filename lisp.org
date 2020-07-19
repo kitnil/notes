@@ -3,6 +3,7 @@ Kill thread
   (sb-thread:terminate-thread (cadr (sb-thread:list-all-threads)))
  #+END_SRC
 
+- [[https://github.com/kovisoft/slimv][kovisoft/slimv: Official mirror of Slimv versions released on vim.org]]
 - [[https://github.com/shinh/sedlisp][shinh/sedlisp: Lisp implementation in sed]]
 - [[https://github.com/joaotavora/sly][joaotavora/sly: Sylvester the Cat's Common Lisp IDE]]
 - [[https://github.com/cl21/cl21][cl21/cl21: Common Lisp in the 21st Century.]]
