@@ -3,6 +3,7 @@ Kill thread
   (sb-thread:terminate-thread (cadr (sb-thread:list-all-threads)))
  #+END_SRC
 
+- [[https://github.com/joaotavora/sly][joaotavora/sly: Sylvester the Cat's Common Lisp IDE]]
 - [[https://github.com/cl21/cl21][cl21/cl21: Common Lisp in the 21st Century.]]
 - [[https://github.com/Wukix/LambdaLite][Wukix / LambdaLite A functional, relational database in about 250 lines of Common Lisp]]
 - [[https://github.com/roswell/roswell][roswell / roswell intended to be a launcher for a major lisp environment that just works.]]
