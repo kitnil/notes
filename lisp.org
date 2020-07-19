@@ -3,6 +3,7 @@ Kill thread
   (sb-thread:terminate-thread (cadr (sb-thread:list-all-threads)))
  #+END_SRC
 
+- [[https://github.com/franzinc/imap][franzinc/imap: POP, IMAP and SMTP client support for Common Lisp]]
 - [[https://github.com/metawilm/cl-python][metawilm/cl-python: An implementation of Python in Common Lisp]]
 - [[https://github.com/fons/cl-mongo][fons/cl-mongo: lisp interface to mongo db]]
 - [[https://github.com/vseloved/cl-redis][vseloved/cl-redis: Redis client for Common Lisp]]
