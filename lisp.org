@@ -3,6 +3,7 @@ Kill thread
   (sb-thread:terminate-thread (cadr (sb-thread:list-all-threads)))
  #+END_SRC
 
+- [[https://github.com/ccqpein/Github-API-CL][ccqpein/Github-API-CL: Common Lisp Github API Client]]
 - [[http://lisper.ru/][Русскоязычное сообщество Common Lisp разработчиков]]
 - [[https://github.com/franzinc/imap][franzinc/imap: POP, IMAP and SMTP client support for Common Lisp]]
 - [[https://github.com/metawilm/cl-python][metawilm/cl-python: An implementation of Python in Common Lisp]]
