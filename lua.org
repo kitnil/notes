@@ -1,3 +1,4 @@
+- [[https://github.com/mpeterv/luacheck][mpeterv/luacheck: A tool for linting and static analysis of Lua code.]]
 - list files in directory
 #+BEGIN_SRC lua
   for dir in io.popen([[dir "/"]]):lines() do print(dir) end
