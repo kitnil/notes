@@ -3,6 +3,7 @@ Kill thread
   (sb-thread:terminate-thread (cadr (sb-thread:list-all-threads)))
  #+END_SRC
 
+- [[https://github.com/SquircleSpace/shcl][SquircleSpace/shcl: SHell in Common Lisp]]
 - [[https://github.com/SquidDev/urn][SquidDev/urn: Yet another Lisp variant which compiles to Lua]]
 - [[https://github.com/cl-adams/adams][cl-adams/adams: UNIX system administration in Common Lisp]]
 - [[https://github.com/numcl/numcl][numcl/numcl: Numpy clone in Common Lisp]]
