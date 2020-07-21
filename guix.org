@@ -41,10 +41,13 @@ https://gitlab.com/janneke/guix.git
 
   - debug test
 #+begin_example
-(let* ((port   (open-pipe "herd status" OPEN_READ))
-       (output (read-string port)))
-  (close-port port)
-  (display (string-trim-right output #\newline) (current-error-port)))
+  (for-each (lambda (command)
+      (let* ((port   (open-pipe command OPEN_READ))
+             (output (read-string port)))
+        (close-port port)
+        (display (string-trim-right output #\newline) (current-error-port))))
+    (list (string-append #$shepherd "/bin/herd status")
+          (string-append #$procps "/bin/ps auxwww")))
 #+end_example
 
   - ssh
