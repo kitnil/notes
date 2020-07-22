@@ -50,6 +50,36 @@ https://gitlab.com/janneke/guix.git
           (string-append #$procps "/bin/ps auxwww")))
 #+end_example
 
+  - gexp script
+#+begin_example
+  #!/usr/bin/env -S guix repl --
+  !#
+
+  (use-modules (guix derivations)
+               (guix gexp)
+               (guix store)
+               (guix build utils)
+               (gnu packages package-management)
+               (ice-9 format)
+               (ice-9 match)
+               (srfi srfi-1)
+               (srfi srfi-26)
+               (guix packages))
+
+  (define store
+    (open-connection))
+
+  (build-derivations store
+                     (list (run-with-store store
+                             (gexp->derivation "nix"
+                                               #~(begin
+                                                   (mkdir #$output)
+                                                   (chdir #$output)
+                                                   (with-output-to-file "nix-path"
+                                                     (lambda ()
+                                                       (display (string-append #$nix "/bin/nix")))))))))
+#+end_example
+
   - ssh
   : eval ""$(sed 's,-nic user[^ ]* ,,' "$(./pre-inst-env guix system vm --no-offload ./gnu/tests/monitoring.scm)" | tail -1 | sed 's/\sexec\s//')" -m 4096  -smp 2 -nic user,model=virtio-net-pci,hostfwd=tcp::10022-:22"
 #+begin_example
