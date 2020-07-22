@@ -265,6 +265,24 @@ Origin: https://lists.gnu.org/archive/html/help-gnu-emacs/2017-12/msg00155.html
     remembering that your regexp will be case-sensitive:
     : M-x find-grep-dired
 
+[[https://alexschroeder.ch/wiki/2020-07-16_Emacs_everything][Alex Schroeder: 2020-07-16 Emacs everything]]
+#+BEGIN_SRC emacs-lisp
+  (eval-after-load "dired"
+    '(require 'dired-x))
+
+  (setq dired-recursive-deletes 'always
+        dired-recursive-copies 'always
+        dired-deletion-confirmer 'y-or-n-p
+        dired-clean-up-buffers-too nil
+        delete-by-moving-to-trash t
+        ;; trash-directory "~/.Trash/emacs"
+        dired-dwim-target t
+        dired-guess-shell-alist-user
+            '(("\\.pdf\\'" "evince")
+              ("\\.jpg\\'" "feh"))
+        dired-listing-switches "-alv")
+#+END_SRC
+
 * Misc
 
   - [[https://lists.gnu.org/archive/html/emacsconf-discuss/2019-11/msg00000.html][Emacs conference]]
