@@ -761,3 +761,19 @@ Here is my elfeed config on github: link.
 - C-c C-r :: move to output
 - C-u C-c C-r :: move to output and narrow
 - C-x C-j :: dired-jump
+
+* EWW
+
+[[https://alexschroeder.ch/wiki/2020-07-16_Emacs_everything][Alex Schroeder: 2020-07-16 Emacs everything]]
+And I like to follow Gemini and Gopher links from my browser, so here’s how to
+handle them:
+#+BEGIN_SRC emacs-lisp
+  (advice-add 'eww-browse-url :around 'asc:eww-browse-url)
+
+  (defun asc:eww-browse-url (original url &optional new-window)
+    "Handle gemini links."
+    (cond ((string-match-p "\\`\\(gemini\\|gopher\\)://" url)
+           (require 'elpher)
+           (elpher-go url))
+          (t (funcall original url new-window))))
+#+END_SRC
