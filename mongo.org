@@ -31,6 +31,14 @@
         "modifiedCount" : 42.0
     }
   #+end_example
+  : db.getCollection('template').updateMany({"language": "PYTHON"}, {$addToSet: {"resourceFilter": "staticRoot"}})
+  { "acknowledged" : true, "matchedCount" : 1, "modifiedCount" : 1 }
+
+  : db.getCollection('template').updateMany({"language": "PHP"}, {$addToSet: {"resourceFilter": "staticRoot"}})
+  { "acknowledged" : true, "matchedCount" : 23, "modifiedCount" : 23 }
+
+  : db.getCollection('template').updateMany({"language": "PERL"}, {$addToSet: {"resourceFilter": "staticRoot"}})
+  { "acknowledged" : true, "matchedCount" : 2, "modifiedCount" : 2 }
 
 - search by date
 : db.getCollection('request').find({"created" : {$gte : new ISODate("2020-06-29T15:14:02.233Z")}})
