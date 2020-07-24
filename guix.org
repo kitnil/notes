@@ -39,6 +39,28 @@ https://gitlab.com/janneke/guix.git
 
 * Cheat sheet
 
+  - build package
+#+BEGIN_EXAMPLE
+  $ guix repl
+  GNU Guile 3.0.4
+  Copyright (C) 1995-2020 Free Software Foundation, Inc.
+
+  Guile comes with ABSOLUTELY NO WARRANTY; for details type `,show w'.
+  This program is free software, and you are welcome to redistribute it
+  under certain conditions; type `,show c' for details.
+
+  Enter `,help' for help.
+  scheme@(guix-user)> ,use(guix)
+  scheme@(guix-user)> ,use(guix scripts)
+  scheme@(guix-user)> ,use(gnu packages base)
+  scheme@(guix-user)> (build-package coreutils)
+  $1 = #<procedure 7f2170c05540 at guix/scripts.scm:122:2 (state)>
+  scheme@(guix-user)> ,run-in-store (build-package coreutils)
+  /gnu/store/yvsd53rkbvy9q8ak6681hai62nm6rf31-coreutils-8.32-debug
+  /gnu/store/n8awazyldv9hbzb7pjcw76hiifmvrpvd-coreutils-8.32
+  $2 = #t
+#+END_EXAMPLE
+
   - debug test
 #+begin_example
   (for-each (lambda (command)
@@ -51,7 +73,7 @@ https://gitlab.com/janneke/guix.git
 #+end_example
 
   - gexp script
-#+begin_example
+#+BEGIN_SRC scheme
   #!/usr/bin/env -S guix repl --
   !#
 
@@ -64,21 +86,29 @@ https://gitlab.com/janneke/guix.git
                (ice-9 match)
                (srfi srfi-1)
                (srfi srfi-26)
-               (guix packages))
+               (guix packages)
+               (guix modules)
+               (gnu services base))
 
   (define store
     (open-connection))
 
   (build-derivations store
                      (list (run-with-store store
-                             (gexp->derivation "nix"
-                                               #~(begin
-                                                   (mkdir #$output)
-                                                   (chdir #$output)
-                                                   (with-output-to-file "nix-path"
-                                                     (lambda ()
-                                                       (display (string-append #$nix "/bin/nix")))))))))
-#+end_example
+                             (gexp->derivation "gexp"
+                                               (with-imported-modules (source-module-closure
+                                                                       '((guix build store-copy)))
+                                                 #~(begin
+                                                     (use-modules (guix build store-copy)
+                                                                  )
+                                                     (mkdir #$output)
+                                                     (chdir #$output)
+                                                     (with-output-to-file "gexp-output"
+                                                       (lambda ()
+                                                         (display #$(kvm-udev-rule))
+                                                         (newline)))))
+                                               #:local-build? #t))))
+#+END_SRC
 
   - ssh
   : eval ""$(sed 's,-nic user[^ ]* ,,' "$(./pre-inst-env guix system vm --no-offload ./gnu/tests/monitoring.scm)" | tail -1 | sed 's/\sexec\s//')" -m 4096  -smp 2 -nic user,model=virtio-net-pci,hostfwd=tcp::10022-:22"
@@ -2092,6 +2122,23 @@ configuration system can just exclude the service, or unset PULSE_CONFIG
 and PULSE_CLIENT_CONFIG in their profile.
 
 * Tips
+
+** Capture closure
+#+BEGIN_SRC scheme
+(with-output-to-file "/etc/nix/nix.conf"
+  (lambda _
+    (display "sandbox = true")
+    (newline)
+    (format #t "build-sandbox-paths = ~{~a ~}~%"
+            '#$(package-closure (map (match-lambda ((name package) package))
+                                     (package-inputs nix))))))
+#+END_SRC
+
+That’s inaccurate: ‘package-closure’ does not capture non-package
+inputs, and it’s the set of build-time dependencies, not references.
+
+Using #:references-graphs solves that problem because it gives you
+precisely the closure of each package, as returned by ‘guix gc -R’.
 
 ** [[http://issues.guix.gnu.org/41732#7][issue with emacs-lua-mode and emacs-next]]
 
