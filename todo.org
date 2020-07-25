@@ -758,7 +758,3 @@ echo $PATH | tr ':' '\n' | xargs -I{} find {} -name '*top*'
 * password-store 
   : find ~/.password-store -not -name '.gitmodules' -not -name '.gpg-id' -not -name '.gitattributes' -not -path '/home/oleg/.password-store/.git/*' -type f -exec printf '{}:' \; -exec sh -c 'gpg -d -q "{}" | tr -d "\n"; echo' \; |& tee pass.txt
 
-* DONE hunspell
-
-oleg@guixsd ~/src/guix-master$ hunspell TODO
-Hunspell has been compiled without Ncurses user interface.
