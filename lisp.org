@@ -1,7 +1,6 @@
-Kill thread
-#+BEGIN_SRC lisp
-  (sb-thread:terminate-thread (cadr (sb-thread:list-all-threads)))
- #+END_SRC
+* Links
+
+** Misc
 
 - [[https://github.com/janestreet/sexplib][janestreet/sexplib: Automated S-expression conversion]]
 - [[https://github.com/ccqpein/Github-API-CL][ccqpein/Github-API-CL: Common Lisp Github API Client]]
@@ -39,3 +38,16 @@ Kill thread
 
 In Common Lisp, use =every= (that's the equivalent of =all=) and =some=
 (that's the equivalent of =any=).
+
+** Community
+
+- [[https://common-lisp.net/][Welcome to Common-Lisp.net!]]
+- [[https://gitlab.common-lisp.net/explore/projects?sort=latest_activity_desc][Projects · Explore · GitLab]]
+
+* Cheatsheet
+
+Kill thread
+#+BEGIN_SRC lisp
+  (sb-thread:terminate-thread (cadr (sb-thread:list-all-threads)))
+ #+END_SRC
+
