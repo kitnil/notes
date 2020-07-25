@@ -2195,6 +2195,18 @@ precisely the closure of each package, as returned by ‘guix gc -R’.
     "-A INPUT -p tcp --sport 80 -m string --string \"Location: http://promo.nw.rt.ru\" --algo bm -j DROP")
 #+END_SRC
 
+* Container
+So presumably a better option is to use an image created like this:
+
+  guix pack -f docker -S /bin=bin guix --localstatedir
+
+and then, in the image, you first need to spawn guix-daemon, perhaps
+with ‘--disable-chroot’ because the image lacks build users.
+
+It would be useful also to set the user under which commands run in the
+image, similar to the ‘USER’ directive in Dockerfiles.
+
+
 * QEMU
 
 #+BEGIN_SRC diff
