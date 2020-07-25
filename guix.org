@@ -2121,6 +2121,9 @@ Sounds reasonable.  Users who wish to control pulseaudio outside of the
 configuration system can just exclude the service, or unset PULSE_CONFIG
 and PULSE_CLIENT_CONFIG in their profile.
 
+* WSL
+- [[https://gist.github.com/giuliano108/49ec5bd0a9339db98535bc793ceb5ab4][Guix-on-WSL2.md]]
+
 * Tips
 
 ** Capture closure
