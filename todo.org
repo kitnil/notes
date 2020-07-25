@@ -755,3 +755,5 @@ echo $PATH | tr ':' '\n' | xargs -I{} find {} -name '*top*'
 * TODO HASKELL CMS [[https://github.com/clckwrks/clckwrks][clckwrks / clckwrks]]
   SCHEDULED: <2020-07-21 Tue>
 
+* password-store 
+  : find ~/.password-store -not -name '.gitmodules' -not -name '.gpg-id' -not -name '.gitattributes' -not -path '/home/oleg/.password-store/.git/*' -type f -exec printf '{}:' \; -exec sh -c 'gpg -d -q "{}" | tr -d "\n"; echo' \; |& tee pass.txt
