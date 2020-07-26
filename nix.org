@@ -50,6 +50,7 @@ nix-repl> mynixos2.config.environment.etc."mailman.cfg".text
 - [[https://github.com/ajs124/NixDroid][ajs124 / NixDroid Android AOSP]]
 - [[https://github.com/xtruder/kubenix][xtruder / kubenix]]
 - [[https://github.com/nix-community/setup.nix][nix-community/setup.nix: Nixpkgs based build tools for declarative Python packages [maintainer=@datakurre]]]
+- [[https://github.com/vitiral/novault][vitiral/novault: ultra simple and secure vaultless password manager (beta)]]
 
 : oleg@guixsd ~/majordomo/_ci/nixpkgs$ nix-instantiate --expr 'with import <nixpkgs> {}; lib.filter (package: lib.isDerivation package) (map (package: package.src) (lib.filter (package: lib.hasAttrByPath ["src"] package) (import ./build.nix)))'
 
