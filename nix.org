@@ -41,6 +41,7 @@ nix-repl> mynixos2.config.environment.etc."mailman.cfg".text
 - [[https://github.com/vlktomas/nix-examples][vlktomas/nix-examples: Showcase of Nix usage for various technologies]]
 - [[https://github.com/BenSchZA/nix-shells][BenSchZA/nix-shells: Assorted Nix development shells]]
 - [[https://github.com/hercules-ci/arion][hercules-ci/arion: Run docker-compose with help from Nix/NixOS]]
+- [[https://github.com/domenkozar/hnix-lsp][domenkozar/hnix-lsp: Language Server Protocol for Nix]]
 
 : oleg@guixsd ~/majordomo/_ci/nixpkgs$ nix-instantiate --expr 'with import <nixpkgs> {}; lib.filter (package: lib.isDerivation package) (map (package: package.src) (lib.filter (package: lib.hasAttrByPath ["src"] package) (import ./build.nix)))'
 
