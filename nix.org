@@ -37,6 +37,7 @@ nix-repl> mynixos2.config.environment.etc."mailman.cfg".text
 - [[https://www.reddit.com/r/NixOS/comments/a3w67x/install_a_package_from_a_specific_version_of/][Install a package from a specific version of Nixpkgs : NixOS]]
 - [[https://gitlab.com/obsidian.systems/basalt/][obsidian.systems / basalt · GitLab]]
 - [[https://github.com/grahamc/netboot.nix][grahamc/netboot.nix: Create full netboot images in 15 seconds.]]
+- [[https://github.com/noteed/nix-notes][noteed/nix-notes: A collection of short notes about Nix, each contributing to the same virtual machine image]]
 
 : oleg@guixsd ~/majordomo/_ci/nixpkgs$ nix-instantiate --expr 'with import <nixpkgs> {}; lib.filter (package: lib.isDerivation package) (map (package: package.src) (lib.filter (package: lib.hasAttrByPath ["src"] package) (import ./build.nix)))'
 
