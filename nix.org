@@ -51,6 +51,7 @@ nix-repl> mynixos2.config.environment.etc."mailman.cfg".text
 - [[https://github.com/xtruder/kubenix][xtruder / kubenix]]
 - [[https://github.com/nix-community/setup.nix][nix-community/setup.nix: Nixpkgs based build tools for declarative Python packages [maintainer=@datakurre]]]
 - [[https://github.com/vitiral/novault][vitiral/novault: ultra simple and secure vaultless password manager (beta)]]
+- [[https://github.com/headcounter/shabitica][headcounter/shabitica: Run your own self-hosted Habitica instance]]
 
 : oleg@guixsd ~/majordomo/_ci/nixpkgs$ nix-instantiate --expr 'with import <nixpkgs> {}; lib.filter (package: lib.isDerivation package) (map (package: package.src) (lib.filter (package: lib.hasAttrByPath ["src"] package) (import ./build.nix)))'
 
