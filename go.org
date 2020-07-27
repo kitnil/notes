@@ -41,6 +41,16 @@
 
 - [[https://devhints.io/go][Go cheatsheet]]
 
+#+begin_example
+          HOSTNAME := os.Getenv("HOSTNAME")
+          if HOSTNAME == "" {
+                  fmt.Fprintf(os.Stderr, "error: No HOSTNAME provided.\n")
+                  os.Exit(1)
+          }
+
+
+#+end_example
+
 * Read
 
 - [[https://github.com/enocom/gopher-reading-list][enocom/gopher-reading-list: A curated selection of blog posts on Go]]
