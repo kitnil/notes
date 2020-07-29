@@ -73,6 +73,8 @@ Imperatively
 #+END_SRC
 
 - http://chriswarbo.net/projects/nixos/useful_hacks.html
+: nix repl ~/src/nixpkgs-19.09
+: s = nixos ((import ./ns.nix).ns3 { config = { }; inherit pkgs; })
 
 - /etc/environment
 #+BEGIN_SRC nix
