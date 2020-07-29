@@ -2276,3 +2276,20 @@ oleg@guixsd ~/src/guix-master$ /gnu/store/dl0w9s9mchyg0ggj62yzd2szw200nsb3-run-v
           (((name1 . size1) (name2 . size2))
            (> size1 size2))))
 #+END_SRC
+
+
+The manual describes how to fetch Guix from Git in section ‘14.1
+Building from Git’, including how to verify the authenticity of the
+copy. Quoting the part in question:
+
+  1.‘guix git authenticate’ only works after the branch ‘keyring’ has
+     been set up locally; I’ve been told to achieve this with the
+     command ‘git fetch upstream keyring:keyring’, but ‘git checkout
+     keyring’ has worked for me, too. After that, it seems to be
+     necessary to switch back to the master branch to successfully run
+    ‘guix git authenticate’. I think the commands for this should be
+     included in this section.
+
+  2. The word ‘if’ seems to be a typo of ‘it’. I first thought that the
+     sentence was incomplete and that the command should pass if the
+     commit and the fingerprint [did something]. :)
