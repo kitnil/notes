@@ -1,2 +1,5 @@
 - [[https://debian-administration.org/article/633/Testing_SMTP_servers_with_SWAKS][Testing SMTP servers with SWAKS]]
-- swaks -s 78.108.80.149 --to support@majordomo.ru --from noreply@example.com
+- mjru
+: swaks -s 78.108.80.149 --to support@majordomo.ru --from noreply@example.com
+- gmail
+: echo "Hello world" | swaks -4 --server smtp.gmail.com:587 --from user@gmail.com --to user@example.net -tls --tls-protocol sslv3 --auth PLAIN --auth-user user@gmail.com --auth-password 7654321 --h-Subject "Test message" --body -
