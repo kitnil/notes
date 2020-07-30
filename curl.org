@@ -1,1 +1,2 @@
 - [[https://curl.haxx.se/docs/manual.html][curl - Tutorial]]
+- /nix/store/0crj463x3gwrxmmscc5g8jfna1d6435d-curl-7.69.1-bin/bin/curl --key ~/.ssh/eng_key_rsa scp://eng@jenkins.intr/etc/passwd
