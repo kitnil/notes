@@ -1,1 +1,2 @@
 - [[https://debian-administration.org/article/633/Testing_SMTP_servers_with_SWAKS][Testing SMTP servers with SWAKS]]
+- swaks -s 78.108.80.149 --to support@majordomo.ru --from noreply@example.com
