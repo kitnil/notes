@@ -760,3 +760,9 @@ echo $PATH | tr ':' '\n' | xargs -I{} find {} -name '*top*'
 
 
 https://cerberus.intr/index.php/profiles/ticket/RM-12141-836
+
+- telegraf
+  - pop3 & imap
+  - adaptec
+  - configs via nix
+- ssh2docker
