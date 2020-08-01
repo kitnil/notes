@@ -29,3 +29,14 @@
          ((@@ (srfi srfi-9) list) s*)
          ((@@ (srfi srfi-9) list) s*)))))
 #+end_example
+
+* call/cc
+
+Like return from function:
+#+BEGIN_SRC scheme
+  (let ((my-val (call/cc (lambda (the-continuation)
+                           (display "This will be executed\n")
+                           (the-continuation 5)
+                           (display "This will not be executed\n")))))
+    (display my-val))
+#+END_SRC
