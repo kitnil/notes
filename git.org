@@ -154,6 +154,9 @@ rerere-train.sh [COMMIT][--all]
   - Archive repository
     : git archive --prefix=$(git describe)/ HEAD | xz -9 > $(git describe).tar.xz
 
+  - git-cal
+    : [[ -n $(git log --max-count=1 --author='Oleg Pykhalov') ]] && git-cal --author='Oleg Pykhalov'
+
 * Tutorials
   - [[https://www.youtube.com/channel/UCshmCws1MijkZLMkPmOmzbQ][Dan Gitschooldude]]
   - [[https://www.youtube.com/watch?v=8ET_gl1qAZ0][Advanced git Tutorial: Linus Torvalds - YouTube]]
