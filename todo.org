@@ -770,3 +770,5 @@ https://cerberus.intr/index.php/profiles/ticket/RM-12141-836
 * TODO php imagemagick add test for pdf https://www.php.net/manual/en/class.imagick.php
 
 : php > $document = new Imagick('/home/u143991/zemlya-chitaru/www/wp-content/uploads/2020/08/example-2.pdf');
+
+* TODO [[file:~/archive/src/ssh2docker/auth.go::cmd.Env = config.Env.List()][ssh2docker]]
