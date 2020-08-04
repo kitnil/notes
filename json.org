@@ -3,6 +3,9 @@
   ssh web31.intr -- ifconfig | jc --ifconfig | jq --raw-output "[.[] | {\"interface\": .name, \"ipv4_addr\": .ipv4_addr}]" | jtbl
 #+END_SRC
 
+* Tutorials
+- [[https://github.com/miloyip/json-tutorial][json-tutorial]]
+
 * Links
 - [[https://github.com/paularmstrong/normalizr][paularmstrong/normalizr: Normalizes nested JSON according to a schema]]
 - http://headers.jsontest.com/
