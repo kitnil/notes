@@ -798,3 +798,20 @@ handle them:
            (elpher-go url))
           (t (funcall original url new-window))))
 #+END_SRC
+
+* Tramp
+
+#+BEGIN_SRC emacs-lisp
+  (add-to-list 'tramp-methods
+    '("myssh"
+      (tramp-login-program        "ssh")
+      (tramp-login-args           (("-l" "%u") ("-p" "%p") ("%c")
+                                   ("-e" "none") ("-t" "-t") ("%h")
+                                   ("\"/bin/sh -i\"")))
+      (tramp-async-args           (("-q")))
+      (tramp-remote-shell         "/bin/sh")
+      (tramp-remote-shell-login   ("-l"))
+      (tramp-remote-shell-args    ("-c"))))
+#+END_SRC
+Btw, another test worth a try would be to use method "sshx" instead of
+"ssh". Does this make a difference?
