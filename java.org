@@ -14,3 +14,4 @@ https://www.youtube.com/watch?v=t1-YZ6bF-g0
 - Arrays.stream(new String[] {"where", "hello", "world", "guys"}).filter(str -> str.startsWith("w")).sorted().forEach(System.out::println))
 
 - [[https://github.com/java-decompiler/jd-gui][java-decompiler/jd-gui: A standalone Java Decompiler GUI]]
+- [[https://github.com/redisson/redisson][redisson/redisson: Redisson - Redis Java client with features of In-Memory Data Grid. Over 50 Redis based Java objects and services: Set, Multimap, SortedSet, Map, List, Queue, Deque, Semaphore, Lock, AtomicLong, Map Reduce, Publish / Subscribe, Bloom filter, Spring Cache, Tomcat, Scheduler, JCache API, Hibernate, MyBatis, RPC, local cache ...]]
