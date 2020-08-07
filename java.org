@@ -12,3 +12,5 @@
 https://www.youtube.com/watch?v=t1-YZ6bF-g0
 - Arrays.stream(new String[] {"hello", "world", "guys"}).sorted().findFirst()
 - Arrays.stream(new String[] {"where", "hello", "world", "guys"}).filter(str -> str.startsWith("w")).sorted().forEach(System.out::println))
+
+- [[https://github.com/java-decompiler/jd-gui][java-decompiler/jd-gui: A standalone Java Decompiler GUI]]
