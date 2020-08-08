@@ -33,7 +33,10 @@
     frame check sequence:
 #+END_SRC
 
-* 
+* Traffic shaping
+[[https://github.com/hkbakke/tc-gen][hkbakke/tc-gen: Modern linux traffic shaping made easy]]
+
+* Packets
 
 - [[https://github.com/netspooky/pdiff][netspooky/pdiff: Binary Protocol Differ]]
 - [[https://loicpefferkorn.net/ipdecap/][Ipdecap: remove encapsulation from pcap packets]]
