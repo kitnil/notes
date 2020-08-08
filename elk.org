@@ -1,3 +1,5 @@
+- elastic
+
 - [[https://github.com/bitemyapp/bloodhound][bitemyapp / bloodhound Haskell Elasticsearch client and query DSL]]
 
 - root@web15 /etc/filebeat # filebeat -e -d "publish"
