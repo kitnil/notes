@@ -46,6 +46,9 @@ trial = trialContextManager()
 with trial: a = 5
 #+END_SRC
 
+** lsp
+- [[https://github.com/emacs-lsp/lsp-pyright][emacs-lsp/lsp-pyright: lsp-mode pyright]]
+
 * Test
 
 https://docs.python.org/3/library/unittest.html
