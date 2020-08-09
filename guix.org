@@ -2293,3 +2293,18 @@ copy. Quoting the part in question:
   2. The word ‘if’ seems to be a typo of ‘it’. I first thought that the
      sentence was incomplete and that the command should pass if the
      commit and the fingerprint [did something]. :)
+
+* entr
+
+build.sh
+#+BEGIN_SRC sh
+  #!/usr/bin/env bash
+
+  set -eux
+
+  ./pre-inst-env guix build -K --no-offload "$(git diff --inter-hunk-context=1 gnu/packages/golang.scm gnu/packages/configuration-management.scm gnu/packages/version-control.scm | awk '/define-public/ { print $NF }' | head -2 | tail -1)"
+#+END_SRC
+
+#+BEGIN_SRC sh
+  ls gnu/packages/golang.scm gnu/packages/configuration-management.scm gnu/packages/version-control.scm | ~/.guix-profile/bin/entr -r ./build.sh
+#+END_SRC
