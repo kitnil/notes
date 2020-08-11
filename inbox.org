@@ -21,55 +21,6 @@
 [5] https://replay.jres.org/videos/watch/c77b3a44-b75f-4c10-9f39-8fb55ae096d7
 [6] https://connect.ed-diamond.com/GNU-Linux-Magazine/GLMF-194/Gestion-de-paquets-sure-et-flexible-avec-GNU-Guix
 [7] https://guix.gnu.org/videos/
-** TODO Watch Guix FOSDEM
-
-On Fri, Jan 03, 2020 at 12:10:54PM +0100, Ludovic Courtès wrote:
-> Hello Guix!
-> 
-> The Guix Days and FOSDEM are approaching!  For FOSDEM, these are the
-> Guix talks I know of:
-> 
->   • “Sharing Reproducible Results in a Container” (Efraim),
->     <https://fosdem.org/2020/schedule/event/reprod_container/>
-> 
->   • “Towards reproducible Jupyter notebooks” (myself),
->     <https://fosdem.org/2020/schedule/event/reprod_jupyter_guix/>
-> 
->   • “GNU Guix as an alternative to the Yocto Project” (Mathieu),
->     <https://fosdem.org/2020/schedule/event/ggaaattyp/>
-> 
->   • “Universal package & service discovery with Guix” (Pierre),
->     <https://fosdem.org/2020/schedule/event/gnuguixpackagemanager/>
-> 
->   • “Introduction to G-Expressions” (Chris Marusich),
->     <https://fosdem.org/2020/schedule/event/gexpressionsguile/>
-> 
->   • “Lisp everywhere!” (Pjotr),
->     <https://fosdem.org/2020/schedule/event/lispeverywhere/>
-> 
->   • “GNU Mes, Scheme-only bootstrap and beyond” (janneke),
->     <https://fosdem.org/2020/schedule/event/gnumes/>
-> 
->   • “Guix: Unifying provisioning, deployment, and package management in
->     the age of containers” (myself):
->     <https://fosdem.org/2020/schedule/event/guix/>
-> 
->   • “Celebrating Guile 2020” (Andy; not strictly Guix but noteworthy!),
->     <https://fosdem.org/2020/schedule/event/guile2020/>
-> 
-> Woow, exciting program!  Are there others I’m missing?
-> 
-> Pjotr, Manolis: would you like to prepare a post similar to
-> <https://guix.gnu.org/blog/2019/meet-guix-at-fosdem-2019/> as Markdown
-> like
-> <https://git.savannah.gnu.org/cgit/guix/guix-artwork.git/tree/website/posts/meet-guix-at-fosdem-2019.md>?
-> If we publish it soon, that may give an opportunity to those who haven’t
-> made plans yet to join the Guix Days.
-> 
-
-I have another presentation:
-    "Packaging Rust programs in GNU Guix" (Efraim),
-    <https://fosdem.org/2020/schedule/event/rust_packaging_gnu_guix/>
 ** TODO [2020-02-04 Tue 00:33] [[gnus:INBOX#52415d7532584ed19074ad0c945400c8@1973398186][Email from Oracle Events: ВЕБИНАР: Технологии Oracle Machine Learning для задач прогнозирования, управления и принятия решений]] by [[mailto:replies@oracle-mail.com][Oracle Events]]
 ** TODO [2020-02-29 Sat 01:58] [[gnus:INBOX#CAK+FtOFvzDL3CKLYaN1-voPyXwcVZFjfHUGc7vJNRpVeKD_FeA@mail.gmail.com][Email from Evgeny Ponomarev: Oleg – share your opinion on the Decentralized Web]] by [[mailto:e@fluence.one][Evgeny Ponomarev]]
 ** TODO [2020-02-29 Sat 02:04] [[gnus:INBOX#87tv3cm45b.fsf@gmail.com][Email from Maxim Cournoyer: Re: 02/02: gnu: next: Compress the executable.]] by [[mailto:maxim.cournoyer@gmail.com][Maxim Cournoyer]]
