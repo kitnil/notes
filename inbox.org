@@ -24,15 +24,15 @@
 [[https://www.mail-archive.com/help-guix@gnu.org/msg08206.html][Re: Java fontconfig issues]]
 ** REVIEW [2019-11-30 Sat 02:34] [[gnus:INBOX#20191129180721.13923-1-rob@vllmrt.net][Email from Robert Vollmert: {bug#38429} {PATCH} Add scron service.]] by [[mailto:rob@vllmrt.net][Robert Vollmert]]
 ** READ [2019-11-30 Sat 02:35] [[gnus:INBOX#CAJ3okZ0Ge0EpGWaQ3ZJQ1yAB1Eh21czAKkfTHO1p6XV+aB8fSA@mail.gmail.com][Email from zimoun: Re: Help wanted for mumi (issues.guix.gnu.org)]] by [[mailto:zimon.toutoune@gmail.com][zimoun]]
-** [2019-12-06 Fri 21:13] [[gnus:INBOX#20191201005340.3ef68e83@alma-ubu][Email from Björn Höfling: Re: Java fontconfig issues]] by [[mailto:bjoern.hoefling@bjoernhoefling.de][Björn Höfling]]
+** TODO [2019-12-06 Fri 21:13] [[gnus:INBOX#20191201005340.3ef68e83@alma-ubu][Email from Björn Höfling: Re: Java fontconfig issues]] by [[mailto:bjoern.hoefling@bjoernhoefling.de][Björn Höfling]]
 ** WAIT [2019-12-28 Sat 01:54] [[gnus:INBOX#CAKf5CqU4MzyLgtDQQsQmENi8DV=oYcLzb-yJbhOU2P5F6ZoCYA@mail.gmail.com][Email from John Soo: {bug#38640} {PATCH} Add ripgrep and many rust dependencies]] by [[mailto:jsoo1@asu.edu][John Soo]]
 ** WAIT [2019-12-28 Sat 02:05] [[gnus:INBOX#mS425o3U--g_ZZemWqvuUgtTHvBroyNZvJUCP6Dy2ABWdMTmgI1CweiSpOj40xlg1LXarBqJE0krzRh4J-DhzoWQ_jofFDDgxUXg1cvjZUA=@protonmail.com][Email from saffronsnail via Guix-patches via: {bug#38643} {PATCH} Add spacemacs package]] by [[mailto:guix-patches@gnu.org][saffronsnail via Guix-patches via]]
 ** REPLY [2019-12-29 Sun 18:24] [[gnus:INBOX#b315b888-b6e5-44dc-8638-83bd6f8079f8@www.fastmail.com][Email from Reza Alizadeh Majd: right location for gitlab-runner]] by [[mailto:r.majd@pantherx.org][Reza Alizadeh Majd]]
 ** REVIEW [2019-12-29 Sun 18:25] [[gnus:INBOX#87v9q1jjlf.fsf@zancanaro.id.au][Email from Carlo Zancanaro: {bug#38769} {PATCH} import: Add importer for MELPA packages.]] by [[mailto:carlo@zancanaro.id.au][Carlo Zancanaro]]
 ** TODO [2020-01-02 Thu 20:10] [[gnus:INBOX#20191231184506.9E716206C8@bendel.debian.org][Email from Debian Listmaster Team: lists.debian.org has received bounces from you]] by [[mailto:listmaster@lists.debian.org][Debian Listmaster Team]]
 ** REVIEW [2020-01-02 Thu 21:23] [[gnus:INBOX#877e2bm76p.fsf@latte.josefsson.org][Email from Simon Josefsson: drop net-tools from %base-packages?]] by [[mailto:simon@josefsson.org][Simon Josefsson]]
-** https://debbugs.gnu.org/cgi/bugreport.cgi?bug=35866
-** [2020-01-03 Fri 01:53] [[gnus:INBOX#CAJ3okZ2ai1Nv86fLMkfECWVZ-du_=23=LxNr7hNyp715n6YSDw@mail.gmail.com][Email from zimoun: Re: How to present Guix to a wider audience]] by [[mailto:zimon.toutoune@gmail.com][zimoun]]
+** TODO https://debbugs.gnu.org/cgi/bugreport.cgi?bug=35866
+** TODO [2020-01-03 Fri 01:53] [[gnus:INBOX#CAJ3okZ2ai1Nv86fLMkfECWVZ-du_=23=LxNr7hNyp715n6YSDw@mail.gmail.com][Email from zimoun: Re: How to present Guix to a wider audience]] by [[mailto:zimon.toutoune@gmail.com][zimoun]]
    
 [2] https://media.marusich.info/everyday-use-of-gnu-guix-chris-marusich-seagl-2018.webm
 [3] https://www.youtube.com/watch?v=I2iShmUTEl8
@@ -100,10 +100,10 @@ I have another presentation:
 ** REPLY [2020-01-14 Tue 09:02] [[gnus:INBOX#87o8v8qq59.fsf@inria.fr][Email from Ludovic Courtès: Testing the installer]] by [[mailto:ludo@gnu.org][Ludovic Courtès]]
 ** REVIEW [2020-01-29 Wed 11:05] [[gnus:INBOX#20200128221944.6791-1-robertsmith@posteo.net][Email from Robert Smith: {bug#39331} {PATCH} gnu: Add emacs-persist and emacs-org-drill]] by [[mailto:robertsmith@posteo.net][Robert Smith]]
 ** REVIEW [2020-01-29 Wed 11:05] [[gnus:INBOX#20200128235331.8947-1-mab@gnu.org][Email from Amin Bandali: {bug#39333} {PATCH 2/2} gnu: Add emacs-erc-scrolltoplace.]] by [[mailto:mab@gnu.org][Amin Bandali]]
-** [2020-02-04 Tue 00:33] [[gnus:INBOX#52415d7532584ed19074ad0c945400c8@1973398186][Email from Oracle Events: ВЕБИНАР: Технологии Oracle Machine Learning для задач прогнозирования, управления и принятия решений]] by [[mailto:replies@oracle-mail.com][Oracle Events]]
+** TODO [2020-02-04 Tue 00:33] [[gnus:INBOX#52415d7532584ed19074ad0c945400c8@1973398186][Email from Oracle Events: ВЕБИНАР: Технологии Oracle Machine Learning для задач прогнозирования, управления и принятия решений]] by [[mailto:replies@oracle-mail.com][Oracle Events]]
 ** REVIEW [2020-02-11 Tue 10:24] [[gnus:INBOX#20200210170418.32076-1-zimon.toutoune@gmail.com][Email from zimoun: {bug#39547} {PATCH} website: Provide JSON sources list used by Software Heritage.]] by [[mailto:zimon.toutoune@gmail.com][zimoun]]
-** [2020-02-29 Sat 01:58] [[gnus:INBOX#CAK+FtOFvzDL3CKLYaN1-voPyXwcVZFjfHUGc7vJNRpVeKD_FeA@mail.gmail.com][Email from Evgeny Ponomarev: Oleg – share your opinion on the Decentralized Web]] by [[mailto:e@fluence.one][Evgeny Ponomarev]]
-** [2020-02-29 Sat 02:04] [[gnus:INBOX#87tv3cm45b.fsf@gmail.com][Email from Maxim Cournoyer: Re: 02/02: gnu: next: Compress the executable.]] by [[mailto:maxim.cournoyer@gmail.com][Maxim Cournoyer]]
+** TODO [2020-02-29 Sat 01:58] [[gnus:INBOX#CAK+FtOFvzDL3CKLYaN1-voPyXwcVZFjfHUGc7vJNRpVeKD_FeA@mail.gmail.com][Email from Evgeny Ponomarev: Oleg – share your opinion on the Decentralized Web]] by [[mailto:e@fluence.one][Evgeny Ponomarev]]
+** TODO [2020-02-29 Sat 02:04] [[gnus:INBOX#87tv3cm45b.fsf@gmail.com][Email from Maxim Cournoyer: Re: 02/02: gnu: next: Compress the executable.]] by [[mailto:maxim.cournoyer@gmail.com][Maxim Cournoyer]]
 ** HACK [2020-03-12 Thu 10:13] [[gnus:INBOX#878sk6hjlc.fsf@gnu.org][Email from Ludovic Courtès: bug#39922: {PATCH} Add clipnotify and clipmenu]] by [[mailto:ludo@gnu.org][Ludovic Courtès]]
 ** HACK [2020-03-12 Thu 16:05] [[gnus:INBOX#85zhclbwka.fsf@disroot.org][Email from Amar M. Singh: {bug#40038} {PATCH} {SQUASHED} gnu: add guile-torrent]] by [[mailto:nly@disroot.org][Amar M. Singh]]
 ** READ [2020-03-17 Tue 18:15] [[gnus:INBOX#87d09b68yp.fsf@gmail.com][Email from Maxim Cournoyer: {kb} Using an OpenVPN config with nmcli]] by [[mailto:maxim.cournoyer@gmail.com][Maxim Cournoyer]]
@@ -117,7 +117,7 @@ I have another presentation:
 ** REVIEW [2020-04-28 Tue 14:12] [[gnus:INBOX#20200427182027.27813-1-mbakke@fastmail.com][Email from Marius Bakke: {bug#40908} {PATCH core-updates 0/5} Use Guile 3.0 in the initrd]] by [[mailto:mbakke@fastmail.com][Marius Bakke]]
 ** REVIEW [2020-04-30 Thu 00:51] [[gnus:INBOX#MJCK9Q.9GY8EBVY4BEJ@fastmail.com][Email from Elais Player: {bug#40970} {PATCH} gnu: add emacs-boon]] by [[mailto:elais@fastmail.com][Elais Player]]
 ** REVIEW [2020-04-30 Thu 00:56] [[gnus:INBOX#20200429071449.20a7268b.raghavgururajan@disroot.org][Email from Raghav Gururajan: {bug#40960} gnu: Add audacious.]] by [[mailto:raghavgururajan@disroot.org][Raghav Gururajan]]
-** [2020-05-01 Fri 00:54] [[gnus:INBOX#87imhg6702.fsf@elephly.net][Email from Ricardo Wurmus: {bug#40959} {PATCH 1/1} gnu: Add icedove.]] by [[mailto:rekado@elephly.net][Ricardo Wurmus]]
+** TODO [2020-05-01 Fri 00:54] [[gnus:INBOX#87imhg6702.fsf@elephly.net][Email from Ricardo Wurmus: {bug#40959} {PATCH 1/1} gnu: Add icedove.]] by [[mailto:rekado@elephly.net][Ricardo Wurmus]]
 ** REVIEW [2020-05-02 Sat 14:10] [[gnus:INBOX#20200502111908.26a8e396@airmail.cc][Email from pinoaffe@airmail.cc: {bug#41018} {PATCH} gnu: Add AutoSSH service.]] by [[mailto:pinoaffe@airmail.cc][]]
-** [2020-05-12 Tue 21:29] [[gnus:INBOX#887f7538354a77d0df85cb3f458ffac4@waegenei.re][Email from Brice Waegeneire: Routing Guix services traffic trough Tor]] by [[mailto:brice@waegenei.re][Brice Waegeneire]]
-** [2020-07-29 Wed 08:48] [[gnus:INBOX#d5483c834de758e7b096ca49b6a0b369@selfhosted.xyz][Email from david larsson: bug#42544: openvpn service requires cert and key configuration]] by [[mailto:david.larsson@selfhosted.xyz][david larsson]]
+** TODO [2020-05-12 Tue 21:29] [[gnus:INBOX#887f7538354a77d0df85cb3f458ffac4@waegenei.re][Email from Brice Waegeneire: Routing Guix services traffic trough Tor]] by [[mailto:brice@waegenei.re][Brice Waegeneire]]
+** TODO [2020-07-29 Wed 08:48] [[gnus:INBOX#d5483c834de758e7b096ca49b6a0b369@selfhosted.xyz][Email from david larsson: bug#42544: openvpn service requires cert and key configuration]] by [[mailto:david.larsson@selfhosted.xyz][david larsson]]
