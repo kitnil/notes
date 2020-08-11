@@ -2314,3 +2314,6 @@ build.sh
 #+BEGIN_SRC sh
   ls gnu/packages/golang.scm gnu/packages/configuration-management.scm gnu/packages/version-control.scm | ~/.guix-profile/bin/entr -r ./build.sh
 #+END_SRC
+
+* articles
+- [[https://guix.gnu.org/blog/2020/running-a-ganeti-cluster-on-guix/][Running a Ganeti cluster on Guix]]
