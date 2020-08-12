@@ -218,6 +218,31 @@ It asks me for a directory, I point to guix, and then I get the error
  '(gnus-secondary-select-methods 
     (nnimap "" (nnimap-stream shell) (imap-shell-program "~/bin/imap")))
 
+*** mbsync
+#+BEGIN_SRC emacs-lisp
+  (defun my-gnus-retrieve-group ()
+    (when (memq this-command '(gnus-topic-get-new-news-this-topic
+                               gnus-group-get-new-news-this-group))
+      (let ((pr-groups
+             (seq-filter (lambda (g)
+                           (string-match "^nnimap\\+NPR:" g))
+                         (gnus-group-process-prefix
+                          current-prefix-arg))))
+        (message "Fetching mail for %d group(s)" (length pr-groups))
+        (when pr-groups
+          (call-process
+           nil nil nil
+           "/usr/bin/mbsync"
+           (mapconcat (lambda (g)
+                        (format "pr:%s"
+                                (replace-regexp-in-string
+                                 "\\." "/"
+                                 (nth 1 (split-string g ":")))))
+                      pr-groups " "))))))
+                               
+  (add-hook 'gnus-get-new-news-hook #'my-gnus-retrieve-group)
+#+END_SRC
+
 *** Gnus nnimap missing messages
     C-u M-g in the Group buffer with the problematic group selected.
     See <https://lists.gnu.org/archive/html/emacs-devel/2017-12/msg00624.html>.
