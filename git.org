@@ -172,3 +172,23 @@ rerere-train.sh [COMMIT][--all]
   - [[https://www.atlassian.com/git/tutorials/git-hooks/local-hooks][Git Hooks - Local hooks | Atlassian Git Tutorial]]
   - [[https://github.com/lfit/itpol/blob/master/protecting-code-integrity.md][Protecting code integrity with PGP]]
   - [[https://mikegerwitz.com/papers/git-horror-story#automate][A Git Horror Story: Repository Integrity With Signed Commits]]
+
+* Hooks
+
+#+begin_example
+#!/usr/bin/env bash
+
+if [[ "$GIT_JENKINS" == true ]]
+then
+    branch="$(git rev-parse --abbrev-ref HEAD)"
+
+    case $branch in
+        wip-local)
+            exec -a "$0" $HOME/bin/jenkins build guix maintenance
+            ;;
+        master)
+            exec -a "$0" $HOME/bin/jenkins build guix upstream
+            ;;
+    esac
+fi
+#+end_example
