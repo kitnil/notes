@@ -816,3 +816,6 @@ handle them:
 #+END_SRC
 Btw, another test worth a try would be to use method "sshx" instead of
 "ssh". Does this make a difference?
+
+* Tests
+- [[https://elpa.zilongshanren.com/melpa-stable/ert-junit-0.2.el][elpa.zilongshanren.com/melpa-stable/ert-junit-0.2.el]]
