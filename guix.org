@@ -48,6 +48,24 @@ https://gitlab.com/janneke/guix.git
 
 * Cheat sheet
 
+  - updatedb
+
+: Message-ID: <87y2ml429i.fsf@elephly.net>
+#+begin_quote
+For comparison, my laptop’s store contains 1,103,543 files, excluding
+.links 691,994.  The updatedb database for all of them is 86MB and takes
+~6 seconds to generate:
+#+end_quote    
+
+#+begin_example
+    time updatedb \
+         --localpaths=/gnu/store \
+         --findoptions='( -path /gnu/store/.links -o -name *.drv -o -name *.chroot ) -prune -o -type f -print' \
+         --output=/tmp/dbfile
+
+    locate -d /tmp/dbfile ecxc0800
+#+end_example
+
   - build package
 #+BEGIN_EXAMPLE
   $ guix repl
