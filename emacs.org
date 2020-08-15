@@ -80,9 +80,6 @@
     See <https://lists.gnu.org/archive/html/emacs-devel/2017-12/msg00624.html>.
 
 * Tools
-** Org
-   - [[https://github.com/org-roam/org-roam-server][org-roam/org-roam-server: A Web Application to Visualize the Org-Roam Database]]
-   - [[http://kitchingroup.cheme.cmu.edu/blog/2014/02/04/Literate-programming-example-with-Fortran-and-org-mode/][Literate programing example]]
 ** Dired
 
    Origin https://peterreavy.wordpress.com/2011/05/04/emacs-dired-tips/
@@ -131,25 +128,6 @@
          dired-listing-switches "-alv")
  #+END_SRC
 
-** Etags
-
- Origin: https://lists.gnu.org/archive/html/help-gnu-emacs/2017-12/msg00155.html
- #+BEGIN_SRC sh
-   etags --language=none --regex="/[[:space:]]*Definition[[:space:]\n]+[[:space:]]*\([[:alnum:]_]+\)[[:space:]]*\n/\1/m" Homotopies.v
- #+END_SRC
-
-** Info
-
-   - [[https://lists.gnu.org/archive/html/help-gnu-emacs/2018-01/msg00150.html][Splitting and merging nodes]]
-   - [[http://mbork.pl/2014-12-27_Info_dispatch][Info dispatch]]
-   - [[https://www.emacswiki.org/emacs/Icicles_-_Info_Enhancements][Icicles - Info Enhancements]]
-
-** Podcasts
- - [[https://emacscast.org/][EmacsCast | EmacsCast]]
-*** Keys
-  - C-c C-t :: show how much function changed in diff
-** Magit
- - magit-cherry
 ** elfeed
 
  [[http://codingquark.com/emacs/2020/04/19/elfeed-protocol-ttrss.html][Elfeed with Tiny Tiny RSS]]
@@ -264,66 +242,6 @@
    (provide 'init-elfeed)
  #+END_SRC
 
-** eshell
-
- - C-c C-r :: move to output
- - C-u C-c C-r :: move to output and narrow
- - C-x C-j :: dired-jump
-
-** EWW
-
- [[https://alexschroeder.ch/wiki/2020-07-16_Emacs_everything][Alex Schroeder: 2020-07-16 Emacs everything]]
- And I like to follow Gemini and Gopher links from my browser, so here’s how to
- handle them:
- #+BEGIN_SRC emacs-lisp
-   (advice-add 'eww-browse-url :around 'asc:eww-browse-url)
-
-   (defun asc:eww-browse-url (original url &optional new-window)
-     "Handle gemini links."
-     (cond ((string-match-p "\\`\\(gemini\\|gopher\\)://" url)
-            (require 'elpher)
-            (elpher-go url))
-           (t (funcall original url new-window))))
- #+END_SRC
-
-** Tramp
-
- #+BEGIN_SRC emacs-lisp
-   (add-to-list 'tramp-methods
-     '("myssh"
-       (tramp-login-program        "ssh")
-       (tramp-login-args           (("-l" "%u") ("-p" "%p") ("%c")
-                                    ("-e" "none") ("-t" "-t") ("%h")
-                                    ("\"/bin/sh -i\"")))
-       (tramp-async-args           (("-q")))
-       (tramp-remote-shell         "/bin/sh")
-       (tramp-remote-shell-login   ("-l"))
-       (tramp-remote-shell-args    ("-c"))))
- #+END_SRC
- Btw, another test worth a try would be to use method "sshx" instead of
- "ssh". Does this make a difference?
-
-** Firefox
-
- A tiny tip for those using elfeed for youtube subs
-
- I recently switched from web-based feedbro to elfeed for managing my
- RSS/Atom feeds and while the default setup is close to perfect for my
- needs, it bugged me a bit that every link opened in firefox. I would
- like at the very least the youtube links to open directly in my media
- player without having to first copy the url and then pass it as an
- argument. As it turns out reading documentation helps, and you can
- pattern match which function opens links (by default elfeed uses
- browse-url with the b shortcut):
-
- #+BEGIN_SRC emacs-lisp
-   (defun browse-url-mpv (url &optional new-window)
-       (start-process "mpv" "*mpv*" "mpv" url))
-
-   (setq browse-url-browser-function '(("https:\\/\\/www\\.youtube." . browse-url-mpv)
-       ("." . browse-url-firefox)))
- #+END_SRC
-
 ** epkg
 
  attic/debian-changelog-mode
@@ -347,6 +265,88 @@
    error: Server does not allow request for unadvertised object 0a83b8fa074571023a10aed263d2ee7d865a49f7
    Fetched in submodule path 'mirror/auth-password-store', but it did not contain 0a83b8fa074571023a10aed263d2ee7d865a49f7. Direct fetching of that commit failed.
  #+END_EXAMPLE
+
+** eshell
+
+ - C-c C-r :: move to output
+ - C-u C-c C-r :: move to output and narrow
+ - C-x C-j :: dired-jump
+
+** Etags
+
+ Origin: https://lists.gnu.org/archive/html/help-gnu-emacs/2017-12/msg00155.html
+ #+BEGIN_SRC sh
+   etags --language=none --regex="/[[:space:]]*Definition[[:space:]\n]+[[:space:]]*\([[:alnum:]_]+\)[[:space:]]*\n/\1/m" Homotopies.v
+ #+END_SRC
+
+** EWW
+
+ [[https://alexschroeder.ch/wiki/2020-07-16_Emacs_everything][Alex Schroeder: 2020-07-16 Emacs everything]]
+ And I like to follow Gemini and Gopher links from my browser, so here’s how to
+ handle them:
+ #+BEGIN_SRC emacs-lisp
+   (advice-add 'eww-browse-url :around 'asc:eww-browse-url)
+
+   (defun asc:eww-browse-url (original url &optional new-window)
+     "Handle gemini links."
+     (cond ((string-match-p "\\`\\(gemini\\|gopher\\)://" url)
+            (require 'elpher)
+            (elpher-go url))
+           (t (funcall original url new-window))))
+ #+END_SRC
+
+** Firefox
+
+ A tiny tip for those using elfeed for youtube subs
+
+ I recently switched from web-based feedbro to elfeed for managing my
+ RSS/Atom feeds and while the default setup is close to perfect for my
+ needs, it bugged me a bit that every link opened in firefox. I would
+ like at the very least the youtube links to open directly in my media
+ player without having to first copy the url and then pass it as an
+ argument. As it turns out reading documentation helps, and you can
+ pattern match which function opens links (by default elfeed uses
+ browse-url with the b shortcut):
+
+ #+BEGIN_SRC emacs-lisp
+   (defun browse-url-mpv (url &optional new-window)
+       (start-process "mpv" "*mpv*" "mpv" url))
+
+   (setq browse-url-browser-function '(("https:\\/\\/www\\.youtube." . browse-url-mpv)
+       ("." . browse-url-firefox)))
+ #+END_SRC
+
+** Info
+
+   - [[https://lists.gnu.org/archive/html/help-gnu-emacs/2018-01/msg00150.html][Splitting and merging nodes]]
+   - [[http://mbork.pl/2014-12-27_Info_dispatch][Info dispatch]]
+   - [[https://www.emacswiki.org/emacs/Icicles_-_Info_Enhancements][Icicles - Info Enhancements]]
+
+** Magit
+ - magit-cherry
+** Org
+   - [[https://github.com/org-roam/org-roam-server][org-roam/org-roam-server: A Web Application to Visualize the Org-Roam Database]]
+   - [[http://kitchingroup.cheme.cmu.edu/blog/2014/02/04/Literate-programming-example-with-Fortran-and-org-mode/][Literate programing example]]
+** Podcasts
+ - [[https://emacscast.org/][EmacsCast | EmacsCast]]
+*** Keys
+  - C-c C-t :: show how much function changed in diff
+** Tramp
+
+ #+BEGIN_SRC emacs-lisp
+   (add-to-list 'tramp-methods
+     '("myssh"
+       (tramp-login-program        "ssh")
+       (tramp-login-args           (("-l" "%u") ("-p" "%p") ("%c")
+                                    ("-e" "none") ("-t" "-t") ("%h")
+                                    ("\"/bin/sh -i\"")))
+       (tramp-async-args           (("-q")))
+       (tramp-remote-shell         "/bin/sh")
+       (tramp-remote-shell-login   ("-l"))
+       (tramp-remote-shell-args    ("-c"))))
+ #+END_SRC
+ Btw, another test worth a try would be to use method "sshx" instead of
+ "ssh". Does this make a difference?
 
 * Misc
 
