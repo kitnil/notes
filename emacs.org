@@ -1,14 +1,18 @@
-* Awesome
+* Community
+** Awesome
 
-** zk-phi
-- [[https://github.com/zk-phi][zk-phi (zk-phi)]]
+*** zk-phi
+ - [[https://github.com/zk-phi][zk-phi (zk-phi)]]
 
-** Wilfred
-- https://github.com/Wilfred
+*** Wilfred
+ - https://github.com/Wilfred
 
-** Mark H Weaver <mhw@netris.org>
-- https://sbp.io/
-- http://www.informatimago.com/linux/emacs-on-user-mode-linux.html
+*** Mark H Weaver <mhw@netris.org>
+ - https://sbp.io/
+ - http://www.informatimago.com/linux/emacs-on-user-mode-linux.html
+
+** Conferences
+ - https://emacsconf.org/videos/2019/
 
 * Mailing
 
@@ -390,6 +394,11 @@ Origin: https://lists.gnu.org/archive/html/help-gnu-emacs/2017-12/msg00155.html
                  https://www.gnu.org/software/emacs/manual/html_node/eintr/progn.html
    #+END_EXAMPLE
 
+** Podcasts
+ - [[https://emacscast.org/][EmacsCast | EmacsCast]]
+*** Keys
+  - C-c C-t :: show how much function changed in diff
+
 * Bug report
 
 [[http://manuel-uberti.github.io//emacs/2018/05/25/display-version/][A fancy Emacs version – manu.el]]
@@ -645,15 +654,6 @@ tramp-auto-auth.el --- TRAMP automatic authentication library <877e74skek.fsf@oi
 ** Procedures
 - magit-cherry
 
-** Keys
- - C-c C-t :: show how much function changed in diff
-
-* Conferences
-
-- https://emacsconf.org/videos/2019/
-
-* Podcasts
-- [[https://emacscast.org/][EmacsCast | EmacsCast]]
 * Java
 
 I use minimal setup of standard java-mode (for indentation, imenu
