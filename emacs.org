@@ -79,70 +79,274 @@
     C-u M-g in the Group buffer with the problematic group selected.
     See <https://lists.gnu.org/archive/html/emacs-devel/2017-12/msg00624.html>.
 
-* Org
-  - [[https://github.com/org-roam/org-roam-server][org-roam/org-roam-server: A Web Application to Visualize the Org-Roam Database]]
-  - [[http://kitchingroup.cheme.cmu.edu/blog/2014/02/04/Literate-programming-example-with-Fortran-and-org-mode/][Literate programing example]]
+* Tools
+** Org
+   - [[https://github.com/org-roam/org-roam-server][org-roam/org-roam-server: A Web Application to Visualize the Org-Roam Database]]
+   - [[http://kitchingroup.cheme.cmu.edu/blog/2014/02/04/Literate-programming-example-with-Fortran-and-org-mode/][Literate programing example]]
+** Dired
 
-* Info
+   Origin https://peterreavy.wordpress.com/2011/05/04/emacs-dired-tips/
 
-  - [[https://lists.gnu.org/archive/html/help-gnu-emacs/2018-01/msg00150.html][Splitting and merging nodes]]
-  - [[http://mbork.pl/2014-12-27_Info_dispatch][Info dispatch]]
-  - [[https://www.emacswiki.org/emacs/Icicles_-_Info_Enhancements][Icicles - Info Enhancements]]
+   - I’m using Emacs 23.1, primarily on Windows 7, and want to make a
+     note of some Dired tips for my own use.
+     : ! will run a shell command on the marked files or the file at point.
 
-* Etags
+   - So, to look at the end of a log file on a remote server (and since
+     I have Cygwin installed):
+     : ! tail RET
 
-Origin: https://lists.gnu.org/archive/html/help-gnu-emacs/2017-12/msg00155.html
-#+BEGIN_SRC sh
-  etags --language=none --regex="/[[:space:]]*Definition[[:space:]\n]+[[:space:]]*\([[:alnum:]_]+\)[[:space:]]*\n/\1/m" Homotopies.v
-#+END_SRC
+   - To copy the name of the file at point, in order to make use of it
+     elsewhere, use dired-copy-filename-as-kill, which is bound to
+     w. To make it copy the absolute path:
+     : 0 w
 
-* Dired
+   - To copy the path to the folder you’re looking at in dired:
+     : M-< w
 
-  Origin https://peterreavy.wordpress.com/2011/05/04/emacs-dired-tips/
+   - To create an archive of the currently marked files using 7zip:
+     : ! 7z a zipfilename * RET
 
-  - I’m using Emacs 23.1, primarily on Windows 7, and want to make a
-    note of some Dired tips for my own use.
-    : ! will run a shell command on the marked files or the file at point.
+   - To extract the archive of the file at point:
+     : ! 7z e * RET
 
-  - So, to look at the end of a log file on a remote server (and since
-    I have Cygwin installed):
-    : ! tail RET
+   - From dired, to search for files containing a string, just do this,
+     remembering that your regexp will be case-sensitive:
+     : M-x find-grep-dired
 
-  - To copy the name of the file at point, in order to make use of it
-    elsewhere, use dired-copy-filename-as-kill, which is bound to
-    w. To make it copy the absolute path:
-    : 0 w
+ [[https://alexschroeder.ch/wiki/2020-07-16_Emacs_everything][Alex Schroeder: 2020-07-16 Emacs everything]]
+ #+BEGIN_SRC emacs-lisp
+   (eval-after-load "dired"
+     '(require 'dired-x))
 
-  - To copy the path to the folder you’re looking at in dired:
-    : M-< w
+   (setq dired-recursive-deletes 'always
+         dired-recursive-copies 'always
+         dired-deletion-confirmer 'y-or-n-p
+         dired-clean-up-buffers-too nil
+         delete-by-moving-to-trash t
+         ;; trash-directory "~/.Trash/emacs"
+         dired-dwim-target t
+         dired-guess-shell-alist-user
+             '(("\\.pdf\\'" "evince")
+               ("\\.jpg\\'" "feh"))
+         dired-listing-switches "-alv")
+ #+END_SRC
 
-  - To create an archive of the currently marked files using 7zip:
-    : ! 7z a zipfilename * RET
+** Etags
 
-  - To extract the archive of the file at point:
-    : ! 7z e * RET
+ Origin: https://lists.gnu.org/archive/html/help-gnu-emacs/2017-12/msg00155.html
+ #+BEGIN_SRC sh
+   etags --language=none --regex="/[[:space:]]*Definition[[:space:]\n]+[[:space:]]*\([[:alnum:]_]+\)[[:space:]]*\n/\1/m" Homotopies.v
+ #+END_SRC
 
-  - From dired, to search for files containing a string, just do this,
-    remembering that your regexp will be case-sensitive:
-    : M-x find-grep-dired
+** Info
 
-[[https://alexschroeder.ch/wiki/2020-07-16_Emacs_everything][Alex Schroeder: 2020-07-16 Emacs everything]]
-#+BEGIN_SRC emacs-lisp
-  (eval-after-load "dired"
-    '(require 'dired-x))
+   - [[https://lists.gnu.org/archive/html/help-gnu-emacs/2018-01/msg00150.html][Splitting and merging nodes]]
+   - [[http://mbork.pl/2014-12-27_Info_dispatch][Info dispatch]]
+   - [[https://www.emacswiki.org/emacs/Icicles_-_Info_Enhancements][Icicles - Info Enhancements]]
 
-  (setq dired-recursive-deletes 'always
-        dired-recursive-copies 'always
-        dired-deletion-confirmer 'y-or-n-p
-        dired-clean-up-buffers-too nil
-        delete-by-moving-to-trash t
-        ;; trash-directory "~/.Trash/emacs"
-        dired-dwim-target t
-        dired-guess-shell-alist-user
-            '(("\\.pdf\\'" "evince")
-              ("\\.jpg\\'" "feh"))
-        dired-listing-switches "-alv")
-#+END_SRC
+** Podcasts
+ - [[https://emacscast.org/][EmacsCast | EmacsCast]]
+*** Keys
+  - C-c C-t :: show how much function changed in diff
+** Magit
+ - magit-cherry
+** elfeed
+
+ [[http://codingquark.com/emacs/2020/04/19/elfeed-protocol-ttrss.html][Elfeed with Tiny Tiny RSS]]
+
+
+ If you have multiple computers and you subscribe to RSS feeds - which you probably do, it would be great if you could read the feeds from all your computers and have the feeds’ read state synchronized.
+
+ Tiny Tiny RSS runs on a server, aggregates your feeds, shows them with a web interface and exposes API for clients - such as elfeed - to consume.
+
+ To talk to ttrss, elfeed needs to know the APIs where comes elfeed-protocol to rescue. elfeed-protocol will authenticate with your ttrss server, fetch feeds and displays in elfeed like they were native feeds added to elfeed.
+
+ The setup is short:
+
+     Install elfeed, elfeed-protocol (from melpa, or clone it)
+     Setup ttrss on your server
+     Configure elfeed-protocol to authenticate and fetch from ttrss
+
+ #+BEGIN_SRC emacs-lisp
+   (setq elfeed-use-curl nil)
+   (setq elfeed-protocol-ttrss-maxsize 200) ;; bigger than 200 is invalid
+
+   (setq elfeed-feeds
+         '(
+           ("ttrss+https://username@domain/tt-rss"
+            :password "")
+           ))
+        
+   (elfeed-protocol-enable)
+ #+END_SRC
+
+ I need to (setq elfeed-use-curl nil) because Freedombox requires me to sign in first before I can access the URL. This way, elfeed first asks me for my Freedombox creds, then uses :password to authenticate with ttrss.
+
+ Here is my elfeed config on github: link.
+
+ #+BEGIN_SRC emacs-lisp
+   (require 'elfeed)
+   (require 'elfeed-protocol)
+
+   (setq elfeed-use-curl nil)
+   (elfeed-set-timeout 36000)
+
+   (defvar cq/youtube-dl-path)
+   (defvar cq/youtube-dl-output-dir)
+
+   (global-set-key (kbd "C-x w") 'elfeed)
+
+   (add-hook 'elfeed-new-entry-hook
+             (elfeed-make-tagger :feed-url "youtube\\.com"
+                                 :add '(video youtube)))
+
+   (setq cq/youtube-dl-path "/home/codingquark/programs/ytdl/youtube-dl")
+   (setq cq/youtube-dl-output-dir "~/Videos/")
+
+   ;; Schedule feed update for every day at 3PM
+   (run-at-time "15:00" nil 'elfeed-update)
+
+   (defun cq/elfeed-download-video ()
+     "Download a video using youtube-dl."
+     (interactive)
+     (async-shell-command (format "%s -o \"%s%s\" -f bestvideo+bestaudio %s"
+                                  cq/youtube-dl-path
+                                  cq/youtube-dl-output-dir
+                                  "%(title)s.%(ext)s"
+                                  (elfeed-entry-link elfeed-show-entry))))
+
+   (setq elfeed-protocol-ttrss-maxsize 200) ; bigger than 200 is invalid
+   (setq elfeed-feeds
+         '(
+           ("youwannaknowright"
+            :password (shell-command-to-string "pass --clip personal/Root/Important/Freedombox")
+            )))
+
+   (setq elfeed-log-level 'debug)
+
+   ;; (setq elfeed-feeds
+   ;;       '(;; "http://planet.emacsen.org/atom.xml"
+   ;;         ("http://planet.emacslife.com/atom.xml" emacs)
+   ;;         "http://codingquark.com/feed.xml"
+   ;;         "http://blog.stephenwolfram.com/feed/"
+   ;;         "https://www.lightbluetouchpaper.org/feed/"
+   ;;         "http://blog.jaysinh.com/feed.xml"
+   ;;         "esr.ibiblio.org/?feed=rss2"
+   ;;         "http://idevji.com/feed"
+   ;;         "http://jordi.inversethought.com/feed/"
+   ;;         "http://www.shakthimaan.com/news.xml"
+   ;;         "https://static.fsf.org/fsforg/rss/blogs.xml"
+   ;;         "http://technomancy.us/feed/atom.xml"
+   ;;         "http://www.aidalgolland.net/feed.xml"
+   ;;         "http://www.dijkstrascry.com/rss.xml"
+   ;;         "https://binaryredneck.net/rss/"
+   ;;         "https://ftfl.ca/blog/index.rss"
+   ;;         "http://planet.gentoo.org"
+   ;;         "https://lwn.net/headlines/rss"
+   ;;         "https://cjb.sh/articles/feed.xml"
+   ;;         "https://rjlipton.wordpress.com/feed/"
+   ;;         ;; "https://www.jwz.org/blog/feed"
+   ;;         "http://www.antipope.org/charlie/blog-static/atom.xml"
+   ;;         "https://usesthis.com/feed.atom"
+   ;;         "https://blog.liw.fi/index.atom"
+   ;;         "http://www.earth.li/~noodles/blog/feed.xml"
+   ;;         "http://0pointer.net/blog/index.rss20"
+   ;;         "kushaldas.in/rss.xml"
+   ;;         "http://ebb.org/bkuhn/blog/rss.xml"
+
+   ;;         ;; PODCASTS
+   ;;         ;; ("http://podcasts.joerogan.net/feed" podcasts) ;; joe rogan experience
+   ;;         ;; ("https://lexfridman.com/category/ai/feed/" podcasts)
+   ;;         ))
+
+   (elfeed-protocol-enable)
+
+   (provide 'init-elfeed)
+ #+END_SRC
+
+** eshell
+
+ - C-c C-r :: move to output
+ - C-u C-c C-r :: move to output and narrow
+ - C-x C-j :: dired-jump
+
+** EWW
+
+ [[https://alexschroeder.ch/wiki/2020-07-16_Emacs_everything][Alex Schroeder: 2020-07-16 Emacs everything]]
+ And I like to follow Gemini and Gopher links from my browser, so here’s how to
+ handle them:
+ #+BEGIN_SRC emacs-lisp
+   (advice-add 'eww-browse-url :around 'asc:eww-browse-url)
+
+   (defun asc:eww-browse-url (original url &optional new-window)
+     "Handle gemini links."
+     (cond ((string-match-p "\\`\\(gemini\\|gopher\\)://" url)
+            (require 'elpher)
+            (elpher-go url))
+           (t (funcall original url new-window))))
+ #+END_SRC
+
+** Tramp
+
+ #+BEGIN_SRC emacs-lisp
+   (add-to-list 'tramp-methods
+     '("myssh"
+       (tramp-login-program        "ssh")
+       (tramp-login-args           (("-l" "%u") ("-p" "%p") ("%c")
+                                    ("-e" "none") ("-t" "-t") ("%h")
+                                    ("\"/bin/sh -i\"")))
+       (tramp-async-args           (("-q")))
+       (tramp-remote-shell         "/bin/sh")
+       (tramp-remote-shell-login   ("-l"))
+       (tramp-remote-shell-args    ("-c"))))
+ #+END_SRC
+ Btw, another test worth a try would be to use method "sshx" instead of
+ "ssh". Does this make a difference?
+
+** Firefox
+
+ A tiny tip for those using elfeed for youtube subs
+
+ I recently switched from web-based feedbro to elfeed for managing my
+ RSS/Atom feeds and while the default setup is close to perfect for my
+ needs, it bugged me a bit that every link opened in firefox. I would
+ like at the very least the youtube links to open directly in my media
+ player without having to first copy the url and then pass it as an
+ argument. As it turns out reading documentation helps, and you can
+ pattern match which function opens links (by default elfeed uses
+ browse-url with the b shortcut):
+
+ #+BEGIN_SRC emacs-lisp
+   (defun browse-url-mpv (url &optional new-window)
+       (start-process "mpv" "*mpv*" "mpv" url))
+
+   (setq browse-url-browser-function '(("https:\\/\\/www\\.youtube." . browse-url-mpv)
+       ("." . browse-url-firefox)))
+ #+END_SRC
+
+** epkg
+
+ attic/debian-changelog-mode
+ attic/easy-lentic
+ attic/malabar-mode
+ attic/selftest
+ attic/sql-mssql
+
+ mirror/atom-one-dark-theme
+ mirror/gnus-autocheck
+ mirror/smartwin
+ mirror/syslog-mode
+
+ mirror/jda
+ mirror/auth-password-store
+ mirror/ob-clojurescript
+ mirror/wanderlust
+ mirror/zoutline
+ #+BEGIN_EXAMPLE
+   natsu@magnolia /srv/src/epkgs$ git submodule update
+   error: Server does not allow request for unadvertised object 0a83b8fa074571023a10aed263d2ee7d865a49f7
+   Fetched in submodule path 'mirror/auth-password-store', but it did not contain 0a83b8fa074571023a10aed263d2ee7d865a49f7. Direct fetching of that commit failed.
+ #+END_EXAMPLE
 
 * Misc
 
@@ -394,10 +598,69 @@ Origin: https://lists.gnu.org/archive/html/help-gnu-emacs/2017-12/msg00155.html
                  https://www.gnu.org/software/emacs/manual/html_node/eintr/progn.html
    #+END_EXAMPLE
 
-** Podcasts
- - [[https://emacscast.org/][EmacsCast | EmacsCast]]
-*** Keys
-  - C-c C-t :: show how much function changed in diff
+** Characters
+
+  - •
+  - §
+ #+BEGIN_EXAMPLE
+   Firefox key fixes for Emacs users
+
+   ,*
+
+   Hi all,
+
+   Ever closed a tab when you wanted to kill some text? Ever opened a new window
+   when you wanted to go to the next line? No more! Someone even compiled his own
+   firefox version to fix this. But the discussion of this article revealed, you
+   don't need to:
+
+   Goto about:config and
+
+   ,* Set ui.key.accelKey to 18 (swaps Ctrl and Alt basically)
+
+   ,* Set devtools.editor.keymap to emacs
+ #+END_EXAMPLE
+
+ - https://www.reddit.com/r/emacs/comments/ceyrkz/define_a_custom_keybinding_for_a_specific_project/
+
+ - https://www.reddit.com/r/emacs/comments/cf8r83/easier_editing_of_elisp_regexps/eu8nzd4/
+
+ #+BEGIN_SRC emacs-lisp
+   (defun my-re-builder ()
+     (setq reb-regexp (substring-no-properties (thing-at-point 'sexp))))
+
+   (advice-add 're-builder :before #'my-re-builder)
+ #+END_SRC
+
+ #+BEGIN_SRC emacs-lisp
+   -*- lexical-binding: t -*-
+
+   (defun my-edit-regexp-re-builder ()
+     (interactive)
+     (save-excursion
+       (let* ((string-start (or (nth 8 (syntax-ppss))
+                                (error "not in a string")))
+              (string-end (progn
+                            (goto-char string-start)
+                            (forward-sexp 1)
+                            (point)))
+              (reb-regexp (read (buffer-substring-no-properties
+                                 string-start
+                                 string-end))))
+
+         (re-builder)
+
+         (let ((finisher (lambda ()
+                           (interactive)
+                           (reb-quit)
+                           (delete-region string-start string-end)
+                           (insert (let ((print-escape-newlines t))
+                                     (prin1-to-string reb-regexp))))))
+
+           (local-set-key (kbd "<f1>") finisher)))))
+ #+END_SRC
+ tramp-auto-auth.el --- TRAMP automatic authentication library <877e74skek.fsf@oitofelix.com>
+ - http://emacs.1067599.n8.nabble.com/
 
 * Bug report
 
@@ -436,30 +699,6 @@ Origin: https://lists.gnu.org/archive/html/help-gnu-emacs/2017-12/msg00155.html
           (insert "Window system: " (getenv "XDG_SESSION_TYPE") "\n")
           (insert "Desktop environment: " (mu--gnome-version))))))
 #+END_SRC
-
-* epkg
-
-attic/debian-changelog-mode
-attic/easy-lentic
-attic/malabar-mode
-attic/selftest
-attic/sql-mssql
-
-mirror/atom-one-dark-theme
-mirror/gnus-autocheck
-mirror/smartwin
-mirror/syslog-mode
-
-mirror/jda
-mirror/auth-password-store
-mirror/ob-clojurescript
-mirror/wanderlust
-mirror/zoutline
-#+BEGIN_EXAMPLE
-  natsu@magnolia /srv/src/epkgs$ git submodule update
-  error: Server does not allow request for unadvertised object 0a83b8fa074571023a10aed263d2ee7d865a49f7
-  Fetched in submodule path 'mirror/auth-password-store', but it did not contain 0a83b8fa074571023a10aed263d2ee7d865a49f7. Direct fetching of that commit failed.
-#+END_EXAMPLE
 
 * Snippets
 
@@ -585,75 +824,6 @@ mirror/zoutline
 
    #+END_SRC
 
-* Characters
-
- - •
- - §
-#+BEGIN_EXAMPLE
-  Firefox key fixes for Emacs users
-
-  ,*
-
-  Hi all,
-
-  Ever closed a tab when you wanted to kill some text? Ever opened a new window
-  when you wanted to go to the next line? No more! Someone even compiled his own
-  firefox version to fix this. But the discussion of this article revealed, you
-  don't need to:
-
-  Goto about:config and
-
-  ,* Set ui.key.accelKey to 18 (swaps Ctrl and Alt basically)
-
-  ,* Set devtools.editor.keymap to emacs
-#+END_EXAMPLE
-
-- https://www.reddit.com/r/emacs/comments/ceyrkz/define_a_custom_keybinding_for_a_specific_project/
-
-- https://www.reddit.com/r/emacs/comments/cf8r83/easier_editing_of_elisp_regexps/eu8nzd4/
-
-#+BEGIN_SRC emacs-lisp
-  (defun my-re-builder ()
-    (setq reb-regexp (substring-no-properties (thing-at-point 'sexp))))
-
-  (advice-add 're-builder :before #'my-re-builder)
-#+END_SRC
-
-#+BEGIN_SRC emacs-lisp
-  -*- lexical-binding: t -*-
-
-  (defun my-edit-regexp-re-builder ()
-    (interactive)
-    (save-excursion
-      (let* ((string-start (or (nth 8 (syntax-ppss))
-                               (error "not in a string")))
-             (string-end (progn
-                           (goto-char string-start)
-                           (forward-sexp 1)
-                           (point)))
-             (reb-regexp (read (buffer-substring-no-properties
-                                string-start
-                                string-end))))
-
-        (re-builder)
-
-        (let ((finisher (lambda ()
-                          (interactive)
-                          (reb-quit)
-                          (delete-region string-start string-end)
-                          (insert (let ((print-escape-newlines t))
-                                    (prin1-to-string reb-regexp))))))
-
-          (local-set-key (kbd "<f1>") finisher)))))
-#+END_SRC
-tramp-auto-auth.el --- TRAMP automatic authentication library <877e74skek.fsf@oitofelix.com>
-- http://emacs.1067599.n8.nabble.com/
-
-* Magit
-
-** Procedures
-- magit-cherry
-
 * Programming
 ** Java
 
@@ -671,180 +841,5 @@ tramp-auto-auth.el --- TRAMP automatic authentication library <877e74skek.fsf@oi
 
  - [[https://github.com/muffinmad/emacs-pdb-capf][muffinmad/emacs-pdb-capf: Completion-at-point function for pdb (Python debugger)]]
 
-* Firefox
-
-A tiny tip for those using elfeed for youtube subs
-
-I recently switched from web-based feedbro to elfeed for managing my
-RSS/Atom feeds and while the default setup is close to perfect for my
-needs, it bugged me a bit that every link opened in firefox. I would
-like at the very least the youtube links to open directly in my media
-player without having to first copy the url and then pass it as an
-argument. As it turns out reading documentation helps, and you can
-pattern match which function opens links (by default elfeed uses
-browse-url with the b shortcut):
-
-#+BEGIN_SRC emacs-lisp
-  (defun browse-url-mpv (url &optional new-window)
-      (start-process "mpv" "*mpv*" "mpv" url))
-
-  (setq browse-url-browser-function '(("https:\\/\\/www\\.youtube." . browse-url-mpv)
-      ("." . browse-url-firefox)))
-#+END_SRC
-
-* elfeed
-
-[[http://codingquark.com/emacs/2020/04/19/elfeed-protocol-ttrss.html][Elfeed with Tiny Tiny RSS]]
-
-
-If you have multiple computers and you subscribe to RSS feeds - which you probably do, it would be great if you could read the feeds from all your computers and have the feeds’ read state synchronized.
-
-Tiny Tiny RSS runs on a server, aggregates your feeds, shows them with a web interface and exposes API for clients - such as elfeed - to consume.
-
-To talk to ttrss, elfeed needs to know the APIs where comes elfeed-protocol to rescue. elfeed-protocol will authenticate with your ttrss server, fetch feeds and displays in elfeed like they were native feeds added to elfeed.
-
-The setup is short:
-
-    Install elfeed, elfeed-protocol (from melpa, or clone it)
-    Setup ttrss on your server
-    Configure elfeed-protocol to authenticate and fetch from ttrss
-
-#+BEGIN_SRC emacs-lisp
-  (setq elfeed-use-curl nil)
-  (setq elfeed-protocol-ttrss-maxsize 200) ;; bigger than 200 is invalid
-
-  (setq elfeed-feeds
-        '(
-          ("ttrss+https://username@domain/tt-rss"
-           :password "")
-          ))
-        
-  (elfeed-protocol-enable)
-#+END_SRC
-
-I need to (setq elfeed-use-curl nil) because Freedombox requires me to sign in first before I can access the URL. This way, elfeed first asks me for my Freedombox creds, then uses :password to authenticate with ttrss.
-
-Here is my elfeed config on github: link.
-
-#+BEGIN_SRC emacs-lisp
-  (require 'elfeed)
-  (require 'elfeed-protocol)
-
-  (setq elfeed-use-curl nil)
-  (elfeed-set-timeout 36000)
-
-  (defvar cq/youtube-dl-path)
-  (defvar cq/youtube-dl-output-dir)
-
-  (global-set-key (kbd "C-x w") 'elfeed)
-
-  (add-hook 'elfeed-new-entry-hook
-            (elfeed-make-tagger :feed-url "youtube\\.com"
-                                :add '(video youtube)))
-
-  (setq cq/youtube-dl-path "/home/codingquark/programs/ytdl/youtube-dl")
-  (setq cq/youtube-dl-output-dir "~/Videos/")
-
-  ;; Schedule feed update for every day at 3PM
-  (run-at-time "15:00" nil 'elfeed-update)
-
-  (defun cq/elfeed-download-video ()
-    "Download a video using youtube-dl."
-    (interactive)
-    (async-shell-command (format "%s -o \"%s%s\" -f bestvideo+bestaudio %s"
-                                 cq/youtube-dl-path
-                                 cq/youtube-dl-output-dir
-                                 "%(title)s.%(ext)s"
-                                 (elfeed-entry-link elfeed-show-entry))))
-
-  (setq elfeed-protocol-ttrss-maxsize 200) ; bigger than 200 is invalid
-  (setq elfeed-feeds
-        '(
-          ("youwannaknowright"
-           :password (shell-command-to-string "pass --clip personal/Root/Important/Freedombox")
-           )))
-
-  (setq elfeed-log-level 'debug)
-
-  ;; (setq elfeed-feeds
-  ;;       '(;; "http://planet.emacsen.org/atom.xml"
-  ;;         ("http://planet.emacslife.com/atom.xml" emacs)
-  ;;         "http://codingquark.com/feed.xml"
-  ;;         "http://blog.stephenwolfram.com/feed/"
-  ;;         "https://www.lightbluetouchpaper.org/feed/"
-  ;;         "http://blog.jaysinh.com/feed.xml"
-  ;;         "esr.ibiblio.org/?feed=rss2"
-  ;;         "http://idevji.com/feed"
-  ;;         "http://jordi.inversethought.com/feed/"
-  ;;         "http://www.shakthimaan.com/news.xml"
-  ;;         "https://static.fsf.org/fsforg/rss/blogs.xml"
-  ;;         "http://technomancy.us/feed/atom.xml"
-  ;;         "http://www.aidalgolland.net/feed.xml"
-  ;;         "http://www.dijkstrascry.com/rss.xml"
-  ;;         "https://binaryredneck.net/rss/"
-  ;;         "https://ftfl.ca/blog/index.rss"
-  ;;         "http://planet.gentoo.org"
-  ;;         "https://lwn.net/headlines/rss"
-  ;;         "https://cjb.sh/articles/feed.xml"
-  ;;         "https://rjlipton.wordpress.com/feed/"
-  ;;         ;; "https://www.jwz.org/blog/feed"
-  ;;         "http://www.antipope.org/charlie/blog-static/atom.xml"
-  ;;         "https://usesthis.com/feed.atom"
-  ;;         "https://blog.liw.fi/index.atom"
-  ;;         "http://www.earth.li/~noodles/blog/feed.xml"
-  ;;         "http://0pointer.net/blog/index.rss20"
-  ;;         "kushaldas.in/rss.xml"
-  ;;         "http://ebb.org/bkuhn/blog/rss.xml"
-
-  ;;         ;; PODCASTS
-  ;;         ;; ("http://podcasts.joerogan.net/feed" podcasts) ;; joe rogan experience
-  ;;         ;; ("https://lexfridman.com/category/ai/feed/" podcasts)
-  ;;         ))
-
-  (elfeed-protocol-enable)
-
-  (provide 'init-elfeed)
-#+END_SRC
-
-* eshell
-
-- C-c C-r :: move to output
-- C-u C-c C-r :: move to output and narrow
-- C-x C-j :: dired-jump
-
-* EWW
-
-[[https://alexschroeder.ch/wiki/2020-07-16_Emacs_everything][Alex Schroeder: 2020-07-16 Emacs everything]]
-And I like to follow Gemini and Gopher links from my browser, so here’s how to
-handle them:
-#+BEGIN_SRC emacs-lisp
-  (advice-add 'eww-browse-url :around 'asc:eww-browse-url)
-
-  (defun asc:eww-browse-url (original url &optional new-window)
-    "Handle gemini links."
-    (cond ((string-match-p "\\`\\(gemini\\|gopher\\)://" url)
-           (require 'elpher)
-           (elpher-go url))
-          (t (funcall original url new-window))))
-#+END_SRC
-
-* Tramp
-
-#+BEGIN_SRC emacs-lisp
-  (add-to-list 'tramp-methods
-    '("myssh"
-      (tramp-login-program        "ssh")
-      (tramp-login-args           (("-l" "%u") ("-p" "%p") ("%c")
-                                   ("-e" "none") ("-t" "-t") ("%h")
-                                   ("\"/bin/sh -i\"")))
-      (tramp-async-args           (("-q")))
-      (tramp-remote-shell         "/bin/sh")
-      (tramp-remote-shell-login   ("-l"))
-      (tramp-remote-shell-args    ("-c"))))
-#+END_SRC
-Btw, another test worth a try would be to use method "sshx" instead of
-"ssh". Does this make a difference?
-
 * Tests
 - [[https://elpa.zilongshanren.com/melpa-stable/ert-junit-0.2.el][elpa.zilongshanren.com/melpa-stable/ert-junit-0.2.el]]
-
