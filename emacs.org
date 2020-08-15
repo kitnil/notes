@@ -795,6 +795,8 @@
            (t (funcall original url new-window))))
  #+END_SRC
 
+** Jinja
+   - [[https://github.com/clarete/templatel][clarete/templatel: Jinja inspired template language for Emacs Lisp]]
 ** Firefox
 
  A tiny tip for those using elfeed for youtube subs
