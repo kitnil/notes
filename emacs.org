@@ -1,175 +1,3 @@
-- [[https://git.savannah.gnu.org/cgit/emacs.git/commit/?id=b799cc271d69fc494da1fe04ca8ec6c529a19a19][Add support for the OpenPGP header to Emacs]]
-- [[https://github.com/chuntaro/emacs-keypression][chuntaro/emacs-keypression: Keystroke visualizer for GUI version Emacs.]]
-- [[https://ardiyu07.github.io/blog/2014/02/05/en-coding-with-emacs-and-e2wm-brilliant/][Coding with Emacs and e2wm, a brilliant Emacs windows manager - Yuri Ardila - Personal Blog]]
-- [[https://github.com/ROCKTAKEY/grugru][ROCKTAKEY/grugru: Rotate text at point in Emacs.]]
-- [[https://andreyorst.gitlab.io/posts/2020-05-10-making-emacs-tabs-look-like-in-atom/][Making Emacs tabs look like in Atom – Andrey Orst]]
-
-- [[https://github.com/xuchunyang/another-emacs-server][xuchunyang/another-emacs-server: An Emacs server built on HTTP and JSON]]
-
-- (add-to-list 'display-buffer-alist '("^\\*shell\\*" . (display-buffer-same-window)))
-
-- helm-locate-create-db-command
-
-- [[https://tech.toryanderson.com/2020/04/15/simulating-c-u-args-to-lambda-wrapped-functions/][Simulating `C-u` args to lambda-wrapped functions | Tech.ToryAnderson.com]]
-
-- [[https://gitlab.com/ideasman42/emacs-spell-fu][Campbell Barton / emacs-spell-fu · GitLab]]
-
-- [[https://projectile.readthedocs.io/en/latest/projects/#configuring-projectiles-behavior][Projects - Projectile: The Project Interaction Library for Emacs]]
-There are a few variables that are intended to be customized via .dir-locals.el.
-    for compilation - projectile-project-compilation-cmd
-    for testing - projectile-project-test-cmd
-    for running - projectile-project-run-cmd
-When these variables have their default value of nil, Projectile runs
-the default command for the current project type. You can override
-this behavior by setting them to either a string to run an external
-command or an Emacs Lisp function:
-(setq projectile-test-cmd #'custom-test-function)
-
-- [[https://github.com/xuchunyang/curl-to-elisp][xuchunyang/curl-to-elisp: Convert cURL command to Emacs Lisp code]]
-
-- [[https://oremacs.com/2015/01/17/setting-up-ediff/][Setting up Ediff · (or emacs]]
-
-- [[http://teaching.sociology.ul.ie/bhalpin/wordpress/?p=602][Emacs and org-mode for sending mailshots | Sociology, Statistics and Software]]
-
-- elisp panel for exwm https://www.reddit.com/r/emacs/comments/cz3py2/pure_elisp_panel_for_exwm/
-
-- chromium weather
-  #+BEGIN_SRC emacs
-  (setq lexical-binding t)
-
-(setq weather-timer      
-      (run-with-timer
-       0 900
-       (lambda ()
-         (let ((outfile "d:\\download\\weather.png"))
-           (start-process
-            "weather"
-            nil
-            "C:/Program Files (x86)/Google/Chrome/Application/chrome.exe"
-            "--headless"
-            (concat "--screenshot=" outfile)
-            "--window-size=1000,600"
-            "--hide-scrollbars"  
-            "https://www.bbc.co.uk/weather/2643743#daylink-0")
-
-           ;; wait a bit to make sure the new image is ready
-           (run-with-timer
-            10 nil
-            (lambda ()
-              (let ((img (create-image outfile)))
-                (with-current-buffer (get-buffer-create"*weather*")
-                  (erase-buffer)
-                  (image-flush img)
-                  (insert-image img)
-                  (setq cursor-type nil)))))
-           ))))
-  #+END_SRC
-
-- Ignore errors during require
-  #+BEGIN_SRC emacs-lisp
-    (ignore-errors
-      (require 'google-contacts))
-  #+END_SRC
-  
-- Apply multiple Git patches
-
-Gnus way:
-Message-ID: <87h87i7dny.fsf@gmail.com>
-In Gnus, I press "#" to mark one or more messages with the "process
-mark" ((gnus) Other Marks), then I press "|" (gnus-summary-pipe-output),
-then I type "(cd ~/guix && git am)" to cd to my Guix checkout and apply
-the patches.  This works pretty well for me.
-
-Debbugs way:
-Message-ID: <87o91v7ela.fsf@ambrevar.xyz>
-From the summary view, I can press M-m (debbugs-gnu-apply-patch).
-It asks me for a directory, I point to guix, and then I get the error
-
-- https://libreneitor.com/how-to-set-up-emacs-to-edit-the-linux-kernel/
-
-- org-mode evaluate code block in Docker container
-
-  You can use docker-tramp.
-
-  Then you would be able to run src blocks on docker using dir header
-  param like ‘:dir /docker:user@container:/‘ (similar to running src
-  blocks on remote machine using tramp)
-
-- [[http://www.emacs-bootstrap.com/][Emacs Bootstrap:. Select your favorite programming languages, and your init file will be generated for you]]
-
-- [[https://www.youtube.com/watch?v=GuEqRmCjy6E][2019-04-03: Emacs as a C++ IDE - Jeff Trull, Ben Deane, Dirk Jagdmann]]
-
-- add new keywords
-  #+BEGIN_SRC elisp
-    (font-lock-add-keywords 'c++-mode
-       '(("\\<\\(override\\|noexcept\\)\\>") . font-lock-keyword-face))
-  #+END_SRC
-
-- jump to first parsed error in compilation buffer
-  #+BEGIN_SRC elisp
-    (setq compilation-scroll-output 'first-error)
-  #+END_SRC
-
-- tramp colors
-  #+BEGIN_SRC emacs-lisp
-    (require 'tramp)
-
-     (defun pasztor-set-background-color ()
-        "*Set the background color according to the remote file name."
-        (interactive)
-        (if buffer-file-name
-            (with-parsed-tramp-file-name buffer-file-name 'tramp
-             (let ((host (tramp-host buffer-file-name)))
-               (cond ((equal tramp-host "foo") (set-background-color "blue"))
-                     ((equal tramp-host "bar") (set-background-color "red"))
-                     ...
-                     (t (set-background-color "black")))))))
-
-     (add-hook 'find-file-hooks 'pasztor-set-background-color)
-     (add-hook 'find-file-not-found-hooks 'pasztor-set-background-color)
-  #+END_SRC
-
-- ditaa :: convert artist-mode to svg diagram
-
-- Elisp Snippet - Kill Buffer and Window On Shell Process Termination
-  #+BEGIN_SRC emacs-lisp
-    (defun jt-shell-sentinel (process event)
-      "Kill buffer and window on shell process termination."
-      (when (not (process-live-p process))
-        (let ((buf (process-buffer process)))
-          (when (buffer-live-p buf)
-           (with-current-buffer buf
-              (kill-buffer)
-              (delete-window))))))
-    (add-hook 'shell-mode-hook (lambda () (set-process-sentinel (get-buffer-process (buffer-name) ) #'jt-shell-sentinel)))
-  #+END_SRC
-
-- Get all agenda TODOs programmatically
-  #+BEGIN_SRC emacs-lisp
-    (org-map-entries '(cons (nth 4 (org-heading-components))
-                            (list (org-get-deadline-time nil)))
-                     "/!TODO" 'agenda)
-  #+END_SRC
-
-- Save current (system) clipboard before replacing it with the Emacs's text
-  : (setq save-interprogram-paste-before-kill t)
-
-- Open file and close current buffer
-  : C-x C-v ffap-alternate-file
-
-- Replace hex with decimal
-  #+BEGIN_SRC emacs-lisp
-    (defun hex2dec ()
-      (interactive)
-      (when (looking-at "[a-fA-F0-9]+")
-        (replace-match (format "%d" (string-to-number (match-string 0)
-                                                      16)))))
-  #+END_SRC
-
-- [[https://www.reddit.com/r/emacs/comments/52lnad/from_helm_to_ivy_a_user_perspective/d7pj9mz/][Setup ivy move,copy,rename]]
-
-- Refactor code [[http://manuel-uberti.github.io/emacs/2018/02/10/occur/][manuel-uberti.github.io]]
-
 * Awesome
 
 ** zk-phi
@@ -375,6 +203,178 @@ Origin: https://lists.gnu.org/archive/html/help-gnu-emacs/2017-12/msg00155.html
     (unless (require 'foo nil t)
       (display-warning 'oops "Error during loading 'foo'!!!"))
   #+END_SRC
+
+ - [[https://git.savannah.gnu.org/cgit/emacs.git/commit/?id=b799cc271d69fc494da1fe04ca8ec6c529a19a19][Add support for the OpenPGP header to Emacs]]
+ - [[https://github.com/chuntaro/emacs-keypression][chuntaro/emacs-keypression: Keystroke visualizer for GUI version Emacs.]]
+ - [[https://ardiyu07.github.io/blog/2014/02/05/en-coding-with-emacs-and-e2wm-brilliant/][Coding with Emacs and e2wm, a brilliant Emacs windows manager - Yuri Ardila - Personal Blog]]
+ - [[https://github.com/ROCKTAKEY/grugru][ROCKTAKEY/grugru: Rotate text at point in Emacs.]]
+ - [[https://andreyorst.gitlab.io/posts/2020-05-10-making-emacs-tabs-look-like-in-atom/][Making Emacs tabs look like in Atom – Andrey Orst]]
+
+ - [[https://github.com/xuchunyang/another-emacs-server][xuchunyang/another-emacs-server: An Emacs server built on HTTP and JSON]]
+
+ - (add-to-list 'display-buffer-alist '("^\\*shell\\*" . (display-buffer-same-window)))
+
+ - helm-locate-create-db-command
+
+ - [[https://tech.toryanderson.com/2020/04/15/simulating-c-u-args-to-lambda-wrapped-functions/][Simulating `C-u` args to lambda-wrapped functions | Tech.ToryAnderson.com]]
+
+ - [[https://gitlab.com/ideasman42/emacs-spell-fu][Campbell Barton / emacs-spell-fu · GitLab]]
+
+ - [[https://projectile.readthedocs.io/en/latest/projects/#configuring-projectiles-behavior][Projects - Projectile: The Project Interaction Library for Emacs]]
+ There are a few variables that are intended to be customized via .dir-locals.el.
+     for compilation - projectile-project-compilation-cmd
+     for testing - projectile-project-test-cmd
+     for running - projectile-project-run-cmd
+ When these variables have their default value of nil, Projectile runs
+ the default command for the current project type. You can override
+ this behavior by setting them to either a string to run an external
+ command or an Emacs Lisp function:
+ (setq projectile-test-cmd #'custom-test-function)
+
+ - [[https://github.com/xuchunyang/curl-to-elisp][xuchunyang/curl-to-elisp: Convert cURL command to Emacs Lisp code]]
+
+ - [[https://oremacs.com/2015/01/17/setting-up-ediff/][Setting up Ediff · (or emacs]]
+
+ - [[http://teaching.sociology.ul.ie/bhalpin/wordpress/?p=602][Emacs and org-mode for sending mailshots | Sociology, Statistics and Software]]
+
+ - elisp panel for exwm https://www.reddit.com/r/emacs/comments/cz3py2/pure_elisp_panel_for_exwm/
+
+ - chromium weather
+   #+BEGIN_SRC emacs
+   (setq lexical-binding t)
+
+ (setq weather-timer      
+       (run-with-timer
+        0 900
+        (lambda ()
+          (let ((outfile "d:\\download\\weather.png"))
+            (start-process
+             "weather"
+             nil
+             "C:/Program Files (x86)/Google/Chrome/Application/chrome.exe"
+             "--headless"
+             (concat "--screenshot=" outfile)
+             "--window-size=1000,600"
+             "--hide-scrollbars"  
+             "https://www.bbc.co.uk/weather/2643743#daylink-0")
+
+            ;; wait a bit to make sure the new image is ready
+            (run-with-timer
+             10 nil
+             (lambda ()
+               (let ((img (create-image outfile)))
+                 (with-current-buffer (get-buffer-create"*weather*")
+                   (erase-buffer)
+                   (image-flush img)
+                   (insert-image img)
+                   (setq cursor-type nil)))))
+            ))))
+   #+END_SRC
+
+ - Ignore errors during require
+   #+BEGIN_SRC emacs-lisp
+     (ignore-errors
+       (require 'google-contacts))
+   #+END_SRC
+  
+ - Apply multiple Git patches
+
+ Gnus way:
+ Message-ID: <87h87i7dny.fsf@gmail.com>
+ In Gnus, I press "#" to mark one or more messages with the "process
+ mark" ((gnus) Other Marks), then I press "|" (gnus-summary-pipe-output),
+ then I type "(cd ~/guix && git am)" to cd to my Guix checkout and apply
+ the patches.  This works pretty well for me.
+
+ Debbugs way:
+ Message-ID: <87o91v7ela.fsf@ambrevar.xyz>
+ From the summary view, I can press M-m (debbugs-gnu-apply-patch).
+ It asks me for a directory, I point to guix, and then I get the error
+
+ - https://libreneitor.com/how-to-set-up-emacs-to-edit-the-linux-kernel/
+
+ - org-mode evaluate code block in Docker container
+
+   You can use docker-tramp.
+
+   Then you would be able to run src blocks on docker using dir header
+   param like ‘:dir /docker:user@container:/‘ (similar to running src
+   blocks on remote machine using tramp)
+
+ - [[http://www.emacs-bootstrap.com/][Emacs Bootstrap:. Select your favorite programming languages, and your init file will be generated for you]]
+
+ - [[https://www.youtube.com/watch?v=GuEqRmCjy6E][2019-04-03: Emacs as a C++ IDE - Jeff Trull, Ben Deane, Dirk Jagdmann]]
+
+ - add new keywords
+   #+BEGIN_SRC elisp
+     (font-lock-add-keywords 'c++-mode
+        '(("\\<\\(override\\|noexcept\\)\\>") . font-lock-keyword-face))
+   #+END_SRC
+
+ - jump to first parsed error in compilation buffer
+   #+BEGIN_SRC elisp
+     (setq compilation-scroll-output 'first-error)
+   #+END_SRC
+
+ - tramp colors
+   #+BEGIN_SRC emacs-lisp
+     (require 'tramp)
+
+      (defun pasztor-set-background-color ()
+         "*Set the background color according to the remote file name."
+         (interactive)
+         (if buffer-file-name
+             (with-parsed-tramp-file-name buffer-file-name 'tramp
+              (let ((host (tramp-host buffer-file-name)))
+                (cond ((equal tramp-host "foo") (set-background-color "blue"))
+                      ((equal tramp-host "bar") (set-background-color "red"))
+                      ...
+                      (t (set-background-color "black")))))))
+
+      (add-hook 'find-file-hooks 'pasztor-set-background-color)
+      (add-hook 'find-file-not-found-hooks 'pasztor-set-background-color)
+   #+END_SRC
+
+ - ditaa :: convert artist-mode to svg diagram
+
+ - Elisp Snippet - Kill Buffer and Window On Shell Process Termination
+   #+BEGIN_SRC emacs-lisp
+     (defun jt-shell-sentinel (process event)
+       "Kill buffer and window on shell process termination."
+       (when (not (process-live-p process))
+         (let ((buf (process-buffer process)))
+           (when (buffer-live-p buf)
+            (with-current-buffer buf
+               (kill-buffer)
+               (delete-window))))))
+     (add-hook 'shell-mode-hook (lambda () (set-process-sentinel (get-buffer-process (buffer-name) ) #'jt-shell-sentinel)))
+   #+END_SRC
+
+ - Get all agenda TODOs programmatically
+   #+BEGIN_SRC emacs-lisp
+     (org-map-entries '(cons (nth 4 (org-heading-components))
+                             (list (org-get-deadline-time nil)))
+                      "/!TODO" 'agenda)
+   #+END_SRC
+
+ - Save current (system) clipboard before replacing it with the Emacs's text
+   : (setq save-interprogram-paste-before-kill t)
+
+ - Open file and close current buffer
+   : C-x C-v ffap-alternate-file
+
+ - Replace hex with decimal
+   #+BEGIN_SRC emacs-lisp
+     (defun hex2dec ()
+       (interactive)
+       (when (looking-at "[a-fA-F0-9]+")
+         (replace-match (format "%d" (string-to-number (match-string 0)
+                                                       16)))))
+   #+END_SRC
+
+ - [[https://www.reddit.com/r/emacs/comments/52lnad/from_helm_to_ivy_a_user_perspective/d7pj9mz/][Setup ivy move,copy,rename]]
+
+ - Refactor code [[http://manuel-uberti.github.io/emacs/2018/02/10/occur/][manuel-uberti.github.io]]
 
 ** #emacs bot
    : g "validate.el"
