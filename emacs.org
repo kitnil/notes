@@ -829,24 +829,24 @@
 ** Tramp
    - [[https://git.savannah.gnu.org/cgit/emacs.git/commit/etc/NEWS?id=3da0d3852923f0a20157f72aba6d8896019559f8][emacs.git - Emacs source repository]]
    - tramp-auto-auth.el --- TRAMP automatic authentication library <877e74skek.fsf@oitofelix.com>
+*** Methods
+
+  #+BEGIN_SRC emacs-lisp
+    (add-to-list 'tramp-methods
+      '("myssh"
+        (tramp-login-program        "ssh")
+        (tramp-login-args           (("-l" "%u") ("-p" "%p") ("%c")
+                                     ("-e" "none") ("-t" "-t") ("%h")
+                                     ("\"/bin/sh -i\"")))
+        (tramp-async-args           (("-q")))
+        (tramp-remote-shell         "/bin/sh")
+        (tramp-remote-shell-login   ("-l"))
+        (tramp-remote-shell-args    ("-c"))))
+  #+END_SRC
+  Btw, another test worth a try would be to use method "sshx" instead of
+  "ssh". Does this make a difference?
+
 ** Podcasts
  - [[https://emacscast.org/][EmacsCast | EmacsCast]]
 *** Keys
   - C-c C-t :: show how much function changed in diff
-** Tramp
-
- #+BEGIN_SRC emacs-lisp
-   (add-to-list 'tramp-methods
-     '("myssh"
-       (tramp-login-program        "ssh")
-       (tramp-login-args           (("-l" "%u") ("-p" "%p") ("%c")
-                                    ("-e" "none") ("-t" "-t") ("%h")
-                                    ("\"/bin/sh -i\"")))
-       (tramp-async-args           (("-q")))
-       (tramp-remote-shell         "/bin/sh")
-       (tramp-remote-shell-login   ("-l"))
-       (tramp-remote-shell-args    ("-c"))))
- #+END_SRC
- Btw, another test worth a try would be to use method "sshx" instead of
- "ssh". Does this make a difference?
-
