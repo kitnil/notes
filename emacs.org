@@ -626,6 +626,8 @@
          dired-listing-switches "-alv")
  #+END_SRC
 
+** echo area
+   - [[https://github.com/ThibautVerron/echo-sth.el][ThibautVerron/echo-sth.el: Make use of an empty echo area to display some information]]
 ** elfeed
 
  [[http://codingquark.com/emacs/2020/04/19/elfeed-protocol-ttrss.html][Elfeed with Tiny Tiny RSS]]
