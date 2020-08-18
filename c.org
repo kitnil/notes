@@ -31,6 +31,27 @@ Alternative way use [[https://bellard.org/tcc/][tcc]]
 
 [[https://github.com/onqtam/rcrl][rcrl]]
 
+* Examples
+
+** Create files
+   #+begin_src c
+     #include <stdio.h>
+     #include <string.h>
+     #include <unistd.h>
+
+     int main ()
+     {
+       int i;
+       char file[1024];
+       for (i = 0; i < 2048; ++i) {
+         sprintf(file, "files/%d.txt", i);
+         fopen (file, "w+");
+       }
+       sleep (60);
+       return 0;
+     }
+   #+end_src
+
 * Concurency
 
 - [[https://libcsp.com/][| Libcsp]]
