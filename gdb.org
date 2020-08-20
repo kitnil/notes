@@ -1,3 +1,6 @@
+- Apply core dump
+  : gdb --batch -ex "thread apply all bt full" --core /path/to/core.xxxxx /path/to/named | tee gdb.txt
+  https://gitlab.isc.org/isc-projects/bind9/-/issues/1051
 - Add layout
   : tui new-layout x src 1 regs 1 locator 0 cmd 1
 - Add horizontal layout
