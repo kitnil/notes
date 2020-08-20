@@ -610,6 +610,8 @@
    - To extract the archive of the file at point:
      : ! 7z e * RET
 
+   - [[https://git.savannah.gnu.org/cgit/emacs.git/commit/?id=9b01badf7cf7bb6cd64bc8d39564b46ae74b889f][dereference symbol links]]
+
    - From dired, to search for files containing a string, just do this,
      remembering that your regexp will be case-sensitive:
      : M-x find-grep-dired
