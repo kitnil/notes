@@ -65,6 +65,14 @@
 - [[https://github.com/visualfc/liteide][visualfc/liteide: LiteIDE is a simple, open source, cross-platform Go IDE.]]
 - [[https://github.com/lu4p/binclude][lu4p/binclude: Include files in your binary the easy way]]
 
+- pretty print
+: "github.com/kr/pretty"
+: t.Logf("%# v", pretty.Formatter(testObj))
+
+** test
+- print log 
+: go test -v
+
 * REPL
 
 - https://github.com/containous/yaegi
