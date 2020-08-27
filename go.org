@@ -66,8 +66,8 @@
 - [[https://github.com/lu4p/binclude][lu4p/binclude: Include files in your binary the easy way]]
 
 - pretty print
-: "github.com/kr/pretty"
-: t.Logf("%# v", pretty.Formatter(testObj))
+: "nnngithub.com/kr/pretty"
+: t.Logf("%# v", pretty.Formatter(testObj))w
 
 ** test
 - print log 
