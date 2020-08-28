@@ -85,3 +85,37 @@
 - [[https://github.com/cosmtrek/air][cosmtrek/air: ☁️ Live reload for Go apps]]
 - [[https://github.com/bradfitz/gosize][bradfitz/gosize: analyze size of Go binaries]]
 - [[https://github.com/dgryski/awesome-go-style][dgryski/awesome-go-style: A collection of Go style guides]]
+
+* Nix
+** Pretty print
+   #+begin_src nix
+     [
+       {
+         goPackagePath = "github.com/kr/pretty";
+         fetch = {
+           type = "git";
+           url = "https://github.com/kr/pretty";
+           rev = "3630c7d4e5f8cc7dc07f6f21d95c998d9a24d0d8";
+           sha256 = "1rrz6c9nczd6akjk2cicqr8l4fhwrnwnrxm7ldg28yrg1n2x2lib";
+         };
+       }
+       {
+         goPackagePath = "github.com/kr/text";
+         fetch = {
+           type = "git";
+           url = "https://github.com/kr/text";
+           rev = "702c74938df48b97370179f33ce2107bd7ff3b3e";
+           sha256 = "0hf58ypz6rxsw6nx3i856whir9lvy4sdx946wbw1nfaf2rdmr9vx";
+         };
+       }
+       {
+         goPackagePath = "github.com/rogpeppe/go-internal";
+         fetch = {
+           type = "git";
+           url = "https://github.com/rogpeppe/go-internal";
+           rev = "76dc4b3fc37c97df8520f01985a79bbac5d1585d";
+           sha256 = "00j2vpp1bsggdvw1winkz23mg0q6drjiir5q0k49pmqx1sh7106l";
+         };
+       }
+     ]
+   #+end_src
