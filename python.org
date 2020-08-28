@@ -105,6 +105,7 @@ web33.ls(web33.getent("passwd u7590").stdout.split(b":")[5])
 
 * paramiko
 
+  Fix infinite wait after "shell" call in SSH channel:
   #+begin_src diff
     diff --git a/channel.py b/channel.py
     index 72f6501..919d11a 100644
