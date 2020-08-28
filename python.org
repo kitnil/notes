@@ -102,3 +102,20 @@ web30_sudo = web30.sudo.bake("--stdin", _in="SUDO_PASSWORD\n")
 web30_sudo("id")
 web33.ls(web33.getent("passwd u7590").stdout.split(b":")[5])
 #+END_SRC
+
+* paramiko
+
+  #+begin_src diff
+    diff --git a/channel.py b/channel.py
+    index 72f6501..919d11a 100644
+    --- a/channel.py
+    +++ b/channel.py
+    @@ -200,7 +200,6 @@ class Channel(ClosingContextManager):
+             m.add_string(bytes())
+             self._event_pending()
+             self.transport._send_user_message(m)
+    -        self._wait_for_event()
+ 
+         @open_only
+         def invoke_shell(self):
+  #+end_src
