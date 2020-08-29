@@ -51,6 +51,9 @@ with trial: a = 5
 - [[https://github.com/emacs-lsp/lsp-pyright][emacs-lsp/lsp-pyright: lsp-mode pyright]]
 
 * Test
+** Tools
+- [[https://github.com/anapaulagomes/pytest-picked][anapaulagomes/pytest-picked: Run the tests related to the changed files (according to Git) 🤓]]
+** 
 
 https://docs.python.org/3/library/unittest.html
 
