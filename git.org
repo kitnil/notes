@@ -35,10 +35,14 @@ rerere-train.sh [COMMIT][--all]
 
 - [[https://github.com/gitblit/gitblit][gitblit/gitblit: pure java git solution]]
 
-* Misc
+* Tools
 
+- [[https://github.com/asottile/git-code-debt][asottile/git-code-debt: A dashboard for monitoring code debt in a git repository.]]
 - [[https://github.com/asottile/all-repos][asottile/all-repos: Clone all your repositories and apply sweeping changes.]]
 - [[https://github.com/aspiers/git-deps][aspiers/git-deps: git commit dependency analysis tool]]
+
+* Misc
+
 - [[https://github.com/nicoespeon/gitgraph.js][nicoespeon/gitgraph.js: 👋 [Looking for maintainers] - A JavaScript library to draw pretty git graphs in the browser]]
 - [[https://github.com/pcottle/learnGitBranching][pcottle/learnGitBranching: An interactive git visualization to challenge and educate!]]
 - [[https://github.com/MarkForged/GOMP][MarkForged/GOMP: GOMP (Git cOMPare) is a tool for comparing branches.]]
