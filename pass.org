@@ -1,3 +1,4 @@
 - for dir in $(find $PWD/.password-store -type d -name '*.intr' -o -name '*majordomo*' -type d); do find $dir -type f -name '*.gpg' -a -not -name '*pyhalov*'; done
 - Надо переходить на https://github.com/gopasspw/gopass :b
 - https://github.com/ddevault/pass-rotate
+- [[https://qtpass.org/][QtPass GUI for pass, the standard UNIX password manager]]
