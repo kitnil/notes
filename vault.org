@@ -84,3 +84,4 @@ ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -l root -fNL 820
 
 - [[https://github.com/channable/vaultenv][channable / vaultenv]]
 - [[https://github.com/Caiyeon/goldfish][Caiyeon/goldfish: A HashiCorp Vault UI written with VueJS and Vault native Go API]]
+- [[https://github.com/adobe/cryptr][adobe/cryptr: Cryptr: a GUI for Hashicorp's Vault]]
