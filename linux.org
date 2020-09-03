@@ -157,6 +157,18 @@ oleg@guixsd ~$ ss --numeric --tcp --listening --no-header --oneline --processes 
 
 /home/oleg/archive/src/linux/arch/x86/entry/syscalls/syscall_64.tbl
 
+* console
+#+begin_quote
+I think it would also be nice if the sysadmins could get
+access to the serial console (or even the racadm console).  With the
+serial console you could see if the server is stuck even if you can’t
+SSH.  With the racadm console (where we type “console com2” to start the
+serial console) you could also trigger a soft reboot.
+
+We have these management interfaces pretty locked down, but perhaps we
+can set up a tunnel from bayfront, or something like that.
+#+end_quote
+
 * reboot
 
 ** proc
