@@ -2289,7 +2289,30 @@ with ‘--disable-chroot’ because the image lacks build users.
 It would be useful also to set the user under which commands run in the
 image, similar to the ‘USER’ directive in Dockerfiles.
 
+* Shepherd
+#+begin_quote
+root@berlin ~/maintenance/hydra# herd restart guix-daemon
+Service cuirass-web has been stopped. 
+Service cuirass has been stopped.
+Service guix-publish has been stopped.
+Service guix-daemon has been stopped. 
+herd: exception caught while executing 'start' on service 'guix-daemon':
+Unbound variable: fork+exec-command/container
+root@berlin ~/maintenance/hydra# herd restart guix-daemon
+Service guix-daemon is not running.   
+herd: exception caught while executing 'start' on service 'guix-daemon':
+Unbound variable: fork+exec-command/container
 
+The workaround I found, which works nicely, is to run:
+
+  herd eval root "(reload-module (resolve-module '(gnu build shepherd)))"
+
+and then:
+
+  herd restart guix-daemon
+  herd restart guix-publish
+  …
+#+end_quote
 * QEMU
 
 #+BEGIN_SRC diff
