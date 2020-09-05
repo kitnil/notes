@@ -103,6 +103,9 @@ documentation /gnu/store/90wc27m5rafga3zjzkg6xdbf49rrz3w1-nix-2.0.4/share/doc/ni
 
 patchelf https://nixos.wiki/wiki/Packaging/Binaries#Creating_the_Derivation_for_upstream_Packaging
 
+* Cache
+- [[https://github.com/ghuntley/cachix-demo][ghuntley/cachix-demo]]
+
 * Nixops
 
 - [[https://www.ryantm.com/blog/nixops-without-sharing/][Nixops without sharing]]
