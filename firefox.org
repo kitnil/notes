@@ -102,6 +102,7 @@ that behavior.
 
 * Tabs
 browser.tabs.closeWindowWithLastTab false
+browser.tabs.closeTabByDblclick
 
 * Sessions
 
