@@ -591,8 +591,6 @@
 - [[https://elpa.zilongshanren.com/melpa-stable/ert-junit-0.2.el][elpa.zilongshanren.com/melpa-stable/ert-junit-0.2.el]]
 * Tools
 - [[https://github.com/DarwinAwardWinner/with-simulated-input][DarwinAwardWinner/with-simulated-input: Test your interactive elisp functions non-interactively!]]
-** Ligatures
-- [[https://github.com/mickeynp/ligature.el][mickeynp/ligature.el: Display typographical ligatures in Emacs]]
 ** Bug report
 
  [[http://manuel-uberti.github.io//emacs/2018/05/25/display-version/][A fancy Emacs version – manu.el]]
@@ -630,6 +628,9 @@
            (insert "Window system: " (getenv "XDG_SESSION_TYPE") "\n")
            (insert "Desktop environment: " (mu--gnome-version))))))
  #+END_SRC
+
+** CI
+- [[https://github.com/TxGVNN/gitlab-pipeline][TxGVNN/gitlab-pipeline: Emacs tool to show gitlab-pipeline]]
 
 ** Dired
 
@@ -850,10 +851,6 @@
            (t (funcall original url new-window))))
  #+END_SRC
 
-** Jinja
-   - [[https://github.com/clarete/templatel][clarete/templatel: Jinja inspired template language for Emacs Lisp]]
-** Slack
-- [[https://ag91.github.io/blog/2020/08/14/slack-messages-in-your-org-agenda/][Slack messages in your Org Agenda - Where parallels cross]]
 ** Firefox
 
  A tiny tip for those using elfeed for youtube subs
@@ -881,10 +878,12 @@
    - [[http://mbork.pl/2014-12-27_Info_dispatch][Info dispatch]]
    - [[https://www.emacswiki.org/emacs/Icicles_-_Info_Enhancements][Icicles - Info Enhancements]]
 
+** Jinja
+   - [[https://github.com/clarete/templatel][clarete/templatel: Jinja inspired template language for Emacs Lisp]]
+** Ligatures
+- [[https://github.com/mickeynp/ligature.el][mickeynp/ligature.el: Display typographical ligatures in Emacs]]
 ** Magit
  - magit-cherry
-** VTerm
-   - [[https://github.com/ration/find-trace-paths][ration/find-trace-paths: Find paths from error traces and allow to scroll through and click into them]]
 ** Org
    - [[https://gitlab.com/joukeHijlkema/org-gantt][jouke hijlkema / org-gantt · GitLab]]
    - [[https://github.com/ndwarshuis/org-ml][ndwarshuis/org-ml: (formerly om.el) A functional library for org-mode]]
@@ -894,6 +893,12 @@
    - [[https://git.savannah.gnu.org/cgit/emacs.git/commit/etc/NEWS?id=a06f41ad2ca786a70940297fd832a649196be9be][emacs.git - Emacs source repository]]
    - [[https://github.com/Trevoke/org-gtd.el][Trevoke/org-gtd.el: A package for using GTD using org-mode (beta)]]
    - [[https://github.com/conao3/org-generate.el][conao3/org-generate.el: Generate template files/folders from one org document]]
+** Podcasts
+ - [[https://emacscast.org/][EmacsCast | EmacsCast]]
+*** Keys
+  - C-c C-t :: show how much function changed in diff
+** Slack
+- [[https://ag91.github.io/blog/2020/08/14/slack-messages-in-your-org-agenda/][Slack messages in your Org Agenda - Where parallels cross]]
 ** Snippets
 - [[https://github.com/mineo/yatemplate/][mineo/yatemplate: Simple file templates for Emacs with YASnippet]]
 ** Tramp
@@ -916,10 +921,5 @@
   Btw, another test worth a try would be to use method "sshx" instead of
   "ssh". Does this make a difference?
 
-** CI
-- [[https://github.com/TxGVNN/gitlab-pipeline][TxGVNN/gitlab-pipeline: Emacs tool to show gitlab-pipeline]]
-
-** Podcasts
- - [[https://emacscast.org/][EmacsCast | EmacsCast]]
-*** Keys
-  - C-c C-t :: show how much function changed in diff
+** VTerm
+   - [[https://github.com/ration/find-trace-paths][ration/find-trace-paths: Find paths from error traces and allow to scroll through and click into them]]
