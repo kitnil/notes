@@ -1,4 +1,7 @@
 
+* Tools
+- [[https://github.com/tdihp/dspcap][tdihp/dspcap: A humble bash script set that uses daemonset to capture tcpdump from all k8s nodes, then collect the captures.]]
+
 * Misc
 - [[https://github.com/hjacobs/kubernetes-failure-stories][hjacobs/kubernetes-failure-stories: Compilation of public failure/horror stories related to Kubernetes]]
 - [[https://github.com/kubernetes/kops][kubernetes/kops: Kubernetes Operations (kops) - Production Grade K8s Installation, Upgrades, and Management]]
