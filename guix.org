@@ -2442,3 +2442,20 @@ build.sh
 
 * articles
 - [[https://guix.gnu.org/blog/2020/running-a-ganeti-cluster-on-guix/][Running a Ganeti cluster on Guix]]
+
+* GRUB
+
+** Fix grub after "guix system reconfigure"
+
+  Installing for i386-pc platform.                                                            
+  /gnu/store/h072dgv0g63pgwry386xmgn9xc06yy3w-grub-2.04/sbin/grub-install: warning: this GPT partition label contains no BIOS Boot Partition; embedding won't be possible.
+  /gnu/store/h072dgv0g63pgwry386xmgn9xc06yy3w-grub-2.04/sbin/grub-install: warning: Embedding is not possible.  GRUB can only be installed in this setup by using blocklists.  However, blocklists are UNRELIABLE and their use is discouraged..                                           
+  /gnu/store/h072dgv0g63pgwry386xmgn9xc06yy3w-grub-2.04/sbin/grub-install: error: will not proceed with blocklists.
+
+# fdisk -l /dev/sda
+...
+/dev/sda4  37750784   37816319      65536    32M BIOS boot
+https://superuser.com/a/1170352
+
+mkfs.vfat -F32 /dev/sdXY
+
