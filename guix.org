@@ -75,6 +75,28 @@ For comparison, my laptop’s store contains 1,103,543 files, excluding
     locate -d /tmp/dbfile ecxc0800
 #+end_example
 
+  - build deriviation without (guix store)
+#+begin_quote
+As I understand it, ‘gexp->derivation’ returns a value in the store
+monad.  I’m not sure why ‘guix build’ doesn’t know how to use it
+directly, but you can get at the derivation by wrapping it with
+‘run-with-store’:
+
+    (run-with-store (open-connection)
+      (gexp->derivation "the-thing" build-exp))
+
+Don’t forget to use the ‘(guix store)’ module for this.
+
+But!  There’s a better way!!  :)
+
+You can use the “declarative interface”.  Just replace
+‘gexp->derivation’ with ‘computed-file’:
+
+    (computed-file "the-thing" build-exp)
+
+Now there’s no need for ‘(guix store)’.
+#+end_quote
+
   - build package
 #+BEGIN_EXAMPLE
   $ guix repl
