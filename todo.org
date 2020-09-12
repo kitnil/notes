@@ -1,4 +1,3 @@
-
 * TODO Replace Zabbix web interface with alerta
   SCHEDULED: <2020-03-08 Sun>
 * TODO Add docker alias
@@ -276,7 +275,7 @@ warning: stray .go files: ./gnu/packages/ham-radio.go ./gnu/packages/sdr.go
   2020-05-17T16:41:30.926446285Z TWITCH_LIVE: tsoding
   2020-05-17T16:41:30.926448830Z TWITCH_LIVE: rwxrob
   2020-05-17T16:41:30.926451435Z Online users: tsoding,rwxrob
-  2020-05-17T16:41:30.926454060Z 
+  2020-05-17T16:41:30.926454060Z
   2020-05-17T16:41:30.926482824Z Traceback (most recent call last):
   2020-05-17T16:41:30.926487352Z   File "/bin/reevefresh", line 42, in main
   2020-05-17T16:41:30.926490378Z     if twitch.user(user).is_live:
@@ -293,9 +292,9 @@ warning: stray .go files: ./gnu/packages/ham-radio.go ./gnu/packages/sdr.go
   2020-05-17T16:41:30.926523020Z   File "/usr/local/lib/python3.7/site-packages/requests/models.py", line 941, in raise_for_status
   2020-05-17T16:41:30.926525826Z     raise HTTPError(http_error_msg, response=self)
   2020-05-17T16:41:30.926530805Z requests.exceptions.HTTPError: 401 Client Error: Unauthorized for url: https://api.twitch.tv/helix/users?login=arhont_tv
-  2020-05-17T16:41:30.926533791Z 
+  2020-05-17T16:41:30.926533791Z
   2020-05-17T16:41:30.926536355Z During handling of the above exception, another exception occurred:
-  2020-05-17T16:41:30.926539121Z 
+  2020-05-17T16:41:30.926539121Z
   2020-05-17T16:41:30.926541725Z Traceback (most recent call last):
   2020-05-17T16:41:30.926544410Z   File "/bin/reevefresh", line 61, in <module>
   2020-05-17T16:41:30.926547586Z     main()
@@ -388,7 +387,7 @@ PING gitlab.intr (172.16.103.139) 56(84) bytes of data.
 --- gitlab.intr ping statistics ---
 1 packets transmitted, 1 received, 0% packet loss, time 0ms
 rtt min/avg/max/mdev = 0.167/0.167/0.167/0.000 ms
-u226109@web29:~$ 
+u226109@web29:~$
 -A OUTPUT -d 172.16.0.0/16 -p icmp -m owner --uid-owner 2000-65535 -j DROP
 -A OUTPUT -p tcp -m tcp --dport 53 -m owner --uid-owner 2000-65535 -j ACCEPT
 -A OUTPUT -p udp -m udp --dport 53 -m owner --uid-owner 2000-65535 -j ACCEPT
@@ -441,10 +440,10 @@ https://gitlab.intr/webservices/apache2-php52/-/merge_requests/13
       "_id" : ObjectId("5d3b27457b88850001d8c56c"),
       "serviceTemplateId" : "5d24bca8c1af370001ace60c",
       "templateId" : "5d8251523ddcc03e078e0d91",
-      "socketIds" : [ 
+      "socketIds" : [
           "5d3b242f7b88850001d8c567"
       ],
-      "serviceSocketIds" : [ 
+      "serviceSocketIds" : [
           "5d3b242f7b88850001d8c567"
       ],
       "instanceProps" : {
@@ -459,10 +458,10 @@ https://gitlab.intr/webservices/apache2-php52/-/merge_requests/13
       "_id" : ObjectId("5d401fd8f7619300012fbb9e"),
       "serviceTemplateId" : "5d401f9ef7619300012fbb9a",
       "templateId" : "5d8251523ddcc03e078e0d96",
-      "socketIds" : [ 
+      "socketIds" : [
           "5d401edbf7619300012fbb96"
       ],
-      "serviceSocketIds" : [ 
+      "serviceSocketIds" : [
           "5d401edbf7619300012fbb96"
       ],
       "instanceProps" : {
@@ -512,7 +511,7 @@ https://gitlab.intr/webservices/apache2-php52/-/merge_requests/13
 
 mongo mongodb://ci.intr:27017/staffResourceController --eval "var collection = 'server'" variety.js
 
-root@ci ~/src/variety # mongo mongodb://ci.intr:27017/staffResourceController --eval "var collection = 'serviceTemplate'" variety.js 
+root@ci ~/src/variety # mongo mongodb://ci.intr:27017/staffResourceController --eval "var collection = 'serviceTemplate'" variety.js
 
 * TODO Emacs Redmine API
   SCHEDULED: <2020-06-07 Sun>
@@ -679,11 +678,11 @@ echo $PATH | tr ':' '\n' | xargs -I{} find {} -name '*top*'
 
 * TODO
 
-   JMS queues and AMQP queues have different semantics. For example, JMS  
-   sends queued messages to only one consumer. While AMQP queues do the same  
-   thing, AMQP producers do not send messages directly to queues. Instead, a  
-   message is sent to an exchange, which can go to a single queue or fan out  
-   to multiple queues, emulating the concept of JMS topics.   
+   JMS queues and AMQP queues have different semantics. For example, JMS
+   sends queued messages to only one consumer. While AMQP queues do the same
+   thing, AMQP producers do not send messages directly to queues. Instead, a
+   message is sent to an exchange, which can go to a single queue or fan out
+   to multiple queues, emulating the concept of JMS topics.
 
 * TODO [[https://github.com/lu0/rofi-blurry-powermenu][lu0/rofi-blurry-powermenu: Blurry fullscreen Powermenu for Rofi]]
 
@@ -706,7 +705,7 @@ echo $PATH | tr ':' '\n' | xargs -I{} find {} -name '*top*'
 
 * TODO openvpn
 #+begin_example
-  Jul  5 14:02:19 guixsd shepherd[1]: Service vpn-client has been started. 
+  Jul  5 14:02:19 guixsd shepherd[1]: Service vpn-client has been started.
   Jul  5 14:02:20 guixsd openvpn[13556]: SENT CONTROL [office]: 'PUSH_REQUEST' (status=1)
   Jul  5 14:02:20 guixsd openvpn[13556]: PUSH: Received control message: 'PUSH_REPLY,route 172.16.103.0 255.255.255.0 vpn_gateway,route 172.16.100.0 255.255.255.0,route 172.16.102.0 255.255.255.0,route 172.16.0.0 255.255.0.0,route 192.168.102.0 255.255.255.0,route 192.168.103.0 255.255.255.0,dhcp-option DOMAIN intr,dhcp-option DOMAIN-SEARCH intr majordomo.ru,dhcp-option DNS 172.16.103.2,dhcp-option DNS 172.16.102.2,route-gateway 172.16.103.1,ifconfig 172.16.103.183 255.255.255.0,peer-id 8,cipher AES-256-GCM'
   Jul  5 14:02:20 guixsd openvpn[13556]: Options error: Unrecognized option or missing or extra parameter(s) in [PUSH-OPTIONS]:8: dhcp-option (2.4.9)
@@ -756,7 +755,7 @@ echo $PATH | tr ':' '\n' | xargs -I{} find {} -name '*top*'
 * TODO HASKELL CMS [[https://github.com/clckwrks/clckwrks][clckwrks / clckwrks]]
   SCHEDULED: <2020-07-21 Tue>
 
-* password-store 
+* password-store
   : find ~/.password-store -not -name '.gitmodules' -not -name '.gpg-id' -not -name '.gitattributes' -not -path '/home/oleg/.password-store/.git/*' -type f -exec printf '{}:' \; -exec sh -c 'gpg -d -q "{}" | tr -d "\n"; echo' \; |& tee pass.txt
 
 
@@ -804,14 +803,14 @@ Author: Mark H Weaver <mhw@netris.org>
 Date:   Wed Sep 9 14:32:04 2020 -0400
 
     gnu: linux-libre: Update to 5.8.8.
-    
+
     * gnu/packages/linux.scm (linux-libre-5.8-version): Update to 5.8.8.
     (linux-libre-5.8-pristine-source): Update hash.
     (deblob-scripts-5.8): Stay at version 5.8.7.
 
  gnu/packages/linux.scm | 6 +++---
  1 file changed, 3 insertions(+), 3 deletions(-)
-oleg@guixsd ~/src/guix-master$ git bisect log 
+oleg@guixsd ~/src/guix-master$ git bisect log
 git bisect start
 # bad: [140da556be06442192fbae5e2a07357f26fbc26b] ui: Lexicographically sort transaction entries based on their package name.
 git bisect bad 140da556be06442192fbae5e2a07357f26fbc26b
@@ -838,3 +837,9 @@ git bisect good eb15d38162743feee686e16e084d927a3e98883f
 
 Control message sent:
 merge 43344 43352
+
+* install qelk
+
+serdar:~$ qelk stats
+serdar:~$ qelk inspect products
+serdar:~$ qelk search --query tags:Wine --format created,tags,name --sort created:desc
