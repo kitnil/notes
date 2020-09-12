@@ -840,6 +840,8 @@ merge 43344 43352
 
 * install qelk
 
+[[https://github.com/serdarkkts/qelk][serdarkkts/qelk: A terminal UI to monitor and query Elasticsearch.]]
+
 serdar:~$ qelk stats
 serdar:~$ qelk inspect products
 serdar:~$ qelk search --query tags:Wine --format created,tags,name --sort created:desc
