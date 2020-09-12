@@ -835,3 +835,6 @@ git bisect bad ad42c20921235532e80e776fd55090127389208b
 git bisect good eb15d38162743feee686e16e084d927a3e98883f
 # first bad commit: [ad42c20921235532e80e776fd55090127389208b] gnu: linux-libre: Update to 5.8.8.
 #+end_example
+
+Control message sent:
+merge 43344 43352
