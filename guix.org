@@ -97,6 +97,9 @@ You can use the “declarative interface”.  Just replace
 Now there’s no need for ‘(guix store)’.
 #+end_quote
 
+  - performance mesure
+: perf timechart record guix archive --export …
+
   - build package
 #+BEGIN_EXAMPLE
   $ guix repl
