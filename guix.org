@@ -99,6 +99,7 @@ Now there’s no need for ‘(guix store)’.
 
   - performance mesure <87a6xyhujp.fsf@inria.fr>
 : perf timechart record guix archive --export …
+produces the Gantt diagram where (grey = idle, blue = busy)
 
   - build package
 #+BEGIN_EXAMPLE
