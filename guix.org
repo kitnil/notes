@@ -97,7 +97,7 @@ You can use the “declarative interface”.  Just replace
 Now there’s no need for ‘(guix store)’.
 #+end_quote
 
-  - performance mesure
+  - performance mesure <87a6xyhujp.fsf@inria.fr>
 : perf timechart record guix archive --export …
 
   - build package
