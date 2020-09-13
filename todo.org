@@ -838,10 +838,24 @@ git bisect good eb15d38162743feee686e16e084d927a3e98883f
 Control message sent:
 merge 43344 43352
 
-* install qelk
+* TODO Try to install qelk and update ELK to >=7.0
 
 [[https://github.com/serdarkkts/qelk][serdarkkts/qelk: A terminal UI to monitor and query Elasticsearch.]]
 
 serdar:~$ qelk stats
 serdar:~$ qelk inspect products
 serdar:~$ qelk search --query tags:Wine --format created,tags,name --sort created:desc
+
+* TODO Broken guix time-machine
+
+oleg@guixsd ~/src/guile-ihs$ mv ~/.cache/guix ~/.cache/guix~
+oleg@guixsd ~/src/guile-ihs$ command guix time-machine --commit=5b7a1cb077931a020c0b7e3b12f12a7bda221d96 -- environment --ad-hoc bash
+Updating channel 'guix' from Git repository at 'https://git.savannah.gnu.org/git/guix.git'...
+guix time-machine: error: Git error: the requested type does not match the type in the ODB
+oleg@guixsd ~/src/guile-ihs$ guix describe 
+Generation 35   Sep 12 2020 13:31:37    (current)
+  guix 5f5ff26
+    repository URL: https://git.savannah.gnu.org/git/guix.git
+    branch: master
+    commit: 5f5ff266e594948b02005ae46d47ebff7654b8c3
+
