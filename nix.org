@@ -53,6 +53,7 @@ nix-repl> mynixos2.config.environment.etc."mailman.cfg".text
 - [[https://github.com/vitiral/novault][vitiral/novault: ultra simple and secure vaultless password manager (beta)]]
 - [[https://github.com/headcounter/shabitica][headcounter/shabitica: Run your own self-hosted Habitica instance]]
 - [[https://github.com/pjones/nix-hs][pjones/nix-hs: Haskell + nixpkgs = nix-hs]]
+- [[https://github.com/styx-static/styx][styx-static/styx: Static site generator in Nix expression language.]]
 
 : oleg@guixsd ~/majordomo/_ci/nixpkgs$ nix-instantiate --expr 'with import <nixpkgs> {}; lib.filter (package: lib.isDerivation package) (map (package: package.src) (lib.filter (package: lib.hasAttrByPath ["src"] package) (import ./build.nix)))'
 
