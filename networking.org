@@ -7,6 +7,9 @@
 
 * ip
 
+- Bind port even if no IP address available:
+: net.ipv4.ip_nonlocal_bind = 1
+
 #+BEGIN_SRC yaml
   ethernet frame:
     preamble/sfd:
