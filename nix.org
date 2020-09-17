@@ -333,3 +333,31 @@ nix-store -q --tree "$(command -v basename)"
 /nix/store/<hash>-nix-<ver>/bin/nix-env -i /nix/store/<hash>-nix-<ver>
 #+END_SRC
 
+* Modules
+
+  #+begin_src nix
+    let
+      systemModule = { lib, config, ... }: {
+        options.toplevel = lib.mkOption {
+          type = lib.types.str;
+        };
+
+        options.enableFoo = lib.mkOption {
+          type = lib.types.bool;
+          default = false;
+        };
+
+        config.toplevel = ''
+          Is foo enabled? ${lib.boolToString config.enableFoo}
+        '';
+      };
+
+      userModule = {
+        enableFoo = true;
+      };
+
+    in (import <nixpkgs/lib>).evalModules {
+      modules = [ systemModule userModule ];
+    }
+  #+end_src
+  : nix-instantiate --eval /tmp/file.nix -A config.toplevel
