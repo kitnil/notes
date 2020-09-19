@@ -847,3 +847,5 @@ serdar:~$ qelk inspect products
 serdar:~$ qelk search --query tags:Wine --format created,tags,name --sort created:desc
 
 * connect filter rewrite confirmation https://stackoverflow.com/questions/1885525/how-do-i-prompt-a-user-for-confirmation-in-bash-script
+
+* TODO Delete /home/oleg/src/webhook/hooks.json
