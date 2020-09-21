@@ -795,49 +795,6 @@ https://cerberus.intr/index.php/profiles/ticket/RM-12141-836
 * TODO web ssl https://web24.intr/doc/host-protection.html
 root@web33 ~ # openssl x509 -in /proc/29782/root/read/ssl/web33.intr.pem  -text | less
 
-* TODO
-#+begin_example
-ad42c20921235532e80e776fd55090127389208b is the first bad commit
-commit ad42c20921235532e80e776fd55090127389208b
-Author: Mark H Weaver <mhw@netris.org>
-Date:   Wed Sep 9 14:32:04 2020 -0400
-
-    gnu: linux-libre: Update to 5.8.8.
-
-    * gnu/packages/linux.scm (linux-libre-5.8-version): Update to 5.8.8.
-    (linux-libre-5.8-pristine-source): Update hash.
-    (deblob-scripts-5.8): Stay at version 5.8.7.
-
- gnu/packages/linux.scm | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
-oleg@guixsd ~/src/guix-master$ git bisect log
-git bisect start
-# bad: [140da556be06442192fbae5e2a07357f26fbc26b] ui: Lexicographically sort transaction entries based on their package name.
-git bisect bad 140da556be06442192fbae5e2a07357f26fbc26b
-# good: [81ea278e05986f9ccee078bd00d4d7fc309dd19c] gnu: sbcl-ironclad: Update to 0.51.
-git bisect good 81ea278e05986f9ccee078bd00d4d7fc309dd19c
-# bad: [af62950fc05f265c6c29c5973a2029a9cfdd0d30] gnu: burp: Update to 2.3.34 [security fixes].
-git bisect bad af62950fc05f265c6c29c5973a2029a9cfdd0d30
-# good: [dc89d17164011516c58070baa3b3ffde7eb758b4] gnu: emacs-org: Update to 9.3.7.
-git bisect good dc89d17164011516c58070baa3b3ffde7eb758b4
-# good: [086ae880002806ed2db9b597f7ad54974c3731b2] gnu: emacs-sly: Update to 20200903.
-git bisect good 086ae880002806ed2db9b597f7ad54974c3731b2
-# bad: [db0109be42547d5dbb0fc1eb8ae30ccc968ed88b] gnu: dovecot: Set moduledir to global directory.
-git bisect bad db0109be42547d5dbb0fc1eb8ae30ccc968ed88b
-# good: [1f56ec08af704bdc7aa3e143bf5ce351c5306dea] gnu: Add r-loomr.
-git bisect good 1f56ec08af704bdc7aa3e143bf5ce351c5306dea
-# good: [0f8db4dc88f2b0bfd50d10001b0a39c751a9c6c0] Revert "gnu: Add r-loomr."
-git bisect good 0f8db4dc88f2b0bfd50d10001b0a39c751a9c6c0
-# bad: [ad42c20921235532e80e776fd55090127389208b] gnu: linux-libre: Update to 5.8.8.
-git bisect bad ad42c20921235532e80e776fd55090127389208b
-# good: [eb15d38162743feee686e16e084d927a3e98883f] gnu: mercurial: Update to 5.5.1.
-git bisect good eb15d38162743feee686e16e084d927a3e98883f
-# first bad commit: [ad42c20921235532e80e776fd55090127389208b] gnu: linux-libre: Update to 5.8.8.
-#+end_example
-
-Control message sent:
-merge 43344 43352
-
 * TODO Try to install qelk and update ELK to >=7.0
 
 [[https://github.com/serdarkkts/qelk][serdarkkts/qelk: A terminal UI to monitor and query Elasticsearch.]]
