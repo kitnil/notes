@@ -715,3 +715,5 @@ serdar:~$ qelk search --query tags:Wine --format created,tags,name --sort create
 * connect filter rewrite confirmation https://stackoverflow.com/questions/1885525/how-do-i-prompt-a-user-for-confirmation-in-bash-script
 
 * TODO Install [[https://github.com/containrrr/watchtower][containrrr/watchtower: A process for automating Docker container base image updates.]]
+
+* TODO Zabbix 5.0 docker [[https://techexpert.tips/zabbix/monitoring-docker-using-zabbix/][Tutorial - Monitoring Docker using Zabbix [ Step by Step ]]]
