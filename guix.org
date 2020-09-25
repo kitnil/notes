@@ -57,6 +57,32 @@ https://gitlab.com/janneke/guix.git
 
 * Cheat sheet
 
+  - dbus-run-session
+#+BEGIN_SRC sh
+# Honor per-interactive-shell startup file
+if [ -f ~/.bashrc ]; then . ~/.bashrc; fi
+
+# shepherd
+
+if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then
+    export MOZ_ENABLE_WAYLAND=1
+    export GUIX_PACKAGE_PATH=/home/joshua/prog/gnu/guix/guix-packages/
+    XDG_DATA_DIRS=/var/lib/flatpak/exports/share:/home/joshua/.local/share/flatpak/exports/share:$XDG_DATA_DIRS
+    # this may fix a bug that I have with termite confusing backspace as space in guix environment
+    # export TERM=linux
+    shepherd -c /home/joshua/.config/shepherd/init.scm &
+    exec dbus-run-session sway
+fi
+#+END_SRC
+
+#+BEGIN_SRC sh
+herd status
+Started:
+ + root
+Stopped:
+ - vpn
+#+END_SRC
+
   - [[https://lists.nongnu.org/archive/html/guix-devel/2020-02/msg00002.html][Running service migrations during upgrades <874knrtgzk.fsf@gmail.com>]]
 
   - iso https://ci.guix.gnu.org/search/latest/ISO-9660?query=spec:guix-master+status:success+system:x86_64-linux+image.iso
