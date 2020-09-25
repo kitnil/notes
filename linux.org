@@ -218,3 +218,6 @@ And then simulate a kernel panic:
 $ sudo echo c > /proc/sysrq-trigger
 
 Your computer reboots immediately.
+
+* BCC
+https://github.com/iovisor/bcc/blob/master/QUICKSTART.md
