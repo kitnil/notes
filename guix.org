@@ -57,6 +57,27 @@ https://gitlab.com/janneke/guix.git
 
 * Cheat sheet
 
+  - Build critical packages
+
+  #+begin_src scheme
+    (specifications->manifest
+     '("libreoffice"
+       "icecat" "epiphany" "ungoogled-chromium"       ;browsers
+       "mpv" "vlc" "totem"                            ;video
+       "linux-libre" "guix" "qemu" "qemu-minimal"))
+  #+end_src
+
+#+begin_src sh
+  #!/bin/sh
+  while true
+  do
+      date
+      guix time-machine -- build --timeout=60000 --max-silent-time=5000 \
+           -m "$HOME/critical-packages.scm" --keep-going --no-grafts -v1
+      sleep 2h
+  done
+#+end_src
+
   - dbus-run-session
 #+BEGIN_SRC sh
 # Honor per-interactive-shell startup file
