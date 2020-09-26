@@ -1,7 +1,6 @@
 - [[https://github.com/aide/aide][aide/aide: aide source code]]
 - [[https://github.com/apjanke/ronn-ng][apjanke/ronn-ng: Ronn-NG: An updated fork of ronn. Build man pages from Markdown.]]
 - [[https://github.com/acaudwell/Logstalgia][acaudwell/Logstalgia: replay or stream website access logs as a retro arcade game]]
-- [[https://github.com/iovisor/bpftrace][iovisor/bpftrace: High-level tracing language for Linux eBPF]]
 - [[https://github.com/gregkh/usbview][gregkh/usbview: usb viewer for Linux]]
 - [[https://github.com/nelhage/reptyr][nelhage/reptyr: Reparent a running program to a new terminal]]
 - [[https://github.com/Xfennec/progress][Xfennec/progress: Linux tool to show progress for cp, mv, dd, ... (formerly known as cv)]]
@@ -18,6 +17,10 @@
 - [[https://github.com/asz/icmpshell][asz/icmpshell: Experimental kernel-level remote shell based on ICMP content]]
 - [[https://github.com/sp00f1ng/booty][sp00f1ng/booty: Boot to any GNU/Linux via PXE, ISO or USB, HDD, SSD and so on... With using the shmfs (tmpfs) or Overlay FS + SquashFS.]]
 - [[https://github.com/foundObjects/zram-swap][foundObjects/zram-swap: A simple zram swap service for modern systemd Linux]]
+
+* BPF
+- [[https://www.geeklan.co.uk/?p=2493][Book review: BPF Performance Tools: Linux System and Application Observability – GeekLAN]]
+- [[https://github.com/iovisor/bpftrace][iovisor/bpftrace: High-level tracing language for Linux eBPF]]
 
 * Lockdown
 - [[https://github.com/x08d/lockdown.sh][x08d/lockdown.sh: Lockdown your linux install. The simple zero config linux hardening script]]
