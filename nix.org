@@ -110,6 +110,7 @@ patchelf https://nixos.wiki/wiki/Packaging/Binaries#Creating_the_Derivation_for_
 * Cache
 - [[https://github.com/ghuntley/cachix-demo][ghuntley/cachix-demo]]
 - [[https://nixbuild.net/][nixbuild.net]]
+- [[https://github.com/nixbuild/nixbuild-action][nixbuild/nixbuild-action: GitHub Action for using the nixbuild.net service]]
 
 * Nixops
 
