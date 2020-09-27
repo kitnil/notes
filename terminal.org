@@ -14,3 +14,6 @@
   - override detach session keybinding
     : abduco -e ^q -c test bash
     ^q is C-q
+
+  - create session without attaching
+    : abduco -n test htop
