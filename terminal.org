@@ -23,3 +23,8 @@
 
   - attach to session or create session if it doesn't exist
     : abduco -A test htop
+
+  - session status
+    - asterisk (*) is connected session
+    - plus (+) is terminated session
+    - empty is nothing connected to session
