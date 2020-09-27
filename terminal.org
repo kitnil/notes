@@ -31,3 +31,7 @@
 
   - read-only session
     : abduco -r [Aac] ...
+
+  - dvtm terminal multiplexer is the default program
+    : abduco -c test
+    server-execvp: dvtm: No such file or directory
