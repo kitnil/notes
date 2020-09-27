@@ -1,2 +1,12 @@
 - [[https://github.com/adi1090x/kitty-cat][adi1090x/kitty-cat: Simple script to change color-schemes and fonts for kitty terminal.]]
 - [[https://github.com/kal39/ptmv][kal39/ptmv: An utf-8/truecolor image and video viewer for the terminal]]
+
+* abduco
+  - create session
+    : abduco -c test bash
+
+  - detach session
+    : C-\
+
+  - attach to session
+    : abduco -a test
