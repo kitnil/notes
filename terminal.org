@@ -5,6 +5,9 @@
   - create session
     : abduco -c test bash
 
+  - delete session
+    : only by closing the program inside session
+
   - detach session
     : C-\
 
