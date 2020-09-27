@@ -28,3 +28,6 @@
     - asterisk (*) is connected session
     - plus (+) is terminated session
     - empty is nothing connected to session
+
+  - read-only session
+    : abduco -r [Aac] ...
