@@ -10,3 +10,7 @@
 
   - attach to session
     : abduco -a test
+
+  - override detach session keybinding
+    : abduco -e ^q -c test bash
+    ^q is C-q
