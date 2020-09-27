@@ -20,3 +20,6 @@
 
   - create session without attaching
     : abduco -n test htop
+
+  - attach to session or create session if it doesn't exist
+    : abduco -A test htop
