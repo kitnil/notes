@@ -568,6 +568,16 @@ add tests for majordomo passwords in 052d82a90d27d5fad97777d95c75d5d8d9cdd2a0
                                                                    #$fuse "/bin" ":"
                                                                    #$autofs "/sbin"))
 
+* TODO fix jenkins nix-build
+
+#+begin_example
+  14:10:53  + nix-build --tarball-ttl 10 --argstr overlayUrl git@gitlab.intr:_ci/nixpkgs.git --argstr overlayRef master --show-trace default.nix
+  14:10:53  error: while evaluating the attribute 'baseJson' of the derivation 'docker-image-ssh2docker.tar.gz' at /nix/store/3z01ch75h64dbl9caz3fizxx2z0ab7iy-nixpkgs-ce9f1aa/pkgs/build-support/trivial-builders.nix:7:14:
+  14:10:53  while evaluating the attribute 'text' of the derivation 'ssh2docker-config.json' at /nix/store/3z01ch75h64dbl9caz3fizxx2z0ab7iy-nixpkgs-ce9f1aa/pkgs/build-support/trivial-builders.nix:7:14:
+  14:10:53  while evaluating the attribute 'preConfigure' of the derivation 'ssh2docker-2020-07-23' at /var/lib/jenkins/workspace/bservices_ssh2docker_private-key@2/pkgs/ssh2docker/default.nix:4:3:
+  14:10:53  while evaluating the attribute 'src' of the derivation 'ssh2docker-auth' at /var/lib/jenkins/workspace/bservices_ssh2docker_private-key@2/pkgs/ssh2docker-auth/default.nix:4:3:
+  14:10:53  The path name 'bservices_ssh2docker_private-key@2' is invalid: the '@' character is invalid. Path names are alphanumeric and can include the symbols +-._?= and must not begin with a period. Note: If 'bservices_ssh2docker_private-key@2' is a source file and you cannot rename it on disk, builtins.path { name = ... } can be used to give it an alternative name.
+#+end_example
 * TODO search path
 
 echo $PATH | tr ':' '\n' | xargs -I{} find {} -name '*top*'
@@ -723,3 +733,5 @@ root@guixsd ~# ipset create brute hash:net
 root@guixsd ~# iptables -I INPUT -m set --match-set brute src -j DROP
 
 * TODO web18 00:00 mariadb upgrade 30 Sep 2020
+
+  
