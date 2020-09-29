@@ -335,6 +335,9 @@ nix-store -q --tree "$(command -v basename)"
 /nix/store/<hash>-nix-<ver>/bin/nix-env -i /nix/store/<hash>-nix-<ver>
 #+END_SRC
 
+** nix-instantiate example
+   : ls -1 /tmp/env.nix | entr -r nix-instantiate --eval --strict --expr 'with import <nixpkgs> {}; import /tmp/env.nix { inherit lib; }'
+
 * Modules
 
   #+begin_src nix
