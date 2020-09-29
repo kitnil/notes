@@ -735,3 +735,4 @@ root@guixsd ~# iptables -I INPUT -m set --match-set brute src -j DROP
 * TODO web18 00:00 mariadb upgrade 30 Sep 2020
 
   
+* TODO pacifier https://hastebin.intr/mevizulowi.pl
