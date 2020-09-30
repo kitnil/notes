@@ -78,6 +78,16 @@ https://gitlab.com/janneke/guix.git
   done
 #+end_src
 
+  - ~/.config/fontconfig/fonts.conf:
+  #+begin_src xml
+    <?xml version="1.0"?>
+    <!DOCTYPE fontconfig SYSTEM "fonts.dtd">
+    <!-- /etc/fonts/fonts.conf file to configure system font access -->
+    <fontconfig>
+    <dir>~/.guix-extra-profiles/emacs/emacs/share/fonts</dir>
+    </fontconfig>
+  #+end_src
+
   - dbus-run-session
 #+BEGIN_SRC sh
 # Honor per-interactive-shell startup file
