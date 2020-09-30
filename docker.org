@@ -1005,3 +1005,67 @@ Misc
   -v /sys/fs/cgroup/pids:/sys/fs/cgroup/pids:ro                   \
   -v /sys/fs/cgroup/unified:/sys/fs/cgroup/unified:ro             \
 #+end_example
+
+* Swarm
+
+  #+begin_src yaml
+    version: '3.4'
+
+    x-rabbit: &rabbit
+      image: 178.250.246.123:5000/rabbitmq # rabbitmq:3.8.5-management-alpine
+      environment:
+      - RABBITMQ_DEFAULT_USER=spring
+      - RABBITMQ_DEFAULT_PASS=spring
+      - RABBITMQ_USE_LONGNAME=true
+      - RABBITMQ_NODENAME={{.Service.Name}}
+      - RABBITMQ_ERLANG_COOKIE=EJHSDBCQHWCHBHSZPMIE
+      - SERVICE_NAME={{.Service.Name}}
+      hostname: "{{.Service.Name}}"
+      volumes:
+      - rabbit-data:/var/lib/rabbitmq
+      logging:
+        driver: json-file
+        options:
+          max-size: 100m
+          max-file: 2
+      healthcheck:
+        test: ["CMD", "nc", "-z", "localhost", "15672"] # TODO: change port
+        interval: 1m30s
+        timeout: 10s
+        retries: 3
+        start_period: 40s
+      deploy:
+        restart_policy:
+          condition: on-failure
+
+    services:
+      rabbit1:
+        <<: *rabbit
+        hostname: r1
+        ports:
+          - 15672:15672
+        deploy: 
+          placement:
+            constraints:
+            - node.hostname == r1
+
+      rabbit2:
+        <<: *rabbit
+        hostname: r2
+        deploy: 
+          placement:
+            constraints:
+            - node.hostname == r2
+
+      rabbit3:
+        <<: *rabbit
+        hostname: r3
+        deploy: 
+          placement:
+            constraints:
+            - node.hostname == r3
+
+    volumes:
+      rabbit-data:
+
+  #+end_src
