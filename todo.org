@@ -736,3 +736,5 @@ root@guixsd ~# iptables -I INPUT -m set --match-set brute src -j DROP
 
   
 * TODO pacifier https://hastebin.intr/mevizulowi.pl
+
+* TODO influx continues query
