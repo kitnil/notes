@@ -732,8 +732,10 @@ serdar:~$ qelk search --query tags:Wine --format created,tags,name --sort create
 root@guixsd ~# ipset create brute hash:net
 root@guixsd ~# iptables -I INPUT -m set --match-set brute src -j DROP
 
-* TODO web18 00:00 mariadb upgrade 30 Sep 2020
+* TODO mariadb upgrade
 
+- web22 - 02.10.20 22:00
+- web23 - 03.10.20 00:00
   
 * TODO pacifier https://hastebin.intr/mevizulowi.pl
 
