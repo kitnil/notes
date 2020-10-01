@@ -360,6 +360,15 @@ Commit 5ec4156bbcaec8337f78411204d59e59e706103b adds a manifest for
 system tests.  Now “make check-system” simply does:
 : ./pre-inst-env guix build -m etc/system-tests.scm
 
+  - offload fix https://issues.guix.info/27386#24
+    #+begin_src bash
+      ~/.bashrc on magnolia.local
+      if [ -n "$SSH_CLIENT" -a "`type -P guile`" ]
+      then
+          source /etc/profile
+      fi
+    #+end_src
+
   - docker pack
     #+BEGIN_SRC bash
       guix pack --manifest=your-manifest.scm \
