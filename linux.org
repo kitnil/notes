@@ -227,3 +227,6 @@ Your computer reboots immediately.
 
 * BCC
 https://github.com/iovisor/bcc/blob/master/QUICKSTART.md
+
+* udev
+: udevadm info --attribute-walk --query-all --path=/class/block/sda1 | grep mysql
