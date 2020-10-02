@@ -742,3 +742,40 @@ root@guixsd ~# iptables -I INPUT -m set --match-set brute src -j DROP
 * TODO influx continues query
 
 * TODO Implementation of passthru.updateScript in _ci/nixpkgs
+
+* TODO nix updater
+  #+begin_example
+    oleg@guixsd ~$ curl -s 'https://www.php.net/releases/index.php?json&version=7.2' > /tmp/php.json
+    oleg@guixsd ~$ jq . /tmp/php.json
+    {
+      "announcement": true,
+      "tags": [
+        "security"
+      ],
+      "date": "01 Oct 2020",
+      "source": [
+        {
+          "filename": "php-7.2.34.tar.bz2",
+          "name": "PHP 7.2.34 (tar.bz2)",
+          "sha256": "0e5816d668a2bb14aca68cef8c430430bd86c3c5233f6c427d1a54aac127abcf",
+          "date": "01 Oct 2020"
+        },
+        {
+          "filename": "php-7.2.34.tar.gz",
+          "name": "PHP 7.2.34 (tar.gz)",
+          "sha256": "8b2777c741e83f188d3ca6d8e98ece7264acafee86787298fae57e05d0dddc78",
+          "date": "01 Oct 2020"
+        },
+        {
+          "filename": "php-7.2.34.tar.xz",
+          "name": "PHP 7.2.34 (tar.xz)",
+          "sha256": "409e11bc6a2c18707dfc44bc61c820ddfd81e17481470f3405ee7822d8379903",
+          "date": "01 Oct 2020"
+        }
+      ],
+      "version": "7.2.34"
+    }
+    oleg@guixsd ~$ jq .version /tmp/php.json
+    "7.2.34"
+
+  #+end_example
