@@ -1,5 +1,11 @@
 * Cheat sheet
 
+- netstat
+  [[https://kb.juniper.net/InfoCenter/index?page=content&id=KB21222&cat=SRX_SERIES&actp=LIST][[Junos] How to identify the process that is listening on a specific port - Juniper Networks]]
+  : show system connections | no-more
+  : netstat –Aa   ( to get the protocol control block, PCB)
+  : fstat (to get the process using the PCB from the previous command)
+
 - config path
   : /config/juniper.conf.gz
 
