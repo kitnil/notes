@@ -57,6 +57,8 @@ that behavior.
 
 * chrome
 
+toolkit.legacyUserProfileCustomizations.stylesheets true
+
 #+BEGIN_SRC css
 /* to hide the native tabs */
 /* #TabsToolbar { */
