@@ -1758,6 +1758,31 @@ success = false; } else { //Lock texture if( !gFooTexture.lockTexture() ) { prin
 
 ** Misc
 
+*** guix environment emacs
+    #+begin_src scheme
+      #!/run/current-system/profile/bin/guile \
+      --no-auto-compile -e (br1-mr14.intr) -s
+      !#
+
+      (define-module (br1-mr14.intr)
+        #:export (main))
+
+      (define (main args)
+        (system* "guix" "environment" "--pure" "--ad-hoc" "emacs" "emacs-vterm" "coreutils" "openssh" "--"
+                 "env" "GTK_THEME=Adwaita:dark" "emacs" "--debug-init" "--no-init-file" "--vertical-scroll-bars"
+                 (string-append "--eval="
+                                (format #f "~s"
+                                        '(progn (load-theme 'manoj-dark)
+                                                (global-prettify-symbols-mode)
+                                                (setq prettify-symbols-unprettify-at-point 'right-edge)
+                                                (setq confirm-kill-processes nil)
+                                                (load (expand-file-name "~/.emacs.d/modules/term.el"))
+                                                (vterm)
+                                                (vterm-send-string "ssh br1-mr14.intr")
+                                                (vterm-send-return))))))
+    #+end_src
+
+*** 
   - [[https://bootstrapping.miraheze.org/wiki/Investigate][ideas we haven't yet explored]]
   - https://cwiki.apache.org/confluence/pages/viewpage.action?pageId=74682318
   - [2018-09-10 Mon 18:54] [[gnus:INBOX#87pnxqkbmg.fsf@gnu.org][Email from Ludovic Courtès: hpcguix-web, channels, and inferiors]] by [[mailto:ludovic.courtes@inria.fr][Ludovic Courtès]]
