@@ -2,7 +2,7 @@
 - [[https://github.com/kal39/ptmv][kal39/ptmv: An utf-8/truecolor image and video viewer for the terminal]]
 - [[https://github.com/crigler/dtach][crigler/dtach: A simple program that emulates the detach feature of screen]]
 
-* abduco
+* abduco terminal multiplexer
   - create session
     : abduco -c test bash
 
