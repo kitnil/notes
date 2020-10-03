@@ -731,6 +731,7 @@ serdar:~$ qelk search --query tags:Wine --format created,tags,name --sort create
 * TODO ipset
 root@guixsd ~# ipset create brute hash:net
 root@guixsd ~# iptables -I INPUT -m set --match-set brute src -j DROP
+ipset add brute 52.252.60.16
 
 * TODO mariadb upgrade
 
