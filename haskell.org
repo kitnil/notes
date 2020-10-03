@@ -233,3 +233,11 @@ print type after evaluation
 - [[https://github.com/smallhadroncollider/brok][smallhadroncollider/brok: Find broken links in text documents]]
 - [[https://github.com/obsidiansystems/obelisk][obsidiansystems/obelisk: Functional reactive web and mobile applications, with batteries included.]]
 - [[https://github.com/owickstrom/gi-gtk-declarative][owickstrom/gi-gtk-declarative: Declarative GTK+ programming in Haskell]]
+
+* DNS
+
+https://hackage.haskell.org/package/dns-4.0.1/docs/Network-DNS-Lookup.html
+#+begin_example
+  import Data.ByteString (ByteString)
+  withResolver rs $ \resolver -> lookupNS resolver (Data.ByteString.Char8.pack "majordomo.ru")
+#+end_example
