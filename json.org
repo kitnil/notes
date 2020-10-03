@@ -8,7 +8,11 @@ CLOSED: [2020-10-03 Sat 22:10]
 :ID: 2020-10-03-jtbl
 :END:
 
-You could pipe jq to jtbl:
+jtbl is a Python programm to convert JSON from STDIN to table.  It could be
+installed via [[https://guix.gnu.org/][GNU Guix package manager]] from =ace3e549= commit.
+
+The following example shows a =ifconfig= command output converted to JSON with
+=jc= utility, piped to =jq= to filter, and to =jtbl= generate a table:
 #+BEGIN_SRC bash
   ifconfig \
    | jc --ifconfig \
