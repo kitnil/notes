@@ -784,3 +784,24 @@ ipset add brute 52.252.60.16
 * TODO Check [[https://github.com/IEEE-VIT/termiboard][IEEE-VIT/termiboard: A smart CLI Dashboard to fetch cpu, memory and network stats!]]
 
 * [[https://github.com/batchcorp/plumber][batchcorp/plumber: A swiss army knife CLI tool for interacting with Kafka, RabbitMQ and other messaging systems.]]
+
+* TODO blog
+  #+begin_src scheme
+
+    (define-public lazyblorg-wugi-info
+      (let ((commit (current-commit)))
+        (package
+          (name "lazyblorg")
+          (version "2020.10.03")
+          (source (local-file %source-dir
+                              #:recursive? #t
+                              #:select? (git-predicate %source-dir)))
+          (inputs
+           `(("lazyblorg" ,lazyblorg)))
+          (build-system trivial-build-system)
+          (home-page "https://blog.wugi.info/")
+          (synopsis "")
+          (description "")
+          (license #f))))
+
+  #+end_src
