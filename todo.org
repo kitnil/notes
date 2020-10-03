@@ -779,3 +779,5 @@ root@guixsd ~# iptables -I INPUT -m set --match-set brute src -j DROP
     "7.2.34"
 
   #+end_example
+
+* TODO Check [[https://github.com/IEEE-VIT/termiboard][IEEE-VIT/termiboard: A smart CLI Dashboard to fetch cpu, memory and network stats!]]
