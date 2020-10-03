@@ -10,7 +10,10 @@ CLOSED: [2020-10-03 Sat 22:10]
 
 You could pipe jq to jtbl:
 #+BEGIN_SRC bash
-  ifconfig | jc --ifconfig | jq --raw-output "[.[] | {\"interface\": .name, \"ipv4_addr\": .ipv4_addr}]" | jtbl
+  ifconfig \
+   | jc --ifconfig \
+   | jq --raw-output "[.[] | {\"interface\": .name, \"ipv4_addr\": .ipv4_addr}]" \
+   | jtbl
 #+END_SRC
 
 #+RESULTS:
