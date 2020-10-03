@@ -1,16 +1,16 @@
-* DONE jq pipe to jtbl example                                         :blog:
-CLOSED: [2013-08-22 Thu 21:06]
+* DONE JSON to a table with jtbl                                       :blog:
+CLOSED: [2020-10-03 Sat 22:10]
 :LOGBOOK:
-- State "DONE"       from ""           [2013-08-22 Thu 21:06]
+- State "DONE"       from ""           [2020-10-03 Sat 22:10]
 :END:
 :PROPERTIES:
-:CREATED:  [2013-08-22 Thu 21:06]
-:ID: 2013-08-22-jq-jtbl
+:CREATED:  [2020-10-03 Sat 22:10]
+:ID: 2020-10-03-jtbl
 :END:
 
 You could pipe jq to jtbl:
 #+BEGIN_SRC bash
-  ssh web31.intr -- ifconfig | jc --ifconfig | jq --raw-output "[.[] | {\"interface\": .name, \"ipv4_addr\": .ipv4_addr}]" | jtbl
+  ifconfig | jc --ifconfig | jq --raw-output "[.[] | {\"interface\": .name, \"ipv4_addr\": .ipv4_addr}]" | jtbl
 #+END_SRC
 
 * Tutorials
