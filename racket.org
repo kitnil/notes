@@ -11,6 +11,9 @@
 - [[https://www.infoq.com/news/2016/10/racket-67-android-apps/][Racket 6.7 Brings Android App Support, Improved REPL, and More]]
 - [[https://github.com/jeapostrophe/racket-android][jeapostrophe/racket-android: deploying Racket on Android]]
 
-* drracket
+* IDE
+** drracket
 - [[https://github.com/Raymo111/drracket-customization][Raymo111/drracket-customization: Various customizations for DrRacket to make life easier]]
 - [[https://github.com/MatrixForChange/files-viewer][MatrixForChange/files-viewer: A File Manager for DrRacket]]
+** LSP
+- [[https://github.com/theia-ide/racket-language-server][theia-ide/racket-language-server: Racket Language Server]]
