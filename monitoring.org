@@ -1,4 +1,4 @@
-- [[https://github.com/twilio/stashboard][twilio/stashboard: An open-source status dashboard running on App Engine]]
+- [[https://github.com/monitoror/monitoror][monitoror/monitoror: Unified monitoring wallboard — Light, ergonomic and reliable monitoring for anything.]]
 - [[https://github.com/macedojleo/BDH][macedojleo/BDH: Monitor Unix and Linux filesystem's using CLI and send customized notifications to Slack with webhook]]
 - [[https://github.com/mmastrac/stylus][mmastrac/stylus: Lightweight status page for home infrastructure]]
 - timeout 2 ping --quiet --count=3 172.16.100.60 && echo 'foo' || echo 'bar'
