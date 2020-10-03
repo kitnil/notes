@@ -13,6 +13,18 @@ You could pipe jq to jtbl:
   ifconfig | jc --ifconfig | jq --raw-output "[.[] | {\"interface\": .name, \"ipv4_addr\": .ipv4_addr}]" | jtbl
 #+END_SRC
 
+#+RESULTS:
+| interface       |       ipv4_addr |
+| --------------- | --------------- |
+| br-92487ea26a13 |      172.20.0.1 |
+| br-9a47a96d15a3 |      172.19.0.1 |
+| br-cf57cf7f08d8 |      172.18.0.1 |
+| br-fc2bf1eb0e5a |     10.10.100.1 |
+| docker0         |      172.17.0.1 |
+| enp6s0          | 192.168.100.120 |
+| lo              |       127.0.0.1 |
+| tapvpn          |  172.16.103.177 |
+
 * Tutorials
 - [[https://github.com/miloyip/json-tutorial][json-tutorial]]
 
