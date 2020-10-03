@@ -1,4 +1,14 @@
-* jq and jtbl
+* DONE jq pipe to jtbl example                                         :json:
+CLOSED: [2020-10-03 18:16]
+:LOGBOOK:
+- State "DONE"       from "NEXT"       [2020-10-03 Sat 18:16]
+:END:
+:PROPERTIES:
+:CREATED: [2020-10-03 18:16]
+:ID: 2020-10-03-jq-jtbl
+:END:
+
+You could pipe jq to jtbl:
 #+BEGIN_SRC bash
   ssh web31.intr -- ifconfig | jc --ifconfig | jq --raw-output "[.[] | {\"interface\": .name, \"ipv4_addr\": .ipv4_addr}]" | jtbl
 #+END_SRC
