@@ -7,6 +7,7 @@
 - [[https://github.com/tdihp/dspcap][tdihp/dspcap: A humble bash script set that uses daemonset to capture tcpdump from all k8s nodes, then collect the captures.]]
 
 * Misc
+- [[https://github.com/pulumi/kubespy][pulumi/kubespy: Tools for observing Kubernetes resources in real time, powered by Pulumi.]]
 - [[https://github.com/kubernetes-sigs/kind][kubernetes-sigs/kind: Kubernetes IN Docker - local clusters for testing Kubernetes]]
 - [[https://github.com/criticalstack/quake-kube][quake-kube Quake 3 on Kubernetes]]
 - [[https://github.com/oneinfra/oneinfra][oneinfra/oneinfra: Kubernetes as a Service]]
