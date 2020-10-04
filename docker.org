@@ -19,6 +19,7 @@
 
 * Libs
 - [[https://github.com/qiniu/qmgo][Qmgo - The MongoDB driver for Go . It‘s based on official mongo-go-driver but easier to use like Mgo.]]
+- [[https://github.com/testcontainers/testcontainers-go][testcontainers/testcontainers-go: Testcontainers is a Golang library that providing a friendly API to run Docker container. It is designed to create runtime environment to use during your automatic tests.]]
 
 * Security
 - [[https://github.com/Ullaakut/Gorsair][Ullaakut/Gorsair: Gorsair hacks its way into remote docker containers that expose their APIs]]
