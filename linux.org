@@ -239,3 +239,6 @@ https://github.com/iovisor/bcc/blob/master/QUICKSTART.md
 
 * udev
 : udevadm info --attribute-walk --query-all --path=/class/block/sda1 | grep mysql
+
+* nftables
+- [[https://github.com/google/nftables][google/nftables: This package manipulates Linux nftables (the iptables successor)]]
