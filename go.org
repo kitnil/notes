@@ -100,9 +100,6 @@
 - [[https://github.com/zeromake/docker-debug][zeromake/docker-debug: use new container attach on already container go on debug]]
 
 * Programms
-** ASCII
-- [[https://github.com/guptarohit/asciigraph][guptarohit/asciigraph: Go package to make lightweight ASCII line graph ╭┈╯ in command line apps with no other dependencies.]]
-- [[https://github.com/qeesung/image2ascii][qeesung/image2ascii: Convert image to ASCII]]
 ** Misc
 - [[https://github.com/oxequa/realize][oxequa/realize: Realize is the #1 Golang Task Runner which enhance your workflow by automating the most common tasks and using the best performing Golang live reloading.]]
 - [[https://github.com/ericfreese/rat][ericfreese/rat: Compose shell commands to build interactive terminal applications]]
@@ -143,7 +140,9 @@
 - [[https://github.com/bradfitz/gosize][bradfitz/gosize: analyze size of Go binaries]]
 - [[https://github.com/dgryski/awesome-go-style][dgryski/awesome-go-style: A collection of Go style guides]]
 - [[https://github.com/kbinani/screenshot][kbinani/screenshot: Go library to capture desktop to image]]
-
+** ASCII
+- [[https://github.com/guptarohit/asciigraph][guptarohit/asciigraph: Go package to make lightweight ASCII line graph ╭┈╯ in command line apps with no other dependencies.]]
+- [[https://github.com/qeesung/image2ascii][qeesung/image2ascii: Convert image to ASCII]]
 * Nix
 ** Pretty print
    #+begin_src nix
