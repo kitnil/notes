@@ -8,6 +8,9 @@
 - [[https://github.com/sagemathinc/cocalc-docker][sagemathinc/cocalc-docker: Docker setup for running CoCalc as downloadable software on your own computer]]
 - [[https://github.com/wahyd4/aria2-ariang-docker][wahyd4/aria2-ariang-docker: The Docker image for Aria2 + AriaNg + File Browser]]
 
+* Dockerfile
+- [[https://github.com/HariSekhon/Dockerfiles][Dockerfiles]]
+
 * Bastion
 - [[https://github.com/moul/ssh2docker/][moul/ssh2docker: standalone SSH server that connects you to your Docker containers]]
 - [[https://github.com/ml-tooling/ssh-proxy][ml-tooling/ssh-proxy: 🐳 Dockerized SSH bastion to proxy SSH connections to arbitrary containers.]]
