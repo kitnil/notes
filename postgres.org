@@ -2,3 +2,20 @@
 - [[https://github.com/dimitri/pgloader][dimitri/pgloader: Migrate to PostgreSQL in a single command!]]
 - [[https://github.com/PostgREST/postgrest][PostgREST/postgrest: REST API for any Postgres database]]
 - [[https://github.com/Paxa/postbird][Paxa/postbird: Open source PostgreSQL GUI client for macOS, Linux and Windows]]
+
+* out of memory query
+Вот пример:
+SELECT x, COUNT(x), array_agg(x)
+  FROM (
+       SELECT ((i << 20) | (j << 10) | k)::text::xid AS x
+         FROM generate_series(0,1023) AS i,
+              generate_series(0,1023) AS j,
+              generate_series(0,1023) AS k
+       ) s
+ GROUP BY x;
+И пояснение (всё © RhodiumToad):
+Hashaggregate currently has no way to spill to disk. Hashagg won't be planned if the estimated hashtable size exceeds work_mem,
+but at runtime, it'll blow past work_mem and use as much memory as it needs.
+xid is a useful built-in example of a non-sortable type for sortable types, the query will usually use a sort and therefore be subject to
+work_mem limits. But xid can only be grouped by hashing, so it forces a hashagg plan regardless of work_mem. So the query will try and create a hashtable with a billion entries each of which includes an array build state.
+
