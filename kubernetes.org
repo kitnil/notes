@@ -13,6 +13,9 @@
 - [[https://github.com/tdihp/dspcap][tdihp/dspcap: A humble bash script set that uses daemonset to capture tcpdump from all k8s nodes, then collect the captures.]]
 - [[https://github.com/pulumi/kubespy][pulumi/kubespy: Tools for observing Kubernetes resources in real time, powered by Pulumi.]]
 
+* Operators
+- [[https://github.com/flant/shell-operator][flant/shell-operator: Shell-operator is a tool for running event-driven scripts in a Kubernetes cluster]]
+
 * Misc
 - [[https://github.com/aquasecurity/kube-bench][aquasecurity/kube-bench: Checks whether Kubernetes is deployed according to security best practices as defined in the CIS Kubernetes Benchmark]]
 - [[https://github.com/kubevirt/kubevirt][kubevirt/kubevirt: Kubernetes Virtualization API and runtime in order to define and manage virtual machines.]]
