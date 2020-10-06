@@ -10,6 +10,25 @@
             DOCKER_OPTS="-H tcp://{{ ansible_all_ipv4_addresses | ipaddr('172.16.103.0/24') | first }}:2375 -H unix:///var/run/docker.sock"
 #+end_src
 
+- netplan
+#+begin_src yaml
+  - hosts: kubernetes
+    tasks:
+      - copy:
+          dest: /etc/netplan/01-netcfg.yaml
+          content: |
+            network:
+              version: 2
+              renderer: networkd
+              ethernets:
+                {{ ansible_default_ipv4.alias }}:
+                 dhcp4: no
+                 addresses: [{{ ansible_all_ipv4_addresses | first }}/23]
+                 gateway4: {{ ansible_default_ipv4.gateway }}
+                 nameservers:
+                   addresses: [8.8.8.8,8.8.4.4]
+#+end_src
+
 - docker memory
 #+BEGIN_SRC yaml
   #!/usr/bin/env ansible-playbook
