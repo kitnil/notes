@@ -68,6 +68,9 @@
 
 * Cheatsheet
 
+  - command to array
+    : mapfile -d . -t version < /proc/sys/kernel/osrelease
+
   - export a function to SSH session
     : (set -ex; foo() { echo "Hello from foo!"; }; ssh -t web37s.majordomo.ru "$(declare -f foo); export -f foo; exec bash")
 
