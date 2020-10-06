@@ -1,5 +1,15 @@
 - [[https://github.com/roles-ansible/role-grafana-kiosk][roles-ansible/role-grafana-kiosk: Ansible role to deploy the grafana-kiosk]]
 
+- ip address
+#+begin_src yaml
+      - tags: docker
+        name: Generate /etc/default/docker file
+        copy:
+          dest: '/etc/default/docker'
+          content: |
+            DOCKER_OPTS="-H tcp://{{ ansible_all_ipv4_addresses | ipaddr('172.16.103.0/24') | first }}:2375 -H unix:///var/run/docker.sock"
+#+end_src
+
 - docker memory
 #+BEGIN_SRC yaml
   #!/usr/bin/env ansible-playbook
