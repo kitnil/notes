@@ -23,3 +23,9 @@
 - [[https://github.com/jeffmhubbard/multilockscreen][jeffmhubbard/multilockscreen: i3lock wrapper with multi-monitor support]]
 - [[https://github.com/go-vgo/robotgo][go-vgo/robotgo: RobotGo, Go Native cross-platform GUI automation @vcaesar]]
 - [[https://gitlab.com/amiloradovsky/magnify][Andrew Miloradovsky / magnify · GitLab]]
+** xnotify
+   #+begin_src bash
+     export XNOTIFY_FIFO="$HOME/.cache/xnotify$DISPLAY.fifo"
+     mkfifo $XNOTIFY_FIFO
+     xnotify -m 10 -G NE -g 500x30-100+800 -s 5 <$XNOTIFY_FIFO 3<>$XNOTIFY_FIFO
+   #+end_src
