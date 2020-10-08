@@ -28,3 +28,7 @@ bind-address = ":8088"
   retention-autocreate = true
   logging-enabled = true
 #+end_example
+
+* Kapacitor
+
+- [[https://www.youtube.com/watch?v=LL8g4qiBCNo][(1) [Training] How to Create User-Defined Functions in Kapacitor for InfluxDB - YouTube]]
