@@ -32,3 +32,4 @@ bind-address = ":8088"
 * Kapacitor
 
 - [[https://www.youtube.com/watch?v=LL8g4qiBCNo][(1) [Training] How to Create User-Defined Functions in Kapacitor for InfluxDB - YouTube]]
+- [[https://docs.influxdata.com/kapacitor/v1.5/guides/anomaly_detection/][Custom anomaly detection using Kapacitor | Kapacitor v1.5 Documentation]]
