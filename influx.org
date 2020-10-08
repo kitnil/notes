@@ -36,3 +36,4 @@ bind-address = ":8088"
 - [[https://docs.influxdata.com/kapacitor/v1.5/administration/subscription-management/][Manage Kapacitor subscriptions | Kapacitor v1.5 Documentation]]
 - [[https://docs.influxdata.com/influxdb/v1.8/administration/subscription-management/][Manage subscriptions in InfluxDB | InfluxDB v1.8 Documentation]]
 - [[https://github.com/influxdata/kapacitor/tree/master/examples/telegraf][kapacitor/examples/telegraf at master · influxdata/kapacitor]]
+- [[https://docs.influxdata.com/kapacitor/v1.5/tick/expr/][Lambda expressions | Kapacitor v1.5 Documentation]]
