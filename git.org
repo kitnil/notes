@@ -36,6 +36,7 @@ rerere-train.sh [COMMIT][--all]
 - [[https://github.com/gitblit/gitblit][gitblit/gitblit: pure java git solution]]
 
 * Tools
+- [[https://github.com/moul/git-ci][moul/git-ci: git subcommand to interract with CI/CD from command line]]
 - [[https://github.com/github/git-sizer][github/git-sizer: Compute various size metrics for a Git repository, flagging those that might cause problems]]
 - [[https://github.com/notwaldorf/tiny-care-terminal][notwaldorf/tiny-care-terminal: 💖💻 A little dashboard that tries to take care of you when you're using your terminal.]]
 - [[https://github.com/dirk/quickhook][dirk/quickhook: Faster Git hook (pre-commit, etc.) runner]]
