@@ -5,3 +5,6 @@
 #+BEGIN_SRC lua
   for dir in io.popen([[dir "/"]]):lines() do print(dir) end
 #+END_SRC
+
+* Misc
+- [[https://github.com/azoyan/geopattern][azoyan/geopattern: Generate beautiful SVG patterns from a string on Lua (5.1 - 5.4 and LuaJIT)]]
