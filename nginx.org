@@ -12,6 +12,7 @@
 - [[https://github.com/yandex/gixy][yandex/gixy: Nginx configuration static analyzer]]
 
 * Minimal configuration
+  Save as /tmp/nginx/nginx.conf
   #+begin_src nginx
     pid /tmp/nginx/pid;
     error_log /tmp/nginx/error.log info;
@@ -33,3 +34,4 @@
         }
     }
   #+end_src
+  and run as =/gnu/store/...-nginx-1.19.3/sbin/nginx -c /tmp/nginx.conf -p /tmp/nginx=
