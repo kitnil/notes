@@ -34,4 +34,4 @@
         }
     }
   #+end_src
-  and run as =/gnu/store/...-nginx-1.19.3/sbin/nginx -c /tmp/nginx.conf -p /tmp/nginx=
+  and run as =/gnu/store/...-nginx-1.19.3/sbin/nginx -c /tmp/nginx.conf -p /tmp/nginx -g 'daemon off;'=
