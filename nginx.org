@@ -26,7 +26,7 @@
         access_log /tmp/nginx/access.log;
         include /gnu/store/hi9vi5061sjkysyrx9qw6dc03l6iwjbj-nginx-1.19.3/share/nginx/conf/mime.types;
         server {
-            listen 80;
+            listen 8080;
             server_name localhost;
             root /srv/share;
             index index.html ;
