@@ -29,7 +29,7 @@
         server {
             listen 8080;
             server_name localhost;
-            root /srv/share;
+            root /tmp/nginx;
             index index.html ;
             server_tokens off;
         }
