@@ -839,4 +839,10 @@ ipset add brute 52.252.60.16
     libcrypt-des-perl libnet-nbname-perl
   The following NEW packages will be installed:
     fusioninventory-agent-task-network libcrypt-des-perl libnet-nbname-perl
+
+  Can't locate FusionInventory/Agent/Tools/Hardware.pm in @INC (you may need to install the FusionInventory::Agent::Tools::Hardware module) (@INC contains: /usr/share/fusioninventory/lib /etc/perl /usr/local/lib/x86_64-linux-gnu/perl/5.22.1 /usr/local/share/perl/5.22.1 /usr/lib/x86_64-linux-gnu/perl5/5.22 /usr/share/perl5 /usr/lib/x86_64-linux-gnu/perl/5.22 /usr/share/perl/5.22 /usr/local/lib/site_perl /usr/lib/x86_64-linux-gnu/perl-base .) at /usr/share/fusioninventory/lib/FusionInventory/Agent/Task/NetDiscovery.pm line 19.
+  BEGIN failed--compilation aborted at /usr/share/fusioninventory/lib/FusionInventory/Agent/Task/NetDiscovery.pm line 19.
+  Compilation failed in require at /usr/bin/fusioninventory-netdiscovery line 14.
+  BEGIN failed--compilation aborted at /usr/bin/fusioninventory-netdiscovery line 14.
+
 #+end_example
