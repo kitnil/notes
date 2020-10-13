@@ -827,3 +827,16 @@ ipset add brute 52.252.60.16
 * TODO sgdd
 
 * TODO Check Opera 2006 ipmi update
+
+* TODO fusioninventory/fusioninventory-for-glpi
+#+begin_example
+  apt install fusioninventory-agent-task-network
+  root@mx1-mr:~# apt install fusioninventory-agent-task-network
+  Reading package lists... Done
+  Building dependency tree       
+  Reading state information... Done
+  The following additional packages will be installed:
+    libcrypt-des-perl libnet-nbname-perl
+  The following NEW packages will be installed:
+    fusioninventory-agent-task-network libcrypt-des-perl libnet-nbname-perl
+#+end_example
