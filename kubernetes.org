@@ -2,6 +2,10 @@
 * Learning
 - [[https://github.com/golang-design/under-the-hood][golang-design/under-the-hood: 📚 Go: Under The Hood | https://golang.design/under-the-hood]]
 - [[http://itisgood.ru/2019/11/18/raspredelennoe-hranenie-dannyh-v-kubernetes/][☸️ Распределенное хранение данных в Kubernetes — IT is good]]
+- Pin pod to specific node:
+  - Affinity
+  - Toleration
+  - Taint
 
 * Tools
 - [[https://github.com/troytop/cfk8sterm][troytop/cfk8sterm: A ttyd web terminal image on Alpine with cf, kubectl, and other tools]]
