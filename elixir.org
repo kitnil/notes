@@ -6,8 +6,10 @@
 - [[https://github.com/mirego/accent][mirego/accent: ▴ Open-source, self-hosted, developer-oriented translation tool]]
 - [[https://github.com/JakeBecker/elixir-ls][JakeBecker/elixir-ls: A frontend-independent IDE "smartness" server for Elixir. Implements the JSON-based "Language Server Protocol" standard and provides debugger support via VS Code's debugger protocol.]]
 
-* API
-- [[https://github.com/BlakeWilliams/Elixir-Slack][BlakeWilliams/Elixir-Slack: Slack real time messaging and web API client in Elixir]]
+* Libraries
+ - [[https://github.com/pragdave/earmark][pragdave/earmark: Markdown parser for Elixir]]
+** API
+ - [[https://github.com/BlakeWilliams/Elixir-Slack][BlakeWilliams/Elixir-Slack: Slack real time messaging and web API client in Elixir]]
 
 * Tools
 - [[https://github.com/h4cc/awesome-elixir][h4cc/awesome-elixir: A curated list of amazingly awesome Elixir and Erlang libraries, resources and shiny things. Updates:]]
