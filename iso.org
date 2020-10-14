@@ -1,3 +1,15 @@
-- [[https://github.com/ventoy/Ventoy][ventoy/Ventoy: A new bootable USB solution.]]
+* Multiboot ISO-images USB-flash                                   :blog:iso:
+CLOSED: [2020-10-03 Sat 22:10]
+:LOGBOOK:
+- State "DONE"       from ""           [2020-10-14 Wed 08:19]
+:END:
+:PROPERTIES:
+:CREATED:  [2020-10-14 Sat 08:19]
+:ID: 2020-10-04-ventoy
+:END:
+
+[[https://github.com/ventoy/Ventoy][Ventoy]] is a programm which allows to setup any USB-flash as a multiboot operating-system device with a graphical menu.  Installation is easy for GNU/Linux distributions, just follow the [[https://www.ventoy.net/en/doc_start.html][official installation instruction]] by downloading a script Ventoy2Disk.sh and running it for a specific /dev/sdX USB-device.
+
+* Misc
 - [[https://github.com/ventoy/vtoyboot][ventoy/vtoyboot: Work with ventoy to support boot Linux distros in a vdisk file (vhd/vdi/raw ...)]]
 - [[https://trinityhome.org/trinity_rescue_kit_download/][Trinity Rescue Kit: Download - Trinityhome]]
