@@ -6,7 +6,9 @@
   - Affinity
   - Toleration
   - Taint
-- Show documentation =kubectl explain deployment=
+- Show documentation
+  - =kubectl explain deployment=
+  - =kubectl explain deployment.spec=
 
 * Tools
 - [[https://github.com/troytop/cfk8sterm][troytop/cfk8sterm: A ttyd web terminal image on Alpine with cf, kubectl, and other tools]]
