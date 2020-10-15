@@ -6447,3 +6447,6 @@ that existed in both tables.
 Outer join: The combined table produced by an outer join contains all rows
 that existed in one table with blanks in the columns for the rows that did not
 exist in the second table.
+
+* Gluster
+- [[https://severalnines.com/database-blog/point-time-recovery-mysql-galera-cluster][Point-in-Time Recovery for MySQL Galera Cluster | Severalnines]]
