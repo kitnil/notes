@@ -352,6 +352,9 @@ nix-store -q --tree "$(command -v basename)"
 
    #+end_src
 
+*** meta
+  : nix-instantiate ~/src/nixpkgs-19.09/ --eval --strict -A "hello.meta.position"
+
 * Modules
 
   #+begin_src nix
