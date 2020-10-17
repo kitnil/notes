@@ -9,6 +9,8 @@
 - Show documentation
   - =kubectl explain deployment=
   - =kubectl explain deployment.spec=
+- Port forwarding
+  - =kubectl port-forward my-deployment-xxxxxxxxxx-xxxxx 8005:80 &=
 
 * Tools
 - [[https://marketplace.visualstudio.com/items?itemName=redhat.vscode-yaml][YAML and Kubernetes syntax support - Visual Studio Marketplace]]
