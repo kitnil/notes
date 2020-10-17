@@ -2,6 +2,13 @@
 - aio-runtimes
 - [[https://github.com/shaswata56/WindowsXP][shaswata56/WindowsXP: This is the leaked source code of Windows XP Service Pack 1]]
 
+* SMB
+- [[https://docs.microsoft.com/en-us/troubleshoot/windows-server/networking/guest-access-in-smb2-is-disabled-by-default][Guest access in SMB2 is disabled - Windows Server | Microsoft Docs]]
+  1. Open the Local Group Policy Editor (gpedit.msc).
+  2. In the console tree, select Computer Configuration > Administrative Templates > Network > Lanman Workstation.
+  3. For the setting, right-click Enable insecure guest logons and select Edit.
+  4. Select Enabled and select OK.
+
 * Bloat
 - [[https://github.com/builtbybel/bloatbox][builtbybel/bloatbox: ☑️🌠 Remove Bloatwares from Windows 10]]
 - [[https://github.com/builtbybel/privatezilla][builtbybel/privatezilla: 👀👮🐢🔥Performs a privacy & security check of Windows 10]]
