@@ -1,0 +1,25 @@
+#+begin_src scheme
+
+  (define my-packages
+    '((#:name . "my-packages")
+      (#:load-path-inputs . ("guix"))
+      (#:package-path-inputs . ())
+      (#:proc-input . "guix")
+      (#:proc-file . "build-aux/cuirass/gnu-system.scm")
+      (#:proc . cuirass-jobs)
+      (#:proc-args (subset "pomdappi")) ;name of the packages you want to build
+      (#:inputs . (((#:name . "pomdappi")
+                    (#:url . "https://framagit.org/divoplade/pomdappi-ci.git")
+                    (#:load-path . ".")
+                    (#:branch . "master")
+                    (#:no-compile? . #t))
+                   ((#:name . "guix")
+                    (#:url . "git://git.savannah.gnu.org/guix.git")
+                    (#:load-path . ".")
+                    (#:branch . "master")
+                    (#:no-compile? . #t))))
+      (#:build-outputs . ())))
+  (list my-packages)
+
+  ;; If you want to use a fixed guix input, you can use the #:commit key.
+#+end_src
