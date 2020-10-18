@@ -11,3 +11,10 @@
 
 - ladspa
 : pacmd load-module module-ladspa-sink sink_name=compressor-stereo plugin=sc4_1882 label=sc4 control=1,1.5,401,-30,20,5,12
+
+- loopback
+#+begin_src shell
+  pacmd load-module module-null-sink sink_name=MySink
+  pacmd update-sink-proplist MySink device.description=MySink
+  pacmd load-module module-loopback sink=MySink
+#+end_src
