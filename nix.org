@@ -28,6 +28,7 @@ nix-repl> mynixos2.config.environment.etc."mailman.cfg".text
 - [[https://github.com/DBCDK/morph][DBCDK/morph: NixOS deployment tool]]
 - [[https://github.com/Synthetica9/nix-linter][Synthetica9 / nix-linter]]
 - [[https://github.com/awakesecurity/nix-deploy][awakesecurity / nix-deploy (Haskell)]]
+- [[https://github.com/maralorn/nix-output-monitor][maralorn/nix-output-monitor: Pipe your nix-build output through the nix-output-monitor a.k.a nom to get additional information while building.]]
 - [[https://github.com/input-output-hk/nix-tools][input-output-hk/nix-tools: Translate Cabals Generic Package Description to a Nix expression]]
 - [[https://github.com/ryantm/nixpkgs-update][ryantm/nixpkgs-update: Updating nixpkgs packages since 2018]]
 - [[https://github.com/basvandijk/nixtodo][basvandijk / nixtodo]]
