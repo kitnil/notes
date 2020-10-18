@@ -94,3 +94,69 @@ Guile Reference Manual.
 
 * Examples
 - [[https://notabug.org/ZelphirKaltstahl/guile-examples/src/65ba7cead2983f1ceb8aa2d4eedfe37734e5ca56/web-development/example-03-serve-static-assets][Guile web server example serving static files]] 
+
+** bytestructures
+   #+begin_src scheme
+
+     scheme@(git structs)> (bytestructure-descriptor-size (bs:struct `(("x" ,(bs:pointer uint8)) ("y" ,size_t))))
+     $20 = 12
+     scheme@(git structs)> %host-type
+     $21 = "i586-pc-gnu"
+
+
+     Compare with the correct answer:
+
+     $ guix environment --ad-hoc -C -s i686-linux guile guile-bytestructures  -- guile
+
+     [...]
+
+     scheme@(guile-user)> ,use(bytestructures guile)
+     scheme@(guile-user)> %host-type
+     $1 = "i686-unknown-linux-gnu"
+     scheme@(guile-user)> (bytestructure-descriptor-size (bs:struct `(("x" ,(bs:pointer uint8))("y" ,size_t))))
+     $2 = 8
+
+
+     More specifically, the size of ‘size_t’ is wrong, but pointer size is
+     right:
+
+     scheme@(git structs)>  (bytestructure-descriptor-size size_t)
+     $27 = 8
+     scheme@(git structs)>  (bytestructure-descriptor-size uintptr_t )
+     $28 = 8
+     scheme@(git structs)>  (bytestructure-descriptor-size (bs:pointer uint8))
+     $29 = 4
+
+
+     ‘numeric.scm’ in bytestructures reads:
+
+     (define arch32bit? (cond-expand
+                         (lp32  #t)
+                         (ilp32 #t)
+                         (else  #f)))
+
+     ;; …
+
+     (define uintptr_t (if arch32bit?
+                           uint32
+                           uint64))
+
+     (define size_t uintptr_t)
+
+
+     But (bytestructures guile numeric-data-model) has this:
+
+     (define data-model
+       (if (= 4 (sizeof '*))
+           (if (= 2 (sizeof int))
+               'lp32
+               'ilp32)
+           (cond
+            ((= 8 (sizeof int))  'ilp64)
+            ((= 4 (sizeof long)) 'llp64)
+            (else                'lp64))))
+
+     (cond-expand-provide
+      (current-module)
+      (list architecture data-model))
+   #+end_src
