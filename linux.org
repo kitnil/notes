@@ -175,6 +175,8 @@ degradation:
 
 [[https://github.com/0x0f0f0f/memplot][0x0f0f0f/memplot: Generate image plots of processes' memory usage very quickly, within a single binary.]]
 
+: echo 3 > /proc/sys/vm/drop_caches
+
 * Networking
 
 oleg@guixsd ~$ ss --numeric --tcp --listening --no-header --oneline --processes '( sport = :5901 )'
