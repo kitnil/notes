@@ -355,6 +355,8 @@ items, and then you can try building them with, say:
 guix build $(guix gc --derivers /gnu/store/…-thing-that-fails)
 #+end_example
 
+  - guix weather --display-missing $(guix package -I |cut -f1)
+
   - System tests
 Commit 5ec4156bbcaec8337f78411204d59e59e706103b adds a manifest for
 system tests.  Now “make check-system” simply does:
