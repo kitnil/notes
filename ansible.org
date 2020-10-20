@@ -85,3 +85,6 @@
             ```curl "http://malscan:8052/api/v2/job_templates/10/launch/" -H "Authorization: Bearer xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" -H "Content-Type: application/json" --data '{"extra_vars":{"host":"{{ host }}","home":"{{ home }}","site":"{{ site }}"}}'```
         delegate_to: localhost
 #+END_SRC
+
+* Articles
+- [[https://habr.com/ru/post/522702/][Agreements as Code: как отрефакторить инфраструктуру и не сломаться / Хабр]]
