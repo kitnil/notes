@@ -113,3 +113,6 @@ curl -H 'Content-Type: application/json' -d '{"query": {"bool": {"must": {"term"
 * Alternatives
 
 - [[https://github.com/valeriansaliou/sonic][valeriansaliou/sonic: 🦔 Fast, lightweight & schema-less search backend. An alternative to Elasticsearch that runs on a few MBs of RAM.]]
+
+* Kibana
+- [[https://habr.com/ru/company/citymobil/blog/521802/][Создание Dashboard в Kibana для мониторинга логов / Блог компании Ситимобил / Хабр]]
