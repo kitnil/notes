@@ -13,6 +13,7 @@
   - =kubectl port-forward my-deployment-xxxxxxxxxx-xxxxx 8005:80 &=
 
 * Tools
+- [[https://habr.com/ru/company/flant/blog/524196/#][Обзор k9s — продвинутого терминального интерфейса для Kubernetes]]
 - [[https://marketplace.visualstudio.com/items?itemName=redhat.vscode-yaml][YAML and Kubernetes syntax support - Visual Studio Marketplace]]
 - [[https://github.com/troytop/cfk8sterm][troytop/cfk8sterm: A ttyd web terminal image on Alpine with cf, kubectl, and other tools]]
 - [[https://github.com/omrikiei/ktunnel][omrikiei/ktunnel: A cli that exposes your local resources to kubernetes]]
