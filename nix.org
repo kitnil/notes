@@ -331,6 +331,11 @@ nix-store -q --tree "$(command -v basename)"
 /nix/store/<hash>-nix-<ver>/bin/nix-env --rollback
 #+END_SRC
 
+** Build with specific channel
+#+begin_src shell
+  nix-build release.nix -A build.x86_64-linux -I nixpkgs=channel:nixos-19.03
+#+end_src
+
 ** Recover with reinstall from store directory
 #+BEGIN_SRC shell
 /nix/store/<hash>-nix-<ver>/bin/nix-env -i /nix/store/<hash>-nix-<ver>
