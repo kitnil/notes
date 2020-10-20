@@ -1,3 +1,4 @@
+- [[https://habr.com/ru/company/southbridge/blog/321062/][Использование GlusterFS с кластером Docker swarm / Блог компании Southbridge / Хабр]]
 - show split-brain
 #+begin_src bash
   gluster volume heal gfs_storage_volume info | tee /tmp/out.txt
