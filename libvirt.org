@@ -1,1 +1,22 @@
 - [[https://github.com/libguestfs/libguestfs][libguestfs/libguestfs: library and tools for accessing and modifying virtual machine disk images. PLEASE DO NOT USE GITHUB FOR ISSUES OR PULL REQUESTS. See the website for how to file a bug or contact us.]]
+
+* Add cdrom
+
+  #+begin_src xml
+    <disk type='file' device='cdrom'>
+      <driver name='qemu' type='raw'/>
+      <source file='/kvm/artix-xfce-s6-20200506-x86_64.iso'/>
+      <target dev='hdc' bus='ide'/>
+      <readonly/>
+      <address type='drive' controller='0' bus='1' unit='0'/>
+    </disk>
+    <!-- ... -->
+    <boot dev='cdrom'/>
+  #+end_src
+
+
+  #+begin_src bash
+    virsh -c qemu+tcp://HOST/system edit vm12345
+    virsh -c qemu+tcp://HOST/system shutdown vm12345
+    virsh -c qemu+tcp://HOST/system start vm12345
+  #+end_src
