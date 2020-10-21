@@ -12,5 +12,5 @@ output:
 
 * s6 binaries in Guix
   #+begin_src bash
-    for dir in $(guix package -A s6 | cut -f 1 | xargs guix build); do ls $dir/bin; done
+    for dir in $(guix package -A s6 | cut -f 1 | xargs guix build); do echo $dir; ls $dir/bin; done
   #+end_src
