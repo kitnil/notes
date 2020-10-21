@@ -1,0 +1,11 @@
+- How do I determine what bundles a given service is a part of?
+    
+#+begin_src shell
+  service=hwclock; for bundle in $(s6-rc-db list bundles); do pkgs=$(s6-rc-db contents $bundle | grep -- $service); [ ! -z "$pkgs" ] && echo $bundle; done
+#+end_src
+
+output:
+#+begin_example
+  misc
+  boot
+#+end_example
