@@ -2,6 +2,10 @@
 
 * Add cdrom
 
+  #+begin_src bash
+    virsh -c qemu+tcp://HOST/system edit vm12345
+  #+end_src
+
   #+begin_src xml
     <disk type='file' device='cdrom'>
       <driver name='qemu' type='raw'/>
@@ -14,9 +18,7 @@
     <boot dev='cdrom'/>
   #+end_src
 
-
   #+begin_src bash
-    virsh -c qemu+tcp://HOST/system edit vm12345
     virsh -c qemu+tcp://HOST/system shutdown vm12345
     virsh -c qemu+tcp://HOST/system start vm12345
   #+end_src
