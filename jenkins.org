@@ -6,6 +6,7 @@
 * Shared libs
 - [[https://github.com/wcm-io-devops/jenkins-pipeline-library][wcm-io-devops/jenkins-pipeline-library: wcm.io Jenkins Pipeline Library for CI/CD]]
 - [[https://github.com/mschuchard/jenkins-devops-libs][mschuchard/jenkins-devops-libs: Collection of Jenkins Pipeline shared libraries for common DevOps software.]]
+- [[https://github.com/fabric8io/fabric8-jenkinsfile-library][fabric8io/fabric8-jenkinsfile-library: This repository contains a library of reusable Jenkinsfiles that you can use on your projects. Its reused by the fabric8 console to associate Jenkinsfiles to projects]]
 
 * Examples
 - [[https://github.com/hoto/jenkinsfile-examples][hoto/jenkinsfile-examples: Executable examples of Jenkinsfiles.]]
