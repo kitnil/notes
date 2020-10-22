@@ -395,3 +395,6 @@ nix-store -q --tree "$(command -v basename)"
     }
   #+end_src
   : nix-instantiate --eval /tmp/file.nix -A config.toplevel
+
+* NixOS alternatives
+- [[https://ocelot-project.github.io/][λ Ocelot]]
