@@ -262,3 +262,8 @@ https://github.com/iovisor/bcc/blob/master/QUICKSTART.md
 * Graphics
 - [[https://vadosware.io/post/using-both-integrated-and-discrete-graphics-cards/][Using Both Integrated And Discrete Graphics Cards - VADOSWARE]]
 - [[https://wiki.archlinux.org/index.php/PRIME#PRIME_GPU_offloading][PRIME - ArchWiki]]
+
+* unshare
+  #+begin_src bash
+    unshare -mrf strace -s 80 -o trace -ff  sh -c 'mount -t tmpfs -o ro none "/gnu/store"; /tmp/pack-dir/opt/bin/hello'
+  #+end_src
