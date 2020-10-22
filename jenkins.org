@@ -443,3 +443,6 @@ Jenkins will have the console output of our build, available via the dashboard. 
 https://2886795316-8080-cykoria04.environments.katacoda.com/job/Katacoda%20Jenkins%20Demo/1/console
 
 If you rebuilt the project, you would see a version 2 image created and the :latest tag reattached.
+
+* External
+- [[https://github.com/bmustiata/jenny][bmustiata/jenny: Command line Jenkinsfile runner written in groovy. Does not need a Jenkins installation to run the Jenkinsfile.]]
