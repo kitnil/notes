@@ -30,6 +30,9 @@
 - [[https://tech.paulcz.net/blog/secure-docker-with-tls/][Securing Docker with TLS certificates]]
 - [[https://github.com/Tecnativa/docker-socket-proxy][Tecnativa/docker-socket-proxy: Proxy over your Docker socket to restrict which requests it accepts]]
 
+* Registry
+- [[https://github.com/atcol/docker-registry-ui][atcol/docker-registry-ui: A web frontend/UI for easy private/local Docker Registry integration]]
+
 * Misc
 
 - [[https://github.com/aquasecurity/tracee][aquasecurity/tracee: Container and system event tracing using eBPF]]
