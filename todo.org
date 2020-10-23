@@ -853,3 +853,5 @@ ipset add brute 52.252.60.16
 * TODO majordomo.ru/rbl
 
 * TODO 7 ноября спросить про цену домена у Саши
+
+* TODO curl --silent guix.wugi.info/guix/describe | jq --raw-output '.[] | select(.name == "guix") | .commit'
