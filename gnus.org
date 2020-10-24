@@ -1,2 +1,79 @@
 - [2020-08-06 Thu 11:15] [[gnus:INBOX#E1k3Wq4-00055u-Ns@fencepost.gnu.org][Email from Richard Stallman: Making GNUS continue to work with Gmail]] by [[mailto:rms@gnu.org][Richard Stallman]]** 
   - [[https://debbugs.gnu.org/cgi/bugreport.cgi?bug=41386][#41386 - 28.0.50; Gnus nnimap OAuth 2.0 support - GNU bug report logs]]
+
+* gnus-posting-styles
+#+begin_quote
+I am trying to use Gnus again after about five years. Using my
+configuration file that I had with Ma Gnus (so maybe that's the
+issue...).
+
+I have multiple accounts and used posting styles to send from different
+accounts based on the From header. The set-up I have below worked
+previously. Now mails cannot be sent and Emacs thinks that smtpmail is
+not running. 
+
+I using Emacs GNU Emacs 26.3 (build 1, x86_64-unknown-openbsd, GTK+
+Version 3.24.20) of 2020-05-09 and the Gnus that comes with it, v5.13. 
+
+Any suggestions or pointers would be greatly appreciated.
+
+This is my SMTP part:
+
+(setq message-signature-directory "~/.signatures")
+(setq smtpmail-auth-credentials "~/.authinfo.gpg")
+(setq message-send-mail-function 'smtpmail-send-it)
+
+(setq gnus-posting-styles
+      '(("Countermail:*"
+	 (x-identity "Countermail")
+	 (address "aorchid@countermail.com")
+	 (reply-to "aorchid@countermail.com")
+	 ("X-Message-SMTP-Method" "smtp imap1.countermail.com 465")
+	 (body "\nThanks, Aric\n"))
+
+	((header "to" "someone@ucla.edu")
+	 (x-identity "Countermail-another")
+	 (address "someone@countermail.com")
+	 (reply-to "someone@countermail.com")
+	 ("X-Message-SMTP-Method" "smtp imap1.countermail.com 465")
+	 (body "\nThanks, Aric\n")
+	 (eval (setq mml2015-signers '("someone@countermail.com")))
+	 )
+
+	((header "to" "someone@countermail.com")
+	 (x-identity "Countermail-another")
+	 (address "someone@countermail.com")
+	 (reply-to "someone@countermail.com")
+	 (eval (setq mml2015-signers '("someone@countermail.com")))
+	 ("X-Message-SMTP-Method" "smtp imap1.countermail.com 465")
+	 (body "\nThanks, Aric\n")
+	 (signature-file "signature-short"))
+	("Mac:*" 
+	 (address "me@mac.com")
+	 ("X-Message-SMTP-Method" "smtp outbound.mailhop.org 465
+	user") 
+	(body "\nThanks, Aric\n")
+	 (signature-file "signature_bike"))
+	("Gmail:*"
+	 (address "me@gmail.com")
+	 (reply-to "me@gmail.com")
+	 ("X-Message-SMTP-Method" "smtp smtp.gmail.com 587")
+	 (signature-file "signature_bike"))
+
+The .auth file looks like the following:
+
+machine Gmail login "me@gmail.com" port "587" password "..." 
+machine BOL login "..." port "587" password "..." 
+machine "mail.mac.com" login "me" port "imaps" password
+"..." 
+machine Gmail login "me" port "imaps" password "..."
+machine BOL login "..." port "imaps" password "..."
+machine "imap1.countermail.com" login "..." port
+"imaps" password "..." 
+machine "outbound.mailhop.org" login "someone" port "465" password
+"..." 
+machine "imap1.countermail.com" login "..." port "465" password "..."
+
+Thanks in advance.
+Aric
+#+end_quote
