@@ -855,3 +855,11 @@ ipset add brute 52.252.60.16
 * TODO 7 ноября спросить про цену домена у Саши
 
 * TODO curl --silent guix.wugi.info/guix/describe | jq --raw-output '.[] | select(.name == "guix") | .commit'
+
+* TODO fix po
+** nutshell
+msgid "In a nutshell, packages using it are configured, built, and installed with the usual @code{./configure && make && make check && make install} command sequence.  In practice, a few additional steps are often needed.  All these steps are split up in separate @dfn{phases}, notably@footnote{Please see the @code{(guix build gnu-build-system)} modules for more details about the build phases.}:"
+msgstr "Вкратце, пакеты, использующие его, настраиваются, собираются и устанавливаются с помощью обычной последовательности команд @code{./configure && make && make check && make install}.  На практике часто требуется несколько дополнительных шагов.  Все эти шаги разделены на отдельные @dfn{фазы}, в частности @footnote{Please see the @code{(guix build gnu-build-system)} modules for more details about the build phases.}:"
+
+
+** 'pxref '
