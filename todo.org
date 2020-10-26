@@ -862,4 +862,8 @@ msgid "In a nutshell, packages using it are configured, built, and installed wit
 msgstr "Вкратце, пакеты, использующие его, настраиваются, собираются и устанавливаются с помощью обычной последовательности команд @code{./configure && make && make check && make install}.  На практике часто требуется несколько дополнительных шагов.  Все эти шаги разделены на отдельные @dfn{фазы}, в частности @footnote{Please see the @code{(guix build gnu-build-system)} modules for more details about the build phases.}:"
 
 
-** 'pxref '
+** TODO fix all 'pxref {'
+
+** TODO fix @code{tests?} parameter in rekado
+
+msgid "This variable is exported by @code{(guix build-system rakudo)}.  It implements the build procedure used by @uref{https://rakudo.org/, Rakudo} for @uref{https://perl6.org/, Perl6} packages. It installs the package to @code{/gnu/store/@dots{}/NAME-VERSION/share/perl6} and installs the binaries, library files and the resources, as well as wrap the files under the @code{bin/} directory.  Tests can be skipped by passing @code{#f} to the @code{tests?} parameter."
