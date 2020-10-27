@@ -60,6 +60,9 @@ https://gitlab.com/janneke/guix.git
 
 * Cheat sheet
 
+  - Update po templates
+    : po4a-updatepo -M UTF-8 -f texinfo -m doc/guix.texi -p po/doc/guix-manual.ru.po
+
   - Build critical packages
 
   #+begin_src scheme
