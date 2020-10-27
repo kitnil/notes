@@ -869,3 +869,14 @@ msgstr "Вкратце, пакеты, использующие его, наст�
 msgid "This variable is exported by @code{(guix build-system rakudo)}.  It implements the build procedure used by @uref{https://rakudo.org/, Rakudo} for @uref{https://perl6.org/, Perl6} packages. It installs the package to @code{/gnu/store/@dots{}/NAME-VERSION/share/perl6} and installs the binaries, library files and the resources, as well as wrap the files under the @code{bin/} directory.  Tests can be skipped by passing @code{#f} to the @code{tests?} parameter."
 
 * TODO [[http://docs.ganeti.org/ganeti/2.15/html/walkthrough.html][Ganeti walk-through — Ganeti 2.15.2 documentation]]
+
+* TODO fix
+#+begin_example
+  guix deploy: sending 2 store items (0 MiB) to '78.108.82.157'...
+  guix deploy: error: unauthorized public key: (public-key 
+   (ecc 
+    (curve Ed25519)
+    (q #45BD5CF39730F811FCFDEBB3FA30277DCA7D443430264FB6D48DCEEFE2E23CF5#)
+    )
+   )
+#+end_example
