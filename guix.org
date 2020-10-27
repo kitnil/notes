@@ -62,6 +62,7 @@ https://gitlab.com/janneke/guix.git
 
   - Update po templates
     : po4a-updatepo -M UTF-8 -f texinfo -m doc/guix.texi -p po/doc/guix-manual.ru.po
+    : msgmerge --no-wrap --update po/doc/guix-manual.ru.po /gnu/store/l7p9xxv3il82dw1dbbi1m3sli62nsxcl-guix-manual-1.2.0-pre2.pot
 
   - Build critical packages
 
