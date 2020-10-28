@@ -880,3 +880,6 @@ msgid "This variable is exported by @code{(guix build-system rakudo)}.  It imple
     )
    )
 #+end_example
+
+* TODO
+  git push -o merge_request.create -o merge_request.target=my-target-branch -o merge_request.description="/assign @zdetovetskiy" 
