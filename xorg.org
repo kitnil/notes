@@ -40,3 +40,43 @@
      mkfifo $XNOTIFY_FIFO
      xnotify -m 10 -G NE -g 500x30-100+800 -s 5 <$XNOTIFY_FIFO 3<>$XNOTIFY_FIFO
    #+end_src
+
+* PRIME
+
+#+begin_example
+  Section "Device"
+          Identifier  "Intel video card"
+          Driver      "intel"
+          BusID       "PCI:0:2:0"
+          Option      "AccelMethod"  "sna"
+          Option      "SwapbuffersWait" "true"
+          Option      "TearFree" "true"
+          Option      "DRI" "3"
+  EndSection
+
+  Section "Device"
+          Identifier  "AMD video card"
+          Driver      "amdgpu"
+          BusID       "PCI:3:0:0"
+          Option      "TearFree" "true"
+          Option      "DRI" "3"
+  EndSection
+
+  Section "Screen"
+     Identifier  "Screen 1"
+     Device      "Intel video card"
+     Monitor     "HDMI1"
+     SubSection "Display"
+         Modes       "1920x1080"
+     EndSubSection
+  EndSection
+
+  Section "Screen"
+     Identifier  "Screen 2"
+     Device      "AMD video card"
+     Monitor     "HDMI3"
+     SubSection "Display"
+         Modes       "1920x1080"
+     EndSubSection
+  EndSection
+#+end_example
