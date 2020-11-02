@@ -177,6 +177,8 @@ degradation:
 
 : echo 3 > /proc/sys/vm/drop_caches
 
+vmtouch
+
 * Networking
 
 oleg@guixsd ~$ ss --numeric --tcp --listening --no-header --oneline --processes '( sport = :5901 )'
