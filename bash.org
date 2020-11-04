@@ -70,6 +70,9 @@
 
 * Cheatsheet
 
+  - Close shell keeping all subprocess running
+    : disown -a && exit
+
   - Learn the difference between single and double quotes
     : a=7; echo $a; echo "$a"; echo '$a'; echo "'$a'"; echo '"$a"'
 
