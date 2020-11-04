@@ -70,7 +70,7 @@
 
 * Cheatsheet
 
-  - [[https://www.commandlinefu.com/commands/view/25000/learn-the-difference-between-single-and-double-quotes][a=7; echo $a; echo "$a"; echo '$a'; echo "'$a'"; echo '"$a"']]
+  - Learn the difference between single and double quotes
     : a=7; echo $a; echo "$a"; echo '$a'; echo "'$a'"; echo '"$a"'
 
   - extract email addresses from some file (or any other pattern)
