@@ -73,6 +73,9 @@
   - [[https://www.commandlinefu.com/commands/view/25000/learn-the-difference-between-single-and-double-quotes][a=7; echo $a; echo "$a"; echo '$a'; echo "'$a'"; echo '"$a"']]
     : a=7; echo $a; echo "$a"; echo '$a'; echo "'$a'"; echo '"$a"'
 
+  - extract email addresses from some file (or any other pattern)
+    : grep -Eio '([[:alnum:]_.-]{1,64}@[[:alnum:]_.-]{1,252}?\.[[:alpha:].]{2,6})'
+
   - [[https://www.commandlinefu.com/commands/view/25006/find-ascii-files-and-extract-ip-addresses][Find ASCII files and extract IP addresses]]
     : find . -type f -exec grep -Iq . {} \; -exec grep -oE "(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)" {} /dev/null \;
 
