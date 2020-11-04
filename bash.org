@@ -70,6 +70,9 @@
 
 * Cheatsheet
 
+  - [[https://www.commandlinefu.com/commands/view/25006/find-ascii-files-and-extract-ip-addresses][Find ASCII files and extract IP addresses]]
+    : find . -type f -exec grep -Iq . {} \; -exec grep -oE "(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)" {} /dev/null \;
+
   - command to array
     : mapfile -d . -t version < /proc/sys/kernel/osrelease
 
