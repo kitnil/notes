@@ -6406,7 +6406,7 @@ information that should help you find out what is causing the crash.
 
 * cheatsheet
 
-- repair all tables
+- reapair all mySQL/mariaDB databases
 : mysqlcheck --repair --all-databases -u root -p<PASSWORD>
 
 - generate trash data
