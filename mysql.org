@@ -6406,6 +6406,9 @@ information that should help you find out what is causing the crash.
 
 * cheatsheet
 
+- repair all tables
+: mysqlcheck --repair --all-databases -u root -p<PASSWORD>
+
 - generate trash data
 #+begin_src bash
   while true
