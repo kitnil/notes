@@ -35,6 +35,9 @@
 ** Configuration
 - [[https://github.com/edx/jenkins-configuration][edx/jenkins-configuration: A collection of utilities for configuring a Jenkins instance and its plugins]]
 
+*** jcasc
+- [[https://github.com/jenkinsci/configuration-as-code-plugin/blob/045631a8bf8b2fb0ac219128a82dca5b34716869/docs/features/configurationReload.md][configuration-as-code-plugin/configurationReload.md at 045631a8bf8b2fb0ac219128a82dca5b34716869 · jenkinsci/configuration-as-code-plugin]]
+
 * Tests
 - [[https://github.com/jenkinsci/JenkinsPipelineUnit][jenkinsci/JenkinsPipelineUnit: Framework for unit testing Jenkins pipelines]]
 
