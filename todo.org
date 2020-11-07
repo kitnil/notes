@@ -887,3 +887,13 @@ msgid "This variable is exported by @code{(guix build-system rakudo)}.  It imple
 * TODO Let's encrypt via A record on shared
 
 * TODO macflap
+
+* TODO chezmoi diff in stumpwm mode-line
+#+begin_example
+  oleg@guixsd ~$ [[ -z $(chezmoi diff) ]]; echo $?
+  1
+
+  oleg@guixsd ~$ [[ -z $(chezmoi diff) ]]; echo $?
+  0
+
+#+end_example
