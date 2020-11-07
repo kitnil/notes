@@ -395,6 +395,7 @@ system tests.  Now “make check-system” simply does:
 
   - See what fraction of the system tests is successful on ci.guix.gnu.org
     : ./pre-inst-env guix weather -m etc/system-tests.scm --display-missing
+    Message-ID: <871rh6zl9j.fsf@inria.fr>
 
   - docker pack
     #+BEGIN_SRC bash
