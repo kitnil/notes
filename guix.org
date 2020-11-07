@@ -397,6 +397,14 @@ system tests.  Now “make check-system” simply does:
     : ./pre-inst-env guix weather -m etc/system-tests.scm --display-missing
     Message-ID: <871rh6zl9j.fsf@inria.fr>
 
+  - Guix on MicroSoft Surface Book
+Message-Id: <5ADC658D-F9EC-435A-A4DB-1D6B2B646D8C@yasuaki.com>
+#+begin_quote
+BTW, I use Guix on my Microsoft Surface Book using Windows Subsystem for Linux
+https://github.com/giuliano108/guix-packages/blob/master/notes/Guix-on-WSL2.md
+, in addition to my desktop PC.
+#+end_quote
+
   - Provenance tracking
 #+begin_quote
 $ cat /tmp/channels.scm
