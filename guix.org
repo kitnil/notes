@@ -62,6 +62,16 @@ https://gitlab.com/janneke/guix.git
 
 * Cheat sheet
 
+  - guix processes
+#+begin_example
+  $ sudo guix processes | recsel -p SessionPID,LockHeld -e 'LockHeld ~ "chromium"'
+  SessionPID: 31410
+  LockHeld: /gnu/store/kdsp1pjj6znaxzs3d0vfwdcddc436g7f-ungoogled-chromium-86.0.4240.183-0.b68e17f.lock
+
+  SessionPID: 3455
+  LockHeld: /gnu/store/bhy3c5damrpzx7hdp8bam1lk2rk7789r-ungoogled-chromium-86.0.4240.183-0.b68e17f.lock
+#+end_example
+
   - guix-daemon in a docker
     : guix pack guix -f docker -S /bin=bin --entry-point="bin/guix-daemon --disable-chroot"
 
