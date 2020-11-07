@@ -397,6 +397,30 @@ system tests.  Now “make check-system” simply does:
     : ./pre-inst-env guix weather -m etc/system-tests.scm --display-missing
     Message-ID: <871rh6zl9j.fsf@inria.fr>
 
+  - Provenance tracking
+#+begin_quote
+$ cat /tmp/channels.scm
+(cons (channel
+       (name 'guix-hpc)
+       (url "https://gitlab.inria.fr/guix-hpc/guix-hpc.git"))
+      %default-channels)
+$ guix time-machine -C /tmp/channels.scm -- repl
+Updating channel 'guix-hpc' from Git repository at 'https://gitlab.inria.fr/guix-hpc/guix-hpc.git'...
+Updating channel 'guix' from Git repository at 'https://git.savannah.gnu.org/git/guix.git'...
+
+[...]
+
+scheme@(guix-user)> ,use(guix)
+scheme@(guix-user)> ,use(gnu)
+scheme@(guix-user)> ,use(guix describe)
+scheme@(guix-user)> ,use(inria storm)
+scheme@(guix-user)> (package-provenance starpu)
+$1 = ((repository (version 0) (url "https://git.savannah.gnu.org/git/guix.git") (branch "master") (commit "794928a9062529cb75c019454d7bd31b8cf83cb7") (introduction (channel-introduction (version 0) (commit "9edb3f66fd807b096b48283debdcddccfea34bad") (signer "BBB0 2DDF 2CEA F6A8 0D1D  E643 A2A0 6DF2 A33A 54FA")))) (repository (version 0) (url "https://gitlab.inria.fr/guix-hpc/ guix-hpc.git") (branch "master") (commit "bf3afdd85c68ee022b863da72b90e0c304b11bee")))
+scheme@(guix-user)> ,use(gnu packages base)
+scheme@(guix-user)> (package-provenance coreutils)
+$2 = ((repository (version 0) (url "https://git.savannah.gnu.org/git/guix.git") (branch "master") (commit "794928a9062529cb75c019454d7bd31b8cf83cb7") (introduction (channel-introduction (version 0) (commit "9edb3f66fd807b096b48283debdcddccfea34bad") (signer "BBB0 2DDF 2CEA F6A8 0D1D  E643 A2A0 6DF2 A33A 54FA")))))
+#+end_quote
+
   - docker pack
     #+BEGIN_SRC bash
       guix pack --manifest=your-manifest.scm \
