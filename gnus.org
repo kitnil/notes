@@ -77,3 +77,19 @@ machine "imap1.countermail.com" login "..." port "465" password "..."
 Thanks in advance.
 Aric
 #+end_quote
+
+* Toggle steam type
+
+  #+begin_src emacs-lisp
+    (defun change-stream-type ()
+      (cond ((equal user-mail-address "metoothree@gmail.com")
+             (setq smtpmail-stream-type 'ssl))
+            ((equal user-mail-address "metoo@mac.com")
+             (setq smtpmail-stream-type 'starttls))
+            ((equal user-mail-address "me@countermail.com")
+             (setq smtpmail-stream-type 'starttls))
+            ((equal user-mail-address "aorchid@countermail.com")
+             (setq smtpmail-stream-type 'starttls))))
+
+    (add-hook 'message-send-hook 'change-stream-type)
+  #+end_src
