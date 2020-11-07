@@ -393,8 +393,8 @@ system tests.  Now “make check-system” simply does:
       fi
     #+end_src
 
-See what fraction of the system tests is successful on ci.guix.gnu.org
-: ./pre-inst-env guix weather -m etc/system-tests.scm --display-missing
+  - See what fraction of the system tests is successful on ci.guix.gnu.org
+    : ./pre-inst-env guix weather -m etc/system-tests.scm --display-missing
 
   - docker pack
     #+BEGIN_SRC bash
