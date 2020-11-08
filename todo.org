@@ -899,3 +899,13 @@ msgid "This variable is exported by @code{(guix build-system rakudo)}.  It imple
 #+end_example
 
 * TODO [[https://cerberus.intr/index.php/profiles/ticket/JC-11218-611/message/15944596][PMA Update notification]]
+
+* TODO Guix provide shepherd package in shepherd-root-service-type
+Message-ID: <874klzvjdu.fsf@gnu.org>
+#+begin_quote
+> [1]: (module-set! (resolve-module '(gnu packages admin)) 'shepherd shepherd-patched)
+
+This isn’t pretty.  We should arrange to make
+‘shepherd-root-service-type’ customizable so one can choose which
+Shepherd package to use.
+#+end_quote
