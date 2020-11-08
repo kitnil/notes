@@ -15,6 +15,7 @@ nix-repl> mynixos2.config.environment.etc."mailman.cfg".text
 - Create .envrc for project directories
 : for file in $(echo */default.nix); do (output="$(dirname "$file")"/.envrc; [[ -f $output ]] || echo 'use nixpkgs' >> "$output"); done
 
+- [[https://github.com/nix-dot-dev/nix.dev][nix-dot-dev/nix.dev: An opinionated guide for developers wanting to get things done with Nix.]]
 - [[https://github.com/dnaq/nix-mirror][dnaq/nix-mirror: A simple tool for mirroring nix binary caches]]
 - [[https://github.com/cachix/pre-commit-hooks.nix][cachix/pre-commit-hooks.nix: Seamless integration of https://pre-commit.com git hooks with Nix.]]
 - [[https://github.com/justinwoo/nix-shorts][justinwoo/nix-shorts: A collection of short notes about Nix, down to what is immediately needed for users.]]
