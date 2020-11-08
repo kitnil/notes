@@ -21,6 +21,37 @@
 - [[https://github.com/jiaaro/pydub][jiaaro/pydub: Manipulate audio with a simple and easy high level interface]]
 - [[https://github.com/msoulier/tftpy][msoulier/tftpy: Pure Python TFTP library]]
 
+* Deploy
+Message-ID: <20201108142717.lmud5h4gh44vtjc6@melmoth>
+#+begin_quote
+I've just learned, by accident (working on `python-keyring` [1]), that
+`python setup.py install` was somehow deprecated in favor of tools like
+`pep517` or `build`.
+
+So, I've tried packaging `python-keyring` with those two…
+
+`pep517` keeps on trying to download dependencies, which won't work.
+
+`build` crashes with "ZIP does not support timestamps before 1980",
+which, I guess is related to the fact that everything in the store is
+timestamped to January 1st 1970.
+
+Does anyone have a opinion on Python packaging and how it should be done?
+Any idea how I can circumvent the timestamps problem? Is this fish too
+big for me?!
+
+Any help or advice welcome! Thanks!
+
+-- 
+Tanguy
+
+[1]: https://github.com/jaraco/keyring/issues/469
+     Keyring package version is set to 0.0.0, this might be related to
+     the fact that, upstream, they build it with `python -m pep517.build .`,
+     not with `python setup.py install`… but it could also not be
+     related at all! But in order to be sure, I have to try!
+#+end_quote
+
 * Runtime
 - [[https://github.com/google/grumpy][google/grumpy: Grumpy is a Python to Go source code transcompiler and runtime.]]
 
