@@ -1,0 +1,19 @@
+Message-ID: <5666696f0656fbbbe2420bceb30632d1e4f75b5b.camel@gnu.org>
+#+begin_quote
+However, you can choose to use different interpreters for different
+recipes in modern GNU make by assigning the SHELL variable as a target-
+specific variable [1]:
+
+    SHELL = /usr/bin/guile
+
+    all: guile sh
+
+    guile: ; ; this is the default and runs in guile
+
+    sh: SHELL = /bin/bash
+    sh: ; # this is overridden and runs in the shell
+
+
+
+[1] https://www.gnu.org/software/make/manual/html_node/Target_002dspecific.html
+#+end_quote
