@@ -909,3 +909,8 @@ This isn’t pretty.  We should arrange to make
 ‘shepherd-root-service-type’ customizable so one can choose which
 Shepherd package to use.
 #+end_quote
+
+* TODO Mail submission
+  - postfix.submissions.port
+  - [[https://github.com/progmaticltd/homebox/blob/88e7b495dc0725353be4acb966fe5e5d984f7735/install/roles/autodiscover/templates/nginx.conf][homebox/nginx.conf at 88e7b495dc0725353be4acb966fe5e5d984f7735 · progmaticltd/homebox]]
+  - [[https://github.com/progmaticltd/homebox/tree/88e7b495dc0725353be4acb966fe5e5d984f7735/install/roles/autodiscover/templates][homebox/install/roles/autodiscover/templates at 88e7b495dc0725353be4acb966fe5e5d984f7735 · progmaticltd/homebox]]
