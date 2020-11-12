@@ -3,3 +3,17 @@
 - [[https://github.com/s3fs-fuse/s3fs-fuse][s3fs-fuse/s3fs-fuse: FUSE-based file system backed by Amazon S3]]
 - [[https://github.com/kahing/goofys][kahing/goofys: a high-performance, POSIX-ish Amazon S3 file system written in Go]]
 - [[https://github.com/chubaofs/chubaofs][chubaofs/chubaofs: A distributed file system and object store for cloud native applications]]
+
+* Minio
+
+#+begin_example
+  [root@archive2:~]# jq < /var/lib/minio/data/.minio.sys/config/config.json                                                                   
+  {                       
+    "version": "33",                 
+    "credential": {       
+      "accessKey": "123456789123456789ab",                              
+      "secretKey": "12345nnasdklfjkalsjflsajdfla3sdfjsaldjfd",          
+      "expiration": "1970-01-01T00:00:00Z",                             
+      "status": "enabled"                                               
+
+#+end_example
