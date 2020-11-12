@@ -6,6 +6,7 @@
 
 * Minio
 
+Get credentials:
 #+begin_example
   [root@archive2:~]# jq < /var/lib/minio/data/.minio.sys/config/config.json                                                                   
   {                       
@@ -16,4 +17,10 @@
       "expiration": "1970-01-01T00:00:00Z",                             
       "status": "enabled"                                               
 
+#+end_example
+
+Add host:
+#+begin_example
+  [root@archive2:~]# mc config host add minio http://172.16.103.84:9000/ B099SIM1UVGCUU8X6CCS LTzOTmMDfVRzS2gI5ZUl3OqScj3+RvsAa5LmLSxM
+  Added `minio` successfully.
 #+end_example
