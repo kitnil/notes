@@ -51,6 +51,12 @@ https://gitlab.com/janneke/guix.git
 - [[https://github.com/MorganJamesSmith/morgan-guix-channel/tree/master/packages][morgan-guix-channel/packages at master · MorganJamesSmith/morgan-guix-channel (NVIDIA driver)]]
 - [[https://github.com/aartaka/chur-guix][aartaka/chur-guix: A collection of pentesting packages for Guix package manager]]
 
+** Debian
+<875z6atqic.fsf@yucca>
+- https://tracker.debian.org/pkg/guix
+- https://salsa.debian.org/debian/guix/-/tree/debian/devel/debian/patches
+- https://ci.debian.net
+
 * Translation
 
 [0]: <https://translationproject.org/domain/guix.html>
