@@ -24,3 +24,9 @@ Add host:
   [root@archive2:~]# mc config host add minio http://172.16.103.84:9000/ B099SIM1UVGCUU8X6CCS LTzOTmMDfVRzS2gI5ZUl3OqScj3+RvsAa5LmLSxM
   Added `minio` successfully.
 #+end_example
+
+[[https://medium.com/@aliartiza75/minio-server-management-using-minio-client-mc-70c8a7ce38][Minio server management using minio client (mc) | by Irtiza | Medium]]
+#+begin_example
+[root@archive4:~]# mc mb minio/docker/registry/
+Bucket created successfully `minio/docker/registry/`.
+#+end_example
