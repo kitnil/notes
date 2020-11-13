@@ -79,6 +79,23 @@ https://gitlab.com/janneke/guix.git
   LockHeld: /gnu/store/bhy3c5damrpzx7hdp8bam1lk2rk7789r-ungoogled-chromium-86.0.4240.183-0.b68e17f.lock
 #+end_example
 
+#+begin_example
+$ guix processes -f normalized \
+  | recsel \
+    -t ChildProcess \
+    -j Session \
+    -p PID,Session.PID \
+  | recfmt '{{PID}} {{Session.PID}}'
+23607 2356724713 2356725002 23576
+#+end_example
+
+#+begin_example
+$ guix processes \
+  | recsel -p ChildPID,SessionPID \
+  | recfmt '{{ChildPID}} {{SessionPID}}'
+23607 23567
+#+end_example
+
   - guix-daemon in a docker
     : guix pack guix -f docker -S /bin=bin --entry-point="bin/guix-daemon --disable-chroot"
 
