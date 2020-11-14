@@ -13,6 +13,7 @@
   - =kubectl port-forward my-deployment-xxxxxxxxxx-xxxxx 8005:80 &=
 
 * Tools
+- [[https://github.com/kvaps/kubectl-build][kvaps/kubectl-build: Build dockerfiles directly in your Kubernetes cluster.]]
 - [[https://habr.com/ru/company/flant/blog/524196/#][Обзор k9s — продвинутого терминального интерфейса для Kubernetes]]
 - [[https://habr.com/ru/company/southbridge/blog/523790/][12 инструментов, делающих Kubernetes легче / Блог компании Southbridge / Хабр]]
 - [[https://habr.com/ru/company/southbridge/blog/523358/][11 инструментов, делающих Kubernetes лучше / Блог компании Southbridge / Хабр]]
