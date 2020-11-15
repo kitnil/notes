@@ -1,1 +1,19 @@
 - [[https://github.com/weiweidaolai212/BrainDamage][weiweidaolai212/BrainDamage: Remote administration tool which uses Telegram as a C&C server]]
+
+* Jitsi
+Message-ID: <87k0uo8dyi.fsf@ambrevar.xyz>
+#+begin_quote
+Hi Guixers!
+
+Since this has bitten me for a long time and it seems to trip many
+IceCat users, I'd like to share a tip to get https://meet.jit.si/ to
+work on IceCat:
+
+- Install a user agent switcher extension like this one:
+  https://addons.mozilla.org/en-US/firefox/addon/uaswitcher/
+
+- Switch to the latest Firefox user agent.  Make sure to apply the
+  change to the right tab.
+
+By the way, this seems to fix more than just Jitsi.
+#+end_quote
