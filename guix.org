@@ -70,6 +70,15 @@ https://gitlab.com/janneke/guix.git
 
 * Cheat sheet
 
+  - geiser
+#+begin_quote
+> ELISP> (require 'guix-repl)
+> guix-repl
+> ELISP> (guix-eval-in-repl ",use(guix scripts build)")
+> nil
+> ELISP> (guix-eval-in-repl "(guix-build \"nyxt\" \"--no-grafts\" \"--check\")")
+#+end_quote
+
   - guix processes
 #+begin_example
   $ sudo guix processes | recsel -p SessionPID,LockHeld -e 'LockHeld ~ "chromium"'
