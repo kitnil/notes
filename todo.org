@@ -918,15 +918,3 @@ Shepherd package to use.
 * TODO S6_CMD_ARG0 [[https://github.com/just-containers/s6-overlay/blob/master/builder/overlay-rootfs/etc/s6/init/init-stage1][s6-overlay/init-stage1 at master · just-containers/s6-overlay]]
 
 * TODO Make ssh-guest-room read-only
-
-* TODO sudo overriden by guix deploy
-
-#+begin_example
-guix deploy: sending 69 store items (124 MiB) to 'xxx.xxx.xxx.xxx'...
-guix deploy: sending 1 store item (0 MiB) to 'xxx.xxx.xxx.xxx'...
-guix deploy: error: remote command '/run/setuid-programs/sudo -n -- /gnu/store/0m0vd873jp61lcm4xa3ljdgx381qa782-guile-3.0.2/bin/guile --no-auto-compile -L /gnu/store/waw3q9xvwz6wivp4skmirxpg53znrs3h-module-import -C /gnu/store/waw3q9xvwz6wivp4skmirxpg53znrs3h-module-import -c "(begin (use-modules (guix repl)) (send-repl-response (quote (with-output-to-port (current-error-port) (lambda () (primitive-load \"/gnu/store/p0qq5y726hfzblydq756gx819m2s2vx5-remote-exp.scm\")))) (current-output-port)) (force-output))"' failed with status 1
-make: *** [Makefile:51: deploy] Error 1
-oleg@guixsd ~/.local/share/chezmoi$ ssh xxx.xxx.xxx.xxx
-Warning: Permanently added 'xxx.xxx.xxx.xxx' (ECDSA) to the list of known hosts.
-Last login: Mon Nov 16 08:57:16 2020 from 178.71.226.25
-#+end_example
