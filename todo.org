@@ -919,7 +919,7 @@ Shepherd package to use.
 
 * TODO Make ssh-guest-room read-only
 
-* TODO
+* TODO sudo overriden by guix deploy
 
 #+begin_example
 guix deploy: sending 69 store items (124 MiB) to 'xxx.xxx.xxx.xxx'...
