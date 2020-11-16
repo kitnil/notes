@@ -70,6 +70,10 @@ https://gitlab.com/janneke/guix.git
 
 * Cheat sheet
 
+  - [[https://gitlab.com/daym/guix-on-docker/][Guix Docker Image on docker-registry]]
+    : docker run -d --name guix registry.gitlab.com/daym/guix-on-docker
+    : docker exec guix guix pack hello
+
   - geiser
 #+begin_quote
 > ELISP> (require 'guix-repl)
