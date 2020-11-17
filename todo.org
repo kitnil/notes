@@ -731,8 +731,6 @@ root@guixsd ~# ipset create brute hash:net
 root@guixsd ~# iptables -I INPUT -m set --match-set brute src -j DROP
 ipset add brute 52.252.60.16
 
-* DONE pacifier https://hastebin.intr/mevizulowi.pl
-
 * TODO influx continues query
 
 * TODO Implementation of passthru.updateScript in _ci/nixpkgs
