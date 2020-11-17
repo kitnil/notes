@@ -731,23 +731,6 @@ root@guixsd ~# ipset create brute hash:net
 root@guixsd ~# iptables -I INPUT -m set --match-set brute src -j DROP
 ipset add brute 52.252.60.16
 
-* TODO mariadb upgrade
-
-- [X] web22 - 02.10.20 22:00
-- [X] web23 - 03.10.20 00:00
-- [X] web25 - 06.10.20 22:00
-- [X] web26 - 06.10.20 22:00
-- [X] web27 - 07.10.20 00:00
-- [X] web28 - 07.10.20 00:00
-- [X] web29 - OK
-- [X] web30 - NOT OK
-- [X] web31 - 07.10.20 22:00
-- [X] web32 - 07.10.20 22:00
-- [X] web33 - 08.10.20 22:00
-- [X] web34 - OK
-- [X] web35 - 08.10.20 22:00
-- [X] web36 - 09.10.20 00:00
-  
 * TODO pacifier https://hastebin.intr/mevizulowi.pl
 
 * TODO influx continues query
