@@ -115,6 +115,9 @@ documentation /gnu/store/90wc27m5rafga3zjzkg6xdbf49rrz3w1-nix-2.0.4/share/doc/ni
 
 patchelf https://nixos.wiki/wiki/Packaging/Binaries#Creating_the_Derivation_for_upstream_Packaging
 
+* Learning
+- [[http://people.tamu.edu/~luke.adams/doxygen-nixpkgs/strings_8nix.html][nixpkgs builtins: lib/strings.nix File Reference]]
+
 * Cache
 - [[https://github.com/ghuntley/cachix-demo][ghuntley/cachix-demo]]
 - [[https://nixbuild.net/][nixbuild.net]]
