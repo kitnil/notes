@@ -317,6 +317,11 @@ Made up of multiple "generations".
 
 * Commands
 
+** nix-instantiate
+#+begin_src shell
+  nix-instantiate -E 'import <nixpkgs/nixos> { configuration = (import ./nixops-deployment.nix).web32; system = "x86_64-linux"; }'
+#+end_src
+
 ** GC
 #+begin_src shell
   nix-env -p /nix/var/nix/profiles/system --list-generations | awk -v date="$(date +%Y-%m)" '$0 !~ date { print $1 }' | xargs nix-env -p /nix/var/nix/profiles/system --delete-generations
