@@ -36,6 +36,7 @@ rerere-train.sh [COMMIT][--all]
 - [[https://github.com/gitblit/gitblit][gitblit/gitblit: pure java git solution]]
 
 * Tools
+- [[https://github.com/janniks/git-ignore][janniks/git-ignore: An interactive CLI to generate .gitignore files (written in Rust)]]
 - [[https://github.com/hutusi/git-paging][hutusi/git-paging: Treat git log as a book, exec `git next` or `git prev` to checkout the next or the previous commit.]]
 - [[https://github.com/geongeorge/Git-User-Switch][geongeorge/Git-User-Switch: Switch git user and email at ease]]
 - [[https://github.com/joshmcgrath08/multigitstatus][joshmcgrath08/multigitstatus: Monitor multiple Git repos in a terminal]]
