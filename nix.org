@@ -99,6 +99,25 @@ Imperatively
 
 #+END_SRC
 
+- nix exec
+#+begin_example
+  nix.extraOptions = ''
+        plugin-files = ${pkgs.nix-plugins.override { nix = config.nix.package; }}/lib/nix/plugins/libnix-extra-builtins.so
+        extra-builtins-file = /etc/nixos/extra-builtins.nix
+    '';
+
+  /etc/nixos/extra-builtins.nix:
+
+  { exec, ... }: {
+    #pass = name: exec [ "sh" "-c" ''echo "\"$(pass ${name})\""'' ];
+    vault = key: field: exec [ "vault" "kv" "get" "-format=json" "-field=${field}" key ];
+  }
+
+  nix-repl> builtins.extraBuiltins.vault "secret/jenkins" "user"     
+  "admin"nix-repl> builtins.extraBuiltins.vault "secret/jenkins" "password"
+  "gah!"
+#+end_example
+
 - nix-prefetch-url
 
 https://github.com/NixOS/nix/issues/1880
