@@ -77,6 +77,38 @@ https://gitlab.com/janneke/guix.git
     : docker run -d --name guix registry.gitlab.com/daym/guix-on-docker
     : docker exec guix guix pack hello
 
+  - mailing list Message-ID: <87k0u9x075.fsf@ambrevar.xyz>
+#+begin_example
+(defvar ambrevar/known-mailing-list-archives
+  '(("help-guix@gnu.org" . "guix-user")
+    ("guix-devel@gnu.org" . "guix-devel")
+    ("guix-bugs" . "guix-bugs")
+    ("guix-patches" . "guix-patches"))
+  "Alist of mail adresses and their Yhetil name.")
+
+(defun ambrevar/guess-yhetil-link (message-id)
+  (let* ((all-addresses
+          (mapcar #'second
+                  (mail-extract-address-components
+                   (mapconcat #'identity
+                              (list
+                               (notmuch-show-get-header :To)
+                               (notmuch-show-get-header :Cc))
+                              ", ")
+                   'all)))
+         (mailing-list
+          (cdr (seq-find
+                (lambda (pair)
+                  (member (car pair) all-addresses))
+                ambrevar/known-mailing-list-archives))))
+    (when mailing-list
+      (concat "https://yhetil.org/"
+              mailing-list "/" message-id))))
+
+(add-to-list 'notmuch-show-stash-mlarchive-link-alist
+             (cons "Yhetil" #'ambrevar/guess-yhetil-link))
+#+end_example
+
   - geiser
 #+begin_quote
 > ELISP> (require 'guix-repl)
