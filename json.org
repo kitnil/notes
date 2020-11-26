@@ -51,3 +51,6 @@ with =jc= utility, piped to =jq= to filter, and to =jtbl= generate a table:
 - [[https://github.com/google/jsonnet][google/jsonnet: Jsonnet - The data templating language]]
 - [[https://github.com/google/go-jsonnet][google/go-jsonnet]]
 - [[https://github.com/sclevine/yj][sclevine/yj: CLI - Convert between YAML, TOML, JSON, and HCL]]
+
+* Programs
+- json_pp
