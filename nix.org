@@ -15,6 +15,7 @@ nix-repl> mynixos2.config.environment.etc."mailman.cfg".text
 - Create .envrc for project directories
 : for file in $(echo */default.nix); do (output="$(dirname "$file")"/.envrc; [[ -f $output ]] || echo 'use nixpkgs' >> "$output"); done
 
+- [[https://github.com/serokell/deploy-rs][serokell/deploy-rs: A Simple multi-profile Nix-flake deploy tool.]]
 - [[https://github.com/Mic92/nix-ld][Mic92/nix-ld: Run unpatched dynamic binaries on NixOS]]
 - [[https://github.com/cleverca22/not-os][cleverca22/not-os: An operating system generator, based on NixOS, that, given a config, outputs a small (47 MB), read-only squashfs for a runit-based operating system, with support for iPXE and signed boot.]]
 - [[https://kevincox.ca/2020/09/06/switching-to-desktop-nixos/][Switching to NixOS on my Desktop]]
