@@ -899,3 +899,9 @@ Shepherd package to use.
 * TODO S6_CMD_ARG0 [[https://github.com/just-containers/s6-overlay/blob/master/builder/overlay-rootfs/etc/s6/init/init-stage1][s6-overlay/init-stage1 at master · just-containers/s6-overlay]]
 
 * TODO router{1,2}.intr cannot resolve domains via nsX-XX.intr
+
+* TODO Fix LSP deprecation on my Emacs installation
+#+begin_quote
+LSP :: Connected to [jdtls:28364].
+LSP :: `company-lsp` is not supported anymore. Using `company-capf` as the `lsp-completion-p
+#+end_quote
