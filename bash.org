@@ -80,6 +80,9 @@
 
 * Cheatsheet
 
+  - Create array and loop over values (rg is similar to grep)
+    : mapfile -t output < <(rg emacs "$HOME/.local/share/chezmoi"); for match in "${output[@]}"; do echo $match; done
+
   - Close shell keeping all subprocess running
     : disown -a && exit
 
