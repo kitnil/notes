@@ -907,3 +907,5 @@ LSP :: `company-lsp` is not supported anymore. Using `company-capf` as the `lsp-
 #+end_quote
 
 * TODO Fix "zabbix_server -R config_cache_reload" error zabbix_server [5683]: cannot open PID file [/tmp/zabbix_server.pid]: [2] No such file or directory
+
+* TODO sudo -u postgres $(which pg_dump) zabbix > /srv/backups/zabbix-2020-11-29.psql
