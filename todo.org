@@ -905,3 +905,5 @@ Shepherd package to use.
 LSP :: Connected to [jdtls:28364].
 LSP :: `company-lsp` is not supported anymore. Using `company-capf` as the `lsp-completion-p
 #+end_quote
+
+* TODO Fix "zabbix_server -R config_cache_reload" error zabbix_server [5683]: cannot open PID file [/tmp/zabbix_server.pid]: [2] No such file or directory
