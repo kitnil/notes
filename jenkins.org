@@ -19,6 +19,9 @@ NOTE: "pipeline" equal to "workflow".
 * Plugins
 - https://github.com/jenkinsci/workflow-aggregator-plugin
 
+* Pitfalls
+- [[https://issues.jenkins.io/browse/JENKINS-41929?focusedCommentId=401081&page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-401081]["Build with Parameters" on first build when declarative Jenkinsfile found]]
+
 * Conference
 - [[https://github.com/jenkinsci/ui-ux-hackfest-2020/tree/master/presentations][ui-ux-hackfest-2020/presentations at master · jenkinsci/ui-ux-hackfest-2020]]
 
