@@ -100,6 +100,13 @@ Imperatively
 
 #+END_SRC
 
+- flake
+    # trace: { inputs = { nixpkgs = <CODE>; }; lastModified = 1606768306; lastModifiedDate = "20201130203146"; narHash = "sha256-wiHRIBbdMtmeSXmKmTagM/mmH6lB4N4Pl7nIZu8/ScU="; outPath = "/nix/store/awr10nfsfvpbh9irpqg077yw748a1pzm-source"; outputs = { packages = <CODE>; }; packages = <CODE>; rev = "42f2b9d816eebb82917067830fd493b276d8bdce"; revCount = 775; shortRev = "42f2b9d"; sourceInfo = { lastModified = 1606768306; lastModifiedDate = "20201130203146"; narHash = "sha256-wiHRIBbdMtmeSXmKmTagM/mmH6lB4N4Pl7nIZu8/ScU="; outPath = "/nix/store/awr10nfsfvpbh9irpqg077yw748a1pzm-source"; rev = "42f2b9d816eebb82917067830fd493b276d8bdce"; revCount = 775; shortRev = "42f2b9d"; submodules = false; }; submodules = false; }
+
+    # packages.x86_64-linux.hello = nixpkgs.lib.traceVal majordomo.outputs.packages.x86_64-linux.redis-cli;
+
+    # defaultPackage.x86_64-linux = self.packages.x86_64-linux.container;
+
 - nix exec
 #+begin_example
   nix.extraOptions = ''
