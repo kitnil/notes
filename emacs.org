@@ -93,6 +93,8 @@
 
 * Misc
 
+  - [[https://web.archive.org/web/20070703163718/http://www.shellarchive.co.uk/Emacs.html][<m25z5n6e6y.fsf@gmail.com> Mouse-hovering over 'mouse-face' overlays/regions on a TTY Emacs]]
+
   - Delete holidays
   #+begin_src emacs-lisp
     (setq general-holidays nil)
