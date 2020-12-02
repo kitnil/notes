@@ -529,6 +529,8 @@ $2 = ((repository (version 0) (url "https://git.savannah.gnu.org/git/guix.git") 
 
   - eval `guix package --search-paths=prefix`
 
+  - <874kl5dh7j.fsf@ambrevar.xyz> Workflow with mu4e + magit for sending patchsets to guix
+
   - https://patchwork.cbaines.net/
 
   - http://prototype-guix-weekly-news.cbaines.net/en_US/2019/44.html
