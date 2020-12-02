@@ -73,6 +73,8 @@ https://gitlab.com/janneke/guix.git
 
 * Cheat sheet
 
+  - GUIX_DAEMON_SOCKET=ssh://example.com guix build hello
+
   - <87eekdrcrw.fsf@gnu.org> services: unattended-upgrade: 'search-paths' field.
 
   - <87k0u8v42a.fsf@ambrevar.xyz> Re: Workflow with mu4e + magit for sending patchsets to guix?
