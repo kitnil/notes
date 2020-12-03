@@ -2,6 +2,7 @@
 * Generators
 
 - [[https://github.com/batsh-dev-team/Batsh][batsh-dev-team/Batsh: A language that compiles to Bash and Windows Batch]]
+  + print output to console with =bats -t= and =echo "$output" >&3=
 
 * Tests
 
