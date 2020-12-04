@@ -1,4 +1,5 @@
 - [[https://github.com/hellogcc/100-gdb-tips][hellogcc/100-gdb-tips: A collection of gdb tips. 100 maybe just mean many here.]]
+- https://github.com/cs01/pygdbmi
 - Apply core dump
   : gdb --batch -ex "thread apply all bt full" --core /path/to/core.xxxxx /path/to/named | tee gdb.txt
   https://gitlab.isc.org/isc-projects/bind9/-/issues/1051
