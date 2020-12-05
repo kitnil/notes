@@ -1,5 +1,7 @@
 * Cheat sheet
 
+- strace -c -e stat guix --version
+
 - strace -e open |& grep -v SIGAL
 
 - strace -e trace=networkg
