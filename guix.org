@@ -74,8 +74,8 @@ https://gitlab.com/janneke/guix.git
 * Cheat sheet
 
   - guix-daemon C
-C_INCLUDE_PATH=/home/oleg/src/guix-master/nix:/home/oleg/src/guix-master/nix/libutil:/home/oleg/.guix-profile/include
-CPLUS_INCLUDE_PATH=/home/oleg/src/guix-master/nix:/home/oleg/src/guix-master/nix/libutil:/home/oleg/.guix-profile/include/c++:/home/oleg/.guix-profile/include
+C_INCLUDE_PATH=/home/oleg/src/guix-master/nix:/home/oleg/src/guix-master/nix/libutil:/home/oleg/.guix-profile/include/c++/tr1:/home/oleg/.guix-profile/include/linux:/home/oleg/.guix-profile/include
+CPLUS_INCLUDE_PATH=/home/oleg/src/guix-master/nix:/home/oleg/src/guix-master/nix/libutil:/home/oleg/.guix-profile/include/linux:/home/oleg/.guix-profile/include/c++/tr1:/home/oleg/.guix-profile/include/c++:/home/oleg/.guix-profile/include
 
   - GUIX_DAEMON_SOCKET=ssh://example.com guix build hello
 
