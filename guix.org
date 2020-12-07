@@ -73,6 +73,8 @@ https://gitlab.com/janneke/guix.git
 
 * Cheat sheet
 
+  - <86eek28i82.fsf@gmail.com> Re: Bugs squashing in Org-mode
+
   - guix-daemon C
 eval "$(guix environment --search-paths guix)"
 export C_INCLUDE_PATH="$HOME"/src/guix-master/nix:"$HOME"/src/guix-master/nix/libutil:"$C_INCLUDE_PATH"
