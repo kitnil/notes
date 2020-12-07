@@ -187,6 +187,9 @@ degradation:
 
 vmtouch
 
+* Privileges
+: echo 1 > /proc/sys/kernel/unprivileged_userns_clone
+
 * Networking
 
 oleg@guixsd ~$ ss --numeric --tcp --listening --no-header --oneline --processes '( sport = :5901 )'
