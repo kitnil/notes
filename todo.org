@@ -909,3 +909,6 @@ LSP :: `company-lsp` is not supported anymore. Using `company-capf` as the `lsp-
 * TODO Fix "zabbix_server -R config_cache_reload" error zabbix_server [5683]: cannot open PID file [/tmp/zabbix_server.pid]: [2] No such file or directory
 
 * TODO sudo -u postgres $(which pg_dump) zabbix > /srv/backups/zabbix-2020-11-29.psql
+
+* TODO [[https://github.com/NixOS/nix/issues/4252][builtins.fetchGit can fail with "error: cannot lock ref [...]" · Issue #4252 · NixOS/nix]]
+: error: cannot lock ref 'refs/heads/master'
