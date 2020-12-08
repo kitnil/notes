@@ -912,3 +912,5 @@ LSP :: `company-lsp` is not supported anymore. Using `company-capf` as the `lsp-
 
 * TODO [[https://github.com/NixOS/nix/issues/4252][builtins.fetchGit can fail with "error: cannot lock ref [...]" · Issue #4252 · NixOS/nix]]
 : error: cannot lock ref 'refs/heads/master'
+
+* TODO [[https://distrowatch.com/11099][Distribution Release: NethServer 7.9]]
