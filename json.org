@@ -52,5 +52,8 @@ with =jc= utility, piped to =jq= to filter, and to =jtbl= generate a table:
 - [[https://github.com/google/go-jsonnet][google/go-jsonnet]]
 - [[https://github.com/sclevine/yj][sclevine/yj: CLI - Convert between YAML, TOML, JSON, and HCL]]
 
+* Examples
+: ssh web15.intr ifconfig | jc --ifconfig | jq --raw-output '[.[] | select(.mac_addr != null) | select(.ipv4_addr != null) | select(.name != "docker0") | {"name": .name, "mac": .mac_addr, "addr": .ipv4_addr, "mask": .ipv4_mask}]'
+
 * Programs
 - json_pp
