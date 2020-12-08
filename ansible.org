@@ -12,6 +12,17 @@
             DOCKER_OPTS="-H tcp://{{ ansible_all_ipv4_addresses | ipaddr('172.16.103.0/24') | first }}:2375 -H unix:///var/run/docker.sock"
 #+end_src
 
+- ubuntu 14.04 interfaces
+#+begin_src yaml
+  - hosts: web_ubuntu
+    tasks:
+      - set_fact: interfaces="{{ ansible_interfaces | select('match', '^(em|p|eth|br)[0-9]+') | map('regex_replace', '^(.*)$', 'ansible_\\1') | list | unique }}"
+      - debug: var=interfaces
+      - debug: msg="{{ interfaces | map('extract', hostvars[inventory_hostname], 'macaddress') | select('defined') | list | unique }}"
+      - debug: msg="{{ interfaces | map('extract', hostvars[inventory_hostname], 'ipv4') | select('defined') | list }}"
+      - debug: msg="{{ interfaces | map('extract', hostvars[inventory_hostname], 'ipv4_secondaries') | select('defined') | list }}"
+#+end_src
+
 - netplan
 #+begin_src yaml
   - hosts: kubernetes
