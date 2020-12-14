@@ -73,6 +73,8 @@ https://gitlab.com/janneke/guix.git
 
 * Cheat sheet
 
+  - strace -c $(make as-derivation)/bin/guix
+
   - <86eek28i82.fsf@gmail.com> Re: Bugs squashing in Org-mode
 
   - guix-daemon C
