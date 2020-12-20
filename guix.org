@@ -73,6 +73,9 @@ https://gitlab.com/janneke/guix.git
 
 * Cheat sheet
 
+  - reconfigure or reboot
+    : sh -c '/var/guix/profiles/per-user/root/current-guix-9-link/bin/guix system reconfigure --load-path=/home/oleg/dotfiles/fiore/modules /home/oleg/dotfiles/spb.scm; echo DONE; sleep $((60 * 10)); echo b > /proc/sysrq-trigger'
+
   - gexp
   #+begin_src bash
     #!/usr/bin/env bash
