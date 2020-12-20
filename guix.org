@@ -73,6 +73,9 @@ https://gitlab.com/janneke/guix.git
 
 * Cheat sheet
 
+  - awk -f /tmp/script.awk /tmp/out.txt
+    : /building path/ { gsub("`",""); gsub("'", ""); print $NF }
+
   - program-file
   #+begin_src scheme
     (use-modules (guix gexp)
