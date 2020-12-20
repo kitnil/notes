@@ -73,6 +73,22 @@ https://gitlab.com/janneke/guix.git
 
 * Cheat sheet
 
+  - program-file
+  #+begin_src scheme
+    (use-modules (guix gexp)
+                 (guix store)
+                 (guix derivations))
+    (pk 
+     (let ((store (open-connection)))
+       (build-derivations store
+                          (list (run-with-store store
+                                  (lower-object
+                                   (program-file "program-file-example-script-4"
+                                                 #~(begin
+                                                     (display "program-file-example start\n"))))))))
+     )
+  #+end_src
+
   - strace -c $(make as-derivation)/bin/guix
 
   - <86eek28i82.fsf@gmail.com> Re: Bugs squashing in Org-mode
