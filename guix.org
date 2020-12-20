@@ -73,8 +73,24 @@ https://gitlab.com/janneke/guix.git
 
 * Cheat sheet
 
-  - awk -f /tmp/script.awk /tmp/out.txt
-    : /building path/ { gsub("`",""); gsub("'", ""); print $NF }
+  - gexp
+  #+begin_src bash
+    #!/usr/bin/env bash
+
+    cat > /tmp/script.awk <<'EOF'
+    /building path/ { gsub("`",""); gsub("'", ""); print $NF }
+    EOF
+
+    out="$(guile --no-auto-compile /tmp/gexp/run.scm 2>&1)"
+
+    if [[ $out == *"building path"* ]]
+    then
+        script="$(echo "$out" | awk -f /tmp/script.awk)"
+        eval "$script"
+    else
+        echo "$out"
+    fi
+  #+end_src
 
   - program-file
   #+begin_src scheme
