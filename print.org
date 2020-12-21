@@ -1,0 +1,15 @@
+- [[https://joshuakugler.com/the-dreaded-xsane-invalid-argument-and-an-easy-fix.html][The dreaded xsane "Invalid argument" and an easy fix - TechOpinionation]]
+  Works for scanner on HP LaserJet 3055.
+#+begin_quote
+I was trying to get scanning working yesterday on my HP LaserJet 3390. However, I was hitting the dreaded message about
+
+failed to open device hpaio:/net/<my_device_here> Invalid argument
+
+I tried just about everything. I read gobs of results in Google. Some said to upgrade HP LIP, some said to downgrade it. I manually compiled and installed two different versions from http://hplipopensource.com/hplip-web/index.html. Made sure my user was in the right groups. Made sure the hpaio xsane libraries were in the proper place.
+
+Nothing.
+
+Finally, I found a suggestion buried in a three-year-old question here: https://answers.launchpad.net/hplip/+question/28585 (Comment six)
+
+All I had to do was go into the network settings, SNMP section, and enable read/write SNMP. Problem solved! Scanning worked! Took a lot of fiddling and reading to get there, but it was really that easy once I found the solution.
+#+end_quote
