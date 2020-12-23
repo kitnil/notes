@@ -73,7 +73,7 @@
 
 ** Test gateway
 
-- In =screen= session
+- In =screen= session press Ctrl+C if successful
   : sh -c 'ip r delete default; ip r add default via 172.16.103.208; sleep 10; ip r delete default; ip r add default via 172.16.103.1'
 
 * Traffic shaping
