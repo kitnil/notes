@@ -912,3 +912,6 @@ LSP :: `company-lsp` is not supported anymore. Using `company-capf` as the `lsp-
 
 * TODO [[https://distrowatch.com/11099][Distribution Release: NethServer 7.9]]
 - [[https://distrowatch.com/11098][Distribution Release: Univention Corporate Server 4.4-7]]
+
+* TODO jenkins.intr      
+2046 root      20   0  219412   3244   2784 R  23.3   0.0   0:32.10 chown --recursive jenkins:jenkins /var/lib/jenkins
