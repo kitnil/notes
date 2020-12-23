@@ -71,6 +71,11 @@
     frame check sequence:
 #+END_SRC
 
+** Test gateway
+
+- In =screen= session
+  : sh -c 'ip r delete default; ip r add default via 172.16.103.208; sleep 10; ip r delete default; ip r add default via 172.16.103.1'
+
 * Traffic shaping
 [[https://github.com/hkbakke/tc-gen][hkbakke/tc-gen: Modern linux traffic shaping made easy]]
 
