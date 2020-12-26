@@ -1,0 +1,53 @@
+* Installation
+
+#+begin_example
+  apt-get install     apt-transport-https     ca-certificates     curl     gnupg-agent     software-properties-common
+  curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+  apt-key fingerprint 0EBFCD88
+  add-apt-repository    "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+  apt-get update
+  apt-get install docker-ce docker-ce-cli containerd.io
+  docker pull mariadb:10.3.9
+  docker run --detach --network=host --name mariadb -v /var/lib/mysql:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=31f2ae82b3e3 mariadb:10.3.9
+  docker exec -it mariadb mysql
+  ip a
+  docker run --name glpi --network=host --volume /var/www/html/glpi:/var/www/html/glpi --detach diouxx/glpi
+  docker logs -f glpi 
+  docker exec -it mariadb mysql
+  docker exec -it mariadb mysql -p31f2ae82b3e3 -uroot
+  docker logs -f glpi 
+  #docker exec -it mariadb mysql -p31f2ae82b3e3 -uroot
+  ls /var/lib/mysql/s
+  ls /var/lib/mysql/
+  docker exec -it mariadb mysqldump -p31f2ae82b3e3 -uroot glpi > glpi.sql
+  less glpi.sql
+  tar cf glpi.tar -C /var/www/html glpi 
+  tar tf glpi.tar |head
+  grep -RF 178.250.244.239 /var/www/html/glpi/
+  grep 178.250.244.239 glpi.sql 
+  ip a
+  reboot
+  ss -tupn
+  ss -tupln
+  ip a
+  nano /etc/netplan/01-netcfg.yaml 
+  netplan apply 
+  ip a
+  docker ps
+  docker ps -a
+  docker start mariadb 
+  docker container update --restart unless-stopped mariadb 
+  docker container update --restart unless-stopped glpi 
+  docker start glpi
+  mv /var/www/html/glpi/install/install.php .
+  ls
+  mkdir src/glpi
+  mkdir -p src/glpi
+  git init --bare src/glpi
+  alias glpi='git --git-dir=/root/src/glpi --work-tree=/var/www/html'
+  glpi status
+  glpi add -A
+  glpi commit -m 'Initial commit'
+  glpi diff
+  echo "alias glpi='git --git-dir=/root/src/glpi --work-tree=/var/www/html'" >> .bashrc 
+#+end_example
