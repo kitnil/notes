@@ -73,6 +73,20 @@ https://gitlab.com/janneke/guix.git
 
 * Cheat sheet
 
+  - wayland sway via sddm
+    #+begin_src scheme
+      (service sddm-service-type
+               ;; Logs to ~/.local/share/sddm/wayland-session.log.
+               (sddm-configuration
+                (auto-login-user "nckx") (relogin? #t)
+                (auto-login-session "sway.desktop")
+                (display-server "wayland")
+                (minimum-vt 1)
+                (xorg-configuration
+                 (xorg-configuration
+                  (keyboard-layout keyboard-layout)))))
+    #+end_src
+
   - reconfigure or reboot (press Ctrl+C if reconfigure succeeded and machines is available via SSH)
     : sh -c '/var/guix/profiles/per-user/root/current-guix-9-link/bin/guix system reconfigure --load-path=/home/oleg/dotfiles/fiore/modules /home/oleg/dotfiles/spb.scm; echo DONE; sleep $((60 * 10)); echo b > /proc/sysrq-trigger'
 
