@@ -73,6 +73,15 @@ https://gitlab.com/janneke/guix.git
 
 * Cheat sheet
 
+  - SBCL (StumpWM)
+  #+begin_src lisp
+    (let* ((guix-profile (pathname-as-directory (getenv "GUIX_PROFILE")))
+           (module-dir (merge-pathnames "share/common-lisp/sbcl/" guix-profile)))
+      (set-module-dir module-dir))
+
+    (load-module "ttf-fonts")
+  #+end_src
+
   - spell check
 #+begin_quote
 Subject: Re: Why Emacs config file disables Welcome message only if this line places to .emacs but not in .emacs.d/init.el
