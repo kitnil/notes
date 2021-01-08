@@ -73,6 +73,9 @@ https://gitlab.com/janneke/guix.git
 
 * Cheat sheet
 
+  - How can I have a static IP on one NIC and DHCP on the other?
+    Message-ID: <8828ff9c6f2127f6210443046b9011f7276ae0a1.camel@divoplade.fr>
+
   - SBCL (StumpWM)
   #+begin_src lisp
     (let* ((guix-profile (pathname-as-directory (getenv "GUIX_PROFILE")))
