@@ -73,6 +73,38 @@ https://gitlab.com/janneke/guix.git
 
 * Cheat sheet
 
+  - spell check
+#+begin_quote
+Subject: Re: Why Emacs config file disables Welcome message only if this line places to .emacs but not in .emacs.d/init.el
+Date: Mon, 04 Jan 2021 19:16:33 +0300 (4 days, 47 minutes, 59 seconds ago)
+Message-ID: <87zh1or82m.fsf@gmail.com>
+
+> My next step is russian spell check. Need to have some basics of how to deal with this great instrument!
+
+Here is my configuration:
+
+1. I installed "aspell", "aspell-dict-en", and "aspell-dict-ru" packages.
+
+2. I put the following into my ~/.bash_profile:
+   (Perhaps, this step is not needed: I don't know if it is
+   auto-configured by Guix nowadays; it was not in the past)
+
+    aspell_dir="<my-guix-profile>/lib/aspell"
+    if [ -d $aspell_dir ]; then
+        export ASPELL_CONF="dict-dir $aspell_dir"
+    fi
+
+3. Now, you should be able to select "ru-..." languages after
+   "M-x ispell-change-dictionary".
+   You can even set it as default in your emacs config like this:
+
+   (with-eval-after-load 'ispell
+     (ispell-change-dictionary "ru-yeyo" 'global))
+
+4. Finally, you can use commands like "ispell-word" (bound to "M-$") or
+   "ispell-region".
+#+end_quote
+
   - wayland sway via sddm
     #+begin_src scheme
       (service sddm-service-type
