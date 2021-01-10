@@ -8,9 +8,9 @@
 
 * VLAN
 
-| cisco       | tp-link  |
-| access mode | untagged |
-| trunk       | tagged   |
+| cisco       | tp-link       |
+| access port | untagged port |
+| trunk port  | tagged port   |
 
 * Scan
 - [[https://github.com/marco-lancini/goscan][marco-lancini/goscan: Interactive Network Scanner]]
