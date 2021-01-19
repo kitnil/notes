@@ -78,3 +78,60 @@
   # TODO: -device usb-host,hostbus=2,hostaddr=4 \
 
 #+END_SRC
+
+* Snapshot
+
+Source [[https://blog.programster.org/qemu-img-cheatsheet][Qemu-img Cheatsheet | Programster's Blog]]
+
+** Create Snapshot
+#+begin_example
+sup@kvm34:~$ sudo /usr/bin/virsh destroy vm33154
+#+end_example
+
+#+begin_example
+sup@kvm34:~$ sudo /usr/bin/qemu-img snapshot -c backup /kvm/disks/vm33154.qcow2
+#+end_example
+
+#+begin_example
+sup@kvm34:~$ sudo /usr/bin/qemu-img snapshot -l /kvm/disks/vm33154.qcow2
+Snapshot list:
+ID        TAG                 VM SIZE                DATE       VM CLOCK
+1         backup      0 2021-01-19 15:47:15   00:00:00.000
+
+sup@kvm34:~$ sudo /usr/bin/virsh start vm33154
+Domain vm33154 started
+#+end_example
+
+** Delete Snapshot
+
+#+begin_example
+sup@kvm34:~$ sudo /usr/bin/virsh destroy vm33154
+#+end_example
+
+#+begin_example
+sup@kvm34:~$ sudo /usr/bin/qemu-img snapshot -d backup /kvm/disks/vm33154.qcow2
+#+end_example
+
+#+begin_example
+sup@kvm34:~$ sudo /usr/bin/qemu-img snapshot -l /kvm/disks/vm33154.qcow2
+#+end_example
+
+#+begin_example
+sup@kvm34:~$ sudo /usr/bin/virsh start vm33154
+Domain vm33154 started
+#+end_example
+
+** Restore (Apply) Snapshot
+
+#+begin_example
+sup@kvm34:~$ sudo /usr/bin/virsh destroy vm33154
+#+end_example
+
+#+begin_example
+sup@kvm34:~$ sudo /usr/bin/qemu-img snapshot -a backup /kvm/disks/vm33154.qcow2
+#+end_example
+
+#+begin_example
+sup@kvm34:~$ sudo /usr/bin/virsh start vm33154
+Domain vm33154 started
+#+end_example
