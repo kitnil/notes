@@ -20,3 +20,22 @@ groovy:000> ({f1, f2 -> f1})("foo", "bar")
 ===> foo
 groovy:000> ({f1, f2 -> f2})("foo", "bar")
 ===> bar
+
+* Examples
+  #+begin_src groovy
+    #!/usr/bin/env groovy
+
+    List<String> deployments = ["ns", "router", "swarm", "web", "nginx", "webmail", "jenkins"]
+    List<String> releases = ["20.09", "unstable"]
+    buildJobs = releases.collect({ release ->
+            deployments.collect({ deployment ->
+                    [(release): {
+                            ansiColor("xterm") {
+                                println("nix-shell -I https://nixos.org/channels/nixos-${release}/nixexprs.tar.xz --run 'nixops deploy -d ${deployment} --show-trace --build-only'")
+                            }
+                        }]
+                })
+        })
+
+    println(buildJobs)
+  #+end_src
