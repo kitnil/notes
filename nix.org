@@ -113,6 +113,8 @@ Imperatively
 
     # defaultPackage.x86_64-linux = self.packages.x86_64-linux.container;
 
+    : nix flake update --override-input majordomo 'git+file:///home/oleg/majordomo/_ci/nixpkgs'
+
 - nix exec
 #+begin_example
   nix.extraOptions = ''
