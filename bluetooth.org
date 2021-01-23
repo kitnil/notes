@@ -1,0 +1,64 @@
+* Connect bluetooth headphones on GuixSD
+
+I connect WH-CH510 to my PC running GuixSD.
+
+Following [[https://lists.gnu.org/archive/html/help-guix/2018-10/msg00046.html][Re: Bluetooth audio device on GuixSD]]
+#+begin_src scheme
+  (bluetooth-service #:auto-enable? #t)
+#+end_src
+
+Following [[https://wiki.archlinux.org/index.php/Bluetooth#Pairing][Bluetooth - ArchWiki]]
+#+begin_example
+[bluetooth]# agent KeyboardOnly
+Agent is already registered
+[bluetooth]# default-agent
+Default agent request successful
+[bluetooth]# power on
+Changing power on succeeded
+[bluetooth]# scan on
+Failed to start discovery: org.bluez.Error.InProgress
+[CHG] Device 4D:2A:43:AF:54:71 ManufacturerData Key: 0x004c
+[CHG] Device 4D:2A:43:AF:54:71 ManufacturerData Value:
+  10 06 5a 1e d6 b3 eb 24                          ..Z....$        
+[NEW] Device 74:45:CE:43:43:C9 WH-CH510
+[CHG] Device 74:45:CE:43:43:C9 RSSI: -60
+[CHG] Device 74:45:CE:43:43:C9 UUIDs: 00001101-0000-1000-8000-00805f9b34fb
+[CHG] Device 74:45:CE:43:43:C9 UUIDs: 00001131-0000-1000-8000-00805f9b34fb
+[CHG] Device 74:45:CE:43:43:C9 UUIDs: 00001108-0000-1000-8000-00805f9b34fb
+[CHG] Device 74:45:CE:43:43:C9 UUIDs: 00001203-0000-1000-8000-00805f9b34fb
+[CHG] Device 74:45:CE:43:43:C9 UUIDs: 0000111e-0000-1000-8000-00805f9b34fb
+[CHG] Device 74:45:CE:43:43:C9 UUIDs: 0000110c-0000-1000-8000-00805f9b34fb
+[CHG] Device 74:45:CE:43:43:C9 UUIDs: 0000110f-0000-1000-8000-00805f9b34fb
+[CHG] Device 74:45:CE:43:43:C9 UUIDs: 0000110e-0000-1000-8000-00805f9b34fb
+[CHG] Device 74:45:CE:43:43:C9 UUIDs: 0000110b-0000-1000-8000-00805f9b34fb
+[CHG] Device 74:45:CE:43:43:C9 UUIDs: 00001200-0000-1000-8000-00805f9b34fb
+[CHG] Device 74:45:CE:43:43:C9 UUIDs: 00001000-0000-1000-8000-00805f9b34fb
+[bluetooth]# pair 74:45:CE:43:43:C9
+Attempting to pair with 74:45:CE:43:43:C9
+[CHG] Device 74:45:CE:43:43:C9 Connected: yes
+[CHG] Device 74:45:CE:43:43:C9 Modalias: bluetooth:v005Dp223Bd0100
+[CHG] Device 74:45:CE:43:43:C9 UUIDs: 00001101-0000-1000-8000-00805f9b34fb
+[CHG] Device 74:45:CE:43:43:C9 UUIDs: 00001108-0000-1000-8000-00805f9b34fb
+[CHG] Device 74:45:CE:43:43:C9 UUIDs: 0000110b-0000-1000-8000-00805f9b34fb
+[CHG] Device 74:45:CE:43:43:C9 UUIDs: 0000110c-0000-1000-8000-00805f9b34fb
+[CHG] Device 74:45:CE:43:43:C9 UUIDs: 0000110e-0000-1000-8000-00805f9b34fb
+[CHG] Device 74:45:CE:43:43:C9 UUIDs: 0000111e-0000-1000-8000-00805f9b34fb
+[CHG] Device 74:45:CE:43:43:C9 UUIDs: 00001200-0000-1000-8000-00805f9b34fb
+[CHG] Device 74:45:CE:43:43:C9 ServicesResolved: yes
+[CHG] Device 74:45:CE:43:43:C9 Paired: yes
+Pairing successful
+[CHG] Device 74:45:CE:43:43:C9 ServicesResolved: no
+[CHG] Device 74:45:CE:43:43:C9 Connected: no
+[bluetooth]# connect 74:45:CE:43:43:C9
+Attempting to connect to 74:45:CE:43:43:C9
+[CHG] Device 74:45:CE:43:43:C9 Connected: yes
+Connection successful
+[CHG] Device 74:45:CE:43:43:C9 ServicesResolved: yes
+[CHG] Device 4D:2A:43:AF:54:71 ManufacturerData Key: 0x004c
+[CHG] Device 4D:2A:43:AF:54:71 ManufacturerData Value:
+  10 06 1a 1a d6 b3 eb 20                          .......         
+[CHG] Device 4D:2A:43:AF:54:71 ManufacturerData Key: 0x004c
+[CHG] Device 4D:2A:43:AF:54:71 ManufacturerData Value:
+  10 06 5a 1e d6 b3 eb 20                          ..Z....         
+[CHG] Device C4:AB:7F:EB:2B:17 RSSI: -60
+#+end_example
