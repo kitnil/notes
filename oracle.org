@@ -76,3 +76,7 @@ default via 10.0.1.1 dev ens3
 10.0.1.0/24 dev ens3 proto kernel scope link src 10.0.1.2 
 169.254.0.0/16 dev ens3 proto static scope link 
 169.254.0.0/16 dev ens3 scope link metric 1002 
+
+* 
+
+- [[https://github.com/oracle/centos2ol][oracle/centos2ol: Script and documentation to switch CentOS Linux to Oracle Linux]]
