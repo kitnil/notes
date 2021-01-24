@@ -94,7 +94,7 @@ Aric
     (add-hook 'message-send-hook 'change-stream-type)
   #+end_src
 
-  Mail Labels
+  Mail headers
   #+begin_src emacs-lisp
     (setq gnus-visible-headers
           '( "^From:"
