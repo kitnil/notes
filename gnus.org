@@ -93,3 +93,32 @@ Aric
 
     (add-hook 'message-send-hook 'change-stream-type)
   #+end_src
+
+  Mail Labels
+  #+begin_src emacs-lisp
+    (setq gnus-visible-headers
+          '( "^From:"
+             "^Newsgroups:"
+             "^Subject:"
+             "^Date:"
+             "^Message-ID:"
+             "^Supersedes:"
+             "^Followup-To:"
+             "^Reply-To:"
+    ;;       "^Summary:"
+    ;;       "^Keywords:"
+    ;;       "^Importance:"
+             "^To:"
+             "^Cc:"
+             "^Bcc:"
+    ;;       "^Gnus-Warning:"
+             "^X-Face-Img:"
+             "^User-Agent:"
+             "^X-Mailer:"
+             "^X-Mailreader:"
+             "^X-Newsreader:"
+             "^X-User-Agent:"
+    ;;       "^X-Now-Playing:"
+    ;;       "^Content-Type:"
+             "^X-Spam-Status:"))
+  #+end_src
