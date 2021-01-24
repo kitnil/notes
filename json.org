@@ -51,6 +51,7 @@ with =jc= utility, piped to =jq= to filter, and to =jtbl= generate a table:
 - [[https://github.com/google/jsonnet][google/jsonnet: Jsonnet - The data templating language]]
 - [[https://github.com/google/go-jsonnet][google/go-jsonnet]]
 - [[https://github.com/sclevine/yj][sclevine/yj: CLI - Convert between YAML, TOML, JSON, and HCL]]
+- [[https://github.com/alash3al/re-txt][alash3al/re-txt: converts text-formats from one to another, it is very useful if you want to re-format a json file to yaml, toml to yaml, csv to yaml, ... etc]]
 
 * Examples
 : ssh web15.intr ifconfig | jc --ifconfig | jq --raw-output '[.[] | select(.mac_addr != null) | select(.ipv4_addr != null) | select(.name != "docker0") | {"name": .name, "mac": .mac_addr, "addr": .ipv4_addr, "mask": .ipv4_mask}]'
