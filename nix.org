@@ -79,7 +79,6 @@ nix-repl> mynixos2.config.environment.etc."mailman.cfg".text
 - [[https://github.com/VanCoding/node_modules.nix][VanCoding/node_modules.nix: A nix library to turn your package-lock.json into a fully populated node_modules directory]]
 - [[https://github.com/colemickens/nixos-flake-example][colemickens/nixos-flake-example: This is a demo NixOS config, with optional flakes support. Along with notes on why flakes is useful and worth adopting.]]
 - [[https://github.com/nixinator/nixpkgs-gourse][nixinator/nixpkgs-gourse: A visualization of the nixpkgs repo using gourse with a handy nix-shell and github avatars]]
-- [[https://github.com/jethrokuan/nix][jethrokuan/nix: NixOS configuration with Nix flakes]]
 
 : oleg@guixsd ~/majordomo/_ci/nixpkgs$ nix-instantiate --expr 'with import <nixpkgs> {}; lib.filter (package: lib.isDerivation package) (map (package: package.src) (lib.filter (package: lib.hasAttrByPath ["src"] package) (import ./build.nix)))'
 
@@ -158,6 +157,9 @@ https://github.com/NixOS/nix/issues/1880
 documentation /gnu/store/90wc27m5rafga3zjzkg6xdbf49rrz3w1-nix-2.0.4/share/doc/nix/manual/index.html
 
 patchelf https://nixos.wiki/wiki/Packaging/Binaries#Creating_the_Derivation_for_upstream_Packaging
+
+* Configurations
+- [[https://github.com/jethrokuan/nix][jethrokuan/nix: NixOS configuration with Nix flakes]]
 
 * Learning
 - [[http://people.tamu.edu/~luke.adams/doxygen-nixpkgs/strings_8nix.html][nixpkgs builtins: lib/strings.nix File Reference]]
