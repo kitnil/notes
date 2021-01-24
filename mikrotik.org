@@ -42,3 +42,5 @@ https://itproffi.ru/nastrojka-nat-na-marshrutizatorah-mikrotik/
 - chain :: srcnat
 - out-interface :: wan0
 - actrion :: masquerade
+
+- [[https://github.com/Plommonsorbet/nix-mikrotik][Plommonsorbet/nix-mikrotik]]
