@@ -124,6 +124,14 @@ Imperatively
     : nix flake update --override-input majordomo 'git+file:///home/oleg/majordomo/_ci/nixpkgs'
     : nix flake update --update-input majordomo
 
+    : nix develop
+    #+begin_src nix
+      devShell = { nixpkgs }: with import nixpkgs; stdenv.mkDerivation {
+        name = "packer-environment";
+        buildInputs = [ packer (callPackage ./default.nix {}) ];
+      };
+    #+end_src
+
 - nix exec
 #+begin_example
   nix.extraOptions = ''
