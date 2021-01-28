@@ -286,3 +286,9 @@ https://github.com/iovisor/bcc/blob/master/QUICKSTART.md
   #+begin_src bash
     unshare -mrf strace -s 80 -o trace -ff  sh -c 'mount -t tmpfs -o ro none "/gnu/store"; /tmp/pack-dir/opt/bin/hello'
   #+end_src
+
+* sudo
+
+  =sudo= doesn't create /run/user/<UID> directory, instead you could use
+  =machinectl shell=, e.g:
+  : [user1@host:~]$ machinectl shell user2@
