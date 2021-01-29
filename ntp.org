@@ -2,7 +2,11 @@
   : LC_LANG=en_GB.UTF-8 date -d@$((0x`printf c%47s|nc -uw1 172.16.102.1 123|xxd -s40 -l4 -p`-64#23GDW0))
 
 - timedatectl
-  - timedatectl set-time "$(LC_LANG=en_GB.UTF-8 date -d@$((0x`printf c%47s|nc -uw1 172.16.102.1 123|xxd -s40 -l4 -p`-64#23GDW0)) | awk '{ print $(NF - 2) }')"
+  - print time on NTP server
+    : timedatectl set-time "$(LC_LANG=en_GB.UTF-8 date -d@$((0x`printf c%47s|nc -uw1 172.16.102.1 123|xxd -s40 -l4 -p`-64#23GDW0)) | awk '{ print $(NF - 2) }')"
+
+  - List time on servers
+    : ansible web -m shell -a 'timedatectl show' | grep '^TimeUSec'
 
 * Fix NTP on NixOS (NTP client is systemd-timesyncd.service (by default))
 
