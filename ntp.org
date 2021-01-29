@@ -3,3 +3,25 @@
 
 - timedatectl
   - timedatectl set-time "$(LC_LANG=en_GB.UTF-8 date -d@$((0x`printf c%47s|nc -uw1 172.16.102.1 123|xxd -s40 -l4 -p`-64#23GDW0)) | awk '{ print $(NF - 2) }')"
+
+* Fix NTP on NixOS (NTP client is systemd-timesyncd.service (by default))
+
+[root@web36:~]# nix-shell -p ntp
+[nix-shell:~]# cat /etc/ntp.conf 
+#+begin_example
+restrict default ignore
+restrict localhost
+restrict 127.0.0.1
+restrict 192.168.0.0 mask 255.255.0.0
+restrict 172.16.0.0 mask 255.255.0.0
+restrict 127.127.1.0
+
+server 172.16.102.1 iburst burst
+server 172.16.103.1 iburst burst
+
+server  127.127.1.0
+fudge   127.127.1.0 stratum 10
+
+driftfile /var/lib/ntp/drift
+#+end_example
+/nix/store/299n127f719fmwwk4any6bwhkd4wb676-ntp-4.2.8p15/bin/ntpd -qg
