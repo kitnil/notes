@@ -14,6 +14,9 @@
   : show system rollback 1 compare 0
   : show system rollback 2 compare 1
 
+- automate history
+  : sh -c 'f() { echo cli "show system rollback $1 compare $(($1 - 1))"; }; f 3'
+
 - rollback
   origin: https://forums.juniper.net/t5/Ethernet-Switching/Discarding-uncommitted-changes/td-p/89828
   : show | compare rollback 0
