@@ -132,6 +132,8 @@ Imperatively
       };
     #+end_src
 
+    - nix-shell ~/.nix-defexpr/channels/nixos-unstable -p nixFlakes '(nixos{}).nixos-rebuild'
+
 - nix exec
 #+begin_example
   nix.extraOptions = ''
