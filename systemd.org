@@ -3,3 +3,37 @@
 - journalctl CONTAINER_NAME=taskexecutor -f
 - [[https://github.com/alexdelorenzo/grub2systemd][grub2systemd]]
 - journalctl -o json --output-fields=MESSAGE,PRIORITY,_PID,SYSLOG_IDENTIFIER,_SYSTEMD_UNIT | grep -v 'iptables\|zabbix-agent' | lnav
+
+* 
+
+https://archlinux.org.ru/forum/topic/12616/
+
+#+begin_example
+[Unit]
+Description=Transmission BitTorrent Daemon
+After=network.target run-media-wigust-hdd.mount
+Requires=run-media-wigust-hdd.mount
+[Service]
+User=transmission
+Type=notify
+ExecStart=/usr/bin/transmission-daemon -f --log-error
+[Install]
+WantedBy=multi-user.target
+#+end_example
+
+#+begin_example
+[Unit]
+Description=MediaTomb Daemon
+After=network.target run-media-wigust-hdd.mount
+Requires=run-media-wigust-hdd.mount
+[Service]
+EnvironmentFile=/etc/conf.d/mediatomb
+ExecStart=/usr/bin/mediatomb -p $MT_PORT -u $MT_USER -g $MT_GROUP \
+  -P $MT_PIDFILE -l $MT_LOGFILE -m $MT_HOME -f $MT_CFGDIR $MT_OPTIONS
+Restart=on-failure
+RestartSec=5
+[Install]
+WantedBy=multi-user.target
+#+end_example
+
+[[https://shtsh.blogspot.com/2012/05/systemd.html][Немного о linux: Пробуем на вкус systemd]]
