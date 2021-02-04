@@ -13,6 +13,7 @@
   - =kubectl port-forward my-deployment-xxxxxxxxxx-xxxxx 8005:80 &=
 
 * Tools
+- [[https://github.com/darkbitio/k8s-mirror][darkbitio/k8s-mirror: Creates a local mirror of a Kubernetes cluster in a docker container to support offline reviewing]]
 - [[https://github.com/k0sproject/k0s][k0sproject/k0s: k0s - Zero Friction Kubernetes]]
 - [[https://github.com/kvaps/kubectl-build][kvaps/kubectl-build: Build dockerfiles directly in your Kubernetes cluster.]]
 - [[https://habr.com/ru/company/flant/blog/524196/#][Обзор k9s — продвинутого терминального интерфейса для Kubernetes]]
