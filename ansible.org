@@ -3,6 +3,13 @@
 - [[https://github.com/ansible-community/toolset][ansible-community/toolset: Ansible Toolset combines all ansible development tools in a single container: ansible, ansible-lint and molecule]]
 - [[https://github.com/roles-ansible/role-grafana-kiosk][roles-ansible/role-grafana-kiosk: Ansible role to deploy the grafana-kiosk]]
 
+- skip host key check
+#+begin_src json
+  "ansible_env_vars": [
+      "ANSIBLE_HOST_KEY_CHECKING=False"
+  ]
+#+end_src
+
 - ip address
 #+begin_src yaml
       - tags: docker
