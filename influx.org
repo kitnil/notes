@@ -40,3 +40,6 @@ bind-address = ":8088"
 
 * Alternatives
 - [[https://questdb.io/][QuestDB | Time series data, faster]]
+
+* High availability
+- [[https://github.com/influxdata/influxdb-relay][influxdata/influxdb-relay: Service to replicate InfluxDB data for high availability]]
