@@ -416,6 +416,14 @@ nix-store -q --tree "$(command -v basename)"
 /nix/store/<hash>-nix-<ver>/bin/nix-env --rollback
 #+END_SRC
 
+** Restore specific NixOS generation
+
+[[https://github.com/NixOS/nixpkgs/issues/24374][List-generations and rollback to any configuration · Issue #24374 · NixOS/nixpkgs]]
+#+begin_src sh
+sudo nix-env --switch-generation 12345 -p /nix/var/nix/profiles/system
+sudo /nix/var/nix/profiles/system/bin/switch-to-configuration switch
+#+end_src
+
 ** vm
 #+begin_example
   nixops.util.CommandFailed: command ‘['nix-build', '-I', 'nixops=/nix/store/jpn9dj9b1wlhdh5a2s3rassaghk1syn9-nixops-1.7pre0_abcdef/share/nix/nixops', '--arg', 'networkExprs', u'[ "/home/oleg/majordomo/_ci/nixops/jenkins.nix" ]', '--arg', 'args', '{}', '--argstr', 'uuid', u'af5d6207-11f8-11eb-bb11-0242659d6883', '--argstr', 'deploymentName', u'jenkins', '<nixops/eval-machine-info.nix>', '--arg', 'checkConfigurationOptions', 'false', '-A', 'nodes.jenkins-test.config.deployment.libvirtd.baseImage', '-o', '/run/user/1000/nixops-tmpeq23PB/libvirtd-image-jenkins-test']’ failed on machine ‘jenkins-test’ (exit code 100)''
