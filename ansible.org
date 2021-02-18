@@ -3,6 +3,16 @@
 - [[https://github.com/ansible-community/toolset][ansible-community/toolset: Ansible Toolset combines all ansible development tools in a single container: ansible, ansible-lint and molecule]]
 - [[https://github.com/roles-ansible/role-grafana-kiosk][roles-ansible/role-grafana-kiosk: Ansible role to deploy the grafana-kiosk]]
 
+- ls /tmp in ssh-guest-room
+#+begin_src yaml
+  - hosts: web
+    tasks:
+      - shell: |
+          ls -ld /proc/"$(docker top ssh-guest-room | awk '/s6-svscan/ { print $2 }')"/root/tmp
+        register: output
+      - debug: var=output
+#+end_src
+
 - Skip host key check (example in packer template syntax)
 #+begin_src json
   "ansible_env_vars": [
