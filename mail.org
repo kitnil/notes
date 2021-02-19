@@ -45,3 +45,14 @@
 * self-hosted
 - [[https://github.com/progmaticltd/homebox][progmaticltd/homebox: A set of ansible scripts to build a personal mail server / private cloud / etc.]]
 - [[https://gitlab.com/simple-nixos-mailserver/nixos-mailserver][simple-nixos-mailserver / nixos-mailserver · GitLab]]
+
+* Swaks example
+
+#+begin_example
+mathieu@berlin ~$ swaks -t guix-ci@gnu.org -s fencepost.gnu.org:587 -tls -a LOGIN
+Username: othacehe
+Password: xxx
+=== Trying fencepost.gnu.org:587...
+*** Error connecting to fencepost.gnu.org:587:
+*** 	IO::Socket::INET6: connect: timeout
+#+end_example
