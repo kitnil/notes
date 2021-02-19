@@ -56,3 +56,7 @@ Password: xxx
 *** Error connecting to fencepost.gnu.org:587:
 *** 	IO::Socket::INET6: connect: timeout
 #+end_example
+
+* exim
+
+exim -bhc 8.8.8.8
