@@ -26,6 +26,7 @@ nix-repl> mynixos2.config.environment.etc."mailman.cfg".text
 - [[https://github.com/svanderburg/monitoring-playground][svanderburg/monitoring-playground]]
 - [[https://github.com/pauldub/nix-dev-shells][pauldub/nix-dev-shells]]
 - [[https://github.com/serokell/deploy-rs][serokell/deploy-rs: A Simple multi-profile Nix-flake deploy tool.]]
+- [[https://zimbatm.com/NixFlakes/][Nix Flakes edition | $ zimbatm]]
 - [[https://github.com/Infinisil/nixus][Infinisil/nixus]]
 - [[https://github.com/balsoft/nixos-minecraft-kiosk][balsoft/nixos-minecraft-kiosk]]
 - [[https://github.com/Mic92/nix-ld][Mic92/nix-ld: Run unpatched dynamic binaries on NixOS]]
