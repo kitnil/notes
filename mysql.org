@@ -6465,3 +6465,10 @@ exist in the second table.
   - myq_status -t 1 wsrep
   - [[https://www.percona.com/blog/2012/11/26/realtime-stats-to-pay-attention-to-in-percona-xtradb-cluster-and-galera/][Realtime stats to pay attention to in Percona XtraDB Cluster and Galera - Percona Database Performance Blog]]
 - myq_gadgets
+
+* 
+
+  #+begin_src sql
+    CREATE USER 'certexpire'@'172.16.%' IDENTIFIED VIA mysql_native_password USING '***';
+    GRANT USAGE ON *.* TO 'certexpire'@'172.16.%' REQUIRE NONE WITH MAX_QUERIES_PER_HOUR 0 MAX_CONNECTIONS_PER_HOUR 0 MAX_UPDATES_PER_HOUR 0 MAX_USER_CONNECTIONS 0; 
+  #+end_src
