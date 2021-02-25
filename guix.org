@@ -2822,3 +2822,48 @@ build.sh
 https://superuser.com/a/1170352
 
 mkfs.vfat -F32 /dev/sdXY
+
+* Guix Linux 5.3.18
+  #+begin_src diff
+    diff --git a/dotfiles/guixsd/guixsd.scm b/dotfiles/guixsd/guixsd.scm
+    index 577c56f0..f4d16290 100644
+    --- a/dotfiles/guixsd/guixsd.scm
+    +++ b/dotfiles/guixsd/guixsd.scm
+    @@ -292,20 +292,21 @@ location / {
+           "/home/oleg/src/dotfiles/guixsd/hardware/guixsd.scm"))
+ 
+     (define %system-guixsd
+    -  (let ((base-system (load %hardware-file)))
+    +  (let ((base-system (load %hardware-file))
+    +        (inferior (inferior-for-channels (list (channel
+    +                                                (name 'nonguix)
+    +                                                (url "https://gitlab.com/nonguix/nonguix")
+    +                                                (commit "b7ba152c4e5d827a1d9ab290022705d5e6675e39"))
+    +                                               (channel
+    +                                                (name 'guix)
+    +                                                (url "https://git.savannah.gnu.org/git/guix.git")
+    +                                                (commit "812b0d497e2f4bd429fb438f401a40d03a0465d4"))))))
+         (operating-system
+           (inherit base-system)
+    -      (kernel (let* ((channels (list (channel
+    -                                      (name 'nonguix)
+    -                                      (url "https://gitlab.com/nonguix/nonguix")
+    -                                      (commit "d12b4eb46db73307b04476076f072c89d4202f6c"))
+    -                                     (channel
+    -                                      (name 'guix)
+    -                                      (url "https://git.savannah.gnu.org/git/guix.git")
+    -                                      (commit "efa773f94a18b40f2c63795f364ae87dade76f60"))))
+    -                     (inferior (inferior-for-channels channels)))
+    -                (first (lookup-inferior-packages inferior "linux" "5.10.4"))))
+    -      (firmware (cons* amdgpu-firmware linux-firmware %base-firmware))
+    +      (kernel (first (lookup-inferior-packages inferior "linux" "5.3.18")))
+    +      (firmware (cons* (first (lookup-inferior-packages inferior "amdgpu-firmware" "20191022"))
+    +                       (first (lookup-inferior-packages inferior "linux-firmware" "20191022"))
+    +                       %base-firmware))
+           (kernel-arguments '("modprobe.blacklist=pcspkr,snd_pcsp"))
+           (packages %my-system-packages)
+ 
+
+  #+end_src
+
+
