@@ -77,6 +77,10 @@ https://gitlab.com/janneke/guix.git
 
 * Cheat sheet
 
+  - Clear DNS entries
+    : sudo herd invalidate nscd hosts
+    : sudo herd restart nscd
+
   - How can I have a static IP on one NIC and DHCP on the other?
     Message-ID: <8828ff9c6f2127f6210443046b9011f7276ae0a1.camel@divoplade.fr>
 
