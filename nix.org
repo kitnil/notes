@@ -110,6 +110,10 @@ Imperatively
 : nix repl ~/src/nixpkgs-19.09
 : s = nixos ((import ./ns.nix).ns3 { config = { }; inherit pkgs; })
 
+- NixOS custom profile
+  Create a new system generation in a new profile without switching to it, but making it as default.
+  : sudo nixos-rebuild boot --profile-name my-custom-profile
+
 - /etc/environment
 #+BEGIN_SRC nix
   environment.etc.jenkins = {
