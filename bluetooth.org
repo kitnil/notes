@@ -61,4 +61,11 @@ Connection successful
 [CHG] Device 4D:2A:43:AF:54:71 ManufacturerData Value:
   10 06 5a 1e d6 b3 eb 20                          ..Z....         
 [CHG] Device C4:AB:7F:EB:2B:17 RSSI: -60
+
+[4D-2A-43-AF-54-71]# connect 4D:2A:43:AF:54:71
+Attempting to connect to 4D:2A:43:AF:54:71
+Failed to pair: org.bluez.Error.AuthenticationFailed
+[CHG] Device 4D:2A:43:AF:54:71 Connected: no
+[DEL] Device 74:45:CE:43:43:C9 WH-CH510
+[DEL] Device 4D:2A:43:AF:54:71 4D-2A-43-AF-54-71
 #+end_example
