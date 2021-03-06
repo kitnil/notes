@@ -22,3 +22,10 @@
   colnames(l)=c('host', 'ident', 'authuser', 'date', 'time', 'request', 'status', 'bytes', 'duration')
   l$date=as.Date(l$date,"[%d/%b/%Y")
   #+END_SRC
+
+#+begin_example
+#!/usr/bin/env Rscript
+
+t1 <- system("elktail -url 'http://es:9200' -i 'hms-*' -n 1000 -l -f '%@timestamp %log_level %log_message' log_level:ERROR", intern=TRUE)
+dput(t1)
+#+end_example
