@@ -718,3 +718,12 @@ sudo /nix/var/nix/profiles/system/bin/switch-to-configuration switch
 
 * deploy-rs
   - [[https://github.com/serokell/deploy-rs][serokell/deploy-rs: A Simple multi-profile Nix-flake deploy tool.]]
+
+    Activation command during deploy example:
+    #+begin_example
+      /nix/store/...-activatable-nixos-system-mx1-mr-20.09.20201027.cd63096/activate-rs                                       \
+          --temp-path '/tmp'                                                                                                  \
+          activate '/nix/store/...-activatable-nixos-system-mx1-mr-20.09.20201027.cd63096' '/nix/var/nix/profiles/system'     \
+          --confirm-timeout 30                                                                                                \
+          --auto-rollback
+    #+end_example
