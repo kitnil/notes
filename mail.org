@@ -10,6 +10,7 @@
   : curl --ssl-reqd --url 'smtps://smtp.yandex.ru:465' --user 'i18n.wugi@yandex.ru:xxxxxxxx' --mail-from 'i18n.wugi@yandex.ru' --mail-rcpt 'i18n.wugi@yandex.ru' --upload-file <(echo -e "From: i18n.wugi@yandex.ru\nTo: i18n.wugi@yandex.ru\nSubject: Test message\n\nHello.\nThis is a test message.\n\n")
 
 * Programms
+- [[https://gitlab.com/shackra/goimapnotify][Jorge Javier Araya Navarro / goimapnotify · GitLab]]
 - [[https://github.com/Harry-027/go-notify][Harry-027/go-notify: An email automation solution, written in Golang.]]
 - [[https://github.com/foxcpp/maddy][foxcpp/maddy: ✉️ Composable all-in-one mail server.]]
 - [[https://luxing.im/mutt-integration-with-gmail-using-oauth/][mutt integration with Gmail using OAuth – Luxing Huang]]
