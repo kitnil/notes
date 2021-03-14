@@ -42,6 +42,48 @@
 - [[https://github.com/jserv/facebooc][jserv/facebooc: Yet another Facebook clone written in C]]
 - [[https://github.com/ponzu-cms/ponzu][ponzu-cms/ponzu: Headless CMS with automatic JSON API. Featuring auto-HTTPS from Let's Encrypt, HTTP/2 Server Push, and flexible server framework written in Go.]]
 
+* CMS
+** GLPI
+- [[https://github.com/glpi-project/glpi][glpi-project/glpi: GLPI is a Free Asset and IT Management Software package, Data center management, ITIL Service Desk, licenses tracking and software auditing.]]
+  - https://github.com/janssenlima/zabbix-glpi
+  - [[https://github.com/fusioninventory/fusioninventory-for-glpi][fusioninventory/fusioninventory-for-glpi: FusionInventory plugin for GLPI]]
+  - [[https://github.com/glpi-project/android-inventory-agent][glpi-project/android-inventory-agent: GLPI Android Inventory Agent]]
+  - [[https://github.com/DiouxX/docker-glpi][DiouxX/docker-glpi: Project to deploy GLPI with docker]]
+  - [[https://winitpro.ru/index.php/2020/04/14/itsm-glpi-inventory/][Установка и настройка GLPI и FusionInventory, инвентаризация ИТ инфраструктуры | Windows для системных администраторов]]
+  - https://github.com/truly-systems/glpi-cli
+  - https://plugins.glpi-project.org/#/plugin/archires
+  - https://plugins.glpi-project.org/#/plugin/collaborativetools
+  - https://plugins.glpi-project.org/#/plugin/backups
+  - https://plugins.glpi-project.org/#/plugin/domains
+  - https://plugins.glpi-project.org/#/plugin/routetables
+  - https://plugins.glpi-project.org/#/plugin/connections
+  - https://plugins.glpi-project.org/#/plugin/alias2010
+  - https://plugins.glpi-project.org/#/plugin/utilitaires
+  - https://plugins.glpi-project.org/#/plugin/glpi_ansible
+  - https://plugins.glpi-project.org/#/plugin/showconns
+  - https://plugins.glpi-project.org/#/plugin/addressing
+  - https://plugins.glpi-project.org/#/plugin/shellcommands
+  - https://plugins.glpi-project.org/#/plugin/renamer
+  - https://plugins.glpi-project.org/#/plugin/hidefields
+  - https://plugins.glpi-project.org/#/plugin/physicalinv
+  - https://plugins.glpi-project.org/#/plugin/autologin
+  - https://plugins.glpi-project.org/#/plugin/browsernotification
+  - https://plugins.glpi-project.org/#/plugin/showloading
+  - https://plugins.glpi-project.org/#/plugin/modifications
+  - https://plugins.glpi-project.org/#/plugin/myassets
+  - https://plugins.glpi-project.org/#/plugin/officeonline
+  - https://plugins.glpi-project.org/#/plugin/statecheck
+  - https://plugins.glpi-project.org/#/plugin/archimap
+  - https://plugins.glpi-project.org/#/plugin/ACL%20Group%20Category
+  - https://plugins.glpi-project.org/#/plugin/taskdrop
+  - https://plugins.glpi-project.org/#/plugin/holiday
+  - https://plugins.glpi-project.org/#/plugin/gitlabintegration
+  - https://plugins.glpi-project.org/#/plugin/webresources
+  - https://plugins.glpi-project.org/#/plugin/jsaddons
+
+** Python
+- [[https://github.com/allegro/ralph/][allegro/ralph: Ralph is the CMDB / Asset Management system for data center and back office hardware.]]
+
 ** Bitrix
 - [[https://github.com/awesomebitrix/awesome-bitrix][awesomebitrix/awesome-bitrix: Потрясающий Битрикс - полезные статьи о настройке и разработке 1C-Bitrix и Bitrix 24, а также компоненты и модули, php и javascript библиотеки]]
 
