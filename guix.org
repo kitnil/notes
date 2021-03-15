@@ -77,6 +77,40 @@ https://gitlab.com/janneke/guix.git
 
 * Cheat sheet
 
+  - Extensions
+#+begin_quote
+From: zimoun
+Subject: Re: guix environment --profile with --ad-hoc
+Date: Mon, 15 Mar 2021 10:25:17 +0100 (1 hour, 7 minutes, 51 seconds ago)
+
+Hi Lars.
+
+On Sat, 13 Mar 2021 at 08:59, Lars-Dominik Braun wrote:
+
+>> Instead, I'd like the following behaviour:
+>> […]
+> hm, I feel that’s unnecessarly complex with lots of if’s and else’s. If
+> I could design the frontend from scratch, I’d have one command that does
+> profile/environment manipulation (because they’re essentially the same)
+> and one that can set them up for use. In that world you’d do
+>
+> $ guix environment $(guix profile -m manifest.scm -i additional-package)
+
+For the record, such command (as “profile manager”) had been discussed,
+for example:
+
+<https://lists.gnu.org/archive/html/guix-devel/2019-10/msg00613.html>
+<https://lists.gnu.org/archive/html/guix-devel/2019-11/msg00019.html>
+<https://lists.gnu.org/archive/html/guix-devel/2020-04/msg00477.html>
+
+
+Note that the (still experimental and) undocumented GUIX_EXTENSIONS_PATH
+allows to test new commands design without writing them in stone.
+Basically, set the variable GUIX_EXTENSIONS_PATH to the path containing
+the Guix module ’(guix extensions profile)’ then “guix help” should list
+the extension and “guix profile” should work.
+#+end_quote
+
   - Clear DNS entries
     : sudo herd invalidate nscd hosts
     : sudo herd restart nscd
