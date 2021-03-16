@@ -111,6 +111,9 @@ the Guix module ’(guix extensions profile)’ then “guix help” should list
 the extension and “guix profile” should work.
 #+end_quote
 
+  - Upgrade packages in default profile
+    : guix refresh $(guix package -I | cut -f1)
+
   - Clear DNS entries
     : sudo herd invalidate nscd hosts
     : sudo herd restart nscd
