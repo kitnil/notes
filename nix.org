@@ -716,6 +716,29 @@ sudo /nix/var/nix/profiles/system/bin/switch-to-configuration switch
 
   #+end_src
 
+- Majordomo flakes
+#+begin_example
+#!/usr/bin/env bash
+
+mapfile -t files < <(find * -maxdepth 3 -type f -name flake.nix -print)
+
+flakes()
+{
+    for file in "${files[@]}"
+    do
+        group="$(dirname "$(dirname "$file")")"
+        group="${group//./-}"
+        group="${group/_/}"
+        name="$(basename "$(dirname "$file")")"
+        name="${name//./-}"
+        name="${name/_/}"
+        printf '{"from": {"type": "indirect", "id": "%s-%s"}, "to": {"type": "git", "url": "https://gitlab.intr/%s/%s"}}\n' "$group" "$name" "$group" "$name"
+    done | jq --slurp
+}
+
+printf '{"version": 2, "flakes":%s}' "$(flakes)"
+#+end_example
+
 * deploy-rs
   - [[https://github.com/serokell/deploy-rs][serokell/deploy-rs: A Simple multi-profile Nix-flake deploy tool.]]
 
