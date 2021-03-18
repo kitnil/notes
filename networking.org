@@ -43,6 +43,11 @@
 * Backup
 - [[https://github.com/ytti/oxidized][ytti/oxidized: Oxidized is a network device configuration backup tool. It's a RANCID replacement!]]
 
+* bridge
+
+- Create a bridge
+  : ip link add name br0 type bridge
+
 * ip
 
 - Bind port even if no IP address available:
