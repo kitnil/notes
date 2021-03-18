@@ -23,7 +23,7 @@ https://www.youtube.com/watch?v=t1-YZ6bF-g0
 
 * Learning
 
-  org.springframework
+  org.springframework spring-context
 
 - [[https://www.youtube.com/watch?v=xN6yXgeZdWs&list=PLz-qdc-PbYk6ikoEsdn4VZ4HUkKPVPMXp&index=2][(156) Spring Core: You First Spring Application | Spring Core - Masterclass - YouTube]]
   - @Configuration
@@ -44,7 +44,9 @@ https://www.youtube.com/watch?v=t1-YZ6bF-g0
   @Component
   @Service
 
-- Proxies, Spring transaction or database management
+- [[https://www.youtube.com/watch?v=4BD6pF7dkkc&list=PLz-qdc-PbYk6ikoEsdn4VZ4HUkKPVPMXp&index=4][(156) Spring Transaction Management: Finally Understandable | Spring Core - Masterclass - YouTube]]
+
+  Proxies, Spring transaction or database management
   @Value comes from some “properties” file or from some server
 
 * Maven
