@@ -33,6 +33,9 @@ https://www.youtube.com/watch?v=t1-YZ6bF-g0
   - Constructor injection or “Constructor dependency injection”
   - @Autowired
     - Field injection
+    - Alternatives:
+      - @Inject
+      - @Resource
 
 * Maven
 - [[https://github.com/fzakaria/nixos-maven-example][fzakaria/nixos-maven-example: An example of how to use buildMaven with Nix to build a Maven project]]
