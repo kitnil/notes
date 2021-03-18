@@ -61,7 +61,9 @@ https://www.youtube.com/watch?v=t1-YZ6bF-g0
   “transactional”, which means it opens up and closes database connections
   automatically.  @Transactional could be applied to a single method instead.
 
-  For logs you could use ‘TransactionSynchronizationManager.isActualTransactionActive’.
+  For logs you could use
+  ‘TransactionSynchronizationManager.isActualTransactionActive’ with
+  ‘System.out.println’.
 
 * Maven
 - [[https://github.com/fzakaria/nixos-maven-example][fzakaria/nixos-maven-example: An example of how to use buildMaven with Nix to build a Maven project]]
