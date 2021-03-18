@@ -55,7 +55,7 @@ https://www.youtube.com/watch?v=t1-YZ6bF-g0
   Instead of PostgreSQL or MySQL could use com.h2database - an embeded Java database.
 
   “Transaction” is a “database connection”.
-  @EnableTransactionManagement
+  @EnableTransactionManagement annotation requires @Bean “transaction manager”
 
   @Transactional annotation makes every public method in class
   “transactional”, which means it opens up and closes database connections
