@@ -30,12 +30,13 @@ https://www.youtube.com/watch?v=t1-YZ6bF-g0
     - getBean
 
 - [[https://www.youtube.com/watch?v=gVQijiDliuI&list=PLz-qdc-PbYk6ikoEsdn4VZ4HUkKPVPMXp&index=3][(156) Spring Core: 5000 ways to build and wire your Spring Beans | Spring Core - Masterclass - YouTube]]
-  - Constructor injection or “Constructor dependency injection”
-  - @Autowired
-    - Field injection
-    - Alternatives:
-      - @Inject
-      - @Resource
+  1. Constructor injection or “Constructor dependency injection”
+  2. @Autowired
+     - Field injection
+     - Alternatives:
+       - @Inject
+       - @Resource
+  3. Setter injection
 
 * Maven
 - [[https://github.com/fzakaria/nixos-maven-example][fzakaria/nixos-maven-example: An example of how to use buildMaven with Nix to build a Maven project]]
