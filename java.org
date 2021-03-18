@@ -68,6 +68,20 @@ https://www.youtube.com/watch?v=t1-YZ6bF-g0
   Everything above is handled by a “proxy” (CGLIB - is a library which Spring
   uses).
 
+  - Inner class
+    #+begin_src java
+      new FixedValue() {
+          @Override
+          public Object loadObject() throws Exception {
+              return "moeooow by cglib";
+          }
+      }
+    #+end_src
+    is equal to lambda
+    #+begin_src java
+      (FixedValue) () -> "moeooow by cglib"
+    #+end_src
+
 * Maven
 - [[https://github.com/fzakaria/nixos-maven-example][fzakaria/nixos-maven-example: An example of how to use buildMaven with Nix to build a Maven project]]
 
