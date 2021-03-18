@@ -55,6 +55,7 @@ https://www.youtube.com/watch?v=t1-YZ6bF-g0
   Instead of PostgreSQL or MySQL could use com.h2database - an embeded Java database.
 
   “Transaction” is a “database connection”.
+  @EnableTransactionManagement
 
 * Maven
 - [[https://github.com/fzakaria/nixos-maven-example][fzakaria/nixos-maven-example: An example of how to use buildMaven with Nix to build a Maven project]]
