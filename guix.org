@@ -2928,4 +2928,61 @@ mkfs.vfat -F32 /dev/sdXY
 
   #+end_src
 
+  #+begin_src bash
+    #!/usr/bin/env bash
 
+    mapfile -t packages < <(awk '/would be upgraded/ { print $2 }' refresh.log)
+    package="$(printf "%s\n" "${packages[@]}" | fzf)"
+    ./pre-inst-env guix refresh --update "$package"
+  #+end_src
+
+  #+begin_src scheme
+    #!/run/current-system/profile/bin/guile \
+    --no-auto-compile -e (run2) -s
+    !#
+
+    ;;;; refresh --- guix refresh wrapper
+    ;;;; Copyright © 2020 Oleg Pykhalov <go.wigust@gmail.com>
+    ;;;; Released under the GNU GPLv3 or any later version.
+
+    (define-module (run2)
+      #:use-module (ice-9 rdelim)
+      #:use-module (ice-9 match)
+      #:export (main))
+
+    (define (main args)
+      (match (string-split (match (string-split (with-input-from-file "out"
+                                                  read-string)
+                                                #\newline)
+                             ((a ... last-but-one last) last-but-one))
+                           #\:)
+        ((file line column package message)
+         (pk (list file line column (string-trim package)
+                   (string-split (string-trim message) #\space))))))
+  #+end_src
+
+  #+begin_src bash
+    #!/usr/bin/env bash
+
+    if ! [ -e refresh.log ]
+    then
+        ./pre-inst-env guix refresh "$(./pre-inst-env guix maintainer)" |& tee refresh.log
+    fi
+    package="$(awk '/would be upgraded/ { print $2 }' refresh.log | fzf)"
+    version="$(./pre-inst-env guix refresh --update "$package" |& awk '/updating from version/ { print $NF }' | sed 's/\.\.\.//')"
+    mapfile -t hashes < <(./pre-inst-env guix build "$package" |& awk '/hash:/ { print $NF }')
+    if [ "${#hashes[@]}" -ne 0 ]
+    then
+        for file in gnu/packages/*.scm
+        do
+            if grep --quiet "${hashes[0]}" "$file"
+            then
+                printf 'Substitute "%s" with "%s" in "%s".\n' "${hashes[0]}" "${hashes[1]}" "$file"
+                sed --in-place "s/${hashes[0]}/${hashes[1]}/" "$file"
+                ./pre-inst-env guix build "$package"
+                git commit --message="$(printf "gnu: $package: Update to $version.\n\n* $file ($package): Update to $version.")" "$file"
+                sed --in-place "/$package/d" refresh.log
+            fi
+        done
+    fi
+#+end_src
