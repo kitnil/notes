@@ -1,3 +1,5 @@
+- [[https://github.com/spring-projects-experimental/spring-native?auto_subscribed=false][spring-projects-experimental/spring-native: Spring Native provides beta support for compiling Spring applications to native executables using GraalVM native-image compiler.]]
+
 - oleg@guixsd ~$ curl http://localhost:8981/actuator/; echo
   : {"_links":{"self":{"href":"http://localhost:8981/actuator","templated":false},"health":{"href":"http://localhost:8981/actuator/health","templated":false},"health-path":{"href":"http://localhost:8981/actuator/health/{*path}","templated":true},"info":{"href":"http://localhost:8981/actuator/info","templated":false}}}
 
