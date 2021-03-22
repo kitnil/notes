@@ -81,6 +81,23 @@ https://gitlab.com/janneke/guix.git
 
 * Cheat sheet
 
+  - Show derivation output (Message-ID: <8735wnxiok.fsf@gnu.org>)
+#+begin_example
+scheme@(guix-user)> ,use(guix)
+scheme@(guix-user)> (define s (open-connection ))
+scheme@(guix-user)> ,use(gnu packages base)
+scheme@(guix-user)> (package-derivation s coreutils #:graft? #f)
+$1 = #<derivation /gnu/store/k0h3zahr74ky7z4hy5nklk5ar1b841nc-coreutils-8.32.drv => /gnu/store/yvsd53rkbvy9q8ak6681hai62nm6rf31-coreutils-8.32-debug /gnu/store/n8awazyldv9hbzb7pjcw76hiifmvrpvd-coreutils-8.32 7fc814f2e1e0>
+scheme@(guix-user)> (derivation-outputs $1)
+$2 = (("debug" . #<<derivation-output> path: "/gnu/store/yvsd53rkbvy9q8ak6681hai62nm6rf31-coreutils-8.32-debug" hash-algo: #f hash: #f recursive?: #f>) ("out" . #<<derivation-output> path: "/gnu/store/n8awazyldv9hbzb7pjcw76hiifmvrpvd-coreutils-8.32" hash-algo: #f hash: #f recursive?: #f>))
+scheme@(guix-user)> (derivation->output-path $1 "out")
+$3 = "/gnu/store/n8awazyldv9hbzb7pjcw76hiifmvrpvd-coreutils-8.32"
+
+Why #:graft? #f?  Because if you enable graft, you’ll potentially have
+to build/download the thing, and that wouldn’t buy you anything because
+the set of file names is the same in the grafted package.
+#+end_example
+
   - Extensions
 #+begin_quote
 From: zimoun
