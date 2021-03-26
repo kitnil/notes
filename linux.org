@@ -310,7 +310,7 @@ https://github.com/iovisor/bcc/blob/master/QUICKSTART.md
 
 * Namespaces
 
-
+- [[https://unix.stackexchange.com/questions/144794/why-would-the-kernel-drop-packets][Create an empty network namespace]]
 #+begin_quote
 Besides what the man page says, there appears to be some additional reason why
 packets may be dropped by the kernel. I was experiencing 100% packet drop from
