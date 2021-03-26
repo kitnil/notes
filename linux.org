@@ -307,3 +307,28 @@ https://github.com/iovisor/bcc/blob/master/QUICKSTART.md
   =sudo= doesn't create /run/user/<UID> directory, instead you could use
   =machinectl shell=, e.g:
   : [user1@host:~]$ machinectl shell user2@
+
+* Namespaces
+
+
+#+begin_quote
+Besides what the man page says, there appears to be some additional reason why
+packets may be dropped by the kernel. I was experiencing 100% packet drop from
+tcpdump where the only traffic on the network was one 512B packet of PRBS per
+second. Clearly the buffer space explanation doesn't make sense here - I think
+the kernel can handle 0.5kiB/s.
+
+Something that came along with my distro (Ubuntu 14.04) may have been doing
+some sort of smart filtering at the link layer that didn't like my test
+packets. My workaround was to create a new network namespace as follows:
+
+sudo -i
+ip netns add debug
+ip link set dev eth0 netns debug
+ip netns exec debug bash
+ifconfig eth0 1.2.3.4 up
+
+In the inner netns shell, whatever OS processes that were causing problems
+before are out of the picture and tcpdump shows me all of the packets I expect
+to see.
+#+end_quote
