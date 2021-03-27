@@ -1,1 +1,25 @@
+#+title: UNIX
+
+* Владение командной строкой (bash)
+** Умение оценить состояние системы
+*** ps
+*** top
+*** free
+*** df
+*** du
+**  Понимание системы прав в linux
+**  Просмотр логов
+***  syslog
+**  Перенаправления и потоки
+**  Переменны окружения
+**  Системы инициализации
+***  [[file:systemd.org][Systemd]]
+**  [[file:ssh.org][SSH]]
+**  Генерация и использование ключей
+**  mount
+***  fstab
+**  Сетевые интерфейсы
+
+* Misc
+
 - [[https://github.com/dspinellis/unix-history-repo][dspinellis/unix-history-repo: Continuous Unix commit history from 1970 until today]]
