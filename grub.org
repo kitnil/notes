@@ -13,21 +13,21 @@
   #+end_example
 
 ** Kali
-#+begin_example
-  menuentry "Kali-XFCE-Live" {
-    set isofile="/home/natsu/Downloads/kali-linux-xfce-2018-3-amd64-iso/kali-linux-xfce-2018.3-amd64.iso"
+  #+begin_example
+    menuentry "Kali-XFCE-Live" {
+      set isofile="/home/natsu/Downloads/kali-linux-xfce-2018-3-amd64-iso/kali-linux-xfce-2018.3-amd64.iso"
       loopback loop $isofile
       linux (loop)/live/vmlinuz findiso=$isofile boot=live components username=root hostname=kali
       initrd (loop)/live/initrd.img
     }
-#+end_example
+  #+end_example
 
-#+BEGIN_EXAMPLE
-  
-  menuentry "Debian-XFCE-Live" {
-  set isofile="/home/natsu/Downloads/debian-live-9.5.0-amd64-xfce.iso"
-    loopback loop $isofile
-    linux (loop)/live/vmlinuz-4.9.0-7-amd64 findiso=$isofile boot=live components
-    initrd (loop)/live/initrd.img-4.9.0-7-amd64
-  }
-#+END_EXAMPLE
+** Debian
+  #+begin_example
+    menuentry "Debian-XFCE-Live" {
+      set isofile="/home/natsu/Downloads/debian-live-9.5.0-amd64-xfce.iso"
+      loopback loop $isofile
+      linux (loop)/live/vmlinuz-4.9.0-7-amd64 findiso=$isofile boot=live components
+      initrd (loop)/live/initrd.img-4.9.0-7-amd64
+    }
+  #+end_example
