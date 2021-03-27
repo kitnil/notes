@@ -1,3 +1,5 @@
+#+title: Nix
+
 - Import JSON file
 /tmp/out.json
 { "addr": "178.250.246.90", "port": 24, "gateway": "172.16.103.1" }
