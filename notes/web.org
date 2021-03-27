@@ -14840,8 +14840,10 @@ Document header
 
 Title and author line:
 
+#+begin_example
 #+TITLE:     Org mode syntax examples
 #+AUTHOR:    Fabrice Niessen
+#+end_example
 
 My document provides...
 
