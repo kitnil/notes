@@ -754,3 +754,4 @@ printf '{"version": 2, "flakes":%s}' "$(flakes)"
 
 * Flakes
   - [[https://github.com/MarcoPolo/simple-vms][MarcoPolo/simple-vms: Simple VMs in NixOS]]
+  - [[https://github.com/jkachmar/easy-hls-nix][jkachmar/easy-hls-nix: Easy Haskell Language Server tooling with Nix!]]
