@@ -751,3 +751,6 @@ printf '{"version": 2, "flakes":%s}' "$(flakes)"
           --confirm-timeout 30                                                                                                \
           --auto-rollback
     #+end_example
+
+* Flakes
+  - [[https://github.com/MarcoPolo/simple-vms][MarcoPolo/simple-vms: Simple VMs in NixOS]]
