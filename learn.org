@@ -1,20 +1,7 @@
 #+title: Learn
 
 From [[https://docs.google.com/spreadsheets/d/e/2PACX-1vSr58Xg4DVX2WdmAkv3hE2ITJ3fPeNUmRFe0Ekro53U-ACFrhcUkV8PlUm4ddcn53Uh-5UIezZtZZgc/pubhtml][Матрица компетентности программиста (hexlet версия)]].
-* Languages
-  - [[file:php.org][PHP]]
-  - [[file:javascript.org][JavaScript]]
-  - [[file:ruby.org][Ruby]]
-  - [[file:python.org][Python]]
-  - [[file:java.org][Java]]
-  - [[file:c.org][C]]
-  - [[file:kotlin.org][Kotlin]]
-  - [[file:lisp.org][Lisp]]
-    - [[file:clojure.org][Clojure]]
-    - [[file:racket.org][Racket]]
-  - [[file:haskell.org][Haskell]]
-  - [[file:erlang.org][Erlang]]
-  - [[file:prolog.org][Prolog]]
+* [[file:languages.org][Languages]]
 * Асинхронное программирование
   - Промисы
   - Сопрограммы
