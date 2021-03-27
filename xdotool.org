@@ -1,3 +1,0 @@
-: xterm & sleep 2 ; xdotool key type 'sudo -i' ; xdotool key Return ; sleep 2; xdotool type 'bla-bla' ;
-
-: xdotool key $(echo 123456abc | sed -e 's/\(.\)/\1\n/g')
