@@ -91,3 +91,21 @@
      EndSubSection
   EndSection
 #+end_example
+
+* xmodmap
+
+#+begin_src conf
+  remove mod4 = Super_R
+  keycode 134 = Control_L
+#+end_src
+
+#+begin_src conf
+  remove mod4 = Super_R
+  keycode 134=0xffe3
+#+end_src
+
+#+begin_src conf
+  remove mod4 = Super_R
+  keycode 134=0xffe3
+  add control = Control_L
+#+end_src
