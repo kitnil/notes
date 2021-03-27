@@ -81,6 +81,19 @@ https://gitlab.com/janneke/guix.git
 
 * Cheat sheet
 
+  - Tmux in a container
+  : tmux: need UTF-8 locale (LC_CTYPE) but have ANSI_X3.4-1968
+
+It is not a bug and you can run
+
+  : guix environment --container --ad-hoc glibc-utf8-locales tmux …
+
+and then:
+
+  : export GUIX_LOCPATH=$GUIX_ENVIRONMENT/lib/locale
+
+or use the option --preserve.
+
   - Show derivation output (Message-ID: <8735wnxiok.fsf@gnu.org>)
 #+begin_example
 scheme@(guix-user)> ,use(guix)
