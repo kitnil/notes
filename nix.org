@@ -21,6 +21,7 @@ nix-repl> mynixos2.config.environment.etc."mailman.cfg".text
 - Create .envrc for project directories
 : for file in $(echo */default.nix); do (output="$(dirname "$file")"/.envrc; [[ -f $output ]] || echo 'use nixpkgs' >> "$output"); done
 
+- [[https://github.com/bqv/guix][bqv/guix: A package and module for using GNU Guix on Nix(OS). Kinda more a code dump than for actual use. See fork]]
 - [[https://github.com/DavHau/nix-portable][DavHau/nix-portable: Nix - Static, Permissionless, Installation-free, Pre-configured]]
 - [[https://github.com/fabaff/nix-security-lab][fabaff/nix-security-lab: Tool set for Information security professionals and all others]]
 - [[https://github.com/svanderburg/disnix][svanderburg/disnix: Disnix: A Nix-based distributed service deployment tool]]
