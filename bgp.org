@@ -1,5 +1,6 @@
 #+title: BGP
 
+- [[file:networking.org][Networking]]
 - [[https://habr.com/ru/post/211176/][Защита от DDOS атак средствами BGP / Хабр]]
 - [[https://www.jordanwhited.com/posts/corebgp-plugging-in-to-bgp/][CoreBGP - Plugging in to BGP | Jordan Whited]]
 - [[https://github.com/jwhited/corebgp][jwhited/corebgp: CoreBGP is a BGP library written in Go that implements the BGP FSM with an event-driven, pluggable model.]]
