@@ -32,6 +32,8 @@ PikachuHy
 
 * Cheatsheet
 
+- https://framagit.org/Jeko/guile-spec (file: guix.scm). It is a set of macro based on SRFI-64.
+
 - catch example
 #+BEGIN_SRC scheme
   (define (ensure-ownership file uid gid)
