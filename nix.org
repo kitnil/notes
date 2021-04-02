@@ -759,3 +759,5 @@ printf '{"version": 2, "flakes":%s}' "$(flakes)"
   - [[https://github.com/balsoft/kalinix][balsoft/kalinix: A pentesting/CTF toolbox with the help of Nix]]
 
   - [[https://github.com/jkachmar/easy-hls-nix][jkachmar/easy-hls-nix: Easy Haskell Language Server tooling with Nix!]]
+
+  - $ nix build .#nixosConfigurations.someNixosSystem.config.system.build.vm
