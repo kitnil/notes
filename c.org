@@ -43,6 +43,9 @@ Alternative way use [[https://bellard.org/tcc/][tcc]]
 
 * Examples
 
+** fprintf
+   : fprintf(stderr, "CHECKPOINT REACHED @  %s:%i\n", __FILE__, __LINE__);
+
 ** Create files
    #+begin_src c
      #include <stdio.h>
