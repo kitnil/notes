@@ -65,6 +65,19 @@ Alternative way use [[https://bellard.org/tcc/][tcc]]
      }
    #+end_src
 
+** execve
+   #+begin_src c
+     #include <unistd.h>
+
+     int main(int argc, char *argv[])
+     {
+       char file[] = "/home/oleg/.nix-profile/bin/nix-shell";
+       char *const envp[] = { "HOME=/home/oleg", NULL };
+       int result = execve(file, argv, envp);
+       return result;
+     }
+   #+end_src
+
 ** select
    #+begin_src c
      #include <sys/types.h>
