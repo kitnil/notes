@@ -14,6 +14,7 @@
 - [[https://github.com/projectdiscovery/subfinder][projectdiscovery/subfinder: Subfinder is a subdomain discovery tool that discovers valid subdomains for websites. Designed as a passive framework to be useful for bug bounties and safe for penetration testing.]]
 - [[https://wiki.archlinux.org/index.php/Openresolv][openresolv - ArchWiki]]
 - [[https://github.com/baibhavanand/DAC][baibhavanand/DAC: DAC - Domain Availability Checker is a tool written in bash to help people find available domains from the comfort of their terminal. People can choose to pass one domain or wordlist to scan the availability from. People can also choose to store the output (List of available domains) in a different text file.]]
+- [[https://github.com/62726164/dns-exfil][62726164/dns-exfil: A program to exfiltrate files from a computer using the DNS]]
 
 ** Services
 - [[https://www.gandi.net/en][Gandi.net: Domain Names, Web Hosting, SSL Certificates]]
@@ -39,6 +40,9 @@ free mail hosting for their subscribers
 
 ** Unbound
 - [[https://vermaden.wordpress.com/2020/11/18/unbound-dns-blacklist/][Unbound DNS Blacklist | 𝚟𝚎𝚛𝚖𝚊𝚍𝚎𝚗]]
+
+* Learning
+- [[https://www.go350.com/posts/exfiltrate-files-using-the-dns/][Exfiltrate files using the DNS | Go350]]
 
 * Скидки
 
