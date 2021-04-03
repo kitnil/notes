@@ -1,3 +1,6 @@
+#+title: Benchmark
+
+- [[https://github.com/conprof/perfessor][conprof/perfessor: Continuous profiling with perf]]
 - [[https://github.com/akopytov/sysbench][akopytov/sysbench: Scriptable database and system performance benchmark]]
 - sudo dd if=/dev/sda1 of=/dev/null bs=4096 count=409600 iflag=direct
 - iozone
