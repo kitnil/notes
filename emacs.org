@@ -984,3 +984,13 @@ features, like 'V' to execute msgfmt and so on.
 
 ** Libraries
 - [[https://github.com/ROCKTAKEY/rii][ROCKTAKEY/rii: Reversible input interface for multiple input.]]
+
+** YAML
+
+emacs-libyaml example:
+   #+begin_src emacs-lisp
+     (mapcar (lambda (x)
+               (gethash "name" x))
+             (gethash "steps"
+                      (yaml-read-file "~/archive/src/filestash/.drone.yml")))
+   #+end_src
