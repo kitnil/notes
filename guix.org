@@ -3034,3 +3034,30 @@ mkfs.vfat -F32 /dev/sdXY
         ((subject message ...)
          (format-match match-subject subject))))
   #+end_src
+
+* Gexp
+
+  #+begin_src scheme
+    (use-modules (gnu packages base)
+                 (gnu packages elf)
+                 (guix build utils)
+                 (guix gexp)
+                 (guix store)
+                 (guix licenses))
+
+    (define store
+      (open-connection))
+
+    (run-with-store store
+      (gexp->derivation "plumber"
+                        (with-imported-modules '((guix build utils))
+                          #~(begin
+                              (use-modules (guix build utils))
+                              (copy-file #$(local-file "/home/oleg/Downloads/plumber-linux") "plumber")
+                              (invoke (string-append #$patchelf "/bin/patchelf")
+                                      "--set-interpreter" (string-append #$glibc "/lib/ld-linux-x86-64.so.2")
+                                      "plumber")
+                              (mkdir #$output)
+                              (mkdir (string-append #$output "/bin"))
+                              (copy-file "plumber" (string-append #$output "/bin/plumber"))))))
+  #+end_src
