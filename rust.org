@@ -36,3 +36,10 @@
 - [[https://github.com/fornwall/rust-script][fornwall/rust-script: Run Rust files and expressions as scripts without any setup or compilation step.]]
 - [[https://github.com/rust-lang/rustfmt][rust-lang/rustfmt: Format Rust code]]
 - [[https://github.com/rust-lang/rust-clippy][rust-lang/rust-clippy: A bunch of lints to catch common mistakes and improve your Rust code]]
+
+* Learning
+
+  #+begin_src scheme
+    ("Option" . ,(string-to-symbols "value-is-optional-or-when-the-lack-of-a-value-is-not-an-error-condition"))
+    ("Result" . ,(string-to-symbols "richer-version-of-the-Option-type-that-describes-possible-error-instead-of-possible-absence"))
+  #+end_src
