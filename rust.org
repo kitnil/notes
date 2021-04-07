@@ -43,3 +43,12 @@
     ("Option" . ,(string-to-symbols "value-is-optional-or-when-the-lack-of-a-value-is-not-an-error-condition"))
     ("Result" . ,(string-to-symbols "richer-version-of-the-Option-type-that-describes-possible-error-instead-of-possible-absence"))
   #+end_src
+
+** Examples
+
+   #+begin_src rust
+     match fs::canonicalize(profile_path) {
+         Ok(file) => println!("{:?}", file),
+         Err(error) => panic!("Problem opening the file: {:?}", error),
+     };
+   #+end_src
