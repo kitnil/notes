@@ -52,3 +52,6 @@
          Err(error) => panic!("Problem opening the file: {:?}", error),
      };
    #+end_src
+* Library
+- [[https://github.com/andir/dhcpd-exporter-rs][andir/dhcpd-exporter-rs: ISC dhcpd leases exporter]]
+
