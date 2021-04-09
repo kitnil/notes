@@ -89,6 +89,7 @@ nix-repl> mynixos2.config.environment.etc."mailman.cfg".text
 - [[https://github.com/jonascarpay/declarative-cachix][jonascarpay/declarative-cachix: Add cachix caches declaratively]]
 - [[https://github.com/community-garden/fdroid-repo][community-garden/fdroid-repo]]
 - [[https://gitlab.com/cab404/wg-bond][cab404 / wg-bond · GitLab]]
+- [[https://github.com/andir/nixos-security-tracker][andir/nixos-security-tracker]]
 
 : oleg@guixsd ~/majordomo/_ci/nixpkgs$ nix-instantiate --expr 'with import <nixpkgs> {}; lib.filter (package: lib.isDerivation package) (map (package: package.src) (lib.filter (package: lib.hasAttrByPath ["src"] package) (import ./build.nix)))'
 
