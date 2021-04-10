@@ -368,3 +368,53 @@ I have specified messages for an nnselect group in the configuration in
               ("nnimap\\+otp:INBOX")
               )))))))
 #+end_src
+
+* SMTP
+
+Message-ID: <m2y2ggprj2.fsf@cmschueller.my-fqdn.de>
+
+#+begin_src emacs-lisp
+
+(defun exal-change-smtp ()
+  "Change the SMTP server according to the current from line."
+  (save-excursion
+    (let ((from
+           (save-restriction
+             (message-narrow-to-headers)
+             (message-fetch-field "from"))))
+      (message "From is `%s', setting `smtpmail-smtp-server' to `%s'"
+               from
+               (cond
+                ((string-match "gmx.at" from)
+                  ;; Use stmp-auth
+                  (message "Using smtp-auth for GMX account")
+                   ;; Sending mail
+                  (setq smtpmail-starttls-credentials '(("mail.gmx.net" 587 nil nil))
+;;                      smtpmail-smtp-server "mail.gmx.net"
+                        smtpmail-default-smtp-server "mail.gmx.net"
+                        send-mail-function 'smtpmail-send-it
+                        message-send-mail-function 'smtpmail-send-it
+                        smtpmail-smtp-service 587
+                        smtpmail-auth-credentials (expand-file-name "~/.authinfo")
+			smtpmail-smtp-server "mail.gmx.net"))
+
+                ((string-match "mailbox.org" from)
+                   ;; Use SMTP for mailbox.org account
+                 (message "Using smtp-auth for mailbox.org account")
+		 (setq message-send-mail-function 'smtpmail-send-it
+		       smtpmail-starttls-credentials '(("barnburner.local" 25 nil nil))
+		       smtpmail-auth-credentials '(("barnburner.local" 25 "mente" nil))
+		       smtpmail-default-smtp-server "barnburner.local"
+		       smtpmail-smtp-service 25
+		       smtpmail-smtp-server "barnburner.local"))
+
+
+                (t
+                 (message 
+                  (concat "Sending via nntp... "
+                          from))))))))
+
+(add-hook 'message-setup-hook 'exal-change-smtp)
+
+#+end_src
+
