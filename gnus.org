@@ -100,6 +100,14 @@ some automated identity selection. For instance certain
 writes to a deprecated address they weill get a reply from my
 preferred identity.
 
+: <87zh3g8ngb.fsf@shuttle.vesterheim.no>
+Additionally, here is a function to cycle through the gnus-alias
+identities:
+
+https://github.com/vv3/gnus-alias/commit/986f3a1732362357162a8450a2250069baf02dce
+
+This can be bound to a key for quick access.
+
 * Toggle steam type
 
   #+begin_src emacs-lisp
