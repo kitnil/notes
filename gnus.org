@@ -181,6 +181,33 @@ To keep the "buttons" being displayed, also add:
 
   #+end_src
 
+** Lists
+
+Usenet groups, from nntp.aioe.org:
+
+  alt.os.linux
+  alt.test    
+  alt.tv.survivor
+  alt.usage.english
+  rec.sport.boxing
+  rec.woodworking
+
+and the following MLs, with Gmane:
+
+  gmane.comp.shells.zsh.user
+  gmane.comp.terminal-emulators.tmux.user
+  gmane.comp.video.ffmpeg.user
+  gmane.discuss
+  gmane.emacs.bugs
+  gmane.emacs.devel
+  gmane.emacs.gnus.general
+  gmane.emacs.gnus.user
+  gmane.emacs.help
+  gmane.emacs.orgmode
+  gmane.emacs.w3m
+  gmane.linux.debian.user
+  gmane.test
+
 * Misc
 
 ,----[ C-h v gnus-list-identifiers RET ]
