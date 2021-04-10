@@ -153,10 +153,30 @@ To keep the "buttons" being displayed, also add:
 
 * Server
 
+<87a6yg5spv.fsf@tullinup.koldfront.dk>
+
   #+begin_src emacs-lisp
     (nnml "archive"
           (nnml-directory "~/Mail/archive")
           (nnml-active-file "~/Mail/archive/active")
           (nnml-get-new-mail nil)
           (nnml-inhibit-expiry t))
+  #+end_src
+
+  #+begin_src emacs-lisp
+    (setq asjo-archive-method '(nnml "archive"
+                                     (nnml-directory "~/Mail/archive")
+                                     (nnml-active-file "~/Mail/archive/active")
+                                     (nnml-get-new-mail nil)
+                                     (nnir-search-engine notmuch)
+                                     (nnml-inhibit-expiry t)))
+    (setq gnus-message-archive-method asjo-archive-method)
+
+    (setq gnus-refer-article-method
+          ;; First try to load the article from your local newsserver or nnml
+          '(current
+            ;; Then try the archive (?):
+            (list asjo-archive-method)
+            ....
+
   #+end_src
