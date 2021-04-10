@@ -252,3 +252,17 @@ and in my .gnus:
 
     (gnus-summary-browse-url &optional EXTERNAL)
 
+- Send with a delay
+
+When I press C-c C-j to delay an article, I'm prompted like this:
+
+  "Target date (YYYY-MM-DD), time (hh:mm), or length of delay (units in mhdwMY): 3d"
+
+This is nice and flexible. In this particular case, I wanted to send an
+article on a specific date _and_ time.
+
+So I tried entering "2021-07-14 17:03:30", and Gnus happily accepted
+that. But if I look at the delayed article in nndraft:delayed, the
+header is:
+
+  X-Gnus-Delayed: Wed, 14 Jul 2021 08:00:00 +0200
