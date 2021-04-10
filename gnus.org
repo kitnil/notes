@@ -224,3 +224,18 @@ and the following MLs, with Gmane:
   (setq gnus-sum-thread-tree-root "● ")
   (setq gnus-sum-thread-tree-single-leaf "`->")
 #+end_src
+
+- notmuch
+
+#+begin_src emacs-lisp
+  (defun asjo-notmuch-new ()
+    "Run notmuch new"
+    (start-process "notmuch" "*Notmuch*" "notmuch" "new"))
+
+  (defadvice gnus (after gnus-notmuch-new activate)
+    (asjo-notmuch-new))
+#+end_src
+
+and in my .gnus:
+
+: (add-hook 'gnus-after-getting-new-news-hook 'asjo-notmuch-new)
