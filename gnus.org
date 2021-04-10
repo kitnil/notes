@@ -225,7 +225,7 @@ and the following MLs, with Gmane:
   (setq gnus-sum-thread-tree-single-leaf "`->")
 #+end_src
 
-- notmuch
+- notmuch auto-update <87o8lt1zp0.fsf@tullinup.koldfront.dk>
 
 #+begin_src emacs-lisp
   (defun asjo-notmuch-new ()
