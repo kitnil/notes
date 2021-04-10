@@ -418,3 +418,13 @@ Message-ID: <m2y2ggprj2.fsf@cmschueller.my-fqdn.de>
 
 #+end_src
 
+* Topics
+
+Mebbe `T m` "archive" to "nnml", which, if my Gnus code is anything like
+yours, would put "archive" after "proc-spamrel".
+
+You could also manhandle your `gnus-topic-topology` entry in `.newsrc.eld` to
+strongarm the desired order.
+
+The topics business has some bugs, to be sure, but none so showstopping as to
+warrant the drudgery of writing a patch.
