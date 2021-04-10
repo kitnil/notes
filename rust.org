@@ -45,6 +45,8 @@
 
 * Learning
 
+- [[https://github.com/rust-lang/rustlings][rust-lang/rustlings: Small exercises to get you used to reading and writing Rust code!]]
+
   #+begin_src scheme
     ("Option" . ,(string-to-symbols "value-is-optional-or-when-the-lack-of-a-value-is-not-an-error-condition"))
     ("Result" . ,(string-to-symbols "richer-version-of-the-Option-type-that-describes-possible-error-instead-of-possible-absence"))
