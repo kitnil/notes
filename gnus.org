@@ -297,6 +297,26 @@ header is:
 
   X-Gnus-Delayed: Wed, 14 Jul 2021 08:00:00 +0200
 
+* Theme
+
+** Threads
+
+Message-ID: <79B0677D-9A94-4717-8636-4FF4F23280DA@kuaishou.com>
+#+begin_src emacs-lisp
+  (gnus-sum-thread-tree-root            "┌ ")
+  (gnus-sum-thread-tree-false-root      "◌ ")
+  (gnus-sum-thread-tree-single-indent   "◎ ")
+  (gnus-sum-thread-tree-vertical        "│")
+  (gnus-sum-thread-tree-indent          "  ")
+  (gnus-sum-thread-tree-leaf-with-other "├─►")
+  (gnus-sum-thread-tree-single-leaf     "╰─►")
+  (gnus-summary-line-format "%U%R %3d %[%-23,23f%] %B %s\n”)
+#+end_src
+
+See https://github.com/condy0919/.emacs.d/blob/master/lisp/init-mail.el#L113-L121
+for more gnus settings.
+
+
 * nnselect
 
 : <m2v9ek9jz0.fsf@codeisgreat.org>
