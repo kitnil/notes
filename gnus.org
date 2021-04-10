@@ -266,3 +266,45 @@ that. But if I look at the delayed article in nndraft:delayed, the
 header is:
 
   X-Gnus-Delayed: Wed, 14 Jul 2021 08:00:00 +0200
+
+* nnselect
+
+: <m2v9ek9jz0.fsf@codeisgreat.org>
+
+I have specified messages for an nnselect group in the configuration in
+~/.gnus.el. Like this,
+
+#+begin_src emacs-lisp
+  (setq gnus-parameters
+        '(("nnselect:emacs"
+           (nnselect-specs
+            (nnselect-function . gnus-search-run-query)
+            (nnselect-args
+             (search-query-spec
+              (query . "recipient:emacs-devel@gnu.org"))
+             (search-group-spec
+              ("nnimap\\+codeisgreat:INBOX")
+              ))))
+          ("nnselect:postgress"
+           (nnselect-specs
+            (nnselect-function . gnus-search-run-query)
+            (nnselect-args
+             (search-query-spec
+              (query . "recipient:pgsql-general@lists.postgresql.org")
+              (query . "recipient:pgsql-announce@lists.postgresql.org")
+              (query . "recipient:pgsql-novice@lists.postgresql.org")
+              (query . "recipient:pgsql-sql@lists.postgresql.org"))
+             (search-group-spec
+              ("nnimap\\+codeisgreat:INBOX")
+              ))))
+          ("nnselect:cron"
+           (nnselect-specs
+            (nnselect-function . gnus-search-run-query)
+            (nnselect-args
+             (search-query-spec
+              (query . "from:Cron? Daemon")
+             (search-group-spec
+              ("nnml:mail.misc")
+              ("nnimap\\+otp:INBOX")
+              )))))))
+#+end_src
