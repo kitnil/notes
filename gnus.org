@@ -297,6 +297,16 @@ header is:
 
   X-Gnus-Delayed: Wed, 14 Jul 2021 08:00:00 +0200
 
+- Replace To with Cc
+#+begin_src emacs-lisp
+  (defun my/message-swap-to-cc ()
+    (interactive)
+    (when-let ((to (message-field-value "To"))
+               (cc (message-field-value "Cc")))
+      (message-replace-header "To" cc "From")
+      (message-replace-header "Cc" to "To")))
+#+end_src
+
 * Theme
 
 ** Threads
