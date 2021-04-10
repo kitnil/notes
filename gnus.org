@@ -191,3 +191,9 @@ To keep the "buttons" being displayed, also add:
 | Regexp that matches list identifiers to be removed from subject.
 | This can also be a list of regexps.
 `----
+
+#+begin_src emacs-lisp
+  (setq gnus-summary-line-format "%U%R%z%B%s -- %n\n")
+  (setq gnus-sum-thread-tree-root "● ")
+  (setq gnus-sum-thread-tree-single-leaf "`->")
+#+end_src
