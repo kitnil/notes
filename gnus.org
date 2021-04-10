@@ -78,6 +78,12 @@ Thanks in advance.
 Aric
 #+end_quote
 
+: <87o8jxffqq.fsf@ucl.ac.uk>
+I use gnus posting styles for this and gnus-alias-use-identity to switch
+identities.  Not quite what you wanted, as it's not tied to the m key
+but is instead something you do once you are in the message buffer, but
+it does work well.
+
 * Toggle steam type
 
   #+begin_src emacs-lisp
