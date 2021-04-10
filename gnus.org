@@ -84,6 +84,22 @@ identities.  Not quite what you wanted, as it's not tied to the m key
 but is instead something you do once you are in the message buffer, but
 it does work well.
 
+: <873618g0f7.fsf@emailmessageidheader.nil>
+gnus-alias-use-identity takes a little setting up (not too
+much though) but is much more flexible. I probably have 20
+contexts set up and in the end it makes switching among them
+very easy. For instance, sometimes I want to be a clueless AOL
+user, sometimes I want to be an alum of my undergrad
+university, and sometimes I even just want to be myself.
+
+Take the time to set up gnus-alias-identity list to suit your
+needs and wishes, and when you're comfortable with that go to
+the next level with gnus-alias-identity-rules, which allows for
+some automated identity selection. For instance certain
+"friends" always get mail from my netzero identity; if someone
+writes to a deprecated address they weill get a reply from my
+preferred identity.
+
 * Toggle steam type
 
   #+begin_src emacs-lisp
