@@ -302,7 +302,7 @@ I have specified messages for an nnselect group in the configuration in
             (nnselect-function . gnus-search-run-query)
             (nnselect-args
              (search-query-spec
-              (query . "from:Cron? Daemon")
+              (query . "from:\"Cron? Daemon\"")
              (search-group-spec
               ("nnml:mail.misc")
               ("nnimap\\+otp:INBOX")
