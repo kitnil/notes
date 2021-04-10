@@ -3061,3 +3061,8 @@ mkfs.vfat -F32 /dev/sdXY
                               (mkdir (string-append #$output "/bin"))
                               (copy-file "plumber" (string-append #$output "/bin/plumber"))))))
   #+end_src
+
+* Cuirass
+- [[https://ci.guix.gnu.org/eval/19534/dashboard][master dashboard]]
+- [[https://ci.guix.gnu.org/eval/19488/dashboard][staging dashboard]]
+- [[https://ci.guix.gnu.org/eval/19464/dashboard][test dashboard]]
