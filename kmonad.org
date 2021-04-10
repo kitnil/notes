@@ -1,0 +1,16 @@
+#+title: kmonad
+
+#+begin_src scheme
+  ;; Guix system already has /dev/input/.../ 0777 permissions.
+
+  (udev-rules-service 'input
+                      (udev-rule
+                       "91-kbd.rules"
+                       "KERNEL==\"input\", GROUP=\"input\", MODE=\"0777\"\n"))
+
+  (udev-rules-service 'uinput
+                      (udev-rule
+                       "91-uinput.rules"
+                       "KERNEL==\"uinput\", GROUP=\"uinput\", MODE=\"0660\", OPTIONS+=\"static_node=uinput\"\n"))
+
+#+end_src
