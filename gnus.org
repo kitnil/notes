@@ -150,3 +150,13 @@ To keep the "buttons" being displayed, also add:
   (add-to-list 'gnus-buttonized-mime-types "application/zip")
   (add-to-list 'gnus-buttonized-mime-types "application/tlsrpt\\+gzip")
 #+end_src
+
+* Server
+
+  #+begin_src emacs-lisp
+    (nnml "archive"
+          (nnml-directory "~/Mail/archive")
+          (nnml-active-file "~/Mail/archive/active")
+          (nnml-get-new-mail nil)
+          (nnml-inhibit-expiry t))
+  #+end_src
