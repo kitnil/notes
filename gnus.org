@@ -316,6 +316,16 @@ Message-ID: <79B0677D-9A94-4717-8636-4FF4F23280DA@kuaishou.com>
 See https://github.com/condy0919/.emacs.d/blob/master/lisp/init-mail.el#L113-L121
 for more gnus settings.
 
+#+begin_src emacs-lisp
+  (custom-set-variables			; thread tree
+   '(gnus-sum-thread-tree-root            "● ")
+   '(gnus-sum-thread-tree-false-root      "○ ")
+   '(gnus-sum-thread-tree-single-indent   "")
+   '(gnus-sum-thread-tree-vertical        "│ ")
+   '(gnus-sum-thread-tree-indent          "  ")
+   '(gnus-sum-thread-tree-leaf-with-other "├─▶ ")
+   '(gnus-sum-thread-tree-single-leaf     "╰─▶ "))
+#+end_src
 
 * nnselect
 
