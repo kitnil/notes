@@ -180,3 +180,14 @@ To keep the "buttons" being displayed, also add:
             ....
 
   #+end_src
+
+* Misc
+
+,----[ C-h v gnus-list-identifiers RET ]
+| gnus-list-identifiers is a variable defined in ‘gnus-sum.el’.
+| Its value is nil
+| 
+| Documentation:
+| Regexp that matches list identifiers to be removed from subject.
+| This can also be a list of regexps.
+`----
