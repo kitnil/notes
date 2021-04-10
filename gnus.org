@@ -122,3 +122,31 @@ Aric
     ;;       "^Content-Type:"
              "^X-Spam-Status:"))
   #+end_src
+
+* MIME
+
+: <87wo20b4lo.fsf@tullinup.koldfront.dk>
+
+What do I need to configure to have that done automatically, so I don't have
+to navigate to the attachment and press RET?
+
+The motivating factor of asking a question is incredible. This is what I found
+was needed:
+
+#+begin_src emacs-lisp
+  ;; Show inline:
+  (add-to-list 'mm-attachment-override-types "application/zip")
+  (add-to-list 'mm-automatic-display "application/zip")
+
+  (add-to-list 'mm-attachment-override-types "application/tlsrpt\\+gzip")
+  (add-to-list 'mm-automatic-display "application/tlsrpt\\+gzip")
+  (add-to-list 'mm-inline-media-tests '("application/tlsrpt\\+gzip" mm-inline-text identity))
+  (add-to-list 'mm-inlined-types "application/tlsrpt\\+gzip")
+#+end_src
+
+To keep the "buttons" being displayed, also add:
+
+#+begin_src emacs-lisp
+  (add-to-list 'gnus-buttonized-mime-types "application/zip")
+  (add-to-list 'gnus-buttonized-mime-types "application/tlsrpt\\+gzip")
+#+end_src
