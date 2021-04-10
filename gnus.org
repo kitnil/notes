@@ -241,3 +241,14 @@ and in my .gnus:
 : (add-hook 'gnus-after-getting-new-news-hook 'asjo-notmuch-new)
 
 - [[https://lars.ingebrigtsen.no/2020/09/19/you-can-read-twitter-with-gnus/][You Can Read Twitter With Gnus – Random Thoughts]]
+
+- browse url
+
+    w runs the command gnus-summary-browse-url (found in
+    gnus-summary-mode-map), which is an interactive compiled Lisp function
+    in `gnus-sum.el'.
+
+    It is bound to w, A w.
+
+    (gnus-summary-browse-url &optional EXTERNAL)
+
