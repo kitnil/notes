@@ -94,6 +94,7 @@ nix-repl> mynixos2.config.environment.etc."mailman.cfg".text
 - [[https://github.com/gvolpe/dconf2nix][gvolpe/dconf2nix: Convert Dconf files (Gnome Shell) to Nix, as expected by Home Manager.]]
 - [[https://github.com/input-output-hk/bitte][input-output-hk/bitte: Nix Ops for Terraform, Consul, Vault, Nomad]]
 - [[https://github.com/danielfullmer/robotnix][danielfullmer/robotnix: Build Android (AOSP) using Nix]]
+- [[https://github.com/fghibellini/nix-haskell-monorepo][fghibellini/nix-haskell-monorepo: Pragmatic tutorial on how to use nix with a haskell monorepo]]
 
 : oleg@guixsd ~/majordomo/_ci/nixpkgs$ nix-instantiate --expr 'with import <nixpkgs> {}; lib.filter (package: lib.isDerivation package) (map (package: package.src) (lib.filter (package: lib.hasAttrByPath ["src"] package) (import ./build.nix)))'
 
