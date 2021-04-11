@@ -1,3 +1,4 @@
+#+title: Jenkins
 
 * Learn
 - [[https://cheatsheet.dennyzhang.com/cheatsheet-jenkins-groovy-A4][CheatSheet: Jenkins & Groovy – CheatSheet]]
@@ -12,6 +13,7 @@ NOTE: "pipeline" equal to "workflow".
 - [[https://github.com/mschuchard/jenkins-devops-libs][mschuchard/jenkins-devops-libs: Collection of Jenkins Pipeline shared libraries for common DevOps software.]]
 - [[https://github.com/fabric8io/fabric8-jenkinsfile-library][fabric8io/fabric8-jenkinsfile-library: This repository contains a library of reusable Jenkinsfiles that you can use on your projects. Its reused by the fabric8 console to associate Jenkinsfiles to projects]]
 - [[https://github.com/fabric8io/jenkins-pipeline-library][fabric8io/jenkins-pipeline-library: a collection of reusable jenkins pipelines and pipeline functions]]
+- [[https://github.com/jenkins-infra/pipeline-library][jenkins-infra/pipeline-library: Collection of custom steps and variables for our Jenkins instance(s)]]
 
 * Examples
 - [[https://github.com/hoto/jenkinsfile-examples][hoto/jenkinsfile-examples: Executable examples of Jenkinsfiles.]]
@@ -27,6 +29,7 @@ NOTE: "pipeline" equal to "workflow".
 
 * Tools
 
+- [[https://github.com/rtyler/jdp][rtyler/jdp: Jenkins Declarative Parser]]
 - [[https://github.com/jessfraz/jenkins-dsl][jessfraz/jenkins-dsl: Jenkins DSLs for my Jenkins instance, keeps forks up to date, mirrors repositories to private git, builds all Dockerfiles and more.]]
 - [[https://github.com/jenkinsci/ircbot-plugin][jenkinsci/ircbot-plugin: Jenkins ircbot plugin]]
 - [[https://github.com/jenkinsci/jenkinsfile-runner-github-actions][jenkinsci/jenkinsfile-runner-github-actions: Jenkins single-shot master GitHub Action POC]]
