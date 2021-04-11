@@ -90,6 +90,7 @@
 - [[https://github.com/usagi/rust-memory-container-cs][usagi/rust-memory-container-cs: Rust Memory Container Cheat-sheet]]
 - [[https://github.com/TianyiShi2001/Algorithms][TianyiShi2001/Algorithms: Algorithms implemented in Rust, explained.]]
 - [[https://github.com/jrvidal/explaine.rs][jrvidal/explaine.rs: An interactive Rust syntax playground]]
+- [[https://github.com/anonymousGiga/learn_rust][anonymousGiga/learn_rust]]
 
   #+begin_src scheme
     ("Option" . ,(string-to-symbols "value-is-optional-or-when-the-lack-of-a-value-is-not-an-error-condition"))
