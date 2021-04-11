@@ -48,6 +48,7 @@
 * Learning
 
 - [[https://github.com/rust-lang/rustlings][rust-lang/rustlings: Small exercises to get you used to reading and writing Rust code!]]
+- [[https://github.com/usagi/rust-memory-container-cs][usagi/rust-memory-container-cs: Rust Memory Container Cheat-sheet]]
 
   #+begin_src scheme
     ("Option" . ,(string-to-symbols "value-is-optional-or-when-the-lack-of-a-value-is-not-an-error-condition"))
