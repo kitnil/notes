@@ -13,6 +13,7 @@
   - =kubectl port-forward my-deployment-xxxxxxxxxx-xxxxx 8005:80 &=
 
 * Tools
+- [[https://github.com/saschagrunert/kubernix][saschagrunert/kubernix: Single dependency Kubernetes clusters for local testing, experimenting and development]]
 - [[https://github.com/deislabs/krustlet][deislabs/krustlet: Kubernetes Rust Kubelet]]
 - [[https://github.com/darkbitio/k8s-mirror][darkbitio/k8s-mirror: Creates a local mirror of a Kubernetes cluster in a docker container to support offline reviewing]]
 - [[https://github.com/k0sproject/k0s][k0sproject/k0s: k0s - Zero Friction Kubernetes]]
