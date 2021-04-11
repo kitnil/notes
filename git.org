@@ -38,6 +38,7 @@ rerere-train.sh [COMMIT][--all]
 - [[https://github.com/honza/smithy][honza/smithy: A tiny git forge written in Go]]
 
 * Tools
+- [[https://github.com/alarsyo/lohr][alarsyo/lohr: Git mirroring daemon]]
 - [[https://github.com/rolandwalker/git-branchdates][rolandwalker/git-branchdates: Highly configurable git branch lister with TrueColor and GitHub PR support]]
 - [[https://github.com/kolbasa/git-repo-watcher][kolbasa/git-repo-watcher: A simple bash script to watch a git repository and pull upstream changes if needed.]]
 - [[https://github.com/janniks/git-ignore][janniks/git-ignore: An interactive CLI to generate .gitignore files (written in Rust)]]
