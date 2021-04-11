@@ -9,6 +9,7 @@
 - [[https://github.com/doums/milcheck][doums/milcheck: A small binary that displays the status of your pacman mirrorlist in your terminal]]
 - [[https://github.com/rami3l/pacaptr][rami3l/pacaptr: Pacman-like syntax wrapper for many package managers.]]
 - [[https://github.com/nroi/flexo][nroi/flexo: a central pacman cache]]
+- [[https://github.com/r-darwish/alma][r-darwish/alma: Create Arch Linux based bootable USB drives]]
 
 - yay -Pw # получаешь рецепт как в новостях.
   - yay -Syua # После успешного обновления обновляю отдельно только AUR.
