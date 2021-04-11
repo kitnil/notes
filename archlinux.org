@@ -7,6 +7,7 @@
 - [[https://pkgstats.archlinux.de/packages][Package statistics - pkgstats]]
 - [[https://github.com/Morganamilo/paru][Morganamilo/paru: Feature packed AUR helper]]
 - [[https://github.com/doums/milcheck][doums/milcheck: A small binary that displays the status of your pacman mirrorlist in your terminal]]
+- [[https://github.com/rami3l/pacaptr][rami3l/pacaptr: Pacman-like syntax wrapper for many package managers.]]
 
 - yay -Pw # получаешь рецепт как в новостях.
   - yay -Syua # После успешного обновления обновляю отдельно только AUR.
