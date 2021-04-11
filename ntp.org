@@ -31,3 +31,6 @@ fudge   127.127.1.0 stratum 10
 driftfile /var/lib/ntp/drift
 #+end_example
 /nix/store/299n127f719fmwwk4any6bwhkd4wb676-ntp-4.2.8p15/bin/ntpd -qg
+
+* Alternatives
+- [[https://github.com/akamai-contrib/byztimed][akamai-contrib/byztimed: Byzantine-fault-tolerant time synchronization]]
