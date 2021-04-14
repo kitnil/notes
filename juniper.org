@@ -6,6 +6,9 @@
   : netstat –Aa   ( to get the protocol control block, PCB)
   : fstat (to get the process using the PCB from the previous command)
 
+- set VLAN
+  : set interfaces ge-0/0/44 unit 0 family ethernet-switching vlan members VLAN253
+
 - config path
   : /config/juniper.conf.gz
 
