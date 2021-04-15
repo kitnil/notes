@@ -98,6 +98,36 @@ nix-repl> mynixos2.config.environment.etc."mailman.cfg".text
 - [[https://github.com/cachix/pre-commit-hooks.nix][cachix/pre-commit-hooks.nix: Seamless integration of https://pre-commit.com git hooks with Nix.]]
 - [[https://github.com/cloudwatt/nix-container-images#reuse-nixos-modules][cloudwatt/nix-container-images: Write container images as NixOS machines]]
 - [[https://github.com/notgne2/continix][notgne2/continix: Simple NixOS-like Docker containers with declarative config]]
+- https://github.com/NixOS/nixpkgs/issues/24346
+  #+begin_src nix
+    # https://github.com/7c6f434c/7c6f434c-configurations/blob/master/init-less-system/generic/tools.nix#L373
+    # Run with: nix repl <<< ':b let pkgs = import <nixpkgs> {}; in pkgs.lib.traceVal (import /tmp/run.nix)'
+
+    (builtins.getAttr "rsyncd"
+      (import <nixpkgs/nixos> {
+        configuration = {
+          fileSystems."/".label = "vmdisk";
+          boot.loader.grub.devices = [ "/dev/sda" ];
+          services.rsyncd = {
+            enable = true;
+            settings = {
+              global = {
+                uid = "root";
+                gid = "root";
+                "hosts allow" = "172.16.0.0/16";
+                "read only" = "yes";
+              };
+              home = {
+                path = "/home";
+              };
+              nginx = {
+                path = "/opt/nginx";
+              };
+            };
+          };
+        };
+      }).config.systemd.services).runner
+  #+end_src
 
 : oleg@guixsd ~/majordomo/_ci/nixpkgs$ nix-instantiate --expr 'with import <nixpkgs> {}; lib.filter (package: lib.isDerivation package) (map (package: package.src) (lib.filter (package: lib.hasAttrByPath ["src"] package) (import ./build.nix)))'
 
