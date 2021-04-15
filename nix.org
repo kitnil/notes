@@ -172,6 +172,8 @@ Imperatively
   "gah!"
 #+end_example
 
+- [[https://github.com/cloudwatt/nix-container-images#reuse-nixos-modules][cloudwatt/nix-container-images: Write container images as NixOS machines]]
+
 - nix-prefetch-url
 
 https://github.com/NixOS/nix/issues/1880
