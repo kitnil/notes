@@ -97,6 +97,7 @@ nix-repl> mynixos2.config.environment.etc."mailman.cfg".text
 - [[https://github.com/fghibellini/nix-haskell-monorepo][fghibellini/nix-haskell-monorepo: Pragmatic tutorial on how to use nix with a haskell monorepo]]
 - [[https://github.com/cachix/pre-commit-hooks.nix][cachix/pre-commit-hooks.nix: Seamless integration of https://pre-commit.com git hooks with Nix.]]
 - [[https://github.com/cloudwatt/nix-container-images#reuse-nixos-modules][cloudwatt/nix-container-images: Write container images as NixOS machines]]
+- [[https://github.com/notgne2/continix][notgne2/continix: Simple NixOS-like Docker containers with declarative config]]
 
 : oleg@guixsd ~/majordomo/_ci/nixpkgs$ nix-instantiate --expr 'with import <nixpkgs> {}; lib.filter (package: lib.isDerivation package) (map (package: package.src) (lib.filter (package: lib.hasAttrByPath ["src"] package) (import ./build.nix)))'
 
