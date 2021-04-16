@@ -35,6 +35,7 @@
 - [[https://github.com/tdihp/dspcap][tdihp/dspcap: A humble bash script set that uses daemonset to capture tcpdump from all k8s nodes, then collect the captures.]]
 - [[https://github.com/pulumi/kubespy][pulumi/kubespy: Tools for observing Kubernetes resources in real time, powered by Pulumi.]]
 - [[https://github.com/sbstp/kubie][sbstp/kubie: A more powerful alternative to kubectx and kubens]]
+- [[https://github.com/saschagrunert/kubernix][saschagrunert/kubernix: Single dependency Kubernetes clusters for local testing, experimenting and development]]
 
 * Installation
 - [[https://github.com/miekg/vks][miekg/vks: Virtual Kubelet Provider for Systemd]]
