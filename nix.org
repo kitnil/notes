@@ -803,6 +803,9 @@ printf '{"version": 2, "flakes":%s}' "$(flakes)"
 
   - $ nix build .#nixosConfigurations.someNixosSystem.config.system.build.vm
 
+  - [[https://github.com/Hoverbear-Consulting/flake][Hoverbear-Consulting/flake]]
+    : nixos-install --flake github:hoverbear-consulting/flake#gizmo --impure
+
 ** Packer
    #+begin_src nix
      {
