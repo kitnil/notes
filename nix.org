@@ -867,3 +867,44 @@ printf '{"version": 2, "flakes":%s}' "$(flakes)"
          });
      }
    #+end_src
+
+   : nix build .#nixosConfigurations.mailman.config.system.build.tarball
+   #+begin_src nix
+     {
+       description = "TODO";
+       inputs = {
+         flake-compat = {
+           url = "github:edolstra/flake-compat";
+           flake = false;
+         };
+         flake-utils.url = "github:numtide/flake-utils";
+         packer-nixos = {
+           url = "github:nix-community/nixbox";
+           flake = false;
+         };
+       };
+       outputs = { self, nixpkgs, flake-utils, packer-nixos, ... }:
+         flake-utils.lib.eachDefaultSystem (system: {
+           devShell = with nixpkgs.legacyPackages."${system}"; mkShell {
+             buildInputs = [ nixUnstable ];
+           };
+         })
+         // (let
+           system = "x86_64-linux";
+         in {
+           nixosModule = {
+             boot.loader.grub.device = "/dev/sda";
+             fileSystems."/".device = "/dev/sda1";
+             services.nginx.enable = true;
+             imports = [
+               (nixpkgs + /nixos/modules/virtualisation/docker-image.nix)
+               (nixpkgs + /nixos/modules/installer/cd-dvd/channel.nix)
+             ];
+           };
+           nixosConfigurations.mailman = nixpkgs.lib.nixosSystem {
+             inherit system;
+             modules = [ self.nixosModule ];
+           };
+         });
+     }
+   #+end_src
