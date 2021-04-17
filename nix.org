@@ -802,3 +802,60 @@ printf '{"version": 2, "flakes":%s}' "$(flakes)"
   - [[https://github.com/jkachmar/easy-hls-nix][jkachmar/easy-hls-nix: Easy Haskell Language Server tooling with Nix!]]
 
   - $ nix build .#nixosConfigurations.someNixosSystem.config.system.build.vm
+
+** Packer
+   #+begin_src nix
+     {
+       description = "Run packer to build NixOS";
+       inputs = {
+         flake-compat = {
+           url = "github:edolstra/flake-compat";
+           flake = false;
+         };
+         flake-utils.url = "github:numtide/flake-utils";
+         packer-nixos = {
+           url = "github:nix-community/nixbox";
+           flake = false;
+         };
+       };
+       outputs = { self, nixpkgs, flake-utils, packer-nixos, ... }:
+         flake-utils.lib.eachDefaultSystem (system: with nixpkgs.legacyPackages."${system}"; {
+           apps.mailman =
+             let
+               nixos-x86_64 = builtins.fromJSON (builtins.readFile "${packer-nixos}/nixos-x86_64.json");
+               packerNixosJson = with nixpkgs.lib; writeText "nixos-x86_64.json"
+                 (builtins.toJSON
+                   (filterAttrs
+                     (name: value: name != "post-processors")
+                     (nixos-x86_64 // {
+                       builders = [
+                         ((findFirst
+                           (x: x.type == "qemu")
+                           nixos-x86_64.builders
+                           nixos-x86_64.builders)
+                         // {
+                           iso_url = "https://releases.nixos.org/nixos/20.09/nixos-20.09.3827.389249fa9b3/nixos-minimal-20.09.3827.389249fa9b3-x86_64-linux.iso";
+                           iso_checksum = "d73847e1bc4034eb7b31998d6106ba60bd37048c605cbe3b11d7fb4a87aea676";
+                         })
+                       ];
+                     })));
+             in flake-utils.lib.mkApp {
+               drv = writeScriptBin "build.sh" ''
+                 #!${runtimeShell}
+                 set -euo pipefail
+                 cp -a ${packer-nixos} packer-nixos
+                 find packer-nixos -type f -exec chmod 644 {} \;
+                 chmod 755 packer-nixos
+                 install -m644 ${packerNixosJson} packer-nixos/nixos-x86_64.json
+                 (
+                     cd packer-nixos
+                     exec -a "$0" ${packer}/bin/packer build ${packerNixosJson} "$@"
+                 )
+               '';
+             };
+           devShell = mkShell {
+             buildInputs = [ nixUnstable ];
+           };
+         });
+     }
+   #+end_src
