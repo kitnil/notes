@@ -199,6 +199,14 @@ Split string by REGEX
 : splitRegex :: Regex -> String -> [String]
 http://hackage.haskell.org/packages/archive/regex-compat/0.92/doc/html/Text-Regex.html
 
+#+begin_src haskell
+  #!/usr/bin/env nix-shell
+  #!nix-shell -p "haskell.packages.ghc901.ghcWithPackages (pkgs: with pkgs; [ ])"
+  #!nix-shell --pure
+  #!nix-shell -i runghc
+  main = putStrLn "Hello, World!"
+#+end_src>
+
 * Tools
 
 - [[https://github.com/leksah/leksah][leksah/leksah: Haskell IDE]]
