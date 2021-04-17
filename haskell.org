@@ -207,6 +207,12 @@ http://hackage.haskell.org/packages/archive/regex-compat/0.92/doc/html/Text-Rege
   main = putStrLn "Hello, World!"
 #+end_src>
 
+** .ghci
+
+:set -fwarn-unused-binds -fwarn-unused-imports
+:set -i.
+:load Request
+
 * Tools
 
 - [[https://github.com/leksah/leksah][leksah/leksah: Haskell IDE]]
