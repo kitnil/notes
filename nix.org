@@ -795,6 +795,11 @@ printf '{"version": 2, "flakes":%s}' "$(flakes)"
 
 ** TODO nixos-switch-to-configuration code 100 means that host reboot is required
 
+* Overlays
+  - nixos-install --flake github:hoverbear-consulting/flake#gizmo --impure
+    - ln -s /path/to/nixpkgs-replit/default.nix ~/.config/nixpkgs/overlays/replit.nix
+    - # Install upm nix-env -iA nixpkgs.upm
+
 * Flakes
   - [[https://github.com/MarcoPolo/simple-vms][MarcoPolo/simple-vms: Simple VMs in NixOS]]
   - [[https://github.com/balsoft/kalinix][balsoft/kalinix: A pentesting/CTF toolbox with the help of Nix]]
