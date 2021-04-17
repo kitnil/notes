@@ -1633,6 +1633,19 @@ plugins or optional/soft dependencies.
 
 * Build system monad
 
+  #+begin_src scheme
+    (build-derivations
+     store
+     (list
+      (run-with-store store
+        (mlet %store-monad ((drv (text-file "packer-guix.json"
+                                            (scm->json-string %packer-operating-system))))
+          (lower-object
+           (program-file "packer-build-guix"
+                         #~(begin
+                             (system* "/home/oleg/.nix-profile/bin/packer" "build" #$drv))))))))
+  #+end_src
+
   #+BEGIN_SRC scheme
     (use-modules (gnu)
                  (guix store))
