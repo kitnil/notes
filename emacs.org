@@ -504,6 +504,189 @@
 
  JDEE I think is rather outdated and probably won't work :-(
 
+** Lua
+
+: Eduardo Ochs
+: Message-ID: <CADs++6hLZc1L4gthC1W9+b3n_kZ4MjesG6v4xkWwXE6R7Y1xAA@mail.gmail.com>
+
+about a month ago I asked on the Lua mailing list if anyone there had
+tried to create an Emacs module that would load Lua and then start a
+Lua interpreter and let Emacs call it...
+
+I received this answer,
+
+  http://lua-users.org/lists/lua-l/2021-03/msg00084.html
+
+and today I finally had time to compile that code on Debian and test
+it. It looks prototype-ishy, but it is surprisingly functional - if we
+run something that returns several values, like the second sexp here,
+
+  (emlua-dostring "a = 22")
+  (emlua-dostring "return a+33, '44', {}")
+
+it retuns a vector like this,
+
+  ["55" "44" "table: 0x55f5e0a15a10"]
+
+with tostring-ed versions of all its return values, and if we run
+something that yields an error it returns a string with Lua's error
+message.
+
+I haven't played much with it yet.
+Happy hacking =),
+
+  Eduardo Ochs
+  http://angg.twu.net/#eev
+  http://angg.twu.net/emacsconf2020.html
+
+
+   #+begin_src c
+     // This file:
+     //   http://angg.twu.net/emacs-lua/emlua.cpp.html
+     //   http://angg.twu.net/emacs-lua/emlua.cpp
+     //           (find-angg "emacs-lua/emlua.cpp")
+     // Author: <nerditation@outlook.com>
+     //    See: http://lua-users.org/lists/lua-l/2021-03/msg00084.html
+     // Some comments by: Eduardo Ochs <eduardoochs@gmail.com>
+     //
+     // emlua.cpp - a emacs module that runs Lua code.
+     // Adapted from the code that nerditation sent to lua-l.
+     // Nerditation's original instructions on how to compile this were just this line:
+     //   g++ -IZ:/emacs/include -IZ:/Lua/include -shared emlua -o emlua.dll -LZ:/Lua/lib -llua
+     // My notes on how to compile this on Debian are at the end of this file.
+     //
+     // (defun e () (interactive) (find-fline "~/usrc/emacs-lua/emlua.cpp"))
+
+     #include <vector>
+     #include <emacs-module.h>
+     #include <lua.hpp>
+
+     int plugin_is_GPL_compatible;
+
+     // TODO: convert lua values to elisp values in a meaningful way.
+     // PLACEHOLDER: call `luaL_tolstring` on everything
+     static emacs_value lua_to_elisp(lua_State *L, emacs_env *env, int i) {
+             size_t size;
+             auto s = luaL_tolstring(L, i, &size);
+             return env->make_string(env, s, size);
+     }
+
+     #define EMACS_ENV_KEY "*emacs_env"
+
+     // ef_xxx is elisp function so uses emacs-module-func protocol
+     // basically a wrapper around the Lua `dostring` function
+     // returns a vector containing the multiple (possibly zero) return values (called `tostring` on them) of the Lua code
+     // returns an error message on failure
+     static emacs_value ef_lua_dostring(emacs_env *env, ptrdiff_t nargs, emacs_value *args, void *data) {
+             // closure data is lua_State
+             lua_State *L = (lua_State *)data;
+             // the env is valid on for this callstack
+             lua_pushlightuserdata(L, env);
+             lua_setfield(L, LUA_REGISTRYINDEX, EMACS_ENV_KEY);
+             // string length: emacs uses signed type (ptrdiff_t), Lua uses unsigned type (size_t)
+             ptrdiff_t len = 0;
+             // emacs didn't provide API to `borrow` the string
+             // we are forced to make a copy and then Lua will copy it again
+             env->copy_string_contents(env, args[0], nullptr, &len);
+             auto buffer = std::vector<char>(len);
+             env->copy_string_contents(env, args[0], buffer.data(), &len);
+             //assert(buffer.back() == '\0');
+             auto status = luaL_dostring(L, buffer.data());
+             if (status != LUA_OK) {
+                     auto ret = lua_to_elisp(L, env, -1);
+                     lua_settop(L, 0);
+                     return ret;
+             }
+             auto multret = std::vector<emacs_value>{};
+             int retcount = lua_gettop(L);
+             multret.reserve(retcount);
+             for (int i = 1; i <= retcount; ++i) {
+                     multret.push_back(lua_to_elisp(L, env, i));
+             }
+             lua_settop(L, 0);
+             return env->funcall(env, env->intern(env, "vector"), multret.size(), multre
+          0K ..t.data());
+     }
+
+     // lf_xxx is lua function so use lua_CFunction protocol
+     static int lf_message(lua_State *L)
+     {
+             lua_getfield(L, LUA_REGISTRYINDEX, EMACS_ENV_KEY);
+             auto *env = (emacs_env *)lua_touserdata(L, -1);
+             size_t size;
+             auto s = luaL_tolstring(L, 1, &size);
+             emacs_value args[1] = {env->make_string(env, s, size)};
+             env->funcall(env, env->intern(env, "message"), 1, args);
+             return 0;
+     };
+
+     extern "C" {
+     int emacs_module_init(struct emacs_runtime *ert) noexcept
+     {
+             emacs_env *env = ert->get_environment(ert);
+             lua_State *L = luaL_newstate();
+             luaL_openlibs(L);
+             // register Lua callable function(s)
+             lua_pushcfunction(L, lf_message);
+             lua_setglobal(L, "message");
+             // register elisp callable function(s)
+             emacs_value func = env->make_function(
+                             env,
+                             1, // min_arity,
+                             1, // max_arity,
+                             &ef_lua_dostring,
+                             "run string as Lua code",
+                             L
+                             );
+             emacs_value symbol = env->intern(env, "emlua-dostring");
+             emacs_value args[] = {symbol, func};
+             env->funcall(env, env->intern(env, "defalias"), 2, args);
+             return 0;
+     }
+     } // extern "C"
+
+
+     /*
+     # (find-es "emacs" "vterm-recompile")
+     # (find-sh "locate emacs-module.h")
+     # (find-sh "locate lua.hpp")
+     # (find-sh "locate liblua5.3")
+     # (find-fline "~/bigsrc/emacs27/src/emacs-module.h")
+     # (find-fline "/usr/include/lua5.1/lua.hpp")
+     # (find-fline "/usr/include/lua5.3/lua.hpp")
+
+      (eepitch-shell)
+      (eepitch-kill)
+      (eepitch-shell)
+
+     # (find-fline "~/emacs-lua/")
+     cd ~/emacs-lua/
+     ls -lAF
+     g++ -I$HOME/bigsrc/emacs27/src \
+         -I/usr/include/lua5.3 \
+         -shared \
+         emlua.cpp \
+         -o emlua.so \
+         -llua5.3
+
+     # (find-fline "~/emacs-lua/")
+     # (find-fline "~/emacs-lua/" "emlua.so")
+     # (load       "~/emacs-lua/emlua.so")
+
+     (emlua-dostring "return 22")
+     (emlua-dostring "return 22+33")
+     (emlua-dostring "return 22+33, 44")
+     (emlua-dostring "a = 22")
+     (emlua-dostring "return a")
+
+     ,*/
+     ..                                                  100% 25.5M=0s
+
+     2021-04-18 08:33:42 (25.5 MB/s) - written to stdout [4406/4406]
+
+
+   #+end_src
+
 ** Prolog
 - [[https://www.metalevel.at/ediprolog/][ediprolog — Emacs does Interactive Prolog]]
 
