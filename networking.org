@@ -50,6 +50,14 @@
 - Create a bridge
   : ip link add name br0 type bridge
 
+* nc
+** UDP
+  On server listen UDP port:
+  : nc -ul 6111
+
+  On client:
+  : nc -u <server> 6111
+
 * ip
 
 - Bind port even if no IP address available:
