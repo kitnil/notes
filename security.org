@@ -41,6 +41,7 @@
 - [[https://github.com/evilsocket/takuan][evilsocket/takuan: Takuan is a system service that parses logs and dectects noisy attackers in order to build a blacklist database of known cyber offenders.]]
 - [[https://github.com/R3x/linux-rootkits][R3x/linux-rootkits: A collection of Linux kernel rootkits found across the internet taken and put together]]
 - [[https://github.com/souravbaghz/RadareEye][souravbaghz/RadareEye: A tool made for specially scanning nearby devices[BLE, Bluetooth & Wifi] and execute our given command on our system when the target device comes in-between range.]]
+- [[https://github.com/samyk/slipstream][samyk/slipstream: NAT Slipstreaming allows an attacker to remotely access any TCP/UDP services bound to a victim machine, bypassing the victim’s NAT/firewall, just by the victim visiting a website]]
 
 * Backdoor
 ** sudo
