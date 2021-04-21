@@ -13,7 +13,8 @@
 - [[https://github.com/kward/shunit2][kward/shunit2: shUnit2 is a xUnit based unit test framework for Bourne based shell scripts.]]
 
 ** interactive
-   [[https://serverfault.com/questions/146745/how-can-i-check-in-bash-if-a-shell-is-running-in-interactive-mode][How can I check in bash if a shell is running in interactive mode? - Server Fault]]
+   - [[https://serverfault.com/questions/146745/how-can-i-check-in-bash-if-a-shell-is-running-in-interactive-mode][How can I check in bash if a shell is running in interactive mode? - Server Fault]]
+   - [[https://www.gnu.org/software/bash/manual/html_node/Is-this-Shell-Interactive_003f.html][Is this Shell Interactive? (Bash Reference Manual)]]
    #+begin_src bash
      if [[ $- == *i* ]]
      then
