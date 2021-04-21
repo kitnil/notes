@@ -1,6 +1,7 @@
 #+title: DNS
 
 * Tools
+- [[https://github.com/kirelagin/dns.nix][kirelagin/dns.nix: A Nix DSL for DNS zone files]]
 - [[https://github.com/aaronjanse/dns-over-wikipedia][aaronjanse/dns-over-wikipedia: Redirect `.idk` domains using the official link found on a topic's Wikipedia page]]
 - [[https://github.com/jvns/dnspeep][jvns/dnspeep: spy on the DNS queries your computer is making]]
 - [[https://github.com/wyhaya/updns][wyhaya/updns: DNS proxy tool]]
