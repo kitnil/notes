@@ -12,6 +12,15 @@
 - [[https://github.com/fugue/goldplate][fugue/goldplate: a cute and simple golden test runner for CLI applications]]
 - [[https://github.com/kward/shunit2][kward/shunit2: shUnit2 is a xUnit based unit test framework for Bourne based shell scripts.]]
 
+** interactive
+   [[https://serverfault.com/questions/146745/how-can-i-check-in-bash-if-a-shell-is-running-in-interactive-mode][How can I check in bash if a shell is running in interactive mode? - Server Fault]]
+   #+begin_src bash
+     if [[ $- == *i* ]]
+     then
+         do_interactive_stuff
+     fi
+   #+end_src
+
 * Programms
 
 - [[https://github.com/lobuhi/byp4xx][lobuhi/byp4xx: Simple bash script to bypass "403 Forbidden" messages with well-known methods discussed in #bugbountytips]]
