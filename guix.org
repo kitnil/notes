@@ -2649,6 +2649,14 @@ Sounds reasonable.  Users who wish to control pulseaudio outside of the
 configuration system can just exclude the service, or unset PULSE_CONFIG
 and PULSE_CLIENT_CONFIG in their profile.
 
+* Haskell
+
+ghc -o ~/.xmonad/xmonad-x86_64-linux \
+-package-db $(guix build ghc-xmonad-contrib | grep -v static)/lib/ghc-8.6.5/ghc-xmonad-contrib-0.16.conf.d/ \
+-package-db $(guix build ghc-dbus | grep -v static)/lib/ghc-8.6.5/ghc-dbus-1.2.7.conf.d/ \
+-package-db $GUIX_PROFILE/lib/ghc-8.6.5/package.conf.d/ \
+-dynamic xmonad.hs
+
 * WSL
 - [[https://gist.github.com/giuliano108/49ec5bd0a9339db98535bc793ceb5ab4][Guix-on-WSL2.md]]
 
