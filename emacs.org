@@ -223,6 +223,8 @@
  command or an Emacs Lisp function:
  (setq projectile-test-cmd #'custom-test-function)
 
+ - [[https://github.com/Malabarba/nameless][Malabarba/Nameless: Less is more. Hide package namespace in your emacs-lisp code]]
+
  - [[https://github.com/xuchunyang/curl-to-elisp][xuchunyang/curl-to-elisp: Convert cURL command to Emacs Lisp code]]
 
  - [[https://oremacs.com/2015/01/17/setting-up-ediff/][Setting up Ediff · (or emacs]]
