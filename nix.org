@@ -23,6 +23,7 @@ nix-repl> mynixos2.config.environment.etc."mailman.cfg".text
 - Create .envrc for project directories
 : for file in $(echo */default.nix); do (output="$(dirname "$file")"/.envrc; [[ -f $output ]] || echo 'use nixpkgs' >> "$output"); done
 
+- [[https://github.com/tmcl/minimal-android-nix-example][tmcl/minimal-android-nix-example: If you want to see how to get a modern Android package to compile with nix, here you go.]]
 - [[https://github.com/numtide/nix-filter][numtide/nix-filter]]
 - [[https://github.com/bqv/guix][bqv/guix: A package and module for using GNU Guix on Nix(OS). Kinda more a code dump than for actual use. See fork]]
 - [[https://github.com/DavHau/nix-portable][DavHau/nix-portable: Nix - Static, Permissionless, Installation-free, Pre-configured]]
