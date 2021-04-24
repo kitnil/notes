@@ -132,6 +132,10 @@ net.bridge.bridge-nf-call-iptables = 0
 ** Misc
 - [[https://github.com/IvanGlinkin/Host-enumeration][IvanGlinkin/Host-enumeration]]
 
+* /etc/hosts
+
+- [[https://github.com/txn2/txeh][txn2/txeh: Go library and CLI utility for /etc/hosts management.]]
+
 * Monitoring
 - [[https://github.com/ntop/ntopng][ntop/ntopng: Web-based Traffic and Security Network Traffic Monitoring]]
 
