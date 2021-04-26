@@ -100,6 +100,9 @@
 - In =screen= session press Ctrl+C if successful
   : sh -c 'ip r delete default; ip r add default via 172.16.103.208; sleep 10; ip r delete default; ip r add default via 172.16.103.1'
 
+* tcpdump
+- [[https://danielmiessler.com/study/tcpdump/][A tcpdump Tutorial with Examples — 50 Ways to Isolate Traffic | Daniel Miessler]]
+
 * Traffic shaping
 [[https://github.com/hkbakke/tc-gen][hkbakke/tc-gen: Modern linux traffic shaping made easy]]
 
