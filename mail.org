@@ -11,6 +11,9 @@
 - Yandex send mail
   : curl --ssl-reqd --url 'smtps://smtp.yandex.ru:465' --user 'i18n.wugi@yandex.ru:xxxxxxxx' --mail-from 'i18n.wugi@yandex.ru' --mail-rcpt 'i18n.wugi@yandex.ru' --upload-file <(echo -e "From: i18n.wugi@yandex.ru\nTo: i18n.wugi@yandex.ru\nSubject: Test message\n\nHello.\nThis is a test message.\n\n")
 
+* Tools
+  - [[https://github.com/sj26/mailcatcher][sj26/mailcatcher: Catches mail and serves it through a dream.]]
+
 * Programms
 - [[https://github.com/AfterShip/email-verifier][AfterShip/email-verifier: A Go library for email verification without sending any emails.]]
 - [[https://gitlab.com/shackra/goimapnotify][Jorge Javier Araya Navarro / goimapnotify · GitLab]]
