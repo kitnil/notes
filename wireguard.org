@@ -1,0 +1,27 @@
+#+title: Wireguard
+
+* Configuration
+
+** server
+
+[Interface]
+PrivateKey = 
+Address = 10.66.66.1/24
+ListenPort = 63665
+PostUp = iptables -A FORWARD -i wg0 -j ACCEPT; iptables -t nat -A POSTROUTING -o ens3 -j MASQUERADE
+PostDown = iptables -D FORWARD -i wg0 -j ACCEPT; iptables -t nat -D POSTROUTING -o ens3 -j MASQUERADE
+
+[Peer]
+PublicKey = 5xGlB3nuDI56LehsK2ILBA99LrQoxZcTWmL1HBGaBCk=
+AllowedIPs = 10.66.66.2/32
+
+** client
+
+[Interface]
+PrivateKey = 
+Address = 10.66.66.2/32
+
+[Peer]
+PublicKey = Q5G8bmBxhuPnoFgELcJpo2SJ+X8kkteHz5xvpbLupwA=
+Endpoint = 178.250.247.88:63665
+AllowedIPs = 10.66.66.0/24
