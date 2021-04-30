@@ -160,3 +160,17 @@ net.bridge.bridge-nf-call-iptables = 0
 * [[file:smtp.org][SMTP]]
 
 * [[file:proxy.org][Proxy]]
+
+* Ping
+
+  #+begin_src bash
+    for ip in 10.0.0.{1..6}
+    do
+        if (timeout 1 ping -c 1 "$ip" &> /dev/null)
+        then
+            :
+        else
+            echo "$ip"
+        fi
+    done
+  #+end_src
