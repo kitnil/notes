@@ -151,7 +151,7 @@ the Guix module ’(guix extensions profile)’ then “guix help” should list
 the extension and “guix profile” should work.
 #+end_quote
 
-  - [[https://buildd.debian.org/status/package.php?p=guix&suite=experimental][Buildd status for guix (experimental)]]
+  - [[https://buildd.debian.org/status/package.php?p=guix&suite=experimental][Debian Buildd status for guix (experimental)]]
 
   - Upgrade packages in default profile
     : guix refresh $(guix package -I | cut -f1)
