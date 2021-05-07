@@ -1,6 +1,7 @@
 #+title: SSH
 
 - [[https://smallstep.com/blog/diy-single-sign-on-for-ssh/][DIY Single Sign-On for SSH]]
+- [[https://tanelpoder.com/posts/troubleshooting-linux-ssh-logon-delay-always-takes-10-seconds/][Tutorial: Troubleshooting Linux SSH Login Delay - Why does logging in always take 10 seconds? | Tanel Poder Consulting]]
 - [[https://github.com/ovh/the-bastion][ovh/the-bastion: Authentication, authorization, traceability and auditability for SSH accesses.]]
 - [[https://github.com/xvxx/shy][xvxx/shy: 💀 bare-bones ssh launcher]]
 - [[https://www.redhat.com/sysadmin/ssh-proxy-bastion-proxyjump][SSH to remote hosts though a proxy or bastion with ProxyJump | Enable Sysadmin]]
