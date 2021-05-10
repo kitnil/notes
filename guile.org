@@ -183,3 +183,38 @@ Guile Reference Manual.
       (current-module)
       (list architecture data-model))
    #+end_src
+
+* guile-bash
+
+  #+begin_src scheme
+    (pk 'bind-scm-function bind-scm-function)
+
+    (pk 'run-define-bash-function)
+
+    (define-syntax-rule (define-bash-function (fn-name arg ...) stmt stmt* ...)
+      (begin
+        (define (fn-name arg ...)
+          stmt stmt* ...)
+        (bind-scm-function
+         'fn-name
+         (lambda ()
+           (define bash-args (map cdr (array->alist 'SCM_ARGS)))
+           (match bash-args
+             ((arg ...) (fn-name arg ...))
+             (_ (scm-error
+                 'wrong-number-of-args
+                 (symbol->string 'fn-name)
+                 "scm-function called from Bash with args ~A failed to match signature ~A"
+                 (list bash-args '(arg ...))
+                 #f)))))))
+
+    (bind-scm-function 'hello
+     (lambda ()
+       (define bash-args (map cdr (array->alist 'SCM_ARGS)))
+       (pk "in bind-scm-function 'hello")))
+
+    (define-bash-function (mjru-web)
+      (format #t "~{~a~%~}" (stream->list (stream-range 0 10))))
+
+    (pk (all-aliases))
+  #+end_src
