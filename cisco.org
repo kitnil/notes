@@ -1,5 +1,10 @@
+#+title: CISCO
 
 * Misc
+
+- logging
+.May 11 10:27:02: %PORT_SECURITY-2-PSECURE_VIOLATION: Security violation occurred, caused by MAC address xxxx.xxxx.xxxx on port FastEthernet0/20.
+.May 11 10:27:02: %PORT_SECURITY-2-PSECURE_VIOLATION_VLAN: Security violation on port FastEthernet0/20 due to MAC address xxxx.xxxx.xxxx on VLAN 253
 
 - terminal length 0
 - [[https://github.com/rememberYou/gen-cisco][rememberYou/gen-cisco: 🧨 Generates Cisco scripts based on YAML files]]
