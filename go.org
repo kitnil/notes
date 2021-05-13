@@ -106,6 +106,7 @@
 - [[https://github.com/wagslane/go-rabbitmq][wagslane/go-rabbitmq: A wrapper of streadway/amqp that provides reconnection logic and sane defaults]]
 - [[https://github.com/knadh/koanf][knadh/koanf: Light weight, extensible configuration management library for Go. Built in support for JSON, TOML, YAML, env, command line, file, S3 etc. Alternative to viper.]]
 - [[https://github.com/knadh/sql-jobber][knadh/sql-jobber: A highly opinionated, distributed job-queue built specifically for defering and executing heavy SQL read jobs asynchronously. Supports MySQL and Postgres.]]
+- [[https://github.com/hairyhenderson/go-fsimpl][hairyhenderson/go-fsimpl: Go filesystem implementations for various URL schemes]]
 
 * REPL
 
