@@ -1,5 +1,8 @@
 #+title: MongoDB
 
+* Alternatives
+- [[https://github.com/scottrogowski/mongita][scottrogowski/mongita: "Mongita is to MongoDB as SQLite is to SQL"]]
+
 * Utils
 - [[https://github.com/mdirolf/nginx-gridfs][mdirolf/nginx-gridfs: Nginx module for serving files from MongoDB's GridFS]]
 ** Backup
