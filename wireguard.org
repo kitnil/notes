@@ -25,3 +25,6 @@ Address = 10.66.66.2/32
 PublicKey = Q5G8bmBxhuPnoFgELcJpo2SJ+X8kkteHz5xvpbLupwA=
 Endpoint = 178.250.247.88:63665
 AllowedIPs = 10.66.66.0/24
+
+* Misc
+- [[https://github.com/tonarino/innernet][tonarino/innernet: A private network system that uses WireGuard under the hood.]]
