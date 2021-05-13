@@ -57,3 +57,7 @@
 
 - Create empty file of given size
   : fallocate -l 1G test.img
+
+* Tools
+
+- [[https://github.com/iann0036/censor-shell][iann0036/censor-shell: Censors or hides shell / Bash / console output based on defined patterns - great for hiding secrets in demos!]]
