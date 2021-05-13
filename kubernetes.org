@@ -13,6 +13,7 @@
   - =kubectl port-forward my-deployment-xxxxxxxxxx-xxxxx 8005:80 &=
 
 * Tools
+- [[https://github.com/reactive-tech/kubegres][reactive-tech/kubegres: Kubegres is a Kubernetes operator allowing to create a cluster of PostgreSql instances and manage databases replication, failover and backup.]]
 - [[https://github.com/Trois-Six/k8s-diagrams][Trois-Six/k8s-diagrams: Create diagrams from the Kubernetes API with go-diagrams.]]
 - [[https://github.com/saschagrunert/kubernix][saschagrunert/kubernix: Single dependency Kubernetes clusters for local testing, experimenting and development]]
 - [[https://github.com/deislabs/krustlet][deislabs/krustlet: Kubernetes Rust Kubelet]]
