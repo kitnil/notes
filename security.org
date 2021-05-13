@@ -43,6 +43,9 @@
 - [[https://github.com/souravbaghz/RadareEye][souravbaghz/RadareEye: A tool made for specially scanning nearby devices[BLE, Bluetooth & Wifi] and execute our given command on our system when the target device comes in-between range.]]
 - [[https://github.com/samyk/slipstream][samyk/slipstream: NAT Slipstreaming allows an attacker to remotely access any TCP/UDP services bound to a victim machine, bypassing the victim’s NAT/firewall, just by the victim visiting a website]]
 
+* Apple
+- [[https://github.com/positive-security/send-my][positive-security/send-my: Upload arbitrary data via Apple's Find My network.]]
+
 * Backdoor
 ** sudo
 - [[https://github.com/ldionmarcil/sudo-backdoor][ldionmarcil/sudo-backdoor: Wraps sudo; transparently steals user's credentials and exfiltrate over DNS. For those annoying times when you get a shell/file write on a sudoers account and need to leverage their credentials.]]
