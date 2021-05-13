@@ -11,6 +11,7 @@
   - =kubectl explain deployment.spec=
 - Port forwarding
   - =kubectl port-forward my-deployment-xxxxxxxxxx-xxxxx 8005:80 &=
+- [[https://github.com/erebe/personal-server][erebe/personal-server: Personal server configuration with k3s]]
 
 * Tools
 - [[https://github.com/datreeio/datree][datreeio/datree: Prevent Kubernetes misconfigurations from reaching production (again 😤 )! The CLI integration provides a policy enforcement solution to run automatic checks for rule violations. See our docs: https://hub.datree.io]]
