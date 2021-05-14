@@ -116,3 +116,6 @@
 : xterm & sleep 2 ; xdotool key type 'sudo -i' ; xdotool key Return ; sleep 2; xdotool type 'bla-bla' ;
 
 : xdotool key $(echo 123456abc | sed -e 's/\(.\)/\1\n/g')
+
+* mouse
+- [[https://github.com/ortegaalfredo/mousemic][ortegaalfredo/mousemic: Simple tool to visualize and amplify mouse movements]]
