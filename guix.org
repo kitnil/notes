@@ -3074,6 +3074,10 @@ mkfs.vfat -F32 /dev/sdXY
          (format-match match-subject subject))))
   #+end_src
 
+  #+begin_src scheme
+    (display (run-with-store (open-connection) (package-file icedtea-8 #:output "jdk")))
+  #+end_src
+
 * Gexp
 
   #+begin_src scheme
