@@ -218,3 +218,6 @@ Guile Reference Manual.
 
     (pk (all-aliases))
   #+end_src
+
+- Search module in a path
+: (search-path %load-path "gnu/packages/re2c.scm")
