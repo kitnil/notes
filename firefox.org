@@ -136,6 +136,7 @@ toolkit.legacyUserProfileCustomizations.stylesheets true
 
 extensions.htmlaboutaddons.recommendations.enabled false
 browser.newtabpage.activity-stream.showSponsored false
+mousewheel.min_line_scroll_amount 25
 
 * Tabs
 browser.tabs.closeWindowWithLastTab false
