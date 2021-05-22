@@ -15,7 +15,11 @@
 - [[https://github.com/yandex/gixy][yandex/gixy: Nginx configuration static analyzer]]
 - [[https://github.com/SpiderLabs/ModSecurity][SpiderLabs/ModSecurity: ModSecurity is an open source, cross platform web application firewall (WAF) engine for Apache, IIS and Nginx that is developed by Trustwave's SpiderLabs. It has a robust event-based programming language which provides protection from a range of attacks against web applications and allows for HTTP traffic monitoring, logging and real-time analysis. With over 10,000 deployments world-wide, ModSecurity is the most widely deployed WAF in existence.]]
 - [[https://github.com/yandex/gixy][yandex/gixy: Nginx configuration static analyzer]]
+
+* Modules
+
 - [[https://nginx-clojure.github.io/][Home@Nginx-Clojure]]
+- [[https://github.com/ajax16384/ngx_http_untar_module][ajax16384/ngx_http_untar_module: Nginx HTTP Untar Module]]
 
 * Configuration
 ** Minimal
