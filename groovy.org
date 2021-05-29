@@ -24,6 +24,9 @@ groovy:000> ({f1, f2 -> f1})("foo", "bar")
 groovy:000> ({f1, f2 -> f2})("foo", "bar")
 ===> bar
 
+* Documentation
+- [[https://docs.groovy-lang.org/latest/html/api/groovy/lang/Grab.html][Grab (Groovy 3.0.8)]]
+
 * Examples
   #+begin_src groovy
     #!/usr/bin/env groovy
@@ -42,3 +45,12 @@ groovy:000> ({f1, f2 -> f2})("foo", "bar")
 
     println(buildJobs)
   #+end_src
+
+- Import library in =groovysh=
+:  groovy.grape.Grape.grab(group: "org.ajoberstar", module: "grgit", version: "2.0.1")
+
+
+def pk(value) {
+    println(value)
+    value
+}
