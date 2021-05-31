@@ -23,6 +23,7 @@ nix-repl> mynixos2.config.environment.etc."mailman.cfg".text
 - Create .envrc for project directories
 : for file in $(echo */default.nix); do (output="$(dirname "$file")"/.envrc; [[ -f $output ]] || echo 'use nixpkgs' >> "$output"); done
 
+- [[https://github.com/gytis-ivaskevicius/high-quality-nix-content][gytis-ivaskevicius/high-quality-nix-content]]
 - [[https://zimbatm.com/NixFlakes/][Nix Flakes edition | $ zimbatm]]
 - [[https://github.com/ursi/nixf][ursi/nixf: An easy way to use nix flakes without upgrading nix]]
 - [[https://github.com/tmcl/minimal-android-nix-example][tmcl/minimal-android-nix-example: If you want to see how to get a modern Android package to compile with nix, here you go.]]
