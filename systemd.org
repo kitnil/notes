@@ -39,3 +39,16 @@ WantedBy=multi-user.target
 #+end_example
 
 [[https://shtsh.blogspot.com/2012/05/systemd.html][Немного о linux: Пробуем на вкус systemd]]
+
+
+
+[Service]
+Type = simple
+ExecStart = /usr/sbin/clamd --foreground=yes
+Restart = on-failure
+IOSchedulingPriority = 7
+CPUSchedulingPolicy = 5
+Nice = 19
+PrivateTmp = true
+MemoryLimit=500M
+CPUQuota=50%
