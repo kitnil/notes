@@ -23,3 +23,13 @@
     virsh -c qemu+tcp://HOST/system shutdown vm12345
     virsh -c qemu+tcp://HOST/system start vm12345
   #+end_src
+
+** Disk configuration
+   #+begin_src xml
+     <disk type='file' device='disk'>
+       <driver name='qemu' type='qcow2'/>
+       <source file='/kvm/disks/nixops-dd310333-9f51-11ea-a6e4-0242c6b2ca1a-web98.qcow2'/>
+       <target dev='hda' bus='ide'/>
+       <address type='drive' controller='0' bus='0' target='0' unit='0'/>
+     </disk>
+   #+end_src
