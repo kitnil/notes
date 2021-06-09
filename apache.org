@@ -5,6 +5,7 @@
 
 * Syntax
 
+AH01630: client denied by server configuration: /home/myapp/server/
 - [[https://linux.101hacks.com/unix/client-denied-by-server-configuration/][How to Fix Apache AH01630 Client Denied by Server Configuration Error]]
   - Remove any “Order deny,allow”, “Order allow,deny”, and related lines
   - Replace “Deny from all” to “Require all denied”
