@@ -1076,3 +1076,26 @@
       esac
   done
 #+END_SRC
+
+
+Infinite history
+#+begin_src bash
+    export HISTCONTROL=ignoredups
+    export HISTFILESIZE=-1
+    export HISTSIZE=-1
+#+end_src
+
+Prompt
+#+begin_src bash
+    case ${TERM} in
+        [aEkx]term*|rxvt*|gnome*|konsole*|interix)
+                PS1='\[\033]0;\u@\h:\w\007\]'
+                ;;
+        screen*)
+                PS1='\[\033k\u@\h:\w\033\\\]'
+                ;;
+        *)
+                unset PS1
+                ;;
+    esac
+#+end_src
