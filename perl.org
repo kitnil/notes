@@ -23,3 +23,5 @@
   cpan> o conf build_requires_install_policy yes
   cpan> o conf commit
 #+end_example
+
+- cpan Perl::LanguageServer
