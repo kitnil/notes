@@ -16,3 +16,10 @@
   use Data::Dumper;
   print Dumper($self);
 #+end_src
+
+- [[https://stackoverflow.com/a/2065608][How do I tell CPAN to install all dependencies?]]
+#+begin_example
+  cpan> o conf prerequisites_policy 'follow'
+  cpan> o conf build_requires_install_policy yes
+  cpan> o conf commit
+#+end_example
