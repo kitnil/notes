@@ -23,6 +23,21 @@
 - # mdadm --create --verbose --level=5 --metadata=1.2 --chunk=256 --raid-devices=4 /dev/md/md0 /dev/sdb1 /dev/sdc1 /dev/sdd1 /dev/sde1
   note that could use devices derictly
 
+- fail and remove disk
+#+begin_example
+root@mj744:~# mdadm /dev/md0 --fail /dev/sda1
+mdadm: set /dev/sda1 faulty in /dev/md0
+root@mj744:~# cat /proc/mdstat                                                                                                                                            
+Personalities : [raid10] [linear] [multipath] [raid0] [raid1] [raid6] [raid5] [raid4]
+md0 : active raid10 sdb1[1] sda1[0](F) sdd1[3] sdc1[2]                                                                                                                    
+      999948288 blocks super 1.2 512K chunks 2 near-copies [4/3] [_UUU]
+      bitmap: 5/8 pages [20KB], 65536KB chunk               
+                             
+unused devices: <none>                                          
+root@mj744:~# mdadm /dev/md0 --remove /dev/sda1
+mdadm: hot removed /dev/sda1 from /dev/md0
+#+end_example
+
 - create raid 1 with missing disk
 : mdadm --create --verbose --level=1 --metadata=1.2 --raid-devices=2 /dev/md/1 /dev/sda1 missing
 #+begin_example
