@@ -25,6 +25,15 @@
 
 - create raid 1 with missing disk
 : mdadm --create --verbose --level=1 --metadata=1.2 --raid-devices=2 /dev/md/1 /dev/sda1 missing
+#+begin_example
+root@mj744:~# mdadm --create --verbose --level=1 --metadata=1.2 --raid-devices=2 /dev/md/1 /dev/sda1 missing                                                              
+mdadm: /dev/sda1 appears to be part of a raid array:
+       level=raid10 devices=4 ctime=Tue Jun  2 14:45:26 2020
+mdadm: size set to 499974144K
+mdadm: automatically enabling write-intent bitmap on large array
+Continue creating array? y
+mdadm: array /dev/md/1 started.
+#+end_example
 
 * [[https://unix.stackexchange.com/questions/190264/disassemble-a-raid-1-arragement-without-removing-reinstalling-the-system][Disassemble a RAID 1 arragement without removing/reinstalling the system - Unix & Linux Stack Exchange]]
 Just fail and remove one of your drives:
