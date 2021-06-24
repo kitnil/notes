@@ -13,3 +13,6 @@ hosts allow = 67.67.67.67/32
 [root]
         path = /
 #+end_example
+
+- Full system backup
+: rsync -aAXHv --exclude={"/dev/*","/proc/*","/sys/*","/tmp/*","/run/*","/mnt/*","/media/*","/lost+found"} / /path/to/backup
