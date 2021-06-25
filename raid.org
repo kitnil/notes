@@ -66,6 +66,9 @@ Reboot. And then destroy your RAID:
 : apt install linux-image-4.19.0-16-amd64
 : modprobe raid1
 
-root@debian:~# mdadm --assemble --scan
-mdadm: /dev/md/mj744:0 has been started with 2 drives (out of 4).
-mdadm: /dev/md/mj744.lex1.ru:1 has been started with 2 drives.
+scan for raid md devices
+#+begin_example
+  root@debian:~# mdadm --assemble --scan
+  mdadm: /dev/md/mj744:0 has been started with 2 drives (out of 4).
+  mdadm: /dev/md/mj744.lex1.ru:1 has been started with 2 drives.
+#+end_example
