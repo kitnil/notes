@@ -919,3 +919,13 @@ printf '{"version": 2, "flakes":%s}' "$(flakes)"
          });
      }
    #+end_src
+
+* Cache
+
+- [[https://nixos.wiki/wiki/Binary_Cache][Binary Cache - NixOS Wiki]]
+#+begin_example
+$ curl http://binarycache.example.com/nix-cache-info
+StoreDir: /nix/store
+WantMassQuery: 1
+Priority: 30
+#+end_example
