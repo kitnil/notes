@@ -125,3 +125,15 @@ set security zones security-zone trust interfaces ge-0/0/4 host-inbouinterfaces 
   -    export announce-except-vlan80;
   +    export announce;
 #+end_example
+
+#+begin_example
+root@sr1-mr13-14> show route table nat.inet.0 78.108.82.41 
+
+nat.inet.0: 7 destinations, 9 routes (7 active, 0 holddown, 0 hidden)
++ = Active Route, - = Last Active, * = Both
+
+0.0.0.0/0          *[Static/5] 45w6d 09:28:16
+                    > to 172.16.103.254 via vlan.253
+
+{master:0}
+#+end_example
