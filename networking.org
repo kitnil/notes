@@ -190,3 +190,46 @@ net.bridge.bridge-nf-call-iptables = 0
         fi
     done
   #+end_src
+
+* Juniper/Cisco
+
+[[https://it-wtf.com/juniper/juniper-cisco-commands/][Juniper/Cisco соответствие команд | IT-WTF?!]]
+
+Команды Cisco 	Команды Juniper 	Описание
+show run 	sh configuration 	Show running configuration
+sh ver 	sh ver 	Show version
+show ip interface brief 	show interface terse 	displays the status of interfaces configured for IP
+show interface [intfc] 	show interfaces [intfc] detail 	displays the interface configuration, status and statistics.
+show controller intfc 	show interfaces intfc extensive 	displays information about a physical port device
+show interface | incl (proto|Desc) 	show interfaces description 	displays the interface configuration, status and statistics
+show ip route 	show route 	displays summary information about entries in the routing table
+show ip bgp summary 	show bgp summary 	displays the status of all Border Gateway Protocol (BGP) connections
+show ip bgp net mask 	show route protocol bgp prefix 	will show you how that route is being advertised, look for the first line
+show ip bgp net mask longer-prefixes 	show route range prefix 	will show you how that route is being advertised, look for the first line
+show ip bgp regexp AS-regexp 	show route aspath-regexp “AS-regexp” 	displays routes matching the autonomous system (AS) path regular expression
+show ip bgp neighbors neigh received-routes 	show route receive-protocol bgp neighshow route source-gateway neigh protocol bgp 	Shows whether a neighbor supports the route refresh capability
+show ip bgp neighbor neigh advertised-routes 	show route advertising-protocol bgp neigh 	Shows whether a neighbor supports the route refresh capabilty
+show clns neighbors 	show isis adjacency 	displays both ES and IS neighbors
+show clns interface 	show isis interface 	shows specific information about each interface
+show ip route isis 	show isis routes 	displays the current state of the the routing table
+show isis topology 	show isis spf 	displays a list of all connected routers in all areas
+show ip ospf interface 	show ospf neighbor 	shows neighbor ID, Priority, IP, & State if the neighbor router, dead time.
+show ip ospf interface 	show ospf interface 	shows neighbor id, pri, state, dead time, address and interface
+show ip route ospf 	show ospf route 	display the current state of the routing table
+show ip ospf database 	show ospf database 	display list of information related to the OSPF database for a specific communication server
+show version 	show version, show system uptime 	display the system hardware config., software version, and name and source of configuration files and boot images
+show diags 	show chasis hardware 	displays power-on diagnostics status
+show processes cpu 	show system process 	displays utilization statistics
+show tech-support 	request support info 	displays the current software image, configuration, controllers, counters, stacks, interfaces, memory and buffers
+show logging 	show log messages 	display the state of logging to the syslog
+show route-map name 	show policy name 	displayall route-maps configured or only the one specified
+show ip prefix-list name 	show policy name 	display information about a prefix list or prefix list entries
+show ip community-list list 	configure,
+show policy-options community name 	display routes that are permitted by BGP community list
+show environment all 	show chassis environment 	displays temperature and voltage information on the console
+ping dest 	ping dest rapid (for cisco like output)
+ping dest (for unix like output) 	to check to see if a destination is alive
+ping (setting source int) 	ping dest bypass-routing 	to check to see if a destination is alive
+terminal monitor 	monitor start messages 	Change console terminal settings
+terminal no monitor 	monitor stop 	Change console terminal settings
+terminal length 0 	set cli screen-length 0 	sets the length for displaying command output
