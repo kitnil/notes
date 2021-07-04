@@ -113,6 +113,7 @@ nix-repl> mynixos2.config.environment.etc."mailman.cfg".text
 - [[https://github.com/MagicRB/NixNG][MagicRB/NixNG]]
 - [[https://github.com/fluidattacks/makes][fluidattacks/makes: A SecDevOps framework powered by Nix]]
 - [[https://github.com/divnix/quick-nix-registry/blob/master/flake.nix][quick-nix-registry/flake.nix at master · divnix/quick-nix-registry]]
+- [[https://github.com/djwhitt/nix-babahska-static-bin-pkg][djwhitt/nix-babahska-static-bin-pkg]]
 - https://github.com/NixOS/nixpkgs/issues/24346
   #+begin_src nix
     # https://github.com/7c6f434c/7c6f434c-configurations/blob/master/init-less-system/generic/tools.nix#L373
