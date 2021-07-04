@@ -236,6 +236,23 @@ patchelf https://nixos.wiki/wiki/Packaging/Binaries#Creating_the_Derivation_for_
 - nix-version
 : nix-instantiate --eval -E '(import <nixpkgs> {}).lib.nixpkgsVersion'; 
 
+- nix-build-expression
+: file="$1"
+: nix-build -E "(import <nixpkgs> {}).callPackage ./$file {}" "${@:2}"
+
+- nix-build-expression-with
+: file="$1"
+:  nix-build -E "with (import <nixpkgs> {}); with pkgs; callPackage ./$file {}" "${@:2}"
+
+- nix-build-expression-unstable-with
+: file="$1"
+: nix-build -E "with (import <nixos-unstable> {}); with pkgs; callPackage ./$file {}" "${@:2}"
+
+  - nix-shell-expression-with-overlay
+: overlay="$1"
+: expression="$2"
+: nix-shell --expr "(import <nixos/nixpkgs> {overlays = [(import $overlay)];}).$expression"
+
 * Configurations
 - [[https://github.com/jethrokuan/nix][jethrokuan/nix: NixOS configuration with Nix flakes]]
 
