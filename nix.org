@@ -956,3 +956,6 @@ StoreDir: /nix/store
 WantMassQuery: 1
 Priority: 30
 #+end_example
+
+* Nixpkgs Source
+- pkgs/stdenv/generic/check-meta.nix
