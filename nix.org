@@ -837,6 +837,22 @@ printf '{"version": 2, "flakes":%s}' "$(flakes)"
     - ln -s /path/to/nixpkgs-replit/default.nix ~/.config/nixpkgs/overlays/replit.nix
     - # Install upm nix-env -iA nixpkgs.upm
 
+* NixOS
+  #+begin_src nix
+    let
+      nixos = import (pkgs.path + /nixos) {
+        inherit system;
+        configuration = {
+          services.restic.backups.remotebackup = services.restic.backups.remotebackup;
+        };
+      };
+    in lib.mkForce ''
+            ${nixos.config.systemd.services.restic-backups-remotebackup.postStart}
+        #     echo hi
+          '';
+    
+  #+end_src
+
 * Flakes
   - [[https://github.com/bqv/nixrc][bqv/nixrc: Structured flake-based NixOS configuration]]
   - [[https://github.com/MarcoPolo/simple-vms][MarcoPolo/simple-vms: Simple VMs in NixOS]]
