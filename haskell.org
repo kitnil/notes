@@ -266,6 +266,8 @@ https://hackage.haskell.org/package/dns-4.0.1/docs/Network-DNS-Lookup.html
   withResolver rs $ \resolver -> lookupNS resolver (Data.ByteString.Char8.pack "majordomo.ru")
 #+end_example
 
+* Programs
+- [[https://github.com/jgm/pandoc-server][jgm/pandoc-server: Simple server app for pandoc conversions.]]
 * Misc
 
 :t (>>=)
@@ -275,3 +277,4 @@ BOT
  Eval:
 Monad m => m a -> (a -> m b) -> m b
 Maybe a -> (a -> Maybe b) -> Maybe b
+
