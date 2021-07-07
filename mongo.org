@@ -17,6 +17,9 @@
 
 - https://habr.com/en/post/134590/
 
+- Find inside array
+: db.getCollection('template').find({"resourceFilter": {$in: ["cgiFileExtensions"]}})
+
 - find examples
 : db.getCollection('processingBusinessOperation').find({"createdDate" : {"$gte": ISODate("2020-06-13")}})
 : db.getCollection('processingBusinessOperation').find({$and: [{"createdDate" : {"$gte": ISODate("2020-06-13")}}, {"state": "PROCESSING"}, {"name": {$ne: "Обновление архива"}}]})
