@@ -246,6 +246,8 @@ degradation:
 
 oleg@guixsd ~$ ss --numeric --tcp --listening --no-header --oneline --processes '( sport = :5901 )'
 
+rp_filter https://www.kernel.org/doc/Documentation/networking/ip-sysctl.txt
+
 * source
 
 /home/oleg/archive/src/linux/arch/x86/entry/syscalls/syscall_64.tbl
