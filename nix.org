@@ -855,6 +855,7 @@ printf '{"version": 2, "flakes":%s}' "$(flakes)"
   #+end_src
 
 * Flakes
+  - [[https://github.com/tadfisher/flake][tadfisher/flake: My computing life in Nix.]]
   - [[https://github.com/bqv/nixrc][bqv/nixrc: Structured flake-based NixOS configuration]]
   - [[https://github.com/MarcoPolo/simple-vms][MarcoPolo/simple-vms: Simple VMs in NixOS]]
   - [[https://github.com/balsoft/kalinix][balsoft/kalinix: A pentesting/CTF toolbox with the help of Nix]]
