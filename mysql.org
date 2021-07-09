@@ -6412,7 +6412,7 @@ information that should help you find out what is causing the crash.
 [[https://wisdmlabs.com/blog/migrate-mysql-users-one-server-another/][How to Migrate MySQL Users from one Server to Another]]
 
 - List users
-: mysql -B -N -uroot -e "SELECT CONCAT('\'', user,'\'@\'', host, '\'') FROM user WHERE user != 'debian-sys-maint' AND user != 'root' AND user != ''" | tee mysql_all_users.txt
+: mysql -B -N -uroot -e "SELECT CONCAT('\'', user,'\'@\'', host, '\'') FROM user WHERE user != 'debian-sys-maint' AND user != 'root' AND user != ''" mysql | tee mysql_all_users.txt
 
 - Obtain a List of User Privileges
 : while read line; do mysql -B -N -uroot -e "SHOW GRANTS FOR $line"; done < mysql_all_users.txt | tee mysql_all_users_sql.sql
