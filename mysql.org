@@ -6410,7 +6410,7 @@ information that should help you find out what is causing the crash.
 * cheatsheet
 
 - List users
-: mysql -B -N -uroot -p -e "SELECT CONCAT('\'', user,'\'@\'', host, '\'') FROM user WHERE user != 'debian-sys-maint' AND user != 'root' AND user != ''" 
+: mysql -B -N -uroot -p -e "SELECT CONCAT('\'', user,'\'@\'', host, '\'') FROM user WHERE user != 'debian-sys-maint' AND user != 'root' AND user != ''" | tee mysql_all_users.txt
 
 - reapair all mySQL/mariaDB databases
 : mysqlcheck --repair --all-databases -u root -p<PASSWORD>
