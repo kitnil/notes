@@ -573,8 +573,10 @@ sudo /nix/var/nix/profiles/system/bin/switch-to-configuration switch
   #+end_src
   : nix-instantiate --eval /tmp/file.nix -A config.toplevel
 
-* NixOS alternatives
-- [[https://ocelot-project.github.io/][λ Ocelot]]
+* NixOS
+- [[https://github.com/lourkeur/miniguest][lourkeur/miniguest: lightweight, declarative guest operating systems]]
+** NixOS alternatives
+ - [[https://ocelot-project.github.io/][λ Ocelot]]
 
 * Lustrate
   #+begin_src yaml
