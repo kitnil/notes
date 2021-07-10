@@ -573,11 +573,6 @@ sudo /nix/var/nix/profiles/system/bin/switch-to-configuration switch
   #+end_src
   : nix-instantiate --eval /tmp/file.nix -A config.toplevel
 
-* NixOS
-- [[https://github.com/lourkeur/miniguest][lourkeur/miniguest: lightweight, declarative guest operating systems]]
-** NixOS alternatives
- - [[https://ocelot-project.github.io/][λ Ocelot]]
-
 * Lustrate
   #+begin_src yaml
     - hosts: web_ubuntu
@@ -855,6 +850,12 @@ printf '{"version": 2, "flakes":%s}' "$(flakes)"
           '';
     
   #+end_src
+
+- [[https://github.com/lourkeur/miniguest][lourkeur/miniguest: lightweight, declarative guest operating systems]]
+
+** NixOS alternatives
+ - [[https://ocelot-project.github.io/][λ Ocelot]]
+
 
 * Flakes
   - [[https://github.com/tadfisher/flake][tadfisher/flake: My computing life in Nix.]]
