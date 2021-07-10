@@ -26,6 +26,7 @@ nix-repl> mynixos2.config.environment.etc."mailman.cfg".text
 : for file in $(echo */default.nix); do (output="$(dirname "$file")"/.envrc; [[ -f $output ]] || echo 'use nixpkgs' >> "$output"); done
 
 - [[https://github.com/kamadorueda/four-shells][kamadorueda/four-shells: Technologies around Nix and IPFS that are published under an Open Source License]]
+- [[https://github.com/divnix/quick-nix-registry][divnix/quick-nix-registry: Speed up the Nix registry by caching nixpkgs locally]]
 - [[https://github.com/ryantm/agenix][ryantm/agenix: age-encrypted secrets for NixOS]]
 - [[https://github.com/gytis-ivaskevicius/high-quality-nix-content][gytis-ivaskevicius/high-quality-nix-content]]
 - [[https://zimbatm.com/NixFlakes/][Nix Flakes edition | $ zimbatm]]
