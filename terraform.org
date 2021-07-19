@@ -1,5 +1,6 @@
 #+title: Terraform
 
+- [[https://github.com/mrVanDalo/terranix][mrVanDalo/terranix: terranix is a terraform.json generator with a nix-like feeling]]
 - [[https://github.com/andrewchambers/terraform-provider-nix][andrewchambers/terraform-provider-nix: terraform provider that manages nix builds and nixos machines.]]
 - [[https://github.com/cycloidio/inframap][cycloidio/inframap: Read your tfstate or HCL to generate a graph specific for each provider, showing only the resources that are most important/relevant.]]
 - [[https://github.com/hashicorp/terraform-ls][hashicorp/terraform-ls: Terraform Language Server]]
