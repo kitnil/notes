@@ -55,3 +55,10 @@ def pk(value) {
     println(value)
     value
 }
+
+* Jenkins
+
+#+begin_example
+import hudson.markup.*
+(new EscapedMarkupFormatter()).properties
+#+end_example
