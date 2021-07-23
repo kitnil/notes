@@ -220,6 +220,9 @@ http://hackage.haskell.org/packages/archive/regex-compat/0.92/doc/html/Text-Rege
 :set -i.
 :load Request
 
+* Libs
+- [[https://github.com/typeclasses/systemd-socket-activation][typeclasses/systemd-socket-activation]]
+
 * Tools
 
 - [[https://github.com/leksah/leksah][leksah/leksah: Haskell IDE]]
