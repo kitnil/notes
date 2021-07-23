@@ -982,3 +982,46 @@ Priority: 30
 
 * Nixpkgs Source
 - pkgs/stdenv/generic/check-meta.nix
+
+* PHP
+  #+begin_src php
+    php > var_dump(new \PNDP\AST\NixFunInvocation(new \PNDP\AST\NixExpression("foo"), []));
+    object(PNDP\AST\NixFunInvocation)#4 (2) {
+      ["funExpr"]=>
+      object(PNDP\AST\NixExpression)#2 (1) {
+        ["value"]=>
+        string(3) "foo"
+      }
+      ["paramExpr"]=>
+      array(0) {
+      }
+    }
+    php > var_dump(phpToNix(new \PNDP\AST\NixFunInvocation(new \PNDP\AST\NixExpression("foo"), [])));
+    string(6) "foo []"
+    NULL
+    php > var_dump(phpToNix(new \PNDP\AST\NixFunInvocation(new \PNDP\AST\NixExpression("foo"), "")));
+    string(6) "foo """
+    NULL
+    php > var_dump(phpToNix(new \PNDP\AST\NixFunInvocation(new \PNDP\AST\NixExpression("foo"), ";")));
+    string(7) "foo ";""
+    NULL
+    php > var_dump(phpToNix(new \PNDP\AST\NixFunInvocation(new \PNDP\AST\NixExpression("foo"), NULL)));
+    string(8) "foo null"
+    NULL
+    php > var_dump(new \PNDP\AST\NixExpression("foo"))
+    php > ;
+    object(PNDP\AST\NixExpression)#4 (1) {
+      ["value"]=>
+      string(3) "foo"
+    }
+    php > var_dump(phpToNix(new \PNDP\AST\NixExpression("foo")));
+    string(3) "foo"
+    NULL
+    php > phpToNix("foo")
+    php > ;
+    string(5) ""foo""
+    php > var_dump(phpToNix(new \PNDP\AST\NixExpression("foo")));
+    string(3) "foo"
+    NULL
+    php > print(phpToNix(new \PNDP\AST\NixExpression("foo")));
+  #+end_src
