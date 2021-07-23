@@ -817,6 +817,10 @@ flakes()
 printf '{"version": 2, "flakes":%s}' "$(flakes)"
 #+end_example
 
+#+begin_example
+builtins.match "php([[:alnum:]])([[:alnum:]])" "php70"
+#+end_example
+
 * deploy-rs
   - [[https://github.com/serokell/deploy-rs][serokell/deploy-rs: A Simple multi-profile Nix-flake deploy tool.]]
 
