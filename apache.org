@@ -12,3 +12,5 @@ If you are using Apache 2.4 and above, you might get the following error message
   - Replace “Deny from all” to “Require all denied”
   - Replace “Allow from all” to “Require all granted”
   - If you are allowing any specific hostname, change them accordingly. For example, replace “Allow from 192.168.1.2” to “Require host 192.168.1.2”
+
+MPM-ITK + php-cgi = Simple setup for running scripts as the owner, ok performance, can't use APC. Low memory usage.MPM-ITK + mod_php = Very simple setup, good performance and ability to use APC. Little more memory used.MPM-ITK + mod_fcgid = Couldn't get it working.MPM-prefork + suEXEC + php-cgi = More complicated setup, performance similar to MPM-ITK + php-cgi.MPM-prefork + suEXEC + mod_php = more complicated setup, good performance.MPM-prefork + suEXEC + mod_fcgid=more complicated setup, excellent performance.MPM-worker + suEXEC + php-cgi=More complicated setup, better performance than MPM-ITK + php-cgi.MPM-worker + suEXEC + mod_php=Not recommended because php is apparently not thread safe.MPM-worker + suEXEC + mod_fcgid=More complicated setup, best performance.
