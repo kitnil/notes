@@ -59,6 +59,27 @@
 - mongo to json
 : mongo --quiet video --eval 'DBQuery.shellBatchSize = 300; db.getCollection("youtube").find({"uploader_id" : "UCvRRgjjKvyLNB9yx3oGu2Xw"}, {_id:0, "title":1, "webpage_url":1, "description":1}).pretty()' | jq --raw-output '[.webpage_url, .title, .description] | @tsv' | sort -k 2
 
+- mongo add user
+: hms-rs0:PRIMARY> db.createUser({user: "tracker", pwd: "secretPassword", roles: [{role: "readWrite", db: "tracker"}]})
+#+begin_example
+2021-07-28T16:35:32.870+0300 E QUERY    [thread1] Error: couldn't add user: User "tracker@tracker" already exists :
+_getErrorWithCode@src/mongo/shell/utils.js:25:13
+DB.prototype.createUser@src/mongo/shell/db.js:1292:15
+@(shell):1:1
+hms-rs0:PRIMARY> show users;
+{
+        "_id" : "tracker.tracker",
+        "user" : "tracker",
+        "db" : "tracker",
+        "roles" : [
+                {
+                        "role" : "readWrite",
+                        "db" : "tracker"
+                }
+        ]
+}
+#+end_example
+
 - backup and restore
 [[https://github.com/arshadkazmi42/ak-cli#mongo][Mongo]]
 
