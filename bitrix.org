@@ -2,7 +2,7 @@
 
 - [[https://blog.budagov.ru/][Записки веб-разработчика, блог о cms 1С-Битрикс]]
 
-- Authenticate as admin
+- Authenticate as admin (e.g. =/var/www/example.ru/admin.php=)
 #+begin_example
   <?
   require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
