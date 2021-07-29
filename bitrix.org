@@ -1,1 +1,10 @@
 - [[https://blog.budagov.ru/][Записки веб-разработчика, блог о cms 1С-Битрикс]]
+
+- Authenticate as admin
+#+begin_example
+  <?
+  require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
+  $USER->Authorize(1);
+  global $USER; 
+  require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");
+#+end_example
