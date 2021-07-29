@@ -10,3 +10,6 @@
   global $USER; 
   require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");
 #+end_example
+
+Балл считается по следующей формуле: 1/(время генерации одной страницы)
+http://nevatuft.ru/?ncc=1 ну т.е. ncc=1 добавляй в конце
