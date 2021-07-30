@@ -7,6 +7,7 @@
 NOTE: "pipeline" equal to "workflow".
 
 - [[file:~/src/jenkins/core/src/main/java/hudson/tasks/Shell.java::public class Shell extends CommandInterpreter {][define shell]]
+- [[https://habr.com/ru/company/dins/blog/520220/][Jenkins Pipeline: заметки об оптимизации. Часть 1 / Блог компании DINS / Хабр]]
 
 * Shared libs
 - [[https://github.com/wcm-io-devops/jenkins-pipeline-library][wcm-io-devops/jenkins-pipeline-library: wcm.io Jenkins Pipeline Library for CI/CD]]
