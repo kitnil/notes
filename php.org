@@ -25,3 +25,42 @@
       echo "hello";
   ?>
 #+end_src
+
+#+begin_src php
+  #PHPRC="${HOME}/.phprc.ini" /nix/store/map23xbih2gz8d6hddb7n3vq3byhygs6-ispmanager2ispconfig/share/php/composer-svanderburg-composer2nix/vendor/bin/php -a
+  
+  $autoloadLocations = [
+      "/nix/store/krd0bal0akml8a5ry0q3qbwln9v1sy1y-composer-svanderburg-composer2nix/share/php/composer-svanderburg-composer2nix/bin" . "/vendor/autoload.php",
+      "/nix/store/krd0bal0akml8a5ry0q3qbwln9v1sy1y-composer-svanderburg-composer2nix/share/php/composer-svanderburg-composer2nix/bin" . "/../../autoload.php",
+      "/nix/store/krd0bal0akml8a5ry0q3qbwln9v1sy1y-composer-svanderburg-composer2nix/share/php/composer-svanderburg-composer2nix/bin" . "/../vendor/autoload.php",
+      "/nix/store/krd0bal0akml8a5ry0q3qbwln9v1sy1y-composer-svanderburg-composer2nix/share/php/composer-svanderburg-composer2nix/bin" . "/../../../autoload.php",
+  
+      getcwd() . "/vendor/autoload.php",
+      getcwd() . "/../../autoload.php",
+      __DIR__ . "/../vendor/autoload.php",
+      __DIR__ . "/../../../autoload.php",
+  ];
+  $loaded = false;
+  foreach ($autoloadLocations as $autoload) {
+      if (is_file($autoload)) {
+          require_once $autoload;
+          $loaded = true;
+      }
+  }
+  
+  /* use PNDP\NixGenerator; */
+  /* use PNDP\AST\NixRecursiveAttrSet; */
+  /* use PNDP\AST\NixObject; */
+  /* use PNDP\AST\NixAttrReference; */
+  /* use PNDP\AST\NixExpression; */
+  
+  class_alias("PNDP\NixGenerator", "NixGenerator");
+  class_alias("PNDP\AST\NixRecursiveAttrSet", "NixRecursiveAttrSet");
+  class_alias("PNDP\AST\NixObject", "NixObject");
+  class_alias("PNDP\AST\NixAttrReference", "NixAttrReference");
+  class_alias("PNDP\AST\NixExpression", "NixExpression");
+  
+  function phpToNix ($object) {
+    var_dump((new NixGenerator())->phpToNix($object, true));
+  }
+#+end_src
