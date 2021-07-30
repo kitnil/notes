@@ -1,2 +1,3 @@
 : perf record -a --call-graph dwarf,65528 -F 99  $(pgrep -fa apache | awk '{ print $1 }' | sed 's/^/-p /g') -- sleep 20
 : perf report -g fractal
+: perf record -a --call-graph dwarf $(pgrep -fa php | awk '{ print $1 }' | sed 's/^/-p /g') -- sleep 20
