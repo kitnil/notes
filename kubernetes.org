@@ -59,6 +59,9 @@
 - [[https://github.com/kubernetes/kops][kubernetes/kops: Kubernetes Operations (kops) - Production Grade K8s Installation, Upgrades, and Management]]
 - [[https://github.com/argoproj/argo-cd/][argoproj/argo-cd: Declarative continuous deployment for Kubernetes.]]
 
+* How-to
+- [[https://habr.com/ru/post/569124/][Cам себе облако: установка ELK и TICK стеков в Kubernetes / Хабр]]
+
 * Katacoda Kubernetes
 
 Minikube is a tool that makes it easy to run Kubernetes locally. Minikube runs a single-node Kubernetes cluster inside a VM on your laptop for users looking to try out Kubernetes or develop with it day-to-day.
