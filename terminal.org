@@ -1,5 +1,3 @@
-- [[https://github.com/cmuratori/termbench][cmuratori/termbench: Simple benchmark for terminal output]]
-- [[https://github.com/cmuratori/refterm][cmuratori/refterm: Reference monospace terminal renderer]]
 - [[https://github.com/lemnos/tt][lemnos/tt: A terminal based typing test.]]
 - [[https://github.com/adi1090x/kitty-cat][adi1090x/kitty-cat: Simple script to change color-schemes and fonts for kitty terminal.]]
 - [[https://github.com/kal39/ptmv][kal39/ptmv: An utf-8/truecolor image and video viewer for the terminal]]
@@ -41,3 +39,7 @@
   - dvtm terminal multiplexer is the default program
     : abduco -c test
     server-execvp: dvtm: No such file or directory
+
+* Benchmarks
+- [[https://github.com/cmuratori/termbench][cmuratori/termbench: Simple benchmark for terminal output]]
+- [[https://github.com/cmuratori/refterm][cmuratori/refterm: Reference monospace terminal renderer]]
