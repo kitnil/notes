@@ -119,6 +119,7 @@ nix-repl> mynixos2.config.environment.etc."mailman.cfg".text
 - [[https://github.com/djwhitt/nix-babahska-static-bin-pkg][djwhitt/nix-babahska-static-bin-pkg]]
 - [[https://github.com/mikroskeem/nixos-snaphook][mikroskeem/nixos-snaphook: Take system snapshot before rebuilding & switching NixOS installation to a new configuration]]
 - [[https://github.com/ursi/nix-css][ursi/nix-css]]
+- [[https://github.com/jonringer/nix-template][jonringer/nix-template: Make creating nix expressions easy]]
 - https://github.com/NixOS/nixpkgs/issues/24346
   #+begin_src nix
     # https://github.com/7c6f434c/7c6f434c-configurations/blob/master/init-less-system/generic/tools.nix#L373
