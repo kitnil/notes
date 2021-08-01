@@ -20,3 +20,17 @@ debug.exe, чтобы потом вздохнуть с облегчением, �
 находится это место в коде - открываете какой-нибудь HIEW и патчите опкод
 перехода руками. Просматривая голые hex-коды сделать то же самое будет гораздо
 сложнее.
+
+llvm-mc
+#+begin_example
+oleg@guixsd ~$ echo "0x33 0xc0 0x31 0xc0" | /gnu/store/…-llvm-10.0.0/bin/llvm-mc -mcpu=i686 -disassemble -show-inst
+	.text
+	xorl	%eax, %eax              # <MCInst #15207 XOR32rr_REV
+                                        #  <MCOperand Reg:22>
+                                        #  <MCOperand Reg:22>
+                                        #  <MCOperand Reg:22>>
+	xorl	%eax, %eax              # <MCInst #15206 XOR32rr
+                                        #  <MCOperand Reg:22>
+                                        #  <MCOperand Reg:22>
+                                        #  <MCOperand Reg:22>>
+#+end_example
