@@ -68,3 +68,9 @@ Under the switch go to the vlan1 interface: interface vlan 1
 
 - http://ipmanager.ir/?=CISCO%5C7200
 - http://ciscotips.ru/singlearea-ospf-configuration
+
+* Errors
+
+Inbound errors on interface fa0/12
+However most likely a Rcv-err is indicating a duplex mismatch.Xmit-Err and Rcv-ErrThis indicates that the internal port transmit (Tx) or receive (Rx) buffers are full. A common cause of Xmit-Err is traffic from a high-bandwidth link that is switched to a lower-bandwidth link, or traffic from multiple inbound links that is switched to a single outbound link. For example, if a large amount of bursty traffic comes in on a Gigabit port and is switched out to a 100-Mbps port, the Xmit-Err field might increment on the 100-Mbps port. This is because the port output buffer is overwhelmed by the excess traffic because of the speed mismatch between the incoming and outgoing bandwidths.
+: Заменить патчкорд?
