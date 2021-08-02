@@ -412,6 +412,7 @@ https://nixos.org/nix-dev/2010-April.txt.gz
 - [[https://github.com/JJJollyjim/arewehackersyet][JJJollyjim/arewehackersyet: Tracking the availability of Kali Linux packages in NixOS]]
 ** Generate expression
 - [[https://github.com/obsidiansystems/haven][obsidiansystems/haven: Use haskell to produce a nix set of maven dependencies!]]
+- [[https://github.com/NixOS/mvn2nix-maven-plugin][NixOS/mvn2nix-maven-plugin: Generate project-info.json for use with nix's Maven repository generation functions]]
 
 * CI
 - [[https://github.com/Mic92/nix-build-uncached][Mic92/nix-build-uncached: A CI friendly wrapper around nix-build.]]
