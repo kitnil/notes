@@ -405,6 +405,9 @@ nix-setup-user joepie91
 
 https://nixos.org/nix-dev/2010-April.txt.gz
 
+* Packages
+- [[https://github.com/JJJollyjim/arewehackersyet][JJJollyjim/arewehackersyet: Tracking the availability of Kali Linux packages in NixOS]]
+
 * CI
 - [[https://github.com/Mic92/nix-build-uncached][Mic92/nix-build-uncached: A CI friendly wrapper around nix-build.]]
 
