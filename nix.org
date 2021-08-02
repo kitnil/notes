@@ -859,6 +859,9 @@ builtins.match "php([[:alnum:]])([[:alnum:]])" "php70"
     - ln -s /path/to/nixpkgs-replit/default.nix ~/.config/nixpkgs/overlays/replit.nix
     - # Install upm nix-env -iA nixpkgs.upm
 
+* Virtualization
+- [[https://github.com/Mic92/nixos-shell][Mic92/nixos-shell: Spawns lightweight nixos vms in a shell]]
+
 * NixOS
   #+begin_src nix
     let
