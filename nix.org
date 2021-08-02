@@ -281,6 +281,7 @@ patchelf https://nixos.wiki/wiki/Packaging/Binaries#Creating_the_Derivation_for_
 - [[https://github.com/colemickens/nixos-flake-example][colemickens/nixos-flake-example: This is a demo NixOS config, with optional flakes support. Along with notes on why flakes is useful and worth adopting.]]
 - [[https://github.com/kisik21/nixos-super-minimal][kisik21/nixos-super-minimal]]
 - [[https://www.youtube.com/playlist?list=PLRGI9KQ3_HP_OFRG6R-p4iFgMSK1t5BHs][(46) Nixology - YouTube]]
+- [[https://nixos.mayflower.consulting/blog/2021/01/28/nextcloud-stateversion/][Safe service upgrades using system.stateVersion]]
 
 * Cache
 - [[https://github.com/ghuntley/cachix-demo][ghuntley/cachix-demo]]
