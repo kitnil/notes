@@ -479,6 +479,9 @@ Keeps track of the dependencies between derivations.
 
 Made up of multiple "generations".
 
+* Programs
+- [[https://github.com/Mic92/envfs][Mic92/envfs: Fuse filesystem that returns symlinks to executables based on the PATH of the requesting process.]]
+
 * Commands
 
 ** nix-instantiate
