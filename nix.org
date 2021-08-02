@@ -405,6 +405,9 @@ nix-setup-user joepie91
 
 https://nixos.org/nix-dev/2010-April.txt.gz
 
+* CI
+- [[https://github.com/Mic92/nix-build-uncached][Mic92/nix-build-uncached: A CI friendly wrapper around nix-build.]]
+
 * DSL
 - [[https://github.com/Mic92/pythonix][Mic92/pythonix: Eval nix code from python]]
 - [[https://github.com/Mic92/hydra-eval-jobs][Mic92/hydra-eval-jobs: Eval nix expressions from flakes (extracted from hydra)]]
