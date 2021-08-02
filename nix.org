@@ -483,6 +483,7 @@ Made up of multiple "generations".
 
 * Programs
 - [[https://github.com/Mic92/envfs][Mic92/envfs: Fuse filesystem that returns symlinks to executables based on the PATH of the requesting process.]]
+- [[https://github.com/tweag/gomod2nix][tweag/gomod2nix: Convert applications using Go modules to Nix expressions]]
 
 * Commands
 
@@ -858,6 +859,7 @@ builtins.match "php([[:alnum:]])([[:alnum:]])" "php70"
   - nixos-install --flake github:hoverbear-consulting/flake#gizmo --impure
     - ln -s /path/to/nixpkgs-replit/default.nix ~/.config/nixpkgs/overlays/replit.nix
     - # Install upm nix-env -iA nixpkgs.upm
+
 
 * Virtualization
 - [[https://github.com/Mic92/nixos-shell][Mic92/nixos-shell: Spawns lightweight nixos vms in a shell]]
