@@ -281,6 +281,10 @@ patchelf https://nixos.wiki/wiki/Packaging/Binaries#Creating_the_Derivation_for_
 - [[https://nixos.mayflower.consulting/blog/2021/01/28/nextcloud-stateversion/][Safe service upgrades using system.stateVersion]]
 - [[https://github.com/Anton-Latukha/nix-notes][Anton-Latukha/nix-notes: Nix notes in org]]
 
+
+* Secrets
+- [[https://github.com/Mic92/sops-nix][Mic92/sops-nix: Atomic secret provisioning for NixOS based on sops]]
+
 * Cache
 - [[https://github.com/ghuntley/cachix-demo][ghuntley/cachix-demo]]
 - [[https://nixbuild.net/][nixbuild.net]]
