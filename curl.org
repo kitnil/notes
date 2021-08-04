@@ -4,3 +4,4 @@
 - [[https://ec.haxx.se/usingcurl/usingcurl-connections][Connections - Everything curl]]
 - /nix/store/0crj463x3gwrxmmscc5g8jfna1d6435d-curl-7.69.1-bin/bin/curl --key ~/.ssh/eng_key_rsa scp://eng@jenkins.intr/etc/passwd
 - curl -Iv --resolve 'ho.majordomo.ru:443:78.108.80.178' https://ho.majordomo.ru/
+- [[https://habr.com/ru/company/ruvds/blog/568614/][Шпаргалка по метрикам производительности cURL: как измерить задержку сервера / Блог компании RUVDS.com / Хабр]]
