@@ -41,6 +41,9 @@ bind-address = ":8088"
 * Alternatives
 - [[https://questdb.io/][QuestDB | Time series data, faster]]
 
+* Backup
+- [[https://github.com/alexferl/influxcat][alexferl/influxcat: A simple tool to dump and restore InfluxDB timeseries]]
+
 * High availability
 - [[https://github.com/influxdata/influxdb-relay][influxdata/influxdb-relay: Service to replicate InfluxDB data for high availability]]
 - [[https://bitworks.software/2019-03-16-improving-influxdb-with-apache-kafka.html][Улучшаем InfluxDB с помощью Apache Kafka]]
