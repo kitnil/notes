@@ -1141,3 +1141,69 @@ Misc
       rabbit-data:
 
   #+end_src
+
+  #+begin_src yaml
+    root@r2:~# cat rabbitmq/rabbitmq.yml
+    version: '3.4'
+    
+    services:
+      rabbit: &rabbit
+        image: rabbitmq:3.8.5-management-alpine
+        ports:
+          # - mode: host
+          #   target: 25672
+          #   published: 25672
+          # - mode: host
+          #   target: 15672
+          #   published: 15672
+          # - mode: host
+          #   target: 5672
+          #   published: 5672
+          # - mode: host
+          #   target: 4369
+          #   published: 4369
+        ports:
+        - 4369:4369
+        - 5672:5672
+        - 5671:5671
+        - 25672:25672
+        - 35672-35682:35672-35682
+        - 15672:15672
+        - 61613:61613
+        - 61614:61614
+        - 1883:1883
+        - 8883:8883
+        - 15674:15674
+        - 15675:15675
+        - 15692:15692
+        environment:
+        - RABBITMQ_DEFAULT_USER=spring
+        - RABBITMQ_DEFAULT_PASS=spring
+        - RABBITMQ_USE_LONGNAME=true
+        - RABBITMQ_NODENAME={{.Service.Name}}
+        - RABBITMQ_ERLANG_COOKIE=EJHSDBCQHWCHBHSZPMIE
+        - SERVICE_NAME={{.Service.Name}}
+        hostname: "{{.Service.Name}}.{{.Task.Slot}}.{{.Task.ID}}"
+        extra_hosts:
+        - r1:78.108.86.20
+        - r2:78.108.87.99
+        - r3:178.250.246.123
+        volumes:
+        - rabbit-data:/var/lib/rabbitmq
+        - /root/rabbitmq/rabbitmq.conf:/etc/rabbitmq/rabbitmq.conf
+        logging:
+          driver: json-file
+          options:
+            max-size: 100m
+            max-file: 2
+        deploy:
+          replicas: 3
+          restart_policy:
+            condition: on-failure
+          update_config:
+            parallelism: 1
+            delay: 10s
+    
+    volumes:
+      rabbit-data:
+  #+end_src
