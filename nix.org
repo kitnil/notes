@@ -907,6 +907,7 @@ builtins.match "php([[:alnum:]])([[:alnum:]])" "php70"
 
 
 * Flakes
+  - [[https://github.com/hackworthltd/react-nix-craco-public][hackworthltd/react-nix-craco-public: Repro case for an npmlock2nix issue]]
   - [[https://github.com/divnix/vs-ext][divnix/vs-ext: A kick ass library to dominate your Visual Studio Extensions (with DevOS)]]
   - [[https://github.com/gytis-ivaskevicius/flake-utils-plus?auto_subscribed=false][gytis-ivaskevicius/flake-utils-plus: Use Nix flakes without any fluff.]]
   - [[https://github.com/tadfisher/flake][tadfisher/flake: My computing life in Nix.]]
