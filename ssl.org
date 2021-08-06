@@ -9,6 +9,7 @@
 - [[https://github.com/smallstep/certificates][smallstep/certificates: 🛡️ A private certificate authority (X.509 & SSH) & ACME server for secure automated certificate management, so you can use TLS everywhere & SSO for SSH.]]
 - [[https://github.com/diafygi/acme-nosudo][diafygi/acme-nosudo: Free HTTPS certificates without having to trust the letsencrypt cli with sudo/root]]
 - https://support.plesk.com/hc/en-us/articles/213961665-How-to-verify-that-SSL-for-IMAP-POP3-SMTP-works-and-a-proper-SSL-certificate-is-in-use
+- [[https://medium.com/@superseb/get-your-certificate-chain-right-4b117a9c0fce][Get your certificate chain right. As many know, certificates are not… | by Sebastiaan van Steenis | Medium]]
 
 - Check certificate
   : echo | openssl s_client -connect berlin.guixsd.org:443 | openssl x509 -text
