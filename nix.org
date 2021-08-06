@@ -875,6 +875,9 @@ builtins.match "php([[:alnum:]])([[:alnum:]])" "php70"
 
 ** TODO nixos-switch-to-configuration code 100 means that host reboot is required
 
+* Tools
+- [[https://github.com/mlieberman85/nixbom][mlieberman85/nixbom]]
+
 * Overlays
   - nixos-install --flake github:hoverbear-consulting/flake#gizmo --impure
     - ln -s /path/to/nixpkgs-replit/default.nix ~/.config/nixpkgs/overlays/replit.nix
