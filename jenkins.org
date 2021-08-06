@@ -50,6 +50,7 @@ NOTE: "pipeline" equal to "workflow".
 - [[https://github.com/jenkinsci/autograding-plugin][jenkinsci/autograding-plugin: Jenkins plugin that autogrades projects based on a configurable set of metrics.]]
 - [[https://github.com/jenkinsci/git-push-plugin/tree/master/src/main/java/io/jenkins/plugins/git_push][git-push-plugin/src/main/java/io/jenkins/plugins/git_push at master · jenkinsci/git-push-plugin]]
 - [[https://github.com/jenkinsci/notify-events-plugin][jenkinsci/notify-events-plugin: This plugin allows you to send messages from Jenkins jobs to Telegram, Viber, Skype, SMS, Voice Call and many others.]]
+- [[https://github.com/jenkinsci/inodes-monitor-plugin][jenkinsci/inodes-monitor-plugin]]
 
 * Pitfalls
 - [[https://issues.jenkins.io/browse/JENKINS-41929?focusedCommentId=401081&page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-401081]["Build with Parameters" on first build when declarative Jenkinsfile found]]
