@@ -905,6 +905,9 @@ builtins.match "php([[:alnum:]])([[:alnum:]])" "php70"
 
 - [[https://github.com/lourkeur/miniguest][lourkeur/miniguest: lightweight, declarative guest operating systems]]
 
+** Installers
+- [[https://github.com/samuela/nixos-up/blob/main/nixos-up.ml][nixos-up/nixos-up.ml at main · samuela/nixos-up]]
+
 ** NixOS alternatives
  - [[https://ocelot-project.github.io/][λ Ocelot]]
 
