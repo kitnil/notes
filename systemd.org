@@ -2,8 +2,12 @@
 
 - [[https://github.com/NullSense/fuzzy-sys][NullSense/fuzzy-sys: Utility tool for using systemctl interactively]]
 - [[https://github.com/DankBSD/complexd][DankBSD/complexd: A complex of daemons implementing systemd APIs required by desktop environments]]
-- journalctl CONTAINER_NAME=taskexecutor -f
 - [[https://github.com/alexdelorenzo/grub2systemd][grub2systemd]]
+
+* journald
+- [[https://www.loggly.com/ultimate-guide/using-journalctl/][Using journalctl - The Ultimate Guide To Logging]]
+- journalctl -b -1  -p "emerg".."crit"
+- journalctl CONTAINER_NAME=taskexecutor -f
 - journalctl -o json --output-fields=MESSAGE,PRIORITY,_PID,SYSLOG_IDENTIFIER,_SYSTEMD_UNIT | grep -v 'iptables\|zabbix-agent' | lnav
 
 * 
