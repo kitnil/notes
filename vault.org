@@ -87,3 +87,4 @@ ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -l root -fNL 820
 - [[https://github.com/adobe/cryptr][adobe/cryptr: Cryptr: a GUI for Hashicorp's Vault]]
 - [[https://github.com/grahamc/pass-vault][grahamc/pass-vault: pass, but backed by vault]]
 - [[https://github.com/xbglowx/vault-kv-mv][xbglowx/vault-kv-mv: Easily move Hashicorp Vault keys to different paths]]
+- [[https://github.com/hashicorp/envconsul][hashicorp/envconsul: Launch a subprocess with environment variables using data from @HashiCorp Consul and Vault.]]
