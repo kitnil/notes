@@ -7,5 +7,6 @@
 - [[https://github.com/Tencent/Tendis][Tencent/Tendis: Tendis is a high-performance distributed storage system fully compatible with the Redis protocol.]]
 - [[https://github.com/stashed/redis][stashed/redis backup and restore plugin]]
 - [[https://github.com/DGKSK8LIFE/redisql][DGKSK8LIFE/redisql: MySQL to Redis caching made easy]]
+- [[https://redis.io/commands/eval][EVAL – Redis]]
 
 : redis-cli -h redis.intr hgetall "mailboxes:test@test.wugi.info"
