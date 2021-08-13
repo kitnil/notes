@@ -8,6 +8,7 @@
 - [[https://github.com/macedojleo/BDH][macedojleo/BDH: Monitor Unix and Linux filesystem's using CLI and send customized notifications to Slack with webhook]]
 - [[https://github.com/mmastrac/stylus][mmastrac/stylus: Lightweight status page for home infrastructure]]
 - timeout 2 ping --quiet --count=3 172.16.100.60 && echo 'foo' || echo 'bar'
+- [[https://github.com/gpestana/kapacitor-unit][gpestana/kapacitor-unit: Testing framework for Kapacitor TICKscripts]]
 
 * Grafana
 - [[https://github.com/K-Phoen/dark][(grafana) Dashboards As Resources in Kubernetes]]
