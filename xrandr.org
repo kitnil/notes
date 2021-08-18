@@ -1,0 +1,4 @@
+#+begin_example
+  xrandr --setprovideroutputsource 1 0
+  xrandr --output HDMI-A-1-3 --right-of HDMI1
+#+end_example
