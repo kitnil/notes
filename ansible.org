@@ -129,3 +129,40 @@
 * Security
 
   ansible localhost -m user -a 'password="!" name=root' -bK
+
+* Misc
+
+#+begin_example
+- hosts: web
+  tasks:
+    - shell: |
+        cat > /etc/ntp.conf <<'EOF'
+        restrict default ignore
+        restrict localhost
+        restrict 127.0.0.1
+        restrict 192.168.0.0 mask 255.255.0.0
+        restrict 172.16.0.0 mask 255.255.0.0
+        restrict 127.127.1.0
+
+        server 172.16.102.1 iburst burst
+        server 172.16.103.1 iburst burst
+
+        server  127.127.1.0
+        fudge   127.127.1.0 stratum 10
+
+        driftfile /var/lib/ntp/drift
+        EOF
+
+        nix-shell -p ntp --run 'ntpd -qg'
+
+#+end_example
+
+#+begin_example
+x---
+- hosts: web33.intr
+  become: yes
+  tasks:
+    - shell: |
+        kill -SIGHUP "$(docker top taskexecutor | awk '/python/ { print $2 }')"
+
+#+end_example
