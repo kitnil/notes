@@ -137,3 +137,19 @@ nat.inet.0: 7 destinations, 9 routes (7 active, 0 holddown, 0 hidden)
 
 {master:0}
 #+end_example
+
+* Misc
+
+  list logs
+  #+begin_src bash
+    #!/usr/bin/env bash
+    
+    set -x
+    
+    mapfile -t files <(sshpass -p"$(pass show majordomo/public/ssh/router)" ssh br1-mr14.intr -- find /var/log -maxdepth 1 -type f -mmin -10 -not -name wtmp)
+    
+    for file in "${files[@]}"
+    do
+        echo "$file"
+    done
+  #+end_src
