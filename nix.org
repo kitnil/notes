@@ -861,6 +861,19 @@ printf '{"version": 2, "flakes":%s}' "$(flakes)"
 builtins.match "php([[:alnum:]])([[:alnum:]])" "php70"
 #+end_example
 
+#+begin_src nix
+  with import <nixpkgs> {};
+  with lib;
+  
+  (map
+    (version: { name = version; home = pkgs."openjdk${version}"; })
+    (filter
+      (file: builtins.match "([[:digit:]])+" file != null)
+      (map
+        (file: removeSuffix ".nix" (baseNameOf file))
+        (filesystem.listFilesRecursive (pkgs.path + /pkgs/development/compilers/openjdk)))))
+#+end_src
+
 * deploy-rs
   - [[https://github.com/serokell/deploy-rs][serokell/deploy-rs: A Simple multi-profile Nix-flake deploy tool.]]
 
