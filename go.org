@@ -113,6 +113,7 @@
 - [[https://github.com/knadh/sql-jobber][knadh/sql-jobber: A highly opinionated, distributed job-queue built specifically for defering and executing heavy SQL read jobs asynchronously. Supports MySQL and Postgres.]]
 - [[https://github.com/hairyhenderson/go-fsimpl][hairyhenderson/go-fsimpl: Go filesystem implementations for various URL schemes]]
 - [[https://github.com/mattn/pqssh][mattn/pqssh - Go driver for PostgreSQL over SSH]]
+- [[https://github.com/peterbourgon/unixtransport][peterbourgon/unixtransport: Support for Unix domain sockets in Go HTTP clients]]
 
 * Frameworks
 - [[https://github.com/tal-tech/go-zero][tal-tech/go-zero: go-zero is a web and rpc framework written in Go. It's born to ensure the stability of the busy sites with resilient design. Builtin goctl greatly improves the development productivity.]]
