@@ -31,6 +31,10 @@ groovy:000> ({f1, f2 -> f2})("foo", "bar")
 * Documentation
 - [[https://docs.groovy-lang.org/latest/html/api/groovy/lang/Grab.html][Grab (Groovy 3.0.8)]]
 
+* Learning
+- [[https://github.com/wololock/groovy-and-graalvm][wololock/groovy-and-graalvm]]
+- [[https://www.youtube.com/watch?v=BjO_vBzaB4c][(109) Groovy + GraalVM native-image = instant startup time! - YouTube]]
+
 * Examples
   #+begin_src groovy
     #!/usr/bin/env groovy
