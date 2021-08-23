@@ -53,6 +53,7 @@ NOTE: "pipeline" equal to "workflow".
 - [[https://github.com/jenkinsci/inodes-monitor-plugin][jenkinsci/inodes-monitor-plugin]]
 - [[https://github.com/jenkinsci/rabbitmq-consumer-plugin][jenkinsci/rabbitmq-consumer-plugin: This is Jenkins plugin to connect RabbitMQ then consume messages in queue.]]
 - [[https://github.com/jenkinsci/android-apk-size-watcher-plugin][jenkinsci/android-apk-size-watcher-plugin]]
+- [[https://github.com/SonarSource/sonar-scanner-jenkins][SonarSource/sonar-scanner-jenkins: SonarQube Scanner for Jenkins]]
 
 * Pitfalls
 - [[https://issues.jenkins.io/browse/JENKINS-41929?focusedCommentId=401081&page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-401081]["Build with Parameters" on first build when declarative Jenkinsfile found]]
