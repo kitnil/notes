@@ -289,3 +289,5 @@ BOT
 Monad m => m a -> (a -> m b) -> m b
 Maybe a -> (a -> Maybe b) -> Maybe b
 
+import System.Process
+main = callCommand "cp somefile somedestination"
