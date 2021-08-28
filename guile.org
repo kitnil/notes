@@ -51,6 +51,9 @@ PikachuHy
 
 #+END_SRC
 
+- json from stdin
+echo '{"hello": true}' | guile -c '(use-modules (ice-9 rdelim) (json) (ice-9 pretty-print)) (pretty-print (json-string->scm (with-input-from-port (current-input-port) read-string)))'
+
 - $HOME/.guix-profile/bin/guile -q -L /gnu/store/…-geiser-0.9-1.9581e61/share/geiser/guile/ -L ~/src/guix
 
 - python-on-guile 1.2.1
