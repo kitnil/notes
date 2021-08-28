@@ -18,11 +18,14 @@
 - [[https://github.com/bungle/awesome-resty][bungle/awesome-resty: A List of Quality OpenResty Libraries, and Resources.]]
 - [[https://github.com/bungle/lua-resty-template][bungle/lua-resty-template: Templating Engine (HTML) for Lua and OpenResty.]]
 - [[https://github.com/upyun/slardar][upyun/slardar: Updating your upstream list and run lua scripts without reloading Nginx.]]
-- [[https://github.com/openresty/lua-resty-upstream-healthcheck][openresty/lua-resty-upstream-healthcheck: Health Checker for Nginx Upstream Servers in Pure Lua]]
+- [[https://github.com/openresty/lua-resty-upstream-healthcheck][openresty/lua-resty-upstream-healthcheck: Health Checker for Nginx Upstream Servers in Pure Lua]]-
 
 * Libraries
 - [[https://github.com/facebookarchive/fblualib][facebookarchive/fblualib: Facebook libraries and utilities for Lua]]
 - [[https://github.com/luafun/luafun][luafun/luafun: Lua Fun is a high-performance functional programming library for Lua designed with LuaJIT's trace compiler in mind.]]
+
+* Tools
+- [[https://github.com/slembcke/debugger.lua][slembcke/debugger.lua: A dependency free, embeddable debugger for Lua in a single file (.lua or .c)]]
 
 * Misc
 - [[https://github.com/azoyan/geopattern][azoyan/geopattern: Generate beautiful SVG patterns from a string on Lua (5.1 - 5.4 and LuaJIT)]]
