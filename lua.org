@@ -32,6 +32,7 @@
 - [[https://github.com/pkulchenko/serpent][pkulchenko/serpent: Lua serializer and pretty printer.]]
 
 * Misc
+- [[https://github.com/Olivine-Labs/lua-style-guide][Olivine-Labs/lua-style-guide: Olivine Labs Lua Style Guide]]
 - [[https://github.com/azoyan/geopattern][azoyan/geopattern: Generate beautiful SVG patterns from a string on Lua (5.1 - 5.4 and LuaJIT)]]
 - [[https://github.com/apioak/apioak][apioak/apioak: Full Lifecycle Management API Gateway.]]
 - [[https://github.com/emmericp/MoonGen][emmericp/MoonGen: MoonGen is a fully scriptable high-speed packet generator built on DPDK and LuaJIT. It can saturate a 10 Gbit/s connection with 64 byte packets on a single CPU core while executing user-provided Lua scripts for each packet. Multi-core support allows for even higher rates. It also features precise and accurate timestamping and rate control.]]
