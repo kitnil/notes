@@ -931,6 +931,8 @@ features, like 'V' to execute msgfmt and so on.
          dired-listing-switches "-alv")
  #+END_SRC
 
+- [[https://github.com/johannes-mueller/dired-gitignore.el][johannes-mueller/dired-gitignore.el: dired minor mode to ignore files that are to be ignored by git]]
+
 ** echo area
    - [[https://github.com/ThibautVerron/echo-sth.el][ThibautVerron/echo-sth.el: Make use of an empty echo area to display some information]]
 ** elfeed
