@@ -80,6 +80,9 @@ hms-rs0:PRIMARY> show users;
 }
 #+end_example
 
+- change user password
+  : db.changeUserPassword("USERNAME", "PASSWORD")
+
 - backup and restore
 [[https://github.com/arshadkazmi42/ak-cli#mongo][Mongo]]
 
