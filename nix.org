@@ -269,6 +269,20 @@ patchelf https://nixos.wiki/wiki/Packaging/Binaries#Creating_the_Derivation_for_
 : expression="$2"
 : nix-shell --expr "(import <nixos/nixpkgs> {overlays = [(import $overlay)];}).$expression"
 
+- systemd polkit
+#+begin_src nix
+  security.polkit = {
+    enable = true;
+    extraConfig = ''
+      polkit.addRule(function(action, subject) {
+        if (action.id == "org.freedesktop.systemd1.manage-units" && subject.user == "sup") {
+          return polkit.Result.YES;
+        }
+      })
+    '';
+  };
+#+end_src
+
 * Configurations
 - [[https://github.com/jethrokuan/nix][jethrokuan/nix: NixOS configuration with Nix flakes]]
 
