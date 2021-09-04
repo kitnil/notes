@@ -237,6 +237,9 @@ degradation:
 
 - [[https://github.com/hakavlad/prelockd][hakavlad/prelockd: Lock executables and shared libraries in memory to improve system responsiveness under low-memory conditions]]
 
+- [[https://www.carstengrohmann.de/oom/][OOM Analyser]]
+- [[https://sr.ht/~carstengrohmann/OOMAnalyser/][OOMAnalyser: Linux OOM Analyser]]
+
 [[https://github.com/0x0f0f0f/memplot][0x0f0f0f/memplot: Generate image plots of processes' memory usage very quickly, within a single binary.]]
 
 : echo 3 > /proc/sys/vm/drop_caches
