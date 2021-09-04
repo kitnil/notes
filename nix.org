@@ -176,6 +176,8 @@ Imperatively
   }
 #+END_SRC
 
+- [[https://github.com/DeterminateSystems/nix-netboot-serve][DeterminateSystems/nix-netboot-serve: Make any NixOS system netbootable with 10s cycle times.]]
+
 - http://chriswarbo.net/projects/nixos/useful_hacks.html
 : nix repl ~/src/nixpkgs-19.09
 : s = nixos ((import ./ns.nix).ns3 { config = { }; inherit pkgs; })
