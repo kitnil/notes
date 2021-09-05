@@ -10,6 +10,9 @@ NOTE: "pipeline" equal to "workflow".
 - [[https://habr.com/ru/company/dins/blog/520220/][Jenkins Pipeline: заметки об оптимизации. Часть 1 / Блог компании DINS / Хабр]]
 - [[https://habr.com/ru/company/jugru/blog/334374/][Олег Ненашев, Кирилл Толкачёв и Александр Тарасов про Groovy DSL и Pipeline в Jenkins на jug.msk.ru / Блог компании JUG Ru Group / Хабр]]
 
+* Community
+- [[https://github.com/jenkins-infra/jenkins-infra][jenkins-infra/jenkins-infra: Jenkins main control repo for R10k and our Puppet Enterprise managed infrastructure]]
+
 * Shared libs
 - [[https://github.com/wcm-io-devops/jenkins-pipeline-library][wcm-io-devops/jenkins-pipeline-library: wcm.io Jenkins Pipeline Library for CI/CD]]
 - [[https://github.com/mschuchard/jenkins-devops-libs][mschuchard/jenkins-devops-libs: Collection of Jenkins Pipeline shared libraries for common DevOps software.]]
