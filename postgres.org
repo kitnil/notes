@@ -9,7 +9,19 @@
 - [[https://github.com/sanpii/explain][sanpii/explain: Transform postgresql explain to a graph]]
 - [[https://github.com/wal-g/wal-g][wal-g/wal-g: Archival and Restoration for Postgres]]
 - [[https://github.com/supabase/realtime][supabase/realtime: Listen to your to PostgreSQL database in realtime via websockets. Built with Elixir.]]
-- [[https://github.com/pllua/pllua][pllua/pllua: Re-implementation of pllua, embedded Lua for postgresql]]
+- [[https://github.com/pllua/pllua][pllua/pllua: Re-implementation of pllua, Lua embedded for postgresql]]
+
+* [[https://postgrespro.com/list/thread-id/1525878][Thread: DB fails to start: "Could not read from file "pg_clog/0003" at offset 212992: No error. : Postgres Professional]]
+
+Please perform below steps:
+
+1. Backup the current pg_clog/0003 file in different directory
+2. Create a file  by assumption of  make the uncommitted record as they haven't been committed. command as follows: 
+
+dd if=/dev/zero of=<data directory location>/pg_clog/0003   bs=256K count=1
+
+This is just a 256k zero-byte file. Here's one I made earlier:
+http://www.postnewspapers.com.au/~craig/0003.zip
 
 * out of memory query
 Вот пример:
