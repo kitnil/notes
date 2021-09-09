@@ -58,6 +58,8 @@ echo '{"hello": true}' | guile -c '(use-modules (ice-9 rdelim) (json) (ice-9 pre
 
 - [[https://gitlab.com/python-on-guile/python-on-guile][python-on-guile]] 1.2.1
 
+- [[https://github.com/mwette/guile-libyaml][mwette/guile-libyaml: simple yaml module using ffi-helper from www.nongnu.org/nyacc]]
+
 - Load compiled object
 #+begin_example
 $ cat hello.scm
