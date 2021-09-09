@@ -56,7 +56,7 @@ echo '{"hello": true}' | guile -c '(use-modules (ice-9 rdelim) (json) (ice-9 pre
 
 - $HOME/.guix-profile/bin/guile -q -L /gnu/store/…-geiser-0.9-1.9581e61/share/geiser/guile/ -L ~/src/guix
 
-- python-on-guile 1.2.1
+- [[https://gitlab.com/python-on-guile/python-on-guile][python-on-guile]] 1.2.1
 
 - Load compiled object
 #+begin_example
