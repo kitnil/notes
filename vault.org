@@ -88,6 +88,7 @@ ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -l root -fNL 820
 - [[https://github.com/grahamc/pass-vault][grahamc/pass-vault: pass, but backed by vault]]
 - [[https://github.com/xbglowx/vault-kv-mv][xbglowx/vault-kv-mv: Easily move Hashicorp Vault keys to different paths]]
 - [[https://github.com/hashicorp/envconsul][hashicorp/envconsul: Launch a subprocess with environment variables using data from @HashiCorp Consul and Vault.]]
+- [[https://github.com/mvisonneau/strongbox][mvisonneau/strongbox: Securely store secrets at rest using Hashicorp Vault]]
 
 * Jenkins
 - [[https://www.admin-magazine.com/Archive/2019/51/Jenkins-Configuration-as-Code/(offset)/3][JCasC » ADMIN Magazine]]
