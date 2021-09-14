@@ -63,4 +63,6 @@
   ∗ installed ocaml.4.11.1
   Done.
   # Run eval $(opam env --switch=default) to update the current shell environment
+
+  eval $(opam env --switch=default)
 #+end_example
