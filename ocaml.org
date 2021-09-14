@@ -12,3 +12,55 @@
 - [[https://github.com/mirage/irmin][mirage/irmin: Irmin is a distributed database that follows the same design principles as Git]]
 - [[https://github.com/charlesetc/feather][charlesetc/feather: A shell library for OCaml]]
 - [[https://mirage.io/][MirageOS is a library operating system that constructs unikernels]]
+
+* 
+
+#+begin_example
+  oleg@guixsd ~/src/ocaml$ opam init
+  No configuration file found, using built-in defaults.
+  Checking for available remotes: rsync and local, git, mercurial.
+    - you won't be able to use darcs repositories unless you install the darcs command on your system.
+  
+  [WARNING] Recommended dependencies -- most packages rely on these:
+    - cc
+  
+  <><> Fetching repository information ><><><><><><><><><><><><><><><><><><><><><>
+  [default] Initialised
+  
+  <><> Required setup - please read <><><><><><><><><><><><><><><><><><><><><><><>
+  
+    In normal operation, opam only alters files within ~/.opam.
+  
+    However, to best integrate with your system, some environment variables
+    should be set. If you allow it to, this initialisation step will update
+    your bash configuration by adding the following line to ~/.bash_profile:
+  
+      test -r /home/oleg/.opam/opam-init/init.sh && . /home/oleg/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true
+  
+    Otherwise, every time you want to access your opam installation, you will
+    need to run:
+  
+      eval $(opam env)
+  
+    You can always re-run this setup with 'opam init' later.
+  
+  Do you want opam to modify ~/.bash_profile? [N/y/f]
+  (default is 'no', use 'f' to choose a different file)
+  
+  <><> Creating initial switch 'default' (invariant ["ocaml" {>= "4.05.0"}] - initially with ocaml-system)
+  
+  <><> Installing new switch packages <><><><><><><><><><><><><><><><><><><><><><>
+  Switch invariant: ["ocaml" {>= "4.05.0"}]
+  [NOTE] External dependency handling not supported for OS family '/etc/issue'.
+         You can disable this check using 'opam option --global depext=false'
+  
+  <><> Processing actions <><><><><><><><><><><><><><><><><><><><><><><><><><><><>
+  ∗ installed base-bigarray.base
+  ∗ installed base-threads.base
+  ∗ installed base-unix.base
+  ∗ installed ocaml-system.4.11.1
+  ∗ installed ocaml-config.1
+  ∗ installed ocaml.4.11.1
+  Done.
+  # Run eval $(opam env --switch=default) to update the current shell environment
+#+end_example
