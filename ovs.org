@@ -1,1 +1,7 @@
 - [[https://vidikon.info/kvm/openvswitch-ispolzovanie-virtualnogo-kommutatora-v-linux][OpenVSwitch — использование виртуального коммутатора в Linux | vidikon.info]]
+
+#+begin_example
+  root@guixsd ~# pgrep -fa ovs
+  22865 /gnu/store/1939ymmvhgs1j4vxj5higbrah46hmrpc-openvswitch-2.13.3/sbin/ovsdb-server --pidfile --remote=punix:/var/run/openvswitch/db.sock
+  22876 /gnu/store/1939ymmvhgs1j4vxj5higbrah46hmrpc-openvswitch-2.13.3/sbin/ovs-vswitchd --pidfile
+#+end_example
