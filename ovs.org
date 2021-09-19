@@ -1,4 +1,5 @@
 - [[https://vidikon.info/kvm/openvswitch-ispolzovanie-virtualnogo-kommutatora-v-linux][OpenVSwitch — использование виртуального коммутатора в Linux | vidikon.info]]
+- [[https://docs.openvswitch.org/en/latest/faq/configuration/][Basic Configuration — Open vSwitch 2.16.90 documentation]]
 
 #+begin_example
   root@guixsd ~# pgrep -fa ovs
