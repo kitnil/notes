@@ -18,6 +18,7 @@
 - [[https://github.com/hipages/php-fpm_exporter][hipages/php-fpm_exporter: A prometheus exporter for PHP-FPM.]]
 - [[https://prometheus.io/docs/instrumenting/exporters/][Exporters and integrations | Prometheus]]
 - [[https://github.com/benjojo/alertmanager-discord][benjojo/alertmanager-discord: Take your alertmanager alerts, into discord]]
+- [[https://github.com/benjojo/sping][benjojo/sping: Split ping, see what direction the loss or latency is on]]
 - [[https://blog.mafr.de/2020/09/13/testing-alertmanager/][Testing Alertmanager | Matthias Friedrich's Blog]]
   #+begin_src shell
     #! /usr/bin/env sh
