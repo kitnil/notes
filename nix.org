@@ -44,6 +44,7 @@ nix-repl> mynixos2.config.environment.etc."mailman.cfg".text
 - [[https://github.com/svanderburg/disnix][svanderburg/disnix: Disnix: A Nix-based distributed service deployment tool]]
 - [[https://github.com/svanderburg/monitoring-playground][svanderburg/monitoring-playground]]
 - [[https://github.com/pauldub/nix-dev-shells][pauldub/nix-dev-shells]]
+- [[https://github.com/Mazurel/android2nix][Mazurel/android2nix: WIP: Building Android apps with Nix]]
 - [[https://zimbatm.com/NixFlakes/][Nix Flakes edition | $ zimbatm]]
 - [[https://github.com/Infinisil/nixus][Infinisil/nixus]]
 - [[https://github.com/balsoft/nixos-minecraft-kiosk][balsoft/nixos-minecraft-kiosk]]
