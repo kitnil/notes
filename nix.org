@@ -895,6 +895,11 @@ builtins.match "php([[:alnum:]])([[:alnum:]])" "php70"
         (filesystem.listFilesRecursive (pkgs.path + /pkgs/development/compilers/openjdk)))))
 #+end_src
 
+#+begin_src nix
+  nix-repl> let { a = 2; b = 3; body = "foo"; }
+  "foo"
+#+end_src
+
 * deploy-rs
   - [[https://github.com/serokell/deploy-rs][serokell/deploy-rs: A Simple multi-profile Nix-flake deploy tool.]]
 
