@@ -952,6 +952,7 @@ builtins.match "php([[:alnum:]])([[:alnum:]])" "php70"
 
 
 * Flakes
+  - [[https://github.com/ijohanne/nixpkgs-firefox-addons][ijohanne/nixpkgs-firefox-addons: Fork of nixpkgs-firefox-addons from https://gitlab.com/rycee/nixpkgs-firefox-addons]]
   - [[https://github.com/divnix/digga][divnix/digga: A a flake utility library to craft shell-, home-, and hosts- environments.]]
   - [[https://github.com/serokell/systemd-nix][serokell/systemd-nix: Generate systemd units from NixOS-style descriptions]]
   - [[https://github.com/fufexan/nix-gaming][fufexan/nix-gaming: Gaming on Nix]]
