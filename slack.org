@@ -44,3 +44,6 @@ document.getElementsByClassName('p-channel_sidebar__navigation_bar')[0].remove()
 var sheet = document.createElement('style')
 sheet.innerHTML = "div {border: 2px solid black; background-color: blue;}";
 document.body.appendChild(sheet);
+
+
+- [[https://github.com/wongnai/kube-slack][wongnai/kube-slack: Kubernetes Slack Monitoring]]
