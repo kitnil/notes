@@ -527,3 +527,9 @@ If you rebuilt the project, you would see a version 2 image created and the :lat
 * External
 - [[https://github.com/bmustiata/jenny][bmustiata/jenny: Command line Jenkinsfile runner written in groovy. Does not need a Jenkins installation to run the Jenkinsfile.]]
 - [[https://nickcharlton.net/posts/setting-jenkins-credentials-with-groovy.html][Setting Jenkins Credentials with Groovy — Nick Charlton]]
+- [[https://github.com/jenkins-infra/packer-images][jenkins-infra/packer-images: This repository hosts the packer definitions for the Jenkins Infrastructure]]
+
+* QA
+
+- [[https://www.youtube.com/watch?v=KsTMy0920go][(10) How to Integrate SonarQube With Jenkins - YouTube]]
+- [[https://www.youtube.com/watch?v=hvb7wqkiNik][(10) How to Do Code Coverage With OpenClover and Jenkins - YouTube]]
