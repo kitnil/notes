@@ -122,6 +122,7 @@ nix-repl> mynixos2.config.environment.etc."mailman.cfg".text
 - [[https://github.com/MagicRB/NixNG][MagicRB/NixNG]]
 - [[https://gitea.redalder.org/Magic_RB/NixNG][Magic_RB/NixNG - NixNG - Red Alder Gitea]]
 - [[https://github.com/fluidattacks/makes][fluidattacks/makes: A SecDevOps framework powered by Nix]]
+- [[https://docs.replit.com/tutorials/30-build-with-nix][Replit Docs - Building with Nix on Replit]]
 - [[https://github.com/divnix/quick-nix-registry/blob/master/flake.nix][quick-nix-registry/flake.nix at master · divnix/quick-nix-registry]]
 - [[https://github.com/djwhitt/nix-babahska-static-bin-pkg][djwhitt/nix-babahska-static-bin-pkg]]
 - [[https://github.com/mikroskeem/nixos-snaphook][mikroskeem/nixos-snaphook: Take system snapshot before rebuilding & switching NixOS installation to a new configuration]]
