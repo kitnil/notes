@@ -1486,7 +1486,9 @@ Alternatively, if killall is available:
 
 $ killall -USR2 emacs
 ** [2017-03-24 Fri 09:27] [[https://www.emacswiki.org/emacs/rx][EmacsWiki: rx]]
-A nifty macro that generates regular expressions for you, from reasonably-comprehensible s-expressions. Inspired by something similar in Olin Shivers’ “scsh”.
+A nifty macro that generates regular expressions for you, from
+reasonably-comprehensible s-expressions. Inspired by something similar in Olin
+Shivers’ “scsh”. [[https://scsh.net/][Scsh - The Scheme Shell]]
 ** [2017-03-24 Fri 09:31] [[https://www.gnu.org/software/emacs/manual/html_node/emacs/Creating-Frames.html][GNU Emacs Manual: Creating Frames]]
 The prefix key C-x 5 is analogous to C-x 4. Whereas each C-x 4 command pops up a buffer in a different window in the selected frame (see Pop Up Window), the C-x 5 commands use a different frame. If an existing visible or iconified (a.k.a. “minimized”) frame already displays the requested buffer, that frame is raised and deiconified (“un-minimized”); otherwise, a new frame is created on the current display terminal.
 ** [2017-03-26 Sun 13:46] [[https://github.com/jinzhu/zeal-at-point][jinzhu/zeal-at-point: Search the word at point with Zeal (Emacs)]]
