@@ -98,6 +98,7 @@
 - [[https://lisp-journey.gitlab.io/blog/gui-programming-in-common-lisp-part-1-of-5-tk/][GUI Programming in Common Lisp, part 1/5: Tk - Lisp journey]]
   - [[https://peterlane.netlify.app/ltk-examples/][Peter's Scrapbook: LTk Examples]]
   - [[https://peterlane.netlify.app/ltk-plotchart/][Peter's Scrapbook: LTk Plotchart]]
+- [[https://common-lisp.net/project/asdf/asdf/Configuring-ASDF-to-find-your-systems.html][Configuring ASDF to find your systems (ASDF Manual)]]
 
 In Common Lisp, use =every= (that's the equivalent of =all=) and =some=
 (that's the equivalent of =any=).
