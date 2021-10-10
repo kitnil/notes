@@ -9,5 +9,6 @@
 - [[https://github.com/DGKSK8LIFE/redisql][DGKSK8LIFE/redisql: MySQL to Redis caching made easy]]
 - [[https://redis.io/commands/eval][EVAL – Redis]]
 - [[http://www.bestfeng.vip/blog/detail/19][Redis技术内幕之数据结构篇 - 烂笔头]]
+- [[https://github.com/EQ-Alpha/KeyDB][EQ-Alpha/KeyDB: A Multithreaded Fork of Redis]]
 
 : redis-cli -h redis.intr hgetall "mailboxes:test@test.wugi.info"
