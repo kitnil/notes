@@ -10,6 +10,7 @@
 - timeout 2 ping --quiet --count=3 172.16.100.60 && echo 'foo' || echo 'bar'
 - [[https://github.com/gpestana/kapacitor-unit][gpestana/kapacitor-unit: Testing framework for Kapacitor TICKscripts]]
 - [[https://hetrixtools.com/uptime-monitor/][Free Uptime Monitor | Server Monitor - HetrixTools]]
+- [[https://github.com/louislam/uptime-kuma][louislam/uptime-kuma: A fancy self-hosted monitoring tool]]
 
 * Grafana
 - [[https://github.com/K-Phoen/dark][(grafana) Dashboards As Resources in Kubernetes]]
