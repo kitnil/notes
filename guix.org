@@ -1567,6 +1567,11 @@ Thanks!
     <sneek> Will do.
   #+END_EXAMPLE
 
+#+begin_example
+  sneek: seen wigust
+  <sneek>wigust was last seen in #guix 2 hours and 49 minutes ago, saying: hi guix.
+#+end_example
+
 * [[gnus:INBOX#87tw1zl0wy.fsf@bernoul.li][How to fix Org-mode tabs]]
 
   #+BEGIN_SRC emacs-lisp :tangle yes
