@@ -135,6 +135,19 @@ nix-repl> mynixos2.config.environment.etc."mailman.cfg".text
 - [[https://github.com/svanderburg/nijs][svanderburg/nijs: NiJS: An internal DSL for Nix in JavaScript]]
 - [[https://github.com/nprindle/nix-cron][nprindle/nix-cron: A small DSL for writing cron jobs in Nix]]
 - [[https://github.com/expipiplus1/update-nix-fetchgit][expipiplus1/update-nix-fetchgit: A program to automatically update fetchgit values in Nix expressions]]
+- [[https://github.com/nix-community/impermanence][nix-community/impermanence: Modules to help you handle persistent state on systems with ephemeral root storage maintainer=@talyz]]
+#+begin_src nix
+  environment.persistence."/nix/state" = {
+    directories = [ "/etc/nixos" "/var/log" "/var/lib/docker" ];
+    files = [
+      "/etc/machine-id"
+      "/etc/ssh/ssh_host_rsa_key"
+      "/etc/ssh/ssh_host_rsa_key.pub"
+      "/etc/ssh/ssh_host_ed25519_key"
+      "/etc/ssh/ssh_host_ed25519_key.pub"
+    ];
+  };
+#+end_src
 - https://github.com/NixOS/nixpkgs/issues/24346
   #+begin_src nix
     # https://github.com/7c6f434c/7c6f434c-configurations/blob/master/init-less-system/generic/tools.nix#L373
