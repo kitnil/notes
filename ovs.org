@@ -14,7 +14,7 @@ ovs-ofctl show ovsbr0
 ovs-ofctl dump-flows ovsbr0
 
 #+begin_example
-  -for BR in $(ip a | grep ovsbr | awk -F': ' '{print $2}')
+  for BR in $(ip a | grep ovsbr | awk -F': ' '{print $2}')
   do
       ovs-ofctl add-flow ${BR} priority=47000,udp,in_port=$(ovs-vsctl list-ports ${BR}| grep eth),tp_dst=11211,actions=drop
   done
