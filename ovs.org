@@ -20,6 +20,13 @@ ovs-ofctl dump-flows ovsbr0
   done
 #+end_example
 
+#+begin_example
+  ovs-ofctl add-flow ovsbr0 tcp,in_port=vm12345,tp_dst=25,priority=47000,actions=drop
+  ovs-ofctl add-flow ovsbr0 tcp,in_port=vm12345,tp_dst=465,priority=47000,actions=drop
+  ovs-ofctl add-flow ovsbr0 tcp,in_port=vm12345,tp_dst=587,priority=47000,actions=drop
+  ovs-ofctl add-flow ovsbr0 tcp,in_port=vm12345,tp_dst=2525,priority=47000,actions=drop
+#+end_example
+
 * OpenFlow Controlles
 ** Framework
 - [[https://en.wikipedia.org/wiki/ONOS][ONOS - Wikipedia]]
