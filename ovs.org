@@ -28,6 +28,7 @@ ovs-ofctl dump-flows ovsbr0
   - [[https://ryu.readthedocs.io/en/latest/ofproto_ref.html][OpenFlow protocol API Reference — Ryu 4.34 documentation]]
   - [[https://web.archive.org/web/20170709002538/http://onosproject.org/use-cases/][Use Cases - ONOS]]
   - [[https://github.com/opennetworkinglab/onos][opennetworkinglab/onos: Open Network Operating System]]
+  - [[https://wiki.onosproject.org/display/ONOS/Installation+Guide][Installation Guide - ONOS - Wiki]]
 - OVN
   - OVN openflow controller (via ovsdb)
   - [[https://man7.org/linux/man-pages/man8/ovn-controller.8.html][ovn-controller(8) - Linux manual page]]
