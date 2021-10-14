@@ -9,3 +9,6 @@
 
 - [[https://man7.org/linux/man-pages/man7/ovs-fields.7.html][ovs-fields(7) - Linux manual page]]
 - [[https://man7.org/linux/man-pages/man7/ovs-actions.7.html][ovs-actions(7) - Linux manual page]]
+
+ovs-ofctl show ovsbr0
+ovs-ofctl dump-flows ovsbr0
