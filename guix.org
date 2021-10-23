@@ -2163,6 +2163,21 @@ success = false; } else { //Lock texture if( !gFooTexture.lockTexture() ) { prin
     Error: net_connect_unix(/var/run/dovecot//stats-writer) failed: Permission denied
   #+END_EXAMPLE
 
+* Tests
+#+begin_src scheme
+  (test-assert "foo"
+    (marionette-eval
+     '(begin
+        (use-modules (ice-9 rdelim)
+                     (ice-9 popen))
+        (let* ((port   (open-pipe "/run/current-system/profile/bin/cat /tmp/out.txt; /run/current-system/profile/bin/ls -la /var/guix/profiles/per-user /var/guix/profiles/per-user/alice /home/alice /home/alice/test /root"
+                                  OPEN_READ))
+               (output (read-string port)))
+          (close-port port)
+          (pk (string-trim-right output #\newline))))
+     marionette))
+#+end_src
+
 * Misc
 
   - Latest Emacs: https://lists.gnu.org/archive/html/help-guix/2018-04/msg00099.html
