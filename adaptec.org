@@ -49,3 +49,8 @@
   #3  0x00000000004d8d02 in main ()
   No symbol table info available.
 #+end_example
+
+#+begin_example
+  [root@web32:~]# nix-shell -p glibc.bin                                               
+  [nix-shell:~]# LD_LIBRARY_PATH='/nix/store/d97kkhkxwj9lxjl4ba81jlzplyzlzjb8-gcc-8.3.0-lib/lib' catchsegv   /nix/store/883blaa1cn68ddy7398ga3dn0hl7l97s-arcconf-v2_00_21811/bin/arcconf.orig
+#+end_example
