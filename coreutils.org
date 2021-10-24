@@ -8,6 +8,13 @@
 
 - [[https://github.com/aureliojargas/sedsed][aureliojargas/sedsed: Debugger and code formatter for sed scripts]]
 
+* date
+
+#+begin_example
+  $ date --date="2021-04-14 15:00:00 UTC"
+  Wed Apr 14 18:00:00 MSK 2021
+#+end_example
+
 * Tools
 
 - [[https://github.com/emad-elsaid/dirtree][emad-elsaid/dirtree: Visualizing files paths as an interactive tree, works nicely with gnu linux tools such as find, ls, or git ls-files]]
