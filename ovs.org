@@ -27,6 +27,8 @@ ovs-ofctl dump-flows ovsbr0
   ovs-ofctl add-flow ovsbr0 tcp,in_port=vm12345,tp_dst=2525,priority=47000,actions=drop
 #+end_example
 
+- ovs-vsctl -- destroy qos vm14287 -- clear port vm14287 qos
+
 * OpenFlow Controlles
 ** Framework
 - [[https://en.wikipedia.org/wiki/ONOS][ONOS - Wikipedia]]
