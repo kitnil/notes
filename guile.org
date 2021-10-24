@@ -125,6 +125,16 @@ Guile Reference Manual.
 - [[https://git.sr.ht/~arnebab/geiser-wisp][~arnebab/geiser-wisp - sourcehut git]]
 - [[https://github.com/Johni0702/guile-language-server][Johni0702/guile-language-server: LSP server for Guile (Scheme) support]]
 
+* 2.0
+
+#+begin_src sh
+  LD_LIBRARY_PATH=/gnu/store/p6wxadc0ks1zswsjyjhqj1rnidds6ih2-guile2.0-readline-2.0.14/lib \
+  GUILE_AUTO_COMPILE=0 \
+  GUILE_LOAD_COMPILED_PATH="$HOME"/.guix-profile/lib/guile/2.0/site-ccache \
+  GUILE_LOAD_PATH=/gnu/store/irc3hxazr2a59mb61gr2i1g7c5h1rqfk-guile-bash-0.1.6-0.1eabc56/share/guile/site/2.0:/gnu/store/p6wxadc0ks1zswsjyjhqj1rnidds6ih2-guile2.0-readline-2.0.14/share/guile/site/2.0:"$HOME"/.guix-profile/share/guile/site/2.0 \
+  /gnu/store/2wrp7x9aclqsapm58dz5i654qds8nbb8-guile-2.0.14/bin/guile
+#+end_src
+
 * Libs
 
 - [[https://github.com/robert-lawrence/guile-orgfile][robert-lawrence/guile-orgfile: Small parser for Emacs Org files. Contains sxml converter]]
