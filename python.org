@@ -239,5 +239,20 @@ web33.ls(web33.getent("passwd u7590").stdout.split(b":")[5])
          @open_only
          def invoke_shell(self):
   #+end_src
+* Examples
+#+begin_example
+  $ nix-shell -p 'python3.withPackages (ps: [ ps.jinja2 ])' --run python
+  Python 3.8.8 (default, Feb 19 2021, 11:04:50) 
+  [GCC 9.3.0] on linux
+  Type "help", "copyright", "credits" or "license" for more information.
+  >>> import jinja2
+  >>> j = jinja2.Environment()
+  >>> j.from_string('{% if a %}NOOOO!{% endif %}').render(a=None)
+  ''
+  >>> j.from_string('{% if not a %}NOOOO!{% endif %}').render(a=None)
+  'NOOOO!'
+
+  2.11.2
+#+end_example
 * Web
 - [[https://github.com/ddevault/evilpass][ddevault/evilpass: Slightly evil password strength checker]]
