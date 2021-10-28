@@ -4,14 +4,14 @@
 - [[https://github.com/dropbox/fast_rsync][dropbox/fast_rsync: An optimized implementation of librsync in pure Rust.]]
 
 #+begin_example
-uid = root
-gid = root
-read only = yes 
-address = 23.23.23.23
-hosts allow = 67.67.67.67/32
+  uid = root
+  gid = root
+  read only = yes 
+  address = 23.23.23.23
+  hosts allow = 67.67.67.67/32
 
-[root]
-        path = /
+  [root]
+          path = /
 #+end_example
 
 - Full system backup
