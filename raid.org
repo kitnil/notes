@@ -1,5 +1,7 @@
 #+title: RAID
 
+- [[https://altastor.ru/apps/raidcalc/][Калькулятор RAID]]
+
 - Copy disk partition information
 : sfdisk -d /dev/sdb | sfdisk /dev/sda
 
