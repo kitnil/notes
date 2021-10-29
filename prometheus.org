@@ -21,6 +21,7 @@
 - [[https://github.com/benjojo/sping][benjojo/sping: Split ping, see what direction the loss or latency is on]]
 - [[https://github.com/Gandi/prometheus-linux-nfsdv4-exporter][Gandi/prometheus-linux-nfsdv4-exporter]]
 - [[https://github.com/Gandi/xenlight_exporter][Gandi/xenlight_exporter: Prometheus exporter for Xen using xenlight library]]
+- [[https://github.com/prometheus/blackbox_exporter/blob/master/example.yml][blackbox_exporter/example.yml at master · prometheus/blackbox_exporter]]
 - [[https://blog.mafr.de/2020/09/13/testing-alertmanager/][Testing Alertmanager | Matthias Friedrich's Blog]]
   #+begin_src shell
     #! /usr/bin/env sh
