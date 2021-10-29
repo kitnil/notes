@@ -46,3 +46,6 @@
     '
     
   #+end_src
+
+- icmp
+: 127.0.0.1:9115/probe?module=icmp&target=192.168.0.1
