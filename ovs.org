@@ -29,6 +29,10 @@ ovs-ofctl dump-flows ovsbr0
 
 - ovs-vsctl -- destroy qos vm14287 -- clear port vm14287 qos
 
+- ovs-vsctl --may-exist add-br br0
+- ovs-vsctl --may-exist add-port br0 enp34s0 vlan_mode=native-untagged
+
+
 * OpenFlow Controlles
 ** Framework
 - [[https://en.wikipedia.org/wiki/ONOS][ONOS - Wikipedia]]
