@@ -5,6 +5,9 @@
 - [[https://github.com/ansible-community/toolset][ansible-community/toolset: Ansible Toolset combines all ansible development tools in a single container: ansible, ansible-lint and molecule]]
 - [[https://github.com/roles-ansible/role-grafana-kiosk][roles-ansible/role-grafana-kiosk: Ansible role to deploy the grafana-kiosk]]
 
+- ansible
+  : ansible -c local localhost -m slack -a "token='$(pass show majordomo/private/mjru.slack.com/tokens/ansible)' msg='$(date)' channel=#test"
+
 - ls /tmp in ssh-guest-room
 #+begin_src yaml
   - hosts: web
