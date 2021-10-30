@@ -3144,6 +3144,47 @@ mkfs.vfat -F32 /dev/sdXY
     (display (run-with-store (open-connection) (package-file icedtea-8 #:output "jdk")))
   #+end_src
 
+* Xmonad
+
+#+begin_example
+  Message-ID: <87fssiwbmq.fsf@posteo.de>
+
+  I also start XMonad from the terminal/TTY. I use the following command
+  which I found in some Guix mailing list:
+
+  xinit -- ~/.guix-profile/bin/Xorg :0 vt1 \
+    -keeptty \
+    -configdir ~/.guix-profile/share/X11/xorg.conf.d \
+    -modulepath ~/.guix-profile/lib/xorg/modules
+
+
+  I then have a ~/.xsession file which in particular contains this line:
+
+  exec ~/.xmonad/xmonad-x86_64-linux
+
+
+  I'm not sure but I think these were the packages which I installed as
+  user in order to make XMonad work/compile:
+
+  gcc-toolchain
+  ghc
+  ghc-xmonad-contrib
+  glibc
+  ld-wrapper
+  libxinerama
+  xf86-input-libinput
+  xf86-video-fbdev
+  xf86-video-intel
+  xinit
+  xorg-server
+
+
+  I also have a ~/.xmonad/build script with the following content:
+
+  #!/bin/sh
+  ghc -dynamic "$HOME/.xmonad/Main.hs" -i"$HOME/.xmonad" -o "$1"
+#+end_example
+
 * Gexp
 
   #+begin_src scheme
