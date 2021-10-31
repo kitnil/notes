@@ -1222,3 +1222,6 @@ emacs-libyaml example:
              (gethash "steps"
                       (yaml-read-file "~/archive/src/filestash/.drone.yml")))
    #+end_src
+
+** Shell
+- [[https://github.com/Overdr0ne/shelldon][Overdr0ne/shelldon]]
