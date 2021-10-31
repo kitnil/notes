@@ -53,6 +53,24 @@
 * Installation
 - [[https://github.com/miekg/vks][miekg/vks: Virtual Kubelet Provider for Systemd]]
 
+** Rancher
+
+- [[https://rancher.com/quick-start][Getting Started with Kubernetes | Rancher Quick Start]]
+
+#+begin_example
+  01 Prepare a Linux Host
+  Prepare a Linux host with supported version of Docker on the host.
+
+  02 Start the server
+  To install and run Rancher, execute the following Docker command on your host:
+
+  $ sudo docker run --privileged -d --restart=unless-stopped -p 80:80 -p 443:443 rancher/rancher
+
+  To access the Rancher server UI, open a browser and go to the hostname or
+  address where the container was installed. You will be guided through setting
+  up your first cluster.
+#+end_example
+
 * Operators
 - [[https://github.com/flant/shell-operator][flant/shell-operator: Shell-operator is a tool for running event-driven scripts in a Kubernetes cluster]]
 
