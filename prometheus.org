@@ -23,6 +23,7 @@
 - [[https://github.com/Gandi/xenlight_exporter][Gandi/xenlight_exporter: Prometheus exporter for Xen using xenlight library]]
 - [[https://github.com/prometheus/blackbox_exporter/blob/master/example.yml][blackbox_exporter/example.yml at master · prometheus/blackbox_exporter]]
 - [[https://michael.stapelberg.ch/posts/2016-01-01-prometheus-blackbox-exporter/][Prometheus: Using the blackbox exporter (2016) - Michael Stapelberg]]
+- [[https://sysdig.com/wp-content/uploads/2019/01/prometheus-monitoring-guide.pdf][prometheus-monitoring-guide.pdf]]
 - [[https://blog.mafr.de/2020/09/13/testing-alertmanager/][Testing Alertmanager | Matthias Friedrich's Blog]]
   #+begin_src shell
     #! /usr/bin/env sh
