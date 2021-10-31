@@ -124,6 +124,7 @@ nix-repl> mynixos2.config.environment.etc."mailman.cfg".text
 - [[https://gitea.redalder.org/Magic_RB/NixNG][Magic_RB/NixNG - NixNG - Red Alder Gitea]]
 - [[https://justinas.org/nixos-in-the-cloud-step-by-step-part-1][NixOS in the Cloud, step-by-step: part 1 · Justinas Stankevičius]]
 - [[https://github.com/nerdypepper/statix][nerdypepper/statix: lints and suggestions for the nix programming language]]
+- [[https://github.com/thiagokokada/graalvm-nix][thiagokokada/graalvm-nix: GraalVM derivations to be used by projects]]
 - [[https://github.com/fluidattacks/makes][fluidattacks/makes: A SecDevOps framework powered by Nix]]
 - [[https://github.com/lucasew/path.nix][lucasew/path.nix: Generate the NIX_PATH environment variable from a flake input]]
 - [[https://docs.replit.com/tutorials/30-build-with-nix][Replit Docs - Building with Nix on Replit]]
