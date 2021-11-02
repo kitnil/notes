@@ -59,6 +59,20 @@
 - mongo to json
 : mongo --quiet video --eval 'DBQuery.shellBatchSize = 300; db.getCollection("youtube").find({"uploader_id" : "UCvRRgjjKvyLNB9yx3oGu2Xw"}, {_id:0, "title":1, "webpage_url":1, "description":1}).pretty()' | jq --raw-output '[.webpage_url, .title, .description] | @tsv' | sort -k 2
 
+- mongo create readAnyDatabase user
+#+begin_example
+  hms-rs0:PRIMARY> db.createUser({user: "junior", pwd: "secret", roles: [{role: "readAnyDatabase", db: "admin"}]})
+  Successfully added user: {
+          "user" : "junior",
+          "roles" : [
+                  {
+                          "role" : "readAnyDatabase",
+                          "db" : "admin"
+                  }
+          ]
+  }
+#+end_example
+
 - mongo add user
 : hms-rs0:PRIMARY> db.createUser({user: "tracker", pwd: "secretPassword", roles: [{role: "readWrite", db: "tracker"}]})
 +begin_example
