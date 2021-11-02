@@ -1,1 +1,26 @@
 - [[https://mariadb.com/kb/en/innodb-recovery-modes/][InnoDB Recovery Modes - MariaDB Knowledge Base]]
+
+* Master slave replication
+
+#+begin_example
+  Nov 02 15:22:34 dc-1 mysql-pre-start[1680160]: 2021-11-02 15:22:33 0 [ERROR] InnoDB: The error means the system cannot find the path specified.
+  Nov 02 15:22:34 dc-1 mysql-pre-start[1680160]: 2021-11-02 15:22:33 0 [ERROR] InnoDB: If you are installing InnoDB, remember that you must create directories yourself, InnoDB does not create them.
+  Nov 02 15:22:34 dc-1 mysql-pre-start[1680160]: 2021-11-02 15:22:33 0 [ERROR] InnoDB: Cannot open datafile for read-only: './foobar/phpbb_extensions.ibd' OS error: 71
+  Nov 02 15:22:34 dc-1 mysql-pre-start[1680160]: 2021-11-02 15:22:33 0 [ERROR] InnoDB: Operating system error number 2 in a file operation.
+  Nov 02 15:22:34 dc-1 mysql-pre-start[1680160]: 2021-11-02 15:22:33 0 [ERROR] InnoDB: The error means the system cannot find the path specified.
+  Nov 02 15:22:34 dc-1 mysql-pre-start[1680160]: 2021-11-02 15:22:33 0 [ERROR] InnoDB: If you are installing InnoDB, remember that you must create directories yourself, InnoDB does not create them.
+  Nov 02 15:22:34 dc-1 mysql-pre-start[1680160]: 2021-11-02 15:22:33 0 [ERROR] InnoDB: Could not find a valid tablespace file for ``foobar`.`phpbb_extensions``. Please refer to https://mariadb.com/kb/en/innodb-data-dictionary-troubleshooting/ for how to resolve the issue.
+  Nov 02 15:22:34 dc-1 mysql-pre-start[1680160]: 2021-11-02 15:22:33 0 [Warning] InnoDB: Ignoring tablespace for `foobar`.`phpbb_extensions` because it could not be opened.
+  Nov 02 15:22:34 dc-1 mysql-pre-start[1680160]: 2021-11-02 15:22:33 0 [ERROR] InnoDB: Operating system error number 2 in a file operation.
+#+end_example
+
+The restore process for partial backups is quite different than the process
+for full backups. A partial backup is not a completely functional data
+directory. The data dictionary in the InnoDB system tablespace will still
+contain entries for the databases and tables that were not included in the
+backup.
+
+Rather than using the --copy-back or the --move-back, each individual InnoDB
+file-per-table tablespace file will have to be manually imported into the
+target server. The process that is used to import the file will depend on
+whether partitioning is involved.
