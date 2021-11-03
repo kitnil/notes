@@ -35,6 +35,16 @@ AllowedIPs = 10.66.66.0/24
 - debug
   : echo module wireguard +p > /sys/kernel/debug/dynamic_debug/control
 
+** Possible issues
+
+*** RX errors on an interface
+
+Those RX frame errors are caused by the interface receiving packets
+that have a source IP not included in the allowed-ips list of the
+peer.
+
+https://git.zx2c4.com/WireGuard/tree/src/receive.c#n351
+
 * Misc
 - [[https://github.com/tonarino/innernet][tonarino/innernet: A private network system that uses WireGuard under the hood.]]
 - [[https://github.com/WeeJeWel/wg-easy][WeeJeWel/wg-easy: The easiest way to run WireGuard VPN + Web-based Admin UI.]]
