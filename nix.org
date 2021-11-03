@@ -972,6 +972,26 @@ builtins.match "php([[:alnum:]])([[:alnum:]])" "php70"
 
 
 * Flakes
+
+** Learning
+
+- [[https://nixos.wiki/wiki/Flakes][Flakes - NixOS Wiki]]
+- [[https://github.com/NixOS/nix/tree/master/src/nix][nix/src/nix at master · NixOS/nix]]
+
+** Videos
+
+- [[https://www.youtube.com/watch?v=K54KKAx2wNc&t=18s][Intro to Flakes - YouTube]]
+- [[https://www.youtube.com/watch?v=QXUlhnhuRX4&t=1154s][Jörg Thalheim: Nix flakes 101 (rC3 2020) - YouTube]]
+- [[https://www.youtube.com/watch?v=UeBX7Ide5a0][Nix flakes (NixCon 2019) - YouTube]]
+- [[https://www.youtube.com/watch?v=h2I1FHpbaIg][Nix Friday - Flakes! - YouTube]]
+- [[https://www.youtube.com/channel/UCDTeiF7cayvgLMUBSm9-B2A][Jonas Chevalier - YouTube]]
+- [[https://www.youtube.com/watch?v=98EwejpIJzE&t=645s][Flakes in nix 2.4 - YouTube]]
+- [[https://www.youtube.com/user/nautilus1k][Andrew Tropin - YouTube]]
+- [[https://www.youtube.com/watch?v=mJbQ--iBc1U&t=994s][Moving Nixos System Configuration Into A Flake - YouTube]]
+- [[https://www.youtube.com/watch?v=CDzgNxoAlnA&t=3126s][Almost Perfect Dotfiles Management w/ nix, home-manager and flakes - YouTube]]
+
+** Misc
+
   - [[https://github.com/ijohanne/nixpkgs-firefox-addons][ijohanne/nixpkgs-firefox-addons: Fork of nixpkgs-firefox-addons from https://gitlab.com/rycee/nixpkgs-firefox-addons]]
   - [[https://github.com/divnix/digga][divnix/digga: A a flake utility library to craft shell-, home-, and hosts- environments.]]
   - [[https://github.com/serokell/systemd-nix][serokell/systemd-nix: Generate systemd units from NixOS-style descriptions]]
