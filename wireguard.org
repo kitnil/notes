@@ -39,6 +39,8 @@ AllowedIPs = 10.66.66.0/24
 
 *** RX errors on an interface
 
+Origin: [[https://lists.zx2c4.com/pipermail/wireguard/2018-April/002726.html][RX Errors from Android Peer]]
+
 Those RX frame errors are caused by the interface receiving packets
 that have a source IP not included in the allowed-ips list of the
 peer.
