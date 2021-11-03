@@ -30,6 +30,11 @@ Endpoint = 178.250.247.88:63665
 AllowedIPs = 10.66.66.0/24
 #+end_example
 
+* Cheat sheet
+
+- debug
+  : echo module wireguard +p > /sys/kernel/debug/dynamic_debug/control
+
 * Misc
 - [[https://github.com/tonarino/innernet][tonarino/innernet: A private network system that uses WireGuard under the hood.]]
 - [[https://github.com/WeeJeWel/wg-easy][WeeJeWel/wg-easy: The easiest way to run WireGuard VPN + Web-based Admin UI.]]
