@@ -140,6 +140,25 @@ curl -H 'Content-Type: application/json' -d '{"query": {"bool": {"must": {"term"
 - cluster nodes
   : curl -XGET 'http://localhost:9200/_cluster/state/nodes?pretty'
 
+** es3
+#+begin_example
+  cluster.name: mjlogger
+
+  http.port: 9200
+  transport.tcp.port: 9300
+
+  node.name: "staff-vote-only"
+  node.data: false
+  node.master: true
+  node.ingest: true
+
+  path.repo: ["/home/elasticsearch_backups"]
+  xpack.security.enabled: false
+
+  discovery.zen.minimum_master_nodes: 2
+  discovery.zen.ping.unicast.hosts: [ "172.16.103.68", "172.16.103.69", "172.16.103.112" ]
+#+end_example
+
 * Tools
 
 - [[https://github.com/Cyb3rWard0g/HELK][Cyb3rWard0g/HELK: The Hunting ELK]]
