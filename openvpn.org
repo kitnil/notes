@@ -1,3 +1,10 @@
 #+title: OpenVPN
 
 - [[https://openvpn.net/community-downloads/][Community Downloads | OpenVPN]]
+
+- [[https://www.tune-it.ru/web/adduxa/blog/-/blogs/ignorirovanie-dns-serverov-polucaemyh-ot-openvpn-servera][Игнорирование DNS-серверов, получаемых от OpenVPN сервера - Блог - Tune IT]]
+    - server
+    : push "dhcp-option DNS 10.8.20.1"
+
+    - client
+    : pull-filter ignore "dhcp-option DNS"
