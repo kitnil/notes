@@ -137,6 +137,9 @@ curl -H 'Content-Type: application/json' -d '{"query": {"bool": {"must": {"term"
 - cluster_uuid
   : curl -XGET 'http://localhost:9200/_cluster/state/master_node?pretty'
 
+- cluster nodes
+  : curl -XGET 'http://localhost:9200/_cluster/state/nodes?pretty'
+
 * Tools
 
 - [[https://github.com/Cyb3rWard0g/HELK][Cyb3rWard0g/HELK: The Hunting ELK]]
