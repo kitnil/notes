@@ -129,6 +129,14 @@ oleg@guixsd ~$ curl -H 'Content-Type: application/json' -d '{"query": {"match": 
 
 curl -H 'Content-Type: application/json' -d '{"query": {"bool": {"must": {"term": {"server": "web37"}}}}}' -s -X GET "elastic.intr:9200/logstash-te-2020.02.28/_search?pretty" 
 
+* Cluster
+
+- health
+  : curl -XGET 'http://127.0.0.1:9200/_cluster/health?pretty'
+
+- cluster_uuid
+  : curl -XGET 'http://localhost:9200/_cluster/state/master_node?pretty'
+
 * Tools
 
 - [[https://github.com/Cyb3rWard0g/HELK][Cyb3rWard0g/HELK: The Hunting ELK]]
