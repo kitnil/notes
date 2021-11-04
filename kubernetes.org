@@ -71,6 +71,9 @@
   up your first cluster.
 #+end_example
 
+* Monitoring
+- [[https://habr.com/ru/post/586206/][Kubernetes monitoring от простого к сложному (Николай Храмчихин) / Хабр]]
+
 * Operators
 - [[https://github.com/flant/shell-operator][flant/shell-operator: Shell-operator is a tool for running event-driven scripts in a Kubernetes cluster]]
 
