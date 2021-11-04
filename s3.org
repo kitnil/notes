@@ -35,3 +35,7 @@ Add host:
 [root@archive4:~]# mc mb minio/docker/registry/
 Bucket created successfully `minio/docker/registry/`.
 #+end_example
+
+** Learning
+
+- [[https://habr.com/ru/company/ozontech/blog/586024/][Зачем и как хранить объекты на примере MinIO / Хабр]]
