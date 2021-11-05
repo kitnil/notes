@@ -31,6 +31,7 @@
 - [[https://github.com/caarlos0/fastcom-exporter][caarlos0/fastcom-exporter: Prometheus Fast.com exporter]]
 - [[https://github.com/prometheus-community/elasticsearch_exporter][prometheus-community/elasticsearch_exporter: Elasticsearch stats exporter for Prometheus]]
 - [[https://github.com/prometheus-community/smartctl_exporter][prometheus-community/smartctl_exporter: Export smartctl statistics to prometheus]]
+- [[https://github.com/prometheus-community/bind_exporter][prometheus-community/bind_exporter: Prometheus exporter for BIND]]
 - [[https://blog.mafr.de/2020/09/13/testing-alertmanager/][Testing Alertmanager | Matthias Friedrich's Blog]]
   #+begin_src shell
     #! /usr/bin/env sh
