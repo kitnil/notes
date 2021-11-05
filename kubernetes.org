@@ -13,6 +13,7 @@
   - =kubectl port-forward my-deployment-xxxxxxxxxx-xxxxx 8005:80 &=
 - [[https://github.com/erebe/personal-server][erebe/personal-server: Personal server configuration with k3s]]
 - [[https://github.com/Vinum-Security/kubernetes-security-checklist][Vinum-Security/kubernetes-security-checklist: Kubernetes Security Checklist and Requirements - All in One (authentication, authorization, logging, secrets, configuration, network, workloads, dockerfile)]]
+- [[https://habr.com/ru/company/netologyru/blog/580902/][Планирование подов для узлов Kubernetes: развёрнутое руководство / Хабр]]
 
 * Tools
 - [[https://github.com/openebs/openebs][openebs/openebs: Leading Open Source Container Attached Storage, built using Cloud Native Architecture, simplifies running Stateful Applications on Kubernetes.]]
