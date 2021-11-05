@@ -28,6 +28,7 @@
 - [[https://github.com/messagebird/sachet][messagebird/sachet: SMS alerts for Prometheus' Alertmanager]]
 - [[https://github.com/caarlos0/domain_exporter][caarlos0/domain_exporter: Exports the expiration time of your domains as prometheus metrics.]]
 - [[https://github.com/caarlos0/speedtest-exporter][caarlos0/speedtest-exporter: Exports speedtest-cli metrics in the prometheus format]]
+- [[https://github.com/caarlos0/fastcom-exporter][caarlos0/fastcom-exporter: Prometheus Fast.com exporter]]
 - [[https://blog.mafr.de/2020/09/13/testing-alertmanager/][Testing Alertmanager | Matthias Friedrich's Blog]]
   #+begin_src shell
     #! /usr/bin/env sh
