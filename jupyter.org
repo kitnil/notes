@@ -9,3 +9,4 @@
 docker run -p 8888:8888 benthomasson/ansible-jupyter-kernel
 - [[https://github.com/davidbrochart/nbterm][davidbrochart/nbterm: Jupyter Notebooks in the terminal.]]
 - [[https://github.com/gopherdata/gophernotes][gopherdata/gophernotes: The Go kernel for Jupyter notebooks and nteract.]]
+- [[https://github.com/sberbank-ai/ru-dalle][sberbank-ai/ru-dalle: Generate images from texts. In Russian]]
