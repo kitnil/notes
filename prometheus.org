@@ -33,6 +33,7 @@
 - [[https://github.com/prometheus-community/smartctl_exporter][prometheus-community/smartctl_exporter: Export smartctl statistics to prometheus]]
 - [[https://github.com/prometheus-community/bind_exporter][prometheus-community/bind_exporter: Prometheus exporter for BIND]]
 - [[https://github.com/prometheus-community/ipmi_exporter][prometheus-community/ipmi_exporter: Remote IPMI exporter for Prometheus]]
+- [[https://github.com/ncabatoff/script-exporter][ncabatoff/script-exporter: Prometheus exporter to invoke scripts and parse their output as metrics.]]
 - [[https://awesome-prometheus-alerts.grep.to/][Awesome Prometheus alerts | Collection of alerting rules]]
 - [[https://blog.mafr.de/2020/09/13/testing-alertmanager/][Testing Alertmanager | Matthias Friedrich's Blog]]
   #+begin_src shell
