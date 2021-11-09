@@ -232,6 +232,9 @@ Here is my configuration:
                   (keyboard-layout keyboard-layout)))))
     #+end_src
 
+  - guix shell shebang
+    : #!/usr/bin/env -S guix shell --
+
   - reconfigure or reboot (press Ctrl+C if reconfigure succeeded and machines is available via SSH)
     : sh -c '/var/guix/profiles/per-user/root/current-guix-9-link/bin/guix system reconfigure --load-path=/home/oleg/dotfiles/fiore/modules /home/oleg/dotfiles/spb.scm; echo DONE; sleep $((60 * 10)); echo b > /proc/sysrq-trigger'
 
