@@ -27,6 +27,16 @@ ovs-ofctl dump-flows ovsbr0
   ovs-ofctl add-flow ovsbr0 tcp,in_port=vm12345,tp_dst=2525,priority=47000,actions=drop
 #+end_example
 
+#+begin_src sh
+  for vm in vm12345 vm67891
+  do
+      for port in 25 465 587 2525
+      do
+          echo ovs-ofctl add-flow ovsbr0 tcp,in_port="$vm",tp_dst="$port",priority=47000,actions=drop
+      done
+  done
+#+end_src
+
 - ovs-vsctl -- destroy qos vm14287 -- clear port vm14287 qos
 
 - ovs-vsctl --may-exist add-br br0
