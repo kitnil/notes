@@ -25,3 +25,32 @@ Rather than using the --copy-back or the --move-back, each individual InnoDB
 file-per-table tablespace file will have to be manually imported into the
 target server. The process that is used to import the file will depend on
 whether partitioning is involved.
+
+*  [[https://artkiev.com/blog/error-plugin-innodb-init.htm][MySQL ошибка InnoBD: Plugin InnoDB init function returned error » Блог. ArtKiev Design Studio]]
+
+MySQL ошибка InnoBD: Plugin InnoDB init function returned error
+
+После обновления сервера произошел неприятный момент. Причем обнаружилось это
+спустя 2 месяца после обновлений. Все дело в том, что на всех таблицах у нас
+использовался MyISAM. Сервер стартовал, все отлично работало, пока не
+понадобилось создать таблицы в InnoBD. Вариант выбора InnoBD просто
+отсутствовал в списке выбора форматов хранения.[sql]130102 9:33:01 [ERROR]
+Plugin 'InnoDB' init function returned error.130102 9:33:01 [ERROR] Plugin
+'InnoDB' registration as a STORAGE ENGINE failed.[/sql]
+
+Обратившись в поддержку, выяснилось, что вариантов решения есть несколько, но
+все они не помогли.  Начали танцевать с бубнами и о чудо!  Если у вас в
+конфиге MySQL InnoBD и MyISAM хранятся в разных папках - это и есть весь
+корень зла.
+
+ 
+Решение ошибки: Plugin InnoDB init function returned error
+
+- Нужно остановить сервер.
+- Удалить строку innodb_data_home_dir из конфигурационного файла
+- В каталоге где хранятся базы данных найти и удалить: ib_logfile0,
+  ib_logfile1, ib_logfile2, ibdata1
+- Запустить сервер
+
+Осторожно. Если у вас уже были таблице с InnoBD - они могут
+пострадать. Делайте бэкап данных всегда!
