@@ -6491,5 +6491,10 @@ exist in the second table.
 
 * 
 
-/var/lib/mysql/ibdata1
-/var/lib/mysql/ib_logfile0
+[[https://docs.oracle.com/cd/E17952_01/mysql-5.7-en/innodb-migration.html][14.6.1.4 Moving or Copying InnoDB Tables]]
+
+- data
+  : /var/lib/mysql/ibdata1
+
+- data log
+  : /var/lib/mysql/ib_logfile0
