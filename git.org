@@ -219,7 +219,9 @@ rerere-train.sh [COMMIT][--all]
   - git-cal
     : [[ -n $(git log --max-count=1 --author='Oleg Pykhalov') ]] && git-cal --author='Oleg Pykhalov'
 
-* Tutorials
+* Learning
+  - [[https://ssl.engineering.nyu.edu/papers/afzali_asiaccs_2018.pdf][le-git-imate: Towards Verifiable Web-based Git Repositories - afzali_asiaccs_2018.pdf]]
+** Tutorials
   - [[https://www.youtube.com/channel/UCshmCws1MijkZLMkPmOmzbQ][Dan Gitschooldude]]
   - [[https://www.youtube.com/watch?v=8ET_gl1qAZ0][Advanced git Tutorial: Linus Torvalds - YouTube]]
   - [[https://www.atlassian.com/git/tutorials/git-hooks/local-hooks][Git Hooks - Local hooks | Atlassian Git Tutorial]]
