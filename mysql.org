@@ -6489,9 +6489,10 @@ exist in the second table.
     GRANT USAGE ON *.* TO 'certexpire'@'172.16.%' REQUIRE NONE WITH MAX_QUERIES_PER_HOUR 0 MAX_CONNECTIONS_PER_HOUR 0 MAX_UPDATES_PER_HOUR 0 MAX_USER_CONNECTIONS 0; 
   #+end_src
 
-* 
+* Corruption
 
-[[https://docs.oracle.com/cd/E17952_01/mysql-5.7-en/innodb-migration.html][14.6.1.4 Moving or Copying InnoDB Tables]]
+- [[https://docs.oracle.com/cd/E17952_01/mysql-5.7-en/innodb-migration.html][14.6.1.4 Moving or Copying InnoDB Tables]]
+- [[https://bobcares.com/blog/mysql-tablespace-is-missing-for-table/][How to fix error in Mysql "tablespace is missing for table XXXXX"]]
 
 - data
   : /var/lib/mysql/ibdata1
