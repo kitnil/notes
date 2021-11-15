@@ -2,6 +2,19 @@
 
 - [[http://net.cmed.us/Home/juniper/junos-cheat-sheet][JUNOS Cheat Sheet - net]]
 
+- show down interfaces
+#+begin_example
+  root@sw2-mr13.intr> show ethernet-switching interfaces | match down 
+  ae2.0        down   VLAN253             253   untagged blocked by STP
+  ge-0/0/8.0   down   VLAN253             253   tagged   blocked by STP
+  ge-0/0/10.0  down   VLAN254             254   untagged blocked by STP
+  ge-0/0/16.0  down   VLAN82              82    untagged blocked by STP
+  ge-0/0/22.0  down   VLAN244             244   untagged blocked by STP
+  ge-0/0/41.0  down   VLAN109             109   tagged   blocked by STP
+  ge-0/0/43.0  down   VLAN16              16    untagged blocked by STP
+  me0.0        down   mgmt                      untagged unblocked
+#+end_example
+
 - netstat
   origin: [[https://kb.juniper.net/InfoCenter/index?page=content&id=KB21222&cat=SRX_SERIES&actp=LIST][[Junos] How to identify the process that is listening on a specific port - Juniper Networks]]
   : show system connections | no-more
