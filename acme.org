@@ -1,0 +1,13 @@
+#+begin_src shell
+  docker run --entrypoint /bin/sh -it --network=host --name acme neilpang/acme.sh
+#+end_src
+
+#+begin_example
+  ~ # acme.sh --register-account
+  [Mon Nov 15 15:08:32 UTC 2021] Create account key ok.
+  [Mon Nov 15 15:08:32 UTC 2021] No EAB credentials found for ZeroSSL, let's get one
+  [Mon Nov 15 15:08:32 UTC 2021] acme.sh is using ZeroSSL as default CA now.
+  [Mon Nov 15 15:08:32 UTC 2021] Please update your account with an email address first.
+  [Mon Nov 15 15:08:32 UTC 2021] acme.sh --register-account -m my@example.com
+  [Mon Nov 15 15:08:32 UTC 2021] See: https://github.com/acmesh-official/acme.sh/wiki/ZeroSSL.com-CA
+#+end_example
