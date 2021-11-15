@@ -28,6 +28,17 @@ ovs-ofctl dump-flows ovsbr0
   ovs-ofctl add-flow ovsbr0 tcp,in_port=vm12345,tp_dst=2525,priority=47000,actions=drop
 #+end_example
 
+#+begin_example
+  ovs-ofctl --strict del-flows ovsbr0 in_port=vm38752,tcp_dst=25
+  ovs-ofctl --strict del-flows ovsbr0 in_port=vm38752,tcp_dst=465
+  ovs-ofctl --strict del-flows ovsbr0 in_port=vm38752,tcp_dst=587
+  ovs-ofctl --strict del-flows ovsbr0 in_port=vm38752,tcp_dst=2525
+  ovs-ofctl --strict del-flows ovsbr0 in_port=vm38755,tcp_dst=25
+  ovs-ofctl --strict del-flows ovsbr0 in_port=vm38755,tcp_dst=465
+  ovs-ofctl --strict del-flows ovsbr0 in_port=vm38755,tcp_dst=587
+  ovs-ofctl --strict del-flows ovsbr0 in_port=vm38755,tcp_dst=2525
+#+end_example
+
 #+begin_src sh
   for vm in vm12345 vm67891
   do
