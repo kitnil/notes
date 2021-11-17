@@ -98,6 +98,19 @@ hms-rs0:PRIMARY> show users;
 - change user password
   : db.changeUserPassword("USERNAME", "PASSWORD")
 
+- make a primary be secondary
+
+  #+begin_example
+    hms-rs0:PRIMARY> rs.stepDown(120)
+    2021-11-17T17:03:10.979+0300 E QUERY    [thread1] Error: error doing query: failed: network error while attempting to run command 'replSetStepDown' on host 'hms03-mr.intr:27017'  :
+    DB.prototype.runCommand@src/mongo/shell/db.js:132:1
+    DB.prototype.adminCommand@src/mongo/shell/db.js:149:1
+    rs.stepDown@src/mongo/shell/utils.js:1351:12
+    @(shell):1:1
+    2021-11-17T17:03:10.981+0300 I NETWORK  [thread1] trying reconnect to hms03-mr.intr:27017 (172.16.103.154) failed
+    2021-11-17T17:03:11.038+0300 I NETWORK  [thread1] reconnect hms03-mr.intr:27017 (172.16.103.154) ok
+  #+end_example
+
 - backup and restore
 [[https://github.com/arshadkazmi42/ak-cli#mongo][Mongo]]
 
