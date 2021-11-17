@@ -6499,3 +6499,12 @@ exist in the second table.
 
 - data log
   : /var/lib/mysql/ib_logfile0
+
+* Galera Slaves
+
+#+begin_example
+  STOP ALL SLAVES;
+  SET @@default_master_connection = 'galera1'; SET GLOBAL sql_slave_skip_counter = 1; START SLAVE 'galera1';
+  SET @@default_master_connection = 'galera2'; SET GLOBAL sql_slave_skip_counter = 1; START SLAVE 'galera2';
+  SET @@default_master_connection = 'galera3'; SET GLOBAL sql_slave_skip_counter = 1; START SLAVE 'galera3';
+#+end_example
