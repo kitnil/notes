@@ -232,6 +232,8 @@ Here is my configuration:
                   (keyboard-layout keyboard-layout)))))
     #+end_src
 
+  - [[https://framagit.org/tyreunom/guix-android][Julien Lepiller / guix-android · GitLab]]
+
   - guix shell shebang
     : #!/usr/bin/env -S guix shell --
 
