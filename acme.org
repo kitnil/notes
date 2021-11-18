@@ -1,3 +1,6 @@
+:PROPERTIES:
+:ID:       dc6f4501-5671-4742-be86-7f7c1b51247f
+:END:
 #+begin_src shell
   docker run --entrypoint /bin/sh -it --network=host --name acme neilpang/acme.sh
 #+end_src

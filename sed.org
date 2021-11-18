@@ -1,2 +1,5 @@
+:PROPERTIES:
+:ID:       63c7e8a2-94ce-4a7f-b876-5b39f5ec57f0
+:END:
 - delete comments
 : sed -e '/^[ \t]*#/d'

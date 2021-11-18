@@ -1,2 +1,5 @@
+:PROPERTIES:
+:ID:       e28dac81-a709-4cc1-9e5f-3d9705d54760
+:END:
 cat /tmp/input.json | jq '.mapping.email.properties | keys'
 jq --raw-output '.iso_urls // empty' vars/*.json

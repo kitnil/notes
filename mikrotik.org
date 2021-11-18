@@ -1,3 +1,6 @@
+:PROPERTIES:
+:ID:       bda5ced5-0041-4463-9c8c-393a2019545b
+:END:
 [wigust@MikroTik] /ip firewall filter> add action=drop chain=forward content="Location: http://warning.rt.ru" protocol=tcp src
 -port=80                                                                                                                     
 [wigust@MikroTik] /ip firewall filter> add action=drop chain=forward protocol=tcp src-port=443 tcp-flags=rst packet-size=40 ttl=equal:120

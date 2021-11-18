@@ -1,6 +1,9 @@
+:PROPERTIES:
+:ID:       5dc36734-8b61-45c8-aa50-9cc5a05e605f
+:END:
 #+title: Scheme
 
-Minimalist dialect of the [[file:lisp.org][Lisp]].
+Minimalist dialect of the [[id:0da5d4f2-d463-4079-b764-a77d3e800de7][Lisp]].
 
 - [[https://github.com/google/schism][google/schism: A self-hosting Scheme to WebAssembly compiler]]
 - [[https://github.com/metaphorm/international-scheme][metaphorm/international-scheme: Translating the Scheme programming language to every human language.]]

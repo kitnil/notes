@@ -1,3 +1,6 @@
+:PROPERTIES:
+:ID:       c3b78626-1082-4e23-bcfb-e93d14784349
+:END:
 #+BEGIN_SRC bash
 nmap -sP 192.168.100.1/24
 #+END_SRC

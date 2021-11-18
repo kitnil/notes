@@ -1,2 +1,5 @@
+:PROPERTIES:
+:ID:       17957429-362e-4991-92de-2b5b6062dc76
+:END:
 - alerta query --filter status=ack
 - alerta query --filter service=mysql.quota

@@ -1,3 +1,6 @@
+:PROPERTIES:
+:ID:       58fafa35-7cfa-4a4e-a703-153d03a386c6
+:END:
 To get LAN mode: ipmitool raw 0x30 0x70 0x0c 0.
 To set LAN mode dedicated: ipmitool raw 0x30 0x70 0x0c 1 0.
 To set LAN mode onboard/shared: ipmitool raw 0x30 0x70 0x0c 1 1.

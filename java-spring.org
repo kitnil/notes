@@ -1,3 +1,6 @@
+:PROPERTIES:
+:ID:       9c64447f-9474-4b29-9cc4-7be791261d98
+:END:
 - [[https://github.com/spring-projects-experimental/spring-native?auto_subscribed=false][spring-projects-experimental/spring-native: Spring Native provides beta support for compiling Spring applications to native executables using GraalVM native-image compiler.]]
 
 - oleg@guixsd ~$ curl http://localhost:8981/actuator/; echo

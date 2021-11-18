@@ -1,7 +1,10 @@
+:PROPERTIES:
+:ID:       61c1eb90-d2f0-4ffc-afcd-9ae6015284c6
+:END:
 #+title: Programming
 
 From [[https://docs.google.com/spreadsheets/d/e/2PACX-1vSr58Xg4DVX2WdmAkv3hE2ITJ3fPeNUmRFe0Ekro53U-ACFrhcUkV8PlUm4ddcn53Uh-5UIezZtZZgc/pubhtml][Матрица компетентности программиста (hexlet версия)]].
-* [[file:languages.org][Languages]]
+* [[id:9e8b7575-c30f-40ab-b385-fd552f497ad4][Languages]]
 * Асинхронное программирование
   - Промисы
   - Сопрограммы
@@ -17,8 +20,8 @@ From [[https://docs.google.com/spreadsheets/d/e/2PACX-1vSr58Xg4DVX2WdmAkv3hE2ITJ
   - QueryBuilder
   - Data Mapper
 * Web
-  - [[file:http.org][HTTP]]
-  - [[file:html.org][HTML]]
+  - [[id:8f93f297-e53d-4f15-80f8-47e3213f9ec5][HTTP]]
+  - [[id:bcfe625c-3692-4fa6-9495-0e1cec13869b][HTML]]
   - Микрофреймворки
   - Роутинг
   - Шаблонизация
@@ -30,15 +33,15 @@ From [[https://docs.google.com/spreadsheets/d/e/2PACX-1vSr58Xg4DVX2WdmAkv3hE2ITJ
     - Event loop
   - Cgi
   - Fastcgi
-* Эксплуатация/[[file:deploy.org][Деплой]]
+* Эксплуатация/[[id:fbe9d2d4-6cf7-46b3-a5f3-5913dcc046f2][Деплой]]
   - Автоматизация
-    - [[file:ansible.org][Ansible]]
+    - [[id:bad92cfe-f645-4e04-8c87-434b8f7581be][Ansible]]
   - Миграции
   - Мониторинг
   - Vagrant
   - Неизменяемая инфраструктура
   - Контейнерная виртуализация
-    - [[file:docker.org][Docker]]
+    - [[id:3059c391-8471-4f6d-ac2c-c4838d2e9d84][Docker]]
   - https://12factor.net/
 * Структуры данных/типы
   - Массивы
@@ -99,7 +102,7 @@ From [[https://docs.google.com/spreadsheets/d/e/2PACX-1vSr58Xg4DVX2WdmAkv3hE2ITJ
   - HTTP
   - TCP/IP общие принципы работы
   - UDP	Модель OCI
-* [[file:unix.org][UNIX]]
+* [[id:3f027dd6-89a5-44c3-bfb8-9d421d4b7e4e][UNIX]]
 * Качество
   - Юнит тесты
   - Автоматизированное тестирования
@@ -108,9 +111,9 @@ From [[https://docs.google.com/spreadsheets/d/e/2PACX-1vSr58Xg4DVX2WdmAkv3hE2ITJ
   - Непрерывная доставка
 * Организация работы
   - Система контроля версий
-    - [[file:git.org][Git]]
+    - [[id:f6070005-df9c-4f22-9df4-d5730ecb5dd4][Git]]
   - Автоматизированная настройка рабочего окружения
-* [[file:math.org][Математика]]
+* [[id:ecedc1be-e7e1-4827-a162-09d4e9adb6bf][Математика]]
   - Теория множеств
   - Булева алгебра
   - Комбинаторика
@@ -119,7 +122,7 @@ From [[https://docs.google.com/spreadsheets/d/e/2PACX-1vSr58Xg4DVX2WdmAkv3hE2ITJ
   - Статистика
   - Теория категорий
 * Базы данных
-  - [[file:sql.org][ANSI SQL]]
+  - [[id:f6476502-fc22-43c1-9cd8-95d0fa1d75b5][ANSI SQL]]
   - Индексы
   - Транзакционность (ACID)
   - MVCC

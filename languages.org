@@ -1,23 +1,26 @@
+:PROPERTIES:
+:ID:       9e8b7575-c30f-40ab-b385-fd552f497ad4
+:END:
 #+title: Languages
 
-- [[file:bash.org][Bash]]
-- [[file:c.org][C]]
-- [[file:cpp.org][C++]]
-- [[file:erlang.org][Erlang]]
-- [[file:groovy.org][Groovy]]
-- [[file:haskell.org][Haskell]]
-- [[file:java.org][Java]]
-- [[file:javascript.org][JavaScript]]
-- [[file:kotlin.org][Kotlin]]
-- [[file:lambda.org][Lambda]]
-- [[file:lisp.org][Lisp]]
-  - [[file:clojure.org][Clojure]]
-  - [[file:racket.org][Racket]]
-- [[file:perl.org][Perl]]
-- [[file:php.org][PHP]]
-- [[file:prolog.org][Prolog]]
-- [[file:python.org][Python]]
-- [[file:ruby.org][Ruby]]
+- [[id:8e21fad4-421b-4632-8eab-4127513f1560][Bash]]
+- [[id:290f656a-28f7-483e-9a4c-d47b5d19682e][C]]
+- [[id:de57e9fc-a045-41a7-9af1-90b7b0d55377][C++]]
+- [[id:b0e58ae5-d533-447b-9114-d8ffe0cc7845][Erlang]]
+- [[id:1b16c60b-824b-46d2-a15e-a6942a61b1f2][Groovy]]
+- [[id:9fcb7af5-0620-4558-b4f8-c7d9d469da5a][Haskell]]
+- [[id:dfd6af21-1df2-4813-a70f-56e65f4a3939][Java]]
+- [[id:af5ca705-2878-4749-9fcc-866dc68b9796][JavaScript]]
+- [[id:e75a84ff-289e-4ba7-8eb6-f3496d9b0e12][Kotlin]]
+- [[id:633452ef-2f7c-456d-ab96-c4ee156c5f88][Lambda]]
+- [[id:0da5d4f2-d463-4079-b764-a77d3e800de7][Lisp]]
+  - [[id:8b2c8617-a75b-456d-8fd8-3e5534a6c3d1][Clojure]]
+  - [[id:558b3fa5-235c-4b53-98f3-3359fbc30d78][Racket]]
+- [[id:e5325503-a17e-47ea-9536-116bf237d387][Perl]]
+- [[id:ada31b57-7637-413a-afce-4da687df7c8d][PHP]]
+- [[id:e1848f5d-637b-4d28-b574-e65e2bb6b1bb][Prolog]]
+- [[id:4a6c1e3e-833d-451c-9fb3-4ec06a8dd548][Python]]
+- [[id:f3b12381-7e62-4efe-b4cd-2a3a8a6989bb][Ruby]]
 
 Languages with simple syntax concepts which used in all language,
 unlike Python's list comprehensions:

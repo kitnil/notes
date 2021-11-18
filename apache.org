@@ -1,3 +1,6 @@
+:PROPERTIES:
+:ID:       805ec12c-afe4-4538-bda6-aa74118fe7dc
+:END:
 #+title: Apache
 
 - cat /home/u12345/logs/www.example.com | awk '{ print $NF, $6, $7, $9, $12, $4 }' | sort -n | tail -n 25

@@ -1,3 +1,6 @@
+:PROPERTIES:
+:ID:       af34fb7d-d93b-41e2-a5b6-766b63be5191
+:END:
 #+title: Linux
 
 - blktrace
@@ -67,11 +70,11 @@
 
 * Distributions
 - [[https://distr1.org/][distri: a Linux distribution to research fast package management]]
-- [[file:archlinux.org][Arch Linux]]
-- [[file:debian.org][Debian]]
-- [[file:guix.org][Guix]]
-- [[file:nix.org][Nix]]
-- [[file:ubuntu.org][Ubuntu]]
+- [[id:fe0f9df6-5ce3-4fb4-9b55-04ca64b32d73][Arch Linux]]
+- [[id:3a808743-6e55-4eb4-b5b8-7b090abd28be][Debian]]
+- [[id:1a04d6b5-4a18-4e60-8dce-283389185347][Guix]]
+- [[id:2dc46956-0cc8-46e7-a31f-4f4d9730807c][Nix]]
+- [[id:08018469-85bc-4b19-9271-2eee5d814b7a][Ubuntu]]
 - [[https://vyos.io/][VyOS – Open source router and firewall platform]]
 
 * Tools

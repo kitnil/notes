@@ -1,3 +1,6 @@
+:PROPERTIES:
+:ID:       7efcacd6-0c85-4d81-bf81-aa770bd19470
+:END:
 #+begin_src jsonnet
   local objectValues (object) =
     std.map(function(field) object[field]

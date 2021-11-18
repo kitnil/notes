@@ -1,4 +1,7 @@
 * Cheat sheet
+:PROPERTIES:
+:ID:       0fcab097-bb41-4bc0-aec0-b417f8af06a0
+:END:
 
 - strace -c -e stat guix --version
 

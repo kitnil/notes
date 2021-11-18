@@ -1,4 +1,7 @@
 * partitioning
+:PROPERTIES:
+:ID:       bc10c8fc-b75e-4621-b04f-2e30f5b21394
+:END:
 #+BEGIN_EXAMPLE
   └─sda3_crypt                  254:0    0 111.1G  0 crypt 
     ├─magnolia--vg-var-real     254:1    0   2.8G  0 lvm   

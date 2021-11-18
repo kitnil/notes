@@ -1,1 +1,4 @@
+:PROPERTIES:
+:ID:       4833cbb6-6816-4a34-a9ed-eebc922a12cd
+:END:
 guile -c '(display (+ 8940 4790 9200 7450 3400)) (newline)'

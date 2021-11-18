@@ -1,3 +1,6 @@
+:PROPERTIES:
+:ID:       3f027dd6-89a5-44c3-bfb8-9d421d4b7e4e
+:END:
 #+title: UNIX
 
 * Владение командной строкой (bash)
@@ -7,21 +10,21 @@
 *** free
 *** df
 *** du
-** Понимание системы прав в [[file:linux.org][Linux]]
+** Понимание системы прав в [[id:af34fb7d-d93b-41e2-a5b6-766b63be5191][Linux]]
 ** Просмотр логов
 *** syslog
 ** Перенаправления и потоки
 ** Переменны окружения
 ** Системы инициализации
-*** [[file:systemd.org][Systemd]]
-** [[file:ssh.org][SSH]]
+*** [[id:5f97ab36-6f72-47ef-b0cd-3fc6cf39d827][Systemd]]
+** [[id:9a390b16-0450-45e6-93ce-649f85c89639][SSH]]
 ** Генерация и использование ключей
 ** mount
 *** fstab
-** [[file:networking.org][Сетевые интерфейсы]]
+** [[id:4a6e6370-49af-4b37-8b2b-083183cb1b9d][Сетевые интерфейсы]]
 
 * Misc
 
 - [[https://github.com/dspinellis/unix-history-repo][dspinellis/unix-history-repo: Continuous Unix commit history from 1970 until today]]
 
-* [[file:xorg.org][Desktop]]
+* [[id:ff5d8c8c-708b-4a86-b0e1-1d3cbbe27b9b][Desktop]]

@@ -1,2 +1,5 @@
+:PROPERTIES:
+:ID:       9bd9dd4b-0d7b-45b0-b9e3-5a9d54f8417e
+:END:
 - snapshot
   : lvcreate --size 4G --snapshot --name magnolia--vg-root-01 /dev/mapper/magnolia--vg-root

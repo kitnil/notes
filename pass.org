@@ -1,3 +1,6 @@
+:PROPERTIES:
+:ID:       90a29225-411f-4a1d-ab9b-6762376de88f
+:END:
 - for dir in $(find $PWD/.password-store -type d -name '*.intr' -o -name '*majordomo*' -type d); do find $dir -type f -name '*.gpg' -a -not -name '*pyhalov*'; done
 - Надо переходить на https://github.com/gopasspw/gopass :b
 - https://github.com/ddevault/pass-rotate

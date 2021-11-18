@@ -1,3 +1,6 @@
+:PROPERTIES:
+:ID:       0da5d4f2-d463-4079-b764-a77d3e800de7
+:END:
 #+title: Lisp
 
 * Awesome
@@ -36,7 +39,7 @@
 
 ** Implementations
 - [[https://github.com/adam-mcdaniel/wisp][adam-mcdaniel/wisp: A light lisp written in C++]]
-- [[file:python.org][LISP implementation in Python]]
+- [[id:4a6c1e3e-833d-451c-9fb3-4ec06a8dd548][LISP implementation in Python]]
 - [[https://github.com/orion-lang/orion][orion-lang/orion: Orion is a high level, purely functional programming language with a LISP based syntax.]]
 - [[https://github.com/rd--/hsc3-lisp][rd--/hsc3-lisp: Haskell SuperCollider Lisp]]
 - [[https://github.com/OpenProgger/LISP][OpenProgger/LISP: Minimal LISP Compiler for x86_64]]

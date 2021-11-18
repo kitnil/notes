@@ -1,3 +1,6 @@
+:PROPERTIES:
+:ID:       523e038c-1830-48ee-99f5-853df4a55fec
+:END:
 https://lists.gnupg.org/pipermail/gnupg-users/2017-January/057400.html
 
 gpg --output secret-subkeys --export-secret-subkeys SUBKEYID!

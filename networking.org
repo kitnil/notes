@@ -1,3 +1,6 @@
+:PROPERTIES:
+:ID:       4a6e6370-49af-4b37-8b2b-083183cb1b9d
+:END:
 #+title: Networking
 
 - [[https://access.ripe.net/?originalUrl=https%3A%2F%2Fmy.ripe.net%2F%23%2Fcontacts][RIPE NCC Access — RIPE Network Coordination Centre]]
@@ -193,17 +196,17 @@ net.bridge.bridge-nf-call-iptables = 0
 ** WEB interface
 - [[https://github.com/phpipam/phpipam][phpipam/phpipam: phpipam development repository]]
 
-* [[file:bgp.org][BGP]]
+* [[id:63242a98-634c-4236-999c-5b26d588b4d9][BGP]]
 ** AS
  - [[https://github.com/stevenpack/asroute][stevenpack/asroute: Interpret traceroute output to show names of ASN traversed]]
 
-* [[file:http.org][HTTP]]
+* [[id:8f93f297-e53d-4f15-80f8-47e3213f9ec5][HTTP]]
 
-* [[file:rsync.org][rsync]]
+* [[id:ed7ba502-c59a-4ab0-aada-6a0f342f20cd][rsync]]
 
-* [[file:smtp.org][SMTP]]
+* [[id:d5c0438f-65e6-4989-8a60-48e927f4a4d3][SMTP]]
 
-* [[file:proxy.org][Proxy]]
+* [[id:0b6880f3-90c4-4052-b176-f59fd7219230][Proxy]]
 
 * Ping
 

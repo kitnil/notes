@@ -1,3 +1,6 @@
+:PROPERTIES:
+:ID:       f6476502-fc22-43c1-9cd8-95d0fa1d75b5
+:END:
 #+title: SQL
 
 [[https://shurshun.ru/zabbix-optimizatsiya-i-chistka-bazyi-dannyih/][sql tables size]]
@@ -52,6 +55,6 @@
 - [[https://www.beekeeperstudio.io/][Open Source SQL Editor and Database Manager | Beekeeper Studio]]
 - [[https://github.com/mathaou/termdbms][mathaou/termdbms: A TUI for viewing and (eventually) editing database files. Only support for SQLite currently. MySQL support will be added soon.]]
 
-* [[file:sqlite.org][Sqlite]]
-* [[file:postgres.org][PostgreSQL]]
-* [[file:mysql.org][MySQL]]
+* [[id:b5825fa8-d31f-44e2-a288-13b22fc437a4][Sqlite]]
+* [[id:d5f3cdb2-b4c2-46fa-9763-50d0783d2013][PostgreSQL]]
+* [[id:06dc3644-a1cb-4a01-a093-62487d64dc59][MySQL]]

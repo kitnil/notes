@@ -1,4 +1,7 @@
 * Shebang
+:PROPERTIES:
+:ID:       bb1a4c68-3ebe-43fd-a113-a1d871e8f6e5
+:END:
 
 #+BEGIN_SRC go
   //bin/sh -c true && exec go run "$0" "$@"

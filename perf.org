@@ -1,3 +1,6 @@
+:PROPERTIES:
+:ID:       ddc45965-9418-4e31-9d08-ba7433d33d62
+:END:
 : perf record -a --call-graph dwarf,65528 -F 99  $(pgrep -fa apache | awk '{ print $1 }' | sed 's/^/-p /g') -- sleep 20
 : perf report -g fractal
 : perf record -a --call-graph dwarf $(pgrep -fa php | awk '{ print $1 }' | sed 's/^/-p /g') -- sleep 20

@@ -1,3 +1,6 @@
+:PROPERTIES:
+:ID:       cb5914c9-7b2b-4b93-a5ee-08a7491fc0df
+:END:
 #+BEGIN_SRC lisp
   (if (screen-width (current-screen))
       (progn (run-shell-command gnus))

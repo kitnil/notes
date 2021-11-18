@@ -1,3 +1,6 @@
+:PROPERTIES:
+:ID:       7c27a10a-6100-467f-9ae6-c58a59ca9dc3
+:END:
 https://askubuntu.com/questions/103369/ubuntu-how-to-mount-zfs-snapshot
 : mount -t zfs tank/www@zfs-auto-snap_hourly-2012-02-11-1917 /mnt/snapshot/tank/www
 
