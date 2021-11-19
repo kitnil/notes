@@ -175,3 +175,11 @@ curl -H 'Content-Type: application/json' -d '{"query": {"bool": {"must": {"term"
 
 * Kibana
 - [[https://habr.com/ru/company/citymobil/blog/521802/][Создание Dashboard в Kibana для мониторинга логов / Блог компании Ситимобил / Хабр]]
+
+* Misc
+- [[https://www.google.com/search?q=elastic+list+replicate+specific+shards&hl=en][elastic list replicate specific shards - Google Search]]
+- [[https://logz.io/blog/elasticsearch-cheat-sheet/][A Useful Elasticsearch Cheat Sheet in Times of Trouble | Logz.io]]
+- [[https://stackoverflow.com/questions/15694724/shards-and-replicas-in-elasticsearch][full text search - Shards and replicas in Elasticsearch - Stack Overflow]]
+- [[https://opster.com/blogs/elasticsearch-shards-and-replicas-getting-started-guide/][Elasticsearch Shards and Replicas getting started guide - Opster]]
+- [[https://linuxhint.com/elasticsearch-shard-list/][Elasticsearch Shard List]]
+- [[https://www.elastic.co/guide/en/elasticsearch/reference/6.6/cat-shards.html][cat shards | Elasticsearch Guide [6.6] | Elastic]]
