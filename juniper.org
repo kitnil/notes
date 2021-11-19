@@ -35,6 +35,10 @@
   : show system rollback 1 compare 0
   : show system rollback 2 compare 1
 
+- [[https://www.juniper.net/documentation/us/en/software/junos/routing-policy/topics/ref/statement/apply-path-edit-policy-options.html][apply-path | Juniper Networks]]
+  - [[https://kb.juniper.net/InfoCenter/index?page=content&id=KB29448][[M/MX/T/TX] Example - How to confirm apply-path is working - Juniper Networks]]
+     : policy-options prefix-list test | display inheritance
+
 - automate history
   : sh -c 'f() { echo cli "show system rollback $1 compare $(($1 - 1))"; }; f 3'
 
