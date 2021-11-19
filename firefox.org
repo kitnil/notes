@@ -188,6 +188,10 @@ browser.xul.error_pages.expert_bad_cert
 
 security.mixed_content.block_active_content
 
+* Configuration
+** locale
+Use your operating system settings for “English (United Kingdom)” to format dates, times, numbers, and measurements.
+
 * Proxy
 
 #+BEGIN_EXAMPLE
