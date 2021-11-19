@@ -160,6 +160,14 @@ nat.inet.0: 7 destinations, 9 routes (7 active, 0 holddown, 0 hidden)
 {master:0}
 #+end_example
 
+* Monitoring
+
+
+
+#+begin_example
+  awk '/Out/ && /IP/ && !/missing/ { print $4, $6 }' | sort | uniq -c | sort -n
+#+end_example
+
 * DHCP
 
 Попробовал обновить адрес на другом IPMI - он тоже пропал.  Повис DHCP.
