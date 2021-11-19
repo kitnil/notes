@@ -160,6 +160,16 @@ nat.inet.0: 7 destinations, 9 routes (7 active, 0 holddown, 0 hidden)
 {master:0}
 #+end_example
 
+* DHCP
+
+Попробовал обновить адрес на другом IPMI - он тоже пропал.  Повис DHCP.
+
+#+begin_example
+  error: the dhcp subsystem is not responding to management requests
+  root@sr1-mr13-14> restart dhcp gracefully 
+  Dynamic Host Configuration Protocol process started, pid 13558
+#+end_example
+
 * Misc
 
   list logs
