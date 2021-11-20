@@ -3225,3 +3225,55 @@ mkfs.vfat -F32 /dev/sdXY
 - [[https://ci.guix.gnu.org/eval/19534/dashboard][master dashboard]]
 - [[https://ci.guix.gnu.org/eval/19488/dashboard][staging dashboard]]
 - [[https://ci.guix.gnu.org/eval/19464/dashboard][test dashboard]]
+
+* Jami
+
+Message-ID: <87ee7be7ty.fsf@gmail.com>
+
+Hello Guix,
+
+Disclaimer: my employer is Savoir-faire Linux, which oversees the
+development of Jami.
+
+For a while, I've toyed with the idea that we could leverage Jami for
+our video-conference needs, and contributed a jami-service-type a few
+months ago to ease doing so [0].
+
+A service is not strictly needed to setup a video-conferencing server
+(later referred as a "rendezvous point") with Jami [1], it increases
+availability and can be used without a normal user session.  It also
+provides some isolation from the main system since it runs in a separate
+namespace (container), at least on Guix System.
+
+The main challenges for a decent experience with the Jami rendezvous
+point feature is its resource requirements; as the number of
+participants grow, so does the required amount of network bandwidth and
+CPU power.
+
+As some kind of technology preview, I'd like to offer a freely available
+Jami rendezvous point.  Using either the jami-gnome or jami-qt client
+available in Guix, you can connect to it by searching for the
+'rdv-jami-guix' contact and initiating a call.  Participants' audio and
+video streams will automatically be mixed and streamed by the server.
+
+On a Guix System, installing it to your user profile should suffice.  On
+a foreign distribution, you'll have to resort to a more complicated
+launch procedure, thanks to D-Bus configuration [2].  Something like this
+should work:
+
+$ guix shell jami-gnome dbus glib gtk+ openssl nss-certs \
+    -- dbus-run-session jami-gnome
+
+I hope it proves useful in fostering more live collaboration in the
+community!  Extra rendezvous points could also be deployed if needed.
+If the experience is successful we could seek a better place to host
+such service for the community (where it could be managed by the
+collective of Guix sysadmins rather than myself for example).
+
+Happy hacking,
+
+Maxim
+
+[0]  https://git.savannah.gnu.org/cgit/guix.git/commit/?id=69dcc24c9f0cdfea674eb690e7755d26a25ced2b
+[1]  https://jami.net/help/#answer14
+[2]  https://issues.guix.gnu.org/48538
