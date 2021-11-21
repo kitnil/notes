@@ -6,6 +6,24 @@
 - https://habr.com/en/post/214187/
 - [[https://www.kernel.org/doc/html/latest/scsi/aacraid.html][AACRAID Driver for Linux (take two) — The Linux Kernel documentation]]
 
+* identify
+
+To identify a disk which you need to replace you need to get a channel number
+and a device number:
+: arcconf GETCONFIG 1
+#+begin_example
+...
+Reported Channel,Device(T:L)       : 0,1(1:0)
+Reported Location                  : Connector 0, Device 1
+...
+#+end_example
+
+Next you need to identify it with a command:
+: arcconf IDENTIFY 1 DEVICE 0 1
+
+because of
+: arcconf IDENTIFY 1 DEVICE <channel> <device>
+
 * gdb
 
 #+begin_example
