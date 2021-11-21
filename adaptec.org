@@ -24,6 +24,14 @@ Next you need to identify it with a command:
 because of
 : arcconf IDENTIFY 1 DEVICE <channel> <device>
 
+* 5ee
+
+Как только контроллер увидит hotspare диск, он тут же начнет "разворачивать"
+на него 5EE-массив.
+
+: arcconf setstate 1 device 0 1 hsp logicaldrive 0
+: arcconf RESCAN 1
+
 * gdb
 
 #+begin_example
