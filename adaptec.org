@@ -52,6 +52,24 @@ because of
 : arcconf setstate 1 device 0 1 hsp logicaldrive 0
 : arcconf RESCAN 1
 
+*** После замены
+
+#+begin_example
+  root@kvm12:~# arcconf getstatus 1
+  Controllers Found: 1
+  Logical Device Task:
+     Logical Device                 : 0
+     Task ID                        : 102
+     Current operation              : Expanding
+     Status                         : In Progress
+     Priority                       : High
+     Percentage complete            : 26
+#+end_example
+
+После окончания =expanding=:
+   : Status of Logical Device                 : Optimal
+   : Status of RAID 5EE                       : Expanded
+
 * gdb
 
 #+begin_example
