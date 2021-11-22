@@ -1,2 +1,2 @@
-- po4a-updatepo -M UTF-8 --wrap-po no --porefs full nowrap --format texinfo --master eng-cookbook.texi --po po/eng-cookbook.ru.po
-- po4a-translate -k 0 --format texinfo --master eng-cookbook.texi --po po/eng-cookbook.ru.po --localized eng-cookbook.ru.texi
+  - po4a-updatepo -M UTF-8 --wrap-po no --format texinfo --master eng-cookbook.texi --po po/eng-cookbook.ru.po
+  - po4a-translate -k 0 --format texinfo --master eng-cookbook.texi --po po/eng-cookbook.ru.po --localized eng-cookbook.ru.texi
