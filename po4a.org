@@ -1,0 +1,1 @@
+- po4a-updatepo -M UTF-8 --wrap-po no --porefs full nowrap --format texinfo --master eng-cookbook.texi --po po/eng-cookbook.ru.po
