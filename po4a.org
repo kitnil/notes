@@ -3,3 +3,6 @@
 
 - translate
   : po4a-translate -k 0 --format texinfo --master eng-cookbook.texi --po po/eng-cookbook.ru.po --localized eng-cookbook.ru.texi
+
+- generate documentation
+  : makeinfo --css-ref=https://www.gnu.org/software/gnulib/manual.css --output=public/ru/index.html --html --no-split --no-headers --no-number-sections eng-cookbook.ru.texi
