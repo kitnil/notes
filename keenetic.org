@@ -1,0 +1,10 @@
+(config)> ip dhcp pool _WEBADMIN option 66 ascii "192.168.1.21"
+Dhcp::Pool: "_WEBADMIN": set option 66.
+(config)> ip dhcp pool _WEBADMIN option 66 
+Command::Base error[7405602]: type: argument parse error.
+(config)> ip dhcp pool _WEBADMIN option
+Command::Base error[7405602]: argument parse error.
+(config)> ip dhcp pool _WEBADMIN option 67 netboot.xyz.kpxe
+Command::Base error[7405602]: type: argument parse error.
+(config)> ip dhcp pool _WEBADMIN option 67 ascii "netboot.xyz.kpxe"
+Dhcp::Pool: "_WEBADMIN": set option 67.
