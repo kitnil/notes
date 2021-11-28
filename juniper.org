@@ -132,6 +132,41 @@ root@br1-mr14.intr> show system rollback 25 compare 28
 +    export [ then-reject announce-vlan109 ];
 #+END_EXAMPLE
 
+
+** virtual chassis
+#+begin_example
+  root@sr1-mr13-14> show virtual-chassis 
+
+  Virtual Chassis ID: c54e.bbd5.6084
+  Virtual Chassis Mode: Enabled
+                                                  Mstr           Mixed Route Neighbor List
+  Member ID  Status   Serial No    Model          prio  Role      Mode  Mode ID  Interface
+  0 (FPC 0)  Prsnt    LX0216350058 ex4550-32f     129   Master*      N  VC   1  vcp-255/1/6
+                                                                             1  vcp-255/1/7
+  1 (FPC 1)  Prsnt    LX0216330173 ex4550-32f     128   Backup       N  VC   0  vcp-255/1/6
+                                                                             0  vcp-255/1/7
+
+  Member ID for next new member: 2 (FPC 2)
+
+  {master:0}
+  root@sr1-mr13-14> request session member 0 
+  Password:
+
+
+  --- JUNOS 15.1R5.5 built 2016-11-25 16:39:56 UTC
+  root@sr1-mr13-14:RE:0% 
+  root@sr1-mr13-14:RE:0% 
+  root@sr1-mr13-14:RE:0% exit
+  logout
+  rlogin: connection closed
+
+  {master:0}
+  root@sr1-mr13-14> request session member 1    
+
+  --- JUNOS 15.1R5.5 built 2016-11-25 16:39:56 UTC
+  root@sr1-mr13-14:BK:1% 
+#+end_example
+
 * Learning
 ** [[https://cmdref.net/hardware/junos/traffice-monitor][How to monitor traffic on Junos SRX (like tcpdump on Linux) [cmdref.net - Cheat Sheet and Example]]]
 ** [[https://disnetern.ru/config-bgp-juniper-as/][configure bgp on juniper junos | IT Knowledge Base]]
