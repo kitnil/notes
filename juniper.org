@@ -41,6 +41,9 @@
 - config path
   : /config/juniper.conf.gz
 
+- Показывает CPU, Mem and Temperature
+  : show chassis routing-engine
+
 - Удаляет не примененные команды
   : clear system commit
 
