@@ -133,7 +133,7 @@ root@br1-mr14.intr> show system rollback 25 compare 28
 #+END_EXAMPLE
 
 
-** virtual chassis
+** [[https://habr.com/ru/post/320310/][Обновление JunOS на коммутаторах EX4500 в VirtualChassis — что может пойти не так? Часть 2 / Хабр]]
 #+begin_example
   root@sr1-mr13-14> show virtual-chassis 
 
