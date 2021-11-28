@@ -165,6 +165,14 @@ root@br1-mr14.intr> show system rollback 25 compare 28
 
   --- JUNOS 15.1R5.5 built 2016-11-25 16:39:56 UTC
   root@sr1-mr13-14:BK:1% 
+
+  root@sr1-mr13-14:BK:1% cli
+  warning: This chassis is operating in a non-master role as part of a virtual-chassis (VC) system.
+  warning: Use of interactive commands should be limited to debugging and VC Port operations.
+  warning: Full CLI access is provided by the Virtual Chassis Master (VC-M) chassis.
+  warning: The VC-M can be identified through the show virtual-chassis status command executed at this console.
+  warning: Please logout and log into the VC-M to use CLI.
+  {backup:1}
 #+end_example
 
 * Learning
