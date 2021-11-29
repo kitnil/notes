@@ -178,6 +178,21 @@ root@br1-mr14.intr> show system rollback 25 compare 28
 * Learning
 - [[https://www.juniper.net/documentation/us/en/software/junos/virtual-chassis-ex-8200/topics/concept/virtual-chassis-ex8200-network-port-interface-numbering.html][Network Port Interface Names on an EX8200 Virtual Chassis | Virtual Chassis User Guide for EX8200 Switches | Juniper Networks TechLibrary]]
   : type-fpc / pic / port
+
+- fpc — Flexible PIC Concentrator. In an EX8200 Virtual Chassis, the FPC
+  number indicates the slot number of the line card within the Virtual
+  Chassis. The FPC number on member 0 is always 0 through 15. The FPC number
+  on member 1 is always 16 through 31.
+
+- pic — PIC (Physical Interface Card) number in interface names. On EX8200
+  member switches in an EX8200 Virtual Chassis, the PIC number is always 0.
+
+- port — Port number. On EX8200 switches, the network ports are numbered from
+  left to right on each line card. On line cards that have two rows of ports,
+  the ports on the top row start with 0 followed by the remaining
+  even-numbered ports, and the ports on the bottom row start with 1 followed
+  by the remaining odd-numbered ports.
+
 - [[https://www.oreilly.com/library/view/junos-enterprise-switching/9780596804244/ch04.html][4. EX Virtual Chassis - JUNOS Enterprise Switching Book]]
 - [[https://isp-tech.ru/tag/juniper/][Архивы Juniper - isp-tech.ru]]
 ** virtual-chassis
