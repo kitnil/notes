@@ -176,6 +176,7 @@ root@br1-mr14.intr> show system rollback 25 compare 28
 #+end_example
 
 * Learning
+- [[https://www.juniper.net/documentation/us/en/software/junos/virtual-chassis-ex-8200/topics/concept/virtual-chassis-ex8200-network-port-interface-numbering.html][Network Port Interface Names on an EX8200 Virtual Chassis | Virtual Chassis User Guide for EX8200 Switches | Juniper Networks TechLibrary]]
 - [[https://www.oreilly.com/library/view/junos-enterprise-switching/9780596804244/ch04.html][4. EX Virtual Chassis - JUNOS Enterprise Switching Book]]
 - [[https://isp-tech.ru/tag/juniper/][Архивы Juniper - isp-tech.ru]]
 ** virtual-chassis
