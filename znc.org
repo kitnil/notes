@@ -52,7 +52,7 @@
                   FloodRate = 1.00
                   IRCConnectEnabled = true
                   JoinDelay = 0
-                  Server = irc.chat.twitch.tv +6697 oauth:***REMOVED***
+                  Server = irc.chat.twitch.tv +6697 oauth:PASSWORD
                   TrustAllCerts = false
                   TrustPKI = true
 
