@@ -3,3 +3,4 @@
 :END:
 - delete comments
 : sed -e '/^[ \t]*#/d'
+* [[https://github.com/adrianscheff/useful-sed][adrianscheff/useful-sed: Useful sed scripts & patterns.]]
