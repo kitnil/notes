@@ -30,6 +30,7 @@
 - [[https://promcat.io/][PromCat.io - A resource catalog for enterprise-class Prometheus monitoring]]
 - [[https://github.com/messagebird/sachet][messagebird/sachet: SMS alerts for Prometheus' Alertmanager]]
 - [[https://github.com/kbknapp/wireguard_exporter][kbknapp/wireguard_exporter: A Prometheus exporter for WireGuard]]
+- [[https://github.com/kbknapp/iptables_exporter][kbknapp/iptables_exporter: A Prometheus exporter for iptables in Rust]]
 - [[https://github.com/caarlos0/domain_exporter][caarlos0/domain_exporter: Exports the expiration time of your domains as prometheus metrics.]]
 - [[https://github.com/caarlos0/speedtest-exporter][caarlos0/speedtest-exporter: Exports speedtest-cli metrics in the prometheus format]]
 - [[https://github.com/caarlos0/fastcom-exporter][caarlos0/fastcom-exporter: Prometheus Fast.com exporter]]
