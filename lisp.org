@@ -121,6 +121,7 @@ In Common Lisp, use =every= (that's the equivalent of =all=) and =some=
 ** Implementations
 - [[https://github.com/dnmfarrell/Lepr][dnmfarrell/Lepr: A tiny Lisp like written in Perl]]
 - [[https://github.com/fragglet/yoctolisp][fragglet/yoctolisp: Tiny Scheme-like Lisp interpreter written in a weekend]]
+- [[https://github.com/axolotl-lang/axolotl][axolotl-lang/axolotl: 🌊 a statically typed lisp-like (currently) programming language. Test builds from the CI will be up at https://files.uditkaro.de/axolotl]]
 
 * Cheatsheet
 
