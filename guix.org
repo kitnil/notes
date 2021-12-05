@@ -263,6 +263,8 @@ Here is my configuration:
     fi
   #+end_src
 
+  - guix graph -M2 -t reverse-package eigen | xdot -f fdp -
+
   - guix graph path
     #+begin_src bash
       $ guix graph --path guile-gnunet -e '(@@ (gnu packages tls) openssl-1.0)' -t bag-emerged
