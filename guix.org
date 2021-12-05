@@ -263,6 +263,8 @@ Here is my configuration:
     fi
   #+end_src
 
+  - COLUMNS=999 guix build -f ./40272.scm
+
   - guix graph -M2 -t reverse-package eigen | xdot -f fdp -
 
   - guix graph path
