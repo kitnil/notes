@@ -22,6 +22,7 @@
 - [[https://github.com/whs/docker-wait-for-it][whs/docker-wait-for-it: wait-for-it.sh in Docker]]
 - [[https://github.com/kool-dev/kool][kool-dev/kool: From local development to the cloud: development workflow made easy.]]
 - [[https://hpc.guix.info/blog/2021/10/when-docker-images-become-fixed-point/][Guix-HPC — When Docker images become fixed-point]]
+- [[https://github.com/AkihiroSuda/buildkit-nix][AkihiroSuda/buildkit-nix: Nix derivations as Dockerfiles (`docker build -f default.nix .`)]]
 - [[https://habr.com/ru/post/578854/][DAM. Как работать с docker на суше, а не в облаке / Хабр]]
   - [[https://github.com/dam-utils/dam][dam-utils/dam]]
 
