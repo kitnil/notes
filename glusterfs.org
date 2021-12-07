@@ -2,6 +2,7 @@
 :ID:       ae1ed9b7-a6a9-4db7-9a31-747d11820ef2
 :END:
 - [[https://habr.com/ru/company/southbridge/blog/321062/][Использование GlusterFS с кластером Docker swarm / Блог компании Southbridge / Хабр]]
+- [[https://github.com/heketi/heketi][heketi/heketi: RESTful based volume management framework for GlusterFS]]
 - show split-brain
 #+begin_src bash
   gluster volume heal gfs_storage_volume info | tee /tmp/out.txt
