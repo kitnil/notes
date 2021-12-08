@@ -1,1 +1,3 @@
 sudo nmap --script broadcast-dhcp-discover -e enp3s0
+
+Про VDS не совсем правда. Из VDS у нас есть один сервер, работающий на ней.
