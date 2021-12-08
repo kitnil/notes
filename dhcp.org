@@ -1,0 +1,1 @@
+sudo nmap --script broadcast-dhcp-discover -e enp3s0
