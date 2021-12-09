@@ -244,6 +244,25 @@ Here is my configuration:
   - reconfigure or reboot (press Ctrl+C if reconfigure succeeded and machines is available via SSH)
     : sh -c '/var/guix/profiles/per-user/root/current-guix-9-link/bin/guix system reconfigure --load-path=/home/oleg/dotfiles/fiore/modules /home/oleg/dotfiles/spb.scm; echo DONE; sleep $((60 * 10)); echo b > /proc/sysrq-trigger'
 
+  - debian chroot
+
+#+begin_example
+  There's a debootstrap package which allows you
+  to create a chroot environment.
+
+  Something like:
+
+    guix shell debootstrap -- debootstrap --arch=amd64 bullseye my-bullseye-install
+
+  and then:
+
+    mount -t proc proc my-bullseye-install/proc
+    mount -t devpts devpts my-bullseye-install/dev/pts
+    chroot my-bullseye-install /bin/bash --login
+
+  You'll probably need to run all these as root.
+#+end_example
+
   - gexp
   #+begin_src bash
     #!/usr/bin/env bash
