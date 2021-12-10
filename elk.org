@@ -147,6 +147,22 @@ curl -H 'Content-Type: application/json' -d '{"query": {"bool": {"must": {"term"
   : curl -XPUT localhost:9200/_cluster/settings -H 'Content-Type: application/json' -d '{"transient" :{"cluster.routing.allocation.exclude._ip" : "10.0.0.1"}}'
   : {"acknowledged":true,"persistent":{},"transient":{"cluster":{"routing":{"allocation":{"exclude":{"_ip":"10.0.0.1"}}}}}}
 
+#+begin_example
+  oleg@guixsd ~$ curl -s es.intr:9200/_cat/shards?pretty  | grep kvm15
+  logstash-payment-2021.05.03       0 p STARTED         985    237kb 172.16.103.101 kvm15-master
+  logstash-payment-2021.09.17       0 p STARTED        2014  367.4kb 172.16.103.101 kvm15-master
+  .monitoring-es-6-2021.04.14       0 r STARTED        8637      3mb 172.16.103.101 kvm15-master
+  .monitoring-es-6-2021.11.01       0 r STARTED        8635    3.2mb 172.16.103.101 kvm15-master
+  .monitoring-es-6-2020.07.19       0 r STARTED        8639      3mb 172.16.103.101 kvm15-master
+  .monitoring-es-6-2021.07.24       0 r STARTED        8637    2.9mb 172.16.103.101 kvm15-master
+  cerb_message_content              2 r RELOCATING  2220954      3gb 172.16.103.69  es2-master -> 172.16.103.101 QPHQ1pd4R6qVOuTuXJbwMQ kvm15-master
+  .monitoring-es-6-2019.02.19       0 r STARTED        8634    2.9mb 172.16.103.101 kvm15-master
+  payment-listeners-2021.11.24      0 p STARTED          16   38.8kb 172.16.103.101 kvm15-master
+  juniper-2021.12.08                0 p STARTED        9577  748.3kb 172.16.103.101 kvm15-master
+  logstash-mail-2021.12.03          0 p RELOCATING  7697918  915.1mb 172.16.103.69  es2-master -> 172.16.103.101 QPHQ1pd4R6qVOuTuXJbwMQ kvm15-master
+  .monitoring-es-6-2020.05.21       0 r STARTED        8639      3mb 172.16.103.101 kvm15-master
+#+end_example
+
 ** es3
 #+begin_example
   cluster.name: mjlogger
