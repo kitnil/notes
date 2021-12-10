@@ -145,6 +145,7 @@ curl -H 'Content-Type: application/json' -d '{"query": {"bool": {"must": {"term"
 
 - drain node
   : curl -XPUT localhost:9200/_cluster/settings -H 'Content-Type: application/json' -d '{"transient" :{"cluster.routing.allocation.exclude._ip" : "10.0.0.1"}}'
+  : {"acknowledged":true,"persistent":{},"transient":{"cluster":{"routing":{"allocation":{"exclude":{"_ip":"10.0.0.1"}}}}}}
 
 ** es3
 #+begin_example
