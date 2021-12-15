@@ -254,3 +254,60 @@ Guile Reference Manual.
 
 - Search module in a path
 : (search-path %load-path "gnu/packages/re2c.scm")
+
+** 
+
+#+begin_example
+  From: david larsson
+  Subject: [bug#51791] [PATCH 0/2]: Update guile-bash
+  To: 51791@debbugs.gnu.org
+  Cc: Guix-patches <guix-patches-bounces+david.larsson=selfhosted.xyz@gnu.org>
+  Date: Wed, 15 Dec 2021 12:54:53 +0100 (4 hours, 43 minutes, 34 seconds ago)
+  Resent-From: david larsson <david.larsson@selfhosted.xyz>
+  Message-ID: <53c6bec8033b6f2f720db9886d7ed8e2@selfhosted.xyz>
+
+  If anyone wants to install a guile-bash that can read arguments with
+  whitespace, and newlines, you can install it like this:
+
+  wget -O /tmp/patch.temp http://paste.debian.net/plain/1223545 ; guix package
+  --with-patch=guile-bash=/tmp/patch.temp -i guile-bash
+
+
+  Then prepare it like this for example:
+
+  ------------------------------------------
+  $ export GUILE_AUTO_COMPILE=0
+  $ enable -f ~/.guix-profile/lib/bash/libguile-bash.so scm
+  $ cat <<'EOF'>/tmp/printargs.scm
+  (use-modules
+   (gnu bash))
+  (define-bash-function (printargs file1 file2)
+      (display file1)
+      (display "\n")
+      (display file2)
+      (display "\n"))
+  EOF
+  $ scm /tmp/printargs.scm
+  -------------------------
+
+  And then use the guile function from bash like this:
+
+  -------------------------
+  ~$ printargs "apa bepa" cepa
+  apa bepa
+  cepa
+  ~$ echo "$apa"
+  aba
+  aca
+  ~$ printf '%s\0' "$apa" bepa | printargs -z
+  aba
+  aca
+  bepa
+  ~$ echo "$apa" | printargs
+  aba
+  aca
+  -------------------------
+
+
+  Closing this bug now.
+#+end_example
