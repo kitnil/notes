@@ -951,6 +951,7 @@ builtins.match "php([[:alnum:]])([[:alnum:]])" "php70"
 
 * Virtualization
 - [[https://github.com/Mic92/nixos-shell][Mic92/nixos-shell: Spawns lightweight nixos vms in a shell]]
+- [[https://github.com/astro/microvm.nix][astro/microvm.nix: NixOS MicroVMs]]
 
 * NixOS
   #+begin_src nix
