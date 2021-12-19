@@ -1,3 +1,6 @@
 - [[https://slurm.schedmd.com/][Slurm Workload Manager - Documentation]]
 - [[https://github.com/SchedMD/slurm][SchedMD/slurm: Slurm: A Highly Scalable Workload Manager]]
 - [[https://github.com/igankevich/guile-slurm][igankevich/guile-slurm: Guile interface for SLURM scheduler]]
+
+* Dependencies
+- [[https://github.com/dun/munge][dun/munge: MUNGE (MUNGE Uid 'N' Gid Emporium) is an authentication service for creating and validating user credentials.]]
