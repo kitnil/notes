@@ -941,6 +941,7 @@ builtins.match "php([[:alnum:]])([[:alnum:]])" "php70"
 * Tools
 - [[https://github.com/mlieberman85/nixbom][mlieberman85/nixbom]]
 - [[https://github.com/purenix-org/purenix][purenix-org/purenix: Nix backend for PureScript. Transpile PureScript code to Nix.]]
+- [[https://github.com/astro/deadnix][astro/deadnix: Scan Nix files for dead code]]
 
 * Overlays
   - nixos-install --flake github:hoverbear-consulting/flake#gizmo --impure
