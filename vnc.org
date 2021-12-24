@@ -10,3 +10,7 @@
 - [[https://github.com/ultravnc/ultravnc][ultravnc/UltraVNC: UltraVNC Server and UltraVNC Viewer]]
 - x0vncserver
   : x0vncserver -PasswordFile ~/.vnc/passwd -display :0 -rfbport 5960
+
+- nixos-21.10 tigervnc-1.11.0
+  : $ Xvnc -geometry 1024x768 :4 -PasswordFile ~/.vnc/passwd
+  : $ DISPLAY=:4 dbus-launch startplasma-x11
