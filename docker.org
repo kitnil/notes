@@ -27,6 +27,9 @@
 - [[https://habr.com/ru/post/578854/][DAM. Как работать с docker на суше, а не в облаке / Хабр]]
   - [[https://github.com/dam-utils/dam][dam-utils/dam]]
 
+** Security
+- [[https://github.com/quay/clair][quay/clair: Vulnerability Static Analysis for Containers]]
+
 ** Gradle
 - [[https://github.com/palantir/gradle-docker][palantir/gradle-docker: a Gradle plugin for orchestrating docker builds and pushes.]]
 - [[https://github.com/bmuschko/gradle-docker-plugin][bmuschko/gradle-docker-plugin: Gradle plugin for managing Docker images and containers.]]
