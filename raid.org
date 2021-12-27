@@ -66,7 +66,7 @@ Reboot. And then destroy your RAID:
 
   mdadm /dev/md0 --destroy
 
-* Debian
+* Debian 10
 
 : apt install linux-image-4.19.0-16-amd64
 : modprobe raid1
