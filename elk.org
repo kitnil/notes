@@ -108,6 +108,20 @@
 
     elasticsearch.helpers.reindex(client=elastic, target_client=elastic, source_index="youtube-gaming", target_index="yt-game")
   #+end_example
+
+- Watermark
+#+begin_example
+  curl -X PUT "es.intr:9200/_cluster/settings?pretty" -H 'Content-Type: application/json' -d'
+  {
+    "transient": {
+      "cluster.routing.allocation.disk.watermark.low": "100gb",
+      "cluster.routing.allocation.disk.watermark.high": "50gb",
+      "cluster.routing.allocation.disk.watermark.flood_stage": "10gb"
+
+    }
+  }
+  '
+#+end_example
   
 * WIP
 
