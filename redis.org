@@ -17,4 +17,5 @@
 : redis-cli -h redis.intr hgetall "mailboxes:test@test.wugi.info"
 
 : redis.intr:6379> KEYS mailboxUserData:*example.org*
-: redis.intr:6379> GET mailboxUserData:test@example.org 
+: redis.intr:6379> GET mailboxUserData:test@example.org
+: redis.intr:6379> HGETALL 'mailboxes:test@example.org'
