@@ -15,3 +15,6 @@
 - [[https://github.com/EQ-Alpha/KeyDB][EQ-Alpha/KeyDB: A Multithreaded Fork of Redis]]
 
 : redis-cli -h redis.intr hgetall "mailboxes:test@test.wugi.info"
+
+: redis.intr:6379> KEYS mailboxUserData:*example.org*
+: redis.intr:6379> GET mailboxUserData:test@example.org 
