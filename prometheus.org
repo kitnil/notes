@@ -33,6 +33,7 @@
 - [[https://github.com/kbknapp/iptables_exporter][kbknapp/iptables_exporter: A Prometheus exporter for iptables in Rust]]
 - [[https://github.com/matusnovak/prometheus-smartctl][matusnovak/prometheus-smartctl: HDD S.M.A.R.T exporter for Prometheus written in Python]]
 - [[https://github.com/Sheridan/nftables_exporter][Sheridan/nftables_exporter: Export nftables statistics to prometheus]]
+- [[https://github.com/stapelberg/rsyncprom][stapelberg/rsyncprom: rsync wrapper (or output parser) that pushes metrics to prometheus]]
 - [[https://github.com/caarlos0/domain_exporter][caarlos0/domain_exporter: Exports the expiration time of your domains as prometheus metrics.]]
 - [[https://github.com/kumina/dovecot_exporter][kumina/dovecot_exporter: Prometheus metrics exporter for Dovecot.]]
 - [[https://github.com/treydock/ssh_exporter][treydock/ssh_exporter]]
