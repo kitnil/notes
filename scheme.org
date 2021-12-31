@@ -87,3 +87,7 @@ Like return from function:
                            (display "This will not be executed\n")))))
     (display my-val))
 #+END_SRC
+
+* SRFI
+
+- [[https://srfi.schemers.org/srfi-166/srfi-166.html][SRFI 166: Monadic Formatting]]
