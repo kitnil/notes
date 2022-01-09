@@ -17,3 +17,12 @@
 * Tools
 - [[https://github.com/pulumi/pulumi][pulumi/pulumi: Pulumi - Modern Infrastructure as Code. Any cloud, any language 🚀]]
 - [[https://github.com/prometheus/blackbox_exporter][prometheus/blackbox_exporter: Blackbox prober exporter]]
+- [[https://github.com/picostack/core][picostack/core: The core services that form the basis of the Pico Stack.]]
+  - Traefik: as a HTTP gateway and for automatic SSL certificates
+  - Portainer: to see what's running
+  - Watchtower: for keeping container images up to date
+  - Grafana: for viewing logs, metrics and alerts
+  - Prometheus: for metric collection
+  - Node Exporter: for system metrics
+  - cAdvisor: for container metrics
+  - Loki: for log aggregation
