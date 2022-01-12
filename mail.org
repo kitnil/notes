@@ -108,3 +108,4 @@ exim -bhc 8.8.8.8
 * Search
 
 - [[https://github.com/filiphanes/fts-elastic][filiphanes/fts-elastic: ElasticSearch FTS implementation for the Dovecot mail server]]
+- [[https://doc.dovecot.org/configuration_manual/fts/solr/][Solr FTS Engine — Dovecot documentation]]
