@@ -124,6 +124,38 @@ Guile Reference Manual.
 * Programms
 - [[https://github.com/b4284/guile-pastebin][b4284/guile-pastebin: A very simple pastebin written in Guile Scheme.]]
 
+* Networking
+
+From: Niklas Schmidt <xxxxxx@xxxxxx.xxx>
+Subject: Re: Add VLAN with Guile Netlink link-add
+To: Julien Lepiller <xxxxxx@xxxxxxxx.xx>
+Cc: help-guix@gnu.org
+Date: Tue, 11 Jan 2022 19:30:53 +0000 (9 hours, 34 minutes, 42 seconds ago)
+Message-ID: <Yd3a7ZHArk2Eji4A@xxxxxx.xx>
+#+begin_example
+  guix shell: warning: cannot authenticate source of 'guile-netlink', version 1.1.2
+  updating checkout of 'https://git.lepiller.eu/git/guile-netlink'...
+  retrieved commit 81c33102905b6a4467bbe2eefb9c17c6c23a58b3
+  Consider installing the 'guile-readline' package for
+  convenient interactive line editing and input history.
+  Consider installing the 'guile-colorized' package
+  for a colorful Guile experience.
+  GNU Guile 3.0.7
+  Copyright (C) 1995-2021 Free Software Foundation, Inc.
+  Guile comes with ABSOLUTELY NO WARRANTY; for details type `,show w'.
+  This program is free software, and you are welcome to redistribute it
+  under certain conditions; type `,show c' for details.
+  Enter `,help' for help.
+  scheme@(guile-user)> (use-modules (ip link) (ip addr))
+  scheme@(guile-user)> (link-add "ens3.10" "vlan" #:type-args '((id . 10)
+  (link . "ens3")))
+  $1 = #t
+  scheme@(guile-user)> (addr-add "ens3.10" "192.168.10.219/24")
+  $2 = #t
+  scheme@(guile-user)> (link-set "ens3.10" #:up #t)
+  $3 = #t
+#+end_example
+
 * Tools
 - [[https://git.sr.ht/~arnebab/geiser-wisp][~arnebab/geiser-wisp - sourcehut git]]
 - [[https://www.draketo.de/proj/with-guise-and-guile/wisp-tutorial.html][Learn to program with Wisp]]
