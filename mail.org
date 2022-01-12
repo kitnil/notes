@@ -104,3 +104,7 @@ exim -bhc 8.8.8.8
     system($run) == 0 or warn "cannot run \"$run\".";
   }
 #+end_example
+
+* Search
+
+- [[https://github.com/filiphanes/fts-elastic][filiphanes/fts-elastic: ElasticSearch FTS implementation for the Dovecot mail server]]
