@@ -19,6 +19,7 @@
 - [[https://habr.com/ru/company/netologyru/blog/580902/][Планирование подов для узлов Kubernetes: развёрнутое руководство / Хабр]]
 
 * Tools
+- [[https://github.com/kei6u/kubectl-explore][kei6u/kubectl-explore: A better kubectl explain with the fuzzy finder]]
 - [[https://github.com/openebs/openebs][openebs/openebs: Leading Open Source Container Attached Storage, built using Cloud Native Architecture, simplifies running Stateful Applications on Kubernetes.]]
 - [[https://github.com/datreeio/datree][datreeio/datree: Prevent Kubernetes misconfigurations from reaching production (again 😤 )! The CLI integration provides a policy enforcement solution to run automatic checks for rule violations. See our docs: https://hub.datree.io]]
 - [[https://github.com/reactive-tech/kubegres][reactive-tech/kubegres: Kubegres is a Kubernetes operator allowing to create a cluster of PostgreSql instances and manage databases replication, failover and backup.]]
