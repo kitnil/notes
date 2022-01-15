@@ -1018,6 +1018,7 @@ builtins.match "php([[:alnum:]])([[:alnum:]])" "php70"
   - [[https://github.com/balsoft/kalinix][balsoft/kalinix: A pentesting/CTF toolbox with the help of Nix]]
   - [[https://github.com/adriansosa/tmux-flake][adriansosa/tmux-flake]]
   - [[https://github.com/MatthewCroughan/nixinate][MatthewCroughan/nixinate: Another NixOS Deployment Tool - Nixinate your systems 🕶️]]
+  - [[https://github.com/Simon-Boyer/nixos-swarm-node][Simon-Boyer/nixos-swarm-node: Personnal NixOS configuration for a docker swarm node]]
 
   - [[https://github.com/jkachmar/easy-hls-nix][jkachmar/easy-hls-nix: Easy Haskell Language Server tooling with Nix!]]
 
