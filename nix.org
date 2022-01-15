@@ -1016,6 +1016,7 @@ builtins.match "php([[:alnum:]])([[:alnum:]])" "php70"
   - [[https://github.com/bqv/nixrc][bqv/nixrc: Structured flake-based NixOS configuration]]
   - [[https://github.com/MarcoPolo/simple-vms][MarcoPolo/simple-vms: Simple VMs in NixOS]]
   - [[https://github.com/balsoft/kalinix][balsoft/kalinix: A pentesting/CTF toolbox with the help of Nix]]
+  - [[https://github.com/adriansosa/tmux-flake][adriansosa/tmux-flake]]
 
   - [[https://github.com/jkachmar/easy-hls-nix][jkachmar/easy-hls-nix: Easy Haskell Language Server tooling with Nix!]]
 
