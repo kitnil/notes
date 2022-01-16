@@ -20,7 +20,8 @@
 
  - [[https://github.com/cosminmocan/vfio-single-amdgpu-passthrough][cosminmocan/vfio-single-amdgpu-passthrough: This repo is a tutorial for single amd gpu passthrough to various qemu VMs]]
 
- - qemu-img convert -c -f raw -O qcow2 /dev/sda /var/lib/libvirt/images/hdd-shrunk.qcow2
+ - physical machine to a virtual machine
+   : qemu-img convert -c -f raw -O qcow2 /dev/sda /var/lib/libvirt/images/hdd-shrunk.qcow2
 
  - serial port
    : qemu-system-x86_64 -hda /home/oleg/vm/ubuntu-16.04.qcow -smp 4 -m 8192 -enable-kvm -nographic -serial mon:stdio -append 'root=/dev/sda1 console=ttyS0' -kernel ./vmlinuz-4.4.0-142-generic 
