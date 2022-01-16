@@ -10,6 +10,10 @@
 
 - [[https://habr.com/ru/post/100952/][Миграция с RAID1 на RAID5 в mdadm без потери данных / Хабр]]
 
+- Stop array
+  : root@guixsd ~ [env]# mdadm -S /dev/md0 
+  : mdadm: stopped /dev/md0
+
 - Copy disk partition information
 : sfdisk -d /dev/sdb | sfdisk /dev/sda
 
