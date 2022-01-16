@@ -77,3 +77,36 @@ scan for raid md devices
   mdadm: /dev/md/mj744:0 has been started with 2 drives (out of 4).
   mdadm: /dev/md/mj744.lex1.ru:1 has been started with 2 drives.
 #+end_example
+
+* Raid5 mdadm array change size
+
+[[https://unix.stackexchange.com/questions/607104/raid5-mdadm-array-change-size][Raid5 mdadm array change size - Unix & Linux Stack Exchange]]
+
+I have created a raid5 array with 4 disks. Initially i had 3x 3tb and 1x 4tb
+(because 3tb was unavailable at the time). After some years i have replaced
+most of these disks and have come to the point where all array disks are now
+4tb in size. Still my mdadm array is 3TB. Is there any way to change the mdadm
+array size to match the 4tb disk size w/o loosing my data? Thanks for your
+help!
+
+If you have a write-intent bitmap, remove it
+
+  mdadm --grow /dev/mdX --bitmap none
+
+Then grow the array
+
+ mdadm --grow /dev/mdX --size max
+
+Finally, restore the bitmap if you were using one
+
+ mdadm --wait /dev/mdX
+ mdadm --grow /dev/mdX --bitmap internal
+
+This is all from the RAID Wiki
+
+Things are different if your RAID is on partitions rather than full disks, as
+you'll have to remove, resize, and then re-add each disk in turn. Wait for a
+full resync after each disk partition has been extended
+
+Finally you'll need to grow the filesystem or PV that site on top of your
+RAID. (You can do this any time after the second step.)
