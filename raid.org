@@ -4,6 +4,7 @@
 #+title: RAID
 
 - [[https://altastor.ru/apps/raidcalc/][Калькулятор RAID]]
+- [[https://en.wikipedia.org/wiki/Nested_RAID_levels][Nested RAID levels - Wikipedia]]
 
 - Copy disk partition information
 : sfdisk -d /dev/sdb | sfdisk /dev/sda
