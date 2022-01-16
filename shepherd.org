@@ -1,0 +1,538 @@
+Message-ID: <9f128726-94e9-45ef-e5ad-226e9b822dab@gmail.com>
+
+Hello! I would like to contribute examples of Shepherd services, by 
+sending my Shepherd system configuration file that I use. Attached is 
+the configuration file.
+
+I hope this will help add more detailed examples to the GNU Shepherd manual.
+
+#+begin_src scheme
+  ;; init.scm -- default shepherd configuration file.
+
+  ;; Services known to shepherd:
+  ;; Add new services (defined using 'make <service>') to shepherd here by
+  ;; providing them as arguments to 'register-services'.
+
+  (register-services
+          (make <service>
+                  #:provides '(getty@tty2)
+                  #:requires '()
+                  #:docstring "The getty@tty2 service provides a getty on tty2."
+                  #:start (make-forkexec-constructor '("/usr/local/etc/init.d/getty@tty2"))
+                  #:stop (make-kill-destructor)
+                  #:respawn? #t)
+
+          (make <service>
+                  #:provides '(cron)
+                  #:requires '()
+                  #:docstring "The cron service provides execution of regularly scheduled commands."
+                  #:start (make-forkexec-constructor '("cron" "-f"))
+                  #:stop (make-kill-destructor)
+                  #:respawn? #t)
+
+          (make <service>
+                  #:provides '(accounts-daemon)
+                  #:requires '(dbus)
+                  #:docstring "The accounts-daemon provides the Accounts Service."
+                  #:start (make-forkexec-constructor '("/usr/lib/accountsservice/accounts-daemon")
+                                  #:environment-variables (append (environ) '("GVFS_DISABLE_FUSE=1" "GIO_USE_VFS=local" "GVFS_REMOTE_VOLUME_MONITOR_IGNORE=1")))
+                  #:stop (make-kill-destructor)
+                  #:respawn? #t)
+
+          (make <service>
+                  #:provides '(apparmor)
+                  #:requires '()
+                  #:docstring "Loads AppArmor profiles."
+                  #:start (make-forkexec-constructor '("/lib/apparmor/apparmor.systemd" "reload"))
+                  #:stop (make-kill-destructor)
+                  #:oneshot? #t)
+
+          (make <service>
+                  #:provides '(avahi-daemon)
+                  #:requires '(dbus)
+                  #:docstring "The avahi-daemon provides the Avahi mDNS/DNS-SD Stack."
+                  #:start (make-forkexec-constructor '("avahi-daemon" "-s"))
+                  #:stop (make-kill-destructor)
+                  #:respawn? #t)
+
+          (make <service>
+                  #:provides '(binfmt-support)
+                  #:requires '()
+                  #:docstring "Enables support for additional executable binary formats."
+                  #:start (make-forkexec-constructor '("update-binfmts" "--enable"))
+                  #:stop (make-system-destructor "update-binfmts --disable")
+                  #:oneshot? #t)
+
+          (make <service>
+                  #:provides '(casper)
+                  #:requires '()
+                  #:docstring "Shuts down the 'live' preinstalled system cleanly."
+                  #:start (make-forkexec-constructor '("casper-stop"))
+                  #:stop (make-kill-destructor)
+                  #:oneshot? #t)
+
+          (make <service>
+                  #:provides '(colord)
+                  #:requires '(dbus)
+                  #:docstring "The colord service is used to manage, install generate Colour Profiles."
+                  #:start (make-forkexec-constructor '("/usr/libexec/colord") #:user "colord")
+                  #:stop (make-kill-destructor)
+                  #:respawn? #t)
+
+          (make <service>
+                  #:provides '(console-setup)
+                  #:requires '()
+                  #:docstring "Sets the system console font and keymap."
+                  #:start (make-forkexec-constructor '("/lib/console-setup/console-setup.sh"))
+                  #:stop (make-kill-destructor)
+                  #:oneshot? #t)
+
+          (make <service>
+                  #:provides '(cups)
+                  #:requires '()
+                  #:docstring "The cups service provides the CUPS scheduler."
+                  #:start (make-forkexec-constructor '("cupsd" "-f"))
+                  #:stop (make-kill-destructor)
+                  #:respawn? #t)
+
+          (make <service>
+                  #:provides '(cups-browsed)
+                  #:requires '(cups)
+                  #:docstring "The cups-browsed service makes remote CUPS printers available locally."
+                  #:start (make-forkexec-constructor '("cups-browsed"))
+                  #:stop (make-kill-destructor)
+                  #:respawn? #t)
+
+          (make <service>
+                  #:provides '(dbus)
+                  #:requires '()
+                  #:docstring "The dbus service provides the D-Bus System Message Bus."
+                  #:start (make-forkexec-constructor '("/usr/local/etc/init.d/dbus"))
+                  #:stop (make-kill-destructor)
+                  #:respawn? #t)
+
+          (make <service>
+                  #:provides '(lightdm display-manager)
+                  #:requires '(dbus)
+                  #:docstring "The lightdm service provides the Light Display Manager."
+                  #:start (make-forkexec-constructor '("/usr/local/etc/init.d/lightdm"))
+                  #:stop (make-kill-destructor)
+                  #:respawn? #t)
+
+          (make <service>
+                  #:provides '(dm-event)
+                  #:requires '()
+                  #:docstring "The dm-event service provides an event monitoring daemon for device-mapper devices."
+                  #:start (make-forkexec-constructor '("dmeventd" "-f") #:environment-variables (append (environ) '("SD_ACTIVATION=1")))
+                  #:stop (make-kill-destructor)
+                  #:respawn? #t)
+
+          (make <service>
+                  #:provides '(dns-clean)
+                  #:requires '()
+                  #:docstring "Clean up any mess left by 0dns-up"
+                  #:start (make-forkexec-constructor '("/usr/local/etc/init.d/dns-clean"))
+                  #:stop (make-kill-destructor)
+                  #:oneshot? #t)
+
+          (make <service>
+                  #:provides '(firewalld)
+                  #:requires '(dbus polkit)
+                  #:docstring "The firewalld service provides a dynamically managed firewall."
+                  #:start (make-forkexec-constructor '("firewalld" "--nofork" "--nopid"))
+                  #:stop (make-kill-destructor)
+                  #:respawn? #t)
+
+          (make <service>
+                  #:provides '(grub-common)
+                  #:requires '()
+                  #:docstring "Record successful boot for GRUB."
+                  #:start (make-forkexec-constructor '("/usr/local/etc/init.d/grub-common"))
+                  #:stop (make-kill-destructor)
+                  #:oneshot? #t)
+
+          (make <service>
+                  #:provides '(grub-initrd-fallback)
+                  #:requires '(grub-common)
+                  #:docstring "GRUB failed boot detection."
+                  #:start (make-forkexec-constructor '("/usr/local/etc/init.d/grub-initrd-fallback"))
+                  #:stop (make-kill-destructor)
+                  #:oneshot? #t)
+
+          (make <service>
+                  #:provides '(guix-daemon)
+                  #:requires '(syslog)
+                  #:docstring "The guix-daemon service accesses the store, and builds derivations on behalf of its clients."
+                  #:start (make-forkexec-constructor '("/var/guix/profiles/per-user/root/current-guix/bin/guix-daemon" "--build-users-group=guixbuild"))
+                  #:stop (make-kill-destructor)
+                  #:respawn? #t)
+
+          (make <service>
+                  #:provides '(ifupdown-pre)
+                  #:requires '()
+                  #:docstring "Helper to synchronize boot up for ifupdown."
+                  #:start (make-forkexec-constructor '("/usr/local/etc/init.d/ifupdown-pre"))
+                  #:stop (make-kill-destructor)
+                  #:oneshot? #t)
+
+          (make <service>
+                  #:provides '(ifupdown-wait-online)
+                  #:requires '()
+                  #:docstring "Wait for network to be configured by ifupdown."
+                  #:start (make-forkexec-constructor '("/lib/ifupdown/wait-online.sh"))
+                  #:stop (make-kill-destructor)
+                  #:oneshot? #t)
+
+          (make <service>
+                  #:provides '(initrd-udevadm-cleanup-db)
+                  #:requires '(systemd-udevd systemd-udev-trigger systemd-udev-settle)
+                  #:docstring "Cleanup udevd DB."
+                  #:start (make-forkexec-constructor '("/usr/local/etc/init.d/initrd-udevadm-cleanup-db"))
+                  #:stop (make-kill-destructor)
+                  #:oneshot? #t)
+
+          (make <service>
+                  #:provides '(irqbalance)
+                  #:requires '()
+                  #:docstring "The irqbalance service distributes hardware interrupts across processors on a multiprocessor system."
+                  #:start (make-forkexec-constructor '("/usr/local/etc/init.d/irqbalance"))
+                  #:stop (make-kill-destructor)
+                  #:respawn? #t)
+
+          (make <service>
+                  #:provides '(keyboard-setup)
+                  #:requires '()
+                  #:docstring "Set the console keyboard layout."
+                  #:start (make-forkexec-constructor '("/lib/console-setup/keyboard-setup.sh"))
+                  #:stop (make-kill-destructor)
+                  #:oneshot? #t)
+
+          (make <service>
+                  #:provides '(kmod)
+                  #:requires '()
+                  #:docstring "Load Kernel Modules."
+                  #:start (make-forkexec-constructor '("/usr/local/etc/init.d/kmod"))
+                  #:stop (make-kill-destructor)
+                  #:oneshot? #t)
+
+          (make <service>
+                  #:provides '(kmod-static-nodes)
+                  #:requires '()
+                  #:docstring "Create list of static device nodes for the current kernel."
+                  #:start (make-forkexec-constructor '("/usr/local/etc/init.d/kmod-static-nodes"))
+                  #:stop (make-kill-destructor)
+                  #:oneshot? #t)
+
+          (make <service>
+                  #:provides '(lm-sensors)
+                  #:requires '()
+                  #:docstring "Initialize hardware monitoring sensors."
+                  #:start (make-system-constructor "sensors -s ; sensors")
+                  #:stop (make-system-destructor)
+                  #:oneshot? #t)
+
+          (make <service>
+                  #:provides '(lvm2-lvmpolld)
+                  #:requires '()
+                  #:docstring "The lvm2-lvmpolld service provides the LVM2 poll daemon."
+                  #:start (make-forkexec-constructor '("lvmpolld" "-t" "60" "-f") #:environment-variables (append (environ) '("SD_ACTIVATION=1")))
+                  #:stop (make-kill-destructor)
+                  #:respawn? #t)
+
+          (make <service>
+                  #:provides '(lvm2-monitor)
+                  #:requires '()
+                  #:docstring "Monitoring of LVM2 mirrors, snapshots etc. using dmeventd or progress polling."
+                  #:start (make-forkexec-constructor '("lvm" "vgchange" "--monitor" "y") #:environment-variables (append (environ) '("LVM_SUPPRESS_LOCKING_FAILURE_MESSAGES=1")))
+                  #:stop (make-system-destructor "lvm vgchange --monitor n")
+                  #:oneshot? #t)
+
+          (make <service>
+                  #:provides '(ModemManager)
+                  #:requires '(dbus polkit)
+                  #:docstring "The ModemManager service provides mobile broadband modem management."
+                  #:start (make-forkexec-constructor '("ModemManager" "--filter-policy=strict"))
+                  #:stop (make-kill-destructor)
+                  #:respawn? #t)
+
+          (make <service>
+                  #:provides '(networkd-dispatcher)
+                  #:requires '()
+                  #:docstring "The networkd-dispatcher service provides the Dispatcher daemon for systemd-networkd."
+                  #:start (make-forkexec-constructor '("/usr/local/etc/init.d/networkd-dispatcher"))
+                  #:stop (make-kill-destructor)
+                  #:respawn? #t)
+
+          (make <service>
+                  #:provides '(networking)
+                  #:requires '(ifupdown-pre)
+                  #:docstring "Raise network interfaces."
+                  #:start (make-forkexec-constructor '("/usr/local/etc/init.d/networking"))
+                  #:stop (make-system-destructor "[ -r /etc/default/networking ] && . /etc/default/networking; exec ifdown -a --read-environment --exclude=lo")
+                  #:oneshot? #t)
+
+          (make <service>
+                  #:provides '(NetworkManager network-manager)
+                  #:requires '(dbus)
+                  #:docstring "The NetworkManager service provides an interface to network management."
+                  #:start (make-forkexec-constructor '("NetworkManager" "--no-daemon"))
+                  #:stop (make-kill-destructor)
+                  #:respawn? #t)
+
+          (make <service>
+                  #:provides '(NetworkManager-dispatcher)
+                  #:requires '(dbus)
+                  #:docstring "The NetworkManager-dispatcher service provides the Network Manager Script Dispatcher."
+                  #:start (make-forkexec-constructor '("/usr/lib/NetworkManager/nm-dispatcher" "--persist"))
+                  #:stop (make-kill-destructor)
+                  #:respawn? #t)
+
+          (make <service>
+                  #:provides '(NetworkManager-wait-online)
+                  #:requires '(NetworkManager)
+                  #:docstring "Network Manager Wait Online."
+                  #:start (make-forkexec-constructor '("nm-online" "-s" "-q" "--timeout=30"))
+                  #:stop (make-kill-destructor)
+                  #:oneshot? #t)
+
+          (make <service>
+                  #:provides '(nscd)
+                  #:requires '()
+                  #:docstring "The nscd service provides name service caching to requesting programs."
+                  #:start (make-forkexec-constructor '("/usr/local/etc/init.d/nscd"))
+                  #:stop (make-kill-destructor)
+                  #:respawn? #t)
+
+          (make <service>
+                  #:provides '(ntp)
+                  #:requires '(networking)
+                  #:docstring "The ntp service synchronises the network time on the system."
+                  #:start (make-forkexec-constructor '("ntpd" "--nofork" "-g"))
+                  #:stop (make-kill-destructor)
+                  #:respawn? #t)
+
+          (make <service>
+                  #:provides '(ondemand)
+                  #:requires '()
+                  #:docstring "Set the CPU Frequency Scaling governor."
+                  #:start (make-forkexec-constructor '("/usr/local/etc/init.d/ondemand"))
+                  #:stop (make-kill-destructor)
+                  #:oneshot? #t)
+
+          (make <service>
+                  #:provides '(plymouth-halt plymouth-kexec plymouth-poweroff)
+                  #:requires '()
+                  #:docstring "The plymouth-halt service shows the Plymouth Halt Screen."
+                  #:start (make-forkexec-constructor '("/usr/local/etc/init.d/plymouth-halt"))
+                  #:stop (make-system-destructor "plymouth show-splash")
+                  #:respawn? #t)
+
+          (make <service>
+                  #:provides '(plymouth-quit plymouth)
+                  #:requires '()
+                  #:docstring "Terminate Plymouth Boot Screen."
+                  #:start (make-forkexec-constructor '("plymouth" "quit"))
+                  #:stop (make-kill-destructor)
+                  #:oneshot? #t)
+
+          (make <service>
+                  #:provides '(plymouth-quit-wait)
+                  #:requires '()
+                  #:docstring "Hold until boot process finishes up."
+                  #:start (make-forkexec-constructor '("plymouth" "--wait"))
+                  #:stop (make-kill-destructor)
+                  #:oneshot? #t)
+
+          (make <service>
+                  #:provides '(plymouth-read-write)
+                  #:requires '()
+                  #:docstring "Tell Plymouth To Write Out Runtime Data."
+                  #:start (make-system-constructor "test ! -e /etc/initrd-release && plymouth update-root-fs --read-write")
+                  #:stop (make-system-destructor)
+                  #:oneshot? #t)
+
+          (make <service>
+                  #:provides '(plymouth-reboot)
+                  #:requires '()
+                  #:docstring "The plymouth-reboot service shows the Plymouth Reboot Screen."
+                  #:start (make-forkexec-constructor '("/usr/local/etc/init.d/plymouth-reboot"))
+                  #:stop (make-system-destructor "plymouth show-splash")
+                  #:respawn? #t)
+
+          (make <service>
+                  #:provides '(plymouth-start)
+                  #:requires '()
+                  #:docstring "The plymouth-reboot service shows the Plymouth Boot Screen."
+                  #:start (make-forkexec-constructor '("/usr/local/etc/init.d/plymouth-start"))
+                  #:stop (make-system-destructor "plymouth show-splash")
+                  #:respawn? #t)
+
+          (make <service>
+                  #:provides '(plymouth-switch-root)
+                  #:requires '()
+                  #:docstring "Plymouth switch root service."
+                  #:start (make-system-constructor "test -e /etc/initrd-release && plymouth update-root-fs --new-root-dir=/sysroot")
+                  #:stop (make-system-destructor)
+                  #:oneshot? #t)
+
+          (make <service>
+                  #:provides '(polkit)
+                  #:requires '(dbus)
+                  #:docstring "The polkit service provides PolicyKit, an Authorization Manager."
+                  #:start (make-forkexec-constructor '("/usr/lib/policykit-1/polkitd" "--no-debug"))
+                  #:stop (make-kill-destructor)
+                  #:respawn? #t)
+
+          (make <service>
+                  #:provides '(pppd-dns)
+                  #:requires '()
+                  #:docstring "Restore /etc/resolv.conf if the system crashed before the ppp link was shut down."
+                  #:start (make-forkexec-constructor '("/etc/ppp/ip-down.d/0000usepeerdns"))
+                  #:stop (make-kill-destructor)
+                  #:oneshot? #t)
+
+          (make <service>
+                  #:provides '(pulseaudio)
+                  #:requires '()
+                  #:docstring "The pulseaudio service provides the PulseAudio Sound Server."
+                  #:start (make-forkexec-constructor '("pulseaudio" "--daemonize=no" "--log-target=stderr") #:user "user" #:group "audio" #:environment-variables '("HOME=/home/user"))
+                  #:stop (make-kill-destructor)
+                  #:respawn? #t)
+
+          (make <service>
+                  #:provides '(resolvconf)
+                  #:requires '()
+                  #:docstring "Nameserver information manager."
+                  #:start (make-forkexec-constructor '("resolvconf" "--enable-updates"))
+                  #:stop (make-system-destructor "resolvconf --disable-updates")
+                  #:oneshot? #t)
+
+          (make <service>
+                  #:provides '(resolvconf-pull-resolved)
+                  #:requires '()
+                  #:start (make-forkexec-constructor '("/usr/local/etc/init.d/resolvconf-pull-resolved"))
+                  #:stop (make-kill-destructor)
+                  #:oneshot? #t)
+
+          (make <service>
+                  #:provides '(rsyslog syslog)
+                  #:requires '()
+                  #:docstring "The rsyslog service provides System Logging."
+                  #:start (make-forkexec-constructor '("chpst" "-o" "16384" "rsyslogd" "-n" "-iNONE"))
+                  #:stop (make-kill-destructor)
+                  #:respawn? #t)
+
+          (make <service>
+                  #:provides '(rtkit-daemon)
+                  #:requires '(dbus)
+                  #:docstring "The rtkit-daemon provides the RealtimeKit Scheduling Policy."
+                  #:start (make-forkexec-constructor '("/usr/libexec/rtkit-daemon"))
+                  #:stop (make-kill-destructor)
+                  #:respawn? #t)
+
+          (make <service>
+                  #:provides '(smartmontools smartd)
+                  #:requires '()
+                  #:docstring "The smartmontools service provides Self Monitoring and Reporting Technology (SMART)."
+                  #:start (make-forkexec-constructor '("/usr/local/etc/init.d/smartmontools"))
+                  #:stop (make-kill-destructor)
+                  #:respawn? #t)
+
+          (make <service>
+                  #:provides '(systemd-logind)
+                  #:requires '()
+                  #:docstring "The systemd-logind service provides systemd's Login Service."
+                  #:start (make-forkexec-constructor '("chpst" "-o" "524288" "/lib/systemd/systemd-logind"))
+                  #:stop (make-kill-destructor)
+                  #:respawn? #t)
+
+          (make <service>
+                  #:provides '(systemd-networkd)
+                  #:requires '()
+                  #:docstring "The systemd-networkd service provides systemd's Network Service."
+                  #:start (make-forkexec-constructor '("/usr/local/etc/init.d/systemd-networkd"))
+                  #:stop (make-kill-destructor)
+                  #:respawn? #t)
+
+          (make <service>
+                  #:provides '(systemd-networkd-wait-online)
+                  #:requires '(systemd-networkd)
+                  #:docstring "Wait for Network to be Configured."
+                  #:start (make-forkexec-constructor '("/lib/systemd/systemd-networkd-wait-online"))
+                  #:stop (make-kill-destructor)
+                  #:oneshot? #t)
+
+          (make <service>
+                  #:provides '(systemd-resolved)
+                  #:requires '()
+                  #:docstring "The systemd-resolved service provides systemd's Network Name Resolution."
+                  #:start (make-forkexec-constructor '("/lib/systemd/systemd-resolved"))
+                  #:stop (make-kill-destructor)
+                  #:respawn? #t)
+
+          (make <service>
+                  #:provides '(systemd-udevd)
+                  #:requires '()
+                  #:docstring "The systemd-udevd service provides systemd's udev Kernel Device Manager."
+                  #:start (make-forkexec-constructor '("/lib/systemd/systemd-udevd"))
+                  #:stop (make-kill-destructor)
+                  #:respawn? #t)
+
+          (make <service>
+                  #:provides '(systemd-udev-settle)
+                  #:requires '()
+                  #:docstring "udev Wait for Complete Device Initialization."
+                  #:start (make-forkexec-constructor '("udevadm" "settle"))
+                  #:stop (make-kill-destructor)
+                  #:oneshot? #t)
+
+          (make <service>
+                  #:provides '(systemd-udev-trigger)
+                  #:requires '()
+                  #:docstring "udev Coldplug all Devices."
+                  #:start (make-system-constructor "udevadm trigger --type=subsystems --action=add && udevadm trigger --type=devices --action=add")
+                  #:stop (make-system-destructor)
+                  #:oneshot? #t)
+
+          (make <service>
+                  #:provides '(systemd-user-sessions)
+                  #:requires '()
+                  #:docstring "Permit User Sessions."
+                  #:start (make-forkexec-constructor '("/lib/systemd/systemd-user-sessions" "start"))
+                  #:stop (make-system-destructor "/lib/systemd/systemd-user-sessions stop")
+                  #:oneshot? #t)
+
+          (make <service>
+                  #:provides '(tlp)
+                  #:requires '()
+                  #:docstring "TLP system startup/shutdown."
+                  #:start (make-forkexec-constructor '("tlp" "init" "start"))
+                  #:stop (make-system-destructor "tlp init stop")
+                  #:oneshot? #t)
+
+          (make <service>
+                  #:provides '(wpa_supplicant)
+                  #:requires '(dbus)
+                  #:docstring "The wpa_supplicant service provides the WPA supplicant."
+                  #:start (make-forkexec-constructor '("wpa_supplicant" "-u" "-s" "-O" "/run/wpa_supplicant"))
+                  #:stop (make-kill-destructor)
+                  #:respawn? #t)
+
+  )
+
+  ;; Send shepherd into the background
+  ;;(action 'shepherd 'daemonize)
+
+  ;; Services to start when shepherd starts:
+  ;; Add the name of each service that should be started to the list
+  ;; below passed to 'for-each'.
+  (for-each start '(accounts-daemon apparmor avahi-daemon binfmt-support casper colord console-setup cron cups cups-browsed dbus dm-event dns-clean firewalld getty@tty2 grub-common grub-initrd-fallback guix-daemon ifupdown-pre
+
+  ifupdown-wait-online initrd-udevadm-cleanup-db irqbalance keyboard-setup kmod kmod-static-nodes lightdm
+
+  lm-sensors ModemManager networking NetworkManager NetworkManager-dispatcher NetworkManager-wait-online nscd ntp ondemand
+
+  plymouth-read-write plymouth-switch-root plymouth-start polkit pppd-dns pulseaudio rsyslog rtkit-daemon smartmontools
+
+  systemd-udev-settle systemd-udev-trigger systemd-udevd systemd-user-sessions tlp wpa_supplicant))
+#+end_src
