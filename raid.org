@@ -8,6 +8,8 @@
 - [[https://wintelguy.com/raidcalc.pl][RAID Capacity Calculator - WintelGuy.com]]
 - [[https://en.wikipedia.org/wiki/Nested_RAID_levels][Nested RAID levels - Wikipedia]]
 
+- [[https://habr.com/ru/post/100952/][Миграция с RAID1 на RAID5 в mdadm без потери данных / Хабр]]
+
 - Copy disk partition information
 : sfdisk -d /dev/sdb | sfdisk /dev/sda
 
