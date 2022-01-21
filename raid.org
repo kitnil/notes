@@ -1359,3 +1359,8 @@ root@guixsd ~ [env]# mount -o subvol=src,compress=zstd,ssd,noatime /dev/sdd3 /mn
 root@guixsd ~ [env]# history -a
 root@guixsd ~ [env]# mount -o subvol=src,compress=zstd:15,ssd,noatime /dev/sdd3 /mnt/src
 root@guixsd ~ [env]# modprobe raid456; guix shell mdadm -- mdadm --assemble --scan; mount /dev/md0 /mnt/guix
+  459  mount -o compress=zstd:15,ssd /dev/sda3 /mnt/btrfs1
+  460  btrfs device add /dev/sdd3 /mnt/btrfs1
+  461  btrfs device add /dev/sdd3 /mnt/btrfs1 -f
+  462  btrfs --help
+  463  btrfs balance start -dconvert=raid1 -mconvert=raid1 /mnt/btrfs1
