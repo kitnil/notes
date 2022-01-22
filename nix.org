@@ -942,6 +942,7 @@ builtins.match "php([[:alnum:]])([[:alnum:]])" "php70"
 - [[https://github.com/thiagokokada/nix-alien][thiagokokada/nix-alien: Run unpatched binaries on Nix/NixOS]]
 - [[https://github.com/mlieberman85/nixbom][mlieberman85/nixbom]]
 - [[https://github.com/purenix-org/purenix][purenix-org/purenix: Nix backend for PureScript. Transpile PureScript code to Nix.]]
+- [[https://github.com/cdepillabout/purenix-examples][cdepillabout/purenix-examples: Examples of common Nix things written in PureNix]]
 - [[https://github.com/astro/deadnix][astro/deadnix: Scan Nix files for dead code]]
   - [[https://github.com/astro/deadnix-action][astro/deadnix-action: Workflow to find and delete dead nix code]]
 - [[https://lazamar.co.uk/nix-versions/][Nix Package Versions]]
