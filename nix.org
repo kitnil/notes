@@ -972,6 +972,7 @@ builtins.match "php([[:alnum:]])([[:alnum:]])" "php70"
     
   #+end_src
 
+- [[https://github.com/chessai/nike][chessai/nike: nixos remote installation via `justdoit`]]
 - [[https://github.com/lourkeur/miniguest][lourkeur/miniguest: lightweight, declarative guest operating systems]]
 
 ** Installers
