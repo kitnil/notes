@@ -34,3 +34,12 @@
       initrd (loop)/live/initrd.img-4.9.0-7-amd64
     }
   #+end_example
+
+#+begin_example
+  menuentry "Guix" {
+     insmod part_gpt
+     insmod chain
+     set root='(hd0,gpt1)'
+     chainloader /EFI/Guix/grubx64.efi
+  }
+#+end_example
