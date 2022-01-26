@@ -17,6 +17,7 @@ NOTE: "pipeline" equal to "workflow".
 - [[https://habr.com/ru/company/jugru/blog/334374/][Олег Ненашев, Кирилл Толкачёв и Александр Тарасов про Groovy DSL и Pipeline в Jenkins на jug.msk.ru / Блог компании JUG Ru Group / Хабр]]
 
 * Community
+- [[https://github.com/jenkins-infra/docker-packaging?auto_subscribed=false][jenkins-infra/docker-packaging: This repository contains everything needed to build a docker image used to package jenkins core]]
 - [[https://github.com/jenkins-infra/jenkins-infra][jenkins-infra/jenkins-infra: Jenkins main control repo for R10k and our Puppet Enterprise managed infrastructure]]
 
 * Shared libs
