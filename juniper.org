@@ -68,6 +68,9 @@
   origin: https://forums.juniper.net/t5/Ethernet-Switching/Discarding-uncommitted-changes/td-p/89828
   : show | compare rollback 0
 
+- ex4550 соединены не по спец кабелю, а через 2 10Гб порта
+  : show virtual-chassis vc-port all-members
+
 - set command length
   : set cli screen-length 0
 
