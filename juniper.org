@@ -97,7 +97,7 @@
 - show configuration in set commands
   : show configuration | display set
 
-- tail -f /var/log/{mastership,jam_dfwd,jam_chassisd,inventory,chassisd_snmp,dcd_commit_check,erp-default,dcd,chassisd,mib2d.1.gz,snmpd.1.gz,wtmp,messages,snmpd,mib2d,log-bgp}
+- tail -f /var/log/{mastership,jam_dfwd,jam_chassisd,inventory,chassisd_snmp,dcd_commit_check,erp-default,dcd,chassisd,wtmp,messages,snmpd,mib2d,log-bgp}
 
 - show logings
   : monitor start policy_session
