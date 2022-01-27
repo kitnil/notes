@@ -97,24 +97,6 @@
 - show bgp groups
   : show bgp group summary
 
-- [[https://www.juniper.net/documentation/en_US/junos/topics/task/troubleshooting/firewall-filter-ex-series.html][Troubleshooting Firewall Filters - TechLibrary - Juniper Networks]]
-пишет то, что я выше присылал
-например
-
-vlan {
-        unit 500 {
-            family inet {
-                filter {
-                    input rules;
-                }
-                address 178.238.125.94/30;
-            }
-        }
-}
-
-если не влезет фильтр rules, то интерфейс будет висеть без fw
-чтоб опять включить нужно закоммитить конфиг без этого фильтра и потом опять его добавить в меньшем размере
-
 - show configuration in set commands
   : show configuration | display set
 
@@ -393,3 +375,47 @@ nat.inet.0: 7 destinations, 9 routes (7 active, 0 holddown, 0 hidden)
         echo "$file"
     done
   #+end_src
+
+* Firewall
+
+- [[https://www.juniper.net/documentation/en_US/junos/topics/task/troubleshooting/firewall-filter-ex-series.html][Troubleshooting Firewall Filters - TechLibrary - Juniper Networks]]
+пишет то, что я выше присылал
+например
+
+vlan {
+        unit 500 {
+            family inet {
+                filter {
+                    input rules;
+                }
+                address 178.238.125.94/30;
+            }
+        }
+}
+
+если не влезет фильтр rules, то интерфейс будет висеть без fw
+чтоб опять включить нужно закоммитить конфиг без этого фильтра и потом опять его добавить в меньшем размере
+
+#+begin_example
+  root@sr1-dh507-508# commit
+  [edit protocols]
+    'bgp'
+      warning: requires 'bgp' license
+  configuration check succeeds
+  fpc1:
+  commit complete
+  commit complete
+
+  {master:0}[edit policy-options prefix-list noc-allow-ssh]
+  root@sr1-dh507-508#
+  Message from syslogd@sr1-dh507-508 at Jan 27 16:24:20  ...
+  sr1-dh507-508 backup dfw_grph_merge_dfw_bind: rules for filter rules will not be installed
+
+  Message from syslogd@sr1-dh507-508 at Jan 27 16:24:20  ...
+  sr1-dh507-508 master dfw_grph_merge_dfw_bind: rules for filter rules will not be installed
+
+  {master:0}[edit policy-options prefix-list noc-allow-ssh]
+  root@sr1-dh507-508#
+#+end_example
+
+и тут фаервол уже не пашет
