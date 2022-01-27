@@ -97,6 +97,24 @@
 - show bgp groups
   : show bgp group summary
 
+- [[https://www.juniper.net/documentation/en_US/junos/topics/task/troubleshooting/firewall-filter-ex-series.html][Troubleshooting Firewall Filters - TechLibrary - Juniper Networks]]
+пишет то, что я выше присылал
+например
+
+vlan {
+        unit 500 {
+            family inet {
+                filter {
+                    input rules;
+                }
+                address 178.238.125.94/30;
+            }
+        }
+}
+
+если не влезет фильтр rules, то интерфейс будет висеть без fw
+чтоб опять включить нужно закоммитить конфиг без этого фильтра и потом опять его добавить в меньшем размере
+
 - show configuration in set commands
   : show configuration | display set
 
