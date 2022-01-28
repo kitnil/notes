@@ -430,3 +430,31 @@ ex4550 софтовый firewall, mx80 хардверный
 
 root@sr1-dh507-508:RE:0% vty fpc0
 PFEM0(vty)# show tcam vendor 1 rules
+
+
+
+unit 0 {
+    family inet {
+        ##
+        ## Warning: configuration block ignored: unsupported platform (ex4550-32f)
+        ##
+        ##
+        ## Warning: Requires forwarding-options sampling or packet-capture config
+        ##
+        sampling {
+            input;
+            output;
+        }
+        address 10.70.0.22/30;
+        address 10.70.0.26/30;
+    }
+    ##
+    ## Warning: Family ethernet-switching and rest of the families are mutually exclusive
+    ##
+    family ethernet-switching {
+        port-mode trunk;
+        vlan {
+            members all;
+        }
+    }
+}
