@@ -6,3 +6,4 @@ automount  -f -v -d -p /tmp/autofs.pid -t 5 /etc/autofs/auto.master
 
 - [[http://tdkare.ru/sysadmin/index.php/Autofs][Autofs — Пингвиньи радости]]
 - [[http://linuxoid.in/Autofs][Autofs — Linux Wiki]]
+- [[http://kstep.me/posts/2009-07-10-avtomontirovanie_sshfscurlftpfs_s_pomoschyu_autofs_v_debiane.html][Автомонтирование sshfs/curlftpfs с помощью autofs в Debian'е — kstep blog]]
