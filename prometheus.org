@@ -47,6 +47,7 @@
 - [[https://github.com/prometheus-community/ipmi_exporter][prometheus-community/ipmi_exporter: Remote IPMI exporter for Prometheus]]
 - [[https://github.com/ncabatoff/script-exporter][ncabatoff/script-exporter: Prometheus exporter to invoke scripts and parse their output as metrics.]]
 - [[https://awesome-prometheus-alerts.grep.to/][Awesome Prometheus alerts | Collection of alerting rules]]
+- [[https://deckhouse.io/ru/documentation/v1/modules/303-prometheus-pushgateway/usage.html][Модуль Prometheus Pushgateway: примеры конфигурации | Deckhouse]]
 - [[https://blog.mafr.de/2020/09/13/testing-alertmanager/][Testing Alertmanager | Matthias Friedrich's Blog]]
   #+begin_src shell
     #! /usr/bin/env sh
