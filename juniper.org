@@ -350,6 +350,9 @@ nat.inet.0: 7 destinations, 9 routes (7 active, 0 holddown, 0 hidden)
   awk '/Out/ && /IP/ && !/missing/ { print $4, $6 }' | sort | uniq -c | sort -n
 #+end_example
 
+* Virtualization
+- [[https://prudnitskiy.pro/2009/07/11/juniper-emu/][Эмуляция Juniper M на PC]]
+
 * DHCP
 
 Попробовал обновить адрес на другом IPMI - он тоже пропал.  Повис DHCP.
