@@ -10,3 +10,4 @@ automount  -f -v -d -p /tmp/autofs.pid -t 5 /etc/autofs/auto.master
 - [[https://basis.gnulinux.pro/ru/latest/basis/59/59._%D0%90%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%82%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%BE%D0%B5_%D0%BC%D0%BE%D0%BD%D1%82%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5_-_Autofs.html][59. Автоматическое монтирование - Autofs — Основы GNU/Linux и подготовка к RHCSA]]
   - [[https://www.youtube.com/watch?v=ig6ceLoi0Jc][59. Автоматическое монтирование - Autofs (RHCSA) - YouTube]]
 - [[https://wiki.gentoo.org/wiki/AutoFS/en][AutoFS/en - Gentoo Wiki]]
+- [[https://gist.github.com/daks/a7834169fc1a483b85bc][Autofs script to automount LUKS encrypted disks. Based on http://msqr.us/m2/archives/2009/07/configuring-automount-for-luks.html]]
