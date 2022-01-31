@@ -49,6 +49,8 @@
 - [[https://awesome-prometheus-alerts.grep.to/][Awesome Prometheus alerts | Collection of alerting rules]]
 - [[https://deckhouse.io/ru/documentation/v1/modules/303-prometheus-pushgateway/usage.html][Модуль Prometheus Pushgateway: примеры конфигурации | Deckhouse]]
 : echo 'channel 1' | curl --data-binary @- http://127.0.0.1:9095/metrics/job/guix/instance/127.0.0.1:9100/name/guix/commit/d96f47f012571cdd6dd67c513e496042db303ca7
+: curl -X POST 'http://127.0.0.1:9090/api/v1/admin/tsdb/delete_series?match[]=channel'
+: curl -XPOST http://127.0.0.1:9090/api/v1/admin/tsdb/clean_tombstones
 - [[https://blog.mafr.de/2020/09/13/testing-alertmanager/][Testing Alertmanager | Matthias Friedrich's Blog]]
   #+begin_src shell
     #! /usr/bin/env sh
