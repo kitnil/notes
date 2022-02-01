@@ -4,11 +4,6 @@
 #+end_example
 
 #+begin_example
-  (config)> ip dhcp pool _WEBADMIN option 67 netboot.xyz.kpxe
-  Command::Base error[7405602]: type: argument parse error.
-#+end_example
-
-#+begin_example
   (config)> ip dhcp pool _WEBADMIN option 67 ascii "netboot.xyz.kpxe"
   Dhcp::Pool: "_WEBADMIN": set option 67.
 #+end_example
