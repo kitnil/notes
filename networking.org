@@ -337,6 +337,7 @@ POSTROUTING. Это к слову тот случай, когда можно в�
 
 * LACP
 
+[[https://support.f5.com/csp/article/K2289][Using advanced tcpdump filters]]
 #+begin_example
   [root@kvm15:~]# tcpdump -pni any -e ether proto 0x8809 -vvv
   tcpdump: listening on any, link-type LINUX_SLL (Linux cooked v1), capture size 262144 bytes
