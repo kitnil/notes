@@ -334,3 +334,25 @@ POSTROUTING. Это к слову тот случай, когда можно в�
 Задача - необходимо всё пришедшее в интерфейс eth0 натить с одним source-адресом, а пришедшее с eth2 - с другим. Указать -i в POSTROUTING нельзя. Вариант решения проблемы: маркируем пакеты с eth0 меткой допустим 10, а с eth2 - 20 в PREROUTING. В правилах -j SNAT указываем соответствующий -m mark.
 
 * Олифер Книга по сетям 6 издание
+
+* LACP
+
+#+begin_example
+  [root@kvm15:~]# tcpdump -pni any -e ether proto 0x8809 -vvv
+  tcpdump: listening on any, link-type LINUX_SLL (Linux cooked v1), capture size 262144 bytes
+  20:16:20.398110 Out 00:1b:21:8c:be:21 ethertype Slow Protocols (0x8809), length 126: LACPv1, length 110
+          Actor Information TLV (0x01), length 20
+            System 00:1b:21:8c:be:20, System Priority 65535, Key 9, Port 2, Port Priority 255
+            State Flags [Activity, Aggregation, Synchronization, Collecting, Distributing]
+            0x0000:  ffff 001b 218c be20 0009 00ff 0002 3d00
+            0x0010:  0000
+          Partner Information TLV (0x02), length 20
+            System 64:64:9b:ac:5c:40, System Priority 127, Key 6, Port 14, Port Priority 127
+            State Flags [Activity, Timeout, Aggregation, Synchronization, Collecting, Distributing]
+            0x0000:  007f 6464 9bac 5c40 0006 007f 000e 3f00
+            0x0010:  0000
+          Collector Information TLV (0x03), length 16
+            Max Delay 0
+            0x0000:  0000 0000 0000 0000 0000 0000 0000
+          Terminator TLV (0x00), length 0
+#+end_example
