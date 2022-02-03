@@ -75,6 +75,9 @@
 - List indexes
   : curl 'localhost:9200/_cat/indices?v&pretty'
 
+- List yellow indexes
+  : curl 'es.intr:9200/_cat/indices?health=yellow&v&pretty'
+
 - Search
   : curl -s -X GET "elastic.intr:9200/logstash-te-2020.02.28/_search?q=server:web37&pretty"
   : curl -H 'Content-Type: application/json' -d '{"query": {"dis_max": {"queries": [{"match": {"server": "web37"}}, {"match": {"OPERATION_IDENTITY": "LOCAL-SCHED"}}]}}}' -s -X GET "elastic.intr:9200/logstash-te-2020.02.28/_search?pretty&size=1000" | jq -r '.hits.hits[] | ._source.ACTION_IDENTITY'
