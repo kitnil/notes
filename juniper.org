@@ -115,6 +115,9 @@
   discard
 #+END_EXAMPLE
 
+- Junos: 15.1R5.5
+  : loop-detect они подвезли только в Release 20.4R1.
+
 ** commit compare
 
 #+BEGIN_EXAMPLE
