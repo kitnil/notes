@@ -75,7 +75,8 @@
   : set cli screen-length 0
 
 - [[https://kb.juniper.net/InfoCenter/index?page=content&id=KB29448&actp=RSS][[M/MX/T/TX] Example - How to confirm apply-path is working - Juniper Networks]]
-  - root@sr1-mr13-14> show configuration policy-options prefix-list miran | display inheritance 
+  - root@sr1-mr13-14> show configuration policy-options prefix-list miran | display inheritance
+  - [[https://www.juniper.net/documentation/us/en/software/junos/routing-policy/topics/ref/statement/apply-path-edit-policy-options.html][apply-path | Junos OS | Juniper Networks]]
 
 - show routes advertised to neighbor
   origin: http://xgu.ru/wiki/BGP_%D0%B2_Juniper
