@@ -3307,6 +3307,8 @@ Maxim
 
 * API
 
+Subject: Re: Guix Data Service client module
+Message-ID: <878rupgxsd.fsf@gnu.org>
 #+begin_example
   scheme@(guile-user)> (define s (open-data-service "https://data.guix.gnu.org"))
   scheme@(guile-user)> (car (package-versions (lookup-package s "emacs")))
