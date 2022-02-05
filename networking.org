@@ -288,7 +288,13 @@ terminal monitor 	monitor start messages 	Change console terminal settings
 terminal no monitor 	monitor stop 	Change console terminal settings
 terminal length 0 	set cli screen-length 0 	sets the length for displaying command output
 
-* 
+* NAT
+
+** 
+
+- [[https://kslift.ru/nastroyka-routera-bez-nat/][настройка роутера без nat]]
+
+** 
 
 «Натить» ничего не знает ни про «что», ни про «куда». NAT - это технология
 подмены адреса в пакете и только. «Куда» определяется таблицей маршрутизации,
