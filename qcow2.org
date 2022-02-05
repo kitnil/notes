@@ -1,0 +1,30 @@
+- [[https://nocoast-tech.blogspot.com/2010/05/converting-kvm-guests-from-lvm-to-qcow2.html][nocoast: Converting kvm guests from lvm to qcow2, base images and snapshots]]
+
+Converting kvm guests from lvm to qcow2, base images and snapshots
+lvm based kvm guests are fast but you lose some flexibility, playing with fedora/kvm on my laptop I prefer to use file based images. Converting from lvm images to qcow2 isn't hard but the documentation is sparse.
+
+1. use qemu-img to convert from an lvm to qcow2 format:
+
+qemu-img convert -O qcow2 /dev/vg_name/lv_name/ /var/lib/libvirt/images/image_name.qcow2
+
+If you want the image compressed add '-c' right after the word convert.
+
+2. edit the xml for the image
+
+virsh edit image_name
+
+modify the disk stanza, adding a type to the driver line; on the source line change 'dev' to 'file' and modify the path:
+
+driver name='qemu' type='qcow2'
+source file='/var/lib/libvirt/images/image_name.qcow2'
+
+
+Creating images from with a base image allows quick rollouts of many boxes based on an single install - for example I have a 'golden image' of centos, I can stop that VM and create 2 servers using the original VM disk as a base file and writing changes to different files.
+
+qemu-img create -b original_image.qcow2 -f qcow2 clone_image01.qcow2
+qemu-img create -b original_image.qcow2 -f qcow2 clone_image02.qcow2
+
+
+Taking this further I can then snapshot both images so once I start making changes, rolling back to a point in time prior to the changes is very easy:
+
+qemu-img snapshot -c snapshot_name vm_image_name.qcow2
