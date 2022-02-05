@@ -39,6 +39,9 @@ Then assign DHCP option customtftp to your Networks or static Leases.
 - 100 d4:ca:6d:ba:6b:32
 - wan0 d4:ca:6d:ba:6b:33
 
+* Logs
+- [[https://archyslife.blogspot.com/2019/08/push-logs-and-data-into-elasticsearch_16.html][Push logs and data into elasticsearch - Part 2 Mikrotik Logs]]
+
 * Nat
 
 https://itproffi.ru/nastrojka-nat-na-marshrutizatorah-mikrotik/
