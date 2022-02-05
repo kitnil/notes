@@ -3304,3 +3304,13 @@ Maxim
 [0]  https://git.savannah.gnu.org/cgit/guix.git/commit/?id=69dcc24c9f0cdfea674eb690e7755d26a25ced2b
 [1]  https://jami.net/help/#answer14
 [2]  https://issues.guix.gnu.org/48538
+
+* API
+
+#+begin_example
+  scheme@(guile-user)> (define s (open-data-service "https://data.guix.gnu.org"))
+  scheme@(guile-user)> (car (package-versions (lookup-package s "emacs")))
+  $20 = #<<package-version> string: "27.2" branches: (#<<branch> name: "master" repository-id: 1>)>
+  scheme@(guile-user)> (car (package-version-history s (car (package-version-branches $20)) "emacs"))
+  $21 = #<<package-version-range> version: "27.2" first-revision: #<<revision> commit: "cc33f50d0e2a7835e99913226cb4c4b0e9e961ae" date: #<date nanosecond: 0 second: 54 minute: 30 hour: 20 day: 25 month: 3 year: 2021 zone-offset: 0>> last-revision: #<<revision> commit: "de38ccf2e0bb2fd21393925c296b65dca7499bd3" date: #<date nanosecond: 0 second: 37 minute: 48 hour: 13 day: 4 month: 2 year: 2022 zone-offset: 0>>>
+#+end_example
