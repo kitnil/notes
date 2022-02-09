@@ -58,6 +58,8 @@ ovs-ofctl dump-flows ovsbr0
 - ovs-vsctl --may-exist add-br br0
 - ovs-vsctl --may-exist add-port br0 enp34s0 vlan_mode=native-untagged
 
+- add interface to bridge
+  : ovs-vsctl --may-exist add-port br154 ubuntu tag=154 vlan_mode=native-untagged
 
 * OpenFlow Controlles
 ** Framework
