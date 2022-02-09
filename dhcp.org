@@ -1,3 +1,5 @@
 sudo nmap --script broadcast-dhcp-discover -e enp3s0
 
 Про VDS не совсем правда. Из VDS у нас есть один сервер, работающий на ней.
+
+: dnsmasq --keep-in-foreground --pid-file=/run/dnsmasq.pid --port=0 --local-service --listen-address=192.168.154.1 --resolv-file=/etc/resolv.conf --cache-size=150 --tftp-root=/var/empty,lo --dhcp-range 192.168.154.52,192.168.154.148,12h --bind-interfaces --interface=br154.154
