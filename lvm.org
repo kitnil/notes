@@ -23,3 +23,6 @@ File descriptor 14 (socket:[112552]) leaked on vgchange invocation. Parent PID 8
 
 root@guixsd ~ [env]# virsh pool-define-as lvm1 logical --source-name lvm1 --target /dev/sdd5 
 Pool lvm1 defined
+
+root@guixsd ~ [env]# virsh pool-start lvm1
+Pool lvm1 started
