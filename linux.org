@@ -446,3 +446,27 @@ In the inner netns shell, whatever OS processes that were causing problems
 before are out of the picture and tcpdump shows me all of the packets I expect
 to see.
 #+end_quote
+
+* Kill session by terminal
+
+#+begin_example
+  [root@web23:~]# w
+   16:43:11 up 414 days, 18:30,  2 users,  load average: 6.01, 6.78, 7.07
+  USER     TTY        LOGIN@   IDLE   JCPU   PCPU WHAT
+  eng      tty1      25Mar21  3:11   0.55s  0.02s -bash
+  eng      pts/0     16:42    0.00s  2.70s  0.01s sshd: eng [priv]                                                                             
+
+  [root@web23:~]# ps -ft tty1
+  UID        PID  PPID  C STIME TTY          TIME CMD
+  root       933     1  0  2020 tty1     00:00:00 /nix/store/1l5yw8hyfpvcn2a5lzds5nvgaz519n67-shadow-4.8/bin/login --
+  eng      30346   933  0  2021 tty1     00:00:00 -bash
+  root     30412 30346  0  2021 tty1     00:00:00 sudo -i
+  root     30423 30412  0  2021 tty1     00:00:00 -bash
+
+  [root@web23:~]# kill 933
+
+  [root@web23:~]# w
+   16:44:01 up 414 days, 18:31,  1 user,  load average: 5.77, 6.55, 6.97
+  USER     TTY        LOGIN@   IDLE   JCPU   PCPU WHAT
+  eng      pts/0     16:42    1.00s  2.70s  0.01s sshd: eng [priv]
+#+end_example
