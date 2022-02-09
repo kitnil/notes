@@ -10,3 +10,8 @@ root@guixsd ~ [env]# pvcreate /dev/sdd5
 File descriptor 5 (/gnu/store/2rlcdsb7p3njs7wbh2nanyl7j14gwj1w-guix-command) leaked on pvcreate invocation. Parent PID 8206: /gnu/store/d99ykvj3axzzidygsmdm
 File descriptor 14 (socket:[112552]) leaked on pvcreate invocation. Parent PID 8206: /gnu/store/d99ykvj3axzzidygsmdm
   Physical volume "/dev/sdd5" successfully created.
+
+root@guixsd ~ [env]# vgcreate lvm1 /dev/sdd5
+File descriptor 5 (/gnu/store/2rlcdsb7p3njs7wbh2nanyl7j14gwj1w-guix-command) leaked on vgcreate invocation. Parent PID 8206: /gnu/store/d99ykvj3axzzidygsmdm
+File descriptor 14 (socket:[112552]) leaked on vgcreate invocation. Parent PID 8206: /gnu/store/d99ykvj3axzzidygsmdm
+  Volume group "lvm1" successfully created
