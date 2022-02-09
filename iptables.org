@@ -33,3 +33,7 @@
 - [[https://github.com/mrash/psad][mrash/psad: psad: Intrusion Detection and Log Analysis with iptables]]
 - [[https://linuxconfig.org/collection-of-basic-linux-firewall-iptables-rules][Collection of basic Linux Firewall iptables rules - LinuxConfig.org]]
 - [[https://logi.cc/en/2010/07/netfilter-log-format/][Netfilter Log Format]]
+
+- iptables -t nat -A POSTROUTING -o br0 -j MASQUERADE
+- iptables -A FORWARD -i br0 -o br154.154 -m state --state RELATED,ESTABLISHED -j ACCEPT
+- iptables -A FORWARD -i br154.154 -o br0 -j ACCEPT
