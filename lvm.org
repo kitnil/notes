@@ -20,3 +20,6 @@ root@guixsd ~ [env]# vgchange -a y lvm1
 File descriptor 5 (/gnu/store/2rlcdsb7p3njs7wbh2nanyl7j14gwj1w-guix-command) leaked on vgchange invocation. Parent PID 8206: /gnu/store/d99ykvj3axzzidygsmdm
 File descriptor 14 (socket:[112552]) leaked on vgchange invocation. Parent PID 8206: /gnu/store/d99ykvj3axzzidygsmdm
   0 logical volume(s) in volume group "lvm1" now active
+
+root@guixsd ~ [env]# virsh pool-define-as lvm1 logical --source-name lvm1 --target /dev/sdd5 
+Pool lvm1 defined
