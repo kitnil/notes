@@ -1235,3 +1235,66 @@ root@guixsd ~ [env]# mount -o subvol=src,compress=zstd,ssd,noatime /dev/sdd3 /mn
 root@guixsd ~ [env]# history -a
 root@guixsd ~ [env]# mount -o subvol=src,compress=zstd:15,ssd,noatime /dev/sdd3 /mnt/src
 root@guixsd ~ [env]# modprobe raid456; guix shell mdadm -- mdadm --assemble --scan; mount /dev/md0 /mnt/guix
+
+* 
+
+root@guixsd ~ [env]# sfdisk -d /dev/sdd | sfdisk --no-reread /dev/sda
+Disk /dev/sda: 931.51 GiB, 1000204886016 bytes, 1953525168 sectors
+Disk model: WDC WDS100T2B0A
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disklabel type: gpt
+Disk identifier: 38F4DF53-D873-9F4A-80A2-21DB916523D1
+
+Old situation:
+
+Device          Start        End    Sectors   Size Type
+/dev/sda1        2048     411647     409600   200M Microsoft basic data
+/dev/sda2      411648 1320540159 1320128512 629.5G Linux filesystem
+/dev/sda3  1320540160 1936082943  615542784 293.5G Linux RAID
+/dev/sda4  1936082944 1953269759   17186816   8.2G Linux swap
+/dev/sda5  1953269760 1953525134     255375 124.7M BIOS boot
+
+>>> Script header accepted.
+>>> Script header accepted.
+>>> Script header accepted.
+>>> Script header accepted.
+>>> Script header accepted.
+>>> Script header accepted.
+>>> Script header accepted.
+>>> Last LBA specified by script is out of range.
+Last LBA specified by script is out of range.
+Last LBA specified by script is out of range.
+Failed to apply script headers, disk label not created: Numerical result out of range
+Leaving.
+
+root@guixsd ~ [env]# mkfs.btrfs -L btrfs1 /dev/sdf3
+btrfs-progs v5.15.1
+See http://btrfs.wiki.kernel.org for more information.
+
+Performing full device TRIM /dev/sdf3 (707.94GiB) ...
+NOTE: several default settings have changed in version 5.15, please make sure
+      this does not affect your deployments:
+      - DUP for metadata (-m dup)
+      - enabled no-holes (-O no-holes)
+      - enabled free-space-tree (-R free-space-tree)
+
+Label:              btrfs1
+UUID:               8ce15adb-50a8-472d-8a0f-b5a841ae2985
+Node size:          16384
+Sector size:        4096
+Filesystem size:    707.94GiB
+Block group profiles:
+  Data:             single            8.00MiB
+  Metadata:         DUP               1.00GiB
+  System:           DUP               8.00MiB
+SSD detected:       yes
+Zoned device:       no
+Incompat features:  extref, skinny-metadata, no-holes
+Runtime features:   free-space-tree
+Checksum:           crc32c
+Number of devices:  1
+Devices:
+   ID        SIZE  PATH
+    1   707.94GiB  /dev/sdf3
