@@ -1,0 +1,109 @@
+oleg@guixsd ~$ ssh root@192.168.154.64
+Warning: Permanently added '192.168.154.64' (ED25519) to the list of known hosts.
+Last login: Thu Feb 10 13:07:08 2022 from gateway
+[root@localhost ~]# 
+[root@localhost ~]# lsblk
+NAME                      MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT
+vda                       252:0    0   20G  0 disk 
+├─vda1                    252:1    0  200M  0 part /boot/efi
+├─vda2                    252:2    0    1G  0 part /boot
+└─vda3                    252:3    0 18.8G  0 part 
+  ├─centos-pool00_tmeta   253:0    0    8M  0 lvm  
+  │ └─centos-pool00-tpool 253:2    0   13G  0 lvm  
+  │   ├─centos-root       253:3    0   13G  0 lvm  /
+  │   └─centos-pool00     253:5    0   13G  1 lvm  
+  ├─centos-pool00_tdata   253:1    0   13G  0 lvm  
+  │ └─centos-pool00-tpool 253:2    0   13G  0 lvm  
+  │   ├─centos-root       253:3    0   13G  0 lvm  /
+  │   └─centos-pool00     253:5    0   13G  1 lvm  
+  └─centos-swap           253:4    0    2G  0 lvm  [SWAP]
+[root@localhost ~]# pvdisplay 
+  --- Physical volume ---
+  PV Name               /dev/vda3
+  VG Name               centos
+  PV Size               18.80 GiB / not usable 2.00 MiB
+  Allocatable           yes 
+  PE Size               4.00 MiB
+  Total PE              4813
+  Free PE               963
+  Allocated PE          3850
+  PV UUID               R3GjcU-APAf-3dwl-6qpN-DlDA-gmSf-KVelJ5
+   
+[root@localhost ~]# vgdisplay 
+  --- Volume group ---
+  VG Name               centos
+  System ID             
+  Format                lvm2
+  Metadata Areas        1
+  Metadata Sequence No  7
+  VG Access             read/write
+  VG Status             resizable
+  MAX LV                0
+  Cur LV                3
+  Open LV               2
+  Max PV                0
+  Cur PV                1
+  Act PV                1
+  VG Size               18.80 GiB
+  PE Size               4.00 MiB
+  Total PE              4813
+  Alloc PE / Size       3850 / <15.04 GiB
+  Free  PE / Size       963 / 3.76 GiB
+  VG UUID               tmYsRa-EbFi-uato-AbPO-SNXJ-WVTV-14tv4z
+   
+[root@localhost ~]# lvdisplay 
+  --- Logical volume ---
+  LV Name                pool00
+  VG Name                centos
+  LV UUID                1a9gsN-3G7l-KPXr-Pzif-Ga3r-f5XQ-ebZmZM
+  LV Write Access        read/write (activated read only)
+  LV Creation host, time localhost, 2022-02-10 12:59:24 +0300
+  LV Pool metadata       pool00_tmeta
+  LV Pool data           pool00_tdata
+  LV Status              available
+  # open                 2
+  LV Size                13.02 GiB
+  Allocated pool data    12.14%
+  Allocated metadata     20.65%
+  Current LE             3334
+  Segments               1
+  Allocation             inherit
+  Read ahead sectors     auto
+  - currently set to     8192
+  Block device           253:2
+   
+  --- Logical volume ---
+  LV Path                /dev/centos/root
+  LV Name                root
+  VG Name                centos
+  LV UUID                wDmyh4-7rNQ-8nqr-OKSx-tXP4-fA4z-n80jv6
+  LV Write Access        read/write
+  LV Creation host, time localhost, 2022-02-10 12:59:25 +0300
+  LV Pool name           pool00
+  LV Status              available
+  # open                 1
+  LV Size                13.02 GiB
+  Mapped size            12.14%
+  Current LE             3334
+  Segments               1
+  Allocation             inherit
+  Read ahead sectors     auto
+  - currently set to     8192
+  Block device           253:3
+   
+  --- Logical volume ---
+  LV Path                /dev/centos/swap
+  LV Name                swap
+  VG Name                centos
+  LV UUID                3bc09M-9tXU-M47P-oCAq-VZp2-jH3F-sxro7Q
+  LV Write Access        read/write
+  LV Creation host, time localhost, 2022-02-10 12:59:25 +0300
+  LV Status              available
+  # open                 2
+  LV Size                2.00 GiB
+  Current LE             512
+  Segments               1
+  Allocation             inherit
+  Read ahead sectors     auto
+  - currently set to     8192
+  Block device           253:4
