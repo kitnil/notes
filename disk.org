@@ -1298,3 +1298,1243 @@ Number of devices:  1
 Devices:
    ID        SIZE  PATH
     1   707.94GiB  /dev/sdf3
+
+* 
+
+mdadm parted dosfstools
+
+root@guixsd ~ [env]# wipefs -a /dev/sdc
+/dev/sdc: 2 bytes were erased at offset 0x000001fe (dos): 55 aa
+/dev/sdc: 8 bytes were erased at offset 0x00000200 (gpt): 45 46 49 20 50 41 52 54
+/dev/sdc: 8 bytes were erased at offset 0x37e4895e00 (gpt): 45 46 49 20 50 41 52 54
+/dev/sdc: calling ioctl to re-read partition table: Success
+
+root@guixsd ~ [env]# parted /dev/sdc set 1 esp on
+Information: You may need to update /etc/fstab.
+
+root@guixsd ~ [env]# mkfs.fat -F32 /dev/sdc1
+mkfs.fat 4.2 (2021-01-31)
+
+root@guixsd ~ [env]# sfdisk -d /dev/sdc | sfdisk /dev/sdd
+Checking that no-one is using this disk right now ... OK
+
+Disk /dev/sdd: 1.82 TiB, 2000398934016 bytes, 3907029168 sectors
+Disk model: CT2000MX500SSD1 
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 4096 bytes
+I/O size (minimum/optimal): 4096 bytes / 4096 bytes
+
+>>> Script header accepted.
+>>> Script header accepted.
+>>> Script header accepted.
+>>> Script header accepted.
+>>> Script header accepted.
+>>> Script header accepted.
+>>> Script header accepted.
+>>> Created a new GPT disklabel (GUID: 780AB54C-C7B3-B246-AB00-D0606013B584).
+/dev/sdd1: Created a new partition 1 of type 'EFI System' and of size 512 MiB.
+/dev/sdd2: Created a new partition 2 of type 'Linux RAID' and of size 223.1 GiB.
+/dev/sdd3: Done.
+
+New situation:
+Disklabel type: gpt
+Disk identifier: 780AB54C-C7B3-B246-AB00-D0606013B584
+
+Device       Start       End   Sectors   Size Type
+/dev/sdd1     2048   1050623   1048576   512M EFI System
+/dev/sdd2  1050624 468862094 467811471 223.1G Linux RAID
+
+The partition table has been altered.
+Calling ioctl() to re-read partition table.
+Syncing disks.
+
+root@guixsd ~ [env]# parted -l /dev/sdd
+Model: ATA WDC WDS100T2B0A (scsi)
+Disk /dev/sda: 1000GB
+Sector size (logical/physical): 512B/512B
+Partition Table: gpt
+Disk Flags: 
+
+Number  Start   End     Size    File system     Name  Flags
+ 1      1049kB  211MB   210MB   fat32                 msftdata
+ 2      211MB   991GB   991GB   ext4
+ 3      991GB   1000GB  8800MB  linux-swap(v1)        swap
+ 4      1000GB  1000GB  131MB                         bios_grub
+
+
+Model: ATA WDC WD15EARS-00M (scsi)
+Disk /dev/sdb: 1500GB
+Sector size (logical/physical): 512B/512B
+Partition Table: gpt
+Disk Flags: 
+
+Number  Start   End     Size    File system  Name  Flags
+ 1      1049kB  1500GB  1500GB  ext4
+
+
+Model: ATA OCZ-VERTEX3 MI (scsi)
+Disk /dev/sdc: 240GB
+Sector size (logical/physical): 512B/512B
+Partition Table: gpt
+Disk Flags: 
+
+Number  Start   End    Size   File system  Name  Flags
+ 1      1049kB  538MB  537MB  fat32              boot, esp
+ 2      538MB   240GB  240GB                     raid
+
+
+Warning: Not all of the space available to /dev/sdd appears to be used, you can
+fix the GPT to use all of the space (an extra 3438167040 blocks) or continue
+with the current setting? 
+Fix/Ignore? Fix                                                           
+Model: ATA CT2000MX500SSD1 (scsi)
+Disk /dev/sdd: 2000GB
+Sector size (logical/physical): 512B/4096B
+Partition Table: gpt
+Disk Flags: 
+
+Number  Start   End    Size   File system  Name  Flags
+ 1      1049kB  538MB  537MB                     boot, esp
+ 2      538MB   240GB  240GB                     raid
+
+root@guixsd ~ [env]# cfdisk /dev/sdd
+
+                                                                              Disk: /dev/sdd
+                                                         Size: 1.82 TiB, 2000398934016 bytes, 3907029168 sectors
+                                                       Label: gpt, identifier: 780AB54C-C7B3-B246-AB00-D0606013B584
+
+    Device                                           Start                         End                     Sectors                   Size Type
+>>  /dev/sdd1                                         2048                     1050623                     1048576                   512M EFI System                      
+    /dev/sdd2                                      1050624                   468862094                   467811471                 223.1G Linux RAID
+    Free space                                   468862976                  3907029134                  3438166159                   1.6T
+
+root@guixsd ~ [env]# mdadm --examine /dev/sdc2 /dev/sdd2 
+mdadm: No md superblock detected on /dev/sdc2.
+mdadm: No md superblock detected on /dev/sdd2.
+
+root@guixsd ~ [env]# lsmod |grep raid
+root@guixsd ~ [env]# modprobe raid5
+root@guixsd ~ [env]# lsmod |grep raid
+raid456               163840  0
+async_raid6_recov      24576  1 raid456
+async_memcpy           20480  2 raid456,async_raid6_recov
+async_pq               24576  2 raid456,async_raid6_recov
+async_xor              20480  3 async_pq,raid456,async_raid6_recov
+async_tx               20480  5 async_pq,async_memcpy,async_xor,raid456,async_raid6_recov
+raid6_pq              118784  3 async_pq,raid456,async_raid6_recov
+libcrc32c              16384  4 nf_conntrack,nf_nat,openvswitch,raid456
+
+root@guixsd ~ [env]# mdadm --create /dev/md0 --level=5 --raid-devices=2 /dev/sdc2 /dev/sdd2
+mdadm: Defaulting to version 1.2 metadata
+mdadm: array /dev/md0 started.
+
+root@guixsd ~ [env]# cat /proc/mdstat 
+Personalities : [raid6] [raid5] [raid4] 
+md0 : active raid5 sdd2[2] sdc2[0]
+      233773568 blocks super 1.2 level 5, 512k chunk, algorithm 2 [2/1] [U_]
+      [>....................]  recovery =  1.0% (2344860/233773568) finish=18.0min speed=213169K/sec
+      bitmap: 0/2 pages [0KB], 65536KB chunk
+
+unused devices: <none>
+
+root@guixsd ~ [env]# mdadm -S /dev/md0
+mdadm: stopped /dev/md0
+
+root@guixsd ~ [env]# mdadm --create /dev/md0 --level=5 --raid-devices=3 /dev/sdc2 /dev/sdd2 missing
+mdadm: /dev/sdc2 appears to be part of a raid array:
+       level=raid5 devices=2 ctime=Sun Jan 16 12:08:22 2022
+mdadm: /dev/sdd2 appears to be part of a raid array:
+       level=raid5 devices=2 ctime=Sun Jan 16 12:08:22 2022
+Continue creating array? yes
+mdadm: Defaulting to version 1.2 metadata
+mdadm: array /dev/md0 started.
+
+root@guixsd ~ [env]# cat /proc/mdstat 
+Personalities : [raid6] [raid5] [raid4] 
+md0 : active raid5 sdd2[1] sdc2[0]
+      467547136 blocks super 1.2 level 5, 512k chunk, algorithm 2 [3/2] [UU_]
+      bitmap: 2/2 pages [8KB], 65536KB chunk
+
+unused devices: <none>
+
+root@guixsd ~ [env]# mkfs.ext4 -L guix-root /dev/md0 
+mke2fs 1.46.4 (18-Aug-2021)
+Creating filesystem with 116886784 4k blocks and 29229056 inodes
+Filesystem UUID: 38ab9423-b1f0-4580-b0c3-14dacaf7fb4f
+Superblock backups stored on blocks: 
+	32768, 98304, 163840, 229376, 294912, 819200, 884736, 1605632, 2654208, 
+	4096000, 7962624, 11239424, 20480000, 23887872, 71663616, 78675968, 
+	102400000
+
+Allocating group tables: done                            
+Writing inode tables: done                            
+Creating journal (262144 blocks): done
+Writing superblocks and filesystem accounting information: done     
+
+root@guixsd ~ [env]# lsblk
+NAME    MAJ:MIN RM   SIZE RO TYPE  MOUNTPOINTS
+sda       8:0    0 931.5G  0 disk  
+├─sda1    8:1    0   200M  0 part  
+├─sda2    8:2    0   923G  0 part  /var/lib/docker
+│                                  /gnu/store
+│                                  /
+├─sda3    8:3    0   8.2G  0 part  [SWAP]
+└─sda4    8:4    0 124.7M  0 part  
+sdb       8:16   0   1.4T  0 disk  
+└─sdb1    8:17   0   1.4T  0 part  /srv
+sdc       8:32   0 223.6G  0 disk  
+├─sdc1    8:33   0   512M  0 part  
+└─sdc2    8:34   0 223.1G  0 part  
+  └─md0   9:0    0 445.9G  0 raid5 
+sdd       8:48   0   1.8T  0 disk  
+├─sdd1    8:49   0   512M  0 part  
+└─sdd2    8:50   0 223.1G  0 part  
+  └─md0   9:0    0 445.9G  0 raid5 
+
+root@guixsd ~ [env]# blkid
+/dev/sda1: UUID="A2C0-99E9" BLOCK_SIZE="512" TYPE="vfat" PARTUUID="5d767fba-92ca-2347-9c5a-c4d855a49020"
+/dev/sdb1: LABEL="magnolia-data" UUID="87af3a60-8618-44f9-8251-1c88fe8619ae" BLOCK_SIZE="4096" TYPE="ext4" PARTUUID="7cbb41b2-a072-4d11-beee-f124ddd679e2"
+/dev/sda2: LABEL="guixsd-root" UUID="ba2103b8-c44a-48af-81cd-7b8204fb300c" BLOCK_SIZE="4096" TYPE="ext4" PARTUUID="f5aa4986-d803-0148-886e-62c5d2853f13"
+/dev/sda3: LABEL="guixsd-swap" UUID="5ffb9785-7d4a-4c59-94c8-e3104981529a" TYPE="swap" PARTUUID="5841d881-da3d-4b0d-b711-ed660316f082"
+/dev/sdc1: UUID="EC6E-3897" BLOCK_SIZE="512" TYPE="vfat" PARTUUID="7db93980-f31a-a448-a0a1-72e17a65fde2"
+/dev/sdd2: UUID="b42801aa-72bd-29a0-6f97-e8d8dd87beb2" UUID_SUB="cdaac268-59de-cc17-7fa4-9c54b0fe7557" LABEL="guixsd:0" TYPE="linux_raid_member" PARTUUID="525dd46e-5973-dc4a-8084-a70d5f98c88f"
+/dev/sdc2: UUID="b42801aa-72bd-29a0-6f97-e8d8dd87beb2" UUID_SUB="a681cc8e-a57d-5224-ccde-95d06e4e5ab6" LABEL="guixsd:0" TYPE="linux_raid_member" PARTUUID="525dd46e-5973-dc4a-8084-a70d5f98c88f"
+/dev/sdd1: PARTUUID="7db93980-f31a-a448-a0a1-72e17a65fde2"
+/dev/md0: LABEL="guix-root" UUID="38ab9423-b1f0-4580-b0c3-14dacaf7fb4f" BLOCK_SIZE="4096" TYPE="ext4"
+/dev/sda4: PARTUUID="80cf1070-8cbf-7b44-9d23-15f3d5325a45"
+
+root@guixsd ~ [env]# mount /dev/md0 /mnt/flash
+
+root@guixsd ~ [env]# ls -l /mnt/flash
+total 16
+drwx------ 2 root root 16384 Jan 16 12:12 lost+found/
+
+root@guixsd ~ [env]# touch /mnt/flash/f
+
+root@guixsd ~ [env]# rm /mnt/flash/f
+
+root@guixsd ~ [env]# umount /mnt/flash 
+
+root@guixsd ~ [env]# cat /proc/mdstat 
+Personalities : [raid6] [raid5] [raid4] 
+md0 : active raid5 sdd2[1] sdc2[0]
+      467547136 blocks super 1.2 level 5, 512k chunk, algorithm 2 [3/2] [UU_]
+      bitmap: 2/2 pages [8KB], 65536KB chunk
+
+unused devices: <none>
+
+oleg@guixsd ~$ guix system switch
+guix system: warning: representing setuid programs with file-like objects is deprecated; use 'setuid-program' instead
+guix system: warning: Your Guix installation is 9 days old.
+guix system: warning: Consider running 'guix pull' followed by
+'guix system reconfigure' to get up-to-date packages and security updates.
+
+WARNING: (#{ g652}#): `openssh' imported from both (gnu packages ssh) and (deprecated)
+;;; compiling /home/oleg/.local/share/chezmoi/dotfiles/guixsd/ssh-exporter.scm
+;;; compiled /root/.cache/guile/ccache/3.0-LE-8-4.5/home/oleg/.local/share/chezmoi/dotfiles/guixsd/ssh-exporter.scm.go
+;;; compiling /home/oleg/.local/share/chezmoi/dotfiles/guixsd/exim.scm
+;;; compiled /root/.cache/guile/ccache/3.0-LE-8-4.5/home/oleg/.local/share/chezmoi/dotfiles/guixsd/exim.scm.go
+;;; compiling /home/oleg/.local/share/chezmoi/dotfiles/guixsd/smartctl.scm
+;;; compiled /root/.cache/guile/ccache/3.0-LE-8-4.5/home/oleg/.local/share/chezmoi/dotfiles/guixsd/smartctl.scm.go
+;;; compiling /home/oleg/.local/share/chezmoi/dotfiles/guixsd/bird.scm
+;;; compiled /root/.cache/guile/ccache/3.0-LE-8-4.5/home/oleg/.local/share/chezmoi/dotfiles/guixsd/bird.scm.go
+;;; compiling /home/oleg/.local/share/chezmoi/dotfiles/guixsd/blackbox.scm
+;;; compiled /root/.cache/guile/ccache/3.0-LE-8-4.5/home/oleg/.local/share/chezmoi/dotfiles/guixsd/blackbox.scm.go
+;;; compiling /home/oleg/.local/share/chezmoi/dotfiles/guixsd/node.scm
+;;; compiled /root/.cache/guile/ccache/3.0-LE-8-4.5/home/oleg/.local/share/chezmoi/dotfiles/guixsd/node.scm.go
+;;; compiling /home/oleg/.local/share/chezmoi/dotfiles/guixsd/desktop.scm
+;;; compiled /root/.cache/guile/ccache/3.0-LE-8-4.5/home/oleg/.local/share/chezmoi/dotfiles/guixsd/desktop.scm.go
+/home/oleg/.local/share/chezmoi/dotfiles/guixsd/hardware/guixsd.scm:4:0: warning: List elements of the field 'swap-devices' should now use the <swap-space> record, as the old method is deprecated. See "(guix) operating-system Reference" for more details.
+WARNING: (#{ g652}#): imported module (gnu services) overrides core binding `delete'
+guix system: warning: the following groups appear more than once: docker nixbld adbusers
+gnu/services/dns.scm:962:4: warning: importing module (ice-9 rdelim) from the host
+gnu/services/dns.scm:962:4: warning: importing module (ice-9 rdelim) from the host
+gnu/services/dns.scm:962:4: warning: importing module (ice-9 rdelim) from the host
+gnu/services/dns.scm:962:4: warning: importing module (ice-9 rdelim) from the host
+;;; compiling /home/oleg/.local/share/chezmoi/dotfiles/guixsd/ssh-exporter.scm
+;;; compiled /root/.cache/guile/ccache/3.0-LE-8-4.5/home/oleg/.local/share/chezmoi/dotfiles/guixsd/ssh-exporter.scm.go
+;;; compiling /home/oleg/.local/share/chezmoi/dotfiles/guixsd/exim.scm
+;;; compiled /root/.cache/guile/ccache/3.0-LE-8-4.5/home/oleg/.local/share/chezmoi/dotfiles/guixsd/exim.scm.go
+;;; compiling /home/oleg/.local/share/chezmoi/dotfiles/guixsd/smartctl.scm
+;;; compiled /root/.cache/guile/ccache/3.0-LE-8-4.5/home/oleg/.local/share/chezmoi/dotfiles/guixsd/smartctl.scm.go
+;;; compiling /home/oleg/.local/share/chezmoi/dotfiles/guixsd/bird.scm
+;;; compiled /root/.cache/guile/ccache/3.0-LE-8-4.5/home/oleg/.local/share/chezmoi/dotfiles/guixsd/bird.scm.go
+;;; compiling /home/oleg/.local/share/chezmoi/dotfiles/guixsd/blackbox.scm
+;;; compiled /root/.cache/guile/ccache/3.0-LE-8-4.5/home/oleg/.local/share/chezmoi/dotfiles/guixsd/blackbox.scm.go
+;;; compiling /home/oleg/.local/share/chezmoi/dotfiles/guixsd/node.scm
+;;; compiled /root/.cache/guile/ccache/3.0-LE-8-4.5/home/oleg/.local/share/chezmoi/dotfiles/guixsd/node.scm.go
+;;; compiling /home/oleg/.local/share/chezmoi/dotfiles/guixsd/desktop.scm
+;;; compiled /root/.cache/guile/ccache/3.0-LE-8-4.5/home/oleg/.local/share/chezmoi/dotfiles/guixsd/desktop.scm.go
+guix system: warning: the following groups appear more than once: docker nixbld adbusers
+gnu/services/dns.scm:962:4: warning: importing module (ice-9 rdelim) from the host
+gnu/services/dns.scm:962:4: warning: importing module (ice-9 rdelim) from the host
+gnu/services/dns.scm:962:4: warning: importing module (ice-9 rdelim) from the host
+gnu/services/dns.scm:962:4: warning: importing module (ice-9 rdelim) from the host
+substitute: updating substitutes from 'https://ci.guix.gnu.org'... 100.0%
+substitute: updating substitutes from 'https://bordeaux.guix.gnu.org'... 100.0%
+The following derivations will be built:
+   /gnu/store/gjwcpkvjpr0jvgb5ada9zcx5waw2lbab-system.drv
+   /gnu/store/08y9zmzgmd25ix16l6lqwq9zyflgnlxl-provenance.drv
+   /gnu/store/vw48pvcb0kj92gq6ybaa0sfnfm6m64pj-grub.cfg.drv
+   /gnu/store/mipdii5xz3lqp5q31wmf1h2fkq41bdjh-grub-locales.drv
+
+4.0 MB will be downloaded
+building /gnu/store/08y9zmzgmd25ix16l6lqwq9zyflgnlxl-provenance.drv...
+ efivar-37  103KiB                                                                                                              1.0MiB/s 00:00 [##################] 100.0%
+ mtools-4.0.36  182KiB                                                                                                          1.4MiB/s 00:00 [##################] 100.0%
+ efibootmgr-17  28KiB                                                                                                           1.4MiB/s 00:00 [##################] 100.0%
+building /gnu/store/gjwcpkvjpr0jvgb5ada9zcx5waw2lbab-system.drv...
+ grub-efi-2.06  4.1MiB                                                                                                          2.2MiB/s 00:02 [##################] 100.0%
+building /gnu/store/mipdii5xz3lqp5q31wmf1h2fkq41bdjh-grub-locales.drv...
+building /gnu/store/vw48pvcb0kj92gq6ybaa0sfnfm6m64pj-grub.cfg.drv...
+/gnu/store/jrk493967dssc6n64gyc8ni2pf1m43v7-system
+/gnu/store/qrra4lrx4608lls25x805inmd47gp5dq-grub.cfg
+
+activating system...
+;;; compiling /home/oleg/.local/share/chezmoi/dotfiles/guixsd/ssh-exporter.scm
+;;; compiled /root/.cache/guile/ccache/3.0-LE-8-4.5/home/oleg/.local/share/chezmoi/dotfiles/guixsd/ssh-exporter.scm.go
+;;; compiling /home/oleg/.local/share/chezmoi/dotfiles/guixsd/exim.scm
+;;; compiled /root/.cache/guile/ccache/3.0-LE-8-4.5/home/oleg/.local/share/chezmoi/dotfiles/guixsd/exim.scm.go
+;;; compiling /home/oleg/.local/share/chezmoi/dotfiles/guixsd/smartctl.scm
+;;; compiled /root/.cache/guile/ccache/3.0-LE-8-4.5/home/oleg/.local/share/chezmoi/dotfiles/guixsd/smartctl.scm.go
+;;; compiling /home/oleg/.local/share/chezmoi/dotfiles/guixsd/bird.scm
+;;; compiled /root/.cache/guile/ccache/3.0-LE-8-4.5/home/oleg/.local/share/chezmoi/dotfiles/guixsd/bird.scm.go
+;;; compiling /home/oleg/.local/share/chezmoi/dotfiles/guixsd/blackbox.scm
+;;; compiled /root/.cache/guile/ccache/3.0-LE-8-4.5/home/oleg/.local/share/chezmoi/dotfiles/guixsd/blackbox.scm.go
+;;; compiling /home/oleg/.local/share/chezmoi/dotfiles/guixsd/node.scm
+;;; compiled /root/.cache/guile/ccache/3.0-LE-8-4.5/home/oleg/.local/share/chezmoi/dotfiles/guixsd/node.scm.go
+;;; compiling /home/oleg/.local/share/chezmoi/dotfiles/guixsd/desktop.scm
+;;; compiled /root/.cache/guile/ccache/3.0-LE-8-4.5/home/oleg/.local/share/chezmoi/dotfiles/guixsd/desktop.scm.go
+guix system: warning: the following groups appear more than once: docker nixbld adbusers
+gnu/services/dns.scm:962:4: warning: importing module (ice-9 rdelim) from the host
+gnu/services/dns.scm:962:4: warning: importing module (ice-9 rdelim) from the host
+substitute: updating substitutes from 'https://ci.guix.gnu.org'... 100.0%
+The following derivations will be built:
+   /gnu/store/aq2pqp7lrpc4d3hbf9vsg9ggl9xl7c66-switch-to-system.scm.drv
+   /gnu/store/09nnh0rr4z8l39zrsb6aanwwzhsgprj0-module-import.drv
+   /gnu/store/6cmg6wwv4h07pdbzf7zk79ybnf3g8na9-module-import.drv
+
+2.1 MB will be downloaded
+substitute: updating substitutes from 'https://ci.guix.gnu.org'... 100.0%
+building /gnu/store/09nnh0rr4z8l39zrsb6aanwwzhsgprj0-module-import.drv...
+ module-import  1KiB                                                                                                            371KiB/s 00:00 [##################] 100.0%
+ module-import-compiled  1002KiB                                                                                                2.4MiB/s 00:00 [##################] 100.0%
+ module-import-compiled  1002KiB                                                                                                4.3MiB/s 00:00 [##################] 100.0%
+building /gnu/store/aq2pqp7lrpc4d3hbf9vsg9ggl9xl7c66-switch-to-system.scm.drv...
+making '/gnu/store/jrk493967dssc6n64gyc8ni2pf1m43v7-system' the current system...
+setting up setuid programs in '/run/setuid-programs'...
+populating /etc from /gnu/store/pwhf81v83cisn6dm1cgy24lxlydvbarm-etc...
+guix: gitolite: installing /gnu/store/6gbfx27am0hff87d6klbvrdic7j088al-gitolite.rc
+creating nginx log directory '/var/log/nginx'
+creating nginx run directory '/var/run/nginx'
+creating nginx temp directories '/var/run/nginx/{client_body,proxy,fastcgi,uwsgi,scgi}_temp'
+nginx: [warn] conflicting server name "cgit.duckdns.org" on 0.0.0.0:80, ignored
+nginx: [warn] conflicting server name "monitor.wugi.info" on 0.0.0.0:80, ignored
+nginx: the configuration file /gnu/store/pgphsh9bq9arz95iwp2jbmbhrx2kcaky-nginx.conf syntax is ok
+nginx: configuration file /gnu/store/pgphsh9bq9arz95iwp2jbmbhrx2kcaky-nginx.conf test is successful
+/var/lib/certbot/renew-certificates may need to be run
+`/gnu/store/4lx3xk5s9yip079bd8bp9z0qar26gq29-openssh-authorized-keys/vm1-ssh-tunnel' -> `/etc/ssh/authorized_keys.d/vm1-ssh-tunnel'
+`/gnu/store/4lx3xk5s9yip079bd8bp9z0qar26gq29-openssh-authorized-keys/jenkins' -> `/etc/ssh/authorized_keys.d/jenkins'
+substitute: updating substitutes from 'https://ci.guix.gnu.org'... 100.0%
+The following derivations will be built:
+   /gnu/store/igvl75w052gllndcx89cag4fqx84mrrz-install-bootloader.scm.drv
+   /gnu/store/9b1hn4i52a1ckh3rg6kayq8jr682k4d2-module-import.drv
+   /gnu/store/gk1wd6v4fvp6cx76xb5srwgkal5n3dkd-module-import.drv
+
+1.2 MB will be downloaded
+ module-import-compiled  574KiB                                                                                                 2.4MiB/s 00:00 [##################] 100.0%
+ module-import-compiled  574KiB                                                                                                 4.5MiB/s 00:00 [##################] 100.0%
+building /gnu/store/9b1hn4i52a1ckh3rg6kayq8jr682k4d2-module-import.drv...
+building /gnu/store/gk1wd6v4fvp6cx76xb5srwgkal5n3dkd-module-import.drv...
+building /gnu/store/igvl75w052gllndcx89cag4fqx84mrrz-install-bootloader.scm.drv...
+guix system: error: '/gnu/store/aav60p7c3jsr4zpdyqrxkbb3ax5ni4kc-grub-efi-2.06/sbin/grub-install --boot-directory //boot --bootloader-id=Guix --efi-directory //boot/efi' exited with status 1; output follows:
+
+  Installing for x86_64-efi platform.
+  Could not prepare Boot variable: No space left on device
+  /gnu/store/aav60p7c3jsr4zpdyqrxkbb3ax5ni4kc-grub-efi-2.06/sbin/grub-install: error: efibootmgr failed to register the boot entry: Input/output error.
+
+
+
+root@guixsd ~# ls -l /sys/firmware/efi/efivars/
+total 0
+-rw-r--r-- 1 root root  132 Jan 16 08:58 AMD_PBS_SETUP-a339d746-f678-49b3-9fc7-54ce0f9df226
+-rw-r--r-- 1 root root   12 Jan 16 08:58 AMD_RAID-fe26a894-d199-47d4-8afa-070e3d54ba86
+-rw-r--r-- 1 root root 1452 Jan 16 08:58 AmdSetup-3a997502-647a-4c82-998e-52ef9486a247
+-rw-r--r-- 1 root root    8 Jan 16 08:58 AmiHardwareSignatureSetupUpdateCountVar-81c76078-bfde-4368-9790-570914c01a65
+-rw-r--r-- 1 root root   28 Jan 16 08:58 AMITCGPPIVAR-a8a2093b-fefa-43c1-8e62-ce526847265e
+-rw-r--r-- 1 root root   85 Jan 16 08:58 AMITSESetup-c811fa38-42c8-4579-a9bb-60e94eddfb34
+-rw-r--r-- 1 root root    6 Jan 16 08:58 ApServiceAuthority-ec87d643-eba4-4bb5-a1e5-3f3e36b20da9
+-rw-r--r-- 1 root root    5 Jan 16 08:58 ApServiceData-ec87d643-eba4-4bb5-a1e5-3f3e36b20da9
+-rw-r--r-- 1 root root    8 Jan 16 08:58 ApSyncFlagNv-ad3f6761-f0a3-46c8-a4cb-19b70ffdb305
+-rw-r--r-- 1 root root  835 Jan 16 08:58 Boot0003-8be4df61-93ca-11d2-aa0d-00e098032b8c
+-rw-r--r-- 1 root root  126 Jan 16 08:58 Boot0004-8be4df61-93ca-11d2-aa0d-00e098032b8c
+-rw-r--r-- 1 root root    6 Jan 16 08:58 BootCurrent-8be4df61-93ca-11d2-aa0d-00e098032b8c
+-rw-r--r-- 1 root root    8 Jan 16 08:58 BootOptionSupport-8be4df61-93ca-11d2-aa0d-00e098032b8c
+-rw-r--r-- 1 root root    8 Jan 16 08:58 BootOrder-8be4df61-93ca-11d2-aa0d-00e098032b8c
+-rw-r--r-- 1 root root    5 Jan 16 08:58 CACHE-ec87d643-eba4-4bb5-a1e5-3f3e36b20da9
+-rw-r--r-- 1 root root  106 Jan 16 08:58 ConIn-8be4df61-93ca-11d2-aa0d-00e098032b8c
+-rw-r--r-- 1 root root  106 Jan 16 08:58 ConInDev-8be4df61-93ca-11d2-aa0d-00e098032b8c
+-rw-r--r-- 1 root root   40 Jan 16 08:58 ConOut-8be4df61-93ca-11d2-aa0d-00e098032b8c
+-rw-r--r-- 1 root root   40 Jan 16 08:58 ConOutDev-8be4df61-93ca-11d2-aa0d-00e098032b8c
+-rw-r--r-- 1 root root    5 Jan 16 08:58 CurrentPolicy-77fa9abd-0359-4d32-bd60-28f4e78f784b
+-rw-r--r-- 1 root root 4253 Jan 16 08:58 dbDefault-8be4df61-93ca-11d2-aa0d-00e098032b8c
+-rw-r--r-- 1 root root 3804 Jan 16 08:58 dbxDefault-8be4df61-93ca-11d2-aa0d-00e098032b8c
+-rw-r--r-- 1 root root    8 Jan 16 08:58 DefaultBootOrder-45cf35f6-0d6e-4d04-856a-0370a5b16f53
+-rw-r--r-- 1 root root   18 Jan 16 08:58 DefaultLegacyDevOrder-3c4ead08-45ae-4315-8d15-a60eaa8caf69
+-rw-r--r-- 1 root root    5 Jan 16 08:58 DeploymentModeNv-97e8965f-c761-4f48-b6e4-9ffa9cb2a2d6
+-rw-r--r-- 1 root root 1284 Jan 16 08:58 DmiArray-4b3082a3-80c6-4d7e-9cd0-583917265df1
+-rw-r--r-- 1 root root   39 Jan 16 08:58 DmiVar0100010400-4b3082a3-80c6-4d7e-9cd0-583917265df1
+-rw-r--r-- 1 root root   12 Jan 16 08:58 DmiVar0100010500-4b3082a3-80c6-4d7e-9cd0-583917265df1
+-rw-r--r-- 1 root root   27 Jan 16 08:58 DmiVar0100010700-4b3082a3-80c6-4d7e-9cd0-583917265df1
+-rw-r--r-- 1 root root   20 Jan 16 08:58 DmiVar0100010800-4b3082a3-80c6-4d7e-9cd0-583917265df1
+-rw-r--r-- 1 root root   39 Jan 16 08:58 DmiVar0200020400-4b3082a3-80c6-4d7e-9cd0-583917265df1
+-rw-r--r-- 1 root root   36 Jan 16 08:58 DmiVar0200020500-4b3082a3-80c6-4d7e-9cd0-583917265df1
+-rw-r--r-- 1 root root   23 Jan 16 08:58 DmiVar0200020700-4b3082a3-80c6-4d7e-9cd0-583917265df1
+-rw-r--r-- 1 root root   39 Jan 16 08:58 DmiVar0300030400-4b3082a3-80c6-4d7e-9cd0-583917265df1
+-rw-r--r-- 1 root root   27 Jan 16 08:58 DmiVar0300030700-4b3082a3-80c6-4d7e-9cd0-583917265df1
+-rw-r--r-- 1 root root    5 Jan 16 08:58 DownCoreStatus-29749bad-401b-4f6d-b124-cece8c590c48
+-rw-r--r-- 1 root root 1028 Jan 16 08:58 dump-type0-10-1-1609985200-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+-rw-r--r-- 1 root root 1028 Jan 16 08:58 dump-type0-10-1-1609985823-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+-rw-r--r-- 1 root root 1028 Jan 16 08:58 dump-type0-10-1-1609986284-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+-rw-r--r-- 1 root root 1028 Jan 16 08:58 dump-type0-10-1-1610067654-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+-rw-r--r-- 1 root root 1028 Jan 16 08:58 dump-type0-10-1-1611433768-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+-rw-r--r-- 1 root root 1028 Jan 16 08:58 dump-type0-10-1-1611492025-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+-rw-r--r-- 1 root root 1028 Jan 16 08:58 dump-type0-10-1-1612103195-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+-rw-r--r-- 1 root root  695 Jan 16 08:58 dump-type0-10-1-1631969921-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+-rw-r--r-- 1 root root  679 Jan 16 08:58 dump-type0-10-1-1631970225-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+-rw-r--r-- 1 root root  761 Jan 16 08:58 dump-type0-10-1-1631970713-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+-rw-r--r-- 1 root root 1028 Jan 16 08:58 dump-type0-11-1-1611433768-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+-rw-r--r-- 1 root root  864 Jan 16 08:58 dump-type0-11-1-1611492025-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+-rw-r--r-- 1 root root  776 Jan 16 08:58 dump-type0-11-1-1631969921-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+-rw-r--r-- 1 root root  814 Jan 16 08:58 dump-type0-11-1-1631970713-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+-rw-r--r-- 1 root root 1028 Jan 16 08:58 dump-type0-1-1-1609985200-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+-rw-r--r-- 1 root root 1028 Jan 16 08:58 dump-type0-1-1-1609985823-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+-rw-r--r-- 1 root root 1028 Jan 16 08:58 dump-type0-1-1-1609986284-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+-rw-r--r-- 1 root root 1028 Jan 16 08:58 dump-type0-1-1-1610067654-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+-rw-r--r-- 1 root root 1028 Jan 16 08:58 dump-type0-1-1-1611433768-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+-rw-r--r-- 1 root root 1028 Jan 16 08:58 dump-type0-1-1-1611492025-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+-rw-r--r-- 1 root root 1028 Jan 16 08:58 dump-type0-1-1-1612103195-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+-rw-r--r-- 1 root root  913 Jan 16 08:58 dump-type0-1-1-1631969921-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+-rw-r--r-- 1 root root  873 Jan 16 08:58 dump-type0-1-1-1631970222-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+-rw-r--r-- 1 root root  911 Jan 16 08:58 dump-type0-1-1-1631970713-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+-rw-r--r-- 1 root root  906 Jan 16 08:58 dump-type0-1-1-1631971061-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+-rw-r--r-- 1 root root  852 Jan 16 08:58 dump-type0-12-1-1631969921-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+-rw-r--r-- 1 root root  842 Jan 16 08:58 dump-type0-12-1-1631970713-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+-rw-r--r-- 1 root root  690 Jan 16 08:58 dump-type0-13-1-1631969921-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+-rw-r--r-- 1 root root  729 Jan 16 08:58 dump-type0-13-1-1631970713-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+-rw-r--r-- 1 root root  796 Jan 16 08:58 dump-type0-14-1-1631969921-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+-rw-r--r-- 1 root root  591 Jan 16 08:58 dump-type0-14-1-1631970713-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+-rw-r--r-- 1 root root  859 Jan 16 08:58 dump-type0-15-1-1631969921-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+-rw-r--r-- 1 root root 1028 Jan 16 08:58 dump-type0-2-1-1609985200-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+-rw-r--r-- 1 root root 1028 Jan 16 08:58 dump-type0-2-1-1609985823-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+-rw-r--r-- 1 root root 1028 Jan 16 08:58 dump-type0-2-1-1609986284-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+-rw-r--r-- 1 root root 1028 Jan 16 08:58 dump-type0-2-1-1610067654-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+-rw-r--r-- 1 root root 1028 Jan 16 08:58 dump-type0-2-1-1611433768-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+-rw-r--r-- 1 root root 1028 Jan 16 08:58 dump-type0-2-1-1611492025-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+-rw-r--r-- 1 root root 1028 Jan 16 08:58 dump-type0-2-1-1612103195-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+-rw-r--r-- 1 root root  632 Jan 16 08:58 dump-type0-2-1-1631969921-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+-rw-r--r-- 1 root root  732 Jan 16 08:58 dump-type0-2-1-1631970222-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+-rw-r--r-- 1 root root  709 Jan 16 08:58 dump-type0-2-1-1631970713-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+-rw-r--r-- 1 root root  680 Jan 16 08:58 dump-type0-2-1-1631971061-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+-rw-r--r-- 1 root root 1028 Jan 16 08:58 dump-type0-3-1-1609985200-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+-rw-r--r-- 1 root root 1028 Jan 16 08:58 dump-type0-3-1-1609985823-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+-rw-r--r-- 1 root root 1028 Jan 16 08:58 dump-type0-3-1-1609986284-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+-rw-r--r-- 1 root root 1028 Jan 16 08:58 dump-type0-3-1-1610067654-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+-rw-r--r-- 1 root root 1028 Jan 16 08:58 dump-type0-3-1-1611433768-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+-rw-r--r-- 1 root root 1028 Jan 16 08:58 dump-type0-3-1-1611492025-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+-rw-r--r-- 1 root root 1028 Jan 16 08:58 dump-type0-3-1-1612103195-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+-rw-r--r-- 1 root root  794 Jan 16 08:58 dump-type0-3-1-1631969921-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+-rw-r--r-- 1 root root  755 Jan 16 08:58 dump-type0-3-1-1631970222-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+-rw-r--r-- 1 root root  789 Jan 16 08:58 dump-type0-3-1-1631970713-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+-rw-r--r-- 1 root root  768 Jan 16 08:58 dump-type0-3-1-1631971061-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+-rw-r--r-- 1 root root 1028 Jan 16 08:58 dump-type0-4-1-1609985200-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+-rw-r--r-- 1 root root 1028 Jan 16 08:58 dump-type0-4-1-1609985823-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+-rw-r--r-- 1 root root 1028 Jan 16 08:58 dump-type0-4-1-1609986284-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+-rw-r--r-- 1 root root 1028 Jan 16 08:58 dump-type0-4-1-1610067654-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+-rw-r--r-- 1 root root 1028 Jan 16 08:58 dump-type0-4-1-1611433768-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+-rw-r--r-- 1 root root 1028 Jan 16 08:58 dump-type0-4-1-1611492025-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+-rw-r--r-- 1 root root 1028 Jan 16 08:58 dump-type0-4-1-1612103195-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+-rw-r--r-- 1 root root  419 Jan 16 08:58 dump-type0-4-1-1631969921-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+-rw-r--r-- 1 root root  567 Jan 16 08:58 dump-type0-4-1-1631970222-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+-rw-r--r-- 1 root root  750 Jan 16 08:58 dump-type0-4-1-1631970713-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+-rw-r--r-- 1 root root  722 Jan 16 08:58 dump-type0-4-1-1631971061-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+-rw-r--r-- 1 root root 1028 Jan 16 08:58 dump-type0-5-1-1609985200-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+-rw-r--r-- 1 root root 1028 Jan 16 08:58 dump-type0-5-1-1609985823-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+-rw-r--r-- 1 root root 1028 Jan 16 08:58 dump-type0-5-1-1609986284-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+-rw-r--r-- 1 root root 1028 Jan 16 08:58 dump-type0-5-1-1610067654-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+-rw-r--r-- 1 root root 1028 Jan 16 08:58 dump-type0-5-1-1611433768-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+-rw-r--r-- 1 root root 1028 Jan 16 08:58 dump-type0-5-1-1611492025-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+-rw-r--r-- 1 root root 1028 Jan 16 08:58 dump-type0-5-1-1612103195-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+-rw-r--r-- 1 root root  490 Jan 16 08:58 dump-type0-5-1-1631969921-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+-rw-r--r-- 1 root root  699 Jan 16 08:58 dump-type0-5-1-1631970222-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+-rw-r--r-- 1 root root  596 Jan 16 08:58 dump-type0-5-1-1631970713-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+-rw-r--r-- 1 root root  651 Jan 16 08:58 dump-type0-5-1-1631971061-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+-rw-r--r-- 1 root root 1028 Jan 16 08:58 dump-type0-6-1-1609985200-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+-rw-r--r-- 1 root root 1028 Jan 16 08:58 dump-type0-6-1-1609985823-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+-rw-r--r-- 1 root root 1028 Jan 16 08:58 dump-type0-6-1-1609986284-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+-rw-r--r-- 1 root root 1028 Jan 16 08:58 dump-type0-6-1-1610067654-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+-rw-r--r-- 1 root root  840 Jan 16 08:58 dump-type0-6-1-1611433768-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+-rw-r--r-- 1 root root 1028 Jan 16 08:58 dump-type0-6-1-1611492025-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+-rw-r--r-- 1 root root 1028 Jan 16 08:58 dump-type0-6-1-1612103195-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+-rw-r--r-- 1 root root  489 Jan 16 08:58 dump-type0-6-1-1631969921-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+-rw-r--r-- 1 root root  645 Jan 16 08:58 dump-type0-6-1-1631970222-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+-rw-r--r-- 1 root root  626 Jan 16 08:58 dump-type0-6-1-1631970713-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+-rw-r--r-- 1 root root  626 Jan 16 08:58 dump-type0-6-1-1631971061-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+-rw-r--r-- 1 root root 1028 Jan 16 08:58 dump-type0-7-1-1609985200-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+-rw-r--r-- 1 root root 1028 Jan 16 08:58 dump-type0-7-1-1609985823-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+-rw-r--r-- 1 root root 1028 Jan 16 08:58 dump-type0-7-1-1609986284-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+-rw-r--r-- 1 root root 1028 Jan 16 08:58 dump-type0-7-1-1610067654-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+-rw-r--r-- 1 root root 1028 Jan 16 08:58 dump-type0-7-1-1611433768-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+-rw-r--r-- 1 root root 1028 Jan 16 08:58 dump-type0-7-1-1611492025-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+-rw-r--r-- 1 root root 1028 Jan 16 08:58 dump-type0-7-1-1612103195-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+-rw-r--r-- 1 root root  698 Jan 16 08:58 dump-type0-7-1-1631969921-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+-rw-r--r-- 1 root root  531 Jan 16 08:58 dump-type0-7-1-1631970222-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+-rw-r--r-- 1 root root  957 Jan 16 08:58 dump-type0-7-1-1631970713-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+-rw-r--r-- 1 root root  957 Jan 16 08:58 dump-type0-7-1-1631971061-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+-rw-r--r-- 1 root root 1028 Jan 16 08:58 dump-type0-8-1-1609985200-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+-rw-r--r-- 1 root root 1028 Jan 16 08:58 dump-type0-8-1-1609985823-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+-rw-r--r-- 1 root root 1028 Jan 16 08:58 dump-type0-8-1-1609986284-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+-rw-r--r-- 1 root root 1028 Jan 16 08:58 dump-type0-8-1-1610067654-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+-rw-r--r-- 1 root root 1028 Jan 16 08:58 dump-type0-8-1-1611433768-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+-rw-r--r-- 1 root root  867 Jan 16 08:58 dump-type0-8-1-1611492025-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+-rw-r--r-- 1 root root 1028 Jan 16 08:58 dump-type0-8-1-1612103195-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+-rw-r--r-- 1 root root  831 Jan 16 08:58 dump-type0-8-1-1631969921-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+-rw-r--r-- 1 root root  890 Jan 16 08:58 dump-type0-8-1-1631970222-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+-rw-r--r-- 1 root root  692 Jan 16 08:58 dump-type0-8-1-1631970713-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+-rw-r--r-- 1 root root 1028 Jan 16 08:58 dump-type0-9-1-1609985200-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+-rw-r--r-- 1 root root 1028 Jan 16 08:58 dump-type0-9-1-1609985823-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+-rw-r--r-- 1 root root 1028 Jan 16 08:58 dump-type0-9-1-1609986284-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+-rw-r--r-- 1 root root 1028 Jan 16 08:58 dump-type0-9-1-1610067654-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+-rw-r--r-- 1 root root  840 Jan 16 08:58 dump-type0-9-1-1611433768-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+-rw-r--r-- 1 root root 1028 Jan 16 08:58 dump-type0-9-1-1611492025-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+-rw-r--r-- 1 root root 1028 Jan 16 08:58 dump-type0-9-1-1612103195-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+-rw-r--r-- 1 root root  852 Jan 16 08:58 dump-type0-9-1-1631969921-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+-rw-r--r-- 1 root root  681 Jan 16 08:58 dump-type0-9-1-1631970222-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+-rw-r--r-- 1 root root  620 Jan 16 08:58 dump-type0-9-1-1631970713-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+-rw-r--r-- 1 root root   40 Jan 16 08:58 ErrOut-8be4df61-93ca-11d2-aa0d-00e098032b8c
+-rw-r--r-- 1 root root   40 Jan 16 08:58 ErrOutDev-8be4df61-93ca-11d2-aa0d-00e098032b8c
+-rw-r--r-- 1 root root    5 Jan 16 08:58 FBSelect-3fae9ba1-a3f1-42eb-b6f2-b616ea57db9d
+-rw-r--r-- 1 root root  652 Jan 16 08:58 FixedBoot-de8ab926-efda-4c23-bbc4-98fd29aa0069
+-rw-r--r-- 1 root root   36 Jan 16 08:58 GSEHWInfo-8a989680-e651-4c51-a2af-3cdb1a4ab5b0
+-rw-r--r-- 1 root root   12 Jan 16 08:58 HiiDB-1b838190-4625-4ead-abc9-cd5e6af18fe0
+-rw-r--r-- 1 root root    6 Jan 16 08:58 HwErrRecSupport-8be4df61-93ca-11d2-aa0d-00e098032b8c
+-rw-r--r-- 1 root root 1564 Jan 16 08:58 KEKDefault-8be4df61-93ca-11d2-aa0d-00e098032b8c
+-rw-r--r-- 1 root root    7 Jan 16 08:58 Lang-8be4df61-93ca-11d2-aa0d-00e098032b8c
+-rw-r--r-- 1 root root   68 Jan 16 08:58 LangCodes-8be4df61-93ca-11d2-aa0d-00e098032b8c
+-rw-r--r-- 1 root root   18 Jan 16 08:58 LegacyDevOrder-a56074db-65fe-45f7-bd21-2d2bdd8e9652
+-rw-r--r-- 1 root root    6 Jan 16 08:58 MaximumTableSize-4b3082a3-80c6-4d7e-9cd0-583917265df1
+-rw-r--r-- 1 root root    5 Jan 16 08:58 MemoryOverwriteRequestControl-e20939be-32d4-41be-a150-897f85d49829
+-rw-r--r-- 1 root root    5 Jan 16 08:58 MemoryOverwriteRequestControlLock-bb983ccf-151d-40e1-a07b-4a17be168292
+-rw-r--r-- 1 root root   24 Jan 16 08:58 MFlashVersionVariable-fd6b0489-d401-40c2-98b1-b1300b048711
+-rw-r--r-- 1 root root    8 Jan 16 08:58 MonotonicCounter-01368881-c4ad-4b1d-b631-d57a8ec8db6b
+-rw-r--r-- 1 root root    6 Jan 16 08:58 MountFirstScreenOffsetX-3ff963fb-0909-4899-9566-3e40985f61ed
+-rw-r--r-- 1 root root    6 Jan 16 08:58 MountFirstScreenOffsetY-79dd3cce-4534-4320-b6d6-5cc427d3fe35
+-rw-r--r-- 1 root root   12 Jan 16 08:58 msiDispatcherImageList-26817ae9-ca17-80d5-ab93-2f682e69efa9
+-rw-r--r-- 1 root root  124 Jan 16 08:58 MsiOcBackup-ba6510ad-1972-4d84-b28e-00e5fc8245cb
+-rw-r--r-- 1 root root   72 Jan 16 08:58 MsiOcCpuMemInfo-4ba187df-3bad-41b2-b73b-3d3dc1cc6387
+-rw-r--r-- 1 root root  155 Jan 16 08:58 MsiOcInfoFlag-48419251-dd85-4597-84b4-11182014adde
+-rw-r--r-- 1 root root    6 Jan 16 08:58 MsiOcMemECCInfo-78876464-9753-a77a-7607-652533891231
+-rw-r--r-- 1 root root   12 Jan 16 08:58 MsiOcMemPatchID-78876464-9753-a77a-7607-652533891231
+-rw-r--r-- 1 root root    6 Jan 16 08:58 MsiOcMemRGBInfo-78876464-9753-a77a-7607-652533891231
+-rw-r--r-- 1 root root   17 Jan 16 08:58 MsiOcMemSpdCheckSum-78876464-9753-a77a-7607-652533891231
+-rw-r--r-- 1 root root 1028 Jan 16 08:58 MsiOcMemSpdData-78876464-9753-a77a-7607-652533891231
+-rw-r--r-- 1 root root   68 Jan 16 08:58 MsiOcMemSpdXMPInfo-78876464-9753-a77a-7607-652533891231
+-rw-r--r-- 1 root root    8 Jan 16 08:58 msiOcProFileStringCount-857fbb9e-8a3b-97ce-ae58-2515e09922bb
+-rw-r--r-- 1 root root   12 Jan 16 08:58 NetworkStackVar-d1405d16-7afc-4695-bb12-41459d3695a2
+-rw-r--r-- 1 root root   28 Jan 16 08:58 OA3MSDMvariable-01368881-c4ad-4b1d-b631-d57a8ec8db6b
+-rw-r--r-- 1 root root   18 Jan 16 08:58 OldLegacyDevOrder-a56074db-65fe-45f7-bd21-2d2bdd8e9652
+-rw-r--r-- 1 root root   12 Jan 16 08:58 OsIndicationsSupported-8be4df61-93ca-11d2-aa0d-00e098032b8c
+-rw-r--r-- 1 root root  644 Jan 16 08:58 PKDefault-8be4df61-93ca-11d2-aa0d-00e098032b8c
+-rw-r--r-- 1 root root   11 Jan 16 08:58 PlatformLang-8be4df61-93ca-11d2-aa0d-00e098032b8c
+-rw-r--r-- 1 root root   57 Jan 16 08:58 PlatformLangCodes-8be4df61-93ca-11d2-aa0d-00e098032b8c
+-rw-r--r-- 1 root root    7 Jan 16 08:58 PNP0501_0_NV-560bf58a-1e0d-4d7e-953f-2980a261e031
+-rw-r--r-- 1 root root   14 Jan 16 08:58 ProFileAutoSaveInfo-515b6cdf-bbe7-4509-83cc-d725903d522a
+-rw-r--r-- 1 root root    5 Jan 16 08:58 SecureBoot-8be4df61-93ca-11d2-aa0d-00e098032b8c
+-rw-r--r-- 1 root root   11 Jan 16 08:58 SecureBootSetup-7b59104a-c00d-4158-87ff-f04d6396a915
+-rw-r--r-- 1 root root 1453 Jan 16 08:58 Setup-ec87d643-eba4-4bb5-a1e5-3f3e36b20da9
+-rw-r--r-- 1 root root    5 Jan 16 08:58 SetupMode-8be4df61-93ca-11d2-aa0d-00e098032b8c
+-rw-r--r-- 1 root root  148 Jan 16 08:58 SignatureSupport-8be4df61-93ca-11d2-aa0d-00e098032b8c
+-rw-r--r-- 1 root root    5 Jan 16 08:58 SioSetupData-6b0cc1bc-910f-411e-b6cb-0e314d0bb8c1
+-rw-r--r-- 1 root root    5 Jan 16 08:58 SliderDlgNod2Fun-4c5fe008-9f33-4e30-a075-5b5c84deb9f8
+-rw-r--r-- 1 root root   12 Jan 16 08:58 SmbiosEntryPointTable-4b3082a3-80c6-4d7e-9cd0-583917265df1
+-rw-r--r-- 1 root root   12 Jan 16 08:58 SmbiosEntryPointTableF000-4b3082a3-80c6-4d7e-9cd0-583917265df1
+-rw-r--r-- 1 root root   12 Jan 16 08:58 SmbiosScratchBuffer-4b3082a3-80c6-4d7e-9cd0-583917265df1
+-rw-r--r-- 1 root root 2707 Jan 16 08:58 StdDefaults-4599d26f-1a11-49b8-b91f-858745cff824
+-rw-r--r-- 1 root root   12 Jan 16 08:58 SyncFlashBufferAddress-0da1e40b-65a3-4547-8dae-4538c9685df8
+-rw-r--r-- 1 root root    6 Jan 16 08:58 Timeout-8be4df61-93ca-11d2-aa0d-00e098032b8c
+-rw-r--r-- 1 root root   10 Jan 16 08:58 TPMPERBIOSFLAGS-7d3dceee-cbce-4ea7-8709-6e552f1edbde
+-rw-r--r-- 1 root root   12 Jan 16 08:58 TpmServFlags-7d3dceee-cbce-4ea7-8709-6e552f1edbde
+-rw-r--r-- 1 root root   53 Jan 16 08:58 UsbSupport-ec87d643-eba4-4bb5-a1e5-3f3e36b20da9
+-rw-r--r-- 1 root root    5 Jan 16 08:58 VendorKeys-8be4df61-93ca-11d2-aa0d-00e098032b8c
+-rw-r--r-- 1 root root   12 Jan 16 08:58 WMIAcpiMemAddr-ec87d643-eba4-4bb5-a1e5-3f3e36b20da9
+-rw-r--r-- 1 root root   68 Jan 16 08:58 WriteOnceStatus-4b3082a3-80c6-4d7e-9cd0-583917265df1
+-rw-r--r-- 1 root root    6 Jan 16 08:58 XhciDID-a7e92950-4ec9-4502-8576-f851308f8c18
+root@guixsd ~# ls -l /sys/firmware/efi/efivars/dump-type0-
+Display all 118 possibilities? (y or n)
+dump-type0-10-1-1609985200-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0  dump-type0-4-1-1611492025-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+dump-type0-10-1-1609985823-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0  dump-type0-4-1-1612103195-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+dump-type0-10-1-1609986284-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0  dump-type0-4-1-1631969921-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+dump-type0-10-1-1610067654-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0  dump-type0-4-1-1631970222-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+dump-type0-10-1-1611433768-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0  dump-type0-4-1-1631970713-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+dump-type0-10-1-1611492025-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0  dump-type0-4-1-1631971061-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+dump-type0-10-1-1612103195-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0  dump-type0-5-1-1609985200-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+dump-type0-10-1-1631969921-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0  dump-type0-5-1-1609985823-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+dump-type0-10-1-1631970225-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0  dump-type0-5-1-1609986284-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+dump-type0-10-1-1631970713-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0  dump-type0-5-1-1610067654-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+dump-type0-11-1-1611433768-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0  dump-type0-5-1-1611433768-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+dump-type0-11-1-1611492025-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0  dump-type0-5-1-1611492025-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+dump-type0-11-1-1631969921-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0  dump-type0-5-1-1612103195-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+dump-type0-11-1-1631970713-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0  dump-type0-5-1-1631969921-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+dump-type0-1-1-1609985200-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0   dump-type0-5-1-1631970222-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+dump-type0-1-1-1609985823-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0   dump-type0-5-1-1631970713-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+dump-type0-1-1-1609986284-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0   dump-type0-5-1-1631971061-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+dump-type0-1-1-1610067654-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0   dump-type0-6-1-1609985200-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+dump-type0-1-1-1611433768-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0   dump-type0-6-1-1609985823-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+dump-type0-1-1-1611492025-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0   dump-type0-6-1-1609986284-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+dump-type0-1-1-1612103195-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0   dump-type0-6-1-1610067654-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+dump-type0-1-1-1631969921-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0   dump-type0-6-1-1611433768-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+dump-type0-1-1-1631970222-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0   dump-type0-6-1-1611492025-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+dump-type0-1-1-1631970713-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0   dump-type0-6-1-1612103195-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+dump-type0-1-1-1631971061-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0   dump-type0-6-1-1631969921-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+dump-type0-12-1-1631969921-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0  dump-type0-6-1-1631970222-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+dump-type0-12-1-1631970713-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0  dump-type0-6-1-1631970713-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+dump-type0-13-1-1631969921-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0  dump-type0-6-1-1631971061-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+dump-type0-13-1-1631970713-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0  dump-type0-7-1-1609985200-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+dump-type0-14-1-1631969921-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0  dump-type0-7-1-1609985823-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+dump-type0-14-1-1631970713-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0  dump-type0-7-1-1609986284-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+dump-type0-15-1-1631969921-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0  dump-type0-7-1-1610067654-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+dump-type0-2-1-1609985200-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0   dump-type0-7-1-1611433768-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+dump-type0-2-1-1609985823-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0   dump-type0-7-1-1611492025-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+dump-type0-2-1-1609986284-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0   dump-type0-7-1-1612103195-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+dump-type0-2-1-1610067654-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0   dump-type0-7-1-1631969921-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+dump-type0-2-1-1611433768-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0   dump-type0-7-1-1631970222-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+dump-type0-2-1-1611492025-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0   dump-type0-7-1-1631970713-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+dump-type0-2-1-1612103195-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0   dump-type0-7-1-1631971061-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+dump-type0-2-1-1631969921-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0   dump-type0-8-1-1609985200-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+dump-type0-2-1-1631970222-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0   dump-type0-8-1-1609985823-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+dump-type0-2-1-1631970713-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0   dump-type0-8-1-1609986284-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+dump-type0-2-1-1631971061-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0   dump-type0-8-1-1610067654-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+dump-type0-3-1-1609985200-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0   dump-type0-8-1-1611433768-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+root@guixsd ~# echo /sys/firmware/efi/efivars/dump-type0-*
+/sys/firmware/efi/efivars/dump-type0-10-1-1609985200-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0 /sys/firmware/efi/efivars/dump-type0-10-1-1609985823-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0 /sys/firmware/efi/efivars/dump-type0-10-1-1609986284-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0 /sys/firmware/efi/efivars/dump-type0-10-1-1610067654-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0 /sys/firmware/efi/efivars/dump-type0-10-1-1611433768-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0 /sys/firmware/efi/efivars/dump-type0-10-1-1611492025-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0 /sys/firmware/efi/efivars/dump-type0-10-1-1612103195-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0 /sys/firmware/efi/efivars/dump-type0-10-1-1631969921-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0 /sys/firmware/efi/efivars/dump-type0-10-1-1631970225-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0 /sys/firmware/efi/efivars/dump-type0-10-1-1631970713-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0 /sys/firmware/efi/efivars/dump-type0-11-1-1611433768-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0 /sys/firmware/efi/efivars/dump-type0-11-1-1611492025-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0 /sys/firmware/efi/efivars/dump-type0-11-1-1631969921-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0 /sys/firmware/efi/efivars/dump-type0-11-1-1631970713-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0 /sys/firmware/efi/efivars/dump-type0-1-1-1609985200-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0 /sys/firmware/efi/efivars/dump-type0-1-1-1609985823-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0 /sys/firmware/efi/efivars/dump-type0-1-1-1609986284-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0 /sys/firmware/efi/efivars/dump-type0-1-1-1610067654-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0 /sys/firmware/efi/efivars/dump-type0-1-1-1611433768-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0 /sys/firmware/efi/efivars/dump-type0-1-1-1611492025-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0 /sys/firmware/efi/efivars/dump-type0-1-1-1612103195-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0 /sys/firmware/efi/efivars/dump-type0-1-1-1631969921-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0 /sys/firmware/efi/efivars/dump-type0-1-1-1631970222-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0 /sys/firmware/efi/efivars/dump-type0-1-1-1631970713-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0 /sys/firmware/efi/efivars/dump-type0-1-1-1631971061-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0 /sys/firmware/efi/efivars/dump-type0-12-1-1631969921-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0 /sys/firmware/efi/efivars/dump-type0-12-1-1631970713-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0 /sys/firmware/efi/efivars/dump-type0-13-1-1631969921-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0 /sys/firmware/efi/efivars/dump-type0-13-1-1631970713-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0 /sys/firmware/efi/efivars/dump-type0-14-1-1631969921-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0 /sys/firmware/efi/efivars/dump-type0-14-1-1631970713-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0 /sys/firmware/efi/efivars/dump-type0-15-1-1631969921-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0 /sys/firmware/efi/efivars/dump-type0-2-1-1609985200-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0 /sys/firmware/efi/efivars/dump-type0-2-1-1609985823-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0 /sys/firmware/efi/efivars/dump-type0-2-1-1609986284-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0 /sys/firmware/efi/efivars/dump-type0-2-1-1610067654-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0 /sys/firmware/efi/efivars/dump-type0-2-1-1611433768-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0 /sys/firmware/efi/efivars/dump-type0-2-1-1611492025-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0 /sys/firmware/efi/efivars/dump-type0-2-1-1612103195-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0 /sys/firmware/efi/efivars/dump-type0-2-1-1631969921-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0 /sys/firmware/efi/efivars/dump-type0-2-1-1631970222-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0 /sys/firmware/efi/efivars/dump-type0-2-1-1631970713-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0 /sys/firmware/efi/efivars/dump-type0-2-1-1631971061-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0 /sys/firmware/efi/efivars/dump-type0-3-1-1609985200-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0 /sys/firmware/efi/efivars/dump-type0-3-1-1609985823-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0 /sys/firmware/efi/efivars/dump-type0-3-1-1609986284-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0 /sys/firmware/efi/efivars/dump-type0-3-1-1610067654-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0 /sys/firmware/efi/efivars/dump-type0-3-1-1611433768-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0 /sys/firmware/efi/efivars/dump-type0-3-1-1611492025-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0 /sys/firmware/efi/efivars/dump-type0-3-1-1612103195-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0 /sys/firmware/efi/efivars/dump-type0-3-1-1631969921-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0 /sys/firmware/efi/efivars/dump-type0-3-1-1631970222-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0 /sys/firmware/efi/efivars/dump-type0-3-1-1631970713-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0 /sys/firmware/efi/efivars/dump-type0-3-1-1631971061-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0 /sys/firmware/efi/efivars/dump-type0-4-1-1609985200-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0 /sys/firmware/efi/efivars/dump-type0-4-1-1609985823-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0 /sys/firmware/efi/efivars/dump-type0-4-1-1609986284-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0 /sys/firmware/efi/efivars/dump-type0-4-1-1610067654-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0 /sys/firmware/efi/efivars/dump-type0-4-1-1611433768-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0 /sys/firmware/efi/efivars/dump-type0-4-1-1611492025-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0 /sys/firmware/efi/efivars/dump-type0-4-1-1612103195-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0 /sys/firmware/efi/efivars/dump-type0-4-1-1631969921-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0 /sys/firmware/efi/efivars/dump-type0-4-1-1631970222-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0 /sys/firmware/efi/efivars/dump-type0-4-1-1631970713-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0 /sys/firmware/efi/efivars/dump-type0-4-1-1631971061-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0 /sys/firmware/efi/efivars/dump-type0-5-1-1609985200-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0 /sys/firmware/efi/efivars/dump-type0-5-1-1609985823-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0 /sys/firmware/efi/efivars/dump-type0-5-1-1609986284-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0 /sys/firmware/efi/efivars/dump-type0-5-1-1610067654-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0 /sys/firmware/efi/efivars/dump-type0-5-1-1611433768-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0 /sys/firmware/efi/efivars/dump-type0-5-1-1611492025-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0 /sys/firmware/efi/efivars/dump-type0-5-1-1612103195-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0 /sys/firmware/efi/efivars/dump-type0-5-1-1631969921-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0 /sys/firmware/efi/efivars/dump-type0-5-1-1631970222-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0 /sys/firmware/efi/efivars/dump-type0-5-1-1631970713-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0 /sys/firmware/efi/efivars/dump-type0-5-1-1631971061-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0 /sys/firmware/efi/efivars/dump-type0-6-1-1609985200-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0 /sys/firmware/efi/efivars/dump-type0-6-1-1609985823-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0 /sys/firmware/efi/efivars/dump-type0-6-1-1609986284-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0 /sys/firmware/efi/efivars/dump-type0-6-1-1610067654-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0 /sys/firmware/efi/efivars/dump-type0-6-1-1611433768-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0 /sys/firmware/efi/efivars/dump-type0-6-1-1611492025-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0 /sys/firmware/efi/efivars/dump-type0-6-1-1612103195-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0 /sys/firmware/efi/efivars/dump-type0-6-1-1631969921-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0 /sys/firmware/efi/efivars/dump-type0-6-1-1631970222-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0 /sys/firmware/efi/efivars/dump-type0-6-1-1631970713-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0 /sys/firmware/efi/efivars/dump-type0-6-1-1631971061-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0 /sys/firmware/efi/efivars/dump-type0-7-1-1609985200-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0 /sys/firmware/efi/efivars/dump-type0-7-1-1609985823-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0 /sys/firmware/efi/efivars/dump-type0-7-1-1609986284-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0 /sys/firmware/efi/efivars/dump-type0-7-1-1610067654-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0 /sys/firmware/efi/efivars/dump-type0-7-1-1611433768-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0 /sys/firmware/efi/efivars/dump-type0-7-1-1611492025-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0 /sys/firmware/efi/efivars/dump-type0-7-1-1612103195-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0 /sys/firmware/efi/efivars/dump-type0-7-1-1631969921-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0 /sys/firmware/efi/efivars/dump-type0-7-1-1631970222-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0 /sys/firmware/efi/efivars/dump-type0-7-1-1631970713-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0 /sys/firmware/efi/efivars/dump-type0-7-1-1631971061-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0 /sys/firmware/efi/efivars/dump-type0-8-1-1609985200-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0 /sys/firmware/efi/efivars/dump-type0-8-1-1609985823-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0 /sys/firmware/efi/efivars/dump-type0-8-1-1609986284-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0 /sys/firmware/efi/efivars/dump-type0-8-1-1610067654-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0 /sys/firmware/efi/efivars/dump-type0-8-1-1611433768-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0 /sys/firmware/efi/efivars/dump-type0-8-1-1611492025-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0 /sys/firmware/efi/efivars/dump-type0-8-1-1612103195-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0 /sys/firmware/efi/efivars/dump-type0-8-1-1631969921-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0 /sys/firmware/efi/efivars/dump-type0-8-1-1631970222-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0 /sys/firmware/efi/efivars/dump-type0-8-1-1631970713-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0 /sys/firmware/efi/efivars/dump-type0-9-1-1609985200-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0 /sys/firmware/efi/efivars/dump-type0-9-1-1609985823-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0 /sys/firmware/efi/efivars/dump-type0-9-1-1609986284-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0 /sys/firmware/efi/efivars/dump-type0-9-1-1610067654-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0 /sys/firmware/efi/efivars/dump-type0-9-1-1611433768-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0 /sys/firmware/efi/efivars/dump-type0-9-1-1611492025-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0 /sys/firmware/efi/efivars/dump-type0-9-1-1612103195-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0 /sys/firmware/efi/efivars/dump-type0-9-1-1631969921-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0 /sys/firmware/efi/efivars/dump-type0-9-1-1631970222-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0 /sys/firmware/efi/efivars/dump-type0-9-1-1631970713-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+root@guixsd ~# file /sys/firmware/efi/efivars/dump-type0-9-1-1631970713-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+/sys/firmware/efi/efivars/dump-type0-9-1-1631970713-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0: data
+root@guixsd ~# mkdir firmware
+root@guixsd ~# cd firmware
+root@guixsd ~/firmware# for file in /sys/firmware/efi/efivars/dump-type*; do cp -vi -a "$file" .; done
+'/sys/firmware/efi/efivars/dump-type0-10-1-1609985200-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0' -> './dump-type0-10-1-1609985200-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+'/sys/firmware/efi/efivars/dump-type0-10-1-1609985823-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0' -> './dump-type0-10-1-1609985823-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+'/sys/firmware/efi/efivars/dump-type0-10-1-1609986284-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0' -> './dump-type0-10-1-1609986284-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+'/sys/firmware/efi/efivars/dump-type0-10-1-1610067654-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0' -> './dump-type0-10-1-1610067654-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+'/sys/firmware/efi/efivars/dump-type0-10-1-1611433768-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0' -> './dump-type0-10-1-1611433768-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+'/sys/firmware/efi/efivars/dump-type0-10-1-1611492025-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0' -> './dump-type0-10-1-1611492025-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+'/sys/firmware/efi/efivars/dump-type0-10-1-1612103195-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0' -> './dump-type0-10-1-1612103195-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+'/sys/firmware/efi/efivars/dump-type0-10-1-1631969921-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0' -> './dump-type0-10-1-1631969921-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+'/sys/firmware/efi/efivars/dump-type0-10-1-1631970225-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0' -> './dump-type0-10-1-1631970225-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+'/sys/firmware/efi/efivars/dump-type0-10-1-1631970713-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0' -> './dump-type0-10-1-1631970713-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+'/sys/firmware/efi/efivars/dump-type0-11-1-1611433768-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0' -> './dump-type0-11-1-1611433768-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+'/sys/firmware/efi/efivars/dump-type0-11-1-1611492025-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0' -> './dump-type0-11-1-1611492025-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+'/sys/firmware/efi/efivars/dump-type0-11-1-1631969921-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0' -> './dump-type0-11-1-1631969921-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+'/sys/firmware/efi/efivars/dump-type0-11-1-1631970713-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0' -> './dump-type0-11-1-1631970713-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+'/sys/firmware/efi/efivars/dump-type0-1-1-1609985200-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0' -> './dump-type0-1-1-1609985200-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+'/sys/firmware/efi/efivars/dump-type0-1-1-1609985823-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0' -> './dump-type0-1-1-1609985823-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+'/sys/firmware/efi/efivars/dump-type0-1-1-1609986284-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0' -> './dump-type0-1-1-1609986284-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+'/sys/firmware/efi/efivars/dump-type0-1-1-1610067654-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0' -> './dump-type0-1-1-1610067654-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+'/sys/firmware/efi/efivars/dump-type0-1-1-1611433768-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0' -> './dump-type0-1-1-1611433768-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+'/sys/firmware/efi/efivars/dump-type0-1-1-1611492025-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0' -> './dump-type0-1-1-1611492025-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+'/sys/firmware/efi/efivars/dump-type0-1-1-1612103195-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0' -> './dump-type0-1-1-1612103195-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+'/sys/firmware/efi/efivars/dump-type0-1-1-1631969921-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0' -> './dump-type0-1-1-1631969921-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+'/sys/firmware/efi/efivars/dump-type0-1-1-1631970222-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0' -> './dump-type0-1-1-1631970222-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+'/sys/firmware/efi/efivars/dump-type0-1-1-1631970713-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0' -> './dump-type0-1-1-1631970713-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+'/sys/firmware/efi/efivars/dump-type0-1-1-1631971061-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0' -> './dump-type0-1-1-1631971061-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+'/sys/firmware/efi/efivars/dump-type0-12-1-1631969921-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0' -> './dump-type0-12-1-1631969921-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+'/sys/firmware/efi/efivars/dump-type0-12-1-1631970713-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0' -> './dump-type0-12-1-1631970713-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+'/sys/firmware/efi/efivars/dump-type0-13-1-1631969921-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0' -> './dump-type0-13-1-1631969921-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+'/sys/firmware/efi/efivars/dump-type0-13-1-1631970713-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0' -> './dump-type0-13-1-1631970713-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+'/sys/firmware/efi/efivars/dump-type0-14-1-1631969921-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0' -> './dump-type0-14-1-1631969921-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+'/sys/firmware/efi/efivars/dump-type0-14-1-1631970713-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0' -> './dump-type0-14-1-1631970713-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+'/sys/firmware/efi/efivars/dump-type0-15-1-1631969921-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0' -> './dump-type0-15-1-1631969921-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+'/sys/firmware/efi/efivars/dump-type0-2-1-1609985200-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0' -> './dump-type0-2-1-1609985200-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+'/sys/firmware/efi/efivars/dump-type0-2-1-1609985823-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0' -> './dump-type0-2-1-1609985823-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+'/sys/firmware/efi/efivars/dump-type0-2-1-1609986284-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0' -> './dump-type0-2-1-1609986284-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+'/sys/firmware/efi/efivars/dump-type0-2-1-1610067654-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0' -> './dump-type0-2-1-1610067654-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+'/sys/firmware/efi/efivars/dump-type0-2-1-1611433768-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0' -> './dump-type0-2-1-1611433768-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+'/sys/firmware/efi/efivars/dump-type0-2-1-1611492025-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0' -> './dump-type0-2-1-1611492025-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+'/sys/firmware/efi/efivars/dump-type0-2-1-1612103195-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0' -> './dump-type0-2-1-1612103195-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+'/sys/firmware/efi/efivars/dump-type0-2-1-1631969921-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0' -> './dump-type0-2-1-1631969921-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+'/sys/firmware/efi/efivars/dump-type0-2-1-1631970222-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0' -> './dump-type0-2-1-1631970222-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+'/sys/firmware/efi/efivars/dump-type0-2-1-1631970713-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0' -> './dump-type0-2-1-1631970713-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+'/sys/firmware/efi/efivars/dump-type0-2-1-1631971061-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0' -> './dump-type0-2-1-1631971061-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+'/sys/firmware/efi/efivars/dump-type0-3-1-1609985200-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0' -> './dump-type0-3-1-1609985200-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+'/sys/firmware/efi/efivars/dump-type0-3-1-1609985823-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0' -> './dump-type0-3-1-1609985823-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+'/sys/firmware/efi/efivars/dump-type0-3-1-1609986284-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0' -> './dump-type0-3-1-1609986284-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+'/sys/firmware/efi/efivars/dump-type0-3-1-1610067654-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0' -> './dump-type0-3-1-1610067654-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+'/sys/firmware/efi/efivars/dump-type0-3-1-1611433768-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0' -> './dump-type0-3-1-1611433768-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+'/sys/firmware/efi/efivars/dump-type0-3-1-1611492025-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0' -> './dump-type0-3-1-1611492025-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+'/sys/firmware/efi/efivars/dump-type0-3-1-1612103195-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0' -> './dump-type0-3-1-1612103195-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+'/sys/firmware/efi/efivars/dump-type0-3-1-1631969921-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0' -> './dump-type0-3-1-1631969921-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+'/sys/firmware/efi/efivars/dump-type0-3-1-1631970222-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0' -> './dump-type0-3-1-1631970222-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+'/sys/firmware/efi/efivars/dump-type0-3-1-1631970713-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0' -> './dump-type0-3-1-1631970713-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+'/sys/firmware/efi/efivars/dump-type0-3-1-1631971061-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0' -> './dump-type0-3-1-1631971061-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+'/sys/firmware/efi/efivars/dump-type0-4-1-1609985200-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0' -> './dump-type0-4-1-1609985200-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+'/sys/firmware/efi/efivars/dump-type0-4-1-1609985823-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0' -> './dump-type0-4-1-1609985823-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+'/sys/firmware/efi/efivars/dump-type0-4-1-1609986284-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0' -> './dump-type0-4-1-1609986284-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+'/sys/firmware/efi/efivars/dump-type0-4-1-1610067654-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0' -> './dump-type0-4-1-1610067654-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+'/sys/firmware/efi/efivars/dump-type0-4-1-1611433768-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0' -> './dump-type0-4-1-1611433768-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+'/sys/firmware/efi/efivars/dump-type0-4-1-1611492025-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0' -> './dump-type0-4-1-1611492025-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+'/sys/firmware/efi/efivars/dump-type0-4-1-1612103195-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0' -> './dump-type0-4-1-1612103195-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+'/sys/firmware/efi/efivars/dump-type0-4-1-1631969921-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0' -> './dump-type0-4-1-1631969921-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+'/sys/firmware/efi/efivars/dump-type0-4-1-1631970222-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0' -> './dump-type0-4-1-1631970222-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+'/sys/firmware/efi/efivars/dump-type0-4-1-1631970713-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0' -> './dump-type0-4-1-1631970713-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+'/sys/firmware/efi/efivars/dump-type0-4-1-1631971061-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0' -> './dump-type0-4-1-1631971061-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+'/sys/firmware/efi/efivars/dump-type0-5-1-1609985200-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0' -> './dump-type0-5-1-1609985200-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+'/sys/firmware/efi/efivars/dump-type0-5-1-1609985823-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0' -> './dump-type0-5-1-1609985823-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+'/sys/firmware/efi/efivars/dump-type0-5-1-1609986284-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0' -> './dump-type0-5-1-1609986284-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+'/sys/firmware/efi/efivars/dump-type0-5-1-1610067654-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0' -> './dump-type0-5-1-1610067654-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+'/sys/firmware/efi/efivars/dump-type0-5-1-1611433768-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0' -> './dump-type0-5-1-1611433768-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+'/sys/firmware/efi/efivars/dump-type0-5-1-1611492025-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0' -> './dump-type0-5-1-1611492025-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+'/sys/firmware/efi/efivars/dump-type0-5-1-1612103195-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0' -> './dump-type0-5-1-1612103195-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+'/sys/firmware/efi/efivars/dump-type0-5-1-1631969921-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0' -> './dump-type0-5-1-1631969921-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+'/sys/firmware/efi/efivars/dump-type0-5-1-1631970222-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0' -> './dump-type0-5-1-1631970222-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+'/sys/firmware/efi/efivars/dump-type0-5-1-1631970713-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0' -> './dump-type0-5-1-1631970713-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+'/sys/firmware/efi/efivars/dump-type0-5-1-1631971061-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0' -> './dump-type0-5-1-1631971061-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+'/sys/firmware/efi/efivars/dump-type0-6-1-1609985200-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0' -> './dump-type0-6-1-1609985200-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+'/sys/firmware/efi/efivars/dump-type0-6-1-1609985823-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0' -> './dump-type0-6-1-1609985823-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+'/sys/firmware/efi/efivars/dump-type0-6-1-1609986284-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0' -> './dump-type0-6-1-1609986284-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+'/sys/firmware/efi/efivars/dump-type0-6-1-1610067654-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0' -> './dump-type0-6-1-1610067654-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+'/sys/firmware/efi/efivars/dump-type0-6-1-1611433768-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0' -> './dump-type0-6-1-1611433768-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+'/sys/firmware/efi/efivars/dump-type0-6-1-1611492025-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0' -> './dump-type0-6-1-1611492025-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+'/sys/firmware/efi/efivars/dump-type0-6-1-1612103195-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0' -> './dump-type0-6-1-1612103195-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+'/sys/firmware/efi/efivars/dump-type0-6-1-1631969921-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0' -> './dump-type0-6-1-1631969921-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+'/sys/firmware/efi/efivars/dump-type0-6-1-1631970222-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0' -> './dump-type0-6-1-1631970222-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+'/sys/firmware/efi/efivars/dump-type0-6-1-1631970713-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0' -> './dump-type0-6-1-1631970713-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+'/sys/firmware/efi/efivars/dump-type0-6-1-1631971061-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0' -> './dump-type0-6-1-1631971061-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+'/sys/firmware/efi/efivars/dump-type0-7-1-1609985200-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0' -> './dump-type0-7-1-1609985200-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+'/sys/firmware/efi/efivars/dump-type0-7-1-1609985823-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0' -> './dump-type0-7-1-1609985823-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+'/sys/firmware/efi/efivars/dump-type0-7-1-1609986284-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0' -> './dump-type0-7-1-1609986284-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+'/sys/firmware/efi/efivars/dump-type0-7-1-1610067654-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0' -> './dump-type0-7-1-1610067654-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+'/sys/firmware/efi/efivars/dump-type0-7-1-1611433768-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0' -> './dump-type0-7-1-1611433768-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+'/sys/firmware/efi/efivars/dump-type0-7-1-1611492025-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0' -> './dump-type0-7-1-1611492025-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+'/sys/firmware/efi/efivars/dump-type0-7-1-1612103195-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0' -> './dump-type0-7-1-1612103195-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+'/sys/firmware/efi/efivars/dump-type0-7-1-1631969921-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0' -> './dump-type0-7-1-1631969921-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+'/sys/firmware/efi/efivars/dump-type0-7-1-1631970222-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0' -> './dump-type0-7-1-1631970222-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+'/sys/firmware/efi/efivars/dump-type0-7-1-1631970713-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0' -> './dump-type0-7-1-1631970713-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+'/sys/firmware/efi/efivars/dump-type0-7-1-1631971061-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0' -> './dump-type0-7-1-1631971061-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+'/sys/firmware/efi/efivars/dump-type0-8-1-1609985200-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0' -> './dump-type0-8-1-1609985200-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+'/sys/firmware/efi/efivars/dump-type0-8-1-1609985823-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0' -> './dump-type0-8-1-1609985823-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+'/sys/firmware/efi/efivars/dump-type0-8-1-1609986284-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0' -> './dump-type0-8-1-1609986284-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+'/sys/firmware/efi/efivars/dump-type0-8-1-1610067654-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0' -> './dump-type0-8-1-1610067654-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+'/sys/firmware/efi/efivars/dump-type0-8-1-1611433768-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0' -> './dump-type0-8-1-1611433768-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+'/sys/firmware/efi/efivars/dump-type0-8-1-1611492025-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0' -> './dump-type0-8-1-1611492025-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+'/sys/firmware/efi/efivars/dump-type0-8-1-1612103195-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0' -> './dump-type0-8-1-1612103195-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+'/sys/firmware/efi/efivars/dump-type0-8-1-1631969921-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0' -> './dump-type0-8-1-1631969921-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+'/sys/firmware/efi/efivars/dump-type0-8-1-1631970222-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0' -> './dump-type0-8-1-1631970222-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+'/sys/firmware/efi/efivars/dump-type0-8-1-1631970713-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0' -> './dump-type0-8-1-1631970713-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+'/sys/firmware/efi/efivars/dump-type0-9-1-1609985200-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0' -> './dump-type0-9-1-1609985200-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+'/sys/firmware/efi/efivars/dump-type0-9-1-1609985823-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0' -> './dump-type0-9-1-1609985823-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+'/sys/firmware/efi/efivars/dump-type0-9-1-1609986284-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0' -> './dump-type0-9-1-1609986284-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+'/sys/firmware/efi/efivars/dump-type0-9-1-1610067654-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0' -> './dump-type0-9-1-1610067654-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+'/sys/firmware/efi/efivars/dump-type0-9-1-1611433768-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0' -> './dump-type0-9-1-1611433768-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+'/sys/firmware/efi/efivars/dump-type0-9-1-1611492025-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0' -> './dump-type0-9-1-1611492025-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+'/sys/firmware/efi/efivars/dump-type0-9-1-1612103195-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0' -> './dump-type0-9-1-1612103195-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+'/sys/firmware/efi/efivars/dump-type0-9-1-1631969921-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0' -> './dump-type0-9-1-1631969921-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+'/sys/firmware/efi/efivars/dump-type0-9-1-1631970222-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0' -> './dump-type0-9-1-1631970222-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+'/sys/firmware/efi/efivars/dump-type0-9-1-1631970713-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0' -> './dump-type0-9-1-1631970713-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+root@guixsd ~/firmware# ls
+dump-type0-10-1-1609985200-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0  dump-type0-4-1-1611492025-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+dump-type0-10-1-1609985823-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0  dump-type0-4-1-1612103195-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+dump-type0-10-1-1609986284-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0  dump-type0-4-1-1631969921-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+dump-type0-10-1-1610067654-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0  dump-type0-4-1-1631970222-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+dump-type0-10-1-1611433768-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0  dump-type0-4-1-1631970713-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+dump-type0-10-1-1611492025-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0  dump-type0-4-1-1631971061-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+dump-type0-10-1-1612103195-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0  dump-type0-5-1-1609985200-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+dump-type0-10-1-1631969921-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0  dump-type0-5-1-1609985823-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+dump-type0-10-1-1631970225-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0  dump-type0-5-1-1609986284-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+dump-type0-10-1-1631970713-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0  dump-type0-5-1-1610067654-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+dump-type0-11-1-1611433768-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0  dump-type0-5-1-1611433768-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+dump-type0-11-1-1611492025-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0  dump-type0-5-1-1611492025-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+dump-type0-11-1-1631969921-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0  dump-type0-5-1-1612103195-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+dump-type0-11-1-1631970713-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0  dump-type0-5-1-1631969921-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+dump-type0-1-1-1609985200-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0   dump-type0-5-1-1631970222-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+dump-type0-1-1-1609985823-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0   dump-type0-5-1-1631970713-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+dump-type0-1-1-1609986284-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0   dump-type0-5-1-1631971061-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+dump-type0-1-1-1610067654-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0   dump-type0-6-1-1609985200-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+dump-type0-1-1-1611433768-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0   dump-type0-6-1-1609985823-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+dump-type0-1-1-1611492025-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0   dump-type0-6-1-1609986284-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+dump-type0-1-1-1612103195-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0   dump-type0-6-1-1610067654-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+dump-type0-1-1-1631969921-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0   dump-type0-6-1-1611433768-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+dump-type0-1-1-1631970222-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0   dump-type0-6-1-1611492025-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+dump-type0-1-1-1631970713-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0   dump-type0-6-1-1612103195-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+dump-type0-1-1-1631971061-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0   dump-type0-6-1-1631969921-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+dump-type0-12-1-1631969921-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0  dump-type0-6-1-1631970222-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+dump-type0-12-1-1631970713-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0  dump-type0-6-1-1631970713-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+dump-type0-13-1-1631969921-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0  dump-type0-6-1-1631971061-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+dump-type0-13-1-1631970713-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0  dump-type0-7-1-1609985200-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+dump-type0-14-1-1631969921-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0  dump-type0-7-1-1609985823-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+dump-type0-14-1-1631970713-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0  dump-type0-7-1-1609986284-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+dump-type0-15-1-1631969921-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0  dump-type0-7-1-1610067654-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+dump-type0-2-1-1609985200-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0   dump-type0-7-1-1611433768-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+dump-type0-2-1-1609985823-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0   dump-type0-7-1-1611492025-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+dump-type0-2-1-1609986284-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0   dump-type0-7-1-1612103195-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+dump-type0-2-1-1610067654-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0   dump-type0-7-1-1631969921-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+dump-type0-2-1-1611433768-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0   dump-type0-7-1-1631970222-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+dump-type0-2-1-1611492025-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0   dump-type0-7-1-1631970713-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+dump-type0-2-1-1612103195-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0   dump-type0-7-1-1631971061-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+dump-type0-2-1-1631969921-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0   dump-type0-8-1-1609985200-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+dump-type0-2-1-1631970222-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0   dump-type0-8-1-1609985823-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+dump-type0-2-1-1631970713-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0   dump-type0-8-1-1609986284-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+dump-type0-2-1-1631971061-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0   dump-type0-8-1-1610067654-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+dump-type0-3-1-1609985200-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0   dump-type0-8-1-1611433768-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+dump-type0-3-1-1609985823-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0   dump-type0-8-1-1611492025-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+dump-type0-3-1-1609986284-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0   dump-type0-8-1-1612103195-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+dump-type0-3-1-1610067654-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0   dump-type0-8-1-1631969921-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+dump-type0-3-1-1611433768-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0   dump-type0-8-1-1631970222-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+dump-type0-3-1-1611492025-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0   dump-type0-8-1-1631970713-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+dump-type0-3-1-1612103195-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0   dump-type0-9-1-1609985200-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+dump-type0-3-1-1631969921-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0   dump-type0-9-1-1609985823-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+dump-type0-3-1-1631970222-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0   dump-type0-9-1-1609986284-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+dump-type0-3-1-1631970713-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0   dump-type0-9-1-1610067654-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+dump-type0-3-1-1631971061-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0   dump-type0-9-1-1611433768-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+dump-type0-4-1-1609985200-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0   dump-type0-9-1-1611492025-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+dump-type0-4-1-1609985823-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0   dump-type0-9-1-1612103195-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+dump-type0-4-1-1609986284-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0   dump-type0-9-1-1631969921-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+dump-type0-4-1-1610067654-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0   dump-type0-9-1-1631970222-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+dump-type0-4-1-1611433768-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0   dump-type0-9-1-1631970713-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0
+root@guixsd ~/firmware# for file in /sys/firmware/efi/efivars/dump-type*; do rm -v "$file" .; done
+removed '/sys/firmware/efi/efivars/dump-type0-10-1-1609985200-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+rm: cannot remove '.': Is a directory
+removed '/sys/firmware/efi/efivars/dump-type0-10-1-1609985823-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+rm: cannot remove '.': Is a directory
+removed '/sys/firmware/efi/efivars/dump-type0-10-1-1609986284-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+rm: cannot remove '.': Is a directory
+removed '/sys/firmware/efi/efivars/dump-type0-10-1-1610067654-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+rm: cannot remove '.': Is a directory
+removed '/sys/firmware/efi/efivars/dump-type0-10-1-1611433768-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+rm: cannot remove '.': Is a directory
+removed '/sys/firmware/efi/efivars/dump-type0-10-1-1611492025-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+rm: cannot remove '.': Is a directory
+removed '/sys/firmware/efi/efivars/dump-type0-10-1-1612103195-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+rm: cannot remove '.': Is a directory
+removed '/sys/firmware/efi/efivars/dump-type0-10-1-1631969921-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+rm: cannot remove '.': Is a directory
+removed '/sys/firmware/efi/efivars/dump-type0-10-1-1631970225-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+rm: cannot remove '.': Is a directory
+removed '/sys/firmware/efi/efivars/dump-type0-10-1-1631970713-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+rm: cannot remove '.': Is a directory
+removed '/sys/firmware/efi/efivars/dump-type0-11-1-1611433768-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+rm: cannot remove '.': Is a directory
+removed '/sys/firmware/efi/efivars/dump-type0-11-1-1611492025-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+rm: cannot remove '.': Is a directory
+removed '/sys/firmware/efi/efivars/dump-type0-11-1-1631969921-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+rm: cannot remove '.': Is a directory
+removed '/sys/firmware/efi/efivars/dump-type0-11-1-1631970713-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+rm: cannot remove '.': Is a directory
+removed '/sys/firmware/efi/efivars/dump-type0-1-1-1609985200-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+rm: cannot remove '.': Is a directory
+removed '/sys/firmware/efi/efivars/dump-type0-1-1-1609985823-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+rm: cannot remove '.': Is a directory
+removed '/sys/firmware/efi/efivars/dump-type0-1-1-1609986284-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+rm: cannot remove '.': Is a directory
+removed '/sys/firmware/efi/efivars/dump-type0-1-1-1610067654-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+rm: cannot remove '.': Is a directory
+removed '/sys/firmware/efi/efivars/dump-type0-1-1-1611433768-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+rm: cannot remove '.': Is a directory
+removed '/sys/firmware/efi/efivars/dump-type0-1-1-1611492025-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+rm: cannot remove '.': Is a directory
+removed '/sys/firmware/efi/efivars/dump-type0-1-1-1612103195-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+rm: cannot remove '.': Is a directory
+removed '/sys/firmware/efi/efivars/dump-type0-1-1-1631969921-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+rm: cannot remove '.': Is a directory
+removed '/sys/firmware/efi/efivars/dump-type0-1-1-1631970222-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+rm: cannot remove '.': Is a directory
+removed '/sys/firmware/efi/efivars/dump-type0-1-1-1631970713-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+rm: cannot remove '.': Is a directory
+removed '/sys/firmware/efi/efivars/dump-type0-1-1-1631971061-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+rm: cannot remove '.': Is a directory
+removed '/sys/firmware/efi/efivars/dump-type0-12-1-1631969921-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+rm: cannot remove '.': Is a directory
+removed '/sys/firmware/efi/efivars/dump-type0-12-1-1631970713-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+rm: cannot remove '.': Is a directory
+removed '/sys/firmware/efi/efivars/dump-type0-13-1-1631969921-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+rm: cannot remove '.': Is a directory
+removed '/sys/firmware/efi/efivars/dump-type0-13-1-1631970713-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+rm: cannot remove '.': Is a directory
+removed '/sys/firmware/efi/efivars/dump-type0-14-1-1631969921-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+rm: cannot remove '.': Is a directory
+removed '/sys/firmware/efi/efivars/dump-type0-14-1-1631970713-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+rm: cannot remove '.': Is a directory
+removed '/sys/firmware/efi/efivars/dump-type0-15-1-1631969921-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+rm: cannot remove '.': Is a directory
+removed '/sys/firmware/efi/efivars/dump-type0-2-1-1609985200-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+rm: cannot remove '.': Is a directory
+removed '/sys/firmware/efi/efivars/dump-type0-2-1-1609985823-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+rm: cannot remove '.': Is a directory
+removed '/sys/firmware/efi/efivars/dump-type0-2-1-1609986284-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+rm: cannot remove '.': Is a directory
+removed '/sys/firmware/efi/efivars/dump-type0-2-1-1610067654-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+rm: cannot remove '.': Is a directory
+removed '/sys/firmware/efi/efivars/dump-type0-2-1-1611433768-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+rm: cannot remove '.': Is a directory
+removed '/sys/firmware/efi/efivars/dump-type0-2-1-1611492025-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+rm: cannot remove '.': Is a directory
+removed '/sys/firmware/efi/efivars/dump-type0-2-1-1612103195-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+rm: cannot remove '.': Is a directory
+removed '/sys/firmware/efi/efivars/dump-type0-2-1-1631969921-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+rm: cannot remove '.': Is a directory
+removed '/sys/firmware/efi/efivars/dump-type0-2-1-1631970222-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+rm: cannot remove '.': Is a directory
+removed '/sys/firmware/efi/efivars/dump-type0-2-1-1631970713-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+rm: cannot remove '.': Is a directory
+removed '/sys/firmware/efi/efivars/dump-type0-2-1-1631971061-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+rm: cannot remove '.': Is a directory
+removed '/sys/firmware/efi/efivars/dump-type0-3-1-1609985200-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+rm: cannot remove '.': Is a directory
+removed '/sys/firmware/efi/efivars/dump-type0-3-1-1609985823-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+rm: cannot remove '.': Is a directory
+removed '/sys/firmware/efi/efivars/dump-type0-3-1-1609986284-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+rm: cannot remove '.': Is a directory
+removed '/sys/firmware/efi/efivars/dump-type0-3-1-1610067654-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+rm: cannot remove '.': Is a directory
+removed '/sys/firmware/efi/efivars/dump-type0-3-1-1611433768-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+rm: cannot remove '.': Is a directory
+removed '/sys/firmware/efi/efivars/dump-type0-3-1-1611492025-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+rm: cannot remove '.': Is a directory
+removed '/sys/firmware/efi/efivars/dump-type0-3-1-1612103195-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+rm: cannot remove '.': Is a directory
+removed '/sys/firmware/efi/efivars/dump-type0-3-1-1631969921-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+rm: cannot remove '.': Is a directory
+removed '/sys/firmware/efi/efivars/dump-type0-3-1-1631970222-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+rm: cannot remove '.': Is a directory
+removed '/sys/firmware/efi/efivars/dump-type0-3-1-1631970713-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+rm: cannot remove '.': Is a directory
+removed '/sys/firmware/efi/efivars/dump-type0-3-1-1631971061-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+rm: cannot remove '.': Is a directory
+removed '/sys/firmware/efi/efivars/dump-type0-4-1-1609985200-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+rm: cannot remove '.': Is a directory
+removed '/sys/firmware/efi/efivars/dump-type0-4-1-1609985823-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+rm: cannot remove '.': Is a directory
+removed '/sys/firmware/efi/efivars/dump-type0-4-1-1609986284-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+rm: cannot remove '.': Is a directory
+removed '/sys/firmware/efi/efivars/dump-type0-4-1-1610067654-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+rm: cannot remove '.': Is a directory
+removed '/sys/firmware/efi/efivars/dump-type0-4-1-1611433768-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+rm: cannot remove '.': Is a directory
+removed '/sys/firmware/efi/efivars/dump-type0-4-1-1611492025-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+rm: cannot remove '.': Is a directory
+removed '/sys/firmware/efi/efivars/dump-type0-4-1-1612103195-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+rm: cannot remove '.': Is a directory
+removed '/sys/firmware/efi/efivars/dump-type0-4-1-1631969921-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+rm: cannot remove '.': Is a directory
+removed '/sys/firmware/efi/efivars/dump-type0-4-1-1631970222-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+rm: cannot remove '.': Is a directory
+removed '/sys/firmware/efi/efivars/dump-type0-4-1-1631970713-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+rm: cannot remove '.': Is a directory
+removed '/sys/firmware/efi/efivars/dump-type0-4-1-1631971061-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+rm: cannot remove '.': Is a directory
+removed '/sys/firmware/efi/efivars/dump-type0-5-1-1609985200-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+rm: cannot remove '.': Is a directory
+removed '/sys/firmware/efi/efivars/dump-type0-5-1-1609985823-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+rm: cannot remove '.': Is a directory
+removed '/sys/firmware/efi/efivars/dump-type0-5-1-1609986284-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+rm: cannot remove '.': Is a directory
+removed '/sys/firmware/efi/efivars/dump-type0-5-1-1610067654-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+rm: cannot remove '.': Is a directory
+removed '/sys/firmware/efi/efivars/dump-type0-5-1-1611433768-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+rm: cannot remove '.': Is a directory
+removed '/sys/firmware/efi/efivars/dump-type0-5-1-1611492025-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+rm: cannot remove '.': Is a directory
+removed '/sys/firmware/efi/efivars/dump-type0-5-1-1612103195-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+rm: cannot remove '.': Is a directory
+removed '/sys/firmware/efi/efivars/dump-type0-5-1-1631969921-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+rm: cannot remove '.': Is a directory
+removed '/sys/firmware/efi/efivars/dump-type0-5-1-1631970222-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+rm: cannot remove '.': Is a directory
+removed '/sys/firmware/efi/efivars/dump-type0-5-1-1631970713-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+rm: cannot remove '.': Is a directory
+removed '/sys/firmware/efi/efivars/dump-type0-5-1-1631971061-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+rm: cannot remove '.': Is a directory
+removed '/sys/firmware/efi/efivars/dump-type0-6-1-1609985200-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+rm: cannot remove '.': Is a directory
+removed '/sys/firmware/efi/efivars/dump-type0-6-1-1609985823-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+rm: cannot remove '.': Is a directory
+removed '/sys/firmware/efi/efivars/dump-type0-6-1-1609986284-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+rm: cannot remove '.': Is a directory
+removed '/sys/firmware/efi/efivars/dump-type0-6-1-1610067654-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+rm: cannot remove '.': Is a directory
+removed '/sys/firmware/efi/efivars/dump-type0-6-1-1611433768-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+rm: cannot remove '.': Is a directory
+removed '/sys/firmware/efi/efivars/dump-type0-6-1-1611492025-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+rm: cannot remove '.': Is a directory
+removed '/sys/firmware/efi/efivars/dump-type0-6-1-1612103195-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+rm: cannot remove '.': Is a directory
+removed '/sys/firmware/efi/efivars/dump-type0-6-1-1631969921-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+rm: cannot remove '.': Is a directory
+removed '/sys/firmware/efi/efivars/dump-type0-6-1-1631970222-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+rm: cannot remove '.': Is a directory
+removed '/sys/firmware/efi/efivars/dump-type0-6-1-1631970713-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+rm: cannot remove '.': Is a directory
+removed '/sys/firmware/efi/efivars/dump-type0-6-1-1631971061-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+rm: cannot remove '.': Is a directory
+removed '/sys/firmware/efi/efivars/dump-type0-7-1-1609985200-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+rm: cannot remove '.': Is a directory
+removed '/sys/firmware/efi/efivars/dump-type0-7-1-1609985823-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+rm: cannot remove '.': Is a directory
+removed '/sys/firmware/efi/efivars/dump-type0-7-1-1609986284-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+rm: cannot remove '.': Is a directory
+removed '/sys/firmware/efi/efivars/dump-type0-7-1-1610067654-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+rm: cannot remove '.': Is a directory
+removed '/sys/firmware/efi/efivars/dump-type0-7-1-1611433768-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+rm: cannot remove '.': Is a directory
+removed '/sys/firmware/efi/efivars/dump-type0-7-1-1611492025-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+rm: cannot remove '.': Is a directory
+removed '/sys/firmware/efi/efivars/dump-type0-7-1-1612103195-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+rm: cannot remove '.': Is a directory
+removed '/sys/firmware/efi/efivars/dump-type0-7-1-1631969921-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+rm: cannot remove '.': Is a directory
+removed '/sys/firmware/efi/efivars/dump-type0-7-1-1631970222-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+rm: cannot remove '.': Is a directory
+removed '/sys/firmware/efi/efivars/dump-type0-7-1-1631970713-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+rm: cannot remove '.': Is a directory
+removed '/sys/firmware/efi/efivars/dump-type0-7-1-1631971061-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+rm: cannot remove '.': Is a directory
+removed '/sys/firmware/efi/efivars/dump-type0-8-1-1609985200-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+rm: cannot remove '.': Is a directory
+removed '/sys/firmware/efi/efivars/dump-type0-8-1-1609985823-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+rm: cannot remove '.': Is a directory
+removed '/sys/firmware/efi/efivars/dump-type0-8-1-1609986284-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+rm: cannot remove '.': Is a directory
+removed '/sys/firmware/efi/efivars/dump-type0-8-1-1610067654-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+rm: cannot remove '.': Is a directory
+removed '/sys/firmware/efi/efivars/dump-type0-8-1-1611433768-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+rm: cannot remove '.': Is a directory
+removed '/sys/firmware/efi/efivars/dump-type0-8-1-1611492025-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+rm: cannot remove '.': Is a directory
+removed '/sys/firmware/efi/efivars/dump-type0-8-1-1612103195-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+rm: cannot remove '.': Is a directory
+removed '/sys/firmware/efi/efivars/dump-type0-8-1-1631969921-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+rm: cannot remove '.': Is a directory
+removed '/sys/firmware/efi/efivars/dump-type0-8-1-1631970222-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+rm: cannot remove '.': Is a directory
+removed '/sys/firmware/efi/efivars/dump-type0-8-1-1631970713-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+rm: cannot remove '.': Is a directory
+removed '/sys/firmware/efi/efivars/dump-type0-9-1-1609985200-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+rm: cannot remove '.': Is a directory
+removed '/sys/firmware/efi/efivars/dump-type0-9-1-1609985823-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+rm: cannot remove '.': Is a directory
+removed '/sys/firmware/efi/efivars/dump-type0-9-1-1609986284-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+rm: cannot remove '.': Is a directory
+removed '/sys/firmware/efi/efivars/dump-type0-9-1-1610067654-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+rm: cannot remove '.': Is a directory
+removed '/sys/firmware/efi/efivars/dump-type0-9-1-1611433768-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+rm: cannot remove '.': Is a directory
+removed '/sys/firmware/efi/efivars/dump-type0-9-1-1611492025-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+rm: cannot remove '.': Is a directory
+removed '/sys/firmware/efi/efivars/dump-type0-9-1-1612103195-D-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+rm: cannot remove '.': Is a directory
+removed '/sys/firmware/efi/efivars/dump-type0-9-1-1631969921-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+rm: cannot remove '.': Is a directory
+removed '/sys/firmware/efi/efivars/dump-type0-9-1-1631970222-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+rm: cannot remove '.': Is a directory
+removed '/sys/firmware/efi/efivars/dump-type0-9-1-1631970713-C-cfc8fc79-be2e-4ddc-97f0-9f98bfe298a0'
+rm: cannot remove '.': Is a directory
+root@guixsd ~/firmware# for file in /sys/firmware/efi/efivars/dump-type*; do rm -v "$file" .^Cdone
+root@guixsd ~/firmware# cd
+root@guixsd ~# 
+logout
+oleg@guixsd ~$ guix system switch
+/home/oleg/.local/share/chezmoi/dotfiles/guixsd/hardware/guixsd.scm:11:23: warning: the 'target' field is deprecated, please use 'targets' instead
+guix system: warning: representing setuid programs with file-like objects is deprecated; use 'setuid-program' instead
+guix system: warning: Your Guix installation is 9 days old.
+guix system: warning: Consider running 'guix pull' followed by
+'guix system reconfigure' to get up-to-date packages and security updates.
+
+WARNING: (#{ g652}#): `openssh' imported from both (gnu packages ssh) and (deprecated)
+;;; compiling /home/oleg/.local/share/chezmoi/dotfiles/guixsd/ssh-exporter.scm
+;;; compiled /root/.cache/guile/ccache/3.0-LE-8-4.5/home/oleg/.local/share/chezmoi/dotfiles/guixsd/ssh-exporter.scm.go
+;;; compiling /home/oleg/.local/share/chezmoi/dotfiles/guixsd/exim.scm
+;;; compiled /root/.cache/guile/ccache/3.0-LE-8-4.5/home/oleg/.local/share/chezmoi/dotfiles/guixsd/exim.scm.go
+;;; compiling /home/oleg/.local/share/chezmoi/dotfiles/guixsd/smartctl.scm
+;;; compiled /root/.cache/guile/ccache/3.0-LE-8-4.5/home/oleg/.local/share/chezmoi/dotfiles/guixsd/smartctl.scm.go
+;;; compiling /home/oleg/.local/share/chezmoi/dotfiles/guixsd/bird.scm
+;;; compiled /root/.cache/guile/ccache/3.0-LE-8-4.5/home/oleg/.local/share/chezmoi/dotfiles/guixsd/bird.scm.go
+;;; compiling /home/oleg/.local/share/chezmoi/dotfiles/guixsd/blackbox.scm
+;;; compiled /root/.cache/guile/ccache/3.0-LE-8-4.5/home/oleg/.local/share/chezmoi/dotfiles/guixsd/blackbox.scm.go
+;;; compiling /home/oleg/.local/share/chezmoi/dotfiles/guixsd/node.scm
+;;; compiled /root/.cache/guile/ccache/3.0-LE-8-4.5/home/oleg/.local/share/chezmoi/dotfiles/guixsd/node.scm.go
+;;; compiling /home/oleg/.local/share/chezmoi/dotfiles/guixsd/desktop.scm
+;;; compiled /root/.cache/guile/ccache/3.0-LE-8-4.5/home/oleg/.local/share/chezmoi/dotfiles/guixsd/desktop.scm.go
+/home/oleg/.local/share/chezmoi/dotfiles/guixsd/hardware/guixsd.scm:4:0: warning: List elements of the field 'swap-devices' should now use the <swap-space> record, as the old method is deprecated. See "(guix) operating-system Reference" for more details.
+WARNING: (#{ g652}#): imported module (gnu services) overrides core binding `delete'
+guix system: warning: the following groups appear more than once: docker nixbld adbusers
+gnu/services/dns.scm:962:4: warning: importing module (ice-9 rdelim) from the host
+gnu/services/dns.scm:962:4: warning: importing module (ice-9 rdelim) from the host
+gnu/services/dns.scm:962:4: warning: importing module (ice-9 rdelim) from the host
+gnu/services/dns.scm:962:4: warning: importing module (ice-9 rdelim) from the host
+;;; compiling /home/oleg/.local/share/chezmoi/dotfiles/guixsd/ssh-exporter.scm
+;;; compiled /root/.cache/guile/ccache/3.0-LE-8-4.5/home/oleg/.local/share/chezmoi/dotfiles/guixsd/ssh-exporter.scm.go
+;;; compiling /home/oleg/.local/share/chezmoi/dotfiles/guixsd/exim.scm
+;;; compiled /root/.cache/guile/ccache/3.0-LE-8-4.5/home/oleg/.local/share/chezmoi/dotfiles/guixsd/exim.scm.go
+;;; compiling /home/oleg/.local/share/chezmoi/dotfiles/guixsd/smartctl.scm
+;;; compiled /root/.cache/guile/ccache/3.0-LE-8-4.5/home/oleg/.local/share/chezmoi/dotfiles/guixsd/smartctl.scm.go
+;;; compiling /home/oleg/.local/share/chezmoi/dotfiles/guixsd/bird.scm
+;;; compiled /root/.cache/guile/ccache/3.0-LE-8-4.5/home/oleg/.local/share/chezmoi/dotfiles/guixsd/bird.scm.go
+;;; compiling /home/oleg/.local/share/chezmoi/dotfiles/guixsd/blackbox.scm
+;;; compiled /root/.cache/guile/ccache/3.0-LE-8-4.5/home/oleg/.local/share/chezmoi/dotfiles/guixsd/blackbox.scm.go
+;;; compiling /home/oleg/.local/share/chezmoi/dotfiles/guixsd/node.scm
+;;; compiled /root/.cache/guile/ccache/3.0-LE-8-4.5/home/oleg/.local/share/chezmoi/dotfiles/guixsd/node.scm.go
+;;; compiling /home/oleg/.local/share/chezmoi/dotfiles/guixsd/desktop.scm
+;;; compiled /root/.cache/guile/ccache/3.0-LE-8-4.5/home/oleg/.local/share/chezmoi/dotfiles/guixsd/desktop.scm.go
+guix system: warning: the following groups appear more than once: docker nixbld adbusers
+gnu/services/dns.scm:962:4: warning: importing module (ice-9 rdelim) from the host
+gnu/services/dns.scm:962:4: warning: importing module (ice-9 rdelim) from the host
+gnu/services/dns.scm:962:4: warning: importing module (ice-9 rdelim) from the host
+gnu/services/dns.scm:962:4: warning: importing module (ice-9 rdelim) from the host
+The following derivation will be built:
+   /gnu/store/y1ll52m8x4qpxr8v1c8rajwddq540vbi-grub.cfg.drv
+
+building /gnu/store/y1ll52m8x4qpxr8v1c8rajwddq540vbi-grub.cfg.drv...
+/gnu/store/jrk493967dssc6n64gyc8ni2pf1m43v7-system
+/gnu/store/p7f7bspq1yawh204arx6kz7xwlir4pzj-grub.cfg
+
+activating system...
+;;; compiling /home/oleg/.local/share/chezmoi/dotfiles/guixsd/ssh-exporter.scm
+;;; compiled /root/.cache/guile/ccache/3.0-LE-8-4.5/home/oleg/.local/share/chezmoi/dotfiles/guixsd/ssh-exporter.scm.go
+;;; compiling /home/oleg/.local/share/chezmoi/dotfiles/guixsd/exim.scm
+;;; compiled /root/.cache/guile/ccache/3.0-LE-8-4.5/home/oleg/.local/share/chezmoi/dotfiles/guixsd/exim.scm.go
+;;; compiling /home/oleg/.local/share/chezmoi/dotfiles/guixsd/smartctl.scm
+;;; compiled /root/.cache/guile/ccache/3.0-LE-8-4.5/home/oleg/.local/share/chezmoi/dotfiles/guixsd/smartctl.scm.go
+;;; compiling /home/oleg/.local/share/chezmoi/dotfiles/guixsd/bird.scm
+;;; compiled /root/.cache/guile/ccache/3.0-LE-8-4.5/home/oleg/.local/share/chezmoi/dotfiles/guixsd/bird.scm.go
+;;; compiling /home/oleg/.local/share/chezmoi/dotfiles/guixsd/blackbox.scm
+;;; compiled /root/.cache/guile/ccache/3.0-LE-8-4.5/home/oleg/.local/share/chezmoi/dotfiles/guixsd/blackbox.scm.go
+;;; compiling /home/oleg/.local/share/chezmoi/dotfiles/guixsd/node.scm
+;;; compiled /root/.cache/guile/ccache/3.0-LE-8-4.5/home/oleg/.local/share/chezmoi/dotfiles/guixsd/node.scm.go
+;;; compiling /home/oleg/.local/share/chezmoi/dotfiles/guixsd/desktop.scm
+;;; compiled /root/.cache/guile/ccache/3.0-LE-8-4.5/home/oleg/.local/share/chezmoi/dotfiles/guixsd/desktop.scm.go
+guix system: warning: the following groups appear more than once: docker nixbld adbusers
+gnu/services/dns.scm:962:4: warning: importing module (ice-9 rdelim) from the host
+gnu/services/dns.scm:962:4: warning: importing module (ice-9 rdelim) from the host
+making '/gnu/store/jrk493967dssc6n64gyc8ni2pf1m43v7-system' the current system...
+setting up setuid programs in '/run/setuid-programs'...
+populating /etc from /gnu/store/pwhf81v83cisn6dm1cgy24lxlydvbarm-etc...
+guix: gitolite: installing /gnu/store/6gbfx27am0hff87d6klbvrdic7j088al-gitolite.rc
+creating nginx log directory '/var/log/nginx'
+creating nginx run directory '/var/run/nginx'
+creating nginx temp directories '/var/run/nginx/{client_body,proxy,fastcgi,uwsgi,scgi}_temp'
+nginx: [warn] conflicting server name "cgit.duckdns.org" on 0.0.0.0:80, ignored
+nginx: [warn] conflicting server name "monitor.wugi.info" on 0.0.0.0:80, ignored
+nginx: the configuration file /gnu/store/pgphsh9bq9arz95iwp2jbmbhrx2kcaky-nginx.conf syntax is ok
+nginx: configuration file /gnu/store/pgphsh9bq9arz95iwp2jbmbhrx2kcaky-nginx.conf test is successful
+/var/lib/certbot/renew-certificates may need to be run
+`/gnu/store/4lx3xk5s9yip079bd8bp9z0qar26gq29-openssh-authorized-keys/vm1-ssh-tunnel' -> `/etc/ssh/authorized_keys.d/vm1-ssh-tunnel'
+`/gnu/store/4lx3xk5s9yip079bd8bp9z0qar26gq29-openssh-authorized-keys/jenkins' -> `/etc/ssh/authorized_keys.d/jenkins'
+The following derivation will be built:
+   /gnu/store/xncdz73nc2csxk0wp9rpv64qvmd5zzdb-install-bootloader.scm.drv
+
+building /gnu/store/xncdz73nc2csxk0wp9rpv64qvmd5zzdb-install-bootloader.scm.drv...
+guix system: bootloader successfully installed on '(/boot/efi)'
+;;; compiling /home/oleg/.local/share/chezmoi/dotfiles/guixsd/ssh-exporter.scm
+;;; compiled /root/.cache/guile/ccache/3.0-LE-8-4.5/home/oleg/.local/share/chezmoi/dotfiles/guixsd/ssh-exporter.scm.go
+;;; compiling /home/oleg/.local/share/chezmoi/dotfiles/guixsd/exim.scm
+;;; compiled /root/.cache/guile/ccache/3.0-LE-8-4.5/home/oleg/.local/share/chezmoi/dotfiles/guixsd/exim.scm.go
+;;; compiling /home/oleg/.local/share/chezmoi/dotfiles/guixsd/smartctl.scm
+;;; compiled /root/.cache/guile/ccache/3.0-LE-8-4.5/home/oleg/.local/share/chezmoi/dotfiles/guixsd/smartctl.scm.go
+;;; compiling /home/oleg/.local/share/chezmoi/dotfiles/guixsd/bird.scm
+;;; compiled /root/.cache/guile/ccache/3.0-LE-8-4.5/home/oleg/.local/share/chezmoi/dotfiles/guixsd/bird.scm.go
+;;; compiling /home/oleg/.local/share/chezmoi/dotfiles/guixsd/blackbox.scm
+;;; compiled /root/.cache/guile/ccache/3.0-LE-8-4.5/home/oleg/.local/share/chezmoi/dotfiles/guixsd/blackbox.scm.go
+;;; compiling /home/oleg/.local/share/chezmoi/dotfiles/guixsd/node.scm
+;;; compiled /root/.cache/guile/ccache/3.0-LE-8-4.5/home/oleg/.local/share/chezmoi/dotfiles/guixsd/node.scm.go
+;;; compiling /home/oleg/.local/share/chezmoi/dotfiles/guixsd/desktop.scm
+;;; compiled /root/.cache/guile/ccache/3.0-LE-8-4.5/home/oleg/.local/share/chezmoi/dotfiles/guixsd/desktop.scm.go
+0.0 MB will be downloaded
+ module-import-compiled  20KiB                                                                                                  1.7MiB/s 00:00 [##################] 100.0%
+The following derivation will be built:
+   /gnu/store/bzk017hc2qwhm9c6s8zjbc9b9qr4i90x-upgrade-shepherd-services.scm.drv
+
+0.0 MB will be downloaded
+ module-import-compiled  20KiB                                                                                                  1.3MiB/s 00:00 [##################] 100.0%
+building /gnu/store/bzk017hc2qwhm9c6s8zjbc9b9qr4i90x-upgrade-shepherd-services.scm.drv...
+shepherd: Service host-name has been started.
+shepherd: Service user-homes has been started.
+shepherd: Service sysctl has been started.
+shepherd: Service host-name has been started.
+shepherd: Service term-auto could not be started.
+shepherd: Service kernel-module-loader has been started.
+shepherd: Service docker-start has been started.
+To complete the upgrade, run 'herd restart SERVICE' to stop,
+upgrade, and restart each service that was not automatically restarted.
+Run 'herd status' to view the list of services on your system.
+
+root@guixsd ~ [env]# mdadm --assemble --force --scan
+mdadm: /dev/md/0 has been started with 2 drives (out of 3).
+mdadm: timeout waiting for /dev/md/0
+
+root@guixsd ~ [env]# mdadm /dev/md0 --add /dev/sdd3 
+mdadm: added /dev/sdd3
+
+root@guixsd ~ [env]# cat /proc/mdstat 
+Personalities : [raid6] [raid5] [raid4] 
+md0 : active raid5 sdd3[3] sdc2[0] sdd2[1]
+      467547136 blocks super 1.2 level 5, 512k chunk, algorithm 2 [3/2] [UU_]
+      [>....................]  recovery =  2.1% (5128988/233773568) finish=20.0min speed=189962K/sec
+      bitmap: 2/2 pages [8KB], 65536KB chunk
+
+unused devices: <none>
+
+root@guixsd ~ [env]# mdadm /dev/md0 --remove /dev/sdd3
+mdadm: hot remove failed for /dev/sdd3: Device or resource busy
+root@guixsd ~ [env]# mdadm /dev/md0 --fail /dev/sdd3
+mdadm: set /dev/sdd3 faulty in /dev/md0
+root@guixsd ~ [env]# cat /proc/mdstat 
+Personalities : [raid6] [raid5] [raid4] 
+md0 : active raid5 sdc2[0] sdd3[3](F) sdd2[1]
+      467547136 blocks super 1.2 level 5, 512k chunk, algorithm 2 [3/2] [UU_]
+      bitmap: 1/2 pages [4KB], 65536KB chunk
+
+unused devices: <none>
+root@guixsd ~ [env]# mdadm /dev/md0 --remove /dev/sdd3
+mdadm: hot removed /dev/sdd3 from /dev/md0
+root@guixsd ~ [env]# mdadm --zero-superblock /dev/sdd3
+
+* btrfs
+
+root@guixsd ~ [env]# mkfs.btrfs -L data1 /dev/sdd3 -f
+btrfs-progs v5.15.1 
+See http://btrfs.wiki.kernel.org for more information.
+
+Performing full device TRIM /dev/sdd3 (707.94GiB) ...
+NOTE: several default settings have changed in version 5.15, please make sure
+      this does not affect your deployments:
+      - DUP for metadata (-m dup)
+      - enabled no-holes (-O no-holes)
+      - enabled free-space-tree (-R free-space-tree)
+
+Label:              data1
+UUID:               a035fd1f-c1d2-4cee-ab74-2a945bd018b0
+Node size:          16384
+Sector size:        4096
+Filesystem size:    707.94GiB
+Block group profiles:
+  Data:             single            8.00MiB
+  Metadata:         DUP               1.00GiB
+  System:           DUP               8.00MiB
+SSD detected:       yes
+Zoned device:       no
+Incompat features:  extref, skinny-metadata, no-holes
+Runtime features:   free-space-tree
+Checksum:           crc32c
+Number of devices:  1
+Devices:
+   ID        SIZE  PATH
+    1   707.94GiB  /dev/sdd3
+
+root@guixsd ~ [env]# btrfs subvolume create /mnt/data1/src
+Create subvolume '/mnt/data1/src'
+root@guixsd ~ [env]# umount /mnt/data1/
+root@guixsd ~ [env]# #mount -o compress=zstd,ssd,noatime /dev/sdd3 /mnt/data1
+root@guixsd ~ [env]# mkdir /mnt/src
+root@guixsd ~ [env]# mount -o subvol=src,compress=zstd,ssd,noatime /dev/sdd3 /mnt/src
+root@guixsd ~ [env]# history -a
+root@guixsd ~ [env]# mount -o subvol=src,compress=zstd:15,ssd,noatime /dev/sdd3 /mnt/src
+root@guixsd ~ [env]# modprobe raid456; guix shell mdadm -- mdadm --assemble --scan; mount /dev/md0 /mnt/guix
