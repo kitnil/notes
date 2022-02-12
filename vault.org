@@ -86,6 +86,7 @@ ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -l root -fNL 820
 * Learning
 - [[https://habr.com/ru/company/nixys/blog/578870/][Взаимное автоматическое распечатывание двух Vault кластеров в Kubernetes / Хабр]]
 - [[https://itdraft.ru/2020/12/02/hashicorp-vault-kak-czentr-sertifikaczii-ca-vault-pki/][HashiCorp Vault как центр сертификации (CA) / Vault PKI • vault, devops, hashicorp, pki • IT Draft]]
+- [[https://learn.hashicorp.com/tutorials/vault/tokens#renew-service-tokens][Tokens | Vault - HashiCorp Learn]]
 
 * Misc
 
