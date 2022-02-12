@@ -1221,6 +1221,33 @@ features, like 'V' to execute msgfmt and so on.
   Btw, another test worth a try would be to use method "sshx" instead of
   "ssh". Does this make a difference?
 
+*** 
+
+Subject: Re: emacs tramp in remote guix
+Date: Sat, 12 Feb 2022 19:04:02 +0100 (14 minutes, 53 seconds ago)
+Message-ID: <87leyghsh9.fsf@yahoo.com.br>
+
+Josselin Poiret
+
+I personally use
+
+#+begin_src emacs-lisp :lexical no
+  (require 'tramp)
+
+  (connection-local-set-profile-variables
+   'guix-system
+   '((tramp-remote-path . (tramp-own-remote-path))))
+
+  (connection-local-set-profiles
+   '(:application tramp :protocol "sudo" :machine "hostname")
+   'guix-system)
+#+end_src
+
+for tramp on my own machine.  The symbol 'tramp-own-remote-path uses the
+login shell of the target to determine the environment to use, so is
+well suited for guix.  You may need to adjust the :protocol and :machine
+keys of the connection-local-set-profiles call for your use case though.
+
 ** VTerm
    - [[https://github.com/ration/find-trace-paths][ration/find-trace-paths: Find paths from error traces and allow to scroll through and click into them]]
 
