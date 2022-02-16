@@ -14,6 +14,7 @@
 - https://support.plesk.com/hc/en-us/articles/213961665-How-to-verify-that-SSL-for-IMAP-POP3-SMTP-works-and-a-proper-SSL-certificate-is-in-use
 - [[https://medium.com/@superseb/get-your-certificate-chain-right-4b117a9c0fce][Get your certificate chain right. As many know, certificates are not… | by Sebastiaan van Steenis | Medium]]
 - [[https://www.usenix.org/system/files/sec21-poddebniak.pdf][Why TLS is better without STARTTLS: A Security Analysis of STARTTLS in the Email Context]]
+- [[https://habr.com/ru/company/plesk/blog/507094/][Введение в TLS для п̶р̶а̶к̶т̶и̶к̶о̶в̶ Патриков (часть 2) / Хабр]]
 
 - Check certificate
   : echo | openssl s_client -connect berlin.guixsd.org:443 | openssl x509 -text
