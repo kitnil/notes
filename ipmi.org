@@ -12,3 +12,139 @@ To set LAN mode failover: ipmitool raw 0x30 0x70 0x0c 1 2.
 * Links
 - [[https://github.com/DrSpeedy/ipmi_fancontrol-ng][DrSpeedy/ipmi_fancontrol-ng: IPMI Fan Control Daemon]]
 - [[https://www.tzulo.com/crm/knowledgebase/47/IPMI-and-IPMITOOL-Cheat-sheet.html][IPMI & IPMITOOL Cheat sheet - Knowledgebase - tzulo, inc.]]
+
+IPMI & IPMITOOL Cheat sheet
+
+    156 
+
+What is IPMI?
+
+The Intelligent Platform Management Interface (IPMI) is a standardized computer system interface used by system administrators for out-of-band management of computer systems and monitoring of their operation. Out-of-band is also referred to as LOM (Lights-out management) involves the use of a dedicated management channel for device maintenance.
+There are number of options available to manage the device remotely. There are vendor specific server management technologies available. HP’s Integrated Lights-out or iLO, Dell’s Dell Remote Access Controller or DRAC and IBM’s Remote supervisor adapter (RSA) are a few to list. The above listed modules are vendor specific and proprietary. IPMI whereas is vendor-neutral and cross-platform. It is available on Linux distros. The functionality of IPMI can be accessed via IPMItool. IPMItool is a simple command line utility which is used to manage IPMI-enabled devices. IPMItool enables you to manage system hardware components, monitor system health, and monitor and manage the system environment, independent of the operating system.
+
+Cheat sheet
+
+You can install IPMI and IPMItool via yum using the following command:
+
+[root@anm ~]# yum install OpenIPMI OpenIPMI-tools
+
+Make sure that the server is set to start during startup and start the IPMI service.
+
+[root@anm ~]# chkconfig ipmi on 
+[root@anm ~]# service ipmi start
+
+We have here some IPMItool commands which can be used in day-to-day operations.
+
+1. Man and help info for IPMItool
+
+ipmitool help 
+man ipmitool
+
+2. To check firmware version
+
+ipmitool mc info
+
+3. To reset the management controller
+
+ipmitool mc reset [ warm | cold ]
+
+4. Show field-replaceable-unit details
+
+ipmitool fru print
+
+5. Show sensor output
+
+ipmitool sdr list 
+ipmitool sdr type list 
+ipmitool sdr type Temperature 
+ipmitool sdr type Fan 
+ipmitool sdr type ‘Power Supply’
+
+6. Chassis commands
+
+ipmitool chassis status ipmitool chassis identify [] # turn on front panel identify light (default 15s) 
+ipmitool [chassis] power soft # initiate a soft-shutdown via acpi 
+ipmitool [chassis] power cycle # issue a hard power off, wait 1s, power on 
+ipmitool [chassis] power off # issue a hard power off 
+ipmitool [chassis] power on # issue a hard power on 
+ipmitool [chassis] power reset # issue a hard reset
+
+7. Modify boot device for next reboot
+
+ipmitool chassis bootdev pxe 
+ipmitool chassis bootdev cdrom 
+ipmitool chassis bootdev bios
+
+8. Logging
+
+ipmitool sel info 
+ipmitool sel list 
+ipmitool sel elist # extended list (see manpage) 
+ipmitool sel clear
+
+9. For remote access, you need to setup user and network settings, either at boot time on the iLO or DRAC card itself, or from the OS via ipmitool: 
+Display/reset password for default root user (userid ’2′)
+
+ipmitool user list 1 
+ipmitool user set password 2
+
+10. Display/configure lan settings
+
+ipmitool lan print 1
+ipmitool lan set 1 ipsrc [ static | dhcp ] 
+ipmitool lan set 1 ipaddr {YOUR DESIRED IP}
+ipmitool lan set 1 netmask {YOUR NETMASK}
+ipmitool lan set 1 defgw ipaddr 10.0.1.1
+
+After configuring the lan settings you should be able to connect remotely using the ‘lan’ interface of IPMItool.
+The following is an example:
+
+[root@anm ~]# ipmitool -I lan -U root -H {YOUR DESIRED IP} chassis status
+
+11. Hanging BMC
+
+ipmitool bmc reset cold
+
+12. Change system state
+
+ipmitool -H <ip> -U <user> chassis power <status|on|off|cycle|reset>
+
+13. Get debug info
+
+ipmitool lan print
+ipmitool -H <ip> -U <user> shell # get ipmitool shell, type 'help'
+ipmitool -H <ip> -U <user> sel list # Show system event log
+ipmitool -H <ip> -U <user> sdr # List sensor data
+
+14. Get SOL console
+
+modprobe lanplus # If not yet loaded
+ipmitool -H <IP> -U <user> -I lanplus sol activate
+
+
+Additional cheatsheet commands:
+
+
+#list users
+ipmitool -U <login> -P '<password>' -H <IP> user list
+
+#delete user id
+ipmitool -U <login> -P '<password>' -H <IP> user set name <id> ""
+
+
+#add user
+
+#user password
+ipmitool -U <login> -P '<password>' -H <IP> ipmitool user set password <id> blah
+
+#power status
+ipmitool -U <login> -P '<password>' -H <IP> power status
+
+#power off
+ipmitool -U <login> -P '<password>' -H <IP> power off
+
+#power on
+ipmitool -U <login> -P '<password>' -H <IP> power on
+
+#power reset
+ipmitool -U <login> -P '<password>' -H <IP> power reset
