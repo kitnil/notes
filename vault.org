@@ -100,6 +100,7 @@ ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -l root -fNL 820
 - [[https://github.com/mvisonneau/strongbox][mvisonneau/strongbox: Securely store secrets at rest using Hashicorp Vault]]
 - [[https://github.com/PsyanticY/vaultfs][PsyanticY/vaultfs: Hashicorp Vault fuse filesystem]]
 - [[https://www.nginx.com/blog/protecting-ssl-private-keys-nginx-hashicorp-vault/][Protecting SSL Private Keys in NGINX with HashiCorp Vault - NGINX]]
+- [[https://github.com/hashicorp/consul-template][hashicorp/consul-template: Template rendering, notifier, and supervisor for @HashiCorp Consul and Vault data.]]
 
 * Jenkins
 - [[https://www.admin-magazine.com/Archive/2019/51/Jenkins-Configuration-as-Code/(offset)/3][JCasC » ADMIN Magazine]]
