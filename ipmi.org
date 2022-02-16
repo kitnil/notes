@@ -11,3 +11,4 @@ To set LAN mode failover: ipmitool raw 0x30 0x70 0x0c 1 2.
 
 * Links
 - [[https://github.com/DrSpeedy/ipmi_fancontrol-ng][DrSpeedy/ipmi_fancontrol-ng: IPMI Fan Control Daemon]]
+- [[https://www.tzulo.com/crm/knowledgebase/47/IPMI-and-IPMITOOL-Cheat-sheet.html][IPMI & IPMITOOL Cheat sheet - Knowledgebase - tzulo, inc.]]
