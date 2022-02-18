@@ -94,5 +94,5 @@ CPUQuota=50%
 - [[https://www.freedesktop.org/software/systemd/man/kernel-command-line.html][kernel-command-line]]
   : systemd.mask=
 
-home.mount
-mount--home.service
+  1. home.mount
+  2. mount--home.service
