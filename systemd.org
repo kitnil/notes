@@ -87,3 +87,6 @@ CPUQuota=50%
       sleep 1
   done
 #+end_example
+
+- [[https://www.freedesktop.org/software/systemd/man/kernel-command-line.html][kernel-command-line]]
+  : systemd.default_timeout_start_sec=
