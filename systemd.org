@@ -90,3 +90,6 @@ CPUQuota=50%
 
 - [[https://www.freedesktop.org/software/systemd/man/kernel-command-line.html][kernel-command-line]]
   : systemd.default_timeout_start_sec=
+
+- [[https://www.freedesktop.org/software/systemd/man/kernel-command-line.html][kernel-command-line]]
+  : systemd.mask=
