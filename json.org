@@ -59,6 +59,7 @@ with =jc= utility, piped to =jq= to filter, and to =jtbl= generate a table:
 - [[https://github.com/uzimaru0000/tv][uzimaru0000/tv: CLI tool for displaying table]]
 - [[https://github.com/kvz/json2hcl][kvz/json2hcl: Convert JSON to HCL, and vice versa. We don't use json2hcl anymore ourselves, so we can't invest time into it. However, we're still welcoming PRs.]]
 - [[https://github.com/jzelinskie/faq][jzelinskie/faq: Format Agnostic jQ -- process various formats with libjq]]
+- [[https://github.com/ryncsn/poorjson.sh][ryncsn/poorjson.sh: A minimal POSIX compatible JSON parser and query tool, within 60 lines of codes, only requires `sed`. (Should be) Compatible with bash, dash, zsh, busybox and any other POSIX shell.]]
 
 * Examples
 : ssh web15.intr ifconfig | jc --ifconfig | jq --raw-output '[.[] | select(.mac_addr != null) | select(.ipv4_addr != null) | select(.name != "docker0") | {"name": .name, "mac": .mac_addr, "addr": .ipv4_addr, "mask": .ipv4_mask}]'
