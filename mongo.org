@@ -21,6 +21,9 @@
 
 - https://habr.com/en/post/134590/
 
+- Search in nested object
+  : db.getCollection('template').find({"foo.bar": "something"})
+
 - Find inside array
 : db.getCollection('template').find({"resourceFilter": {$in: ["cgiFileExtensions"]}})
 
