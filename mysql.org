@@ -11,6 +11,7 @@
 - [[https://vitess.io/][Vitess | A database clustering system for horizontal scaling of MySQL]]
 - [[https://disnetern.ru/monitoring-mysql-by-mytop/][Мониторинг загрузки MySQL | IT Knowledge Base]]
 - [[https://serveradmin.ru/polnyj-i-inkrementnyj-backup-mysql/][Как сделать полный и инкрементный backup баз Mysql — Server Admin]]
+- [[https://serveradmin.ru/ochistka-i-udalenie-faylov-ib_logfile-v-mysql/][Очистка и удаление файлов ib_logfile в Mysql — Server Admin]]
 
 
 : mysqldump --master-data=2 --flush-logs --single-transaction --quick --all-databases
