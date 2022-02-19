@@ -10,6 +10,9 @@
   - https://serveradmin.ru/parsing-i-peredacha-json-dannyih-v-zabbix/
   - http://jsonpath.com/
 
+* Tools
+- [[https://serveradmin.ru/monitoring-docker-s-pomoshhyu-zabbix-agent-2/][Мониторинг Docker с помощью Zabbix Agent 2 — Server Admin]]
+
 * http://admin-gu.ru/os/linux/ustanovka-i-nastrojka-snmp-snmpd-snmptrapd
 
 Установка и настройка snmp, snmpd, snmptrapd в Linux Mint, Ubuntu, Debian 
@@ -152,3 +155,4 @@ user@pc:~$ sudo service snmpd restart
 
 Вот и все. Я постарался кратко рассказать о первоначальной настройки демонов
 snmpd и snmptrapd.  Комментируем, подписываемся ну и всем пока:)
+
