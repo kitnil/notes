@@ -14,6 +14,7 @@
 - [[http://www.bestfeng.vip/blog/detail/19][Redis技术内幕之数据结构篇 - 烂笔头]]
 - [[https://github.com/EQ-Alpha/KeyDB][EQ-Alpha/KeyDB: A Multithreaded Fork of Redis]]
 - [[https://github.com/hosein-yousefii/Redis-cluster][hosein-yousefii/Redis-cluster: Creating Redis cluster on docker in a second.]]
+- [[https://habr.com/ru/company/nixys/blog/591555/][Поиск причин замедленной работы redis на виртуальной машине / Хабр]]
 
 : redis-cli -h redis.intr hgetall "mailboxes:test@test.wugi.info"
 
