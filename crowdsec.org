@@ -1,1 +1,15 @@
 - [[https://serveradmin.ru/ustanovka-i-nastrojka-crowdsec/][Установка и настройка CrowdSec — Server Admin]]
+
+Разблокировать вручную конкретный ip можно следующей командой:
+
+# cscli decisions delete --ip 10.20.1.16
+
+Так же можно разом удалить все баны:
+
+# cscli decisions delete --all
+
+Можно вручную кого-то забанить:
+
+# cscli decisions add --ip 10.20.1.16 --reason "web bruteforce" --type ban
+
+Помимо ip адресов можно банить сразу подсети. Синтаксис точно такой же, только вместо конкретного ip указывается подсеть со своей маской. В целом, тут функционал аналогичен Fail2ban.
