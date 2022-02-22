@@ -35,3 +35,6 @@ Pool lvm1 started
 [root@localhost ~]# lvcreate -l 100%FREE -Zn --type thin-pool --thinpool pool0 vg0
   Thin pool volume with chunk size 64.00 KiB can address at most <15.88 TiB of data.
   Logical volume "pool0" created.
+[root@localhost ~]# lvcreate -T vg0/pool0 -V 9 -n volume0
+  Rounding up size to full physical extent 12.00 MiB
+  Logical volume "volume0" created.
