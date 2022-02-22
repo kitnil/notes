@@ -26,3 +26,5 @@
 - [[https://docs.gitlab.com/ee/user/project/merge_requests/fast_forward_merge.html][Fast-forward merge requests | GitLab]]
 : gitlabhq_production=# update projects set merge_requests_rebase_enabled='t';
 : UPDATE 514
+
+* TODO [[https://gitlab.com/gitlab-org/gitlab/-/issues/26540][Allow to set global settings for merge requests mode (#26540) · Issues · GitLab.org / GitLab · GitLab]]
