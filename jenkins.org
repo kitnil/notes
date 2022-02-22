@@ -310,6 +310,28 @@ NOTE: "pipeline" equal to "workflow".
   - [[https://jenkins.io/solutions/pipeline/][Pipeline as Code with Jenkins]]
   - [[https://dzone.com/refcardz/continuous-delivery-with-jenkins-workflow?chapter=12][Continuous Delivery With Jenkins Workflow - DZone - Refcardz]]
 
+  - [[https://support.cloudbees.com/hc/en-us/articles/218639328-How-to-delete-multiple-jobs-?page=69][How to delete multiple jobs? – CloudBees Support]]
+#+begin_src groovy
+  import jenkins.model.Jenkins
+  import hudson.model.Job
+  import org.jenkinsci.plugins.workflow.multibranch.WorkflowMultiBranchProject
+
+  //Input:
+  //If dryRun is true, will print list of jobs that would be included in the deletion
+  def dryRun = true
+
+  Jenkins.get().getAllItems(WorkflowMultiBranchProject.class).each { WorkflowMultiBranchProject job ->
+    if (dryRun) {
+        println "${job.fullName} will be removed."
+    } else {
+        job.doDisable()
+        job.delete()
+        println "${job.fullName} has been removed."
+    }
+  }
+  return
+#+end_src
+
   - Post build status to GitLab
     [[https://github.com/jenkinsci/gitlab-plugin/issues/462]]
     #+BEGIN_SRC groovy
