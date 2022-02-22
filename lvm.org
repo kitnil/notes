@@ -30,3 +30,5 @@ Pool lvm1 started
 
 [root@localhost ~]# pvcreate /dev/vdb1
   Physical volume "/dev/vdb1" successfully created.
+[root@localhost ~]# vgcreate vg0 /dev/vdb1
+  Volume group "vg0" successfully created
