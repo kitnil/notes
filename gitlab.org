@@ -23,5 +23,6 @@
 
 : root@dh4-mr ~ # docker exec -ugitlab-psql -it ci_gitlab.1.rrit42q8zhlgc3yj2s3158umq psql -h /var/opt/gitlab/postgresql -U gitlab-psql -d gitlabhq_production
 
+- [[https://docs.gitlab.com/ee/user/project/merge_requests/fast_forward_merge.html][Fast-forward merge requests | GitLab]]
 : gitlabhq_production=# update projects set merge_requests_rebase_enabled='t';
 : UPDATE 514
