@@ -32,3 +32,6 @@ Pool lvm1 started
   Physical volume "/dev/vdb1" successfully created.
 [root@localhost ~]# vgcreate vg0 /dev/vdb1
   Volume group "vg0" successfully created
+[root@localhost ~]# lvcreate -l 100%FREE -Zn --type thin-pool --thinpool pool0 vg0
+  Thin pool volume with chunk size 64.00 KiB can address at most <15.88 TiB of data.
+  Logical volume "pool0" created.
