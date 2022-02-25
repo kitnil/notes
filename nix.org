@@ -11,7 +11,54 @@
 
 * Language
 - [[https://github.com/divnix/yants][divnix/yants: a fork/mirror of yants - because github is more discoverable]]
-- [[https://gist.github.com/srghma/4f63ad78a88a617f74a1b7f8989ed7aa][what each nix Dev should know.md]]
+
+** [[https://gist.github.com/srghma/4f63ad78a88a617f74a1b7f8989ed7aa][what each nix Dev should know.md]]
+
+#+begin_src markdown
+   `fix` function - https://github.com/NixOS/nixpkgs/blob/9f087964709174424bca681b600af8ee8e763df5/lib/fixed-points.nix#L19 , https://en.m.wikipedia.org/wiki/Fixed_point_(mathematics) , point where `x = f(x) = f(f(f(f....f(x)....)))`
+
+  `rec { a = 1; b = a + 1; }` is the same as `fix (self: { a = 1; b = self.a + 1; })`
+
+  `builtins.trace` - https://github.com/NixOS/nixpkgs/blob/9f087964709174424bca681b600af8ee8e763df5/lib/debug.nix#L4 trace has different flavors, http://hackage.haskell.org/package/base-4.12.0.0/docs/Debug-Trace.html#v:trace all lazy languages have trace 
+
+  `builtins.seq` - in lazy languages data is represented as thunks (IF data has not been yet evaluated THEN it's pointer on function that should produce this data ELSE it's pointer on data), `builtins.seq` forces first layer of data to evaluate (evaluates it to WHNF?), `builtins.deepSeq` is recursive variant of `seq`, it forces whole data to evaluate (evaluates it to NF?),  (more https://wiki.haskell.org/Seq, https://www.google.com/amp/s/amp.reddit.com/r/haskell/comments/9z6v51/whats_the_difference_between_head_normal_formhnf/)
+
+  `nix-shell` - debugging example
+  ```
+  $ nix-shell --pure <package>
+  $ typeset # to see all availeale functions with their definitions
+  $ type genericBuild # to see genericBuild definition
+  $ set -e # to exit on error
+  $ set -x # to show all executed commands
+  $ source $stdenv/setup # to setup env
+  $ genericBuild # to start phases
+
+  ```
+
+  `lib.evalModule` - it's easy, n.b. it uses fixed points
+
+  `derivation` - it's easy, https://github.com/NixOs/nix/blob/master/corepkgs/derivation.nix
+
+  `mkDerivation` - wrapper on `derivation`, I think maybe they put too much logic in this function https://nixos.org/nixpkgs/manual/#sec-stdenv-phases
+
+  how path is different from string - paths are copied to nix store when they are forced to evaluate. IF string was constructed from path (this info is stored in "string context"), THEN string evaluation will force path to be copied to nix store too (e.g. evaluation of `"${/foo}/bar"` will copy directory `/foo` as `/nix/store/xxxx-foo`, resulting string will be `/nix/store/xxxx-foo/bar`). http://blog.shealevy.com/2018/08/05/understanding-nix's-string-context/ 
+
+  but `"${toString ./foo}/bar"` will produce `"/fullpath/foo/bar"`
+
+  `callPackage`  - https://nixos.org/nixos/nix-pills/callpackage-design-pattern.html
+
+  IDF means import from derivation - when you import some file from derivation (e.g. `arion = import "${arionSrcFromGithub}/release.nix"`), the `arionSrcFromGithub` is not saved anywhere as dependency for `arion` and will be removed on next garbage collection.  This makes sense, but you end up downloading `arionSrcFromGithub` all the time from the internet. To resolve this you can add `arionSrcFromGithub` to /nix/var/nix/gcroots using `nix-build --add-root` OR save the link to it inside some derivation that added to gcroots (e.g. `arion`) https://github.com/srghma/dotfiles/blob/0054e4586183e0dcf1bdecc9507bde937c365f30/nixos/utils/addAsRuntimeDeps.nix#L1
+
+  `nix-build --check` - nix assumes that your derivation builder outputs same result given same inputs, this may not be true, using this flag the derivation will be built twice, IF resulting hash of the package content (!!!, not the hash of the path, i.e. xxxx in /nix/store/xxxx-yyy, this hash is computed only from derivation inputs) is different THEN it will return an error
+
+  https://learnxinyminutes.com/docs/nix/
+
+  https://gist.github.com/srghma/f1ff5cd10722ee8218cfdbae1ad49645
+
+  https://stackoverflow.com/a/34837585/3574379
+
+  http://www.haskellforall.com/2017/11/compare-nix-derivations-using-nix-diff.html?m=1
+#+end_src
 
 * Guix
 - [[https://github.com/foo-dogsquared/nix-overlay-guix][foo-dogsquared/nix-overlay-guix: A package and module for using GNU Guix on Nix(OS). Fork from https://github.com/Emiller88/guix, attempting to update the project and clean up the codebase for a more usable interface.]]
