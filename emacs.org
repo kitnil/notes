@@ -1161,6 +1161,7 @@ features, like 'V' to execute msgfmt and so on.
 
 ** Navigation
 - [[https://github.com/jcs-elpa/atl-long-lines][jcs-elpa/atl-long-lines: Turn off truncate-lines when the line is long.]] This plugin enable/disable truncate-lines base on the line length your cursor currently on.
+- [[https://github.com/gexplorer/counsel-ag-popup][gexplorer/counsel-ag-popup: The power of searching with ag using counsel with transient popups Magit style.]]
 
 ** Info
 
