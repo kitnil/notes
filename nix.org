@@ -118,6 +118,38 @@
   ```
 #+end_src
 
+#+begin_src nix
+  # /etc/nixos/configuration.nix
+  #
+  # Edit this configuration file to define what should be installed on
+  # your system.  Help is available in the configuration.nix(5) man page
+  # and in the NixOS manual (accessible by running ‘nixos-help’).
+
+  { config, pkgs, ... }:
+
+  {
+    imports = [];
+
+    boot.isContainer = true;
+    boot.loader.initScript.enable = true;
+
+    time.timeZone = "Europe/Skopje";
+
+    networking.hostName = ""; # empty
+    networking.useDHCP = false;
+    networking.useNetworkd = true;
+    networking.useHostResolvConf = false;
+    networking.firewall.enable = false;
+
+    environment.systemPackages = with pkgs; [
+       vim
+       wget
+    ];
+
+    system.stateVersion = "21.11";
+  }
+#+end_src
+
 * Guix
 - [[https://github.com/foo-dogsquared/nix-overlay-guix][foo-dogsquared/nix-overlay-guix: A package and module for using GNU Guix on Nix(OS). Fork from https://github.com/Emiller88/guix, attempting to update the project and clean up the codebase for a more usable interface.]]
 
