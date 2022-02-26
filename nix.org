@@ -60,6 +60,9 @@
   http://www.haskellforall.com/2017/11/compare-nix-derivations-using-nix-diff.html?m=1
 #+end_src
 
+* NixOS
+- [[https://gist.github.com/gdamjan/8158b57379932fd0e07ce6d83399b71f][Install a NixOS for a systemd-nspawn container … from podman]]
+
 * Guix
 - [[https://github.com/foo-dogsquared/nix-overlay-guix][foo-dogsquared/nix-overlay-guix: A package and module for using GNU Guix on Nix(OS). Fork from https://github.com/Emiller88/guix, attempting to update the project and clean up the codebase for a more usable interface.]]
 
