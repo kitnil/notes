@@ -62,6 +62,61 @@
 
 * NixOS
 - [[https://gist.github.com/gdamjan/8158b57379932fd0e07ce6d83399b71f][Install a NixOS for a systemd-nspawn container … from podman]]
+#+begin_src markdown
+  Run a nix container with podman, with the container destination mounted as `/mnt`:
+
+  ```
+  DEST=~/containers/nixos
+  mkdir -p $DEST/{dev,proc,etc/nixos}
+
+  podman run -v $DEST:/mnt -it --rm --cap-add SYS_ADMIN --uts=private docker.io/nixos/nix:latest
+  ```
+
+  Setup the channel for nixos-21.11
+  ```
+  nix-channel --add https://nixos.org/channels/nixos-21.11 nixpkgs
+  nix-channel --update
+  nix-channel --list
+  ```
+
+  Install the nixos install tools:
+  ```
+  nix-env -f '<nixpkgs>' -iA nixos-install-tools util-linux
+  ```
+
+  Copy the [`configuration.nix`](https://nixos.org/nixos/options.html) file and run the installation:
+  ```
+  cat > /mnt/etc/nixos/configuration.nix
+  …see below…
+  <Ctrl-D>
+
+  # workaround for error: while setting up the build environment: mounting /proc: Operation not permitted «
+  mount --bind /proc/ /mnt/proc
+  mount --bind /dev/ /mnt/dev
+
+  nixos-install --root /mnt
+  ```
+
+  Let's "boot" the container:
+  ```
+  sudo systemd-nspawn --boot --network-veth --directory $DEST
+  …
+
+  # poweroff
+  ```
+
+  System updates:
+  ```
+  nixos-rebuild boot --upgrade
+  ```
+
+  Release upgrade:
+  ```
+  nix-channel --add https://nixos.org/channels/nixos-21.11 nixpkgs
+  nix-channel --update
+  nixos-rebuild boot --upgrade
+  ```
+#+end_src
 
 * Guix
 - [[https://github.com/foo-dogsquared/nix-overlay-guix][foo-dogsquared/nix-overlay-guix: A package and module for using GNU Guix on Nix(OS). Fork from https://github.com/Emiller88/guix, attempting to update the project and clean up the codebase for a more usable interface.]]
