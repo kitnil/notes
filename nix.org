@@ -150,6 +150,105 @@
   }
 #+end_src
 
+#+begin_example
+  $ sudo systemd-nspawn --boot --network-veth --directory $DEST
+  Spawning container nixos on /home/damjan/containers/nixos.
+  Press ^] three times within 1s to kill container.
+
+  <<< NixOS Stage 2 >>>
+
+  running activation script...
+  setting up /etc...
+  starting systemd...
+  systemd 247 running in system mode. (+PAM +AUDIT -SELINUX +IMA +APPARMOR +SMACK -SYSVINIT +UTMP +LIBCRYPTSETUP +GCRYPT -GNUTLS +ACL +XZ +LZ4 -ZSTD +SECCOMP +BLKID -ELFUTILS +KMOD +IDN2 -IDN +PCRE2 default-hierarchy=unified)
+  Detected virtualization systemd-nspawn.
+  Detected architecture x86-64.
+  Failed to create symlink /sys/fs/cgroup/net_cls: Read-only file system
+  Failed to create symlink /sys/fs/cgroup/net_prio: Read-only file system
+  Failed to create symlink /sys/fs/cgroup/cpuacct: Read-only file system
+  Failed to create symlink /sys/fs/cgroup/cpu: Read-only file system
+
+  Welcome to NixOS 21.05 (Okapi)!
+
+  Initializing machine ID from container UUID.
+  Queued start job for default target Multi-User System.
+  system-getty.slice: unit configures an IP firewall, but the local system does not support BPF/cgroup firewalling.
+  (This warning is only shown for the first unit using IP firewalling.)
+  [  OK  ] Created slice system-getty.slice.
+  [  OK  ] Created slice system-modprobe.slice.
+  [  OK  ] Created slice User and Session Slice.
+  [  OK  ] Started Dispatch Password Requests to Console Directory Watch.
+  [  OK  ] Started Forward Password Requests to Wall Directory Watch.
+  [  OK  ] Reached target Local Encrypted Volumes.
+  [  OK  ] Reached target Containers.
+  [  OK  ] Reached target Paths.
+  [  OK  ] Reached target Remote File Systems.
+  [  OK  ] Reached target Slices.
+  [  OK  ] Reached target Swap.
+  [  OK  ] Listening on Process Core Dump Socket.
+  [  OK  ] Listening on Journal Socket (/dev/log).
+  [  OK  ] Listening on Journal Socket.
+  [  OK  ] Listening on Network Service Netlink Socket.
+           Mounting Huge Pages File System...
+           Starting Journal Service...
+           Starting Firewall...
+           Starting Apply Kernel Variables...
+           Starting Create Static Device Nodes in /dev...
+  [  OK  ] Mounted Huge Pages File System.
+  [  OK  ] Finished Apply Kernel Variables.
+  [  OK  ] Finished Create Static Device Nodes in /dev.
+  [  OK  ] Reached target Local File Systems (Pre).
+  [  OK  ] Reached target Local File Systems.
+  [  OK  ] Started Journal Service.
+           Starting Flush Journal to Persistent Storage...
+  [FAILED] Failed to start Firewall.
+  See 'systemctl status firewall.service' for details.
+  [  OK  ] Reached target Network (Pre).
+  [  OK  ] Reached target All Network Interfaces (deprecated).
+           Starting Network Service...
+  [  OK  ] Finished Flush Journal to Persistent Storage.
+           Starting Create Volatile Files and Directories...
+  [  OK  ] Finished Create Volatile Files and Directories.
+           Starting Rebuild Journal Catalog...
+           Starting Update UTMP about System Boot/Shutdown...
+  [  OK  ] Finished Update UTMP about System Boot/Shutdown.
+  [  OK  ] Finished Rebuild Journal Catalog.
+           Starting Update is Completed...
+  [  OK  ] Finished Update is Completed.
+  [  OK  ] Reached target System Initialization.
+  [  OK  ] Started Daily Cleanup of Temporary Directories.
+  [  OK  ] Reached target Timers.
+  [  OK  ] Listening on D-Bus System Message Bus Socket.
+  [  OK  ] Listening on Nix Daemon Socket.
+  [  OK  ] Reached target Sockets.
+  [  OK  ] Reached target Basic System.
+           Starting Name Service Cache Daemon...
+  [  OK  ] Started Network Service.
+  [  OK  ] Started D-Bus System Message Bus.
+           Starting Extra networking commands....
+           Starting Wait for Network to be Configured...
+           Starting Network Name Resolution...
+  [  OK  ] Finished Extra networking commands..
+  [  OK  ] Started Name Service Cache Daemon.
+  [  OK  ] Reached target User and Group Name Lookups.
+           Starting User Login Management...
+  [  OK  ] Started User Login Management.
+  [  OK  ] Started Network Name Resolution.
+  [  OK  ] Reached target Network.
+  [  OK  ] Reached target Host and Network Name Lookups.
+           Starting Permit User Sessions...
+  [  OK  ] Finished Permit User Sessions.
+  [  OK  ] Started Console Getty.
+  [  OK  ] Reached target Login Prompts.
+
+
+  <<< Welcome to NixOS 21.05.4086.68d4f5970b6 (x86_64) - console >>>
+
+
+  nixos login:
+  Password:
+#+end_example
+
 * Guix
 - [[https://github.com/foo-dogsquared/nix-overlay-guix][foo-dogsquared/nix-overlay-guix: A package and module for using GNU Guix on Nix(OS). Fork from https://github.com/Emiller88/guix, attempting to update the project and clean up the codebase for a more usable interface.]]
 
