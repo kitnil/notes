@@ -47,6 +47,7 @@
 - [[https://github.com/prometheus-community/bind_exporter][prometheus-community/bind_exporter: Prometheus exporter for BIND]]
 - [[https://github.com/prometheus-community/ipmi_exporter][prometheus-community/ipmi_exporter: Remote IPMI exporter for Prometheus]]
 - [[https://github.com/ncabatoff/script-exporter][ncabatoff/script-exporter: Prometheus exporter to invoke scripts and parse their output as metrics.]]
+- [[https://github.com/prometheus-community/helm-charts][prometheus-community/helm-charts: Prometheus community Helm charts]]
 - [[https://awesome-prometheus-alerts.grep.to/][Awesome Prometheus alerts | Collection of alerting rules]]
 - [[https://deckhouse.io/ru/documentation/v1/modules/303-prometheus-pushgateway/usage.html][Модуль Prometheus Pushgateway: примеры конфигурации | Deckhouse]]
 : echo 'channel 1' | curl --data-binary @- http://127.0.0.1:9095/metrics/job/guix/instance/127.0.0.1:9100/name/guix/commit/d96f47f012571cdd6dd67c513e496042db303ca7
