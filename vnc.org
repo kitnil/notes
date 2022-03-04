@@ -14,3 +14,10 @@
 - nixos-21.10 tigervnc-1.11.0
   : $ Xvnc -geometry 1024x768 :4 -PasswordFile ~/.vnc/passwd
   : $ DISPLAY=:4 dbus-launch startplasma-x11
+
+* VNC
+#+begin_src xml
+  <graphics type='vnc' port='11935' autoport='no' listen='127.0.0.1' keymap='en-us'>
+    <listen type='address' address='127.0.0.1'/>
+  </graphics>
+#+end_src
