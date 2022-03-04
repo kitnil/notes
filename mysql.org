@@ -6515,3 +6515,16 @@ exist in the second table.
   SET @@default_master_connection = 'galera2'; SET GLOBAL sql_slave_skip_counter = 1; START SLAVE 'galera2';
   SET @@default_master_connection = 'galera3'; SET GLOBAL sql_slave_skip_counter = 1; START SLAVE 'galera3';
 #+end_example
+
+#+begin_example
+  root@galera1:~# mysql -s -e "SHOW GLOBAL VARIABLES LIKE 'Gtid_%'"
+  Variable_name   Value
+  gtid_binlog_pos 0-103-3281939454
+  gtid_binlog_state       0-1020-187677,0-104-220484,0-1405945113-736148,0-4105-31301294,0-4103-9456554,0-199-48586976,0-103-3281939454
+  gtid_current_pos        0-103-3281939454
+  gtid_domain_id  0
+  gtid_ignore_duplicates  OFF
+  gtid_pos_auto_engines
+  gtid_slave_pos  0-199-48586976
+  gtid_strict_mode        ON
+#+end_example
