@@ -43,3 +43,10 @@
      chainloader /EFI/Guix/grubx64.efi
   }
 #+end_example
+
+* Check
+
+#+begin_example
+  dd bs=512 count=1 if=/dev/sda 2>/dev/null | strings|grep GRUB
+  dd bs=512 count=1 if=/dev/sdb 2>/dev/null | strings|grep GRUB
+#+end_example
