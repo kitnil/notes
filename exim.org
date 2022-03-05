@@ -1,0 +1,8 @@
+- print mail queue
+  : exim -bp
+
+- override deliver address
+  : exim -Mes MESSAGE_ID user@example.org
+
+- force deliver all messages
+  : exim -qff -v
