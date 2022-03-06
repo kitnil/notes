@@ -45,3 +45,5 @@ root@guixsd ~ [env]# modprobe dm-snapshot
 root@guixsd ~ [env]# lvcreate -L 32G -n qubeos-snap1 -s /dev/lvm1/qubeos
 File descriptor 5 (/gnu/store/9dwykxc9sdml1fn9d8hgpsfifb9fv684-guix-command) leaked on lvcreate invocation. Parent PID 30051: /gnu/store/d99ykvj3axzzidygsmdm
   Logical volume "qubeos-snap1" created.
+
+lvconvert --merge /dev/lvm1/qubeos-snap1
