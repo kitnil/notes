@@ -39,6 +39,9 @@ Pool lvm1 started
   Rounding up size to full physical extent 12.00 MiB
   Logical volume "volume0" created.
 
+* Backup
+- [[https://github.com/tasket/wyng-backup][tasket/wyng-backup: Fast Time Machine-like backups for logical volumes]]
+
 * Snapshots
 
 root@guixsd ~ [env]# modprobe dm-snapshot
