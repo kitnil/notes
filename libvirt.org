@@ -29,6 +29,13 @@
     virsh -c qemu+tcp://HOST/system start vm12345
   #+end_src
 
+** VNC
+#+begin_src xml
+  <graphics type='vnc' port='11935' autoport='no' listen='127.0.0.1' keymap='en-us'>
+    <listen type='address' address='127.0.0.1'/>
+  </graphics>
+#+end_src
+
 ** Disk configuration
    #+begin_src xml
      <disk type='file' device='disk'>
