@@ -97,3 +97,6 @@
 
 * Blackbox
 - http://127.0.0.1:9115/probes
+
+* High availability
+- [[https://github.com/cortexproject/cortex][cortexproject/cortex: A horizontally scalable, highly available, multi-tenant, long term Prometheus.]]
