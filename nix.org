@@ -759,6 +759,8 @@ https://nixos.org/nix-dev/2010-April.txt.gz
 
 * Hydra
 
+- [[https://github.com/malob/nix-review-tools-reports][malob/nix-review-tools-reports: Repository that automatically generates Hydra reports using `nix-review-tools`.]]
+
 example job
 #+BEGIN_SRC nix
   let
