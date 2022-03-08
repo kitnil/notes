@@ -42,6 +42,11 @@ Pool lvm1 started
 * Backup
 - [[https://github.com/tasket/wyng-backup][tasket/wyng-backup: Fast Time Machine-like backups for logical volumes]]
 
+* Cheatsheet
+
+- create logical volume
+  : lvcreate -L 100G lvm1 -n whonix-gateway
+
 * Snapshots
 
 root@guixsd ~ [env]# modprobe dm-snapshot
