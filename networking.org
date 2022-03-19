@@ -47,6 +47,13 @@
 | access port | untagged port |
 | trunk port  | tagged port   |
 
+* Firewall
+** netfilter
+*** tools
+1. conntrack-tools
+2. nfacct
+3. ulogd
+
 * Scan
 - [[https://github.com/marco-lancini/goscan][marco-lancini/goscan: Interactive Network Scanner]]
 - [[https://github.com/v-byte-cpu/sx][v-byte-cpu/sx: Fast, modern, easy-to-use network scanner]]
