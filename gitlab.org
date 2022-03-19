@@ -20,6 +20,7 @@
 - [[https://serveradmin.ru/gitlab-this-job-is-stuck-because-the-project-doesnt-have-any-runners-online-assigned-to-it/][Gitlab — This job is stuck because the project doesn't have any runners online assigned to it — Server Admin]]
 - [[https://serveradmin.ru/gitlab-container-registry-za-nginx-reverse-proxy/][Gitlab Container Registry за Nginx reverse proxy — Server Admin]]
 - [[https://habr.com/ru/company/flant/blog/649551/][Запуск werf в GitLab CI/CD без Docker-сервера / Хабр]]
+- [[https://github.com/hamidrezasahraei/GitlabAutoCreateAndAssignMergeRequest][hamidrezasahraei/GitlabAutoCreateAndAssignMergeRequest: A Kotlin Script which create merge request automatically and assign it to a developer for review based on a startegy(Currently Queue).]]
 
 : root@dh4-mr ~ # docker exec -ugitlab-psql -it ci_gitlab.1.rrit42q8zhlgc3yj2s3158umq psql -h /var/opt/gitlab/postgresql -U gitlab-psql -d gitlabhq_production
 
