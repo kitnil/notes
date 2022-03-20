@@ -59,3 +59,29 @@ File descriptor 5 (/gnu/store/9dwykxc9sdml1fn9d8hgpsfifb9fv684-guix-command) lea
 
 - delete snapshot and save changes
   : lvremove /dev/lvm1/qubeos-snap1
+
+* Mount
+
+#+begin_example
+  root@guixsd ~ [env]# parted /dev/lvm1/debian1 
+  GNU Parted 3.4
+  Using /dev/dm-11
+  Welcome to GNU Parted! Type 'help' to view a list of commands.
+  (parted) unit                                                             
+  Unit?  [compact]? B                                                       
+  (parted) print                                                            
+  Model: Linux device-mapper (linear) (dm)
+  Disk /dev/dm-11: 17179869184B
+  Sector size (logical/physical): 512B/4096B
+  Partition Table: gpt
+  Disk Flags: 
+
+  Number  Start       End           Size          File system  Name  Flags
+  14      1048576B    4194303B      3145728B                         bios_grub
+  15      4194304B    134217727B    130023424B    fat16              boot, esp
+   1      134217728B  17179852287B  17045634560B  ext4
+#+end_example
+
+#+begin_example
+  mount -o loop,offset=134217728 /dev/lvm1/debian1 /mnt/debian1
+#+end_example
