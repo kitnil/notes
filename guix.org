@@ -94,6 +94,9 @@ https://gitlab.com/janneke/guix.git
 ** Substitutes
 - guix.cbaines.net
 - [[https://www.mail-archive.com/guix-devel@gnu.org/msg55848.html][https://mirrors.sjtug.sjtu.edu.cn/guix SJTUG's Guix mirror is online now]]
+- Made a guix site mirror/proxy. It's available both in clearnet and yggdrasil. 
+  - http://167.172.37.172/
+  - http://[204:cbf:3e07:e67a:424f:93bc:fc5c:b3dc]/
 
 * Translation
 
