@@ -391,6 +391,7 @@ nix-repl> mynixos2.config.environment.etc."mailman.cfg".text
 - [[https://github.com/expipiplus1/update-nix-fetchgit][expipiplus1/update-nix-fetchgit: A program to automatically update fetchgit values in Nix expressions]]
 - [[https://github.com/nix-community/dream2nix][nix-community/dream2nix: Nixify software with less effort [maintainer=@DavHau]]]
 - [[https://github.com/nix-community/go-nix][nix-community/go-nix: Elements of Nix re-implemented as Go libraries [maintainer=@flokli]]]
+- [[https://nixos.wiki/wiki/Impermanence][Impermanence - NixOS Wiki]]
 - [[https://github.com/nix-community/impermanence][nix-community/impermanence: Modules to help you handle persistent state on systems with ephemeral root storage maintainer=@talyz]]
 #+begin_src nix
   environment.persistence."/nix/state" = {
