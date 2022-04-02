@@ -2,3 +2,11 @@
 :ID:       65884bee-28ea-4726-96df-1565b122c964
 :END:
 - [[https://habr.com/ru/company/itsoft/blog/577364/][Аудиозвонки через I2P. Mumble / Хабр]]
+
+* Run in a Docker container
+1. Run a container
+   : docker run --name i2pd --cap-add=NET_ADMIN --network=host ghcr.io/purplei2p/i2pd:release-2.41.0
+2. web connsole is available at http://localhost:7070/
+3. use proxy
+   : curl --proxy http://localhost:4444 http://i2pd.i2p
+   : curl --proxy socks5://localhost:4447 http://i2pd.i2p
