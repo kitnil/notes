@@ -190,6 +190,10 @@ browser.xul.error_pages.expert_bad_cert
 
 security.mixed_content.block_active_content
 
+* Misc
+
+browser.fixup.alternate.enabled false
+
 * Configuration
 ** locale
 Use your operating system settings for “English (United Kingdom)” to format dates, times, numbers, and measurements.
