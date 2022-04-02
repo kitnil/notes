@@ -12,3 +12,8 @@
 3. use proxy
    : curl --proxy http://localhost:4444 http://i2pd.i2p
    : curl --proxy socks5://localhost:4447 http://i2pd.i2p
+
+** Self-builded container
+: guix pack -f docker -S /bin=bin i2pd
+: skopeo copy docker-archive:/gnu/store/xbsl92nyz0p7zksf26ffywcyn9rkx4vf-i2pd-docker-pack.tar.gz docker-daemon:example.org:5000/i2pd
+: docker push example.org:5000/i2pd:latest
