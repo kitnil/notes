@@ -14,6 +14,7 @@
    : curl --proxy socks5://localhost:4447 http://i2pd.i2p
 
 ** Self-builded container
-: guix pack -f docker -S /bin=bin i2pd
+: guix pack -f docker -S /bin=bin i2pd bash coreutils
 : skopeo copy docker-archive:/gnu/store/xbsl92nyz0p7zksf26ffywcyn9rkx4vf-i2pd-docker-pack.tar.gz docker-daemon:example.org:5000/i2pd
 : docker push example.org:5000/i2pd:latest
+: docker run --security-opt seccomp=unconfined --env HOME=/root --workdir /root --detach --name i2pd --network=host --tty 192.168.25.2:5000/i2pd /bin/i2pd
