@@ -193,6 +193,7 @@ security.mixed_content.block_active_content
 * Misc
 
 browser.fixup.alternate.enabled false
+browser.fixup.fallback-to-https false
 
 * Configuration
 ** locale
