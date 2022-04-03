@@ -1,2 +1,5 @@
 - docker run command
   : docker run --sysctl net.ipv6.conf.all.disable_ipv6=0 --cap-add=NET_ADMIN --device /dev/net/tun --detach --name yggdrasil --network=host example.org:5000/yggdrasil
+
+- curl
+  : curl -g -6 'http://[300:7232:2b0e:d6e9:216:3eff:fe38:cefc]:8090/'
