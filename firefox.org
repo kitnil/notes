@@ -194,6 +194,7 @@ security.mixed_content.block_active_content
 
 browser.fixup.alternate.enabled false
 browser.fixup.fallback-to-https false
+browser.fixup.dns_first_for_single_words true
 
 * Configuration
 ** locale
