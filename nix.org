@@ -1260,6 +1260,7 @@ builtins.match "php([[:alnum:]])([[:alnum:]])" "php70"
 
 ** Misc
 
+  - [[https://github.com/DavHau/mach-nix][DavHau/mach-nix: Create highly reproducible python environments]]
   - [[https://github.com/flokli/nix-casync][flokli/nix-casync: A more efficient way to store and substitute Nix store paths]]
   - [[https://github.com/netbootxyz/netboot.xyz/issues/1050]["Permission denied" error on NixOS · Issue #1050 · netbootxyz/netboot.xyz]]
   - [[https://github.com/ijohanne/nixpkgs-firefox-addons][ijohanne/nixpkgs-firefox-addons: Fork of nixpkgs-firefox-addons from https://gitlab.com/rycee/nixpkgs-firefox-addons]]
