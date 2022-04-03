@@ -64,6 +64,9 @@
 * Docker
 - [[https://habr.com/ru/company/southbridge/blog/524136/][FAQ: новые ограничения использования сервисов Docker с 1 ноября 2020]]
 
+** permissions bug
+- [[https://gitlab.archlinux.org/archlinux/archlinux-docker/-/issues/32][Permission issue for directories created in Archlinux image on Docker hub (#32) · Issues · Arch Linux / archlinux-docker · GitLab]]
+
 * Dockerfile
 - [[https://github.com/HariSekhon/Dockerfiles][50+ DockerHub public images for Docker & Kubernetes - Hadoop, Kafka, ZooKeeper, HBase, Cassandra, Solr, SolrCloud, Presto, Apache Drill, Nifi, Spark, Consul, Riak, and DevOps tools built various distros: Alpine, CentOS, Debian, Fedora, Ubuntu]]
 - [[https://github.com/Olivier-HA/Zabbix-workshop][Olivier-HA/Zabbix-workshop]]
