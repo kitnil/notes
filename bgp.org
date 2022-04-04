@@ -33,6 +33,24 @@
 
 * RIPE
 - [[https://apps.db.ripe.net/db-web-ui/query?bflag=&searchtext=AS-DATAIX&source=RIPE#resultsSection][Webupdates — RIPE Network Coordination Centre]]
+- [[https://habr.com/ru/company/linxdatacenter/blog/526508/][Основы работы с базой данных RIPE / Хабр]]
+
+Полезные запросы whois:
+
+- Посмотреть шаблон объекта.
+  : whois -t object_type
+
+- Узнать все маршруты, которые происходят из автономной системы.
+  : whois -T route -i origin ASxxxxx
+
+- Узнать все объекты, которые защищены объектом «maintainer_name».
+  : whois -i mnt-by maintainer_name
+
+- Узнать, на какие более мелкие подсети поделена подсеть «subnet».
+  : whois -M subnet
+
+- Узнать, из какой более крупной подсети образована подсеть «subnet».
+  : whois -L subnet
 
 * Learning
 - [[https://antiddos.biz/nastrojka-bgp-marshrutizacii-dlya-raboty-s-sobstvennoj-setyu/][Настройка BGP маршрутизации для работы с собственной сетью. - AntiDDoS.biz]]
