@@ -40,6 +40,9 @@
 - set VLAN
   : set interfaces ge-0/0/44 unit 0 family ethernet-switching vlan members VLAN253
 
+- mtr like utility
+  : traceroute monitor 8.8.8.8   
+
 - config path
   : /config/juniper.conf.gz
 
