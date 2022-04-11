@@ -222,6 +222,10 @@ net.bridge.bridge-nf-call-iptables = 0
 ** Misc
 - [[https://github.com/IvanGlinkin/Host-enumeration][IvanGlinkin/Host-enumeration]]
 
+* ARP
+
+- [[https://github.com/royhills/arp-scan][royhills/arp-scan: The ARP Scanner]]
+
 * /etc/hosts
 
 - [[https://github.com/txn2/txeh][txn2/txeh: Go library and CLI utility for /etc/hosts management.]]
