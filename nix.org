@@ -1200,6 +1200,7 @@ builtins.match "php([[:alnum:]])([[:alnum:]])" "php70"
   - [[https://github.com/astro/deadnix-action][astro/deadnix-action: Workflow to find and delete dead nix code]]
 - [[https://lazamar.co.uk/nix-versions/][Nix Package Versions]]
 - [[https://github.com/kamadorueda/alejandra][kamadorueda/alejandra: The Uncompromising Nix Code Formatter]]
+- [[https://github.com/nix-dot-dev/getting-started-nix-template][nix-dot-dev/getting-started-nix-template: Based on nix.dev tutorials, repository template to get you started with Nix.]]
 
 * Overlays
   - nixos-install --flake github:hoverbear-consulting/flake#gizmo --impure
