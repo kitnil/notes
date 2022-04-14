@@ -36,6 +36,39 @@ Endpoint = 178.250.247.88:63665
 AllowedIPs = 10.66.66.0/24
 #+end_example
 
+** docker
+
+[[https://old.reddit.com/r/selfhosted/comments/u1oys9/access_a_docker_container_web_service_only/][Access a Docker container web service only through Wireguard : selfhosted]]
+
+#+begin_src yaml
+  version: "3.9"
+
+  services:
+    wireguard:
+      image: weejewel/wg-easy
+      container_name: wireguard
+      restart: unless-stopped
+      cap_add:
+        - NET_ADMIN
+        - SYS_MODULE
+      environment:
+        - WG_HOST=<HOST>
+        - PASSWORD=<PASSWORD>
+      volumes:
+        - ./config:/etc/wireguard
+      ports:
+        - 51820:51820/udp
+      sysctls:
+        - net.ipv4.conf.all.src_valid_mark=1
+        - net.ipv4.ip_forward=1
+      networks:
+        - npm
+
+  networks:
+    npm:
+      external: true
+#+end_src
+
 * Cheat sheet
 
 - debug
