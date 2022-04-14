@@ -79,3 +79,12 @@ Under the switch go to the vlan1 interface: interface vlan 1
 Inbound errors on interface fa0/12
 However most likely a Rcv-err is indicating a duplex mismatch.Xmit-Err and Rcv-ErrThis indicates that the internal port transmit (Tx) or receive (Rx) buffers are full. A common cause of Xmit-Err is traffic from a high-bandwidth link that is switched to a lower-bandwidth link, or traffic from multiple inbound links that is switched to a single outbound link. For example, if a large amount of bursty traffic comes in on a Gigabit port and is switched out to a 100-Mbps port, the Xmit-Err field might increment on the 100-Mbps port. This is because the port output buffer is overwhelmed by the excess traffic because of the speed mismatch between the incoming and outgoing bandwidths.
 : Заменить патчкорд?
+
+* VLAN
+
+- [[https://www.cisco.com/c/en/us/td/docs/switches/lan/catalyst2960/software/release/12-2_40_se/configuration/guide/scg/swvlan.pdf][Configuring VLANs]]
+#+begin_example
+  Switch(config)# interface gigabitethernet0/1
+  Switch(config-if)# switchport trunk allowed vlan remove 2
+  Switch(config-if)# end
+#+end_example
