@@ -15,6 +15,7 @@
 - [[https://medium.com/@superseb/get-your-certificate-chain-right-4b117a9c0fce][Get your certificate chain right. As many know, certificates are not… | by Sebastiaan van Steenis | Medium]]
 - [[https://www.usenix.org/system/files/sec21-poddebniak.pdf][Why TLS is better without STARTTLS: A Security Analysis of STARTTLS in the Email Context]]
 - [[https://habr.com/ru/company/plesk/blog/507094/][Введение в TLS для п̶р̶а̶к̶т̶и̶к̶о̶в̶ Патриков (часть 2) / Хабр]]
+- [[https://cloud.google.com/blog/products/identity-security/automate-public-certificate-lifecycle-management-via--acme-client-api][Automate Public Certificate Lifecycle Management via ACME Client API | Google Cloud Blog]]
 
 - Check certificate
   : echo | openssl s_client -connect berlin.guixsd.org:443 | openssl x509 -text
