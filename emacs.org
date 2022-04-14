@@ -1077,6 +1077,8 @@ features, like 'V' to execute msgfmt and so on.
    (provide 'init-elfeed)
  #+END_SRC
 
+- [[https://github.com/SqrtMinusOne/elfeed-summary][SqrtMinusOne/elfeed-summary: Feed summary interface for elfeed]]
+
 *** elfeed like interface for youtube
 - [[https://github.com/emacsmirror/ytdious][emacsmirror/ytdious: Query / Preview YouTube via Invidious]]
 
