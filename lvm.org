@@ -60,6 +60,17 @@ File descriptor 5 (/gnu/store/9dwykxc9sdml1fn9d8hgpsfifb9fv684-guix-command) lea
 - delete snapshot and save changes
   : lvremove /dev/lvm1/qubeos-snap1
 
+** MariaDB
+
+- [[https://www.oreilly.com/library/view/mariadb-high-performance/9781783981601/ch11s03.html][LVM - MariaDB High Performance Book]]
+
+To make a usable MariaDB datadir snapshot, you first need to lock your tables:
+: MariaDB [(none)]> flush tables with read lock;
+
+Now we're sure there will be no changes on our instance. Let's create the
+snapshot on the system:
+: lvcreate --snapshot -n snap_mariadb ...
+
 * Mount
 
 #+begin_example
