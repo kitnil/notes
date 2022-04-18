@@ -50,3 +50,6 @@
   dd bs=512 count=1 if=/dev/sda 2>/dev/null | strings|grep GRUB
   dd bs=512 count=1 if=/dev/sdb 2>/dev/null | strings|grep GRUB
 #+end_example
+
+* Tools
+- [[https://github.com/a1ive/grub2-filemanager][a1ive/grub2-filemanager: GRUB2-based file manager]]
