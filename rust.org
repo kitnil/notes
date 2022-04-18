@@ -136,6 +136,7 @@
 - [[https://github.com/anonymousGiga/learn_rust][anonymousGiga/learn_rust]]
 - [[https://habr.com/ru/post/566668/][Конспектируем Книгу Rust:: Владение / Хабр]]
 - [[https://github.com/tnballo/high-assurance-rust][tnballo/high-assurance-rust: A free book about developing secure and robust systems software.]]
+- [[https://github.com/EmilHernvall/dnsguide][EmilHernvall/dnsguide: A guide to writing a DNS Server from scratch in Rust]]
 
   #+begin_src scheme
     ("Option" . ,(string-to-symbols "value-is-optional-or-when-the-lack-of-a-value-is-not-an-error-condition"))
