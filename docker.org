@@ -4,6 +4,7 @@
 #+title: Docker
 
 * Tools
+- [[https://github.com/wknapik/dockerfile-run][wknapik/dockerfile-run: Execute dockerfiles as scripts (incl. via shebang)]]
 - [[https://github.com/treebeardtech/whaler][treebeardtech/whaler: Visual disk-usage analyser for docker images]]
 - [[https://github.com/JakeWharton/dockerfile-shebang][JakeWharton/dockerfile-shebang: Treat your Dockerfiles as self-contained, editable scripts]]
 - [[https://github.com/danmed/Docker-Compose-Backup/blob/main/create-compose-files.sh][Docker-Compose-Backup/create-compose-files.sh at main · danmed/Docker-Compose-Backup]]
