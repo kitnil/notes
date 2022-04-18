@@ -11,3 +11,4 @@
 - [[https://github.com/relaypro-open/dog][relaypro-open/dog: A firewall management system.]]
 - [[https://github.com/rafaeldtinoco/conntracker][rafaeldtinoco/conntracker: A good addition to your conntrack-tools package. Conntracker acts like a firewall sniffer, it analysis, realtime, with very low overhead, all iptables (or nf_tables) existing flows and inform you, at the very end of its execution, all flows in a sorted and consumable way.]]
 - [[https://github.com/chr0mag/geoipsets][chr0mag/geoipsets: Python package to generate country-specific IP network ranges consumable by both iptables/ipset and nftables.]]
+- [[https://github.com/mkorthof/ipset-country][mkorthof/ipset-country: Block countries using iptables + ipset + ipdeny.com]]
