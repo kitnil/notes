@@ -150,6 +150,9 @@ Swap:     134179836           0   134179836
 - [[https://github.com/genuinetools/amicontained][genuinetools/amicontained: Container introspection tool. Find out what container runtime is being used as well as features available.]]
 - [[https://github.com/prologic/box][prologic/box: 📦 A command-line utility (non-daemon) for creating Linux containers, sandboxing a processes written in Go.]]
 
+* Netflow
+- [[https://github.com/aabc/ipt-netflow][aabc/ipt-netflow: Netflow iptables module for Linux kernel (official)]]
+
 * ALSA
 - [[https://rendaw.gitlab.io/blog/2125f09a85f2.html#alsa-exposed][rendaw - ALSA, exposed!]]
 
