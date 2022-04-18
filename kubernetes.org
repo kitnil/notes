@@ -79,6 +79,8 @@
 * Installation
 - [[https://github.com/miekg/vks][miekg/vks: Virtual Kubelet Provider for Systemd]]
 - [[https://github.com/techno-tim/k3s-ansible][techno-tim/k3s-ansible: A fully automated HA k3s etcd install with kube-vip, MetalLB, and more]]
+- [[https://kubernetes.io/docs/reference/setup-tools/kubeadm/][Kubeadm | Kubernetes]]
+  - [[https://github.com/jpetazzo/ampernetacle][jpetazzo/ampernetacle deploy a Kubernetes cluster on Oracle Cloud Infrastructure]]
 
 ** Rancher
 
