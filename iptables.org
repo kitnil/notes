@@ -34,6 +34,7 @@
 - [[https://linuxconfig.org/collection-of-basic-linux-firewall-iptables-rules][Collection of basic Linux Firewall iptables rules - LinuxConfig.org]]
 - [[https://logi.cc/en/2010/07/netfilter-log-format/][Netfilter Log Format]]
 - [[https://github.com/Nudin/iptable_vis][Nudin/iptable_vis: visualise your iptables chains]]
+- [[https://github.com/jpylypiw/easywall][jpylypiw/easywall: Web interface for easy use of the IPTables firewall on Linux systems written in Python3.]]
 
 - iptables -t nat -A POSTROUTING -o br0 -j MASQUERADE
 - iptables -A FORWARD -i br0 -o br154.154 -m state --state RELATED,ESTABLISHED -j ACCEPT
