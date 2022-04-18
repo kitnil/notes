@@ -246,6 +246,9 @@ net.bridge.bridge-nf-call-iptables = 0
 ** WEB interface
 - [[https://github.com/phpipam/phpipam][phpipam/phpipam: phpipam development repository]]
 
+* eBPF
+- [[https://github.com/polycube-network/polycube][polycube-network/polycube: eBPF/XDP-based software framework for fast network services running in the Linux kernel.]]
+
 * [[id:63242a98-634c-4236-999c-5b26d588b4d9][BGP]]
 ** AS
  - [[https://github.com/stevenpack/asroute][stevenpack/asroute: Interpret traceroute output to show names of ASN traversed]]
