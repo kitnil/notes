@@ -19,6 +19,7 @@
 - [[https://habr.com/ru/post/584660/][Храним данные в JSONB, как это влияет на скорость запросов? / Хабр]]
 - [[https://github.com/levkk/pgcat][levkk/pgcat: Meow. PgBouncer rewritten in Rust, with sharding, load balancing and failover support.]]
 - [[https://github.com/benbjohnson/postlite][benbjohnson/postlite: Postgres wire compatible SQLite proxy.]]
+- [[https://github.com/orioledb/orioledb][orioledb/orioledb: OrioleDB – building a modern cloud-native storage engine (... and solving some PostgreSQL wicked problems)]]
 
 * [[https://postgrespro.com/list/thread-id/1525878][Thread: DB fails to start: "Could not read from file "pg_clog/0003" at offset 212992: No error. : Postgres Professional]]
 
