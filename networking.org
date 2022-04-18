@@ -101,6 +101,8 @@
  - Shadowsocks + v2ray
  - obfs proxy
  - port knocking
+* UPnP
+- [[https://github.com/miniupnp/miniupnp][miniupnp/miniupnp: UPnP IGD implementation]]
 * WOL
 - [[https://github.com/mdom/wakeonweb][mdom/wakeonweb: Dashboard for wakeonlan]]
 - [[https://github.com/vikmik/reboot-on-lan][vikmik/reboot-on-lan: Reboot a remote machine with a Wake-on-LAN packet]]
