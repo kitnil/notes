@@ -21,6 +21,8 @@
 - [[https://github.com/let-def/hotcaml][let-def/hotcaml: Hotcaml: an interpreter with watching and reloading]]
 - [[https://github.com/linoscope/CAMLBOY][linoscope/CAMLBOY: A Game Boy emulator that runs in your browser written in OCaml 🐫 🎮]]
 
+* Learning
+- [[https://cs3110.github.io/textbook/cover.html][OCaml Programming: Correct + Efficient + Beautiful — OCaml Programming: Correct + Efficient + Beautiful]]
 * 
 
 #+begin_example
@@ -74,3 +76,4 @@
 
   eval $(opam env --switch=default)
 #+end_example
+
