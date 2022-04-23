@@ -5,6 +5,12 @@
 - [[https://github.com/BigAnteater/KVM-GPU-Passthrough][BigAnteater/KVM-GPU-Passthrough: This is a simple, mostly automated guide to pass a GPU through to a VM.]]
 - [[https://github.com/virt-manager/virt-manager/pull/233][Undecorated window by bazsi · Pull Request #233 · virt-manager/virt-manager]]
 
+* virt-manager
+
+#+begin_example
+  qemu+tcp://kvm15.intr/system
+#+end_example
+
 * Add cdrom
 
   #+begin_src bash
