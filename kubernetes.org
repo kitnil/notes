@@ -182,3 +182,20 @@ The Kubernetes dashboard allows you to view your applications in a UI. In this d
 To see the progress of the Dashboard starting, watch the Pods within the kube-system namespace using kubectl get pods -n kubernetes-dashboard -w
 
 Once running, the URL to the dashboard is https://2886795308-30000-simba08.environments.katacoda.com/
+
+* Cheat sheet
+
+#+begin_example
+  [root@vm30:~]# lsns | grep nginx
+  4026532800 mnt         2  80051 root             nginx: master process nginx -g daemon off;
+  4026532801 pid         2  80051 root             nginx: master process nginx -g daemon off;
+  4026532802 cgroup      2  80051 root             nginx: master process nginx -g daemon off;
+  4026532865 mnt        20  90081 101              /usr/bin/dumb-init -- /nginx-ingress-controller --publish-service=ingress-nginx/ingress-nginx-controller --election-id=ingress-controller-leader --controller-class=k8s.io/ingress-nginx --ingress-class=nginx --configmap=ingress-nginx/ingress-nginx-controller --validating-webhook=:8443 --validating-webhook-certificate=/usr/local/certificates/cert --validating-webhook-key=/usr/local/certificates/key
+  4026532866 pid        20  90081 101              /usr/bin/dumb-init -- /nginx-ingress-controller --publish-service=ingress-nginx/ingress-nginx-controller --election-id=ingress-controller-leader --controller-class=k8s.io/ingress-nginx --ingress-class=nginx --configmap=ingress-nginx/ingress-nginx-controller --validating-webhook=:8443 --validating-webhook-certificate=/usr/local/certificates/cert --validating-webhook-key=/usr/local/certificates/key
+  4026532867 cgroup     20  90081 101              /usr/bin/dumb-init -- /nginx-ingress-controller --publish-service=ingress-nginx/ingress-nginx-controller --election-id=ingress-controller-leader --controller-class=k8s.io/ingress-nginx --ingress-class=nginx --configmap=ingress-nginx/ingress-nginx-controller --validating-webhook=:8443 --validating-webhook-certificate=/usr/local/certificates/cert --validating-webhook-key=/usr/local/certificates/key
+
+  [root@vm30:~]# nsenter -t 80051 -n curl localhost 
+  <!DOCTYPE html>
+  <html>
+  ...
+#+end_example
