@@ -207,3 +207,6 @@ Once running, the URL to the dashboard is https://2886795308-30000-simba08.envir
   <html>
   ...
 #+end_example
+
+- clean state
+  : rm -rf /var/lib/{kubernetes,cfssl,cni,containerd,etcd,kubelet}
