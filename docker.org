@@ -197,6 +197,9 @@
            tome4:1.6.0 ./start.sh
   #+END_SRC
 
+- Invoke a command from network namespace
+  : nsenter -t $(docker inspect --format '{{.State.Pid}}' hms1_rc-user.1.g8ugpa6n8ggjokn0zrwi1aiti) -n curl -s localhost:18080/actuator/metrics
+
 * Awesome
 
 - https://github.com/hadolint/hadolint
