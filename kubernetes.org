@@ -27,6 +27,7 @@
 - [[https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/create-cluster-kubeadm/][Creating a cluster with kubeadm | Kubernetes]]
 - [[https://kubernetes.io/docs/concepts/cluster-administration/addons/][Installing Addons | Kubernetes]]
 - [[https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/][Taints and Tolerations | Kubernetes]]
+- [[https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/high-availability/][Creating Highly Available Clusters with kubeadm | Kubernetes]]
 
 * Tools
 - [[https://github.com/furiko-io/furiko][furiko-io/furiko: Cloud-native, enterprise-level cron job platform for Kubernetes]]
