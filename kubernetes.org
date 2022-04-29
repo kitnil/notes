@@ -29,6 +29,7 @@
 - [[https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/][Taints and Tolerations | Kubernetes]]
 - [[https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/high-availability/][Creating Highly Available Clusters with kubeadm | Kubernetes]]
 - [[https://github.com/kubernetes/kubeadm/blob/main/docs/ha-considerations.md#options-for-software-load-balancing][kubeadm/ha-considerations.md at main · kubernetes/kubeadm]]
+- [[https://alesnosek.com/blog/2017/02/14/accessing-kubernetes-pods-from-outside-of-the-cluster/][Accessing Kubernetes Pods from Outside of the Cluster - Ales Nosek - The Software Practitioner]]
 
 * Tools
 - [[https://github.com/furiko-io/furiko][furiko-io/furiko: Cloud-native, enterprise-level cron job platform for Kubernetes]]
