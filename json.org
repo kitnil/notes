@@ -62,6 +62,7 @@ with =jc= utility, piped to =jq= to filter, and to =jtbl= generate a table:
 - [[https://github.com/ryncsn/poorjson.sh][ryncsn/poorjson.sh: A minimal POSIX compatible JSON parser and query tool, within 60 lines of codes, only requires `sed`. (Should be) Compatible with bash, dash, zsh, busybox and any other POSIX shell.]]
 - [[https://github.com/PaulJuliusMartinez/jless][PaulJuliusMartinez/jless: jless is a command-line JSON viewer designed for reading, exploring, and searching through JSON data.]]
 - [[https://github.com/brimdata/zed][brimdata/zed: Tooling for super-structured data: a new and easier way to manipulate data]]
+- [[https://github.com/hherman1/gq][hherman1/gq: jq but using go instead]]
 
 * Examples
 : ssh web15.intr ifconfig | jc --ifconfig | jq --raw-output '[.[] | select(.mac_addr != null) | select(.ipv4_addr != null) | select(.name != "docker0") | {"name": .name, "mac": .mac_addr, "addr": .ipv4_addr, "mask": .ipv4_mask}]'
