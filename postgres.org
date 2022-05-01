@@ -24,6 +24,7 @@
 - [[https://retool.com/blog/how-we-upgraded-postgresql-database/][How we upgraded our 4 TB main application Postgres database]]
 - [[https://github.com/citusdata/citus][citusdata/citus: Distributed PostgreSQL as an extension]]
 - [[https://github.com/shayonj/pg-osc][shayonj/pg-osc: Easy CLI tool for making zero downtime schema changes and backfills in PostgreSQL]]
+- [[https://github.com/ankane/pgslice][ankane/pgslice: Postgres partitioning as easy as pie]]
 
 * [[https://postgrespro.com/list/thread-id/1525878][Thread: DB fails to start: "Could not read from file "pg_clog/0003" at offset 212992: No error. : Postgres Professional]]
 
