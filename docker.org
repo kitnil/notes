@@ -34,6 +34,7 @@
 - [[https://github.com/distribution/distribution][distribution/distribution: The toolkit to pack, ship, store, and deliver container content]]
 - [[https://github.com/containerd/overlaybd?auto_subscribed=false][containerd/overlaybd: The storage backend of accelerated container image]]
 - [[https://github.com/docker-slim/docker-slim][docker-slim/docker-slim: DockerSlim (docker-slim): Don't change anything in your Docker container image and minify it by up to 30x (and for compiled languages even more) making it secure too! (free and open source)]]
+- [[https://github.com/offen/docker-volume-backup][offen/docker-volume-backup: Backup Docker volumes locally or to any S3 or WebDAV compatible storage]]
 
 ** Security
 - [[https://github.com/quay/clair][quay/clair: Vulnerability Static Analysis for Containers]]
