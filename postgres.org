@@ -25,6 +25,7 @@
 - [[https://github.com/citusdata/citus][citusdata/citus: Distributed PostgreSQL as an extension]]
 - [[https://github.com/shayonj/pg-osc][shayonj/pg-osc: Easy CLI tool for making zero downtime schema changes and backfills in PostgreSQL]]
 - [[https://github.com/ankane/pgslice][ankane/pgslice: Postgres partitioning as easy as pie]]
+- [[https://github.com/ankane/pgsync][ankane/pgsync: Sync data from one Postgres database to another]]
 
 * [[https://postgrespro.com/list/thread-id/1525878][Thread: DB fails to start: "Could not read from file "pg_clog/0003" at offset 212992: No error. : Postgres Professional]]
 
