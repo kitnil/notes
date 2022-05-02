@@ -86,6 +86,7 @@
 - [[https://github.com/cloudnativelabs/kube-router][cloudnativelabs/kube-router: Kube-router, a turnkey solution for Kubernetes networking.]]
 - [[https://github.com/box/kube-iptables-tailer][box/kube-iptables-tailer: A service for better network visibility for your Kubernetes clusters.]]
 - [[https://github.com/vmware-tanzu/velero][vmware-tanzu/velero: Backup and migrate Kubernetes applications and their persistent volumes]]
+- [[https://github.com/fluxcd/flagger][fluxcd/flagger: Progressive delivery Kubernetes operator (Canary, A/B Testing and Blue/Green deployments)]]
 
 ** minikube
 - [[https://habr.com/ru/company/vk/blog/648117/][Как работать с Minikube: рекомендации и полезные советы / Хабр]]
@@ -94,7 +95,7 @@
 - [[https://github.com/miekg/vks][miekg/vks: Virtual Kubelet Provider for Systemd]]
 - [[https://github.com/techno-tim/k3s-ansible][techno-tim/k3s-ansible: A fully automated HA k3s etcd install with kube-vip, MetalLB, and more]]
 - [[https://kubernetes.io/docs/reference/setup-tools/kubeadm/][Kubeadm | Kubernetes]]
-  - [[https://github.com/jpetazzo/ampernetacle][jpetazzo/ampernetacle deploy a Kubernetes cluster on Oracle Cloud Infrastructure]]
+  - [[https://github.com/jpetazzo/ampernetacle][jpetazzo/ampernetacle deploy a Kubernetes cluster on Oracle Cloud Inafrastructure]]
 - [[https://github.com/kubealex/libvirt-k8s-provisioner][kubealex/libvirt-k8s-provisioner: Automate your k8s installation]]
 - [[https://github.com/NetBook-ai/spawner][NetBook-ai/spawner: Mulit-Cloud infrastructure orchestrator for kubernetes first development.]]
 
