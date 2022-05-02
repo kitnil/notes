@@ -966,6 +966,8 @@ curl host01
 
 * Compose
 
+- [[https://github.com/nuxxapp/nuxx][nuxxapp/nuxx: Visual Docker composer for faster development. Discover, leverage, and launch community recipes.]]
+
 #+begin_src yaml
   version: '3.4'
 
