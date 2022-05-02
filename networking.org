@@ -245,6 +245,7 @@ net.bridge.bridge-nf-call-iptables = 0
 - [[https://github.com/ycd/dstp][ycd/dstp: 🧪 Run common networking tests against your site.]]
 - [[https://github.com/c-grimshaw/gosniff][c-grimshaw/gosniff: A fancy-schmancy tcpdump-esque TUI, programmed in Go.]]
 - [[https://github.com/hakluke/hakip2host][hakluke/hakip2host: hakip2host takes a list of IP addresses via stdin, then does a series of checks to return associated domain names.]]
+- [[https://github.com/sc0tfree/netbyte][sc0tfree/netbyte: Netbyte is a Netcat-style tool that facilitates probing proprietary TCP and UDP services. It is lightweight, fully interactive and provides formatted output in both hexadecimal and ASCII.]]
 
 ** WEB interface
 - [[https://github.com/phpipam/phpipam][phpipam/phpipam: phpipam development repository]]
