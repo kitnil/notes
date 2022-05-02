@@ -5,3 +5,5 @@
 - [[https://github.com/xddxdd/bird-lg-go][xddxdd/bird-lg-go: BIRD looking glass in Go, for better maintainability, easier deployment & smaller memory footprint]]
 
 birdc show route all for 192.168.154.0/24
+
+birdc show route all export uplink1
