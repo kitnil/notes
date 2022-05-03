@@ -115,7 +115,7 @@
 - [[https://github.com/gopher-net/docker-ovs-plugin][gopher-net/docker-ovs-plugin: An Open vSwitch Plugin for Docker's Libnetwork]]
 - [[https://github.com/IQTLabs/dovesnap][IQTLabs/dovesnap: Docker OVS Network Plugin]]
 
-: docker network create -d ipvlan --subnet=10.152.128.0/18 --gateway=10.152.152.10 -o ipvlan_mode=l2 -o parent=br155 br155_net
+: docker network create -d ipvlan --subnet=10.152.128.0/18 --gateway=10.152.152.10 --ip-range=10.152.152.16/28 -o ipvlan_mode=l2 -o parent=br155 br155_net
 
 * Libs
 - [[https://github.com/qiniu/qmgo][Qmgo - The MongoDB driver for Go . It‘s based on official mongo-go-driver but easier to use like Mgo.]]
