@@ -1,5 +1,5 @@
 docker run -it -d --name ubuntu-br155 --network=none ubuntu:20.04 bash -c 'read'
-ovs-docker add-port br155 eth1 ubuntu-br155 --ipaddress=10.152.152.12/18 --gateway=10.152.152.10
+ovs-docker add-port br155-vlan155 eth1 ubuntu-br155 --ipaddress=10.152.152.12/18 --gateway=10.152.152.10
 
 in case you do not use ovs fake bridge
 : ovs-vsctl set port 0bd6f1e7ab404_l tag=155
