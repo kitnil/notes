@@ -1,0 +1,5 @@
+docker run -it -d --name ubuntu-br155 ubuntu:20.04 bash -c 'read'
+ovs-docker add-port br155 eth1 ubuntu-br155 --ipaddress=10.152.152.12/18
+nsenter -t $(docker inspect --format '{{.State.Pid}}' ubuntu-br155) -n ip r del default
+nsenter -t $(docker inspect --format '{{.State.Pid}}' ubuntu-br155) -n ip r add default via 10.152.152.10 dev eth1
+ovs-vsctl set port fdf21cdd60d84_l tag=155
