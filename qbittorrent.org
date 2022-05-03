@@ -1,3 +1,3 @@
-docker run --volume=/var/lib/qbittorrent:/config --volume=/srv/lib:/downloads -e TZ=Europe/Moscow -e PUID=1000 -e PGID=998 -d --name qbittorrent --network=none lscr.io/linuxserver/qbittorrent:latest
+docker run --dns 10.152.152.10 --volume=/var/lib/qbittorrent:/config --volume=/srv/lib:/downloads -e TZ=Europe/Moscow -e PUID=1000 -e PGID=998 -d --name qbittorrent --network=none lscr.io/linuxserver/qbittorrent:latest
 ovs-docker add-port br155-vlan155 eth1 qbittorrent --ipaddress=10.152.152.12/18 --gateway=10.152.152.10
 ovs-docker add-port br154-vlan154 eth2 qbittorrent --ipaddress=192.168.154.12/24
