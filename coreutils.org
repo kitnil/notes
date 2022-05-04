@@ -65,6 +65,8 @@
   - [[https://github.com/willdoescode/nat][willdoescode/nat: ⚡️ nat - the 'ls' replacement you never knew you needed⚡️]]
 - ps :: [[https://github.com/dalance/procs][procs]]
   - [[https://github.com/noborus/psutilsql][noborus/psutilsql: Use the gopsutil library to retrieve information and process it with SQL]]
+  - print process tree
+    : ps axjf
 - time :: [[https://github.com/sharkdp/hyperfine][hyperfine]]
 - top :: [[https://github.com/bvaisvil/zenith][zenith]]
 - wc -l :: [[https://github.com/XAMPPRocky/tokei][tokei]]
