@@ -71,6 +71,19 @@ https://blog.trackets.com/2014/05/17/ssh-tunnel-local-and-remote-port-forwarding
     DynamicForward localhost:5555
   #+END_SRC
 
+- pam
+
+https://github.com/camptocamp/puppet-accounts/issues/35#issuecomment-206673240
+#+begin_quote
+I've just checked my sshd_config, It had UsePAM no which refuse my ssh
+connection. Enable PAM help to resolve this issue.
+
+Basically, if we use UsePAM no and shadow file:
+
+    my-username:!:16897:0:99999:7::: NOT able to login.
+    my-username:*:16897:0:99999:7::: able to login.
+#+end_quote
+
 * Security
 - [[https://securitytrails.com/blog/mitigating-ssh-based-attacks-top-15-best-security-practices][Mitigating SSH based attacks – Top 15 Best SSH Security Practices]]
 
