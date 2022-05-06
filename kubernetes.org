@@ -96,6 +96,9 @@
 ** minikube
 - [[https://habr.com/ru/company/vk/blog/648117/][Как работать с Minikube: рекомендации и полезные советы / Хабр]]
 
+* Helm
+- [[https://github.com/twuni/docker-registry.helm][twuni/docker-registry.helm: Helm chart for a Docker registry. Successor to stable/docker-registry chart.]]
+
 * Installation
 - [[https://github.com/miekg/vks][miekg/vks: Virtual Kubelet Provider for Systemd]]
 - [[https://github.com/techno-tim/k3s-ansible][techno-tim/k3s-ansible: A fully automated HA k3s etcd install with kube-vip, MetalLB, and more]]
