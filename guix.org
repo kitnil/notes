@@ -1579,6 +1579,10 @@ https://kanru.info/blog/archives/2010/11/18/convert-texinfo-to-mobi/
           (mu:message-list "bugid:31023"))
    #+END_EXAMPLE
     
+* Extensions
+- [[https://hpc.guix.info/blog/2022/05/back-to-the-future-modules-for-guix-packages/][Guix-HPC — Back to the future: modules for Guix packages]]
+- [[https://guixwl.org/][Guix Workflow Language | Guix Workflow Language]]
+
 * Guix packaging
 
   - [[shell:guix%20lint%20$PACKAGE][shell:guix lint $PACKAGE]]
