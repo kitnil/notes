@@ -27,6 +27,7 @@
 - [[https://github.com/ankane/pgslice][ankane/pgslice: Postgres partitioning as easy as pie]]
 - [[https://github.com/ankane/pgsync][ankane/pgsync: Sync data from one Postgres database to another]]
 - [[https://github.com/hasura/pgdeltastream][hasura/pgdeltastream: Streaming Postgres logical replication changes atleast-once over websockets]]
+- [[https://github.com/postgresml/postgresml][postgresml/postgresml: PostgresML is an end-to-end machine learning system. It enables you to train models and make online predictions using only SQL, without your data ever leaving your favorite database.]]
 
 * [[https://postgrespro.com/list/thread-id/1525878][Thread: DB fails to start: "Could not read from file "pg_clog/0003" at offset 212992: No error. : Postgres Professional]]
 
