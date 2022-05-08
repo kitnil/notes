@@ -47,6 +47,9 @@ Pool lvm1 started
 - create logical volume
   : lvcreate -L 100G lvm1 -n whonix-gateway
 
+- Fix "LV Status" is "NOT available"
+  : vgchange -a y VOLNAME
+
 * Snapshots
 
 root@guixsd ~ [env]# modprobe dm-snapshot
