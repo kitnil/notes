@@ -41,3 +41,5 @@
 - iptables -t nat -A POSTROUTING -o br0 -j MASQUERADE
 - iptables -A FORWARD -i br0 -o br154.154 -m state --state RELATED,ESTABLISHED -j ACCEPT
 - iptables -A FORWARD -i br154.154 -o br0 -j ACCEPT
+
+- viddy /bin/sh -c "'sudo iptables -L -v; sudo iptables -L -v -t nat'"
