@@ -36,6 +36,7 @@
 - [[https://github.com/Nudin/iptable_vis][Nudin/iptable_vis: visualise your iptables chains]]
 - [[https://github.com/jpylypiw/easywall][jpylypiw/easywall: Web interface for easy use of the IPTables firewall on Linux systems written in Python3.]]
 - [[https://github.com/bmaeser/iptables-boilerplate][bmaeser/iptables-boilerplate: rock solid default firewall-rules for webhosts]]
+- [[https://webguy.vip/example-of-iptables/][Example of IPTABLES — Web Guy]]
 
 - iptables -t nat -A POSTROUTING -o br0 -j MASQUERADE
 - iptables -A FORWARD -i br0 -o br154.154 -m state --state RELATED,ESTABLISHED -j ACCEPT
