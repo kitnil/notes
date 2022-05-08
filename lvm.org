@@ -4,6 +4,10 @@
 - snapshot
   : lvcreate --size 4G --snapshot --name magnolia--vg-root-01 /dev/mapper/magnolia--vg-root
 - [[https://www.man7.org/linux/man-pages/man7/lvmvdo.7.html][lvmvdo(7) - Linux manual page]]
+
+- increase size of logical volume
+  : lvextend -L+10G /dev/lvm1/web99
+
 - [[https://storytime.ivysaur.me/posts/why-not-zfs/][Why not ZFS]]
 
 root@guixsd ~ [env]# pvcreate /dev/sdd5 
