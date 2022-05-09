@@ -19,3 +19,4 @@
 - [[https://github.com/QaidVoid/Complete-Single-GPU-Passthrough][QaidVoid/Complete-Single-GPU-Passthrough: Single GPU VFIO Passthrough Guide]]
 - [[https://github.com/cardi/qemu-windows-10][cardi/qemu-windows-10: running a windows 10 guest on a linux host with pci passthrough]]
 - [[https://github.com/0xef53/phoenix-guest-agent][0xef53/phoenix-guest-agent: A guest-side agent for qemu-kvm virtual machines]]
+- [[https://github.com/0xef53/kvmrun][0xef53/kvmrun: A qemu-kvm virtual machine manager written in Go. Simplifies hot-plug/unplug devices, hot reconfiguration, live migration between the same type hosts and more.]]
