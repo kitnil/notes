@@ -44,6 +44,16 @@
 - [[https://habr.com/ru/company/ruvds/blog/578292/][Кунг-фу стиля Linux: файловые системы пользовательского пространства теперь доступны и в Windows / Хабр]]
 - [[https://github.com/ufrisk/MemProcFS][ufrisk/MemProcFS: The Memory Process File System]]
 
+** NFS
+
+#+begin_example
+win+r
+shell:startup
+
+mount -o anon \\192.168.0.144\srv S:
+mount -o anon \\192.168.0.144\srv\games N:
+#+end_example
+
 * Productivity
 
 - [[https://github.com/xmichelo/Beeftext][xmichelo/Beeftext: A text snippet tool for Windows.]]
