@@ -93,6 +93,7 @@
 - [[https://github.com/fluxcd/flux2][fluxcd/flux2: Open and extensible continuous delivery solution for Kubernetes. Powered by GitOps Toolkit.]]
 - [[https://github.com/longhorn/longhorn][longhorn/longhorn: Cloud-Native distributed storage built on and for Kubernetes]]
 - [[https://github.com/loft-sh/vcluster][loft-sh/vcluster: vcluster - Create fully functional virtual Kubernetes clusters - Each vcluster runs inside a namespace of the underlying k8s cluster. It's cheaper than creating separate full-blown clusters and it offers better multi-tenancy and isolation than regular namespaces.]]
+- [[https://github.com/ArctarusLimited/Fractal][ArctarusLimited/Fractal: Zero-compromise Kubernetes resource generation with Nix, Jsonnet and Kustomize. Planned Helm support.]]
 
 ** minikube
 - [[https://habr.com/ru/company/vk/blog/648117/][Как работать с Minikube: рекомендации и полезные советы / Хабр]]
