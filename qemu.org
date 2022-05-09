@@ -22,6 +22,8 @@
 
  - [[https://github.com/digitalocean/go-qemu][digitalocean/go-qemu: Go packages to interact with QEMU using the QEMU Machine Protocol (QMP). Apache 2.0 Licensed.]]
 
+ - [[https://github.com/nemuTUI/nemu][nemuTUI/nemu: Ncurses UI for QEMU]]
+
  - convert qcow2 to lvm
    : qemu-img convert -p -n -f qcow2 -O raw /mnt/data/images/102/vm-102-disk-0.qcow2 /dev/pve/vm-102-disk-0
 
