@@ -69,7 +69,7 @@
   : docker run --rm -it --network=host aler9/landiscover
 
 - music
-  : docker run -d --name navidrome --restart=unless-stopped --user $(id -u):$(id -g) -v /srv/audio:/music:ro -v /var/lib/navidrome:/data -p 127.0.0.1:4533:4533 -e ND_LOGLEVEL=debug deluan/navidrome:latest
+  : docker run -d --name navidrome --restart=unless-stopped --user $(id -u):$(id -g) -v /srv/audio:/music:ro -v /var/lib/navidrome:/data -p 192.168.0.144:4533:4533 -e ND_LOGLEVEL=debug deluan/navidrome:latest
 
 * Logs
 - [[https://github.com/amir20/dozzle][amir20/dozzle: Realtime log viewer for docker containers.]]
