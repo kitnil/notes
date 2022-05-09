@@ -15,6 +15,9 @@
   : $ Xvnc -geometry 1024x768 :4 -PasswordFile ~/.vnc/passwd
   : $ DISPLAY=:4 dbus-launch startplasma-x11
 
+* Tools
+- [[https://github.com/amitbet/vnc2video][amitbet/vnc2video: A fully featured VNC client written in golang]]
+
 * VNC
 #+begin_src xml
   <graphics type='vnc' port='11935' autoport='no' listen='127.0.0.1' keymap='en-us'>
