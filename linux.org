@@ -473,6 +473,8 @@ before are out of the picture and tcpdump shows me all of the packets I expect
 to see.
 #+end_quote
 
+- [[https://github.com/JonathonReinhart/linux-netns-sysctl-verify][JonathonReinhart/linux-netns-sysctl-verify: Linux network namespace sysctl safety verifier.]]
+
 * Kill session by terminal
 
 #+begin_example
