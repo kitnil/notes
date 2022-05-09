@@ -912,6 +912,8 @@ sudo /nix/var/nix/profiles/system/bin/switch-to-configuration switch
   #+end_src
   : nix-instantiate --eval /tmp/file.nix -A config.toplevel
 
+- [[https://github.com/hardenedlinux/nixpkgs-hardenedlinux/blob/main/modules/osquery.nix][nixpkgs-hardenedlinux/osquery.nix at main · hardenedlinux/nixpkgs-hardenedlinux]]
+
 * Lustrate
   #+begin_src yaml
     - hosts: web_ubuntu
