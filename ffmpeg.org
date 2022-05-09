@@ -11,3 +11,5 @@
   ffmpeg -v warning -i $1 -vf "$filters,palettegen" -y $palette
   ffmpeg -v warning -i $1 -i $palette -lavfi "$filters [x]; [x][1:v] paletteuse" -y $2
 #+end_example
+
+- [[https://github.com/slhck/ffmpeg-normalize][slhck/ffmpeg-normalize: Audio Normalization for Python/ffmpeg]]
