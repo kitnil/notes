@@ -66,6 +66,7 @@
 - [[https://github.com/bcapptain/dockernymous][bcapptain/dockernymous: A script used to create a whonix like gateway/workstation environment with docker containers.]]
 - [[https://github.com/madworx/docker-minix][madworx/docker-minix: QEMU-based Docker image for Minix 3, based on the official CD-ROM ISO image installation from the Minix website]]
 - [[https://github.com/aler9/landiscover][aler9/landiscover: discover devices connected to the local network within seconds]]
+  : docker run --rm -it --network=host aler9/landiscover
 
 - music
   : docker run -d --name navidrome --restart=unless-stopped --user $(id -u):$(id -g) -v /srv/music:/music:ro -v /var/lib/navidrome:/data -p 127.0.0.1:4533:4533 -e ND_LOGLEVEL=info deluan/navidrome:latest
