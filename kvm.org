@@ -27,3 +27,4 @@
 - [[https://github.com/bradfitz/embiggen-disk][bradfitz/embiggen-disk: embiggden-disk live-resizes a filesystem after first live-resizing any necessary layers below it: an optional LVM LV and PV, and an MBR or GPT partition table]]
 - [[https://github.com/tonistiigi/binfmt][tonistiigi/binfmt: Cross-platform emulator collection distributed with Docker images.]]
 - [[https://github.com/ucare-uchicago/FEMU][ucare-uchicago/FEMU: FEMU: Accurate, Scalable and Extensible NVMe SSD Emulator (FAST'18)]]
+- [[https://github.com/joshkunz/qemu-docker][joshkunz/qemu-docker: A docker container for running x86_64 virtual machines using qemu]]
