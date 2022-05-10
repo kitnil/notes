@@ -57,3 +57,6 @@ but at runtime, it'll blow past work_mem and use as much memory as it needs.
 xid is a useful built-in example of a non-sortable type for sortable types, the query will usually use a sort and therefore be subject to
 work_mem limits. But xid can only be grouped by hashing, so it forces a hashagg plan regardless of work_mem. So the query will try and create a hashtable with a billion entries each of which includes an array build state.
 
+* Guix
+
+: sudo -u postgres psql peertube
