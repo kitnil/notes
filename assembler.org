@@ -41,3 +41,6 @@ oleg@guixsd ~$ echo "0x33 0xc0 0x31 0xc0" | /gnu/store/…-llvm-10.0.0/bin/llvm-
                                         #  <MCOperand Reg:22>
                                         #  <MCOperand Reg:22>>
 #+end_example
+
+* Learning
+- [[https://github.com/brianrhall/Assembly][brianrhall/Assembly: Assembly Programming and Computer Architecture for Software Engineers]]
