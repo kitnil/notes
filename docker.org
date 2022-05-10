@@ -73,6 +73,7 @@
 
 - music
   : docker run -d --name navidrome --restart=unless-stopped --user $(id -u):$(id -g) -v /srv/audio:/music:ro -v /var/lib/navidrome:/data -p 192.168.0.144:4533:4533 -e ND_LOGLEVEL=debug deluan/navidrome:latest
+  : docker run --name airsonic-advanced -d -u $(id -u):$(id -g) -e TZ=Europe/Moscow -e JAVA_OPTS=-Dserver.forward-headers-strategy=native -p 192.168.0.144:4040:4040 -p 192.168.0.144:4041:4041 -v /srv/music:/var/music:ro -v /var/lib/airsonic:/var/airsonic --restart unless-stopped airsonicadvanced/airsonic-advanced:latest
 
 * Logs
 - [[https://github.com/amir20/dozzle][amir20/dozzle: Realtime log viewer for docker containers.]]
