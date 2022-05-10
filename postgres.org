@@ -60,3 +60,9 @@ work_mem limits. But xid can only be grouped by hashing, so it forces a hashagg 
 * Guix
 
 : sudo -u postgres psql peertube
+
+peertube=# create user peertube with encrypted password 'SECRET';
+CREATE ROLE
+
+peertube=# grant all privileges on database peertube to peertube;
+GRANT
