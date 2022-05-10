@@ -1206,6 +1206,7 @@ builtins.match "php([[:alnum:]])([[:alnum:]])" "php70"
 - [[https://github.com/Lassulus/nix-autobahn][Lassulus/nix-autobahn]]
 - [[https://github.com/railwayapp/nixpacks][railwayapp/nixpacks: App source + Nix packages + Docker = Image]]
 - [[https://github.com/DavHau/nix-eval-cache][DavHau/nix-eval-cache: Cache evaluation of nix functions]]
+- [[https://github.com/siraben/nix-lint][siraben/nix-lint: Semantic linter for Nix using tree-sitter 🌳 + ❄️]]
 
 * Overlays
   - nixos-install --flake github:hoverbear-consulting/flake#gizmo --impure
