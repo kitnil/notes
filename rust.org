@@ -23,7 +23,7 @@
 - [[https://github.com/adam-mcdaniel/atom][adam-mcdaniel/atom: Shell scripting that will knock your socks off]]
 - [[https://github.com/ogham/dog/][ogham/dog: Command-line DNS client]]
 - [[https://github.com/vi/websocat][vi/websocat: Command-line client for WebSockets, like netcat (or curl) for ws:// with advanced socat-like functions]]
-- [[https://github.com/yewstack/yew][yewstack/yew: Rust / Wasm framework for building client web apps]]
+- [[https://github.com/yewstack/yew][yewstack/yew: Rust / Wasm framework for building client web vapps]]
 - [[https://github.com/eraserhd/parinfer-rust][eraserhd/parinfer-rust: A Rust port of parinfer.]]
 - [[https://github.com/meilisearch/MeiliSearch][meilisearch/MeiliSearch: Lightning Fast, Ultra Relevant, and Typo-Tolerant Search Engine]]
 - [[https://github.com/ysf/anewer][ysf/anewer: anewer appends lines from stdin to a file if they don't already exist in the file. This is a rust version of https://github.com/tomnomnom/anew]]
@@ -160,6 +160,10 @@
          Err(error) => panic!("Problem opening the file: {:?}", error),
      };
    #+end_src
+
+* Languages
+- [[https://github.com/candy-lang/candy][candy-lang/candy: 🍭 A sweet programming language, mainly inspired by Elixir, Kotlin, and Rust]]
+
 * Library
 - [[https://github.com/andir/dhcpd-exporter-rs][andir/dhcpd-exporter-rs: ISC dhcpd leases exporter]]
 - [[https://github.com/mre/hyperjson][mre/hyperjson: A hyper-fast Python module for reading/writing JSON data using Rust's serde-json.]]
