@@ -319,3 +319,6 @@ Maybe a -> (a -> Maybe b) -> Maybe b
 
 import System.Process
 main = callCommand "cp somefile somedestination"
+
+* Languages
+- [[https://github.com/morloc-project/morloc][morloc-project/morloc: A typed, polyglot, functional language]]
