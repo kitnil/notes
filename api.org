@@ -5,3 +5,5 @@
 - [[https://github.com/egno/work-calendar][egno/work-calendar: Work calendar service]]
 - [[https://github.com/OAI/OpenAPI-Specification/blob/main/versions/3.0.3.md][OpenAPI-Specification/3.0.3.md at main · OAI/OpenAPI-Specification]]
 - [[https://github.com/swagger-api/swagger-editor][swagger-api/swagger-editor: Swagger Editor]]
+  : docker run -d -p 80:8080 -e URL="https://petstore3.swagger.io/api/v3/openapi.json" swaggerapi/swagger-editor
+  : docker run -d -p 80:8080 -v $(pwd):/tmp -e SWAGGER_FILE=/tmp/swagger.json swaggerapi/swagger-editor
