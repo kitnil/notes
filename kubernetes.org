@@ -108,6 +108,7 @@
 - [[https://github.com/loft-sh/vcluster][loft-sh/vcluster: vcluster - Create fully functional virtual Kubernetes clusters - Each vcluster runs inside a namespace of the underlying k8s cluster. It's cheaper than creating separate full-blown clusters and it offers better multi-tenancy and isolation than regular namespaces.]]
 - [[https://github.com/infracloudio/botkube][infracloudio/botkube: An app that helps you monitor your Kubernetes cluster, debug critical deployments & gives recommendations for standard practices]]
 - [[https://github.com/sealerio/sealer][sealerio/sealer: A tool to seal application's all dependencies and Kubernetes into CloudImage, distribute this application anywhere via CloudImage, and run it within any cluster in one command.]]
+- [[https://github.com/tkestack/tke][tkestack/tke: Native Kubernetes container management platform supporting multi-tenant and multi-cluster]]
 
 ** minikube
 - [[https://habr.com/ru/company/vk/blog/648117/][Как работать с Minikube: рекомендации и полезные советы / Хабр]]
