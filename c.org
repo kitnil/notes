@@ -45,6 +45,9 @@ Warranty void if you fiddle with LD_PRELOAD or LD_LIBRARY_PATH.
 - [[https://github.com/cesanta/mongoose][cesanta/mongoose: Embedded Web Server]]
 - [[https://github.com/Hirrolot/metalang99][Hirrolot/metalang99: Full-blown preprocessor metaprogramming]]
 
+* Languages
+- [[https://github.com/never-lang/never][never-lang/never: Never: statically typed, embeddable functional programming language.]]
+
 * Script
 https://stackoverflow.com/questions/2482348/run-c-or-c-file-as-a-script
 #+BEGIN_SRC c
