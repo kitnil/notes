@@ -252,3 +252,26 @@ Once running, the URL to the dashboard is https://2886795308-30000-simba08.envir
 
 - print everything
   : kubectl get all -A
+
+* How it works
+
+First of all you should have a working etcd.
+
+#+begin_example
+  [root@kube1:~]# ss -tulpn
+  Netid          State           Recv-Q          Send-Q                   Local Address:Port                     Peer Address:Port          Process
+  tcp            LISTEN          0               4096                         127.0.0.1:38421                         0.0.0.0:*              users:(("containerd",pid=885,fd=14))
+  tcp            LISTEN          0               128                       172.16.103.9:22                            0.0.0.0:*              users:(("sshd",pid=911,fd=3))
+  tcp            LISTEN          0               4096                      172.16.103.9:443                           0.0.0.0:*              users:(("kube-apiserver",pid=3104049,fd=7))
+  tcp            LISTEN          0               4096                      172.16.103.9:2379                          0.0.0.0:*              users:(("etcd",pid=3104054,fd=9))
+  tcp            LISTEN          0               4096                      172.16.103.9:2380                          0.0.0.0:*              users:(("etcd",pid=3104054,fd=8))
+#+end_example
+
+After that you should start kube-apiserver, which allows to use kubectl
+utility, which connects you to the cluster.
+
+#+begin_example
+  [root@kube1:~]# kubectl --insecure-skip-tls-verify get -A all
+  NAMESPACE   NAME                 TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)   AGE
+  default     service/kubernetes   ClusterIP   10.0.0.1     <none>        443/TCP   10h
+#+end_example
