@@ -7,3 +7,7 @@
 - [[https://github.com/swagger-api/swagger-editor][swagger-api/swagger-editor: Swagger Editor]]
   : docker run -d -p 80:8080 -e URL="https://petstore3.swagger.io/api/v3/openapi.json" swaggerapi/swagger-editor
   : docker run -d -p 80:8080 -v $(pwd):/tmp -e SWAGGER_FILE=/tmp/swagger.json swaggerapi/swagger-editor
+
+* Third-party
+
+- [[https://www.ip2location.io/][IP Geolocation API | IP2Location.io]]
