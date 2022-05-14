@@ -255,6 +255,7 @@ Once running, the URL to the dashboard is https://2886795308-30000-simba08.envir
 
 - print everything
   : kubectl get all -A
+  : kubectl get all --all-namespaces
 
 * How it works
 
