@@ -275,3 +275,8 @@ utility, which connects you to the cluster.
   NAMESPACE   NAME                 TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)   AGE
   default     service/kubernetes   ClusterIP   10.0.0.1     <none>        443/TCP   10h
 #+end_example
+
+=kubelet= will start itself and =containerd= service
+
+starting the following units: systemd-modules-load.service, systemd-sysctl.service
+the following new units were started: containerd.service, kubelet.service
