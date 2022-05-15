@@ -191,6 +191,9 @@
 
 * Cheat sheet
 
+- skopeo
+  : skopeo copy docker-archive:${args.image.path} docker-daemon:${baseName}:${originTag} --insecure-policy
+
 - Show docker shared image layers
   : docker system df -v
 
