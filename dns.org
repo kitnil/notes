@@ -3,6 +3,9 @@
 :END:
 #+title: DNS
 
+* Implementations
+- [[https://github.com/coredns/coredns][coredns/coredns: CoreDNS is a DNS server that chains plugins]]
+
 * Tools
 - [[https://github.com/kirelagin/dns.nix][kirelagin/dns.nix: A Nix DSL for DNS zone files]]
 - [[https://github.com/aaronjanse/dns-over-wikipedia][aaronjanse/dns-over-wikipedia: Redirect `.idk` domains using the official link found on a topic's Wikipedia page]]
