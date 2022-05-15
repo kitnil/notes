@@ -43,6 +43,18 @@
 - [[https://rtfm.co.ua/kubernetes-znakomstvo-chast-1-arxitektura-i-osnovnye-komponenty-obzor/][Kubernetes: знакомство, часть 1 – архитектура и основные компоненты, обзор]]
 - [[https://serveradmin.ru/kubernetes-ustanovka/][Установка кластера Kubernetes | serveradmin.ru]]
 - [[http://ceur-ws.org/Vol-2839/paper11.pdf][paper11.pdf]]
+- [[https://www.alibabacloud.com/help/en/container-service-for-kubernetes/latest/use-the-host-network][Use the host network]]
+  #+begin_src yaml
+    apiVersion: v1
+    kind: Pod
+    metadata:
+      name: nginx
+    spec:
+      hostNetwork: true
+      containers:
+      - name: nginx
+        image: nginx
+  #+end_src
 
 * Tools
 - [[https://github.com/furiko-io/furiko][furiko-io/furiko: Cloud-native, enterprise-level cron job platform for Kubernetes]]
