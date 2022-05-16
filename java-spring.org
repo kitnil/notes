@@ -21,3 +21,4 @@ https://spring.io/guides/gs/centralized-configuration/
 
 - management.endpoints.web.exposure.include=*
 
+- [[https://habr.com/ru/company/otus/blog/650871/][Мониторинг приложения Spring Boot с помощью Micrometer, Prometheus и Grafana, используя пользовательские метрики / Хабр]]
