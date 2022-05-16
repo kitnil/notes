@@ -35,6 +35,7 @@
 - [[https://github.com/kbknapp/iptables_exporter][kbknapp/iptables_exporter: A Prometheus exporter for iptables in Rust]]
 - [[https://github.com/matusnovak/prometheus-smartctl][matusnovak/prometheus-smartctl: HDD S.M.A.R.T exporter for Prometheus written in Python]]
 - [[https://github.com/Sheridan/nftables_exporter][Sheridan/nftables_exporter: Export nftables statistics to prometheus]]
+- [[https://github.com/insomniacslk/prometheus-weather-exporter][insomniacslk/prometheus-weather-exporter: Weather exporter for Prometheus, using the Google Maps and Darksky APIs]]
 - [[https://github.com/summerwind/github-project-exporter][summerwind/github-project-exporter: Export GitHub project status to Prometheus.]]
 - [[https://github.com/stapelberg/rsyncprom][stapelberg/rsyncprom: rsync wrapper (or output parser) that pushes metrics to prometheus]]
 - [[https://github.com/stapelberg/rsyncparse][stapelberg/rsyncparse: rsync output parser]]
