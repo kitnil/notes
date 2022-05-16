@@ -57,6 +57,7 @@
   #+end_src
 
 * Tools
+- [[https://github.com/k3s-io/kine][k3s-io/kine: Run Kubernetes on MySQL, Postgres, sqlite, dqlite, not etcd.]]
 - [[https://github.com/furiko-io/furiko][furiko-io/furiko: Cloud-native, enterprise-level cron job platform for Kubernetes]]
 - [[https://github.com/cloud-native-skunkworks/ubuntu-operator][cloud-native-skunkworks/ubuntu-operator: Control Ubuntu from Kubernetes.]]
 - [[https://werf.io/][Giterministic CLI tool | werf]]
