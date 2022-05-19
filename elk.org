@@ -187,6 +187,20 @@ curl -H 'Content-Type: application/json' -d '{"query": {"bool": {"must": {"term"
   .monitoring-es-6-2020.05.21       0 r STARTED        8639      3mb 172.16.103.101 kvm15-master
 #+end_example
 
+- disk watermark
+#+begin_example
+  curl -X PUT "es.intr:9200/_cluster/settings?pretty" -H 'Content-Type: application/json' -d'
+  {
+    "transient": {
+      "cluster.routing.allocation.disk.watermark.low": "100gb",
+      "cluster.routing.allocation.disk.watermark.high": "50gb",
+      "cluster.routing.allocation.disk.watermark.flood_stage": "10gb"
+
+    }
+  }
+  '
+#+end_example
+
 ** es3
 #+begin_example
   cluster.name: mjlogger
