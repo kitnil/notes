@@ -237,6 +237,9 @@
 - Invoke a command from network namespace
   : nsenter -t $(docker inspect --format '{{.State.Pid}}' hms1_rc-user.1.g8ugpa6n8ggjokn0zrwi1aiti) -n curl -s localhost:18080/actuator/metrics
 
+- push images from server
+  : printf "docker push %s\n" $(for image in "$(docker images)"; do echo "$image" | awk '{ print $1 ":" $2 }'; done) > push.jobs
+
 * Awesome
 
 - https://github.com/hadolint/hadolint
