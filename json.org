@@ -64,6 +64,7 @@ with =jc= utility, piped to =jq= to filter, and to =jtbl= generate a table:
 - [[https://github.com/PaulJuliusMartinez/jless][PaulJuliusMartinez/jless: jless is a command-line JSON viewer designed for reading, exploring, and searching through JSON data.]]
 - [[https://github.com/brimdata/zed][brimdata/zed: Tooling for super-structured data: a new and easier way to manipulate data]]
 - [[https://github.com/hherman1/gq][hherman1/gq: jq but using go instead]]
+- [[https://github.com/TomWright/dasel][TomWright/dasel: Select, put and delete data from JSON, TOML, YAML, XML and CSV files with a single tool. Supports conversion between formats and can be used as a Go package.]]
 
 * Examples
 : ssh web15.intr ifconfig | jc --ifconfig | jq --raw-output '[.[] | select(.mac_addr != null) | select(.ipv4_addr != null) | select(.name != "docker0") | {"name": .name, "mac": .mac_addr, "addr": .ipv4_addr, "mask": .ipv4_mask}]'
