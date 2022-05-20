@@ -78,6 +78,7 @@
 - [[https://github.com/kris-nova/boopkit][kris-nova/boopkit: Linux eBPF backdoor over TCP. Spawn reverse shells, RCE, on prior privileged access. Less Honkin, More Tonkin.]]
 docker ps --format '{{ .Image }}' | grep master | sort -u | xargs -I{} docker pull {}
 - [[https://www.keycloak.org/][Keycloak Identity and Access Management]]
+- [[https://github.com/ory/kratos][ory/kratos: Next-gen identity server (think Auth0, Okta, Firebase) with Ory-hardened authentication, MFA, FIDO2, profile management, identity schemas, social sign in, registration, account recovery, passwordless. Golang, headless, API-only - without templating or theming headaches.]]
 
 * Awesome
 - [[https://github.com/Lissy93/personal-security-checklist][Lissy93/personal-security-checklist: 🔒 A curated checklist of 300+ tips for protecting digital security and privacy in 2022]]
