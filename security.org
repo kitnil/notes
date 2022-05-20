@@ -80,6 +80,7 @@ docker ps --format '{{ .Image }}' | grep master | sort -u | xargs -I{} docker pu
 - [[https://www.keycloak.org/][Keycloak Identity and Access Management]]
 - [[https://github.com/ory/kratos][ory/kratos: Next-gen identity server (think Auth0, Okta, Firebase) with Ory-hardened authentication, MFA, FIDO2, profile management, identity schemas, social sign in, registration, account recovery, passwordless. Golang, headless, API-only - without templating or theming headaches.]]
 - [[https://github.com/kpcyrd/sniffglue][kpcyrd/sniffglue: Secure multithreaded packet sniffer]]
+- [[https://github.com/vulsio/gost][vulsio/gost: Build a local copy of Security Tracker. Notify via E-mail/Slack if there is an update.]]
 
 * Awesome
 - [[https://github.com/Lissy93/personal-security-checklist][Lissy93/personal-security-checklist: 🔒 A curated checklist of 300+ tips for protecting digital security and privacy in 2022]]
