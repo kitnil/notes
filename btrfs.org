@@ -11,3 +11,4 @@
 - [[https://btrfs.readthedocs.io/en/latest/btrfs-man5.html][btrfs-man5(5) — BTRFS documentation]]
 - [[https://docs.oracle.com/cd/E37670_01/E37355/html/ol_quotagrps_btrfs.html][4.8 Using Quota Groups]]
 - [[https://mpdesouza.com/blog/btrfs-for-mere-mortals-inode-allocation/][Btrfs for mere mortals: inode allocation | Marcos' Blog]]
+- [[https://github.com/teejee2008/timeshift][teejee2008/timeshift: System restore tool for Linux. Creates filesystem snapshots using rsync+hardlinks, or BTRFS snapshots. Supports scheduled snapshots, multiple backup levels, and exclude filters. Snapshots can be restored while system is running or from Live CD/USB.]]
