@@ -8,6 +8,7 @@
 - sudo dd if=/dev/sda1 of=/dev/null bs=4096 count=409600 iflag=direct
 - iozone
 - [[https://old.reddit.com/r/selfhosted/comments/ogpnfb/selfhosted_network_performance_estimation_tool/][Self-Hosted Network Performance Estimation Tool With HTML5 GUI : selfhosted]]
+- [[https://github.com/janestreet/magic-trace][janestreet/magic-trace: magic-trace collects and displays high-resolution traces of what a process is doing]]
 
 * Learning
 - [[https://www.educative.io/courses/performance-test-automation-101-gatling-lighthouse-jenkins][Performance Test Automation 101: Gatling, Lighthouse, & Jenkins - Learn Interactively]]
