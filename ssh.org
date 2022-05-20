@@ -48,6 +48,7 @@
 - [[https://serveradmin.ru/logirovanie-i-sovmestnyj-dostup-v-ssh-s-pomoshhyu-teamshell/][Логирование и совместный доступ в SSH с помощью Team Shell — Server Admin]]
 - [[https://github.com/drakkan/sftpgo][drakkan/sftpgo: Fully featured and highly configurable SFTP server with optional HTTP/S, FTP/S and WebDAV support - S3, Google Cloud Storage, Azure Blob]]
 - [[https://github.com/danfruehauf/NetworkManager-ssh][danfruehauf/NetworkManager-ssh: SSH VPN integration for NetworkManager]]
+- [[https://github.com/coreos/ssh-key-dir][coreos/ssh-key-dir: sshd AuthorizedKeysCommand to read ~/.ssh/authorized_keys.d]]
 
 https://habr.com/post/331348/
 
