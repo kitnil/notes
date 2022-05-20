@@ -471,3 +471,8 @@ unit 0 {
         }
     }
 }
+
+* Tools
+
+- [[https://github.com/ckishimo/juniper_display_set][ckishimo/juniper_display_set: Script to translate a Junos configuration file into a list of 'set' commands]]
+- [[https://github.com/zengxinhui/juniper_display_set][zengxinhui/juniper_display_set: This script converts standard Juniper config into a list of 'set' commands which you can use to configure a Juniper device]]
