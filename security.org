@@ -85,6 +85,7 @@ docker ps --format '{{ .Image }}' | grep master | sort -u | xargs -I{} docker pu
 - [[https://github.com/htr-tech/zphisher][htr-tech/zphisher: An automated phishing tool with 30+ templates. This Tool is made for educational purpose only ! Author will not be responsible for any misuse of this toolkit !]]
 - [[https://github.com/cybersecsi/HOUDINI][cybersecsi/HOUDINI: Hundreds of Offensive and Useful Docker Images for Network Intrusion. The name says it all.]]
 - [[https://github.com/stong/infosec-resources][stong/infosec-resources: A list of helpful cybersecurity / infosec resources]]
+- [[https://github.com/sniptt-official/ots][sniptt-official/ots: 🔐 Share end-to-end encrypted secrets with others via a one-time URL]]
 
 * Awesome
 - [[https://github.com/Lissy93/personal-security-checklist][Lissy93/personal-security-checklist: 🔒 A curated checklist of 300+ tips for protecting digital security and privacy in 2022]]
