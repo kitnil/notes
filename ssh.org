@@ -92,6 +92,7 @@ Basically, if we use UsePAM no and shadow file:
 * Bastion
 - [[https://github.com/moul/sshportal][moul/sshportal: simple, fun and transparent SSH (and telnet) bastion server]]
 - [[https://github.com/warp-tech/warpgate][warp-tech/warpgate: Smart SSH bastion that works with any SSH client]]
+- [[https://github.com/AnalogJ/drawbridge][AnalogJ/drawbridge: manage SSH access to multiple applications/environments protected by bastion servers]]
 
 * Alternatives
 - [[https://noiseprotocol.org/][Noise Protocol Framework]]
