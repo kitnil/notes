@@ -79,6 +79,7 @@
 docker ps --format '{{ .Image }}' | grep master | sort -u | xargs -I{} docker pull {}
 - [[https://www.keycloak.org/][Keycloak Identity and Access Management]]
 - [[https://github.com/ory/kratos][ory/kratos: Next-gen identity server (think Auth0, Okta, Firebase) with Ory-hardened authentication, MFA, FIDO2, profile management, identity schemas, social sign in, registration, account recovery, passwordless. Golang, headless, API-only - without templating or theming headaches.]]
+- [[https://github.com/casdoor/casdoor][casdoor/casdoor: An Identity and Access Management (IAM) / Single-Sign-On (SSO) platform with web UI supporting OAuth 2.0, OIDC, SAML and CAS, QQ group: 645200447]]
 - [[https://github.com/kpcyrd/sniffglue][kpcyrd/sniffglue: Secure multithreaded packet sniffer]]
 - [[https://github.com/vulsio/gost][vulsio/gost: Build a local copy of Security Tracker. Notify via E-mail/Slack if there is an update.]]
 
