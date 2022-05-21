@@ -83,6 +83,7 @@ docker ps --format '{{ .Image }}' | grep master | sort -u | xargs -I{} docker pu
 - [[https://github.com/kpcyrd/sniffglue][kpcyrd/sniffglue: Secure multithreaded packet sniffer]]
 - [[https://github.com/vulsio/gost][vulsio/gost: Build a local copy of Security Tracker. Notify via E-mail/Slack if there is an update.]]
 - [[https://github.com/htr-tech/zphisher][htr-tech/zphisher: An automated phishing tool with 30+ templates. This Tool is made for educational purpose only ! Author will not be responsible for any misuse of this toolkit !]]
+- [[https://github.com/cybersecsi/HOUDINI][cybersecsi/HOUDINI: Hundreds of Offensive and Useful Docker Images for Network Intrusion. The name says it all.]]
 
 * Awesome
 - [[https://github.com/Lissy93/personal-security-checklist][Lissy93/personal-security-checklist: 🔒 A curated checklist of 300+ tips for protecting digital security and privacy in 2022]]
