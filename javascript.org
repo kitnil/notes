@@ -3,6 +3,9 @@
 :END:
 #+title: JavaScript
 
+* Implementations
+- [[https://github.com/bellard/quickjs][bellard/quickjs: Public repository of the QuickJS Javascript Engine. Pull requests are not accepted. Use the mailing list to submit patches.]]
+
 * [[id:e3127fa8-3953-4bf8-a842-d20395143750][TypeScript]]
 
 * [[id:a7e25777-da1a-47ec-85f8-7ace73c57e08][NodeJS]]
