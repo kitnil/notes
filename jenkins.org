@@ -94,6 +94,7 @@ NOTE: "pipeline" equal to "workflow".
 - [[https://github.com/ssbostan/jenkins-stack-docker][ssbostan/jenkins-stack-docker: Docker-compose version of jenkins-stack-kubernetes]]
 - [[https://github.com/jenkins-infra/docker-jenkins-weekly][jenkins-infra/docker-jenkins-weekly: a docker image containing the latest jenkins weekly release and plugins]]
 - [[https://github.com/jenkinsci/helm-charts][jenkinsci/helm-charts: Jenkins community Helm charts]]
+- [[https://github.com/bndr/gojenkins][bndr/gojenkins: Jenkins API Client in Go. Looking for maintainers to move this project forward.]]
 
 ** Scripts
 - [[https://github.com/cloudbees/jenkins-scripts][cloudbees/jenkins-scripts]]
