@@ -66,6 +66,7 @@ with =jc= utility, piped to =jq= to filter, and to =jtbl= generate a table:
 - [[https://github.com/hherman1/gq][hherman1/gq: jq but using go instead]]
 - [[https://github.com/TomWright/dasel][TomWright/dasel: Select, put and delete data from JSON, TOML, YAML, XML and CSV files with a single tool. Supports conversion between formats and can be used as a Go package.]]
 - [[https://github.com/AykutSarac/jsonvisio.com][AykutSarac/jsonvisio.com: Visualize your JSON data onto graphs seamlessly.]]
+- [[https://github.com/jsonhero-io/jsonhero-web][jsonhero-io/jsonhero-web: JSON Hero is an open-source, beautiful JSON explorer for the web that lets you browse, search and navigate your JSON files at speed. 🚀]]
 
 * Examples
 : ssh web15.intr ifconfig | jc --ifconfig | jq --raw-output '[.[] | select(.mac_addr != null) | select(.ipv4_addr != null) | select(.name != "docker0") | {"name": .name, "mac": .mac_addr, "addr": .ipv4_addr, "mask": .ipv4_mask}]'
