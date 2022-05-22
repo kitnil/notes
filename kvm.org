@@ -30,3 +30,4 @@
 - [[https://github.com/joshkunz/qemu-docker][joshkunz/qemu-docker: A docker container for running x86_64 virtual machines using qemu]]
 - [[https://github.com/madworx/docker-netbsd][madworx/docker-netbsd: QEMU-based NetBSD docker images]]
 - [[https://github.com/digitalocean/vmtop][digitalocean/vmtop: Real-time monitoring of KVM/Qemu VMs]]
+- [[https://github.com/cloud-hypervisor/cloud-hypervisor][cloud-hypervisor/cloud-hypervisor: A Virtual Machine Monitor for modern Cloud workloads. Features include CPU, memory and device hotplug, support for running Windows and Linux guests, device offload with vhost-user and a minimal compact footprint. Written in Rust with a strong focus on security.]]
