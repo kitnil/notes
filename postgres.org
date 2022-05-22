@@ -35,6 +35,7 @@
 - [[https://github.com/dimitri/pgcharts][dimitri/pgcharts: Turn your PostgreSQL queries into Charts]]
 - [[https://github.com/fabianlindfors/reshape][fabianlindfors/reshape: An easy-to-use, zero-downtime schema migration tool for Postgres]]
 - [[https://github.com/postgres-ai/database-lab-engine][postgres-ai/database-lab-engine: Thin PostgreSQL clones. DLE provides blazing-fast database cloning to build powerful development, test, QA, staging environments. Follow to stay updated.]]
+- [[https://github.com/tcdi/pgx][tcdi/pgx: Build Postgres Extensions with Rust!]]
 
 * [[https://postgrespro.com/list/thread-id/1525878][Thread: DB fails to start: "Could not read from file "pg_clog/0003" at offset 212992: No error. : Postgres Professional]]
 
