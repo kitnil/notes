@@ -266,3 +266,6 @@ then
     esac
 fi
 #+end_example
+
+* Implementations
+- [[https://github.com/go-git/go-git][go-git/go-git: A highly extensible Git implementation in pure Go.]]
