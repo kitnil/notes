@@ -358,3 +358,17 @@ utility, which connects you to the cluster.
 
 starting the following units: systemd-modules-load.service, systemd-sysctl.service
 the following new units were started: containerd.service, kubelet.service
+
+* kubevirt
+
+#+begin_example
+  oleg@guixsd ~$ kubectl get pods -n kubevirt
+  NAME                               READY   STATUS    RESTARTS        AGE
+  virt-api-8986f8d94-m5zr4           1/1     Running   9 (99m ago)     6h56m
+  virt-handler-lvzs4                 1/1     Running   28 (101m ago)   2d10h
+  virt-controller-5599f57bf4-rjsr9   1/1     Running   9 (101m ago)    6h56m
+  virt-controller-5599f57bf4-5qljd   1/1     Running   9 (101m ago)    6h56m
+  virt-api-8986f8d94-gww4h           1/1     Running   9 (99m ago)     6h56m
+  virt-operator-5df564dc7c-258xk     1/1     Running   9 (101m ago)    6h56m
+  virt-operator-5df564dc7c-q7mj2     1/1     Running   9 (101m ago)    6h56m
+#+end_example
