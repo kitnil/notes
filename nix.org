@@ -1405,6 +1405,18 @@ Priority: 30
 * Nixpkgs Source
 - pkgs/stdenv/generic/check-meta.nix
 
+* Repl
+
+#+begin_example
+  nix-repl> :a builtins.getFlake (toString ./.)
+  Added 11 variables.
+#+end_example
+
+#+begin_example
+  nix-repl> :a inputs
+  Added 14 variables.
+#+end_example
+
 * PHP
   #+begin_src php
     php > var_dump(new \PNDP\AST\NixFunInvocation(new \PNDP\AST\NixExpression("foo"), []));
