@@ -19,6 +19,12 @@ gpg --output secret-subkeys --export-secret-subkeys SUBKEYID!
   https://www.gnupg.org/gph/en/manual/x457.html
   https://pgp.key-server.io/search/go.wigust@gmail.com
 
+* Tor
+
+~/.gnupg/dirmngr.conf
+use-tor
+keyserver hkp://jirk5u4osbsr34t5.onion
+
 * Tools
 - [[https://github.com/orhun/gpg-tui][orhun/gpg-tui: Manage your GnuPG keys with ease! 🔐]]
 - [[https://github.com/pojntfx/keygaen][pojntfx/keygaen: Sign, verify, encrypt and decrypt data with GPG in your browser.]]
