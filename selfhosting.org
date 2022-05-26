@@ -116,3 +116,6 @@
 - "title": "minisatip", "description": "Minisatip is a multi-threaded satip server version 1.2 that runs under Linux and it was tested with DVB-S, DVB-S2, DVB-T, DVB-T2, DVB-C, DVB-C2, ATSC and ISDB-T cards.\n\n  The application is designed to stream the requested data to multiple clients (even with one dvb card) at the same time while opening different pids.\n  "
 - "title": "Organizr", "description": "Organizr allows you to setup Tabs that will be loaded all in one webpage. You can then work on your server with ease."
 - "title": "Chevereto", "description": "Chevereto is a powerful and fast image hosting script that allows you to create your very own full featured image hosting website in just minutes. Please note that this offers only the free Chevereto version.."
+
+* Control panel
+- [[https://github.com/usmannasir/cyberpanel][usmannasir/cyberpanel: Cyber Panel - The hosting control panel for OpenLiteSpeed]]
