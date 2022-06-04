@@ -188,6 +188,7 @@
 - [[https://github.com/konveyor/move2kube][konveyor/move2kube: Move2Kube is a command-line tool for automating creation of Infrastructure as code (IaC) artifacts. It has inbuilt support for creating IaC artifacts for replatforming to Kubernetes/Openshift.]]
 - [[https://github.com/kubecfg/kubecfg][kubecfg/kubecfg: A tool for managing complex enterprise Kubernetes environments as code.]]
 - [[https://github.com/topolvm/pvc-autoresizer][topolvm/pvc-autoresizer: Auto-resize PersistentVolumeClaim objects based on Prometheus metrics]]
+- [[https://github.com/kubernetes-sigs/metrics-server][kubernetes-sigs/metrics-server: Scalable and efficient source of container resource metrics for Kubernetes built-in autoscaling pipelines.]]
 
 ** minikube
 - [[https://habr.com/ru/company/vk/blog/648117/][Как работать с Minikube: рекомендации и полезные советы / Хабр]]
