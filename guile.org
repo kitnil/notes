@@ -349,3 +349,29 @@ Message-ID: <Yd3a7ZHArk2Eji4A@xxxxxx.xx>
 
   Closing this bug now.
 #+end_example
+
+** stdout stderr
+
+  Unfortunately ‘open-pipe*’ is not smart enough to redirect stderr to a
+  non-file port (a string port in this case).
+
+  One way around it would be to merge stdout and stderr, like so:
+
+    (parameterize ((current-error-port (current-output-port)))
+      (open-pipe* …))
+
+  but then you get both on the same stream, which could be a problem for
+  instance if Emacs emits warnings and such.
+
+  You could work around it by establishing a second pipe:
+
+    (match (pipe)
+      ((stderr-input . stderr-output)
+       (parameterize ((current-error-port stderr-output))
+         (open-pipe* …))))
+
+  Here you should be able to read, in the parent process, from
+  ‘stderr-input’.
+
+  Another option is to not try to capture stderr: after all, that’ll get
+  printed on the screen anyway.
