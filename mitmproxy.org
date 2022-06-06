@@ -1,0 +1,2 @@
+- container
+  : docker run -it --name mitmproxy -p 172.16.103.53:8081:8080 mitmproxy/mitmproxy mitmproxy --set ssl_insecure=true
