@@ -21,3 +21,7 @@
 - Full system backup
 : rsync -aAXHv --exclude={"/dev/*","/proc/*","/sys/*","/tmp/*","/run/*","/mnt/*","/media/*","/lost+found"} / /path/to/backup
 : rsync --archive --acls --xattrs --hard-links --verbose --exclude={"/dev/*","/proc/*","/sys/*","/tmp/*","/run/*","/mnt/*","/media/*","/lost+found"} / /path/to/backup
+
+- Checking data integrity
+: rsync -n -avxAHXS <src-subvol> <dst-subvol>
+from [[https://github.com/mwilck/btrfs-clone][mwilck/btrfs-clone: A tool for copying a btrfs file system with all its partitions to another btrfs file system]]
