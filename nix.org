@@ -281,6 +281,10 @@ nix-repl> mynixos2.config.environment.etc."mailman.cfg".text
 - diff
   : diff -u <(nix-instantiate --strict --eval -E 'with (builtins.getFlake (toString ./.)); outputs.nixosConfigurations.container-web31.config.security.sudo' | nixfmt) <(nix-instantiate --strict --eval -E 'with (builtins.getFlake (toString ./.)); outputs.nixosConfigurations.web22.config.security.sudo' | nixfmt)
 
+- nix repl
+  : :a builtins.getFlake "github:nixos/nixpkgs"
+  : :a outputs.lib
+
 - Create .envrc for project directories
 : for file in $(echo */default.nix); do (output="$(dirname "$file")"/.envrc; [[ -f $output ]] || echo 'use nixpkgs' >> "$output"); done
 
