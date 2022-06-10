@@ -284,6 +284,7 @@ nix-repl> mynixos2.config.environment.etc."mailman.cfg".text
 - nix repl
   : :a builtins.getFlake "github:nixos/nixpkgs"
   : :a outputs.lib
+  : :a builtins
 
 - Create .envrc for project directories
 : for file in $(echo */default.nix); do (output="$(dirname "$file")"/.envrc; [[ -f $output ]] || echo 'use nixpkgs' >> "$output"); done
