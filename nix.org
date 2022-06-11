@@ -252,6 +252,7 @@
 #+end_example
 
 - [[https://github.com/grwlf/nixos-ssh-over-tls][grwlf/nixos-ssh-over-tls: NixOS module which hides both HTTP and SSH daemons behind SSL proxy on the same port]]
+- [[https://github.com/obsidiansystems/socket-over-tls-service][obsidiansystems/socket-over-tls-service: A NixOS service that forwards a Unix domain socket over TLS]]
 
 * Guix
 - [[https://github.com/foo-dogsquared/nix-overlay-guix][foo-dogsquared/nix-overlay-guix: A package and module for using GNU Guix on Nix(OS). Fork from https://github.com/Emiller88/guix, attempting to update the project and clean up the codebase for a more usable interface.]]
