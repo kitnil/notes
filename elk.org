@@ -242,3 +242,6 @@ curl -H 'Content-Type: application/json' -d '{"query": {"bool": {"must": {"term"
 - [[https://linuxhint.com/elasticsearch-shard-list/][Elasticsearch Shard List]]
 - [[https://www.elastic.co/guide/en/elasticsearch/reference/6.6/cat-shards.html][cat shards | Elasticsearch Guide [6.6] | Elastic]]
 - [[https://github.com/dadoonet/fscrawler][dadoonet/fscrawler: Elasticsearch File System Crawler (FS Crawler)]]
+
+* Libraries
+- [[https://github.com/bitemyapp/bloodhound][bitemyapp/bloodhound: Haskell Elasticsearch client and query DSL]]
