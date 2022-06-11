@@ -1267,7 +1267,7 @@ builtins.match "php([[:alnum:]])([[:alnum:]])" "php70"
 
 
 * Flakes
-
+- [[https://github.com/NixOS/templates][NixOS/templates: Flake templates]]
 ** Learning
 
 - [[https://nixos.wiki/wiki/Flakes][Flakes - NixOS Wiki]]
