@@ -106,6 +106,7 @@ ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -l root -fNL 820
 - [[https://github.com/jmgilman/vaultssh][jmgilman/vaultssh: A small CLI wrapper for authenticating with SSH keys from Hashicorp Vault]]
 - [[https://github.com/hashicorp/vault-action][hashicorp/vault-action: A GitHub Action that simplifies using HashiCorp Vault™ secrets as build variables.]]
 - [[https://github.com/kubevault/kubevault][kubevault/kubevault: KubeVault Documentation]]
+- [[https://github.com/DeterminateSystems/nixos-vault-service][DeterminateSystems/nixos-vault-service]]
 
 * Jenkins
 - [[https://www.admin-magazine.com/Archive/2019/51/Jenkins-Configuration-as-Code/(offset)/3][JCasC » ADMIN Magazine]]
