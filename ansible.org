@@ -167,7 +167,7 @@
 #+end_example
 
 #+begin_example
-x---
+---
 - hosts: web33.intr
   become: yes
   tasks:
