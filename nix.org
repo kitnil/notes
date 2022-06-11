@@ -1478,3 +1478,6 @@ Priority: 30
 - [[https://github.com/edolstra/nix-serve/issues/10][substituter not accepted due to invalid signature · Issue #10 · edolstra/nix-serve]]
   - nix path-info --store http://<hostname>:<port> --json <some-path> | grep sig
 - [[https://github.com/NixOS/nix/issues/4520][normal allowed-users should be able to use --substituters · Issue #4520 · NixOS/nix]]
+
+* Libraries
+- [[https://github.com/ArctarusLimited/xnlib][ArctarusLimited/xnlib: XTended Nix Library used for various purposes by Arctarus]]
