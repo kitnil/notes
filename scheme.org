@@ -94,3 +94,73 @@ Like return from function:
 * SRFI
 
 - [[https://srfi.schemers.org/srfi-166/srfi-166.html][SRFI 166: Monadic Formatting]]
+
+* Tools
+
+** LSP
+Subject: LSP Server for Scheme (and more ...)
+Date: Fri, 10 Jun 2022 22:05:12 +0000 (2 hours, 18 minutes, 54 seconds ago)
+
+Hi Guilers!
+
+I want to share a couple of things I have being working on that you may find
+useful.
+
+1) I developed an LSP Server for Scheme. For those that don't know the
+Language Server Protocol (LSP), it is meant for adding programming language
+support for IDEs and editors that implement the protocol (nowadays most of
+them support it).
+
+For now I am focusing on Guile 3 and CHICKEN 5. The idea is to write as much
+R7RS for common code as possible (like representing documents, fetching word
+under cursor etc.) and leave implementation specific code to dedicated
+files. So far I managed to implement auto-completion, fetch signature, fetch
+documentation and jump to definition.
+
+Repo: https://codeberg.org/rgherdt/scheme-lsp-server
+
+2) An LSP server without a client is quite useless, so I'm also sharing an
+emacs-lsp client:
+
+Repo: https://codeberg.org/rgherdt/emacs-lsp-scheme
+
+I will create a PR to melpa for this. Until it is merged, you can clone the
+repo somewhere, 'load' it and follow the instructions in the README to
+activate it.
+
+Usage is based on interaction with the REPL, which is based on Emacs's
+built-in scheme inferior-mode. So you have to load the file (say by typing C-c
+C-l on a buffer) in order to get access to symbols imported from other
+modules.
+
+Note: for daily use you probably should stick to Geiser, since its Guile
+support is obviously much more mature. It can still become useful for other
+Schemes though, and is a good way to develop the LSP server without leaving
+Emacs ;)
+
+3) The whole idea behind LSP is to improve language support across multiple
+IDEs/editors. So I started a proof of concept in VS Code:
+
+https://codeberg.org/rgherdt/vscode-scheme-lsp
+
+Since I don't use VS Code, I don't expect spending much time on it. I also
+don't know how a lispy LSP client should/could look like in VS Code. If you
+have ideas, or want to contribute/take over this, feel free to contact me. It
+is not documented nor published yet, but already works for the functionality
+mentioned (there are a couple of command to launch a REPL and load files on
+it). I will investigate how to automate installation of the LSP server before
+publishing it and let you know.
+
+Everything is on an early stage of development, and APIs may change. I tested
+it using following software:
+- Guile 3.0.8
+- Emacs 27.1 and 28.1
+- Debian Bullseye and Ubuntu 18.04
+
+Any questions, suggestions, critics and contributions are more than
+welcome. We can also reach me on @libera's #guile, #chicken, #scheme channels
+by the name rgherdt.
+
+Have a nice weekend you all!
+
+Ricardo
