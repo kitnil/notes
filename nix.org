@@ -575,6 +575,9 @@ patchelf https://nixos.wiki/wiki/Packaging/Binaries#Creating_the_Derivation_for_
   };
 #+end_src
 
+* Installation
+- [[https://github.com/nix-community/nix-installers][nix-community/nix-installers: Nix installers for legacy distributions (rpm & deb & pacman) [maintainer=@adisbladis]]]
+
 * Configurations
 - [[https://github.com/jethrokuan/nix][jethrokuan/nix: NixOS configuration with Nix flakes]]
 
