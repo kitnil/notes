@@ -10,6 +10,7 @@
 - [[https://github.com/roles-ansible/role-grafana-kiosk][roles-ansible/role-grafana-kiosk: Ansible role to deploy the grafana-kiosk]]
 - [[https://github.com/haidaraM/ansible-playbook-grapher][haidaraM/ansible-playbook-grapher: A command line tool to create a graph representing your Ansible playbook tasks and roles]]
 - [[https://github.com/maschmann/php-ansible][maschmann/php-ansible: php oop wrapper for ansible provisioning tool]]
+- [[https://github.com/TristanCacqueray/Haxible][TristanCacqueray/Haxible: Ansible interpreter powered by Haxl]]
 
 - ansible
   : ansible -c local localhost -m slack -a "token='$(pass show majordomo/private/mjru.slack.com/tokens/ansible)' msg='$(date)' channel=#test"
