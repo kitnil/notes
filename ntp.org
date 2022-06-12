@@ -16,7 +16,7 @@
 * Fix NTP on NixOS (NTP client is systemd-timesyncd.service (by default))
 
 [root@web36:~]# nix-shell -p ntp
-[nix-shell:~]# cat /etc/ntp.conf 
+nix-shell:~# cat /etc/ntp.conf 
 #+begin_example
 restrict default ignore
 restrict localhost
@@ -35,6 +35,22 @@ driftfile /var/lib/ntp/drift
 #+end_example
 /nix/store/299n127f719fmwwk4any6bwhkd4wb676-ntp-4.2.8p15/bin/ntpd -qg
 
+* Debug
+
+#+begin_example
+  ┌Every───┐╔Command════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╗┌Time───────────────┐
+  │2s      │║/gnu/store/9ksx3pbjs70bc1znk7vnzrn1bv75a71v-ntp-4.2.8p15/bin/ntpq -p                                                                                           ║│2022-06-12 09:32:49│
+  └────────┘╚═══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝└───────────────────┘
+       remote           refid      st t when poll reach   delay   offset  jitter
+  ==============================================================================
+   192.168.25.1    .POOL.          16 p    -   64    0    0.000   +0.000   0.000
+  ,*192.168.25.1    192.36.143.130   2 u   55   64  377   11.309   -1.698   0.854
+#+end_example
+
+Note that =reach= should be 377.  NTP is slow, so after changing a
+configuration a you should wait about 10 minutes.
+
 * Alternatives
 - [[https://github.com/akamai-contrib/byztimed][akamai-contrib/byztimed: Byzantine-fault-tolerant time synchronization]]
 - [[https://github.com/ioerror/tlsdate/][ioerror/tlsdate: secure parasitic rdate replacement]]
+
