@@ -37,3 +37,4 @@ driftfile /var/lib/ntp/drift
 
 * Alternatives
 - [[https://github.com/akamai-contrib/byztimed][akamai-contrib/byztimed: Byzantine-fault-tolerant time synchronization]]
+- [[https://github.com/ioerror/tlsdate/][ioerror/tlsdate: secure parasitic rdate replacement]]
