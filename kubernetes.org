@@ -192,6 +192,7 @@
 - [[https://github.com/topolvm/pvc-autoresizer][topolvm/pvc-autoresizer: Auto-resize PersistentVolumeClaim objects based on Prometheus metrics]]
 - [[https://github.com/kubernetes-sigs/metrics-server][kubernetes-sigs/metrics-server: Scalable and efficient source of container resource metrics for Kubernetes built-in autoscaling pipelines.]]
 - kubectl run --rm -it netshoot --image=nicolaka/netshoot /bin/bash
+- [[https://github.com/itzg/kube-metrics-exporter][itzg/kube-metrics-exporter: Simple application that accesses the Kubernetes metrics API and exports the pod metrics for Prometheus scraping]]
 
 ** minikube
 - [[https://habr.com/ru/company/vk/blog/648117/][Как работать с Minikube: рекомендации и полезные советы / Хабр]]
