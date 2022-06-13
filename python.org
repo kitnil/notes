@@ -218,6 +218,7 @@ with trial: a = 5
 * Test
 ** Tools
 - [[https://github.com/anapaulagomes/pytest-picked][anapaulagomes/pytest-picked: Run the tests related to the changed files (according to Git) 🤓]]
+- [[https://github.com/numirias/pytest-json-report][numirias/pytest-json-report: A pytest plugin to report test results as JSON]]
 ** 
 
 https://docs.python.org/3/library/unittest.html
