@@ -86,6 +86,7 @@
     '
     
   #+end_src
+- [[https://github.com/cfunkhouser/actuator][cfunkhouser/actuator: Trigger actions using Prometheus alerts]]
 
 - icmp
 : 127.0.0.1:9115/probe?module=icmp&target=192.168.0.1
