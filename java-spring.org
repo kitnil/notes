@@ -16,6 +16,9 @@
 - [[https://seroter.com/2020/01/28/lets-try-out-the-new-durable-replicated-quorum-queues-in-rabbitmq/][Let’s try out the new durable, replicated quorum queues in RabbitMQ – Richard Seroter's Architecture Musings]]
 - [[https://docs.spring.io/spring-boot/docs/current/reference/html/spring-boot-features.html#boot-features-logging][Spring Boot Features]]
 
+* Monitoring
+- [[https://github.com/Scalify/spring_exporter][Scalify/spring_exporter: Spring actuator Exporter for https://prometheus.io]]
+
 * Libraries
 - [[https://github.com/spring-projects/spring-vault][spring-projects/spring-vault: Provides familiar Spring abstractions for HashiCorp Vault]]
 
