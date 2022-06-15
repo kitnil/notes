@@ -472,6 +472,88 @@ unit 0 {
     }
 }
 
+* lldpd
+
+#+begin_example
+
+
+  1
+  2
+  3
+  4
+  5
+  6
+  7
+  8
+  9
+  10
+  11
+  12
+  13
+  14
+  15
+  16
+  17
+  18
+  19
+  20
+  21
+  22
+  23
+  24
+  25
+  26
+  27
+  28
+  29
+  30
+  31
+  32
+
+  [root@deprecated-web29:~]# lldpctl
+  -------------------------------------------------------------------------------
+  LLDP neighbors:
+  -------------------------------------------------------------------------------
+  Interface:    eno1, via: LLDP, RID: 1, Time: 0 day, 00:00:10
+    Chassis:
+      ChassisID:    mac 64:64:9b:ac:5c:40
+      SysName:      sw2-mr13.intr
+      SysDescr:     Juniper Networks, Inc. ex2200-48t-4g , version 12.3R6.6 Build date: 2014-03-13 07:02:54 UTC
+      Capability:   Bridge, on
+      Capability:   Router, on
+    Port:
+      PortID:       local 592
+      PortDescr:    web29
+      TTL:          120
+      MFS:          1514
+      PMD autoneg:  supported: yes, enabled: yes
+        Adv:          10Base-T, HD: yes, FD: yes
+        Adv:          100Base-TX, HD: yes, FD: yes
+        Adv:          1000Base-T, HD: no, FD: yes
+        MAU oper type: unknown
+    VLAN:         253, pvid: no VLAN253
+    LLDP-MED:
+      Device Type:  Network Connectivity Device
+      Capability:   Capabilities, yes
+      Capability:   Policy, yes
+      Capability:   Location, yes
+      Capability:   MDI/PSE, yes
+    Unknown TLVs:
+      TLV:          OUI: 00,90,69, SubType: 1, Len: 12 43,55,30,32,31,34,32,39,30,35,34,34
+  -------------------------------------------------------------------------------
+#+end_example
+
+показывает
+
+  Port:
+    PortID:       local 592
+    PortDescr:    web29
+
+В целом можно определить, если зайти на джун
+
+Logical interface ge-0/0/42.0 (Index 116) (SNMP ifIndex 592)
+Description: web29
+
 * Tools
 
 - [[https://github.com/ckishimo/juniper_display_set][ckishimo/juniper_display_set: Script to translate a Junos configuration file into a list of 'set' commands]]
