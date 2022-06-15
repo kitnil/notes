@@ -21,6 +21,8 @@
 
 - strace -f -e trace=network firefox xakep.ru
 
+- strace -f -tt -e decode-fds=path,socket,dev,pidfd -b execve
+
 * Blog
 
 https://xakep.ru/2011/01/13/54477/
