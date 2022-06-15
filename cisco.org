@@ -23,6 +23,12 @@ Best use "sticky".
 
 - copy running-config startup-config
 
+- Reset interface to default settings
+  #+begin_example
+    sw2-mr12.intr(config)#default interface fa0/24
+    Interface FastEthernet0/24 set to default configuration
+  #+end_example
+
 * 
 
 Cisco ICND
