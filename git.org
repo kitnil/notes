@@ -243,6 +243,9 @@ rerere-train.sh [COMMIT][--all]
   - git-cal
     : [[ -n $(git log --max-count=1 --author='Oleg Pykhalov') ]] && git-cal --author='Oleg Pykhalov'
 
+  - push current HEAD to specific branch on origin
+    : git push origin HEAD:refs/heads/my-branch
+
 * Learning
   - [[https://ssl.engineering.nyu.edu/papers/afzali_asiaccs_2018.pdf][le-git-imate: Towards Verifiable Web-based Git Repositories - afzali_asiaccs_2018.pdf]]
 ** Tutorials
