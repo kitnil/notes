@@ -1,10 +1,10 @@
 * [[https://en.wikipedia.org/wiki/Reason_(programming_language)][Reason (programming language) - Wikipedia]]
 
 Reason, also known as ReasonML, is a syntax extension and toolchain for OCaml
-created by Jordan Walke, who also created React, at Facebook.[2] Reason offers
-a syntax familiar to JavaScript programmers, and transpiles to
-OCaml. Statically typed Reason (or OCaml) code may be compiled to dynamically
-typed JavaScript using the ReScript compiler.[3]
+created by Jordan Walke, who also created React, at Facebook. Reason offers a
+syntax familiar to JavaScript programmers, and transpiles to OCaml. Statically
+typed Reason (or OCaml) code may be compiled to dynamically typed JavaScript
+using the ReScript compiler.
 
 The Reason community officially provides ReasonReact as a solution for React
 based web applications.
