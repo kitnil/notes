@@ -194,6 +194,7 @@
 - kubectl run --rm -it netshoot --image=nicolaka/netshoot /bin/bash
 - [[https://github.com/itzg/kube-metrics-exporter][itzg/kube-metrics-exporter: Simple application that accesses the Kubernetes metrics API and exports the pod metrics for Prometheus scraping]]
 - [[https://github.com/weaveworks/kured][weaveworks/kured: Kubernetes Reboot Daemon]]
+- [[https://github.com/k8snetworkplumbingwg/multus-cni][k8snetworkplumbingwg/multus-cni: A CNI meta-plugin for multi-homed pods in Kubernetes]]
 
 ** minikube
 - [[https://habr.com/ru/company/vk/blog/648117/][Как работать с Minikube: рекомендации и полезные советы / Хабр]]
