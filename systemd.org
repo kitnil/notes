@@ -100,3 +100,55 @@ CPUQuota=50%
 
 * Tools
 - [[https://github.com/pop-os/system-updater][pop-os/system-updater: Systemd services for checking for and applying system updates.]]
+
+* [[https://declassed.art/en/blog/2022/06/19/running-systemd-without-systemd-syslogd][Running systemd without systemd-journald | Declassed Art]]
+
+Here's what I did in the first place:
+
+systemctl stop systemd-journald
+
+It printed:
+
+Warning: Stopping systemd-journald.service, but it can still be activated by:
+systemd-journald-dev-log.socket
+systemd-journald.socket
+systemd-journald-audit.socket
+
+Good to know. I'll use this knowledge later on.
+
+But now, is the system still operational? Yes, it is.
+Does anything go to /var/log/syslog? Yes, it goes.
+So far so good? - No. It gets resurrected very soon.
+
+What's next? Let's try to disable it completely:
+
+systemctl mask systemd-journald
+Created symlink /etc/systemd/system/systemd-journald.service → /dev/null.
+
+shutdown -r now
+
+My container got restarted without problems, but it took more time than usual.
+
+Checking output from ps aux, I see no systemd-journald However, nothing goes to /var/log/syslog That's because of missing /dev/log which is needed by rsyslog.
+
+To fix this, let's review units printed by systemctl stop systemd-journald. The only of them, namely /lib/systemd/system/systemd-journald-dev-log.socket, has interesting stuff.
+
+Normally, if we can say so about systemd, the listening socket is located at /run/systemd/journal/dev-log and /dev/log is a symlink to it.
+
+We don't need that, so:
+
+systemctl mask systemd-journald-dev-log.socket
+Created symlink /etc/systemd/system/systemd-journald-dev-log.socket → /dev/null.
+
+Rsyslog depends on syslog.socket unit that creates /run/systemd/journal/syslog socket. The reliable method to fix that is to copy /lib/systemd/system/syslog.socket to /etc/systemd/system/ and change socket path (ListenDatagram option) to /dev/log.
+
+Rebooted.
+
+It works. Not like a charm, though. Remaining systemd components complain about missing journal socket. I don't think it's worth to play with my production VPS same way.
+
+I don't want to try this on a KVM container.
+I don't want to try this on another my laptop.
+
+I give up. Enough swimming in shit, I'm awaited by more interesting things.
+
+But for LXC this seems to work. However I wouldn't use this approach in production.
