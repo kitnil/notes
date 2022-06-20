@@ -1,3 +1,5 @@
 - [[https://github.com/mschuchard/puppet-check][mschuchard/puppet-check: A streamlined comprehensive set of checks for your entire Puppet code and data]]
 - [[https://github.com/goldyfruit/puppet-grub2][goldyfruit/puppet-grub2: Puppet module for managing GRUB2]]
 - [[https://github.com/mikeroyal/Puppet-Guide][mikeroyal/Puppet-Guide: Puppet Guide]]
+
+- /opt/puppetlabs/bin/puppet agent --debug --no-daemonize --onetime -l /var/log/puppet/agent.log --onetime --server puppet2.ihc-ru.net --certname `hostname`
