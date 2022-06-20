@@ -352,6 +352,16 @@ Once running, the URL to the dashboard is https://2886795308-30000-simba08.envir
 - cdi-uploadproxy
 : kubectl get service cdi-uploadproxy -n cdi
 
+- pvc
+#+begin_example
+  oleg@guixsd ~$ virtctl image-upload --pvc-name=guix-vm-pv --pvc-size=2Gi --image-path=/tmp/guix.qcow2 --uploadproxy-url=https://10.43.181.37 --insecure
+  PVC default/guix-vm-pv not found
+  PersistentVolumeClaim default/guix-vm-pv created
+  Waiting for PVC guix-vm-pv upload pod to be ready...
+  Pod now ready
+  Uploading data to https://10.43.181.37
+#+end_example
+
 * How it works
 
 First of all you should have a working etcd.
