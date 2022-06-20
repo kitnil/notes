@@ -349,6 +349,9 @@ Once running, the URL to the dashboard is https://2886795308-30000-simba08.envir
   : kubectl get all -A
   : kubectl get all --all-namespaces
 
+- cdi-uploadproxy
+: kubectl get service cdi-uploadproxy -n cdi
+
 * How it works
 
 First of all you should have a working etcd.
