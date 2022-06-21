@@ -152,3 +152,29 @@ I don't want to try this on another my laptop.
 I give up. Enough swimming in shit, I'm awaited by more interesting things.
 
 But for LXC this seems to work. However I wouldn't use this approach in production.
+
+* Cheat sheet
+
+[[https://news.ycombinator.com/item?id=31822932][Ask HN: What do you use VMs for regularly? | Hacker News]]
+
+> VM to only run a browser in there, to keep the memory under control
+
+For other Linux users out there — a VM is not needed for this, use a cgroup
+with memory limits. It's very easy to do with systemd, but can be done without
+it:
+
+  $ systemd-run --user --pty --property MemoryHigh=2G firefox
+
+The kernel will prevent Firefox from using more than 2 GiBs of RAM by forcing
+it into swap (including all child processes). To quote
+systemd.resource-control(5):
+
+> Specify the throttling limit on memory usage of the executed processes in
+this unit. Memory usage may go above the limit if unavoidable, but the
+processes are heavily slowed down and memory is taken away aggressively in
+such cases. This is the main mechanism to control memory usage of a unit.
+
+If you'd rather have it OOMed, use MemoryMax=2G.
+
+There are lots of other interesting controllers that can put limits on disk
+and network I/O, CPU usage, etc.
