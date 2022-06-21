@@ -1271,6 +1271,7 @@ builtins.match "php([[:alnum:]])([[:alnum:]])" "php70"
 * Flakes
 - [[https://github.com/NixOS/templates][NixOS/templates: Flake templates]]
 - [[https://github.com/fnctl/mkSystem/blob/main/flake.nix][mkSystem/flake.nix at main · fnctl/mkSystem]]
+- [[https://github.com/fnctl/helix][fnctl/helix: A post-modern modal text editor.]]
 
 ** Learning
 
