@@ -3,6 +3,9 @@
 :END:
 #+title: Wireguard
 
+* Installation
+- [[https://docs.linuxserver.io/images/docker-wireguard][linuxserver/wireguard - LinuxServer.io]]
+
 * Learning
 - [[https://habr.com/ru/company/indriver/blog/586006/][WireGuard. How it was / Хабр]]
 
