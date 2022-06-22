@@ -4,7 +4,7 @@
   - [[https://hub.docker.com/r/linuxserver/qdirstat][linuxserver/qdirstat - Docker Image | Docker Hub]]
 - [[https://github.com/imsnif/diskonaut][imsnif/diskonaut: Terminal disk space navigator]]
 - [[https://github.com/tchajed/rust-nbd][tchajed/rust-nbd: Network Block Device (NBD) server and client written in Rust]]
-- fatrace makes use of the linux fanotify API (more details) available since
+- =fatrace= makes use of the linux fanotify API (more details) available since
   linux kernel 2.6.37.
 
 * Misc
