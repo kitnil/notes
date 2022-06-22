@@ -2547,3 +2547,10 @@ root@guixsd ~ [env]# mount -o subvol=src,compress=zstd,ssd,noatime /dev/sdd3 /mn
 root@guixsd ~ [env]# history -a
 root@guixsd ~ [env]# mount -o subvol=src,compress=zstd:15,ssd,noatime /dev/sdd3 /mnt/src
 root@guixsd ~ [env]# modprobe raid456; guix shell mdadm -- mdadm --assemble --scan; mount /dev/md0 /mnt/guix
+
+* HDD idle
+
+root@guixsd ~ [env]# hdparm --yes-i-know-what-i-am-doing -s 1 /dev/sdb
+
+/dev/sdb:
+ setting power-up in standby to 1 (on)
