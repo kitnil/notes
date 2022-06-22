@@ -2554,3 +2554,8 @@ root@guixsd ~ [env]# hdparm --yes-i-know-what-i-am-doing -s 1 /dev/sdb
 
 /dev/sdb:
  setting power-up in standby to 1 (on)
+
+root@guixsd ~ [env]# hdparm -S 200 /dev/sdb
+
+/dev/sdb:
+ setting standby to 200 (16 minutes + 40 seconds)
