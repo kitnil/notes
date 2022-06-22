@@ -2566,3 +2566,10 @@ root@guixsd ~ [env]# hdparm -S 36 /dev/sdb
 
 /dev/sdb:
  setting standby to 36 (3 minutes)
+
+root@guixsd ~ [env]# hdparm -B 50 -S 36 /dev/sdb
+
+/dev/sdb:
+ setting Advanced Power Management level to 0x32 (50)
+ setting standby to 36 (3 minutes)
+ APM_level      = 50
