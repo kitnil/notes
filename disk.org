@@ -6,6 +6,7 @@
 - [[https://github.com/tchajed/rust-nbd][tchajed/rust-nbd: Network Block Device (NBD) server and client written in Rust]]
 - =fatrace= makes use of the linux fanotify API (more details) available since
   linux kernel 2.6.37.
+- btrace or blktrace (a wrapper of btrace) track kernel block I/O and can help you there.
 
 * Misc
 
