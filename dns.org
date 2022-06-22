@@ -45,6 +45,7 @@
 - [[https://github.com/Findomain/Findomain][Findomain/Findomain: The complete solution for domain recognition. Supports screenshoting, port scan, HTTP check, data import from other tools, subdomain monitoring, alerts via Discord, Slack and Telegram, multiple API Keys for sources and much more.]]
 - [[https://github.com/musana/mx-takeover][musana/mx-takeover: mx-takeover focuses DNS MX records and detects misconfigured MX records.]]
 - [[https://github.com/octodns/octodns][octodns/octodns: Tools for managing DNS across multiple providers]]
+- [[https://github.com/gamelinux/passivedns][gamelinux/passivedns: A network sniffer that logs all DNS server replies for use in a passive DNS setup]]
 - [[https://github.com/knadh/dns.toys][knadh/dns.toys: A DNS server that offers useful utilities and services over the DNS protocol.]]
   : dig moscow.time @dns.toys
   : dig moscow.weather @dns.toys
