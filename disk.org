@@ -2559,3 +2559,8 @@ root@guixsd ~ [env]# hdparm -S 200 /dev/sdb
 
 /dev/sdb:
  setting standby to 200 (16 minutes + 40 seconds)
+
+root@guixsd ~ [env]# hdparm -S 36 /dev/sdb
+
+/dev/sdb:
+ setting standby to 36 (3 minutes)
