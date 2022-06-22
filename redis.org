@@ -21,3 +21,6 @@
 : redis.intr:6379> KEYS mailboxUserData:*example.org*
 : redis.intr:6379> GET mailboxUserData:test@example.org
 : redis.intr:6379> HGETALL 'mailboxes:test@example.org'
+
+* Alternatives
+- [[https://github.com/dragonflydb/dragonfly][dragonflydb/dragonfly: A modern replacement for Redis and Memcached]]
