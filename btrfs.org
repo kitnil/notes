@@ -17,7 +17,7 @@
 - [[https://github.com/digint/btrbk][digint/btrbk: Tool for creating snapshots and remote backups of btrfs subvolumes]]
 
 #+begin_example
-  [root@web15:~]# btrfs qgroup limit 15G /home/u230390
+  [root@web15:~]# btrfs qgroup limit -e 15G /home/u230390
 
   [root@web15:~]# btrfs qgroup show --sync --raw -reF /home/u230390
   qgroupid         rfer         excl     max_rfer     max_excl 
