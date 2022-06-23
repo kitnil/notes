@@ -349,6 +349,7 @@ Once running, the URL to the dashboard is https://2886795308-30000-simba08.envir
   : kubectl get all -A
   : kubectl get all --all-namespaces
   : kubectl get all,cm,secret,ing -A
+  : kubectl api-resources --verbs=list
 
 - API
   : kubectl api-resources
