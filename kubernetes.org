@@ -165,6 +165,7 @@
 - [[https://github.com/external-secrets/external-secrets][external-secrets/external-secrets: External Secrets Operator reads information from a third-party service like AWS Secrets Manager and automatically injects the values as Kubernetes Secrets.]]
 - [[https://github.com/aws/karpenter][aws/karpenter: Kubernetes Node Autoscaling: built for flexibility, performance, and simplicity.]]
 - [[https://github.com/ahmetb/kubectl-tree][ahmetb/kubectl-tree: kubectl plugin to browse Kubernetes object hierarchies as a tree]]
+- [[https://github.com/tohjustin/kube-lineage][tohjustin/kube-lineage: A CLI tool to display all dependencies or dependents of an object in a Kubernetes cluster.]]
 - [[https://github.com/chenjiandongx/kubectl-images][chenjiandongx/kubectl-images: Show container images used in the cluster.]]
 - [[https://github.com/cilium/hubble][cilium/hubble: Hubble - Network, Service & Security Observability for Kubernetes using eBPF]]
 - [[https://github.com/vmware-tanzu/octant][vmware-tanzu/octant: Highly extensible platform for developers to better understand the complexity of Kubernetes clusters.]]
