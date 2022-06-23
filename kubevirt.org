@@ -5,3 +5,13 @@
   - [[https://github.com/topolvm/topolvm][topolvm/topolvm: Capacity-aware CSI plugin for Kubernetes]]
 - [[https://linbit.com/blog/using-drbd-block-devices-for-kubevirt/][Using DRBD block devices for kubevirt » LINBIT]]
 - [[https://events19.linuxfoundation.org/wp-content/uploads/2018/07/Running-Legacy-VMs-with-Kubernetes.pdf][KubeVirt - Running-Legacy-VMs-with-Kubernetes.pdf]]
+
+* cdi
+
+oleg@guixsd ~$ kubectl delete pvc/demo-vm-pv
+persistentvolumeclaim "demo-vm-pv" deleted
+
+oleg@guixsd ~$ kubectl get pvc -A
+NAMESPACE   NAME                 STATUS        VOLUME                                     CAPACITY   ACCESS MODES   STORAGECLASS   AGE
+default     demo-vm-pv-scratch   Bound         pvc-8a68838b-b6ff-46e3-a4c7-058a7b1107c3   2Gi        RWO            local-path     20m
+default     demo-vm-pv           Bound         pvc-852f1d10-a8cc-4069-97c0-585f0563de04   2Gi        RWO            local-path     3d1h
