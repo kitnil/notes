@@ -2,3 +2,4 @@
 - [[https://docs.gitlab.com/charts/development/minikube/][Developing for Kubernetes with minikube | GitLab]]
 - [[https://kubernetes.io/docs/tutorials/hello-minikube/][Hello Minikube | Kubernetes]]
 - [[https://itnext.io/goodbye-docker-desktop-hello-minikube-3649f2a1c469][Goodbye Docker Desktop, Hello Minikube! | by Abhinav Sonkar | ITNEXT]]
+- [[https://github.com/kubernetes/minikube/pull/13829][Support rootless Podman driver, take 2 (Usage: `minikube config set rootless true`) by AkihiroSuda · Pull Request #13829 · kubernetes/minikube]]
