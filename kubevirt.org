@@ -67,3 +67,8 @@ default     demo-vm-pv           Bound         pvc-852f1d10-a8cc-4069-97c0-585f0
       name: cloudinitdisk
   status: {}
 #+end_src
+
+Fix "reply from unexpected source"
+: dig +short a gnu.org @10.43.0.10
+modprobe br_netfilter
+thanks [[https://stackoverflow.com/questions/48148838/kube-dns-error-reply-from-unexpected-source][kubernetes - kube-dns error: reply from unexpected source - Stack Overflow]]
