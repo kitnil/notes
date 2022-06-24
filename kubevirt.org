@@ -72,3 +72,20 @@ Fix "reply from unexpected source"
 : dig +short a gnu.org @10.43.0.10
 modprobe br_netfilter
 thanks [[https://stackoverflow.com/questions/48148838/kube-dns-error-reply-from-unexpected-source][kubernetes - kube-dns error: reply from unexpected source - Stack Overflow]]
+
+* PVC
+
+#+begin_example
+  oleg@guixsd ~/.local/share/chezmoi/dotfiles/kubernetes/kubevirt/guix$ virtctl image-upload --pvc-name=guix-vm-pv --pvc-size=10Gi --image-path=$PWD/guix.qcow2 --uploadproxy-url=https://10.43.57.196 --insecure
+  PVC default/guix-vm-pv not found
+  PersistentVolumeClaim default/guix-vm-pv created
+  Waiting for PVC guix-vm-pv upload pod to be ready...
+  Pod now ready
+  Uploading data to https://10.43.57.196
+
+   426.38 MiB / 426.38 MiB [==========================================================================================================================================================] 100.00% 1s
+
+  Uploading data completed successfully, waiting for processing to complete, you can hit ctrl-c without interrupting the progress
+  Processing completed successfully
+  Uploading /home/oleg/.local/share/chezmoi/dotfiles/kubernetes/kubevirt/guix/guix.qcow2 completed successfully
+#+end_example
