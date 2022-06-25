@@ -2588,3 +2588,11 @@ root@guixsd ~ [env]# hdparm -C /dev/sdb
 
 /dev/sdb:
  drive state is:  standby
+
+root@guixsd /srv [env]# fatrace -c
+df(10629): O /srv
+df(10629): C /srv
+df(11064): CO /srv
+df(11398): CO /srv
+df(11849): CO /srv
+peertube(32360): W /srv/peertube/logs/peertube1.log
