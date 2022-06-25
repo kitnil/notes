@@ -2579,7 +2579,12 @@ root@guixsd ~ [env]# hdparm -B 50 -S 36 /dev/sdb
  setting standby to 36 (3 minutes)
  APM_level      = 50
 
-root@guixsd ~ [env]# hdparm -Y /dev/sdb
+root@guixsd ~ [env]# hdparm -y /dev/sdb
 
 /dev/sdb:
- issuing sleep command
+ issuing standby command
+
+root@guixsd ~ [env]# hdparm -C /dev/sdb
+
+/dev/sdb:
+ drive state is:  standby
