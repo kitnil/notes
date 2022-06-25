@@ -177,3 +177,16 @@ mount -o anon \\192.168.0.144\srv\games N:
 
 * Android
 - [[https://github.com/Paving-Base/APK-Installer][Paving-Base/APK-Installer: An Android Application Installer for Windows]]
+
+* ISO
+
+#+begin_src xml
+  <disk type='file' device='cdrom'>
+    <driver name='qemu' type='raw'/>
+    <source file='/srv/lib/admin/Windows 10 (v21h1) x64 PRO by KulHunter v2 (esd) [En].iso'/>
+    <target dev='sdb' bus='sata'/>
+    <readonly/>
+    <boot order='1'/>
+    <address type='drive' controller='0' bus='0' target='0' unit='1'/>
+  </disk>
+#+end_src
