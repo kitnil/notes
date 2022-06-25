@@ -82,6 +82,15 @@ Pool lvm1 started
     ubuntu22.04                   lvm2 -wi-a-----  20.00g
 #+end_example
 
+#+begin_example
+  root@guixsd ~# lvcreate -V 521G --thin -n ntfsgames lvm2/thinpool2
+    /usr/sbin/thin_check: execvp failed: No such file or directory
+    WARNING: Check is skipped, please install recommended missing binary /usr/sbin/thin_check!
+    /usr/sbin/thin_check: execvp failed: No such file or directory
+    WARNING: Check is skipped, please install recommended missing binary /usr/sbin/thin_check!
+    Logical volume "ntfsgames" created.
+#+end_example
+
 * Learning
 - [[https://www.linuxsysadmins.com/create-thinly-provisioned-logical-volume/][Create a Thinly Provisioned Logical Volume on Linux]]
 
