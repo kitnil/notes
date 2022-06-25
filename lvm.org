@@ -127,6 +127,13 @@ Pool lvm1 started
   558345748480 bytes (558 GB, 520 GiB) copied, 1585.59 s, 352 MB/s
 #+end_example
 
+#+begin_example
+  root@guixsd ~ [env]# lvextend -L+50G /dev/lvm2/ntfsgames
+  File descriptor 5 (/gnu/store/pzpj58wi3m4y2g3qsd5xzpj7ncj28ym6-guix-command) leaked on lvextend invocation. Parent PID 12037: /gnu/store/d99ykvj3axzzidygsmdm
+    Size of logical volume lvm2/ntfsgames changed from 521.00 GiB (133376 extents) to 571.00 GiB (146176 extents).
+    Logical volume lvm2/ntfsgames successfully resized.
+#+end_example
+
 * Learning
 - [[https://www.redhat.com/sysadmin/lvm-vs-partitioning][Logical Volume Manager (LVM) versus standard partitioning in Linux | Enable Sysadmin]]
 - [[https://www.linuxsysadmins.com/create-thinly-provisioned-logical-volume/][Create a Thinly Provisioned Logical Volume on Linux]]
