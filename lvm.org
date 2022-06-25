@@ -45,6 +45,8 @@ Pool lvm1 started
 
 ** thin pool
 
+: modprobe dm-thin-pool
+
 #+begin_example
   root@guixsd ~# lvcreate -l 100%FREE --thinpool thinpool2 lvm2
     Thin pool volume with chunk size 1.00 MiB can address at most 253.00 TiB of data.
