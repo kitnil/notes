@@ -105,3 +105,11 @@
   echo "Migration completed"
 
 #+end_example
+
+#+begin_example
+  #!/bin/bash
+
+  for i in `/usr/bin/virsh list|grep run|awk '{print $2}'`; do
+      /usr/bin/virsh qemu-agent-command $i --timeout 60 '{"execute":"guest-fstrim"}';
+  done
+#+end_example
