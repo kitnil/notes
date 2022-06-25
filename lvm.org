@@ -43,6 +43,16 @@ Pool lvm1 started
   Rounding up size to full physical extent 12.00 MiB
   Logical volume "volume0" created.
 
+** thin pool
+
+#+begin_example
+  root@guixsd ~# lvcreate -l 100%FREE --thinpool thinpool2 lvm2
+    Thin pool volume with chunk size 1.00 MiB can address at most 253.00 TiB of data.
+    WARNING: Pool zeroing and 1.00 MiB large chunk size slows down thin provisioning.
+    WARNING: Consider disabling zeroing (-Zn) or using smaller chunk size (<512.00 KiB).
+    Logical volume "thinpool2" created.
+#+end_example
+
 * Learning
 - [[https://www.linuxsysadmins.com/create-thinly-provisioned-logical-volume/][Create a Thinly Provisioned Logical Volume on Linux]]
 
