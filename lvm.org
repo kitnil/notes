@@ -228,3 +228,6 @@ snapshot on the system:
 #+begin_example
   mount -o loop,offset=134217728 /dev/lvm1/debian1 /mnt/debian1
 #+end_example
+
+lvchange -ay -v lvm2/thinpool2
+lvchange -ay -v lvm2/ntfsgames
