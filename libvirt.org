@@ -113,3 +113,27 @@
       /usr/bin/virsh qemu-agent-command $i --timeout 60 '{"execute":"guest-fstrim"}';
   done
 #+end_example
+
+#+begin_src xml
+  <disk type='block' device='disk'>
+    <driver name='qemu' type='raw' cache='none' io='threads' discard='unmap'/>
+    <source dev='/dev/vm/p510033'/>
+    <backingStore/>
+    <target dev='sda' bus='scsi'/>
+    <iotune>
+      <write_bytes_sec>104857600</write_bytes_sec>
+      <write_bytes_sec_max>524288000</write_bytes_sec_max>
+      <write_bytes_sec_max_length>120</write_bytes_sec_max_length>
+    </iotune>
+    <address type='drive' controller='0' bus='0' target='0' unit='0'/>
+  </disk>
+#+end_src
+
+#+begin_src xml
+  <disk type='file' device='cdrom'>
+    <driver name='qemu' type='raw'/>
+    <target dev='sdb' bus='sata'/>
+    <readonly/>
+    <address type='drive' controller='0' bus='0' target='0' unit='0'/>
+  </disk>
+#+end_src
