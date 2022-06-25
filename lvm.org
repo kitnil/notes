@@ -119,6 +119,14 @@ Pool lvm1 started
     ubuntu22.04                   lvm2 -wi-a-----  20.00g
 #+end_example
 
+#+begin_example
+  root@guixsd ~# dd if=/dev/lvm2/ntfs-games of=/dev/lvm2/ntfsgames bs=1024K status=progress
+  557988184064 bytes (558 GB, 520 GiB) copied, 1577 s, 354 MB/s
+  532480+0 records in
+  532480+0 records out
+  558345748480 bytes (558 GB, 520 GiB) copied, 1585.59 s, 352 MB/s
+#+end_example
+
 * Learning
 - [[https://www.linuxsysadmins.com/create-thinly-provisioned-logical-volume/][Create a Thinly Provisioned Logical Volume on Linux]]
 
