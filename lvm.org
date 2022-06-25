@@ -134,6 +134,35 @@ Pool lvm1 started
     Logical volume lvm2/ntfsgames successfully resized.
 #+end_example
 
+#+begin_example
+  root@guixsd ~ [env]# lvs
+  File descriptor 5 (/gnu/store/pzpj58wi3m4y2g3qsd5xzpj7ncj28ym6-guix-command) leaked on lvs invocation. Parent PID 12037: /gnu/store/d99ykvj3axzzidygsmdm
+    LV                            VG   Attr       LSize   Pool      Origin Data%  Meta%  Move Log Cpy%Sync Convert
+    almalinux                     lvm1 -wi-a-----  30.00g
+    centos                        lvm1 -wi-a-----  20.00g
+    centos7                       lvm1 -wi-a-----  32.00g
+    debian1                       lvm1 -wi-a-----  16.00g
+    debian2                       lvm1 -wi-a-----  16.00g
+    guix                          lvm1 -wi-a-----  64.00g
+    guix-test                     lvm1 -wi-a-----  40.50g
+    nginx99                       lvm1 -wi-a-----  34.00g
+    nixos                         lvm1 -wi-a-----  20.00g
+    nixos-test                    lvm1 -wi-a-----  20.00g
+    qubeos                        lvm1 owi---s---  64.00g
+    qubeos-snap1                  lvm1 swi---s---  32.00g           qubeos
+    qubes                         lvm1 -wi-a-----  64.00g
+    test                          lvm1 -wi-a-----  10.00g
+    ubuntu                        lvm1 -wi-a-----  64.00g
+    web99                         lvm1 -wi-a-----  80.00g
+    whonix-gateway-direct         lvm1 -wi-a-----   8.00g
+    whonix-workstation-qbittorent lvm1 -wi-a-----  10.00g
+    win10                         lvm1 -wi-a-----  40.00g
+    ntfs-games                    lvm2 -wi-a----- 520.00g
+    ntfsgames                     lvm2 Vwi-a-tz-- 571.00g thinpool2        91.07
+    thinpool2                     lvm2 twi-aotz--  <1.22t                  41.66  20.97
+    ubuntu22.04                   lvm2 -wi-a-----  20.00g
+#+end_example
+
 * Learning
 - [[https://www.redhat.com/sysadmin/lvm-vs-partitioning][Logical Volume Manager (LVM) versus standard partitioning in Linux | Enable Sysadmin]]
 - [[https://www.linuxsysadmins.com/create-thinly-provisioned-logical-volume/][Create a Thinly Provisioned Logical Volume on Linux]]
