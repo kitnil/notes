@@ -55,3 +55,53 @@
        <address type='drive' controller='0' bus='0' target='0' unit='0'/>
      </disk>
    #+end_src
+
+* Migrate
+
+#+begin_example
+  #!/bin/bash
+  # KVM-SSD migrate script
+
+  LANG=en_US.UTF8
+  PATH=/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin
+  ACCT=$1
+  SERV=$2
+
+  f_help() {
+    echo "Specify account name and destination host, example:"
+    echo "migr_kvm p123456 kvm-ssd1"
+    exit 1;
+  }
+
+  f_print_err() {
+    local message=$1
+    [ -n "$message" ] || message="Unknown error"
+    echo "=================="
+    echo "$message"
+    echo "=================="
+    exit 255
+  }
+
+  ( [ -z $ACCT ] || [ -z $SERV ] ) && f_help
+
+  random_name=$(< /dev/urandom tr -dc A-Za-z0-9_ | head -c8)
+
+  # create backup
+  cat /etc/libvirt/qemu/$ACCT.xml > "/usr/local/bin/backup_migrate/$ACCT.xml.$random_name"
+
+
+  HOST="root@$SERV"
+  SIZE=$(lvdisplay /dev/vm/$ACCT | awk '/LV Size/ {print $3}'|sed 's/\,/\./g')
+  SSH_OPTS='-o StrictHostKeyChecking=no -o PasswordAuthentication=no '
+  MIGR_OPTS="--live --copy-storage-all --verbose --persistent --undefinesource"
+
+  echo "Create disk image on destination server"
+  ssh $SSH_OPTS $HOST -t "[ -b /dev/vm/$ACCT ] || /usr/sbin/lvcreate -V${SIZE}G -T vm/pool -n$ACCT" || f_print_err "Error: creation lvm"
+  echo "Start migrate CT $ACCT to $SERV"
+  virsh migrate $MIGR_OPTS $ACCT qemu+ssh://$SERV/system  tcp://$SERV/ || f_print_err "Error on steep: virsh migrate"
+  echo "Waiting for trim start..."
+  sleep 10
+  ssh $SSH_OPTS $HOST -t "/usr/bin/virsh qemu-agent-command $ACCT --timeout 60 '{\"execute\":\"guest-fstrim\"}' >/dev/null 2>&1"
+  echo "Migration completed"
+
+#+end_example
