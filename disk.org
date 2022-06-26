@@ -14,6 +14,15 @@
 - [[https://documents.westerndigital.com/content/dam/doc-library/en_us/assets/public/western-digital/product/internal-drives/wd-purple-hdd/whitepaper-generic-benefit-for-hard-disk-drive.pdf][White Paper: Western Digital Trim Command - General Benefits for Hard Disk Drives - whitepaper-generic-benefit-for-hard-disk-drive.pdf]]
 - [[https://documents.westerndigital.com/content/dam/doc-library/en_us/assets/public/western-digital/product/internal-drives/wd-purple-pro-hdd/product-brief-wd-purple-pro-sata-hdd.pdf][Product Brief: Western Digital WD Purple Pro Series - product-brief-wd-purple-pro-sata-hdd.pdf]]
 
+#+begin_example
+  root@guixsd ~ [env]# hdparm -M 128 /dev/sdb
+
+  /dev/sdb:
+   setting acoustic management to 128
+  SG_IO: bad/missing sense data, sb[]:  70 00 05 00 00 00 00 0a 04 53 00 00 21 04 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+   acoustic      = not supported
+#+end_example
+
 * Misc
 
 mdadm parted dosfstools
