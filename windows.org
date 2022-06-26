@@ -37,6 +37,10 @@
 - [[https://github.com/firefart/reboot][firefart/reboot: Reboot is a simple golang based windows service that initiates a reboot upon receiving a specific message on a TCP server]]
 - [[https://github.com/amake/innosetup-docker][amake/innosetup-docker: Docker image to create Windows installer executables with Inno Setup]]
 
+* TRIM
+- Free space on lvm-thin regardless of storage disk type spinner or ssd
+  : Optimize-Volume -DriveLetter C -ReTrim -Verbose
+
 * Kubernetes
 - [[https://github.com/ptylenda/kubernetes-for-windows][ptylenda/kubernetes-for-windows: Ansible playbooks and Packer templates for creating hybrid Windows/Linux Kubernetes 1.10+ cluster with experimental Flannel pod network (host-gw backend)]]
 
