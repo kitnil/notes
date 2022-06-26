@@ -23,6 +23,13 @@
    acoustic      = not supported
 #+end_example
 
+#+begin_example
+  root@guixsd ~# guix shell hdparm -- hdparm -S 60 /dev/sdb
+
+  /dev/sdb:
+   setting standby to 60 (5 minutes)
+#+end_example
+
 * Misc
 
 mdadm parted dosfstools
