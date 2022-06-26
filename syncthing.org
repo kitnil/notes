@@ -1,0 +1,5 @@
+How do I rename/move a synced folder?
+
+Shut down Syncthing, move the folder on disk (including the .stfolder marker),
+edit the path directly in config.xml in the configuration folder (see config)
+and then start Syncthing again.
