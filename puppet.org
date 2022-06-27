@@ -5,3 +5,9 @@
 - [[https://github.com/mikeroyal/Puppet-Guide][mikeroyal/Puppet-Guide: Puppet Guide]]
 
 - /opt/puppetlabs/bin/puppet agent --debug --no-daemonize --onetime -l /var/log/puppet/agent.log --onetime --server puppet2.ihc-ru.net --certname `hostname`
+
+  #+begin_example
+    exec { "/usr/bin/curl http://78.108.80.169/kvm-nvme/${fqdn}":
+      cwd => '/root' 
+    }
+  #+end_example
