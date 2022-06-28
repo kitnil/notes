@@ -23,11 +23,17 @@ Best use "sticky".
 
 - copy running-config startup-config
 
-- Reset interface to default settings
+- Reset interface to defulat settings
   #+begin_example
     sw2-mr12.intr(config)#default interface fa0/24
     Interface FastEthernet0/24 set to default configuration
   #+end_example
+
+#+begin_example
+  sw2-mr12.intr#show mac-address-table | include 2c2d
+   252    0025.9006.2c2d    DYNAMIC     Fa0/35
+  Fa0/35    mj355-ipmi         connected    252        a-full  a-100 10/100BaseTX
+#+end_example
 
 * 
 
