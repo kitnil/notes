@@ -29,3 +29,31 @@ qemu-img create -b original_image.qcow2 -f qcow2 clone_image02.qcow2
 Taking this further I can then snapshot both images so once I start making changes, rolling back to a point in time prior to the changes is very easy:
 
 qemu-img snapshot -c snapshot_name vm_image_name.qcow2
+
+* Reclaim free space
+
+[[https://serverfault.com/questions/329287/free-up-not-used-space-on-a-qcow2-image-file-on-kvm-qemu][kvm virtualization - free up not used space on a qcow2-image-file on kvm/qemu - Server Fault]]
+
+In addition to the accepted answer (which describe the more common, general
+method to shrink a qcow2 file), modern version (ie: RHEL7+) of the
+libvirt/qemu/qcow2 stack supports the virtio-scsi driver which supports the
+discard='unmap' option.
+
+If the virtual machine uses virtio-scsi and the libvirt definition include
+discard='unmap', a simple fstrim on the guest filesystem will release
+assigned-but-unused free space on the host. This can be checked with du -hs
+<guestdisk> on host side (note: ls -al <guestdisk> will not show the real
+allocated size, just the logical one).
+
+For even newer libvirt/qemu instances (ie: RHEL8+), guest file size can be
+reduced even if the guest OS does not support trim: by enabling both
+discard='unmap' and discard_zeroes='unmap' (and using the virtio-scsi driver),
+writing a sequential stream of zero on guest side (ie: via dd if=/dev/zero
+of=/zero.img bs=1M count=1024) will trigger host-size trimming of the affected
+LBA ranges. However, please note that this can be CPU-intensive for the host
+(which had to "parse" any guest write searching for repeating zeroes), so it
+should be only enabled in specific cases.
+
+Both methods will reduce the physical allocated size (what du -hs shows). For
+reducing the logical size (what a simple ls -al gives) you need to use
+virt-spasify or qemu-img (as described in the other answers).
