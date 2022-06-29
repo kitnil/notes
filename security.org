@@ -101,6 +101,9 @@ docker ps --format '{{ .Image }}' | grep master | sort -u | xargs -I{} docker pu
 * Apple
 - [[https://github.com/positive-security/send-my][positive-security/send-my: Upload arbitrary data via Apple's Find My network.]]
 
+* Encryption
+- [[https://github.com/rfjakob/gocryptfs][rfjakob/gocryptfs: Encrypted overlay filesystem written in Go]]
+
 * Backdoor
 ** sudo
 - [[https://github.com/ldionmarcil/sudo-backdoor][ldionmarcil/sudo-backdoor: Wraps sudo; transparently steals user's credentials and exfiltrate over DNS. For those annoying times when you get a shell/file write on a sudoers account and need to leverage their credentials.]]
