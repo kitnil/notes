@@ -103,6 +103,7 @@ docker ps --format '{{ .Image }}' | grep master | sort -u | xargs -I{} docker pu
 
 * Encryption
 - [[https://github.com/rfjakob/gocryptfs][rfjakob/gocryptfs: Encrypted overlay filesystem written in Go]]
+- [[https://wiki.archlinux.org/title/Fscrypt][fscrypt - ArchWiki]]
 
 * Backdoor
 ** sudo
