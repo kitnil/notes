@@ -39,6 +39,8 @@
 
  - [[https://gitlab.com/isard/isardvdi][Isard VDI (Virtual Desktop Infraestructure) Project. Open Source KVM Virtual Desktops based on KVM Linux and dockers. https://isardvdi.com/]]
 
+ - [[https://github.com/nspin/kali-now/blob/main/nix/kali.nix][kali-now/kali.nix at main · nspin/kali-now]]
+
  - convert qcow2 to lvm
    : qemu-img convert -p -n -f qcow2 -O raw /mnt/data/images/102/vm-102-disk-0.qcow2 /dev/pve/vm-102-disk-0
 
