@@ -602,6 +602,7 @@ patchelf https://nixos.wiki/wiki/Packaging/Binaries#Creating_the_Derivation_for_
 - [[https://github.com/Misterio77/nix-starter-config][Misterio77/nix-starter-config: Simple and documented config repo to help you get started with NixOS + home-manager + flakes. All the boilerplate you need!]]
 - [[https://github.com/mikeroyal/NixOS-Guide][mikeroyal/NixOS-Guide: NixOS Guide]]
 - [[https://github.com/humancalico/nix-learning][humancalico/nix-learning: A bunch of links to blog posts, articles, videos, etc for learning Nix]]
+  - [[https://ops.functionalalgebra.com/2018/04/18/inspecting-nix-lambda-named-arguments/][Inspecting Nix lambda function named arguments · Nix Cookbook]]
 
 * Secrets
 - [[https://github.com/Mic92/sops-nix][Mic92/sops-nix: Atomic secret provisioning for NixOS based on sops]]
