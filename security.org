@@ -97,6 +97,7 @@ docker ps --format '{{ .Image }}' | grep master | sort -u | xargs -I{} docker pu
 
 * Awesome
 - [[https://github.com/Lissy93/personal-security-checklist][Lissy93/personal-security-checklist: 🔒 A curated checklist of 300+ tips for protecting digital security and privacy in 2022]]
+- [[https://github.com/edoardottt/awesome-hacker-search-engines][edoardottt/awesome-hacker-search-engines: A list of search engines useful during Penetration testing, vulnerability assessments, red team operations, bug bounty and more]]
 
 * Apple
 - [[https://github.com/positive-security/send-my][positive-security/send-my: Upload arbitrary data via Apple's Find My network.]]
