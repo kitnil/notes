@@ -1244,6 +1244,7 @@ builtins.match "php([[:alnum:]])([[:alnum:]])" "php70"
 - [[https://github.com/Mic92/nixos-shell][Mic92/nixos-shell: Spawns lightweight nixos vms in a shell]]
 - [[https://github.com/astro/microvm.nix][astro/microvm.nix: NixOS MicroVMs]]
 - [[https://github.com/rsdy/nix-readonly][rsdy/nix-readonly: Lightweight NixOS VMs using KVM with read-only root]]
+- [[https://github.com/jollheef/appvm][jollheef/appvm: Nix-based app VMs]]
 
 * NixOS
   #+begin_src nix
