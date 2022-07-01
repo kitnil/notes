@@ -1485,6 +1485,7 @@ builtins.match "php([[:alnum:]])([[:alnum:]])" "php70"
 - [[https://github.com/serokell/update-daemon][serokell/update-daemon: Nix Flake Update daemon]]
 - [[https://github.com/numtide/nar-serve][numtide/nar-serve: Unpack and serve NAR file content on the fly]]
 - [[https://github.com/dasJ/emergency-kexec][dasJ/emergency-kexec: Kexec into an in-memory emergency system]]
+- [[https://github.com/AleXoundOS/mirror-nix][AleXoundOS/mirror-nix: mirror Nix binary cache for the offline workflow]]
 
 * Overlays
   - nixos-install --flake github:hoverbear-consulting/flake#gizmo --impure
