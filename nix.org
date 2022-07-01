@@ -1265,6 +1265,7 @@ builtins.match "php([[:alnum:]])([[:alnum:]])" "php70"
 - [[https://github.com/lourkeur/miniguest][lourkeur/miniguest: lightweight, declarative guest operating systems]]
 - [[https://gist.github.com/vizanto/7568026][NixOS boot with (shared) `/nix` mounted through NFS. Using this hack to have `/nix` stored on ZFS in the SmartOS global zone, until SmartOS gets `virtfs` support.]]
 - [[https://github.com/Sam1431/IdempotentDots][Sam1431/IdempotentDots: dots configured after setting up NixOS on tmpfs]]
+- [[https://github.com/gvolpe/nix-config][gvolpe/nix-config: NixOS configuration]]
 
 ** Installers
 - [[https://github.com/samuela/nixos-up/blob/main/nixos-up.ml][nixos-up/nixos-up.ml at main · samuela/nixos-up]]
