@@ -10,6 +10,7 @@
 - [[https://github.com/josh-richardson/cadmus][josh-richardson/cadmus: A GUI frontend for @werman's Pulse Audio real-time noise suppression plugin]]
 - [[https://github.com/spotify/pedalboard][spotify/pedalboard: A Python library for manipulating audio.]]
 - [[https://github.com/akhilrex/podgrab][akhilrex/podgrab: A self-hosted podcast manager/downloader/archiver tool to download podcast episodes as soon as they become live with an integrated player.]]
+- [[https://fedoramagazine.org/your-personal-voice-assistant-on-fedora-linux/][Your Personal Voice Assistant on Fedora Linux - Fedora Magazine]]
 
 - "Establishing connection to pulseaudio, please wait"
   : sudo fuser -v /dev/snd/*
