@@ -64,6 +64,7 @@
 #+end_src
 
 * NixOS
+- [[https://github.com/fabaff/nix-security-box][fabaff/nix-security-box: Tool set for Information security professionals and all others]]
 - [[https://github.com/vpsfreecz/vpsadminos][vpsfreecz/vpsadminos: Host for Linux system containers based on NixOS, ZFS and LXC]]
 - [[https://gist.github.com/gdamjan/8158b57379932fd0e07ce6d83399b71f][Install a NixOS for a systemd-nspawn container … from podman]]
 #+begin_src markdown
