@@ -225,6 +225,7 @@ curl -H 'Content-Type: application/json' -d '{"query": {"bool": {"must": {"term"
 - [[https://github.com/Cyb3rWard0g/HELK][Cyb3rWard0g/HELK: The Hunting ELK]]
 - [[https://github.com/binwiederhier/elastictl][binwiederhier/elastictl: Simple tool to import/export Elasticsearch indices into a file, and/or reshard an index]]
 - [[https://github.com/StationA/esx][StationA/esx: CLI for streaming I/O with Elasticsearch]]
+- [[https://github.com/Netflix/Raigad][Netflix/Raigad: Co-Process for backup/recovery, Auto Deployments and Centralized Configuration management for ElasticSearch]]
 
 * Alternatives
 
