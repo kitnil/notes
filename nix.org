@@ -1243,6 +1243,7 @@ builtins.match "php([[:alnum:]])([[:alnum:]])" "php70"
 - [[https://github.com/DavidEGrayson/nixcrpkgs][DavidEGrayson/nixcrpkgs: Nice nix expressions for cross-compiling.]]
 - [[https://github.com/nix-community/nixpkgs-swh][nix-community/nixpkgs-swh: Send nixpkgs tarballs to Software Heritage maintainer=@nlewo]]
 - [[https://github.com/nlewo/hydra-cli][nlewo/hydra-cli: A client for the Hydra Nix CI]]
+- [[https://github.com/taktoa/narfuse][taktoa/narfuse: A FUSE filesystem, written in Haskell, that allows one to mount NAR (Nix archive) files and expose them as a virtual Nix store.]]
 
 * Overlays
   - nixos-install --flake github:hoverbear-consulting/flake#gizmo --impure
