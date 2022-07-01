@@ -50,6 +50,7 @@
 - [[https://github.com/itzg/easy-add][itzg/easy-add: A utility for easily adding a file from a downloaded archive during Docker builds]]
 - [[https://github.com/metal3d/docker-domains][metal3d/docker-domains: Have docker containers responding to any domain name]]
 - [[https://github.com/awakesecurity/hocker][awakesecurity/hocker: Utilities for interacting with the docker registry and generating nix build instructions]]
+- [[https://github.com/nlewo/nix2container][nlewo/nix2container: An archive-less dockerTools.buildImage implementation]]
 
 ** Security
 - [[https://github.com/quay/clair][quay/clair: Vulnerability Static Analysis for Containers]]
