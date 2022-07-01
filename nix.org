@@ -603,6 +603,7 @@ patchelf https://nixos.wiki/wiki/Packaging/Binaries#Creating_the_Derivation_for_
 - [[https://github.com/mikeroyal/NixOS-Guide][mikeroyal/NixOS-Guide: NixOS Guide]]
 - [[https://github.com/humancalico/nix-learning][humancalico/nix-learning: A bunch of links to blog posts, articles, videos, etc for learning Nix]]
   - [[https://ops.functionalalgebra.com/2018/04/18/inspecting-nix-lambda-named-arguments/][Inspecting Nix lambda function named arguments · Nix Cookbook]]
+  - [[https://ops.functionalalgebra.com/2016/06/14/nixos-systemd-journald/][Tips & tricks for systemd and journald on NixOS · Nix Cookbook]]
 
 * Secrets
 - [[https://github.com/Mic92/sops-nix][Mic92/sops-nix: Atomic secret provisioning for NixOS based on sops]]
