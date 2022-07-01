@@ -19,5 +19,6 @@
 - binwalk -e FILE
 - [[https://github.com/woodruffw/nvis][woodruffw/nvis: A very simple input visualizer]]
 - [[https://github.com/haampie/libtree][haampie/libtree: ldd as a tree]]
+- [[https://github.com/fzakaria/shrinkwrap][fzakaria/shrinkwrap: A tool that embosses the needed dependencies on the top level executable]]
 
 - gcore -a PID
