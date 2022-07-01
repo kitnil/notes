@@ -1238,6 +1238,7 @@ builtins.match "php([[:alnum:]])([[:alnum:]])" "php70"
 - [[https://dumpstack.io/1563582225_nixos_installing_software_from_pull_requests.html][dumpstack.io: NixOS: Installing software from pull requests]]
 - [[https://github.com/lf-/nix-doc][lf-/nix-doc: An interactive Nix documentation tool providing a CLI for function search, a Nix plugin for docs in the REPL, and a ctags implementation for Nix script]]
 - [[https://github.com/DavidEGrayson/nixcrpkgs][DavidEGrayson/nixcrpkgs: Nice nix expressions for cross-compiling.]]
+- [[https://github.com/nix-community/nixpkgs-swh][nix-community/nixpkgs-swh: Send nixpkgs tarballs to Software Heritage maintainer=@nlewo]]
 
 * Overlays
   - nixos-install --flake github:hoverbear-consulting/flake#gizmo --impure
