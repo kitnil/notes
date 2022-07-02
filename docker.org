@@ -1313,3 +1313,8 @@ Misc
     volumes:
       rabbit-data:
   #+end_src
+
+* Bug
+
+- [[https://issues.guix.gnu.org/47617][Docker containers retain references to the runc used]]
+: root@guixsd /var/lib/docker# sed -i "s@/gnu/store/dsz6pam52k3j3fk0yxzafw7r7pqvwgmr-runc-1.0.0-rc93/sbin/runc@/gnu/store/ykaxhb1aiv2k3svdb80l5sqqzg5j62dp-runc-1.1.1/sbin/runc@g" containers/*/hostconfig.json
