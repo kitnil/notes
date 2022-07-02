@@ -974,6 +974,7 @@ https://nixos.org/nix-dev/2010-April.txt.gz
 
 * CI
 - [[https://github.com/Mic92/nix-build-uncached][Mic92/nix-build-uncached: A CI friendly wrapper around nix-build.]]
+- [[https://github.com/DeterminateSystems/terraform-provider-hydra][DeterminateSystems/terraform-provider-hydra: Declaratively configure your Hydra server with Terraform.]]
 
 * DSL
 - [[https://github.com/Mic92/pythonix][Mic92/pythonix: Eval nix code from python]]
