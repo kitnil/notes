@@ -35,6 +35,7 @@ zfs-auto-snap_hourly-2020-04-29-13h00  zfs-auto-snap_hourly-2020-04-29-19h00  zf
 - [[https://github.com/asomers/ztop][asomers/ztop: Display ZFS datasets' I/O in real time]]
 - [[https://github.com/zbm-dev/zfsbootmenu][zbm-dev/zfsbootmenu: ZFS Bootloader for root-on-ZFS systems with support for snapshots and native full disk encryption]]
 - [[https://github.com/kimono-koans/httm][kimono-koans/httm: Interactive, file-level ZFS Time Machine-like tool]]
+- [[https://github.com/DeterminateSystems/zpool-auto-expand-partitions][DeterminateSystems/zpool-auto-expand-partitions]]
 
 * Misc
 - [[https://github.com/jimsalterjrs/sanoid][jimsalterjrs/sanoid: Policy-driven snapshot management and replication tools. Using ZFS for underlying next-gen storage. (Btrfs support plans are shelved unless and until btrfs becomes reliable.) Primarily intended for Linux, but BSD use is supported and reasonably frequently tested.]]
