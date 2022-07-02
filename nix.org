@@ -300,6 +300,7 @@ nix-repl> mynixos2.config.environment.etc."mailman.cfg".text
 - [[https://github.com/kamadorueda/four-shells][kamadorueda/four-shells: Technologies around Nix and IPFS that are published under an Open Source License]]
 - [[https://github.com/divnix/quick-nix-registry][divnix/quick-nix-registry: Speed up the Nix registry by caching nixpkgs locally]]
 - [[https://github.com/ryantm/agenix][ryantm/agenix: age-encrypted secrets for NixOS]]
+- [[https://github.com/jordanisaacs/homeage][jordanisaacs/homeage: runtime decrypted age secrets for nix home manager]]
 - [[https://github.com/polygon/scalpel][polygon/scalpel: Minimally invasive safe secret provisioning to Nix-generated service config files]]
 - [[https://github.com/sudosubin/home-manager-secrets][sudosubin/home-manager-secrets: Secrets management for home-manager]]
 - [[https://github.com/Misterio77/nix-colors][Misterio77/nix-colors: Modules and schemes to make theming with Nix awesome.]]
