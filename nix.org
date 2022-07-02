@@ -379,6 +379,7 @@ nix-repl> mynixos2.config.environment.etc."mailman.cfg".text
 - [[https://github.com/community-garden/fdroid-repo][community-garden/fdroid-repo]]
 - [[https://gitlab.com/cab404/wg-bond][cab404 / wg-bond · GitLab]]
 - [[https://github.com/andir/nixos-security-tracker][andir/nixos-security-tracker]]
+- [[https://github.com/DeterminateSystems/security-tracker][DeterminateSystems/security-tracker: Experimental security tracker for NixOS, based on the Arch Linux Security Tracker]]
 - [[https://github.com/BrianHicks/nix-script][BrianHicks/nix-script: write scripts in compiled languages that run in the nix ecosystem, with no separate build step]]
 - [[https://github.com/gvolpe/dconf2nix][gvolpe/dconf2nix: Convert Dconf files (Gnome Shell) to Nix, as expected by Home Manager.]]
 - [[https://github.com/input-output-hk/bitte][input-output-hk/bitte: Nix Ops for Terraform, Consul, Vault, Nomad]]
