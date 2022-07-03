@@ -140,3 +140,6 @@ docker ps --format '{{ .Image }}' | grep master | sort -u | xargs -I{} docker pu
   - [[https://wazuh.com/][Wazuh · The Open Source Security Platform]]
   - [[https://debricked.com/en/vulnerability-database][Vulnerability Database | Debricked]]
 - [[https://apisec-inc.github.io/pentest/][Free and Instant API penetration Testing | EthicalCheck™]]
+
+* totp
+[[https://github.com/susam/mintotp][susam/mintotp: Minimal TOTP generator in 20 lines of Python]]
