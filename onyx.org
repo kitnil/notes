@@ -1,0 +1,22 @@
+#+begin_example
+  Boox Mira Linux Setup
+
+  1.Go to/etc/udev/rules.d/ located location and create a 58-hid.rules file
+
+   2.Then copy the following rules into the 58-hid.rules file
+
+  SUBSYSTEM=="input", GROUP="input", MODE="0666"
+
+  SUBSYSTEM=="usb", ATTRS{idVendor}=="0416", ATTRS{idProduct}=="5020", MODE:="666", GROUP="plugdev"
+
+  KERNEL=="hidraw*", ATTRS{idVendor}=="0416", ATTRS{idProduct}=="5020", MODE="0666", GROUP="plugdev"
+
+  3.Finally, reload and restart udev
+  Terminal:
+  sudo service udev reload
+  sudo service udev restart
+
+
+  Reference:
+  Setting up the udev-rules for connecting multiple external devices through USB in Linux. | by Darshan K T | Medium
+#+end_example
