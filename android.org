@@ -200,3 +200,7 @@
       [[ ${apk} =~ "/data"* ]] && adb pull "${apk}" "${PWD}/${pkg}.apk"
   done
 #+END_SRC
+
+* Hardware
+- [[https://old.reddit.com/r/selfhosted/comments/vvn1su/running_an_android_phone_247/][Running an Android Phone 24/7 : selfhosted]]
+  - [[https://www.youtube.com/watch?v=YfvTjQ9MCwY&t=864s][Building a TRUE 4k home cinema projector (it’s awesome) - YouTube]]
