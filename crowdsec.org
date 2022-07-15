@@ -1,6 +1,7 @@
 - [[https://docs.crowdsec.net/docs/intro][Introduction | CrowdSec]]
 - [[https://habr.com/ru/company/crowdsec/blog/592305/][Интеграция CrowdSec в Kubernetes / Хабр]]
 - [[https://habr.com/ru/company/crowdsec/blog/581876/][Обеспечиваем безопасность стеков Docker Compose с помощью CrowdSec / Хабр]]
+- [[https://github.com/crowdsecurity/crowdsec/issues/1306][docker-compose example]]
 - [[https://serveradmin.ru/ustanovka-i-nastrojka-crowdsec/][Установка и настройка CrowdSec — Server Admin]]
 
 Разблокировать вручную конкретный ip можно следующей командой:
