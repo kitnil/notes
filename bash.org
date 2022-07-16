@@ -1126,3 +1126,20 @@ Prompt
       description="$(echo ${collect_info} | cut -d "," -f4)"
       in_array $collection "${DETECTED_SERVICES[@]}"
 #+end_src
+
+#+begin_src bash
+  #!/usr/bin/env bash
+
+  while IFS= read -r -d '' file
+  do
+      (
+          file_format="$(ffprobe -show_streams -loglevel error -print_format json "$file" | jq --raw-output '.streams[1].codec_name')"
+          file_name="$(basename "$file")"
+          case "$file_format" in
+              opus)
+                  printf "%s\t%s\t%s\n" "$file_format" "$file" "$file_name"
+                  ;;
+          esac
+      )
+  done < <(find "${RUN_MUSIC_DIRECTORY:-/srv/music}" -type f -print0)
+#+end_src
