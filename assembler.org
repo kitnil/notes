@@ -34,6 +34,7 @@
 - [[https://github.com/akyoto/asm][akyoto/asm: An x86-64 assembler written in Go.]]
 - [[https://github.com/nikolay-govorov/asm-server][nikolay-govorov/asm-server: Stupid "hello world" http server on NASM. Linux, x64, NASM, zero dependencies.]]
 - [[https://github.com/NikitaIvanovV/snake-asm][NikitaIvanovV/snake-asm: Tiny snake game written in x86_64 assembly for Linux]]
+- [[https://github.com/loov/lensm][loov/lensm: Go assembly and source viewer]]
 
 [[https://habr.com/ru/post/569204/#comment_23288698]]
 Обычно ассемблер является отображением машинных кодов практически 1 в 1. Мы,
