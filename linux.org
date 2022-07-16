@@ -515,3 +515,59 @@ to see.
   USER     TTY        LOGIN@   IDLE   JCPU   PCPU WHAT
   eng      pts/0     16:42    1.00s  2.70s  0.01s sshd: eng [priv]
 #+end_example
+
+* kexec
+
+[[https://www.linux.com/training-tutorials/simple-kexec-example/][Simple Kexec example - Linux.com]]
+
+Some time ago I was helping a friend with some kexec problems and written some notes on how to use it – here a CentOS based server was used, but the process should be pretty similiar also for other distributions. The main advantage is in skipping the BIOS init part which on servers takes quite some time. I personally use it for the gateway server (it has also other functions, like dns, dhcp, openvpn server) and testing servers reboots with minimal downtime. A nice kexec description is on its man page:
+
+    kexec is a system call that enables you to load and boot into another kernel from the currently running kernel. kexec performs the function of the boot loader from within the kernel. The primary difference between a standard system boot and a kexec boot is that the hardware initialization normally performed by the BIOS or firmware (depending on architecture) is not performed during a kexec boot. This has the effect of reducing the time required for a reboot.
+
+CentOS, Fedora users can install it using yum:
+
+[root@cent:~]# yum install kexec-tools
+
+To switch between kernels you have to install a new one, here for example after running a ”yum update” also a new kernel was installed – the 2.6.18-194.11.4.el5 version.
+
+[root@cent:~]# yum update
+[...]
+Installed:
+  kernel.x86_64 0:2.6.18-194.11.4.el5  kernel-devel.x86_64 0:2.6.18-194.11.4.el5
+[...]
+
+Current kernel is 2.6.18-194.11.3.el5
+
+[root@cent:~]# uname -r
+2.6.18-194.11.3.el5
+
+For kexec, kernel and initrd path will be specified; paths (not full) can be found for example in the grub.conf file which was already updated.
+
+[root@cent:~]# cat /etc/grub.conf
+[...]
+title CentOS (2.6.18-194.11.4.el5)
+        root (hd0,0)
+        kernel /vmlinuz-2.6.18-194.11.4.el5 ro root=LABEL=/
+        initrd /initrd-2.6.18-194.11.4.el5.img
+title CentOS (2.6.18-194.11.3.el5)
+        root (hd0,0)
+        kernel /vmlinuz-2.6.18-194.11.3.el5 ro root=LABEL=/
+        initrd /initrd-2.6.18-194.11.3.el5.img
+[...]
+
+Also the arguments passed to the kernel at boot time are needed, you can look at your current arguments in the /proc/cmdline file. Later these same arguments will be given for the new kernel.
+
+[root@cent:~]# cat /proc/cmdline
+ro root=LABEL=/
+
+Now to load the new kernel:
+
+[root@cent:~]# kexec -l /boot/vmlinuz-2.6.18-194.11.4.el5 
+--initrd=/boot/initrd-2.6.18-194.11.4.el5.img 
+--command-line="$( cat /proc/cmdline )"
+
+Start the magic and boot to the new loaded kernel:
+
+[root@cent:~]# kexec -e
+
+Hope this post will be helpful and inspire others to some kexec experiments 🙂
