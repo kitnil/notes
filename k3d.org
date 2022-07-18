@@ -1,0 +1,25 @@
+#+begin_example
+  oleg@guixsd ~/.local/share/chezmoi$ /gnu/store/8gpm8y35ky1hpmlc59dpmb3n0nycn9bd-k3d-5.4.4/bin/k3d cluster create cluster1
+  INFO[0000] Prep: Network
+  INFO[0000] Created network 'k3d-cluster1'
+  INFO[0000] Created image volume k3d-cluster1-images
+  INFO[0000] Starting new tools node...
+  INFO[0001] Pulling image 'ghcr.io/k3d-io/k3d-tools:5.4.4'
+  INFO[0001] Creating node 'k3d-cluster1-server-0'
+  INFO[0003] Pulling image 'docker.io/rancher/k3s:v1.23.8-k3s1'
+  INFO[0003] Starting Node 'k3d-cluster1-tools'
+  INFO[0012] Creating LoadBalancer 'k3d-cluster1-serverlb'
+  INFO[0013] Pulling image 'ghcr.io/k3d-io/k3d-proxy:5.4.4'
+  INFO[0017] Using the k3d-tools node to gather environment information
+  INFO[0018] HostIP: using network gateway 172.27.0.1 address
+  INFO[0018] Starting cluster 'cluster1'
+  INFO[0018] Starting servers...
+  INFO[0018] Starting Node 'k3d-cluster1-server-0'
+  INFO[0022] All agents already running.
+  INFO[0022] Starting helpers...
+  INFO[0022] Starting Node 'k3d-cluster1-serverlb'
+  INFO[0028] Injecting records for hostAliases (incl. host.k3d.internal) and for 2 network members into CoreDNS configmap...
+  INFO[0030] Cluster 'cluster1' created successfully!
+  INFO[0030] You can now use it like this:
+  kubectl cluster-info
+#+end_example
