@@ -37,3 +37,14 @@
 * Cheat sheet
 
 : ssh web33.intr sudo docker exec crowdsec cscli decisions list --output json | jq --raw-output '.[] | .source.ip'
+
+* Bouncers
+
+#+begin_example
+  root@6b5f65057fc7:/# cscli bouncers add nginxBouncer
+  Api key for 'nginxBouncer':
+
+     xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+  Please keep this key since you will not be able to retrieve it!
+#+end_example
