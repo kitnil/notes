@@ -23,3 +23,5 @@
   INFO[0030] You can now use it like this:
   kubectl cluster-info
 #+end_example
+
+: sudo KUBECONFIG=/home/oleg/kubeconfig.yaml nsenter -t $(docker inspect --format '{{.State.Pid}}' k3d-cluster1-server-0) -n virtctl start vm-guix-datavolume
