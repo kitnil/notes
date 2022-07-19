@@ -33,3 +33,7 @@
   ему обработать упомянутые события;
 
 - Local API: сколько раз был использован каждый маршрут и т.д.
+
+* Cheat sheet
+
+: ssh web33.intr sudo docker exec crowdsec cscli decisions list --output json | jq --raw-output '.[] | .source.ip'
