@@ -25,3 +25,4 @@
 #+end_example
 
 : sudo KUBECONFIG=/home/oleg/kubeconfig.yaml nsenter -t $(docker inspect --format '{{.State.Pid}}' k3d-cluster1-server-0) -n virtctl start vm-guix-datavolume
+: sudo KUBECONFIG=/home/oleg/kubeconfig.yaml nsenter -t $(docker inspect --format '{{.State.Pid}}' k3d-cluster1-server-0) -n virtctl ssh -i /home/oleg/.ssh/id_rsa_vm1.wugi.info vm-guix-datavolume
