@@ -260,6 +260,9 @@
 - push images from server
   : printf "docker push %s\n" $(for image in "$(docker images)"; do echo "$image" | awk '{ print $1 ":" $2 }'; done) > push.jobs
 
+- delete all containers
+  : docker ps --format '{{ .Names }}' | xargs docker rm -f
+
 * Awesome
 
 - https://github.com/hadolint/hadolint
