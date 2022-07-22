@@ -1328,4 +1328,7 @@ Misc
 
 * systemd
 
+: mkdir -p /sys/fs/cgroup/systemd
+: mount -t cgroup -o none,name=systemd cgroup /sys/fs/cgroup/systemd
+
 : docker run --tmpfs /tmp --tmpfs /run/lock --tmpfs /run -v /sys/fs/cgroup:/sys/fs/cgroup:ro --name debian -t jrei/systemd-debian:11
