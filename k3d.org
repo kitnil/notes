@@ -24,5 +24,11 @@
   kubectl cluster-info
 #+end_example
 
-: sudo KUBECONFIG=/home/oleg/kubeconfig.yaml nsenter -t $(docker inspect --format '{{.State.Pid}}' k3d-cluster1-server-0) -n virtctl start vm-guix-datavolume
-: sudo KUBECONFIG=/home/oleg/kubeconfig.yaml nsenter -t $(docker inspect --format '{{.State.Pid}}' k3d-cluster1-server-0) -n virtctl ssh -i /home/oleg/.ssh/id_rsa_vm1.wugi.info vm-guix-datavolume
+- Start virtual machine
+  : sudo KUBECONFIG=/home/oleg/kubeconfig.yaml nsenter -t $(docker inspect --format '{{.State.Pid}}' k3d-cluster1-server-0) -n virtctl start vm-guix-datavolume
+
+- Connect to virtual machine over SSH
+  : sudo KUBECONFIG=/home/oleg/kubeconfig.yaml nsenter -t $(docker inspect --format '{{.State.Pid}}' k3d-cluster1-server-0) -n virtctl ssh -i /home/oleg/.ssh/id_rsa_vm1.wugi.info vm-guix-datavolume
+
+- Connect to virtual machine over VNC
+  : sudo KUBECONFIG=/home/oleg/kubeconfig.yaml nsenter -t $(docker inspect --format '{{.State.Pid}}' k3d-cluster1-server-0) -n virtctl vnc vm-guix-datavolume
