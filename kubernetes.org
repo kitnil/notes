@@ -391,6 +391,13 @@ Once running, the URL to the dashboard is https://2886795308-30000-simba08.envir
   Uploading data to https://10.43.181.37
 #+end_example
 
+- get context
+  #+begin_example
+    oleg@guixsd ~$ kubectl config get-contexts
+    CURRENT   NAME           CLUSTER        AUTHINFO             NAMESPACE
+    ,*         k8s-cluster0   k8s-cluster0   k8s-cluster0-admin   
+  #+end_example
+
 - change context
   #+begin_example
     kubectl config use-context k8s-cluster0
