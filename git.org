@@ -107,6 +107,7 @@ rerere-train.sh [COMMIT][--all]
 - [[https://github.blog/2022-06-29-improve-git-monorepo-performance-with-a-file-system-monitor/][Improve Git monorepo performance with a file system monitor | The GitHub Blog]]
 - [[https://github.com/martinbaillie/vaultsign][martinbaillie/vaultsign: Sign/verify git commits using HashiCorp Vault.]]
 - [[https://github.com/jdockerty/today][jdockerty/today: View your commit history across multiple directories, ideal for daily standup.]]
+- [[https://github.com/kubernetes/git-sync][kubernetes/git-sync: A sidecar app which clones a git repo and keeps it in sync with the upstream.]]
 
 * Programms
 
