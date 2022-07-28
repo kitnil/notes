@@ -100,6 +100,13 @@ thanks [[https://stackoverflow.com/questions/48148838/kube-dns-error-reply-from-
 
 [[https://bytemeta.vip/repo/kubevirt/hyperconverged-cluster-operator/issues/1408][Error from server (InternalError): Internal error occurred: failed calling webhook "kubevirt-update-validator.kubevirt.io": Post https://kubevirt-operator-webhook.kubevirt-hyperconverged.svc:443/kubevirt-validate-update?timeout=10s: no endpoints available for service "kubevirt-operator-webhook" - bytemeta]]
 
+#+begin_quote
+It was cleared by deleting ValidatingWebhookConfiguration and
+MutatingWebhookConfiguration. After deleting all resources from both, then I
+can clearly delete kubevirt CRD and Kubevirt-Hyperconverged. So close the
+issue.
+#+end_quote
+
 oleg@guixsd ~/src/gitlab.intr/nixos/kubernetes$ kubectl delete ValidatingWebhookConfiguration virt-operator-validator
 validatingwebhookconfiguration.admissionregistration.k8s.io "virt-operator-validator" deleted
 
