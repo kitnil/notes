@@ -95,3 +95,11 @@ thanks [[https://stackoverflow.com/questions/48148838/kube-dns-error-reply-from-
   Processing completed successfully
   Uploading /home/oleg/.local/share/chezmoi/dotfiles/kubernetes/kubevirt/guix/guix.qcow2 completed successfully
 #+end_example
+
+* Delete
+
+oleg@guixsd ~/src/gitlab.intr/nixos/kubernetes$ kubectl delete ValidatingWebhookConfiguration virt-operator-validator
+validatingwebhookconfiguration.admissionregistration.k8s.io "virt-operator-validator" deleted
+
+oleg@guixsd ~/src/gitlab.intr/nixos/kubernetes$ kubectl -n kubevirt patch kv kubevirt --type=merge -p '{"metadata":{"finalizers":[]}}'
+kubevirt.kubevirt.io/kubevirt patched
