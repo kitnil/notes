@@ -107,8 +107,10 @@ can clearly delete kubevirt CRD and Kubevirt-Hyperconverged. So close the
 issue.
 #+end_quote
 
-oleg@guixsd ~/src/gitlab.intr/nixos/kubernetes$ kubectl delete ValidatingWebhookConfiguration virt-operator-validator
+: for a in $(kubectl get apiservices | grep kube | awk '{ print $1 }'); do kubectl delete apiservices "$a"; done
+
+: kubectl delete ValidatingWebhookConfiguration virt-operator-validator
 validatingwebhookconfiguration.admissionregistration.k8s.io "virt-operator-validator" deleted
 
-oleg@guixsd ~/src/gitlab.intr/nixos/kubernetes$ kubectl -n kubevirt patch kv kubevirt --type=merge -p '{"metadata":{"finalizers":[]}}'
+: kubectl -n kubevirt patch kv kubevirt --type=merge -p '{"metadata":{"finalizers":[]}}'
 kubevirt.kubevirt.io/kubevirt patched
