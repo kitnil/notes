@@ -69,6 +69,7 @@
   #+end_src
 - [[https://dotsandbrackets.com/kubernetes-example-ru/][Разбираем Kubernetes пример - Dots and Brackets]]
 - [[https://gabrieltanner.org/blog/ha-kubernetes-cluster-using-k3s/][Setting up a HA Kubernetes cluster using K3S]]
+- [[https://habr.com/ru/post/673730/][Сертификаты K8S или как распутать вермишель Часть 1 / Хабр]]
 
 * Tools
 - [[https://github.com/stackrox/kube-linter][stackrox/kube-linter: KubeLinter is a static analysis tool that checks Kubernetes YAML files and Helm charts to ensure the applications represented in them adhere to best practices.]]
