@@ -35,3 +35,27 @@
   processed 1 files, 40.000 GiB in 4:40
   snapshot 229f6626 saved
 #+end_example
+
+second run
+
+#+begin_example
+  open repository
+  repository 70000033 opened successfully, password is correct
+  found 2 old cache directories in /root/.cache/restic, run `restic cache --cleanup` to remove them
+  lock repository
+  load index files
+  using parent snapshot 229f6626
+  read data from stdin
+  start scan on [/win10.img]
+  start backup on [/win10.img]
+  scan finished in 0.319s: 1 files, 0 B
+
+  Files:           0 new,     1 changed,     0 unmodified
+  Dirs:            0 new,     0 changed,     0 unmodified
+  Data Blobs:      0 new
+  Tree Blobs:      1 new
+  Added to the repo: 3.411 MiB
+
+  processed 1 files, 40.000 GiB in 2:21
+  snapshot 499df287 saved
+#+end_example
