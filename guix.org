@@ -2096,6 +2096,9 @@ success = false; } else { //Lock texture if( !gFooTexture.lockTexture() ) { prin
   - https://www.gnu.org/ghm/2013/paris/v2/sylvain/output.webm
   - https://www.gnu.org/software/guix/blog/tags/talks/
 
+  - https://www.cloudbees.com/videos/purely-functional-ci-cd-pipeline-using-jenkins-with-guix
+  - https://xana.lepiller.eu/guix-days-2022/guix-days-2022-guix-aws-lambda.mkv
+
 * Dualboot
 
   https://lists.gnu.org/archive/html/help-guix/2016-03/msg00083.html
