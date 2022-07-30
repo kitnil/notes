@@ -287,3 +287,7 @@
     <seclabel type='none' model='none'/>
   </domain>
 #+end_src
+
+* qemu-agent
+
+: virsh qemu-agent-command ubuntu22.04 --timeout 60 '{"execute":"guest-network-get-interfaces"}' | jq
