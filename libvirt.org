@@ -291,3 +291,13 @@
 * qemu-agent
 
 : virsh qemu-agent-command ubuntu22.04 --timeout 60 '{"execute":"guest-network-get-interfaces"}' | jq
+
+* trim
+
+Add to =<driver>=:
+#+begin_example
+  discard='unmap' detect_zeroes='unmap'
+#+end_example
+
+Run:
+: virsh qemu-agent-command ubuntu22.04 --timeout 60 '{"execute":"guest-fstrim"}'
