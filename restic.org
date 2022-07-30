@@ -59,3 +59,12 @@ second run
   processed 1 files, 40.000 GiB in 2:21
   snapshot 499df287 saved
 #+end_example
+
+** Restore restic to lvm
+: /home/oleg/.guix-profile/bin/restic dump 8190874e ubuntu22.04.img | /gnu/store/l321bkfyh792p519c14p8hqh6ls1m0nl-pv-1.6.20/bin/pv -s 20G | dd of=/dev/lvm2/thin-ubuntu22.04 bs=4M
+#+begin_example
+  20.0GiB 0:02:30 [ 136MiB/s] [================================================================================================================================================>] 100%
+  0+333077 records in
+  0+333077 records out
+  21474836480 bytes (21 GB, 20 GiB) copied, 152.179 s, 141 MB/s
+#+end_example
