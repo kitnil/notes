@@ -294,6 +294,8 @@
 
 * trim
 
+[[https://anteru.net/blog/2020/qemu-kvm-and-trim/][QEMU, KVM and trim | Anteru's Blog]]
+
 Add to =<driver>=:
 #+begin_example
   discard='unmap' detect_zeroes='unmap'
