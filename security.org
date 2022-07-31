@@ -141,5 +141,8 @@ docker ps --format '{{ .Image }}' | grep master | sort -u | xargs -I{} docker pu
   - [[https://debricked.com/en/vulnerability-database][Vulnerability Database | Debricked]]
 - [[https://apisec-inc.github.io/pentest/][Free and Instant API penetration Testing | EthicalCheck™]]
 
+* Tools
+- [[https://github.com/tr3ss/gofetch][tr3ss/gofetch: This could have been a bash one-liner but guess what. It's a small Go tool that lists the trending CVEs from cvetrends.com]]
+
 * totp
 - [[https://github.com/susam/mintotp][susam/mintotp: Minimal TOTP generator in 20 lines of Python]]
