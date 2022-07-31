@@ -73,6 +73,7 @@ NOTE: "pipeline" equal to "workflow".
 - [[https://github.com/jenkinsci/sidebar-link-plugin?auto_subscribed=false][jenkinsci/sidebar-link-plugin: Jenkins sidebar-link plugin]]
 - [[https://github.com/jenkinsci/git-forensics-plugin][jenkinsci/git-forensics-plugin: Jenkins plug-in that mines and analyzes data from a Git repository]]
 - [[https://github.com/jenkinsci/urltrigger-plugin][jenkinsci/urltrigger-plugin]]
+- [[https://github.com/inventi/jenkins-rabbitz][inventi/jenkins-rabbitz: Jenkins Karotz plugin written in Clojure]]
 
 * Pitfalls
 - [[https://issues.jenkins.io/browse/JENKINS-41929?focusedCommentId=401081&page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-401081]["Build with Parameters" on first build when declarative Jenkinsfile found]]
