@@ -142,4 +142,4 @@ docker ps --format '{{ .Image }}' | grep master | sort -u | xargs -I{} docker pu
 - [[https://apisec-inc.github.io/pentest/][Free and Instant API penetration Testing | EthicalCheck™]]
 
 * totp
-[[https://github.com/susam/mintotp][susam/mintotp: Minimal TOTP generator in 20 lines of Python]]
+- [[https://github.com/susam/mintotp][susam/mintotp: Minimal TOTP generator in 20 lines of Python]]
