@@ -68,3 +68,15 @@
 
 * File systems
 - [[https://github.com/Antynea/grub-btrfs][Antynea/grub-btrfs: Include btrfs snapshots at boot options. (Grub menu)]]
+
+* Resolution
+
+#+begin_quote
+Finally learned to set resolution in #GRUB and now running #Guix #Linux-libre on an unsopported card (radeon rx5500xt) at full resolution!
+
+In grub console:
+set gfxmode=1920x1080
+terminal_output console
+terminal_output gfxterm
+set gfxpayload=keep
+#+end_quote
