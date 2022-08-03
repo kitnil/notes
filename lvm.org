@@ -43,12 +43,12 @@ Pool lvm1 started
   Rounding up size to full physical extent 12.00 MiB
   Logical volume "volume0" created.
 
-** thin pool
+** Create a thin pool
 
 : modprobe dm-thin-pool
 
 #+begin_example
-  root@guixsd ~# lvcreate -l 100%FREE --thinpool thinpool2 lvm2
+  root@guixsd ~# lvcreate -l 100%FREE --thinpool thinpool2 vg0
     Thin pool volume with chunk size 1.00 MiB can address at most 253.00 TiB of data.
     WARNING: Pool zeroing and 1.00 MiB large chunk size slows down thin provisioning.
     WARNING: Consider disabling zeroing (-Zn) or using smaller chunk size (<512.00 KiB).
