@@ -94,6 +94,7 @@ docker ps --format '{{ .Image }}' | grep master | sort -u | xargs -I{} docker pu
 - [[https://github.com/BishopFox/sliver][BishopFox/sliver: Adversary Emulation Framework]]
 - [[https://github.com/supertokens/supertokens-core][supertokens/supertokens-core: Open source alternative to Auth0 / Firebase Auth / AWS Cognito]]
 - [[https://github.com/pomerium/pomerium][pomerium/pomerium: Pomerium is an identity-aware access proxy.]]
+- [[https://github.com/ssh-vault/ssh-vault][ssh-vault/ssh-vault: 🌰 encrypt/decrypt using ssh keys]]
 
 * Awesome
 - [[https://github.com/Lissy93/personal-security-checklist][Lissy93/personal-security-checklist: 🔒 A curated checklist of 300+ tips for protecting digital security and privacy in 2022]]
