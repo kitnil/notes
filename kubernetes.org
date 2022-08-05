@@ -222,16 +222,13 @@
 ** dynamic
 - [[https://github.com/rancher/local-path-provisioner][rancher/local-path-provisioner: Dynamically provisioning persistent local storage with Kubernetes]]
 #+begin_example
-  $ kubectl apply -f https://raw.githubusercontent.com/rancher/local-path-provisioner/v0.0.22/deploy/local-path-storage.yaml
+  $ kubectl create -f https://raw.githubusercontent.com/rancher/local-path-provisioner/v0.0.22/deploy/local-path-storage.yaml
   namespace/local-path-storage created
   serviceaccount/local-path-provisioner-service-account created
-  Warning: resource clusterroles/local-path-provisioner-role is missing the kubectl.kubernetes.io/last-applied-configuration annotation which is required by kubectl apply. kubectl apply should only be used on resources created declaratively by either kubectl create --save-config or kubectl apply. The missing annotation will be patched automatically.
-  clusterrole.rbac.authorization.k8s.io/local-path-provisioner-role configured
-  Warning: resource clusterrolebindings/local-path-provisioner-bind is missing the kubectl.kubernetes.io/last-applied-configuration annotation which is required by kubectl apply. kubectl apply should only be used on resources created declaratively by either kubectl create --save-config or kubectl apply. The missing annotation will be patched automatically.
-  clusterrolebinding.rbac.authorization.k8s.io/local-path-provisioner-bind configured
+  clusterrole.rbac.authorization.k8s.io/local-path-provisioner-role created
+  clusterrolebinding.rbac.authorization.k8s.io/local-path-provisioner-bind created
   deployment.apps/local-path-provisioner created
-  Warning: resource storageclasses/local-path is missing the kubectl.kubernetes.io/last-applied-configuration annotation which is required by kubectl apply. kubectl apply should only be used on resources created declaratively by either kubectl create --save-config or kubectl apply. The missing annotation will be patched automatically.
-  storageclass.storage.k8s.io/local-path configured
+  storageclass.storage.k8s.io/local-path created
   configmap/local-path-config created
 #+end_example
 
