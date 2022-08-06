@@ -213,6 +213,7 @@
   - [[https://github.com/flant/shell-operator][flant/shell-operator: Shell-operator is a tool for running event-driven scripts in a Kubernetes cluster]]
 - [[https://github.com/corneliusweig/rakkess][corneliusweig/rakkess: Review Access - kubectl plugin to show an access matrix for k8s server resources]]
 - [[https://github.com/WoozyMasta/kube-dump][WoozyMasta/kube-dump: Backup a Kubernetes cluster as a yaml manifest]]
+- [[https://github.com/kubernetes-sigs/kwok][kubernetes-sigs/kwok: Simulate thousands of fake kubelets, on a laptop with minimum resource footprint.]]
 
 ** minikube
 - [[https://habr.com/ru/company/vk/blog/648117/][Как работать с Minikube: рекомендации и полезные советы / Хабр]]
@@ -429,6 +430,9 @@ Once running, the URL to the dashboard is https://2886795308-30000-simba08.envir
     # Validate it
     kubectl config view --minify | grep namespace:
   #+end_example
+
+- run linter
+  : docker run --network=host --rm -it -v $HOME/.kube:/root/.kube -e POPEYE_REPORT_DIR=/tmp/popeye -v /tmp/popeye:/tmp/popeye derailed/popeye --context k8s-cluster0-lb -n default --save --out html --output-file report.html
 
 * How it works
 
