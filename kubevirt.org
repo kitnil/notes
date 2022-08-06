@@ -100,7 +100,7 @@ thanks [[https://stackoverflow.com/questions/48148838/kube-dns-error-reply-from-
   Uploading /home/oleg/.local/share/chezmoi/dotfiles/kubernetes/kubevirt/guix/guix.qcow2 completed successfully
 #+end_example
 
-- [[https://github.com/kubernetes-sigs/sig-storage-local-static-provisioner][kubernetes-sigs/sig-storage-local-static-provisioner: Static provisioner of local volumes]]
+** [[https://github.com/kubernetes-sigs/sig-storage-local-static-provisioner][kubernetes-sigs/sig-storage-local-static-provisioner: Static provisioner of local volumes]]
 
   The local volume static provisioner manages PersistentVolume lifecycle for
   pre-allocated disks by detecting and creating PVs for each local disk on the
