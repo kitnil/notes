@@ -102,6 +102,11 @@ thanks [[https://stackoverflow.com/questions/48148838/kube-dns-error-reply-from-
 
 - [[https://github.com/kubernetes-sigs/sig-storage-local-static-provisioner][kubernetes-sigs/sig-storage-local-static-provisioner: Static provisioner of local volumes]]
 
+  The local volume static provisioner manages PersistentVolume lifecycle for
+  pre-allocated disks by detecting and creating PVs for each local disk on the
+  host, and cleaning up the disks when released. It does not support dynamic
+  provisioning.
+
 * Delete
 
 [[https://bytemeta.vip/repo/kubevirt/hyperconverged-cluster-operator/issues/1408][Error from server (InternalError): Internal error occurred: failed calling webhook "kubevirt-update-validator.kubevirt.io": Post https://kubevirt-operator-webhook.kubevirt-hyperconverged.svc:443/kubevirt-validate-update?timeout=10s: no endpoints available for service "kubevirt-operator-webhook" - bytemeta]]
