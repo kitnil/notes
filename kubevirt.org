@@ -109,6 +109,10 @@ thanks [[https://stackoverflow.com/questions/48148838/kube-dns-error-reply-from-
 
 - [[https://scribe.rip/alterway/kubernetes-local-static-provisioner-4c197e0f83ab][Kubernetes local static provisioner]]
 
+** [[https://github.com/kubevirt/hostpath-provisioner-operator][kubevirt/hostpath-provisioner-operator]]
+
+- [[https://www.sobyte.net/post/2022-05/kubevirt/][Kubevirt Managing Virtual Machines - SoByte]]
+
 * Delete
 
 [[https://bytemeta.vip/repo/kubevirt/hyperconverged-cluster-operator/issues/1408][Error from server (InternalError): Internal error occurred: failed calling webhook "kubevirt-update-validator.kubevirt.io": Post https://kubevirt-operator-webhook.kubevirt-hyperconverged.svc:443/kubevirt-validate-update?timeout=10s: no endpoints available for service "kubevirt-operator-webhook" - bytemeta]]
