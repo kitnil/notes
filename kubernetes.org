@@ -233,6 +233,17 @@
   configmap/local-path-config created
 #+end_example
 
+#+begin_example
+  $ kubectl delete -f https://raw.githubusercontent.com/rancher/local-path-provisioner/v0.0.22/deploy/local-path-storage.yaml
+  namespace "local-path-storage" deleted
+  serviceaccount "local-path-provisioner-service-account" deleted
+  clusterrole.rbac.authorization.k8s.io "local-path-provisioner-role" deleted
+  clusterrolebinding.rbac.authorization.k8s.io "local-path-provisioner-bind" deleted
+  deployment.apps "local-path-provisioner" deleted
+  storageclass.storage.k8s.io "local-path" deleted
+  configmap "local-path-config" deleted
+#+end_example
+
 * Helm
 - [[https://github.com/twuni/docker-registry.helm][twuni/docker-registry.helm: Helm chart for a Docker registry. Successor to stable/docker-registry chart.]]
 
