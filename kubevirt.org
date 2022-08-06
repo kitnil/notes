@@ -115,3 +115,18 @@ validatingwebhookconfiguration.admissionregistration.k8s.io "virt-operator-valid
 
 : kubectl -n kubevirt patch kv kubevirt --type=merge -p '{"metadata":{"finalizers":[]}}'
 kubevirt.kubevirt.io/kubevirt patched
+
+* Cheat sheet
+
+#+begin_example
+  $ virtctl vnc vm-nixos1-datavolume                                                                          [36/36]
+  You are using a client virtctl version that is different from the KubeVirt version running in the cluster
+  Client Version: v0.53.0
+  Server Version: v0.55.0
+  Can't access VMI vm-nixos1-datavolume: Internal error occurred: dialing virt-handler: could not verify peer certificate: x509: certificate has expired or is not yet valid: current time 2022-08
+  -06T04:10:48Z is after 2022-08-05T18:56:56Z
+#+end_example
+
+#+begin_example
+  $ kubectl delete pods --namespace kubevirt -l kubevirt.io
+#+end_example
