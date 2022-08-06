@@ -446,6 +446,9 @@ Once running, the URL to the dashboard is https://2886795308-30000-simba08.envir
 - run linter
   : docker run --network=host --rm -it -v $HOME/.kube:/root/.kube -e POPEYE_REPORT_DIR=/tmp/popeye -v /tmp/popeye:/tmp/popeye derailed/popeye --context k8s-cluster0-lb -n default --save --out html --output-file report.html
 
+- mark master nodes as unschedulable
+  : kubectl taint node kube3 unschedulable=true:NoSchedule
+
 * How it works
 
 First of all you should have a working etcd.
