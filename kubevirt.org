@@ -100,6 +100,8 @@ thanks [[https://stackoverflow.com/questions/48148838/kube-dns-error-reply-from-
   Uploading /home/oleg/.local/share/chezmoi/dotfiles/kubernetes/kubevirt/guix/guix.qcow2 completed successfully
 #+end_example
 
+- [[https://github.com/kubernetes-sigs/sig-storage-local-static-provisioner][kubernetes-sigs/sig-storage-local-static-provisioner: Static provisioner of local volumes]]
+
 * Delete
 
 [[https://bytemeta.vip/repo/kubevirt/hyperconverged-cluster-operator/issues/1408][Error from server (InternalError): Internal error occurred: failed calling webhook "kubevirt-update-validator.kubevirt.io": Post https://kubevirt-operator-webhook.kubevirt-hyperconverged.svc:443/kubevirt-validate-update?timeout=10s: no endpoints available for service "kubevirt-operator-webhook" - bytemeta]]
