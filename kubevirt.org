@@ -13,6 +13,9 @@
 - [[https://github.com/Tedezed/kubevirt-images-generator][Tedezed/kubevirt-images-generator: Easy Kubevirt images generator - Public images repository 💿]]
 - [[https://kubevirt.io/2020/OKD-web-console-install.html][Managing KubeVirt with OpenShift Web Console | KubeVirt.io]]
 
+* learning
+- [[https://www.cncf.io/wp-content/uploads/2020/08/Fast_Packet_Processing_v1.pdf][Fast_Packet_Processing_v1.pdf]]
+
 * cdi
 
 oleg@guixsd ~$ kubectl delete pvc/demo-vm-pv
