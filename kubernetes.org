@@ -557,3 +557,16 @@ nodes. Let's try to address these issues one by one:
     kubectl describe node to check taints and kubectl taint nodes <node-name>
     <taint-name>- in order to remove them. Check the Taints and Tolerations
     for more details.
+
+* Networking
+
+: $ kubectl describe node | grep '^Name\|PodCIDR'
+#+begin_example
+  Name:               kube1
+  PodCIDR:                      10.1.0.0/24
+  PodCIDRs:                     10.1.0.0/24
+  ...
+  Name:               kube7
+  PodCIDR:                      10.1.6.0/24
+  PodCIDRs:                     10.1.6.0/24
+#+end_example
