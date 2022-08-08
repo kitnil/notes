@@ -462,6 +462,9 @@ Once running, the URL to the dashboard is https://2886795308-30000-simba08.envir
 - drain node
   : kubectl drain kube6 --ignore-daemonsets --delete-emptydir-data
 
+- undrain node
+  : kubectl uncordon kube6
+
 * How it works
 
 First of all you should have a working etcd.
