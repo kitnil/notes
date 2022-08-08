@@ -78,6 +78,7 @@
 - [[https://opensource.com/article/19/11/how-contribute-kubernetes][How to contribute to Kubernetes if you have a full-time job | Opensource.com]]
 - [[https://kubernetes.io/docs/concepts/scheduling-eviction/_print/][Scheduling, Preemption and Eviction | Kubernetes]]
 - [[https://kubernetes.io/docs/tasks/debug/debug-cluster/][Troubleshooting Clusters | Kubernetes]]
+- [[https://kubernetes.io/docs/reference/tools/map-crictl-dockercli/][Mapping from dockercli to crictl | Kubernetes]]
 
 * Tools
 - [[https://github.com/stackrox/kube-linter][stackrox/kube-linter: KubeLinter is a static analysis tool that checks Kubernetes YAML files and Helm charts to ensure the applications represented in them adhere to best practices.]]
