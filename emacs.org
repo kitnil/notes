@@ -876,17 +876,6 @@ Happy hacking =),
 - [[https://github.com/ChanderG/toodoo.el][ChanderG/toodoo.el: A magical interface to manage Todos built ontop of Org]]
 - [[https://github.com/emacsmirror/cycle-at-point][emacsmirror/cycle-at-point: Cycle (rotate) the thing under the cursor]]
 - [[https://github.com/etern/edit-as-format][etern/edit-as-format: Edit document as other format, in Emacs, using Pandoc]]
-** sudo
-- [[https://github.com/alpha-catharsis/sudo-utils/tree/089f7833fa256f293284a6286bf9cb2b78eff40d][alpha-catharsis/sudo-utils at 089f7833fa256f293284a6286bf9cb2b78eff40d]]
-** RSS
-- [[https://gitlab.com/ambrevar/emacs-webfeeder][Ambrevar / Emacs Webfeeder · GitLab]]
-** po-mode
-#+begin_quote
-'f' (fuzzy), 'u' (untranslated), RET (edit the current translation, open an
-Emacs window) and 'C-c C-c' (accept the translation, close the Emacs window).
-Upper case letters for the reverse order... And the rest are nice-to-have
-features, like 'V' to execute msgfmt and so on.
-#+end_quote
 ** Bug report
 
  [[http://manuel-uberti.github.io//emacs/2018/05/25/display-version/][A fancy Emacs version – manu.el]]
@@ -928,6 +917,8 @@ features, like 'V' to execute msgfmt and so on.
 ** CI
 - [[https://github.com/TxGVNN/gitlab-pipeline][TxGVNN/gitlab-pipeline: Emacs tool to show gitlab-pipeline]]
 
+** Copilot
+ - [[https://github.com/zerolfx/copilot.el][zerolfx/copilot.el: An unofficial Copilot plugin for Emacs.]]
 ** Dired
 
    Origin https://peterreavy.wordpress.com/2011/05/04/emacs-dired-tips/
@@ -1103,9 +1094,6 @@ features, like 'V' to execute msgfmt and so on.
 *** elfeed like interface for youtube
 - [[https://github.com/emacsmirror/ytdious][emacsmirror/ytdious: Query / Preview YouTube via Invidious]]
 
-** Themes
-- [[https://github.com/ashton314/amethyst][ashton314/amethyst: An elegant Emacs setup optimized for non-technical writers]]
-
 ** epkg
 
  attic/debian-changelog-mode
@@ -1182,10 +1170,8 @@ features, like 'V' to execute msgfmt and so on.
        ("." . browse-url-firefox)))
  #+END_SRC
 
-** Navigation
-- [[https://github.com/jcs-elpa/atl-long-lines][jcs-elpa/atl-long-lines: Turn off truncate-lines when the line is long.]] This plugin enable/disable truncate-lines base on the line length your cursor currently on.
-- [[https://github.com/gexplorer/counsel-ag-popup][gexplorer/counsel-ag-popup: The power of searching with ag using counsel with transient popups Magit style.]]
-
+** High light
+- [[https://github.com/casouri/undo-hl][casouri/undo-hl: Highlight undo operations so you never get lost]]
 ** Info
 
    - [[https://lists.gnu.org/archive/html/help-gnu-emacs/2018-01/msg00150.html][Splitting and merging nodes]]
@@ -1194,20 +1180,23 @@ features, like 'V' to execute msgfmt and so on.
 
 ** Jinja
    - [[https://github.com/clarete/templatel][clarete/templatel: Jinja inspired template language for Emacs Lisp]]
-** High light
-- [[https://github.com/casouri/undo-hl][casouri/undo-hl: Highlight undo operations so you never get lost]]
-** Tabs
-- [[https://github.com/casouri/highres-tab-line][casouri/highres-tab-line: High-res tab-line icons]]
+** Libraries
+- [[https://github.com/ROCKTAKEY/rii][ROCKTAKEY/rii: Reversible input interface for multiple input.]]
+
 ** Ligatures
 - [[https://github.com/mickeynp/ligature.el][mickeynp/ligature.el: Display typographical ligatures in Emacs]]
+** LSP
+- [[https://github.com/manateelazycat/nox][manateelazycat/nox: Nox is a lightweight, high-performance LSP client for Emacs]]
 ** Magit
  - magit-cherry
  - [[https://github.com/wandersoncferreira/code-review][wandersoncferreira/code-review: Code Reviews with Emacs]]
  - [[https://github.com/paulotome/emacstool][paulotome/emacstool: Using Emacs Ediff as Git Merge/Difftool]]
-** Copilot
- - [[https://github.com/zerolfx/copilot.el][zerolfx/copilot.el: An unofficial Copilot plugin for Emacs.]]
-** LSP
-- [[https://github.com/manateelazycat/nox][manateelazycat/nox: Nox is a lightweight, high-performance LSP client for Emacs]]
+** mode-line
+- [[https://github.com/Stebalien/i3bar.el/tree/7c182fef33578ae32f945758123601396de227d0][Stebalien/i3bar.el at 7c182fef33578ae32f945758123601396de227d0]]
+** Navigation
+- [[https://github.com/jcs-elpa/atl-long-lines][jcs-elpa/atl-long-lines: Turn off truncate-lines when the line is long.]] This plugin enable/disable truncate-lines base on the line length your cursor currently on.
+- [[https://github.com/gexplorer/counsel-ag-popup][gexplorer/counsel-ag-popup: The power of searching with ag using counsel with transient popups Magit style.]]
+
 ** Org
    - [[https://github.com/NicolasPetton/nroam][NicolasPetton/nroam: Org-roam backlinks within org-mode buffers]]
    - [[https://github.com/ngirard/org-noweb][ngirard/org-noweb: Easier Literate Programming using Org mode]]
@@ -1221,16 +1210,33 @@ features, like 'V' to execute msgfmt and so on.
    - [[https://github.com/conao3/org-generate.el][conao3/org-generate.el: Generate template files/folders from one org document]]
    - [[https://github.com/io12/org-fragtog][io12/org-fragtog: Automatically toggle org-mode latex fragment previews as the cursor enters and exits them]]
    - [[https://github.com/milouse/fronde][milouse/fronde: A static website generator for Emacs Org mode]]
-** Undo
-- [[https://github.com/jackkamm/undo-propose-el][jackkamm/undo-propose-el: Navigate the emacs undo history by staging undo's in a temporary buffer]]
 ** Podcasts
  - [[https://emacscast.org/][EmacsCast | EmacsCast]]
 *** Keys
   - C-c C-t :: show how much function changed in diff
+** po-mode
+#+begin_quote
+'f' (fuzzy), 'u' (untranslated), RET (edit the current translation, open an
+Emacs window) and 'C-c C-c' (accept the translation, close the Emacs window).
+Upper case letters for the reverse order... And the rest are nice-to-have
+features, like 'V' to execute msgfmt and so on.
+#+end_quote
+** RSS
+- [[https://gitlab.com/ambrevar/emacs-webfeeder][Ambrevar / Emacs Webfeeder · GitLab]]
+** Shell
+- [[https://github.com/Overdr0ne/shelldon][Overdr0ne/shelldon]]
+
 ** Slack
 - [[https://ag91.github.io/blog/2020/08/14/slack-messages-in-your-org-agenda/][Slack messages in your Org Agenda - Where parallels cross]]
 ** Snippets
 - [[https://github.com/mineo/yatemplate/][mineo/yatemplate: Simple file templates for Emacs with YASnippet]]
+** sudo
+- [[https://github.com/alpha-catharsis/sudo-utils/tree/089f7833fa256f293284a6286bf9cb2b78eff40d][alpha-catharsis/sudo-utils at 089f7833fa256f293284a6286bf9cb2b78eff40d]]
+** Tabs
+- [[https://github.com/casouri/highres-tab-line][casouri/highres-tab-line: High-res tab-line icons]]
+** Themes
+- [[https://github.com/ashton314/amethyst][ashton314/amethyst: An elegant Emacs setup optimized for non-technical writers]]
+
 ** Tramp
    - [[https://git.savannah.gnu.org/cgit/emacs.git/commit/etc/NEWS?id=3da0d3852923f0a20157f72aba6d8896019559f8][emacs.git - Emacs source repository]]
    - tramp-auto-auth.el --- TRAMP automatic authentication library <877e74skek.fsf@oitofelix.com>
@@ -1278,15 +1284,14 @@ login shell of the target to determine the environment to use, so is
 well suited for guix.  You may need to adjust the :protocol and :machine
 keys of the connection-local-set-profiles call for your use case though.
 
+** Undo
+- [[https://github.com/jackkamm/undo-propose-el][jackkamm/undo-propose-el: Navigate the emacs undo history by staging undo's in a temporary buffer]]
 ** VTerm
    - [[https://github.com/ration/find-trace-paths][ration/find-trace-paths: Find paths from error traces and allow to scroll through and click into them]]
    - [[https://gitlab.com/niklaseklund/dtache][Niklas Eklund / dtache · GitLab]]
 
 ** WEB
    - [[https://github.com/karlicoss/cloudmacs][karlicoss/cloudmacs: Selfhost your Emacs and access it in browser]]
-
-** Libraries
-- [[https://github.com/ROCKTAKEY/rii][ROCKTAKEY/rii: Reversible input interface for multiple input.]]
 
 ** YAML
 
@@ -1298,8 +1303,3 @@ emacs-libyaml example:
                       (yaml-read-file "~/archive/src/filestash/.drone.yml")))
    #+end_src
 
-** Shell
-- [[https://github.com/Overdr0ne/shelldon][Overdr0ne/shelldon]]
-
-** mode-line
-- [[https://github.com/Stebalien/i3bar.el/tree/7c182fef33578ae32f945758123601396de227d0][Stebalien/i3bar.el at 7c182fef33578ae32f945758123601396de227d0]]
