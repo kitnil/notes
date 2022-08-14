@@ -272,6 +272,8 @@
 * Helm
 - [[https://github.com/twuni/docker-registry.helm][twuni/docker-registry.helm: Helm chart for a Docker registry. Successor to stable/docker-registry chart.]]
 - [[https://helm.sh/docs/topics/charts/][Helm Documentation | Charts]]
+** Tools
+- [[https://github.com/databus23/schelm][databus23/schelm: Render a helm manifest to a directory]]
 
 * Installation
 - [[https://github.com/miekg/vks][miekg/vks: Virtual Kubelet Provider for Systemd]]
