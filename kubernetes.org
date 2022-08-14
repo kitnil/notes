@@ -274,6 +274,8 @@
 - [[https://helm.sh/docs/topics/charts/][Helm Documentation | Charts]]
 ** Tools
 - [[https://github.com/databus23/schelm][databus23/schelm: Render a helm manifest to a directory]]
+** Cheat sheet
+: helm create mychart
 
 * Installation
 - [[https://github.com/miekg/vks][miekg/vks: Virtual Kubelet Provider for Systemd]]
