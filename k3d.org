@@ -25,7 +25,7 @@
 #+end_example
 
 - Install cluster for kubevirt with shared /var/run/kubevirt
-  : k3d cluster create -p "30022:30022@agent:0" --agents 2 --volume /var/run/kubevirt:/var/run/kubevirt:shared cluster1
+  : k3d cluster create --k3s-arg "--disable=traefik@server:0" -p "30022:30022@agent:0" --agents 2 --volume /var/run/kubevirt:/var/run/kubevirt:shared cluster1
 
 - Start virtual machine
   : sudo KUBECONFIG=/home/oleg/kubeconfig.yaml nsenter -t $(docker inspect --format '{{.State.Pid}}' k3d-cluster1-server-0) -n virtctl start vm-guix-datavolume
