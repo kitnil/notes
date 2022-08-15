@@ -432,6 +432,7 @@ Once running, the URL to the dashboard is https://2886795308-30000-simba08.envir
 
 - API
   : kubectl api-resources
+  : kubectl api-versions
 
 - cdi-uploadproxy
 : kubectl get service cdi-uploadproxy -n cdi
