@@ -148,3 +148,8 @@ ipmitool -U <login> -P '<password>' -H <IP> power on
 
 #power reset
 ipmitool -U <login> -P '<password>' -H <IP> power reset
+
+* Cheat sheet
+
+- host status
+  : ipmipower --hostname=web16.ipmi.intr --username=ADMIN --password="$(pass show majordomo/public/ipmi/ADMIN)" --stat
