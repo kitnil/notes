@@ -596,3 +596,9 @@ nodes. Let's try to address these issues one by one:
   PodCIDR:                      10.1.6.0/24
   PodCIDRs:                     10.1.6.0/24
 #+end_example
+
+* Ingress
+
+- install
+  : kubectl create namespace ingress-nginx
+  : helm install -n ingress-nginx ingress-nginx ingress-nginx/ingress-nginx
