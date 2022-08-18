@@ -3,3 +3,7 @@
 :END:
 - [[https://gitlab.common-lisp.net/cl-fuse/query-fs/-/wikis/uploads/09afa571ed781267ddf531001267f958/query-fs-slides.pdf][Query-FS: Integrating with UNIX from Common Lisp via FS API - query-fs-slides.pdf]]
 - [[https://github.com/tulir/mautrixfs][tulir/mautrixfs: A Matrix client as a FUSE filesystem.]]
+- [[https://www.maastaar.net/fuse/linux/filesystem/c/2016/05/21/writing-a-simple-filesystem-using-fuse/][Writing a Simple Filesystem Using FUSE in C]]
+- [[https://github.com/sahlberg/fuse-nfs][sahlberg/fuse-nfs: A FUSE module for NFSv3/4]]
+- [[https://github.com/frodonh/scriptfs][frodonh/scriptfs: Automatically exported from code.google.com/p/scriptfs]]
+- [[https://www.maastaar.net/fuse/linux/filesystem/c/2016/05/21/writing-a-simple-filesystem-using-fuse/][Writing a Simple Filesystem Using FUSE in C]]
