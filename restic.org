@@ -68,3 +68,17 @@ second run
   0+333077 records out
   21474836480 bytes (21 GB, 20 GiB) copied, 152.179 s, 141 MB/s
 #+end_example
+
+* Restic Rest server
+
+- Generate password
+  : htpasswd -B -c .htpasswd LOGIN
+
+- Initialize repository
+  : restic -r rest:http://LOGIN:PASSWORD@restic-rest-server.intr:8000/LOGIN/system init --repository-version 2
+
+- Backup system
+ : RESTIC_PASSWORD=PASSWORD restic --no-cache --repo rest:http://LOGIN:PASSWORD@restic-rest-server.intr:8000/LOGIN/system backup --exclude /dev --exclude /proc --exclude /sys --exclude /tmp --exclude /run /
+
+- Cron job
+ : 19 18 * * * RESTIC_PASSWORD=PASSWORD /usr/local/bin/restic --no-cache --repo rest:http://LOGIN:PASSWORD@restic-rest-server.intr:8000/LOGIN/system backup --exclude /dev --exclude /proc --exclude /sys --exclude /tmp --exclude /run /
