@@ -1242,6 +1242,7 @@ features, like 'V' to execute msgfmt and so on.
 ** Tramp
    - [[https://git.savannah.gnu.org/cgit/emacs.git/commit/etc/NEWS?id=3da0d3852923f0a20157f72aba6d8896019559f8][emacs.git - Emacs source repository]]
    - tramp-auto-auth.el --- TRAMP automatic authentication library <877e74skek.fsf@oitofelix.com>
+   - tramp-use-scp-direct-remote-copying
 *** Connection methods
 
   #+BEGIN_SRC emacs-lisp
