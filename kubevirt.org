@@ -147,3 +147,22 @@ kubevirt.kubevirt.io/kubevirt patched
 #+begin_example
   $ kubectl delete pods --namespace kubevirt -l kubevirt.io
 #+end_example
+
+** All virtualmachineinstance failed
+
+After cluster restart all virtualmachineinstance are in =failed= state.
+
+#+begin_example
+  NAMESPACE   NAME                                                      AGE   PHASE     IP           NODENAME   READY   LIVE-MIGRATABLE   PAUSED
+  default     virtualmachineinstance.kubevirt.io/vm-guix0-datavolume    57s   Failed   10.1.52.55   kube7      True    False
+  default     virtualmachineinstance.kubevirt.io/vm-nixos0-datavolume   57s   Failed   10.1.52.54   kube7      True    False
+  default     virtualmachineinstance.kubevirt.io/vm-nixos1-datavolume   57s   Failed   10.1.52.53   kube7      True    False
+  default     virtualmachineinstance.kubevirt.io/vm-nixos2-datavolume   57s   Failed   10.1.52.56   kube7      True    False
+  default     virtualmachineinstance.kubevirt.io/vm-nixos3-datavolume   57s   Failed   10.1.52.57   kube7      True    False
+#+end_example
+
+The following fixed the issue.
+
+#+begin_example
+  $ kubectl delete --all pods --namespace=kubevirt
+#+end_example
