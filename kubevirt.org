@@ -166,3 +166,7 @@ The following fixed the issue.
 #+begin_example
   $ kubectl delete --all pods --namespace=kubevirt
 #+end_example
+
+*** Pod hangs in terminating state after delete
+
+: kubectl delete pod virt-handler-9p6dd --grace-period=0 --force --namespace kubevirt
