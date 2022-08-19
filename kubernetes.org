@@ -491,6 +491,9 @@ Once running, the URL to the dashboard is https://2886795308-30000-simba08.envir
 - get documentation
   : kubectl explain --api-version=networking.k8s.io/v1 ingress.spec.rules.http.paths.backend
 
+- dump all information
+  : kubectl cluster-info dump
+
 * How it works
 
 First of all you should have a working etcd.
