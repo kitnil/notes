@@ -101,7 +101,7 @@
 - [[https://github.com/arl/statsviz][arl/statsviz: Instant live visualization of your Go application runtime statistics (GC, MemStats, etc.) in the browser]]
 
 - pretty print
-: "nnngithub.com/kr/pretty"
+: "github.com/kr/pretty"
 : t.Logf("%# v", pretty.Formatter(testObj))w
 
 ** test
