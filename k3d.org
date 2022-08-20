@@ -31,10 +31,10 @@
   : helm install argo-cd argo/argo-cd --version 4.10.6
 
 - Start virtual machine
-  : sudo KUBECONFIG=/home/oleg/kubeconfig.yaml nsenter -t $(docker inspect --format '{{.State.Pid}}' k3d-cluster1-server-0) -n virtctl start vm-guix-datavolume
+  : sudo KUBECONFIG=/proc/"$(docker top k3d-cluster1-server-0 | awk '/k3s server/ { print $2 }' | head -1)"/root/output/kubeconfig.yaml nsenter -t $(docker inspect --format '{{.State.Pid}}' k3d-cluster1-server-0) -n virtctl start vm-guix-datavolume
 
 - Connect to virtual machine over SSH
-  : sudo KUBECONFIG=/home/oleg/kubeconfig.yaml nsenter -t $(docker inspect --format '{{.State.Pid}}' k3d-cluster1-server-0) -n virtctl ssh -i /home/oleg/.ssh/id_rsa_vm1.wugi.info vm-guix-datavolume
+  : sudo KUBECONFIG=/proc/"$(docker top k3d-cluster1-server-0 | awk '/k3s server/ { print $2 }' | head -1)"/root/output/kubeconfig.yaml nsenter -t $(docker inspect --format '{{.State.Pid}}' k3d-cluster1-server-0) -n virtctl ssh -i /home/oleg/.ssh/id_rsa_vm1.wugi.info vm-guix-datavolume
 
 - Connect to virtual machine over VNC
-  : sudo KUBECONFIG=/home/oleg/kubeconfig.yaml nsenter -t $(docker inspect --format '{{.State.Pid}}' k3d-cluster1-server-0) -n virtctl vnc vm-guix-datavolume
+  : sudo KUBECONFIG=/proc/"$(docker top k3d-cluster1-server-0 | awk '/k3s server/ { print $2 }' | head -1)"/root/output/kubeconfig.yaml nsenter -t $(docker inspect --format '{{.State.Pid}}' k3d-cluster1-server-0) -n virtctl vnc vm-guix-datavolume
