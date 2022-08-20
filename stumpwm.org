@@ -6,3 +6,75 @@
       (progn (run-shell-command gnus))
       (run-shell-command gnus))
 #+END_SRC
+
+* Guix Home
+
+#+begin_quote
+> Guillaume Le Vaillant <glv@posteo.net> writes:
+>
+>> Is sbcl installed in your user profile or not?
+>
+> Not directly. It might be there as a dependency. Everything other than
+> stumpwm itself is installed in my guix home profile.
+>
+> In order for any of my stumpwm-contrib modules to work, I had to write a
+> gexp and an home-xdg-configuration-files service to link them to
+> ~/.config/common-lisp.
+>
+> Currently this is how sbcl-slime-swank is put into
+> source-registry.conf.d in my user profile.
+>
+> Here's the relevant code: https://paste.debian.net/1251005/
+
+For the Common Lisp libraries to be found, the XDG_CONFIG_DIRS and
+XDG_DATA_DIRS environment variables must contain the paths to the
+profile where the libraries are installed.
+#+end_quote
+
+#+begin_src scheme
+  (use-modules
+   (gnu home)
+   (gnu home services)
+   (gnu packages)
+   (guix gexp))
+
+
+  ;; A chunk of packages that later get appended to a major list of home packages.
+  (define stumpwm-extra
+    (list "sbcl-stumpwm-screenshot"
+          "sbcl-stumpwm-pass"
+          "sbcl-slime-swank"))
+
+  ;; Create a build gexp that consolidates the /etc/common-lisp folders of every
+  ;; stumpwm-contrib package
+  (define stumpwm-user-sources
+    #~(let ((stump-mods #$(directory-union
+                         "stumpwm-user-modules"
+                         (map specification->package+output stumpwm-extra))))
+        (string-append stump-mods "/etc/common-lisp")))
+
+  (home-environment
+   ;; Other stuff
+   (services
+    ;; Create a home service configuration symlink to the output of
+    ;; stumpwm-user-sources
+    (list (service home-xdg-configuration-files-service-type
+                   (list `("common-lisp"
+                           ,stumpwm-user-sources))))))
+#+end_src
+
+#+begin_quote
+Something like:
+
+XDG_CONFIG_DIRS="/home/username/.guix-profile/etc:..."
+XDG_DATA_DIRS="/home/username/.guix-profile/share:..."
+
+These variables are set automatically when sbcl is installed in the
+profile (they can be set by some other programs too).
+
+If you don't want sbcl in the profile, one or both variables might not
+contain the paths to the profile, and your guix-home config has to put
+them in. I've never used guix-home yet, but I suppose
+home-environment-variables-service-type can do that, and then creating
+a custom ".config/common-lisp" directory should not be necessary.
+#+end_quote
