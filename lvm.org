@@ -91,6 +91,9 @@ Pool lvm1 started
     Logical volume "ntfsgames" created.
 #+end_example
 
+lvcreate -l 100%FREE --thinpool thinpool0 vg0
+lvcreate -V 16G --thin -n thinguix vg0/thinpool0
+
 #+begin_example
   root@guixsd ~# lvs
     LV                            VG   Attr       LSize   Pool      Origin Data%  Meta%  Move Log Cpy%Sync Convert
