@@ -267,6 +267,19 @@
 - delete all containers
   : docker ps --format '{{ .Names }}' | xargs docker rm -f
 
+- Running docker container : iptables: No chain/target/match by that name
+
+#+begin_example
+  1. Clear all chains:
+
+  sudo iptables -t filter -F
+  sudo iptables -t filter -X
+
+  2. Then restart Docker Service:
+
+  systemctl restart docker
+#+end_example
+
 * Awesome
 
 - https://github.com/hadolint/hadolint
