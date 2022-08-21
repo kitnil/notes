@@ -15,7 +15,7 @@
 - fullreport
   : lvm fullreport, see lvm-fullreport(8)
 
-- output in json
+- output in json, see lvmreport(7)
   : lvs -o lv_name,lv_size --reportformat json
 
 - [[https://storytime.ivysaur.me/posts/why-not-zfs/][Why not ZFS]]
