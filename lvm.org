@@ -3,6 +3,10 @@
 :END:
 - snapshot
   : lvcreate --size 4G --snapshot --name magnolia--vg-root-01 /dev/mapper/magnolia--vg-root
+
+- snapshot thin (do not specify size the creating a thin snapshot)
+  : lvcreate --snapshot --name magnolia--vg-root-01 /dev/mapper/magnolia--vg-root
+
 - [[https://www.man7.org/linux/man-pages/man7/lvmvdo.7.html][lvmvdo(7) - Linux manual page]]
 
 - increase size of logical volume
