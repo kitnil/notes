@@ -12,8 +12,11 @@
 - increase size of logical volume
   : lvextend -L+10G /dev/lvm1/web99
 
-- lvm fullreport, see lvm-fullreport(8)
-- lvs -o lv_name,lv_size --reportformat json
+- fullreport
+  : lvm fullreport, see lvm-fullreport(8)
+
+- output in json
+  : lvs -o lv_name,lv_size --reportformat json
 
 - [[https://storytime.ivysaur.me/posts/why-not-zfs/][Why not ZFS]]
 
