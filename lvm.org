@@ -172,6 +172,8 @@ lvcreate -V 16G --thin -n thinguix vg0/thinpool0
 - [[https://www.linuxsysadmins.com/create-thinly-provisioned-logical-volume/][Create a Thinly Provisioned Logical Volume on Linux]]
 - [[https://unix.stackexchange.com/questions/623346/lvm-type-raid1-thinpool-is-it-possible][software raid - LVM type raid1 & thinpool is it possible? - Unix & Linux Stack Exchange]]
 
+- LVMTHIN(7)
+
 * Backup
 - [[https://github.com/tasket/wyng-backup][tasket/wyng-backup: Fast Time Machine-like backups for logical volumes]]
 - [[https://github.com/sebastian13/lvm-restic-backup][sebastian13/lvm-restic-backup]]
