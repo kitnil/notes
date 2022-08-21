@@ -24,3 +24,6 @@
     <listen type='address' address='127.0.0.1'/>
   </graphics>
 #+end_src
+
+* Learning
+- [[~/src/github.com/hashicorp/packer/builder/qemu/step_type_boot_command.go][Automation via Go library like in Packer]]
