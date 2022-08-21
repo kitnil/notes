@@ -1127,6 +1127,70 @@ Happy hacking =),
 
 - [[https://github.com/akreisher/eshell-syntax-highlighting][akreisher/eshell-syntax-highlighting: Syntax highlighting for Eshell]]
 
+** gnupg
+#+begin_example
+  Message-ID: <ddf2cd8a-c89f-18a3-146e-16b53260e103@gmail.com>
+
+  To allow a GnuPG passphrase in the Emacs minibuffer, I use the external Emacs
+  package pinentry.el in loopback mode*:
+
+  (setq epg-pinentry-mode 'loopback)
+
+  Unfortunately, this doesn't work on Debain-based systems without upgrading the
+  pinentry source (use: git://git.gnupg.org/pinentry.git).
+
+  But it turns out that pinentry.el may not be required any more.  It is enough
+  to add to the file ~/.gnupg/gpg.conf the line:
+
+      pinentry-mode loopback
+
+  and to ~/.gnupg/gpg-agent.conf:
+
+      allow-loopback-pinentry
+
+  Restart gpg-agent and that's it.  The most obvious difference is that
+  pinentry.el provides a more informative prompt, e.g.,
+
+      [[1399721]@slewsys.org] Please enter the passphrase to unlock the OpenPGP
+     secret key:
+      "Andrew L. Moore <alm@slewsys.org>"
+      255-bit EDDSA key, ID 0x0AB16F2E536D3DB5,
+      created 2021-11-01.:
+
+  versus when GnuPG runs PINEntry in loopback mode:
+
+      Enter passphrase:
+
+  Notably, the PINEntry manual warns:
+
+    Having Emacs get the passphrase is convenient, however, it is a
+    significant security risk. Emacs is a huge program, which doesn't
+    provide any process isolation to speak of. As such, having it handle
+    the passphrase adds a huge chunk of code to the user's trusted
+    computing base. Because of this concern, Emacs doesn't enable this by
+    default...
+
+  I'm not sure if one of the methods above is more secure in this regard.
+
+  ------------------------------------------------------------------------
+
+  ,* The full configuration of pinentry.el is as follows:
+
+  In ~/.emacs or other config file, add:
+
+      (require 'pinentry)
+
+      (setq epg-pinentry-mode 'loopback)
+      (pinentry-start)
+
+  In ~/.gnupg/gpg-agent.conf add:
+
+      allow-loopback-pinentry
+      allow-emacs-pinentry
+
+  Then restart gpg-agent.
+#+end_example
+
 ** Etags
 
  Origin: https://lists.gnu.org/archive/html/help-gnu-emacs/2017-12/msg00155.html
