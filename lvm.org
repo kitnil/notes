@@ -13,6 +13,7 @@
   : lvextend -L+10G /dev/lvm1/web99
 
 - lvm fullreport, see lvm-fullreport(8)
+- lvs -o lv_name,lv_size --reportformat json
 
 - [[https://storytime.ivysaur.me/posts/why-not-zfs/][Why not ZFS]]
 
