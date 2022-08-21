@@ -12,6 +12,8 @@
 - increase size of logical volume
   : lvextend -L+10G /dev/lvm1/web99
 
+- lvm fullreport, see lvm-fullreport(8)
+
 - [[https://storytime.ivysaur.me/posts/why-not-zfs/][Why not ZFS]]
 
 root@guixsd ~ [env]# pvcreate /dev/sdd5 
