@@ -11,6 +11,12 @@ To set LAN mode failover: ipmitool raw 0x30 0x70 0x0c 1 2.
 
 * ipmitool
 
+[[https://habr.com/ru/post/263091/][HA-Cluster на основе Pacemaker под контейнерную виртуализацию LXC и Docker / Хабр]]
+
+Сеть для ipmi желательно вынести в отдельный vlan, во первых это позволит её
+изолировать, во вторых не будет проблем со связностью, если IPMI BMC
+(baseboard management controller) разделяет сетевой интерфейс с сервером.
+
 #+begin_example
   impitool> lan set 1 ipsrc static
   impitool> lan set 1 ipaddr 10.1.15.1
