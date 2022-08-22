@@ -9,6 +9,24 @@ To set LAN mode failover: ipmitool raw 0x30 0x70 0x0c 1 2.
 - IPMI reset password to default (login is ADMIN)
   : ipmitool -I open lan set 1 password ADMIN
 
+* ipmitool
+
+#+begin_example
+  impitool> lan set 1 ipsrc static
+  impitool> lan set 1 ipaddr 10.1.15.1
+  impitool> lan set 1 netmask 255.255.255.0
+  impitool> lan set 1 defgw ipaddr 10.1.15.254
+  impitool> lan set 1 vlan id 314
+  # настройка доступа:
+  impitool> lan set 1 access on
+  impitool> lan set 1 auth ADMIN MD5
+  ipmitool> channel setaccess 1 2 callin=on ipmi=on link=on privilege=4
+#+end_example
+
+#+begin_example
+  ipmitool -I lan -U admin -P 'очень секретный пароль' -H 10.1.15.1 bmc info
+#+end_example
+
 * Links
 - [[https://github.com/DrSpeedy/ipmi_fancontrol-ng][DrSpeedy/ipmi_fancontrol-ng: IPMI Fan Control Daemon]]
 - [[https://www.tzulo.com/crm/knowledgebase/47/IPMI-and-IPMITOOL-Cheat-sheet.html][IPMI & IPMITOOL Cheat sheet - Knowledgebase - tzulo, inc.]]
