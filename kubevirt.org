@@ -40,6 +40,8 @@ default     demo-vm-pv           Bound         pvc-852f1d10-a8cc-4069-97c0-585f0
   Error from server (NotFound): customresourcedefinitions.apiextensions.k8s.io "cdis.cdi.kubevirt.io" not found
 #+end_example
 
+[[https://www.ibm.com/docs/en/cloud-private/3.2.x?topic=console-namespace-is-stuck-in-terminating-state][A namespace is stuck in the Terminating state - IBM Documentation]]
+
 * [[https://docs.openshift.com/container-platform/4.7/virt/virtual_machines/advanced_vm_management/virt-configuring-pxe-booting.html][Configuring PXE booting for virtual machines | OpenShift Virtualization | OpenShift Container Platform 4.7]]
 
 #+begin_src yaml
