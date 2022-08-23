@@ -29,6 +29,8 @@ default     demo-vm-pv           Bound         pvc-852f1d10-a8cc-4069-97c0-585f0
 
 ** delete hangs
 
+[[https://github.com/kubevirt/containerized-data-importer/issues/1683][both cdis.cdi.kubevirt.io and cdi namespace can not be deleted from v1.31.0 · Issue #1683 · kubevirt/containerized-data-importer]]
+
 #+begin_example
   oleg@guixsd ~$ kubectl patch crd/cdis.cdi.kubevirt.io -p '{"metadata":{"finalizers":[]}}' --type=merge
   customresourcedefinition.apiextensions.k8s.io/cdis.cdi.kubevirt.io patched
