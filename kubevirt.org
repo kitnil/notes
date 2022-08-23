@@ -27,6 +27,17 @@ NAMESPACE   NAME                 STATUS        VOLUME                           
 default     demo-vm-pv-scratch   Bound         pvc-8a68838b-b6ff-46e3-a4c7-058a7b1107c3   2Gi        RWO            local-path     20m
 default     demo-vm-pv           Bound         pvc-852f1d10-a8cc-4069-97c0-585f0563de04   2Gi        RWO            local-path     3d1h
 
+** delete hangs
+
+#+begin_example
+  oleg@guixsd ~$ kubectl patch crd/cdis.cdi.kubevirt.io -p '{"metadata":{"finalizers":[]}}' --type=merge
+  customresourcedefinition.apiextensions.k8s.io/cdis.cdi.kubevirt.io patched
+
+  oleg@guixsd ~$ kubectl delete crd/cdis.cdi.kubevirt.io -n cdi
+  warning: deleting cluster-scoped resources, not scoped to the provided namespace
+  Error from server (NotFound): customresourcedefinitions.apiextensions.k8s.io "cdis.cdi.kubevirt.io" not found
+#+end_example
+
 * [[https://docs.openshift.com/container-platform/4.7/virt/virtual_machines/advanced_vm_management/virt-configuring-pxe-booting.html][Configuring PXE booting for virtual machines | OpenShift Virtualization | OpenShift Container Platform 4.7]]
 
 #+begin_src yaml
