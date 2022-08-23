@@ -197,6 +197,9 @@ lvcreate -V 16G --thin -n thinguix vg0/thinpool0
 - Fix "LV Status" is "NOT available"
   : vgchange -a y VOLNAME
 
+- Increase psycial volume size
+  : pvresize /dev/vda1
+
 * Snapshots
 
 root@guixsd ~ [env]# modprobe dm-snapshot
