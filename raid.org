@@ -64,6 +64,9 @@ Continue creating array? y
 mdadm: array /dev/md/1 started.
 #+end_example
 
+- increase rebuild speed
+  : echo 50000 > /proc/sys/dev/raid/speed_limit_min
+
 * [[https://unix.stackexchange.com/questions/190264/disassemble-a-raid-1-arragement-without-removing-reinstalling-the-system][Disassemble a RAID 1 arragement without removing/reinstalling the system - Unix & Linux Stack Exchange]]
 Just fail and remove one of your drives:
 
