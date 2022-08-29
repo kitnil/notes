@@ -36,3 +36,12 @@
 : UPDATE 514
 
 * TODO [[https://gitlab.com/gitlab-org/gitlab/-/issues/26540][Allow to set global settings for merge requests mode (#26540) · Issues · GitLab.org / GitLab · GitLab]]
+
+* .gitlab-ci.yml
+
+#+begin_src yaml
+  example:
+    >-
+      echo shell code
+      echo another line in the same shell
+#+end_src
