@@ -4,7 +4,7 @@
 #+title: Benchmark
 
 - [[https://github.com/conprof/perfessor][conprof/perfessor: Continuous profiling with perf]]
-- [[https://github.com/akopytov/sysbench][akopytov/sysbench: Scriptable database and system performance benchmark]]
+- [[httpfs://github.com/akopytov/sysbench][akopytov/sysbench: Scriptable database and system performance benchmark]]
 - sudo dd if=/dev/sda1 of=/dev/null bs=4096 count=409600 iflag=direct
 - iozone
 - [[https://old.reddit.com/r/selfhosted/comments/ogpnfb/selfhosted_network_performance_estimation_tool/][Self-Hosted Network Performance Estimation Tool With HTML5 GUI : selfhosted]]
