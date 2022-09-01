@@ -1541,6 +1541,18 @@ builtins.match "php([[:alnum:]])([[:alnum:]])" "php70"
 - [[https://github.com/fnctl/mkSystem/blob/main/flake.nix][mkSystem/flake.nix at main · fnctl/mkSystem]]
 - [[https://github.com/fnctl/helix][fnctl/helix: A post-modern modal text editor.]]
 
+** Eval
+
+#+begin_src nix
+  with builtins;
+  with getFlake (toPath ./.);
+  with inputs.nixpkgs.lib;
+  attrNames (filterAttrs (name: value:
+    if value ? inputs then value.inputs ? ${args.input} else false) inputs)
+#+end_src
+
+: nix eval --impure --json --expr NIX_EXPRESSION
+
 ** Learning
 
 - [[https://nixos.wiki/wiki/Flakes][Flakes - NixOS Wiki]]
