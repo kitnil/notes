@@ -397,6 +397,14 @@ can set up a tunnel from bayfront, or something like that.
 - ioping
 - fio
 
+* D
+
+#+begin_example
+  kill -9 {process_id}
+  sync
+  echo 3 | sudo tee /proc/sys/vm/drop_caches
+#+end_example
+
 * reboot
 
 ** proc
