@@ -407,6 +407,8 @@ can set up a tunnel from bayfront, or something like that.
   echo 3 | sudo tee /proc/sys/vm/drop_caches
 #+end_example
 
+- [[https://www.kernel.org/doc/Documentation/sysctl/vm.txt][kernel.org/doc/Documentation/sysctl/vm.txt]]
+
 #+begin_example
 echo 1 > /proc/sys/vm/drop_caches
 echo 2 > /proc/sys/vm/drop_caches
