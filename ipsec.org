@@ -1,0 +1,35 @@
+#+begin_src nix
+  services.strongswan = {
+      enable = true;
+      secrets = [
+        (builtins.toFile "ipsec.secret" ''
+          10.1.52.105 10.1.52.104 : PSK "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+        '')
+      ];
+      connections = {
+        "10.1.52.105" = {
+          left = "10.1.52.104";
+          leftid = "10.1.52.104";
+          right = "10.1.52.105";
+          rightid = "10.1.52.105";
+          leftsubnet = "10.1.52.104/32";
+          rightsubnet = "10.1.52.105/32";
+          leftauth = "psk";
+          rightauth = "psk";
+          type = "transport";
+          auto = "route";
+          leftupdown = "/nix/store/...-strongswan-5.9.5/libexec/ipsec/_updown iptables";
+          # TODO . mark is not clear !!! Могут быть проблемы при многих ipsec соединениях;
+          # MESHAET mark   "= " loop.index + 1000"";
+          ikelifetime = "60m";
+          keylife = "20m";
+          dpddelay = "10";
+          dpdtimeout = "4";
+          dpdaction = "restart";
+          # dpdaction = "clear";
+          # rekeymargin = "3m";
+          keyingtries = "1";
+        };
+      };
+    };
+#+end_src
