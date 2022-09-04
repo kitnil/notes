@@ -399,10 +399,18 @@ can set up a tunnel from bayfront, or something like that.
 
 * D
 
+- [[https://stackoverflow.com/questions/767551/how-to-stop-uninterruptible-process-on-linux][signals - How to stop 'uninterruptible' process on Linux? - Stack Overflow]]
+
 #+begin_example
   kill -9 {process_id}
   sync
   echo 3 | sudo tee /proc/sys/vm/drop_caches
+#+end_example
+
+#+begin_example
+echo 1 > /proc/sys/vm/drop_caches
+echo 2 > /proc/sys/vm/drop_caches
+echo 3 > /proc/sys/vm/drop_caches
 #+end_example
 
 * reboot
