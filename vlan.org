@@ -1,1 +1,22 @@
 - [[https://github.com/necreas1ng/VLANPWN][necreas1ng/VLANPWN: VLAN attacks toolkit]]
+
+#+begin_example
+  Загрузка модуля ядра
+
+  Для использования VLAN:
+
+      Загрузить модуль ядра 8021q:
+      sudo modprobe 8021q
+
+      Убедиться, что модуль загружен:
+      lsmod | grep 8021q
+
+      Добавить в сетевые настройки (iptables) разрешения на создание таблиц маршрутизации:
+      echo "500 firsttable" | sudo tee -a /etc/iproute2/rt_tables
+      echo "501 firsttable" | sudo tee -a /etc/iproute2/rt_tables"
+
+      Здесь и далее используются VLAN ID 500 и 501;
+
+  Для того, чтобы модуль загружался автоматически при загрузке ОС, можно создать в каталоге /etc/modules-load.d/ файл с именем, например,  /etc/modules-load.d/vlan.conf, и перечислить в нём названия загружаемых модулей:
+  8021q
+#+end_example
