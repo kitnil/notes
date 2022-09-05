@@ -33,3 +33,86 @@
       sudo ip link set vxlan0 up
       sudo ip addr add 10.0.0.107/24 dev vxlan0
 #+end_example
+
+#+begin_example
+  VXLAN между контейнерами Docker
+
+  Далее используются две хост-машины:
+
+      Хост-машина 1:
+          IP-адрес: 172.31.0.106;
+      Хост-машина 2:
+          IP-адрес: 172.31.0.107;
+
+  По умолчанию контейнеры на каждой хост-машине подключены к одному сетевому мосту и могут коммуницировать друг с другом, а контейнеры на разных хост-машинах не могут коммуницировать друг с другом (для коммуникации может использоваться специальное ПО, как, например k8s). В настоящем примере для установления связи между контейнерами на разных хост-машинах используются стандартные сетевые интерфейсы docker и VXLAN.
+
+  Материалы по установке docker и созданию контейнеров см. Применение системы изоляции приложений docker в ОС Astra Linux Special Edition 1.7. Далее в примере используется образ wiki/astralinux:se.
+
+  Далее используется команда brctl из пакета bridge-utils. Установить пакет bridge-utils можно командой:
+  sudo apt install bridge-utils
+  При установке docker на компьютере по умолчанию создается специальный сетевой интерфейс - мост docker0, которому присваивается IP-адрес 172.17.0.1/16. Это сетевой мост, соединяющий контейнеры. Проверить параметры интерфейса:
+  sudo ifconfig docker0
+  docker0: flags=4099<UP,BROADCAST,MULTICAST>  mtu 1500
+         inet 172.17.0.1  netmask 255.255.0.0  broadcast 172.17.255.255
+         ether 02:42:a9:5e:6f:00  txqueuelen 0  (Ethernet)
+         RX packets 0  bytes 0 (0.0 B)
+         RX errors 0  dropped 0  overruns 0  frame 0
+         TX packets 0  bytes 0 (0.0 B)
+         TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+  IP-адреса контейнеров docker назначаются автоматически начиная с адреса 172.17.0.2. Чтобы зафиксировать адреса сетевых интерфейсов контейнеров, используемых далее в примере, необходимо при запуске контейнеров использовать параметр --ip. Использование это параметра поддерживается только на дополнительных сетях docker, и такую сеть нужно создать на каждой из хост-машин:
+  docker network create --subnet 172.18.0.0/16 mynetwork
+  Проверить список сетей:
+  docker network ls
+  NETWORK ID     NAME        DRIVER    SCOPE
+  265dff745581   bridge      bridge    local
+  ddf7301657ff   host        host      local
+  a28625161bb9   mynetwork   bridge    local
+  b74b0b0796bb   none        null      local
+  При создании сети будет создан новый сетевой интерфейс br-... типа "мост":
+  sudo ifconfig
+  br-a28625161bb9: flags=4099<UP,BROADCAST,MULTICAST>  mtu 1500
+         inet 172.18.0.1  netmask 255.255.0.0  broadcast 172.18.255.255
+         ether 02:42:e9:f0:e9:a0  txqueuelen 0  (Ethernet)
+         RX packets 0  bytes 0 (0.0 B)
+         RX errors 0  dropped 0  overruns 0  frame 0
+         TX packets 0  bytes 0 (0.0 B)
+         TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+  Теперь при запуске контейнера можно указать сеть и фиксированный IP-адрес, для первой хост-машины:
+  docker run -itd --net mynetwork --ip 172.18.0.2 wiki/astralinux:se
+  Для второй хост-машины:
+  docker run -itd --net mynetwork --ip 172.18.0.3 wiki/astralinux:se
+  Контейнер также можно запустить в сети docker, принятой "по умолчанию", с автоматическим присвоением адреса:
+  docker run -itd wiki/astralinux:se
+  Теперь на хост-машинах имеются следующие сетевые интерфейсы:
+
+      docker0 - мост, созданный при установке docker. Сеть 172.17.0.0/16, IP-адрес интерфейса 172.17.0.1;
+      br-xxxx - мост сети, созданной для реализации примера. Сеть 172.18.0.0/16, IP-адрес интерфейса 172.18.0.1;
+      vethxxxx - интерфейсы контейнеров. Создаются при создании (запуске) каждого контейнера. Интерфейс eth0 контейнера соответствует интерфейсу veth;
+
+  При этом на каждой хост-машине работает контейнер.
+
+  Получить список мостов и их интерфесов можно командой brctl, например:
+  sudo brctl show          
+  br-a28625161bb9         8000.0242e9f0e9a0       no              veth1675dd1
+  docker0         8000.0242a95e6f00       no              vethe587b2d
+  Далее создадим сетевые интерфейсы VXLAN в каждой из хост-машин, и подключим их к мосту docker. Сетевые пакеты из контейнера будут доставляться в мост docker, инкапсулироваться в сообщения VXLAN и пересылаться на вторую хост-машину. На второй хост-машине сообщения VXLAN пересылаются в контейнер docker через мост второй хост-машины.
+
+      Настройка первой хост-машины:
+
+          Создать интерфейс VXLAN с идентификатором (VNI) 2000 и названием vxlan_docker. Параметры похожи на использованные в предыдущем примере:
+          sudo ip link add vxlan_docker type vxlan id 200 remote 172.31.0.107 dstport 4789 dev eth0
+
+          Включить созданный интерфейс VLAN:
+          sudo ip link set vxlan_docker up
+
+          Подключить созданный интерфейс к мосту docker:
+          sudo brctl addif br-3231f89d69f6 vxlan_docker
+
+      Настройка второй хост-машины выполняется аналогично:
+      sudo ip link add vxlan_docker type vxlan id 200 remote 172.31.0.106 dstport 4789 dev eth0
+      sudo ip link set vxlan_docker up
+      sudo brctl addif br-f4b35af34313 vxlan_docker
+
+  Далее можно проверить соединение с помощью команды ping, выполняемой в контейнере:
+  ping 172.18.0.2
+#+end_example
