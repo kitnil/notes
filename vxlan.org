@@ -1,9 +1,48 @@
 - [[https://programmer.help/blogs/practice-vxlan-under-linux.html][Practice VxLAN under Linux]]
 - [[https://russianblogs.com/article/15031512332/][Подробное объяснение и практика VXLAN - Русские Блоги]]
 
-* p2p
+* 
 
 - [[https://wiki.astralinux.ru/pages/viewpage.action?pageId=158604065][Виртуальные сети VLAN и VXLAN в Astra Linux - Справочный центр - Справочный центр Astra Linux]]
+
+** 
+
+#+begin_example
+  Включение и настройка VXLAN
+  Базовые команды
+
+      Создание устройства VXLAN:
+      sudo ip link add vxlan0 type vxlan id 42 group 239.1.1.1 dev eth0 dstport 4789
+      Указанная команда создает новое устройство с именем vxlan0. Это устройство использует широковещательную группу 239.1.1.1 и родительское устройство eth0 для обработки трафика, не имеющего правил обработки в таблице пересылки (форвардинга) пакетов. Целевой порт 4789 выбран в соответствии со стандартом IANA;
+
+      Удаление устройства VXLAN:
+      sudo ip link delete vxlan0
+
+      Получение информации об устройстве VXLAN:
+      sudo ip -d link show vxlan0
+
+  Управление таблицами пересылки VXLAN выполняется с помощью команды bridge:
+
+      Создать правило в таблице пересылки:
+      sudo bridge fdb add to 00:17:42:8a:b4:05 dst 192.19.0.2 dev vxlan0
+
+      Удалить правило пересылки:
+      sudo bridge fdb delete 00:17:42:8a:b4:05 dev vxlan0
+
+      Получение информации о правилах пересылки:
+      sudo bridge fdb show dev vxlan0
+
+  Проверить состояние устройства VXLAN можно командой ifconfig:
+  sudo ifconfig vxlan0
+
+  Проверить таблицу маршрутизации можно командой:
+  sudo route -n
+
+  Простейшую проверку работоспособности можно сделать, выполнив команду ping с адресом VXLAN другого устройства:
+  ping 10.0.0.107
+#+end_example
+
+** p2p
 
 #+begin_example
   Описание стенда:
@@ -34,7 +73,7 @@
       sudo ip addr add 10.0.0.107/24 dev vxlan0
 #+end_example
 
-* docker
+** docker
 
 #+begin_example
   VXLAN между контейнерами Docker
