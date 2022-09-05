@@ -8,6 +8,61 @@
 ** 
 
 #+begin_example
+  Создание и настройка VLAN с помощью службы networking
+
+  Для настройки интерфейса VLAN с помощью службы networking
+
+      Войти в сессию администратора (для Astra Linux Special Edition с включенным МКЦ — администратора с высоким уровнем целостности);
+
+      Проверить список имеющихся сетевых интерфейсов:
+      ip link show
+
+      1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN mode DEFAULT group default qlen 1000
+          link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+
+      2: eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast state UP mode DEFAULT group default qlen 1000
+          link/ether 52:54:00:64:d9:e8 brd ff:ff:ff:ff:ff:ff
+
+      Далее для настройки будет использоваться интерфейс eth0;
+
+      В файл конфигурации сетевого интерфейса добавить строки:
+      # The first VLAN interface
+      auto eth0.500
+      iface eth0.500 inet static
+      address 172.20.20.10
+      netmask 255.255.255.240
+      gateway 172.20.20.1
+      dns-nameservers 8.8.8.8 8.8.4.4
+
+      Название сетевого интерфейса VLAN должно иметь форму <имя_интерфейса>.<VLAN_ID>;
+
+      Включить сетевые интерфейсы:
+      sudo ifup eth0.500
+
+      Проверить состояние интерфейса:
+      sudo ifconfig eth0.500
+
+  При необходимости можно добавить несколько интерфейсов VLAN
+  # The second VLAN interface
+  auto eth0.501
+  iface eth0.501 inet static
+  address 172.21.10.0
+  netmask 255.255.255.0
+
+  Если хост используется в качестве гипервизора, то выполнить настройку сети:
+
+      Разрешить в конфигурации сети пересылку пакетов:
+      echo "net.ipv4.ip_forward=1" | sudo tee -a /etc/sysctl.conf
+      echo "net.ipv4.conf.all.arp_filter=0" | sudo tee -a /etc/sysctl.conf
+      echo "net.ipv4.conf.all.rp_filter=2" | sudo tee -a /etc/sysctl.conf
+
+      Загрузить конфигурацию:
+      sudo sysctl -p
+#+end_example
+
+** 
+
+#+begin_example
   Включение и настройка VXLAN
   Базовые команды
 
