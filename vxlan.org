@@ -1,2 +1,35 @@
 - [[https://programmer.help/blogs/practice-vxlan-under-linux.html][Practice VxLAN under Linux]]
 - [[https://russianblogs.com/article/15031512332/][Подробное объяснение и практика VXLAN - Русские Блоги]]
+
+* p2p
+
+- [[https://wiki.astralinux.ru/pages/viewpage.action?pageId=158604065][Виртуальные сети VLAN и VXLAN в Astra Linux - Справочный центр - Справочный центр Astra Linux]]
+
+#+begin_example
+  Описание стенда:
+
+      Сервер 1:
+          IP-адрес: 172.31.0.106;
+          VXLAN-адрес: 10.0.0.106;
+      Сервер 2:
+          IP-адрес: 172.31.0.107;
+          VXLAN-адрес: 10.0.0.107;
+
+  Настройка стенда:
+
+      Настройка Сервера 1:
+
+          Добавить интерфейс VXLAN:
+          sudo ip link add vxlan0 type vxlan id 1 remote 172.31.0.107 dstport 4789 dev eth0
+
+          Включить добавленный интерфейс:
+          sudo ip link set vxlan0 up
+
+          Назначить интерфейсу адрес:
+          sudo ip addr add 10.0.0.106/24 dev vxlan0
+
+      Настройка Сервера 2 выполняется аналогично, отличаются только адреса:
+      sudo ip link add vxlan0 type vxlan id 1 remote 172.31.0.106 dstport 4789 dev eth0
+      sudo ip link set vxlan0 up
+      sudo ip addr add 10.0.0.107/24 dev vxlan0
+#+end_example
