@@ -3,3 +3,6 @@
 :END:
 cat /tmp/input.json | jq '.mapping.email.properties | keys'
 jq --raw-output '.iso_urls // empty' vars/*.json
+
+- [[https://blog.nem.ec/code-snippets/jq-ignore-nulls/][Ignore null values in jq output - nem.ec]]
+  : jq -r '.firstName | select( . != null )' file.json
