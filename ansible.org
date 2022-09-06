@@ -176,3 +176,46 @@
         kill -SIGHUP "$(docker top taskexecutor | awk '/python/ { print $2 }')"
 
 #+end_example
+
+#+begin_example
+  [ssh_connection]
+
+  # ssh arguments to use
+  # Leaving off ControlPersist will result in poor performance, so use 
+  # paramiko on older platforms rather than removing it
+  #ssh_args = -o ControlMaster=auto -o ControlPersist=60s
+  ssh_args = -4 -o ControlMaster=auto -o ControlPersist=60s -o PreferredAuthentications=publickey
+
+  # The path to use for the ControlPath sockets. This defaults to
+  # "%(directory)s/ansible-ssh-%%h-%%p-%%r", however on some systems with
+  # very long hostnames or very long path names (caused by long user names or 
+  # deeply nested home directories) this can exceed the character limit on
+  # file socket names (108 characters for most platforms). In that case, you 
+  # may wish to shorten the string below.
+  # 
+  # Example: 
+  # control_path = %(directory)s/%%h-%%r
+  control_path = %(directory)s/ansible-ssh-%%h-%%p-%%r
+  #control_path = /run/shm/%r@%h-%p
+  #ControlPath  /run/shm/%r@%h-%p
+
+  # Enabling pipelining reduces the number of SSH operations required to 
+  # execute a module on the remote server. This can result in a significant 
+  # performance improvement when enabled, however when using "sudo:" you must 
+  # first disable 'requiretty' in /etc/sudoers
+  #
+  # By default, this option is disabled to preserve compatibility with
+  # sudoers configurations that have requiretty (the default on many distros).
+  # 
+  #pipelining = False
+  pipelining = true
+
+  # if True, make ansible use scp if the connection type is ssh 
+  # (default is sftp)
+  #scp_if_ssh = True
+
+  [accelerate]
+  accelerate_port = 5099
+  accelerate_timeout = 30
+  accelerate_connect_timeout = 5.0
+#+end_example
