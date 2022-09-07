@@ -86,6 +86,8 @@
 - [[https://scribe.citizen4.eu/@senthilrch/woot-kubernetes-adds-support-for-swap-memory-92541aad01a0][Woot…Kubernetes Adds Support for Swap Memory]]
 
 * Tools
+- [[https://github.com/airwallex/k8s-pod-restart-info-collector][airwallex/k8s-pod-restart-info-collector: Automated troubleshooting of Kubernetes Pods issues. Collect K8s pod restart reasons, logs, and events automatically.]]
+- [[https://github.com/alexellis/run-job][alexellis/run-job: Run a Kubernetes Job and get the logs when it's done 🏃‍♂️]]
 - [[https://github.com/stackrox/kube-linter][stackrox/kube-linter: KubeLinter is a static analysis tool that checks Kubernetes YAML files and Helm charts to ensure the applications represented in them adhere to best practices.]]
 - [[https://github.com/k8s-at-home/charts][k8s-at-home/charts: Helm charts for applications you run at home]]
 - [[https://github.com/k3s-io/kine][k3s-io/kine: Run Kubernetes on MySQL, Postgres, sqlite, dqlite, not etcd.]]
