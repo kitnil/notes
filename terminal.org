@@ -72,3 +72,5 @@ I use this ugly hack for encryption. Any suggestions for improvement:
 
 Try this:
 : xfce4-terminal --hide-menubar --hide-toolbars --geometry=70x10 -x gpg -c %f
+
+: $ rlwrap nc 127.0.0.1 1666
