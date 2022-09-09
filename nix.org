@@ -414,6 +414,7 @@ nix-repl> mynixos2.config.environment.etc."mailman.cfg".text
 - [[https://github.com/nix-community/go-nix][nix-community/go-nix: Elements of Nix re-implemented as Go libraries [maintainer=@flokli]]]
 - [[https://nixos.wiki/wiki/Impermanence][Impermanence - NixOS Wiki]]
 - [[https://github.com/DavHau/fromYaml][DavHau/fromYaml: yaml parser in pure nix]]
+- [[https://github.com/fzakaria/nix-harden-needed][fzakaria/nix-harden-needed: Bubble up the correct paths to your shared object libraries in Nix]]
 - [[https://github.com/nix-community/impermanence][nix-community/impermanence: Modules to help you handle persistent state on systems with ephemeral root storage maintainer=@talyz]]
 #+begin_src nix
   environment.persistence."/nix/state" = {
@@ -1537,9 +1538,13 @@ builtins.match "php([[:alnum:]])([[:alnum:]])" "php70"
 
 
 * Flakes
+- [[https://github.com/aleeusgr/compose-flakes/blob/main/flake.nix][compose-flakes/flake.nix at main · aleeusgr/compose-flakes]]
 - [[https://github.com/NixOS/templates][NixOS/templates: Flake templates]]
 - [[https://github.com/fnctl/mkSystem/blob/main/flake.nix][mkSystem/flake.nix at main · fnctl/mkSystem]]
 - [[https://github.com/fnctl/helix][fnctl/helix: A post-modern modal text editor.]]
+- [[https://github.com/kira-bruneau/flake-checker][kira-bruneau/flake-checker: Incrementally run checks & fixes in your Nix flake (only on changed files). Mirror of https://gitlab.com/kira-bruneau/flake-checker]]
+- [[https://github.com/srid/check-flake][srid/check-flake: Add a `.#check` package for building all checks for the current system]]
+- [[https://github.com/ralismark/nix-appimage][ralismark/nix-appimage: (experimental) Convert a nixos derivation into a self-contained binary]]
 
 ** Eval
 
@@ -1769,6 +1774,7 @@ Priority: 30
 - [[https://github.com/edolstra/nix-serve/issues/10][substituter not accepted due to invalid signature · Issue #10 · edolstra/nix-serve]]
   - nix path-info --store http://<hostname>:<port> --json <some-path> | grep sig
 - [[https://github.com/NixOS/nix/issues/4520][normal allowed-users should be able to use --substituters · Issue #4520 · NixOS/nix]]
+- [[https://github.com/cachix/cachix-deploy-flake][cachix/cachix-deploy-flake: Functions to help manage Cachix Deploy when using flakes.]]
 
 * Libraries
 - [[https://github.com/ArctarusLimited/xnlib][ArctarusLimited/xnlib: XTended Nix Library used for various purposes by Arctarus]]

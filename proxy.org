@@ -3,6 +3,9 @@
 :END:
 #+title: Proxy
 
+- [[https://github.com/jsha/listenbuddy][jsha/listenbuddy: A simple tool to forward ports locally or remotely, no root or SSH required]]
+- [[https://github.com/losfair/unproxy][losfair/unproxy: Map TCP services behind an HTTP(S) proxy to local ports.]]
+- [[https://github.com/ihciah/shadow-tls][ihciah/shadow-tls]]
 - [[https://github.com/haad/proxychains][haad/proxychains: proxychains - a tool that forces any TCP connection made by any given application to follow through proxy like TOR or any other SOCKS4, SOCKS5 or HTTP(S) proxy. Supported auth-types: "user/pass" for SOCKS4/5, "basic" for HTTP.]]
 - [[https://github.com/authelia/authelia?auto_subscribed=false][authelia/authelia: The Single Sign-On Multi-Factor portal for web apps]]
 - [[https://github.com/NOBLES5E/cproxy][NOBLES5E/cproxy: Easy per application transparent proxy built on cgroup.]]

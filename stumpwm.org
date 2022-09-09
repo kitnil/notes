@@ -78,3 +78,5 @@ them in. I've never used guix-home yet, but I suppose
 home-environment-variables-service-type can do that, and then creating
 a custom ".config/common-lisp" directory should not be necessary.
 #+end_quote
+
+- [[https://github.com/Junker/stumpwm-notifier][Junker/stumpwm-notifier: StumpWM module for sending desktop notifications]]

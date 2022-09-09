@@ -3,6 +3,8 @@
 :END:
 #+title: Security
 
+- [[https://github.com/punk-security/dnsReaper][punk-security/dnsReaper: dnsReaper - subdomain takeover tool for attackers, bug bounty hunters and the blue team!]]
+- [[https://github.com/evilsocket/sauron][evilsocket/sauron: A minimalistic cross-platform malware scanner with non-blocking realtime filesystem monitoring using YARA rules.]]
 - [[https://github.com/seal9055/resources][seal9055/resources: Collection of resources I have used throughout my studies (cybersecurity and systems)]]
 - [[https://github.com/projectdiscovery/uncover][projectdiscovery/uncover: Quickly discover exposed hosts on the internet using multiple search engine.]]
 - [[https://github.com/trickest/cve][trickest/cve: Gather and update all available and newest CVEs with their PoC.]]
@@ -95,6 +97,9 @@ docker ps --format '{{ .Image }}' | grep master | sort -u | xargs -I{} docker pu
 - [[https://github.com/supertokens/supertokens-core][supertokens/supertokens-core: Open source alternative to Auth0 / Firebase Auth / AWS Cognito]]
 - [[https://github.com/pomerium/pomerium][pomerium/pomerium: Pomerium is an identity-aware access proxy.]]
 - [[https://github.com/ssh-vault/ssh-vault][ssh-vault/ssh-vault: 🌰 encrypt/decrypt using ssh keys]]
+- [[https://github.com/davidbombal/python-keylogger][davidbombal/python-keylogger]]
+- [[https://github.com/davidbombal/red-python-scripts][davidbombal/red-python-scripts]]
+- [[https://github.com/t3l3machus/toxssin][t3l3machus/toxssin: An XSS exploitation command-line interface and payload generator.]]
 
 * Awesome
 - [[https://github.com/Lissy93/personal-security-checklist][Lissy93/personal-security-checklist: 🔒 A curated checklist of 300+ tips for protecting digital security and privacy in 2022]]

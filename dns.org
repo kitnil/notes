@@ -53,6 +53,7 @@
   : dig 10.0.0.0/24.cidr @dns.toys
   : dig 2001:db8::/108.cidr @dns.toys
 - [[https://github.com/garywill/proxc][garywill/proxc: configure DNS/proxy for one process execution on Linux]]
+- [[https://github.com/pirxthepilot/wtfis][pirxthepilot/wtfis: Passive host and domain name lookup tool for non-robots]]
 
 ** DDoS
 - [[https://github.com/thesc1ent1st/j0lt-ddos-tool][thesc1ent1st/j0lt-ddos-tool: Brutally effective DNS amplification DDOS tool. Will cripple a target machine from a single host.]]

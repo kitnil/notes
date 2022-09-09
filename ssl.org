@@ -3,6 +3,7 @@
 :END:
 #+title: SSL
 
+- [[https://github.com/jsha/minica][jsha/minica: minica is a small, simple CA intended for use in situations where the CA operator also operates each host where a certificate will be used.]]
 - [[https://github.com/alessandrod/snuffy][alessandrod/snuffy: Snuffy is a simple command line tool to inspect SSL/TLS data.]]
 - [[https://github.com/breml/rootcerts][breml/rootcerts: Go package to embed the Mozilla Included CA Certificate List]]
 - [[https://github.com/acmesh-official/acme.sh][acmesh-official/acme.sh: A pure Unix shell script implementing ACME client protocol]]

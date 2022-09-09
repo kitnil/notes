@@ -20,6 +20,8 @@
 - [[https://github.com/justinmeiners/srcweave][justinmeiners/srcweave: A literate programming system for any language.]]
 - [[https://github.com/dnaeon/cl-wol][dnaeon/cl-wol: Wake on LAN (WoL) system for Common Lisp]]
 - [[https://github.com/crategus/PassStorage][crategus/PassStorage: Password storing program]]
+- [[https://github.com/thefossenjoyer/lisp-passwd][thefossenjoyer/lisp-passwd: A simple passwd manager written in Common Lisp.]]
+- [[https://github.com/thefossenjoyer/todo-lisp][thefossenjoyer/todo-lisp: A todo app written in Common Lisp.]]
 
 * Links
 
@@ -52,6 +54,7 @@
 - [[https://github.com/jawadcode/htmlisp][jawadcode/htmlisp: Compiles lisp style html into normal html]]
 - [[https://github.com/mmontone/quicklisp-systems][mmontone/quicklisp-systems: Search, browse and load Quicklisp systems from Emacs.]]
 - [[https://github.com/mmontone/slime-star][mmontone/slime-star: SLIME configuration with some extensions pre-installed.]]
+- [[https://github.com/rajasegar/cl-docker][rajasegar/cl-docker: Run your docker commands from your favorite Common Lisp REPLs]]
 
 ** Implementations
 - [[https://github.com/adam-mcdaniel/wisp][adam-mcdaniel/wisp: A light lisp written in C++]]
