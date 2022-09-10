@@ -1,0 +1,7 @@
+#+begin_example
+  [root@localhost ~]# rpm -q --scripts grub2-efi-x64
+  posttrans scriptlet (using /bin/sh):
+  if [ -d /sys/firmware/efi ] && [ ! -f /boot/efi/EFI/almalinux/grub.cfg ]; then
+      grub2-mkconfig -o /boot/efi/EFI/almalinux/grub.cfg || :
+  fi
+#+end_example
