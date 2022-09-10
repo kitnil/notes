@@ -106,6 +106,7 @@
 - [[https://prometheus.io/docs/practices/instrumentation/#use-labels][Instrumentation | Prometheus]]
 - [[https://grafana.com/blog/2022/03/21/how-relabeling-in-prometheus-works/][How relabeling in Prometheus works | Grafana Labs]]
 - [[https://prometheus.io/docs/guides/multi-target-exporter/][Understanding and using the multi-target exporter pattern | Prometheus]]
+- [[https://prometheus.io/docs/prometheus/latest/configuration/configuration/][Configuration | Prometheus]]
 
 * Blackbox
 - http://127.0.0.1:9115/probes
