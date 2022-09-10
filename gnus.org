@@ -443,3 +443,9 @@ strongarm the desired order.
 
 The topics business has some bugs, to be sure, but none so showstopping as to
 warrant the drudgery of writing a patch.
+
+* Regexp
+
+#+begin_example
+  ("\\[FIRING:\\([2-9]+\\|[1-9][0-9]+\\)\\]" nil nil r)
+#+end_example
