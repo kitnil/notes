@@ -212,3 +212,33 @@
   Далее можно проверить соединение с помощью команды ping, выполняемой в контейнере:
   ping 172.18.0.2
 #+end_example
+
+** Tunnel
+
+*** First host tunnel side
+
+#+begin_example
+  ip link add vxlan0 type vxlan id 1 remote 88.XXX.XXX.XX dstport 4XXX dev eth0
+  ip link set vxlan0 up
+  ip addr add 10.X.X.X/24 dev vxlan0
+#+end_example
+
+*** Second host tunnel side
+
+#+begin_example
+  ip link add vxlan0 type vxlan id 1 remote 185.105.108.96 dstport 4XXX dev br0
+  ip link set vxlan0 up
+  ip addr add 10.X.X.XXX/24 dev vxlan0
+  ip r add 141.XX.XXX.XX/32 via 10.X.X.X
+#+end_example
+
+*** NAT through first host
+
+Make sure nftables packet is installed, then run:
+
+#+begin_example
+  nft add table nat
+  nft 'add chain nat postrouting { type nat hook postrouting priority 100 ; }'
+  nft add rule nat postrouting masquerade
+  sysctl -w net.ipv4.ip_forward=1
+#+end_example
