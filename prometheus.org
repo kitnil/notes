@@ -103,6 +103,7 @@
 - [[https://www.robustperception.io/alerting-on-gauges-in-prometheus-2-0][Alerting on gauges in Prometheus 2.0 – Robust Perception | Prometheus Monitoring Experts]]
 - [[https://github.com/ncabatoff/process-exporter][ncabatoff/process-exporter: Prometheus exporter that mines /proc to report on selected processes]]
 - [[https://towardsdatascience.com/how-i-monitor-active-ssh-sessions-with-prometheus-and-grafana-f4811da0a8cc][Monitor SSH sessions with Prometheus and Grafana | Towards Data Science]]
+- [[https://prometheus.io/docs/practices/instrumentation/#use-labels][Instrumentation | Prometheus]]
 
 * Blackbox
 - http://127.0.0.1:9115/probes
