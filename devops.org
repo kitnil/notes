@@ -49,3 +49,15 @@
 - [[https://github.com/chef/omnibus][chef/omnibus: Easily create full-stack installers for your project across a variety of platforms.]]
 - [[https://github.com/renovatebot/renovate][renovatebot/renovate: Universal dependency update tool that fits into your workflows.]]
 - [[https://github.com/allero-io/allero][allero-io/allero: Prevent CI/CD Bad Practices]]
+
+** GitLab vs Jenkins
+
+|                                                     | GitLab                                 | Jenkins                                      |
+|                                                     |                                        |                                              |
+| Proprietary features (Vendor locking)               | Locked features by EE edition          | Everything is free and opensource            |
+| Locking                                             | No, could not use parallel builds      | Yes, E.g. could lock Docker registry         |
+| JUNIT                                               | Unknown                                | Yes, Builtin                                 |
+| Vault                                               | No builtin, crappy written bash script | Yes, High quality plugin                     |
+| CPS (aka Call with Current Continuation or call/cc) | Unknown, also no parallel builds       | Yes, Continue job running on master downtime |
+| Languages                                           | Bash Yaml                              | Groovy Bash Kotlin Java ...                  |
+| Logs for latest job                                 | Unknown                                | Yes, change job number to latestBuild in URL |
