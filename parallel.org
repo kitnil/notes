@@ -5,3 +5,6 @@
   : ls -a1 | tail -n +3 | parallel -u --progress rsync -avzP {} <remote host>:<remote path> --exclude .Trash --exclude *cache* --exclude *node_modules* --exclude vendor --delete
 
 - parallel -n0 -j 5 echo ping -c 4 ya.ru ::: 1 2
+
+- open jobs in tmux panels
+  : parallel --tmuxpane --fg yes ::: 1 2
