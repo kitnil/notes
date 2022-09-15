@@ -52,12 +52,11 @@
 
 ** GitLab vs Jenkins
 
-|                                                     | GitLab                                 | Jenkins                                      |
-|                                                     |                                        |                                              |
-| Proprietary features (Vendor locking)               | Locked features by EE edition          | Everything is free and opensource            |
-| Locking                                             | No, could not use parallel builds      | Yes, E.g. could lock Docker registry         |
-| JUNIT                                               | Unknown                                | Yes, Builtin                                 |
-| Vault                                               | No builtin, crappy written bash script | Yes, High quality plugin                     |
-| CPS (aka Call with Current Continuation or call/cc) | Unknown, also no parallel builds       | Yes, Continue job running on master downtime |
-| Languages                                           | Bash Yaml                              | Groovy Bash Kotlin Java ...                  |
-| Logs for latest job                                 | Unknown                                | Yes, change job number to latestBuild in URL |
+|                                                     | GitLab                                  | Jenkins                                      |
+| Proprietary features                                | Bad, locked features by EE edition      | Good, everything is free and opensource      |
+| Locking                                             | No, parallel builds could hang registry | Yes, e.g. could lock Docker registry         |
+| JUNIT                                               | Unknown                                 | Yes, builtin                                 |
+| Vault                                               | No builtin, crappy written bash script  | Yes, high quality plugin                     |
+| CPS (aka Call with Current Continuation or call/cc) | Unknown, also no parallel builds        | Yes, continue job running on master downtime |
+| Languages                                           | Bash Yaml                               | Groovy Bash Kotlin Java ...                  |
+| Logs for latest job                                 | Unknown                                 | Yes, change job number to latestBuild in URL |
