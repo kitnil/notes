@@ -65,4 +65,6 @@
 | Project health                                      | No                                      | Yes, builtin                                 |
 | All project build history dashboard                 | No                                      | Yes, builtin                                 |
 
-Quite period is a protection for commiters. E.g. you could stop a pipeline before a timeout exceeds.
+Quite period is a protection for commiters.  E.g. you could stop a pipeline
+before a timeout exceeds.  Or you could merge a lot of branches to master (or
+main) branch, and do not trigger master (or main) branch several times.
