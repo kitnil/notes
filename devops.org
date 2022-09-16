@@ -52,7 +52,7 @@
 
 ** GitLab vs Jenkins
 
-|                                                     | GitLab                                  | Jenkins                                      |
+|                                                     | GitLab CI                               | Jenkins Pipelines                               |
 | Proprietary features                                | Bad, non-free features by EE edition    | Good, everything is free and opensource      |
 | Resource locking                                    | No, parallel builds could hang registry | Yes, e.g. could lock Docker registry         |
 | Hashicorp Vault                                     | No builtin, Bash script                 | Yes, high quality plugin                     |
