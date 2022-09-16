@@ -393,6 +393,8 @@ NOTE: "pipeline" equal to "workflow".
           skipDefaultCheckout()
           disableConcurrentBuilds()
           quietPeriod(600)
+          skipStagesAfterUnstable()
+          parallelsAlwaysFailFast()
       }
     #+end_src
 
