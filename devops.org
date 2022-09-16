@@ -61,3 +61,4 @@
 | Logs for latest job                                 | Unknown                                 | Yes, change job number to latestBuild in URL |
 | Vulnerability reports                               | Yes, but only in the changelog          | Yes, per instance                            |
 | Configuration as a code                             | No                                      | Yes, as a YAML via JCASC                     |
+| Quiet period                                        | No                                      | Yes, builtin                                 |
