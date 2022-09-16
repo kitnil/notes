@@ -62,3 +62,5 @@
 | Vulnerability reports                               | Yes, but only in the changelog          | Yes, per instance                            |
 | Configuration as a code                             | No                                      | Yes, as a YAML via JCASC                     |
 | Quiet period                                        | No                                      | Yes, builtin                                 |
+
+Quite period is a protection for commiters. E.g. you could stop a pipeline before a timeout exceeds.
