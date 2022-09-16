@@ -59,3 +59,4 @@
 | CPS (aka Call with Current Continuation or call/cc) | Unknown                                 | Yes, continue job running on master downtime |
 | Languages                                           | Bash, Yaml                              | Groovy (DSL), Bash, Kotlin, Java, ...        |
 | Logs for latest job                                 | Unknown                                 | Yes, change job number to latestBuild in URL |
+| Vulnerability reports                               | Yes, but only in the changelog          | Yes, per instance                            |
