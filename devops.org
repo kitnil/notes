@@ -53,9 +53,9 @@
 ** GitLab vs Jenkins
 
 |                                                     | GitLab                                  | Jenkins                                      |
-| Proprietary features                                | Bad, locked features by EE edition      | Good, everything is free and opensource      |
-| Locking                                             | No, parallel builds could hang registry | Yes, e.g. could lock Docker registry         |
-| Vault                                               | No builtin, Bash script                 | Yes, high quality plugin                     |
+| Proprietary features                                | Bad, non-free features by EE edition    | Good, everything is free and opensource      |
+| Resource locking                                    | No, parallel builds could hang registry | Yes, e.g. could lock Docker registry         |
+| Hashicorp Vault                                     | No builtin, Bash script                 | Yes, high quality plugin                     |
 | CPS (aka Call with Current Continuation or call/cc) | Unknown                                 | Yes, continue job running on master downtime |
-| Languages                                           | Bash, Yaml                              | Groovy, Bash, Kotlin, Java, ...              |
+| Languages                                           | Bash, Yaml                              | Groovy (DSL), Bash, Kotlin, Java, ...        |
 | Logs for latest job                                 | Unknown                                 | Yes, change job number to latestBuild in URL |
