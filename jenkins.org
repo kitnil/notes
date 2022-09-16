@@ -385,6 +385,17 @@ NOTE: "pipeline" equal to "workflow".
       guix build $(PAGER= git log --author='go.wigust@gmail.com' --format='%s' --grep='gnu: Add' | grep -v 'Revert ' | awk '{ print $3 }' | sed 's|\.||' | sort | grep -v '^sound' | grep -v '^premake4' | tr '\n' ' ') premake
     #+END_SRC
 
+  - [[https://issues.jenkins.io/browse/JENKINS-37588][[JENKINS-37588] Multibranch pipeline does not allow quiet time or throttle - Jenkins Jira]]
+    #+begin_src groovy
+      options {
+          buildDiscarder(logRotator(numToKeepStr: '90', artifactNumToKeepStr: '5'))
+          retry(1)
+          skipDefaultCheckout()
+          disableConcurrentBuilds()
+          quietPeriod(600)
+      }
+    #+end_src
+
 * Misc
 
 https://stackoverflow.com/a/53804057
