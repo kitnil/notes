@@ -72,6 +72,7 @@
 : docker run --rm --workdir /src --network=host -v $PWD:/src -it nixery.dev/shell/aria2 aria2c FILE
 
 * Containers
+- [[https://github.com/AbdBarho/stable-diffusion-webui-docker][AbdBarho/stable-diffusion-webui-docker: Easy Docker setup for Stable Diffusion with user-friendly UI]]
 - [[https://github.com/containers/toolbox][containers/toolbox: Tool for containerized command line environments on Linux]]
 - [[https://github.com/BaptisteBdn/docker-selfhosted-apps][BaptisteBdn/docker-selfhosted-apps: Collection of selfhosted apps with docker only ! Traefik, Bitwarden, Wireguard with Pihole, Synapse with Elements, etc.]]
 - [[https://github.com/genuinetools/binctr][genuinetools/binctr: Fully static, unprivileged, self-contained, containers as executable binaries.]]
