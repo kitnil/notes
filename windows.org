@@ -113,6 +113,13 @@ mount -o anon \\192.168.0.144\srv\games N:
 - [[https://github.com/pit-ray/win-vind][pit-ray/win-vind: You can operate Windows with key bindings like Vim.]]
 - [[https://github.com/henrypp/chrlauncher][henrypp/chrlauncher: Small and very fast portable launcher and updater for Chromium.]]
 
+* Cheat sheet
+
+- If you're encountering display or graphics issues, you can press
+  Ctrl+Shift+Win+B to force Windows to take action. This shortcut alerts the
+  system to a potential graphics issue, which results in Windows restarting
+  your video driver.
+
 * Explorer
 - [[https://github.com/valinet/ExplorerPatcher][valinet/ExplorerPatcher: This project aims to enhance the working environment on Windows]]
 
