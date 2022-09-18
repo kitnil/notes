@@ -107,6 +107,7 @@
 - [[https://grafana.com/blog/2022/03/21/how-relabeling-in-prometheus-works/][How relabeling in Prometheus works | Grafana Labs]]
 - [[https://prometheus.io/docs/guides/multi-target-exporter/][Understanding and using the multi-target exporter pattern | Prometheus]]
 - [[https://prometheus.io/docs/prometheus/latest/configuration/configuration/][Configuration | Prometheus]]
+- [[https://github.com/prometheus/prometheus/discussions/10215][Prometheus stopped working after the error - opening storage failed: reloadBlocks: invalid block sequence: block time ranges overlap: · Discussion #10215 · prometheus/prometheus]]
 
 * Blackbox
 - http://127.0.0.1:9115/probes
