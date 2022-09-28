@@ -2430,21 +2430,23 @@ process: it grabs screenshots at regular intervals through QEMU.
 
 You can then assemble them to form an animated GIF with:
 
-  convert -loop 0 -delay 20 /tmp/qemu-movie-0*ppm /tmp/install.gif
+  : convert -loop 0 -delay 20 /tmp/qemu-movie-0*ppm /tmp/install.gif
 
 The GIF can be compressed with:
 
-  mogrify -layers optimize-frame /tmp/install.gif
+  : mogrify -layers optimize-frame /tmp/install.gif
 
 On IRC, Ricardo came up with this command to produce the video at
 <https://guix.gnu.org/guix-videos/guix-system-install-1.1.0.webm> (with
 a fade-in, proper frame rate, etc.):
 
+#+begin_src bash
   ffmpeg -framerate 30 -pattern_type glob -i \
-           'qemu-guix-install.selected/qemu-movie-*.ppm' -c:v libvpx-vp9 -vsync \
-           cfr -crf 31 -pix_fmt yuv420p -b:v 0 -filter_complex \
-           "setpts=5*PTS,loop=loop=60:size=1:start=0,fade=t=in:st=0:n=60" \
-           out3.webm
+         'qemu-guix-install.selected/qemu-movie-*.ppm' -c:v libvpx-vp9 -vsync \
+         cfr -crf 31 -pix_fmt yuv420p -b:v 0 -filter_complex \
+         "setpts=5*PTS,loop=loop=60:size=1:start=0,fade=t=in:st=0:n=60" \
+         out3.webm
+#+end_src
 
 Ludo’.
 
