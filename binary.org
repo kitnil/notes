@@ -24,5 +24,7 @@
 - [[https://lwn.net/SubscriberLink/904892/c1831bca962895e5/][The ABI status of ELF hash tables LWN.net]]
 - [[https://github.com/redballoonsecurity/ofrak][redballoonsecurity/ofrak: OFRAK: unpack, modify, and repack binaries.]]
 - [[https://github.com/chip-red-pill/MicrocodeDecryptor][chip-red-pill/MicrocodeDecryptor]]
+- [[https://github.com/hasherezade/pe-bear][hasherezade/pe-bear: Portable Executable reversing tool with a friendly GUI]]
+- [[https://github.com/hasherezade/pe-sieve][hasherezade/pe-sieve: Scans a given process. Recognizes and dumps a variety of potentially malicious implants (replaced/injected PEs, shellcodes, hooks, in-memory patches).]]
 
 - gcore -a PID

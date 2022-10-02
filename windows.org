@@ -133,6 +133,7 @@ mount -o anon \\192.168.0.144\srv\games N:
 - [[https://github.com/microsoft/wslg][microsoft/wslg: Enabling the Windows Subsystem for Linux to include support for Wayland and X server related scenarios]]
 - [[https://github.com/fortuneteller2k/nix-config][fortuneteller2k/nix-config: NixOS configuration (also on WSL)]]
 - [[https://github.com/nix-community/NixOS-WSL][nix-community/NixOS-WSL: NixOS on WSL(2) maintainer=@nzbr]]
+- [[https://github.com/sdrush/nixos-wsl][sdrush/nixos-wsl]]
 
 * WSA
 - [[https://github.com/alesimula/wsa_pacman][alesimula/wsa_pacman: A GUI package manager and package installer for Windows Subsystem for Android (WSA)]]
@@ -191,6 +192,7 @@ mount -o anon \\192.168.0.144\srv\games N:
 
 * DLL
 - [[https://github.com/hotnops/RemoteDebugView][hotnops/RemoteDebugView: A DLL that serves OutputDebugString content over a TCP connection]]
+- [[https://github.com/ORCx41/KnownDllUnhook][GitHub - ORCx41/KnownDllUnhook: Replace the .txt section of the current loaded modules from \KnownDlls\ to bypass edrs]]
 
 * Remote Desktop
 - [[https://serveradmin.ru/top-besplatnyh-programm-dlya-udalyonnogo-dostupa/][Топ 10 бесплатных программ для удалённого доступа — Server Admin]]

@@ -12,6 +12,7 @@
 - [[https://github.com/akhilrex/podgrab][akhilrex/podgrab: A self-hosted podcast manager/downloader/archiver tool to download podcast episodes as soon as they become live with an integrated player.]]
 - [[https://fedoramagazine.org/your-personal-voice-assistant-on-fedora-linux/][Your Personal Voice Assistant on Fedora Linux - Fedora Magazine]]
 - [[https://github.com/izderadicka/audioserve?auto_subscribed=false][izderadicka/audioserve: Simple personal server to serve audiofiles files from folders. Intended primarily for audio books, but anything with decent folder structure will do.]]
+- [[https://github.com/openai/whisper][GitHub - openai/whisper: Robust Speech Recognition via Large-Scale Weak Supervision]]
 
 - "Establishing connection to pulseaudio, please wait"
   : sudo fuser -v /dev/snd/*

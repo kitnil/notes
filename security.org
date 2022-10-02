@@ -3,6 +3,7 @@
 :END:
 #+title: Security
 
+- [[https://github.com/bulwarkid/virtual-fido][bulwarkid/virtual-fido: A Virtual FIDO2 USB Device]]
 - [[https://github.com/punk-security/dnsReaper][punk-security/dnsReaper: dnsReaper - subdomain takeover tool for attackers, bug bounty hunters and the blue team!]]
 - [[https://github.com/evilsocket/sauron][evilsocket/sauron: A minimalistic cross-platform malware scanner with non-blocking realtime filesystem monitoring using YARA rules.]]
 - [[https://github.com/seal9055/resources][seal9055/resources: Collection of resources I have used throughout my studies (cybersecurity and systems)]]
@@ -149,6 +150,7 @@ docker ps --format '{{ .Image }}' | grep master | sort -u | xargs -I{} docker pu
 
 * Tools
 - [[https://github.com/tr3ss/gofetch][tr3ss/gofetch: This could have been a bash one-liner but guess what. It's a small Go tool that lists the trending CVEs from cvetrends.com]]
+- [[https://github.com/lkarlslund/ldapnomnom][lkarlslund/ldapnomnom: Anonymously bruteforce Active Directory usernames from Domain Controllers by abusing LDAP Ping requests (cLDAP)]]
 
 * totp
 - [[https://github.com/susam/mintotp][susam/mintotp: Minimal TOTP generator in 20 lines of Python]]
