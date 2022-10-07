@@ -107,6 +107,7 @@ ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -l root -fNL 820
 - [[https://github.com/hashicorp/vault-action][hashicorp/vault-action: A GitHub Action that simplifies using HashiCorp Vault™ secrets as build variables.]]
 - [[https://github.com/kubevault/kubevault][kubevault/kubevault: KubeVault Documentation]]
 - [[https://github.com/DeterminateSystems/nixos-vault-service][DeterminateSystems/nixos-vault-service]]
+- [[https://habr.com/ru/company/nixys/blog/578870/][Взаимное автоматическое распечатывание двух Vault кластеров в Kubernetes / Хабр]]
 
 * Jenkins
 - [[https://www.admin-magazine.com/Archive/2019/51/Jenkins-Configuration-as-Code/(offset)/3][JCasC » ADMIN Magazine]]
