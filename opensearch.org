@@ -7,3 +7,8 @@
 - [[https://github.com/opensearch-project/OpenSearch-Dashboards][opensearch-project/OpenSearch-Dashboards: 📊 Open source visualization dashboards for OpenSearch.]]
 - [[https://opensearch.org/docs/latest/opensearch/query-dsl/index/][Query DSL - OpenSearch documentation]]
 - [[https://habr.com/ru/company/nixys/blog/588609/][Инструкция по применению OpenSearch: первые шаги по установке и настройке / Хабр]]
+
+* Cheat sheet
+
+- health
+  : sudo curl --resolve node-0.example.com:9200:192.168.25.1 -vv --cacert /etc/opensearch/root-ca.pem --key /etc/opensearch/esnode-key.pem --cert /etc/opensearch/esnode.pem https://node-0.example.com:9200/_cluster/health?pretty
