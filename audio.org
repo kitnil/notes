@@ -13,6 +13,7 @@
 - [[https://fedoramagazine.org/your-personal-voice-assistant-on-fedora-linux/][Your Personal Voice Assistant on Fedora Linux - Fedora Magazine]]
 - [[https://github.com/izderadicka/audioserve?auto_subscribed=false][izderadicka/audioserve: Simple personal server to serve audiofiles files from folders. Intended primarily for audio books, but anything with decent folder structure will do.]]
 - [[https://github.com/openai/whisper][GitHub - openai/whisper: Robust Speech Recognition via Large-Scale Weak Supervision]]
+- [[https://github.com/roc-streaming/roc-toolkit][roc-streaming/roc-toolkit: Real-time audio streaming over the network.]]
 
 - "Establishing connection to pulseaudio, please wait"
   : sudo fuser -v /dev/snd/*
