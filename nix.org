@@ -1097,6 +1097,8 @@ Related Posts
 
 * Libraries
 - [[https://github.com/ArctarusLimited/xnlib][ArctarusLimited/xnlib: XTended Nix Library used for various purposes by Arctarus]]
+* Lint
+- [[https://github.com/jtojnar/nixpkgs-hammering][jtojnar/nixpkgs-hammering: Beat your package expressions into a shape]]
 * Lustrate
   #+begin_src yaml
     - hosts: web_ubuntu
