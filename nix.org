@@ -581,6 +581,7 @@ Made up of multiple "generations".
 - [[https://github.com/vlaci/nix-straight.el][vlaci/nix-straight.el]]
 
 * Flakes
+- [[https://github.com/hercules-ci/flake-parts][hercules-ci/flake-parts: Minimal Nix modules for Flakes: split your flakes into modules and get things done with community modules.]]
 - [[https://github.com/aleeusgr/compose-flakes/blob/main/flake.nix][compose-flakes/flake.nix at main · aleeusgr/compose-flakes]]
 - [[https://github.com/NixOS/templates][NixOS/templates: Flake templates]]
 - [[https://github.com/fnctl/mkSystem/blob/main/flake.nix][mkSystem/flake.nix at main · fnctl/mkSystem]]
