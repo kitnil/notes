@@ -3,6 +3,115 @@
 :END:
 #+title: Nix
 
+* 
+
+https://gist.github.com/joepie91/043a51a7b70be5f50f1d
+
+This is an installation walkthrough for [the Nix package manager](https://nixos.org/nix/) in multi-user mode, on a non-NixOS system. While the walkthrough focuses on Debian, instructions on different platforms should be similar.
+
+## 1. Install dependencies.
+
+For recent Debian: 
+
+```sh
+apt-get install build-essential pkg-config autotools-dev dh-autoreconf libssl-dev libbz2-dev libsqlite3-dev libcurl4-openssl-dev liblzma-dev libgc-dev libdbi-perl libdbd-sqlite3-perl libwww-curl-perl libxml2 libxslt-dev
+```
+
+For other distributions, look for the equivalent packages.
+
+## 2. Set up build users.
+
+```sh
+groupadd -r nixbld
+for n in $(seq 1 10); do useradd -c "Nix build user $n" \
+    -d /var/empty -g nixbld -G nixbld -M -N -r -s "$(which nologin)" \
+    nixbld$n; done
+```
+
+## 3. Install Nix.
+
+```sh
+wget http://nixos.org/releases/nix/nix-1.11.2/nix-1.11.2.tar.xz
+tar -xvf nix-1.11.2.tar.xz
+cd nix-1.11.2/
+./configure --enable-gc
+make -j 2
+make install
+```
+
+If you have more than two CPU cores, you might want to increase the value of the `-j` flag for faster compilation.
+
+## 4. Create a systemd unit file, for managing the Nix daemon.
+
+Save this as `/etc/systemd/system/nix.service`:
+
+```
+[Unit]
+Description=Nix daemon
+
+[Service]
+EnvironmentFile=-/etc/default/nix
+ExecStart=/usr/local/bin/nix-daemon $EXTRA_OPTS
+IgnoreSIGPIPE=false
+KillMode=process
+
+[Install]
+WantedBy=multi-user.target
+```
+
+Create an empty `/etc/default/nix`:
+
+```sh
+touch /etc/default/nix
+```
+
+Enable and start the service:
+
+```sh
+systemctl enable nix
+systemctl start nix
+```
+
+## 5. Set up user configuration
+
+Source the following in your `/root/.bashrc`, either directly or indirectly:
+
+```sh
+nix-setup-user() {
+        TARGET_USER="$1"
+        SYMLINK_PATH="/home/$TARGET_USER/.nix-profile"
+        PROFILE_DIR="/nix/var/nix/profiles/per-user/$TARGET_USER"
+
+        echo "Creating profile $PROFILE_DIR..."
+        echo "Profile symlink: $SYMLINK_PATH"
+
+        rm "$SYMLINK_PATH"
+        mkdir -p "$PROFILE_DIR"
+        chown "$TARGET_USER:$TARGET_USER" "$PROFILE_DIR"
+        
+        ln -s "$PROFILE_DIR/profile" "$SYMLINK_PATH"
+        chown -h "$TARGET_USER:$TARGET_USER" "$SYMLINK_PATH"
+        
+        echo "export NIX_REMOTE=daemon" >> "/home/$TARGET_USER/.bashrc"
+        echo ". /usr/local/etc/profile.d/nix.sh" >> "/home/$TARGET_USER/.bashrc"
+        
+        su -lc "cd; . /usr/local/etc/profile.d/nix.sh; NIX_REMOTE=daemon nix-channel --update" "$TARGET_USER"
+}
+```
+
+Now, whenever you create a new user - say, `joepie91`, you can simply do something like the following:
+
+```sh
+nix-setup-user joepie91
+```
+
+... and a few minutes later, `joepie91` will be able to log in, and use Nix. Repeat for each user that needs access to Nix.
+
+https://nixos.org/nix-dev/2010-April.txt.gz
+
+* Android
+- [[https://github.com/t184256/nix-on-droid][t184256/nix-on-droid: Nix-enabled environment for your Android device.]]
+
 * Awesome
 
 - [[https://channels.nix.gsc.io/][channels.nix.gsc.io/]]
@@ -10,258 +119,20 @@
 - [[https://github.com/Anton-Latukha/nix-notes/blob/master/nix.org][nix-notes/nix.org at master · Anton-Latukha/nix-notes]]
 - [[https://github.com/gytis-ivaskevicius/nixfiles][gytis-ivaskevicius/nixfiles: My kick-ass NixOS systems configurations!!]]
 
-* Language
-- [[https://nix.dev/anti-patterns/language][In the Nix language — nix.dev documentation]]
-- [[https://github.com/divnix/yants][divnix/yants: a fork/mirror of yants - because github is more discoverable]]
-- [[https://github.com/tazjin/nix-1p][tazjin/nix-1p: A (more or less) one page introduction to Nix, the language.]]
+* Cache
+- [[https://github.com/ghuntley/cachix-demo][ghuntley/cachix-demo]]
+- [[https://nixbuild.net/][nixbuild.net]]
+- [[https://github.com/nixbuild/nixbuild-action][nixbuild/nixbuild-action: GitHub Action for using the nixbuild.net service]]
 
-** [[https://gist.github.com/srghma/4f63ad78a88a617f74a1b7f8989ed7aa][what each nix Dev should know.md]]
+* Cache
 
-#+begin_src markdown
-   `fix` function - https://github.com/NixOS/nixpkgs/blob/9f087964709174424bca681b600af8ee8e763df5/lib/fixed-points.nix#L19 , https://en.m.wikipedia.org/wiki/Fixed_point_(mathematics) , point where `x = f(x) = f(f(f(f....f(x)....)))`
-
-  `rec { a = 1; b = a + 1; }` is the same as `fix (self: { a = 1; b = self.a + 1; })`
-
-  `builtins.trace` - https://github.com/NixOS/nixpkgs/blob/9f087964709174424bca681b600af8ee8e763df5/lib/debug.nix#L4 trace has different flavors, http://hackage.haskell.org/package/base-4.12.0.0/docs/Debug-Trace.html#v:trace all lazy languages have trace 
-
-  `builtins.seq` - in lazy languages data is represented as thunks (IF data has not been yet evaluated THEN it's pointer on function that should produce this data ELSE it's pointer on data), `builtins.seq` forces first layer of data to evaluate (evaluates it to WHNF?), `builtins.deepSeq` is recursive variant of `seq`, it forces whole data to evaluate (evaluates it to NF?),  (more https://wiki.haskell.org/Seq, https://www.google.com/amp/s/amp.reddit.com/r/haskell/comments/9z6v51/whats_the_difference_between_head_normal_formhnf/)
-
-  `nix-shell` - debugging example
-  ```
-  $ nix-shell --pure <package>
-  $ typeset # to see all availeale functions with their definitions
-  $ type genericBuild # to see genericBuild definition
-  $ set -e # to exit on error
-  $ set -x # to show all executed commands
-  $ source $stdenv/setup # to setup env
-  $ genericBuild # to start phases
-
-  ```
-
-  `lib.evalModule` - it's easy, n.b. it uses fixed points
-
-  `derivation` - it's easy, https://github.com/NixOs/nix/blob/master/corepkgs/derivation.nix
-
-  `mkDerivation` - wrapper on `derivation`, I think maybe they put too much logic in this function https://nixos.org/nixpkgs/manual/#sec-stdenv-phases
-
-  how path is different from string - paths are copied to nix store when they are forced to evaluate. IF string was constructed from path (this info is stored in "string context"), THEN string evaluation will force path to be copied to nix store too (e.g. evaluation of `"${/foo}/bar"` will copy directory `/foo` as `/nix/store/xxxx-foo`, resulting string will be `/nix/store/xxxx-foo/bar`). http://blog.shealevy.com/2018/08/05/understanding-nix's-string-context/ 
-
-  but `"${toString ./foo}/bar"` will produce `"/fullpath/foo/bar"`
-
-  `callPackage`  - https://nixos.org/nixos/nix-pills/callpackage-design-pattern.html
-
-  IDF means import from derivation - when you import some file from derivation (e.g. `arion = import "${arionSrcFromGithub}/release.nix"`), the `arionSrcFromGithub` is not saved anywhere as dependency for `arion` and will be removed on next garbage collection.  This makes sense, but you end up downloading `arionSrcFromGithub` all the time from the internet. To resolve this you can add `arionSrcFromGithub` to /nix/var/nix/gcroots using `nix-build --add-root` OR save the link to it inside some derivation that added to gcroots (e.g. `arion`) https://github.com/srghma/dotfiles/blob/0054e4586183e0dcf1bdecc9507bde937c365f30/nixos/utils/addAsRuntimeDeps.nix#L1
-
-  `nix-build --check` - nix assumes that your derivation builder outputs same result given same inputs, this may not be true, using this flag the derivation will be built twice, IF resulting hash of the package content (!!!, not the hash of the path, i.e. xxxx in /nix/store/xxxx-yyy, this hash is computed only from derivation inputs) is different THEN it will return an error
-
-  https://learnxinyminutes.com/docs/nix/
-
-  https://gist.github.com/srghma/f1ff5cd10722ee8218cfdbae1ad49645
-
-  https://stackoverflow.com/a/34837585/3574379
-
-  http://www.haskellforall.com/2017/11/compare-nix-derivations-using-nix-diff.html?m=1
-#+end_src
-
-* NixOS
-- [[https://github.com/fabaff/nix-security-box][fabaff/nix-security-box: Tool set for Information security professionals and all others]]
-- [[https://github.com/vpsfreecz/vpsadminos][vpsfreecz/vpsadminos: Host for Linux system containers based on NixOS, ZFS and LXC]]
-- [[https://gist.github.com/gdamjan/8158b57379932fd0e07ce6d83399b71f][Install a NixOS for a systemd-nspawn container … from podman]]
-#+begin_src markdown
-  Run a nix container with podman, with the container destination mounted as `/mnt`:
-
-  ```
-  DEST=~/containers/nixos
-  mkdir -p $DEST/{dev,proc,etc/nixos}
-
-  podman run -v $DEST:/mnt -it --rm --cap-add SYS_ADMIN --uts=private docker.io/nixos/nix:latest
-  ```
-
-  Setup the channel for nixos-21.11
-  ```
-  nix-channel --add https://nixos.org/channels/nixos-21.11 nixpkgs
-  nix-channel --update
-  nix-channel --list
-  ```
-
-  Install the nixos install tools:
-  ```
-  nix-env -f '<nixpkgs>' -iA nixos-install-tools util-linux
-  ```
-
-  Copy the [`configuration.nix`](https://nixos.org/nixos/options.html) file and run the installation:
-  ```
-  cat > /mnt/etc/nixos/configuration.nix
-  …see below…
-  <Ctrl-D>
-
-  # workaround for error: while setting up the build environment: mounting /proc: Operation not permitted «
-  mount --bind /proc/ /mnt/proc
-  mount --bind /dev/ /mnt/dev
-
-  nixos-install --root /mnt
-  ```
-
-  Let's "boot" the container:
-  ```
-  sudo systemd-nspawn --boot --network-veth --directory $DEST
-  …
-
-  # poweroff
-  ```
-
-  System updates:
-  ```
-  nixos-rebuild boot --upgrade
-  ```
-
-  Release upgrade:
-  ```
-  nix-channel --add https://nixos.org/channels/nixos-21.11 nixpkgs
-  nix-channel --update
-  nixos-rebuild boot --upgrade
-  ```
-#+end_src
-
-#+begin_src nix
-  # /etc/nixos/configuration.nix
-  #
-  # Edit this configuration file to define what should be installed on
-  # your system.  Help is available in the configuration.nix(5) man page
-  # and in the NixOS manual (accessible by running ‘nixos-help’).
-
-  { config, pkgs, ... }:
-
-  {
-    imports = [];
-
-    boot.isContainer = true;
-    boot.loader.initScript.enable = true;
-
-    time.timeZone = "Europe/Skopje";
-
-    networking.hostName = ""; # empty
-    networking.useDHCP = false;
-    networking.useNetworkd = true;
-    networking.useHostResolvConf = false;
-    networking.firewall.enable = false;
-
-    environment.systemPackages = with pkgs; [
-       vim
-       wget
-    ];
-
-    system.stateVersion = "21.11";
-  }
-#+end_src
-
+- [[https://nixos.wiki/wiki/Binary_Cache][Binary Cache - NixOS Wiki]]
 #+begin_example
-  $ sudo systemd-nspawn --boot --network-veth --directory $DEST
-  Spawning container nixos on /home/damjan/containers/nixos.
-  Press ^] three times within 1s to kill container.
-
-  <<< NixOS Stage 2 >>>
-
-  running activation script...
-  setting up /etc...
-  starting systemd...
-  systemd 247 running in system mode. (+PAM +AUDIT -SELINUX +IMA +APPARMOR +SMACK -SYSVINIT +UTMP +LIBCRYPTSETUP +GCRYPT -GNUTLS +ACL +XZ +LZ4 -ZSTD +SECCOMP +BLKID -ELFUTILS +KMOD +IDN2 -IDN +PCRE2 default-hierarchy=unified)
-  Detected virtualization systemd-nspawn.
-  Detected architecture x86-64.
-  Failed to create symlink /sys/fs/cgroup/net_cls: Read-only file system
-  Failed to create symlink /sys/fs/cgroup/net_prio: Read-only file system
-  Failed to create symlink /sys/fs/cgroup/cpuacct: Read-only file system
-  Failed to create symlink /sys/fs/cgroup/cpu: Read-only file system
-
-  Welcome to NixOS 21.05 (Okapi)!
-
-  Initializing machine ID from container UUID.
-  Queued start job for default target Multi-User System.
-  system-getty.slice: unit configures an IP firewall, but the local system does not support BPF/cgroup firewalling.
-  (This warning is only shown for the first unit using IP firewalling.)
-  [  OK  ] Created slice system-getty.slice.
-  [  OK  ] Created slice system-modprobe.slice.
-  [  OK  ] Created slice User and Session Slice.
-  [  OK  ] Started Dispatch Password Requests to Console Directory Watch.
-  [  OK  ] Started Forward Password Requests to Wall Directory Watch.
-  [  OK  ] Reached target Local Encrypted Volumes.
-  [  OK  ] Reached target Containers.
-  [  OK  ] Reached target Paths.
-  [  OK  ] Reached target Remote File Systems.
-  [  OK  ] Reached target Slices.
-  [  OK  ] Reached target Swap.
-  [  OK  ] Listening on Process Core Dump Socket.
-  [  OK  ] Listening on Journal Socket (/dev/log).
-  [  OK  ] Listening on Journal Socket.
-  [  OK  ] Listening on Network Service Netlink Socket.
-           Mounting Huge Pages File System...
-           Starting Journal Service...
-           Starting Firewall...
-           Starting Apply Kernel Variables...
-           Starting Create Static Device Nodes in /dev...
-  [  OK  ] Mounted Huge Pages File System.
-  [  OK  ] Finished Apply Kernel Variables.
-  [  OK  ] Finished Create Static Device Nodes in /dev.
-  [  OK  ] Reached target Local File Systems (Pre).
-  [  OK  ] Reached target Local File Systems.
-  [  OK  ] Started Journal Service.
-           Starting Flush Journal to Persistent Storage...
-  [FAILED] Failed to start Firewall.
-  See 'systemctl status firewall.service' for details.
-  [  OK  ] Reached target Network (Pre).
-  [  OK  ] Reached target All Network Interfaces (deprecated).
-           Starting Network Service...
-  [  OK  ] Finished Flush Journal to Persistent Storage.
-           Starting Create Volatile Files and Directories...
-  [  OK  ] Finished Create Volatile Files and Directories.
-           Starting Rebuild Journal Catalog...
-           Starting Update UTMP about System Boot/Shutdown...
-  [  OK  ] Finished Update UTMP about System Boot/Shutdown.
-  [  OK  ] Finished Rebuild Journal Catalog.
-           Starting Update is Completed...
-  [  OK  ] Finished Update is Completed.
-  [  OK  ] Reached target System Initialization.
-  [  OK  ] Started Daily Cleanup of Temporary Directories.
-  [  OK  ] Reached target Timers.
-  [  OK  ] Listening on D-Bus System Message Bus Socket.
-  [  OK  ] Listening on Nix Daemon Socket.
-  [  OK  ] Reached target Sockets.
-  [  OK  ] Reached target Basic System.
-           Starting Name Service Cache Daemon...
-  [  OK  ] Started Network Service.
-  [  OK  ] Started D-Bus System Message Bus.
-           Starting Extra networking commands....
-           Starting Wait for Network to be Configured...
-           Starting Network Name Resolution...
-  [  OK  ] Finished Extra networking commands..
-  [  OK  ] Started Name Service Cache Daemon.
-  [  OK  ] Reached target User and Group Name Lookups.
-           Starting User Login Management...
-  [  OK  ] Started User Login Management.
-  [  OK  ] Started Network Name Resolution.
-  [  OK  ] Reached target Network.
-  [  OK  ] Reached target Host and Network Name Lookups.
-           Starting Permit User Sessions...
-  [  OK  ] Finished Permit User Sessions.
-  [  OK  ] Started Console Getty.
-  [  OK  ] Reached target Login Prompts.
-
-
-  <<< Welcome to NixOS 21.05.4086.68d4f5970b6 (x86_64) - console >>>
-
-
-  nixos login:
-  Password:
+$ curl http://binarycache.example.com/nix-cache-info
+StoreDir: /nix/store
+WantMassQuery: 1
+Priority: 30
 #+end_example
-
-- [[https://github.com/grwlf/nixos-ssh-over-tls][grwlf/nixos-ssh-over-tls: NixOS module which hides both HTTP and SSH daemons behind SSL proxy on the same port]]
-- [[https://github.com/obsidiansystems/socket-over-tls-service][obsidiansystems/socket-over-tls-service: A NixOS service that forwards a Unix domain socket over TLS]]
-
-* Guix
-- [[https://github.com/foo-dogsquared/nix-overlay-guix][foo-dogsquared/nix-overlay-guix: A package and module for using GNU Guix on Nix(OS). Fork from https://github.com/Emiller88/guix, attempting to update the project and clean up the codebase for a more usable interface.]]
-
-* Learning
-- [[https://dataswamp.org/~solene/2022-10-06-nixos-kiosk.html][Solene'% : A NixOS kiosk]]
 
 * Cheatsheet
 
@@ -590,11 +461,388 @@ patchelf https://nixos.wiki/wiki/Packaging/Binaries#Creating_the_Derivation_for_
   };
 #+end_src
 
-* Installation
-- [[https://github.com/nix-community/nix-installers][nix-community/nix-installers: Nix installers for legacy distributions (rpm & deb & pacman) [maintainer=@adisbladis]]]
+* CI
+- [[https://github.com/Mic92/nix-build-uncached][Mic92/nix-build-uncached: A CI friendly wrapper around nix-build.]]
+- [[https://github.com/DeterminateSystems/terraform-provider-hydra][DeterminateSystems/terraform-provider-hydra: Declaratively configure your Hydra server with Terraform.]]
+
+* Commands
+
+** nix-instantiate
+#+begin_src shell
+  nix-instantiate -E 'import <nixpkgs/nixos> { configuration = (import ./nixops-deployment.nix).web32; system = "x86_64-linux"; }'
+#+end_src
+
+** GC
+#+begin_src shell
+  nix-env -p /nix/var/nix/profiles/system --list-generations | awk -v date="$(date +%Y-%m)" '$0 !~ date { print $1 }' | xargs nix-env -p /nix/var/nix/profiles/system --delete-generations
+#+end_src
+
+** Show direct runtime dependencie
+#+BEGIN_SRC shell
+nix-store -q --references "$(command -v bassename)"
+#+END_SRC
+
+** Show reverse dependencies
+#+BEGIN_SRC shell
+nix-store -q --referrers "$(command -v basename)"
+#+END_SRC
+
+** Show catamorphed closure
+#+BEGIN_SRC shell
+nix-store -qR "$(command -v bassename)"
+#+END_SRC
+
+** Show tree of closure
+#+BEGIN_SRC shell
+nix-store -q --tree "$(command -v basename)"
+#+END_SRC
+
+** Recovering making rollback from store directory
+#+BEGIN_SRC shell
+/nix/store/<hash>-nix-<ver>/bin/nix-env --rollback
+#+END_SRC
+
+** Restore specific NixOS generation
+
+[[https://github.com/NixOS/nixpkgs/issues/24374][List-generations and rollback to any configuration · Issue #24374 · NixOS/nixpkgs]]
+#+begin_src sh
+sudo nix-env --switch-generation 12345 -p /nix/var/nix/profiles/system
+sudo /nix/var/nix/profiles/system/bin/switch-to-configuration switch
+#+end_src
+
+** vm
+#+begin_example
+  nixops.util.CommandFailed: command ‘['nix-build', '-I', 'nixops=/nix/store/jpn9dj9b1wlhdh5a2s3rassaghk1syn9-nixops-1.7pre0_abcdef/share/nix/nixops', '--arg', 'networkExprs', u'[ "/home/oleg/majordomo/_ci/nixops/jenkins.nix" ]', '--arg', 'args', '{}', '--argstr', 'uuid', u'af5d6207-11f8-11eb-bb11-0242659d6883', '--argstr', 'deploymentName', u'jenkins', '<nixops/eval-machine-info.nix>', '--arg', 'checkConfigurationOptions', 'false', '-A', 'nodes.jenkins-test.config.deployment.libvirtd.baseImage', '-o', '/run/user/1000/nixops-tmpeq23PB/libvirtd-image-jenkins-test']’ failed on machine ‘jenkins-test’ (exit code 100)''
+#+end_example
+
+** Build with specific channel
+#+begin_src shell
+  nix-build release.nix -A build.x86_64-linux -I nixpkgs=channel:nixos-19.03
+#+end_src
+
+** Recover with reinstall from store directory
+#+BEGIN_SRC shell
+/nix/store/<hash>-nix-<ver>/bin/nix-env -i /nix/store/<hash>-nix-<ver>
+#+END_SRC
+
+** nix-repl
+   #+begin_src nix
+     lib.listToAttrs (lib.mapAttrsFlatten (name: value: lib.nameValuePair ("mj-" + name) value) { "a" = { "b" = "c"; }; })
+   #+end_src
+
+** nix-instantiate example
+   : ls -1 /tmp/env.nix | entr -r nix-instantiate --eval --strict --expr 'with import <nixpkgs> {}; import /tmp/env.nix { inherit lib; }'
+   #+begin_src nix
+     { lib }:
+
+     lib.mapAttrsFlatten (name: value: name + value) {
+       LC_ALL = "en_US.UTF-8";
+       TZ = "Europe/Moscow";
+     }
+
+   #+end_src
+
+*** meta
+  : nix-instantiate ~/src/nixpkgs-19.09/ --eval --strict -A "hello.meta.position"
 
 * Configurations
 - [[https://github.com/jethrokuan/nix][jethrokuan/nix: NixOS configuration with Nix flakes]]
+
+* deploy-rs
+  - [[https://github.com/serokell/deploy-rs][serokell/deploy-rs: A Simple multi-profile Nix-flake deploy tool.]]
+
+    Activation command during deploy example:
+    #+begin_example
+      /nix/store/...-activatable-nixos-system-mx1-mr-20.09.20201027.cd63096/activate-rs                                       \
+          --temp-path '/tmp'                                                                                                  \
+          activate '/nix/store/...-activatable-nixos-system-mx1-mr-20.09.20201027.cd63096' '/nix/var/nix/profiles/system'     \
+          --confirm-timeout 30                                                                                                \
+          --auto-rollback
+    #+end_example
+
+** TODO nixos-switch-to-configuration code 100 means that host reboot is required
+
+* Dictionary
+** Profile
+A general and convenient concept for realizing rollbacks.
+** Database
+/nix/var/nix/db/db.sqlite
+
+Keeps track of the dependencies between derivations.
+
+Made up of multiple "generations".
+
+* DSL
+- [[https://github.com/Mic92/pythonix][Mic92/pythonix: Eval nix code from python]]
+- [[https://github.com/Mic92/hydra-eval-jobs][Mic92/hydra-eval-jobs: Eval nix expressions from flakes (extracted from hydra)]]
+- [[https://github.com/andir/libnixstore-c][andir/libnixstore-c: a brutal attempt at making C bindings for Nix]]
+
+* Emacs
+- [[https://github.com/vlaci/nix-straight.el][vlaci/nix-straight.el]]
+
+* Flakes
+- [[https://github.com/aleeusgr/compose-flakes/blob/main/flake.nix][compose-flakes/flake.nix at main · aleeusgr/compose-flakes]]
+- [[https://github.com/NixOS/templates][NixOS/templates: Flake templates]]
+- [[https://github.com/fnctl/mkSystem/blob/main/flake.nix][mkSystem/flake.nix at main · fnctl/mkSystem]]
+- [[https://github.com/fnctl/helix][fnctl/helix: A post-modern modal text editor.]]
+- [[https://github.com/kira-bruneau/flake-checker][kira-bruneau/flake-checker: Incrementally run checks & fixes in your Nix flake (only on changed files). Mirror of https://gitlab.com/kira-bruneau/flake-checker]]
+- [[https://github.com/srid/check-flake][srid/check-flake: Add a `.#check` package for building all checks for the current system]]
+- [[https://github.com/ralismark/nix-appimage][ralismark/nix-appimage: (experimental) Convert a nixos derivation into a self-contained binary]]
+
+** Eval
+
+#+begin_src nix
+  with builtins;
+  with getFlake (toPath ./.);
+  with inputs.nixpkgs.lib;
+  attrNames (filterAttrs (name: value:
+    if value ? inputs then value.inputs ? ${args.input} else false) inputs)
+#+end_src
+
+: nix eval --impure --json --expr NIX_EXPRESSION
+
+** Learning
+
+- [[https://nixos.wiki/wiki/Flakes][Flakes - NixOS Wiki]]
+- [[https://github.com/NixOS/nix/tree/master/src/nix][nix/src/nix at master · NixOS/nix]]
+
+** Videos
+
+- [[https://www.youtube.com/watch?v=QXUlhnhuRX4&t=1154s][Jörg Thalheim: Nix flakes 101 (rC3 2020) - YouTube]]
+- [[https://www.youtube.com/watch?v=K54KKAx2wNc&t=18s][Intro to Flakes - YouTube]]
+- [[https://www.youtube.com/watch?v=UeBX7Ide5a0][Nix flakes (NixCon 2019) - YouTube]]
+- [[https://www.youtube.com/watch?v=h2I1FHpbaIg][Nix Friday - Flakes! - YouTube]]
+- [[https://www.youtube.com/channel/UCDTeiF7cayvgLMUBSm9-B2A][Jonas Chevalier - YouTube]]
+- [[https://www.youtube.com/watch?v=98EwejpIJzE&t=645s][Flakes in nix 2.4 - YouTube]]
+- [[https://www.youtube.com/user/nautilus1k][Andrew Tropin - YouTube]]
+- [[https://www.youtube.com/watch?v=mJbQ--iBc1U&t=994s][Moving Nixos System Configuration Into A Flake - YouTube]]
+- [[https://www.youtube.com/watch?v=CDzgNxoAlnA&t=3126s][Almost Perfect Dotfiles Management w/ nix, home-manager and flakes - YouTube]]
+
+** Misc
+
+  - [[https://github.com/DavHau/systemd2nix][DavHau/systemd2nix: Convert systemd service files to Nix syntax]]
+  - [[https://github.com/DavHau/mach-nix][DavHau/mach-nix: Create highly reproducible python environments]]
+  - [[https://github.com/flokli/nix-casync][flokli/nix-casync: A more efficient way to store and substitute Nix store paths]]
+  - [[https://github.com/netbootxyz/netboot.xyz/issues/1050]["Permission denied" error on NixOS · Issue #1050 · netbootxyz/netboot.xyz]]
+  - [[https://github.com/ijohanne/nixpkgs-firefox-addons][ijohanne/nixpkgs-firefox-addons: Fork of nixpkgs-firefox-addons from https://gitlab.com/rycee/nixpkgs-firefox-addons]]
+  - [[https://github.com/divnix/digga][divnix/digga: A a flake utility library to craft shell-, home-, and hosts- environments.]]
+  - [[https://github.com/serokell/systemd-nix][serokell/systemd-nix: Generate systemd units from NixOS-style descriptions]]
+  - [[https://github.com/fufexan/nix-gaming][fufexan/nix-gaming: Gaming on Nix]]
+  - [[https://github.com/serokell/vault-secrets/blob/master/flake.nix][vault-secrets/flake.nix at master · serokell/vault-secrets]]
+  - [[https://github.com/hackworthltd/react-nix-craco-public][hackworthltd/react-nix-craco-public: Repro case for an npmlock2nix issue]]
+  - [[https://github.com/serokell/nix-npm-buildpackage][serokell/nix-npm-buildpackage: Build nix packages that use npm/yarn]]
+  - [[https://github.com/divnix/vs-ext][divnix/vs-ext: A kick ass library to dominate your Visual Studio Extensions (with DevOS)]]
+  - [[https://github.com/gytis-ivaskevicius/flake-utils-plus?auto_subscribed=false][gytis-ivaskevicius/flake-utils-plus: Use Nix flakes without any fluff.]]
+  - [[https://github.com/tadfisher/flake][tadfisher/flake: My computing life in Nix.]]
+  - [[https://github.com/bqv/nixrc][bqv/nixrc: Structured flake-based NixOS configuration]]
+  - [[https://github.com/MarcoPolo/simple-vms][MarcoPolo/simple-vms: Simple VMs in NixOS]]
+  - [[https://github.com/balsoft/kalinix][balsoft/kalinix: A pentesting/CTF toolbox with the help of Nix]]
+  - [[https://github.com/adriansosa/tmux-flake][adriansosa/tmux-flake]]
+  - [[https://github.com/MatthewCroughan/nixinate][MatthewCroughan/nixinate: Another NixOS Deployment Tool - Nixinate your systems 🕶️]]
+  - [[https://github.com/Simon-Boyer/nixos-swarm-node][Simon-Boyer/nixos-swarm-node: Personnal NixOS configuration for a docker swarm node]]
+
+  - [[https://github.com/jkachmar/easy-hls-nix][jkachmar/easy-hls-nix: Easy Haskell Language Server tooling with Nix!]]
+
+  - $ nix build .#nixosConfigurations.someNixosSystem.config.system.build.vm
+
+  - [[https://github.com/Hoverbear-Consulting/flake][Hoverbear-Consulting/flake]]
+    : nixos-install --flake github:hoverbear-consulting/flake#gizmo --impure
+
+** Packer
+   #+begin_src nix
+     {
+       description = "Run packer to build NixOS";
+       inputs = {
+         flake-compat = {
+           url = "github:edolstra/flake-compat";
+           flake = false;
+         };
+         flake-utils.url = "github:numtide/flake-utils";
+         packer-nixos = {
+           url = "github:nix-community/nixbox";
+           flake = false;
+         };
+       };
+       outputs = { self, nixpkgs, flake-utils, packer-nixos, ... }:
+         flake-utils.lib.eachDefaultSystem (system: with nixpkgs.legacyPackages."${system}"; {
+           apps.mailman =
+             let
+               nixos-x86_64 = builtins.fromJSON (builtins.readFile "${packer-nixos}/nixos-x86_64.json");
+               packerNixosJson = with nixpkgs.lib; writeText "nixos-x86_64.json"
+                 (builtins.toJSON
+                   (filterAttrs
+                     (name: value: name != "post-processors")
+                     (nixos-x86_64 // {
+                       builders = [
+                         ((findFirst
+                           (x: x.type == "qemu")
+                           nixos-x86_64.builders
+                           nixos-x86_64.builders)
+                         // {
+                           iso_url = "https://releases.nixos.org/nixos/20.09/nixos-20.09.3827.389249fa9b3/nixos-minimal-20.09.3827.389249fa9b3-x86_64-linux.iso";
+                           iso_checksum = "d73847e1bc4034eb7b31998d6106ba60bd37048c605cbe3b11d7fb4a87aea676";
+                         })
+                       ];
+                     })));
+             in flake-utils.lib.mkApp {
+               drv = writeScriptBin "build.sh" ''
+                 #!${runtimeShell}
+                 set -euo pipefail
+                 cp -a ${packer-nixos} packer-nixos
+                 find packer-nixos -type f -exec chmod 644 {} \;
+                 chmod 755 packer-nixos
+                 install -m644 ${packerNixosJson} packer-nixos/nixos-x86_64.json
+                 (
+                     cd packer-nixos
+                     exec -a "$0" ${packer}/bin/packer build ${packerNixosJson} "$@"
+                 )
+               '';
+             };
+           devShell = mkShell {
+             buildInputs = [ nixUnstable ];
+           };
+         });
+     }
+   #+end_src
+
+   : nix build .#nixosConfigurations.mailman.config.system.build.tarball
+   #+begin_src nix
+     {
+       description = "TODO";
+       inputs = {
+         flake-compat = {
+           url = "github:edolstra/flake-compat";
+           flake = false;
+         };
+         flake-utils.url = "github:numtide/flake-utils";
+         packer-nixos = {
+           url = "github:nix-community/nixbox";
+           flake = false;
+         };
+       };
+       outputs = { self, nixpkgs, flake-utils, packer-nixos, ... }:
+         flake-utils.lib.eachDefaultSystem (system: {
+           devShell = with nixpkgs.legacyPackages."${system}"; mkShell {
+             buildInputs = [ nixUnstable ];
+           };
+         })
+         // (let
+           system = "x86_64-linux";
+         in {
+           nixosModule = {
+             boot.loader.grub.device = "/dev/sda";
+             fileSystems."/".device = "/dev/sda1";
+             services.nginx.enable = true;
+             imports = [
+               (nixpkgs + /nixos/modules/virtualisation/docker-image.nix)
+               (nixpkgs + /nixos/modules/installer/cd-dvd/channel.nix)
+             ];
+           };
+           nixosConfigurations.mailman = nixpkgs.lib.nixosSystem {
+             inherit system;
+             modules = [ self.nixosModule ];
+           };
+         });
+     }
+   #+end_src
+
+* Guix
+- [[https://github.com/foo-dogsquared/nix-overlay-guix][foo-dogsquared/nix-overlay-guix: A package and module for using GNU Guix on Nix(OS). Fork from https://github.com/Emiller88/guix, attempting to update the project and clean up the codebase for a more usable interface.]]
+
+* home-manager
+- [[https://github.com/viperML/home-manager-wsl][viperML/home-manager-wsl: WSL distribution, including Nix, Home-manager and Alpine Linux]]
+
+* Hydra
+
+- [[https://github.com/malob/nix-review-tools-reports][malob/nix-review-tools-reports: Repository that automatically generates Hydra reports using `nix-review-tools`.]]
+
+example job
+#+BEGIN_SRC nix
+  let
+    pkgs = import <nixpkgs> { };
+
+    jobs = rec {
+
+      tarball = pkgs.releaseTools.sourceTarball {
+        name = "hello-tarball";
+        src = "mirror://gnu/hello/hello-2.10.tar.gz";
+        buildInputs = (with pkgs; [ bash ]);
+      };
+
+      build = { system ? builtins.currentSystem }:
+
+        let pkgs = import <nixpkgs> { inherit system; };
+        in pkgs.releaseTools.nixBuild {
+          name = "hello";
+          src = jobs.tarball;
+        };
+    };
+  in jobs
+#+END_SRC
+
+* Installation
+- [[https://github.com/nix-community/nix-installers][nix-community/nix-installers: Nix installers for legacy distributions (rpm & deb & pacman) [maintainer=@adisbladis]]]
+
+* Install commands
+
+- ipmi
+: nix-env -p .nix-profile.d/ipmiview/ipmiview -iA nixos-unstable.ipmiview
+
+* Language
+- [[https://nix.dev/anti-patterns/language][In the Nix language — nix.dev documentation]]
+- [[https://github.com/divnix/yants][divnix/yants: a fork/mirror of yants - because github is more discoverable]]
+- [[https://github.com/tazjin/nix-1p][tazjin/nix-1p: A (more or less) one page introduction to Nix, the language.]]
+
+** [[https://gist.github.com/srghma/4f63ad78a88a617f74a1b7f8989ed7aa][what each nix Dev should know.md]]
+
+#+begin_src markdown
+   `fix` function - https://github.com/NixOS/nixpkgs/blob/9f087964709174424bca681b600af8ee8e763df5/lib/fixed-points.nix#L19 , https://en.m.wikipedia.org/wiki/Fixed_point_(mathematics) , point where `x = f(x) = f(f(f(f....f(x)....)))`
+
+  `rec { a = 1; b = a + 1; }` is the same as `fix (self: { a = 1; b = self.a + 1; })`
+
+  `builtins.trace` - https://github.com/NixOS/nixpkgs/blob/9f087964709174424bca681b600af8ee8e763df5/lib/debug.nix#L4 trace has different flavors, http://hackage.haskell.org/package/base-4.12.0.0/docs/Debug-Trace.html#v:trace all lazy languages have trace 
+
+  `builtins.seq` - in lazy languages data is represented as thunks (IF data has not been yet evaluated THEN it's pointer on function that should produce this data ELSE it's pointer on data), `builtins.seq` forces first layer of data to evaluate (evaluates it to WHNF?), `builtins.deepSeq` is recursive variant of `seq`, it forces whole data to evaluate (evaluates it to NF?),  (more https://wiki.haskell.org/Seq, https://www.google.com/amp/s/amp.reddit.com/r/haskell/comments/9z6v51/whats_the_difference_between_head_normal_formhnf/)
+
+  `nix-shell` - debugging example
+  ```
+  $ nix-shell --pure <package>
+  $ typeset # to see all availeale functions with their definitions
+  $ type genericBuild # to see genericBuild definition
+  $ set -e # to exit on error
+  $ set -x # to show all executed commands
+  $ source $stdenv/setup # to setup env
+  $ genericBuild # to start phases
+
+  ```
+
+  `lib.evalModule` - it's easy, n.b. it uses fixed points
+
+  `derivation` - it's easy, https://github.com/NixOs/nix/blob/master/corepkgs/derivation.nix
+
+  `mkDerivation` - wrapper on `derivation`, I think maybe they put too much logic in this function https://nixos.org/nixpkgs/manual/#sec-stdenv-phases
+
+  how path is different from string - paths are copied to nix store when they are forced to evaluate. IF string was constructed from path (this info is stored in "string context"), THEN string evaluation will force path to be copied to nix store too (e.g. evaluation of `"${/foo}/bar"` will copy directory `/foo` as `/nix/store/xxxx-foo`, resulting string will be `/nix/store/xxxx-foo/bar`). http://blog.shealevy.com/2018/08/05/understanding-nix's-string-context/ 
+
+  but `"${toString ./foo}/bar"` will produce `"/fullpath/foo/bar"`
+
+  `callPackage`  - https://nixos.org/nixos/nix-pills/callpackage-design-pattern.html
+
+  IDF means import from derivation - when you import some file from derivation (e.g. `arion = import "${arionSrcFromGithub}/release.nix"`), the `arionSrcFromGithub` is not saved anywhere as dependency for `arion` and will be removed on next garbage collection.  This makes sense, but you end up downloading `arionSrcFromGithub` all the time from the internet. To resolve this you can add `arionSrcFromGithub` to /nix/var/nix/gcroots using `nix-build --add-root` OR save the link to it inside some derivation that added to gcroots (e.g. `arion`) https://github.com/srghma/dotfiles/blob/0054e4586183e0dcf1bdecc9507bde937c365f30/nixos/utils/addAsRuntimeDeps.nix#L1
+
+  `nix-build --check` - nix assumes that your derivation builder outputs same result given same inputs, this may not be true, using this flag the derivation will be built twice, IF resulting hash of the package content (!!!, not the hash of the path, i.e. xxxx in /nix/store/xxxx-yyy, this hash is computed only from derivation inputs) is different THEN it will return an error
+
+  https://learnxinyminutes.com/docs/nix/
+
+  https://gist.github.com/srghma/f1ff5cd10722ee8218cfdbae1ad49645
+
+  https://stackoverflow.com/a/34837585/3574379
+
+  http://www.haskellforall.com/2017/11/compare-nix-derivations-using-nix-diff.html?m=1
+#+end_src
+
+* Learning
+- [[https://dataswamp.org/~solene/2022-10-06-nixos-kiosk.html][Solene'% : A NixOS kiosk]]
 
 * Learning
 - [[http://people.tamu.edu/~luke.adams/doxygen-nixpkgs/strings_8nix.html][nixpkgs builtins: lib/strings.nix File Reference]]
@@ -845,349 +1093,8 @@ Related Posts
     Aspell with custom dictionaries configured 27 Jan 2018
     Nix if-then-else expressions 12 Jun 2016
 
-* Secrets
-- [[https://github.com/Mic92/sops-nix][Mic92/sops-nix: Atomic secret provisioning for NixOS based on sops]]
-
-* Cache
-- [[https://github.com/ghuntley/cachix-demo][ghuntley/cachix-demo]]
-- [[https://nixbuild.net/][nixbuild.net]]
-- [[https://github.com/nixbuild/nixbuild-action][nixbuild/nixbuild-action: GitHub Action for using the nixbuild.net service]]
-
-* Nixops
-
-- [[https://www.ryantm.com/blog/nixops-without-sharing/][Nixops without sharing]]
-
-* home-manager
-- [[https://github.com/viperML/home-manager-wsl][viperML/home-manager-wsl: WSL distribution, including Nix, Home-manager and Alpine Linux]]
-
-* Install commands
-
-- ipmi
-: nix-env -p .nix-profile.d/ipmiview/ipmiview -iA nixos-unstable.ipmiview
-
-* 
-
-https://gist.github.com/joepie91/043a51a7b70be5f50f1d
-
-This is an installation walkthrough for [the Nix package manager](https://nixos.org/nix/) in multi-user mode, on a non-NixOS system. While the walkthrough focuses on Debian, instructions on different platforms should be similar.
-
-## 1. Install dependencies.
-
-For recent Debian: 
-
-```sh
-apt-get install build-essential pkg-config autotools-dev dh-autoreconf libssl-dev libbz2-dev libsqlite3-dev libcurl4-openssl-dev liblzma-dev libgc-dev libdbi-perl libdbd-sqlite3-perl libwww-curl-perl libxml2 libxslt-dev
-```
-
-For other distributions, look for the equivalent packages.
-
-## 2. Set up build users.
-
-```sh
-groupadd -r nixbld
-for n in $(seq 1 10); do useradd -c "Nix build user $n" \
-    -d /var/empty -g nixbld -G nixbld -M -N -r -s "$(which nologin)" \
-    nixbld$n; done
-```
-
-## 3. Install Nix.
-
-```sh
-wget http://nixos.org/releases/nix/nix-1.11.2/nix-1.11.2.tar.xz
-tar -xvf nix-1.11.2.tar.xz
-cd nix-1.11.2/
-./configure --enable-gc
-make -j 2
-make install
-```
-
-If you have more than two CPU cores, you might want to increase the value of the `-j` flag for faster compilation.
-
-## 4. Create a systemd unit file, for managing the Nix daemon.
-
-Save this as `/etc/systemd/system/nix.service`:
-
-```
-[Unit]
-Description=Nix daemon
-
-[Service]
-EnvironmentFile=-/etc/default/nix
-ExecStart=/usr/local/bin/nix-daemon $EXTRA_OPTS
-IgnoreSIGPIPE=false
-KillMode=process
-
-[Install]
-WantedBy=multi-user.target
-```
-
-Create an empty `/etc/default/nix`:
-
-```sh
-touch /etc/default/nix
-```
-
-Enable and start the service:
-
-```sh
-systemctl enable nix
-systemctl start nix
-```
-
-## 5. Set up user configuration
-
-Source the following in your `/root/.bashrc`, either directly or indirectly:
-
-```sh
-nix-setup-user() {
-        TARGET_USER="$1"
-        SYMLINK_PATH="/home/$TARGET_USER/.nix-profile"
-        PROFILE_DIR="/nix/var/nix/profiles/per-user/$TARGET_USER"
-
-        echo "Creating profile $PROFILE_DIR..."
-        echo "Profile symlink: $SYMLINK_PATH"
-
-        rm "$SYMLINK_PATH"
-        mkdir -p "$PROFILE_DIR"
-        chown "$TARGET_USER:$TARGET_USER" "$PROFILE_DIR"
-        
-        ln -s "$PROFILE_DIR/profile" "$SYMLINK_PATH"
-        chown -h "$TARGET_USER:$TARGET_USER" "$SYMLINK_PATH"
-        
-        echo "export NIX_REMOTE=daemon" >> "/home/$TARGET_USER/.bashrc"
-        echo ". /usr/local/etc/profile.d/nix.sh" >> "/home/$TARGET_USER/.bashrc"
-        
-        su -lc "cd; . /usr/local/etc/profile.d/nix.sh; NIX_REMOTE=daemon nix-channel --update" "$TARGET_USER"
-}
-```
-
-Now, whenever you create a new user - say, `joepie91`, you can simply do something like the following:
-
-```sh
-nix-setup-user joepie91
-```
-
-... and a few minutes later, `joepie91` will be able to log in, and use Nix. Repeat for each user that needs access to Nix.
-
-https://nixos.org/nix-dev/2010-April.txt.gz
-
-* Android
-- [[https://github.com/t184256/nix-on-droid][t184256/nix-on-droid: Nix-enabled environment for your Android device.]]
-
-* Packages
-- [[https://github.com/JJJollyjim/arewehackersyet][JJJollyjim/arewehackersyet: Tracking the availability of Kali Linux packages in NixOS]]
-** Generate expression
-- [[https://github.com/obsidiansystems/haven][obsidiansystems/haven: Use haskell to produce a nix set of maven dependencies!]]
-- [[https://github.com/NixOS/mvn2nix-maven-plugin][NixOS/mvn2nix-maven-plugin: Generate project-info.json for use with nix's Maven repository generation functions]]
-
-* CI
-- [[https://github.com/Mic92/nix-build-uncached][Mic92/nix-build-uncached: A CI friendly wrapper around nix-build.]]
-- [[https://github.com/DeterminateSystems/terraform-provider-hydra][DeterminateSystems/terraform-provider-hydra: Declaratively configure your Hydra server with Terraform.]]
-
-* DSL
-- [[https://github.com/Mic92/pythonix][Mic92/pythonix: Eval nix code from python]]
-- [[https://github.com/Mic92/hydra-eval-jobs][Mic92/hydra-eval-jobs: Eval nix expressions from flakes (extracted from hydra)]]
-- [[https://github.com/andir/libnixstore-c][andir/libnixstore-c: a brutal attempt at making C bindings for Nix]]
-
-* Emacs
-- [[https://github.com/vlaci/nix-straight.el][vlaci/nix-straight.el]]
-
-* Source
-
-** navi
-
-#+BEGIN_SRC nix
-  navi = (super.callPackage ((builtins.fetchGit {
-          url = "https://github.com/9999years/nix-config";
-          ref = "master";
-        }).outPath + "/rebeccapkgs/navi") { }).overrideAttrs (oldAttrs: with super.pkgs; {
-          version = "2.0.0";
-          src = super.fetchFromGitHub {
-            owner = "denisidoro";
-            repo = "navi";
-            rev = "v2.0.0";
-            sha256 = "0bmdywwsm3r250f6i5x46s9gqlv129aq7lavn07rfrv7ayq7ckpv";
-          };
-          installPhase = ''
-            mkdir -p $out/bin
-            mkdir -p $out/share/navi
-
-            cp -r cheats $out/share/navi/
-            cp -r src $out/share/navi/
-
-            makeWrapper ${bash}/bin/bash $out/bin/navi \
-                --argv0 navi \
-                --add-flags "$out/share/navi/navi"
-          '';
-        });
-#+END_SRC
-
-
-#+BEGIN_SRC nix
-  nix-repl> lib.foldAttrs (n: a: [n] ++ a) [] mynixos.options.systemd.services.definitions            
-    { audit = [ ... ]; console-getty = [ ... ]; "container-getty@" = [ ... ]; "container@" = [ ... ]; dbus = [ ... ]; dhcpcd = [ ... ]; firewall = [ ... ]; "getty@" = [ ... ]; hyperkitty = [ ... ]; hyperkitty-daily = [ ... ]; hyperkitty-hourly = [ ... ]; hyperkitty-minutely = [ ... ]; hyperkitty-quarter-hourly = [ ... ]; hyperkitty-weekly = [ ... ]; hyperkitty-yearly = [ ... ]; mailman = [ ... ]; mailman-daily = [ ... ]; mailman-settings = [ ... ]; mailman-web = [ ... ]; mwlib-nserve = [ ... ]; mwlib-nslave = [ ... ]; mwlib-qserve = [ ... ]; network-local-commands = [ ... ]; network-setup = [ ... ]; nix-daemon = [ ... ]; nix-gc = [ ... ]; nix-optimise = [ ... ]; nscd = [ ... ]; polkit = [ ... ]; post-resume = [ ... ]; pre-sleep = [ ... ]; prepare-kexec = [ ... ]; resolvconf = [ ... ]; rngd = [ ... ]; save-hwclock = [ ... ]; "serial-getty@" = [ ... ]; "systemd-backlight@" = [ ... ]; systemd-binfmt = [ ... ]; "systemd-fsck@" = [ ... ]; systemd-journal-flush = [ ... ]; systemd-journald = [ ... ]; systemd-logind = [ ... ]; systemd-modules-load = [ ... ]; "systemd-nspawn@" = [ ... ]; systemd-random-seed = [ ... ]; systemd-remount-fs = [ ... ]; systemd-sysctl = [ ... ]; systemd-timedated = [ ... ]; systemd-timesyncd = [ ... ]; systemd-udev-settle = [ ... ]; systemd-udevd = [ ... ]; systemd-update-utmp = [ ... ]; systemd-user-sessions = [ ... ]; systemd-vconsole-setup = [ ... ]; "user-runtime-dir@" = [ ... ]; "user@" = [ ... ]; }
-
-  nix-repl> lib.filterAttrs (n: v: n == "mailman-web") (lib.foldAttrs (n: a: [n] ++ a) [] mynixos.options.systemd.services.definitions)
-  { mailman-web = [ ... ]; }
-
-#+END_SRC
-
-* Hydra
-
-- [[https://github.com/malob/nix-review-tools-reports][malob/nix-review-tools-reports: Repository that automatically generates Hydra reports using `nix-review-tools`.]]
-
-example job
-#+BEGIN_SRC nix
-  let
-    pkgs = import <nixpkgs> { };
-
-    jobs = rec {
-
-      tarball = pkgs.releaseTools.sourceTarball {
-        name = "hello-tarball";
-        src = "mirror://gnu/hello/hello-2.10.tar.gz";
-        buildInputs = (with pkgs; [ bash ]);
-      };
-
-      build = { system ? builtins.currentSystem }:
-
-        let pkgs = import <nixpkgs> { inherit system; };
-        in pkgs.releaseTools.nixBuild {
-          name = "hello";
-          src = jobs.tarball;
-        };
-    };
-  in jobs
-#+END_SRC
-
-* Dictionary
-** Profile
-A general and convenient concept for realizing rollbacks.
-** Database
-/nix/var/nix/db/db.sqlite
-
-Keeps track of the dependencies between derivations.
-
-Made up of multiple "generations".
-
-* Programs
-- [[https://github.com/Mic92/envfs][Mic92/envfs: Fuse filesystem that returns symlinks to executables based on the PATH of the requesting process.]]
-- [[https://github.com/tweag/gomod2nix][tweag/gomod2nix: Convert applications using Go modules to Nix expressions]]
-- [[https://github.com/nix-community/vgo2nix][nix-community/vgo2nix: Convert go.mod files to nixpkgs buildGoPackage compatible deps.nix files [maintainer=@adisbladis]]]
-- [[https://github.com/nixosbrasil/climod][nixosbrasil/climod: Modular generated command line interfaces using the same technology as the NixOS module system.]]
-- [[https://github.com/nixosbrasil/nix-emacs][nixosbrasil/nix-emacs: Use the same module system that leverages NixOS to configure your emacs customization]]
-
-* Commands
-
-** nix-instantiate
-#+begin_src shell
-  nix-instantiate -E 'import <nixpkgs/nixos> { configuration = (import ./nixops-deployment.nix).web32; system = "x86_64-linux"; }'
-#+end_src
-
-** GC
-#+begin_src shell
-  nix-env -p /nix/var/nix/profiles/system --list-generations | awk -v date="$(date +%Y-%m)" '$0 !~ date { print $1 }' | xargs nix-env -p /nix/var/nix/profiles/system --delete-generations
-#+end_src
-
-** Show direct runtime dependencie
-#+BEGIN_SRC shell
-nix-store -q --references "$(command -v bassename)"
-#+END_SRC
-
-** Show reverse dependencies
-#+BEGIN_SRC shell
-nix-store -q --referrers "$(command -v basename)"
-#+END_SRC
-
-** Show catamorphed closure
-#+BEGIN_SRC shell
-nix-store -qR "$(command -v bassename)"
-#+END_SRC
-
-** Show tree of closure
-#+BEGIN_SRC shell
-nix-store -q --tree "$(command -v basename)"
-#+END_SRC
-
-** Recovering making rollback from store directory
-#+BEGIN_SRC shell
-/nix/store/<hash>-nix-<ver>/bin/nix-env --rollback
-#+END_SRC
-
-** Restore specific NixOS generation
-
-[[https://github.com/NixOS/nixpkgs/issues/24374][List-generations and rollback to any configuration · Issue #24374 · NixOS/nixpkgs]]
-#+begin_src sh
-sudo nix-env --switch-generation 12345 -p /nix/var/nix/profiles/system
-sudo /nix/var/nix/profiles/system/bin/switch-to-configuration switch
-#+end_src
-
-** vm
-#+begin_example
-  nixops.util.CommandFailed: command ‘['nix-build', '-I', 'nixops=/nix/store/jpn9dj9b1wlhdh5a2s3rassaghk1syn9-nixops-1.7pre0_abcdef/share/nix/nixops', '--arg', 'networkExprs', u'[ "/home/oleg/majordomo/_ci/nixops/jenkins.nix" ]', '--arg', 'args', '{}', '--argstr', 'uuid', u'af5d6207-11f8-11eb-bb11-0242659d6883', '--argstr', 'deploymentName', u'jenkins', '<nixops/eval-machine-info.nix>', '--arg', 'checkConfigurationOptions', 'false', '-A', 'nodes.jenkins-test.config.deployment.libvirtd.baseImage', '-o', '/run/user/1000/nixops-tmpeq23PB/libvirtd-image-jenkins-test']’ failed on machine ‘jenkins-test’ (exit code 100)''
-#+end_example
-
-** Build with specific channel
-#+begin_src shell
-  nix-build release.nix -A build.x86_64-linux -I nixpkgs=channel:nixos-19.03
-#+end_src
-
-** Recover with reinstall from store directory
-#+BEGIN_SRC shell
-/nix/store/<hash>-nix-<ver>/bin/nix-env -i /nix/store/<hash>-nix-<ver>
-#+END_SRC
-
-** nix-repl
-   #+begin_src nix
-     lib.listToAttrs (lib.mapAttrsFlatten (name: value: lib.nameValuePair ("mj-" + name) value) { "a" = { "b" = "c"; }; })
-   #+end_src
-
-** nix-instantiate example
-   : ls -1 /tmp/env.nix | entr -r nix-instantiate --eval --strict --expr 'with import <nixpkgs> {}; import /tmp/env.nix { inherit lib; }'
-   #+begin_src nix
-     { lib }:
-
-     lib.mapAttrsFlatten (name: value: name + value) {
-       LC_ALL = "en_US.UTF-8";
-       TZ = "Europe/Moscow";
-     }
-
-   #+end_src
-
-*** meta
-  : nix-instantiate ~/src/nixpkgs-19.09/ --eval --strict -A "hello.meta.position"
-
-* Modules
-
-  #+begin_src nix
-    let
-      systemModule = { lib, config, ... }: {
-        options.toplevel = lib.mkOption {
-          type = lib.types.str;
-        };
-
-        options.enableFoo = lib.mkOption {
-          type = lib.types.bool;
-          default = false;
-        };
-
-        config.toplevel = ''
-          Is foo enabled? ${lib.boolToString config.enableFoo}
-        '';
-      };
-
-      userModule = {
-        enableFoo = true;
-      };
-
-    in (import <nixpkgs/lib>).evalModules {
-      modules = [ systemModule userModule ];
-    }
-  #+end_src
-  : nix-instantiate --eval /tmp/file.nix -A config.toplevel
-
-- [[https://github.com/hardenedlinux/nixpkgs-hardenedlinux/blob/main/modules/osquery.nix][nixpkgs-hardenedlinux/osquery.nix at main · hardenedlinux/nixpkgs-hardenedlinux]]
-
+* Libraries
+- [[https://github.com/ArctarusLimited/xnlib][ArctarusLimited/xnlib: XTended Nix Library used for various purposes by Arctarus]]
 * Lustrate
   #+begin_src yaml
     - hosts: web_ubuntu
@@ -1453,62 +1360,234 @@ builtins.match "php([[:alnum:]])([[:alnum:]])" "php70"
   "foo"
 #+end_src
 
-* deploy-rs
-  - [[https://github.com/serokell/deploy-rs][serokell/deploy-rs: A Simple multi-profile Nix-flake deploy tool.]]
+* Modules
 
-    Activation command during deploy example:
-    #+begin_example
-      /nix/store/...-activatable-nixos-system-mx1-mr-20.09.20201027.cd63096/activate-rs                                       \
-          --temp-path '/tmp'                                                                                                  \
-          activate '/nix/store/...-activatable-nixos-system-mx1-mr-20.09.20201027.cd63096' '/nix/var/nix/profiles/system'     \
-          --confirm-timeout 30                                                                                                \
-          --auto-rollback
-    #+end_example
+  #+begin_src nix
+    let
+      systemModule = { lib, config, ... }: {
+        options.toplevel = lib.mkOption {
+          type = lib.types.str;
+        };
 
-** TODO nixos-switch-to-configuration code 100 means that host reboot is required
+        options.enableFoo = lib.mkOption {
+          type = lib.types.bool;
+          default = false;
+        };
 
-* Tools
-- [[https://github.com/zhaofengli/colmena][zhaofengli/colmena: A simple, stateless NixOS deployment tool]]
-- [[https://github.com/thiagokokada/nix-alien][thiagokokada/nix-alien: Run unpatched binaries on Nix/NixOS]]
-- [[https://github.com/mlieberman85/nixbom][mlieberman85/nixbom]]
-- [[https://github.com/purenix-org/purenix][purenix-org/purenix: Nix backend for PureScript. Transpile PureScript code to Nix.]]
-- [[https://github.com/cdepillabout/purenix-examples][cdepillabout/purenix-examples: Examples of common Nix things written in PureNix]]
-- [[https://github.com/astro/deadnix][astro/deadnix: Scan Nix files for dead code]]
-  - [[https://github.com/astro/deadnix-action][astro/deadnix-action: Workflow to find and delete dead nix code]]
-- [[https://lazamar.co.uk/nix-versions/][Nix Package Versions]]
-- [[https://github.com/kamadorueda/alejandra][kamadorueda/alejandra: The Uncompromising Nix Code Formatter]]
-- [[https://github.com/nix-dot-dev/getting-started-nix-template][nix-dot-dev/getting-started-nix-template: Based on nix.dev tutorials, repository template to get you started with Nix.]]
-- [[https://github.com/Lassulus/nix-autobahn][Lassulus/nix-autobahn]]
-- [[https://github.com/railwayapp/nixpacks][railwayapp/nixpacks: App source + Nix packages + Docker = Image]]
-- [[https://github.com/DavHau/nix-eval-cache][DavHau/nix-eval-cache: Cache evaluation of nix functions]]
-- [[https://github.com/siraben/nix-lint][siraben/nix-lint: Semantic linter for Nix using tree-sitter 🌳 + ❄️]]
-- [[https://github.com/jmgilman/nix-pre-commit][jmgilman/nix-pre-commit: Generate pre-commit configurations with your flake.nix]]
-- [[https://github.com/nix-community/nixago][nix-community/nixago: Generate configuration files using Nix maintainer=@jmgilman]]
-- [[https://github.com/divnix/quick-nix-registry][divnix/quick-nix-registry: Speed up the Nix registry by caching nixpkgs locally]]
-- [[https://github.com/pinpox/lollypops][pinpox/lollypops: Lollypop Operations - NixOS Deployment Tool]]
-- [[https://dumpstack.io/1563582225_nixos_installing_software_from_pull_requests.html][dumpstack.io: NixOS: Installing software from pull requests]]
-- [[https://github.com/lf-/nix-doc][lf-/nix-doc: An interactive Nix documentation tool providing a CLI for function search, a Nix plugin for docs in the REPL, and a ctags implementation for Nix script]]
-- [[https://github.com/DavidEGrayson/nixcrpkgs][DavidEGrayson/nixcrpkgs: Nice nix expressions for cross-compiling.]]
-- [[https://github.com/nix-community/nixpkgs-swh][nix-community/nixpkgs-swh: Send nixpkgs tarballs to Software Heritage maintainer=@nlewo]]
-- [[https://github.com/nlewo/hydra-cli][nlewo/hydra-cli: A client for the Hydra Nix CI]]
-- [[https://github.com/taktoa/narfuse][taktoa/narfuse: A FUSE filesystem, written in Haskell, that allows one to mount NAR (Nix archive) files and expose them as a virtual Nix store.]]
-- [[https://github.com/serokell/update-daemon][serokell/update-daemon: Nix Flake Update daemon]]
-- [[https://github.com/numtide/nar-serve][numtide/nar-serve: Unpack and serve NAR file content on the fly]]
-- [[https://github.com/dasJ/emergency-kexec][dasJ/emergency-kexec: Kexec into an in-memory emergency system]]
-- [[https://github.com/AleXoundOS/mirror-nix][AleXoundOS/mirror-nix: mirror Nix binary cache for the offline workflow]]
+        config.toplevel = ''
+          Is foo enabled? ${lib.boolToString config.enableFoo}
+        '';
+      };
 
-* Overlays
-  - nixos-install --flake github:hoverbear-consulting/flake#gizmo --impure
-    - ln -s /path/to/nixpkgs-replit/default.nix ~/.config/nixpkgs/overlays/replit.nix
-    - # Install upm nix-env -iA nixpkgs.upm
+      userModule = {
+        enableFoo = true;
+      };
+
+    in (import <nixpkgs/lib>).evalModules {
+      modules = [ systemModule userModule ];
+    }
+  #+end_src
+  : nix-instantiate --eval /tmp/file.nix -A config.toplevel
+
+- [[https://github.com/hardenedlinux/nixpkgs-hardenedlinux/blob/main/modules/osquery.nix][nixpkgs-hardenedlinux/osquery.nix at main · hardenedlinux/nixpkgs-hardenedlinux]]
+
+* Nixops
+
+- [[https://www.ryantm.com/blog/nixops-without-sharing/][Nixops without sharing]]
+
+* NixOS
+- [[https://github.com/fabaff/nix-security-box][fabaff/nix-security-box: Tool set for Information security professionals and all others]]
+- [[https://github.com/vpsfreecz/vpsadminos][vpsfreecz/vpsadminos: Host for Linux system containers based on NixOS, ZFS and LXC]]
+- [[https://gist.github.com/gdamjan/8158b57379932fd0e07ce6d83399b71f][Install a NixOS for a systemd-nspawn container … from podman]]
+#+begin_src markdown
+  Run a nix container with podman, with the container destination mounted as `/mnt`:
+
+  ```
+  DEST=~/containers/nixos
+  mkdir -p $DEST/{dev,proc,etc/nixos}
+
+  podman run -v $DEST:/mnt -it --rm --cap-add SYS_ADMIN --uts=private docker.io/nixos/nix:latest
+  ```
+
+  Setup the channel for nixos-21.11
+  ```
+  nix-channel --add https://nixos.org/channels/nixos-21.11 nixpkgs
+  nix-channel --update
+  nix-channel --list
+  ```
+
+  Install the nixos install tools:
+  ```
+  nix-env -f '<nixpkgs>' -iA nixos-install-tools util-linux
+  ```
+
+  Copy the [`configuration.nix`](https://nixos.org/nixos/options.html) file and run the installation:
+  ```
+  cat > /mnt/etc/nixos/configuration.nix
+  …see below…
+  <Ctrl-D>
+
+  # workaround for error: while setting up the build environment: mounting /proc: Operation not permitted «
+  mount --bind /proc/ /mnt/proc
+  mount --bind /dev/ /mnt/dev
+
+  nixos-install --root /mnt
+  ```
+
+  Let's "boot" the container:
+  ```
+  sudo systemd-nspawn --boot --network-veth --directory $DEST
+  …
+
+  # poweroff
+  ```
+
+  System updates:
+  ```
+  nixos-rebuild boot --upgrade
+  ```
+
+  Release upgrade:
+  ```
+  nix-channel --add https://nixos.org/channels/nixos-21.11 nixpkgs
+  nix-channel --update
+  nixos-rebuild boot --upgrade
+  ```
+#+end_src
+
+#+begin_src nix
+  # /etc/nixos/configuration.nix
+  #
+  # Edit this configuration file to define what should be installed on
+  # your system.  Help is available in the configuration.nix(5) man page
+  # and in the NixOS manual (accessible by running ‘nixos-help’).
+
+  { config, pkgs, ... }:
+
+  {
+    imports = [];
+
+    boot.isContainer = true;
+    boot.loader.initScript.enable = true;
+
+    time.timeZone = "Europe/Skopje";
+
+    networking.hostName = ""; # empty
+    networking.useDHCP = false;
+    networking.useNetworkd = true;
+    networking.useHostResolvConf = false;
+    networking.firewall.enable = false;
+
+    environment.systemPackages = with pkgs; [
+       vim
+       wget
+    ];
+
+    system.stateVersion = "21.11";
+  }
+#+end_src
+
+#+begin_example
+  $ sudo systemd-nspawn --boot --network-veth --directory $DEST
+  Spawning container nixos on /home/damjan/containers/nixos.
+  Press ^] three times within 1s to kill container.
+
+  <<< NixOS Stage 2 >>>
+
+  running activation script...
+  setting up /etc...
+  starting systemd...
+  systemd 247 running in system mode. (+PAM +AUDIT -SELINUX +IMA +APPARMOR +SMACK -SYSVINIT +UTMP +LIBCRYPTSETUP +GCRYPT -GNUTLS +ACL +XZ +LZ4 -ZSTD +SECCOMP +BLKID -ELFUTILS +KMOD +IDN2 -IDN +PCRE2 default-hierarchy=unified)
+  Detected virtualization systemd-nspawn.
+  Detected architecture x86-64.
+  Failed to create symlink /sys/fs/cgroup/net_cls: Read-only file system
+  Failed to create symlink /sys/fs/cgroup/net_prio: Read-only file system
+  Failed to create symlink /sys/fs/cgroup/cpuacct: Read-only file system
+  Failed to create symlink /sys/fs/cgroup/cpu: Read-only file system
+
+  Welcome to NixOS 21.05 (Okapi)!
+
+  Initializing machine ID from container UUID.
+  Queued start job for default target Multi-User System.
+  system-getty.slice: unit configures an IP firewall, but the local system does not support BPF/cgroup firewalling.
+  (This warning is only shown for the first unit using IP firewalling.)
+  [  OK  ] Created slice system-getty.slice.
+  [  OK  ] Created slice system-modprobe.slice.
+  [  OK  ] Created slice User and Session Slice.
+  [  OK  ] Started Dispatch Password Requests to Console Directory Watch.
+  [  OK  ] Started Forward Password Requests to Wall Directory Watch.
+  [  OK  ] Reached target Local Encrypted Volumes.
+  [  OK  ] Reached target Containers.
+  [  OK  ] Reached target Paths.
+  [  OK  ] Reached target Remote File Systems.
+  [  OK  ] Reached target Slices.
+  [  OK  ] Reached target Swap.
+  [  OK  ] Listening on Process Core Dump Socket.
+  [  OK  ] Listening on Journal Socket (/dev/log).
+  [  OK  ] Listening on Journal Socket.
+  [  OK  ] Listening on Network Service Netlink Socket.
+           Mounting Huge Pages File System...
+           Starting Journal Service...
+           Starting Firewall...
+           Starting Apply Kernel Variables...
+           Starting Create Static Device Nodes in /dev...
+  [  OK  ] Mounted Huge Pages File System.
+  [  OK  ] Finished Apply Kernel Variables.
+  [  OK  ] Finished Create Static Device Nodes in /dev.
+  [  OK  ] Reached target Local File Systems (Pre).
+  [  OK  ] Reached target Local File Systems.
+  [  OK  ] Started Journal Service.
+           Starting Flush Journal to Persistent Storage...
+  [FAILED] Failed to start Firewall.
+  See 'systemctl status firewall.service' for details.
+  [  OK  ] Reached target Network (Pre).
+  [  OK  ] Reached target All Network Interfaces (deprecated).
+           Starting Network Service...
+  [  OK  ] Finished Flush Journal to Persistent Storage.
+           Starting Create Volatile Files and Directories...
+  [  OK  ] Finished Create Volatile Files and Directories.
+           Starting Rebuild Journal Catalog...
+           Starting Update UTMP about System Boot/Shutdown...
+  [  OK  ] Finished Update UTMP about System Boot/Shutdown.
+  [  OK  ] Finished Rebuild Journal Catalog.
+           Starting Update is Completed...
+  [  OK  ] Finished Update is Completed.
+  [  OK  ] Reached target System Initialization.
+  [  OK  ] Started Daily Cleanup of Temporary Directories.
+  [  OK  ] Reached target Timers.
+  [  OK  ] Listening on D-Bus System Message Bus Socket.
+  [  OK  ] Listening on Nix Daemon Socket.
+  [  OK  ] Reached target Sockets.
+  [  OK  ] Reached target Basic System.
+           Starting Name Service Cache Daemon...
+  [  OK  ] Started Network Service.
+  [  OK  ] Started D-Bus System Message Bus.
+           Starting Extra networking commands....
+           Starting Wait for Network to be Configured...
+           Starting Network Name Resolution...
+  [  OK  ] Finished Extra networking commands..
+  [  OK  ] Started Name Service Cache Daemon.
+  [  OK  ] Reached target User and Group Name Lookups.
+           Starting User Login Management...
+  [  OK  ] Started User Login Management.
+  [  OK  ] Started Network Name Resolution.
+  [  OK  ] Reached target Network.
+  [  OK  ] Reached target Host and Network Name Lookups.
+           Starting Permit User Sessions...
+  [  OK  ] Finished Permit User Sessions.
+  [  OK  ] Started Console Getty.
+  [  OK  ] Reached target Login Prompts.
 
 
-* Virtualization
-- [[https://github.com/Mic92/nixos-shell][Mic92/nixos-shell: Spawns lightweight nixos vms in a shell]]
-- [[https://github.com/erikarvstedt/extra-container][erikarvstedt/extra-container: Run declarative NixOS containers without full system rebuilds]]
-- [[https://github.com/astro/microvm.nix][astro/microvm.nix: NixOS MicroVMs]]
-- [[https://github.com/rsdy/nix-readonly][rsdy/nix-readonly: Lightweight NixOS VMs using KVM with read-only root]]
-- [[https://github.com/jollheef/appvm][jollheef/appvm: Nix-based app VMs]]
+  <<< Welcome to NixOS 21.05.4086.68d4f5970b6 (x86_64) - console >>>
+
+
+  nixos login:
+  Password:
+#+end_example
+
+- [[https://github.com/grwlf/nixos-ssh-over-tls][grwlf/nixos-ssh-over-tls: NixOS module which hides both HTTP and SSH daemons behind SSL proxy on the same port]]
+- [[https://github.com/obsidiansystems/socket-over-tls-service][obsidiansystems/socket-over-tls-service: A NixOS service that forwards a Unix domain socket over TLS]]
 
 * NixOS
   #+begin_src nix
@@ -1540,196 +1619,20 @@ builtins.match "php([[:alnum:]])([[:alnum:]])" "php70"
  - [[https://ocelot-project.github.io/][λ Ocelot]]
 
 
-* Flakes
-- [[https://github.com/aleeusgr/compose-flakes/blob/main/flake.nix][compose-flakes/flake.nix at main · aleeusgr/compose-flakes]]
-- [[https://github.com/NixOS/templates][NixOS/templates: Flake templates]]
-- [[https://github.com/fnctl/mkSystem/blob/main/flake.nix][mkSystem/flake.nix at main · fnctl/mkSystem]]
-- [[https://github.com/fnctl/helix][fnctl/helix: A post-modern modal text editor.]]
-- [[https://github.com/kira-bruneau/flake-checker][kira-bruneau/flake-checker: Incrementally run checks & fixes in your Nix flake (only on changed files). Mirror of https://gitlab.com/kira-bruneau/flake-checker]]
-- [[https://github.com/srid/check-flake][srid/check-flake: Add a `.#check` package for building all checks for the current system]]
-- [[https://github.com/ralismark/nix-appimage][ralismark/nix-appimage: (experimental) Convert a nixos derivation into a self-contained binary]]
-
-** Eval
-
-#+begin_src nix
-  with builtins;
-  with getFlake (toPath ./.);
-  with inputs.nixpkgs.lib;
-  attrNames (filterAttrs (name: value:
-    if value ? inputs then value.inputs ? ${args.input} else false) inputs)
-#+end_src
-
-: nix eval --impure --json --expr NIX_EXPRESSION
-
-** Learning
-
-- [[https://nixos.wiki/wiki/Flakes][Flakes - NixOS Wiki]]
-- [[https://github.com/NixOS/nix/tree/master/src/nix][nix/src/nix at master · NixOS/nix]]
-
-** Videos
-
-- [[https://www.youtube.com/watch?v=QXUlhnhuRX4&t=1154s][Jörg Thalheim: Nix flakes 101 (rC3 2020) - YouTube]]
-- [[https://www.youtube.com/watch?v=K54KKAx2wNc&t=18s][Intro to Flakes - YouTube]]
-- [[https://www.youtube.com/watch?v=UeBX7Ide5a0][Nix flakes (NixCon 2019) - YouTube]]
-- [[https://www.youtube.com/watch?v=h2I1FHpbaIg][Nix Friday - Flakes! - YouTube]]
-- [[https://www.youtube.com/channel/UCDTeiF7cayvgLMUBSm9-B2A][Jonas Chevalier - YouTube]]
-- [[https://www.youtube.com/watch?v=98EwejpIJzE&t=645s][Flakes in nix 2.4 - YouTube]]
-- [[https://www.youtube.com/user/nautilus1k][Andrew Tropin - YouTube]]
-- [[https://www.youtube.com/watch?v=mJbQ--iBc1U&t=994s][Moving Nixos System Configuration Into A Flake - YouTube]]
-- [[https://www.youtube.com/watch?v=CDzgNxoAlnA&t=3126s][Almost Perfect Dotfiles Management w/ nix, home-manager and flakes - YouTube]]
-
-** Misc
-
-  - [[https://github.com/DavHau/systemd2nix][DavHau/systemd2nix: Convert systemd service files to Nix syntax]]
-  - [[https://github.com/DavHau/mach-nix][DavHau/mach-nix: Create highly reproducible python environments]]
-  - [[https://github.com/flokli/nix-casync][flokli/nix-casync: A more efficient way to store and substitute Nix store paths]]
-  - [[https://github.com/netbootxyz/netboot.xyz/issues/1050]["Permission denied" error on NixOS · Issue #1050 · netbootxyz/netboot.xyz]]
-  - [[https://github.com/ijohanne/nixpkgs-firefox-addons][ijohanne/nixpkgs-firefox-addons: Fork of nixpkgs-firefox-addons from https://gitlab.com/rycee/nixpkgs-firefox-addons]]
-  - [[https://github.com/divnix/digga][divnix/digga: A a flake utility library to craft shell-, home-, and hosts- environments.]]
-  - [[https://github.com/serokell/systemd-nix][serokell/systemd-nix: Generate systemd units from NixOS-style descriptions]]
-  - [[https://github.com/fufexan/nix-gaming][fufexan/nix-gaming: Gaming on Nix]]
-  - [[https://github.com/serokell/vault-secrets/blob/master/flake.nix][vault-secrets/flake.nix at master · serokell/vault-secrets]]
-  - [[https://github.com/hackworthltd/react-nix-craco-public][hackworthltd/react-nix-craco-public: Repro case for an npmlock2nix issue]]
-  - [[https://github.com/serokell/nix-npm-buildpackage][serokell/nix-npm-buildpackage: Build nix packages that use npm/yarn]]
-  - [[https://github.com/divnix/vs-ext][divnix/vs-ext: A kick ass library to dominate your Visual Studio Extensions (with DevOS)]]
-  - [[https://github.com/gytis-ivaskevicius/flake-utils-plus?auto_subscribed=false][gytis-ivaskevicius/flake-utils-plus: Use Nix flakes without any fluff.]]
-  - [[https://github.com/tadfisher/flake][tadfisher/flake: My computing life in Nix.]]
-  - [[https://github.com/bqv/nixrc][bqv/nixrc: Structured flake-based NixOS configuration]]
-  - [[https://github.com/MarcoPolo/simple-vms][MarcoPolo/simple-vms: Simple VMs in NixOS]]
-  - [[https://github.com/balsoft/kalinix][balsoft/kalinix: A pentesting/CTF toolbox with the help of Nix]]
-  - [[https://github.com/adriansosa/tmux-flake][adriansosa/tmux-flake]]
-  - [[https://github.com/MatthewCroughan/nixinate][MatthewCroughan/nixinate: Another NixOS Deployment Tool - Nixinate your systems 🕶️]]
-  - [[https://github.com/Simon-Boyer/nixos-swarm-node][Simon-Boyer/nixos-swarm-node: Personnal NixOS configuration for a docker swarm node]]
-
-  - [[https://github.com/jkachmar/easy-hls-nix][jkachmar/easy-hls-nix: Easy Haskell Language Server tooling with Nix!]]
-
-  - $ nix build .#nixosConfigurations.someNixosSystem.config.system.build.vm
-
-  - [[https://github.com/Hoverbear-Consulting/flake][Hoverbear-Consulting/flake]]
-    : nixos-install --flake github:hoverbear-consulting/flake#gizmo --impure
-
-** Packer
-   #+begin_src nix
-     {
-       description = "Run packer to build NixOS";
-       inputs = {
-         flake-compat = {
-           url = "github:edolstra/flake-compat";
-           flake = false;
-         };
-         flake-utils.url = "github:numtide/flake-utils";
-         packer-nixos = {
-           url = "github:nix-community/nixbox";
-           flake = false;
-         };
-       };
-       outputs = { self, nixpkgs, flake-utils, packer-nixos, ... }:
-         flake-utils.lib.eachDefaultSystem (system: with nixpkgs.legacyPackages."${system}"; {
-           apps.mailman =
-             let
-               nixos-x86_64 = builtins.fromJSON (builtins.readFile "${packer-nixos}/nixos-x86_64.json");
-               packerNixosJson = with nixpkgs.lib; writeText "nixos-x86_64.json"
-                 (builtins.toJSON
-                   (filterAttrs
-                     (name: value: name != "post-processors")
-                     (nixos-x86_64 // {
-                       builders = [
-                         ((findFirst
-                           (x: x.type == "qemu")
-                           nixos-x86_64.builders
-                           nixos-x86_64.builders)
-                         // {
-                           iso_url = "https://releases.nixos.org/nixos/20.09/nixos-20.09.3827.389249fa9b3/nixos-minimal-20.09.3827.389249fa9b3-x86_64-linux.iso";
-                           iso_checksum = "d73847e1bc4034eb7b31998d6106ba60bd37048c605cbe3b11d7fb4a87aea676";
-                         })
-                       ];
-                     })));
-             in flake-utils.lib.mkApp {
-               drv = writeScriptBin "build.sh" ''
-                 #!${runtimeShell}
-                 set -euo pipefail
-                 cp -a ${packer-nixos} packer-nixos
-                 find packer-nixos -type f -exec chmod 644 {} \;
-                 chmod 755 packer-nixos
-                 install -m644 ${packerNixosJson} packer-nixos/nixos-x86_64.json
-                 (
-                     cd packer-nixos
-                     exec -a "$0" ${packer}/bin/packer build ${packerNixosJson} "$@"
-                 )
-               '';
-             };
-           devShell = mkShell {
-             buildInputs = [ nixUnstable ];
-           };
-         });
-     }
-   #+end_src
-
-   : nix build .#nixosConfigurations.mailman.config.system.build.tarball
-   #+begin_src nix
-     {
-       description = "TODO";
-       inputs = {
-         flake-compat = {
-           url = "github:edolstra/flake-compat";
-           flake = false;
-         };
-         flake-utils.url = "github:numtide/flake-utils";
-         packer-nixos = {
-           url = "github:nix-community/nixbox";
-           flake = false;
-         };
-       };
-       outputs = { self, nixpkgs, flake-utils, packer-nixos, ... }:
-         flake-utils.lib.eachDefaultSystem (system: {
-           devShell = with nixpkgs.legacyPackages."${system}"; mkShell {
-             buildInputs = [ nixUnstable ];
-           };
-         })
-         // (let
-           system = "x86_64-linux";
-         in {
-           nixosModule = {
-             boot.loader.grub.device = "/dev/sda";
-             fileSystems."/".device = "/dev/sda1";
-             services.nginx.enable = true;
-             imports = [
-               (nixpkgs + /nixos/modules/virtualisation/docker-image.nix)
-               (nixpkgs + /nixos/modules/installer/cd-dvd/channel.nix)
-             ];
-           };
-           nixosConfigurations.mailman = nixpkgs.lib.nixosSystem {
-             inherit system;
-             modules = [ self.nixosModule ];
-           };
-         });
-     }
-   #+end_src
-
-* Cache
-
-- [[https://nixos.wiki/wiki/Binary_Cache][Binary Cache - NixOS Wiki]]
-#+begin_example
-$ curl http://binarycache.example.com/nix-cache-info
-StoreDir: /nix/store
-WantMassQuery: 1
-Priority: 30
-#+end_example
-
 * Nixpkgs Source
 - pkgs/stdenv/generic/check-meta.nix
 
-* Repl
+* Overlays
+  - nixos-install --flake github:hoverbear-consulting/flake#gizmo --impure
+    - ln -s /path/to/nixpkgs-replit/default.nix ~/.config/nixpkgs/overlays/replit.nix
+    - # Install upm nix-env -iA nixpkgs.upm
 
-#+begin_example
-  nix-repl> :a builtins.getFlake (toString ./.)
-  Added 11 variables.
-#+end_example
 
-#+begin_example
-  nix-repl> :a inputs
-  Added 14 variables.
-#+end_example
+* Packages
+- [[https://github.com/JJJollyjim/arewehackersyet][JJJollyjim/arewehackersyet: Tracking the availability of Kali Linux packages in NixOS]]
+** Generate expression
+- [[https://github.com/obsidiansystems/haven][obsidiansystems/haven: Use haskell to produce a nix set of maven dependencies!]]
+- [[https://github.com/NixOS/mvn2nix-maven-plugin][NixOS/mvn2nix-maven-plugin: Generate project-info.json for use with nix's Maven repository generation functions]]
 
 * PHP
   #+begin_src php
@@ -1779,5 +1682,102 @@ Priority: 30
 - [[https://github.com/NixOS/nix/issues/4520][normal allowed-users should be able to use --substituters · Issue #4520 · NixOS/nix]]
 - [[https://github.com/cachix/cachix-deploy-flake][cachix/cachix-deploy-flake: Functions to help manage Cachix Deploy when using flakes.]]
 
-* Libraries
-- [[https://github.com/ArctarusLimited/xnlib][ArctarusLimited/xnlib: XTended Nix Library used for various purposes by Arctarus]]
+* Programs
+- [[https://github.com/Mic92/envfs][Mic92/envfs: Fuse filesystem that returns symlinks to executables based on the PATH of the requesting process.]]
+- [[https://github.com/tweag/gomod2nix][tweag/gomod2nix: Convert applications using Go modules to Nix expressions]]
+- [[https://github.com/nix-community/vgo2nix][nix-community/vgo2nix: Convert go.mod files to nixpkgs buildGoPackage compatible deps.nix files [maintainer=@adisbladis]]]
+- [[https://github.com/nixosbrasil/climod][nixosbrasil/climod: Modular generated command line interfaces using the same technology as the NixOS module system.]]
+- [[https://github.com/nixosbrasil/nix-emacs][nixosbrasil/nix-emacs: Use the same module system that leverages NixOS to configure your emacs customization]]
+
+* Repl
+
+#+begin_example
+  nix-repl> :a builtins.getFlake (toString ./.)
+  Added 11 variables.
+#+end_example
+
+#+begin_example
+  nix-repl> :a inputs
+  Added 14 variables.
+#+end_example
+
+* Secrets
+- [[https://github.com/Mic92/sops-nix][Mic92/sops-nix: Atomic secret provisioning for NixOS based on sops]]
+
+* Source
+
+** navi
+
+#+BEGIN_SRC nix
+  navi = (super.callPackage ((builtins.fetchGit {
+          url = "https://github.com/9999years/nix-config";
+          ref = "master";
+        }).outPath + "/rebeccapkgs/navi") { }).overrideAttrs (oldAttrs: with super.pkgs; {
+          version = "2.0.0";
+          src = super.fetchFromGitHub {
+            owner = "denisidoro";
+            repo = "navi";
+            rev = "v2.0.0";
+            sha256 = "0bmdywwsm3r250f6i5x46s9gqlv129aq7lavn07rfrv7ayq7ckpv";
+          };
+          installPhase = ''
+            mkdir -p $out/bin
+            mkdir -p $out/share/navi
+
+            cp -r cheats $out/share/navi/
+            cp -r src $out/share/navi/
+
+            makeWrapper ${bash}/bin/bash $out/bin/navi \
+                --argv0 navi \
+                --add-flags "$out/share/navi/navi"
+          '';
+        });
+#+END_SRC
+
+
+#+BEGIN_SRC nix
+  nix-repl> lib.foldAttrs (n: a: [n] ++ a) [] mynixos.options.systemd.services.definitions            
+    { audit = [ ... ]; console-getty = [ ... ]; "container-getty@" = [ ... ]; "container@" = [ ... ]; dbus = [ ... ]; dhcpcd = [ ... ]; firewall = [ ... ]; "getty@" = [ ... ]; hyperkitty = [ ... ]; hyperkitty-daily = [ ... ]; hyperkitty-hourly = [ ... ]; hyperkitty-minutely = [ ... ]; hyperkitty-quarter-hourly = [ ... ]; hyperkitty-weekly = [ ... ]; hyperkitty-yearly = [ ... ]; mailman = [ ... ]; mailman-daily = [ ... ]; mailman-settings = [ ... ]; mailman-web = [ ... ]; mwlib-nserve = [ ... ]; mwlib-nslave = [ ... ]; mwlib-qserve = [ ... ]; network-local-commands = [ ... ]; network-setup = [ ... ]; nix-daemon = [ ... ]; nix-gc = [ ... ]; nix-optimise = [ ... ]; nscd = [ ... ]; polkit = [ ... ]; post-resume = [ ... ]; pre-sleep = [ ... ]; prepare-kexec = [ ... ]; resolvconf = [ ... ]; rngd = [ ... ]; save-hwclock = [ ... ]; "serial-getty@" = [ ... ]; "systemd-backlight@" = [ ... ]; systemd-binfmt = [ ... ]; "systemd-fsck@" = [ ... ]; systemd-journal-flush = [ ... ]; systemd-journald = [ ... ]; systemd-logind = [ ... ]; systemd-modules-load = [ ... ]; "systemd-nspawn@" = [ ... ]; systemd-random-seed = [ ... ]; systemd-remount-fs = [ ... ]; systemd-sysctl = [ ... ]; systemd-timedated = [ ... ]; systemd-timesyncd = [ ... ]; systemd-udev-settle = [ ... ]; systemd-udevd = [ ... ]; systemd-update-utmp = [ ... ]; systemd-user-sessions = [ ... ]; systemd-vconsole-setup = [ ... ]; "user-runtime-dir@" = [ ... ]; "user@" = [ ... ]; }
+
+  nix-repl> lib.filterAttrs (n: v: n == "mailman-web") (lib.foldAttrs (n: a: [n] ++ a) [] mynixos.options.systemd.services.definitions)
+  { mailman-web = [ ... ]; }
+
+#+END_SRC
+
+* Tools
+- [[https://github.com/zhaofengli/colmena][zhaofengli/colmena: A simple, stateless NixOS deployment tool]]
+- [[https://github.com/thiagokokada/nix-alien][thiagokokada/nix-alien: Run unpatched binaries on Nix/NixOS]]
+- [[https://github.com/mlieberman85/nixbom][mlieberman85/nixbom]]
+- [[https://github.com/purenix-org/purenix][purenix-org/purenix: Nix backend for PureScript. Transpile PureScript code to Nix.]]
+- [[https://github.com/cdepillabout/purenix-examples][cdepillabout/purenix-examples: Examples of common Nix things written in PureNix]]
+- [[https://github.com/astro/deadnix][astro/deadnix: Scan Nix files for dead code]]
+  - [[https://github.com/astro/deadnix-action][astro/deadnix-action: Workflow to find and delete dead nix code]]
+- [[https://lazamar.co.uk/nix-versions/][Nix Package Versions]]
+- [[https://github.com/kamadorueda/alejandra][kamadorueda/alejandra: The Uncompromising Nix Code Formatter]]
+- [[https://github.com/nix-dot-dev/getting-started-nix-template][nix-dot-dev/getting-started-nix-template: Based on nix.dev tutorials, repository template to get you started with Nix.]]
+- [[https://github.com/Lassulus/nix-autobahn][Lassulus/nix-autobahn]]
+- [[https://github.com/railwayapp/nixpacks][railwayapp/nixpacks: App source + Nix packages + Docker = Image]]
+- [[https://github.com/DavHau/nix-eval-cache][DavHau/nix-eval-cache: Cache evaluation of nix functions]]
+- [[https://github.com/siraben/nix-lint][siraben/nix-lint: Semantic linter for Nix using tree-sitter 🌳 + ❄️]]
+- [[https://github.com/jmgilman/nix-pre-commit][jmgilman/nix-pre-commit: Generate pre-commit configurations with your flake.nix]]
+- [[https://github.com/nix-community/nixago][nix-community/nixago: Generate configuration files using Nix maintainer=@jmgilman]]
+- [[https://github.com/divnix/quick-nix-registry][divnix/quick-nix-registry: Speed up the Nix registry by caching nixpkgs locally]]
+- [[https://github.com/pinpox/lollypops][pinpox/lollypops: Lollypop Operations - NixOS Deployment Tool]]
+- [[https://dumpstack.io/1563582225_nixos_installing_software_from_pull_requests.html][dumpstack.io: NixOS: Installing software from pull requests]]
+- [[https://github.com/lf-/nix-doc][lf-/nix-doc: An interactive Nix documentation tool providing a CLI for function search, a Nix plugin for docs in the REPL, and a ctags implementation for Nix script]]
+- [[https://github.com/DavidEGrayson/nixcrpkgs][DavidEGrayson/nixcrpkgs: Nice nix expressions for cross-compiling.]]
+- [[https://github.com/nix-community/nixpkgs-swh][nix-community/nixpkgs-swh: Send nixpkgs tarballs to Software Heritage maintainer=@nlewo]]
+- [[https://github.com/nlewo/hydra-cli][nlewo/hydra-cli: A client for the Hydra Nix CI]]
+- [[https://github.com/taktoa/narfuse][taktoa/narfuse: A FUSE filesystem, written in Haskell, that allows one to mount NAR (Nix archive) files and expose them as a virtual Nix store.]]
+- [[https://github.com/serokell/update-daemon][serokell/update-daemon: Nix Flake Update daemon]]
+- [[https://github.com/numtide/nar-serve][numtide/nar-serve: Unpack and serve NAR file content on the fly]]
+- [[https://github.com/dasJ/emergency-kexec][dasJ/emergency-kexec: Kexec into an in-memory emergency system]]
+- [[https://github.com/AleXoundOS/mirror-nix][AleXoundOS/mirror-nix: mirror Nix binary cache for the offline workflow]]
+
+* Virtualization
+- [[https://github.com/Mic92/nixos-shell][Mic92/nixos-shell: Spawns lightweight nixos vms in a shell]]
+- [[https://github.com/erikarvstedt/extra-container][erikarvstedt/extra-container: Run declarative NixOS containers without full system rebuilds]]
+- [[https://github.com/astro/microvm.nix][astro/microvm.nix: NixOS MicroVMs]]
+- [[https://github.com/rsdy/nix-readonly][rsdy/nix-readonly: Lightweight NixOS VMs using KVM with read-only root]]
+- [[https://github.com/jollheef/appvm][jollheef/appvm: Nix-based app VMs]]
+
