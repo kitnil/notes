@@ -40,3 +40,18 @@
   $ objdump -t  /gnu/store/m8afvcgwmrfhvjpd7b0xllk8vv5isd6j-glibc-cross-i586-pc-gnu-2.33/lib/ld.so.1|grep _begin
   00000000 l       *ABS*  00000000              _begin
 #+end_example
+
+#+begin_example
+  Address 0 is for the ‘_begin’ symbol, passed by -Wl,-defsym:
+
+  i586-pc-gnu-gcc   -nostdlib -nostartfiles -r -o /tmp/guix-build-glibc-cross-i586-pc-gnu-2.33.drv-0/build/elf/librtld.os '-Wl,-(' /tmp/guix-build-glibc-cross-i586-pc-gnu-2.33.drv-0/build/elf/dl-allobjs.os /tmp/guix-build-glibc-cross-i586-pc-gnu-2.33.drv-0/build/elf/rtld-libc.a -lgcc '-Wl,-)' \
+            -Wl,-Map,/tmp/guix-build-glibc-cross-i586-pc-gnu-2.33.drv-0/build/elf/librtld.os.map
+  i586-pc-gnu-gcc   -nostdlib -nostartfiles -shared -o /tmp/guix-build-glibc-cross-i586-pc-gnu-2.33.drv-0/build/elf/ld.so.new		\
+            -Wl,-z,combreloc -Wl,-z,relro -Wl,--hash-style=both -Wl,-z,defs 	\
+            /tmp/guix-build-glibc-cross-i586-pc-gnu-2.33.drv-0/build/elf/librtld.os -Wl,--version-script=/tmp/guix-build-glibc-cross-i586-pc-gnu-2.33.drv-0/build/ld.map		\
+            -Wl,-soname=ld.so.1			\
+            -Wl,-defsym=_begin=0
+  i586-pc-gnu-readelf -s /tmp/guix-build-glibc-cross-i586-pc-gnu-2.33.drv-0/build/elf/ld.so.new \
+    | gawk '($7 ~ /^UND(|EF)$/ && $1 != "0:" && $4 != "REGISTER") { print; p=1 } END { exit p != 0 }'
+  mv -f /tmp/guix-build-glibc-cross-i586-pc-gnu-2.33.drv-0/build/elf/ld.so.new /tmp/guix-build-glibc-cross-i586-pc-gnu-2.33.drv-0/build/elf/ld.so
+#+end_example
