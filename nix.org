@@ -1618,7 +1618,6 @@ builtins.match "php([[:alnum:]])([[:alnum:]])" "php70"
 ** NixOS alternatives
  - [[https://ocelot-project.github.io/][λ Ocelot]]
 
-
 * Nixpkgs Source
 - pkgs/stdenv/generic/check-meta.nix
 
@@ -1626,7 +1625,6 @@ builtins.match "php([[:alnum:]])([[:alnum:]])" "php70"
   - nixos-install --flake github:hoverbear-consulting/flake#gizmo --impure
     - ln -s /path/to/nixpkgs-replit/default.nix ~/.config/nixpkgs/overlays/replit.nix
     - # Install upm nix-env -iA nixpkgs.upm
-
 
 * Packages
 - [[https://github.com/JJJollyjim/arewehackersyet][JJJollyjim/arewehackersyet: Tracking the availability of Kali Linux packages in NixOS]]
