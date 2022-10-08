@@ -1771,6 +1771,7 @@ builtins.match "php([[:alnum:]])([[:alnum:]])" "php70"
 - [[https://github.com/numtide/nar-serve][numtide/nar-serve: Unpack and serve NAR file content on the fly]]
 - [[https://github.com/dasJ/emergency-kexec][dasJ/emergency-kexec: Kexec into an in-memory emergency system]]
 - [[https://github.com/AleXoundOS/mirror-nix][AleXoundOS/mirror-nix: mirror Nix binary cache for the offline workflow]]
+- [[https://github.com/vlinkz/nixos-conf-editor][vlinkz/nixos-conf-editor: A libadwaita/gtk4 app for editing NixOS configurations]]
 
 * Virtualization
 - [[https://github.com/Mic92/nixos-shell][Mic92/nixos-shell: Spawns lightweight nixos vms in a shell]]
