@@ -35,3 +35,8 @@
   /tmp/guix-build-glibc-cross-i586-pc-gnu-2.33.drv-0/glibc-2.33/elf/dl-misc.c:333
   :?
 #+end_example
+
+#+begin_example
+  $ objdump -t  /gnu/store/m8afvcgwmrfhvjpd7b0xllk8vv5isd6j-glibc-cross-i586-pc-gnu-2.33/lib/ld.so.1|grep _begin
+  00000000 l       *ABS*  00000000              _begin
+#+end_example
