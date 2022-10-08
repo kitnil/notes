@@ -1,49 +1,3 @@
-* Shebang
-:PROPERTIES:
-:ID:       bb1a4c68-3ebe-43fd-a113-a1d871e8f6e5
-:END:
-
-#+BEGIN_SRC go
-  //bin/sh -c true && exec go run "$0" "$@"
-
-  package main
-
-  import "fmt"
-
-  func main() {
-      fmt.Println("hello world")
-  }
-#+END_SRC
-
-* Webhook
-
-#+BEGIN_SRC bash
-  #!/bin/sh
-
-  notify-send "$*"
-#+END_SRC
-
-#+BEGIN_SRC json
-  [
-      {
-          "id": "notify-send",
-          "execute-command": "/home/oleg/src/hello-webhook/notify-send.sh",
-          "command-working-directory": "/home/oleg/src/hello-webhook",
-          "pass-arguments-to-command":
-          [
-              {
-                  "source": "url",
-                  "name": "text"
-              }
-          ]
-      }
-  ]
-#+END_SRC
-
-** Alternative
-
-- [[https://github.com/ncarlier/webhookd][ncarlier/webhookd: A very simple webhook server launching shell scripts.]]
-- [[https://github.com/umputun/updater][umputun/updater: Simple web-hook based receiver executing things via HTTP request]]
 
 * Cheatsheet
 
@@ -59,59 +13,17 @@
 
 #+end_example
 
-* Read
-
-- [[https://github.com/enocom/gopher-reading-list][enocom/gopher-reading-list: A curated selection of blog posts on Go]]
-- [[https://github.com/StefanSchroeder/Golang-Regex-Tutorial][StefanSchroeder/Golang-Regex-Tutorial: Golang - Regular Expression Tutorial]]
-
-* Networking
-
-- [[https://mholt.github.io/curl-to-go/][curl-to-Go: Convert curl commands to Go code]]
-
 * Compiler
 - [[https://github.com/gopherjs/gopherjs][gopherjs/gopherjs: A compiler from Go to JavaScript for running Go code in a browser]]
 - [[https://github.com/DQNEO/babygo][DQNEO/babygo: a Go compiler made from scratch, which can compile itself. It's going to be the smallest and simplest go compiler in the world.]]
 
-* Tools
-- [[https://github.com/aceberg/WatchYourLAN][aceberg/WatchYourLAN: Lightweight network IP scanner with web GUI]]
-- [[https://github.com/mvdan/gofumpt][mvdan/gofumpt: A stricter gofmt]]
-- [[https://github.com/praetorian-inc/gokart][praetorian-inc/gokart: A static analysis tool for securing Go code]]
-- [[https://github.com/tnpitsecurity/ligolo-ng][tnpitsecurity/ligolo-ng: An advanced, yet simple, tunneling/pivoting tool that uses a TUN interface.]]
-- [[https://github.com/adhocore/gronx][adhocore/gronx: Lightweight, fast and dependency-free Cron expression parser (due checker), task scheduler and/or daemon for Golang (tested on v1.13 and above) and standalone usage]]
-- [[https://github.com/go-ping/ping][go-ping/ping: ICMP Ping library for Go]]
-- [[https://github.com/ExaScience/slick][ExaScience/slick: The Slick programming language is an s-expression surface syntax for Go.]]
-- [[https://github.com/hexops/valast][hexops/valast: Convert Go values to their AST]]
-- [[https://github.com/radovskyb/watcher][radovskyb/watcher: watcher is a Go package for watching for files or directory changes without using filesystem events.]]
-- [[https://github.com/go-echarts/statsview][go-echarts/statsview: 🚀 A real-time Golang runtime stats visualization profiler]]
-- [[https://github.com/kylelemons/godebug][kylelemons/godebug: Debugging helper utilities for Go]]
-- [[https://github.com/dominikh/go-tools][dominikh/go-tools: Staticcheck - The advanced Go linter]]
-- [[https://github.com/mgechev/revive][mgechev/revive: 🔥 ~6x faster, stricter, configurable, extensible, and beautiful drop-in replacement for golint.]]
-- [[https://github.com/bradleyjkemp/memviz][bradleyjkemp/memviz: Visualize your Go data structures using graphviz]]
-- [[https://github.com/golangci/awesome-go-linters][golangci/awesome-go-linters: A curated list of awesome Go linters. More than 60 linters and tools!]]
-- [[https://github.com/golangci/golangci-lint][golangci/golangci-lint: Fast linters Runner for Go]]
-- [[https://github.com/go-critic/go-critic][go-critic/go-critic: The most opinionated Go source code linter for code audit.]]
-- [[https://github.com/MichaelMure/git-bug][MichaelMure/git-bug: Distributed, offline-first bug tracker embedded in git, with bridges]]
-- [[https://github.com/rakyll/govalidate][rakyll/govalidate: Validates your Go installation and dependencies.]]
-- [[https://github.com/tailscale/depaware][tailscale/depaware: depaware makes you aware of your Go dependencies]]
-- [[https://github.com/visualfc/liteide][visualfc/liteide: LiteIDE is a simple, open source, cross-platform Go IDE.]]
-- [[https://github.com/lu4p/binclude][lu4p/binclude: Include files in your binary the easy way]]
-- [[https://github.com/jdxyw/generativeart][jdxyw/generativeart: Generative Art in Go]]
-- [[https://github.com/DataDog/go-profiler-notes][DataDog/go-profiler-notes: felixge's notes on the various go profiling methods that are available.]]
-- [[https://github.com/google/go-licenses][google/go-licenses: Reports on the licenses used by a Go package and its dependencies.]]
-- [[https://github.com/ofabry/go-callvis][ofabry/go-callvis: Visualize call graph of a Go program using Graphviz]]
-- [[https://github.com/arl/statsviz][arl/statsviz: Instant live visualization of your Go application runtime statistics (GC, MemStats, etc.) in the browser]]
+* Debug
+- [[https://github.com/zeromake/docker-debug][zeromake/docker-debug: use new container attach on already container go on debug]]
 
-- pretty print
-  #+begin_src go
-    import ("fmt" "github.com/kr/pretty")
-    fmt.Printf("%# v", pretty.Formatter(STRING))
-  #+end_src
-
-** test
-- print log 
-: go test -v
-
-- [[https://github.com/cch123/supermonkey][cch123/supermonkey: Patch all Go functions for testing]]
+* Frameworks
+- [[https://github.com/tal-tech/go-zero][tal-tech/go-zero: go-zero is a web and rpc framework written in Go. It's born to ensure the stability of the busy sites with resilient design. Builtin goctl greatly improves the development productivity.]]
+- [[https://github.com/go-kit/kit][go-kit/kit: A standard library for microservices.]]
+- [[https://github.com/pocketbase/pocketbase][pocketbase/pocketbase: Open Source realtime backend in 1 file]]
 
 * Learning
 - [[https://github.com/katzien/go-structure-examples][katzien/go-structure-examples: Examples for my talk on structuring go apps]]
@@ -158,19 +70,43 @@
 - [[https://github.com/hedhyw/rex][hedhyw/rex: Flexible regular expressions constructor for Golang.]]
 - [[https://github.com/tidwall/rfront][tidwall/rfront: An HTTP protocol frontend for Redis-compatible services.]]
 
-* Frameworks
-- [[https://github.com/tal-tech/go-zero][tal-tech/go-zero: go-zero is a web and rpc framework written in Go. It's born to ensure the stability of the busy sites with resilient design. Builtin goctl greatly improves the development productivity.]]
-- [[https://github.com/go-kit/kit][go-kit/kit: A standard library for microservices.]]
-- [[https://github.com/pocketbase/pocketbase][pocketbase/pocketbase: Open Source realtime backend in 1 file]]
+* Networking
 
-* REPL
+- [[https://mholt.github.io/curl-to-go/][curl-to-Go: Convert curl commands to Go code]]
 
-- https://github.com/containous/yaegi
-- [[https://github.com/d4l3k/go-pry][d4l3k/go-pry: An interactive REPL for Go that allows you to drop into your code at any point.]]
-
-* Debug
-- [[https://github.com/zeromake/docker-debug][zeromake/docker-debug: use new container attach on already container go on debug]]
-
+* Nix
+** Pretty print
+   #+begin_src nix
+     [
+       {
+         goPackagePath = "github.com/kr/pretty";
+         fetch = {
+           type = "git";
+           url = "https://github.com/kr/pretty";
+           rev = "3630c7d4e5f8cc7dc07f6f21d95c998d9a24d0d8";
+           sha256 = "1rrz6c9nczd6akjk2cicqr8l4fhwrnwnrxm7ldg28yrg1n2x2lib";
+         };
+       }
+       {
+         goPackagePath = "github.com/kr/text";
+         fetch = {
+           type = "git";
+           url = "https://github.com/kr/text";
+           rev = "702c74938df48b97370179f33ce2107bd7ff3b3e";
+           sha256 = "0hf58ypz6rxsw6nx3i856whir9lvy4sdx946wbw1nfaf2rdmr9vx";
+         };
+       }
+       {
+         goPackagePath = "github.com/rogpeppe/go-internal";
+         fetch = {
+           type = "git";
+           url = "https://github.com/rogpeppe/go-internal";
+           rev = "76dc4b3fc37c97df8520f01985a79bbac5d1585d";
+           sha256 = "00j2vpp1bsggdvw1winkz23mg0q6drjiir5q0k49pmqx1sh7106l";
+         };
+       }
+     ]
+   #+end_src
 * Programms
 ** Misc
 - [[https://github.com/emersion/hydroxide][emersion/hydroxide: A third-party, open-source ProtonMail CardDAV, IMAP and SMTP bridge]]
@@ -312,36 +248,101 @@
 ** ASCII
 - [[https://github.com/guptarohit/asciigraph][guptarohit/asciigraph: Go package to make lightweight ASCII line graph ╭┈╯ in command line apps with no other dependencies.]]
 - [[https://github.com/qeesung/image2ascii][qeesung/image2ascii: Convert image to ASCII]]
-* Nix
-** Pretty print
-   #+begin_src nix
-     [
-       {
-         goPackagePath = "github.com/kr/pretty";
-         fetch = {
-           type = "git";
-           url = "https://github.com/kr/pretty";
-           rev = "3630c7d4e5f8cc7dc07f6f21d95c998d9a24d0d8";
-           sha256 = "1rrz6c9nczd6akjk2cicqr8l4fhwrnwnrxm7ldg28yrg1n2x2lib";
-         };
-       }
-       {
-         goPackagePath = "github.com/kr/text";
-         fetch = {
-           type = "git";
-           url = "https://github.com/kr/text";
-           rev = "702c74938df48b97370179f33ce2107bd7ff3b3e";
-           sha256 = "0hf58ypz6rxsw6nx3i856whir9lvy4sdx946wbw1nfaf2rdmr9vx";
-         };
-       }
-       {
-         goPackagePath = "github.com/rogpeppe/go-internal";
-         fetch = {
-           type = "git";
-           url = "https://github.com/rogpeppe/go-internal";
-           rev = "76dc4b3fc37c97df8520f01985a79bbac5d1585d";
-           sha256 = "00j2vpp1bsggdvw1winkz23mg0q6drjiir5q0k49pmqx1sh7106l";
-         };
-       }
-     ]
-   #+end_src
+* Read
+
+- [[https://github.com/enocom/gopher-reading-list][enocom/gopher-reading-list: A curated selection of blog posts on Go]]
+- [[https://github.com/StefanSchroeder/Golang-Regex-Tutorial][StefanSchroeder/Golang-Regex-Tutorial: Golang - Regular Expression Tutorial]]
+
+* REPL
+
+- https://github.com/containous/yaegi
+- [[https://github.com/d4l3k/go-pry][d4l3k/go-pry: An interactive REPL for Go that allows you to drop into your code at any point.]]
+
+* Shebang
+:PROPERTIES:
+:ID:       bb1a4c68-3ebe-43fd-a113-a1d871e8f6e5
+:END:
+
+#+BEGIN_SRC go
+  //bin/sh -c true && exec go run "$0" "$@"
+
+  package main
+
+  import "fmt"
+
+  func main() {
+      fmt.Println("hello world")
+  }
+#+END_SRC
+
+* Tools
+- [[https://github.com/aceberg/WatchYourLAN][aceberg/WatchYourLAN: Lightweight network IP scanner with web GUI]]
+- [[https://github.com/mvdan/gofumpt][mvdan/gofumpt: A stricter gofmt]]
+- [[https://github.com/praetorian-inc/gokart][praetorian-inc/gokart: A static analysis tool for securing Go code]]
+- [[https://github.com/tnpitsecurity/ligolo-ng][tnpitsecurity/ligolo-ng: An advanced, yet simple, tunneling/pivoting tool that uses a TUN interface.]]
+- [[https://github.com/adhocore/gronx][adhocore/gronx: Lightweight, fast and dependency-free Cron expression parser (due checker), task scheduler and/or daemon for Golang (tested on v1.13 and above) and standalone usage]]
+- [[https://github.com/go-ping/ping][go-ping/ping: ICMP Ping library for Go]]
+- [[https://github.com/ExaScience/slick][ExaScience/slick: The Slick programming language is an s-expression surface syntax for Go.]]
+- [[https://github.com/hexops/valast][hexops/valast: Convert Go values to their AST]]
+- [[https://github.com/radovskyb/watcher][radovskyb/watcher: watcher is a Go package for watching for files or directory changes without using filesystem events.]]
+- [[https://github.com/go-echarts/statsview][go-echarts/statsview: 🚀 A real-time Golang runtime stats visualization profiler]]
+- [[https://github.com/kylelemons/godebug][kylelemons/godebug: Debugging helper utilities for Go]]
+- [[https://github.com/dominikh/go-tools][dominikh/go-tools: Staticcheck - The advanced Go linter]]
+- [[https://github.com/mgechev/revive][mgechev/revive: 🔥 ~6x faster, stricter, configurable, extensible, and beautiful drop-in replacement for golint.]]
+- [[https://github.com/bradleyjkemp/memviz][bradleyjkemp/memviz: Visualize your Go data structures using graphviz]]
+- [[https://github.com/golangci/awesome-go-linters][golangci/awesome-go-linters: A curated list of awesome Go linters. More than 60 linters and tools!]]
+- [[https://github.com/golangci/golangci-lint][golangci/golangci-lint: Fast linters Runner for Go]]
+- [[https://github.com/go-critic/go-critic][go-critic/go-critic: The most opinionated Go source code linter for code audit.]]
+- [[https://github.com/MichaelMure/git-bug][MichaelMure/git-bug: Distributed, offline-first bug tracker embedded in git, with bridges]]
+- [[https://github.com/rakyll/govalidate][rakyll/govalidate: Validates your Go installation and dependencies.]]
+- [[https://github.com/tailscale/depaware][tailscale/depaware: depaware makes you aware of your Go dependencies]]
+- [[https://github.com/visualfc/liteide][visualfc/liteide: LiteIDE is a simple, open source, cross-platform Go IDE.]]
+- [[https://github.com/lu4p/binclude][lu4p/binclude: Include files in your binary the easy way]]
+- [[https://github.com/jdxyw/generativeart][jdxyw/generativeart: Generative Art in Go]]
+- [[https://github.com/DataDog/go-profiler-notes][DataDog/go-profiler-notes: felixge's notes on the various go profiling methods that are available.]]
+- [[https://github.com/google/go-licenses][google/go-licenses: Reports on the licenses used by a Go package and its dependencies.]]
+- [[https://github.com/ofabry/go-callvis][ofabry/go-callvis: Visualize call graph of a Go program using Graphviz]]
+- [[https://github.com/arl/statsviz][arl/statsviz: Instant live visualization of your Go application runtime statistics (GC, MemStats, etc.) in the browser]]
+
+- pretty print
+  #+begin_src go
+    import ("fmt" "github.com/kr/pretty")
+    fmt.Printf("%# v", pretty.Formatter(STRING))
+  #+end_src
+
+** test
+- print log 
+: go test -v
+
+- [[https://github.com/cch123/supermonkey][cch123/supermonkey: Patch all Go functions for testing]]
+
+* Webhook
+
+#+BEGIN_SRC bash
+  #!/bin/sh
+
+  notify-send "$*"
+#+END_SRC
+
+#+BEGIN_SRC json
+  [
+      {
+          "id": "notify-send",
+          "execute-command": "/home/oleg/src/hello-webhook/notify-send.sh",
+          "command-working-directory": "/home/oleg/src/hello-webhook",
+          "pass-arguments-to-command":
+          [
+              {
+                  "source": "url",
+                  "name": "text"
+              }
+          ]
+      }
+  ]
+#+END_SRC
+
+** Alternative
+
+- [[https://github.com/ncarlier/webhookd][ncarlier/webhookd: A very simple webhook server launching shell scripts.]]
+- [[https://github.com/umputun/updater][umputun/updater: Simple web-hook based receiver executing things via HTTP request]]
+
