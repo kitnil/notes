@@ -37,11 +37,6 @@
 #+end_example
 
 #+begin_example
-  $ objdump -t  /gnu/store/m8afvcgwmrfhvjpd7b0xllk8vv5isd6j-glibc-cross-i586-pc-gnu-2.33/lib/ld.so.1|grep _begin
-  00000000 l       *ABS*  00000000              _begin
-#+end_example
-
-#+begin_example
   Address 0 is for the ‘_begin’ symbol, passed by -Wl,-defsym:
 
   i586-pc-gnu-gcc   -nostdlib -nostartfiles -r -o /tmp/guix-build-glibc-cross-i586-pc-gnu-2.33.drv-0/build/elf/librtld.os '-Wl,-(' /tmp/guix-build-glibc-cross-i586-pc-gnu-2.33.drv-0/build/elf/dl-allobjs.os /tmp/guix-build-glibc-cross-i586-pc-gnu-2.33.drv-0/build/elf/rtld-libc.a -lgcc '-Wl,-)' \
@@ -54,4 +49,41 @@
   i586-pc-gnu-readelf -s /tmp/guix-build-glibc-cross-i586-pc-gnu-2.33.drv-0/build/elf/ld.so.new \
     | gawk '($7 ~ /^UND(|EF)$/ && $1 != "0:" && $4 != "REGISTER") { print; p=1 } END { exit p != 0 }'
   mv -f /tmp/guix-build-glibc-cross-i586-pc-gnu-2.33.drv-0/build/elf/ld.so.new /tmp/guix-build-glibc-cross-i586-pc-gnu-2.33.drv-0/build/elf/ld.so
+#+end_example
+
+#+begin_example
+  $ objdump -t  /gnu/store/m8afvcgwmrfhvjpd7b0xllk8vv5isd6j-glibc-cross-i586-pc-gnu-2.33/lib/ld.so.1|grep _begin
+  00000000 l       *ABS*  00000000              _begin
+#+end_example
+
+#+begin_example
+  That ‘-Wl,-defsym=_begin=0’ flag was removed in glibc commit
+  6f043e0ee7e477f50a44024ed0cb579d5e3f511d (April 2022).
+
+  On darnassus it’s different but then it’s Debian’s glibc 2.35, natively
+  built, so I don’t what conclusions can be drawn:
+
+  ludo@darnassus:~$ /lib/ld.so.1 --version
+  ld.so (Debian GLIBC 2.35-1) stable release version 2.35.
+  Copyright (C) 2022 Free Software Foundation, Inc.
+  This is free software; see the source for copying conditions.
+  There is NO warranty; not even for MERCHANTABILITY or FITNESS FOR A
+  PARTICULAR PURPOSE.
+  ludo@darnassus:~$ objdump -x /lib/ld.so.1 |head -40
+
+  /lib/ld.so.1:     file format elf32-i386
+  /lib/ld.so.1
+  architecture: i386, flags 0x00000150:
+  HAS_SYMS, DYNAMIC, D_PAGED
+  start address 0x0001cc40
+
+  Program Header:
+      LOAD off    0x00000000 vaddr 0x00000000 paddr 0x00000000 align 2**12
+           filesz 0x00038494 memsz 0x00038494 flags r-x
+      LOAD off    0x00038c00 vaddr 0x00039c00 paddr 0x00039c00 align 2**12
+           filesz 0x00001ca8 memsz 0x00001e34 flags rw-
+   DYNAMIC off    0x00039f24 vaddr 0x0003af24 paddr 0x0003af24 align 2**2
+           filesz 0x000000b8 memsz 0x000000b8 flags rw-
+      NOTE off    0x00000114 vaddr 0x00000114 paddr 0x00000114 align 2**2
+           filesz 0x00000024 memsz 0x00000024 flags r--
 #+end_example
