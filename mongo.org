@@ -9,6 +9,7 @@
 
 * Utils
 - [[https://github.com/mdirolf/nginx-gridfs][mdirolf/nginx-gridfs: Nginx module for serving files from MongoDB's GridFS]]
+- [[https://github.com/mongodb-labs/pymongoexplain/][mongodb-labs/pymongoexplain: Explainable CRUD API for PyMongo]]
 ** Backup
 - [[https://github.com/stefanprodan/mgob][stefanprodan/mgob: MongoDB dockerized backup agent. Runs schedule backups with retention, S3 & SFTP upload, notifications, instrumentation with Prometheus and more.]]
 ** Audit
