@@ -276,6 +276,9 @@
 - [[https://habr.com/ru/company/vk/blog/648117/][Как работать с Minikube: рекомендации и полезные советы / Хабр]]
 - [[https://github.com/kubevirt/demo][kubevirt/demo: Easy to use KubeVirt demo based on minikube.]]
 
+** crossplane
+- [[https://github.com/crossplane/terrajet][crossplane/terrajet: Generate Crossplane Providers from any Terraform Provider]]
+
 * pv
 ** dynamic
 - [[https://github.com/rancher/local-path-provisioner][rancher/local-path-provisioner: Dynamically provisioning persistent local storage with Kubernetes]]
