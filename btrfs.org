@@ -16,7 +16,6 @@
 - [[https://github.com/darkling/btrfs-usage][darkling/btrfs-usage: Web-app to estimate usable space in different btrfs RAID configurations]]
 - [[https://github.com/digint/btrbk][digint/btrbk: Tool for creating snapshots and remote backups of btrfs subvolumes]]
 - [[https://dataswamp.org/~solene/2022-08-16-btrfs-deduplication-with-bees.html][Solene'% : BTRFS deduplication using bees]]
-- [[https://dataswamp.org/~solene/2022-10-07-nixos-btrfs-continuous-snapshots.html][Solene'% : Linux BTRFS continuous snapshots]]
 
 #+begin_example
   [root@web15:~]# btrfs qgroup limit -e 15G /home/u230390
@@ -31,3 +30,69 @@ Change quota from =excl= to =ref=.
 #+begin_src shell
   for dir in /home/*; do sudo btrfs qgroup show -reF --raw $dir | awk '{if($5=="none" && $4!="none"){print $4}}' | xargs -I {} sudo btrfs qgroup limit -e {} $dir && sudo btrfs qgroup limit none $dir ; done
 #+end_src
+
+* [[https://dataswamp.org/~solene/2022-10-07-nixos-btrfs-continuous-snapshots.html][Solene'% : Linux BTRFS continuous snapshots]]
+
+#+begin_example
+  As shown in my previous article about the NILFS file system, continuous snapshots are great and practical as they can save you losing data accidentally between two backups jobs.
+
+  Today, I'll demonstrate how to do something quite similar using BTRFS and regular snapshots.
+
+  In the configuration, I'll show the code for NixOS using the tool btrbk to handle snapshots retention correctly.
+
+  Snapshots are not backups! It is important to understand this. If your storage is damaged or the file system get corrupted, or the device stolen, you will lose your data. Backups are archives of your data that are on another device, and which can be used when the original device is lost/destroyed/corrupted. However, snapshots are superfast and cheap, and can be used to recover accidentally deleted files.
+
+  btrbk official website
+  NixOS configuration §
+
+  The program btrbk is simple, it requires a configuration file /etc/btrbk.conf defining which volume you want to snapshot regularly, where to make them accessible and how long you want to keep them.
+
+  In the following example, we will keep the snapshots for 2 days, and create them every 10 minutes. A SystemD service will be scheduled using a timer in order run btrbk run which handle snapshot creation and pruning. Snapshots will be made available under /.snapshots/.
+
+    environment.etc = {
+      "btrbk.conf".text = ''
+        snapshot_preserve_min   2d
+        volume /
+          snapshot_dir .snapshots
+          subvolume home
+      '';
+    };
+  
+    systemd.services.btrfs-snapshot = {
+      startAt = "*:0/10";
+      enable = true;
+      path = with pkgs; [btrbk];
+      serviceConfig.Type = "oneshot";
+      script = ''
+        mkdir -p /.snapshots
+        btrbk run
+      '';
+    };
+
+  Rebuild your system, you should now have systemd units btrfs-snapshot.service and btrfs-snapshot.timer available.
+
+  As the configuration file will be at the standard location, you can use btrbk as root to manually list or prune your snapshots in case you need to, like immediately reclaiming disk space.
+  Using NixOS module §
+
+  After publishing this blog post, I realized a NixOS module existed to simplify the setup and provide more features. Here is the code used to replicate the behavior of the code above.
+
+  {
+    services.btrbk.instances."btrbk" = {
+      onCalendar = "*:0/10";
+      settings = {
+        snapshot_preserve_min = "2d";
+        volume."/" = {
+          subvolume = "/home";
+          snapshot_dir = ".snapshots";
+        };
+      };
+    };
+  }
+
+  You can find more settings for this module in the man page configuration.nix.
+  Going further §
+
+  btrbk is a powerful tool, as not only you can create snapshots with it, but it can stream them on a remote system with optional encryption. It can also manage offline backups on a removable media and a few other non-simple cases. It's really worth taking a look.
+
+  This blog is powered by cl-yag!
+#+end_example
