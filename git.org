@@ -290,5 +290,17 @@ then
 fi
 #+end_example
 
+#+begin_src bash
+  #!/usr/bin/env bash
+
+  branch="$(git branch --show-current)"
+
+  if [[ "${branch}" != "master" ]]
+  then
+      echo "Pushing to the branch ${branch} is forbidden"
+      exit 1
+  fi
+#+end_src
+
 * Implementations
 - [[https://github.com/go-git/go-git][go-git/go-git: A highly extensible Git implementation in pure Go.]]
