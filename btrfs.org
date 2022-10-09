@@ -16,6 +16,7 @@
 - [[https://github.com/darkling/btrfs-usage][darkling/btrfs-usage: Web-app to estimate usable space in different btrfs RAID configurations]]
 - [[https://github.com/digint/btrbk][digint/btrbk: Tool for creating snapshots and remote backups of btrfs subvolumes]]
 - [[https://dataswamp.org/~solene/2022-08-16-btrfs-deduplication-with-bees.html][Solene'% : BTRFS deduplication using bees]]
+- [[https://dataswamp.org/~solene/2022-10-07-nixos-btrfs-continuous-snapshots.html][Solene'% : Linux BTRFS continuous snapshots]]
 
 #+begin_example
   [root@web15:~]# btrfs qgroup limit -e 15G /home/u230390
