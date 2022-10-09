@@ -3,6 +3,20 @@
 :END:
 #+title: Guix
 
+* API
+
+Subject: Re: Guix Data Service client module
+Message-ID: <878rupgxsd.fsf@gnu.org>
+#+begin_example
+  scheme@(guile-user)> (define s (open-data-service "https://data.guix.gnu.org"))
+  scheme@(guile-user)> (car (package-versions (lookup-package s "emacs")))
+  $20 = #<<package-version> string: "27.2" branches: (#<<branch> name: "master" repository-id: 1>)>
+  scheme@(guile-user)> (car (package-version-history s (car (package-version-branches $20)) "emacs"))
+  $21 = #<<package-version-range> version: "27.2" first-revision: #<<revision> commit: "cc33f50d0e2a7835e99913226cb4c4b0e9e961ae" date: #<date nanosecond: 0 second: 54 minute: 30 hour: 20 day: 25 month: 3 year: 2021 zone-offset: 0>> last-revision: #<<revision> commit: "de38ccf2e0bb2fd21393925c296b65dca7499bd3" date: #<date nanosecond: 0 second: 37 minute: 48 hour: 13 day: 4 month: 2 year: 2022 zone-offset: 0>>>
+#+end_example
+* articles
+- [[https://guix.gnu.org/blog/2020/running-a-ganeti-cluster-on-guix/][Running a Ganeti cluster on Guix]]
+
 * Awesome
 
 ** Andrew Tropin (rde)
@@ -106,19 +120,52 @@ https://gitlab.com/janneke/guix.git
   - http://167.172.37.172/
   - http://[204:cbf:3e07:e67a:424f:93bc:fc5c:b3dc]/
 
-* Translation
+* Build from Scheme expression
 
-[0]: <https://translationproject.org/domain/guix.html>
-[1]: <https://translationproject.org/domain/guix-manual.html>
-[2]: <https://translationproject.org/domain/guix-packages.html>
+  #+BEGIN_SRC sh
+    guix build -e '(@@ (gnu packages commencement) glibc-utf8-locales-final)'
+  #+END_SRC
 
-* Repository
+* Build system monad
 
-- [[https://github.com/UMCUGenetics/guix-additions][guix-additions]]
-- [[https://gitlab.com/daym/guix-gui/][Danny Milosavljevic / guix-gui · GitLab]]
-- [[https://github.com/SystemCrafters/guix-installer][SystemCrafters/guix-installer: A GNU Guix installer image with the full Linux kernel!]]
-- [[https://github.com/saucoide/scn-channel][saucoide/scn-channel with a qtile window manager]]
-- [[https://bordeaux.guix.gnu.org/][bordeaux.guix.gnu.org]]
+  #+begin_src scheme
+    (use-modules (guix store)
+                 (guix gexp)
+                 (guix derivations)
+                 (guix monads)
+                 (json))
+
+    (define %packer-operating-system
+      `())
+
+    (define store (open-connection))
+    (pk
+     (build-derivations
+      store
+      (list
+       (run-with-store store
+         (mlet %store-monad ((drv (text-file "packer-guix.json"
+                                             (scm->json-string %packer-operating-system))))
+           (lower-object
+            (program-file "packer-build-guix"
+                          #~(begin
+                              (system* "/home/oleg/.nix-profile/bin/packer" "build" #$drv)))))))))
+
+  #+end_src
+
+  #+BEGIN_SRC scheme
+    (use-modules (gnu)
+                 (guix store))
+
+    ;; Deriviation
+    (define d
+      (run-with-store (open-connection) (operating-system-derivation %system-magnolia-bare)))
+
+    ;; Build deriviation
+    (define s (open-connection))
+
+    (build-derivations s (list d))
+  #+END_SRC
 
 * Cheat sheet
 
@@ -1587,9 +1634,460 @@ https://kanru.info/blog/archives/2010/11/18/convert-texinfo-to-mobi/
           (mu:message-list "bugid:31023"))
    #+END_EXAMPLE
     
+* check if guix corrupted
+  #+BEGIN_EXAMPLE
+    <rekado_> solene: if you want to check that the store isn’t corrupt and repair
+              it, use “sudo -E guix gc --verify=repair,contents”  [16:30]
+  #+END_EXAMPLE
+
+* Columns
+
+
+Hello!
+
+Jan Nieuwenhuizen <janneke@gnu.org> skribis:
+
+> In procedure lstat: No such file or directory: "/tmp/guix-build-guix-1.0.1-18.11fc384.drv-0/source/gnu/../gnu/installer/~^m\x18 "
+
+This one is funny:
+
+$ (unset GUILE_LOAD_COMPILED_PATH; COLUMNS=200 XDG_CACHE_HOME=/nowhere guild compile --target=i586-pc-gnu -L . gnu/ci.scm -o foo.go)
+;;; note: auto-compilation is enabled, set GUILE_AUTO_COMPILE=0
+;;;       or pass the --no-auto-compile argument to disable.
+;;; compiling /home/ludo/.guix-profile/bin/guild
+;;; WARNING: compilation of /home/ludo/.guix-profile/bin/guild failed:
+;;; failed to create path for auto-compiled file "/home/ludo/.guix-profile/bin/guild"
+WARNING: Use of `load' in declarative module (guix ui).  Add #:declarative? #f to your define-module invocation.
+WARNING: (guix build emacs-build-system): imported module (guix build utils) overrides core binding `delete'
+WARNING: Use of `load' in declarative module (gnu system install).  Add #:declarative? #f to your define-module invocation.
+Backtrace:
+In ice-9/boot-9.scm:
+  3297:17 19 (resolve-interface (gnu system install) #:select _ #:hide _ #:prefix _ #:renamer _ #:version _)
+In ice-9/threads.scm:
+    390:8 18 (_ _)
+In ice-9/boot-9.scm:
+  3223:13 17 (_)
+In ice-9/threads.scm:
+    390:8 16 (_ _)
+In ice-9/boot-9.scm:
+  3507:20 15 (_)
+   2806:4 14 (save-module-excursion _)
+  3527:26 13 (_)
+In unknown file:
+          12 (primitive-load-path "gnu/system/install" #<procedure 7fb03993e6e0 at ice-9/boot-9.scm:3514:37 ()>)
+In ice-9/eval.scm:
+   626:19 11 (_ #<directory (gnu system install) 7fb03817caa0>)
+   173:47 10 (_ #(#(#<directory (gnu system install) 7fb03817caa0> #<<plain-file> name: "motd" content: "\n\x1b[1;37mWelcome to the installation of GNU Guix!\x1b[0m\n\n\x1b[2mUsing this shell…>) …))
+   196:43  9 (_ #(#(#<directory (gnu system install) 7fb03817caa0> #<<plain-file> name: "motd" content: "\n\x1b[1;37mWelcome to the installation of GNU Guix!\x1b[0m\n\n\x1b[2mUsing this shell…>) …))
+   293:34  8 (_ #(#(#(#<directory (gnu system install) 7fb03817caa0> #<<plain-file> name: "motd" content: "\n\x1b[1;37mWelcome to the installation of GNU Guix!\x1b[0m\n\n\x1b[2mUsing this …>) …) #))
+    619:8  7 (_ #(#(#(#<directory (gnu installer) 7fb03abbfe60>)) #<variable 7fb03f5d5110 value: #<gexp (begin (bindtextdomain "guix" (string-append #<gexp-input #<package guix@1.1.0 gnu/packag…> …))
+   626:19  6 (_ #(#(#(#<directory (gnu installer) 7fb03abbfe60>)) #<variable 7fb03f5d5110 value: #<gexp (begin (bindtextdomain "guix" (string-append #<gexp-input #<package guix@1.1.0 gnu/packag…> …))
+    159:9  5 (_ #(#(#(#<directory (guix discovery) 7fb04977f320>) "/home/ludo/src/guix/gnu/.." "gnu/installer") 26))
+In srfi/srfi-1.scm:
+   495:18  4 (fold-right #<procedure 7fb03f077e40 at ice-9/eval.scm:336:13 (a b)> () _ . _)
+In ice-9/eval.scm:
+   293:34  3 (_ #(#(#(#(#(#(#(#<directory (guix discovery) 7fb04977f320> ("ރl^ " (type . unknown) (inode . 17571939)) "/home/ludo/src/guix/gnu/../gnu/installer" #<variable 7fb03…> …)) …) …) …) …) …))
+    155:9  2 (_ #(#(#(#(#<directory (guix discovery) 7fb04977f320>) "/home/ludo/src/guix/gnu/../gnu/installer/ރl^ " ((type . unknown) (inode . 17571939))) unknown) #<procedure failure ()>))
+In unknown file:
+           1 (lstat "/home/ludo/src/guix/gnu/../gnu/installer/ރl^ ")
+In ice-9/boot-9.scm:
+  1669:16  0 (raise-exception _ #:continuable? _)
+
+ice-9/boot-9.scm:1669:16: In procedure raise-exception:
+In procedure lstat: Dosiero aŭ dosierujo ne ekzistas: "/home/ludo/src/guix/gnu/../gnu/installer/ރl^ "
+
+(A good opportunity to learn about THAANA LETTER RAA!
+<https://en.wikipedia.org/wiki/Thaana#Alphabet>)
+
+Here ‘scandir*’ from (guix build syscalls) is being interpreted and
+presumably it gets all the struct offsets wrong (32-bit instead of
+64-bit I guess), hence the funny file name.  (‘scandir*’ is called from
+‘scheme-modules*’ in (gnu installer), itself from the
+‘installer-program’ call in (gnu system install).)
+
+This bit is fixed in 82d8959e5d137b2061a68878d78a8f74a238ac44.
+
+To be continued…
+
+Thank you,
+Ludo’.
+
+* Container
+So presumably a better option is to use an image created like this:
+
+  guix pack -f docker -S /bin=bin guix --localstatedir
+
+and then, in the image, you first need to spawn guix-daemon, perhaps
+with ‘--disable-chroot’ because the image lacks build users.
+
+It would be useful also to set the user under which commands run in the
+image, similar to the ‘USER’ directive in Dockerfiles.
+
+* Cuirass
+- [[https://ci.guix.gnu.org/eval/19534/dashboard][master dashboard]]
+- [[https://ci.guix.gnu.org/eval/19488/dashboard][staging dashboard]]
+- [[https://ci.guix.gnu.org/eval/19464/dashboard][test dashboard]]
+
+* TODO (debbugs-gnu-bugs 28004)
+* TODO (debbugs-gnu-bugs 28743)
+* TODO (debbugs-gnu-bugs 28772)
+
+* doc
+
+- [[https://hal.inria.fr/hal-01580582/document][Code Staging in GNU Guix]]
+- [[http://www.nongnu.org/geiser/][Geiser]]
+- [[https://alezost.github.io/guix.el/doc.html][Emacs Guix]]
+
+* Dovecot
+  #+BEGIN_EXAMPLE
+    doveconf: Warning: /etc/dovecot/dovecot.conf line 198: Global setting auth_socket_path won't change the setting inside an earlier filter at /etc/dovecot/dovecot.conf line 4 (if this is intentional, avoid this warning by moving the global setting before /etc/dovecot/dovecot.conf line 4)
+    doveconf: Warning: /etc/dovecot/dovecot.conf line 200: Global setting mail_plugins won't change the setting inside an earlier filter at /etc/dovecot/dovecot.conf line 5 (if this is intentional, avoid this warning by moving the global setting before /etc/dovecot/dovecot.conf line 5)
+    Error: net_connect_unix(/var/run/dovecot//stats-writer) failed: Permission denied
+  #+END_EXAMPLE
+
+* Dualboot
+
+  https://lists.gnu.org/archive/html/help-guix/2016-03/msg00083.html
+
+  Running all machines, I dunno.  I do dual-boot Debian and GuixSD
+  with them sharing the same user profile and store.  On Debian, I
+  bind-mount some directories from GuixSD's root partition.  From
+  /etc/fstab:
+
+  #+BEGIN_EXAMPLE
+    UUID=d9cc11f0-e548-4526-a541-4f631a10b73c /mnt/guix/      ext4    defaults
+      0       2
+    /mnt/guix/var/guix    /var/guix           none            defaults,bind
+      0       0
+    /mnt/guix/gnu    /gnu                     none            defaults,bind
+      0       0
+  #+END_EXAMPLE
+
+  Then /home/ is shared (and luks encrypted) on both distros.  It
+  works fine.
+
+  If you want to do "same profile and store across all things" Ricardo
+  Wurmus does some wild things using NFS.
+
+* entr
+
+build.sh
+#+BEGIN_SRC sh
+  #!/usr/bin/env bash
+
+  set -eux
+
+  ./pre-inst-env guix build -K --no-offload "$(git diff --inter-hunk-context=1 gnu/packages/golang.scm gnu/packages/configuration-management.scm gnu/packages/version-control.scm | awk '/define-public/ { print $NF }' | head -2 | tail -1)"
+#+END_SRC
+
+#+BEGIN_SRC sh
+  ls gnu/packages/golang.scm gnu/packages/configuration-management.scm gnu/packages/version-control.scm | ~/.guix-profile/bin/entr -r ./build.sh
+#+END_SRC
+
+* TODO ERROR: ivy-bibtex not such file
 * Extensions
 - [[https://hpc.guix.info/blog/2022/05/back-to-the-future-modules-for-guix-packages/][Guix-HPC — Back to the future: modules for Guix packages]]
 - [[https://guixwl.org/][Guix Workflow Language | Guix Workflow Language]]
+
+* Fix sendmail_path=/usr/sbin/sendmail
+* fonts
+
+From: Pierre Neidhardt <mail@ambrevar.xyz>
+Subject: Re: How to use foreign-distro fonts without symlink hack?
+To: "Jorge P. de Morais Neto" <jorge+list@disroot.org>, help-guix@gnu.org
+Date: Sun, 05 Jan 2020 19:34:24 +0100 (22 minutes, 15 seconds ago)
+Message-ID: <87tv59ycpb.fsf@ambrevar.xyz>
+
+Hi Jorge!
+
+jorge+list@disroot.org (Jorge P. de Morais Neto) writes:
+
+> 1. Could this symlink cause problems for Debian applications?
+
+Should be fine.
+
+> 2. Why does not Guix `fc-cache' look in `/usr/share/fonts'?
+
+Because Guix does not know about files outside the store or the home
+directory.  This is by design.
+
+Another way to change this behaviour is to add /usr/share/fonts to
+~/.config/fontconfig/fonts.conf:
+
+<?xml version="1.0"?>
+<!DOCTYPE fontconfig SYSTEM "fonts.dtd">
+<!-- /etc/fonts/fonts.conf file to configure system font access -->
+<fontconfig>
+<dir>/usr/share/fonts</dir>
+</fontconfig>
+
+Hope this helps! :)
+
+-- 
+Pierre Neidhardt
+https://ambrevar.xyz/
+
+* FSF
+
+  - http://www.fsfla.org/ikiwiki/selibre/linux-libre/
+
+* Gexp
+#+BEGIN_EXAMPLE
+       <wigust> Hello Guix, How to take a look onto a file produced
+                by copy-file in Gexp?
+                E.g. https://git.savannah.gnu.org/cgit/guix.git/tree/gnu/services/messaging.scm?h=master#n662
+                                                             [22:07]
+       <wigust> Could I get to it with `guix gc`?            [22:09]
+       <wigust> If I build a system with prosody service.
+            ,*** ng0 (~ng0@gateway/tor-sasl/ng0) has quit: Quit:
+                Alexa, when is the end of world?             [22:15]
+          <atw> wigust: I believe you'll want to use
+                gexp->derivation, then "run" the derivation. Ludo
+                gave me some help with this here:
+                https://lists.gnu.org/archive/html/help-guix/2018-01/msg00058.html
+          <atw> Make a note of the output directory, then find the
+                file produced inside there                   [22:16]
+          <atw> I /think/ that's it, but I trip up often with gexps
+                :)
+            ,*** ng0 (~ng0@gateway/tor-sasl/ng0) has joined channel
+                #guix                                        [22:17]
+       <wigust> atw: Thank you!                              [22:19]
+#+END_EXAMPLE
+
+* Gexp
+
+  #+begin_src scheme
+    (use-modules (gnu packages base)
+                 (gnu packages elf)
+                 (guix build utils)
+                 (guix gexp)
+                 (guix store)
+                 (guix licenses))
+
+    (define store
+      (open-connection))
+
+    (run-with-store store
+      (gexp->derivation "plumber"
+                        (with-imported-modules '((guix build utils))
+                          #~(begin
+                              (use-modules (guix build utils))
+                              (copy-file #$(local-file "/home/oleg/Downloads/plumber-linux") "plumber")
+                              (invoke (string-append #$patchelf "/bin/patchelf")
+                                      "--set-interpreter" (string-append #$glibc "/lib/ld-linux-x86-64.so.2")
+                                      "plumber")
+                              (mkdir #$output)
+                              (mkdir (string-append #$output "/bin"))
+                              (copy-file "plumber" (string-append #$output "/bin/plumber"))))))
+  #+end_src
+
+* GRUB
+
+** Fix grub after "guix system reconfigure"
+
+  Installing for i386-pc platform.                                                            
+  /gnu/store/h072dgv0g63pgwry386xmgn9xc06yy3w-grub-2.04/sbin/grub-install: warning: this GPT partition label contains no BIOS Boot Partition; embedding won't be possible.
+  /gnu/store/h072dgv0g63pgwry386xmgn9xc06yy3w-grub-2.04/sbin/grub-install: warning: Embedding is not possible.  GRUB can only be installed in this setup by using blocklists.  However, blocklists are UNRELIABLE and their use is discouraged..                                           
+  /gnu/store/h072dgv0g63pgwry386xmgn9xc06yy3w-grub-2.04/sbin/grub-install: error: will not proceed with blocklists.
+
+# fdisk -l /dev/sda
+...
+/dev/sda4  37750784   37816319      65536    32M BIOS boot
+https://superuser.com/a/1170352
+
+mkfs.vfat -F32 /dev/sdXY
+
+* Guile trap (breakpoint)
+
+  #+BEGIN_SRC scheme
+    (use-modules (system vm trap-state))
+
+    (add-trap-at-procedure-call! strip-mount-point)
+  #+END_SRC
+
+* Guix additional packages
+
+  - [[https://github.com/BIMSBbioinfo/guix-bimsb-nonfree][BIMSBbioinfo/guix-bimsb-nonfree]] :: GNU Guix package definitions
+       for proprietary software, or software with unclear licenses.
+
+  - [[https://github.com/BIMSBbioinfo/guix-bimsb][BIMSBbioinfo/guix-bimsb]] :: Packages for GNU Guix that have not yet
+       or will not be submitted upstream for various reasons
+
+  - [[https://github.com/UMCUGenetics/guix-additions][UMCUGenetics/guix-additions]] :: This repository contains additional
+       packages for GNU Guix to support the software in the pipelines
+       developed at the Cuppen research group.
+
+  - [[https://github.com/gds-attic/govuk-guix][gds-attic/govuk-guix]] :: Package, service and system definitions
+       using GNU Guix for software and systems related to
+       GOV.UK. Personal project.
+
+* guix-daemon from master
+
+#+BEGIN_SRC shell
+  sudo -E ./pre-inst-env guix-daemon …
+#+END_SRC
+
+* Guix deployment
+
+  - [[https://github.com/BIMSBbioinfo/puppet-bimsb-guix][BIMSBbioinfo/puppet-bimsb-guix]] :: Puppet module for deploying Guix
+
+* TODO [[https://lists.gnu.org/archive/html/guix-devel/2015-08/msg00258.html][guix: git: Support shallow git clones if a tag is available]]
+* Guix Linux 5.3.18
+  #+begin_src diff
+    diff --git a/dotfiles/guixsd/guixsd.scm b/dotfiles/guixsd/guixsd.scm
+    index 577c56f0..f4d16290 100644
+    --- a/dotfiles/guixsd/guixsd.scm
+    +++ b/dotfiles/guixsd/guixsd.scm
+    @@ -292,20 +292,21 @@ location / {
+           "/home/oleg/src/dotfiles/guixsd/hardware/guixsd.scm"))
+ 
+     (define %system-guixsd
+    -  (let ((base-system (load %hardware-file)))
+    +  (let ((base-system (load %hardware-file))
+    +        (inferior (inferior-for-channels (list (channel
+    +                                                (name 'nonguix)
+    +                                                (url "https://gitlab.com/nonguix/nonguix")
+    +                                                (commit "b7ba152c4e5d827a1d9ab290022705d5e6675e39"))
+    +                                               (channel
+    +                                                (name 'guix)
+    +                                                (url "https://git.savannah.gnu.org/git/guix.git")
+    +                                                (commit "812b0d497e2f4bd429fb438f401a40d03a0465d4"))))))
+         (operating-system
+           (inherit base-system)
+    -      (kernel (let* ((channels (list (channel
+    -                                      (name 'nonguix)
+    -                                      (url "https://gitlab.com/nonguix/nonguix")
+    -                                      (commit "d12b4eb46db73307b04476076f072c89d4202f6c"))
+    -                                     (channel
+    -                                      (name 'guix)
+    -                                      (url "https://git.savannah.gnu.org/git/guix.git")
+    -                                      (commit "efa773f94a18b40f2c63795f364ae87dade76f60"))))
+    -                     (inferior (inferior-for-channels channels)))
+    -                (first (lookup-inferior-packages inferior "linux" "5.10.4"))))
+    -      (firmware (cons* amdgpu-firmware linux-firmware %base-firmware))
+    +      (kernel (first (lookup-inferior-packages inferior "linux" "5.3.18")))
+    +      (firmware (cons* (first (lookup-inferior-packages inferior "amdgpu-firmware" "20191022"))
+    +                       (first (lookup-inferior-packages inferior "linux-firmware" "20191022"))
+    +                       %base-firmware))
+           (kernel-arguments '("modprobe.blacklist=pcspkr,snd_pcsp"))
+           (packages %my-system-packages)
+ 
+
+  #+end_src
+
+  #+begin_src bash
+    #!/usr/bin/env bash
+
+    mapfile -t packages < <(awk '/would be upgraded/ { print $2 }' refresh.log)
+    package="$(printf "%s\n" "${packages[@]}" | fzf)"
+    ./pre-inst-env guix refresh --update "$package"
+  #+end_src
+
+  #+begin_src scheme
+    #!/run/current-system/profile/bin/guile \
+    --no-auto-compile -e (run2) -s
+    !#
+
+    ;;;; refresh --- guix refresh wrapper
+    ;;;; Copyright © 2020 Oleg Pykhalov <go.wigust@gmail.com>
+    ;;;; Released under the GNU GPLv3 or any later version.
+
+    (define-module (run2)
+      #:use-module (ice-9 rdelim)
+      #:use-module (ice-9 match)
+      #:export (main))
+
+    (define (main args)
+      (match (string-split (match (string-split (with-input-from-file "out"
+                                                  read-string)
+                                                #\newline)
+                             ((a ... last-but-one last) last-but-one))
+                           #\:)
+        ((file line column package message)
+         (pk (list file line column (string-trim package)
+                   (string-split (string-trim message) #\space))))))
+  #+end_src
+
+  #+begin_src bash
+    #!/usr/bin/env bash
+
+    if ! [ -e refresh.log ]
+    then
+        ./pre-inst-env guix refresh "$(./pre-inst-env guix maintainer)" |& tee refresh.log
+    fi
+    package="$(awk '/would be upgraded/ { print $2 }' refresh.log | fzf)"
+    version="$(./pre-inst-env guix refresh --update "$package" |& awk '/updating from version/ { print $NF }' | sed 's/\.\.\.//')"
+    mapfile -t hashes < <(./pre-inst-env guix build "$package" |& awk '/hash:/ { print $NF }')
+    if [ "${#hashes[@]}" -ne 0 ]
+    then
+        for file in gnu/packages/*.scm
+        do
+            if grep --quiet "${hashes[0]}" "$file"
+            then
+                printf 'Substitute "%s" with "%s" in "%s".\n' "${hashes[0]}" "${hashes[1]}" "$file"
+                sed --in-place "s/${hashes[0]}/${hashes[1]}/" "$file"
+                ./pre-inst-env guix build "$package"
+                git commit --message="$(printf "gnu: $package: Update to $version.\n\n* $file ($package): Update to $version.")" "$file"
+                sed --in-place "/$package/d" refresh.log
+            fi
+        done
+    fi
+#+end_src
+
+  #+begin_src scheme
+    #!/run/current-system/profile/bin/guile \
+    --no-auto-compile -e (lint-commit) -s
+    !#
+
+    (define-module (lint-commit)
+      #:use-module (ice-9 format)
+      #:use-module (ice-9 match)
+      #:use-module (ice-9 rdelim)
+      #:use-module (rx irregex)
+      #:use-module (srfi srfi-1)
+      #:export (main))
+
+    (define (match-subject subject)
+      (irregex-match '(seq (seq (or "gnu" "services") ":" space
+                                (or (seq (+ alphanumeric) ":" space "Update to" space (+ (or alphanumeric ".")))
+                                    (seq "Add" space (+ (or alphanumeric "-")))))
+                           ".")
+                     subject))
+
+    (define (format-match procedure string)
+      (if (match-subject string)
+          (format #t "[ PASS ] ~s~%" string)
+          (begin (format #t "[ FAIL ] ~s~%" string)
+                 (exit 1))))
+
+    (define (main args)
+      (define input (with-input-from-port (current-input-port) read-string))
+      (match (string-split input #\newline)
+        ((subject message ...)
+         (format-match match-subject subject))))
+  #+end_src
+
+  #+begin_src scheme
+    (display (run-with-store (open-connection) (package-file icedtea-8 #:output "jdk")))
+  #+end_src
+
+* Guix on foreign distroes
+
+- Archlinux: https://aur.archlinux.org/packages/guix/
+- Gentoo: https://packages.gentoo.org/packages/sys-apps/guix
+- Debian: from past discussion and on request from Whonix iirc it is
+  currently not possible due to Debian Packaging Standards (expected
+  package behavior) or something along the lines, see guix-devel
+  archives.
+- Fedora: https://copr.fedorainfracloud.org/coprs/lantw44/guix/
+- Slackware: https://slackbuilds.org/repository/14.2/system/guix/ is
+  on 0.12, needs an update. Any slacker up for that task?  Otherwise,
+  ping the maintainer: > Maintained by: Hunter Sezen
+
+* GuixOps
+
+- Ganeti like guixops
+  https://grnet.github.io/ganetimgr/
 
 * Guix packaging
 
@@ -1618,282 +2116,6 @@ Thanks!
                       (search-patches "perl-archive-tar-CVE-2018-12015.patch")))
    #+END_SRC
 
-* How to use sneek on Gnunet IRC channels
-
-  #+BEGIN_EXAMPLE
-    <alice> Hi Guix
-    <sneek> alice, you have N message.
-    <sneek> alice, bob says: MESSAGE
-    <alice> sneek: later tell bob MESSAGE:
-    <sneek> Will do.
-  #+END_EXAMPLE
-
-#+begin_example
-  sneek: seen wigust
-  <sneek>wigust was last seen in #guix 2 hours and 49 minutes ago, saying: hi guix.
-#+end_example
-
-* [[gnus:INBOX#87tw1zl0wy.fsf@bernoul.li][How to fix Org-mode tabs]]
-
-  #+BEGIN_SRC emacs-lisp :tangle yes
-    (when (= source-tab-width 0)
-      (setq indent-tabs-mode nil))
-  #+END_SRC
-
-* [[gnus:INBOX#CALjrZwb16Cn1ygFYUhKDWdid1dYQabB6yB0p_eFu8YYf_00pOQ@mail.gmail.com][How to use Guix profiles]]
-
-  #+BEGIN_SRC shell
-    # 1) Install conda into a profile:
-    guix package --install=conda --profile=$HOME/guix_profiles/conda
-
-    # 2) Activate the profile:
-    source $HOME/guix_profiles/conda/etc/profile
-
-    # 3) Create an environment with conda and install biopython
-    conda create --name test-env biopython
-
-    # 4) Try to activate the environment (here's where it fails)
-    source activate test-env
-  #+END_SRC
-
-* How to mark patch in Emacs
-
-  Mark the entire patch in Emacs, then invoke "M-|", and type
-
-  #+BEGIN_SRC shell
-    patch -d /the/root/directory/of/the/project -pN
-  #+END_SRC
-
-  where N should be chosen by counting the slashes that you will want
-  patch to remove before looking for files relative to that root
-  directory.  For patches produced by "git diff" etc., N is typically 1.
-
-* Thinkpad Linux Kernel config
-
-  #+BEGIN_SRC scheme
-    (kernel-arguments (list "modprobe.blacklist=pcspkr" "quiet" "rhgb"
-                            "thinkpad_acpi.fan_control=1" "i195.modeset=1"))
-  #+END_SRC
-
-* guix upgrade exlude package
-
-  #+BEGIN_SRC shell
-    guix package -u . --do-no-upgrade=libreoffice
-  #+END_SRC
-
-* check if guix corrupted
-  #+BEGIN_EXAMPLE
-    <rekado_> solene: if you want to check that the store isn’t corrupt and repair
-              it, use “sudo -E guix gc --verify=repair,contents”  [16:30]
-  #+END_EXAMPLE
-
-* Static networking service
-  #+BEGIN_SRC scheme
-    (services (cons* …
-                     (static-networking-service "enp6s4f0"
-                                                "141.80.181.40"
-                                                #:netmask "255.255.255.0"
-                                                #:gateway "141.80.181.1")
-                     (static-networking-service "enp0s8"
-                                                "192.168.0.1"
-                                                #:netmask "255.255.255.0")
-                     …
-                     %base-services))
-
-  #+END_SRC
-
-* Guix on foreign distroes
-
-- Archlinux: https://aur.archlinux.org/packages/guix/
-- Gentoo: https://packages.gentoo.org/packages/sys-apps/guix
-- Debian: from past discussion and on request from Whonix iirc it is
-  currently not possible due to Debian Packaging Standards (expected
-  package behavior) or something along the lines, see guix-devel
-  archives.
-- Fedora: https://copr.fedorainfracloud.org/coprs/lantw44/guix/
-- Slackware: https://slackbuilds.org/repository/14.2/system/guix/ is
-  on 0.12, needs an update. Any slacker up for that task?  Otherwise,
-  ping the maintainer: > Maintained by: Hunter Sezen
-
-* GuixOps
-
-- Ganeti like guixops
-  https://grnet.github.io/ganetimgr/
-
-* Static vs dynamic binding
-
-Most of the time in Guix we favor static binding: it makes sure that
-programs work out of the box, regardless of what happens to be already
-installed on your system, and that the program will behave the same on
-all systems since its behavior does not depend on external state.
-There are exceptions where we want dynamic binding, for instance for
-plugins or optional/soft dependencies.
-- [[https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=877019][Debian Bug report logs - #877019 ITP: nix -- Purely functional package manager]]
-
-* ng0 plans
-
-<ng0> upcoming (as far as I remembered the list): Services for murmurd,
-      apache, mantis, buildbot, finishing my tlsdate service, and packages for
-      mantis + buildbot. there's more I think.
-
-* TODO ERROR: ivy-bibtex not such file
-* TODO [[https://lists.gnu.org/archive/html/guix-devel/2015-08/msg00258.html][guix: git: Support shallow git clones if a tag is available]]
-* TODO (debbugs-gnu-bugs 28004)
-* TODO (debbugs-gnu-bugs 28743)
-* TODO (debbugs-gnu-bugs 28772)
-
-* Build system monad
-
-  #+begin_src scheme
-    (use-modules (guix store)
-                 (guix gexp)
-                 (guix derivations)
-                 (guix monads)
-                 (json))
-
-    (define %packer-operating-system
-      `())
-
-    (define store (open-connection))
-    (pk
-     (build-derivations
-      store
-      (list
-       (run-with-store store
-         (mlet %store-monad ((drv (text-file "packer-guix.json"
-                                             (scm->json-string %packer-operating-system))))
-           (lower-object
-            (program-file "packer-build-guix"
-                          #~(begin
-                              (system* "/home/oleg/.nix-profile/bin/packer" "build" #$drv)))))))))
-
-  #+end_src
-
-  #+BEGIN_SRC scheme
-    (use-modules (gnu)
-                 (guix store))
-
-    ;; Deriviation
-    (define d
-      (run-with-store (open-connection) (operating-system-derivation %system-magnolia-bare)))
-
-    ;; Build deriviation
-    (define s (open-connection))
-
-    (build-derivations s (list d))
-  #+END_SRC
-
-* Build from Scheme expression
-
-  #+BEGIN_SRC sh
-    guix build -e '(@@ (gnu packages commencement) glibc-utf8-locales-final)'
-  #+END_SRC
-
-* Guile trap (breakpoint)
-
-  #+BEGIN_SRC scheme
-    (use-modules (system vm trap-state))
-
-    (add-trap-at-procedure-call! strip-mount-point)
-  #+END_SRC
-
-* Stop stripping mount point if BTRFS
-  :LOGBOOK:
-  CLOCK: [2017-10-30 Mon 04:34]--[2017-10-30 Mon 04:59] =>  0:25
-  CLOCK: [2017-10-30 Mon 02:57]--[2017-10-30 Mon 03:22] =>  0:25
-  CLOCK: [2017-10-30 Mon 02:04]--[2017-10-30 Mon 02:29] =>  0:25
-  :END:
-
-* Weather
-
-#+BEGIN_SRC scheme
-  (use-modules (guix scripts substitute)
-               (guix build utils)
-               (web request)
-               (web uri)
-               (srfi srfi-1)
-               (gnutls))
-
-  (define base-url
-    (or (getenv "URL")
-       "https://mirror.hydra.gnu.org"))
-
-  (define base-uri
-    (string->uri base-url))
-
-  (define index.html
-    (build-request
-     (string->uri (string-append base-url
-                                 "/nix-cache-info"
-                                 ;; "/eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee.narinfo"
-                                 ;; "/yihvhxv3xyyvl1m2cy1lnf1lyi9h76fk.narinfo"
-                                 ))))
-
-  (define http-multiple-get
-    (@@ (guix scripts substitute) http-multiple-get))
-
-  ;; (set-log-level! 5)
-  ;; (set-log-procedure! (lambda (level message)
-  ;;                       (display message)))
-
-  (let ((requests (make-list 100000 index.html)))
-    (http-multiple-get base-uri
-                       (lambda (req resp port result)
-                         (dump-port port (%make-void-port "w"))
-                         (cons 'x result))
-                       '()
-                       requests))
-#+END_SRC
-
-* Search path directory
-#+BEGIN_SRC scheme
-  ;; If you want to match a regular file instead of a directory (the
-  ;; default), you must write:
-
-  (search-path-specification
-   (variable "DRMAA_LIBRARY_PATH")
-   (files '("lib/libdrmaa.so"))
-   (file-type 'regular))
-
-  ;; This will match all the lib/libdrmaa.so files found in the environment.
-#+END_SRC
-
-* Unzip initial RAM disk
-
-#+BEGIN_SRC shell
-  gunzip -C < INITRD | cpio -tv
-#+END_SRC
-
-* guix-daemon from master
-
-#+BEGIN_SRC shell
-  sudo -E ./pre-inst-env guix-daemon …
-#+END_SRC
-
-* doc
-
-- [[https://hal.inria.fr/hal-01580582/document][Code Staging in GNU Guix]]
-- [[http://www.nongnu.org/geiser/][Geiser]]
-- [[https://alezost.github.io/guix.el/doc.html][Emacs Guix]]
-
-* Fix sendmail_path=/usr/sbin/sendmail
-* Laptop
-1) Avoid ones with hybrid dual graphics ie intel/nvidia aka optimus
-2) Avoid anything realtek
-3) If its got fancy Dolby sound or quad speakers they wont work on Debian
-4) Always check reviews for PWM flickering on screen dimming if you
-have sensitive eyes
-* network-manager-service-type
-
-#+BEGIN_SRC scheme
-  (network-manager-service-type
-   config =>
-   (network-manager-configuration
-    (inherit config)
-    (vpn-plugins (list (specification->package+output
-			"network-manager-openvpn")))))
-#+END_SRC
-success = false; } else { //Lock texture if( !gFooTexture.lockTexture() ) { printf( "Unable to lock Foo' texture!\n" ); }
 * GuixSD custom kernel
 
   [[gnus:INBOX#877etk6xbu.fsf@fastmail.com][Email from Marius Bakke: Re: How to customize the kerne]] by [[mailto:mbakke@fastmail.com][Marius Bakke]]
@@ -1952,194 +2174,30 @@ success = false; } else { //Lock texture if( !gFooTexture.lockTexture() ) { prin
 
   [*] You can also start from `make defconfig` if you feel adventurous.
 
-* Guix deployment
+* Guix system without bootloader
 
-  - [[https://github.com/BIMSBbioinfo/puppet-bimsb-guix][BIMSBbioinfo/puppet-bimsb-guix]] :: Puppet module for deploying Guix
+‘--no-bootloader’ should definitely work for ‘reconfigure’; could you
+double-check and report a bug if it doesn’t work?
 
-* Guix additional packages
+Now, if that’s useful, we could easily define a “noop” bootloader in
+(gnu bootloader noop), along these lines:
 
-  - [[https://github.com/BIMSBbioinfo/guix-bimsb-nonfree][BIMSBbioinfo/guix-bimsb-nonfree]] :: GNU Guix package definitions
-       for proprietary software, or software with unclear licenses.
+  (define noop-bootloader
+    (bootloader
+     (name 'noop)
+     (package #f)
+     (installer #~(cons #t))
+     (configuration-file #f)
+     (configuration-file-generator #f)))
+I concur!  Actually, there’s a separate file already: the nar itself.
 
-  - [[https://github.com/BIMSBbioinfo/guix-bimsb][BIMSBbioinfo/guix-bimsb]] :: Packages for GNU Guix that have not yet
-       or will not be submitted upstream for various reasons
-
-  - [[https://github.com/UMCUGenetics/guix-additions][UMCUGenetics/guix-additions]] :: This repository contains additional
-       packages for GNU Guix to support the software in the pipelines
-       developed at the Cuppen research group.
-
-  - [[https://github.com/gds-attic/govuk-guix][gds-attic/govuk-guix]] :: Package, service and system definitions
-       using GNU Guix for software and systems related to
-       GOV.UK. Personal project.
-
-* FSF
-
-  - http://www.fsfla.org/ikiwiki/selibre/linux-libre/
-
-* How to check service configuration serialize
-
-  #+BEGIN_SRC scheme
-    (use-modules (guix derivations)
-                 (guix store))
-
-    (define-gexp-compiler (repository-cgit-configuration-compiler
-                           (configuration <repository-cgit-configuration>) system target)
-      (text-file* "test" (repository-cgit-configuration)))
-
-    (define wi-repo
-      (repository-cgit-configuration
-       (url "http//cgit.localhost/hello")))
-
-    (define wi-conf
-      ;; TODO:
-      ;; (cgit-configuration (project-list '("a/b/foo.git" "c/bar.git" "baz.git")))
-
-      (cgit-configuration))
-
-    (define (wi-build)
-      (build-derivations
-       (open-connection)
-       (list (run-with-store (open-connection) wi-conf))))
-
-    (define (wi-build-check)
-      (build-derivations
-       (open-connection)
-       (list (run-with-store (open-connection) wi-conf))
-       (build-mode check)))
-  #+END_SRC
-
-* mcron
-
-  #+BEGIN_SRC scheme
-    (define (backup-home user)
-      #~(let ((borg (string-append #$borg "/bin/borg"))
-              (home (format #f "/home/~a" #$user)))
-          (system*
-           borg "--verbose" "create"
-           "--exclude-caches"
-           "--exclude" (format #f "~a/.cache/*" home)
-           "--stats" "--list"
-           "/mnt/borg::{hostname}-{utcnow}"
-           home)
-          (system*
-           borg "--verbose" "prune"
-           "--list"
-           "--prefix" "{hostname}-"
-           "--keep-within=1w" "--keep-daily=30" "--keep-monthly=6"
-           "/mnt/borg")))
-
-    ;; test like
-    ;; ,use (guix monad-repl)
-    ;; ,enter-store-monad
-    ;; (gexp->script "test" (backup-home "alex"))
-    ;; ;; and note what the derivation produces. That's the script to run.
-    ;; (mlet %store-monad ((script (gexp->script "test" (backup-home "alex"))))
-    ;;       (built-derivations (list script)))
-    ;; then, run the script to do a manual backup.
-
-    (define (backup-home-job user)
-      #~(job '(next-hour '(18))
-             #$(backup-home user)
-             #:user #$user))
-
-    ;; in your (services ...)
-    (mcron-service (list (backup-home-job "your-user-home-dir-name")))
-  #+END_SRC
-
-* Reproducibility
+  wget -q -O - https://ci.guix.gnu.org/nar/lzip/1gyi4i5lbpr7apm74p08dwy11fhzh4j7-sed-4.7 \
+     | lzip -d | guix archive -t
+* guix upgrade exlude package
 
   #+BEGIN_SRC shell
-    wget -q -O - https://mirror.hydra.gnu.org/guix/nar/gzip/7drfxfiwif436bw908iy6jm3myrinn4m-xfce4-session-4.12.0 | gunzip -c | guix archive -x xfsession1
-    wget -q -O - https://berlin.guixsd.org/nar/gzip/7drfxfiwif436bw908iy6jm3myrinn4m-xfce4-session-4.12.0 | gunzip | guix archive -x xfsession2
-    diff -ru --no-dereference xfsession[12]
-    diffoscope xfsession[12]/share/icons/hicolor/icon-theme.cache
+    guix package -u . --do-no-upgrade=libreoffice
   #+END_SRC
-
-* Gexp
-#+BEGIN_EXAMPLE
-       <wigust> Hello Guix, How to take a look onto a file produced
-                by copy-file in Gexp?
-                E.g. https://git.savannah.gnu.org/cgit/guix.git/tree/gnu/services/messaging.scm?h=master#n662
-                                                             [22:07]
-       <wigust> Could I get to it with `guix gc`?            [22:09]
-       <wigust> If I build a system with prosody service.
-            ,*** ng0 (~ng0@gateway/tor-sasl/ng0) has quit: Quit:
-                Alexa, when is the end of world?             [22:15]
-          <atw> wigust: I believe you'll want to use
-                gexp->derivation, then "run" the derivation. Ludo
-                gave me some help with this here:
-                https://lists.gnu.org/archive/html/help-guix/2018-01/msg00058.html
-          <atw> Make a note of the output directory, then find the
-                file produced inside there                   [22:16]
-          <atw> I /think/ that's it, but I trip up often with gexps
-                :)
-            ,*** ng0 (~ng0@gateway/tor-sasl/ng0) has joined channel
-                #guix                                        [22:17]
-       <wigust> atw: Thank you!                              [22:19]
-#+END_EXAMPLE
-
-* Videos
-  - http://audio-video.gnu.org/video/ghm2013/Daimrod-Recent_work_in_the_Emacs_XWidget_branch_.webm
-  - http://audio-video.gnu.org/video/ghm2013/David_Bremner-Notmuch_mail_.webm
-  - http://audio-video.gnu.org/video/ghm2013/Jose_Marchesi-GNU_recutils_.webm
-  - http://audio-video.gnu.org/video/ghm2013/Ludovic_Courtes-GNU_Guix_the_computing_freedom_deployment_tool_.webm
-  - http://audio-video.gnu.org/video/ghm2013/Samuel_Thibault-Hurd_recent_developments_.webm
-  - https://archive.fosdem.org/2014/schedule/event/gnuguix/
-  - https://archive.fosdem.org/2016/schedule/event/deployments_with_gnu_guix/
-  - https://audio-video.gnu.org/video/ghm2013/Daimrod-Recent_work_in_the_Emacs_XWidget_branch_.webm
-  - https://audio-video.gnu.org/video/ghm2013/David_Bremner-Notmuch_mail_.webm
-  - https://audio-video.gnu.org/video/ghm2013/Jose_Marchesi-GNU_recutils_.webm
-  - https://audio-video.gnu.org/video/ghm2013/Ludovic_Courtes-GNU_Guix_the_computing_freedom_deployment_tool_.webm
-  - https://audio-video.gnu.org/video/ghm2013/Samuel_Thibault-Hurd_recent_developments_.webm
-  - https://audio-video.gnu.org/video/ghm2017/2017-08--courtes--guix--ghm.webm
-  - https://audio-video.gnu.org/video/ghm2017/2017-08--sassmannshausen--potluck--ghm.webm
-  - https://audio-video.gnu.org/video/misc/2016-01__GNU_Guix__Gentle_Introduction_to_Functional_Package_Management.webm
-  - https://audio-video.gnu.org/video/misc/2016-01__GNU_Guix__Your_Distro_is_a_Scheme_Library.webm
-  - https://www.gnu.org/ghm/2013/paris/v2/sylvain/output.webm
-  - https://www.gnu.org/software/guix/blog/tags/talks/
-
-  - https://www.cloudbees.com/videos/purely-functional-ci-cd-pipeline-using-jenkins-with-guix
-  - https://xana.lepiller.eu/guix-days-2022/guix-days-2022-guix-aws-lambda.mkv
-
-* Dualboot
-
-  https://lists.gnu.org/archive/html/help-guix/2016-03/msg00083.html
-
-  Running all machines, I dunno.  I do dual-boot Debian and GuixSD
-  with them sharing the same user profile and store.  On Debian, I
-  bind-mount some directories from GuixSD's root partition.  From
-  /etc/fstab:
-
-  #+BEGIN_EXAMPLE
-    UUID=d9cc11f0-e548-4526-a541-4f631a10b73c /mnt/guix/      ext4    defaults
-      0       2
-    /mnt/guix/var/guix    /var/guix           none            defaults,bind
-      0       0
-    /mnt/guix/gnu    /gnu                     none            defaults,bind
-      0       0
-  #+END_EXAMPLE
-
-  Then /home/ is shared (and luks encrypted) on both distros.  It
-  works fine.
-
-  If you want to do "same profile and store across all things" Ricardo
-  Wurmus does some wild things using NFS.
-
-* Importers
-  - https://gitlab.com/htgoebel/guix-import-debian
-
-* Hydra
-  - https://hydra.gnu.org/status
-  - https://hydra.gnu.org/all
-  - https://hydra.gnu.org/queue
-
-* Pitfalls
-
-  - Unbound variable: package-version
-    https://gnunet.org/bot/log/guix/2016-02-16
-
-* Web resources
-  - https://libreplanet.org/wiki/Group:Guix
 
 * Hacking
   #+BEGIN_SRC scheme
@@ -2198,337 +2256,226 @@ success = false; } else { //Lock texture if( !gFooTexture.lockTexture() ) { prin
   (call-with-values (lambda () (build-derivations %connection (list (run-with-store %connection (let ((%test-os-bootloader (operating-system-bootloader %test-os))) ((@@ (gnu bootloader grub) grub-configuration-file) %test-os-bootloader (bootloader-configuration-menu-entries %test-os-bootloader) #:system "x86_64-linux" #:old-entries '())))))) (lambda (a) a))
 #+END_SRC
 
-* TOBLOG
+* Haskell
 
-#+BEGIN_SRC markdown
-  # Preparation
+ghc -o ~/.xmonad/xmonad-x86_64-linux \
+-package-db $(guix build ghc-xmonad-contrib | grep -v static)/lib/ghc-8.6.5/ghc-xmonad-contrib-0.16.conf.d/ \
+-package-db $(guix build ghc-dbus | grep -v static)/lib/ghc-8.6.5/ghc-dbus-1.2.7.conf.d/ \
+-package-db $GUIX_PROFILE/lib/ghc-8.6.5/package.conf.d/ \
+-dynamic xmonad.hs
 
-  If you have a [[https://git.savannah.gnu.org/cgit/guix.git]](Guix Git
-  repository) already, you can create a new [Git
-  Worktree](https://git-scm.com/docs/git-worktree).
+* How to check service configuration serialize
 
+  #+BEGIN_SRC scheme
+    (use-modules (guix derivations)
+                 (guix store))
 
+    (define-gexp-compiler (repository-cgit-configuration-compiler
+                           (configuration <repository-cgit-configuration>) system target)
+      (text-file* "test" (repository-cgit-configuration)))
 
-  [More info](https://www.gnu.org/software/guix/manual/html_node/Building-from-Git.html#Building-from-Git)
+    (define wi-repo
+      (repository-cgit-configuration
+       (url "http//cgit.localhost/hello")))
 
-#+END_SRC
+    (define wi-conf
+      ;; TODO:
+      ;; (cgit-configuration (project-list '("a/b/foo.git" "c/bar.git" "baz.git")))
 
-* Dovecot
+      (cgit-configuration))
+
+    (define (wi-build)
+      (build-derivations
+       (open-connection)
+       (list (run-with-store (open-connection) wi-conf))))
+
+    (define (wi-build-check)
+      (build-derivations
+       (open-connection)
+       (list (run-with-store (open-connection) wi-conf))
+       (build-mode check)))
+  #+END_SRC
+
+* [[gnus:INBOX#87tw1zl0wy.fsf@bernoul.li][How to fix Org-mode tabs]]
+
+  #+BEGIN_SRC emacs-lisp :tangle yes
+    (when (= source-tab-width 0)
+      (setq indent-tabs-mode nil))
+  #+END_SRC
+
+* How to mark patch in Emacs
+
+  Mark the entire patch in Emacs, then invoke "M-|", and type
+
+  #+BEGIN_SRC shell
+    patch -d /the/root/directory/of/the/project -pN
+  #+END_SRC
+
+  where N should be chosen by counting the slashes that you will want
+  patch to remove before looking for files relative to that root
+  directory.  For patches produced by "git diff" etc., N is typically 1.
+
+* [[gnus:INBOX#CALjrZwb16Cn1ygFYUhKDWdid1dYQabB6yB0p_eFu8YYf_00pOQ@mail.gmail.com][How to use Guix profiles]]
+
+  #+BEGIN_SRC shell
+    # 1) Install conda into a profile:
+    guix package --install=conda --profile=$HOME/guix_profiles/conda
+
+    # 2) Activate the profile:
+    source $HOME/guix_profiles/conda/etc/profile
+
+    # 3) Create an environment with conda and install biopython
+    conda create --name test-env biopython
+
+    # 4) Try to activate the environment (here's where it fails)
+    source activate test-env
+  #+END_SRC
+
+* How to use sneek on Gnunet IRC channels
+
   #+BEGIN_EXAMPLE
-    doveconf: Warning: /etc/dovecot/dovecot.conf line 198: Global setting auth_socket_path won't change the setting inside an earlier filter at /etc/dovecot/dovecot.conf line 4 (if this is intentional, avoid this warning by moving the global setting before /etc/dovecot/dovecot.conf line 4)
-    doveconf: Warning: /etc/dovecot/dovecot.conf line 200: Global setting mail_plugins won't change the setting inside an earlier filter at /etc/dovecot/dovecot.conf line 5 (if this is intentional, avoid this warning by moving the global setting before /etc/dovecot/dovecot.conf line 5)
-    Error: net_connect_unix(/var/run/dovecot//stats-writer) failed: Permission denied
+    <alice> Hi Guix
+    <sneek> alice, you have N message.
+    <sneek> alice, bob says: MESSAGE
+    <alice> sneek: later tell bob MESSAGE:
+    <sneek> Will do.
   #+END_EXAMPLE
 
-* Tests
-#+begin_src scheme
-  (test-assert "foo"
-    (marionette-eval
-     '(begin
-        (use-modules (ice-9 rdelim)
-                     (ice-9 popen))
-        (let* ((port   (open-pipe "/run/current-system/profile/bin/cat /tmp/out.txt; /run/current-system/profile/bin/ls -la /var/guix/profiles/per-user /var/guix/profiles/per-user/alice /home/alice /home/alice/test /root"
-                                  OPEN_READ))
-               (output (read-string port)))
-          (close-port port)
-          (pk (string-trim-right output #\newline))))
-     marionette))
-#+end_src
+#+begin_example
+  sneek: seen wigust
+  <sneek>wigust was last seen in #guix 2 hours and 49 minutes ago, saying: hi guix.
+#+end_example
 
-* Misc
+* Hydra
+  - https://hydra.gnu.org/status
+  - https://hydra.gnu.org/all
+  - https://hydra.gnu.org/queue
 
-  - Latest Emacs: https://lists.gnu.org/archive/html/help-guix/2018-04/msg00099.html
+* Importers
+  - https://gitlab.com/htgoebel/guix-import-debian
 
-* Reproducibility
-
-** mescc
-
-  #+BEGIN_EXAMPLE
-    <OriansJ`> well wigust; janneke  is working on getting mescc
-               to build a self-hosting gcc-2.95.3. I'm working on
-               reducing the binary seed we are currently using for
-               mescc-tools and rain1 thanks for that tcc testing
-  #+END_EXAMPLE
-  
-  https://gitlab.com/janneke/mes
-
-** Misc
-
-*** guix environment emacs
-    #+begin_src scheme
-      #!/run/current-system/profile/bin/guile \
-      --no-auto-compile -e (br1-mr14.intr) -s
-      !#
-
-      (define-module (br1-mr14.intr)
-        #:export (main))
-
-      (define (main args)
-        (system* "guix" "environment" "--pure" "--ad-hoc" "emacs" "emacs-vterm" "coreutils" "openssh" "--"
-                 "env" "GTK_THEME=Adwaita:dark" "emacs" "--debug-init" "--no-init-file" "--vertical-scroll-bars"
-                 (string-append "--eval="
-                                (format #f "~s"
-                                        '(progn (load-theme 'manoj-dark)
-                                                (global-prettify-symbols-mode)
-                                                (setq prettify-symbols-unprettify-at-point 'right-edge)
-                                                (setq confirm-kill-processes nil)
-                                                (load (expand-file-name "~/.emacs.d/modules/term.el"))
-                                                (vterm)
-                                                (vterm-send-string "ssh br1-mr14.intr")
-                                                (vterm-send-return))))))
-    #+end_src
-
-*** 
-  - [[https://bootstrapping.miraheze.org/wiki/Investigate][ideas we haven't yet explored]]
-  - https://cwiki.apache.org/confluence/pages/viewpage.action?pageId=74682318
-  - [2018-09-10 Mon 18:54] [[gnus:INBOX#87pnxqkbmg.fsf@gnu.org][Email from Ludovic Courtès: hpcguix-web, channels, and inferiors]] by [[mailto:ludovic.courtes@inria.fr][Ludovic Courtès]]
-
-- 36162 remote-eval
-- Guix CI test
-
-#+BEGIN_EXAMPLE
-  $ ./pre-inst-env guile
-  GNU Guile 2.2.5
-  Copyright (C) 1995-2019 Free Software Foundation, Inc.
-
-  Guile comes with ABSOLUTELY NO WARRANTY; for details type `,show w'.
-  This program is free software, and you are welcome to redistribute it
-  under certain conditions; type `,show c' for details.
-
-  Enter `,help' for help.
-  scheme@(guile-user)> ,use(guix store)
-  scheme@(guile-user)> (use-modules (gnu ci) (ice-9 match))
-  scheme@(guile-user)> (define store (open-connection))
-  scheme@(guile-user)> (define jobs  (hydra-jobs store '((systems "x86_64-linux" "i686-linux"))))
-  evaluating for 'x86_64-linux' (heap size: 35.0 MiB)...
-  random seed for tests: 1562154761
-  evaluating for 'i686-linux' (heap size: 467.0 MiB)...
-#+END_EXAMPLE
-
-- Build Guix documentation
-  : guix build -f doc/build.scm
-  
-  : GUIX_WEB_SITE_URL="//guix.gnu.org/" ./pre-inst-env  guix build -f doc/build.scm
-  : rsync -rzvha --copy-links /gnu/store/…-guix-manual/ …/manual/
-
-- [bug#36469] [PATCH 0/2] 'guix pack' records environment variables
-  : guix pack -f docker guile guile-json --entry-point=bin/guile
-  : docker run THE-IMAGE
-
-- Message-ID: <874l4254kv.fsf@gnu.org>
-#+BEGIN_SRC scheme
-  (define update-guix-hpc-web
-    (build-program "https://gitlab.inria.fr/guix-hpc/website.git"
-                   "/srv/guix-hpc"))
-
-  (operating-system
-    ;; …
-    (services (cons (simple-service 'update-guix-hpc-web
-                                    mcron-service-type
-                                    (list #~(job '(next-minute '(0))
-                                                 #$update-guix-hpc-web)))
-                    …)))
-#+END_SRC
-
-Inside =$ guix repl=:
-#+BEGIN_SRC scheme
-  (use-modules (guix channels) (guix describe))
-  (profile-channels (current-profile))
-#+END_SRC
-
-Will produce a <channel> record:
-#+BEGIN_EXAMPLE
-  $1 = (#<<channel> name: guix
-                    url: "https://git.savannah.gnu.org/git/guix.git"
-                    branch: "master" commit: "178f1d1f75a8d512b517f474f63da507beaebd49"
-                    location: ((line . 549) (column . 19) (filename . "guix/channels.scm"))>)
-#+END_EXAMPLE
-
+* Iptables
 
 #+BEGIN_SRC scheme
-  (for-each (lambda (file)
-              (rename-file file (string-append (dirname file) "/..")))
-            (find-files themes))
+  (define-module (iptables ru)
+    #:use-module (guix packages)
+    #:use-module (guix gexp)
+    #:use-module (guix monads)
+    #:use-module (guix store)
+    #:use-module (gnu packages)
+    #:use-module (gnu packages linux)
+    #:use-module (guix utils)
+    #:use-module (srfi srfi-1)
+    #:use-module (ice-9 match))
+
+  ;; Rules to throttle HTTP connection redirections.  Taken from
+  ;; <https://www.opennet.ru/tips/2999_iptables_block_tor.shtml>.
+
+  (define %iptables-rst
+    "-A INPUT -p tcp --sport 443 --tcp-flags RST RST -j DROP")
+
+  (define %iptables-warning
+    "-A INPUT -p tcp --sport 80 -m string --string \"Location: http://warning.rt.ru\" --algo bm -j DROP")
+
+  (define %iptables-promo
+    "-A INPUT -p tcp --sport 80 -m string --string \"Location: http://promo.nw.rt.ru\" --algo bm -j DROP")
 #+END_SRC
 
-#+BEGIN_SRC scheme
-  (let ((device-number (lambda (major minor)
-                         (+ (* major 256) minor))))
-    (mknod "/dev/tty" 'char-special #o600
-           (device-number 5 0))
-    (chmod "/dev/tty" #o666))
-#+END_SRC
+* Jami
 
-patchelf ld-linux-x86-64.so.2
-https://nixos.org/patchelf.html
-#+BEGIN_SRC scheme
-  (invoke "patchelf"
-          "--set-interpreter"
-          (string-append (assoc-ref %build-inputs "glibc") "/lib/ld-linux-x86-64.so.2")
-          file-name)
-#+END_SRC
-* Guix system without bootloader
+Message-ID: <87ee7be7ty.fsf@gmail.com>
 
-‘--no-bootloader’ should definitely work for ‘reconfigure’; could you
-double-check and report a bug if it doesn’t work?
+Hello Guix,
 
-Now, if that’s useful, we could easily define a “noop” bootloader in
-(gnu bootloader noop), along these lines:
+Disclaimer: my employer is Savoir-faire Linux, which oversees the
+development of Jami.
 
-  (define noop-bootloader
-    (bootloader
-     (name 'noop)
-     (package #f)
-     (installer #~(cons #t))
-     (configuration-file #f)
-     (configuration-file-generator #f)))
-I concur!  Actually, there’s a separate file already: the nar itself.
+For a while, I've toyed with the idea that we could leverage Jami for
+our video-conference needs, and contributed a jami-service-type a few
+months ago to ease doing so [0].
 
-  wget -q -O - https://ci.guix.gnu.org/nar/lzip/1gyi4i5lbpr7apm74p08dwy11fhzh4j7-sed-4.7 \
-     | lzip -d | guix archive -t
-* fonts
+A service is not strictly needed to setup a video-conferencing server
+(later referred as a "rendezvous point") with Jami [1], it increases
+availability and can be used without a normal user session.  It also
+provides some isolation from the main system since it runs in a separate
+namespace (container), at least on Guix System.
 
-From: Pierre Neidhardt <mail@ambrevar.xyz>
-Subject: Re: How to use foreign-distro fonts without symlink hack?
-To: "Jorge P. de Morais Neto" <jorge+list@disroot.org>, help-guix@gnu.org
-Date: Sun, 05 Jan 2020 19:34:24 +0100 (22 minutes, 15 seconds ago)
-Message-ID: <87tv59ycpb.fsf@ambrevar.xyz>
+The main challenges for a decent experience with the Jami rendezvous
+point feature is its resource requirements; as the number of
+participants grow, so does the required amount of network bandwidth and
+CPU power.
 
-Hi Jorge!
+As some kind of technology preview, I'd like to offer a freely available
+Jami rendezvous point.  Using either the jami-gnome or jami-qt client
+available in Guix, you can connect to it by searching for the
+'rdv-jami-guix' contact and initiating a call.  Participants' audio and
+video streams will automatically be mixed and streamed by the server.
 
-jorge+list@disroot.org (Jorge P. de Morais Neto) writes:
+On a Guix System, installing it to your user profile should suffice.  On
+a foreign distribution, you'll have to resort to a more complicated
+launch procedure, thanks to D-Bus configuration [2].  Something like this
+should work:
 
-> 1. Could this symlink cause problems for Debian applications?
+$ guix shell jami-gnome dbus glib gtk+ openssl nss-certs \
+    -- dbus-run-session jami-gnome
 
-Should be fine.
+I hope it proves useful in fostering more live collaboration in the
+community!  Extra rendezvous points could also be deployed if needed.
+If the experience is successful we could seek a better place to host
+such service for the community (where it could be managed by the
+collective of Guix sysadmins rather than myself for example).
 
-> 2. Why does not Guix `fc-cache' look in `/usr/share/fonts'?
+Happy hacking,
 
-Because Guix does not know about files outside the store or the home
-directory.  This is by design.
+Maxim
 
-Another way to change this behaviour is to add /usr/share/fonts to
-~/.config/fontconfig/fonts.conf:
+[0]  https://git.savannah.gnu.org/cgit/guix.git/commit/?id=69dcc24c9f0cdfea674eb690e7755d26a25ced2b
+[1]  https://jami.net/help/#answer14
+[2]  https://issues.guix.gnu.org/48538
 
-<?xml version="1.0"?>
-<!DOCTYPE fontconfig SYSTEM "fonts.dtd">
-<!-- /etc/fonts/fonts.conf file to configure system font access -->
-<fontconfig>
-<dir>/usr/share/fonts</dir>
-</fontconfig>
+* Laptop
+1) Avoid ones with hybrid dual graphics ie intel/nvidia aka optimus
+2) Avoid anything realtek
+3) If its got fancy Dolby sound or quad speakers they wont work on Debian
+4) Always check reviews for PWM flickering on screen dimming if you
+have sensitive eyes
+* mcron
 
-Hope this helps! :)
+  #+BEGIN_SRC scheme
+    (define (backup-home user)
+      #~(let ((borg (string-append #$borg "/bin/borg"))
+              (home (format #f "/home/~a" #$user)))
+          (system*
+           borg "--verbose" "create"
+           "--exclude-caches"
+           "--exclude" (format #f "~a/.cache/*" home)
+           "--stats" "--list"
+           "/mnt/borg::{hostname}-{utcnow}"
+           home)
+          (system*
+           borg "--verbose" "prune"
+           "--list"
+           "--prefix" "{hostname}-"
+           "--keep-within=1w" "--keep-daily=30" "--keep-monthly=6"
+           "/mnt/borg")))
 
--- 
-Pierre Neidhardt
-https://ambrevar.xyz/
+    ;; test like
+    ;; ,use (guix monad-repl)
+    ;; ,enter-store-monad
+    ;; (gexp->script "test" (backup-home "alex"))
+    ;; ;; and note what the derivation produces. That's the script to run.
+    ;; (mlet %store-monad ((script (gexp->script "test" (backup-home "alex"))))
+    ;;       (built-derivations (list script)))
+    ;; then, run the script to do a manual backup.
 
-* Video
+    (define (backup-home-job user)
+      #~(job '(next-hour '(18))
+             #$(backup-home user)
+             #:user #$user))
 
-Here’s the script I used to make a QEMU animation of the installation
-process: it grabs screenshots at regular intervals through QEMU.
-
-You can then assemble them to form an animated GIF with:
-
-  : convert -loop 0 -delay 20 /tmp/qemu-movie-0*ppm /tmp/install.gif
-
-The GIF can be compressed with:
-
-  : mogrify -layers optimize-frame /tmp/install.gif
-
-On IRC, Ricardo came up with this command to produce the video at
-<https://guix.gnu.org/guix-videos/guix-system-install-1.1.0.webm> (with
-a fade-in, proper frame rate, etc.):
-
-#+begin_src bash
-  ffmpeg -framerate 30 -pattern_type glob -i \
-         'qemu-guix-install.selected/qemu-movie-*.ppm' -c:v libvpx-vp9 -vsync \
-         cfr -crf 31 -pix_fmt yuv420p -b:v 0 -filter_complex \
-         "setpts=5*PTS,loop=loop=60:size=1:start=0,fade=t=in:st=0:n=60" \
-         out3.webm
-#+end_src
-
-Ludo’.
-
-#+begin_src scheme
-  ;; Copyright © 2020 Ludovic Courtès <ludo@gnu.org>
-  ;; Released under the GNU General Public License, version 3 or later.
-
-  (use-modules (ice-9 match)
-               (gnu system vm)
-               (gnu system install)
-               (guix)
-               (guix ui)
-               (gnu packages virtualization))
-
-
-  (define O_CLOEXEC                                 ;missing in Guile 3.0.2
-    #o02000000)
-
-  (define wait-for-monitor-prompt
-    (@@ (gnu build marionette) wait-for-monitor-prompt))
-
-  (define (spawn command)
-    (match (primitive-fork)
-      (0   (dynamic-wind
-             (const #t)
-             (lambda ()
-               (apply execl (car command) command))
-             (lambda ()
-               (primitive-_exit 42))))
-      (pid pid)))
-
-  (define (shoot-movie)
-    (mlet* %store-monad ((image (system-disk-image installation-os
-                                                   #:disk-image-size 'guess))
-                         (qemu  (lower-object qemu))
-                         (_     (built-derivations (list qemu image))))
-      (define disk
-        (begin
-          (system* (string-append (derivation->output-path qemu)
-                                  "/bin/qemu-img")
-                   "create" "-f" "qcow2" "/tmp/disk.img" "2G")
-          "/tmp/disk.img"))
-
-      (define command
-        (list (string-append (derivation->output-path qemu)
-                             "/bin/qemu-system-x86_64")
-              "-enable-kvm" "-m" "512"
-              "-drive"
-              (string-append "file="
-                             (pk (derivation->output-path image))
-                             ",if=virtio,cache=writeback,readonly")
-              "-monitor" "unix:/tmp/monitor"
-              "-drive" "file=/tmp/disk.img,if=virtio"
-              "-snapshot"))
-
-      (define monitor
-        (socket AF_UNIX SOCK_STREAM 0))
-
-      (bind monitor AF_UNIX "/tmp/monitor")
-      (listen monitor 1)
-      (fcntl monitor F_SETFL
-             (logior O_CLOEXEC (fcntl monitor F_GETFL)))
-
-      (let ((pid (spawn command)))
-        (match (accept monitor)
-          ((sock . _)
-           (wait-for-monitor-prompt sock #:quiet? #f)
-           (let loop ((n 0))
-             (format sock "screendump /tmp/qemu-movie-~4,48d.ppm~%" n)
-             (force-output sock)
-             (wait-for-monitor-prompt sock #:quiet? #f)
-             (usleep 200000)
-             (loop (+ 1 n))))))))
-
-  (false-if-exception (delete-file "/tmp/monitor"))
-
-  (with-build-handler (build-notifier)
-    (with-store store
-      (run-with-store store (shoot-movie))))
-#+end_src
-
-- [[https://10years.guix.gnu.org/program/][Ten Years of Guix — Program]]
+    ;; in your (services ...)
+    (mcron-service (list (backup-home-job "your-user-home-dir-name")))
+  #+END_SRC
 
 * Memory
 
@@ -2691,77 +2638,31 @@ source code location?
 
 Ludo’.
 
-* Columns
+* Misc
 
+  - Latest Emacs: https://lists.gnu.org/archive/html/help-guix/2018-04/msg00099.html
 
-Hello!
+* network-manager-service-type
 
-Jan Nieuwenhuizen <janneke@gnu.org> skribis:
+#+BEGIN_SRC scheme
+  (network-manager-service-type
+   config =>
+   (network-manager-configuration
+    (inherit config)
+    (vpn-plugins (list (specification->package+output
+			"network-manager-openvpn")))))
+#+END_SRC
+success = false; } else { //Lock texture if( !gFooTexture.lockTexture() ) { printf( "Unable to lock Foo' texture!\n" ); }
+* ng0 plans
 
-> In procedure lstat: No such file or directory: "/tmp/guix-build-guix-1.0.1-18.11fc384.drv-0/source/gnu/../gnu/installer/~^m\x18 "
+<ng0> upcoming (as far as I remembered the list): Services for murmurd,
+      apache, mantis, buildbot, finishing my tlsdate service, and packages for
+      mantis + buildbot. there's more I think.
 
-This one is funny:
+* Pitfalls
 
-$ (unset GUILE_LOAD_COMPILED_PATH; COLUMNS=200 XDG_CACHE_HOME=/nowhere guild compile --target=i586-pc-gnu -L . gnu/ci.scm -o foo.go)
-;;; note: auto-compilation is enabled, set GUILE_AUTO_COMPILE=0
-;;;       or pass the --no-auto-compile argument to disable.
-;;; compiling /home/ludo/.guix-profile/bin/guild
-;;; WARNING: compilation of /home/ludo/.guix-profile/bin/guild failed:
-;;; failed to create path for auto-compiled file "/home/ludo/.guix-profile/bin/guild"
-WARNING: Use of `load' in declarative module (guix ui).  Add #:declarative? #f to your define-module invocation.
-WARNING: (guix build emacs-build-system): imported module (guix build utils) overrides core binding `delete'
-WARNING: Use of `load' in declarative module (gnu system install).  Add #:declarative? #f to your define-module invocation.
-Backtrace:
-In ice-9/boot-9.scm:
-  3297:17 19 (resolve-interface (gnu system install) #:select _ #:hide _ #:prefix _ #:renamer _ #:version _)
-In ice-9/threads.scm:
-    390:8 18 (_ _)
-In ice-9/boot-9.scm:
-  3223:13 17 (_)
-In ice-9/threads.scm:
-    390:8 16 (_ _)
-In ice-9/boot-9.scm:
-  3507:20 15 (_)
-   2806:4 14 (save-module-excursion _)
-  3527:26 13 (_)
-In unknown file:
-          12 (primitive-load-path "gnu/system/install" #<procedure 7fb03993e6e0 at ice-9/boot-9.scm:3514:37 ()>)
-In ice-9/eval.scm:
-   626:19 11 (_ #<directory (gnu system install) 7fb03817caa0>)
-   173:47 10 (_ #(#(#<directory (gnu system install) 7fb03817caa0> #<<plain-file> name: "motd" content: "\n\x1b[1;37mWelcome to the installation of GNU Guix!\x1b[0m\n\n\x1b[2mUsing this shell…>) …))
-   196:43  9 (_ #(#(#<directory (gnu system install) 7fb03817caa0> #<<plain-file> name: "motd" content: "\n\x1b[1;37mWelcome to the installation of GNU Guix!\x1b[0m\n\n\x1b[2mUsing this shell…>) …))
-   293:34  8 (_ #(#(#(#<directory (gnu system install) 7fb03817caa0> #<<plain-file> name: "motd" content: "\n\x1b[1;37mWelcome to the installation of GNU Guix!\x1b[0m\n\n\x1b[2mUsing this …>) …) #))
-    619:8  7 (_ #(#(#(#<directory (gnu installer) 7fb03abbfe60>)) #<variable 7fb03f5d5110 value: #<gexp (begin (bindtextdomain "guix" (string-append #<gexp-input #<package guix@1.1.0 gnu/packag…> …))
-   626:19  6 (_ #(#(#(#<directory (gnu installer) 7fb03abbfe60>)) #<variable 7fb03f5d5110 value: #<gexp (begin (bindtextdomain "guix" (string-append #<gexp-input #<package guix@1.1.0 gnu/packag…> …))
-    159:9  5 (_ #(#(#(#<directory (guix discovery) 7fb04977f320>) "/home/ludo/src/guix/gnu/.." "gnu/installer") 26))
-In srfi/srfi-1.scm:
-   495:18  4 (fold-right #<procedure 7fb03f077e40 at ice-9/eval.scm:336:13 (a b)> () _ . _)
-In ice-9/eval.scm:
-   293:34  3 (_ #(#(#(#(#(#(#(#<directory (guix discovery) 7fb04977f320> ("ރl^ " (type . unknown) (inode . 17571939)) "/home/ludo/src/guix/gnu/../gnu/installer" #<variable 7fb03…> …)) …) …) …) …) …))
-    155:9  2 (_ #(#(#(#(#<directory (guix discovery) 7fb04977f320>) "/home/ludo/src/guix/gnu/../gnu/installer/ރl^ " ((type . unknown) (inode . 17571939))) unknown) #<procedure failure ()>))
-In unknown file:
-           1 (lstat "/home/ludo/src/guix/gnu/../gnu/installer/ރl^ ")
-In ice-9/boot-9.scm:
-  1669:16  0 (raise-exception _ #:continuable? _)
-
-ice-9/boot-9.scm:1669:16: In procedure raise-exception:
-In procedure lstat: Dosiero aŭ dosierujo ne ekzistas: "/home/ludo/src/guix/gnu/../gnu/installer/ރl^ "
-
-(A good opportunity to learn about THAANA LETTER RAA!
-<https://en.wikipedia.org/wiki/Thaana#Alphabet>)
-
-Here ‘scandir*’ from (guix build syscalls) is being interpreted and
-presumably it gets all the struct offsets wrong (32-bit instead of
-64-bit I guess), hence the funny file name.  (‘scandir*’ is called from
-‘scheme-modules*’ in (gnu installer), itself from the
-‘installer-program’ call in (gnu system install).)
-
-This bit is fixed in 82d8959e5d137b2061a68878d78a8f74a238ac44.
-
-To be continued…
-
-Thank you,
-Ludo’.
+  - Unbound variable: package-version
+    https://gnunet.org/bot/log/guix/2016-02-16
 
 * Pulseaudio
 
@@ -2780,16 +2681,328 @@ Sounds reasonable.  Users who wish to control pulseaudio outside of the
 configuration system can just exclude the service, or unset PULSE_CONFIG
 and PULSE_CLIENT_CONFIG in their profile.
 
-* Haskell
+* QEMU
 
-ghc -o ~/.xmonad/xmonad-x86_64-linux \
--package-db $(guix build ghc-xmonad-contrib | grep -v static)/lib/ghc-8.6.5/ghc-xmonad-contrib-0.16.conf.d/ \
--package-db $(guix build ghc-dbus | grep -v static)/lib/ghc-8.6.5/ghc-dbus-1.2.7.conf.d/ \
--package-db $GUIX_PROFILE/lib/ghc-8.6.5/package.conf.d/ \
--dynamic xmonad.hs
+#+BEGIN_SRC diff
+  diff --git a/gnu/system/examples/vm-image.tmpl b/gnu/system/examples/vm-image.tmpl
+  index bcb2ba614c..5db38911a1 100644
+  --- a/gnu/system/examples/vm-image.tmpl
+  +++ b/gnu/system/examples/vm-image.tmpl
+  @@ -41,10 +41,15 @@ accounts.\x1b[0m
+                  (bootloader grub-bootloader)
+                  (target "/dev/vda")
+                  (terminal-outputs '(console))))
+  -  (file-systems (cons (file-system
+  -                        (mount-point "/")
+  -                        (device "/dev/vda1")
+  -                        (type "ext4"))
+  +  (file-systems (append (list (file-system
+  +                                (mount-point "/")
+  +                                (device "/dev/vda1")
+  +                                (type "ext4"))
+  +                              (file-system
+  +                                (mount-point "/mnt")
+  +                                (device "TAG_ssh")
+  +                                (type "9p")
+  +                                (options "trans=virtio")))
+                         %base-file-systems))
+ 
+     (users (cons (user-account
+  @@ -78,7 +83,10 @@ root ALL=(ALL) ALL
+                                (keyboard-layout keyboard-layout)))))
+ 
+                    ;; Uncomment the line below to add an SSH server.
+  -                 ;;(service openssh-service-type)
+  +                 (service openssh-service-type
+  +                          (openssh-configuration
+  +                           (authorized-keys
+  +                            `(("guest" ,(local-file "/home/oleg/.ssh/id_rsa.pub"))))))
+ 
+                    ;; Use the DHCP client service rather than NetworkManager.
+                    (service dhcp-client-service-type))
+#+END_SRC
 
-* WSL
-- [[https://gist.github.com/giuliano108/49ec5bd0a9339db98535bc793ceb5ab4][Guix-on-WSL2.md]]
+oleg@guixsd ~/src/guix-master$ /gnu/store/dl0w9s9mchyg0ggj62yzd2szw200nsb3-run-vm.sh -m 2048 -smp 2 -nic user,model=virtio-net-pci,hostfwd=tcp::10022-:22 -daemonize -virtfs local,path="$HOME/.ssh",security_model=none,mount_tag="TAG_ssh"
+
+#+BEGIN_SRC scheme
+  (use-modules (system vm elf)
+               (rnrs io ports)
+               (ice-9 match))
+
+  (define go
+    (search-path %load-compiled-path "gnu/packages/python-xyz.go"))
+
+  (define elf
+    (parse-elf (call-with-input-file go get-bytevector-all)))
+
+  (define (elf-section-name-as-string elf section)
+    (let ((off (elf-section-offset
+                (list-ref (elf-sections elf)
+                          (elf-shstrndx elf)))))
+      (string-table-ref (elf-bytes elf)
+                        (+ off (elf-section-name section)))))
+
+  (sort (map (lambda (section)
+               (cons (elf-section-name-as-string elf section)
+                     (elf-section-size section)))
+             (elf-sections elf))
+        (match-lambda*
+          (((name1 . size1) (name2 . size2))
+           (> size1 size2))))
+#+END_SRC
+
+
+The manual describes how to fetch Guix from Git in section ‘14.1
+Building from Git’, including how to verify the authenticity of the
+copy. Quoting the part in question:
+
+  1.‘guix git authenticate’ only works after the branch ‘keyring’ has
+     been set up locally; I’ve been told to achieve this with the
+     command ‘git fetch upstream keyring:keyring’, but ‘git checkout
+     keyring’ has worked for me, too. After that, it seems to be
+     necessary to switch back to the master branch to successfully run
+    ‘guix git authenticate’. I think the commands for this should be
+     included in this section.
+
+  2. The word ‘if’ seems to be a typo of ‘it’. I first thought that the
+     sentence was incomplete and that the command should pass if the
+     commit and the fingerprint [did something]. :)
+
+* Repository
+
+- [[https://github.com/UMCUGenetics/guix-additions][guix-additions]]
+- [[https://gitlab.com/daym/guix-gui/][Danny Milosavljevic / guix-gui · GitLab]]
+- [[https://github.com/SystemCrafters/guix-installer][SystemCrafters/guix-installer: A GNU Guix installer image with the full Linux kernel!]]
+- [[https://github.com/saucoide/scn-channel][saucoide/scn-channel with a qtile window manager]]
+- [[https://bordeaux.guix.gnu.org/][bordeaux.guix.gnu.org]]
+
+* Reproducibility
+
+  #+BEGIN_SRC shell
+    wget -q -O - https://mirror.hydra.gnu.org/guix/nar/gzip/7drfxfiwif436bw908iy6jm3myrinn4m-xfce4-session-4.12.0 | gunzip -c | guix archive -x xfsession1
+    wget -q -O - https://berlin.guixsd.org/nar/gzip/7drfxfiwif436bw908iy6jm3myrinn4m-xfce4-session-4.12.0 | gunzip | guix archive -x xfsession2
+    diff -ru --no-dereference xfsession[12]
+    diffoscope xfsession[12]/share/icons/hicolor/icon-theme.cache
+  #+END_SRC
+
+* Reproducibility
+
+** mescc
+
+  #+BEGIN_EXAMPLE
+    <OriansJ`> well wigust; janneke  is working on getting mescc
+               to build a self-hosting gcc-2.95.3. I'm working on
+               reducing the binary seed we are currently using for
+               mescc-tools and rain1 thanks for that tcc testing
+  #+END_EXAMPLE
+  
+  https://gitlab.com/janneke/mes
+
+** Misc
+
+*** guix environment emacs
+    #+begin_src scheme
+      #!/run/current-system/profile/bin/guile \
+      --no-auto-compile -e (br1-mr14.intr) -s
+      !#
+
+      (define-module (br1-mr14.intr)
+        #:export (main))
+
+      (define (main args)
+        (system* "guix" "environment" "--pure" "--ad-hoc" "emacs" "emacs-vterm" "coreutils" "openssh" "--"
+                 "env" "GTK_THEME=Adwaita:dark" "emacs" "--debug-init" "--no-init-file" "--vertical-scroll-bars"
+                 (string-append "--eval="
+                                (format #f "~s"
+                                        '(progn (load-theme 'manoj-dark)
+                                                (global-prettify-symbols-mode)
+                                                (setq prettify-symbols-unprettify-at-point 'right-edge)
+                                                (setq confirm-kill-processes nil)
+                                                (load (expand-file-name "~/.emacs.d/modules/term.el"))
+                                                (vterm)
+                                                (vterm-send-string "ssh br1-mr14.intr")
+                                                (vterm-send-return))))))
+    #+end_src
+
+*** 
+  - [[https://bootstrapping.miraheze.org/wiki/Investigate][ideas we haven't yet explored]]
+  - https://cwiki.apache.org/confluence/pages/viewpage.action?pageId=74682318
+  - [2018-09-10 Mon 18:54] [[gnus:INBOX#87pnxqkbmg.fsf@gnu.org][Email from Ludovic Courtès: hpcguix-web, channels, and inferiors]] by [[mailto:ludovic.courtes@inria.fr][Ludovic Courtès]]
+
+- 36162 remote-eval
+- Guix CI test
+
+#+BEGIN_EXAMPLE
+  $ ./pre-inst-env guile
+  GNU Guile 2.2.5
+  Copyright (C) 1995-2019 Free Software Foundation, Inc.
+
+  Guile comes with ABSOLUTELY NO WARRANTY; for details type `,show w'.
+  This program is free software, and you are welcome to redistribute it
+  under certain conditions; type `,show c' for details.
+
+  Enter `,help' for help.
+  scheme@(guile-user)> ,use(guix store)
+  scheme@(guile-user)> (use-modules (gnu ci) (ice-9 match))
+  scheme@(guile-user)> (define store (open-connection))
+  scheme@(guile-user)> (define jobs  (hydra-jobs store '((systems "x86_64-linux" "i686-linux"))))
+  evaluating for 'x86_64-linux' (heap size: 35.0 MiB)...
+  random seed for tests: 1562154761
+  evaluating for 'i686-linux' (heap size: 467.0 MiB)...
+#+END_EXAMPLE
+
+- Build Guix documentation
+  : guix build -f doc/build.scm
+  
+  : GUIX_WEB_SITE_URL="//guix.gnu.org/" ./pre-inst-env  guix build -f doc/build.scm
+  : rsync -rzvha --copy-links /gnu/store/…-guix-manual/ …/manual/
+
+- [bug#36469] [PATCH 0/2] 'guix pack' records environment variables
+  : guix pack -f docker guile guile-json --entry-point=bin/guile
+  : docker run THE-IMAGE
+
+- Message-ID: <874l4254kv.fsf@gnu.org>
+#+BEGIN_SRC scheme
+  (define update-guix-hpc-web
+    (build-program "https://gitlab.inria.fr/guix-hpc/website.git"
+                   "/srv/guix-hpc"))
+
+  (operating-system
+    ;; …
+    (services (cons (simple-service 'update-guix-hpc-web
+                                    mcron-service-type
+                                    (list #~(job '(next-minute '(0))
+                                                 #$update-guix-hpc-web)))
+                    …)))
+#+END_SRC
+
+Inside =$ guix repl=:
+#+BEGIN_SRC scheme
+  (use-modules (guix channels) (guix describe))
+  (profile-channels (current-profile))
+#+END_SRC
+
+Will produce a <channel> record:
+#+BEGIN_EXAMPLE
+  $1 = (#<<channel> name: guix
+                    url: "https://git.savannah.gnu.org/git/guix.git"
+                    branch: "master" commit: "178f1d1f75a8d512b517f474f63da507beaebd49"
+                    location: ((line . 549) (column . 19) (filename . "guix/channels.scm"))>)
+#+END_EXAMPLE
+
+
+#+BEGIN_SRC scheme
+  (for-each (lambda (file)
+              (rename-file file (string-append (dirname file) "/..")))
+            (find-files themes))
+#+END_SRC
+
+#+BEGIN_SRC scheme
+  (let ((device-number (lambda (major minor)
+                         (+ (* major 256) minor))))
+    (mknod "/dev/tty" 'char-special #o600
+           (device-number 5 0))
+    (chmod "/dev/tty" #o666))
+#+END_SRC
+
+patchelf ld-linux-x86-64.so.2
+https://nixos.org/patchelf.html
+#+BEGIN_SRC scheme
+  (invoke "patchelf"
+          "--set-interpreter"
+          (string-append (assoc-ref %build-inputs "glibc") "/lib/ld-linux-x86-64.so.2")
+          file-name)
+#+END_SRC
+* Search path directory
+#+BEGIN_SRC scheme
+  ;; If you want to match a regular file instead of a directory (the
+  ;; default), you must write:
+
+  (search-path-specification
+   (variable "DRMAA_LIBRARY_PATH")
+   (files '("lib/libdrmaa.so"))
+   (file-type 'regular))
+
+  ;; This will match all the lib/libdrmaa.so files found in the environment.
+#+END_SRC
+
+* Shepherd
+#+begin_quote
+root@berlin ~/maintenance/hydra# herd restart guix-daemon
+Service cuirass-web has been stopped. 
+Service cuirass has been stopped.
+Service guix-publish has been stopped.
+Service guix-daemon has been stopped. 
+herd: exception caught while executing 'start' on service 'guix-daemon':
+Unbound variable: fork+exec-command/container
+root@berlin ~/maintenance/hydra# herd restart guix-daemon
+Service guix-daemon is not running.   
+herd: exception caught while executing 'start' on service 'guix-daemon':
+Unbound variable: fork+exec-command/container
+
+The workaround I found, which works nicely, is to run:
+
+  herd eval root "(reload-module (resolve-module '(gnu build shepherd)))"
+
+and then:
+
+  herd restart guix-daemon
+  herd restart guix-publish
+  …
+#+end_quote
+* Static networking service
+  #+BEGIN_SRC scheme
+    (services (cons* …
+                     (static-networking-service "enp6s4f0"
+                                                "141.80.181.40"
+                                                #:netmask "255.255.255.0"
+                                                #:gateway "141.80.181.1")
+                     (static-networking-service "enp0s8"
+                                                "192.168.0.1"
+                                                #:netmask "255.255.255.0")
+                     …
+                     %base-services))
+
+  #+END_SRC
+
+* Static vs dynamic binding
+
+Most of the time in Guix we favor static binding: it makes sure that
+programs work out of the box, regardless of what happens to be already
+installed on your system, and that the program will behave the same on
+all systems since its behavior does not depend on external state.
+There are exceptions where we want dynamic binding, for instance for
+plugins or optional/soft dependencies.
+- [[https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=877019][Debian Bug report logs - #877019 ITP: nix -- Purely functional package manager]]
+
+* Stop stripping mount point if BTRFS
+  :LOGBOOK:
+  CLOCK: [2017-10-30 Mon 04:34]--[2017-10-30 Mon 04:59] =>  0:25
+  CLOCK: [2017-10-30 Mon 02:57]--[2017-10-30 Mon 03:22] =>  0:25
+  CLOCK: [2017-10-30 Mon 02:04]--[2017-10-30 Mon 02:29] =>  0:25
+  :END:
+
+* Tests
+#+begin_src scheme
+  (test-assert "foo"
+    (marionette-eval
+     '(begin
+        (use-modules (ice-9 rdelim)
+                     (ice-9 popen))
+        (let* ((port   (open-pipe "/run/current-system/profile/bin/cat /tmp/out.txt; /run/current-system/profile/bin/ls -la /var/guix/profiles/per-user /var/guix/profiles/per-user/alice /home/alice /home/alice/test /root"
+                                  OPEN_READ))
+               (output (read-string port)))
+          (close-port port)
+          (pk (string-trim-right output #\newline))))
+     marionette))
+#+end_src
+
+* Thinkpad Linux Kernel config
+
+  #+BEGIN_SRC scheme
+    (kernel-arguments (list "modprobe.blacklist=pcspkr" "quiet" "rhgb"
+                            "thinkpad_acpi.fan_control=1" "i195.modeset=1"))
+  #+END_SRC
 
 * Tips
 
@@ -2885,327 +3098,209 @@ precisely the closure of each package, as returned by ‘guix gc -R’.
 
    #+end_src
 
-* Iptables
+* TOBLOG
 
-#+BEGIN_SRC scheme
-  (define-module (iptables ru)
-    #:use-module (guix packages)
-    #:use-module (guix gexp)
-    #:use-module (guix monads)
-    #:use-module (guix store)
-    #:use-module (gnu packages)
-    #:use-module (gnu packages linux)
-    #:use-module (guix utils)
-    #:use-module (srfi srfi-1)
-    #:use-module (ice-9 match))
+#+BEGIN_SRC markdown
+  # Preparation
 
-  ;; Rules to throttle HTTP connection redirections.  Taken from
-  ;; <https://www.opennet.ru/tips/2999_iptables_block_tor.shtml>.
+  If you have a [[https://git.savannah.gnu.org/cgit/guix.git]](Guix Git
+  repository) already, you can create a new [Git
+  Worktree](https://git-scm.com/docs/git-worktree).
 
-  (define %iptables-rst
-    "-A INPUT -p tcp --sport 443 --tcp-flags RST RST -j DROP")
 
-  (define %iptables-warning
-    "-A INPUT -p tcp --sport 80 -m string --string \"Location: http://warning.rt.ru\" --algo bm -j DROP")
 
-  (define %iptables-promo
-    "-A INPUT -p tcp --sport 80 -m string --string \"Location: http://promo.nw.rt.ru\" --algo bm -j DROP")
+  [More info](https://www.gnu.org/software/guix/manual/html_node/Building-from-Git.html#Building-from-Git)
+
 #+END_SRC
 
-* Container
-So presumably a better option is to use an image created like this:
+* Translation
 
-  guix pack -f docker -S /bin=bin guix --localstatedir
+[0]: <https://translationproject.org/domain/guix.html>
+[1]: <https://translationproject.org/domain/guix-manual.html>
+[2]: <https://translationproject.org/domain/guix-packages.html>
 
-and then, in the image, you first need to spawn guix-daemon, perhaps
-with ‘--disable-chroot’ because the image lacks build users.
+* Unzip initial RAM disk
 
-It would be useful also to set the user under which commands run in the
-image, similar to the ‘USER’ directive in Dockerfiles.
-
-* Shepherd
-#+begin_quote
-root@berlin ~/maintenance/hydra# herd restart guix-daemon
-Service cuirass-web has been stopped. 
-Service cuirass has been stopped.
-Service guix-publish has been stopped.
-Service guix-daemon has been stopped. 
-herd: exception caught while executing 'start' on service 'guix-daemon':
-Unbound variable: fork+exec-command/container
-root@berlin ~/maintenance/hydra# herd restart guix-daemon
-Service guix-daemon is not running.   
-herd: exception caught while executing 'start' on service 'guix-daemon':
-Unbound variable: fork+exec-command/container
-
-The workaround I found, which works nicely, is to run:
-
-  herd eval root "(reload-module (resolve-module '(gnu build shepherd)))"
-
-and then:
-
-  herd restart guix-daemon
-  herd restart guix-publish
-  …
-#+end_quote
-* QEMU
-
-#+BEGIN_SRC diff
-  diff --git a/gnu/system/examples/vm-image.tmpl b/gnu/system/examples/vm-image.tmpl
-  index bcb2ba614c..5db38911a1 100644
-  --- a/gnu/system/examples/vm-image.tmpl
-  +++ b/gnu/system/examples/vm-image.tmpl
-  @@ -41,10 +41,15 @@ accounts.\x1b[0m
-                  (bootloader grub-bootloader)
-                  (target "/dev/vda")
-                  (terminal-outputs '(console))))
-  -  (file-systems (cons (file-system
-  -                        (mount-point "/")
-  -                        (device "/dev/vda1")
-  -                        (type "ext4"))
-  +  (file-systems (append (list (file-system
-  +                                (mount-point "/")
-  +                                (device "/dev/vda1")
-  +                                (type "ext4"))
-  +                              (file-system
-  +                                (mount-point "/mnt")
-  +                                (device "TAG_ssh")
-  +                                (type "9p")
-  +                                (options "trans=virtio")))
-                         %base-file-systems))
- 
-     (users (cons (user-account
-  @@ -78,7 +83,10 @@ root ALL=(ALL) ALL
-                                (keyboard-layout keyboard-layout)))))
- 
-                    ;; Uncomment the line below to add an SSH server.
-  -                 ;;(service openssh-service-type)
-  +                 (service openssh-service-type
-  +                          (openssh-configuration
-  +                           (authorized-keys
-  +                            `(("guest" ,(local-file "/home/oleg/.ssh/id_rsa.pub"))))))
- 
-                    ;; Use the DHCP client service rather than NetworkManager.
-                    (service dhcp-client-service-type))
+#+BEGIN_SRC shell
+  gunzip -C < INITRD | cpio -tv
 #+END_SRC
 
-oleg@guixsd ~/src/guix-master$ /gnu/store/dl0w9s9mchyg0ggj62yzd2szw200nsb3-run-vm.sh -m 2048 -smp 2 -nic user,model=virtio-net-pci,hostfwd=tcp::10022-:22 -daemonize -virtfs local,path="$HOME/.ssh",security_model=none,mount_tag="TAG_ssh"
+* Video
 
-#+BEGIN_SRC scheme
-  (use-modules (system vm elf)
-               (rnrs io ports)
-               (ice-9 match))
+Here’s the script I used to make a QEMU animation of the installation
+process: it grabs screenshots at regular intervals through QEMU.
 
-  (define go
-    (search-path %load-compiled-path "gnu/packages/python-xyz.go"))
+You can then assemble them to form an animated GIF with:
 
-  (define elf
-    (parse-elf (call-with-input-file go get-bytevector-all)))
+  : convert -loop 0 -delay 20 /tmp/qemu-movie-0*ppm /tmp/install.gif
 
-  (define (elf-section-name-as-string elf section)
-    (let ((off (elf-section-offset
-                (list-ref (elf-sections elf)
-                          (elf-shstrndx elf)))))
-      (string-table-ref (elf-bytes elf)
-                        (+ off (elf-section-name section)))))
+The GIF can be compressed with:
 
-  (sort (map (lambda (section)
-               (cons (elf-section-name-as-string elf section)
-                     (elf-section-size section)))
-             (elf-sections elf))
-        (match-lambda*
-          (((name1 . size1) (name2 . size2))
-           (> size1 size2))))
-#+END_SRC
+  : mogrify -layers optimize-frame /tmp/install.gif
 
+On IRC, Ricardo came up with this command to produce the video at
+<https://guix.gnu.org/guix-videos/guix-system-install-1.1.0.webm> (with
+a fade-in, proper frame rate, etc.):
 
-The manual describes how to fetch Guix from Git in section ‘14.1
-Building from Git’, including how to verify the authenticity of the
-copy. Quoting the part in question:
-
-  1.‘guix git authenticate’ only works after the branch ‘keyring’ has
-     been set up locally; I’ve been told to achieve this with the
-     command ‘git fetch upstream keyring:keyring’, but ‘git checkout
-     keyring’ has worked for me, too. After that, it seems to be
-     necessary to switch back to the master branch to successfully run
-    ‘guix git authenticate’. I think the commands for this should be
-     included in this section.
-
-  2. The word ‘if’ seems to be a typo of ‘it’. I first thought that the
-     sentence was incomplete and that the command should pass if the
-     commit and the fingerprint [did something]. :)
-
-* entr
-
-build.sh
-#+BEGIN_SRC sh
-  #!/usr/bin/env bash
-
-  set -eux
-
-  ./pre-inst-env guix build -K --no-offload "$(git diff --inter-hunk-context=1 gnu/packages/golang.scm gnu/packages/configuration-management.scm gnu/packages/version-control.scm | awk '/define-public/ { print $NF }' | head -2 | tail -1)"
-#+END_SRC
-
-#+BEGIN_SRC sh
-  ls gnu/packages/golang.scm gnu/packages/configuration-management.scm gnu/packages/version-control.scm | ~/.guix-profile/bin/entr -r ./build.sh
-#+END_SRC
-
-* articles
-- [[https://guix.gnu.org/blog/2020/running-a-ganeti-cluster-on-guix/][Running a Ganeti cluster on Guix]]
-
-* GRUB
-
-** Fix grub after "guix system reconfigure"
-
-  Installing for i386-pc platform.                                                            
-  /gnu/store/h072dgv0g63pgwry386xmgn9xc06yy3w-grub-2.04/sbin/grub-install: warning: this GPT partition label contains no BIOS Boot Partition; embedding won't be possible.
-  /gnu/store/h072dgv0g63pgwry386xmgn9xc06yy3w-grub-2.04/sbin/grub-install: warning: Embedding is not possible.  GRUB can only be installed in this setup by using blocklists.  However, blocklists are UNRELIABLE and their use is discouraged..                                           
-  /gnu/store/h072dgv0g63pgwry386xmgn9xc06yy3w-grub-2.04/sbin/grub-install: error: will not proceed with blocklists.
-
-# fdisk -l /dev/sda
-...
-/dev/sda4  37750784   37816319      65536    32M BIOS boot
-https://superuser.com/a/1170352
-
-mkfs.vfat -F32 /dev/sdXY
-
-* Guix Linux 5.3.18
-  #+begin_src diff
-    diff --git a/dotfiles/guixsd/guixsd.scm b/dotfiles/guixsd/guixsd.scm
-    index 577c56f0..f4d16290 100644
-    --- a/dotfiles/guixsd/guixsd.scm
-    +++ b/dotfiles/guixsd/guixsd.scm
-    @@ -292,20 +292,21 @@ location / {
-           "/home/oleg/src/dotfiles/guixsd/hardware/guixsd.scm"))
- 
-     (define %system-guixsd
-    -  (let ((base-system (load %hardware-file)))
-    +  (let ((base-system (load %hardware-file))
-    +        (inferior (inferior-for-channels (list (channel
-    +                                                (name 'nonguix)
-    +                                                (url "https://gitlab.com/nonguix/nonguix")
-    +                                                (commit "b7ba152c4e5d827a1d9ab290022705d5e6675e39"))
-    +                                               (channel
-    +                                                (name 'guix)
-    +                                                (url "https://git.savannah.gnu.org/git/guix.git")
-    +                                                (commit "812b0d497e2f4bd429fb438f401a40d03a0465d4"))))))
-         (operating-system
-           (inherit base-system)
-    -      (kernel (let* ((channels (list (channel
-    -                                      (name 'nonguix)
-    -                                      (url "https://gitlab.com/nonguix/nonguix")
-    -                                      (commit "d12b4eb46db73307b04476076f072c89d4202f6c"))
-    -                                     (channel
-    -                                      (name 'guix)
-    -                                      (url "https://git.savannah.gnu.org/git/guix.git")
-    -                                      (commit "efa773f94a18b40f2c63795f364ae87dade76f60"))))
-    -                     (inferior (inferior-for-channels channels)))
-    -                (first (lookup-inferior-packages inferior "linux" "5.10.4"))))
-    -      (firmware (cons* amdgpu-firmware linux-firmware %base-firmware))
-    +      (kernel (first (lookup-inferior-packages inferior "linux" "5.3.18")))
-    +      (firmware (cons* (first (lookup-inferior-packages inferior "amdgpu-firmware" "20191022"))
-    +                       (first (lookup-inferior-packages inferior "linux-firmware" "20191022"))
-    +                       %base-firmware))
-           (kernel-arguments '("modprobe.blacklist=pcspkr,snd_pcsp"))
-           (packages %my-system-packages)
- 
-
-  #+end_src
-
-  #+begin_src bash
-    #!/usr/bin/env bash
-
-    mapfile -t packages < <(awk '/would be upgraded/ { print $2 }' refresh.log)
-    package="$(printf "%s\n" "${packages[@]}" | fzf)"
-    ./pre-inst-env guix refresh --update "$package"
-  #+end_src
-
-  #+begin_src scheme
-    #!/run/current-system/profile/bin/guile \
-    --no-auto-compile -e (run2) -s
-    !#
-
-    ;;;; refresh --- guix refresh wrapper
-    ;;;; Copyright © 2020 Oleg Pykhalov <go.wigust@gmail.com>
-    ;;;; Released under the GNU GPLv3 or any later version.
-
-    (define-module (run2)
-      #:use-module (ice-9 rdelim)
-      #:use-module (ice-9 match)
-      #:export (main))
-
-    (define (main args)
-      (match (string-split (match (string-split (with-input-from-file "out"
-                                                  read-string)
-                                                #\newline)
-                             ((a ... last-but-one last) last-but-one))
-                           #\:)
-        ((file line column package message)
-         (pk (list file line column (string-trim package)
-                   (string-split (string-trim message) #\space))))))
-  #+end_src
-
-  #+begin_src bash
-    #!/usr/bin/env bash
-
-    if ! [ -e refresh.log ]
-    then
-        ./pre-inst-env guix refresh "$(./pre-inst-env guix maintainer)" |& tee refresh.log
-    fi
-    package="$(awk '/would be upgraded/ { print $2 }' refresh.log | fzf)"
-    version="$(./pre-inst-env guix refresh --update "$package" |& awk '/updating from version/ { print $NF }' | sed 's/\.\.\.//')"
-    mapfile -t hashes < <(./pre-inst-env guix build "$package" |& awk '/hash:/ { print $NF }')
-    if [ "${#hashes[@]}" -ne 0 ]
-    then
-        for file in gnu/packages/*.scm
-        do
-            if grep --quiet "${hashes[0]}" "$file"
-            then
-                printf 'Substitute "%s" with "%s" in "%s".\n' "${hashes[0]}" "${hashes[1]}" "$file"
-                sed --in-place "s/${hashes[0]}/${hashes[1]}/" "$file"
-                ./pre-inst-env guix build "$package"
-                git commit --message="$(printf "gnu: $package: Update to $version.\n\n* $file ($package): Update to $version.")" "$file"
-                sed --in-place "/$package/d" refresh.log
-            fi
-        done
-    fi
+#+begin_src bash
+  ffmpeg -framerate 30 -pattern_type glob -i \
+         'qemu-guix-install.selected/qemu-movie-*.ppm' -c:v libvpx-vp9 -vsync \
+         cfr -crf 31 -pix_fmt yuv420p -b:v 0 -filter_complex \
+         "setpts=5*PTS,loop=loop=60:size=1:start=0,fade=t=in:st=0:n=60" \
+         out3.webm
 #+end_src
 
-  #+begin_src scheme
-    #!/run/current-system/profile/bin/guile \
-    --no-auto-compile -e (lint-commit) -s
-    !#
+Ludo’.
 
-    (define-module (lint-commit)
-      #:use-module (ice-9 format)
-      #:use-module (ice-9 match)
-      #:use-module (ice-9 rdelim)
-      #:use-module (rx irregex)
-      #:use-module (srfi srfi-1)
-      #:export (main))
+#+begin_src scheme
+  ;; Copyright © 2020 Ludovic Courtès <ludo@gnu.org>
+  ;; Released under the GNU General Public License, version 3 or later.
 
-    (define (match-subject subject)
-      (irregex-match '(seq (seq (or "gnu" "services") ":" space
-                                (or (seq (+ alphanumeric) ":" space "Update to" space (+ (or alphanumeric ".")))
-                                    (seq "Add" space (+ (or alphanumeric "-")))))
-                           ".")
-                     subject))
+  (use-modules (ice-9 match)
+               (gnu system vm)
+               (gnu system install)
+               (guix)
+               (guix ui)
+               (gnu packages virtualization))
 
-    (define (format-match procedure string)
-      (if (match-subject string)
-          (format #t "[ PASS ] ~s~%" string)
-          (begin (format #t "[ FAIL ] ~s~%" string)
-                 (exit 1))))
 
-    (define (main args)
-      (define input (with-input-from-port (current-input-port) read-string))
-      (match (string-split input #\newline)
-        ((subject message ...)
-         (format-match match-subject subject))))
-  #+end_src
+  (define O_CLOEXEC                                 ;missing in Guile 3.0.2
+    #o02000000)
 
-  #+begin_src scheme
-    (display (run-with-store (open-connection) (package-file icedtea-8 #:output "jdk")))
-  #+end_src
+  (define wait-for-monitor-prompt
+    (@@ (gnu build marionette) wait-for-monitor-prompt))
+
+  (define (spawn command)
+    (match (primitive-fork)
+      (0   (dynamic-wind
+             (const #t)
+             (lambda ()
+               (apply execl (car command) command))
+             (lambda ()
+               (primitive-_exit 42))))
+      (pid pid)))
+
+  (define (shoot-movie)
+    (mlet* %store-monad ((image (system-disk-image installation-os
+                                                   #:disk-image-size 'guess))
+                         (qemu  (lower-object qemu))
+                         (_     (built-derivations (list qemu image))))
+      (define disk
+        (begin
+          (system* (string-append (derivation->output-path qemu)
+                                  "/bin/qemu-img")
+                   "create" "-f" "qcow2" "/tmp/disk.img" "2G")
+          "/tmp/disk.img"))
+
+      (define command
+        (list (string-append (derivation->output-path qemu)
+                             "/bin/qemu-system-x86_64")
+              "-enable-kvm" "-m" "512"
+              "-drive"
+              (string-append "file="
+                             (pk (derivation->output-path image))
+                             ",if=virtio,cache=writeback,readonly")
+              "-monitor" "unix:/tmp/monitor"
+              "-drive" "file=/tmp/disk.img,if=virtio"
+              "-snapshot"))
+
+      (define monitor
+        (socket AF_UNIX SOCK_STREAM 0))
+
+      (bind monitor AF_UNIX "/tmp/monitor")
+      (listen monitor 1)
+      (fcntl monitor F_SETFL
+             (logior O_CLOEXEC (fcntl monitor F_GETFL)))
+
+      (let ((pid (spawn command)))
+        (match (accept monitor)
+          ((sock . _)
+           (wait-for-monitor-prompt sock #:quiet? #f)
+           (let loop ((n 0))
+             (format sock "screendump /tmp/qemu-movie-~4,48d.ppm~%" n)
+             (force-output sock)
+             (wait-for-monitor-prompt sock #:quiet? #f)
+             (usleep 200000)
+             (loop (+ 1 n))))))))
+
+  (false-if-exception (delete-file "/tmp/monitor"))
+
+  (with-build-handler (build-notifier)
+    (with-store store
+      (run-with-store store (shoot-movie))))
+#+end_src
+
+- [[https://10years.guix.gnu.org/program/][Ten Years of Guix — Program]]
+
+* Videos
+  - http://audio-video.gnu.org/video/ghm2013/Daimrod-Recent_work_in_the_Emacs_XWidget_branch_.webm
+  - http://audio-video.gnu.org/video/ghm2013/David_Bremner-Notmuch_mail_.webm
+  - http://audio-video.gnu.org/video/ghm2013/Jose_Marchesi-GNU_recutils_.webm
+  - http://audio-video.gnu.org/video/ghm2013/Ludovic_Courtes-GNU_Guix_the_computing_freedom_deployment_tool_.webm
+  - http://audio-video.gnu.org/video/ghm2013/Samuel_Thibault-Hurd_recent_developments_.webm
+  - https://archive.fosdem.org/2014/schedule/event/gnuguix/
+  - https://archive.fosdem.org/2016/schedule/event/deployments_with_gnu_guix/
+  - https://audio-video.gnu.org/video/ghm2013/Daimrod-Recent_work_in_the_Emacs_XWidget_branch_.webm
+  - https://audio-video.gnu.org/video/ghm2013/David_Bremner-Notmuch_mail_.webm
+  - https://audio-video.gnu.org/video/ghm2013/Jose_Marchesi-GNU_recutils_.webm
+  - https://audio-video.gnu.org/video/ghm2013/Ludovic_Courtes-GNU_Guix_the_computing_freedom_deployment_tool_.webm
+  - https://audio-video.gnu.org/video/ghm2013/Samuel_Thibault-Hurd_recent_developments_.webm
+  - https://audio-video.gnu.org/video/ghm2017/2017-08--courtes--guix--ghm.webm
+  - https://audio-video.gnu.org/video/ghm2017/2017-08--sassmannshausen--potluck--ghm.webm
+  - https://audio-video.gnu.org/video/misc/2016-01__GNU_Guix__Gentle_Introduction_to_Functional_Package_Management.webm
+  - https://audio-video.gnu.org/video/misc/2016-01__GNU_Guix__Your_Distro_is_a_Scheme_Library.webm
+  - https://www.gnu.org/ghm/2013/paris/v2/sylvain/output.webm
+  - https://www.gnu.org/software/guix/blog/tags/talks/
+
+  - https://www.cloudbees.com/videos/purely-functional-ci-cd-pipeline-using-jenkins-with-guix
+  - https://xana.lepiller.eu/guix-days-2022/guix-days-2022-guix-aws-lambda.mkv
+
+* Weather
+
+#+BEGIN_SRC scheme
+  (use-modules (guix scripts substitute)
+               (guix build utils)
+               (web request)
+               (web uri)
+               (srfi srfi-1)
+               (gnutls))
+
+  (define base-url
+    (or (getenv "URL")
+       "https://mirror.hydra.gnu.org"))
+
+  (define base-uri
+    (string->uri base-url))
+
+  (define index.html
+    (build-request
+     (string->uri (string-append base-url
+                                 "/nix-cache-info"
+                                 ;; "/eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee.narinfo"
+                                 ;; "/yihvhxv3xyyvl1m2cy1lnf1lyi9h76fk.narinfo"
+                                 ))))
+
+  (define http-multiple-get
+    (@@ (guix scripts substitute) http-multiple-get))
+
+  ;; (set-log-level! 5)
+  ;; (set-log-procedure! (lambda (level message)
+  ;;                       (display message)))
+
+  (let ((requests (make-list 100000 index.html)))
+    (http-multiple-get base-uri
+                       (lambda (req resp port result)
+                         (dump-port port (%make-void-port "w"))
+                         (cons 'x result))
+                       '()
+                       requests))
+#+END_SRC
+
+* Web resources
+  - https://libreplanet.org/wiki/Group:Guix
+
+* WSL
+- [[https://gist.github.com/giuliano108/49ec5bd0a9339db98535bc793ceb5ab4][Guix-on-WSL2.md]]
 
 * Xmonad
 
@@ -3248,98 +3343,3 @@ mkfs.vfat -F32 /dev/sdXY
   ghc -dynamic "$HOME/.xmonad/Main.hs" -i"$HOME/.xmonad" -o "$1"
 #+end_example
 
-* Gexp
-
-  #+begin_src scheme
-    (use-modules (gnu packages base)
-                 (gnu packages elf)
-                 (guix build utils)
-                 (guix gexp)
-                 (guix store)
-                 (guix licenses))
-
-    (define store
-      (open-connection))
-
-    (run-with-store store
-      (gexp->derivation "plumber"
-                        (with-imported-modules '((guix build utils))
-                          #~(begin
-                              (use-modules (guix build utils))
-                              (copy-file #$(local-file "/home/oleg/Downloads/plumber-linux") "plumber")
-                              (invoke (string-append #$patchelf "/bin/patchelf")
-                                      "--set-interpreter" (string-append #$glibc "/lib/ld-linux-x86-64.so.2")
-                                      "plumber")
-                              (mkdir #$output)
-                              (mkdir (string-append #$output "/bin"))
-                              (copy-file "plumber" (string-append #$output "/bin/plumber"))))))
-  #+end_src
-
-* Cuirass
-- [[https://ci.guix.gnu.org/eval/19534/dashboard][master dashboard]]
-- [[https://ci.guix.gnu.org/eval/19488/dashboard][staging dashboard]]
-- [[https://ci.guix.gnu.org/eval/19464/dashboard][test dashboard]]
-
-* Jami
-
-Message-ID: <87ee7be7ty.fsf@gmail.com>
-
-Hello Guix,
-
-Disclaimer: my employer is Savoir-faire Linux, which oversees the
-development of Jami.
-
-For a while, I've toyed with the idea that we could leverage Jami for
-our video-conference needs, and contributed a jami-service-type a few
-months ago to ease doing so [0].
-
-A service is not strictly needed to setup a video-conferencing server
-(later referred as a "rendezvous point") with Jami [1], it increases
-availability and can be used without a normal user session.  It also
-provides some isolation from the main system since it runs in a separate
-namespace (container), at least on Guix System.
-
-The main challenges for a decent experience with the Jami rendezvous
-point feature is its resource requirements; as the number of
-participants grow, so does the required amount of network bandwidth and
-CPU power.
-
-As some kind of technology preview, I'd like to offer a freely available
-Jami rendezvous point.  Using either the jami-gnome or jami-qt client
-available in Guix, you can connect to it by searching for the
-'rdv-jami-guix' contact and initiating a call.  Participants' audio and
-video streams will automatically be mixed and streamed by the server.
-
-On a Guix System, installing it to your user profile should suffice.  On
-a foreign distribution, you'll have to resort to a more complicated
-launch procedure, thanks to D-Bus configuration [2].  Something like this
-should work:
-
-$ guix shell jami-gnome dbus glib gtk+ openssl nss-certs \
-    -- dbus-run-session jami-gnome
-
-I hope it proves useful in fostering more live collaboration in the
-community!  Extra rendezvous points could also be deployed if needed.
-If the experience is successful we could seek a better place to host
-such service for the community (where it could be managed by the
-collective of Guix sysadmins rather than myself for example).
-
-Happy hacking,
-
-Maxim
-
-[0]  https://git.savannah.gnu.org/cgit/guix.git/commit/?id=69dcc24c9f0cdfea674eb690e7755d26a25ced2b
-[1]  https://jami.net/help/#answer14
-[2]  https://issues.guix.gnu.org/48538
-
-* API
-
-Subject: Re: Guix Data Service client module
-Message-ID: <878rupgxsd.fsf@gnu.org>
-#+begin_example
-  scheme@(guile-user)> (define s (open-data-service "https://data.guix.gnu.org"))
-  scheme@(guile-user)> (car (package-versions (lookup-package s "emacs")))
-  $20 = #<<package-version> string: "27.2" branches: (#<<branch> name: "master" repository-id: 1>)>
-  scheme@(guile-user)> (car (package-version-history s (car (package-version-branches $20)) "emacs"))
-  $21 = #<<package-version-range> version: "27.2" first-revision: #<<revision> commit: "cc33f50d0e2a7835e99913226cb4c4b0e9e961ae" date: #<date nanosecond: 0 second: 54 minute: 30 hour: 20 day: 25 month: 3 year: 2021 zone-offset: 0>> last-revision: #<<revision> commit: "de38ccf2e0bb2fd21393925c296b65dca7499bd3" date: #<date nanosecond: 0 second: 37 minute: 48 hour: 13 day: 4 month: 2 year: 2022 zone-offset: 0>>>
-#+end_example
