@@ -548,7 +548,8 @@ sudo /nix/var/nix/profiles/system/bin/switch-to-configuration switch
 * Configurations
 - [[https://github.com/jethrokuan/nix][jethrokuan/nix: NixOS configuration with Nix flakes]]
 
-* deploy-rs
+* deploy
+** deploy-rs
   - [[https://github.com/serokell/deploy-rs][serokell/deploy-rs: A Simple multi-profile Nix-flake deploy tool.]]
 
     Activation command during deploy example:
@@ -560,8 +561,9 @@ sudo /nix/var/nix/profiles/system/bin/switch-to-configuration switch
           --auto-rollback
     #+end_example
 
-** TODO nixos-switch-to-configuration code 100 means that host reboot is required
+*** TODO nixos-switch-to-configuration code 100 means that host reboot is required
 
+** [[https://github.com/rapenne-s/bento][rapenne-s/bento: A KISS deployment tool to keep your NixOS fleet (servers & workstations) up to date.]]
 * Dictionary
 ** Profile
 A general and convenient concept for realizing rollbacks.
