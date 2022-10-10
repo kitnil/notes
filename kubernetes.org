@@ -7,6 +7,312 @@
 - [[https://github.com/k8s-at-home/awesome-home-kubernetes][k8s-at-home/awesome-home-kubernetes: Awesome projects involving running Kubernetes at home]]
 - [[https://github.com/ramitsurana/awesome-kubernetes][ramitsurana/awesome-kubernetes: A curated list for awesome kubernetes sources]]
 
+* Cheat sheet
+
+#+begin_example
+  [root@vm30:~]# lsns | grep nginx
+  4026532800 mnt         2  80051 root             nginx: master process nginx -g daemon off;
+  4026532801 pid         2  80051 root             nginx: master process nginx -g daemon off;
+  4026532802 cgroup      2  80051 root             nginx: master process nginx -g daemon off;
+  4026532865 mnt        20  90081 101              /usr/bin/dumb-init -- /nginx-ingress-controller --publish-service=ingress-nginx/ingress-nginx-controller --election-id=ingress-controller-leader --controller-class=k8s.io/ingress-nginx --ingress-class=nginx --configmap=ingress-nginx/ingress-nginx-controller --validating-webhook=:8443 --validating-webhook-certificate=/usr/local/certificates/cert --validating-webhook-key=/usr/local/certificates/key
+  4026532866 pid        20  90081 101              /usr/bin/dumb-init -- /nginx-ingress-controller --publish-service=ingress-nginx/ingress-nginx-controller --election-id=ingress-controller-leader --controller-class=k8s.io/ingress-nginx --ingress-class=nginx --configmap=ingress-nginx/ingress-nginx-controller --validating-webhook=:8443 --validating-webhook-certificate=/usr/local/certificates/cert --validating-webhook-key=/usr/local/certificates/key
+  4026532867 cgroup     20  90081 101              /usr/bin/dumb-init -- /nginx-ingress-controller --publish-service=ingress-nginx/ingress-nginx-controller --election-id=ingress-controller-leader --controller-class=k8s.io/ingress-nginx --ingress-class=nginx --configmap=ingress-nginx/ingress-nginx-controller --validating-webhook=:8443 --validating-webhook-certificate=/usr/local/certificates/cert --validating-webhook-key=/usr/local/certificates/key
+
+  [root@vm30:~]# nsenter -t 80051 -n curl localhost 
+  <!DOCTYPE html>
+  <html>
+  ...
+#+end_example
+
+- clean state
+  : rm -rf /var/lib/{kubernetes,cfssl,cni,containerd,etcd,kubelet}
+
+- print everything
+  : kubectl get all -A
+  : kubectl get all --all-namespaces
+  : kubectl get all,cm,secret,ing -A
+  : kubectl api-resources --verbs=list
+  : kubectl get events -A
+
+- API
+  : kubectl api-resources
+  : kubectl api-versions
+
+- cdi-uploadproxy
+: kubectl get service cdi-uploadproxy -n cdi
+
+- delete terminating ns
+#+begin_example
+  oleg@guixsd ~$ kubectl proxy
+  Starting to serve on 127.0.0.1:8001
+
+  NAMESPACE=cdi
+  kubectl get namespace $NAMESPACE -o json |jq '.spec = {"finalizers":[]}' >temp.json
+  curl -k -H "Content-Type: application/json" -X PUT --data-binary @temp.json 127.0.0.1:8001/api/v1/namespaces/$NAMESPACE/finalize
+#+end_example
+
+- pvc
+#+begin_example
+  oleg@guixsd ~$ virtctl image-upload --pvc-name=guix-vm-pv --pvc-size=2Gi --image-path=/tmp/guix.qcow2 --uploadproxy-url=https://10.43.181.37 --insecure
+  PVC default/guix-vm-pv not found
+  PersistentVolumeClaim default/guix-vm-pv created
+  Waiting for PVC guix-vm-pv upload pod to be ready...
+  Pod now ready
+  Uploading data to https://10.43.181.37
+#+end_example
+
+- get context
+  #+begin_example
+    oleg@guixsd ~$ kubectl config get-contexts
+    CURRENT   NAME           CLUSTER        AUTHINFO             NAMESPACE
+    ,*         k8s-cluster0   k8s-cluster0   k8s-cluster0-admin   
+  #+end_example
+
+- change context
+  #+begin_example
+    kubectl config use-context k8s-cluster0
+  #+end_example
+
+- change namespace
+  #+begin_example
+    kubectl config set-context --current --namespace=<insert-namespace-name-here>
+    # Validate it
+    kubectl config view --minify | grep namespace:
+  #+end_example
+
+- run linter
+  : docker run --network=host --rm -it -v $HOME/.kube:/root/.kube -e POPEYE_REPORT_DIR=/tmp/popeye -v /tmp/popeye:/tmp/popeye derailed/popeye --context k8s-cluster0-lb -n default --save --out html --output-file report.html
+
+- mark master nodes as unschedulable
+  : kubectl taint node kube3 unschedulable=true:NoSchedule
+
+- drain node
+  : kubectl drain kube6 --ignore-daemonsets --delete-emptydir-data
+
+- undrain node
+  : kubectl uncordon kube6
+
+- get documentation
+  : kubectl explain --api-version=networking.k8s.io/v1 ingress.spec.rules.http.paths.backend
+
+- dump all information
+  : kubectl cluster-info dump
+
+* Helm
+- [[https://github.com/twuni/docker-registry.helm][twuni/docker-registry.helm: Helm chart for a Docker registry. Successor to stable/docker-registry chart.]]
+- [[https://helm.sh/docs/topics/charts/][Helm Documentation | Charts]]
+** Tools
+- [[https://github.com/databus23/schelm][databus23/schelm: Render a helm manifest to a directory]]
+** Cheat sheet
+: helm create mychart
+
+* How it works
+
+First of all you should have a working etcd.
+
+#+begin_example
+  [root@kube1:~]# ss -tulpn
+  Netid          State           Recv-Q          Send-Q                   Local Address:Port                     Peer Address:Port          Process
+  tcp            LISTEN          0               4096                         127.0.0.1:38421                         0.0.0.0:*              users:(("containerd",pid=885,fd=14))
+  tcp            LISTEN          0               128                       172.16.103.9:22                            0.0.0.0:*              users:(("sshd",pid=911,fd=3))
+  tcp            LISTEN          0               4096                      172.16.103.9:443                           0.0.0.0:*              users:(("kube-apiserver",pid=3104049,fd=7))
+  tcp            LISTEN          0               4096                      172.16.103.9:2379                          0.0.0.0:*              users:(("etcd",pid=3104054,fd=9))
+  tcp            LISTEN          0               4096                      172.16.103.9:2380                          0.0.0.0:*              users:(("etcd",pid=3104054,fd=8))
+#+end_example
+
+After that you should start kube-apiserver, which allows to use kubectl
+utility, which connects you to the cluster.
+
+#+begin_example
+  [root@kube1:~]# kubectl --insecure-skip-tls-verify get -A all
+  NAMESPACE   NAME                 TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)   AGE
+  default     service/kubernetes   ClusterIP   10.0.0.1     <none>        443/TCP   10h
+#+end_example
+
+=kubelet= will start itself and =containerd= service
+
+starting the following units: systemd-modules-load.service, systemd-sysctl.service
+the following new units were started: containerd.service, kubelet.service
+
+* How-to
+- [[https://habr.com/ru/post/569124/][Cам себе облако: установка ELK и TICK стеков в Kubernetes / Хабр]]
+
+* Ingress
+
+- install
+  : kubectl create namespace ingress-nginx
+  : helm install -n ingress-nginx ingress-nginx ingress-nginx/ingress-nginx
+* Installation
+- [[https://github.com/adieu/nixos-k8s-flake][adieu/nixos-k8s-flake: Kubernetes Flake for NixOS with full control]]
+- [[https://github.com/adieu/nixos-k8s-flake][adieu/nixos-k8s-flake: Kubernetes Flake for NixOS with full control]]
+- [[https://github.com/alexellis/k8s-on-raspbian][alexellis/k8s-on-raspbian: Kubernetes on Raspbian (Raspberry Pi)]]
+- [[https://github.com/bbigras/k3s-on-fly.io][bbigras/k3s-on-fly.io]]
+- [[https://github.com/c3os-io/c3os][c3os-io/c3os: Linux Immutable OS for Automated (Decentralized) Kubernetes clusters with k3s]]
+- [[https://github.com/canonical/microk8s][canonical/microk8s: MicroK8s is a small, fast, single-package Kubernetes for developers, IoT and edge.]]
+- [[https://github.com/containerd/containerd/tree/main/contrib/ansible][containerd/contrib/ansible at main · containerd/containerd]]
+- [[https://github.com/devtron-labs/devtron][devtron-labs/devtron: Tool integration platform for Kubernetes]]
+- [[https://kubernetes.io/docs/setup/][Getting started | Kubernetes]]
+  - [[https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/create-cluster-kubeadm/][Creating a cluster with kubeadm | Kubernetes]]
+  - [[https://github.com/vmware-tanzu/sonobuoy][vmware-tanzu/sonobuoy: Sonobuoy is a diagnostic tool that makes it easier to understand the state of a Kubernetes cluster by running a set of Kubernetes conformance tests and other plugins in an accessible and non-destructive manner.]]
+- [[https://github.com/justinas/nixos-ha-kubernetes][justinas/nixos-ha-kubernetes: Toy highly-available Kubernetes cluster on NixOS]]
+- [[https://github.com/k0sproject/k0s][k0sproject/k0s: k0s - The Zero Friction Kubernetes by Team Lens]]
+- [[https://github.com/karmada-io/karmada][karmada-io/karmada: Open, Multi-Cloud, Multi-Cluster Kubernetes Orchestration]]
+- [[https://github.com/kelseyhightower/standalone-kubelet-tutorial][kelseyhightower/standalone-kubelet-tutorial: Standalone Kubelet Tutorial]]
+- [[https://kubernetes.io/docs/reference/setup-tools/kubeadm/][Kubeadm | Kubernetes]]
+  - [[https://github.com/jpetazzo/ampernetacle][jpetazzo/ampernetacle deploy a Kubernetes cluster on Oracle Cloud Inafrastructure]]
+- [[https://github.com/kubealex/libvirt-k8s-provisioner][kubealex/libvirt-k8s-provisioner: Automate your k8s installation]]
+- [[https://github.com/miekg/vks][miekg/vks: Virtual Kubelet Provider for Systemd]]
+- [[https://github.com/MusicDin/kubitect][MusicDin/kubitect: Kubitect provides a simple way to set up a highly available Kubernetes cluster across multiple hosts.]]
+- [[https://github.com/NetBook-ai/spawner][NetBook-ai/spawner: Mulit-Cloud infrastructure orchestrator for kubernetes first development.]]
+- [[https://github.com/nocalhost/nocalhost][nocalhost/nocalhost: Nocalhost is Cloud Native Dev Environment.]]
+- [[https://github.com/poseidon/typhoon][poseidon/typhoon: Minimal and free Kubernetes distribution with Terraform]]
+- [[https://github.com/rancher/k3os][rancher/k3os: Purpose-built OS for Kubernetes, fully managed by Kubernetes.]]
+- [[https://github.com/techno-tim/k3s-ansible][techno-tim/k3s-ansible: A fully automated HA k3s etcd install with kube-vip, MetalLB, and more]]
+- [[https://balaskas.gr/blog/2022/08/31/creating-a-kubernetes-cluster-with-kubeadm-on-ubuntu-2204-lts/][Ευάγγελος Μπαλάσκας - Creating a kubernetes cluster with kubeadm on Ubuntu 22.04 LTS » Evaggelos Balaskas - System Engineer]]
+
+** Rancher
+
+- [[https://rancher.com/quick-start][Getting Started with Kubernetes | Rancher Quick Start]]
+
+#+begin_example
+  01 Prepare a Linux Host
+  Prepare a Linux host with supported version of Docker on the host.
+
+  02 Start the server
+  To install and run Rancher, execute the following Docker command on your host:
+
+  $ sudo docker run --privileged -d --restart=unless-stopped -p 80:80 -p 443:443 rancher/rancher
+
+  To access the Rancher server UI, open a browser and go to the hostname or
+  address where the container was installed. You will be guided through setting
+  up your first cluster.
+#+end_example
+
+* Issues
+
+** [[https://stackoverflow.com/questions/66252195/kubernetes-pod-wont-start-1-nodes-had-a-volume-affinity-conflict][Question]]
+
+I have a pod that won't start with a volume affinity conflict. This is a
+bare-metal cluster so it's unrelated to regions. The pod has 4 persistent
+volume claims which are all reporting bound so I'm assuming it's not one of
+those. There are 4 nodes, one of them is tainted so that the pod will not
+start on it, one of them is tainted specifically so that the pod WILL start on
+it. That's the only affinity I have set up to my knowledge. The message looks
+like this:
+
+0/4 nodes are available: 1 node(s) had taint {XXXXXXX}, 
+that the pod didn't tolerate, 1 node(s) had volume node 
+affinity conflict, 2 Insufficient cpu, 2 Insufficient memory.
+
+This is what I would have expected apart from the volume affinity
+conflict. There are no other affinities set other than to point it at this
+node. I'm really not sure why it's doing this or where to even begin. The
+message isn't super helpful. It does NOT say which node or which volume there
+is a problem with. The one thing I don't really understand is how binding
+works. One of the PVC's is mapped to a PV on another node however it is
+reporting as bound so I'm not completely certain if that's the problem. I am
+using local-storage as the storage class. I'm wondering if that's the problem
+but I'm fairly new to Kubernetes and I'm not sure where to look.
+
+** Answer
+
+You got 4 Nodes but none of them are available for scheduling due to a
+different set of conditions. Note that each Node can be affected by multiple
+issues and so the numbers can add up to more than what you have on total
+nodes. Let's try to address these issues one by one:
+
+    Insufficient memory: Execute kubectl describe node <node-name> to check
+    how much free memory is available there. Check the requests and limits of
+    your pods. Note that Kubernetes will block the full amount of memory a pod
+    requests regardless how much this pod uses.
+
+    Insufficient cpu: Analogical as above.
+
+    node(s) had volume node affinity conflict: Check out if the nodeAffinity
+    of your PersistentVolume (kubectl describe pv) matches the node label
+    (kubectl get nodes). Check if the nodeSelector in your pod also
+    matches. Make sure you set up the Affinity and/or AntiAffinity rules
+    correctly. More details on that can be found here.
+
+    node(s) had taint {XXXXXXX}, that the pod didn't tolerate: You can use
+    kubectl describe node to check taints and kubectl taint nodes <node-name>
+    <taint-name>- in order to remove them. Check the Taints and Tolerations
+    for more details.
+
+* Katacoda Kubernetes
+
+Minikube is a tool that makes it easy to run Kubernetes locally. Minikube runs a single-node Kubernetes cluster inside a VM on your laptop for users looking to try out Kubernetes or develop with it day-to-day.
+
+More details can be found at https://github.com/kubernetes/minikube
+
+** Step 1 - Start Minikube
+Minikube has been installed and configured in the environment. Check that it is properly installed, by running the minikube version command:
+
+minikube version
+
+Start the cluster, by running the minikube start command:
+
+minikube start --wait=false
+
+Great! You now have a running Kubernetes cluster in your online terminal. Minikube started a virtual machine for you, and a Kubernetes cluster is now running in that VM.
+
+** Step 2 - Cluster Info
+The cluster can be interacted with using the kubectl CLI. This is the main approach used for managing Kubernetes and the applications running on top of the cluster.
+
+Details of the cluster and its health status can be discovered via kubectl cluster-info
+
+To view the nodes in the cluster using kubectl get nodes
+
+If the node is marked as NotReady then it is still starting the components.
+
+This command shows all nodes that can be used to host our applications. Now we have only one node, and we can see that it’s status is ready (it is ready to accept applications for deployment).
+
+** Step 3 - Deploy Containers
+With a running Kubernetes cluster, containers can now be deployed.
+
+Using kubectl run, it allows containers to be deployed onto the cluster - kubectl create deployment first-deployment --image=katacoda/docker-http-server
+
+The status of the deployment can be discovered via the running Pods - kubectl get pods
+
+Once the container is running it can be exposed via different networking options, depending on requirements. One possible solution is NodePort, that provides a dynamic port to a container.
+
+kubectl expose deployment first-deployment --port=80 --type=NodePort
+
+The command below finds the allocated port and executes a HTTP request.
+
+export PORT=$(kubectl get svc first-deployment -o go-template='{{range.spec.ports}}{{if .nodePort}}{{.nodePort}}{{"\n"}}{{end}}{{end}}')
+echo "Accessing host01:$PORT"
+curl host01:$PORT
+
+The result is the container that processed the request.
+
+** Step 4 - Dashboard
+Enable the dashboard using Minikube with the command minikube addons enable dashboard
+
+Make the Kubernetes Dashboard available by deploying the following YAML definition. This should only be used on Katacoda.
+
+kubectl apply -f /opt/kubernetes-dashboard.yaml
+
+The Kubernetes dashboard allows you to view your applications in a UI. In this deployment, the dashboard has been made available on port 30000 but may take a while to start.
+
+To see the progress of the Dashboard starting, watch the Pods within the kube-system namespace using kubectl get pods -n kubernetes-dashboard -w
+
+Once running, the URL to the dashboard is https://2886795308-30000-simba08.environments.katacoda.com/
+
+* kubevirt
+
+#+begin_example
+  oleg@guixsd ~$ kubectl get pods -n kubevirt
+  NAME                               READY   STATUS    RESTARTS        AGE
+  virt-api-8986f8d94-m5zr4           1/1     Running   9 (99m ago)     6h56m
+  virt-handler-lvzs4                 1/1     Running   28 (101m ago)   2d10h
+  virt-controller-5599f57bf4-rjsr9   1/1     Running   9 (101m ago)    6h56m
+  virt-controller-5599f57bf4-5qljd   1/1     Running   9 (101m ago)    6h56m
+  virt-api-8986f8d94-gww4h           1/1     Running   9 (99m ago)     6h56m
+  virt-operator-5df564dc7c-258xk     1/1     Running   9 (101m ago)    6h56m
+  virt-operator-5df564dc7c-q7mj2     1/1     Running   9 (101m ago)    6h56m
+#+end_example
+
 * Learning
 - [[https://www.youtube.com/watch?v=n4zxKk2an3U][(28) Learn Kubernetes with this Introductory Course in One Hour (All Core Components and Hands On!) - YouTube]]
 - [[https://alesnosek.com/blog/2017/02/14/accessing-kubernetes-pods-from-outside-of-the-cluster/][Accessing Kubernetes Pods from Outside of the Cluster - Ales Nosek - The Software Practitioner]]
@@ -96,6 +402,66 @@
 - [[https://habr.com/ru/company/otus/blog/653973/][Тестирование сетевых политик с помощью Minikube / Хабр]]
 - [[https://habr.com/ru/company/nixys/blog/657359/][Универсальный Helm-чарт для ваших приложений / Хабр]]
 - [[https://serveradmin.ru/kubernetes-ustanovka/][Установка кластера Kubernetes | serveradmin.ru]]
+
+* Misc
+- [[https://github.com/aquasecurity/kube-bench][aquasecurity/kube-bench: Checks whether Kubernetes is deployed according to security best practices as defined in the CIS Kubernetes Benchmark]]
+- [[https://github.com/kubevirt/kubevirt][kubevirt/kubevirt: Kubernetes Virtualization API and runtime in order to define and manage virtual machines.]]
+- [[https://github.com/kubernetes-sigs/kind][kubernetes-sigs/kind: Kubernetes IN Docker - local clusters for testing Kubernetes]]
+- [[https://github.com/criticalstack/quake-kube][quake-kube Quake 3 on Kubernetes]]
+- [[https://github.com/oneinfra/oneinfra][oneinfra/oneinfra: Kubernetes as a Service]]
+- [[https://github.com/hjacobs/kubernetes-failure-stories][hjacobs/kubernetes-failure-stories: Compilation of public failure/horror stories related to Kubernetes]]
+- [[https://github.com/kubernetes/kops][kubernetes/kops: Kubernetes Operations (kops) - Production Grade K8s Installation, Upgrades, and Management]]
+- [[https://github.com/argoproj/argo-cd/][argoproj/argo-cd: Declarative continuous deployment for Kubernetes.]]
+- [[https://fluxcd.io/][Flux]]
+- [[https://github.com/criticalstack/quake-kube][criticalstack/quake-kube: Quake 3 on Kubernetes]]
+- [[https://github.com/flyteorg/flyte][flyteorg/flyte: Kubernetes-native workflow automation platform for complex, mission-critical data and ML processes at scale. It has been battle-tested at Lyft, Spotify, Freenome, and others and is truly open-source.]]
+- [[https://github.com/storax/kubedoom][storax/kubedoom: Kill Kubernetes pods by playing Id's DOOM!]]
+- [[https://opensource.com/article/21/6/kube-doom][Play Doom on Kubernetes | Opensource.com]]
+
+* Monitoring
+- [[https://habr.com/ru/post/586206/][Kubernetes monitoring от простого к сложному (Николай Храмчихин) / Хабр]]
+
+* Networking
+
+: $ kubectl describe node | grep '^Name\|PodCIDR'
+#+begin_example
+  Name:               kube1
+  PodCIDR:                      10.1.0.0/24
+  PodCIDRs:                     10.1.0.0/24
+  ...
+  Name:               kube7
+  PodCIDR:                      10.1.6.0/24
+  PodCIDRs:                     10.1.6.0/24
+#+end_example
+
+* Operators
+- [[https://github.com/flant/shell-operator][flant/shell-operator: Shell-operator is a tool for running event-driven scripts in a Kubernetes cluster]]
+- [[https://habr.com/ru/company/southbridge/blog/556860/][Пишем оператор Kubernetes с нуля / Хабр]]
+
+* pv
+** dynamic
+- [[https://github.com/rancher/local-path-provisioner][rancher/local-path-provisioner: Dynamically provisioning persistent local storage with Kubernetes]]
+#+begin_example
+  $ kubectl create -f https://raw.githubusercontent.com/rancher/local-path-provisioner/v0.0.22/deploy/local-path-storage.yaml
+  namespace/local-path-storage created
+  serviceaccount/local-path-provisioner-service-account created
+  clusterrole.rbac.authorization.k8s.io/local-path-provisioner-role created
+  clusterrolebinding.rbac.authorization.k8s.io/local-path-provisioner-bind created
+  deployment.apps/local-path-provisioner created
+  storageclass.storage.k8s.io/local-path created
+  configmap/local-path-config created
+#+end_example
+
+#+begin_example
+  $ kubectl delete -f https://raw.githubusercontent.com/rancher/local-path-provisioner/v0.0.22/deploy/local-path-storage.yaml
+  namespace "local-path-storage" deleted
+  serviceaccount "local-path-provisioner-service-account" deleted
+  clusterrole.rbac.authorization.k8s.io "local-path-provisioner-role" deleted
+  clusterrolebinding.rbac.authorization.k8s.io "local-path-provisioner-bind" deleted
+  deployment.apps "local-path-provisioner" deleted
+  storageclass.storage.k8s.io "local-path" deleted
+  configmap "local-path-config" deleted
+#+end_example
 
 * Tools
 - [[https://habr.com/ru/company/southbridge/blog/523358/][11 инструментов, делающих Kubernetes лучше / Блог компании Southbridge / Хабр]]
@@ -283,369 +649,3 @@
 - [[https://github.com/crossplane/provider-template][crossplane/provider-template: A template for building @crossplane providers.]]
 - [[https://github.com/crossplane/terrajet][crossplane/terrajet: Generate Crossplane Providers from any Terraform Provider]]
 
-* pv
-** dynamic
-- [[https://github.com/rancher/local-path-provisioner][rancher/local-path-provisioner: Dynamically provisioning persistent local storage with Kubernetes]]
-#+begin_example
-  $ kubectl create -f https://raw.githubusercontent.com/rancher/local-path-provisioner/v0.0.22/deploy/local-path-storage.yaml
-  namespace/local-path-storage created
-  serviceaccount/local-path-provisioner-service-account created
-  clusterrole.rbac.authorization.k8s.io/local-path-provisioner-role created
-  clusterrolebinding.rbac.authorization.k8s.io/local-path-provisioner-bind created
-  deployment.apps/local-path-provisioner created
-  storageclass.storage.k8s.io/local-path created
-  configmap/local-path-config created
-#+end_example
-
-#+begin_example
-  $ kubectl delete -f https://raw.githubusercontent.com/rancher/local-path-provisioner/v0.0.22/deploy/local-path-storage.yaml
-  namespace "local-path-storage" deleted
-  serviceaccount "local-path-provisioner-service-account" deleted
-  clusterrole.rbac.authorization.k8s.io "local-path-provisioner-role" deleted
-  clusterrolebinding.rbac.authorization.k8s.io "local-path-provisioner-bind" deleted
-  deployment.apps "local-path-provisioner" deleted
-  storageclass.storage.k8s.io "local-path" deleted
-  configmap "local-path-config" deleted
-#+end_example
-
-* Helm
-- [[https://github.com/twuni/docker-registry.helm][twuni/docker-registry.helm: Helm chart for a Docker registry. Successor to stable/docker-registry chart.]]
-- [[https://helm.sh/docs/topics/charts/][Helm Documentation | Charts]]
-** Tools
-- [[https://github.com/databus23/schelm][databus23/schelm: Render a helm manifest to a directory]]
-** Cheat sheet
-: helm create mychart
-
-* Installation
-- [[https://github.com/adieu/nixos-k8s-flake][adieu/nixos-k8s-flake: Kubernetes Flake for NixOS with full control]]
-- [[https://github.com/adieu/nixos-k8s-flake][adieu/nixos-k8s-flake: Kubernetes Flake for NixOS with full control]]
-- [[https://github.com/alexellis/k8s-on-raspbian][alexellis/k8s-on-raspbian: Kubernetes on Raspbian (Raspberry Pi)]]
-- [[https://github.com/bbigras/k3s-on-fly.io][bbigras/k3s-on-fly.io]]
-- [[https://github.com/c3os-io/c3os][c3os-io/c3os: Linux Immutable OS for Automated (Decentralized) Kubernetes clusters with k3s]]
-- [[https://github.com/canonical/microk8s][canonical/microk8s: MicroK8s is a small, fast, single-package Kubernetes for developers, IoT and edge.]]
-- [[https://github.com/containerd/containerd/tree/main/contrib/ansible][containerd/contrib/ansible at main · containerd/containerd]]
-- [[https://github.com/devtron-labs/devtron][devtron-labs/devtron: Tool integration platform for Kubernetes]]
-- [[https://kubernetes.io/docs/setup/][Getting started | Kubernetes]]
-  - [[https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/create-cluster-kubeadm/][Creating a cluster with kubeadm | Kubernetes]]
-  - [[https://github.com/vmware-tanzu/sonobuoy][vmware-tanzu/sonobuoy: Sonobuoy is a diagnostic tool that makes it easier to understand the state of a Kubernetes cluster by running a set of Kubernetes conformance tests and other plugins in an accessible and non-destructive manner.]]
-- [[https://github.com/justinas/nixos-ha-kubernetes][justinas/nixos-ha-kubernetes: Toy highly-available Kubernetes cluster on NixOS]]
-- [[https://github.com/k0sproject/k0s][k0sproject/k0s: k0s - The Zero Friction Kubernetes by Team Lens]]
-- [[https://github.com/karmada-io/karmada][karmada-io/karmada: Open, Multi-Cloud, Multi-Cluster Kubernetes Orchestration]]
-- [[https://github.com/kelseyhightower/standalone-kubelet-tutorial][kelseyhightower/standalone-kubelet-tutorial: Standalone Kubelet Tutorial]]
-- [[https://kubernetes.io/docs/reference/setup-tools/kubeadm/][Kubeadm | Kubernetes]]
-  - [[https://github.com/jpetazzo/ampernetacle][jpetazzo/ampernetacle deploy a Kubernetes cluster on Oracle Cloud Inafrastructure]]
-- [[https://github.com/kubealex/libvirt-k8s-provisioner][kubealex/libvirt-k8s-provisioner: Automate your k8s installation]]
-- [[https://github.com/miekg/vks][miekg/vks: Virtual Kubelet Provider for Systemd]]
-- [[https://github.com/MusicDin/kubitect][MusicDin/kubitect: Kubitect provides a simple way to set up a highly available Kubernetes cluster across multiple hosts.]]
-- [[https://github.com/NetBook-ai/spawner][NetBook-ai/spawner: Mulit-Cloud infrastructure orchestrator for kubernetes first development.]]
-- [[https://github.com/nocalhost/nocalhost][nocalhost/nocalhost: Nocalhost is Cloud Native Dev Environment.]]
-- [[https://github.com/poseidon/typhoon][poseidon/typhoon: Minimal and free Kubernetes distribution with Terraform]]
-- [[https://github.com/rancher/k3os][rancher/k3os: Purpose-built OS for Kubernetes, fully managed by Kubernetes.]]
-- [[https://github.com/techno-tim/k3s-ansible][techno-tim/k3s-ansible: A fully automated HA k3s etcd install with kube-vip, MetalLB, and more]]
-- [[https://balaskas.gr/blog/2022/08/31/creating-a-kubernetes-cluster-with-kubeadm-on-ubuntu-2204-lts/][Ευάγγελος Μπαλάσκας - Creating a kubernetes cluster with kubeadm on Ubuntu 22.04 LTS » Evaggelos Balaskas - System Engineer]]
-
-** Rancher
-
-- [[https://rancher.com/quick-start][Getting Started with Kubernetes | Rancher Quick Start]]
-
-#+begin_example
-  01 Prepare a Linux Host
-  Prepare a Linux host with supported version of Docker on the host.
-
-  02 Start the server
-  To install and run Rancher, execute the following Docker command on your host:
-
-  $ sudo docker run --privileged -d --restart=unless-stopped -p 80:80 -p 443:443 rancher/rancher
-
-  To access the Rancher server UI, open a browser and go to the hostname or
-  address where the container was installed. You will be guided through setting
-  up your first cluster.
-#+end_example
-
-* Monitoring
-- [[https://habr.com/ru/post/586206/][Kubernetes monitoring от простого к сложному (Николай Храмчихин) / Хабр]]
-
-* Operators
-- [[https://github.com/flant/shell-operator][flant/shell-operator: Shell-operator is a tool for running event-driven scripts in a Kubernetes cluster]]
-- [[https://habr.com/ru/company/southbridge/blog/556860/][Пишем оператор Kubernetes с нуля / Хабр]]
-
-* Misc
-- [[https://github.com/aquasecurity/kube-bench][aquasecurity/kube-bench: Checks whether Kubernetes is deployed according to security best practices as defined in the CIS Kubernetes Benchmark]]
-- [[https://github.com/kubevirt/kubevirt][kubevirt/kubevirt: Kubernetes Virtualization API and runtime in order to define and manage virtual machines.]]
-- [[https://github.com/kubernetes-sigs/kind][kubernetes-sigs/kind: Kubernetes IN Docker - local clusters for testing Kubernetes]]
-- [[https://github.com/criticalstack/quake-kube][quake-kube Quake 3 on Kubernetes]]
-- [[https://github.com/oneinfra/oneinfra][oneinfra/oneinfra: Kubernetes as a Service]]
-- [[https://github.com/hjacobs/kubernetes-failure-stories][hjacobs/kubernetes-failure-stories: Compilation of public failure/horror stories related to Kubernetes]]
-- [[https://github.com/kubernetes/kops][kubernetes/kops: Kubernetes Operations (kops) - Production Grade K8s Installation, Upgrades, and Management]]
-- [[https://github.com/argoproj/argo-cd/][argoproj/argo-cd: Declarative continuous deployment for Kubernetes.]]
-- [[https://fluxcd.io/][Flux]]
-- [[https://github.com/criticalstack/quake-kube][criticalstack/quake-kube: Quake 3 on Kubernetes]]
-- [[https://github.com/flyteorg/flyte][flyteorg/flyte: Kubernetes-native workflow automation platform for complex, mission-critical data and ML processes at scale. It has been battle-tested at Lyft, Spotify, Freenome, and others and is truly open-source.]]
-- [[https://github.com/storax/kubedoom][storax/kubedoom: Kill Kubernetes pods by playing Id's DOOM!]]
-- [[https://opensource.com/article/21/6/kube-doom][Play Doom on Kubernetes | Opensource.com]]
-
-* How-to
-- [[https://habr.com/ru/post/569124/][Cам себе облако: установка ELK и TICK стеков в Kubernetes / Хабр]]
-
-* Katacoda Kubernetes
-
-Minikube is a tool that makes it easy to run Kubernetes locally. Minikube runs a single-node Kubernetes cluster inside a VM on your laptop for users looking to try out Kubernetes or develop with it day-to-day.
-
-More details can be found at https://github.com/kubernetes/minikube
-
-** Step 1 - Start Minikube
-Minikube has been installed and configured in the environment. Check that it is properly installed, by running the minikube version command:
-
-minikube version
-
-Start the cluster, by running the minikube start command:
-
-minikube start --wait=false
-
-Great! You now have a running Kubernetes cluster in your online terminal. Minikube started a virtual machine for you, and a Kubernetes cluster is now running in that VM.
-
-** Step 2 - Cluster Info
-The cluster can be interacted with using the kubectl CLI. This is the main approach used for managing Kubernetes and the applications running on top of the cluster.
-
-Details of the cluster and its health status can be discovered via kubectl cluster-info
-
-To view the nodes in the cluster using kubectl get nodes
-
-If the node is marked as NotReady then it is still starting the components.
-
-This command shows all nodes that can be used to host our applications. Now we have only one node, and we can see that it’s status is ready (it is ready to accept applications for deployment).
-
-** Step 3 - Deploy Containers
-With a running Kubernetes cluster, containers can now be deployed.
-
-Using kubectl run, it allows containers to be deployed onto the cluster - kubectl create deployment first-deployment --image=katacoda/docker-http-server
-
-The status of the deployment can be discovered via the running Pods - kubectl get pods
-
-Once the container is running it can be exposed via different networking options, depending on requirements. One possible solution is NodePort, that provides a dynamic port to a container.
-
-kubectl expose deployment first-deployment --port=80 --type=NodePort
-
-The command below finds the allocated port and executes a HTTP request.
-
-export PORT=$(kubectl get svc first-deployment -o go-template='{{range.spec.ports}}{{if .nodePort}}{{.nodePort}}{{"\n"}}{{end}}{{end}}')
-echo "Accessing host01:$PORT"
-curl host01:$PORT
-
-The result is the container that processed the request.
-
-** Step 4 - Dashboard
-Enable the dashboard using Minikube with the command minikube addons enable dashboard
-
-Make the Kubernetes Dashboard available by deploying the following YAML definition. This should only be used on Katacoda.
-
-kubectl apply -f /opt/kubernetes-dashboard.yaml
-
-The Kubernetes dashboard allows you to view your applications in a UI. In this deployment, the dashboard has been made available on port 30000 but may take a while to start.
-
-To see the progress of the Dashboard starting, watch the Pods within the kube-system namespace using kubectl get pods -n kubernetes-dashboard -w
-
-Once running, the URL to the dashboard is https://2886795308-30000-simba08.environments.katacoda.com/
-
-* Cheat sheet
-
-#+begin_example
-  [root@vm30:~]# lsns | grep nginx
-  4026532800 mnt         2  80051 root             nginx: master process nginx -g daemon off;
-  4026532801 pid         2  80051 root             nginx: master process nginx -g daemon off;
-  4026532802 cgroup      2  80051 root             nginx: master process nginx -g daemon off;
-  4026532865 mnt        20  90081 101              /usr/bin/dumb-init -- /nginx-ingress-controller --publish-service=ingress-nginx/ingress-nginx-controller --election-id=ingress-controller-leader --controller-class=k8s.io/ingress-nginx --ingress-class=nginx --configmap=ingress-nginx/ingress-nginx-controller --validating-webhook=:8443 --validating-webhook-certificate=/usr/local/certificates/cert --validating-webhook-key=/usr/local/certificates/key
-  4026532866 pid        20  90081 101              /usr/bin/dumb-init -- /nginx-ingress-controller --publish-service=ingress-nginx/ingress-nginx-controller --election-id=ingress-controller-leader --controller-class=k8s.io/ingress-nginx --ingress-class=nginx --configmap=ingress-nginx/ingress-nginx-controller --validating-webhook=:8443 --validating-webhook-certificate=/usr/local/certificates/cert --validating-webhook-key=/usr/local/certificates/key
-  4026532867 cgroup     20  90081 101              /usr/bin/dumb-init -- /nginx-ingress-controller --publish-service=ingress-nginx/ingress-nginx-controller --election-id=ingress-controller-leader --controller-class=k8s.io/ingress-nginx --ingress-class=nginx --configmap=ingress-nginx/ingress-nginx-controller --validating-webhook=:8443 --validating-webhook-certificate=/usr/local/certificates/cert --validating-webhook-key=/usr/local/certificates/key
-
-  [root@vm30:~]# nsenter -t 80051 -n curl localhost 
-  <!DOCTYPE html>
-  <html>
-  ...
-#+end_example
-
-- clean state
-  : rm -rf /var/lib/{kubernetes,cfssl,cni,containerd,etcd,kubelet}
-
-- print everything
-  : kubectl get all -A
-  : kubectl get all --all-namespaces
-  : kubectl get all,cm,secret,ing -A
-  : kubectl api-resources --verbs=list
-  : kubectl get events -A
-
-- API
-  : kubectl api-resources
-  : kubectl api-versions
-
-- cdi-uploadproxy
-: kubectl get service cdi-uploadproxy -n cdi
-
-- delete terminating ns
-#+begin_example
-  oleg@guixsd ~$ kubectl proxy
-  Starting to serve on 127.0.0.1:8001
-
-  NAMESPACE=cdi
-  kubectl get namespace $NAMESPACE -o json |jq '.spec = {"finalizers":[]}' >temp.json
-  curl -k -H "Content-Type: application/json" -X PUT --data-binary @temp.json 127.0.0.1:8001/api/v1/namespaces/$NAMESPACE/finalize
-#+end_example
-
-- pvc
-#+begin_example
-  oleg@guixsd ~$ virtctl image-upload --pvc-name=guix-vm-pv --pvc-size=2Gi --image-path=/tmp/guix.qcow2 --uploadproxy-url=https://10.43.181.37 --insecure
-  PVC default/guix-vm-pv not found
-  PersistentVolumeClaim default/guix-vm-pv created
-  Waiting for PVC guix-vm-pv upload pod to be ready...
-  Pod now ready
-  Uploading data to https://10.43.181.37
-#+end_example
-
-- get context
-  #+begin_example
-    oleg@guixsd ~$ kubectl config get-contexts
-    CURRENT   NAME           CLUSTER        AUTHINFO             NAMESPACE
-    ,*         k8s-cluster0   k8s-cluster0   k8s-cluster0-admin   
-  #+end_example
-
-- change context
-  #+begin_example
-    kubectl config use-context k8s-cluster0
-  #+end_example
-
-- change namespace
-  #+begin_example
-    kubectl config set-context --current --namespace=<insert-namespace-name-here>
-    # Validate it
-    kubectl config view --minify | grep namespace:
-  #+end_example
-
-- run linter
-  : docker run --network=host --rm -it -v $HOME/.kube:/root/.kube -e POPEYE_REPORT_DIR=/tmp/popeye -v /tmp/popeye:/tmp/popeye derailed/popeye --context k8s-cluster0-lb -n default --save --out html --output-file report.html
-
-- mark master nodes as unschedulable
-  : kubectl taint node kube3 unschedulable=true:NoSchedule
-
-- drain node
-  : kubectl drain kube6 --ignore-daemonsets --delete-emptydir-data
-
-- undrain node
-  : kubectl uncordon kube6
-
-- get documentation
-  : kubectl explain --api-version=networking.k8s.io/v1 ingress.spec.rules.http.paths.backend
-
-- dump all information
-  : kubectl cluster-info dump
-
-* How it works
-
-First of all you should have a working etcd.
-
-#+begin_example
-  [root@kube1:~]# ss -tulpn
-  Netid          State           Recv-Q          Send-Q                   Local Address:Port                     Peer Address:Port          Process
-  tcp            LISTEN          0               4096                         127.0.0.1:38421                         0.0.0.0:*              users:(("containerd",pid=885,fd=14))
-  tcp            LISTEN          0               128                       172.16.103.9:22                            0.0.0.0:*              users:(("sshd",pid=911,fd=3))
-  tcp            LISTEN          0               4096                      172.16.103.9:443                           0.0.0.0:*              users:(("kube-apiserver",pid=3104049,fd=7))
-  tcp            LISTEN          0               4096                      172.16.103.9:2379                          0.0.0.0:*              users:(("etcd",pid=3104054,fd=9))
-  tcp            LISTEN          0               4096                      172.16.103.9:2380                          0.0.0.0:*              users:(("etcd",pid=3104054,fd=8))
-#+end_example
-
-After that you should start kube-apiserver, which allows to use kubectl
-utility, which connects you to the cluster.
-
-#+begin_example
-  [root@kube1:~]# kubectl --insecure-skip-tls-verify get -A all
-  NAMESPACE   NAME                 TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)   AGE
-  default     service/kubernetes   ClusterIP   10.0.0.1     <none>        443/TCP   10h
-#+end_example
-
-=kubelet= will start itself and =containerd= service
-
-starting the following units: systemd-modules-load.service, systemd-sysctl.service
-the following new units were started: containerd.service, kubelet.service
-
-* kubevirt
-
-#+begin_example
-  oleg@guixsd ~$ kubectl get pods -n kubevirt
-  NAME                               READY   STATUS    RESTARTS        AGE
-  virt-api-8986f8d94-m5zr4           1/1     Running   9 (99m ago)     6h56m
-  virt-handler-lvzs4                 1/1     Running   28 (101m ago)   2d10h
-  virt-controller-5599f57bf4-rjsr9   1/1     Running   9 (101m ago)    6h56m
-  virt-controller-5599f57bf4-5qljd   1/1     Running   9 (101m ago)    6h56m
-  virt-api-8986f8d94-gww4h           1/1     Running   9 (99m ago)     6h56m
-  virt-operator-5df564dc7c-258xk     1/1     Running   9 (101m ago)    6h56m
-  virt-operator-5df564dc7c-q7mj2     1/1     Running   9 (101m ago)    6h56m
-#+end_example
-
-* Issues
-
-** [[https://stackoverflow.com/questions/66252195/kubernetes-pod-wont-start-1-nodes-had-a-volume-affinity-conflict][Question]]
-
-I have a pod that won't start with a volume affinity conflict. This is a
-bare-metal cluster so it's unrelated to regions. The pod has 4 persistent
-volume claims which are all reporting bound so I'm assuming it's not one of
-those. There are 4 nodes, one of them is tainted so that the pod will not
-start on it, one of them is tainted specifically so that the pod WILL start on
-it. That's the only affinity I have set up to my knowledge. The message looks
-like this:
-
-0/4 nodes are available: 1 node(s) had taint {XXXXXXX}, 
-that the pod didn't tolerate, 1 node(s) had volume node 
-affinity conflict, 2 Insufficient cpu, 2 Insufficient memory.
-
-This is what I would have expected apart from the volume affinity
-conflict. There are no other affinities set other than to point it at this
-node. I'm really not sure why it's doing this or where to even begin. The
-message isn't super helpful. It does NOT say which node or which volume there
-is a problem with. The one thing I don't really understand is how binding
-works. One of the PVC's is mapped to a PV on another node however it is
-reporting as bound so I'm not completely certain if that's the problem. I am
-using local-storage as the storage class. I'm wondering if that's the problem
-but I'm fairly new to Kubernetes and I'm not sure where to look.
-
-** Answer
-
-You got 4 Nodes but none of them are available for scheduling due to a
-different set of conditions. Note that each Node can be affected by multiple
-issues and so the numbers can add up to more than what you have on total
-nodes. Let's try to address these issues one by one:
-
-    Insufficient memory: Execute kubectl describe node <node-name> to check
-    how much free memory is available there. Check the requests and limits of
-    your pods. Note that Kubernetes will block the full amount of memory a pod
-    requests regardless how much this pod uses.
-
-    Insufficient cpu: Analogical as above.
-
-    node(s) had volume node affinity conflict: Check out if the nodeAffinity
-    of your PersistentVolume (kubectl describe pv) matches the node label
-    (kubectl get nodes). Check if the nodeSelector in your pod also
-    matches. Make sure you set up the Affinity and/or AntiAffinity rules
-    correctly. More details on that can be found here.
-
-    node(s) had taint {XXXXXXX}, that the pod didn't tolerate: You can use
-    kubectl describe node to check taints and kubectl taint nodes <node-name>
-    <taint-name>- in order to remove them. Check the Taints and Tolerations
-    for more details.
-
-* Networking
-
-: $ kubectl describe node | grep '^Name\|PodCIDR'
-#+begin_example
-  Name:               kube1
-  PodCIDR:                      10.1.0.0/24
-  PodCIDRs:                     10.1.0.0/24
-  ...
-  Name:               kube7
-  PodCIDR:                      10.1.6.0/24
-  PodCIDRs:                     10.1.6.0/24
-#+end_example
-
-* Ingress
-
-- install
-  : kubectl create namespace ingress-nginx
-  : helm install -n ingress-nginx ingress-nginx ingress-nginx/ingress-nginx
