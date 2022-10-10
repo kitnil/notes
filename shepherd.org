@@ -536,3 +536,18 @@ I hope this will help add more detailed examples to the GNU Shepherd manual.
 
   systemd-udev-settle systemd-udev-trigger systemd-udevd systemd-user-sessions tlp wpa_supplicant))
 #+end_src
+
+#+begin_src scheme
+  (actions
+   (list
+    (shepherd-action
+     (name 'reload)
+     (documentation "Reload NGINX configuration file and restart worker processes.")
+     (procedure
+      #~(lambda (pid)
+          (if pid
+              (begin
+                (kill pid SIGHUP)
+                (format #t "Service NGINX (PID ~a) has been reloaded." pid))
+              (format #t "Service NGINX is not running.")))))))
+#+end_src
