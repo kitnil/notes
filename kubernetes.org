@@ -61,6 +61,9 @@
   Uploading data to https://10.43.181.37
 #+end_example
 
+- get storage info
+  :  kubectl get --raw "/api/v1/nodes/kube7/proxy/stats/summary
+
 - get context
   #+begin_example
     oleg@guixsd ~$ kubectl config get-contexts
