@@ -3,3 +3,4 @@
 :END:
 - alerta query --filter status=ack
 - alerta query --filter service=mysql.quota
+- for id in $(alerta query --filter event=rbl.check | awk '/iprange/ { print $1 }'); do alerta ack --ids "$id"; done
