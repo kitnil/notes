@@ -62,7 +62,7 @@
 #+end_example
 
 - get storage info
-  :  kubectl get --raw "/api/v1/nodes/kube7/proxy/stats/summary
+  : kubectl get --raw "/api/v1/nodes/kube7/proxy/stats/summary
 
 - get context
   #+begin_example
