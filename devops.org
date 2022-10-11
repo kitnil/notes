@@ -29,8 +29,13 @@
 - [[https://github.com/cloudposse/geodesic][cloudposse/geodesic: Geodesic is a DevOps Linux Toolbox in Docker]]
 * Tools
 - [[https://github.com/alajmo/sake][alajmo/sake: sake is a task runner for local and remote hosts]]
-- [[https://github.com/pulumi/pulumi][pulumi/pulumi: Pulumi - Modern Infrastructure as Code. Any cloud, any language 🚀]]
-- [[https://github.com/prometheus/blackbox_exporter][prometheus/blackbox_exporter: Blackbox prober exporter]]
+- [[https://github.com/allero-io/allero][allero-io/allero: Prevent CI/CD Bad Practices]]
+- [[https://github.com/chef/omnibus][chef/omnibus: Easily create full-stack installers for your project across a variety of platforms.]]
+- [[https://github.com/hashicorp/waypoint][hashicorp/waypoint: A tool to build, deploy, and release any application on any platform.]]
+- [[https://github.com/hubblo-org/scaphandre][hubblo-org/scaphandre: Energy consumption metrology agent. Let "scaph" dive and bring back the metrics that will help you make your systems and applications more sustainable !]]
+- [[https://github.com/kubevela/kubevela][kubevela/kubevela: The Modern Application Platform.]]
+- [[https://github.com/Netflix/dispatch][Netflix/dispatch: All of the ad-hoc things you're doing to manage incidents today, done for you, and much more!]]
+- [[https://github.com/orchest/orchest][orchest/orchest: Build data pipelines, the easy way]]
 - [[https://github.com/picostack/core][picostack/core: The core services that form the basis of the Pico Stack.]]
   - Traefik: as a HTTP gateway and for automatic SSL certificates
   - Portainer: to see what's running
@@ -40,14 +45,9 @@
   - Node Exporter: for system metrics
   - cAdvisor: for container metrics
   - Loki: for log aggregation
-- [[https://github.com/rundeck][rundeck - Enable Self-Service Operations: Give specific users access to your existing tools, services, and scripts]]
-- [[https://github.com/hashicorp/waypoint][hashicorp/waypoint: A tool to build, deploy, and release any application on any platform.]]
-- [[https://github.com/hubblo-org/scaphandre][hubblo-org/scaphandre: Energy consumption metrology agent. Let "scaph" dive and bring back the metrics that will help you make your systems and applications more sustainable !]]
-- [[https://github.com/orchest/orchest][orchest/orchest: Build data pipelines, the easy way]]
-- [[https://github.com/kubevela/kubevela][kubevela/kubevela: The Modern Application Platform.]]
-- [[https://github.com/tweag/nickel][tweag/nickel: Better configuration for less]]
-- [[https://github.com/Netflix/dispatch][Netflix/dispatch: All of the ad-hoc things you're doing to manage incidents today, done for you, and much more!]]
-- [[https://github.com/spinnaker/spinnaker][spinnaker/spinnaker: Spinnaker is an open source, multi-cloud continuous delivery platform for releasing software changes with high velocity and confidence.]]
-- [[https://github.com/chef/omnibus][chef/omnibus: Easily create full-stack installers for your project across a variety of platforms.]]
+- [[https://github.com/prometheus/blackbox_exporter][prometheus/blackbox_exporter: Blackbox prober exporter]]
+- [[https://github.com/pulumi/pulumi][pulumi/pulumi: Pulumi - Modern Infrastructure as Code. Any cloud, any language 🚀]]
 - [[https://github.com/renovatebot/renovate][renovatebot/renovate: Universal dependency update tool that fits into your workflows.]]
-- [[https://github.com/allero-io/allero][allero-io/allero: Prevent CI/CD Bad Practices]]
+- [[https://github.com/rundeck][rundeck - Enable Self-Service Operations: Give specific users access to your existing tools, services, and scripts]]
+- [[https://github.com/spinnaker/spinnaker][spinnaker/spinnaker: Spinnaker is an open source, multi-cloud continuous delivery platform for releasing software changes with high velocity and confidence.]]
+- [[https://github.com/tweag/nickel][tweag/nickel: Better configuration for less]]
