@@ -67,6 +67,9 @@
 - get specific node
   : kubectl get all --all-namespaces -o wide --field-selector spec.nodeName=kube7
 
+- show node labels
+  : kubectl get nodes --show-labels
+
 - get context
   #+begin_example
     oleg@guixsd ~$ kubectl config get-contexts
