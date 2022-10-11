@@ -64,6 +64,9 @@
 - get storage info
   : kubectl get --raw "/api/v1/nodes/kube7/proxy/stats/summary
 
+- get specific node
+  : kubectl get all --all-namespaces -o wide --field-selector spec.nodeName=kube7
+
 - get context
   #+begin_example
     oleg@guixsd ~$ kubectl config get-contexts
