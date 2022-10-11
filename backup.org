@@ -3,12 +3,12 @@
 :END:
 #+title: Backup
 
-- [[id:5e8b6846-64d5-4cda-b29c-7c847b70d595][Bup]]
-- [[https://github.com/dpc/rdedup][dpc/rdedup: Data deduplication engine, supporting optional compression and public key encryption.]]
-- [[https://github.com/miekg/rdup][miekg/rdup: The only backup program that doesn't make backups!]]
 - [[https://github.com/andrewchambers/bupstash][andrewchambers/bupstash: Easy and efficient encrypted backups.]]
+- [[https://github.com/borgmatic-collective/docker-borgmatic][borgmatic-collective/docker-borgmatic: Borgmatic in Docker]]
+- [[id:5e8b6846-64d5-4cda-b29c-7c847b70d595][Bup]]
 - [[https://github.com/kopia/kopia][Cross-platform backup tool for Windows, macOS & Linux with fast, incremental backups, client-side end-to-end encryption, compression and data deduplication. CLI and GUI included.]]
 - [[https://github.com/cupcakearmy/autorestic][cupcakearmy/autorestic: Config driven, easy backup cli for restic.]]
-- [[https://github.com/borgmatic-collective/docker-borgmatic][borgmatic-collective/docker-borgmatic: Borgmatic in Docker]]
+- [[https://github.com/dpc/rdedup][dpc/rdedup: Data deduplication engine, supporting optional compression and public key encryption.]]
 - [[https://github.com/gilbertchen/duplicacy][gilbertchen/duplicacy: A new generation cloud backup tool]]
+- [[https://github.com/miekg/rdup][miekg/rdup: The only backup program that doesn't make backups!]]
 - [[https://www.urbackup.org/][UrBackup - Client/Server Open Source Network Backup for Windows and Linux]]
