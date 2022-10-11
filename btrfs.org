@@ -17,6 +17,7 @@
 - [[https://github.com/digint/btrbk][digint/btrbk: Tool for creating snapshots and remote backups of btrfs subvolumes]]
 - [[https://dataswamp.org/~solene/2022-08-16-btrfs-deduplication-with-bees.html][Solene'% : BTRFS deduplication using bees]]
 - [[https://dataswamp.org/~solene/2022-08-29-btrfs-cheatsheet.html][Solene'% : My BTRFS cheatsheet]]
+- [[https://github.com/maharmstone/btrfs][maharmstone/btrfs: WinBtrfs - an open-source btrfs driver for Windows]]
 
 #+begin_example
   [root@web15:~]# btrfs qgroup limit -e 15G /home/u230390
