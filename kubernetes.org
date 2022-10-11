@@ -110,6 +110,12 @@
 - dump all information
   : kubectl cluster-info dump
 
+- run pod with networking utilities for debuging
+  : kubectl run --rm -it netshoot --image=nicolaka/netshoot /bin/bash
+
+- run pod on specific node with =kubectl run=
+  : kubectl run mypod --image alpine --overrides='{"apiVersion": "v1", "spec": {"nodeSelector": { "kubernetes.io/hostname": "kube1" }}}' --command -- sleep 100000000000000
+
 * Helm
 - [[https://github.com/twuni/docker-registry.helm][twuni/docker-registry.helm: Helm chart for a Docker registry. Successor to stable/docker-registry chart.]]
 - [[https://helm.sh/docs/topics/charts/][Helm Documentation | Charts]]
@@ -564,7 +570,6 @@ Once running, the URL to the dashboard is https://2886795308-30000-simba08.envir
 - [[https://github.com/ksync/ksync][ksync/ksync: Sync files between your local system and a kubernetes cluster.]]
 - [[https://github.com/kubecfg/kubecfg][kubecfg/kubecfg: A tool for managing complex enterprise Kubernetes environments as code.]]
 - [[https://github.com/kubecolor/kubecolor][kubecolor/kubecolor: Colorize your kubectl output]]
-- kubectl run --rm -it netshoot --image=nicolaka/netshoot /bin/bash
 - [[https://github.com/kubenav/kubenav][kubenav/kubenav: kubenav is the navigator for your Kubernetes clusters right in your pocket.]]
 - [[https://github.com/kubeovn/kube-ovn][kubeovn/kube-ovn: A Kubernetes Network Fabric for Enterprises that is Rich in Functions and Easy in Operations (Project under CNCF)]]
 - [[https://kompose.io/][Kubernetes + Compose = Kompose]]
