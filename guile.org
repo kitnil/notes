@@ -257,6 +257,29 @@ Message-ID: <Yd3a7ZHArk2Eji4A@xxxxxx.xx>
       (list architecture data-model))
    #+end_src
 
+** expand macro
+
+#+begin_example
+  scheme@(guile-user)> ,expand (do ((x 0 (+ 1 x))) ((>= x 10)) (pk x))
+  $7 = (let loop ((x 0))
+    (if (>= x 10)
+      (if #f #f)
+      (begin (pk x) (loop (+ 1 x)))))
+  scheme@(guile-user)> ,optimize (do ((x 0 (+ 1 x))) ((>= x 10)) (pk x))
+  $8 = (begin
+    (pk 0)
+    (pk 1)
+    (pk 2)
+    (pk 3)
+    (pk 4)
+    (pk 5)
+    (pk 6)
+    (pk 7)
+    (pk 8)
+    (pk 9)
+    (if #f #f))
+#+end_example
+
 * guile-bash
 
   #+begin_src scheme
