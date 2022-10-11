@@ -15,11 +15,160 @@
 - [[https://github.com/sdushantha/recycle-bin-themes][sdushantha/recycle-bin-themes: Silly icons for the Windows Recycle Bin]]
 - [[https://github.com/BaseMax/FirstAssemblyWindows][BaseMax/FirstAssemblyWindows: Create a tiny Windows graphical application using pure Assembly. (MASM)]]
 
+* Android
+- [[https://github.com/Paving-Base/APK-Installer][Paving-Base/APK-Installer: An Android Application Installer for Windows]]
+
 * Awesome
 - [[https://github.com/auctors/free-lunch][auctors/free-lunch: A curated list of free Windows software, online services and resources.]]
 
+* Bloat
+- [[https://github.com/builtbybel/bloatbox][builtbybel/bloatbox: ☑️🌠 Remove Bloatwares from Windows 10]]
+- [[https://github.com/builtbybel/privatezilla][builtbybel/privatezilla: 👀👮🐢🔥Performs a privacy & security check of Windows 10]]
+- [[https://github.com/ChrisTitusTech/win10script][ChrisTitusTech/win10script: This is the Ultimate Windows 10 Script from a creation from multiple debloat scripts and gists from github.]]
+- [[https://github.com/safing/portmaster][safing/portmaster: Love Freedom - Block Mass Surveillance]]
+
+* Cheat sheet
+
+- If you're encountering display or graphics issues, you can press
+  Ctrl+Shift+Win+B to force Windows to take action. This shortcut alerts the
+  system to a potential graphics issue, which results in Windows restarting
+  your video driver.
+
+* Deprecated
+- [[https://github.com/hectorm/docker-qemu-win2000][hectorm/docker-qemu-win2000: A Docker image for Windows 2000 Advanced Server with SP4.]]
+
+* Distributions
+- [[https://habr.com/ru/company/tomhunter/blog/501560/][«Я тише шептуна в открытом поле» или что такое Ninjutsu-OS / Хабр]]
+- [[https://github.com/pbatard/Fido][pbatard/Fido: A PowerShell script to download Windows ISOs or the UEFI Shell]]
+- [[https://github.com/AveYo/MediaCreationTool.bat][AveYo/MediaCreationTool.bat: Universal MCT wrapper script for all Windows 10/11 versions from 1507 to 21H2!]]
+- [[https://github.com/ValdikSS/windows2usb][ValdikSS/windows2usb: Windows 7/8/8.1/10/11 ISO to Flash Drive burning utility for Linux (MBR/GPT, BIOS/UEFI, FAT32/NTFS)]]
+- [[https://github.com/Atlas-OS/Atlas][Atlas-OS/Atlas: An open and transparent modification of the Windows 10 operating system, designed to optimize performance, and latency.]]
+- [[https://github.com/jakejarvis/y2k][jakejarvis/y2k: 💾 Windows Me®, but fully isolated and disposable — the way it was meant to be.]]
+- [[https://github.com/pbatard/Fido][pbatard/Fido: A PowerShell script to download Windows ISOs or the UEFI Shell]]
+** Windows 11
+- [[https://github.com/rcmaehl/WhyNotWin11][rcmaehl/WhyNotWin11: Detection Script to help identify why your PC isn't Windows 11 Release Ready]]
+- [[https://github.com/HerMajestyDrMona/Windows11DragAndDropToTaskbarFix][HerMajestyDrMona/Windows11DragAndDropToTaskbarFix: "Windows 11 Drag & Drop to the Taskbar (Fix)" fixes the missing "Drag & Drop to the Taskbar" support in Windows 11. It works with the new Windows 11 taskbar and does not require nasty changes like UndockingDisabled or restoration of the classic taskbar.]]
+
+* DLL
+- [[https://github.com/hotnops/RemoteDebugView][hotnops/RemoteDebugView: A DLL that serves OutputDebugString content over a TCP connection]]
+- [[https://github.com/ORCx41/KnownDllUnhook][GitHub - ORCx41/KnownDllUnhook: Replace the .txt section of the current loaded modules from \KnownDlls\ to bypass edrs]]
+
+* Drivers
+- [[https://github.com/NattyNarwhal/vmwmouse][NattyNarwhal/vmwmouse: VMware mouse driver for Windows 3.1]]
+
+* Explorer
+- [[https://github.com/valinet/ExplorerPatcher][valinet/ExplorerPatcher: This project aims to enhance the working environment on Windows]]
+
+* File systems
+- [[https://github.com/billziss-gh/winfsp][billziss-gh/winfsp: Windows File System Proxy - FUSE for Windows]]
+- [[https://habr.com/ru/company/ruvds/blog/578292/][Кунг-фу стиля Linux: файловые системы пользовательского пространства теперь доступны и в Windows / Хабр]]
+- [[https://github.com/ufrisk/MemProcFS][ufrisk/MemProcFS: The Memory Process File System]]
+
+** NFS
+
+#+begin_example
+win+r
+shell:startup
+
+mount -o anon \\192.168.0.144\srv S:
+mount -o anon \\192.168.0.144\srv\games N:
+#+end_example
+
+* ISO
+
+#+begin_src xml
+  <disk type='file' device='cdrom'>
+    <driver name='qemu' type='raw'/>
+    <source file='/srv/lib/admin/Windows 10 (v21h1) x64 PRO by KulHunter v2 (esd) [En].iso'/>
+    <target dev='sdb' bus='sata'/>
+    <readonly/>
+    <boot order='1'/>
+    <address type='drive' controller='0' bus='0' target='0' unit='1'/>
+  </disk>
+#+end_src
+* Kubernetes
+- [[https://github.com/ptylenda/kubernetes-for-windows][ptylenda/kubernetes-for-windows: Ansible playbooks and Packer templates for creating hybrid Windows/Linux Kubernetes 1.10+ cluster with experimental Flannel pod network (host-gw backend)]]
+
 * Learning
 - [[https://github.com/mytechnotalent/Hacking-Windows][mytechnotalent/Hacking-Windows: A FREE Windows C development course where we will learn the Win32API and reverse engineer each step utilizing IDA Free in both an x86 and x64 environment.]]
+
+* Linux
+- [[https://github.com/Fmstrat/winapps][Fmstrat/winapps: Run Windows apps such as Microsoft Office in Linux (Ubuntu/Fedora) and GNOME/KDE as if they were a part of the native OS, including Nautilus integration.]]
+- [[https://www.opennet.ru/opennews/art.shtml?num=56640][Cassowary - обвязка для бесшовной работы с Windows-приложениями в Linux]]
+
+* Menu
+- [[https://github.com/novoid/integratethis][novoid/integratethis: Integrate programs or scripts into common tools like Windows Explorer context menu]]
+- [[https://github.com/lextm/windowsterminal-shell][lextm/windowsterminal-shell: Install/uninstall scripts for Windows Terminal context menu items]]
+
+* MicroSoft Windows 10 utilities
+
+  [[https://www.youtube.com/watch?v=BXXgbGwEnYw][Chris Titus Tech - The Best Windows 10 Tools I use on every installation]]
+  - O&O ShutUp10 :: privacy
+  - ninite.com :: packaged utilities
+
+* Networking
+- [[https://github.com/henrypp/simplewall][henrypp/simplewall: Simple tool to configure Windows Filtering Platform (WFP) which can configure network activity on your computer.]]
+- [[https://github.com/immense/Remotely][immense/Remotely: A remote control and remote scripting solution, built with .NET 5, Blazor, SignalR Core, and WebRTC.]]
+- [[https://github.com/miroslavpejic85/p2p][miroslavpejic85/p2p: 🖥️ Remote Desktop P2P based. Portable, No configuration or installation needed, communicate your endpoint to the peer, and vice versa, press connect and enjoy. 🖥️]]
+- [[https://github.com/ValdikSS/GoodbyeDPI][ValdikSS/GoodbyeDPI: GoodbyeDPI—Passive Deep Packet Inspection blocker and Active DPI circumvention utility (for Windows)]]
+** VPN
+*** WireGuard
+- [[https://habr.com/ru/post/585962/][WireGuard клиент для Windows на основе BoringTun / Хабр]]
+*** L2TP
+  - [[https://help.keenetic.com/hc/ru/articles/360000581969-%D0%9F%D0%BE%D0%B4%D0%BA%D0%BB%D1%8E%D1%87%D0%B5%D0%BD%D0%B8%D0%B5-%D0%BA-VPN-%D1%81%D0%B5%D1%80%D0%B2%D0%B5%D1%80%D1%83-L2TP-IPSec-%D0%B8%D0%B7-Windows][Подключение к VPN-серверу L2TP/IPSec из Windows – Keenetic]]
+
+** iSCI
+- [[https://server.vpnwp.com/proxmox/use-your-nas-as-a-steam-library-truenas-iscsi-basics/][Use your NAS as a Steam Library - TrueNAS + iSCSI Basics]]
+  - [[https://www.youtube.com/watch?v=9JL-RVUHj6o&t=272s][(68) Use your NAS as a Steam Library - TrueNAS + iSCSI Basics - YouTube]]
+
+** SMB
+- [[https://docs.microsoft.com/en-us/troubleshoot/windows-server/networking/guest-access-in-smb2-is-disabled-by-default][Guest access in SMB2 is disabled - Windows Server | Microsoft Docs]]
+  1. Open the Local Group Policy Editor (gpedit.msc).
+  2. In the console tree, select Computer Configuration > Administrative Templates > Network > Lanman Workstation.
+  3. For the setting, right-click Enable insecure guest logons and select Edit.
+  4. Select Enabled and select OK.
+
+* Packer
+- [[https://github.com/luciusbono/Packer-Windows10][luciusbono/Packer-Windows10: A Packer build for Windows 10]]
+- [[https://github.com/andif888/packer-windows-vsphere-iso][andif888/packer-windows-vsphere-iso: This repo builds automatically Windows VM templates (Windows 11, Windows 10, Server 2019, Server 2022) for VMware vSphere environment using Hashicorp's Packer using freely available Windows Eval ISOs.]]
+- [[https://github.com/Baune8D/packer-windows-desktop][Baune8D/packer-windows-desktop: Build a basic Windows desktop image for use with Vagrant.]]
+
+* Productivity
+
+- [[https://github.com/Sanakan8472/copy-dialog-lunar-lander][Sanakan8472/copy-dialog-lunar-lander: Play lunar lander in you windows file copy dialog]]
+- [[https://github.com/xmichelo/Beeftext][xmichelo/Beeftext: A text snippet tool for Windows.]]
+- [[https://github.com/LGUG2Z/yatta][LGUG2Z/yatta: A tiling window manager for Windows 10 based on binary space partitioning]]
+- [[https://github.com/tarkah/grout][tarkah/grout: Simple tiling window manager for Windows]]
+- [[https://github.com/mmozeiko/wcap][mmozeiko/wcap: simple and efficient screen recording utility for Windows]]
+- [[https://github.com/google/glazier][google/glazier: A tool for automating the installation of the Microsoft Windows operating system on various device platforms.]]
+- [[https://github.com/M2Team/NanaZip][M2Team/NanaZip: The 7-Zip derivative intended for the modern Windows experience.]]
+- [[https://github.com/veler/DevToys][veler/DevToys: A Swiss Army knife for developers.]]
+- [[https://github.com/stnkl/EverythingToolbar][stnkl/EverythingToolbar: Everything integration for the Windows taskbar.]]
+- [[https://github.com/AutoDarkMode/Windows-Auto-Night-Mode][AutoDarkMode/Windows-Auto-Night-Mode: Automatically switches between the dark and light theme of Windows 10 and Windows 11]]
+- [[https://github.com/workspacer/workspacer][workspacer/workspacer: a tiling window manager for Windows]]
+- [[https://github.com/pit-ray/win-vind][pit-ray/win-vind: You can operate Windows with key bindings like Vim.]]
+- [[https://github.com/henrypp/chrlauncher][henrypp/chrlauncher: Small and very fast portable launcher and updater for Chromium.]]
+
+* Registry
+- [[https://github.com/zodiacon/RegExp][zodiacon/RegExp: Registry Explorer - enhanced Registry editor/viewer]]
+- [[https://github.com/GossiTheDog/HiveNightmare][GossiTheDog/HiveNightmare: Exploit allowing you to read registry hives as non-admin on Windows 10 and 11]]
+
+* Remote Desktop
+- [[https://serveradmin.ru/top-besplatnyh-programm-dlya-udalyonnogo-dostupa/][Топ 10 бесплатных программ для удалённого доступа — Server Admin]]
+- [[https://github.com/ps1337/reinschauer][A PoC to remotely control Windows machines over Websockets.]]
+
+* Security
+- [[https://github.com/antonioCoco/RemotePotato0][antonioCoco/RemotePotato0: Just another "Won't Fix" Windows Privilege Escalation from User to Domain Admin.]]
+- [[https://github.com/cfalta/MicrosoftWontFixList][cfalta/MicrosoftWontFixList: A list of vulnerabilities or design flaws Microsoft does not intend to fix. Since the number is growing, I decided to make a list.]]
+- [[https://github.com/bol-van/win10_antishit][bol-van/win10_antishit: windows 10 remove shit functions]]
+- [[https://github.com/crazy-max/WindowsSpyBlocker][crazy-max/WindowsSpyBlocker: Block spying and tracking on Windows]]
+- [[https://github.com/t3l3machus/hoaxshell][t3l3machus/hoaxshell: An unconventional Windows reverse shell, currently undetected by Microsoft Defender and various other AV solutions, solely based on http(s) traffic.]]
+
+* SSH
+- [[https://github.com/billziss-gh/sshfs-win][billziss-gh/sshfs-win: SSHFS For Windows]]
+
+* Terminals
+- [[https://conemu.github.io/][ConEmu - Handy Windows Terminal]]
 
 * Tools
 - [[https://portapps.io/apps/][Portapps - Portable Applications]]
@@ -46,86 +195,15 @@
 - Free space on lvm-thin regardless of storage disk type spinner or ssd
   : Optimize-Volume -DriveLetter C -ReTrim -Verbose
 
-* Kubernetes
-- [[https://github.com/ptylenda/kubernetes-for-windows][ptylenda/kubernetes-for-windows: Ansible playbooks and Packer templates for creating hybrid Windows/Linux Kubernetes 1.10+ cluster with experimental Flannel pod network (host-gw backend)]]
-
 * Vagrant
 - [[https://github.com/PioneerCode/pioneer-windows-development-environment][PioneerCode/pioneer-windows-development-environment: Create a Windows development enviroment with Packer, Vagrant & Chocolatey]]
-
-* Packer
-- [[https://github.com/luciusbono/Packer-Windows10][luciusbono/Packer-Windows10: A Packer build for Windows 10]]
-- [[https://github.com/andif888/packer-windows-vsphere-iso][andif888/packer-windows-vsphere-iso: This repo builds automatically Windows VM templates (Windows 11, Windows 10, Server 2019, Server 2022) for VMware vSphere environment using Hashicorp's Packer using freely available Windows Eval ISOs.]]
-- [[https://github.com/Baune8D/packer-windows-desktop][Baune8D/packer-windows-desktop: Build a basic Windows desktop image for use with Vagrant.]]
-
-* Drivers
-- [[https://github.com/NattyNarwhal/vmwmouse][NattyNarwhal/vmwmouse: VMware mouse driver for Windows 3.1]]
-
-* Linux
-- [[https://github.com/Fmstrat/winapps][Fmstrat/winapps: Run Windows apps such as Microsoft Office in Linux (Ubuntu/Fedora) and GNOME/KDE as if they were a part of the native OS, including Nautilus integration.]]
-- [[https://www.opennet.ru/opennews/art.shtml?num=56640][Cassowary - обвязка для бесшовной работы с Windows-приложениями в Linux]]
-
-* Terminals
-- [[https://conemu.github.io/][ConEmu - Handy Windows Terminal]]
-
-* Bloat
-- [[https://github.com/builtbybel/bloatbox][builtbybel/bloatbox: ☑️🌠 Remove Bloatwares from Windows 10]]
-- [[https://github.com/builtbybel/privatezilla][builtbybel/privatezilla: 👀👮🐢🔥Performs a privacy & security check of Windows 10]]
-- [[https://github.com/ChrisTitusTech/win10script][ChrisTitusTech/win10script: This is the Ultimate Windows 10 Script from a creation from multiple debloat scripts and gists from github.]]
-- [[https://github.com/safing/portmaster][safing/portmaster: Love Freedom - Block Mass Surveillance]]
 
 * Window manager
 - [[https://github.com/LGUG2Z/komorebi][LGUG2Z/komorebi: Another tiling window manager for Windows 10 based on binary space partitioning]]
 
-* MicroSoft Windows 10 utilities
-
-  [[https://www.youtube.com/watch?v=BXXgbGwEnYw][Chris Titus Tech - The Best Windows 10 Tools I use on every installation]]
-  - O&O ShutUp10 :: privacy
-  - ninite.com :: packaged utilities
-
-* File systems
-- [[https://github.com/billziss-gh/winfsp][billziss-gh/winfsp: Windows File System Proxy - FUSE for Windows]]
-- [[https://habr.com/ru/company/ruvds/blog/578292/][Кунг-фу стиля Linux: файловые системы пользовательского пространства теперь доступны и в Windows / Хабр]]
-- [[https://github.com/ufrisk/MemProcFS][ufrisk/MemProcFS: The Memory Process File System]]
-
-** NFS
-
-#+begin_example
-win+r
-shell:startup
-
-mount -o anon \\192.168.0.144\srv S:
-mount -o anon \\192.168.0.144\srv\games N:
-#+end_example
-
-* Productivity
-
-- [[https://github.com/Sanakan8472/copy-dialog-lunar-lander][Sanakan8472/copy-dialog-lunar-lander: Play lunar lander in you windows file copy dialog]]
-- [[https://github.com/xmichelo/Beeftext][xmichelo/Beeftext: A text snippet tool for Windows.]]
-- [[https://github.com/LGUG2Z/yatta][LGUG2Z/yatta: A tiling window manager for Windows 10 based on binary space partitioning]]
-- [[https://github.com/tarkah/grout][tarkah/grout: Simple tiling window manager for Windows]]
-- [[https://github.com/mmozeiko/wcap][mmozeiko/wcap: simple and efficient screen recording utility for Windows]]
-- [[https://github.com/google/glazier][google/glazier: A tool for automating the installation of the Microsoft Windows operating system on various device platforms.]]
-- [[https://github.com/M2Team/NanaZip][M2Team/NanaZip: The 7-Zip derivative intended for the modern Windows experience.]]
-- [[https://github.com/veler/DevToys][veler/DevToys: A Swiss Army knife for developers.]]
-- [[https://github.com/stnkl/EverythingToolbar][stnkl/EverythingToolbar: Everything integration for the Windows taskbar.]]
-- [[https://github.com/AutoDarkMode/Windows-Auto-Night-Mode][AutoDarkMode/Windows-Auto-Night-Mode: Automatically switches between the dark and light theme of Windows 10 and Windows 11]]
-- [[https://github.com/workspacer/workspacer][workspacer/workspacer: a tiling window manager for Windows]]
-- [[https://github.com/pit-ray/win-vind][pit-ray/win-vind: You can operate Windows with key bindings like Vim.]]
-- [[https://github.com/henrypp/chrlauncher][henrypp/chrlauncher: Small and very fast portable launcher and updater for Chromium.]]
-
-* Cheat sheet
-
-- If you're encountering display or graphics issues, you can press
-  Ctrl+Shift+Win+B to force Windows to take action. This shortcut alerts the
-  system to a potential graphics issue, which results in Windows restarting
-  your video driver.
-
-* Explorer
-- [[https://github.com/valinet/ExplorerPatcher][valinet/ExplorerPatcher: This project aims to enhance the working environment on Windows]]
-
-* Menu
-- [[https://github.com/novoid/integratethis][novoid/integratethis: Integrate programs or scripts into common tools like Windows Explorer context menu]]
-- [[https://github.com/lextm/windowsterminal-shell][lextm/windowsterminal-shell: Install/uninstall scripts for Windows Terminal context menu items]]
+* WSA
+- [[https://github.com/alesimula/wsa_pacman][alesimula/wsa_pacman: A GUI package manager and package installer for Windows Subsystem for Android (WSA)]]
+- [[https://github.com/voletro/wsa-toolbox][voletro/wsa-toolbox: A Windows 11 application to easily install and use the Windows Subsystem For Android™ package on your computer.]]
 
 * WSL
 - [[https://github.com/pxlrbt/move-wsl][pxlrbt/move-wsl: Easily move your WSL distros VHDX file to a new location.]]
@@ -135,81 +213,3 @@ mount -o anon \\192.168.0.144\srv\games N:
 - [[https://github.com/nix-community/NixOS-WSL][nix-community/NixOS-WSL: NixOS on WSL(2) maintainer=@nzbr]]
 - [[https://github.com/sdrush/nixos-wsl][sdrush/nixos-wsl]]
 
-* WSA
-- [[https://github.com/alesimula/wsa_pacman][alesimula/wsa_pacman: A GUI package manager and package installer for Windows Subsystem for Android (WSA)]]
-- [[https://github.com/voletro/wsa-toolbox][voletro/wsa-toolbox: A Windows 11 application to easily install and use the Windows Subsystem For Android™ package on your computer.]]
-
-* SSH
-- [[https://github.com/billziss-gh/sshfs-win][billziss-gh/sshfs-win: SSHFS For Windows]]
-
-* Security
-- [[https://github.com/antonioCoco/RemotePotato0][antonioCoco/RemotePotato0: Just another "Won't Fix" Windows Privilege Escalation from User to Domain Admin.]]
-- [[https://github.com/cfalta/MicrosoftWontFixList][cfalta/MicrosoftWontFixList: A list of vulnerabilities or design flaws Microsoft does not intend to fix. Since the number is growing, I decided to make a list.]]
-- [[https://github.com/bol-van/win10_antishit][bol-van/win10_antishit: windows 10 remove shit functions]]
-- [[https://github.com/crazy-max/WindowsSpyBlocker][crazy-max/WindowsSpyBlocker: Block spying and tracking on Windows]]
-- [[https://github.com/t3l3machus/hoaxshell][t3l3machus/hoaxshell: An unconventional Windows reverse shell, currently undetected by Microsoft Defender and various other AV solutions, solely based on http(s) traffic.]]
-
-* Deprecated
-- [[https://github.com/hectorm/docker-qemu-win2000][hectorm/docker-qemu-win2000: A Docker image for Windows 2000 Advanced Server with SP4.]]
-
-* Networking
-- [[https://github.com/henrypp/simplewall][henrypp/simplewall: Simple tool to configure Windows Filtering Platform (WFP) which can configure network activity on your computer.]]
-- [[https://github.com/immense/Remotely][immense/Remotely: A remote control and remote scripting solution, built with .NET 5, Blazor, SignalR Core, and WebRTC.]]
-- [[https://github.com/miroslavpejic85/p2p][miroslavpejic85/p2p: 🖥️ Remote Desktop P2P based. Portable, No configuration or installation needed, communicate your endpoint to the peer, and vice versa, press connect and enjoy. 🖥️]]
-- [[https://github.com/ValdikSS/GoodbyeDPI][ValdikSS/GoodbyeDPI: GoodbyeDPI—Passive Deep Packet Inspection blocker and Active DPI circumvention utility (for Windows)]]
-** VPN
-*** WireGuard
-- [[https://habr.com/ru/post/585962/][WireGuard клиент для Windows на основе BoringTun / Хабр]]
-*** L2TP
-  - [[https://help.keenetic.com/hc/ru/articles/360000581969-%D0%9F%D0%BE%D0%B4%D0%BA%D0%BB%D1%8E%D1%87%D0%B5%D0%BD%D0%B8%D0%B5-%D0%BA-VPN-%D1%81%D0%B5%D1%80%D0%B2%D0%B5%D1%80%D1%83-L2TP-IPSec-%D0%B8%D0%B7-Windows][Подключение к VPN-серверу L2TP/IPSec из Windows – Keenetic]]
-
-** iSCI
-- [[https://server.vpnwp.com/proxmox/use-your-nas-as-a-steam-library-truenas-iscsi-basics/][Use your NAS as a Steam Library - TrueNAS + iSCSI Basics]]
-  - [[https://www.youtube.com/watch?v=9JL-RVUHj6o&t=272s][(68) Use your NAS as a Steam Library - TrueNAS + iSCSI Basics - YouTube]]
-
-** SMB
-- [[https://docs.microsoft.com/en-us/troubleshoot/windows-server/networking/guest-access-in-smb2-is-disabled-by-default][Guest access in SMB2 is disabled - Windows Server | Microsoft Docs]]
-  1. Open the Local Group Policy Editor (gpedit.msc).
-  2. In the console tree, select Computer Configuration > Administrative Templates > Network > Lanman Workstation.
-  3. For the setting, right-click Enable insecure guest logons and select Edit.
-  4. Select Enabled and select OK.
-
-* Registry
-- [[https://github.com/zodiacon/RegExp][zodiacon/RegExp: Registry Explorer - enhanced Registry editor/viewer]]
-- [[https://github.com/GossiTheDog/HiveNightmare][GossiTheDog/HiveNightmare: Exploit allowing you to read registry hives as non-admin on Windows 10 and 11]]
-
-* Distributions
-- [[https://habr.com/ru/company/tomhunter/blog/501560/][«Я тише шептуна в открытом поле» или что такое Ninjutsu-OS / Хабр]]
-- [[https://github.com/pbatard/Fido][pbatard/Fido: A PowerShell script to download Windows ISOs or the UEFI Shell]]
-- [[https://github.com/AveYo/MediaCreationTool.bat][AveYo/MediaCreationTool.bat: Universal MCT wrapper script for all Windows 10/11 versions from 1507 to 21H2!]]
-- [[https://github.com/ValdikSS/windows2usb][ValdikSS/windows2usb: Windows 7/8/8.1/10/11 ISO to Flash Drive burning utility for Linux (MBR/GPT, BIOS/UEFI, FAT32/NTFS)]]
-- [[https://github.com/Atlas-OS/Atlas][Atlas-OS/Atlas: An open and transparent modification of the Windows 10 operating system, designed to optimize performance, and latency.]]
-- [[https://github.com/jakejarvis/y2k][jakejarvis/y2k: 💾 Windows Me®, but fully isolated and disposable — the way it was meant to be.]]
-- [[https://github.com/pbatard/Fido][pbatard/Fido: A PowerShell script to download Windows ISOs or the UEFI Shell]]
-** Windows 11
-- [[https://github.com/rcmaehl/WhyNotWin11][rcmaehl/WhyNotWin11: Detection Script to help identify why your PC isn't Windows 11 Release Ready]]
-- [[https://github.com/HerMajestyDrMona/Windows11DragAndDropToTaskbarFix][HerMajestyDrMona/Windows11DragAndDropToTaskbarFix: "Windows 11 Drag & Drop to the Taskbar (Fix)" fixes the missing "Drag & Drop to the Taskbar" support in Windows 11. It works with the new Windows 11 taskbar and does not require nasty changes like UndockingDisabled or restoration of the classic taskbar.]]
-
-* DLL
-- [[https://github.com/hotnops/RemoteDebugView][hotnops/RemoteDebugView: A DLL that serves OutputDebugString content over a TCP connection]]
-- [[https://github.com/ORCx41/KnownDllUnhook][GitHub - ORCx41/KnownDllUnhook: Replace the .txt section of the current loaded modules from \KnownDlls\ to bypass edrs]]
-
-* Remote Desktop
-- [[https://serveradmin.ru/top-besplatnyh-programm-dlya-udalyonnogo-dostupa/][Топ 10 бесплатных программ для удалённого доступа — Server Admin]]
-- [[https://github.com/ps1337/reinschauer][A PoC to remotely control Windows machines over Websockets.]]
-
-* Android
-- [[https://github.com/Paving-Base/APK-Installer][Paving-Base/APK-Installer: An Android Application Installer for Windows]]
-
-* ISO
-
-#+begin_src xml
-  <disk type='file' device='cdrom'>
-    <driver name='qemu' type='raw'/>
-    <source file='/srv/lib/admin/Windows 10 (v21h1) x64 PRO by KulHunter v2 (esd) [En].iso'/>
-    <target dev='sdb' bus='sata'/>
-    <readonly/>
-    <boot order='1'/>
-    <address type='drive' controller='0' bus='0' target='0' unit='1'/>
-  </disk>
-#+end_src
