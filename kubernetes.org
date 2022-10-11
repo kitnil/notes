@@ -95,6 +95,9 @@
 - mark master nodes as unschedulable
   : kubectl taint node kube3 unschedulable=true:NoSchedule
 
+- delete taint
+  : kubectl taint node kube8 unschedulable-
+
 - drain node
   : kubectl drain kube6 --ignore-daemonsets --delete-emptydir-data
 
