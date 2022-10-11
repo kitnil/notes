@@ -3,21 +3,21 @@
 :END:
 #+TITLE: btrfs
 
-- [[https://github.com/digint/btrbk][digint/btrbk: Tool for creating snapshots and remote backups of btrfs subvolumes]]
-- [[https://fedoramagazine.org/os-chroot-101-covering-btrfs-subvolumes/][OS Chroot 101: covering btrfs subvolumes - Fedora Magazine]]
-- [[https://arstechnica.com/gadgets/2021/09/examining-btrfs-linuxs-perpetually-half-finished-filesystem/][Examining btrfs, Linux’s perpetually half-finished filesystem | Ars Technica]]
-- [[https://mutschler.eu/linux/install-guides/ubuntu-btrfs-raid1-20-04/#step-3-optional-optimize-mount-options-for-ssd-or-nvme-drives][Ubuntu Desktop 20.04: installation guide with btrfs-luks-RAID1 full disk encryption including /boot and auto-apt snapshots with Timeshift | Willi Mutschler]]
-- [[https://docs.oracle.com/en/operating-systems/oracle-linux/8/fsadmin/btrfs-main.html][Oracle® Linux 8 Managing Local File Systems - Chapter 3 Managing the Btrfs File System]]
-- [[https://btrfs.readthedocs.io/en/latest/btrfs-man5.html][btrfs-man5(5) — BTRFS documentation]]
 - [[https://docs.oracle.com/cd/E37670_01/E37355/html/ol_quotagrps_btrfs.html][4.8 Using Quota Groups]]
 - [[https://mpdesouza.com/blog/btrfs-for-mere-mortals-inode-allocation/][Btrfs for mere mortals: inode allocation | Marcos' Blog]]
-- [[https://github.com/teejee2008/timeshift][teejee2008/timeshift: System restore tool for Linux. Creates filesystem snapshots using rsync+hardlinks, or BTRFS snapshots. Supports scheduled snapshots, multiple backup levels, and exclude filters. Snapshots can be restored while system is running or from Live CD/USB.]]
+- [[https://btrfs.readthedocs.io/en/latest/btrfs-man5.html][btrfs-man5(5) — BTRFS documentation]]
 - [[https://man7.org/linux/man-pages/man8/btrfs-quota.8.html][btrfs-quota(8) - Linux manual page]]
 - [[https://github.com/darkling/btrfs-usage][darkling/btrfs-usage: Web-app to estimate usable space in different btrfs RAID configurations]]
 - [[https://github.com/digint/btrbk][digint/btrbk: Tool for creating snapshots and remote backups of btrfs subvolumes]]
+- [[https://github.com/digint/btrbk][digint/btrbk: Tool for creating snapshots and remote backups of btrfs subvolumes]]
+- [[https://arstechnica.com/gadgets/2021/09/examining-btrfs-linuxs-perpetually-half-finished-filesystem/][Examining btrfs, Linux’s perpetually half-finished filesystem | Ars Technica]]
+- [[https://github.com/maharmstone/btrfs][maharmstone/btrfs: WinBtrfs - an open-source btrfs driver for Windows]]
+- [[https://docs.oracle.com/en/operating-systems/oracle-linux/8/fsadmin/btrfs-main.html][Oracle® Linux 8 Managing Local File Systems - Chapter 3 Managing the Btrfs File System]]
+- [[https://fedoramagazine.org/os-chroot-101-covering-btrfs-subvolumes/][OS Chroot 101: covering btrfs subvolumes - Fedora Magazine]]
 - [[https://dataswamp.org/~solene/2022-08-16-btrfs-deduplication-with-bees.html][Solene'% : BTRFS deduplication using bees]]
 - [[https://dataswamp.org/~solene/2022-08-29-btrfs-cheatsheet.html][Solene'% : My BTRFS cheatsheet]]
-- [[https://github.com/maharmstone/btrfs][maharmstone/btrfs: WinBtrfs - an open-source btrfs driver for Windows]]
+- [[https://github.com/teejee2008/timeshift][teejee2008/timeshift: System restore tool for Linux. Creates filesystem snapshots using rsync+hardlinks, or BTRFS snapshots. Supports scheduled snapshots, multiple backup levels, and exclude filters. Snapshots can be restored while system is running or from Live CD/USB.]]
+- [[https://mutschler.eu/linux/install-guides/ubuntu-btrfs-raid1-20-04/#step-3-optional-optimize-mount-options-for-ssd-or-nvme-drives][Ubuntu Desktop 20.04: installation guide with btrfs-luks-RAID1 full disk encryption including /boot and auto-apt snapshots with Timeshift | Willi Mutschler]]
 
 #+begin_example
   [root@web15:~]# btrfs qgroup limit -e 15G /home/u230390
