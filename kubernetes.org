@@ -116,6 +116,23 @@
 - run pod on specific node with =kubectl run=
   : kubectl run mypod --image alpine --overrides='{"apiVersion": "v1", "spec": {"nodeSelector": { "kubernetes.io/hostname": "kube1" }}}' --command -- sleep 100000000000000
 
+** Balance
+#+begin_src markdown
+  [amazon web services - Spread pods over cluster - DevOps Stack Exchange](https://devops.stackexchange.com/questions/12246/spread-pods-over-cluster)
+
+  > Take a look at the [Descheduler](https://github.com/kubernetes-sigs/descheduler). This project runs as a Kubernetes Job that aims at killing pods when it thinks the cluster is unbalanced.
+  > 
+  > The [`LowNodeUtilization`](https://github.com/kubernetes-sigs/descheduler#lownodeutilization) strategy seems to fit your case:
+  > 
+  > > This strategy finds nodes that are under utilized and evicts pods, if possible, from other nodes in the hope that recreation of evicted pods will be scheduled on these underutilized nodes.
+  > 
+  > * * *
+  > 
+  > Another option is to apply a little of chaos engineering manually, forcing a Rolling Update on your deployment, and hopefully, the scheduler will fix the balance problem when pods are recreated.
+  > 
+  > You can use the `kubectl rollout restart my-deployment`. It's way better than simply deleting the pods with `kubectl delete pod`, as the rollout will ensure availability during the "rebalancing" (although deleting the pods altogether increases your chances for a better rebalance).
+#+end_src
+
 * Helm
 - [[https://helm.sh/docs/topics/charts/][Helm Documentation | Charts]]
 - [[https://github.com/truecharts/charts][truecharts/charts: Community App Catalog for TrueNAS SCALE]]
