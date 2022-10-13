@@ -139,6 +139,8 @@
 
 * nc
 ** UDP
+[[https://serverfault.com/questions/416205/testing-udp-port-connectivity][linux - Testing UDP port connectivity - Server Fault]]
+
   On server listen UDP port:
   : nc -ul 6111
 
