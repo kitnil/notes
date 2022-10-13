@@ -653,7 +653,6 @@ Once running, the URL to the dashboard is https://2886795308-30000-simba08.envir
 - [[https://github.com/vmware-tanzu/octant][vmware-tanzu/octant: Highly extensible platform for developers to better understand the complexity of Kubernetes clusters.]]
 - [[https://github.com/vmware-tanzu/velero][vmware-tanzu/velero: Backup and migrate Kubernetes applications and their persistent volumes]]
 - [[https://github.com/weaveworks/kured][weaveworks/kured: Kubernetes Reboot Daemon]]
-- [[https://github.com/WoozyMasta/kube-dump][WoozyMasta/kube-dump: Backup a Kubernetes cluster as a yaml manifest]]
 - [[https://scribe.bus-hit.me/flant-com/kubernetes-operator-in-python-451f2d2e33f3][Writing a Kubernetes Operator in Python without frameworks and SDK]]
 - [[https://marketplace.visualstudio.com/items?itemName=redhat.vscode-yaml][YAML and Kubernetes syntax support - Visual Studio Marketplace]]
 - [[https://github.com/yunionio/cloudpods][yunionio/cloudpods: A cloud-native open-source unified multi-cloud and hybrid-cloud platform. 开源、云原生的多云管理及混合云融合平台]]
@@ -662,6 +661,19 @@ Once running, the URL to the dashboard is https://2886795308-30000-simba08.envir
 - [[https://habr.com/ru/company/flant/blog/575972/][Обзор Kalm — веб-интерфейса для деплоя приложений и управления ими в Kubernetes / Хабр]]
 - [[https://habr.com/ru/post/542834/][Первый взгляд на Tekton Pipelines / Хабр]]
 - [[https://habr.com/ru/company/flant/blog/676678/][Снапшоты в Kubernetes: что это и как ими пользоваться / Хабр]]
+
+** [[https://github.com/WoozyMasta/kube-dump][WoozyMasta/kube-dump: Backup a Kubernetes cluster as a yaml manifest]]
+#+begin_src shell
+  docker run \
+         --network host \
+         --tty \
+         --interactive \
+         --rm \
+         --volume "${HOME}/.kube:/.kube" \
+         --volume "${HOME}/ansible-out/files/kubernetes:/dump" \
+         woozymasta/kube-dump:latest \
+         dump-namespaces -d /dump --kube-config /.kube/config
+#+end_src
 
 ** minikube
 - [[https://habr.com/ru/company/vk/blog/648117/][Как работать с Minikube: рекомендации и полезные советы / Хабр]]
