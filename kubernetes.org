@@ -117,9 +117,9 @@
   : kubectl run mypod --image alpine --overrides='{"apiVersion": "v1", "spec": {"nodeSelector": { "kubernetes.io/hostname": "kube1" }}}' --command -- sleep 100000000000000
 
 * Helm
-- [[https://github.com/twuni/docker-registry.helm][twuni/docker-registry.helm: Helm chart for a Docker registry. Successor to stable/docker-registry chart.]]
 - [[https://helm.sh/docs/topics/charts/][Helm Documentation | Charts]]
 - [[https://github.com/truecharts/charts][truecharts/charts: Community App Catalog for TrueNAS SCALE]]
+- [[https://github.com/twuni/docker-registry.helm][twuni/docker-registry.helm: Helm chart for a Docker registry. Successor to stable/docker-registry chart.]]
 ** Tools
 - [[https://github.com/databus23/schelm][databus23/schelm: Render a helm manifest to a directory]]
 ** Cheat sheet
