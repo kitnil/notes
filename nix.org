@@ -592,6 +592,7 @@ Made up of multiple "generations".
 - [[https://github.com/ralismark/nix-appimage][ralismark/nix-appimage: (experimental) Convert a nixos derivation into a self-contained binary]]
 - [[https://github.com/srid/check-flake][srid/check-flake: Add a `.#check` package for building all checks for the current system]]
 - [[https://github.com/srid/haskell-flake][srid/haskell-flake: A `flake-parts` Nix module for Haskell development]]
+- [[https://www.mat.services/posts/command-line-flake-arguments/][passing command line arguments to nix flakes]]
 
 ** Eval
 
