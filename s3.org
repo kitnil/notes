@@ -3,16 +3,16 @@
 :END:
 #+title: S3
 
-- [[https://github.com/cookpad/s3ar][cookpad/s3ar: A massively fast S3 downloader/uploader]]
-- [[https://git.appexpress.io/appexpress/minio/blob/229600ce9b4776b09c428f72e45692a568cdb933/docs/setup-replication-between-two-sites-running-minio.md][docs/setup-replication-between-two-sites-running-minio.md · 229600ce9b4776b09c428f72e45692a568cdb933 · appexpress / minio · GitLab]]
-- [[https://gist.github.com/leanderjanssen/0e5532dc5818ab84b54b06cf80ad93ed][Docker Registry with Minio storage example]]
-- [[https://github.com/s3fs-fuse/s3fs-fuse][s3fs-fuse/s3fs-fuse: FUSE-based file system backed by Amazon S3]]
-- [[https://github.com/kahing/goofys][kahing/goofys: a high-performance, POSIX-ish Amazon S3 file system written in Go]]
-- [[https://github.com/chubaofs/chubaofs][chubaofs/chubaofs: A distributed file system and object store for cloud native applications]]
-- [[https://github.com/juicedata/juicefs][juicedata/juicefs: JuiceFS is a distributed POSIX file system built on top of Redis and S3.]]
-- [[https://github.com/michalc/sqlite-s3-query][michalc/sqlite-s3-query: Python function to query SQLite files stored on S3]]
-- [[https://github.com/datafuselabs/databend][datafuselabs/databend: A modern Elasticity and Performance cloud data warehouse, activate your object storage for real-time analytics.]]
 - [[https://s3tools.org/s3cmd][Amazon S3 Tools: Command Line S3 Client and S3 Backup for Windows, Linux: s3cmd, s3express]]
+- [[https://github.com/chubaofs/chubaofs][chubaofs/chubaofs: A distributed file system and object store for cloud native applications]]
+- [[https://github.com/cookpad/s3ar][cookpad/s3ar: A massively fast S3 downloader/uploader]]
+- [[https://github.com/datafuselabs/databend][datafuselabs/databend: A modern Elasticity and Performance cloud data warehouse, activate your object storage for real-time analytics.]]
+- [[https://gist.github.com/leanderjanssen/0e5532dc5818ab84b54b06cf80ad93ed][Docker Registry with Minio storage example]]
+- [[https://git.appexpress.io/appexpress/minio/blob/229600ce9b4776b09c428f72e45692a568cdb933/docs/setup-replication-between-two-sites-running-minio.md][docs/setup-replication-between-two-sites-running-minio.md · 229600ce9b4776b09c428f72e45692a568cdb933 · appexpress / minio · GitLab]]
+- [[https://github.com/juicedata/juicefs][juicedata/juicefs: JuiceFS is a distributed POSIX file system built on top of Redis and S3.]]
+- [[https://github.com/kahing/goofys][kahing/goofys: a high-performance, POSIX-ish Amazon S3 file system written in Go]]
+- [[https://github.com/michalc/sqlite-s3-query][michalc/sqlite-s3-query: Python function to query SQLite files stored on S3]]
+- [[https://github.com/s3fs-fuse/s3fs-fuse][s3fs-fuse/s3fs-fuse: FUSE-based file system backed by Amazon S3]]
 
 * Minio
 
