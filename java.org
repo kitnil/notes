@@ -36,18 +36,6 @@ https://www.youtube.com/watch?v=t1-YZ6bF-g0
 
 * Learning
 
-- [[https://twitter.com/debugagent/status/1491075324805001219?t=pJat2j-HN-iRfY3CY5f6qQ][Shai Almog on Twitter: "I'm very excited about my new series of videos. I feel they can make an impact. These are short, bite-sized videos on debugging and troubleshooting software. I call them 🦆 𝟭𝟰𝟬 𝗦𝗲𝗰𝗼𝗻𝗱 𝗗𝘂𝗰𝗸𝗹𝗶𝗻𝗴𝘀 🦆 (credit @TomGranot) This, my friends, is a 🧵 of 🦆..." / Twitter]]
-
-- [[https://arxiv.org/pdf/2202.05906.pdf][Towards Build Verifiability for Java-based SystemsTowards Build Verifiability for Java-based Systems - 2202.05906.pdf]]
-
-  org.springframework spring-context
-
-- [[https://www.youtube.com/watch?v=xN6yXgeZdWs&list=PLz-qdc-PbYk6ikoEsdn4VZ4HUkKPVPMXp&index=2][(156) Spring Core: You First Spring Application | Spring Core - Masterclass - YouTube]]
-  - @Configuration
-    - @Bean
-  - “ApplicationContextConfiguration”
-    - getBean
-
 - [[https://www.youtube.com/watch?v=gVQijiDliuI&list=PLz-qdc-PbYk6ikoEsdn4VZ4HUkKPVPMXp&index=3][(156) Spring Core: 5000 ways to build and wire your Spring Beans | Spring Core - Masterclass - YouTube]]
   1. Constructor injection or “Constructor dependency injection”
   2. @Autowired
@@ -60,6 +48,12 @@ https://www.youtube.com/watch?v=t1-YZ6bF-g0
   @ComponentScan annotation
   @Component
   @Service
+
+- [[https://www.youtube.com/watch?v=xN6yXgeZdWs&list=PLz-qdc-PbYk6ikoEsdn4VZ4HUkKPVPMXp&index=2][(156) Spring Core: You First Spring Application | Spring Core - Masterclass - YouTube]]
+  - @Configuration
+    - @Bean
+  - “ApplicationContextConfiguration”
+    - getBean
 
 - [[https://www.youtube.com/watch?v=4BD6pF7dkkc&list=PLz-qdc-PbYk6ikoEsdn4VZ4HUkKPVPMXp&index=4][(156) Spring Transaction Management: Finally Understandable | Spring Core - Masterclass - YouTube]]
 
@@ -100,6 +94,12 @@ https://www.youtube.com/watch?v=t1-YZ6bF-g0
     #+end_src
 
 - [[https://opensource.com/article/22/6/maps-groovy-vs-java][Handling maps in Groovy vs Java | Opensource.com]]
+
+- [[https://twitter.com/debugagent/status/1491075324805001219?t=pJat2j-HN-iRfY3CY5f6qQ][Shai Almog on Twitter: "I'm very excited about my new series of videos. I feel they can make an impact. These are short, bite-sized videos on debugging and troubleshooting software. I call them 🦆 𝟭𝟰𝟬 𝗦𝗲𝗰𝗼𝗻𝗱 𝗗𝘂𝗰𝗸𝗹𝗶𝗻𝗴𝘀 🦆 (credit @TomGranot) This, my friends, is a 🧵 of 🦆..." / Twitter]]
+
+- [[https://arxiv.org/pdf/2202.05906.pdf][Towards Build Verifiability for Java-based SystemsTowards Build Verifiability for Java-based Systems - 2202.05906.pdf]]
+
+  org.springframework spring-context
 
 * Maven
 - [[https://github.com/fzakaria/nixos-maven-example][fzakaria/nixos-maven-example: An example of how to use buildMaven with Nix to build a Maven project]]
