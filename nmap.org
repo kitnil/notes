@@ -7,3 +7,8 @@
 - nmap --script broadcast-dhcp-discover
 - [[https://github.com/Jiab77/nmap-webui][Jiab77/nmap-webui: A simple web interface for Nmap with a XML to JSON reports converter]]
 - [[https://github.com/cldrn/rainmap-lite][cldrn/rainmap-lite: Rainmap Lite - Responsive web based interface that allows users to launch Nmap scans from their mobiles/tablets/web browsers!]]
+
+* Cheat sheet
+
+- scan network
+  : nmap --packet-trace -vv -T4 -PE -n -sn 172.16.250.0/24 -oG nmap.txt
