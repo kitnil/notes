@@ -4,11 +4,13 @@
 - [[https://github.com/vulnersCom/nmap-vulners][vulnersCom/nmap-vulners: NSE script based on Vulners.com API]]
 - [[https://github.com/righel/gitlab-version-nse][righel/gitlab-version-nse: Nmap script to guess* a GitLab version.]]
 - [[https://github.com/Diverto/nse-log4shell][Diverto/nse-log4shell: Nmap NSE scripts to check against log4shell or LogJam vulnerabilities (CVE-2021-44228)]]
-- nmap --script broadcast-dhcp-discover
 - [[https://github.com/Jiab77/nmap-webui][Jiab77/nmap-webui: A simple web interface for Nmap with a XML to JSON reports converter]]
 - [[https://github.com/cldrn/rainmap-lite][cldrn/rainmap-lite: Rainmap Lite - Responsive web based interface that allows users to launch Nmap scans from their mobiles/tablets/web browsers!]]
 
 * Cheat sheet
+
+- show DHCP server
+  : nmap --script broadcast-dhcp-discover
 
 - scan network
   : nmap --packet-trace -vv -T4 -PE -n -sn 172.16.250.0/24 -oG nmap.txt
