@@ -255,3 +255,12 @@ snapshot on the system:
 
 lvchange -ay -v lvm2/thinpool2
 lvchange -ay -v lvm2/ntfsgames
+
+#+begin_example
+  dmsetup ls
+
+  lvm1-centos	(253:2)
+  lvm1-centos7	(253:7)
+  lvm1-debian1	(253:10)
+  ...
+#+end_example
