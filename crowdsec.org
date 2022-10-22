@@ -4,6 +4,7 @@
 - [[https://github.com/crowdsecurity/crowdsec/issues/1306][docker-compose example]]
 - [[https://serveradmin.ru/ustanovka-i-nastrojka-crowdsec/][Установка и настройка CrowdSec — Server Admin]]
 - [[https://github.com/maxlerebourg/crowdsec-bouncer-traefik-plugin][maxlerebourg/crowdsec-bouncer-traefik-plugin: Traefik plugin to apply crowdsec decisions from local API]]
+- [[https://www.linuxserver.io/blog/blocking-malicious-connections-with-crowdsec-and-swag][Blocking Malicious Connections With CrowdSec and SWAG | LinuxServer.io]]
 
 Разблокировать вручную конкретный ip можно следующей командой:
 
