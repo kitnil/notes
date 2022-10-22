@@ -274,3 +274,13 @@ lvchange -ay -v lvm2/ntfsgames
   dm-3 web99
   ...
 #+end_example
+
+#+begin_example
+  lsblk --output NAME,KNAME,TYPE,SIZE,MOUNTPOINT
+  NAME                                     KNAME   TYPE    SIZE MOUNTPOINT
+  sda                                      sda     disk  931.5G
+  ...
+  └─sdd5                                   sdd5    part  927.5G
+    ├─lvm1-nixos                           dm-1    lvm      20G
+  ...
+#+end_example
