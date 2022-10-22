@@ -284,3 +284,7 @@ lvchange -ay -v lvm2/ntfsgames
     ├─lvm1-nixos                           dm-1    lvm      20G
   ...
 #+end_example
+
+#+begin_example
+  iostat -x -d 1
+#+end_example
