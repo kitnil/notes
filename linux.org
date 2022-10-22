@@ -741,3 +741,6 @@ Start the magic and boot to the new loaded kernel:
 [root@cent:~]# kexec -e
 
 Hope this post will be helpful and inspire others to some kexec experiments 🙂
+
+* Device mapper
+- [[https://www.youtube.com/watch?v=xy0Tgt4Aryw][Device Mapper - низкоуровневое управление блочными устройствами - YouTube]]
