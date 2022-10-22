@@ -264,3 +264,13 @@ lvchange -ay -v lvm2/ntfsgames
   lvm1-debian1	(253:10)
   ...
 #+end_example
+
+[[https://superuser.com/questions/131519/what-is-this-dm-0-device][linux - What is this dm-0 device? - Super User]]
+#+begin_example
+  sudo lvdisplay|awk  '/LV Name/{n=$3} /Block device/{d=$3; sub(".*:","dm-",d); print d,n;}'
+
+  dm-1 nixos
+  dm-2 centos
+  dm-3 web99
+  ...
+#+end_example
