@@ -850,18 +850,18 @@ example job
 - [[https://dataswamp.org/~solene/2022-10-06-nixos-kiosk.html][Solene'% : A NixOS kiosk]]
 
 * Learning
-- [[http://people.tamu.edu/~luke.adams/doxygen-nixpkgs/strings_8nix.html][nixpkgs builtins: lib/strings.nix File Reference]]
-- [[http://people.tamu.edu/~luke.adams/doxygen-nixpkgs/group__lib.html][nixpkgs builtins: lib]]
-- [[https://github.com/colemickens/nixos-flake-example][colemickens/nixos-flake-example: This is a demo NixOS config, with optional flakes support. Along with notes on why flakes is useful and worth adopting.]]
-- [[https://github.com/kisik21/nixos-super-minimal][kisik21/nixos-super-minimal]]
 - [[https://www.youtube.com/playlist?list=PLRGI9KQ3_HP_OFRG6R-p4iFgMSK1t5BHs][(46) Nixology - YouTube]]
-- [[https://nixos.mayflower.consulting/blog/2021/01/28/nextcloud-stateversion/][Safe service upgrades using system.stateVersion]]
 - [[https://github.com/Anton-Latukha/nix-notes][Anton-Latukha/nix-notes: Nix notes in org]]
-- [[https://github.com/NixOS/nix-book][NixOS/nix-book: The Nix Book – centralized community online learning resource for Nix]]
-- [[https://github.com/Misterio77/nix-starter-config][Misterio77/nix-starter-config: Simple and documented config repo to help you get started with NixOS + home-manager + flakes. All the boilerplate you need!]]
-- [[https://github.com/mikeroyal/NixOS-Guide][mikeroyal/NixOS-Guide: NixOS Guide]]
-- [[https://github.com/humancalico/nix-learning][humancalico/nix-learning: A bunch of links to blog posts, articles, videos, etc for learning Nix]]
+- [[https://github.com/colemickens/nixos-flake-example][colemickens/nixos-flake-example: This is a demo NixOS config, with optional flakes support. Along with notes on why flakes is useful and worth adopting.]]
 - [[https://github.com/Hoverbear-Consulting/flake][Hoverbear-Consulting/flake: Company Nix expressions.]]
+- [[https://github.com/humancalico/nix-learning][humancalico/nix-learning: A bunch of links to blog posts, articles, videos, etc for learning Nix]]
+- [[https://github.com/kisik21/nixos-super-minimal][kisik21/nixos-super-minimal]]
+- [[https://github.com/mikeroyal/NixOS-Guide][mikeroyal/NixOS-Guide: NixOS Guide]]
+- [[https://github.com/Misterio77/nix-starter-config][Misterio77/nix-starter-config: Simple and documented config repo to help you get started with NixOS + home-manager + flakes. All the boilerplate you need!]]
+- [[https://github.com/NixOS/nix-book][NixOS/nix-book: The Nix Book – centralized community online learning resource for Nix]]
+- [[http://people.tamu.edu/~luke.adams/doxygen-nixpkgs/group__lib.html][nixpkgs builtins: lib]]
+- [[http://people.tamu.edu/~luke.adams/doxygen-nixpkgs/strings_8nix.html][nixpkgs builtins: lib/strings.nix File Reference]]
+- [[https://nixos.mayflower.consulting/blog/2021/01/28/nextcloud-stateversion/][Safe service upgrades using system.stateVersion]]
 - [[https://nixos.org/manual/nix/stable/installation/installing-docker.html][Using Nix within Docker]]
 
 ** callPackage
