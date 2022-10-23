@@ -119,6 +119,40 @@
 - show authentication privileges
   : kubectl auth can-i get pods
 
+** authentication
+
+#+begin_example
+  $ kubectl get clusterrolebindings -o json | jq -r '.items[] | select(.subjects[0].kind=="Group") | select(.subjects[0].name=="system:masters")'
+  {
+    "apiVersion": "rbac.authorization.k8s.io/v1",
+    "kind": "ClusterRoleBinding",
+    "metadata": {
+      "annotations": {
+        "rbac.authorization.kubernetes.io/autoupdate": "true"
+      },
+      "creationTimestamp": "2022-05-14T12:14:48Z",
+      "labels": {
+        "kubernetes.io/bootstrapping": "rbac-defaults"
+      },
+      "name": "cluster-admin",
+      "resourceVersion": "201",
+      "uid": "df5858b7-b5e4-4796-a167-70cab0fe26a0"
+    },
+    "roleRef": {
+      "apiGroup": "rbac.authorization.k8s.io",
+      "kind": "ClusterRole",
+      "name": "cluster-admin"
+    },
+    "subjects": [
+      {
+        "apiGroup": "rbac.authorization.k8s.io",
+        "kind": "Group",
+        "name": "system:masters"
+      }
+    ]
+  }
+#+end_example
+
 ** Balance
 #+begin_src markdown
   [amazon web services - Spread pods over cluster - DevOps Stack Exchange](https://devops.stackexchange.com/questions/12246/spread-pods-over-cluster)
