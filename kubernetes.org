@@ -119,6 +119,9 @@
 - show authentication privileges
   : kubectl auth can-i get pods
 
+- compare nodes labels
+  : diff -u <(kubectl get nodes kube7 -o json | jq --raw-output '.metadata.labels | keys[] | .' | sort -u) <(kubectl get nodes kube8 -o json | jq --raw-output '.metadata.labels | keys[] | .' | sort -u)
+
 ** authentication
 
 [[https://stackoverflow.com/questions/51612976/how-to-view-members-of-subject-with-group-kind][kubernetes - How to view members of subject with Group kind - Stack Overflow]]
