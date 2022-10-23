@@ -165,6 +165,29 @@
   Group-system:masters   -  cluster-admin
 #+end_example
 
+Have a read through the Kubernetes 'Authenticating' docs. Kubernetes does not
+have an in-built mechanism for defining and controlling users (as distinct
+from ServiceAccounts which are used to provide a cluster identity for Pods,
+and therefore services running on them).
+
+This means that Kubernetes does not therefore have any internal DB to
+reference, to determine and display group membership.
+
+In smaller clusters, x509 certificates are typically used to authenticate
+users. The API server is configured to trust a CA for the purpose, and then
+users are issued certificates signed by that CA. As you had noticed, if the
+subject contains an 'Organisation' field, that is mapped to a Kubernetes
+group. If you want a user to be a member of more than one group, then you
+specify multiple 'O' fields. (As an aside, to my mind it would have made more
+sense to use the 'OU' field, but that is not the case)
+
+In answer to your question, it appears that in the case of a cluster where
+users are authenticated by certificates, your only route is to have access to
+the issued certs, and to check for the presence of the 'O' field in the
+subject. I guess in more advanced cases, Kubernetes would be integrated with a
+centralised tool such as AD, which could be queried natively for group
+membership.
+
 ** Balance
 #+begin_src markdown
   [amazon web services - Spread pods over cluster - DevOps Stack Exchange](https://devops.stackexchange.com/questions/12246/spread-pods-over-cluster)
