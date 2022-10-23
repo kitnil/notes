@@ -203,6 +203,15 @@ membership.
   $ kubectl get clusterroles system:discovery -o yaml
 #+end_example
 
+*** kubectl config generation
+
+#+begin_example
+  kubectl config --kubeconfig config set-cluster k8s --server=https://kubernetes.intr:6443 --certificate-authority=ssl/ca.pem --embed-certs
+  kubectl config --kubeconfig config set-credentials view --client-key ssl/view-key.pem --client-certificate ssl/view.pem --embed-certs
+  kubectl config --kubeconfig config set-context default --cluster=k8s --user=view --namespace default
+  kubectl config --kubeconfig config use-context default
+#+end_example
+
 ** Balance
 #+begin_src markdown
   [amazon web services - Spread pods over cluster - DevOps Stack Exchange](https://devops.stackexchange.com/questions/12246/spread-pods-over-cluster)
