@@ -195,6 +195,10 @@ membership.
 *** User roles
 - [[https://kubernetes.io/docs/reference/access-authn-authz/rbac/#auto-reconciliation][Using RBAC Authorization | Kubernetes]]
 
+*** Cheat sheet
+
+: kubectl get rolebindings,clusterrolebindings --all-namespaces  -o custom-columns='KIND:kind,NAMESPACE:metadata.namespace,NAME:metadata.name,SERVICE_ACCOUNTS:subjects[?(@.kind=="ServiceAccount")].name'
+
 #+begin_example
   $ kubectl get clusterroles system:discovery -o yaml
 #+end_example
