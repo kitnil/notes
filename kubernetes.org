@@ -188,6 +188,14 @@ subject. I guess in more advanced cases, Kubernetes would be integrated with a
 centralised tool such as AD, which could be queried natively for group
 membership.
 
+*** Anonymous access
+
+[[https://kubernetes.io/docs/reference/access-authn-authz/rbac/][Using RBAC Authorization | Kubernetes]]
+
+#+begin_example
+  $ kubectl get clusterroles system:discovery -o yaml
+#+end_example
+
 ** Balance
 #+begin_src markdown
   [amazon web services - Spread pods over cluster - DevOps Stack Exchange](https://devops.stackexchange.com/questions/12246/spread-pods-over-cluster)
