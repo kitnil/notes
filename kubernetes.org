@@ -155,6 +155,11 @@
   }
 #+end_example
 
+#+begin_example
+  $ kubectl get clusterrolebindings -o json | jq -r '.items[] | select(.subjects[0].kind=="Group") | select(.subjects[0].name=="system:masters") | .metadata.name'
+  cluster-admin
+#+end_example
+
 ** Balance
 #+begin_src markdown
   [amazon web services - Spread pods over cluster - DevOps Stack Exchange](https://devops.stackexchange.com/questions/12246/spread-pods-over-cluster)
