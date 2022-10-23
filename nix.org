@@ -862,6 +862,7 @@ example job
 - [[https://github.com/mikeroyal/NixOS-Guide][mikeroyal/NixOS-Guide: NixOS Guide]]
 - [[https://github.com/humancalico/nix-learning][humancalico/nix-learning: A bunch of links to blog posts, articles, videos, etc for learning Nix]]
 - [[https://github.com/Hoverbear-Consulting/flake][Hoverbear-Consulting/flake: Company Nix expressions.]]
+- [[https://nixos.org/manual/nix/stable/installation/installing-docker.html][Using Nix within Docker]]
 
 ** callPackage
   - [[https://ops.functionalalgebra.com/2018/04/18/inspecting-nix-lambda-named-arguments/][Inspecting Nix lambda function named arguments · Nix Cookbook]]
