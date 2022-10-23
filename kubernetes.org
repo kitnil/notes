@@ -116,6 +116,9 @@
 - run pod on specific node with =kubectl run=
   : kubectl run mypod --image alpine --overrides='{"apiVersion": "v1", "spec": {"nodeSelector": { "kubernetes.io/hostname": "kube1" }}}' --command -- sleep 100000000000000
 
+- show authentication privileges
+  : kubectl auth can-i get pods
+
 ** Balance
 #+begin_src markdown
   [amazon web services - Spread pods over cluster - DevOps Stack Exchange](https://devops.stackexchange.com/questions/12246/spread-pods-over-cluster)
