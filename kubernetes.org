@@ -192,6 +192,9 @@ membership.
 
 [[https://kubernetes.io/docs/reference/access-authn-authz/rbac/][Using RBAC Authorization | Kubernetes]]
 
+*** User roles
+- [[https://kubernetes.io/docs/reference/access-authn-authz/rbac/#auto-reconciliation][Using RBAC Authorization | Kubernetes]]
+
 #+begin_example
   $ kubectl get clusterroles system:discovery -o yaml
 #+end_example
