@@ -121,6 +121,8 @@
 
 ** authentication
 
+[[https://stackoverflow.com/questions/51612976/how-to-view-members-of-subject-with-group-kind][kubernetes - How to view members of subject with Group kind - Stack Overflow]]
+
 #+begin_example
   $ kubectl get clusterrolebindings -o json | jq -r '.items[] | select(.subjects[0].kind=="Group") | select(.subjects[0].name=="system:masters")'
   {
