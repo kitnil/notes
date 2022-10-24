@@ -5,73 +5,63 @@
 
 Warranty void if you fiddle with LD_PRELOAD or LD_LIBRARY_PATH.
 
+* Assembly language calls
+** Can be of the form [opcode][dest], [source]
+Moves the value "1" into the EAX register
+ : MOV EAX, 1
+
+** Can be of the form [opcode][operand]
+ - jumps to and address in memory
+ - in this case the hex address is 0xDEADBEEF
+
+ : JMP 0xDEADBEEF
+
+** Stack-related mneumonic
+ - PUSH [register]
+ - POP [register]
+ - CALL [function]
+ - RET
+* Chip architecture and assembly language review
+** What is assembly
+ - assembly = machine instructions
+ - C is higher level language which gets translated into assembly by
+   the compiler
+ - key point :: assembly language tells the computer exactly what to do
+		and exactly HOW to do it
+ - C or C++ :: will say "allocate memory" or "perform addition" ~x += 1;~
+ - Assembly :: will say "put the byte from this address in memory into
+	       ~MOV EAX, x~ ~ADD EAX, 1~ this register" or "jump to
+	       this location in memory"
+
+** Registers
+- definition :: extremely high-performance memory located directly on
+		the chip
+
+*** General purpose registers
+ - EAX, EBX, ECX, EDX
+ - Used for performing operations on data
+
+*** Special purpose registers
+ - ESP: Stack pointer, points to the top of the stack. Manipulated by
+   PUSH, POP, etc
+ - EBP: Base pointer aka frame pointer.
+ - ESI and EDI: ESI = source instruction, EDI = destination instruction.
+
+* Compile and run
+ : echo '_Bool a;' | gcc -c -x c -
+ : echo $?
+
+* Concurency
+
+- [[https://libcsp.com/][| Libcsp]]
+
+* Debug
+
+- Compile flags
+  : -g3 -O0
+
 * Documentation
 - [[https://en.cppreference.com/w/c][C reference - cppreference.com]]
-
-* Learning
-- [[https://github.com/jserv/shecc][jserv/shecc: A self-hosting and educational C compiler]]
-- [[https://github.com/Karvalian/Hacking-C][Karvalian/Hacking-C: A repo which will help the people that are beginning to learn hacking in C language.]]
-- [[https://github.com/elhajuojy/C-Programming-Guide][elhajuojy/C-Programming-Guide: Guide to C Programming langauge for me and for all of us 📁]]
-
-* Tutorials
-- [[https://github.com/happyincent/Functional-Programming-in-C][happyincent/Functional-Programming-in-C: https://hackmd.io/s/r1SgsdF3X]]
-- [[https://github.com/TheAlgorithms/C][TheAlgorithms/C: Collection of various algorithms in mathematics, machine learning, computer science, physics, etc implemented in C for educational purposes.]]
-- [[https://github.com/fragglet/c-algorithms][fragglet/c-algorithms: A library of common data structures and algorithms written in C.]]
-- [[https://github.com/rswier/c4][rswier/c4: C in four functions]]
-- [[https://beej.us/guide/bgnet/html/][Beej's Guide to Network Programming]]
-- [[https://github.com/mkirchner/linked-list-good-taste][mkirchner/linked-list-good-taste: Linus Torvalds' linked list argument for good taste, explained]]
-- [[https://github.com/Keyboard-Slayer/onion][Keyboard-Slayer/onion: It has layers ! (good Makefile)]]
-- [[https://github.com/jstrieb/systems-programming-cheat-sheet][jstrieb/systems-programming-cheat-sheet: Cheat sheet for x86-64 Unix systems programming]]
-- [[https://magpi.raspberrypi.com/books/c-gui-programming][C & GUI Programming — The MagPi magazine]]
-
-* Tools
-- [[https://github.com/dave-f/baff/tree/7af72db9c6e542ed2b60952933113d0aa86728cf][dave-f/baff at 7af72db9c6e542ed2b60952933113d0aa86728cf]]
-- [[https://github.com/exebook/generic-print][exebook/generic-print: Convenient generic print() for C]]
-- [[https://github.com/WerWolv/ImHex][WerWolv/ImHex: A Hex Editor for Reverse Engineers, Programmers and people that value their eye sight when working at 3 AM.]]
-- [[https://github.com/ollelogdahl/ihct][ollelogdahl/ihct: 'I Hate C Testing': A minimal testing framework for C.]]
-- [[https://github.com/hilmi-yilmaz/malloc_failer][hilmi-yilmaz/malloc_failer: This is a script which makes it possible to fail a specific malloc after X times.]]
-- [[https://github.com/Enter-tainer/cxx2flow][Enter-tainer/cxx2flow: 将 C/C++ 代码转换成流程图 / Turn your C/C++ code into flowchart]]
-- [[https://github.com/jart/cosmopolitan][jart/cosmopolitan: build-once run-anywhere c library]]
-- [[https://github.com/googleprojectzero/weggli][googleprojectzero/weggli: weggli is a fast and robust semantic search tool for C and C++ codebases. It is designed to help security researchers identify interesting functionality in large codebases.]]
-
-* Libs
-- [[https://github.com/raysan5/mic][raysan5/mic: A simple and easy-to-use library to build pipelines in C]]
-- [[https://github.com/lvgl/lvgl][lvgl/lvgl: Powerful and easy-to-use embedded GUI with many widgets, advanced visual effects (opacity, antialiasing, animations) and low memory requirements (16K RAM, 64K Flash).]]
-- [[https://github.com/Immediate-Mode-UI/Nuklear][Immediate-Mode-UI/Nuklear: A single-header ANSI C immediate mode cross-platform GUI library]]
-- [[https://github.com/andlabs/libui][andlabs/libui: Simple and portable (but not inflexible) GUI library in C that uses the native GUI technologies of each platform it supports.]]
-- [[https://github.com/libuv/libuv][libuv/libuv: Cross-platform asynchronous I/O]]
-- [[https://github.com/orangeduck/Cello][orangeduck/Cello: Higher level programming in C]]
-- [[https://github.com/jserv/cregex][jserv/cregex: A small implementation of regular expression matching engine in C]]
-- [[https://github.com/vstakhov/libucl][vstakhov/libucl: Universal configuration library parser]]
-- [[https://github.com/jorisvink/kore][jorisvink/kore: An easy to use, scalable and secure web application framework for writing web APIs in C or Python. || This is a read-only mirror, please see https://kore.io/mail and https://kore.io/source for information on how to contribute via the mailing lists.]]
-- [[https://github.com/cesanta/mongoose][cesanta/mongoose: Embedded Web Server]]
-- [[https://github.com/Hirrolot/metalang99][Hirrolot/metalang99: Full-blown preprocessor metaprogramming]]
-- [[https://github.com/networkprotocol/netcode][networkprotocol/netcode: A protocol for secure client/server connections over UDP]]
-
-* Languages
-- [[https://github.com/never-lang/never][never-lang/never: Never: statically typed, embeddable functional programming language.]]
-- [[https://github.com/ThakeeNathees/pocketlang][ThakeeNathees/pocketlang: A lightweight, fast embeddable scripting language.]]
-
-* Script
-https://stackoverflow.com/questions/2482348/run-c-or-c-file-as-a-script
-#+BEGIN_SRC c
-  //usr/bin/env gcc -Wall -std=c99 -o $HOME/.cache/gcc/hello-world "$0" && exec $HOME/.cache/gcc/hello-world "$@"
-  #include <stdio.h>
-
-  int main ()
-  {
-    printf ("Hello World\n");
-    return 0;
-  }
-#+END_SRC
-http://drandom.blogspot.com/2013/12/shebang-for-c-programs.html
-
-[[https://github.com/alcover/runc][alcover/runc: compile and run C code]]
-
-Alternative way use [[https://bellard.org/tcc/][tcc]]
-: #!/usr/bin/tcc -run
-
-[[https://github.com/onqtam/rcrl][rcrl]]
 
 * Examples
 
@@ -159,25 +149,6 @@ Alternative way use [[https://bellard.org/tcc/][tcc]]
        }
      }
    #+end_src
-* Concurency
-
-- [[https://libcsp.com/][| Libcsp]]
-
-* REPL
-
-: docker build -t bic https://github.com/hexagonal-sun/bic.git#master
-: docker run --rm -it bic:latest
-
-* URLS
-
-- [[https://github.com/topics][Topics on GitHub]]
-- [[https://github.com/clibs/clib][clibs/clib: C package manager-ish]]
-- [[https://github.com/TheAlgorithms/C][C]]
-- [[https://github.com/ryanmjacobs/c][ryanmjacobs/c: Compile and execute C "scripts" in one go!]]
-- [[https://github.com/fragglet/c-algorithms][fragglet/c-algorithms: A library of common data structures and algorithms written in C.]]
-- [[https://github.com/dvorka/hstr/blob/master/CONFIGURATION.md][hstr/CONFIGURATION.md at master · dvorka/hstr]]
-- [[https://github.com/rby90/Project-Based-Tutorials-in-C][rby90/Project-Based-Tutorials-in-C: A curated list of project-based tutorials in C]]
-
 * Heap
  - large pool of operating system memory
  - used in dynamic memory allocation
@@ -187,6 +158,63 @@ Alternative way use [[https://bellard.org/tcc/][tcc]]
  - the ~malloc~ in C
 
  : int * myArray = new int 10;
+
+* Languages
+- [[https://github.com/never-lang/never][never-lang/never: Never: statically typed, embeddable functional programming language.]]
+- [[https://github.com/ThakeeNathees/pocketlang][ThakeeNathees/pocketlang: A lightweight, fast embeddable scripting language.]]
+
+* Learning
+- [[https://github.com/jserv/shecc][jserv/shecc: A self-hosting and educational C compiler]]
+- [[https://github.com/Karvalian/Hacking-C][Karvalian/Hacking-C: A repo which will help the people that are beginning to learn hacking in C language.]]
+- [[https://github.com/elhajuojy/C-Programming-Guide][elhajuojy/C-Programming-Guide: Guide to C Programming langauge for me and for all of us 📁]]
+
+* Libs
+- [[https://github.com/raysan5/mic][raysan5/mic: A simple and easy-to-use library to build pipelines in C]]
+- [[https://github.com/lvgl/lvgl][lvgl/lvgl: Powerful and easy-to-use embedded GUI with many widgets, advanced visual effects (opacity, antialiasing, animations) and low memory requirements (16K RAM, 64K Flash).]]
+- [[https://github.com/Immediate-Mode-UI/Nuklear][Immediate-Mode-UI/Nuklear: A single-header ANSI C immediate mode cross-platform GUI library]]
+- [[https://github.com/andlabs/libui][andlabs/libui: Simple and portable (but not inflexible) GUI library in C that uses the native GUI technologies of each platform it supports.]]
+- [[https://github.com/libuv/libuv][libuv/libuv: Cross-platform asynchronous I/O]]
+- [[https://github.com/orangeduck/Cello][orangeduck/Cello: Higher level programming in C]]
+- [[https://github.com/jserv/cregex][jserv/cregex: A small implementation of regular expression matching engine in C]]
+- [[https://github.com/vstakhov/libucl][vstakhov/libucl: Universal configuration library parser]]
+- [[https://github.com/jorisvink/kore][jorisvink/kore: An easy to use, scalable and secure web application framework for writing web APIs in C or Python. || This is a read-only mirror, please see https://kore.io/mail and https://kore.io/source for information on how to contribute via the mailing lists.]]
+- [[https://github.com/cesanta/mongoose][cesanta/mongoose: Embedded Web Server]]
+- [[https://github.com/Hirrolot/metalang99][Hirrolot/metalang99: Full-blown preprocessor metaprogramming]]
+- [[https://github.com/networkprotocol/netcode][networkprotocol/netcode: A protocol for secure client/server connections over UDP]]
+
+* Programs
+- [[https://github.com/klange/bim][klange/bim: small terminal text editor with syntax highlighting]]
+- [[https://github.com/benjojo/nowrap][benjojo/nowrap: Small C program to make sure lines don't wrap in a terminal (like when cat-ing logs)]]
+- [[https://github.com/Cogmasters/findex][Cogmasters/findex: Attach metadata to files, and retrieve it.]]
+- [[https://github.com/rwmjones/miniexpect][rwmjones/miniexpect: Small expect-like library, clone of http://git.annexia.org/?p=miniexpect.git;a=summary]]
+* Proprietary
+- [[https://github.com/fredoverflow/skorbut-release][fredoverflow/skorbut-release: Let us C what's going on in memory!]]
+
+* REPL
+
+: docker build -t bic https://github.com/hexagonal-sun/bic.git#master
+: docker run --rm -it bic:latest
+
+* Script
+https://stackoverflow.com/questions/2482348/run-c-or-c-file-as-a-script
+#+BEGIN_SRC c
+  //usr/bin/env gcc -Wall -std=c99 -o $HOME/.cache/gcc/hello-world "$0" && exec $HOME/.cache/gcc/hello-world "$@"
+  #include <stdio.h>
+
+  int main ()
+  {
+    printf ("Hello World\n");
+    return 0;
+  }
+#+END_SRC
+http://drandom.blogspot.com/2013/12/shebang-for-c-programs.html
+
+[[https://github.com/alcover/runc][alcover/runc: compile and run C code]]
+
+Alternative way use [[https://bellard.org/tcc/][tcc]]
+: #!/usr/bin/tcc -run
+
+[[https://github.com/onqtam/rcrl][rcrl]]
 
 * Stack
  - each process gets its own stack (assume single-threaded processes)
@@ -208,62 +236,34 @@ Alternative way use [[https://bellard.org/tcc/][tcc]]
 
  : int myArray[10];
 
-* Chip architecture and assembly language review
-** What is assembly
- - assembly = machine instructions
- - C is higher level language which gets translated into assembly by
-   the compiler
- - key point :: assembly language tells the computer exactly what to do
-		and exactly HOW to do it
- - C or C++ :: will say "allocate memory" or "perform addition" ~x += 1;~
- - Assembly :: will say "put the byte from this address in memory into
-	       ~MOV EAX, x~ ~ADD EAX, 1~ this register" or "jump to
-	       this location in memory"
+* Tools
+- [[https://github.com/dave-f/baff/tree/7af72db9c6e542ed2b60952933113d0aa86728cf][dave-f/baff at 7af72db9c6e542ed2b60952933113d0aa86728cf]]
+- [[https://github.com/exebook/generic-print][exebook/generic-print: Convenient generic print() for C]]
+- [[https://github.com/WerWolv/ImHex][WerWolv/ImHex: A Hex Editor for Reverse Engineers, Programmers and people that value their eye sight when working at 3 AM.]]
+- [[https://github.com/ollelogdahl/ihct][ollelogdahl/ihct: 'I Hate C Testing': A minimal testing framework for C.]]
+- [[https://github.com/hilmi-yilmaz/malloc_failer][hilmi-yilmaz/malloc_failer: This is a script which makes it possible to fail a specific malloc after X times.]]
+- [[https://github.com/Enter-tainer/cxx2flow][Enter-tainer/cxx2flow: 将 C/C++ 代码转换成流程图 / Turn your C/C++ code into flowchart]]
+- [[https://github.com/jart/cosmopolitan][jart/cosmopolitan: build-once run-anywhere c library]]
+- [[https://github.com/googleprojectzero/weggli][googleprojectzero/weggli: weggli is a fast and robust semantic search tool for C and C++ codebases. It is designed to help security researchers identify interesting functionality in large codebases.]]
 
-** Registers
-- definition :: extremely high-performance memory located directly on
-		the chip
+* Tutorials
+- [[https://github.com/happyincent/Functional-Programming-in-C][happyincent/Functional-Programming-in-C: https://hackmd.io/s/r1SgsdF3X]]
+- [[https://github.com/TheAlgorithms/C][TheAlgorithms/C: Collection of various algorithms in mathematics, machine learning, computer science, physics, etc implemented in C for educational purposes.]]
+- [[https://github.com/fragglet/c-algorithms][fragglet/c-algorithms: A library of common data structures and algorithms written in C.]]
+- [[https://github.com/rswier/c4][rswier/c4: C in four functions]]
+- [[https://beej.us/guide/bgnet/html/][Beej's Guide to Network Programming]]
+- [[https://github.com/mkirchner/linked-list-good-taste][mkirchner/linked-list-good-taste: Linus Torvalds' linked list argument for good taste, explained]]
+- [[https://github.com/Keyboard-Slayer/onion][Keyboard-Slayer/onion: It has layers ! (good Makefile)]]
+- [[https://github.com/jstrieb/systems-programming-cheat-sheet][jstrieb/systems-programming-cheat-sheet: Cheat sheet for x86-64 Unix systems programming]]
+- [[https://magpi.raspberrypi.com/books/c-gui-programming][C & GUI Programming — The MagPi magazine]]
 
-*** General purpose registers
- - EAX, EBX, ECX, EDX
- - Used for performing operations on data
+* URLS
 
-*** Special purpose registers
- - ESP: Stack pointer, points to the top of the stack. Manipulated by
-   PUSH, POP, etc
- - EBP: Base pointer aka frame pointer.
- - ESI and EDI: ESI = source instruction, EDI = destination instruction.
+- [[https://github.com/topics][Topics on GitHub]]
+- [[https://github.com/clibs/clib][clibs/clib: C package manager-ish]]
+- [[https://github.com/TheAlgorithms/C][C]]
+- [[https://github.com/ryanmjacobs/c][ryanmjacobs/c: Compile and execute C "scripts" in one go!]]
+- [[https://github.com/fragglet/c-algorithms][fragglet/c-algorithms: A library of common data structures and algorithms written in C.]]
+- [[https://github.com/dvorka/hstr/blob/master/CONFIGURATION.md][hstr/CONFIGURATION.md at master · dvorka/hstr]]
+- [[https://github.com/rby90/Project-Based-Tutorials-in-C][rby90/Project-Based-Tutorials-in-C: A curated list of project-based tutorials in C]]
 
-* Assembly language calls
-** Can be of the form [opcode][dest], [source]
-Moves the value "1" into the EAX register
- : MOV EAX, 1
-
-** Can be of the form [opcode][operand]
- - jumps to and address in memory
- - in this case the hex address is 0xDEADBEEF
-
- : JMP 0xDEADBEEF
-
-** Stack-related mneumonic
- - PUSH [register]
- - POP [register]
- - CALL [function]
- - RET
-* Compile and run
- : echo '_Bool a;' | gcc -c -x c -
- : echo $?
-
-* Debug
-
-- Compile flags
-  : -g3 -O0
-
-* Proprietary
-- [[https://github.com/fredoverflow/skorbut-release][fredoverflow/skorbut-release: Let us C what's going on in memory!]]
-
-* Programs
-- [[https://github.com/klange/bim][klange/bim: small terminal text editor with syntax highlighting]]
-- [[https://github.com/benjojo/nowrap][benjojo/nowrap: Small C program to make sure lines don't wrap in a terminal (like when cat-ing logs)]]
-- [[https://github.com/Cogmasters/findex][Cogmasters/findex: Attach metadata to files, and retrieve it.]]
-- [[https://github.com/rwmjones/miniexpect][rwmjones/miniexpect: Small expect-like library, clone of http://git.annexia.org/?p=miniexpect.git;a=summary]]
