@@ -26,6 +26,16 @@
 * Libraries
 - [[https://github.com/spring-projects/spring-vault][spring-projects/spring-vault: Provides familiar Spring abstractions for HashiCorp Vault]]
 
+* Debug
+#+begin_src yaml
+  logging:
+    level:
+      root: DEBUG
+      org.springframework.web: DEBUG
+      com.howtodoinjava: DEBUG
+      org.hibernate: DEBUG
+#+end_src
+
 * Actuator
 
 https://spring.io/guides/gs/centralized-configuration/
