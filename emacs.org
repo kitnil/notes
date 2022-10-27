@@ -1377,3 +1377,16 @@ emacs-libyaml example:
                       (yaml-read-file "~/archive/src/filestash/.drone.yml")))
    #+end_src
 
+* Projects
+
+- Ivan Yonchovski @yyoncho (responsible for lsp-mode, dap-mode, and and other LSP things)
+- Nicholas Vollmer @progfolio (responsible for Straight, Elpaca, and Doct)
+- Vasilij Schneidermann @wasamasa (responsible for nov.el, circe, eyebrowse, and shackle)
+- Henrik Lissner @hlissner (responsible for Doom Emacs, and assorted packages)
+- Oleh Krehel @abo-abo (responsible for Swiper, Hydra, Avy, and Lispy)
+- Protesilaos Stavrou @protesilaos (responsible for Modus themes, Denote, and others)
+- The Free Software Foundation ⎋ (principal organisational sponsor of the GNU project)
+- The Org Project ⎋ (responsible for org-mode)
+- Daniel Mendler @minad (responsible for Consult, Vertico, Corfu, and other UI packages)
+- Timothy @tecosaur (responsible for survey, and a few other things)
+- Jonas Bernoulli @tarsius (responsible for Magit, Transient, and others)
