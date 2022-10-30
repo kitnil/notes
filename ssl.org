@@ -18,6 +18,7 @@
 - [[https://habr.com/ru/company/plesk/blog/507094/][Введение в TLS для п̶р̶а̶к̶т̶и̶к̶о̶в̶ Патриков (часть 2) / Хабр]]
 - [[https://cloud.google.com/blog/products/identity-security/automate-public-certificate-lifecycle-management-via--acme-client-api][Automate Public Certificate Lifecycle Management via ACME Client API | Google Cloud Blog]]
 - [[https://smallstep.com/blog/if-openssl-were-a-gui/][If OpenSSL were a GUI]]
+- [[https://letsencrypt.status.io/][Let's Encrypt Status]]
 
 - Check certificate
   : echo | openssl s_client -connect berlin.guixsd.org:443 | openssl x509 -text
