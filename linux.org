@@ -62,6 +62,189 @@
 - [[https://github.com/Sysinternals/ProcMon-for-Linux][Sysinternals/ProcMon-for-Linux: Procmon is a Linux reimagining of the classic Procmon tool from the Sysinternals suite of tools for Windows. Procmon provides a convenient and efficient way for Linux developers to trace the syscall activity on the system.]]
 - [[https://github.com/cloudflare/tubular][cloudflare/tubular: BSD socket API on steroids]]
 
+* ALSA
+- [[https://rendaw.gitlab.io/blog/2125f09a85f2.html#alsa-exposed][rendaw - ALSA, exposed!]]
+
+* BCC
+https://github.com/iovisor/bcc/blob/master/QUICKSTART.md
+
+* BPF
+- [[https://github.com/ehids/ecapture][ehids/ecapture: capture SSL/TLS text content without CA cert by eBPF.]]
+- [[https://www.geeklan.co.uk/?p=2493][Book review: BPF Performance Tools: Linux System and Application Observability – GeekLAN]]
+- [[https://github.com/iovisor/bpftrace][iovisor/bpftrace: High-level tracing language for Linux eBPF]]
+- [[https://github.com/lizrice/ebpf-beginners][lizrice/ebpf-beginners: The beginner's guide to eBPF]]
+- [[https://github.com/lizrice/ebpf-networking][lizrice/ebpf-networking: The Beginner's Guide to eBPF Programming for Networking]]
+- [[https://github.com/cilium/pwru][cilium/pwru: Packet, where are you? -- Linux kernel networking debugger]]
+- [[https://github.com/cilium/cilium][cilium/cilium: eBPF-based Networking, Security, and Observability]]
+- [[https://github.com/redsift/redbpf][redsift/redbpf: Rust library for building and running BPF/eBPF modules]]
+- [[https://github.com/lizrice/libbpfgo-beginners][lizrice/libbpfgo-beginners: Basic eBPF examples in Golang using libbpfgo]]
+- [[https://rutracker.org/forum/viewtopic.php?t=5945896][Бестселлеры O’Reilly - Calavera D., Fontana L. / Калавера Д., Фонтана Л. - Linux Observability with BPF / BPF для мониторинга Linux [2021, PDF, RUS] :: RuTracker.org]]
+- [[https://github.com/pchaigno/tail-call-bench][pchaigno/tail-call-bench: Benchmark tools to evaluate the cost of BPF tail calls]]
+- [[https://github.com/chenjiandongx/yap][chenjiandongx/yap: 🚥 Yet another pinger: A high-performance ICMP ping implementation build on top of BPF technology.]]
+- [[https://github.com/mehrdadrad/tcpdog][mehrdadrad/tcpdog: eBPF based TCP observability.]]
+- [[https://github.com/dylandreimerink/edb][dylandreimerink/edb: An eBPF program debugger]]
+
+* Build
+- [[https://github.com/takano32/build-kernel][takano32/build-kernel in Docker Ubuntu 20.04 container]]
+
+* Cheatsheet
+- [[http://www.brendangregg.com/Perf/linux_perf_tools_full.png][linux_perf_tools_full.png (3000×2100)]]
+- [[https://access.redhat.com/sites/default/files/attachments/rh_ip_command_cheatsheet_1214_jcs_print.pdf][rh_ip_command_cheatsheet_1214_jcs_print.pdf]]
+
+* console
+#+begin_quote
+I think it would also be nice if the sysadmins could get
+access to the serial console (or even the racadm console).  With the
+serial console you could see if the server is stuck even if you can’t
+SSH.  With the racadm console (where we type “console com2” to start the
+serial console) you could also trigger a soft reboot.
+
+We have these management interfaces pretty locked down, but perhaps we
+can set up a tunnel from bayfront, or something like that.
+#+end_quote
+
+* Containers
+- [[https://github.com/genuinetools/amicontained][genuinetools/amicontained: Container introspection tool. Find out what container runtime is being used as well as features available.]]
+- [[https://github.com/prologic/box][prologic/box: 📦 A command-line utility (non-daemon) for creating Linux containers, sandboxing a processes written in Go.]]
+
+* D
+
+- [[https://stackoverflow.com/questions/767551/how-to-stop-uninterruptible-process-on-linux][signals - How to stop 'uninterruptible' process on Linux? - Stack Overflow]]
+
+#+begin_example
+  kill -9 {process_id}
+  sync
+  echo 3 | sudo tee /proc/sys/vm/drop_caches
+#+end_example
+
+- [[https://www.kernel.org/doc/Documentation/sysctl/vm.txt][kernel.org/doc/Documentation/sysctl/vm.txt]]
+
+#+begin_example
+echo 1 > /proc/sys/vm/drop_caches
+echo 2 > /proc/sys/vm/drop_caches
+echo 3 > /proc/sys/vm/drop_caches
+#+end_example
+
+* Device mapper
+- [[https://www.youtube.com/watch?v=xy0Tgt4Aryw][Device Mapper - низкоуровневое управление блочными устройствами - YouTube]]
+* Distributions
+- [[https://distrotest.net/index.php][DistroTest.net - The first online operating system tester]]
+- [[https://distr1.org/][distri: a Linux distribution to research fast package management]]
+- [[id:fe0f9df6-5ce3-4fb4-9b55-04ca64b32d73][Arch Linux]]
+- [[id:3a808743-6e55-4eb4-b5b8-7b090abd28be][Debian]]
+- [[id:1a04d6b5-4a18-4e60-8dce-283389185347][Guix]]
+- [[id:2dc46956-0cc8-46e7-a31f-4f4d9730807c][Nix]]
+- [[id:08018469-85bc-4b19-9271-2eee5d814b7a][Ubuntu]]
+- [[https://vyos.io/][VyOS – Open source router and firewall platform]]
+- [[https://github.com/89luca89/distrobox][89luca89/distrobox: Use any linux distribution inside your terminal. Enable both backward and forward compatibility with software and freedom to use whatever distribution you’re more comfortable with.]]
+- [[https://github.com/tracelabs/tlosint-live][tracelabs/tlosint-live: Trace Labs OSINT Linux Distribution based on Kali.]]
+- [[https://inventory.raw.pm/operating_systems.html][Rawsec's CyberSecurity Inventory]]
+
+* Documentation
+
+- [[https://github.com/filiparag/wikiman][filiparag/wikiman: Wikiman is an offline search engine for manual pages, Arch Wiki, Gentoo Wiki and other documentation.]]
+- [[https://access.redhat.com/sites/default/files/attachments/rh_ip_command_cheatsheet_1214_jcs_print.pdf][rh_ip_command_cheatsheet_1214_jcs_print.pdf]]
+- [[https://habr.com/en/post/416669/][Вся правда о linux epoll / Habr]]
+  - [[http://artemy-kolesnikov.blogspot.com/2010/11/epoll.html][Программерский блог: Использование epoll]]
+  - [[https://www.insight-it.ru/linux/2012/kak-rabotaet-epoll/][Как работает epoll?]]
+- [[https://www.kernel.org/doc/html/latest/admin-guide/index.html][The Linux kernel user’s and administrator’s guide — The Linux Kernel documentation]]
+
+- [[https://archlinux.org.ru/forum/topic/19282/][Анализ зависшего процесса]]
+- [[https://github.com/0xAX/linux-insides][0xAX/linux-insides: A little bit about a linux kernel]]
+
+* Framebuffer
+- [[https://github.com/mekb-turtle/imgfb][mekb-turtle/imgfb: Draws a farbfeld or jpeg image to the Linux framebuffer]]
+
+* Graphics
+- [[https://vadosware.io/post/using-both-integrated-and-discrete-graphics-cards/][Using Both Integrated And Discrete Graphics Cards - VADOSWARE]]
+- [[https://wiki.archlinux.org/index.php/PRIME#PRIME_GPU_offloading][PRIME - ArchWiki]]
+- [[https://www.opennet.ru/openforum/vsluhforumID3/91202.html][forum.opennet.ru - "В xorg-драйвер AMD добавлена поддержка reverse PRIME" (47)]]
+
+* IO
+- [[https://github.com/osresearch/iomonitor][osresearch/iomonitor: Trace IO calls in a process]]
+- [[https://habr.com/ru/company/raidix/blog/578894/][NVMe-накопители: чем они хороши и как на них переходить. Часть первая / Хабр]]
+- [[https://habr.com/ru/company/raidix/blog/578894/][NVMe-накопители: чем они хороши и как на них переходить. Часть первая / Хабр]]
+
+* kexec
+
+[[https://www.linux.com/training-tutorials/simple-kexec-example/][Simple Kexec example - Linux.com]]
+
+Some time ago I was helping a friend with some kexec problems and written some notes on how to use it – here a CentOS based server was used, but the process should be pretty similiar also for other distributions. The main advantage is in skipping the BIOS init part which on servers takes quite some time. I personally use it for the gateway server (it has also other functions, like dns, dhcp, openvpn server) and testing servers reboots with minimal downtime. A nice kexec description is on its man page:
+
+    kexec is a system call that enables you to load and boot into another kernel from the currently running kernel. kexec performs the function of the boot loader from within the kernel. The primary difference between a standard system boot and a kexec boot is that the hardware initialization normally performed by the BIOS or firmware (depending on architecture) is not performed during a kexec boot. This has the effect of reducing the time required for a reboot.
+
+CentOS, Fedora users can install it using yum:
+
+[root@cent:~]# yum install kexec-tools
+
+To switch between kernels you have to install a new one, here for example after running a ”yum update” also a new kernel was installed – the 2.6.18-194.11.4.el5 version.
+
+[root@cent:~]# yum update
+[...]
+Installed:
+  kernel.x86_64 0:2.6.18-194.11.4.el5  kernel-devel.x86_64 0:2.6.18-194.11.4.el5
+[...]
+
+Current kernel is 2.6.18-194.11.3.el5
+
+[root@cent:~]# uname -r
+2.6.18-194.11.3.el5
+
+For kexec, kernel and initrd path will be specified; paths (not full) can be found for example in the grub.conf file which was already updated.
+
+[root@cent:~]# cat /etc/grub.conf
+[...]
+title CentOS (2.6.18-194.11.4.el5)
+        root (hd0,0)
+        kernel /vmlinuz-2.6.18-194.11.4.el5 ro root=LABEL=/
+        initrd /initrd-2.6.18-194.11.4.el5.img
+title CentOS (2.6.18-194.11.3.el5)
+        root (hd0,0)
+        kernel /vmlinuz-2.6.18-194.11.3.el5 ro root=LABEL=/
+        initrd /initrd-2.6.18-194.11.3.el5.img
+[...]
+
+Also the arguments passed to the kernel at boot time are needed, you can look at your current arguments in the /proc/cmdline file. Later these same arguments will be given for the new kernel.
+
+[root@cent:~]# cat /proc/cmdline
+ro root=LABEL=/
+
+Now to load the new kernel:
+
+[root@cent:~]# kexec -l /boot/vmlinuz-2.6.18-194.11.4.el5 
+--initrd=/boot/initrd-2.6.18-194.11.4.el5.img 
+--command-line="$( cat /proc/cmdline )"
+
+Start the magic and boot to the new loaded kernel:
+
+[root@cent:~]# kexec -e
+
+Hope this post will be helpful and inspire others to some kexec experiments 🙂
+
+* Kill session by terminal
+
+#+begin_example
+  [root@web23:~]# w
+   16:43:11 up 414 days, 18:30,  2 users,  load average: 6.01, 6.78, 7.07
+  USER     TTY        LOGIN@   IDLE   JCPU   PCPU WHAT
+  eng      tty1      25Mar21  3:11   0.55s  0.02s -bash
+  eng      pts/0     16:42    0.00s  2.70s  0.01s sshd: eng [priv]                                                                             
+
+  [root@web23:~]# ps -ft tty1
+  UID        PID  PPID  C STIME TTY          TIME CMD
+  root       933     1  0  2020 tty1     00:00:00 /nix/store/1l5yw8hyfpvcn2a5lzds5nvgaz519n67-shadow-4.8/bin/login --
+  eng      30346   933  0  2021 tty1     00:00:00 -bash
+  root     30412 30346  0  2021 tty1     00:00:00 sudo -i
+  root     30423 30412  0  2021 tty1     00:00:00 -bash
+
+  [root@web23:~]# kill 933
+
+  [root@web23:~]# w
+   16:44:01 up 414 days, 18:31,  1 user,  load average: 5.77, 6.55, 6.97
+  USER     TTY        LOGIN@   IDLE   JCPU   PCPU WHAT
+  eng      pts/0     16:42    1.00s  2.70s  0.01s sshd: eng [priv]
+#+end_example
+
 * Learning
 - [[https://www.youtube.com/watch?v=NtK3poD_0X0][(1) How to understand the linux control groups cgroups - YouTube]]
 - [[https://serveradmin.ru/a-start-job-is-running-for-file-system-check/][A start job is running for File System Check — Server Admin]]
@@ -283,91 +466,61 @@ Swap:     134179836           0   134179836
 
 - [[https://www.youtube.com/c/GNULinuxPro/videos][GNU Linux Pro - YouTube]]
 
-* Distributions
-- [[https://distrotest.net/index.php][DistroTest.net - The first online operating system tester]]
-- [[https://distr1.org/][distri: a Linux distribution to research fast package management]]
-- [[id:fe0f9df6-5ce3-4fb4-9b55-04ca64b32d73][Arch Linux]]
-- [[id:3a808743-6e55-4eb4-b5b8-7b090abd28be][Debian]]
-- [[id:1a04d6b5-4a18-4e60-8dce-283389185347][Guix]]
-- [[id:2dc46956-0cc8-46e7-a31f-4f4d9730807c][Nix]]
-- [[id:08018469-85bc-4b19-9271-2eee5d814b7a][Ubuntu]]
-- [[https://vyos.io/][VyOS – Open source router and firewall platform]]
-- [[https://github.com/89luca89/distrobox][89luca89/distrobox: Use any linux distribution inside your terminal. Enable both backward and forward compatibility with software and freedom to use whatever distribution you’re more comfortable with.]]
-- [[https://github.com/tracelabs/tlosint-live][tracelabs/tlosint-live: Trace Labs OSINT Linux Distribution based on Kali.]]
-- [[https://inventory.raw.pm/operating_systems.html][Rawsec's CyberSecurity Inventory]]
-
-* Tools
-- [[https://github.com/icculus/fatelf][icculus/fatelf: Universal binaries for Linux.]]
-- [[https://github.com/nixcloud/ip2unix][nixcloud/ip2unix: Turn IP sockets into Unix domain sockets]]
-- [[https://github.com/vikmik/scratch][vikmik/scratch: Tool that creates a shell environment where actions have no consequences]]
-- [[https://github.com/JulienPalard/logtop][JulienPalard/logtop: Display real time statistics of whatever you want.]]
-- [[https://github.com/leahneukirchen/extrace][leahneukirchen/extrace: trace exec() calls system-wide]]
-- [[https://github.com/google/schedviz][google/schedviz: A tool for gathering and visualizing kernel scheduling traces on Linux machines]]
-- [[https://github.com/susam/uncap][susam/uncap: Map Caps Lock to Escape or any key to any key]]
-- [[https://www.opennet.ru/opennews/art.shtml?num=51542][В состав ядра Linux принят dm-clone, модуль для эффективной репликации внешних устройств]]
-- [[https://github.com/liamg/siphon][liamg/siphon: Intercept stdin/stdout/stderr for any process]]
-* Performance
-- [[https://github.com/igo95862/cfs-zen-tweaks][igo95862/cfs-zen-tweaks: Tweak Linux CPU scheduler for desktop responsiveness]]
-
-* Containers
-- [[https://github.com/genuinetools/amicontained][genuinetools/amicontained: Container introspection tool. Find out what container runtime is being used as well as features available.]]
-- [[https://github.com/prologic/box][prologic/box: 📦 A command-line utility (non-daemon) for creating Linux containers, sandboxing a processes written in Go.]]
-
-* Netflow
-- [[https://github.com/aabc/ipt-netflow][aabc/ipt-netflow: Netflow iptables module for Linux kernel (official)]]
-
-* ALSA
-- [[https://rendaw.gitlab.io/blog/2125f09a85f2.html#alsa-exposed][rendaw - ALSA, exposed!]]
-
-* IO
-- [[https://github.com/osresearch/iomonitor][osresearch/iomonitor: Trace IO calls in a process]]
-- [[https://habr.com/ru/company/raidix/blog/578894/][NVMe-накопители: чем они хороши и как на них переходить. Часть первая / Хабр]]
-- [[https://habr.com/ru/company/raidix/blog/578894/][NVMe-накопители: чем они хороши и как на них переходить. Часть первая / Хабр]]
-
-* BPF
-- [[https://github.com/ehids/ecapture][ehids/ecapture: capture SSL/TLS text content without CA cert by eBPF.]]
-- [[https://www.geeklan.co.uk/?p=2493][Book review: BPF Performance Tools: Linux System and Application Observability – GeekLAN]]
-- [[https://github.com/iovisor/bpftrace][iovisor/bpftrace: High-level tracing language for Linux eBPF]]
-- [[https://github.com/lizrice/ebpf-beginners][lizrice/ebpf-beginners: The beginner's guide to eBPF]]
-- [[https://github.com/lizrice/ebpf-networking][lizrice/ebpf-networking: The Beginner's Guide to eBPF Programming for Networking]]
-- [[https://github.com/cilium/pwru][cilium/pwru: Packet, where are you? -- Linux kernel networking debugger]]
-- [[https://github.com/cilium/cilium][cilium/cilium: eBPF-based Networking, Security, and Observability]]
-- [[https://github.com/redsift/redbpf][redsift/redbpf: Rust library for building and running BPF/eBPF modules]]
-- [[https://github.com/lizrice/libbpfgo-beginners][lizrice/libbpfgo-beginners: Basic eBPF examples in Golang using libbpfgo]]
-- [[https://rutracker.org/forum/viewtopic.php?t=5945896][Бестселлеры O’Reilly - Calavera D., Fontana L. / Калавера Д., Фонтана Л. - Linux Observability with BPF / BPF для мониторинга Linux [2021, PDF, RUS] :: RuTracker.org]]
-- [[https://github.com/pchaigno/tail-call-bench][pchaigno/tail-call-bench: Benchmark tools to evaluate the cost of BPF tail calls]]
-- [[https://github.com/chenjiandongx/yap][chenjiandongx/yap: 🚥 Yet another pinger: A high-performance ICMP ping implementation build on top of BPF technology.]]
-- [[https://github.com/mehrdadrad/tcpdog][mehrdadrad/tcpdog: eBPF based TCP observability.]]
-- [[https://github.com/dylandreimerink/edb][dylandreimerink/edb: An eBPF program debugger]]
-
 * Lockdown
 - [[https://github.com/x08d/lockdown.sh][x08d/lockdown.sh: Lockdown your linux install. The simple zero config linux hardening script]]
 - [[https://github.com/BetterWayElectronics/secure-wireguard-implementation][BetterWayElectronics/secure-wireguard-implementation: A guide on implementing a secure Wireguard server on OVH (or any other Debian VPS) with DNSCrypt, Port Knocking & an SSH-Honeypot]]
 
-* Cheatsheet
-- [[http://www.brendangregg.com/Perf/linux_perf_tools_full.png][linux_perf_tools_full.png (3000×2100)]]
-- [[https://access.redhat.com/sites/default/files/attachments/rh_ip_command_cheatsheet_1214_jcs_print.pdf][rh_ip_command_cheatsheet_1214_jcs_print.pdf]]
+* Memory
 
-* Tools
-- [[https://github.com/shadow-maint/shadow][shadow-maint/shadow: Upstream shadow tree]]
-- [[https://github.com/BrenekH/smartreboot][BrenekH/smartreboot: Reboot a machine without interrupting ongoing work.]]
-- [[https://github.com/orhun/kmon][orhun/kmon: Linux Kernel Manager and Activity Monitor]]
-- [[https://github.com/koute/bytehound][koute/bytehound: A memory profiler for Linux.]]
+- [[https://github.com/hakavlad/prelockd][hakavlad/prelockd: Lock executables and shared libraries in memory to improve system responsiveness under low-memory conditions]]
 
-* Framebuffer
-- [[https://github.com/mekb-turtle/imgfb][mekb-turtle/imgfb: Draws a farbfeld or jpeg image to the Linux framebuffer]]
+- [[https://www.carstengrohmann.de/oom/][OOM Analyser]]
+- [[https://sr.ht/~carstengrohmann/OOMAnalyser/][OOMAnalyser: Linux OOM Analyser]]
+- [[https://www.opennet.ru/opennews/art.shtml?num=57383][Facebook представил механизм TMO, позволяющий экономить 20-32% памяти на серверах]]
 
-* Documentation
+[[https://github.com/0x0f0f0f/memplot][0x0f0f0f/memplot: Generate image plots of processes' memory usage very quickly, within a single binary.]]
 
-- [[https://github.com/filiparag/wikiman][filiparag/wikiman: Wikiman is an offline search engine for manual pages, Arch Wiki, Gentoo Wiki and other documentation.]]
-- [[https://access.redhat.com/sites/default/files/attachments/rh_ip_command_cheatsheet_1214_jcs_print.pdf][rh_ip_command_cheatsheet_1214_jcs_print.pdf]]
-- [[https://habr.com/en/post/416669/][Вся правда о linux epoll / Habr]]
-  - [[http://artemy-kolesnikov.blogspot.com/2010/11/epoll.html][Программерский блог: Использование epoll]]
-  - [[https://www.insight-it.ru/linux/2012/kak-rabotaet-epoll/][Как работает epoll?]]
-- [[https://www.kernel.org/doc/html/latest/admin-guide/index.html][The Linux kernel user’s and administrator’s guide — The Linux Kernel documentation]]
+: echo 3 > /proc/sys/vm/drop_caches
 
-- [[https://archlinux.org.ru/forum/topic/19282/][Анализ зависшего процесса]]
-- [[https://github.com/0xAX/linux-insides][0xAX/linux-insides: A little bit about a linux kernel]]
+- [[https://hoytech.com/vmtouch/][Hoytech vmtouch]]
+
+* Namespaces
+
+- [[https://unix.stackexchange.com/questions/144794/why-would-the-kernel-drop-packets][Create an empty network namespace]]
+#+begin_quote
+Besides what the man page says, there appears to be some additional reason why
+packets may be dropped by the kernel. I was experiencing 100% packet drop from
+tcpdump where the only traffic on the network was one 512B packet of PRBS per
+second. Clearly the buffer space explanation doesn't make sense here - I think
+the kernel can handle 0.5kiB/s.
+
+Something that came along with my distro (Ubuntu 14.04) may have been doing
+some sort of smart filtering at the link layer that didn't like my test
+packets. My workaround was to create a new network namespace as follows:
+
+sudo -i
+ip netns add debug
+ip link set dev eth0 netns debug
+ip netns exec debug bash
+ifconfig eth0 1.2.3.4 up
+
+In the inner netns shell, whatever OS processes that were causing problems
+before are out of the picture and tcpdump shows me all of the packets I expect
+to see.
+#+end_quote
+
+- [[https://github.com/JonathonReinhart/linux-netns-sysctl-verify][JonathonReinhart/linux-netns-sysctl-verify: Linux network namespace sysctl safety verifier.]]
+
+* Netflow
+- [[https://github.com/aabc/ipt-netflow][aabc/ipt-netflow: Netflow iptables module for Linux kernel (official)]]
+
+* Networking
+
+oleg@guixsd ~$ ss --numeric --tcp --listening --no-header --oneline --processes '( sport = :5901 )'
+
+rp_filter https://www.kernel.org/doc/Documentation/networking/ip-sysctl.txt
+
+- [[https://github.com/vi/netns_tcp_bridge][vi/netns_tcp_bridge: Linux CLI tool to forward TCP connections from one network namespace to another network namespace]]
 
 * News
 - Lxer :: http://lxer.com/
@@ -378,25 +531,9 @@ Swap:     134179836           0   134179836
 - Hackernews :: https://news.ycombinator.com/
 - Linux France :: [[https://linuxfr.org/][Accueil - LinuxFr.org]]
 
-* QoS
-- [[https://github.com/aabc/ipt-ratelimit][aabc/ipt-ratelimit: An implementation of committed access rate, or simply rate limiting, or policing for Linux iptables, implemented with high performance in mind.]]
-- [[https://github.com/rosywrt/nft-qos][rosywrt/nft-qos: QoS over Nftables (This packages is merged upstream, please visit openwrt/packages and openwrt/luci for more detail)]]
-
-* Proxy
-- [[https://github.com/m0hithreddy/Proxifier-For-Linux][m0hithreddy/Proxifier-For-Linux: Simple C code with iptables make this tool proxifier which tunnels whole system traffic through the proxy server, without configuring individual application]]
-- [[https://github.com/vi/tcpsocks][vi/tcpsocks: Redirect traffic to SOCKS5 server with iptables, epoll based, single threaded.]]
-- [[https://github.com/heiher/hev-socks5-tproxy][heiher/hev-socks5-tproxy: A simple, lightweight socks5 transparent proxy for Linux. (IPv4/IPv6/TCP/UDP over TCP)]]
-
-* Video
-
-- [[https://www.youtube.com/playlist?list=PLypxmOPCOkHXbJhUgjRaV2pD9MJkIArhg][C Programming in Linux Tutorial - YouTube]]
-
-* Shebang
-
-- [[https://www.in-ulm.de/~mascheck/various/shebang/#splitting][The #! magic, details about the shebang/hash-bang mechanism]]
-  - fs/binfmt_script.c
-  - [[https://web.archive.org/web/20150923090050/http://lkml.org/lkml/2004/2/16/74][LKML: Hansjoerg Lipp: [PATCH] Linux 2.6: shebang handling in fs/binfmt_script.c]]
-  - [[https://linux.die.net/man/2/execve][execve(2): execute program - Linux man page]]
+* nftables
+- [[https://github.com/google/nftables][google/nftables: This package manipulates Linux nftables (the iptables successor)]]
+- [[https://habr.com/ru/company/ruvds/blog/580648/][Переход с iptables на nftables. Краткий справочник / Хабр]]
 
 * nice and ionice
 
@@ -499,72 +636,20 @@ degradation:
   for pid in $(pidof rsync); do ionice -c 3 -p $pid; done
 #+END_SRC
 
-* Memory
-
-- [[https://github.com/hakavlad/prelockd][hakavlad/prelockd: Lock executables and shared libraries in memory to improve system responsiveness under low-memory conditions]]
-
-- [[https://www.carstengrohmann.de/oom/][OOM Analyser]]
-- [[https://sr.ht/~carstengrohmann/OOMAnalyser/][OOMAnalyser: Linux OOM Analyser]]
-- [[https://www.opennet.ru/opennews/art.shtml?num=57383][Facebook представил механизм TMO, позволяющий экономить 20-32% памяти на серверах]]
-
-[[https://github.com/0x0f0f0f/memplot][0x0f0f0f/memplot: Generate image plots of processes' memory usage very quickly, within a single binary.]]
-
-: echo 3 > /proc/sys/vm/drop_caches
-
-- [[https://hoytech.com/vmtouch/][Hoytech vmtouch]]
+* Performance
+- [[https://github.com/igo95862/cfs-zen-tweaks][igo95862/cfs-zen-tweaks: Tweak Linux CPU scheduler for desktop responsiveness]]
 
 * Privileges
 : echo 1 > /proc/sys/kernel/unprivileged_userns_clone
 
-* Networking
+* Proxy
+- [[https://github.com/m0hithreddy/Proxifier-For-Linux][m0hithreddy/Proxifier-For-Linux: Simple C code with iptables make this tool proxifier which tunnels whole system traffic through the proxy server, without configuring individual application]]
+- [[https://github.com/vi/tcpsocks][vi/tcpsocks: Redirect traffic to SOCKS5 server with iptables, epoll based, single threaded.]]
+- [[https://github.com/heiher/hev-socks5-tproxy][heiher/hev-socks5-tproxy: A simple, lightweight socks5 transparent proxy for Linux. (IPv4/IPv6/TCP/UDP over TCP)]]
 
-oleg@guixsd ~$ ss --numeric --tcp --listening --no-header --oneline --processes '( sport = :5901 )'
-
-rp_filter https://www.kernel.org/doc/Documentation/networking/ip-sysctl.txt
-
-- [[https://github.com/vi/netns_tcp_bridge][vi/netns_tcp_bridge: Linux CLI tool to forward TCP connections from one network namespace to another network namespace]]
-
-* source
-
-/home/oleg/archive/src/linux/arch/x86/entry/syscalls/syscall_64.tbl
-
-* console
-#+begin_quote
-I think it would also be nice if the sysadmins could get
-access to the serial console (or even the racadm console).  With the
-serial console you could see if the server is stuck even if you can’t
-SSH.  With the racadm console (where we type “console com2” to start the
-serial console) you could also trigger a soft reboot.
-
-We have these management interfaces pretty locked down, but perhaps we
-can set up a tunnel from bayfront, or something like that.
-#+end_quote
-
-* scsi
-- [[https://serverfault.com/questions/5336/how-do-i-make-linux-recognize-a-new-sata-dev-sda-drive-i-hot-swapped-in-without][How do I make Linux recognize a new SATA /dev/sda drive I hot swapped in without rebooting? - Server Fault]]
-- [[https://github.com/koct9i/ioping][koct9i/ioping: simple disk I/0 latency measuring tool]]
-- fio --name=randwrite --rw=randwrite --direct=1 --ioengine=libaio --bs=64k --numjobs=8 --size=512m --runtime=600 --group_reporting
-** Utilities
-- ioping
-- fio
-
-* D
-
-- [[https://stackoverflow.com/questions/767551/how-to-stop-uninterruptible-process-on-linux][signals - How to stop 'uninterruptible' process on Linux? - Stack Overflow]]
-
-#+begin_example
-  kill -9 {process_id}
-  sync
-  echo 3 | sudo tee /proc/sys/vm/drop_caches
-#+end_example
-
-- [[https://www.kernel.org/doc/Documentation/sysctl/vm.txt][kernel.org/doc/Documentation/sysctl/vm.txt]]
-
-#+begin_example
-echo 1 > /proc/sys/vm/drop_caches
-echo 2 > /proc/sys/vm/drop_caches
-echo 3 > /proc/sys/vm/drop_caches
-#+end_example
+* QoS
+- [[https://github.com/aabc/ipt-ratelimit][aabc/ipt-ratelimit: An implementation of committed access rate, or simply rate limiting, or policing for Linux iptables, implemented with high performance in mind.]]
+- [[https://github.com/rosywrt/nft-qos][rosywrt/nft-qos: QoS over Nftables (This packages is merged upstream, please visit openwrt/packages and openwrt/luci for more detail)]]
 
 * reboot
 
@@ -608,28 +693,24 @@ $ sudo echo c > /proc/sysrq-trigger
 
 Your computer reboots immediately.
 
-* BCC
-https://github.com/iovisor/bcc/blob/master/QUICKSTART.md
+* scsi
+- [[https://serverfault.com/questions/5336/how-do-i-make-linux-recognize-a-new-sata-dev-sda-drive-i-hot-swapped-in-without][How do I make Linux recognize a new SATA /dev/sda drive I hot swapped in without rebooting? - Server Fault]]
+- [[https://github.com/koct9i/ioping][koct9i/ioping: simple disk I/0 latency measuring tool]]
+- fio --name=randwrite --rw=randwrite --direct=1 --ioengine=libaio --bs=64k --numjobs=8 --size=512m --runtime=600 --group_reporting
+** Utilities
+- ioping
+- fio
 
-* udev
-: udevadm info --attribute-walk --query-all --path=/class/block/sda1 | grep mysql
+* Shebang
 
-* nftables
-- [[https://github.com/google/nftables][google/nftables: This package manipulates Linux nftables (the iptables successor)]]
-- [[https://habr.com/ru/company/ruvds/blog/580648/][Переход с iptables на nftables. Краткий справочник / Хабр]]
+- [[https://www.in-ulm.de/~mascheck/various/shebang/#splitting][The #! magic, details about the shebang/hash-bang mechanism]]
+  - fs/binfmt_script.c
+  - [[https://web.archive.org/web/20150923090050/http://lkml.org/lkml/2004/2/16/74][LKML: Hansjoerg Lipp: [PATCH] Linux 2.6: shebang handling in fs/binfmt_script.c]]
+  - [[https://linux.die.net/man/2/execve][execve(2): execute program - Linux man page]]
 
-* Build
-- [[https://github.com/takano32/build-kernel][takano32/build-kernel in Docker Ubuntu 20.04 container]]
+* source
 
-* Graphics
-- [[https://vadosware.io/post/using-both-integrated-and-discrete-graphics-cards/][Using Both Integrated And Discrete Graphics Cards - VADOSWARE]]
-- [[https://wiki.archlinux.org/index.php/PRIME#PRIME_GPU_offloading][PRIME - ArchWiki]]
-- [[https://www.opennet.ru/openforum/vsluhforumID3/91202.html][forum.opennet.ru - "В xorg-драйвер AMD добавлена поддержка reverse PRIME" (47)]]
-
-* unshare
-  #+begin_src bash
-    unshare -mrf strace -s 80 -o trace -ff  sh -c 'mount -t tmpfs -o ro none "/gnu/store"; /tmp/pack-dir/opt/bin/hello'
-  #+end_src
+/home/oleg/archive/src/linux/arch/x86/entry/syscalls/syscall_64.tbl
 
 * sudo
 
@@ -637,112 +718,31 @@ https://github.com/iovisor/bcc/blob/master/QUICKSTART.md
   =machinectl shell=, e.g:
   : [user1@host:~]$ machinectl shell user2@
 
-* Namespaces
+* Tools
+- [[https://github.com/icculus/fatelf][icculus/fatelf: Universal binaries for Linux.]]
+- [[https://github.com/nixcloud/ip2unix][nixcloud/ip2unix: Turn IP sockets into Unix domain sockets]]
+- [[https://github.com/vikmik/scratch][vikmik/scratch: Tool that creates a shell environment where actions have no consequences]]
+- [[https://github.com/JulienPalard/logtop][JulienPalard/logtop: Display real time statistics of whatever you want.]]
+- [[https://github.com/leahneukirchen/extrace][leahneukirchen/extrace: trace exec() calls system-wide]]
+- [[https://github.com/google/schedviz][google/schedviz: A tool for gathering and visualizing kernel scheduling traces on Linux machines]]
+- [[https://github.com/susam/uncap][susam/uncap: Map Caps Lock to Escape or any key to any key]]
+- [[https://www.opennet.ru/opennews/art.shtml?num=51542][В состав ядра Linux принят dm-clone, модуль для эффективной репликации внешних устройств]]
+- [[https://github.com/liamg/siphon][liamg/siphon: Intercept stdin/stdout/stderr for any process]]
+* Tools
+- [[https://github.com/shadow-maint/shadow][shadow-maint/shadow: Upstream shadow tree]]
+- [[https://github.com/BrenekH/smartreboot][BrenekH/smartreboot: Reboot a machine without interrupting ongoing work.]]
+- [[https://github.com/orhun/kmon][orhun/kmon: Linux Kernel Manager and Activity Monitor]]
+- [[https://github.com/koute/bytehound][koute/bytehound: A memory profiler for Linux.]]
 
-- [[https://unix.stackexchange.com/questions/144794/why-would-the-kernel-drop-packets][Create an empty network namespace]]
-#+begin_quote
-Besides what the man page says, there appears to be some additional reason why
-packets may be dropped by the kernel. I was experiencing 100% packet drop from
-tcpdump where the only traffic on the network was one 512B packet of PRBS per
-second. Clearly the buffer space explanation doesn't make sense here - I think
-the kernel can handle 0.5kiB/s.
+* udev
+: udevadm info --attribute-walk --query-all --path=/class/block/sda1 | grep mysql
 
-Something that came along with my distro (Ubuntu 14.04) may have been doing
-some sort of smart filtering at the link layer that didn't like my test
-packets. My workaround was to create a new network namespace as follows:
+* unshare
+  #+begin_src bash
+    unshare -mrf strace -s 80 -o trace -ff  sh -c 'mount -t tmpfs -o ro none "/gnu/store"; /tmp/pack-dir/opt/bin/hello'
+  #+end_src
 
-sudo -i
-ip netns add debug
-ip link set dev eth0 netns debug
-ip netns exec debug bash
-ifconfig eth0 1.2.3.4 up
+* Video
 
-In the inner netns shell, whatever OS processes that were causing problems
-before are out of the picture and tcpdump shows me all of the packets I expect
-to see.
-#+end_quote
+- [[https://www.youtube.com/playlist?list=PLypxmOPCOkHXbJhUgjRaV2pD9MJkIArhg][C Programming in Linux Tutorial - YouTube]]
 
-- [[https://github.com/JonathonReinhart/linux-netns-sysctl-verify][JonathonReinhart/linux-netns-sysctl-verify: Linux network namespace sysctl safety verifier.]]
-
-* Kill session by terminal
-
-#+begin_example
-  [root@web23:~]# w
-   16:43:11 up 414 days, 18:30,  2 users,  load average: 6.01, 6.78, 7.07
-  USER     TTY        LOGIN@   IDLE   JCPU   PCPU WHAT
-  eng      tty1      25Mar21  3:11   0.55s  0.02s -bash
-  eng      pts/0     16:42    0.00s  2.70s  0.01s sshd: eng [priv]                                                                             
-
-  [root@web23:~]# ps -ft tty1
-  UID        PID  PPID  C STIME TTY          TIME CMD
-  root       933     1  0  2020 tty1     00:00:00 /nix/store/1l5yw8hyfpvcn2a5lzds5nvgaz519n67-shadow-4.8/bin/login --
-  eng      30346   933  0  2021 tty1     00:00:00 -bash
-  root     30412 30346  0  2021 tty1     00:00:00 sudo -i
-  root     30423 30412  0  2021 tty1     00:00:00 -bash
-
-  [root@web23:~]# kill 933
-
-  [root@web23:~]# w
-   16:44:01 up 414 days, 18:31,  1 user,  load average: 5.77, 6.55, 6.97
-  USER     TTY        LOGIN@   IDLE   JCPU   PCPU WHAT
-  eng      pts/0     16:42    1.00s  2.70s  0.01s sshd: eng [priv]
-#+end_example
-
-* kexec
-
-[[https://www.linux.com/training-tutorials/simple-kexec-example/][Simple Kexec example - Linux.com]]
-
-Some time ago I was helping a friend with some kexec problems and written some notes on how to use it – here a CentOS based server was used, but the process should be pretty similiar also for other distributions. The main advantage is in skipping the BIOS init part which on servers takes quite some time. I personally use it for the gateway server (it has also other functions, like dns, dhcp, openvpn server) and testing servers reboots with minimal downtime. A nice kexec description is on its man page:
-
-    kexec is a system call that enables you to load and boot into another kernel from the currently running kernel. kexec performs the function of the boot loader from within the kernel. The primary difference between a standard system boot and a kexec boot is that the hardware initialization normally performed by the BIOS or firmware (depending on architecture) is not performed during a kexec boot. This has the effect of reducing the time required for a reboot.
-
-CentOS, Fedora users can install it using yum:
-
-[root@cent:~]# yum install kexec-tools
-
-To switch between kernels you have to install a new one, here for example after running a ”yum update” also a new kernel was installed – the 2.6.18-194.11.4.el5 version.
-
-[root@cent:~]# yum update
-[...]
-Installed:
-  kernel.x86_64 0:2.6.18-194.11.4.el5  kernel-devel.x86_64 0:2.6.18-194.11.4.el5
-[...]
-
-Current kernel is 2.6.18-194.11.3.el5
-
-[root@cent:~]# uname -r
-2.6.18-194.11.3.el5
-
-For kexec, kernel and initrd path will be specified; paths (not full) can be found for example in the grub.conf file which was already updated.
-
-[root@cent:~]# cat /etc/grub.conf
-[...]
-title CentOS (2.6.18-194.11.4.el5)
-        root (hd0,0)
-        kernel /vmlinuz-2.6.18-194.11.4.el5 ro root=LABEL=/
-        initrd /initrd-2.6.18-194.11.4.el5.img
-title CentOS (2.6.18-194.11.3.el5)
-        root (hd0,0)
-        kernel /vmlinuz-2.6.18-194.11.3.el5 ro root=LABEL=/
-        initrd /initrd-2.6.18-194.11.3.el5.img
-[...]
-
-Also the arguments passed to the kernel at boot time are needed, you can look at your current arguments in the /proc/cmdline file. Later these same arguments will be given for the new kernel.
-
-[root@cent:~]# cat /proc/cmdline
-ro root=LABEL=/
-
-Now to load the new kernel:
-
-[root@cent:~]# kexec -l /boot/vmlinuz-2.6.18-194.11.4.el5 
---initrd=/boot/initrd-2.6.18-194.11.4.el5.img 
---command-line="$( cat /proc/cmdline )"
-
-Start the magic and boot to the new loaded kernel:
-
-[root@cent:~]# kexec -e
-
-Hope this post will be helpful and inspire others to some kexec experiments 🙂
-
-* Device mapper
-- [[https://www.youtube.com/watch?v=xy0Tgt4Aryw][Device Mapper - низкоуровневое управление блочными устройствами - YouTube]]
