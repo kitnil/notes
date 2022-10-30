@@ -22,12 +22,30 @@
 - [[https://github.com/garywill/linux-router][garywill/linux-router: Set Linux as router in one command. Support Internet sharing, redsocks, Wifi hotspot, IPv6. Can also be used for routing VM/containers 🛰️]]
 - [[https://github.com/t1anz0ng/iftree][t1anz0ng/iftree: CLI, visualize network devices relation]]
 
-* Firmware
-- [[https://unix.stackexchange.com/questions/56614/send-file-by-xmodem-or-kermit-protocol-with-gnu-screen][serial port - Send file by xmodem or kermit protocol with GNU screen - Unix & Linux Stack Exchange]]
+* 
+
+http://xmodulo.com/centos-bgp-router-quagga.html
+
+https://www.tldp.org/HOWTO/BRIDGE-STP-HOWTO/set-up-the-bridge.html
+https://lists.linuxfoundation.org/pipermail/bridge/2017-December/010832.html
+https://developers.redhat.com/blog/2018/10/22/introduction-to-linux-interfaces-for-virtual-networking/
+
+https://bugzilla.redhat.com/show_bug.cgi?id=542405
+oleg@guixsd ~$ sudo sysctl  net.bridge.bridge-nf-call-arptables=0
+net.bridge.bridge-nf-call-arptables = 0
+oleg@guixsd ~$ sudo sysctl net.bridge.bridge-nf-call-iptables=0
+net.bridge.bridge-nf-call-iptables = 0
 
 * Analyze
 - [[https://serveradmin.ru/webpagetest-lokalnaya-ustanovka-i-nastroyka/][WebPageTest — локальная установка и настройка приватного сервера тестирования скорости сайта — Server Admin]]
 - [[https://serveradmin.ru/analiz-setevogo-trafika-v-noction-flow-analyzer/][Анализ сетевого трафика в Noction Flow Analyzer — Server Admin]]
+
+* ARP
+
+- [[https://github.com/royhills/arp-scan][royhills/arp-scan: The ARP Scanner]]
+
+* Backup
+- [[https://github.com/ytti/oxidized][ytti/oxidized: Oxidized is a network device configuration backup tool. It's a RANCID replacement!]]
 
 * Benchmark
 
@@ -41,92 +59,9 @@
 - [[https://github.com/baidu/dperf][baidu/dperf: dperf is a network load tester for cloud.]]
 - [[https://github.com/ddosify/ddosify][ddosify/ddosify: High-performance load testing tool, written in Golang.]]
 
-* ss
-- [[https://www.linuxtechi.com/ss-command-examples-monitor-socket-connections/][Top 14 SS Command Examples to Monitor Socket Connections]]
-
-- kill socket
-: ss -K dst 192.168.1.3 dport = 53152
-
-* DHCP
-- [[https://github.com/CyberShadow/dhcptest][CyberShadow/dhcptest: Cross-platform DHCP test client]]
-- [[https://habr.com/ru/company/dsec/blog/333978/][Атакуем DHCP / Блог компании Digital Security / Хабр]]
-
-* VLAN
-
-| cisco       | tp-link       |
-| access port | untagged port |
-| trunk port  | tagged port   |
-
-* Firewall
-** netfilter
-*** tools
-1. conntrack-tools
-2. nfacct
-3. ulogd
-
-* Scan
-- [[https://github.com/marco-lancini/goscan][marco-lancini/goscan: Interactive Network Scanner]]
-- [[https://github.com/v-byte-cpu/sx][v-byte-cpu/sx: Fast, modern, easy-to-use network scanner]]
-- [[https://github.com/s0md3v/Smap][s0md3v/Smap: a drop-in replacement for Nmap powered by shodan.io]]
-- [[https://github.com/pojntfx/liwasc][pojntfx/liwasc: List, wake and scan nodes in a network.]]
-- [[https://github.com/Esc4iCEscEsc/skanuvaty][Esc4iCEscEsc/skanuvaty: Dangerously fast DNS/network/port scanner]]
-- [[https://github.com/netxms/netxms][netxms/netxms: NetXMS - Open Source network and infrastructure monitoring and management]]
-
-* keepalived
-- [[https://tech-geek.ru/keepalived/][Настройка отказоустойчивой сети в Linux с keepalived]]
-- [[https://www.altlinux.org/Keepalived][Keepalived — ALT Linux Wiki]]
-- [[http://www.linux-admins.net/2015/02/keepalived-using-unicast-track-and.html][Linux Administration: Keepalived using unicast, track and notify scripts]]
-
-* Packets
-- [[https://github.com/pesos/rshark][pesos/rshark: Simple Packet Monitoring Tool]]
-- [[https://github.com/thombashi/tcconfig][thombashi/tcconfig: A tc command wrapper. Make it easy to set up traffic control of network bandwidth/latency/packet-loss/packet-corruption/etc. to a network-interface/Docker-container(veth).]]
-
-* Virtual machines
-- [[https://github.com/quyse/tracking_trackers][quyse/tracking_trackers: Tracking what tracks us]]
-
-* Mesh
-- [[https://github.com/slackhq/nebula][slackhq/nebula: A scalable overlay networking tool with a focus on performance, simplicity and security]]
-
-* Learning
-- [[http://2f30.org/home.html][division by zero]]
-- [[https://radiocrafts.com/why-is-multicasting-becoming-essential-for-mesh-networks/][Why is Multicasting Becoming Essential for Mesh Networks? - Radiocrafts]]
-- [[https://unix.stackexchange.com/questions/619068/the-difference-between-ip-link-down-and-physical-link-absence][linux - The difference between ip link down and physical link absence - Unix & Linux Stack Exchange]]
-- [[https://habr.com/ru/company/karuna/blog/582292/][Инструменты практического изучения сетей / Хабр]]
-- [[https://disnetern.ru/net-type-attack/][Виды сетевых атак | IT Knowledge Base]]
-- [[https://disnetern.ru/diff-sfp-sfp-xfp-qsfp-qsfp-cfp-qsfp28-xenpac-x2-gbic/][Различия между SFP, SFP+, XFP, QSFP/QSFP+, CFP, QSFP28 | IT Knowledge Base]]
-- [[https://disnetern.ru/10-samples-netstat-linux/][10 примеров команды Netstat в Linux | IT Knowledge Base]]
-- [[https://upload.wikimedia.org/wikipedia/commons/3/37/Netfilter-packet-flow.svg][upload.wikimedia.org/wikipedia/commons/3/37/Netfilter-packet-flow.svg]]
-
-* Diagrams
-- [[https://www.redhat.com/architect/diagramming-tools-network-architecture][Try these 5 diagramming tools for network architecture | Enable Architect]]
-
-* Filtering
-- [[https://habr.com/ru/company/timeweb/blog/586850/][Поднимаем прозрачный прокси Squid на FreeBSD 13.0 / Хабр]]
-
-* Tunnels
-** Misc
- - [[https://github.com/Dreamacro/clash][Dreamacro/clash: A rule-based tunnel in Go.]]
- - [[https://github.com/ekzhang/bore][ekzhang/bore: 🕳 bore is a simple CLI tool for making tunnels to localhost]]
-** GRE
- - [[https://community.hetzner.com/tutorials/linux-setup-gre-tunnel][Hetzner Online Community]]
- - [[https://github.com/puxxustc/gre][puxxustc/gre: Userspace GRE tunnel]]
-** Misc
- - Shadowsocks + v2ray
- - obfs proxy
- - port knocking
-* UPnP
-- [[https://github.com/miniupnp/miniupnp][miniupnp/miniupnp: UPnP IGD implementation]]
-* WOL
-- [[https://github.com/mdom/wakeonweb][mdom/wakeonweb: Dashboard for wakeonlan]]
-- [[https://github.com/vikmik/reboot-on-lan][vikmik/reboot-on-lan: Reboot a remote machine with a Wake-on-LAN packet]]
-
-* ICMP
-- [[https://github.com/m-ou-se/pong][m-ou-se/pong: Fake ping times.]]
-- [[https://linux.die.net/man/8/omping][omping(8): test IP multicast - Linux man page]]
-- [[https://github.com/oetiker/SmokePing][oetiker/SmokePing: The Active Monitoring System]]
-
-* Backup
-- [[https://github.com/ytti/oxidized][ytti/oxidized: Oxidized is a network device configuration backup tool. It's a RANCID replacement!]]
+* [[id:63242a98-634c-4236-999c-5b26d588b4d9][BGP]]
+** AS
+ - [[https://github.com/stevenpack/asroute][stevenpack/asroute: Interpret traceroute output to show names of ASN traversed]]
 
 * bridge
 
@@ -137,15 +72,39 @@
 ** Fibre
 - [[https://www.youtube.com/watch?v=EdR2cujwke4][(1) We just leveled up HARDCORE - Fibre Adventure - YouTube]]
 
-* nc
-** UDP
-[[https://serverfault.com/questions/416205/testing-udp-port-connectivity][linux - Testing UDP port connectivity - Server Fault]]
+* DHCP
+- [[https://github.com/CyberShadow/dhcptest][CyberShadow/dhcptest: Cross-platform DHCP test client]]
+- [[https://habr.com/ru/company/dsec/blog/333978/][Атакуем DHCP / Блог компании Digital Security / Хабр]]
 
-  On server listen UDP port:
-  : nc -ul 6111
+* Diagrams
+- [[https://www.redhat.com/architect/diagramming-tools-network-architecture][Try these 5 diagramming tools for network architecture | Enable Architect]]
 
-  On client:
-  : nc -u <server> 6111
+* eBPF
+- [[https://github.com/polycube-network/polycube][polycube-network/polycube: eBPF/XDP-based software framework for fast network services running in the Linux kernel.]]
+
+* /etc/hosts
+
+- [[https://github.com/txn2/txeh][txn2/txeh: Go library and CLI utility for /etc/hosts management.]]
+
+* Filtering
+- [[https://habr.com/ru/company/timeweb/blog/586850/][Поднимаем прозрачный прокси Squid на FreeBSD 13.0 / Хабр]]
+
+* Firewall
+** netfilter
+*** tools
+1. conntrack-tools
+2. nfacct
+3. ulogd
+
+* Firmware
+- [[https://unix.stackexchange.com/questions/56614/send-file-by-xmodem-or-kermit-protocol-with-gnu-screen][serial port - Send file by xmodem or kermit protocol with GNU screen - Unix & Linux Stack Exchange]]
+
+* [[id:8f93f297-e53d-4f15-80f8-47e3213f9ec5][HTTP]]
+
+* ICMP
+- [[https://github.com/m-ou-se/pong][m-ou-se/pong: Fake ping times.]]
+- [[https://linux.die.net/man/8/omping][omping(8): test IP multicast - Linux man page]]
+- [[https://github.com/oetiker/SmokePing][oetiker/SmokePing: The Active Monitoring System]]
 
 * ip
 
@@ -189,128 +148,6 @@
 - In =screen= session press Ctrl+C if successful
   : sh -c 'ip r delete default; ip r add default via 172.16.103.208; sleep 10; ip r delete default; ip r add default via 172.16.103.1'
 
-* tcpdump
-- [[https://danielmiessler.com/study/tcpdump/][A tcpdump Tutorial with Examples — 50 Ways to Isolate Traffic | Daniel Miessler]]
-
-* Traffic shaping
-- [[https://github.com/hkbakke/tc-gen][hkbakke/tc-gen: Modern linux traffic shaping made easy]]
-- [[https://yandex.ru/search/?text=traffic%20shaping%20linux%20ssh%20%22tc%22][traffic shaping linux ssh "tc" — Яндекс: нашлось 3 тыс. результатов]]
-- [[https://www.cyberciti.biz/faq/linux-traffic-shaping-using-tc-to-control-http-traffic/][tc: Linux HTTP Outgoing Traffic Shaping (Port 80 Traffic Shaping) - nixCraft]]
-- [[https://yandex.ru/turbo/litl-admin.ru/s/linux/shejpim-trafik-linux-pri-pomoshhi-tc.html][Шейпим трафик Linux при помощи tc]]
-- [[https://habr.com/ru/post/88624/][Шейпирование трафика в Linux / Хабр]]
-- [[https://www.google.com/search?q=shapping+traffic+arch&hl=en][shapping traffic arch - Google Search]]
-- [[https://wiki.archlinux.org/title/Advanced_traffic_control#Using_tc_only][Advanced traffic control - ArchWiki]]
-- [[https://yandex.ru/search/?text=iperf%20example][iperf example — Яндекс: нашлось 2 млн результатов]]
-- [[https://www.google.com/search?q=iperf+example][iperf example - Google Search]]
-- [[https://iperf.fr/iperf-doc.php][iPerf - iPerf3 and iPerf2 user documentation]]
-- [[https://openmaniak.com/iperf.php][IPERF - The Easy Tutorial]]
-- [[http://netwild.ru/iperf/][Iperf. Что такое и как использовать. | Netwild.ru]]
-- [[https://losst.ru/kak-polzovatsya-iperf][Как пользоваться iperf | Losst]]
-- [[https://iperf.fr/][iPerf - The TCP, UDP and SCTP network bandwidth measurement tool]]
-- [[https://www.google.com/search?hl=en&q=traffic%20shaping%20linux%20ssh%20%22tc%22%20reserve%20ssh][traffic shaping linux ssh "tc" reserve ssh - Google Search]]
-- [[https://wiki.4psa.com/display/KB/How+to+prioritize+VoIP+traffic+in+the+network][How to prioritize VoIP traffic in the network - 4PSA Knowledge Base - 4PSA Wiki]]
-
-* VXLAN
-- [[https://blog.oddbit.com/post/2021-04-17-vm-ovs-vxlan/][Creating a VXLAN overlay network with Open vSwitch · The Odd Bit]]
-- [[https://habr.com/ru/post/344326/][Введение в VxLAN / Хабр]]
-
-* Packets
-
-- [[https://github.com/netspooky/pdiff][netspooky/pdiff: Binary Protocol Differ]]
-- [[https://loicpefferkorn.net/ipdecap/][Ipdecap: remove encapsulation from pcap packets]]
-- [[https://github.com/projectdiscovery/nuclei][projectdiscovery/nuclei: Nuclei is a fast tool for configurable targeted scanning based on templates offering massive extensibility and ease of use.]]
-- [[https://github.com/dannagle/PacketSender][dannagle/PacketSender: Network utility for sending / receiving TCP, UDP, SSL, HTTP]]
-
-- Find all clients connected to HTTP or HTTPS ports 
-  : ss -o state established '( dport = :http or sport = :https )'
-
-- Block all IPv4 addresses that has brute forcing our ssh server
-  : for idiots in "$(cat /var/log/auth.log|grep invalid| grep -oE '\b([0-9]{1,3}\.){3}[0-9]{1,3}\b')"; do iptables -A INPUT -s "$idiots" -j DROP; done
-
-* 
-
-http://xmodulo.com/centos-bgp-router-quagga.html
-
-https://www.tldp.org/HOWTO/BRIDGE-STP-HOWTO/set-up-the-bridge.html
-https://lists.linuxfoundation.org/pipermail/bridge/2017-December/010832.html
-https://developers.redhat.com/blog/2018/10/22/introduction-to-linux-interfaces-for-virtual-networking/
-
-https://bugzilla.redhat.com/show_bug.cgi?id=542405
-oleg@guixsd ~$ sudo sysctl  net.bridge.bridge-nf-call-arptables=0
-net.bridge.bridge-nf-call-arptables = 0
-oleg@guixsd ~$ sudo sysctl net.bridge.bridge-nf-call-iptables=0
-net.bridge.bridge-nf-call-iptables = 0
-
-* Misc
-- [[https://github.com/IvanGlinkin/Host-enumeration][IvanGlinkin/Host-enumeration]]
-- [[https://github.com/zhboner/realm][zhboner/realm: A network relay tool]]
-- [[https://github.com/abdularis/LAN-Share][abdularis/LAN-Share: Cross platform LAN File transfer application built with Qt C++ framework]]
-
-* ARP
-
-- [[https://github.com/royhills/arp-scan][royhills/arp-scan: The ARP Scanner]]
-
-* /etc/hosts
-
-- [[https://github.com/txn2/txeh][txn2/txeh: Go library and CLI utility for /etc/hosts management.]]
-
-* Monitoring
-- [[https://github.com/ntop/ntopng][ntop/ntopng: Web-based Traffic and Security Network Traffic Monitoring]]
-
-* Tools
-- [[https://github.com/fofapro/fapro][fofapro/fapro: Fake Protocol Server]]
-- [[https://github.com/chiakge/Linux-NetSpeed][chiakge/Linux-NetSpeed: 将Linux现常用的网络加速集成在一起]]
-- [[https://github.com/Ripolak/chk][Ripolak/chk: A small CLI tool to check connection from a local machine to a remote target in various protocols.]]
-- [[https://github.com/ycd/dstp][ycd/dstp: 🧪 Run common networking tests against your site.]]
-- [[https://github.com/c-grimshaw/gosniff][c-grimshaw/gosniff: A fancy-schmancy tcpdump-esque TUI, programmed in Go.]]
-- [[https://github.com/hakluke/hakip2host][hakluke/hakip2host: hakip2host takes a list of IP addresses via stdin, then does a series of checks to return associated domain names.]]
-- [[https://github.com/sc0tfree/netbyte][sc0tfree/netbyte: Netbyte is a Netcat-style tool that facilitates probing proprietary TCP and UDP services. It is lightweight, fully interactive and provides formatted output in both hexadecimal and ASCII.]]
-- [[https://github.com/insomniacslk/dublin-traceroute][insomniacslk/dublin-traceroute: Dublin Traceroute is a NAT-aware multipath tracerouting tool]]
-- [[https://github.com/napalm-automation/napalm][napalm-automation/napalm: Network Automation and Programmability Abstraction Layer with Multivendor support]]
-- [[https://github.com/lmc999/RegionRestrictionCheck][lmc999/RegionRestrictionCheck: A bash script to check if your VPS's IP is available for various OTT platforms]]
-- [[https://github.com/snabbco/snabb][snabbco/snabb: Snabb: Simple and fast packet networking]]
-- [[https://github.com/imsnif/bandwhich][imsnif/bandwhich: Terminal bandwidth utilization tool]]
-- [[https://noiseprotocol.org/][Noise Protocol Framework]]
-- [[https://github.com/eNMS-automation/eNMS][eNMS-automation/eNMS: An enterprise-grade vendor-agnostic network automation platform.]]
-- [[https://github.com/ZingerLittleBee/netop][ZingerLittleBee/netop: Network Top]]
-- [[https://github.com/projectdiscovery/asnmap][projectdiscovery/asnmap: Go CLI and Library for quickly mapping organization network ranges using ASN information.]]
-- [[https://github.com/praetorian-inc/fingerprintx][praetorian-inc/fingerprintx: Standalone utility for service discovery on open ports!]]
-- [[https://github.com/fujiapple852/trippy][fujiapple852/trippy: A network diagnostic tool]]
-- [[https://github.com/liamg/furious][liamg/furious: Go IP/port scanner with SYN (stealth) scanning and device manufacturer identification]]
-** WEB interface
-- [[https://github.com/phpipam/phpipam][phpipam/phpipam: phpipam development repository]]
-
-* eBPF
-- [[https://github.com/polycube-network/polycube][polycube-network/polycube: eBPF/XDP-based software framework for fast network services running in the Linux kernel.]]
-
-* [[id:63242a98-634c-4236-999c-5b26d588b4d9][BGP]]
-** AS
- - [[https://github.com/stevenpack/asroute][stevenpack/asroute: Interpret traceroute output to show names of ASN traversed]]
-
-* [[id:8f93f297-e53d-4f15-80f8-47e3213f9ec5][HTTP]]
-
-* [[id:ed7ba502-c59a-4ab0-aada-6a0f342f20cd][rsync]]
-
-* [[id:d5c0438f-65e6-4989-8a60-48e927f4a4d3][SMTP]]
-
-* [[id:0b6880f3-90c4-4052-b176-f59fd7219230][Proxy]]
-
-* Ping
-
-  #+begin_src bash
-    for ip in 10.0.0.{1..6}
-    do
-        if (timeout 1 ping -c 1 "$ip" &> /dev/null)
-        then
-            :
-        else
-            echo "$ip"
-        fi
-    done
-  #+end_src
-
-- [[https://github.com/shivammathur/IPpy][shivammathur/IPpy: Ping IP addresses and domains in parallel to find the accessible and inaccessible ones.]]
-
 * Juniper/Cisco
 
 [[https://it-wtf.com/juniper/juniper-cisco-commands/][Juniper/Cisco соответствие команд | IT-WTF?!]]
@@ -353,6 +190,55 @@ ping (setting source int) 	ping dest bypass-routing 	to check to see if a destin
 terminal monitor 	monitor start messages 	Change console terminal settings
 terminal no monitor 	monitor stop 	Change console terminal settings
 terminal length 0 	set cli screen-length 0 	sets the length for displaying command output
+
+* keepalived
+- [[https://tech-geek.ru/keepalived/][Настройка отказоустойчивой сети в Linux с keepalived]]
+- [[https://www.altlinux.org/Keepalived][Keepalived — ALT Linux Wiki]]
+- [[http://www.linux-admins.net/2015/02/keepalived-using-unicast-track-and.html][Linux Administration: Keepalived using unicast, track and notify scripts]]
+
+* LACP
+
+[[https://support.f5.com/csp/article/K2289][Using advanced tcpdump filters]]
+#+begin_example
+  [root@kvm15:~]# tcpdump -pni any -e ether proto 0x8809 -vvv
+  tcpdump: listening on any, link-type LINUX_SLL (Linux cooked v1), capture size 262144 bytes
+  20:16:20.398110 Out 00:1b:21:8c:be:21 ethertype Slow Protocols (0x8809), length 126: LACPv1, length 110
+          Actor Information TLV (0x01), length 20
+            System 00:1b:21:8c:be:20, System Priority 65535, Key 9, Port 2, Port Priority 255
+            State Flags [Activity, Aggregation, Synchronization, Collecting, Distributing]
+            0x0000:  ffff 001b 218c be20 0009 00ff 0002 3d00
+            0x0010:  0000
+          Partner Information TLV (0x02), length 20
+            System 64:64:9b:ac:5c:40, System Priority 127, Key 6, Port 14, Port Priority 127
+            State Flags [Activity, Timeout, Aggregation, Synchronization, Collecting, Distributing]
+            0x0000:  007f 6464 9bac 5c40 0006 007f 000e 3f00
+            0x0010:  0000
+          Collector Information TLV (0x03), length 16
+            Max Delay 0
+            0x0000:  0000 0000 0000 0000 0000 0000 0000
+          Terminator TLV (0x00), length 0
+#+end_example
+
+* Learning
+- [[http://2f30.org/home.html][division by zero]]
+- [[https://radiocrafts.com/why-is-multicasting-becoming-essential-for-mesh-networks/][Why is Multicasting Becoming Essential for Mesh Networks? - Radiocrafts]]
+- [[https://unix.stackexchange.com/questions/619068/the-difference-between-ip-link-down-and-physical-link-absence][linux - The difference between ip link down and physical link absence - Unix & Linux Stack Exchange]]
+- [[https://habr.com/ru/company/karuna/blog/582292/][Инструменты практического изучения сетей / Хабр]]
+- [[https://disnetern.ru/net-type-attack/][Виды сетевых атак | IT Knowledge Base]]
+- [[https://disnetern.ru/diff-sfp-sfp-xfp-qsfp-qsfp-cfp-qsfp28-xenpac-x2-gbic/][Различия между SFP, SFP+, XFP, QSFP/QSFP+, CFP, QSFP28 | IT Knowledge Base]]
+- [[https://disnetern.ru/10-samples-netstat-linux/][10 примеров команды Netstat в Linux | IT Knowledge Base]]
+- [[https://upload.wikimedia.org/wikipedia/commons/3/37/Netfilter-packet-flow.svg][upload.wikimedia.org/wikipedia/commons/3/37/Netfilter-packet-flow.svg]]
+
+* Mesh
+- [[https://github.com/slackhq/nebula][slackhq/nebula: A scalable overlay networking tool with a focus on performance, simplicity and security]]
+
+* Misc
+- [[https://github.com/IvanGlinkin/Host-enumeration][IvanGlinkin/Host-enumeration]]
+- [[https://github.com/zhboner/realm][zhboner/realm: A network relay tool]]
+- [[https://github.com/abdularis/LAN-Share][abdularis/LAN-Share: Cross platform LAN File transfer application built with Qt C++ framework]]
+
+* Monitoring
+- [[https://github.com/ntop/ntopng][ntop/ntopng: Web-based Traffic and Security Network Traffic Monitoring]]
 
 * NAT
 
@@ -409,31 +295,145 @@ POSTROUTING. Это к слову тот случай, когда можно в�
 
 Задача - необходимо всё пришедшее в интерфейс eth0 натить с одним source-адресом, а пришедшее с eth2 - с другим. Указать -i в POSTROUTING нельзя. Вариант решения проблемы: маркируем пакеты с eth0 меткой допустим 10, а с eth2 - 20 в PREROUTING. В правилах -j SNAT указываем соответствующий -m mark.
 
-* Олифер Книга по сетям 6 издание
+* nc
+** UDP
+[[https://serverfault.com/questions/416205/testing-udp-port-connectivity][linux - Testing UDP port connectivity - Server Fault]]
 
-* LACP
+  On server listen UDP port:
+  : nc -ul 6111
 
-[[https://support.f5.com/csp/article/K2289][Using advanced tcpdump filters]]
-#+begin_example
-  [root@kvm15:~]# tcpdump -pni any -e ether proto 0x8809 -vvv
-  tcpdump: listening on any, link-type LINUX_SLL (Linux cooked v1), capture size 262144 bytes
-  20:16:20.398110 Out 00:1b:21:8c:be:21 ethertype Slow Protocols (0x8809), length 126: LACPv1, length 110
-          Actor Information TLV (0x01), length 20
-            System 00:1b:21:8c:be:20, System Priority 65535, Key 9, Port 2, Port Priority 255
-            State Flags [Activity, Aggregation, Synchronization, Collecting, Distributing]
-            0x0000:  ffff 001b 218c be20 0009 00ff 0002 3d00
-            0x0010:  0000
-          Partner Information TLV (0x02), length 20
-            System 64:64:9b:ac:5c:40, System Priority 127, Key 6, Port 14, Port Priority 127
-            State Flags [Activity, Timeout, Aggregation, Synchronization, Collecting, Distributing]
-            0x0000:  007f 6464 9bac 5c40 0006 007f 000e 3f00
-            0x0010:  0000
-          Collector Information TLV (0x03), length 16
-            Max Delay 0
-            0x0000:  0000 0000 0000 0000 0000 0000 0000
-          Terminator TLV (0x00), length 0
-#+end_example
+  On client:
+  : nc -u <server> 6111
+
+* Packets
+- [[https://github.com/pesos/rshark][pesos/rshark: Simple Packet Monitoring Tool]]
+- [[https://github.com/thombashi/tcconfig][thombashi/tcconfig: A tc command wrapper. Make it easy to set up traffic control of network bandwidth/latency/packet-loss/packet-corruption/etc. to a network-interface/Docker-container(veth).]]
+
+* Packets
+
+- [[https://github.com/netspooky/pdiff][netspooky/pdiff: Binary Protocol Differ]]
+- [[https://loicpefferkorn.net/ipdecap/][Ipdecap: remove encapsulation from pcap packets]]
+- [[https://github.com/projectdiscovery/nuclei][projectdiscovery/nuclei: Nuclei is a fast tool for configurable targeted scanning based on templates offering massive extensibility and ease of use.]]
+- [[https://github.com/dannagle/PacketSender][dannagle/PacketSender: Network utility for sending / receiving TCP, UDP, SSL, HTTP]]
+
+- Find all clients connected to HTTP or HTTPS ports 
+  : ss -o state established '( dport = :http or sport = :https )'
+
+- Block all IPv4 addresses that has brute forcing our ssh server
+  : for idiots in "$(cat /var/log/auth.log|grep invalid| grep -oE '\b([0-9]{1,3}\.){3}[0-9]{1,3}\b')"; do iptables -A INPUT -s "$idiots" -j DROP; done
+
+* Ping
+
+  #+begin_src bash
+    for ip in 10.0.0.{1..6}
+    do
+        if (timeout 1 ping -c 1 "$ip" &> /dev/null)
+        then
+            :
+        else
+            echo "$ip"
+        fi
+    done
+  #+end_src
+
+- [[https://github.com/shivammathur/IPpy][shivammathur/IPpy: Ping IP addresses and domains in parallel to find the accessible and inaccessible ones.]]
 
 * Privacy
 - [[https://ru.wikipedia.org/wiki/Psiphon][Psiphon — Википедия]]
 - [[https://ru.wikipedia.org/wiki/Lantern][Lantern — Википедия]]
+* [[id:0b6880f3-90c4-4052-b176-f59fd7219230][Proxy]]
+
+* [[id:ed7ba502-c59a-4ab0-aada-6a0f342f20cd][rsync]]
+
+* Scan
+- [[https://github.com/marco-lancini/goscan][marco-lancini/goscan: Interactive Network Scanner]]
+- [[https://github.com/v-byte-cpu/sx][v-byte-cpu/sx: Fast, modern, easy-to-use network scanner]]
+- [[https://github.com/s0md3v/Smap][s0md3v/Smap: a drop-in replacement for Nmap powered by shodan.io]]
+- [[https://github.com/pojntfx/liwasc][pojntfx/liwasc: List, wake and scan nodes in a network.]]
+- [[https://github.com/Esc4iCEscEsc/skanuvaty][Esc4iCEscEsc/skanuvaty: Dangerously fast DNS/network/port scanner]]
+- [[https://github.com/netxms/netxms][netxms/netxms: NetXMS - Open Source network and infrastructure monitoring and management]]
+
+* [[id:d5c0438f-65e6-4989-8a60-48e927f4a4d3][SMTP]]
+
+* ss
+- [[https://www.linuxtechi.com/ss-command-examples-monitor-socket-connections/][Top 14 SS Command Examples to Monitor Socket Connections]]
+
+- kill socket
+: ss -K dst 192.168.1.3 dport = 53152
+
+* tcpdump
+- [[https://danielmiessler.com/study/tcpdump/][A tcpdump Tutorial with Examples — 50 Ways to Isolate Traffic | Daniel Miessler]]
+
+* Tools
+- [[https://github.com/fofapro/fapro][fofapro/fapro: Fake Protocol Server]]
+- [[https://github.com/chiakge/Linux-NetSpeed][chiakge/Linux-NetSpeed: 将Linux现常用的网络加速集成在一起]]
+- [[https://github.com/Ripolak/chk][Ripolak/chk: A small CLI tool to check connection from a local machine to a remote target in various protocols.]]
+- [[https://github.com/ycd/dstp][ycd/dstp: 🧪 Run common networking tests against your site.]]
+- [[https://github.com/c-grimshaw/gosniff][c-grimshaw/gosniff: A fancy-schmancy tcpdump-esque TUI, programmed in Go.]]
+- [[https://github.com/hakluke/hakip2host][hakluke/hakip2host: hakip2host takes a list of IP addresses via stdin, then does a series of checks to return associated domain names.]]
+- [[https://github.com/sc0tfree/netbyte][sc0tfree/netbyte: Netbyte is a Netcat-style tool that facilitates probing proprietary TCP and UDP services. It is lightweight, fully interactive and provides formatted output in both hexadecimal and ASCII.]]
+- [[https://github.com/insomniacslk/dublin-traceroute][insomniacslk/dublin-traceroute: Dublin Traceroute is a NAT-aware multipath tracerouting tool]]
+- [[https://github.com/napalm-automation/napalm][napalm-automation/napalm: Network Automation and Programmability Abstraction Layer with Multivendor support]]
+- [[https://github.com/lmc999/RegionRestrictionCheck][lmc999/RegionRestrictionCheck: A bash script to check if your VPS's IP is available for various OTT platforms]]
+- [[https://github.com/snabbco/snabb][snabbco/snabb: Snabb: Simple and fast packet networking]]
+- [[https://github.com/imsnif/bandwhich][imsnif/bandwhich: Terminal bandwidth utilization tool]]
+- [[https://noiseprotocol.org/][Noise Protocol Framework]]
+- [[https://github.com/eNMS-automation/eNMS][eNMS-automation/eNMS: An enterprise-grade vendor-agnostic network automation platform.]]
+- [[https://github.com/ZingerLittleBee/netop][ZingerLittleBee/netop: Network Top]]
+- [[https://github.com/projectdiscovery/asnmap][projectdiscovery/asnmap: Go CLI and Library for quickly mapping organization network ranges using ASN information.]]
+- [[https://github.com/praetorian-inc/fingerprintx][praetorian-inc/fingerprintx: Standalone utility for service discovery on open ports!]]
+- [[https://github.com/fujiapple852/trippy][fujiapple852/trippy: A network diagnostic tool]]
+- [[https://github.com/liamg/furious][liamg/furious: Go IP/port scanner with SYN (stealth) scanning and device manufacturer identification]]
+** WEB interface
+- [[https://github.com/phpipam/phpipam][phpipam/phpipam: phpipam development repository]]
+
+* Traffic shaping
+- [[https://github.com/hkbakke/tc-gen][hkbakke/tc-gen: Modern linux traffic shaping made easy]]
+- [[https://yandex.ru/search/?text=traffic%20shaping%20linux%20ssh%20%22tc%22][traffic shaping linux ssh "tc" — Яндекс: нашлось 3 тыс. результатов]]
+- [[https://www.cyberciti.biz/faq/linux-traffic-shaping-using-tc-to-control-http-traffic/][tc: Linux HTTP Outgoing Traffic Shaping (Port 80 Traffic Shaping) - nixCraft]]
+- [[https://yandex.ru/turbo/litl-admin.ru/s/linux/shejpim-trafik-linux-pri-pomoshhi-tc.html][Шейпим трафик Linux при помощи tc]]
+- [[https://habr.com/ru/post/88624/][Шейпирование трафика в Linux / Хабр]]
+- [[https://www.google.com/search?q=shapping+traffic+arch&hl=en][shapping traffic arch - Google Search]]
+- [[https://wiki.archlinux.org/title/Advanced_traffic_control#Using_tc_only][Advanced traffic control - ArchWiki]]
+- [[https://yandex.ru/search/?text=iperf%20example][iperf example — Яндекс: нашлось 2 млн результатов]]
+- [[https://www.google.com/search?q=iperf+example][iperf example - Google Search]]
+- [[https://iperf.fr/iperf-doc.php][iPerf - iPerf3 and iPerf2 user documentation]]
+- [[https://openmaniak.com/iperf.php][IPERF - The Easy Tutorial]]
+- [[http://netwild.ru/iperf/][Iperf. Что такое и как использовать. | Netwild.ru]]
+- [[https://losst.ru/kak-polzovatsya-iperf][Как пользоваться iperf | Losst]]
+- [[https://iperf.fr/][iPerf - The TCP, UDP and SCTP network bandwidth measurement tool]]
+- [[https://www.google.com/search?hl=en&q=traffic%20shaping%20linux%20ssh%20%22tc%22%20reserve%20ssh][traffic shaping linux ssh "tc" reserve ssh - Google Search]]
+- [[https://wiki.4psa.com/display/KB/How+to+prioritize+VoIP+traffic+in+the+network][How to prioritize VoIP traffic in the network - 4PSA Knowledge Base - 4PSA Wiki]]
+
+* Tunnels
+** Misc
+ - [[https://github.com/Dreamacro/clash][Dreamacro/clash: A rule-based tunnel in Go.]]
+ - [[https://github.com/ekzhang/bore][ekzhang/bore: 🕳 bore is a simple CLI tool for making tunnels to localhost]]
+** GRE
+ - [[https://community.hetzner.com/tutorials/linux-setup-gre-tunnel][Hetzner Online Community]]
+ - [[https://github.com/puxxustc/gre][puxxustc/gre: Userspace GRE tunnel]]
+** Misc
+ - Shadowsocks + v2ray
+ - obfs proxy
+ - port knocking
+* UPnP
+- [[https://github.com/miniupnp/miniupnp][miniupnp/miniupnp: UPnP IGD implementation]]
+* Virtual machines
+- [[https://github.com/quyse/tracking_trackers][quyse/tracking_trackers: Tracking what tracks us]]
+
+* VLAN
+
+| cisco       | tp-link       |
+| access port | untagged port |
+| trunk port  | tagged port   |
+
+* VXLAN
+- [[https://blog.oddbit.com/post/2021-04-17-vm-ovs-vxlan/][Creating a VXLAN overlay network with Open vSwitch · The Odd Bit]]
+- [[https://habr.com/ru/post/344326/][Введение в VxLAN / Хабр]]
+
+* WOL
+- [[https://github.com/mdom/wakeonweb][mdom/wakeonweb: Dashboard for wakeonlan]]
+- [[https://github.com/vikmik/reboot-on-lan][vikmik/reboot-on-lan: Reboot a remote machine with a Wake-on-LAN packet]]
+
+* Олифер Книга по сетям 6 издание
+
