@@ -12,6 +12,7 @@
 - [[https://github.com/haidaraM/ansible-playbook-grapher][haidaraM/ansible-playbook-grapher: A command line tool to create a graph representing your Ansible playbook tasks and roles]]
 - [[https://github.com/maschmann/php-ansible][maschmann/php-ansible: php oop wrapper for ansible provisioning tool]]
 - [[https://github.com/TristanCacqueray/Haxible][TristanCacqueray/Haxible: Ansible interpreter powered by Haxl]]
+- [[https://github.com/ansible-semaphore/semaphore][ansible-semaphore/semaphore: Modern UI for Ansible]]
 
 - ansible
   : ansible -c local localhost -m slack -a "token='$(pass show majordomo/private/mjru.slack.com/tokens/ansible)' msg='$(date)' channel=#test"
