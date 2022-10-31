@@ -35,6 +35,10 @@
       org.springframework.web: DEBUG
       com.howtodoinjava: DEBUG
       org.hibernate: DEBUG
+
+  log4j:
+    logger:
+      org.springframework.web: DEBUG
 #+end_src
 
 * Actuator
