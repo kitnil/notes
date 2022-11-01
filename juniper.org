@@ -452,6 +452,11 @@ PFEM0(vty)# show tcam vendor 1 rules
 
 
 
+ну show pfe pfem extensive перестал показывать отрицательные значения
+наверное что-то починилось
+
+
+
 unit 0 {
     family inet {
         ##
