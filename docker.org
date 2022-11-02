@@ -218,6 +218,9 @@
 
 * Cheat sheet
 
+- show file system usage
+  : docker system df
+
 - skopeo
   : skopeo copy docker-archive:${args.image.path} docker-daemon:${baseName}:${originTag} --insecure-policy
 
