@@ -9,6 +9,8 @@
 
 * Cheat sheet
 
+- [[https://learnk8s.io/a/a-visual-guide-on-troubleshooting-kubernetes-deployments/troubleshooting-kubernetes.en_en.v3.pdf][Visual guide on troubleshooting Kubernetes deployments]]
+
 #+begin_example
   [root@vm30:~]# lsns | grep nginx
   4026532800 mnt         2  80051 root             nginx: master process nginx -g daemon off;
