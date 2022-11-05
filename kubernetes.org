@@ -475,6 +475,67 @@ To see the progress of the Dashboard starting, watch the Pods within the kube-sy
 
 Once running, the URL to the dashboard is https://2886795308-30000-simba08.environments.katacoda.com/
 
+* kubespray
+- [[https://github.com/pulumi/kubespy][pulumi/kubespy: Tools for observing Kubernetes resources in real time, powered by Pulumi.]]
+
+#+begin_src bash
+  kubectl -n backup delete job/kubespray
+
+  cat << EOF | kubectl apply -f -
+  apiVersion: batch/v1
+  kind: Job
+  metadata:
+    labels:
+      app: kubespray
+    name: kubespray
+    namespace: backup
+  spec:
+    backoffLimit: 1
+    completions: 1
+    parallelism: 1
+    template:
+      metadata:
+        labels:
+          app: kubespray
+      spec:
+        containers:
+        - command:
+          - /usr/bin/ansible-playbook
+          - -i
+          - /tmp/project-kubespray/inventory/project/inventory.ini
+          - cluster.yml
+          image: registry.gitlab.com/egeneralov/aio-bundle:a06acba5
+          name: kubespray
+          volumeMounts:
+          - mountPath: /root/.ssh/id_rsa
+            name: kubespray
+            subPath: id_rsa
+          - mountPath: /root/.ssh/config
+            name: kubespray
+            subPath: config
+          - mountPath: /tmp/project-kubespray
+            name: kubespray-files
+          workingDir: /tmp/project-kubespray
+        restartPolicy: Never
+        terminationGracePeriodSeconds: 30
+        volumes:
+        - configMap:
+            defaultMode: 384
+            items:
+            - key: id_rsa
+              path: id_rsa
+            - key: id_rsa.pub
+              path: id_rsa.pub
+            - key: config
+              path: config
+            name: backup
+          name: kubespray
+        - hostPath:
+            path: /tmp/project-kubespray
+            type: DirectoryOrCreate
+          name: kubespray-files
+  EOF
+#+end_src
 * kubevirt
 
 #+begin_example
@@ -781,7 +842,6 @@ Once running, the URL to the dashboard is https://2886795308-30000-simba08.envir
 - [[https://github.com/pixie-io/pixie][pixie-io/pixie: Instant Kubernetes-Native Application Observability]]
 - [[https://habr.com/ru/company/nixys/blog/682612/][Pre-Commit хуки, о которых DevOps-инженер должен знать, чтобы управлять Kubernetes / Хабр]]
 - [[https://github.com/projectcalico/calico][projectcalico/calico: Cloud native networking and network security]]
-- [[https://github.com/pulumi/kubespy][pulumi/kubespy: Tools for observing Kubernetes resources in real time, powered by Pulumi.]]
 - [[https://github.com/Qovery/pleco][Qovery/pleco: Automatically removes Cloud managed services and Kubernetes resources based on tags with TTL]]
 - [[https://github.com/rancher/k3s][rancher/k3s: Lightweight Kubernetes]]
 - [[https://github.com/rancher/kim][rancher/kim: In ur kubernetes, buildin ur imagez]]
