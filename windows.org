@@ -37,6 +37,10 @@
   system to a potential graphics issue, which results in Windows restarting
   your video driver.
 
+- [[https://github.com/prometheus-community/windows_exporter/issues/459][Only the service and CPU collectors are working · Issue #459 · prometheus-community/windows_exporter]]
+  : lodctr /R
+  : winmgmt.exe /RESYNCPERF
+
 * Deprecated
 - [[https://github.com/hectorm/docker-qemu-win2000][hectorm/docker-qemu-win2000: A Docker image for Windows 2000 Advanced Server with SP4.]]
 
