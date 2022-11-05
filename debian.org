@@ -122,3 +122,19 @@
 
 * Forks
 - [[https://siduction.org/][siduction Linux]]
+
+* Installation
+
+[[https://gist.github.com/egeneralov/66989a49821bec5129b27d51fd36fead][virt-install-from-http.sh]]
+#+begin_src bash
+  #!/bin/bash -xe
+
+  virt-install --virt-type kvm --name vmname \
+  --location http://deb.debian.org/debian/dists/buster/main/installer-amd64/ \
+  --os-variant debian10 \
+  --disk size=10 \
+  --memory 1000 \
+  --graphics none \
+  --console pty,target_type=serial \
+  --extra-args "console=ttyS0"
+#+end_src
