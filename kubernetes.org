@@ -651,6 +651,21 @@ Once running, the URL to the dashboard is https://2886795308-30000-simba08.envir
 - [[https://habr.com/ru/company/nixys/blog/657359/][Универсальный Helm-чарт для ваших приложений / Хабр]]
 - [[https://serveradmin.ru/kubernetes-ustanovka/][Установка кластера Kubernetes | serveradmin.ru]]
 
+** [[https://discuss.kubernetes.io/t/high-availability-host-numbers/13143][High Availability Host Numbers - General Discussions - Discuss Kubernetes]]
+K8s uses the RAFT consensus algorithm for quorum. In order to maintain quorum, you will need floor(n/2)+1 healthy master nodes.
+
+Practicaly this means:
+
+    1 master node: you will require 1 healthy master node for quorum, the loss of the master node will render the cluster headless.
+    2 master nodes: you will require 2 healthy master nodes for quorum, the loss of either master node will render the cluster headless.
+    3 master nodes: you will require 2 healty master nodes for quorum, the loss of one of the master nodes can be compensated.
+    4 master nodes: you will require 3 healty master nodes for quorum, the loss of one on the master nodes can be compensated. A setup with 4 master nodes has no advantage over a 3 master nodes setup.
+    5 master nodes: you will require 3 healthy master nodes for quorum, the loss of up to two master nodes can be compsensated.
+    6 master nodes: you will require 4 healty master nodes for quorum, the loss of up to two master nodes can be compensated. No advantage compared to 5 master nodes.
+    7 master nodes: you will require 4 healthy master nodes for quorum, the loss of up to three master nodes can be compsensated.
+
+This is the reason why it is recommended to use an odd number of master nodes for the control plane. More then 7 master nodes will result in a overhead for determining cluster membership and quorum, it is not recommended. Depending on your needs, you typically end up with 3 or 5 master nodes.
+
 * Misc
 - [[https://github.com/aquasecurity/kube-bench][aquasecurity/kube-bench: Checks whether Kubernetes is deployed according to security best practices as defined in the CIS Kubernetes Benchmark]]
 - [[https://github.com/kubevirt/kubevirt][kubevirt/kubevirt: Kubernetes Virtualization API and runtime in order to define and manage virtual machines.]]
