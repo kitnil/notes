@@ -103,6 +103,9 @@ https://www.youtube.com/watch?v=t1-YZ6bF-g0
 
   org.springframework spring-context
 
+- [[https://gist.github.com/egeneralov/60ced37da0b40008a7b3345c89a280b9][java-opts-discover-cgroup-limits.txt]]
+  : -XX:+UnlockExperimentalVMOptions -XX:+UseCGroupMemoryLimitForHeap -XX:MaxRAMFraction=1 -XshowSettings:vm
+
 * Maven
 - [[https://github.com/fzakaria/nixos-maven-example][fzakaria/nixos-maven-example: An example of how to use buildMaven with Nix to build a Maven project]]
 
