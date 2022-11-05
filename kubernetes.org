@@ -9,6 +9,42 @@
 
 * Cheat sheet
 
+- [[https://gist.github.com/egeneralov/4309aec2994af7e025330509905e824e][chroot to host namespace]]
+  #+begin_src bash
+    #!/bin/sh -xe
+
+    for NAME in $(kubectl get nodes -o name | awk -F \/ '{print $2}'); do
+      cat << EOF | kubectl apply -f -
+        apiVersion: v1
+        kind: Pod
+        metadata:
+         name: kube-support-$NAME
+         namespace: kube-system
+        spec:
+          terminationGracePeriodSeconds: 1
+          containers:
+            - name: debian
+              image: debian:buster
+              command: ["/bin/sleep"]
+              args: ["infinity"]
+              volumeMounts:
+                - name: host
+                  mountPath: /host
+              securityContext:
+                privileged: true
+          volumes:
+            - name: host
+              hostPath:
+                path: /
+                type: Directory
+          nodeSelector:
+            kubernetes.io/hostname: $NAME
+          tolerations:
+            - operator: "Exists"
+      EOF
+    done
+  #+end_src
+
 - [[https://learnk8s.io/a/a-visual-guide-on-troubleshooting-kubernetes-deployments/troubleshooting-kubernetes.en_en.v3.pdf][Visual guide on troubleshooting Kubernetes deployments]]
 
 #+begin_example
