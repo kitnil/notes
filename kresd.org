@@ -1,2 +1,129 @@
 - [[https://marek.vavrusa.com/kresd-scripting/][Scripting in Knot DNS Resolver – Marek Vavrusa – Traveler in time and space]]
-- [[https://sys-adm.in/systadm/986-prostoj-primer-ustanovki-i-nastrojki-knot-resolver.html][Простой пример установки и настройки Knot Resolver - Для сисадминов и не только]]
+
+* [[https://sys-adm.in/systadm/986-prostoj-primer-ustanovki-i-nastrojki-knot-resolver.html][Простой пример установки и настройки Knot Resolver - Для сисадминов и не только]]
+
+Knot Resolver - быстрый кэширующий DNS сервер, который может работать, как в домашней сети, так и в крупных сетях провайдеров. Имеет внятную документацию, быстр и легок в настройках.
+Установка
+
+Ставится просто. Fedora:
+
+dnf install -y knot-resolver knot-utils
+
+Debian:
+
+wget https://secure.nic.cz/files/knot-resolver/knot-resolver-release.deb
+dpkg -i knot-resolver-release.deb
+apt update
+apt install -y knot-resolver knot-utils
+
+CentOS:
+
+yum install -y epel-release
+yum install -y knot-resolver knot-utils
+
+Настройка конфига
+
+Кратко опишу параметры и настройку DNS, DoT, DoH.
+Логгинг
+
+Просто инфо:
+
+log_level('info')
+
+Пример дебаг-журналирования, с некоторыми группами сообщений
+
+log_level('debug')
+log_groups({'io', 'tls', 'doh'})
+
+Реалтайм просмотр логов:
+
+journalctl -u kresd@\* -f
+
+Еще пример:
+
+journalctl -xeu kresd@1
+
+Листеннинг
+
+Как было сказано выше: 53, 853, 443 соответственно:
+
+net.listen('::', 53, { kind = 'dns' })
+net.listen('0.0.0.0', 53, { kind = 'dns' })
+--
+net.listen('::', 443, { kind = 'doh2' })
+net.listen('0.0.0.0', 443, { kind = 'doh2' })
+--
+net.listen('::', 853)
+net.listen('0.0.0.0', 853)
+
+ Сюда же серты, например letsencrypt:
+
+net.tls("/etc/certs/domain.local/fullchain", "/etc/certs/domain.local/key")
+
+Форвардинг
+
+Настраиваем форвардинг на любой DNS, например гугловый:
+
+policy:add(policy.all(policy.FORWARD('8.8.8.8')))
+
+Для форвардинга TLS можно организовать следующую конструкцию:
+
+-- DoT Forwarder
+policy.add(policy.all(
+ policy.TLS_FORWARD({
+ {'8.8.8.8', hostname='dns.google'},
+ })
+))
+
+Пример RPZ
+
+Делается примерно следующим образом:
+
+-- BL / WL Lists (RPZ)
+policy.add(policy.rpz(policy.PASS, '/etc/knot-resolver/list/wl.txt',true))
+policy.add(policy.rpz(policy.PASS, '/etc/knot-resolver/list/common-wl.txt',true))
+policy.add(policy.rpz(policy.REFUSE, '/etc/knot-resolver/list/bl.txt',true))
+
+Модули
+
+Штатный раздел, комментарии включены:
+
+modules = {
+ 'hints > iterate', -- Allow loading /etc/hosts or custom root hints
+ 'stats', -- Track internal statistics
+ 'predict', -- Prefetch expiring/frequent records
+ 'policy', -- Block queries to local zones/bad sites
+ 'daf' -- DNS Application Firewall
+}
+
+DNS Application Firewall
+
+DAF благодаря правилам может резать запросы, может регулярные выражения, пример:
+
+daf.add 'src = 0.0.0.0/24 forward 127.0.0.1@53'
+daf.add('qname ~ %w+.example.com AND src = xxx.xxx.xx.x/24 deny')
+
+Детали по DAF можно найти здесь.
+Кеширование
+
+Пример, где 600 это МБ в ОЗУ:
+
+-- Cache size
+cache.size = 600 * MB
+
+-- Predict
+predict.config({ window = 15, period = 24})
+
+Включение и запуск
+
+systemctl enable --now kresd@1.service
+
+Согласно количеству CPU ядер можно запустить параллельно несколько сервисов:
+
+systemctl start kresd@1.service
+systemctl start kresd@2.service
+
+Или так:
+
+systemctl start kresd@{1..2}.service
+
