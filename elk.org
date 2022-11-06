@@ -123,6 +123,12 @@
 #+begin_example
   curl -X PUT "es.intr:9200/_cluster/settings?pretty" -H 'Content-Type: application/json' -d'{"transient": {"cluster.routing.allocation.disk.watermark.low": "25gb", "cluster.routing.allocation.disk.watermark.high": "15gb", "cluster.routing.allocation.disk.watermark.flood_stage": "5gb"}}'
 #+end_example
+
+- [[https://groups.google.com/g/wazuh/c/lc-NvBVAQcI][Increase number of shards per node]]
+
+  : $ curl -X PUT opensearch.home/_cluster/settings -H "Content-Type: application/json" -d '{ "persistent": { "cluster.max_shards_per_node": "3000" } }'
+  # outputs
+  : {"acknowledged":true,"persistent":{"cluster":{"max_shards_per_node":"3000"}},"transient":{}}
   
 * WIP
 
