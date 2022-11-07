@@ -2,3 +2,12 @@
 
 - list devices
 : (for device in /dev/sd*; do for i in {0..8}; do echo -e "\n\n@ ${device} sat+megaraid,$i $i"; smartctl -d "sat+megaraid,${i}" -a "${device}"; done; done) | less
+
+- get boot disk
+  : MegaCli64 -AdpBootDrive -Get -a0
+
+#+begin_example
+  Adapter 0: Boot Virtual Drive - #1 (target id - 1).
+
+  Exit Code: 0x00
+#+end_example
