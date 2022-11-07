@@ -20,3 +20,6 @@
 
   Exit Code: 0x00
 #+end_example
+
+- list devices
+  : MegaCli64 -PDList -aAll
