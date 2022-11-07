@@ -11,3 +11,6 @@
 
   Exit Code: 0x00
 #+end_example
+
+- set boot disk
+  : MegaCli64 -AdpBootDrive -set -L7 -a0
