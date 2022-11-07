@@ -14,3 +14,9 @@
 
 - set boot disk
   : MegaCli64 -AdpBootDrive -set -L7 -a0
+
+#+begin_example
+  Boot Virtual Drive is set to #7 (target id #7) on Adapter 0
+
+  Exit Code: 0x00
+#+end_example
