@@ -1,0 +1,4 @@
+* Cheat sheet
+
+- list devices
+: (for device in /dev/sd*; do for i in {0..8}; do echo -e "\n\n@ ${device} sat+megaraid,$i $i"; smartctl -d "sat+megaraid,${i}" -a "${device}"; done; done) | less
