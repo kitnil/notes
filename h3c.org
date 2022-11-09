@@ -5,3 +5,11 @@
 - [[http://www.h3c.com/en/Support/Resource_Center/HK/Switches/H3C_S5560X-EI_Switch_Series/H3C_S5560X-EI_Switch_Series/Technical_Documents/Installation/Installation_Guide/H3C_S5560X-EI_IG-6W105/201907/1212070_294551_0.htm][H3C S5560X-EI Switch Series Installation Guide-6W105 - 01-Text- H3C]]
 - [[http://www.h3c.com/en/Support/Resource_Center/HK/Switches/H3C_S9800/H3C_S9800/Technical_Documents/Configure/Configuration_Guide/H3C_S9800_CG-Release_213x-6W101/02/][02-IRF Configuration Guide - - H3C]]
 - [[https://www.h3c.com/en/d_201808/1102928_294551_0.htm][Support - 12-Management with Boot ROM- H3C]]
+
+* Cheat sheet
+
+: <sw4-mr13.intr>system-view 
+
+: [sw4-mr13.intr]interface Bridge-Aggregation 8
+
+: [sw4-mr13.intr-Bridge-Aggregation8]display this 
