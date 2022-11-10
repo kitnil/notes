@@ -108,6 +108,9 @@ net.bridge.bridge-nf-call-iptables = 0
 
 * ip
 
+- route traffic to 198.143.164.252/32 via secondary ip address 78.108.80.143
+  : ip r a 198.143.164.252/32 via 78.108.80.254 src 78.108.80.143
+
 - Bind port even if no IP address available:
 : net.ipv4.ip_nonlocal_bind = 1
 
