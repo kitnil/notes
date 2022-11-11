@@ -937,3 +937,43 @@ This is the reason why it is recommended to use an odd number of master nodes fo
 - [[https://github.com/crossplane/provider-template][crossplane/provider-template: A template for building @crossplane providers.]]
 - [[https://github.com/crossplane/terrajet][crossplane/terrajet: Generate Crossplane Providers from any Terraform Provider]]
 
+* Problems
+
+#+begin_example
+  E1111 19:31:15.276111       1 reflector.go:127] pkg/mod/k8s.io/client-go@v0.19.1/tools/cache/reflector.go:156: Failed to watch *v1.Endpoints: failed to list *v1.Endpoints: endpoints is forbidden: User "system:serviceaccount:kube-system:coredns" cannot list resource "endpoints" in API group "" at the cluster scope
+#+end_example
+
+from [[https://giters.com/ivanfioravanti/kubernetes-the-hard-way-on-azure/issues/54][Recent update seems to be missing ClusterRole for CoreDNS - Giters]]
+
+#+begin_src bash
+  cat <<EOF | kubectl apply -f -
+  apiVersion: rbac.authorization.k8s.io/v1
+  kind: ClusterRole
+  metadata:
+    name: coredns
+  rules:
+  - apiGroups:
+    - ""
+    resources:
+    - endpoints
+    - services
+    - pods
+    - namespaces
+    verbs:
+    - list
+    - watch
+  ---
+  apiVersion: rbac.authorization.k8s.io/v1
+  kind: ClusterRoleBinding
+  metadata:
+    name: coredns
+  roleRef:
+    apiGroup: rbac.authorization.k8s.io
+    kind: ClusterRole
+    name: coredns
+  subjects:
+  - kind: ServiceAccount
+    name: coredns
+    namespace: kube-system
+  EOF
+#+end_src
