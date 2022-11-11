@@ -980,3 +980,22 @@ from [[https://giters.com/ivanfioravanti/kubernetes-the-hard-way-on-azure/issues
 
 then redeploy with:
 : kubectl -n kube-system rollout restart deployment coredns
+
+** kubevirt
+
+*** unable to schedule after reboot
+#+begin_example
+  kubectl describe node kube8
+  ...
+  Allocatable:
+    cpu:                            8
+    devices.kubevirt.io/kvm:        0
+    devices.kubevirt.io/sev:        0
+    devices.kubevirt.io/tun:        0
+    devices.kubevirt.io/vhost-net:  0
+    ephemeral-storage:              441863943051
+    hugepages-1Gi:                  0
+    hugepages-2Mi:                  0
+    memory:                         65826164Ki
+    pods:                           110
+#+end_example
