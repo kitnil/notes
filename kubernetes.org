@@ -977,3 +977,6 @@ from [[https://giters.com/ivanfioravanti/kubernetes-the-hard-way-on-azure/issues
     namespace: kube-system
   EOF
 #+end_src
+
+then redeploy with:
+: kubectl -n kube-system rollout restart deployment coredns
