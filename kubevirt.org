@@ -208,3 +208,29 @@ The following fixed the issue.
 *** Pod hangs in terminating state after delete
 
 : kubectl delete pod virt-handler-9p6dd --grace-period=0 --force --namespace kubevirt
+
+** [[https://kubernetes.slack.com/archives/C8ED7RKFE/p1590523091037200][Copy pod content]]
+
+May 26th, 2020 at 22:58
+
+Is there a containerized data "exporter" or equivalent for kubevirt? (i.e., I
+launched a VM using kubevirt, made some modification to the VM and now want to
+get the qcow2 of the modified VM save/downloaded to somewhere.)  Is there a
+tool that can convert a persistent volume to qcow2 for export the VM to
+another cluster, for example?
+
+Unfortunately, no such tool exists.  Feel free to file an enhancement request.
+For now, you may have to get by with kubectl cpand doing the conversion
+yourself.
+
+Sounds like an indeed actually pretty neat tool.
+
+However, it will probably also open op the discussion about bundling metadata
+...
+
+I would love to see this feature too. I am not sure if the disk.img file which
+is in the /var/run/kubevirt-private/vmi-disks/datavolumedisk/disk.img is
+actually synced with the vmi or is just the base image which is used by the
+virt-launcher to run the VM.
+
+check your VM/VMI definition and see which disk is names datavolumedisk
