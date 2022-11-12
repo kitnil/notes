@@ -8,6 +8,13 @@
 - [[https://github.com/Michaelpalacce/HomeLab][Michaelpalacce/HomeLab: My HomeLab environment]]
 - [[https://github.com/ramitsurana/awesome-kubernetes][ramitsurana/awesome-kubernetes: A curated list for awesome kubernetes sources]]
 
+* CDI
+** EFS
+#+begin_quote
+EFS is dead slow and not performant at all. Stay away from EFS except for the
+lightest of data storage needs.
+#+end_quote
+
 * Cheat sheet
 
 - [[https://gist.github.com/egeneralov/4309aec2994af7e025330509905e824e][chroot to host namespace]]
