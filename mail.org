@@ -82,6 +82,19 @@
 * debug
 - [[https://mailcatcher.me/][MailCatcher]]
 
+** [[https://galaxydata.ru/community/testirovanie-pochtovoy-rassylki-742][Тестирование Почтовой Рассылки - GalaxyData Community]]
+
+Каждый почтовый сервис использует свои собственные алгоритмы проверки почты на
+СПАМ, тем не менее, есть весьма полезный сервис, который анализирует письмо и
+даёт рекомендации, если есть какие-то проблемы: www.mail-tester.com.
+
+Если же проблема с попаданием в СПАМ уже имеется, есть смысл воспользоваться
+инструментами для анализа, которые предоставляют почтовые сервисы:
+
+– Яндекс: postoffice.yandex.ru
+– Mail.Ru: postmaster.mail.ru
+– Gmail.com: gmail.com/postmaster
+
 * self-hosted
 - [[https://github.com/progmaticltd/homebox][progmaticltd/homebox: A set of ansible scripts to build a personal mail server / private cloud / etc.]]
 - [[https://gitlab.com/simple-nixos-mailserver/nixos-mailserver][simple-nixos-mailserver / nixos-mailserver · GitLab]]
