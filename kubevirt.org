@@ -131,6 +131,27 @@ thanks [[https://stackoverflow.com/questions/48148838/kube-dns-error-reply-from-
 
 - [[https://www.sobyte.net/post/2022-05/kubevirt/][Kubevirt Managing Virtual Machines - SoByte]]
 
+** [[https://kubernetes.slack.com/archives/C8ED7RKFE/p1638287814116400][containerized-data-importer]]
+
+Yes, CDI can import from a registry and convert it to a regular PVC based disk
+image. https://github.com/kubevirt/containerized-data-importer/blob/main/doc/datavolumes.md#source
+You can specify a datavolume as a datavolumeTemplate as part of the VM
+definition or as a separate DV and then reference it in the VM definition
+
+containerized-data-importer/datavolumes.md at main · kubevirt/containerized-data-importer
+
+Data Import Service for kubernetes, designed with kubevirt in mind. -
+containerized-data-importer/datavolumes.md at main ·
+kubevirt/containerized-data-importer (70 kB)
+https://github.com/kubevirt/containerized-data-importer/blob/main/doc/datavolumes.md#source
+
+The difference between the two is that if you specify it in a
+datavolumeTemplate, then the DV will be part of the VM lifecycle, and if you
+delete the VM, the DV, and thus the PVC will also be deleted.
+
+If you make it a separate DV, then if you delete the VM, the DV and thus the
+PVC will remain. It depends on your use case which one is preferred.
+
 * Delete
 
 [[https://bytemeta.vip/repo/kubevirt/hyperconverged-cluster-operator/issues/1408][Error from server (InternalError): Internal error occurred: failed calling webhook "kubevirt-update-validator.kubevirt.io": Post https://kubevirt-operator-webhook.kubevirt-hyperconverged.svc:443/kubevirt-validate-update?timeout=10s: no endpoints available for service "kubevirt-operator-webhook" - bytemeta]]
