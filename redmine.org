@@ -1,3 +1,19 @@
 - [[https://github.com/maxtepkeev/python-redmine][maxtepkeev/python-redmine: Python Redmine is a library for communicating with a Redmine project management application]]
 - [[https://github.com/evolvingweb/redmine_slack][evolvingweb/redmine_slack]]
 - [[https://github.com/nixys/nxs-chat-srv][nixys/nxs-chat-srv: Nixys chat bot that integrates Telegram and Redmine]]
+
+* [[https://galaxydata.ru/community/redmine-email-ssl-nastroyki-otpravleniya-pochty-s-redmine-306][Redmine Email SSL - настройки отправления почты с redmine - GalaxyData Community]]
+
+#+begin_src yaml
+  production:
+    delivery_method: :async_smtp
+    smtp_settings:
+      address: mail.community.galaxydata.ru
+      port: 465
+      ssl: true
+      enable_starttls_auto: true
+      domain: community.galaxydata.ru
+      authentication: :login
+      user_name: "noc@community.galaxydata.ru"
+      password: "password"
+#+end_src
