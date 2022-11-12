@@ -275,6 +275,11 @@ membership.
   > You can use the `kubectl rollout restart my-deployment`. It's way better than simply deleting the pods with `kubectl delete pod`, as the rollout will ensure availability during the "rebalancing" (although deleting the pods altogether increases your chances for a better rebalance).
 #+end_src
 
+* Community
+- [[https://kubernetes.slack.com/][kubernetes.slack.com]]
+  - [[https://slack.kubernetes.io/][slack.kubernetes.io]]
+- [[https://discuss.kubernetes.io/]]
+
 * Helm
 - [[https://helm.sh/docs/topics/charts/][Helm Documentation | Charts]]
 - [[https://github.com/truecharts/charts][truecharts/charts: Community App Catalog for TrueNAS SCALE]]
