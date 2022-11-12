@@ -461,6 +461,27 @@ patchelf https://nixos.wiki/wiki/Packaging/Binaries#Creating_the_Derivation_for_
   };
 #+end_src
 
+- github.com/NixOS/nixpkgs/nixos/modules/system/boot/stage-2-init.sh
+#+begin_src bash
+  # Make /nix/store a read-only bind mount to enforce immutability of
+  # the Nix store.  Note that we can't use "chown root:nixbld" here
+  # because users/groups might not exist yet.
+  # Silence chown/chmod to fail gracefully on a readonly filesystem
+  # like squashfs.
+  chown -f 0:30000 /nix/store
+  chmod -f 1775 /nix/store
+  if [ -n "@readOnlyStore@" ]; then
+      if ! [[ "$(findmnt --noheadings --output OPTIONS /nix/store)" =~ ro(,|$) ]]; then
+          if [ -z "$container" ]; then
+              mount --bind /nix/store /nix/store
+          else
+              mount --rbind /nix/store /nix/store
+          fi
+          mount -o remount,ro,bind /nix/store
+      fi
+  fi
+#+end_src
+
 * CI
 - [[https://github.com/Mic92/nix-build-uncached][Mic92/nix-build-uncached: A CI friendly wrapper around nix-build.]]
 - [[https://github.com/DeterminateSystems/terraform-provider-hydra][DeterminateSystems/terraform-provider-hydra: Declaratively configure your Hydra server with Terraform.]]
