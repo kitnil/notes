@@ -15,6 +15,7 @@
 - [[https://github.com/kubevirt/kubevirt-tekton-tasks][kubevirt/kubevirt-tekton-tasks: VM specific tasks for Tekton Pipelines]]
 - [[https://dougbtv.com/nfvpe/2019/05/15/kubevirt-sriov/][High Performance Networking with KubeVirt - SR-IOV device plugin to the rescue! · dougbtv]]
 - [[https://github.com/kubevirt/cluster-network-addons-operator/][kubevirt/cluster-network-addons-operator: Deploy additional networking components on top of your Kubernetes cluster]]
+  - [[https://kubernetes.slack.com/archives/C8ED7RKFE/p1600787344027500?thread_ts=1600785655.023100&cid=C8ED7RKFE][phoracek - recommends to get Multus+Linux bridge CNI]]
 
 * learning
 - [[https://www.cncf.io/wp-content/uploads/2020/08/Fast_Packet_Processing_v1.pdf][Fast_Packet_Processing_v1.pdf]]
