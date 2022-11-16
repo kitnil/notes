@@ -47,3 +47,5 @@
       fi
   done
 #+end_src
+
+: for dev in /dev/sd?; do /root/smart.sh "$dev" | tee "$(basename "$dev").yaml"; done
