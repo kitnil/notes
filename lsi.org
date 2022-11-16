@@ -49,3 +49,4 @@
 #+end_src
 
 : for dev in /dev/sd?; do /root/smart.sh "$dev" | tee "$(basename "$dev").yaml"; done
+: for dev in /dev/sd?; do /root/smart.sh "$dev" | systemd-cat -t smartctl -p info; done
