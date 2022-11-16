@@ -23,3 +23,27 @@
 
 - list devices
   : MegaCli64 -PDList -aAll
+
+* smart
+
+#+begin_src bash
+  #!/usr/bin/env bash
+
+  device="$1"
+  for i in {0..8}
+  do
+      output="$(smartctl -d "sat+megaraid,${i}" -a "${device}" | sed 's/^/    /')"
+      if [[ $output != *"Read Device Identity failed"* ]]
+      then
+          (
+              cat <<EOF
+  ---
+  device: ${device}
+  megaraid: sat+megaraid,$i $i
+  smartctl : |
+  $output
+  EOF
+          ) 
+      fi
+  done
+#+end_src
