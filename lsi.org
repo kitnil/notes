@@ -1,7 +1,7 @@
 * Cheat sheet
 
 - list devices
-: (for device in /dev/?; do for i in {0..8}; do if [[ $(smartctl -d "sat+megaraid,${i}" -a "${device}") != *"Read Device Identity failed"* ]]; then echo -e "\n\n@ ${device} sat+megaraid,$i $i"; smartctl -d "sat+megaraid,${i}" -a "${device}"; fi; done; done)
+: (for device in /dev/sd?; do for i in {0..8}; do if [[ $(smartctl -d "sat+megaraid,${i}" -a "${device}") != *"Read Device Identity failed"* ]]; then echo -e "\n\ndevice: ${device}\nmegaraid: sat+megaraid,$i $i\nsmartctl:\n"; smartctl -d "sat+megaraid,${i}" -a "${device}" | sed 's/^/    /'; fi; done; done)
 
 - get boot disk
   : MegaCli64 -AdpBootDrive -Get -a0
