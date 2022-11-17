@@ -862,6 +862,13 @@ This is the reason why it is recommended to use an odd number of master nodes fo
 - [[https://github.com/lastbackend/lastbackend][lastbackend/lastbackend: System for containerized apps management. From build to scaling.]]
 - [[https://github.com/lensapp/lens][lensapp/lens: Lens - The Kubernetes IDE]]
 - [[https://github.com/lightrun-platform/koolkits][lightrun-platform/koolkits: 🧰 Opinionated, language-specific, batteries-included debug container images for Kubernetes.]]
+- local development
+  - Telepresence
+  - garden.io
+  - tilt.dev
+  - okteto.com
+  - devspace
+  - skaffold
 - [[https://github.com/loft-sh/vcluster][loft-sh/vcluster: vcluster - Create fully functional virtual Kubernetes clusters - Each vcluster runs inside a namespace of the underlying k8s cluster. It's cheaper than creating separate full-blown clusters and it offers better multi-tenancy and isolation than regular namespaces.]]
 - [[https://github.com/loft-sh/vcluster][loft-sh/vcluster: vcluster - Create fully functional virtual Kubernetes clusters - Each vcluster runs inside a namespace of the underlying k8s cluster. It's cheaper than creating separate full-blown clusters and it offers better multi-tenancy and isolation than regular namespaces.]]
 - [[https://longhorn.io/][Longhorn - Cloud native distributed block storage for Kubernetes]]
