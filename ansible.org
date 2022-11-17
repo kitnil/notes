@@ -17,6 +17,9 @@
 - ansible
   : ansible -c local localhost -m slack -a "token='$(pass show majordomo/private/mjru.slack.com/tokens/ansible)' msg='$(date)' channel=#test"
 
+- reboot
+  : ansible kube8.intr -m reboot -a 'search_paths=/run/current-system/sw/bin'
+
 - ls /tmp in ssh-guest-room
 #+begin_src yaml
   - hosts: web
