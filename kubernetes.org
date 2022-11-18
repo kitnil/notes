@@ -163,6 +163,9 @@ lightest of data storage needs.
   : kubectl run mypod --image alpine --overrides='{"apiVersion": "v1", "spec": {"nodeSelector": { "kubernetes.io/hostname": "kube1" }}}' --command -- sleep 100000000000000
   : kubectl run --rm -it netshoot --image=nicolaka/netshoot --overrides='{"apiVersion": "v1", "spec": {"nodeSelector": { "kubernetes.io/hostname": "kube1" }}}' /bin/bash
 
+- mariadb client
+  : kubectl run --rm -it mysql-client --image=nixery.dev/shell/less/mycli -- /bin/bash
+
 - restart coredns deployment
   : kubectl -n kube-system rollout restart deployment coredns
 
