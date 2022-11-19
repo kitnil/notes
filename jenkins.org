@@ -225,6 +225,7 @@ NOTE: "pipeline" equal to "workflow".
 * Plugins
 
   - [[https://github.com/Fuuzetsu/jenkinsPlugins2nix][Fuuzetsu/jenkinsPlugins2nix]]
+  - [[https://github.com/bitnami-labs/jenkins-plugins-resolver][bitnami-labs/jenkins-plugins-resolver: Go tools to manage Jenkins plugins resolution, such as transitive dependencies graph computation and download]]
 
 ** Chromium
 
