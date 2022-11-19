@@ -61,6 +61,7 @@
 - [[https://github.com/thanos-io/thanos][thanos-io/thanos: Highly available Prometheus setup with long term storage capabilities. A CNCF Incubating project.]]
 - [[https://github.com/povilasv/systemd_exporter][povilasv/systemd_exporter: Exporter for systemd unit metrics]]
 - [[https://github.com/imgix/prometheus-am-executor][imgix/prometheus-am-executor: Execute command based on Prometheus alerts]]
+- [[https://github.com/robusta-dev/robusta][robusta-dev/robusta: Open source Kubernetes monitoring, troubleshooting, and automation platform]]
 - [[https://deckhouse.io/ru/documentation/v1/modules/303-prometheus-pushgateway/usage.html][Модуль Prometheus Pushgateway: примеры конфигурации | Deckhouse]]
 - [[https://github.com/nickbabcock/OhmGraphite][nickbabcock/OhmGraphite: Expose hardware sensor data to Graphite / InfluxDB / Prometheus / Postgres / Timescaledb]]
 - [[https://github.com/fstab/grok_exporter][fstab/grok_exporter: Export Prometheus metrics from arbitrary unstructured log data.]]
