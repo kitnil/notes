@@ -608,6 +608,7 @@ Once running, the URL to the dashboard is https://2886795308-30000-simba08.envir
 - [[https://github.com/kelseyhightower/kubernetes-the-hard-way][kelseyhightower/kubernetes-the-hard-way: Bootstrap Kubernetes the hard way on Google Cloud Platform. No scripts.]]
 - [[https://github.com/kodekloudhub/certified-kubernetes-administrator-course][kodekloudhub/certified-kubernetes-administrator-course: Certified Kubernetes Administrator - CKA Course]]
 - [[https://github.com/kubernetes/kubeadm/blob/main/docs/ha-considerations.md#options-for-software-load-balancing][kubeadm/ha-considerations.md at main · kubernetes/kubeadm]]
+- [[https://iximiuz.com/en/posts/kubernetes-api-structure-and-terminology/][Kubernetes API Basics - Resources, Kinds, and Objects]]
 - [[https://wiki.archlinux.org/title/Kubernetes][Kubernetes - ArchWiki]]
 - [[https://www.youtube.com/watch?v=K3jNo4z5Jx8][Kubernetes Namespaces Explained in 15 mins | Kubernetes Tutorial 21]]
   : kubectl api-resources --namespaced=true
