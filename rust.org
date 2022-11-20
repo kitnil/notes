@@ -10,6 +10,7 @@
 - [[https://github.com/agrinman/tunnelto][agrinman/tunnelto: Expose your local web server to the internet with a public URL.]]
 - [[https://github.com/ajeetdsouza/zoxide][ajeetdsouza/zoxide: A faster way to navigate your filesystem]]
 - [[https://github.com/analysis-tools-dev/static-analysis][analysis-tools-dev/static-analysis: Static analysis tools for all programming languages, build tools, config files and more.]]
+- [[https://github.com/atomicdata-dev/atomic-data-rust][atomicdata-dev/atomic-data-rust: Create, share, fetch and model Atomic Data! This project consists of a graph database + server, a CLI and a rust library.]]
 - [[https://github.com/austinjones/tab-rs][austinjones/tab-rs: The intuitive, config-driven terminal multiplexer designed for software & systems engineers]]
 - [[https://github.com/aya-rs/aya][aya-rs/aya: Aya is an eBPF library for the Rust programming language, built with a focus on developer experience and operability.]]
 - [[https://github.com/bastion-rs/bastion][bastion-rs/bastion: Highly-available Distributed Fault-tolerant Runtime]]
@@ -97,6 +98,7 @@
 - [[https://github.com/rdk31/newsfrwdr][rdk31/newsfrwdr: A RSS forwarder]]
 - [[https://renato.athaydes.com/posts/how-to-write-slow-rust-code.html][Renato Athaydes How to write really slow Rust code]]
 - [[https://github.com/rome/tools][rome/tools: The Rome Toolchain. A linter, compiler, bundler, and more for JavaScript, TypeScript, HTML, Markdown, and CSS.]]
+- [[https://github.com/rparjun/rust-log-parser][rparjun/rust-log-parser: CLI to parse log files and extract a field(or convert to json)]]
 - [[https://github.com/rustdesk/rustdesk][rustdesk/rustdesk: The best open source remote desktop software]]
 - [[https://github.com/RustScan/RustScan][RustScan/RustScan: 🤖 The Modern Day Port Scanner 🤖]]
 - [[https://github.com/rust-unofficial/awesome-rust][rust-unofficial/awesome-rust: A curated list of Rust code and resources.]]
@@ -107,6 +109,7 @@
 - [[https://github.com/Soft/xcolor][Soft/xcolor: Lightweight color picker for X11]]
 - [[https://github.com/SoptikHa2/desed][SoptikHa2/desed: Debugger for Sed: demystify and debug your sed scripts, from comfort of your terminal.]]
 - [[https://github.com/StarWM/StarWM][StarWM/StarWM: A basic window manager written in Rust.]]
+- [[https://github.com/static-web-server/static-web-server][static-web-server/static-web-server: A cross-platform, blazing fast and asynchronous web server for static files-serving. ⚡]]
 - [[https://github.com/str4d/rage][str4d/rage: A simple, secure and modern encryption tool (and Rust library) with small explicit keys, no config options, and UNIX-style composability.]]
 - [[https://github.com/svenstaro/miniserve][svenstaro/miniserve: 🌟 For when you really just want to serve some files over HTTP right now!]]
 - [[https://github.com/svenstaro/proxyboi][svenstaro/proxyboi: A super simple reverse proxy with TLS support]]
@@ -132,8 +135,6 @@
 - [[https://github.com/ysf/anewer][ysf/anewer: anewer appends lines from stdin to a file if they don't already exist in the file. This is a rust version of https://github.com/tomnomnom/anew]]
 - [[https://github.com/zdimension/embed-c][zdimension/embed-c: Embed C code at compile time inside Rust using C2Rust]]
 - [[https://github.com/zoeyfyi/Boop-GTK][zoeyfyi/Boop-GTK: Port of @IvanMathy's Boop to GTK, a scriptable scratchpad for developers.]]
-- [[https://github.com/static-web-server/static-web-server][static-web-server/static-web-server: A cross-platform, blazing fast and asynchronous web server for static files-serving. ⚡]]
-- [[https://github.com/atomicdata-dev/atomic-data-rust][atomicdata-dev/atomic-data-rust: Create, share, fetch and model Atomic Data! This project consists of a graph database + server, a CLI and a rust library.]]
 
 * Tools
 - [[https://github.com/moriturus/ktra][moriturus/ktra: Your Little Cargo Registry]]
