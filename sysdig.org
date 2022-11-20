@@ -3,6 +3,8 @@
 
 * Cheat sheet
 
+- [[https://github.com/akshithg/sysdig-chisels/blob/master/sysdig-examples][sysdig-chisels/sysdig-examples at master · akshithg/sysdig-chisels]]
+
 : sysdig -A -c echo_fds "fd.filename=known_hosts"
 
 chisels/echo_fds_write.lua
