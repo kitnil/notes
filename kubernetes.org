@@ -170,7 +170,7 @@ lightest of data storage needs.
   : kubectl run --rm -it mysql-client --image=nixery.dev/shell/less/mycli -- /bin/bash
 
 - run with specific multus network
-  : kubectl run --rm -it netshoot --image=nicolaka/netshoot --overrides='{"apiVersion": "v1", "metadata": {"annotations": {"k8s.v1.cni.cncf.io/networks": "kube-system/macvlan-br253"}}, "spec": {"nodeSelector": { "kubernetes.io/hostname": "kube6" }}}' /bin/bash
+  : kubectl run --rm -it netshoot --image=nicolaka/netshoot --overrides='{"apiVersion": "v1", "metadata": {"annotations": {"k8s.v1.cni.cncf.io/networks": "default/macvlan-br253"}}, "spec": {"nodeSelector": { "kubernetes.io/hostname": "kube6" }}}' /bin/bash
 
 - restart coredns deployment
   : kubectl -n kube-system rollout restart deployment coredns
