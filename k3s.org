@@ -1,0 +1,3 @@
+* Cheat sheet
+  - server certificates
+    : find /var/lib/rancher/k3s/server/tls -type f -exec openssl x509 -text -in {} \;
