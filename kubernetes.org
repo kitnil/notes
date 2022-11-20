@@ -147,6 +147,9 @@ lightest of data storage needs.
 - drain node
   : kubectl drain kube6 --ignore-daemonsets --delete-emptydir-data
 
+- reboot node
+  : ansible kubeX.intr -m reboot -a 'search_paths=/run/current-system/sw/bin'
+
 - undrain node
   : kubectl uncordon kube6
 
