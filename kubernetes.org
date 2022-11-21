@@ -172,6 +172,12 @@ lightest of data storage needs.
 - run with specific multus network
   : kubectl run --rm -it netshoot --image=nicolaka/netshoot --overrides='{"apiVersion": "v1", "metadata": {"annotations": {"k8s.v1.cni.cncf.io/networks": "default/macvlan-br253"}}, "spec": {"nodeSelector": { "kubernetes.io/hostname": "kube6" }}}' /bin/bash
 
+- iperf
+  : kubectl run iperf --image nixery.dev/shell/tmux/iperf --overrides='{"apiVersion": "v1", "spec": {"nodeSelector": { "kubernetes.io/hostname": "kube6" }}}' --command -- sleep 100000000000000
+
+- expose
+  : kubectl expose --port=5201 --type=LoadBalancer pod iperf
+
 - restart coredns deployment
   : kubectl -n kube-system rollout restart deployment coredns
 
