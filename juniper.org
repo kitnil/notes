@@ -121,6 +121,41 @@
 - Junos: 15.1R5.5
   : loop-detect они подвезли только в Release 20.4R1.
 
+** [[https://www.juniper.net/documentation/us/en/software/junos/bgp/topics/topic-map/troubleshooting-bgp-sessions.html][Troubleshooting BGP Sessions | Junos OS | Juniper Networks]]
+
+Tasks Command or Action
+
+*** Verify BGP Peers
+
+- Verify BGP on an Internal Router
+: show configuration
+
+- Verify BGP on a Border Router
+: show configuration
+
+- Verify Advertised BGP Routes
+: show route advertising-protocol bgp neighbor-address
+
+- Verify That a Particular BGP Route Is Received on Your Router
+: show route receive-protocol bgp neighbor-address
+
+*** Examine BGP Routes and Route Selection 	 
+
+- Examine the Local Preference Selection
+: show route destination-prefix < detail >
+
+- Examine the Multiple Exit Discriminator Route Selection
+: show route destination-prefix < detail >
+
+- Examine the EBGP over IBGP Selection
+: show route destination-prefix < detail >
+
+- Examine the IGP Cost Selection
+: show route destination-prefix < detail >
+
+- Examine Routes in the Forwarding Table 	
+: show route forwarding-table
+
 ** commit compare
 
 #+BEGIN_EXAMPLE
