@@ -13,3 +13,5 @@
 : [sw4-mr13.intr]interface Bridge-Aggregation 8
 
 : [sw4-mr13.intr-Bridge-Aggregation8]display this 
+
+: display current-configuration interface GigabitEthernet 1/0/17
