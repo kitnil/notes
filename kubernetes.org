@@ -178,6 +178,9 @@ lightest of data storage needs.
 - expose
   : kubectl expose --port=5201 --type=LoadBalancer pod iperf
 
+- expose to specific address
+  : kubectl expose --overrides='{"spec": {"loadBalancerIP": "78.108.82.13"}}' --port=80 --type=LoadBalancer pod nginx-76d6c9b8c-6hlfw
+
 - restart coredns deployment
   : kubectl -n kube-system rollout restart deployment coredns
 
