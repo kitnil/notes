@@ -114,6 +114,9 @@ net.bridge.bridge-nf-call-iptables = 0
 - Bind port even if no IP address available:
 : net.ipv4.ip_nonlocal_bind = 1
 
+- Clean arp cache
+  : ip -s -s neigh flush all
+
 #+BEGIN_SRC yaml
   ethernet frame:
     preamble/sfd:
