@@ -7,6 +7,8 @@
 
 : sysdig -A -c echo_fds "fd.filename=known_hosts"
 
+: sysdig fd.name contains opt/cni
+
 chisels/echo_fds_write.lua
 #+begin_example
   --[[
