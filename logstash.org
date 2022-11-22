@@ -1,2 +1,7 @@
 - [[https://github.com/bitnami/bitnami-docker-logstash-exporter][bitnami/bitnami-docker-logstash-exporter: Bitnami Docker Image for Logstash Exporter]]
 - [[https://github.com/BonnierNews/logstash_exporter][BonnierNews/logstash_exporter: Prometheus exporter for Logstash metrics]]
+
+* Cheat sheet
+
+- [[https://github.com/elastic/logstash/issues/8480][Confusing error: Logstash failed to create queue {"exception"=>"Page file size is too small to hold elements" ... · Issue #8480 · elastic/logstash]]
+  : docker exec logstash_logstash_1 pqrepair /usr/share/logstash/data/queue/webs
