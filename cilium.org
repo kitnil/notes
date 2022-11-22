@@ -16,3 +16,6 @@
           matchLabels:
             access: "true"
 #+end_src
+
+* Learning
+- [[https://nicovibert.com/2022/07/21/bgp-with-cilium/][BGP with Cilium]]
