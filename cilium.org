@@ -19,3 +19,9 @@
 
 * Learning
 - [[https://nicovibert.com/2022/07/21/bgp-with-cilium/][BGP with Cilium]]
+
+* Debug
+
+1. LB IP is assigned to the service (kubectl get svc).
+2. Cilium has properly provisioned services (cilium bpf lb list).
+3. What happens with a request (cilium monitor).
