@@ -14,3 +14,6 @@
 
 - scan network
   : nmap --packet-trace -vv -T4 -PE -n -sn 172.16.250.0/24 -oG nmap.txt
+
+- arp
+  : nmap -v -sP -PR 172.16.103.1/24
