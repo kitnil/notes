@@ -92,6 +92,9 @@ https://github.com/iovisor/bcc/blob/master/QUICKSTART.md
 - [[http://www.brendangregg.com/Perf/linux_perf_tools_full.png][linux_perf_tools_full.png (3000×2100)]]
 - [[https://access.redhat.com/sites/default/files/attachments/rh_ip_command_cheatsheet_1214_jcs_print.pdf][rh_ip_command_cheatsheet_1214_jcs_print.pdf]]
 
+- run command from a host mount namespace
+  : /usr/bin/nsenter -m/proc/1/ns/mnt -- /run/current-system/sw/bin/systemctl reboot
+
 * console
 #+begin_quote
 I think it would also be nice if the sysadmins could get
