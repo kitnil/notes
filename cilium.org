@@ -25,3 +25,6 @@
 1. LB IP is assigned to the service (kubectl get svc).
 2. Cilium has properly provisioned services (cilium bpf lb list).
 3. What happens with a request (cilium monitor).
+
+* Tools
+- [[https://editor.cilium.io/?id=sGIKib2OwOtkkypE][Network Policy Editor for Kubernetes]]
