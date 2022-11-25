@@ -62,6 +62,7 @@
 - [[https://github.com/povilasv/systemd_exporter][povilasv/systemd_exporter: Exporter for systemd unit metrics]]
 - [[https://github.com/imgix/prometheus-am-executor][imgix/prometheus-am-executor: Execute command based on Prometheus alerts]]
 - [[https://github.com/RamboRogers/layer2_exporter][RamboRogers/layer2_exporter: A Layer2 (ARP) Discovery and Exporter for Prometheus.io]]
+- [[https://github.com/xaque208/freebsd_exporter][xaque208/freebsd_exporter: An exporter for some FreeBSD stats. (nfsstat, poudriere, etc)]]
 - [[https://github.com/tomcz/openldap_exporter][tomcz/openldap_exporter: This is a simple service that scrapes metrics from OpenLDAP and exports them via HTTP for Prometheus consumption.]]
 - [[https://github.com/xaque208/junos_exporter][xaque208/junos_exporter: Export ARP entries from Junos to Prometheus]]
 - [[https://github.com/containers/prometheus-podman-exporter#collectors][containers/prometheus-podman-exporter: Prometheus exporter for podman environments exposing containers, pods, images, volumes and networks information.]]
