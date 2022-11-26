@@ -487,6 +487,7 @@ Swap:     134179836           0   134179836
 : echo 3 > /proc/sys/vm/drop_caches
 
 - [[https://hoytech.com/vmtouch/][Hoytech vmtouch]]
+- [[https://www.sobyte.net/post/2022-04/k8s-pod-shared-memory/][Setting up the shared memory of a kubernetes Pod - SoByte]]
 
 * Namespaces
 
