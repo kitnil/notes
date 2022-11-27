@@ -860,6 +860,7 @@ This is the reason why it is recommended to use an odd number of master nodes fo
 - [[https://github.com/itzg/kube-metrics-exporter][itzg/kube-metrics-exporter: Simple application that accesses the Kubernetes metrics API and exports the pod metrics for Prometheus scraping]]
 - [[https://github.com/jaegertracing/jaeger][jaegertracing/jaeger: CNCF Jaeger, a Distributed Tracing Platform]]
 - [[https://github.com/jcmoraisjr/haproxy-ingress][jcmoraisjr/haproxy-ingress: HAProxy Ingress]]
+- [[https://github.com/jdockerty/kubectl-oomd][jdockerty/kubectl-oomd: Show pods/containers which have recently been 'OOMKilled', as a kubectl plugin.]]
 - [[https://github.com/jenkinsci/kubernetes-operator][jenkinsci/kubernetes-operator: Kubernetes native Jenkins Operator]]
 - [[https://github.com/jeremykross/konstellate][jeremykross/konstellate: Free and Open Source GUI to Visualize Kubernetes Applications.]]
 - [[https://github.com/johanhaleby/kubetail][johanhaleby/kubetail: Bash script to tail Kubernetes logs from multiple pods at the same time]]
