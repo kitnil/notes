@@ -1717,9 +1717,6 @@ builtins.match "php([[:alnum:]])([[:alnum:]])" "php70"
 - [[https://github.com/nix-community/vgo2nix][nix-community/vgo2nix: Convert go.mod files to nixpkgs buildGoPackage compatible deps.nix files [maintainer=@adisbladis]]]
 - [[https://github.com/nixosbrasil/climod][nixosbrasil/climod: Modular generated command line interfaces using the same technology as the NixOS module system.]]
 - [[https://github.com/nixosbrasil/nix-emacs][nixosbrasil/nix-emacs: Use the same module system that leverages NixOS to configure your emacs customization]]
-- [[https://github.com/lf-/nix-otel][lf-/nix-otel: Nix OpenTelemetry sender plugin]]
-- [[https://github.com/shlevy/nix-plugins][shlevy/nix-plugins: Collection of miscellaneous plugins for the nix expression language]]
-- [[https://github.com/lf-/nix-doc][lf-/nix-doc: An interactive Nix documentation tool providing a CLI for function search, a Nix plugin for docs in the REPL, and a ctags implementation for Nix script]]
 
 * Repl
 
@@ -1792,6 +1789,8 @@ builtins.match "php([[:alnum:]])([[:alnum:]])" "php70"
 - [[https://github.com/kamadorueda/alejandra][kamadorueda/alejandra: The Uncompromising Nix Code Formatter]]
 - [[https://github.com/Lassulus/nix-autobahn][Lassulus/nix-autobahn]]
 - [[https://github.com/lf-/nix-doc][lf-/nix-doc: An interactive Nix documentation tool providing a CLI for function search, a Nix plugin for docs in the REPL, and a ctags implementation for Nix script]]
+- [[https://github.com/lf-/nix-doc][lf-/nix-doc: An interactive Nix documentation tool providing a CLI for function search, a Nix plugin for docs in the REPL, and a ctags implementation for Nix script]]
+- [[https://github.com/lf-/nix-otel][lf-/nix-otel: Nix OpenTelemetry sender plugin]]
 - [[https://github.com/mlieberman85/nixbom][mlieberman85/nixbom]]
 - [[https://mynixos.com/][MyNixOS - Graphical editor for Nix flakes. Create and manage configurations and modules for NixOS and Nix home-manager. Rather a Nix generator than a Nix editor, because it does not allow to import Nix files.]]
 - [[https://github.com/nix-community/nixago][nix-community/nixago: Generate configuration files using Nix maintainer=@jmgilman]]
@@ -1804,6 +1803,7 @@ builtins.match "php([[:alnum:]])([[:alnum:]])" "php70"
 - [[https://github.com/purenix-org/purenix][purenix-org/purenix: Nix backend for PureScript. Transpile PureScript code to Nix.]]
 - [[https://github.com/railwayapp/nixpacks][railwayapp/nixpacks: App source + Nix packages + Docker = Image]]
 - [[https://github.com/serokell/update-daemon][serokell/update-daemon: Nix Flake Update daemon]]
+- [[https://github.com/shlevy/nix-plugins][shlevy/nix-plugins: Collection of miscellaneous plugins for the nix expression language]]
 - [[https://github.com/siraben/nix-lint][siraben/nix-lint: Semantic linter for Nix using tree-sitter 🌳 + ❄️]]
 - [[https://github.com/taktoa/narfuse][taktoa/narfuse: A FUSE filesystem, written in Haskell, that allows one to mount NAR (Nix archive) files and expose them as a virtual Nix store.]]
 - [[https://github.com/thiagokokada/nix-alien][thiagokokada/nix-alien: Run unpatched binaries on Nix/NixOS]]
