@@ -974,6 +974,7 @@ This is the reason why it is recommended to use an odd number of master nodes fo
 - [[https://github.com/vmware-tanzu/velero][vmware-tanzu/velero: Backup and migrate Kubernetes applications and their persistent volumes]]
 - [[https://github.com/weaveworks/kured][weaveworks/kured: Kubernetes Reboot Daemon]]
 - [[https://github.com/weaveworks/tf-controller][weaveworks/tf-controller: A GitOps Terraform controller for Kubernetes]]
+- [[https://github.com/we-dcode/kubetunnel][we-dcode/kubetunnel: Develop microservices locally while being connected to your Kubernetes environment]]
 - [[https://scribe.bus-hit.me/flant-com/kubernetes-operator-in-python-451f2d2e33f3][Writing a Kubernetes Operator in Python without frameworks and SDK]]
 - [[https://marketplace.visualstudio.com/items?itemName=redhat.vscode-yaml][YAML and Kubernetes syntax support - Visual Studio Marketplace]]
 - [[https://github.com/yokawasa/kubectl-plugin-ssh-jump][yokawasa/kubectl-plugin-ssh-jump: A kubectl plugin to access nodes or remote services using a SSH jump Pod]]
