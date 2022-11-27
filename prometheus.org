@@ -54,6 +54,7 @@
 - [[https://awesome-prometheus-alerts.grep.to/][Awesome Prometheus alerts | Collection of alerting rules]]
 - [[https://github.com/DRuggeri/dhcpd_leases_exporter][DRuggeri/dhcpd_leases_exporter: A Prometheus exporter for the ISC dhcpd daemon's dhcpd.leases file]]
 - [[https://github.com/google/alertmanager-irc-relay][google/alertmanager-irc-relay: Send Prometheus Alerts to IRC using Webhooks]]
+- [[https://github.com/pinpox/alertmanager-ntfy][pinpox/alertmanager-ntfy: Relay prometheus alertmanager alerts to ntfy.sh]]
 - [[https://github.com/google/dnsmasq_exporter][google/dnsmasq_exporter: dnsmasq exporter for Prometheus]]
 - [[https://github.com/google/mtail][google/mtail: extract internal monitoring data from application logs for collection in a timeseries database]]
 - [[https://github.com/alxrem/prometheus-logstash-exporter][alxrem/prometheus-logstash-exporter: Prometheus exporter for Logstash metrics]]
