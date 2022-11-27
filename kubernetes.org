@@ -386,6 +386,7 @@ the following new units were started: containerd.service, kubelet.service
 - [[https://github.com/rancher/k3os][rancher/k3os: Purpose-built OS for Kubernetes, fully managed by Kubernetes.]]
 - [[https://github.com/techno-tim/k3s-ansible][techno-tim/k3s-ansible: A fully automated HA k3s etcd install with kube-vip, MetalLB, and more]]
 - [[https://balaskas.gr/blog/2022/08/31/creating-a-kubernetes-cluster-with-kubeadm-on-ubuntu-2204-lts/][Ευάγγελος Μπαλάσκας - Creating a kubernetes cluster with kubeadm on Ubuntu 22.04 LTS » Evaggelos Balaskas - System Engineer]]
+- [[https://github.com/edgelesssys/constellation][edgelesssys/constellation: Constellation is the first Confidential Kubernetes. Constellation shields entire Kubernetes clusters from the (cloud) infrastructure using confidential computing.]]
 
 ** Rancher
 
