@@ -182,3 +182,6 @@ ipmitool -U <login> -P '<password>' -H <IP> power reset
   : ipmitool -H web16.ipmi.intr -U ADMIN -P "$(pass show majordomo/public/ipmi/ADMIN)" lan print
 
 - [[https://galaxydata.ru/community/ipmi-sbros-parolya-i-prochee-x8dtu-f-supermicro-188][IPMI сброс пароля и прочее x8dtu-f supermicro - GalaxyData Community]]
+
+* Tools
+- [[https://github.com/yinheli/ipmi-fan-control][yinheli/ipmi-fan-control: A tool to control the fan speed by monitoring the temperature of CPU via IPMI.]]
