@@ -1710,6 +1710,7 @@ builtins.match "php([[:alnum:]])([[:alnum:]])" "php70"
   - nix path-info --store http://<hostname>:<port> --json <some-path> | grep sig
 - [[https://github.com/NixOS/nix/issues/4520][normal allowed-users should be able to use --substituters · Issue #4520 · NixOS/nix]]
 - [[https://github.com/cachix/cachix-deploy-flake][cachix/cachix-deploy-flake: Functions to help manage Cachix Deploy when using flakes.]]
+- [[https://github.com/loophp/nix-shell][loophp/nix-shell: Nix shells for PHP development]]
 
 * Programs
 - [[https://github.com/Mic92/envfs][Mic92/envfs: Fuse filesystem that returns symlinks to executables based on the PATH of the requesting process.]]
