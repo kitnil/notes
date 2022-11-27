@@ -44,6 +44,7 @@
 - [[https://github.com/bspaans/jit-compiler][bspaans/jit-compiler: JIT compiler in Go]]
 - [[https://github.com/c4milo/gsync][c4milo/gsync: gSync is an rsync based library for sending delta updates of files to a remote server.]]
 - [[https://github.com/charmbracelet/charm][charmbracelet/charm: The Charm Tool and Library 🌟]]
+- [[https://github.com/daangn/autopprof][daangn/autopprof: Automatically profile the Go applications when CPU or memory utilization crosses threshold]]
 - [[https://github.com/gofiber][Fiber is an Express inspired web framework written in Go with]]
 - [[https://github.com/genkami/dogs][genkami/dogs: Make Go functional with dogs]]
 - [[https://gioui.org/][Gio - immediate mode GUI in Go]]
@@ -51,6 +52,7 @@
 - [[https://github.com/hairyhenderson/go-fsimpl][hairyhenderson/go-fsimpl: Go filesystem implementations for various URL schemes]]
 - [[https://github.com/hedhyw/rex][hedhyw/rex: Flexible regular expressions constructor for Golang.]]
 - [[https://github.com/inconshreveable/go-update][inconshreveable/go-update: Build self-updating Golang programs]]
+- [[https://github.com/Juniper/go-netconf][Juniper/go-netconf: NETCONF implementation in Go.]]
 - [[https://github.com/knadh/koanf][knadh/koanf: Light weight, extensible configuration management library for Go. Built in support for JSON, TOML, YAML, env, command line, file, S3 etc. Alternative to viper.]]
 - [[https://github.com/knadh/sql-jobber][knadh/sql-jobber: A highly opinionated, distributed job-queue built specifically for defering and executing heavy SQL read jobs asynchronously. Supports MySQL and Postgres.]]
 - [[https://github.com/mattn/pqssh][mattn/pqssh - Go driver for PostgreSQL over SSH]]
@@ -71,7 +73,6 @@
 - [[https://github.com/wagslane/go-rabbitmq][wagslane/go-rabbitmq: A wrapper of streadway/amqp that provides reconnection logic and sane defaults]]
 - [[https://github.com/zhuah/kita][zhuah/kita: declarative, reactive GUI toolkit for build cross platform apps with web technology with single codebase]]
 - [[https://habr.com/ru/company/first/blog/652697/][Облегчаем работу с SQL в go и при этом не отстреливаем себе ноги / Хабр]]
-- [[https://github.com/Juniper/go-netconf][Juniper/go-netconf: NETCONF implementation in Go.]]
 
 * Networking
 
