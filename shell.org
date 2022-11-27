@@ -83,3 +83,4 @@
   : wget https://github.com/aler9/landiscover/releases/download/v1.1.0/landiscover_v1.1.0_linux_amd64.tar.gz; tar xf landiscover_v1.1.0_linux_amd64.tar.gz landiscover; chown root: landiscover; chmod 0755 landiscover; mv -vi landiscover /usr/local/bin; rm -v landiscover_v1.1.0_linux_amd64.tar.gz
 - [[https://github.com/jstrieb/cache-command][jstrieb/cache-command: Cache commands that you don't want to run repeatedly when developing a shell pipeline]]
 - [[https://github.com/charmbracelet/gum?auto_subscribed=false&utm_campaign=explore-email&utm_medium=email&utm_source=newsletter&utm_term=weekly][charmbracelet/gum: A tool for glamorous shell scripts 🎀]]
+- [[https://github.com/zahidkhawaja/rusty][zahidkhawaja/rusty: GPT-3 powered CLI tool to help you remember bash commands.]]
