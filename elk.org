@@ -225,6 +225,7 @@ curl -H 'Content-Type: application/json' -d '{"query": {"bool": {"must": {"term"
 - [[https://github.com/Netflix/Raigad][Netflix/Raigad: Co-Process for backup/recovery, Auto Deployments and Centralized Configuration management for ElasticSearch]]
 - [[https://github.com/flant/elasticsearch-extractor][flant/elasticsearch-extractor: Simple web UI to extract any index from Elasticsearch snapshot into repository.]]
 - [[https://github.com/LGUG2Z/elasdx][LGUG2Z/elasdx: An ElasticSearch index template updating, reindexing and cleanup tool]]
+- [[https://github.com/medcl/esm][medcl/esm: An Elasticsearch Migration Tool.]]
 
 * Alternatives
 
