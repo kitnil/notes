@@ -614,6 +614,7 @@ Made up of multiple "generations".
 - [[https://github.com/srid/check-flake][srid/check-flake: Add a `.#check` package for building all checks for the current system]]
 - [[https://github.com/srid/haskell-flake][srid/haskell-flake: A `flake-parts` Nix module for Haskell development]]
 - [[https://www.mat.services/posts/command-line-flake-arguments/][passing command line arguments to nix flakes]]
+- [[https://github.com/roman/nixDir][roman/nixDir: Transform a directory to a nix flake]]
 
 ** Eval
 
