@@ -828,6 +828,7 @@ This is the reason why it is recommended to use an odd number of master nodes fo
 - [[https://github.com/ContainerSolutions/kubernetes-examples][ContainerSolutions/kubernetes-examples: Minimal self-contained examples of standard Kubernetes features and patterns in YAML]]
 - [[https://github.com/containers/podman-desktop][containers/podman-desktop: Podman Desktop - A graphical tool for developing on containers and Kubernetes]]
 - [[https://github.com/corneliusweig/rakkess][corneliusweig/rakkess: Review Access - kubectl plugin to show an access matrix for k8s server resources]]
+- [[https://github.com/coroot/coroot][coroot/coroot: A monitoring and troubleshooting tool for microservice architectures.]]
 - [[https://github.com/darkbitio/k8s-mirror][darkbitio/k8s-mirror: Creates a local mirror of a Kubernetes cluster in a docker container to support offline reviewing]]
 - [[https://github.com/datreeio/datree][datreeio/datree: Prevent Kubernetes misconfigurations from reaching production (again 😤 )! The CLI integration provides a policy enforcement solution to run automatic checks for rule violations. See our docs: https://hub.datree.io]]
 - [[https://github.com/deislabs/krustlet][deislabs/krustlet: Kubernetes Rust Kubelet]]
