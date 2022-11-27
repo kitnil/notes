@@ -870,6 +870,7 @@ This is the reason why it is recommended to use an odd number of master nodes fo
 - [[https://k3s.io/][K3s: Lightweight Kubernetes]]
 - [[https://github.com/k8s-at-home/charts][k8s-at-home/charts: Helm charts for applications you run at home]]
 - [[https://github.com/k8snetworkplumbingwg/multus-cni][k8snetworkplumbingwg/multus-cni: A CNI meta-plugin for multi-homed pods in Kubernetes]]
+- [[https://github.com/kakao/detek][kakao/detek: Extensible problem-detecting CLI tool for reliable Kubernetes cluster operations and rapid problem detections.]]
 - [[https://github.com/kdash-rs/kdash][kdash-rs/kdash: A simple and fast dashboard for Kubernetes]]
 - [[https://github.com/kedacore/keda][kedacore/keda: KEDA is a Kubernetes-based Event Driven Autoscaling component. It provides event driven scale for any container running in Kubernetes]]
 - [[https://github.com/kei6u/kubectl-explore][kei6u/kubectl-explore: A better kubectl explain with the fuzzy finder]]
