@@ -1660,6 +1660,7 @@ builtins.match "php([[:alnum:]])([[:alnum:]])" "php70"
 
 * Packages
 - [[https://github.com/JJJollyjim/arewehackersyet][JJJollyjim/arewehackersyet: Tracking the availability of Kali Linux packages in NixOS]]
+- [[https://github.com/MatthewCroughan/filestash-nix][MatthewCroughan/filestash-nix: A flake for testing, building and using Filestash by Mickael Kerjean]]
 ** Generate expression
 - [[https://github.com/obsidiansystems/haven][obsidiansystems/haven: Use haskell to produce a nix set of maven dependencies!]]
 - [[https://github.com/NixOS/mvn2nix-maven-plugin][NixOS/mvn2nix-maven-plugin: Generate project-info.json for use with nix's Maven repository generation functions]]
