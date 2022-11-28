@@ -74,6 +74,20 @@
 
 : docker run --rm --workdir /src --network=host -v $PWD:/src -it nixery.dev/shell/aria2 aria2c FILE
 
+* Configuration
+#+begin_src json
+  {
+    "insecure-registries": [
+      "oracle1.local:5000"
+    ],
+    "log-driver": "json-file",
+    "log-opts": {
+      "max-size": "1g",
+      "max-file": "3"
+    }
+  }
+#+end_src
+
 * Containers
 - [[https://github.com/AbdBarho/stable-diffusion-webui-docker][AbdBarho/stable-diffusion-webui-docker: Easy Docker setup for Stable Diffusion with user-friendly UI]]
 - [[https://github.com/containers/toolbox][containers/toolbox: Tool for containerized command line environments on Linux]]
