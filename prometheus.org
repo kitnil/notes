@@ -73,6 +73,7 @@
 - [[https://github.com/nickbabcock/OhmGraphite][nickbabcock/OhmGraphite: Expose hardware sensor data to Graphite / InfluxDB / Prometheus / Postgres / Timescaledb]]
 - [[https://github.com/fstab/grok_exporter][fstab/grok_exporter: Export Prometheus metrics from arbitrary unstructured log data.]]
 - [[https://github.com/lwch/proxmox-exporter][lwch/proxmox-exporter: proxmox exporter of prometheus]]
+- [[https://github.com/MyBook/zabbix-exporter][MyBook/zabbix-exporter: Zabbix metrics exporter for Prometheus]]
 - [[https://github.com/rzrbld/zabbix-exporter-3000][rzrbld/zabbix-exporter-3000: just another zabbix exporter for Prometheus]]
 : echo 'channel 1' | curl --data-binary @- http://127.0.0.1:9095/metrics/job/guix/instance/127.0.0.1:9100/name/guix/commit/d96f47f012571cdd6dd67c513e496042db303ca7
 : curl -X POST -g 'http://localhost:9090/api/v1/admin/tsdb/delete_series?match[]={instance="127.0.0.1:9101"}'
