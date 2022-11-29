@@ -196,6 +196,14 @@ lightest of data storage needs.
 - compare nodes labels
   : diff -u <(kubectl get nodes kube7 -o json | jq --raw-output '.metadata.labels | keys[] | .' | sort -u) <(kubectl get nodes kube8 -o json | jq --raw-output '.metadata.labels | keys[] | .' | sort -u)
 
+- Sort nodes by:
+  - age
+    : kubectl get nodes --sort-by=".metadata.creationTimestamp"
+  - last transition time
+    : kubectl get nodes --sort-by=".status.conditions[?(@.reason == 'KubeletReady' )].lastTransitionTime"
+  - IP range
+    : kubectl get nodes --sort-by=".status.addresses[?(@.type == 'InternalIP' )].address"
+
 ** authentication
 
 [[https://stackoverflow.com/questions/51612976/how-to-view-members-of-subject-with-group-kind][kubernetes - How to view members of subject with Group kind - Stack Overflow]]
