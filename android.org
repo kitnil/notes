@@ -193,6 +193,13 @@
 * Sites
 - [[https://trashbox.ru/][Трешбокс.ру]]
 
+* SSH
+** SimpleSSHD
+Open =Settings= and configure =SSH Path= to =/storage/emulated/0/.ssh=.
+
+Make sure =/storage/emulated/0/.ssh/authorized_keys= file exists and has
+public keys.
+
 * Tools
 - [[https://github.com/corbindavenport/nexus-tools][corbindavenport/nexus-tools: Installer for ADB, Fastboot, and other Android tools on Linux, macOS, Chrome OS, and Windows]]
 - [[https://github.com/DeviceFarmer/stf][DeviceFarmer/stf: Control and manage Android devices from your browser.]]
