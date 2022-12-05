@@ -49,6 +49,9 @@
 - Показывает CPU, Mem and Temperature
   : show chassis routing-engine
 
+- Перезагрузить одного члена
+  : request system reboot member 1
+
 - Удаляет не примененные команды
   : clear system commit
 
