@@ -52,6 +52,9 @@
 - Перезагрузить одного члена
   : request system reboot member 1
 
+- Сменить мастера
+  : request chassis routing-engine master switch
+
 - Удаляет не примененные команды
   : clear system commit
 
