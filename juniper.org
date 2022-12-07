@@ -355,6 +355,8 @@ root@br1-mr14.intr> show system rollback 25 compare 28
   отслеживать и оптимизировать беспроводные сети
 
 ** [[https://www.juniper.net/documentation/us/en/software/junos/multicast-l2/topics/ref/statement/bridge-domains-edit.html][bridge-domains allows to merge VLANS | Junos OS | Juniper Networks]]
+Еще существует vepa - специально для виртуалок протокол с авто маршрутизацией,
+но наши h3c его тоже не держат, нужны подороже.
 ** Documentation
 - [[https://www.juniper.net/documentation/partners/ibm/junos11.4-oemlitedocs/config-guide-routing.pdf][Routing Protocols Configuration Guide - config-guide-routing.pdf]]
 - [[https://www.juniper.net/documentation/en_US/junos/information-products/pathway-pages/junos-cli/junos-cli.pdf][Junos® OS CLI User Guide - junos-cli.pdf]]
