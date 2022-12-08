@@ -47,6 +47,9 @@
  - physical machine to a virtual machine
    : qemu-img convert -c -f raw -O qcow2 /dev/sda /var/lib/libvirt/images/hdd-shrunk.qcow2
 
+ - physical to physical
+   : qemu-img convert -p -n -f raw -O raw /dev/sdb1 /dev/sda2
+
  - compact image
    : virt-sparsify -v --tmp /home/eng/tmp /home/eng/mj363.qcow2 /home/eng/mj363_s.qcow2
 
