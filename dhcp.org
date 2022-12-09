@@ -10,6 +10,7 @@ sudo nmap --script broadcast-dhcp-discover -e enp3s0
 - [[https://github.com/tinkerbell/boots][tinkerbell/boots: The DHCP and iPXE server for Tinkerbell.]]
 - [[https://github.com/coredhcp/coredhcp][coredhcp/coredhcp: Fast, multithreaded, modular and extensible DHCP server written in Go]]
 - [[https://github.com/lclarkmichalek/etcdhcp][lclarkmichalek/etcdhcp: A DHCP server backed by etcd]]
+- [[https://manpages.debian.org/testing/dnsmasq-base-lua/dnsmasq.8.en.html][dnsmasq(8) — dnsmasq-base-lua — Debian testing — Debian Manpages]]
 
 * Learning
 - [[https://www.youtube.com/watch?v=FYcO4ZshG8Q][(1) Do DHCP and DNS Servers Communicate? (With wireshark) - YouTube]]
