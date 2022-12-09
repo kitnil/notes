@@ -7,6 +7,7 @@ sudo nmap --script broadcast-dhcp-discover -e enp3s0
 * Tools
 - [[https://github.com/mschwager/dhcpwn][mschwager/dhcpwn: All your IPs are belong to us.]]
 - [[https://github.com/facebookincubator/dhcplb][facebookincubator/dhcplb: dhcplb is Facebook's implementation of a load balancer for DHCP.]]
+- [[https://github.com/tinkerbell/boots][tinkerbell/boots: The DHCP and iPXE server for Tinkerbell.]]
 
 * Learning
 - [[https://www.youtube.com/watch?v=FYcO4ZshG8Q][(1) Do DHCP and DNS Servers Communicate? (With wireshark) - YouTube]]
