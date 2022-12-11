@@ -2,5 +2,24 @@
 
 * Cheat sheet
 
+- delete volume
+  : linstor volume-definition delete pvc-0d2864b4-a71e-4073-b132-a58875433a75 0
+
+- list volume definitions
+  : linstor volume-definition list
+
 - list volumes
-  : kubectl linstor volume list --verbose
+  : kubectl linstor volume list
+
+- list resource groups
+  : linstor resource-group list
+
+- list resources
+  : linstor resource list
+
+- list resource definitions
+  : linstor resource-definition list
+
+- manually create lvm thin volume
+  : lvcreate -V 14G --thin -n pvc-2923a7b0-20c9-4676-bdcc-5998196980dc_00000 vg0/pool0
+
