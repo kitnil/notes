@@ -2,14 +2,14 @@
 
 * Cheat sheet
 
+- list volumes
+  : linstor volume list --all
+
 - delete volume
   : linstor volume-definition delete pvc-0d2864b4-a71e-4073-b132-a58875433a75 0
 
 - list volume definitions
   : linstor volume-definition list
-
-- list volumes
-  : kubectl linstor volume list
 
 - list resource groups
   : linstor resource-group list
