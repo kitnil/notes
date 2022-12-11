@@ -23,3 +23,16 @@
 - manually create lvm thin volume
   : lvcreate -V 14G --thin -n pvc-2923a7b0-20c9-4676-bdcc-5998196980dc_00000 vg0/pool0
 
+- drbd
+  : kubectl exec -n piraeus -it pod/piraeus-piraeus-op-ns-node-gb756 -- /bin/bash
+
+- drbd status
+#+begin_example
+  root@kube1:/# drbdadm status
+  pvc-bfd7e627-5114-4130-b0e3-15d97ce38106 role:Secondary
+    disk:UpToDate
+    kube2 role:Secondary
+      peer-disk:UpToDate
+    kube7 role:Primary
+      peer-disk:Diskless
+#+end_example
