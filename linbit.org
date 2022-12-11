@@ -1,0 +1,6 @@
+- [[https://vitobotta.com/2019/08/07/linstor-storage-with-kubernetes/][Linstor storage with Kubernetes]]
+
+* Cheat sheet
+
+- list volumes
+  : kubectl linstor volume list --verbose
