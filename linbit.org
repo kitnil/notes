@@ -36,3 +36,45 @@
     kube7 role:Primary
       peer-disk:Diskless
 #+end_example
+
+* Restore DRBD
+** 
+root@kube2:/# drbdadm status
+pvc-e5750c31-d73d-48e0-9b70-a03fc492e41f role:Secondary
+  disk:Inconsistent
+  kube1 role:Secondary
+    peer-disk:UpToDate
+  kube6 connection:Connecting
+
+pvc-ee82abb3-06bc-41be-9e09-3894cab9fd38 role:Secondary
+  disk:Inconsistent
+  kube1 role:Secondary
+    peer-disk:UpToDate
+  kube8 connection:Connecting
+
+pvc-f12a4435-c5af-43b0-943b-b43302964354 role:Secondary
+  disk:Inconsistent
+  kube1 role:Secondary
+    peer-disk:UpToDate
+  kube6 connection:Connecting
+
+** 
+root@kube2:/# drbdadm -- disconnect all
+root@kube2:/# drbdadm status
+pvc-e5750c31-d73d-48e0-9b70-a03fc492e41f role:Secondary
+  disk:Inconsistent quorum:no
+  kube1 connection:StandAlone
+  kube6 connection:StandAlone
+
+pvc-ee82abb3-06bc-41be-9e09-3894cab9fd38 role:Secondary
+  disk:Inconsistent quorum:no
+  kube1 connection:StandAlone
+  kube8 connection:StandAlone
+
+pvc-f12a4435-c5af-43b0-943b-b43302964354 role:Secondary
+  disk:Inconsistent quorum:no
+  kube1 connection:StandAlone
+  kube6 connection:StandAlone
+
+** 
+drbdadm -- --discard-my-data connect all
