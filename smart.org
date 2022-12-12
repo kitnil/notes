@@ -4,3 +4,25 @@
 - [[http://sysadm.pp.ua/linux/monitoring-systems/smart-under-lsi-2108-kontroller.html][Мониторинг дисков под LSI 2108 RAID контроллером использую SMART.]]
 
 - “Elements in grown defect list: 0” - бэды
+
+#+begin_src bash
+  #!/usr/bin/env bash
+
+  device="$1"
+  for i in {0..8}
+  do
+      output="$(smartctl -d "sat+megaraid,${i}" -a "${device}" | sed 's/^/    /')"
+      if [[ $output != *"Read Device Identity failed"* ]]
+      then
+          (
+              cat <<EOF
+  ---
+  device: ${device}
+  megaraid: sat+megaraid,$i $i
+  smartctl : |
+  $output
+  EOF
+          )
+      fi
+  done
+#+end_src
