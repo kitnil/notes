@@ -26,3 +26,8 @@
 * Install
 - [[https://github.com/containerd/containerd][containerd/containerd: An open and reliable container runtime]]
   - [[https://github.com/containerd/containerd/blob/main/docs/getting-started.md][containerd/getting-started.md at main · containerd/containerd]]
+
+* Cheat sheet
+
+-
+  : ctr --namespace k8s.io images ls
