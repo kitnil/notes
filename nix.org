@@ -582,6 +582,12 @@ sudo /nix/var/nix/profiles/system/bin/switch-to-configuration switch
           --auto-rollback
     #+end_example
 
+#+begin_example
+  [nix-shell:~/workspace/nixos_nixos_ns_master]$ pgrep -fa deploy
+  3726905 deploy --skip-checks --dry-activate . -- --print-build-logs
+  3726926 nix eval --json .#deploy --apply deploy: deploy --print-build-logs
+#+end_example
+
 *** TODO nixos-switch-to-configuration code 100 means that host reboot is required
 
 ** [[https://github.com/rapenne-s/bento][rapenne-s/bento: A KISS deployment tool to keep your NixOS fleet (servers & workstations) up to date.]]
