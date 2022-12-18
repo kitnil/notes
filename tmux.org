@@ -3,6 +3,9 @@
 :END:
 #+title: Tmux
 
+- reload config
+  : source-file ~/.tmux.conf
+
 - disable multicursor
   #+begin_example
     Ctrl-B :
