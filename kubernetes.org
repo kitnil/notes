@@ -18,6 +18,9 @@ EFS is dead slow and not performant at all. Stay away from EFS except for the
 lightest of data storage needs.
 #+end_quote
 
+* cert-manager
+- [[https://cert-manager.io/docs/troubleshooting/webhook/][The Definitive Debugging Guide for the cert-manager Webhook Pod - cert-manager Documentation]]
+
 * Cheat sheet
 
 - [[https://gist.github.com/egeneralov/4309aec2994af7e025330509905e824e][chroot to host namespace]]
