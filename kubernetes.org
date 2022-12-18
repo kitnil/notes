@@ -21,6 +21,17 @@ lightest of data storage needs.
 * cert-manager
 - [[https://cert-manager.io/docs/troubleshooting/webhook/][The Definitive Debugging Guide for the cert-manager Webhook Pod - cert-manager Documentation]]
 
+- [[https://github.com/cert-manager/cert-manager/issues/4831][Unable to apply Cert Manager v1.7.0 CRDs · Issue #4831 · cert-manager/cert-manager]]
+- [[https://cert-manager.io/docs/release-notes/release-notes-1.7/#upgrading-with-server-side-apply][Release 1.7 - cert-manager Documentation]]
+#+begin_src bash
+  crds=("certificaterequests.cert-manager.io" "certificates.cert-manager.io" "challenges.acme.cert-manager.io" "clusterissuers.cert-manager.io" "issuers.cert-manager.io" "orders.acme.cert-manager.io")
+
+  for crd in "${crds[@]}"; do
+    manager_index="$(kubectl get crd "${crd}" --show-managed-fields --output json | jq -r '.metadata.managedFields | map(.manager == "cainjector") | index(true)')"
+    kubectl patch crd "${crd}" --type=json -p="[{\"op\": \"remove\", \"path\": \"/metadata/managedFields/${manager_index}\"}]"
+  done
+#+end_src
+
 * Cheat sheet
 
 - [[https://gist.github.com/egeneralov/4309aec2994af7e025330509905e824e][chroot to host namespace]]
