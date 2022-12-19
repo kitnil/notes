@@ -124,3 +124,8 @@ free mail hosting for their subscribers
 
 * dnssec
 - [[https://sockpuppet.org/blog/2015/01/15/against-dnssec/][Against DNSSEC — Quarrelsome]]
+
+* Cheat sheet
+
+- Get all records
+  : dig @172.16.103.2 -tAXFR intr
