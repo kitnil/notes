@@ -339,6 +339,10 @@ membership.
 - [[https://github.com/truecharts/charts][truecharts/charts: Community App Catalog for TrueNAS SCALE]]
 - [[https://github.com/twuni/docker-registry.helm][twuni/docker-registry.helm: Helm chart for a Docker registry. Successor to stable/docker-registry chart.]]
 ** Tools
+- [[https://github.com/EladLeev/kubeseal-convert][EladLeev/kubeseal-convert: A tool for importing secrets from a pre-existing secrets management systems (e.g. Vault, Secrets Manager) into a SealedSecret]]
+- [[https://github.com/etcd-carry/etcd-carry][etcd-carry/etcd-carry: etcd-carry provides the ability to synchronize resources in the K8s cluster that meet custom rules to the standby k8s cluster in real time.]]
+- [[https://github.com/kvesta/vesta][kvesta/vesta: A static analysis of vulnerabilities, Docker and Kubernetes cluster configuration detect toolkit]]
+- [[https://github.com/jatalocks/kube-reqsizer][jatalocks/kube-reqsizer: A Kubernetes controller for automatically optimizing pod requests based on their continuous usage. VPA alternative that can work with HPA.]]
 - [[https://github.com/databus23/schelm][databus23/schelm: Render a helm manifest to a directory]]
 ** Cheat sheet
 : helm create mychart
@@ -1030,6 +1034,7 @@ then redeploy with:
 - [[https://github.com/pixie-io/pixie][pixie-io/pixie: Instant Kubernetes-Native Application Observability]]
 - [[https://habr.com/ru/company/nixys/blog/682612/][Pre-Commit хуки, о которых DevOps-инженер должен знать, чтобы управлять Kubernetes / Хабр]]
 - [[https://github.com/projectcalico/calico][projectcalico/calico: Cloud native networking and network security]]
+- [[https://github.com/prometheus-operator/prometheus-operator][prometheus-operator/prometheus-operator: Prometheus Operator creates/configures/manages Prometheus clusters atop Kubernetes]]
 - [[https://github.com/Qovery/pleco][Qovery/pleco: Automatically removes Cloud managed services and Kubernetes resources based on tags with TTL]]
 - [[https://github.com/rancher/k3s][rancher/k3s: Lightweight Kubernetes]]
 - [[https://github.com/rancher/kim][rancher/kim: In ur kubernetes, buildin ur imagez]]
