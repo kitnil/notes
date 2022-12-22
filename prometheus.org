@@ -32,6 +32,7 @@
 - [[https://sysdig.com/wp-content/uploads/2019/01/prometheus-monitoring-guide.pdf][prometheus-monitoring-guide.pdf]]
 - [[https://promcat.io/][PromCat.io - A resource catalog for enterprise-class Prometheus monitoring]]
 - [[https://github.com/messagebird/sachet][messagebird/sachet: SMS alerts for Prometheus' Alertmanager]]
+- [[https://github.com/Drumato/promqlinter][Drumato/promqlinter: A PromQL parser/type-checker/linter in GitHub Actions/CLI]]
 - [[https://github.com/kbknapp/wireguard_exporter][kbknapp/wireguard_exporter: A Prometheus exporter for WireGuard]]
 - [[https://github.com/kbknapp/iptables_exporter][kbknapp/iptables_exporter: A Prometheus exporter for iptables in Rust]]
 - [[https://github.com/matusnovak/prometheus-smartctl][matusnovak/prometheus-smartctl: HDD S.M.A.R.T exporter for Prometheus written in Python]]

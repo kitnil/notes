@@ -725,6 +725,7 @@ Your computer reboots immediately.
   : [user1@host:~]$ machinectl shell user2@
 
 * Tools
+- [[https://github.com/namazso/linux_injector][namazso/linux_injector: A simple ptrace-less shared library injector for x64 Linux]]
 - [[https://github.com/icculus/fatelf][icculus/fatelf: Universal binaries for Linux.]]
 - [[https://github.com/nixcloud/ip2unix][nixcloud/ip2unix: Turn IP sockets into Unix domain sockets]]
 - [[https://github.com/vikmik/scratch][vikmik/scratch: Tool that creates a shell environment where actions have no consequences]]
