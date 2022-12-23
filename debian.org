@@ -147,3 +147,63 @@
 
 - Disable keyboard layouts
   : dpkg-reconfigure keyboard-configuration
+
+* networking ovs
+
+#+begin_example
+  # This file describes the network interfaces available on your system
+  # and how to activate them. For more information, see interfaces(5).
+
+  # The loopback network interface
+  auto lo
+  iface lo inet loopback
+  auto eth0
+  iface eth0 inet manual
+      bond-master bond0
+
+  auto eth1
+  iface eth1 inet manual
+      bond-master bond0
+
+  auto bond0
+  iface bond0 inet manual
+      pre-up ip link set dev $IFACE up
+      post-down ip link set dev $IFACE down
+      bond-mode 4
+      bond-miimon 100
+      bond-lacp-rate 1
+      bond-slaves eth0 eth1
+
+  auto ovsbr253
+  allow-ovs ovsbr253
+  iface ovsbr253 inet static
+      ovs_type OVSBridge
+      ovs_ports bond0.253
+      address 172.16.102.31
+      netmask 255.255.255.0
+      gateway 172.16.102.1
+      dns-nameservers 172.16.102.2 172.16.103.2
+      dns-search intr
+      pre-up modprobe -r netconsole
+      post-up modprobe netconsole
+
+  allow-ovsbr253 bond0.253
+  iface bond0.253 inet manual
+      vlan-raw-device bond0
+      ovs_bridge ovsbr253
+      ovs_type OVSPort
+
+  auto bond0.17 ovsbr0
+
+  allow-ovsbr0 bond0.17
+  iface bond0.17 inet manual
+      vlan-raw-device bond0
+      ovs_bridge ovsbr0
+      ovs_type OVSPort
+
+  allow-ovs ovsbr0
+  iface ovsbr0 inet manual
+      ovs_type OVSBridge
+          ovs_ports bond0.17
+          post-up ovs-vsctl --may-exist add-port $IFACE bond0.17
+#+end_example
