@@ -144,3 +144,6 @@
 - N: Repository ‘http://security.debian.org buster/updates InRelease’ changed
   its ‘Version’ value from ” to ’10’
   : apt-get update --allow-releaseinfo-change
+
+- Disable keyboard layouts
+  : dpkg-reconfigure keyboard-configuration
