@@ -58,6 +58,7 @@
 - [[https://github.com/wknapik/dockerfile-run][wknapik/dockerfile-run: Execute dockerfiles as scripts (incl. via shebang)]]
 - [[https://github.com/SelfhostedPro/Yacht/pulse][Yacht - A web interface for managing docker containers with an emphasis on templating to provide 1 click deployments. Think of it like a decentraliz]]
 - [[https://github.com/capnspacehook/whalewall][capnspacehook/whalewall: Automate management of firewall rules for Docker containers]]
+- [[https://github.com/0x7c13/docker-gc][0x7c13/docker-gc: docker-gc is a microservice to cleanup docker images automatically based on recycling strategy. Dockerfile and helm charts are provided for easy installation.]]
 
 ** Security
 - [[https://github.com/quay/clair][quay/clair: Vulnerability Static Analysis for Containers]]
