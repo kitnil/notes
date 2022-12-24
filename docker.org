@@ -7,11 +7,13 @@
 - [[https://github.com/nestybox/sysbox][nestybox/sysbox: Sysbox repository]]
 
 * Tools
+- [[https://github.com/0x7c13/docker-gc][0x7c13/docker-gc: docker-gc is a microservice to cleanup docker images automatically based on recycling strategy. Dockerfile and helm charts are provided for easy installation.]]
 - [[https://github.com/AkihiroSuda/buildkit-nix][AkihiroSuda/buildkit-nix: Nix derivations as Dockerfiles (`docker build -f default.nix .`)]]
 - [[https://github.com/alibaba/accelerated-container-image][alibaba/accelerated-container-image: accelerated-container-image]]
 - [[https://github.com/anchore/anchore-engine][anchore/anchore-engine: A service that analyzes docker images and applies user-defined acceptance policies to allow automated container image validation and certification]]
 - [[https://github.com/andrey-pohilko/registry-cli][andrey-pohilko/registry-cli: Scripts for easy manipulation of docker-registry from command line (and from scripts)]]
 - [[https://github.com/awakesecurity/hocker][awakesecurity/hocker: Utilities for interacting with the docker registry and generating nix build instructions]]
+- [[https://github.com/capnspacehook/whalewall][capnspacehook/whalewall: Automate management of firewall rules for Docker containers]]
 - [[https://github.com/christian-korneck/docker-pushrm][christian-korneck/docker-pushrm: "Docker Push Readme" - a Docker CLI plugin to update container repo docs]]
 - [[https://github.com/containerd/overlaybd?auto_subscribed=false][containerd/overlaybd: The storage backend of accelerated container image]]
 - [[https://github.com/containers/docker-lvm-plugin][containers/docker-lvm-plugin: Docker volume plugin for LVM volumes]]
@@ -57,8 +59,6 @@
 - [[https://github.com/whs/docker-wait-for-it][whs/docker-wait-for-it: wait-for-it.sh in Docker]]
 - [[https://github.com/wknapik/dockerfile-run][wknapik/dockerfile-run: Execute dockerfiles as scripts (incl. via shebang)]]
 - [[https://github.com/SelfhostedPro/Yacht/pulse][Yacht - A web interface for managing docker containers with an emphasis on templating to provide 1 click deployments. Think of it like a decentraliz]]
-- [[https://github.com/capnspacehook/whalewall][capnspacehook/whalewall: Automate management of firewall rules for Docker containers]]
-- [[https://github.com/0x7c13/docker-gc][0x7c13/docker-gc: docker-gc is a microservice to cleanup docker images automatically based on recycling strategy. Dockerfile and helm charts are provided for easy installation.]]
 
 ** Security
 - [[https://github.com/quay/clair][quay/clair: Vulnerability Static Analysis for Containers]]
