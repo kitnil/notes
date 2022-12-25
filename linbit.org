@@ -26,6 +26,9 @@
 - drbd
   : kubectl exec -n piraeus -it pod/piraeus-piraeus-op-ns-node-gb756 -- /bin/bash
 
+- show error report
+  : linstor error-reports show 63A7A9DF-F3736-000318
+
 - drbd status
 #+begin_example
   root@kube1:/# drbdadm status
