@@ -4,3 +4,7 @@
 - [[https://habr.com/ru/post/417597/][Надежное хранилище с DRBD9 и Proxmox (Часть 2: iSCSI+LVM) / Хабр]]
 - [[https://vitobotta.com/2019/08/07/linstor-storage-with-kubernetes/][Linstor storage with Kubernetes]]
 - [[https://www.youtube.com/watch?v=hhRGjC70hyU&t=1525s][(7) LINSTOR — DRBD-оркестратор или Kubernetes для блочных устройств - YouTube]]
+
+* Cheat sheet
+
+: drbdadm disconnect pvc-f77382d7-e6f6-482b-b887-330da14c2d6b:kube2
