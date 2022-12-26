@@ -663,6 +663,7 @@ Once running, the URL to the dashboard is https://2886795308-30000-simba08.envir
 - [[https://github.com/kubernetes/kubeadm/blob/main/docs/ha-considerations.md#options-for-software-load-balancing][kubeadm/ha-considerations.md at main · kubernetes/kubeadm]]
 - [[https://iximiuz.com/en/posts/kubernetes-api-structure-and-terminology/][Kubernetes API Basics - Resources, Kinds, and Objects]]
 - [[https://wiki.archlinux.org/title/Kubernetes][Kubernetes - ArchWiki]]
+- [[https://fabianlee.org/2022/04/18/kubernetes-kustomize-with-helm-charts/][Kubernetes: kustomize with Helm charts | Fabian Lee : Software Engineer]]
 - [[https://www.youtube.com/watch?v=K3jNo4z5Jx8][Kubernetes Namespaces Explained in 15 mins | Kubernetes Tutorial 21]]
   : kubectl api-resources --namespaced=true
 - [[https://rtfm.co.ua/kubernetes-znakomstvo-chast-1-arxitektura-i-osnovnye-komponenty-obzor/][Kubernetes: знакомство, часть 1 – архитектура и основные компоненты, обзор]]
