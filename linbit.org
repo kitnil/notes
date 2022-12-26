@@ -29,6 +29,9 @@
 - show error report
   : linstor error-reports show 63A7A9DF-F3736-000318
 
+- list nodes
+  : linstor node list
+
 - drbd status
 #+begin_example
   root@kube1:/# drbdadm status
