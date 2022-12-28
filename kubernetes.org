@@ -392,6 +392,7 @@ the following new units were started: containerd.service, kubelet.service
 - [[https://github.com/canonical/microk8s][canonical/microk8s: MicroK8s is a small, fast, single-package Kubernetes for developers, IoT and edge.]]
 - [[https://github.com/containerd/containerd/tree/main/contrib/ansible][containerd/contrib/ansible at main · containerd/containerd]]
 - [[https://github.com/devtron-labs/devtron][devtron-labs/devtron: Tool integration platform for Kubernetes]]
+- [[https://github.com/edgelesssys/constellation][edgelesssys/constellation: Constellation is the first Confidential Kubernetes. Constellation shields entire Kubernetes clusters from the (cloud) infrastructure using confidential computing.]]
 - [[https://kubernetes.io/docs/setup/][Getting started | Kubernetes]]
   - [[https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/create-cluster-kubeadm/][Creating a cluster with kubeadm | Kubernetes]]
   - [[https://github.com/vmware-tanzu/sonobuoy][vmware-tanzu/sonobuoy: Sonobuoy is a diagnostic tool that makes it easier to understand the state of a Kubernetes cluster by running a set of Kubernetes conformance tests and other plugins in an accessible and non-destructive manner.]]
@@ -406,6 +407,7 @@ the following new units were started: containerd.service, kubelet.service
 - [[https://collabnix.com/3-node-kubernetes-cluster-on-bare-metal-system-in-5-minutes/][Kubernetes Cluster on Bare Metal System Made Possible using MetalLB – Collabnix]]
 - [[https://blog.alexellis.io/kubernetes-in-10-minutes/][Kubernetes on bare-metal in 10 minutes]]
 - [[https://jamesdefabia.github.io/docs/getting-started-guides/docker/][Kubernetes - Running Kubernetes Locally via Docker]]
+- [[https://github.com/kvaps/kubernetes-in-kubernetes][kvaps/kubernetes-in-kubernetes: Deploy Kubernetes in Kubernetes using Helm]]
 - [[https://github.com/miekg/vks][miekg/vks: Virtual Kubelet Provider for Systemd]]
 - [[https://github.com/MusicDin/kubitect][MusicDin/kubitect: Kubitect provides a simple way to set up a highly available Kubernetes cluster across multiple hosts.]]
 - [[https://github.com/NetBook-ai/spawner][NetBook-ai/spawner: Mulit-Cloud infrastructure orchestrator for kubernetes first development.]]
@@ -415,7 +417,6 @@ the following new units were started: containerd.service, kubelet.service
 - [[https://github.com/rancher/k3os][rancher/k3os: Purpose-built OS for Kubernetes, fully managed by Kubernetes.]]
 - [[https://github.com/techno-tim/k3s-ansible][techno-tim/k3s-ansible: A fully automated HA k3s etcd install with kube-vip, MetalLB, and more]]
 - [[https://balaskas.gr/blog/2022/08/31/creating-a-kubernetes-cluster-with-kubeadm-on-ubuntu-2204-lts/][Ευάγγελος Μπαλάσκας - Creating a kubernetes cluster with kubeadm on Ubuntu 22.04 LTS » Evaggelos Balaskas - System Engineer]]
-- [[https://github.com/edgelesssys/constellation][edgelesssys/constellation: Constellation is the first Confidential Kubernetes. Constellation shields entire Kubernetes clusters from the (cloud) infrastructure using confidential computing.]]
 
 ** Rancher
 
