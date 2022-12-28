@@ -261,3 +261,7 @@ pvc-f12a4435-c5af-43b0-943b-b43302964354 role:Secondary
 
 ** 
 drbdadm -- --discard-my-data connect all
+
+* Backup
+
+- [[https://github.com/kvaps/linstor-backup-script][kvaps/linstor-backup-script: Script for export linstor configuration as simple commands]]
