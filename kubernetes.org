@@ -1058,6 +1058,7 @@ then redeploy with:
 - [[https://github.com/stackrox/stackrox][stackrox/stackrox: The StackRox Kubernetes Security Platform performs a risk analysis of the container environment, delivers visibility and runtime alerts, and provides recommendations to proactively improve security by hardening the environment.]]
 - [[https://github.com/stakater/Reloader][stakater/Reloader: A Kubernetes controller to watch changes in ConfigMap and Secrets and do rolling upgrades on Pods with their associated Deployment, StatefulSet, DaemonSet and DeploymentConfig – [✩Star] if you're using it!]]
 - [[https://github.com/stashed/stash][stashed/stash: 🛅 Backup your Kubernetes Stateful Applications]]
+- [[https://github.com/stern/stern][stern/stern: ⎈ Multi pod and container log tailing for Kubernetes -- Friendly fork of https://github.com/wercker/stern]]
 - [[https://github.com/tdihp/dspcap][tdihp/dspcap: A humble bash script set that uses daemonset to capture tcpdump from all k8s nodes, then collect the captures.]]
 - [[https://github.com/teamcode-inc/kubeorbit][teamcode-inc/kubeorbit: Test your application on Kubernetes in a brand new simple way⚡]]
 - [[https://github.com/team-soteria/rback][team-soteria/rback: RBAC in Kubernetes visualizer]]
