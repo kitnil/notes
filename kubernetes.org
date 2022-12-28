@@ -385,7 +385,6 @@ the following new units were started: containerd.service, kubelet.service
   : helm install -n ingress-nginx ingress-nginx ingress-nginx/ingress-nginx
 * Installation
 - [[https://github.com/adieu/nixos-k8s-flake][adieu/nixos-k8s-flake: Kubernetes Flake for NixOS with full control]]
-- [[https://github.com/adieu/nixos-k8s-flake][adieu/nixos-k8s-flake: Kubernetes Flake for NixOS with full control]]
 - [[https://github.com/alexellis/k8s-on-raspbian][alexellis/k8s-on-raspbian: Kubernetes on Raspbian (Raspberry Pi)]]
 - [[https://github.com/bbigras/k3s-on-fly.io][bbigras/k3s-on-fly.io]]
 - [[https://github.com/c3os-io/c3os][c3os-io/c3os: Linux Immutable OS for Automated (Decentralized) Kubernetes clusters with k3s]]
