@@ -170,6 +170,8 @@ rerere-train.sh [COMMIT][--all]
 
 * Cheatsheet
 
+  - git log --full-diff -Gversion -p --graph -- charts/fluent-operator/Chart.yaml
+
   - post-update
 #+BEGIN_SRC sh
   #!/bin/sh
