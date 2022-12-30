@@ -12,3 +12,6 @@
 
 - health
   : sudo curl --resolve node-0.example.com:9200:192.168.25.1 -vv --cacert /etc/opensearch/root-ca.pem --key /etc/opensearch/esnode-key.pem --cert /etc/opensearch/esnode.pem https://node-0.example.com:9200/_cluster/health?pretty
+
+- file system usage
+  : _nodes/stats/fs
