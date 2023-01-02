@@ -23,6 +23,9 @@
 - Check certificate
   : echo | openssl s_client -connect berlin.guixsd.org:443 | openssl x509 -text
 
+- Check certificate signed by CA
+  : openssl verify -verbose -CAfile ca.pem kubelet-client-kube4.pem
+
 * Tools
 - [[https://github.com/mogensen/cert-checker][mogensen/cert-checker: Certificate monitoring utility for watching tls certificates and reporting the result as metrics.]]
 - [[https://github.com/xuchunyang/cert-expiry-date][xuchunyang/cert-expiry-date: A website to check cert expir date]]
