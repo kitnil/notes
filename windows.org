@@ -41,6 +41,9 @@
   : lodctr /R
   : winmgmt.exe /RESYNCPERF
 
+- Enable administrator account
+  : net user administrator /active:yes
+
 * Deprecated
 - [[https://github.com/hectorm/docker-qemu-win2000][hectorm/docker-qemu-win2000: A Docker image for Windows 2000 Advanced Server with SP4.]]
 
