@@ -1,0 +1,4 @@
+* Cheat sheet
+
+- List down services
+  : viddy -d -n3s "docker service ls | grep ' 0/'"
