@@ -4,6 +4,7 @@
 #+title: Terraform
 
 - [[https://github.com/28mm/blast-radius][28mm/blast-radius: Interactive visualizations of Terraform dependency graphs using d3.js]]
+- [[https://github.com/alex067/tfstate][alex067/tfstate: A wrapper around terraform state commands to provide guard rails 🔒]]
 - [[https://github.com/andrewchambers/terraform-provider-nix][andrewchambers/terraform-provider-nix: terraform provider that manages nix builds and nixos machines.]]
 - [[https://github.com/apparentlymart/terraform-provider-bash][apparentlymart/terraform-provider-bash: Terraform utility provider for constructing bash scripts that use data from a Terraform module]]
 - [[https://github.com/aquasecurity/tfsec][aquasecurity/tfsec: Security scanner for your Terraform code]]
@@ -12,6 +13,7 @@
 - [[https://github.com/cycloidio/inframap][cycloidio/inframap: Read your tfstate or HCL to generate a graph specific for each provider, showing only the resources that are most important/relevant.]]
 - [[https://github.com/dmacvicar/terraform-provider-libvirt][dmacvicar/terraform-provider-libvirt: Terraform provider to provision infrastructure with Linux's KVM using libvirt]]
 - [[https://github.com/gaia-app/gaia][gaia-app/gaia: Gaia is a Terraform UI for your modules, and self-service infrastructure]]
+- [[https://github.com/gofireflyio/aiac][gofireflyio/aiac: Artificial Intelligence Infrastructure-as-Code Generator.]]
 - [[https://github.com/gofireflyio/validiac][gofireflyio/validiac: ValidIaC combines the best open-source tools to help ensure Infrastructure-as-Code best practices, hygiene & security.]]
 - [[https://github.com/hashicorp/terraform-cdk][hashicorp/terraform-cdk: Define infrastructure resources using programming constructs and provision them using HashiCorp Terraform]]
 - [[https://github.com/hashicorp/terraform-ls][hashicorp/terraform-ls: Terraform Language Server]]
@@ -36,5 +38,3 @@
 - [[https://habr.com/ru/company/nixys/blog/660455/][Terraform-модуль для инициализации Vault / Хабр]]
 - [[https://terragrunt.gruntwork.io/][Terragrunt | Terraform wrapper]]
 - [[https://github.com/AzBuilder][Terrakube alternative to Terraform Enterprise]]
-- [[https://github.com/gofireflyio/aiac][gofireflyio/aiac: Artificial Intelligence Infrastructure-as-Code Generator.]]
-- [[https://github.com/alex067/tfstate][alex067/tfstate: A wrapper around terraform state commands to provide guard rails 🔒]]
