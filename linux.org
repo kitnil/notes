@@ -740,6 +740,7 @@ Your computer reboots immediately.
 - [[https://github.com/BrenekH/smartreboot][BrenekH/smartreboot: Reboot a machine without interrupting ongoing work.]]
 - [[https://github.com/orhun/kmon][orhun/kmon: Linux Kernel Manager and Activity Monitor]]
 - [[https://github.com/koute/bytehound][koute/bytehound: A memory profiler for Linux.]]
+- [[https://github.com/jafarlihi/modreveal][jafarlihi/modreveal: Utility to find hidden Linux kernel modules]]
 
 * udev
 : udevadm info --attribute-walk --query-all --path=/class/block/sda1 | grep mysql
