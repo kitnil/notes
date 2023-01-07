@@ -1805,6 +1805,7 @@ builtins.match "php([[:alnum:]])([[:alnum:]])" "php70"
 - [[https://github.com/divnix/quick-nix-registry][divnix/quick-nix-registry: Speed up the Nix registry by caching nixpkgs locally]]
 - [[https://dumpstack.io/1563582225_nixos_installing_software_from_pull_requests.html][dumpstack.io: NixOS: Installing software from pull requests]]
 - [[https://github.com/Gabriella439/nix-diff][Gabriella439/nix-diff: Explain why two Nix derivations differ]]
+- [[https://github.com/gvolpe/nmd][gvolpe/nmd: NixOS Module Documentation generator]]
 - [[https://github.com/jmgilman/nix-pre-commit][jmgilman/nix-pre-commit: Generate pre-commit configurations with your flake.nix]]
 - [[https://github.com/jordanisaacs/kernel-module-flake][jordanisaacs/kernel-module-flake: Nix flake for linux kernel module development]]
 - [[https://github.com/jsoo1/nix-git-dir][jsoo1/nix-git-dir: Parse a git directory (HEAD) into nix values]]
