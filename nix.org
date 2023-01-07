@@ -1401,6 +1401,9 @@ builtins.match "php([[:alnum:]])([[:alnum:]])" "php70"
   "foo"
 #+end_src
 
+* Misc
+- [[https://github.com/water-sucks/brainfuck.nix][water-sucks/brainfuck.nix: A Brainfuck compiler implemented using Nix because I have no life]]
+
 * Modules
 
   #+begin_src nix
