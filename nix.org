@@ -1792,6 +1792,7 @@ builtins.match "php([[:alnum:]])([[:alnum:]])" "php70"
 
 * Tools
 - [[https://github.com/AleXoundOS/mirror-nix][AleXoundOS/mirror-nix: mirror Nix binary cache for the offline workflow]]
+- [[https://github.com/aristanetworks/nix-serve-ng][aristanetworks/nix-serve-ng: A drop-in replacement for nix-serve that is faster and more reliable]]
 - [[https://github.com/astro/deadnix][astro/deadnix: Scan Nix files for dead code]]
   - [[https://github.com/astro/deadnix-action][astro/deadnix-action: Workflow to find and delete dead nix code]]
 - [[https://gitlab.com/khumba/nvd][Bryan Gardiner / nvd · GitLab]]
