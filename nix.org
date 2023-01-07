@@ -1833,6 +1833,7 @@ builtins.match "php([[:alnum:]])([[:alnum:]])" "php70"
 - [[https://github.com/vlinkz/nix-editor][vlinkz/nix-editor: A simple rust program to edit NixOS configuration files with just a command]]
 - [[https://github.com/vlinkz/nixos-conf-editor][vlinkz/nixos-conf-editor: A libadwaita/gtk4 app for editing NixOS configurations]]
 - [[https://github.com/vlinkz/nix-software-center][vlinkz/nix-software-center: A simple gtk4/libadwaita software center to easily install and manage nix packages]]
+- [[https://github.com/zhaofengli/attic][zhaofengli/attic: Multi-tenant Nix Binary Cache]]
 - [[https://github.com/zhaofengli/colmena][zhaofengli/colmena: A simple, stateless NixOS deployment tool]]
 
 * Virtualization
