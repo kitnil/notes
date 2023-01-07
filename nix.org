@@ -1802,6 +1802,7 @@ builtins.match "php([[:alnum:]])([[:alnum:]])" "php70"
 - [[https://github.com/DavHau/nix-eval-cache][DavHau/nix-eval-cache: Cache evaluation of nix functions]]
 - [[https://github.com/DavidEGrayson/nixcrpkgs][DavidEGrayson/nixcrpkgs: Nice nix expressions for cross-compiling.]]
 - [[https://github.com/DeterminateSystems/harmonic][DeterminateSystems/harmonic: A prototype Nix installer experiment.]]
+- [[https://github.com/divnix/nix-uncached][divnix/nix-uncached]]
 - [[https://github.com/divnix/quick-nix-registry][divnix/quick-nix-registry: Speed up the Nix registry by caching nixpkgs locally]]
 - [[https://dumpstack.io/1563582225_nixos_installing_software_from_pull_requests.html][dumpstack.io: NixOS: Installing software from pull requests]]
 - [[https://github.com/Gabriella439/nix-diff][Gabriella439/nix-diff: Explain why two Nix derivations differ]]
