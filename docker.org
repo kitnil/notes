@@ -184,6 +184,11 @@
 : docker network create -d macvlan --subnet=10.152.128.0/18 --gateway=10.152.152.10 --ip-range=10.152.152.16/28 -o parent=br155-vlan155 br155_net
 : docker run --name netshoot --rm -it --network br155_net nicolaka/netshoot /bin/bash
 
+: docker run -d --name=firefox --security-opt seccomp=unconfined -e PUID=1000 -e PGID=1000 -e TZ=Europe/London --shm-size="1gb" --restart unless-stopped --network br155_net lscr.io/linuxserver/firefox:latest
+: docker network connect bridge firefox
+: docker top firefox
+: sudo nsenter -t PID -n ip -one -4 a
+
 * Libs
 - [[https://github.com/qiniu/qmgo][Qmgo - The MongoDB driver for Go . It‘s based on official mongo-go-driver but easier to use like Mgo.]]
 - [[https://github.com/testcontainers/testcontainers-go][testcontainers/testcontainers-go: Testcontainers is a Golang library that providing a friendly API to run Docker container. It is designed to create runtime environment to use during your automatic tests.]]
