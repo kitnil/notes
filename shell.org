@@ -81,6 +81,7 @@
   : wget https://github.com/sachaos/viddy/releases/download/v0.3.4/viddy_0.3.4_Linux_x86_64.tar.gz; tar xf viddy_0.3.4_Linux_x86_64.tar.gz viddy; chown root: viddy; chmod 0755 viddy; mv -vi viddy /usr/local/bin; rm -v viddy_0.3.4_Linux_x86_64.tar.gz
   : curl --output viddy_0.3.4_Linux_x86_64.tar.gz https://github.com/sachaos/viddy/releases/download/v0.3.4/viddy_0.3.4_Linux_x86_64.tar.gz; tar xf viddy_0.3.4_Linux_x86_64.tar.gz viddy; chown root: viddy; chmod 0755 viddy; mv -vi viddy /bin; rm -v viddy_0.3.4_Linux_x86_64.tar.gz
 - [[https://github.com/jstrieb/cache-command][jstrieb/cache-command: Cache commands that you don't want to run repeatedly when developing a shell pipeline]]
+- [[https://github.com/o69mar/ramfetch][o69mar/ramfetch: A fetch which displays memory info using /proc/meminfo]]
 - [[https://github.com/srid/shell-completion-dump][srid/shell-completion-dump: Use Haskell to dump the gnarly mess that are shell completions (bash, zsh, fish)]]
 - [[https://github.com/yasyf/gpt-do][yasyf/gpt-do: GPT-powered bash commands.]]
 - [[https://github.com/zahidkhawaja/rusty][zahidkhawaja/rusty: GPT-3 powered CLI tool to help you remember bash commands.]]
