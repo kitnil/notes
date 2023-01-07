@@ -69,19 +69,19 @@
 
 * Tools
 
-- [[https://github.com/iann0036/censor-shell][iann0036/censor-shell: Censors or hides shell / Bash / console output based on defined patterns - great for hiding secrets in demos!]]
-- [[https://habr.com/ru/company/ruvds/blog/585642/][Шарим (в) консоль / Хабр]]
-  - [[https://seashells.io/][Seashells lets you pipe output from command-line programs to the web in real-time]]
-- [[https://github.com/ellie/atuin][ellie/atuin: Magical shell history]]
 - [[https://github.com/barthr/redo][barthr/redo: Redo is the ultimate tool to create reusable functions from your history in an interactive way]]
+- [[https://github.com/charmbracelet/gum?auto_subscribed=false&utm_campaign=explore-email&utm_medium=email&utm_source=newsletter&utm_term=weekly][charmbracelet/gum: A tool for glamorous shell scripts 🎀]]
+- [[https://github.com/ellie/atuin][ellie/atuin: Magical shell history]]
+- [[https://github.com/iann0036/censor-shell][iann0036/censor-shell: Censors or hides shell / Bash / console output based on defined patterns - great for hiding secrets in demos!]]
+- install landiscover
+  : wget https://github.com/aler9/landiscover/releases/download/v1.1.0/landiscover_v1.1.0_linux_amd64.tar.gz; tar xf landiscover_v1.1.0_linux_amd64.tar.gz landiscover; chown root: landiscover; chmod 0755 landiscover; mv -vi landiscover /usr/local/bin; rm -v landiscover_v1.1.0_linux_amd64.tar.gz
+- install restic
+  : wget --output-document=/usr/local/bin/restic https://beta.restic.net/latest/restic_v0.13.0-359-gf0bb4f87_linux_amd64; chmod 0555 /usr/local/bin/restic
 - install viddy
   : wget https://github.com/sachaos/viddy/releases/download/v0.3.4/viddy_0.3.4_Linux_x86_64.tar.gz; tar xf viddy_0.3.4_Linux_x86_64.tar.gz viddy; chown root: viddy; chmod 0755 viddy; mv -vi viddy /usr/local/bin; rm -v viddy_0.3.4_Linux_x86_64.tar.gz
   : curl --output viddy_0.3.4_Linux_x86_64.tar.gz https://github.com/sachaos/viddy/releases/download/v0.3.4/viddy_0.3.4_Linux_x86_64.tar.gz; tar xf viddy_0.3.4_Linux_x86_64.tar.gz viddy; chown root: viddy; chmod 0755 viddy; mv -vi viddy /bin; rm -v viddy_0.3.4_Linux_x86_64.tar.gz
-- install restic
-  : wget --output-document=/usr/local/bin/restic https://beta.restic.net/latest/restic_v0.13.0-359-gf0bb4f87_linux_amd64; chmod 0555 /usr/local/bin/restic
-- install landiscover
-  : wget https://github.com/aler9/landiscover/releases/download/v1.1.0/landiscover_v1.1.0_linux_amd64.tar.gz; tar xf landiscover_v1.1.0_linux_amd64.tar.gz landiscover; chown root: landiscover; chmod 0755 landiscover; mv -vi landiscover /usr/local/bin; rm -v landiscover_v1.1.0_linux_amd64.tar.gz
 - [[https://github.com/jstrieb/cache-command][jstrieb/cache-command: Cache commands that you don't want to run repeatedly when developing a shell pipeline]]
-- [[https://github.com/charmbracelet/gum?auto_subscribed=false&utm_campaign=explore-email&utm_medium=email&utm_source=newsletter&utm_term=weekly][charmbracelet/gum: A tool for glamorous shell scripts 🎀]]
-- [[https://github.com/zahidkhawaja/rusty][zahidkhawaja/rusty: GPT-3 powered CLI tool to help you remember bash commands.]]
 - [[https://github.com/yasyf/gpt-do][yasyf/gpt-do: GPT-powered bash commands.]]
+- [[https://github.com/zahidkhawaja/rusty][zahidkhawaja/rusty: GPT-3 powered CLI tool to help you remember bash commands.]]
+- [[https://habr.com/ru/company/ruvds/blog/585642/][Шарим (в) консоль / Хабр]]
+  - [[https://seashells.io/][Seashells lets you pipe output from command-line programs to the web in real-time]]
