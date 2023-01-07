@@ -875,18 +875,18 @@ Happy hacking =),
 * Tips
 - [[https://old.reddit.com/r/emacs/comments/xyo2fo/orgmode_vterm_tmux/][org-mode + vterm + tmux == ❤️❤️❤️ : emacs]]
 * Tools
-- [[https://github.com/DarwinAwardWinner/with-simulated-input][DarwinAwardWinner/with-simulated-input: Test your interactive elisp functions non-interactively!]]
-- [[https://github.com/mmontone/emacs-inspector][mmontone/emacs-inspector: Inspection tool for Emacs Lisp objects.]]
-- [[https://github.com/schoettl/list-transform][schoettl/list-transform: Transform a bullet list to a sentence and vice versa in Emacs.]]
 - [[https://github.com/beacoder/everlasting-scratch][beacoder/everlasting-scratch: The scratch buffer that lasts forever.]]
-- [[https://github.com/Ladicle/consult-tramp][Ladicle/consult-tramp: consult-tramp is a command to select tramp targets. Supported completion sources are ssh config, known hosts, and docker containers.]]
-- [[https://github.com/rayw000/translate-mode][rayw000/translate-mode: Paragraph-oriented Emacs minor mode for doing translation jobs.]]
-- [[https://github.com/karthink/dired-hist][karthink/dired-hist: Traverse dired history in Emacs]]
 - [[https://github.com/ChanderG/toodoo.el][ChanderG/toodoo.el: A magical interface to manage Todos built ontop of Org]]
+- [[https://github.com/DarwinAwardWinner/with-simulated-input][DarwinAwardWinner/with-simulated-input: Test your interactive elisp functions non-interactively!]]
+- [[https://xenodium.com/dwim-shell-command-with-template-prompts/][dwim-shell-command with template prompts]]
 - [[https://github.com/emacsmirror/cycle-at-point][emacsmirror/cycle-at-point: Cycle (rotate) the thing under the cursor]]
 - [[https://github.com/etern/edit-as-format][etern/edit-as-format: Edit document as other format, in Emacs, using Pandoc]]
-- [[https://xenodium.com/dwim-shell-command-with-template-prompts/][dwim-shell-command with template prompts]]
 - [[https://github.com/hraban/emacs-nix][hraban/emacs-nix: Emacs from source using Nix]]
+- [[https://github.com/karthink/dired-hist][karthink/dired-hist: Traverse dired history in Emacs]]
+- [[https://github.com/Ladicle/consult-tramp][Ladicle/consult-tramp: consult-tramp is a command to select tramp targets. Supported completion sources are ssh config, known hosts, and docker containers.]]
+- [[https://github.com/mmontone/emacs-inspector][mmontone/emacs-inspector: Inspection tool for Emacs Lisp objects.]]
+- [[https://github.com/rayw000/translate-mode][rayw000/translate-mode: Paragraph-oriented Emacs minor mode for doing translation jobs.]]
+- [[https://github.com/schoettl/list-transform][schoettl/list-transform: Transform a bullet list to a sentence and vice versa in Emacs.]]
 ** Bug report
 
  [[http://manuel-uberti.github.io//emacs/2018/05/25/display-version/][A fancy Emacs version – manu.el]]
