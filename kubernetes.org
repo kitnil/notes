@@ -902,6 +902,7 @@ then redeploy with:
 - [[https://github.com/arnehilmann/k8s-auto-updater][arnehilmann/k8s-auto-updater: auto-update your cluster: sync your docker images and restart pods running on outdated images]]
 - [[https://github.com/aws/karpenter][aws/karpenter: Kubernetes Node Autoscaling: built for flexibility, performance, and simplicity.]]
 - [[https://github.com/backube/snapscheduler][backube/snapscheduler: Scheduled snapshots for Kubernetes persistent volumes]]
+- [[https://github.com/backube/volsync][backube/volsync: Asynchronous data replication for Kubernetes volumes]]
 - [[https://github.com/bitnami-labs/healthcheck-tools][bitnami-labs/healthcheck-tools: Set of Go tools to check different elements of your stack (SSL, SMTP, Permissions...)]]
 - [[https://github.com/bitnami-labs/sealed-secrets][bitnami-labs/sealed-secrets: A Kubernetes controller and tool for one-way encrypted Secrets]]
 - [[https://github.com/box/kube-iptables-tailer][box/kube-iptables-tailer: A service for better network visibility for your Kubernetes clusters.]]
