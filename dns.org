@@ -142,3 +142,23 @@ free mail hosting for their subscribers
 - Get all records
   : dig @172.16.103.2 -tAXFR intr
   : dig @172.16.103.2 -tAXFR 16.172.in-addr.arpa
+
+* Glue records
+
+#+begin_example
+  $ dig +short NS info.
+  a2.info.afilias-nst.info.
+  b0.info.afilias-nst.org.
+  b2.info.afilias-nst.org.
+  c0.info.afilias-nst.info.
+  d0.info.afilias-nst.org.
+  a0.info.afilias-nst.info.
+#+end_example
+
+#+begin_example
+  $ dig +noall +authority +additional +norecurse @a2.info.afilias-nst.info. NS ns1.wugi.info.
+  wugi.info.              3600    IN      NS      ns1.wugi.info.
+  wugi.info.              3600    IN      NS      ns2.wugi.info.
+  ns2.wugi.info.          3600    IN      A       78.108.92.69
+  ns1.wugi.info.          3600    IN      A       78.108.82.44
+#+end_example
