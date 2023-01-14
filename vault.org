@@ -112,3 +112,6 @@ ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -l root -fNL 820
 * Jenkins
 - [[https://www.admin-magazine.com/Archive/2019/51/Jenkins-Configuration-as-Code/(offset)/3][JCasC » ADMIN Magazine]]
 - [[https://groups.google.com/g/vault-tool/c/ZTEb5ziRsng/m/du69_G7UAwAJ][Reniew token with Jenkins]]
+
+* Tools
+- [[https://github.com/banzaicloud/bank-vaults][banzaicloud/bank-vaults: A Vault swiss-army knife: a K8s operator, Go client with automatic token renewal, automatic configuration, multiple unseal options and more. A CLI tool to init, unseal and configure Vault (auth methods, secret engines). Direct secret injection into Pods.]]
