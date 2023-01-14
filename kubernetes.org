@@ -1031,6 +1031,7 @@ then redeploy with:
   - okteto.com
   - devspace
   - skaffold
+- [[https://github.com/loft-sh/loft][loft-sh/loft: Namespace & Virtual Cluster Manager for Kubernetes - Lightweight Virtual Clusters, Self-Service Provisioning for Engineers and 70% Cost Savings with Sleep Mode]]
 - [[https://github.com/loft-sh/vcluster][loft-sh/vcluster: vcluster - Create fully functional virtual Kubernetes clusters - Each vcluster runs inside a namespace of the underlying k8s cluster. It's cheaper than creating separate full-blown clusters and it offers better multi-tenancy and isolation than regular namespaces.]]
 - [[https://github.com/loft-sh/vcluster][loft-sh/vcluster: vcluster - Create fully functional virtual Kubernetes clusters - Each vcluster runs inside a namespace of the underlying k8s cluster. It's cheaper than creating separate full-blown clusters and it offers better multi-tenancy and isolation than regular namespaces.]]
 - [[https://longhorn.io/][Longhorn - Cloud native distributed block storage for Kubernetes]]
