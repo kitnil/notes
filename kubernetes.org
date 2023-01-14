@@ -104,6 +104,9 @@ lightest of data storage needs.
 - cdi-uploadproxy
 : kubectl get service cdi-uploadproxy -n cdi
 
+- show pods labels
+  : kubectl get pods --show-labels
+
 - delete terminating ns
 #+begin_example
   oleg@guixsd ~$ kubectl proxy
