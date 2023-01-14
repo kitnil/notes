@@ -84,13 +84,13 @@ ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -l root -fNL 820
 #+end_example
 
 * Learning
-- [[https://habr.com/ru/company/nixys/blog/578870/][Взаимное автоматическое распечатывание двух Vault кластеров в Kubernetes / Хабр]]
 - [[https://itdraft.ru/2020/12/02/hashicorp-vault-kak-czentr-sertifikaczii-ca-vault-pki/][HashiCorp Vault как центр сертификации (CA) / Vault PKI • vault, devops, hashicorp, pki • IT Draft]]
-- [[https://learn.hashicorp.com/tutorials/vault/tokens][Tokens | Vault - HashiCorp Learn]]
-- [[https://learn.hashicorp.com/tutorials/vault/tokens#renew-service-tokens][Renew service tokens | Vault - HashiCorp Learn]]
-- [[https://jthan.io/blog/using-vault-for-your-openvpn-pki/][Using Vault for your OpenVPN PKI - jthan.io]]
-- [[https://www.vaultproject.io/docs/auth/cert][TLS Certificates - Auth Methods | Vault by HashiCorp]]
 - [[https://developer.hashicorp.com/vault/docs/internals/limits][Limits and Maximums | Vault | HashiCorp Developer]]
+- [[https://learn.hashicorp.com/tutorials/vault/tokens#renew-service-tokens][Renew service tokens | Vault - HashiCorp Learn]]
+- [[https://www.vaultproject.io/docs/auth/cert][TLS Certificates - Auth Methods | Vault by HashiCorp]]
+- [[https://learn.hashicorp.com/tutorials/vault/tokens][Tokens | Vault - HashiCorp Learn]]
+- [[https://jthan.io/blog/using-vault-for-your-openvpn-pki/][Using Vault for your OpenVPN PKI - jthan.io]]
+- [[https://habr.com/ru/company/nixys/blog/578870/][Взаимное автоматическое распечатывание двух Vault кластеров в Kubernetes / Хабр]]
 
 * Misc
 
