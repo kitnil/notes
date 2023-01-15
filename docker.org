@@ -311,6 +311,17 @@
   systemctl restart docker
 #+end_example
 
+- list tags
+#+begin_example
+  $ skopeo list-tags docker://docker-registry.intr/sig-storage/nfs-provisioner
+  {
+      "Repository": "docker-registry.intr/sig-storage/nfs-provisioner",
+      "Tags": [
+          "v4.0.0"
+      ]
+  }
+#+end_example
+
 * Awesome
 
 - https://github.com/hadolint/hadolint
