@@ -31,3 +31,8 @@
 - [[https://github.com/HelixLauncher/meta][HelixLauncher/meta: Utility for fetching Minecraft and loader versions from a centralized source]]
 - [[https://github.com/cleonyc/ccheck][cleonyc/ccheck: Fast minecraft scanner <3]]
 - [[https://github.com/nix-community/mineflake][nix-community/mineflake: Declarative Minecraft server in NixOS [maintainer=@cofob]]]
+
+* Kubernetes
+** [[https://github.com/luksamuk/k8s][luksamuk/k8s: Config for utilitaries I run on Kubernetes]]
+minecraft-server.yml: Minecraft Server. Created as a Spigot server with Geyser
+and Floodgate services to allow both Java and Bedrock clients.
