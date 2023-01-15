@@ -997,6 +997,7 @@ then redeploy with:
 - [[https://github.com/kei6u/kubectl-explore][kei6u/kubectl-explore: A better kubectl explain with the fuzzy finder]]
 - [[https://github.com/komodorio/helm-dashboard][komodorio/helm-dashboard: The missing UI for Helm - visualize your releases]]
 - [[https://github.com/konveyor/move2kube][konveyor/move2kube: Move2Kube is a command-line tool for automating creation of Infrastructure as code (IaC) artifacts. It has inbuilt support for creating IaC artifacts for replatforming to Kubernetes/Openshift.]]
+- [[https://github.com/kragniz/tor-ingress-controller][kragniz/tor-ingress-controller: An ingress controller to expose kubernetes services as onion services on the tor network]]
 - [[https://github.com/kris-nova/naml][kris-nova/naml: Not another markup language. Framework for replacing Kubernetes YAML with Go.]]
 - [[https://github.com/ksync/ksync][ksync/ksync: Sync files between your local system and a kubernetes cluster.]]
 - [[https://github.com/kubecfg/kubecfg][kubecfg/kubecfg: A tool for managing complex enterprise Kubernetes environments as code.]]
