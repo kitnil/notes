@@ -6538,3 +6538,6 @@ exist in the second table.
   gtid_slave_pos  0-199-48586976
   gtid_strict_mode        ON
 #+end_example
+
+- show status
+  : SHOW ALL SLAVES STATUS\G;
