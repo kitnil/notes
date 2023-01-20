@@ -220,6 +220,9 @@ If you get any output (there are lines with the “Remote failed to finish a req
       peer-disk:Diskless
 #+end_example
 
+- list pools
+  : storage-pool list
+
 * Restore DRBD
 ** 
 root@kube2:/# drbdadm status
