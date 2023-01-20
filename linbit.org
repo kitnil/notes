@@ -223,6 +223,9 @@ If you get any output (there are lines with the “Remote failed to finish a req
 - list pools
   : storage-pool list
 
+- show resource
+  : linstor r l -r pvc-64fe679b-b317-482e-a922-5058921c88e8
+
 * Restore DRBD
 ** 
 root@kube2:/# drbdadm status
