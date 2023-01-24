@@ -2,6 +2,15 @@
 
 * Learning
 ** [[https://docs.piraeus.daocloud.io/books/linstor-10-user-guide/page/212-adding-and-removing-disks][2.12. Adding and remov... | Piraeus]]
+2.12.1. Migrating disks
+
+In order to move a resource between nodes without reducing redundancy at any point, LINSTOR’s disk migrate feature can be used. First create a diskless resource on the target node, and then add a disk using the --migrate-from option. This will wait until the data has been synced to the new disk and then remove the source disk.
+
+For example, to migrate a resource backups from ‘alpha’ to ‘bravo’:
+
+: linstor resource create bravo backups --drbd-diskless
+: linstor resource toggle-disk bravo backups --storage-pool pool_ssd --migrate-from alpha
+
 ** [[https://deckhouse.io/documentation/v1/modules/041-linstor/faq.html][The linstor module: FAQ | Deckhouse]]
 The linstor module: FAQ
 
