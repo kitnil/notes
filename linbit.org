@@ -334,3 +334,46 @@ drbdadm -- --discard-my-data connect all
             claimName: dbench-linstor
     backoffLimit: 4
 #+end_src
+
+** snapshots
+
+#+begin_src yaml
+  kind: PersistentVolumeClaim
+  apiVersion: v1
+  metadata:
+    name: bash-linstor
+  spec:
+    storageClassName: linstor-pool0
+    accessModes:
+      - ReadWriteMany
+    resources:
+      requests:
+        storage: 5Gi
+  ---
+  apiVersion: apps/v1
+  kind: Deployment
+  metadata:
+    name: bash-linstor
+  spec:
+    selector:
+      matchLabels:
+        app: bash-linstor
+    template:
+      metadata:
+        labels:
+          app: bash-linstor
+      spec:
+        containers:
+        - name: bash
+          image: nixery.dev/shell/coreutils
+          imagePullPolicy: IfNotPresent
+          volumeMounts:
+          - name: bash-pv
+            mountPath: /data
+          command: ["/bin/sh"]
+          args: ["-c", "while true; do sleep 60; done"]
+        volumes:
+        - name: bash-pv
+          persistentVolumeClaim:
+            claimName: bash-linstor
+#+end_src
