@@ -389,3 +389,48 @@ drbdadm -- --discard-my-data connect all
     source:
       persistentVolumeClaimName: bash-linstor
 #+end_src
+
+#+begin_src yaml
+  kind: PersistentVolumeClaim
+  apiVersion: v1
+  metadata:
+    name: bash-linstor-restored
+  spec:
+    storageClassName: linstor-pool0
+    dataSource:
+      name: my-first-linstor-snapshot
+      kind: VolumeSnapshot
+      apiGroup: snapshot.storage.k8s.io
+    accessModes:
+      - ReadWriteMany
+    resources:
+      requests:
+        storage: 5Gi
+  ---
+  apiVersion: apps/v1
+  kind: Deployment
+  metadata:
+    name: bash-linstor-restored
+  spec:
+    selector:
+      matchLabels:
+        app: bash-linstor-restored
+    template:
+      metadata:
+        labels:
+          app: bash-linstor-restored
+      spec:
+        containers:
+        - name: bash
+          image: nixery.dev/shell/coreutils
+          imagePullPolicy: IfNotPresent
+          volumeMounts:
+          - name: bash-pv
+            mountPath: /data
+          command: ["/bin/sh"]
+          args: ["-c", "while true; do sleep 60; done"]
+        volumes:
+        - name: bash-pv
+          persistentVolumeClaim:
+            claimName: bash-linstor-restored
+#+end_src
