@@ -55,3 +55,6 @@ bind-address = ":8088"
 
 * Programs
 - [[https://github.com/acouvreur/ssh-log-to-influx][acouvreur/ssh-log-to-influx: Send SSH authentication logs to influxdb with geohashing IP]]
+
+* Tools
+- [[https://artifacthub.io/packages/helm/inspur/influxdb-srelay][influxdb-srelay 0.0.2 · helm/inspur]]
