@@ -172,6 +172,7 @@ lightest of data storage needs.
 
 - list nodes with taints
   : kubectl get nodes -o custom-columns=NAME:.metadata.name,TAINTS:.spec.taints --no-headers
+  : kubectl get nodes -o=jsonpath='{range .items[*]}{.metadata.name}{"\t"}{.spec.taints}{"\n"}{end}'
 
 - delete taint
   : kubectl taint node kube8 unschedulable-
