@@ -167,6 +167,9 @@ lightest of data storage needs.
 - mark master nodes as unschedulable
   : kubectl taint node kube3 unschedulable=true:NoSchedule
 
+- list nodes with taints
+  : kubectl get nodes -o custom-columns=NAME:.metadata.name,TAINTS:.spec.taints --no-headers
+
 - delete taint
   : kubectl taint node kube8 unschedulable-
 
