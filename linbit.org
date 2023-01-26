@@ -531,6 +531,18 @@ Conclusion
 
 Setting up Linstor may not be as straightforward as applying one yaml or two like with most of its competitors, but the setup is not difficult at all and can be automated with Ansible etc. So far I’ve only found that single issue which has already been fixed, so like I said I hope I won’t find any others. I would still like to use self-managed Kubernetes instead of Heroku. Hope this post was useful and saved you some time.
 
+* Kubernetes
+
+** Storage pool creation
+
+cfdisk /dev/vdb
+pvcreate /dev/vdb2
+vgcreate vg0 /dev/vdb2
+lvcreate -l 100%FREE -Zn --type thin-pool --thinpool pool0 vg0
+
+linstor storage-pool create lvmthin kube10 linstor-pool vg0/pool0
+linstor storage-pool create lvmthin kube2 pool0 vg0/pool0
+
 * Backup
 
 - [[https://github.com/kvaps/linstor-backup-script][kvaps/linstor-backup-script: Script for export linstor configuration as simple commands]]
