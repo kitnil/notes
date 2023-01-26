@@ -167,6 +167,9 @@ lightest of data storage needs.
 - mark master nodes as unschedulable
   : kubectl taint node kube3 unschedulable=true:NoSchedule
 
+- list nodes NAME ARCH KERNEL KUBLET CPU RAM
+  : kubectl get nodes -o custom-columns=NAME:.metadata.name,ARCH:.status.nodeInfo.architecture,KERNEL:.status.nodeInfo.kernelVersion,KUBLET:.status.nodeInfo.kubeletVersion,CPU:.status.capacity.cpu,RAM:.status.capacity.memory
+
 - list nodes with taints
   : kubectl get nodes -o custom-columns=NAME:.metadata.name,TAINTS:.spec.taints --no-headers
 
