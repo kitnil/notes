@@ -4,3 +4,4 @@
 - [[https://github.com/cirocosta/cr][cirocosta/cr: Runs your tasks at maximum concurrency]]
 - [[https://github.com/aptible/supercronic][aptible/supercronic: Cron for containers]]
 - [[https://github.com/umputun/cronn][umputun/cronn: cron service with extras]]
+- [[https://tool.crontap.com/cronjob-debugger/multiple-cronjobs?crons=30+12+*%2F5+*+*%7CCron+1%3A+every+5+days&crons=45+10+*%2F3+*+*%7CCron+2%3A+every+3+days&crons=0+0+1%2C3%2C5+*+*%7CCron+3%3A+At+midnight+on+some+days][Crontool - free crontab/cron expressions editor online]]
