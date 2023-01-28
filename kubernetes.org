@@ -349,6 +349,44 @@ membership.
   > You can use the `kubectl rollout restart my-deployment`. It's way better than simply deleting the pods with `kubectl delete pod`, as the rollout will ensure availability during the "rebalancing" (although deleting the pods altogether increases your chances for a better rebalance).
 #+end_src
 
+** CronJob on every Kubernetes node
+#+begin_src yaml
+  apiVersion: batch/v1beta1
+  kind: CronJob
+  metadata:
+    name: mycronjob
+    labels:
+      jobgroup: parallel
+  spec:
+    schedule: "*/5 * * * *"
+    successfulJobsHistoryLimit: 0
+    failedJobsHistoryLimit: 0
+    jobTemplate:
+      spec:
+        template:
+          metadata:
+            name: kubejob
+            labels:
+              jobgroup: parallel
+          spec:
+            topologySpreadConstraints:
+              - maxSkew: 2
+                topologyKey: kubernetes.io/hostname
+                whenUnsatisfiable: DoNotSchedule
+                labelSelector:
+                  matchLabels:
+                    jobgroup: parallel
+            containers:
+            - name: mycron-container
+              image: alpine
+              imagePullPolicy: IfNotPresent
+              command: ['sh', '-c', 'echo Job Pod is Running ; sleep 10']
+            restartPolicy: OnFailure
+            terminationGracePeriodSeconds: 0
+        parallelism: 5
+    concurrencyPolicy: Allow
+#+end_src
+
 * Community
 - [[https://kubernetes.slack.com/][kubernetes.slack.com]]
   - [[https://slack.kubernetes.io/][slack.kubernetes.io]]
