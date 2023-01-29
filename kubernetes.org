@@ -219,6 +219,9 @@ lightest of data storage needs.
 - run nginx on specific node
   : kubectl run --overrides='{"apiVersion": "v1", "spec": {"nodeSelector": { "kubernetes.io/hostname": "kube6" }}}' --image nginx nginx
 
+- run wrk
+  : kubectl run --restart=Never -n example-hpa --rm -it wrk --image=nixery.dev/shell/wrk -- /bin/bash
+
 - expose to specific address
   : kubectl expose --overrides='{"spec": {"loadBalancerIP": "78.108.82.13"}}' --port=80 --type=LoadBalancer pod nginx-76d6c9b8c-6hlfw
 
