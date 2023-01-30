@@ -256,3 +256,13 @@ https://support.mozilla.org/en-US/kb/profiles-where-firefox-stores-user-data
 - https://extensionworkshop.com/documentation/manage/updating-your-extension/?utm_source=addons.mozilla.org&utm_medium=referral&utm_content=submission
 - https://extensionworkshop.com/documentation/publish/signing-and-distribution-overview/?utm_source=addons.mozilla.org&utm_medium=referral&utm_content=submission
 - https://extensionworkshop.com/documentation/publish/add-on-policies/?utm_source=addons.mozilla.org&utm_medium=referral&utm_content=submission
+
+* Clean 301
+
+The quickest way to remove the cache in Firefox, which includes 301 redirects,
+is the following:
+
+    Press CTRL + SHIFT + Delete
+    Change the time range, if needed
+    Click on Details and uncheck everything other than "cache"
+
