@@ -1814,7 +1814,6 @@ builtins.match "php([[:alnum:]])([[:alnum:]])" "php70"
 - [[https://github.com/kamadorueda/alejandra][kamadorueda/alejandra: The Uncompromising Nix Code Formatter]]
 - [[https://github.com/Lassulus/nix-autobahn][Lassulus/nix-autobahn]]
 - [[https://github.com/lf-/nix-doc][lf-/nix-doc: An interactive Nix documentation tool providing a CLI for function search, a Nix plugin for docs in the REPL, and a ctags implementation for Nix script]]
-- [[https://github.com/lf-/nix-doc][lf-/nix-doc: An interactive Nix documentation tool providing a CLI for function search, a Nix plugin for docs in the REPL, and a ctags implementation for Nix script]]
 - [[https://github.com/lf-/nix-otel][lf-/nix-otel: Nix OpenTelemetry sender plugin]]
 - [[https://github.com/loophp/ci-detector][loophp/ci-detector: To detect whether we are in a CI or not]]
 - [[https://github.com/loophp/nix-auto-changelog][loophp/nix-auto-changelog: A Nix flake to generating changelog files based on your git tags and commit history.]]
