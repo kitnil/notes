@@ -1821,6 +1821,7 @@ builtins.match "php([[:alnum:]])([[:alnum:]])" "php70"
 - [[https://github.com/mlieberman85/nixbom][mlieberman85/nixbom]]
 - [[https://mynixos.com/][MyNixOS - Graphical editor for Nix flakes. Create and manage configurations and modules for NixOS and Nix home-manager. Rather a Nix generator than a Nix editor, because it does not allow to import Nix files.]]
 - [[https://github.com/nix-community/nixago][nix-community/nixago: Generate configuration files using Nix maintainer=@jmgilman]]
+- [[https://github.com/nix-community/nix-init][nix-community/nix-init: Generate Nix packages from URLs with hash prefetching, dependency inference, license detection, and more [maintainer=@figsoda]]]
 - [[https://github.com/nix-community/nixpkgs-swh][nix-community/nixpkgs-swh: Send nixpkgs tarballs to Software Heritage maintainer=@nlewo]]
 - [[https://github.com/nix-community/nurl][nix-community/nurl: Generate Nix fetcher calls from repository URLs [maintainer=@figsoda]]]
 - [[https://github.com/nix-dot-dev/getting-started-nix-template][nix-dot-dev/getting-started-nix-template: Based on nix.dev tutorials, repository template to get you started with Nix.]]
