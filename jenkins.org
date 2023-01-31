@@ -400,6 +400,9 @@ NOTE: "pipeline" equal to "workflow".
       }
     #+end_src
 
+Jenkins.get().computers[21].getEnvVarsFull()  
+Jenkins.get().getItemMap().nixos.items()
+
 * Misc
 
 https://stackoverflow.com/a/53804057
