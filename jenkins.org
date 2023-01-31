@@ -403,6 +403,7 @@ NOTE: "pipeline" equal to "workflow".
 Jenkins.get().computers[21].getEnvVarsFull()  
 Jenkins.get().getItemMap().nixos.items()
 Jenkins.get().getItemMap().nixos.items[3].getItems()[6].scheduleBuild()
+Jenkins.get().getItemMap().nixos.items[3].getItems()[6].getSCMs()[1].getRepositories()[0].getURIs()
 
 * Misc
 
