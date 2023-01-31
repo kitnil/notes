@@ -300,6 +300,8 @@
 
 - Running docker container : iptables: No chain/target/match by that name
 
+- docker system prune --force --all
+
 #+begin_example
   1. Clear all chains:
 
