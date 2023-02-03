@@ -1082,6 +1082,7 @@ then redeploy with:
 - [[https://www.cncf.io/blog/2022/07/11/kubevirt-kube-ovn-networking-for-cloud-native-virtualization/][KubeVirt + Kube-OVN: Networking for cloud native virtualization | Cloud Native Computing Foundation]]
 - [[https://github.com/kumahq/kuma][kumahq/kuma: 🐻 The multi-zone service mesh for containers, Kubernetes and VMs. Built with Envoy. CNCF Sandbox Project.]]
 - [[https://github.com/kvaps/kubectl-build][kvaps/kubectl-build: Build dockerfiles directly in your Kubernetes cluster.]]
+- [[https://github.com/kvaps/kubectl-node-shell][kvaps/kubectl-node-shell: Exec into node via kubectl]]
 - [[https://github.com/kyverno/kyverno][kyverno/kyverno: Kubernetes Native Policy Management]]
 - [[https://github.com/Ladicle/kubectl-rolesum][Ladicle/kubectl-rolesum: Summarize Kubernetes RBAC roles for the specified subjects.]]
 - [[https://github.com/lastbackend/lastbackend][lastbackend/lastbackend: System for containerized apps management. From build to scaling.]]
