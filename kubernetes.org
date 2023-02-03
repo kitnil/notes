@@ -1115,6 +1115,7 @@ then redeploy with:
 - [[https://github.com/omrikiei/ktunnel][omrikiei/ktunnel: A cli that exposes your local resources to kubernetes]]
 - [[https://github.com/openebs/openebs][openebs/openebs: Leading Open Source Container Attached Storage, built using Cloud Native Architecture, simplifies running Stateful Applications on Kubernetes.]]
 - [[https://github.com/openkruise/kruise][openkruise/kruise: Automate application management on Kubernetes (project under CNCF)]]
+- [[https://github.com/patrickdappollonio/kubectl-slice][patrickdappollonio/kubectl-slice: Split multiple Kubernetes files into smaller files with ease. Split multi-YAML files into individual files.]]
 - [[https://github.com/piraeusdatastore/linstor-csi][piraeusdatastore/linstor-csi: CSI plugin for LINSTOR]]
 - [[https://github.com/pixie-io/pixie][pixie-io/pixie: Instant Kubernetes-Native Application Observability]]
 - [[https://habr.com/ru/company/nixys/blog/682612/][Pre-Commit хуки, о которых DevOps-инженер должен знать, чтобы управлять Kubernetes / Хабр]]
