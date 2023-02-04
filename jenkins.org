@@ -121,6 +121,9 @@ NOTE: "pipeline" equal to "workflow".
 - list installed plugins
   : Jenkins.instance.pluginManager.plugins
 
+- list methods
+  : Jenkins.getInstance().metaClass.methods*.name.sort().unique()
+
 ** Configuration
 - [[https://github.com/edx/jenkins-configuration][edx/jenkins-configuration: A collection of utilities for configuring a Jenkins instance and its plugins]]
 
