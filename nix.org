@@ -824,6 +824,9 @@ example job
 - ipmi
 : nix-env -p .nix-profile.d/ipmiview/ipmiview -iA nixos-unstable.ipmiview
 
+* Implementations
+- [[https://github.com/tvlfyi/tvix][tvlfyi/tvix: Tvix - A Rust implementation of Nix. Read-only mirror of https://cs.tvl.fyi/depot/-/tree/tvix]]
+
 * Language
 - [[https://nix.dev/anti-patterns/language][In the Nix language — nix.dev documentation]]
 - [[https://github.com/divnix/yants][divnix/yants: a fork/mirror of yants - because github is more discoverable]]
