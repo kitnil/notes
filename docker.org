@@ -1371,6 +1371,7 @@ Misc
 - [[https://github.com/open-source-labs/Docketeer][open-source-labs/Docketeer: An easy-to-use GUI for Docker that allows developers to manage Docker containers and monitor crucial metrics.]]
 - [[https://github.com/pmsipilot/docker-compose-viz][pmsipilot/docker-compose-viz: Docker compose graph visualization]]
 - [[https://github.com/qdm12/deunhealth][qdm12/deunhealth: Binary program to restart unhealthy Docker containers]]
+- [[https://github.com/reddec/compose-scheduler][reddec/compose-scheduler: Simple and lightweight service which can execute services from the same file based on cron expression.]]
 - [[https://github.com/ruoshan/autoportforward][ruoshan/autoportforward: Bidirectional port-forwarding for docker, podman and kubernetes]]
 - [[https://github.com/sigstore/cosign][sigstore/cosign: Container Signing]]
 - [[https://github.com/stepchowfun/docuum][stepchowfun/docuum: Docuum performs least recently used (LRU) eviction of Docker images. 🗑️]]
@@ -1392,7 +1393,4 @@ Misc
 
 ** watchtower
 : docker run --rm -v /var/run/docker.sock:/var/run/docker.sock containrrr/watchtower --run-once qbittorrent
-
-* Tools
-- [[https://github.com/reddec/compose-scheduler][reddec/compose-scheduler: Simple and lightweight service which can execute services from the same file based on cron expression.]]
 
