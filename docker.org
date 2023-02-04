@@ -3,246 +3,18 @@
 :END:
 #+title: Docker
 
-* Runtimes
-- [[https://github.com/nestybox/sysbox][nestybox/sysbox: Sysbox repository]]
+* Awesome
 
-* Tools
-- [[https://github.com/0x7c13/docker-gc][0x7c13/docker-gc: docker-gc is a microservice to cleanup docker images automatically based on recycling strategy. Dockerfile and helm charts are provided for easy installation.]]
-- [[https://github.com/AkihiroSuda/buildkit-nix][AkihiroSuda/buildkit-nix: Nix derivations as Dockerfiles (`docker build -f default.nix .`)]]
-- [[https://github.com/alibaba/accelerated-container-image][alibaba/accelerated-container-image: accelerated-container-image]]
-- [[https://github.com/anchore/anchore-engine][anchore/anchore-engine: A service that analyzes docker images and applies user-defined acceptance policies to allow automated container image validation and certification]]
-- [[https://github.com/andrey-pohilko/registry-cli][andrey-pohilko/registry-cli: Scripts for easy manipulation of docker-registry from command line (and from scripts)]]
-- [[https://github.com/awakesecurity/hocker][awakesecurity/hocker: Utilities for interacting with the docker registry and generating nix build instructions]]
-- [[https://github.com/capnspacehook/whalewall][capnspacehook/whalewall: Automate management of firewall rules for Docker containers]]
-- [[https://github.com/christian-korneck/docker-pushrm][christian-korneck/docker-pushrm: "Docker Push Readme" - a Docker CLI plugin to update container repo docs]]
-- [[https://github.com/containerd/overlaybd?auto_subscribed=false][containerd/overlaybd: The storage backend of accelerated container image]]
-- [[https://github.com/containers/docker-lvm-plugin][containers/docker-lvm-plugin: Docker volume plugin for LVM volumes]]
-- [[https://github.com/crazy-max/diun][crazy-max/diun: Receive notifications when an image is updated on a Docker registry]]
-- [[https://github.com/crazy-max/undock][crazy-max/undock: Extract contents of a container image in a local folder]]
-- [[https://github.com/cybersecsi/RAUDI][cybersecsi/RAUDI: A repo to automatically generate and keep updated a series of Docker images through GitHub Actions.]]
-- [[https://habr.com/ru/post/578854/][DAM. Как работать с docker на суше, а не в облаке / Хабр]]
-  - [[https://github.com/dam-utils/dam][dam-utils/dam]]
-- [[https://github.com/dbhi/qus][dbhi/qus: qemu-user-static (qus) and containers, non-invasive minimal working setups]]
-- [[https://github.com/distribution/distribution][distribution/distribution: The toolkit to pack, ship, store, and deliver container content]]
-- [[https://github.com/docker/buildx][docker/buildx: Docker CLI plugin for extended build capabilities with BuildKit]]
-- [[https://github.com/danmed/Docker-Compose-Backup/blob/main/create-compose-files.sh][Docker-Compose-Backup/create-compose-files.sh at main · danmed/Docker-Compose-Backup]]
-- [[https://github.com/docker/dockercraft][docker/dockercraft: Docker + Minecraft = Dockercraft]]
-- [[https://github.com/docker-slim/docker-slim][docker-slim/docker-slim: DockerSlim (docker-slim): Don't change anything in your Docker container image and minify it by up to 30x (and for compiled languages even more) making it secure too! (free and open source)]]
-- [[https://github.com/eriklupander/dvizz][eriklupander/dvizz: Docker Swarm visualization including live updates using D3 Force layout]]
-- [[https://github.com/genuinetools/reg][genuinetools/reg: Docker registry v2 command line client and repo listing generator with security checks.]]
-- [[https://github.com/gotoz/runq][gotoz/runq: run regular Docker images in KVM/Qemu]]
-- [[https://hpc.guix.info/blog/2021/10/when-docker-images-become-fixed-point/][Guix-HPC — When Docker images become fixed-point]]
-- [[https://github.com/itzg/easy-add][itzg/easy-add: A utility for easily adding a file from a downloaded archive during Docker builds]]
-- [[https://github.com/JakeWharton/dockerfile-shebang][JakeWharton/dockerfile-shebang: Treat your Dockerfiles as self-contained, editable scripts]]
-- [[https://github.com/jdevelop/repull][jdevelop/repull: A tool to restart a Docker container with a newer version of the image]]
-- [[https://github.com/kool-dev/kool][kool-dev/kool: From local development to the cloud: development workflow made easy.]]
-- [[https://github.com/ktock/buildg][ktock/buildg: Interactive debugger for Dockerfile]]
-- [[https://hub.docker.com/r/linuxserver/docker-compose][linuxserver/docker-compose - Docker Image | Docker Hub]]
-- [[https://github.com/lucaslorentz/caddy-docker-proxy][lucaslorentz/caddy-docker-proxy: Caddy as a reverse proxy for Docker]]
-- [[https://github.com/marcelbirkner/docker-ci-tool-stack][marcelbirkner/docker-ci-tool-stack: Docker Infrastructure via docker-compose (Jenkins, SonarQube, Nexus, GitLab, Selenium Grid)]]
-- [[https://github.com/mattn/goreman][mattn/goreman: foreman clone written in go language]]
-- [[https://github.com/metal3d/docker-domains][metal3d/docker-domains: Have docker containers responding to any domain name]]
-- [[https://github.com/Mic92/cntr][Mic92/cntr: A container debugging tool based on FUSE]]
-- [[https://github.com/moncho/dry][moncho/dry: dry - A Docker manager for the terminal @]]
-- [[https://github.com/nlewo/nix2container][nlewo/nix2container: An archive-less dockerTools.buildImage implementation]]
-- [[https://github.com/offen/docker-volume-backup][offen/docker-volume-backup: Backup Docker volumes locally or to any S3 or WebDAV compatible storage]]
-- [[https://github.com/open-source-labs/Docketeer][open-source-labs/Docketeer: An easy-to-use GUI for Docker that allows developers to manage Docker containers and monitor crucial metrics.]]
-- [[https://github.com/pmsipilot/docker-compose-viz][pmsipilot/docker-compose-viz: Docker compose graph visualization]]
-- [[https://github.com/qdm12/deunhealth][qdm12/deunhealth: Binary program to restart unhealthy Docker containers]]
-- [[https://github.com/ruoshan/autoportforward][ruoshan/autoportforward: Bidirectional port-forwarding for docker, podman and kubernetes]]
-- [[https://github.com/sigstore/cosign][sigstore/cosign: Container Signing]]
-- [[https://github.com/stepchowfun/docuum][stepchowfun/docuum: Docuum performs least recently used (LRU) eviction of Docker images. 🗑️]]
-- [[https://github.com/theAkito/userdef][theAkito/userdef: A more advanced adduser for your Alpine based Docker images.]]
-- [[https://github.com/treebeardtech/whaler][treebeardtech/whaler: Visual disk-usage analyser for docker images]]
-- [[https://github.com/umputun/docker-logger][umputun/docker-logger: Logs collector for docker]]
-- [[https://github.com/vv9k/dockeye][vv9k/dockeye: GUI app for managing Docker/Podman]]
-- [[https://github.com/whs/docker-wait-for-it][whs/docker-wait-for-it: wait-for-it.sh in Docker]]
-- [[https://github.com/wknapik/dockerfile-run][wknapik/dockerfile-run: Execute dockerfiles as scripts (incl. via shebang)]]
-- [[https://github.com/SelfhostedPro/Yacht/pulse][Yacht - A web interface for managing docker containers with an emphasis on templating to provide 1 click deployments. Think of it like a decentraliz]]
-
-** Security
-- [[https://github.com/quay/clair][quay/clair: Vulnerability Static Analysis for Containers]]
-
-** Gradle
-- [[https://github.com/palantir/gradle-docker][palantir/gradle-docker: a Gradle plugin for orchestrating docker builds and pushes.]]
-- [[https://github.com/bmuschko/gradle-docker-plugin][bmuschko/gradle-docker-plugin: Gradle plugin for managing Docker images and containers.]]
-- [[https://github.com/Transmode/gradle-docker][Transmode/gradle-docker: A Gradle plugin to build Docker images from the build script.]]
-
-** watchtower
-: docker run --rm -v /var/run/docker.sock:/var/run/docker.sock containrrr/watchtower --run-once qbittorrent
-
-* Nixery
-
-: docker run --rm --workdir /src --network=host -v $PWD:/src -it nixery.dev/shell/aria2 aria2c FILE
-
-* Configuration
-#+begin_src json
-  {
-    "insecure-registries": [
-      "oracle1.local:5000"
-    ],
-    "log-driver": "json-file",
-    "log-opts": {
-      "max-size": "1g",
-      "max-file": "3"
-    }
-  }
-#+end_src
-
-* Containers
-- [[https://github.com/AbdBarho/stable-diffusion-webui-docker][AbdBarho/stable-diffusion-webui-docker: Easy Docker setup for Stable Diffusion with user-friendly UI]]
-- [[https://github.com/containers/toolbox][containers/toolbox: Tool for containerized command line environments on Linux]]
-- [[https://github.com/BaptisteBdn/docker-selfhosted-apps][BaptisteBdn/docker-selfhosted-apps: Collection of selfhosted apps with docker only ! Traefik, Bitwarden, Wireguard with Pihole, Synapse with Elements, etc.]]
-- [[https://github.com/genuinetools/binctr][genuinetools/binctr: Fully static, unprivileged, self-contained, containers as executable binaries.]]
-- [[https://github.com/shuhaoliu/docker-clion-dev][shuhaoliu/docker-clion-dev: Debugging C++ in a Docker Container with CLion IDE]]
-- [[https://github.com/sagemathinc/cocalc-docker][sagemathinc/cocalc-docker: Docker setup for running CoCalc as downloadable software on your own computer]]
-- [[https://github.com/wahyd4/aria2-ariang-docker][wahyd4/aria2-ariang-docker: The Docker image for Aria2 + AriaNg + File Browser]]
-- [[https://github.com/xtruder/debian-nix-devcontainer][xtruder/debian-nix-devcontainer: VSCode devcontainer that uses debian as base system and nix for management of development environment]]
-- [[https://hub.docker.com/r/linuxserver/webtop][linuxserver/webtop]]
-- [[https://github.com/datastack-net/dockerized][datastack-net/dockerized: Run popular commandline tools within docker]]
-- [[https://github.com/P3TERX/Aria2-Pro-Docker][P3TERX/Aria2-Pro-Docker: Aria2 Pro | A perfect Aria2 Docker image | 更好用的 Aria2 Docker 容器镜像]]
-- [[https://github.com/vergoh/vnstat-docker][vergoh/vnstat-docker: vnStat in a container with image output via http]]
-- [[https://github.com/irbigdata/data-dockerfiles][irbigdata/data-dockerfiles: a curated list of docker-compose files prepared for testing data engineering tools, databases and open source libraries.]]
-- [[https://github.com/qoomon/docker-host][qoomon/docker-host: A docker sidecar container to forward all traffic to local docker host or any other host]]
-- [[https://github.com/binhex/arch-qbittorrentvpn][binhex/arch-qbittorrentvpn: Docker build script for Arch Linux base with qBittorrent, Privoxy and OpenVPN]]
-- [[https://github.com/bcapptain/dockernymous][bcapptain/dockernymous: A script used to create a whonix like gateway/workstation environment with docker containers.]]
-- [[https://github.com/madworx/docker-minix][madworx/docker-minix: QEMU-based Docker image for Minix 3, based on the official CD-ROM ISO image installation from the Minix website]]
-- [[https://github.com/mendhak/docker-http-https-echo][mendhak/docker-http-https-echo: Docker image that echoes request data as JSON; listens on HTTP/S, useful for debugging.]]
-- [[https://github.com/timothymiller/cloudflare-ddns][timothymiller/cloudflare-ddns: Dynamic DNS (DDNS) service based on Cloudflare! Access your home network remotely via a custom domain name without a static IP!]]s
-- [[https://github.com/haugene/docker-transmission-openvpn][haugene/docker-transmission-openvpn: Docker container running Transmission torrent client with WebUI over an OpenVPN tunnel]]
-- [[https://github.com/jon4hz/MediaCenterCollection][jon4hz/MediaCenterCollection: 🎬 Collection of docker-compose files for a full stack Plex Media Center]]
-- [[https://www.linuxserver.io/blog/2021-05-05-meet-webtops-a-linux-desktop-environment-in-your-browser][Meet Webtops A Linux Desktop Environment In Your Browser | LinuxServer.io]]
-
-- [[https://github.com/aler9/landiscover][aler9/landiscover: discover devices connected to the local network within seconds]]
-  : docker run --rm -it --network=host aler9/landiscover
-
-- music
-  : docker run -d --name navidrome --restart=unless-stopped --user $(id -u):$(id -g) -v /srv/audio:/music:ro -v /var/lib/navidrome:/data -p 192.168.0.144:4533:4533 -e ND_LOGLEVEL=debug deluan/navidrome:latest
-  : docker run --name airsonic-advanced -d -u $(id -u):$(id -g) -e TZ=Europe/Moscow -e JAVA_OPTS=-Dserver.forward-headers-strategy=native -p 192.168.0.144:4040:4040 -p 192.168.0.144:4041:4041 -v /srv/music:/var/music:ro -v /var/lib/airsonic:/var/airsonic --restart unless-stopped airsonicadvanced/airsonic-advanced:latest
-
-- whoogle
-  : docker run --publish 5000:5000 --detach --name whoogle-search benbusby/whoogle-search:latest
-
-* Logs
-- [[https://github.com/amir20/dozzle][amir20/dozzle: Realtime log viewer for docker containers.]]
-- [[https://github.com/oslabs-beta/Dockter][oslabs-beta/Dockter: A low-overhead, open-source Docker log management tool]]
-
-* Learning
-- [[https://habr.com/ru/company/selectel/blog/279281/][Механизмы контейнеризации: namespaces / Блог компании Selectel / Хабр]]
-- [[https://github.com/linuxserver/docker-mods?auto_subscribed=false][linuxserver/docker-mods: Documentation and Examples of base container modifications]]
-- [[https://github.com/krol3/container-security-checklist][krol3/container-security-checklist: Checklist for container security - devsecops practices]]
-- [[https://github.com/hexops/dockerfile][hexops/dockerfile: Dockerfile best-practices for writing production-worthy Docker images.]]
-
-* Docker
-- [[https://habr.com/ru/company/southbridge/blog/524136/][FAQ: новые ограничения использования сервисов Docker с 1 ноября 2020]]
-
-** permissions bug
-- [[https://gitlab.archlinux.org/archlinux/archlinux-docker/-/issues/32][Permission issue for directories created in Archlinux image on Docker hub (#32) · Issues · Arch Linux / archlinux-docker · GitLab]]
-
-* Dockerfile
-- [[https://github.com/HariSekhon/Dockerfiles][50+ DockerHub public images for Docker & Kubernetes - Hadoop, Kafka, ZooKeeper, HBase, Cassandra, Solr, SolrCloud, Presto, Apache Drill, Nifi, Spark, Consul, Riak, and DevOps tools built various distros: Alpine, CentOS, Debian, Fedora, Ubuntu]]
-- [[https://github.com/Olivier-HA/Zabbix-workshop][Olivier-HA/Zabbix-workshop]]
-- [[https://github.com/HewlettPackard/dockerfile-parser-rs][HewlettPackard/dockerfile-parser-rs: a Rust library for parsing, validating, and modifying Dockerfiles]]
+- https://github.com/hadolint/hadolint
 
 * Bastion
 - [[https://github.com/moul/ssh2docker/][moul/ssh2docker: standalone SSH server that connects you to your Docker containers]]
 - [[https://github.com/ml-tooling/ssh-proxy][ml-tooling/ssh-proxy: 🐳 Dockerized SSH bastion to proxy SSH connections to arbitrary containers.]]
 
-* Security
+* Bug
 
-- [[https://tech.paulcz.net/blog/secure-docker-with-tls/][Securing Docker with TLS certificates]]
-- [[https://github.com/Tecnativa/docker-socket-proxy][Tecnativa/docker-socket-proxy: Proxy over your Docker socket to restrict which requests it accepts]]
-
-* Registry
-- [[https://github.com/atcol/docker-registry-ui][atcol/docker-registry-ui: A web frontend/UI for easy private/local Docker Registry integration]]
-- [[https://github.com/goharbor/harbor][goharbor/harbor: An open source trusted cloud native registry project that stores, signs, and scans content.]]
-- [[https://github.com/cesanta/docker_auth][cesanta/docker_auth: Authentication server for Docker Registry 2]]
-- [[https://quay.io/][Quay Container Registry · Quay]]
-- [[https://github.com/jpetazzo/registrish][jpetazzo/registrish: Dirty hack to run a read-only, public Docker registry on almost any static file hosting service (e.g. NGINX, Netlify, S3...)]]
-
-- Docker Hub
-- GitHub Container Registry
-- GitLab Container Registry
-- DigitalOcean Container Registry
-- CNCF Harbor Project
-- VMware Harbor Registry
-
-* Misc
-
-- [[https://github.com/aquasecurity/tracee][aquasecurity/tracee: Container and system event tracing using eBPF]]
-- [[https://github.com/pfrayer/docker-browser][pfrayer/docker-browser: Visualize your containers/images/volumes/networks and see which ones uses which ones]]
-- [[https://github.com/plexsystems/sinker][plexsystems/sinker: A tool to sync images from one container registry to another]]
-- [[https://github.com/p8952/bocker][p8952/bocker: Docker implemented in around 100 lines of bash]]
-- [[https://github.com/artagnon/rhine-ml][artagnon/rhine-ml: 🏞 an OCaml compiler for an untyped lisp]]
-- [[https://github.com/compose-spec/compose-spec][compose-spec/compose-spec: The Compose specification]]
-
-* Networking
-
-- [[https://github.com/gopher-net/docker-ovs-plugin][gopher-net/docker-ovs-plugin: An Open vSwitch Plugin for Docker's Libnetwork]]
-- [[https://github.com/IQTLabs/dovesnap][IQTLabs/dovesnap: Docker OVS Network Plugin]]
-
-: docker network create -d macvlan --subnet=10.152.128.0/18 --gateway=10.152.152.10 --ip-range=10.152.152.16/28 -o parent=br155-vlan155 br155_net
-: docker run --name netshoot --rm -it --network br155_net nicolaka/netshoot /bin/bash
-
-: sudo virsh start whonix-gateway-direct
-: docker run -d --name=firefox --security-opt seccomp=unconfined -e PUID=1000 -e PGID=1000 -e TZ=Europe/London --shm-size="1gb" --restart unless-stopped --network br155_net lscr.io/linuxserver/firefox:latest
-: docker network connect bridge firefox
-: docker top firefox
-: sudo nsenter -t PID -n ip -one -4 a
-
-* Libs
-- [[https://github.com/qiniu/qmgo][Qmgo - The MongoDB driver for Go . It‘s based on official mongo-go-driver but easier to use like Mgo.]]
-- [[https://github.com/testcontainers/testcontainers-go][testcontainers/testcontainers-go: Testcontainers is a Golang library that providing a friendly API to run Docker container. It is designed to create runtime environment to use during your automatic tests.]]
-- [[https://github.com/ory/dockertest][ory/dockertest: Write better integration tests! Dockertest helps you boot up ephermal docker images for your Go tests with minimal work.]]
-
-* Security
-- [[https://github.com/Ullaakut/Gorsair][Ullaakut/Gorsair: Gorsair hacks its way into remote docker containers that expose their APIs]]
-
-* Programms
-
-- [[https://github.com/Trendyol/docker-shell][Trendyol/docker-shell: A simple interactive prompt for docker]]
-- [[https://github.com/Yash-Handa/logo-ls][Yash-Handa/logo-ls: Modern ls command with vscode like File Icon and Git Integrations. Written in Golang]]
-- [[https://github.com/lucasepe/jumble][lucasepe/jumble: Create (not just) diagrams stitching, connecting and labelling images on a grid using HCL syntax (like terraform!).]]
-- [[https://github.com/lucasepe/draft][lucasepe/draft: Generate High Level Cloud Architecture diagrams using YAML syntax.]]
-- [[https://github.com/lucasepe/crumbs][lucasepe/crumbs: Turn asterisk-indented text lines into mind maps]]
-- [[https://github.com/lucasepe/modgv][lucasepe/modgv: Converts 'go mod graph' output into Graphviz's DOT language]]
-- [[https://github.com/elsaland/elsa][elsaland/elsa: ❄️ Elsa is a minimal, fast and secure runtime for Javascript and Typescript written in Go]]
-- [[https://github.com/blushft/go-diagrams][blushft/go-diagrams: Create beautiful system diagrams with Go]]
-- [[https://github.com/norouter/norouter][norouter/norouter: The easiest multi-host & multi-cloud networking ever. No root privilege is required.]]
-- [[https://github.com/traefik/traefik][traefik/traefik: The Cloud Native Edge Router]]
-- [[https://github.com/rosineygp/mkdkr][rosineygp/mkdkr: Make + Docker + Shell = CI Pipeline]]
-- [[https://github.com/asottile/dockerfile][asottile/dockerfile: Parse a dockerfile into a high-level representation using the official go parser]]
-- [[https://github.com/docker/awesome-compose][docker/awesome-compose: Awesome Docker Compose samples]]
-- [[https://github.com/nicolaka/netshoot][nicolaka/netshoot: a Docker + Kubernetes network trouble-shooting swiss-army container]]
-- [[https://github.com/swarmpit/swarmpit][swarmpit/swarmpit: Lightweight mobile-friendly Docker Swarm management UI]]
-- [[https://github.com/crazy-max/swarm-cronjob][crazy-max/swarm-cronjob: Create jobs on a time-based schedule on Docker Swarm]]
-- [[https://github.com/ethersphere/bee][ethersphere/bee: Bee is a Swarm client implemented in Go. It’s the basic building block for the Swarm network: a private; decentralized; censorship-resistant and self-sustaining network for storing your (application) data.]]
-- [[https://github.com/docker-library/repo-info][docker-library/repo-info: Extended information (especially license and layer details) about the published Official Images]]
-- [[https://github.com/facebook/infer][facebook/infer: A static analyzer for Java, C, C++, and Objective-C]]
-- [[https://github.com/moby/datakit][moby/datakit: Connect processes into powerful data pipelines with a simple git-like filesystem interface]]
-- [[https://github.com/moby/vpnkit][moby/vpnkit: A toolkit for embedding VPN capabilities in your application]]
-- [[https://github.com/metrue/fx][metrue/fx: A Function as a Service tool makes a function as a container-based service in seconds.]]
-- [[https://github.com/docker/app#writing-an-app-definition][docker/app: Make your Docker Compose applications reusable, and share them on Docker Hub]]
-- [[https://developers.redhat.com/blog/2016/09/13/running-systemd-in-a-non-privileged-container/][Running systemd in a non-privileged container - Red Hat Developer]]
-- [[https://github.com/docker/awesome-compose][docker / awesome-compose]]
-- [[https://github.com/moby/buildkit][moby/buildkit: concurrent, cache-efficient, and Dockerfile-agnostic builder toolkit]]
-- [[https://github.com/genuinetools/img][genuinetools/img: Standalone, daemon-less, unprivileged Dockerfile and OCI compatible container image builder.]]
-- [[https://github.com/skanehira/docui][skanehira/docui: TUI Client for Docker]]
-- [[https://github.com/pyouroboros/ouroboros][pyouroboros/ouroboros: Automatically update running docker containers with newest available image]]
-- [[https://github.com/uber/kraken][uber/kraken: P2P Docker registry capable of distributing TBs of data in seconds]]
-- [[https://github.com/uber/makisu][uber/makisu: Fast and flexible Docker image building tool, works in unprivileged containerized environments like Mesos and Kubernetes.]]
-- [[https://github.com/jesseduffield/lazydocker][jesseduffield/lazydocker: The lazier way to manage everything docker]]
-- [[https://github.com/goodwithtech/dockle][goodwithtech/dockle: Container Image Linter for Security, Helping build the Best-Practice Docker Image, Easy to start]]
-- [[https://github.com/aquasecurity/trivy][aquasecurity/trivy: A Simple and Comprehensive Vulnerability Scanner for Containers, Suitable for CI]]
-- [[https://github.com/coord-e/magicpak][coord-e/magicpak: Build minimal docker images without static linking]]
-- [[https://www.linuxserver.io/][LinuxServer]]
-- [[https://github.com/P3GLEG/Whaler][P3GLEG/Whaler: Program to reverse Docker images into Dockerfiles]]
-- [[https://github.com/AliyunContainerService/log-pilot][AliyunContainerService/log-pilot: Collect logs for docker containers]]
-- [[https://github.com/aquasecurity/fanal][aquasecurity/fanal: Static Analysis Library for Containers]]
-- [[https://github.com/devplayer0/docker-net-dhcp][devplayer0/docker-net-dhcp: Docker network driver for networking on a host bridge with DHCP-allocated IP addresses]]
-
-* Tools
-- [[https://github.com/reddec/compose-scheduler][reddec/compose-scheduler: Simple and lightweight service which can execute services from the same file based on cron expression.]]
+- [[https://issues.guix.gnu.org/47617][Docker containers retain references to the runc used]]
+: root@guixsd /var/lib/docker# sed -i "s@/gnu/store/dsz6pam52k3j3fk0yxzafw7r7pqvwgmr-runc-1.0.0-rc93/sbin/runc@/gnu/store/ykaxhb1aiv2k3svdb80l5sqqzg5j62dp-runc-1.1.1/sbin/runc@g" containers/*/hostconfig.json
 
 * Cheat sheet
 
@@ -327,9 +99,177 @@
   }
 #+end_example
 
-* Awesome
+* Compose
 
-- https://github.com/hadolint/hadolint
+- [[https://github.com/nuxxapp/nuxx][nuxxapp/nuxx: Visual Docker composer for faster development. Discover, leverage, and launch community recipes.]]
+
+#+begin_src yaml
+  version: '3.4'
+
+  x-rabbit: &rabbit
+    image: rabbitmq:3.8.5-management-alpine
+    ports:
+    - 4369:4369
+    - 5672:5672
+    - 5671:5671
+    - 25672:25672
+    - 35672-35682:35672-35682
+    - 15672:15672
+    - 61613:61613
+    - 61614:61614
+    - 1883:1883
+    - 8883:8883
+    - 15674:15674
+    - 15675:15675
+    - 15692:15692
+    environment:
+    - RABBITMQ_DEFAULT_USER=spring
+    - RABBITMQ_DEFAULT_PASS=spring
+    - RABBITMQ_NODENAME=rabbit@rabbit-dh
+    - RABBITMQ_ERLANG_COOKIE=EJHSDBCQHWCHBHSZPMIE
+    extra_hosts:
+    - "78.108.86.20 r1"
+    - "78.108.87.99 r2"
+    - "178.250.246.123 r3"
+    volumes:
+    - rabbit-data:/var/lib/rabbitmq
+    logging:
+      driver: json-file
+      options:
+        max-size: 100m
+        max-file: 2
+
+  services:
+    rabbit1:
+      <<: *rabbit
+      hostname: r1
+      deploy: 
+        placement:
+          constraints:
+          - node.hostname == r1
+
+    rabbit2:
+      <<: *rabbit
+      hostname: r2
+      deploy: 
+        placement:
+          constraints:
+          - node.hostname == r2
+
+    rabbit3:
+      <<: *rabbit
+      hostname: r3
+      deploy: 
+        placement:
+          constraints:
+          - node.hostname == r3
+
+  volumes:
+    rabbit-data:
+#+end_src
+
+#+BEGIN_SRC yaml
+  version: "2"
+
+  networks:
+    gitea:
+      external: false
+
+  services:
+    server:
+      image: gitea/gitea:latest
+      extra_hosts:
+        - "db:192.168.105.120"
+      environment:
+        - USER_UID=1000
+        - USER_GID=1000
+        - DB_TYPE=postgres
+        - DB_HOST=db:5432
+        - DB_NAME=gitea
+        - DB_USER=gitea
+        - DB_PASSWD=gitea
+        - SSH_DOMAIN=gitea.wugi.info
+      restart: always
+      networks:
+        - gitea
+      volumes:
+        - /var/lib/gitea:/data
+      ports:
+        - "3000:3000"
+        - "222:22"
+  #    depends_on:
+  #      - db
+  #  db:
+  #    image: postgres:9.6
+  #    restart: always
+  #    environment:
+  #      - POSTGRES_USER=gitea
+  #      - POSTGRES_PASSWORD=gitea
+  #      - POSTGRES_DB=gitea
+  #    networks:
+  #      - gitea
+  #    volumes:
+  #      - ./postgres:/var/lib/postgresql/data
+#+END_SRC
+
+* Configuration
+#+begin_src json
+  {
+    "insecure-registries": [
+      "oracle1.local:5000"
+    ],
+    "log-driver": "json-file",
+    "log-opts": {
+      "max-size": "1g",
+      "max-file": "3"
+    }
+  }
+#+end_src
+
+* Containers
+- [[https://github.com/AbdBarho/stable-diffusion-webui-docker][AbdBarho/stable-diffusion-webui-docker: Easy Docker setup for Stable Diffusion with user-friendly UI]]
+- [[https://github.com/containers/toolbox][containers/toolbox: Tool for containerized command line environments on Linux]]
+- [[https://github.com/BaptisteBdn/docker-selfhosted-apps][BaptisteBdn/docker-selfhosted-apps: Collection of selfhosted apps with docker only ! Traefik, Bitwarden, Wireguard with Pihole, Synapse with Elements, etc.]]
+- [[https://github.com/genuinetools/binctr][genuinetools/binctr: Fully static, unprivileged, self-contained, containers as executable binaries.]]
+- [[https://github.com/shuhaoliu/docker-clion-dev][shuhaoliu/docker-clion-dev: Debugging C++ in a Docker Container with CLion IDE]]
+- [[https://github.com/sagemathinc/cocalc-docker][sagemathinc/cocalc-docker: Docker setup for running CoCalc as downloadable software on your own computer]]
+- [[https://github.com/wahyd4/aria2-ariang-docker][wahyd4/aria2-ariang-docker: The Docker image for Aria2 + AriaNg + File Browser]]
+- [[https://github.com/xtruder/debian-nix-devcontainer][xtruder/debian-nix-devcontainer: VSCode devcontainer that uses debian as base system and nix for management of development environment]]
+- [[https://hub.docker.com/r/linuxserver/webtop][linuxserver/webtop]]
+- [[https://github.com/datastack-net/dockerized][datastack-net/dockerized: Run popular commandline tools within docker]]
+- [[https://github.com/P3TERX/Aria2-Pro-Docker][P3TERX/Aria2-Pro-Docker: Aria2 Pro | A perfect Aria2 Docker image | 更好用的 Aria2 Docker 容器镜像]]
+- [[https://github.com/vergoh/vnstat-docker][vergoh/vnstat-docker: vnStat in a container with image output via http]]
+- [[https://github.com/irbigdata/data-dockerfiles][irbigdata/data-dockerfiles: a curated list of docker-compose files prepared for testing data engineering tools, databases and open source libraries.]]
+- [[https://github.com/qoomon/docker-host][qoomon/docker-host: A docker sidecar container to forward all traffic to local docker host or any other host]]
+- [[https://github.com/binhex/arch-qbittorrentvpn][binhex/arch-qbittorrentvpn: Docker build script for Arch Linux base with qBittorrent, Privoxy and OpenVPN]]
+- [[https://github.com/bcapptain/dockernymous][bcapptain/dockernymous: A script used to create a whonix like gateway/workstation environment with docker containers.]]
+- [[https://github.com/madworx/docker-minix][madworx/docker-minix: QEMU-based Docker image for Minix 3, based on the official CD-ROM ISO image installation from the Minix website]]
+- [[https://github.com/mendhak/docker-http-https-echo][mendhak/docker-http-https-echo: Docker image that echoes request data as JSON; listens on HTTP/S, useful for debugging.]]
+- [[https://github.com/timothymiller/cloudflare-ddns][timothymiller/cloudflare-ddns: Dynamic DNS (DDNS) service based on Cloudflare! Access your home network remotely via a custom domain name without a static IP!]]s
+- [[https://github.com/haugene/docker-transmission-openvpn][haugene/docker-transmission-openvpn: Docker container running Transmission torrent client with WebUI over an OpenVPN tunnel]]
+- [[https://github.com/jon4hz/MediaCenterCollection][jon4hz/MediaCenterCollection: 🎬 Collection of docker-compose files for a full stack Plex Media Center]]
+- [[https://www.linuxserver.io/blog/2021-05-05-meet-webtops-a-linux-desktop-environment-in-your-browser][Meet Webtops A Linux Desktop Environment In Your Browser | LinuxServer.io]]
+
+- [[https://github.com/aler9/landiscover][aler9/landiscover: discover devices connected to the local network within seconds]]
+  : docker run --rm -it --network=host aler9/landiscover
+
+- music
+  : docker run -d --name navidrome --restart=unless-stopped --user $(id -u):$(id -g) -v /srv/audio:/music:ro -v /var/lib/navidrome:/data -p 192.168.0.144:4533:4533 -e ND_LOGLEVEL=debug deluan/navidrome:latest
+  : docker run --name airsonic-advanced -d -u $(id -u):$(id -g) -e TZ=Europe/Moscow -e JAVA_OPTS=-Dserver.forward-headers-strategy=native -p 192.168.0.144:4040:4040 -p 192.168.0.144:4041:4041 -v /srv/music:/var/music:ro -v /var/lib/airsonic:/var/airsonic --restart unless-stopped airsonicadvanced/airsonic-advanced:latest
+
+- whoogle
+  : docker run --publish 5000:5000 --detach --name whoogle-search benbusby/whoogle-search:latest
+
+* Docker
+- [[https://habr.com/ru/company/southbridge/blog/524136/][FAQ: новые ограничения использования сервисов Docker с 1 ноября 2020]]
+
+** permissions bug
+- [[https://gitlab.archlinux.org/archlinux/archlinux-docker/-/issues/32][Permission issue for directories created in Archlinux image on Docker hub (#32) · Issues · Arch Linux / archlinux-docker · GitLab]]
+
+* Dockerfile
+- [[https://github.com/HariSekhon/Dockerfiles][50+ DockerHub public images for Docker & Kubernetes - Hadoop, Kafka, ZooKeeper, HBase, Cassandra, Solr, SolrCloud, Presto, Apache Drill, Nifi, Spark, Consul, Riak, and DevOps tools built various distros: Alpine, CentOS, Debian, Fedora, Ubuntu]]
+- [[https://github.com/Olivier-HA/Zabbix-workshop][Olivier-HA/Zabbix-workshop]]
+- [[https://github.com/HewlettPackard/dockerfile-parser-rs][HewlettPackard/dockerfile-parser-rs: a Rust library for parsing, validating, and modifying Dockerfiles]]
 
 * Katacoda
 
@@ -1089,171 +1029,115 @@ As the service has been configured and deployed using Swarm Mode, it will take a
 
 curl host01
 
-* Compose
+* Learning
+- [[https://habr.com/ru/company/selectel/blog/279281/][Механизмы контейнеризации: namespaces / Блог компании Selectel / Хабр]]
+- [[https://github.com/linuxserver/docker-mods?auto_subscribed=false][linuxserver/docker-mods: Documentation and Examples of base container modifications]]
+- [[https://github.com/krol3/container-security-checklist][krol3/container-security-checklist: Checklist for container security - devsecops practices]]
+- [[https://github.com/hexops/dockerfile][hexops/dockerfile: Dockerfile best-practices for writing production-worthy Docker images.]]
 
-- [[https://github.com/nuxxapp/nuxx][nuxxapp/nuxx: Visual Docker composer for faster development. Discover, leverage, and launch community recipes.]]
+* Libs
+- [[https://github.com/qiniu/qmgo][Qmgo - The MongoDB driver for Go . It‘s based on official mongo-go-driver but easier to use like Mgo.]]
+- [[https://github.com/testcontainers/testcontainers-go][testcontainers/testcontainers-go: Testcontainers is a Golang library that providing a friendly API to run Docker container. It is designed to create runtime environment to use during your automatic tests.]]
+- [[https://github.com/ory/dockertest][ory/dockertest: Write better integration tests! Dockertest helps you boot up ephermal docker images for your Go tests with minimal work.]]
 
-#+begin_src yaml
-  version: '3.4'
+* Logs
+- [[https://github.com/amir20/dozzle][amir20/dozzle: Realtime log viewer for docker containers.]]
+- [[https://github.com/oslabs-beta/Dockter][oslabs-beta/Dockter: A low-overhead, open-source Docker log management tool]]
 
-  x-rabbit: &rabbit
-    image: rabbitmq:3.8.5-management-alpine
-    ports:
-    - 4369:4369
-    - 5672:5672
-    - 5671:5671
-    - 25672:25672
-    - 35672-35682:35672-35682
-    - 15672:15672
-    - 61613:61613
-    - 61614:61614
-    - 1883:1883
-    - 8883:8883
-    - 15674:15674
-    - 15675:15675
-    - 15692:15692
-    environment:
-    - RABBITMQ_DEFAULT_USER=spring
-    - RABBITMQ_DEFAULT_PASS=spring
-    - RABBITMQ_NODENAME=rabbit@rabbit-dh
-    - RABBITMQ_ERLANG_COOKIE=EJHSDBCQHWCHBHSZPMIE
-    extra_hosts:
-    - "78.108.86.20 r1"
-    - "78.108.87.99 r2"
-    - "178.250.246.123 r3"
-    volumes:
-    - rabbit-data:/var/lib/rabbitmq
-    logging:
-      driver: json-file
-      options:
-        max-size: 100m
-        max-file: 2
+* Misc
 
-  services:
-    rabbit1:
-      <<: *rabbit
-      hostname: r1
-      deploy: 
-        placement:
-          constraints:
-          - node.hostname == r1
+- [[https://github.com/aquasecurity/tracee][aquasecurity/tracee: Container and system event tracing using eBPF]]
+- [[https://github.com/pfrayer/docker-browser][pfrayer/docker-browser: Visualize your containers/images/volumes/networks and see which ones uses which ones]]
+- [[https://github.com/plexsystems/sinker][plexsystems/sinker: A tool to sync images from one container registry to another]]
+- [[https://github.com/p8952/bocker][p8952/bocker: Docker implemented in around 100 lines of bash]]
+- [[https://github.com/artagnon/rhine-ml][artagnon/rhine-ml: 🏞 an OCaml compiler for an untyped lisp]]
+- [[https://github.com/compose-spec/compose-spec][compose-spec/compose-spec: The Compose specification]]
 
-    rabbit2:
-      <<: *rabbit
-      hostname: r2
-      deploy: 
-        placement:
-          constraints:
-          - node.hostname == r2
+* Networking
 
-    rabbit3:
-      <<: *rabbit
-      hostname: r3
-      deploy: 
-        placement:
-          constraints:
-          - node.hostname == r3
+- [[https://github.com/gopher-net/docker-ovs-plugin][gopher-net/docker-ovs-plugin: An Open vSwitch Plugin for Docker's Libnetwork]]
+- [[https://github.com/IQTLabs/dovesnap][IQTLabs/dovesnap: Docker OVS Network Plugin]]
 
-  volumes:
-    rabbit-data:
-#+end_src
+: docker network create -d macvlan --subnet=10.152.128.0/18 --gateway=10.152.152.10 --ip-range=10.152.152.16/28 -o parent=br155-vlan155 br155_net
+: docker run --name netshoot --rm -it --network br155_net nicolaka/netshoot /bin/bash
 
-#+BEGIN_SRC yaml
-  version: "2"
+: sudo virsh start whonix-gateway-direct
+: docker run -d --name=firefox --security-opt seccomp=unconfined -e PUID=1000 -e PGID=1000 -e TZ=Europe/London --shm-size="1gb" --restart unless-stopped --network br155_net lscr.io/linuxserver/firefox:latest
+: docker network connect bridge firefox
+: docker top firefox
+: sudo nsenter -t PID -n ip -one -4 a
 
-  networks:
-    gitea:
-      external: false
+* Nixery
 
-  services:
-    server:
-      image: gitea/gitea:latest
-      extra_hosts:
-        - "db:192.168.105.120"
-      environment:
-        - USER_UID=1000
-        - USER_GID=1000
-        - DB_TYPE=postgres
-        - DB_HOST=db:5432
-        - DB_NAME=gitea
-        - DB_USER=gitea
-        - DB_PASSWD=gitea
-        - SSH_DOMAIN=gitea.wugi.info
-      restart: always
-      networks:
-        - gitea
-      volumes:
-        - /var/lib/gitea:/data
-      ports:
-        - "3000:3000"
-        - "222:22"
-  #    depends_on:
-  #      - db
-  #  db:
-  #    image: postgres:9.6
-  #    restart: always
-  #    environment:
-  #      - POSTGRES_USER=gitea
-  #      - POSTGRES_PASSWORD=gitea
-  #      - POSTGRES_DB=gitea
-  #    networks:
-  #      - gitea
-  #    volumes:
-  #      - ./postgres:/var/lib/postgresql/data
-#+END_SRC
+: docker run --rm --workdir /src --network=host -v $PWD:/src -it nixery.dev/shell/aria2 aria2c FILE
 
-* systemd containers
+* Programms
 
-https://developers.redhat.com/blog/2016/09/13/running-systemd-in-a-non-privileged-container/
-https://developers.redhat.com/blog/2019/04/24/how-to-run-systemd-in-a-container/
+- [[https://github.com/Trendyol/docker-shell][Trendyol/docker-shell: A simple interactive prompt for docker]]
+- [[https://github.com/Yash-Handa/logo-ls][Yash-Handa/logo-ls: Modern ls command with vscode like File Icon and Git Integrations. Written in Golang]]
+- [[https://github.com/lucasepe/jumble][lucasepe/jumble: Create (not just) diagrams stitching, connecting and labelling images on a grid using HCL syntax (like terraform!).]]
+- [[https://github.com/lucasepe/draft][lucasepe/draft: Generate High Level Cloud Architecture diagrams using YAML syntax.]]
+- [[https://github.com/lucasepe/crumbs][lucasepe/crumbs: Turn asterisk-indented text lines into mind maps]]
+- [[https://github.com/lucasepe/modgv][lucasepe/modgv: Converts 'go mod graph' output into Graphviz's DOT language]]
+- [[https://github.com/elsaland/elsa][elsaland/elsa: ❄️ Elsa is a minimal, fast and secure runtime for Javascript and Typescript written in Go]]
+- [[https://github.com/blushft/go-diagrams][blushft/go-diagrams: Create beautiful system diagrams with Go]]
+- [[https://github.com/norouter/norouter][norouter/norouter: The easiest multi-host & multi-cloud networking ever. No root privilege is required.]]
+- [[https://github.com/traefik/traefik][traefik/traefik: The Cloud Native Edge Router]]
+- [[https://github.com/rosineygp/mkdkr][rosineygp/mkdkr: Make + Docker + Shell = CI Pipeline]]
+- [[https://github.com/asottile/dockerfile][asottile/dockerfile: Parse a dockerfile into a high-level representation using the official go parser]]
+- [[https://github.com/docker/awesome-compose][docker/awesome-compose: Awesome Docker Compose samples]]
+- [[https://github.com/nicolaka/netshoot][nicolaka/netshoot: a Docker + Kubernetes network trouble-shooting swiss-army container]]
+- [[https://github.com/swarmpit/swarmpit][swarmpit/swarmpit: Lightweight mobile-friendly Docker Swarm management UI]]
+- [[https://github.com/crazy-max/swarm-cronjob][crazy-max/swarm-cronjob: Create jobs on a time-based schedule on Docker Swarm]]
+- [[https://github.com/ethersphere/bee][ethersphere/bee: Bee is a Swarm client implemented in Go. It’s the basic building block for the Swarm network: a private; decentralized; censorship-resistant and self-sustaining network for storing your (application) data.]]
+- [[https://github.com/docker-library/repo-info][docker-library/repo-info: Extended information (especially license and layer details) about the published Official Images]]
+- [[https://github.com/facebook/infer][facebook/infer: A static analyzer for Java, C, C++, and Objective-C]]
+- [[https://github.com/moby/datakit][moby/datakit: Connect processes into powerful data pipelines with a simple git-like filesystem interface]]
+- [[https://github.com/moby/vpnkit][moby/vpnkit: A toolkit for embedding VPN capabilities in your application]]
+- [[https://github.com/metrue/fx][metrue/fx: A Function as a Service tool makes a function as a container-based service in seconds.]]
+- [[https://github.com/docker/app#writing-an-app-definition][docker/app: Make your Docker Compose applications reusable, and share them on Docker Hub]]
+- [[https://developers.redhat.com/blog/2016/09/13/running-systemd-in-a-non-privileged-container/][Running systemd in a non-privileged container - Red Hat Developer]]
+- [[https://github.com/docker/awesome-compose][docker / awesome-compose]]
+- [[https://github.com/moby/buildkit][moby/buildkit: concurrent, cache-efficient, and Dockerfile-agnostic builder toolkit]]
+- [[https://github.com/genuinetools/img][genuinetools/img: Standalone, daemon-less, unprivileged Dockerfile and OCI compatible container image builder.]]
+- [[https://github.com/skanehira/docui][skanehira/docui: TUI Client for Docker]]
+- [[https://github.com/pyouroboros/ouroboros][pyouroboros/ouroboros: Automatically update running docker containers with newest available image]]
+- [[https://github.com/uber/kraken][uber/kraken: P2P Docker registry capable of distributing TBs of data in seconds]]
+- [[https://github.com/uber/makisu][uber/makisu: Fast and flexible Docker image building tool, works in unprivileged containerized environments like Mesos and Kubernetes.]]
+- [[https://github.com/jesseduffield/lazydocker][jesseduffield/lazydocker: The lazier way to manage everything docker]]
+- [[https://github.com/goodwithtech/dockle][goodwithtech/dockle: Container Image Linter for Security, Helping build the Best-Practice Docker Image, Easy to start]]
+- [[https://github.com/aquasecurity/trivy][aquasecurity/trivy: A Simple and Comprehensive Vulnerability Scanner for Containers, Suitable for CI]]
+- [[https://github.com/coord-e/magicpak][coord-e/magicpak: Build minimal docker images without static linking]]
+- [[https://www.linuxserver.io/][LinuxServer]]
+- [[https://github.com/P3GLEG/Whaler][P3GLEG/Whaler: Program to reverse Docker images into Dockerfiles]]
+- [[https://github.com/AliyunContainerService/log-pilot][AliyunContainerService/log-pilot: Collect logs for docker containers]]
+- [[https://github.com/aquasecurity/fanal][aquasecurity/fanal: Static Analysis Library for Containers]]
+- [[https://github.com/devplayer0/docker-net-dhcp][devplayer0/docker-net-dhcp: Docker network driver for networking on a host bridge with DHCP-allocated IP addresses]]
 
-1. Create and mount systemd cgroup
-#+BEGIN_SRC bash
-  mkdir /sys/fs/cgroup/systemd
-  mount -t cgroup cgroup -o none,name=systemd /sys/fs/cgroup/systemd
-#+END_SRC
+* Registry
+- [[https://github.com/atcol/docker-registry-ui][atcol/docker-registry-ui: A web frontend/UI for easy private/local Docker Registry integration]]
+- [[https://github.com/goharbor/harbor][goharbor/harbor: An open source trusted cloud native registry project that stores, signs, and scans content.]]
+- [[https://github.com/cesanta/docker_auth][cesanta/docker_auth: Authentication server for Docker Registry 2]]
+- [[https://quay.io/][Quay Container Registry · Quay]]
+- [[https://github.com/jpetazzo/registrish][jpetazzo/registrish: Dirty hack to run a read-only, public Docker registry on almost any static file hosting service (e.g. NGINX, Netlify, S3...)]]
 
-2. Run container
-#+BEGIN_SRC bash
-  docker run                                                              \
-          --name fedora                                                   \
-          --publish 8085:80 -d                                            \
-          --tmpfs /tmp                                                    \
-          --tmpfs /run                                                    \
-          -v /sys/fs/cgroup:/sys/fs/cgroup:ro                 \
-          httpd "$@"
+- Docker Hub
+- GitHub Container Registry
+- GitLab Container Registry
+- DigitalOcean Container Registry
+- CNCF Harbor Project
+- VMware Harbor Registry
 
-#+END_SRC
+* Runtimes
+- [[https://github.com/nestybox/sysbox][nestybox/sysbox: Sysbox repository]]
 
-1/2 ... dockerfile
-#+BEGIN_SRC dockerfile
-  FROM fedora:31
-  ENV container docker
-  RUN dnf -y install httpd; dnf clean all; systemctl enable httpd
-  STOPSIGNAL SIGRTMIN+3
-  EXPOSE 80
-  CMD [ "/sbin/init" ]
-#+END_SRC
-: docker build -t httpd .
+* Security
 
-Misc
-#+begin_example
-  --entrypoint '' \
-  -it \
-  --tmpfs /sys/fs/cgroup                                          \
-  -v /run/j3K4a/systemd:/sys/fs/cgroup/systemd:rw                 \
-  -v /sys/fs/cgroup/blkio:/sys/fs/cgroup/blkio:ro                 \
-  -v /sys/fs/cgroup/cpu:/sys/fs/cgroup/cpu:ro                     \
-  -v /sys/fs/cgroup/cpuacct:/sys/fs/cgroup/cpuacct:ro             \
-  -v /sys/fs/cgroup/cpuset:/sys/fs/cgroup/cpuset:ro               \
-  -v /sys/fs/cgroup/devices:/sys/fs/cgroup/devices:ro             \
-  -v /sys/fs/cgroup/elogind:/sys/fs/cgroup/elogind:ro             \
-  -v /sys/fs/cgroup/freezer:/sys/fs/cgroup/freezer:ro             \
-  -v /sys/fs/cgroup/memory:/sys/fs/cgroup/memory:ro               \
-  -v /sys/fs/cgroup/perf_event:/sys/fs/cgroup/perf_event:ro       \
-  -v /sys/fs/cgroup/pids:/sys/fs/cgroup/pids:ro                   \
-  -v /sys/fs/cgroup/unified:/sys/fs/cgroup/unified:ro             \
-#+end_example
+- [[https://tech.paulcz.net/blog/secure-docker-with-tls/][Securing Docker with TLS certificates]]
+- [[https://github.com/Tecnativa/docker-socket-proxy][Tecnativa/docker-socket-proxy: Proxy over your Docker socket to restrict which requests it accepts]]
+
+* Security
+- [[https://github.com/Ullaakut/Gorsair][Ullaakut/Gorsair: Gorsair hacks its way into remote docker containers that expose their APIs]]
 
 * Swarm
 
@@ -1385,14 +1269,130 @@ Misc
       rabbit-data:
   #+end_src
 
-* Bug
-
-- [[https://issues.guix.gnu.org/47617][Docker containers retain references to the runc used]]
-: root@guixsd /var/lib/docker# sed -i "s@/gnu/store/dsz6pam52k3j3fk0yxzafw7r7pqvwgmr-runc-1.0.0-rc93/sbin/runc@/gnu/store/ykaxhb1aiv2k3svdb80l5sqqzg5j62dp-runc-1.1.1/sbin/runc@g" containers/*/hostconfig.json
-
 * systemd
 
 : mkdir -p /sys/fs/cgroup/systemd
 : mount -t cgroup -o none,name=systemd cgroup /sys/fs/cgroup/systemd
 
 : docker run --tmpfs /tmp --tmpfs /run/lock --tmpfs /run -v /sys/fs/cgroup:/sys/fs/cgroup:ro --name debian -t jrei/systemd-debian:11
+* systemd containers
+
+https://developers.redhat.com/blog/2016/09/13/running-systemd-in-a-non-privileged-container/
+https://developers.redhat.com/blog/2019/04/24/how-to-run-systemd-in-a-container/
+
+1. Create and mount systemd cgroup
+#+BEGIN_SRC bash
+  mkdir /sys/fs/cgroup/systemd
+  mount -t cgroup cgroup -o none,name=systemd /sys/fs/cgroup/systemd
+#+END_SRC
+
+2. Run container
+#+BEGIN_SRC bash
+  docker run                                                              \
+          --name fedora                                                   \
+          --publish 8085:80 -d                                            \
+          --tmpfs /tmp                                                    \
+          --tmpfs /run                                                    \
+          -v /sys/fs/cgroup:/sys/fs/cgroup:ro                 \
+          httpd "$@"
+
+#+END_SRC
+
+1/2 ... dockerfile
+#+BEGIN_SRC dockerfile
+  FROM fedora:31
+  ENV container docker
+  RUN dnf -y install httpd; dnf clean all; systemctl enable httpd
+  STOPSIGNAL SIGRTMIN+3
+  EXPOSE 80
+  CMD [ "/sbin/init" ]
+#+END_SRC
+: docker build -t httpd .
+
+Misc
+#+begin_example
+  --entrypoint '' \
+  -it \
+  --tmpfs /sys/fs/cgroup                                          \
+  -v /run/j3K4a/systemd:/sys/fs/cgroup/systemd:rw                 \
+  -v /sys/fs/cgroup/blkio:/sys/fs/cgroup/blkio:ro                 \
+  -v /sys/fs/cgroup/cpu:/sys/fs/cgroup/cpu:ro                     \
+  -v /sys/fs/cgroup/cpuacct:/sys/fs/cgroup/cpuacct:ro             \
+  -v /sys/fs/cgroup/cpuset:/sys/fs/cgroup/cpuset:ro               \
+  -v /sys/fs/cgroup/devices:/sys/fs/cgroup/devices:ro             \
+  -v /sys/fs/cgroup/elogind:/sys/fs/cgroup/elogind:ro             \
+  -v /sys/fs/cgroup/freezer:/sys/fs/cgroup/freezer:ro             \
+  -v /sys/fs/cgroup/memory:/sys/fs/cgroup/memory:ro               \
+  -v /sys/fs/cgroup/perf_event:/sys/fs/cgroup/perf_event:ro       \
+  -v /sys/fs/cgroup/pids:/sys/fs/cgroup/pids:ro                   \
+  -v /sys/fs/cgroup/unified:/sys/fs/cgroup/unified:ro             \
+#+end_example
+
+* Tools
+- [[https://github.com/0x7c13/docker-gc][0x7c13/docker-gc: docker-gc is a microservice to cleanup docker images automatically based on recycling strategy. Dockerfile and helm charts are provided for easy installation.]]
+- [[https://github.com/AkihiroSuda/buildkit-nix][AkihiroSuda/buildkit-nix: Nix derivations as Dockerfiles (`docker build -f default.nix .`)]]
+- [[https://github.com/alibaba/accelerated-container-image][alibaba/accelerated-container-image: accelerated-container-image]]
+- [[https://github.com/anchore/anchore-engine][anchore/anchore-engine: A service that analyzes docker images and applies user-defined acceptance policies to allow automated container image validation and certification]]
+- [[https://github.com/andrey-pohilko/registry-cli][andrey-pohilko/registry-cli: Scripts for easy manipulation of docker-registry from command line (and from scripts)]]
+- [[https://github.com/awakesecurity/hocker][awakesecurity/hocker: Utilities for interacting with the docker registry and generating nix build instructions]]
+- [[https://github.com/capnspacehook/whalewall][capnspacehook/whalewall: Automate management of firewall rules for Docker containers]]
+- [[https://github.com/christian-korneck/docker-pushrm][christian-korneck/docker-pushrm: "Docker Push Readme" - a Docker CLI plugin to update container repo docs]]
+- [[https://github.com/containerd/overlaybd?auto_subscribed=false][containerd/overlaybd: The storage backend of accelerated container image]]
+- [[https://github.com/containers/docker-lvm-plugin][containers/docker-lvm-plugin: Docker volume plugin for LVM volumes]]
+- [[https://github.com/crazy-max/diun][crazy-max/diun: Receive notifications when an image is updated on a Docker registry]]
+- [[https://github.com/crazy-max/undock][crazy-max/undock: Extract contents of a container image in a local folder]]
+- [[https://github.com/cybersecsi/RAUDI][cybersecsi/RAUDI: A repo to automatically generate and keep updated a series of Docker images through GitHub Actions.]]
+- [[https://habr.com/ru/post/578854/][DAM. Как работать с docker на суше, а не в облаке / Хабр]]
+  - [[https://github.com/dam-utils/dam][dam-utils/dam]]
+- [[https://github.com/dbhi/qus][dbhi/qus: qemu-user-static (qus) and containers, non-invasive minimal working setups]]
+- [[https://github.com/distribution/distribution][distribution/distribution: The toolkit to pack, ship, store, and deliver container content]]
+- [[https://github.com/docker/buildx][docker/buildx: Docker CLI plugin for extended build capabilities with BuildKit]]
+- [[https://github.com/danmed/Docker-Compose-Backup/blob/main/create-compose-files.sh][Docker-Compose-Backup/create-compose-files.sh at main · danmed/Docker-Compose-Backup]]
+- [[https://github.com/docker/dockercraft][docker/dockercraft: Docker + Minecraft = Dockercraft]]
+- [[https://github.com/docker-slim/docker-slim][docker-slim/docker-slim: DockerSlim (docker-slim): Don't change anything in your Docker container image and minify it by up to 30x (and for compiled languages even more) making it secure too! (free and open source)]]
+- [[https://github.com/eriklupander/dvizz][eriklupander/dvizz: Docker Swarm visualization including live updates using D3 Force layout]]
+- [[https://github.com/genuinetools/reg][genuinetools/reg: Docker registry v2 command line client and repo listing generator with security checks.]]
+- [[https://github.com/gotoz/runq][gotoz/runq: run regular Docker images in KVM/Qemu]]
+- [[https://hpc.guix.info/blog/2021/10/when-docker-images-become-fixed-point/][Guix-HPC — When Docker images become fixed-point]]
+- [[https://github.com/itzg/easy-add][itzg/easy-add: A utility for easily adding a file from a downloaded archive during Docker builds]]
+- [[https://github.com/JakeWharton/dockerfile-shebang][JakeWharton/dockerfile-shebang: Treat your Dockerfiles as self-contained, editable scripts]]
+- [[https://github.com/jdevelop/repull][jdevelop/repull: A tool to restart a Docker container with a newer version of the image]]
+- [[https://github.com/kool-dev/kool][kool-dev/kool: From local development to the cloud: development workflow made easy.]]
+- [[https://github.com/ktock/buildg][ktock/buildg: Interactive debugger for Dockerfile]]
+- [[https://hub.docker.com/r/linuxserver/docker-compose][linuxserver/docker-compose - Docker Image | Docker Hub]]
+- [[https://github.com/lucaslorentz/caddy-docker-proxy][lucaslorentz/caddy-docker-proxy: Caddy as a reverse proxy for Docker]]
+- [[https://github.com/marcelbirkner/docker-ci-tool-stack][marcelbirkner/docker-ci-tool-stack: Docker Infrastructure via docker-compose (Jenkins, SonarQube, Nexus, GitLab, Selenium Grid)]]
+- [[https://github.com/mattn/goreman][mattn/goreman: foreman clone written in go language]]
+- [[https://github.com/metal3d/docker-domains][metal3d/docker-domains: Have docker containers responding to any domain name]]
+- [[https://github.com/Mic92/cntr][Mic92/cntr: A container debugging tool based on FUSE]]
+- [[https://github.com/moncho/dry][moncho/dry: dry - A Docker manager for the terminal @]]
+- [[https://github.com/nlewo/nix2container][nlewo/nix2container: An archive-less dockerTools.buildImage implementation]]
+- [[https://github.com/offen/docker-volume-backup][offen/docker-volume-backup: Backup Docker volumes locally or to any S3 or WebDAV compatible storage]]
+- [[https://github.com/open-source-labs/Docketeer][open-source-labs/Docketeer: An easy-to-use GUI for Docker that allows developers to manage Docker containers and monitor crucial metrics.]]
+- [[https://github.com/pmsipilot/docker-compose-viz][pmsipilot/docker-compose-viz: Docker compose graph visualization]]
+- [[https://github.com/qdm12/deunhealth][qdm12/deunhealth: Binary program to restart unhealthy Docker containers]]
+- [[https://github.com/ruoshan/autoportforward][ruoshan/autoportforward: Bidirectional port-forwarding for docker, podman and kubernetes]]
+- [[https://github.com/sigstore/cosign][sigstore/cosign: Container Signing]]
+- [[https://github.com/stepchowfun/docuum][stepchowfun/docuum: Docuum performs least recently used (LRU) eviction of Docker images. 🗑️]]
+- [[https://github.com/theAkito/userdef][theAkito/userdef: A more advanced adduser for your Alpine based Docker images.]]
+- [[https://github.com/treebeardtech/whaler][treebeardtech/whaler: Visual disk-usage analyser for docker images]]
+- [[https://github.com/umputun/docker-logger][umputun/docker-logger: Logs collector for docker]]
+- [[https://github.com/vv9k/dockeye][vv9k/dockeye: GUI app for managing Docker/Podman]]
+- [[https://github.com/whs/docker-wait-for-it][whs/docker-wait-for-it: wait-for-it.sh in Docker]]
+- [[https://github.com/wknapik/dockerfile-run][wknapik/dockerfile-run: Execute dockerfiles as scripts (incl. via shebang)]]
+- [[https://github.com/SelfhostedPro/Yacht/pulse][Yacht - A web interface for managing docker containers with an emphasis on templating to provide 1 click deployments. Think of it like a decentraliz]]
+
+** Security
+- [[https://github.com/quay/clair][quay/clair: Vulnerability Static Analysis for Containers]]
+
+** Gradle
+- [[https://github.com/palantir/gradle-docker][palantir/gradle-docker: a Gradle plugin for orchestrating docker builds and pushes.]]
+- [[https://github.com/bmuschko/gradle-docker-plugin][bmuschko/gradle-docker-plugin: Gradle plugin for managing Docker images and containers.]]
+- [[https://github.com/Transmode/gradle-docker][Transmode/gradle-docker: A Gradle plugin to build Docker images from the build script.]]
+
+** watchtower
+: docker run --rm -v /var/run/docker.sock:/var/run/docker.sock containrrr/watchtower --run-once qbittorrent
+
+* Tools
+- [[https://github.com/reddec/compose-scheduler][reddec/compose-scheduler: Simple and lightweight service which can execute services from the same file based on cron expression.]]
+
