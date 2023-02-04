@@ -8,22 +8,6 @@
 - [[https://github.com/MangoDB-io/MangoDB][MangoDB-io/MangoDB: A truly Open Source MongoDB alternative]]
 - [[https://github.com/JewishLewish/PolygonDB][JewishLewish/PolygonDB: Polygon is a Json Database that is designed to be more minimal and less resource hungry compared to MongoDB.]]
 
-* Utils
-- [[https://github.com/mdirolf/nginx-gridfs][mdirolf/nginx-gridfs: Nginx module for serving files from MongoDB's GridFS]]
-- [[https://github.com/mongodb-labs/pymongoexplain/][mongodb-labs/pymongoexplain: Explainable CRUD API for PyMongo]]
-** Backup
-- [[https://github.com/stefanprodan/mgob][stefanprodan/mgob: MongoDB dockerized backup agent. Runs schedule backups with retention, S3 & SFTP upload, notifications, instrumentation with Prometheus and more.]]
-** Audit
-- [[https://github.com/stampery/mongoaudit][stampery/mongoaudit: 🔥 A powerful MongoDB auditing and pentesting tool 🔥]]
-** Clients
-- [[https://github.com/mrsarm/mongotail][mrsarm/mongotail: Command line tool to log all MongoDB queries in a "tail"able way]]
-- [[https://github.com/mongodb-haskell/mongodb][mongodb-haskell / mongodb]]
-
-** Proprietary
-- [[http://www.datensen.com/][Moon Modeler | Data Modeling Tool]]
-* GUI
-- [[https://github.com/mongo-express/mongo-express][mongo-express/mongo-express: Web-based MongoDB admin interface, written with Node.js and express]]
-
 * Cheatsheet
 
 - https://habr.com/en/post/134590/
@@ -162,11 +146,27 @@ for website in websites:
 - [[https://github.com/variety/variety][variety/variety: A schema analyzer for MongoDB]]
 - [[https://merrick-krg.medium.com/%D0%B1%D0%BE%D0%BB%D1%8C%D1%88%D0%BE%D0%B9-%D1%82%D1%83%D1%82%D0%BE%D1%80%D0%B8%D0%B0%D0%BB-mongodb-616c92de2235][Большой туториал MongoDB. Репликация | by Merrick | Medium]]
 
+* GUI
+- [[https://github.com/mongo-express/mongo-express][mongo-express/mongo-express: Web-based MongoDB admin interface, written with Node.js and express]]
+
 * Learning
 - [[https://dev.to/tuanlc/mongoerror-e11000-duplicate-key-error-collection-587l][MongoError: E11000 duplicate key error collection ?? - DEV Community 👩‍💻👨‍💻]]
 
+* Libraries
+- [[https://github.com/aminalaee/mongox][aminalaee/mongox: Familiar async Python MongoDB ODM]]
 * Tools
 - [[https://github.com/simagix/hatchet][simagix/hatchet: MongoDB JSON Log Analyzer]]
 
-* Libraries
-- [[https://github.com/aminalaee/mongox][aminalaee/mongox: Familiar async Python MongoDB ODM]]
+* Utils
+- [[https://github.com/mdirolf/nginx-gridfs][mdirolf/nginx-gridfs: Nginx module for serving files from MongoDB's GridFS]]
+- [[https://github.com/mongodb-labs/pymongoexplain/][mongodb-labs/pymongoexplain: Explainable CRUD API for PyMongo]]
+** Backup
+- [[https://github.com/stefanprodan/mgob][stefanprodan/mgob: MongoDB dockerized backup agent. Runs schedule backups with retention, S3 & SFTP upload, notifications, instrumentation with Prometheus and more.]]
+** Audit
+- [[https://github.com/stampery/mongoaudit][stampery/mongoaudit: 🔥 A powerful MongoDB auditing and pentesting tool 🔥]]
+** Clients
+- [[https://github.com/mrsarm/mongotail][mrsarm/mongotail: Command line tool to log all MongoDB queries in a "tail"able way]]
+- [[https://github.com/mongodb-haskell/mongodb][mongodb-haskell / mongodb]]
+
+** Proprietary
+- [[http://www.datensen.com/][Moon Modeler | Data Modeling Tool]]
