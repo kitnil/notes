@@ -78,6 +78,7 @@ NOTE: "pipeline" equal to "workflow".
 - [[https://github.com/jenkinsci/swarm-plugin][jenkinsci/swarm-plugin: Jenkins swarm plugin]]
 - [[https://github.com/jenkinsci/urltrigger-plugin][jenkinsci/urltrigger-plugin]]
 - [[https://github.com/jenkinsci/violation-comments-to-gitlab-plugin][jenkinsci/violation-comments-to-gitlab-plugin: Comments GitLab merge requests with static code analyzer findings.]]
+- [[https://github.com/jenkinsci/webhook-step-plugin][jenkinsci/webhook-step-plugin: Jenkins Pipeline plugin for blocking a pipeline until an external system calls a webhook.]]
 - [[https://github.com/SonarSource/sonar-scanner-jenkins][SonarSource/sonar-scanner-jenkins: SonarQube Scanner for Jenkins]]
 
 * Pitfalls
