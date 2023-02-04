@@ -110,6 +110,9 @@ NOTE: "pipeline" equal to "workflow".
 - [[https://github.com/samrocketman/jenkins-script-console-scripts][samrocketman/jenkins-script-console-scripts: A repository of one-off script console scripts for Jenkins.]]
 - [[https://github.com/jenkinsci/jenkins-scripts][jenkinsci/jenkins-scripts: Scripts in Groovy, shell, Ruby, Python, whatever for managing/interacting with Jenkins]]
 
+*** Files
+- config.xml
+
 *** Examples
 : println new ProcessBuilder('sh','-c','ls').redirectErrorStream(true).start().text
 
