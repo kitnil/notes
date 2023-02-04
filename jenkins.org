@@ -52,6 +52,7 @@ NOTE: "pipeline" equal to "workflow".
 - [[https://github.com/jenkinsci/collapsing-console-sections-plugin][jenkinsci/collapsing-console-sections-plugin: Jenkins collapsing-console-sections plugin]]
 - [[https://github.com/jenkinsci/command-launcher-plugin][jenkinsci/command-launcher-plugin: Allows agents to be launched using a specified command.]]
 - [[https://github.com/jenkinsci/compact-columns-plugin][jenkinsci/compact-columns-plugin: Jenkins compact-columns plugin]]
+- [[https://github.com/jenkinsci/conventional-commits-plugin][jenkinsci/conventional-commits-plugin: This plugin can be used to determine the next release version based on previous tags and the commit messages used.]]
 - [[https://github.com/jenkinsci/docker-slaves-plugin][jenkinsci/docker-slaves-plugin: A Jenkins plugin to run builds inside Docker containers]]
 - [[https://github.com/jenkinsci/git-changelog-plugin][jenkinsci/git-changelog-plugin: Creates a changelog, or release notes, based on Git commits between 2 revisions.]]
 - [[https://github.com/jenkinsci/git-forensics-plugin][jenkinsci/git-forensics-plugin: Jenkins plug-in that mines and analyzes data from a Git repository]]
