@@ -124,6 +124,9 @@ NOTE: "pipeline" equal to "workflow".
 - list methods
   : Jenkins.getInstance().metaClass.methods*.name.sort().unique()
 
+- get security realm
+  : Jenkins.instance.securityRealm
+
 ** Configuration
 - [[https://github.com/edx/jenkins-configuration][edx/jenkins-configuration: A collection of utilities for configuring a Jenkins instance and its plugins]]
 
