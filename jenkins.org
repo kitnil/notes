@@ -118,6 +118,9 @@ NOTE: "pipeline" equal to "workflow".
 - [[file:~/src/jenkins/core/src/main/java/hudson/os/PosixAPI.java::public int getPID() {][PosixAPI getpid]]
 : new os.PosixAPI().get().getpid()
 
+- list installed plugins
+  : Jenkins.instance.pluginManager.plugins
+
 ** Configuration
 - [[https://github.com/edx/jenkins-configuration][edx/jenkins-configuration: A collection of utilities for configuring a Jenkins instance and its plugins]]
 
