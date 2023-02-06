@@ -232,3 +232,7 @@ public keys.
 * Xiaomi
 - [[https://github.com/Szaki/XiaomiADBFastbootTools][Szaki/XiaomiADBFastbootTools: A simple tool for managing Xiaomi devices on desktop using ADB and Fastboot]]a
 
+* Scripting
+
+- call
+  : adb shell am start -a android.intent.action.CALL tel:xxxxxxxxxxx
