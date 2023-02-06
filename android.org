@@ -234,5 +234,8 @@ public keys.
 
 * Scripting
 
+- connect adb over wifi
+  : adb connect 192.168.0.177:5555
+
 - call
   : adb shell am start -a android.intent.action.CALL tel:xxxxxxxxxxx
