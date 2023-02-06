@@ -234,6 +234,33 @@ public keys.
 
 * Scripting
 
+** Prerequisite
+
+https://github.com/Genymobile/scrcpy/blob/87da1372380ebddb60e4d89cff9a251c866e21c5/README.md
+#+begin_src markdown
+  Manual
+
+  Alternatively, it is possible to enable the TCP/IP connection manually using adb:
+
+      Plug the device into a USB port on your computer.
+
+      Connect the device to the same Wi-Fi network as your computer.
+
+      Get your device IP address, in Settings → About phone → Status, or by executing this command:
+
+      adb shell ip route | awk '{print $9}'
+
+      Enable adb over TCP/IP on your device: adb tcpip 5555.
+
+      Unplug your device.
+
+      Connect to your device: adb connect DEVICE_IP:5555 (replace DEVICE_IP with the device IP address you found).
+
+      Run scrcpy as usual.
+#+end_src
+
+** Cheat sheet
+
 - [[https://xakep.ru/2014/10/24/android-shell-script/][Shell-скриптинг в среде Android — Хакер]]
 
 - connect adb over wifi
