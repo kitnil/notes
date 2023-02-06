@@ -45,7 +45,7 @@
    : qemu-img convert -p -n -f qcow2 -O raw /mnt/data/images/102/vm-102-disk-0.qcow2 /dev/pve/vm-102-disk-0
 
  - physical machine to a virtual machine
-   : qemu-img convert -c -f raw -O qcow2 /dev/sda /var/lib/libvirt/images/hdd-shrunk.qcow2
+   : qemu-img convert -c -f raw -O qcow2 /dev/sda /var/lib/libvirt/images/hdd-shrunk.qcow2`g`
 
  - physical to physical
    : qemu-img convert -p -n -f raw -O raw /dev/sdb1 /dev/sda2
