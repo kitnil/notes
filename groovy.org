@@ -65,6 +65,8 @@ groovy:000> ({f1, f2 -> f2})("foo", "bar")
 :  groovy.grape.Grape.grab(group: "org.ajoberstar", module: "grgit", version: "2.0.1")
 :  groovy.grape.Grape.grab(group: 'org.codehaus.groovy.modules.http-builder', module: 'http-builder', verision: '0.7')
 
+: groovy.grape.Grape.grab(group: 'org.apache.commons', module: 'commons-io', version: '1.3.2')
+
 def pk(value) {
     println(value)
     value
