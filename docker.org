@@ -1062,7 +1062,7 @@ curl host01
 : docker run --name netshoot --rm -it --network br155_net nicolaka/netshoot /bin/bash
 
 : sudo virsh start whonix-gateway-direct
-: docker run -d --name=firefox --security-opt seccomp=unconfined -e PUID=1000 -e PGID=1000 -e TZ=Europe/London --shm-size="1gb" --restart unless-stopped --network br155_net lscr.io/linuxserver/firefox:latest
+: docker run -d --name=firefox --security-opt seccomp=unconfined -e PUID=1000 -e PGID=1000 -e TZ=Europe/Moscow --shm-size="1gb" --restart unless-stopped --network br155_net lscr.io/linuxserver/firefox:latest
 : docker network connect bridge firefox
 : docker top firefox
 : sudo nsenter -t PID -n ip -one -4 a
