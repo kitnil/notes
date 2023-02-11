@@ -2,6 +2,7 @@
 :ID:       9c64447f-9474-4b29-9cc4-7be791261d98
 :END:
 - [[https://github.com/spring-projects-experimental/spring-native?auto_subscribed=false][spring-projects-experimental/spring-native: Spring Native provides beta support for compiling Spring applications to native executables using GraalVM native-image compiler.]]
+- [[https://github.com/team-dodn/spring-boot-kotlin-template][team-dodn/spring-boot-kotlin-template: SpringBoot basic structure template based on Kotlin]]
 
 - oleg@guixsd ~$ curl http://localhost:8981/actuator/; echo
   : {"_links":{"self":{"href":"http://localhost:8981/actuator","templated":false},"health":{"href":"http://localhost:8981/actuator/health","templated":false},"health-path":{"href":"http://localhost:8981/actuator/health/{*path}","templated":true},"info":{"href":"http://localhost:8981/actuator/info","templated":false}}}
