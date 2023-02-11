@@ -1820,6 +1820,7 @@ builtins.match "php([[:alnum:]])([[:alnum:]])" "php70"
 - [[https://github.com/lf-/nix-otel][lf-/nix-otel: Nix OpenTelemetry sender plugin]]
 - [[https://github.com/loophp/ci-detector][loophp/ci-detector: To detect whether we are in a CI or not]]
 - [[https://github.com/loophp/nix-auto-changelog][loophp/nix-auto-changelog: A Nix flake to generating changelog files based on your git tags and commit history.]]
+- [[https://github.com/MercuryTechnologies/nix-your-shell][MercuryTechnologies/nix-your-shell: A `nix` and `nix-shell` wrapper for shells other than `bash`]]
 - [[https://github.com/mlieberman85/nixbom][mlieberman85/nixbom]]
 - [[https://mynixos.com/][MyNixOS - Graphical editor for Nix flakes. Create and manage configurations and modules for NixOS and Nix home-manager. Rather a Nix generator than a Nix editor, because it does not allow to import Nix files.]]
 - [[https://github.com/nix-community/nixago][nix-community/nixago: Generate configuration files using Nix maintainer=@jmgilman]]
