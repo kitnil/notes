@@ -160,6 +160,7 @@ Moves the value "1" into the EAX register
  : int * myArray = new int 10;
 
 * Languages
+- [[https://github.com/HVML/PurC][HVML/PurC: The prime HVML interpreter for C Language.]]
 - [[https://github.com/never-lang/never][never-lang/never: Never: statically typed, embeddable functional programming language.]]
 - [[https://github.com/ThakeeNathees/pocketlang][ThakeeNathees/pocketlang: A lightweight, fast embeddable scripting language.]]
 
