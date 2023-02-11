@@ -22,6 +22,7 @@
 - [[https://github.com/thevahidal/soul][thevahidal/soul: A SQLite RESTful server]]
 - [[https://github.com/maxpert/marmot][maxpert/marmot: A distributed SQLite replicator built on top of NATS]]
 - [[https://github.com/vlcn-io/cr-sqlite][vlcn-io/cr-sqlite: Convergent, Replicated SQLite. Multi-writer and CRDT support for SQLite]]
+- [[https://github.com/superfly/litefs][superfly/litefs: FUSE-based file system for replicating SQLite databases across a cluster of machines]]
 
 - list tables
   : .tables
