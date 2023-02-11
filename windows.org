@@ -70,6 +70,7 @@
 * eBPF
 - [[https://learn.microsoft.com/en-us/azure/aks/azure-cni-powered-by-cilium][Configure Azure CNI Powered by Cilium in Azure Kubernetes Service (AKS) (Preview) - Azure Kubernetes Service | Microsoft Learn]]
 - [[https://cloudblogs.microsoft.com/opensource/2022/02/22/getting-linux-based-ebpf-programs-to-run-with-ebpf-for-windows/][Getting Linux based eBPF programs to run with eBPF for Windows - Microsoft Open Source Blog]]
+- [[https://github.com/microsoft/ebpf-for-windows][microsoft/ebpf-for-windows: eBPF implementation that runs on top of Windows]]
 
 * Explorer
 - [[https://github.com/valinet/ExplorerPatcher][valinet/ExplorerPatcher: This project aims to enhance the working environment on Windows]]
