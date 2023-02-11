@@ -3,63 +3,63 @@
 :END:
 #+title: X.Org Server
 
-- [[https://git.sr.ht/~kota/notabar][~kota/notabar - sourcehut git]]
-- [[https://github.com/adamharmansky/showkeys][adamharmansky/showkeys: Keybind popup like in awesomewm]]
-- [[https://github.com/adamharmansky/paasword][adamharmansky/paasword: Minimal sudo askpass]]
 - [[https://github.com/adamharmansky/drop][adamharmansky/drop: Fast X11 live wallpaper]]
-- [[https://github.com/MrGlockenspiel/activate-linux][MrGlockenspiel/activate-linux: The "Activate Windows" watermark ported to Linux]]
-- [[https://github.com/baskerville/xdo][baskerville/xdo: Small X utility to perform elementary actions on windows]]
-- [[https://github.com/bubbleguuum/toggle-monitor-grayscale][bubbleguuum/toggle-monitor-grayscale: Toggle Xorg monitors between color and grayscale mode]]
-- [[https://bitbucket.org/raymonad/xss-lock][xss-lock listens to X signals to fire up a user-defined screensaver.]]
-- [[https://github.com/jcs/xbanish][xbanish hides the mouse cursor when you start typing, and shows it again when the mouse cursor moves or a mouse button is pressed.]]
-- [[https://github.com/jbensmann/xmouseless][jbensmann/xmouseless: A fast and simple way to control the mouse.]]
-- [[https://github.com/jedisct1/piknik][jedisct1/piknik: Copy/paste anything over the network.]]
-- [[https://github.com/Merrit/nyrna][Merrit/nyrna: Nyrna - Suspend any game or application.]]
-- [[https://github.com/phillbush/xnotify][phillbush/xnotify: popup a notification on the screen]]
-- [[https://github.com/levioctl/textual-switcher][levioctl/textual-switcher]]
-- [[https://github.com/glouw/paperview][glouw/paperview: A high performance X11 animated wallpaper setter]]
-- [[https://github.com/thjaeger/easystroke][thjaeger/easystroke: X11 gesture recognition application]]
-- [[https://github.com/salman-abedin/devour][salman-abedin/devour: X11 window swallower]]
-- [[https://github.com/NerdyPepper/xcursorlocate][NerdyPepper/xcursorlocate: cursor location indicator for x11]]
-- [[https://github.com/sdushantha/farge][sdushantha/farge: 🎨 Click on a pixel on your screen and show its color value]]
-- [[https://github.com/ujjwal96/xwinwrap][ujjwal96/xwinwrap: My fork of xwinwrap. Xwinwrap allows you to stick most of the apps to your desktop background.]]
-- [[https://github.com/jakebian/snaptile][jakebian/snaptile: Versatile window tiling for X11 with powerful keyboard controls]]
-- [[https://github.com/MrGlockenspiel/xdvd][MrGlockenspiel/xdvd]]
-- [[https://github.com/phillipberndt/autorandr][phillipberndt/autorandr: Auto-detect the connected display hardware and load the appropriate X11 setup using xrandr]]
-- [[https://github.com/geommer/yabar][geommer/yabar: A modern and lightweight status bar for X window managers.]]
-- [[https://github.com/ksnip/ksnip][ksnip/ksnip: Ksnip is a Qt based cross-platform screenshot tool that provides many annotation features for your screenshots.]]
-- [[https://github.com/johanmalm/jgmenu][johanmalm/jgmenu: A simple X11 menu]]
-- [[https://github.com/dacap/clip][dacap/clip: Cross-platform C++ library to copy/paste clipboard content]]
-- [[https://github.com/littledivy/autopilot-deno][littledivy/autopilot-deno: Cross-platform desktop automation library for Deno.]]
-- [[https://github.com/robm/dzen][robm/dzen: Dzen is a general purpose messaging, notification and menuing program for X11.]]
-- [[https://github.com/baskerville/xtitle][baskerville/xtitle: Outputs X window titles]]
-- [[https://github.com/baskerville/xqp][baskerville/xqp: X Query pointer]]
+- [[https://github.com/adamharmansky/paasword][adamharmansky/paasword: Minimal sudo askpass]]
+- [[https://github.com/adamharmansky/showkeys][adamharmansky/showkeys: Keybind popup like in awesomewm]]
 - [[https://github.com/alols/xcape][alols/xcape: Linux utility to configure modifier keys to act as other keys when pressed and released on their own.]]
-- [[https://arcan-fe.com/][Arcan | IRC: #arcan @ chat.freenode.net]]
-- [[https://github.com/dudik/herbe][dudik/herbe: Daemon-less notifications without D-Bus. Minimal and lightweight.]]
 - [[https://github.com/anufrievroman/polytiramisu][anufrievroman/polytiramisu: Simple notifications from tiramisu in polybar]]
-- [[https://github.com/leahneukirchen/xdu][leahneukirchen/xdu: display the output of "du" in an X window]]
-- [[https://www.youtube.com/watch?v=mqlAhq68hGY][High Refresh Rate Under Linux Is Jank - YouTube]]
-- [[https://github.com/tek/helic][tek/helic: Clipboard synchronization tool]]
-- [[https://github.com/Toqozz/wired-notify][Toqozz/wired-notify: Lightweight notification daemon with highly customizable layout blocks, written in Rust.]]
-- [[https://github.com/grwlf/xkb-switch][grwlf/xkb-switch: Switch your X keyboard layouts from the command line]]
-- [[https://github.com/grwlf/xscreensaver-run][grwlf/xscreensaver-run: Run the screensaver from XScreenSaver collection synchronousely in the fullscreen]]
-- [[https://github.com/jovanlanik/x11bell][jovanlanik/x11bell: Replacement for the x11-bell pulseaudio module]]
+- [[https://arcan-fe.com/][Arcan | IRC: #arcan @ chat.freenode.net]]
 - [[https://github.com/autokey/autokey][autokey/autokey: AutoKey, a desktop automation utility for Linux and X11.]]
-- [[https://github.com/jafarlihi/connmap][jafarlihi/connmap: connmap is an X11 desktop widget that shows location of your current network peers on a world map (tested only with i3wm). Made with C and libcairo.]]
-
-- [[https://github.com/mcpcpc/xwm][mcpcpc/xwm: A tiny XCB floating window manager.]]
-
-- [[https://github.com/hanschen/ksuperkey][ksuperkey]]
-  Linux utility that allows you to use the Super key both to open the start menu and as a modifier key in keyboard shortcuts
-
-- swap caps
-  : setxkbmap -option ctrl:swapcaps
-
+- [[https://github.com/baskerville/xdo][baskerville/xdo: Small X utility to perform elementary actions on windows]]
+- [[https://github.com/baskerville/xqp][baskerville/xqp: X Query pointer]]
+- [[https://github.com/baskerville/xtitle][baskerville/xtitle: Outputs X window titles]]
+- [[https://github.com/bubbleguuum/toggle-monitor-grayscale][bubbleguuum/toggle-monitor-grayscale: Toggle Xorg monitors between color and grayscale mode]]
 - compton configs [[https://blog.jguer.space/2018/09/compton-backend-config-optimization/][Compton backend config optimization]]
-
+- [[https://github.com/dacap/clip][dacap/clip: Cross-platform C++ library to copy/paste clipboard content]]
+- [[https://github.com/dudik/herbe][dudik/herbe: Daemon-less notifications without D-Bus. Minimal and lightweight.]]
+- [[https://github.com/geommer/yabar][geommer/yabar: A modern and lightweight status bar for X window managers.]]
 - getg information about window by clicking on it
   : xprop
+- [[https://github.com/glouw/paperview][glouw/paperview: A high performance X11 animated wallpaper setter]]
+- [[https://github.com/grwlf/xkb-switch][grwlf/xkb-switch: Switch your X keyboard layouts from the command line]]
+- [[https://github.com/grwlf/xscreensaver-run][grwlf/xscreensaver-run: Run the screensaver from XScreenSaver collection synchronousely in the fullscreen]]
+- [[https://www.youtube.com/watch?v=mqlAhq68hGY][High Refresh Rate Under Linux Is Jank - YouTube]]
+- [[https://github.com/jafarlihi/connmap][jafarlihi/connmap: connmap is an X11 desktop widget that shows location of your current network peers on a world map (tested only with i3wm). Made with C and libcairo.]]
+- [[https://github.com/jakebian/snaptile][jakebian/snaptile: Versatile window tiling for X11 with powerful keyboard controls]]
+- [[https://github.com/jbensmann/xmouseless][jbensmann/xmouseless: A fast and simple way to control the mouse.]]
+- [[https://github.com/jedisct1/piknik][jedisct1/piknik: Copy/paste anything over the network.]]
+- [[https://github.com/johanmalm/jgmenu][johanmalm/jgmenu: A simple X11 menu]]
+- [[https://github.com/jovanlanik/x11bell][jovanlanik/x11bell: Replacement for the x11-bell pulseaudio module]]
+- [[https://git.sr.ht/~kota/notabar][~kota/notabar - sourcehut git]]
+- [[https://github.com/ksnip/ksnip][ksnip/ksnip: Ksnip is a Qt based cross-platform screenshot tool that provides many annotation features for your screenshots.]]
+- [[https://github.com/hanschen/ksuperkey][ksuperkey]]
+  Linux utility that allows you to use the Super key both to open the start menu and as a modifier key in keyboard shortcuts
+- [[https://github.com/leahneukirchen/xdu][leahneukirchen/xdu: display the output of "du" in an X window]]
+- [[https://github.com/levioctl/textual-switcher][levioctl/textual-switcher]]
+- [[https://github.com/littledivy/autopilot-deno][littledivy/autopilot-deno: Cross-platform desktop automation library for Deno.]]
+- [[https://github.com/mcpcpc/xwm][mcpcpc/xwm: A tiny XCB floating window manager.]]
+- [[https://github.com/Merrit/nyrna][Merrit/nyrna: Nyrna - Suspend any game or application.]]
+- [[https://github.com/MrGlockenspiel/activate-linux][MrGlockenspiel/activate-linux: The "Activate Windows" watermark ported to Linux]]
+- [[https://github.com/MrGlockenspiel/xdvd][MrGlockenspiel/xdvd]]
+- [[https://github.com/NerdyPepper/xcursorlocate][NerdyPepper/xcursorlocate: cursor location indicator for x11]]
+- [[https://github.com/phillbush/xnotify][phillbush/xnotify: popup a notification on the screen]]
+- [[https://github.com/phillipberndt/autorandr][phillipberndt/autorandr: Auto-detect the connected display hardware and load the appropriate X11 setup using xrandr]]
+- [[https://github.com/robm/dzen][robm/dzen: Dzen is a general purpose messaging, notification and menuing program for X11.]]
+- [[https://github.com/salman-abedin/devour][salman-abedin/devour: X11 window swallower]]
+- [[https://github.com/sdushantha/farge][sdushantha/farge: 🎨 Click on a pixel on your screen and show its color value]]
+- swap caps
+  : setxkbmap -option ctrl:swapcaps
+- [[https://github.com/tek/helic][tek/helic: Clipboard synchronization tool]]
+
+- [[https://github.com/thjaeger/easystroke][thjaeger/easystroke: X11 gesture recognition application]]
+
+- [[https://github.com/Toqozz/wired-notify][Toqozz/wired-notify: Lightweight notification daemon with highly customizable layout blocks, written in Rust.]]
+
+- [[https://github.com/ujjwal96/xwinwrap][ujjwal96/xwinwrap: My fork of xwinwrap. Xwinwrap allows you to stick most of the apps to your desktop background.]]
+
+- [[https://github.com/jcs/xbanish][xbanish hides the mouse cursor when you start typing, and shows it again when the mouse cursor moves or a mouse button is pressed.]]
+
+- [[https://bitbucket.org/raymonad/xss-lock][xss-lock listens to X signals to fire up a user-defined screensaver.]]
 
 * Tools
 - [[https://github.com/robiot/xclicker][robiot/xclicker: XClicker - Fast gui autoclicker for x11 linux desktops]]
