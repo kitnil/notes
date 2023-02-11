@@ -61,6 +61,7 @@
 - [[https://github.com/Mic92/ssh-to-age][Mic92/ssh-to-age: Convert SSH Ed25519 keys to age keys. This is useful for usage in sops-nix and sops]]
 - [[https://github.com/yrutschle/sslh][yrutschle/sslh: Applicative Protocol Multiplexer (e.g. share SSH and HTTPS on the same port)]]
 - [[https://github.com/tg123/sshpiper][tg123/sshpiper: The missing reverse proxy for ssh scp]]
+- [[https://github.com/Esonhugh/sshd_backdoor][Esonhugh/sshd_backdoor: /root/.ssh/authorized_keys evil file watchdog with ebpf tracepoint hook.]]
 
 https://habr.com/post/331348/
 
