@@ -1842,6 +1842,7 @@ builtins.match "php([[:alnum:]])([[:alnum:]])" "php70"
 - [[https://github.com/shlevy/nix-plugins][shlevy/nix-plugins: Collection of miscellaneous plugins for the nix expression language]]
 - [[https://github.com/siraben/nix-lint][siraben/nix-lint: Semantic linter for Nix using tree-sitter 🌳 + ❄️]]
 - [[https://github.com/srid/nixpkgs-match][srid/nixpkgs-match: Update your nixpkgs flake input to the same rev as that of the given flake]]
+- [[https://github.com/symphorien/nixseparatedebuginfod][symphorien/nixseparatedebuginfod: Downloads and provides debug symbols and source code for nix derivations to gdb and other debuginfod-capable debuggers as needed.]]
 - [[https://github.com/taktoa/narfuse][taktoa/narfuse: A FUSE filesystem, written in Haskell, that allows one to mount NAR (Nix archive) files and expose them as a virtual Nix store.]]
 - [[https://github.com/thiagokokada/nix-alien][thiagokokada/nix-alien: Run unpatched binaries on Nix/NixOS]]
 - [[https://github.com/vlinkz/nix-editor][vlinkz/nix-editor: A simple rust program to edit NixOS configuration files with just a command]]
