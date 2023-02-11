@@ -4,19 +4,19 @@
 #+title: Jenkins
 
 * Learn
-- [[https://cheatsheet.dennyzhang.com/cheatsheet-jenkins-groovy-A4][CheatSheet: Jenkins & Groovy – CheatSheet]]
-- [[https://github.com/wardviaene/jenkins-course][wardviaene/jenkins-course: This is the repository with all the resources for the Jenkins training on Udemy]]
-- https://javadoc.jenkins.io/
-- https://www.jenkins.io/projects/infrastructure/
-- [[https://www.jenkins.io/doc/book/managing/script-console/][Script Console]]
 - [[https://www.cloudbees.com/videos/purely-functional-ci-cd-pipeline-using-jenkins-with-guix][A Purely Functional CI/CD Pipeline Using Jenkins with Guix]]
+- [[https://cheatsheet.dennyzhang.com/cheatsheet-jenkins-groovy-A4][CheatSheet: Jenkins & Groovy – CheatSheet]]
 - [[https://www.manning.com/books/pipeline-as-code][Continuous Delivery with Jenkins, Kubernetes, and Terraform]]
   - [[https://github.com/mlabouardy/pipeline-as-code-with-jenkins][mlabouardy/pipeline-as-code-with-jenkins: Pipeline as Code with Jenkins]]
-- [[https://www.eficode.com/blog/jenkins-groovy-tutorial][Tutorial: Jenkins Pipeline file with Apache Groovy]]
-- [[https://www.jenkins.io/doc/book/managing/script-console/][Script Console]]
-  - [[https://www.youtube.com/watch?v=qaUPESDcsGg][(17) Jenkins World 2017: Mastering the Jenkins Script Console - YouTube]]
+- https://javadoc.jenkins.io/
+- https://www.jenkins.io/projects/infrastructure/
 - [[https://github.com/jaydubb12/jenkins-dsl-pipelines][jaydubb12/jenkins-dsl-pipelines: Sample repo demonstrating use of Jenkins DSL Pipelines via IntelliJ that will support code completion and validation]]
   - [[https://st-g.de/2016/08/jenkins-pipeline-autocompletion-in-intellij][Jenkins Pipeline Autocompletion in IntelliJ – Steffen Gebert]]
+- [[https://www.jenkins.io/doc/book/managing/script-console/][Script Console]]
+- [[https://www.jenkins.io/doc/book/managing/script-console/][Script Console]]
+  - [[https://www.youtube.com/watch?v=qaUPESDcsGg][(17) Jenkins World 2017: Mastering the Jenkins Script Console - YouTube]]
+- [[https://www.eficode.com/blog/jenkins-groovy-tutorial][Tutorial: Jenkins Pipeline file with Apache Groovy]]
+- [[https://github.com/wardviaene/jenkins-course][wardviaene/jenkins-course: This is the repository with all the resources for the Jenkins training on Udemy]]
 
 NOTE: "pipeline" equal to "workflow".
 
