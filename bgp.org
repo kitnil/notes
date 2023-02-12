@@ -98,3 +98,7 @@ There are several use cases for a BGP full view:
     Government Agencies: Government agencies use BGP to interconnect their networks and to ensure that traffic is being routed between their networks in an efficient and reliable manner. A full view of the BGP routing information is important for government agencies because it allows them to make informed decisions about how to forward traffic, avoid potential routing loops, and ensure that traffic is being routed over the most efficient paths.
 
 Overall, having a full view of the BGP routing information is important for ensuring efficient and reliable routing of traffic on the Internet.
+
+** What is public abstract class in Java?
+
+A public abstract class in Java is a class that has been declared as public, meaning it can be accessed from anywhere in the code, and abstract, meaning it cannot be instantiated and must be subclassed. Abstract classes are used to provide a common interface for a group of related classes. They can contain both abstract and non-abstract methods, but typically abstract classes contain mostly abstract methods which must be overridden by any concrete subclasses. The purpose of having an abstract class is to define a common structure or behavior that can be shared among several classes.
