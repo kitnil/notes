@@ -126,6 +126,22 @@ Certainly, here are some additional open-source proxy servers for Windows:
 *** Delegate: an advanced open source proxy server that can function as a HTTP, mail, SOCKS or proxying VPN server.
 *** Keep in mind that these servers may require some technical expertise to install, configure and maintain.
 
+* Nameserver
+
+How to show current nameservers in Windows powershell?
+
+In Windows PowerShell, you can use the nslookup command to show the current nameservers. To do this, open the PowerShell prompt and type the following command:
+
+nslookup -querytype=ns
+
+This will display the nameservers for the current computer. If you want to query the nameservers for a specific domain, you can use the following command:
+
+php
+
+nslookup -querytype=ns <domain-name>
+
+Replace <domain-name> with the name of the domain you want to query.
+
 * File systems
 - [[https://github.com/billziss-gh/winfsp][billziss-gh/winfsp: Windows File System Proxy - FUSE for Windows]]
 - [[https://habr.com/ru/company/ruvds/blog/578292/][Кунг-фу стиля Linux: файловые системы пользовательского пространства теперь доступны и в Windows / Хабр]]
