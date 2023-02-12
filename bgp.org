@@ -84,3 +84,17 @@ A "BGP full view" refers to the complete set of BGP routing information that a r
 Having a full view of the BGP routing information is important for routers in making informed decisions about how to forward packets. The full view allows routers to determine the best paths to use for forwarding packets and to detect and avoid potential routing loops.
 
 In some cases, a router may not have a full view of the BGP routing information due to a lack of neighbors, limited resources, or other factors. In these cases, the router may only have a partial view of the BGP routing information, which can result in suboptimal routing decisions and increased latency.
+
+** Use cases for BG full view?
+
+There are several use cases for a BGP full view:
+
+    Internet Service Providers (ISPs): ISPs use BGP to exchange routing information with other ISPs and to build routing tables that allow them to direct traffic between their networks and the Internet. Having a full view of the BGP routing information is important for ISPs because it allows them to make informed decisions about how to forward traffic, ensure that traffic is being routed over the most efficient paths, and avoid potential routing loops.
+
+    Data Centers: Data centers use BGP to interconnect their networks and to ensure that traffic is being routed between their networks in an efficient and reliable manner. A full view of the BGP routing information is important for data centers because it allows them to make informed decisions about how to forward traffic, avoid potential routing loops, and ensure that traffic is being routed over the most efficient paths.
+
+    Enterprises: Enterprises use BGP to interconnect their networks and to ensure that traffic is being routed between their networks in an efficient and reliable manner. A full view of the BGP routing information is important for enterprises because it allows them to make informed decisions about how to forward traffic, avoid potential routing loops, and ensure that traffic is being routed over the most efficient paths.
+
+    Government Agencies: Government agencies use BGP to interconnect their networks and to ensure that traffic is being routed between their networks in an efficient and reliable manner. A full view of the BGP routing information is important for government agencies because it allows them to make informed decisions about how to forward traffic, avoid potential routing loops, and ensure that traffic is being routed over the most efficient paths.
+
+Overall, having a full view of the BGP routing information is important for ensuring efficient and reliable routing of traffic on the Internet.
