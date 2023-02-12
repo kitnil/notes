@@ -8,6 +8,28 @@
 
 * Cheat sheet
 
+Here are some of the most commonly used commands for managing H3C network switches:
+
+show interfaces: This command displays information about the interfaces on the switch, including status, configuration, and statistics.
+
+show running-config: This command displays the current configuration of the switch, including the configuration of interfaces, VLANs, and other settings.
+
+configure terminal: This command enters configuration mode, allowing you to change the configuration of the switch.
+
+interface [interface-name]: This command enters interface configuration mode, allowing you to change the configuration of a specific interface.
+
+shutdown: This command disables an interface.
+
+no shutdown: This command enables an interface.
+
+vlan [vlan-id]: This command enters VLAN configuration mode, allowing you to configure the settings for a specific VLAN.
+
+save: This command saves the current configuration to the switch's non-volatile memory (NVRAM).
+
+copy running-config startup-config: This command saves the current running configuration to the startup configuration, so that it will be used when the switch is next rebooted.
+
+These are just a few examples of the commands that you can use to manage H3C network switches. The exact commands and syntax will depend on the specific model and firmware version of the switch that you are using. Additionally, you can find more information on the command line interface (CLI) in the switch's documentation and user guide.
+
 : <sw4-mr13.intr>system-view 
 
 : [sw4-mr13.intr]interface Bridge-Aggregation 8
