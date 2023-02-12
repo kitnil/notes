@@ -114,15 +114,15 @@ Certainly, here are some additional open-source proxy servers for Windows:
 *** Tinyproxy: a lightweight and easy-to-configure proxy server.
 *** Privoxy: a non-caching web proxy with advanced filtering capabilities for enhancing privacy, modifying web page data and HTTP headers, controlling access, and removing ads and other obnoxious Internet junk.
 *** 3Proxy: a tiny free proxy server, suitable for small network.
-ПАМЯТКА ПО НАСТРОЙКЕ
-1 Настрока сети
-2 Скачиваем 3proxy с официального сайта для Windows (Распаковываем на рабочий стол архив)
-3 Создаём конфиг 3proxy.txt в папке C:\Users\Администратор\Desktop\3proxy-0.8.11\bin
-4 Переходим в командной строке в дирректорию cd C:\Users\Администратор\Desktop\3proxy-0.8.11\bin
-5 Устанавливаем 3proxy как службу 3proxy.exe --install 3proxy.txt
-6 Проверяем службу 3proxy через диспетчер задач
-7 Окрываем порт (диапазон портов) Панель управлени - Система и безопасность - Брандмауэр виндовс - Дополнительные параметры - Правила для входящих подключений - Создать правило - Для порта - Указываем порт - Даём имя правилу.
-8 Проверяем прокси
+**** [[https://www.youtube.com/watch?v=uIwCecQ-Leo][Памятка по настройке]]
+1. Настрока сети
+2. Скачиваем 3proxy с официального сайта для Windows (Распаковываем на рабочий стол архив)
+3. Создаём конфиг 3proxy.txt в папке C:\Users\Администратор\Desktop\3proxy-0.8.11\bin
+4. Переходим в командной строке в дирректорию cd C:\Users\Администратор\Desktop\3proxy-0.8.11\bin
+5. Устанавливаем 3proxy как службу 3proxy.exe --install 3proxy.txt
+6. Проверяем службу 3proxy через диспетчер задач
+7. Окрываем порт (диапазон портов) Панель управлени - Система и безопасность - Брандмауэр виндовс - Дополнительные параметры - Правила для входящих подключений - Создать правило - Для порта - Указываем порт - Даём имя правилу.
+8. Проверяем прокси
 *** Delegate: an advanced open source proxy server that can function as a HTTP, mail, SOCKS or proxying VPN server.
 *** Keep in mind that these servers may require some technical expertise to install, configure and maintain.
 
