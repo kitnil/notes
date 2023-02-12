@@ -109,6 +109,23 @@ mount -o anon \\192.168.0.144\srv\games N:
 - [[https://github.com/mytechnotalent/Hacking-Windows][mytechnotalent/Hacking-Windows: A FREE Windows C development course where we will learn the Win32API and reverse engineer each step utilizing IDA Free in both an x86 and x64 environment.]]
 - [[https://github.com/Kyome22/RunCat_for_windows][Kyome22/RunCat_for_windows: A cute running cat animation on your windows taskbar.]]
 
+** What is awk alternative in windows powershell?
+In Windows PowerShell, you can use the Select-String cmdlet as an alternative to the awk utility. The Select-String cmdlet allows you to search for text patterns in one or more files and display the matching lines. Here's an example of how you could use Select-String to perform a similar operation to awk:
+
+vbnet
+Copy code
+Get-Content example.txt | Select-String 'pattern'
+In this example, Get-Content is used to read the contents of the file example.txt, and Select-String is used to search for lines that contain the text 'pattern'. The matching lines are then displayed on the console.
+
+You can also use other cmdlets in Windows PowerShell, such as Get-ChildItem and ForEach-Object, to perform more complex text processing operations. For example, you could use the following code to extract specific columns of data from a text file:
+
+javascript
+Copy code
+Get-Content example.txt | ForEach-Object { $_ -split '\s+' } | Select-Object -Index 2, 4
+This code reads the contents of example.txt, splits each line into fields using the -split operator, and then selects the 2nd and 4th fields using Select-Object.
+
+Keep in mind that while Select-String and other Windows PowerShell cmdlets can provide similar functionality to awk, the syntax and operations may be different, so it's a good idea to familiarize yourself with the Windows PowerShell environment before diving into complex operations.
+
 * Linux
 - [[https://github.com/Fmstrat/winapps][Fmstrat/winapps: Run Windows apps such as Microsoft Office in Linux (Ubuntu/Fedora) and GNOME/KDE as if they were a part of the native OS, including Nautilus integration.]]
 - [[https://www.opennet.ru/opennews/art.shtml?num=56640][Cassowary - обвязка для бесшовной работы с Windows-приложениями в Linux]]
