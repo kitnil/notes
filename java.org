@@ -318,6 +318,10 @@ A private static method in Java is a method that is declared with the "private" 
 
 A private static method can only be accessed by other static methods within the same class. This is useful when you want to encapsulate some functionality within the class and do not want it to be exposed to other classes. Private static methods are typically used to implement utility methods that are used only within the class, such as helper methods that perform specific calculations or transformations.
 
+** Boolean false or true by default in Java?
+
+In Java, the default value of a boolean type is false.
+
 * Maven
 - [[https://github.com/fzakaria/nixos-maven-example][fzakaria/nixos-maven-example: An example of how to use buildMaven with Nix to build a Maven project]]
 
