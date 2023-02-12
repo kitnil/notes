@@ -91,6 +91,21 @@ HAProxy: HAProxy is a high-performance proxy server that can run on Windows. It'
 
 All of these proxy servers have active communities, documentation, and are customizable to meet your specific needs. You can choose the one that best fits your requirements.
 
+Could you list more?
+Sure, here are some other free and open-source proxy servers for Windows:
+
+Squid
+Privoxy
+Tiny Proxy
+Varnish Cache
+Nginx
+HAProxy
+Apache Traffic Server
+Caddy Server
+ReverseHTTP
+stunnel
+You may choose the one that fits your needs the best and try it out.
+
 * File systems
 - [[https://github.com/billziss-gh/winfsp][billziss-gh/winfsp: Windows File System Proxy - FUSE for Windows]]
 - [[https://habr.com/ru/company/ruvds/blog/578292/][Кунг-фу стиля Linux: файловые системы пользовательского пространства теперь доступны и в Windows / Хабр]]
