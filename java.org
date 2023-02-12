@@ -350,6 +350,43 @@ In Java, the default value of a boolean type is false.
   - [[https://github.com/traefik/plugin-log4shell][traefik/plugin-log4shell: Log4Shell is a middleware plugin for Traefik which blocks JNDI attacks based on HTTP header values.]]
   - [[https://github.com/google/log4jscanner][google/log4jscanner]]
 
+* Examples
+
+** Write me a Java program with a shebung line to get https://www.gnu.org/ HTML page.
+
+Here is an example Java program that uses the java.net package to fetch the HTML content of https://www.gnu.org/:
+
+java
+
+#!/usr/bin/env java
+
+import java.io.*;
+import java.net.*;
+
+public class HttpGet {
+    public static void main(String[] args) throws IOException {
+        URL url = new URL("https://www.gnu.org/");
+        HttpURLConnection con = (HttpURLConnection) url.openConnection();
+        con.setRequestMethod("GET");
+        int responseCode = con.getResponseCode();
+        if (responseCode == HttpURLConnection.HTTP_OK) {
+            BufferedReader in = new BufferedReader(
+                new InputStreamReader(con.getInputStream()));
+            String inputLine;
+            StringBuilder content = new StringBuilder();
+            while ((inputLine = in.readLine()) != null) {
+                content.append(inputLine);
+            }
+            in.close();
+            System.out.println(content.toString());
+        } else {
+            System.out.println("GET request failed");
+        }
+    }
+}
+
+Note that this program is a very basic example and doesn't handle errors or exceptions that may occur while fetching the content. In a real-world scenario, you would want to handle these cases properly.
+
 * Tools
 - [[https://github.com/Body-Alhoha/Remake][Body-Alhoha/Remake: Library to modify java classes bytecode]]
 - [[https://github.com/Col-E/Recaf][Col-E/Recaf: The modern Java bytecode editor]]
