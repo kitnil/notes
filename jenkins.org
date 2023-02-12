@@ -24,6 +24,12 @@ NOTE: "pipeline" equal to "workflow".
 - [[https://habr.com/ru/company/dins/blog/520220/][Jenkins Pipeline: заметки об оптимизации. Часть 1 / Блог компании DINS / Хабр]]
 - [[https://habr.com/ru/company/jugru/blog/334374/][Олег Ненашев, Кирилл Толкачёв и Александр Тарасов про Groovy DSL и Pipeline в Jenkins на jug.msk.ru / Блог компании JUG Ru Group / Хабр]]
 
+** What is Hudson in Jenkins?
+
+Jenkins was originally developed as Hudson, a Java-based open-source continuous integration tool. Hudson was created by Kohsuke Kawaguchi and was first released in 2005. In 2011, Hudson was forked and renamed to Jenkins due to concerns about the management of the project by Oracle, who had acquired Sun Microsystems, the previous corporate sponsor of Hudson.
+
+Jenkins is now one of the most widely used CI/CD tools and has a large and active community of developers, users, and contributors. The tool provides a range of features, including support for building, testing, and deploying software, as well as a plugin system for extending its functionality.
+
 * Community
 - [[https://github.com/jenkins-infra/docker-packaging?auto_subscribed=false][jenkins-infra/docker-packaging: This repository contains everything needed to build a docker image used to package jenkins core]]
 - [[https://github.com/jenkins-infra/jenkins-infra][jenkins-infra/jenkins-infra: Jenkins main control repo for R10k and our Puppet Enterprise managed infrastructure]]
