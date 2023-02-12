@@ -1,0 +1,7 @@
+* What is a Monad?
+
+In computer science and functional programming, a monad is a design pattern that defines a way to structure computations and manage flow control in a program. A monad is essentially a way to abstract away the details of certain operations, making it easier to write composable and reusable code.
+
+Monads are commonly used in functional programming languages such as Haskell, but they can also be found in other programming languages, such as Scala, where they are used to model various aspects of the program, such as I/O, state, and error handling.
+
+The basic idea behind a monad is to define a unit of computation that can be combined with other computations to form a pipeline of operations. This pipeline can be thought of as a sequence of computations that are executed one after the other, with the result of each computation being passed on to the next. The result of the final computation is then returned as the final result of the pipeline.
