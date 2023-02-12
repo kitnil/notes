@@ -75,6 +75,22 @@
 * Explorer
 - [[https://github.com/valinet/ExplorerPatcher][valinet/ExplorerPatcher: This project aims to enhance the working environment on Windows]]
 
+* Proxy
+
+Could you recommend free and open source server proxy for Windows?
+
+Yes, here are some free and open-source proxy servers that you can use on Windows:
+
+Squid: Squid is a widely used, full-featured proxy server that can run on Windows.
+
+TinyProxy: TinyProxy is a lightweight proxy server that can run on Windows. It's designed for ease of use and low resource consumption.
+
+Privoxy: Privoxy is a non-caching, privacy-enhancing web proxy that can run on Windows.
+
+HAProxy: HAProxy is a high-performance proxy server that can run on Windows. It's designed for load balancing and proxying HTTP traffic.
+
+All of these proxy servers have active communities, documentation, and are customizable to meet your specific needs. You can choose the one that best fits your requirements.
+
 * File systems
 - [[https://github.com/billziss-gh/winfsp][billziss-gh/winfsp: Windows File System Proxy - FUSE for Windows]]
 - [[https://habr.com/ru/company/ruvds/blog/578292/][Кунг-фу стиля Linux: файловые системы пользовательского пространства теперь доступны и в Windows / Хабр]]
