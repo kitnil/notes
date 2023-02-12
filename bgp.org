@@ -68,3 +68,19 @@ Should you have any questions, please contact noc@mtu.ru
 - [[https://www.youtube.com/playlist?list=PLxbwE86jKRgMpuZuLBivzlM8s2Dk5lXBQ][Free CCNA 200-301 | Complete Course 2022 - YouTube]]
 - [[https://habr.com/ru/post/282532/][Ищем свободные IPv4 в BGP full-view / Хабр]]
 - [[https://linkmeup.ru/blog/1201/][Сети для самых маленьких. Микровыпуск №3. IBGP - linkmeup]]
+
+** BGP
+
+BGP stands for Border Gateway Protocol, which is a standardized exterior gateway protocol designed to exchange routing and reachability information between routers in different autonomous systems (AS) on the Internet.
+
+BGP is used to build routing tables in routers that direct packets between networks, and it enables routers to make informed decisions on which paths to use when forwarding packets. The information exchanged between routers using BGP includes the destination network, the next hop to the destination network, and various attributes that describe the characteristics of the path, such as its cost, reliability, and latency.
+
+BGP is an important component of the Internet's infrastructure and plays a crucial role in enabling the interconnectivity of different networks and ensuring that data can be reliably and efficiently routed from one place to another.
+
+** What is BGP full view?
+
+A "BGP full view" refers to the complete set of BGP routing information that a router has learned from its neighbors. In BGP, routers exchange information about the routes they know about and update their routing tables accordingly. The full view includes all of the BGP routes that the router has learned from its neighbors, including information about the destination network, the next hop, and the various attributes that describe the path.
+
+Having a full view of the BGP routing information is important for routers in making informed decisions about how to forward packets. The full view allows routers to determine the best paths to use for forwarding packets and to detect and avoid potential routing loops.
+
+In some cases, a router may not have a full view of the BGP routing information due to a lack of neighbors, limited resources, or other factors. In these cases, the router may only have a partial view of the BGP routing information, which can result in suboptimal routing decisions and increased latency.
