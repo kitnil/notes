@@ -116,3 +116,28 @@ A public final method in Java is a method that is declared with the "public" and
 In Java, a protected abstract method is a method declared with the protected access modifier and the abstract keyword. This means that the method is only accessible within the same package or from a subclass of the class that declares the method. An abstract method is a method that has no implementation, it is just a declaration, and it is meant to be overridden by subclasses.
 
 When a class contains an abstract method, it must also be declared as abstract. An abstract class cannot be instantiated, it is only meant to be subclassed. When a subclass extends an abstract class, it must implement all of the abstract methods in the superclass.
+
+** What is less-than sign near class name?
+
+The less-than sign (<) near a class name in Java is used to specify type parameters for a generic class. Generics were introduced in Java 5 to provide a type-safe way of creating and using collections. A generic class is a class that can work with any data type, rather than being specific to a single type. The type parameter is specified between angle brackets, and it acts as a placeholder for the actual data type that will be used when the class is instantiated. For example, a generic class called "Box" that holds an object of any type can be declared as follows:
+
+csharp
+
+class Box<T> {
+  private T object;
+  
+  public T getObject() {
+    return object;
+  }
+  
+  public void setObject(T object) {
+    this.object = object;
+  }
+}
+
+In this example, T is the type parameter, and it acts as a placeholder for the actual data type that will be used when the Box class is instantiated. To use this class, you can declare a Box object and specify the actual data type between the angle brackets:
+
+php
+
+Box<Integer> integerBox = new Box<>();
+integerBox.setObject(123);
