@@ -312,6 +312,12 @@ public class MyClass {
 // Call the method
 MyClass.myMethod();
 
+** What is private static method in Java?
+
+A private static method in Java is a method that is declared with the "private" access modifier and "static" keyword. The "private" access modifier means that the method can only be accessed within the same class in which it is declared. The "static" keyword means that the method belongs to the class rather than an instance of the class, and can be called without creating an instance of the class.
+
+A private static method can only be accessed by other static methods within the same class. This is useful when you want to encapsulate some functionality within the class and do not want it to be exposed to other classes. Private static methods are typically used to implement utility methods that are used only within the class, such as helper methods that perform specific calculations or transformations.
+
 * Maven
 - [[https://github.com/fzakaria/nixos-maven-example][fzakaria/nixos-maven-example: An example of how to use buildMaven with Nix to build a Maven project]]
 
