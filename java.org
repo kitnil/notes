@@ -133,6 +133,10 @@ public class MyClass {
 // Call the static method directly on the class
 int result = MyClass.add(1, 2);
 
+** What is meta class in Java?
+
+A meta class in Java is a class that defines the structure of other classes. In other words, a meta class is a blueprint for creating instances of classes. It defines the fields, methods, and behaviors of the class that it represents. The term "meta class" is often used to describe the structure of the class hierarchy in object-oriented programming languages. In Java, the meta class is represented by the java.lang.Class class, which provides information about the structure of classes at runtime. You can use the java.lang.Class class to perform a variety of tasks, such as introspecting the structure of classes, accessing the fields and methods of classes, and creating instances of classes dynamically.
+
 * Maven
 - [[https://github.com/fzakaria/nixos-maven-example][fzakaria/nixos-maven-example: An example of how to use buildMaven with Nix to build a Maven project]]
 
