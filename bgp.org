@@ -102,3 +102,7 @@ Overall, having a full view of the BGP routing information is important for ensu
 ** What is public abstract class in Java?
 
 A public abstract class in Java is a class that has been declared as public, meaning it can be accessed from anywhere in the code, and abstract, meaning it cannot be instantiated and must be subclassed. Abstract classes are used to provide a common interface for a group of related classes. They can contain both abstract and non-abstract methods, but typically abstract classes contain mostly abstract methods which must be overridden by any concrete subclasses. The purpose of having an abstract class is to define a common structure or behavior that can be shared among several classes.
+
+** What is public abstract method in Java?
+
+A public abstract method in Java is a method declared with the "public" and "abstract" keywords. The "public" keyword makes the method accessible from anywhere in the program, while the "abstract" keyword means that the method has no implementation, and must be overridden in a subclass. Abstract methods can only be declared in abstract classes, which cannot be instantiated on their own. When a subclass extends an abstract class, it must provide implementations for all of the abstract methods declared in the abstract class.
