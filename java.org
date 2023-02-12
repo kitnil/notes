@@ -289,6 +289,10 @@ interface java.io.Serializable
 interface java.lang.Comparable
 interface java.lang.CharSequence
 
+** What is public class in Java?
+
+In Java, a public class is a class that can be accessed from anywhere in the program. A class is considered public if it is declared with the "public" keyword. This means that any other class in the program can create an object of this class, call its methods, or access its fields. Public classes are an important concept in Java as they allow for the creation of reusable code and objects that can be used throughout a program.
+
 * Maven
 - [[https://github.com/fzakaria/nixos-maven-example][fzakaria/nixos-maven-example: An example of how to use buildMaven with Nix to build a Maven project]]
 
