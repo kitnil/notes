@@ -123,6 +123,9 @@ Certainly, here are some additional open-source proxy servers for Windows:
 6. Проверяем службу 3proxy через диспетчер задач
 7. Окрываем порт (диапазон портов) Панель управлени - Система и безопасность - Брандмауэр виндовс - Дополнительные параметры - Правила для входящих подключений - Создать правило - Для порта - Указываем порт - Даём имя правилу.
 8. Проверяем прокси
+**** My configuration
+- Test connection with curl
+: curl -v --data-urlencode --proxy socks5://vagrant:$(pass show windows.local/3proxy/admin)@10.0.1.6:1080 ifconfig.co
 *** Delegate: an advanced open source proxy server that can function as a HTTP, mail, SOCKS or proxying VPN server.
 *** Keep in mind that these servers may require some technical expertise to install, configure and maintain.
 
