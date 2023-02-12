@@ -149,3 +149,17 @@ In Java, a public final class is a class that can be accessed from anywhere in t
 ** What is @Override in Java?
 
 In Java, the @Override annotation is used to indicate that a method is intended to override a method in a superclass. When you annotate a method with @Override, the compiler will check that the method being overridden actually exists in the superclass, and will generate an error if it doesn't. This helps to catch accidental naming errors and makes it easier to see when a method is intended to override a superclass method. The use of the @Override annotation is considered best practice in Java programming, and is widely used by Java developers.
+
+** Could you explain this in Java?
+
+public abstract class Proc {
+    protected Proc() {}
+}
+
+The code you've posted is a Java class declaration for an abstract class named Proc.
+
+    The class is declared as public, meaning it can be accessed from anywhere in the codebase.
+    The class is declared as abstract, meaning it cannot be instantiated on its own and must be extended by a subclass.
+    The constructor is declared as protected, meaning it can only be accessed within the same class or a subclass of this class.
+
+In summary, this code declares a public abstract class Proc with a protected constructor, meaning that instances of the class cannot be created directly but only by subclasses that extend the Proc class.
