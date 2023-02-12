@@ -642,3 +642,71 @@ If you rebuilt the project, you would see a version 2 image created and the :lat
 
 * Development
 - [[file:~/src/github.com/jenkinsci/jenkins/war/pom.xml::<mainClass>Main</mainClass>][maven entry point]]
+
+* Networking
+
+#+begin_src markdown
+  [Jenkins : Auto-discovering Jenkins on the network](https://wiki.jenkins-ci.org/JENKINS/Auto-discovering-Jenkins-on-the-network.html)
+
+  > # Jenkins : Auto-discovering Jenkins on the network
+  > 
+  > Created by Unknown User (kohsuke), last modified by Unknown User (danielbeck) on Feb 09, 2020
+  > 
+  > If you are developing client applications or server applications that interact with Jenkins, you can benefit from auto-discovering Jenkins in the network. Jenkins supports several modes of programmable auto-discovery.
+  > 
+  > Content only applies to old versions of Jenkins
+  > 
+  > **The content on this page only applies to Jenkins 2.219 and earlier.** These features were disabled by default in Jenkins 2.219 and LTS 2.204.2, and removed entirely from Jenkins 2.200.
+  > 
+  >   
+  > 
+  > # UDP multicast/broadcast
+  > 
+  > Jenkins listens on UDP port 33848. You can either send an UDP broadcast packet (targeted to 255.255.255.255) to this port, or you can send an UDP multicast packet (targeted to 239.77.124.213) to this port. When a packet is received (the payload doesn't matter), Jenkins will send an XML response to the sending UDP port as a datagram. By sending a packet and listening for incoming ones, you can have an UDP client to discover nearby Jenkins instances. UDP multicast works with version 1.335 and later, UDP broadcast works with version 1.282 and later.
+  > 
+  > The structure of the XML is as follows:
+  > 
+  > <hudson>
+  >   <version>1.354</version><!-- version of the Jenkins -->
+  >   <url>http://server/hudson/</url><!-- the top page of the Jenkins -->
+  >   <slave-port>12345</slave-port><!-- TCP port number for slaves and CLIs to connect to -->
+  >   ... more elements may appear here ...
+  > </hudson>
+  > 
+  > Plugins can extend what to include in this XML fragment by contributing to the [UDPBroadcastFragment](http://javadoc.jenkins-ci.org/byShortName/UDPBroadcastFragment) extension point.
+  > 
+  > This feature can be disabled via the [`hudson.udp` system property](https://wiki.jenkins-ci.org/JENKINS/Features-controlled-by-system-properties.html).
+  > 
+  > ### From Java
+  > 
+  > See [the sample code](https://github.com/jenkinsci/swarm-plugin/blob/master/client/src/main/java/hudson/plugins/swarm/Client.java) written in Java that does auto-discovery via UDP broadcast.
+  > 
+  > # DNS multicast
+  > 
+  > Jenkins advertises itself at "\_jenkins.\_tcp.local" with DNS multicast. This is another way to discover Jenkins instances on the same subnet (or by extending the "\_jenkins.\_tcp" convention, you can discover Jenkins for arbitrary domain names, such as "\_jenkins.\_tcp.example.com", as a convention.) This works with version 1.359 and later.
+  > 
+  > The same version, url, and slave-port are available as the key/value pairs associated with the DNS record.
+  > 
+  > This feature can be disabled via the [`hudson.DNSMultiCast.disabled` system property](https://wiki.jenkins-ci.org/JENKINS/Features-controlled-by-system-properties.html).
+  > 
+  > ### From Java
+  > 
+  > You can use [jmDNS](http://jmdns.sourceforge.net/) if you want to perform DNS multi-cast service discovery from Java. The sample code is below:
+  > 
+  > import javax.jmdns.\*;
+  > 
+  > static class SampleListener implements ServiceListener {
+  >     public void addService(JmDNS jmdns, String type, String name) {
+  >         System.out.println("ADD: " + jmdns.getServiceInfo(type, name));
+  >     }
+  >     public void removeService(JmDNS jmdns, String type, String name) {
+  >         System.out.println("REMOVE: " + name);
+  >     }
+  >     public void resolveService(JmDNS jmdns, String type, String name, ServiceInfo info) {
+  >         System.out.println("RESOLVED: " + info);
+  >     }
+  > }
+  > 
+  > JmDNS jmdns = new JmDNS();
+  > jmdns.addServiceListener("jenkins.\_tcp.local.", new SampleListener());
+#+end_src
