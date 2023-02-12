@@ -106,3 +106,7 @@ A public abstract class in Java is a class that has been declared as public, mea
 ** What is public abstract method in Java?
 
 A public abstract method in Java is a method declared with the "public" and "abstract" keywords. The "public" keyword makes the method accessible from anywhere in the program, while the "abstract" keyword means that the method has no implementation, and must be overridden in a subclass. Abstract methods can only be declared in abstract classes, which cannot be instantiated on their own. When a subclass extends an abstract class, it must provide implementations for all of the abstract methods declared in the abstract class.
+
+** What is public final method in Java?
+
+A public final method in Java is a method that is declared with the "public" and "final" keywords. The "public" keyword means that the method can be accessed and used by any code outside of the class in which it is declared. The "final" keyword means that the method cannot be overridden or changed by any subclass. Once a public final method is defined in a class, it cannot be changed in any subclass. This is useful in cases where the method represents some essential behavior that should always remain the same, regardless of any changes made in subclasses.
