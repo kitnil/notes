@@ -10,6 +10,9 @@
 - [[https://github.com/saschpe/libvirt-hook-qemu][saschpe/libvirt-hook-qemu: Libvirt hook for setting up iptables port-forwarding rules when using NAT-ed networking.]]
 - [[https://github.com/aruhier/virt-backup][aruhier/virt-backup: Backup your kvm guests managed by libvirt]]
 
+* Cheat sheet
+- [[https://computingforgeeks.com/virsh-commands-cheatsheet/][Virsh commands cheatsheet to manage KVM guest virtual machines | ComputingForGeeks]]
+
 * virt-manager
 
 #+begin_example
