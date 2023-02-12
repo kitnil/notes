@@ -110,11 +110,10 @@ And more?
 
 Certainly, here are some additional open-source proxy servers for Windows:
 
-Squid: a widely-used proxy server for Unix and Linux-based systems, but also available for Windows.
-Tinyproxy: a lightweight and easy-to-configure proxy server.
-Privoxy: a non-caching web proxy with advanced filtering capabilities for enhancing privacy, modifying web page data and HTTP headers, controlling access, and removing ads and other obnoxious Internet junk.
-
-3Proxy: a tiny free proxy server, suitable for small network.
+*** Squid: a widely-used proxy server for Unix and Linux-based systems, but also available for Windows.
+*** Tinyproxy: a lightweight and easy-to-configure proxy server.
+*** Privoxy: a non-caching web proxy with advanced filtering capabilities for enhancing privacy, modifying web page data and HTTP headers, controlling access, and removing ads and other obnoxious Internet junk.
+*** 3Proxy: a tiny free proxy server, suitable for small network.
 ПАМЯТКА ПО НАСТРОЙКЕ
 1 Настрока сети
 2 Скачиваем 3proxy с официального сайта для Windows (Распаковываем на рабочий стол архив)
@@ -124,9 +123,8 @@ Privoxy: a non-caching web proxy with advanced filtering capabilities for enhanc
 6 Проверяем службу 3proxy через диспетчер задач
 7 Окрываем порт (диапазон портов) Панель управлени - Система и безопасность - Брандмауэр виндовс - Дополнительные параметры - Правила для входящих подключений - Создать правило - Для порта - Указываем порт - Даём имя правилу.
 8 Проверяем прокси
-
-Delegate: an advanced open source proxy server that can function as a HTTP, mail, SOCKS or proxying VPN server.
-Keep in mind that these servers may require some technical expertise to install, configure and maintain.
+*** Delegate: an advanced open source proxy server that can function as a HTTP, mail, SOCKS or proxying VPN server.
+*** Keep in mind that these servers may require some technical expertise to install, configure and maintain.
 
 * File systems
 - [[https://github.com/billziss-gh/winfsp][billziss-gh/winfsp: Windows File System Proxy - FUSE for Windows]]
