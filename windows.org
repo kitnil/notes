@@ -106,6 +106,17 @@ ReverseHTTP
 stunnel
 You may choose the one that fits your needs the best and try it out.
 
+And more?
+
+Certainly, here are some additional open-source proxy servers for Windows:
+
+Squid: a widely-used proxy server for Unix and Linux-based systems, but also available for Windows.
+Tinyproxy: a lightweight and easy-to-configure proxy server.
+Privoxy: a non-caching web proxy with advanced filtering capabilities for enhancing privacy, modifying web page data and HTTP headers, controlling access, and removing ads and other obnoxious Internet junk.
+3Proxy: a tiny free proxy server, suitable for small network.
+Delegate: an advanced open source proxy server that can function as a HTTP, mail, SOCKS or proxying VPN server.
+Keep in mind that these servers may require some technical expertise to install, configure and maintain.
+
 * File systems
 - [[https://github.com/billziss-gh/winfsp][billziss-gh/winfsp: Windows File System Proxy - FUSE for Windows]]
 - [[https://habr.com/ru/company/ruvds/blog/578292/][Кунг-фу стиля Linux: файловые системы пользовательского пространства теперь доступны и в Windows / Хабр]]
