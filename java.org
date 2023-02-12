@@ -106,6 +106,33 @@ https://www.youtube.com/watch?v=t1-YZ6bF-g0
 - [[https://gist.github.com/egeneralov/60ced37da0b40008a7b3345c89a280b9][java-opts-discover-cgroup-limits.txt]]
   : -XX:+UnlockExperimentalVMOptions -XX:+UseCGroupMemoryLimitForHeap -XX:MaxRAMFraction=1 -XshowSettings:vm
 
+** What is static method in Java?
+In Java, a static method is a method that belongs to a class rather than an instance of the class. Unlike non-static methods, which can be called on an instance of the class, static methods can be called directly on the class itself, without having to create an instance of the class first.
+
+A static method is declared using the "static" keyword in its declaration, like this:
+
+csharp
+Copy code
+public static void myMethod() {
+  // Code for the static method
+}
+Static methods are commonly used for utility functions that don't require access to instance-specific data, and are therefore shared across all instances of the class. For example, a static method could be used to perform a mathematical calculation, generate a random number, or format a string in a specific way.
+
+Static methods can access only static variables and other static methods within the same class. They cannot access instance variables or methods, as they do not have access to an instance of the class.
+
+Here's an example of how you might use a static method:
+
+csharp
+Copy code
+public class MyClass {
+  public static int add(int a, int b) {
+    return a + b;
+  }
+}
+
+// Call the static method directly on the class
+int result = MyClass.add(1, 2);
+
 * Maven
 - [[https://github.com/fzakaria/nixos-maven-example][fzakaria/nixos-maven-example: An example of how to use buildMaven with Nix to build a Maven project]]
 
