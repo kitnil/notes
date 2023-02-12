@@ -145,3 +145,7 @@ integerBox.setObject(123);
 ** What is public final class in Java?
 
 In Java, a public final class is a class that can be accessed from anywhere in the code and cannot be extended or subclassed. A final class is a class that cannot be subclassed. When a class is declared as public final, it means that it can be accessed from any other class in the code, but cannot be extended or subclassed. This is useful for creating utility classes or for enforcing certain constraints on the implementation of a class.
+
+** What is @Override in Java?
+
+In Java, the @Override annotation is used to indicate that a method is intended to override a method in a superclass. When you annotate a method with @Override, the compiler will check that the method being overridden actually exists in the superclass, and will generate an error if it doesn't. This helps to catch accidental naming errors and makes it easier to see when a method is intended to override a superclass method. The use of the @Override annotation is considered best practice in Java programming, and is widely used by Java developers.
