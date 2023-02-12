@@ -21,3 +21,21 @@
 * Misc
 - [[https://github.com/marcuslonnberg/sbt-docker][marcuslonnberg/sbt-docker: Create Docker images directly from sbt]]
 - [[https://github.com/chipsalliance/chisel3][chipsalliance/chisel3: Chisel 3: A Modern Hardware Design Language]]
+
+* Examples
+
+** Write me a Scala program with a shebung line to get https://www.gnu.org/ HTML page.
+
+import scala.io._
+import java.net.URL
+
+object GetHTML {
+
+  def main(args: Array[String]): Unit = {
+
+    val url = new URL("https://www.gnu.org/")
+    val htmlString = Source.fromURL(url).mkString
+    println(htmlString)
+  }
+
+}
