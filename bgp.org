@@ -141,3 +141,7 @@ php
 
 Box<Integer> integerBox = new Box<>();
 integerBox.setObject(123);
+
+** What is public final class in Java?
+
+In Java, a public final class is a class that can be accessed from anywhere in the code and cannot be extended or subclassed. A final class is a class that cannot be subclassed. When a class is declared as public final, it means that it can be accessed from any other class in the code, but cannot be extended or subclassed. This is useful for creating utility classes or for enforcing certain constraints on the implementation of a class.
