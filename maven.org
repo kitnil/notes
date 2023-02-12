@@ -1,0 +1,5 @@
+* How to find entry point in Maven project?
+
+The entry point of a Maven project is typically a Java class with a main method, which is used to start the application. In Maven, you can find the main class by looking in the pom.xml file of your project. The pom.xml file is the project configuration file for Maven and it will specify the main class in the <build><plugins><plugin><executions><execution><goals><goal>exec</goal></goals><configuration><mainClass> section.
+
+If you have a large project with multiple modules, you may have to look in multiple pom.xml files to find the main class. Once you have found the main class, you can run the Maven project from the command line by using the mvn exec:java command, which will start the application with the main method of the specified class.
