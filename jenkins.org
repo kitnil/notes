@@ -632,3 +632,6 @@ If you rebuilt the project, you would see a version 2 image created and the :lat
 - [[https://www.youtube.com/watch?v=tj3xYFA6Q2o][(10) How to Use the Warnings Next Generation Plugin in Jenkins - YouTube]]
 - [[https://www.youtube.com/watch?v=6WYIhxGReAc][(10) How to Integrate StackHawk With Jenkins - YouTube]]
 - [[https://www.youtube.com/watch?v=3H9eNIf9KZs][How to Monitor Jenkins With Grafana and Prometheus - YouTube]]
+
+* Development
+- [[file:~/src/github.com/jenkinsci/jenkins/war/pom.xml::<mainClass>Main</mainClass>][maven entry point]]
