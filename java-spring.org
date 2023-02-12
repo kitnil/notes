@@ -15,6 +15,20 @@
 - [[https://www.youtube.com/watch?v=vUo3cTE3Y0g][Алексей Нестеров — Spring Cloud в эру Kubernetes - YouTube]]
 - [[https://proglib.io/p/spring-data-mongodb][Знакомство со Spring Data MongoDB]]
 
+** Why people use Spring Boot framework?
+
+People use the Spring Boot framework for several reasons:
+
+    Easy to set up: Spring Boot provides an easy way to set up a new project with a minimum amount of configuration required. This makes it easier for developers to get started quickly with a new project.
+
+    Rapid Development: With its out-of-the-box features, developers can save time by not having to write boilerplate code, which speeds up the development process.
+
+    Versatility: Spring Boot is a highly flexible framework that can be used for developing a wide range of applications, from simple microservices to complex, enterprise-level applications.
+
+    Integration with other technologies: Spring Boot provides seamless integration with other popular Java technologies such as Hibernate, Spring Security, and Thymeleaf, making it easier to build comprehensive applications.
+
+    Large Community: Spring Boot has a large and active community of developers who are constantly contributing to its development and improvement. This community provides a wealth of resources and support, making it easier to find answers to any questions that arise during development.
+
 * Documentation
 
 - https://spring.io/guides/gs/messaging-rabbitmq/
