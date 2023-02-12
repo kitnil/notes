@@ -137,6 +137,48 @@ int result = MyClass.add(1, 2);
 
 A meta class in Java is a class that defines the structure of other classes. In other words, a meta class is a blueprint for creating instances of classes. It defines the fields, methods, and behaviors of the class that it represents. The term "meta class" is often used to describe the structure of the class hierarchy in object-oriented programming languages. In Java, the meta class is represented by the java.lang.Class class, which provides information about the structure of classes at runtime. You can use the java.lang.Class class to perform a variety of tasks, such as introspecting the structure of classes, accessing the fields and methods of classes, and creating instances of classes dynamically.
 
+** How could I list everything Java class could provide?
+
+You can use the java.lang.Class class in Java to get information about a class, including its methods, fields, constructors, and interfaces. The getMethods() method of java.lang.Class returns an array of Method objects that represents all the public methods declared in the class, including those declared in superclasses. The getFields() method returns an array of Field objects that represents all the public fields declared in the class, including those declared in superclasses. The getConstructors() method returns an array of Constructor objects that represents all the public constructors declared in the class. The getInterfaces() method returns an array of Class objects that represent all the interfaces implemented by the class.
+
+Here is an example that demonstrates how to use these methods:
+
+scss
+
+import java.lang.reflect.Method;
+import java.lang.reflect.Field;
+import java.lang.reflect.Constructor;
+
+public class Main {
+  public static void main(String[] args) throws Exception {
+    Class clazz = Class.forName("java.lang.String");
+
+    System.out.println("Methods:");
+    Method[] methods = clazz.getMethods();
+    for (Method method : methods) {
+      System.out.println(method);
+    }
+
+    System.out.println("Fields:");
+    Field[] fields = clazz.getFields();
+    for (Field field : fields) {
+      System.out.println(field);
+    }
+
+    System.out.println("Constructors:");
+    Constructor[] constructors = clazz.getConstructors();
+    for (Constructor constructor : constructors) {
+      System.out.println(constructor);
+    }
+
+    System.out.println("Interfaces:");
+    Class[] interfaces = clazz.getInterfaces();
+    for (Class anInterface : interfaces) {
+      System.out.println(anInterface);
+    }
+  }
+}
+
 * Maven
 - [[https://github.com/fzakaria/nixos-maven-example][fzakaria/nixos-maven-example: An example of how to use buildMaven with Nix to build a Maven project]]
 
