@@ -9,3 +9,7 @@ The basic idea behind a monad is to define a unit of computation that can be com
 ** Could you explain this for a child?
 
 A monad is a concept in computer programming that helps with the organization and processing of data. Think of it like a special kind of tool or container that holds information, and you can use this tool to manipulate and organize that information in a specific way. Just like how a magician might use different props or tricks to make things appear or disappear, a programmer might use monads to make their code work in a certain way. Monads are often used in functional programming, which is a type of programming that focuses on using mathematical functions to solve problems.
+
+* What is a functor in programming?
+
+A functor is a type of object in functional programming that implements the "map" operation. The "map" operation allows you to apply a function to the values contained within the functor and return a new functor with the results. This is useful for abstracting and composing functions, making it easier to write code that is both reusable and expressive. Functors can be thought of as a generalization of arrays, where you can map functions over the elements of an array and get a new array as the result.
