@@ -293,6 +293,25 @@ interface java.lang.CharSequence
 
 In Java, a public class is a class that can be accessed from anywhere in the program. A class is considered public if it is declared with the "public" keyword. This means that any other class in the program can create an object of this class, call its methods, or access its fields. Public classes are an important concept in Java as they allow for the creation of reusable code and objects that can be used throughout a program.
 
+** What is public static method in Java?
+
+In Java, a public static method is a method that is declared with the "public" and "static" access modifiers.
+
+The "public" access modifier means that the method can be accessed from anywhere in the code, including outside of the class that defines it. The "static" modifier means that the method belongs to the class and can be invoked without creating an instance of the class.
+
+A public static method can be called using the class name, without creating an instance of the class. For example:
+
+csharp
+
+public class MyClass {
+   public static void myMethod() {
+      // method code goes here
+   }
+}
+
+// Call the method
+MyClass.myMethod();
+
 * Maven
 - [[https://github.com/fzakaria/nixos-maven-example][fzakaria/nixos-maven-example: An example of how to use buildMaven with Nix to build a Maven project]]
 
