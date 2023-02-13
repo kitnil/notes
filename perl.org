@@ -9,6 +9,7 @@
 - [[https://github.com/purpleroc/gen_perl][purpleroc/gen_perl: A script to generate perl script for execute ELF in memory.]]
 - [[https://github.com/LvMalware/iperl][LvMalware/iperl: Interactive Perl interpreter]]
 - [[https://github.com/bscan/PerlNavigator][bscan/PerlNavigator: Perl Language Server that includes syntax checking, perl critic, and code navigation]]
+- [[https://github.com/manwar/perl-cool-snippets][manwar/perl-cool-snippets: Collection of Perl cool snippets.]]
 
 - print a line matching "two"
 : perl -nle 'print if m~two~' file.txt
