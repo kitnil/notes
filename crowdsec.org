@@ -5,6 +5,7 @@
 - [[https://serveradmin.ru/ustanovka-i-nastrojka-crowdsec/][Установка и настройка CrowdSec — Server Admin]]
 - [[https://github.com/maxlerebourg/crowdsec-bouncer-traefik-plugin][maxlerebourg/crowdsec-bouncer-traefik-plugin: Traefik plugin to apply crowdsec decisions from local API]]
 - [[https://www.linuxserver.io/blog/blocking-malicious-connections-with-crowdsec-and-swag][Blocking Malicious Connections With CrowdSec and SWAG | LinuxServer.io]]
+- [[https://app.crowdsec.net/cti?utm_campaign=Monthly%20Newsletter&utm_medium=email&_hsmi=245723051&_hsenc=p2ANqtz-9_7oe8jKK62HzWA_aqxxlOo91Ge_ZIN1jqLv7bsQyHXg_Z6lVf18rVvERINuDbRldwIpYraaQreljDmPVL10skvh5TyQ&utm_content=245520645&utm_source=hs_email][CrowdSec Threat Intelligence IP sheet | CrowdSec Console]]
 
 Разблокировать вручную конкретный ip можно следующей командой:
 
