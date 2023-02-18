@@ -34,6 +34,8 @@ lightest of data storage needs.
 
 * Cheat sheet
 
+- [[https://github.com/eon01/kubectl-SheetCheat][eon01/kubectl-SheetCheat: The Definitive Kubectl Sheetcheat. ⭐ Give it a star if you like it. Work (always) in progress !]]
+
 - [[https://gist.github.com/egeneralov/4309aec2994af7e025330509905e824e][chroot to host namespace]]
   #+begin_src bash
     #!/bin/sh -xe
