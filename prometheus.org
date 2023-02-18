@@ -76,6 +76,7 @@
 - [[https://github.com/lwch/proxmox-exporter][lwch/proxmox-exporter: proxmox exporter of prometheus]]
 - [[https://github.com/MyBook/zabbix-exporter][MyBook/zabbix-exporter: Zabbix metrics exporter for Prometheus]]
 - [[https://github.com/rzrbld/zabbix-exporter-3000][rzrbld/zabbix-exporter-3000: just another zabbix exporter for Prometheus]]
+- [[https://docs.bitnami.com/tutorials/implementing-slos-using-prometheus/][Implementing SLOs using Prometheus and Grafana]]
 : echo 'channel 1' | curl --data-binary @- http://127.0.0.1:9095/metrics/job/guix/instance/127.0.0.1:9100/name/guix/commit/d96f47f012571cdd6dd67c513e496042db303ca7
 : curl -X POST -g 'http://localhost:9090/api/v1/admin/tsdb/delete_series?match[]={instance="127.0.0.1:9101"}'
 : curl -XPOST http://127.0.0.1:9090/api/v1/admin/tsdb/clean_tombstones
