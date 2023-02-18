@@ -390,6 +390,9 @@ membership.
     concurrencyPolicy: Allow
 #+end_src
 
+* CNI
+- [[https://github.com/platform9/luigi][platform9/luigi: The plumber you'll hire to install all your Kubernetes network plumbing]]
+
 * Community
 - [[https://kubernetes.slack.com/][kubernetes.slack.com]]
   - [[https://slack.kubernetes.io/][slack.kubernetes.io]]
