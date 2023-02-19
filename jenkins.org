@@ -436,6 +436,9 @@ Jenkins.get().getItemMap().nixos.items()
 Jenkins.get().getItemMap().nixos.items[3].getItems()[6].scheduleBuild()
 Jenkins.get().getItemMap().nixos.items[3].getItems()[6].getSCMs()[1].getRepositories()[0].getURIs()
 
+  - find all jobs matching name
+    : Jenkins.instance.items.findAll{ folder -> folder.items.any { job -> job.name.contains("%2F") } }
+
 * Misc
 
 https://stackoverflow.com/a/53804057
