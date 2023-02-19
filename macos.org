@@ -17,3 +17,85 @@
 - [[https://github.com/CloverHackyColor/CloverBootloader][CloverHackyColor/CloverBootloader: Bootloader for macOS, Windows and Linux in UEFI and in legacy mode]]
 - [[https://github.com/rbreaves/kinto][rbreaves/kinto: Mac-style shortcut keys for Linux & Windows.]]
 - [[https://github.com/macbian-linux/macos-subsystem-for-linux][macbian-linux/macos-subsystem-for-linux: Guide on how to use Qemu to create a similar effect to Windows Subsystem for Linux on macOS. Unfinished; contributions are welcome!]]
+
+* [[https://www.tune-it.ru/web/ifsolo/blog/-/blogs/osx-v-qemu-kvm-s-gpu-passthrough?_com_liferay_blogs_web_portlet_BlogsPortlet_redirect=https%3A%2F%2Fwww.tune-it.ru%2Fweb%2Fifsolo%2Fblog%3Fp_p_id%3Dcom_liferay_blogs_web_portlet_BlogsPortlet%26p_p_lifecycle%3D0%26p_p_state%3Dnormal%26p_p_mode%3Dview%26_com_liferay_blogs_web_portlet_BlogsPortlet_mvcRenderCommandName%3D%252Fblogs%252Fview%26_com_liferay_blogs_web_portlet_BlogsPortlet_mvcRenderCommandName%3D%252Fblogs%252Fview%26_com_liferay_blogs_web_portlet_BlogsPortlet_cur%3D1%26_com_liferay_blogs_web_portlet_BlogsPortlet_delta%3D20][OSx в QEMU/KVM с GPU-passthrough - Блог - Tune IT]]
+
+OSx в QEMU/KVM с GPU-passthrough
+17 июня 2022 0 И Горь
+
+Operating System: Linux Mint 20.3
+Kernel: Linux 5.14.0-1042-oem
+?
+~$ /usr/bin/qemu-system-x86_64 --version
+QEMU emulator version 4.2.1 (Debian 1:4.2-3ubuntu6.21)
+
+GPU: Sapphire Radeon RX 570
+
+Ставим необходимые пакеты:
+?
+sudo apt udpate && sudo apt install git qemu-system qemu-utils python3 python3-pip -y
+
+Воспользуемся "macOS-Simple-KVM" - автоматизация скачивания нужного дистрибутива OSx для KVM с загрузчиком Clover.
+?
+git clone https://github.com/foxlet/macOS-Simple-KVM.git
+./jumpstart.sh --mojave <strong>(присутствуют следующие ключи для версий OSx: --high-sierra, --mojave, --catalina)</strong>
+
+Создаём диск:
+?
+qemu-img create -f qcow2 osx.qcow2 128G
+
+В скрипт basic.sh от "macOS-Simple-KVM", добавляем следующие строчки:
+?
+-drive id=SystemDisk,if=none,file=osx.qcow2 \
+-device ide-hd,bus=sata.4,drive=SystemDisk \
+
+Запускаем basic.sh
+?
+./basic.sh
+
+Подключаемся по VNC (port: 5900) к виртуальной машине и выбираем в Clover:
+
+​​​​​​​
+
+Выбираем Disk Utility и форматируем External диск в APFS, после чего сохраняем настройки и выбираем Reinstall macOS.
+
+Ожидаем окончание установки и настраиваем систему на старте.
+​​​​​​​GPU-passthrough
+
+В настройках BIOS/UEFI необходимо включить VT-d (Intel CPU) или AMD Vi (AMD CPU).
+
+Получаем id видеокарты:
+?
+lspci -nn | grep "VGA\|Audio"
+
+Пример вывода:
+?
+26:00.0 VGA compatible controller [0300]: Advanced Micro Devices, Inc. [AMD/ATI] Curacao XT / Trinidad XT [Radeon R7 370 / R9 270X/370X] [1002:6810]
+26:00.1 Audio device [0403]: Advanced Micro Devices, Inc. [AMD/ATI] Oland/Hainan/Cape Verde/Pitcairn HDMI Audio [Radeon HD 7000 Series] [1002:aab0]
+
+Где ​​​​​​​[1002:6810] и [1002:aab0] - GPU id.
+
+Включаем GPU в IOMMU группу редактируя /etc/default/grub:
+
+Для AMD:
+?
+GRUB_CMDLINE_LINUX_DEFAULT="amd_iommu=on iommu=pt"
+
+​​​​​​​Для Intel:​​​​​​​
+?
+GRUB_CMDLINE_LINUX_DEFAULT="intel_iommu=on"
+
+Добавляем GPU с нужными id:
+?
+GRUB_CMDLINE_LINUX_DEFAULT="amd_iommu=on iommu=pt kvm.ignore_msrs=1 vfio-pci.ids=1002:6810,1002:aab0"
+ 
+sudo update-grub
+
+В ранее редактиуремый basic.sh, добавляем:
+?
+-vga none \
+  -device pcie-root-port,bus=pcie.0,multifunction=on,port=1,chassis=1,id=port.1 \
+  -device vfio-pci,host=26:00.0,bus=port.1,multifunction=on,romfile=/path/to/card.rom \
+  -device vfio-pci,host=26:00.1,bus=port.1 \
+
+Перезапускаем виртуальную машину с OSx и проверяем доступность изображения через GPU.
