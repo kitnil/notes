@@ -5,3 +5,308 @@
 - [[https://www.gfnlist.com/free/][Free GeForce Now Games List]]
 - [[https://github.com/jef/nvidia-snatcher][jef/nvidia-snatcher: Autonomous robot for all your Nvidia needs]]
 - [[https://github.com/DualCoder/vgpu_unlock][DualCoder/vgpu_unlock: Unlock vGPU functionality for consumer grade GPUs.]]
+
+* [[https://www.tune-it.ru/web/ifsolo/blog/-/blogs/razblokirovka-vgpu-na-pol-zovatel-skih-videokartah-nvidia?_com_liferay_blogs_web_portlet_BlogsPortlet_redirect=https%3A%2F%2Fwww.tune-it.ru%2Fweb%2Fifsolo%2Fblog%3Fp_p_id%3Dcom_liferay_blogs_web_portlet_BlogsPortlet%26p_p_lifecycle%3D0%26p_p_state%3Dnormal%26p_p_mode%3Dview%26_com_liferay_blogs_web_portlet_BlogsPortlet_mvcRenderCommandName%3D%252Fblogs%252Fview%26_com_liferay_blogs_web_portlet_BlogsPortlet_mvcRenderCommandName%3D%252Fblogs%252Fview%26_com_liferay_blogs_web_portlet_BlogsPortlet_mvcRenderCommandName%3D%252Fblogs%252Fview%26_com_liferay_blogs_web_portlet_BlogsPortlet_mvcRenderCommandName%3D%252Fblogs%252Fview%26_com_liferay_blogs_web_portlet_BlogsPortlet_mvcRenderCommandName%3D%252Fblogs%252Fview%26_com_liferay_blogs_web_portlet_BlogsPortlet_mvcRenderCommandName%3D%252Fblogs%252Fview%26_com_liferay_blogs_web_portlet_BlogsPortlet_mvcRenderCommandName%3D%252Fblogs%252Fview%26_com_liferay_blogs_web_portlet_BlogsPortlet_mvcRenderCommandName%3D%252Fblogs%252Fview%26_com_liferay_blogs_web_portlet_BlogsPortlet_cur%3D1%26_com_liferay_blogs_web_portlet_BlogsPortlet_delta%3D20%26p_r_p_resetCur%3Dfalse][Разблокировка vGPU на пользовательских видеокартах NVIDIA - Блог - Tune IT]]
+
+
+22 ноября 2022 0 И Горь
+vGPU
+
+Одной из функций, поддерживаемых линейкой профессиональных видеокарт NVIDIA (Tesla, Qudro) - является виртуализация графического процессора. Это потенциально удобная функция в некоторых средах, поскольку она позволяет более чем одной виртуальной машине использовать ресурсы одного графического процессора. Эта функция официально недоступна на потребительских графических процессорах NVIDIA, но, как оказалось, ее можно активировать с помощью одного из взломов, предложенный сообществом.
+
+Nvidia vGPU — это запатентованная технология, разработанная NVIDIA для использования в центрах обработки данных с видеокартами Tesla и Quadro. Эта технология нацелена на рынок VDI для работы с различным программным обеспечением вкючающим в себя CAD/CAM системы, игры (GeForce Now) и многое другое ПО требующее графическое ускорение.
+
+vgpu_unlock (https://github.com/DualCoder/vgpu_unlock) разблокирует функцию vGPU для графических процессоров потребительского уровня, это не проверенный на многих системах инструмент, и его использование возможно только на свой страх и риск.
+
+​​​​​​​Реализация на Rust: https://github.com/mbilker/vgpu_unlock-rs
+​​​​​​​NVIDIA GRID драйвера: https://drive.google.com/file/d/1dCyUteA2MqJaemRKqqTu5oed5mINu9Bw/view
+NVIDIA vGPU документация: docs.nvidia.com/grid
+Требования
+
+Обязательным требованием для работы - включённая в BIOS виртуализация, для Intel это VT-X, для AMD это AMD-V. Обратите внимание, что IOMMU может быть необходим для правильной работы vGPU на некоторых системах. Также невомзожна работа на версии ядра Linux 5.13, желательно использовать более старое ядро.
+
+Одна из рекомендаций - использовать ядро Linux версии ниже 5.13.
+
+Для предварительной настройки системы, можно воспользоваться: ArchWiki: PCI passthrough via OVMF
+
+How it works
+
+Инициализация устройства vGPU обрабатывается модулем ядра, и он выполняет собственную проверку возможностей видеокарты на vGPU. Модуль ядра отображает диапазон физических адресов PCI 0xf0000000-0xf1000000 в свое виртуальное адресное пространство, а затем выполняет какие-то волшебные операции, которые мы на самом деле не знаем, что они делают. Что мы знаем, так это то, что после этих операций он получает доступ к 128-битному значению по физическому адресу 0xf0029624, которое мы называем магическим значением. Модуль ядра также обращается к 128-битному значению по физическому адресу 0xf0029634, которое мы называем значением ключа.
+
+Затем модуль ядра использует две таблицы для поиска для магического значения, одну для графических процессоров с поддержкой vGPU и одну для остальных. Таким образом, модуль ядра ищет магическое значение в обеих этих таблицах поиска, и если обнаруживается, что запись таблицы также содержит набор зашифрованных блоков данных AES-128 и подписанный HMAC-SHA256. Затем подпись проверяется с использованием значения ключа, упомянутого ранее, для вычисления подписи HMAC-SHA256 по зашифрованным блокам данных. Если подпись правильная, то блоки расшифровываются с помощью AES-128 и того же ключа. Внутри расшифрованных данных находится PCI Device ID. Таким образом, для того, чтобы модуль ядра принял процессор GPU как способный к работе с vGPU, магическое значение должно совпадать со значением в таблице магических значений, поддерживающих vGPU, ключ должен генерировать действительную подпись HMAC-SHA256, а дешифрованные блоки данных AES-128 должны содержать идентификатор устройства PCI с поддержкой vGPU. Если какая-либо из этих проверок не пройдена, возвращается код ошибки 0x56 «Call not supported».
+
+Пример Device ID видеокарт для индентификации устройств:
+?
+// GM107
+if(actual_devid == 0x1390 || // GTX 845M
+   actual_devid == 0x1391 || // GTX 850M
+   actual_devid == 0x1392 || // GTX 860M
+   actual_devid == 0x139a || // GTX 950M
+   actual_devid == 0x139b || // GTX 960M
+   actual_devid == 0x139c || // GTX 940M
+   actual_devid == 0x139d || // GTX 750 Ti Maxwell
+   actual_devid == 0x179c || // GTX 940MX
+   actual_devid == 0x1380 || // GTX 750 Ti Maxwell
+   actual_devid == 0x1381 || // GTX 750 Maxwell
+   actual_devid == 0x1382 || // GTX 745 Maxwell
+   actual_devid == 0x13b0 || // Quadro M2000 Mobile
+   actual_devid == 0x13b1 || // Quadro M1000 Mobile
+   actual_devid == 0x13b2 || // Quadro M600 Mobile
+   actual_devid == 0x13b3 || // Quadro K2200 Mobile
+   actual_devid == 0x13b4 || // Quadro M620 Mobile
+   actual_devid == 0x13b6 || // Quadro M1200 Mobile
+   actual_devid == 0x13b9 || // NVS 810
+   actual_devid == 0x13ba || // Quadro K2200
+   actual_devid == 0x13bb || // Quadro K620
+   actual_devid == 0x13bc) { // Quadro K1200               
+    spoofed_devid = 0x13bd; // Tesla M10
+}
+// GM204
+if(actual_devid == 0x13c3 || // GTX 960 GM204 OEM Edition
+   actual_devid == 0x13d9 || // GTX 965M
+   actual_devid == 0x13d8 || // GTX 970M
+   actual_devid == 0x13c2 || // GTX 970
+   actual_devid == 0x13d7 || // GTX 980M
+   actual_devid == 0x13c0 || // GTX 980
+   actual_devid == 0x13c1 || // GM204 Unknown
+   actual_devid == 0x13f1 || // Quadro M4000
+   actual_devid == 0x13f0) { // Quadro M5000
+    spoofed_devid = 0x13f2; // Tesla M60
+}
+// GP102
+if(actual_devid == 0x1b00 || // TITAN X (Pascal)
+   actual_devid == 0x1b02 || // TITAN Xp
+   actual_devid == 0x1b06 || // GTX 1080 Ti
+   actual_devid == 0x1b30) { // Quadro P6000
+    spoofed_devid = 0x1b38; // Tesla P40
+}
+// GP108 (Merged with Tesla P4, will move to M10 in future due to 2GB VRAM)
+if(actual_devid == 0x1d01 || // GT 1030
+   actual_devid == 0x1d10 || // MX150 Mobile
+   actual_devid == 0x1d11 || // MX230 Mobile
+   actual_devid == 0x1d12 || // MX150 Mobile
+   actual_devid == 0x1d13 || // MX250 Mobile
+   actual_devid == 0x1d16 || // MX330 Mobile
+// GP107 (Merged with Tesla P4, may move to M10 in future due to low VRAM)
+   actual_devid == 0x1cb1 || // Quadro P1000
+   actual_devid == 0x1c81 || // GTX 1050 2GB
+   actual_devid == 0x1c82 || // GTX 1050 Ti
+   actual_devid == 0x1c83 || // GTX 1050 3GB
+   actual_devid == 0x1c8c || // GTX 1050 Ti Mobile
+   actual_devid == 0x1c8d || // GTX 1050 Mobile
+   actual_devid == 0x1c8f || // GTX 1050 Ti Max-Q
+   actual_devid == 0x1c90 || // MX150 Mobile
+   actual_devid == 0x1c92 || // GTX 1050 Mobile
+   actual_devid == 0x1c94 || // MX350 Mobile
+   actual_devid == 0x1c96 || // MX350 Mobile
+// GP106 (Merged with Tesla P4)
+   actual_devid == 0x1c03 || // GTX 1060 6GB
+   actual_devid == 0x1c04 || // GTX 1060 5GB
+   actual_devid == 0x1c02 || // GTX 1060 3GB
+   actual_devid == 0x1c07 || // P106-100 6GB
+   actual_devid == 0x1c09 || // P106-90  3GB
+   actual_devid == 0x1c22 || // GTX 1050 Mobile
+   actual_devid == 0x1c23 || // GTX 1060 Mobile Rev. 2
+   actual_devid == 0x1c20 || // GTX 1060 Mobile
+   actual_devid == 0x1c21 || // GTX 1050 Ti Mobile
+   actual_devid == 0x1c2d || // GP106M Generic
+   actual_devid == 0x1c60 || // GTX 1060 Mobile 6GB
+   actual_devid == 0x1c61 || // GTX 1050 Ti Mobile
+   actual_devid == 0x1c62 || // GTX 1050 Mobile
+   actual_devid == 0x1c70 || // GP106GL Generic
+   actual_devid == 0x1c30 || // Quadro P2000 
+   actual_devid == 0x1c31 || // Quadro P2200
+// GP104
+   actual_devid == 0x1b80 || // GTX 1080
+   actual_devid == 0x1b81 || // GTX 1070
+   actual_devid == 0x1b82 || // GTX 1070 Ti
+   actual_devid == 0x1b83 || // GTX 1060 6GB GP104 Refresh
+   actual_devid == 0x1b84 || // GTX 1060 3GB GP104 Refresh
+   actual_devid == 0x1b87 || // P104-100 Mining Card
+   actual_devid == 0x1ba0 || // GTX 1080 Mobile
+   actual_devid == 0x1ba1 || // GTX 1070 Mobile
+   actual_devid == 0x1bb0) { // Quadro P5000 (This will be moved to Tesla P6 in the future)
+    spoofed_devid = 0x1bb3; // Tesla P4
+}
+// GV100 (For the one person who owns a Titan Volta)
+if(actual_devid == 0x1d81 || // TITAN V
+   actual_devid == 0x1dba) { // Quadro GV100 32GB
+    spoofed_devid = 0x1db4; // Tesla V100
+}
+// TU102
+if(actual_devid == 0x1e02 || // TITAN RTX
+   actual_devid == 0x1e04 || // RTX 2080 Ti
+   actual_devid == 0x1e07) { // RTX 2080 Ti Rev. A
+    spoofed_devid = 0x1e30; // Quadro RTX 6000
+    spoofed_subsysid = 0x12ba;
+}
+// TU117 (Merged with Tesla T4)
+if(actual_devid == 0x1ff9 || // Quadro T1000 Mobile
+   actual_devid == 0x1f99 || // TU1117 Mobile Unknown
+   actual_devid == 0x1fae || // TU1117GL Unknown
+   actual_devid == 0x1fb8 || // Quadro T2000 Mobile Max-Q
+   actual_devid == 0x1fb9 || // Quadro T1000 Mobile
+   actual_devid == 0x1fbf || // TU1117GL Unknown
+   actual_devid == 0x1f97 || // GeForce MX450
+   actual_devid == 0x1f98 || // GeForce MX450
+   actual_devid == 0x1f9c || // GeForce MX450
+   actual_devid == 0x1fbb || // Quadro T500 Mobile
+   actual_devid == 0x1fd9 || // GeForce GTX 1650 Mobile Refresh
+   actual_devid == 0x1f81 || // TU117 Unknown
+   actual_devid == 0x1f82 || // GeForce GTX 1650
+   actual_devid == 0x1f91 || // GTX 1650 Mobile Max-Q
+   actual_devid == 0x1f92 || // GTX 1650 Mobile
+   actual_devid == 0x1f94 || // GTX 1650 Mobile
+   actual_devid == 0x1f95 || // GTX 1650 Ti Mobile
+   actual_devid == 0x1f96 || // GTX 1650 Mobile Max-Q
+// TU116 (Merged with Tesla T4)
+   actual_devid == 0x2182 || // GTX 1660 Ti
+   actual_devid == 0x2183 || // TU116 Unknown
+   actual_devid == 0x2184 || // GTX 1660
+   actual_devid == 0x2187 || // GTX 1650 SUPER
+   actual_devid == 0x2188 || // GTX 1650
+   actual_devid == 0x2191 || // GTX 1660 Ti Mobile
+   actual_devid == 0x2192 || // GTX 1650 Ti Mobile
+   actual_devid == 0x21ae || // TU116GL Unknown
+   actual_devid == 0x21bf || // TU116GL Unknown
+   actual_devid == 0x21c4 || // GTX 1660 Super
+   actual_devid == 0x21d1 || // GTX 1660 Ti Mobile
+// TU106 (Merged with Tesla T4)
+   actual_devid == 0x1f02 || // RTX 2070 8GB
+   actual_devid == 0x1f04 || // TU106 Unknown
+   actual_devid == 0x1f06 || // RTX 2060 SUPER
+   actual_devid == 0x1f07 || // RTX 2070 Rev. A
+   actual_devid == 0x1f08 || // RTX 2060 6GB
+   actual_devid == 0x1f09 || // GTX 1660 Super
+   actual_devid == 0x1f0a || // GTX 1650
+   actual_devid == 0x1f10 || // RTX 2070 Mobile
+   actual_devid == 0x1f11 || // RTX 2060 Mobile
+   actual_devid == 0x1f12 || // RTX 2060 Mobile Max-Q
+   actual_devid == 0x1f14 || // RTX 2070 Mobile Max-Q
+   actual_devid == 0x1f15 || // RTX 2060 Mobile
+   actual_devid == 0x1f2e || // TU106M Mobile Unknown
+   actual_devid == 0x1f36 || // TU106GLM Mobile Unknown
+   actual_devid == 0x1f42 || // RTX 2060 SUPER
+   actual_devid == 0x1f47 || // RTX 2060 SUPER
+   actual_devid == 0x1f50 || // RTX 2070 Mobile
+   actual_devid == 0x1f51 || // RTX 2060 Mobile
+// TU104
+   actual_devid == 0x1e81 || // RTX 2080 Super
+   actual_devid == 0x1e82 || // RTX 2080
+   actual_devid == 0x1e84 || // RTX 2070 Super
+   actual_devid == 0x1e87 || // RTX 2080 Rev. A
+   actual_devid == 0x1e89 || // RTX 2060
+   actual_devid == 0x1eb0 || // Quadro RTX 5000
+   actual_devid == 0x1eb1) { // Quadro RTX 4000
+    spoofed_devid = 0x1eb8; // Tesla T4
+}
+// GA102
+if(actual_devid == 0x2204 || // RTX 3090
+   actual_devid == 0x2205 || // RTX 3080 Ti
+   actual_devid == 0x2206) { // RTX 3080
+    spoofed_devid = 0x2235; // RTX A40
+}
+Использование
+
+​​​​​​​В данном сценарии, используется ОС Ubuntu 18.04 с версией ядра 5.4.0-12.15.
+
+Включить IOMMU в boot параметрах GRUB.
+​​​​​​​В /etc/default/grub необходимо добавить:
+?
+GRUB_CMDLINE_LINUX_DEFAULT="intel_iommu=on" - для процессоров Intel  
+GRUB_CMDLINE_LINUX_DEFAULT="quiet splash amd_iommu=on" - для процессоров AMD
+
+После чего, перезагружаемся.
+
+Проверяем работу IOMMU:
+?
+dmesg | grep -e DMAR -e IOMMU
+
+​​​​​​​Должен получится вывод следующего вида:
+?
+[    0.011690] ACPI: DMAR 0x000000009BC4C000 0000A8 (v01 LENOVO CB-01    00000001      01000013)
+[    0.011734] ACPI: Reserving DMAR table memory at [mem 0x9bc4c000-0x9bc4c0a7]
+[    0.255464] DMAR: Host address width 39
+[    0.255465] DMAR: DRHD base: 0x000000fed90000 flags: 0x0
+[    0.255471] DMAR: dmar0: reg_base_addr fed90000 ver 1:0 cap 1c0000c40660462 ecap 19e2ff0505e
+[    0.255474] DMAR: DRHD base: 0x000000fed91000 flags: 0x1
+[    0.255479] DMAR: dmar1: reg_base_addr fed91000 ver 1:0 cap d2008c40660462 ecap f050da
+[    0.255481] DMAR: RMRR base: 0x0000009b145000 end: 0x0000009b164fff
+[    0.255483] DMAR: RMRR base: 0x0000009d000000 end: 0x0000009f7fffff
+[    0.255485] DMAR-IR: IOAPIC id 2 under DRHD base  0xfed91000 IOMMU 1
+[    0.255487] DMAR-IR: HPET id 0 under DRHD base 0xfed91000
+[    0.255488] DMAR-IR: Queued invalidation will be enabled to support x2apic and Intr-remapping.
+[    0.258742] DMAR-IR: Enabled IRQ remapping in x2apic mode
+
+Устанавливаем необходимые пакеты:
+?
+apt install -y git build-essential dkms git
+
+Устанавливаем Rust и компилириуем vgpu_unlock-rs:
+?
+git clone https://github.com/mbilker/vgpu_unlock-rs.git
+curl https://sh.rustup.rs -sSf | sh -s -- -y
+source $HOME/.cargo/env
+cd vgpu_unlock-rs/
+cargo build --release
+
+Скачиваем NVIDIA Grid драйвер, указанный в начале статьи и устанавливаем его:
+?
+chmod +x NVIDIA-Linux-x86_64-460.73.01-grid-vgpu-kvm-v5.run
+./NVIDIA-Linux-x86_64-460.73.01-grid-vgpu-kvm-v5.run --dkms
+ 
+(перезагружаемся)
+ 
+reboot
+
+Проверяем успешную установку драйвера:
+​​​​​​
+?
+nvidia-smi
+?
+Tue Nov 22 14:14:51 2022       
++-----------------------------------------------------------------------------+
+| NVIDIA-SMI 515.65.01    Driver Version: 515.65.01    CUDA Version: 11.7     |
+|-------------------------------+----------------------+----------------------+
+| GPU  Name        Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |
+|                               |                      |               MIG M. |
+|===============================+======================+======================|
+|   0  NVIDIA GeForce ...  Off  | 00000000:01:00.0  On |                  N/A |
+| N/A   45C    P8     3W /  N/A |     54MiB /  4096MiB |     21%      Default |
+|                               |                      |                  N/A |
++-------------------------------+----------------------+----------------------+
+                                                                                
++-----------------------------------------------------------------------------+
+| Processes:                                                                  |
+|  GPU   GI   CI        PID   Type   Process name                  GPU Memory |
+|        ID   ID                                                   Usage      |
+|=============================================================================|
+|    0   N/A  N/A      1395      G   /usr/lib/xorg/Xorg                 53MiB |
++-----------------------------------------------------------------------------+
+
+
+​​​​​Проверяем разблокировку vGPU:
+?
+mdevctl types
+
+Вывод:
+?
+0000:01:00.0
+  nvidia-256
+    Available instances: 24
+    Device API: vfio-pci
+    Name: GRID RTX6000-1Q
+    Description: num_heads=4, frl_config=60, framebuffer=1024M, max_resolution=5120x2880, max_instance=24
+  nvidia-257
+    Available instances: 12
+    Device API: vfio-pci
+    Name: GRID RTX6000-2Q
+    Description: num_heads=4, frl_config=60, framebuffer=2048M, max_resolution=7680x4320, max_instance=12
+  nvidia-258
+    Available instances: 8
+    Device API: vfio-pci
+    Name: GRID RTX6000-3Q
+    Description: num_heads=4, frl_config=60, framebuffer=3072M, max_resolution=7680x4320, max_instance=8
+
+Данные инстансы могут в дальнейшем изспользоваться для GPU-Passtrought в гостевые виртуальные машины.
