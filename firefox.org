@@ -236,6 +236,76 @@ Use your operating system settings for “English (United Kingdom)” to format 
   ]
 #+END_EXAMPLE
 
+** [[https://www.tune-it.ru/web/ifsolo/blog/-/blogs/proksirovanie-opredelennogo-spiska-adresov-v-brauzere?_com_liferay_blogs_web_portlet_BlogsPortlet_redirect=https%3A%2F%2Fwww.tune-it.ru%2Fweb%2Fifsolo%2Fblog%3Fp_p_id%3Dcom_liferay_blogs_web_portlet_BlogsPortlet%26p_p_lifecycle%3D0%26p_p_state%3Dnormal%26p_p_mode%3Dview%26_com_liferay_blogs_web_portlet_BlogsPortlet_mvcRenderCommandName%3D%252Fblogs%252Fview%26_com_liferay_blogs_web_portlet_BlogsPortlet_mvcRenderCommandName%3D%252Fblogs%252Fview%26_com_liferay_blogs_web_portlet_BlogsPortlet_mvcRenderCommandName%3D%252Fblogs%252Fview%26_com_liferay_blogs_web_portlet_BlogsPortlet_mvcRenderCommandName%3D%252Fblogs%252Fview%26_com_liferay_blogs_web_portlet_BlogsPortlet_cur%3D2%26_com_liferay_blogs_web_portlet_BlogsPortlet_delta%3D20%26p_r_p_resetCur%3Dfalse][Проксирование определённого списка адресов в браузере - Блог - Tune IT]]
+
+
+Проксирование определённого списка адресов в браузере
+8 апреля 2021 0 И Горь
+
+PAC-файл - это файл автоконфигурации прокси-сервера, он определяет какой прокси сервер должен использовать браузер для доступа к конкретному адресу.
+
+​​​​​​​В данном файле определнна только одна функция:
+?
+1
+	
+function FindProxyForURL(url, host)
+
+​​​​​​​Где url - полный адрес ресурса, а host - значение, которое необходимо вытащить.
+
+​​​​​​​Пример PAC файла со списком адресов:
+ 
+?
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+	
+function FindProxyForURL(url, host) {
+    // Адрес прокси сервера и порт
+    var proxyserver = 'tune-it.ru:1337';
+    //
+    //  Лист хостов для проксирования
+    //
+    var proxylist = new Array(
+        "tune-it.ru",
+        "yandex.ru",
+        "google.com",
+    );
+    for(var i=0; i<proxylist.length; i++) {
+        var value = proxylist[i];
+        if ( localHostOrDomainIs(host, value) ) {
+            return "PROXY "+proxyserver;
+        }
+    }
+    return "DIRECT";
+}
+
+Установка файла в браузере на примере Firefox:
+
+https://www.tune-it.ru/documents/portlet_file_entry/3008428/Screenshot_1+%281%29.png/16eb56eb-09b5-b180-c910-0f06b8e98213?imagePreview=1
+
+Configure Proxy Access to the Internet
+
+Automatic proxy configuration URL:
+192.168.0.1/test.pac
+
+Файл имеет множество других сценариев реализации. Один из примеров - генерация PAC-файла по мере обновления JSON выгрузки с определёнными списками сайтов.
+
 * Emacs keys
 
   https://www.reddit.com/r/emacs/comments/aupgmd/firefox_key_fixes_for_emacs_users/
