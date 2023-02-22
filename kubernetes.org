@@ -1211,3 +1211,47 @@ then redeploy with:
 - [[https://github.com/crossplane/provider-template][crossplane/provider-template: A template for building @crossplane providers.]]
 - [[https://github.com/crossplane/terrajet][crossplane/terrajet: Generate Crossplane Providers from any Terraform Provider]]
 
+* ChatGPT
+
+How to tell kubernetes deployment not to run pod on specific node?
+
+There are a few ways to tell Kubernetes not to run a pod on a specific node:
+
+    Node Selector: You can use a node selector to specify which nodes the pod can run on. You can label the node you want to exclude, and then add a node selector to the pod specification that excludes that label. For example, to exclude a node with a label node-type=exclude, you can add the following to the pod spec:
+
+python
+
+nodeSelector:
+  node-type: "not-exclude"
+
+    Node Affinity: Node affinity allows you to specify rules for the scheduling of pods based on the labels of the nodes. You can use node affinity to exclude a node by setting a negative match expression. For example, to exclude a node with a label node-type=exclude, you can add the following to the pod spec:
+
+yaml
+
+affinity:
+  nodeAffinity:
+    requiredDuringSchedulingIgnoredDuringExecution:
+      nodeSelectorTerms:
+        - matchExpressions:
+            - key: node-type
+              operator: NotIn
+              values:
+                - exclude
+
+    Taints and tolerations: Taints are used to mark a node as unsuitable for certain pods. Tolerations are used to allow pods to be scheduled on nodes with specific taints. You can use taints and tolerations to exclude a node by tainting the node and adding a corresponding toleration to the pod. For example, to exclude a node with a taint of exclude=true:NoSchedule, you can add the following to the node:
+
+java
+
+kubectl taint nodes <node-name> exclude=true:NoSchedule
+
+And then add the following to the pod spec:
+
+vbnet
+
+tolerations:
+  - key: exclude
+    operator: "Equal"
+    value: "true"
+    effect: "NoSchedule"
+
+These are just a few examples of how you can exclude a node from running a pod in Kubernetes. The approach you choose will depend on your specific use case and requirements.
