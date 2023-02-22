@@ -68,6 +68,7 @@
 - [[https://github.com/jeffmhubbard/multilockscreen][jeffmhubbard/multilockscreen: i3lock wrapper with multi-monitor support]]
 - [[https://github.com/go-vgo/robotgo][go-vgo/robotgo: RobotGo, Go Native cross-platform GUI automation @vcaesar]]
 - [[https://gitlab.com/amiloradovsky/magnify][Andrew Miloradovsky / magnify · GitLab]]
+- [[https://github.com/siduck/bubbly][siduck/bubbly: Generate chat bubble like widgets on screen via keystrokes on Linux ( WIP )]]
 ** xnotify
    #+begin_src bash
      export XNOTIFY_FIFO="$HOME/.cache/xnotify$DISPLAY.fifo"
