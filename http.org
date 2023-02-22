@@ -48,3 +48,31 @@
 - [[https://github.com/xnbox/DeepfakeHTTP][xnbox/DeepfakeHTTP: DeepfakeHTTP is a web server that uses HTTP dumps as a source for responses.]]
 - [[https://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B8%D1%81%D0%BE%D0%BA_%D0%BA%D0%BE%D0%B4%D0%BE%D0%B2_%D1%81%D0%BE%D1%81%D1%82%D0%BE%D1%8F%D0%BD%D0%B8%D1%8F_HTTP][Список кодов состояния HTTP — Википедия]]
   - [[https://upload.wikimedia.org/wikipedia/commons/6/65/Http-headers-status.gif][Http-headers-status.gif (GIF Image, 3138 × 2184 pixels) — Scaled (44%)]]
+
+* ChatGPT
+
+Recommend me top 10 smallest HTTP servers which could serve static files.
+
+Sure, here are 10 of the smallest HTTP servers that can serve static files:
+
+    BusyBox HTTPD - This is a very small HTTP server that is included in BusyBox, a collection of Unix utilities. It is lightweight and fast, and is ideal for serving static files. The binary size is about 500 KB.
+
+    Mongoose - This is a lightweight, open-source web server that is designed to be embedded in other applications. It has a binary size of about 300 KB and can serve static files as well as dynamic content.
+
+    Nostromo - Nostromo is a simple and secure HTTP server that is designed to be used on Unix-like systems. It has a binary size of about 300 KB and can serve static files.
+
+    Hiawatha - Hiawatha is a lightweight web server that is designed to be easy to configure and secure. It has a binary size of about 1 MB and can serve static files as well as dynamic content.
+
+    Lighttpd - Lighttpd is a fast and lightweight web server that is designed to be scalable and efficient. It has a binary size of about 2 MB and can serve static files as well as dynamic content.
+
+    Caddy - Caddy is a modern web server that is designed to be easy to use and configure. It has a binary size of about 10 MB and can serve static files as well as dynamic content.
+
+    Boa - Boa is a small and fast web server that is designed to be used on embedded systems. It has a binary size of about 300 KB and can serve static files as well as dynamic content.
+
+    Thttpd - Thttpd is a lightweight and secure web server that is designed to be easy to configure. It has a binary size of about 250 KB and can serve static files as well as dynamic content.
+
+    Monkey - Monkey is a lightweight and fast web server that is designed to be used on small embedded systems. It has a binary size of about 1 MB and can serve static files as well as dynamic content.
+
+    SimpleHTTPServer - SimpleHTTPServer is a small and simple web server that is included with Python. It has a binary size of about 50 KB and can serve static files.
+
+Note that the size of the binary may vary depending on the platform and build options used.
