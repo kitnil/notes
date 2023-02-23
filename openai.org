@@ -105,6 +105,7 @@ These are just a few of the many open-source and self-hosted alternatives to Ope
 
 * Libraries
 - [[https://github.com/rgommezz/react-native-chatgpt][rgommezz/react-native-chatgpt: A React Native wrapper around ChatGPT to seamlessly integrate it with your applications. It handles authentication, streamed responses, and keeping track of conversations. 100% client-side]]
+- [[https://github.com/zccbbg/chatgpt-springboot-service][zccbbg/chatgpt-springboot-service: 是一个基于Springboot的一个后端服务，用于实时接收chatGPT的消息，并通过websocket的方式实时反馈前端。本项目还可以助你将GPT机器人集成到钉钉群聊中，通过@机器人进行聊天交互。]]
 
 * Tools
 - [[https://github.com/869413421/chatgpt-web][869413421/chatgpt-web: 一键部署属于自己定制化的 chatgpt web程序]]
