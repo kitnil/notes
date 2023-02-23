@@ -1167,6 +1167,7 @@ then redeploy with:
 - [[https://github.com/tommy351/pullup][tommy351/pullup: Update Kubernetes resources by webhooks.]]
 - [[https://github.com/topolvm/pvc-autoresizer][topolvm/pvc-autoresizer: Auto-resize PersistentVolumeClaim objects based on Prometheus metrics]]
 - [[https://github.com/traefik/mesh][traefik/mesh: Traefik Mesh - Simpler Service Mesh]]
+- [[https://github.com/tricorder-observability/starship][tricorder-observability/starship: Starship: next-generation Observability platform built with eBPF+WASM]]
 - [[https://github.com/Trois-Six/k8s-diagrams][Trois-Six/k8s-diagrams: Create diagrams from the Kubernetes API with go-diagrams.]]
 - [[https://github.com/troytop/cfk8sterm][troytop/cfk8sterm: A ttyd web terminal image on Alpine with cf, kubectl, and other tools]]
 - [[https://github.com/txn2/kubefwd][txn2/kubefwd: Bulk port forwarding Kubernetes services for local development.]]
