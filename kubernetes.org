@@ -1088,6 +1088,7 @@ then redeploy with:
 - [[https://github.com/kubernetes-sigs/kwok][kubernetes-sigs/kwok: Simulate thousands of fake kubelets, on a laptop with minimum resource footprint.]]
 - [[https://github.com/kubernetes-sigs/metrics-server][kubernetes-sigs/metrics-server: Scalable and efficient source of container resource metrics for Kubernetes built-in autoscaling pipelines.]]
 - [[https://github.com/kubernetes-sigs/node-feature-discovery][kubernetes-sigs/node-feature-discovery: Node feature discovery for Kubernetes]]
+- [[https://github.com/kubesphere/kube-events][kubesphere/kube-events: K8s Event Exporting, Filtering and Alerting in Multi-Tenant Environment]]
 - [[https://github.com/kubevious/kubevious][kubevious/kubevious: Kubevious - application centric Kubernetes UI and continuous assurance provider]]
 - [[https://github.com/kube-vip/kube-vip][kube-vip/kube-vip: Kubernetes Control Plane Virtual IP and Load-Balancer]]
 - [[https://kubevirt.io/][KubeVirt.io Building a virtualization API for Kubernetes]]
