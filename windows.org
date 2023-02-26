@@ -232,6 +232,9 @@ Keep in mind that while Select-String and other Windows PowerShell cmdlets can p
   3. For the setting, right-click Enable insecure guest logons and select Edit.
   4. Select Enabled and select OK.
 
+* Logging
+- [[https://github.com/Yamato-Security/EnableWindowsLogSettings][Yamato-Security/EnableWindowsLogSettings: Documentation and scripts to properly enable Windows event logs.]]
+
 * Packer
 - [[https://github.com/luciusbono/Packer-Windows10][luciusbono/Packer-Windows10: A Packer build for Windows 10]]
 - [[https://github.com/andif888/packer-windows-vsphere-iso][andif888/packer-windows-vsphere-iso: This repo builds automatically Windows VM templates (Windows 11, Windows 10, Server 2019, Server 2022) for VMware vSphere environment using Hashicorp's Packer using freely available Windows Eval ISOs.]]
