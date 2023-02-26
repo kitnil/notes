@@ -5,3 +5,11 @@
 - [[https://github.com/mikeslattery/tunic][mikeslattery/tunic: Install Linux from a running Windows system, without need for a live USB.]]
 - [[https://github.com/stank58/Powershell-Scripts][stank58/Powershell-Scripts: Helpful list of powershell scripts I have found/created]]
 - [[https://github.com/DarkCoderSc/PowerRemoteDesktop][DarkCoderSc/PowerRemoteDesktop: Remote Desktop entirely coded in PowerShell.]]
+
+* Cheat sheet
+
+- list processes
+  : Get-Process
+
+- kill process
+  : taskkill.exe /pid 3060 /f
