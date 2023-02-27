@@ -1257,3 +1257,29 @@ tolerations:
     effect: "NoSchedule"
 
 These are just a few examples of how you can exclude a node from running a pod in Kubernetes. The approach you choose will depend on your specific use case and requirements.
+
+** How much does Helm give overhead in Kubernetes?
+
+Helm is a package manager for Kubernetes that helps you manage and deploy applications to your Kubernetes cluster. While Helm does add some overhead to your Kubernetes deployment, the benefits it provides can far outweigh the costs.
+
+The amount of overhead that Helm adds to your Kubernetes deployment will depend on a variety of factors, including the complexity of your application, the size of your cluster, and the resources available to you.
+
+Here are some potential areas where Helm might add overhead to your Kubernetes deployment:
+
+    Resource usage: Helm uses additional resources in your cluster to manage the deployment of your applications. This includes additional Kubernetes objects such as releases, charts, and config maps. Depending on the size and complexity of your deployment, this could impact the performance of your cluster.
+
+    Learning curve: If you're new to Helm, there is a learning curve to understanding how to use it effectively. This can require additional time and resources upfront to get up to speed.
+
+    Maintenance: Helm requires ongoing maintenance to ensure that your deployments are up to date and secure. This includes updating Helm charts and releases, as well as monitoring and troubleshooting any issues that arise.
+
+Despite these potential overheads, there are many benefits to using Helm in your Kubernetes deployment. Here are some potential benefits:
+
+    Reusability: Helm charts can be easily shared and reused across multiple teams and projects, reducing the amount of duplication and increasing efficiency.
+
+    Standardization: Helm provides a standard way of packaging and deploying applications to Kubernetes, making it easier to manage and maintain your deployments.
+
+    Versioning: Helm allows you to version your deployments, making it easier to roll back to a previous version if needed.
+
+    Security: Helm includes security features such as RBAC and TLS encryption to help secure your deployments.
+
+Ultimately, whether or not Helm is worth the overhead for your Kubernetes deployment will depend on your specific use case and requirements. However, for many organizations, the benefits of using Helm outweigh the costs.
