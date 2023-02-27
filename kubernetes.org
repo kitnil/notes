@@ -1283,3 +1283,23 @@ Despite these potential overheads, there are many benefits to using Helm in your
     Security: Helm includes security features such as RBAC and TLS encryption to help secure your deployments.
 
 Ultimately, whether or not Helm is worth the overhead for your Kubernetes deployment will depend on your specific use case and requirements. However, for many organizations, the benefits of using Helm outweigh the costs.
+
+** How much objects Kubernetes cluster can handle?
+
+The number of objects that a Kubernetes cluster can handle depends on several factors, including the size and configuration of the cluster, the types of objects being managed, and the resources available to the cluster.
+
+In general, Kubernetes can handle a large number of objects. The Kubernetes API server, which is responsible for managing Kubernetes objects, is designed to scale horizontally, meaning that additional API servers can be added to handle additional load.
+
+However, as the number of objects in a Kubernetes cluster grows, the performance of the cluster can be affected. This is because the Kubernetes API server must maintain an index of all the objects in the cluster, and this index can become slower to search and update as the number of objects grows.
+
+To mitigate this performance impact, there are several best practices that can be followed:
+
+    Limit the number of objects: To reduce the load on the Kubernetes API server, it is recommended to limit the number of objects in the cluster. This can be achieved by deleting unnecessary objects, consolidating objects where possible, and using efficient object designs.
+
+    Optimize object design: When designing objects, it is important to consider the performance impact of each object. For example, using labels and selectors effectively can reduce the number of objects that need to be indexed.
+
+    Scale the API server: If the number of objects in the cluster is expected to grow significantly, it may be necessary to add additional API server instances to handle the load.
+
+    Use caching and indexing: To improve the performance of the Kubernetes API server, caching and indexing can be used. For example, a caching layer like memcached can be used to cache frequently accessed objects, and indexing can be used to speed up searches.
+
+Ultimately, the maximum number of objects that a Kubernetes cluster can handle will depend on the specific configuration and resources available to the cluster, as well as the design and usage of the objects in the cluster.
