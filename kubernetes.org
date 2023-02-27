@@ -1215,7 +1215,7 @@ then redeploy with:
 
 * ChatGPT
 
-How to tell kubernetes deployment not to run pod on specific node?
+** How to tell kubernetes deployment not to run pod on specific node?
 
 There are a few ways to tell Kubernetes not to run a pod on a specific node:
 
