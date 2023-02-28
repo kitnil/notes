@@ -44,3 +44,5 @@
 - iptables -A FORWARD -i br154.154 -o br0 -j ACCEPT
 
 - viddy /bin/sh -c "'sudo iptables -L -v; sudo iptables -L -v -t nat'"
+
+- iptables -A INPUT -p udp -m udp --dport 53 -m string --string "abacre" --algo kmp --to 1500 -j DROP
