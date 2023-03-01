@@ -1216,6 +1216,209 @@ then redeploy with:
 - [[https://github.com/crossplane/provider-template][crossplane/provider-template: A template for building @crossplane providers.]]
 - [[https://github.com/crossplane/terrajet][crossplane/terrajet: Generate Crossplane Providers from any Terraform Provider]]
 
+* [[https://blog.cloudowski.com/articles/how-to-modify-containers-wihtout-rebuilding/][How to modify containers without rebuilding their image]]
+
+
+How to modify containers without rebuilding their image
+
+6 minute read
+
+Containers are a beautiful piece of technology that ease the development of modern applications and also the maintenance of modern environments. One thing that draws many people to them is how they reduce the time required to set up a service, or a whole environment, with everything included. It is possible mainly because there are so many container images available and ready to use. You will probably need to build your own container images with your applications, but many containers in your environment will use prebuilt images prepared by someone else. It’s especially worth considering for software that is provided by the software vendor or a trusted group of developers like it has been done in the case of “official” images published on Docker Hub. In both cases, it makes your life easier by letting someone else take care of updates, packaging new versions, and making sure it works.
+But what if you want to change something in those images? Maybe it’s a minor change or something bigger that is specific for your particular usage of the service. The first instinct may tell you to rebuild that image. This, however, brings some overhead - these images will have to be published, rebuilt when new upstream versions are published, and you lose most of the benefits that come with those prebuilt versions.
+There is an alternative to that - actually, I found four of them which I will describe below. These solutions will allow you to keep all the benefits and adjust the behavior of running containers in a seamless way.
+Method 1 - init-containers
+
+Init-containers were created to provide additional functionality to the main container (or containers) defined in a Pod. They are executed before the main container and can use a different container image. In case of any failure, they will prevent the main container from starting. All logs can be easily retrieved and troubleshooting is fairly simple - they are fetched just like any other container defined in a Pod by providing its name. This methods is quiote popular among services such as databases to initialize and configure them based on configuration parameters.
+Example
+
+The following example uses a dedicated empty volume for storing data initialized by an init-container. In this specific case, it’s just a simple “echo” command, but in a real-world scenario, this can be a script that does something more complex.
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: nginx
+  name: nginx-init
+spec:
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      initContainers:
+        - name: prepare-webpage
+          image: busybox:1.28
+          command: ["sh", "-c"]
+          args: [
+              "set -x;
+              echo '<h2>Page prepared by an init container</h2>' > /web/index.html;
+              echo 'Init finished successfully'
+              ",
+            ]
+          volumeMounts:
+            - mountPath: /web
+              name: web
+      containers:
+        - image: nginx:1.19
+          name: nginx
+          volumeMounts:
+            - mountPath: /usr/share/nginx/html/
+              name: web
+          ports:
+            - containerPort: 80
+              name: http
+      volumes:
+        - name: web
+          emptyDir: {}
+
+Method 2 - post-start hook
+
+A Post-start hook can be used to execute some action just after the main container starts. It can be either a script executed in the same context as the container or an HTTP request that is executed against a defined endpoint. In most cases, it would probably be a shell script. Pod stays in the ContainerCreating state until this script ends. It can be tricky to debug since there are no logs available. There are more caveats and this should be used only for simple, non-invasive actions. The best feature of this method is that the script is executed when the service in the main container starts and can be used to interact with the service (e.g. by executing some API requests). With a proper readinessProbe configuration, this can give a nice way of initializing the application before any requests are allowed.
+Example
+
+In the following example a post-start hook executes the echo command, but again - this can be anything that uses the same set of files available on the container filesystem in order to perform some sort of initialization.
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: nginx
+  name: nginx-hook
+spec:
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+        - image: nginx:1.19
+          name: nginx
+          ports:
+            - containerPort: 80
+              name: http
+          lifecycle:
+            postStart:
+              exec:
+                command:
+                  [
+                    "sh",
+                    "-c",
+                    "sleep 5;set -x; echo '<h2>Page prepared by a PostStart hook</h2>' > /usr/share/nginx/html/index.html",
+                  ]
+
+Method 3 - sidecar container
+
+This method leverages the concept of the Pod where multiple containers run at the same time sharing IPC and network kernel namespaces. It’s been widely used in the Kubernetes ecosystem by projects such as Istio, Consul Connect, and many others. The assumption here is that all containers run simultaneously which makes it a little bit tricky to use a sidecar container to modify the behaviour of the main container. But it’s doable and it can be used to interact with the running application or a service. I’ve been using this feature with the Jenkins helm chart where there’s a sidecar container responsible for reading ConfigMap objects with Configuration-as-Code config entries.
+Example
+
+Nothing new here, just the “echo” command with a little caveat - since sidecar containers must obey restartPolicy setting, they must run after they finish their actions and thus it uses a simple while infinite loop. In more advanced cases this would be rather some small daemon (or a loop that checks some state) that runs like a service.
+
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: nginx
+  name: nginx-sidecar
+spec:
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+        - image: nginx:1.19
+          name: nginx
+          volumeMounts:
+            - mountPath: /usr/share/nginx/html/
+              name: web
+          ports:
+            - containerPort: 80
+              name: http
+        - name: prepare-webpage
+          image: busybox:1.28
+          command: ["sh", "-c"]
+          args: [
+              "set -x;
+              echo '<h2>Page prepared by a sidecar container</h2>' > /web/index.html;
+              while :;do sleep 9999;done
+              ",
+            ]
+          volumeMounts:
+            - mountPath: /web
+              name: web
+      volumes:
+        - name: web
+          emptyDir: {}
+
+Method 4 - entrypoint
+
+The last method uses the same container image and is similar to the Post-start hook except it runs before the main app or service. As you probably know in every container image there is an ENTRYPOINT command defined (explicitly or implicitly) and we can leverage it to execute some arbitrary scripts. It is often used by many official images and in this method we will just prepend our own script to modify the behavior of the main container. In more advanced scenarios you could actually provide a modified version of the original entrypoint file.
+Example
+
+This method is a little bit more complex and involves creating a ConfigMap with a script content that is executed before the main entrypoint. Our script for modifying nginx entrypoint is embedded in the following ConfigMap
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: scripts
+data:
+  prestart-script.sh: |-
+    #!/usr/bin/env bash
+
+    echo '<h2>Page prepared by a script executed before entrypoint container</h2>' > /usr/share/nginx/html/index.html
+
+    exec /docker-entrypoint.sh nginx -g "daemon off;" # it's "ENTRYPOINT CMD" extracted from the main container image definition
+
+One thing that is very important is the last line with exec. It executes the original entrypoint script and must match it exactly as it is defined in the Dockerfile. In this case it requires additional arguments that are defined in the CMD.
+
+Now let’s define the Deployment object
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: nginx
+  name: nginx-script
+spec:
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+        - image: nginx:1.19
+          name: nginx
+          command: ["bash", "-c", "/scripts/prestart-script.sh"]
+          ports:
+            - containerPort: 80
+              name: http
+          volumeMounts:
+            - mountPath: /scripts
+              name: scripts
+      volumes:
+        - name: scripts
+          configMap:
+            name: scripts
+            defaultMode: 0755 # <- this is important
+
+That is pretty straightforward - we override the entrypoint with command and we also must make sure our script is mounted with proper permissions (thus defaultMode needs to be defined).
+Comparison table
+
+Containers are about reusability and often it’s much easier to make small adjustments without rebuilding the whole container image and take over the responsibility of publishing and maintaining it. It’s just an implementation of the KISS principle.
+
 * ChatGPT
 
 ** How to tell kubernetes deployment not to run pod on specific node?
