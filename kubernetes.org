@@ -244,6 +244,9 @@ lightest of data storage needs.
   - IP range
     : kubectl get nodes --sort-by=".status.addresses[?(@.type == 'InternalIP' )].address"
 
+- continuous print logs all pods matching label
+  : kubectl logs --max-log-requests=9 --namespace example-egress-gateway-kube11 -l app.kubernetes.io/name=curl --tail 10 -f
+
 ** authentication
 
 [[https://stackoverflow.com/questions/51612976/how-to-view-members-of-subject-with-group-kind][kubernetes - How to view members of subject with Group kind - Stack Overflow]]
