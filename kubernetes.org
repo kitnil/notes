@@ -737,6 +737,7 @@ Once running, the URL to the dashboard is https://2886795308-30000-simba08.envir
 - [[https://github.com/kelseyhightower/kubernetes-the-hard-way][kelseyhightower/kubernetes-the-hard-way: Bootstrap Kubernetes the hard way on Google Cloud Platform. No scripts.]]
 - [[https://github.com/kodekloudhub/certified-kubernetes-administrator-course][kodekloudhub/certified-kubernetes-administrator-course: Certified Kubernetes Administrator - CKA Course]]
 - [[https://github.com/kubernetes/kubeadm/blob/main/docs/ha-considerations.md#options-for-software-load-balancing][kubeadm/ha-considerations.md at main · kubernetes/kubeadm]]
+- [[https://kubernetes.io/blog/2022/05/05/volume-expansion-ga/][Kubernetes 1.24: Volume Expansion Now A Stable Feature | Kubernetes]]
 - [[https://iximiuz.com/en/posts/kubernetes-api-structure-and-terminology/][Kubernetes API Basics - Resources, Kinds, and Objects]]
 - [[https://wiki.archlinux.org/title/Kubernetes][Kubernetes - ArchWiki]]
 - [[https://serverfault.com/questions/955293/how-to-increase-disk-size-in-a-stateful-set][kubernetes - How to increase disk size in a stateful set - Server Fault]]
@@ -757,6 +758,7 @@ Once running, the URL to the dashboard is https://2886795308-30000-simba08.envir
 - [[https://github.com/neargle/my-re0-k8s-security][neargle/my-re0-k8s-security: [WIP] 整理过去的分享，从零开始的Kubernetes攻防 🧐]]
 - [[https://scribe.citizen4.eu/aspecto/opentelemetry-operator-for-kubernetes-practical-guide-part-4-1d8d86eb2bb][OpenTelemetry Operator for Kubernetes: Practical Guide | Part 4]]
 - [[http://ceur-ws.org/Vol-2839/paper11.pdf][paper11.pdf]]
+- [[https://kubernetes.io/docs/concepts/storage/persistent-volumes/#recovering-from-failure-when-expanding-volumes][Persistent Volumes | Kubernetes]]
 - Pin pod to specific node:
   - Affinity
   - Toleration
