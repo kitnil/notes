@@ -1511,3 +1511,45 @@ To mitigate this performance impact, there are several best practices that can b
     Use caching and indexing: To improve the performance of the Kubernetes API server, caching and indexing can be used. For example, a caching layer like memcached can be used to cache frequently accessed objects, and indexing can be used to speed up searches.
 
 Ultimately, the maximum number of objects that a Kubernetes cluster can handle will depend on the specific configuration and resources available to the cluster, as well as the design and usage of the objects in the cluster.
+
+** How to tell Kubernetes do not run pods on node unless specified.
+
+To prevent Kubernetes from scheduling pods on specific nodes by default, you can add a taint to those nodes and then add a corresponding toleration to your pod specifications.
+
+Here are the general steps to follow:
+
+    Add a taint to the nodes that you want to restrict. A taint is a label that tells Kubernetes not to schedule pods on a node unless the pod specifies a matching toleration. For example, you can add a taint with the following command:
+
+    php
+
+kubectl taint nodes <node-name> key=value:taint-effect
+
+Replace <node-name> with the name of the node that you want to restrict, key and value with a key-value pair to identify the taint, and taint-effect with NoSchedule, NoExecute, or PreferNoSchedule depending on the effect you want the taint to have. For example:
+
+kubectl taint nodes node1 special=restricted:NoSchedule
+
+This command adds a taint to the node1 node with the special=restricted key-value pair and the NoSchedule effect.
+
+Add a toleration to your pod specifications. A toleration is a specification that tells Kubernetes to allow a pod to be scheduled on a node with a matching taint. To add a toleration to your pod specifications, add the following tolerations section to your pod specification:
+
+vbnet
+
+tolerations:
+- key: "key"
+  operator: "Equal"
+  value: "value"
+  effect: "NoSchedule"
+
+Replace key and value with the key-value pair that matches the taint you added to the node, and effect with the effect that you specified when adding the taint (NoSchedule, NoExecute, or PreferNoSchedule). For example:
+
+vbnet
+
+    tolerations:
+    - key: "special"
+      operator: "Equal"
+      value: "restricted"
+      effect: "NoSchedule"
+
+    This tolerations section specifies that the pod can be scheduled on a node with a taint that has the special=restricted key-value pair and the NoSchedule effect.
+
+By adding a taint and a corresponding toleration, you can prevent Kubernetes from scheduling pods on nodes unless the pods explicitly specify that they can tolerate the taint. This can be useful for reserving nodes for specific workloads or for testing purposes.
