@@ -1,7 +1,208 @@
 - [[https://vitobotta.com/2019/08/07/linstor-storage-with-kubernetes/][Linstor storage with Kubernetes]]
 
 * Learning
-- [[https://pcnews.ru/top/blogs/mat-shell/[perevod]_razvoracivaem_hranilise_linstor_dla_proxmox-850986.html#gsc.tab=0][[Перевод] Разворачиваем хранилище LINSTOR для Proxmox - PCNEWS.RU]]
+** [[https://pcnews.ru/top/blogs/mat-shell/[perevod]_razvoracivaem_hranilise_linstor_dla_proxmox-850986.html#gsc.tab=0][[Перевод] Разворачиваем хранилище LINSTOR для Proxmox - PCNEWS.RU]]
+
+[Перевод] Разворачиваем хранилище LINSTOR для Proxmox13.09.2018 10:49
+
+image
+
+Недавно LINBIT выпустили свое новое решение для оркестрации и управления множеством DRBD-массивов.
+
+К примеру у вас может быть несколько нод и у каждой будет собственный LVM или ZFS пул в котором LINSTOR будет автоматически создавать новые тома и реплицировать их между нодами используя DRBD-протокол.
+
+LINSTOR поддерживает thin-provisioning, снапшоты и много других интересных штук.
+Это решение хорошо подойдет для виртуальных машин и контейнеров.
+
+Полагаю что у вас уже есть Proxmox кластер, у меня есть три ноды pve1, pve2 и pve3.
+
+Так что первый шаг — это установить drbd-utils и собрать модуль ядра на каждой ноде.
+
+Добавим репозиторий linstor и уставновим kernel-headers, а также все необходимые пакеты из него:
+
+wget -O- https://packages.linbit.com/package-signing-pubkey.asc | apt-key add - 
+echo "deb http://packages.linbit.com/proxmox/ proxmox-5 drbd-9.0" \
+  > /etc/apt/sources.list.d/linbit.list
+
+apt-get update
+apt-get -y install pve-headers
+apt-get -y install drbd-dkms drbdtop
+
+После установки давайте проверим вашу версию модуля ядра:
+
+modproble drbd
+cat /proc/drbd
+
+Если вы видите 8 версию, значит что-то пошло не так и у вас загрузился in-tree модуль ядра, проверьте dkms status что бы узнать более подробно о сборке непосредственно dkms-модуля.
+Для LINSTOR вы должны использовать DRBD 9 версии.
+
+Далее на каждой ноде установим пакеты linstor-proxmox и linstor-satellite:
+
+apt-get -y install linstor-proxmox linstor-satellite
+systemctl start linstor-satellite.service
+systemctl enable linstor-satellite.service
+
+Мы будем разворачивать контроллер внутри LXC-контейнера.
+
+Скачаем debian-шаблон:
+
+wget http://download.proxmox.com/images/system/debian-9.0-standard_9.3-1_amd64.tar.gz -P /var/lib/vz/template/cache/
+
+Теперь создадим контейнер под контроллер:
+
+pct create 100 local:vztmpl/debian-9.0-standard_9.3-1_amd64.tar.gz \
+  --hostname=linstor-controller \
+  --net0=name=eth0,bridge=vmbr0,gw=10.1.0.1,ip=10.1.0.123/16
+
+Запустим контейнер и войдем в него:
+
+pct start 100
+pct exec 100 bash
+
+Установим обновления:
+
+apt-get update 
+apt-get -y upgrade
+
+Добавим репозиторий linstor и установим linstor-controller и linstor-client:
+
+wget -O- https://packages.linbit.com/package-signing-pubkey.asc | apt-key add - 
+echo "deb http://packages.linbit.com/proxmox/ proxmox-5 drbd-9.0" \
+  > /etc/apt/sources.list.d/linbit.list
+apt-get update && apt-get install -y linstor-server linstor-client
+systemctl start linstor-controller.service
+systemctl enable linstor-controller.service
+
+Linstor требует настроенной локали. Настроим locale:
+
+sed -i '/en_US.UTF-8 UTF-8/ s/^# //' /etc/locale.gen
+locale-gen
+
+Давайте сразу же настроим временную зону:
+
+dpkg-reconfigure tzdata
+
+Создадим ноды:
+
+linstor node create pve1 10.1.0.11
+linstor node create pve2 10.1.0.12
+linstor node create pve3 10.1.0.13
+
+Для каждой ноды опишем дополнительный интерфейс который будет использоваться для DRBD-репликации:
+
+linstor node interface create pve1 data 10.2.0.11
+linstor node interface create pve2 data 10.2.0.12
+linstor node interface create pve3 data 10.2.0.13
+
+Пример вывода команды linstor node list:
+
+╭──────────────────────────────────────────────────────────────╮
+┊ Node ┊ NodeType  ┊ Addresses                        ┊ State  ┊
+╞┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄╡
+┊ pve1 ┊ SATELLITE ┊ 10.0.1.11,10.0.2.11:3366 (PLAIN) ┊ Online ┊
+┊ pve2 ┊ SATELLITE ┊ 10.0.1.12,10.0.2.12:3366 (PLAIN) ┊ Online ┊
+┊ pve3 ┊ SATELLITE ┊ 10.0.1.13,10.0.2.13:3366 (PLAIN) ┊ Online ┊
+╰──────────────────────────────────────────────────────────────╯
+
+Создадим пулы:
+
+На каждой ноде вы должны подготовить lvm thin-pool для drbd:
+
+lvcreate -L 800G --thinpool drbdpool pve
+
+Теперь вы можете добавить их в linstor:
+
+linstor storage-pool create lvmthin pve1 drbdpool pve/drbdpool
+linstor storage-pool create lvmthin pve2 drbdpool pve/drbdpool
+linstor storage-pool create lvmthin pve3 drbdpool pve/drbdpool
+
+Настроим пулы на использование data интерфейса:
+
+linstor storage-pool set-property pve1 drbdpool PrefNic data
+linstor storage-pool set-property pve2 drbdpool PrefNic data
+linstor storage-pool set-property pve3 drbdpool PrefNic data
+
+Пример вывода команды linstor storage-pool list:
+
+╭───────────────────────────────────────────────────────────────────────────────────────────
+┊ StoragePool ┊ Node ┊ Driver        ┊ PoolName     ┊ FreeCapacity ┊ TotalCapacity ┊ Support
+╞┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄
+┊ drbdpool    ┊ pve1 ┊ LvmThinDriver ┊ hv1/drbdpool ┊      800 GiB ┊       800 GiB ┊ true              
+┊ drbdpool    ┊ pve1 ┊ LvmThinDriver ┊ hv1/drbdpool ┊      800 GiB ┊       800 GiB ┊ true              
+┊ drbdpool    ┊ pve3 ┊ LvmThinDriver ┊ hv3/drbdpool ┊      800 GiB ┊       800 GiB ┊ true              
+╰───────────────────────────────────────────────────────────────────────────────────────────
+
+Теперь мы можем добавить наше новое хранилище в конфиг Proxmox:
+
+cat >> /etc/pve/storage.cfg <
+
+Теперь мы перенесем наш linstor container на linstor storage.
+
+Для начала нам нужно создать виртуальный диск для него:
+
+pct exec 100 bash
+linstor resource-definition create vm-100-disk-1
+linstor volume-definition create vm-100-disk-1 4G
+linstor resource create vm-100-disk-1 --auto-place 3 -s pve
+
+Пример вывода команды linstor resource list:
+
+╭──────────────────────────────────────────╮
+┊ ResourceName    ┊ Node ┊ Port ┊    State ┊
+╞┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄╡
+┊ vm-100-disk-1   ┊ pve1 ┊ 7000 ┊ UpToDate ┊
+┊ vm-100-disk-1   ┊ pve2 ┊ 7000 ┊ UpToDate ┊
+┊ vm-100-disk-1   ┊ pve3 ┊ 7000 ┊ UpToDate ┊
+╰──────────────────────────────────────────╯
+
+По умолчанию linstor-satellite удаляет конфиги всех ресурсов на момент запуска сервиса, затем он ожидает новую кофигурацию от linstor-controller, но если мы будем держать linstor-controller в том же месте что и данные, мы должны сделать исключение для его ресурса, добавив опцию --keep-res=vm-100 для linstor-satellite на всех нодах:
+
+echo -e "[Service]\nExecStart=\nExecStart=/usr/share/linstor-server/bin/Satellite --logs=/var/log/linstor-satellite --config-directory=/etc/linstor --keep-res=vm-100" | SYSTEMD_EDITOR=tee systemctl edit linstor-satellite.service
+
+Это действие должно предотвратить удаление ресурса vm-100-disk-1 при каждом запуске.
+
+Теперь мы остановим linstor-controller контейнер и перенесем все данные с локального диска на drbd-диск.
+
+pct shutdown 100
+dd if=/var/lib/vz/images/100/vm-100-disk-1.raw of=/dev/drbd/by-res/vm-100-disk-1/0 bs=8M status=progress
+e2fsck -f /dev/drbd/by-res/vm-100-disk-1/0 
+resize2fs /dev/drbd/by-res/vm-100-disk-1/0 
+
+Обновим конфиг контейнера:
+
+sed -i '/^rootfs:/d' /etc/pve/lxc/100.conf
+echo 'rootfs: drbdpool:vm-100-disk-1,size=4G' >> /etc/pve/lxc/100.conf
+
+Запустим контейнер, и если все ок, удалим старый диск:
+
+pct start 100
+rm -f /var/lib/vz/images/100/vm-100-disk-1.raw
+
+Теперь нам нужно только добавить наш контейнер в proxmox ha-manager:
+
+ha-manager add ct:100 --max_relocate=3 --max_restart=3
+
+PROFIT
+
+Чтобы автоматически разрешать ситуации со split-brain, добавьте следующие опции для контроллера:
+
+linstor controller drbd-options \
+  --after-sb-0pri=discard-zero-changes \
+  --after-sb-1pri=discard-secondary \
+  --after-sb-2pri=disconnect
+
+Для моей 10G сети, я нашел следующие настройки наиболее оптимальными для быстрой синхронизации:
+
+linstor controller drbd-options \
+  --max-buffers=36864 \
+  --rcvbuf-size=2097152 \
+  --sndbuf-size=1048576
+
+linstor controller drbd-options \
+  --c-fill-target=10240 \
+  --c-max-rate=737280 \
+  --c-min-rate=20480 \
+  --c-plan-ahead=10
 
 ** [[https://docs.piraeus.daocloud.io/books/linstor-10-user-guide/page/212-adding-and-removing-disks][2.12. Adding and remov... | Piraeus]]
 2.12.1. Migrating disks
