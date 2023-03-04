@@ -412,6 +412,14 @@ Replace <winrm_host>, <username>, <password>, and <path/to/powershell/script.ps1
 
 This example uploads the PowerShell script to the remote Windows host, encodes it as a Base64 string, and then executes it using the powershell.exe command. The output of the script (both standard output and standard error) is returned in the WinRM response.
 
+** What is SOAP above?
+
+SOAP stands for Simple Object Access Protocol. It is a messaging protocol used to exchange structured information between applications over a network, typically using HTTP or HTTPS as the transport protocol.
+
+SOAP messages are XML-based and consist of an envelope that describes the message, a header that contains optional application-specific information, and a body that contains the actual message content. SOAP messages can be used to invoke remote methods or exchange structured data between applications.
+
+In the context of WinRM, SOAP is used as the underlying protocol for communication between the WinRM client and server. When a WinRM client sends a command or request to a WinRM server, it constructs a SOAP message and sends it to the server over HTTP or HTTPS. The server then processes the request and sends a SOAP response back to the client. The SOAP messages used by WinRM are specific to the WS-Management protocol, which is a web services protocol used for managing systems and devices.
+
 * WSA
 - [[https://github.com/alesimula/wsa_pacman][alesimula/wsa_pacman: A GUI package manager and package installer for Windows Subsystem for Android (WSA)]]
 - [[https://github.com/voletro/wsa-toolbox][voletro/wsa-toolbox: A Windows 11 application to easily install and use the Windows Subsystem For Android™ package on your computer.]]
