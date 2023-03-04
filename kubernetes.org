@@ -1084,6 +1084,7 @@ then redeploy with:
 - [[https://github.com/kubernetes-sigs/cluster-api][kubernetes-sigs/cluster-api: Home for Cluster API, a subproject of sig-cluster-lifecycle]]
 - [[https://github.com/kubernetes-sigs/cluster-api][kubernetes-sigs/cluster-api: Home for Cluster API, a subproject of sig-cluster-lifecycle]]
 - [[https://github.com/kubernetes-sigs/cluster-api-provider-kubevirt][kubernetes-sigs/cluster-api-provider-kubevirt: Cluster API Provider for KubeVirt]]
+- [[https://github.com/kubernetes-sigs/community-images][kubernetes-sigs/community-images: kubectl plugin that displays images running in a Kubernetes cluster that were pulled from community owned repositories and warn the user to switch repositories if needed]]
 - [[https://github.com/kubernetes-sigs/descheduler][kubernetes-sigs/descheduler: Descheduler for Kubernetes]]
 - [[https://github.com/kubernetes-sigs/ingress2gateway][kubernetes-sigs/ingress2gateway: Convert Ingress resources to Gateway API resources]]
 - [[https://github.com/kubernetes-sigs/kubefed][kubernetes-sigs/kubefed: Kubernetes Cluster Federation]]
