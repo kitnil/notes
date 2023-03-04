@@ -637,3 +637,13 @@ https://github.com/Genymobile/scrcpy/blob/87da1372380ebddb60e4d89cff9a251c866e21
 
       $ settings put global tether_dun_required 0
 #+end_src
+
+* TV
+
+** [[https://gist.github.com/arjunv/2bbcca9a1a1c127749f8dcb6d36fb0bc][Keymap]]
+
+- enter
+  : adb shell input keyevent 66
+
+- down
+  : adb shell input keyevent 20
