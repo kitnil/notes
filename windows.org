@@ -22,6 +22,11 @@
 * Android
 - [[https://github.com/Paving-Base/APK-Installer][Paving-Base/APK-Installer: An Android Application Installer for Windows]]
 
+* Audio
+- [[https://old.reddit.com/r/windows/comments/ftsu8z/need_a_way_to_get_a_list_of_all_audio_output/][Get a list of all audio output devices via command line]]
+  : Get-CimInstance win32_sounddevice | fl *
+  : wmic sounddev list full
+
 * Awesome
 - [[https://github.com/auctors/free-lunch][auctors/free-lunch: A curated list of free Windows software, online services and resources.]]
 
