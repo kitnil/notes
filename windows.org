@@ -59,6 +59,8 @@
 ** Windows 11
 - [[https://github.com/rcmaehl/WhyNotWin11][rcmaehl/WhyNotWin11: Detection Script to help identify why your PC isn't Windows 11 Release Ready]]
 - [[https://github.com/HerMajestyDrMona/Windows11DragAndDropToTaskbarFix][HerMajestyDrMona/Windows11DragAndDropToTaskbarFix: "Windows 11 Drag & Drop to the Taskbar (Fix)" fixes the missing "Drag & Drop to the Taskbar" support in Windows 11. It works with the new Windows 11 taskbar and does not require nasty changes like UndockingDisabled or restoration of the classic taskbar.]]
+*** Utilities
+- [[https://github.com/ntdevlabs/tiny11builder][ntdevlabs/tiny11builder: Scripts to build a trimmed-down Windows 11 image.]]
 
 * DLL
 - [[https://github.com/hotnops/RemoteDebugView][hotnops/RemoteDebugView: A DLL that serves OutputDebugString content over a TCP connection]]
