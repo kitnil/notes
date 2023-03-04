@@ -335,6 +335,83 @@ Keep in mind that while Select-String and other Windows PowerShell cmdlets can p
 * Window manager
 - [[https://github.com/LGUG2Z/komorebi][LGUG2Z/komorebi: Another tiling window manager for Windows 10 based on binary space partitioning]]
 
+* WinRM
+
+** Could you show me simple winrm curl example?
+
+Sure, here is a simple WinRM curl example using the Invoke-WebRequest cmdlet in PowerShell:
+
+php
+
+$uri = "http://<winrm_host>:5985/wsman"
+$username = "<username>"
+$password = "<password>"
+$auth = "Basic"
+$headers = @{Authorization = "$auth " + [System.Convert]::ToBase64String([System.Text.Encoding]::UTF8.GetBytes("$username`:$password"))}
+
+Invoke-WebRequest -Uri $uri -Method POST -Headers $headers -ContentType "application/soap+xml;charset=UTF-8" -Body '<s:Envelope xmlns:s="http://www.w3.org/2003/05/soap-envelope" xmlns:wsmid="http://schemas.dmtf.org/wbem/wsman/identity/1/wsmanidentity.xsd" xmlns:wsm="http://schemas.dmtf.org/wbem/wsman/1/wsman.xsd"><s:Header><wsmid:Identify/></s:Header><s:Body/></s:Envelope>'
+
+Replace <winrm_host>, <username>, and <password> with the appropriate values for your WinRM server.
+
+This example sends an Identify request to the WinRM server, which can be used to verify that the server is running and accessible. If the server is running and accessible, the server will respond with an IdentifyResponse message.
+
+** Same in Bash.
+
+Certainly! Here is a simple WinRM curl example using the curl command in Bash:
+
+bash
+
+winrm_host="<winrm_host>"
+username="<username>"
+password="<password>"
+
+auth=$(echo -n "$username:$password" | base64)
+uri="http://${winrm_host}:5985/wsman"
+
+curl -X POST \
+  -H "Authorization: Basic $auth" \
+  -H "Content-Type: application/soap+xml;charset=UTF-8" \
+  -d '<s:Envelope xmlns:s="http://www.w3.org/2003/05/soap-envelope" xmlns:wsmid="http://schemas.dmtf.org/wbem/wsman/identity/1/wsmanidentity.xsd" xmlns:wsm="http://schemas.dmtf.org/wbem/wsman/1/wsman.xsd"><s:Header><wsmid:Identify/></s:Header><s:Body/></s:Envelope>' \
+  $uri
+
+Replace <winrm_host>, <username>, and <password> with the appropriate values for your WinRM server.
+
+This example sends an Identify request to the WinRM server, which can be used to verify that the server is running and accessible. If the server is running and accessible, the server will respond with an IdentifyResponse message.
+
+** Show me how to run powershell script by uploading it via curl in bash.
+
+Sure! Here's an example of how to upload and execute a PowerShell script on a remote Windows host via WinRM using the curl command in Bash:
+
+bash
+
+winrm_host="<winrm_host>"
+username="<username>"
+password="<password>"
+script_path="<path/to/powershell/script.ps1>"
+
+auth=$(echo -n "$username:$password" | base64)
+uri="http://${winrm_host}:5985/wsman"
+
+# Encode the PowerShell script as a Base64 string
+script_content=$(cat $script_path | base64 -w 0)
+
+# Construct the PowerShell command to execute the script
+powershell_command="powershell.exe -encodedCommand $script_content"
+
+# Construct the SOAP request to execute the PowerShell command
+soap_request="<s:Envelope xmlns:s='http://www.w3.org/2003/05/soap-envelope' xmlns:wsmid='http://schemas.dmtf.org/wbem/wsman/identity/1/wsmanidentity.xsd' xmlns:wsm='http://schemas.dmtf.org/wbem/wsman/1/wsman.xsd'><s:Header><wsmid:Identify/></s:Header><s:Body><wsm:Invoke><wsm:Action>http://schemas.microsoft.com/wbem/wsman/1/windows/shell/invoke</wsm:Action><wsm:Shell><wsm:InputStreams>stdin</wsm:InputStreams><wsm:OutputStreams>stdout stderr</wsm:OutputStreams></wsm:Shell><wsm:Command>$powershell_command</wsm:Command></wsm:Invoke></s:Body></s:Envelope>"
+
+# Send the SOAP request via WinRM using curl
+curl -X POST \
+  -H "Authorization: Basic $auth" \
+  -H "Content-Type: application/soap+xml;charset=UTF-8" \
+  -d "$soap_request" \
+  $uri
+
+Replace <winrm_host>, <username>, <password>, and <path/to/powershell/script.ps1> with the appropriate values for your WinRM server and PowerShell script.
+
+This example uploads the PowerShell script to the remote Windows host, encodes it as a Base64 string, and then executes it using the powershell.exe command. The output of the script (both standard output and standard error) is returned in the WinRM response.
+
 * WSA
 - [[https://github.com/alesimula/wsa_pacman][alesimula/wsa_pacman: A GUI package manager and package installer for Windows Subsystem for Android (WSA)]]
 - [[https://github.com/voletro/wsa-toolbox][voletro/wsa-toolbox: A Windows 11 application to easily install and use the Windows Subsystem For Android™ package on your computer.]]
