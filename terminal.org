@@ -79,3 +79,21 @@ Try this:
 : xfce4-terminal --hide-menubar --hide-toolbars --geometry=70x10 -x gpg -c %f
 
 : $ rlwrap nc 127.0.0.1 1666
+
+* ChatGPT
+
+** Show how to list processes and sort them by memory consumption on Linux.
+
+To list processes and sort them by memory consumption on Linux, you can use the ps command with the --sort option. Here's an example:
+
+bash
+
+ps aux --sort -rss
+
+In this command:
+
+    ps is the command for listing processes.
+    aux are options that specify the format of the output. a lists processes from all users, u displays the user-oriented format, and x lists processes without an associated terminal.
+    --sort -rss specifies that the output should be sorted by the rss field, which is the resident set size (i.e., the amount of physical memory being used by a process), in reverse order (- before rss).
+
+This will give you a list of processes sorted by memory consumption, with the highest memory usage processes at the top of the list. You can adjust the output format and sorting options to suit your needs by referring to the ps man page for more information.
