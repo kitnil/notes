@@ -1837,6 +1837,7 @@ builtins.match "php([[:alnum:]])([[:alnum:]])" "php70"
 - [[https://nixos.wiki/wiki/Nix-writers][Nix-writers - NixOS Wiki]]
 - [[https://github.com/nlewo/hydra-cli][nlewo/hydra-cli: A client for the Hydra Nix CI]]
 - [[https://github.com/numtide/nar-serve][numtide/nar-serve: Unpack and serve NAR file content on the fly]]
+- [[https://github.com/peterldowns/nix-search-cli][peterldowns/nix-search-cli: CLI for searching packages on search.nixos.org]]
 - [[https://github.com/pinpox/lollypops][pinpox/lollypops: Lollypop Operations - NixOS Deployment Tool]]
 - [[https://github.com/purenix-org/purenix][purenix-org/purenix: Nix backend for PureScript. Transpile PureScript code to Nix.]]
 - [[https://github.com/railwayapp/nixpacks][railwayapp/nixpacks: App source + Nix packages + Docker = Image]]
