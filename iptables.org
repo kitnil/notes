@@ -43,6 +43,10 @@
 - iptables -A FORWARD -i br0 -o br154.154 -m state --state RELATED,ESTABLISHED -j ACCEPT
 - iptables -A FORWARD -i br154.154 -o br0 -j ACCEPT
 
-- viddy /bin/sh -c "'sudo iptables -L -v; sudo iptables -L -v -t nat'"
+- show counters
+  : viddy /bin/sh -c "'sudo iptables -n -L -v; sudo iptables -n -L -v -t nat'"
+
+- reset counters
+  : sudo iptables -Z 
 
 - iptables -A INPUT -p udp -m udp --dport 53 -m string --string "abacre" --algo kmp --to 1500 -j DROP
