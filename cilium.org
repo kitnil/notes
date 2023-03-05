@@ -35,3 +35,9 @@
 * Tools
 - [[https://editor.cilium.io/?id=sGIKib2OwOtkkypE][Network Policy Editor for Kubernetes]]
 - [[https://jenkins.cilium.io/][Cilium Jenkins Instance]]
+
+* Hubble relay
+
+[[https://docs.cilium.io/en/v1.9/gettingstarted/hubble/][Networking and security observability with Hubble — Cilium 1.9.18 documentation]]
+
+: kubectl port-forward -n kube-system svc/hubble-relay --address 0.0.0.0 --address :: 4245:80
