@@ -127,3 +127,13 @@ systemctl start kresd@2.service
 
 systemctl start kresd@{1..2}.service
 
+* Cheat sheet
+
+** Clear cache
+#+begin_example
+  sudo socat - UNIX-CONNECT:/var/cache/knot-resolver/control/8053
+  > cache.clear()
+  {
+      ['count'] = 1851,
+  }
+#+end_example
