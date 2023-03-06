@@ -1594,3 +1594,27 @@ yaml
     This podAntiAffinity section specifies that pods with the app=my-app label should not be scheduled on the same node. The topologyKey field specifies the level at which the rule applies; in this case, it applies at the node level (kubernetes.io/hostname).
 
 By adding a pod anti-affinity rule, you can ensure that Kubernetes does not schedule multiple pods with the same label on the same node. This can be useful for ensuring high availability and avoiding resource contention.
+
+** But it will block creating new pods with Pending status. How to avoid this?
+
+If you want to avoid blocking the creation of new pods with a Pending status while also ensuring that no two pods with the same label are scheduled on the same node, you can use a combination of pod anti-affinity and pod disruption budgets.
+
+Here are the general steps to follow:
+
+    Add a label to the pods that you want to avoid scheduling on the same node, as described in the previous answer.
+
+    Add a pod anti-affinity rule to your deployment specifications, as described in the previous answer.
+
+    Add a pod disruption budget to your deployment specifications. A pod disruption budget specifies the maximum number of pods that can be unavailable at any given time. To add a pod disruption budget to your deployment specifications, add the following podDisruptionBudget section to your deployment specification:
+
+    yaml
+
+    podDisruptionBudget:
+      selector:
+        matchLabels:
+          app: my-app
+      maxUnavailable: 1
+
+    This podDisruptionBudget section specifies that no more than one pod with the app=my-app label can be unavailable at any given time.
+
+With this combination of pod anti-affinity and pod disruption budgets, Kubernetes will avoid scheduling multiple pods with the same label on the same node while also allowing new pods to be created even if other pods are in a Pending state. If a node becomes unavailable, Kubernetes will ensure that at least one pod with the app=my-app label is still available by either moving the pod to a different node or creating a new pod to replace it.
