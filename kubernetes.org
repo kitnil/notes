@@ -72,7 +72,7 @@ lightest of data storage needs.
     done
   #+end_src
 
-- [[https://learnk8s.io/a/a-visual-guide-on-troubleshooting-kubernetes-deployments/troubleshooting-kubernetes.en_en.v3.pdf][Visual guide on troubleshooting Kubernetes deployments]]
+32- [[https://learnk8s.io/a/a-visual-guide-on-troubleshooting-kubernetes-deployments/troubleshooting-kubernetes.en_en.v3.pdf][Visual guide on troubleshooting Kubernetes deployments]]
 
 #+begin_example
   [root@vm30:~]# lsns | grep nginx
@@ -1556,3 +1556,41 @@ vbnet
     This tolerations section specifies that the pod can be scheduled on a node with a taint that has the special=restricted key-value pair and the NoSchedule effect.
 
 By adding a taint and a corresponding toleration, you can prevent Kubernetes from scheduling pods on nodes unless the pods explicitly specify that they can tolerate the taint. This can be useful for reserving nodes for specific workloads or for testing purposes.
+
+** How to configure Kubernetes deployment not to run same pod on the same host?
+
+To configure a Kubernetes deployment to avoid running the same pod on the same host, you can use a pod anti-affinity rule. A pod anti-affinity rule specifies that pods should not be scheduled on the same node if they meet certain criteria, such as having the same label or belonging to the same replica set.
+
+Here are the general steps to follow:
+
+    Add a label to the pods that you want to avoid scheduling on the same node. For example, you can add a label with the following command:
+
+    css
+
+kubectl label pods <pod-name> key=value
+
+Replace <pod-name> with the name of the pod that you want to label, and key and value with a key-value pair to identify the label. For example:
+
+perl
+
+kubectl label pods my-app-1234-5678 app=my-app
+
+This command adds a label with the app=my-app key-value pair to the my-app-1234-5678 pod.
+
+Add a pod anti-affinity rule to your deployment specifications. A pod anti-affinity rule specifies that pods should not be scheduled on the same node if they have a certain label. To add a pod anti-affinity rule to your deployment specifications, add the following podAntiAffinity section to your deployment specification:
+
+yaml
+
+    podAntiAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+      - labelSelector:
+          matchExpressions:
+          - key: app
+            operator: In
+            values:
+            - my-app
+        topologyKey: "kubernetes.io/hostname"
+
+    This podAntiAffinity section specifies that pods with the app=my-app label should not be scheduled on the same node. The topologyKey field specifies the level at which the rule applies; in this case, it applies at the node level (kubernetes.io/hostname).
+
+By adding a pod anti-affinity rule, you can ensure that Kubernetes does not schedule multiple pods with the same label on the same node. This can be useful for ensuring high availability and avoiding resource contention.
