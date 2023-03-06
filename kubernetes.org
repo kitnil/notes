@@ -1757,3 +1757,75 @@ php
     This command applies the changes to the Kubernetes cluster. The deployment.yaml file is modified by the deployment-patch.yaml transformer, and the resulting manifest is deployed to the cluster.
 
 That's it! The patch transformer can be used to modify any field of a Kubernetes object, so it's a powerful tool for customizing Kubernetes deployments. Note that the syntax of the patch file is based on JSON patches, so you'll need to be familiar with this format to use the patch transformer effectively.
+
+** I apologize for the confusion. You are correct, the previous solution was not correct for converting a Deployment to a DaemonSet. Here is an updated solution:
+
+    Create a kustomization.yaml file:
+
+typescript
+
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+resources:
+- deployment.yaml
+
+patches:
+- path: deployment.yaml
+  kind: Deployment
+  version: apps/v1
+  patch: |-
+    - op: remove
+      path: /spec/replicas
+    - op: add
+      path: /spec/template/spec/nodeSelector
+      value:
+        node-type: worker
+    - op: add
+      path: /spec/template/spec/tolerations/-
+      value:
+        key: node-type
+        operator: Equal
+        value: worker
+        effect: NoSchedule
+    - op: add
+      path: /spec/template/spec/hostNetwork
+      value: true
+    - op: add
+      path: /spec/template/spec/dnsPolicy
+      value: ClusterFirstWithHostNet
+    - op: replace
+      path: /spec/strategy/type
+      value: Recreate
+    - op: replace
+      path: /kind
+      value: DaemonSet
+
+This Kustomization defines a Deployment resource and a patch that replaces the Deployment with a DaemonSet. The DaemonSet is scheduled to run one pod per node that has the label node-type=worker. The patch also removes the replicas field, as it is not needed for DaemonSet.
+
+    Create a deployment.yaml file:
+
+yaml
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-app
+spec:
+  selector:
+    matchLabels:
+      app: my-app
+  template:
+    metadata:
+      labels:
+        app: my-app
+    spec:
+      containers:
+      - name: my-container
+        image: nginx
+        ports:
+        - containerPort: 80
+
+    Run kubectl apply -k . to apply the Kustomization to the cluster.
+
+This should create a DaemonSet with one pod per node labeled with node-type=worker. Each pod runs a single container with the nginx image.
