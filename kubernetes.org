@@ -1677,3 +1677,83 @@ spec:
       value: StatefulSet
 
 This transformer modifies the kind field of any object that matches its filter to StatefulSet. When you apply the Kustomization using the kubectl apply command, Kustomize will modify the kind field of the Deployment object to StatefulSet. Note that this is a non-standard and potentially risky operation, so it should be used with caution and only when absolutely necessary.
+
+** I tried it, but got output `error: unable to load builtin Filter.builtin.[noGrp]`.
+
+The error message unable to load builtin Filter.builtin.[noGrp] typically indicates that the version of Kustomize you are using is not compatible with the syntax of the Filter transformer in your deployment-to-statefulset.yaml file.
+
+The Filter transformer was introduced in Kustomize version 3.2.0, so if you are using an earlier version of Kustomize, you may encounter this error. To fix the error, you can either upgrade your version of Kustomize to at least version 3.2.0, or you can modify the syntax of the transformer to be compatible with the version of Kustomize you are using.
+
+If you are already using Kustomize 3.2.0 or later, it's possible that the Filter transformer is not installed or enabled in your installation of Kustomize. In this case, you can try reinstalling or updating Kustomize to ensure that the Filter transformer is available.
+
+Alternatively, you can try using a different transformer that is compatible with the version of Kustomize you are using, such as the patch transformer or the kustomize transformer. These transformers provide similar functionality to the Filter transformer and should work with any version of Kustomize.
+wigust@yahoo.com
+Could you describe how to use `patch` suggested in the previous message?
+
+Sure! The patch transformer in Kustomize can be used to modify specific fields of Kubernetes objects by applying JSON or YAML patches to their manifest files. Here's an example of how to use the patch transformer to change the kind field of a Deployment object to a StatefulSet:
+
+    Create a Deployment manifest file, for example deployment.yaml, with the following contents:
+
+    yaml
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: my-app
+  template:
+    metadata:
+      labels:
+        app: my-app
+    spec:
+      containers:
+        - name: my-container
+          image: my-image
+          ports:
+            - containerPort: 80
+
+Create a patch file, for example deployment-patch.yaml, that specifies the changes you want to make to the kind field:
+
+yaml
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-deployment
+spec:
+  template:
+    metadata:
+      annotations:
+        kustomize.k8s.io/patch: |
+          - op: replace
+            path: /kind
+            value: StatefulSet
+
+This patch file modifies the kind field of the my-deployment object to StatefulSet. Note that the kustomize.k8s.io/patch annotation is used to apply the patch to the object.
+
+Create a kustomization.yaml file that specifies the resources and transformers to apply:
+
+makefile
+
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+- deployment.yaml
+transformers:
+- deployment-patch.yaml
+
+This kustomization.yaml file specifies the deployment.yaml file as the input resource, and the deployment-patch.yaml file as the transformer to apply.
+
+Run kubectl apply to apply the changes:
+
+php
+
+    kubectl apply -k <directory containing kustomization.yaml>
+
+    This command applies the changes to the Kubernetes cluster. The deployment.yaml file is modified by the deployment-patch.yaml transformer, and the resulting manifest is deployed to the cluster.
+
+That's it! The patch transformer can be used to modify any field of a Kubernetes object, so it's a powerful tool for customizing Kubernetes deployments. Note that the syntax of the patch file is based on JSON patches, so you'll need to be familiar with this format to use the patch transformer effectively.
