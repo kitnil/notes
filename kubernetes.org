@@ -1618,3 +1618,62 @@ Here are the general steps to follow:
     This podDisruptionBudget section specifies that no more than one pod with the app=my-app label can be unavailable at any given time.
 
 With this combination of pod anti-affinity and pod disruption budgets, Kubernetes will avoid scheduling multiple pods with the same label on the same node while also allowing new pods to be created even if other pods are in a Pending state. If a node becomes unavailable, Kubernetes will ensure that at least one pod with the app=my-app label is still available by either moving the pod to a different node or creating a new pod to replace it.
+
+** Can Kustomize change object kind and how if it can?
+
+No, Kustomize cannot change the kind of a Kubernetes object. The kind field is a fundamental part of the object's identity and is defined by the Kubernetes API, so it cannot be modified by Kustomize.
+
+Kustomize is designed to modify the contents of existing Kubernetes object manifests, rather than changing their fundamental structure or identity. The tool provides a number of mechanisms for making targeted modifications to the fields, labels, annotations, and other attributes of objects in a declarative, repeatable way.
+
+However, it is possible to achieve similar functionality to changing the kind of an object by using the transformers feature of Kustomize. Transformers can be used to modify the YAML structure of a Kubernetes object manifest, which could include modifying the kind field.
+
+Here is an example of using a transformer to change the kind field of a Deployment object to a StatefulSet:
+
+yaml
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: my-app
+  template:
+    metadata:
+      labels:
+        app: my-app
+    spec:
+      containers:
+        - name: my-container
+          image: my-image
+          ports:
+            - containerPort: 80
+---
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+- deployment.yaml
+transformers:
+- deployment-to-statefulset.yaml
+
+In this example, the deployment.yaml file defines a Deployment object with the name my-deployment. The kustomization.yaml file includes a transformers section that specifies a transformer file deployment-to-statefulset.yaml.
+
+The deployment-to-statefulset.yaml file includes the following transformer:
+
+yaml
+
+apiVersion: builtin
+kind: Filter
+metadata:
+  name: deployment-to-statefulset
+spec:
+  filters:
+  - path: kind
+    kind: EditTransformer
+    version: v1
+    options:
+      value: StatefulSet
+
+This transformer modifies the kind field of any object that matches its filter to StatefulSet. When you apply the Kustomization using the kubectl apply command, Kustomize will modify the kind field of the Deployment object to StatefulSet. Note that this is a non-standard and potentially risky operation, so it should be used with caution and only when absolutely necessary.
