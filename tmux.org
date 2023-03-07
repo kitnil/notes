@@ -11,6 +11,10 @@
     Ctrl-B :
     setw synchronize-panes off
   #+end_example
+
+- renumber all panes
+  : tmux movew -r
+
 - [[https://github.com/tmux-python/tmuxp][tmux session manager. built on libtmux]]
 - [[https://github.com/greymd/tmux-xpanes][greymd/tmux-xpanes: Awesome tmux-based terminal divider]]
 - [[https://github.com/sainnhe/tmux-translator][sainnhe/tmux-translator: Tmux translation plugin powered by popup window.]]
