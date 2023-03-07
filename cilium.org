@@ -35,8 +35,9 @@
 * Tools
 - [[https://editor.cilium.io/?id=sGIKib2OwOtkkypE][Network Policy Editor for Kubernetes]]
 - [[https://jenkins.cilium.io/][Cilium Jenkins Instance]]
+- [[https://github.com/cilium/cilium-cli][cilium/cilium-cli: CLI to install, manage & troubleshoot Kubernetes clusters running Cilium]]
 
-* Hubble relay
+** Hubble relay
 
 [[https://docs.cilium.io/en/v1.9/gettingstarted/hubble/][Networking and security observability with Hubble — Cilium 1.9.18 documentation]]
 
