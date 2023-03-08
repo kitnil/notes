@@ -22,7 +22,7 @@
 - list all endpoints on a node, show if if has ingress and egress policy attached, and give endpoint id
   : cilium endpoint list
 
-- tcpdump like
+- tcpdump like.  It allows to monitor even specific sockets within one endpoint or just specific endpoints themselfs.
   : cilium monitor
 
 * Learning
