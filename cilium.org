@@ -19,6 +19,8 @@
 
 * Cheat sheet
 
+- [[https://www.youtube.com/watch?v=Kmm8Hl57WDU][(83) Understanding and Troubleshooting the eBPF Datapath in Cilium - Nathan Sweet, DigitalOcean - YouTube]]
+
 - list all endpoints on a node, show if if has ingress and egress policy attached, and give endpoint id
   : cilium endpoint list
 
