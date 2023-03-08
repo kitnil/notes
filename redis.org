@@ -27,3 +27,17 @@
 - [[https://github.com/dragonflydb/dragonfly][dragonflydb/dragonfly: A modern replacement for Redis and Memcached]]
 - [[https://github.com/snapchat/keydb][Snapchat/KeyDB: A Multithreaded Fork of Redis]]
 - [[https://github.com/skytable/skytable][skytable/skytable: Skytable is a fast, secure and reliable realtime NoSQL database with keyspaces, tables, data types, authn/authz, snapshots and more to build powerful apps]]
+
+* ChatGPT
+
+** What ports uses Redis?
+
+Redis uses several default ports for different purposes:
+
+    Port 6379: This is the default port used for Redis server-client communication.
+
+    Port 16379: This is the default port used for Redis Sentinel, which is used for high availability and automatic failover.
+
+    Port 26379: This is the default port used for Redis Cluster, which is used for distributed Redis deployments.
+
+Note that these ports are the default values and can be changed in the Redis configuration file if necessary. Additionally, Redis also supports SSL encryption for secure communication, which uses different ports (usually 6380 for the Redis server and 16380 for Redis Sentinel).
