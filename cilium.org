@@ -25,6 +25,9 @@
 - tcpdump like.  It allows to monitor even specific sockets within one endpoint or just specific endpoints themselfs.
   : cilium monitor
 
+- dump all bpf network device programs that are attached
+  : bpftool net
+
 * Learning
 - [[https://nicovibert.com/2022/07/21/bgp-with-cilium/][BGP with Cilium]]
 - [[https://isovalent.com/blog/post/cilium-release-112/#ingress][Cilium 1.12 - Ingress, Multi-Cluster, Service Mesh, External Workloads, ...]]
