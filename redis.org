@@ -41,3 +41,9 @@ Redis uses several default ports for different purposes:
     Port 26379: This is the default port used for Redis Cluster, which is used for distributed Redis deployments.
 
 Note that these ports are the default values and can be changed in the Redis configuration file if necessary. Additionally, Redis also supports SSL encryption for secure communication, which uses different ports (usually 6380 for the Redis server and 16380 for Redis Sentinel).
+
+** What protocols they are (TCP or UDP)?
+
+Redis uses the TCP (Transmission Control Protocol) protocol for communication between the Redis client and server, as well as between Redis nodes in a Redis Cluster.
+
+UDP (User Datagram Protocol) is not used by Redis for communication as it is a connectionless protocol and does not provide the reliability and consistency guarantees that are required for a data storage system like Redis.
