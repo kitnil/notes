@@ -83,3 +83,13 @@ CREATE ROLE
 
 peertube=# grant all privileges on database peertube to peertube;
 GRANT
+
+* ChatGPT
+
+** 
+
+PostgreSQL uses TCP (Transmission Control Protocol) protocol for communication. By default, PostgreSQL listens on port 5432 for incoming connections. However, this port number can be changed in the PostgreSQL configuration file if necessary.
+
+It's worth noting that PostgreSQL also supports SSL encryption for secure communication, which requires a different port number (usually 5433 by default). Additionally, PostgreSQL supports the use of Unix domain sockets, which are an alternative to TCP sockets for communication between local processes on the same machine.
+
+Overall, PostgreSQL primarily uses TCP for network communication, but also supports SSL and Unix domain sockets as alternative methods.
