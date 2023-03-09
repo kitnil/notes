@@ -897,3 +897,19 @@ linstor storage-pool create lvmthin kube2 pool0 vg0/pool0
           persistentVolumeClaim:
             claimName: bash-linstor-restored
 #+end_src
+
+* Issues
+
+** Thin LVM 1Tb and more sync failure
+
+Необходимо провести обновление модуля DRBD ядра Linux до версии 9.2.
+
+На данный момент на всех нодах двух кластеров Kubernetes установлена 9.1.7:
+
+version: 9.1.7 (api:2/proto:110-121)
+GIT-hash: bfd2450739e3e27cfd0a2eece2cde3d94ad993ae build by @localhost, 2022-11-30 00:43:34
+Transports (api:18): tcp (9.1.7)
+
+Согласно видеоконференции [1] при синхронизации Thin LVM 1Tb и больше вероятна проблема в плоть до не возможности синхронизироваться. Исправляется обновлением с 9.1 до 9.2.
+
+[1] https://www.youtube.com/live/prIG9GQurYA?feature=share&t=3033
