@@ -126,3 +126,15 @@
 
 * Tools
 - [[https://github.com/rslint/rslint][rslint/rslint: A (WIP) Extremely fast JavaScript and TypeScript linter and Rust crate]]
+
+* ChatGPT
+
+** Is `Boolean(object)` and `!!object` are the same?
+
+Yes, Boolean(object) and !!object are essentially the same in JavaScript in terms of converting an object to its corresponding boolean value.
+
+Boolean(object) is a function that takes an argument and returns true if the argument is truthy and false if it is falsy. If the argument is an object, it will return true unless the object is either null or undefined.
+
+!!object, as I mentioned earlier, is a double negation operator that converts any value to its corresponding boolean value. When object is truthy, the first ! operator will convert it to false, and the second ! operator will then convert that false back to true. When object is falsy, the first ! operator will convert it to true, and the second ! operator will then convert that true back to false.
+
+Therefore, when you use Boolean(object) and !!object to convert an object to its corresponding boolean value, you'll get the same result as long as the object is not null or undefined. However, if the object is null or undefined, Boolean(object) will return false, whereas !!object will return false as well, since null and undefined are both falsy values.
