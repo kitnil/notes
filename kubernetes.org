@@ -1424,6 +1424,9 @@ Comparison table
 
 Containers are about reusability and often it’s much easier to make small adjustments without rebuilding the whole container image and take over the responsibility of publishing and maintaining it. It’s just an implementation of the KISS principle.
 
+* Windows
+- [[https://samcogan.com/using-host-process-containers-to-interact-with-kubernetes-windows-nodes/][Using Host Process Containers to Interact with Kubernetes Windows Nodes - samcogan.com]]
+
 * ChatGPT
 
 ** How to tell kubernetes deployment not to run pod on specific node?
