@@ -107,3 +107,25 @@ vda                       252:0    0   20G  0 disk
   Read ahead sectors     auto
   - currently set to     8192
   Block device           253:4
+
+* Fix GRUB
+** Centos 6
+Centos 7 could be booted via network (netboot.xyz) or ISO file.
+
+Mount Centos 6 filesystem to /mnt, then:
+
+: mount --rbind /dev /mnt/dev
+: mount -t proc /proc /mnt/proc
+: mount --rbind /sys /mnt/sys
+
+Then run =grub-install /dev/DEVICE=, e.g.:
+
+grub-install /dev/md127
+
+if you get error about extra disk (e.g. /dev/vda while your RAID consists only
+from /dev/sda1 and /dev/sdb1) in software raid you could work around it with a
+symlink:
+
+: ln -s /dev/md127 /dev/vda
+
+Then try to invoke =grub-install /dev/md127= again.
