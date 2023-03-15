@@ -109,6 +109,9 @@ lightest of data storage needs.
 - show pods labels
   : kubectl get pods --show-labels
 
+- get pod's nodes matching specific label
+  : kubectl -l app.kubernetes.io/name=opensearch --output=custom-columns='NAME:spec.nodeName' --no-headers=true --namespace=opensearch get pods
+
 - delete pods by labels
   : kubectl delete -n kube-system -l k8s-app=kube-dns pods
 
