@@ -48,3 +48,47 @@ Note that these ports are the default values and can be changed in the Redis con
 Redis uses the TCP (Transmission Control Protocol) protocol for communication between the Redis client and server, as well as between Redis nodes in a Redis Cluster.
 
 UDP (User Datagram Protocol) is not used by Redis for communication as it is a connectionless protocol and does not provide the reliability and consistency guarantees that are required for a data storage system like Redis.
+
+** How to configure read-only Redis replica?
+
+To configure a read-only Redis replica, you need to make some changes to the Redis configuration file on the replica instance. Here are the steps to follow:
+
+    Open the Redis configuration file on the replica instance using a text editor.
+
+    Locate the line that begins with "replicaof". This line should specify the IP address and port number of the master Redis instance that this replica is replicating.
+
+    Add the following line to the configuration file:
+
+    bash
+
+    replica-read-only yes
+
+    This setting ensures that the replica instance is in read-only mode and cannot accept write commands.
+
+    Save the changes to the configuration file and restart the Redis replica instance.
+
+Once the replica instance has been restarted with these changes, it will be in read-only mode and will only accept read commands (e.g. GET, KEYS, etc.) from clients. Any write commands (e.g. SET, DEL, etc.) will be rejected with an error message.
+
+** How to specify master host?
+
+To specify the master host for a Redis replica, you need to make some changes to the Redis configuration file on the replica instance. Here are the steps to follow:
+
+    Open the Redis configuration file on the replica instance using a text editor.
+
+    Locate the line that begins with "replicaof". This line should be commented out (i.e. prefixed with a "#" character) by default.
+
+    Uncomment the "replicaof" line and specify the IP address or hostname of the master Redis instance and its port number. The syntax for this line is as follows:
+
+    php
+
+replicaof <master_host> <master_port>
+
+For example, if the master Redis instance is running on IP address 192.168.1.100 and listening on port 6379, the "replicaof" line should look like this:
+
+yaml
+
+    replicaof 192.168.1.100 6379
+
+    Save the changes to the configuration file and restart the Redis replica instance.
+
+Once the replica instance has been restarted with these changes, it will connect to the specified master Redis instance and start replicating data from it.
