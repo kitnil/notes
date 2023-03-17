@@ -913,3 +913,17 @@ Transports (api:18): tcp (9.1.7)
 Согласно видеоконференции [1] при синхронизации Thin LVM 1Tb и больше вероятна проблема в плоть до не возможности синхронизироваться. Исправляется обновлением с 9.1 до 9.2.
 
 [1] https://www.youtube.com/live/prIG9GQurYA?feature=share&t=3033
+
+** Logical volume vg0/pvc-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxxx is used by another device.
+
+[root@kube1:~]# lvchange -an /dev/vg0/pvc-6a376a8e-1f55-437a-95c9-770a9bd1917c_00000
+  Logical volume vg0/pvc-6a376a8e-1f55-437a-95c9-770a9bd1917c_00000 is used by another device.
+
+[root@kube1:~]# dmsetup info -c | grep d8593149c1ce
+vg0-pvc--3ce360a0--da07--4b07--b74e--d8593149c1ce_00000 254  15 L--w    2    1      0 LVM-e7IeamSFN5siS9IKy4LkWyjjIymDOyQy35jT1QlOkJcgJ1tU398wjId7p3fvY0zT
+
+[root@kube1:~]# ls -la /sys/dev/block/254:15/holders/
+total 0
+drwxr-xr-x 2 root root 0 Mar  5 15:44 .
+drwxr-xr-x 9 root root 0 Mar  5 15:44 ..
+lrwxrwxrwx 1 root root 0 Mar  5 15:46 drbd1010 -> ../../drbd1010
