@@ -45,3 +45,120 @@
 
 - удалит из очереди все сообщения, старше чем 86400 секунд (1 сутки)
   : exiqgrep -o 86400 -i | xargs exim -Mrm
+
+* ChatGPT
+
+Could you give an example for exim redirect?
+
+Certainly, here's an example of an Exim redirect configuration:
+
+Let's say you want to redirect all incoming emails for the "user1" address to "user2@example.com". You can create a redirect router in Exim as follows:
+
+    Open the Exim configuration file for editing. On most systems, this file is located at /etc/exim/exim.conf or /etc/exim4/exim4.conf.
+
+    Add the following lines to the configuration file:
+
+java
+
+# Redirect user1@example.com to user2@example.com
+redirect_router:
+  driver = redirect
+  domains = example.com
+  data = user2@example.com
+  user = user1
+
+In the above configuration, the redirect_router router is defined with the redirect driver. The domains option specifies the domain for which the redirection should apply (in this case, example.com). The data option specifies the email address to which the email should be redirected (in this case, user2@example.com). The user option specifies the local part of the email address to which the router should apply (in this case, user1).
+
+    Save the configuration file and reload the Exim service to apply the changes:
+
+service exim restart
+
+Now, any incoming email for user1@example.com will be redirected to user2@example.com.
+
+Could you describe me `redirect_router` in exim?
+
+Sure! In Exim, the redirect_router is a router that is used to redirect incoming email messages to a different email address. The redirect_router is typically used for forwarding email messages from one email address to another.
+
+Here is a brief description of the key options that can be used with the redirect_router in Exim:
+
+    driver: Specifies the driver to use for the router. In the case of redirect_router, the driver is redirect.
+
+    domains: Specifies the domains for which the redirection should apply. For example, you can use domains = example.com to redirect all email messages sent to any email address in the example.com domain.
+
+    data: Specifies the email address to which the email message should be redirected. This can be a local email address or a remote email address.
+
+    user: Specifies the local part of the email address to which the router should apply. For example, you can use user = user1 to redirect email messages sent to user1@example.com.
+
+    file: Specifies the file that contains the list of email addresses to which the router should apply. This option is useful when you want to redirect email messages to multiple email addresses.
+
+When an email message is received by Exim, the router list is checked to determine the appropriate router to use for the message. If the redirect_router is specified in the router list and the email message matches the conditions specified in the domains and user options, the email message is redirected to the email address specified in the data option.
+
+How exim logic based on headers does work?
+
+Exim provides a flexible and powerful way to route email messages based on various message attributes such as message headers, sender address, recipient address, message size, etc. The routing decisions are made based on a set of routers defined in the Exim configuration file.
+
+To route email messages based on message headers, Exim provides a special router called the headers_router. The headers_router router can be used to match specific header fields in incoming messages and route them accordingly.
+
+Here's how the headers_router works:
+
+    The headers_router reads the message headers of incoming messages.
+
+    It compares the headers against the patterns defined in the Exim configuration file.
+
+    If the message headers match a pattern, the router takes the specified action.
+
+For example, you can configure Exim to route all messages that contain a specific header field to a particular email address, or you can route messages based on the content of a header field.
+
+Here is an example of how to configure Exim to route messages based on a header field:
+
+    Open the Exim configuration file for editing. On most systems, this file is located at /etc/exim/exim.conf or /etc/exim4/exim4.conf.
+
+    Add the following lines to the configuration file:
+
+java
+
+headers_router:
+  driver = redirect
+  headers = "From:X-My-Custom-Header"
+  data = user@example.com
+
+In the above configuration, the headers_router router is defined with the redirect driver. The headers option specifies the header fields to match, which in this case are the From and X-My-Custom-Header fields. The data option specifies the email address to which the email should be redirected.
+
+    Save the configuration file and reload the Exim service to apply the changes:
+
+service exim restart
+
+Now, any incoming email message that contains the From and X-My-Custom-Header fields will be redirected to user@example.com.
+
+What could be specified in `data` instead in your previous answer?
+
+In the previous answer, the data option was used to specify the email address to which the email message should be redirected. However, data is a very flexible option that can be used to specify a variety of actions in addition to redirection.
+
+Here are some examples of other actions that can be specified in the data option:
+
+    data = ${lookup mysql{SELECT destination FROM aliases WHERE source='${quote_mysql:$local_part}@${quote_mysql:$domain}'}}: This option uses a MySQL lookup to redirect the email to an address specified in the aliases table of a MySQL database.
+
+    data = ${file{/etc/exim/redirects}}: This option redirects the email to an address specified in the /etc/exim/redirects file.
+
+    data = mailman: This option delivers the email to a mailing list named mailman.
+
+    data = :blackhole:: This option discards the email without sending a bounce message.
+
+As you can see, the data option is a powerful tool for specifying a wide variety of actions in Exim, beyond just email redirection. The action that you specify in data will depend on your specific use case and requirements.
+
+Could I specify in `data` an email based on another header?
+
+Yes, you can use variables and expansions in the data option to specify an email address based on the value of another header field.
+
+For example, suppose you have an email header field called X-Customer-Email, and you want to redirect all email messages that contain this field to the email address specified in the field. You can use the following headers_router configuration:
+
+ruby
+
+headers_router:
+  driver = redirect
+  headers = "X-Customer-Email"
+  data = ${if exists{X-Customer-Email}{${extract{1}{@}{${lookup{$value}lsearch{/etc/exim/customer-emails}}} }fail}
+
+In the above configuration, the headers_router matches any message that contains the X-Customer-Email header field. The data option uses the if and exists conditionals to check if the header field exists in the message. If it does, it uses the extract expansion to extract the domain portion of the email address, and then looks up the email address in the /etc/exim/customer-emails file using the lookup expansion. If the email address is found in the file, the data option uses the address as the destination for the email message. If the email address is not found in the file, the data option returns a fail value and the router fails to match the message.
+
+By using expansions in the data option, you can dynamically specify the destination email address based on the content of other header fields or based on data looked up from external sources.
