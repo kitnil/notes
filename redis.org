@@ -92,3 +92,51 @@ yaml
     Save the changes to the configuration file and restart the Redis replica instance.
 
 Once the replica instance has been restarted with these changes, it will connect to the specified master Redis instance and start replicating data from it.
+
+** Could you show me an example of a full configuration file for this?
+
+Certainly! Here is an example of a full Redis configuration file for a read-only replica with a specified master host:
+
+bash
+
+# Redis configuration file
+
+# General
+daemonize yes
+pidfile /var/run/redis/redis.pid
+
+# Networking
+bind 0.0.0.0
+port 6379
+tcp-backlog 511
+
+# Replication
+replicaof 192.168.1.100 6379
+replica-read-only yes
+
+# Persistence
+dir /var/lib/redis
+save 900 1
+save 300 10
+save 60 10000
+appendonly yes
+appendfilename "appendonly.aof"
+
+# Security
+requirepass mypassword
+masterauth mypassword
+
+# Performance
+maxmemory 2gb
+maxmemory-policy allkeys-lru
+
+# Logging
+logfile /var/log/redis/redis.log
+loglevel notice
+
+# Other
+databases 16
+
+In this example, the "replicaof" line specifies that this Redis instance is a replica of a master Redis instance running on IP address 192.168.1.100 and port 6379. The "replica-read-only" line ensures that this replica instance is in read-only mode and cannot accept write commands.
+
+Note that this is just an example configuration file, and the specific settings you need will depend on your use case and environment.
