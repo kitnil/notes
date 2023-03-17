@@ -226,3 +226,30 @@ my_transport:
   driver = smtp
 
 In the above configuration, the my_route route manually routes email messages for the mydomain.com domain to the my_transport transport. The route_data option is used to conditionally apply the interface option to the remote_smtp transport. In this case, the interface option is only applied to messages where the sender's IP address is 192.168.1.10. For all other messages, the default interface setting will be used.
+
+How to send from one router to another in exim?
+
+To send email from one router to another in Exim, you can use the transport option in the first router to specify the second router as the next destination for the message.
+
+Here's an example configuration:
+
+java
+
+my_first_router:
+  driver = accept
+  domains = example.com
+  transport = my_second_router
+
+my_second_router:
+  driver = manualroute
+  domains = example.com
+  transport = remote_smtp
+  route_list = * mx.example.com
+
+In the above configuration, the my_first_router router accepts email messages for the example.com domain and specifies the my_second_router transport as the next destination for the message.
+
+The my_second_router transport is configured as a manualroute driver, which allows you to manually specify the route for the message. In this example, the route_list option specifies that the message should be sent to the MX server for the example.com domain.
+
+Note that the remote_smtp transport is used to actually send the message to the remote server. You can configure the remote_smtp transport in your Exim configuration file to specify the settings for sending email to remote servers, such as the SMTP server hostname, port, authentication, etc.
+
+By using the transport option in the first router, you can chain multiple routers together to handle the delivery of email messages in a more complex way.
