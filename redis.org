@@ -140,3 +140,21 @@ databases 16
 In this example, the "replicaof" line specifies that this Redis instance is a replica of a master Redis instance running on IP address 192.168.1.100 and port 6379. The "replica-read-only" line ensures that this replica instance is in read-only mode and cannot accept write commands.
 
 Note that this is just an example configuration file, and the specific settings you need will depend on your use case and environment.
+
+** What is save in Redis config?
+
+In Redis, the save directive in the configuration file specifies a list of conditions under which Redis should write the in-memory data to disk (i.e., create a snapshot). The save directive takes arguments in the form of two integers: the first integer specifies the number of seconds that must elapse before Redis performs a snapshot if a certain number of changes have been made to the dataset, and the second integer specifies the minimum number of changes that must be made to the dataset before Redis performs a snapshot.
+
+Here's an example of the save directive in Redis configuration file:
+
+save 900 1
+save 300 10
+save 60 10000
+
+This configuration specifies that Redis should perform a snapshot if either of the following conditions is met:
+
+    At least 1 key has been changed and 900 seconds (15 minutes) have elapsed since the last snapshot.
+    At least 10 keys have been changed and 300 seconds (5 minutes) have elapsed since the last snapshot.
+    At least 10000 keys have been changed and 60 seconds have elapsed since the last snapshot.
+
+When Redis performs a snapshot, it writes a copy of the entire in-memory dataset to disk. This snapshot can be used to recover data in case of system failures or other problems. Note that performing snapshots can be an expensive operation, especially if the dataset is large, so you should tune the save directive based on the size of your dataset and the frequency of changes.
