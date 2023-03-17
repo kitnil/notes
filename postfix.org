@@ -45,3 +45,52 @@ If you have multiple network interfaces or IP addresses, you may need to configu
     relayhost: If you are using a relay server to send outgoing email, you can configure the relayhost parameter to specify the hostname or IP address of the relay server. Note that the smtp_bind_address parameter will not have any effect if you are using a relay server.
 
 By configuring these parameters, you can ensure that Postfix uses the correct network interface or IP address for outgoing email, based on your specific requirements.
+
+** How to redirect to email specified in header in Postfix?
+
+To redirect email to an address specified in the message header in Postfix, you can use the header_checks configuration parameter.
+
+Here are the steps to configure Postfix to redirect email to an address specified in the header:
+
+    Edit the Postfix configuration file /etc/postfix/main.cf using your favorite text editor.
+
+    Add the following lines to the configuration file:
+
+    javascript
+
+header_checks = regexp:/etc/postfix/header_checks
+canonical_maps = regexp:/etc/postfix/canonical
+
+The header_checks parameter specifies a regular expression file that defines the rules for redirecting email based on the message header. The canonical_maps parameter specifies a regular expression file that defines the rules for canonicalizing email addresses.
+
+Create the file /etc/postfix/header_checks and add the following line:
+
+css
+
+/^To:.*@redirect\.example\.com/ REDIRECT ${1}@example.com
+
+This regular expression matches email messages where the To: header contains the domain redirect.example.com, and replaces it with ${1}@example.com. The ${1} variable is a backreference to the email address specified in the original To: header.
+
+Create the file /etc/postfix/canonical and add the following line:
+
+ruby
+
+/@redirect\.example\.com$/ ${1}@example.com
+
+This regular expression canonicalizes any email addresses with the domain redirect.example.com to example.com.
+
+Save and close the configuration files.
+
+Reload the Postfix configuration by running the following command:
+
+swift
+
+sudo systemctl reload postfix
+
+Alternatively, you can restart the Postfix service by running the following command:
+
+swift
+
+    sudo systemctl restart postfix
+
+Postfix will now redirect any email messages where the To: header contains the domain redirect.example.com to the corresponding address in the example.com domain.
