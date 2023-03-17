@@ -48,7 +48,7 @@
 
 * ChatGPT
 
-Could you give an example for exim redirect?
+** Could you give an example for exim redirect?
 
 Certainly, here's an example of an Exim redirect configuration:
 
@@ -75,7 +75,7 @@ service exim restart
 
 Now, any incoming email for user1@example.com will be redirected to user2@example.com.
 
-Could you describe me `redirect_router` in exim?
+** Could you describe me `redirect_router` in exim?
 
 Sure! In Exim, the redirect_router is a router that is used to redirect incoming email messages to a different email address. The redirect_router is typically used for forwarding email messages from one email address to another.
 
@@ -93,7 +93,7 @@ Here is a brief description of the key options that can be used with the redirec
 
 When an email message is received by Exim, the router list is checked to determine the appropriate router to use for the message. If the redirect_router is specified in the router list and the email message matches the conditions specified in the domains and user options, the email message is redirected to the email address specified in the data option.
 
-How exim logic based on headers does work?
+** How exim logic based on headers does work?
 
 Exim provides a flexible and powerful way to route email messages based on various message attributes such as message headers, sender address, recipient address, message size, etc. The routing decisions are made based on a set of routers defined in the Exim configuration file.
 
@@ -130,7 +130,7 @@ service exim restart
 
 Now, any incoming email message that contains the From and X-My-Custom-Header fields will be redirected to user@example.com.
 
-What could be specified in `data` instead in your previous answer?
+** What could be specified in `data` instead in your previous answer?
 
 In the previous answer, the data option was used to specify the email address to which the email message should be redirected. However, data is a very flexible option that can be used to specify a variety of actions in addition to redirection.
 
@@ -163,7 +163,7 @@ In the above configuration, the headers_router matches any message that contains
 
 By using expansions in the data option, you can dynamically specify the destination email address based on the content of other header fields or based on data looked up from external sources.
 
-How to configure exim to use specific IP address for sending messages?
+** How to configure exim to use specific IP address for sending messages?
 
 To configure Exim to use a specific IP address for sending messages, you can use the interface option in the Exim configuration file.
 
@@ -191,7 +191,7 @@ Now, Exim will use the specified IP address as the source IP address when sendin
 
 Note that if you have multiple interfaces, you can specify a different IP address for each interface by adding additional remote_smtp transport sections to the configuration file with different interface options.
 
-Could I use remote_smtp for specific route?
+** Could I use remote_smtp for specific route?
 
 Yes, you can use the interface option in the remote_smtp transport for a specific router or route by using the transport_filter option in the router configuration.
 
@@ -227,7 +227,7 @@ my_transport:
 
 In the above configuration, the my_route route manually routes email messages for the mydomain.com domain to the my_transport transport. The route_data option is used to conditionally apply the interface option to the remote_smtp transport. In this case, the interface option is only applied to messages where the sender's IP address is 192.168.1.10. For all other messages, the default interface setting will be used.
 
-How to send from one router to another in exim?
+** How to send from one router to another in exim?
 
 To send email from one router to another in Exim, you can use the transport option in the first router to specify the second router as the next destination for the message.
 
