@@ -1835,3 +1835,16 @@ spec:
     Run kubectl apply -k . to apply the Kustomization to the cluster.
 
 This should create a DaemonSet with one pod per node labeled with node-type=worker. Each pod runs a single container with the nginx image.
+
+** What is init container?
+
+An init container is a special type of container that runs before the main container of a pod starts. Its primary purpose is to perform any initialization or pre-processing tasks that are required before the main container starts running. The init container can run a command or a script, and can also perform various other tasks such as installing software, downloading data, or configuring the environment.
+
+Init containers can be used to handle a wide range of scenarios, such as:
+
+    Waiting for a database or other service to become available before starting the main container
+    Setting up a shared volume or configuration file that is required by multiple containers in the same pod
+    Running security checks or configuration validation before starting the main container
+    Initializing a database or other data store before it is accessed by the main container
+
+Init containers are defined in the same YAML file as the main container, but in a separate container specification. They are run sequentially, with the next init container starting only after the previous one has completed successfully. If an init container fails, the pod is restarted until the init container succeeds.
