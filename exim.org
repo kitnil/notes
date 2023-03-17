@@ -162,3 +162,67 @@ headers_router:
 In the above configuration, the headers_router matches any message that contains the X-Customer-Email header field. The data option uses the if and exists conditionals to check if the header field exists in the message. If it does, it uses the extract expansion to extract the domain portion of the email address, and then looks up the email address in the /etc/exim/customer-emails file using the lookup expansion. If the email address is found in the file, the data option uses the address as the destination for the email message. If the email address is not found in the file, the data option returns a fail value and the router fails to match the message.
 
 By using expansions in the data option, you can dynamically specify the destination email address based on the content of other header fields or based on data looked up from external sources.
+
+How to configure exim to use specific IP address for sending messages?
+
+To configure Exim to use a specific IP address for sending messages, you can use the interface option in the Exim configuration file.
+
+Here's how to do it:
+
+    Open the Exim configuration file for editing. On most systems, this file is located at /etc/exim/exim.conf or /etc/exim4/exim4.conf.
+
+    Find the remote_smtp transport section in the configuration file. This section defines how Exim sends email to remote SMTP servers.
+
+    Add the interface option to the remote_smtp transport section, as shown below:
+
+vbnet
+
+remote_smtp:
+  driver = smtp
+  interface = 192.168.1.100
+
+In the above configuration, the interface option specifies the IP address of the interface that Exim should use when sending email messages to remote SMTP servers. Replace 192.168.1.100 with the IP address of the interface that you want to use.
+
+    Save the configuration file and reload the Exim service to apply the changes:
+
+service exim restart
+
+Now, Exim will use the specified IP address as the source IP address when sending email messages to remote SMTP servers.
+
+Note that if you have multiple interfaces, you can specify a different IP address for each interface by adding additional remote_smtp transport sections to the configuration file with different interface options.
+
+Could I use remote_smtp for specific route?
+
+Yes, you can use the interface option in the remote_smtp transport for a specific router or route by using the transport_filter option in the router configuration.
+
+Here's an example configuration that uses the interface option for a specific router:
+
+perl
+
+my_router:
+  driver = accept
+  domains = mydomain.com
+  transport = my_transport
+  transport_filter = ${if eq{$sender_host_address}{192.168.1.10}{yes}{no}}
+
+my_transport:
+  driver = smtp
+  interface = 192.168.1.100
+
+In the above configuration, the my_router router accepts email messages for the mydomain.com domain and sends them to the my_transport transport. The transport_filter option is used to conditionally apply the interface option to the remote_smtp transport. In this case, the interface option is only applied to messages where the sender's IP address is 192.168.1.10. For all other messages, the default interface setting will be used.
+
+You can also use the interface option for a specific route by specifying it in the route_data option of the route configuration:
+
+perl
+
+my_route:
+  driver = manualroute
+  domains = mydomain.com
+  transport = my_transport
+  route_list = * smtp.mydomain.com
+  route_data = ${if eq{$sender_host_address}{192.168.1.10}{interface = 192.168.1.100}{interface = <default>}}
+
+my_transport:
+  driver = smtp
+
+In the above configuration, the my_route route manually routes email messages for the mydomain.com domain to the my_transport transport. The route_data option is used to conditionally apply the interface option to the remote_smtp transport. In this case, the interface option is only applied to messages where the sender's IP address is 192.168.1.10. For all other messages, the default interface setting will be used.
