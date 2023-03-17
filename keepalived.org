@@ -73,3 +73,15 @@ bash
 sudo keepalived -f /etc/keepalived/keepalived-2.conf
 
 Keep in mind that running multiple instances of Keepalived can increase complexity and may not be necessary for most use cases. It's important to ensure that each instance is configured correctly and that there are no conflicts between the virtual IP addresses used by each instance.
+
+** Keepalived uses several ports for communication, depending on the configuration and the protocol used. Here are some of the commonly used ports:
+
+    VRRP (Virtual Router Redundancy Protocol) uses UDP port 112.
+
+    The control socket used by Keepalived to communicate with its daemon process uses TCP port 8080 by default, but this can be changed in the configuration file.
+
+    The SNMP (Simple Network Management Protocol) agent used by Keepalived listens on UDP port 161.
+
+    The notification messages sent by Keepalived when a transition occurs can be sent over SMTP (Simple Mail Transfer Protocol) on TCP port 25, or over SNMP traps on UDP port 162.
+
+It's important to note that these ports can be customized in the Keepalived configuration file, so the actual ports used may vary depending on the configuration. Additionally, Keepalived may use other ports depending on the specific features and configuration options used.
