@@ -2,3 +2,7 @@
 :ID:       e28a7e7a-44f1-46e7-8ded-51809353db45
 :END:
 - [[https://peertube.iriseden.eu/][Local videos - iriseden Peertube]]
+
+* Issues
+
+** Cannot retrieve OAuth Client credentials: undefined. Ensure you have correctly configured PeerTube (config/ directory), in particular the "webserver" section.
