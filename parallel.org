@@ -9,4 +9,4 @@
 - open jobs in tmux panels
   : parallel --tmuxpane --fg yes ::: 1 2
 
-- parallel --tag --color -j 8 ping -c 2 ::: 192.168.0.1 192.168.0.1 192.168.0.1
+- parallel --tag --color -j 8 ping -c 2 ::: 192.168.0,{1,1,1}
