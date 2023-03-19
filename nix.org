@@ -1816,6 +1816,7 @@ builtins.match "php([[:alnum:]])([[:alnum:]])" "php70"
 - [[https://floxdev.com/][flox: Manage and share development environments, package your projects for others, and publish artifacts anywhere. Harness the power of Nix. Develop, package, publish, run anywhere.]]
 - [[https://github.com/Gabriella439/nix-diff][Gabriella439/nix-diff: Explain why two Nix derivations differ]]
 - [[https://github.com/gvolpe/nmd][gvolpe/nmd: NixOS Module Documentation generator]]
+- [[https://github.com/hraban/nix-update-sources][hraban/nix-update-sources: Find all updatable git sources in a Nix scope]]
 - [[https://github.com/jmgilman/nix-pre-commit][jmgilman/nix-pre-commit: Generate pre-commit configurations with your flake.nix]]
 - [[https://github.com/jordanisaacs/kernel-module-flake][jordanisaacs/kernel-module-flake: Nix flake for linux kernel module development]]
 - [[https://github.com/jsoo1/nix-git-dir][jsoo1/nix-git-dir: Parse a git directory (HEAD) into nix values]]
