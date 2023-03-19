@@ -53,14 +53,16 @@
 - [[http://sane-project.org/][SANE - Scanner Access Now Easy]]
 - [[https://github.com/scolastico-dev/s.Status][scolastico-dev/s.Status: s.Status is a open source server status page written in java.]]
 - [[https://healthchecks.io/docs/self_hosted/][Self-Hosted Healthchecks - Healthchecks.io]]
+- [[https://git.swurl.xyz/swirl/clink][swirl/clink: dead-simple, super minimal URL shortener in C - clink - z]]
 - [[https://github.com/tellform/tellform][tellform/tellform: Free Opensource Alternative to TypeForm or Google Forms]]
+- [[https://tissue.systemreboot.net/][tissue - issue tracker and project information management system built on plain text files and git]]
 - "title": "airsonic", "description": "Airsonic is a free, web-based media streamer, providing ubiqutious access to your music. Use it to share your music with friends, or to listen to your own music while at work. You can stream to multiple players simultaneously, for instance to one player in your kitchen and another in your living room."
 - "title": "beets", "description": "The purpose of beets is to get your music collection right once and for all. It catalogs your collection, automatically improving its metadata as it goes using the MusicBrainz database. Then it provides a bouquet of tools for manipulating and accessing your music."
 - "title": "booksonic", "description": "Booksonic is a server and an app for streaming your audiobooks to any pc or android phone. Most of the functionality is also availiable on other platforms that have apps for subsonic"
 - "title": "calibre-web", "description": "Calibre Web is a web app providing a clean interface for browsing, reading and downloading eBooks using an existing Calibre database.\n\n  [br][br]\n  [b][u][span style='color: #E80000;']Configuration[/span][/u][/b][br]\n  [b]/config[/b] Where Calibre-web should store it's database[br]\n  [b]/books[/b] Path to your calibre library metadata.db file[br]"
 - "title": "Chevereto", "description": "Chevereto is a powerful and fast image hosting script that allows you to create your very own full featured image hosting website in just minutes. Please note that this offers only the free Chevereto version.."
-- "title": "codiad", "description": "Codiad is a web-based IDE framework with a small footprint and minimal requirements.\n  "
 
+- "title": "codiad", "description": "Codiad is a web-based IDE framework with a small footprint and minimal requirements.\n  "
 - "title": "cops", "description": "COPS links to your Calibre library database and allows downloading and emailing of books directly from a web browser and provides a OPDS feed to connect to your devices."
 - "title": "couchpotato", "description": "CouchPotato (CP) is an automatic NZB and torrent downloader. You can keep a \"movies I want\"-list and it will search for NZBs/torrents of these movies every X hours. Once a movie is found, it will send it to SABnzbd or download the torrent to a specified directory."
 - "title": "daapd", "description": "DAAP (iTunes) media server with support for AirPlay devices, Apple Remote (and compatibles), MPD and internet radio."
@@ -125,7 +127,6 @@
 - [[https://github.com/wirow-io/wirow-server][wirow-io/wirow-server: A full featured self-hosted video web-conferencing platform.]]
 - [[https://github.com/zulip/zulip][zulip/zulip: Zulip server and web app—powerful open source team chat]]
 - [[https://serveradmin.ru/ustanovka-i-nastroyka-zulip/][Установка и настройка мессенджера Zulip — Server Admin]]
-- [[https://git.swurl.xyz/swirl/clink][swirl/clink: dead-simple, super minimal URL shortener in C - clink - z]]
 
 * Control panel
 - [[https://github.com/usmannasir/cyberpanel][usmannasir/cyberpanel: Cyber Panel - The hosting control panel for OpenLiteSpeed]]
