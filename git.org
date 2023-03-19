@@ -275,6 +275,9 @@ rerere-train.sh [COMMIT][--all]
   - Commit every file separately with the same commit message
     : for file in $(git status | awk '/modified/ { print $NF }'); do eval $(echo git commit -m "'hosts: $(basename "$file" .nix): Configure time zone.'" "$file"); done
 
+  - external diff tool
+    : GIT_EXTERNAL_DIFF=difft git log -p --ext-diff
+
 * Learning
   - [[https://ssl.engineering.nyu.edu/papers/afzali_asiaccs_2018.pdf][le-git-imate: Towards Verifiable Web-based Git Repositories - afzali_asiaccs_2018.pdf]]
   - [[https://ohmygit.org/][Oh My Git!]]
