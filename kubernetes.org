@@ -1104,6 +1104,7 @@ then redeploy with:
 - [[https://github.com/kube-vip/kube-vip][kube-vip/kube-vip: Kubernetes Control Plane Virtual IP and Load-Balancer]]
 - [[https://kubevirt.io/][KubeVirt.io Building a virtualization API for Kubernetes]]
 - [[https://www.cncf.io/blog/2022/07/11/kubevirt-kube-ovn-networking-for-cloud-native-virtualization/][KubeVirt + Kube-OVN: Networking for cloud native virtualization | Cloud Native Computing Foundation]]
+- [[https://github.com/kubewharf/kelemetry][kubewharf/kelemetry: Global control plane tracing for Kubernetes]]
 - [[https://github.com/kumahq/kuma][kumahq/kuma: 🐻 The multi-zone service mesh for containers, Kubernetes and VMs. Built with Envoy. CNCF Sandbox Project.]]
 - [[https://github.com/kvaps/kubectl-build][kvaps/kubectl-build: Build dockerfiles directly in your Kubernetes cluster.]]
 - [[https://github.com/kvaps/kubectl-node-shell][kvaps/kubectl-node-shell: Exec into node via kubectl]]
