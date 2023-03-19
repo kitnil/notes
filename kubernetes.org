@@ -1852,3 +1852,53 @@ Init containers can be used to handle a wide range of scenarios, such as:
     Initializing a database or other data store before it is accessed by the main container
 
 Init containers are defined in the same YAML file as the main container, but in a separate container specification. They are run sequentially, with the next init container starting only after the previous one has completed successfully. If an init container fails, the pod is restarted until the init container succeeds.
+
+** How to set /etc/hostname inside a pod?
+
+You can set the hostname inside a pod by using an init container to modify the /etc/hostname file. Here's an example of how to do it:
+
+    Create a ConfigMap that contains the hostname value you want to set:
+
+yaml
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: hostname-configmap
+data:
+  hostname: my-hostname
+
+    Create a Pod with an init container that sets the hostname:
+
+yaml
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: my-pod
+spec:
+  initContainers:
+  - name: set-hostname
+    image: busybox
+    command: ["/bin/sh", "-c", "echo $(hostname) > /etc/hostname"]
+    volumeMounts:
+    - name: hostname-volume
+      mountPath: /etc/hostname
+  containers:
+  - name: my-container
+    image: my-image
+    volumeMounts:
+    - name: hostname-volume
+      mountPath: /etc/hostname
+    env:
+    - name: MY_HOSTNAME
+      valueFrom:
+        configMapKeyRef:
+          name: hostname-configmap
+          key: hostname
+  volumes:
+  - name: hostname-volume
+    configMap:
+      name: hostname-configmap
+
+In this example, the set-hostname init container runs the echo $(hostname) > /etc/hostname command to set the hostname to the value of the hostname of the container, which is passed to the MY_HOSTNAME environment variable of the main container using a ConfigMap. The volumeMounts and volumes sections ensure that the /etc/hostname file is mounted in both containers.
