@@ -1902,3 +1902,15 @@ spec:
       name: hostname-configmap
 
 In this example, the set-hostname init container runs the echo $(hostname) > /etc/hostname command to set the hostname to the value of the hostname of the container, which is passed to the MY_HOSTNAME environment variable of the main container using a ConfigMap. The volumeMounts and volumes sections ensure that the /etc/hostname file is mounted in both containers.
+
+** What ports required for Kubelet?
+
+Kubelet, the Kubernetes node agent, requires several ports to be open for communication with the Kubernetes control plane and other nodes in the cluster. Here are the default ports required by Kubelet:
+
+    TCP port 10250: The Kubelet API server port. It is used for communication between the Kubelet and other Kubernetes components such as the kube-apiserver, kubelet's http endpoint, and kubelet's read-only port.
+
+    TCP port 10255: The read-only port for the Kubelet's HTTP endpoint. It provides access to the health check, metrics, and log files for the Kubelet.
+
+    TCP port 10256: The Kubelet's cadvisor port. It provides access to the container metrics for the Kubelet.
+
+It's worth noting that these ports can be customized by passing command-line flags to the Kubelet or by setting configuration options in the Kubelet's configuration file. Also, some Kubernetes distributions may use different ports by default, so it's always a good idea to consult the documentation or vendor-specific guides for the specific distribution being used.
