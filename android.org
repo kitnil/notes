@@ -653,3 +653,18 @@ https://github.com/Genymobile/scrcpy/blob/87da1372380ebddb60e4d89cff9a251c866e21
 
 - down
   : adb shell input keyevent 20
+
+* Chatgpt
+** What could be used to automate proprietary apps on Android device?
+
+To automate proprietary apps on an Android device, you can use a mobile automation testing tool that supports Android operating systems. Here are a few options:
+
+    Appium: Appium is an open-source mobile automation testing tool that supports both Android and iOS platforms. It uses the WebDriver protocol to automate mobile apps and provides a wide range of automation capabilities such as gesture support, element locating strategies, and multi-platform testing.
+
+    UI Automator: UI Automator is an Android testing framework that allows you to perform automated functional testing of user interfaces. It can be used to test the interaction between multiple apps on the device and supports running tests on multiple devices in parallel.
+
+    Espresso: Espresso is a testing framework for Android that allows you to write automated UI tests for your app. It is designed to be lightweight, fast, and reliable, and it provides a simple and intuitive API for creating tests.
+
+    Robotium: Robotium is an Android testing framework that allows you to write automated UI tests for your app. It provides a simple and intuitive API for creating tests, and it supports a wide range of Android versions and devices.
+
+    Selendroid: Selendroid is a testing framework that allows you to automate native and hybrid Android apps. It supports multiple Android versions and devices and provides a wide range of automation capabilities such as element locating strategies, gesture support, and multi-platform testing.
