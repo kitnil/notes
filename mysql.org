@@ -17,6 +17,7 @@
 - [[https://github.com/BMDan/DFuse][BMDan/DFuse: DFuse: Database FUSE - MySQL Tables Exposed as a FS via FUSE]]
 - [[https://github.com/bianster/mysqlfs][bianster/mysqlfs: MySQLfs is Linux userspace filesystem which stores data in a MySQL database. It uses FUSE to interface with the kernel.]]
 - [[https://github.com/skeyby/mysqlfs][skeyby/mysqlfs: MySQLfs is a FUSE - File System in User land - module which stores data in a MySQL database]]
+- [[https://github.com/dengjiawen8955/mysqldump][dengjiawen8955/mysqldump: A zero-dependency, high-performance, concurrent mysqldump tool implemented in golang. golang 中实现的零依赖、高性能、并发 mysqldump 工具。]]
 
 
 : mysqldump --master-data=2 --flush-logs --single-transaction --quick --all-databases
