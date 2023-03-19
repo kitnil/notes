@@ -22,11 +22,11 @@
   : curl --ssl-reqd --url 'smtps://smtp.yandex.ru:465' --user 'i18n.wugi@yandex.ru:xxxxxxxx' --mail-from 'i18n.wugi@yandex.ru' --mail-rcpt 'i18n.wugi@yandex.ru' --upload-file <(echo -e "From: i18n.wugi@yandex.ru\nTo: i18n.wugi@yandex.ru\nSubject: Test message\n\nHello.\nThis is a test message.\n\n")
 
 * Tools
-  - [[https://github.com/axllent/mailpit][axllent/mailpit: An email and SMTP testing tool with API for developers]]
-  - [[https://github.com/sj26/mailcatcher][sj26/mailcatcher: Catches mail and serves it through a dream.]]
-  - [[https://github.com/leahneukirchen/mblaze][leahneukirchen/mblaze: Unix utilities to deal with Maildir]]
-  - [[https://github.com/mailhog/MailHog][mailhog/MailHog: Web and API based SMTP testing]]
-  - [[https://github.com/resendlabs/react-email][resendlabs/react-email: 💌 Build and send emails using React]]
+- [[https://github.com/axllent/mailpit][axllent/mailpit: An email and SMTP testing tool with API for developers]]
+- [[https://github.com/leahneukirchen/mblaze][leahneukirchen/mblaze: Unix utilities to deal with Maildir]]
+- [[https://github.com/mailhog/MailHog][mailhog/MailHog: Web and API based SMTP testing]]
+- [[https://github.com/resendlabs/react-email][resendlabs/react-email: 💌 Build and send emails using React]]
+- [[https://github.com/sj26/mailcatcher][sj26/mailcatcher: Catches mail and serves it through a dream.]]
 
 ** Services
 - https://postmaster.google.com/
