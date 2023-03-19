@@ -315,6 +315,7 @@
 - [[https://github.com/google/go-licenses][google/go-licenses: Reports on the licenses used by a Go package and its dependencies.]]
 - [[https://github.com/ofabry/go-callvis][ofabry/go-callvis: Visualize call graph of a Go program using Graphviz]]
 - [[https://github.com/arl/statsviz][arl/statsviz: Instant live visualization of your Go application runtime statistics (GC, MemStats, etc.) in the browser]]
+- [[https://github.com/felixge/fgtrace][felixge/fgtrace: fgtrace is an experimental profiler/tracer that is capturing wallclock timelines for each goroutine. It's very similar to the Chrome profiler.]]
 
 - pretty print
   #+begin_src go
