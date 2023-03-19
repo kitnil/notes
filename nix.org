@@ -1677,6 +1677,7 @@ builtins.match "php([[:alnum:]])([[:alnum:]])" "php70"
   - nixos-install --flake github:hoverbear-consulting/flake#gizmo --impure
     - ln -s /path/to/nixpkgs-replit/default.nix ~/.config/nixpkgs/overlays/replit.nix
     - # Install upm nix-env -iA nixpkgs.upm
+  - [[https://github.com/andreoss/kernel-overlay][andreoss/kernel-overlay: linux kernel overlay]]
 
 * Packages
 - [[https://github.com/JJJollyjim/arewehackersyet][JJJollyjim/arewehackersyet: Tracking the availability of Kali Linux packages in NixOS]]
