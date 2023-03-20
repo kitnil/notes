@@ -1,0 +1,38 @@
+#+begin_src scheme
+  #!/usr/bin/env -S guile --no-auto-compile -e main -s
+  !#
+
+  (set! %load-path
+        (append '("/gnu/store/4m9b432sbvzwpk3nc3wmi8sjyh8q13hl-gash-utils-0.1.0/share/guile/site/3.0"
+                  "/gnu/store/26q4w45rc7qawgb0lzx2b8p34sgky23s-gash-0.2.0/share/guile/site/3.0")
+                %load-path))
+
+  (set! %load-compiled-path
+        (append '("/gnu/store/4m9b432sbvzwpk3nc3wmi8sjyh8q13hl-gash-utils-0.1.0/lib/guile/3.0/site-ccache"
+                  "/gnu/store/26q4w45rc7qawgb0lzx2b8p34sgky23s-gash-0.2.0/lib/guile/3.0/site-ccache")
+                %load-compiled-path))
+
+  (use-modules (gash ustar)
+               (gash guix-utils)
+               (srfi srfi-26)
+               (guix build utils))
+
+  (define write-ustar-file
+    (@@ (gash ustar) write-ustar-file))
+
+  (define write-ustar-footer
+    (@@ (gash ustar) write-ustar-footer))
+
+  (define (main . args)
+    (call-with-port (open-file "out.tar.gz" "wb")
+      (lambda (port)
+        (with-directory-excursion "."
+          (call-with-compressed-output-port 'gzip port
+            (cut write-ustar-file <> "Makefile.am"
+                 #:verbosity 0)))
+        (with-directory-excursion "doc"
+          (call-with-compressed-output-port 'gzip port
+            (cut write-ustar-file <> "."
+                 #:verbosity 0)))
+        (write-ustar-footer port))))
+#+end_src
