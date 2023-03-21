@@ -347,3 +347,6 @@ Run:
   root@kvm26:~# virsh migrate --live --copy-storage-all --verbose --persistent vm43597 qemu+ssh://root@kvm15.intr/system
   Migration: [ 73 %]
 #+end_example
+
+* Sound
+- scream -i br154.154 -u -p 16400
