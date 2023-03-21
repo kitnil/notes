@@ -947,3 +947,35 @@ The AbsRscLayerObject provides a common interface for managing storage resources
 AbsRscLayerObject is an abstract class, which means that it cannot be directly instantiated. Instead, it serves as a base class for other resource layer objects that implement specific storage technologies. For example, there are subclasses of AbsRscLayerObject that implement support for local disks, network-attached storage (NAS), and storage area networks (SAN).
 
 By using a common interface for managing storage resources, Linstor provides a highly flexible and scalable storage solution that can be easily adapted to meet the needs of different applications and workloads. The AbsRscLayerObject is a key component of this architecture, enabling seamless management of storage resources across a distributed cluster.
+
+** How to see `Rsc` in Linstor?
+
+In Linstor, Rsc (Resource Set Controller) refers to a set of resources that are managed together as a unit. To view the Rscs in Linstor, you can use the following command:
+
+linstor rsc list
+
+This command will display a list of all the Rscs that are currently configured in the Linstor cluster. Each Rsc will be listed with its name, the node on which it is located, and its state (e.g., UpToDate, Degraded, etc.).
+
+If you want to view more detailed information about a specific Rsc, you can use the linstor rsc show command followed by the name of the Rsc. For example:
+
+perl
+
+linstor rsc show my-rsc
+
+This command will display detailed information about the my-rsc Rsc, including its current state, replication settings, and the resources that make up the Rsc.
+
+** There is no such command.
+
+I apologize for the confusion. The correct command to list the Rscs in Linstor is:
+
+linstor resource-definition list
+
+This command will display a list of all the resource sets (Rscs) that are currently configured in the Linstor cluster. Each Rsc will be listed with its name, size, and placement policy.
+
+To view more detailed information about a specific Rsc, you can use the linstor resource-definition show command followed by the name of the Rsc. For example:
+
+perl
+
+linstor resource-definition show my-rsc
+
+This command will display detailed information about the my-rsc Rsc, including its current state, replication settings, and the resources that make up the Rsc.
