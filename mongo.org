@@ -12,6 +12,9 @@
 
 - https://habr.com/en/post/134590/
 
+- list all collections from all databases'
+  : db.getMongo().getDBNames().forEach(function(v, i){print(v + '\n\t' + db.getSiblingDB(v).getCollectionNames().join('\n\t'))})
+
 - Search in nested object
   : db.getCollection('template').find({"foo.bar": "something"})
 
