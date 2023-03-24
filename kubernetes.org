@@ -874,6 +874,9 @@ This is the reason why it is recommended to use an odd number of master nodes fo
 - [[https://github.com/flant/shell-operator][flant/shell-operator: Shell-operator is a tool for running event-driven scripts in a Kubernetes cluster]]
 - [[https://habr.com/ru/company/southbridge/blog/556860/][Пишем оператор Kubernetes с нуля / Хабр]]
 
+** Prometheus Operator
+- [[https://cloud.tencent.com/developer/article/2208456][Prometheus Operator中探针的使用 - 腾讯云开发者社区-腾讯云]]
+
 * Problems
 
 #+begin_example
