@@ -288,3 +288,19 @@ lvchange -ay -v lvm2/ntfsgames
 #+begin_example
   iostat -x -d 1
 #+end_example
+
+* ChatGPT
+
+** Why `lvcreate` sometimes does not add new logical volume as device to `/dev` directory?
+
+lvcreate creates a new logical volume, but it does not automatically create a device node for it in the /dev directory. This is because the device node is typically created by the udev system, which detects when new storage devices are added or removed from the system, and creates the corresponding device nodes in the /dev directory.
+
+If the device node for the new logical volume is not immediately visible in the /dev directory, it is possible that udev has not yet had a chance to create the device node. This can sometimes occur if udev is busy processing other events or if there is a delay in detecting the new device.
+
+To force udev to create the device node immediately, you can run the following command:
+
+sql
+
+sudo udevadm trigger
+
+This will force udev to re-evaluate all pending events and create any missing device nodes. Once the command completes, the device node for the new logical volume should be visible in the /dev directory.
