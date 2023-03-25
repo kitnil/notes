@@ -1172,6 +1172,7 @@ then redeploy with:
 - [[https://github.com/slok/simple-ingress-external-auth][slok/simple-ingress-external-auth: A very simple external authentication service for Kubernetes ingresses (ingress-nginx, traefik...)]]
 - [[https://github.com/soluble-ai/kubetap][soluble-ai/kubetap: Kubectl plugin to interactively proxy Kubernetes Services with ease]]
 - [[https://github.com/Soluto/kamus][Soluto/kamus: An open source, git-ops, zero-trust secret encryption and decryption solution for Kubernetes applications]]
+- [[https://github.com/sozercan/kubectl-ai][sozercan/kubectl-ai: ✨ Kubectl plugin for OpenAI GPT]]
 - [[https://github.com/spacecloud-io/space-cloud][spacecloud-io/space-cloud: Open source Firebase + Heroku to develop, scale and secure serverless apps on Kubernetes]]
 - [[https://github.com/stackrox/kube-linter][stackrox/kube-linter: KubeLinter is a static analysis tool that checks Kubernetes YAML files and Helm charts to ensure the applications represented in them adhere to best practices.]]
 - [[https://github.com/stackrox/stackrox][stackrox/stackrox: The StackRox Kubernetes Security Platform performs a risk analysis of the container environment, delivers visibility and runtime alerts, and provides recommendations to proactively improve security by hardening the environment.]]
