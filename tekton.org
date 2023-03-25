@@ -1,0 +1,44 @@
+* ChatGPT
+
+** I need a mechanism in tekton similar to jenkins lock resources. Does it exist?
+
+Yes, Tekton has a feature called "Task Concurrency" which allows you to limit the number of concurrent runs of a Task. This is similar to the "Lockable Resources" plugin in Jenkins.
+
+You can define a TaskRun with a taskRuns section that specifies the maximum number of concurrent runs of a Task. For example:
+
+yaml
+
+apiVersion: tekton.dev/v1beta1
+kind: TaskRun
+metadata:
+  name: my-taskrun
+spec:
+  taskRef:
+    name: my-task
+  taskRuns:
+    - name: my-task
+      maxConcurrency: 1
+
+In this example, the my-task Task can only be run by one TaskRun at a time, because it has maxConcurrency: 1. If another TaskRun tries to run my-task while a previous run is still running, it will be queued until the first run completes.
+
+You can also use a label selector to group related TaskRun objects together and limit concurrency within that group. For example:
+
+yaml
+
+apiVersion: tekton.dev/v1beta1
+kind: TaskRun
+metadata:
+  name: my-taskrun
+spec:
+  taskRef:
+    name: my-task
+  taskRuns:
+    - name: my-task
+      labelSelector:
+        matchLabels:
+          my-group: "group-1"
+      maxConcurrency: 2
+
+In this example, the my-task Task can be run by up to two TaskRuns at a time within the group with the label my-group: "group-1". If more than two TaskRun objects try to run my-task within that group, the excess runs will be queued until the running jobs complete.
+
+Note that Task Concurrency is a feature that is currently in beta in Tekton, so it may be subject to change in the future.
