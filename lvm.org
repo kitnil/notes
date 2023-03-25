@@ -304,3 +304,21 @@ sql
 sudo udevadm trigger
 
 This will force udev to re-evaluate all pending events and create any missing device nodes. Once the command completes, the device node for the new logical volume should be visible in the /dev directory.
+
+** How to list all pending events?
+
+To list all pending events in the udev system, you can run the following command:
+
+scss
+
+sudo udevadm monitor --property --subsystem-match=block
+
+This command will monitor udev events related to the block subsystem (i.e., storage devices), and display detailed information about each event, including the name and properties of the affected device.
+
+If you want to see a list of all pending events without monitoring for new events, you can run the following command instead:
+
+css
+
+sudo udevadm trigger --dry-run --verbose
+
+This command will simulate the processing of all pending events and display detailed information about each event that would be processed by udev. Note that this command does not actually modify the system or create any device nodes. It is intended only for diagnostic purposes.
