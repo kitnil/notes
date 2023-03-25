@@ -723,3 +723,29 @@ Note: The logs may contain a lot of information, so it may be helpful to filter 
 adb shell "logcat ActivityManager:I *:S | grep com.example.app"
 
 This will only show the logs related to the application with the package name "com.example.app". Replace "com.example.app" with the actual package name of the application you want to debug.
+
+** Could I get network traffic from android device, e.g. to reverse API used by application?
+
+Yes, you can capture network traffic from an Android device to reverse engineer the APIs used by an application. One way to do this is to use a network traffic analysis tool, such as Wireshark or Fiddler, and set up a proxy server on your computer to capture the traffic between the device and the application's server.
+
+Here are the steps to capture network traffic from an Android device using Wireshark:
+
+    Connect your Android device to your computer using a USB cable and make sure USB debugging is enabled on the device.
+
+    Install and run Wireshark on your computer.
+
+    Set up a proxy server on your computer by going to the Wireshark menu, selecting "Edit" -> "Preferences", and then selecting the "Proxies" tab. Under "HTTP Proxy", check the "Enabled" box and set the "Proxy server" to "127.0.0.1" and the "Proxy port" to "8888".
+
+    Set up the Android device to use the proxy server by going to the device's Wi-Fi settings, long-pressing the network you're connected to, selecting "Modify network", and then selecting "Advanced options". Under "Proxy", select "Manual", and set the "Proxy hostname" to "127.0.0.1" and the "Proxy port" to "8888".
+
+    Launch the application you want to reverse engineer on your Android device.
+
+    In Wireshark, select the network interface that corresponds to the Wi-Fi network you're connected to and start capturing packets.
+
+    Use the application on your device and perform the actions that you want to capture the network traffic for.
+
+    Stop the packet capture in Wireshark and filter the captured packets by the IP address of the application's server. This will show you the network traffic between the application and its server.
+
+    Analyze the captured packets to reverse engineer the APIs used by the application.
+
+Note: Some applications may use encrypted traffic, such as HTTPS, which can make it more difficult to analyze the network traffic. In this case, you may need to use additional tools or techniques to decrypt the traffic.
