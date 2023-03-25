@@ -726,6 +726,7 @@ Your computer reboots immediately.
   : [user1@host:~]$ machinectl shell user2@
 
 * Tools
+- [[https://github.com/alexellis/fstail][alexellis/fstail: Scan a directory for changed files and tail them]]
 - [[https://github.com/BrenekH/smartreboot][BrenekH/smartreboot: Reboot a machine without interrupting ongoing work.]]
 - [[https://github.com/google/schedviz][google/schedviz: A tool for gathering and visualizing kernel scheduling traces on Linux machines]]
 - [[https://github.com/icculus/fatelf][icculus/fatelf: Universal binaries for Linux.]]
