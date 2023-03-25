@@ -57,3 +57,78 @@ Overall, to start a build in Tekton, you need to:
     Define the Tasks in the Pipeline, and specify the steps to execute in each Task.
     Create a PipelineRun object that references the Pipeline, and specifies the input parameters for the Pipeline.
     Tekton creates a TaskRun for each Task in the Pipeline, and executes each TaskRun in sequence, until all TaskRuns have completed successfully.
+
+** Could build be started by a webhook?
+
+Yes, Tekton allows you to trigger builds using webhooks. Here are the general steps to set this up:
+
+    Create a TriggerTemplate resource that defines how the incoming webhook payload should be parsed and what pipeline resources it should create. For example:
+
+yaml
+
+apiVersion: tekton.dev/v1beta1
+kind: TriggerTemplate
+metadata:
+  name: my-trigger-template
+spec:
+  params:
+    - name: revision
+      description: Git revision to build
+      default: main
+  resourcetemplates:
+    - apiVersion: tekton.dev/v1beta1
+      kind: PipelineResource
+      metadata:
+        name: source-repo
+      spec:
+        type: git
+        params:
+          - name: url
+            value: https://github.com/my-org/my-repo.git
+          - name: revision
+            value: $(params.revision)
+
+This TriggerTemplate resource defines a parameter named revision and creates a PipelineResource of type git that points to a specific revision of a GitHub repository.
+
+    Create a TriggerBinding resource that maps the incoming webhook payload to the parameters defined in the TriggerTemplate. For example:
+
+yaml
+
+apiVersion: tekton.dev/v1beta1
+kind: TriggerBinding
+metadata:
+  name: my-trigger-binding
+spec:
+  params:
+    - name: revision
+      value: $(body.head_commit.id)
+
+This TriggerBinding resource extracts the head_commit.id field from the incoming webhook payload and maps it to the revision parameter defined in the TriggerTemplate.
+
+    Create a Trigger resource that binds the TriggerTemplate and TriggerBinding together and specifies the event type and namespace to listen for. For example:
+
+yaml
+
+apiVersion: tekton.dev/v1beta1
+kind: Trigger
+metadata:
+  name: my-trigger
+spec:
+  binding:
+    name: my-trigger-binding
+  template:
+    name: my-trigger-template
+  interceptors:
+    - cel:
+        filter: "body.repository.full_name == 'my-org/my-repo' && body.ref == 'refs/heads/main'"
+  eventTypes:
+    - push
+  namespaceSelector:
+    matchNames:
+      - my-namespace
+
+This Trigger resource binds the my-trigger-binding and my-trigger-template resources together, specifies that it should listen for push events on the my-namespace namespace, and includes an interceptor that filters out any events that do not match a specific repository and branch.
+
+    Configure your source code hosting provider (e.g. GitHub, GitLab, etc.) to send a webhook payload to the Tekton event listener service whenever a relevant event occurs. The webhook URL should be in the following format: http://<tekton-listener-service>/v1/webhooks/<trigger-binding-name>.
+
+When a relevant webhook event is received, Tekton will create a PipelineRun resource using the Pipeline specified in the TriggerTemplate and the PipelineResources created by the TriggerBinding.
