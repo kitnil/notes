@@ -694,3 +694,32 @@ To automate proprietary apps on an Android device, you can use a mobile automati
     Robotium: Robotium is an Android testing framework that allows you to write automated UI tests for your app. It provides a simple and intuitive API for creating tests, and it supports a wide range of Android versions and devices.
 
     Selendroid: Selendroid is a testing framework that allows you to automate native and hybrid Android apps. It supports multiple Android versions and devices and provides a wide range of automation capabilities such as element locating strategies, gesture support, and multi-platform testing.
+** android show what activities launched (debug any application)
+
+To see what activities are launched when an application is running on an Android device, you can use the Android Debug Bridge (ADB) tool that comes with the Android SDK. Here are the steps:
+
+    Connect your Android device to your computer using a USB cable and make sure USB debugging is enabled on the device. You can enable USB debugging by going to the Developer options in the device's Settings app and toggling the "USB debugging" switch.
+
+    Open a terminal or command prompt on your computer and navigate to the directory where the ADB tool is located.
+
+    Type the following command to start ADB and connect to your device:
+
+    adb devices
+
+    This will list all the connected Android devices. Make sure your device is listed.
+
+    Type the following command to start monitoring the device's activity:
+
+    adb shell "logcat ActivityManager:I *:S"
+
+    This will show all the activity manager logs with a priority level of "Info" and suppress all logs with other priority levels.
+
+    Launch the application you want to debug on your device.
+
+    Check the activity manager logs in the terminal or command prompt window. You should see the activities launched by the application listed in the logs.
+
+Note: The logs may contain a lot of information, so it may be helpful to filter the logs by the application's package name. You can do this by adding the package name as a filter to the logcat command. For example:
+
+adb shell "logcat ActivityManager:I *:S | grep com.example.app"
+
+This will only show the logs related to the application with the package name "com.example.app". Replace "com.example.app" with the actual package name of the application you want to debug.
