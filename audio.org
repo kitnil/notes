@@ -15,6 +15,7 @@
 - [[https://github.com/openai/whisper][GitHub - openai/whisper: Robust Speech Recognition via Large-Scale Weak Supervision]]
 - [[https://github.com/roc-streaming/roc-toolkit][roc-streaming/roc-toolkit: Real-time audio streaming over the network.]]
 - [[https://github.com/ggerganov/wave-share][ggerganov/wave-share: Serverless, peer-to-peer, local file sharing through sound]]
+- [[https://github.com/aubio/aubio][aubio/aubio: a library for audio and music analysis]]
 
 - "Establishing connection to pulseaudio, please wait"
   : sudo fuser -v /dev/snd/*
