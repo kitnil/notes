@@ -42,3 +42,18 @@ spec:
 In this example, the my-task Task can be run by up to two TaskRuns at a time within the group with the label my-group: "group-1". If more than two TaskRun objects try to run my-task within that group, the excess runs will be queued until the running jobs complete.
 
 Note that Task Concurrency is a feature that is currently in beta in Tekton, so it may be subject to change in the future.
+
+** How tekton could start build?
+
+In Tekton, a build is initiated by creating a PipelineRun object that references a Pipeline and a set of input parameters. When a PipelineRun is created, Tekton creates a TaskRun for each Task in the Pipeline, and then executes each TaskRun in sequence.
+
+Each Task in the Pipeline specifies a set of steps to execute. A Task can run a single container or a sequence of containers, depending on the steps defined in the Task. The containers specified in the Task can be built from source or obtained from an image registry.
+
+Once a TaskRun completes successfully, the PipelineRun creates the next TaskRun in the sequence, until all TaskRuns in the Pipeline have completed successfully. If any TaskRun fails, the PipelineRun is marked as failed, and no further TaskRuns are executed.
+
+Overall, to start a build in Tekton, you need to:
+
+    Create a Pipeline that defines the sequence of Tasks to execute.
+    Define the Tasks in the Pipeline, and specify the steps to execute in each Task.
+    Create a PipelineRun object that references the Pipeline, and specifies the input parameters for the Pipeline.
+    Tekton creates a TaskRun for each Task in the Pipeline, and executes each TaskRun in sequence, until all TaskRuns have completed successfully.
