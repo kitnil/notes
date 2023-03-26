@@ -1,2 +1,5 @@
 - container
   : docker run -it --name mitmproxy -p 172.16.103.53:8081:8080 mitmproxy/mitmproxy mitmproxy --set ssl_insecure=true
+
+- wireguard (written in user-space inside mitmproxy itself)
+  : docker run -d --name mitmproxy --network=host mitmproxy/mitmproxy:9.0.1 mitmweb --set ssl_insecure=true --web-host 192.168.0.145 --mode wireguard:wg-keys-1.conf
