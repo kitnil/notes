@@ -188,3 +188,11 @@ javascript
 iptables-save > /etc/iptables/rules.v4
 
 This will save the current iptables rules to the specified file, which can then be loaded at boot time using the iptables-restore command.
+
+To specify a more precise rule for enabling NAT and changing the destination IP address back to the original source IP address, you can use the following iptables command:
+
+iptables -t nat -A POSTROUTING -s 192.168.1.0/24 -d 192.168.1.200 -p tcp --dport 80 -j SNAT --to-source 192.168.1.100
+
+This command specifies the source network as 192.168.1.0/24 (change this to match your specific network), the destination IP address as 192.168.1.200, the protocol as TCP, and the destination port as 80 (change this to match the port you are forwarding). It then uses the SNAT target to change the source IP address to 192.168.1.100, which is the original source IP address of the incoming traffic.
+
+Note that this rule should be used in addition to the DNAT rule in the previous answer, which forwards incoming traffic to the destination IP address. Together, these two rules will enable transparent proxying of the specified port from one IP address to another.
