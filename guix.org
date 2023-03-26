@@ -2116,6 +2116,15 @@ Thanks!
                       (search-patches "perl-archive-tar-CVE-2018-12015.patch")))
    #+END_SRC
 
+* Guix Operating System
+
+- NGINX influde configuration
+#+begin_src scheme
+  (global-directives
+   `(,@(nginx-configuration-global-directives (nginx-configuration))
+     (include . "/etc/nginx/stream.conf")))
+#+end_src
+
 * GuixSD custom kernel
 
   [[gnus:INBOX#877etk6xbu.fsf@fastmail.com][Email from Marius Bakke: Re: How to customize the kerne]] by [[mailto:mbakke@fastmail.com][Marius Bakke]]
