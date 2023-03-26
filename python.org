@@ -331,3 +331,35 @@ web33.ls(web33.getent("passwd u7590").stdout.split(b":")[5])
 #+end_example
 * Web
 - [[https://github.com/ddevault/evilpass][ddevault/evilpass: Slightly evil password strength checker]]
+
+* ChatGPT
+
+** I would like to get number from image by scanning camera.
+
+To get a number from an image using a camera, you can use a technique called Optical Character Recognition (OCR). OCR is a technology that enables a computer to recognize text in an image and convert it into machine-readable text.
+
+Python has several libraries that support OCR, including Tesseract and OpenCV. Here's a simple example of how to use Tesseract in Python to extract text from an image:
+
+arduino
+
+import pytesseract
+import cv2
+
+# Read the image
+image = cv2.imread('image.jpg')
+
+# Convert the image to grayscale
+gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+
+# Apply thresholding to the grayscale image
+thresh = cv2.threshold(gray, 0, 255, cv2.THRESH_BINARY_INV + cv2.THRESH_OTSU)[1]
+
+# Apply OCR using Tesseract
+text = pytesseract.image_to_string(thresh, config='--psm 11')
+
+# Print the extracted text
+print(text)
+
+In this example, we first read the image using OpenCV, convert it to grayscale, and apply thresholding to make the text more visible. Then, we use Tesseract to extract the text from the image. The config parameter specifies the page segmentation mode, which determines how Tesseract should group the text into words and lines.
+
+Note that OCR can be affected by various factors such as the quality of the image, the font used in the image, and the lighting conditions. It may not always be accurate, so it's important to test it thoroughly and fine-tune the parameters for best results.
