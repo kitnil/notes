@@ -165,6 +165,9 @@ echo 3 > /proc/sys/vm/drop_caches
 - [[https://wiki.archlinux.org/index.php/PRIME#PRIME_GPU_offloading][PRIME - ArchWiki]]
 - [[https://www.opennet.ru/openforum/vsluhforumID3/91202.html][forum.opennet.ru - "В xorg-драйвер AMD добавлена поддержка reverse PRIME" (47)]]
 
+* initram
+- [[https://github.com/anatol/booster][anatol/booster: Fast and secure initramfs generator]]
+
 * IO
 - [[https://github.com/osresearch/iomonitor][osresearch/iomonitor: Trace IO calls in a process]]
 - [[https://habr.com/ru/company/raidix/blog/578894/][NVMe-накопители: чем они хороши и как на них переходить. Часть первая / Хабр]]
