@@ -76,3 +76,6 @@ with =jc= utility, piped to =jq= to filter, and to =jtbl= generate a table:
 
 * Programs
 - json_pp
+
+* Tools
+- [[https://github.com/lukas-krecan/JsonUnit][lukas-krecan/JsonUnit: Compare JSON in your Unit Tests]]
