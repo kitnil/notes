@@ -161,3 +161,30 @@ Check NAT table
 The iptables table needs to be specified for listing. EG. nat, mangle.
 
 iptables -t nat -L -n -v
+
+* ChatGPT
+
+** How to transparently proxy a port from one IP address to another with iptables?
+
+To transparently proxy a port from one IP address to another using iptables, you can use the REDIRECT target.
+
+Here is an example command to redirect incoming traffic on port 80 from IP address 192.168.1.100 to IP address 192.168.1.200:
+
+css
+
+iptables -t nat -A PREROUTING -p tcp -d 192.168.1.100 --dport 80 -j DNAT --to-destination 192.168.1.200:80
+iptables -t nat -A POSTROUTING -j MASQUERADE
+
+This will redirect all incoming traffic to IP address 192.168.1.100 on port 80 to IP address 192.168.1.200 on port 80. The second line enables NAT so that the destination IP address is changed back to the original source IP address when the response is sent back.
+
+Note that for this to work, the machine running iptables needs to have IP forwarding enabled. This can be done with the following command:
+
+sysctl -w net.ipv4.ip_forward=1
+
+Additionally, make sure to save the iptables rules so that they persist across reboots. This can be done with the following command:
+
+javascript
+
+iptables-save > /etc/iptables/rules.v4
+
+This will save the current iptables rules to the specified file, which can then be loaded at boot time using the iptables-restore command.
