@@ -106,3 +106,17 @@ https://git.zx2c4.com/WireGuard/tree/src/receive.c#n351
 - [[https://github.com/candiddev/vault-plugin-secrets-wireguard][candiddev/vault-plugin-secrets-wireguard: Wireguard secrets engine for Vault]]
 - [[https://github.com/sandialabs/wiretap][sandialabs/wiretap: Wiretap is a transparent, VPN-like proxy server that tunnels traffic via WireGuard and requires no special privileges to run.]]
 - [[https://github.com/rosenpass/rosenpass][rosenpass/rosenpass: Rosenpass is a formally verified, post-quantum secure VPN that uses WireGuard to transport the actual data.]]
+
+* ChatGPT
+
+** What ports should be open?
+
+To establish a WireGuard VPN connection, you need to have the following ports open:
+
+    UDP port 51820: This is the default port used by WireGuard for communication between the VPN client and server.
+
+    If you are using a firewall, you may also need to open ports for other services that your VPN clients will access through the VPN. For example, if your clients need to access a web server through the VPN, you will need to open port 80 (HTTP) or 443 (HTTPS) for that service.
+
+It's worth noting that while UDP port 51820 is the default port used by WireGuard, it can be configured to use a different port if necessary. If you have changed the default port in your WireGuard configuration, you will need to open that port instead.
+
+It's also a good practice to limit access to the WireGuard port to only authorized clients, by using firewall rules to restrict access to the WireGuard port only from specific IP addresses or networks. This will help to improve the security of your VPN and prevent unauthorized access.
