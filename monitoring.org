@@ -35,3 +35,79 @@
 * Grafana
 - [[https://github.com/K-Phoen/dark][(grafana) Dashboards As Resources in Kubernetes]]
 - [[https://github.com/lc/gau][Fetch known URLs from AlienVault's Open Threat Exchange, the Wayback Machine, and Common Crawl.]]
+
+* ChatGPT
+
+** How to send alerts via webhook to specific tab in Alerta?
+
+To send alerts via webhook to a specific tab in Alerta, you can include a custom attribute in the webhook payload that specifies the target environment or tag. Here's an example webhook payload with a custom environment attribute:
+
+json
+
+{
+  "status": "open",
+  "event": "High CPU Usage",
+  "severity": "major",
+  "service": ["web"],
+  "environment": "production",
+  "text": "CPU usage is above 90%.",
+  "value": 95,
+  "tags": ["cpu", "high"],
+  "attributes": {
+    "host": "web-server-01",
+    "region": "us-west-1"
+  }
+}
+
+In this example, the custom environment attribute is set to "production". When this alert is received by Alerta, it will be routed to the tab or page that corresponds to the "production" environment.
+
+To configure your webhook to include a custom attribute, you will need to modify the webhook payload format in your alerting system. The exact method will depend on the alerting system you are using.
+
+Once you have configured your webhook to include the custom attribute, you can create a rule in Alerta that routes alerts with the specified attribute to the desired tab or page. To create the rule, you can use the Alerta API or the Alerta web interface. Here's an example API call to create a rule that routes alerts with the environment attribute set to "production" to a tab named "Production":
+
+json
+
+curl -X POST \
+  -H "Content-Type: application/json" \
+  -d '{"environment": "production", "regex": ".*", "actions": [{"type": "severity", "value": "critical"}, {"type": "tag", "value": "high"}], "destination": "Production"}' \
+  http://alerta.example.com/api/rules
+
+In this example, the regex attribute is set to ".*", which means that all alerts with the environment attribute set to "production" will match the rule. The actions attribute specifies that alerts that match the rule should have their severity set to "critical" and a tag added for "high". Finally, the destination attribute specifies that alerts that match the rule should be routed to the "Production" tab.
+
+With this setup, any alerts that are received by Alerta via the webhook with the environment attribute set to "production" will automatically be routed to the "Production" tab.
+
+** Could the `environment` be specified in the URL?
+
+No, it's not possible to specify the environment in the URL when sending alerts via webhook to Alerta. The environment is typically set as a field in the payload data sent in the request body. The URL only specifies the endpoint to send the request to.
+
+** What does Alertmanager send in the payload?
+
+Alertmanager sends an HTTP POST request with a JSON payload to the webhook endpoint. The payload contains information about the alerts that triggered the notification, including the alert status, labels, annotations, and the URL for the Alertmanager web interface. The exact contents of the payload depend on the configuration of Alertmanager and the configured templates for the notification messages.
+
+Here's an example of the JSON payload sent by Alertmanager:
+
+csharp
+
+{
+  "version": "4",
+  "groupKey": <string>,      // key identifying the group of alerts (e.g. to deduplicate)
+  "status": "<resolved|firing>",
+  "receiver": <string>,
+  "groupLabels": <object>,
+  "commonLabels": <object>,
+  "commonAnnotations": <object>,
+  "externalURL": <string>,   // backlink to the Alertmanager.
+  "alerts": [
+    {
+      "status": "<resolved|firing>",
+      "labels": <object>,
+      "annotations": <object>,
+      "startsAt": "<rfc3339>",
+      "endsAt": "<rfc3339>",
+      "generatorURL": <string> // identifies the entity that caused the alert
+    },
+    ...
+  ]
+}
+
+The version field indicates the version of the payload format, which is currently 4. The groupKey field is used to group related alerts together, for example by the alert expression or by the affected service. The status field indicates whether the alerts are currently firing or resolved. The receiver field identifies the configured receiver that handled the alert. The groupLabels field contains labels that are shared by all alerts in the group, while the commonLabels and commonAnnotations fields contain labels and annotations that are shared by all alerts sent to the same receiver. The externalURL field contains the URL of the Alertmanager web interface, which can be included in the notification message to provide additional context for the alert. Finally, the alerts field contains a list of individual alerts, each with its own set of labels, annotations, and timestamps.
