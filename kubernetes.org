@@ -1991,3 +1991,13 @@ spec:
                   name: http
 
 In this modified example, the limit_except block specifies that requests for the /specific-path location must be either GET, HEAD, PUT, or DELETE. Any other type of request will be denied.
+
+** What is CPU Requests Commitment?
+
+CPU requests commitment is a concept in Kubernetes, which is a popular container orchestration platform used for deploying and managing containerized applications. In Kubernetes, each container that runs on a node can make resource requests, which specify the minimum amount of CPU and memory that the container requires to run properly.
+
+CPU requests commitment refers to the amount of CPU resources that a Kubernetes node guarantees to a particular container over a certain period of time. When a container is created in Kubernetes, it is scheduled to run on a node that has sufficient available resources to meet the container's resource requests. Once the container is running, the node guarantees that the requested CPU resources will be available to the container for the duration of its runtime.
+
+If a container exceeds its CPU requests commitment, Kubernetes may throttle the container's CPU usage or evict the container from the node altogether. This helps ensure that other containers on the node are not starved of resources and can operate properly.
+
+Overall, CPU requests commitment is an important concept in Kubernetes for ensuring that containerized applications have the necessary resources to run smoothly, while also preventing resource contention and ensuring that other applications on the same node are not negatively affected.
