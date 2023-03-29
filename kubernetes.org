@@ -1933,3 +1933,61 @@ Kubelet, the Kubernetes node agent, requires several ports to be open for commun
     TCP port 10256: The Kubelet's cadvisor port. It provides access to the container metrics for the Kubelet.
 
 It's worth noting that these ports can be customized by passing command-line flags to the Kubelet or by setting configuration options in the Kubelet's configuration file. Also, some Kubernetes distributions may use different ports by default, so it's always a good idea to consult the documentation or vendor-specific guides for the specific distribution being used.
+
+** How to deny specific query type, e.g. POST?
+
+To deny a specific query type, such as POST, for an ingress resource in Kubernetes, you can use an Nginx configuration snippet that specifies the limit_except directive. Here is an example:
+
+yaml
+
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: example-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/configuration-snippet: |
+      limit_except GET HEAD {
+        deny all;
+      }
+spec:
+  rules:
+    - host: example.com
+      http:
+        paths:
+          - path: /specific-path
+            pathType: Prefix
+            backend:
+              service:
+                name: example-service
+                port:
+                  name: http
+
+In this example, the configuration-snippet annotation specifies a custom Nginx configuration snippet that uses the limit_except directive to deny all requests except for GET and HEAD for the specified location (in this case, /specific-path).
+
+You can modify the example to deny other query types, such as PUT or DELETE, by adding them to the list inside the limit_except block:
+
+yaml
+
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: example-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/configuration-snippet: |
+      limit_except GET HEAD PUT DELETE {
+        deny all;
+      }
+spec:
+  rules:
+    - host: example.com
+      http:
+        paths:
+          - path: /specific-path
+            pathType: Prefix
+            backend:
+              service:
+                name: example-service
+                port:
+                  name: http
+
+In this modified example, the limit_except block specifies that requests for the /specific-path location must be either GET, HEAD, PUT, or DELETE. Any other type of request will be denied.
