@@ -2001,3 +2001,13 @@ CPU requests commitment refers to the amount of CPU resources that a Kubernetes 
 If a container exceeds its CPU requests commitment, Kubernetes may throttle the container's CPU usage or evict the container from the node altogether. This helps ensure that other containers on the node are not starved of resources and can operate properly.
 
 Overall, CPU requests commitment is an important concept in Kubernetes for ensuring that containerized applications have the necessary resources to run smoothly, while also preventing resource contention and ensuring that other applications on the same node are not negatively affected.
+
+** What is Memory Usage (WSS) in Kubernetes?
+
+Memory usage (Working Set Size or WSS) in Kubernetes refers to the amount of memory currently being used by a container in a pod. It includes all the memory that a process has accessed recently and is therefore likely to need again in the near future.
+
+In Kubernetes, the memory usage of a container is tracked by the kubelet, which periodically collects memory usage statistics from the container runtime and reports them to the Kubernetes API server. The Kubernetes API server can then use this information to make scheduling decisions and to enforce resource limits and requests.
+
+Memory usage is an important metric for Kubernetes because it can affect the performance and stability of the entire cluster. If a container consumes too much memory, it can cause the node it's running on to become unstable, potentially leading to other pods on the same node being evicted or even causing the node to crash.
+
+Therefore, monitoring and managing memory usage is an important part of optimizing the performance and stability of Kubernetes clusters. Kubernetes provides various tools for monitoring and managing resource usage, including resource quotas, resource limits, and container metrics exposed by kubelet.
