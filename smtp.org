@@ -10,3 +10,5 @@
 : echo "Hello world" | swaks -4 --server smtp.gmail.com:587 --from user@gmail.com --to user@example.net -tls --tls-protocol sslv3 --auth PLAIN --auth-user user@gmail.com --auth-password 7654321 --h-Subject "Test message" --body -
 - yahoo
 : echo "Hello world" | swaks -4 --server smtp.mail.yahoo.com:465 --from user@yahoo.com --to user@gmail.com --tlsc --tls-protocol tlsv1_2 --auth PLAIN --auth-user user@yahoo.com --auth-password 7654321 --h-Subject "Test message" --body -
+
+- traceroute -n -T -p 25 smtp.example.org
