@@ -96,3 +96,37 @@ PostgreSQL uses TCP (Transmission Control Protocol) protocol for communication. 
 It's worth noting that PostgreSQL also supports SSL encryption for secure communication, which requires a different port number (usually 5433 by default). Additionally, PostgreSQL supports the use of Unix domain sockets, which are an alternative to TCP sockets for communication between local processes on the same machine.
 
 Overall, PostgreSQL primarily uses TCP for network communication, but also supports SSL and Unix domain sockets as alternative methods.
+
+** Replace underscore with space in a column in postgresql.
+
+To replace underscores with spaces in a column in PostgreSQL, you can use the REPLACE function. Here's an example query:
+
+sql
+
+UPDATE table_name
+SET column_name = REPLACE(column_name, '_', ' ')
+WHERE column_name LIKE '%\_%';
+
+In this query, replace table_name and column_name with the actual names of your table and column, respectively. The REPLACE function takes three arguments: the column name to replace values in, the character to be replaced (underscore in this case), and the character to replace it with (space in this case).
+
+The WHERE clause filters the rows that contain an underscore character in the column_name, so only those rows are updated.
+
+Note that this query will replace all instances of underscores in the column with spaces. If you only want to replace the first instance, you can use the REGEXP_REPLACE function with a regular expression.
+
+** Dump postgres database to file.
+
+To dump a PostgreSQL database to a file, you can use the pg_dump utility provided by PostgreSQL. Here's an example command:
+
+bash
+
+pg_dump -U username -h hostname -p portnumber databasename > dumpfile.sql
+
+In this command, replace username with your PostgreSQL username, hostname with the hostname or IP address of the server, portnumber with the port number used by the PostgreSQL server (usually 5432), databasename with the name of the database you want to dump, and dumpfile.sql with the name of the file you want to save the dump to.
+
+For example, if your PostgreSQL username is postgres, the hostname is localhost, the port number is 5432, the database name is mydatabase, and you want to save the dump to a file named mydatabase_dump.sql, the command would be:
+
+bash
+
+pg_dump -U postgres -h localhost -p 5432 mydatabase > mydatabase_dump.sql
+
+When you run this command, pg_dump will connect to the PostgreSQL server and generate a SQL script that contains all the data and schema definitions for the specified database. This script will be saved to the specified file (mydatabase_dump.sql in this example). You can then use this file to restore the database at a later time using the psql utility.
