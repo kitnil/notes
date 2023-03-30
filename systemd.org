@@ -11,6 +11,9 @@
 - [[https://github.com/systemd/mkosi][systemd/mkosi: 💽 Build Bespoke OS Images]]
 - [[https://serverfault.com/questions/1053187/systemd-fails-to-run-in-a-docker-container-when-using-cgroupv2-cgroupns-priva/1054414#1054414][Systemd fails to run in a docker container when using cgroupv2 (--cgroupns=private) - Server Fault]]
 
+* Learning
+- [[https://habr.com/ru/company/ruvds/blog/724676/][Как отправлять и обрабатывать графические уведомления на bash / Хабр]]
+
 * journald
 - [[https://www.loggly.com/ultimate-guide/using-journalctl/][Using journalctl - The Ultimate Guide To Logging]]
 - journalctl -b -1  -p "emerg".."crit"
