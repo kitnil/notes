@@ -448,6 +448,11 @@ If you get any output (there are lines with the “Remote failed to finish a req
 
 ** Prometheus
 
+query.txt
+#+begin_example
+  drbd_connection_state{drbd_connection_state!="UpToDate", drbd_connection_state!="Connected"} == 1
+#+end_example
+
 - Disconnected DRBD Resources
   : curl -s -G 'https://prometheus.kubernetes.corp1.majordomo.ru/api/v1/query' --data-urlencode query@query.txt | jq --raw-output '.data.result | .[].metric.name' | sort --unique
 
