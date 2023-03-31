@@ -456,6 +456,12 @@ query.txt
 - Disconnected DRBD Resources
   : curl -s -G 'https://prometheus.kubernetes.corp1.majordomo.ru/api/v1/query' --data-urlencode query@query.txt | jq --raw-output '.data.result | .[].metric.name' | sort --unique
 
+- to bash array
+  : mapfile -t resources < <(curl -s -G 'https://prometheus.kubernetes.corp1.majordomo.ru/api/v1/query' --data-urlencode query@query.txt | jq --raw-output '.data.result | .[].metric.name' | sort --unique)
+
+- for running in a satellite pod
+  : for pvc in "${resources[@]}"; do echo drbdsetup down "$pvc"; done
+
 * Restore DRBD
 ** 
 root@kube2:/# drbdadm status
