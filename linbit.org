@@ -1,4 +1,243 @@
-- [[https://vitobotta.com/2019/08/07/linstor-storage-with-kubernetes/][Linstor storage with Kubernetes]]
+* [[https://vitobotta.com/2019/08/07/linstor-storage-with-kubernetes/][Linstor storage with Kubernetes]]
+
+Linstor storage with Kubernetes
+Published Wednesday, Aug 07 2019
+Jump to comments
+
+In the previous post I shared some notes and benchmarks for a number of storage products for Kubernetes, both free and paid. I also mentioned that I had basically given up on Kubernetes because of various problems with these storage solutions. However a reader suggested I also try Linstor, yet another open source solution with optional paid support I had never heard of. Because of the various issues experienced with the others I was kinda skeptical, but after trying it I must say I like it! It’s fast and replication based on DRBD works very well. I only had one issue (so far) with volumes not detaching correctly with the 0.6.4 version of the CSI plugin, but the developer promptly made a new version (0.7.0) available that seems to have fixed it. I wish Linstor had off site backups based on snapshots… but other than that it’s looking good, so there might still be hope for me with Kubernetes after all… will keep testing and see how it goes. I really hope I won’t find any other issues with it and that I can actually use it and forget about Heroku!
+
+Anyway the documentation is vast and while it’s good, I found some places that seemed out of date, so I thought a post on how to quickly install and use Linstor on Kubernetes might be useful. I assume that you just want the storage set up and configure the CSI support in Kubernetes so that you can dynamically provision volumes with a storage class. Also, the instructions below are for Ubuntu; I tried with CentOS but it seems that while the DRBD kernel module is available for this distro, other packages are not available. Linbit (the company behind Linstor) makes these packages available with a ppa repository, so I got it working on Ubuntu.
+
+Please refer to the Linstor documentation for detailed information on the technology. There’s also a public mailing list where you can ask questions.
+Installation on Ubuntu
+
+In my case I have set up a test cluster made of three nodes with a 100GB disk each and connected via a Wireguard VPN, so that all the traffic between the nodes is securely encrypted. This impacts a little on the performance, but while my cloud provider (Hetzner Cloud) now offers private networking, they still recommend encrypting the traffic for sensitive data. The VPN is set up so that the nodes are named linstor-master1, linstor-maste2 and linstor-maste3, and have IPs 192.168.37.1, 192.168.37.2 and 192.168.37.3 respectively. Of course you’ll have to adapt the instructions to your setup.
+
+The first step is to install the kernel headers since the DRBD replication is based on a kernel module that must be built on all the nodes for it work:
+
+apt-get install linux-headers-$(uname -r)
+
+Next you need to add the ppa repository:
+
+add-apt-repository ppa:linbit/linbit-drbd9-stack
+apt-get update
+
+On all the nodes you need to install the following packages:
+
+apt install drbd-utils drbd-dkms lvm2
+
+Load the DRBD kernel module:
+
+modprobe drbd
+
+Double check that it is loaded:
+
+lsmod | grep -i drbd
+
+and make sure it is loaded at startup automatically:
+
+echo drbd > /etc/modules-load.d/drbd.conf
+
+A Linstor cluster consists of one active controller, which manages all the information about the cluster, and satellites, that is the nodes that provide storage. On the node that is going to be the controller run:
+
+apt install linstor-controller linstor-satellite  linstor-client
+
+The above will make the controller a satellite as well. In my case the controller is linstor-master1. To start the controller right away and ensure it is started at boot automatically, run:
+
+systemctl enable linstor-controller
+systemctl start linstor-controller
+
+On the remaining nodes/satellites, install the following packages:
+
+apt install linstor-satellite  linstor-client
+
+Then start the satellite and ensure it is started at boot:
+
+systemctl enable  linstor-satellite
+systemctl start linstor-satellite
+
+Back on the controller, you can now add the satellites, including this node itself:
+
+linstor node create linstor-master1 192.168.37.1
+linstor node create linstor-master2 192.168.37.2
+linstor node create linstor-master3 192.168.37.3
+
+Give it a few seconds, then check that the nodes are online:
+
+You’ll see something like this:
+
+╭──────────────────────────────────────────────────────────────────╮
+┊ Node            ┊ NodeType  ┊ Addresses                 ┊ State  ┊
+╞┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄╡
+┊ linstor-master1 ┊ SATELLITE ┊ 192.168.37.1:3366 (PLAIN) ┊ Online ┊
+┊ linstor-master2 ┊ SATELLITE ┊ 192.168.37.2:3366 (PLAIN) ┊ Online ┊
+┊ linstor-master3 ┊ SATELLITE ┊ 192.168.37.3:3366 (PLAIN) ┊ Online ┊
+╰──────────────────────────────────────────────────────────────────╯
+
+Next you need to set up the storage. Linstor works with either LVM or ZFS under the hood to manage the storage; not sure of the differences but I am more familiar with LVM so that’s what I’ll use.
+
+First, prepare the physical disk or disks on eanch node - in my case it’s /dev/sdb:
+
+pvcreate /dev/sdb
+
+Create a volume group:
+
+I call the volume group “vg” but you can call it whatever you wish.
+
+Now create a “thin” pool, which will enable both thin provisioning (i.e. the ability to create volumes bigger than the actual storage available, so you can then add storage as needed) and snapshots:
+
+lvcreate -l 100%FREE  --thinpool vg/lvmthinpool
+
+The command above will create a logical volume that spans the entire disk.
+
+It’s time to create a storage pool on each node, so back on the controller run:
+
+linstor storage-pool create lvmthin linstor-master1 linstor-pool vg/lvmthinpool
+linstor storage-pool create lvmthin linstor-master2 linstor-pool vg/lvmthinpool
+linstor storage-pool create lvmthin linstor-master3 linstor-pool vg/lvmthinpool
+
+I am calling the pool “linstor-pool”. Check that the pools have been created:
+
+linstor storage-pool list
+
+You’ll see something like this:
+
+╭───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+┊ StoragePool  ┊ Node            ┊ Driver   ┊ PoolName       ┊ FreeCapacity ┊ TotalCapacity ┊ SupportsSnapshots ┊ State ┊
+╞┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄╡
+┊ linstor-pool ┊ linstor-master1 ┊ LVM_THIN ┊ vg/lvmthinpool ┊    99.80 GiB ┊     99.80 GiB ┊ true              ┊ Ok    ┊
+┊ linstor-pool ┊ linstor-master2 ┊ LVM_THIN ┊ vg/lvmthinpool ┊    99.80 GiB ┊     99.80 GiB ┊ true              ┊ Ok    ┊
+┊ linstor-pool ┊ linstor-master3 ┊ LVM_THIN ┊ vg/lvmthinpool ┊    99.80 GiB ┊     99.80 GiB ┊ true              ┊ Ok    ┊
+╰───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+
+At this point the main setup of Linstor is complete.
+Kubernetes
+
+To enable Kubernetes to dynamically provision volumes, you’ll need to install the CSI plugin and create a storage class. At the moment of this writing the latest version is 0.7.0, but check here what is the latest image available.
+
+Run the following to install:
+
+TAG=v0.7.0
+CONTROLLER_IP=192.168.37.1
+
+curl https://raw.githubusercontent.com/LINBIT/linstor-csi/$TAG/examples/k8s/deploy/linstor-csi-1.14.yaml | sed "s/linstor-controller.example.com/$CONTROLLER_IP/g" | kubectl apply -f -
+
+Of course change the tag with your version and the controller IP with the iP of your controller. Wait that the pods are up and running:
+
+watch kubectl -n kube-system get all
+
+The final step for the installation is the storage class:
+
+REPLICAS=3
+
+cat <<EOF | kubectl apply -f -
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: linstor
+provisioner: linstor.csi.linbit.com
+parameters:
+  autoPlace: "$REPLICAS"
+  storagePool: "linstor-pool"
+EOF 
+
+Set the number of replicas to the number of nodes. autoPlace ensures that the volumes are automatically placed/distributed across the nodes/pools.
+
+Finally, to test that the provisioning is working, create a pvc:
+
+cat <<EOF | kubectl apply -f -
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: test-pvc
+spec:
+  storageClassName: linstor
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+EOF
+
+kubectl get pvc
+
+If all is good, in a few seconds you’ll see that the pvc is bound:
+
+NAME       STATUS   VOLUME                                     CAPACITY   ACCESS MODES   STORAGECLASS   AGE
+test-pvc   Bound    pvc-af6991ee-b922-11e9-bbca-9600002d2434   1Gi        RWO            linstor        10s
+
+You can check on the controller with Linstor as well by running:
+
+linstor volume list
+
+You’ll see something like this:
+
+╭────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+┊ Node            ┊ Resource                                 ┊ StoragePool  ┊ VolumeNr ┊ MinorNr ┊ DeviceName    ┊ Allocated ┊ InUse  ┊    State ┊
+╞┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄╡
+┊ linstor-master1 ┊ pvc-a8d679a9-b918-11e9-bbca-9600002d2434 ┊ linstor-pool ┊ 0        ┊ 1001    ┊ /dev/drbd1001 ┊ 1.00 GiB  ┊ Unused ┊ UpToDate ┊
+┊ linstor-master2 ┊ pvc-a8d679a9-b918-11e9-bbca-9600002d2434 ┊ linstor-pool ┊ 0        ┊ 1001    ┊ /dev/drbd1001 ┊ 1.00 GiB  ┊ Unused ┊ UpToDate ┊
+┊ linstor-master3 ┊ pvc-a8d679a9-b918-11e9-bbca-9600002d2434 ┊ linstor-pool ┊ 0        ┊ 1001    ┊ /dev/drbd1001 ┊ 1.00 GiB  ┊ Unused ┊ UpToDate ┊
+╰────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+
+Since you are at it, you may also want to run a simple benchmark to see how the setup performs by creating a pvc and a job:
+
+cat <<EOF | kubectl apply -f -
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: dbench-linstor
+spec:
+  storageClassName: linstor
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 5Gi
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: dbench-linstor
+spec:
+  template:
+    spec:
+      containers:
+      - name: dbench
+        image: sotoaster/dbench:latest
+        imagePullPolicy: IfNotPresent
+        env:
+          - name: DBENCH_MOUNTPOINT
+            value: /data
+          - name: FIO_SIZE
+            value: 1G
+        volumeMounts:
+        - name: dbench-pv
+          mountPath: /data
+      restartPolicy: Never
+      volumes:
+      - name: dbench-pv
+        persistentVolumeClaim:
+          claimName: dbench-linstor
+  backoffLimit: 4
+EOF
+
+Wait for the job pod to be ready and then check the logs with:
+
+You’ll see something like this at the end:
+
+==================
+= Dbench Summary =
+==================
+Random Read/Write IOPS: 7495/4468. BW: 300MiB/s / 68.4MiB/s
+Average Latency (usec) Read/Write: 945.99/
+Sequential Read/Write: 301MiB/s / 62.6MiB/s
+Mixed Random Read/Write IOPS: 7214/2401
+
+In my case every metric is identical to what I get when benchmarking the disk directly, apart from the write spees, which are lower due to replication and VPN encryption. Otherwise they would be identical as well. Linstor really has no overhead basically, and that’s great.
+Conclusion
+
+Setting up Linstor may not be as straightforward as applying one yaml or two like with most of its competitors, but the setup is not difficult at all and can be automated with Ansible etc. So far I’ve only found that single issue which has already been fixed, so like I said I hope I won’t find any others. I would still like to use self-managed Kubernetes instead of Heroku. Hope this post was useful and saved you some time.
 
 * Learning
 ** [[https://pcnews.ru/top/blogs/mat-shell/[perevod]_razvoracivaem_hranilise_linstor_dla_proxmox-850986.html#gsc.tab=0][[Перевод] Разворачиваем хранилище LINSTOR для Proxmox - PCNEWS.RU]]
