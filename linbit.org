@@ -698,6 +698,113 @@ If you get any output (there are lines with the “Remote failed to finish a req
 - for running in a satellite pod
   : for pvc in "${resources[@]}"; do echo drbdsetup down "$pvc"; done
 
+* logical volume creation log in kubernetes operator piraeus
+
+#+begin_example
+  time="2023-03-31T07:24:31Z" level=debug msg="reconciling monitoring service definition: done" changed=true controller=LinstorSatelliteSet
+  piraeus-op-operator-84c4c995c7-24d7z
+  Mar 31, 2023 @ 10:24:31.963time="2023-03-31T07:24:31Z" level=debug msg="reconciling monitoring service definition" controller=LinstorSatelliteSet
+  piraeus-op-operator-84c4c995c7-24d7z
+  Mar 31, 2023 @ 10:24:31.963time="2023-03-31T07:24:31Z" level=debug msg="reconcile legacy monitoring service name" controller=LinstorSatelliteSet
+  piraeus-op-operator-84c4c995c7-24d7z
+  Mar 31, 2023 @ 10:24:31.962time="2023-03-31T07:24:31Z" level=debug msg="reconcile drbd-reactor configmap: done" changed=false controller=LinstorSatelliteSet
+  piraeus-op-operator-84c4c995c7-24d7z
+  Mar 31, 2023 @ 10:24:31.949time="2023-03-31T07:24:31Z" level=debug msg="reconcile drbd-reactor configmap" controller=LinstorSatelliteSet
+  piraeus-op-operator-84c4c995c7-24d7z
+  Mar 31, 2023 @ 10:24:31.949time="2023-03-31T07:24:31Z" level=debug msg="reconcile legacy monitoring config map name" controller=LinstorSatelliteSet
+  piraeus-op-operator-84c4c995c7-24d7z
+  Mar 31, 2023 @ 10:24:31.949time="2023-03-31T07:24:31Z" level=debug msg="reconcile satellite configmap: done" Controller=linstorsatelliteset Op=reconcileSpec Spec="{ 0xc0018601e0 None 0xc001078390  IfNotPresent quay.io/piraeusdatastore/piraeus-server:v1.20.0 https://piraeus-op-cs.piraeus.svc:3371 {map[] map[]} quay.io/piraeusdatastore/drbd9-bionic:v9.1.11 None none [] {map[] map[]} &Affinity{NodeAffinity:nil,PodAffinity:nil,PodAntiAffinity:nil,} [{ Exists   <nil>}]  [] quay.io/piraeusdatastore/drbd-reactor:v0.9.0  trace {piraeus-op-client-secret} [] [] false}" changed=false controller=LinstorSatelliteSet
+  piraeus-op-operator-84c4c995c7-24d7z
+  Mar 31, 2023 @ 10:24:31.926time="2023-03-31T07:24:31Z" level=debug msg="reconcile satellite configmap" Controller=linstorsatelliteset Op=reconcileSpec Spec="{ 0xc0018601e0 None 0xc001078390  IfNotPresent quay.io/piraeusdatastore/piraeus-server:v1.20.0 https://piraeus-op-cs.piraeus.svc:3371 {map[] map[]} quay.io/piraeusdatastore/drbd9-bionic:v9.1.11 None none [] {map[] map[]} &Affinity{NodeAffinity:nil,PodAffinity:nil,PodAntiAffinity:nil,} [{ Exists   <nil>}]  [] quay.io/piraeusdatastore/drbd-reactor:v0.9.0  trace {piraeus-op-client-secret} [] [] false}" controller=LinstorSatelliteSet
+  piraeus-op-operator-84c4c995c7-24d7z
+  Mar 31, 2023 @ 10:24:31.926time="2023-03-31T07:24:31Z" level=debug msg="reconcile legacy config map name" Controller=linstorsatelliteset Op=reconcileSpec Spec="{ 0xc0018601e0 None 0xc001078390  IfNotPresent quay.io/piraeusdatastore/piraeus-server:v1.20.0 https://piraeus-op-cs.piraeus.svc:3371 {map[] map[]} quay.io/piraeusdatastore/drbd9-bionic:v9.1.11 None none [] {map[] map[]} &Affinity{NodeAffinity:nil,PodAffinity:nil,PodAntiAffinity:nil,} [{ Exists   <nil>}]  [] quay.io/piraeusdatastore/drbd-reactor:v0.9.0  trace {piraeus-op-client-secret} [] [] false}" controller=LinstorSatelliteSet
+  piraeus-op-operator-84c4c995c7-24d7z
+  Mar 31, 2023 @ 10:24:31.904time="2023-03-31T07:24:31Z" level=debug msg="add finalizer" Controller=linstorsatelliteset Op=reconcileSpec Spec="{ 0xc0018601e0 None 0xc001078390  IfNotPresent quay.io/piraeusdatastore/piraeus-server:v1.20.0 https://piraeus-op-cs.piraeus.svc:3371 {map[] map[]} quay.io/piraeusdatastore/drbd9-bionic:v9.1.11 None none [] {map[] map[]} &Affinity{NodeAffinity:nil,PodAffinity:nil,PodAntiAffinity:nil,} [{ Exists   <nil>}]  [] quay.io/piraeusdatastore/drbd-reactor:v0.9.0  trace {piraeus-op-client-secret} [] [] false}" controller=LinstorSatelliteSet
+  piraeus-op-operator-84c4c995c7-24d7z
+  Mar 31, 2023 @ 10:24:31.904time="2023-03-31T07:24:31Z" level=debug msg="check for deletion flag" Controller=linstorsatelliteset Op=reconcileSpec Spec="{ 0xc0018601e0 None 0xc001078390  IfNotPresent quay.io/piraeusdatastore/piraeus-server:v1.20.0 https://piraeus-op-cs.piraeus.svc:3371 {map[] map[]} quay.io/piraeusdatastore/drbd9-bionic:v9.1.11 None none [] {map[] map[]} &Affinity{NodeAffinity:nil,PodAffinity:nil,PodAntiAffinity:nil,} [{ Exists   <nil>}]  [] quay.io/piraeusdatastore/drbd-reactor:v0.9.0  trace {piraeus-op-client-secret} [] [] false}" controller=LinstorSatelliteSet
+  piraeus-op-operator-84c4c995c7-24d7z
+  Mar 31, 2023 @ 10:24:31.904time="2023-03-31T07:24:31Z" level=debug msg="finished all upgrades/fills" Name=piraeus-op-ns Namespace=piraeus Op=reconcileResource controller=LinstorSatelliteSet
+  piraeus-op-operator-84c4c995c7-24d7z
+  Mar 31, 2023 @ 10:24:31.904time="2023-03-31T07:24:31Z" level=debug msg="performing upgrade/full: #3 -> Set default VG name for LVMTHIN pools with device spec: changed=false" Name=piraeus-op-ns Namespace=piraeus Op=reconcileResource controller=LinstorSatelliteSet
+  piraeus-op-operator-84c4c995c7-24d7z
+  Mar 31, 2023 @ 10:24:31.904time="2023-03-31T07:24:31Z" level=debug msg="performing upgrade/full: #3 -> Set default VG name for LVMTHIN pools with device spec" Name=piraeus-op-ns Namespace=piraeus Op=reconcileResource controller=LinstorSatelliteSet
+  piraeus-op-operator-84c4c995c7-24d7z
+  Mar 31, 2023 @ 10:24:31.904time="2023-03-31T07:24:31Z" level=debug msg="finished upgrade/fill: #2 -> Set default automatic storage setup type: changed=false" Name=piraeus-op-ns Namespace=piraeus Op=reconcileResource controller=LinstorSatelliteSet
+  piraeus-op-operator-84c4c995c7-24d7z
+  Mar 31, 2023 @ 10:24:31.904time="2023-03-31T07:24:31Z" level=debug msg="performing upgrade/fill: #2 -> Set default automatic storage setup type" Name=piraeus-op-ns Namespace=piraeus Op=reconcileResource controller=LinstorSatelliteSet
+  piraeus-op-operator-84c4c995c7-24d7z
+  Mar 31, 2023 @ 10:24:31.904time="2023-03-31T07:24:31Z" level=debug msg="finished upgrade/fill: #1 -> Set default endpoint URL for Client: changed=false" Name=piraeus-op-ns Namespace=piraeus Op=reconcileResource controller=LinstorSatelliteSet
+  piraeus-op-operator-84c4c995c7-24d7z
+  Mar 31, 2023 @ 10:24:31.904time="2023-03-31T07:24:31Z" level=debug msg="performing upgrade/fill: #1 -> Set default endpoint URL for Client" Name=piraeus-op-ns Namespace=piraeus Op=reconcileResource controller=LinstorSatelliteSet
+  piraeus-op-operator-84c4c995c7-24d7z
+  Mar 31, 2023 @ 10:24:31.904time="2023-03-31T07:24:31Z" level=debug msg="finished upgrade/fill: #0 -> replace nil with zero objects: changed=false" Name=piraeus-op-ns Namespace=piraeus Op=reconcileResource controller=LinstorSatelliteSet
+  piraeus-op-operator-84c4c995c7-24d7z
+  Mar 31, 2023 @ 10:24:31.904time="2023-03-31T07:24:31Z" level=debug msg="performing upgrade/fill: #0 -> replace nil with zero objects" Name=piraeus-op-ns Namespace=piraeus Op=reconcileResource controller=LinstorSatelliteSet
+  piraeus-op-operator-84c4c995c7-24d7z
+  Mar 31, 2023 @ 10:24:31.904time="2023-03-31T07:24:31Z" level=debug msg="performing upgrades and fill defaults in resource" Name=piraeus-op-ns Namespace=piraeus Op=reconcileResource controller=LinstorSatelliteSet
+  piraeus-op-operator-84c4c995c7-24d7z
+  Mar 31, 2023 @ 10:24:31.904time="2023-03-31T07:24:31Z" level=debug msg="upgrade spec and set default values" Controller=linstorsatelliteset Op=reconcileSpec Spec="{ 0xc0018601e0 None 0xc001078390  IfNotPresent quay.io/piraeusdatastore/piraeus-server:v1.20.0 https://piraeus-op-cs.piraeus.svc:3371 {map[] map[]} quay.io/piraeusdatastore/drbd9-bionic:v9.1.11 None none [] {map[] map[]} &Affinity{NodeAffinity:nil,PodAffinity:nil,PodAntiAffinity:nil,} [{ Exists   <nil>}]  [] quay.io/piraeusdatastore/drbd-reactor:v0.9.0  trace {piraeus-op-client-secret} [] [] false}" controller=LinstorSatelliteSet
+  piraeus-op-operator-84c4c995c7-24d7z
+  Mar 31, 2023 @ 10:24:31.904time="2023-03-31T07:24:31Z" level=debug msg="reconcile spec with env" Controller=linstorsatelliteset Op=reconcileSpec Spec="{ 0xc0018601e0 None 0xc001078390  IfNotPresent quay.io/piraeusdatastore/piraeus-server:v1.20.0 https://piraeus-op-cs.piraeus.svc:3371 {map[] map[]} quay.io/piraeusdatastore/drbd9-bionic:v9.1.11 None none [] {map[] map[]} &Affinity{NodeAffinity:nil,PodAffinity:nil,PodAntiAffinity:nil,} [{ Exists   <nil>}]  [] quay.io/piraeusdatastore/drbd-reactor:v0.9.0  trace {piraeus-op-client-secret} [] [] false}" controller=LinstorSatelliteSet
+  piraeus-op-operator-84c4c995c7-24d7z
+  Mar 31, 2023 @ 10:24:31.904time="2023-03-31T07:24:31Z" level=info msg="reconcile spec" Controller=linstorsatelliteset Op=reconcileSpec Spec="{ 0xc0018601e0 None 0xc001078390  IfNotPresent quay.io/piraeusdatastore/piraeus-server:v1.20.0 https://piraeus-op-cs.piraeus.svc:3371 {map[] map[]} quay.io/piraeusdatastore/drbd9-bionic:v9.1.11 None none [] {map[] map[]} &Affinity{NodeAffinity:nil,PodAffinity:nil,PodAntiAffinity:nil,} [{ Exists   <nil>}]  [] quay.io/piraeusdatastore/drbd-reactor:v0.9.0  trace {piraeus-op-client-secret} [] [] false}" controller=LinstorSatelliteSet
+  piraeus-op-operator-84c4c995c7-24d7z
+  Mar 31, 2023 @ 10:24:31.903time="2023-03-31T07:24:31Z" level=debug msg="fetch resource" Controller=linstorsatelliteset controller=LinstorSatelliteSet requestName=piraeus-op-ns requestNamespace=piraeus
+  piraeus-op-operator-84c4c995c7-24d7z
+  Mar 31, 2023 @ 10:24:31.903time="2023-03-31T07:24:31Z" level=info msg="reconciling LinstorSatelliteSet" Controller=linstorsatelliteset controller=LinstorSatelliteSet requestName=piraeus-op-ns requestNamespace=piraeus
+  piraeus-op-operator-84c4c995c7-24d7z
+  Mar 31, 2023 @ 10:24:31.87607:24:31.870 [DeviceManager] DEBUG LINSTOR/Satellite - SYSTEM - Executing command: drbdadm --config-to-test /var/lib/linstor.d/pvc-8ab7d87e-e81b-4f78-9424-7ee11104c342.res_tmp --config-to-exclude /var/lib/linstor.d/pvc-8ab7d87e-e81b-4f78-9424-7ee11104c342.res sh-nop
+  piraeus-op-ns-node-t9xdq
+  Mar 31, 2023 @ 10:24:31.86807:24:31.868 [DeviceManager] TRACE LINSTOR/Satellite - SYSTEM - Found metadata: false
+  piraeus-op-ns-node-t9xdq
+  Mar 31, 2023 @ 10:24:31.86607:24:31.865 [DeviceManager] TRACE LINSTOR/Satellite - SYSTEM - Layer 'StorageLayer' finished processing resource 'pvc-8ab7d87e-e81b-4f78-9424-7ee11104c342'
+  piraeus-op-ns-node-t9xdq
+  Mar 31, 2023 @ 10:24:31.86407:24:31.863 [DeviceManager] TRACE LINSTOR/Satellite - SYSTEM - External command finished in 3ms: blockdev --getsize64 /dev/vg0/pvc-8ab7d87e-e81b-4f78-9424-7ee11104c342_00000
+  piraeus-op-ns-node-t9xdq
+  Mar 31, 2023 @ 10:24:31.86207:24:31.862 [Thread-22218] TRACE LINSTOR/Satellite - SYSTEM - 8594128896
+  piraeus-op-ns-node-t9xdq
+  Mar 31, 2023 @ 10:24:31.84207:24:31.841 [DeviceManager] DEBUG LINSTOR/Satellite - SYSTEM - Executing command: blockdev --getsize64 /dev/vg0/pvc-8ab7d87e-e81b-4f78-9424-7ee11104c342_00000
+  piraeus-op-ns-node-t9xdq
+  Mar 31, 2023 @ 10:24:31.823time="2023-03-31T07:24:31Z" level=debug msg="method called" linstorCSIComponent=driver method=/csi.v1.Identity/Probe nodeID=kube8 provisioner=linstor.csi.linbit.com req= resp= version=v0.20.0-d514e41db7cdcb580769cc69f1c1ef2b8a5def5d
+  piraeus-op-csi-node-vdg8w
+  Mar 31, 2023 @ 10:24:31.81107:24:31.810 [DeviceManager] TRACE LINSTOR/Satellite - SYSTEM - External command finished in 18ms: wipefs -a -f /dev/vg0/pvc-8ab7d87e-e81b-4f78-9424-7ee11104c342_00000
+  piraeus-op-ns-node-t9xdq
+  Mar 31, 2023 @ 10:24:31.794time="2023-03-31T07:24:31Z" level=debug msg="method called" linstorCSIComponent=driver method=/csi.v1.Identity/Probe nodeID=kube15 provisioner=linstor.csi.linbit.com req= resp= version=v0.20.0-d514e41db7cdcb580769cc69f1c1ef2b8a5def5d
+  piraeus-op-csi-node-45dmw
+  Mar 31, 2023 @ 10:24:31.77707:24:31.776 [DeviceManager] DEBUG LINSTOR/Satellite - SYSTEM - Executing command: wipefs -a -f /dev/vg0/pvc-8ab7d87e-e81b-4f78-9424-7ee11104c342_00000
+  piraeus-op-ns-node-t9xdq
+  Mar 31, 2023 @ 10:24:31.77607:24:31.776 [DeviceManager] TRACE LINSTOR/Satellite - SYSTEM - Device [/dev/vg0/pvc-8ab7d87e-e81b-4f78-9424-7ee11104c342_00000] appeared after 17ms
+  piraeus-op-ns-node-t9xdq
+  Mar 31, 2023 @ 10:24:31.77407:24:31.774 [DeviceManager] TRACE LINSTOR/Satellite - SYSTEM - Waiting until device [/dev/vg0/pvc-8ab7d87e-e81b-4f78-9424-7ee11104c342_00000] appears (up to 5000ms)
+  piraeus-op-ns-node-t9xdq
+  Mar 31, 2023 @ 10:24:31.75507:24:31.755 [DeviceManager] TRACE LINSTOR/Satellite - SYSTEM - External command finished in 382ms: lvchange --config devices { filter=['a|/dev/vdb2|','r|.*|'] } -ay -K vg0/pvc-8ab7d87e-e81b-4f78-9424-7ee11104c342_00000
+  piraeus-op-ns-node-t9xdq
+  Mar 31, 2023 @ 10:24:31.35707:24:31.357 [DeviceManager] DEBUG LINSTOR/Satellite - SYSTEM - Executing command: lvchange --config devices { filter=['a|/dev/vdb2|','r|.*|'] } -ay -K vg0/pvc-8ab7d87e-e81b-4f78-9424-7ee11104c342_00000
+  piraeus-op-ns-node-t9xdq
+  Mar 31, 2023 @ 10:24:31.35607:24:31.355 [DeviceManager] TRACE LINSTOR/Satellite - SYSTEM - External command finished in 525ms: lvcreate --config devices { filter=['a|/dev/vdb2|','r|.*|'] } --virtualsize 8390440k vg0 --thinpool pool0 --name pvc-8ab7d87e-e81b-4f78-9424-7ee11104c342_00000
+  piraeus-op-ns-node-t9xdq
+  Mar 31, 2023 @ 10:24:31.30807:24:31.307 [Thread-22211] TRACE LINSTOR/Satellite - SYSTEM -   Logical volume "pvc-8ab7d87e-e81b-4f78-9424-7ee11104c342_00000" created.
+  piraeus-op-ns-node-t9xdq
+  Mar 31, 2023 @ 10:24:31.13907:24:31.139 [Thread-22211] TRACE LINSTOR/Satellite - SYSTEM -   WARNING: Set activation/thin_pool_autoextend_threshold below 100 to trigger automatic extension of thin pools before they get full.
+  piraeus-op-ns-node-t9xdq
+  Mar 31, 2023 @ 10:24:31.13907:24:31.139 [Thread-22211] TRACE LINSTOR/Satellite - SYSTEM -   WARNING: You have not turned on protection against thin pools running out of space.
+  piraeus-op-ns-node-t9xdq
+  Mar 31, 2023 @ 10:24:31.13907:24:31.138 [Thread-22212] TRACE LINSTOR/Satellite - SYSTEM -   WARNING: Sum of all thin volume sizes (3.11 TiB) exceeds the size of thin pool vg0/pool0 and the size of whole volume group (1.72 TiB).
+  piraeus-op-ns-node-t9xdq
+  Mar 31, 2023 @ 10:24:31.12407:24:31.124 [Thread-22211] TRACE LINSTOR/Satellite - SYSTEM -   Rounding up size to full physical extent 8.00 GiB
+  piraeus-op-ns-node-t9xdq
+  Mar 31, 2023 @ 10:24:31.006time="2023-03-31T07:24:31Z" level=debug msg="method called" linstorCSIComponent=driver method=/csi.v1.Identity/Probe nodeID=kube4 provisioner=linstor.csi.linbit.com req= resp= version=v0.20.0-d514e41db7cdcb580769cc69f1c1ef2b8a5def5d
+  piraeus-op-csi-node-fxq82
+  Mar 31, 2023 @ 10:24:30.82007:24:30.820 [MainWorkerPool-1] DEBUG LINSTOR/Controller - SYSTEM - Peer Node: 'kube1', oneway call 'Event' end
+  piraeus-op-cs-controller-86875b7f4f-khkg6
+  Mar 31, 2023 @ 10:24:30.82007:24:30.820 [MainWorkerPool-1] TRACE LINSTOR/Controller - SYSTEM - Peer Node: 'kube1', oneway call 'Event' scope 'Handle event' start
+  piraeus-op-cs-controller-86875b7f4f-khkg6
+  Mar 31, 2023 @ 10:24:30.82007:24:30.820 [MainWorkerPool-1] TRACE LINSTOR/Controller - SYSTEM - Peer Node: 'kube1', oneway call 'Event' scope 'Handle event' end
+  piraeus-op-cs-controller-86875b7f4f-khkg6
+  Mar 31, 2023 @ 10:24:30.82007:24:30.820 [MainWorkerPool-1] DEBUG LINSTOR/Controller - SYSTEM - Peer Node: 'kube1', oneway call 'Event' start (seq 1174)
+  piraeus-op-cs-controller-86875b7f4f-khkg6
+#+end_example
+
 * Restore DRBD
 ** 
 root@kube2:/# drbdadm status
