@@ -131,3 +131,53 @@
 * High availability
 - [[https://github.com/cortexproject/cortex][cortexproject/cortex: A horizontally scalable, highly available, multi-tenant, long term Prometheus.]]
 - [[https://github.com/grafana/mimir][grafana/mimir: Grafana Mimir provides horizontally scalable, highly available, multi-tenant, long-term storage for Prometheus.]]
+
+* ChatGPT
+
+** How to curl Prometheus instead of using WEB UI?
+
+To curl Prometheus and retrieve data in the command line, you can use the Prometheus query API. Here are the basic steps:
+
+    Determine the address and port of your Prometheus instance. By default, Prometheus runs on port 9090, so if you are running Prometheus on the same machine where you are issuing the curl command, you can use localhost:9090.
+
+    Identify the query that you want to execute. The Prometheus query API supports a wide range of queries. Here's an example query to get the current CPU usage for all instances:
+
+scss
+
+rate(node_cpu{mode="idle"}[5m])
+
+This query returns the rate of change of the node_cpu metric with the mode label set to idle over the last 5 minutes.
+
+    Use curl to issue the query to the Prometheus API:
+
+css
+
+curl -g 'http://localhost:9090/api/v1/query?query=rate(node_cpu{mode="idle"}[5m])'
+
+The -g option tells curl to interpret the query string as a URL, even if it contains special characters such as braces or spaces. The query parameter specifies the Prometheus query to execute.
+
+The output of the query will be returned as JSON. You can use the -s option to suppress curl's progress output, and the -o option to save the output to a file:
+
+css
+
+curl -sg 'http://localhost:9090/api/v1/query?query=rate(node_cpu{mode="idle"}[5m])' -o result.json
+
+This will save the JSON response to a file called result.json. You can then use standard command line tools such as jq or grep to parse the response as needed.
+
+** It is hard to specify query in the URL. Is it possible use a file instead?
+
+Yes, it is possible to use a file instead of specifying the query in the URL when querying Prometheus with cURL.
+
+First, create a file that contains the query you want to execute, for example, a file named query.txt that contains the following query:
+
+bash
+
+sum(node_cpu{mode="idle"})
+
+Then, use the --data-urlencode option with cURL to pass the query file to Prometheus. Here's an example command:
+
+graphql
+
+curl -G 'http://localhost:9090/api/v1/query' --data-urlencode 'query@query.txt'
+
+This command will execute the query in the query.txt file and return the result in JSON format. Note that the @ symbol is used to indicate that the following argument is a file name. You can modify the file name and location as needed.
