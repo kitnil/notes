@@ -2011,3 +2011,11 @@ In Kubernetes, the memory usage of a container is tracked by the kubelet, which 
 Memory usage is an important metric for Kubernetes because it can affect the performance and stability of the entire cluster. If a container consumes too much memory, it can cause the node it's running on to become unstable, potentially leading to other pods on the same node being evicted or even causing the node to crash.
 
 Therefore, monitoring and managing memory usage is an important part of optimizing the performance and stability of Kubernetes clusters. Kubernetes provides various tools for monitoring and managing resource usage, including resource quotas, resource limits, and container metrics exposed by kubelet.
+
+** What does mean `Lost` status in PVC?
+
+In Kubernetes, Lost status of a Persistent Volume Claim (PVC) indicates that Kubernetes has lost the connection with the underlying storage.
+
+This can happen when the underlying storage is deleted or when the PVC's storage class is no longer available. When a PVC is in the Lost status, Kubernetes is no longer able to track the state of the underlying storage and the PVC cannot be used by any pods.
+
+To fix this issue, you will need to determine the cause of the underlying storage becoming unavailable and address it accordingly. This may involve creating a new PVC, fixing the storage class or restoring the storage to its previous state. Once the underlying storage is available again, Kubernetes should be able to restore the PVC to its previous state.
