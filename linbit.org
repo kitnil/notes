@@ -699,7 +699,8 @@ If you get any output (there are lines with the “Remote failed to finish a req
   : for pvc in "${resources[@]}"; do echo drbdsetup down "$pvc"; done
 
 * Components
-StorageLayer
+** StorageLayer
+*** blockdev
 
 * logical volume creation log in kubernetes operator piraeus
 
