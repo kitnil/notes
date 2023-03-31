@@ -992,3 +992,16 @@ perl
 linstor resource-definition show my-rsc
 
 This command will display detailed information about the my-rsc Rsc, including its current state, replication settings, and the resources that make up the Rsc.
+
+** How to create a disk in Linstor?
+
+To create a disk in Linstor, you can follow these steps:
+
+    Install the Linstor software on your system and ensure that it is configured properly. You can find installation instructions on the Linstor website or documentation.
+    Connect your storage devices to your system and ensure that they are properly recognized by Linstor.
+    Create a storage pool by using the linstor storage-pool create command, specifying the name of the storage pool, the storage provider (such as LVM or ZFS), and any additional options you want to set.
+    Create a resource definition for the disk you want to create by using the linstor resource-definition create command, specifying the name of the resource, the storage pool you created in step 3, and any additional options you want to set.
+    Create the disk itself by using the linstor volume create command, specifying the name of the volume, the resource definition you created in step 4, and the size of the disk.
+    Finally, you can verify that the disk was created successfully by using the linstor volume list command, which should display a list of all volumes currently available in your Linstor setup.
+
+Note that the exact syntax and options for these commands may vary depending on your specific setup and requirements. You can find more detailed information on Linstor's official documentation.
