@@ -446,6 +446,11 @@ If you get any output (there are lines with the “Remote failed to finish a req
   : linstor node list
   : linstor storage-pool list --groupby Size
 
+** Prometheus
+
+- Disconnected DRBD Resources
+  : curl -s -G 'https://prometheus.kubernetes.corp1.majordomo.ru/api/v1/query' --data-urlencode query@query.txt | jq --raw-output '.data.result | .[].metric.name' | sort --unique
+
 * Restore DRBD
 ** 
 root@kube2:/# drbdadm status
