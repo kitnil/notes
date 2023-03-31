@@ -1005,3 +1005,25 @@ To create a disk in Linstor, you can follow these steps:
     Finally, you can verify that the disk was created successfully by using the linstor volume list command, which should display a list of all volumes currently available in your Linstor setup.
 
 Note that the exact syntax and options for these commands may vary depending on your specific setup and requirements. You can find more detailed information on Linstor's official documentation.
+
+** Show me exact commands for resource-definition and volume.
+
+Sure, here are some example commands for creating a resource definition and a volume in Linstor:
+
+To create a resource definition:
+
+lua
+
+linstor resource-definition create my_resource_definition --storage-pool my_storage_pool
+
+This command creates a resource definition named "my_resource_definition" and associates it with the storage pool named "my_storage_pool". You can customize this command by specifying additional options, such as the replication count or the storage provider.
+
+To create a volume:
+
+css
+
+linstor volume create my_volume --resource-definition my_resource_definition --size 1G
+
+This command creates a volume named "my_volume" with a size of 1 GB, using the resource definition named "my_resource_definition". Again, you can customize this command by specifying additional options, such as the volume type or the storage pool.
+
+Note that you should replace "my_resource_definition" and "my_storage_pool" with the actual names of your resource definition and storage pool, respectively. You can also adjust the volume name and size to your liking.
