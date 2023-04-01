@@ -1074,6 +1074,7 @@ then redeploy with:
 - [[https://github.com/k8s-at-home/charts][k8s-at-home/charts: Helm charts for applications you run at home]]
 - [[https://github.com/k8sgpt-ai/k8sgpt][k8sgpt-ai/k8sgpt: Giving Kubernetes SRE superpowers to everyone]]
 - [[https://github.com/k8snetworkplumbingwg/multus-cni][k8snetworkplumbingwg/multus-cni: A CNI meta-plugin for multi-homed pods in Kubernetes]]
+- [[https://github.com/kadalu/kadalu][kadalu/kadalu: A lightweight Persistent storage solution for Kubernetes / OpenShift / Nomad using GlusterFS in background.]]
 - [[https://github.com/kakao/detek][kakao/detek: Extensible problem-detecting CLI tool for reliable Kubernetes cluster operations and rapid problem detections.]]
 - [[https://github.com/kdash-rs/kdash][kdash-rs/kdash: A simple and fast dashboard for Kubernetes]]
 - [[https://github.com/kedacore/keda][kedacore/keda: KEDA is a Kubernetes-based Event Driven Autoscaling component. It provides event driven scale for any container running in Kubernetes]]
