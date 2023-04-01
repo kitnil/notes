@@ -3,6 +3,7 @@
 - [[https://github.com/tektoncd/pipeline/commit/c30d3aa0230faab3be210fccac19f7bb7ddd658f][Add HostNetwork Support to PodTemplate in TaskRun Pod · tektoncd/pipeline@c30d3aa]]
   - [[https://github.com/tektoncd/pipeline/blob/c30d3aa0230faab3be210fccac19f7bb7ddd658f/pkg/pod/pod.go][pipeline/pod.go at c30d3aa0230faab3be210fccac19f7bb7ddd658f · tektoncd/pipeline]]
   - [[https://github.com/tektoncd/pipeline/blob/c30d3aa0230faab3be210fccac19f7bb7ddd658f/pkg/apis/pipeline/pod/template.go][pipeline/template.go at c30d3aa0230faab3be210fccac19f7bb7ddd658f · tektoncd/pipeline]]
+  - [[https://github.com/tektoncd/pipeline/blob/c82f201a2df3b3e7069e8740cb59fad55648b4ce/docs/podtemplates.md][pipeline/podtemplates.md at c82f201a2df3b3e7069e8740cb59fad55648b4ce · tektoncd/pipeline]]
 - [[https://github.com/tektoncd/pipeline/issues/1461][Add structural OpenAPI schema to Tekton CRDs · Issue #1461 · tektoncd/pipeline]]
 
 * ChatGPT
