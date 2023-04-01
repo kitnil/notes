@@ -1,3 +1,9 @@
+
+* Learning
+- [[https://github.com/tektoncd/pipeline/commit/c30d3aa0230faab3be210fccac19f7bb7ddd658f][Add HostNetwork Support to PodTemplate in TaskRun Pod · tektoncd/pipeline@c30d3aa]]
+  - [[https://github.com/tektoncd/pipeline/blob/c30d3aa0230faab3be210fccac19f7bb7ddd658f/pkg/pod/pod.go][pipeline/pod.go at c30d3aa0230faab3be210fccac19f7bb7ddd658f · tektoncd/pipeline]]
+  - [[https://github.com/tektoncd/pipeline/blob/c30d3aa0230faab3be210fccac19f7bb7ddd658f/pkg/apis/pipeline/pod/template.go][pipeline/template.go at c30d3aa0230faab3be210fccac19f7bb7ddd658f · tektoncd/pipeline]]
+
 * ChatGPT
 
 ** I need a mechanism in tekton similar to jenkins lock resources. Does it exist?
