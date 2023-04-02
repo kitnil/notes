@@ -3,19 +3,19 @@
 :END:
 #+title: RabbitMQ
 
-- [[https://github.com/Bogdanp/dramatiq][Bogdanp/dramatiq: A fast and reliable background task processing library for Python 3.]]
-- [[https://github.com/ihciah/rabbit-tcp][ihciah/rabbit-tcp: A multi-connection TCP forwarder/accelerator]]
-- [[https://github.com/alicelabs/alicemq][alicelabs/alicemq: RabbitMQ Visualizer]]
-- [[https://github.com/rabbitmq/rabbitmq-tutorials][rabbitmq/rabbitmq-tutorials: Tutorials for using RabbitMQ in various ways]]
-- [[https://github.com/antirez/disque][antirez/disque: Disque is a distributed message broker]]
-- [[https://github.com/batchcorp/plumber][batchcorp/plumber: A swiss army knife CLI tool for interacting with Kafka, RabbitMQ and other messaging systems.]]
-- https://pulse.mozilla.org/api/
-- https://github.com/rabbitmq/rabbitmq-delayed-message-exchange
-- [[https://github.com/rabbitmq/rabbitmq-peer-discovery-k8s][rabbitmq/rabbitmq-peer-discovery-k8s: Kubernetes-based peer discovery mechanism for RabbitMQ]]
-- [[https://github.com/rabbitmq/rabbitmq-peer-discovery-k8s][rabbitmq/rabbitmq-peer-discovery-k8s: Kubernetes-based peer discovery mechanism for RabbitMQ]]
-- [[https://tanzu.vmware.com/content/webinars/jun-11-ha-and-data-safety-in-messaging-quorum-queues-in-rabbitmq?utm_campaign=Global_BT_Q221_RabbitMQ-Data-Safety-in-Messaging&utm_source=rabbitmq&utm_medium=website][Quorum queues - A webinar on high availability and data safety in messaging]]
-- [[https://www.youtube.com/watch?v=NWISW6AwpOE][(50) TGIR S01E07: How to monitor RabbitMQ? - YouTube]]
 - [[https://www.youtube.com/watch?v=I02oKJlOnR4][(50) TGIR S01E06: How to run a reliable RabbitMQ on K8S - YouTube]]
+- [[https://www.youtube.com/watch?v=NWISW6AwpOE][(50) TGIR S01E07: How to monitor RabbitMQ? - YouTube]]
+- [[https://github.com/alicelabs/alicemq][alicelabs/alicemq: RabbitMQ Visualizer]]
+- [[https://github.com/antirez/disque][antirez/disque: Disque is a distributed message broker]]
 - [[https://github.com/argent-smith/ocamqping][argent-smith/ocamqping: Minimalistic AMQP pinger written in OCaml]]
-- [[https://github.com/jeffbryner/rdqdump][jeffbryner/rdqdump: RabbitMQ .rdq file parser]]
+- [[https://github.com/batchcorp/plumber][batchcorp/plumber: A swiss army knife CLI tool for interacting with Kafka, RabbitMQ and other messaging systems.]]
+- [[https://github.com/Bogdanp/dramatiq][Bogdanp/dramatiq: A fast and reliable background task processing library for Python 3.]]
 - [[https://github.com/hipages/stdin2rabbitmq][hipages/stdin2rabbitmq]]
+- https://github.com/rabbitmq/rabbitmq-delayed-message-exchange
+- https://pulse.mozilla.org/api/
+- [[https://github.com/ihciah/rabbit-tcp][ihciah/rabbit-tcp: A multi-connection TCP forwarder/accelerator]]
+- [[https://github.com/jeffbryner/rdqdump][jeffbryner/rdqdump: RabbitMQ .rdq file parser]]
+- [[https://tanzu.vmware.com/content/webinars/jun-11-ha-and-data-safety-in-messaging-quorum-queues-in-rabbitmq?utm_campaign=Global_BT_Q221_RabbitMQ-Data-Safety-in-Messaging&utm_source=rabbitmq&utm_medium=website][Quorum queues - A webinar on high availability and data safety in messaging]]
+- [[https://github.com/rabbitmq/rabbitmq-peer-discovery-k8s][rabbitmq/rabbitmq-peer-discovery-k8s: Kubernetes-based peer discovery mechanism for RabbitMQ]]
+- [[https://github.com/rabbitmq/rabbitmq-peer-discovery-k8s][rabbitmq/rabbitmq-peer-discovery-k8s: Kubernetes-based peer discovery mechanism for RabbitMQ]]
+- [[https://github.com/rabbitmq/rabbitmq-tutorials][rabbitmq/rabbitmq-tutorials: Tutorials for using RabbitMQ in various ways]]
