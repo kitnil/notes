@@ -401,6 +401,8 @@ membership.
     concurrencyPolicy: Allow
 #+end_src
 
+** Prometheus
+- [[https://prometheus.kubernetes.corp1.majordomo.ru/graph?g0.expr=topk(10%2C%20sum%20by%20(container)%20(kube_pod_container_resource_limits%7Bresource%3D%22cpu%22%7D))&g0.tab=1&g0.stacked=0&g0.show_exemplars=0&g0.range_input=1h&g1.expr=topk(15%2C%20node_namespace_pod_container%3Acontainer_cpu_usage_seconds_total%3Asum_irate%7B%7D)&g1.tab=1&g1.stacked=0&g1.show_exemplars=0&g1.range_input=2w&g2.expr=topk(15%2C%20sum(container_memory_working_set_bytes%7Bjob%3D%22kubelet%22%2C%20metrics_path%3D%22%2Fmetrics%2Fcadvisor%22%2C%20container!%3D%22%22%2C%20image!%3D%22%22%7D)%20by%20(container))&g2.tab=1&g2.stacked=0&g2.show_exemplars=0&g2.range_input=1h][Prometheus Top pods]]
 * CNI
 - [[https://github.com/platform9/luigi][platform9/luigi: The plumber you'll hire to install all your Kubernetes network plumbing]]
 
