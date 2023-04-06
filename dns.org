@@ -166,3 +166,9 @@ free mail hosting for their subscribers
   ns2.wugi.info.          3600    IN      A       78.108.92.69
   ns1.wugi.info.          3600    IN      A       78.108.82.44
 #+end_example
+
+* ChatGPT
+
+** What is domain name max length?
+
+The maximum length of a domain name is 253 characters according to the Internet Engineering Task Force (IETF) standard RFC 1035. This limit includes the entire domain name, including the dots used to separate the labels (individual parts of the domain name). However, some domain name systems may impose shorter limits. It is also important to note that each label within the domain name cannot be longer than 63 characters.
