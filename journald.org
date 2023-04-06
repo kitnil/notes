@@ -123,3 +123,20 @@ Restart the rsyslog service to apply the changes.
     sudo systemctl restart rsyslog
 
 After completing these steps, journald should start forwarding logs to the remote rsyslog server, and rsyslog should be able to receive and store them according to its own configuration.
+
+** Is it possible to use a domain name instead of`10.0.0.1` in your previous example?
+
+Yes, it is possible to use a domain name instead of an IP address in the journald configuration to send logs to a remote rsyslog server. You can replace the IP address in the RemoteSyslog configuration line with the domain name of the rsyslog server, like this:
+
+makefile
+
+[Remote]
+# Set up remote logging
+Remote=yes
+SyslogFacility=daemon
+LogLevel=info
+# Replace 10.0.0.1 with the domain name of your rsyslog server
+RemoteServerName=example.com
+RemoteServerPort=514
+
+Note that you need to replace example.com with the actual domain name of your rsyslog server. Also, make sure that the domain name can be resolved by the system running journald.
