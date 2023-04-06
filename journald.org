@@ -140,3 +140,37 @@ RemoteServerName=example.com
 RemoteServerPort=514
 
 Note that you need to replace example.com with the actual domain name of your rsyslog server. Also, make sure that the domain name can be resolved by the system running journald.
+
+** Is it possible to send logs but also preserve them in journald?
+
+Yes, it's possible to send logs to a remote rsyslog server and also keep them in journald. This can be achieved by configuring rsyslog to forward logs to the remote server and then configuring journald to store logs locally.
+
+Here's an example of a journald configuration that stores logs locally and sends them to a remote rsyslog server:
+
+    Create a file called /etc/systemd/journald.conf.d/remote.conf with the following contents:
+
+    makefile
+
+[Journal]
+ForwardToSyslog=yes
+ForwardToSyslogSec=0
+
+This configuration will send logs to rsyslog without a delay.
+
+Restart journald for the changes to take effect:
+
+sudo systemctl restart systemd-journald
+
+On the rsyslog server, create a configuration file called /etc/rsyslog.d/10-remote.conf with the following contents:
+
+css
+
+*.* @@10.0.0.1:514
+
+Replace 10.0.0.1 with the IP address or domain name of the remote rsyslog server.
+
+Restart rsyslog for the changes to take effect:
+
+    sudo systemctl restart rsyslog
+
+With these configurations in place, journald will store logs locally and send them to the remote rsyslog server. You can configure rsyslog to store logs locally as well if needed.
