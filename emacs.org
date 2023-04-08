@@ -1133,6 +1133,88 @@ Happy hacking =),
    Fetched in submodule path 'mirror/auth-password-store', but it did not contain 0a83b8fa074571023a10aed263d2ee7d865a49f7. Direct fetching of that commit failed.
  #+END_EXAMPLE
 
+** [[https://rednosehacker.com/combo-guix-shell-emacs-envrc-el?pk_campaign=rss-feed][Combo : Guix shell + Emacs envrc.el — Red Nose Hacker]]
+
+Combo : Guix shell + Emacs envrc.el
+April 7, 2023
+
+Guile Logo
+
+When I edit Guile code in Emacs, there are some tools relying on the environment to work (i.e. Emacs extensions like Geiser, Flycheck-Guile).
+Parts of this environment are project specific while others are shared across projects.
+So I ended up setting manually my environment usually following these few steps:
+
+$ guix shell guile
+$ export GUILE_LOAD_PATH="$PWD:$GUILE_LOAD_PATH$
+$ emacs some-script.scm
+
+
+
+I did turn it into a script I cast as a spell but still, I wanted to go further.
+And one day…
+
+I read this thread from a Guix mailing list. Almost what I am looking for, a bit rough.
+
+And later this post from David Thompson's blog. Which lead me to the Gitlab account of Andrew Whatson with use cases.
+
+They paved the way. I feel I can give it a try.
+
+David wrote about direnv.el which run all the things starting from Emacs in the environment made by direnv.
+
+So let's go!
+
+$ guix install direnv emacs-direnv
+
+
+
+At the end of my .bashrc:
+
+eval "$(direnv hook bash)"
+
+
+
+In my Emacs configuration:
+
+(use-package direnv
+ :config
+ (direnv-mode))
+
+
+
+Finally, inside the .envrc file of your simple Guile project:
+
+eval $(guix shell guile --search-paths)
+export GUILE_LOAD_PATH="$PWD:$GUILE_LOAD_PATH="
+
+
+
+Now all you need to do is fire Emacs up, open a file from one of your Guile project and taste the fun.
+
+Oh wait! If you are like me, you may open several files from different projects to copy/paste, evaluate s-expressions, whatever… The thing is, the actual Emacs environment is the one from the first file opened. Too bad.
+
+Fortunately, Steve Purcell already solved the problem with envrc.el ! Let's make the switch.
+
+$ guix remove emacs-direnv
+$ guix install emacs-envrc
+
+
+
+And also substitute envrc.el from direnv.el in your Emacs configuration:
+
+(use-package envrc
+ :config
+ (envrc-global-mode))
+
+
+
+Let me know how it feels ;)
+
+Thank you very much for reading this article! Hope you learned something!
+
+Don't hesitate to give me your opinion, suggest an idea for improvement, report an error, or ask a question ! I would be so glad to discuss about the topic covered here with you ! You can reach me here.
+
+Don't miss out on the next ones ! Either via RSS or via e-mail !
+
 ** eshell
 
  - C-c C-r :: move to output
