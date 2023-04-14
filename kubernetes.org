@@ -2027,3 +2027,56 @@ In Kubernetes, Lost status of a Persistent Volume Claim (PVC) indicates that Kub
 This can happen when the underlying storage is deleted or when the PVC's storage class is no longer available. When a PVC is in the Lost status, Kubernetes is no longer able to track the state of the underlying storage and the PVC cannot be used by any pods.
 
 To fix this issue, you will need to determine the cause of the underlying storage becoming unavailable and address it accordingly. This may involve creating a new PVC, fixing the storage class or restoring the storage to its previous state. Once the underlying storage is available again, Kubernetes should be able to restore the PVC to its previous state.
+
+** I need a serviceaccount which could modify nodes labels.
+
+To allow a service account to modify node labels, you need to grant it the appropriate permissions using a ClusterRole and a ClusterRoleBinding. Here is an example of how to create a service account with the necessary permissions:
+
+    First, create a file named node-labeler-clusterrole.yaml with the following contents:
+
+yaml
+
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: node-labeler
+rules:
+- apiGroups: [""]
+  resources: ["nodes"]
+  verbs: ["get", "list", "watch", "update"]
+
+This ClusterRole grants permission to list and watch nodes, as well as get and update their labels.
+
+    Next, create a file named node-labeler-clusterrolebinding.yaml with the following contents:
+
+yaml
+
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: node-labeler
+subjects:
+- kind: ServiceAccount
+  name: node-labeler
+  namespace: default
+roleRef:
+  kind: ClusterRole
+  name: node-labeler
+  apiGroup: rbac.authorization.k8s.io
+
+This ClusterRoleBinding grants the node-labeler service account in the default namespace access to the node-labeler ClusterRole.
+
+    Create a service account named node-labeler:
+
+bash
+
+kubectl create serviceaccount node-labeler
+
+    Finally, apply the ClusterRole and ClusterRoleBinding to the cluster:
+
+bash
+
+kubectl apply -f node-labeler-clusterrole.yaml
+kubectl apply -f node-labeler-clusterrolebinding.yaml
+
+After following these steps, you can use the node-labeler service account to modify the labels of nodes in the cluster.
