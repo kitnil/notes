@@ -253,6 +253,9 @@ lightest of data storage needs.
 - continuous print logs all pods matching label
   : kubectl logs --max-log-requests=9 --namespace example-egress-gateway-kube11 -l app.kubernetes.io/name=curl --tail 10 -f
 
+- [[https://www.ibm.com/docs/en/cloud-paks/cp-management/2.0.0?topic=kubectl-using-service-account-tokens-connect-api-server][Using service account tokens to connect with the API server - IBM Documentation]]
+  : curl --cacert /run/secrets/kubernetes.io/serviceaccount/ca.crt -H "Authorization: Bearer $(cat /run/secrets/kubernetes.io/serviceaccount/token)" https://kubernetes.intr:6443/api/v1/pod/namespaces/jenkins
+
 ** authentication
 
 [[https://stackoverflow.com/questions/51612976/how-to-view-members-of-subject-with-group-kind][kubernetes - How to view members of subject with Group kind - Stack Overflow]]
