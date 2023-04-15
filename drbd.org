@@ -13,3 +13,5 @@
 
 : drbdadm disconnect pvc-f77382d7-e6f6-482b-b887-330da14c2d6b:kube2
 : drbdadm connect pvc-f77382d7-e6f6-482b-b887-330da14c2d6b:kube2
+
+: /sys/devices/virtual/block/drbd1065
