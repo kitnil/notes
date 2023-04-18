@@ -1146,3 +1146,18 @@ Prompt
       )
   done < <(find "${RUN_MUSIC_DIRECTORY:-/srv/music}" -type f -print0)
 #+end_src
+
+#+begin_src bash
+  #!/usr/bin/env bash
+  new_args=()
+  for var in "$@"
+  do
+      if [[ "$var" == *"--cni-conf-dir"* ]]
+      then
+          :
+      else
+          new_args+=($var)
+      fi
+  done
+  echo "${new_args[@]}"
+#+end_src
