@@ -62,7 +62,8 @@ People use the Spring Boot framework for several reasons:
 
 * Actuator
 
-https://spring.io/guides/gs/centralized-configuration/
+- [[https://docs.spring.io/spring-boot/docs/current/reference/html/actuator.html][Production-ready Features]]
+- https://spring.io/guides/gs/centralized-configuration/
 
 - oleg@guixsd ~$ curl localhost:8981/actuator/refresh -d {} -H "Content-Type: application/json"
 
