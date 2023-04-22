@@ -41,6 +41,7 @@ zfs-auto-snap_hourly-2020-04-29-13h00  zfs-auto-snap_hourly-2020-04-29-19h00  zf
 - [[https://github.com/oetiker/znapzend][oetiker/znapzend: zfs backup with remote capabilities and mbuffer integration.]]
 - [[https://github.com/arctic-penguin/zfs-undelete][arctic-penguin/zfs-undelete: an easy-to-use CLI tool to recover files from zfs snapshots]]
 - [[https://github.com/farcaller/nix-zfs-diff][farcaller/nix-zfs-diff: zfs diff that aggregates symlinks and makes nix usage a bit more sane]]
+- [[https://github.com/illustris/zfs_exporter_flake][illustris/zfs_exporter_flake]]
 
 * Misc
 - [[https://github.com/jimsalterjrs/sanoid][jimsalterjrs/sanoid: Policy-driven snapshot management and replication tools. Using ZFS for underlying next-gen storage. (Btrfs support plans are shelved unless and until btrfs becomes reliable.) Primarily intended for Linux, but BSD use is supported and reasonably frequently tested.]]
