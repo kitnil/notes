@@ -202,6 +202,9 @@ lightest of data storage needs.
 - list all objects in a namespace
   : parallel --color -j 4 kubectl get -o wide --show-kind --ignore-not-found -n NAMESPACE ::: $(kubectl api-resources --verbs=list --namespaced -o name)
 
+- list pending pods
+  : kubectl get pods --field-selector status.phase=Pending --all-namespaces -o wide
+
 - list pods by creation time
   : kubectl get pods -A -o custom-columns=NAMESPACE:.metadata.namespace,NAME:.metadata.name,NODE:.spec.nodeName,HOSTIP:.status.hostIP,PHASE:.status.phase,START_TIME:.metadata.creationTimestamp --sort-by=.metadata.creationTimestamp
 
