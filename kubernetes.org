@@ -714,6 +714,10 @@ Once running, the URL to the dashboard is https://2886795308-30000-simba08.envir
   for image in $(for commit in $(git branches-by-date-origin | awk '/apps-cluster1-hms-development/ { print $1 }'); do PAGER=cat git show "$commit" | grep -A 1 '^+-' | awk '{ print $NF }' | xargs echo; done | sed 's/\s/:/' | xargs echo); do kustomize edit set image "$image"; done
 #+end_src
 
+#+begin_src bash
+  for image in $(for commit in $(git branches-by-date-origin | awk '/apps-cluster1-hms-development/ { print $1 }'); do PAGER=cat git show "$commit" | grep -A 1 '^-  newTag' | awk '{ print $NF }' | xargs echo; done | sed 's/\s/:/' | xargs echo); do eval "$(echo "sed -i 's:${image}:'" kustomization.yaml)"; done
+#+end_src
+
 * Learning
 - [[https://www.youtube.com/watch?v=n4zxKk2an3U][(28) Learn Kubernetes with this Introductory Course in One Hour (All Core Components and Hands On!) - YouTube]]
 - [[https://www.youtube.com/playlist?list=PLxNYxgaZ8Rscf-XJ5VfXgbDAk1vL4xaMl][(2) Learn Kubernetes with Google - YouTube]]
