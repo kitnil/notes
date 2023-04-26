@@ -36,6 +36,68 @@
 - [[https://github.com/ChrisTitusTech/win10script][ChrisTitusTech/win10script: This is the Ultimate Windows 10 Script from a creation from multiple debloat scripts and gists from github.]]
 - [[https://github.com/safing/portmaster][safing/portmaster: Love Freedom - Block Mass Surveillance]]
 
+* BTRFS
+
+#+begin_src markdown
+  [Windows on btrfs - The Cool Blog](https://www.lilysthings.org/blog/windows-on-btrfs/)
+
+  > # The Cool Blog
+  > 
+  > ## 4-20-23: Windows on btrfs
+  > 
+  > [
+  > 
+  > Part 2
+  > 
+  > ](https://www.lilysthings.org/blog/windows-on-btrfs-2/)
+  > 
+  > Hello and Welcome back to The Cool Blog here on The Cool Site.
+  > 
+  > So for the past year and a half or so I've been using the fantastic [Windows btrfs driver](https://github.com/maharmstone/btrfs) for easily sharing files between my Windows and Linux dualboot. The driver works great and basically fully supports everything that both operating systems could ever want (and let me tell you transparent compression and copy on write on Windows is so fucking nice). If you dualboot Windows and Linux I highly recommend using this for external drives instead of using NTFS with Linux.
+  > 
+  > Anyway [maharmstone](https://github.com/maharmstone), the creator of the driver, has also been working on another project called [Quibble](https://github.com/maharmstone/quibble). Quibble is an open source reimplentation of the Windows bootloader that has the incredibly awesome feature of allowing one to boot Windows off of other filesystems. It can boot it off of anything that it has an EFI driver for and that Windows can read. Theoretically nothing is stopping you from booting Windows 11 off of FAT32 (Although I'm sure that Windows would have some issues with that as XP was the last version that let you boot off of FAT32)
+  > 
+  > Quibble has been something that I had previously messed with in the past but could never get to work. The last release had been from 2021 and I never cared enough to actually compile the much newer source sode. A few weeks ago though there was a new release so I though fuck it and decided to try it. I downloaded the latest release of Quibble, stuck it in my EFI partition, used their [ntfs2btrfs](https://github.com/maharmstone/ntfs2btrfs) tool to convert my existing Windows partition to btrfs, edited the Quibble config file to point to the right partition and rebooted... and immediately forgot this laptop's dumbass UEFI doesn't let me pick an EFI file to boot from. After 10 minutes of me trying to remember how to use efibootmgr I was able to add it to the boot options and actually reboot.
+  > 
+  > [![](https://www.lilysthings.org/blog/windows-on-btrfs/images/bootmenu.jpg)](https://www.lilysthings.org/blog/windows-on-btrfs/images/bootmenu.jpg)
+  > 
+  > The Quibble boot menu
+  > 
+  > The boot menu of Quibble looks like if you took grub, made it HiDPI aware, and added nicer fonts. Considering my failed attempts in the past where it would never find the partition I wasn't expecting much when I selected Windows.
+  > 
+  > [![](https://www.lilysthings.org/blog/windows-on-btrfs/images/booting.jpg)](https://www.lilysthings.org/blog/windows-on-btrfs/images/booting.jpg)
+  > 
+  > [![](https://www.lilysthings.org/blog/windows-on-btrfs/images/booting2.jpg)](https://www.lilysthings.org/blog/windows-on-btrfs/images/booting2.jpg)
+  > 
+  > [![](https://www.lilysthings.org/blog/windows-on-btrfs/images/logonui.jpg)](https://www.lilysthings.org/blog/windows-on-btrfs/images/logonui.jpg)
+  > 
+  > Holy shit it actually fucking worked.
+  > 
+  > [![](https://www.lilysthings.org/blog/windows-on-btrfs/images/diskproperties.JPG)](https://www.lilysthings.org/blog/windows-on-btrfs/images/diskproperties.JPG)
+  > 
+  > I really wasn't expecting it to work. Well since we're at the login screen I signed in and was immediately hearing error sounds even before the desktop loaded. I forgot to take screenshots but it was the AMD stuff from the Microsoft Store failing to launch. This takes us into the one downside (or feature depending on how you see it). "Windows 10 apps", basically things you would get from the Microsoft Store don't work. Your first thought might be "who cares nobody gets anything from the Microsoft Store" but this means that Windows Terminal doesn't work and you're stuck with the shitty default powershell and command prompt apps and I can't play Minecraft Bedrock.
+  > 
+  > Oh well...
+  > 
+  > Anyway with it seemingly working perfectly I rebooted into Arch Linux so I could do transparent compression on this. This was when I realized that the ntfs2btrfs program didn't do things perfectly. Immediately when I tried to write anything to it dmesg was filled with errors and the filesystem remounted as read only. As I am an idiot I didn't really know how I could fix this at the moment. Btrfs check said everything was fine.
+  > 
+  > I decided to make a new btrfs partition and just copy over all the files and see if that would boot. I was shocked to see that it did and now that I had a clean and uncorrupted filesystem it was time for the incredibly dumb idea I had.
+  > 
+  > There are no directories in the Windows and Linux roots that share the same name so you should be able to boot them both from the same partition without any file conflicts. After a reboot into Linux, installing Arch with pacstrap, and fucking with grub.
+  > 
+  > [![](https://www.lilysthings.org/blog/windows-on-btrfs/images/rootlinux.jpg)](https://www.lilysthings.org/blog/windows-on-btrfs/images/rootlinux.jpg)
+  > 
+  > [![](https://www.lilysthings.org/blog/windows-on-btrfs/images/windowsroot.JPG)](https://www.lilysthings.org/blog/windows-on-btrfs/images/windowsroot.JPG)
+  > 
+  > I see absolutely no way that this could go wrong /s
+  > 
+  > This kinda just works. The btrfs driver for Windows is incredibly solid so once you get past the bootloader there really isn't anything weird. It just does its thing. One final thought of mine is that since Quibble supports booting Windows from a btrfs subvolume if you wanted to not have to worry about splitting up your SSD for a dual boot you could have Windows and Linux on one partition on separate subvolumes. Honestly that sounds like something I might do (Assuming Windows Update doesn't break this).
+  > 
+  > Anyway that's all I have this time. This was just a dumb thing I ended up doing tonight and I really needed something to write about.
+  > 
+  > I don't know how to end things.
+#+end_src
+
 * Cheat sheet
 
 - If you're encountering display or graphics issues, you can press
