@@ -15,3 +15,27 @@
 - [[https://github.com/mgdm/htmlq][mgdm/htmlq: Like jq, but for HTML.]]
 - [[https://github.com/nordicgiant2/awesome-landing-page][nordicgiant2/awesome-landing-page: A series of beautiful and practical landing page templates]]
 - [[https://github.com/sibprogrammer/xq][sibprogrammer/xq: Command-line XML and HTML beautifier and content extractor]]
+
+* ChatGPT
+
+How to insert image in HTML as a binary?
+
+27/04/2023, 12:17:20
+
+In HTML, you can insert an image as a binary by using the "data" URI
+scheme. This scheme allows you to include the image data directly in the
+document as a base64-encoded string.
+
+Here's an example of how to use it:
+
+html
+
+<img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEASABIAAD...">
+
+In this example, the image data is encoded in base64 and included directly
+after the "base64," substring of the URL. The "/9j/4AAQSkZJRgABAQEASABIAAD..."
+portion of the URL is the actual image data in base64.
+
+You would replace this with your own base64-encoded image data. Note that this
+method can result in larger page sizes and slower loading times, so it's
+generally not recommended for large images or pages with multiple images.
