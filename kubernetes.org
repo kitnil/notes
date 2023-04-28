@@ -1056,6 +1056,7 @@ then redeploy with:
 - [[https://github.com/eigengrau/krew2nix][eigengrau/krew2nix: Makes kubectl plug-ins from the Krew repository accessible to Nix]]
 - [[https://github.com/eldadru/ksniff][eldadru/ksniff: Kubectl plugin to ease sniffing on kubernetes pods using tcpdump and wireshark]]
 - [[https://github.com/external-secrets/external-secrets][external-secrets/external-secrets: External Secrets Operator reads information from a third-party service like AWS Secrets Manager and automatically injects the values as Kubernetes Secrets.]]
+- [[https://github.com/f0xtek/k8sresourceless][f0xtek/k8sresourceless: A utility to find all Kubernetes Pods that have no CPU or memory resource requests defined for their containers.]]
 - [[https://github.com/FairwindsOps/polaris][FairwindsOps/polaris: Validation of best practices in your Kubernetes clusters]]
 - [[https://github.com/fluxcd/flagger][fluxcd/flagger: Progressive delivery Kubernetes operator (Canary, A/B Testing and Blue/Green deployments)]]
 - [[https://github.com/fluxcd/flux2][fluxcd/flux2: Open and extensible continuous delivery solution for Kubernetes. Powered by GitOps Toolkit.]]
