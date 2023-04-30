@@ -792,6 +792,7 @@ Once running, the URL to the dashboard is https://2886795308-30000-simba08.envir
 - [[https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/][Pod Lifecycle | Kubernetes]]
 - Port forwarding
   - =kubectl port-forward my-deployment-xxxxxxxxxx-xxxxx 8005:80 &=
+- [[https://piotrminkowski.com/2022/12/02/renew-certificates-on-kubernetes-with-cert-manager-and-reloader/][Renew Certificates on Kubernetes with Cert Manager and Reloader]]
 - [[https://github.com/rootsongjc/kubernetes-handbook][rootsongjc/kubernetes-handbook: Kubernetes中文指南/云原生应用架构实战手册 - https://jimmysong.io/kubernetes-handbook]]
 - [[https://github.com/run-x/awesome-kubernetes][run-x/awesome-kubernetes: A curated list for awesome kubernetes projects, tools and resources.]]
 - [[https://kubernetes.io/docs/concepts/scheduling-eviction/_print/][Scheduling, Preemption and Eviction | Kubernetes]]
