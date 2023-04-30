@@ -820,6 +820,7 @@ Once running, the URL to the dashboard is https://2886795308-30000-simba08.envir
       - name: nginx
         image: nginx
   #+end_src
+- [[https://piotrminkowski.com/2023/03/20/vault-with-secrets-store-csi-driver-on-kubernetes/][Vault with Secrets Store CSI Driver on Kubernetes]]
 - [[https://github.com/Vinum-Security/kubernetes-security-checklist][Vinum-Security/kubernetes-security-checklist: Kubernetes Security Checklist and Requirements - All in One (authentication, authorization, logging, secrets, configuration, network, workloads, dockerfile)]]
 - [[https://github.com/walidshaari/Certified-Kubernetes-Security-Specialist][walidshaari/Certified-Kubernetes-Security-Specialist: Curated resources help you prepare for the CNCF/Linux Foundation CKS 2021 "Kubernetes Certified Security Specialist" Certification exam. Please provide feedback or requests by raising issues, or making a pull request. All feedback for improvements are welcome. thank you.]]
 - [[https://www.techtarget.com/searchitoperations/tip/When-to-use-Kubernetes-operators-vs-Helm-charts][When to use Kubernetes operators vs. Helm charts]]
