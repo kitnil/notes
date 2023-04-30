@@ -90,6 +90,7 @@ ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -l root -fNL 820
 - [[https://www.vaultproject.io/docs/auth/cert][TLS Certificates - Auth Methods | Vault by HashiCorp]]
 - [[https://learn.hashicorp.com/tutorials/vault/tokens][Tokens | Vault - HashiCorp Learn]]
 - [[https://jthan.io/blog/using-vault-for-your-openvpn-pki/][Using Vault for your OpenVPN PKI - jthan.io]]
+- [[https://piotrminkowski.com/2021/12/30/vault-on-kubernetes-with-spring-cloud/][Vault on Kubernetes with Spring Cloud - Piotr's TechBlog]]
 - [[https://habr.com/ru/company/nixys/blog/578870/][Взаимное автоматическое распечатывание двух Vault кластеров в Kubernetes / Хабр]]
 
 * Misc
