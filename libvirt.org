@@ -350,3 +350,9 @@ Run:
 
 * Sound
 - scream -i br154.154 -u -p 16400
+
+* 
+
+root@guixsd /sys/bus/pci/devices# echo 1 > /sys/bus/pci/devices/0000:12:00.1/remove
+root@guixsd /sys/bus/pci/devices# echo 1 > ../../../devices/pci0000:00/0000:00:01.1/0000:10:00.0/0000:11:00.0/0000:12:00.0/remove
+root@guixsd /sys/bus/pci/devices# echo 1 > /sys/bus/pci/rescan
