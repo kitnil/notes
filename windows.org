@@ -248,6 +248,7 @@ mount -o anon \\192.168.0.144\srv\games N:
 * Learning
 - [[https://github.com/mytechnotalent/Hacking-Windows][mytechnotalent/Hacking-Windows: A FREE Windows C development course where we will learn the Win32API and reverse engineer each step utilizing IDA Free in both an x86 and x64 environment.]]
 - [[https://github.com/Kyome22/RunCat_for_windows][Kyome22/RunCat_for_windows: A cute running cat animation on your windows taskbar.]]
+- [[https://www.youtube.com/watch?v=GgWk1b2pXYA][Язык Си - Как создать и открыть окно с помощью функций WinAPI. - YouTube]]
 
 ** What is awk alternative in windows powershell?
 In Windows PowerShell, you can use the Select-String cmdlet as an alternative to the awk utility. The Select-String cmdlet allows you to search for text patterns in one or more files and display the matching lines. Here's an example of how you could use Select-String to perform a similar operation to awk:
