@@ -966,6 +966,8 @@ then redeploy with:
 * Prometheus
 - pod resources
   : https://prometheus.kubernetes.corp1.majordomo.ru/graph?g0.expr=topk(10%2C%20sum%20by%20(container)%20(kube_pod_container_resource_limits%7Bresource%3D%22cpu%22%7D))&g0.tab=1&g0.stacked=0&g0.show_exemplars=0&g0.range_input=1h&g1.expr=topk(15%2C%20node_namespace_pod_container%3Acontainer_cpu_usage_seconds_total%3Asum_irate%7B%7D)&g1.tab=1&g1.stacked=0&g1.show_exemplars=0&g1.range_input=2w&g2.expr=topk(15%2C%20sum(container_memory_working_set_bytes%7Bjob%3D%22kubelet%22%2C%20metrics_path%3D%22%2Fmetrics%2Fcadvisor%22%2C%20container!%3D%22%22%2C%20image!%3D%22%22%7D)%20by%20(container))&g2.tab=1&g2.stacked=0&g2.show_exemplars=0&g2.range_input=1h
+- persistentce volume size
+  : https://prometheus.kubernetes.corp1.majordomo.ru/graph?g0.expr=(sum%20without(instance%2C%20node)%20(kubelet_volume_stats_capacity_bytes%7Bcluster%3D%22%22%2C%20job%3D%22kubelet%22%2C%20metrics_path%3D%22%2Fmetrics%22%7D)%20-%20sum%20without(instance%2C%20node)%20(kubelet_volume_stats_available_bytes%7Bcluster%3D%22%22%2C%20job%3D%22kubelet%22%2C%20metrics_path%3D%22%2Fmetrics%22%7D))&g0.tab=0&g0.stacked=0&g0.show_exemplars=0&g0.range_input=1d
 * pv
 ** dynamic
 - [[https://github.com/rancher/local-path-provisioner][rancher/local-path-provisioner: Dynamically provisioning persistent local storage with Kubernetes]]
