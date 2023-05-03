@@ -438,7 +438,7 @@ First of all you should have a working etcd.
 #+begin_example
   [root@kube1:~]# ss -tulpn
   Netid          State           Recv-Q          Send-Q                   Local Address:Port                     Peer Address:Port          Process
-  tcp            LISTEN          0               4096                         127.0.0.1:38421                         0.0.0.0:*              users:(("containerd",pid=885,fd=14))
+  tcp            LISTEN          0               4096                         127.0.0.1:38421                         0.0.0.0:*              users:(("containerd",=885,fd=14))
   tcp            LISTEN          0               128                       172.16.103.9:22                            0.0.0.0:*              users:(("sshd",pid=911,fd=3))
   tcp            LISTEN          0               4096                      172.16.103.9:443                           0.0.0.0:*              users:(("kube-apiserver",pid=3104049,fd=7))
   tcp            LISTEN          0               4096                      172.16.103.9:2379                          0.0.0.0:*              users:(("etcd",pid=3104054,fd=9))
@@ -1484,7 +1484,9 @@ Containers are about reusability and often it’s much easier to make small adju
 - [[https://github.com/MicrosoftDocs/SupportArticles-docs/blob/main/support/windows-server/containers/support-for-windows-containers-docker-on-premises-scenarios.md][SupportArticles-docs/support-for-windows-containers-docker-on-premises-scenarios.md at main · MicrosoftDocs/SupportArticles-docs]]
 - [[https://thomasvanlaere.com/posts/2021/06/exploring-windows-containers/][Thomas Van Laere | Exploring Windows Containers]]
 - [[https://samcogan.com/using-host-process-containers-to-interact-with-kubernetes-windows-nodes/][Using Host Process Containers to Interact with Kubernetes Windows Nodes - samcogan.com]]
-- [[https://www.jamessturtevant.com/posts/Windows-Containers-on-Windows-10-without-Docker-using-Containerd/][Windows Containers on Windows 10 without Docker (using Containerd) · James Sturtevant]]
+** [[https://www.jamessturtevant.com/posts/Windows-Containers-on-Windows-10-without-Docker-using-Containerd/][Windows Containers on Windows 10 without Docker (using Containerd) · James Sturtevant]]
+*** [[https://github.com/microsoft/Windows-Containers/issues/210][How to use containerd with crictl on Windows Server 2022 · Issue #210 · microsoft/Windows-Containers]]
+: Add-WindowsFeature Containers,Hyper\-V,Hyper\-V\-Tools,Hyper\-V\-PowerShell \-Restart \-IncludeManagementTools
 
 ** Issues
 - [[https://github.com/rancher/rke2/issues/3915][kubelet fails to pull docker.io/rancher/pause:3.6 on Windows 11 Pro node · Issue #3915 · rancher/rke2]]
