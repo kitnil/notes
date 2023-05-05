@@ -49,10 +49,10 @@
 3. What happens with a request (cilium monitor).
 
 * Tools
-- [[https://editor.cilium.io/?id=sGIKib2OwOtkkypE][Network Policy Editor for Kubernetes]]
-- [[https://jenkins.cilium.io/][Cilium Jenkins Instance]]
 - [[https://github.com/cilium/cilium-cli][cilium/cilium-cli: CLI to install, manage & troubleshoot Kubernetes clusters running Cilium]]
+- [[https://jenkins.cilium.io/][Cilium Jenkins Instance]]
 - [[https://github.com/cosmonic/netreap][cosmonic/netreap: A Cilium controller implementation for Nomad]]
+- [[https://editor.cilium.io/?id=sGIKib2OwOtkkypE][Network Policy Editor for Kubernetes]]
 
 ** Hubble relay
 
