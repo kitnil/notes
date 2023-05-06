@@ -1409,6 +1409,7 @@ builtins.match "php([[:alnum:]])([[:alnum:]])" "php70"
 
 * Misc
 - [[https://github.com/lunik1/nix-wallpaper][lunik1/nix-wallpaper: A configurable wallpaper for nix systems]]
+- [[https://github.com/nammayatri/shared-kernel/tree/main][nammayatri/shared-kernel: See https://github.com/nammayatri/nammayatri]]
 - [[https://github.com/water-sucks/brainfuck.nix][water-sucks/brainfuck.nix: A Brainfuck compiler implemented using Nix because I have no life]]
 
 * Modules
