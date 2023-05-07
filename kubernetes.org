@@ -2167,3 +2167,11 @@ my-statefulset-0.my-statefulset-service.default.svc.cluster.local
 my-statefulset-1.my-statefulset-service.default.svc.cluster.local
 
 You can use these DNS names to connect to the individual pods, for example, in your application code or in your other Kubernetes resources.
+
+** How Kubernetes master decides that node is not available?
+
+In Kubernetes, the master node determines whether a node is available or not by regularly sending heartbeats to nodes in the cluster. These heartbeats are known as "node status updates".
+
+If a node fails to respond to multiple consecutive status update requests, the master node marks the node as "NotReady". The master then begins rescheduling any workloads that were running on the failed node onto other healthy nodes in the cluster.
+
+Additionally, Kubernetes provides a number of mechanisms for detecting when a node becomes unavailable due to factors such as network failure or power outage. These mechanisms include node liveness probes, which periodically check whether an application running on a node is still responsive, and node readiness probes, which determine whether a node is ready to accept incoming traffic.
