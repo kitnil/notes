@@ -2175,3 +2175,11 @@ In Kubernetes, the master node determines whether a node is available or not by 
 If a node fails to respond to multiple consecutive status update requests, the master node marks the node as "NotReady". The master then begins rescheduling any workloads that were running on the failed node onto other healthy nodes in the cluster.
 
 Additionally, Kubernetes provides a number of mechanisms for detecting when a node becomes unavailable due to factors such as network failure or power outage. These mechanisms include node liveness probes, which periodically check whether an application running on a node is still responsive, and node readiness probes, which determine whether a node is ready to accept incoming traffic.
+
+** Does a worker node check master is available in the same way?
+
+Yes, worker nodes in a Kubernetes cluster also check whether the master node is available in a similar way. Worker nodes periodically send "NodeReady" status updates to the master node to indicate that they are still operational.
+
+If the master node fails to respond to multiple consecutive NodeReady status update requests from a particular worker node, the worker node will mark the master node as "NotReady". However, this typically does not trigger any automatic actions since the master node is considered a critical component of the cluster infrastructure.
+
+It's worth noting that while worker nodes can detect when the master node becomes unavailable, they do not have the ability to initiate any failover or recovery actions on their own. All decisions related to rescheduling workloads, scaling the cluster, and handling other types of failures are made by the master node.
