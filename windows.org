@@ -329,8 +329,9 @@ docker tag mcr.microsoft.com/k8s/core/pause:1.2.0 kubeletwin/pause
 
 * Learning
 - [[https://learn.microsoft.com/en-us/powershell/dsc/overview?view=dsc-2.0][Desired State Configuration 2.0 - PowerShell | Microsoft Learn]]
-- [[https://github.com/mytechnotalent/Hacking-Windows][mytechnotalent/Hacking-Windows: A FREE Windows C development course where we will learn the Win32API and reverse engineer each step utilizing IDA Free in both an x86 and x64 environment.]]
+- [[https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/extract][extract | Microsoft Learn]]
 - [[https://github.com/Kyome22/RunCat_for_windows][Kyome22/RunCat_for_windows: A cute running cat animation on your windows taskbar.]]
+- [[https://github.com/mytechnotalent/Hacking-Windows][mytechnotalent/Hacking-Windows: A FREE Windows C development course where we will learn the Win32API and reverse engineer each step utilizing IDA Free in both an x86 and x64 environment.]]
 - [[https://www.youtube.com/watch?v=GgWk1b2pXYA][Язык Си - Как создать и открыть окно с помощью функций WinAPI. - YouTube]]
 
 ** What is awk alternative in windows powershell?
