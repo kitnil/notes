@@ -92,6 +92,7 @@ docker ps --format '{{ .Image }}' | grep master | sort -u | xargs -I{} docker pu
 - [[https://github.com/cybersecsi/HOUDINI][cybersecsi/HOUDINI: Hundreds of Offensive and Useful Docker Images for Network Intrusion. The name says it all.]]
 - [[https://github.com/stong/infosec-resources][stong/infosec-resources: A list of helpful cybersecurity / infosec resources]]
 - [[https://github.com/sniptt-official/ots][sniptt-official/ots: 🔐 Share end-to-end encrypted secrets with others via a one-time URL]]
+- [[https://github.com/evilsocket/sauron][evilsocket/sauron: A minimalistic cross-platform malware scanner with non-blocking realtime filesystem monitoring using YARA rules.]]
 - [[https://github.com/ossf][Open Source Security Foundation (OpenSSF)]]
 - [[https://github.com/snyk/driftctl][snyk/driftctl: Detect, track and alert on infrastructure drift]]
 - [[https://github.com/deepfence/SecretScanner][deepfence/SecretScanner: Find secrets and passwords in container images and file systems]]
