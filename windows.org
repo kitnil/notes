@@ -145,6 +145,37 @@ PowerShell DSC is particularly useful for managing the configuration of large fl
 ** [[https://learn.microsoft.com/ru-ru/powershell/dsc/getting-started/wingettingstarted?view=dsc-1.1][Начало работы с Desired State Configuration (DSC) для Windows - PowerShell | Microsoft Learn]]
 : Install-Module 'PSDscResources' -Verbose
 
+** Choco
+
+[[https://petri.com/deploying-software-using-desired-state-configuration/][Deploying Software Using Desired State Configuration - Petri IT Knowledgebase]]
+
+There is already a DSC module named cChoco in the PowerShell Gallery. This is
+for installing Chocolatey and Chocolatey packages. The (c) prefix in cChoco
+does mean that someone in the PowerShell community, not Microsoft, wrote this
+module. You need to ensure that this module, as well as any packages you may
+install with it, have been vetted according to your company’s policies for
+open-source software. To install Chocolatey and subsequently Chocolatey
+packages, use the DSC resources contained in the cChoco
+module. cChocoInstaller installs the Chocolatey package and
+cChocoPackageInstaller installs any Chocolatey package from the repository.
+
+#+begin_example
+  Configuration packageDemo {
+    Import-DscResource -ModuleName cChoco
+    Node TgtPull {
+        cChocoinstaller Install {
+            InstallDir = "C:\Choco"
+            }
+
+        cChocoPackageInstaller Install7Zip {
+            Name = '7Zip.install'
+            DependsOn = '[cChocoInstaller]Install'
+            }
+        }
+    }
+  PackageDemo
+#+end_example
+
 * Cheat sheet
 
 - If you're encountering display or graphics issues, you can press
