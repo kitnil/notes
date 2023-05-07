@@ -98,6 +98,17 @@
   > I don't know how to end things.
 #+end_src
 
+* ChatGPT
+** How to enter a host namespace inside a windows nanoserver container?
+
+In Windows Nano Server, it is not possible to enter a host namespace directly from within a container. This is because the Nano Server operating system does not include the necessary kernel components to support this feature.
+
+However, there are some workarounds that you can use to achieve similar functionality. One option is to run your container in Hyper-V isolation mode, which creates a lightweight virtual machine for each container instance. With this approach, you can configure the VM to share the same network namespaces as the host, giving your container access to the same networking resources.
+
+Another option is to use a tool like WinNFSd or Dokan to mount the host's file system inside the container. This allows you to access files and directories on the host system from within the container, effectively giving you access to the host namespace.
+
+It's worth noting that both of these approaches come with some limitations and trade-offs, so you should carefully consider your specific needs before deciding which one to use.
+
 * Cheat sheet
 
 - If you're encountering display or graphics issues, you can press
