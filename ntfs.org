@@ -1,0 +1,7 @@
+- expose disk partitions as a file-system
+  : guix build multipath-tools
+  : /gnu/store/...-multipath-tools-0.9.0/sbin/kpartx -a -v /dev/lvm1/win10
+
+- mount ntfs partition read-only
+  : guix build ntfs-3g
+  : /gnu/store/...-ntfs-3g-2022.5.17/sbin/mount.ntfs -o ro /dev/mapper/lvm1-win10p3 /mnt/win10
