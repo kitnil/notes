@@ -13,6 +13,7 @@
 - [[https://github.com/maschmann/php-ansible][maschmann/php-ansible: php oop wrapper for ansible provisioning tool]]
 - [[https://github.com/TristanCacqueray/Haxible][TristanCacqueray/Haxible: Ansible interpreter powered by Haxl]]
 - [[https://github.com/ansible-semaphore/semaphore][ansible-semaphore/semaphore: Modern UI for Ansible]]
+- [[https://github.com/cytopia/docker-ansible][cytopia/docker-ansible: Alpine-based multistage-build version of Ansible for reproducible usage in CI]]
 
 - ansible
   : ansible -c local localhost -m slack -a "token='$(pass show majordomo/private/mjru.slack.com/tokens/ansible)' msg='$(date)' channel=#test"
