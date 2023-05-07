@@ -788,6 +788,7 @@ Once running, the URL to the dashboard is https://2886795308-30000-simba08.envir
 - [[https://www.cncf.io/blog/2023/03/07/my-first-experience-with-kyverno-%f0%9f%a4%af%f0%9f%a4%a9/][My first experience with Kyverno: 🤯🤩 | Cloud Native Computing Foundation]]
 - [[https://github.com/neargle/my-re0-k8s-security][neargle/my-re0-k8s-security: [WIP] 整理过去的分享，从零开始的Kubernetes攻防 🧐]]
 - [[https://scribe.citizen4.eu/aspecto/opentelemetry-operator-for-kubernetes-practical-guide-part-4-1d8d86eb2bb][OpenTelemetry Operator for Kubernetes: Practical Guide | Part 4]]
+- [[https://kubernetes.io/docs/tasks/administer-cluster/configure-upgrade-etcd/#backing-up-an-etcd-cluster][Operating etcd clusters for Kubernetes | Kubernetes]]
 - [[http://ceur-ws.org/Vol-2839/paper11.pdf][paper11.pdf]]
 - [[https://kubernetes.io/docs/concepts/storage/persistent-volumes/#recovering-from-failure-when-expanding-volumes][Persistent Volumes | Kubernetes]]
 - Pin pod to specific node:
