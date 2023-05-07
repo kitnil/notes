@@ -1492,7 +1492,7 @@ All features:
 : Add-WindowsFeature Containers,Hyper\-V,Hyper\-V\-Tools,Hyper\-V\-PowerShell \-Restart \-IncludeManagementTools
 
 Minimum is:
-: Add-WindowsFeature Containers -Restart -IncludeManagementTools
+: Add-WindowsFeature Containers -IncludeManagementTools
 
 ** Issues
 - [[https://github.com/rancher/rke2/issues/3915][kubelet fails to pull docker.io/rancher/pause:3.6 on Windows 11 Pro node · Issue #3915 · rancher/rke2]]
