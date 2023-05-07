@@ -140,6 +140,7 @@ Once you have defined your desired state configuration script, you can apply it 
 PowerShell DSC is particularly useful for managing the configuration of large fleets of Windows hosts, such as those used in cloud environments or by service providers. It can help to automate the deployment and management of infrastructure, reducing the risk of configuration errors and improving the reliability of your systems.
 
 ** Learning
+- [[https://kunaludapi.blogspot.com/2015/09/multiple-ways-to-install-software.html][vGeek: Multiple ways to Install Software remotely on Windows - Method 6 PowerShell DSC (Desired State Configuration)]]
 - [[https://habr.com/ru/companies/microsoft/articles/253497/][Быстрая настройка серверов с помощью PowerShell Desired State Configuration / Хабр]]
 
 ** [[https://learn.microsoft.com/ru-ru/powershell/dsc/getting-started/wingettingstarted?view=dsc-1.1][Начало работы с Desired State Configuration (DSC) для Windows - PowerShell | Microsoft Learn]]
