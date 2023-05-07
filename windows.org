@@ -142,6 +142,9 @@ PowerShell DSC is particularly useful for managing the configuration of large fl
 ** Learning
 - [[https://habr.com/ru/companies/microsoft/articles/253497/][Быстрая настройка серверов с помощью PowerShell Desired State Configuration / Хабр]]
 
+** [[https://learn.microsoft.com/ru-ru/powershell/dsc/getting-started/wingettingstarted?view=dsc-1.1][Начало работы с Desired State Configuration (DSC) для Windows - PowerShell | Microsoft Learn]]
+: Install-Module 'PSDscResources' -Verbose
+
 * Cheat sheet
 
 - If you're encountering display or graphics issues, you can press
