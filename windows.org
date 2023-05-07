@@ -109,6 +109,22 @@ Another option is to use a tool like WinNFSd or Dokan to mount the host's file s
 
 It's worth noting that both of these approaches come with some limitations and trade-offs, so you should carefully consider your specific needs before deciding which one to use.
 
+** How to control Windows host namespace with Kubernetes?
+
+To control the Windows host namespace with Kubernetes, you can use the Windows Host Process in process (HIP) container runtime. The HIP container runtime allows containers to share the same process namespace as the host, which is required for some scenarios on Windows.
+
+Here are the steps to follow:
+
+    Install the HIP container runtime on your Windows nodes. You can find instructions for installation here: https://github.com/microsoft/hcsshim/blob/master/docs/HIP.md
+
+    Create a Pod with a container that specifies the hostPID: true field in its PodSpec. This will allow the container to share the same process namespace as the host.
+
+    Specify the windowsProcessOptions field in the container's security context with the appropriate settings to configure the container's process on the host. This field supports a variety of options including priority class, job object name, and more.
+
+    Deploy the Pod to your Kubernetes cluster and verify that the container is running with the same process namespace as the host.
+
+Note that using the HIP container runtime requires elevated privileges on the Windows nodes, so be sure to follow best practices for securing your Kubernetes cluster.
+
 * Cheat sheet
 
 - If you're encountering display or graphics issues, you can press
