@@ -322,6 +322,7 @@ mount -o anon \\192.168.0.144\srv\games N:
   </disk>
 #+end_src
 * Kubernetes
+- [[https://lippertmarkus.com/2021/11/05/k8s-win22-hostprocess/][Getting started with Windows HostProcess Containers in Kubernetes]]
 - [[https://kubernetes.io/blog/2022/12/13/windows-host-process-containers-ga/][Kubernetes 1.26: Windows HostProcess Containers Are Generally Available | Kubernetes]]
 - [[https://github.com/ptylenda/kubernetes-for-windows][ptylenda/kubernetes-for-windows: Ansible playbooks and Packer templates for creating hybrid Windows/Linux Kubernetes 1.10+ cluster with experimental Flannel pod network (host-gw backend)]]
 
