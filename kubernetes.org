@@ -810,6 +810,7 @@ Once running, the URL to the dashboard is https://2886795308-30000-simba08.envir
   - =kubectl explain deployment=
   - =kubectl explain deployment.spec=
 - [[https://www.cncf.io/blog/2021/04/12/simplifying-multi-clusters-in-kubernetes/][Simplifying multi-clusters in Kubernetes | Cloud Native Computing Foundation]]
+- [[https://github.com/stefanprodan/podinfo][stefanprodan/podinfo: Go microservice template for Kubernetes]]
 - [[https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/][Taints and Tolerations | Kubernetes]]
 - [[https://github.com/techiescamp/kubernetes-learning-path][techiescamp/kubernetes-learning-path: A roadmap to learn Kubernetes from scratch (Beginner to Advanced level)]]
 - [[https://habr.com/ru/company/nixys/blog/649663/][Terraform модуль для создания RBAC-правил / Хабр]]
