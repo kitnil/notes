@@ -125,6 +125,20 @@ Here are the steps to follow:
 
 Note that using the HIP container runtime requires elevated privileges on the Windows nodes, so be sure to follow best practices for securing your Kubernetes cluster.
 
+** PowerShell DSC
+
+PowerShell DSC stands for Desired State Configuration, and it is a feature of PowerShell, Microsoft's powerful command-line tool for system administration. PowerShell DSC is a configuration management tool that enables you to define the desired state of a Windows host, as well as the configuration of applications and services running on that host.
+
+With PowerShell DSC, you can create declarative configuration scripts in PowerShell that define the following:
+
+    The resources that should be installed on a Windows host, such as software packages or Windows features.
+    The configuration settings for those resources, such as registry keys or file permissions.
+    The dependencies between different resources, ensuring that they are installed in the correct order.
+
+Once you have defined your desired state configuration script, you can apply it to one or more Windows hosts using PowerShell. PowerShell DSC will compare the current state of the host to the desired state described in the script, and then automatically make changes to bring the host into the desired state.
+
+PowerShell DSC is particularly useful for managing the configuration of large fleets of Windows hosts, such as those used in cloud environments or by service providers. It can help to automate the deployment and management of infrastructure, reducing the risk of configuration errors and improving the reliability of your systems.
+
 * Cheat sheet
 
 - If you're encountering display or graphics issues, you can press
