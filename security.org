@@ -82,7 +82,7 @@
 - [[https://github.com/wintrmvte/Bashark][wintrmvte/Bashark: Bash post exploitation toolkit]]
 - [[https://github.com/xmendez/wfuzz][xmendez/wfuzz: Web application fuzzer]]
 - [[https://github.com/Z4nzu/hackingtool][Z4nzu/hackingtool: ALL IN ONE Hacking Tool For Hackers]]
-docker ps --format '{{ .Image }}' | grep master | sort -u | xargs -I{} docker pull {}
+  : docker ps --format '{{ .Image }}' | grep master | sort -u | xargs -I{} docker pull {}
 - [[https://github.com/BishopFox/sliver][BishopFox/sliver: Adversary Emulation Framework]]
 - [[https://github.com/casdoor/casdoor][casdoor/casdoor: An Identity and Access Management (IAM) / Single-Sign-On (SSO) platform with web UI supporting OAuth 2.0, OIDC, SAML and CAS, QQ group: 645200447]]
 - [[https://github.com/cybersecsi/HOUDINI][cybersecsi/HOUDINI: Hundreds of Offensive and Useful Docker Images for Network Intrusion. The name says it all.]]
