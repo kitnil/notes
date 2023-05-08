@@ -49,6 +49,7 @@
 - [[https://github.com/supabase/supavisor][supabase/supavisor: A cloud-native, multi-tenant Postgres connection pooler.]]
 - [[https://github.com/tcdi/pgx][tcdi/pgx: Build Postgres Extensions with Rust!]]
 - [[https://github.com/wal-g/wal-g][wal-g/wal-g: Archival and Restoration for Postgres]]
+- [[https://github.com/zalando/postgres-operator][zalando/postgres-operator: Postgres operator creates and manages PostgreSQL clusters running in Kubernetes]]
 - [[https://habr.com/ru/post/584660/][Храним данные в JSONB, как это влияет на скорость запросов? / Хабр]]
 
 * [[https://postgrespro.com/list/thread-id/1525878][Thread: DB fails to start: "Could not read from file "pg_clog/0003" at offset 212992: No error. : Postgres Professional]]
