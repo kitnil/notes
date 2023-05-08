@@ -1122,6 +1122,7 @@ then redeploy with:
 - [[https://github.com/kdash-rs/kdash][kdash-rs/kdash: A simple and fast dashboard for Kubernetes]]
 - [[https://github.com/kedacore/keda][kedacore/keda: KEDA is a Kubernetes-based Event Driven Autoscaling component. It provides event driven scale for any container running in Kubernetes]]
 - [[https://keda.sh/][KEDA | Kubernetes Event-driven Autoscaling]]
+  - [[https://kubevirt.io/user-guide/virtual_machines/replicaset/][VirtualMachineInstanceReplicaSet - KubeVirt user guide]]
 - [[https://github.com/keel-hq/keel][keel-hq/keel: Kubernetes Operator to automate Helm, DaemonSet, StatefulSet & Deployment updates]]
 - [[https://github.com/kei6u/kubectl-explore][kei6u/kubectl-explore: A better kubectl explain with the fuzzy finder]]
 - [[https://github.com/komodorio/helm-dashboard][komodorio/helm-dashboard: The missing UI for Helm - visualize your releases]]
