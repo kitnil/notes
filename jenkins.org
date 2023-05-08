@@ -74,6 +74,7 @@ Jenkins is now one of the most widely used CI/CD tools and has a large and activ
 - [[https://github.com/jenkinsci/junit-realtime-test-reporter-plugin][jenkinsci/junit-realtime-test-reporter-plugin: Report JUnit test results in real time]]
 - [[https://github.com/jenkinsci/junit-sql-storage-plugin][jenkinsci/junit-sql-storage-plugin]]
 - [[https://github.com/jenkinsci/kubernetes-cli-plugin][jenkinsci/kubernetes-cli-plugin: Allows you to setup kubectl to access Kubernetes clusters from your Jenkins jobs.]]
+- [[https://github.com/jenkinsci/kubernetes-plugin][jenkinsci/kubernetes-plugin: Jenkins plugin to run dynamic agents in a Kubernetes/Docker environment]]
 - [[https://github.com/jenkinsci/libvirt-slave-plugin][jenkinsci/libvirt-slave-plugin: Jenkins Libvirt Agents plugin]]
 - [[https://github.com/jenkinsci/log-cli-plugin][jenkinsci/log-cli-plugin: Adds a CLI command to tail a Jenkins logger.]]
 - [[https://github.com/jenkinsci/logstash-plugin][jenkinsci/logstash-plugin: Jenkins plugin to ship the console log off to Logstash]]
