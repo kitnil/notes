@@ -232,6 +232,7 @@ curl -H 'Content-Type: application/json' -d '{"query": {"bool": {"must": {"term"
 - [[https://github.com/flant/elasticsearch-extractor][flant/elasticsearch-extractor: Simple web UI to extract any index from Elasticsearch snapshot into repository.]]
 - [[https://github.com/LGUG2Z/elasdx][LGUG2Z/elasdx: An ElasticSearch index template updating, reindexing and cleanup tool]]
 - [[https://github.com/medcl/esm][medcl/esm: An Elasticsearch Migration Tool.]]
+- [[https://github.com/elastic/cloud-on-k8s][elastic/cloud-on-k8s: Elastic Cloud on Kubernetes]]
 
 * Alternatives
 
