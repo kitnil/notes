@@ -582,11 +582,11 @@ In the context of WinRM, SOAP is used as the underlying protocol for communicati
 - [[https://github.com/voletro/wsa-toolbox][voletro/wsa-toolbox: A Windows 11 application to easily install and use the Windows Subsystem For Android™ package on your computer.]]
 
 * WSL
-- [[https://github.com/pxlrbt/move-wsl][pxlrbt/move-wsl: Easily move your WSL distros VHDX file to a new location.]]
 - [[https://github.com/alesimula/wsa_pacman][alesimula/wsa_pacman: A GUI package manager and package installer for Windows Subsystem for Android (WSA)]]
-- [[https://github.com/microsoft/wslg][microsoft/wslg: Enabling the Windows Subsystem for Linux to include support for Wayland and X server related scenarios]]
 - [[https://github.com/fortuneteller2k/nix-config][fortuneteller2k/nix-config: NixOS configuration (also on WSL)]]
+- [[https://github.com/microsoft/wslg][microsoft/wslg: Enabling the Windows Subsystem for Linux to include support for Wayland and X server related scenarios]]
 - [[https://github.com/nix-community/NixOS-WSL][nix-community/NixOS-WSL: NixOS on WSL(2) maintainer=@nzbr]]
+- [[https://github.com/pxlrbt/move-wsl][pxlrbt/move-wsl: Easily move your WSL distros VHDX file to a new location.]]
 - [[https://github.com/sdrush/nixos-wsl][sdrush/nixos-wsl]]
 - [[https://devblogs.microsoft.com/commandline/systemd-support-is-now-available-in-wsl/][Systemd support is now available in WSL! - Windows Command Line]]
 - [[https://habr.com/ru/companies/otus/articles/522402/][WSL эксперименты. Часть 2 / Хабр]]
