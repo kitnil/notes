@@ -1037,6 +1037,7 @@ then redeploy with:
 - [[https://github.com/bitnami-labs/healthcheck-tools][bitnami-labs/healthcheck-tools: Set of Go tools to check different elements of your stack (SSL, SMTP, Permissions...)]]
 - [[https://github.com/bitnami-labs/sealed-secrets][bitnami-labs/sealed-secrets: A Kubernetes controller and tool for one-way encrypted Secrets]]
 - [[https://github.com/box/kube-iptables-tailer][box/kube-iptables-tailer: A service for better network visibility for your Kubernetes clusters.]]
+- [[https://github.com/brigadecore/brigade][brigadecore/brigade: Event-driven scripting for Kubernetes]]
 - [[https://www.heroku.com/careers/builds-pipeline-services-software-engineer-186][Builds & Pipeline Services Software Engineer | Heroku]]
   - [[https://github.com/opencontainers/image-spec][opencontainers/image-spec: OCI Image Format]]
   - [[https://github.com/knative][Knative - Kubernetes-based platform to build, deploy, and manage modern serverless workloads]]
