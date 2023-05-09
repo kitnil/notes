@@ -191,6 +191,9 @@ cChocoPackageInstaller installs any Chocolatey package from the repository.
 - Enable administrator account
   : net user administrator /active:yes
 
+* Containers
+- [[https://github.com/jsturtevant/dockerfiles-windows][jsturtevant/dockerfiles-windows: Docker files based on windows containers]]
+
 * Deprecated
 - [[https://github.com/hectorm/docker-qemu-win2000][hectorm/docker-qemu-win2000: A Docker image for Windows 2000 Advanced Server with SP4.]]
 
