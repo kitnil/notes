@@ -1131,6 +1131,7 @@ then redeploy with:
   - [[https://www.youtube.com/watch?v=DqJTzjtQpOM][Why You Shouldn't Use K8s Autoscaling?!! - YouTube]]
   - [[https://github.com/dailymotion-oss/osiris][dailymotion-oss/osiris: A general purpose, scale-to-zero component for Kubernetes]]
   - [[https://github.com/kedacore/http-add-on][kedacore/http-add-on: Add-on for KEDA to scale HTTP workloads]]
+    - [[https://github.com/kedacore/http-add-on/issues/438][Support for scaling custom resources and statefulset · Issue #438 · kedacore/http-add-on]]
 - [[https://github.com/keel-hq/keel][keel-hq/keel: Kubernetes Operator to automate Helm, DaemonSet, StatefulSet & Deployment updates]]
 - [[https://github.com/kei6u/kubectl-explore][kei6u/kubectl-explore: A better kubectl explain with the fuzzy finder]]
 - [[https://github.com/komodorio/helm-dashboard][komodorio/helm-dashboard: The missing UI for Helm - visualize your releases]]
