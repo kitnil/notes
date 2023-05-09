@@ -1127,6 +1127,7 @@ then redeploy with:
 - [[https://keda.sh/][KEDA | Kubernetes Event-driven Autoscaling]]
   - [[https://kubevirt.io/user-guide/virtual_machines/replicaset/][VirtualMachineInstanceReplicaSet - KubeVirt user guide]]
   - [[https://dev.to/anirudhgarg_99/scale-up-and-down-a-http-triggered-function-app-in-kubernetes-using-keda-4m42][Scale a HTTP Triggered app up and down in Kubernetes using KEDA and Prometheus - DEV Community]]
+  - [[https://www.youtube.com/watch?v=nzSyOcBRKhQ][Serverless Track: KEDA - Kubernetes-based Event-Driven Autoscaling - Marek Grabarz - YouTube]]
 - [[https://github.com/keel-hq/keel][keel-hq/keel: Kubernetes Operator to automate Helm, DaemonSet, StatefulSet & Deployment updates]]
 - [[https://github.com/kei6u/kubectl-explore][kei6u/kubectl-explore: A better kubectl explain with the fuzzy finder]]
 - [[https://github.com/komodorio/helm-dashboard][komodorio/helm-dashboard: The missing UI for Helm - visualize your releases]]
