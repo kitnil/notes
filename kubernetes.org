@@ -2241,3 +2241,11 @@ Kubernetes provides a few mechanisms for managing certificates used for mTLS:
     Service Account Tokens - Kubernetes uses service account tokens to authenticate requests between components within the cluster. These tokens are issued by the API server, and are signed by a keypair that is rotated periodically.
 
 Overall, these mechanisms provide a secure foundation for communication within Kubernetes clusters, and help ensure that only authorized parties can access the data and services within the cluster.
+
+** Does both mTLS participants should use same CA?
+
+In general, both mTLS (mutual Transport Layer Security) participants do not necessarily need to use the same Certificate Authority (CA). Each participant can obtain their own certificate from a different CA, as long as they trust each other's CA. However, it is generally recommended for both participants to use certificates issued by the same trusted CA in order to ensure smooth and interoperable operation of the mTLS connection.
+
+Using certificates from the same trusted CA helps to avoid potential issues that can arise when different CAs issue certificates with different policies or validation procedures. It can also simplify the management of the certificates, as there will be a single trusted root CA that needs to be configured on both sides.
+
+Ultimately, the decision of whether to use the same CA or different CAs depends on the specific requirements of the mTLS deployment and the security policies in place.
