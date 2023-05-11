@@ -68,3 +68,6 @@ The result was really good and needed only a few minor changes:
 - Add/remove some @node where it makes sense.
 - Remove the @menu entries.  (Can this be set in the export settings?)
 - Change the @uref to @xref / @pxref.
+
+* Libraries
+- [[https://github.com/fosskers/org-mode][fosskers/org-mode: Parser for Emacs org-mode files]]
