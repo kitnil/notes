@@ -2249,3 +2249,13 @@ In general, both mTLS (mutual Transport Layer Security) participants do not nece
 Using certificates from the same trusted CA helps to avoid potential issues that can arise when different CAs issue certificates with different policies or validation procedures. It can also simplify the management of the certificates, as there will be a single trusted root CA that needs to be configured on both sides.
 
 Ultimately, the decision of whether to use the same CA or different CAs depends on the specific requirements of the mTLS deployment and the security policies in place.
+
+** kube-controller-manager
+
+Kube-controller-manager is one of the core components of Kubernetes, which runs on the control plane nodes and manages various controllers that regulate the state of the cluster. It is responsible for ensuring that the desired state of the cluster matches the actual state by monitoring and reconciling the state of various resources such as pods, services, endpoints, replicasets, and deployments.
+
+The kube-controller-manager includes several controllers, such as the Replication Controller, Endpoints Controller, Namespace Controller, Service Account and Token Controllers, and many more. Each controller watches a specific set of resources and takes appropriate actions to maintain the desired state.
+
+In addition to the built-in controllers, it is also possible to write custom controllers using the Kubernetes API that can manage custom resources or perform custom logic based on events in the cluster.
+
+The kube-controller-manager is designed to be highly available, so multiple instances of the controller manager can be run in a cluster, each running on a different node. This ensures that if one node fails, another controller manager can take over its responsibilities and maintain the desired state of the cluster.
