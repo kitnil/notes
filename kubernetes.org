@@ -2259,3 +2259,11 @@ The kube-controller-manager includes several controllers, such as the Replicatio
 In addition to the built-in controllers, it is also possible to write custom controllers using the Kubernetes API that can manage custom resources or perform custom logic based on events in the cluster.
 
 The kube-controller-manager is designed to be highly available, so multiple instances of the controller manager can be run in a cluster, each running on a different node. This ensures that if one node fails, another controller manager can take over its responsibilities and maintain the desired state of the cluster.
+
+** ClusterFirstWithHostNet
+
+ClusterFirstWithHostNet is a Kubernetes DNS policy that specifies how DNS queries should be resolved within a cluster. With this policy, DNS queries originating from containers in a pod are first sent to the cluster's DNS resolver, which then forwards the query to the node's DNS resolver if it cannot resolve the query itself. This allows containers to resolve DNS queries using both the cluster's DNS and the host's DNS.
+
+The ClusterFirstWithHostNet policy is used when the pod's hostNetwork field is set to true. When this field is set, the pod shares the host's network namespace, which means it can access the host's DNS resolver.
+
+It's important to note that using the ClusterFirstWithHostNet policy can pose security risks, as it allows pods to access the host's DNS resolver. Therefore, it should only be used when necessary and with caution
