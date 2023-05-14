@@ -31,6 +31,7 @@
 - [[https://github.com/yewscion/patchelf-wrapper][yewscion/patchelf-wrapper: A tool to use patchelf with GNU/Guix]]
 - [[https://sourceware.org/elfutils/Debuginfod.html][elfutils debuginfod services]]
 - [[https://github.com/ndd7xv/heh][ndd7xv/heh: A terminal UI to edit bytes by the nibble.]]
+- [[https://github.com/Binject/exec2shell][Binject/exec2shell: Extracts TEXT section of a PE, ELF, or Mach-O executable to shellcode]]
 
 #+begin_example
   $ addr2line -e  /gnu/store/m8afvcgwmrfhvjpd7b0xllk8vv5isd6j-glibc-cross-i586-pc-gnu-2.33/lib/ld.so.1 0x1000 0x11627 0x11bb
