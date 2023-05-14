@@ -33,6 +33,7 @@
 - [[https://github.com/pomerium/pomerium][pomerium/pomerium: Pomerium is an identity-aware access proxy.]]
 - [[https://github.com/projectdiscovery/proxify][projectdiscovery/proxify: Swiss Army knife Proxy tool for HTTP/HTTPS traffic capture, manipulation, and replay on the go.]]
 - [[https://github.com/qwj/python-proxy][qwj/python-proxy: HTTP/HTTP2/HTTP3/Socks4/Socks5/Shadowsocks/ShadowsocksR/SSH/Redirect/Pf TCP/UDP asynchronous tunnel proxy implemented in Python 3 asyncio.]]
+- [[https://github.com/RedTeamPentesting/resocks][RedTeamPentesting/resocks: mTLS-Encrypted Back-Connect SOCKS5 Proxy]]
 - [[https://github.com/shoriwe/fullproxy][shoriwe/fullproxy: Proxy toolkit including SOCKS5, HTTP, port forward and reverse base proxying]]
 - [[https://github.com/snail007/goproxy][snail007/goproxy: 🔥 Proxy is a high performance HTTP(S) proxies, SOCKS5 proxies,WEBSOCKET, TCP, UDP proxy server implemented by golang. Now, it supports chain-style proxies,nat forwarding in different lan,TCP/UDP port forwarding, SSH forwarding.Proxy是golang实现的高性能http,https,websocket,tcp,socks5代理服务器,支持内网穿透,链式代理,通讯加密,智能HTTP,SOCKS5代理,黑白名单,限速,限流量,限连接数,跨平台,KCP支持,认证API。]]
 - [[https://github.com/stamparm/fetch-some-proxies][stamparm/fetch-some-proxies: Simple Python script for fetching "some" (usable) proxies]]
