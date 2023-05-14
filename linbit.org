@@ -685,6 +685,25 @@ If you get any output (there are lines with the “Remote failed to finish a req
   : linstor node list
   : linstor storage-pool list --groupby Size
 
+** Delete a node from the Kubernetes cluster
+#+begin_example
+  $ linstor node list
+  ╭───────────────────────────────────────────────────────────────────────────────────────────────╮
+  ┊ Node                                      ┊ NodeType   ┊ Addresses                  ┊ State   ┊
+  ╞═══════════════════════════════════════════════════════════════════════════════════════════════╡
+  ┊ kube1                                     ┊ SATELLITE  ┊ 192.168.154.131:3367 (SSL) ┊ OFFLINE ┊
+  ┊ kube4                                     ┊ SATELLITE  ┊ 192.168.154.1:3367 (SSL)   ┊ Online  ┊
+  ┊ piraeus-op-cs-controller-6c5c946758-4q96w ┊ CONTROLLER ┊ 10.0.1.87:3367 (SSL)       ┊ Online  ┊
+  ╰───────────────────────────────────────────────────────────────────────────────────────────────╯
+
+  $ linstor node delete kube1
+  SUCCESS:
+  Description:
+      Node 'kube1' deleted.
+  Details:
+      Node 'kube1' UUID was: fc861087-81ef-4a70-a9ab-5d88e33ff824
+#+end_example
+
 ** Prometheus
 
 - [[https://prometheus.kubernetes.corp1.majordomo.ru/graph?g0.expr=drbd_connection_state%7Bdrbd_connection_state!%3D%22UpToDate%22%2C%20drbd_connection_state!%3D%22Connected%22%2C%20name%3D%22pvc-d5e17115-05d4-4e64-9ea8-f6a19e4ee2ab%22%7D%20%3D%3D%201&g0.tab=1&g0.stacked=0&g0.show_exemplars=0&g0.range_input=1h&g1.expr=count(count%20by%20(name)%20(drbd_connection_state%7Bdrbd_connection_state!%3D%22UpToDate%22%2C%20drbd_connection_state!%3D%22Connected%22%7D%20%3D%3D%201))%20OR%20on()%20vector(0)&g1.tab=0&g1.stacked=0&g1.show_exemplars=0&g1.range_input=2h&g2.expr=drbd_device_unintentionaldiskless%7B%7D%20%3D%3D%201&g2.tab=0&g2.stacked=0&g2.show_exemplars=0&g2.range_input=1h&g3.expr=drbd_device_quorum%20%3D%3D%200&g3.tab=0&g3.stacked=0&g3.show_exemplars=0&g3.range_input=1h][Prometheus Time Series Collection and Processing Server]]
