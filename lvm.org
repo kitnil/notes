@@ -203,6 +203,9 @@ lvcreate -V 16G --thin -n thinguix vg0/thinpool0
 - Increase logical volume size
   : lvresize -l 100%FREE /dev/mapper/vg0-guix
 
+- Increase logical volume size by 16 GB
+  : lvresize -L+16G /dev/VOLUME_GROUP/VOLUME_NAME
+
 * Snapshots
 
 root@guixsd ~ [env]# modprobe dm-snapshot
