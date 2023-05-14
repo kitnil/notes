@@ -2,11 +2,13 @@
 :ID:       d626d2a9-90cc-4baf-9778-ae4e177d6f11
 :END:
 - [[https://www.freebsd.org/cgi/man.cgi?a.out(5)][a.out(5)]]
+- [[https://github.com/Binject/exec2shell][Binject/exec2shell: Extracts TEXT section of a PE, ELF, or Mach-O executable to shellcode]]
 - binwalk -e FILE
 - [[https://github.com/chip-red-pill/MicrocodeDecryptor][chip-red-pill/MicrocodeDecryptor]]
 - [[https://github.com/corkami/collisions][corkami/collisions: Hash collisions and exploitations]]
 - [[https://github.com/corkami/pics][corkami/pics: Posters, drawings...]]
 - [[https://www.freebsd.org/cgi/man.cgi?elf(5)][elf(5)]]
+- [[https://sourceware.org/elfutils/Debuginfod.html][elfutils debuginfod services]]
 - [[https://github.com/fzakaria/shrinkwrap][fzakaria/shrinkwrap: A tool that embosses the needed dependencies on the top level executable]]
 - [[https://github.com/gahag/bgrep][gahag/bgrep: A binary grep written in Rust.]]
 - gcore -a PID
@@ -18,6 +20,7 @@
 - [[https://github.com/m4b/bin2json][m4b/bin2json: Converts ELF, mach-o, or PE binaries to a JSON representation]]
 - [[https://github.com/m4b/bingrep][m4b/bingrep: like ~~grep~~ UBER, but for binaries]]
 - [[https://github.com/mandiant/capa][mandiant/capa: The FLARE team's open-source tool to identify capabilities in executable files.]]
+- [[https://github.com/ndd7xv/heh][ndd7xv/heh: A terminal UI to edit bytes by the nibble.]]
 - [[https://github.com/nnsee/fileless-elf-exec][nnsee/fileless-elf-exec: Execute ELF files without dropping them on disk]]
 - [[https://github.com/panda-re/panda][panda-re/panda: Platform for Architecture-Neutral Dynamic Analysis]]
 - [[https://github.com/redballoonsecurity/ofrak][redballoonsecurity/ofrak: OFRAK: unpack, modify, and repack binaries.]]
@@ -29,9 +32,6 @@
 - [[https://github.com/wader/fq][wader/fq: jq for binary formats]]
 - [[https://github.com/woodruffw/nvis][woodruffw/nvis: A very simple input visualizer]]
 - [[https://github.com/yewscion/patchelf-wrapper][yewscion/patchelf-wrapper: A tool to use patchelf with GNU/Guix]]
-- [[https://sourceware.org/elfutils/Debuginfod.html][elfutils debuginfod services]]
-- [[https://github.com/ndd7xv/heh][ndd7xv/heh: A terminal UI to edit bytes by the nibble.]]
-- [[https://github.com/Binject/exec2shell][Binject/exec2shell: Extracts TEXT section of a PE, ELF, or Mach-O executable to shellcode]]
 
 #+begin_example
   $ addr2line -e  /gnu/store/m8afvcgwmrfhvjpd7b0xllk8vv5isd6j-glibc-cross-i586-pc-gnu-2.33/lib/ld.so.1 0x1000 0x11627 0x11bb
