@@ -2,4 +2,4 @@
 - [[https://serveradmin.ru/logirovanie-operatsiy-s-faylami-v-samba/][Логирование операций с файлами в Samba — Server Admin]]
 - [[https://serveradmin.ru/nastroyka-samba-s-integratsiey-v-ad/][Настройка файлового сервера Samba с интеграцией в Active Directory — Server Admin]]
 
-- mount.cifs -o user=USERNAME,pass=PASSWORD //windows.local/users /srv/lib/users
+- mount.cifs -o user=USERNAME,pass=PASSWORD,uid=1000,gid=998 //windows.local/users /srv/lib/users
