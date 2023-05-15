@@ -196,3 +196,6 @@ and network I/O, CPU usage, etc.
 
 - Get information about a session
   : loginctl session-status 145
+
+- Terminate a session
+  : loginctl terminate-session 145
