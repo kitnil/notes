@@ -191,6 +191,9 @@ cChocoPackageInstaller installs any Chocolatey package from the repository.
 - Enable administrator account
   : net user administrator /active:yes
 
+- Allow =vagrant= user to listen 8080 port on all networking interfaces
+  : etsh http add urlacl url = http://+:8080/ user=vagrant
+
 * Containers
 - [[https://github.com/jsturtevant/dockerfiles-windows][jsturtevant/dockerfiles-windows: Docker files based on windows containers]]
 
