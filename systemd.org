@@ -188,3 +188,11 @@ If you'd rather have it OOMed, use MemoryMax=2G.
 
 There are lots of other interesting controllers that can put limits on disk
 and network I/O, CPU usage, etc.
+
+* loginctl
+
+- List sessions
+  : loginctl
+
+- Get information about a session
+  : loginctl session-status 145
