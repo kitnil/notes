@@ -201,3 +201,7 @@ and network I/O, CPU usage, etc.
 
 - Terminate a session
   : loginctl terminate-session 145
+
+* systemd-cgls
+
+[[https://nixpkgs-manual-sphinx-markedown-example.netlify.app/administration/control-groups.xml.html][Control Groups — NixOS Manual documentation]]
