@@ -915,6 +915,9 @@ zz_cac-installer.nix
 * Implementations
 - [[https://github.com/tvlfyi/tvix][tvlfyi/tvix: Tvix - A Rust implementation of Nix. Read-only mirror of https://cs.tvl.fyi/depot/-/tree/tvix]]
 
+* kexec
+- [[https://github.com/mlyxshi/kexec][mlyxshi/kexec: kexec into NixOS]]
+
 * Language
 - [[https://nix.dev/anti-patterns/language][In the Nix language — nix.dev documentation]]
 - [[https://github.com/divnix/yants][divnix/yants: a fork/mirror of yants - because github is more discoverable]]
