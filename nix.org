@@ -816,6 +816,9 @@ example job
   in jobs
 #+END_SRC
 
+* Implementations
+- [[https://github.com/tvlfyi/tvix][tvlfyi/tvix: Tvix - A Rust implementation of Nix. Read-only mirror of https://cs.tvl.fyi/depot/-/tree/tvix]]
+
 * Installation
 - [[https://github.com/nix-community/nix-installers][nix-community/nix-installers: Nix installers for legacy distributions (rpm & deb & pacman) [maintainer=@adisbladis]]]
 
@@ -911,9 +914,6 @@ zz_cac-installer.nix
 
 - ipmi
 : nix-env -p .nix-profile.d/ipmiview/ipmiview -iA nixos-unstable.ipmiview
-
-* Implementations
-- [[https://github.com/tvlfyi/tvix][tvlfyi/tvix: Tvix - A Rust implementation of Nix. Read-only mirror of https://cs.tvl.fyi/depot/-/tree/tvix]]
 
 * kexec
 - [[https://github.com/mlyxshi/kexec][mlyxshi/kexec: kexec into NixOS]]
