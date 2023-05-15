@@ -819,6 +819,94 @@ example job
 * Installation
 - [[https://github.com/nix-community/nix-installers][nix-community/nix-installers: Nix installers for legacy distributions (rpm & deb & pacman) [maintainer=@adisbladis]]]
 
+** [[https://gist.github.com/Mic92/4fdf9a55131a7452f97003f445294f97][kexec-based installer for nixos to install nixos from every linux!]]
+kexec-installer.nix
+#+begin_example
+  ## USAGE
+  # $ nix-build kexec-installer.nix
+  # can be deployed remote like this
+  # $ rsync -aL -e ssh result/ root@host:
+  # $ ssh root@host ./kexec-installer
+  ## Customize it like this
+  # # custom-installer.nix
+  # import ./kexec-installer.nix {
+  #   extraConfig = {pkgs, ... } {
+  #     user.extraUsers.root.openssh.authorizedKeys.keys = [ "<your-key>" ];
+  #     services.openssh = {
+  #        enable = true;
+  #        startWhenNeeded = true;
+  #     }
+  #   }
+  # }
+  # $ nix-build custom-installer.nix
+  # $ ls -la ./result
+  # TODO: make it fully automatic: https://gist.github.com/cleverca22/75e3db4dabeff05b743e9be77a2341b9#file-configuration-nix-L4-L19
+  {
+    extraConfig ? {...}: {},
+  }:
+  let
+    pkgs = import <nixpkgs> {};
+    config = (import <nixpkgs/nixos> {
+      configuration = {
+        imports = [
+          <nixpkgs/nixos/modules/installer/netboot/netboot-minimal.nix>
+          extraConfig
+        ];
+      };
+    }).config;
+    inherit (config.system) build;
+    kexecScript = pkgs.writeScript "kexec-installer" ''
+      #!/bin/sh
+      if ! kexec -v >/dev/null 2>&1; then
+        echo "kexec not found: please install kexec-tools" 2>&1
+        exit 1
+      fi
+      kexec --load ./bzImage \
+        --initrd=./initrd.gz \
+        --command-line "init=${config.system.build.toplevel}/init ${toString config.boot.kernelParams}" \
+      if systemctl --version >/dev/null 2>&1; then
+        systemctl kexec
+      else
+        kexec -e
+      fi
+    '';
+  in pkgs.linkFarm "netboot" [
+    { name = "initrd.gz"; path = "${build.netbootRamdisk}/initrd"; }
+    { name = "bzImage";   path = "${build.kernel}/bzImage"; }
+    { name = "kexec-installer"; path = kexecScript; }
+  ]
+#+end_example
+
+zz_cac-installer.nix
+#+begin_example
+  let
+    sshKeys = (import ./ssh-keys.nix);
+  in
+    import ./kexec-installer.nix {
+      extraConfig = {pkgs, ...}: {
+        environment.systemPackages = [ pkgs.vim ];
+        services.openssh = {
+          enable = true;
+          startWhenNeeded = true;
+        };
+        users.extraUsers.root.openssh.authorizedKeys.keys = with sshKeys; alfred ++ joerg;
+        networking = {
+          firewall.allowedTCPPorts = [ 22 ];
+          usePredictableInterfaceNames = false;
+          useDHCP = false;
+        };
+        systemd.network.enable = true;
+        environment.etc."systemd/network/eth0.network".text = ''
+          [Match]
+          Name = eth0
+          [Network]
+          Address = 64.137.201.46/24
+          Gateway = 64.137.201.1
+        '';
+      };
+    }
+#+end_example
+
 * Install commands
 
 - ipmi
