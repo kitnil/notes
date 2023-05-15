@@ -1844,6 +1844,63 @@ builtins.match "php([[:alnum:]])([[:alnum:]])" "php70"
   Added 14 variables.
 #+end_example
 
+* Scripts
+** [[https://gist.github.com/Mic92/b570e33999642db9e0b8ab911d221963][test-nixos-iso.sh]]
+#+begin_example
+  #!/usr/bin/env nix-shell
+  #!nix-shell -i bash -p bash -p qemu_kvm -p iproute2
+
+  set -x -eu -o pipefail
+
+  VM_IMAGE=""
+  CPUS="${CPUS:-$(nproc)}"
+  MEMORY="${MEMORY:-4096}"
+  SSH_PORT="${SSH_PORT:-2222}"
+  IMAGE_SIZE="${IMAGE_SIZE:-10G}"
+
+  extra_flags=()
+  if [[ -n "${OVMF:-}" ]]; then
+    extra_flags+=("-bios" "$OVMF")
+  fi
+
+  # https://hydra.nixos.org/job/nixos/unstable-small/nixos.iso_minimal.x86_64-linux
+  iso=/nix/store/xgkfnwhi3c2lcpsvlpcw3dygwgifinbq-nixos-minimal-23.05pre483386.f212785e1ed-x86_64-linux.iso
+  nix-store -r "$iso"
+
+  for arg in "${@}"; do
+    case "$arg" in
+        prepare)
+            truncate -s"$IMAGE_SIZE" nixos-nvme1.img nixos-nvme2.img
+            ;;
+        start)
+            qemu-system-x86_64 -m "${MEMORY}" \
+                -boot n \
+                -smp "${CPUS}" \
+                -enable-kvm \
+                -cpu max \
+                -netdev "user,id=mynet0,hostfwd=tcp::${SSH_PORT}-:22" \
+                -device virtio-net-pci,netdev=mynet0 \
+                -drive file=nixos-nvme2.img,if=none,id=nvme1,format=raw \
+                -device nvme,serial=deadbeef1,drive=nvme1 \
+                -drive file=nixos-nvme1.img,if=none,id=nvme2,format=raw \
+                -device nvme,serial=deadbeef2,drive=nvme2 \
+                -cdrom "$iso"/iso/*.iso \
+                "${extra_flags[@]}"
+            # after start, go to the console and run:
+            # passwd
+            # than you can ssh into the machine:
+            # ssh -p 2222 nixos@localhost
+            ;;
+        destroy)
+            rm -f "$VM_IMAGE"
+            ;;
+        ,*)
+            echo "USAGE: $0 (prepare|start|destroy)"
+            ;;
+    esac
+  done
+#+end_example
+
 * Secrets
 - [[https://github.com/Mic92/sops-nix][Mic92/sops-nix: Atomic secret provisioning for NixOS based on sops]]
 
