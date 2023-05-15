@@ -218,6 +218,8 @@ CGroup: name=systemd:/user/root/c3
 
 This shows that the user is logged in on virtual console 3. It also lists the processes belonging to this session. Since systemd keeps track of this, you can terminate a session in a way that ensures that all the session’s processes are gone:
 
+** Cheat sheet
+
 - List sessions
   : loginctl
 
