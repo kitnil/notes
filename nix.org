@@ -918,6 +918,11 @@ zz_cac-installer.nix
 * kexec
 - [[https://github.com/mlyxshi/kexec][mlyxshi/kexec: kexec into NixOS]]
 
+** [[https://nixpkgs-manual-sphinx-markedown-example.netlify.app/administration/rebooting.xml.html][Rebooting and Shutting Down — NixOS Manual documentation]]
+which is equivalent to **systemctl reboot**. Alternatively, you can quickly
+reboot the system using `kexec`, which bypasses the BIOS by directly loading
+the new kernel into memory: =systemctl kexec=.
+
 * Language
 - [[https://nix.dev/anti-patterns/language][In the Nix language — nix.dev documentation]]
 - [[https://github.com/divnix/yants][divnix/yants: a fork/mirror of yants - because github is more discoverable]]
