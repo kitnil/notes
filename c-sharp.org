@@ -5,3 +5,77 @@
 - [[https://github.com/TheAlgorithms/C-Sharp][TheAlgorithms/C-Sharp: All algorithms implemented in C#.]]
 - [[https://github.com/bitwarden/mobile][bitwarden/mobile: The mobile app vault (iOS and Android).]]
 - [[https://github.com/waf/CSharpRepl][waf/CSharpRepl: A command line C# REPL with syntax highlighting – explore the language, libraries and nuget packages interactively.]]
+
+* ChatGPT
+
+** How to make C# app available via http endpoint? Show me an example code.
+
+To make a C# application available via an HTTP endpoint, you can use the built-in ASP.NET Core web framework. Here's an example code snippet that sets up an HTTP endpoint using ASP.NET Core:
+
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.DependencyInjection;
+
+public class Startup
+{
+    public void ConfigureServices(IServiceCollection services)
+    {
+        // Register any required services here
+    }
+
+    public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+    {
+        if (env.IsDevelopment())
+        {
+            app.UseDeveloperExceptionPage();
+        }
+
+        app.UseRouting();
+
+        app.UseEndpoints(endpoints =>
+        {
+            endpoints.MapGet("/", async context =>
+            {
+                await context.Response.WriteAsync("Hello, world!");
+            });
+        });
+    }
+}
+
+In this example, we define a startup class with two methods: ConfigureServices and Configure. In the ConfigureServices method, we can register any required services for our application.
+
+The Configure method is where we set up our HTTP endpoint. We first check if the application is running in development mode, and if so, use a developer exception page to display detailed error information.
+
+We then use the UseRouting middleware to handle incoming requests and route them to the appropriate endpoint. In this case, we define a single endpoint that responds to GET requests at the root URL ("/").
+
+Finally, we use the MapGet method to map the root URL to a handler function that writes "Hello, world!" to the response.
+
+To run this application, you can create a new instance of WebHostBuilder, passing in the Startup class, and call the Run method:
+
+using Microsoft.AspNetCore.Hosting;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        var host = Host.CreateDefaultBuilder(args)
+            .ConfigureWebHostDefaults(webBuilder =>
+            {
+                webBuilder.UseStartup<Startup>();
+            })
+            .Build();
+
+        host.Run();
+    }
+}
+
+This will start the web server and make your application available at http://localhost:5000. You can then access the HTTP endpoint in a web browser or using a tool like cURL.
+
+** Is it available in system.windows namespace?
+
+The system.windows namespace is not typically used for creating HTTP endpoints in C#. This namespace is mainly used for creating desktop applications with a graphical user interface (GUI) using the Windows Presentation Foundation (WPF) framework.
+
+To create HTTP endpoints in C#, you can use the built-in ASP.NET Core web framework, which resides in the Microsoft.AspNetCore namespace. The System.Net namespace also contains classes for working with HTTP requests and responses, but it does not provide the same level of functionality for building HTTP endpoints as ASP.NET Core.
+
+If you provide more details about what you're trying to achieve or what library or framework you're using, I can help you locate the appropriate namespace or class for working with HTTP endpoints.
