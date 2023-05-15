@@ -237,6 +237,3 @@ There also is a memory hierarchy that controls memory allocation limits; by defa
 `systemd.services.httpd.serviceConfig <None>`_.MemoryLimit = "512M";
 
 The command systemd-cgtop shows a continuously updated list of all cgroups with their CPU and memory usage.
-
-- list
-  : systemd-cgls
