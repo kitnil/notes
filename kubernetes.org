@@ -854,6 +854,7 @@ Once running, the URL to the dashboard is https://2886795308-30000-simba08.envir
 - [[https://habr.com/ru/company/otus/blog/653973/][Тестирование сетевых политик с помощью Minikube / Хабр]]
 - [[https://habr.com/ru/company/nixys/blog/657359/][Универсальный Helm-чарт для ваших приложений / Хабр]]
 - [[https://serveradmin.ru/kubernetes-ustanovka/][Установка кластера Kubernetes | serveradmin.ru]]
+- [[https://habr.com/ru/companies/flant/articles/353410/][Устройство и механизм работы Prometheus Operator в Kubernetes / Хабр]]
 
 ** [[https://discuss.kubernetes.io/t/high-availability-host-numbers/13143][High Availability Host Numbers - General Discussions - Discuss Kubernetes]]
 K8s uses the RAFT consensus algorithm for quorum. In order to maintain quorum, you will need floor(n/2)+1 healthy master nodes.
