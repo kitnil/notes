@@ -204,7 +204,7 @@ and network I/O, CPU usage, etc.
 
 * systemd-cgls
 
-[[https://nixpkgs-manual-sphinx-markedown-example.netlify.app/administration/control-groups.xml.html][Control Groups — NixOS Manual documentation]]
+** [[https://nixpkgs-manual-sphinx-markedown-example.netlify.app/administration/control-groups.xml.html][Control Groups — NixOS Manual documentation]]
 
 To keep track of the processes in a running system, systemd uses control groups (cgroups). A control group is a set of processes used to allocate resources such as CPU, memory or I/O bandwidth. There can be multiple control group hierarchies, allowing each kind of resource to be managed independently.
 
