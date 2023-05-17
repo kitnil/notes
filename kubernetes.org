@@ -528,7 +528,8 @@ the following new units were started: containerd.service, kubelet.service
 
 * Issues
 
-** [[https://stackoverflow.com/questions/66252195/kubernetes-pod-wont-start-1-nodes-had-a-volume-affinity-conflict][Question]]
+** 
+*** [[https://stackoverflow.com/questions/66252195/kubernetes-pod-wont-start-1-nodes-had-a-volume-affinity-conflict][Question]]
 
 I have a pod that won't start with a volume affinity conflict. This is a
 bare-metal cluster so it's unrelated to regions. The pod has 4 persistent
@@ -552,7 +553,7 @@ reporting as bound so I'm not completely certain if that's the problem. I am
 using local-storage as the storage class. I'm wondering if that's the problem
 but I'm fairly new to Kubernetes and I'm not sure where to look.
 
-** Answer
+*** Answer
 
 You got 4 Nodes but none of them are available for scheduling due to a
 different set of conditions. Note that each Node can be affected by multiple
