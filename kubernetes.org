@@ -528,6 +528,10 @@ the following new units were started: containerd.service, kubelet.service
 
 * Issues
 
+** "Pod sandbox changed, it will be killed and re-created."
+Make sure /etc/containerd/config.toml does not differ from other nodes, which
+do not have this issue.
+
 ** 
 *** [[https://stackoverflow.com/questions/66252195/kubernetes-pod-wont-start-1-nodes-had-a-volume-affinity-conflict][Question]]
 
