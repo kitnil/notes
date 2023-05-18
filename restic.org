@@ -9,6 +9,11 @@
 - [[https://forum.restic.net/t/adventures-in-compression/3725][Adventures in Compression - Recipes - restic forum]]
 - [[https://github.com/restic/restic/pull/3666][Implement compression support by MichaelEischer · Pull Request #3666 · restic/restic]]
 
+* Cheat sheets
+
+- Show only a status of a backup in a JSON object
+  : restic --no-cache --json --repo=/srv/backup/foo backup /mnt/foo |  jq 'select(.message_type | test("summary"))'
+
 * lvm backup
 
 : dd if=/dev/lvm1/win10 bs=4M status=none | /home/oleg/.guix-profile/bin/restic backup --verbose --stdin --stdin-filename win10.img
