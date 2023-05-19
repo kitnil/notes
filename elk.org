@@ -204,6 +204,9 @@ curl -H 'Content-Type: application/json' -d '{"query": {"bool": {"must": {"term"
   '
 #+end_example
 
+- nodes stats
+  : curl es.intr:9200/_nodes/stats
+
 ** es3
 #+begin_example
   cluster.name: mjlogger
