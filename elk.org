@@ -207,6 +207,9 @@ curl -H 'Content-Type: application/json' -d '{"query": {"bool": {"must": {"term"
 - nodes stats
   : curl es.intr:9200/_nodes/stats
 
+- nodes disks
+  : curl -XGET 'http://es.intr:9200/_cat/allocation?v'
+
 ** es3
 #+begin_example
   cluster.name: mjlogger
