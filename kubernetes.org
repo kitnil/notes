@@ -2288,3 +2288,7 @@ bob ALL=(ALL,!root) ALL
 This line allows the user bob to execute any command as any user except root. The !root part of the line specifies that the root user is excluded. The ALL at the end of the line allows the user to execute commands on all hosts and terminals.
 
 It's important to note that editing the /etc/sudoers file should only be done with extreme caution, as incorrect syntax or permissions can cause serious system issues. It's recommended to use the visudo command to edit the file, as it performs syntax checks before committing changes.
+
+** Ubuntu 14.04 kubelet version
+
+The kubelet is not officially supported on Ubuntu 14.04 as it reached end-of-life in April 2019 and is no longer receiving security updates. However, if you still need to install Kubernetes on Ubuntu 14.04, the latest version of kubelet that you can install is v1.15.11. You can download the binary from the Kubernetes release page for v1.15.11 and install it manually. Keep in mind that using an outdated operating system is not recommended, as it may expose your system to vulnerabilities and other security risks.
