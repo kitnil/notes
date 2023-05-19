@@ -24,6 +24,9 @@
 - skopeo
   : skopeo copy docker-archive:${args.image.path} docker-daemon:${baseName}:${originTag} --insecure-policy
 
+- clone image from remote to a local docker daemon
+  : skopeo copy --insecure-policy docker://quay.io/prometheus/node-exporter:v1.5.0 docker-daemon:quay.io/prometheus/node-exporter:v1.5.0
+
 - Show docker shared image layers
   : docker system df -v
 
