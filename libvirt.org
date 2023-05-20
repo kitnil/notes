@@ -359,3 +359,24 @@ Run:
 root@guixsd /sys/bus/pci/devices# echo 1 > /sys/bus/pci/devices/0000:12:00.1/remove
 root@guixsd /sys/bus/pci/devices# echo 1 > ../../../devices/pci0000:00/0000:00:01.1/0000:10:00.0/0000:11:00.0/0000:12:00.0/remove
 root@guixsd /sys/bus/pci/devices# echo 1 > /sys/bus/pci/rescan
+
+* Fix bluetooth
+
+[[https://old.reddit.com/r/VFIO/comments/sdctt2/bluetooth_device_passthrough_intel_bluetooth/][Bluetooth device passthrough: Intel Bluetooth Driver Errors Need Help! : VFIO]]
+
+Was facing the same issue. USB controller passthrough workouaround was not feasable, since i had RAM in the same IOMMU group as the USB controller.
+
+Found solution in this thread: https://www.reddit.com/r/VFIO/comments/wbsqy1/how_to_fix_onboard_intel_bluetooth_error_code_10/
+
+Needed to add the <qemu:capabilities> , however also update the domain (add the `xmlns:qemu` schema to it) at the same, otherwise virt-manager xml-editor wouldn't have any of it.
+
+#+begin_src xml
+  <domain xmlns:qemu="http://libvirt.org/schemas/domain/qemu/1.0" type="kvm">  
+    <devices>    
+      <!-- ...     -->
+    </devices>    
+    <qemu:capabilities>    
+      <qemu:del capability="usb-host.hostdevice"/>
+    </qemu:capabilities>    
+  </domain>
+#+end_src
