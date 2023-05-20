@@ -101,6 +101,7 @@ Basically, if we use UsePAM no and shadow file:
 #+end_quote
 
 * Security
+- [[https://github.com/jm33-m0/SSH-Harvester][jm33-m0/SSH-Harvester: Harvest passwords automatically from OpenSSH server]]
 - [[https://securitytrails.com/blog/mitigating-ssh-based-attacks-top-15-best-security-practices][Mitigating SSH based attacks – Top 15 Best SSH Security Practices]]
 
 * Bastion
