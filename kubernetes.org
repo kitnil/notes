@@ -2292,3 +2292,16 @@ It's important to note that editing the /etc/sudoers file should only be done wi
 ** Ubuntu 14.04 kubelet version
 
 The kubelet is not officially supported on Ubuntu 14.04 as it reached end-of-life in April 2019 and is no longer receiving security updates. However, if you still need to install Kubernetes on Ubuntu 14.04, the latest version of kubelet that you can install is v1.15.11. You can download the binary from the Kubernetes release page for v1.15.11 and install it manually. Keep in mind that using an outdated operating system is not recommended, as it may expose your system to vulnerabilities and other security risks.
+
+** List kubelet health checks.
+
+Kubelet is responsible for managing and monitoring the state of each node in a Kubernetes cluster. Here are some of the health checks that Kubelet performs:
+
+    Docker health check: Kubelet checks if Docker is running and healthy.
+    Node network check: Kubelet ensures that the node's IP address is reachable from other nodes in the cluster.
+    Node disk space check: Kubelet monitors the amount of disk space available on the node and alerts if it falls below a certain threshold.
+    Node memory check: Kubelet monitors the amount of memory available on the node and alerts if it falls below a certain threshold.
+    Pod health check: Kubelet periodically checks the health of all pods running on the node and restarts any that have failed or become unresponsive.
+    Kubelet API server check: Kubelet ensures that it can communicate with the Kubernetes API server and that the API server is healthy.
+
+These health checks help ensure the overall health and availability of the Kubernetes cluster.
