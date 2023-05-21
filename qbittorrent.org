@@ -3,3 +3,5 @@ ovs-docker add-port br155-vlan155 eth1 qbittorrent --ipaddress=10.152.152.12/18 
 ovs-docker add-port br154-vlan154 eth2 qbittorrent --ipaddress=192.168.154.12/24
 * Themes
 - [[https://github.com/witalihirsch/qBitTorrent-fluent-theme][witalihirsch/qBitTorrent-fluent-theme: Fluent theme for qBitTorrent]]
+* Tools
+- [[https://github.com/caseyscarborough/qbittorrent-exporter][caseyscarborough/qbittorrent-exporter: A prometheus exporter for qBittorrent.]]
