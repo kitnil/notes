@@ -10,3 +10,37 @@
 - [[https://github.com/AlexxIT/go2rtc][AlexxIT/go2rtc: Ultimate camera streaming application with support RTSP, WebRTC, HomeKit, FFmpeg, RTMP, etc.]]
 - [[https://github.com/datarhei/restreamer][datarhei/restreamer: The Restreamer is a complete streaming server solution for self-hosting. It has a visually appealing user interface and no ongoing license costs. Upload your live stream to YouTube, Twitch, Facebook, Vimeo, or other streaming solutions like Wowza. Receive video data from OBS and publish it with the RTMP and SRT server.]]
 - [[https://github.com/owncast/owncast][owncast/owncast: Take control over your live stream video by running it yourself. Streaming + chat out of the box.]]
+
+* [[https://restream.io/integrations/obs-studio/the-best-obs-settings-for-streaming/][OBS Settings]]
+
+OBS Studio has lots of tools and features to produce high-quality live streams. While you have a lot of freedom to choose the optimal settings for your broadcasts, it can be overwhelming if you’re new to live streaming. This tutorial will help you find the best streaming settings when you use OBS.
+
+OBS lets you fully customize your streaming experience, but sometimes you have to integrate OBS with other tools to get the features you want. By using a third-party streaming software like Restream along with OBS Studio, you can produce professional-looking videos:
+
+    Multistream: OBS allows you to live stream to just one platform at a time. By integrating with Restream, you can broadcast to as many platforms as you want simultaneously.
+    Chat: Each live streaming platform has its own live chat. Managing each one while you’re multistreaming is a big job. Restream chat integrates with OBS and lets you gather all chats from streaming platforms in one place to help you stay connected with your audience.
+    Customization: Apply additional custom visual effects, easily change lower thirds and add Restream Studio’s other powerful customization features to your OBS stream. Read our guide to customizing your OBS stream with Restream Studio to see how to do it.
+    Analytics: When you integrate Restream and OBS, you can access useful streaming insights like stream duration, peak viewers and more.
+
+** The best OBS settings for streaming
+
+Upload speed is one of the most important settings for live streaming. The faster your upload speed, the smoother your live streams will be. The general recommendation for the upload speed is around 5 Mbps. However, this can vary depending on the content of your stream and the platform you broadcast to. Learn more in our guide to upload speeds for live streaming.
+
+Let’s look at the other main settings you need to adjust in OBS:
+
+    Open OBS Studio and click Settings on the bottom-right of your screen. Select the Output tab on the left.
+    Change the Output Mode to Advanced to see more options.
+    If you want pixel-perfect live streams, change the Video Bitrate to 4000 Kbps. This is the optimal video bitrate for live streaming in Full HD (1080p) at 30fps.
+    Increase the Audio Bitrate to 320 Kbps. Audio quality is essential for any kind of live stream, so changing the bitrate to the highest value will provide the best sound for your audiences. However, if you broadcast a non-music stream, 160 Kbps is recommended for most of the platforms.
+    Change the Keyframe interval to 2, meaning every two seconds, a frame with a higher amount of data is sent, which acts as a base for small changes of the upcoming frames.
+    Finally, check the CPU Usage Preset. The slower this parameter, the better your stream quality. However, a low setting puts more strain on your hardware. Increase this parameter if you feel like your device isn’t powerful enough to maintain smooth broadcasts.
+
+** The best OBS settings for Twitch
+
+When it comes to gaming, the quality of your live streams plays a key part in a successful career. Therefore, it’s mandatory to make sure your OBS settings are optimized to provide the best broadcasts. Let’s go through the most important OBS settings for Twitch.
+
+    Open OBS Studio and click Settings on the bottom-right of your screen. Select the Output tab on the left.
+    Change the Output Mode to Advanced to see more options.
+    One of the most important settings in OBS for streaming on Twitch is the Encoder. The choice of the encoder is based on your hardware. If you have an NVIDIA GPU, select the NVENC encoder. For an AMD GPU, select the AMF encoder. If you don’t have those encoders available, or you want the highest possible quality at the expense of an increased load on your CPU, select the x264 encoder.
+    The next most important parameters are Rate Control and Bitrate. Make sure the rate control is set to CBR. As for the bitrate, the optimal value depends on your upload speed and hardware. If you want to stream in 1080p 60fps on Twitch, set the bitrate to 6000 Kbps. For lower resolutions and frames per seconds, the Twitch guideline recommends a bitrate of around 4500 Kbps.
+    For the best quality live streams on Twitch, we recommend he following settings: Framerate: 60fps or 50fps; Keyframe interval: 2 seconds; Preset: Quality; B-frames: 2. These settings work best with the 1080p resolution and 60fps.
