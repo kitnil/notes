@@ -33,6 +33,9 @@ Change quota from =excl= to =ref=.
   for dir in /home/*; do sudo btrfs qgroup show -reF --raw $dir | awk '{if($5=="none" && $4!="none"){print $4}}' | xargs -I {} sudo btrfs qgroup limit -e {} $dir && sudo btrfs qgroup limit none $dir ; done
 #+end_src
 
+- [[https://old.reddit.com/r/linux4noobs/comments/wt8co0/shrink_btrfs_partition_without_destroying_my/][Shrink btrfs Partition without destroying my system? : linux4noobs]]
+  : btrfs filesystem resize -32G /
+
 * [[https://dataswamp.org/~solene/2022-10-07-nixos-btrfs-continuous-snapshots.html][Solene'% : Linux BTRFS continuous snapshots]]
 
 #+begin_example
