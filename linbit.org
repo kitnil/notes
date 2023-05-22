@@ -685,6 +685,9 @@ If you get any output (there are lines with the “Remote failed to finish a req
   : linstor node list
   : linstor storage-pool list --groupby Size
 
+- controller options
+  : linstor -m controller list-properties
+
 ** Delete a node from the Kubernetes cluster
 #+begin_example
   $ linstor node list
