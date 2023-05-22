@@ -129,6 +129,7 @@
 
 * Blackbox
 - http://127.0.0.1:9115/probes
+- GET /probe?module=http_2xx&target=http%3A%2F%2F127.0.0.1%3A8071%2Fphpinfo-json.php
 
 * High availability
 - [[https://github.com/cortexproject/cortex][cortexproject/cortex: A horizontally scalable, highly available, multi-tenant, long term Prometheus.]]
