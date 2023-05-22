@@ -1090,6 +1090,7 @@ then redeploy with:
 - [[https://github.com/external-secrets/external-secrets][external-secrets/external-secrets: External Secrets Operator reads information from a third-party service like AWS Secrets Manager and automatically injects the values as Kubernetes Secrets.]]
 - [[https://github.com/f0xtek/k8sresourceless][f0xtek/k8sresourceless: A utility to find all Kubernetes Pods that have no CPU or memory resource requests defined for their containers.]]
 - [[https://github.com/FairwindsOps/polaris][FairwindsOps/polaris: Validation of best practices in your Kubernetes clusters]]
+- [[https://github.com/falcosecurity/falco][falcosecurity/falco: Cloud Native Runtime Security]]
 - [[https://github.com/fluxcd/flagger][fluxcd/flagger: Progressive delivery Kubernetes operator (Canary, A/B Testing and Blue/Green deployments)]]
 - [[https://github.com/fluxcd/flux2][fluxcd/flux2: Open and extensible continuous delivery solution for Kubernetes. Powered by GitOps Toolkit.]]
 - [[https://github.com/furiko-io/furiko][furiko-io/furiko: Cloud-native, enterprise-level cron job platform for Kubernetes]]
