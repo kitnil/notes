@@ -792,6 +792,7 @@ degradation:
 
 * proot
 - [[https://proot-me.github.io/#examples][PRoot — chroot, mount --bind, and binfmt_misc without privilege/setup]]
+- [[https://nixos.wiki/wiki/Nix_Installation_Guide#PRoot][Nix Installation Guide - NixOS Wiki]]
 
 * QoS
 - [[https://github.com/aabc/ipt-ratelimit][aabc/ipt-ratelimit: An implementation of committed access rate, or simply rate limiting, or policing for Linux iptables, implemented with high performance in mind.]]
