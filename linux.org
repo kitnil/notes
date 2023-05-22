@@ -790,6 +790,9 @@ degradation:
 - [[https://github.com/vi/tcpsocks][vi/tcpsocks: Redirect traffic to SOCKS5 server with iptables, epoll based, single threaded.]]
 - [[https://github.com/heiher/hev-socks5-tproxy][heiher/hev-socks5-tproxy: A simple, lightweight socks5 transparent proxy for Linux. (IPv4/IPv6/TCP/UDP over TCP)]]
 
+* proot
+- [[https://proot-me.github.io/#examples][PRoot — chroot, mount --bind, and binfmt_misc without privilege/setup]]
+
 * QoS
 - [[https://github.com/aabc/ipt-ratelimit][aabc/ipt-ratelimit: An implementation of committed access rate, or simply rate limiting, or policing for Linux iptables, implemented with high performance in mind.]]
 - [[https://github.com/rosywrt/nft-qos][rosywrt/nft-qos: QoS over Nftables (This packages is merged upstream, please visit openwrt/packages and openwrt/luci for more detail)]]
