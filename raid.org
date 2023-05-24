@@ -1386,3 +1386,19 @@ root@guixsd ~ [env]# modprobe raid456; guix shell mdadm -- mdadm --assemble --sc
   mdadm: array /dev/md122 started.
 
 #+end_example
+
+* RAID 6 degraded with root file-system failed to boot
+
+To fix the issue boot via PXE or livecd, then:
+
+#+begin_example
+  [root@nixos:~]# mdadm --stop /dev/md124
+  mdadm: stopped /dev/md124
+#+end_example
+
+#+begin_example
+  [root@nixos:~]# mdadm --assemble --scan --force
+  mdadm: Marking array /dev/md/pop5.majordomo.ru:3 as 'clean'
+  mdadm: /dev/md/pop5.majordomo.ru:3 has been started with 5 drives (out of 6) and 1 spare.
+#+end_example
+
