@@ -94,3 +94,5 @@ swift
     sudo systemctl restart postfix
 
 Postfix will now redirect any email messages where the To: header contains the domain redirect.example.com to the corresponding address in the example.com domain.
+
+: kubectl -n mailout exec pod/postfix-mailout-jhcp8 /nix/store/nzg3950pbjw410zm5bn6ji6xm7h8a4kh-postfix-3.7.3/bin/mailq | grep -B1 noreply@foobar.ru | awk '/MAILER-DAEMON/ { print $1 }' | sed 's/\*//' | { while true; do read id; kubectl -n mailout exec pod/postfix-mailout-jhcp8 -- /nix/store/nzg3950pbjw410zm5bn6ji6xm7h8a4kh-postfix-3.7.3/bin/postsuper -c /etc/postfix -d "$id"; done; }
