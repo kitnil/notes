@@ -19,6 +19,13 @@ gpg --output secret-subkeys --export-secret-subkeys SUBKEYID!
   https://www.gnupg.org/gph/en/manual/x457.html
   https://pgp.key-server.io/search/go.wigust@gmail.com
 
+* Encrypt a string and send it via netcat
+** On receiver side
+  : nc -l -p PORT | tee -a password.txt
+** On sender side
+  : gpg --keyserver keyserver.ubuntu.com --receive-keys KEY_ID
+  : echo PASSWORD | gpg --encrypt --armor --recipient KEY_ID | nc IP_ADDRESS PORT
+
 * Tor
 
 ~/.gnupg/dirmngr.conf
