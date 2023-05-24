@@ -5,6 +5,9 @@
 
 - “Elements in grown defect list: 0” - бэды
 
+* Scripts
+
+** YAML
 #+begin_src bash
   #!/usr/bin/env bash
 
@@ -26,3 +29,6 @@
       fi
   done
 #+end_src
+
+** List devices and their serial numbers
+: (for disk in /dev/sd?; do printf "${disk}: "; smartctl -a "$disk" | awk '/Serial Number/ || /Serial number/ { print $NF }'; done) |& tee disks.txt
