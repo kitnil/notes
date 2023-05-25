@@ -909,6 +909,18 @@ This is the reason why it is recommended to use an odd number of master nodes fo
   PodCIDRs:                     10.1.6.0/24
 #+end_example
 
+** [[https://old.reddit.com/r/kubernetes/comments/11pgmsa/cilium_vs_calico_k3s_what_do_you_use_and_why/jc459ka/][NeuVector]]
+If your focus is securing the cluster and applying enforceable network policies, with possibly a requirement high node count performance (1000ish nodes).
+NeuVector (free to use unsupported, no limits, no paywall, no ads) can create enforceable zero-trust network policies for you automatically:
+- CNI agnostic, cloud agnostic, and Kubernetes platform agnostic (K8's, Rancher, Openshift, Tanzu)
+- Is network centric security, does not use agents, sidecards, or kernel syscall filtering (eBPF)
+- Creates Layer 7 network policies automatically for all network traffic East/West within the cluster as well as North/South by inspecting/validating traffic off of the node vNIC - does NOT use IPTables - and gives you an independent source of truth of cluster network traffic activity.
+- works with service meshes that use side cars like istio or linkerD and automatically creates the network policies to protect the container/side-car traffic Istio tells us they cannot secure or encrypt via the proxy.
+- Also generates container process security policies to enforce zero trust network and process segmentation.
+- Performance tested in 1000 node clusters
+- Both Alert-only and blocking modes for enforceable network policies
+- Live network packet capture within the cluster for forensics and additional "observability"
+
 * Operators
 - [[https://github.com/flant/shell-operator][flant/shell-operator: Shell-operator is a tool for running event-driven scripts in a Kubernetes cluster]]
 - [[https://operatorhub.io/][OperatorHub.io | The registry for Kubernetes Operators]]
