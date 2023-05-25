@@ -70,6 +70,7 @@ with =jc= utility, piped to =jq= to filter, and to =jtbl= generate a table:
 - [[https://github.com/denisidoro/floki][denisidoro/floki: A JSON/EDN browser for the terminal]]
 - [[https://json5.org/][JSON5 – JSON for Humans | JSON5]]
 - [[https://github.com/noahgorstein/jqp][noahgorstein/jqp: A TUI playground to experiment with jq]]
+- [[https://jwt.io/][JSON Web Tokens - jwt.io]]
 
 * Examples
 : ssh web15.intr ifconfig | jc --ifconfig | jq --raw-output '[.[] | select(.mac_addr != null) | select(.ipv4_addr != null) | select(.name != "docker0") | {"name": .name, "mac": .mac_addr, "addr": .ipv4_addr, "mask": .ipv4_mask}]'
