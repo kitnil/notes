@@ -189,6 +189,14 @@ service postfix restart || systemctl restart postfix
 
 postcat -q <идентификатор>
 
+Причины, по которым письма не отправляются, могут быть самыми разными. Если вы устранили причину и хотите принудительно отправить всю почту то используйте команду:
+
+postsuper -r ALL deferred
+
+Для удаления всех писем из очереди deferred используйте команду:
+
+postsuper -d ALL deferred
+
 * ChatGPT
 
 ** postfix show message content
