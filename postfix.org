@@ -206,6 +206,8 @@ Deferred – письма, доставка которых не осуществ
 Hold – письма, заблокированные в очереди администратором;
 Corrupt – письма, которые невозможно прочитать.
 
+find /var/spool/postfix/defer -type f -mtime 1 -delete
+
 * ChatGPT
 
 ** postfix show message content
