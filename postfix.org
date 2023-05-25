@@ -200,6 +200,12 @@ postsuper -r ALL deferred
 
 postsuper -d ALL deferred
 
+Incoming – входящая почта;
+Active – доставляемая почта;
+Deferred – письма, доставка которых не осуществилась ранее;
+Hold – письма, заблокированные в очереди администратором;
+Corrupt – письма, которые невозможно прочитать.
+
 * ChatGPT
 
 ** postfix show message content
