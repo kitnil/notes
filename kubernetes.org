@@ -909,6 +909,8 @@ This is the reason why it is recommended to use an odd number of master nodes fo
   PodCIDRs:                     10.1.6.0/24
 #+end_example
 
+** [[https://github.com/cilium/k8s-iptables-diagram][cilium/k8s-iptables-diagram: Diagram of Kubernetes / kube-proxy iptables rules architecture]]
+
 ** [[https://old.reddit.com/r/kubernetes/comments/11pgmsa/cilium_vs_calico_k3s_what_do_you_use_and_why/jc459ka/][NeuVector]]
 If your focus is securing the cluster and applying enforceable network policies, with possibly a requirement high node count performance (1000ish nodes).
 NeuVector (free to use unsupported, no limits, no paywall, no ads) can create enforceable zero-trust network policies for you automatically:
