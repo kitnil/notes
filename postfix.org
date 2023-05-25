@@ -96,3 +96,23 @@ swift
 Postfix will now redirect any email messages where the To: header contains the domain redirect.example.com to the corresponding address in the example.com domain.
 
 : kubectl -n mailout exec pod/postfix-mailout-jhcp8 /nix/store/nzg3950pbjw410zm5bn6ji6xm7h8a4kh-postfix-3.7.3/bin/mailq | grep -B1 noreply@foobar.ru | awk '/MAILER-DAEMON/ { print $1 }' | sed 's/\*//' | { while true; do read id; kubectl -n mailout exec pod/postfix-mailout-jhcp8 -- /nix/store/nzg3950pbjw410zm5bn6ji6xm7h8a4kh-postfix-3.7.3/bin/postsuper -c /etc/postfix -d "$id"; done; }
+
+/nix/store/nzg3950pbjw410zm5bn6ji6xm7h8a4kh-postfix-3.7.3/bin/mailq | /nix/store/njz77ksdp38vy6wyb9bq70dzfjxm5im0-gnugrep-3.7/bin/grep -B1 noreply@foobar.ru | /nix/store/pndr3yb60iqx4igydv2irxi6s6y8rbvb-gawk-5.1.1/bin/awk '/MAILER-DAEMON/ { print $1 }' | /nix/store/scmjiz80b1hh521k06z4fgbkl6r5k84p-gnused-4.8/sed 's/\*//' | { while true; do read id; /nix/store/nzg3950pbjw410zm5bn6ji6xm7h8a4kh-postfix-3.7.3/bin/postsuper -c /etc/postfix -d "$id"; done; }
+
+* ChatGPT
+
+** postfix show message content
+
+To view the content of a message in Postfix, you can use the postcat command.
+
+First, find the queue ID of the message that you want to view:
+
+sudo postqueue -p
+
+This will display a list of messages in the queue, along with their queue IDs (such as 5A7C7123456). Note down the queue ID of the message you want to view.
+
+Then, use the postcat command with the queue ID to display the content of the message:
+
+sudo postcat -vq <queue_id>
+
+This will display the full content of the message, including the headers and body. You can then scroll through the output to view the message content.
