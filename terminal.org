@@ -70,6 +70,9 @@
     : abduco -c test
     server-execvp: dvtm: No such file or directory
 
+  - Add all bin directories to PATH environment in Nix store
+    : export PATH="$(printf "%s:" /nix/store/*/bin):${PATH}"
+
 * Benchmarks
 - [[https://github.com/cmuratori/termbench][cmuratori/termbench: Simple benchmark for terminal output]]
 - [[https://github.com/cmuratori/refterm][cmuratori/refterm: Reference monospace terminal renderer]]
