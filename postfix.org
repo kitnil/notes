@@ -99,6 +99,96 @@ Postfix will now redirect any email messages where the To: header contains the d
 
 /nix/store/nzg3950pbjw410zm5bn6ji6xm7h8a4kh-postfix-3.7.3/bin/mailq | /nix/store/njz77ksdp38vy6wyb9bq70dzfjxm5im0-gnugrep-3.7/bin/grep -B1 noreply@foobar.ru | /nix/store/pndr3yb60iqx4igydv2irxi6s6y8rbvb-gawk-5.1.1/bin/awk '/MAILER-DAEMON/ { print $1 }' | /nix/store/scmjiz80b1hh521k06z4fgbkl6r5k84p-gnused-4.8/sed 's/\*//' | { while true; do read id; /nix/store/nzg3950pbjw410zm5bn6ji6xm7h8a4kh-postfix-3.7.3/bin/postsuper -c /etc/postfix -d "$id"; done; }
 
+* Cheat sheet
+
+Работа с очередью сообщений в Postfix
+Обновлено Обновлено: 11.03.2020 Опубликовано Опубликовано: 13.06.2017
+Посмотреть очередь
+
+mailq
+
+или:
+
+postqueue -p
+Принудительно запустить отправку из очереди
+
+mailq -q
+
+или: 
+
+postqueue -f
+Очистить очередь
+
+1. Удалить все сообщения:
+
+postsuper -d ALL
+
+2. Удалить определенное письмо из очереди:
+
+postsuper -d <идентификатор письма>
+
+* идентификатор письма можно увидеть командой mailq.
+
+3. Очистить очередь по отправителю:
+
+postqueue -p | tail -n +2 | awk 'BEGIN { RS = "" } /spammer@email\.com/ { print $1 }' | tr -d '*!' | postsuper -d -
+
+* в данном примере мы удалим все письма от spammer@email.com.
+Количество писем в очереди
+
+Команда mailq в конце выдает общее количество сообщений в очереди, например:
+
+-- 23 Kbytes in 18 Requests.
+
+* в данном примере в очереди находится 18 сообщений общим объемом 23 Кбайт.
+
+Также, очередь можно посмотреть командами:
+
+find /var/spool/postfix/deferred -type f | wc -l
+
+find /var/spool/postfix/active -type f | wc -l
+
+find /var/spool/postfix/incoming -type f | wc -l
+
+find /var/spool/postfix/defer -type f | wc -l
+
+* данные каталоги являются местом, где временно хранятся письма очереди.
+Перезапустить очередь
+
+postsuper -r ALL
+
+Если не помогло, поочередно:
+
+postfix stop
+
+postsuper -r ALL
+
+postfix start
+Настройка очереди
+
+Задать периодичность повторной отправки сообщений:
+
+postconf -e "queue_run_delay = 5m"
+
+Задать время, на которое будет отложена отправка сообщений, которые не были отправлены по причине временных неисправностей (например, принимающий сервер не отвечает или просит повторить запрос позже):
+
+postconf -e "minimal_backoff_time = 10m"
+
+Задать максимальное время для отправки сообщений, которые не были отправлены по причине временных неисправностей:
+
+postconf -e "maximal_backoff_time = 15m"
+
+Выставить время жизни для сообщения в очереди:
+
+postconf -e "maximal_queue_lifetime = 1d"
+
+После внесения изменений необходимо перезапустить postfix:
+
+service postfix restart || systemctl restart postfix
+Информация о конкретном сообщении
+
+postcat -q <идентификатор>
+
 * ChatGPT
 
 ** postfix show message content
