@@ -1077,6 +1077,7 @@ then redeploy with:
 - [[https://github.com/corneliusweig/ketall][corneliusweig/ketall: Like `kubectl get all`, but get really all resources]]
 - [[https://github.com/corneliusweig/rakkess][corneliusweig/rakkess: Review Access - kubectl plugin to show an access matrix for k8s server resources]]
 - [[https://github.com/coroot/coroot][coroot/coroot: A monitoring and troubleshooting tool for microservice architectures.]]
+- [[https://github.com/corpix/k3s-vm][corpix/k3s-vm: NixOS k3s VM to play & test manifests]]
 - [[https://github.com/darkbitio/k8s-mirror][darkbitio/k8s-mirror: Creates a local mirror of a Kubernetes cluster in a docker container to support offline reviewing]]
 - [[https://github.com/datreeio/datree][datreeio/datree: Prevent Kubernetes misconfigurations from reaching production (again 😤 )! The CLI integration provides a policy enforcement solution to run automatic checks for rule violations. See our docs: https://hub.datree.io]]
 - [[https://github.com/deislabs/krustlet][deislabs/krustlet: Kubernetes Rust Kubelet]]
