@@ -89,3 +89,24 @@
     var_dump((new NixGenerator())->phpToNix($object, true));
   }
 #+end_src
+
+#+begin_src php
+  <?php
+  $ch = curl_init('https://www.example.org/');
+  curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+  curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+  curl_setopt($ch, CURLOPT_HEADER, false);
+  var_dump(curl_exec($ch));
+  curl_close($ch);
+  ?>
+#+end_src
+
+#+begin_src php
+  <?php
+  $to      = "user@example.org"; 
+  $subject = "Responce to the HTTP request";
+  $currentDate = date("Y-m-d H:i:s");
+  $message = $currentDate;
+  mail($to, $subject, $message);
+  ?>
+#+end_src
