@@ -1,2 +1,175 @@
 - [[https://www.youtube.com/watch?v=otr55vmKf30][В поисках идеальной кластерной ФС: опыт использования LINSTOR / Андрей Квапил (kvaps) - YouTube]]
 - [[https://packages.debian.org/ru/sid/istgt][Debian -- Подробная информация о пакете istgt в sid]]
+
+* Learning
+
+Recently, when I was working with Red Hat Virtualization, I wanted to try to combine the local storage domain of more than one server systems as a Storage Domain in Red Hat Virtualization. After a lot of pondering, I came across the fact that for an Internet Small Computer Systems Interface (iSCSI) datastore I can use multiple backend block storage devices.
+
+So I decided to set up our Red Hat Enterprise Linux (RHEL) server to expose about 80% of its local disk over iSCSI to be used for the storage domain backend on the Red Hat Virtualization. In this post, I will go over how I set up iSCSI on RHEL. The steps in this article may apply to CentOS (and, maybe, Fedora) as well.
+
+In my experience, users tend to be more familiar with NFS than iSCSI. If you haven’t worked with, or heard of it, we have more information on iSCSI in the Red Hat Enterprise Linux 7 Installation Guide Appendix B. Ready? Let’s move on to setup. Note that if you’re doing this on Fedora instead of RHEL, you need to replace “yum” with “dnf”.
+Setup:
+
+    To start, you will need to have a hard disk partition or a logical volume that you can use. This post assumes you already have a logical volume that is unused and can be used for iSCSI. If you want to know more on how to setup logical volumes, see “A Linux user’s guide to Logical Volume Management” on OpenSource.com. Let’s assume the path to your logical volume is /dev/vg1/lv_iscsi_1
+
+    The next thing you would want to do is to install targetcli. It is a package that you need to install in order to setup iSCSI. To install it you may run following command:
+
+# yum install -y targetcli
+
+For RHEL you may need a valid subscription to the relevant repositories. Also, be sure to run it as root or with sudo access.
+
+    Once it is installed, you need to run targetcli to get the CLI:
+
+[root@server1 ~]# targetcli
+targetcli shell version 2.1.fb46
+Copyright 2011-2013 by Datera, Inc and others.
+For help on commands, type 'help'.
+
+/iscsi>
+
+    Now using logical volume we will create block storage for iSCSI.
+
+/iscsi> cd /backstores/block
+/backstores/block> create iscsi_block_store_1 /dev/vg1/lv_iscsi_1
+Created block storage object iscsi_block_store_1 using /dev/vg1/lv_iscsi_1.
+
+    Create an iSCSI Target:
+
+/backstores/block> cd /iscsi
+/iscsi> create iqn.2019-03.com.redhat:target1
+Created target iqn.2019-03.com.redhat:target1.
+Created TPG 1.
+Global pref auto_add_default_portal=true
+Created default portal listening on all IPs (0.0.0.0), port 3260.
+/iscsi>
+
+If required you may add additional portal with different IP_Port as follows:
+
+/iscsi> cd iqn.2019-03.com.redhat:target1/tpg1/portals/
+/iscsi/iqn.20.../tpg1/portals> ls
+o- portals ............................................................................................................ [Portals: 1]
+o- 0.0.0.0:3260 ............................................................................................................. [OK]
+/iscsi/iqn.20.../tpg1/portals> create ip_port=3333
+Binding to INADDR_ANY (0.0.0.0)
+Created network portal 0.0.0.0:3333.
+/iscsi/iqn.20.../tpg1/portals> ls
+o- portals ............................................................................................................ [Portals: 2]
+o- 0.0.0.0:3260 ............................................................................................................. [OK]
+o- 0.0.0.0:3333 ............................................................................................................. [OK]
+/iscsi/iqn.20.../tpg1/portals>
+
+Specifying ip_address= in create command above will set it to specified IP address instead of default of 0.0.0.0
+
+/iscsi/iqn.20.../tpg1/portals> create ip_address=10.8.197.253 ip_port=5555
+Created network portal 10.8.197.253:5555.
+/iscsi/iqn.20.../tpg1/portals> ls
+o- portals ............................................................................................................ [Portals: 3]
+o- 0.0.0.0:3260 ............................................................................................................. [OK]
+o- 0.0.0.0:3333 ............................................................................................................. [OK]
+o- 10.8.197.253:5555 ........................................................................................................ [OK]
+
+    Create an Access Control List (ACL) for client machines, which means that you need to get iSCSI Initiator name add map it with this target. Once it is done, then your client machine will be able to connect to this iSCSI target.
+
+For this part, go to your client machine. Usually the initiator name can be found in /etc/iscsi/initiator.name if the iscsi-initiator-utils package is installed. If it is not installed, it can be installed by running:
+
+yum install -y iscsi-initiator-utils
+
+[root@client1 ~]# cat /etc/iscsi/initiatorname.iscsi
+InitiatorName=iqn.1994-05.com.redhat:39ee68f3cf5e
+[root@client1 ~]#
+
+Copy the InitiatorName from Client machine.
+
+Once we have that, go back to the server machine, we can create the acl as follows:
+
+/iscsi> cd /iscsi/iqn.2019-03.com.redhat:target1/
+/iscsi/iqn.20...edhat:target1> cd tpg1/acls
+/iscsi/iqn.20...et1/tpg1/acls> create iqn.1994-05.com.redhat:39ee68f3cf5e
+Created Node ACL for iqn.1994-05.com.redhat:39ee68f3cf5e
+/iscsi/iqn.20...et1/tpg1/acls>
+
+    Now we need to create a LUN (Logical Unit Number) under this target:
+
+/iscsi/iqn.20...et1/tpg1/acls>cd ../luns
+/iscsi/iqn.20...et1/tpg1/luns> create /backstores/block/iscsi_block_store_1
+Created LUN 0.
+Created LUN 0->0 mapping in node ACL iqn.1994-05.com.redhat:39ee68f3cf5e
+/iscsi/iqn.20...et1/tpg1/luns>cd /
+
+    Now that is created, we can verify target is configured correctly:
+
+    /> ls /iscsi/iqn.2019-03.com.redhat:target1/
+
+    The output should be similar to the screenshot here:
+
+ 
+iSCSI setup output
+
+    You should then save the config and exit out:
+
+/> saveconfig
+Configuration saved to /etc/target/saveconfig.json
+/> exit
+Global pref auto_save_on_exit=true
+Last 10 configs saved in /etc/target/backup/.
+Configuration saved to /etc/target/saveconfig.json
+[root@server1 ~]#
+
+    Once this is done, we need to start the target service and make sure we enable it so that it keeps running across reboot.
+
+[root@server1 ~]# systemctl start target
+[root@server1 ~]# systemctl enable target
+
+And check the status using:
+
+[root@server1 ~]# systemctl status target 
+
+    If you are running firewalld or iptables, you need to make sure you add port 3260/tcp as exception (allow it through firewall) so that communication between client and iscsi datastore is not blocked. With firewall you can do that as :
+
+[root@server1 ~]# firewall-cmd --add-port=3260/tcp --permanent
+success
+[root@server1 ~]# firewall-cmd --reload
+success
+[root@server1 ~]# firewall-cmd --list-ports
+3260/tcp
+[root@server1 ~]#
+
+    If you have setup the iSCSI correctly on your server then you can go to your client and run following command to discover the iSCSI targets on the server as shown here:
+
+[root@server1 ~]# iscsiadm -m discovery -t st -p 10.8.197.253
+10.8.197.253:3260,1 iqn.2019-03.com.redhat:target1
+
+In this command, we use -m to specify the mode in which command is being executed. In discovery mode we discover available targets at the portal(can be specified  as IP[:port] format) mentioned with -p and -t corresponds to type which tells what type is used in this discovery. The st argument stands for send targets.
+
+SendTargets is a native iSCSI protocol which allows each iSCSI target to send a list of available targets to the initiator.
+
+Note: You may install iscsi-initiator-utils on the same machine where you have set up targetcli and still be able to perform the previous step. You can use IP address or localhost in the discovery and login commands.
+
+    Now that we discovered the target, we can log into it as follows:
+
+[root@server1 ~]# iscsiadm -m node -T iqn.2019-03.com.redhat:target1 -p 10.8.197.253 -l
+Logging in to [iface: default, target: iqn.2019-03.com.redhat:target1, portal: 10.8.197.253,3260] (multiple)
+Login to [iface: default, target: iqn.2019-03.com.redhat:target1, portal: 10.8.197.253,3260] successful.
+
+In this command -T stands for target name. And, -l stands for login, which, in node mode, will only login to specified record, while in discovery mode it will login to all discovered targets.
+
+To find out what is the name of device iSCSI is connected as (only on RHEL or CentOS), you can do :
+
+[root@server1 ~]# cat /var/log/messages  | grep Attached
+Mar 11 21:33:14 dhcp-8-197-253 kernel: scsi 3:0:0:0: alua: Attached
+Mar 11 21:33:14 dhcp-8-197-253 kernel: sd 3:0:0:0: Attached scsi generic sg3 type 0
+Mar 11 21:33:14 dhcp-8-197-253 kernel: sd 3:0:0:0: [sdb] Attached SCSI disk
+
+As you can see above, the iSCSI is connected as sdb so that means if you run fdisk -l on that device it should be listed.
+
+[root@server1 ~]# fdisk -l /dev/sdb
+
+Disk /dev/sdb: 1073 MB, 1073741824 bytes, 2097152 sectors
+Units = sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 33550336 bytes
+
+[root@server1 ~]#
+
+Now you can create a filesystem on it and mount it in your system. You may want to specify the mount information in the /etc/fstab to correctly so that the mount remains persistent across reboot. For more on creating a filesystem, my article on OpenSource.com covers the steps.
+
