@@ -111,3 +111,6 @@ csharp
 }
 
 The version field indicates the version of the payload format, which is currently 4. The groupKey field is used to group related alerts together, for example by the alert expression or by the affected service. The status field indicates whether the alerts are currently firing or resolved. The receiver field identifies the configured receiver that handled the alert. The groupLabels field contains labels that are shared by all alerts in the group, while the commonLabels and commonAnnotations fields contain labels and annotations that are shared by all alerts sent to the same receiver. The externalURL field contains the URL of the Alertmanager web interface, which can be included in the notification message to provide additional context for the alert. Finally, the alerts field contains a list of individual alerts, each with its own set of labels, annotations, and timestamps.
+
+* Learning
+- [[https://sysdig.com/blog/prometheus-alertmanager/][Prometheus Alertmanager Best Practices – Sysdig]]
