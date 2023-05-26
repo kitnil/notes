@@ -23,6 +23,10 @@
 - [[https://github.com/chainguard-dev/darkfiles][chainguard-dev/darkfiles: Darkfiles finds orphaned files in container images and makes them to bad deeds]]
 - [[https://github.com/deislabs/containerd-wasm-shims][deislabs/containerd-wasm-shims: containerd shims for running WebAssembly workloads in Kubernetes]]
 - [[https://github.com/wolfi-dev/][Wolfi is a community Linux OS designed for the container and cloud-native era]]
+- [[https://github.com/igankevich/chainsaw][igankevich/chainsaw: Minimize you application container root file systems (Docker, Singularity etc.)]]
+  - [[https://igankevich.com/][Publications]]
+    - [[https://igankevich.com/full-text/grid-21-chainsaw.pdf][Untitled - grid-21-chainsaw.pdf]]
+    - [[https://indico.jinr.ru/event/1086/contributions/13311/attachments/10580/17291/Gankevich-Chainsaw.pdf][Минимизация образов корневых файловых систем Docker контейнеров - Gankevich-Chainsaw.pdf]]
 
 * Learning
 - [[https://martinheinz.dev/blog/92][Why I Will Never Use Alpine Linux Ever Again | Martin Heinz | Personal Website & Blog]]
