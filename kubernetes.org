@@ -1272,6 +1272,7 @@ then redeploy with:
 - [[https://github.com/sozercan/kubectl-ai][sozercan/kubectl-ai: ✨ Kubectl plugin for OpenAI GPT]]
 - [[https://github.com/spacecloud-io/space-cloud][spacecloud-io/space-cloud: Open source Firebase + Heroku to develop, scale and secure serverless apps on Kubernetes]]
 - [[https://github.com/spacecloud-io/space-cloud][spacecloud-io/space-cloud: Open source Firebase + Heroku to develop, scale and secure serverless apps on Kubernetes]]
+- [[https://github.com/squat/kilo][squat/kilo: Kilo is a multi-cloud network overlay built on WireGuard and designed for Kubernetes (k8s + wg = kg)]]
 - [[https://github.com/stackrox/kube-linter][stackrox/kube-linter: KubeLinter is a static analysis tool that checks Kubernetes YAML files and Helm charts to ensure the applications represented in them adhere to best practices.]]
 - [[https://github.com/stackrox/stackrox][stackrox/stackrox: The StackRox Kubernetes Security Platform performs a risk analysis of the container environment, delivers visibility and runtime alerts, and provides recommendations to proactively improve security by hardening the environment.]]
 - [[https://github.com/stakater/Reloader][stakater/Reloader: A Kubernetes controller to watch changes in ConfigMap and Secrets and do rolling upgrades on Pods with their associated Deployment, StatefulSet, DaemonSet and DeploymentConfig – [✩Star] if you're using it!]]
