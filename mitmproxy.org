@@ -3,3 +3,4 @@
 
 - wireguard (written in user-space inside mitmproxy itself)
   : docker run -d --name mitmproxy --network=host mitmproxy/mitmproxy:9.0.1 mitmweb --set ssl_insecure=true --web-host 192.168.0.145 --mode wireguard:wg-keys-1.conf
+  - [[https://mitmproxy.org/posts/wireguard-mode/][A more user-friendly transparent mode, based on WireGuard]]
