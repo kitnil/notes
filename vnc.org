@@ -31,3 +31,6 @@
 
 * Learning
 - [[~/src/github.com/hashicorp/packer/builder/qemu/step_type_boot_command.go][Automation via Go library like in Packer]]
+
+* noVNC
+- [[https://github.com/novnc/noVNC/pull/1347][Add automatic clipboard support by juanjoDiaz · Pull Request #1347 · novnc/noVNC]]
