@@ -232,6 +232,7 @@ curl -H 'Content-Type: application/json' -d '{"query": {"bool": {"must": {"term"
 * Tools
 
 - [[https://github.com/binwiederhier/elastictl][binwiederhier/elastictl: Simple tool to import/export Elasticsearch indices into a file, and/or reshard an index]]
+- [[https://github.com/codenoid/elastis][codenoid/elastis: Tool for Export / Dump / Import / Copy Elastic/Open Search indexes data]]
 - [[https://github.com/Cyb3rWard0g/HELK][Cyb3rWard0g/HELK: The Hunting ELK]]
 - [[https://github.com/elastic/cloud-on-k8s][elastic/cloud-on-k8s: Elastic Cloud on Kubernetes]]
 - [[https://github.com/flant/elasticsearch-extractor][flant/elasticsearch-extractor: Simple web UI to extract any index from Elasticsearch snapshot into repository.]]
