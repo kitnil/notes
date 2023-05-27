@@ -13,6 +13,8 @@
 
 * GitLab
 
+- [[https://github.com/mermaid-js/mermaid][mermaid-js/mermaid: Generation of diagrams like flowcharts or sequence diagrams from text in a similar manner as markdown]]
+
   Draw a diagram:
   #+begin_src mermaid
     graph TD
