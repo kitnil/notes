@@ -172,6 +172,7 @@
 - [[https://github.com/tnballo/high-assurance-rust][tnballo/high-assurance-rust: A free book about developing secure and robust systems software.]]
 - [[https://github.com/nnethercote/perf-book][nnethercote/perf-book: The Rust Performance Book]]
 - [[https://github.com/EmilHernvall/dnsguide][EmilHernvall/dnsguide: A guide to writing a DNS Server from scratch in Rust]]
+- [[https://github.com/Shubham0850/awesome-rust-lang][Shubham0850/awesome-rust-lang: A comprehensive collection of resources and learning materials for Rust programming, empowering developers to explore and master the modern, safe, and blazingly fast language.]]
 
   #+begin_src scheme
     ("Option" . ,(string-to-symbols "value-is-optional-or-when-the-lack-of-a-value-is-not-an-error-condition"))
