@@ -567,6 +567,7 @@ sudo /nix/var/nix/profiles/system/bin/switch-to-configuration switch
   : nix-instantiate ~/src/nixpkgs-19.09/ --eval --strict -A "hello.meta.position"
 
 * Configurations
+- [[https://github.com/idlip/d-nix][idlip/d-nix: ❄️ Nixyfied Setup with the Power of Org-Mode 👑 Emacs]]
 - [[https://github.com/jethrokuan/nix][jethrokuan/nix: NixOS configuration with Nix flakes]]
 - [[https://github.com/Misterio77/nix-config][Misterio77/nix-config: Personal nixos and home-manager configurations.]]
 
