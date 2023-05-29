@@ -1,0 +1,516 @@
+#+TITLE: 3proxy
+
+* [[https://habr.com/ru/articles/460469/][Основы прозрачного проксирования с использованием 3proxy и iptables/netfilter или как «пустить всё через прокси» / Хабр]]
+
+В данной статье хотелось бы раскрыть возможности прозрачного проксирования, которое позволяет абсолютно незаметно для клиентов перенаправлять весь либо часть трафика через внешние прокси-серверы.
+
+Когда я начинал решать данную задачу то столкнулся с тем, что её реализация имеет одну существенную проблему — протокол HTTPS. В старые добрые времена особых проблем с прозрачным проксированием HTTP не возникало, но при проксировании HTTPS браузеры сообщают о вмешательстве в протокол и на этом счастье заканчивается.
+
+В распространенных инструкциях к прокси-серверу Squid предлагают даже сгенерировать собственный сертификат и установить его клиентам, что полный бред как минимум нерационально и выглядит как MITM — атака. Я знаю, что Squid уже что-то подобное умеет делать, но речь в этой статье о проверенном и рабочем способе с использованием 3proxy от уважаемого 3APA3A.
+
+Далее мы подробно рассмотрим процесс сборки 3proxy из исходников, его настройку, полное и выборочное проксирование с использованием NAT, распределение канала на несколько внешних прокси-серверов, а также использование роутера и статических маршрутов. В качестве ОС используем Debian 9 x64. Начинаем!
+
+Установка 3proxy и запуск обычного прокси-сервера
+
+1. Устанавливаем ifconfig (из пакета net-tools)
+apt-get install net-tools
+
+2. Устанавливаем Midnigth Commander
+apt-get install mc
+
+3. У нас сейчас 2 интерфейса:
+enp0s3 — внешний, смотрит в интернет
+enp0s8 — внутренний, должен смотреть в локальную сеть
+
+В других Debian-based дистрибутивах интерфейсы обычно называются eth0 и eth1.
+
+ifconfig -a
+
+Interfaces
+enp0s3: flags=4163<UP,BROADCAST,RUNNING,MULTICAST> mtu 1500
+inet 192.168.23.11 netmask 255.255.255.0 broadcast 192.168.23.255
+inet6 fe80::a00:27ff:fec2:bae4 prefixlen 64 scopeid 0x20 ether 08:00:27:c2:ba:e4 txqueuelen 1000 (Ethernet)
+RX packets 6412 bytes 8676619 (8.2 MiB)
+RX errors 0 dropped 0 overruns 0 frame 0
+TX packets 1726 bytes 289128 (282.3 KiB)
+TX errors 0 dropped 0 overruns 0 carrier 0 collisions 0
+
+enp0s8: flags=4098<BROADCAST,MULTICAST> mtu 1500
+ether 08:00:27:79:a7:e3 txqueuelen 1000 (Ethernet)
+RX packets 0 bytes 0 (0.0 B)
+RX errors 0 dropped 0 overruns 0 frame 0
+TX packets 0 bytes 0 (0.0 B)
+TX errors 0 dropped 0 overruns 0 carrier 0 collisions 0
+
+lo: flags=73<UP,LOOPBACK,RUNNING> mtu 65536
+inet 127.0.0.1 netmask 255.0.0.0
+inet6 ::1 prefixlen 128 scopeid 0x10 loop txqueuelen 1 (Local Loopback)
+RX packets 0 bytes 0 (0.0 B)
+RX errors 0 dropped 0 overruns 0 frame 0
+TX packets 0 bytes 0 (0.0 B)
+TX errors 0 dropped 0 overruns 0 carrier 0 collisions 0
+
+Интерфейс enp0s8 на данный момент не используется, мы его включим, когда захотим использовать конфигурацию Proxy NAT или NAT. Именно тогда логичным будет назначить ему статический ip.
+
+4. Приступим к установке 3proxy
+
+4.1 Установка базовых пакетов для компиляции 3proxy из исходников
+
+root@debian9:~# apt-get install build-essential libevent-dev libssl-dev -y
+
+4.2. Создадим папку для скачивания архива с исходниками
+
+root@debian9:~# mkdir -p /opt/proxy
+
+4.3. Перейдем в эту папку
+
+root@debian9:~# cd /opt/proxy
+
+
+4.4. Теперь загрузим последний пакет 3proxy. На момент написания статьи последней стабильной версией была 0.8.12 (18/04/2018) Скачаем её с официального сайта 3proxy
+
+root@debian9:/opt/proxy# wget https://github.com/z3APA3A/3proxy/archive/0.8.12.tar.gz
+
+
+4.5. Распакуем скачанный архив
+
+root@debian9:/opt/proxy# tar zxvf 0.8.12.tar.gz
+
+4.6. Переходим в распакованный каталог для сборки программы
+
+root@debian9:/opt/proxy# cd 3proxy-0.8.12
+
+4.7. Далее нужно добавить строчку в файл заголовка, чтобы наш сервер был полностью анонимным (реально работает, всё проверено, ip клиентов скрываются)
+
+root@debian9:/opt/proxy/3proxy-0.8.12# nano +29 src/proxy.h
+
+Добавляем строку
+
+#define ANONYMOUS 1
+
+Нажимаем Ctrl+x и Enter, чтобы сохранить изменения.
+
+4.8. Приступим к сборке программы
+
+root@debian9:/opt/proxy/3proxy-0.8.12# make -f Makefile.Linux
+
+Makelog
+make[2]: Leaving directory '/opt/proxy/3proxy-0.8.12/src/plugins/TransparentPlugin'
+make[1]: Leaving directory '/opt/proxy/3proxy-0.8.12/src'
+
+Ошибок нет, продолжаем.
+
+4.9. Установим программу в систему
+
+root@debian9:/opt/proxy/3proxy-0.8.12# make -f Makefile.Linux install
+
+4.10. Переходим в корневой каталог и проверяем, куда установилась программа
+
+root@debian9:/opt/proxy/3proxy-0.8.12# cd ~/
+root@debian9:~# whereis 3proxy
+3proxy: /usr/local/bin/3proxy /usr/local/etc/3proxy
+
+4.11. Создадим папку для конфигурационных файлов и логов в домашнем каталоге пользователя
+
+root@debian9:~# mkdir -p /home/joke/proxy/logs
+
+4.12. Переходим в каталог, где должен быть конфиг
+
+root@debian9:~# cd /home/joke/proxy/
+
+4.13. Создаем пустой файл и копируем туда конфиг
+
+root@debian9:/home/joke/proxy# cat > 3proxy.conf
+
+3proxy.conf
+daemon
+pidfile /home/joke/proxy/3proxy.pid
+nserver 8.8.8.8
+nscache 65536
+users tester:CL:1234
+timeouts 1 5 30 60 180 1800 16 60
+log /home/joke/proxy/logs/3proxy.log D
+logformat "- +_L%t.%. %N.%p %E %U %C:%c %R:%r %O %I %h %T"
+rotate 3
+auth strong
+flush
+allow tester
+socks -p3128
+proxy -p8080
+
+Для сохранения нажимаем Ctrl + Z
+
+4.14. Создадим pid — файл, чтобы не было ошибок при запуске.
+
+root@debian9:/home/joke/proxy# cat > 3proxy.pid
+
+Для сохранения нажимаем Ctrl + Z
+
+4.15. Запускаем прокси сервер!
+
+root@debian9:/home/joke/proxy# 3proxy /home/joke/proxy/3proxy.conf
+
+4.16. Посмотрим, слушает ли сервер порты
+
+root@debian9:~/home/joke/proxy# netstat -nlp
+
+netstat log
+Active Internet connections (only servers)
+Proto Recv-Q Send-Q Local Address Foreign Address State PID/Program name
+tcp 0 0 0.0.0.0:8080 0.0.0.0:* LISTEN 504/3proxy
+tcp 0 0 0.0.0.0:22 0.0.0.0:* LISTEN 338/sshd
+tcp 0 0 0.0.0.0:3128 0.0.0.0:* LISTEN 504/3proxy
+tcp6 0 0 :::22 :::* LISTEN 338/sshd
+udp 0 0 0.0.0.0:68 0.0.0.0:* 352/dhclient
+
+Как и было написано в конфиге, веб-прокси слушает у нас порт 8080, Socks5-прокси — 3128.
+
+4.17. Для автозапуска службы прокси после перезагрузки нужно добавить её в cron.
+
+root@debian9:/home/joke/proxy# crontab -e
+
+Добавляем строку
+
+@reboot /usr/local/bin/3proxy /home/joke/proxy/3proxy.conf
+
+Нажимаем Enter, так как cron должен видеть символ конца строки и сохраняем файл.
+
+Должно быть сообщение о установке нового crontab-а.
+
+crontab: installing new crontab
+
+4.18. Перезагрузим систему и попробуем подключиться через браузер к прокси. Для проверки используем браузер Firefox (для веб-прокси) и дополнение FoxyProxy для socks5 с аутентификацией.
+
+root@debian9:/home/joke/proxy# reboot
+
+4.19. Проверив работу прокси после перезагрузки, можно посмотреть логи. На этом настройка прокси-сервера завершена.
+
+3 proxy log
+1542573996.018 PROXY.8080 00000 tester 192.168.23.10:50915 217.12.15.54:443 1193 6939 0 CONNECT_ads.yahoo.com:443_HTTP/1.1
+1542574289.634 SOCK5.3128 00000 tester 192.168.23.10:51193 54.192.13.69:443 0 0 0 CONNECT_normandy.cdn.mozilla.net:443
+
+Настройка и запуск конфигурации Transparent Proxy NAT
+
+В данной конфигурации все устройства внутренней сети будут прозрачно работать в интернете через удаленный прокси-сервер. Абсолютно все tcp-соединения будут перенаправляться в один либо несколько (реально расширяет ширину канала, пример конфигурации №2!) прокси-серверов. Служба DNS будет использовать возможности 3proxy (dnspr). UDP наружу «ходить» не будет, так как мы пока не используем механизм forward (по-умолчанию отключен в ядре Linux).
+
+1. Настало время включить интерфейс enp0s8
+
+root@debian9:~# nano /etc/network/interfaces
+
+/etc/network/interfaces file
+# This file describes the network interfaces available on your system
+# and how to activate them. For more information, see interfaces(5).
+
+source /etc/network/interfaces.d/*
+
+# The loopback network interface
+auto lo
+iface lo inet loopback
+
+# The primary network interface
+allow-hotplug enp0s3
+iface enp0s3 inet dhcp
+
+# The secondary network interface
+allow-hotplug enp0s8
+iface enp0s8 inet static
+address 192.168.201.254
+netmask 255.255.255.0
+
+Тут мы назначили интерфейсу enp0s8 статический адрес 192.168.201.254 и маску 255.255.255.0
+Сохраняем конфиг Ctrl+X и перезагружаемся
+
+root@debian9:~# reboot
+
+2. Проверяем интерфейсы
+
+root@debian9:~# ifconfig
+
+ifconfig log
+enp0s3: flags=4163<UP,BROADCAST,RUNNING,MULTICAST> mtu 1500
+inet 192.168.23.11 netmask 255.255.255.0 broadcast 192.168.23.255
+inet6 fe80::a00:27ff:fec2:bae4 prefixlen 64 scopeid 0x20 ether 08:00:27:c2:ba:e4 txqueuelen 1000 (Ethernet)
+RX packets 61 bytes 7873 (7.6 KiB)
+RX errors 0 dropped 0 overruns 0 frame 0
+TX packets 65 bytes 10917 (10.6 KiB)
+TX errors 0 dropped 0 overruns 0 carrier 0 collisions 0
+
+enp0s8: flags=4163<UP,BROADCAST,RUNNING,MULTICAST> mtu 1500
+inet 192.168.201.254 netmask 255.255.255.0 broadcast 192.168.201.255
+inet6 fe80::a00:27ff:fe79:a7e3 prefixlen 64 scopeid 0x20 ether 08:00:27:79:a7:e3 txqueuelen 1000 (Ethernet)
+RX packets 0 bytes 0 (0.0 B)
+RX errors 0 dropped 0 overruns 0 frame 0
+TX packets 8 bytes 648 (648.0 B)
+TX errors 0 dropped 0 overruns 0 carrier 0 collisions 0
+
+lo: flags=73<UP,LOOPBACK,RUNNING> mtu 65536
+inet 127.0.0.1 netmask 255.0.0.0
+inet6 ::1 prefixlen 128 scopeid 0x10 loop txqueuelen 1 (Local Loopback)
+RX packets 0 bytes 0 (0.0 B)
+RX errors 0 dropped 0 overruns 0 frame 0
+TX packets 0 bytes 0 (0.0 B)
+TX errors 0 dropped 0 overruns 0 carrier 0 collisions 0
+
+3. Всё получилось, теперь необходимо настроить 3proxy для прозрачного проксирования.
+
+root@debian9:~# cd /home/joke/proxy/
+root@debian9:/home/joke/proxy# cat > 3proxytransp.conf
+
+Пример конфигурации прозрачного прокси-сервера №1
+daemon
+pidfile /home/joke/proxy/3proxy.pid
+nserver 8.8.8.8
+nscache 65536
+timeouts 1 5 30 60 180 1800 16 60
+log /home/joke/proxy/logs/3proxy.log D
+logformat "- +_L%t.%. %N.%p %E %U %C:%c %R:%r %O %I %h %T"
+rotate 3
+flush
+auth iponly
+dnspr
+allow *
+parent 1000 socks5 IP_АДРЕС_ВНЕШНЕГО_ПРОКСИ 3128 tester 1234
+plugin /opt/proxy/3proxy-0.8.12/src/TransparentPlugin.ld.so transparent_plugin
+tcppm -i0.0.0.0 888 127.0.0.1 11111
+
+4. Теперь запускаем 3proxy с новым конфигом
+root@debian9:/home/joke/proxy# /usr/local/bin/3proxy /home/joke/proxy/3proxytransp.conf
+
+5. Снова добавим в crontab
+root@debian9:/home/joke/proxy# crontab -e
+@reboot /usr/local/bin/3proxy /home/joke/proxy/3proxytransp.conf
+
+6. Посмотрим, что теперь слушает наш прокси
+root@debian9:~# netstat -nlp
+
+
+netstat log
+Active Internet connections (only servers)
+Proto Recv-Q Send-Q Local Address Foreign Address State PID/Program name
+tcp 0 0 0.0.0.0:22 0.0.0.0:* LISTEN 349/sshd
+tcp 0 0 0.0.0.0:888 0.0.0.0:* LISTEN 354/3proxy
+tcp6 0 0 :::22 :::* LISTEN 349/sshd
+udp 0 0 0.0.0.0:53 0.0.0.0:* 354/3proxy
+udp 0 0 0.0.0.0:68 0.0.0.0:* 367/dhclient
+
+7. Теперь прокси готов принимать любые TCP-соединения на порту 888, DNS на порту 53, чтобы потом их перенаправить в удаленный socks5 — прокси и DNS Гугл 8.8.8.8. Нам осталось настроить правила netfilter (iptables) и DHCP для выдачи адресов.
+
+8. Установим пакет iptables-persistent и dhcpd
+
+root@debian9:~# apt-get install iptables-persistent isc-dhcp-server
+
+9. Правим файл запуска dhcpd
+root@debian9:~# nano /etc/dhcp/dhcpd.conf
+
+dhcpd.conf
+# dhcpd.conf
+#
+# Sample configuration file for ISC dhcpd
+#
+
+# option definitions common to all supported networks…
+option domain-name «example.org»;
+option domain-name-servers ns1.example.org, ns2.example.org;
+
+default-lease-time 600;
+max-lease-time 7200;
+
+ddns-update-style none;
+
+# If this DHCP server is the official DHCP server for the local
+# network, the authoritative directive should be uncommented.
+
+authoritative;
+
+# A slightly different configuration for an internal subnet.
+subnet 192.168.201.0 netmask 255.255.255.0 {
+range 192.168.201.10 192.168.201.250;
+option domain-name-servers 192.168.201.254;
+option routers 192.168.201.254;
+option broadcast-address 192.168.201.255;
+default-lease-time 600;
+max-lease-time 7200;
+}
+
+11. Перезагружаемся и проверяем службу на порту 67
+root@debian9:~# reboot
+root@debian9:~# netstat -nlp
+
+netstat log
+Active Internet connections (only servers)
+Proto Recv-Q Send-Q Local Address Foreign Address State PID/Program name
+tcp 0 0 0.0.0.0:22 0.0.0.0:* LISTEN 389/sshd
+tcp 0 0 0.0.0.0:888 0.0.0.0:* LISTEN 310/3proxy
+tcp6 0 0 :::22 :::* LISTEN 389/sshd
+udp 0 0 0.0.0.0:20364 0.0.0.0:* 393/dhcpd
+udp 0 0 0.0.0.0:53 0.0.0.0:* 310/3proxy
+udp 0 0 0.0.0.0:67 0.0.0.0:* 393/dhcpd
+udp 0 0 0.0.0.0:68 0.0.0.0:* 405/dhclient
+udp6 0 0 :::31728 :::* 393/dhcpd
+raw 0 0 0.0.0.0:1 0.0.0.0:* 393/dhcpd
+
+
+12. Осталось перенаправить все tcp запросы на порт 888 и сохранить правило в iptables
+
+root@debian9:~# iptables -t nat -A PREROUTING -s 192.168.201.0/24 -p tcp -j REDIRECT --to-ports 888
+
+root@debian9:~# iptables-save > /etc/iptables/rules.v4
+
+13. Для расширения полосы канала можно использовать сразу несколько прокси-серверов. Общая сумма должна быть 1000. Новые соединения устанавливаются с вероятностью 0.2, 0.2, 0.2, 0.2, 0,1, 0,1 к указанным прокси-серверам.
+
+Примечание: если у нас web-прокси то вместо socks5 нужно писать connect, если socks4, то socks4 (socks4 НЕ ПОДДЕРЖИВАЕТ АВТОРИЗАЦИЮ ЛОГИН/ПАРОЛЬ!)
+
+Пример конфигурации прозрачного прокси-сервера №2
+daemon
+pidfile /home/joke/proxy/3proxy.pid
+nserver 8.8.8.8
+nscache 65536
+maxconn 500
+timeouts 1 5 30 60 180 1800 16 60
+log /home/joke/proxy/logs/3proxy.log D
+logformat "- +_L%t.%. %N.%p %E %U %C:%c %R:%r %O %I %h %T"
+rotate 3
+flush
+auth iponly
+dnspr
+allow *
+
+parent 200 socks5 IP_АДРЕС_ВНЕШНЕГО_ПРОКСИ№1 3128 tester 1234
+parent 200 socks5 IP_АДРЕС_ВНЕШНЕГО_ПРОКСИ№2 3128 tester 1234
+parent 200 socks5 IP_АДРЕС_ВНЕШНЕГО_ПРОКСИ№3 3128 tester 1234
+parent 200 socks5 IP_АДРЕС_ВНЕШНЕГО_ПРОКСИ№4 3128 tester 1234
+parent 100 socks5 IP_АДРЕС_ВНЕШНЕГО_ПРОКСИ№5 3128 tester 1234
+parent 100 socks5 IP_АДРЕС_ВНЕШНЕГО_ПРОКСИ№6 3128 tester 1234
+
+plugin /opt/proxy/3proxy-0.8.12/src/TransparentPlugin.ld.so transparent_plugin
+tcppm -i0.0.0.0 888 127.0.0.1 11111
+
+Настройка и запуск конфигурации NAT + Transparent Proxy
+
+В данной конфигурации мы будем использовать обычный механизм NAT с выборочным или полным прозрачным проксированием отдельных адресов или подсетей. Пользователи внутренней сети будут работать с определенными сервисами/подсетями даже не догадываясь, что они работают через прокси. Все https соединения работают прекрасно, никаких сертификатов генерировать/подменять не нужно.
+
+Для начала определимся, какие подсети/сервисы мы хотим проксировать. Предположим, что внешние прокси-сервера находятся там, где работает такой сервис, как pandora.com. Теперь осталось определить его подсети/адреса.
+
+1. Пингуем
+
+root@debian9:~# ping pandora.com
+PING pandora.com (208.85.40.20) 56(84) bytes of data.
+
+2. Набираем в гугле BGP 208.85.40.20
+
+Переходим на сайт bgp.he.net/net/208.85.40.0/24#_netinfo
+Видно, что искомаю подсеть это AS40428 Pandora Media, Inc
+
+bgp.he.net/net/208.85.40.0/24#_netinfo
+
+Открываем префиксы v4
+
+bgp.he.net/AS40428#_prefixes
+
+Вот и искомые подсети!
+
+199.116.161.0/24
+199.116.162.0/24
+199.116.164.0/23
+199.116.164.0/24
+199.116.165.0/24
+208.85.40.0/24
+208.85.41.0/24
+208.85.42.0/23
+208.85.42.0/24
+208.85.43.0/24
+208.85.44.0/24
+208.85.46.0/23
+208.85.46.0/24
+208.85.47.0/24
+
+3. Для уменьшения количества подсетей нужно выполнить агрегацию. Переходим на сайт ip-calculator.ru/aggregate и копируем туда наш список. Как результат — 6 подсетей вместо 14-ти.
+
+199.116.161.0/24
+199.116.162.0/24
+199.116.164.0/23
+208.85.40.0/22
+208.85.44.0/24
+208.85.46.0/23
+
+4. Очищаем правила iptables
+
+root@debian9:~# iptables -F
+root@debian9:~# iptables -X
+root@debian9:~# iptables -t nat -F
+root@debian9:~# iptables -t nat -X
+
+Включаем механизм forward и NAT
+
+root@debian9:~# echo 1 > /proc/sys/net/ipv4/ip_forward
+root@debian9:~# iptables -A FORWARD -i enp0s3 -o enp0s8 -j ACCEPT
+root@debian9:~# iptables -A FORWARD -i enp0s8 -o enp0s3 -j ACCEPT
+root@debian9:~# iptables -t nat -A POSTROUTING -o enp0s3 -s 192.168.201.0/24 -j MASQUERADE
+
+Чтобы forward был включен постоянно после перезагрузки изменим файл
+
+root@debian9:~# nano /etc/sysctl.conf
+
+И раскомментируем строку
+
+net.ipv4.ip_forward = 1
+
+Ctrl+X для сохранения файла
+
+5. Заворачиваем подсети pandora.com в прокси
+
+root@debian9:~# iptables -t nat -A PREROUTING -s 192.168.201.0/24 -d 199.116.161.0/24,199.116.162.0/24,199.116.164.0/23,208.85.40.0/22,208.85.44.0/24,208.85.46.0/23 -p tcp -j REDIRECT --to-ports 888
+
+6. Сохраним правила
+
+root@debian9:~# iptables-save > /etc/iptables/rules.v4
+
+Настройка и запуск конфигурации Transparent Proxy via router
+
+В данной конфигурации прозрачный прокси-сервер может быть отдельным ПК или виртуальной машиной за домашним/корпоративным роутером. Достаточно прописать статические маршруты на роутере или устройствах и вся подсеть будет использовать прокси без необходимости каких-либо дополнительных настроек.
+
+ВАЖНО! Необходимо, чтобы наш шлюз получал статический IP от роутера, либо был настроен на статику сам.
+
+1. Настраиваем статический адрес шлюза (адаптер enp0s3)
+
+root@debian9:~# nano /etc/network/interfaces
+
+/etc/network/interfaces file
+# This file describes the network interfaces available on your system
+# and how to activate them. For more information, see interfaces(5).
+
+source /etc/network/interfaces.d/*
+
+# The loopback network interface
+auto lo
+iface lo inet loopback
+
+# The primary network interface
+allow-hotplug enp0s3
+iface enp0s3 inet static
+address 192.168.23.2
+netmask 255.255.255.0
+gateway 192.168.23.254
+
+# The secondary network interface
+allow-hotplug enp0s8
+iface enp0s8 inet static
+address 192.168.201.254
+netmask 255.255.255.0
+
+2. Разрешаем устройствам из подсети 192.168.23.0/24 использовать проксирование
+
+root@debian9:~# iptables -t nat -A PREROUTING -s 192.168.23.0/24 -d 199.116.161.0/24,199.116.162.0/24,199.116.164.0/23,208.85.40.0/22,208.85.44.0/24,208.85.46.0/23 -p tcp -j REDIRECT --to-ports 888
+
+3. Сохраним правила
+root@debian9:~# iptables-save > /etc/iptables/rules.v4
+
+4. Пропишем подсети на роутере
+
+Router network list
+199.116.161.0 255.255.255.0 192.168.23.2
+199.116.162.0 255.255.255.0 192.168.23.2
+199.116.164.0 255.255.254.0 192.168.23.2
+208.85.40.0 255.255.252.0 192.168.23.2
+208.85.44.0 255.255.255.0 192.168.23.2
+208.85.46.0 255.255.254.0 192.168.23.2
