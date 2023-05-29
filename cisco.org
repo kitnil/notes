@@ -81,6 +81,9 @@ Under the switch go to the vlan1 interface: interface vlan 1
 
 (config) ip default-gateway x.x.x.x
 
+* Learning
+- [[https://habr.com/ru/articles/738068/][Журналирование событий средствами Cisco / Хабр]]
+
 * Download
 
 - http://ipmanager.ir/?=CISCO%5C7200
