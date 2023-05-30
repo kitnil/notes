@@ -196,3 +196,19 @@ iptables -t nat -A POSTROUTING -s 192.168.1.0/24 -d 192.168.1.200 -p tcp --dport
 This command specifies the source network as 192.168.1.0/24 (change this to match your specific network), the destination IP address as 192.168.1.200, the protocol as TCP, and the destination port as 80 (change this to match the port you are forwarding). It then uses the SNAT target to change the source IP address to 192.168.1.100, which is the original source IP address of the incoming traffic.
 
 Note that this rule should be used in addition to the DNAT rule in the previous answer, which forwards incoming traffic to the destination IP address. Together, these two rules will enable transparent proxying of the specified port from one IP address to another.
+
+* PREROUTING vs OUTPUT
+
+One needs to pay close attention between local packets, and network packets,
+when using iptables. Local packets are packets created on the local machine,
+whereas network packets are packets received. PREROUTING works on network
+packets, for instance what you would get on a router device. Since in this
+case it's all local, then one must use OUTPUT instead of PREROUTING to
+redirect the packets. The necessary rule is therefore.
+
+iptables -t nat -A OUTPUT     -p tcp --dport 4567 -j REDIRECT --to 8443
+
+https://i.stack.imgur.com/ZCSl9.png
+
+- [[https://stackoverflow.com/questions/64768982/http-iptable-prerouting-rule-is-not-working][nat - HTTP iptable PREROUTING rule is not working - Stack Overflow]]
+  - [[https://danielmiessler.com/study/iptables/][An IPTABLES Primer - Daniel Miessler]]
