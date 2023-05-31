@@ -146,6 +146,9 @@ free mail hosting for their subscribers
 
 * Cheat sheet
 
+- Block resolving by DNS name
+  : iptables -I OUTPUT -p udp -m udp --dport 53 -m string --string "example" --algo kmp -j DROP
+
 - Get all records
   : dig @172.16.103.2 -tAXFR intr
   : dig @172.16.103.2 -tAXFR 16.172.in-addr.arpa
