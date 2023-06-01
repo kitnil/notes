@@ -290,6 +290,7 @@ nix-repl> mynixos2.config.environment.etc."mailman.cfg".text
 - [[https://github.com/DavHau/fromYaml][DavHau/fromYaml: yaml parser in pure nix]]
 - [[https://github.com/fzakaria/nix-harden-needed][fzakaria/nix-harden-needed: Bubble up the correct paths to your shared object libraries in Nix]]
 - [[https://github.com/nix-community/impermanence][nix-community/impermanence: Modules to help you handle persistent state on systems with ephemeral root storage maintainer=@talyz]]
+- [[https://github.com/nickel-lang/nickel-nix][nickel-lang/nickel-nix: An experimental Nix toolkit to use nickel as a language for writing nix packages, shells and more.]]
 #+begin_src nix
   environment.persistence."/nix/state" = {
     directories = [ "/etc/nixos" "/var/log" "/var/lib/docker" ];
