@@ -1,0 +1,258 @@
+#+title: Using GNU Guix Containers with FHS Support
+#+subtitle: FOSDEM 2023
+#+subsubtitle: Declarative and Minimalistic Computing Devroom
+#+author: John Kehayias
+#+date: February 4, 2023
+
+* Intro
+** Me, briefly
+I teach, photograph, code and write; formerly a physicist
+
+Lisp Lover^TM, mainly using Common Lisp in the past
+
+Using and contributing to Guix for ~1.5 years; now with commit access ☻
+
+I'm not a container expert, but hey I've suffered through some containers
+** FHS?
+The /Filesystem Hierarchy Standard/[fn:1]
+
+The goodies in the "usual" places:  =/lib=, =/bin= etc.
+
+But this is a rather big assumption we often don't realize
+
+[fn:1] https://refspecs.linuxfoundation.org/fhs.shtml 
+
+* GNU Guix[fn:2]
+A distribution of the GNU operating system following the Free System Distribution Guidelines[fn:3]
+
+Built on Guile Scheme, including the service manager Shepherd[fn:4] (PID 1)
+
+Lots of cool features: transactional, roll-backs, declarative system configuration, transformations, ...
+
+To provide these features, does *not* follow FHS
+
+[fn:2] https://guix.gnu.org/
+
+[fn:3] https://www.gnu.org/distros/free-system-distribution-guidelines.html 
+
+[fn:4] https://www.gnu.org/software/shepherd/ 
+
+* Guix Shell
+Handy one-off environments: doesn't pollute your profile, quick testing
+
+Cached after first use for speed
+
+Some personal examples:
+
+Use python with python packages to run a script:
+#+begin_src sh
+    guix shell python python-canvasapi -- python3 my-script.py "an argument"
+  #+end_src
+
+ExifTool to wipe metadata from an image:
+#+begin_src sh
+    guix shell perl-image-exiftool -- exiftool -all= --icc_profile:all some-image.jpg
+#+end_src
+
+Take a screenshot of a selected area:
+#+begin_src sh
+    guix shell scrot -- scrot --select
+#+end_src
+
+* Guix Containers
+Add the =--container= or =-C= option to run in a (surprise!) container for isolation/reproducibility
+
+This uses namespaces, same basic idea as other containers
+
+Uses: completely specify the environment (but not a VM), isolate from the host
+
+* FHS Containers
+A new option extending containers: =--emulate-fhs= or =-F=
+
+Sets up an FHS container plus a "vanilla" glibc
++ This glibc will read from the global cache (=/etc/ld.so.cache=)
+
+Uses: developing or running something in a more "typical" yet *minimal* environment, using language-specific tooling, binaries, testing
+
+* Examples
+** Tor Browser
+For privacy (fingerprinting) purposes, running the official Tor Browser binary is a good idea.
+
+And add in some extra isolation and being able to easily control the environment, too!
+
+#+begin_src sh
+  cd tor-browser ; \
+  guix shell --container --network --emulate-fhs \
+      --preserve='^DISPLAY$' \
+      --preserve='^XAUTHORITY$' --expose=$XAUTHORITY \
+      alsa-lib bash coreutils dbus-glib file gcc:lib \
+      grep gtk+ libcxx pciutils sed \
+      -- ./start-tor-browser.desktop -v ;
+  cd ../
+#+end_src
+** Rust
+Rust moves quickly and some projects might want or need the latest toolchain.
+
+We can easily use rustup in an FHS container:
+
+#+begin_src sh
+  guix shell --network --container --emulate-fhs \
+      bash coreutils curl grep nss-certs gcc:lib gcc-toolchain \
+      pkg-config glib cairo atk pango@1.48.10 gdk-pixbuf gtk+ git \
+      --share=$HOME/temphome=$HOME --no-cwd
+
+  curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+#+end_src
+
+And then use the usual instructions for a project, e.g. =cargo build=
+
+** AppImages (VSCodium)
+In Guix we don't have electron-based applications currently (the problem of JS packaging from source), so how about running an AppImage of free software?
+
+#+begin_src sh
+  guix shell --container --network --emulate-fhs \
+      --development ungoogled-chromium gcc:lib \
+      --preserve='^DISPLAY$' \
+      --preserve='^XAUTHORITY$' --expose=$XAUTHORITY \
+      --preserve='^DBUS_' --expose=/var/run/dbus \
+      --expose=/sys/dev --expose=/sys/devices --expose=/dev/dri \
+      -- ./VSCodium-1.74.0.22342.glibc2.17-x86_64.AppImage --appimage-extract-and-run
+#+end_src
+
+Note the need for more host exposure, to communicate with host desktop and use hardware.
+
+* Tips/Discovery
+How do you find what you need in the container?
++ =strace=
++ =ldd=
++ even READMEs
+
+Often you'll need to expose more of the host (display and hardware access especially)
+
+Punching out to the host: Flatpak's =xdg-utils=
+
+* What's Next?
+- utilities to use as script more easily
+
+- bridging the gap of hard to package ecosystems and working outside Guix
+
+- ???
+
+* The End
+
+Another great tool in the =guix shell= toolbox
+
+Always learning and having fun with Guix
+
+Not a tool I need much but very useful when needed
+
+Questions and discussion time!
+
+* Thanks!
+Special thanks to Ludovic Courtès for helping to tweak and polish the FHS container patches and previous work done at Nonguix
+
+Made and presented in Emacs with =org-present=[fn:5] with some tweaks from David Wilson[fn:6]
+
+See also my blog post[fn:7] on the GNU Guix Blog
+
+[fn:5] https://github.com/rlister/org-present 
+
+[fn:6] https://systemcrafters.net/emacs-tips/presentations-with-org-present/
+
+[fn:7] https://guix.gnu.org/en/blog/2023/the-filesystem-hierarchy-standard-comes-to-guix-containers/
+
+* Tweaks for =org-present=                                           :noexport:
+Modified from https://stackoverflow.com/a/9377454; now not working with multi-line regions when it (briefly only?) did...
+#+begin_src emacs-lisp :results silent
+  (defun p-send(start end)
+    (interactive "r") ;;Make the custom function interactive and operative on a region
+    (append-to-buffer (get-buffer "*eshell*") start end) ;;append to the buffer named *eshell*
+    (switch-to-buffer-other-window (get-buffer "*eshell*")) ;;switches to the buffer
+    (execute-kbd-macro "\C-m")) ;;sends the enter keystroke to the shell
+#+end_src
+
+Modified from https://systemcrafters.net/emacs-tips/presentations-with-org-present/
+#+begin_src emacs-lisp
+  ;; Set reusable font name variables
+  (defvar my/fixed-width-font "Hack Nerd Font"
+    "The font to use for monospaced (fixed width) text.")
+
+  (defvar my/variable-width-font "Noto Sans"
+    "The font to use for variable-pitch (document) text.")
+
+  ;; NOTE: These settings might not be ideal for your machine, tweak them as needed!
+  ;(set-face-attribute 'default nil :font my/fixed-width-font :weight 'light :height 150)
+  ;(set-face-attribute 'fixed-pitch nil :font my/fixed-width-font :weight 'light :height 150)
+  ;(set-face-attribute 'variable-pitch nil :font my/variable-width-font :weight 'light :height 150)
+
+  ;;; Org Mode Appearance ------------------------------------
+
+  ;; Load org-faces to make sure we can set appropriate faces
+  (require 'org-faces)
+
+  ;; Resize Org headings
+  (dolist (face '((org-level-1 . 1.2)
+                  (org-level-2 . 1.1)
+                  (org-level-3 . 1.05)
+                  (org-level-4 . 1.0)
+                  (org-level-5 . 1.1)
+                  (org-level-6 . 1.1)
+                  (org-level-7 . 1.1)
+                  (org-level-8 . 1.1)))
+    (set-face-attribute (car face) nil :font my/variable-width-font :weight 'medium :height (cdr face)))
+
+  ;; Make the document title a bit bigger
+  ;(set-face-attribute 'org-document-title nil :font my/variable-width-font :weight 'bold :height 1.6)
+
+  ;;; Org Present --------------------------------------------
+
+  (defun my/org-present-prepare-slide (buffer-name heading)
+    ;; Show only top-level headlines
+    (org-overview)
+
+    ;; Unfold the current entry
+    (org-show-entry)
+
+    ;; Show only direct subheadings of the slide but don't expand them
+    (org-show-children))
+
+  (defun my/org-present-start ()
+    (flyspell-mode -1)
+    ;; Tweak font sizes
+    (setq-local face-remapping-alist '((default (:height 1.6) variable-pitch)
+                                       (header-line (:height 4.5) variable-pitch)
+                                       (org-document-title (:height 1.85) org-document-title)
+                                       (org-code (:height 1.1) org-code)
+                                       (org-verbatim (:height 1.1) org-verbatim)
+                                       (org-block (:height 1.1) org-block)
+                                       (org-block-begin-line (:height 0.7) org-block)))
+
+    ;; Set a blank header line string to create blank space at the top
+    (setq header-line-format " ")
+
+    ;; Display inline images automatically
+    (org-display-inline-images))
+
+  (defun my/org-present-end ()
+    (flyspell-mode 1)
+    ;; Reset font customizations
+    (setq-local face-remapping-alist '((default variable-pitch default)))
+
+    ;; Clear the header line string so that it isn't displayed
+    (setq header-line-format nil)
+
+    ;; Stop displaying inline images
+    (org-remove-inline-images))
+
+  ;; Register hooks with org-present
+  (add-hook 'org-present-mode-hook 'my/org-present-start)
+  (add-hook 'org-present-mode-quit-hook 'my/org-present-end)
+  (add-hook 'org-present-after-navigate-functions 'my/org-present-prepare-slide)
+
+  ;; more could come from https://xenodium.com/emacs-org-present-in-style/
+#+end_src
+
+# Local Variables:
+# org-footnote-section: nil
+# visual-fill-column-center-text: t
+# End:
