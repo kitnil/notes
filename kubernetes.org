@@ -2331,3 +2331,45 @@ Kubelet is responsible for managing and monitoring the state of each node in a K
     Kubelet API server check: Kubelet ensures that it can communicate with the Kubernetes API server and that the API server is healthy.
 
 These health checks help ensure the overall health and availability of the Kubernetes cluster.
+
+** kubernetes rbac readonly user for specific namespaces
+
+To create a Kubernetes RBAC readonly user for specific namespaces, you would need to follow these steps:
+
+    Create a new Kubernetes role that has read-only permissions for the resources you want to allow the user to access. For example, if you want the user to be able to read ConfigMaps, you could create a role with the following YAML definition:
+
+kind: Role
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: readonly-role
+rules:
+- apiGroups:
+  - ""
+  resources:
+  - configmaps
+  verbs:
+  - get
+  - list
+  - watch
+
+    Bind the new role to a new Kubernetes role binding that maps the role to the user or group you want to grant access to. For example, if you want to grant access to a user named "readonly-user" in the "mynamespace" namespace, you could create a role binding with the following YAML definition:
+
+kind: RoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: readonly-role-binding
+  namespace: mynamespace
+subjects:
+- kind: User
+  name: readonly-user
+  apiGroup: rbac.authorization.k8s.io
+roleRef:
+  kind: Role
+  name: readonly-role
+  apiGroup: rbac.authorization.k8s.io
+
+This binds the "readonly-role" to the "readonly-user" in the "mynamespace" namespace.
+
+    Repeat this process for any additional namespaces you want to grant read-only access to.
+
+Note that this setup only provides read-only access to specific resources in the designated namespaces. If you want to restrict access further, you may need to create additional roles and bindings with more specific permissions as needed.
