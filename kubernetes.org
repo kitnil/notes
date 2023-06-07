@@ -260,6 +260,9 @@ lightest of data storage needs.
 - [[https://www.ibm.com/docs/en/cloud-paks/cp-management/2.0.0?topic=kubectl-using-service-account-tokens-connect-api-server][Using service account tokens to connect with the API server - IBM Documentation]]
   : curl --cacert /run/secrets/kubernetes.io/serviceaccount/ca.crt -H "Authorization: Bearer $(cat /run/secrets/kubernetes.io/serviceaccount/token)" https://kubernetes.intr:6443/api/v1/pod/namespaces/jenkins
 
+- KEDA metrics-server with verbose output
+  : kubectl get --raw /apis/external.metrics.k8s.io/v1beta1 -v 6
+
 ** authentication
 
 [[https://stackoverflow.com/questions/51612976/how-to-view-members-of-subject-with-group-kind][kubernetes - How to view members of subject with Group kind - Stack Overflow]]
