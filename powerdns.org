@@ -39,3 +39,5 @@
   ) AS json_data
   FROM records;
 #+end_src
+
+: SELECT CONCAT('{', '"id":', id, ',', '"domain_id":', domain_id, ',', '"name":"', name, '",', '"type":"', type, '",', '"content":"', content, '",', '"ttl":', ttl, ',', '"priority":', prio, ',', '"auth":', auth, '}') AS json_data FROM records WHERE domain_id IN (SELECT id FROM domains WHERE name='example.org' or name='example.ru');
