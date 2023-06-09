@@ -688,6 +688,834 @@ If you get any output (there are lines with the “Remote failed to finish a req
 - controller options
   : linstor -m controller list-properties
 
+** [[https://habr.com/ru/articles/531344/][Траблшутинг DRBD9 в LINSTOR]]
+
+За последние несколько лет плотной работы с LINSTOR и DRBD9 у меня накопилось достаточное количество проблем и рецептов решения для них, что мне захотелось оформить их в небольшую статью. Не уверен что они полностью совпадут с вашими случаями, но теперь вы хотя бы сможете понять механику работы с DRBD9, а именно, самую неприятную его часть — траблшутинг.
+
+Информации по данному поводу в интернете немного, так что если вы используете или планируете использовать LINSTOR, уверен рано-или поздно вам эта информация может пригодиться.
+
+Кейс 1: Unknown и DELETING ресурсы
+
+# linstor r l -r one-vm-10417-disk-0
+╭────────────────────────────────────────────────────────────────────────────────────────╮
+┊ ResourceName        ┊ Node   ┊ Port  ┊ Usage  ┊ Conns ┊    State ┊ CreatedOn           ┊
+╞════════════════════════════════════════════════════════════════════════════════════════╡
+┊ one-vm-10417-disk-0 ┊ m14c18 ┊ 56263 ┊        ┊       ┊  Unknown ┊ 2021-07-09 14:20:31 ┊
+┊ one-vm-10417-disk-0 ┊ m15c38 ┊ 56263 ┊ Unused ┊ Ok    ┊ Diskless ┊ 2021-04-08 07:46:43 ┊
+┊ one-vm-10417-disk-0 ┊ m8c12  ┊ 56263 ┊ Unused ┊ Ok    ┊ UpToDate ┊ 2020-10-14 13:10:42 ┊
+╰────────────────────────────────────────────────────────────────────────────────────────╯
+
+
+Как правило ничего критичного, просто нода на которой он находится скорее всего OFFLINE:
+
+# linstor n l -n m14c18
+╭─────────────────────────────────────────────────────────╮
+┊ Node   ┊ NodeType  ┊ Addresses                ┊ State   ┊
+╞═════════════════════════════════════════════════════════╡
+┊ m14c18 ┊ SATELLITE ┊ 10.36.130.153:3367 (SSL) ┊ OFFLINE ┊
+╰─────────────────────────────────────────────────────────╯
+
+
+Проверьте запущен ли на ней linstor-satellite и доступен ли он для linstor-controller'а.
+
+Если хотя бы один ресурс находится в Unknown статусе, то удаление любых других ресурсов будет зависать на DELETING. В последних версиях LINSTOR такие удаляемые ресурсы всё равно можно вернуть к жизни выполнив resource create, например:
+
+# linstor r l -r one-vm-10417-disk-0
+╭────────────────────────────────────────────────────────────────────────────────────────╮
+┊ ResourceName        ┊ Node   ┊ Port  ┊ Usage  ┊ Conns ┊    State ┊ CreatedOn           ┊
+╞════════════════════════════════════════════════════════════════════════════════════════╡
+┊ one-vm-10417-disk-0 ┊ m14c18 ┊ 56263 ┊        ┊       ┊  Unknown ┊ 2021-07-09 14:20:31 ┊
+┊ one-vm-10417-disk-0 ┊ m15c38 ┊ 56263 ┊        ┊ Ok    ┊ DELETING ┊ 2021-04-08 07:46:43 ┊
+┊ one-vm-10417-disk-0 ┊ m16c2  ┊ 56263 ┊        ┊ Ok    ┊ DELETING ┊ 2021-05-01 03:36:21 ┊
+┊ one-vm-10417-disk-0 ┊ m8c12  ┊ 56263 ┊ Unused ┊ Ok    ┊ UpToDate ┊ 2020-10-14 13:10:42 ┊
+╰────────────────────────────────────────────────────────────────────────────────────────╯
+
+# linstor r c m15c38 one-vm-10417-disk-0 --diskless
+╭────────────────────────────────────────────────────────────────────────────────────────╮
+┊ ResourceName        ┊ Node   ┊ Port  ┊ Usage  ┊ Conns ┊    State ┊ CreatedOn           ┊
+╞════════════════════════════════════════════════════════════════════════════════════════╡
+┊ one-vm-10417-disk-0 ┊ m14c18 ┊ 56263 ┊        ┊       ┊  Unknown ┊ 2021-07-09 14:20:31 ┊
+┊ one-vm-10417-disk-0 ┊ m15c38 ┊ 56263 ┊ Unused ┊ Ok    ┊ Diskless ┊ 2021-04-08 07:46:43 ┊
+┊ one-vm-10417-disk-0 ┊ m16c2  ┊ 56263 ┊        ┊ Ok    ┊ DELETING ┊ 2021-05-01 03:36:21 ┊
+┊ one-vm-10417-disk-0 ┊ m8c12  ┊ 56263 ┊ Unused ┊ Ok    ┊ UpToDate ┊ 2020-10-14 13:10:42 ┊
+╰────────────────────────────────────────────────────────────────────────────────────────╯
+
+
+В любом случае, если ваша нода полностью вышла из строя, единственный способ удалить Unknown ресурс — это сделать node lost:
+
+# linstor node lost m14c18
+# linstor r l -r one-vm-10417-disk-0
+╭────────────────────────────────────────────────────────────────────────────────────────╮
+┊ ResourceName        ┊ Node   ┊ Port  ┊ Usage  ┊ Conns ┊    State ┊ CreatedOn           ┊
+╞════════════════════════════════════════════════════════════════════════════════════════╡
+┊ one-vm-10417-disk-0 ┊ m15c38 ┊ 56263 ┊ Unused ┊ Ok    ┊ Diskless ┊ 2021-04-08 07:46:43 ┊
+┊ one-vm-10417-disk-0 ┊ m8c12  ┊ 56263 ┊ Unused ┊ Ok    ┊ UpToDate ┊ 2020-10-14 13:10:42 ┊
+╰────────────────────────────────────────────────────────────────────────────────────────╯
+
+
+Как мы видим, остальные DELETING ресурсы так же исчезли. Такое поведение связанно с логикой DRBD. Если существует шанс что ресурс ещё остался где-то жить, есть вероятность того что он вернётся в кластер и произойдёт конфликт. Чтобы этого избежать, удалять Unknown ресурсы с ноды можно только путём удаления целиком неисправной ноды.
+
+Кейс 2: Outdated-реплика
+
+По какой-то причине у нас образовалась Outdated-реплика:
+
+# linstor r l -r one-vm-5899-disk-0
+╭──────────────────────────────────────────────────────────────────────────────────────╮
+┊ ResourceName       ┊ Node   ┊ Port ┊ Usage  ┊ Conns ┊    State ┊ CreatedOn           ┊
+╞══════════════════════════════════════════════════════════════════════════════════════╡
+┊ one-vm-5899-disk-0 ┊ m11c30 ┊ 8306 ┊ Unused ┊ Ok    ┊ UpToDate ┊ 2021-02-03 09:43:02 ┊
+┊ one-vm-5899-disk-0 ┊ m13c25 ┊ 8306 ┊ Unused ┊ Ok    ┊ Outdated ┊ 2021-02-02 17:51:26 ┊
+┊ one-vm-5899-disk-0 ┊ m15c25 ┊ 8306 ┊ InUse  ┊ Ok    ┊ Diskless ┊ 2021-01-18 15:51:40 ┊
+╰──────────────────────────────────────────────────────────────────────────────────────╯
+
+
+Пофиксить можно довольно просто:
+
+root@m13c25:~# drbdadm disconnect one-vm-5899-disk-0
+root@m13c25:~# drbdadm connect --discard-my-data one-vm-5899-disk-0
+root@m13c25:~# drbdadm status one-vm-5899-disk-0
+one-vm-5899-disk-0 role:Secondary
+  disk:UpToDate
+  m11c30 role:Secondary
+    peer-disk:UpToDate
+  m15c25 role:Primary
+    peer-disk:Diskless
+
+
+    Примечание: флаг --discard-my-data имеет силу только при сплитбрейне, во всех остальных случаях его указание не имеет эфекта.
+
+
+Кейс 3: Inconsistent-реплика
+
+Здесь по какой-то причине одна из реплик стала отображаться как Inconsistent
+
+linstor r l -r one-vm-6372-disk-0
+╭──────────────────────────────────────────────────────────────────────────────────────────╮
+┊ ResourceName       ┊ Node   ┊ Port ┊ Usage  ┊ Conns ┊        State ┊ CreatedOn           ┊
+╞══════════════════════════════════════════════════════════════════════════════════════════╡
+┊ one-vm-6372-disk-0 ┊ m10c17 ┊ 8262 ┊ Unused ┊ Ok    ┊     UpToDate ┊ 2021-02-03 09:43:31 ┊
+┊ one-vm-6372-disk-0 ┊ m13c35 ┊ 8262 ┊ Unused ┊ Ok    ┊ Inconsistent ┊                     ┊
+┊ one-vm-6372-disk-0 ┊ m8c10  ┊ 8262 ┊ InUse  ┊ Ok    ┊     Diskless ┊ 2021-01-05 20:22:14 ┊
+╰──────────────────────────────────────────────────────────────────────────────────────────╯
+
+linstor v l -r one-vm-6372-disk-0
+╭──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+┊ Node   ┊ Resource           ┊ StoragePool          ┊ VolNr ┊ MinorNr ┊ DeviceName    ┊ Allocated ┊ InUse  ┊        State ┊
+╞══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╡
+┊ m10c17 ┊ one-vm-6372-disk-0 ┊ thindata             ┊     0 ┊    2261 ┊ /dev/drbd2261 ┊ 19.38 GiB ┊ Unused ┊     UpToDate ┊
+┊ m13c35 ┊ one-vm-6372-disk-0 ┊ thindata             ┊     0 ┊    2261 ┊ /dev/drbd2261 ┊ 20.01 GiB ┊ Unused ┊ Inconsistent ┊
+┊ m8c10  ┊ one-vm-6372-disk-0 ┊ DfltDisklessStorPool ┊     0 ┊    2261 ┊ /dev/drbd2261 ┊           ┊ InUse  ┊     Diskless ┊
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+
+
+Зайдя на ноду, мы можем обратить внимание что она находится в состоянии синка:
+
+root@m13c35:~# drbdadm status one-vm-6372-disk-0
+one-vm-6372-disk-0 role:Secondary
+  disk:Inconsistent
+  m10c17 role:Secondary
+    replication:SyncTarget peer-disk:UpToDate done:51.52
+  m8c10 role:Primary
+    peer-disk:Diskless
+
+
+Попробуем переподключить её ко второй diskful-реплике:
+
+root@m13c35:~# drbdadm disconnect one-vm-6372-disk-0:m10c17
+root@m13c35:~# drbdadm connect one-vm-6372-disk-0:m10c17
+root@m13c35:~# drbdadm status one-vm-6372-disk-0
+one-vm-6372-disk-0 role:Secondary
+  disk:Inconsistent
+  m10c17 role:Secondary
+    replication:SyncTarget peer-disk:UpToDate done:0.00
+  m8c10 role:Primary
+    peer-disk:Diskless
+
+
+Хм, теперь репликация зависла на нуле процентов, к чёрту, давайте пересоздадим ресурс:
+
+linstor r d m13c35 one-vm-6372-disk-0
+linstor rd ap one-vm-6618-disk-9
+linstor r l -r one-vm-6372-disk-0
+╭────────────────────────────────────────────────────────────────────────────────────────────────╮
+┊ ResourceName       ┊ Node   ┊ Port ┊ Usage  ┊ Conns ┊              State ┊ CreatedOn           ┊
+╞════════════════════════════════════════════════════════════════════════════════════════════════╡
+┊ one-vm-6372-disk-0 ┊ m10c17 ┊ 8262 ┊ Unused ┊ Ok    ┊           UpToDate ┊ 2021-02-03 09:43:31 ┊
+┊ one-vm-6372-disk-0 ┊ m13c35 ┊ 8262 ┊ Unused ┊ Ok    ┊ SyncTarget(43.43%) ┊ 2021-07-09 13:36:51 ┊
+┊ one-vm-6372-disk-0 ┊ m8c10  ┊ 8262 ┊ InUse  ┊ Ok    ┊           Diskless ┊ 2021-01-05 20:22:14 ┊
+╰────────────────────────────────────────────────────────────────────────────────────────────────╯
+
+
+Ура, репликация пошла!
+
+    Примечание: Кейс 7 в данном случае показывает, что drbdadm down / up на m13c35 скорее всего вернуло бы реплику к жизни.
+
+
+Кейс 4: StandAlone по отношению к diskless-реплике
+
+linstor r l -r one-vm-8586-disk-0
+╭───────────────────────────────────────────────────────────────────────────────────────────────────╮
+┊ ResourceName       ┊ Node   ┊ Port ┊ Usage  ┊ Conns              ┊    State ┊ CreatedOn           ┊
+╞═══════════════════════════════════════════════════════════════════════════════════════════════════╡
+┊ one-vm-8586-disk-0 ┊ m11c42 ┊ 8543 ┊ Unused ┊ StandAlone(m13c34) ┊ Outdated ┊ 2020-11-28 22:07:23 ┊
+┊ one-vm-8586-disk-0 ┊ m13c17 ┊ 8543 ┊ Unused ┊ Ok                 ┊ Diskless ┊                     ┊
+┊ one-vm-8586-disk-0 ┊ m13c34 ┊ 8543 ┊ InUse  ┊ Connecting(m11c42) ┊ Diskless ┊ 2021-01-20 14:40:04 ┊
+┊ one-vm-8586-disk-0 ┊ m15c36 ┊ 8543 ┊ Unused ┊ Ok                 ┊ UpToDate ┊                     ┊
+╰───────────────────────────────────────────────────────────────────────────────────────────────────╯
+
+
+Здесь мы видим что ресурс на m11c42 находится в состоянии StandAlone по отношению к diskless-реплике на m13c34. Ресурсы переходят в StandAlone когда замечают несоответсвия в данных между собой. Лечится довольно просто:
+
+root@m11c42:~# drbdadm disconnect one-vm-8586-disk-0
+root@m11c42:~# drbdadm connect one-vm-8586-disk-0 --discard-my-data 
+root@m11c42:~# drbdadm status one-vm-8586-disk-0
+one-vm-8586-disk-0 role:Secondary
+  disk:UpToDate
+  m13c17 role:Secondary
+    peer-disk:Diskless
+  m13c34 role:Primary
+    peer-disk:Diskless
+  m15c36 role:Secondary
+    peer-disk:UpToDate
+
+
+Кейс 5: StandAlone по отношению к diskful-реплике
+
+Здесь у нас другая ситуация, ресурс на m11c44 находится в StandAlone к другой diskful-реплике на m10c27:
+
+# linstor r l -r one-vm-8536-disk-0
+╭───────────────────────────────────────────────────────────────────────────────────────────────────╮
+┊ ResourceName       ┊ Node   ┊ Port ┊ Usage  ┊ Conns              ┊    State ┊ CreatedOn           ┊
+╞═══════════════════════════════════════════════════════════════════════════════════════════════════╡
+┊ one-vm-8536-disk-0 ┊ m10c27 ┊ 8656 ┊ Unused ┊ Connecting(m11c44) ┊ UpToDate ┊ 2021-02-02 17:41:36 ┊
+┊ one-vm-8536-disk-0 ┊ m11c44 ┊ 8656 ┊ Unused ┊ StandAlone(m10c27) ┊ Outdated ┊ 2021-02-03 09:51:30 ┊
+┊ one-vm-8536-disk-0 ┊ m13c29 ┊ 8656 ┊ Unused ┊ Ok                 ┊ Diskless ┊                     ┊
+┊ one-vm-8536-disk-0 ┊ m13c9  ┊ 8656 ┊ InUse  ┊ Ok                 ┊ Diskless ┊ 2021-01-21 09:21:55 ┊
+╰───────────────────────────────────────────────────────────────────────────────────────────────────╯
+
+root@m11c44:~# drbdadm status one-vm-8536-disk-0
+one-vm-8536-disk-0 role:Secondary
+  disk:Outdated quorum:no
+  m10c27 connection:StandAlone
+  m13c29 role:Secondary
+    peer-disk:Diskless
+  m13c9 role:Primary
+    peer-disk:Diskless
+
+
+Мы можем попробовать её починить, также как и в прошлом кейсе:
+
+
+root@m11c44:~# drbdadm disconnect one-vm-8536-disk-0
+root@m11c44:~# drbdadm connect one-vm-8536-disk-0 --discard-my-data 
+root@m11c44:~# drbdadm status one-vm-8536-disk-0
+one-vm-8536-disk-0 role:Secondary
+  disk:Outdated quorum:no
+  m10c27 connection:StandAlone
+  m13c29 role:Secondary
+    peer-disk:Diskless
+  m13c9 role:Primary
+    peer-disk:Diskless
+
+
+Но после подключения реплика практически моментально возвращается обратно в StandAlone. В dmesg для этого ресурса можно увидить, ошибку Unrelated data, aborting!:
+
+
+[706520.163680] drbd one-vm-8536-disk-0/0 drbd2655 m10c27: drbd_sync_handshake:
+[706520.163691] drbd one-vm-8536-disk-0/0 drbd2655 m10c27: self E54E31513A64A2EE:0000000000000000:35BC97142AF7A8A4:0000000000000000 bits:1266688 flags:3
+[706520.163699] drbd one-vm-8536-disk-0/0 drbd2655 m10c27: peer 591D9E9CA26B4F98:66E67F43AB59AB30:4F01DD98B884F10E:0000000000000000 bits:24982941 flags:1100
+[706520.163708] drbd one-vm-8536-disk-0/0 drbd2655 m10c27: uuid_compare()=unrelated-data by rule=history-both
+[706520.163710] drbd one-vm-8536-disk-0/0 drbd2655: Unrelated data, aborting!
+[706520.528669] drbd one-vm-8536-disk-0 m10c27: Aborting remote state change 1918960097
+
+
+Такой ресурс проще удалить и создать заново:
+
+linstor r d m11c44 one-vm-8536-disk-0      
+linstor rd ap one-vm-8536-disk-0
+linstor r l -r one-vm-8536-disk-0
+╭───────────────────────────────────────────────────────────────────────────────────────────────╮
+┊ ResourceName       ┊ Node   ┊ Port ┊ Usage  ┊ Conns ┊             State ┊ CreatedOn           ┊
+╞═══════════════════════════════════════════════════════════════════════════════════════════════╡
+┊ one-vm-8536-disk-0 ┊ m10c27 ┊ 8656 ┊ Unused ┊ Ok    ┊          UpToDate ┊ 2021-02-02 17:41:36 ┊
+┊ one-vm-8536-disk-0 ┊ m11c44 ┊ 8656 ┊ Unused ┊ Ok    ┊ SyncTarget(0.48%) ┊ 2021-07-09 15:40:17 ┊
+┊ one-vm-8536-disk-0 ┊ m13c29 ┊ 8656 ┊ Unused ┊ Ok    ┊          Diskless ┊                     ┊
+┊ one-vm-8536-disk-0 ┊ m13c9  ┊ 8656 ┊ InUse  ┊ Ok    ┊          Diskless ┊ 2021-01-21 09:21:55 ┊
+╰───────────────────────────────────────────────────────────────────────────────────────────────╯
+
+
+Кейс 6: Consistent-реплика
+
+Почти тоже самое что и предыдущий кейс, но вместо StandAlone реплика помечена как Consistent:
+
+linstor r l -r one-vm-8379-disk-0
+╭─────────────────────────────────────────────────────────────────────────────────────────────────────╮
+┊ ResourceName       ┊ Node   ┊ Port ┊ Usage  ┊ Conns              ┊      State ┊ CreatedOn           ┊
+╞═════════════════════════════════════════════════════════════════════════════════════════════════════╡
+┊ one-vm-8379-disk-0 ┊ m13c40 ┊ 8052 ┊ Unused ┊ StandAlone(m14c6)  ┊ Consistent ┊ 2021-02-02 18:03:36 ┊
+┊ one-vm-8379-disk-0 ┊ m14c15 ┊ 8052 ┊ InUse  ┊ Ok                 ┊   Diskless ┊ 2021-02-03 07:53:58 ┊
+┊ one-vm-8379-disk-0 ┊ m14c6  ┊ 8052 ┊ Unused ┊ StandAlone(m13c40) ┊   UpToDate ┊                     ┊
+╰─────────────────────────────────────────────────────────────────────────────────────────────────────╯
+
+linstor v l -r one-vm-8379-disk-0
+╭────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+┊ Node   ┊ Resource           ┊ StoragePool          ┊ VolNr ┊ MinorNr ┊ DeviceName    ┊ Allocated ┊ InUse  ┊      State ┊
+╞════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╡
+┊ m13c40 ┊ one-vm-8379-disk-0 ┊ thindata             ┊     0 ┊    2051 ┊ /dev/drbd2051 ┊ 24.16 GiB ┊ Unused ┊ Consistent ┊
+┊ m14c15 ┊ one-vm-8379-disk-0 ┊ DfltDisklessStorPool ┊     0 ┊    2051 ┊ /dev/drbd2051 ┊           ┊ InUse  ┊   Diskless ┊
+┊ m14c6  ┊ one-vm-8379-disk-0 ┊ thindata             ┊     0 ┊    2051 ┊ /dev/drbd2051 ┊ 40.01 GiB ┊ Unused ┊   UpToDate ┊
+╰────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+
+
+В dmesg можно также обнаружить Unrelated data:
+
+root@m14c6:~# dmesg  |grep one-vm-8379-disk-0 | grep 'Unrelated data'
+[2983657.291734] drbd one-vm-8379-disk-0/0 drbd2051: Unrelated data, aborting!
+[2983659.335697] drbd one-vm-8379-disk-0/0 drbd2051: Unrelated data, aborting!
+
+
+пересоздаём девайс:
+
+linstor r d m13c40 one-vm-8379-disk-0
+linstor rd ap one-vm-8379-disk-0
+linstor r l -r one-vm-8379-disk-0
+╭───────────────────────────────────────────────────────────────────────────────────────────────╮
+┊ ResourceName       ┊ Node   ┊ Port ┊ Usage  ┊ Conns ┊             State ┊ CreatedOn           ┊
+╞═══════════════════════════════════════════════════════════════════════════════════════════════╡
+┊ one-vm-8379-disk-0 ┊ m11c44 ┊ 8052 ┊ Unused ┊ Ok    ┊ SyncTarget(8.62%) ┊ 2021-07-09 15:44:51 ┊
+┊ one-vm-8379-disk-0 ┊ m14c15 ┊ 8052 ┊ InUse  ┊ Ok    ┊          Diskless ┊ 2021-02-03 07:53:58 ┊
+┊ one-vm-8379-disk-0 ┊ m14c6  ┊ 8052 ┊ Unused ┊ Ok    ┊          UpToDate ┊                     ┊
+╰───────────────────────────────────────────────────────────────────────────────────────────────╯
+
+
+Репликация пошла, ура!
+
+Кейс 7: Классический split-brain
+
+Здесь у нас две diskful-реплики, которые не могут договориться между ссобой:
+
+# linstor r l -r one-vm-8373-disk-2
+╭───────────────────────────────────────────────────────────────────────────────────────────────────╮
+┊ ResourceName       ┊ Node   ┊ Port ┊ Usage  ┊ Conns              ┊    State ┊ CreatedOn           ┊
+╞═══════════════════════════════════════════════════════════════════════════════════════════════════╡
+┊ one-vm-8373-disk-2 ┊ m11c12 ┊ 8069 ┊ InUse  ┊ Ok                 ┊ Diskless ┊ 2021-01-05 19:06:18 ┊
+┊ one-vm-8373-disk-2 ┊ m13c23 ┊ 8069 ┊ Unused ┊ StandAlone(m14c6)  ┊ Outdated ┊                     ┊
+┊ one-vm-8373-disk-2 ┊ m14c6  ┊ 8069 ┊ Unused ┊ StandAlone(m13c23) ┊ UpToDate ┊                     ┊
+╰───────────────────────────────────────────────────────────────────────────────────────────────────╯
+
+# linstor v l -r one-vm-8373-disk-2
+╭──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+┊ Node   ┊ Resource           ┊ StoragePool          ┊ VolNr ┊ MinorNr ┊ DeviceName    ┊ Allocated ┊ InUse  ┊    State ┊
+╞══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╡
+┊ m11c12 ┊ one-vm-8373-disk-2 ┊ DfltDisklessStorPool ┊     0 ┊    2068 ┊ /dev/drbd2068 ┊           ┊ InUse  ┊ Diskless ┊
+┊ m13c23 ┊ one-vm-8373-disk-2 ┊ thindata             ┊     0 ┊    2068 ┊ /dev/drbd2068 ┊ 19.51 GiB ┊ Unused ┊ Outdated ┊
+┊ m14c6  ┊ one-vm-8373-disk-2 ┊ thindata             ┊     0 ┊    2068 ┊ /dev/drbd2068 ┊ 19.51 GiB ┊ Unused ┊ UpToDate ┊
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+
+
+Выбираем реплику на которой мы хотим заменить данные, и выполняем реконнект с discard-my-data на ней:
+
+root@m13c23:~# drbdadm status one-vm-8373-disk-2
+one-vm-8373-disk-2 role:Secondary
+  disk:Outdated quorum:no
+  m11c12 role:Primary
+    peer-disk:Diskless
+  m14c6 connection:StandAlone
+
+root@m13c23:~# drbdadm disconnect one-vm-8373-disk-2
+root@m13c23:~# drbdadm connect one-vm-8373-disk-2 --discard-my-data 
+root@m13c23:~# drbdadm status one-vm-8373-disk-2
+one-vm-8373-disk-2 role:Secondary
+  disk:Outdated quorum:no
+  m11c12 role:Primary
+    peer-disk:Diskless
+  m14c6 connection:Connecting
+
+
+Она переходит в Connecting, теперь нам нужно передёрнуть вторую реплику:
+
+root@m14c6:~# drbdadm disconnect  one-vm-8373-disk-2:m13c23
+root@m14c6:~# drbdadm connect  one-vm-8373-disk-2:m13c23
+root@m14c6:~# drbdadm status one-vm-8373-disk-2
+one-vm-8373-disk-2 role:Secondary
+  disk:UpToDate
+  m11c12 role:Primary
+    peer-disk:Diskless
+  m13c23 role:Secondary congested:yes ap-in-flight:0 rs-in-flight:2264
+    replication:SyncSource peer-disk:Inconsistent done:72.42
+
+root@m14c6:~# drbdadm status one-vm-8373-disk-2
+one-vm-8373-disk-2 role:Secondary
+  disk:UpToDate
+  m11c12 role:Primary
+    peer-disk:Diskless
+  m13c23 role:Secondary
+    peer-disk:UpToDate
+
+
+Кейс 8: Застрявший SyncTarget
+
+Синхронизация застряла на 81.71% и не двигается
+
+# linstor r l -r one-vm-7584-disk-0
+╭────────────────────────────────────────────────────────────────────────────────────────────────╮
+┊ ResourceName       ┊ Node   ┊ Port ┊ Usage  ┊ Conns ┊              State ┊ CreatedOn           ┊
+╞════════════════════════════════════════════════════════════════════════════════════════════════╡
+┊ one-vm-7584-disk-0 ┊ m11c24 ┊ 8006 ┊ InUse  ┊ Ok    ┊           Diskless ┊ 2021-01-18 13:55:17 ┊
+┊ one-vm-7584-disk-0 ┊ m13c3  ┊ 8006 ┊ Unused ┊ Ok    ┊ SyncTarget(81.71%) ┊                     ┊
+┊ one-vm-7584-disk-0 ┊ m8c37  ┊ 8006 ┊ Unused ┊ Ok    ┊           UpToDate ┊ 2021-02-03 09:47:01 ┊
+╰────────────────────────────────────────────────────────────────────────────────────────────────╯
+
+
+Попробуем выполнить реконнект:
+
+root@m13c3:~# drbdadm status one-vm-7584-disk-0
+one-vm-7584-disk-0 role:Secondary
+  disk:Inconsistent
+  m11c24 role:Primary
+    peer-disk:Diskless
+  m8c37 role:Secondary
+    replication:SyncTarget peer-disk:UpToDate done:81.71
+
+root@m13c3:~# drbdadm disconnect one-vm-7584-disk-0:m8c37
+root@m13c3:~# drbdadm connect one-vm-7584-disk-0:m8c37
+root@m13c3:~# drbdadm status one-vm-7584-disk-0
+one-vm-7584-disk-0 role:Secondary
+  disk:Inconsistent
+  m11c24 role:Primary
+    peer-disk:Diskless
+  m8c37 role:Secondary
+    replication:SyncTarget peer-disk:UpToDate done:0.00
+
+
+Теперь репликация зависла на нуле процентов, попробуем полностью потушить девайс и завести снова:
+
+root@m13c3:~# drbdadm down one-vm-7584-disk-0
+root@m13c3:~# drbdadm up one-vm-7584-disk-0
+root@m13c3:~# drbdadm status one-vm-7584-disk-0
+one-vm-7584-disk-0 role:Secondary
+  disk:Inconsistent quorum:no
+  m11c24 role:Primary
+    peer-disk:Diskless
+  m8c37 connection:Connecting
+
+root@m13c3:~# drbdadm status one-vm-7584-disk-0
+one-vm-7584-disk-0 role:Secondary
+  disk:UpToDate
+  m11c24 role:Primary
+    peer-disk:Diskless
+  m8c37 role:Secondary
+    peer-disk:UpToDate
+
+
+Ура, дело сделано!
+
+Кейс 9: Outdated-реплика, которая Connecting
+
+# linstor r l -r one-vm-7577-disk-2
+╭────────────────────────────────────────────────────────────────────────────────────────────────────╮
+┊ ResourceName       ┊ Node   ┊ Port  ┊ Usage  ┊ Conns              ┊    State ┊ CreatedOn           ┊
+╞════════════════════════════════════════════════════════════════════════════════════════════════════╡
+┊ one-vm-7577-disk-2 ┊ m10c21 ┊ 57064 ┊ Unused ┊ Ok                 ┊ Diskless ┊ 2021-02-05 20:52:31 ┊
+┊ one-vm-7577-disk-2 ┊ m13c10 ┊ 57064 ┊ InUse  ┊ Ok                 ┊ UpToDate ┊ 2021-02-05 20:52:23 ┊
+┊ one-vm-7577-disk-2 ┊ m14c29 ┊ 57064 ┊ Unused ┊ Connecting(m13c10) ┊ Outdated ┊ 2021-02-05 20:52:26 ┊
+╰────────────────────────────────────────────────────────────────────────────────────────────────────╯
+
+
+Похоже на Кейс 2, и фиксится так же:
+
+root@m14c29:~# drbdadm status one-vm-7577-disk-2
+one-vm-7577-disk-2 role:Secondary
+  disk:Outdated
+  m10c21 role:Secondary
+    peer-disk:Diskless
+  m13c10 connection:Connecting
+
+root@m14c29:~# drbdadm disconnect one-vm-7577-disk-2
+root@m14c29:~# drbdadm connect one-vm-7577-disk-2
+root@m14c29:~# drbdadm status one-vm-7577-disk-2
+one-vm-7577-disk-2 role:Secondary
+  disk:UpToDate
+  m10c21 role:Secondary
+    peer-disk:Diskless
+  m13c10 role:Primary
+    peer-disk:UpToDate
+
+
+Кейс 10: Unconnected / Connecting / NetworkFailure
+
+    Примечание:: Кейсы 10 и 11 вызваны проблемой, которая должна быть исправлена в выпуске LINSTOR v1.14.0
+
+Ресурсы переодично флапают между этими статусами:
+
+# linstor r l -r one-vm-10154-disk-0
+╭─────────────────────────────────────────────────────────────────────────────────────────────────────╮
+┊ ResourceName        ┊ Node   ┊ Port  ┊ Usage  ┊ Conns              ┊    State ┊ CreatedOn           ┊
+╞═════════════════════════════════════════════════════════════════════════════════════════════════════╡
+┊ one-vm-10154-disk-0 ┊ m11c37 ┊ 56031 ┊ Unused ┊ Ok                 ┊ UpToDate ┊                     ┊
+┊ one-vm-10154-disk-0 ┊ m15c6  ┊ 56031 ┊ Unused ┊ Connecting(m11c37) ┊ Diskless ┊ 2021-04-08 07:46:40 ┊
+┊ one-vm-10154-disk-0 ┊ m8c11  ┊ 56031 ┊ Unused ┊ Unconnected(m8c8)  ┊ Outdated ┊                     ┊
+┊ one-vm-10154-disk-0 ┊ m8c8   ┊ 56031 ┊ InUse  ┊ Unconnected(m8c11) ┊ Diskless ┊ 2021-04-08 09:04:32 ┊
+╰─────────────────────────────────────────────────────────────────────────────────────────────────────╯
+
+# linstor r l -r one-vm-10154-disk-0
+╭─────────────────────────────────────────────────────────────────────────────────────────────────────╮
+┊ ResourceName        ┊ Node   ┊ Port  ┊ Usage  ┊ Conns              ┊    State ┊ CreatedOn           ┊
+╞═════════════════════════════════════════════════════════════════════════════════════════════════════╡
+┊ one-vm-10154-disk-0 ┊ m11c37 ┊ 56031 ┊ Unused ┊ Ok                 ┊ UpToDate ┊                     ┊
+┊ one-vm-10154-disk-0 ┊ m15c6  ┊ 56031 ┊ Unused ┊ Connecting(m11c37) ┊ Diskless ┊ 2021-04-08 07:46:40 ┊
+┊ one-vm-10154-disk-0 ┊ m8c11  ┊ 56031 ┊ Unused ┊ Connecting(m8c8)   ┊ Outdated ┊                     ┊
+┊ one-vm-10154-disk-0 ┊ m8c8   ┊ 56031 ┊ InUse  ┊ Connecting(m8c11)  ┊ Diskless ┊ 2021-04-08 09:04:32 ┊
+╰─────────────────────────────────────────────────────────────────────────────────────────────────────╯
+
+# linstor r l -r one-vm-10154-disk-0
+╭───────────────────────────────────────────────────────────────────────────────────────────────────────╮
+┊ ResourceName        ┊ Node   ┊ Port  ┊ Usage  ┊ Conns                ┊    State ┊ CreatedOn           ┊
+╞═══════════════════════════════════════════════════════════════════════════════════════════════════════╡
+┊ one-vm-10154-disk-0 ┊ m11c37 ┊ 56031 ┊ Unused ┊ Ok                   ┊ UpToDate ┊                     ┊
+┊ one-vm-10154-disk-0 ┊ m15c6  ┊ 56031 ┊ Unused ┊ Connecting(m11c37)   ┊ Diskless ┊ 2021-04-08 07:46:40 ┊
+┊ one-vm-10154-disk-0 ┊ m8c11  ┊ 56031 ┊ Unused ┊ NetworkFailure(m8c8) ┊ Outdated ┊                     ┊
+┊ one-vm-10154-disk-0 ┊ m8c8   ┊ 56031 ┊ InUse  ┊ Connecting(m8c11)    ┊ Diskless ┊ 2021-04-08 09:04:32 ┊
+╰───────────────────────────────────────────────────────────────────────────────────────────────────────╯
+
+# linstor v l -r one-vm-10154-disk-0
+╭───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+┊ Node   ┊ Resource            ┊ StoragePool          ┊ VolNr ┊ MinorNr ┊ DeviceName    ┊ Allocated ┊ InUse  ┊    State ┊
+╞═══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╡
+┊ m11c37 ┊ one-vm-10154-disk-0 ┊ thindata             ┊     0 ┊    3194 ┊ None          ┊ 70.66 GiB ┊ Unused ┊ UpToDate ┊
+┊ m15c6  ┊ one-vm-10154-disk-0 ┊ DfltDisklessStorPool ┊     0 ┊    3194 ┊ /dev/drbd3194 ┊           ┊        ┊  Unknown ┊
+┊ m8c11  ┊ one-vm-10154-disk-0 ┊ thindata             ┊     0 ┊    3194 ┊ /dev/drbd3194 ┊ 31.06 GiB ┊ Unused ┊ Outdated ┊
+┊ m8c8   ┊ one-vm-10154-disk-0 ┊ DfltDisklessStorPool ┊     0 ┊    3194 ┊ /dev/drbd3194 ┊           ┊ InUse  ┊ Diskless ┊
+╰───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+
+
+Проверьте dmesg, если видите Peer presented a node_id of X instead of Y ошибку, значит вам попался LINSTOR баг, и по какой-то причине айдишники нод были перепутанны:
+
+[15962703.499997] drbd one-vm-10154-disk-0 m8c8: Peer presented a node_id of 2 instead of 3
+[15962703.500003] drbd one-vm-10154-disk-0 m8c8: conn( Connecting -> NetworkFailure )
+[15962703.551966] drbd one-vm-10154-disk-0 m8c8: Restarting sender thread
+[15962703.552245] drbd one-vm-10154-disk-0 m8c8: Connection closed
+[15962703.552251] drbd one-vm-10154-disk-0 m8c8: helper command: /sbin/drbdadm disconnected
+[15962703.554361] drbd one-vm-10154-disk-0 m8c8: helper command: /sbin/drbdadm disconnected exit code 0
+[15962703.554390] drbd one-vm-10154-disk-0 m8c8: conn( NetworkFailure -> Unconnected )
+[15962704.555917] drbd one-vm-10154-disk-0 m8c8: conn( Unconnected -> Connecting )
+
+
+Здесь мы можем видеть, что m8c8 представлена для m8c11 как нода с node-id:0, а на самом деле она node-id:2. Так и наоборот m8c8 видит m8c11 как ноду с node-id:0, когда та, на самом деле является node-id:0:
+
+root@m8c11:~# drbdsetup status one-vm-10154-disk-0 --verbose
+one-vm-10154-disk-0 node-id:0 role:Secondary suspended:no
+  volume:0 minor:3194 disk:Outdated quorum:yes blocked:no
+  m11c37 node-id:1 connection:Connected role:Secondary congested:no ap-in-flight:0 rs-in-flight:0
+    volume:0 replication:Established peer-disk:UpToDate resync-suspended:no
+  m8c8 node-id:3 connection:Unconnected role:Unknown congested:no ap-in-flight:0 rs-in-flight:0
+    volume:0 replication:Off peer-disk:DUnknown resync-suspended:no
+
+root@m8c8:~# drbdsetup status one-vm-10154-disk-0 --verbose
+one-vm-10154-disk-0 node-id:2 role:Primary suspended:no
+  volume:0 minor:3194 disk:Diskless client:yes quorum:yes blocked:no
+  m11c37 node-id:1 connection:Connected role:Secondary congested:no ap-in-flight:0 rs-in-flight:0
+    volume:0 replication:Established peer-disk:UpToDate resync-suspended:no
+  m8c11 node-id:0 connection:Unconnected role:Unknown congested:no ap-in-flight:0 rs-in-flight:0
+    volume:0 replication:Off peer-disk:Outdated resync-suspended:no
+
+
+Для DRBD это большая проблема, поэтому мигрируем виртуалку на живую реплику, удаляем все остальные ресурсы и создаём новые:
+
+# linstor r d m15c6 m8c11 one-vm-10154-disk-0
+# linstor r l -r one-vm-10154-disk-0
+╭───────────────────────────────────────────────────────────────────────────────────────╮
+┊ ResourceName        ┊ Node   ┊ Port  ┊ Usage ┊ Conns ┊    State ┊ CreatedOn           ┊
+╞═══════════════════════════════════════════════════════════════════════════════════════╡
+┊ one-vm-10154-disk-0 ┊ m11c37 ┊ 56031 ┊ InUse ┊ Ok    ┊ UpToDate ┊                     ┊
+┊ one-vm-10154-disk-0 ┊ m15c6  ┊ 56031 ┊       ┊ Ok    ┊ DELETING ┊ 2021-04-08 07:46:40 ┊
+┊ one-vm-10154-disk-0 ┊ m8c11  ┊ 56031 ┊       ┊ Ok    ┊ DELETING ┊                     ┊
+╰───────────────────────────────────────────────────────────────────────────────────────╯
+
+# linstor r l -r one-vm-10154-disk-0
+╭───────────────────────────────────────────────────────────────────────────────────────╮
+┊ ResourceName        ┊ Node   ┊ Port  ┊ Usage ┊ Conns ┊    State ┊ CreatedOn           ┊
+╞═══════════════════════════════════════════════════════════════════════════════════════╡
+┊ one-vm-10154-disk-0 ┊ m11c37 ┊ 56031 ┊ InUse ┊ Ok    ┊ UpToDate ┊                     ┊
+╰───────────────────────────────────────────────────────────────────────────────────────╯
+
+# linstor rd ap one-vm-10154-disk-0
+╭──────────────────────────────────────────────────────────────────────────────────────────────────╮
+┊ ResourceName        ┊ Node   ┊ Port  ┊ Usage  ┊ Conns ┊              State ┊ CreatedOn           ┊
+╞══════════════════════════════════════════════════════════════════════════════════════════════════╡
+┊ one-vm-10154-disk-0 ┊ m10c2  ┊ 56031 ┊ Unused ┊ Ok    ┊ SyncTarget(27.34%) ┊ 2021-07-09 14:55:47 ┊
+┊ one-vm-10154-disk-0 ┊ m11c37 ┊ 56031 ┊ InUse  ┊ Ok    ┊           UpToDate ┊                     ┊
+╰──────────────────────────────────────────────────────────────────────────────────────────────────╯
+
+
+Кейс 11: У одной из diskful-реплик нет связи с diskless-репликой
+
+    Примечание:: Кейсы 10 и 11 вызваны проблемой, которая должна быть исправлена в выпуске LINSTOR v1.14.0
+
+
+linstor r l -r one-vm-8760-disk-0
+╭────────────────────────────────────────────────────────────────────────────────────────────────────╮
+┊ ResourceName       ┊ Node   ┊ Port  ┊ Usage  ┊ Conns              ┊    State ┊ CreatedOn           ┊
+╞════════════════════════════════════════════════════════════════════════════════════════════════════╡
+┊ one-vm-8760-disk-0 ┊ m13c18 ┊ 55165 ┊ Unused ┊ Connecting(m8c9)   ┊ Outdated ┊                     ┊
+┊ one-vm-8760-disk-0 ┊ m14c27 ┊ 55165 ┊ Unused ┊ Ok                 ┊ UpToDate ┊ 2021-02-03 12:00:35 ┊
+┊ one-vm-8760-disk-0 ┊ m8c9   ┊ 55165 ┊ InUse  ┊ Connecting(m13c18) ┊ Diskless ┊ 2021-04-08 09:04:07 ┊
+╰────────────────────────────────────────────────────────────────────────────────────────────────────╯
+
+
+Пробуем чуть-чуть подшаманить:
+
+root@m13c18:~# drbdadm down one-vm-8760-disk-0
+root@m13c18:~# drbdadm up one-vm-8760-disk-0
+root@m13c18:~# drbdadm status one-vm-8760-disk-0
+one-vm-8760-disk-0 role:Secondary
+  disk:Outdated
+  m14c27 role:Secondary
+    peer-disk:UpToDate
+  m8c9 connection:Connecting
+root@m13c18:~# drbdadm status one-vm-8760-disk-0
+one-vm-8760-disk-0 role:Secondary
+  disk:Outdated
+  m14c27 role:Secondary
+    peer-disk:UpToDate
+  m8c9 connection:Unconnected
+
+root@m8c9:~# drbdadm disconnect one-vm-8760-disk-0:m13c18
+root@m8c9:~# drbdadm connect one-vm-8760-disk-0:m13c18
+root@m8c9:~# drbdadm status one-vm-8760-disk-0
+one-vm-8760-disk-0 role:Primary
+  disk:Diskless
+  m13c18 connection:Unconnected
+  m14c27 role:Secondary
+    peer-disk:UpToDate
+
+
+Чёрт, такая же ситуация как и в предыдущем кейсе:
+
+linstor r l -r one-vm-8760-disk-0
+╭──────────────────────────────────────────────────────────────────────────────────────────────────────╮
+┊ ResourceName       ┊ Node   ┊ Port  ┊ Usage  ┊ Conns                ┊    State ┊ CreatedOn           ┊
+╞══════════════════════════════════════════════════════════════════════════════════════════════════════╡
+┊ one-vm-8760-disk-0 ┊ m13c18 ┊ 55165 ┊ Unused ┊ NetworkFailure(m8c9) ┊ Outdated ┊                     ┊
+┊ one-vm-8760-disk-0 ┊ m14c27 ┊ 55165 ┊ Unused ┊ Ok                   ┊ UpToDate ┊ 2021-02-03 12:00:35 ┊
+┊ one-vm-8760-disk-0 ┊ m8c9   ┊ 55165 ┊ InUse  ┊ Unconnected(m13c18)  ┊ Diskless ┊ 2021-04-08 09:04:07 ┊
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────╯
+
+
+смотрим dmesg:
+
+[14635995.191931] drbd one-vm-8760-disk-0 m8c9: conn( Unconnected -> Connecting )
+[14635995.740020] drbd one-vm-8760-disk-0 m8c9: Peer presented a node_id of 3 instead of 2
+[14635995.740051] drbd one-vm-8760-disk-0 m8c9: conn( Connecting -> NetworkFailure )
+[14635995.775994] drbd one-vm-8760-disk-0 m8c9: Restarting sender thread
+[14635995.777153] drbd one-vm-8760-disk-0 m8c9: Connection closed
+[14635995.777174] drbd one-vm-8760-disk-0 m8c9: helper command: /sbin/drbdadm disconnected
+[14635995.789649] drbd one-vm-8760-disk-0 m8c9: helper command: /sbin/drbdadm disconnected exit code 0
+[14635995.789707] drbd one-vm-8760-disk-0 m8c9: conn( NetworkFailure -> Unconnected )
+
+
+Ага, точно! Опять айдишники нод смешались
+
+root@m8c9:~# drbdsetup status one-vm-8760-disk-0 --verbose
+one-vm-8760-disk-0 node-id:3 role:Primary suspended:no
+  volume:0 minor:1016 disk:Diskless client:yes quorum:yes blocked:no
+  m13c18 node-id:0 connection:Unconnected role:Unknown congested:no ap-in-flight:0 rs-in-flight:0
+    volume:0 replication:Off peer-disk:Outdated resync-suspended:no
+  m14c27 node-id:1 connection:Connected role:Secondary congested:no ap-in-flight:0 rs-in-flight:0
+    volume:0 replication:Established peer-disk:UpToDate resync-suspended:no
+
+root@m13c18:~# drbdsetup status one-vm-8760-disk-0 --verbose
+one-vm-8760-disk-0 node-id:0 role:Secondary suspended:no
+  volume:0 minor:1016 disk:Outdated quorum:yes blocked:no
+  m14c27 node-id:1 connection:Connected role:Secondary congested:no ap-in-flight:0 rs-in-flight:0
+    volume:0 replication:Established peer-disk:UpToDate resync-suspended:no
+  m8c9 node-id:2 connection:Unconnected role:Unknown congested:no ap-in-flight:0 rs-in-flight:0
+    volume:0 replication:Off peer-disk:DUnknown resync-suspended:no
+
+root@m14c27:~# drbdsetup status one-vm-8760-disk-0 --verbose
+one-vm-8760-disk-0 node-id:1 role:Secondary suspended:no
+  volume:0 minor:1016 disk:UpToDate quorum:yes blocked:no
+  m13c18 node-id:0 connection:Connected role:Secondary congested:no ap-in-flight:0 rs-in-flight:0
+    volume:0 replication:Established peer-disk:Outdated resync-suspended:no
+  m8c9 node-id:3 connection:Connected role:Primary congested:no ap-in-flight:0 rs-in-flight:0
+    volume:0 replication:Established peer-disk:Diskless peer-client:yes resync-suspended:no
+
+
+m13c18 видит m8c9 как node-id:2, а на самом деле та node-id:3. Мигрируем тачку на живой ресурс и пересоздаём остальные:
+
+# linstor r l -r one-vm-8760-disk-0
+╭─────────────────────────────────────────────────────────────────────────────────────────────────────╮
+┊ ResourceName       ┊ Node   ┊ Port  ┊ Usage  ┊ Conns               ┊    State ┊ CreatedOn           ┊
+╞═════════════════════════════════════════════════════════════════════════════════════════════════════╡
+┊ one-vm-8760-disk-0 ┊ m13c18 ┊ 55165 ┊ Unused ┊ Unconnected(m8c9)   ┊ Outdated ┊                     ┊
+┊ one-vm-8760-disk-0 ┊ m14c27 ┊ 55165 ┊ Unused ┊ Ok                  ┊ UpToDate ┊ 2021-02-03 12:00:35 ┊
+┊ one-vm-8760-disk-0 ┊ m8c9   ┊ 55165 ┊ InUse  ┊ Unconnected(m13c18) ┊ Diskless ┊ 2021-04-08 09:04:07 ┊
+╰─────────────────────────────────────────────────────────────────────────────────────────────────────╯
+
+# linstor r l -r one-vm-8760-disk-0
+╭───────────────────────────────────────────────────────────────────────────────────────╮
+┊ ResourceName       ┊ Node   ┊ Port  ┊ Usage  ┊ Conns ┊    State ┊ CreatedOn           ┊
+╞═══════════════════════════════════════════════════════════════════════════════════════╡
+┊ one-vm-8760-disk-0 ┊ m13c18 ┊ 55165 ┊ Unused ┊ Ok    ┊ UpToDate ┊                     ┊
+┊ one-vm-8760-disk-0 ┊ m14c27 ┊ 55165 ┊ InUse  ┊ Ok    ┊ UpToDate ┊ 2021-02-03 12:00:35 ┊
+╰───────────────────────────────────────────────────────────────────────────────────────╯
+
+# linstor r d m13c18 one-vm-8760-disk-0
+# linstor rd ap one-vm-8760-disk-0
+# linstor r l -r one-vm-8760-disk-0
+╭─────────────────────────────────────────────────────────────────────────────────────────────────╮
+┊ ResourceName       ┊ Node   ┊ Port  ┊ Usage  ┊ Conns ┊              State ┊ CreatedOn           ┊
+╞═════════════════════════════════════════════════════════════════════════════════════════════════╡
+┊ one-vm-8760-disk-0 ┊ m14c27 ┊ 55165 ┊ InUse  ┊ Ok    ┊           UpToDate ┊ 2021-02-03 12:00:35 ┊
+┊ one-vm-8760-disk-0 ┊ m8c6   ┊ 55165 ┊ Unused ┊ Ok    ┊ SyncTarget(78.57%) ┊ 2021-07-09 15:30:55 ┊
+╰─────────────────────────────────────────────────────────────────────────────────────────────────╯
+
+
+Кейс 12: Consistent-реплика
+
+Мы находимся на diskless-ноде, смотрим статус ресурса:
+
+root@m11c39:~# drbdadm status one-vm-6967-disk-0
+one-vm-6967-disk-0 role:Primary
+  disk:Diskless
+  m13c15 role:Secondary
+    peer-disk:Consistent
+  m14c40 role:Secondary
+    peer-disk:UpToDate
+
+
+Крайне неприятная ситуация, обе diskfull реплики репортят UpToDate, но diskless реплика работает только с одной из них, вторая помечена как Consistent. Возникает в результате бага dikless primary на 9.0.19, так же мне удавалось ловить его на 9.0.21, но значительно реже.
+
+При попытке выключить ресурс на m14c40 вы увидите что это невозможно, так как diskless-реплика работает с ней в данный момент:
+
+root@m14c40:~# drbdadm disconnect one-vm-6967-disk-0
+one-vm-6967-disk-0: State change failed: (-10) State change was refused by peer node
+additional info from kernel:
+Declined by peer m11c39 (id: 3), see the kernel log there
+Command 'drbdsetup disconnect one-vm-6967-disk-0 3' terminated with exit code 11
+
+
+Фиксится следущим образом:
+
+Делаем disconnect и invalidate на Consistent ноде:
+
+root@m13c15:~# drbdadm disconnect one-vm-6967-disk-0
+root@m13c15:~# drbdadm invalidate one-vm-6967-disk-0
+root@m13c15:~# drbdadm connect one-vm-6967-disk-0
+root@m13c15:~# drbdadm status one-vm-6967-disk-0
+one-vm-6967-disk-0 role:Secondary
+  disk:Inconsistent
+  m11c39 role:Primary
+    peer-disk:Diskless
+  m14c40 role:Secondary
+    replication:SyncTarget peer-disk:UpToDate done:3.04
+
+
+Здесь мы видим что синхронизация прошла но ресурс перешёл в inconsistent:
+
+root@m13c15:~# drbdadm status one-vm-6967-disk-0
+one-vm-6967-disk-0 role:Secondary
+  disk:Inconsistent
+  m11c39 role:Primary
+    peer-disk:Diskless
+  m14c40 role:Secondary
+    peer-disk:UpToDate
+
+
+Чтобы эту ситуацию решить, нужно сделать disconnect/connect с другой diskful-репликой:
+
+root@m13c15:~# drbdadm disconnect one-vm-6967-disk-0:m14c40
+root@m13c15:~# drbdadm connect one-vm-6967-disk-0:m14c40
+root@m13c15:~# drbdadm status one-vm-6967-disk-0
+one-vm-6967-disk-0 role:Secondary
+  disk:UpToDate
+  m11c39 role:Primary
+    peer-disk:Diskless
+  m14c40 role:Secondary
+    peer-disk:UpToDate
+
+
+Кейс 13: Забытый ресурс
+
+В старых версиях LINSTOR можно было наткнуться на баг, что при удалении ресурса, diskless-реплики оставалась существовать на ноде:
+
+one-vm-7792-disk-0 role:Secondary
+  disk:Diskless quorum:no
+  m13c9 connection:Connecting
+  m14c13 connection:Connecting
+
+
+В LINSTOR ресурса давно не существует:
+
+linstor r l -r one-vm-7792-disk-0
+
+
+Так что смело тушим его через drbdsetup:
+
+root@m14c43:~# drbdsetup down one-vm-7792-disk-0
+
+
+    Примечание: drbdsetup является более низкоуровневой утилитой чем drbdadm. drbdsetup общается напрямую с ядром и не требует наличия конфига для drbd-ресурса.
+
+
+Кейс 14: Испорченый битмап
+
+Ну и на последок самое вкусненькое. Баг который был замечен в версии 9.0.19, но позже был исправлен. Допустим вы только что создали новую реплику на m10c23, она синхронизировалась и перешла в такое состояние:
+
+# linstor v l -r one-vm-5460-disk-2
+╭──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+┊ Node   ┊ Resource           ┊ StoragePool          ┊ VolNr ┊ MinorNr ┊ DeviceName    ┊ Allocated ┊ InUse  ┊    State ┊
+╞══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╡
+┊ m10c23 ┊ one-vm-5460-disk-2 ┊ thindata             ┊     0 ┊    2665 ┊ /dev/drbd2665 ┊ 11.71 GiB ┊ Unused ┊ UpToDate ┊
+┊ m11c35 ┊ one-vm-5460-disk-2 ┊ DfltDisklessStorPool ┊     0 ┊    2665 ┊ /dev/drbd2665 ┊           ┊ InUse  ┊ Diskless ┊
+┊ m14c2  ┊ one-vm-5460-disk-2 ┊ diskless             ┊     0 ┊    2665 ┊ /dev/drbd2665 ┊           ┊ InUse  ┊ Diskless ┊
+┊ m15c17 ┊ one-vm-5460-disk-2 ┊ thindata             ┊     0 ┊    2665 ┊ /dev/drbd2665 ┊ 28.01 GiB ┊ Unused ┊ UpToDate ┊
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+
+
+Обе реплики UpToDate, но обратите внимание на Allocated. Одна из них использует сильно меньше места чем другая.
+Из-за особенностей DRBD, primary diskless-реплика работает сразу со всеми secondary, то есть читает и пишет сразу в обе diskful-реплики.
+
+Таким образом у виртуальной машины неприменно начнётся конфуз. Какие-то данные она будет читать из нормальной реплики, а какие-то из плохой, повреждая, тем самым, себе файловую систему.
+
+Причиной этой проблемы является поломанный bitmap, и сейчас нам потребуется его пофиксить.
+Дело в том что DRBD внутри себя имеет некоторый чейнджлог, который запоминает где и какие данные были изменены. Таким образом в случае дисконнекта и повторного подключения синхронизируются только изменённые данные, но не весь девайс. Другими словами, сейчас, в результате бага DRBD, мы имеем неверный чейнджлог.
+
+Здесь сразу хочется отметить, что существует разница в логике работы классического DRBD и того как с ним работает LINSTOR. Дело в том, что LINSTOR в своих метаданных хранит значение zero-day чейнджлога и при создании новой реплики устанавливает это значение для неё. Таким образом изменения на новую реплику синхронизируются только согласно чейнджлогу. Благодаря этому, если чейнджлог небольшой, то синхронизация завершается очень быстро, в отличии от того если бы выполнялась полная начальная синхронизация данных.
+
+Тогда как стандартная логика DRBD не предлагает такого "улучшения" и каждый раз выполняет full resync для всех новых реплик, то есть даже если у вас повреждён чейнджлог, синхронизация пройдёт успешно.
+
+Диагностировать различия в двух репликах можно запустив команду drbdadm verify на одной из них, к примеру:
+
+drbdadm verify one-vm-5460-disk-2:m15c17
+
+
+Призведёт проверку one-vm-5460-disk-2 относительно ресурса размещённого на m15c17
+
+После чего все несинхронизированные сектора будут отмечены для синхронизации, и достаточно будет сделать:
+
+drbdadm disconnect one-vm-5460-disk-2
+drbdadm connect one-vm-5460-disk-2
+
+
+Чтобы они синхронизировались. Алтернативным решением могло бы быть инвалидировать всю реплику сразу и переподключить её:
+
+drbdadm disconnect one-vm-5460-disk-2
+drbdadm invalidate one-vm-5460-disk-2
+drbdadm connect one-vm-5460-disk-2
+
+
+Тогда она полностью синхронизируется. Но даже не смотря на успешную синхронизацию, она продолжит иметь неправильный чейнджлог. Таким образом все новые реплики синхронизируемые через ченджлог опять будут иметь ту же проблему.
+
+Хорошо, с теорией закончили, теперь вернёмся к нашей ситуации. Обычно в данном случае имеет смысл немедленно удалить созданную реплику и произвести следующие действия:
+
+Выключаем нашу виртуалку, либо делаем external volume snapshot, если такой возможности не имеется, и затем выполняем:
+
+dd if=/dev/drbd2665 of=/dev/drbd2665 status=progress bs=65536 conv=notrunc,sparse iflag=direct,fullblock oflag=direct
+
+
+Здесь dd побайтно вычитает весь девайс и запишет его обратно, тем самым исправив наш чейнджлог. Не забываем закомитить наш external snapshot (если делали), и теперь можно беспроблемно создавать новые реплики с помощью LINSTOR.
+
 ** Delete a node from the Kubernetes cluster
 #+begin_example
   $ linstor node list
