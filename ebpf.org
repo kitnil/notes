@@ -1,6 +1,7 @@
 - [[https://archive.fosdem.org/2020/schedule/event/replacing_iptables_with_ebpf/attachments/slides/3622/export/events/attachments/replacing_iptables_with_ebpf/slides/3622/Cilium_FOSDEM_2020.pdf][Cilium_FOSDEM_2020.pdf]]
 - [[https://github.com/cilium/tetragon][cilium/tetragon: eBPF-based Security Observability and Runtime Enforcement]]
 - [[https://github.com/citronneur/pamspy][citronneur/pamspy: Credentials Dumper for Linux using eBPF]]
+- [[https://github.com/ebpfdev/explorer][ebpfdev/explorer: eBPF explorer is Web UI that lets you see all the maps and programs in eBPF subsystem]]
 - [[https://github.com/ebpfdev/explorer][ebpfdev/explorer: eBPF explorer lets you see all the maps and programs in eBPF subsystem]]
 - [[https://github.com/kinvolk/netcost][kinvolk/netcost: use BPF to calculate network ingress/egress for specified CIDRs]]
 - [[https://github.com/krisztianfekete/nix-bpf-env][krisztianfekete/nix-bpf-env: My adhoc dev environment for BPF development on NixOS]]
