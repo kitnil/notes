@@ -356,6 +356,38 @@ membership.
   kubectl config --kubeconfig config use-context default
 #+end_example
 
+** override kubernetes
+#+begin_src nix
+  kubernetes-wrapper = 
+    let
+      # Make sure --secure-port flag does not provided to
+      # kube-scheduler, because Prometheus Kubernetes Operator
+      # cannot connect to kube-scheduler with mTLS.  The
+      # kube-scheduler has self-signed certificate which has only
+      # 127.0.0.1 and localhost as certificate hostnames.
+      kube-scheduler-wrapper = writeScriptBin "kube-scheduler" ''
+        #!${runtimeShell} -e
+        new_args=()
+        for var in "$@"
+        do
+            if [[ "$var" == *"--secure-port"* ]]
+            then
+                :
+            else
+                new_args+=($var)
+            fi
+        done
+        exec ${pkgs.kubernetes}/bin/kube-scheduler "''${new_args[@]}"
+      '';
+    in
+      pkgs.kubernetes.pause //
+      pkgs.symlinkJoin {
+        name = "kubernetes";
+        paths = [ kube-scheduler-wrapper pkgs.kubernetes ];
+      };
+
+#+end_src
+
 ** Balance
 #+begin_src markdown
   [amazon web services - Spread pods over cluster - DevOps Stack Exchange](https://devops.stackexchange.com/questions/12246/spread-pods-over-cluster)
