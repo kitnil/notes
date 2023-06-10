@@ -1290,6 +1290,21 @@ Don't miss out on the next ones ! Either via RSS or via e-mail !
   Then restart gpg-agent.
 #+end_example
 
+** guix
+#+begin_quote
+From: Mekeor Melire mekeor at posteo.de
+Subject: Let's Gather a List of Guix-Related Emacs-Packages!
+To: help-guix at gnu.org
+Date: Sat, 10 Jun 2023 10:35:44 +0000
+Message-ID: <87wn0bwpn7.fsf@posteo.de>
+#+end_quote
+- [[https://git.savannah.gnu.org/cgit/guix/emacs-guix.git/][guix/emacs-guix.git - Emacs interface to GNU Guix]]
+- [[https://github.com/astoff/buffer-env][astoff/buffer-env: Buffer-local process environments for Emacs]]
+- [[https://github.com/paperclip4465/use-package-ensure-guix][paperclip4465/use-package-ensure-guix: emacs use-package ensure implementation which uses GNU Guix]]
+- [[https://github.com/ryanprior/emacs-guix-packaging][ryanprior/emacs-guix-packaging: Tools for writing and maintaining Guix packages]]
+- [[https://gitlab.com/aarongile/projects/gix][aarongile / projects / gix · GitLab]]
+- [[https://gitlab.com/jabranham/system-packages][Alex Branham / system-packages · GitLab]]
+
 ** Etags
 
  Origin: https://lists.gnu.org/archive/html/help-gnu-emacs/2017-12/msg00155.html
