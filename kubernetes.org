@@ -903,6 +903,334 @@ Once running, the URL to the dashboard is https://2886795308-30000-simba08.envir
 - [[https://serveradmin.ru/kubernetes-ustanovka/][Установка кластера Kubernetes | serveradmin.ru]]
 - [[https://habr.com/ru/companies/flant/articles/353410/][Устройство и механизм работы Prometheus Operator в Kubernetes / Хабр]]
 
+** [[https://scribe.rip/secure-kubernetes-clusters-with-oauth2-openid-connect-and-cidaas-ffc58b7274b7][Secure Kubernetes clusters with OAuth2/OpenID Connect and cidaas]]
+This article focuses on securing a Kubernetes cluster with OAuth2 and OpenID Connect using cidaas Cloud Identity & Access Management.
+
+cidaas (https://www.cidaas.com) is a modern Cloud Identity & Access Management solution developed by Widas ID GmbH located in Germany. The cidaas feature set includes:
+
+    Single Sign On (SSO) based on OAuth2, OpenID Connect, SAML 2.0
+    Multi-Factor-Authentication (MFA) with more than 14 authentication methods, including TOTP and FIDO2
+    password-less authentication
+    social login (e.g. Facebook, Google, LinkedIn, and more) as well as enterprise identity provider (e.g. SAML or AD)
+    security in Machine-to-Machine communications (M2M) and IoT
+
+A short introduction on OAuth2, OpenID Connect and Kubernetes
+
+OAuth2 is the industry-standard protocol for authorization, and it provides different authorization flows depending on the application or client type, be it for example web or mobile applications. If you want to learn more about OAuth2 have a look at the official website at https://oauth.net/2/.
+
+OpenID Connect (OIDC) is a standard authentication protocol that adds an identification layer to the previous OAuth 2.0 standard. OIDC provides information to the end user in the form of an id token, through which the identity is verified. The standard is controlled by the OpenID Foundation (https://openid.net).
+
+Kubernetes is an open-source orchestration platform for the management of containerized applications. It offers many features for an automated and stable operation of modern software architectures, including automated deployments and scaling. (https://kubernetes.io)
+Kubernetes OpenID Connect Tokens
+
+The OpenID Connect Token (Kubernetes Docs) feature of Kubernetes allows an out-of-the-box integration with cidaas or any other identity provider supporting the OpenID Connect protocol.
+
+The integration of cidaas requires two steps of configuration:
+
+First, the configuration of the API Server
+
+    oidc parameters
+    Kubespray
+    Kops
+    Kubeadm
+
+Second, the configuration of the Kubernetes Clients
+
+    Kubectl
+    Kubernetes Dashboard
+
+Kubernetes API Server Configuration
+
+We will show 4 different ways to configure the API Server. First we will discuss the plain configuration of the API Server, additionally we will show how a configuration can be achieved with commonly used orchestration solutions Kubespray, Kops, and Kubeadm.
+
+Plain Configuration via oidc parameters
+
+The OpenID Connect Feature of Kubernetes provides several parameter options, which need to be passed while starting the Kubernetes API Server. Two of these are required:
+
+— oidc-issuer-url and — oidc-client-id
+
+These are also the only ones required for an integration with cidaas. Pass the cidaas issuer URL (the base URL of your cidaas instance) and the client ID of your cidaas application. If you need some information how to create an app (OAuth2 / OpenID Connect Client) in cidaas please refer to the cidaas documentation: docs.cidaas.com
+
+Kubespray
+
+If you are using Kubespray to configure your Kubernetes Cluster, You can add following configuration to `group_vars/k8s_cluster/k8s-cluster.yml` file :
+
+k8s-cluster.yml
+
+kube_oidc_url: https://{yourtenant}.cidaas.de 
+kube_oidc_client_id: xxxx-xxxx-xxxx-xxxx-xxx 
+## Optional settings for OIDC 
+# kube_oidc_ca_file: "{{ kube_cert_dir }}/ca.pem" 
+kube_oidc_username_claim: sub 
+kube_oidc_username_prefix: cidaas_oidc: 
+kube_oidc_groups_claim: roles 
+kube_oidc_groups_prefix: "cidaas_oidc:" 
+
+Kops
+
+If you are using kops to configure your Kubernetes Cluster, you can add following configuration to cluster manifest file as explained here :
+
+kops.yml
+
+spec: 
+  kubeAPIServer: 
+    oidcIssuerURL: https://your-oidc-provider.svc.cluster.local 
+    oidcClientID: kubernetes 
+    oidcUsernameClaim: sub 
+    oidcUsernamePrefix: "oidc:" 
+    oidcGroupsClaim: user_roles 
+    oidcGroupsPrefix: "oidc:" 
+    oidcCAFile: /etc/kubernetes/ssl/kc-ca.pem 
+    oidcRequiredClaim: 
+    	- "key=value" 
+
+Kubeadm
+
+Finally, if you are using kubeadm to configure cluster add following files to cluster manifest file:
+
+kubeadm.yml
+
+apiVersion: kubeadm.k8s.io/v1beta2 
+kind: ClusterConfiguration 
+apiServer: 
+  extraArgs: 
+    oidc-issuer-url: https://{tenant}.cidaas.de 
+    oidc-username-claim: sub 
+    oidc-client-id: kubernetes-cluster 
+    oidc-ca-file: /root/myCA.pem 
+
+Kubernetes Clients Configuration
+
+After we have configured the Kubernetes API Server, we now need to have a closer look at the Kubernetes clients, in particular the user configuration in $HOME/.kube/config used by kubectl.
+Kubectl
+
+kubectl is a commandline application used to run commands and apply configuration on the Kubernetes cluster .
+
+There are multiple ways to configure kubectl to integrate cidaas for authentication for example OIDC Authenticator or kubelogin.
+
+Both work perfectly well with cidaas, below you will find a short description for both options.
+
+OIDC Authenticator:
+
+kubectl.yml
+
+kubectl config set-credentials USER_NAME \ 
+   --auth-provider=oidc \ 
+   --auth-provider-arg=idp-issuer-url=( issuer url ) \ 
+   --auth-provider-arg=client-id=( your client id ) \ 
+   --auth-provider-arg=client-secret=( your client secret ) \ 
+   --auth-provider-arg=refresh-token=( your refresh token ) \ 
+   --auth-provider-arg=idp-certificate-authority=( path to your ca certificate ) \ 
+   --auth-provider-arg=id-token=( your id_token ) 
+
+Kubelogin:
+
+You can install kubelogin via following commands
+
+# Homebrew (macOS and Linux)
+
+brew install int128/kubelogin/kubelogin
+
+# Krew (macOS, Linux, Windows and ARM)
+
+kubectl krew install oidc-login
+
+# Chocolatey (Windows)
+
+choco install kubelogin
+
+You can use following command to setup kubelogin to use cidaas
+
+kubectl oidc-login setup --oidc-issuer-url {{ issuer_url}}--oidc-client-id {{ clientid }} --oidc-client-secret {{ clientsecret}}
+
+Optional: Kubernetes Dashboard
+
+When operating a Kubernetes Cluster a Kubernetes Dashboard is often used to manage the cluster and its services/applications. To secure the Kubernetes Dashboard we will use OAuth2-proxy. In the scenario shown below, the kubernetes-dashboard is running in a separate namespace called “kubernetes-dashboard” namespace and will be exposed on the URL kube-dashboard.cluster.de. To achieve this, the following configuration steps need to be executed:
+
+    Deploy OAuth2-proxy
+    Deploy the Kubernetes Ingress for the Kubernetes Dashboard
+
+The OAuth2-proxy can be deployed using below configuration via kubectl:
+
+kube-oauth2-proxy.yml
+
+apiVersion: apps/v1 
+kind: Deployment 
+metadata: 
+  labels: 
+    k8s-app: oauth2-proxy 
+  name: oauth2-proxy 
+spec: 
+  replicas: 1 
+  selector: 
+    matchLabels: 
+      k8s-app: oauth2-proxy 
+  template: 
+    metadata: 
+      labels: 
+        k8s-app: oauth2-proxy 
+    spec: 
+      containers: 
+        - args: 
+            - --cookie-secure=false 
+            - --upstream=file:///dev/null 
+            - --http-address=0.0.0.0:4180 
+            - --cookie-secret=cnlIM0xwNnFXY1M5UmMvOGwyUDMxUT09 
+            - --client-id=xxxx-xxx-xxx-xxx 
+            - --client-secret=xxxx-xxx-xxx-xxx 
+            - --email-domain=* 
+            - --provider=oidc 
+            - --oidc-issuer-url=https://{tenant}.cidaas.de 
+          image: quay.io/pusher/oauth2_proxy:v5.1.0 
+          imagePullPolicy: Always 
+          name: oauth2-proxy 
+          ports: 
+            - containerPort: 4180 
+              protocol: TCP 
+--- 
+kind: Service 
+apiVersion: v1 
+metadata: 
+  name: oauth2-proxy 
+  namespace: kubernetes-dashboard 
+spec: 
+  ports: 
+    - name: http 
+      protocol: TCP 
+      port: 4180 
+      targetPort: 4180 
+  selector: 
+    k8s-app: oauth2-proxy 
+  type: ClusterIP 
+--- 
+kind: Ingress 
+apiVersion: extensions/v1beta1 
+metadata: 
+  name: oauth2-proxy 
+  namespace: kubernetes-dashboard 
+  annotations: 
+    nginx.ingress.kubernetes.io/ingress.class: nginx 
+    nginx.ingress.kubernetes.io/proxy-buffer-size: 16k 
+spec: 
+  tls: 
+    - hosts: 
+        - kube-dashboard.cluster.de 
+      secretName: wildcard.cluster.de 
+  rules: 
+    - host: kube-dashboard.cluster.de 
+      http: 
+        paths: 
+          - path: /oauth2 
+            backend: 
+              serviceName: oauth2-proxy 
+              servicePort: 4180 
+
+The Kubernetes Ingress can be deployed using below configuration:
+
+kube-ingress.yml
+
+kind: Ingress 
+apiVersion: extensions/v1beta1 
+metadata: 
+  name: kubernetes-dashboard-ingress 
+  namespace: kubernetes-dashboard 
+  annotations: 
+    nginx.ingress.kubernetes.io/auth-signin: "https://$host/oauth2/start?rd=https://$host$request_uri$is_args$args" 
+    nginx.ingress.kubernetes.io/auth-url: "https://$host/oauth2/auth" 
+    nginx.ingress.kubernetes.io/backend-protocol: HTTPS 
+    nginx.ingress.kubernetes.io/configuration-snippet: | 
+      auth_request_set $token $upstream_http_authorization; 
+      proxy_set_header Authorization $token; 
+    nginx.ingress.kubernetes.io/ingress.class: nginx 
+    nginx.ingress.kubernetes.io/proxy-buffer-size: 16k 
+spec: 
+  tls: 
+    - hosts: 
+        - kube-dashboard.cluster.de 
+      secretName: wildcard.cluster.de 
+  rules: 
+    - host: kube-dashboard.cluster.de 
+      http: 
+        paths: 
+          - backend: 
+              serviceName: kubernetes-dashboard 
+              servicePort: 443 
+
+Access Management (RBAC — Role-based Access Control)
+
+Basic login access to Kubernetes using cidaas is now configured. Now we will have a look at access management, in particular how to manage individual user access to Kubernetes. Kubernetes is using role-based access control (RBAC), which can be integrated with the cidaas role management using Role/CusterRoles and RoleBinding/ClusterRoleBinding.
+
+Let’s assume an easy user role setup:
+
+    users with the KUBE_ADMIN role have full Kubernetes cluster access
+    users with the KUBE_READ role have limited read-only access to the Kubernetes cluster
+
+For KUBE_ADMIN role we create a new ClusterRoleBinding and refer to an existing role of the Kubernetes cluster using a “roleRef” to the role “cluster-admin”. This ClusterRoleBinding is the mapping between the Kubernetes ClusterRole (cluster-admin) and the cidaas role (KUBE_ADMIN). The ClusterRoleBinding in the Kubernetes config for the KUBE_ADMIN role will look like this:
+
+kube-rolebinding.yml
+
+# Admin Role setup 
+apiVersion: rbac.authorization.k8s.io/v1 
+kind: ClusterRoleBinding 
+metadata: 
+  name: oidc-cluster-admin 
+roleRef: 
+  apiGroup: rbac.authorization.k8s.io 
+  kind: ClusterRole 
+  name: cluster-admin 
+subjects: 
+- apiGroup: rbac.authorization.k8s.io 
+  kind: Group 
+  name: "cidaas_oidc:KUBE_ADMIN" 
+
+Since there is no existing read role in the Kubernetes default setup, we create a new ClusterRole named “read-only-cluster-role” and define the access of this ClusterRole via the rules section. So in our use case the ClusterRole should be
+
+    only allowed to perform the actions “get”, “list” and “watch” (verbs)
+    on all apis [“*”] (apiGroups) and
+    all resources [“*”] (resource)
+
+After we have defined the ClusterRole we do the same as we did for the KUBE_ADMIN mapping, we assign the ClusterRole via the ClusterRoleBinding to the KUBE_READ role in cidaas.
+
+The ClusterRole and ClusterRoleBinding in the Kubernetes Config for the KUBE_READ role will look like this:
+
+kube-clusterrole-binding.yml
+
+# Admin Role setup 
+#read-only-cluster-role 
+apiVersion: rbac.authorization.k8s.io/v1 
+kind: ClusterRole 
+metadata: 
+  name: read-only-cluster-role 
+rules: 
+- apiGroups: ["*"] 
+  resources: ["*"] 
+  verbs: ["get", "list", "watch"] 
+ 
+ 
+# ClusterRoleBinding 
+--- 
+apiVersion: rbac.authorization.k8s.io/v1 
+kind: ClusterRoleBinding 
+metadata: 
+  name: cluster-read-only-binding 
+roleRef: 
+  apiGroup: rbac.authorization.k8s.io 
+  kind: ClusterRole 
+  name: read-only-cluster-role 
+subjects: 
+- apiGroup: rbac.authorization.k8s.io 
+  kind: Group 
+  name: "cidaas_oidc:KUBE_READ" 
+
+Now we can assign the roles KUBE_ADMIN or KUBE_READ to users in cidaas to assign the required access in Kubernetes to them. If you do not know how to create roles in cidaas you can find the documentation here: docs.cidaas.com
+
+That’s it, we made it! We now integrated cidaas, successfully secured a Kubernetes cluster and are able to manage the access control to and in our Kubernetes cluster via the RBAC approach.
+
+Hint: If you want to have a look what is in the token, we get back in the callback method, you can decode your Access Token easily with the https://authkit.io/ online jwt decoder.
+
+Securing a Kubernetes Cluster and managing the users as well as their access rights is crucial for a secure and productive operation. With the OAuth2 and OpenID Connect Standards it becomes easy to achieve this. This example is based on cidaas — Cloud Identity & Access Management and the OpenID Connect Token feature of Kubernetes.
+
+If you have any questions or suggestions, please leave a comment.
 ** [[https://discuss.kubernetes.io/t/high-availability-host-numbers/13143][High Availability Host Numbers - General Discussions - Discuss Kubernetes]]
 K8s uses the RAFT consensus algorithm for quorum. In order to maintain quorum, you will need floor(n/2)+1 healthy master nodes.
 
