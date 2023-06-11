@@ -1171,6 +1171,7 @@ then redeploy with:
 - [[https://github.com/infracloudio/botkube][infracloudio/botkube: An app that helps you monitor your Kubernetes cluster, debug critical deployments & gives recommendations for standard practices]]
 - [[https://github.com/inlets/inlets-operator][inlets/inlets-operator: Get public LoadBalancers on your local Kubernetes clusters]]
 - [[https://github.com/instrumenta/kubeval/][instrumenta/kubeval: Validate your Kubernetes configuration files, supports multiple Kubernetes versions]]
+- [[https://github.com/int128/kubelogin][int128/kubelogin: kubectl plugin for Kubernetes OpenID Connect authentication (kubectl oidc-login)]]
 - [[https://www.youtube.com/watch?v=KIIkVD7gujY][Introducing Metal³: Kubernetes Native Bare Metal Host Management - Russell Bryant & Doug Hellmann - YouTube]]
 - [[https://www.suse.com/c/introduction-k3d-run-k3s-docker-src/][Introduction to k3d: Run K3s in Docker | SUSE Communities]]
 - [[https://github.com/istio/istio][istio/istio: Connect, secure, control, and observe services.]]
