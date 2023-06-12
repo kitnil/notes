@@ -1998,6 +1998,330 @@ Conclusion !
 thumbs up
 
 TADAM you managed to setup an OIDC authentication using Vault and its group system for your Kubernetes cluster!
+** [[https://scribe.citizen4.eu/using-vault-as-an-openid-connect-identity-provider-ee0aaef2bba2][Using Vault as an OpenID Connect Identity Provider]]
+
+Brian Candler on 2021-12-10
+
+In a previous article I wrote about using Hashicorp Vault as an SSH certificate authority. As of version 1.9, Vault has gained the ability to act as an OpenID Connect Identity Provider as well.
+
+This is an exciting development which greatly increases the scope and utility of Vault. The feature is in “Technical Preview” so may be subject to change, but I can confirm that it works in its current state.
+What this means
+
+You can now configure your local web applications (and some other systems like Kubernetes) to perform single sign-on authentication against Vault — as long as they support OpenID Connect (OIDC).
+
+The user experience is:
+
+    The user connects to a web app.
+    The web app redirects them to Vault’s web interface, where they can choose from available upstream identity providers (IDPs), and login with that provider. If the user has previously authenticated to Vault (i.e. has a cookie to prove it) then this step completes automatically with no further interaction.
+    The user is redirected back to the web app, and Vault sends a token back to the application which proves that the user is who they say they are.
+    The web app accepts the user and continues as normal
+
+Compared to making those applications authenticate directly against Google or Office365 or whatever, there is a great amount of flexibility:
+
+    You can add and remove client applications without having to making any changes at the upstream IDPs; and you can add and remove IDPs without touching the client applications.
+    You can choose which upstream IDP account(s) each user can authenticate with.
+    You have full control over group membership. You can create and manage groups manually, by adding individual users (entities); and/or you can honour group claims from the upstream identity platforms.
+    You have full control over authorization. You can add claims to individual users via entity metadata (regardless of which upstream account they authenticated from)
+    You can control the names and format of the OpenID claims which are sent to your applications. This is important, since some applications have fixed requirements.
+
+Competing alternatives
+
+Apart from the commercial cloud services like Okta and Auth0, I think the software which comes closest is Keycloak. This is a mature open source project which has the weight of Red Hat behind it, and has a wider range of SSO functionality (e.g. it can do SAML). I also find its web interface is much clearer for managing users, groups and clients than Vault’s rather technical web UI. Vault’s CLI is even lower level, only a thin wrapper around the API.
+
+However, Vault has its own advantages:
+
+    Vault has a small resource footprint, written in Go rather than Java
+    Vault has a wide range of storage backends, from simple file storage and robust HA raft implementation, to SQL and noSQL databases
+    Vault has a very good story around data security and encryption. Regardless of which backend you use, all the secret data is encrypted with the master (“unseal”) key. Whenever you restart Vault, you have to provide a subset of the unseal key shards; the contents of the database by itself are not usable to an attacker.
+    Vault can provide other identity services, in particular issuing SSH certificates and X509 certificates
+    Vault also provides its original core functionality of API-based “secret store” for managing credentials used by applications to communicate with each other
+
+(If you are feeling more conservative, you could use Vault for SSH certificates whilst using Keycloak as its upstream IDP)
+Proof-of-concept
+
+Now I’ll go through the steps I did to demonstrate this in action.
+Install and configure Vault
+
+I already had an existing installation of Vault, running with HTTPS using a LetsEncrypt certificate (in my case using dehydrated). Having a real certificate is strongly recommended, since each of your users will need to interact directly with Vault’s web interface to login.
+
+Here is my /etc/vault/vault-conf.hcl with the domain name changed:
+
+# https://www.vaultproject.io/docs/configuration/storage/filesystem
+storage "file" {
+  path = "/var/lib/vault"
+}
+
+listener "tcp" {
+  address = "[::]:8200"
+  tls_cert_file = "/etc/dehydrated/certs/vault1.example.net/fullchain.pem"
+  tls_key_file = "/etc/dehydrated/certs/vault1.example.net/privkey.pem"
+}
+
+cluster_addr = "https://vault1.example.net:8201"
+api_addr = "https://vault1.example.net:8200"
+ui = "true"
+
+# The following setting is not recommended, but you may need
+# it when running in an unprivileged lxd container
+disable_mlock = "true"
+
+For convenience I also have /etc/profile.d/vault.sh:
+
+VAULT_ADDR=https://vault1.example.net:8200
+export VAULT_ADDR
+
+To make the config changes below, you’ll need to be able to authenticate to Vault with sufficient privileges, e.g. with a root token.
+
+    Aside: in a production environment, you would avoid using root tokens if possible. Instead you might define a vaultadmin group with rights to update policies, and authenticate as a member of that group.
+
+Upgrade Vault to v1.9+
+
+If you’ve installed a fresh Vault v1.9, skip this section.
+
+Otherwise, you need to upgrade Vault to v1.9+ before continuing. Choose the latest available v1.9.x release. Restart and unseal.
+
+You will also need to replace the “default” policy, inherited by all users unless you specify otherwise, to allow users to access the OIDC authorization endpoint. Upgrading Vault doesn’t automatically change the existing policy.
+
+Get the new default policy by firing up a temporary dev server with 1.9:
+
+vault server -dev -dev-listen-address 127.0.0.1:8299 \
+  -dev-root-token-id root
+
+# in another window:
+VAULT_ADDR=http://127.0.0.1:8299 VAULT_TOKEN=root \
+  vault policy read default >policy-default-1.9
+
+Then apply this to your main running instance, after you’ve upgraded it to 1.9, unsealed, and have authenticated to it:
+
+vault policy read default >policy-default-old
+vault policy write default - <policy-default-1.9
+
+Configure user authentication
+
+I had already configured users to be able to login to Vault, using userpass and OIDC, as per the previous SSH Certificate Authority article.
+
+To check this is working, users should be able to go to the Vault URL, select a login method, and login:
+
+After logging in, they should see their ID alias by clicking the top-right corner:
+
+In essence, what we’re going to do next is to allow the Vault login process to extend to other web apps that you have.
+
+You’ll need to know how to find the entity IDs of your users, and/or the ID of a group to which they all belong. Use the web interface, or the CLI, e.g:
+
+vault list identity/entity/id
+vault list identity/group/id
+
+vault read -format=json \
+  identity/group/id/ae911de1-e52a-ab87-3dfe-5e7b1d88c643
+
+Configure a sample web app
+
+The first client app I tested is the “example-app” supplied with the Dex IDP: this performs an OIDC exchange and decodes and displays the identity token. Note that you need at least Vault v1.9.1 to work with this app, due to a spec compliance issue in v1.9.0.
+
+You need to compile the Dex example-app from source. Then you run it like this:
+
+bin/example-app --debug \
+  --client-id XXXXXXXX \
+  --client-secret YYYYYYYY \
+  --issuer https://vault1.example.net:8200/v1/identity/oidc/provider/my-provider \
+  --listen http://0.0.0.0:5555 \
+  --redirect-uri http://dex1.example.net:5555/callback
+
+Note that we won’t know the client-id and client-secret until later. You need to give the application a resolvable hostname — it could be on the same host as Vault itself, but in my case I chose to run it elsewhere to be more realistic, with DNS name dex1.example.net. You could refer to it by IP address, and if you’re running this app on the same PC where you’re running your web browser, then “localhost” is sufficient.
+
+It would be better practice to use HTTPS of course, which is easy enough, but you need to provide a suitable key and certificate.
+Create OpenID Connect Provider
+
+    Update: this process has been much simplified in Vault 1.10. You automatically get a key “default”, a provider “default”, and an assignment “allow_all”. The following steps are kept for reference only.
+
+Now I’m more or less following the steps from the OIDC Identity Provider Secrets Engine documentation.
+
+Create a key called “my-key”:
+
+vault write identity/oidc/key/my-key \
+  allowed_client_ids="*" \
+  verification_ttl="1h" \
+  rotation_period="1h" \
+  algorithm="RS256"
+
+Create an assignment. This specifies which Vault entities and groups are authorized to use a specific OIDC client for authentication flows. Here you can provide a space or comma-separated list of entity IDs (e.g. the entity IDs for “alice” and “bob”), and/or one or more group_ids that alice and bob belong to.
+
+vault write identity/oidc/assignment/my-assignment \
+  group_ids="ae911de1-e52a-ab87-3dfe-5e7b1d88c643" \
+  entity_ids="d2f5ddbb-d6d9-e951-7585-78dadd492da9"
+
+Optionally create a custom scope, here called “user”, which can provide additional information in the identity token. The default scope “openid” is always available.
+
+vault auth list
+export MOUNT_ACCESSOR=auth_userpass_bbcef7b5   # example
+
+TOKEN_TEMPLATE=$(cat << EOF
+{
+    "username": {{identity.entity.aliases.$MOUNT_ACCESSOR.name}},
+    "contact": {
+        "email": {{identity.entity.metadata.email}},
+        "phone_number": {{identity.entity.metadata.phone_number}}
+    },
+    "groups": {{identity.entity.groups.names}}
+}
+EOF
+)
+
+vault write identity/oidc/scope/user \
+  description="Scope for user metadata" \
+  template="$(echo $TOKEN_TEMPLATE | base64 -)"
+
+Create an OIDC client:
+
+vault write identity/oidc/client/my-webapp \
+  redirect_uris="http://dex1.example.net:5555/callback" \
+  assignments="my-assignment" \
+  key="my-key" \
+  id_token_ttl="30m" \
+  access_token_ttl="1h"
+
+vault read identity/oidc/client/my-webapp
+...
+client_id           VwxGdHaLCa7gOfoauWSaK8cua8kfecEU
+client_secret       hvo_secret_yh3hDNBocUZRxxxxxxxxx
+
+You can see that the callback URL of the example app is included here. Make a note of the client_id and client_secret returned.
+
+Create an OIDC provider:
+
+vault write identity/oidc/provider/my-provider \
+  allowed_client_ids="*" \
+  scopes_supported="user"
+
+(It’s possible to restrict the provider to specific client-ids, should you need to, but "*" is simpler)
+
+You can now check the OpenID Provider configuration:
+
+curl -Ss $VAULT_ADDR/v1/identity/oidc/provider/my-provider/.well-known/openid-configuration
+
+Pipe the output to jq . or python3 -m json.tool to get neater formatting.
+Test the application
+
+Now we’re ready to go! Return to the example-app and run it with the correct client_id and client_secret. Point a browser at the example-app, e.g. http://dex1.example.net:5555/
+Login to example-app
+
+Enter “user” as the extra scope, then Login. This will take you to the Vault UI, where you can login as alice. If all goes well then you’ll be returned to the app, where it will show the ID and Access tokens and the decoded claims:
+Response from example-app after logging in
+
+The “aud” (audience) is the client_id, and “sub” (subscriber) is the Vault entity ID. In this case the “contact.email” claim has been picked up from entity metadata, “groups” from the entity group memberships, and the “username” claim from the entity alias.
+
+For debugging, check the console output from the app. If it’s still not clear what the problem is, you may need to set log_level="trace" in Vault’s config, and/or turn on audit logging in Vault.
+Apache
+
+The second web app that I tested, a more realistic example, was Apache with mod_auth_openidc. Installation under Ubuntu:
+
+apt-get install apache2 libapache2-mod-auth-openidc
+
+Create /etc/apache2/conf-available/openidc.conf:
+
+OIDCProviderMetadataURL https://vault1.example.net:8200/v1/identity/oidc/provider/my-provider/.well-known/openid-configuration
+OIDCClientID XXXXXXXX
+OIDCClientSecret YYYYYYYY
+
+OIDCRedirectURI /protected/callback
+OIDCCryptoPassphrase W1Qnf4qG2kVo36A1hvDhxDkj9319ewUNBbC7/uvUrj2r
+OIDCScope "openid user"
+OIDCSessionInactivityTimeout 43200
+
+# Required when using HTTP rather than HTTPS
+OIDCCookieSameSite On
+
+#OIDCRemoteUserClaim email
+
+<Location /protected>
+        AuthType openid-connect
+        Require valid-user
+        #Require claim groups:engineers
+</Location>
+
+(use any long, random string for OIDCCryptoPassphrase)
+
+Enable the configuration:
+
+a2enconf openidc
+systemctl reload apache2
+
+Again, making the server run HTTPS would be best, but for simplicity I allowed HTTP on port 80.
+
+In order to obtain the OIDCClientID and OIDCClientSecret, you can either:
+
+    Create a new client — this is the proper approach.
+    Use the same client_id and client_secret as you did for the Dex example-app.
+
+However if you do the latter, you’ll have to extend the list of allowed redirect_uris for this client, so that both clients can use it:
+
+vault write identity/oidc/client/my-webapp \
+redirect_uris="http://dex1.example.net:5555/callback,http://dex1.example.net/protected/callback" \
+  assignments="my-assignment" \
+  key="my-key" \
+  id_token_ttl="30m" \
+  access_token_ttl="1h"
+
+Connect to the web server’s protected area (http://dex1.example.net/protected/) and it should go through the OpenID authentication process. To logout, go to http://dex1.example.net/protected/callback?logout=/ (however, a future access to /protected/ will log you back in automatically, unless you logout of Vault itself)
+
+For debugging, check the Apache error logs at /var/log/apache2/error.log
+kubelogin
+
+For kubernetes login via OIDC, you will need kubelogin. The OIDC client in Vault needs to be configured with:
+
+redirect_uris="http://localhost:8000"
+
+The kube config will contain something like this:
+
+apiVersion: v1
+clusters:
+- cluster:
+    certificate-authority-data: ...
+    server: ...
+  name: my-cluster
+contexts:
+- context:
+    cluster: my-cluster
+    user: oidc
+  name: my-cluster
+current-context: my-cluster
+kind: Config
+preferences: {}
+users:
+- name: oidc
+  user:
+    exec:
+      apiVersion: client.authentication.k8s.io/v1beta1
+      command: kubectl
+      args:
+      - oidc-login
+      - get-token
+      - --oidc-issuer-url=https://vault1.example.net:8200/v1/identity/oidc/provider/my-provider
+      - --oidc-client-id=VwxGdHaLCa7gOfoauWSaK8cua8kfecEU
+      - --oidc-client-secret=hvo_secret_yh3hDNBocUZRxxxxxxxxx
+
+Issuing a command like “kubectl get pod” will then perform the OIDC authentication dance to get the identity token, before contacting the Kubernetes API. The token is cached as a file under ~/.kube/cache/oidc-login/ and you can delete this if you wish to repeat the authentication.
+
+Configuring the Kubernetes API to accept this token is outside the scope of this document, but is described here.
+Conclusion
+
+Vault v1.9 now provides a working OpenID Connect Identity Provider!
+References and notes
+
+The Hashicorp documentation for OIDC Provider is somewhat spread around, but these are the bookmarks I’ve kept:
+
+Tutorial: Vault as an OIDC Identity Provider Concepts: OIDC Provider Secrets Engine: OIDC Identity Provider Secrets Engine: Identity Token Templates API (OIDC Provider): Create or Update a Provider API (Identity Tokens): Create a Named Key
+
+For my testing I followed the steps in the “Secrets Engine” section, as I hadn’t come across the “tutorial” section at that point. I found a few niggles which weren’t obvious at first:
+
+    You should set MOUNT_ACCESSOR to an appropriate value, as shown by vault auth list. e.g. export MOUNT_ACCESSOR=auth_userpass_bbcef7b5 (It’s not a big problem if you don’t, but the ID tokens will contain an empty “username” claim)
+    After creating a client (say “my-webapp”), to find the client_id and client_secret you need to do vault read identity/oidc/client/my-webapp
+    issuer can only be set to scheme://host:port (no path). If you don’t set issuer, it defaults to api_addr. Note that api_addr can be a hostname, not just an IP address, and indeed really should be a hostname if you’re using proper certificates. The full issuer URL generated is scheme://host:port/v1/identity/oidc/provider/provider-name, to which you add /.well-known/openid-configuration to get the OpenID configuration URL.
+    Remember to change the redirect_uri to suit your application, and change assignment (i.e. which entities and/or groups are permitted to authenticate with this provider)
+    You need to set the correct allowed_client_ids in key and provider — or more simply, set them to * (Note that you can’t create a client until you have created a key, and you can’t choose your own client_id, so you can’t restrict a key to specific clients until after the clients have been created). I made a suggestion here about how the documentation could be improved. The “tutorial” document handles it better, by setting allowed_client_ids="*"
+    If you are upgrading from an older version of Vault, you need to upgrade the default policy (which allows users to access the /authorize endpoint)
+    In Vault v1.9.0, the nonce parameter was mandatory, which prevented the Dex example-app from working. This was a spec violation, and has been fixed in vault v1.9.1 (showing a very rapid response from Hashicorp!)
+    If using mod_auth_openidc, but the web server is using HTTP rather than HTTPS, then you need to set OIDCCookieSamesite on. Thanks to: https://medium.com/swlh/7-keys-to-the-mystery-of-a-missing-cookie-fdf22b012f09
 ** [[https://discuss.kubernetes.io/t/high-availability-host-numbers/13143][High Availability Host Numbers - General Discussions - Discuss Kubernetes]]
 K8s uses the RAFT consensus algorithm for quorum. In order to maintain quorum, you will need floor(n/2)+1 healthy master nodes.
 
