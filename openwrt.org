@@ -1,3 +1,206 @@
 - [[https://github.com/astro/nix-openwrt-imagebuilder][astro/nix-openwrt-imagebuilder: Build OpenWRT images in Nix derivations]]
 - [[https://github.com/kenzok8/openwrt-packages][kenzok8/openwrt-packages: openwrt常用软件包]]
 - [[https://openwisp.org/][OpenWISP: Open Source Network Management System]]
+
+* [[https://blog.thomas.maurice.fr/posts/virtualise-openwrt/][Virtualise OpenWRT in virt-manager/KVM]]
+📅 Sep 24, 2021
+ ·  ☕ 9 min read
+
+    🏷️
+    #networking
+    #security
+    #openwrt
+    #virtualisation
+
+Introduction
+
+If you are anything like me you probably like to tinker a bit with your home network. I discovered OpenWRT a few years ago and ever since my Turris Omnia router almost never failed me. I since acquired a bunch of small ARM boards capable of running my network that rely on OpwnWRT. The thing is, I am the furthest away I would be from a legit network engineer, and it has happened a few times that I would completely fuck over my network because I did something wrong without actually realising it. It is pretty bad and I needed a way to test topologies and changes before actually applying them to my real network.
+
+For a while small ARM boards like my BananaPi R1 (than I now use on my homelab network, so unuseable for testing), various NanoPi R1 or R2S helped well, but I cannot be bothered to go through the hassle of repeatedly flash new SD cards each time I want a fresh install, because I am a lazy fuck.
+
+I tried to virtualise OpenWRT using VirtualBox but for reasons that I still do not understand today, it would not fulfil my needs, and would just plain not work. A buddy of mine pointed me to Virt-manager, a solution based on QEMU/KVM and libvirt that worked well for me.
+What are we going to do ?
+
+I will explain how to virtualise a working 2+ ports router in OpenWRT, so you can test and apply configurations, as well as use it as the gateway for your other virtual machines, containers and basically anything you want. Note that this setup works in a KVM deployment, so you could probably set that up as well in your proxmox deployment.
+
+The benefits of this is you would get a setup that would sort of be ISO to your real word setup, you could tinker with DHCP options, TFTP boots for your other machines, test various VPN setups and DNS filterings and so much more! So how about we get started ?
+Setting up
+OpenWRT image and packages
+
+You need a few things to get started, first grab an image of openwrt x86, at the time of writing the latest available is 21.2.0, you can grab it like so
+
+$ wget https://downloads.openwrt.org/releases/21.02.0/targets/x86/generic/openwrt-21.02.0-x86-generic-generic-ext4-combined.img.gz -O ~/openwrt-blog.img.gz
+$ gunzip openwrt-blog.img.gz
+
+You also need a few system packages such as virt-manager and bridge-utils
+
+$ apt-get install virt-manager qemu-kvm bridge-utils
+
+The handy dandy network setup script
+
+We need another thing to set up the network and to be able to connect the router to the world: bridges. The setup is going to be as follows: we are going to create a router with 4 ports as an example, so we would need 4 bridges. One will be the libvirt’s virbr0 bridge that will act as our WAN port, and three other ones that will be plugged to our switch, they will be named sw-r0-eth[1-3]. Lastly we need to make it so our laptop gets connected to the LAN of the router, so for that we will use a veth pair, one of the ends will be enslaved to the sw-r0-eth1 bridge.
+
+That looks tedious so I made a script for that, you can download it here.
+
+You can adapt it to your needs, the relevant config options are at the begining of the script:
+
+# List of bridges to create space delimited
+bridges="sw-r0-eth0 sw-r0-eth1 sw-r0-eth2 sw-r0-eth3"
+# Veths peirs to create with the following format, space delimited
+# <veth dev 1>[|options]:<veth dev 1>[|options]
+# where options are a comma delimited key=values pair
+# options: master=<master bridge> or dhcp
+veths="veth0:dhcp|veth1:master=sw-r0-eth1"
+
+wan_bridge="virbr0"
+
+The comments should be pretty self explanatory. It will create 4 bridges (we will only use 3 of them) and a veth pair veth0:veth1 with veth1 being enslaved to sw-r0-eth1 and veth0 being assigned an address using dhcp (more on this later).
+
+You can run the following commands:
+
+$ sudo ./setup-net.sh help
+/home/thomas/setup-net.sh usage: Creates the necessary bridges and interfaces necessary for the virtualbox infrastructure
+
+/home/thomas/setup-net.sh <start|stop|dhcp|stop-dhcp|show-wan|help>
+- start: creates the bridges and veths, and sets them up
+- stop: tears everything down
+- dhcp: runs dhclient on the dhcp interfaces
+- stop-dhcp: kill running dhcp processes
+- show-wan: shows the wan interface
+- help: displays this help message
+
+You can go ahead and run the start command to setup the bridge
+
+sudo ~/setup-net.sh start
+[sudo] password for thomas: 
+configuring veth veth0
+ - DHCP would be enabled by /home/thomas/setup-net.sh dhcp
+configuring veth veth1
+ - setting veth1 as a port of sw-r0-eth1
+$ ip link | grep -E '(veth|sw-r0)'
+30: sw-r0-eth0: <NO-CARRIER,BROADCAST,MULTICAST,UP> mtu 1500 qdisc noqueue state DOWN mode DEFAULT group default qlen 1000
+31: sw-r0-eth1: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UP mode DEFAULT group default qlen 1000
+32: sw-r0-eth2: <NO-CARRIER,BROADCAST,MULTICAST,UP> mtu 1500 qdisc noqueue state DOWN mode DEFAULT group default qlen 1000
+33: sw-r0-eth3: <NO-CARRIER,BROADCAST,MULTICAST,UP> mtu 1500 qdisc noqueue state DOWN mode DEFAULT group default qlen 1000
+34: veth1@veth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue master sw-r0-eth1 state UP mode DEFAULT group default qlen 1000
+35: veth0@veth1: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UP mode DEFAULT group default qlen 1000
+
+Amazing ! We can now go ahead and set up the virtual machine !
+The virtual machine
+
+So go ahead and fire up Virt-manager and follow the following steps:
+
+    Hit the Create new VM button
+    Select the Import existing disk image option and hit Forward
+    Select the path of the openwrt image you downloaded
+    Select Generic default as the OS type, it should work, then hit Forward
+    Adjust the memory and CPU settings, the defaults are fine but openwrt really does not need more than 256M of RAM, hit Forward
+    Name the VM and tick Customize before install, then hit Finish
+
+Now we are going to configure the network interfaces. For the existing one, click on it and assign it to Virtual network 'default': NAT, this is going to be our WAN port.
+
+⚠️ OpenWRT will consider the WAN port to be eth1 for some reason and we will have to flip them over later on, if you cannot be bothered with this then set up the second ethernet interface as the NAT one, and flip the settings in the script above to make veth1 a slave of sw-r0-eth0. Fundamentally it does not change anyhting but I like my WAN port to be eth0 so this is what we are going to do.
+
+Next add 3 more interfaces in order and assign them to the sw-r0-ethX ports respectively, you should not have to change any more settings.
+
+⚠️ The interface order matters in virt-manager, so double check that. Check as well that you are configured to NAT traffic from openwrt to the internet on the virbr0 bridge, or alternatively run start-net.sh iptables to make sure it gets set up.
+
+When this is done, hit apply and start the VM.
+Configuring the VM’s interfaces
+
+Once you fired up the VM, wait a few seconds then get on the KVM window, and you should see something like that:
+openwrt is working
+
+You can check as well that we have 4 eth interfaces like so
+openwrt is working
+
+Now before we can connect to SSH to the virtual machine, we should flip eth0 and eth1 as the wan port. For this, you should look into the /etc/config/network file that will look like this
+openwrt is working
+
+You need the following changes:
+
+    In the device/br-lan section, change the port to eth1
+    In the interface/wan and wan6 section change the device option to eth0
+    I just remove altogether the wan6 section because i dont use it.
+    Optionally you can also change the LAN CIDR if it clashes with anything in your network
+
+It should look like this
+openwrt is working
+
+When you are done with it restart the network using /etc/init.d/network restart and validate it works
+openwrt is working
+
+Now we are ready to connect to the router from our PC!
+Getting a DHCP address
+
+Use the setup-net.sh script for that, you can also do it manually with dhclient but take care to remove th default route dhclient will force on you, or you will loose internet access.
+
+$ sudo ./setup-net.sh dhcp
+[sudo] password for thomas: 
+configuring veth veth0
+ - running dhclient
+Internet Systems Consortium DHCP Client 4.4.1
+Copyright 2004-2018 Internet Systems Consortium.
+All rights reserved.
+For info, please visit https://www.isc.org/software/dhcp/
+
+Listening on LPF/veth0/82:55:d6:b1:fd:82
+Sending on   LPF/veth0/82:55:d6:b1:fd:82
+Sending on   Socket/fallback
+DHCPDISCOVER on veth0 to 255.255.255.255 port 67 interval 3 (xid=0x401baa4f)
+DHCPOFFER of 192.168.1.135 from 192.168.1.1
+DHCPREQUEST for 192.168.1.135 on veth0 to 255.255.255.255 port 67 (xid=0x4faa1b40)
+DHCPACK of 192.168.1.135 from 192.168.1.1 (xid=0x401baa4f)
+bound to 192.168.1.135 -- renewal in 18079 seconds.
+removing default routes set by dhclient
+configuring veth veth1
+ - setting veth1 as a port of sw-r0-eth1
+
+And we are connected using the veth!
+Checking everything works
+
+Let’s check we can talk to the router now:
+
+$ ping -c 2 192.168.1.1
+PING 192.168.1.1 (192.168.1.1) 56(84) bytes of data.
+64 bytes from 192.168.1.1: icmp_seq=1 ttl=64 time=0.314 ms
+64 bytes from 192.168.1.1: icmp_seq=2 ttl=64 time=0.362 ms
+
+--- 192.168.1.1 ping statistics ---
+2 packets transmitted, 2 received, 0% packet loss, time 1028ms
+rtt min/avg/max/mdev = 0.314/0.338/0.362/0.024 ms
+
+How about SSH ?
+
+$ ssh root@192.168.1.1
+The authenticity of host '192.168.1.1 (192.168.1.1)' can't be established.
+ED25519 key fingerprint is SHA256:3eoVvMkOOutF/HeanQTVDmJzu+GCqKsLc6Dgz2XaY90.
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added '192.168.1.1' (ED25519) to the list of known hosts.
+
+
+BusyBox v1.33.1 (2021-08-31 22:20:08 UTC) built-in shell (ash)
+
+  _______                     ________        __
+ |       |.-----.-----.-----.|  |  |  |.----.|  |_
+ |   -   ||  _  |  -__|     ||  |  |  ||   _||   _|
+ |_______||   __|_____|__|__||________||__|  |____|
+          |__| W I R E L E S S   F R E E D O M
+ -----------------------------------------------------
+ OpenWrt 21.02.0, r16279-5cc0535800
+ -----------------------------------------------------
+=== WARNING! =====================================
+There is no root password defined on this device!
+Use the "passwd" command to set up a new password
+in order to prevent unauthorized SSH logins.
+--------------------------------------------------
+root@OpenWrt:~#
+
+All good ! We can even access the LUCI interface of OpenWRT (root password is empty by default)
+openwrt is working
+
+You can now add devices and VLANs that would utilise the two ther interfaces as you would normally on a physical openwrt install, and from then the sky is the limit.
+openwrt is working
+Wrapping up
+
+You now possess a 4 ports virtual router you can use to test your OpenWRT setups, ramp up on network administration, use it in your virtual lab as the router, and so much more. I have not tried it in some sort of Proxmox deployments or what not but it should really work the same. You can try to create another VM (ubuntu or what have you) and set its primary NIC as a slave of the sw-r0-eth1 bridge, and its traffic will flow through your router!
