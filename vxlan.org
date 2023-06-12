@@ -253,3 +253,45 @@ Make sure nftables packet is installed, then run:
   nft add rule nat postrouting masquerade
   sysctl -w net.ipv4.ip_forward=1
 #+end_example
+
+* [[https://blog.thomas.maurice.fr/posts/some-vxlan-stuff-so-i-dont-forget/][Some VXLAN stuff so I don't forget how it works]]
+📅 Aug 7, 2021
+ ·  ☕ 2 min read
+
+    🏷️
+    #linux
+    #networking
+    #kernel
+    #namespaces
+    #vxlan
+
+Just like my network namespace post, this post is going to be a basic cheat sheet for me so I don’t have to endlessly Google stuff for ages in case I need to use VXLANs again.
+What is a VXLAN
+
+Thta’s just a like a VLAN, essentially an overlay network that is not limited to 4000 IDs. It also has some nice features such as auto discovery of peers via broadcast on the same network.
+Create a unicast vxlan interface
+
+You can create a vxlan interface like so
+
+$ ip link add name vx-0 type vxlan id 69 dev <IFACE> remote <REMOTE_IP> local <LOCAL_IP> dstport <PORT>
+$ ip address add 10.69.0.1/24 dev vx-0
+$ ip link set up dev vx-0
+
+And mirror on the other host. Note that
+
+    IFACE is the “parent” interface of the VXLAN interface, it should be the interface you will use to
+    communicate with the NUC.
+    REMOTE_IP is the IP of the remote vxlan endpoint, not on the overlay network (so like your LAN IP)
+    LOCAL_IP is the same but for your local machine
+    PORT is the port you will send packets to
+
+It is worth noting you can just omit local IP dstport PORT the kernel should figure it out.
+
+You can also bridge the interface like so:
+
+$ ip link add name vx-0 type vxlan id 69 dev <IFACE> remote <REMOTE_IP> local <LOCAL_IP> dstport <PORT>
+$ ip link add br-vx-0 type bridge
+$ ip address add 10.69.0.1/24 dev br-vx-0
+$ ip link set master br-vx-0 dev vx-0
+$ ip link set up dev br-vx-0
+$ ip link set up dev vx-0
