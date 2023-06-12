@@ -72,6 +72,7 @@
 - [[https://github.com/stapelberg/rsyncprom][stapelberg/rsyncprom: rsync wrapper (or output parser) that pushes metrics to prometheus]]
 - [[https://github.com/summerwind/github-project-exporter][summerwind/github-project-exporter: Export GitHub project status to Prometheus.]]
 - [[https://github.com/thanos-io/thanos][thanos-io/thanos: Highly available Prometheus setup with long term storage capabilities. A CNCF Incubating project.]]
+- [[https://habr.com/ru/companies/otus/articles/502122/][Thanos — масштабируемый Prometheus / Хабр]]
 - [[https://awesomeopensource.com/projects/prometheus-exporter][The Top 85 Prometheus Exporter Open Source Projects]]
 - [[https://github.com/timoa/app-stores-prometheus-exporter][timoa/app-stores-prometheus-exporter: Prometheus exporter that exports metrics (score, ratings, reviews, app version, etc.) from Apple App Store and Google Play.]]
 - [[https://github.com/tomcz/openldap_exporter][tomcz/openldap_exporter: This is a simple service that scrapes metrics from OpenLDAP and exports them via HTTP for Prometheus consumption.]]
