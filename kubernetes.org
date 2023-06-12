@@ -1235,6 +1235,769 @@ Hint: If you want to have a look what is in the token, we get back in the callba
 Securing a Kubernetes Cluster and managing the users as well as their access rights is crucial for a secure and productive operation. With the OAuth2 and OpenID Connect Standards it becomes easy to achieve this. This example is based on cidaas — Cloud Identity & Access Management and the OpenID Connect Token feature of Kubernetes.
 
 If you have any questions or suggestions, please leave a comment.
+** [[https://blog.thomas.maurice.fr/posts/authenticate-with-kubernetes-using-vault/#creating-the-oidc-endpoint][Authenticate to Kubernetes using Hashicorp Vault]]
+📅 Oct 14, 2021
+ ·  ☕ 23 min read
+
+    🏷️
+    #security
+    #vault
+    #kubernetes
+
+Authenticating with Kubernetes can be done in a wide variety of ways. You can use user certificates, you can use service account tokens, you can use IAM on Google GKE, you can also use AWS IAM on EKS and whatever the equivalent is on Azure AKS. But there are not many easy options to choose from if you are not using a cloud provider.
+
+We are going to explore how to use Hashicorp Vault to serve as an OpenID connect provider that will let you authenticate your users using Vault, and set up some basic Role Based Access Control (RBAC) for it.
+Few words of warning
+
+⚠️ this is intended to linux users, I have no idea if the hacky shit that happens here (not specific to k8s, but required to make this setup work unfortunately) is going to work on OSX.
+
+⚠️ This is a long-ass article, in fact it is the longest piece of documentation material I have ever written in my whole life. Feel free to read it in several sittings.
+
+⚠️ I am demonstrating doing this with Vault because I already have a Vault setup at home I use for a variery of things. But really you could use any sort of IDP such as Dex or Hydra if you feel like it. If you don’t have a Vault setup already, worry not! This article will explain to you how to setup one from scratch for this usecase.
+
+⚠️ This article is going to require a very (very) basic understanding of Kubernetes, Terraform and Vault, if it is not the case, mild brain damage and cerebral fluid leakages may happen. I will not be responsible for any of those.
+
+⚠️ If you are a user of EKS/GKE, you can actually change the apiserver’s configuration to add your own OIDC providers to it, so you would be able to use the method described here to authenticate to your EKS cluster from your very own Vault!
+
+⚠️ I compiled all the code snippets, configs and such used in this article here on github so you can have access to all of it for reference !
+Authentication in Kubernetes
+
+In Kubernetes you can identify to the apiserver in a variety of way, like x509 certificates, user static token files, service account tokens, bootstrap tokens, OIDC connect but really it boils down to mainly using access tokens.
+
+A token is usually a piece of signed information containing identity data about the person calling a service, which are going to be mainly about a user ID, a list of groups that maybe you belong to, an expiration date (so the credentials do not live forever) and a few pieces of metadata. This format is a standard and is commonly referred to as JWT or JSON web tokens.
+
+Kubernetes is capable of understanding these to assert whether or not you use a valid identity and to further perform authorization on the request you wish to perform. Coincidentally, it just so happens that Hashicorp Vault is capable of serving as an identity provider (the docs might look overwhelming, it’s fine we will do it step by step), so why not mix the two ?
+
+⚠️ I already wrote a somewhat relevant post about using JWTs and Vault if you want a deeper understanding of how it works, so there it is
+What we will end up achieving today
+
+The goal of this article is to make you able to authenticate to Kubernetes with an identity you got from Vault, who belongs to a defined set of groups, and demonstrate you basic RBAC rules that would grant, or deny you access to certain ressources depending on these. Ultimately, you will be able to add and delete users easily to grant or revoke access to your cluster in a somewhat simple fashion.
+
+Now enough talking and more doing !
+Setting up Vault
+
+First we need to have a Vault setup going. We want to setup a couple of things
+
+    A user backend. Now there are a lot of ways you can get users going in Vault. For the sake of simplicity we are going to setup a very simple userpass backend. But you could as well use an existing one like AWS/Azure/GCP auth, TLS certificates authentication as well as LDAP and many more.
+    The Vault entities that map to these users
+    The groups that these entities will belong to
+    An OIDC endpoint so authenticated users may get their OIDC tokens
+    A few policies to cobble all that together
+
+You could do that using the vault command line utility and talk to the vault server directly but I personally dislike it as it is not the most user friendly command line tool. So Instead we are going to use Hashicorp’s Terraform to set all that up.
+Fire up a Vault server
+
+There are a few ways you can do that, we are going to use Vault in devmode, which means that every change you make to vault is going to be lost every time you restart the server, so be aware of it. You can start a developement server using docker like so
+
+docker run --net host --cap-add IPC_LOCK vault vault server -dev -dev-root-token-id=devtoken
+
+or simply using the vault command line
+
+vault server -dev -dev-root-token-id=devtoken
+
+Note that devtoken is going to be the root token of the new vault server (you can see it as the “root password for Vault”), which will grant you super user rights on it. Try to access vault at http://localhost:8200 and login using the token, just to make sure it works.
+Housekeeping
+
+For the rest of this article you might want to export the VAULT_ADDR variable so you don’t get randomly fucked if you use another Vault deployment.
+
+$ export VAULT_ADDR=http://127.0.0.1:8200
+
+⚠️ all of your vault lives in memory. If for some reason you kill the process, you will have to re-apply all the terraform code to restore it. You can go around it by setting up a more permanent vault installation but this is out of scope for this article.
+Add the userpass authentication backend and the users
+
+Now we want to have a bunch of users inside of Vault that can login and take actions, using a username and password combo. In a real world production setup, this would probably be replaced by some sensible identity provider like Auth0 or Okta but in our case, a password will do.
+
+Create a new directory and a new file, name it something like vault.tf and pop the following in there
+
+terraform {
+  backend "local" {
+    path = "terraform.tfstate"
+  }
+}
+
+provider "vault" {
+  address = "http://127.0.0.1:8200"
+  token   = "devtoken"
+}
+
+The first block tells you where terraform is going to store its state (in a terraform.tfstate file) and a second one that tells terraform that the vault server it will talk to is the one we just started and it should use the devtoken to login.
+
+⚠️ if you restart the vault server, the state will be out of date, since the new server will be clean and brand new, so you should delete the statefile before trying to run anything else.
+
+⚠️ all the terraform code is available here
+
+You can now go ahead and initialise Terraform
+
+$ terraform init
+
+Initializing the backend...
+
+Successfully configured the backend "local"! Terraform will automatically
+use this backend unless the backend configuration changes.
+
+Initializing provider plugins...
+- Finding latest version of hashicorp/vault...
+- Installing hashicorp/vault v2.24.1...
+- Installed hashicorp/vault v2.24.1 (self-signed, key ID 34365D9472D7468F)
+
+Partner and community providers are signed by their developers.
+If you'd like to know more about provider signing, you can read about it here:
+https://www.terraform.io/docs/plugins/signing.html
+
+Terraform has created a lock file .terraform.lock.hcl to record the provider
+selections it made above. Include this file in your version control repository
+so that Terraform can guarantee to make the same selections by default when
+you run "terraform init" in the future.
+
+Terraform has been successfully initialized!
+
+You may now begin working with Terraform. Try running "terraform plan" to see
+any changes that are required for your infrastructure. All Terraform commands
+should now work.
+
+If you ever set or change modules or backend configuration for Terraform,
+rerun this command to reinitialize your working directory. If you forget, other
+commands will detect it and remind you to do so if necessary.
+
+Next up we are going to create the userpass backend, append the following to your file
+
+resource "vault_auth_backend" "userpass" {
+  type = "userpass"
+  path = "userpass"
+}
+
+This will allow to create users that are authenticated with a username/password combo.
+
+Run terraform plan then terraform apply
+
+$ terraform apply
+terraform apply
+
+An execution plan has been generated and is shown below.
+Resource actions are indicated with the following symbols:
+  + create
+
+Terraform will perform the following actions:
+
+  # vault_auth_backend.userpass will be created
+  + resource "vault_auth_backend" "userpass" {
+      + accessor                  = (known after apply)
+      + default_lease_ttl_seconds = (known after apply)
+      + id                        = (known after apply)
+      + listing_visibility        = (known after apply)
+      + max_lease_ttl_seconds     = (known after apply)
+      + path                      = "userpass"
+      + tune                      = (known after apply)
+      + type                      = "userpass"
+    }
+
+Plan: 1 to add, 0 to change, 0 to destroy.
+
+Do you want to perform these actions?
+  Terraform will perform the actions described above.
+  Only 'yes' will be accepted to approve.
+
+  Enter a value: yes
+
+vault_auth_backend.userpass: Creating...
+vault_auth_backend.userpass: Creation complete after 0s [id=userpass]
+
+Apply complete! Resources: 1 added, 0 changed, 0 destroyed.
+
+The state of your infrastructure has been saved to the path
+below. This state is required to modify and destroy your
+infrastructure, so keep it safe. To inspect the complete state
+use the `terraform show` command.
+
+State path: terraform.tfstate
+
+⚠️ now when I write apply your plan it refers to entering the terraform plan and terraform apply commands. It will be much easier.
+
+We now need to create two users, they will be named user1 and user2 and will have respective passwords password1 and password2.
+
+resource "vault_generic_endpoint" "user1" {
+  depends_on           = [vault_auth_backend.userpass]
+  path                 = "auth/userpass/users/user1"
+
+  data_json = <<EOT
+{
+  "password": "password1"
+}
+EOT
+}
+
+resource "vault_generic_endpoint" "user2" {
+  depends_on           = [vault_auth_backend.userpass]
+  path                 = "auth/userpass/users/user2"
+
+  data_json = <<EOT
+{
+  "password": "password2"
+}
+EOT
+}
+
+Same as before, plan and apply. Next you should verify that you can login as one of these users. Your output should look something like the following:
+
+$ vault login -method=userpass username=user1 password=password1
+Success! You are now authenticated. The token information displayed below
+is already stored in the token helper. You do NOT need to run "vault login"
+again. Future Vault requests will automatically use this token.
+
+Key                    Value
+---                    -----
+token                  s.7cVUe23ytt2X3k2o5FRsZeYg
+token_accessor         xyaTfw2hZdmpNuG9Bs34WKcf
+token_duration         768h
+token_renewable        true
+token_policies         ["default"]
+identity_policies      []
+policies               ["default"]
+token_meta_username    user1
+
+Now that it is all good, let’s move on.
+Create the entities and aliases
+
+We are now going to create 2 things per user
+
+    An entity, which is the internal representation of the users within vault. An entity is used to attach policies to a user, allowing them to do things within Vault.
+    An entity alias, which links the internal entity we created, to for instance user1 in Vault. This allows you to map the same vault entity to several auth backends, allowing you to have scenarios where you could authenticate to vault with both gsuite and ldap
+
+The code will look like this
+
+resource "vault_identity_entity" "user1" {
+  name      = "user1"
+  policies  = ["kubernetes-policy-test"]
+}
+
+resource "vault_identity_entity" "user2" {
+  name      = "user2"
+  policies  = ["kubernetes-policy-test"]
+}
+
+resource "vault_identity_entity_alias" "user1" {
+  name            = "user1"
+  mount_accessor  = vault_auth_backend.userpass.accessor
+  canonical_id    = vault_identity_entity.user1.id
+}
+
+resource "vault_identity_entity_alias" "user2" {
+  name            = "user2"
+  mount_accessor  = vault_auth_backend.userpass.accessor
+  canonical_id    = vault_identity_entity.user2.id
+}
+
+so basically one entity and alias per user. Note that I added a kubernetes-policy-test policy. This does not exist but thay will allow you to test your setup actually works. Try to login again and check you are assigned the proper policy
+
+$ vault login -method=userpass username=user1 password=password1
+Success! You are now authenticated. The token information displayed below
+is already stored in the token helper. You do NOT need to run "vault login"
+again. Future Vault requests will automatically use this token.
+
+Key                    Value
+---                    -----
+token                  s.2Ks6LpmWndf7miF7Tqu962kH
+token_accessor         2lHLWc1ZmB1bnHgjE6BXhr30
+token_duration         768h
+token_renewable        true
+token_policies         ["default"]
+identity_policies      ["kubernetes-policy-test"]
+policies               ["default" "kubernetes-policy-test"]
+token_meta_username    user1
+
+Amazing!
+
+⚠️ when in the future I will say “log into vault” it means running vault login -method=userpass username=user1 password=password1 or the equivalent with user2
+Creating groups
+
+Creating groups work pretty much the same way as adding entities. We will create a group containing the user1 that will be the cluster admin, as well as a red only group that will contain the user2. Both groups are going to be assigned a policy kubernetes-access that will be internal to vault and will allow both users to read an OIDC token from vault.
+
+⚠️ in practice you might want an “umbrella” group that will contain this policy, with all the various RBAC groups as its children but we will not cover it here for the sake of simplicity.
+
+It looks like this:
+
+resource "vault_identity_group" "kubernetes-admin" {
+  name     = "kubernetes-admin"
+  type     = "internal"
+
+  policies = ["kubernetes-access"]
+
+  member_entity_ids = [
+    vault_identity_entity.user1.id,
+  ]
+}
+
+resource "vault_identity_group" "kubernetes-user-readonly" {
+  name     = "kubernetes-user-readonly"
+  type     = "internal"
+
+  policies = ["kubernetes-access"]
+
+  member_entity_ids = [
+    vault_identity_entity.user2.id,
+  ]
+}
+
+Plan and apply, and you are done !
+Creating the OIDC endpoint
+
+Now you need to create the OIDC endpoint that will allow your users to fetch a token. For that you need to setup Vault in an OIDC provider mode. This is done like so
+
+resource "vault_identity_oidc" "oidc_server" {
+  # Do not change this, you will see in the next sections why it matters
+  issuer = "https://vault.example.com"
+}
+
+resource "vault_identity_oidc_key" "key" {
+  name             = "key"
+  algorithm        = "ES256"
+  rotation_period  = 24 * 3600
+  verification_ttl = 24 * 3600
+}
+
+# will create a path at v1/identity/oidc/token/k8s-token
+resource "vault_identity_oidc_role" "k8s-token" {
+  name     = "k8s-token"
+  key      = vault_identity_oidc_key.key.name
+  template = <<EOF
+{
+  "groups": {{identity.entity.groups.names}},
+  "nbf": {{time.now}}
+}
+EOF
+}
+
+# Allow the role "k8s-token" to use the key
+resource "vault_identity_oidc_key_allowed_client_id" "oidc_key" {
+  key_name          = vault_identity_oidc_key.key.name
+  allowed_client_id = vault_identity_oidc_role.k8s-token.client_id
+}
+
+This looks scary, but it is not. First we tell vault it’s name (issuer) for the tokens. Then create a crypto key, rotated every day, to sign issued tokens. Next you create an OIDC role (which would be the equivalent of creating an OIDC application in simpler terms) then we allow the role to get tokens issued with the above signing key. You might have noticed the template in the user creation, it is extra information that vault will insert into the token when it creates it, here we add the groups a user belongs to. More info on token templates here
+
+Then again, run and apply!
+Policies !
+
+Now the last bit we need to do is to write the kubernetes-access policy that we have used in the Vault groups before. This is a very simple bit of terraform code that looks like this.
+
+resource "vault_policy" "kubernetes-access" {
+  name = "kubernetes-access"
+
+  policy = <<EOT
+path "identity/oidc/token/k8s-token" {
+  capabilities = ["read"]
+}
+EOT
+}
+
+This basically says that every user that has this policy affected can read the identity/oidc/token/k8s-token path that will serve our freshly minted tokens.
+
+Plan and apply !
+Testing it out
+
+Testing is straightforward, login as user1 as we have done previously
+
+$ vault login -method=userpass username=user1 password=password1
+[...]
+
+Key                    Value
+---                    -----
+token                  s.dHegU8fjEPHB6VwfP38Wm6qq
+token_accessor         6JPJT3B2r9TbUUc9YXcdjkgn
+token_duration         768h
+token_renewable        true
+token_policies         ["default"]
+identity_policies      ["kubernetes-access" "kubernetes-policy-test"]
+policies               ["default" "kubernetes-access" "kubernetes-policy-test"]
+token_meta_username    user1
+
+Now use the vault token, s.dHegU8fjEPHB6VwfP38Wm6qq here, to try and read the kubernetes token
+
+$ VAULT_TOKEN=s.dHegU8fjEPHB6VwfP38Wm6qq vault read identity/oidc/token/k8s-token
+Key          Value
+---          -----
+client_id    pzi1boK6Nfft91Em7NW3k62HUX
+token        eyJhbGciOiJFUzI1NiIsImtpZCI6IjQ0NWY2NTNjLWEyZjctZmVmMi0wNzk5LTI0YmU2MjkwOGY4MiJ9.eyJhdWQiOiJwemkxYm9LNk5mZnQ5MUVtN05XM2s2MkhVWCIsImV4cCI6MTYzNDIxMjAzNCwiZ3JvdXBzIjpbImt1YmVybmV0ZXMtYWRtaW4iXSwiaWF0IjoxNjM0MTI1NjM0LCJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgyMDAvdjEvaWRlbnRpdHkvb2lkYyIsIm5hbWVzcGFjZSI6InJvb3QiLCJuYmYiOjE2MzQxMjU2MzQsInN1YiI6ImRjYmNhM2NlLTgxZTQtYWRmOC1mNTA5LTRlNTM5MmY2MGVkZCJ9.wNiMPHwYVVW_-HPujEWFBRsv5e7ZGrhpOtjCEuIVtJRbzHVMTj2vHWB8BGnRW98LjVsK1NOmwn8WLetvDTI4Nw
+ttl          24h
+
+Success ! You now have an OIDC token. But what does it contain ? Head out to the debugger at jwt.io and let’s find out. Upon inspection the body of the token looks like this:
+
+{
+  "alg": "ES256",
+  "kid": "445f653c-a2f7-fef2-0799-24be62908f82"
+}
+{
+  "aud": "pzi1boK6Nfft91Em7NW3k62HUX",
+  "exp": 1634212034,
+  "groups": [
+    "kubernetes-admin"
+  ],
+  "iat": 1634125634,
+  "iss": "https://vault.example.com/v1/identity/oidc",
+  "namespace": "root",
+  "nbf": 1634125634,
+  "sub": "dcbca3ce-81e4-adf8-f509-4e5392f60edd"
+}
+
+The things you want to note are:
+
+    alg which is the algorithm used to sign the token, we will need it later
+    aud which is the clientid of the “app”
+    iss which identifies which server issued the token
+    groups which contains the list of your vault groups
+    sub which is the ID of your entity in vault
+
+Now that it is all setup on the vault side, let’s setup a kubernetes!
+(optional) add outputs to terraform
+
+You can optionally add these few lines to terraform to output variables you care about after each apply. But this is purely optional
+
+output "oidc_client_id" {
+  value = vault_identity_oidc_role.k8s-token.client_id
+}
+
+output "k8s_command_token" {
+  value = "vault read identity/oidc/token/${vault_identity_oidc_role.k8s-token.name}"
+}
+
+output "user1_sub" {
+  value = vault_identity_entity.user1.id
+}
+
+output "user2_sub" {
+  value = vault_identity_entity.user2.id
+}
+
+Setting up a TLS reverse proxy
+
+Remember when I told you a paragraph ago that the next step will be setting up Kubernetes ? Well, I lied. You need another thing, which is a TLS communication channel between kubernetes and your Vault. Eventhough this is a very sound thing to consider from a basic security point of view, it is annoying when you just want to get something up and running. So we are going to speedrun this one because it does not add any real value to the article. We are going to use traefik as our reverse and TLS proxy.
+Setting up the dummy interface and domain name
+
+You cannot just point the kubernetes cluster to talk to vault on localhost, because localhost in the container (we are going to run k8s in containers!!) is going to be very different from localhost on your machine. Hence you need to make Traefik listen on a specific address (that is not localhost) to make it all work. We are going to say that our vault is going to be at vault.example.com which will be address 10.10.10.10/32. Note that this address can really be whatever you want it to as long as the /etc/hosts entry matches the address you set on the interface, and as long as the address you choose is not in the 127.0.0.0/8 range. So first add the following line in your /etc/hosts file.
+
+10.10.10.10   vault.example.com
+
+Good now create the interface
+
+$ sudo ip link add dummyIface type dummy
+$ sudo ip link set up dev dummyIface
+$ sudo ip address add 10.10.10.10/32 dev dummyIface
+
+All set! Now when Kubernetes will want to contact vault.example.com, since the /etc/hosts is shared, it will force the apiserver network call to get out of the container and actually reach the proxy.
+
+This is a hack, and I am embarassed to put into writting how long it took me to come up with it to make it all work.
+Setting up Traefik
+
+In the working directory you have been using for this article (which i hope you did), create a script to generate our TLS certificates. Let’s call it certs.sh
+
+#!/bin/bash
+
+if ! [ -d ./ssl ]; then mkdir ./ssl; fi;
+
+openssl \
+    req \
+    -new \
+    -nodes \
+    -days 365 \
+    -x509 \
+    -newkey rsa:4096 \
+    -keyout ./ssl/cert.key \
+    -out ./ssl/cert.crt \
+    -subj "/CN=vault.example.com" \
+    -addext "subjectAltName = DNS:vault.example.com"
+
+Run it
+
+$ ./cert.sh 
+Generating a RSA private key
+...............+++++
+.+++++
+writing new private key to './ssl/cert.key'
+-----
+
+All good. Then create the traefik.toml config file. Trust me, this one works
+
+[log]
+  level = "debug"
+
+[providers]
+    [providers.file]
+        directory = "/etc/traefik"
+
+[entryPoints]
+  [entryPoints.web]
+    address = ":80"
+    [entryPoints.web.http.redirections.entryPoint]
+      to = "websecure"
+      scheme = "https"
+
+  [entryPoints.websecure]
+    address = ":443"
+[http.services]
+  [http.services.vault.loadBalancer]
+    [[http.services.vault.loadBalancer.servers]]
+      url = "http://127.0.0.1:8200/"
+[http.routers]
+  [http.routers.vault]
+    rule = "Host(`vault.example.com`)"
+    service = "vault"
+    [http.routers.vault.tls]
+[[tls.certificates]]
+  certFile = "/etc/traefik/ssl/cert.crt"
+  keyFile = "/etc/traefik/ssl/cert.key"
+
+Next you need a script to start the reverse proxy. This is done like so
+
+#!/bin/bash
+
+docker run \
+    --net host \
+    -v ${PWD}/traefik.toml:/etc/traefik/traefik.toml \
+    -v ${PWD}/ssl:/etc/traefik/ssl \
+    -it traefik
+
+It should work, then we can actually set up kubernetes (i am not lying this time).
+Setting up a Kubernetes
+
+To setup kubernetes we are going to use kind, which you can download here.
+
+What kind does in a nutshell is spin-up a fully functional kubernetes cluster locally, for testing purposes, inside of Docker. Do grab the latest binary and let’s do it!
+Creating the kind config file
+
+We are going to configure kind a bit, because by default it does not allow you to use OIDC authentication. So to do that, in your working directory create a cluster.yaml file with the following content:
+
+---
+kind: Cluster
+apiVersion: kind.x-k8s.io/v1alpha4
+nodes:
+  - role: control-plane
+    image: kindest/node:v1.21.2
+    extraMounts:
+    # CHANGE THIS
+    - hostPath: /home/thomas/vaultarticle/ssl
+      containerPath: /etc/ssl/certs/oidc
+      readOnly: true
+      propagation: HostToContainer
+    kubeadmConfigPatches:
+      - |
+        kind: ClusterConfiguration
+        apiServer:
+            extraArgs:
+              # CHANGE THIS
+              oidc-client-id: pzi1boK6Nfft91Em7NW3k62HUX
+              oidc-groups-claim: groups
+              oidc-groups-prefix: "vault:"
+              oidc-issuer-url: "https://vault.example.com/v1/identity/oidc"
+              oidc-username-claim: sub
+              oidc-username-prefix: "vault:"
+              oidc-signing-algs: "ES256,RS256"
+              oidc-ca-file: "/etc/ssl/certs/oidc/cert.crt"        
+  - role: worker
+    image: kindest/node:v1.21.2
+
+⚠️ replace /home/thomas/vaultarticle/ssl by the directory you put your TLS certificates in.
+
+This is fairly simple config. We create a 2 nodes cluster with a worker and a control plane. We also pass extra arguments to the apiserver in the extraArgs section of the config. These are equivalent to adding --oidc-client-id=pzi1boK6Nfft91Em7NW3k62HUX and so on to the apiserver upon startup or changing the config in the apiserver configuration file.
+
+The arguments are fairly easy to understand, but here is the breakdown:
+
+    oidc-client-id: It is the aud that you find in your JWT token that you found above
+    oidc-groups-claim: Is the name of the JSON field that contains the list of groups the user is mapped to
+    oidc-username-claim: Same but with your username
+    oidc-signing-algs: It is the signing algorithm that the key we defined in vault uses, you can put several separated by a coma
+    oidc-issuer-url: It is the URL of your vault server, with the v1/identity/oidc path appended for openid connect config discovery
+    oidc-groups-prefix and oidc-username-prefix are prefixes that kubernetes is going to prepend to your groups and users informations. For instance if your user1 belongs in the kubernetes-admin group, then in your kubernetes RBAC policies you will need to reference it as vault:kubernetes-admin
+    oidc-ca-file the root CA file. If you use a legit provider like Letsencrypt, you will not need this. But with our home-baked certificate we need to give this.
+
+Create the kind cluster
+
+Creating the kind cluster is as simple as running
+
+$ kind create cluster --config cluster.yaml
+
+It will download images, output a few things and you should be ready to go.
+
+Creating cluster "kind" ...
+ ✓ Ensuring node image (kindest/node:v1.21.2) 🖼
+ ✓ Preparing nodes 📦 📦  
+ ✓ Writing configuration 📜 
+ ✓ Starting control-plane 🕹️ 
+ ✓ Installing CNI 🔌 
+ ✓ Installing StorageClass 💾 
+ ✓ Joining worker nodes 🚜 
+Set kubectl context to "kind-kind"
+You can now use your cluster with:
+
+kubectl cluster-info --context kind-kind
+
+Have a nice day! 👋
+
+Backup an admin kubeconfig
+
+Run the following to get a kubeconfig that will retain your admin access in case you break it (you probably will)
+
+$ kind get kubeconfig > kubeconfig
+
+Setup a few namespaces and a few rolebindings
+
+Let us create a few ClusterRoles and a few bindings, along with namespaces. Create a file named rbac.yaml containing the following
+
+############## NAMESPACES
+---
+kind: Namespace
+apiVersion: v1
+metadata:
+    name: admin-only
+---
+kind: Namespace
+apiVersion: v1
+metadata:
+    name: user2
+---
+############## CLUSTER ROLES
+---
+kind: ClusterRole
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+    name: admin
+rules:
+  - apiGroups: ["*"]
+    resources: ["*"]
+    verbs: ["*"]
+---
+kind: ClusterRole
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+    name: ro
+rules:
+  - apiGroups: ["*"]
+    resources: ["*"]
+    verbs:
+    - get
+    - list
+    - watch
+---
+############## CLUSTER ROLE BINDINGS
+---
+kind: ClusterRoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+    name: admin
+subjects:
+- kind: Group
+  name: 'vault:kubernetes-admin'
+  apiGroup: rbac.authorization.k8s.io
+roleRef:
+  kind: ClusterRole
+  name: admin
+  apiGroup: rbac.authorization.k8s.io
+---
+kind: RoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+    name: admin
+    namespace: user2
+subjects:
+- kind: Group
+  name: 'vault:kubernetes-user-readonly'
+  apiGroup: rbac.authorization.k8s.io
+roleRef:
+  kind: ClusterRole
+  name: ro
+  apiGroup: rbac.authorization.k8s.io
+
+Aight it is a mouthful, I should be sorry but i cannot, kubernetes RBAC is hard. There are three part to this utter shitshow of yaml
+
+    Creating namespaces admin-only that will only be accessible to admin users, and user2 that will be available to the user2 user we created earlier.
+    Creating two cluster roles. These are RBAC permission sets that will be available everywhere on the cluster. It basically defines an admin policy that means you can do whatever, and an ro one that only allows looking at stuff.
+    Creating a ClusterRoleBinding to grant anyone in the Vault group kubernetes-admin god access to anything, and a RoleBinding which is a namespaced-scoped equivalent to a ClusterRoleBinding to the user2 namespace.
+
+Essentially in this setup, user1 is god, and user2 can only read stuff in the user2 namespace and nothing else.
+
+All good ? All good ?
+
+⚠️ if your brain is leaking right now, call 112, or something like 911 if you are not in the EU.
+
+Now apply your brand new policies:
+
+$ KUBECONFIG=kubeconfig kubectl apply -f rbac.yaml
+namespace/admin-only created
+namespace/user2 created
+clusterrole.rbac.authorization.k8s.io/admin created
+clusterrole.rbac.authorization.k8s.io/ro created
+clusterrolebinding.rbac.authorization.k8s.io/admin created
+rolebinding.rbac.authorization.k8s.io/admin created
+
+Now lets put it to practice
+
+You now need to be authenticated to vault to do stuff on the cluster (the admin kubeconfig will still work fine, but we want to be able to use Vault as our identity provider). We are going to use the exec part of the kubeconfig file for that. Essentially we are going to tell kubectl to ask for an authentication token to Vault before contacting the apiserver.
+
+⚠️ when you inevitably break the kubeconfig, run kind get kubeconfig > kubeconfig to reset it.
+
+So now, edit the kubeconfig file to add the following to the user section:
+
+- name: vault
+  user:
+    exec:
+      provideClusterInfo: true
+      apiVersion: client.authentication.k8s.io/v1alpha1
+      command: bash
+      args:
+        - -c
+        - |
+          #!/bin/bash
+
+          # This script basically asks Vault for a token and fills out the
+          # proper json that kubectl is expecting as a return
+
+          set -euo pipefail
+          tokenData=$(vault read -format json identity/oidc/token/k8s-token | jq -c .)
+          cat <<EOF
+          {
+              "kind": "ExecCredential",
+              "apiVersion": "client.authentication.k8s.io/v1alpha1",
+              "spec": {},
+              "status": {
+              "expirationTimestamp": "$(date -d@$(( $(echo ${tokenData} | jq -r .data.ttl) + $(date +%s) )) +%FT%TZ)",
+              "token": "$(echo ${tokenData} | jq -r .data.token)"
+              }
+          }
+          EOF          
+
+Now make sure you are logged in vault using the following command
+
+VAULT_ADDR=http://localhost:8200 vault login -method=userpass username=user1 password=password1
+
+I would also recommend exporting the VAULT_ADDR environment variable to make sure you authenticate to the right Vault server if like me you have your own
+
+$ export VAULT_ADDR=http://localhost:8200
+
+Do not forget to export the KUBECONFIG variable to point to the one you just edited
+
+export KUBECONFIG=kubeconfig
+
+Now run kubectl
+
+$ kubectl get pods --user vault
+No resources found in default namespace.
+
+It does not seem like much, but it actually worked. You can check it works the same if you login as user2:
+
+$ VAULT_ADDR=http://localhost:8200 vault login -method=userpass username=user2 password=password2
+$ kubectl get pods --user vault
+Error from server (Forbidden): pods is forbidden: User "vault:e1f134a8-81fd-94a6-440c-8012da4d1657" cannot list resource "pods" in API group "" in the namespace "default"
+
+You got denied access because you do not belong in the right group. If you try again, but in namespace user2, you will see it works like a charm:
+
+$ kubectl get pods --namespace user2 --user vault
+No resources found in user2 namespace.
+
+I guess our work here is done ?
+Conclusion !
+
+thumbs up
+
+TADAM you managed to setup an OIDC authentication using Vault and its group system for your Kubernetes cluster!
 ** [[https://discuss.kubernetes.io/t/high-availability-host-numbers/13143][High Availability Host Numbers - General Discussions - Discuss Kubernetes]]
 K8s uses the RAFT consensus algorithm for quorum. In order to maintain quorum, you will need floor(n/2)+1 healthy master nodes.
 
