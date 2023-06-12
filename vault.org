@@ -93,6 +93,218 @@ ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -l root -fNL 820
 - [[https://piotrminkowski.com/2021/12/30/vault-on-kubernetes-with-spring-cloud/][Vault on Kubernetes with Spring Cloud - Piotr's TechBlog]]
 - [[https://habr.com/ru/company/nixys/blog/578870/][Взаимное автоматическое распечатывание двух Vault кластеров в Kubernetes / Хабр]]
 
+** [[https://blog.thomas.maurice.fr/posts/vault-jwt-authentication/][Authenticate your services with Vault and JWTs]]
+📅 Jan 17, 2020
+ ·  ☕ 7 min read
+
+    🏷️
+    #golang
+    #vault
+    #security
+
+Sometimes, you may want your services to be able to talk to each other in an authenticated manner, and even perform some authorization. This is not easy to do and you might have scratched your head a bunch about how to do it. In this post I’m going to show you how to do something like this using hashicorp’s Vault. At the end of this post you’ll be able to issue and validate authorization tokens to make sure your services communicate in an authenticated and secure manner.
+What are JWTs ?
+
+JWT, or JSON Web Tokens, are tokens that are signed by a central authority that encapsulate authorization information. This website can help debugging your tokens.
+
+A JWT is comprised of 3 parts
+
+    Header
+    Payload
+    Signature
+
+The header gives you a bunch of infos about the algorithm used, the key id used to sign the token and so on. The payload is the actual encoded auth data that you care about and the signature is used to validate the token.
+Setup Vault
+
+We are going to demonstrate that with a dev vault, so first start a vault server in a separate terminal.
+
+$ vault server -dev-root-token-id=token -dev
+
+In another terminal
+
+export VAULT_ADDR=http://localhost:8200
+export VAULT_TOKEN=token
+
+Create a Vault policy
+
+We will need to create a policy to allow the account (that we will create right after) to perform some basic operations on Vault. For the purpose of this article we are going to create a read only policy on the whole Vault. You obviously do not want to do that in an actual production environment.
+
+echo "path \"*\" {capabilities = [\"read\"]}" | vault policy write readonly -
+Success! Uploaded policy: readonly
+
+Create the OIDC issuer
+
+To create the OIDC issuer, do
+
+$ vault write identity/issuer/config issuer=http://localhost:8200
+
+This will be used to populate the issuer field of your tokens.
+
+You will need then to create a key to sign your tokens:
+
+$ vault write identity/oidc/key/key algorithm=ES256 allowed_client_ids='*'
+Success! Data written to: identity/oidc/key/key
+
+Alright now we had a key that will sign our tokens. Note that in a real production environment you will need to have a key per environment (dev/staging/prod and so on) and will need to individually allow client ID (which we talk about later) to be signed by your key.
+
+You then need to create something called a role in Vault. Which will map to the app you want to authenticate against. In this example we will assume that our app is called demo, you will have to create it as follows (so it is signed with the key created above):
+
+$ vault write identity/oidc/role/demo name=demo key=key
+Success! Data written to: identity/oidc/role/demo
+
+Good! No we need to create a user to authenticate.
+Create the AppRole
+
+An AppRole is a Vault authentication backend. You can see it as something similar to a username/password authentication, but intended for services instead of actual human users.
+
+Enable the approle authentication backend:
+
+$ vault auth enable approle
+Success! Enabled approle auth method at: approle/
+
+Now create the actual approle, it will be called demo-approle:
+
+$ vault write auth/approle/role/demo-approle role_name=demo-approle policies=readonly
+Success! Data written to: auth/approle/role/demo-approle
+
+Then you will need to get two pieces of information, the roleid and the secretid for the approle. These are the equivalent of the username and the password to authenticate yourself.
+
+$ secret_id=$(vault write -force -format=json auth/approle/role/demo-approle/secret-id | jq -r .data.secret_id)
+$ role_id=$(vault read -format=json auth/approle/role/demo-approle/role-id | jq -r .data.role_id)
+$ echo $role_id $secret_id
+ca9f0470-8d1f-4464-2635-25f02b9407d7 f91a7c31-dc06-2b24-20fd-e9f5867c32a8
+
+Your values will be different.
+Create the entity and map it to the AppRole
+
+Now that we have created the approle, we need to map it to an internal Vault entity, you need to do that because several entities can be mapped to various authentication backends, like userpass or if you use something like Google or what not. So first, create the entity and save it for later:
+
+entity_id=$(vault write -format=json identity/entity name=demo |jq .data.id -r)
+$ echo $entity_id
+c957656f-0872-766c-3517-83b787672f84
+
+Now you finally need to create an entity alias to make the link between the entity and the approle authentication backend (that is tedious I know but bear with me i swear it is worth it). Retrieve the accessor, which is the internal Vault reference to your approle authentication backend:
+
+$ accessor=$(vault auth list -format=json | grep 'auth_approle' | tr -d " " | tr -d , | cut -d ":" -f 2 | tr -d \")
+$ echo $accessor
+auth_approle_91098819
+
+Now finally (y e s f i n a l l y) create the alias:
+
+$ vault write identity/entity-alias name=demo canonical_id=$entity_id mount_accessor=$accessor
+Key             Value
+---             -----
+canonical_id    c957656f-0872-766c-3517-83b787672f84
+id              a2d067d6-229b-6580-d714-35a01ba62864
+
+Aight. Everything is setup now.
+Log in as the AppRole
+
+Now all you need to do is to log into Vault using the approle, then issue a token:
+
+$ token=$(vault write -format=json auth/approle/login role_id=$role_id secret_id=$secret_id | jq -r .auth.client_token)
+$ export VAULT_TOKEN=$token
+$ echo $token
+s.ohsNR1DIo6sVr8gG8hsRsk1Y
+
+You are now logged into Vault as your approle ! Check it by running:
+
+vault token lookup 
+Key                 Value
+---                 -----
+accessor            Tc6riT70kLnepiW3CC0rEkBj
+creation_time       1579287446
+creation_ttl        768h
+display_name        approle
+entity_id           f1be740b-8b4f-4369-a019-bc6ef3f8e963
+expire_time         2020-02-18T18:57:26.707866969Z
+explicit_max_ttl    0s
+id                  s.ohsNR1DIo6sVr8gG8hsRsk1Y
+issue_time          2020-01-17T18:57:26.707866723Z
+meta                map[role_name:demo-approle]
+num_uses            0
+orphan              true
+path                auth/approle/login
+policies            [default readonly]
+renewable           true
+ttl                 767h58m57s
+type                service
+
+Issue a token
+
+Finally you can issue a token:
+
+$ vault read identity/oidc/token/demo
+Key          Value
+---          -----
+client_id    waqwjTM57B7ANxhw7CketPy1WJ
+token        eyJhbGciOiJFUzI1NiIsImtpZCI6Ijk2MmNiZTk3LWYzY2EtMTVjMy0wNDJkLTYxZTQzMWMxOTRlMCJ9.eyJhdWQiOiJ3YXF3alRNNTdCN0FOeGh3N0NrZXRQeTFXSiIsImV4cCI6MTU3OTM3NDAwOCwiaWF0IjoxNTc5Mjg3NjA4LCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgyMDAvdjEvaWRlbnRpdHkvb2lkYyIsIm5hbWVzcGFjZSI6InJvb3QiLCJzdWIiOiJmMWJlNzQwYi04YjRmLTQzNjktYTAxOS1iYzZlZjNmOGU5NjMifQ.OSVQHaIS9kgzdckNgsneDorR7BzE9i6JajOsBKIoByGuSMd5MTyPcu4nwv9GGAgips_mMk9dYTzckCGDcR8gXQ
+ttl          24h
+
+You can now use this token to identify to a service !
+
+Let’s unpack the token a bit using the debugger. The headers read
+
+{
+  "alg": "ES256",
+  "kid": "962cbe97-f3ca-15c3-042d-61e431c194e0"
+}
+
+The is not much about it, it specifies the signature algorithm used and the key id used to sign the token, more on that later.
+
+The body of the token reads the following:
+
+{
+  "aud": "waqwjTM57B7ANxhw7CketPy1WJ",
+  "exp": 1579374008,
+  "iat": 1579287608,
+  "iss": "http://localhost:8200/v1/identity/oidc",
+  "namespace": "root",
+  "sub": "f1be740b-8b4f-4369-a019-bc6ef3f8e963"
+}
+
+Here you have a bunch of infos about the identity of the token bearer:
+
+    exp is the expiration time of the token
+    iat is the issuance time
+    iss is the issuer
+    aud is the intended audience of the token, namely the demo OIDC role you created above
+    sub is the subject of the token, namely the identity of the bearer. If you pay attention, this is the same UUID as the one referenced in the entity_id field of the vault token lookup command.
+
+You can now identify who’s token you are looking at !
+
+If you use Vault, you can also add more custom fields, such as group membership and other arbitrary things, more info on that here.
+Verifying the tokens
+
+Now you need to be able to verify the tokens. I will not expand on how to do the authorization, that’s your logic, and your problem, same for the expiration and issuer verification. However you need to be able to verify the signature of the token to establish that the token:
+
+    Comes from whom it says it comes from
+    Is signed by a key owned by whom it says it comes from
+
+Vault exposes an unauthenticated endpoint that allows you to retrieve the public part of the signing keys used for the tokens, which you can access the following way
+
+$ curl localhost:8200/v1/identity/oidc/.well-known/keys| jq .
+{
+  "keys": [
+    {
+      "use": "sig",
+      "kty": "EC",
+      "kid": "962cbe97-f3ca-15c3-042d-61e431c194e0",
+      "crv": "P-256",
+      "alg": "ES256",
+      "x": "Ui3tAkTBb-dudDOyCyIQCfNz_1xG7ByoyJJwrEhBUFw",
+      "y": "mj68rHTcy121ojJCjHJ88uRCgNF0CF90nPfHGu-YnwI"
+    }
+  ]
+}
+
+If you pay attention and fluently speak UUID, you will obviously notice that 962cbe97-f3ca-15c3-042d-61e431c194e0 is the kid present in the header of the token we have previously issued.
+
+This way you can verify that the signature is valid. Note that Vault implements the openID discovery protocol which can give you access to even more information.
+Wrap up
+
+I hope that will be useful to you to use Vault as an OIDC provider for your services ! :)
+
 * Misc
 
 - [[https://github.com/channable/vaultenv][channable / vaultenv]]
