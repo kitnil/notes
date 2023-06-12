@@ -93,6 +93,925 @@ ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -l root -fNL 820
 - [[https://piotrminkowski.com/2021/12/30/vault-on-kubernetes-with-spring-cloud/][Vault on Kubernetes with Spring Cloud - Piotr's TechBlog]]
 - [[https://habr.com/ru/company/nixys/blog/578870/][Взаимное автоматическое распечатывание двух Vault кластеров в Kubernetes / Хабр]]
 
+** [[https://brian-candler.medium.com/using-hashicorp-vault-as-an-ssh-certificate-authority-14d713673c9a][Using Vault as an SSH certificate authority]]
+Brian Candler
+
+Brian Candler
+·
+
+Follow
+24 min read
+·
+Feb 24, 2021
+
+Have you ever come across Hashicorp’s Vault? It started life as a place to store application “secrets” (e.g. database passwords) securely, without hard-coding them in configuration files. Over time, it has grown into something much more powerful.
+
+There are a number of ways in which users can authenticate themselves to Vault. This can be used for access control to Vault itself, such as granting the user access to specific secrets, or management access to modify data and access policies.
+
+However, once a user has authenticated, Vault can now in turn vouch for their identity — by issuing X509 certificates, JWT identity tokens or SSH certificates — whilst securely storing the private key material needed to issue those certificates.
+
+Vault also has its own way of managing identities: an “entity” is essentially a user, and can be linked to multiple ways to authenticate that user. You can configure groups, both internal (where membership is manually configured) and external (vouched for by an external authentication source, such as OpenID Connect).
+
+All this turns Vault into a powerful identity management platform.
+
+In this article, I’m going to walk through setting up a proof-of-concept deployment of Vault as an SSH certificate authority from scratch, and illustrate some things I learned along the way.
+
+    TL;DR: you can configure Vault to authenticate users and issue SSH certificates to them, customized to their identity.
+
+Install Vault
+
+Start by creating a virtual machine or container⁰. I created an lxd container called “vault1” with Ubuntu 20.04, which has IP address 10.12.255.56.
+
+Fetch the vault binary from the downloads page, and install it (beware the wrapped line below):
+
+wget https://releases.hashicorp.com/vault/1.6.2/vault_1.6.2_linux_amd64.zipunzip vault_1.6.2_linux_amd64.zipmv vault /usr/local/sbin/vaultchown 0:0 /usr/local/sbin/vault
+
+Create a user for vault to run as, and a data directory:
+
+useradd -r -s /bin/false -d /var/lib/vault -M vaultmkdir /var/lib/vaultchown vault:vault /var/lib/vaultchmod 700 /var/lib/vaultmkdir /etc/vault
+
+Create a configuration file, /etc/vault/vault-conf.hcl
+
+storage "file" {
+  path = "/var/lib/vault"
+}listener "tcp" {
+  address = "0.0.0.0:8200"
+  tls_disable = "true"
+  #tls_cert_file = ""
+  #tls_key_file = ""
+}cluster_addr = "http://10.12.255.56:8201"
+api_addr = "http://10.12.255.56:8200"
+ui = "true"
+# The following setting is not recommended, but you may need
+# it when running in an unprivileged lxd container
+disable_mlock="true"
+
+There are a number of choices for data storage: I decided to use the simple filesystem backend, but there are various databases supported, as well as an integrated HA cluster database based on raft.
+
+    NOTE: for simplicity, I have configured Vault to use HTTP rather than HTTPS. This is insecure but will be fixed later.
+
+Create a systemd unit file, /etc/systemd/system/vault.service
+
+[Unit]
+Description=Vault secret store
+Documentation=https://vaultproject.io/docs/
+After=network.target
+ConditionFileNotEmpty=/etc/vault/vault-conf.hcl[Service]
+User=vault
+ExecStart=/usr/local/sbin/vault server -config=/etc/vault/vault-conf.hcl
+Restart=on-failure
+RestartSec=5[Install]
+WantedBy=multi-user.target
+
+Activate the service and check its status:
+
+systemctl daemon-reload
+systemctl enable --now vault
+systemctl status vault
+
+Hopefully, Vault is now running.
+Initialize Vault
+
+Before you can use Vault, you have to initialize it.
+
+vault operator init
+Error initializing: Put "https://127.0.0.1:8200/v1/sys/init": http: server gave HTTP response to HTTPS client
+
+Our first problem is that the client by default uses HTTPS to contact Vault, but we are running with HTTP. The workaround is to set an environment variable to give the correct URL. Create a file /etc/profile.d/vault.sh
+
+VAULT_ADDR=http://127.0.0.1:8200
+export VAULT_ADDR
+
+and source this file (read it into the shell):
+
+source /etc/profile.d/vault.sh
+vault operator init
+Unseal Key 1: XJLDnI09GSN34rea8etz+naMVq4oqWLrCIGasgRI9fNV
+Unseal Key 2: 4/qwf+opE4s3arYgqhSedAt1DMLUeMyJlwZUHQiUlvOP
+Unseal Key 3: +gijI0wzWbTngMVKAWEtwKb+VyUk5eXsMnPjiUQG9TSf
+Unseal Key 4: T/tI+AyRpNIVr1N4SEljwSq5PXgqVkntYL4I2vQB4szm
+Unseal Key 5: Gpv8QdsNBOMTMaxDEz4zGdzO7E8fuWlK9bWAuR0Qt9ReInitial Root Token: s.zHYKc0I5p2kSGBaLlmOVtrgYVault initialized with 5 key shares and a key threshold of 3. Please securely distribute the key shares printed above. When the Vault is re-sealed, restarted, or stopped, you must supply at least 3 of these keys to unseal it before it can start servicing requests.Vault does not store the generated master key. Without at least 3 key to reconstruct the master key, Vault will remain permanently sealed!It is possible to generate new unseal keys, provided you have a quorum of existing unseal keys shares. See "vault operator rekey" for more information.
+#
+
+All the data in Vault is encrypted, using a master key called the “unseal” key. Initializing Vault generates this key. It breaks it into a number of “shares”, where N out of M shares are required to recover the key. The default policy is that 3 out of 5 shares are required, but you can select a different policy at initialization time using -key-threshold=<N> -key-shares=<M>
+
+The idea behind this is to protect against someone gaining unauthorized access to the critical data in whatever backend storage you are using. To decrypt the data they will need at least N shares, and hopefully you don’t store all of them in the same place. (But it does mean that every time you need to restart Vault, you need to bring those N shares together)
+
+Vault also generates a “root token”, which is the equivalent of a root password in Unix: when talking to the running, unsealed instance of Vault, it grants authority to access any data or configuration, and it never expires. This is just as valuable as the unseal key, for anyone who has network access to interact with Vault.
+
+Record the unseal keys and the root token — for this proof-of-concept you can store them in a local file, but in real life you’d store them securely somewhere else.
+Unseal and login
+
+To get started, we have to unseal the vault (i.e. load in sufficient shares of the unseal key). We also need to login, using the root token, to be able to send further commands to vault.
+
+vault operator unseal
+Unseal Key (will be hidden): <enter one share>
+vault operator unseal
+Unseal Key (will be hidden): <enter another share>
+vault operator unseal
+Unseal Key (will be hidden): <enter another share>
+...
+Sealed          false
+...vault login
+Token (will be hidden): <enter the root token>
+Success! You are now authenticated.
+
+    Note: vault login stores the token, in plain text, in ~/.vault-token. In production it’s a very bad idea to do this on the vault server itself, especially with the root token, because this may expose it to an attacker. Normally you’d login from a remote client — using either vault’s web interface or another copy of the vault binary on a remote machine— and the session would be protected by HTTPS.
+
+Now you’re authenticated to vault. You can use vault status to check the status of the server, and vault token lookup to see information about your token.
+Create the SSH CA
+
+Setting up an SSH certificate authority is remarkably easy. You can import an existing CA private key if you like, but if you don’t, it will create one for you.
+
+vault secrets enable -path=ssh-user-ca ssh
+Success! Enabled the ssh secrets engine at: ssh-user-ca/
+vault write ssh-user-ca/config/ca generate_signing_key=true
+Key           Value
+---           -----
+public_key    ssh-rsa AAAAB3N.....
+
+This prints the CA public key to the screen. You can also retrieve it again later:
+
+vault read -field=public_key ssh-user-ca/config/ca
+
+Note that you can have multiple SSH CAs if you want, mounted under different paths. I’ve chosen to call this one “ssh-user-ca”. The default would be just “ssh”, matching the name of the secrets engine.
+Create signing role
+
+I’m now going to create a signing “role”. This is a set of parameters controlling how the certificates are signed. In this case, I’m going to limit it so that it can only sign certificates with principal “test” (or no principal)¹.
+
+The role is a JSON document that I’ll paste inline using shell “heredoc” syntax.
+
+vault write ssh-user-ca/roles/ssh-test - <<"EOH"
+{
+  "algorithm_signer": "rsa-sha2-256",
+  "allow_user_certificates": true,
+  "allowed_users": "test",
+  "default_extensions": {
+    "permit-pty": ""
+  },
+  "key_type": "ca",
+  "max_ttl": "12h",
+  "ttl": "12h"
+}
+EOH
+
+That’s all that’s needed. We can now sign a user certificate. Remember that we’re logged in with the “root” token currently, which means we have permission to invoke anything.
+
+You’ll need to provide an ssh public key that you want to be signed². (If you know what ssh public keys are, then you almost certainly have one that you can use)
+
+vault write -field=signed_key ssh-user-ca/sign/ssh-test public_key=@$HOME/.ssh/id_rsa.pub >empty.certcat empty.cert
+ssh-rsa-cert-v01@openssh.com AAAAHHNza....ssh-keygen -Lf empty.cert
+empty.cert:
+        Type: ssh-rsa-cert-v01@openssh.com user certificate
+        Public key: RSA-CERT SHA256:mVV81....
+        Signing CA: RSA SHA256:nqMqs.... (using rsa-sha2-256)
+        Key ID: "vault-root-99557c...."
+        Serial: 2810952009944311352
+        Valid: from 2021-02-22T14:46:06 to 2021-02-23T02:46:36
+        Principals: (none)
+        Critical Options: (none)
+        Extensions:
+                permit-pty
+
+ssh-keygen -Lf lets us inspect the certificate. You can see that it has no principals (since we didn’t request any). Let’s ask for principal “test” to be included:
+
+vault write -field=signed_key ssh-user-ca/sign/ssh-test public_key=@$HOME/.ssh/id_rsa.pub valid_principals="test" >test.certssh-keygen -Lf test.cert
+test.cert:
+        Type: ssh-rsa-cert-v01@openssh.com user certificate
+        Public key: RSA-CERT SHA256:mVV81....
+        Signing CA: RSA SHA256:nqMqs.... (using rsa-sha2-256)
+        Key ID: "vault-root-99557c...."
+        Serial: 10087169145372651617
+        Valid: from 2021-02-22T14:47:42 to 2021-02-23T02:48:12
+        Principals:
+                test
+        Critical Options: (none)
+        Extensions:
+                permit-pty
+
+(Another way is to set "default_user": "test" in the signing role, and this will be used if the request doesn’t ask for any principals).
+
+Even with the root token, we can’t violate the limits configured into the role. If we ask for a certificate signed for principal “foo”, it fails:
+
+vault write -field=signed_key ssh-user-ca/sign/ssh-test public_key=@$HOME/.ssh/authorized_keys valid_principals="foo"
+Error writing data to ssh-user-ca/sign/ssh-test: Error making API request.URL: PUT http://127.0.0.1:8200/v1/ssh-user-ca/sign/ssh-test
+Code: 400. Errors:* foo is not a valid value for valid_principals
+
+Certificates with multiple principals can be issued: e.g. with"allowed_users": "foo,bar" then we can request a cert with “foo”, “bar”, or both.
+Signing role subtleties
+
+There are a few things I glossed over when setting up the signing role, which I’ll mention briefly (see also the SSH secret engine API documentation).
+
+The reason for including permit-pty in default_extensions³ is that this flag is needed to permit interactive SSH logins. Otherwise, the certificate you get restricts you to running remote commands without a pseudo-tty.
+
+The reason for setting algorithm_signer is that modern versions of OpenSSH don’t accept certificates with SHA1 signature by default. This setting tells Vault to issue SHA256 signatures instead. It still uses the same RSA key though.
+
+Unfortunately, openssh versions prior to 7.2 don’t accept SHA256 signatures: this includes RHEL ≤ 6 and Debian ≤ 8. If you need to authenticate to those old systems, then you have to use SHA1 signatures (ssh-rsa) instead. In that case, to get recent versions of openssh to accept the old signatures as well, you’ll need to set an option in sshd_config:
+
+CASignatureAlgorithms ^ssh-rsa
+
+That’s not a great idea, as you’re explicitly enabling a signature type with known security weaknesses.
+
+Fortunately, there’s a better solution: use an elliptic curve cipher for your CA. ssh-ed25519 has been supported since OpenSSH 6.5, and ecdsa-sha2-nistp256/384/521 since OpenSSH 5.7.
+
+Vault can sign certificates with these ciphers, but it won’t generate a non-RSA key. You can work around this by generating and importing the key yourself.
+Login with the certificate
+
+Now, you can test using this certificate to authenticate to a host. It could be the same one, or a different host.
+
+On the target host, create a user called “test” to match the principal in the certificate:
+
+useradd -m test -s /bin/bash
+
+Add this line to /etc/ssh/sshd_config:
+
+TrustedUserCAKeys /etc/ssh/ssh_ca.pub
+
+Install the CA public key in that location:
+
+vault read -field=public_key ssh-user-ca/config/ca >/etc/ssh/ssh_ca.pub
+
+To pick up the changes, systemctl restart ssh.
+
+On the client machine where you’re logging in from, and where you have your private key (id_rsa), take the certificate issued above which includes the “test” principal, and write it to ~/.ssh/id_rsa-cert.pub. Now you should be able to login as the “test” user:
+
+ssh test@vault1
+Welcome to Ubuntu 20.04.2 LTS (GNU/Linux 4.15.0-128-generic x86_64)
+...
+test@vault1:~$
+
+Note that you didn’t have to put anything in ~/.ssh/authorized_keys on the target host. This is what makes this approach so powerful: it centralises policy, and avoids having to deploy individual public keys to individual accounts. Eventually, you can set AuthorizedKeysFile none to disable ~/.ssh/authorized_keys entirely.
+Debugging login problems
+
+If it doesn’t work, sometimes it can be hard to see why not.
+
+What I recommend is that on the target system, you start a one-shot instance of sshd in debugging mode, bound to a different port:
+
+/usr/sbin/sshd -p 99 -d
+
+and then connect from a client with verbose logging:
+
+ssh -p 99 -vvv test@vault1
+
+That was how I found the signing problem which required rsa-sha2–256:
+
+check_host_cert: certificate signature algorithm ssh-rsa: signature algorithm not supported
+
+Avoiding the Confused Deputy
+
+So far, we’ve got a cool API-driven SSH certificate signer, which protects the private key. Up to this point, we’ve done everything with the “root” token. Vault also lets us create tokens with limited privileges, so that we could have a token that can sign SSH certificates but do nothing else.
+
+We limited the ssh role so that it would only issue certificates with user “test”. We could create separate roles for other users, or we could create a role that can sign any certificate:
+
+  "allowed_users": "*",
+
+But either way, we have a problem. We don’t want Alice to be able to get a certificate that lets her log in as “bob”, and vice versa.
+
+Your first thought might be to put some sort of middleware in front of Vault, which decides who gets what certificate and forwards the validated request. There are a couple of problems with this.
+
+Firstly, the middleware would have some sort of super-token which allows it to sign certificates for anyone. We’d have to be very careful that the token did not leak.
+
+Secondly, Alice would have to prove her identity to the middleware somehow. Alice might discover a way to persuade or reconfigure the middleware to sign a certificate for “bob”. This is known as the “confused deputy problem”.
+
+What we really need is a way for each user to prove their identity to Vault, and for Vault to issue only the permitted certificate. Fortunately, Vault lets us do this in a straightforward manner.
+SSH roles
+
+Here’s a simple company policy we’re going to implement. Alice is an administrator, and she’s allowed to get a certificate with principal “alice” or “root” (or both). Bob is a regular user, and is only allowed to get a certificate with principal “bob”.
+
+So our first step is to create some roles, which allow signing for administrators and regular users. To avoid having to make separate roles for every user, we’re going to use a template to reference some metadata on the identity which says what their allowed ssh_username is. Don’t worry, we’ll get to this shortly.
+
+vault write ssh-user-ca/roles/ssh-user - <<"EOH"
+{
+  "algorithm_signer": "rsa-sha2-256",
+  "allow_user_certificates": true,
+  "allowed_users": "{{identity.entity.metadata.ssh_username}}",
+  "allowed_users_template": true,
+  "allowed_extensions": "permit-pty,permit-agent-forwarding,permit-X11-forwarding",
+  "default_extensions": {
+     "permit-pty": "",
+     "permit-agent-forwarding": ""
+  },
+  "key_type": "ca",
+  "max_ttl": "12h",
+  "ttl": "12h"
+}
+EOHvault write ssh-user-ca/roles/ssh-admin - <<"EOH"
+{
+  "algorithm_signer": "rsa-sha2-256",
+  "allow_user_certificates": true,
+  "allowed_users": "root,{{identity.entity.metadata.ssh_username}}",
+  "allowed_users_template": true,
+  "allowed_extensions": "permit-pty,permit-agent-forwarding,permit-X11-forwarding,permit-port-forwarding",
+  "default_extensions": {
+     "permit-pty": "",
+     "permit-agent-forwarding": ""
+  },
+  "key_type": "ca",
+  "max_ttl": "12h",
+  "ttl": "12h"
+}
+EOH
+
+These roles are very similar; the ssh-admin role includes “root” in allowed_users, and also allows some additional certificate extensions.
+Policies
+
+In Vault, the permissions that you grant to users are controlled by “policies”. A policy grants rights to do a particular kind of action on a given resource, and then policies are assigned to users or groups.
+
+We can create policies which permit signing of SSH certificates with a particular role⁴:
+
+vault policy write ssh-user - <<"EOH"
+path "ssh-user-ca/sign/ssh-user" {
+  capabilities = ["update"]
+  denied_parameters = {
+    "key_id" = []
+  }
+EOHvault policy write ssh-admin - <<"EOH"
+path "ssh-user-ca/sign/ssh-admin" {
+  capabilities = ["update"]
+  denied_parameters = {
+    "key_id" = []
+  }
+}
+EOH
+
+In short: anyone that we grant the “ssh-user” policy to, can sign certificates according to the “ssh-user” role in our “ssh-user-ca” certificate authority. Similarly for the “ssh-admin” policy and the “ssh-admin” role.
+Identity management part 1: userpass
+
+Now we move onto Vault’s identity management.
+
+To keep this simple, we will start with the “userpass” authentication mechanism. As its name suggests, users prove their identity with a bog-standard username and password. (We know this is a poor way of proving identity, but we will swap it out later)
+
+Let’s enable the userpass auth mechanism, and create user accounts for alice and bob:
+
+vault auth enable userpassvault write auth/userpass/users/alice password=tcpip123vault write auth/userpass/users/bob password=xyzzyvault list auth/userpass/users
+Keys
+----
+alice
+bob
+#
+
+That was easy enough.
+
+Now it’s time to login as alice. We’ll no longer be root, so make sure you kept a copy of the root token somewhere. (Alternatively, you can do this on a completely separate machine, where VAULT_ADDR points to the IP address or DNS name of your vault server).
+
+vault login -method=userpass username=alice password=tcpip123
+Success! You are now authenticated. The token information displayed below is already stored in the token helper. You do NOT need to run "vault login" again. Future Vault requests will automatically use this token.Key                    Value
+---                    -----
+token                  s.3EU0uqq5CbVdP1nGPmlssj8M
+token_accessor         ZZt5EpWzxlqPA9OVSUXBCysU
+token_duration         768h
+token_renewable        true
+token_policies         ["default"]
+identity_policies      []
+policies               ["default"]
+token_meta_username    alicevault token lookup
+accessor            ZZt5EpWzxlqPA9OVSUXBCysU
+creation_time       1614016636
+creation_ttl        768h
+display_name        userpass-alice
+entity_id           11238cf6-074d-680a-3920-0f25d4c72670
+...vault read identity/entity/id/11238cf6-074d-680a-3920-0f25d4c72670
+Key                    Value
+---                    -----
+aliases                [map[canonical_id:11238cf6-074d-680a-3920-0f25d4c72670 creation_time:2021-02-22T17:57:16.318812652Z id:83874876-ded0-00f7-7971-ee63b7495bfa last_update_time:2021-02-22T17:57:16.318812652Z merged_from_canonical_ids:<nil> metadata:<nil> mount_accessor:auth_userpass_bbcef7b5 mount_path:auth/userpass/ mount_type:userpass name:alice]]
+creation_time          2021-02-22T17:57:16.318801957Z
+direct_group_ids       []
+disabled               false
+group_ids              []
+id                     11238cf6-074d-680a-3920-0f25d4c72670
+inherited_group_ids    []
+last_update_time       2021-02-22T17:57:16.318801957Z
+merged_entity_ids      <nil>
+metadata               <nil>
+name                   entity_a5aeeb8b
+namespace_id           root
+policies               <nil>
+
+You can see that alice has access to the system policy “default”. This is applied to every account, unless you explicitly withhold it, and it grants a few basic rights such as users being able to read their own details.
+
+In order to sign certs, we’ll need to grant her the policy “ssh-admin” as well. We’ll also need to set the “ssh_username” metadata item.
+
+You can see that as a side-effect of logging in as “alice”, Vault has created an “entity” — a user record identified by a UUID — and linked it to her userpass login. Entities are powerful, because there might be several different ways that Alice can authenticate to the system, and we can link them all to the same entity. The links are called “entity aliases”: the userpass name “alice” is just one of perhaps multiple aliases to this entity record.
+
+Entities give us a central place to apply policies for a user, when we want the user to have those rights regardless of what mechanism they used to authenticate. Entities also give us a convenient place onto which metadata can be attached⁵. Someone who logs into Vault with username “alice” might not necessarily use “alice” as their username when logging in via SSH — maybe it’s “alice1”. That’s why we kept ssh_username as a separate piece of metadata.
+
+Alice doesn’t have permission to alter her own policies or metadata (which is a good thing!) Let’s confirm that while we’re still logged in under her credentials:
+
+vault write identity/entity/id/11238cf6-074d-680a-3920-0f25d4c72670 - <<"EOH"
+{
+  "metadata": {
+    "ssh_username": "alice1"
+  },
+  "policies": ["ssh-admin"]
+}
+EOH
+Error writing data to identity/entity/id/11238cf6-074d-680a-3920-0f25d4c72670: Error making API request.URL: PUT http://127.0.0.1:8200/v1/identity/entity/id/11238cf6-074d-680a-3920-0f25d4c72670
+Code: 403. Errors:* 1 error occurred:
+        * permission denied
+
+Therefore, we need to log back into Vault as “root”
+
+vault login - <root_token.txt
+Success! You are now authenticated.
+...
+vault write identity/entity/id/11238cf6-074d-680a-3920-0f25d4c72670 - <<"EOH"
+{
+  "metadata": {
+    "ssh_username": "alice1"
+  },
+  "policies": ["ssh-admin"]
+}
+EOH
+Success! Data written to: identity/entity/id/11238cf6-074d-680a-3920-0f25d4c72670
+
+(For more details, see identity API docs)
+
+Now login again as alice, and see if she can sign her own certificate:
+
+vault login -method=userpass username=alice password=tcpip123
+Success! You are now authenticated.
+...
+policies               ["default" "ssh-admin"]
+...vault write -field=signed_key ssh-user-ca/sign/ssh-admin public_key=@$HOME/.ssh/id_rsa.pub valid_principals="alice1" >alice1.certssh-keygen -Lf alice1.cert
+alice1.cert:
+        Type: ssh-rsa-cert-v01@openssh.com user certificate
+        Public key: RSA-CERT SHA256:mVV81....
+        Signing CA: RSA SHA256:nqMqs.... (using rsa-sha2-256)
+        Key ID: "vault-userpass-alice-99557...."
+        Serial: 10773352969806096173
+        Valid: from 2021-02-22T18:05:55 to 2021-02-23T06:06:25
+        Principals:
+                alice1
+        Critical Options: (none)
+        Extensions:
+                permit-agent-forwarding
+                permit-pty
+
+Yay! But if she tries to sign a certificate with principal “bob”, or to sign a certificate using the ssh-test role, she can’t:
+
+vault write -field=signed_key ssh-user-ca/sign/ssh-admin public_key=@$HOME/.ssh/id_rsa.pub valid_principals="bob"
+...
+Code: 400. Errors:* bob is not a valid value for valid_principalsvault write -field=signed_key ssh-user-ca/sign/ssh-test public_key=@$HOME/.ssh/id_rsa.pub
+...
+Code: 403. Errors:* 1 error occurred:
+        * permission denied
+
+We have the bare bones of an identity management platform.
+
+To tidy this up a bit, rather than applying the “ssh-admin” policy directly to the user entity for Alice, we could create a group, apply the policy to the group, and make Alice a member of that group.
+Management UI
+
+By the way, if you’re getting fed up of using the CLI to manage users, there’s always Vault’s built-in web interface. This is particularly useful when you start managing groups. Just point your browser at http://x.x.x.x:8200 and login (for now with the root token).
+Looking at the entity alias which connects userpass name “alice” to this entity
+Identity management part 2: OpenID Connect
+
+Userpass is rather limiting. Nobody wants to rely on passwords for authentication, unless you’re using some two-factor authentication as well (which is available in the commercial Vault Enterprise Plus version, and possibly third-party plugins)
+
+Robust authentication is hard. In my opinion, authentication is best left to the experts. I suggest you use a cloud service like Google or Azure AD or Github to perform authentication — they can enforce 2FA using a wide range of different mechanisms like SMS, TOTP and FIDO U2F keys.
+
+But in that case, what’s Vault for? Well firstly, remember that Vault separates authentication from identity. If someone has both a Google account and an Azure AD account, you can link them both to the same entity in Vault. (This other blog post has a good explanation and diagrams; I found it after I started writing this one).
+
+But more importantly, you’re separating authentication from authorization. You can use Google to prove Alice’s identity, whilst your local Vault database maintains metadata and group information which says what Alice is allowed to do. There are commercial middleware services like 0Auth and Okta that can do that for you, but with Vault you can control it yourself.
+
+All that’s needed now is to link Vault to your chosen identity provider(s), so that Alice can prove her identity via one of these cloud providers.
+
+Since everyone has a Gmail account, let’s go straight ahead and authenticate against Google. This isn’t a primer in OpenID Connect, so from this point on I’m going to assume you know the fundamentals of that.
+
+    Note: Vault has separate configuration for authentication against Google Cloud Platform (GCP) and Google accounts and Google Workspace. The latter is what uses OpenID Connect.
+
+    If you want to play with this without using Google or any other cloud authentication provider, you can run a local instance of Dex.
+
+Enable OIDC authentication
+
+    Doc references: JWT/OIDC auth method, API, OIDC provider setup
+
+vault auth enable -path=google oidc
+Success! Enabled oidc auth method at: google/
+
+Setup on the Google side: this is copy-paste from the docs, plus some notes I added in italics.
+
+    Visit the Google API Console.
+    Create or a select a project.
+    Create a new credential via Credentials > Create Credentials > OAuth Client ID.
+    Configure the OAuth Consent Screen. Select type “external” unless you have a Google Workspace account. Add scopes “email”, “profile”, “openid”. Application Name is required. Save.
+    Back to Create Credentials > OAuth Client Id. Select application type: “Web Application”.
+    Configure Authorized Redirect URIs. (For now, add http://localhost:8250/oidc/callback and http://vault.example.com:8200/ui/vault/auth/google/oidc/callback — where “vault.example.com” is some name that resolves to your container’s IP address, in the local /etc/hosts file if necessary)
+    Save client ID and secret.
+
+Since the scopes requested are not “sensitive”, you can push your app to “Production” without further ado — but this requires your redirect URIs to use the https:// scheme (except for the localhost one).
+
+Now configure OIDC on Vault:
+
+vault write auth/google/config - <<EOF
+{
+    "oidc_discovery_url": "https://accounts.google.com",
+    "oidc_client_id": "your_client_id",
+    "oidc_client_secret": "your_client_secret",
+    "default_role": "standard"
+}
+EOF
+
+(There is a separate provider_config section which can be added if you have a Google Workspace account, and can be used to retrieve group memberships)
+
+Create the authentication role — this is where you can control how to map claims to metadata. You can also include other requirements, such as certain claims which must be present with certain values (“bound_claims”)
+
+vault write auth/google/role/standard - <<EOF
+{
+  "allowed_redirect_uris": ["http://vault.example.com:8200/ui/vault/auth/google/oidc/callback","http://localhost:8250/oidc/callback"],
+  "user_claim": "sub",
+  "oidc_scopes": ["profile","email"],
+  "claim_mappings": {
+    "name": "name",
+    "nickname": "nickname",
+    "email": "email"
+  }
+}
+EOF
+
+Now at last you can attempt to login:
+
+vault login -method=oidc -path=google
+Complete the login via your OIDC provider. Launching browser to:https://accounts.google.com/o/oauth2/v2/auth?client_id=....&nonce=....&redirect_uri=http%3A%2F%2Flocalhost%3A8250%2Foidc%2Fcallback&response_type=code&scope=openid+profile+email&state=....
+
+If you do this on a laptop/desktop, where VAULT_ADDR points to your vault server, then it should redirect you into a browser⁶, where you can select your Google account, and then send a code back to vault login, which then exchanges that code for a Vault token. At which point you see:
+
+Success! You are now authenticated. The token information displayed below is already stored in the token helper. You do NOT need to run "vault login" again. Future Vault requests will automatically use this token.Key                  Value
+---                  -----
+...
+policies             ["default"]
+token_meta_email     xxxx@gmail.com
+token_meta_name      Alice Sample
+token_meta_role      standard
+
+You can get more info on the token you got:
+
+vault token lookup
+...
+entity_id  4254a4d7-1e74-fdbf-b44b-697c3383ff7a
+...
+meta       map[email:xxxx@gmail.com name:Alice Sample role:standard]vault read identity/entity/id/4254a4d7-1e74-fdbf-b44b-697c3383ff7a
+...
+metadata   <nil>
+
+What’s happened is that as before, a new entity has been created. This fresh entity has no policy that allows SSH certificate generation, nor any ssh_username metadata.
+
+But what if we know that this particular Google user is actually our Alice? There’s a solution for that: we can “merge” the two entities together, so that we have a single entity with two aliases, instead of two entities each with one alias.
+
+# Login with the root token again
+vault list identity/entity/id
+Keys
+----
+11238cf6-074d-680a-3920-0f25d4c72670
+4254a4d7-1e74-fdbf-b44b-697c3383ff7avault write identity/entity/merge from_entity_ids="4254a4d7-1e74-fdbf-b44b-697c3383ff7a" to_entity_id="11238cf6-074d-680a-3920-0f25d4c72670"
+Success! Data written to: identity/entity/mergevault list identity/entity/id
+Keys
+----
+11238cf6-074d-680a-3920-0f25d4c72670
+
+“And the two shall become one”.
+
+Back to the session where we’d logged in with OpenIDC. Can we get a certificate for alice? We still have a token:
+
+vault write -field=signed_key ssh-user-ca/sign/ssh-admin public_key=@$HOME/.ssh/id_rsa.pub valid_principals="alice1" >alice1.cert
+Error writing data to ssh-user-ca/sign/ssh-admin: Error making API request.URL: PUT http://10.12.255.56:8200/v1/ssh-user-ca/sign/ssh-admin
+Code: 400. Errors:* template '{{identity.entity.metadata.ssh_username}}' could not be rendered -> no entity found
+
+Ah, the token we had doesn’t have the metadata (because we merged the entities after Alice had logged in). All we need to do is login again:
+
+vault login -method=oidc -path=google
+Complete the login via your OIDC provider. Launching browser to:https://accounts.google.com/o/oauth2/v2/auth?client_id=....&nonce=....&redirect_uri=http%3A%2F%2Flocalhost%3A8250%2Foidc%2Fcallback&response_type=code&scope=openid+profile+email&state=....Success! You are now authenticated. The token information displayed below is already stored in the token helper. You do NOT need to run "vault login" again. Future Vault requests will automatically use this token.Key                  Value
+---                  -----
+token                s.ul7UzNBCDUcXEvMvniPUAC3N
+token_accessor       vw5pq6RNwcl3PFQDpQaEE18v
+token_duration       768h
+token_renewable      true
+token_policies       ["default"]
+identity_policies    ["ssh-admin"]
+policies             ["default" "ssh-admin"]
+token_meta_role      standardvault write -field=signed_key ssh-user-ca/sign/ssh-admin public_key=@$HOME/.ssh/id_rsa.pub valid_principals="alice1" >alice1.certssh-keygen -Lf alice1.cert
+alice1.cert:
+        Type: ssh-rsa-cert-v01@openssh.com user certificate
+        Public key: RSA-CERT SHA256:mVV81....
+        Signing CA: RSA SHA256:nqMqs.... (using rsa-sha2-256)
+        Key ID: "vault-google-11368...."
+        Serial: 16887243150350464400
+        Valid: from 2021-02-23T16:42:45 to 2021-02-24T04:43:15
+        Principals:
+                alice1
+        Critical Options: (none)
+        Extensions:
+                permit-agent-forwarding
+                permit-pty
+
+Yes!! We traded our OIDC proof of identity for an ssh certificate!
+The user experience (CLI)
+
+Setting this up might have seemed painful. But really there are just two steps for the end user:
+
+vault login -method=oidc -path=google
+vault write ...as above...# After which they can do:
+# ssh user@somehost.example.com
+
+That’s a two-line shell script to login and fetch the certificate. They need a copy of the vault binary as well, but that’s a simple download.
+
+There is supposed to be a helper command:
+
+vault ssh -mount-point=ssh-user-ca -role=ssh-admin -mode=ca user@somehost.example.com
+
+Unfortunately there’s a problem with this:
+
+failed to sign public key ~/.ssh/id_rsa.pub: Error making API request.URL: PUT http://10.12.255.56:8200/v1/ssh-user-ca/sign/ssh-admin
+Code: 400. Errors:* extensions [permit-user-rc] are not on allowed list
+
+vault ssh requests all possible SSH certificate extensions, and it can’t be configured to do otherwise. There’s a github issue for this.
+
+Never mind. The two-liner isn’t so bad.
+
+    UPDATE: I wrote a helper program vault-ssh-agent-login which authenticates using OIDC, generates a private key, gets Vault to sign a certificate, and then inserts the pair into ssh-agent. You don’t need any private key on disk at all!
+
+The user experience (web UI)
+
+It’s even possible for users to get their key signed via the Vault web UI. This could be useful in an emergency if they can’t install the vault client locally.
+
+It’s useful to enable your preferred auth method(s) as tabs in the UI login page, which you can do by setting their “listing visibility” flag:
+
+vault auth tune -listing-visibility=unauth userpass/vault auth tune -listing-visibility=unauth -description="Google Account" google/
+
+    UPDATE: this feature is currently broken for OIDC logins in Vault 1.10.0, but hopefully will be fixed in 1.10.1.
+
+It’s also helpful⁷ to widen the signing policy permissions slightly:
+
+vault policy write ssh-admin - <<"EOH"
+path "ssh-user-ca/roles" {
+  capabilities = ["list"]
+}
+path "ssh-user-ca/config/zeroaddress" {
+  capabilities = ["read"]
+}
+path "ssh-user-ca/sign/ssh-admin" {
+  capabilities = ["update"]
+}
+EOH
+
+Now a user can go to http://vault.example.com:8200 and login:
+Vault UI login page
+
+Then they can navigate to their ssh role and paste in their public key:
+Vault UI: sign key
+
+Principals are selected under “More options”. The signed certificate is then displayed and can be copied to the clipboard.
+Tying up the security loose ends
+Secure communication with HTTPS
+
+The main thing I punted on initially was Transport Layer Security (TLS). Without this, tokens and secrets can be sniffed on the wire, and clients can be unknowingly redirected to imposter sites.
+
+To enable TLS, you just need to give Vault a private key and a corresponding certificate containing its hostname and/or IP address.
+
+Probably the best solution is to get a free public certificate issued by LetsEncrypt⁸ (using a client such as certbot, dehydrated, acme.sh etc). This means that your clients will already trust the CA which signed it. You’ll have to use a domain name, rather than IP address, in the URL that you use to access Vault (which is good practice anyway).
+
+However, there is another interesting option: you can also set up your own X509 CA using Vault. Let’s do this for fun.
+
+vault secrets enable pkivault secrets tune -max-lease-ttl=175200h pkivault write -field=certificate pki/root/generate/internal common_name="ca.vault.local" ttl=175200h >/etc/vault/vault-cacert.pem
+
+We have generated an X509 certificate authority, with a 20-year root certificate. Inspect the certificate like this:
+
+openssl x509 -in /etc/vault/vault-cacert.pem -noout -text
+...
+        Issuer: CN = ca.vault.local
+        Validity
+            Not Before: Feb 24 09:53:52 2021 GMT
+            Not After : Feb 19 09:54:21 2041 GMT
+...
+
+Next create a role that permits the signing of certificates (in this case, “any domain”, for up to 1 year):
+
+vault write pki/roles/anycert allowed_domains="*" allow_subdomains=true allow_glob_domains=true max-ttl=8760h
+
+Finally, generate a key and certificate pair:
+
+vault write pki/issue/anycert common_name="vault.example.com" alt_names="vault.example.com" ip_sans="10.12.255.56,127.0.0.1" ttl=8760hKey                 Value
+---                 -----
+certificate         -----BEGIN CERTIFICATE-----
+MIIDW...
+-----END CERTIFICATE-----
+expiration          1645696653
+issuing_ca          -----BEGIN CERTIFICATE-----
+...
+-----END CERTIFICATE-----
+private_key         -----BEGIN RSA PRIVATE KEY-----
+...
+-----END RSA PRIVATE KEY-----
+private_key_type    rsa
+serial_number       66:23:c7:....
+
+That gives us everything we need:
+
+    Certificate: copy everything from -----BEGIN CERTIFICATE------ to -----END CERTIFICATE----- inclusive to /etc/vault/vault-cert.pem
+    Issuing CA certificate: this is the same as vault-cacert.pem you already generated
+    Private key: copy this to /etc/vault/vault-key.pem and set permissions so it’s only readable by the vault user:
+    chmod 400 /etc/vault/vault-key.pem
+    chown vault:vault /etc/vault/vault-key.pem
+
+As before, you can inspect the certificate using openssl x509 -in /etc/vault/vault-cert.pem -noout -text
+
+Now change /etc/vault/vault-conf.hcl to enable TLS:
+
+storage "file" {
+  path = "/var/lib/vault"
+}listener "tcp" {
+  address = "0.0.0.0:8200"
+  #tls_disable = "true"
+  tls_cert_file = "/etc/vault/vault-cert.pem"
+  tls_key_file = "/etc/vault/vault-key.pem"
+}cluster_addr = "https://10.12.255.56:8201"
+api_addr = "https://10.12.255.56:8200"
+ui = "true"
+# The following setting is not recommended, but you may need
+# it when running in an unprivileged lxd container
+disable_mlock="true"
+
+Change /etc/profile.d/vault.sh to use the new client config. Notice that it also needs to be told which root CA certificate to use to validate the server certificate.
+
+VAULT_ADDR=https://127.0.0.1:8200
+export VAULT_ADDR
+VAULT_CACERT=/etc/vault/vault-cacert.pem
+export VAULT_CACERT
+
+Now restart vault and pick up the new client config:
+
+systemctl restart vaultsource /etc/profile.d/vault.sh
+
+At this point you should be able to talk to vault using HTTPS. Because it has been restarted, the first thing you’ll need to do is unseal it.
+
+vault statusvault operator unseal
+vault operator unseal
+vault operator unseal
+
+Now you’re back up and running, but properly secured by TLS!
+
+An obvious follow-up is to get Vault to issue X509 certificates to users, just like we issued user SSH certificates. This is left as an exercise for the reader.
+Vault hardening
+
+For running Vault in production, there are a number of things which you should do, as described in the Vault production hardening tutorial.
+
+I’ll emphasise just one thing here: the root token is the ultimate tool which enables access to all secret data in Vault, and allows all policy and configuration changes. You need to avoid using it for day-to-day operations.
+
+Once you have proper user authentication set up, you can create an administrators group with suitable access policies, put trusted administrators in that group, and then destroy the root token completely (by revoking it). Don’t worry about locking yourself out: you can always generate a new root token later by using the unseal keys.
+Conclusion
+
+Vault has evolved from a secret storage system into a powerful identity management platform. This article has demonstrated authenticating to Vault using username/password and OpenID Connect, issuing user SSH certificates tied to that identity, and issuing X509 server certificates.
+
+[⁰] A production deployment of Vault should use dedicated hardware. This is because it’s easy to attack a VM from the hypervisor side, including reading its memory where the unseal key resides.
+
+[¹] The “principals” in a certificate are SSH’s concept of “identity”. The default policy of sshd is that in order to login as user “foo”, your certificate must contain “foo” as one of its principals. You can override this policy, e.g. with AuthorizedPrincipalsFile or AuthorizedPrincipalsCommand.
+
+[²] When generating X509 certificates, Vault can generate a fresh private key to go with the certificate. Oddly, it doesn’t offer this for SSH certificates.
+
+[³] The documentation is ambiguous about how you apply multiple extensions in default_extensions.
+
+[⁴] The policy grant required to sign an SSH key is not well documented, but testing shows that the “update” permission on the signer is all you need. Denying the “key_id” parameter forbids users from choosing their own certificate key ID, which appears in SSH log files
+
+[⁵] Actually, you can set policies directly on userpass entries, but you cannot set metadata on userpass entries — which is why we have to set it on the associated ‘entity’. But this is better anyway, assuming we want Alice to be able to sign ssh certs regardless of which mechanism she used to authenticate herself.
+
+[⁶] vault login has a built-in webserver to accept the OIDC response code at http://localhost:8250. In principle it’s possible to do the OIDC dance without a local webserver: set the redirect URL as “urn:ietf:wg:oauth:2.0:oob” or “urn:ietf:wg:oauth:2.0:oob:auto”, which in Google requires defining the client as a “Desktop App”. The web browser will then display the response code (as plain text or JSON respectively), rather than redirecting, and you can copy-paste it back to the client. However vault login doesn’t support this, and it may be Google-specific anyway.
+
+[⁷] If you don’t do this, the user will have to manually change the URL bar to /ui/vault/secrets/ssh-user-ca/sign/ssh-admin after logging in, to sign a certificate.
+
+[⁸] LetsEncrypt certificates need to be rotated every 90 days, but fortunately you can get Vault to re-read its certificate files without restarting and unsealing, by sending it a SIGHUP.
+Ssh
+Certificate
+X509
+Ssh Keys
+Vault
+
+Brian Candler
+Written by Brian Candler
+66 Followers
+More from Brian Candler
+Brian Candler
+
+Brian Candler
+Interpreting Prometheus metrics for Linux disk I/O utilization
+Prometheus is a metrics collection system, and its node_exporter exposes a rich range of system metrics.
+10 min read·Jan 28, 2021
+
+Brian Candler
+
+Brian Candler
+Functional Programing illustrated in Python: Part 1
+Simple function composition
+3 min read·Oct 20, 2020
+
+Brian Candler
+
+Brian Candler
+Linstor: networked storage without the complexity
+With step-by-step guide to deployment under Ubuntu 18.04
+10 min read·Jan 26, 2021
+
+Brian Candler
+
+Brian Candler
+Using Vault as an OpenID Connect Identity Provider
+In a previous article I wrote about using Hashicorp Vault as an SSH certificate authority. As of version 1.9, Vault has gained the ability…
+11 min read·Dec 13, 2021
+
+See all from Brian Candler
+Recommended from Medium
+Stefanie Lai
+
+Stefanie Lai
+
+in
+
+Better Programming
+Improve Cluster Monitoring With Network Mapping in Grafana
+A deep dive into obtaining network maps and correlating IP with cluster workloads to speed up debugging
+·6 min read·Jan 12
+
+DevOps Diva/o
+
+DevOps Diva/o
+DevSecOps: Implement security checks on Gitlab
+Continuous Integration/Continuous Deployment (CI/CD) pipelines are becoming increasingly popular for automating the software development…
+·7 min read·Feb 3
+
+Lists
+Staff Picks
+346 stories·106 saves
+Stories to Help You Level-Up at Work
+19 stories·88 saves
+Self-Improvement 101
+20 stories·148 saves
+Productivity 101
+20 stories·166 saves
+Nick Fothergill
+
+Nick Fothergill
+
+in
+
+TechieLife
+How To: Create a multi-node object storage cluster!
+Object storage is the cloud-native file service used by modern web apps. It's used for storing large amounts of unstructured data. Unlike…
+·6 min read·Feb 15
+
+StringMeteor
+
+StringMeteor
+
+in
+
+Level Up Coding
+Run a Kubernetes cluster on Apple Silicon Mac with kind
+How to set up a Kubernetes cluster inside a Docker container on a Mac in just a few commands
+·9 min read·Jan 30
+
+Sung Kim
+
+Sung Kim
+
+in
+
+Geek Culture
+Enable SSH Access to WSL from a Remote Computer
+Setup SSH Server on Windows Subsystems for Linux (Ubuntu) on Windows 11 and Enable SSH Access to WSL from a Remote Computer
+·9 min read·Jan 5
+
+Vinayak Pandey
+
+Vinayak Pandey
+
+in
+
+AWS Tip
+Accessing Private EKS Cluster From Your Local Machine Using SSM Port Forwarding
+In this post, we’ll see how we can access a private EKS cluster from our local machine using SSM Port Forwarding.
+·2 min read·Mar 12
+
+See more recommendations
+
+Help
+
+Status
+
+Writers
+
+Blog
+
+Careers
+
+Privacy
+
+Terms
+
+About
+
+Text to speech
+
+Teams
+
+
 ** [[https://blog.thomas.maurice.fr/posts/vault-jwt-authentication/][Authenticate your services with Vault and JWTs]]
 📅 Jan 17, 2020
  ·  ☕ 7 min read
