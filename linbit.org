@@ -2278,6 +2278,144 @@ drwxr-xr-x 2 root root 0 Mar  5 15:44 .
 drwxr-xr-x 9 root root 0 Mar  5 15:44 ..
 lrwxrwxrwx 1 root root 0 Mar  5 15:46 drbd1010 -> ../../drbd1010
 
+* The linstor module: FAQ
+
+    What is difference between LVM and LVMThin?
+    Performance and reliability notes, comparison to Ceph
+    What to use in which situation?
+    How to get information about the space usage?
+    Changing the default StorageClass
+    How to add existing LVM or LVMThin pool?
+    How to configure Prometheus to use LINSTOR for storing data?
+    How to evict resources from a node?
+    Troubleshooting
+        linstor-node cannot start because the drbd module cannot be loaded
+        Pod cannot start with the FailedMount error
+
+This feature is actively developed. It might significantly change in the future.
+What is difference between LVM and LVMThin?
+
+Briefly:
+
+    LVM is simpler and has performance comparable to native drives;
+    LVMThin allows you to use snapshots and overprovisioning, but twice as slow.
+
+Performance and reliability notes, comparison to Ceph
+
+    You may be interested in our article “Comparing Ceph, LINSTOR, Mayastor, and Vitastor storage performance in Kubernetes”.
+
+We take a practical view of the issue. A difference of several tens of percent — in practice it never matters. The difference is several times or more important.
+
+Comparison factors:
+
+    Sequential read and write: do not matter, because on any technology they always run into the network (which is 10Gb/s, which is 1Gb/s). From a practical point of view, this indicator can be completely ignored;
+    Random read and write (which is 1Gb/s, which is 10Gb/s):
+        DRBD + LVM 5 times better (latency — 5 times less, IOPS — 5 times more) than Ceph RBD;
+        DRBD + LVM is 2 times better than DRBD + LVMThin.
+    If one of the replicas is located on local storage, then the read speed will be approximately equal to the storage device speed;
+    If there are no replicas located on local storage, then the write speed will be approximately equal to half the network bandwidth for two replicas, or ⅓ network bandwidth for three replicas;
+    With a large number of clients (more than 10, with iodepth 64), Ceph starts to fall behind more (up to 10 times) and consume much more CPU.
+
+All in all, in practice, it doesn’t matter how many knobs you have for tuning, only three factors are significant:
+
+    Read locality — if all reading is performed locally, then it works at the speed (throughput, IOPS, latency) of the local disk (the difference is practically insignificant);
+    1 network hop when writing — in DRBD, the replication is performed by the client, and in Ceph, by server, so Ceph latency for writing always has at least x2 from DRBD;
+    Complexity of code — latency of calculations on the datapath (how much assembler code is executed for each io operation), DRBD + LVM is simpler than DRBD + LVMThin, and much simpler than Ceph RBD.
+
+What to use in which situation?
+
+By default, we use two replicas (the third is an automatically created diskless replica used for quorum). This approach guarantees protection against split-brain and a sufficient level of storage reliability, but the following features must be taken into account:
+
+    When one of the replicas (replica A) is unavailable, data is written only to a single replica (replica B). It means that:
+        If at this moment the second replica (replica B) is also turned off, writing and reading will be unavailable;
+        If at the same time the second replica (replica B) is irretrievably lost, then the data will be partially lost (there is only the old, outdated replica A);
+        If the old replica (replica A) was also irretrievably lost, the data will be completely lost.
+    When the second replica is turned off, in order to turn it back on (without operator intervention), both replicas must be available (in order to correctly work out the split-brain);
+    Enabling a third replica solves both problems (at least two copies of data at any given time), but increases the overhead (network, disk).
+
+It is strongly recommended to have one replica locally. This doubles the possible write bandwidth (with two replicas) and significantly increases the read speed. But if this is not the case, then everything still continues to work normally (but reading over the network, and double network utilization for writing).
+
+Depending on the task, choose one of the following:
+
+    DRBD + LVM — faster (x2) and more reliable (LVM is simpler);
+    DRBD + LVMThin — support for snapshots and the possibility of overcommitment.
+
+How to get information about the space usage?
+
+There are two options:
+
+    Using Grafana dashboard: navigate Dashboards –> Storage –> LINSTOR/DRBD
+    In the upper right corner you’ll find information about the space used in the cluster.
+
+        Attention! This information shows raw space usage in the cluster. Thus if you create a volume with two replicas, then these values should be divided by two to get a representation of how many such volumes can be placed in your cluster.
+
+    Using LINSTOR command line:
+
+    kubectl exec -n d8-linstor deploy/linstor-controller -- linstor storage-pool list
+
+        Attention! This information shows raw space usage for each node in the cluster. Thus if you create a volume with two replicas, then these two replicas must completely fit on two nodes in your cluster.
+
+Changing the default StorageClass
+
+List the StorageClasses in your cluster:
+
+kubectl get storageclass
+
+Mark the default StorageClass as non-default:
+
+kubectl annotate storageclass local-path storageclass.kubernetes.io/is-default-class-
+
+Mark a StorageClass as default:
+
+kubectl annotate storageclass linstor-data-r2 storageclass.kubernetes.io/is-default-class=true
+
+How to add existing LVM or LVMThin pool?
+
+    The general method is described in`LINSTOR storage configuration page. Unlike commands listed below it will automatically configure the StorageClasses as well.
+
+Example of adding an existing LVM pool:
+
+linstor storage-pool create lvm node01 lvmthin linstor_data
+
+Example of adding an existing LVMThin pool:
+
+linstor storage-pool create lvmthin node01 lvmthin linstor_data/data
+
+You can also add pools with some volumes have already been created. LINSTOR will just create new ones nearby.
+How to configure Prometheus to use LINSTOR for storing data?
+
+To configure Prometheus to use LINSTOR for storing data:
+
+    Configure storage-pools and StorageClass;
+
+    Specify the longtermStorageClass and storageClass parameters in the prometheus module configuration. E.g.:
+
+    Example:
+
+    apiVersion: deckhouse.io/v1alpha1
+    kind: ModuleConfig
+    metadata:
+      name: prometheus
+    spec:
+      version: 2
+      enabled: true
+      settings:
+        longtermStorageClass: linstor-data-r2
+        storageClass: linstor-data-r2
+
+    Wait for the restart of Prometheus Pods.
+
+How to evict resources from a node?
+
+To do this, just run the command:
+
+linstor node evacuate <node_name>
+
+It will move resources to other free nodes and replicate them.
+Troubleshooting
+
+Problems can arise at different levels of component operation. This simple cheat sheet will help you quickly navigate through the diagnosis of various problems with LINSTOR-created volumes:
+
 * ChatGPT
 
 Linstor is an open-source software-defined storage solution for Linux-based systems. It is a highly available, distributed block storage system that allows users to manage and allocate storage resources across multiple nodes in a cluster. Linstor uses the Linux kernel's Device Mapper and the Distributed Replicated Block Device (DRBD) to provide a unified storage layer that can be used by any application or service that requires block-level storage.
