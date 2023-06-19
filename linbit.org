@@ -2248,6 +2248,8 @@ linstor storage-pool create lvmthin kube2 pool0 vg0/pool0
             claimName: bash-linstor-restored
 #+end_src
 
+** [[https://habr.com/ru/companies/flant/articles/676678/][Снапшоты в Kubernetes: что это и как ими пользоваться / Хабр]]
+
 * Issues
 
 ** Thin LVM 1Tb and more sync failure
