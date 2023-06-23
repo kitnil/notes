@@ -122,6 +122,9 @@
 
 : sum without (device) (rate(node_network_transmit_bytes_total{device=~"vm.+", instance=~"172.16.102.+"}[1m]))
 
+- Top 5 file systems with a free space
+  : topk(5, node_filesystem_avail_bytes{})
+
 * Learning
 - [[https://www.robustperception.io/absent-alerting-for-jobs][Absent Alerting for Jobs – Robust Perception | Prometheus Monitoring Experts]]
 - [[https://www.robustperception.io/alerting-on-gauges-in-prometheus-2-0][Alerting on gauges in Prometheus 2.0 – Robust Perception | Prometheus Monitoring Experts]]
