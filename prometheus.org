@@ -115,6 +115,11 @@
 - icmp
 : 127.0.0.1:9115/probe?module=icmp&target=192.168.0.1
 
+- query range
+  : PROMETHEUS_URL=https://prometheus.corp1.majordomo.ru
+  : query=YOUR_QUERY
+  : echo "$query" | curl -v --data-urlencode 'step=10m' --data-urlencode 'start=2023-06-20T00:00:00.000Z' --data-urlencode 'end=2023-06-26T00:00:00.000Z' -k --get "${PROMETHEUS_URL}/api/v1/query_range" --data-urlencode query@-
+
 * Alertmanager
 - [[https://github.com/prometheus/alertmanager/issues/935][Is there anyway to disable repeat_interval ? · Issue #935 · prometheus/alertmanager]]
   Set repeat_interval to 8736h
