@@ -250,6 +250,352 @@ terminal length 0 	set cli screen-length 0 	sets the length for displaying comma
 * Monitoring
 - [[https://github.com/ntop/ntopng][ntop/ntopng: Web-based Traffic and Security Network Traffic Monitoring]]
 
+* MTU
+** [[https://community.cisco.com/t5/networking-knowledge-base/gre-tunnel-mtu-interface-mtu-and-fragmentation/ta-p/3673508][GRE Tunnel MTU, Interface MTU, and Fragmentation - Cisco Community]]
+Whenever we create tunnel interfaces, the GRE IP MTU is automatically configured 24 bytes less than the outbound physical interface MTU. Ethernet interfaces have an MTU value of 1500 bytes. Tunnel interfaces by default will have 1476 bytes MTU. 24 bytes less the physical.
+
+Why do we need tunnel MTU to be 24 bytes lower (or more) than interface MTU? Because GRE will add 4 bytes GRE header and another 20 bytes IP header. If your outbound physical interface is configured as ethernet, the frame size that will cross the wire is expected be 14 bytes more, 18 bytes if link is configured with 802.1q encapsulation. If the traffic source sends packet with 1476 bytes, GRE tunnel interface will add another 24 bytes as overhead before handing it down to the physical interface for transmission. Physical interface would see a total of 1500 bytes ready for transmission and will add L2 header (14 or 18 bytes for ethernet and 802.q respectively). This scenario would not lead to fragmentation. Life is good.
+
+ 
+
+ 
+
+1.png
+
+ 
+
+GRE traffic captured between R2 and R3 with a total of 1514 bytes
+
+ 
+
+2.png
+
+ 
+
+What if H1 sends 1477 bytes packet? When router (R2 in this case) receives the packet and routes it out to the GRE tunnel interface, it will see that the packet is larger than the tunnel interface IP MTU which is 1476. This will cause fragmentation. When a GRE tunnel fragments a packet, all fragmented packets will be encapsulated with GRE headers before handing it over to frame encapsulation. (Wireshark just reads the inner IP header and not the outer IP header for GRE)
+
+ 
+
+3.png4.png5.png
+
+ 
+
+Frame 319
+	
+
+Size (1491 bytes)
+	
+
+Frame 318
+	
+
+Size (82 bytes)
+
+Ethernet
+	
+
+14
+	
+
+Ethernet
+	
+
+14
+
+Outer IP Header
+	
+
+20
+	
+
+Outer IP Header
+	
+
+20
+
+GRE
+	
+
+4
+	
+
+GRE
+	
+
+4
+
+Original IP Header
+	
+
+20
+	
+
+Original IP Header
+	
+
+20
+
+ICMP
+	
+
+1433
+	
+
+ICMP
+	
+
+24
+
+ 
+
+When R3 receives the GRE packets, it will decapsulate the GRE headers and will transmit the fragmented packets (without reassembly) to H2. (Wireshark capture between R3 and H2)
+
+ 
+
+6.png7.png8.png
+
+ 
+
+Frame 4
+	
+
+Size (1467 bytes)
+	
+
+Frame 3
+	
+
+Size (58 bytes)
+
+Ethernet
+	
+
+14
+	
+
+Ethernet
+	
+
+14
+
+Original IP Header
+	
+
+20
+	
+
+Original IP Header
+	
+
+20
+
+ICMP
+	
+
+1433
+	
+
+ICMP
+	
+
+24
+
+ 
+
+This kind of situation where the GRE headend interface fragmented the packet, the receiving host (not the receiving tunnel) will be the one to reassemble the fragmented packets. In this case, H2. There will be extra work on the receiving host to reassemble the fragmented packets. This would mean that the NIC interface at the receiving end will have to put these packets into a buffer for proper reassembly.
+
+Another example. What if the GRE interface’s MTU was increased above 1476 while retaining an ethernet MTU of 1500? Let’s say the GRE IP MTU was increased to 1477 bytes. This would increase the packet size that’s being handed over for transmission to ethernet to 1501 bytes and would indeed need fragmentation. This time, one GRE packet will be fragmented by the ethernet interface for transmission.
+
+ 
+
+9.png
+
+R2(config-if)#int tunnel 0
+
+R2(config-if)#ip mtu 1477
+
+%Warning: IP MTU value set 1477 is greater than the current transport value 1476, fragmentation may occur
+
+*Jul 22 02:17:09.542: %TUN-4-MTUCONFIGEXCEEDSTRMTU_IPV4: Tunnel0 IPv4 MTU configured 1477 exceeds tunnel transport MTU 1476
+
+ 
+
+Let’s send 1477 bytes from H1 to H2 (192.168.255.4)
+
+ 
+
+10.png11.png12.png
+
+ 
+
+Note: Wireshark reads the inner IP header of frame 1278 but since frame 1277 only has one IP header, the source and destination IPs captured by Wireshark are the terminating end-points.
+
+ 
+
+Frame 1278
+	
+
+Size (1491 bytes)
+	
+
+Frame 1277
+	
+
+Size (58 bytes)
+
+Ethernet
+	
+
+14
+	
+
+Ethernet
+	
+
+14
+
+Outer IP Header
+	
+
+20
+	
+
+Outer IP Header
+	
+
+ 
+
+GRE
+	
+
+4
+	
+
+GRE
+	
+
+ 
+
+Original IP Header
+	
+
+20
+	
+
+Original IP Header
+	
+
+20
+
+ICMP
+	
+
+1433
+	
+
+ICMP
+	
+
+24
+
+ 
+
+As you would notice here, the GRE packet was fragmented into two frames. However, only one has GRE encapsulation (frame 1278) and the other doesn’t have GRE headers, only IP header (frame 1277).
+
+The problem with this kind of setup is R3 would do extra work to reassemble the fragmented traffic.
+
+H1:
+
+ping 192.168.255.4 size 1477 repeat 100
+
+Type escape sequence to abort.
+
+Sending 100, 1477-byte ICMP Echos to 192.168.255.4, timeout is 2 seconds:
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+Success rate is 100 percent (100/100), round-trip min/avg/max = 3/8/29 ms
+
+ 
+
+R3:
+
+sh ip traffic int eth0/1
+
+ Ethernet0/1 IP-IF statistics :
+
+  Rcvd:  200 total, 152100 total_bytes
+
+         0 format errors, 0 hop count exceeded
+
+         0 bad header, 0 no route
+
+         0 bad destination, 0 not a router
+
+         0 no protocol, 0 truncated
+
+         0 forwarded
+
+         200 fragments, 100 total reassembled
+
+         0 reassembly timeouts, 0 reassembly failures
+
+         0 discards, 100 delivers
+
+  Sent:  1 total, 84 total_bytes 0 discards
+
+         1 generated, 0 forwarded
+
+         0 fragmented into, 0 fragments, 0 failed
+
+  Mcast: 0 received, 0 received bytes
+
+         0 sent, 0 sent bytes
+
+  Bcast: 0 received, 0 sent
+
+ 
+
+When R3 transmits the traffic to H2, the fragments were reassembled and sent with single frame.
+
+ 
+
+13.png
+
+ 
+
+Frame 964
+	
+
+Size (1491 bytes)
+
+Ethernet
+	
+
+14
+
+Original IP Header
+	
+
+20
+
+ICMP
+	
+
+1457
+
+ 
+
+When H2 respond with the ICMP request, it will reply with the same size causing the same scenario for R3 to R2. Both R2 and R3 may do double work, fragmentation and reassembly.
+
+This is the reason why we don’t want GRE IP MTU and interface MTU to be less than 24 bytes apart. Some implementations recommend setting the GRE IP MTU to 1400 bytes to cover additional overhead especially when encryption comes into play (GRE/IPSEC). We do not want the exit interface to do the fragmentation because the tail-end of the GRE tunnel will be the one responsible to reassemble the fragmented data and this may cause high CPU when there is significant amount of traffic. Same with H2, R3 will allocate a buffer to place these fragmented packets for reassembly. Not to mention if there are any security devices in the path of the GRE tunnel and the packets arrived out of order, these security devices may drop the fragment causing other fragments to be dropped too.
+
+ 
+
+Traffic with DF-bit set not discussed here.
+
 * NAT
 
 ** 
