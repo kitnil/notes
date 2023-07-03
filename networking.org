@@ -731,6 +731,8 @@ POSTROUTING. Это к слову тот случай, когда можно в�
 * tcpdump
 - [[https://danielmiessler.com/study/tcpdump/][A tcpdump Tutorial with Examples — 50 Ways to Isolate Traffic | Daniel Miessler]]
 
+- sshpass -p"$(pass show majordomo/private/ssh/router)" ssh sr1-dh507-508.intr -- tcpdump -w - -i ae113 -n -c 1000 | wireshark -k -i -
+
 * Tools
 - [[https://github.com/c-grimshaw/gosniff][c-grimshaw/gosniff: A fancy-schmancy tcpdump-esque TUI, programmed in Go.]]
 - [[https://github.com/chiakge/Linux-NetSpeed][chiakge/Linux-NetSpeed: 将Linux现常用的网络加速集成在一起]]
