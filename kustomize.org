@@ -859,3 +859,123 @@ This article showed several features that are going beyond the simple scope of K
 But sometimes we have no other choice, and then it is helpful to have something else up our sleeves. Otherwise, we would end up with a mix of different tools like yq and Kustomize and this is not a preferable setup.
 
 A list of all examples shown in this article can be found here. Enjoy
+
+* 
+
+Introduction
+
+In recent years, Kubernetes has become a renowned solution for orchestrating cloud-independent infrastructure.
+
+Open Analytics supports the data analysis process end to end. This includes infrastructure that underpins the data science platforms we build. Since we exclusively work with open technology, it should come as no surprise that we adopted Kubernetes early on in our technology stack.
+
+As Kubernetes rose in popularity and maturity, it became an essential backbone to deliver fully open-source data science platforms. With this growth came a need for a clean and reliable workflow for staging maintainable deployments. This is easier said than done, since this is an active space with many tools that overlap in scope. Examples include Helm, Jsonnet and Kustomize.
+
+After gaining experience with different workflows across projects, we found Kustomize to be best in class, due to its excellence at last-mile configuration: the stage where off-the-shelf packages are tailor-fit to specific platforms and environments.
+
+Given this prominence, we set out to extract best practices from the experience of our infrastructure team. We did this to standardize our workflow, but hope that our efforts can be useful to the community as well.
+
+kustomize best practices
+Structuring Kustomize Repositories
+
+At a bare minimum, all kustomizations should be under git version control. Ideally, deployment should also be automated and tied directly to the kustomize repositories using a GitOps tool like ArgoCD or FluxCD.
+
+Kustomizations should be divided into bases and environment-specific (live) overlays.
+
+One way to implement this division is as top-level directories bases/ and overlays/. This is the standard approach typically found in kustomize examples and works well for smaller projects.
+
+Another approach is to use separate repositories: a base repository and a live repository. We use the term ‘live’ here instead of ‘overlay’ since a kustomization can be both a base and an overlay. ‘live’ communicates the desired intent better: an environment-specific overlay that describes the final form of the infrastructure and should correspond one-to-one to what is deployed on the cluster.
+
+Using repositories instead of folders has several advantages:
+
+    Bases can be re-used across projects. This helps to keep Kustomize DRY (Don’t Repeat Yourself).
+    The live overlays can be locked to a particular version tag of the base repository. This is especially useful to gradually promote improved bases across environments since each environment overlay can be locked to a different version. We recommend using a standard versioning approach like SemVer and independently versioning the bases by including them as a scope prefix in the tag: mybase-v1.2.3.
+
+For some projects, it is useful to create separate repositories per environment. A primary reason for this is to allow for separate access rights per environment.
+
+It is a good idea to use a consistent naming convention for all repositories. As an example, we use the following format: <project>-[<environment>-]kube-[live|base]
+Clean Kustomizations
+
+Kustomizations should be treated as code and code should be clean.
+
+    Use kustomize cfg fmt to format your yaml configuration. It will ensure consistent field ordering and indentation.
+    Always use generators to emit ConfigMap (with configMapGenerator) and Secret (with secretGenerator) resources. Generators add a content hash to the resource name which ensures that rolling updates are triggered when the content changes.
+
+    Structure your kustomization directory consistently and predictably. You should adopt a standard folder hierarchy. We recommend the following structure:
+        patches/: strategic merge patches
+        resources/: complete yaml resource manifests
+        configs/: application configuration files
+        secrets/: secret application configuration files
+        This helps to reduce surprises for anyone reading or adapting your configuration.
+
+    Each resource should be stored in a separate yaml file unless the resources are closely related and separating them hinders readability. The Role, Rolebinding, ClusterRole, and ClusterRoleBinding resources can e.g. be defined in a single file.
+
+    Use a consistent naming scheme for resources. We recommend the following format: <metadata.name>.<lowercase(kind)>.yaml. Use the most significant part of a resource apiVersion instead of <kind> in the case where a single file stores multiple resources. E.g. use rbac for the RBAC example above.
+
+    Use official common labels
+
+We wrote a python script called konform which helps us check and validate our implementation of these best-practices. The script has been made publicly available under the Apache 2 license.
+Dealing with Secrets
+
+Treating secrets correctly in version-controlled configuration is an interesting problem. Many different approaches and tools have been proposed. They typically fall into one of two camps:
+
+    encrypt secrets prior to storing them in git
+    store references in git and fetch the secrets from an external service
+
+SOPS is a fairly popular tool often found in workflows that use the encryption approach. Specifically for working with SOPS, we uncovered the following best-practices:
+
+    Store secrets under a file path that makes them recognizable as secrets. This makes it easier to automate decryption. We recommend the following pattern: secrets/<filename>.enc.<fileext> e.g. myapp.enc.yaml.
+
+    Avoid literals in your secretGenerator. Encrypting them implies encrypting the kustomization.yaml file which unnecessarily hampers readability. A simple alternative is to move the literals to an .env file and refer to it from the generator using the envs field:
+
+      # cat kustomization.yaml
+      secretGenerator:
+      - envs:
+          - secrets/foobar.env
+        name: foobar
+
+     # cat secrets/foobar.env
+     PROPERTY=VALUE
+
+Maintaining Bases
+
+    Tag the repository appropriately after updating a base.
+    Generate bases from off-the-shelf packages if possible using tools like Helm or Jsonnet.
+    Decompose complex applications into loosely coupled component bases: database, app, … As a rule of thumb, a base should typically only feature one or two Deployment or StatefulSet resources. This allows the live overlay to omit part of the deployment if it is not necessary or swap out one component for another.
+    Provide separate bases or variant overlays for applications that can operate both in namespaced and cluster-wide modes.
+    Do not annotate resources with namespaces. Create separate component bases for resources that are intended to be deployed in different namespaces.
+    Provide sensible default resource requests and limits.
+    Optionally include example overlays to showcase what a typical overlay might look like. Example: if the base includes a StatefulSet you can illustrate how to provide a persistent volume under a specific cloud provider. We’ve done this for our RDepot Kubernetes examples.
+
+Maintaining Live Overlays
+
+    Lock to specific base revisions by using version tags.
+    Create one live overlay per namespace. Do not set the namespace directly in resources or patches. Set the namespace with the namespace transformer.
+    Name kustomization directories after their corresponding namespace.
+
+    Avoid copying configuration from the base when possible. It is not uncommon for applications to be configured with one big configuration file. If a base already contains some version of such a file it may be tempting to copy the file and adapt it. This can cause problems when the base is updated, e.g. requiring the file to be copied again and figuring out what was previously changed. This can be avoided by using an approach that merges the base configuration with the overlay configuration:
+        Override base configuration using environment variables in the overlay if they are supported by the application.
+        Create a patch that adds an init container that merges the configuration files.
+
+    Override the base with appropriate resource requests and limits: ensure that you tailor resources requests and limits to your needs.
+
+    Consider creating a kustomization with default resource quota and container resource requests/limits. This kustomization should then be added as a base to all live overlays. This will provide each namespace with sound default limits and quotas. For example, creating a base all/:
+
+     # tree all
+     all/
+     ├── kustomization.yaml
+     └── resources
+         ├── default-cpu.limitrange.yaml
+         └── default-mem.limitrange.yaml
+
+    And then including it to live overlays as a base.
+
+    Configure transformers to work with Custom Resource Definitions (CRD). As an example, consider the ShinyProxy CRD that we introduced as part of the ShinyProxy Operator. By default, the images kustomize transformer will not replace images specified under spec.proxy.specs[].containerImage. The following piece of configuration fixes that:
+
+    # cat shinyproxy.configuration.yaml 
+    images:
+    - kind: ShinyProxy
+      path: spec/proxy/specs/containerImage
+
+    # cat kustomization.yaml
+    configurations:
+    - shinyproxy.configuration.yaml
