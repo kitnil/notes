@@ -1,0 +1,861 @@
+Sascha Selzer
+content
+
+    Support CRDs
+    Copy an arbitrary field value into another field
+    Remove a resource from rendering
+    Reuse Kustomize configuration
+    Limit labels and annotations to specific resources or fields
+    If nothing helps, patch it
+    Shall I use these features?
+
+    Part 1: Kustomize Introduction
+    Part 2: Kustomize Advanced Features (this article)
+    Part 3: Kustomize Enhancement with KRM functions
+
+When you are already working with Kustomize for a while, you stumble over use-cases which cannot be solved with Kustomize’s basic functionality of overlaying and merging. This article shows some advanced use-cases I had problems with in the past and which features Kustomize offers to solve them.
+
+This article is also a reference for myself as most of the information is in the official documentation but widely spread and sometimes well hidden from the eye :).
+
+Disclaimer: All examples are made with the latest Kustomize version 4.5.5. As the documentation is not always clear in which version which feature was added, it can happen that some features will not work with your version.
+Support CRDs
+
+In the first article, we have seen how Kustomize can be used to:
+
+    update the image tag via configuration without having an overlay or updating the original resource
+    reference a ConfigMap or Secret and update the reference name in case the original resource name changes (e.g., by adding a hash, prefix, or suffix)
+
+The function making these changes are called transformers in Kustomize, and they work out-of-the-box for resources that are part of the standard Kubernetes API like Deployment and StatefulSet. But how does it work for new kinds of resources?
+
+For example, think of a new resource type we create for our project that looks like this:
+
+apiVersion: apps.innoq.com/v1
+kind: MyApp
+metadata:
+  name: myapp
+spec:
+  image: app
+  configRef: my-config
+
+my-app.yaml
+
+It has an image tag and a reference to a ConfigMap. If we have the following configuration
+
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+- app.yaml
+namePrefix: dev-
+configMapGenerator:
+- name: my-config
+  literals:
+  - "appName=my-app"
+images:
+- name: app
+  newName: app
+  newTag: 1.0.0
+
+kustomization.yaml
+
+we would expect that the configRef gets updated with the correct name created by the configMapGenerator and that the image tag will be updated too.
+
+But when we render the final resources, we see that this is not the case:
+
+> kustomize build
+
+apiVersion: v1
+data:
+  appName: my-app
+kind: ConfigMap
+metadata:
+  name: dev-my-config-5b2mf9f9g6
+---
+apiVersion: apps.innoq.com/v1
+kind: MyApp
+metadata:
+  name: dev-myapp
+spec:
+  configRef: my-config
+  image: app
+
+Kustomize does not know the new type and can not magically find out that the configRef is a reference to another resource and that image contains an image tag.
+
+It is possible to extend the configuration for transformers to be aware of new reference and image fields in custom resources. Configurations can be defined like this for our case:
+
+nameReference:
+- kind: ConfigMap
+  fieldSpecs:
+  - kind: MyApp
+    path: spec/configRef
+images:
+- path: spec/image
+  kind: MyApp
+
+configuration.yaml
+
+and referenced like this:
+
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+configurations:
+- configuration.yaml # <- configuration for transformers
+resources:
+- app.yaml
+namePrefix: dev-
+configMapGenerator:
+- name: my-config
+  literals:
+  - "appName=my-app"
+images:
+- name: app
+  newName: app
+  newTag: 1.0.0
+
+kustomization.yaml
+
+When we now render the resources, we get our expected result.
+
+> kustomize build
+
+apiVersion: v1
+data:
+  appName: my-app
+kind: ConfigMap
+metadata:
+  name: dev-my-config-5b2mf9f9g6
+---
+apiVersion: apps.innoq.com/v1
+kind: MyApp
+metadata:
+  name: dev-myapp
+spec:
+  configRef: dev-my-config-5b2mf9f9g6
+  image: app:1.0.0
+
+To find out more about the default configuration of the transformers, you can check the documentation here
+
+There is another possibility by registering an OpenAPI schema for the CRD in Kustomize via
+
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+crds:
+- crd.json
+
+kustomization.yaml
+
+The documentation lacks some more profound examples of how to use it. It also seems to be generally discouraged to use it in favor of the transformer configuration, as it is probably easier and more flexible.
+Copy an arbitrary field value into another field
+
+Kustomize can copy a value from one field to another via var references. This is quite a handy feature and needed in some circumstances.
+
+Let’s say we have packaged an app into a container that needs an argument --host to start. The host parameter would be the name of the corresponding service resource in a Kubernetes environment pointing to our pod, e.g., like this:
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: myapp
+spec:
+  selector:
+    app: myapp
+  ports:
+  - port: 8080
+    targetPort: 8080
+
+We can hardcode the name into the pod definition so that it works:
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: myapp
+  labels:
+    name: myapp
+spec:
+  containers:
+  - name: myapp
+    image: app
+    args: ["--host", "myapp"]
+    ports:
+    - containerPort: 8080
+
+But if a transformer changes the name (e.g., with a prefix or suffix), the args is now incorrect and has to be manually adapted. If we forget this, our app would probably not work correctly. What we want is that the second argument myapp is automatically set with the name field of the service resource. This can be done via var reference. First, we have to define a variable placeholder in our resource like this.
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: myapp
+  labels:
+    name: myapp
+spec:
+  containers:
+  - name: myapp
+    image: app
+    args: ["--host", "$(MY_SERVICE_NAME)"]
+    ports:
+    - containerPort: 8080
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: myapp
+spec:
+  selector:
+    app: myapp
+  ports:
+  - port: 8080
+    targetPort: 8080
+
+app.yaml
+
+MY_SERVICE_NAME is the variable’s name. Now we have to configure Kustomize so that it knows to which field value this variable shall be resolved.
+
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+- app.yaml
+namePrefix: prod-
+vars:
+- name: MY_SERVICE_NAME
+  objref:
+    name: myapp
+    kind: Service 
+    apiVersion: v1
+  fieldref:
+    fieldpath: metadata.name
+
+kustomizaton.yaml
+
+In this case, MY_SERVICE_NAME will be resolved to the value of metadata.name of the service resource with the name myapp
+
+In this example, the fieldref could be omitted, as metadata.name is the default.
+
+When we render the resources, we then see the expected result:
+
+> kustomize build
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: prod-myapp
+spec:
+  ports:
+  - port: 8080
+    targetPort: 8080
+  selector:
+    app: myapp
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    name: myapp
+  name: prod-myapp
+spec:
+  containers:
+  - args:
+    - --host
+    - prod-myapp
+    image: app
+    name: myapp
+    ports:
+    - containerPort: 8080
+
+The var reference feature is limited to where a variable can be used. A list of all possible places can be found here.
+
+For example, if we replace the pod with our MyApp resource like this
+
+apiVersion: apps.innoq.com/v1
+kind: MyApp
+metadata:
+  name: myapp
+spec:
+  image: app
+  commandArgs: ["$(MY_SERVICE_NAME)"]
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: myapp
+spec:
+  selector:
+    app: myapp
+  ports:
+  - port: 8080
+    targetPort: 8080
+
+it would not work
+
+> kustomize build
+
+2022/07/14 10:51:15 well-defined vars that were never replaced: MY_SERVICE_NAME
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: prod-myapp
+spec:
+  ports:
+  - port: 8080
+    targetPort: 8080
+  selector:
+    app: myapp
+---
+apiVersion: apps.innoq.com/v1
+kind: MyApp
+metadata:
+  name: prod-myapp
+spec:
+  commandArgs:
+  - $(MY_SERVICE_NAME)
+  image: app
+
+We can extend the configuration as we did for the image and name reference transformer by defining our own configuration:
+
+varReference:
+- path: spec/commandArgs
+  kind: MyApp
+
+configuration.yaml
+
+Then use it in Kustomize like this:
+
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+configurations:
+- configuration.yaml
+resources:
+- app.yaml
+namePrefix: prod-
+vars:
+- name: MY_SERVICE_NAME
+  objref:
+    name: myapp
+    kind: Service 
+    apiVersion: v1
+
+kustomization.yaml
+
+This results in the expected behavior:
+
+> kustomize build
+apiVersion: v1
+kind: Service
+metadata:
+  name: prod-myapp
+spec:
+  ports:
+  - port: 8080
+    targetPort: 8080
+  selector:
+    app: myapp
+---
+apiVersion: apps.innoq.com/v1
+kind: MyApp
+metadata:
+  name: prod-myapp
+spec:
+  commandArgs:
+  - prod-myapp
+  image: app
+
+There is an alternative approach in newer Kustomize versions via replacements. It works a bit differently. Let’s go back to our pod example and modify it a bit
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: myapp
+  labels:
+    name: myapp
+spec:
+  containers:
+  - name: myapp
+    image: app
+    args: ["--host", "WILL_BE_REPLACED"]
+    ports:
+    - containerPort: 8080
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: myapp
+spec:
+  selector:
+    app: myapp
+  ports:
+  - port: 8080
+    targetPort: 8080
+
+app.yaml
+
+We replaced the variable notation with a simple string. It does not matter what is inside because it will be replaced completely. For that, we have to define a replacement configuration in kustomization.yaml
+
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+- app.yaml
+namePrefix: prod-
+replacements:
+- source: 
+    name: myapp
+    kind: Service
+    version: v1
+  targets:
+  - select: 
+      kind: Pod
+      name: myapp
+    fieldPaths:
+    - spec.containers.[name=myapp].args.1
+
+kustomization.yaml
+
+The replacement block could be also extracted to its own file replacement.yaml and be referenced like this:
+
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+- app.yaml
+namePrefix: prod-
+replacements:
+- path: replacement.yaml
+
+If we render the resources, we would get the same result as with the var reference.
+
+The advantage of replacements is that source and target will be configured in one place, so it easier to understand.
+
+The disadvantage is that it replaces the full value of a field, so something like this:
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: myapp
+	annotations:
+    my-annotation: x-ONLY_REPLACE_THIS
+
+Only the full my-annotation value can be overwritten, and not just parts of it. With var references, this would be possible:
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: myapp
+	annotations:
+    my-annotation: x-$(ONLY_REPLACE_THIS)
+
+Additionally, if we modify a value in a list field we have to provide the index as seen in the example above. If the order changes or a new parameter is added to the beginning of the list, we have to take care to update the index. Otherwise, we update the wrong field.
+Remove a resource from rendering
+
+Sometimes we have defined resources in the base folder that shall be removed for specific overlays. Conditional or optional resources could be moved to their own base and be used only when needed.
+
+But if we cannot control the resources created by the base (e.g., if we link external resources we do not control) it would still be great if there was a way to remove a complete resource from rendering.
+
+Kustomize usually works by merging resource definitions, so it has no notion of deleting a resource, but it is possible with the help of the $patch: delete hint.
+
+Let’s say we have the following base:
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: myapp
+  labels:
+    name: myapp
+spec:
+  containers:
+  - name: myapp
+    image: app
+    ports:
+    - containerPort: 8080
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: myapp
+spec:
+  selector:
+    app: myapp
+  ports:
+  - port: 8080
+    targetPort: 8080
+
+base/app.yaml
+
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+- app.yaml
+
+base/kustomization.yaml
+
+In the overlay, we want to remove the service resource, and we can do that like this:
+
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+- ../base
+patches:
+- patch: |-
+    $patch: delete
+    apiVersion: v1
+    kind: Service
+    metadata:
+      name: myapp
+
+overlay/kustomization.yaml
+
+The hint will tell Kustomize to delete the resource instead of merging it. The result would be like this:
+
+> kustomize build
+
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    name: myapp
+  name: myapp
+spec:
+  containers:
+  - image: app
+    name: myapp
+    ports:
+    - containerPort: 8080
+
+The strategic merge patch can not only delete, but also replace and merge (with merge as default).
+
+Be careful with this feature as it may lead to an unintended output, and it can be complicated and error-prone.
+Reuse Kustomize configuration
+
+Sometimes we have to repeat ourselves when creating overlays, as we probably need similar configurations.
+
+Let’s say we have the following base/overlays structure:
+
+.
+├── base
+│   ├── deployment.yaml
+│   └── kustomization.yaml
+├── overlay-dev
+│   ├── kustomization.yaml
+│   └── service.yaml
+└── overlay-prod
+    ├── kustomization.yaml
+    └── service.yaml
+
+In the base a Pod resource is defined and each overlay additionally a service resource. Now if we want to set commonAnnotations the same in both overlays we have to put the following configuration in both kustomization.yaml files:
+
+commonAnnotations:
+  team: my-team
+
+We can not put it in the base, as the base configuration only alternates resources defined in base. So the service resources would not get the annotation.
+
+Copying is problematic because if we decide to add an additional annotation, we have to go through all overlays and add it there.
+
+Newer Kustomize versions have the feature to share parts of the configuration via components.
+
+Let’s create a configuration component that we can reuse for our example. We create a new folder holding our components:
+
+.
+├── base
+│   ├── deployment.yaml
+│   └── kustomization.yaml
+├── components
+│   └── common-annotations
+│       └── kustomization.yaml
+├── overlay-dev
+│   ├── kustomization.yaml
+│   └── service.yaml
+└── overlay-prod
+    ├── kustomization.yaml
+    └── service.yaml
+
+The common-annotations component looks like this:
+
+apiVersion: kustomize.config.k8s.io/v1alpha1
+kind: Component
+commonAnnotations:
+  team: my-team
+
+components/common-annotations/kustomization.yaml
+
+We can reference it in our overlays like this then:
+
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+- ../base
+- service.yaml
+components:
+- ../components/common-annotations
+
+overlay-dev/kustomization.yaml
+
+When we then extend the component with additional annotations, it will automatically be picked up by all overlays.
+
+Components can contain everything a normal Kustomize configuration can contain, such as:
+
+    image transformers
+    patches
+    additional resources
+    prefix and suffix
+
+Limit labels and annotations to specific resources or fields
+
+As we have seen in the first article, commonLabels changes not only the metadata.labels field, but also the selector fields of a service and deployment as described here.
+
+This can be problematic as the selectors of a deployment are immutable, so we cannot change them afterwards without deleting and re-applying the resource. Therefore, it is quite difficult to add additional labels later on. In many cases, we want the selector fields untouched anyway and only add labels to the resources metadata.labels.
+
+This can be achieved with the label feature, as we have more control about what shall be part of the selectors and what not. Let’s say we want to have one label which is only added to the metadata and an additional one which shall be added to the metadata and the selectors.
+
+The corresponding configuration would look like this:
+
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+labels:
+- pairs:
+    team: team-a
+- pairs:
+    branch: new-feature
+  includeSelectors: true
+resources:
+- app.yaml
+
+kustomization.yaml
+
+The team label will then only be added to the metadata, and the branch label will be added to both. With the following app:
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: myapp
+  labels:
+    name: myapp
+spec:
+  containers:
+  - name: myapp
+    image: app
+    ports:
+    - containerPort: 8080
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: myapp
+spec:
+  selector:
+    app: myapp
+  ports:
+  - port: 8080
+    targetPort: 8080
+
+app.yaml
+
+The output would then look like this:
+
+> kustomize build
+
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    branch: new-feature
+    team: team-a
+  name: myapp
+spec:
+  ports:
+  - port: 8080
+    targetPort: 8080
+  selector:
+    app: myapp
+    branch: new-feature
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    branch: new-feature
+    name: myapp
+    team: team-a
+  name: myapp
+spec:
+  containers:
+  - image: app
+    name: myapp
+    ports:
+    - containerPort: 8080
+
+The label feature still has one limitation. We cannot define to which resources the labels shall be added and to which not.
+
+To define just a subset of resources, we can then define an own LabelTransformer (the same works for annotations).
+
+Let’s say we want to add an annotation and a label, but only to the metadata and only the Pod resources, we can define our own transformers like this:
+
+apiVersion: builtin
+kind: LabelTransformer
+metadata:
+  name: notImportantHere
+labels:
+  team: team-a
+fieldSpecs:
+- kind: Pod
+  path: metadata/labels
+  create: true
+---
+apiVersion: builtin
+kind: AnnotationsTransformer
+metadata:
+  name: notImportantHere
+annotations:
+  team: team-a
+fieldSpecs:
+- kind: Pod
+  path: metadata/annotations
+  create: true
+
+transformers.yaml
+
+The name is irrelevant, but it defines the values for annotations and labels and additional one or more field specifications. The specification is the same as for other transformer configurations. create: true means that metadata.annotations or metadata.labels will be created if they do not exist.
+
+We then add it to our configuration:
+
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+transformers:
+- transformers.yaml
+resources:
+- app.yaml
+
+kustomization.yaml
+
+When we render the resources, we see that annotation and label is only added to the pod.
+
+> kustomize build
+apiVersion: v1
+kind: Service
+metadata:
+  name: myapp
+spec:
+  ports:
+  - port: 8080
+    targetPort: 8080
+  selector:
+    app: myapp
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  annotations:
+    team: team-a
+  labels:
+    name: myapp
+    team: team-a
+  name: myapp
+spec:
+  containers:
+  - image: app
+    name: myapp
+    ports:
+    - containerPort: 8080
+
+If nothing helps, patch it
+
+Kustomize supports json patches as a last resort if nothing of the features above help anymore. With JSON patches, we can:
+
+    add any field
+    replace any field
+    copy any field
+    move any field
+    remove any field
+
+One common need is when we want to modify a list field by, e.g., adding a new entry at the end of the list. This is normally not possible with overlays, as we have to redefine the full list in the overlay again.
+
+As an artificial example, let’s have a base with a Pod resource that defines a command argument --first. In an overlay, we want to extend the list of arguments with --first. The base pod.yaml could look like this:
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: myapp
+  labels:
+    name: myapp
+spec:
+  containers:
+  - name: myapp
+    image: app
+    args: ["--first"]
+
+base/pod.yaml
+
+And in the overlay like this:
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: myapp
+spec:
+  containers:
+  - name: myapp
+    args: ["--second"]
+
+overlay/pod.yaml
+
+If we render it, the result would be:
+
+> kustomize build
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    name: myapp
+  name: myapp
+spec:
+  containers:
+  - args:
+    - --second
+    image: app
+    name: myapp
+
+Kustomize can not merge lists by default, as it does not know how to. Shall the second argument be appended or added at the start? So if we go the traditional way with overlays, we would need to redefine all arguments defined in the base in the overlay.
+
+Again, if the base changes, we need to update all overlays as well. To avoid that, JSON patches can be used. First, we create a new file in the overlay containing all the patches.
+
+- op: add
+  path: /spec/containers/0/args/-
+  value: --second
+
+overlay/patch.yaml
+
+This is a JSON patch defined as in the standard. The minus at the end of the path means that the value shall be appended to the list. So, even if the length of the arguments changes in the base, it will just be added to the end.
+
+We then have to extend the configuration:
+
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+- ../base
+patchesJson6902:
+- target:
+    version: v1
+    kind: Pod
+    name: myapp
+  path: patch.yaml
+
+overlay/kustomization.yaml
+
+When we run this example, we get the following output:
+
+kustomize build
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    name: myapp
+  name: myapp
+spec:
+  containers:
+  - args:
+    - --first
+    - --second
+    image: app
+    name: myapp
+
+Shall I use these features?
+
+This article showed several features that are going beyond the simple scope of Kustomize and adding more dynamic elements and tools to the mix. All these features have their use-cases, but shall be used rarely and with care. Everything we add decreases the simplicity and readability we like from Kustomize.
+
+But sometimes we have no other choice, and then it is helpful to have something else up our sleeves. Otherwise, we would end up with a mix of different tools like yq and Kustomize and this is not a preferable setup.
+
+A list of all examples shown in this article can be found here. Enjoy
