@@ -14,6 +14,7 @@
 - [[https://github.com/caarlos0/domain_exporter][caarlos0/domain_exporter: Exports the expiration time of your domains as prometheus metrics.]]
 - [[https://github.com/caarlos0/fastcom-exporter][caarlos0/fastcom-exporter: Prometheus Fast.com exporter]]
 - [[https://github.com/caarlos0/speedtest-exporter][caarlos0/speedtest-exporter: Exports speedtest-cli metrics in the prometheus format]]
+- [[https://github.com/cloudflare/ebpf_exporter][cloudflare/ebpf_exporter: Prometheus exporter for custom eBPF metrics]]
 - [[https://github.com/cloudflare/pint][cloudflare/pint: Prometheus rule linter]]
 - [[https://github.com/containers/prometheus-podman-exporter#collectors][containers/prometheus-podman-exporter: Prometheus exporter for podman environments exposing containers, pods, images, volumes and networks information.]]
 - [[https://trstringer.com/quick-and-easy-prometheus-exporter/][Create a Quick and Easy Prometheus Exporter | Thomas Stringer]]
