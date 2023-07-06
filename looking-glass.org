@@ -1,6 +1,191 @@
+* Windows VM with GPU Passthrough, Part 1: Creating a basic Windows VM
+Apr 20, 2022
+Desktop
+9 minutes
 Quantum
-ProjectsDMOJAbout Guanzhong
+qt.ax/vg1
+
+Last time, we introduced a series on running a Windows VM with native-level graphics performance via GPU passthrough and integrating it seamlessly into your Linux desktop via Looking Glass. We start this journey by creating a basic Windows virtual machine, which will form the foundation of all future work.
+
+For this example, I decided to use Windows 11 for fun, since I did it quite a few times with Windows 10 already. However, given that Windows 11 is basically a renamed Windows 10 with some additional hardware requirements, there is not much of a difference anyway.
+
+On the Linux side, we will be using the standard QEMU/KVM setup, managing our virtual machines with libvirt. Let’s begin!
+Preparation
+
+No good journey can start without sufficient preparation. To start, you need to enable hardware-assisted virtualization in the UEFI firmware (commonly still called “BIOS”) if you haven’t already done so. This is buried in the settings under names like SVM, Intel VT-x, AMD-V, or just “virtualization”. Unfortunately, this is highly specific to your motherboard and I cannot provide more help. Once done, grep -oE 'vmx|svm' /proc/cpuinfo | sort -u should produce output.
+
+On the Linux side, you want to install the following packages (the names depend on the distribution, but I’ll use Debian as an example):
+
+    libvirt: a virtual machine management daemon
+    virt-manager: a GUI for libvirt
+    qemu-system-x86: an emulator capable of using KVM
+    ovmf: a UEFI firmware implementation
+    swtpm: a software TPM emulator (Windows 11 only)
+
+Once you have these packages, you’ll also need a Windows ISO. You can download this from Microsoft:
+
+    Windows 11
+    Windows 10
+
+For optimal VM performance, you’ll want to use virtio devices. These are designed for virtual machine use and have far less overhead than emulating real hardware. The Linux kernel usually contains drivers for these devices, but the same is not true for Windows. To have a good time, you should download this ISO file as well.
+
+You’ll also need a chunk of free disk space to store your virtual machine. Given the disk requirements of Windows, I would suggest at least 40 GB.
+Creating the Virtual Machine
+
+We start by launching virt-manager, and then
+→
+
+. You want a QEMU/KVM connection. If none exist, you should go back and add a connection to QEMU/KVM on the local machine.
+
+A screenshot of virt-manager's VM creation screen
+
+Then, continue and select the Windows ISO file (you likely want to use the
+
+option in the “Locate ISO media volume” dialog). It is okay if Windows 11 is detected as Windows 10 instead, as libvirt does not have a Windows 11 option at the time of writing.
+
+Once that’s done, you should decide how much RAM and CPU you want to give to the virtual machine. I would suggest at least 8 GB and 4 CPU cores if not more.
+
+You’ll then be prompted to configure the storage. To start, it’s probably the easiest to use a disk image. We can change this later into some more optimal form, e.g. an LVM volume, a full block device, or using VFIO to pass through an NVMe SSD. This will be explored in a later part.
+
+Then, in the last step of the wizard, you will be prompted to name the VM. At this point, you likely want to configure the network to something sane. I recommend that you start with the default NAT network, as that requires the least amount of effort to get working. Depending on your distro, this NAT network may not be running by default (you can check to see if it’s active in virsh net-list). If it’s not, you need to run virsh net-start default to get it running now, and virsh net-autostart default to get it running on startup. You may also need to install dnsmasq before it would work. For optimal performance, you can use bridge networking instead of NAT, but that is out of the scope for this series.
+
+A screenshot of virt-manager's final VM creation screen
+
+Then, remember to check the Customize configuration before install box before clicking
+
+, as we will be making some changes that would be very difficult to change later.
+
+Here are the changes that need to be done before we begin the installation:
+
+    In the “Overview” tab, change the firmware to 
+
+. This is necessary to enable Secure Boot to properly run Windows 11. On Windows 10, the plain OVMF_CODE_4M.fd would also work. Remember to
+your changes before you switch to a different tab. Note that some distributions do not come with OVMF_CODE_4M.ms.fd. Don’t panic! There is a way to bypass the TPM requirement. A screenshot of virt-manager's hardware overview screen
+In the “SATA Disk 1” tab, you want to change the disk bus to virtio for the best performance.
+In the NIC tab, you want to change the device model to virtio.
+Click the
+button, select “Storage” and select custom storage, then use then
+to select the virtio driver ISO. Remember to set the device type to CDROM and the bus type to SATA. A screenshot of virt-manager's add CD screen
+Finally, if you are running Windows 11, you want to add a TPM. Press
+
+    and select the TPM option, using the CRB model, the “emulated device” backend, and version 2.0.
+
+You are now ready to continue! Press
+
+to start the process.
+Installing Windows
+
+The virtual machine should boot. Press any key when prompted, and eventually, you will land on the Windows installer welcome screen:
+
+A screenshot of Windows installer welcome page
+
+Select the language and then click the
+
+button. Enter your product key if you have one, otherwise, click I don’t have a product key. Select the edition you want to install, read and agree to the license agreement, then select the custom installation type.
+
+A screenshot of Windows installer drive selection page
+
+You will notice that you can’t see any drives. This is because Windows doesn’t have the virtio driver. Click Load driver and browse to the amd64/win11 (or win10) directory under the virtio-win disc. Select viostor.inf and continue. You should now see an unallocated space. Select that to continue the installation.
+
+Wait a few minutes, and you’ll be prompted to select your country and keyboard layout:
+
+A screenshot of Windows keyboard selection page
+
+At this point, just follow on-screen instructions, except selecting
+and
+
+when asked about networking. This is because we haven’t installed the virtio network driver yet.
+
+Once that’s done, you should end up on the Windows desktop.
+No TPM / Secure Boot
+
+If you don’t have secure boot enabled, you’ll see this screen when installing Windows 11:
+
+A screenshot of no secure boot
+
+At this point, press Shift+F10, then run regedit.
+
+Under HKEY_LOCAL_MACHINE\SYSTEM\Setup, create a new key called LabConfig. Inside this new key, create the following DWORD values and set their values to 1: BypassTPMCheck, BypassRAMCheck, BypassSecureBootCheck.
+
+A screenshot of registry hack
+
+Now close regedit and the command prompt, go back one step, and click next. You can now continue the installation as usual.
+Installing Drivers
+
+In the start menu, search for “Device Manager” and launch it. You should see a bunch of “other devices” with no drivers. These are virtio devices.
+A screenshot of device manager showing other devices A screenshot of device manager showing display adapters
+
+For all these, as well as “Microsoft Basic Display Adapter” under “display adapters”, you want to update the drivers. To do this, right-click the device, select “update driver”, and then browse your computer for drivers (in the “Search for drivers in this location” section). Select the following directory under the virtio-win drive (most likely E:) based on the device:
+
+    For “Ethernet Controller”, select NetKVM\w11\amd64 (or NetKVM\w10\amd64 on Windows 10).
+    For “PCI Device”, select Balloon\w11\amd64 (or Balloon\w10\amd64 on Windows 10). Alternatively, you can ignore this device, since it is useless once we set up GPU passthrough and may harm performance. A future part will mention how to disable this device.
+    For “PCI Simple Communications Controller”, select vioserial\w11\amd64 (or vioserial\w10\amd64 on Windows 10).
+    For “Microsoft Basic Display Adapter”, select qxldod\win11\amd on Windows 11 if it exists (it doesn’t at the time of writing), otherwise select qxldod\win10\amd.
+
+Then press
+
+. Windows should find the drivers and install them. If prompted, reboot.
+
+Once this is done, you should be able to change the screen resolution and enjoy a proper desktop experience.
+
+A screenshot of completed Windows desktop
+
+At this point, your basic Windows virtual machine is complete. Next time, we shall discuss the process of passing a GPU through to the virtual machine.
+You may also be interested in…
 Windows VM with GPU Passthrough, Part 3: Setting up Looking Glass
+Last time, we learned how to passthrough a GPU. This time, we'll learn how to set up Looking Glass to integrate it into the Linux desktop.
+September 18, 2022
+Windows VM with GPU Passthrough, Part 2: Passing through PCIe Devices
+Last time, we learned how to create a Windows virtual machine. This time, we shall examine how we might give it a real GPU.
+May 12, 2022
+Windows VM with GPU Passthrough, Part 0: Introduction
+This post introduces a new series about running a Windows VM with native-level graphics performance with GPU passthrough and integrating it into your Linux desktop with Looking Glass.
+April 18, 2022
+About me
+
+My name is Guanzhong Chen, also known by my username, quantum.
+
+I am a software developer at Stripe, a software engineering graduate from the University of Waterloo, and co-founder of DMOJ, the most popular programming contest platform in Canada.
+
+    me@quantum5.ca
+    quantum5
+    quantum5
+    quantum
+    3DC5 5F49 1A67 0BED
+    RSS Feed
+
+Support me
+
+If you like my content and would like to show your appreciation, feel free to support me and offset some of my costs:
+
+    quantum5
+    quantum5
+    quantum
+    quantum2048
+
+Categories
+
+    Code
+    Desktop
+    Electronics
+    Science
+    Security
+    Sysadmin
+    Year Review
+
+Archives
+
+    2023
+    2022
+    2021
+    2020
+    2019
+    2018
+    2017
+
+Copyright © 2017 – 2023 Guanzhong Chen. All Rights Reserved. Served from Amsterdam, the Netherlands.
+
+* Windows VM with GPU Passthrough, Part 3: Setting up Looking Glass
 Sep 18, 2022
 Desktop
 13 minutes
