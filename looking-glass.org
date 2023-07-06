@@ -1,0 +1,321 @@
+Quantum
+ProjectsDMOJAbout Guanzhong
+Windows VM with GPU Passthrough, Part 3: Setting up Looking Glass
+Sep 18, 2022
+Desktop
+13 minutes
+Quantum
+qt.ax/vg3
+
+Last time, we discussed how we might add a real GPU to our Windows virtual machine. Today, we’ll discuss how to view this virtual machine without using a dedicated monitor or switching inputs, but instead integrating it into the Linux desktop like a normal application.
+
+There are three steps:
+
+    Configuring the virtual machine.
+    Installing the Looking Glass client on the host machine.
+    Setting up Looking Glass host application on the virtual machine.
+
+Without further ado, let’s begin.
+Configuring the virtual machine
+
+To begin, we must prepare the virtual machine for optimal performance. The process here is beyond what virt-manager can do, so we instead resort to editing the XML via virsh. It is recommended that you make the changes in each step separately, as virsh validates the XML but gives you really awful error messages.
+
+To edit the XML configuration, run virsh edit [vm name]. In our example, the VM is called win11, so we run virsh edit win11. It is worth noting that most of these optimizations benefit all virtual machines.
+Step 1: Disable the memory balloon
+
+The memory balloon doesn’t work while a GPU is passed through but nevertheless carries a performance penalty. For obvious reasons, we remove it.
+
+To do this, search the XML for <memballon. It might look like this:
+
+    <memballoon model='virtio'>
+      <address type='pci' domain='0x0000' bus='0x05' slot='0x00' function='0x0'/>
+    </memballoon>
+
+Deleting this is insufficient, as virsh will simply add it back. Instead, we replace the entire block with:
+
+    <memballoon model='none'/>
+
+Step 2: Enable all Hyper-V enlightenments
+
+By default, the configuration file doesn’t have all possible Hyper-V optimizations (“enlightenments”) enabled. We should enable all of it. In the XML, search for <features>.
+
+For example, virt-manager created this block for me:
+
+  <features>
+    <acpi/>
+    <apic/>
+    <hyperv mode='custom'>
+      <relaxed state='on'/>
+      <vapic state='on'/>
+      <spinlocks state='on' retries='8191'/>
+    </hyperv>
+    <vmport state='off'/>
+  </features>
+
+We replace it with something like this:
+
+  <features>
+    <acpi/>
+    <apic/>
+    <hyperv mode='custom'>
+      <relaxed state='on'/>
+      <vapic state='on'/>
+      <spinlocks state='on' retries='8191'/>
+      <vpindex state='on'/>
+      <synic state='on'/>
+      <stimer state='on'>
+        <direct state='on'/>
+      </stimer>
+      <reset state='on'/>
+      <vendor_id state='on' value='quantum5.ca'/>
+      <frequencies state='on'/>
+      <reenlightenment state='on'/>
+      <tlbflush state='on'/>
+      <ipi state='on'/>
+      <evmcs state='off'/>
+    </hyperv>
+    <kvm>
+      <hidden state='on'/>
+    </kvm>
+    <vmport state='off'/>
+    <ioapic driver='kvm'/>
+  </features>
+
+The vendor_id string ensures certain GPU drivers do not detect our virtual machine and disable some features. Please feel free to replace it with another string that’s no longer than 12 characters.
+Step 3: Enable CPU pinning
+
+This is crucial to system performance, as the kernel by default will switch virtual CPU cores between threads, resulting in poor cache performance as the scheduler inside the virtual machine is unaware of this.
+
+This is also not easy. Essentially, you want to select a real core for each virtual core the VM has. However, if your physical hardware has SMT (a.k.a hyperthreading), you should instead define twice vCPUs in the VM. You can check for SMT by running lscpu-e and see if the values in the CORE column are duplicated.
+
+For example, if you wish your virtual machine to have 4 real CPU cores, you want to select 4 distinct core numbers from lscpu -e and pick all the CPU numbers associated with those cores. Then, you create a <cputune> block like this and place it immediately before </domain>:
+
+  <cputune>
+    <vcpupin vcpu='0' cpuset='[cpu number here]'/>
+    <vcpupin vcpu='1' cpuset='[cpu number here]'/>
+    <vcpupin vcpu='2' cpuset='[cpu number here]'/>
+    <vcpupin vcpu='3' cpuset='[cpu number here]'/>
+    ...
+  </cputune>
+
+Note that if you have SMT, it is important that vCPU 0 and vCPU 1 be on the same physical core, and vCPU 2 and 3, and so on.
+
+On recent AMD, if your CPU has multiple core complexes (CCXes), you want to ensure that the cores you select don’t unnecessarily straddle between CCXes. The exact detail is specific to your CPU model. You can identify these by looking at the L3 column in lscpu -e.
+
+For example, I am passing through 6 cores from the second CCX (L3=1) of my Ryzen 9 5950X (with SMT) to my VM. My lscpu -e looks like this:
+
+CPU NODE SOCKET CORE L1d:L1i:L2:L3 ONLINE    MAXMHZ    MINMHZ
+  0    0      0    0 0:0:0:0          yes 5083.3979 2200.0000
+  1    0      0    1 1:1:1:0          yes 5083.3979 2200.0000
+  2    0      0    2 2:2:2:0          yes 5083.3979 2200.0000
+  3    0      0    3 3:3:3:0          yes 5083.3979 2200.0000
+  4    0      0    4 4:4:4:0          yes 5083.3979 2200.0000
+  5    0      0    5 5:5:5:0          yes 5083.3979 2200.0000
+  6    0      0    6 6:6:6:0          yes 5083.3979 2200.0000
+  7    0      0    7 7:7:7:0          yes 5083.3979 2200.0000
+  8    0      0    8 8:8:8:1          yes 5083.3979 2200.0000
+  9    0      0    9 9:9:9:1          yes 5083.3979 2200.0000
+ 10    0      0   10 10:10:10:1       yes 5083.3979 2200.0000
+ 11    0      0   11 11:11:11:1       yes 5083.3979 2200.0000
+ 12    0      0   12 12:12:12:1       yes 5083.3979 2200.0000
+ 13    0      0   13 13:13:13:1       yes 5083.3979 2200.0000
+ 14    0      0   14 14:14:14:1       yes 5083.3979 2200.0000
+ 15    0      0   15 15:15:15:1       yes 5083.3979 2200.0000
+ 16    0      0    0 0:0:0:0          yes 5083.3979 2200.0000
+ 17    0      0    1 1:1:1:0          yes 5083.3979 2200.0000
+ 18    0      0    2 2:2:2:0          yes 5083.3979 2200.0000
+ 19    0      0    3 3:3:3:0          yes 5083.3979 2200.0000
+ 20    0      0    4 4:4:4:0          yes 5083.3979 2200.0000
+ 21    0      0    5 5:5:5:0          yes 5083.3979 2200.0000
+ 22    0      0    6 6:6:6:0          yes 5083.3979 2200.0000
+ 23    0      0    7 7:7:7:0          yes 5083.3979 2200.0000
+ 24    0      0    8 8:8:8:1          yes 5083.3979 2200.0000
+ 25    0      0    9 9:9:9:1          yes 5083.3979 2200.0000
+ 26    0      0   10 10:10:10:1       yes 5083.3979 2200.0000
+ 27    0      0   11 11:11:11:1       yes 5083.3979 2200.0000
+ 28    0      0   12 12:12:12:1       yes 5083.3979 2200.0000
+ 29    0      0   13 13:13:13:1       yes 5083.3979 2200.0000
+ 30    0      0   14 14:14:14:1       yes 5083.3979 2200.0000
+ 31    0      0   15 15:15:15:1       yes 5083.3979 2200.0000
+
+Therefore, my <cputune> block looks like this:
+
+  <cputune>
+    <vcpupin vcpu='0' cpuset='8'/>
+    <vcpupin vcpu='1' cpuset='24'/>
+    <vcpupin vcpu='2' cpuset='9'/>
+    <vcpupin vcpu='3' cpuset='25'/>
+    <vcpupin vcpu='4' cpuset='10'/>
+    <vcpupin vcpu='5' cpuset='26'/>
+    <vcpupin vcpu='6' cpuset='11'/>
+    <vcpupin vcpu='7' cpuset='27'/>
+    <vcpupin vcpu='8' cpuset='12'/>
+    <vcpupin vcpu='9' cpuset='28'/>
+    <vcpupin vcpu='10' cpuset='13'/>
+    <vcpupin vcpu='11' cpuset='29'/>
+  </cputune>
+
+Note that if you are changing the number of cores, you also want to change the <vcpu> element to reflect this:
+
+<vcpu placement='static'>12</vcpu>
+
+You also want to set the topology under the CPU element and set the mode to host-passthrough (replace the topology with your own):
+
+  <cpu mode='host-passthrough' check='none' migratable='off'>
+    <topology sockets='1' dies='1' cores='6' threads='2'/>
+    <cache mode='passthrough'/>
+    <feature policy='require' name='topoext'/>
+  </cpu>
+
+On AMD, <feature policy='require' name='topoext'/> allows SMT to work. On Intel, remove that line.
+
+For further details, you can read the Arch Wiki page.
+Step 4: Create a shared memory device
+
+(Note that this is specific to Looking Glass.)
+
+We need to create a shared memory device for Looking Glass to send the VM’s framebuffer to the host machine. The size must be a power of two, but the exact size is dependent on the resolution you want to use.
+
+Let w be the width and h be the height of the framebuffer. Let b, the number of bytes per pixel, be 4 unless you have HDR enabled, in which case it should be 8. (At the time of writing, HDR is pointless as Linux can’t display it.)
+
+Then, the required size in megabytes should be:
+w×h×b×21 048 576+10
+
+Round this up to the nearest power of two.
+
+Then, before the </devices>, add the following block, replacing the size placeholder:
+
+    <shmem name='looking-glass'>
+      <model type='ivshmem-plain'/>
+      <size unit='M'>[power of two size here]</size>
+    </shmem>
+
+By default, QEMU will create this file as its user and deny your user access. You can workaround this by creating the file before you start the VM and granting QEMU write access via the group. For example, you can do this with systemd-tmpfiles by creating /etc/tmpfiles.d/10-looking-glass.conf (replacing user with your username and kvm with the group that libvirt uses for qemu):
+
+f /dev/shm/looking-glass 0660 user kvm -
+
+Alternatively, you can run the following command after starting the VM (every single time):
+
+sudo chown $USER /dev/shm/looking-glass 
+sudo chmod 660 /dev/shm/looking-glass
+
+Step 5: Use virtio input devices and disable the tablet input
+
+In the XML, find the <input> elements. There should be some like the following:
+
+    <input type='tablet' bus='usb'>
+      <address type='usb' bus='0' port='1'/>
+    </input>
+    <input type='mouse' bus='ps2'/>
+    <input type='keyboard' bus='ps2'/>
+
+Looking Glass doesn’t interact well with tablet devices, so you should replace it with a virtio mouse. While you are at it, replace the keyboard with a virtio model as it also helps with issues like key repeating. Don’t bother removing the PS/2 devices, as virsh will add them back in.
+
+It should look something like this when done:
+
+    <input type='mouse' bus='ps2'/>
+    <input type='keyboard' bus='ps2'/>
+    <input type='mouse' bus='virtio'/>
+    <input type='keyboard' bus='virtio'/>
+
+Step 6: Additional optimizations
+
+There are things like hugepages that could benefit performance, but are rather non-trivial to set up. I may write about these later. If you are interested, you can try to read the Arch Wiki page or Debian Wiki page. You can also visit the VFIO Discord, especially the #kvm-support channel.
+Installing the Looking Glass client
+
+We can now install the Looking Glass client. Simply follow these steps:
+
+    Go to the downloads page. Please download the source code for the latest stable release if it’s B6 or newer. (At the time of writing, B6 has not been released, but it has significant improvements that make the setup much easier.) Otherwise, download that of the latest bleeding-edge build.
+    Unzip the source code tarball where convenient, e.g.
+
+    quantum@[redacted]:~/lg-test$ tar xzf ~/Downloads/looking-glass-B5-433-3b16fb1b.tar.gz
+
+    Switch to the client subdirectory in the unpacked source tree, create a build subdirectory, and go inside:
+
+    quantum@[redacted]:~/lg-test$ cd looking-glass-B5-433-3b16fb1b/client/
+    quantum@[redacted]:~/lg-test/looking-glass-B5-433-3b16fb1b/client$ mkdir build
+    quantum@[redacted]:~/lg-test/looking-glass-B5-433-3b16fb1b/client$ cd build/
+
+    Please install the build dependencies. If you are using the stable release, it’s here. Otherwise, use this link. If you are using a non-Debian-based distribution, please check this wiki page instead.
+    Now, simply run the following commands to build Looking Glass:
+
+    quantum@[redacted]:~/lg-test/looking-glass-B5-433-3b16fb1b/client/build$ cmake ..
+    ...
+    -- Configuring done
+    -- Generating done
+    -- Build files have been written to: /home/quantum/lg-test/looking-glass-B5-433-3b16fb1b/client/build
+    quantum@[redacted]:~/lg-test/looking-glass-B5-433-3b16fb1b/client/build$ make -j$(nproc)
+    ...
+    [100%] Linking CXX executable looking-glass-client
+    [100%] Built target looking-glass-client
+
+    At this point, you can run ./looking-glass-client or make install to put it somewhere more convenient.
+
+To use the Looking Glass client, first start the VM, e.g. via virsh start win11. Then, run the client via ./looking-glass-client (or looking-glass if you make installed it). You should see the Windows desktop at this point. However, there will be a broken monitor icon on the top-right, indicating that we are just using spice video (the same thing that virt-manager uses).
+
+To interact with the virtual machine, press the ScrollLock key. If you don’t have this key, you can pass the -m KEY_RIGHTCTRL flag to change it to the right Ctrl. Pass any invalid value to see the full list.
+Setting up the Looking Glass host application
+
+In the virtual machine, navigate to the Looking Glass downloads page and download the “Windows Host Application” for the exact same version as the client you downloaded earlier. After extracting the zip file, run looking-glass-host-setup.exe. Follow the setup wizard. When complete, the broken monitor icon will disappear and everything will just work.
+
+You can now press Windows+P to cycle through the modes to disable output to the virtual screen that we were using earlier. (For me, the “PC screen only” option worked.) Alternatively, you can disable the Red Hat QXL controller under Display adapters in Device Manager.
+
+And that’s it, Looking Glass now works. There is just one last step to complete the experience.
+Installing drivers for virtio input devices
+
+The procedure here is exactly the same as how we installed the other drivers in the first part. The drivers in question are under \vioinput in the virtio driver CD. Update the drivers of the PCI Keyboard Controller and the PCI Mouse Controller, and you are done!
+
+At this point, your virtual machine is basically complete and you can play games on Windows inside a window on Linux with perfect desktop integration. Enjoy!
+You may also be interested in…
+Windows VM with GPU Passthrough, Part 2: Passing through PCIe Devices
+Last time, we learned how to create a Windows virtual machine. This time, we shall examine how we might give it a real GPU.
+May 12, 2022
+Windows VM with GPU Passthrough, Part 1: Creating a basic Windows VM
+Last time, we introduced a series on running a Windows VM with native-level graphics performance. We start by creating a basic Windows virtual machine.
+April 20, 2022
+Windows VM with GPU Passthrough, Part 0: Introduction
+This post introduces a new series about running a Windows VM with native-level graphics performance with GPU passthrough and integrating it into your Linux desktop with Looking Glass.
+April 18, 2022
+About me
+
+My name is Guanzhong Chen, also known by my username, quantum.
+
+I am a software developer at Stripe, a software engineering graduate from the University of Waterloo, and co-founder of DMOJ, the most popular programming contest platform in Canada.
+
+    me@quantum5.ca
+    quantum5
+    quantum5
+    quantum
+    3DC5 5F49 1A67 0BED
+    RSS Feed
+
+Support me
+
+If you like my content and would like to show your appreciation, feel free to support me and offset some of my costs:
+
+    quantum5
+    quantum5
+    quantum
+    quantum2048
+
+Categories
+
+    Code
+    Desktop
+    Electronics
+    Science
+    Security
+    Sysadmin
+    Year Review
+
+Archives
+
+    2023
+    2022
+    2021
+    2020
+    2019
+    2018
+    2017
+
+Copyright © 2017 – 2023 Guanzhong Chen. All Rights Reserved. Served from Amsterdam, the Netherlands.
