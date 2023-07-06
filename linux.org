@@ -901,3 +901,22 @@ Your computer reboots immediately.
 
 - [[https://www.youtube.com/playlist?list=PLypxmOPCOkHXbJhUgjRaV2pD9MJkIArhg][C Programming in Linux Tutorial - YouTube]]
 
+* ChatGPT
+
+** linux reset mtu cache
+
+In Linux, you can reset the MTU (Maximum Transmission Unit) cache by flushing the network configuration. This will clear any cached MTU values and force the system to reacquire the correct MTU settings.
+
+To reset the MTU cache in Linux, you can follow these steps:
+
+    Open a terminal or shell.
+
+    Run the following command as root or with sudo privileges to flush the network configuration:
+
+    sudo ip route flush cache
+
+    After running this command, the MTU cache should be cleared, and the system will start using the default MTU settings again.
+
+Keep in mind that resetting the MTU cache may temporarily disrupt network connectivity on your system, so it's advisable to perform this operation during a maintenance window or at a time when network downtime is acceptable.
+
+Please note that the specific commands or methods might vary slightly depending on the Linux distribution and version you are using.
