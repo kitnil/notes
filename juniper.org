@@ -613,3 +613,17 @@ Description: web29
 
 - [[https://github.com/ckishimo/juniper_display_set][ckishimo/juniper_display_set: Script to translate a Junos configuration file into a list of 'set' commands]]
 - [[https://github.com/zengxinhui/juniper_display_set][zengxinhui/juniper_display_set: This script converts standard Juniper config into a list of 'set' commands which you can use to configure a Juniper device]]
+
+* ChatGPT
+
+** To clear the ARP cache in Junos:
+
+    Enter operational mode on the Junos device by typing cli from configuration mode.
+
+    Run the following command to clear the ARP cache:
+
+    clear arp
+
+Clearing the ARP cache can sometimes resolve connectivity issues related to MTU settings.
+
+Remember, before making any changes to your network devices, it's recommended to schedule maintenance windows and exercise caution to minimize any impact on network connectivity.
