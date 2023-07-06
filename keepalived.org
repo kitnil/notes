@@ -99,3 +99,21 @@ To find all virtual router IDs (VRIDs) in a network that is using the Virtual Ro
     Dynamic Host Configuration Protocol (DHCP): In some cases, VRRP routers may be configured as DHCP servers for specific subnets. By inspecting the DHCP lease information on client devices, you may find the IP address of the default gateway, which could correspond to a VRRP router. Then, you can access that router and retrieve the VRID details.
 
 Remember that the specific method to discover VRIDs will depend on your network infrastructure, the management capabilities of your devices, and the tools at your disposal. It's important to consult the documentation or support resources for your networking equipment and related software to find the most appropriate and accurate method for your environment.
+
+** Show me nmap example how to find all virtual router id in a network.
+
+To find all Virtual Router IDs (VRIDs) in a network using Nmap, you can utilize the NSE (Nmap Scripting Engine) scripts specific to the Cisco HSRP protocol. Here's an example command:
+
+nmap -p 1985 --script=hsrp-v2-info <target IP range>
+
+Let's break down the command:
+
+    nmap is the command-line tool itself.
+    -p 1985 specifies that we are targeting port 1985, which is the default port used by HSRP (Hot Standby Router Protocol).
+    --script=hsrp-v2-info instructs Nmap to use the "hsrp-v2-info" script from its NSE script library.
+
+Replace <target IP range> with the desired IP range or specific IP addresses you want to scan.
+
+Once executed, Nmap will send HSRP-specific requests to each target and retrieve information about the Virtual Router IDs for any devices running HSRP. The results will indicate the discovered VRIDs along with other relevant details.
+
+Note: Ensure that you have permission to scan the network and comply with any legal and ethical guidelines when performing network scanning activities.
