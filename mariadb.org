@@ -496,3 +496,25 @@ Plugin 'InnoDB' init function returned error.130102 9:33:01 [ERROR] Plugin
 
 Осторожно. Если у вас уже были таблице с InnoBD - они могут
 пострадать. Делайте бэкап данных всегда!
+
+* ChatGPT
+
+** mariadb galera replication vs semi-synchronous
+
+MariaDB Galera Replication and semi-synchronous replication are two different approaches to achieving high availability and data consistency in a MariaDB database.
+
+    MariaDB Galera Replication: Galera is a synchronous multi-master replication solution for MariaDB that allows you to create a cluster of database nodes that work together in a peer-to-peer fashion. Each node in the cluster acts as a primary node, accepting write operations, and those writes are automatically propagated to other nodes in the cluster. This ensures that all nodes have an identical copy of the data, providing both high availability and synchronous data replication.
+
+    Semi-Synchronous Replication: Semi-synchronous replication is a feature available in MariaDB (as well as MySQL) that provides a compromise between synchronous and asynchronous replication. In semi-synchronous replication, after receiving a write transaction, the master node waits until at least one replica has acknowledged that it received and applied the changes before acknowledging the commit to the client. This provides stronger durability guarantees than asynchronous replication because there is less chance of data loss, but it doesn't provide the same level of strict consistency as synchronous replication.
+
+In summary, MariaDB Galera Replication is a synchronous multi-master replication solution that ensures all nodes in the cluster have an identical copy of the data with strict consistency. On the other hand, semi-synchronous replication is a feature within MariaDB that provides a middle ground between synchronous and asynchronous replication, offering better durability guarantees compared to pure asynchronous replication but not achieving the same level of strict consistency as synchronous replication.
+
+** What is minimal amount of nodes for mariadb semi-synchronous replication?
+
+In MariaDB, the minimal amount of nodes required for semi-synchronous replication is two nodes: one master node and at least one replica node.
+
+The master node is where write transactions are performed, and the replica node(s) receive and apply those changes asynchronously. With semi-synchronous replication enabled, the master node waits for at least one replica to acknowledge the receipt and application of the changes before acknowledging the commit to the client.
+
+Having a minimum of two nodes is necessary because if there is only one replica, it won't be possible to confirm the acknowledgment from at least one replica, which is a requirement for semi-synchronous replication. Therefore, you need at least one replica in addition to the master node for semi-synchronous replication to work.
+
+It's worth noting that while two nodes fulfill the minimum requirement, having more replica nodes can provide additional redundancy and scalability benefits. More replicas distribute the load and provide fault tolerance in case any of the nodes fail. Additionally, having multiple replicas allows for better read scalability by offloading read traffic to the replicas, thus not impacting the performance of the master node.
