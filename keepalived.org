@@ -85,3 +85,17 @@ Keep in mind that running multiple instances of Keepalived can increase complexi
     The notification messages sent by Keepalived when a transition occurs can be sent over SMTP (Simple Mail Transfer Protocol) on TCP port 25, or over SNMP traps on UDP port 162.
 
 It's important to note that these ports can be customized in the Keepalived configuration file, so the actual ports used may vary depending on the configuration. Additionally, Keepalived may use other ports depending on the specific features and configuration options used.
+
+** How to find all virtual router id in a network?
+
+To find all virtual router IDs (VRIDs) in a network that is using the Virtual Router Redundancy Protocol (VRRP), you can use various methods depending on your network environment and tools available. Here are a few approaches:
+
+    Network Device Management Interface: If you have access to the management interface of the routers participating in VRRP, you can log in to each device individually and check their configuration or operational status. Look for VRRP-related configurations and identify the VRID values assigned to each router. The exact commands or steps may vary based on the router vendor and operating system.
+
+    Network Monitoring Tools: Utilize network monitoring tools that support VRRP monitoring and discovery. These tools can scan the network, detect VRRP-enabled routers, and provide information about the associated VRIDs. Examples of such tools include Nagios, Zabbix, PRTG Network Monitor, or SolarWinds Network Performance Monitor.
+
+    Network Scanning Utilities: You can use network scanning utilities like Nmap or Angry IP Scanner to scan the network and identify devices running VRRP. These tools can reveal the IP addresses and open ports associated with VRRP-enabled routers. Once you obtain the IP addresses, you can connect to each device individually and retrieve the VRID information.
+
+    Dynamic Host Configuration Protocol (DHCP): In some cases, VRRP routers may be configured as DHCP servers for specific subnets. By inspecting the DHCP lease information on client devices, you may find the IP address of the default gateway, which could correspond to a VRRP router. Then, you can access that router and retrieve the VRID details.
+
+Remember that the specific method to discover VRIDs will depend on your network infrastructure, the management capabilities of your devices, and the tools at your disposal. It's important to consult the documentation or support resources for your networking equipment and related software to find the most appropriate and accurate method for your environment.
