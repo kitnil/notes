@@ -999,6 +999,7 @@ the new kernel into memory: =systemctl kexec=.
 - [[http://people.tamu.edu/~luke.adams/doxygen-nixpkgs/strings_8nix.html][nixpkgs builtins: lib/strings.nix File Reference]]
 - [[https://nixos.mayflower.consulting/blog/2021/01/28/nextcloud-stateversion/][Safe service upgrades using system.stateVersion]]
 - [[https://nixos.org/manual/nix/stable/installation/installing-docker.html][Using Nix within Docker]]
+- [[https://mhwombat.codeberg.page/nix-book/][Wombat’s Book of Nix]]
 
 ** callPackage
   - [[https://ops.functionalalgebra.com/2018/04/18/inspecting-nix-lambda-named-arguments/][Inspecting Nix lambda function named arguments · Nix Cookbook]]
