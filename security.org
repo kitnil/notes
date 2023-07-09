@@ -162,10 +162,10 @@
 - [[https://github.com/bearer/bearer][Bearer/bearer: Code security scanning tool (SAST) to discover, filter and prioritize security and privacy risks.]]
 
 * Tools
-- [[https://github.com/tr3ss/gofetch][tr3ss/gofetch: This could have been a bash one-liner but guess what. It's a small Go tool that lists the trending CVEs from cvetrends.com]]
-- [[https://github.com/lkarlslund/ldapnomnom][lkarlslund/ldapnomnom: Anonymously bruteforce Active Directory usernames from Domain Controllers by abusing LDAP Ping requests (cLDAP)]]
-- [[https://github.com/Yelp/detect-secrets][Yelp/detect-secrets: An enterprise friendly way of detecting and preventing secrets in code.]]
 - [[https://github.com/greenbone][Greenbone - Open Source Vulnerability Management]]
+- [[https://github.com/lkarlslund/ldapnomnom][lkarlslund/ldapnomnom: Anonymously bruteforce Active Directory usernames from Domain Controllers by abusing LDAP Ping requests (cLDAP)]]
+- [[https://github.com/tr3ss/gofetch][tr3ss/gofetch: This could have been a bash one-liner but guess what. It's a small Go tool that lists the trending CVEs from cvetrends.com]]
+- [[https://github.com/Yelp/detect-secrets][Yelp/detect-secrets: An enterprise friendly way of detecting and preventing secrets in code.]]
 
 * totp
 - [[https://github.com/susam/mintotp][susam/mintotp: Minimal TOTP generator in 20 lines of Python]]
