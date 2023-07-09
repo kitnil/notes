@@ -4,9 +4,11 @@
 #+title: Languages
 
 - [[id:8e21fad4-421b-4632-8eab-4127513f1560][Bash]]
-- [[https://github.com/bazelbuild/starlark][bazelbuild/starlark: Starlark Language]]
 - [[id:290f656a-28f7-483e-9a4c-d47b5d19682e][C]]
 - [[id:de57e9fc-a045-41a7-9af1-90b7b0d55377][C++]]
+- Configuration languages
+  - [[https://github.com/bazelbuild/starlark][bazelbuild/starlark: Starlark Language]]
+  - [[https://github.com/kcl-lang/kcl][kcl-lang/kcl: A constraint-based record & functional language mainly used in configuration and policy scenarios.]]
 - [[id:b0e58ae5-d533-447b-9114-d8ffe0cc7845][Erlang]]
 - [[id:1b16c60b-824b-46d2-a15e-a6942a61b1f2][Groovy]]
 - [[id:9fcb7af5-0620-4558-b4f8-c7d9d469da5a][Haskell]]
