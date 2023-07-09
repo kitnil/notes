@@ -7,7 +7,6 @@
 - [[https://github.com/CeresDB/ceresdb][CeresDB/ceresdb: CeresDB is a high-performance, distributed, schema-less, cloud native time-series database that can handle both time-series and analytics workloads.]]
 - [[https://github.com/codenotary/immudb][codenotary/immudb: immudb - immutable database based on zero trust, SQL and Key-Value, tamperproof, data change history]]
 - [[https://mickael.kerjean.me/2016/04/08/database-cheat-sheet/][Database Cheat Sheet]]
-- [[https://github.com/datafold/data-diff][datafold/data-diff: Compare tables within or across databases]]
 - [[https://github.com/dbgate/dbgate][dbgate/dbgate: Database manager for MySQL, PostgreSQL, SQL Server, MongoDB, SQLite and others. Runs under Windows, Linux, Mac or as web application]]
 - [[https://holistic.dev/][DB OPTIMIZATION SERVICE - Holistic.dev]]
 - [[https://github.com/delta-io/delta][delta-io/delta: An open-source storage framework that enables building a Lakehouse architecture with compute engines including Spark, PrestoDB, Flink, Trino, and Hive and APIs for Scala, Java, Rust, Ruby, and Python.]]
@@ -32,3 +31,191 @@
 - [[https://github.com/exist-db/exist/][eXist-db/exist: eXist Native XML Database and Application Platform]]
 - [[https://github.com/openlink/virtuoso-opensource][openlink/virtuoso-opensource: Virtuoso is a high-performance and scalable Multi-Model RDBMS, Data Integration Middleware, Linked Data Deployment, and HTTP Application Server Platform]]
 - [[https://github.com/PostgREST/postgrest][PostgREST/postgrest: REST API for any Postgres database]]
+
+* [[https://github.com/datafold/data-diff][datafold/data-diff: Compare tables within or across databases]]
+
+Validate data replication pipelines with data-diff
+
+Learn to replicate data from Postgres to Snowflake with Airbyte, and compare replicated data with data-diff.
+Madison Schott
+Published on Nov 25, 2022
+What is data-diff?
+Replicate data from Postgres to Snowflake with Airbyte
+Validate the replication process with data-diff
+Conclusion 
+
+There are many different reasons why you may want to replicate your data. I’ve personally replicated databases in order to move them to a different region, use them as a testing environment and combine it with other sources in a data warehouse. The reasons are endless! 
+
+With data replication often comes a painful validation process. You need to ensure your data was replicated accurately and all of it is securely stored in the new location. Data validation is the process of ensuring that the replicated data is correct and complete in the destination. Validation may look like writing aggregate queries to check whether certain data groups match or directly comparing values row by row. As an analytics engineer, this is probably one of my least favorite parts of the job. It’s tedious and time-consuming and doesn’t guarantee you won’t miss something important. 
+
+Often times something during the replication process can cause source data and its destination to not completely sync. I’ve seen the following occur:
+
+    replication jobs using incremental replication halt midway leading to data missing in the destination
+    replication jobs where changes in data at the source aren’t reflected downstream, causing major discrepancies
+
+Luckily, there is now an easier way to ensure these problems don’t go undetected.  
+What is data-diff?
+
+Data-diff is an open-source tool created by Datafold that allows you to compare tables between relational databases and data warehouses. It efficiently compares all of your rows for you, without you having to do so manually. It does so by splitting the tables in each database into small segments and then checksumming each segment. When the checksums aren’t equal, it divides the segment into smaller segments, checksumming those until getting to the differing row(s).
+
+I recently started using it in replace of my manual validation process and it’s saved me hours' worth of work. Not to mention it’s way more accurate! Because of the checksum approach, its performance has a magnitude of count(*) when there are little or no variations between tables while still outputting the differing rows. Data-diff catches discrepancies in your datasets before they have the opportunity to manifest downstream. 
+Replicate data from Postgres to Snowflake with Airbyte
+
+In this article, I’m going to walk through how to replicate data from a Postgres database hosted in AWS to Snowflake using Airbyte. This is common when wanting a copy of a database for analytics purposes when you don’t want to slow down database performance. 
+
+First, we are going to start by setting up our Postgres source and Snowflake destination within Airbyte.
+Set up your Postgres source
+
+On Airbyte Cloud or Airbyte Open Source, click “new connection”. This will bring you to a screen where you can select your data source. Choose “Postgres” as your source type.
+
+Now you will be brought to a screen where you need to enter some specific information about your Postgres database. This includes host, port, database name, and a list of the schemas you wish to sync. 
+
+I kept the default port and added my database named `development`, `customers` schema, and the login information for my Airbyte user. It is best practice to create users specific to the tools you are connecting to your database.
+Set up your Snowflake destination
+
+Now let’s set up our Snowflake destination where we will be replicating our Postgres data to. Start by clicking on “new destination” in the top right corner. Then select “Snowflake” as your destination type.
+
+‍
+
+This is where you will input the information for the Snowflake database that you are copying your Postgres data. Make sure you enter the right location information! 
+
+I also recommend setting up a role that is specific for loading data in your destination as well. This will help keep your environment secure and all you to closely monitor different metrics on the replication process.
+Set up a Postgres to Snowflake connection
+
+Now that you’ve created both your source in Postgres and your destination in Snowflake, you can set up a connection between the two to replicate your data from Postgres. Select “connections” on the left panel.
+
+Select your Postgres source you created from the dropdown, then select Snowflake as your destination.
+
+Now you’ll want to give the connection a good name and choose how often it replicates. I’m going to call mine “postgres_snowflake_replication” and set it t replicate every 24 hours. 
+
+I also recommend selecting “mirror source structure” for the “destination namespace”. This will allow you to easily compare the differences between the source table and the destination table. Your data will be replicated to the database “development” and the schema “customers”, with the same table names. If the naming convention were different, it may get confusing down the line. 
+
+When you choose the streams you wish to activate, be sure that you are selecting “full refresh | overwrite”. This will capture any deletes or updates in your source data table through the replication process. 
+
+Select “Normalized tabular data” and create your connection. Once you set up your connection, you should see your data syncing. 
+
+‍
+
+When your connection is finished syncing and reads “successful”, you are ready to begin the validation process! 
+Validate the replication process with data-diff
+
+Now that you have your Postgres database replicated to Snowflake, you want to validate that your data looks as expected. Normally you would have to go through a long process of performing different discovery queries on each data source and comparing values. And, unless you looked at every single row and did a row-by-row comparison, you wouldn’t be confident that your data replicated as expected. This is where data-diff comes in. Let’s walk through how to set this up.
+
+First, you’ll want to install the open-source tool. You can do this with the following command:
+
+
+pip install data-diff
+
+Since you are using both Postgres and Snowflake, you want to install the drivers for these specific databases:
+
+
+pip install 'data-diff[postgresql]'
+pip install 'data-diff[snowflake]'
+
+After you’ve installed data-diff, you’ll have to focus on creating your connection strings. These contain key information about the database you are connecting to like the database user, password, host, account, database, schema, warehouse, and role. 
+
+For Snowflake, your connection string will follow the following format:
+
+
+"snowflake://[username]:[password]@[account]/[DATABASE]/[SCHEMA]?warehouse=[WAREHOUSE]&role=[ROLE]"
+
+Because the table I replicated into Snowflake is in the `development` database and `customers` schema, I’ll input this information into the string. I’ll also be using `external_user` for my user, the `validator_wh` for my warehouse, and the `validator’ role here. These are different from what I used in the loading process since this is a different step in the data pipeline. 
+
+Make sure whatever role you are using has the appropriate permissions to access the table you are comparing! The user you are inputting in the string also has to be assigned the role you specified. 
+
+My final connection string looks like so:
+
+
+"snowflake://external_user:[password]@[account]/development/customers?warehouse=validator_wh&role=validator"
+
+For Postgres, the connection string will be formatted like so:
+
+
+postgresql://[username]:[password]@localhost:5432/[database]
+
+I’m using the username and password that I typically use to connect to my Postgres database. Unfortunately, this is a personal username and password which is not a best practice. It’s always best to use a user that is created for the use of external tools like data-diff. This helps keep your databases secure and ensures you are always in tight control of access.
+
+My final connection string looks like so:
+
+
+postgresql://madison:[password]@localhost:5432/development
+
+Now that you’ve built your connection strings, you can use them in the data-diff command, which looks like this:
+
+
+data-diff DB1_URI TABLE1_NAME DB2_URI TABLE2_NAME
+
+You will input Snowflake’s connection string as DB1_URI and Postgres’s as DB2_URI. 
+
+Although I’m choosing to do Snowflake first and Postges second, the order doesn’t matter. Then be sure to write the appropriate table names for each of the sources that you are comparing. Note that data-diff only allows you to compare two tables at one time rather than all of your tables in a schema. However, you could easily create a Python script using data-diff Python’s SDK that loops through a list of table names, running the command for every pair of tables specified and outputting the results in a nicely formatted CSV file. 
+
+Let’s start by comparing the `customer_contacts` table in our customers schemas. Because the source and destination have the same table names, I would put `customer_contacts` as my Snowflake table and `customer_contacts` as my Postgres table. 
+
+The command would look like this:
+
+
+data-diff \
+"snowflake://external_user:[password]@[account]/development/customers?warehouse=validator_wh&role=validator" customer_contacts \
+"postgresql://madison:[password]@localhost:5432/development" customer_contacts
+
+Because we are activating Airbyte normalization and Airbyte creates extra metadata columns (_airbyte_ab_id, _airbyte_emitted_at, _airbyte__hashid, airbyte_normalized_at), on the Snowflake destination, we will have to specify the specific column names that we wish to compare. Otherwise, data-diff would mark all rows as varying due to the differing columns. In order to specify columns to include, we need to use the flag `columns` (or just `c`) in the command.
+
+
+data-diff \
+"snowflake://external_user:[password]@[account]/development/customers?warehouse=validator_wh&role=validator" customer_contacts \
+"postgresql://madison'[password]@localhost:5432/development" customer_contacts \
+-c customer_contact_id customer_name phone_number email_address updated_at
+
+Another thing to note, if your primary keys are not `id`, then you’ll have to specify another parameter called `key column` in your connection string. This just lets data-diff know which column acts as a primary key, allowing the two tables to be compared using that.
+
+Since the primary key of these tables is `customer_contact_id` I would add that to the `key-columns` (or just `k`)  flag in my command. Like this:
+
+
+data-diff \
+"snowflake://external_user:[password]@[password]/development/customers?warehouse=validator_wh&role=validator" customer_contacts \
+"postgresql://madison:[password]@localhost:5432/development" customer_contacts \
+-columns customer_contact_id customer_name phone_number email_address updated_at \
+-key-columns customer_contact_id
+
+And, lastly, if you ever want to filter the column values that you are comparing, you can specify a `where` (or just `w`) flag in the command. This acts as a where clause for your query, allowing you to filter for certain conditions. This is particularly helpful if you have a fast-changing source and need to validate a new batch of data that has been ingested after a previous validation check. Using this will prevent false positives of rows that have been updated since being ingested when checking for differing rows. We can add this to our command like so:
+
+
+data-diff \
+"snowflake://external_user:[password]@[account]/development/customers?warehouse=validator_wh&role=validator" customer_contacts \
+"postgresql://madison:[password]@localhost:5432/development" customer_contacts \
+-columns customer_contact_id customer_name phone_number email_address updated_at \
+-key-columns customer_contact_id \
+-where “updated_at <= '10-31-2022'"
+
+Now we are ready to run data-diff!
+Understanding data-diff output
+
+Once you run the command, data-diff will give you the primary key values of the rows in the tables that differ. Each value will have a + or - in front of it. A + signifies that the rows exists in the second table but not the first. A - sign indicates that the row exists in the first table but not the second. Now, you can dig deeper into your validation process and explore why these primary keys are in one database and not the other.
+
+Also, note that one primary key can be present with a + and a - sign in the output. This means that the row exists in both tables but has a column value that varies. So not only does data-diff let you know when one table is missing a primary key, but it also lets you know when the column values for the rows with that primary key differ. 
+
+I can see here that the row with a `customer_contact_id` of 14339589 is present in Postgres but not Snowflake. I’ll want to look into why this row wasn’t replicated from my source table to my destination. This will involve a deeper dive into your data and understanding its behavior. You may want to look into the following:
+
+    Did my connection stop mid-way through its sync?
+    Is there a condition in this particular row that’s now being met?
+    Was this row created after the latest sync time?
+
+If the opposite were to occur, where a row is present in Snowflake but not Postgres, you should ask yourself the following questions:
+
+    Was this record deleted in my source table? Is that accurate? Did this happen after the latest sync?
+
+And, if you have a row whose column values vary between the two tables, you should be thinking about these questions:
+
+    Was this row updated after the latest sync time?
+    What conditions could cause this value to be one thing in one table and something else in the other? 
+
+Data-diff frees up the most time-consuming, tedious task of finding the rows that differ in column values. It also allows you to fix these issues right then and there rather than reloading all of the data. Instead, it allows you to focus on what really matters- the why behind the discrepancies. Together, Airbyte and data-diff give you the tools to successfully replicate your data from one database to another and validate that the process went smoothly.
+Conclusion 
+
+Knowing how to use open-source tools in combination with one another is a powerful skill for any analyst, analytics engineer, or data engineer. Utilizing a data quality tool like data-diff skips the guessing game, leaving more time for the most impactful work. It tells you the exact rows to investigate further making it so no aggregated queries or direct comparisons need to be made.
+
+Not only is it great for the initial replication process, but data-diff is always available for you to use to check the health of your Airbyte connectors. It is quick and easy to run whenever you suspect an issue, or as a monthly data quality maintenance check.
+
+Better yet, you could automate the data-diff CLI commands we just used in this tutorial to run after every Airbyte sync using an orchestrating tool like Prefect. Then, you could set up Slack alerts based on what information you would want to be sent to you when your data pipeline runs. I’d recommend getting the primary keys of the varying rows sent to you directly as a Slack message.
+
+The possibilities for automating ingestion and data-quality tools are endless. Open-source tools like Airbyte and data-diff make a great pair, working together to create a data environment that puts data quality above all else. 
