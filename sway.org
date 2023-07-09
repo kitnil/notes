@@ -7,3 +7,8 @@
 - [[https://github.com/BiagioFesta/i3-autolayout][BiagioFesta/i3-autolayout: Service to automatically managing i3 window manager layout]]
 - [[https://github.com/michaeldelago/statusbar][michaeldelago/statusbar: A simply sway/i3 statusbar written in common lisp]]
 - [[https://github.com/pierrechevalier83/workstyle][pierrechevalier83/workstyle: Sway workspaces with style]]
+
+* Cheat Sheet
+
+- get current focused window
+  : swaymsg -t get_tree | jq 'recurse | select(.focused? == true)'
