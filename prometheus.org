@@ -134,14 +134,14 @@
 * Learning
 - [[https://www.robustperception.io/absent-alerting-for-jobs][Absent Alerting for Jobs – Robust Perception | Prometheus Monitoring Experts]]
 - [[https://www.robustperception.io/alerting-on-gauges-in-prometheus-2-0][Alerting on gauges in Prometheus 2.0 – Robust Perception | Prometheus Monitoring Experts]]
-- [[https://github.com/ncabatoff/process-exporter][ncabatoff/process-exporter: Prometheus exporter that mines /proc to report on selected processes]]
-- [[https://towardsdatascience.com/how-i-monitor-active-ssh-sessions-with-prometheus-and-grafana-f4811da0a8cc][Monitor SSH sessions with Prometheus and Grafana | Towards Data Science]]
-- [[https://prometheus.io/docs/practices/instrumentation/#use-labels][Instrumentation | Prometheus]]
-- [[https://fiberplane.com/blog/why-are-prometheus-queries-hard][Why are Prometheus queries hard? - Blog]]
-- [[https://grafana.com/blog/2022/03/21/how-relabeling-in-prometheus-works/][How relabeling in Prometheus works | Grafana Labs]]
-- [[https://prometheus.io/docs/guides/multi-target-exporter/][Understanding and using the multi-target exporter pattern | Prometheus]]
 - [[https://prometheus.io/docs/prometheus/latest/configuration/configuration/][Configuration | Prometheus]]
+- [[https://grafana.com/blog/2022/03/21/how-relabeling-in-prometheus-works/][How relabeling in Prometheus works | Grafana Labs]]
+- [[https://prometheus.io/docs/practices/instrumentation/#use-labels][Instrumentation | Prometheus]]
+- [[https://towardsdatascience.com/how-i-monitor-active-ssh-sessions-with-prometheus-and-grafana-f4811da0a8cc][Monitor SSH sessions with Prometheus and Grafana | Towards Data Science]]
+- [[https://github.com/ncabatoff/process-exporter][ncabatoff/process-exporter: Prometheus exporter that mines /proc to report on selected processes]]
 - [[https://github.com/prometheus/prometheus/discussions/10215][Prometheus stopped working after the error - opening storage failed: reloadBlocks: invalid block sequence: block time ranges overlap: · Discussion #10215 · prometheus/prometheus]]
+- [[https://prometheus.io/docs/guides/multi-target-exporter/][Understanding and using the multi-target exporter pattern | Prometheus]]
+- [[https://fiberplane.com/blog/why-are-prometheus-queries-hard][Why are Prometheus queries hard? - Blog]]
 - [[https://habr.com/ru/companies/citymobil/articles/503246/][Простой service discovery в Prometheus через Consul / Хабр]]
 
 * Blackbox
