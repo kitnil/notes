@@ -136,6 +136,7 @@
 - [[https://www.robustperception.io/alerting-on-gauges-in-prometheus-2-0][Alerting on gauges in Prometheus 2.0 – Robust Perception | Prometheus Monitoring Experts]]
 - [[https://github.com/autometrics-dev][Autometrics - Easily add metrics to your code that actually help you spot and debug issues in production. Built on Prometheus and OpenTelemetry]]
 - [[https://prometheus.io/docs/prometheus/latest/configuration/configuration/][Configuration | Prometheus]]
+- [[https://blog.cloudflare.com/how-cloudflare-runs-prometheus-at-scale/#metrics-cardinality][How Cloudflare runs Prometheus at scale]]
 - [[https://grafana.com/blog/2022/03/21/how-relabeling-in-prometheus-works/][How relabeling in Prometheus works | Grafana Labs]]
 - [[https://prometheus.io/docs/practices/instrumentation/#use-labels][Instrumentation | Prometheus]]
 - [[https://towardsdatascience.com/how-i-monitor-active-ssh-sessions-with-prometheus-and-grafana-f4811da0a8cc][Monitor SSH sessions with Prometheus and Grafana | Towards Data Science]]
