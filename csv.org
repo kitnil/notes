@@ -6,3 +6,6 @@
 - [[https://github.com/wfxr/csview][wfxr/csview: 📠 A high performance csv viewer with cjk/emoji support.]]
 - [[https://github.com/alexhallam/tv][alexhallam/tv: 📺(tv) Tidy Viewer is a cross-platform CLI csv pretty printer that uses column styling to maximize viewer enjoyment.]]
 - [[https://github.com/mithrandie/csvq][mithrandie/csvq: SQL-like query language for csv]]
+
+* [[https://stackoverflow.com/a/65100738][Convert CSV to JSON with Python]]
+: cat my.csv | python -c 'import csv, json, sys; print(json.dumps([dict(r) for r in csv.DictReader(sys.stdin)]))'
