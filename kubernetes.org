@@ -2753,6 +2753,7 @@ then redeploy with:
 - [[https://schemahero.io/][SchemaHero - A modern approach to database schema migrations]]
 - [[https://github.com/sealerio/sealer][sealerio/sealer: A tool to seal application's all dependencies and Kubernetes into CloudImage, distribute this application anywhere via CloudImage, and run it within any cluster in one command.]]
 - [[https://github.com/senthilrch/kube-fledged][senthilrch/kube-fledged: A kubernetes operator for creating and managing a cache of container images directly on the cluster worker nodes, so application pods start almost instantly]]
+- [[https://shipwright.io/][Shipwright - extensible framework for building container images on Kubernetes]]
 - [[https://github.com/slok/simple-ingress-external-auth][slok/simple-ingress-external-auth: A very simple external authentication service for Kubernetes ingresses (ingress-nginx, traefik...)]]
 - [[https://github.com/soluble-ai/kubetap][soluble-ai/kubetap: Kubectl plugin to interactively proxy Kubernetes Services with ease]]
 - [[https://github.com/Soluto/kamus][Soluto/kamus: An open source, git-ops, zero-trust secret encryption and decryption solution for Kubernetes applications]]
