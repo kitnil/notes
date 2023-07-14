@@ -2521,6 +2521,7 @@ then redeploy with:
 - [[https://github.com/backube/snapscheduler][backube/snapscheduler: Scheduled snapshots for Kubernetes persistent volumes]]
 - [[https://github.com/backube/volsync][backube/volsync: Asynchronous data replication for Kubernetes volumes]]
 - [[https://github.com/banzaicloud/jwt-to-rbac][banzaicloud/jwt-to-rbac: JWT-to-RBAC lets you automatically generate RBAC resources based on JWT tokens]]
+- [[https://github.com/banzaicloud/koperator][banzaicloud/koperator: Oh no! Yet another Apache Kafka operator for Kubernetes]]
 - [[https://github.com/BeryJu/korb][BeryJu/korb: Move Kubernetes PVCs between Storage Classes and Namespaces]]
 - [[https://github.com/bitnami-labs/charts-syncer][bitnami-labs/charts-syncer: Tool for synchronizing Helm Chart repositories.]]
 - [[https://github.com/bitnami-labs/healthcheck-tools][bitnami-labs/healthcheck-tools: Set of Go tools to check different elements of your stack (SSL, SMTP, Permissions...)]]
