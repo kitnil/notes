@@ -1,0 +1,25 @@
+* [[https://www.pico.net/kb/how-does-one-use-tcpdump-to-capture-incoming-traffic/][How does one use tcpdump to capture incoming traffic? | Pico]]
+
+How does one use tcpdump to capture incoming traffic?
+
+The most reliable option is to use the -Q option as follows:
+
+: $ tcpdump -Qin other filter logic
+
+The -Q option may not be supported on all platforms, and an alternative is to
+use equivalent logic in BPF (Berkeley Packet Filter) syntax, in the form of
+the inbound and outbound predicates:
+
+: $ tcpdump inbound and other filter logic
+
+However this typically requires a couple of packets to be processed to
+determine the directionality, and tcpdump may not capture those initial
+packets; the -Q option does not suffer from this drawback.
+
+Note that both these options treat all packets on the loopback interface as
+inbound: for such packets, there is no sense of direction as the source and
+destination addresses are the same, and so it is somewhat arbitrary as to
+whether to view them as inbound, outbound, both, or neither. Both these
+options are consistent in viewing loopback packets as inbound only; in
+particular, neither tcpdump -ilo -Qout nor tcpdump -ilo outbound will capture
+any packets.
