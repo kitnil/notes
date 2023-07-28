@@ -75,3 +75,6 @@ term. But it will become really fragmented over time. It is possible to
 fallocate a small section, and then truncate the rest, that way you get the
 file system you want in the guest, without actually giving up all that space
 right away on the host.
+
+* Tools
+- [[https://github.com/gpu-ninja/qcow2][gpu-ninja/qcow2: A Go library for reading and writing QCOW2 disk images.]]
