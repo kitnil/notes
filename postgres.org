@@ -30,6 +30,7 @@
 - [[https://github.com/oguimbal/pg-mem][oguimbal/pg-mem: An in memory postgres DB instance for your unit tests]]
 - [[https://github.com/orioledb/orioledb][orioledb/orioledb: OrioleDB – building a modern cloud-native storage engine (... and solving some PostgreSQL wicked problems)]]
 - [[https://github.com/Paxa/postbird][Paxa/postbird: Open source PostgreSQL GUI client for macOS, Linux and Windows]]
+- [[https://github.com/pgautoupgrade/docker-pgautoupgrade][pgautoupgrade/docker-pgautoupgrade: A PostgreSQL Docker container that automatically upgrades your database]]
 - [[https://github.com/pgbouncer/pgbouncer][pgbouncer/pgbouncer: lightweight connection pooler for PostgreSQL]]
 - [[https://github.com/pllua/pllua][pllua/pllua: Re-implementation of pllua, Lua embedded for postgresql]]
 - [[https://github.com/postgres-ai/database-lab-engine][postgres-ai/database-lab-engine: Thin PostgreSQL clones. DLE provides blazing-fast database cloning to build powerful development, test, QA, staging environments. Follow to stay updated.]]
@@ -46,8 +47,6 @@
 - [[https://github.com/sorintlab/stolon][sorintlab/stolon: PostgreSQL cloud native High Availability and more.]]
 - [[https://github.com/supabase/pg_netstat][supabase/pg_netstat: PostgreSQL extension to monitor database network traffic]]
 - [[https://github.com/supabase/realtime][supabase/realtime: Listen to your to PostgreSQL database in realtime via websockets. Built with Elixir.]]
-- [[https://github.com/pgautoupgrade/docker-pgautoupgrade][pgautoupgrade/docker-pgautoupgrade: A PostgreSQL Docker container that automatically upgrades your database]]
-- [[https://habr.com/ru/articles/745948/][Шпаргалка по SQL (postgres), которая выручает меня на собесах / Хабр]]
 - [[https://github.com/supabase/supabase][supabase/supabase: The open source Firebase alternative. Follow to stay updated about our public Beta.]]
 - [[https://github.com/supabase/supa_type][supabase/supa_type: The Missing PostgreSQL Data Types]]
 - [[https://github.com/supabase/supavisor][supabase/supavisor: A cloud-native, multi-tenant Postgres connection pooler.]]
@@ -56,6 +55,7 @@
 - [[https://github.com/zalando/pg_view][zalando/pg_view: Get a detailed, real-time view of your PostgreSQL database and system metrics]]
 - [[https://github.com/zalando/postgres-operator][zalando/postgres-operator: Postgres operator creates and manages PostgreSQL clusters running in Kubernetes]]
 - [[https://habr.com/ru/post/584660/][Храним данные в JSONB, как это влияет на скорость запросов? / Хабр]]
+- [[https://habr.com/ru/articles/745948/][Шпаргалка по SQL (postgres), которая выручает меня на собесах / Хабр]]
 
 * [[https://postgrespro.com/list/thread-id/1525878][Thread: DB fails to start: "Could not read from file "pg_clog/0003" at offset 212992: No error. : Postgres Professional]]
 
