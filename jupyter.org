@@ -1,18 +1,18 @@
 :PROPERTIES:
 :ID:       0dee0284-7bc0-42b7-944f-7f931f134fd9
 :END:
-- [[https://github.com/giswqs/earthengine-py-notebooks][earthengine-py-notebooks]]
-- [[https://github.com/sql-machine-learning/sqlflow][sql-machine-learning/sqlflow: Brings SQL and AI together.]]
-- [[https://github.com/millejoh/emacs-ipython-notebook/][millejoh/emacs-ipython-notebook: Jupyter notebook client in Emacs]]
-- [[https://github.com/jupyter/nbdime][jupyter/nbdime: Tools for diffing and merging of Jupyter notebooks.]]
-- [[https://github.com/yitzchak/common-lisp-jupyter][common-lisp-jupyter]]
-- [[https://github.com/jupyter/jupyter/wiki/Jupyter-kernels][Jupyter kernels · jupyter/jupyter Wiki]]
-- [[https://github.com/takluyver/bash_kernel][takluyver/bash_kernel: A bash kernel for IPython]]
 - [[https://github.com/ansible/ansible-jupyter-kernel][ansible/ansible-jupyter-kernel: Jupyter Notebook Kernel for running Ansible Tasks and Playbooks]]
   : docker run -p 8888:8888 benthomasson/ansible-jupyter-kernel
 - [[https://www.cogram.com/old-home][Cogram - AI-powered code generation for data scientists]]
+- [[https://github.com/yitzchak/common-lisp-jupyter][common-lisp-jupyter]]
 - [[https://github.com/davidbrochart/nbterm][davidbrochart/nbterm: Jupyter Notebooks in the terminal.]]
+- [[https://github.com/giswqs/earthengine-py-notebooks][earthengine-py-notebooks]]
 - [[https://github.com/gopherdata/gophernotes][gopherdata/gophernotes: The Go kernel for Jupyter notebooks and nteract.]]
 - [[https://github.com/gpu-ninja/koopt][gpu-ninja/koopt: Get your own personal Jupyter Notebook server.]]
+- [[https://github.com/jupyter/jupyter/wiki/Jupyter-kernels][Jupyter kernels · jupyter/jupyter Wiki]]
+- [[https://github.com/jupyter/nbdime][jupyter/nbdime: Tools for diffing and merging of Jupyter notebooks.]]
+- [[https://github.com/millejoh/emacs-ipython-notebook/][millejoh/emacs-ipython-notebook: Jupyter notebook client in Emacs]]
 - [[https://github.com/mljar/mercury][mljar/mercury: Convert Python notebook to web app and share with others]]
 - [[https://github.com/sberbank-ai/ru-dalle][sberbank-ai/ru-dalle: Generate images from texts. In Russian]]
+- [[https://github.com/sql-machine-learning/sqlflow][sql-machine-learning/sqlflow: Brings SQL and AI together.]]
+- [[https://github.com/takluyver/bash_kernel][takluyver/bash_kernel: A bash kernel for IPython]]
