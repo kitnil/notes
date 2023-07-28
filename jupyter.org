@@ -9,7 +9,7 @@
 - [[https://github.com/jupyter/jupyter/wiki/Jupyter-kernels][Jupyter kernels · jupyter/jupyter Wiki]]
 - [[https://github.com/takluyver/bash_kernel][takluyver/bash_kernel: A bash kernel for IPython]]
 - [[https://github.com/ansible/ansible-jupyter-kernel][ansible/ansible-jupyter-kernel: Jupyter Notebook Kernel for running Ansible Tasks and Playbooks]]
-docker run -p 8888:8888 benthomasson/ansible-jupyter-kernel
+  : docker run -p 8888:8888 benthomasson/ansible-jupyter-kernel
 - [[https://www.cogram.com/old-home][Cogram - AI-powered code generation for data scientists]]
 - [[https://github.com/davidbrochart/nbterm][davidbrochart/nbterm: Jupyter Notebooks in the terminal.]]
 - [[https://github.com/gopherdata/gophernotes][gopherdata/gophernotes: The Go kernel for Jupyter notebooks and nteract.]]
