@@ -185,6 +185,53 @@ lvcreate -V 16G --thin -n thinguix vg0/thinpool0
 
 - LVMTHIN(7)
 
+**  Extend thin LVM Metadata Size
+*** Question
+
+I was wondering how I can extend Metadata size in a lvm thin provisioning (on latest Kernel / LVM2).
+
+#+begin_example
+  [root@srv ~]# lvs -a
+  LV                VG        Attr       LSize   Pool Origin Data%  Meta%  
+  lv1               volgroup1 twi-aotz-- 125.00g             25.80   23.32
+  [lv1_tdata]       volgroup1 Twi-ao---- 125.00g
+  [lv1_tmeta]       volgroup1 ewi-ao----  96.00m
+  lvol0             volgroup1 -wi-a-----  96.00m
+  [lvol1_pmspare]   volgroup1 ewi-------  96.00m
+#+end_example
+
+I have few questions:
+
+    In above 'lvs' command 23.32% is Meta%, this means 23.32% of 96M is used
+    for META (or of total 125G) ?  lvol1_pmspare is a spare copy of
+    meta. Should i need to extend lvol1_pmspare separately to extend
+    lv1_tmeta.  Any performance impact by changing thin_pool_chunk_size or
+    setting poolmetadatasize to higher value.  How to identify ideal metadata
+    size.
+
+Can someone please share your insight and help me on how to extend metadata size.
+
+*** Answer A
+You can use =lvs -a= to view details of metadata and pmspare as in question.
+
+To extend metadata:
+
+: lvextend -L+128M volgroup1/lv1_tmeta
+
+You will see lvol1_pmspare (metadata spare) remains original size even after
+above command is successful. =lvconvert --repair= process will re-create the
+spare metadata LV. ( Or you can also remove lvol1_pmspare and re-create using
+=lvconvert --repair=)
+
+Metadata size can be somewhere between 2M to 16G. An ideal value always
+depends on the total volume and type of operations.
+
+*** Answer B
+
+This will do the trick without any --repair.
+
+: lvextend --poolmetadatasize +2G vg0/lv0
+
 * Backup
 - [[https://github.com/tasket/wyng-backup][tasket/wyng-backup: Fast Time Machine-like backups for logical volumes]]
 - [[https://github.com/sebastian13/lvm-restic-backup][sebastian13/lvm-restic-backup]]
