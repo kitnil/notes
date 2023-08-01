@@ -359,6 +359,16 @@ Jenkins is now one of the most widely used CI/CD tools and has a large and activ
       }
     #+END_SRC
 
+  - Cancel queued tasks which starts with name =cd/fluxcd=
+    #+begin_src groovy
+      def q = Jenkins.instance.queue
+      for (queued in Jenkins.instance.queue.items) {
+        if (queued.task.runId.startsWith("cd/fluxcd")) {
+          q.cancel(queued.task)
+        }
+      }
+    #+end_src
+
   - [[https://docs.openstack.org/infra/jenkins-job-builder/project_workflow_multibranch.html?highlight=suppress][Multibranch Pipeline Project — jenkins-job-builder 3.2.1.dev2 documentation]]
   - [[https://github.com/jenkinsci][Jenkins]]
   - [[https://jenkins.io/solutions/pipeline/][Pipeline as Code with Jenkins]]
