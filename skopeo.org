@@ -1,0 +1,2 @@
+- Copy from a container registry to local docker daemon via HTTP proxy
+  : HTTP_PROXY=http://IP_ADDRESS:PORT_NUMBER HTTPS_PROXY=http://IP_ADDRESS:PORT_NUMBER skopeo copy docker://IMAGE_NAME:IMAGE_TAG docker-daemon:IMAGE_NAME:IMAGE_TAG
