@@ -3,20 +3,20 @@
 :END:
 #+title: OBS
 
-- [[https://github.com/stuartlangridge/hushboard][stuartlangridge/hushboard: Mute your mic while you're typing. An app for Ubuntu.]]
-- [[https://github.com/Xaymar/obs-StreamFX][Xaymar/obs-StreamFX: Bring your stream to life with modern effects! Blur, 3D Transformation, advanced Color Grading, and more - all for free.]]
-- [[https://github.com/theonemule/nginx-rtmp][theonemule/nginx-rtmp: A containerize NGINX server with the RTMP plugin to allow live streams to multiple providers such as Twitch, Facebook, or YouTube simultaneously from a single source.]]
-- [[https://github.com/tiangolo/nginx-rtmp-docker][tiangolo/nginx-rtmp-docker: Docker image with Nginx using the nginx-rtmp-module module for live multimedia (video) streaming.]]
-- [[https://github.com/pion/obs-wormhole][pion/obs-wormhole: Supercharge OBS with WebRTC. Remote WebRTC Sources and Serverless Broadcasting]]
-- [[https://stream.twitch.tv/encoding/][Twitch Streamers - Twitch Video Encoding/Bitrates/And Stuff]]
-- [[https://dennismungai.wordpress.com/2018/02/06/streaming-your-linux-desktop-to-youtube-and-twitch-via-nvidias-nvenc-and-vaapi/][Streaming your Linux desktop to Youtube and Twitch via Nvidia’s NVENC and VAAPI – My slice of the internet]]
 - [[https://github.com/GRVYDEV/Project-Lightspeed][GRVYDEV/Project-Lightspeed: A self contained OBS -> FTL -> WebRTC live streaming server. Comprised of 3 parts once configured anyone can achieve sub-second OBS to the browser livestreaming]]
 - [[https://github.com/luastoned/obs-csgo][luastoned/obs-csgo: OBS Plugin to capture CS:GO with Trusted Mode enabled]]
-- [[https://github.com/royshil/obs-backgroundremoval][royshil/obs-backgroundremoval: An OBS plugin for removing background in portrait images (video), making it easy to replace the background when screen recording.]]
-- [[https://github.com/wimpysworld/obs-fully-loaded][wimpysworld/obs-fully-loaded: OBS Studio, fully-loaded, for Ubuntu]]
+- [[https://github.com/obsproject/obs-browser][obsproject/obs-browser: CEF-based OBS Studio browser plugin]]
 - [[https://github.com/obsproject/obs-websocket][obsproject/obs-websocket: Remote-control of OBS Studio through WebSocket]]
 - [[https://github.com/phandasm/waveform][phandasm/waveform: Audio spectral analysis plugin for OBS]]
-- [[https://github.com/obsproject/obs-browser][obsproject/obs-browser: CEF-based OBS Studio browser plugin]]
+- [[https://github.com/pion/obs-wormhole][pion/obs-wormhole: Supercharge OBS with WebRTC. Remote WebRTC Sources and Serverless Broadcasting]]
+- [[https://github.com/royshil/obs-backgroundremoval][royshil/obs-backgroundremoval: An OBS plugin for removing background in portrait images (video), making it easy to replace the background when screen recording.]]
+- [[https://dennismungai.wordpress.com/2018/02/06/streaming-your-linux-desktop-to-youtube-and-twitch-via-nvidias-nvenc-and-vaapi/][Streaming your Linux desktop to Youtube and Twitch via Nvidia’s NVENC and VAAPI – My slice of the internet]]
+- [[https://github.com/stuartlangridge/hushboard][stuartlangridge/hushboard: Mute your mic while you're typing. An app for Ubuntu.]]
+- [[https://github.com/theonemule/nginx-rtmp][theonemule/nginx-rtmp: A containerize NGINX server with the RTMP plugin to allow live streams to multiple providers such as Twitch, Facebook, or YouTube simultaneously from a single source.]]
+- [[https://github.com/tiangolo/nginx-rtmp-docker][tiangolo/nginx-rtmp-docker: Docker image with Nginx using the nginx-rtmp-module module for live multimedia (video) streaming.]]
+- [[https://stream.twitch.tv/encoding/][Twitch Streamers - Twitch Video Encoding/Bitrates/And Stuff]]
+- [[https://github.com/wimpysworld/obs-fully-loaded][wimpysworld/obs-fully-loaded: OBS Studio, fully-loaded, for Ubuntu]]
+- [[https://github.com/Xaymar/obs-StreamFX][Xaymar/obs-StreamFX: Bring your stream to life with modern effects! Blur, 3D Transformation, advanced Color Grading, and more - all for free.]]
 
 * Learning
 - [[https://www.youtube.com/watch?v=q_FRkzrI0L8][(2) ПОЛНАЯ НАСТРОЙКА OBS 🤟 Рестрим, чат и запись в самом OBS! - YouTube]]
