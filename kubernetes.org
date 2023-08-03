@@ -2713,6 +2713,7 @@ then redeploy with:
 - [[https://opensource.com/article/22/5/migrating-databases-kubernetes-using-konveyor][Migrate databases to Kubernetes using Konveyor | Opensource.com]]
   - [[https://github.com/konveyor/tackle-diva][konveyor/tackle-diva: Tackle Data-intensive Validity Analyzer]]
 - [[https://opensource.com/article/21/6/migrate-vms-kubernetes-forklift][Migrate virtual machines to Kubernetes with this new tool | Opensource.com]]
+- [[https://github.com/msfidelis/kubedump][msfidelis/kubedump: :whale: :rocket: Simple tool to dump and restore kubernetes resources]]
 - [[https://github.com/NCCloud/mayfly][NCCloud/mayfly: An operator to manage ephemeral Kubernetes resources.  Mayfly is a Kubernetes operator that enables you to create temporary resources on the cluster that will expire after a certain period of time.]]
 - [[https://github.com/NCCloud/watchtower][NCCloud/watchtower: Effortlessly monitor your Kubernetes resource activity]]
 - [[https://github.com/nmstate/kubernetes-nmstate][nmstate/kubernetes-nmstate: Declarative node network configuration driven through Kubernetes API.]]
