@@ -16,6 +16,7 @@
 - [[https://github.com/pretzelhands/jinx][pretzelhands/jinx: ✨jinx - a magical nginx wrapper]]
 - [[https://github.com/DarrenTsung/nginx-hash-test][DarrenTsung/nginx-hash-test: Playing around and verifying NGINX hash functionality.]]
 - [[https://openresty-reference.readthedocs.io/en/latest/Lua_Nginx_API/][Lua Ngx API - OpenResty Reference]]
+- [[https://github.com/x-way/ngx_http_remote_passwd][x-way/ngx_http_remote_passwd: Nginx module which makes the Basic Auth password available as variable $remote_passwd]]
 - [[https://github.com/digitalocean/nginxconfig.io][digitalocean/nginxconfig.io: ⚙️ NGiИX config generator on steroids 💉]]
 - [[https://github.com/yandex/gixy][yandex/gixy: Nginx configuration static analyzer]]
 - [[https://github.com/SpiderLabs/ModSecurity][SpiderLabs/ModSecurity: ModSecurity is an open source, cross platform web application firewall (WAF) engine for Apache, IIS and Nginx that is developed by Trustwave's SpiderLabs. It has a robust event-based programming language which provides protection from a range of attacks against web applications and allows for HTTP traffic monitoring, logging and real-time analysis. With over 10,000 deployments world-wide, ModSecurity is the most widely deployed WAF in existence.]]
