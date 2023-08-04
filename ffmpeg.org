@@ -12,7 +12,7 @@
   ffmpeg -v warning -i $1 -i $palette -lavfi "$filters [x]; [x][1:v] paletteuse" -y $2
 #+end_example
 
-- [[https://github.com/slhck/ffmpeg-normalize][slhck/ffmpeg-normalize: Audio Normalization for Python/ffmpeg]]
 - [[https://github.com/ffmpegwasm/ffmpeg.wasm][ffmpegwasm/ffmpeg.wasm: FFmpeg for browser and node, powered by WebAssembly]]
-- [[https://habr.com/ru/companies/ruvds/articles/718384/][Безграничные возможности FFmpeg на примерах / Хабр]]
 - [[https://amiaopensource.github.io/ffmprovisr/][ffmprovisr - useful FFmpeg commands for archivists]]
+- [[https://github.com/slhck/ffmpeg-normalize][slhck/ffmpeg-normalize: Audio Normalization for Python/ffmpeg]]
+- [[https://habr.com/ru/companies/ruvds/articles/718384/][Безграничные возможности FFmpeg на примерах / Хабр]]
