@@ -2026,6 +2026,9 @@ builtins.match "php([[:alnum:]])([[:alnum:]])" "php70"
 - [[https://github.com/zhaofengli/attic][zhaofengli/attic: Multi-tenant Nix Binary Cache]]
 - [[https://github.com/zhaofengli/colmena][zhaofengli/colmena: A simple, stateless NixOS deployment tool]]
 
+* Video
+- [[https://www.youtube.com/watch?v=5V1OFSa7VlQ][(4) The Nix Hour #39 [removing channels from NixOS] - YouTube]]
+
 * Virtualization
 - [[https://github.com/Mic92/nixos-shell][Mic92/nixos-shell: Spawns lightweight nixos vms in a shell]]
 - [[https://github.com/erikarvstedt/extra-container][erikarvstedt/extra-container: Run declarative NixOS containers without full system rebuilds]]
