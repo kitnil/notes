@@ -83,6 +83,11 @@ root@vm29653:~# curl -H "X-Vault-Token: s.41dmrkVHjUqLt8bqWtowXMn8" http://127.0
 ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -l root -fNL 8200:localhost:8200 78.108.83.111
 #+end_example
 
+* Cheat sheet
+
+- Create key value secret
+  : vault kv put secret/vaultPass/majordomo/foo.intr password=MY_SECRET
+
 * Learning
 - [[https://itdraft.ru/2020/12/02/hashicorp-vault-kak-czentr-sertifikaczii-ca-vault-pki/][HashiCorp Vault как центр сертификации (CA) / Vault PKI • vault, devops, hashicorp, pki • IT Draft]]
 - [[https://developer.hashicorp.com/vault/docs/internals/limits][Limits and Maximums | Vault | HashiCorp Developer]]
