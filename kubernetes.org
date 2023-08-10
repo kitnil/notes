@@ -2838,6 +2838,34 @@ then redeploy with:
 - [[https://habr.com/ru/company/vk/blog/648117/][Как работать с Minikube: рекомендации и полезные советы / Хабр]]
 - [[https://github.com/kubevirt/demo][kubevirt/demo: Easy to use KubeVirt demo based on minikube.]]
 
+** kubenav
+#+begin_example
+  oleg@guixsd ~/bin$ /home/oleg/src/git.savannah.gnu.org/git/guix/pre-inst-env guix describe
+  Git checkout:
+    repository: /home/oleg/src/git.savannah.gnu.org/git/guix/
+    branch: master
+    commit: ced80c94b3402f8f34c1e45b10685f7dfc589a13
+#+end_example
+
+#+begin_src bash
+  wget https://github.com/kubenav/kubenav/releases/download/v4.2.3/kubenav-x86_64.AppImage
+
+  /home/oleg/src/git.savannah.gnu.org/git/guix/pre-inst-env guix shell gcc-toolchain \
+  --container \
+  --network \
+  --emulate-fhs \
+  --development ungoogled-chromium \
+  --preserve='^DISPLAY$' \
+  --preserve='^XAUTHORITY$' \
+  --expose=$XAUTHORITY \
+  --preserve='^DBUS_' \
+  --expose=/var/run/dbus \
+  --expose=/sys/dev \
+  --expose=/sys/devices \
+  --expose=/dev/dri \
+  -- /bin/sh -c 'LD_LIBRARY_PATH=/gnu/store/l684qgqlrqkbsh8jffp9d8ag6vrpcwgs-gcc-11.3.0-lib/lib:/lib:/lib/nss ./kubenav-x86_64.AppImage --appimage-extract-and-run'
+#+end_src
+
 ** crossplane
 - [[https://github.com/crossplane-contrib/provider-ansible][crossplane-contrib/provider-ansible: Crossplane Ansible provider]]
 - [[https://github.com/crossplane/provider-template][crossplane/provider-template: A template for building @crossplane providers.]]
