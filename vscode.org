@@ -6,3 +6,35 @@
 - [[https://github.com/msteen/nixos-vscode-server][msteen/nixos-vscode-server: Visual Studio Code Server support in NixOS]]
 
 - vscode.dev/https://github.com/...
+
+* Running in guix shell
+
+Following [[https://fosdem.org/2023/schedule/event/guixfhs/attachments/slides/5352/export/events/attachments/guixfhs/slides/5352/fosdem23_fhs_containers_talk.html][Using GNU Guix Containers with FHS Support]]
+
+#+begin_example
+  $ guix describe
+    ...
+    guix 1f734a6
+      repository URL: https://git.savannah.gnu.org/git/guix.git
+      branch: master
+      commit: 1f734a6f0a7db5b0e12091a0c869c5c4810ac80e
+#+end_example
+
+#+begin_src bash
+  wget https://github.com/VSCodium/vscodium/releases/download/1.81.0.23216/VSCodium-1.81.0.23216.glibc2.17-x86_64.AppImage
+
+  guix shell gcc:lib \
+       --container \
+       --network \
+       --emulate-fhs \
+       --development ungoogled-chromium \
+       --preserve='^DISPLAY$' \
+       --preserve='^XAUTHORITY$' \
+       --expose=$XAUTHORITY \
+       --preserve='^DBUS_' \
+       --expose=/var/run/dbus \
+       --expose=/sys/dev \
+       --expose=/sys/devices \
+       --expose=/dev/dri \
+       -- /bin/sh -c 'LD_LIBRARY_PATH=/lib:/lib/nss ./VSCodium-1.81.0.23216.glibc2.17-x86_64.AppImage --appimage-extract-and-run'
+#+end_src
