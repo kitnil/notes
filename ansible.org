@@ -14,6 +14,7 @@
 - [[https://github.com/TristanCacqueray/Haxible][TristanCacqueray/Haxible: Ansible interpreter powered by Haxl]]
 - [[https://github.com/ansible-semaphore/semaphore][ansible-semaphore/semaphore: Modern UI for Ansible]]
 - [[https://github.com/cytopia/docker-ansible][cytopia/docker-ansible: Alpine-based multistage-build version of Ansible for reproducible usage in CI]]
+- [[https://habr.com/ru/companies/otus/articles/753642/][Асинхронность в Ansible / Хабр]]
 
 - ansible
   : ansible -c local localhost -m slack -a "token='$(pass show majordomo/private/mjru.slack.com/tokens/ansible)' msg='$(date)' channel=#test"
