@@ -10,6 +10,180 @@
 
 - [[https://www.elastic.co/guide/en/elasticsearch/reference/6.6/index.html][Elasticsearch Guide [6.6] | Elastic]]
 
+** [[https://sematext.com/blog/elastic-search-data-storage-is-not-spreading-equally/][What To Do When Elasticsearch Data Is Not Spreading Equally Between Nodes]]
+
+Table of Contents
+
+    Prerequisite: Check for Ongoing Rebalancing
+    Elasticsearch Imbalanced Data Spread: Causes & Fixes
+    Recent node failure/join to cluster
+    Misconfigured cluster settings
+    Your One Stop Shop for Elasticsearch
+    Hotspot nodes
+    Routing field/key without enough diversity
+    How to prevent Elasticsearch data storage imbalances
+    Does your cluster math hold?
+    Monitoring
+    Avoid Premature Optimizations
+    Summary
+
+Elasticsearch (ES) is a powerful tool offering multiple search, content, and analytics capabilities. You can extend its capacity and relatively quickly horizontally scale the cluster by adding more nodes. When data is indexed in some Elasticsearch index, the index is not typically placed in one node but is spread across different nodes such that each node contains a “shard” of the index data. The shard (called primary shard) is replicated across the cluster into several replicas.
+
+A cluster is considered balanced when it has an equal number of shards on each data node without having an excess concentration of shards on any node. Unfortunately, you will sometimes run into cases where the cluster balance is suboptimal.
+
+This article will review some of the cases that can cause the problem of data spreading unevenly across the cluster and how you can solve them.
+
+In case you’re looking for some direct help, keep in mind that Sematext provides a full range of services for Elasticsearch.
+Prerequisite: Check for Ongoing Rebalancing
+
+Before we have any assumptions about the data spread, we need to check for an ongoing rebalance that might be taking place. Recovery is a process where a missing shard is reset to its respective node as a result of potentially a node going down or adding a new node. To check for active recoveries, run this query:
+
+ GET _cat/recovery?active_only=true&v=true
+
+If no rebalancing is going on and Elasticsearch data storage is not spreading equally, we’ll need further troubleshooting. The sections below will explain the troubleshooting steps in detail.
+Elasticsearch Imbalanced Data Spread: Causes & Fixes
+
+The solution to Elasticsearch not equally spreading data storage amongst the nodes will depend on the cause. The table below details common causes and their solutions.
+Causes for the uneven spread of data	Solutions
+Recent node failure/join to cluster	Check the cluster recovery progress
+Misconfigured cluster settings	Check the cluster settings as they can be pretty error prone such as the rules under cluster.routing.allocation.disk.*.
+Hotspot nodes	Check the data allocation per node, consider setting a max shard per node count
+Routing field/key without enough diversity	Manual shard routing can cause data to spread unequally; if you are using routing for tenant separation, for example, consider splitting the index to per tenant indices.
+
+We’re also going to review ways to prevent data imbalances in Elasticsearch.
+Prevention	Description
+Monitoring and choosing correct sources	Checking for potential problems via monitoring IO, latency, and hardware inconsistencies
+Avoid Premature Optimizations (default settings are the default for a reason)	Premature optimizations are one big source of evil
+Recent node failure/join to cluster
+
+When an Elasticsearch node goes down, an automatic recovery process will take place, followed by a rebalancing process, where the shard replicas are replicated across the remaining nodes of the cluster to maintain the replication factor. Rebalancing moves shards between the nodes in the cluster to improve its balance.
+
+You can check for potential cluster incidents using your preferred monitoring tool like Sematext or Kibana and lookout for outliers in your cluster nodes or in your resource usage. If you don’t have a monitoring tool set up, you can always check for the cluster health to see if there are any unallocated/initializing shards via this query:
+
+GET /_cluster/health
+
+You can also check for ongoing rebalance as we demonstrated before with the _cat/recovery query. If none of these checks reveal a cause for the imbalance, the next step is to check your cluster’s settings for misconfigurations.
+Misconfigured cluster settings
+
+While Elasticsearch will always try to maintain the most balanced possible cluster, it will always be within the shard allocation rules you have set. Data storage imbalances can occur due to customized rules and settings.
+
+Rebalancing considers shard allocation rules such as:
+
+    Cluster-level & Index-Level shard allocation filtering
+    You can use cluster-level shard allocation filters to control where Elasticsearch allocates shards i.e. you can use cluster.routing.allocation rules to allocate data to nodes with a specific tag.
+    Forced awareness
+    Forced awareness is about defining the features that will be used to allocate data into different storage units. An example of them would be racks, data centers, etc.
+    Elasticsearch, by default, assigns all of the missing replica shards to the remaining locations if you have a multi-zone cluster and one location fails. This action may cause your other locations to receive an abnormally high load. To prevent overloads at a given location and make Elasticsearch wait for the location to recover, you can use the setting cluster.routing.allocation.awareness.force, so no replicas are allocated until nodes are available in another location. This setting could cause you to have unassigned shards until all your zones are back up and rebalanced.
+    Disk-based shard allocation settings
+    This set of rules ensures that data is spread across the different nodes with hard disk taken into consideration.
+    Some of the settings you’ll have in this category:
+    Cluster.routing.allocation.disk.threshold_enabled while this is enabled by default, it means that disk is always considered when
+    Cluster.routing.allocation.disk.watermark.low has a default value of 85%, meaning that Elasticsearch will not allocate shards to nodes that have more than 85% disk used.
+    These rules clearly indicate that if there are some outliers in the node’s disk (logs, OS, or other app-related disk content), it will clearly cause shards to spread unequally across the cluster. Also, keep in mind that shards can vary in size (because they belong to different indices or because there’s routing in the same index). If just some nodes hit disk thresholds, then shards will get allocated differently than you might expect.
+
+You can check for defined settings with
+
+GET /_cluster/settings
+
+If you are using data tiers to separate your content (e.g., hot, cold, documents, etc.), then Elasticsearch automatically applies allocation filtering rules to place each shard within the appropriate tier. That means you don’t have to worry about the tiers as a whole since the balancing process works independently within each tier.
+
+Your One Stop Shop for Elasticsearch
+Learn More
+Platform	Open Source Stack	Community Help	Monitoring – Metrics, Logs. Health, Alerting SaaS	Training, Implementation & Maintenance	Production Support & Consulting
+Elasticsearch	✓	✓			
+Elasticsearch + Sematext	✓	✓	✓	✓	✓
+Hotspot nodes
+
+If too many shards from the same index exist in the same node, you have a hotspot node, and hotspot nodes are likely to have issues.
+
+A way to detect a hot spot is to use the query:
+
+GET _cat/nodes?h=node,ram.percent,cpu,load_1m,disk.used_percent&v
+
+Should give you a response that looks like this:
+
+ram.percent cpu load_1m disk.used_percent
+        79   4    0.06      31.70
+        75   2    0.03      31.24
+        73   6    0.03      31.50
+
+This query should help you to quickly spot any outliers between the nodes in your cluster, and keep in mind minor differences are always expected, but you should be able to have a timeseries graph of this data via some monitoring tool like Sematext Cloud for best visibility, because load will vary over time:
+
+Another thing to keep an eye on is the shard count per node. You can check for that via
+
+GET _cat/shards?h=index,shard,prirep,node&v
+
+In the case of skew in shard spread, a quick solution to this problem is setting an explicit value for the number of shards to be allocated per node:
+
+Index.routing.allocation.total_shards_per_node
+
+from the update index settings API. However, you should keep in mind that setting this value, especially a value without an adequate safety margin, can cause some shards to remain unallocated since it’s a hard limit (this can happen in cases of node failure if the other nodes are out of resources).
+
+You have set the max number of shards per node, but what if there is a hot shard? In this case, you’ll have equally spread shard counts, but the content is denser in one compared to the other due to reasons like misusing routing fields.
+
+You could also have a case of a hot index, which is one very common reason for data imbalance. Elasticsearch tries to balance shards equally, but it doesn’t rely on the size of shards or how much load they take. But if the number of shards doesn’t divide by the number of nodes, you’ll likely have an imbalance.
+Routing field/key without enough diversity
+
+Setting a routing key for the indexed data can be a performance tweak. However, this tweak will depend heavily on your data and the good usage of this feature.
+
+If you’re using this feature with a field like tenantId then keep in mind that you have to be aware of how big or small each tenant is since that will directly affect the spread of data.
+
+Elasticsearch uses _id field as a routing field by default. Setting the routing field for an index to the wrong field where you have too many repeated values of some type can cause you to end up with uneven-sized shards.
+
+You’ll need to check your indexing requests and check your used field. That query looks like this:
+
+PUT user-index/_doc/1?routing=company1
+{
+    "name": "john",
+    "lastName": "doe",
+}
+
+If the routing key you used (company1 in our example) is too frequently related to other keys you used and there isn’t enough key diversity across your data, you’ll run into some issues. The issues arise because data is routed to a specific shard based on this formula:
+
+routing_factor = num_routing_shards / num_primary_shards
+shard_num = (hash(_routing) % num_routing_shards) / routing_factor,
+
+For example, if you have four shards and used in total four keys “company1”,”company2″…, shard allocation will depend directly on the data spread across those keys. Therefore, if docs routed using “company1” key are much more common than “company2” you’ll end up with very uneven shard allocation.
+
+A way out of this problem is to be watchful about why you have this routing field and try to think about the following:
+
+    Do you use this routing field in the first place in your queries? If not you can reindex your data without it.
+    Do you have a few large (tenants pre the example) and the others are much smaller? Then you need to consider to take out larger tenants to their respective indices and keep the other “tenants” in the original index.
+
+How to prevent Elasticsearch data storage imbalances
+
+There are many steps you can take to help us avoid data inconsistent spread in Elasticsearch. However, two essential practices can reduce the frequency and scope of data imbalances: monitoring and proper configuration.
+Does your cluster math hold?
+
+An initial point to think of is making sure the number of shards per index is a multiplier of the number of nodes; this is a very common problem that is often overlooked. You can always validate your clus href=”https://gbaptista.github.io/elastic-calculator/”>this tool.
+Monitoring
+
+To maintain a healthy Elasticsearch data storage balance, you should monitor these categories of metrics at a minimum:
+
+    IO and Latency: the first metrics to look out for to measure the load under which your cluster lies and be watchful if there are unexplained spikes.
+
+    Memory: Elasticsearch runs on JVM therefore, the memory heap for Elasticsearch should maintain a moderately used heap memory to indicate the healthiness of the node. Here’s a view from Sematext Cloud:
+
+    Network: Elasticsearch is often deployed in the cloud, so network quotas are a common bottleneck to keep an eye on.
+
+    CPUs: Elasticsearch housekeeping jobs will always run in the background. If you do not have enough resources, those jobs (such as merging and refreshing) could fail to run, and you can end up with imbalanced shard sizes.
+
+Once you see a problem with any relevant metrics, you can respond and address them before they create major issues.
+
+For insights on relevant metrics, see our blog post on important Elasticsearch metrics to watch and alert on.
+Avoid Premature Optimizations
+
+Default Settings in Elasticsearch are already reasonable and, most of the time and don’t need to be changed unless you have a specific purpose — like security hardening or performance optimization to address a specific use case — err on the side of the default settings.
+
+As we have explained above we can notice that there are many cases where, if you’re changing the default manner Elasticsearch works, whether it’s cluster settings or using routing keys. It is very important to be aware of the consequences of each change of the default values and not touch them unless necessary.
+Summary
+
+Cluster misconfiguration and suboptimal architecture are common reasons your Elasticsearch data spread imbalances can occur.
+
+With the troubleshooting steps we’ve covered in this article, such as keeping your default configurations as-is, setting the number of shards as a multiplier to the number of nodes, and checking your allocation filtering rules; you can be better prepared to address problems as they happen.
+
+Additionally, by taking simple preventative measures, most importantly monitoring, along with keeping an open eye on metrics, you can reduce the risk of imbalances impacting your Elasticsearch implementation.
+
 * Cheet sheet
 
 - [[https://www.elastic.co/guide/en/elasticsearch/reference/current/xpack-ccr.html][Cross-cluster replication | Elasticsearch Guide [7.15] | Elastic]]
