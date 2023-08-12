@@ -9,6 +9,7 @@
   : docker run -d -p 80:8080 -v $(pwd):/tmp -e SWAGGER_FILE=/tmp/swagger.json swaggerapi/swagger-editor
 - [[https://github.com/public-api-lists/public-api-lists][public-api-lists/public-api-lists: A collective list of free APIs for use in software and web development 🚀 (Clone of https://github.com/public-apis/public-apis)]]
 - [[https://github.com/t9tio/cloudquery][t9tio/cloudquery: Turn any website to API by several clicks (serverless and support SPA!)]]
+- [[https://github.com/open-meteo/open-meteo][open-meteo/open-meteo: Free Weather Forecast API for non-commercial use]]
 
 * Learning
 - [[https://habr.com/ru/companies/otus/articles/737610/][Исчерпывающее руководство по различным типам API / Хабр]]
