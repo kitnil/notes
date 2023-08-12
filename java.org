@@ -395,6 +395,7 @@ public class HttpGet {
 Note that this program is a very basic example and doesn't handle errors or exceptions that may occur while fetching the content. In a real-world scenario, you would want to handle these cases properly.
 
 * Tools
+- [[https://github.com/AdoptOpenJDK/jlink.online][AdoptOpenJDK/jlink.online: Build optimized Java runtimes in your browser!]]
 - [[https://github.com/Body-Alhoha/Remake][Body-Alhoha/Remake: Library to modify java classes bytecode]]
 - [[https://github.com/brianmcgee/nix-gradle-sample][brianmcgee/nix-gradle-sample: Examples of building Gradle packages with Nix]]
 - [[https://github.com/Col-E/Recaf][Col-E/Recaf: The modern Java bytecode editor]]
