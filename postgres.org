@@ -28,6 +28,7 @@
 - [[https://github.com/MovingLake/pg_webhook][MovingLake/pg_webhook: This repo plugs to a replication slot of a Postgres database, and sends webhooks for any change that happens in the database.]]
 - [[https://github.com/neondatabase/neon][neondatabase/neon: Neon: Serverless Postgres. We separated storage and compute to offer autoscaling, branching, and bottomless storage.]]
 - [[https://github.com/oguimbal/pg-mem][oguimbal/pg-mem: An in memory postgres DB instance for your unit tests]]
+- [[https://github.com/omniti-labs/pg_amqp][omniti-labs/pg_amqp: AMQP Support for Postgres]]
 - [[https://github.com/orioledb/orioledb][orioledb/orioledb: OrioleDB – building a modern cloud-native storage engine (... and solving some PostgreSQL wicked problems)]]
 - [[https://github.com/Paxa/postbird][Paxa/postbird: Open source PostgreSQL GUI client for macOS, Linux and Windows]]
 - [[https://github.com/pgautoupgrade/docker-pgautoupgrade][pgautoupgrade/docker-pgautoupgrade: A PostgreSQL Docker container that automatically upgrades your database]]
