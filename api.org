@@ -1,15 +1,15 @@
 :PROPERTIES:
 :ID:       74ecebb0-e9ff-47a0-a712-dc3633111476
 :END:
-- [[https://github.com/vivirenremoto/free-public-api][vivirenremoto/free-public-api: A bunch of APIs to solve small problems]]
 - [[https://github.com/egno/work-calendar][egno/work-calendar: Work calendar service]]
 - [[https://github.com/OAI/OpenAPI-Specification/blob/main/versions/3.0.3.md][OpenAPI-Specification/3.0.3.md at main · OAI/OpenAPI-Specification]]
+- [[https://github.com/open-meteo/open-meteo][open-meteo/open-meteo: Free Weather Forecast API for non-commercial use]]
+- [[https://github.com/public-api-lists/public-api-lists][public-api-lists/public-api-lists: A collective list of free APIs for use in software and web development 🚀 (Clone of https://github.com/public-apis/public-apis)]]
 - [[https://github.com/swagger-api/swagger-editor][swagger-api/swagger-editor: Swagger Editor]]
   : docker run -d -p 80:8080 -e URL="https://petstore3.swagger.io/api/v3/openapi.json" swaggerapi/swagger-editor
   : docker run -d -p 80:8080 -v $(pwd):/tmp -e SWAGGER_FILE=/tmp/swagger.json swaggerapi/swagger-editor
-- [[https://github.com/public-api-lists/public-api-lists][public-api-lists/public-api-lists: A collective list of free APIs for use in software and web development 🚀 (Clone of https://github.com/public-apis/public-apis)]]
 - [[https://github.com/t9tio/cloudquery][t9tio/cloudquery: Turn any website to API by several clicks (serverless and support SPA!)]]
-- [[https://github.com/open-meteo/open-meteo][open-meteo/open-meteo: Free Weather Forecast API for non-commercial use]]
+- [[https://github.com/vivirenremoto/free-public-api][vivirenremoto/free-public-api: A bunch of APIs to solve small problems]]
 
 * Learning
 - [[https://habr.com/ru/companies/otus/articles/737610/][Исчерпывающее руководство по различным типам API / Хабр]]
