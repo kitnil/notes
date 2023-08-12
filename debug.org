@@ -1,1 +1,125 @@
 - [[https://github.com/grafana/phlare][grafana/phlare: 🔥 horizontally-scalable, highly-available, multi-tenant continuous profiling aggregation system]]
+
+* [[https://developers.redhat.com/blog/2019/10/14/introducing-debuginfod-the-elfutils-debuginfo-server#][Introducing debuginfod, the elfutils debuginfo server | Red Hat Developer]]
+
+Because bugs are inevitable, developers need quick and easy access to the artifacts that debugging tools like Systemtap and GDB depend on, which are typically DWARF (Debugging With Attributed Record Formats) debuginfo or source files. Accessing these resources should not be an issue when debugging your own local build tree, but all too often they are not readily available.
+
+For example, your distro might package debuginfo and source files separately from the executable you're trying to debug and you may lack the permissions to install these packages. Or, perhaps you're debugging within a container that was not built with these resources, or maybe you simply don't want these files taking up space on your machine.
+
+Debuginfo files are notorious for taking up large amounts of space, and it is not unusual for their size to be five to fifteen times that of the corresponding executable. debuginfod aims to resolve these problems.
+What is debuginfod and how does it work?
+
+debuginfod is an HTTP file server that serves debugging resources to debugger-like tools. The server periodically scans directory trees and RPM archives to extract the build IDs of any executable and debuginfo files found. It contains an SQLite database that indexes build IDs to file names or (package, content) tuples.
+
+A build ID is a unique hash code embedded into object files as an ELF note:
+
+$ eu-readelf -n foo | grep Build.ID
+    Build ID: be1743a97c6afb4a066a93c57499e9fba41cbcd5
+
+These IDs have been enabled by default in GCC for 10 years and they are supported by LLVM. For more information, see the Fedora wiki.
+
+debuginfod also serves source files associated with a particular build ID. Because the source files themselves do not contain a build ID, debuginfod relies on the build ID and source path information contained in the corresponding debuginfo or executable in order to determine the source file's location.
+How do I use debuginfod?
+
+Here is an example:
+
+$ debuginfod -vv -R /var/tmp/rpmbuild -F /usr/lib/debug
+[...] Opened database /home/amerey/.debuginfod.sqlite
+[...] Searching for ELF/DWARF files under /usr/lib/debug
+[...] Searching for RPMs under /var/tmp/rpmbuild
+[...] fts/rpm traversed /var/tmp/rpmbuild [...] debuginfo=386, executable=0, sourcerefs=34119, sourcedefs=3398
+[...] fts traversed /usr/lib/debug [...] debuginfo=8071, executables=2, source=1958339
+[...] Started http server on IPv4 IPv6 port=8002
+
+To query the server, we can use the debuginfod-find command-line tool, which is packaged with debuginfod. The debuginfod-find command queries the URLs contained in the $DEBUGINFOD_URLS environment variable for a particular debuginfo, executable or source file. If the file is successfully retrieved, the command stores it in a local cache and prints the file's path:
+
+$ export DEBUGINFOD_URLS="http://buildhost:8002/"
+$ debuginfod-find source BUILD-ID /path/to/foo.c
+/home/amerey/.debuginfod_client_cache/source#path#to#foo#c
+$ debuginfod-find debuginfo BUILD-ID
+/home/amerey/.debuginfod_client_cache/debuginfo
+
+debuginfod also includes a shared library, libdebuginfod, that enables tools to query debuginfod servers for debuginfo, executables, or source files using just a build ID (and path, if attempting to fetch a source file). As with debuginfod-find, files are downloaded from the server to a local cache and made available to the tool without requiring any special permissions.
+
+One option for adding debuginfod client support to a tool is to add a fallback in the code where servers are queried for a file when the tool is otherwise not able to locate the file. This implementation allows for debuginfod functionality to be added without having to alter the tool's usual behavior (although, of course, libdebuginfod can be integrated any way the developer sees fit).
+
+We have prototyped debuginfod clients for elfutils and GDB (see the "How do I get debuginfod?" section for more information). The following block of code is based on a patch that adds debuginfod functionality to GDB's debuginfo lookup routine. This prototype demonstrates that debuginfod client functionality requires only a small amount of code:
+
+#if HAVE_LIBDEBUGINFOD 
+  if ([separate debuginfo should exist but was not found])
+    {
+      const struct bfd_build_id *build_id;
+      char *debugfile_path;
+
+      build_id = build_id_bfd_get (objfile->obfd);
+      int fd = debuginfod_find_debuginfo (build_id->data,
+                                          build_id->size,
+                                          &debugfile_path);
+
+      if (fd >= 0)
+        {
+          /* debuginfo successfully retrieved from server.  */
+          gdb_bfd_ref_ptr debug_bfd (symfile_bfd_open (debugfile_path));
+          symbol_file_add_separate (debug_bfd.get (), debugfile_path,
+                                    symfile_flags, objfile);
+          close (fd);
+          free (debugfile_path);
+        }
+    }
+#endif /* LIBDEBUGINFOD */
+
+We pass the build ID of the target debuginfo file to debuginfod_find_debuginfo(). The function queries debuginfod servers for the file, and if it's successfully retrieved, a file descriptor and path of the local copy of the file are made available to GDB, which opens the file using the Binary File Descriptor (BFD) library and associates it with the corresponding object file that we are attempting to debug.
+
+Additionally, elfutils-based tools such as Systemtap automatically inherit debuginfod functionality from the elfutils debuginfod client. Suppose we try to run the stap and gdb commands with an executable, foo, for which we have no debuginfo or source code locally. We also lack Glibc debuginfo and source files:
+
+$ stap -e 'probe process("/path/to/foo").function("*") { [...] }'
+semantic error: while resolving probe point: identifier 'process' at t.stp:1:7
+            source: probe process("/path/to/foo").function("*") {
+semantic error: no match
+$ gdb /path/to/foo
+[...]
+Reading symbols from /path/to/foo...
+(No debugging symbols found in /path/to/foo)
+
+We can start up a debuginfod server on a remote machine with foo's build tree and the Glibc debuginfo RPM and make them available to the stap and gdb instances on our local machine:
+
+$ debuginfod -p PORT -F foo_build/ -R debug_rpms/
+[...]
+[...] Started http server on IPv6 IPv6 port=PORT
+
+$ export DEBUGINFOD_URLS="http://foobuildhost:PORT/"
+$ stap -v -e probe process("/path/to/foo").function("*") { [...] }'
+[...]
+Pass 5: starting run
+^C
+$ gdb /path/to/foo
+[...]
+Reading symbols from /home/amerey/.debuginfod_client_cache/debuginfo...
+(gdb) break printf
+[...]
+(gdb) run
+[...]
+Breakpoint 1, __printf (format=0x40201e, "main\n") at printf.c:28
+28        {
+(gdb) list
+[...]
+26        int
+27        __printf (const char *format, ...)
+28        {
+29          va_list arg;
+30          int done;
+[...]
+
+Now that we are able to acquire the necessary files from a debuginfod server, we are able to successfully probe foo with stap (as indicated by "Pass 5: starting run"), and with gdb we are able to debug and view the source code of foo in addition to any of its calls to C library functions. In case the server cannot find a target file, debuginfod can be easily configured to delegate requests to other debuginfod servers. To do this simply include the URLs of other debuginfod servers in the $DEBUGINFOD_URL environment variable.
+How do I get debuginfod?
+
+Currently, prototypes of the debuginfod server, command-line interface, and shared library—along with documentation—are available from the elfutils Git repository. debuginfod is planned for inclusion in a future elfutils release. A prototype GDB client is available on an experimental branch of the GDB Git repository. The debuginfod binaries are also available on Fedora COPR, which can be downloaded from the command-line as follows:
+
+yum copr enable fche/elfutils
+yum -y install elfutils-debuginfod
+
+What's next for debuginfod?
+
+We are working toward adding debuginfod client functionality to other tools, such as binutils and LLDB. We also plan on supporting the Debian package format, running a debuginfod server on Fedora's Koji build system, and expanding debuginfod's web API to support DWARF content queries.
+
+Help or feedback is always appreciated. Get in contact with us on elfutils-devel@sourceware.org or the #elfutils channel on irc.freenode.net.
