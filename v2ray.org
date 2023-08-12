@@ -1,0 +1,99 @@
+* [[https://krasovs.ky/2022/03/19/shadowsocks-and-v2ray-and-cloudflare.html][Ещё более изощренный обход блокировок с помощью Shadowsocks + V2Ray + Cloudflare]]
+
+В прошлой статье я разобрал вариант с Cloak, однако меня не устроила умеренная сложность конфигурации клиентской части, а также меньшая популярность и, следовательно, развитие проекта по сравнению с V2Ray.
+
+Использование Cloudflare в описанном ниже способе позволило повысить пропускную способность канала. На Нидерландском сервере я получил в районе 450 мегабит через Cloudflare, вместо 250-300 напрямую с Cloak.
+План
+
+Весь трафик завернуть на Cloudflare, который отправит его к нам на VPS. Сдобрить обфускацией от V2Ray и сам сервер спрятать под видом совершенно безобидного ресурса.
+На практике это будет выглядеть как-то так
+Ингредиенты
+
+    VPS в Европе.
+    Домен в любой зоне (желательно не .ru/.su/.рф)
+    Аккаунт на Cloudflare.
+    shadowsocks-rust.
+    v2ray-plugin (лучше использовать форк, там свежий v2ray-core).
+    HTTP-сервер, nginx в нашем случае.
+    SSL-сертификат полученный от Let’s Encrypt или непосредственно Cloudflare.
+
+Рецепт
+
+    Ставим в систему shadowsocks-rust и v2ray-plugin, сконфигурировать их легко вот таким конфигом в /etc/shadowsocks-rust/v2ray.json:
+
+{
+  "server": "localhost",
+  "server_port": 8443,
+  "method": "chacha20-ietf-poly1305",
+  "password": "yourpass",
+  "plugin": "v2ray-plugin",
+  "plugin_opts": "server"
+}
+
+    Создаём для Shadowsocks systemd-сервис по аналогии с прошлой статьёй (пункты 5-7).
+    Получаем сертификат через certbot или через Cloudflare. Детально расписывать не буду, инструкций в интернете масса.
+    Ставим nginx, заводим следующий конфиг в /etc/nginx/sites-available/v2ray:
+
+server {
+	listen 80;
+	server_name _;
+
+	return 301 https://$host$request_uri;
+}
+
+server {
+	listen 443 ssl http2;
+	server_name yourdomain.wtf;
+
+	ssl_certificate			/etc/letsencrypt/live/yourdomain.wtf/fullchain.pem;
+	ssl_certificate_key		/etc/letsencrypt/live/yourdomain.wtf/privkey.pem;
+	ssl_trusted_certificate		/etc/letsencrypt/live/yourdomain.wtf/chain.pem;
+
+	# Здесь можно проксировать запросы на какой-нибудь весёлый сайт
+	location / {
+		proxy_pass https://innocent.domain.lol;
+	}
+
+	# Локацию можно сделать длинной, чтобы её никто не смог угадать.
+	location /v2ray {
+		proxy_set_header	Host		$http_host;
+		proxy_set_header	Upgrade		$http_upgrade;
+		proxy_set_header	Connection	"upgrade";
+
+		proxy_http_version 1.1;
+		proxy_buffering off;
+		proxy_redirect off;
+
+		proxy_pass http://localhost:8443/;
+	}
+}
+
+Не забудьте сделать symlink и перезагрузить nginx:
+
+# ln -s /etc/nginx/sites-available/v2ray /etc/nginx/sites-enabled/v2ray
+# systemctl reload nginx
+
+    Заходим в Cloudflare в раздел DNS, создаём A-запись, указывающую на ваш сервер, оставляем Proxy включенным.
+    В разделе SSL/TLS включаем режим Full (strict), минимальную версию TLS можно повысить до 1.2/1.3 в зависимости от поддержки актуальных протоколов вашими устройствами.
+    Наконец настроим клиент:
+
+{
+  "server": "yourdomain.wtf",
+  "server_port": 443,
+  "method": "chacha20-ietf-poly1305",
+  "password": "yourpass",
+  "plugin": "v2ray-plugin",
+  "plugin_opts": "tls;host=yourdomain.wtf;path=/v2ray",
+  "local_address": "localhost",
+  "local_port": 1080
+}
+
+Рекомендации
+
+Опционально можно прокачать производительность, и увеличить безопасность. Максимальное количество файлов рассчитано по формуле 1 ядро = 65536 файловых дескриптора.
+/etc/sysctl.d/20-shadowsocks.conf
+/etc/nginx/nginx.conf
+/etc/nginx/whitelist.conf
+/etc/security/limits.conf
+/etc/security/limits.conf
+/etc/shadowsocks-rust/v2ray.json
