@@ -2003,6 +2003,7 @@ builtins.match "php([[:alnum:]])([[:alnum:]])" "php70"
 - [[https://nixos.wiki/wiki/Nix-writers][Nix-writers - NixOS Wiki]]
 - [[https://github.com/nlewo/hydra-cli][nlewo/hydra-cli: A client for the Hydra Nix CI]]
 - [[https://github.com/numtide/nar-serve][numtide/nar-serve: Unpack and serve NAR file content on the fly]]
+- [[https://github.com/numtide/nixos-anywhere][numtide/nixos-anywhere: install nixos everywhere via ssh]]
 - [[https://github.com/numtide/system-manager][numtide/system-manager: Manage system config using nix on any distro]]
 - [[https://github.com/oxalica/nil][oxalica/nil: NIx Language server, an incremental analysis assistent for writing in Nix.]]
 - [[https://github.com/peterldowns/nix-search-cli][peterldowns/nix-search-cli: CLI for searching packages on search.nixos.org]]
