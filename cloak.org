@@ -1,0 +1,132 @@
+* [[https://krasovs.ky/2022/03/08/shadowsocks-and-cloak.html][Обход блокировок с помощью Shadowsocks + Cloak]]
+
+В свете последних событий и угрозы наступления пресловутого Чебурнета нам видимо придётся прибегнуть к китайскому опыту обхода блокировок. На мой взгляд связка Shadowsocks + Cloak позволяет довольно элегантно замаскировать весь трафик под обычные HTTPS-соединения к ресурсу, который не заблокирован в стране (например Яндекс).
+
+Используя Raspberry Pi 4B, заказанную у известного хостера, я получил около 450 мегабит на загрузку и 550 на отдачу. Эта скорость вероятно ограничена производительностью непосредственно Raspberry, с нормальным x86-сервером результаты должны быть даже лучше.
+Собственно инструкция
+
+    Скачиваем последние версии shadowsocks-rust и Cloak из раздела релизов. Кладём их, например, в /usr/local/bin. Ниже лишь пример, ваш сервер может иметь другую архитектуру.
+
+$ curl -LO https://github.com/shadowsocks/shadowsocks-rust/releases/download/v1.14.1/shadowsocks-v1.14.1.x86_64-unknown-linux-gnu.tar.xz
+$ curl -LO https://github.com/cbeuw/Cloak/releases/download/v2.5.5/ck-client-linux-amd64-v2.5.5
+$ tar -xvf shadowsocks-v1.14.1.x86_64-unknown-linux-gnu.tar.xz
+$ sudo mv ss* /usr/local/bin
+$ sudo mv ck-client-linux-amd64-v2.5.5 /usr/local/bin/ck-client
+
+    Конфигурируем сервер shadowsocks примерно следующим образом:
+
+# nano /etc/shadowsocks-rust/cloak.json
+
+{
+  "server": "localhost",
+  "server_port": 8388,
+  "method": "chacha20-ietf-poly1305",
+  "password": "yourpass",
+  "timeout": 7200,
+  "nofile": 10240,
+  "plugin": "ck-server",
+  "plugin_opts": "/etc/shadowsocks-rust/ckserver.json"
+}
+
+    Генерируем с помощью ck-server UID и пару ключей, записываем их куда-нибудь:
+
+$ ck-server -u
+$ ck-server -key
+
+    Конфигурируем сервер Cloak примерно следующим образом, используем значения, полученные ранее:
+
+# nano /etc/shadowsocks-rust/ckserver.json
+
+{
+  "RedirAddr": "www.yandex.ru",
+  "BindAddr": [":443",":80"],
+  "ProxyBook": {
+    "shadowsocks": [
+      "tcp",
+      "localhost:8388"
+    ]
+  },
+  "PrivateKey": "privkey_from_previous_step",
+  "BypassUID": ["uid_from_previous_step"]
+}
+
+    В качестве меры безопасности режем права. К сожалению на ckserver.json нельзя накинуть 0600, иначе процесс не сможет прочитать файл, однако основной пароль будет надёжно защищён.
+
+# chmod 0644 /etc/shadowsocks-rust/ckserver.json
+# chmod 0600 /etc/shadowsocks-rust/cloak.json
+
+    Создаём безопасный systemd-сервис для Shadowsocks (Cloak будет запускаться сам, как плагин):
+
+# nano /etc/systemd/system/shadowsocks-rust-server@.service
+
+[Unit]
+Description=Shadowsocks-Rust Server Service
+After=network.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+DynamicUser=yes
+CapabilityBoundingSet=CAP_NET_BIND_SERVICE
+AmbientCapabilities=CAP_NET_BIND_SERVICE
+LoadCredential=%i.json:/etc/shadowsocks-rust/%i.json
+ExecStart=/usr/local/bin/ssservice server --log-without-time -c ${CREDENTIALS_DIRECTORY}/%i.json
+
+[Install]
+WantedBy=multi-user.target
+
+    Включаем и запускаем сервис shadowsocks:
+
+# systemctl daemon-reload
+# systemctl enable shadowsocks-rust-server@cloak.service
+# systemctl start shadowsocks-rust-server@cloak.service
+
+    Наконец конфигурируем клиент Cloak на хосте (им может быть ПК, Мак, смартфон):
+
+{
+  "server": "yourdomain.wtf",
+  "server_port": 443,
+  "method": "chacha20-ietf-poly1305",
+  "password": "yourpass",
+  "plugin": "ck-client",
+  "plugin_opts": "UID=uid_from_previous_step;ProxyMethod=shadowsocks;PublicKey=pubkey_from_previous_step;EncryptionMethod=plain;ServerName=www.yandex.ru;AlternativeNames=mail.ru,vk.com",
+  "local_address": "localhost",
+  "local_port": 1080
+}
+
+Дополнительные советы
+Firewall
+
+Если есть файрволл, то необходимо открыть на нём два порта: 80 и 443.
+Удобный URI для передачи настроек
+
+Также для удобства можно сделать URI, который позволяет передавать быстро всю конфигурацию в виде одной строчки:
+
+ss:// + base64encode("chacha20-ietf-poly1305:yourpass") + @yourdomain.org:443?plugin= + urlencode("ck-client;UID=uid_from_previous_step;ProxyMethod=shadowsocks;PublicKey=pubkey_from_previous_step;EncryptionMethod=plain;ServerName=www.yandex.ru;AlternativeNames=mail.ru,vk.com")
+
+Другими словами финальный URI будет выглядеть так:
+
+ss://Y2hhY2hhMjAtaWV0Zi1wb2x5MTMwNTp5b3VycGFzcw@yourdomain.org:443?plugin=ck-client%3BUID%3Duid_from_previous_step%3BProxyMethod%3Dshadowsocks%3BPublicKey%3Dpubkey_from_previous_step%3BEncryptionMethod%3Dplain%3BServerName%3Dwww.yandex.ru%3BAlternativeNames%3Dmail.ru%2Cvk.com
+
+Этот URI поддерживается многими приложениями, включая Shadowrocket на iOS. Покупайте, кстати, пока ещё можно.
+Хостинг настроек
+
+Сообществом был принят стандарт SIP008, который позволяет автоматически скачивать настройки с помощью JSON-файла, размещённого на веб-сервере. Структура файла выглядит примерно так:
+
+{
+  "version": 1,
+  "servers": [
+    {
+      "id": "27b8a625-4f4b-4428-9f0f-8a2317db7c79",
+      "remarks": "Name of the server",
+      "server": "yourdomain.wtf",
+      "server_port": 443,
+      "method": "chacha20-ietf-poly1305",
+      "password": "yourpass",
+      "plugin": "ck-client",
+      "plugin_opts": "UID=uid_from_previous_step;ProxyMethod=shadowsocks;PublicKey=pubkey_from_previous_step;EncryptionMethod=plain;ServerName=www.yandex.ru;AlternativeNames=mail.ru,vk.com"
+    }
+  ]
+}
+
+Серверов, очевидно, может быть несколько. Многие приложения поддерживают данный способ конфигурации.
