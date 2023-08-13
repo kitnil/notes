@@ -21,6 +21,9 @@
   : virsh setmaxmem --config win10 6G
   : virsh setmem --config win10 6G
 
+- show memory
+  : virsh dominfo win10 | grep -i memory
+
 * virt-manager
 
 #+begin_example
