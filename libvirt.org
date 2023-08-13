@@ -17,6 +17,10 @@
 - remove virtual machine with all storage
   : virsh undefine --domain mysql-server --remove-all-storage --delete-snapshots 
 
+- set memory
+  : virsh setmaxmem --config win10 6G
+  : virsh setmem --config win10 6G
+
 * virt-manager
 
 #+begin_example
