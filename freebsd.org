@@ -22,3 +22,6 @@ https://blog.rot13.org/2005/12/a-day-with-freebsd-via-qemu-th.html
     root@:~ # chflags -R noschg /jenkins
     root@:~ # rm -rf /jenkins
   #+end_example
+
+* Learning
+- [[https://www.linkedin.com/pulse/howto-diskless-freebsd-setup-vigneshwaran-ravichandran/][[HowTo] Diskless FreeBSD Setup]]
