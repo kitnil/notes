@@ -10,3 +10,8 @@
 - [[https://habr.com/ru/company/ruvds/blog/568614/][Шпаргалка по метрикам производительности cURL: как измерить задержку сервера / Блог компании RUVDS.com / Хабр]]
 - [[https://github.com/lwthiker/curl-impersonate][lwthiker/curl-impersonate: A special compilation of curl that makes it impersonate Firefox]]
 - [[https://github.com/curl/trurl][curl/trurl: trurl is a command line tool for URL parsing and manipulation.]]
+
+* Cheat sheet
+
+- FTP TLS check
+  : curl --verbose --ssl-reqd ftp://web15.majordomo.ru
