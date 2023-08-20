@@ -92,24 +92,24 @@ peer.
 https://git.zx2c4.com/WireGuard/tree/src/receive.c#n351
 
 * Misc
-- [[https://github.com/tonarino/innernet][tonarino/innernet: A private network system that uses WireGuard under the hood.]]
-- [[https://github.com/WeeJeWel/wg-easy][WeeJeWel/wg-easy: The easiest way to run WireGuard VPN + Web-based Admin UI.]]
-- [[https://github.com/juanfont/headscale][juanfont/headscale: An open source, self-hosted implementation of the Tailscale control server]]
-- [[https://github.com/tailscale/tailscale][tailscale/tailscale: The easiest, most secure way to use WireGuard and 2FA.]]
-- [[https://github.com/subspacecloud/subspace][subspacecloud/subspace: A simple WireGuard VPN server GUI]]
-- [[https://github.com/seashell/drago][seashell/drago: Securely connect anything with WireGuard® and manage all your networks from a single place.]]
-- [[https://github.com/freifunkMUC/wg-access-server][freifunkMUC/wg-access-server: An all-in-one WireGuard VPN solution with a web ui for connecting devices]]
-- [[https://github.com/octeep/wireproxy][octeep/wireproxy: Wireguard client that exposes itself as a socks5 proxy]]
-- [[https://github.com/netbirdio/netbird][netbirdio/netbird: Connect your devices into a single secure private WireGuard®-based mesh network.]]
-- [[https://github.com/k4yt3x/wg-meshconf][k4yt3x/wg-meshconf: WireGuard full mesh configuration generator.]]
-- [[https://github.com/IAmStoxe/wirehole][IAmStoxe/wirehole: WireHole is a combination of WireGuard, Pi-hole, and Unbound in a docker-compose project with the intent of enabling users to quickly and easily create a personally managed full or split-tunnel WireGuard VPN with ad blocking capabilities thanks to Pi-hole, and DNS caching, additional privacy options, and upstream providers via Unbound.]]
 - [[https://github.com/AlexMKX/mrvpn][AlexMKX/mrvpn: Multi-Route VPN]]
 - [[https://github.com/candiddev/vault-plugin-secrets-wireguard][candiddev/vault-plugin-secrets-wireguard: Wireguard secrets engine for Vault]]
-- [[https://github.com/sandialabs/wiretap][sandialabs/wiretap: Wiretap is a transparent, VPN-like proxy server that tunnels traffic via WireGuard and requires no special privileges to run.]]
-- [[https://github.com/rosenpass/rosenpass][rosenpass/rosenpass: Rosenpass is a formally verified, post-quantum secure VPN that uses WireGuard to transport the actual data.]]
-- [[https://github.com/ngoduykhanh/wireguard-ui][ngoduykhanh/wireguard-ui: Wireguard web interface]]
+- [[https://github.com/freifunkMUC/wg-access-server][freifunkMUC/wg-access-server: An all-in-one WireGuard VPN solution with a web ui for connecting devices]]
+- [[https://github.com/IAmStoxe/wirehole][IAmStoxe/wirehole: WireHole is a combination of WireGuard, Pi-hole, and Unbound in a docker-compose project with the intent of enabling users to quickly and easily create a personally managed full or split-tunnel WireGuard VPN with ad blocking capabilities thanks to Pi-hole, and DNS caching, additional privacy options, and upstream providers via Unbound.]]
+- [[https://github.com/juanfont/headscale][juanfont/headscale: An open source, self-hosted implementation of the Tailscale control server]]
+- [[https://github.com/k4yt3x/wg-meshconf][k4yt3x/wg-meshconf: WireGuard full mesh configuration generator.]]
 - [[https://github.com/MindFlavor/prometheus_wireguard_exporter][MindFlavor/prometheus_wireguard_exporter: A Prometheus exporter for WireGuard, written in Rust.]]
+- [[https://github.com/netbirdio/netbird][netbirdio/netbird: Connect your devices into a single secure private WireGuard®-based mesh network.]]
+- [[https://github.com/ngoduykhanh/wireguard-ui][ngoduykhanh/wireguard-ui: Wireguard web interface]]
+- [[https://github.com/octeep/wireproxy][octeep/wireproxy: Wireguard client that exposes itself as a socks5 proxy]]
+- [[https://github.com/rosenpass/rosenpass][rosenpass/rosenpass: Rosenpass is a formally verified, post-quantum secure VPN that uses WireGuard to transport the actual data.]]
+- [[https://github.com/sandialabs/wiretap][sandialabs/wiretap: Wiretap is a transparent, VPN-like proxy server that tunnels traffic via WireGuard and requires no special privileges to run.]]
+- [[https://github.com/seashell/drago][seashell/drago: Securely connect anything with WireGuard® and manage all your networks from a single place.]]
+- [[https://github.com/subspacecloud/subspace][subspacecloud/subspace: A simple WireGuard VPN server GUI]]
+- [[https://github.com/tailscale/tailscale][tailscale/tailscale: The easiest, most secure way to use WireGuard and 2FA.]]
+- [[https://github.com/tonarino/innernet][tonarino/innernet: A private network system that uses WireGuard under the hood.]]
 - [[https://github.com/webmeshproj/webmesh][webmeshproj/webmesh: A simple, distributed, zero-configuration WireGuard mesh provider]]
+- [[https://github.com/WeeJeWel/wg-easy][WeeJeWel/wg-easy: The easiest way to run WireGuard VPN + Web-based Admin UI.]]
 
 * ChatGPT
 
