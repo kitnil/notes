@@ -691,8 +691,11 @@ If you get any output (there are lines with the “Remote failed to finish a req
 ** API
 - [[https://app.swaggerhub.com/apis-docs/Linstor/Linstor/1.19.0#/developers/nodeList][Linstor | 1.19.0 | Linstor | SwaggerHub]]
 
-- request example
+- request example via nsenter on linstor controller node
   : sudo nsenter -t 1151 -n curl --cacert /proc/1151/root/etc/linstor/client/ca.crt --cert /proc/1151/root/etc/linstor/client/tls.crt --key /proc/1151/root/etc/linstor/client/tls.key -L -v -X 'GET' 'http://localhost:3370/v1/nodes' -H 'accept: application/json'
+
+- request example via kubectl
+  : kubectl -n piraeus exec piraeus-op-cs-controller-647f746677-rzqhz -- curl --cacert /etc/linstor/client/ca.crt --cert /etc/linstor/client/tls.crt --key /etc/linstor/client/tls.key -L -v -X GET 'http://localhost:3370/v1/view/storage-pools' -H 'accept: application/json'
 
 ** [[https://habr.com/ru/articles/531344/][Траблшутинг DRBD9 в LINSTOR]]
 
