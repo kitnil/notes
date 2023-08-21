@@ -688,6 +688,10 @@ If you get any output (there are lines with the “Remote failed to finish a req
 - controller options
   : linstor -m controller list-properties
 
+** API
+- request example
+  : sudo nsenter -t 1151 -n curl --cacert /proc/1151/root/etc/linstor/client/ca.crt --cert /proc/1151/root/etc/linstor/client/tls.crt --key /proc/1151/root/etc/linstor/client/tls.key -L -v -X 'GET' 'http://localhost:3370/v1/nodes' -H 'accept: application/json'
+
 ** [[https://habr.com/ru/articles/531344/][Траблшутинг DRBD9 в LINSTOR]]
 
 За последние несколько лет плотной работы с LINSTOR и DRBD9 у меня накопилось достаточное количество проблем и рецептов решения для них, что мне захотелось оформить их в небольшую статью. Не уверен что они полностью совпадут с вашими случаями, но теперь вы хотя бы сможете понять механику работы с DRBD9, а именно, самую неприятную его часть — траблшутинг.
