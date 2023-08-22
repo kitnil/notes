@@ -45,16 +45,16 @@
 - [[https://github.com/letoram/cat9][letoram/cat9: A User shell for LASH]]
 
 * Tools
-- [[https://github.com/slembcke/debugger.lua][slembcke/debugger.lua: A dependency free, embeddable debugger for Lua in a single file (.lua or .c)]]
-- [[https://github.com/stravant/LuaMinify][stravant/LuaMinify: Lua source code minifier.]]
-- [[https://github.com/pkulchenko/ZeroBraneStudio][pkulchenko/ZeroBraneStudio: Lightweight Lua-based IDE for Lua with code completion, syntax highlighting, live coding, remote debugger, and code analyzer; supports Lua 5.1, 5.2, 5.3, 5.4, LuaJIT and other Lua interpreters on Windows, macOS, and Linux]]
-- [[https://github.com/pkulchenko/serpent][pkulchenko/serpent: Lua serializer and pretty printer.]]
-- [[https://github.com/Tencent/LuaPanda][Tencent/LuaPanda: lua debug and code tools for VS Code]]
+- [[https://github.com/chayleaf/notlua][chayleaf/notlua: A Nix DSL that compiles to Lua]]
 - [[https://github.com/DhavalKapil/luaver][DhavalKapil/luaver: Lua Version Manager - Managing and switching between different versions of Lua, LuaJIT and Luarocks made easy]]
+- [[https://github.com/EmmyLua/IntelliJ-EmmyLua][EmmyLua/IntelliJ-EmmyLua: Lua IDE/Debugger Plugin for IntelliJ IDEA]]
 - [[https://github.com/Endered/luap][Endered/luap: transpiler for lua from scheme]]
 - [[https://github.com/luajit-remake/luajit-remake][luajit-remake/luajit-remake: An ongoing attempt to re-engineer LuaJIT from scratch]]
-- [[https://github.com/chayleaf/notlua][chayleaf/notlua: A Nix DSL that compiles to Lua]]
-- [[https://github.com/EmmyLua/IntelliJ-EmmyLua][EmmyLua/IntelliJ-EmmyLua: Lua IDE/Debugger Plugin for IntelliJ IDEA]]
+- [[https://github.com/pkulchenko/serpent][pkulchenko/serpent: Lua serializer and pretty printer.]]
+- [[https://github.com/pkulchenko/ZeroBraneStudio][pkulchenko/ZeroBraneStudio: Lightweight Lua-based IDE for Lua with code completion, syntax highlighting, live coding, remote debugger, and code analyzer; supports Lua 5.1, 5.2, 5.3, 5.4, LuaJIT and other Lua interpreters on Windows, macOS, and Linux]]
+- [[https://github.com/slembcke/debugger.lua][slembcke/debugger.lua: A dependency free, embeddable debugger for Lua in a single file (.lua or .c)]]
+- [[https://github.com/stravant/LuaMinify][stravant/LuaMinify: Lua source code minifier.]]
+- [[https://github.com/Tencent/LuaPanda][Tencent/LuaPanda: lua debug and code tools for VS Code]]
 
 * Misc
 - [[https://github.com/Olivine-Labs/lua-style-guide][Olivine-Labs/lua-style-guide: Olivine Labs Lua Style Guide]]
