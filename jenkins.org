@@ -45,6 +45,18 @@ Jenkins is now one of the most widely used CI/CD tools and has a large and activ
 * Examples
 - [[https://github.com/hoto/jenkinsfile-examples][hoto/jenkinsfile-examples: Executable examples of Jenkinsfiles.]]
 
+** GitLab API
+
+#+begin_src groovy
+  import io.jenkins.plugins.gitlabserverconfig.servers.GitLabServers
+  import org.gitlab4j.api.GitLabApi
+  import org.gitlab4j.api.NotesApi
+
+  GitLabServers.get().getServers().collect { server -> 
+    new NotesApi(new GitLabApi(server.serverUrl, server.secretTokenAsPlainText, null, null)).createMergeRequestNote("cd/fluxcd", 245, "Merge request note from jenkins.corp1.majordomo.ru/manage/script")
+  }
+#+end_src
+
 * Plugins
 - [[https://wiki.jenkins.io/display/JENKINS/AutoComplete+Parameter+Plugin][Autocomplete Parameter Plugin - Jenkins - Jenkins Wiki]]
 - [[https://github.com/jenkinsci/git-push-plugin/tree/master/src/main/java/io/jenkins/plugins/git_push][git-push-plugin/src/main/java/io/jenkins/plugins/git_push at master · jenkinsci/git-push-plugin]]
