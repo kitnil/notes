@@ -25,7 +25,6 @@
   - [[https://github.com/mcronce/oci-registry][mcronce/oci-registry]]
 - [[https://github.com/owenrumney/lazytrivy][owenrumney/lazytrivy: Secure images, for lazy people]]
 - [[https://github.com/queer/atsi][queer/atsi: instant rootless Alpine shells]]
-- [[https://github.com/reproducible-containers/diffoci][reproducible-containers/diffoci: diff for Docker and OCI container images]]
 - [[https://github.com/runfinch/finch][runfinch/finch: The Finch CLI an open source client for container development]]
 - [[https://github.com/weaveworks/footloose][weaveworks/footloose: Container Machines - Containers that look like Virtual Machines]]
 - [[https://github.com/wolfi-dev/][Wolfi is a community Linux OS designed for the container and cloud-native era]]
@@ -41,3 +40,6 @@
 
 -
   : ctr --namespace k8s.io images ls
+
+* Tools
+- [[https://github.com/reproducible-containers/diffoci][reproducible-containers/diffoci: diff for Docker and OCI container images]]
