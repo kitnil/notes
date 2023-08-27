@@ -16,6 +16,6 @@ A monad is a concept in computer programming that helps with the organization an
 
 A functor is a type of object in functional programming that implements the "map" operation. The "map" operation allows you to apply a function to the values contained within the functor and return a new functor with the results. This is useful for abstracting and composing functions, making it easier to write code that is both reusable and expressive. Functors can be thought of as a generalization of arrays, where you can map functions over the elements of an array and get a new array as the result.
 
-* Could you explain this for a child?
+** Could you explain this for a child?
 
 Sure, a functor is like a special box that can hold things inside it, just like a toy box. Just like how you can put toys in a toy box and take them out, you can also put values in a functor and use them later. But what makes a functor special is that it also has rules for how to change the values inside of it, just like how you might have rules for how to play with the toys in your toy box. These rules help you to keep the values inside the functor organized and make it easier for you to use them in your programs.
