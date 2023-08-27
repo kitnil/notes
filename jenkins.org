@@ -91,6 +91,7 @@ Jenkins is now one of the most widely used CI/CD tools and has a large and activ
 - [[https://github.com/jenkinsci/conventional-commits-plugin][jenkinsci/conventional-commits-plugin: This plugin can be used to determine the next release version based on previous tags and the commit messages used.]]
 - [[https://github.com/jenkinsci/devops-portal-plugin][jenkinsci/devops-portal-plugin: Brings some DevOps to your Jenkins !]]
 - [[https://github.com/jenkinsci/docker-slaves-plugin][jenkinsci/docker-slaves-plugin: A Jenkins plugin to run builds inside Docker containers]]
+- [[https://github.com/jenkinsci/git-automerger-plugin][jenkinsci/git-automerger-plugin: Tool for auto-merging releases branches into master.]]
 - [[https://github.com/jenkinsci/git-changelog-plugin][jenkinsci/git-changelog-plugin: Creates a changelog, or release notes, based on Git commits between 2 revisions.]]
 - [[https://github.com/jenkinsci/git-forensics-plugin][jenkinsci/git-forensics-plugin: Jenkins plug-in that mines and analyzes data from a Git repository]]
 - [[https://github.com/jenkinsci/github-api-plugin][jenkinsci/github-api-plugin: This plugin packages stock github-api library]]
