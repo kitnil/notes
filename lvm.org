@@ -253,6 +253,9 @@ This will do the trick without any --repair.
 - Increase logical volume size by 16 GB
   : lvresize -L+16G /dev/VOLUME_GROUP/VOLUME_NAME
 
+- =lvs= shows volume, but symlink in /dev/vg0/pvc-f7ff2f45-30af-4cb3-9376-ba35f07a3b3d_00000 is missing
+  : lvchange --refresh vg0/pvc-f7ff2f45-30af-4cb3-9376-ba35f07a3b3d_00000
+
 * Snapshots
 
 root@guixsd ~ [env]# modprobe dm-snapshot
