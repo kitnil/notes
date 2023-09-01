@@ -7,3 +7,22 @@
 
 - tree
   : flux tree kustomization flux-system --compact
+
+* tf-controller
+
+#+begin_src bash
+  #!/usr/bin/env bash
+
+  json()
+  {
+      cat <<EOF
+  {
+    "data": {
+      "tfstate": "$(gzip < terraform.tfstate | base64 --wrap=0)"
+    }
+  }
+  EOF
+  }
+
+  echo kubectl patch -n flux-system secrets tfstate-default-tf-gitlab -p "$(json)"
+#+end_src
