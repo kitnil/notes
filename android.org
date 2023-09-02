@@ -39,6 +39,7 @@
     - $ adb shell am broadcast -a com.your.app.intent.YOUR_ACTION --es json_example '{"example": "hello world"}'
 - [[https://github.com/google/bundletool][google/bundletool: Bundletool is a command-line tool to manipulate Android App Bundles]]
 - [[https://github.com/gotev/android-upload-service][gotev/android-upload-service: Easily upload files (Multipart/Binary/FTP out of the box) in the background with progress notification. Support for persistent upload requests, customizations and custom plugins.]]
+- [[https://github.com/green-code-initiative/ecoCode-android][green-code-initiative/ecoCode-android: Reduce the environmental footprint of your Android apps with SonarQube]]
 - [[https://github.com/hackroid/MqttSensorDemo][hackroid/MqttSensorDemo: An Android application using MQTT protocol to send sensor data in real time]]
 - [[https://github.com/harjot-oberai/MusicDNA][harjot-oberai/MusicDNA: A Music Player for android that renders beautiful DNA(Visualization) of the currently playing music.]]
 - [[https://f-droid.org/en/packages/ch.rmy.android.http_shortcuts/][HTTP Request Shortcuts | F-Droid - Free and Open Source Android App Repository]]
