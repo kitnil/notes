@@ -504,6 +504,8 @@ Swap:     134179836           0   134179836
 
 * Namespaces
 
+- [[https://github.com/binpash/try][binpash/try: Inspect a command's effects before modifying your live system]]
+
 - [[https://unix.stackexchange.com/questions/144794/why-would-the-kernel-drop-packets][Create an empty network namespace]]
 #+begin_quote
 Besides what the man page says, there appears to be some additional reason why
