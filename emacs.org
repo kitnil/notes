@@ -880,6 +880,10 @@ Happy hacking =),
 - [[https://elpa.zilongshanren.com/melpa-stable/ert-junit-0.2.el][elpa.zilongshanren.com/melpa-stable/ert-junit-0.2.el]]
 * Tips
 - [[https://old.reddit.com/r/emacs/comments/xyo2fo/orgmode_vterm_tmux/][org-mode + vterm + tmux == ❤️❤️❤️ : emacs]]
+
+** follow-mode
+With a wide screen you could split the buffer on several windows and use Use
+=M-x follow-mode= to see diffrent parts of the file in those windows.
 * Tools
 - [[https://github.com/beacoder/everlasting-scratch][beacoder/everlasting-scratch: The scratch buffer that lasts forever.]]
 - [[https://github.com/borkdude/clj2el][borkdude/clj2el: Transpile Clojure to Emacs Lisp!]]
