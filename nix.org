@@ -1979,6 +1979,7 @@ builtins.match "php([[:alnum:]])([[:alnum:]])" "php70"
 - [[https://github.com/gvolpe/nmd][gvolpe/nmd: NixOS Module Documentation generator]]
 - [[https://github.com/helsinki-systems/harmonia][helsinki-systems/harmonia: Nix binary cache implemented in rust using libnix-store]]
 - [[https://github.com/hraban/nix-update-sources][hraban/nix-update-sources: Find all updatable git sources in a Nix scope]]
+- [[https://github.com/iggut/GamiNiX][iggut/GamiNiX: A NixOS configuration. Uses Hyprland + sfwbar. VM Windows gaming with virt-manager and GPU passthrough.]]
 - [[https://github.com/jmgilman/nix-pre-commit][jmgilman/nix-pre-commit: Generate pre-commit configurations with your flake.nix]]
 - [[https://github.com/jordanisaacs/kernel-module-flake][jordanisaacs/kernel-module-flake: Nix flake for linux kernel module development]]
 - [[https://github.com/jsoo1/nix-git-dir][jsoo1/nix-git-dir: Parse a git directory (HEAD) into nix values]]
