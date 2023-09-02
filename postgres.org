@@ -23,6 +23,7 @@
 - [[https://github.com/hasura/pgdeltastream][hasura/pgdeltastream: Streaming Postgres logical replication changes atleast-once over websockets]]
 - [[https://retool.com/blog/how-we-upgraded-postgresql-database/][How we upgraded our 4 TB main application Postgres database]]
 - [[https://www.zombodb.com/][Integrate Postgresql and Elasticsearch | ZomboDB]]
+- [[https://github.com/intgr/pg_journal][intgr/pg_journal: Log PostgreSQL messages to systemd journal]]
 - [[https://github.com/levkk/pgcat][levkk/pgcat: Meow. PgBouncer rewritten in Rust, with sharding, load balancing and failover support.]]
 - [[https://github.com/monacoremo/postgrest-sessions-example][monacoremo/postgrest-sessions-example: An example on how to implement session-based authentication with PostgREST]]
 - [[https://github.com/MovingLake/pg_webhook][MovingLake/pg_webhook: This repo plugs to a replication slot of a Postgres database, and sends webhooks for any change that happens in the database.]]
