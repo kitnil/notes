@@ -91,6 +91,9 @@ peer.
 
 https://git.zx2c4.com/WireGuard/tree/src/receive.c#n351
 
+* Tools
+- [[https://github.com/dadevel/wg-netns][dadevel/wg-netns: WireGuard with Linux Network Namespaces]]
+
 * Misc
 - [[https://github.com/AlexMKX/mrvpn][AlexMKX/mrvpn: Multi-Route VPN]]
 - [[https://github.com/candiddev/vault-plugin-secrets-wireguard][candiddev/vault-plugin-secrets-wireguard: Wireguard secrets engine for Vault]]
