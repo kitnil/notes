@@ -1,0 +1,67 @@
+* [[https://serverfault.com/questions/250511/which-tar-file-format-should-i-use/897948#897948][Technical comparison of tar archive formats]]
+
+#+begin_src markdown
+  [backup - Which tar file format should I use? - Server Fault](https://serverfault.com/questions/250511/which-tar-file-format-should-i-use/897948#897948)
+
+  > Some technical comparisons among `v7`, `ustar` and `pax` formats:
+  > 
+  > ## v7
+  > 
+  > The format before POSIX.1-1988.
+  > 
+  > -   Maximum length of a file name is 99 characters. (100 bytes minus a terminating null byte.)
+  > -   Maximum length of a link target is 99 characters.
+  > -   File types allowed: regular file (typeflag `'\0'`), directory, hard link (typeflag `1`), symbolic link (typeflag `2`). Directory is identified by the trailing slash in the _name_ field. [reference 1](https://www.mkssoftware.com/docs/man4/tar.4.asp)
+  > -   Maximum file size is 8589934591 bytes (8 GiB - 1).
+  > -   Stores numeric user ID and group IDs. Does not store user and group names. Maximum UID and GID are 2097151 (octal 7777777).
+  > -   Stores modification time. Maximum timestamp allowed in format is 2242-03-16 12:56:31 UTC (8589934591 seconds since epoch), however tar readers may not be able to recognize them due to [year 2038 problem](https://en.wikipedia.org/wiki/Year_2038_problem) present in 32-bit systems.
+  > 
+  > ## ustar
+  > 
+  > ustar extends the header block from the v7 format and, when uncompressed, the size of a ustar tarball is identical to v7 tarball. There's no big reason to prefer v7 format, unless you are deliberately stripping information that ustar would archive.
+  > 
+  > -   Maximum length of a file name is 256 ASCII characters **if** the path can be perfectly split to a 155 byte _prefix_, a slash, and a 100 byte _name_ parts. ustar provides additional _prefix_ field for storing additional components of the path, but the fields have to be split on the directory separators, so you are not allowed to have a file name longer than 100 bytes, nor a directory name longer than 155 bytes.
+  > -   Maximum length of a link target is 100 characters. (I.e. no longer requires terminating null byte.)
+  > -   File types allowed: regular file (typeflag `'\0'` or `0`), directory (marked with typeflag `5`), hard link, symbolic link, character device (`3`), block device (`4`), FIFO (`6`). (Vendor extensions on file types are allowed in `A` through `Z`.)
+  > -   Maximum _major_ and _minor_ numbers for device files are both 2097151 (octal 7777777).
+  > -   Stores user and group names as well as UID and GID. User and group names are in ASCII and 32 characters maximum each.
+  > -   File size limit, UID/GID limits, and timestamp limit remain the same as v7 format.
+  > 
+  > ustar has minor, backward-incompatible differences from the pre-standard v7 format – the typeflags `0` and `5` for regular files and directories respectively. In v7 the _typeflag_ field used to indicate _links_ only and not other file types.
+  > 
+  > ## pax
+  > 
+  > pax extends ustar format through (optional) Extended Header blocks, these Extended Headers would look like regular text files when extracted though old tar programs. The Extended Headers are identified internally with typeflags `x` (file extended header) and `g` (global extended header). Their unlimited extensibility also means that pax tarball would be typically larger than ustar. It's good for archiving, but a bit bloaty for a format for software distribution.
+  > 
+  > pax is a superset of ustar format – a pax tarball becomes no different from ustar if all of its Extended Headers are stripped out.
+  > 
+  > You can read [this](http://pubs.opengroup.org/onlinepubs/9699919799/utilities/pax.html#tag_20_92_13_03) for what can be extended in pax format. But comparing to ustar in summary:
+  > 
+  > -   File names and path names could be unlimited length (through `path=` keyword in Extended Header).
+  > -   Link targets could be unlimited length (`linkpath=` keyword)
+  > -   `size` (file size), `uid` (user ID), `uname` (user name), `gid` (group ID), `gname` (group name), are all extensible to unlimited length.
+  > -   UTF-8 encoding for `path`, `linkpath`, `uname` and `gname`.
+  > -   Timestamps allows sub-second precision and potentially unlimited length, _but still cannot store leap seconds_ (yet) due to its format as ["number of seconds since epoch"](https://en.wikipedia.org/wiki/Unix_time). Fractions of seconds are in decimal.
+  > -   File access time (`atime`) can be stored along with modification time (`mtime`).
+  > 
+  > Note: POSIX does not mandate a filename pattern for storing Extended Headers, so implementations are free to make any name pattern they want. In GNU tar, for example, the name pattern is controlled via [`--pax-option=exthdr.name=` option](https://www.gnu.org/software/tar/manual/html_node/PAX-keywords.html#SEC147). If you plan to make a deterministic tarball (among `tar`/`pax` implementations), beware of this.
+  > 
+  > ## gnu and oldgnu formats
+  > 
+  > According to [GNU tar manual](https://www.gnu.org/software/tar/manual/html_node/gnu.html#SEC145), GNU tar was based on the early draft of POSIX.1 `ustar` standard. But GNU extensions to `tar` makes it incompatible with `ustar` format. If you want to make a portable archive, you should **avoid GNU tar format** and favor `pax` or `ustar` instead.
+  > 
+  > GNU tar format may be identified with the _magic_ field (8 bytes) of `ustar<space><space><nul>`, comparing to ustar's _magic_ and _version_ fields `ustar<nul>00`.
+  > 
+  > GNU tar format is backward-compatible with v7 format nevertheless.
+  > 
+  > -   GNU tar has unlimited length on file names and link targets. Unlike `ustar` that uses _prefix_ field for extending the path, GNU tar stores the long filename in a (non-pax) extended header, which has typeflag `L`. Similarly, link targets are extended though an extended header with typeflag `K`.
+  > -   GNU tar format stores atime (access time) and ctime (status modification time) in additional header fields along with mtime, which is already available in v7 format.
+  > -   GNU tar format supports additional file types comparing to ustar ([reference 2](https://www.gnu.org/software/tar/manual/html_node/Extensions.html#SEC189)):
+  >     -   Directory in incremental backup (["dumpdir"](https://www.gnu.org/software/tar/manual/html_node/Dumpdir.html#SEC195), typeflag `D`). See GNU tar `--incremental` option.
+  >     -   Continued file data for a multi-volume archive (typeflag `M`). See GNU tar `--multi-volume` option.
+  >     -   Sparse file (typeflag `S`).
+  >     -   Volume header (typeflag `V`), or a label for the archive volume. See GNU tar `--label` option.
+  > -   The difference between `oldgnu` (GNU tar <= 1.12) and `gnu` (GNU tar >= 1.13.12) formats are minor for end-users, but according to [the manual](https://www.gnu.org/software/tar/manual/html_node/Formats.html#SEC133) and [create.c](https://git.savannah.gnu.org/cgit/tar.git/tree/src/create.c) and [NEWS](https://git.savannah.gnu.org/cgit/tar.git/tree/NEWS) from source code, there are at least two differences:
+  >     -   `oldgnu` format will always terminate the strings file names, user names and group names with null bytes. (This means file names have a maximum of 99 characters before using an extended header.)
+  >     -   GNU 1.13.12 and later can try to "squeeze" the _uid_, _gid_, _mtime_, _devmajor_ and _devminor_ fields by outputting them in signed, big-endian binary numbers, if they're too large be represented in ASCII octal within the fields. This pushes the maximum UID and GID limit to \[-2^56, 2^56-1\], and device major and minor numbers to \[-2^56, 2^56-1\]. (The representations in source code reserve a few bits to prevent collisions with ASCII representation.)
+#+end_src
