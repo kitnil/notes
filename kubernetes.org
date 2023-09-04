@@ -104,6 +104,9 @@ lightest of data storage needs.
   : kubectl api-resources
   : kubectl api-versions
 
+- Query specific API server
+  : kubectl --server https://kube1.intr:6443 get pod
+
 - cdi-uploadproxy
 : kubectl get service cdi-uploadproxy -n cdi
 
