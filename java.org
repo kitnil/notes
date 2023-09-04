@@ -336,6 +336,41 @@ In Java, the default value of a boolean type is false.
 - javap main.class
 - java main
 
+** Temporary directory
+#+begin_src markdown
+  [How to get the temporary directory path in Java - Marc Nuri](https://blog.marcnuri.com/how-to-get-the-temporary-file-path-in-java)
+
+  > To get the temporary directory path in Java you can use the `java.io.tmpdir` [system property](https://docs.oracle.com/javase/8/docs/api/java/lang/System.html#getProperties-- "Link to the Javadoc for the System class where the default system properties are listed"). The JVM sets this property when it starts and points to the default temporary directory for the operating system.
+  > 
+  >     System.getProperty("java.io.tmpdir");
+  > 
+  > The following code snippet shows a simple program that logs the temporary directory when the application starts:
+  > 
+  > TempDir.java
+  > 
+  >     public class TempDir {
+  >       public static void main(String[] args) {
+  >         System.out.println("Temporary directory: " + System.getProperty("java.io.tmpdir"));
+  >       }
+  >     }
+  > 
+  > When executed, the program will output the following:
+  > 
+  >     Temporary directory: /tmp
+  > 
+  > ## [](https://blog.marcnuri.com/how-to-get-the-temporary-file-path-in-java/#undefined)What are the default temporary directories for each operating system?
+  > 
+  > -   Windows: `%USERPROFILE%\AppData\Local\Temp`
+  > -   Linux: `/tmp`
+  > -   macOS: `/tmp`
+  > 
+  > ## [](https://blog.marcnuri.com/how-to-get-the-temporary-file-path-in-java/#undefined)How to change the temporary directory path in Java?
+  > 
+  > The JVM automatically sets the temporary directory path as a system property. However, you can change it by setting the `java.io.tmpdir` property to the desired path when starting the JVM.
+  > 
+  >     java -Djava.io.tmpdir=$TEMP_DIR -jar my-app.jar
+#+end_src
+
 * Languages
 - [[https://github.com/elonlit/Genesis][elonlit/Genesis: God's actual programming language.]]
 
