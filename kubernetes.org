@@ -108,7 +108,7 @@ lightest of data storage needs.
   : kubectl --server https://kube1.intr:6443 get pod
 
 - cdi-uploadproxy
-: kubectl get service cdi-uploadproxy -n cdi
+  : kubectl get service cdi-uploadproxy -n cdi
 
 - show pods labels
   : kubectl get pods --show-labels
