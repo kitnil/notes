@@ -61,6 +61,10 @@ ovs-ofctl dump-flows ovsbr0
 - add interface to bridge
   : ovs-vsctl --may-exist add-port br154 ubuntu tag=154 vlan_mode=native-untagged
 
+- change interface speed
+  : ovs-vsctl set interface vm41032 ingress_policing_rate=100000
+  : ovs-vsctl set interface vm41032 ingress_policing_burst=10000
+
 * OpenFlow Controlles
 ** Framework
 - [[https://en.wikipedia.org/wiki/ONOS][ONOS - Wikipedia]]
