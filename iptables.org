@@ -38,6 +38,7 @@
 - [[https://github.com/bmaeser/iptables-boilerplate][bmaeser/iptables-boilerplate: rock solid default firewall-rules for webhosts]]
 - [[https://webguy.vip/example-of-iptables/][Example of IPTABLES — Web Guy]]
 - [[https://habr.com/ru/company/selectel/blog/511392/][xtables-addons: фильтруем пакеты по странам / Хабр]]
+- [[https://github.com/pretty66/iptables-web][pretty66/iptables-web: golang开发的iptables web 管理程序]]
 
 - iptables -t nat -A POSTROUTING -o br0 -j MASQUERADE
 - iptables -A FORWARD -i br0 -o br154.154 -m state --state RELATED,ESTABLISHED -j ACCEPT
