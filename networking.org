@@ -758,6 +758,7 @@ POSTROUTING. Это к слову тот случай, когда можно в�
 - [[https://github.com/projectdiscovery/mapcidr][projectdiscovery/mapcidr: Small utility program to perform multiple operations for a given subnet/CIDR ranges.]]
 - [[https://github.com/Ripolak/chk][Ripolak/chk: A small CLI tool to check connection from a local machine to a remote target in various protocols.]]
 - [[https://github.com/sc0tfree/netbyte][sc0tfree/netbyte: Netbyte is a Netcat-style tool that facilitates probing proprietary TCP and UDP services. It is lightweight, fully interactive and provides formatted output in both hexadecimal and ASCII.]]
+- [[https://github.com/ShangRui-hash/nc-tls][ShangRui-hash/nc-tls: vim流挖洞选手使用go编写的一个TLS 连接版 NC ,用于连续发送多个https请求报文, 仅支持macOS和Linux]]
 - [[https://github.com/snabbco/snabb][snabbco/snabb: Snabb: Simple and fast packet networking]]
 - [[https://github.com/tenox7/ttg][tenox7/ttg: Display SNMP bandwidth usage similar to ping(1) output]]
 - [[https://github.com/ycd/dstp][ycd/dstp: 🧪 Run common networking tests against your site.]]
