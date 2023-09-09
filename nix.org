@@ -257,6 +257,7 @@ nix-repl> mynixos2.config.environment.etc."mailman.cfg".text
 - [[https://github.com/BrianHicks/nix-script][BrianHicks/nix-script: write scripts in compiled languages that run in the nix ecosystem, with no separate build step]]
 - [[https://github.com/gvolpe/dconf2nix][gvolpe/dconf2nix: Convert Dconf files (Gnome Shell) to Nix, as expected by Home Manager.]]
 - [[https://github.com/input-output-hk/bitte][input-output-hk/bitte: Nix Ops for Terraform, Consul, Vault, Nomad]]
+- [[https://github.com/DeterminateSystems/magic-nix-cache-action][DeterminateSystems/magic-nix-cache-action: Save 30-50%+ of CI time without any effort or cost. Use Magic Nix Cache, a totally free and zero-configuration binary cache for Nix on GitHub Actions.]]
 - [[https://github.com/danielfullmer/robotnix][danielfullmer/robotnix: Build Android (AOSP) using Nix]]
 - [[https://github.com/fghibellini/nix-haskell-monorepo][fghibellini/nix-haskell-monorepo: Pragmatic tutorial on how to use nix with a haskell monorepo]]
 - [[https://github.com/cachix/pre-commit-hooks.nix][cachix/pre-commit-hooks.nix: Seamless integration of https://pre-commit.com git hooks with Nix.]]
