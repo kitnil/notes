@@ -33,6 +33,7 @@
 - [[https://github.com/woodruffw/nvis][woodruffw/nvis: A very simple input visualizer]]
 - [[https://github.com/yewscion/patchelf-wrapper][yewscion/patchelf-wrapper: A tool to use patchelf with GNU/Guix]]
 - [[https://fasterthanli.me/series/making-our-own-executable-packer][Making our own executable packer]]
+- [[https://www.dettus.net/dhex/][dettus.net- Now with dMagnetic, a magnetic scrolls interpreter.]]
 
 #+begin_example
   $ addr2line -e  /gnu/store/m8afvcgwmrfhvjpd7b0xllk8vv5isd6j-glibc-cross-i586-pc-gnu-2.33/lib/ld.so.1 0x1000 0x11627 0x11bb
