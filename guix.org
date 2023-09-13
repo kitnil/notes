@@ -2970,6 +2970,9 @@ and then:
   herd restart guix-publish
   …
 #+end_quote
+
+- [[https://github.com/BIMSBbioinfo/swineherd][BIMSBbioinfo/swineherd: Let the Shepherd herd Guix System containers]]
+
 * Static networking service
   #+BEGIN_SRC scheme
     (services (cons* …
