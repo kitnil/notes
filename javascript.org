@@ -12,6 +12,11 @@
 
 * [[id:a7e25777-da1a-47ec-85f8-7ace73c57e08][NodeJS]]
 
+* Cheat sheet
+
+- Print object to Firefox console
+  : console.log(JSON.stringify(vps.domains)) &&
+
 * Tools
 
 - [[https://github.com/denoland/deno_lint][denoland/deno_lint: Blazing fast linter for JavaScript and TypeScript written in Rust]]
