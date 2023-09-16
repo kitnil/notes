@@ -2019,6 +2019,7 @@ builtins.match "php([[:alnum:]])([[:alnum:]])" "php70"
 - [[https://github.com/purenix-org/purenix][purenix-org/purenix: Nix backend for PureScript. Transpile PureScript code to Nix.]]
 - [[https://github.com/railwayapp/nixpacks][railwayapp/nixpacks: App source + Nix packages + Docker = Image]]
 - [[https://github.com/RaitoBezarius/nixstorefs][RaitoBezarius/nixstorefs: A userspace Nix store filesystem implementation via FUSE]]
+- [[https://github.com/remi-gelinas/nix-ts-mode][remi-gelinas/nix-ts-mode: An Emacs major mode for editing Nix expressions, powered by tree-sitter.]]
 - [[https://github.com/serokell/update-daemon][serokell/update-daemon: Nix Flake Update daemon]]
 - [[https://github.com/shlevy/nix-plugins][shlevy/nix-plugins: Collection of miscellaneous plugins for the nix expression language]]
 - [[https://github.com/siraben/nix-lint][siraben/nix-lint: Semantic linter for Nix using tree-sitter 🌳 + ❄️]]
