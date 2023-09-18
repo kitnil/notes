@@ -146,6 +146,9 @@ echo 3 > /proc/sys/vm/drop_caches
 - [[https://github.com/tracelabs/tlosint-live][tracelabs/tlosint-live: Trace Labs OSINT Linux Distribution based on Kali.]]
 - [[https://inventory.raw.pm/operating_systems.html][Rawsec's CyberSecurity Inventory]]
 
+** Installation
+- [[https://github.com/containers/bootc][containers/bootc: Boot and upgrade via container images]]
+
 * Documentation
 
 - [[https://github.com/filiparag/wikiman][filiparag/wikiman: Wikiman is an offline search engine for manual pages, Arch Wiki, Gentoo Wiki and other documentation.]]
