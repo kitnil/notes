@@ -44,6 +44,32 @@ rerere-train.sh [COMMIT][--all]
 - [[https://github.com/honza/smithy][honza/smithy: A tiny git forge written in Go]]
 - [[https://github.com/charmbracelet/soft-serve][charmbracelet/soft-serve: A tasty, self-hostable Git server for the command line🍦]]
 
+* Scripts
+#+begin_src bash
+  #!/usr/bin/env bash
+
+  set -o nounset -o pipefail
+
+  PAGER=cat
+  export PAGER
+
+  frontend="https://gitlab.intr"
+
+  foo()
+  {
+      local repository="$(dirname "$1")"
+      local endpoint="${frontend}/${repository}"
+      git -C "$repository" log --date=short --since=3w --format="%cs	${endpoint}	%s" 2>/dev/null
+  }
+
+  (
+      for repository in */*/.git
+      do
+          foo "$repository"
+      done
+  ) | sort --unique --version-sort
+#+end_src
+
 * Tools
 - [[https://github.com/AGWA/git-crypt][AGWA/git-crypt: Transparent file encryption in git]]
 - [[https://github.com/alajmo/mani][alajmo/mani: CLI tool to help you manage repositories]]
