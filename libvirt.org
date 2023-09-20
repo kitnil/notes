@@ -30,6 +30,10 @@
   qemu+tcp://kvm15.intr/system
 #+end_example
 
+#+begin_example
+  qemu+tcp://libvirt.wugi.local:16514/system
+#+end_example
+
 * Add cdrom
 
   #+begin_src bash
