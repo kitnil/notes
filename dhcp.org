@@ -11,6 +11,7 @@ sudo nmap --script broadcast-dhcp-discover -e enp3s0
 - [[https://github.com/coredhcp/coredhcp][coredhcp/coredhcp: Fast, multithreaded, modular and extensible DHCP server written in Go]]
 - [[https://github.com/lclarkmichalek/etcdhcp][lclarkmichalek/etcdhcp: A DHCP server backed by etcd]]
 - [[https://manpages.debian.org/testing/dnsmasq-base-lua/dnsmasq.8.en.html][dnsmasq(8) — dnsmasq-base-lua — Debian testing — Debian Manpages]]
+- [[https://github.com/insomniacslk/dhcp][insomniacslk/dhcp: DHCPv6 and DHCPv4 packet library, client and server written in Go]]
 
 * Learning
 - [[https://www.youtube.com/watch?v=FYcO4ZshG8Q][(1) Do DHCP and DNS Servers Communicate? (With wireshark) - YouTube]]
