@@ -85,6 +85,11 @@
 - [[https://github.com/cmuratori/termbench][cmuratori/termbench: Simple benchmark for terminal output]]
 - [[https://github.com/cmuratori/refterm][cmuratori/refterm: Reference monospace terminal renderer]]
 
+* Cheat sheet
+
+- list files with fzf and display content
+  : find . -type f | fzf --preview 'cat {}' | xargs -r awk '{print}' | xclip -selection clipboard
+
 * 
 
 I use this ugly hack for encryption. Any suggestions for improvement:
