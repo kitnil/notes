@@ -70,6 +70,7 @@
 - RPE (Nagios exporter)
 - [[https://github.com/rzrbld/zabbix-exporter-3000][rzrbld/zabbix-exporter-3000: just another zabbix exporter for Prometheus]]
 - [[https://github.com/Sheridan/nftables_exporter][Sheridan/nftables_exporter: Export nftables statistics to prometheus]]
+- [[https://github.com/shibumi/cifs-exporter][shibumi/cifs-exporter: SMB/CIFS Prometheus Exporter]]
 - [[https://github.com/soundcloud/ipmi_exporter][soundcloud/ipmi_exporter: Remote IPMI exporter for Prometheus]]
 - [[https://github.com/stapelberg/rsyncparse][stapelberg/rsyncparse: rsync output parser]]
 - [[https://github.com/stapelberg/rsyncprom][stapelberg/rsyncprom: rsync wrapper (or output parser) that pushes metrics to prometheus]]
