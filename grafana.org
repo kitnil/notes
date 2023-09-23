@@ -16,6 +16,7 @@
 - [[https://utcc.utoronto.ca/~cks/space/blog/sysadmin/GrafanaInfiniteSerialNumber][Chris's Wiki :: blog/sysadmin/GrafanaInfiniteSerialNumber]]
 
 * Tools
+- [[https://github.com/blackheaven/grafana-dashboards.nix][blackheaven/grafana-dashboards.nix: Nix tool used to fetch and transform Grafana Dashboards]]
 - [[https://grafana.com/grafana/plugins/yesoreyeram-boomtable-panel/][Boom Table plugin for Grafana | Grafana Labs]]
 - [[https://github.com/david-martin/dhall-grafana-operator][david-martin/dhall-grafana-operator]]
 - [[https://github.com/divnix/grafonnix][divnix/grafonnix: Grafonnet implementation in Nix]]
