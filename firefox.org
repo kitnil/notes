@@ -339,3 +339,124 @@ is the following:
     Change the time range, if needed
     Click on Details and uncheck everything other than "cache"
 
+
+* [[https://support.mozilla.org/en-US/kb/profiles-where-firefox-stores-user-data][Profiles - Where Firefox stores your bookmarks, passwords and other user data]]
+
+All of the changes you make in Firefox, such as your home page, what toolbars you use, extensions you have installed, saved passwords and your bookmarks, are stored in a special folder called a profile. Your profile folder is stored in a separate place from the Firefox program so that, if something ever goes wrong with Firefox, your information will still be there. It also means that you can uninstall Firefox without losing your settings and you don't have to reinstall Firefox to clear your information or troubleshoot a problem.
+Table of Contents
+
+    How do I find my profile?
+        Finding your profile without opening Firefox
+    What information is stored in my profile?
+    Working with profiles
+
+How do I find my profile?
+
+    Click the menu button Fx89menuButton, click Help and select More Troubleshooting Information. The Troubleshooting Information tab will open.
+    Under the Application Basics section next to Profile Directory, click Open Directory. Your profile folder will open. 
+
+Note: If you are unable to open or use Firefox, follow the instructions in Finding your profile without opening Firefox.
+
+Finding your profile without opening Firefox
+
+    (Ubuntu) Click the Places menu on the top right of the screen and select Home Folder. A File Browser window will appear.
+    Click the View menu and select Show Hidden Files if it isn't already checked.
+    Double click the folder marked .mozilla.
+    Double click the folder marked firefox. Your profile folder is within this folder. If you only have one profile, its folder would have "default" in the name. 
+
+What information is stored in my profile?
+Note: This is not a complete list. Only important information is described.
+
+Bookmarks, Downloads and Browsing History:
+
+    places.sqlite
+    This file contains all your Firefox bookmarks and lists of all the files you've downloaded and websites you’ve visited.
+    bookmarkbackups
+    This folder stores bookmark backup files, which can be used to restore your bookmarks.
+    favicons.sqlite
+    This file contains all of the favicons for your Firefox bookmarks. 
+
+For more information, see Bookmarks in Firefox and Restore bookmarks from backup or move them to another computer.
+
+Passwords:
+
+    key4.db
+    logins.json
+
+    Your passwords are stored in these two files. For more information, see Password Manager - Remember, delete and edit logins and passwords in Firefox. 
+
+Site-specific preferences:
+
+    permissions.sqlite
+    content-prefs.sqlite
+
+    These two files store many of your Firefox permissions (for instance, which sites are allowed to display popups) or zoom levels that are set on a site-by-site basis (see Font size and zoom - increase the size of web pages). 
+
+Search engines:
+
+    search.json.mozlz4
+    This file stores user-installed search engines. For more information, see Add or remove a search engine in Firefox. 
+
+Personal dictionary:
+
+    persdict.dat
+    This file stores any custom words you have added to Firefox's dictionary. For more information, see How do I use the Firefox spell checker?. 
+
+Autocomplete history:
+
+    formhistory.sqlite
+    This file remembers what you have searched for in the Firefox search bar and what information you’ve entered into forms on websites. For more information, see Control whether Firefox automatically fills in forms. 
+
+Cookies:
+
+    cookies.sqlite
+    A cookie is a bit of information stored on your computer by a website you’ve visited. Usually, this is something like your site preferences or login status. Cookies are all stored in this file. 
+
+DOM storage:
+
+DOM Storage is designed to provide a larger, more secure, and easier-to-use alternative to storing information in cookies.
+
+    webappsstore.sqlite
+    Information is stored in this file for websites
+    chromeappsstore.sqlite
+    This file stores information for about:* pages. 
+
+Extensions:
+
+    extensions
+    This folder, if it exists, stores files for any extensions you have installed. To learn more about Firefox extensions and other add-ons, see Find and install add-ons to add features to Firefox. 
+
+Security certificate settings:
+
+    cert9.db
+    This file stores all your security certificate settings and any SSL certificates you have imported into Firefox. 
+
+Security device settings:
+
+    pkcs11.txt
+    This file stores security module configuration. 
+
+Download actions:
+
+    handlers.json
+    This file stores your preferences that tell Firefox what to do when it comes across a particular type of file. For example, these are the settings that tell Firefox to open a PDF file with Acrobat Reader when you click on it. For more information, see Manage file types and download actions in Firefox. 
+
+Stored session:
+
+    sessionstore.jsonlz4
+    This file stores the currently open tabs and windows. For more information, see Restore previous session - Configure when Firefox shows your most recent tabs and windows. 
+
+Window positions and dialog settings:
+
+    xulstore.json
+    This file stores the size and position of the main Firefox window and Library window, selected columns in the Library window, and expanded folders in the Bookmarks Sidebar and History Sidebar. 
+
+User preferences:
+
+    prefs.js
+    This file stores customized user preference settings, such as changes you make in Firefox Settings dialogs and in customizing toolbars (Customize Firefox controls, buttons and toolbars). The optional user.js file, if one exists, will override any modified preferences. 
+
+Containers:
+
+    containers.json
+    This file stores the details of containers used by the Container Tabs feature, including those created by extensions such as Facebook Container. 
