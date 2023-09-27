@@ -75,6 +75,7 @@
 #+end_example
 
 - mongo add user
+: hms-rs0:PRIMARY> use tracker
 : hms-rs0:PRIMARY> db.createUser({user: "tracker", pwd: "secretPassword", roles: [{role: "readWrite", db: "tracker"}]})
 +begin_example
 2021-07-28T16:35:32.870+0300 E QUERY    [thread1] Error: couldn't add user: User "tracker@tracker" already exists :
