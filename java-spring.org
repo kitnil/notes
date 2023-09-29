@@ -75,6 +75,46 @@ The use of DTOs helps in achieving loose coupling between different layers of an
 
 These are just some of the key concepts and features of the Spring framework. Spring offers a vast ecosystem with many more modules and features that cater to different application development needs.
 
+** @Service annotation
+
+The =@Service=  annotation is one of the stereotype annotations provided by the Spring framework. It is used to indicate that a particular class is a service component in the application.
+
+In Spring, a service component represents the business logic layer of an application. It typically contains the implementation of business operations and interacts with repositories, other services, or external systems. The =@Service=  annotation serves as a marker and helps in organizing and identifying such components.
+
+To use the =@Service=  annotation, you need to follow these steps:
+
+1. First, you need to include the =@Service=  annotation on the class declaration of your service component.
+
+#+begin_src java
+  @Service
+  public class MyService {
+      // Service implementation code...
+  }
+#+end_src
+
+2. Ensure that the class is managed by the Spring container. You can achieve this by either annotating the class with =@Component=  or using component scanning to automatically detect and register the service component.
+  
+3. You can inject the service component into other components, such as controllers or other services, using dependency injection. For example, you can use the =@Autowired=  annotation to inject the service instance into a controller.
+  
+#+begin_src java
+  @Controller
+  public class MyController {
+
+      private final MyService myService;
+
+      @Autowired
+      public MyController(MyService myService) {
+          this.myService = myService;
+      }
+
+      // Controller methods that use the service...
+  }
+#+end_src
+
+The Spring container will scan for components annotated with =@Service=  and automatically instantiate and manage them as beans. These beans can then be injected into other components, promoting loose coupling and modular development.
+
+It's worth noting that the =@Service= annotation is a specialization of the =@Component= annotation and has the same effect. However, using =@Service=  helps in more accurately conveying the purpose and role of the annotated class within the application's architecture.
+
 * Documentation
 
 - https://spring.io/guides/gs/messaging-rabbitmq/
