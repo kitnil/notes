@@ -35,6 +35,24 @@ People use the Spring Boot framework for several reasons:
 
     Large Community: Spring Boot has a large and active community of developers who are constantly contributing to its development and improvement. This community provides a wealth of resources and support, making it easier to find answers to any questions that arise during development.
 
+** DTO
+
+In Spring framework, DTO (Data Transfer Object) is a design pattern used to transfer data between layers or components of an application. It is commonly used to encapsulate and transfer data between the presentation layer (UI) and the service or persistence layer.
+
+DTOs are often used to simplify the communication between different layers by providing a standardized way to package and transmit data. They typically contain only the relevant fields and information needed for the specific use case, and they are often immutable.
+
+DTOs can be used to:
+
+1. Transfer data from the database or service layer to the presentation layer.
+2. Define the API contract for data exchange between different services or microservices.
+3. Aggregate multiple entities or domain objects into a single object to reduce the number of network calls.
+
+DTOs are lightweight objects that usually contain only getters and setters for the data fields they are transferring. They are not intended to contain business logic or perform computations.
+
+In Spring, DTOs are often used in conjunction with mapping frameworks like ModelMapper or MapStruct to easily convert between DTOs and domain entities or other data objects.
+
+The use of DTOs helps in achieving loose coupling between different layers of an application and promotes separation of concerns by keeping the business logic separate from data transfer and presentation concerns.
+
 * Documentation
 
 - https://spring.io/guides/gs/messaging-rabbitmq/
