@@ -3072,6 +3072,7 @@ then redeploy with:
 - [[https://github.com/weaveworks/tf-controller][weaveworks/tf-controller: A GitOps Terraform controller for Kubernetes]]
 - [[https://github.com/we-dcode/kubetunnel][we-dcode/kubetunnel: Develop microservices locally while being connected to your Kubernetes environment]]
 - [[https://scribe.bus-hit.me/flant-com/kubernetes-operator-in-python-451f2d2e33f3][Writing a Kubernetes Operator in Python without frameworks and SDK]]
+- [[https://github.com/yahoo/k8s-namespace-guard][yahoo/k8s-namespace-guard: K8s - Admission controller for guarding namespace]]
 - [[https://marketplace.visualstudio.com/items?itemName=redhat.vscode-yaml][YAML and Kubernetes syntax support - Visual Studio Marketplace]]
 - [[https://github.com/yashbhutwala/kubectl-df-pv][yashbhutwala/kubectl-df-pv: kubectl plugin - giving admins df (disk free) like utility for persistent volumes]]
 - [[https://github.com/yokawasa/kubectl-plugin-ssh-jump][yokawasa/kubectl-plugin-ssh-jump: A kubectl plugin to access nodes or remote services using a SSH jump Pod]]
