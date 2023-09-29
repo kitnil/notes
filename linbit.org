@@ -688,6 +688,13 @@ If you get any output (there are lines with the “Remote failed to finish a req
 - controller options
   : linstor -m controller list-properties
 
+- [[https://github.com/LINBIT/linstor-server/issues/293][LINSTOR controller is not trying to recover connection after exception · Issue #293 · LINBIT/linstor-server]]
+
+  The =node restore= command is used to undo satellite node eviction and
+  satellite node evacuation, but does not change the connection status of
+  satellite nodes. The command that is supposed to reconnect satellite nodes
+  that are currently offline is =node reconnect=.
+
 ** API
 - [[https://app.swaggerhub.com/apis-docs/Linstor/Linstor/1.19.0#/developers/nodeList][Linstor | 1.19.0 | Linstor | SwaggerHub]]
 
