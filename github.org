@@ -136,6 +136,9 @@ https://github.com/marketplace/zube
   - [[https://github.com/DoomHammer/neovim-copilot-nix-bundle][DoomHammer/neovim-copilot-nix-bundle: Run Neovim with GitHub Copilot out of the box]]
 - [[https://github.com/abbbi/issue2mbox][abbbi/issue2mbox: Export github issues to mbox or maildir]]
 
+- repositories in organization
+  : curl -s "https://api.github.com/orgs/<ORG_NAME>/repos?per_page=100&page=<1,2...>" | jq '.[].ssh_url' | xargs -n 1 git clone
+
 * Articles
 - [[https://krisnova.net/posts/network-instrumentation/][Network Instrumentation and TCP File Descriptor Hijacking | Kris Nóva]]
 
