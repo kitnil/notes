@@ -2593,6 +2593,72 @@ Practicaly this means:
 
 This is the reason why it is recommended to use an odd number of master nodes for the control plane. More then 7 master nodes will result in a overhead for determining cluster membership and quorum, it is not recommended. Depending on your needs, you typically end up with 3 or 5 master nodes.
 
+** [[https://ealebed.github.io/posts/2019/приоритетность-подов-в-kubernetes/][Приоритетность подов в Kubernetes · Yevhen Lebid's website]]
+
+Поды ([[https://ealebed.github.io/posts/2018/знакомство-с-kubernetes-часть-3-pods/][=Pods=]]) могут иметь приоритет. Приоритет отображает важность пода относительно других подов в кластере. Если под не может быть запущен на подходящем узле из-за нехватки ресурсов, то планировщик ( =scheduler= ) пытается “вытеснить” поды с более низким приоритетом и переместить их на другие узлы кластера, чтобы освободить ресурсы и запустить ожидающий под. Давайте разберемся!
+
+Приоритет подов (Pod Priority) и вытеснение (Preemption) включены по умолчанию начиная с версии =Kubernetes=  1.11. Для их использования необходимо:
+
+- создать один или несколько объектов =PriorityClass=  в кластере;
+- добавить в описание пода поле =priorityClassName=  с именем созданного ранее класса.
+
+=PriorityClass= - это объект, определяющий соответствие между именем класса приоритета и его целочисленным значением. Имя задается в поле =name= объекта, значение - в поле =value=. Чем больше значение, тем выше приоритет запуска у пода с указанным классом. В поле =value= можно указать целочисленное 32-битное значение меньше или равное 1000000000 - более высокие значения зарезервированы для критически важных системных подов, которые, как правило, не могут быть вытеснены. Кроме того, =PriorityClass= имеет два опциональных поля - =globalDefault= и =description=. Поле =globalDefault= со значением установленным в =true= указывает, что данный класс приоритета будет использоваться по умолчанию для всех подов кластера, в описании которых нет поля =priorityClassName=. В системе может существовать один и только один класс приоритета, в котором =globalDefault= установлено в =true=; если же во всех классах кластера это значение будет установлено в =false=, то по умолчанию приоритет всех подов в спецификации которых нет поля =priorityClassName=  будет равен нулю (0).
+
+*Примечание.* Если вы создаете объект(ы) =PriorityClass= в кластере =Kubernetes=, в котором уже запущены поды, то следует помнить, что для существующих подов приоритет будет равняться 0 (даже если вы добавили класс с иным значением и полем =globalDefault= равным =true=) - значения определенные в классе приоритетов будут применяться только к подам, которые были созданы после создания объекта(ов) =PriorityClass= .
+
+Пример объекта =PriorityClass=  выглядит так:
+
+#+begin_src yaml
+apiVersion: scheduling.k8s.io/v1
+kind: PriorityClass
+metadata:
+  name: high-priority
+value: 1000000
+globalDefault: false
+description: "This priority class should be used for very important services/pods only"
+#+end_src
+
+В версии =Kubernetes= 1.15 (в качестве альфа-фичи) в объект =PriorityClass= добавлено поле =PreemptionPolicy=, в котором по умолчанию установлено значение =PreemptLowerPriority=, что позволяет подам данного класса приоритета “вытеснять” поды с более низким классом приоритета для освобождения ресурсов. В поле =PreemptionPolicy= также можно установить значение =Never=  - в данном случае поды будут размещены в очереди планировщика перед подами с более низким приоритетом, но не смогут вытеснять другие поды, ожидая “естественного” освобождения ресурсов.
+
+Пример объекта =PriorityClass=  с отключенным вытеснением будет таким:
+
+#+begin_src yaml
+apiVersion: scheduling.k8s.io/v1
+kind: PriorityClass
+metadata:
+  name: high-priority-nonpreempting
+value: 1000000
+preemptionPolicy: Never
+globalDefault: false
+description: "This priority class will not cause other pods to be preempted"
+#+end_src
+
+После создания одного или нескольких классов приоритета необходимо добавить поле =priorityClassName= с именем соответствующего класса в спецификацию пода (или [[https://ealebed.github.io/posts/2018/знакомство-с-kubernetes-часть-4-replicaset/][=ReplicaSet=]], или [[https://ealebed.github.io/posts/2018/знакомство-с-kubernetes-часть-5-deployments/][=Deployments=]]), например:
+
+#+begin_src yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: myapp-pod
+  labels:
+    app: myapp
+spec:
+  containers:
+  - name: myapp-container
+    image: busybox
+    command: ['sh', '-c', 'echo Hello Kubernetes! && sleep 3600']
+  priorityClassName: high-priority
+#+end_src
+
+В результате под с более высоким приоритетом будет поставлен в очередь и запущен раньше подов с приоритетом ниже. Если же под с высоким приоритетом не может быть запущен в данный момент времени, то планировщик ( =scheduler= ) попробует запустить его позднее, таким образом давая возможность стартонуть подам с более низким приоритетом.
+
+Итак, когда под ([[https://ealebed.github.io/posts/2018/знакомство-с-kubernetes-часть-3-pods/][=Pods=]]) создан, он помещается в очередь и ожидает, пока планировщик определит ему подходящий узел кластера для запуска. Если планировщик не может найти ни одного подходящего узла, соответствующего всем требованиям запускаемого пода, то для ожидающего пода запускается процесс вытеснения. Допустим, =P= - это под в очереди, тогда логика вытеснения пытается найти подходящую ноду в кластере, на которой удаление одного или нескольких подов =p0,1,2-...= с более низким приоритетом, чем у =P=, позволило бы запустить под =P= на этом узле. Когда такая нода найдена, один или несколько подов =p0,1,2-...= “выселяются” с нее, освобождая необходимые ресурсы для запуска пода =P=  из очереди планировщика.
+
+Когда под =P= “выселяет” один или несколько подов =p0,1,2-...= с узла =N=, в поле =nominatedNodeName= пода =P= появляется имя узла =N= - именно это поле помогает планировщику отслеживать необходимое количество ресурсов для пода =P=  и дает пользователю информацию о вытеснениях подов в кластере.
+
+Стоит отметить, что под =P= не обязательно будет запущен на ноде, имя которой указано в поле =nominatedNodeName= - дело в том, что все поды имеют время для корректного завершения работы (graceful termination period). Если в течение этого периода на какой-либо другой ноде кластера появится достаточное количество ресурсов для запуска пода =P=, то он будет запущен на подходящей ноде, не дожидаясь вытеснения подов =p0,1,2-...= и освобождения ресурсов с ноды из поля =nominatedNodeName=. Второй случай когда имена узлов в полях =nominatedNodeName= и =nodeName= могут не совпадать - если в процессе освобождения ресурсов для пода =P=  в очереди планировщика появится под с еще более высоким приоритетом, то именно он будет запущен раньше.
+
+Напоследок замечу, что класс приоритета (PriorityClass) для пода и класс качества сервиса (Qos), который рассматривали в статьях о ресурсах в =Kubernetes=  ([[https://ealebed.github.io/posts/2019/ресурсы-в-kubernetes-часть-1-memory/][раз]], [[https://ealebed.github.io/posts/2019/ресурсы-в-kubernetes-часть-2-cpu/][два]]) это совершенно разные вещи, их необходимо различать.
 * Misc
 - [[https://github.com/aquasecurity/kube-bench][aquasecurity/kube-bench: Checks whether Kubernetes is deployed according to security best practices as defined in the CIS Kubernetes Benchmark]]
 - [[https://github.com/kubevirt/kubevirt][kubevirt/kubevirt: Kubernetes Virtualization API and runtime in order to define and manage virtual machines.]]
