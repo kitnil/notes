@@ -372,6 +372,29 @@
 - [[https://github.com/ncarlier/webhookd][ncarlier/webhookd: A very simple webhook server launching shell scripts.]]
 - [[https://github.com/umputun/updater][umputun/updater: Simple web-hook based receiver executing things via HTTP request]]
 
+* Snippets
+** HTTP Get
+#+begin_src go
+  package main
+
+  import (
+          "fmt"
+          "net/http"
+          "io"
+  )
+
+  func main() {
+          fmt.Println("Hello, World!")
+          resp, err := http.Get("http://www.gnu.org/")
+          if err != nil {
+                  // handle error
+          }
+          defer resp.Body.Close()
+          body, err := io.ReadAll(resp.Body)
+          fmt.Println(body)
+  }
+#+end_src
+
 * [[https://gist.github.com/egeneralov/c5b546b12739dd8607ec662f4218c2cf][golang-ssh-server-login-to-docker-container.go]]
 
 #+begin_src go
