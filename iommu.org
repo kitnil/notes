@@ -14,3 +14,7 @@ done;
 #+end_src
 
 - [[https://www.heiko-sieger.info/iommu-groups-what-you-need-to-consider/][IOMMU Groups - What You Need to Consider - Heiko's Blog - VFIO]]
+
+#+begin_src bash
+  for d in /sys/kernel/iommu_groups/*/devices/*; do n=${d#*/iommu_groups/*}; n=${n%%/*}; printf 'IOMMU Group %s ' "$n"; lspci -nns "${d##*/}"; done;
+#+end_src
