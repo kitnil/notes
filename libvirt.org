@@ -322,6 +322,9 @@ Add to =<driver>=:
 Run:
 : virsh qemu-agent-command ubuntu22.04 --timeout 60 '{"execute":"guest-fstrim"}'
 
+* Learning
+- [[https://github.com/mike11207/single-gpu-passthrough-amd-gpu][mike11207/single-gpu-passthrough-amd-gpu: This is a guide for passing an AMD/NVIDIA GPU to a Windows 10 Guest VM on Linux]]
+
 * Migration
 
 : virsh migrate --live --copy-storage-all --verbose --persistent --undefinesource p510306 qemu+ssh://kvm-nvme103.majordomo.ru/system tcp://kvm-nvme103.majordomo.ru/
