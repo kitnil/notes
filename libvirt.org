@@ -323,6 +323,7 @@ Run:
 : virsh qemu-agent-command ubuntu22.04 --timeout 60 '{"execute":"guest-fstrim"}'
 
 * Learning
+- [[https://wiki.gentoo.org/wiki/GPU_passthrough_with_libvirt_qemu_kvm][GPU passthrough with libvirt qemu kvm - Gentoo wiki]]
 - [[https://github.com/mike11207/single-gpu-passthrough-amd-gpu][mike11207/single-gpu-passthrough-amd-gpu: This is a guide for passing an AMD/NVIDIA GPU to a Windows 10 Guest VM on Linux]]
 
 * Migration
