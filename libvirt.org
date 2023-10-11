@@ -24,6 +24,9 @@
 - show memory
   : virsh dominfo win10 | grep -i memory
 
+- set cpu
+  : (f() { virsh setvcpus --domain "$1" --config --maximum "$2"; virsh setvcpus --domain "$1" --config "$2"; }; f vm12345 2)
+
 * virt-manager
 
 #+begin_example
