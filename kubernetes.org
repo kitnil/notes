@@ -920,579 +920,21 @@ Once running, the URL to the dashboard is https://2886795308-30000-simba08.envir
 - [[https://serveradmin.ru/kubernetes-ustanovka/][Установка кластера Kubernetes | serveradmin.ru]]
 - [[https://habr.com/ru/companies/flant/articles/353410/][Устройство и механизм работы Prometheus Operator в Kubernetes / Хабр]]
 
-** [[https://www.elvinefendi.com/2018/11/25/canary-deployment-with-ingress-nginx.html][Canary deployment with ingress-nginx]]
+** [[https://shivering-isles.com/2023/09/about-read-only-containers-ruby-and-emptydir][About Read-Only Containers, Ruby and EmptyDir]]
+I’m running the majority of my workloads on Kubernetes these days, including my Mastodon instance. For many years I’ve been running Mastodon in read-only mode for the container filesystem. However, I somehow missed the Sidekiq container.
 
-Note: Make sure you’re using ingress-nginx not older than version 0.22.0. The initial implementation of canary feature had serious flaws that got fixed in 0.22.0.
+** Addendum
 
-Canary and Blue/Green deployment, A/B testing are all known techniques to safely rollout a new version of service. Most of the times it’s required to configure them at load balancer level. https://thenewstack.io/deployment-strategies has done good job at explaining what they are.
+Following up on the conversation mentioned above, I dove into the kubelet source code[[https://github.com/kubernetes/kubernetes/blob/622509830c1038535e539f7d364f5cd7c3b38791/pkg/volume/emptydir/empty_dir.go#L46][¹]] [[https://github.com/kubernetes/kubernetes/blob/622509830c1038535e539f7d364f5cd7c3b38791/pkg/volume/emptydir/empty_dir.go#L441-L474][²]] [[https://github.com/kubernetes/kubernetes/blob/622509830c1038535e539f7d364f5cd7c3b38791/pkg/volume/emptydir/empty_dir.go#L272-L281][³]], to figure out how the kubelet creates it’s =emptyDir=. There I learned that the behaviour with forced =0777= only exists for directory-based =emptyDir=. Therefore if you don’t want to use Generic Ephemeral Volumes, you can also just use in-memory =emptyDir= :
 
-In this article I’m going to show how ingress-nginx can be used to do canary deployments. But the feature ingress-nginx provides can also be used to do Blue/Green deployment as well as A/B testing.
+#+begin_src c
+- name: tmp
+  emptyDir:
+    medium: Memory
 
-In the version of 0.21.0 ingress-nginx introduces a new Canary feature that can be used to configure more than a single backend service for an ingress and few more annotations to also describe traffic distribution amongst the backend services. I’m going to show how to use that new feature with an example below. I’ll first deploy a service and configure it’s ingress. Then will deploy a new version of it under a different namesapce as canary. We will then use new ingress-nginx annotations to steer 10% of traffic to the canary backend. In the end of the article I’ll also talk about how to always force requests to be proxied by canary service using a HTTP header or cookie and briefly explain how this feature can be used for configuring Blue/Green deployment and A/B testing.
+#+end_src
 
-We are going to use echoserver service as an example app from https://github.com/kubernetes/ingress-nginx/blob/master/docs/examples/http-svc.yaml and minikube as local Kubernetes cluster.
-
-Create production namespace:
-
-> kubectl create ns echo-production
-namespace "echo-production" created
-
-Deploy the app:
-
-> ~$ kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/master/docs/examples/http-svc.yaml -n echo-production
-deployment.extensions "http-svc" created
-service "http-svc" created
-
-Here’s the raw version of manifest applied above:
-
-apiVersion: extensions/v1beta1
-kind: Deployment
-metadata:
-  name: http-svc
-spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app: http-svc
-  template:
-    metadata:
-      labels:
-        app: http-svc
-    spec:
-      containers:
-      - name: http-svc
-        image: gcr.io/kubernetes-e2e-test-images/echoserver:2.1
-        ports:
-        - containerPort: 8080
-        env:
-          - name: NODE_NAME
-            valueFrom:
-              fieldRef:
-                fieldPath: spec.nodeName
-          - name: POD_NAME
-            valueFrom:
-              fieldRef:
-                fieldPath: metadata.name
-          - name: POD_NAMESPACE
-            valueFrom:
-              fieldRef:
-                fieldPath: metadata.namespace
-          - name: POD_IP
-            valueFrom:
-              fieldRef:
-                fieldPath: status.podIP
-
----
-
-apiVersion: v1
-kind: Service
-metadata:
-  name: http-svc
-  labels:
-    app: http-svc
-spec:
-  ports:
-  - port: 80
-    targetPort: 8080
-    protocol: TCP
-    name: http
-  selector:
-    app: http-svc
-
-We will now expose the app using the below ingress manifest:
-
-apiVersion: extensions/v1beta1
-kind: Ingress
-metadata:
-  name: http-svc
-  annotations:
-    kubernetes.io/ingress.class: nginx
-spec:
-  rules:
-  - host: echo.com
-    http:
-      paths:
-      - backend:
-          serviceName: http-svc
-          servicePort: 80
-
-After saving the above YAML in http-svc.ingress, we do following to create the ingress:
-
-> ~$ kubectl apply -f http-svc.ingress -n echo-production
-ingress.extensions "http-svc" created
-
-We now have the production version of our echoserver service running:
-
-> ~$ curl -H "Host: echo.com" http://192.168.99.100:31988
-
-
-Hostname: http-svc-686644794d-hv4rt
-
-Pod Information:
-	node name:	minikube
-	pod name:	http-svc-686644794d-hv4rt
-	pod namespace:	echo-production
-	pod IP:	172.17.0.2
-
-Server values:
-	server_version=nginx: 1.12.2 - lua: 10010
-
-Request Information:
-	client_address=172.17.0.9
-	method=GET
-	real path=/
-	query=
-	request_version=1.1
-	request_scheme=http
-	request_uri=http://echo.com:8080/
-
-Request Headers:
-	accept=*/*
-	host=echo.com
-	user-agent=curl/7.54.1
-	x-forwarded-for=172.17.0.1
-	x-forwarded-host=echo.com
-	x-forwarded-port=80
-	x-forwarded-proto=http
-	x-original-uri=/
-	x-real-ip=172.17.0.1
-	x-request-id=8055cb031471bfe034f4beaee7d7302b
-	x-scheme=http
-
-Request Body:
-	-no body in request-
-
-http://192.168.99.100:31988 is obtained using:
-
-> ~$ minikube service list
-
-Now that we have production app running, I’m going to deploy canary version of the same service:
-
-Create namesapce for the canary deployment:
-
-> ~$ kubectl create ns echo-canary
-namespace "echo-canary" created
-
-Deploy the app under this namespace (in reality this should be a different - canary version of echoserver service, but for simplicity I’m deploying the exact app):
-
-> ~$ kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/master/docs/examples/http-svc.yaml -n echo-canary
-deployment.extensions "http-svc" created
-service "http-svc" created
-
-Now comes the moment! This is the step where we use Canary feature of ingress-nginx and configure load balancer to proxy 10% of traffic to the canary backend deployed above:
-
-apiVersion: extensions/v1beta1
-kind: Ingress
-metadata:
-  name: http-svc
-  annotations:
-    kubernetes.io/ingress.class: nginx
-    nginx.ingress.kubernetes.io/canary: "true"
-    nginx.ingress.kubernetes.io/canary-weight: "10"
-spec:
-  rules:
-  - host: echo.com
-    http:
-      paths:
-      - backend:
-          serviceName: http-svc
-          servicePort: 80
-
-Create http-svc.ingress.canary with the above content and apply:
-
-> ~$ kubectl apply -f http-svc.ingress.canary -n echo-canary
-ingress.extensions "http-svc" created
-
-nginx.ingress.kubernetes.io/canary: "true" tells ingress-nginx to treat this ingress differently and mark it as “canary”. What this means internall is the controller is not going to try to configure a new Nginx virtual host for this ingress as it would normally do. Instead it will find the main ingress for this using host and path pair and associate this with the main ingress.
-
-As you can guess nginx.ingress.kubernetes.io/canary-weight: "10" is what tells the ingress-nginx to configure Nginx in a way that it proxies 10% of total requests destined to echo.com to echoserver service under echo-canary namespace, a.k.a to the canary version of our app.
-
-Now let’s see whether it works as expected. To test this I’m goig to run a small script that sends 1000 requests and then will look at pod namespace in the response to count what percentage of total requests were processed by the canary version of our app.
-
-Here’s the script:
-
-counts = Hash.new(0)
-
-1000.times do
-  output = `curl -s -H "Host: echo.com" http://192.168.99.100:31988 | grep 'pod namespace'`
-  counts[output.strip.split.last] += 1
-end
-
-puts counts
-
-And here are the outputs of two executions:
-
-> ~$ ruby count.rb
-{"echo-production"=>896, "echo-canary"=>104}
-> ~$ ruby count.rb
-{"echo-production"=>882, "echo-canary"=>118}
-
-As you can see it worked as expected! Now if I edit the canary ingress and bump the weight up to 50:
-
-> ~$ ruby count.rb
-{"echo-canary"=>485, "echo-production"=>515}
-> ~$ ruby count.rb
-{"echo-production"=>494, "echo-canary"=>506}
-
-🎉
-
-Note that weight is not a precise percentage, it’s rather a probability at which a given request will be proxied to the canary backend service. Therefore in the above tests we see only approximate distributions.
-But how can I always manually force my request to hit canary backend service?
-
-This can be useful for example when developers want to tophat their change. ingress-nginx provides two annotations for this: nginx.ingress.kubernetes.io/canary-by-header and nginx.ingress.kubernetes.io/canary-by-cookie. In this article I’m going to show how it’s done using nginx.ingress.kubernetes.io/canary-by-header. To do so we need to edit the canary ingress and add following annotation:
-
-nginx.ingress.kubernetes.io/canary-by-header: "you-can-use-anything-here"
-
-Then when sending the request pass HTTP header you-can-use-anything-here set to always:
-
-> ~$ curl -s -H "you-can-use-anything-here: always" -H "Host: echo.com" http://192.168.99.100:31988 | grep 'pod namespace'
-	pod namespace:	echo-canary
-
-If you want your request to be never proxied to the canary backend service then you can set the header to never:
-
-> ~$ curl -s -H "you-can-use-anything-here: never" -H "Host: echo.com" http://192.168.99.100:31988 | grep 'pod namespace'
-	pod namespace:	echo-production
-
-When the value is absent or set anything other than never, or always then proxying by weight will be used. This works exactly the same for nginx.ingress.kubernetes.io/canary-by-cookie. Note that canary-by-header takes presedence over canary-by-cookie. In general the order of application of the rules is: canary-by-header > canary-by-cookie > canary-weight.
-Blue/Green deployment
-
-This can be achieved by setting the weight to 0 or 100. For example you can make your green deployment as main and configure blue deployment’s ingress to be canary. Initially you’ll set the weight to 0 so no traffic will be proxied to blue deployment. Once the new version of your app is ready, you deploy it as blue deployment and only after that set the weight to 100, which will result in steering all traffic away from green deployment to blue. And for the next deployment you can again deploy green and switch the weight back to 0 etc.
-A/B testing
-
-This can be achieved using mix of business logic implemented in the backend service and cookie-by-cookie annotation. For example let’s say you want to show the new version of your app to only users under 30 years old. You can then configure
-
-nginx.ingress.kubernetes.io/canary-by-cookie: "use_under_30_feature"
-
-and implement a simple change in your backend service that for a given requests checks the age of signed-in user and if the age is under 30 sets cookie use_under_30_feature to always. This will then make sure all subsequent requests by those users will be proxied by the new version of the app.
-
-** [[https://scribe.rip/secure-kubernetes-clusters-with-oauth2-openid-connect-and-cidaas-ffc58b7274b7][Secure Kubernetes clusters with OAuth2/OpenID Connect and cidaas]]
-This article focuses on securing a Kubernetes cluster with OAuth2 and OpenID Connect using cidaas Cloud Identity & Access Management.
-
-cidaas (https://www.cidaas.com) is a modern Cloud Identity & Access Management solution developed by Widas ID GmbH located in Germany. The cidaas feature set includes:
-
-    Single Sign On (SSO) based on OAuth2, OpenID Connect, SAML 2.0
-    Multi-Factor-Authentication (MFA) with more than 14 authentication methods, including TOTP and FIDO2
-    password-less authentication
-    social login (e.g. Facebook, Google, LinkedIn, and more) as well as enterprise identity provider (e.g. SAML or AD)
-    security in Machine-to-Machine communications (M2M) and IoT
-
-A short introduction on OAuth2, OpenID Connect and Kubernetes
-
-OAuth2 is the industry-standard protocol for authorization, and it provides different authorization flows depending on the application or client type, be it for example web or mobile applications. If you want to learn more about OAuth2 have a look at the official website at https://oauth.net/2/.
-
-OpenID Connect (OIDC) is a standard authentication protocol that adds an identification layer to the previous OAuth 2.0 standard. OIDC provides information to the end user in the form of an id token, through which the identity is verified. The standard is controlled by the OpenID Foundation (https://openid.net).
-
-Kubernetes is an open-source orchestration platform for the management of containerized applications. It offers many features for an automated and stable operation of modern software architectures, including automated deployments and scaling. (https://kubernetes.io)
-Kubernetes OpenID Connect Tokens
-
-The OpenID Connect Token (Kubernetes Docs) feature of Kubernetes allows an out-of-the-box integration with cidaas or any other identity provider supporting the OpenID Connect protocol.
-
-The integration of cidaas requires two steps of configuration:
-
-First, the configuration of the API Server
-
-    oidc parameters
-    Kubespray
-    Kops
-    Kubeadm
-
-Second, the configuration of the Kubernetes Clients
-
-    Kubectl
-    Kubernetes Dashboard
-
-Kubernetes API Server Configuration
-
-We will show 4 different ways to configure the API Server. First we will discuss the plain configuration of the API Server, additionally we will show how a configuration can be achieved with commonly used orchestration solutions Kubespray, Kops, and Kubeadm.
-
-Plain Configuration via oidc parameters
-
-The OpenID Connect Feature of Kubernetes provides several parameter options, which need to be passed while starting the Kubernetes API Server. Two of these are required:
-
-— oidc-issuer-url and — oidc-client-id
-
-These are also the only ones required for an integration with cidaas. Pass the cidaas issuer URL (the base URL of your cidaas instance) and the client ID of your cidaas application. If you need some information how to create an app (OAuth2 / OpenID Connect Client) in cidaas please refer to the cidaas documentation: docs.cidaas.com
-
-Kubespray
-
-If you are using Kubespray to configure your Kubernetes Cluster, You can add following configuration to `group_vars/k8s_cluster/k8s-cluster.yml` file :
-
-k8s-cluster.yml
-
-kube_oidc_url: https://{yourtenant}.cidaas.de 
-kube_oidc_client_id: xxxx-xxxx-xxxx-xxxx-xxx 
-## Optional settings for OIDC 
-# kube_oidc_ca_file: "{{ kube_cert_dir }}/ca.pem" 
-kube_oidc_username_claim: sub 
-kube_oidc_username_prefix: cidaas_oidc: 
-kube_oidc_groups_claim: roles 
-kube_oidc_groups_prefix: "cidaas_oidc:" 
-
-Kops
-
-If you are using kops to configure your Kubernetes Cluster, you can add following configuration to cluster manifest file as explained here :
-
-kops.yml
-
-spec: 
-  kubeAPIServer: 
-    oidcIssuerURL: https://your-oidc-provider.svc.cluster.local 
-    oidcClientID: kubernetes 
-    oidcUsernameClaim: sub 
-    oidcUsernamePrefix: "oidc:" 
-    oidcGroupsClaim: user_roles 
-    oidcGroupsPrefix: "oidc:" 
-    oidcCAFile: /etc/kubernetes/ssl/kc-ca.pem 
-    oidcRequiredClaim: 
-    	- "key=value" 
-
-Kubeadm
-
-Finally, if you are using kubeadm to configure cluster add following files to cluster manifest file:
-
-kubeadm.yml
-
-apiVersion: kubeadm.k8s.io/v1beta2 
-kind: ClusterConfiguration 
-apiServer: 
-  extraArgs: 
-    oidc-issuer-url: https://{tenant}.cidaas.de 
-    oidc-username-claim: sub 
-    oidc-client-id: kubernetes-cluster 
-    oidc-ca-file: /root/myCA.pem 
-
-Kubernetes Clients Configuration
-
-After we have configured the Kubernetes API Server, we now need to have a closer look at the Kubernetes clients, in particular the user configuration in $HOME/.kube/config used by kubectl.
-Kubectl
-
-kubectl is a commandline application used to run commands and apply configuration on the Kubernetes cluster .
-
-There are multiple ways to configure kubectl to integrate cidaas for authentication for example OIDC Authenticator or kubelogin.
-
-Both work perfectly well with cidaas, below you will find a short description for both options.
-
-OIDC Authenticator:
-
-kubectl.yml
-
-kubectl config set-credentials USER_NAME \ 
-   --auth-provider=oidc \ 
-   --auth-provider-arg=idp-issuer-url=( issuer url ) \ 
-   --auth-provider-arg=client-id=( your client id ) \ 
-   --auth-provider-arg=client-secret=( your client secret ) \ 
-   --auth-provider-arg=refresh-token=( your refresh token ) \ 
-   --auth-provider-arg=idp-certificate-authority=( path to your ca certificate ) \ 
-   --auth-provider-arg=id-token=( your id_token ) 
-
-Kubelogin:
-
-You can install kubelogin via following commands
-
-# Homebrew (macOS and Linux)
-
-brew install int128/kubelogin/kubelogin
-
-# Krew (macOS, Linux, Windows and ARM)
-
-kubectl krew install oidc-login
-
-# Chocolatey (Windows)
-
-choco install kubelogin
-
-You can use following command to setup kubelogin to use cidaas
-
-kubectl oidc-login setup --oidc-issuer-url {{ issuer_url}}--oidc-client-id {{ clientid }} --oidc-client-secret {{ clientsecret}}
-
-Optional: Kubernetes Dashboard
-
-When operating a Kubernetes Cluster a Kubernetes Dashboard is often used to manage the cluster and its services/applications. To secure the Kubernetes Dashboard we will use OAuth2-proxy. In the scenario shown below, the kubernetes-dashboard is running in a separate namespace called “kubernetes-dashboard” namespace and will be exposed on the URL kube-dashboard.cluster.de. To achieve this, the following configuration steps need to be executed:
-
-    Deploy OAuth2-proxy
-    Deploy the Kubernetes Ingress for the Kubernetes Dashboard
-
-The OAuth2-proxy can be deployed using below configuration via kubectl:
-
-kube-oauth2-proxy.yml
-
-apiVersion: apps/v1 
-kind: Deployment 
-metadata: 
-  labels: 
-    k8s-app: oauth2-proxy 
-  name: oauth2-proxy 
-spec: 
-  replicas: 1 
-  selector: 
-    matchLabels: 
-      k8s-app: oauth2-proxy 
-  template: 
-    metadata: 
-      labels: 
-        k8s-app: oauth2-proxy 
-    spec: 
-      containers: 
-        - args: 
-            - --cookie-secure=false 
-            - --upstream=file:///dev/null 
-            - --http-address=0.0.0.0:4180 
-            - --cookie-secret=cnlIM0xwNnFXY1M5UmMvOGwyUDMxUT09 
-            - --client-id=xxxx-xxx-xxx-xxx 
-            - --client-secret=xxxx-xxx-xxx-xxx 
-            - --email-domain=* 
-            - --provider=oidc 
-            - --oidc-issuer-url=https://{tenant}.cidaas.de 
-          image: quay.io/pusher/oauth2_proxy:v5.1.0 
-          imagePullPolicy: Always 
-          name: oauth2-proxy 
-          ports: 
-            - containerPort: 4180 
-              protocol: TCP 
---- 
-kind: Service 
-apiVersion: v1 
-metadata: 
-  name: oauth2-proxy 
-  namespace: kubernetes-dashboard 
-spec: 
-  ports: 
-    - name: http 
-      protocol: TCP 
-      port: 4180 
-      targetPort: 4180 
-  selector: 
-    k8s-app: oauth2-proxy 
-  type: ClusterIP 
---- 
-kind: Ingress 
-apiVersion: extensions/v1beta1 
-metadata: 
-  name: oauth2-proxy 
-  namespace: kubernetes-dashboard 
-  annotations: 
-    nginx.ingress.kubernetes.io/ingress.class: nginx 
-    nginx.ingress.kubernetes.io/proxy-buffer-size: 16k 
-spec: 
-  tls: 
-    - hosts: 
-        - kube-dashboard.cluster.de 
-      secretName: wildcard.cluster.de 
-  rules: 
-    - host: kube-dashboard.cluster.de 
-      http: 
-        paths: 
-          - path: /oauth2 
-            backend: 
-              serviceName: oauth2-proxy 
-              servicePort: 4180 
-
-The Kubernetes Ingress can be deployed using below configuration:
-
-kube-ingress.yml
-
-kind: Ingress 
-apiVersion: extensions/v1beta1 
-metadata: 
-  name: kubernetes-dashboard-ingress 
-  namespace: kubernetes-dashboard 
-  annotations: 
-    nginx.ingress.kubernetes.io/auth-signin: "https://$host/oauth2/start?rd=https://$host$request_uri$is_args$args" 
-    nginx.ingress.kubernetes.io/auth-url: "https://$host/oauth2/auth" 
-    nginx.ingress.kubernetes.io/backend-protocol: HTTPS 
-    nginx.ingress.kubernetes.io/configuration-snippet: | 
-      auth_request_set $token $upstream_http_authorization; 
-      proxy_set_header Authorization $token; 
-    nginx.ingress.kubernetes.io/ingress.class: nginx 
-    nginx.ingress.kubernetes.io/proxy-buffer-size: 16k 
-spec: 
-  tls: 
-    - hosts: 
-        - kube-dashboard.cluster.de 
-      secretName: wildcard.cluster.de 
-  rules: 
-    - host: kube-dashboard.cluster.de 
-      http: 
-        paths: 
-          - backend: 
-              serviceName: kubernetes-dashboard 
-              servicePort: 443 
-
-Access Management (RBAC — Role-based Access Control)
-
-Basic login access to Kubernetes using cidaas is now configured. Now we will have a look at access management, in particular how to manage individual user access to Kubernetes. Kubernetes is using role-based access control (RBAC), which can be integrated with the cidaas role management using Role/CusterRoles and RoleBinding/ClusterRoleBinding.
-
-Let’s assume an easy user role setup:
-
-    users with the KUBE_ADMIN role have full Kubernetes cluster access
-    users with the KUBE_READ role have limited read-only access to the Kubernetes cluster
-
-For KUBE_ADMIN role we create a new ClusterRoleBinding and refer to an existing role of the Kubernetes cluster using a “roleRef” to the role “cluster-admin”. This ClusterRoleBinding is the mapping between the Kubernetes ClusterRole (cluster-admin) and the cidaas role (KUBE_ADMIN). The ClusterRoleBinding in the Kubernetes config for the KUBE_ADMIN role will look like this:
-
-kube-rolebinding.yml
-
-# Admin Role setup 
-apiVersion: rbac.authorization.k8s.io/v1 
-kind: ClusterRoleBinding 
-metadata: 
-  name: oidc-cluster-admin 
-roleRef: 
-  apiGroup: rbac.authorization.k8s.io 
-  kind: ClusterRole 
-  name: cluster-admin 
-subjects: 
-- apiGroup: rbac.authorization.k8s.io 
-  kind: Group 
-  name: "cidaas_oidc:KUBE_ADMIN" 
-
-Since there is no existing read role in the Kubernetes default setup, we create a new ClusterRole named “read-only-cluster-role” and define the access of this ClusterRole via the rules section. So in our use case the ClusterRole should be
-
-    only allowed to perform the actions “get”, “list” and “watch” (verbs)
-    on all apis [“*”] (apiGroups) and
-    all resources [“*”] (resource)
-
-After we have defined the ClusterRole we do the same as we did for the KUBE_ADMIN mapping, we assign the ClusterRole via the ClusterRoleBinding to the KUBE_READ role in cidaas.
-
-The ClusterRole and ClusterRoleBinding in the Kubernetes Config for the KUBE_READ role will look like this:
-
-kube-clusterrole-binding.yml
-
-# Admin Role setup 
-#read-only-cluster-role 
-apiVersion: rbac.authorization.k8s.io/v1 
-kind: ClusterRole 
-metadata: 
-  name: read-only-cluster-role 
-rules: 
-- apiGroups: ["*"] 
-  resources: ["*"] 
-  verbs: ["get", "list", "watch"] 
- 
- 
-# ClusterRoleBinding 
---- 
-apiVersion: rbac.authorization.k8s.io/v1 
-kind: ClusterRoleBinding 
-metadata: 
-  name: cluster-read-only-binding 
-roleRef: 
-  apiGroup: rbac.authorization.k8s.io 
-  kind: ClusterRole 
-  name: read-only-cluster-role 
-subjects: 
-- apiGroup: rbac.authorization.k8s.io 
-  kind: Group 
-  name: "cidaas_oidc:KUBE_READ" 
-
-Now we can assign the roles KUBE_ADMIN or KUBE_READ to users in cidaas to assign the required access in Kubernetes to them. If you do not know how to create roles in cidaas you can find the documentation here: docs.cidaas.com
-
-That’s it, we made it! We now integrated cidaas, successfully secured a Kubernetes cluster and are able to manage the access control to and in our Kubernetes cluster via the RBAC approach.
-
-Hint: If you want to have a look what is in the token, we get back in the callback method, you can decode your Access Token easily with the https://authkit.io/ online jwt decoder.
-
-Securing a Kubernetes Cluster and managing the users as well as their access rights is crucial for a secure and productive operation. With the OAuth2 and OpenID Connect Standards it becomes easy to achieve this. This example is based on cidaas — Cloud Identity & Access Management and the OpenID Connect Token feature of Kubernetes.
-
-If you have any questions or suggestions, please leave a comment.
+And after figuring that out, I decided to check the issues tracker, turns out, it’s [[https://github.com/kubernetes/kubernetes/issues/110835][a well-known bug]], that is probably becoming a =wontfix= .
 ** [[https://blog.thomas.maurice.fr/posts/authenticate-with-kubernetes-using-vault/#creating-the-oidc-endpoint][Authenticate to Kubernetes using Hashicorp Vault]]
 📅 Oct 14, 2021
  ·  ☕ 23 min read
@@ -2256,6 +1698,634 @@ Conclusion !
 thumbs up
 
 TADAM you managed to setup an OIDC authentication using Vault and its group system for your Kubernetes cluster!
+** [[https://www.elvinefendi.com/2018/11/25/canary-deployment-with-ingress-nginx.html][Canary deployment with ingress-nginx]]
+
+Note: Make sure you’re using ingress-nginx not older than version 0.22.0. The initial implementation of canary feature had serious flaws that got fixed in 0.22.0.
+
+Canary and Blue/Green deployment, A/B testing are all known techniques to safely rollout a new version of service. Most of the times it’s required to configure them at load balancer level. https://thenewstack.io/deployment-strategies has done good job at explaining what they are.
+
+In this article I’m going to show how ingress-nginx can be used to do canary deployments. But the feature ingress-nginx provides can also be used to do Blue/Green deployment as well as A/B testing.
+
+In the version of 0.21.0 ingress-nginx introduces a new Canary feature that can be used to configure more than a single backend service for an ingress and few more annotations to also describe traffic distribution amongst the backend services. I’m going to show how to use that new feature with an example below. I’ll first deploy a service and configure it’s ingress. Then will deploy a new version of it under a different namesapce as canary. We will then use new ingress-nginx annotations to steer 10% of traffic to the canary backend. In the end of the article I’ll also talk about how to always force requests to be proxied by canary service using a HTTP header or cookie and briefly explain how this feature can be used for configuring Blue/Green deployment and A/B testing.
+
+We are going to use echoserver service as an example app from https://github.com/kubernetes/ingress-nginx/blob/master/docs/examples/http-svc.yaml and minikube as local Kubernetes cluster.
+
+Create production namespace:
+
+> kubectl create ns echo-production
+namespace "echo-production" created
+
+Deploy the app:
+
+> ~$ kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/master/docs/examples/http-svc.yaml -n echo-production
+deployment.extensions "http-svc" created
+service "http-svc" created
+
+Here’s the raw version of manifest applied above:
+
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: http-svc
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: http-svc
+  template:
+    metadata:
+      labels:
+        app: http-svc
+    spec:
+      containers:
+      - name: http-svc
+        image: gcr.io/kubernetes-e2e-test-images/echoserver:2.1
+        ports:
+        - containerPort: 8080
+        env:
+          - name: NODE_NAME
+            valueFrom:
+              fieldRef:
+                fieldPath: spec.nodeName
+          - name: POD_NAME
+            valueFrom:
+              fieldRef:
+                fieldPath: metadata.name
+          - name: POD_NAMESPACE
+            valueFrom:
+              fieldRef:
+                fieldPath: metadata.namespace
+          - name: POD_IP
+            valueFrom:
+              fieldRef:
+                fieldPath: status.podIP
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: http-svc
+  labels:
+    app: http-svc
+spec:
+  ports:
+  - port: 80
+    targetPort: 8080
+    protocol: TCP
+    name: http
+  selector:
+    app: http-svc
+
+We will now expose the app using the below ingress manifest:
+
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: http-svc
+  annotations:
+    kubernetes.io/ingress.class: nginx
+spec:
+  rules:
+  - host: echo.com
+    http:
+      paths:
+      - backend:
+          serviceName: http-svc
+          servicePort: 80
+
+After saving the above YAML in http-svc.ingress, we do following to create the ingress:
+
+> ~$ kubectl apply -f http-svc.ingress -n echo-production
+ingress.extensions "http-svc" created
+
+We now have the production version of our echoserver service running:
+
+> ~$ curl -H "Host: echo.com" http://192.168.99.100:31988
+
+
+Hostname: http-svc-686644794d-hv4rt
+
+Pod Information:
+	node name:	minikube
+	pod name:	http-svc-686644794d-hv4rt
+	pod namespace:	echo-production
+	pod IP:	172.17.0.2
+
+Server values:
+	server_version=nginx: 1.12.2 - lua: 10010
+
+Request Information:
+	client_address=172.17.0.9
+	method=GET
+	real path=/
+	query=
+	request_version=1.1
+	request_scheme=http
+	request_uri=http://echo.com:8080/
+
+Request Headers:
+	accept=*/*
+	host=echo.com
+	user-agent=curl/7.54.1
+	x-forwarded-for=172.17.0.1
+	x-forwarded-host=echo.com
+	x-forwarded-port=80
+	x-forwarded-proto=http
+	x-original-uri=/
+	x-real-ip=172.17.0.1
+	x-request-id=8055cb031471bfe034f4beaee7d7302b
+	x-scheme=http
+
+Request Body:
+	-no body in request-
+
+http://192.168.99.100:31988 is obtained using:
+
+> ~$ minikube service list
+
+Now that we have production app running, I’m going to deploy canary version of the same service:
+
+Create namesapce for the canary deployment:
+
+> ~$ kubectl create ns echo-canary
+namespace "echo-canary" created
+
+Deploy the app under this namespace (in reality this should be a different - canary version of echoserver service, but for simplicity I’m deploying the exact app):
+
+> ~$ kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/master/docs/examples/http-svc.yaml -n echo-canary
+deployment.extensions "http-svc" created
+service "http-svc" created
+
+Now comes the moment! This is the step where we use Canary feature of ingress-nginx and configure load balancer to proxy 10% of traffic to the canary backend deployed above:
+
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: http-svc
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/canary: "true"
+    nginx.ingress.kubernetes.io/canary-weight: "10"
+spec:
+  rules:
+  - host: echo.com
+    http:
+      paths:
+      - backend:
+          serviceName: http-svc
+          servicePort: 80
+
+Create http-svc.ingress.canary with the above content and apply:
+
+> ~$ kubectl apply -f http-svc.ingress.canary -n echo-canary
+ingress.extensions "http-svc" created
+
+nginx.ingress.kubernetes.io/canary: "true" tells ingress-nginx to treat this ingress differently and mark it as “canary”. What this means internall is the controller is not going to try to configure a new Nginx virtual host for this ingress as it would normally do. Instead it will find the main ingress for this using host and path pair and associate this with the main ingress.
+
+As you can guess nginx.ingress.kubernetes.io/canary-weight: "10" is what tells the ingress-nginx to configure Nginx in a way that it proxies 10% of total requests destined to echo.com to echoserver service under echo-canary namespace, a.k.a to the canary version of our app.
+
+Now let’s see whether it works as expected. To test this I’m goig to run a small script that sends 1000 requests and then will look at pod namespace in the response to count what percentage of total requests were processed by the canary version of our app.
+
+Here’s the script:
+
+counts = Hash.new(0)
+
+1000.times do
+  output = `curl -s -H "Host: echo.com" http://192.168.99.100:31988 | grep 'pod namespace'`
+  counts[output.strip.split.last] += 1
+end
+
+puts counts
+
+And here are the outputs of two executions:
+
+> ~$ ruby count.rb
+{"echo-production"=>896, "echo-canary"=>104}
+> ~$ ruby count.rb
+{"echo-production"=>882, "echo-canary"=>118}
+
+As you can see it worked as expected! Now if I edit the canary ingress and bump the weight up to 50:
+
+> ~$ ruby count.rb
+{"echo-canary"=>485, "echo-production"=>515}
+> ~$ ruby count.rb
+{"echo-production"=>494, "echo-canary"=>506}
+
+🎉
+
+Note that weight is not a precise percentage, it’s rather a probability at which a given request will be proxied to the canary backend service. Therefore in the above tests we see only approximate distributions.
+But how can I always manually force my request to hit canary backend service?
+
+This can be useful for example when developers want to tophat their change. ingress-nginx provides two annotations for this: nginx.ingress.kubernetes.io/canary-by-header and nginx.ingress.kubernetes.io/canary-by-cookie. In this article I’m going to show how it’s done using nginx.ingress.kubernetes.io/canary-by-header. To do so we need to edit the canary ingress and add following annotation:
+
+nginx.ingress.kubernetes.io/canary-by-header: "you-can-use-anything-here"
+
+Then when sending the request pass HTTP header you-can-use-anything-here set to always:
+
+> ~$ curl -s -H "you-can-use-anything-here: always" -H "Host: echo.com" http://192.168.99.100:31988 | grep 'pod namespace'
+	pod namespace:	echo-canary
+
+If you want your request to be never proxied to the canary backend service then you can set the header to never:
+
+> ~$ curl -s -H "you-can-use-anything-here: never" -H "Host: echo.com" http://192.168.99.100:31988 | grep 'pod namespace'
+	pod namespace:	echo-production
+
+When the value is absent or set anything other than never, or always then proxying by weight will be used. This works exactly the same for nginx.ingress.kubernetes.io/canary-by-cookie. Note that canary-by-header takes presedence over canary-by-cookie. In general the order of application of the rules is: canary-by-header > canary-by-cookie > canary-weight.
+Blue/Green deployment
+
+This can be achieved by setting the weight to 0 or 100. For example you can make your green deployment as main and configure blue deployment’s ingress to be canary. Initially you’ll set the weight to 0 so no traffic will be proxied to blue deployment. Once the new version of your app is ready, you deploy it as blue deployment and only after that set the weight to 100, which will result in steering all traffic away from green deployment to blue. And for the next deployment you can again deploy green and switch the weight back to 0 etc.
+A/B testing
+
+This can be achieved using mix of business logic implemented in the backend service and cookie-by-cookie annotation. For example let’s say you want to show the new version of your app to only users under 30 years old. You can then configure
+
+nginx.ingress.kubernetes.io/canary-by-cookie: "use_under_30_feature"
+
+and implement a simple change in your backend service that for a given requests checks the age of signed-in user and if the age is under 30 sets cookie use_under_30_feature to always. This will then make sure all subsequent requests by those users will be proxied by the new version of the app.
+
+** [[https://discuss.kubernetes.io/t/high-availability-host-numbers/13143][High Availability Host Numbers - General Discussions - Discuss Kubernetes]]
+K8s uses the RAFT consensus algorithm for quorum. In order to maintain quorum, you will need floor(n/2)+1 healthy master nodes.
+
+Practicaly this means:
+
+    1 master node: you will require 1 healthy master node for quorum, the loss of the master node will render the cluster headless.
+    2 master nodes: you will require 2 healthy master nodes for quorum, the loss of either master node will render the cluster headless.
+    3 master nodes: you will require 2 healty master nodes for quorum, the loss of one of the master nodes can be compensated.
+    4 master nodes: you will require 3 healty master nodes for quorum, the loss of one on the master nodes can be compensated. A setup with 4 master nodes has no advantage over a 3 master nodes setup.
+    5 master nodes: you will require 3 healthy master nodes for quorum, the loss of up to two master nodes can be compsensated.
+    6 master nodes: you will require 4 healty master nodes for quorum, the loss of up to two master nodes can be compensated. No advantage compared to 5 master nodes.
+    7 master nodes: you will require 4 healthy master nodes for quorum, the loss of up to three master nodes can be compsensated.
+
+This is the reason why it is recommended to use an odd number of master nodes for the control plane. More then 7 master nodes will result in a overhead for determining cluster membership and quorum, it is not recommended. Depending on your needs, you typically end up with 3 or 5 master nodes.
+
+** [[https://scribe.rip/secure-kubernetes-clusters-with-oauth2-openid-connect-and-cidaas-ffc58b7274b7][Secure Kubernetes clusters with OAuth2/OpenID Connect and cidaas]]
+This article focuses on securing a Kubernetes cluster with OAuth2 and OpenID Connect using cidaas Cloud Identity & Access Management.
+
+cidaas (https://www.cidaas.com) is a modern Cloud Identity & Access Management solution developed by Widas ID GmbH located in Germany. The cidaas feature set includes:
+
+    Single Sign On (SSO) based on OAuth2, OpenID Connect, SAML 2.0
+    Multi-Factor-Authentication (MFA) with more than 14 authentication methods, including TOTP and FIDO2
+    password-less authentication
+    social login (e.g. Facebook, Google, LinkedIn, and more) as well as enterprise identity provider (e.g. SAML or AD)
+    security in Machine-to-Machine communications (M2M) and IoT
+
+A short introduction on OAuth2, OpenID Connect and Kubernetes
+
+OAuth2 is the industry-standard protocol for authorization, and it provides different authorization flows depending on the application or client type, be it for example web or mobile applications. If you want to learn more about OAuth2 have a look at the official website at https://oauth.net/2/.
+
+OpenID Connect (OIDC) is a standard authentication protocol that adds an identification layer to the previous OAuth 2.0 standard. OIDC provides information to the end user in the form of an id token, through which the identity is verified. The standard is controlled by the OpenID Foundation (https://openid.net).
+
+Kubernetes is an open-source orchestration platform for the management of containerized applications. It offers many features for an automated and stable operation of modern software architectures, including automated deployments and scaling. (https://kubernetes.io)
+Kubernetes OpenID Connect Tokens
+
+The OpenID Connect Token (Kubernetes Docs) feature of Kubernetes allows an out-of-the-box integration with cidaas or any other identity provider supporting the OpenID Connect protocol.
+
+The integration of cidaas requires two steps of configuration:
+
+First, the configuration of the API Server
+
+    oidc parameters
+    Kubespray
+    Kops
+    Kubeadm
+
+Second, the configuration of the Kubernetes Clients
+
+    Kubectl
+    Kubernetes Dashboard
+
+Kubernetes API Server Configuration
+
+We will show 4 different ways to configure the API Server. First we will discuss the plain configuration of the API Server, additionally we will show how a configuration can be achieved with commonly used orchestration solutions Kubespray, Kops, and Kubeadm.
+
+Plain Configuration via oidc parameters
+
+The OpenID Connect Feature of Kubernetes provides several parameter options, which need to be passed while starting the Kubernetes API Server. Two of these are required:
+
+— oidc-issuer-url and — oidc-client-id
+
+These are also the only ones required for an integration with cidaas. Pass the cidaas issuer URL (the base URL of your cidaas instance) and the client ID of your cidaas application. If you need some information how to create an app (OAuth2 / OpenID Connect Client) in cidaas please refer to the cidaas documentation: docs.cidaas.com
+
+Kubespray
+
+If you are using Kubespray to configure your Kubernetes Cluster, You can add following configuration to `group_vars/k8s_cluster/k8s-cluster.yml` file :
+
+k8s-cluster.yml
+
+kube_oidc_url: https://{yourtenant}.cidaas.de 
+kube_oidc_client_id: xxxx-xxxx-xxxx-xxxx-xxx 
+## Optional settings for OIDC 
+# kube_oidc_ca_file: "{{ kube_cert_dir }}/ca.pem" 
+kube_oidc_username_claim: sub 
+kube_oidc_username_prefix: cidaas_oidc: 
+kube_oidc_groups_claim: roles 
+kube_oidc_groups_prefix: "cidaas_oidc:" 
+
+Kops
+
+If you are using kops to configure your Kubernetes Cluster, you can add following configuration to cluster manifest file as explained here :
+
+kops.yml
+
+spec: 
+  kubeAPIServer: 
+    oidcIssuerURL: https://your-oidc-provider.svc.cluster.local 
+    oidcClientID: kubernetes 
+    oidcUsernameClaim: sub 
+    oidcUsernamePrefix: "oidc:" 
+    oidcGroupsClaim: user_roles 
+    oidcGroupsPrefix: "oidc:" 
+    oidcCAFile: /etc/kubernetes/ssl/kc-ca.pem 
+    oidcRequiredClaim: 
+    	- "key=value" 
+
+Kubeadm
+
+Finally, if you are using kubeadm to configure cluster add following files to cluster manifest file:
+
+kubeadm.yml
+
+apiVersion: kubeadm.k8s.io/v1beta2 
+kind: ClusterConfiguration 
+apiServer: 
+  extraArgs: 
+    oidc-issuer-url: https://{tenant}.cidaas.de 
+    oidc-username-claim: sub 
+    oidc-client-id: kubernetes-cluster 
+    oidc-ca-file: /root/myCA.pem 
+
+Kubernetes Clients Configuration
+
+After we have configured the Kubernetes API Server, we now need to have a closer look at the Kubernetes clients, in particular the user configuration in $HOME/.kube/config used by kubectl.
+Kubectl
+
+kubectl is a commandline application used to run commands and apply configuration on the Kubernetes cluster .
+
+There are multiple ways to configure kubectl to integrate cidaas for authentication for example OIDC Authenticator or kubelogin.
+
+Both work perfectly well with cidaas, below you will find a short description for both options.
+
+OIDC Authenticator:
+
+kubectl.yml
+
+kubectl config set-credentials USER_NAME \ 
+   --auth-provider=oidc \ 
+   --auth-provider-arg=idp-issuer-url=( issuer url ) \ 
+   --auth-provider-arg=client-id=( your client id ) \ 
+   --auth-provider-arg=client-secret=( your client secret ) \ 
+   --auth-provider-arg=refresh-token=( your refresh token ) \ 
+   --auth-provider-arg=idp-certificate-authority=( path to your ca certificate ) \ 
+   --auth-provider-arg=id-token=( your id_token ) 
+
+Kubelogin:
+
+You can install kubelogin via following commands
+
+# Homebrew (macOS and Linux)
+
+brew install int128/kubelogin/kubelogin
+
+# Krew (macOS, Linux, Windows and ARM)
+
+kubectl krew install oidc-login
+
+# Chocolatey (Windows)
+
+choco install kubelogin
+
+You can use following command to setup kubelogin to use cidaas
+
+kubectl oidc-login setup --oidc-issuer-url {{ issuer_url}}--oidc-client-id {{ clientid }} --oidc-client-secret {{ clientsecret}}
+
+Optional: Kubernetes Dashboard
+
+When operating a Kubernetes Cluster a Kubernetes Dashboard is often used to manage the cluster and its services/applications. To secure the Kubernetes Dashboard we will use OAuth2-proxy. In the scenario shown below, the kubernetes-dashboard is running in a separate namespace called “kubernetes-dashboard” namespace and will be exposed on the URL kube-dashboard.cluster.de. To achieve this, the following configuration steps need to be executed:
+
+    Deploy OAuth2-proxy
+    Deploy the Kubernetes Ingress for the Kubernetes Dashboard
+
+The OAuth2-proxy can be deployed using below configuration via kubectl:
+
+kube-oauth2-proxy.yml
+
+apiVersion: apps/v1 
+kind: Deployment 
+metadata: 
+  labels: 
+    k8s-app: oauth2-proxy 
+  name: oauth2-proxy 
+spec: 
+  replicas: 1 
+  selector: 
+    matchLabels: 
+      k8s-app: oauth2-proxy 
+  template: 
+    metadata: 
+      labels: 
+        k8s-app: oauth2-proxy 
+    spec: 
+      containers: 
+        - args: 
+            - --cookie-secure=false 
+            - --upstream=file:///dev/null 
+            - --http-address=0.0.0.0:4180 
+            - --cookie-secret=cnlIM0xwNnFXY1M5UmMvOGwyUDMxUT09 
+            - --client-id=xxxx-xxx-xxx-xxx 
+            - --client-secret=xxxx-xxx-xxx-xxx 
+            - --email-domain=* 
+            - --provider=oidc 
+            - --oidc-issuer-url=https://{tenant}.cidaas.de 
+          image: quay.io/pusher/oauth2_proxy:v5.1.0 
+          imagePullPolicy: Always 
+          name: oauth2-proxy 
+          ports: 
+            - containerPort: 4180 
+              protocol: TCP 
+--- 
+kind: Service 
+apiVersion: v1 
+metadata: 
+  name: oauth2-proxy 
+  namespace: kubernetes-dashboard 
+spec: 
+  ports: 
+    - name: http 
+      protocol: TCP 
+      port: 4180 
+      targetPort: 4180 
+  selector: 
+    k8s-app: oauth2-proxy 
+  type: ClusterIP 
+--- 
+kind: Ingress 
+apiVersion: extensions/v1beta1 
+metadata: 
+  name: oauth2-proxy 
+  namespace: kubernetes-dashboard 
+  annotations: 
+    nginx.ingress.kubernetes.io/ingress.class: nginx 
+    nginx.ingress.kubernetes.io/proxy-buffer-size: 16k 
+spec: 
+  tls: 
+    - hosts: 
+        - kube-dashboard.cluster.de 
+      secretName: wildcard.cluster.de 
+  rules: 
+    - host: kube-dashboard.cluster.de 
+      http: 
+        paths: 
+          - path: /oauth2 
+            backend: 
+              serviceName: oauth2-proxy 
+              servicePort: 4180 
+
+The Kubernetes Ingress can be deployed using below configuration:
+
+kube-ingress.yml
+
+kind: Ingress 
+apiVersion: extensions/v1beta1 
+metadata: 
+  name: kubernetes-dashboard-ingress 
+  namespace: kubernetes-dashboard 
+  annotations: 
+    nginx.ingress.kubernetes.io/auth-signin: "https://$host/oauth2/start?rd=https://$host$request_uri$is_args$args" 
+    nginx.ingress.kubernetes.io/auth-url: "https://$host/oauth2/auth" 
+    nginx.ingress.kubernetes.io/backend-protocol: HTTPS 
+    nginx.ingress.kubernetes.io/configuration-snippet: | 
+      auth_request_set $token $upstream_http_authorization; 
+      proxy_set_header Authorization $token; 
+    nginx.ingress.kubernetes.io/ingress.class: nginx 
+    nginx.ingress.kubernetes.io/proxy-buffer-size: 16k 
+spec: 
+  tls: 
+    - hosts: 
+        - kube-dashboard.cluster.de 
+      secretName: wildcard.cluster.de 
+  rules: 
+    - host: kube-dashboard.cluster.de 
+      http: 
+        paths: 
+          - backend: 
+              serviceName: kubernetes-dashboard 
+              servicePort: 443 
+
+Access Management (RBAC — Role-based Access Control)
+
+Basic login access to Kubernetes using cidaas is now configured. Now we will have a look at access management, in particular how to manage individual user access to Kubernetes. Kubernetes is using role-based access control (RBAC), which can be integrated with the cidaas role management using Role/CusterRoles and RoleBinding/ClusterRoleBinding.
+
+Let’s assume an easy user role setup:
+
+    users with the KUBE_ADMIN role have full Kubernetes cluster access
+    users with the KUBE_READ role have limited read-only access to the Kubernetes cluster
+
+For KUBE_ADMIN role we create a new ClusterRoleBinding and refer to an existing role of the Kubernetes cluster using a “roleRef” to the role “cluster-admin”. This ClusterRoleBinding is the mapping between the Kubernetes ClusterRole (cluster-admin) and the cidaas role (KUBE_ADMIN). The ClusterRoleBinding in the Kubernetes config for the KUBE_ADMIN role will look like this:
+
+kube-rolebinding.yml
+
+# Admin Role setup 
+apiVersion: rbac.authorization.k8s.io/v1 
+kind: ClusterRoleBinding 
+metadata: 
+  name: oidc-cluster-admin 
+roleRef: 
+  apiGroup: rbac.authorization.k8s.io 
+  kind: ClusterRole 
+  name: cluster-admin 
+subjects: 
+- apiGroup: rbac.authorization.k8s.io 
+  kind: Group 
+  name: "cidaas_oidc:KUBE_ADMIN" 
+
+Since there is no existing read role in the Kubernetes default setup, we create a new ClusterRole named “read-only-cluster-role” and define the access of this ClusterRole via the rules section. So in our use case the ClusterRole should be
+
+    only allowed to perform the actions “get”, “list” and “watch” (verbs)
+    on all apis [“*”] (apiGroups) and
+    all resources [“*”] (resource)
+
+After we have defined the ClusterRole we do the same as we did for the KUBE_ADMIN mapping, we assign the ClusterRole via the ClusterRoleBinding to the KUBE_READ role in cidaas.
+
+The ClusterRole and ClusterRoleBinding in the Kubernetes Config for the KUBE_READ role will look like this:
+
+kube-clusterrole-binding.yml
+
+# Admin Role setup 
+#read-only-cluster-role 
+apiVersion: rbac.authorization.k8s.io/v1 
+kind: ClusterRole 
+metadata: 
+  name: read-only-cluster-role 
+rules: 
+- apiGroups: ["*"] 
+  resources: ["*"] 
+  verbs: ["get", "list", "watch"] 
+ 
+ 
+# ClusterRoleBinding 
+--- 
+apiVersion: rbac.authorization.k8s.io/v1 
+kind: ClusterRoleBinding 
+metadata: 
+  name: cluster-read-only-binding 
+roleRef: 
+  apiGroup: rbac.authorization.k8s.io 
+  kind: ClusterRole 
+  name: read-only-cluster-role 
+subjects: 
+- apiGroup: rbac.authorization.k8s.io 
+  kind: Group 
+  name: "cidaas_oidc:KUBE_READ" 
+
+Now we can assign the roles KUBE_ADMIN or KUBE_READ to users in cidaas to assign the required access in Kubernetes to them. If you do not know how to create roles in cidaas you can find the documentation here: docs.cidaas.com
+
+That’s it, we made it! We now integrated cidaas, successfully secured a Kubernetes cluster and are able to manage the access control to and in our Kubernetes cluster via the RBAC approach.
+
+Hint: If you want to have a look what is in the token, we get back in the callback method, you can decode your Access Token easily with the https://authkit.io/ online jwt decoder.
+
+Securing a Kubernetes Cluster and managing the users as well as their access rights is crucial for a secure and productive operation. With the OAuth2 and OpenID Connect Standards it becomes easy to achieve this. This example is based on cidaas — Cloud Identity & Access Management and the OpenID Connect Token feature of Kubernetes.
+
+If you have any questions or suggestions, please leave a comment.
+** The problem
+
+This became obvious, when someone [[https://microblog.shivering-isles.com/@mhamzahkhan@intahnet.co.uk/111032533934904655][threw a question to =#mastoadmin=  about it]].
+
+#+begin_quote
+
+
+Is it possible to make =#mastodon= write its temporary files to somewhere else other than =/opt/mastodon= ?
+
+
+#+end_quote
+
+=/opt/mastodon=, for those unaware, is the working directory and application directory of Mastodon in the official Mastodon containers. Why would the app use the current working directory instead of =/tmp/=  for temporary files?
+
+It turns out, it doesn’t. At least not by default and when the container filesystem is writeable. However, when adjusting the =securityContext= of the container to contain =readOnlyRootFilesystem: true= , media processing fails, as it tries to write temporary files.
+
+No problem, that’s why [[https://kubernetes.io/docs/concepts/storage/volumes/#emptydir][=emptyDir=]] exist. Mounting an =emptyDir= volume to =/tmp=  should solve it, however, it doesn’t.
+
+Instead of using =/tmp=, suddenly mastodon tries to write its temporary files to =/opt/mastodon= or rather the current working directory. Somehow there was a fallback to the current working directory, somewhere in the stack and it was triggered. Diving down into the stack, it became apparent, that it’s actually just the =paperclip=  dependency that causes the issue, and even further down, it turns out, it’s Ruby itself.
+
+It turns out, Ruby assesses temp directories for suitability before using them:
+
+[[https://github.com/ruby/ruby/blob/16882d4ebbb157515f95b2b3280d78dfb64ab8f7/lib/tmpdir.rb#L36-L42][https://shivering-isles.com/assets/images/2023/09/ruby-tempdir-check.png]]
+
+One of the criteria is that it’s world writeable with a [[https://www.redhat.com/sysadmin/suid-sgid-sticky-bit][sticky bit]] or not world writeable at all. And here =emptyDir= comes back into play. =emptyDirs=  in Kubernetes are creating world writeable directories without sticky bit and therefore this check fails and ruby falls back to its fallback directory, the current working directory.
+
+So in Ruby =emptyDir=  is unsuitable for temporary files created using the native API.
+
+** The solution
+
+Today I scrolled through =#mastoadmin= and came back across the conversation about the problem. And today, I knew how to solve it! Meet [[https://kubernetes.io/docs/concepts/storage/ephemeral-volumes/#generic-ephemeral-volumes][Generic Ephemeral Volumes]]!
+
+Generic Ephemeral Volumes are Kubernetes Persistent Volume Claims, that only exist for the lifetime of a Pod and are only attached to this Pod. PVCs have the nice benefit, that other than =emptyDir= they aren’t mounted with world-writeable permissions, but rather just your regular =fsGroup=  shenanigans.
+
+So the solution to the problem of =emptyDir= being unsuitable for ruby temporary files is to use generic ephemeral volumes, to create PVCs that can be mounted under =/tmp= and work like a =/tmp= directory. Be aware, they do not share the exact attributes and capability of your regular =/tmp=  directory, but for this use-case, they are good enough.
+
+PS: If you are curious about how I’m running Mastodon, you can have a look at the [[https://artifacthub.io/packages/helm/si-gitops/mastodon][Helm Chart]].
+
+-----
+
 ** [[https://scribe.citizen4.eu/using-vault-as-an-openid-connect-identity-provider-ee0aaef2bba2][Using Vault as an OpenID Connect Identity Provider]]
 
 Brian Candler on 2021-12-10
@@ -2580,76 +2650,6 @@ For my testing I followed the steps in the “Secrets Engine” section, as I ha
     If you are upgrading from an older version of Vault, you need to upgrade the default policy (which allows users to access the /authorize endpoint)
     In Vault v1.9.0, the nonce parameter was mandatory, which prevented the Dex example-app from working. This was a spec violation, and has been fixed in vault v1.9.1 (showing a very rapid response from Hashicorp!)
     If using mod_auth_openidc, but the web server is using HTTP rather than HTTPS, then you need to set OIDCCookieSamesite on. Thanks to: https://medium.com/swlh/7-keys-to-the-mystery-of-a-missing-cookie-fdf22b012f09
-** [[https://discuss.kubernetes.io/t/high-availability-host-numbers/13143][High Availability Host Numbers - General Discussions - Discuss Kubernetes]]
-K8s uses the RAFT consensus algorithm for quorum. In order to maintain quorum, you will need floor(n/2)+1 healthy master nodes.
-
-Practicaly this means:
-
-    1 master node: you will require 1 healthy master node for quorum, the loss of the master node will render the cluster headless.
-    2 master nodes: you will require 2 healthy master nodes for quorum, the loss of either master node will render the cluster headless.
-    3 master nodes: you will require 2 healty master nodes for quorum, the loss of one of the master nodes can be compensated.
-    4 master nodes: you will require 3 healty master nodes for quorum, the loss of one on the master nodes can be compensated. A setup with 4 master nodes has no advantage over a 3 master nodes setup.
-    5 master nodes: you will require 3 healthy master nodes for quorum, the loss of up to two master nodes can be compsensated.
-    6 master nodes: you will require 4 healty master nodes for quorum, the loss of up to two master nodes can be compensated. No advantage compared to 5 master nodes.
-    7 master nodes: you will require 4 healthy master nodes for quorum, the loss of up to three master nodes can be compsensated.
-
-This is the reason why it is recommended to use an odd number of master nodes for the control plane. More then 7 master nodes will result in a overhead for determining cluster membership and quorum, it is not recommended. Depending on your needs, you typically end up with 3 or 5 master nodes.
-
-** [[https://shivering-isles.com/2023/09/about-read-only-containers-ruby-and-emptydir][About Read-Only Containers, Ruby and EmptyDir]]
-I’m running the majority of my workloads on Kubernetes these days, including my Mastodon instance. For many years I’ve been running Mastodon in read-only mode for the container filesystem. However, I somehow missed the Sidekiq container.
-
-** The problem
-
-This became obvious, when someone [[https://microblog.shivering-isles.com/@mhamzahkhan@intahnet.co.uk/111032533934904655][threw a question to =#mastoadmin=  about it]].
-
-#+begin_quote
-
-
-Is it possible to make =#mastodon= write its temporary files to somewhere else other than =/opt/mastodon= ?
-
-
-#+end_quote
-
-=/opt/mastodon=, for those unaware, is the working directory and application directory of Mastodon in the official Mastodon containers. Why would the app use the current working directory instead of =/tmp/=  for temporary files?
-
-It turns out, it doesn’t. At least not by default and when the container filesystem is writeable. However, when adjusting the =securityContext= of the container to contain =readOnlyRootFilesystem: true= , media processing fails, as it tries to write temporary files.
-
-No problem, that’s why [[https://kubernetes.io/docs/concepts/storage/volumes/#emptydir][=emptyDir=]] exist. Mounting an =emptyDir= volume to =/tmp=  should solve it, however, it doesn’t.
-
-Instead of using =/tmp=, suddenly mastodon tries to write its temporary files to =/opt/mastodon= or rather the current working directory. Somehow there was a fallback to the current working directory, somewhere in the stack and it was triggered. Diving down into the stack, it became apparent, that it’s actually just the =paperclip=  dependency that causes the issue, and even further down, it turns out, it’s Ruby itself.
-
-It turns out, Ruby assesses temp directories for suitability before using them:
-
-[[https://github.com/ruby/ruby/blob/16882d4ebbb157515f95b2b3280d78dfb64ab8f7/lib/tmpdir.rb#L36-L42][https://shivering-isles.com/assets/images/2023/09/ruby-tempdir-check.png]]
-
-One of the criteria is that it’s world writeable with a [[https://www.redhat.com/sysadmin/suid-sgid-sticky-bit][sticky bit]] or not world writeable at all. And here =emptyDir= comes back into play. =emptyDirs=  in Kubernetes are creating world writeable directories without sticky bit and therefore this check fails and ruby falls back to its fallback directory, the current working directory.
-
-So in Ruby =emptyDir=  is unsuitable for temporary files created using the native API.
-
-** The solution
-
-Today I scrolled through =#mastoadmin= and came back across the conversation about the problem. And today, I knew how to solve it! Meet [[https://kubernetes.io/docs/concepts/storage/ephemeral-volumes/#generic-ephemeral-volumes][Generic Ephemeral Volumes]]!
-
-Generic Ephemeral Volumes are Kubernetes Persistent Volume Claims, that only exist for the lifetime of a Pod and are only attached to this Pod. PVCs have the nice benefit, that other than =emptyDir= they aren’t mounted with world-writeable permissions, but rather just your regular =fsGroup=  shenanigans.
-
-So the solution to the problem of =emptyDir= being unsuitable for ruby temporary files is to use generic ephemeral volumes, to create PVCs that can be mounted under =/tmp= and work like a =/tmp= directory. Be aware, they do not share the exact attributes and capability of your regular =/tmp=  directory, but for this use-case, they are good enough.
-
-PS: If you are curious about how I’m running Mastodon, you can have a look at the [[https://artifacthub.io/packages/helm/si-gitops/mastodon][Helm Chart]].
-
------
-
-** Addendum
-
-Following up on the conversation mentioned above, I dove into the kubelet source code[[https://github.com/kubernetes/kubernetes/blob/622509830c1038535e539f7d364f5cd7c3b38791/pkg/volume/emptydir/empty_dir.go#L46][¹]] [[https://github.com/kubernetes/kubernetes/blob/622509830c1038535e539f7d364f5cd7c3b38791/pkg/volume/emptydir/empty_dir.go#L441-L474][²]] [[https://github.com/kubernetes/kubernetes/blob/622509830c1038535e539f7d364f5cd7c3b38791/pkg/volume/emptydir/empty_dir.go#L272-L281][³]], to figure out how the kubelet creates it’s =emptyDir=. There I learned that the behaviour with forced =0777= only exists for directory-based =emptyDir=. Therefore if you don’t want to use Generic Ephemeral Volumes, you can also just use in-memory =emptyDir= :
-
-#+begin_src c
-- name: tmp
-  emptyDir:
-    medium: Memory
-
-#+end_src
-
-And after figuring that out, I decided to check the issues tracker, turns out, it’s [[https://github.com/kubernetes/kubernetes/issues/110835][a well-known bug]], that is probably becoming a =wontfix= .
 ** [[https://ealebed.github.io/posts/2019/приоритетность-подов-в-kubernetes/][Приоритетность подов в Kubernetes · Yevhen Lebid's website]]
 
 Поды ([[https://ealebed.github.io/posts/2018/знакомство-с-kubernetes-часть-3-pods/][=Pods=]]) могут иметь приоритет. Приоритет отображает важность пода относительно других подов в кластере. Если под не может быть запущен на подходящем узле из-за нехватки ресурсов, то планировщик ( =scheduler= ) пытается “вытеснить” поды с более низким приоритетом и переместить их на другие узлы кластера, чтобы освободить ресурсы и запустить ожидающий под. Давайте разберемся!
