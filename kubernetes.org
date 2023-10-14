@@ -2595,6 +2595,61 @@ Practicaly this means:
 
 This is the reason why it is recommended to use an odd number of master nodes for the control plane. More then 7 master nodes will result in a overhead for determining cluster membership and quorum, it is not recommended. Depending on your needs, you typically end up with 3 or 5 master nodes.
 
+** [[https://shivering-isles.com/2023/09/about-read-only-containers-ruby-and-emptydir][About Read-Only Containers, Ruby and EmptyDir]]
+I’m running the majority of my workloads on Kubernetes these days, including my Mastodon instance. For many years I’ve been running Mastodon in read-only mode for the container filesystem. However, I somehow missed the Sidekiq container.
+
+** The problem
+
+This became obvious, when someone [[https://microblog.shivering-isles.com/@mhamzahkhan@intahnet.co.uk/111032533934904655][threw a question to =#mastoadmin=  about it]].
+
+#+begin_quote
+
+
+Is it possible to make =#mastodon= write its temporary files to somewhere else other than =/opt/mastodon= ?
+
+
+#+end_quote
+
+=/opt/mastodon=, for those unaware, is the working directory and application directory of Mastodon in the official Mastodon containers. Why would the app use the current working directory instead of =/tmp/=  for temporary files?
+
+It turns out, it doesn’t. At least not by default and when the container filesystem is writeable. However, when adjusting the =securityContext= of the container to contain =readOnlyRootFilesystem: true= , media processing fails, as it tries to write temporary files.
+
+No problem, that’s why [[https://kubernetes.io/docs/concepts/storage/volumes/#emptydir][=emptyDir=]] exist. Mounting an =emptyDir= volume to =/tmp=  should solve it, however, it doesn’t.
+
+Instead of using =/tmp=, suddenly mastodon tries to write its temporary files to =/opt/mastodon= or rather the current working directory. Somehow there was a fallback to the current working directory, somewhere in the stack and it was triggered. Diving down into the stack, it became apparent, that it’s actually just the =paperclip=  dependency that causes the issue, and even further down, it turns out, it’s Ruby itself.
+
+It turns out, Ruby assesses temp directories for suitability before using them:
+
+[[https://github.com/ruby/ruby/blob/16882d4ebbb157515f95b2b3280d78dfb64ab8f7/lib/tmpdir.rb#L36-L42][https://shivering-isles.com/assets/images/2023/09/ruby-tempdir-check.png]]
+
+One of the criteria is that it’s world writeable with a [[https://www.redhat.com/sysadmin/suid-sgid-sticky-bit][sticky bit]] or not world writeable at all. And here =emptyDir= comes back into play. =emptyDirs=  in Kubernetes are creating world writeable directories without sticky bit and therefore this check fails and ruby falls back to its fallback directory, the current working directory.
+
+So in Ruby =emptyDir=  is unsuitable for temporary files created using the native API.
+
+** The solution
+
+Today I scrolled through =#mastoadmin= and came back across the conversation about the problem. And today, I knew how to solve it! Meet [[https://kubernetes.io/docs/concepts/storage/ephemeral-volumes/#generic-ephemeral-volumes][Generic Ephemeral Volumes]]!
+
+Generic Ephemeral Volumes are Kubernetes Persistent Volume Claims, that only exist for the lifetime of a Pod and are only attached to this Pod. PVCs have the nice benefit, that other than =emptyDir= they aren’t mounted with world-writeable permissions, but rather just your regular =fsGroup=  shenanigans.
+
+So the solution to the problem of =emptyDir= being unsuitable for ruby temporary files is to use generic ephemeral volumes, to create PVCs that can be mounted under =/tmp= and work like a =/tmp= directory. Be aware, they do not share the exact attributes and capability of your regular =/tmp=  directory, but for this use-case, they are good enough.
+
+PS: If you are curious about how I’m running Mastodon, you can have a look at the [[https://artifacthub.io/packages/helm/si-gitops/mastodon][Helm Chart]].
+
+-----
+
+** Addendum
+
+Following up on the conversation mentioned above, I dove into the kubelet source code[[https://github.com/kubernetes/kubernetes/blob/622509830c1038535e539f7d364f5cd7c3b38791/pkg/volume/emptydir/empty_dir.go#L46][¹]] [[https://github.com/kubernetes/kubernetes/blob/622509830c1038535e539f7d364f5cd7c3b38791/pkg/volume/emptydir/empty_dir.go#L441-L474][²]] [[https://github.com/kubernetes/kubernetes/blob/622509830c1038535e539f7d364f5cd7c3b38791/pkg/volume/emptydir/empty_dir.go#L272-L281][³]], to figure out how the kubelet creates it’s =emptyDir=. There I learned that the behaviour with forced =0777= only exists for directory-based =emptyDir=. Therefore if you don’t want to use Generic Ephemeral Volumes, you can also just use in-memory =emptyDir= :
+
+#+begin_src c
+- name: tmp
+  emptyDir:
+    medium: Memory
+
+#+end_src
+
+And after figuring that out, I decided to check the issues tracker, turns out, it’s [[https://github.com/kubernetes/kubernetes/issues/110835][a well-known bug]], that is probably becoming a =wontfix= .
 ** [[https://ealebed.github.io/posts/2019/приоритетность-подов-в-kubernetes/][Приоритетность подов в Kubernetes · Yevhen Lebid's website]]
 
 Поды ([[https://ealebed.github.io/posts/2018/знакомство-с-kubernetes-часть-3-pods/][=Pods=]]) могут иметь приоритет. Приоритет отображает важность пода относительно других подов в кластере. Если под не может быть запущен на подходящем узле из-за нехватки ресурсов, то планировщик ( =scheduler= ) пытается “вытеснить” поды с более низким приоритетом и переместить их на другие узлы кластера, чтобы освободить ресурсы и запустить ожидающий под. Давайте разберемся!
