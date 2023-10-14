@@ -1958,6 +1958,16 @@ Practicaly this means:
 
 This is the reason why it is recommended to use an odd number of master nodes for the control plane. More then 7 master nodes will result in a overhead for determining cluster membership and quorum, it is not recommended. Depending on your needs, you typically end up with 3 or 5 master nodes.
 
+** [[https://shivering-isles.com/2022/05/mirroring-your-cluster-images][Mirroring your cluster images]]
+Use [[https://kubernetes.io/docs/tasks/access-application-cluster/list-all-running-container-images/][this snippet from the Kubernetes manual]] which will give you all images currently running in your cluster and check the registries used:
+#+begin_src bash
+  kubectl get pods --all-namespaces -o jsonpath="{.items[*].spec.containers[*].image}" | tr -s '[[:space:]]' '\n' | sort | uniq -c
+#+end_src
+
+Alternatively, you can ask your local Prometheus instance for the images used in the cluster using following query:
+#+begin_example
+  count(label_replace(kube_pod_container_info, "image", "$1", "image", "([^/]+)/.*")) by (image)
+#+end_example
 ** [[https://scribe.rip/secure-kubernetes-clusters-with-oauth2-openid-connect-and-cidaas-ffc58b7274b7][Secure Kubernetes clusters with OAuth2/OpenID Connect and cidaas]]
 This article focuses on securing a Kubernetes cluster with OAuth2 and OpenID Connect using cidaas Cloud Identity & Access Management.
 
