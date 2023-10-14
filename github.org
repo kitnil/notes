@@ -186,6 +186,126 @@ https://github.com/marketplace/zube
 - [[https://github.com/ValdikSS/nat-traversal-github-actions-openvpn-wireguard][ValdikSS/nat-traversal-github-actions-openvpn-wireguard: OpenVPN and WireGuard server on GitHub Actions: representative NAT traversal case]]
 - [[https://github.com/workflow/nix-shell-action][workflow/nix-shell-action: Run any command you like in a deterministic Nix shell on Linux and macOS.]]
 
+** [[https://octopus.com/blog/githubactions-ten-favorite-actions][10 of our favorite actions for GitHub Actions - Octopus Deploy]]
+
+[[https://i.octopus.com/site/team-images/df25bad4-c9a8-4949-87e3-2c1bb6fc0aca.png]]
+
+Andy Corrigan
+
+March 15, 2023 • 4 mins
+
+Although relatively new to the world of continuous integration (CI), GitHub’s adding of ‘Actions’ has seen its strong community build useful tasks that plug right into your repository.
+
+Actions let you run non-standard tasks to help you test, build, and push your work to your deployment tools.
+
+In no particular order, here are 10 of our favorites, plus [[https://octopus.com/blog/githubactions-ten-favorite-actions#install-actions][how to install them]].
+
+*** 1: Test reporter
+
+Showing all your test results in GitHub, the [[https://github.com/marketplace/actions/test-reporter][test reporter]] action helps keep the important parts of your code and testing processes in one place. Providing the results in XML or JSON formats as part of a ‘check run’, this action tells you where your code failed with useful stats.
+
+Test reporter already supports most of the popular testing tools for the likes of .NET, JavaScript and more. Plus, you can add more by raising an issue or contributing yourself.
+
+Supported frameworks:
+
+- .NET: xUnit, NUnit, and MSTest
+- Dart: test
+- Flutter: test
+- Java: JUnit
+- JavaScript: JEST and Mocha
+
+*** 2: Build and push docker images
+
+Doing what the title says, the [[https://github.com/marketplace/actions/build-and-push-docker-images][build and push Docker images action]] lets you build and push Docker images.
+
+Using [[https://github.com/docker/buildx][Buildx]] and [[https://github.com/moby/buildkit][Moby BuildKit]] features, you can create multi-platform builds, test images, customize inputs and outputs, and more.
+
+Check out the action’s page for the full list of features, including [[https://github.com/marketplace/actions/build-and-push-docker-images#advanced-usage][advanced use]] and how to [[https://github.com/marketplace/actions/build-and-push-docker-images#customizing][customize it]].
+
+*** 3: Setup PHP
+
+The [[https://github.com/marketplace/actions/setup-php-action][Setup PHP action]] allows you to setup PHP extensions and .ini files for application testing on all major operating systems.
+
+It’s also compatible with tools like GitHub’s composer, PHP-config, symfony, and more. See the marketplace page for the [[https://github.com/marketplace/actions/setup-php-action#wrench-tools-support][full list of compatible tools]].
+
+*** 4: GitTools actions
+
+The [[https://github.com/marketplace/actions/gittools][GitTools Action]] allows you to use both [[https://gitversion.net/][GitVersion]] and [[https://github.com/GitTools/GitReleaseManager][GitReleaseManager]] in your pipeline.
+
+GitVersion helps solve common versioning problems with semantic versioning (also known as ‘Semver’), for consistency across your projects. GitVersion helps avoid duplication, saves rebuilding time, and much more. Benefiting CI, it creates version numbers that labels builds and makes variables available to the rest of your pipeline.
+
+Meanwhile, GitReleaseManager automatically creates, attaches, and publishes exportable release notes.
+
+If you only need the versioning of GitVersion, there is an [[https://octopus.com/blog/githubactions-ten-favorite-actions#gitversion-action][alternative action with the same name]] later in this list.
+
+*** 5: Action automatic releases
+
+Once set to react to the GitHub events of your choosing (such as commits to your main branch), the [[https://github.com/marketplace/actions/automatic-releases][action automatic releases]] workflow can:
+
+- Auto-upload assets
+- Create changelogs
+- Create a new release
+- Set the project to ‘pre-release’
+
+*** 6: Repository dispatch
+
+The [[https://github.com/marketplace/actions/repository-dispatch][repository dispatch action]] makes it easier to trigger actions from a 'repository dispatch' event. Plus, it lets you trigger and chain the actions from one or more repositories.
+
+You need to [[https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token][create a personal access token]] for this action to work as GitHub won’t support it by default.
+
+*** 7: PullPreview
+
+The [[https://github.com/marketplace/actions/pullpreview][PullPreview action]] allows you to preview pull requests by spinning up live environments for code reviews.
+
+When making a pull with the ‘pullpreview’ label, this action checks out your code and deploys to an AWS Lightsail instance with Docker and Docker Compose.
+
+This allows you to play with your new features as your customers would, or to show off working models of your ideas.
+
+It also promises compatibility with your existing tools and full integration with GitHub.
+
+The only thing you should be aware of, is that you need to buy a license if using it with commercial products.
+
+*** 8: ReportGenerator
+
+The [[https://github.com/marketplace/actions/reportgenerator][ReportGenerator action]] can extract the most useful parts of coverage reports into easier to read formats. It allows you to read your data in the likes of HTML, XML, plus various text summaries and language-specific formats.
+
+*** 9: Git version
+
+While a little like the [[https://octopus.com/blog/githubactions-ten-favorite-actions#git-tools][GitVersion /*tool*/]] enabled by the GitTools action, this [[https://github.com/marketplace/actions/git-version][Git version]] is an action itself.
+
+Like the external tool, however, it offers simple Semver versioning to help track your different releases. This is useful if you only want help versioning and don’t need GitReleaseManager.
+
+*** 10: GitHub Action tester (github-action-tester)
+
+The [[https://github.com/marketplace/actions/github-action-tester][github-action-tester]] is an action that lets you kick off shell scripts for testing.
+
+After it's installed, just add your scripts to your repository and kick them off with the events you need.
+
+*** Bonus round: Octopus
+
+As an official GitHub technology partner, Octopus Deploy has [[https://github.com/marketplace?query=octopus&type=actions&verification=verified_creator][10 verified Octopus actions in the GitHub Marketplace]] that make it easy to automate your deployment processes, execute tasks, create packages, and more.
+
+Given the nature of GitHub Actions as a service, other users have [[https://github.com/marketplace?type=&verification=&query=Octopus+][contributed some Octopus-related actions]] too. Check those out if you’re after even more integration with Octopus. You can also learn why we recommend you [[https://octopus.com/github][build with GitHub and deploy with Octopus]].
+
+*** How to install actions
+
+Installing actions in GitHub is simple:
+
+1. Find the action you want on the [[https://github.com/marketplace?type=actions][GitHub Marketplace]].
+2. Read the Marketplace page to check for prerequisites.
+3. Click *Use latest version*  in the top right (or select an older version if you need).
+4. Copy the code from the pop-up, paste it into your repository’s .yml file, and save.
+5. Make sure you read the action’s documentation to check for any extra setup and how to use the action.
+
+*** What next?
+
+If the actions we chose don’t suit your project or you need something outside the scope of CI, there's plenty more to choose from. Search through the [[https://github.com/marketplace?type=actions][GitHub marketplace]] for more.
+
+[[https://oc.to/GithubActionsWorkflowGenerator][Try our free GitHub Actions workflow tool]] to help you quickly generate customizable workflows for your GitHub Actions deployments.
+
+You can also learn more about how [[https://octopus.com/github][Octopus takes your GitHub deployments to the next level]].
+
+Happy deployments!
 ** [[https://gist.github.com/Mic92/41ac74e9ba77e61a49392aaab74b1767][auto-merge-ci.yaml]]
 #+begin_example
   name: Automatic merge if CI builds
@@ -221,3 +341,4 @@ https://github.com/marketplace/zube
             git pull --rebase origin master
             git push origin master
 #+end_example
+
