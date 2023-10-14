@@ -18,3 +18,92 @@ If you are using Apache 2.4 and above, you might get the following error message
   - If you are allowing any specific hostname, change them accordingly. For example, replace “Allow from 192.168.1.2” to “Require host 192.168.1.2”
 
 MPM-ITK + php-cgi = Simple setup for running scripts as the owner, ok performance, can't use APC. Low memory usage.MPM-ITK + mod_php = Very simple setup, good performance and ability to use APC. Little more memory used.MPM-ITK + mod_fcgid = Couldn't get it working.MPM-prefork + suEXEC + php-cgi = More complicated setup, performance similar to MPM-ITK + php-cgi.MPM-prefork + suEXEC + mod_php = more complicated setup, good performance.MPM-prefork + suEXEC + mod_fcgid=more complicated setup, excellent performance.MPM-worker + suEXEC + php-cgi=More complicated setup, better performance than MPM-ITK + php-cgi.MPM-worker + suEXEC + mod_php=Not recommended because php is apparently not thread safe.MPM-worker + suEXEC + mod_fcgid=More complicated setup, best performance.
+
+* Learning
+** [[https://shivering-isles.com/2016/02/lets-encrypt-get-certifiactes-for-reverse-proxied-services][Let's encrypt: Get certifiactes for reverse proxied services]]
+
+[[https://letsencrypt.org/][Let’s encrypt]] is a lovely solution for the big problem of expensive certificates. It allows you to get free certificates by running their clients. To prove that you are the owner of the domain they just use a challenge which is placed on your webserver.
+
+So what do you need? Right, a webserver as reverse proxy. I’ll use apache in this tutorial. What else? Yes, the “Let’s encrypt”-client and at least any service which need a SSL certificate.
+
+The most annoying part of let’s encrypt is that their certificates have a really short lifetime. Currently 90 days in future may less. So you need to renew it periodically. How to do that is another article.
+
+So let’s start. First you download the “Lets encrypt”-client from [[https://github.com/letsencrypt/letsencrypt][Github]]
+
+I’ll install it to =/opt/letsencrypt= . You can use any other location too. You may use the package management of your system.
+
+#+begin_src c
+cd /opt
+git clone https://github.com/letsencrypt/letsencrypt.git letsencrypt
+
+#+end_src
+
+Next step you had to edit the virtual host configuration of your application to allow the lets encrypt challenge.
+
+Let’s say this is the virtual host configuration before you want to use a Let’s encrypt certificate:
+
+#+begin_src c
+<VirtualHost *:80>
+    ServerName shivering-isles.com
+    RewriteEngine On
+    RewriteCond %{HTTPS} !=on
+    RewriteRule ^/?(.*) https://%{SERVER_NAME}/$1 [R,L]
+    #...
+</VirtualHost>
+<IfModule mod_ssl.c>
+<VirtualHost *:443>
+    ServerName shivering-isles.com
+    ProxyPreserveHost On
+    ProxyRequests off
+    ProxyPass / http://127.0.0.1:12345/
+    ProxyPassReverse / http://127.0.0.1:12345
+    SSLCertificateFile    /path/to/certificate/ourold.crt
+    SSLCertificateKeyFile /path/to/key/ourold.key
+    #...
+</VirtualHost>
+</IfModule>
+
+#+end_src
+
+You add the following two lines:
+
+- =DocumentRoot /var/www/=
+- =ProxyPass /.wellknown !=
+
+DocumentRoot will be the place where lets encrypt will store the challenge stuff. The new ProxyPass statement will allow you to enter the DocumentRoot just for the challenge and still have everything else passed to your application.
+
+Now your configuration should looks like this:
+
+#+begin_src c
+<VirtualHost *:80>
+    ServerName shivering-isles.com
+    RewriteEngine On
+    RewriteCond %{HTTPS} !=on
+    RewriteRule ^/?(.*) https://%{SERVER_NAME}/$1 [R,L]
+    #...
+</VirtualHost>
+
+<IfModule mod_ssl.c>
+<VirtualHost *:443>
+    ServerName shivering-isles.com
+    DocumentRoot /var/www/
+    ProxyPreserveHost On
+    ProxyRequests off
+    ProxyPass /.wellknown !
+    ProxyPass / http://127.0.0.1:12345/
+    ProxyPassReverse / http://127.0.0.1:12345
+    SSLCertificateFile    /path/to/certificate/ourold.crt
+    SSLCertificateKeyFile /path/to/key/ourold.key
+    #...
+</VirtualHost>
+</IfModule>
+
+#+end_src
+
+Please notice the position of the [[https://httpd.apache.org/docs/2.4/mod/mod_proxy.html#proxypass][ProxyPass]] statement is important because those statements are processed from top to down and first match wins.
+
+Reload your apache configuration and change to =/opt/letsencrypt= .
+
+You run =./letsencrypt-auto=  and let’s encrypt will work as expected.
+
+EDIT 16.05.2016: Had to add the =<IfModule mod_ssl.c>= \-tag else the official Let’s encrypt client doesn’t detect the vhost.
