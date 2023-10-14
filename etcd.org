@@ -2,6 +2,229 @@
 - [[https://github.com/cpuguy83/kvfs][cpuguy83/kvfs: FUSE based filesystem for KV stores]]
 - [[https://github.com/tkestack/kstone][tkestack/kstone: Kstone is an etcd management platform, providing cluster management, monitoring, backup, inspection, data migration, visual viewing of etcd data, and intelligent diagnosis.]]
 
+* Learning
+** [[https://www.opensourcerers.org/2023/09/25/what-you-always-wanted-to-know-about-your-etcd-usage/][What you always wanted to know about your etcd usage – Open Sourcerers]]
+In most Kubernetes installations, a well-maintained etcd is one of the key conditions for having a peaceful administrator life. Most Kubernetes distributions imply limitations on etcd and its size. For Openshift there’s a quota limit of 8GB. Typically that limitation should not hit you unless you run really large clusters and or utilize the cluster for testing purposes with very frequent installing and removing of CRD’s/operators/resources.
+
+Another topic you might face with a large etcd population is gRPC error messages if for example your secret CRs have in total more than 2GB of data. 
+
+For all people with such issues and/or those who are interested in visualizing their etcd CR distribution, here is a way to get some data visualized for taking further steps of maintenance and cleaning. In the case of Openshift, please note that this method is not officially supported by Red Hat.
+
+*** Collection of etcd keys and usage from your cluster
+
+Our example will be based on Red Hat Openshift 4.12 in a three node Master/Worker scenario. To access etcd we need to extract the certificates with with the service is configured for authentication.
+
+The following command will extract *tls.crt* and *tls.key*  into the current working directory
+
+#+begin_src bash
+  $ oc -n openshift-etcd extract secret/etcd-client 
+#+end_src
+
+Next we need an etcdctl binary. If you do not have any at hand, extract the one from the etcd pod by using the following command.
+
+#+begin_src bash
+  # if you do not know the nodename retrieve a list of valid names with
+  # oc get nodes -l node-role.kubernetes.io/master -o name
+  $ oc -n openshift-etcd cp etcd-<nodename>:/usr/bin/etcdctl etcdctl
+
+  # ensure the binary is executable
+  $ chmod +x etcdctlCode language: PHP (php)
+#+end_src
+
+We should now have three files in our working directory:
+
+- tls.crt
+- tls.key
+- etcdctl 
+
+Now we’ll borrow some code from [[https://gist.github.com/dkeightley/8f2211d6e93a0d5bc294242248ca8fbf][https://gist.github.com/dkeightley/8f2211d6e93a0d5bc294242248ca8fbf]] to iterate over all keys and extract information we are interested in. Since we do want to process the generated data with a Jupyter Notebook, we are going to format the output in json style instead of plain text.
+
+Create a bash script in the working directory with following content and name it *etcdusage*
+
+#+begin_src bash
+  #!/bin/bash
+
+  etcdctl='./etcdctl --endpoints=127.0.0.1:2379 --cert=./tls.crt --key=./tls.key --insecure-skip-tls-verify'
+
+  SEP=''
+  echo "["
+  for key in $(${etcdctl} get --prefix --keys-only /) ; do
+    size=$(${etcdctl} get $key --print-value-only | wc -c)
+    count=$(${etcdctl} get $key --write-out=fields | grep \"Count\" | cut -f2 -d':')
+    if [ $count -ne 0 ]; then
+      versions=$(${etcdctl} get $key --write-out=fields | grep \"Version\" | cut -f2 -d':')
+    else
+      versions=0
+    fi
+    total=$(( $size * $versions))
+    keya=(${key//\// })
+    cat <<EOF
+    ${SEP}
+    {"fullkey": "${key}",
+     "api": "${keya[0]}",
+     "group": "${keya[1]}",
+     "namespace": "${keya[2]}",
+     "resource": "${keya[3]}",
+     "total": ${total:-0},
+     "size": ${size:-0},
+     "versions": ${versions:-0},
+     "count": ${count:-0}
+    }
+  EOF
+    SEP=','
+  done
+  echo "]"Code language: JavaScript (javascript)
+#+end_src
+
+Make the script executable to simplify its execution. 
+
+Next on the requirements list is TCP access to the etcd instance in our cluster. There are various ways to get this done. For simplicity, we are going to use Kubernetes port-forwarding to gain access.
+
+Open another shell and port-forward the etcd service from your cluster to your local machine.
+
+#+begin_src bash
+  $ oc -n openshift-etcd port-forward service/etcd 2379:2379
+#+end_src
+
+Now it’s time to kick off the etcd iteration. Depending on the size and performance of your cluster, grab a coffee.
+
+In your primary shell and within the working directory execute the following command
+
+#+begin_src bash
+  $ etcdusage | tee etcdusage.json 
+#+end_src
+
+The command will start iterating etcd keys and printing to STDOUT as well as writing to the file *etcdusage.json* . 
+
+*** Visualize what we have been collecting
+
+Since I have been a Parselmouth for more than 22 years, my battery of choice is Python and a Jupyter Notebook. Those include all necessary functionality without making a Data Science article out of this one.
+
+If you haven’t been using Jupyter Notebooks before, the simplest way is to pull and run the image *jupyter/scipy-notebook* .
+
+In addition to the included packages, we want the *hurry.filesize* module to pretty-format our size values. This is achieved by cloning the source Dockerfile and adjusting the list of included modules. Alternatively by simply executing *pip install hurry-filesize*  in the running Notebook container, but let’s do this one after the other.
+
+The data we collected needs to be accessible in our Notebook container as well. We can either fetch it through Python’s *requests*  module in the Notebook or by adding a volume based data mapping and create out Notebook container as follows
+
+#+begin_example
+  $ podman run --name notebook -ti -p 8888:8888 \
+     -v $(pwd)/etcdusage.json:/data/etcdusage.json:Z \
+     jupyter/scipy-notebook
+  [.. output omitted ..]
+  [I 2023-09-14 06:17:22.758 ServerApp] Jupyter Server 2.7.3 is running at:
+  [I 2023-09-14 06:17:22.758 ServerApp] http://4fc778416815:8888/lab?token=53d3be68cc3b435985c4c6a2c6c07cce069d59b8ddde4eaa
+  [I 2023-09-14 06:17:22.758 ServerApp]     http://127.0.0.1:8888/lab?token=53d3be68cc3b435985c4c6a2c6c07cce069d59b8ddde4eaaCode language: JavaScript (javascript)
+#+end_example
+
+Before proceeding, we want to execute in another shell our required import of the *hurry-filesize* module to avoid getting *ModuleNotFoundError*
+
+#+begin_src bash
+  $ podman exec -ti notebook pip install hurry-filesize 
+#+end_src
+
+From the output of our Notebook container it is necessary to retrieve the initial token. Use the token from the output to login to your Notebook session in your local browser at [[http://localhost:8888][http://localhost:8888]].
+
+**** Creating our Jupyter Notebook
+
+After logging in, click on *File* -> *New* -> *Notebook*  to start a blank session. Choose the preferred kernel to execute any code we are going to add.
+
+The first cell is going to be used for imports similar to a typical Python script
+
+#+begin_src python
+  import matplotlib
+  import pandas as pd
+  import json
+  from hurry.filesize import sizeCode language: JavaScript (javascript)
+#+end_src
+
+After hitting enter, the kernel will import and make those modules and functions available to us.
+
+In the next cell, we’ll load the generated data from json which we added in a volume under */data/etcdusage.json*
+
+#+begin_src python
+  data = json.load(open('/data/etcdkeys.json'))
+  # alternative load data through any http service
+  # import requests
+  # data = json.loads(
+  #          requests.get('http://localhost/etcdkeys.json').text)Code language: PHP (php)
+#+end_src
+
+Utilizing the Python module pandas to handle data and structures, we are converting the json input into a pandas DataFrame
+
+#+begin_src python
+  df = pd.DataFrame(data)
+  # we do not need the fullkey as it will screw up display readingness 
+  del df['fullkey']Code language: PHP (php)
+#+end_src
+
+With the next cell, we initialize some default variables and collect overall stats prior modifying the Dataset
+
+#+begin_src python
+  # MAXREC to change how many records are displayed per visualization
+  MAXREC = 25
+  # total size needs to be devided as we provide bytes
+  TOTAL = size(df['total'].sum()/1024)
+  OBJECTS = df.size
+  # we do want maximum display width for extra long keys
+  pd.set_option('display.max_colwidth', None)Code language: PHP (php)
+#+end_src
+
+Now we perform some transformations on the data in the next cell
+
+#+begin_src python
+  # apply the bytes calculation to all rows of total
+  df['total'] = df['total'].div(1024)
+  # apply the hurry.filesize.size function to all rows of total
+  df['total'] = df['total'].apply(size)
+  # now represent a list of all items sorted by size and versions
+  df.sort_values(by=['total', 'versions'], ascending=False)[:MAXREC]Code language: PHP (php)
+#+end_src
+
+[[https://open011prod.wpengine.com/wp-content/uploads/2023/09/etcd-total-versions-1024x694.png]]
+
+Next we are interested in which key has the most versions and we add a cell with
+
+#+begin_src python
+  df.sort_values(by='versions', ascending=False)[:MAXREC]Code language: PHP (php)
+#+end_src
+
+[[https://open011prod.wpengine.com/wp-content/uploads/2023/09/etcd-versions-1024x513.png]]
+
+In the next cell we list the most used groups from the API. Group them in the sense of size per object explicitly
+
+#+begin_src python
+  for grp in ('events', 'secrets', 'configmaps'):
+      display(df[df.group==grp].sort_values(by=['size'], ascending=False)[:MAXREC])Code language: PHP (php)
+#+end_src
+
+For the manager heart within us, we cannot complete the exercise without having at least one pie chart. So we want all API groups counted and graphed as a pie.
+
+To do so, we are going to use the *pivot\_table*  function. Aggregating the group column as index and text dump as well and plot the table we just created as a pie chart
+
+#+begin_src python
+  # create a pivot_table
+  df2 = df.pivot_table(index = ['group'], aggfunc = 'size')
+  # represent the values in text
+  df2.sort_values(ascending=False)
+  # graph the values into a Pie Chart
+  df2.sort_values(ascending=False)[:10].plot.pie(
+       title='Top10 groups by count',
+       autopct=lambda x: '{:.0f}'.format(x * (df['group'].count())/ 100))Code language: PHP (php)
+#+end_src
+
+[[https://open011prod.wpengine.com/wp-content/uploads/2023/09/etcd-groups-pie.png]]
+
+Last but not least, we want to know all totals for our etcd data in size and objects. 
+
+This information has been collected prior to tampering the data for nice formatting. We utilize the variables in a display (print for Notebook) statement in the last cell.
+
+#+begin_src python
+  display(f"Total size: {TOTAL} in {OBJECTS} objects")
+  'Total size: 6G in 121736 objects'Code language: JavaScript (javascript)
+#+end_src
+
+In a follow-up to this article, we’ll see how and what we can clean up and optimize to lower the overall footprint of Openshift etcd.
+
 * Cheat sheet
 
 - health
