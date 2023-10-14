@@ -489,6 +489,14 @@ Swap:     134179836           0   134179836
     Swap used / Swap total > 1/2 – вообще, ситуация так себе, система должна начать сильно тормозить
     Swap used > 2Gb (при объёмах памяти до 16Gb) и эта цифра РАСТЁТ НА ГЛАЗАХ – тоже ситуация не очень.
 
+** [[https://shivering-isles.com/2021/01/zero-downtime-luks-lvm-volume-resize][Zero downtime LUKS + LVM volume resize]]
+#+begin_src bash
+  cryptsetup resize <LUKS volume name>
+  pvresize /dev/mapper/<LUKS volume name>
+  lvresize --size +<increased size> /dev/<VG name>/<LV name>
+  xfs_growfs /dev/<VG name>/<LV name>
+#+end_src
+
 ** [[https://disnetern.ru/hw-view-linux/][Просмотр конфигурации сервера в Linux системах | IT Knowledge Base]]
 ** [[https://habr.com/ru/companies/ruvds/articles/592057/][Углубленное знакомство с пространствами имен Linux. Часть 1 / Хабр]]
 *** Устройства на USB
