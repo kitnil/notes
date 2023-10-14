@@ -7,3 +7,4 @@
 - [[https://github.com/bradfitz/qemu-guest-kragent][bradfitz/qemu-guest-kragent: a minimal qemu-guest-agent in Go for gokrazy + Proxmox (qemu)]]
 - [[https://github.com/JeremiahSecrist/terraform-proxmox-nix-deploy][JeremiahSecrist/terraform-proxmox-nix-deploy: This repo will be a POC for deploying servers to proxmox via nix and terraform via github ci-cd.]]
 - [[https://github.com/JeremiahSecrist/nix-img-deploy][JeremiahSecrist/nix-img-deploy: This repo builds a nixos proxmox restore image via nixos-generators then pushes it to storj.]]
+- [[https://github.com/sp-yduck/cluster-api-provider-proxmox][sp-yduck/cluster-api-provider-proxmox: Cluster API provider implementation for Proxmox VE]]
