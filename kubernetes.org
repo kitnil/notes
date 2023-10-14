@@ -880,6 +880,7 @@ Once running, the URL to the dashboard is https://2886795308-30000-simba08.envir
 - [[https://habr.com/ru/company/nixys/blog/649663/][Terraform модуль для создания RBAC-правил / Хабр]]
 - [[https://www.freecodecamp.org/news/the-kubernetes-handbook/][The Kubernetes Handbook – Learn Kubernetes for Beginners]]
 - [[https://kubernetes.io/docs/tasks/debug/debug-cluster/][Troubleshooting Clusters | Kubernetes]]
+- [[https://kubernetes.io/blog/2023/09/13/userns-alpha/][User Namespaces: Now Supports Running Stateful Pods in Alpha! | Kubernetes]]
 - [[https://www.alibabacloud.com/help/en/container-service-for-kubernetes/latest/use-the-host-network][Use the host network]]
   #+begin_src yaml
     apiVersion: v1
