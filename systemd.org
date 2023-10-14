@@ -229,6 +229,28 @@ This shows that the user is logged in on virtual console 3. It also lists the pr
 - Terminate a session
   : loginctl terminate-session 145
 
+* systemd-resolved
+It happens from time to time, that you wonder why DNS is not working, where things are breaking and, especially in case of proprietary software, what DNS requests applications are making.
+
+As described in the previous article, my system runs =systemd-resolved=  with DoT. This means DNS requests are locally cached and they are done fully encrypted. Making it somewhat harder to debug this traffic with classic network analysis tools like Wireshark.
+
+** Enable debug logging
+
+The easiest way to debug the DNS requests is enabling debug logging in =systemd-resolved= . This provides very detailed logs about:
+
+- lookup requests arriving
+- way the lookup was requested
+- cache status of the response
+- DNSSEC validation status
+- response value
+- requested records
+- and more…
+
+To this detailed logging can be enabled using =sudo resolvectl log-level debug=. Afterwards you can read the logs using =journalctl -f -u systemd-resolved.service= .
+
+** Back to normal
+
+Once done debugging, all you need to do is running =sudo resolvectl log-level info=  and your setup is back to normal.
 * systemd-cgls
 
 ** [[https://nixpkgs-manual-sphinx-markedown-example.netlify.app/administration/control-groups.xml.html][Control Groups — NixOS Manual documentation]]
