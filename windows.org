@@ -440,6 +440,132 @@ docker tag mcr.microsoft.com/k8s/core/pause:1.2.0 kubeletwin/pause
 - [[https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/extract][Windows commands | Microsoft Learn]]
 - [[https://www.youtube.com/watch?v=GgWk1b2pXYA][Язык Си - Как создать и открыть окно с помощью функций WinAPI. - YouTube]]
 
+** [[https://shivering-isles.com/2016/03/ansible-on-windows-using-hyperv-and-debian][Ansible on Windows using HyperV and Debian]]
+
+Ansible is a nice tool to manage your servers simply by using =ssh= . I’m working on scripts to deploy all my services via Ansible but I run into a problem: Ansible isn’t really well supported on Windows.
+
+I had the choice between run it on MinGW or run it in a virtual machine.
+
+I decided to use a virtual machine but the next question was: Which hypervisor should I use? Virtualbox? VMware Workstation? After getting some crazy errors on Virtualbox I just remembered that Windows just have a build in Hypervisor named HyperV. Yes, it’s there even in the desktop version.
+
+*** Enable HyperV
+
+On Windows 8 and 10 you just open the “Software” configuration by using Windows-Key and R, insert =appwiz.cpl= to the run window and press enter. Now you select =Turn Windows features on or off=  and check HyperV entry.
+
+[[https://shivering-isles.com/assets/images/2016/03/HyperV-enable.png]]
+
+After pressing OK it’ll tell you it has to restart (as always).
+
+After a reboot HyperV is installed now and we can go further.
+
+*** Setup your Network
+
+Before you can create a network you need to access the HyperV-Manager. You can do this by typing =virtmgmt.msc=  into the run window and press enter.
+
+[[https://shivering-isles.com/assets/images/2016/03/HyperV-manager.png]]
+
+The console should open and now you can select “Virtual Switch Manager” to configure the HyperV networking.
+
+Networking in HyperV is a bit creepy but if you have no need to NAT your VM you can [[https://shivering-isles.com/2016/03/ansible-on-windows-using-hyperv-and-debian#shortline][take the short Line]]
+
+**** NAT with HyperV
+
+To use a network in HyperV you need to define a network switch for your VMs. If you want to NAT your VM you first have to setup a /internal/  network interface. Name it as you wish it’s not important.
+
+[[https://shivering-isles.com/assets/images/2016/03/HyperV-switch-internal.png]]
+
+After having the internal switch up, go to Network Connections. You can do this by typing =control netconnections=  to your Run-window, which can be opened by using Windows-key and R.
+
+Select the connection you want to NAT to and just go to Properties. Select “sharing” and check the first box. Now select the internal network device you’ve created in HyperV from the drop-down menu and click on apply.
+
+[[https://shivering-isles.com/assets/images/2016/03/share-network.png]]
+
+**** Using external network switch
+
+You can also just create an external network switch which allows the virtual to access your physical network directly. Give it a name and it’s done.
+
+[[https://shivering-isles.com/assets/images/2016/03/HyperV-switch-external.png]]
+
+*** Setup a VM
+
+In my case I wanted to use Debian in a core install, you can use any other OS which works on HyperV and with Ansible.
+
+Open the HyperV-managment-console by using =virtmgmt.msc=  in the run window.
+
+Now select “New” > “Virtual Machine” to start. Just follow the setup and select your created network switch device.
+
+[[https://shivering-isles.com/assets/images/2016/03/HyperV-networking-1.png]]
+
+Download a linux image like Debian netinstall and select it inside the wizard when you’re asked for a Operating System.
+
+[[https://shivering-isles.com/assets/images/2016/03/HyperV-image.png]]
+
+After clicking on “Finish” you can start the VM.
+
+*** Install Debian and Ansible
+
+Well, it’s a default install, follow the Setup Wizard and install it as you wish. I preferred to install a OpenSSH server but without Desktop Environment.
+
+After having the OS installed on your VM log in as root.
+
+Change your machine’s IP to a static one. If you use the NAT solution you have to use an IP address in 192.168.137.0/24. I used 192.168.137.2.
+
+#+begin_src c
+# /etc/network/interfaces
+# This file describes the network interfaces available on your system
+# and how to activate them. For more information, see interfaces(5).
+
+source /etc/network/interfaces.d/*
+
+# The loopback network interface
+auto lo
+iface lo inet loopback
+
+# The primary network interface
+allow-hotplug eth0
+iface eth0 inet static
+   address 192.168.137.2
+   netmask 24
+   gateway 192.168.137.1
+   dns-nameservers 8.8.8.8 8.8.4.4
+
+#+end_src
+
+Now you should add your SSH key and permit password based login by SSH. After running =apt-get update && apt-get install ansible=  your Ansible machine is ready.
+
+/To get a more recently version of Ansible you should use Debian backports./
+
+Now you can use Putty and pagent to login to the VM. And using pagent allows you to pass SSH keys thought the VM to the systems you want to manage.
+
+If you want to do that you need to enable it in Putty in =Connection > SSH > Auth= by using the =allow agent forwarding=  option.
+
+[[https://shivering-isles.com/assets/images/2016/03/putty-settings.png]]
+
+After connecting using Putty you can run =ansible localhost -m ping= .
+
+*** Conclusion
+
+Using Ansible on Windows in a clean way isn’t easy but using HyperV, Debian, Ansible and SSH is a nice working solution without the need to install much software on Windows.
+
+You should may notice the Ansible version of Debian is quiet old. I’m currently working on switching to Ubuntu where it’s up to date.
+
+But the most important point is: It just works!
+
+As always you can comment to the entry, share it on social media using those lovely buttons or just say hi on Twitter to me. Hope you enjoyed it and more Tutorials about Ansible or Windows are coming soon!
+
+-----
+
+Some more informations about HyperV basics
+
+- [[https://www.thewindowsclub.com/install-enable-hyper-v-windows-8][Install/Enable HyperV on Windows 8/10]]
+- Official [[https://technet.microsoft.com/en-us/library/hh831823.aspx][virtual switch documentation]]
+- More [[https://www.techrepublic.com/blog/windows-and-office/create-a-virtual-switch-in-windows-8-client-hyper-v/][about virtual switches]]
+- Official [[https://technet.microsoft.com/en-us/library/cc772480.aspx][Virtual Machine documentation]]
+
+A really useful [[https://web.archive.org/web/20160914132826/https://www.shortcutworld.com/shortcuts.php?l=en&p=win&application=Windows-Run-Commands][webpage for some Windows shortcuts]].
+
+Some more Information about [[https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html][set up Ansible]].
+
 ** What is awk alternative in windows powershell?
 In Windows PowerShell, you can use the Select-String cmdlet as an alternative to the awk utility. The Select-String cmdlet allows you to search for text patterns in one or more files and display the matching lines. Here's an example of how you could use Select-String to perform a similar operation to awk:
 
