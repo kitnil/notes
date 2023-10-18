@@ -1626,6 +1626,10 @@ https://kanru.info/blog/archives/2010/11/18/convert-texinfo-to-mobi/
   - [[https://toot.aquilenet.fr/@civodul/110074261986162947][Ludovic Courtès: "guix time-machine --url=$HOME/…" - Mastodon (Aquilepouet)]]
     : guix time-machine --url=$HOME/src/guix --branch=wip-shell-nested-containers -- shell -CWN coreutils nss-certs -- guix time-machine -- describe
 
+  - Formatting package manifest
+    : guix style -S inputs
+    : guix style -S arguments
+
 ** mumi
 
    Message-ID: <875zntc8ux.fsf@elephly.net>
