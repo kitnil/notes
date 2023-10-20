@@ -3,6 +3,7 @@
 - [[https://github.com/tkestack/kstone][tkestack/kstone: Kstone is an etcd management platform, providing cluster management, monitoring, backup, inspection, data migration, visual viewing of etcd data, and intelligent diagnosis.]]
 
 * Learning
+- [[https://kubernetes.io/blog/2023/09/25/kubeadm-use-etcd-learner-mode/][kubeadm: Use etcd Learner to Join a Control Plane Node Safely | Kubernetes]]
 ** [[https://www.opensourcerers.org/2023/09/25/what-you-always-wanted-to-know-about-your-etcd-usage/][What you always wanted to know about your etcd usage – Open Sourcerers]]
 In most Kubernetes installations, a well-maintained etcd is one of the key conditions for having a peaceful administrator life. Most Kubernetes distributions imply limitations on etcd and its size. For Openshift there’s a quota limit of 8GB. Typically that limitation should not hit you unless you run really large clusters and or utilize the cluster for testing purposes with very frequent installing and removing of CRD’s/operators/resources.
 
