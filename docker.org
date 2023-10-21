@@ -1340,6 +1340,7 @@ Misc
 - [[https://github.com/anchore/anchore-engine][anchore/anchore-engine: A service that analyzes docker images and applies user-defined acceptance policies to allow automated container image validation and certification]]
 - [[https://github.com/andrey-pohilko/registry-cli][andrey-pohilko/registry-cli: Scripts for easy manipulation of docker-registry from command line (and from scripts)]]
 - [[https://github.com/awakesecurity/hocker][awakesecurity/hocker: Utilities for interacting with the docker registry and generating nix build instructions]]
+- [[https://github.com/boz/ephemerald][boz/ephemerald: Ephemeral docker-based server instances for (parallel) testing]]
 - [[https://github.com/capnspacehook/whalewall][capnspacehook/whalewall: Automate management of firewall rules for Docker containers]]
 - [[https://github.com/christian-korneck/docker-pushrm][christian-korneck/docker-pushrm: "Docker Push Readme" - a Docker CLI plugin to update container repo docs]]
 - [[https://github.com/compose-spec/compose-go][compose-spec/compose-go: Reference library for the parsing and loading Compose files]]
