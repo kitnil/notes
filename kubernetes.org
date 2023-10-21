@@ -3015,6 +3015,7 @@ then redeploy with:
 - [[https://www.suse.com/c/introduction-k3d-run-k3s-docker-src/][Introduction to k3d: Run K3s in Docker | SUSE Communities]]
 - [[https://github.com/istio/istio][istio/istio: Connect, secure, control, and observe services.]]
 - [[https://github.com/itzg/kube-metrics-exporter][itzg/kube-metrics-exporter: Simple application that accesses the Kubernetes metrics API and exports the pod metrics for Prometheus scraping]]
+- [[https://github.com/iximiuz/kexp][iximiuz/kexp: k'exp - Kubernetes Explorer]]
 - [[https://github.com/jaegertracing/jaeger][jaegertracing/jaeger: CNCF Jaeger, a Distributed Tracing Platform]]
 - [[https://github.com/jcmoraisjr/haproxy-ingress][jcmoraisjr/haproxy-ingress: HAProxy Ingress]]
 - [[https://github.com/jdockerty/kubectl-oomd][jdockerty/kubectl-oomd: Show pods/containers which have recently been 'OOMKilled', as a kubectl plugin.]]
