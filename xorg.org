@@ -144,6 +144,12 @@
 
 : xdotool key $(echo 123456abc | sed -e 's/\(.\)/\1\n/g')
 
+* DPI
+
+- [[https://wiki.archlinux.org/title/Xorg_(Русский)][Xorg (Русский) - ArchWiki]]
+  : xrandr --dpi 144
+  : xrandr --dpi 96
+
 * mouse
 - [[https://github.com/ortegaalfredo/mousemic][ortegaalfredo/mousemic: Simple tool to visualize and amplify mouse movements]]
 
