@@ -829,6 +829,7 @@ In the context of WinRM, SOAP is used as the underlying protocol for communicati
 * WSL
 - [[https://github.com/alesimula/wsa_pacman][alesimula/wsa_pacman: A GUI package manager and package installer for Windows Subsystem for Android (WSA)]]
 - [[https://github.com/fortuneteller2k/nix-config][fortuneteller2k/nix-config: NixOS configuration (also on WSL)]]
+- [[https://github.com/LGUG2Z/nixos-wsl-starter][LGUG2Z/nixos-wsl-starter: A sane, batteries-included starter template for running NixOS on WSL]]
 - [[https://github.com/microsoft/wslg][microsoft/wslg: Enabling the Windows Subsystem for Linux to include support for Wayland and X server related scenarios]]
 - [[https://github.com/nix-community/NixOS-WSL][nix-community/NixOS-WSL: NixOS on WSL(2) maintainer=@nzbr]]
 - [[https://github.com/pxlrbt/move-wsl][pxlrbt/move-wsl: Easily move your WSL distros VHDX file to a new location.]]
