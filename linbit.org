@@ -1568,6 +1568,28 @@ dd if=/dev/drbd2665 of=/dev/drbd2665 status=progress bs=65536 conv=notrunc,spars
 - for running in a satellite pod
   : for pvc in "${resources[@]}"; do echo drbdsetup down "$pvc"; done
 
+** Delete node
+#+begin_example
+  $ linstor node delete kube4
+  SUCCESS:
+  Description:
+      Node 'kube4' marked for deletion.
+  Details:
+      Node 'kube4' UUID is: 4fbc4268-8c0b-44c5-b120-d17bd880b0f0
+  WARNING:
+  Description:
+      No active connection to satellite 'kube4'
+  Details:
+      The controller is trying to (re-) establish a connection to the satellite. The controller stored the changes and as soon the satellite is connected, it will receive this update.
+  SUCCESS:
+      Deleted resource 'pvc-0117f6b7-1d69-4967-a37c-4d9c91f4b70d' on 'kube4'
+  SUCCESS:
+  Description:
+      Node 'kube4' deleted.
+  Details:
+      Node 'kube4' UUID was: 4fbc4268-8c0b-44c5-b120-d17bd880b0f0
+#+end_example
+
 * Components
 ** StorageLayer
 *** blockdev
