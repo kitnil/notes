@@ -37,3 +37,30 @@
 
 * noVNC
 - [[https://github.com/novnc/noVNC/pull/1347][Add automatic clipboard support by juanjoDiaz · Pull Request #1347 · novnc/noVNC]]
+
+* Debug
+
+** [[https://forums.gentoo.org/viewtopic-t-1102892-start-0.html][Gentoo Forums :: View topic - tigervnc-1.9.0-r1 has weird keyboard layout]]
+
+Please start vncviewer 1.9.0 from the terminal window and connect to the VNC server. Are there any (error) messages?
+
+Please post the output of
+: setxkbmap -query	
+
+and of
+: setxkbmap -print -verbose 10	
+
+Please post the output of
+: emerge -pv net-misc/tigervnc	
+
+Please start vncviewer 1.9.0 from a terminal window and connect to the VNC server. Add the parameter below when you start vncviewer
+: -log *:stderr:100	
+
+vncviewer will now show scan codes when you press keys. For example, if I press key 'q', I will get:
+#+begin_example
+  Fri Oct 18 21:10:36 2019
+   Viewport:    Key pressed: 0x0010 => XK_q (0x0071)
+   Viewport:    Key released: 0x0010 => XK_q (0x0071)
+#+end_example
+
+The first number (0x0010 = 16) is the scan code (not the keycode !), the second number the ASCII code. What do you get? 
