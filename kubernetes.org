@@ -5643,3 +5643,16 @@ This binds the "readonly-role" to the "readonly-user" in the "mynamespace" names
     Repeat this process for any additional namespaces you want to grant read-only access to.
 
 Note that this setup only provides read-only access to specific resources in the designated namespaces. If you want to restrict access further, you may need to create additional roles and bindings with more specific permissions as needed.
+
+** In what Kubernetes namespace does Helm install chart dependencies charts?
+
+When Helm installs a chart, including its dependencies, it creates a new release in a specific Kubernetes namespace. By default, Helm installs the chart and its dependencies in the same namespace specified during the installation process.
+
+However, it's important to note that Helm behaves differently based on the Helm version and the specific chart dependency management method being used. Here are the two common scenarios:
+
+1. Helm v2: In Helm v2, the Chart.yaml file of the chart being installed can specify dependencies. When installing a chart with dependencies, Helm will install all the charts in the same namespace as specified in the =--namespace=  flag during the installation command. If no namespace is provided, Helm will install the chart and its dependencies in the namespace set as the current context.
+  
+2. Helm v3: Helm v3 introduces a significant change in how chart dependencies are managed. In Helm v3, chart dependencies are managed through a separate file called =requirements.yaml=. When you install a chart with dependencies using Helm v3, it creates a new release for each chart, and each release is installed into the same namespace as specified during the installation command using the =--namespace=  flag. If no namespace is provided, Helm will install the chart and its dependencies in the namespace set as the current context.
+  
+
+In both Helm v2 and Helm v3, you have control over which namespace the chart and its dependencies are installed into by specifying the desired namespace during the installation command using the =--namespace=  flag.
