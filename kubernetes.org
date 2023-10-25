@@ -1948,6 +1948,389 @@ nginx.ingress.kubernetes.io/canary-by-cookie: "use_under_30_feature"
 
 and implement a simple change in your backend service that for a given requests checks the age of signed-in user and if the age is under 30 sets cookie use_under_30_feature to always. This will then make sure all subsequent requests by those users will be proxied by the new version of the app.
 
+** [[https://support.huaweicloud.com/intl/en-us/bestpractice-cce/cce_bestpractice_10003.html][Using Nginx Ingress to Implement Grayscale Release and Blue-Green Deployment]]
+Updated on 2023-08-07 GMT+08:00
+View PDF
+
+This section describes the scenarios and practices of using Nginx Ingress to implement grayscale release and blue-green deployment.
+Scenario
+
+Nginx Ingress supports three traffic division policies based on the header, cookie, and service weight. Based on these policies, the following two release scenarios can be implemented:
+
+    Scenario 1: Split some user traffic to the new version.
+
+    Assume that Service A that provides layer-7 networking is running. A new version is ready to go online, but you do not want to replace the original Service A. You want to forward the user requests whose header or cookie contains foo=bar to the new version of Service A. After the new version runs stably for a period of time, you can gradually bring the new version online and smoothly bring the old version offline. The following figure shows the process:
+
+    Scenario 2: Split a certain proportion of traffic to the new version.
+
+    Assume that Service B that provides layer-7 services is running. After some problems are resolved, a new version of Service B needs to be released. However, you do not want to replace the original Service B. Instead, you want to switch 20% traffic to the new version of Service B. After the new version runs stably for a period of time, you can switch all traffic from the old version to the new version and smoothly bring the old version offline.
+
+Annotations
+
+Nginx Ingress supports release and testing in different scenarios by configuring annotations for grayscale release, blue-green deployment, and A/B testing. The implementation process is as follows: Create two ingresses for the service. One is a common ingress, and the other is an ingress with the annotation nginx.ingress.kubernetes.io/canary: "true", which is called a canary ingress. Configure a traffic division policy for the canary ingress. The two ingresses cooperate with each other to implement release and testing in multiple scenarios. The annotation of Nginx Ingress supports the following rules:
+
+    nginx.ingress.kubernetes.io/canary-by-header
+
+    Header-based traffic division, which is applicable to grayscale release. If the request header contains the specified header name and the value is always, the request is forwarded to the backend service defined by the canary ingress. If the value is never, the request is not forwarded and a rollback to the source version can be performed. If other values are used, the annotation is ignored and the request traffic is allocated according to other rules based on the priority.
+    nginx.ingress.kubernetes.io/canary-by-header-value
+
+    This rule must be used together with canary-by-header. You can customize the value of the request header, including but not limited to always or never. If the value of the request header matches the specified custom value, the request is forwarded to the corresponding backend service defined by the canary ingress. If the values do not match, the annotation is ignored and the request traffic is allocated according to other rules based on the priority.
+    nginx.ingress.kubernetes.io/canary-by-header-pattern
+
+    This rule is similar to canary-by-header-value. The only difference is that this annotation uses a regular expression, not a fixed value, to match the value of the request header. If this annotation and canary-by-header-value exist at the same time, this one will be ignored.
+    nginx.ingress.kubernetes.io/canary-by-cookie
+
+    Cookie-based traffic division, which is applicable to grayscale release. Similar to canary-by-header, this annotation is used for cookies. Only always and never are supported, and the value cannot be customized.
+    nginx.ingress.kubernetes.io/canary-weight
+
+    Traffic is divided based on service weights, which is applicable to blue-green deployment. This annotation indicates the percentage of traffic allocated by the canary ingress. The value ranges from 0 to 100. For example, if the value is set to 100, all traffic is forwarded to the backend service backing the canary ingress.
+
+NOTE:
+
+    The preceding annotation rules are evaluated based on the priority. The priority is as follows: canary-by-header -> canary-by-cookie -> canary-weight.
+    When an ingress is marked as a canary ingress, all non-canary annotations except nginx.ingress.kubernetes.io/load-balance and nginx.ingress.kubernetes.io/upstream-hash-by are ignored.
+    For more information, see Annotations.
+
+Prerequisites
+
+    To use Nginx Ingress to implement grayscale release of a cluster, you need to install the nginx-ingress add-on as the Ingress Controller and expose a unified traffic entrance externally. For details, see Installing the Add-on.
+    The Nginx image has been uploaded to SWR. The Nginx images have two versions. The welcome pages are Old Nginx and New Nginx.
+
+Resource Creation
+
+You can use YAML to deploy Deployments and Services in either of the following ways:
+
+    On the Create Deployment page, click Create YAML on the right and edit the YAML file in the window.
+    Save the sample YAML file in this section as a file and use kubectl to specify the YAML file. For example, run the kubectl create -f xxx.yaml command.
+
+Step 1: Deploy Services of Two Versions
+
+Two versions of Nginx are deployed in the cluster, and Nginx Ingress is used to provide layer-7 domain name access for external systems.
+
+    Create a Deployment and Service for the first version. This section uses old-nginx as an example. Example YAML:
+
+    apiVersion: apps/v1
+    kind: Deployment
+    metadata:
+      name: old-nginx
+    spec:
+      replicas: 2
+      selector:
+        matchLabels:
+          app: old-nginx
+      template:
+        metadata:
+          labels:
+            app: old-nginx
+        spec:
+          containers:
+          - image: {your_repository}/nginx:old  # The image used by the container is nginx:old.
+            name: container-0
+            resources:
+              limits:
+                cpu: 100m
+                memory: 200Mi
+              requests:
+                cpu: 100m
+                memory: 200Mi
+          imagePullSecrets:
+          - name: default-secret
+
+    ---
+
+    apiVersion: v1
+    kind: Service
+    metadata:
+      name: old-nginx
+    spec:
+      selector:
+        app: old-nginx
+      ports:
+      - name: service0
+        targetPort: 80
+        port: 8080
+        protocol: TCP
+      type: NodePort
+
+Create a Deployment and Service for the second version. This section uses new-nginx as an example. Example YAML:
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: new-nginx
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: new-nginx
+  template:
+    metadata:
+      labels:
+        app: new-nginx
+    spec:
+      containers:
+      - image: {your_repository}/nginx:new  # The image used by the container is nginx:new.
+        name: container-0
+        resources:
+          limits:
+            cpu: 100m
+            memory: 200Mi
+          requests:
+            cpu: 100m
+            memory: 200Mi
+      imagePullSecrets:
+      - name: default-secret
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: new-nginx
+spec:
+  selector:
+    app: new-nginx
+  ports:
+  - name: service0
+    targetPort: 80
+    port: 8080
+    protocol: TCP
+  type: NodePort
+
+You can log in to the CCE console to view the deployment status.
+
+Create an ingress to expose the service and point to the service of the old version. Example YAML:
+
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: gray-release
+  namespace: default
+  annotations:
+    kubernetes.io/ingress.class: nginx # Use the Nginx ingress.
+    kubernetes.io/elb.port: '80'
+spec:
+  rules:
+    - host: www.example.com
+      http:
+        paths:
+          - path: '/'
+            backend:
+              serviceName: old-nginx      # Specify old-nginx as the backend service.
+              servicePort: 80
+
+Run the following command to verify the access:
+
+curl -H "Host: www.example.com"  http://<EXTERNAL_IP>
+
+In the preceding command, <EXTERNAL_IP> indicates the external IP address of the Nginx ingress.
+
+Expected outputs:
+
+Old Nginx
+
+Step 2: Launch the New Version of the Service in Grayscale Release Mode
+
+Set the traffic division policy for the service of the new version. CCE supports the following policies for grayscale release and blue-green deployment:
+
+Header-based, cookie-based, and weight-based traffic division rules
+
+Grayscale release can be implemented based on all these policies. Blue-green deployment can be implemented by adjusting the new service weight to 100%. For details, see the following examples.
+CAUTION:
+
+Pay attention to the following:
+
+    Only one canary ingress can be defined for the same service so that the backend service supports a maximum of two versions.
+    Even if the traffic is completely switched to the canary ingress, the old version service must still exist. Otherwise, an error is reported.
+
+    Header-based rules
+
+    In the following example, only the request whose header contains Region set to bj or gz can be forwarded to the service of the new version.
+        Create a canary ingress, set the backend service to the one of the new versions, and add annotations.
+
+        apiVersion: networking.k8s.io/v1beta1
+        kind: Ingress
+        metadata:
+          name: canary-ingress
+          namespace: default
+          annotations:
+            kubernetes.io/ingress.class: nginx
+            nginx.ingress.kubernetes.io/canary: "true"                       # Enable canary.
+            nginx.ingress.kubernetes.io/canary-by-header: "Region"
+            nginx.ingress.kubernetes.io/canary-by-header-pattern: "bj|gz"    # Requests whose header contains Region with the value bj or gz are forwarded to the canary ingress.
+            kubernetes.io/elb.port: '80'
+        spec:
+          rules:
+            - host: www.example.com
+              http:
+                paths:
+                  - path: '/'
+                    backend:
+                      serviceName: new-nginx      # Specify new-nginx as the backend service.
+                      servicePort: 80
+
+Run the following command to test the access:
+
+$ curl -H "Host: www.example.com" -H "Region: bj" http://<EXTERNAL_IP>
+New Nginx
+$ curl -H "Host: www.example.com" -H "Region: sh" http://<EXTERNAL_IP>
+Old Nginx
+$ curl -H "Host: www.example.com" -H "Region: gz" http://<EXTERNAL_IP>
+New Nginx
+$ curl -H "Host: www.example.com" http://<EXTERNAL_IP>
+Old Nginx
+
+    In the preceding command, <EXTERNAL_IP> indicates the external IP address of the Nginx ingress.
+
+    Only requests whose header contains Region with the value bj or gz are responded by the service of the new version.
+
+Cookie-based rules
+
+In the following example, only the request whose cookie contains user_from_bj can be forwarded to the service of the new version.
+
+    Create a canary ingress, set the backend service to the one of the new versions, and add annotations.
+    NOTE:
+
+    If you have created a canary ingress in the preceding steps, delete it and then perform this step to create a canary ingress.
+
+    apiVersion: networking.k8s.io/v1beta1
+    kind: Ingress
+    metadata:
+      name: canary-ingress
+      namespace: default
+      annotations:
+        kubernetes.io/ingress.class: nginx
+        nginx.ingress.kubernetes.io/canary: "true"                       # Enable canary.
+        nginx.ingress.kubernetes.io/canary-by-cookie: "user_from_bj"    # Requests whose cookie contains user_from_bj are forwarded to the canary ingress.
+        kubernetes.io/elb.port: '80'
+    spec:
+      rules:
+        - host: www.example.com
+          http:
+            paths:
+              - path: '/'
+                backend:
+                  serviceName: new-nginx      # Specify new-nginx as the backend service.
+                  servicePort: 80
+
+Run the following command to test the access:
+
+$ curl -s -H "Host: www.example.com" --cookie "user_from_bj=always" http://<EXTERNAL_IP>
+New Nginx
+$ curl -s -H "Host: www.example.com" --cookie "user_from_gz=always" http://<EXTERNAL_IP>
+Old Nginx
+$ curl -s -H "Host: www.example.com" http://<EXTERNAL_IP>
+Old Nginx
+
+    In the preceding command, <EXTERNAL_IP> indicates the external IP address of the Nginx ingress.
+
+    Only requests whose cookie contains user_from_bj with the value always are responded by the service of the new version.
+
+Service weight-based rules
+
+Example 1: Only 20% of the traffic is allowed to be forwarded to the service of the new version to implement grayscale release.
+
+    Create a canary ingress and add annotations to import 20% of the traffic to the backend service of the new version.
+    NOTE:
+
+    If you have created a canary ingress in the preceding steps, delete it and then perform this step to create a canary ingress.
+
+    apiVersion: networking.k8s.io/v1beta1
+    kind: Ingress
+    metadata:
+      name: canary-ingress
+      namespace: default
+      annotations:
+        kubernetes.io/ingress.class: nginx
+        nginx.ingress.kubernetes.io/canary: "true"         # Enable canary.
+        nginx.ingress.kubernetes.io/canary-weight: "20"    # Forward 20% of the traffic to the canary ingress.
+        kubernetes.io/elb.port: '80'
+    spec:
+      rules:
+        - host: www.example.com
+          http:
+            paths:
+              - path: '/'
+                backend:
+                  serviceName: new-nginx      # Specify new-nginx as the backend service.
+                  servicePort: 80
+
+Run the following command to test the access:
+
+$ for i in {1..20}; do curl -H "Host: www.example.com" http://<EXTERNAL_IP>; done;
+Old Nginx
+Old Nginx
+Old Nginx
+New Nginx
+Old Nginx
+New Nginx
+Old Nginx
+New Nginx
+Old Nginx
+Old Nginx
+Old Nginx
+Old Nginx
+Old Nginx
+New Nginx
+Old Nginx
+Old Nginx
+Old Nginx
+Old Nginx
+Old Nginx
+Old Nginx
+
+    In the preceding command, <EXTERNAL_IP> indicates the external IP address of the Nginx ingress.
+
+    It can be seen that there is a 4/20 probability that the service of the new version responds, which complies with the setting of the service weight of 20%.
+    NOTE:
+
+    After traffic is divided based on the weight (20%), the probability of accessing the new version is close to 20%. The traffic ratio may fluctuate within a small range, which is normal.
+
+Example 2: Allow all traffic to be forwarded to the service of the new version to implement blue-green deployment.
+
+    Create a canary ingress and add annotations to import 100% of the traffic to the backend service of the new version.
+    NOTE:
+
+    If you have created a canary ingress in the preceding steps, delete it and then perform this step to create a canary ingress.
+
+    apiVersion: networking.k8s.io/v1beta1
+    kind: Ingress
+    metadata:
+      name: canary-ingress
+      namespace: default
+      annotations:
+        kubernetes.io/ingress.class: nginx
+        nginx.ingress.kubernetes.io/canary: "true"          # Enable canary.
+        nginx.ingress.kubernetes.io/canary-weight: "100"    # All traffic is forwarded to the canary ingress.
+        kubernetes.io/elb.port: '80'
+    spec:
+      rules:
+        - host: www.example.com
+          http:
+            paths:
+              - path: '/'
+                backend:
+                  serviceName: new-nginx      # Specify new-nginx as the backend service.
+                  servicePort: 80
+
+Run the following command to test the access:
+
+$ for i in {1..10}; do curl -H "Host: www.example.com" http://<EXTERNAL_IP>; done;
+New Nginx
+New Nginx
+New Nginx
+New Nginx
+New Nginx
+New Nginx
+New Nginx
+New Nginx
+New Nginx
+New Nginx
+
+In the preceding command, <EXTERNAL_IP> indicates the external IP address of the Nginx ingress.
+
+All access requests are responded by the service of the new version, and the blue-green deployment is successfully implemented.
+
 ** [[https://discuss.kubernetes.io/t/high-availability-host-numbers/13143][High Availability Host Numbers - General Discussions - Discuss Kubernetes]]
 K8s uses the RAFT consensus algorithm for quorum. In order to maintain quorum, you will need floor(n/2)+1 healthy master nodes.
 
