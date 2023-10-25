@@ -98,6 +98,7 @@ Jenkins is now one of the most widely used CI/CD tools and has a large and activ
 - [[https://github.com/jenkinsci/git-forensics-plugin][jenkinsci/git-forensics-plugin: Jenkins plug-in that mines and analyzes data from a Git repository]]
 - [[https://github.com/jenkinsci/github-api-plugin][jenkinsci/github-api-plugin: This plugin packages stock github-api library]]
 - [[https://github.com/jenkinsci/github-checks-plugin][jenkinsci/github-checks-plugin: Jenkins Plugin for GitHub Checks API]]
+- [[https://github.com/jenkinsci/gitlab-kubernetes-credentials-plugin][jenkinsci/gitlab-kubernetes-credentials-plugin: gitlab-kubernetes-credentials-plugin]]
 - [[https://github.com/jenkinsci/global-yaml-properties-plugin][jenkinsci/global-yaml-properties-plugin: Jenkins plugin that allows to create globally accessible properties in YAML format]]
 - [[https://github.com/jenkinsci/groovy-events-listener-plugin][jenkinsci/groovy-events-listener-plugin: A Jenkins plugin, which executes groovy code when an event occurs.]]
 - [[https://github.com/jenkinsci/hashicorp-vault-plugin][jenkinsci/hashicorp-vault-plugin: Jenkins plugin to populate environment variables from secrets stored in HashiCorp's Vault.]]
