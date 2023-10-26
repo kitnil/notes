@@ -1590,6 +1590,10 @@ dd if=/dev/drbd2665 of=/dev/drbd2665 status=progress bs=65536 conv=notrunc,spars
       Node 'kube4' UUID was: 4fbc4268-8c0b-44c5-b120-d17bd880b0f0
 #+end_example
 
+** Issues to mount volume after pvc creating
+
+: lvchange --refresh vg0/pvc-bd4517cb-24b3-4614-b8ff-3cb4e774713c_00000
+
 * Components
 ** StorageLayer
 *** blockdev
