@@ -3,34 +3,34 @@
 :END:
 #+title: GitLab
 
-- [[https://koldfront.dk/git/nngitlab/][nngitlab - nngitlab - Gnus backend for accessing Gitlab using ghub]]
-- [[https://github.com/fundor333/GitLab-Backup][fundor333/GitLab-Backup]]
-- [[https://github.com/yurug/get-gitlab-forks][yurug / get-gitlab-forks]]
-- https://gitlab.com/wigust/wigust.gitlab.io/pages/domains/wugi.info
-- sudo /home/gitlab-runner/.nix-profile/bin/gitlab-runner run --working-directory=/home/gitlab-runner --config=/etc/gitlab-runner/config.toml --service=gitlab-runner --user=gitlab-runner
-- https://blog.stead.id.au/2017/03/synology-gitlab-error-502.html
 - 30805 messagebu 1143M 1128M  843M R 100.  3.5  1:59.76 git --git-dir /var/opt/gitlab/git-data/repositories/nix/nixpkgs.git fsck
-- [[https://github.com/mdubourg001/glci][mdubourg001/glci: 🦊 Test your Gitlab CI Pipelines changes locally using Docker.]]
-- [[https://github.com/firecow/gitlab-ci-local?auto_subscribed=false][firecow/gitlab-ci-local: Tired of pushing to test your .gitlab-ci.yml?]]
-- [[https://github.com/mvisonneau/gitlab-merger][mvisonneau/gitlab-merger: Automated merge request creation for GitLab projects]]
-- [[https://github.com/artyom-poptsov/guile-gitlab][artyom-poptsov/guile-gitlab: GNU Guile interface to GitLab CE REST API.]]
-- [[https://habr.com/ru/company/flant/blog/577808/][Опыт миграции из Gitea в GitLab. Сложно, но успешно / Хабр]]
-- [[https://github.com/Overv/gitlabfs][Overv/gitlabfs: Mount all projects in a company's GitLab instance as a file system.]]
-- [[https://serveradmin.ru/obnovlenie-gitlab-cherez-neskolko-relizov/][Обновление Gitlab через несколько релизов — Server Admin]]
-- [[https://serveradmin.ru/gitlab-this-job-is-stuck-because-the-project-doesnt-have-any-runners-online-assigned-to-it/][Gitlab — This job is stuck because the project doesn't have any runners online assigned to it — Server Admin]]
-- [[https://serveradmin.ru/gitlab-container-registry-za-nginx-reverse-proxy/][Gitlab Container Registry за Nginx reverse proxy — Server Admin]]
-- [[https://habr.com/ru/company/flant/blog/649551/][Запуск werf в GitLab CI/CD без Docker-сервера / Хабр]]
-- [[https://github.com/hamidrezasahraei/GitlabAutoCreateAndAssignMergeRequest][hamidrezasahraei/GitlabAutoCreateAndAssignMergeRequest: A Kotlin Script which create merge request automatically and assign it to a developer for review based on a startegy(Currently Queue).]]
-- [[https://github.com/jangrewe/gitlab-ci-android][jangrewe/gitlab-ci-android: GitLab CI image for building Android apps]]
-- [[https://docs.gitlab.com/ee/user/project/push_options.html][Push Options | GitLab]]
-- [[https://github.com/flant/glaball][flant/glaball: A CLI tool to manage self-hosted GitLab instances in bulk.]]
-- [[https://blog.flant.com/glaball-to-manage-gitlab-instances-in-bulk/][Introducing glaball Open Source CLI tool to manage multiple GitLab instances – Flant blog]]
-- [[https://gitlab.com/gitlab-org/cli][GitLab.org / cli · GitLab CLI tool bringing GitLab to your command line]]
-- [[https://github.com/spatecon/gitlab-review-bot][spatecon/gitlab-review-bot: Observes and modifies Merge Requests by Review&Approve Policy. Daily Slack notifications included.]]
-- [[https://github.com/im-n1/glp][im-n1/glp: Tiny CLI tool for Gitlab pipelines.]]
 - [[https://gitlab.archlinux.org/archlinux/gitlab-exporter][Arch Linux / gitlab-exporter · GitLab]]
+- [[https://github.com/artyom-poptsov/guile-gitlab][artyom-poptsov/guile-gitlab: GNU Guile interface to GitLab CE REST API.]]
+- [[https://github.com/firecow/gitlab-ci-local?auto_subscribed=false][firecow/gitlab-ci-local: Tired of pushing to test your .gitlab-ci.yml?]]
+- [[https://github.com/flant/glaball][flant/glaball: A CLI tool to manage self-hosted GitLab instances in bulk.]]
+- [[https://github.com/fundor333/GitLab-Backup][fundor333/GitLab-Backup]]
+- [[https://serveradmin.ru/gitlab-container-registry-za-nginx-reverse-proxy/][Gitlab Container Registry за Nginx reverse proxy — Server Admin]]
+- [[https://gitlab.com/gitlab-org/cli][GitLab.org / cli · GitLab CLI tool bringing GitLab to your command line]]
 - [[https://docs.gitlab.com/ee/user/project/quick_actions.html][GitLab quick actions | GitLab]]
+- [[https://serveradmin.ru/gitlab-this-job-is-stuck-because-the-project-doesnt-have-any-runners-online-assigned-to-it/][Gitlab — This job is stuck because the project doesn't have any runners online assigned to it — Server Admin]]
+- [[https://github.com/hamidrezasahraei/GitlabAutoCreateAndAssignMergeRequest][hamidrezasahraei/GitlabAutoCreateAndAssignMergeRequest: A Kotlin Script which create merge request automatically and assign it to a developer for review based on a startegy(Currently Queue).]]
+- https://blog.stead.id.au/2017/03/synology-gitlab-error-502.html
+- https://gitlab.com/wigust/wigust.gitlab.io/pages/domains/wugi.info
+- [[https://github.com/im-n1/glp][im-n1/glp: Tiny CLI tool for Gitlab pipelines.]]
+- [[https://blog.flant.com/glaball-to-manage-gitlab-instances-in-bulk/][Introducing glaball Open Source CLI tool to manage multiple GitLab instances – Flant blog]]
+- [[https://github.com/jangrewe/gitlab-ci-android][jangrewe/gitlab-ci-android: GitLab CI image for building Android apps]]
+- [[https://github.com/mdubourg001/glci][mdubourg001/glci: 🦊 Test your Gitlab CI Pipelines changes locally using Docker.]]
+- [[https://github.com/mvisonneau/gitlab-merger][mvisonneau/gitlab-merger: Automated merge request creation for GitLab projects]]
+- [[https://koldfront.dk/git/nngitlab/][nngitlab - nngitlab - Gnus backend for accessing Gitlab using ghub]]
+- [[https://github.com/Overv/gitlabfs][Overv/gitlabfs: Mount all projects in a company's GitLab instance as a file system.]]
+- [[https://docs.gitlab.com/ee/user/project/push_options.html][Push Options | GitLab]]
+- [[https://github.com/spatecon/gitlab-review-bot][spatecon/gitlab-review-bot: Observes and modifies Merge Requests by Review&Approve Policy. Daily Slack notifications included.]]
+- sudo /home/gitlab-runner/.nix-profile/bin/gitlab-runner run --working-directory=/home/gitlab-runner --config=/etc/gitlab-runner/config.toml --service=gitlab-runner --user=gitlab-runner
 - [[https://gitlab-com.gitlab.io/support/toolbox/upgrade-path/][Upgrade Path]]
+- [[https://github.com/yurug/get-gitlab-forks][yurug / get-gitlab-forks]]
+- [[https://habr.com/ru/company/flant/blog/649551/][Запуск werf в GitLab CI/CD без Docker-сервера / Хабр]]
+- [[https://serveradmin.ru/obnovlenie-gitlab-cherez-neskolko-relizov/][Обновление Gitlab через несколько релизов — Server Admin]]
+- [[https://habr.com/ru/company/flant/blog/577808/][Опыт миграции из Gitea в GitLab. Сложно, но успешно / Хабр]]
 - [[https://habr.com/ru/companies/nixys/articles/758068/][Приручаем GitLab: прикольные фишки и инциденты, которые упростят вашу жизнь / Хабр]]
 
 : root@dh4-mr ~ # docker exec -ugitlab-psql -it ci_gitlab.1.rrit42q8zhlgc3yj2s3158umq psql -h /var/opt/gitlab/postgresql -U gitlab-psql -d gitlabhq_production
