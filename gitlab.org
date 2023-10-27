@@ -30,6 +30,7 @@
 - [[https://github.com/im-n1/glp][im-n1/glp: Tiny CLI tool for Gitlab pipelines.]]
 - [[https://gitlab.archlinux.org/archlinux/gitlab-exporter][Arch Linux / gitlab-exporter · GitLab]]
 - [[https://docs.gitlab.com/ee/user/project/quick_actions.html][GitLab quick actions | GitLab]]
+- [[https://gitlab-com.gitlab.io/support/toolbox/upgrade-path/][Upgrade Path]]
 
 : root@dh4-mr ~ # docker exec -ugitlab-psql -it ci_gitlab.1.rrit42q8zhlgc3yj2s3158umq psql -h /var/opt/gitlab/postgresql -U gitlab-psql -d gitlabhq_production
 
