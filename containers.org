@@ -44,4 +44,5 @@
   : ctr --namespace k8s.io images ls
 
 * Tools
+- [[https://github.com/project-machine/oci-viewer][project-machine/oci-viewer: OCI viewer]]
 - [[https://github.com/reproducible-containers/diffoci][reproducible-containers/diffoci: diff for Docker and OCI container images]]
