@@ -3406,6 +3406,8 @@ then redeploy with:
 - [[https://github.com/jenkinsci/kubernetes-operator][jenkinsci/kubernetes-operator: Kubernetes native Jenkins Operator]]
 - [[https://github.com/jeremykross/konstellate][jeremykross/konstellate: Free and Open Source GUI to Visualize Kubernetes Applications.]]
 - [[https://github.com/johanhaleby/kubetail][johanhaleby/kubetail: Bash script to tail Kubernetes logs from multiple pods at the same time]]
+- [[https://github.com/jreisinger/kcve][jreisinger/kcve: Kubernetes CVEs]]
+  - [[https://kubernetes.io/docs/reference/issues-security/official-cve-feed/][Official CVE Feed | Kubernetes]]
 - [[https://github.com/jreisinger/kubectl-modsec][jreisinger/kubectl-modsec: Extract ModSecurity information from Kubernetes]]
   - [[https://kubernetes.github.io/ingress-nginx/user-guide/third-party-addons/modsecurity/][ModSecurity Web Application Firewall - Ingress-Nginx Controller]]
 - [[https://github.com/jwcesign/kubespider][jwcesign/kubespider: A global resource download orchestration system, build your home download center.]]
