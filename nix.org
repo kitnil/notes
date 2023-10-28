@@ -2011,6 +2011,7 @@ builtins.match "php([[:alnum:]])([[:alnum:]])" "php70"
 - [[https://github.com/nix-community/nix-melt][nix-community/nix-melt: A ranger-like flake.lock viewer [maintainer=@figsoda]]]
 - [[https://github.com/nix-community/nixpkgs-swh][nix-community/nixpkgs-swh: Send nixpkgs tarballs to Software Heritage maintainer=@nlewo]]
 - [[https://github.com/nix-community/nurl][nix-community/nurl: Generate Nix fetcher calls from repository URLs [maintainer=@figsoda]]]
+- [[https://github.com/nix-community/trustix][nix-community/trustix: Trustix: Distributed trust and reproducibility tracking for binary caches [maintainer=@adisbladis]]]
 - [[https://github.com/nix-dot-dev/getting-started-nix-template][nix-dot-dev/getting-started-nix-template: Based on nix.dev tutorials, repository template to get you started with Nix.]]
 - [[https://lazamar.co.uk/nix-versions/][Nix Package Versions]]
 - [[https://github.com/nixpak/nixpak][nixpak/nixpak: Runtime sandboxing for Nix]]
