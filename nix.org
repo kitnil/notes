@@ -2015,6 +2015,7 @@ builtins.match "php([[:alnum:]])([[:alnum:]])" "php70"
 - [[https://nixos.wiki/wiki/Nix-writers][Nix-writers - NixOS Wiki]]
 - [[https://github.com/nlewo/hydra-cli][nlewo/hydra-cli: A client for the Hydra Nix CI]]
 - [[https://github.com/NorfairKing/pure-impure-nix][NorfairKing/pure-impure-nix: A nix function to allow a derivation to access the internet as long as you don't care about the output (like in CI, for example)]]
+- [[https://github.com/chayleaf/notnft][notnft: Nix DSL for nftables]]
 - [[https://github.com/numtide/nar-serve][numtide/nar-serve: Unpack and serve NAR file content on the fly]]
 - [[https://github.com/numtide/nixos-anywhere][numtide/nixos-anywhere: install nixos everywhere via ssh]]
 - [[https://github.com/numtide/system-manager][numtide/system-manager: Manage system config using nix on any distro]]
