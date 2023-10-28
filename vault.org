@@ -83,6 +83,9 @@ root@vm29653:~# curl -H "X-Vault-Token: s.41dmrkVHjUqLt8bqWtowXMn8" http://127.0
 ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -l root -fNL 8200:localhost:8200 78.108.83.111
 #+end_example
 
+* Alternatives
+- [[https://github.com/Infisical/infisical][Infisical/infisical: ♾ Infisical is the open-source secret management platform: Sync secrets across your team/infrastructure and prevent secret leaks.]]
+
 * Cheat sheet
 
 - Create key value secret
