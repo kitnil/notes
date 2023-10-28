@@ -993,6 +993,7 @@ the new kernel into memory: =systemctl kexec=.
 - [[https://scribe.rip/m/global-identity?redirectUrl=https%3A%2F%2Fitnext.io%2Fbig-change-in-k8s-1-24-about-serviceaccounts-and-their-secrets-4b909a4af4e0][BIG change in K8s 1.24 about ServiceAccounts and their Secrets]]
 - [[https://github.com/colemickens/nixos-flake-example][colemickens/nixos-flake-example: This is a demo NixOS config, with optional flakes support. Along with notes on why flakes is useful and worth adopting.]]
 - [[https://hoverbear.org/blog/declarative-gnome-configuration-in-nixos/][Declarative GNOME configuration with NixOS]]
+- [[https://github.com/DeterminateSystems/zero-to-nix][DeterminateSystems/zero-to-nix: Zero to Nix is your guide to learning Nix and flakes. Created by Determinate Systems.]]
 - [[https://github.com/dnkmmr69420/nix-with-selinux][dnkmmr69420/nix-with-selinux: how to install nix with selinux enabled]]
 - [[https://github.com/Hoverbear-Consulting/flake][Hoverbear-Consulting/flake: Company Nix expressions.]]
 - [[https://github.com/humancalico/nix-learning][humancalico/nix-learning: A bunch of links to blog posts, articles, videos, etc for learning Nix]]
