@@ -1,16 +1,16 @@
 :PROPERTIES:
 :ID:       34e20a86-6b2e-4508-88cf-8a091be96ef5
 :END:
-- [[https://github.com/libguestfs/libguestfs][libguestfs/libguestfs: library and tools for accessing and modifying virtual machine disk images. PLEASE DO NOT USE GITHUB FOR ISSUES OR PULL REQUESTS. See the website for how to file a bug or contact us.]]
-- [[https://github.com/BigAnteater/KVM-GPU-Passthrough][BigAnteater/KVM-GPU-Passthrough: This is a simple, mostly automated guide to pass a GPU through to a VM.]]
-- [[https://github.com/virt-manager/virt-manager/pull/233][Undecorated window by bazsi · Pull Request #233 · virt-manager/virt-manager]]
 - [[https://github.com/abbbi/virtnbdbackup][abbbi/virtnbdbackup: Backup utiliy for Libvirt / qemu / kvm supporting incremental and differencial backups.]]
-- [[https://github.com/JonathonReinhart/spice-record][JonathonReinhart/spice-record: Record SPICE session output to MP4 video]]
-- [[https://github.com/Jiab77/libvirt-web][Jiab77/libvirt-web: A simple web interface based on libVirt and PHP.]]
-- [[https://github.com/saschpe/libvirt-hook-qemu][saschpe/libvirt-hook-qemu: Libvirt hook for setting up iptables port-forwarding rules when using NAT-ed networking.]]
 - [[https://github.com/aruhier/virt-backup][aruhier/virt-backup: Backup your kvm guests managed by libvirt]]
-- [[https://www.tune-it.ru/web/ifsolo/blog/-/blogs/druzim-pulseaudio-s-windows-10-v-qemu-kvm?_com_liferay_blogs_web_portlet_BlogsPortlet_redirect=https%3A%2F%2Fwww.tune-it.ru%2Fweb%2Fifsolo%2Fblog%3Fp_p_id%3Dcom_liferay_blogs_web_portlet_BlogsPortlet%26p_p_lifecycle%3D0%26p_p_state%3Dnormal%26p_p_mode%3Dview%26_com_liferay_blogs_web_portlet_BlogsPortlet_mvcRenderCommandName%3D%252Fblogs%252Fview%26_com_liferay_blogs_web_portlet_BlogsPortlet_mvcRenderCommandName%3D%252Fblogs%252Fview%26_com_liferay_blogs_web_portlet_BlogsPortlet_cur%3D1%26_com_liferay_blogs_web_portlet_BlogsPortlet_delta%3D20][Дружим PulseAudio с Windows 10 в QEMU/KVM - Блог - Tune IT]]
+- [[https://github.com/BigAnteater/KVM-GPU-Passthrough][BigAnteater/KVM-GPU-Passthrough: This is a simple, mostly automated guide to pass a GPU through to a VM.]]
+- [[https://github.com/Jiab77/libvirt-web][Jiab77/libvirt-web: A simple web interface based on libVirt and PHP.]]
+- [[https://github.com/JonathonReinhart/spice-record][JonathonReinhart/spice-record: Record SPICE session output to MP4 video]]
 - [[https://github.com/lg/emugaming][lg/emugaming: Run Win10 games in Docker with GPU passthrough at near-native performance]]
+- [[https://github.com/libguestfs/libguestfs][libguestfs/libguestfs: library and tools for accessing and modifying virtual machine disk images. PLEASE DO NOT USE GITHUB FOR ISSUES OR PULL REQUESTS. See the website for how to file a bug or contact us.]]
+- [[https://github.com/saschpe/libvirt-hook-qemu][saschpe/libvirt-hook-qemu: Libvirt hook for setting up iptables port-forwarding rules when using NAT-ed networking.]]
+- [[https://github.com/virt-manager/virt-manager/pull/233][Undecorated window by bazsi · Pull Request #233 · virt-manager/virt-manager]]
+- [[https://www.tune-it.ru/web/ifsolo/blog/-/blogs/druzim-pulseaudio-s-windows-10-v-qemu-kvm?_com_liferay_blogs_web_portlet_BlogsPortlet_redirect=https%3A%2F%2Fwww.tune-it.ru%2Fweb%2Fifsolo%2Fblog%3Fp_p_id%3Dcom_liferay_blogs_web_portlet_BlogsPortlet%26p_p_lifecycle%3D0%26p_p_state%3Dnormal%26p_p_mode%3Dview%26_com_liferay_blogs_web_portlet_BlogsPortlet_mvcRenderCommandName%3D%252Fblogs%252Fview%26_com_liferay_blogs_web_portlet_BlogsPortlet_mvcRenderCommandName%3D%252Fblogs%252Fview%26_com_liferay_blogs_web_portlet_BlogsPortlet_cur%3D1%26_com_liferay_blogs_web_portlet_BlogsPortlet_delta%3D20][Дружим PulseAudio с Windows 10 в QEMU/KVM - Блог - Tune IT]]
 
 * Cheat sheet
 - [[https://computingforgeeks.com/virsh-commands-cheatsheet/][Virsh commands cheatsheet to manage KVM guest virtual machines | ComputingForGeeks]]
