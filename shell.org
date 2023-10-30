@@ -82,6 +82,7 @@
   : wget https://github.com/sachaos/viddy/releases/download/v0.3.4/viddy_0.3.4_Linux_x86_64.tar.gz; tar xf viddy_0.3.4_Linux_x86_64.tar.gz viddy; chown root: viddy; chmod 0755 viddy; mv -vi viddy /usr/local/bin; rm -v viddy_0.3.4_Linux_x86_64.tar.gz
   : curl --output viddy_0.3.4_Linux_x86_64.tar.gz https://github.com/sachaos/viddy/releases/download/v0.3.4/viddy_0.3.4_Linux_x86_64.tar.gz; tar xf viddy_0.3.4_Linux_x86_64.tar.gz viddy; chown root: viddy; chmod 0755 viddy; mv -vi viddy /bin; rm -v viddy_0.3.4_Linux_x86_64.tar.gz
 - [[https://github.com/JanDeDobbeleer/oh-my-posh][JanDeDobbeleer/oh-my-posh: The most customisable and low-latency cross platform/shell prompt renderer]]
+- [[https://github.com/joewalnes/websocketd][joewalnes/websocketd: Turn any program that uses STDIN/STDOUT into a WebSocket server. Like inetd, but for WebSockets.]]
 - [[https://github.com/jstrieb/cache-command][jstrieb/cache-command: Cache commands that you don't want to run repeatedly when developing a shell pipeline]]
 - [[https://github.com/makew0rld/days][makew0rld/days: Command-line tool for calculating the number of days between given dates: days until, days since, days from]]
 - [[https://github.com/o69mar/ramfetch][o69mar/ramfetch: A fetch which displays memory info using /proc/meminfo]]
