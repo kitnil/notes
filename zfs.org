@@ -28,6 +28,9 @@ zfs-auto-snap_daily-2020-04-30-00h00   zfs-auto-snap_hourly-2020-04-29-17h00  zf
 zfs-auto-snap_hourly-2020-04-29-12h00  zfs-auto-snap_hourly-2020-04-29-18h00  zfs-auto-snap_hourly-2020-04-30-00h00  zfs-auto-snap_hourly-2020-04-30-13h00  zfs-auto-snap_weekly-2020-04-27-00h00
 zfs-auto-snap_hourly-2020-04-29-13h00  zfs-auto-snap_hourly-2020-04-29-19h00  zfs-auto-snap_hourly-2020-04-30-01h00  zfs-auto-snap_hourly-2020-04-30-14h00
 
+* Learning
+- [[https://habr.com/ru/companies/vk/articles/770300/][Переизобретаем файловую систему: (Open)ZFS / Хабр]]
+
 * Libraries
 - [[https://github.com/nix-rust/nix][nix-rust/nix: Rust friendly bindings to *nix APIs]]
 
