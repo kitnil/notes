@@ -9,3 +9,4 @@
 - librsvg example
   : /gnu/store/...-librsvg-2.50.3/bin/rsvg-convert Lambda_lc.svg > Lambda_lc.png
 - [[https://github.com/nikolaydubina/go-binsize-treemap][nikolaydubina/go-binsize-treemap: 🔍 Go binary size SVG treemap]]
+- [[https://github.com/svg/svgo][svg/svgo: ⚙️ Node.js tool for optimizing SVG files]]
