@@ -1,3 +1,4 @@
 - [[https://github.com/banzaicloud/logging-operator][banzaicloud/logging-operator: Logging operator for Kubernetes based on Fluentd and Fluentbit]]
+- [[https://github.com/fabric8io/fluent-plugin-kubernetes_metadata_filter][fabric8io/fluent-plugin-kubernetes_metadata_filter: Enrich your fluentd events with Kubernetes metadata]]
 - [[https://github.com/fluent/fluent-plugin-opensearch][fluent/fluent-plugin-opensearch: OpenSearch Plugin for Fluentd]]
 - [[https://github.com/vmware/kube-fluentd-operator][vmware/kube-fluentd-operator: Auto-configuration of Fluentd daemon-set based on Kubernetes metadata]]
