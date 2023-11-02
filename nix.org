@@ -2043,6 +2043,7 @@ builtins.match "php([[:alnum:]])([[:alnum:]])" "php70"
 - [[https://github.com/symphorien/nixseparatedebuginfod][symphorien/nixseparatedebuginfod: Downloads and provides debug symbols and source code for nix derivations to gdb and other debuginfod-capable debuggers as needed.]]
 - [[https://github.com/taktoa/narfuse][taktoa/narfuse: A FUSE filesystem, written in Haskell, that allows one to mount NAR (Nix archive) files and expose them as a virtual Nix store.]]
 - [[https://github.com/tfc/nspawn-nixos][tfc/nspawn-nixos]]
+- [[https://github.com/the-nix-way/dev-templates][the-nix-way/dev-templates: Dev environments for numerous languages based on Nix flakes [maintainer=@lucperkins]]]
 - [[https://github.com/thiagokokada/nix-alien][thiagokokada/nix-alien: Run unpatched binaries on Nix/NixOS]]
 - [[https://github.com/ublue-os/fleek][ublue-os/fleek: Own your $HOME]]
 - [[https://github.com/viperML/wrapper-manager][viperML/wrapper-manager: Post-modern configuration management]]
