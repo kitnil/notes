@@ -52,6 +52,9 @@
 
 - iptables -A INPUT -p udp -m udp --dport 53 -m string --string "abacre" --algo kmp --to 1500 -j DROP
 
+* Learning
+- [[https://habr.com/ru/articles/324276/][Iptables: немного о действии REDIRECT, его ограничениях и области применения / Хабр]]
+
 * [[https://gist.github.com/tomasinouk/eec152019311b09905cd][Some examples of SNAT, DNAT with iptables with comments]]
 
     mainly used in start-up script
