@@ -9,3 +9,265 @@
 - [[https://github.com/pacstall/pacstall][pacstall/pacstall: An AUR-inspired package manager for Ubuntu]]
 - disable software update GUI pop-up
   : sudo bash -c 'echo "Hidden=true" >> /etc/xdg/autostart/update-notifier.desktop'
+
+* [[https://linus.schreibt.jetzt/posts/ubuntu-images.html][Building Ubuntu images in Nix - Linus's blog]]
+
+The following articles was found in [[https://github.com/lheckemann/nixbuntu-samples][lheckemann/nixbuntu-samples]] project.
+
+** Building Ubuntu images in Nix
+
+Posted on November 6, 2023 by Linus Heckemann
+
+Nix is a powerful tool for making software builds repeatable. By specifying a build as a derivation, with all its inputs “locked” either through content hashes or as derivations themselves, we can easily achieve the same software build environment on machines with entirely different base operating systems. NixOS takes this principle and applies it to putting together a whole Linux system including both the installed software and its config, and allows building various kinds of images from a system configuration. NixOS tests combine the power of NixOS with QEMU to allow running full-system integration tests involving a variety of network topologies across multiple virtual NixOS hosts. But what if we want to test Nix-built software on non-Nix-based distributions?
+
+** Using existing images
+
+NixOS’s VM testing infrastructure works, in most cases, by running VMs without attached block devices, using QEMU’s support for loading a Linux kernel and initramfs directly along with its support for sharing directories from the host via 9p to provide the filesystem. However, the underlying VM infrastructure also allows using block device images. This is used, amongst others, by the ISO installation test. This test boots the same installer ISO image that is provided for download on the NixOS website, then from this booted installer formats an attached block device, installs NixOS to it, and then ensures that the resulting installation boots. Only if this test (and an array of others) passes are the ISOs on the website updated.
+
+The [[https://github.com/NixOS/nix/blob/8e222fbb1284ded6e492feee1ef89cea627eb38a/tests/installer/default.nix][installation tests for the Nix package manager itself]] currently run in VMs based on Vagrant boxes, i.e. pre-built images of other distributions conveniently provided by Hashicorp. This is a powerful and versatile approach, allowing testing in environments that are difficult to construct from source. Even images with proprietary components which are not publicly available could be used, e.g. through the use of [[https://nixos.org/manual/nixpkgs/stable/#requirefile][=requireFile=]].
+
+One limitation of the pre-built image approach is that NixOS tests, being derivations without fixed outputs, are not allowed to access the Internet. This prevents the use of =apt= to install new packages from the Ubuntu package repositories in an Ubuntu VM, which makes testing interactions between the Nix installer and =apt= \-managed packages difficult. Questions that such testing would allow answering include:
+
+- How will the Nix installer handle an existing =apt= \-managed Nix installation?
+- Do the completion definitions for the fish shell provided with Nix work with an =apt= \-managed fish?
+- Are simultaneous installations of other software through both apt and Nix handled gracefully?
+
+It would also be possible to test more complex setups involving VMs running a range of different distributions interacting with each other across a network.
+
+One way to handle this is (on Debian-based distributions) to prefetch the necessary packages and construct a =sources.list=  which refers to a local directory containing these. Another is the primary topic of this post!
+
+** Building Ubuntu images with Nix
+
+Hidden alongside the implementation of the VM functionality is a set of functions which can deal with Debian package repositories (the same exists for RPMs, so all this is likely applicable to distributions of the Red Hat family too, though I haven’t tried – let me know if you do!).
+
+*** =runInLinuxVM=
+
+The most important underlying piece of machinery is =runInLinuxVM= , a function in nixpkgs which takes an arbitrary derivation and overrides it to wrap the build in a Linux VM. Running a full kernel inside the build allows a multitude of operations that aren’t possible directly as an unprivileged user on the build machine, such as mounting filesystems from images to manipulate them.
+
+*** Getting the packages
+
+/I’m omitting some details from the code excerpts included here. Check out the [[https://github.com/lheckemann/nixbuntu-samples/tree/main/examples][accompanying repository]] for full working code./
+
+Debian and family use the APT package manager, which is a frontend for the lower-level package manager dpkg. APT handles fetching packages from package archives (typically via the Internet) and resolving their interdependencies, while dpkg tracks package state and ensures consistency.
+
+The first step in building our image is grabbing all the packages we want and unpacking them into the filesystem. This is done by the =vmTools.makeImageFromDebDist= function in nixpkgs, which performs a similar job to APT, resolving dependencies in a somewhat more primitive fashion, then unpacks them all into a filesystem image and runs their configuration scripts. This function uses a list also used by APT, simply called =Packages=, which lists packages with the hashes of their respective =.deb= package files. These hashes allow generating fixed-output derivations for fetching each of them, which is how we can fetch the packages for use inside the sandbox. This transformation unfortunately currently requires [[https://nixos.org/manual/nix/unstable/language/import-from-derivation][import-from-derivation]], which has some unfortunate performance consequences; this could potentially be improved by preprocessing the package lists into Nix expressions ahead of time.
+
+Talk aside, here’s the code for building an ext4 filesystem image containing a default set of packages plus =systemd=, =zsh= and =vim= :
+
+#+begin_src
+let distro = vmTools.debDistros.ubuntu2004x86_64; in
+vmTools.makeImageFromDebDist {
+  inherit (distro) name fullName urlPrefix packagesLists;
+  packages = distro.packages ++ ["systemd" "zsh" "vim"];
+}
+#+end_src
+
+*** Making it bootable
+
+A filesystem image is nice, and can be booted from if enough other pieces are supplied together with it, but can’t be thrown into a standard boot environment and “just boot” – extra pieces like a bootloader, kernel, kernel command line, and usually an initramfs are needed (see [[https://linus.schreibt.jetzt/posts/booting-nixos.html][my post on the Linux boot process for details]]).
+
+The boot loader needs to live in a special place for the platform firmware to recognise it – the EFI system partition on modern systems. That means we need to produce an image with a partition table, rather than an image containing a raw filesystem. We can achieve this by providing a shell script in the =createRootFS= parameter for =makeImageFromDebDist= :
+
+#+begin_src bash
+disk=/dev/vda
+# Create partition table
+${gptfdisk}/bin/sgdisk $disk \
+  -n1:0:+100M -t1:ef00 -c1:esp \
+  -n2:0:0 -t2:8300 -c2:root
+
+# Ensure that the partition block devices (/dev/vda1 etc) exist
+${util-linux}/bin/partx -u "$disk"
+# Make a FAT filesystem for the EFI System Partition
+${dosfstools}/bin/mkfs.vfat -F32 -n ESP "$disk"1
+# Make an ext4 filesystem for the system root
+${e2fsprogs}/bin/mkfs.ext4 "$disk"2 -L root
+
+# Mount everything to /mnt and provide some directories needed later on
+mkdir /mnt
+${util-linux}/bin/mount -t ext4 "$disk"2 /mnt
+mkdir -p /mnt/{proc,dev,sys,boot/efi}
+${util-linux}/bin/mount -t vfat "$disk"1 /mnt/boot/efi
+
+# runInLinuxImage needs this for no good reason (I should fix this)
+touch /mnt/.debug
+#+end_src
+
+We also need a kernel, initramfs, and bootloader, so we add to the list of packages:
+
+#+begin_src
+"linux-image-generic" # kernel
+"initramfs-tools" # hooks for generating an initramfs
+"e2fsprogs" # initramfs wants fsck
+"grub-efi" # boot loader
+#+end_src
+
+Simply having these packages on the filesystem is not enough, however; they need some additional setup, which we perform using =postInstall= :
+
+#+begin_src bash
+update-grub
+grub-install --target x86_64-efi
+#+end_src
+
+In order to log in to the booted machine, we set a root password (insecurely!):
+
+#+begin_src bash
+echo root:root | chpasswd
+#+end_src
+
+The resulting image can be tested using QEMU with OVMF as a UEFI implementation:
+
+#+begin_src bash
+nix build -o ovmf nixpkgs#OVMF.fd
+nix build -o image .#2-bootable
+nix run nixpkgs#qemu_kvm -- \
+  -m 4G -smp 4 \
+  -bios ovmf-fd/FV/OVMF.fd \
+  -snapshot \
+  image/disk-image.qcow2
+#+end_src
+
+But write it to a physical storage device, and you should be able to boot it on most x86\_64 UEFI machines!
+
+*** Creature comforts
+
+While we have a bootable image here, a number of things one would usually expect on an Ubuntu installation are absent:
+
+- APT is not installed! This can make sense for use cases where updates are performed by deploying a new image, but is likely to break assumptions made both by software components and by operators;
+- Networking is not set up; a machine that doesn’t speak to the network has significantly reduced attack surface, but this also severely limits the range of tasks that can be performed with it;
+- The only way to access the machine, except in case of major vulnerabilities, is via its virtual terminal consoles; a serial console can be more convenient for debugging, and an SSH server can provide login via the network with public-key authentication.
+
+So let’s set these up!
+
+APT needs to be added to the package list, and we need to add a =sources.list=  file to point it to the repositories for additional packages and security updates:
+
+#+begin_src
+cat > /etc/apt/sources.list <<SOURCES
+deb http://archive.ubuntu.com/ubuntu focal main restricted universe
+deb http://security.ubuntu.com/ubuntu focal-security main restricted universe
+deb http://archive.ubuntu.com/ubuntu focal-updates main restricted universe
+SOURCES
+#+end_src
+
+I prefer =systemd-networkd= for networking setup, though this could also be done with Debian’s classic =ifupdown=  suite or NetworkManager.
+
+#+begin_src bash
+ln -snf /lib/systemd/resolv.conf /etc/resolv.conf
+
+systemctl enable systemd-networkd systemd-resolved
+cat >/etc/systemd/network/10-eth.network <<NETWORK
+[Match]
+Name=en*
+Name=eth*
+
+[Link]
+RequiredForOnline=true
+
+[Network]
+DHCP=yes
+NETWORK
+#+end_src
+
+A serial console is added via a kernel parameter:
+
+#+begin_src
+GRUB_CMDLINE_LINUX="console=ttyS0"
+#+end_src
+
+The openssh package will generate host keys by default. These aren’t really appropriate for inclusion in an image, so let’s remove them.
+
+#+begin_src bash
+rm /etc/ssh/ssh_host_*
+# But we do need SSH host keys, so generate them before sshd starts
+cat > /etc/systemd/system/generate-host-keys.service <<SERVICE
+[Install]
+WantedBy=ssh.service
+[Unit]
+Before=ssh.service
+[Service]
+ExecStart=dpkg-reconfigure openssh-server
+SERVICE
+systemctl enable generate-host-keys
+#+end_src
+
+SSH is nicest to use if the keys are already in the image:
+
+#+begin_src bash
+mkdir -p /root/.ssh
+chmod 0700 /root
+cat >/root/.ssh/authorized_keys <<KEYS
+ssh-ed25519 AAAAC3[...] linus@geruest
+KEYS
+#+end_src
+
+I also add the packages =dbus=, needed for =networkctl= to communicate with =systemd-networkd=, and =ncurses-base= , which provides information about various terminals so that the command line displays correctly when editing.
+
+** Limitations and future directions
+
+This demo has a number of limitations, some of which are easy to overcome. Others would require further thought and experimentation.
+
+*** Architecture
+
+This will currently only build and run on =x86_64-linux=  systems. Extending it to run on macOS should be almost trivial since most of the building happens inside VMs; support for other architectures would likely mostly be a matter of adding the relevant Ubuntu package set to the repository info available in nixpkgs, or passing it in from outside.
+
+*** Primitive dependency resolution
+
+The step which resolves dependencies from the package lists and converts them to a Nix expression is a fairly primitive Perl script.
+
+- Its performance leaves a little to be desired;
+- It never installs optional dependencies as specified by =Recommends= or =Suggests=  package metadata fields;
+- It resolves alternative dependencies into the first listed one, even if one of the options is added to the list of packages in the Nix expression;
+- It ignores version bounds in the dependency specification; while I’d expect the Ubuntu package repos to be reasonably consistent, this could lead to problems with more obscure packages.
+
+It may well be possible to instead run APT to solve dependencies, which I expect would provide significantly more sensible and faster dependency resolution.
+
+*** Deviation from “classic” install
+
+This is a very unusual way of installing Ubuntu, and doesn’t come with various parts (notably snap) that would usually be included. The minimal nature of this installation will lead to surprises. Since the shared-namespace model of Debian-based distributions does less to prevent hidden dependencies and we’re not installing all the packages the interactive installer would, we might end up with missing pieces. One example which I ran into while building this was that many packages use the tool =update-rc.d= in their post-installation hooks – but don’t depend on the =init-system-helpers=  package which provides the tool.
+
+*** Monolithic build
+
+The installation of the packages and the further setup steps provided all happen in a single derivation. This can be fairly slow.
+
+The =runInLinuxImage= function in =vmTools=  can be abused into producing a “delta” qcow2 image, which references the one from the previous step and only records the changes. This results in more incremental builds, where previous steps are automatically cached, and improves build times significantly when only the steps after package installation are modified (I made good use of this while developing the bootable images!). In addition to being faster due to the caching-like behaviour, significant savings in disk space can be made with this approach.
+
+This ends up feeling somewhat similar to Dockerfiles; an =apt-get update && apt-get install a b c=  step is extremely common in Debian-based Dockerfiles. The key differences are that Docker only works with container images that need a host system to run, as opposed to machine images which can be booted on hardware; and that Nix’s sandbox improves reproducibility – repeating the same Nix-based Ubuntu build will generally yield an equivalent system even 3 years later, which is not the case for a Dockerfile which communicates with the Internet and gets the current packages at the time of building. It’s also a little faster, since the packages are downloaded into the Nix store individually before being dropped into the installation process, so changing the list of installed packages does not require redownloading everything.
+
+*** Nondeterminism
+
+It’s extremely tricky to make images generated using this approach bit-for-bit reproducible, since mutable filesystems are very sensitive to the order of operations. There are multiple ways this could be avoided: - Discarding the disk-image-based approach in favour of generating archives similar to docker image layers; this, however, implies a more complex deployment process for turning the archives back into filesystem trees. - Using a read-only filesystem with support for deterministic generation like squashfs; this is viable for immutable image-based system use cases, but less appropriate if the system is meant to be modified imperatively after the fact. - Post-processing the filesystem to apply deterministic ordering of directories and positioning of files and discard time metadata. I’m not aware of any tools that can actually do this, though – let me know if you know something in this space!
+
+*** Space usage
+
+The bootable image with creature comforts takes up some 2.5GiB of space. Making the build more incremental helps significantly, but storing images directly on a classic filesystem is invariably quite costly in terms of storage. A more sophisticated store like tvix-store can improve this significantly by deduplicating file content.
+
+*** Security updates not preinstalled
+
+The generated images will not have the latest available versions of the packages installed. This can be remedied by loading further package lists, but to my knowledge Ubuntu does not archive point-in-time snapshots of the security update repositories, so it would require maintaining copies of the package lists and packages in order to preserve the availability of the image builds. This is easier with Debian due to the existence of [[https://snapshot.debian.org/][snapshot.debian.org]].
+
+*** Other distributions
+
+I initially developed this using Debian, and found Debian and Ubuntu to be almost interchangeable for the code here. I imagine other derivatives of Debian would be similarly easy to support. There is also some support for RPM-based distributions in nixpkgs, but I haven’t tried any of that out. Beyond that, it should fundamentally be possible to do this with almost any Linux distribution.
+
+*** More polished interface
+
+Writing these expressions is somewhat clunky, and if this were to be used more extensively it would need a more polished interface. I could imagine this ending up as another use of the NixOS module system: mimicking NixOS (and maybe even reusing some of its code!) to build images of other Linux distributions with declarative config and (greater) reproducibility. Here’s a sketch of what that might look like:
+
+#+begin_src nix
+{ modules }: {
+  imports = [
+    modules.bootable-grub-efi
+    modules.openssh-server
+  ];
+  distro = "debian";
+  packages = ["vim" "zsh" "nethack" "openssh"];
+  etc.hostname.contents = "debian";
+  size = 4096;
+  openssh-server.authorized_keys.root = ./id_ed25519.pub;
+}
+#+end_src
+
+** Conclusion
+
+This has been a wild ride! While the use case that originally led me down this rabbit hole was for integration testing, I can imagine this being useful in various other scenarios where Nix-brained people like myself have to set up Debian or Ubuntu installations, or even for non-Nix-brained people who want to be able to produce equivalent images reliably. These images can also be used as cloud images that run in AWS EC2 or similar environments! I think there’s lots of potential here. If you end up using this or something similar, do let me know – I’m very curious to see what you come up with!
+
+I am also available for consulting. [[mailto:consulting@linuxhackerman.de][Drop me an email]] if you think this or similar work would be valuable for your business!
