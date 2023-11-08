@@ -987,6 +987,66 @@ the new kernel into memory: =systemctl kexec=.
 * Learning
 - [[https://dataswamp.org/~solene/2022-10-06-nixos-kiosk.html][Solene'% : A NixOS kiosk]]
 
+** [[https://linus.schreibt.jetzt/posts/include-build-dependencies.html][Get all your sources! - Linus's blog]]
+
+Posted on October 27, 2023 by Linus Heckemann
+
+If you’re taking your NixOS laptop offline for a bit for travel or similar, and you end up trying to reconfigure, you may run into issues because some build dependency of your system is missing – especially if you’ve garbage-collected since your last rebuild.
+
+The [[https://github.com/NixOS/nixpkgs/pull/195511][new =system.includeBuildDependencies=  option]] will cause your NixOS system to include all the paths needed to build it: the source code for every package, the patches applied to those sources, and the outputs of every[[https://linus.schreibt.jetzt/posts/include-build-dependencies.html#fn1][^{1}]] one of the builds required.
+
+This results in a far larger system closure:
+
+#+begin_src bash
+$ nix path-info -Sh ./system ./system-with-build-closure
+/nix/store/qix15ixkwc1w99x8hj6pw5mg6x2lrsn4-nixos-system-geruest-23.05-20230304-cd10904    5.4G
+/nix/store/sir45x4pibgv93wmiv4xxaw881hga82s-nixos-system-geruest-23.05-20230304-cd10904   53.0G
+#+end_src
+
+But in exchange, it should allow rebuilding or patching any part of the system (as long as you’re not adding dependencies, or pointing to different sources) without any further downloads. This can be useful if you’re going to spend a week offline, or with only slow internet connections available, and don’t want to stop hacking.
+
+Let’s look at how this works!
+
+*** The NixOS toplevel
+
+NixOS collects the configs and software for a whole system together in a derivation called the “toplevel”. This contains things like the kernel, an initramfs (part of the [[https://linus.schreibt.jetzt/posts/booting-nixos.html][boot process]]), an =etc= directory containing the static parts of =/etc= , and the system path, a symlink forest that provides all the software “installed” as part of the system.
+
+*** Dependency closures
+
+Paths in the Nix store, for the most part, are built from derivations. A derivation contains all the information needed to produce the path. For a typical build, this includes source code (often a tarball), a compiler, possibly some libraries, a build script, and some environment variables that allow the same build script to be applied to many different builds. The source code, compiler and libraries are themselves usually produced by derivations.
+
+Of course, one library may depend on another – and that means that if we want to build something using the first library, we’ll need the second one available too. For example, =supertux= depends on =SDL=, which in turn depends on =wayland=, and that depends on =glibc=. Following the dependency links for a derivation all the way down and collecting all the paths you find results in a set of paths called the /dependency closure/  of that derivation.
+
+The output of a derivation (the build product) does not necessarily depend on all the paths in the derivation’s dependency closure – for example, you can run supertux just fine without having the compiler that was used to build it. Nix tracks build products’ dependencies automatically by making use of the relative uniqueness of the hashes which identify store paths: if any file in the output of a derivation contains the path of an input, that input is considered a runtime dependency. The output path cannot be loaded into the Nix store without the dependency being there as well. The /runtime/  dependency closure is a subset of the build-time dependency closure: supertux’s build-time closure includes gcc, but the runtime closure doesn’t.
+
+So if we want a derivation’s output to come with the whole build-time closure, we can do that by ensuring that the output path refers to all of the input paths.
+
+*** =exportReferencesGraph=
+
+Nix supports a special attribute for derivations, named [[https://nixos.org/manual/nix/stable/language/advanced-attributes#adv-attr-exportReferencesGraph][=exportReferencesGraph=]]. This attribute results in the dependency graph for specified paths being exposed to the derivation builder as a file. This is most commonly used in order to copy the closure of a NixOS system when building images, by passing the output of a system toplevel derivation in. But that’s not the only option! We can also pass in a derivation itself, and that gives us the whole build-time closure of that derivation – outputs and all.
+
+The interface exposed by =exportReferencesGraph=  is a little awkward, but fortunately, nixpkgs has us covered…
+
+*** =closureInfo=
+
+The [[https://github.com/NixOS/nixpkgs/blob/e8f7e26e24ab723393aff457dfcba9c2d575dd67/pkgs/build-support/closure-info.nix][=closureInfo=]] function provides a slightly more convenient interface: give it some root paths, and it will produce a derivation whose output contains three files with information on the closure, one of which is a flat list of all the paths. This output clearly brings in the whole build closure! So if we can pass the system derivation to =closureInfo= , and refer to the resulting path in our system derivation, that should be our problem solved.
+
+But that’s a circular reference, and we can’t do that.
+
+*** The =overrideAttrs=  dance
+
+In my initial implementation, I took the usual system toplevel, applied =closureInfo= , and then constructed a new derivation which produced symlinks to the original and to the closure info, “wrapping” the original toplevel. This had the disadvantage of changing the form of the resulting toplevel in ways that may not be compatible with assumptions made elsewhere, replacing some plain files and directories with symlinks. Robert Hensing pointed out an alternative approach: we could override the original derivation in order to provide a toplevel that looked almost exactly the same, the only noticeable difference being the closure info symlink.
+
+Robert’s approach worked wonderfully, and allowed the final implementation of =system.includeBuildDependencies=  as merged.
+
+*** Try it yourself!
+
+All you have to do to enable this is set ~system.includeBuildDependencies = true;~. Once your system is built with this, you have the resources on your machine to make any config changes that don’t bring in new software – or if you’re into that, patch /any/  of the software needed to build your system from scratch – completely offline.
+
+-----
+
+1. [[https://lobste.rs/s/a3ohwp/get_all_your_sources#c_w4qev8][TyberiusPrime has pointed out]] that this does /not/  work fully for systems which use import-from-derivation, that is, require building derivations to fully evaluate the system. These dependencies are likely to get lost when collecting garbage.[[https://linus.schreibt.jetzt/posts/include-build-dependencies.html#fnref1][↩︎]]
+
 * Learning
 - [[https://www.youtube.com/playlist?list=PLRGI9KQ3_HP_OFRG6R-p4iFgMSK1t5BHs][(46) Nixology - YouTube]]
 - [[https://github.com/Anton-Latukha/nix-notes][Anton-Latukha/nix-notes: Nix notes in org]]
