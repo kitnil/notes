@@ -481,6 +481,9 @@ Additionally, by taking simple preventative measures, most importantly monitorin
 - Explain
   : curl -H 'Content-Type: application/json' -d '{"index": "nginx-2022.02.03", "shard": 0, "primary": true}' 'es.intr:9200/_cluster/allocation/explain?pretty' 
 
+- Explain all indexes
+  : GET /_cluster/allocation/explain
+
 - Search
   : curl -s -X GET "elastic.intr:9200/logstash-te-2020.02.28/_search?q=server:web37&pretty"
   : curl -H 'Content-Type: application/json' -d '{"query": {"dis_max": {"queries": [{"match": {"server": "web37"}}, {"match": {"OPERATION_IDENTITY": "LOCAL-SCHED"}}]}}}' -s -X GET "elastic.intr:9200/logstash-te-2020.02.28/_search?pretty&size=1000" | jq -r '.hits.hits[] | ._source.ACTION_IDENTITY'
