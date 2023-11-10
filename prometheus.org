@@ -56,6 +56,7 @@
 - [[https://github.com/prometheus-community/elasticsearch_exporter][prometheus-community/elasticsearch_exporter: Elasticsearch stats exporter for Prometheus]]
 - [[https://github.com/prometheus-community/helm-charts][prometheus-community/helm-charts: Prometheus community Helm charts]]
 - [[https://github.com/prometheus-community/ipmi_exporter][prometheus-community/ipmi_exporter: Remote IPMI exporter for Prometheus]]
+- [[https://github.com/prometheus-community/prom-label-proxy][prometheus-community/prom-label-proxy: A proxy that enforces a given label in a given PromQL query.]]
 - [[https://github.com/prometheus-community/promql-langserver][prometheus-community/promql-langserver: PromQL language server]]
 - [[https://github.com/prometheus-community/PushProx][prometheus-community/PushProx: Proxy to allow Prometheus to scrape through NAT etc.]]
 - [[https://github.com/prometheus-community/smartctl_exporter][prometheus-community/smartctl_exporter: Export smartctl statistics to prometheus]]
