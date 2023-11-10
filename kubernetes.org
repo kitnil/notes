@@ -3428,6 +3428,7 @@ then redeploy with:
 - [[https://k3s.io/][K3s: Lightweight Kubernetes]]
 - [[https://github.com/k8s-at-home/charts][k8s-at-home/charts: Helm charts for applications you run at home]]
 - [[https://github.com/k8sgpt-ai/k8sgpt][k8sgpt-ai/k8sgpt: Giving Kubernetes SRE superpowers to everyone]]
+- [[https://github.com/k8snetworkplumbingwg/bridge-operator][k8snetworkplumbingwg/bridge-operator: Bridge-operator manages linux bridge in Kubernetes cluster node.]]
 - [[https://github.com/k8snetworkplumbingwg/multus-cni][k8snetworkplumbingwg/multus-cni: A CNI meta-plugin for multi-homed pods in Kubernetes]]
   - [[https://github.com/foundation-model-stack/multi-nic-cni][foundation-model-stack/multi-nic-cni - Multi-NIC CNI is the CNI plugin operating on top of Multus CNI]]
 - [[https://github.com/k8snetworkplumbingwg/whereabouts][k8snetworkplumbingwg/whereabouts: A CNI IPAM plugin that assigns IP addresses cluster-wide]]
