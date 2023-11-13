@@ -11,6 +11,10 @@
 - tree
   : flux tree kustomization flux-system --compact
 
+- [[https://github.com/fluxcd/flux2/issues/2386][[flux v0.26.0-2] Kustomization tries to modify immutable fields · Issue #2386 · fluxcd/flux2]]
+  : kubectl -n demo patch pvc test --type=json -p='[{"op": "remove", "path": "/metadata/managedFields/0/fieldsV1/f:spec/f:volumeMode"}]'
+  : kubectl -n demo patch pvc test --type=json -p='[{"op": "remove", "path": "/metadata/managedFields/0/fieldsV1/f:spec/f:volumeName"}]'
+
 * tf-controller
 
 #+begin_src bash
