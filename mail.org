@@ -196,3 +196,188 @@ exim -bhc 8.8.8.8
     Do not send inappropriate emails from your work email address
     Let’s use our common sense
   #+end_example
+
+* Processing patch mails with b4 and notmuch
+
+Nov 22, 2021 • Gerd Hoffmann
+
+This blog post describes my mail setup, with a focus on how I handle patch email. Lets start with a general mail overview. Not going too deep into the details here, the internet has plenty of documentation and configuration tutorials.
+Outgoing mail
+
+Most of my machines have a local postfix configured for outgoing mail. My workstation and my laptop forward all mail (over vpn) to the company internal email server. All I need for this to work is a relayhost line in /etc/postfix/main.cf:
+
+relayhost = [smtp.corp.redhat.com]
+
+Most unix utilities (including git send-email) try to send mails using /usr/sbin/sendmail by default. This tool will place the mail in the postfix queue for processing. The name of the binary is a convention dating back to the days where sendmail was the one and only unix mail processing daemon.
+Incoming mail
+
+All my mail is synced to local maildir storage. I'm using offlineimap for the job. Plenty of other tools exist, isync is another popular choice.
+
+Local mail storage has the advantage that reading mail is faster, especially in case you have a slow internet link. Local mail storage also allows to easily index and search all your mail with notmuch.
+Filtering mail
+
+I'm using server side filtering. The major advantage is that I always have the same view on all my mail. I can use a mail client on my workstation, the web interface or a mobile phone. Doesn't matter, I always see the same folder structure.
+Reading mail
+
+All modern email clients should be able to use maildir folders. I'm using neomutt. I also have used thunderbird and evolution in the past. All working fine.
+
+The reason I use neomutt is that it is simply faster than GUI-based mailers, which matters when you have to handle alot of email. It is also easy very to hook up scripts, which is very useful when it comes to patch processing.
+Outgoing patches
+
+I'm using git send-email for the simple cases and git-publish for the more complex ones. Where "simple" typically is single changes (not a patch series) where it is unlikely that I have to send another version addressing review comments.
+
+git publish keeps track of the revisions you have sent by storing a git tag in your repo. It also stores the cover letter and the list of people Cc'ed on the patch, so sending out a new revision of a patch series is much easier than with plain git send-email.
+
+git publish also features config profiles. This is helpful for larger projects where different subsystems use different mailing lists (and possibly different development branches too).
+Incoming patches
+
+So, here comes the more interesting part: Hooking scripts into neomutt for patch processing. Lets start with the config (~/.muttrc) snippet:
+
+# patch processing
+bind	index,pager	p	noop			# default: print
+macro	index,pager	pa	"<pipe-entry>~/.mutt/bin/patch-apply.sh<enter>"
+macro	index,pager	pl	"<pipe-entry>~/.mutt/bin/patch-lore.sh<enter>"
+
+First I map the 'p' key to noop (instead of print which is the default configuration), which allows to use two-key combinations starting with 'p' for patch processing. Then 'pa' is configured to run my patch-apply.sh script, and 'pl' runs patch-lore.sh.
+
+Lets have a look at the patch-apply.sh script which applies a single patch:
+
+#!/bin/sh
+
+# store patch
+file="$(mktemp ${TMPDIR-/tmp}/mutt-patch-apply-XXXXXXXX)"
+trap "rm -f $file" EXIT
+cat > "$file"
+
+# find project
+source ~/.mutt/bin/patch-find-project.sh
+if test "$project" = ""; then
+        echo "ERROR: can't figure project"
+        exit 1
+fi
+
+# go!
+clear
+cd $HOME/projects/$project
+branch=$(git rev-parse --abbrev-ref HEAD)
+
+clear
+echo "#"
+echo "# try applying patch to $project, branch $branch"
+echo "#"
+
+if git am --message-id --3way --ignore-whitespace --whitespace=fix "$file"; then
+        echo "#"
+        echo "# OK"
+        echo "#"
+else
+        echo "# FAILED, cleaning up"
+        cp -v .git/rebase-apply/patch patch-apply-failed.diff
+        cp -v "$file" patch-apply-failed.mail
+        git am --abort
+        git reset --hard
+fi
+
+The mail is passed to the script on stdin, so the first thing the script does is to store that mail in a temporary file. Next it goes try figure which project the patch is for. The logic for that is in a separate file so other scripts can share it, see below. Finally try to apply the patch using git am. In case of a failure store both decoded patch and complete email before cleaning up and exiting.
+
+Now for patch-find-project.sh. This script snippet tries to figure the project by checking which mailing list the mail was sent to:
+
+#!/bin/sh
+if test "$PATCH_PROJECT" != ""; then
+        project="$PATCH_PROJECT"
+elif grep -q -e "devel@edk2.groups.io" "$file"; then
+        project="edk2"
+elif grep -q -e "qemu-devel@nongnu.org" "$file"; then
+        project="qemu"
+# [ ... more checks snipped ... ]
+fi
+if test "$project" = ""; then
+        echo "Can't figure project automatically."
+        echo "Use env var PATCH_PROJECT to specify."
+fi
+
+The PATCH_PROJECT environment variable can be used to override the autodetect logic if needed.
+
+Last script is patch-lore.sh. That one tries to apply a complete patch series, with the help of the b4 tool. b4 makes patch series management an order of magnitude simpler. It will find the latest revision of a patch series, bring the patches into the correct order, pick up tags (Reviewed-by, Tested-by etc.) from replies, checks signatures and more.
+
+#!/bin/sh
+
+# store patch
+file="$(mktemp ${TMPDIR-/tmp}/mutt-patch-queue-XXXXXXXX)"
+trap "rm -f $file" EXIT
+cat > "$file"
+
+# find project
+source ~/.mutt/bin/patch-find-project.sh
+if test "$project" = ""; then
+	echo "ERROR: can't figure project"
+	exit 1
+fi
+
+# find msgid
+msgid=$(grep -i -e "^message-id:" "$file" | head -n 1 \
+	| sed -e 's/.*<//' -e 's/>.*//')
+
+# go!
+clear
+cd $HOME/projects/$project
+branch=$(git rev-parse --abbrev-ref HEAD)
+
+clear
+echo "#"
+echo "# try queuing patch (series) for $project, branch $branch"
+echo "#"
+echo "# msgid: $msgid"
+echo "#"
+
+# create work dir
+WORK="${TMPDIR-/tmp}/${0##*/}-$$"
+mkdir "$WORK" || exit 1
+trap 'rm -rf $file "$WORK"' EXIT
+
+echo "# fetching from lore ..."
+echo "#"
+b4 am	--outdir "$WORK" \
+	--apply-cover-trailers \
+	--sloppy-trailers \
+	$msgid || exit 1
+
+count=$(ls $WORK/*.mbx 2>/dev/null | wc -l)
+if test "$count" = "0"; then
+	echo "#"
+	echo "# got nothing, trying notmuch instead ..."
+	echo "#"
+	echo "# update db ..."
+	notmuch new
+	echo "# find thread ..."
+	notmuch show \
+		--format=mbox \
+		--entire-thread=true \
+		id:$msgid > $WORK/notmuch.thread
+	echo "# process mails ..."
+	b4 am	--outdir "$WORK" \
+		--apply-cover-trailers \
+		--sloppy-trailers \
+		--use-local-mbox $WORK/notmuch.thread \
+		$msgid || exit 1
+	count=$(ls $WORK/*.mbx 2>/dev/null | wc -l)
+fi
+
+echo "#"
+echo "# got $count patches, trying to apply ..."
+echo "#"
+if git am -m -3 $WORK/*.mbx; then
+	echo "#"
+	echo "# OK"
+	echo "#"
+else
+	echo "# FAILED, cleaning up"
+	git am --abort
+	git reset --hard
+fi
+
+First part (store mail, find project) of the script is the same as patch-apply.sh. Then the script goes get the message id of the mail passed in and feeds that into b4. b4 will go try to find the email thread on lore.kernel.org. In case this doesn't return results the script will go query notmuch for the email thread instead and feed that into b4 using the --use-local-mbox switch.
+
+Finally it tries to apply the complete patch series prepared by b4 with git am.
+
+So, with all that in place applying a patch series is just two key strokes in neomutt. Well, almost. I still need an terminal on the side which I use to make sure the correct branch is checked out, to run build tests etc.
