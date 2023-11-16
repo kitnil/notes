@@ -216,7 +216,181 @@ edit files, or recover something without the virtual machine running.
     qemu-nbd --disconnect /dev/nbd0
     rmmod nbd
 
-* 3D acceleration
+* Graphics
+
+** [[https://www.kraxel.org/blog/2019/09/display-devices-in-qemu/][VGA and other display devices in qemu]]
+
+Sep 27, 2019 • Gerd Hoffmann
+
+There are alot of emulated display devices available in qemu. This blog post introduces them, explains the differences between them and the use cases they are good for.
+
+The TL;DR version is in the recommendations section at the end of the article.
+standard VGA
+
+    qemu: -vga std or -device VGA
+    libvirt: <model type='vga'/>
+    ✓ VGA compatible
+    ✓ vgabios support
+    ✓ UEFI support (QemuVideoDxe)
+    ✓ linux driver (bochs-drm.ko) 
+
+This is the default display device (on x86). It provides full VGA compatibility and support for a simple linear framebuffer (using the bochs dispi interface). It is the best choice compatibility wise, pretty much any guest should be able to bring up a working display on this device. Performance or usability can be better with other devices, see discussion below.
+
+The device has 16 MB of video memory by default. This can be changed using the vgamem_mb property, -device VGA,vgamem_mb=32 for example will double the amount of video memory. The size must be a power of two, the valid range is 1 MB to 256 MB.
+
+The linux driver supports page-flipping, so having room for 3-4 framebuffers is a good idea. The driver can leave the framebuffers in vram then instead of swapping them in and out. FullHD (1920x1080) for example needs a bit more than 8 MB for a single framebuffer, so 32 or 64 MB would be a good choice for that.
+
+The UEFI setup allows to choose the display resolution which OVMF will use to initialize the display at boot. Press ESC at the tianocore splash screen to enter setup, then go to "Device Manager" → "OVMF Platform Configuration".
+bochs display device
+
+    qemu: -device bochs-display
+    libvirt: <model type='bochs'/>
+    ✗ not VGA compatible
+    ✓ vgabios support
+    ✓ UEFI support (QemuVideoDxe)
+    ✓ linux driver (bochs-drm.ko) 
+
+This device supports a simple linear framebuffer. It also uses the bochs dispi interface for modesetting, therefore the linear framebuffer configuration is fully compatible to the standard VGA device.
+
+The bochs display is not VGA compatible though. There is no support for text mode, planar video modes, memory windows at 0xa0000 and other legacy VGA features in the virtual hardware.
+
+Main advantage over standard VGA is that this device is alot simpler. The code size and complexity needed to emulate this device is an order of magnitude smaller, resulting in a reduced attack surface. Another nice feature is that you can place this device in a PCI Express slot.
+
+For UEFI guests it is safe to use the bochs display device instead of the standard VGA device. The firmware will setup a linear framebuffer as GOP anyway and never use any legacy VGA features.
+
+For BIOS guests this device might be useable as well, depending on whenever they depend on direct VGA hardware access or not. There is a vgabios which supports text rendering on a linear framebuffer, so software which uses the vgabios services for text output will continue to work. Linux bootloaders typically fall into this category. The linux text mode console (vgacon) uses direct hardware access and does not work. The framebuffer console (fbcon running on vesafb or bochs-drm) works.
+virtio vga
+
+    qemu: -vga virtio or -device virtio-vga
+    libvirt: <model type='virtio'/> (on x86).
+    ✓ VGA compatible
+    ✓ vgabios support
+    ✓ UEFI support (QemuVideoDxe)
+    ✓ linux driver (virtio-gpu.ko) 
+
+This is a modern, virtio-based display device designed for virtual machines. It comes with VGA compatibility mode. You need a guest driver to make full use of this device. If your guest OS has no driver it should still show a working display thanks to the VGA compatibility mode, but the device will not provide any advantages over standard VGA then.
+
+This device has (optional) hardware-assisted opengl acceleration support. This can be enabled using the virgl=on property, which in turn needs opengl support enabled (gl=on) in the qemu display.
+
+This device has multihead support, can be enabled using the max_outputs=2 property.
+
+This device has no dedicated video memory (except for VGA compatibility), gpu data will be stored in main memory instead. Therefore this device has no config options for video memory size.
+
+This is the place where most development happens, support for new, cool features will most likely be added to this device.
+virtio gpu
+
+    qemu: -device virtio-gpu-pci
+    libvirt: <model type='virtio'/> (on arm).
+    ✗ not VGA compatible
+    ✗ no vgabios support
+    ✓ UEFI support (VirtioGpuDxe)
+    ✓ linux driver (virtio-gpu.ko) 
+
+This device lacks VGA compatibility mode but is otherwise identical to the virtio vga device. UEFI firmware can handle this, and if your guests has drivers too you can use this instead of virtio-vga. This will reduce the attack surface (no complex VGA emulation support) and reduce the memory footprint by 8 MB (no pci memory bar for VGA compatibility). This device can be placed in a PCI Express slot.
+vhost-user virtio gpu
+
+There is a vhost-user variant for both virtio vga and virtio gpu. This allows to run the virtio-gpu emulation in a separate process. This is good from the security perspective, especially if you want use virgl 3D acceleration, and it also helps with opengl performance.
+
+Run the gpu emulation process (see contrib/vhost-user-gpu/ in the qemu source tree):
+
+./vhost-user-gpu --virgl -s vgpu.sock
+
+Run qemu:
+
+qemu \
+  -chardev socket,id=vgpu,path=vgpu.sock \
+  -device vhost-user-vga,chardev=vgpu \
+  [ ... ]
+
+libvirt support is in the works.
+qxl vga
+
+    qemu: -vga qxl or -device qxl-vga.
+    libvirt: <model type='qxl' primary='yes'/>.
+    ✓ VGA compatible
+    ✓ vgabios support
+    ✓ UEFI support (QemuVideoDxe)
+    ✓ linux driver (qxl.ko)
+    ✓ windows driver 
+
+This is a slightly dated display device designed for virtual machines. It comes with VGA compatibility mode. You need a guest driver to make full use of this device. If your guest OS has no driver it should still show a working display thanks to the VGA compatibility mode, but the device will not provide any advantages over standard VGA then.
+
+This device has support for 2D acceleration. This becomes more and more useless though as modern display devices don't have dedicated 2D acceleration support any more and use the 3D engine for everything. The same happens on the software side, modern desktops are rendering with opengl or vulkan instead of using 2D acceleration.
+
+Spice and qxl support offloading 2D acceleration to the spice client (typically virt-viewer these days). That is quite complex and with 2D acceleration being on the way out this becomes increasingly useless too. You might want pick some simpler device for security reasons.
+
+This device has multihead support, can be enabled using the max_outputs=2 property. The linux driver will use this, the windows driver expects multiple devices instead (see below).
+
+The amount of video memory for this device is configurable using the ram_size_mb and vram_size_mb properties for the two pci memory bars. The default is 64 MB for both, which should be plenty for typical use cases. When using 4K display resolution or multihead support you should assign more video memory though. When using small resolutions like 1024x768 you can assign less video memory to reduce the memory footprint.
+qxl
+
+    qemu: -device qxl.
+    libvirt: <model type='qxl' primary='no'/>. 
+
+This device lacks VGA compatibility mode but is otherwise identical to the qxl vga device. Providing multihead support for windows guests is pretty much the only use case for this device. The windows guest driver expects one qxl device per secondary display (additionally to one qxl-vga device for the primary display).
+cirrus vga
+
+    qemu: -vga cirrus or -device cirrus-vga.
+    libvirt: <model type='cirrus'/>.
+    ✓ VGA compatible
+    ✓ vgabios support
+    ✓ UEFI support (QemuVideoDxe)
+    ✓ linux driver (cirrus.ko) 
+
+Emulates a Cirrus SVGA device which used to be modern in the 90ies of the last century, more than 20 years ago. For the most part my blog article from 2014 is still correct; the device is mostly useful for guests which are equally old and are shipped with a driver for cirrus vga devices.
+
+Two things have changed meanwhile though: Since qemu version 2.2 cirrus is not the default vga device any more. Also the cirrus driver in the linux kernel has been completely rewritten. In kernel 5.2 & newer the cirrus driver uses a shadow framebuffer and converts formats on the fly to hide some of the cirrus oddities from userspace (Xorg/wayland), so things are working a bit better now. That doesn't cure everything though, especially the available display resolutions are still constrained by the small amount of video memory.
+ati vga
+
+    qemu: -device ati-vga.
+    ✓ VGA compatible
+    ✓ vgabios support
+    ✗ no UEFI support 
+
+Emulates two ATI SVGA devices, the model property can be used to pick the variant. model=rage128p selects the "Rage 128 Pro" and model=rv100 selects the "Radeon RV100".
+
+The devices are newer (late 90ies / early 2000) and more modern than the cirrus VGA. Nevertheless the use case is very similar: For guests of a similar age which are shipping with drivers for those devices.
+
+This device has been added recently to qemu, development is in progress still. The fundamentals are working (modesetting, hardware cursor). Most important 2D accel ops are implemented too. 3D acceleration is not implemented yet.
+
+Linux has both drm and fbdev drivers for these devices. The drm drivers are not working due to emulation being incomplete still (which hopefully changes in the future). The fbdev drivers are working. Modern linux distros prefer the drm drivers though. So you probably have to build your own kernel if you want use this device.
+ramfb
+
+    qemu: -device ramfb.
+    ✗ not VGA compatible
+    ✓ vgabios support
+    ✓ UEFI support (QemuRamfbDxe) 
+
+Very simple display device. Uses a framebuffer stored in guest memory. The firmware initializes it and allows to use it as boot display (grub boot menu, efifb, ...) without needing complex legacy VGA emulation. Details can be found here.
+no display device
+
+    qemu: -vga none -nographic. 
+
+You don't have to use a display device. If you don't need one you can run your guests with a serial console instead.
+embedded devices
+
+There are a bunch of other display devices. Those are typically SoC-specific and used by embedded board emulation. Just mentioning them here for completeness. You can't select the display device for embedded boards, the qemu emulation simply matches physical hardware here.
+recommendations
+
+For the desktop use case (assuming display performance matters and/or you need multihead support), in order of preference:
+
+    virtio vga or virtio gpu, if your guest has drivers
+    qxl vga, if your guest has drivers
+    bochs display device, when using UEFI
+    standard VGA 
+
+For the server use case (assuming the GUI is rarely used, or not at all), in order of preference:
+
+    serial console, if you can work without a GUI
+    bochs display device, when using UEFI
+    standard VGA 
+
+On arm systems display devices with a pci memory bar do not work, which reduces the choices alot. We are left with:
+
+    virtio gpu, if your guest has drivers
+    ramfb 
+
+** 3D acceleration
 
 - [[https://www.youtube.com/watch?v=6VqsATmqgso][(64) TESTED: Qemu VirGL - what could possibly go wrong? OpenSource Mesa 3D - YouTube]]
   : qemu-system-x86_64 --enable-kvm -smp 4 -m 4G -cdrom /srv/iso/manjaro-sway-22.1.2-231112-linux61.iso -device virtio-vga-gl -display gtk,gl=on
