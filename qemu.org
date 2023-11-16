@@ -216,6 +216,93 @@ edit files, or recover something without the virtual machine running.
     qemu-nbd --disconnect /dev/nbd0
     rmmod nbd
 
+* Clipboard
+
+** [[https://www.kraxel.org/blog/2021/05/qemu-cut-paste/][Adding cut+paste support to qemu]]
+
+May 31, 2021 • Gerd Hoffmann
+
+The spice project supports cut+paste for ages, now the rest of qemu is playing catch up.
+Implementation options
+
+So, what are the choices for implementing cut+paste support? Without guest cooperation the only possible way would be to send text as keystrokes to the guest. Which has a number of drawbacks:
+
+    It works for text only.
+    It is one-way (host to guest) only.
+    Has keyboard mapping problems even when limiting to us-ascii,
+    sending unicode (ä ø Я € © 漢字 ❤ 😎) reliably is impossible.
+    Too slow for larger text blocks.
+
+So, this is not something to consider seriously. Instead we need help from the guest, which is typically implemented with some agent process running inside the guest. The options are:
+
+    Write a new cut+paste agent.
+    Add cut+paste support to the qemu guest agent.
+    Use the spice agent which already supports cut+paste.
+
+Reusing the spice agent has some major advantages. For starters there is no need to write any new guest code for this. Less work for developers and maintainers. Also the agent is packaged since years for most distributions (typically the package is named spice-vdagent). So it is easily available, making things easier for users, and guest images with the agent installed work out-of-the-box.
+
+Downside is that this is a bit confusing as you need the spice agent in the guest even when not using spice on the host. So I'm writing this article to address that ...
+Some background on spice cut+paste
+
+The spice guest agent is not a single process but two: One global daemon running as system service (spice-vdagentd) and one process (spice-vdagent) running in desktop session context.
+
+The desktop process will handle everything which needs access to your display server. That includes cut+paste support. It will also talk to the system service. The system service in turn connects to the host using a virtio-serial port. It will relay data messages between desktop process and host and also process some of the requests (mouse messages for example) directly.
+
+On the host side qemu simply forwards the agent data stream to the spice client and visa versa. So effectively the spice guest agent can communicate directly with the spice client. It's configured this way:
+
+qemu-system-x86_64 [ ... ] \
+  -chardev spicevmc,id=ch1,name=vdagent \
+  -device virtio-serial-pci \
+  -device virtserialport,chardev=ch1,id=ch1,name=com.redhat.spice.0
+
+spicevmc
+    This is the data channel to the spice client.
+virtio-serial
+    The virtio device which manages the ports.
+virtserialport
+    The port for the guest/host connection. It'll show up as /dev/virtio-ports/com.redhat.spice.0 inside the guest.
+
+The qemu clipboard implementation.
+
+The central piece of code is the new qemu clipboard manager (ui/clipboard.c). Initially it supports only plain text. The interfaces are designed for multiple data types though, so adding support for more data types later on is possible.
+
+There are three peers which can talk to the qemu clipboard manager:
+
+vnc
+    The vnc server got clipboard support (ui/vnc-clipboard.c), so vnc clients with cut+paste support can exchange data with the qemu clipboard.
+gtk
+    The gtk ui got clipboard support too (ui/gtk-clipboard.c) and connects the qemu clipboard manager with your desktop clipboard.
+vdagent
+    Qemu got an implementation of the spice agent protocol (ui/vdagent.c), which connects the guest to the qemu clipboard.
+
+This landed in the qemu upstream repo a few days ago and will be shipped with the qemu 6.1 release.
+Configure the qemu vdagent
+
+The qemu vdagent is implemented as chardev. It is a drop-in replacement for the spicevmc chardev, and instead of forwarding everything to the spice client it implements the spice agent protocol and parses the messages itself. So only the chardev configuration changes, the virtserialport stays as-is:
+
+qemu-system-x86_64 [ ... ] \
+  -chardev qemu-vdagent,id=ch1,name=vdagent,clipboard=on \
+  -device virtio-serial-pci \
+  -device virtserialport,chardev=ch1,id=ch1,name=com.redhat.spice.0
+
+The vdagent has two options to enable/disable vdagent protocol features:
+
+mouse={on,off}
+    enable/disable mouse messages. When enabled absolute mouse events can travel this way instead of using an usb or virtio tablet device for that. Default is on.
+clipboard={on,off}
+    enable/disable clipboard support. Default is off (for security reasons).
+
+Future work
+
+No immediate plans right now, but I have some ideas what could be done:
+
+Add more peers
+    Obvious candidates are the other UIs (SDL, cocoa). Possibly also more guest protocols, I think vmware supports cut+paste too (via vmport and agent).
+Add more data types
+    With image support being a hot candidate. Chances are high that this involves more than just passing data. spice uses png as baseline image format, whereas vnc uses bmp. So qemu most likely has to do image format conversions.
+
+Maybe I look into them when I find some time. No promise though. Patches are welcome.
+
 * Graphics
 
 ** [[https://www.kraxel.org/blog/2019/09/display-devices-in-qemu/][VGA and other display devices in qemu]]
