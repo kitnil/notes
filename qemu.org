@@ -215,3 +215,8 @@ edit files, or recover something without the virtual machine running.
     umount /mnt/somepoint/
     qemu-nbd --disconnect /dev/nbd0
     rmmod nbd
+
+* 3D acceleration
+
+- [[https://www.youtube.com/watch?v=6VqsATmqgso][(64) TESTED: Qemu VirGL - what could possibly go wrong? OpenSource Mesa 3D - YouTube]]
+  : qemu-system-x86_64 --enable-kvm -smp 4 -m 4G -cdrom /srv/iso/manjaro-sway-22.1.2-231112-linux61.iso -device virtio-vga-gl -display gtk,gl=on
