@@ -151,16 +151,16 @@ echo 3 > /proc/sys/vm/drop_caches
 
 * Documentation
 
-- [[https://en.wikipedia.org/wiki/Linux_kernel_version_history][Linux kernel version history]]
+- [[https://github.com/0xAX/linux-insides][0xAX/linux-insides: A little bit about a linux kernel]]
 - [[https://github.com/filiparag/wikiman][filiparag/wikiman: Wikiman is an offline search engine for manual pages, Arch Wiki, Gentoo Wiki and other documentation.]]
+- [[https://en.wikipedia.org/wiki/Linux_kernel_version_history][Linux kernel version history]]
 - [[https://access.redhat.com/sites/default/files/attachments/rh_ip_command_cheatsheet_1214_jcs_print.pdf][rh_ip_command_cheatsheet_1214_jcs_print.pdf]]
-- [[https://habr.com/en/post/416669/][Вся правда о linux epoll / Habr]]
-  - [[http://artemy-kolesnikov.blogspot.com/2010/11/epoll.html][Программерский блог: Использование epoll]]
-  - [[https://www.insight-it.ru/linux/2012/kak-rabotaet-epoll/][Как работает epoll?]]
 - [[https://www.kernel.org/doc/html/latest/admin-guide/index.html][The Linux kernel user’s and administrator’s guide — The Linux Kernel documentation]]
 
 - [[https://archlinux.org.ru/forum/topic/19282/][Анализ зависшего процесса]]
-- [[https://github.com/0xAX/linux-insides][0xAX/linux-insides: A little bit about a linux kernel]]
+- [[https://habr.com/en/post/416669/][Вся правда о linux epoll / Habr]]
+  - [[http://artemy-kolesnikov.blogspot.com/2010/11/epoll.html][Программерский блог: Использование epoll]]
+  - [[https://www.insight-it.ru/linux/2012/kak-rabotaet-epoll/][Как работает epoll?]]
 
 * Framebuffer
 - [[https://github.com/mekb-turtle/imgfb][mekb-turtle/imgfb: Draws a farbfeld or jpeg image to the Linux framebuffer]]
