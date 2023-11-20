@@ -400,3 +400,27 @@ Needed to add the <qemu:capabilities> , however also update the domain (add the 
     </qemu:capabilities>    
   </domain>
 #+end_src
+
+* Fix USB
+
+#+begin_src message
+  > I am trying to get USB redirection working with libvirt, but I am 
+  > hitting a snag. [...] I am now getting a new error:
+  > 
+  > Error setting USB device node ACL: 'Error PoliciKit error: 
+  > GDBus.Error:org.freedesktop.PolicyKit1.Error.Failed: Action 
+  > org.spice-space.lowlevelusbaccess is not registered' (0)
+  > 
+  > It fails no matter which client I use (virt-manager, virt-viewer, 
+  > gnome-boxes). Is there a way to fix that permission so I can redirect my 
+  > USB devices?
+
+  I had the same problem some time ago. It can be fixed by extending
+  polkit-service-type with spice-gtk, i.e.
+
+  (operating-system
+    ...
+    (services
+      ...
+      (simple-service 'spice-polkit polkit-service-type (list spice-gtk))))
+#+end_src
