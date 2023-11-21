@@ -60,6 +60,7 @@
 - [[https://github.com/prometheus-community/promql-langserver][prometheus-community/promql-langserver: PromQL language server]]
 - [[https://github.com/prometheus-community/PushProx][prometheus-community/PushProx: Proxy to allow Prometheus to scrape through NAT etc.]]
 - [[https://github.com/prometheus-community/smartctl_exporter][prometheus-community/smartctl_exporter: Export smartctl statistics to prometheus]]
+- [[https://github.com/prometheus/influxdb_exporter][prometheus/influxdb_exporter: A server that accepts InfluxDB metrics via the HTTP API and exports them via HTTP for Prometheus consumption]]
 - [[https://sysdig.com/wp-content/uploads/2019/01/prometheus-monitoring-guide.pdf][prometheus-monitoring-guide.pdf]]
 - [[https://michael.stapelberg.ch/posts/2016-01-01-prometheus-blackbox-exporter/][Prometheus: Using the blackbox exporter (2016) - Michael Stapelberg]]
 - [[https://coralogix.com/blog/promql-tutorial-5-tricks-to-become-a-prometheus-god/][PromQL Tutorial: 5 Tricks to Become a Prometheus God - Coralogix]]
