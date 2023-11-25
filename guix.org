@@ -168,6 +168,10 @@ https://gitlab.com/janneke/guix.git
     (build-derivations s (list d))
   #+END_SRC
 
+* Bugs
+** TODO [[https://issues.guix.gnu.org/62936#10][guix build: error: gcry_md_hash_buffer: Function not implemented]]
+To fix the issue delete =guile= file and run =make= again.
+
 * Cheat sheet
 
   - Tmux in a container
