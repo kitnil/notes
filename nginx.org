@@ -87,3 +87,464 @@
 - [[https://github.com/Tinywan/lua-nginx-redis][Tinywan/lua-nginx-redis: Redis、Lua、Nginx、OpenResty 笔记和资料]]
 - [[https://www.nginx.com/blog/improving-nginx-performance-with-kernel-tls/][Improving NGINX Performance with Kernel TLS and SSL_sendfile( ) - NGINX]]
 - [[https://github.com/tldr-devops/nginx-common-configuration][tldr-devops/nginx-common-configuration: Nginx common useful configuration]]
+
+** [[https://alex.dzyoba.com/blog/nginx-mirror/][NGINX mirroring tips and tricks]]
+
+**** January 14, 2019
+
+Lately, I’ve been playing with nginx and its relatively new [[http://nginx.org/en/docs/http/ngx_http_mirror_module.html][*mirror*  module]] which appeared in 1.13.4. The mirror module allows you to copy requests to another backend while ignoring answers from it. The example use cases for this are:
+
+- Pre-production testing by observing how your new system handle real production traffic
+- Logging of requests for security analysis. This is [[https://docs.wallarm.com/en/admin-en/mirror-traffic-en.htm][what Wallarm tool do]]
+- Copying requests for data science research
+- etc.
+
+I’ve used it for pre-production testing of the new rewritten system to see how well (if at all ;-) it can handle the production workload. There are some non-obvious problems and tips that I didn’t find when I started this journey and now I wanted to share it.
+
+*** Basic setup
+
+Let’s begin with a simple setup. Say, we have some backend that handles production workload and we put a proxy in front of it:
+
+[[https://alex.dzyoba.com/img/nginx-mirror-basic-setup.png]]
+
+Here is the nginx config:
+
+#+begin_src markdown
+upstream backend {
+    server backend.local:10000;
+}
+
+server {
+    server_name proxy.local;
+    listen 8000;
+
+    location / {
+        proxy_pass http://backend;
+    }
+}
+
+#+end_src
+
+There are 2 parts – backend and proxy. The proxy (nginx) is listening on port 8000 and just passing requests to the backend on port 10000. Nothing fancy, but let’s do a quick load test to see how it performs. I’m using [[https://github.com/rakyll/hey][=hey=  tool]] because it’s simple and allows generating constant load instead of bombarding as hard as possible like many other tools do (wrk, apache benchmark, siege).
+
+#+begin_src markdown
+$ hey -z 10s -q 1000 -n 100000 -c 1 -t 1 http://proxy.local:8000
+
+Summary:
+  Total:	10.0016 secs
+  Slowest:	0.0225 secs
+  Fastest:	0.0003 secs
+  Average:	0.0005 secs
+  Requests/sec:	995.8393
+
+  Total data:	6095520 bytes
+  Size/request:	612 bytes
+
+Response time histogram:
+  0.000 [1]	|
+  0.003 [9954]	|■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+  0.005 [4]	|
+  0.007 [0]	|
+  0.009 [0]	|
+  0.011 [0]	|
+  0.014 [0]	|
+  0.016 [0]	|
+  0.018 [0]	|
+  0.020 [0]	|
+  0.022 [1]	|
+
+
+Latency distribution:
+  10% in 0.0003 secs
+  25% in 0.0004 secs
+  50% in 0.0005 secs
+  75% in 0.0006 secs
+  90% in 0.0007 secs
+  95% in 0.0007 secs
+  99% in 0.0009 secs
+
+Details (average, fastest, slowest):
+  DNS+dialup:	0.0000 secs, 0.0003 secs, 0.0225 secs
+  DNS-lookup:	0.0000 secs, 0.0000 secs, 0.0008 secs
+  req write:	0.0000 secs, 0.0000 secs, 0.0003 secs
+  resp wait:	0.0004 secs, 0.0002 secs, 0.0198 secs
+  resp read:	0.0001 secs, 0.0000 secs, 0.0012 secs
+
+Status code distribution:
+  [200]	9960 responses
+
+#+end_src
+
+Good, most of the requests are handled in less than a millisecond and there are no errors – that’s our baseline.
+
+*** Basic mirroring
+
+Now, let’s put another test backend and mirror traffic to it
+
+[[https://alex.dzyoba.com/img/nginx-mirror-mirror-setup.png]]
+
+The basic mirroring is configured like this:
+
+#+begin_src markdown
+upstream backend {
+    server backend.local:10000;
+}
+
+upstream test_backend {
+    server test.local:20000;
+}
+
+server {
+    server_name proxy.local;
+    listen 8000;
+
+    location / {
+        mirror /mirror;
+        proxy_pass http://backend;
+    }
+
+    location = /mirror {
+        internal;
+        proxy_pass http://test_backend$request_uri;
+    }
+
+}
+
+#+end_src
+
+We add =mirror=  directive to mirror requests to the internal location and define that internal location. In that internal location we can do whatever nginx allows us to do but for now we just simply proxy pass all requests.
+
+Let’s load test it again to check how mirroring affects the performance:
+
+#+begin_src markdown
+$ hey -z 10s -q 1000 -n 100000 -c 1 -t 1 http://proxy.local:8000
+
+Summary:
+  Total:	10.0010 secs
+  Slowest:	0.0042 secs
+  Fastest:	0.0003 secs
+  Average:	0.0005 secs
+  Requests/sec:	997.3967
+
+  Total data:	6104700 bytes
+  Size/request:	612 bytes
+
+Response time histogram:
+  0.000 [1]	|
+  0.001 [9132]	|■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+  0.001 [792]	|■■■
+  0.001 [43]	|
+  0.002 [3]	|
+  0.002 [0]	|
+  0.003 [2]	|
+  0.003 [0]	|
+  0.003 [0]	|
+  0.004 [1]	|
+  0.004 [1]	|
+
+
+Latency distribution:
+  10% in 0.0003 secs
+  25% in 0.0004 secs
+  50% in 0.0005 secs
+  75% in 0.0006 secs
+  90% in 0.0007 secs
+  95% in 0.0008 secs
+  99% in 0.0010 secs
+
+Details (average, fastest, slowest):
+  DNS+dialup:	0.0000 secs, 0.0003 secs, 0.0042 secs
+  DNS-lookup:	0.0000 secs, 0.0000 secs, 0.0009 secs
+  req write:	0.0000 secs, 0.0000 secs, 0.0002 secs
+  resp wait:	0.0004 secs, 0.0002 secs, 0.0041 secs
+  resp read:	0.0001 secs, 0.0000 secs, 0.0021 secs
+
+Status code distribution:
+  [200]	9975 responses
+
+#+end_src
+
+It’s pretty much the same – millisecond latency and no errors. And that’s good because it proves that mirroring itself doesn’t affect original requests.
+
+*** Mirroring to buggy backend
+
+That’s all nice and dandy but what if mirror backend has some bugs and sometimes replies with errors? What would happen to the original requests?
+
+To test this I’ve made a [[https://github.com/dzeban/mirror-backend][trivial Go service]] that can inject errors randomly. Let’s launch it
+
+#+begin_src markdown
+$ mirror-backend -errors
+2019/01/13 14:43:12 Listening on port 20000, delay is 0, error injecting is true
+
+#+end_src
+
+and see what load testing will show:
+
+#+begin_src markdown
+$ hey -z 10s -q 1000 -n 100000 -c 1 -t 1 http://proxy.local:8000
+
+Summary:
+  Total:	10.0008 secs
+  Slowest:	0.0027 secs
+  Fastest:	0.0003 secs
+  Average:	0.0005 secs
+  Requests/sec:	998.7205
+
+  Total data:	6112656 bytes
+  Size/request:	612 bytes
+
+Response time histogram:
+  0.000 [1]	|
+  0.001 [7388]	|■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+  0.001 [2232]	|■■■■■■■■■■■■
+  0.001 [324]	|■■
+  0.001 [27]	|
+  0.002 [6]	|
+  0.002 [2]	|
+  0.002 [3]	|
+  0.002 [2]	|
+  0.002 [0]	|
+  0.003 [3]	|
+
+
+Latency distribution:
+  10% in 0.0003 secs
+  25% in 0.0003 secs
+  50% in 0.0004 secs
+  75% in 0.0006 secs
+  90% in 0.0007 secs
+  95% in 0.0008 secs
+  99% in 0.0009 secs
+
+Details (average, fastest, slowest):
+  DNS+dialup:	0.0000 secs, 0.0003 secs, 0.0027 secs
+  DNS-lookup:	0.0000 secs, 0.0000 secs, 0.0008 secs
+  req write:	0.0000 secs, 0.0000 secs, 0.0001 secs
+  resp wait:	0.0004 secs, 0.0002 secs, 0.0026 secs
+  resp read:	0.0001 secs, 0.0000 secs, 0.0006 secs
+
+Status code distribution:
+  [200]	9988 responses
+
+#+end_src
+
+Nothing changed at all! And that’s great because errors in the mirror backend don’t affect the main backend. nginx mirror module ignores responses to the mirror subrequests so this behavior is nice and intended.
+
+*** Mirroring to a slow backend
+
+But what if our mirror backend is not returning errors but just plain slow? How original requests will work? Let’s find out!
+
+My mirror backend has an option to delay every request by configured amount of seconds. Here I’m launching it with a 1 second delay:
+
+#+begin_src markdown
+$ mirror-backend -delay 1
+2019/01/13 14:50:39 Listening on port 20000, delay is 1, error injecting is false
+
+#+end_src
+
+So let’s see what load test show:
+
+#+begin_src markdown
+$ hey -z 10s -q 1000 -n 100000 -c 1 -t 1 http://proxy.local:8000
+
+Summary:
+  Total:	10.0290 secs
+  Slowest:	0.0023 secs
+  Fastest:	0.0018 secs
+  Average:	0.0021 secs
+  Requests/sec:	1.9942
+
+  Total data:	6120 bytes
+  Size/request:	612 bytes
+
+Response time histogram:
+  0.002 [1]	|■■■■■■■■■■
+  0.002 [0]	|
+  0.002 [1]	|■■■■■■■■■■
+  0.002 [0]	|
+  0.002 [0]	|
+  0.002 [0]	|
+  0.002 [1]	|■■■■■■■■■■
+  0.002 [1]	|■■■■■■■■■■
+  0.002 [0]	|
+  0.002 [4]	|■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+  0.002 [2]	|■■■■■■■■■■■■■■■■■■■■
+
+
+Latency distribution:
+  10% in 0.0018 secs
+  25% in 0.0021 secs
+  50% in 0.0022 secs
+  75% in 0.0023 secs
+  90% in 0.0023 secs
+  0% in 0.0000 secs
+  0% in 0.0000 secs
+
+Details (average, fastest, slowest):
+  DNS+dialup:	0.0007 secs, 0.0018 secs, 0.0023 secs
+  DNS-lookup:	0.0003 secs, 0.0002 secs, 0.0006 secs
+  req write:	0.0001 secs, 0.0001 secs, 0.0002 secs
+  resp wait:	0.0011 secs, 0.0007 secs, 0.0013 secs
+  resp read:	0.0002 secs, 0.0001 secs, 0.0002 secs
+
+Status code distribution:
+  [200]	10 responses
+
+Error distribution:
+  [10]	Get http://proxy.local:8000: net/http: request canceled (Client.Timeout exceeded while awaiting headers)
+
+#+end_src
+
+What? 1.9 rps? Where is my 1000 rps? We’ve got errors? What’s happening?
+
+Let me explain how mirroring in nginx works.
+
+**** How mirroring in nginx works
+
+When the request is coming to nginx and if mirroring is enabled, nginx will create a mirror subrequest and do what mirror location specifies – in our case, it will send it to the mirror backend.
+
+But the thing is that subrequest is linked to the original request, so /as far as I understand/  unless that mirror subrequest is not finished the original requests will throttle.
+
+That’s why we get ~2 rps in the previous test – =hey=  sent 10 requests, got responses, sent next 10 requests but they stalled because previous mirror subrequests were delayed and then timeout kicked in and errored the last 10 requests.
+
+If we increase the timeout in hey to, say, 10 seconds we will receive no errors and 1 rps:
+
+#+begin_src markdown
+$ hey -z 10s -q 1000 -n 100000 -c 1 -t 10 http://proxy.local:8000
+
+Summary:
+  Total:	10.0197 secs
+  Slowest:	1.0018 secs
+  Fastest:	0.0020 secs
+  Average:	0.9105 secs
+  Requests/sec:	1.0978
+
+  Total data:	6732 bytes
+  Size/request:	612 bytes
+
+Response time histogram:
+  0.002 [1]	|■■■■
+  0.102 [0]	|
+  0.202 [0]	|
+  0.302 [0]	|
+  0.402 [0]	|
+  0.502 [0]	|
+  0.602 [0]	|
+  0.702 [0]	|
+  0.802 [0]	|
+  0.902 [0]	|
+  1.002 [10]	|■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+
+
+Latency distribution:
+  10% in 1.0011 secs
+  25% in 1.0012 secs
+  50% in 1.0016 secs
+  75% in 1.0016 secs
+  90% in 1.0018 secs
+  0% in 0.0000 secs
+  0% in 0.0000 secs
+
+Details (average, fastest, slowest):
+  DNS+dialup:	0.0001 secs, 0.0020 secs, 1.0018 secs
+  DNS-lookup:	0.0000 secs, 0.0000 secs, 0.0005 secs
+  req write:	0.0001 secs, 0.0000 secs, 0.0002 secs
+  resp wait:	0.9101 secs, 0.0008 secs, 1.0015 secs
+  resp read:	0.0002 secs, 0.0001 secs, 0.0003 secs
+
+Status code distribution:
+  [200]	11 responses
+
+#+end_src
+
+So the point here is that *if mirrored subrequests are slow then the original requests will be throttled* . I don’t know how to fix this but I know the workaround – mirror only some part of the traffic. Let me show you how.
+
+*** Mirroring part of the traffic
+
+If you’re not sure that mirror backend can handle the original load you can mirror only some part of the traffic – for example, 10%.
+
+=mirror=  directive is not configurable and replicates all requests to the mirror location so it’s not obvious how to do this. The key point in achieving this is the internal mirror location. If you remember I’ve said that you can anything to mirrored requests in its location. So here is how I did this:
+
+#+begin_src markdown
+ 1	upstream backend {
+ 2	    server backend.local:10000;
+ 3	}
+ 4	
+ 5	upstream test_backend {
+ 6	    server test.local:20000;
+ 7	}
+ 8	
+ 9	split_clients $remote_addr $mirror_backend {
+10	    50% test_backend;
+11	    *   "";
+12	}
+13	
+14	server {
+15	    server_name proxy.local;
+16	    listen 8000;
+17	
+18	    access_log /var/log/nginx/proxy.log;
+19	    error_log /var/log/nginx/proxy.error.log info;
+20	
+21	    location / {
+22	        mirror /mirror;
+23	        proxy_pass http://backend;
+24	    }
+25	
+26	    location = /mirror {
+27	        internal;
+28	        if ($mirror_backend = "") {
+29	            return 400;
+30	        }
+31	
+32	        proxy_pass http://$mirror_backend$request_uri;
+33	    }
+34	
+35	}
+36	
+
+#+end_src
+
+First of all, in mirror location we proxy pass to the upstream that is taken from variable =$mirror_backend= (line 32). This variable is set in =split_client= block (lines 9-12) based on client remote address. What =split_client=  does is it sets right variable value based on left variable distribution. In our case, we look at requests remote address ( =$remote_addr= variable) and for 50% of remote addresses we set =$mirror_backend= to the =test_backend=, for other requests it’s set to empty string. Finally, the partial part is performed in mirror location – if =$mirror_backend= variable is empty we reject that mirror subrequest, otherwise we =proxy_pass=  it. Remember that failure in mirror subrequests doesn’t affect original requests so it’s safe to drop request with error status.
+
+The beauty of this solution is that you can split traffic for mirroring based on any variable or combination. If you want to really differentiate your users then remote address may not be the best split key – user may use many IPs or change them. In that case, you’re better off using some user-sticky key like API key. For mirroring 50% of traffic based on =apikey= query parameter we just change key in =split_client= :
+
+#+begin_src markdown
+split_clients $arg_apikey $mirror_backend {
+    50% test_backend;
+    *   "";
+}
+
+#+end_src
+
+When we’ll query apikeys from 1 to 20 only half of it (11) will be mirrored. Here is the curl:
+
+#+begin_src markdown
+$ for i in {1..20};do curl -i "proxy.local:8000/?apikey=${i}" ;done
+
+#+end_src
+
+and here is the log of mirror backend:
+
+#+begin_src markdown
+...
+2019/01/13 22:34:34 addr=127.0.0.1:47224 host=test_backend uri="/?apikey=1"
+2019/01/13 22:34:34 addr=127.0.0.1:47230 host=test_backend uri="/?apikey=2"
+2019/01/13 22:34:34 addr=127.0.0.1:47240 host=test_backend uri="/?apikey=4"
+2019/01/13 22:34:34 addr=127.0.0.1:47246 host=test_backend uri="/?apikey=5"
+2019/01/13 22:34:34 addr=127.0.0.1:47252 host=test_backend uri="/?apikey=6"
+2019/01/13 22:34:34 addr=127.0.0.1:47262 host=test_backend uri="/?apikey=8"
+2019/01/13 22:34:34 addr=127.0.0.1:47272 host=test_backend uri="/?apikey=10"
+2019/01/13 22:34:34 addr=127.0.0.1:47278 host=test_backend uri="/?apikey=11"
+2019/01/13 22:34:34 addr=127.0.0.1:47288 host=test_backend uri="/?apikey=13"
+2019/01/13 22:34:34 addr=127.0.0.1:47298 host=test_backend uri="/?apikey=15"
+2019/01/13 22:34:34 addr=127.0.0.1:47308 host=test_backend uri="/?apikey=17"
+...
+
+#+end_src
+
+And the most awesome thing is that partitioning in =split_client= is consistent – requests with ~apikey=1~  will always be mirrored.
+
+*** Conclusion
+
+So this was my experience with nginx mirror module so far. I’ve shown you how to simply mirror all of the traffic, how to mirror part of the traffic with the help of =split_client=  module. I’ve also covered error handling and non-obvious problem when normal requests are throttled in case of slow mirror backend.
