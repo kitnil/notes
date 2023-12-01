@@ -34,6 +34,9 @@
 - cilium monitor
   : kubectl -n kube-system exec ds/cilium -- cilium monitor
 
+- monitoring Datapath State
+  : kubectl -n kube-system exec ds/cilium -- cilium monitor --type drop
+
 * Learning
 - [[https://nicovibert.com/2022/07/21/bgp-with-cilium/][BGP with Cilium]]
 - [[https://isovalent.com/blog/post/cilium-release-112/#ingress][Cilium 1.12 - Ingress, Multi-Cluster, Service Mesh, External Workloads, ...]]
