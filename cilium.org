@@ -40,6 +40,9 @@
 - show status
   : kubectl -n kube-system exec ds/cilium -- cilium status --verbose
 
+- flows for world identity
+  : kubectl -n kube-system exec ds/cilium -- hubble observe -f --identity 2
+
 * Learning
 - [[https://nicovibert.com/2022/07/21/bgp-with-cilium/][BGP with Cilium]]
 - [[https://isovalent.com/blog/post/cilium-release-112/#ingress][Cilium 1.12 - Ingress, Multi-Cluster, Service Mesh, External Workloads, ...]]
