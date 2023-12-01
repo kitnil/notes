@@ -45,6 +45,9 @@
 - flows for world identity
   : kubectl -n kube-system exec ds/cilium -- hubble observe -f --identity 2
 
+- show version
+  : kubectl -n kube-system exec ds/cilium -- cilium version
+
 ** Hubble
 #+begin_example
   # Flows for world identity
