@@ -882,6 +882,202 @@ Here are some examples of where qperf can be useful:
     How much will adding encryption to a Weave network slow things down?
 
 Interested in the answers to these questions? Let us know in the comments and we’ll try to do a blog post about them in the future.
+** Построить топологию и проверить отказоустойчивость: подборка open source решений для эмуляции сетей
+
+Сетевые эмуляторы и симуляторы предлагают разные возможности. Однако и те и
+другие выступают неплохим инструментом для обучения и практики специалистов в
+области сетевых технологий. В сегодняшней подборке мы решили рассмотреть
+несколько профильных решений, обсудить их возможности и области применения.
+
+[[https://habrastorage.org/r/w1560/getpro/habr/upload_files/b20/5e1/5a8/b205e15a885786051685696bb6431752.jpg]]
+
+Фотография: 2H Media / Unsplash.com
+
+*** Containerlab
+
+Платформу Containerlab разработали инженеры Nokia и распространяют по лицензии
+[[https://github.com/srl-labs/containerlab/blob/main/LICENSE][BSD-3-Clause]]. Она позволяет строить виртуальные сетевые лаборатории на базе
+контейнеров Docker. Управление окружением происходит в специальном CLI.
+
+Решение поддерживает работу со множеством сетевых операционных систем —
+например, Nokia SR-Linux, Arista cEOS, Cisco XRd, Juniper cRPD. В то же время
+утилита умеет объединять контейнеры и виртуальные машины в единую
+топологию. Для этого расширение [[https://github.com/vrnetlab/vrnetlab][vrnetlab]] «заворачивает» обычную ВМ внутрь
+контейнера. Узлы, которым необходимы TLS-сертификаты, получают их
+автоматически при запуске эмуляции.
+
+Разработчики утилиты также предлагают [[https://containerlab.dev/lab-examples/lab-examples/][ряд заготовок]] для быстрой развертки
+полнофункциональных сетевых лабораторий. Среди других преимуществ Containerlab
+— простая настройка контейнеров и широкие возможности автоматизации. Один из
+пользователей [[https://juliopdx.com/2021/12/10/my-journey-and-experience-with-containerlab/][отметил]] быстрое создание файла [[https://docs.ansible.com/ansible/latest/getting_started/get_started_inventory.html][инвентаризации]] Ansible и
+поддержку фреймворка [[https://pynet.twb-tech.com/blog/nornir-an-introduction.html][Nornir]], упрощающего управление сетевыми
+устройствами. Так, с помощью Containerlab он воссоздал топологию с четырьмя
+маршрутизаторами на базе протоколов [[https://ru.wikipedia.org/wiki/OSPF][OSPF]] (Open Shortest Path First) и [[https://ru.wikipedia.org/wiki/Border_Gateway_Protocol][BGP]]
+(Border Gateway Protocol).
+
+*** Mininet
+
+Позволяет строить простые сети для интерактивной разработки и тестирования
+сетевого окружения на OpenFlow и SDN. Что интересно, настройки контроллеров на
+базе [[https://ru.wikipedia.org/wiki/OpenFlow][OpenFlow]] можно мигрировать на физическое оборудование с минимальными
+модификациями.
+
+Узлы сети в Mininet [[https://github.com/mininet/mininet][представляют]] собой bash-процессы, запущенные в сетевом
+пространстве имён. Такой подход позволяет изолировать хосты на одной машине
+друг от друга, но при этом каждый из них имеет собственный интерфейс. Еще одна
+фишка утилиты — многопользовательский [[https://opennetworking.org/mininet/][режим]]. Так, сразу несколько специалистов
+могут редактировать одну топологию. В то же время решение [[https://webcms3.cse.unsw.edu.au/static/uploads/course/COMP3331/16s1/894894253a9d7bb9b3575af5092c2d80c9382bbbf860e4a9364cfae2bcf04cd6/Lab3a.pdf][поддерживает Python
+API]] и позволяет строить кастомизированные модели.
+
+Инструмент [[https://www.brianlinkletter.com/2013/11/mininet-test-drive/][представили]] исследователи из Стэнфордского университета. Изначально
+его применяли для обучения студентов, но со временем проект вышел за пределы
+вуза, и теперь его используют крупные организации — например, IBM. В прошлом
+году на его основе [[https://github.com/IBM/k8s-netsim][вышла]] утилита для симуляции сетей Kubernetes. В ней рабочие
+узлы представляют собой хосты Mininet, а поды и контейнеры — сетевые
+пространства имен.
+
+Mininet опубликован под лицензией [[https://github.com/mininet/mininet/blob/master/LICENSE][BSD-3-Clause]].
+
+*** Kathará
+
+Инструмент продолжает идеи сетевого эмулятора [[https://www.netkit.org/][Netkit]]. Его разработала [[https://compunet.ing.uniroma3.it/#!/group/compunet][группа]]
+инженеров из Третьего римского университета (Roma Tre), занимающихся изучением
+сетей и аспектов информационной безопасности. Kathará [[https://github.com/KatharaFramework/Kathara/blob/main/LICENSE][распространяют]] по
+лицензии GPL-3.0, и решение получает обновления в среднем раз в несколько
+месяцев.
+
+Kathará позволяет [[https://www.brianlinkletter.com/2023/02/network-emulators-and-network-simulators-2023/][моделировать]] виртуальные сети на базе контейнеров Docker или
+кластеров Kubernetes. Поддерживает платформы Windows, MacOS, Linux, технологии
+SDN, [[https://en.wikipedia.org/wiki/Network_function_virtualization][NFV]] (Network function virtualization), а также BGP и OSPF. Репозиторий
+содержит готовые Docker-образы на Debian 11 и для архитектур AMD64 и
+ARM64. Они содержат пакеты ПО для маршрутизации — например, [[https://ru.wikipedia.org/wiki/Quagga][Quagga]], [[https://en.wikipedia.org/wiki/FRRouting][FRRouting]],
+[[https://p4.org/][P4]] и [[https://en.wikipedia.org/wiki/Open_vSwitch][OpenVSwitch]].
+
+В целом Kathará упрощает моделирование топологий благодаря сетевым
+сценариям. Они [[https://ripe85.ripe.net/presentations/32-Kathara_RIPE85_FINAL.pdf][представляют]] собой директории с файлом топологии (lab.conf) и
+файлами конфигураций для каждого сетевого устройства. Для написания
+собственных сценариев можно [[https://www.brianlinkletter.com/2023/02/network-emulators-and-network-simulators-2023/][использовать]] Python API. Работать с инструментом
+можно в командной строке. Но есть и графический интерфейс в виде
+дополнительного клиента [[https://github.com/KatharaFramework/Netkit-Lab-Generator][Netkit-Lab-Generator]].
+
+*** IMUNES
+
+С помощью этого [[https://github.com/imunes/imunes][решения]] можно развернуть сотни виртуальных узлов на одной
+физической машине. Все благодаря делению ядра Linux или FreeBSD на легковесные
+виртуальные ноды. В то же время IMUNES позволяет запустить на виртуальной
+машине полноценные UNIX-приложения — например, генераторы трафика и серверы
+приложений.
+
+Проект выпустили под лицензией [[https://github.com/imunes/imunes.github.io/blob/master/LICENSE][CC BY 4.0]] при поддержке специалистов из
+[[https://en.wikipedia.org/wiki/Ericsson_Nikola_Tesla][хорватской телеком-компании]], Калифорнийского университета в Беркли,
+подразделения Boeing, организации FreeBSD Foundation, а также Министерства
+науки, образования и спорта Хорватии. Как отмечают разработчики, сейчас IMUNES
+применяют для тестирования продуктов в Ericsson Nikola Tesla, а также в
+лабораториях Загребского университета.
+
+[[https://habrastorage.org/r/w1560/getpro/habr/upload_files/543/f15/ce7/543f15ce7103ac6e647a1639551206af.jpeg]]
+
+Фотография: Giorgio Grani / [[http://Unsplash.com][Unsplash.com]]
+
+В целом инструмент достаточно старый, его обновления выходят раз в несколько
+лет. Так, разработчики долгое время планировали добавить поддержку сразу
+нескольких интернет-протоколов на одном узле, чтобы виртуальный сервер мог
+одновременно работать с IPv4 и IPv6. Такая схема актуальна в условиях дефицита
+IPv4-адресов и продолжающегося перехода на новый стандарт, о чём мы уже [[https://habr.com/ru/companies/vasexperts/articles/759908/][писали
+на хабре]].
+
+*** CORE
+
+[[https://www.brianlinkletter.com/open-source-network-simulators/][Представляет]] собой форк симулятора IMUNES от инженеров из Boeing. Он позволяет
+[[https://github.com/coreemu/core][разворачивать]] сетевые лаборатории на основе контейнеров, а также подключать
+моделируемую топологию к физической сети. CORE работает на Linux и FreeBSD, а
+для конфигурирования виртуальной сети предусмотрены [[https://ru.wikipedia.org/wiki/XML][XML]]\-файлы и скрипты на
+Python.
+
+Сами разработчики позиционируют свое решение как инструмент для исследования
+сетей и протоколов, разработки демонстрационных стендов, тестирования
+приложений и платформ. В 2018 году команда Boeing [[https://github.com/coreemu/core/blob/master/LICENSE][открыла]] исходный код по
+лицензии BSD-2-Clause. Сейчас эмулятор используют в различных исследованиях,
+связанных с IoT-сетями.
+
+Пользователи инструмента [[https://finmars.co.uk/blog/6-common-open-research-emulator-core][отмечают]] удобный графический интерфейс и простую
+настройку эмуляции. Утилита также умеет [[https://news.ycombinator.com/item?id=37843837][моделировать]] работу сетей, состоящих
+из мобильных и IoT-устройств, а также подключенных автомобилей. Но некоторые
+[[https://github.com/coreemu/core/discussions/536][сталкиваются]] с трудностями, например, в работе пакетов [[https://en.wikipedia.org/wiki/FRRouting][FRR]] (Free Range
+Routing).
+
+*** Toxiproxy
+
+Решение позволяет изучить отказоустойчивость решений в сетевой среде —
+[[https://github.com/Shopify/toxiproxy][имитирует]] аномалии и сбои: создает задержку при получении ответа от сервера,
+изменяет пропускную способность и прочее. Инструмент состоит из двух
+элементов: TCP-прокси и клиента, взаимодействующего с ним по HTTP. Писать
+скрипты проверок разработчики [[https://github.com/Shopify/toxiproxy-ruby][предлагают]] с помощью Ruby API. Клиент
+подключается к демону Toxiproxy по HTTP API.
+
+Среди преимуществ — возможность интеграции с CI-платформами, средами
+тестирования и разработки. Из недостатков симулятора отмечают отсутствие
+[[https://news.ycombinator.com/item?id=32116969][поддержки]] конфигурационных файлов в формате JSON и [[https://news.ycombinator.com/item?id=37850512][веб-интерфейса]] для
+удалённого доступа.
+
+Инструмент разработала компания Shopify, которая развивает крупную e-commerce
+платформу. Его распространяют по лицензии MIT, а апдейты выходят несколько раз
+в год.
+
+*** Cloonix
+
+Инструмент позволяет [[https://github.com/clownix/cloonix][моделировать]] сети на базе виртуальных машин и
+контейнеров: первые можно развернуть с помощью модуля [[https://en.wikipedia.org/wiki/Kernel-based_Virtual_Machine][KVM]], вторые — с помощью
+[[https://www.redhat.com/en/topics/containers/what-is-podman][Podman]] и [[https://www.redhat.com/sysadmin/introduction-crun][crun]]. Cloonix поддерживает только Linux-системы. Согласно
+документации, утилита [[https://clownix.net/doc_stored/build-33-00/html/index.html][заточена]] под развертку демо-сетей, проведение
+антирегрессионного тестирования сетевого ПО и экспериментов с ним. Линки между
+узлами основаны на [[https://xakep.ru/2017/09/04/open-vswitch/][Open vSwitch]] — программном многоуровневом коммутаторе для
+работы с гипервизорами. Его инстанс запущен внутри отдельного пространства
+имен, поэтому для соединения узлов не нужны [[https://vasexperts.ru/resources/glossary/setevoj-most/][сетевые мосты]].
+
+Из преимуществ симулятора [[https://blog.51cto.com/u_847102/5273171][выделяют]] наглядный интерфейс, а также механику
+drag-and-drop, которая помогает быстро построить топологию сети. Первые
+упоминания проекта [[https://www.opennet.ru/opennews/art.shtml?num=34617][относятся]] ещё к 2012 году, но утилиту продолжают
+развивать — обновления выходят примерно каждые два-три месяца. Ее можно
+использовать по лицензии [[https://github.com/clownix/cloonix#readme][AGPLv3]].
+
+-----
+
+Что еще почитать в нашем блоге на Хабре:
+
+- [[https://habr.com/ru/companies/vasexperts/articles/768990/][FCC, общественный интернет и 5G: что с сетевым нейтралитетом]] — разбираем
+  ситуацию в США, начиная с действий федеральных органов и до связи развития
+  5G и общественного интернета с ходом обсуждения актуальных проблем net
+  neutrality.
+  
+- [[https://habr.com/ru/companies/vasexperts/articles/766782/][Как применяется
+  и для чего нужен local first подход]] — рассматриваем релевантные примеры
+  решений и протоколов, их особенности и общие принципы подхода.
+  
+- [[https://habr.com/ru/companies/vasexperts/articles/745106/][Угроза DoS и
+  уязвимости протокола ICMP]] — обсуждаем свежие ИБ-находки, особенности
+  механизма маршрутизации, вариант атаки и возможности для защиты.
+  
+- [[https://habr.com/ru/companies/vasexperts/articles/764000/][Как меняются
+  ботнеты и методы борьбы с ними]] — компактный обзор актуальных методов
+  формирования ботнетов, также приводим кейсы с ликвидацией таких сетей. В
+  качестве дополнительного чтения по теме — собрали небольшой
+  [[https://habr.com/ru/companies/vasexperts/articles/742238/][дайджест]].
+  
+- [[https://habr.com/ru/companies/vasexperts/articles/750270/][Корпоративные
+  децентрализованные соц. сети]] — рассказываем, почему крупные структуры
+  интересуются такими технологиями и
+  [[https://habr.com/ru/companies/vasexperts/articles/752678/][какой вносят
+  вклад]] в эту сферу.
+  
+- [[https://habr.com/ru/companies/vasexperts/articles/771790/][Тренд на
+  общественный широкополосный интернет]] — говорим о спросе на муниципальные
+  сети, практике работы с инвесторами в такие проекты, первых результатах в
+  различных городах США и планах по совершенствованию подобной
+  инфраструктуры. Также
+  [[https://habr.com/ru/companies/vasexperts/articles/764630/][в отдельном
+  материале на хабре]] мы рассказали о влиянии телеком-монополистов на
+  развитие и массовое внедрение подобных сетей в США.
 ** WEB interface
 - [[https://github.com/phpipam/phpipam][phpipam/phpipam: phpipam development repository]]
 
