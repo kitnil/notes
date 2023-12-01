@@ -31,6 +31,9 @@
 - dump all bpf network device programs that are attached
   : bpftool net
 
+- cilium monitor
+  : kubectl -n kube-system exec ds/cilium -- cilium monitor
+
 * Learning
 - [[https://nicovibert.com/2022/07/21/bgp-with-cilium/][BGP with Cilium]]
 - [[https://isovalent.com/blog/post/cilium-release-112/#ingress][Cilium 1.12 - Ingress, Multi-Cluster, Service Mesh, External Workloads, ...]]
