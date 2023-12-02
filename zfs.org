@@ -43,6 +43,7 @@ zfs-auto-snap_hourly-2020-04-29-13h00  zfs-auto-snap_hourly-2020-04-29-19h00  zf
 - [[https://github.com/kimono-koans/httm][kimono-koans/httm: Interactive, file-level ZFS Time Machine-like tool]]
 - [[https://github.com/markusressel/zfs-file-history][markusressel/zfs-file-history: Terminal UI for inspecting and restoring file history on ZFS snapshots.]]
 - [[https://github.com/oetiker/znapzend][oetiker/znapzend: zfs backup with remote capabilities and mbuffer integration.]]
+- [[https://github.com/pdf/zfs_exporter][pdf/zfs_exporter: Prometheus ZFS exporter]]
 - [[https://github.com/timotheosh/zfs-snapshot][timotheosh/zfs-snapshot: A simple program for managing snapshots using the zfs commandline tools and Common Lisp]]
 - [[https://github.com/zbm-dev/zfsbootmenu][zbm-dev/zfsbootmenu: ZFS Bootloader for root-on-ZFS systems with support for snapshots and native full disk encryption]]
 - [[https://github.com/zrepl/zrepl][zrepl/zrepl: One-stop ZFS backup & replication solution]]
