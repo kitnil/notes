@@ -23,3 +23,21 @@
 - [[https://github.com/ThrillQuks/Pitraix][ThrillQuks/Pitraix: Modern Self-Modifying Cross-Platform Peer-to-Peer Botnet over TOR]]
 - [[https://torscan-ru.ntc.party/][Tor Relay List]]
 - [[https://github.com/ValdikSS/tor-relay-scanner][ValdikSS/tor-relay-scanner: Tor Relay availability checker, for using it as a bridge in countries with censorship]]
+
+* Bridges
+*** [[Https://tb-manual.torproject.org/bridges/][Getting bridge addresses]]
+Because bridge addresses are not public, you will need to request them
+yourself. You have a few options:
+
+- Visit [[https://bridges.torproject.org][https://bridges.torproject.org/]] and follow the instructions, or
+- Email [[mailto:bridges@torproject.org][bridges@torproject.org]] from a Gmail, or Riseup email address
+- Use Moat to fetch bridges from within Tor Browser.
+- Send a message to [[https://t.me/GetBridgesBot][@GetBridgesBot]] on Telegram. Tap on 'Start' or write
+  =/start= or =/bridges= in the chat. Copy the bridge address and on:
+  - Tor Browser Desktop: Click on "Settings" in the hamburger menu (≡) and
+    then on "Connection" in the sidebar. In the "Bridges" section, from the
+    option "Enter a bridge address you already know" click on "Add a Bridge
+    Manually" and enter each bridge address on a separate line.
+  - Tor Browser Android: Tap on 'Settings' (⚙️) and then on 'Config
+    Bridge'. Toggle on 'Use a Bridge' and select 'Provide a Bridge I
+    know'. Enter the bridge address.
