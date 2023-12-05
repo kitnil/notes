@@ -215,6 +215,9 @@ lightest of data storage needs.
 - list pods by creation time
   : kubectl get pods -A -o custom-columns=NAMESPACE:.metadata.namespace,NAME:.metadata.name,NODE:.spec.nodeName,HOSTIP:.status.hostIP,PHASE:.status.phase,START_TIME:.metadata.creationTimestamp --sort-by=.metadata.creationTimestamp
 
+- list images
+  : kubectl get pod -o json -A | jq --raw-output '.items[].spec.containers[].image'
+
 - run pod with networking utilities for debuging
   : kubectl run --rm -it netshoot --image=nicolaka/netshoot /bin/bash
 
