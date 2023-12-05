@@ -300,6 +300,8 @@ Review recommendations for Reserved Instances
 Consider purchasing Reserved Instances (RIs) after you have a good baseline on your performance and compute consumption. Discounts start at around 30% for no-upfront, 1-year reservations and can increase up to 50% for all-upfront, 3-year commitments.
 
 After you observe stable operation for at least 14 days, review Reserved Instance recommendations in Cost Explorer. The Amazon OpenSearch Service heading displays specific RI purchase recommendations and projected savings.
+* Learning
+- [[https://habr.com/ru/companies/magnit/articles/777862/][Настройка алертингов из Opensearch в Telegram / Хабр]]
 * Tools
 - [[https://github.com/Aiven-Open/prometheus-exporter-plugin-for-opensearch][Aiven-Open/prometheus-exporter-plugin-for-opensearch: Prometheus exporter plugin for OpenSearch & OpenSearch Mixin]]
 * Alternatives
