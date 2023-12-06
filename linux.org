@@ -839,6 +839,9 @@ degradation:
   for pid in $(pidof rsync); do ionice -c 3 -p $pid; done
 #+END_SRC
 
+- make sure process does not create load on host
+  : ionice -c 3 nice -n 19
+
 * Performance
 - [[https://github.com/igo95862/cfs-zen-tweaks][igo95862/cfs-zen-tweaks: Tweak Linux CPU scheduler for desktop responsiveness]]
 
