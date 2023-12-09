@@ -3555,6 +3555,7 @@ then redeploy with:
 - [[https://github.com/kubernetes-sigs/nfs-subdir-external-provisioner][kubernetes-sigs/nfs-subdir-external-provisioner: Dynamic sub-dir volume provisioner on a remote NFS server.]]
 - [[https://github.com/kubernetes-sigs/node-feature-discovery][kubernetes-sigs/node-feature-discovery: Node feature discovery for Kubernetes]]
 - [[https://github.com/kubernetes-sigs/prometheus-adapter][kubernetes-sigs/prometheus-adapter: An implementation of the custom.metrics.k8s.io API using Prometheus]]
+- [[https://github.com/kubernetes-sigs/secrets-store-csi-driver][kubernetes-sigs/secrets-store-csi-driver: Secrets Store CSI driver for Kubernetes secrets - Integrates secrets stores with Kubernetes via a CSI volume.]]
 - [[https://github.com/kubeshop/testkube][kubeshop/testkube: ☸️ Kubernetes-native testing framework for test execution and orchestration]]
 - [[https://github.com/kubesphere/kube-events][kubesphere/kube-events: K8s Event Exporting, Filtering and Alerting in Multi-Tenant Environment]]
 - [[https://github.com/kubevious/kubevious][kubevious/kubevious: Kubevious - application centric Kubernetes UI and continuous assurance provider]]
