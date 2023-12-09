@@ -3229,6 +3229,7 @@ NeuVector (free to use unsupported, no limits, no paywall, no ads) can create en
 
 * Operators
 - [[https://github.com/flant/shell-operator][flant/shell-operator: Shell-operator is a tool for running event-driven scripts in a Kubernetes cluster]]
+- [[https://github.com/nolar/kopf][nolar/kopf: A Python framework to write Kubernetes operators in just a few lines of code]]
 - [[https://operatorhub.io/][OperatorHub.io | The registry for Kubernetes Operators]]
 - [[https://github.com/strimzi/strimzi-kafka-operator][strimzi/strimzi-kafka-operator: Apache Kafka® running on Kubernetes]]
 - [[https://habr.com/ru/company/southbridge/blog/556860/][Пишем оператор Kubernetes с нуля / Хабр]]
