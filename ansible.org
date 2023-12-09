@@ -148,6 +148,9 @@
 
   ansible localhost -m user -a 'password="!" name=root' -bK
 
+* Tools
+- [[https://github.com/ansible/awx-operator][ansible/awx-operator: An Ansible AWX operator for Kubernetes built with Operator SDK and Ansible. 🤖]]
+
 * Misc
 
 #+begin_example
