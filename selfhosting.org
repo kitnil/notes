@@ -73,8 +73,8 @@
 - "title": "booksonic", "description": "Booksonic is a server and an app for streaming your audiobooks to any pc or android phone. Most of the functionality is also availiable on other platforms that have apps for subsonic"
 - "title": "calibre-web", "description": "Calibre Web is a web app providing a clean interface for browsing, reading and downloading eBooks using an existing Calibre database.\n\n  [br][br]\n  [b][u][span style='color: #E80000;']Configuration[/span][/u][/b][br]\n  [b]/config[/b] Where Calibre-web should store it's database[br]\n  [b]/books[/b] Path to your calibre library metadata.db file[br]"
 - "title": "Chevereto", "description": "Chevereto is a powerful and fast image hosting script that allows you to create your very own full featured image hosting website in just minutes. Please note that this offers only the free Chevereto version.."
-
 - "title": "codiad", "description": "Codiad is a web-based IDE framework with a small footprint and minimal requirements.\n  "
+
 - "title": "cops", "description": "COPS links to your Calibre library database and allows downloading and emailing of books directly from a web browser and provides a OPDS feed to connect to your devices."
 - "title": "couchpotato", "description": "CouchPotato (CP) is an automatic NZB and torrent downloader. You can keep a \"movies I want\"-list and it will search for NZBs/torrents of these movies every X hours. Once a movie is found, it will send it to SABnzbd or download the torrent to a specified directory."
 - "title": "daapd", "description": "DAAP (iTunes) media server with support for AirPlay devices, Apple Remote (and compatibles), MPD and internet radio."
@@ -137,6 +137,7 @@
 - [[https://github.com/Volmarg/personal-management-system][Volmarg/personal-management-system: Your web application for managing personal data. <personal.management.system.pms@gmail.com>]]
 - [[https://github.com/WardPearce/paaster][WardPearce/paaster: Paaster is a secure by default end-to-end encrypted pastebin built with the objective of simplicity.]] 
 - [[https://github.com/wirow-io/wirow-server][wirow-io/wirow-server: A full featured self-hosted video web-conferencing platform.]]
+- [[https://github.com/yourselfhosted/slash][yourselfhosted/slash: An open source, self-hosted bookmarks and link sharing platform. Save and share your links very easily]]
 - [[https://github.com/zulip/zulip][zulip/zulip: Zulip server and web app—powerful open source team chat]]
 - [[https://serveradmin.ru/ustanovka-i-nastroyka-zulip/][Установка и настройка мессенджера Zulip — Server Admin]]
 
