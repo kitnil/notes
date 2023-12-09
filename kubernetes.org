@@ -3415,6 +3415,7 @@ then redeploy with:
 - [[https://github.com/darkbitio/k8s-mirror][darkbitio/k8s-mirror: Creates a local mirror of a Kubernetes cluster in a docker container to support offline reviewing]]
 - [[https://github.com/databricks/click][databricks/click: The "Command Line Interactive Controller for Kubernetes"]]
 - [[https://github.com/datreeio/datree][datreeio/datree: Prevent Kubernetes misconfigurations from reaching production (again 😤 )! The CLI integration provides a policy enforcement solution to run automatic checks for rule violations. See our docs: https://hub.datree.io]]
+- [[https://github.com/deepflowio/deepflow][deepflowio/deepflow: Application Observability using eBPF]]
 - [[https://github.com/deislabs/krustlet][deislabs/krustlet: Kubernetes Rust Kubelet]]
 - [[https://github.com/derailed/k9s][derailed/k9s: 🐶 Kubernetes CLI To Manage Your Clusters In Style!]]
 - [[https://github.com/derailed/popeye][derailed/popeye: 👀 A Kubernetes cluster resource sanitizer]]
