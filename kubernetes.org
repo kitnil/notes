@@ -3427,6 +3427,7 @@ then redeploy with:
 - [[https://www.devspace.sh/][DevSpace is an open-source developer tool for Kubernetes that lets you develop and deploy cloud-native software faster.]]
 - [[https://github.com/digitalis-io/vals-operator][digitalis-io/vals-operator: Kubernetes Operator to sync secrets between different secret backends and Kubernetes]]
 - [[https://github.com/DocPlanner/rabbit-stalker][DocPlanner/rabbit-stalker: Kubernetes operator to restart workloads under some conditions coming from RabbitMQ]]
+- [[https://github.com/doitintl/kube-no-trouble][doitintl/kube-no-trouble: Easily check your clusters for use of deprecated APIs]]
 - [[https://www.downloadkubernetes.com/][Download Kubernetes]]
 - [[https://github.com/dty1er/kubecolor][dty1er/kubecolor: colorizes kubectl output]]
 - [[https://github.com/eigengrau/krew2nix][eigengrau/krew2nix: Makes kubectl plug-ins from the Krew repository accessible to Nix]]
