@@ -3438,6 +3438,7 @@ then redeploy with:
 - [[https://github.com/f0xtek/k8sresourceless][f0xtek/k8sresourceless: A utility to find all Kubernetes Pods that have no CPU or memory resource requests defined for their containers.]]
 - [[https://github.com/fabric8io/kubernetes-client][fabric8io/kubernetes-client: Java client for Kubernetes & OpenShift]]
 - [[https://github.com/FairwindsOps/goldilocks][FairwindsOps/goldilocks: Get your resource requests "Just Right"]]
+- [[https://github.com/FairwindsOps/pluto][FairwindsOps/pluto: A cli tool to help discover deprecated apiVersions in Kubernetes]]
 - [[https://github.com/FairwindsOps/polaris][FairwindsOps/polaris: Validation of best practices in your Kubernetes clusters]]
 - [[https://github.com/falcosecurity/falco][falcosecurity/falco: Cloud Native Runtime Security]]
 - [[https://github.com/flomesh-io/pipy][flomesh-io/pipy: Pipy is a programmable proxy for the cloud, edge and IoT.]]
