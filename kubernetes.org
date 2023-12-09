@@ -3407,6 +3407,7 @@ then redeploy with:
 - [[https://landscape.cncf.io/][Cloud Native Landscape]]
 - [[https://github.com/cloud-native-skunkworks/ubuntu-operator][cloud-native-skunkworks/ubuntu-operator: Control Ubuntu from Kubernetes.]]
 - [[https://github.com/cloudtty/cloudtty][cloudtty/cloudtty: A Friendly Kubernetes CloudShell (Web Terminal) !]]
+- [[https://github.com/cloudworkz/kube-eagle][cloudworkz/kube-eagle: A prometheus exporter created to provide a better overview of your resource allocation and utilization in a Kubernetes cluster.]]
 - [[https://github.com/clusternet/clusternet][clusternet/clusternet: Managing your Kubernetes clusters (including public, private, edge, etc) as easily as visiting the Internet ⎈]]
 - [[https://github.com/cnwizards/node-wizard][cnwizards/node-wizard: Node Wizard is a controller that monitors node readiness. It cordons and drains nodes that are not ready, and uncordons them when they become ready again.]]
 - [[https://github.com/containerd/stargz-snapshotter][containerd/stargz-snapshotter: Fast container image distribution plugin with lazy pulling]]
