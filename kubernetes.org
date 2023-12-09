@@ -3363,6 +3363,7 @@ then redeploy with:
 - [[https://github.com/armosec/kubescape][armosec/kubescape: kubescape is the first tool for testing if Kubernetes is deployed securely as defined in Kubernetes Hardening Guidance by to NSA and CISA (https://www.nsa.gov/News-Features/Feature-Stories/Article-View/Article/2716980/nsa-cisa-release-kubernetes-hardening-guidance/)]]
 - [[https://github.com/arnehilmann/k8s-auto-updater][arnehilmann/k8s-auto-updater: auto-update your cluster: sync your docker images and restart pods running on outdated images]]
 - [[https://github.com/arttor/helmify][arttor/helmify: Creates Helm chart from Kubernetes yaml]]
+- [[https://github.com/asobti/kube-monkey][asobti/kube-monkey: An implementation of Netflix's Chaos Monkey for Kubernetes clusters]]
 - [[https://github.com/aws/karpenter][aws/karpenter: Kubernetes Node Autoscaling: built for flexibility, performance, and simplicity.]]
 - [[https://github.com/backube/snapscheduler][backube/snapscheduler: Scheduled snapshots for Kubernetes persistent volumes]]
 - [[https://github.com/backube/volsync][backube/volsync: Asynchronous data replication for Kubernetes volumes]]
