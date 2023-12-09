@@ -1117,6 +1117,7 @@ curl host01
 - [[https://github.com/Trendyol/docker-shell][Trendyol/docker-shell: A simple interactive prompt for docker]]
 - [[https://github.com/uber/kraken][uber/kraken: P2P Docker registry capable of distributing TBs of data in seconds]]
 - [[https://github.com/uber/makisu][uber/makisu: Fast and flexible Docker image building tool, works in unprivileged containerized environments like Mesos and Kubernetes.]]
+- [[https://github.com/ufoscout/docker-compose-wait][ufoscout/docker-compose-wait: A simple script to wait for other docker images to be started while using docker-compose (or Kubernetes or docker stack or whatever)]]
 - [[https://github.com/Yash-Handa/logo-ls][Yash-Handa/logo-ls: Modern ls command with vscode like File Icon and Git Integrations. Written in Golang]]
 
 * Registry
