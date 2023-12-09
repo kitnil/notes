@@ -3639,6 +3639,7 @@ then redeploy with:
 - [[https://github.com/piraeusdatastore/linstor-csi][piraeusdatastore/linstor-csi: CSI plugin for LINSTOR]]
 - [[https://github.com/pixel-point/kube-forwarder][pixel-point/kube-forwarder: Easy to use Kubernetes port forwarding manager]]
 - [[https://github.com/pixie-io/pixie][pixie-io/pixie: Instant Kubernetes-Native Application Observability]]
+- [[https://github.com/planetlabs/draino][planetlabs/draino: Automatically cordon and drain Kubernetes nodes based on node conditions]]
 - [[https://github.com/porter-dev/porter][porter-dev/porter: Kubernetes powered PaaS that runs in your own cloud.]]
 - [[https://github.com/portworx/torpedo][portworx/torpedo: A test suite to qualify storage providers for stateful containers running in a cluster.]]
 - [[https://cncf.pravega.io/][Pravega – A Reliable Stream Storage System]]
