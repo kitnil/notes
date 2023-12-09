@@ -3352,6 +3352,7 @@ then redeploy with:
 - [[https://blog.flant.com/announcing-shell-operator-to-simplify-creating-of-kubernetes-operators/][Announcing shell-operator to simplify creating of Kubernetes operators – Flant blog]]
   - [[https://github.com/flant/shell-operator][flant/shell-operator: Shell-operator is a tool for running event-driven scripts in a Kubernetes cluster]]
 - [[https://github.com/apecloud/kubeblocks][apecloud/kubeblocks: KubeBlocks helps developers and platform engineers manage database workloads (MySQL, PostgresSQL, Redis, MongoDB, Kafka and vector databases) on K8s inside your own cloud account. It supports multiple clouds, including AWS, Azure, GCP, and Alibaba Cloud.]]
+- [[https://github.com/apecloud/kubeblocks][apecloud/kubeblocks: KubeBlocks is an open-source control plane that runs and manages databases, message queues and other data infrastructure on K8s.]]
 - [[https://www.apiclarity.io/][APIClarity | API traffic visibility in K8s clusters]]
 - [[https://microcks.io/][API Mocking and Testing | Microcks.io]]
 - [[https://github.com/appvia/krane][appvia/krane: Kubernetes RBAC static analysis & visualisation tool]]
