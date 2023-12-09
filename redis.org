@@ -18,6 +18,7 @@
 - [[https://github.com/laixintao/iredis][laixintao/iredis: Interactive Redis: A Terminal Client for Redis with AutoCompletion and Syntax Highlighting.]]
 - [[https://github.com/oliver006/redis_exporter][oliver006/redis_exporter: Prometheus Exporter for Redis Metrics. Supports Redis 2.x, 3.x, 4.x, 5.x, 6.x, and 7.x]]
 - [[https://github.com/RedisInsight/RedisDesktopManager][RedisInsight/RedisDesktopManager]]
+- [[https://github.com/yannh/redis-dump-go][yannh/redis-dump-go: Backup & Restore your Redis server - FAST]]
 
 : redis-cli -h redis.intr hgetall "mailboxes:test@test.wugi.info"
 
