@@ -3445,6 +3445,7 @@ then redeploy with:
 - [[https://github.com/eigengrau/krew2nix][eigengrau/krew2nix: Makes kubectl plug-ins from the Krew repository accessible to Nix]]
 - [[https://github.com/eko/monday][eko/monday: ⚡️ A dev tool for microservice developers to run local applications and/or forward others from/to Kubernetes SSH or TCP]]
 - [[https://github.com/eldadru/ksniff][eldadru/ksniff: Kubectl plugin to ease sniffing on kubernetes pods using tcpdump and wireshark]]
+- [[https://github.com/EmilyShepherd/kiOS][EmilyShepherd/kiOS: Slim Operating System for running Kubernetes with minimal overhead]]
 - [[https://github.com/emissary-ingress/emissary][emissary-ingress/emissary: open source Kubernetes-native API gateway for microservices built on the Envoy Proxy]]
 - [[https://github.com/eraser-dev/eraser][eraser-dev/eraser: 🧹 Cleaning up images from Kubernetes nodes]]
 - [[https://github.com/external-secrets/external-secrets][external-secrets/external-secrets: External Secrets Operator reads information from a third-party service like AWS Secrets Manager and automatically injects the values as Kubernetes Secrets.]]
