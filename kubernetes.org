@@ -3643,6 +3643,7 @@ then redeploy with:
 - [[https://github.com/planetlabs/draino][planetlabs/draino: Automatically cordon and drain Kubernetes nodes based on node conditions]]
 - [[https://github.com/porter-dev/porter][porter-dev/porter: Kubernetes powered PaaS that runs in your own cloud.]]
 - [[https://github.com/portworx/torpedo][portworx/torpedo: A test suite to qualify storage providers for stateful containers running in a cluster.]]
+- [[https://github.com/poseidon/scuttle][poseidon/scuttle: Kubelet graceful node drain/delete and spot termination watcher]]
 - [[https://cncf.pravega.io/][Pravega – A Reliable Stream Storage System]]
 - [[https://habr.com/ru/company/nixys/blog/682612/][Pre-Commit хуки, о которых DevOps-инженер должен знать, чтобы управлять Kubernetes / Хабр]]
 - [[https://github.com/projectcalico/calico][projectcalico/calico: Cloud native networking and network security]]
