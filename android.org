@@ -68,6 +68,7 @@
 - [[http://gist.tolpp.com/2018/09/how-to-send-android-push-notification.html][gist.tolpp: How to send Android push notification locally using ADB without need network connection]]
   - [[https://kazucocoa.wordpress.com/2019/06/03/android-a-tip-to-automate-push-notification-on-android-via-adb/][[Android] A tip to automate push notification on Android via adb – ~ my tech diary ~]]
     - $ adb shell am broadcast -a com.your.app.intent.YOUR_ACTION --es json_example '{"example": "hello world"}'
+- [[https://github.com/gokadzev/Musify][gokadzev/Musify: Unlock the full potential of music: Stream effortlessly with one app!]]
 - [[https://github.com/google/bundletool][google/bundletool: Bundletool is a command-line tool to manipulate Android App Bundles]]
 - [[https://github.com/gotev/android-upload-service][gotev/android-upload-service: Easily upload files (Multipart/Binary/FTP out of the box) in the background with progress notification. Support for persistent upload requests, customizations and custom plugins.]]
 - [[https://github.com/green-code-initiative/ecoCode-android][green-code-initiative/ecoCode-android: Reduce the environmental footprint of your Android apps with SonarQube]]
