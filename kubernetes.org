@@ -3571,6 +3571,7 @@ then redeploy with:
 - [[https://github.com/kubernetes-sigs/descheduler][kubernetes-sigs/descheduler: Descheduler for Kubernetes]]
 - [[https://github.com/kubernetes-sigs/hierarchical-namespaces][kubernetes-sigs/hierarchical-namespaces: Home of the Hierarchical Namespace Controller (HNC). Adds hierarchical policies and delegated creation to Kubernetes namespaces for improved in-cluster multitenancy.]]
 - [[https://github.com/kubernetes-sigs/ingress2gateway][kubernetes-sigs/ingress2gateway: Convert Ingress resources to Gateway API resources]]
+- [[https://github.com/kubernetes-sigs/jobset][kubernetes-sigs/jobset: JobSet: An API for managing a group of Jobs as a unit]]
 - [[https://github.com/kubernetes-sigs/kernel-module-management][kubernetes-sigs/kernel-module-management: The kernel module management operator builds, signs and loads kernel modules in Kubernetes clusters..]]
 - [[https://github.com/kubernetes-sigs/kubefed][kubernetes-sigs/kubefed: Kubernetes Cluster Federation]]
 - [[https://github.com/kubernetes-sigs/kube-scheduler-simulator][kubernetes-sigs/kube-scheduler-simulator: A web-based simulator for the Kubernetes scheduler]]
