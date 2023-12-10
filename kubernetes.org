@@ -3453,6 +3453,7 @@ then redeploy with:
 - [[https://github.com/EmilyShepherd/kiOS][EmilyShepherd/kiOS: Slim Operating System for running Kubernetes with minimal overhead]]
 - [[https://github.com/emissary-ingress/emissary][emissary-ingress/emissary: open source Kubernetes-native API gateway for microservices built on the Envoy Proxy]]
 - [[https://github.com/eraser-dev/eraser][eraser-dev/eraser: 🧹 Cleaning up images from Kubernetes nodes]]
+- [[https://github.com/estahn/k8s-image-swapper][estahn/k8s-image-swapper: Mirror images into your own registry and swap image references automatically.]]
 - [[https://github.com/external-secrets/external-secrets][external-secrets/external-secrets: External Secrets Operator reads information from a third-party service like AWS Secrets Manager and automatically injects the values as Kubernetes Secrets.]]
 - [[https://github.com/f0xtek/k8sresourceless][f0xtek/k8sresourceless: A utility to find all Kubernetes Pods that have no CPU or memory resource requests defined for their containers.]]
 - [[https://github.com/fabric8io/kubernetes-client][fabric8io/kubernetes-client: Java client for Kubernetes & OpenShift]]
