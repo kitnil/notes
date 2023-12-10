@@ -3699,6 +3699,7 @@ then redeploy with:
 - [[https://github.com/saschagrunert/kubernix][saschagrunert/kubernix: Single dependency Kubernetes clusters for local testing, experimenting and development]]
 - [[https://github.com/sbstp/kubie][sbstp/kubie: A more powerful alternative to kubectx and kubens]]
 - [[https://schemahero.io/][SchemaHero - A modern approach to database schema migrations]]
+- [[https://github.com/seacrew/helm-compose][seacrew/helm-compose: Helm Compose is a helm plugin for managing multiple releases of one or many charts within a single configuration file.]]
 - [[https://github.com/sealerio/sealer][sealerio/sealer: A tool to seal application's all dependencies and Kubernetes into CloudImage, distribute this application anywhere via CloudImage, and run it within any cluster in one command.]]
 - [[https://github.com/senthilrch/kube-fledged][senthilrch/kube-fledged: A kubernetes operator for creating and managing a cache of container images directly on the cluster worker nodes, so application pods start almost instantly]]
 - [[https://github.com/shibumi/kubectl-htpasswd][shibumi/kubectl-htpasswd: kubectl plugin for generating nginx-ingress compatible basic-auth secrets on kubernetes clusters]]
