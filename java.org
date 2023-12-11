@@ -333,6 +333,20 @@ A private static method can only be accessed by other static methods within the 
 
 In Java, the default value of a boolean type is false.
 
+** [[https://www.geekyhacker.com/remote-debug-a-spring-boot-application-in-kubernetes/][Remote debug a Spring Boot application in Kubernetes - Geeky Hacker]]
+When running the application with the =java= command, we need to attach JWDP
+(Java Debug Wire Protocol) to the JVM process as follows:
+
+#+begin_src bash
+  java -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=5005 -jar myApp.jar
+#+end_src
+
+That exposes the port 5005 as a debug port that we can attach to a remote
+debugger (e.g., IntelliJ debugger).
+
+For Kubernetes deployment, you should apply the changes to your =Dockerfile=
+and build the image again.
+
 * Maven
 - [[https://github.com/fzakaria/nixos-maven-example][fzakaria/nixos-maven-example: An example of how to use buildMaven with Nix to build a Maven project]]
 
