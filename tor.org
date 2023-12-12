@@ -41,3 +41,13 @@ yourself. You have a few options:
   - Tor Browser Android: Tap on 'Settings' (⚙️) and then on 'Config
     Bridge'. Toggle on 'Use a Bridge' and select 'Provide a Bridge I
     know'. Enter the bridge address.
+
+* ChatGPT
+** What ports does use Tor to communicate between nodes?
+🔒 Tor uses a variety of ports to establish communication between its
+nodes. The most commonly used port is port 9001 for the main Tor network, also
+known as the ORPort. In addition, there are other ports used for specific
+purposes within the Tor network, such as port 9030 for directory connections
+and port 9050 for the SOCKS proxy interface. It's important to note that these
+port numbers can change over time, so it's always a good idea to refer to the
+Tor project's documentation for the most up-to-date information.
