@@ -741,6 +741,7 @@ POSTROUTING. Это к слову тот случай, когда можно в�
 - sshpass -p"$(pass show majordomo/private/ssh/router)" ssh sr1-dh507-508.intr -- tcpdump -w - -i ae113 -n -c 1000 | wireshark -k -i -
 
 * Tools
+- [[https://github.com/alttch/latencymon][alttch/latencymon: TCP/UDP/ICMP latency monitoring]]
 - [[https://github.com/c-grimshaw/gosniff][c-grimshaw/gosniff: A fancy-schmancy tcpdump-esque TUI, programmed in Go.]]
 - [[https://github.com/chiakge/Linux-NetSpeed][chiakge/Linux-NetSpeed: 将Linux现常用的网络加速集成在一起]]
 - [[https://github.com/eNMS-automation/eNMS][eNMS-automation/eNMS: An enterprise-grade vendor-agnostic network automation platform.]]
