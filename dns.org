@@ -53,6 +53,7 @@
   : dig 10.0.0.0/24.cidr @dns.toys
   : dig 2001:db8::/108.cidr @dns.toys
 - [[https://github.com/m13253/dns-over-https][m13253/dns-over-https: High performance DNS over HTTPS client & server]]
+- [[https://github.com/moloch--/godns][moloch--/godns: The God Name Server]]
 - [[https://github.com/mosajjal/dnsmonster][mosajjal/dnsmonster: Passive DNS Capture and Monitoring Toolkit]]
 - [[https://github.com/mr-karan/doggo][mr-karan/doggo: Command-line DNS Client for Humans. Written in Golang]]
 - [[https://github.com/mschwager/fierce][mschwager/fierce: A DNS reconnaissance tool for locating non-contiguous IP space.]]
