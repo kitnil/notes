@@ -1,2 +1,4 @@
+  - [[https://github.com/shyim/jetbrains-flake][shyim/jetbrains-flake: Nix flake to build Jetbrains IDE]]
+
   - Replace java in Idea IDE configs
     : oleg@guixsd ~/.config/JetBrains/IntelliJIdea2020.1$ find -type f -exec sed -i 's@7g3r9rz9z4i5pdb2gmdac9vk4dznqqgp-openjdk-8u272-b10@x6i0d8xzn6z83d6aprgkq1g0455602c5-openjdk-8u272-b10@g' {} \;
