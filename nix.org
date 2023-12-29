@@ -1622,6 +1622,7 @@ builtins.match "php([[:alnum:]])([[:alnum:]])" "php70"
 - [[https://github.com/mlyxshi/kexec-mini][mlyxshi/kexec-mini]]
 - [[https://github.com/blitz/lanzaboote][blitz/lanzaboote: Secure Boot for NixOS]]
 - [[https://github.com/fabaff/nix-security-box][fabaff/nix-security-box: Tool set for Information security professionals and all others]]
+- [[https://github.com/cynicsketch/nhh/tree/main][cynicsketch/nhh: A NixOS module to improve the security of NixOS.]]
 - [[https://github.com/vpsfreecz/vpsadminos][vpsfreecz/vpsadminos: Host for Linux system containers based on NixOS, ZFS and LXC]]
 - [[https://gist.github.com/gdamjan/8158b57379932fd0e07ce6d83399b71f][Install a NixOS for a systemd-nspawn container … from podman]]
 #+begin_src markdown
