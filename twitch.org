@@ -481,3 +481,5 @@ on/off/customize. Go to stream-rise com
   scheme@(guile-user)> (/ (*  (* 1664 936 60) 0.1) 1000)
   $3 = 9345.024
 #+end_example
+
+[[https://streamshark.io/blog/bpp-calculator-for-live-stream-bitrate/][Using Bits Per Pixel (BPP) To Calculate The Optimal Live Stream Bitrate]]
