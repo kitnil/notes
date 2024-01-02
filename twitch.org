@@ -468,3 +468,16 @@ viewers, followers, views, chat bots, etc...The price is lower than any
 competitor, the quality is guaranteed to be the best. Flexible and convenient
 order management panel, chat panel, everything is in your hands, turn it
 on/off/customize. Go to stream-rise com
+
+* Quality
+** [[https://www.youtube.com/watch?v=YvxCctDdWoU][(8) 936p на Twitch | Всё, что вы хотели узнать об этом разрешении! - YouTube]]
+#+begin_example
+  scheme@(guile-user)> (/ (*  (* 1920 1080 60) 0.1) 1000)
+  $1 = 12441.6
+
+  scheme@(guile-user)> (/ (*  (* 1920 1080 30) 0.1) 1000)
+  $2 = 6220.8
+
+  scheme@(guile-user)> (/ (*  (* 1664 936 60) 0.1) 1000)
+  $3 = 9345.024
+#+end_example
