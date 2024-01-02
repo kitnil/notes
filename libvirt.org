@@ -28,6 +28,10 @@
 - set cpu
   : (f() { virsh setvcpus --domain "$1" --config --maximum "$2"; virsh setvcpus --domain "$1" --config "$2"; }; f vm12345 2)
 
+** [[https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/5/html/virtualization/ch33s08][33.8. Setting KVM processor affinities Red Hat Enterprise Linux 5 | Red Hat Customer Portal]]
+- virsh nodeinfo
+- virsh capabilities
+
 * virt-manager
 
 #+begin_example
