@@ -31,6 +31,12 @@
   pacmd load-module module-loopback sink=MySink
 #+end_src
 
+* Modules
+
+: pactl load-module module-ladspa-sink sink_name=compressor-stereo plugin=sc4_1882 label=sc4 control=1,1.5,401,-30,20,5,30
+: pactl unload-module 536870913
+: pactl list-module
+
 * Compressor
 
 - ladspa
