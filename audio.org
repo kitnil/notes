@@ -25,7 +25,7 @@
   https://bbs.archlinux.org/viewtopic.php?id=249265
 
 - ladspa
-: pactl load-module module-ladspa-sink sink_name=compressor-stereo plugin=sc4_1882 label=sc4 control=1,1.5,401,-30,20,5,12
+: pactl load-module module-ladspa-sink sink_name=compressor-stereo plugin=sc4_1882 label=sc4 control=1,1.5,401,-30,20,5,30
 
 - loopback
 #+begin_src shell
