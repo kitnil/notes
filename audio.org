@@ -24,12 +24,58 @@
   : sudo fuser -v /dev/snd/*
   https://bbs.archlinux.org/viewtopic.php?id=249265
 
-- ladspa
-: pactl load-module module-ladspa-sink sink_name=compressor-stereo plugin=sc4_1882 label=sc4 control=1,1.5,401,-30,20,5,30
-
 - loopback
 #+begin_src shell
   pacmd load-module module-null-sink sink_name=MySink
   pacmd update-sink-proplist MySink device.description=MySink
   pacmd load-module module-loopback sink=MySink
 #+end_src
+
+* Compressor
+
+- ladspa
+: pactl load-module module-ladspa-sink sink_name=compressor-stereo plugin=sc4_1882 label=sc4 control=1,1.5,401,-30,20,5,30
+
+** Description
+
+Good question and I had to follow it up as PulseEffects is not perfect, occasionally crashing when another program (Telegram) sends a notification sound.  
+I couldn't find a GUI for this so parameters need to be set when initializing the command.  
+  
+1\. Install the package *swh-plugins*   
+  
+2\. Load the plugin, parameters can be changed but this worked on initial test:
+
+Code: [[https://forums.debian.net/viewtopic.php?t=137348#][Select all]]
+
+#+begin_src c
+pactl load-module module-ladspa-sink sink_name=compressor plugin=sc4_1882 label=sc4 control=1,1.5,300,-20,3,1,10
+#+end_src
+
+(note - may first need to /pactl unload-module module-device-manager/  if using KDE)  
+  
+3\. Open Pulse Audio Volume Control and switch the playback sink to "LADSPA Plugin SC4 ..."  
+  
+4\. Enjoy compressed sound!  
+  
+The parameters (the control=1,1.5,300,-20,3,1,10 part above) for this compressor are described in Steve Harris' LADSPA Plugin Docs [[http://plugin.org.uk/ladspa-swh/docs/ladspa-swh.html#tth_sEc2.91][http://plugin.org.uk/ladspa-swh/docs/la ... th\_sEc2.91]] :  
+  
+1\. RMS/peak: The balance between the RMS and peak envelope followers.RMS is generally better for subtle, musical compression and peak is better for heavier, fast compression and percussion.  
+2\. Attack time (ms): The attack time in milliseconds.  
+3\. Release time (ms): The release time in milliseconds.  
+4\. Threshold level (dB): The point at which the compressor will start to kick in.  
+5\. Ratio (1:n): The gain reduction ratio used when the signal level exceeds the threshold.  
+6\. Knee radius (dB): The distance from the threshold where the knee curve starts.  
+7\. Makeup gain (dB): Controls the gain of the makeup input signal in dB's.  
+8\. Amplitude (dB): The level of the input signal, in decibels.  
+9\. Gain reduction (dB): The degree of gain reduction applied to the input signal, in decibels.  
+  
+For limiting purposes, lower the threshold, try -30 to -40 and increase the ratio to 10 or so. Settings will vary so you may have to experiment a bit.  
+  
+Most of this was stolen/adapted from:  
+[[https://superuser.com/questions/162107/realtime-sound-post-processing-sound-effects-ubuntu-10-04/162114#162114][https://superuser.com/questions/162107/ ... 114#162114]]  
+[[https://askubuntu.com/questions/31580/is-there-a-way-of-leveling-compressing-the-sound-system-wide/44012#44012][https://askubuntu.com/questions/31580/i ... 4012#44012]]  
+  
+There is also description for using TAP plugins including Lookahead Limiter. It's described for radio use but should be fine for desktop use:  
+[[https://www.ab9il.net/software-defined-radio/software-audio-processing.html][https://www.ab9il.net/software-defined- ... ssing.html]]  
+  
+If you delve deeper into Steve Harris' LADSPA Plugin Docs linked above you will find several limiters are included in that collection. Maybe another day's experiment. [[https://forums.debian.net/images/smilies/icon_smile.gif]]
