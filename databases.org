@@ -220,3 +220,6 @@ Not only is it great for the initial replication process, but data-diff is alway
 Better yet, you could automate the data-diff CLI commands we just used in this tutorial to run after every Airbyte sync using an orchestrating tool like Prefect. Then, you could set up Slack alerts based on what information you would want to be sent to you when your data pipeline runs. I’d recommend getting the primary keys of the varying rows sent to you directly as a Slack message.
 
 The possibilities for automating ingestion and data-quality tools are endless. Open-source tools like Airbyte and data-diff make a great pair, working together to create a data environment that puts data quality above all else. 
+
+* Tools
+- [[https://github.com/adaptive-scale/dbchaos][adaptive-scale/dbchaos: Stress-test your database with pre-defined queries. Validate slow and expensive queries that breaks your database.]]
