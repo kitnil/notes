@@ -31,6 +31,9 @@
   pacmd load-module module-loopback sink=MySink
 #+end_src
 
+- [[https://obsproject.com/forum/threads/quick-and-easy-virtual-microphone-for-linux.158340/][Quick and easy Virtual Microphone for Linux. | OBS Forums]]
+  : pactl load-module module-null-sink media.class=Audio/Sink sink_name=obs-microphone channel_map=front-left,front-right
+
 * Modules
 
 : pactl load-module module-ladspa-sink sink_name=compressor-stereo plugin=sc4_1882 label=sc4 control=1,1.5,401,-30,20,5,30
