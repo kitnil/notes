@@ -29,6 +29,153 @@
 - [[https://www.youtube.com/watch?v=hDoEYKQCm30][(9) How To Make ANY Webcam Look Like A DSLR! - Best Settings For OBS and Streaming - YouTube]]
 - [[https://www.youtube.com/watch?v=2qicSvuQkhA][(9) How To Use A Phone As A Webcam In OBS For FREE - YouTube]]
 
+** [[https://obsproject.com/forum/threads/quick-and-easy-virtual-microphone-for-linux.158340/][Quick and easy Virtual Microphone for Linux.]]
+
+**** [[https://obsproject.com/forum/members/shadowofdarkness.62003/][shadowofdarkness]]
+
+***** New Member
+
+- [[https://obsproject.com/forum/threads/quick-and-easy-virtual-microphone-for-linux.158340/post-579924][Aug 7, 2022]]
+
+- [[https://obsproject.com/forum/threads/quick-and-easy-virtual-microphone-for-linux.158340/post-579924][#1]]
+
+I figured out a easy method to make a virtual microphone on Linux for use with the virtual camera in OBS and thought I should share it to help others.  
+This requires the use of Pipewire as your audio system.  
+Just run the following four commands to create it. Of course you can save it as a shell script for after a reboot  
+  
+
+Bash:
+
+#+begin_src bash
+pactl load-module module-null-sink media.class=Audio/Sink sink_name=Virtual-Mic channel_map=front-left,front-right
+pactl load-module module-null-sink media.class=Audio/Source/Virtual sink_name=Virtual-Mic channel_map=front-left,front-right
+pw-link Virtual-Mic:monitor_FL Virtual-Mic:input_FL
+pw-link Virtual-Mic:monitor_FR Virtual-Mic:input_FR
+#+end_src
+
+  
+Then in OBS go to "advanced audio properties" and set all of your audio devices to "Monitor and Output"  
+In OBS settings go to the audio section and set the monitoring device to the Virtual-Mic  
+Finally change your video chat program to use the new microphone
+
+- [[data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7]]
+
+Reactions: [[https://obsproject.com/forum/posts/579924/reactions][dazigion and jhaimecando27]]
+
+**** [[https://obsproject.com/forum/members/imdom.416197/][imdom]]
+
+***** New Member
+
+- [[https://obsproject.com/forum/threads/quick-and-easy-virtual-microphone-for-linux.158340/post-589428][Oct 21, 2022]]
+
+- 
+- [[https://obsproject.com/forum/threads/quick-and-easy-virtual-microphone-for-linux.158340/post-589428][#2]]
+
+thank you for this :) this is a big help beyond just OBS
+
+[[https://obsproject.com/forum/members/dazigion.431562/][((https://obsproject.com/forum/data/avatars/m/431/431562.jpg?1677459606))]]
+
+**** [[https://obsproject.com/forum/members/dazigion.431562/][dazigion]]
+
+***** New Member
+
+- [[https://obsproject.com/forum/threads/quick-and-easy-virtual-microphone-for-linux.158340/post-604319][Feb 27, 2023]]
+
+- 
+- [[https://obsproject.com/forum/threads/quick-and-easy-virtual-microphone-for-linux.158340/post-604319][#3]]
+
+~pactl load-module module-null-sink media.class=Audio/Sink sink_name=Obs-Mic channel_map=front-left,front-right pactl set-default-source Obs-Mic.monitor #insert obs launch~   
+i used this three commands, a reference from yours thanks!
+
+**** [[https://obsproject.com/forum/members/kaki87.252032/][KaKi87]]
+
+***** New Member
+
+- [[https://obsproject.com/forum/threads/quick-and-easy-virtual-microphone-for-linux.158340/post-609260][Apr 18, 2023]]
+
+- 
+- [[https://obsproject.com/forum/threads/quick-and-easy-virtual-microphone-for-linux.158340/post-609260][#4]]
+
+#+begin_quote
+
+
+[[https://obsproject.com/forum/goto/post?id=579924][shadowofdarkness said:]]
+
+This requires the use of Pipewire as your audio system.
+
+Click to expand...
+
+
+
+
+#+end_quote
+
+How do I find out what audio system my distro is using ? Thanks
+
+[[https://obsproject.com/forum/members/jcubic.417523/][((https://obsproject.com/forum/data/avatars/m/417/417523.jpg?1667318995))]]
+
+**** [[https://obsproject.com/forum/members/jcubic.417523/][jcubic]]
+
+***** New Member
+
+- [[https://obsproject.com/forum/threads/quick-and-easy-virtual-microphone-for-linux.158340/post-610187][Apr 27, 2023]]
+
+- 
+- [[https://obsproject.com/forum/threads/quick-and-easy-virtual-microphone-for-linux.158340/post-610187][#5]]
+
+Ok but what to do with this Virtual Microphone?
+
+[[https://obsproject.com/forum/members/jcubic.417523/][((https://obsproject.com/forum/data/avatars/m/417/417523.jpg?1667318995))]]
+
+**** [[https://obsproject.com/forum/members/jcubic.417523/][jcubic]]
+
+***** New Member
+
+- [[https://obsproject.com/forum/threads/quick-and-easy-virtual-microphone-for-linux.158340/post-610199][Apr 27, 2023]]
+
+- 
+- [[https://obsproject.com/forum/threads/quick-and-easy-virtual-microphone-for-linux.158340/post-610199][#6]]
+
+#+begin_quote
+
+
+[[https://obsproject.com/forum/goto/post?id=610187][jcubic said:]]
+
+Ok but what to do with this Virtual Microphone?
+
+Click to expand...
+
+
+
+
+#+end_quote
+
+OK Found myself how to connect different sources in QJackCTL.
+
+**** [[https://obsproject.com/forum/members/coby2k.457554/][coby2k]]
+
+***** New Member
+
+- [[https://obsproject.com/forum/threads/quick-and-easy-virtual-microphone-for-linux.158340/post-625959][Oct 2, 2023]]
+
+- 
+- [[https://obsproject.com/forum/threads/quick-and-easy-virtual-microphone-for-linux.158340/post-625959][#7]]
+
+I've been banging my head against the wall trying to find an answer to this, and finally found a simple method that works for me! See this guy's video: [[https://youtu.be/pEUGr_OwQKw?si=12UJ4lrepm7RbN2_][https://youtu.be/pEUGr\_OwQKw?si=12UJ4lrepm7RbN2\_]]  
+  
+He walks you through every step and it's not too lengthy. Be sure to leave a nice comment for him and share with others; a solution this simple needs to be shared.  
+  
+Overview of his method involves:  
+
+- Using Pulse Audio (was already on my Linux Mint system AFAIK).
+- Install Pulse Audio Volume Control (use your software manager for this).
+- Run a simple shell script that he provides.
+- Change a couple of settings in Pulse Audio Volume Control.
+- Change a couple of settings in OBS.
+
+  
+Tested and working for me on Linux Mint 21.1, OBS Studio 27.2.3+dfsg1-1 (64bit). This a life saver for me because I use OBS for live noise removal and delay on my mic so I can sync that audio with my slow camera hdmi capture.
+
 * Tools
 - [[https://github.com/dimtpap/obs-pipewire-audio-capture][dimtpap/obs-pipewire-audio-capture: 🔊 Audio device and application capture for OBS Studio using PipeWire]]
 - [[https://github.com/iamscottxu/obs-rtspserver/][iamscottxu/obs-rtspserver: RTSP server plugin for obs-studio]]
