@@ -2696,6 +2696,23 @@ success = false; } else { //Lock texture if( !gFooTexture.lockTexture() ) { prin
   - Unbound variable: package-version
     https://gnunet.org/bot/log/guix/2016-02-16
 
+* [[https://github.com/abcdw/notes/blob/b1ab1a13093fab8d28a9f5936937ed513ac5cad8/notes/20240109091625-guix_in_production.org][Guix in Production]]
+
+[[https://genenetwork.org/intro][https://genenetwork.org/intro]]
+tool of linked data sets and tools to study complex network of genes. The whole infrastructure is managed by guix: [[https://git.genenetwork.org/guix-bioinformatics/][https://git.genenetwork.org/guix-bioinformatics/]]
+
+[[https://hpc.guix.info/about/][https://hpc.guix.info/about/]]
+a list of HPC cluster deployments. [[https://hpc.guix.info/about/#:~:text=Cluster Deployments][https://hpc.guix.info/about/#:~:text=Cluster%20Deployments]]
+
+[[https://github.com/alphagov/govuk-guix][https://github.com/alphagov/govuk-guix]]
+gov.uk guix related infra.
+
+[[https://github.com/BIMSBbioinfo][https://github.com/BIMSBbioinfo]]
+BIMSB bioinformatics platform [[http://bioinformatics.mdc-berlin.de/][http://bioinformatics.mdc-berlin.de/]].
+
+Bitcoin
+guix is used for bitcoin core development: [[https://github.com/bitcoin/bitcoin/blob/master/contrib/guix/README.md][https://github.com/bitcoin/bitcoin/blob/master/contrib/guix/README.md]], [[https://github.com/fanquake/core-review/blob/master/guix/README.md][https://github.com/fanquake/core-review/blob/master/guix/README.md]]
+
 * Pulseaudio
 
 
