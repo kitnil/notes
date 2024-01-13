@@ -20,6 +20,9 @@
 
 https://alex.dzyoba.com/blog/gdb-source-path/
 
+* Learning
+- [[https://stackoverflow.com/questions/32917033/how-to-get-environment-of-a-program-while-debugging-it-in-gdb][c++ - How to get environment of a program while debugging it in GDB - Stack Overflow]]
+
 * Set environment variables
 
 It seems that putenv doesn't work now, but setenv does. I was testing the accepted answer while trying to set the variable in the current shell with no success
