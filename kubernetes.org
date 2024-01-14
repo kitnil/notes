@@ -3737,6 +3737,7 @@ then redeploy with:
 - [[https://github.com/stashed/stash][stashed/stash: 🛅 Backup your Kubernetes Stateful Applications]]
 - [[https://github.com/stern/stern][stern/stern: ⎈ Multi pod and container log tailing for Kubernetes -- Friendly fork of https://github.com/wercker/stern]]
 - [[https://github.com/stevelacy/kuberhaus][stevelacy/kuberhaus: Kubernetes resource dashboard with node/pod layout and resource requests]]
+- [[https://github.com/stolostron/multicluster-observability-operator][stolostron/multicluster-observability-operator: Operator for Multi-Cluster Monitoring with Thanos.]]
 - [[https://github.com/sustainable-computing-io/kepler][sustainable-computing-io/kepler: Kepler (Kubernetes-based Efficient Power Level Exporter) uses eBPF to probe energy related system stats and exports as Prometheus metrics]]
 - [[https://github.com/tdihp/dspcap][tdihp/dspcap: A humble bash script set that uses daemonset to capture tcpdump from all k8s nodes, then collect the captures.]]
 - [[https://github.com/teamcode-inc/kubeorbit][teamcode-inc/kubeorbit: Test your application on Kubernetes in a brand new simple way⚡]]
