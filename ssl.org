@@ -53,6 +53,7 @@ to deselect it (the [*] should turn into [ ]) and press Enter.
 - [[https://github.com/jetstack/paranoia][jetstack/paranoia: Inspect certificate authorities in container images]]
 - [[https://letsencrypt.status.io/][Let's Encrypt Status]]
 - [[https://github.com/mogensen/cert-checker][mogensen/cert-checker: Certificate monitoring utility for watching tls certificates and reporting the result as metrics.]]
+- [[https://github.com/mozilla/tls-observatory][mozilla/tls-observatory: An observatory for TLS configurations, X509 certificates, and more.]]
 - [[https://github.com/smallstep/certificates][smallstep/certificates: 🛡️ A private certificate authority (X.509 & SSH) & ACME server for secure automated certificate management, so you can use TLS everywhere & SSO for SSH.]]
 - [[https://github.com/SSLMate/certspotter][SSLMate/certspotter: Certificate Transparency Log Monitor]]
 - [[https://github.com/SySS-Research/hallucinate][SySS-Research/hallucinate: One-stop TLS traffic inspection and manipulation using dynamic instrumentation]]
