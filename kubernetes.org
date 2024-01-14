@@ -3519,6 +3519,7 @@ then redeploy with:
 - [[https://github.com/jdockerty/kubectl-oomd][jdockerty/kubectl-oomd: Show pods/containers which have recently been 'OOMKilled', as a kubectl plugin.]]
 - [[https://github.com/jenkinsci/kubernetes-operator][jenkinsci/kubernetes-operator: Kubernetes native Jenkins Operator]]
 - [[https://github.com/jeremykross/konstellate][jeremykross/konstellate: Free and Open Source GUI to Visualize Kubernetes Applications.]]
+- [[https://github.com/jetstack/version-checker][jetstack/version-checker: Kubernetes utility for exposing image versions in use, compared to latest available upstream, as metrics.]]
 - [[https://github.com/johanhaleby/kubetail][johanhaleby/kubetail: Bash script to tail Kubernetes logs from multiple pods at the same time]]
 - [[https://github.com/jreisinger/kcve][jreisinger/kcve: Kubernetes CVEs]]
   - [[https://kubernetes.io/docs/reference/issues-security/official-cve-feed/][Official CVE Feed | Kubernetes]]
