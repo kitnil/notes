@@ -50,6 +50,7 @@ to deselect it (the [*] should turn into [ ]) and press Enter.
 - [[https://github.com/droe/sslsplit][droe/sslsplit: Transparent SSL/TLS interception]]
 - [[https://github.com/fabio42/ssl-checker][fabio42/ssl-checker: Fast and beautiful program to check all your https endpoint]]
 - [[https://github.com/FiloSottile/mkcert][FiloSottile/mkcert: A simple zero-config tool to make locally trusted development certificates with any names you'd like.]]
+- [[https://github.com/jetstack/paranoia][jetstack/paranoia: Inspect certificate authorities in container images]]
 - [[https://letsencrypt.status.io/][Let's Encrypt Status]]
 - [[https://github.com/mogensen/cert-checker][mogensen/cert-checker: Certificate monitoring utility for watching tls certificates and reporting the result as metrics.]]
 - [[https://github.com/smallstep/certificates][smallstep/certificates: 🛡️ A private certificate authority (X.509 & SSH) & ACME server for secure automated certificate management, so you can use TLS everywhere & SSO for SSH.]]
