@@ -4,14 +4,14 @@
 #+title: DNS
 
 * Learning
+- [[https://www.youtube.com/watch?v=BO-c69AxSis][(10) стрим бобука dns на redis 2021.01.29 - YouTube]]
 - [[https://zwischenzugs.com/2018/06/08/anatomy-of-a-linux-dns-lookup-part-i/][Anatomy of a Linux DNS Lookup – Part I – zwischenzugs]]
   - [[https://zwischenzugs.com/2018/06/18/anatomy-of-a-linux-dns-lookup-part-ii/][Anatomy of a Linux DNS Lookup – Part II – zwischenzugs]]
   - [[https://zwischenzugs.com/2018/07/06/anatomy-of-a-linux-dns-lookup-part-iii/][Anatomy of a Linux DNS Lookup – Part III – zwischenzugs]]
   - [[https://zwischenzugs.com/2018/08/06/anatomy-of-a-linux-dns-lookup-part-iv/][Anatomy of a Linux DNS Lookup – Part IV – zwischenzugs]]
   - [[https://zwischenzugs.com/2018/09/13/anatomy-of-a-linux-dns-lookup-part-v-two-debug-nightmares/][Anatomy of a Linux DNS Lookup – Part V – Two Debug Nightmares – zwischenzugs]]
-- [[https://www.youtube.com/watch?v=BO-c69AxSis][(10) стрим бобука dns на redis 2021.01.29 - YouTube]]
-- [[https://tech-geek.ru/generating-records-for-address-ranges-bind/][Генерация записей для диапазонов адресов BIND]]
 - [[https://github.com/mwarning/SimpleDNS][mwarning/SimpleDNS: A very simple and small DNS Server to help understanding the protocol basics.]]
+- [[https://tech-geek.ru/generating-records-for-address-ranges-bind/][Генерация записей для диапазонов адресов BIND]]
 
 * Implementations
 - [[https://github.com/coredns/coredns][coredns/coredns: CoreDNS is a DNS server that chains plugins]]
