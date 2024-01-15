@@ -2110,6 +2110,7 @@ builtins.match "php([[:alnum:]])([[:alnum:]])" "php70"
 - [[https://github.com/tfc/nspawn-nixos][tfc/nspawn-nixos]]
 - [[https://github.com/the-nix-way/dev-templates][the-nix-way/dev-templates: Dev environments for numerous languages based on Nix flakes [maintainer=@lucperkins]]]
 - [[https://github.com/thiagokokada/nix-alien][thiagokokada/nix-alien: Run unpatched binaries on Nix/NixOS]]
+- [[https://github.com/tulilirockz/clonix][tulilirockz/clonix: Declaratively manage rsync deployments in NixOS/Home-manager]]
 - [[https://github.com/ublue-os/fleek][ublue-os/fleek: Own your $HOME]]
 - [[https://github.com/viperML/wrapper-manager][viperML/wrapper-manager: Post-modern configuration management]]
 - [[https://github.com/vlinkz/nix-editor][vlinkz/nix-editor: A simple rust program to edit NixOS configuration files with just a command]]
