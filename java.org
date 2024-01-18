@@ -32,6 +32,10 @@ https://www.youtube.com/watch?v=t1-YZ6bF-g0
 - [[https://github.com/winder/Universal-G-Code-Sender][winder/Universal-G-Code-Sender: A cross-platform G-Code sender for GRBL, Smoothieware, TinyG and G2core.]]
 - [[https://habr.com/ru/post/548700/][Сбор метрик Spring Boot приложения c помощью Prometheus и Grafana / Хабр]]
 
+* Cheat sheet
+- Fix ugly fonts on GNU/Linux
+  : _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on
+
 * Books
 - [[https://www.redhat.com/en/resources/modernizing-enterprise-java-ebook][Modernizing enterprise Java]]
 
