@@ -3439,6 +3439,7 @@ then redeploy with:
 - [[https://github.com/cyberark/KubiScan][cyberark/KubiScan: A tool to scan Kubernetes cluster for risky permissions]]
 - [[https://github.com/darkbitio/k8s-mirror][darkbitio/k8s-mirror: Creates a local mirror of a Kubernetes cluster in a docker container to support offline reviewing]]
 - [[https://github.com/databricks/click][databricks/click: The "Command Line Interactive Controller for Kubernetes"]]
+- [[https://github.com/databus23/helm-diff][databus23/helm-diff: A helm plugin that shows a diff explaining what a helm upgrade would change]]
 - [[https://github.com/datreeio/datree][datreeio/datree: Prevent Kubernetes misconfigurations from reaching production (again 😤 )! The CLI integration provides a policy enforcement solution to run automatic checks for rule violations. See our docs: https://hub.datree.io]]
 - [[https://github.com/deepflowio/deepflow][deepflowio/deepflow: Application Observability using eBPF]]
 - [[https://github.com/deislabs/krustlet][deislabs/krustlet: Kubernetes Rust Kubelet]]
