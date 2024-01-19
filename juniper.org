@@ -127,6 +127,28 @@
 - Junos: 15.1R5.5
   : loop-detect они подвезли только в Release 20.4R1.
 
+- Show why route is not added
+#+begin_example
+  root@sr1-dh507-508# run show route receive-protocol bgp 10.10.0.2 hidden extensive
+
+  inet.0: 127 destinations, 298 routes (126 active, 0 holddown, 2 hidden)
+  Restart Complete
+    0.0.0.0/0 (2 entries, 1 announced)
+       Nexthop: 37.153.0.96
+       MED: 200
+       Localpref: 100
+       AS path: 12345 12346 I
+       Hidden reason: rejected by import policy
+
+    XXX.XXX.XXX.XXX/24 (1 entry, 0 announced)
+       Nexthop: 10.10.0.2
+       Localpref: 100
+       AS path: I
+       Hidden reason: rejected by import policy
+
+  nat.inet.0: 34 destinations, 37 routes (34 active, 0 holddown, 0 hidden)
+#+end_example
+
 ** [[https://www.juniper.net/documentation/us/en/software/junos/bgp/topics/topic-map/troubleshooting-bgp-sessions.html][Troubleshooting BGP Sessions | Junos OS | Juniper Networks]]
 
 Tasks Command or Action
