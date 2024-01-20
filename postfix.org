@@ -208,6 +208,8 @@ Corrupt – письма, которые невозможно прочитать
 
 find /var/spool/postfix/defer -type f -mtime 1 -delete
 
+* Tools
+- [[https://github.com/kumina/postfix_exporter][kumina/postfix_exporter: A Prometheus exporter for Postfix.]]
 * ChatGPT
 
 ** postfix show message content
@@ -225,3 +227,4 @@ Then, use the postcat command with the queue ID to display the content of the me
 sudo postcat -vq <queue_id>
 
 This will display the full content of the message, including the headers and body. You can then scroll through the output to view the message content.
+
