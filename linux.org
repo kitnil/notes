@@ -90,6 +90,10 @@ https://github.com/iovisor/bcc/blob/master/QUICKSTART.md
 * Build
 - [[https://github.com/takano32/build-kernel][takano32/build-kernel in Docker Ubuntu 20.04 container]]
 
+* Camera
+: modprobe v4l2loopback video_nr=5 card_label="Virtual Camera" exclusive_caps=1
+: ffmpeg -i /dev/video0 -f v4l2 -vcodec rawvideo -pix_fmt rgb24 /dev/video5
+
 * Cheatsheet
 - [[http://www.brendangregg.com/Perf/linux_perf_tools_full.png][linux_perf_tools_full.png (3000×2100)]]
 - [[https://access.redhat.com/sites/default/files/attachments/rh_ip_command_cheatsheet_1214_jcs_print.pdf][rh_ip_command_cheatsheet_1214_jcs_print.pdf]]
