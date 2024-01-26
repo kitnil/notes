@@ -87,6 +87,9 @@
   - root@sr1-mr13-14> show configuration policy-options prefix-list miran | display inheritance
   - [[https://www.juniper.net/documentation/us/en/software/junos/routing-policy/topics/ref/statement/apply-path-edit-policy-options.html][apply-path | Junos OS | Juniper Networks]]
 
+- tcpdump to wireshark on a local machine
+  : sshpass -p"$(pass show majordomo/private/ssh/router)" ssh sr1-dh507-508.intr -- tcpdump -w - -i ae113 -n -c 1000 | wireshark -k -i -
+
 - show routes advertised to neighbor
   origin: http://xgu.ru/wiki/BGP_%D0%B2_Juniper
   #+BEGIN_EXAMPLE
