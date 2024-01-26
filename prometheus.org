@@ -33,6 +33,7 @@
 - [[https://github.com/google/alertmanager-irc-relay][google/alertmanager-irc-relay: Send Prometheus Alerts to IRC using Webhooks]]
 - [[https://github.com/google/dnsmasq_exporter][google/dnsmasq_exporter: dnsmasq exporter for Prometheus]]
 - [[https://github.com/google/mtail][google/mtail: extract internal monitoring data from application logs for collection in a timeseries database]]
+- [[https://github.com/hikhvar/mqtt2prometheus][hikhvar/mqtt2prometheus: MQTT to Prometheus gateway]]
 - [[https://github.com/hipages/php-fpm_exporter][hipages/php-fpm_exporter: A prometheus exporter for PHP-FPM.]]
 - [[https://github.com/imgix/prometheus-am-executor][imgix/prometheus-am-executor: Execute command based on Prometheus alerts]]
 - [[https://docs.bitnami.com/tutorials/implementing-slos-using-prometheus/][Implementing SLOs using Prometheus and Grafana]]
