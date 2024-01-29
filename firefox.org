@@ -2,6 +2,11 @@
 :ID:       07116af0-559a-46c8-97a5-3a0ee2711db2
 :END:
 
+* Cheat sheet
+
+- Memory usage
+  : ps auxwww | jc --ps | jq '.[] | select(.command | test(".*firefox.*")) | .rss' | paste -sd+ | bc | numfmt --from-unit=1024 --to=iec-i
+
 * Misc
 
 - [[https://github.com/0x01h/sci-hub-now][0x01h/sci-hub-now: Free access to academic papers with just a single click! Abolish publishers, long live the open access movement! 🦅]]
