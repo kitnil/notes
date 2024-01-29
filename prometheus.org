@@ -40,6 +40,7 @@
 - [[https://docs.bitnami.com/tutorials/implementing-slos-using-prometheus/][Implementing SLOs using Prometheus and Grafana]]
 - [[https://github.com/inCaller/prometheus_bot][inCaller/prometheus_bot: Telegram bot for prometheus alerting]]
 - [[https://github.com/insomniacslk/prometheus-weather-exporter][insomniacslk/prometheus-weather-exporter: Weather exporter for Prometheus, using the Google Maps and Darksky APIs]]
+- [[https://github.com/joe-elliott/cert-exporter][joe-elliott/cert-exporter: A Prometheus exporter that publishes cert expirations on disk and in Kubernetes secrets]]
 - [[https://github.com/kashalls/kromgo][kashalls/kromgo: Easily expose prometheus metrics to the outside.]]
 - [[https://github.com/kbknapp/iptables_exporter][kbknapp/iptables_exporter: A Prometheus exporter for iptables in Rust]]
 - [[https://github.com/kbknapp/wireguard_exporter][kbknapp/wireguard_exporter: A Prometheus exporter for WireGuard]]
