@@ -2,3 +2,49 @@
 - [[https://github.com/Dr-Noob/cpufetch][Dr-Noob/cpufetch: Simple yet fancy CPU architecture fetching tool]]
 - [[https://github.com/FlyGoat/RyzenAdj][FlyGoat/RyzenAdj: Adjust power management settings for Ryzen APUs]]
 - [[https://github.com/ocerman/zenpower][ocerman/zenpower: Zenpower is Linux kernel driver for reading temperature, voltage(SVI2), current(SVI2) and power(SVI2) for AMD Zen family CPUs.]]
+
+* [[https://web.archive.org/web/20220505215650/https://www.amd.com/en/product/10246][AMD Ryzen 5 PRO 4650G]]
+** General Specifications
+Platform Desktop
+Product Family AMD Ryzen™ PRO Processors
+Product Line AMD Ryzen™ 5 PRO 4000 Series Desktop Processors
+Former Codename "Renoir"
+of CPU Cores 6
+of Threads 12
+Max. Boost Clock Up to 4.2GHz
+Base Clock 3.7GHz
+L1 Cache 384KB
+L2 Cache 3MB
+L3 Cache 8MB
+Default TDP 65W
+AMD Configurable TDP (cTDP) 45-65W
+Processor Technology for CPU Cores TSMC 7nm FinFET
+Unlocked for Overclocking No
+CPU Socket AM4
+Thermal Solution (MPK) Wraith Stealth
+Max. Operating Temperature (Tjmax) 95°C
+Launch Date 7/21/2020
+*OS Support
+Windows 11 - 64-Bit Edition
+Windows 10 - 64-Bit Edition
+RHEL x86 64-Bit
+Ubuntu x86 64-Bit
+*Operating System (OS) support will vary by manufacturer.
+** Connectivity
+PCI Express® Version
+PCIe® 3.0
+System Memory Type DDR4
+Memory Channels 2
+System Memory Specification Up to 3200MHz
+** Graphics Capabilities
+Integrated Graphics
+Yes
+Graphics Model Radeon™ Graphics
+Graphics Core Count 7
+Graphics Frequency 1900 MHz
+** Product IDs
+Product ID Tray 100-000000143
+Product ID MPK 100-100000143MPK
+Key Features
+Supported Technologies
+AMD PRO technologies
