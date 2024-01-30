@@ -2,6 +2,19 @@
 - [[https://habr.com/ru/articles/728836/][Обход блокировок: настройка сервера XRay для Shadowsocks-2022 и VLESS с XTLS-Vision, Websockets и фейковым веб-сайтом / Хабр]]
 - [[https://www.youtube.com/watch?v=B9kpOa7pdYw][Чем заменить VPN в 2024 году? Vless | Vmess | Trojan | Shadowsocks - YouTube]]
 
+* Learning
+** [[https://github.com/XTLS/Xray-core/discussions/1832][How exactly Reality works? · XTLS/Xray-core · Discussion #1832]]
+After the initial handshake between the Xray Client and Xray Server, the Xray
+Server initiates a handshake with the camouflage site, using a specific server
+name or SNI. This SNI is likely a domain that is trusted or unsuspected by any
+intervening firewalls or censoring entities.
+
+Once the handshake with the camouflage site is complete, the Xray Server uses
+the information obtained from this handshake, including the SNI, to establish
+a connection with the real destination (dest). This process makes the
+connection to the real destination appear as if it's a standard connection to
+the camouflage site, adding an extra layer of obfuscation and security.
+
 * Clients
 ** Android
 - [[https://github.com/2dust/v2rayNG][2dust/v2rayNG: A V2Ray client for Android, support Xray core and v2fly core]]
