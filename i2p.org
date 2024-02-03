@@ -6,6 +6,11 @@
 - [[https://habr.com/ru/post/594823/][HTTP-заголовки в I2P. Почему HTTP-прокси предпочтительнее SOCKS / Хабр]]
 - [[https://github.com/RTradeLtd/libanonvpn][RTradeLtd/libanonvpn: Library for TUN and TAP devices over I2P in Go Applications]]
 
+* Links
+- [[http://i2pd.i2p/][Welcome to I2P]]
+- [[http://tracker2.postman.i2p/][http://tracker2.postman.i2p/]]
+- [[http://irc.acetone.i2p/web/#ru][ILITA IRC]]
+
 * Run in a Docker container
 1. Run a container
    : docker run --name i2pd --cap-add=NET_ADMIN --network=host ghcr.io/purplei2p/i2pd:release-2.41.0
