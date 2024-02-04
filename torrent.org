@@ -67,7 +67,27 @@
   - [[https://btdig.com/][BTDigg DHT Search Engine: Free Search Engine For Free Torrent Content]]
 
 * Trackers
-- [[https://torrent.eu.org/][torrent.eu.org]]
+** rutracker
+*** [[https://rutracker.org/forum/viewtopic.php?t=4824458&start=60][Открытая база раздач RuTracker.ORG [обновление за 15.01.2016] [стр. 3] :: RuTracker.org]]
+#+begin_quote
+находясь на странице нужной темы  
+копирую код страницы, там где ссылки на темы  
+дальше все действия в notepad++  
+замена  
+? заменяем на ничего  
+дальше  
+viewtopic.phpt=(\\d{1,8})  
+замена на регулярное выражение  
+\\nhttp://dl.rutracker.org/forum/dl.php?t=$1\\n  
+Ctrl+F. Пометки  
+В поле Найти dl.rutracker.org  
+Помечать закладкой  
+Найти все  
+Поиск - закладки - Удалить все строки без закладки  
+и потом уже открываю в браузере готовые ссылки)
+#+end_quote
+
+** [[https://torrent.eu.org/][torrent.eu.org]]
 
 * Transmission
 - [[https://github.com/PanAeon/transg-tui][PanAeon/transg-tui: Terminal UI for transmission torrent client]]
