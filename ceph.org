@@ -2,3 +2,6 @@
 - [[https://habr.com/ru/post/313644/][Знакомство с хранилищем Ceph в картинках / Хабр]]
 - [[https://serveradmin.ru/ustanovka-i-nastrojka-ceph/][Установка, настройка и эксплуатация Ceph — Server Admin]]
 - [[https://app.bountysource.com/issues/93516245-2020-10-19t20-17-32-105-0800-7f4ec906d700-1-monclient-hunting-handle_auth_bad_method-server-allowed_methods-2-but-i-only-support-2][2020-10-19T20:17:32.105+0800 7f4ec906d700 -1 monclient(hunting): handle_auth_bad_method server allowed_methods [2] but i only support [2] - (running Ceph in a Docker container)]]
+
+* Tools
+- [[https://github.com/digitalocean/ceph_exporter][digitalocean/ceph_exporter: Prometheus exporter that scrapes meta information about a ceph cluster.]]
