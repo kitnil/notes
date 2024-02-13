@@ -619,15 +619,15 @@ Made up of multiple "generations".
 - [[https://github.com/aleeusgr/compose-flakes/blob/main/flake.nix][compose-flakes/flake.nix at main · aleeusgr/compose-flakes]]
 - [[https://github.com/fnctl/helix][fnctl/helix: A post-modern modal text editor.]]
 - [[https://github.com/hercules-ci/flake-parts][hercules-ci/flake-parts: Minimal Nix modules for Flakes: split your flakes into modules and get things done with community modules.]]
+- [[https://github.com/IogaMaster/citadel][IogaMaster/citadel: A self-hostable solution for keeping Discord, Matrix, and Revolt servers in sync.]]
 - [[https://github.com/kira-bruneau/flake-checker][kira-bruneau/flake-checker: Incrementally run checks & fixes in your Nix flake (only on changed files). Mirror of https://gitlab.com/kira-bruneau/flake-checker]]
 - [[https://github.com/fnctl/mkSystem/blob/main/flake.nix][mkSystem/flake.nix at main · fnctl/mkSystem]]
 - [[https://github.com/NixOS/templates][NixOS/templates: Flake templates]]
+- [[https://www.mat.services/posts/command-line-flake-arguments/][passing command line arguments to nix flakes]]
 - [[https://github.com/ralismark/nix-appimage][ralismark/nix-appimage: (experimental) Convert a nixos derivation into a self-contained binary]]
+- [[https://github.com/roman/nixDir][roman/nixDir: Transform a directory to a nix flake]]
 - [[https://github.com/srid/check-flake][srid/check-flake: Add a `.#check` package for building all checks for the current system]]
 - [[https://github.com/srid/haskell-flake][srid/haskell-flake: A `flake-parts` Nix module for Haskell development]]
-- [[https://www.mat.services/posts/command-line-flake-arguments/][passing command line arguments to nix flakes]]
-- [[https://github.com/roman/nixDir][roman/nixDir: Transform a directory to a nix flake]]
-- [[https://github.com/IogaMaster/citadel][IogaMaster/citadel: A self-hostable solution for keeping Discord, Matrix, and Revolt servers in sync.]]
 
 ** Eval
 
