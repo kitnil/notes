@@ -35,6 +35,7 @@
 - [[https://fasterthanli.me/series/making-our-own-executable-packer][Making our own executable packer]]
 - [[https://www.dettus.net/dhex/][dettus.net- Now with dMagnetic, a magnetic scrolls interpreter.]]
 - [[https://github.com/eliben/pyelftools][eliben/pyelftools: Parsing ELF and DWARF in Python]]
+- [[https://github.com/sweetbbak/hexxy][sweetbbak/hexxy: a modern and beautiful alternative to xxd and hexdump.]]
 
 #+begin_example
   $ addr2line -e  /gnu/store/m8afvcgwmrfhvjpd7b0xllk8vv5isd6j-glibc-cross-i586-pc-gnu-2.33/lib/ld.so.1 0x1000 0x11627 0x11bb
