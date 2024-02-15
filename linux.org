@@ -732,6 +732,7 @@ rp_filter https://www.kernel.org/doc/Documentation/networking/ip-sysctl.txt
 
 - [[https://github.com/fooker/netns-proxy][fooker/netns-proxy: A simple and slim proxy to forward ports from and into linux network namespaces]]
 - [[https://github.com/vi/netns_tcp_bridge][vi/netns_tcp_bridge: Linux CLI tool to forward TCP connections from one network namespace to another network namespace]]
+- [[https://github.com/YutaroHayakawa/ipftrace2][YutaroHayakawa/ipftrace2: A packet oriented Linux kernel function call tracer]]
 - [[https://tech-geek.ru/linux-bridges/][Программные мосты в Linux]]
 
 * News
