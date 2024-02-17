@@ -79,6 +79,7 @@
 - [[https://github.com/florent37/DiagonalLayout][florent37/DiagonalLayout: With Diagonal Layout explore new styles and approaches on material design]]
 - [[https://github.com/fork-maintainers/iceraven-browser][fork-maintainers/iceraven-browser: Iceraven Browser]]
 - [[https://github.com/Genymobile/scrcpy][Genymobile/scrcpy: Display and control your Android device]]
+- [[https://github.com/giejay/Immich-Android-TV][giejay/Immich-Android-TV: An Android TV app for the self hosted photos and videos backup solution.]]
 - [[http://gist.tolpp.com/2018/09/how-to-send-android-push-notification.html][gist.tolpp: How to send Android push notification locally using ADB without need network connection]]
   - [[https://kazucocoa.wordpress.com/2019/06/03/android-a-tip-to-automate-push-notification-on-android-via-adb/][[Android] A tip to automate push notification on Android via adb – ~ my tech diary ~]]
     - $ adb shell am broadcast -a com.your.app.intent.YOUR_ACTION --es json_example '{"example": "hello world"}'
