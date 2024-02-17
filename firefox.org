@@ -10,6 +10,7 @@
 ** Configure top level domains
 Add with =true= value boolean:
 - browser.fixup.domainwhitelist.i2p
+- browser.fixup.domainwhitelist.onion
 
 * Misc
 
