@@ -3465,6 +3465,7 @@ then redeploy with:
 - [[https://github.com/eraser-dev/eraser][eraser-dev/eraser: 🧹 Cleaning up images from Kubernetes nodes]]
 - [[https://github.com/estahn/k8s-image-swapper][estahn/k8s-image-swapper: Mirror images into your own registry and swap image references automatically.]]
 - [[https://github.com/ExpediaGroup/container-startup-autoscaler][ExpediaGroup/container-startup-autoscaler: A Kubernetes controller that modifies the CPU and/or memory resources of containers depending on whether they're starting up, according to the startup/post-startup settings you supply.]]
+- [[https://github.com/explorium-ai/kube-auto-puller][explorium-ai/kube-auto-puller: A Kubernetes Image Puller and Cacher with Automatic Discovery]]
 - [[https://github.com/external-secrets/external-secrets][external-secrets/external-secrets: External Secrets Operator reads information from a third-party service like AWS Secrets Manager and automatically injects the values as Kubernetes Secrets.]]
 - [[https://github.com/f0xtek/k8sresourceless][f0xtek/k8sresourceless: A utility to find all Kubernetes Pods that have no CPU or memory resource requests defined for their containers.]]
 - [[https://github.com/fabric8io/kubernetes-client][fabric8io/kubernetes-client: Java client for Kubernetes & OpenShift]]
