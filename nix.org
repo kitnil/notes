@@ -1817,6 +1817,7 @@ builtins.match "php([[:alnum:]])([[:alnum:]])" "php70"
 
 - [[https://github.com/grwlf/nixos-ssh-over-tls][grwlf/nixos-ssh-over-tls: NixOS module which hides both HTTP and SSH daemons behind SSL proxy on the same port]]
 - [[https://github.com/obsidiansystems/socket-over-tls-service][obsidiansystems/socket-over-tls-service: A NixOS service that forwards a Unix domain socket over TLS]]
+- [[https://github.com/Athena-OS/athena-nix][Athena-OS/athena-nix: Athena OS is a NixOS-based distro focused on Cybersecurity. Learn, practice and enjoy with any hacking tool!]]
 
 * NixOS
   #+begin_src nix
