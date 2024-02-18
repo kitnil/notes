@@ -43,6 +43,7 @@ Jenkins is now one of the most widely used CI/CD tools and has a large and activ
 - [[https://github.com/fabric8io/jenkins-pipeline-library][fabric8io/jenkins-pipeline-library: a collection of reusable jenkins pipelines and pipeline functions]]
 - [[https://github.com/jenkins-infra/pipeline-library][jenkins-infra/pipeline-library: Collection of custom steps and variables for our Jenkins instance(s)]]
 - [[https://github.com/HariSekhon/Jenkins][HariSekhon/Jenkins: Jenkins - Advanced Jenkinsfile & Groovy Shared Library of reusable functions and pipelines - including for AWS, GCP, Docker, Kubernetes, ArgoCD, Slack notifications, Git Merge, Terraform, Cloudflare, Jenkins Job Backups, most major Docker registries, DockerHub, GHCR, ECR, GCR, GAR, ACR, GitLab, Quay]]
+- [[https://github.com/daluobai-devops/jenkins-shared-library/tree/main][daluobai-devops/jenkins-shared-library: Jenkins Pipeline Extending with Shared Libraries]]
 
 * Examples
 - [[https://github.com/hoto/jenkinsfile-examples][hoto/jenkinsfile-examples: Executable examples of Jenkinsfiles.]]
