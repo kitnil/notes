@@ -57,5 +57,6 @@ bind-address = ":8088"
 - [[https://github.com/acouvreur/ssh-log-to-influx][acouvreur/ssh-log-to-influx: Send SSH authentication logs to influxdb with geohashing IP]]
 
 * Tools
+- [[https://github.com/influxdata/helm-charts][influxdata/helm-charts: Official Helm Chart Repository for InfluxData Applications]]
 - [[https://artifacthub.io/packages/helm/inspur/influxdb-srelay][influxdb-srelay 0.0.2 · helm/inspur]]
 - [[https://github.com/toni-moreno/syncflux][toni-moreno/syncflux: SyncFlux is an Open Source InfluxDB Data synchronization and replication tool for migration purposes or HA clusters]]
