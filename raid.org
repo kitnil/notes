@@ -10,6 +10,9 @@
 
 - [[https://habr.com/ru/post/100952/][Миграция с RAID1 на RAID5 в mdadm без потери данных / Хабр]]
 
+- Increase rebuild time
+  : echo max > /sys/block/md0/md/sync_max
+
 - Stop array
   : root@guixsd ~ [env]# mdadm -S /dev/md0 
   : mdadm: stopped /dev/md0
