@@ -3,6 +3,11 @@
 :END:
 #+title: grub
 
+* Cheat sheet
+
+- install grub removable and do not use nvram
+  : /gnu/store/czyrgpc8v9p24ids9yr5rkma7iy13ap5-grub-efi-2.06/sbin/grub-install --boot-directory /mnt/guix-3/boot --efi-directory /boot/efi --no-nvram --target=x86_64-efi --removable
+
 * /boot/grub/grub.cfg examples
 
 ** Fedora
