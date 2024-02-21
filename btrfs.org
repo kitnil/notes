@@ -102,3 +102,140 @@ Change quota from =excl= to =ref=.
 
   This blog is powered by cl-yag!
 #+end_example
+
+* [[https://cowboyprogrammer.org/2014/12/encrypt-a-btrfs-raid5-array-in-place/][Encrypt a BTRFS RAID5-array in-place · Cowboy Programmer]]
+
+2014-12-28 · 733 words · 4 minute read
+
+[[https://cowboyprogrammer.org/tags/linux][When I decided I needed more disk space for media and virtual machine (VM)
+images, I decided to throw some more money at the problem and get three 3TB
+hard drives and run [[https://btrfs.wiki.kernel.org/index.php/Main_Page][BTRFS]]
+in [[https://en.wikipedia.org/wiki/RAID#Standard_levels][RAID5]]. It’s still somewhat experimental, but has proven very solid for me.
+
+RAID5 means that one drive can completely fail, but all the data is still
+intact. All one has to do is insert a new drive and the drive will be
+reconstructed. While RAID5 protects against a complete drive failure, it does
+nothing to prevent a single bit to be flipped to due cosmic rays or
+electricity spikes.
+
+BTRFS is a new filesystem for Linux which does what ZFS does for BSD. The two
+important features which it offers over previous systems is: copy-on-write
+(COW), and bitrot protection. See, when running RAID with BTRFS, if a single
+bit is flipped, BTRFS will detect it when you try to read the file and correct
+it (if running in RAID so there’s redundancy). COW means you can take
+snapshots of the entire drive instantly without using extra space. Space will
+only be required when stuff change and diverge from your snapshots.
+
+See [[http://arstechnica.com/information-technology/2014/01/bitrot-and-atomic-cows-inside-next-gen-filesystems/][Arstechnica]] for why /BTRFS/ is da shit for your next drive or system.
+
+What I did not do at the time was encrypt the drives. [[http://www.linuxvoice.com/][Linux Voice #11]] had a
+very nice article on encryption so I thought I’d set it up. And because I’m
+using RAID5, it is actually possible for me to encrypt my drives using
+[[https://wiki.archlinux.org/index.php/Dm-crypt/Device_encryption][dm-crypt/LUKS]] in-place, while the whole shebang is mounted, readable and
+usable :)
+
+Some initial mistakes meant I had to actually reboot the system, so I thought
+I’d write down how to do it correctly. So to summarize, the goal is to convert
+three disks to three encrypted disks. BTRFS will be moved from using the
+drives directly, to using the LUKS-mapped.
+
+*** Unmount the raid system (time 1 second)
+
+Sadly, we need to unmount the volume to be able to “remove” the drive. This
+needs to be done so the system can understand that the drive has
+“vanished”. It will only stay unmounted for about a minute though.
+
+#+begin_src
+sudo umount /path/to/vol
+
+#+end_src
+
+This is assuming you have configured your *fstab* with all the details. For
+example, with something like this (ALWAYS USE UUID!!)
+
+#+begin_src
+# BTRFS Systems UUID="ac21dd50-e6ee-4a9e-abcd-459cba0e6913" /mnt/btrfs btrfs
+defaults 0 0
+
+#+end_src
+
+Note that no modification of the *fstab* will be necessary if you have used
+UUID.
+
+*** Encrypt one of the drives (time 10 seconds)
+
+Pick one of the drives to encrypt. Here it’s =/dev/sdc= :
+
+#+begin_src
+sudo cryptsetup luksFormat -v /dev/sdc
+
+#+end_src
+
+*** Open the encrypted drive (time 30 seconds)
+
+To use it, we have to open the drive. You can pick any name you want:
+
+#+begin_src
+sudo cryptsetup luksOpen /dev/sdc DRIVENAME
+#+end_src
+
+To make this happen on boot, find the new /UUID/ of =/dev/sdc= with =blkid= :
+
+#+begin_src
+sudo blkid
+#+end_src
+
+[[https://cowboyprogrammer.org/images/2014/Dec/Screenshot-from-2014-12-29-13-28-29.png]]
+
+So for me, the drive has a the following /UUID:/
+=f5d3974c-529e-4574-bbfa-7f3e6db05c65=. Add the following line to
+=/etc/crypttab= with your desired drive name and your /UUID/ (without any
+quotes):
+
+#+begin_src
+DRIVENAME UUID=your-uuid-without-quotes none luks
+#+end_src
+
+Now the system will ask for your password on boot.
+
+*** Add the encrypted drive to the raid (time 20 seconds)
+
+First we have to remount the raid system. This will fail because there is a
+missing drive, unless we add the option /degraded/ .
+
+#+begin_src
+sudo mount -o degraded /path/to/vol
+#+end_src
+
+There will be some complaints about missing drives and such, which is exactly
+what we expect. Now, just add the new drive:
+
+#+begin_src
+sudo btrfs device add /dev/mapper/DRIVENAME /path/to/vol
+#+end_src
+
+*** Remove the missing drive (time 14 hours)
+
+The final step is to remove the old drive. We can use the special name
+/missing/ to remove it:
+
+#+begin_src
+sudo btrfs device delete missing /path/to/vol
+#+end_src
+
+This can take a really long time, and by long I mean ~15 hours if you have a
+terrabyte of data. But, you can still use the drive during this process so
+just be patient.
+
+[[https://cowboyprogrammer.org/images/2014/Dec/Screenshot-from-2014-12-29-12-48-45.png]]
+
+For me it took 14 hours 34 minutes. The reason for the delay is because the
+/delete/ command will force the system to rebuild the missing drive on your
+new encrypted volume.
+
+*** Next drive, rinse and repeat
+
+Just unmount the raid, encrypt the drive, add it back and delete the
+missing. Repeat for all drives in your array. Once the last drive is done,
+unmount the array and remount it without the =-o degraded= option. Now you
+have an encrypted RAID array.
