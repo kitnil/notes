@@ -1405,3 +1405,37 @@ To fix the issue boot via PXE or livecd, then:
   mdadm: /dev/md/pop5.majordomo.ru:3 has been started with 5 drives (out of 6) and 1 spare.
 #+end_example
 
+* [[https://superuser.com/questions/305716/bad-performance-with-linux-software-raid5-and-luks-encryption][Bad performance with Linux software RAID5 and LUKS encryption - Super User]]
+
+The solution is to set the =stripe_cache_size= feature for md raids.
+
+By default it is set to 256, but it can be increased up to 32768.
+
+This is done by writing the desired size to
+=/sys/block/md0/md/stripe_cache_size= (if the raid is =md0=). On Ask Ubuntu
+there is a [[https://askubuntu.com/questions/20852/making-stripe-cache-size-permanent][solution for setting the value permanently]].
+
+I tested on the exact same RAID as in the question, and I got the following
+numbers:
+
+#+begin_src js
+  size 256: 50 MB/s size 4096: 123 MB/s size 8192: 142 MB/s size 16384: 140 MB/s
+  size 32768: 142 MB/s
+#+end_src
+
+These tests were conducted with Ubuntu 12.04 (Linux 3.2) by writing 10 GB into
+a file with blocks of 1 MB.
+
+Background: The stripe cache stores recently written blocks. If data is
+written continuously, it might happen that during a first write only a part of
+one stripe is written. This means, the RAID code has to read the complete
+stripe from disk, update it, and write it completely again. If a second write
+comes in for another part of the same stripe, all this would have to be done
+again. Now, if the cache is used and still contains the data written by the
+first write, the read that was necessary before the second write can be
+omitted.
+
+Usually a big block size when writing would prevent the problem (because full
+stripes are written at once, and thus no reads at all are necessary). However,
+it seems that the encryption uses only small blocks when writing to the
+underlying device, and thus increasing the cache has a positive effect.
