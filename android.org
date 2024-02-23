@@ -684,6 +684,231 @@ Sources:
 - [[https://habr.com/ru/articles/506870/][Как отключить предупреждение о вреде долгого прослушивания аудио (Android) / Хабр]]
 - [[https://habr.com/ru/companies/gazprommedia/articles/753984/][Публикуем Android приложения автоматически с помощью Gitlab CI / Хабр]]
 
+** [[https://habr.com/ru/articles/792036/][Ваш телефон – секретное оружие: Как превратить его в веб-камеру и оживить ваши онлайн-встречи! (Если у вас Linux)]]
+
+Что объединяет удаленного сотрудника, на долю которого выпало много
+видеозвонков, зарождающуюся звезду YouTube и начинающего стримера? Все они,
+рано или поздно, осознают неотъемлемую важность повышения качества
+изображения, которое предоставляется их зрителям. А еще у них наверняка есть
+какой-нибудь Xiaomi Nano Porridge 10 Pro с довольно неплохой матрицей. И я не
+исключение, бросив вызов этой проблеме по-программистски и постаравшись
+обойтись без больших финансовых затрат, решением которой и хочу поделиться с
+вами. Добро пожаловать под кат!
+
+[[https://habrastorage.org/getpro/habr/upload_files/3ef/ba1/4aa/3efba14aaa51fc3459658b606dd1edb7.gif]]
+
+Гифка из интернета
+
+*** Дано
+
+- Рабочая машина на Linux
+  
+- Телефон с камерой
+  
+- USB кабель
+  
+
+*** TL;DR
+
+Идея проста, мы собираемся пробросить поток с камеры телефона на нашу рабочую
+лошадку и привязать его к виртуальному девайсу, который мы потом сможем
+выбирать как камеру в приложениях. Для подключения к телефону я буду
+использовать [[https://developer.android.com/tools/adb][*adb*]], для получения потока видео [[https://github.com/Genymobile/scrcpy][*scrcpy*]], для создания
+виртуальной камеры в системе [[https://wiki.archlinux.org/title/V4l2loopback][*v4l2loopback*]]
+
+*** Установка
+
+**** ADB
+
+***** Ubuntu/Debian
+
+#+begin_src bash
+sudo apt update sudo apt -y install android-tools-adb
+#+end_src
+
+***** Arch
+
+#+begin_src bash
+pacman -S android-udev
+#+end_src
+
+**** Scrcpy
+
+***** Ubuntu/Debian
+
+#+begin_src bash
+sudo apt install ffmpeg libsdl2-2.0-0 adb wget \\ gcc git pkg-config meson
+                 ninja-build libsdl2-dev \\ libavcodec-dev libavdevice-dev
+                 libavformat-dev libavutil-dev \\ libswresample-dev
+                 libusb-1.0-0 libusb-1.0-0-dev sudo apt install scrcpy
+#+end_src
+
+***** Arch
+
+#+begin_src bash
+pacman -S scrcpy
+#+end_src
+
+Возможно, вам понадобится установить/обновить какие-то зависимости. Полную
+инструкцию можно найти [[https://github.com/Genymobile/scrcpy/blob/master/doc/linux.md][здесь]]
+
+***** Установка из репозитория
+
+В том случае, если вы хотите последнюю версию или собранный бинарник оказался
+с проблемой, которую решили в одном из новых релизов
+
+#+begin_src bash
+git clone <https://github.com/Genymobile/scrcpy> cd scrcpy
+./install_release.sh
+#+end_src
+
+**** Сборка вручную
+
+[[https://github.com/Genymobile/scrcpy/blob/master/doc/build.md][Тык]]
+
+**** v4l2loopback-utils
+
+***** Ubuntu/Debian
+
+#+begin_src bash
+sudo apt install v4l2loopback-dkms sudo apt install v4l2loopback-utils
+#+end_src
+
+***** Arch
+
+#+begin_src bash
+pacman -S v4l2loopback-dkms pacman -S v4l2loopback-utils
+#+end_src
+
+*** Подключаем устройство
+
+- Включаем на телефоне [[https://developer.android.com/studio/debug/dev-options#enable][USB debugging]]
+  
+- Подключаем телефон к компьютеру по USB и вводим следующую команду и
+  убеждаемся, что он в нашем поле зрения
+  
+
+#+begin_src bash
+adb devices
+#+end_src
+
+Если вывод из консоли содержит =no permissions=
+
+#+begin_src bash
+adb devices List of devices attached 4df15d6e02a55f15 device ????????????  no
+permissions
+#+end_src
+
+То идем [[https://stackoverflow.com/questions/14460656/android-debug-bridge-adb-device-no-permissions][сюда]]
+
+**** Wifi
+
+- Подключаем телефон к той же сети, в которой находится компьютер
+  
+- Подключаем телефон к компьютеру по USB и вводим
+
+#+begin_src bash
+adb tcpip 5555
+#+end_src
+
+- Отключаем телефон от USB
+  
+- Узнаем IP адрес нашего телефона. Например, так *Settings*  >  *About tablet*
+   (or  *About phone* ) >  *Status*  >  *IP address*
+  
+- Подключаемся к телефону по его IP адресу
+#+begin_src bash
+adb connect device_ip_address:5555
+#+end_src
+
+- Убеждаемся, что телефон подключен
+#+begin_src bash
+adb devices List of devices attached device_ip_address:5555 device
+#+end_src
+
+Для большей информации можно [[https://developer.android.com/tools/adb#wireless][сюда]]
+
+*** Создаем виртуальный девайс
+
+#+begin_src bash
+sudo modprobe v4l2loopback devices=1 video_nr=22 exclusive_caps=1
+card_label="Virtual Webcam"
+#+end_src
+
+Это создаст новый видео девайс  =/dev/video22= . Вы можете определить номер
+девайса на ваше усмотрение и вкус.
+
+Смотрим, что наш девайс создался:
+
+#+begin_src bash
+v4l2-ctl --list-devices
+#+end_src
+
+*** Магия!
+
+Стартуем =scrcpy= . Он подключается к единственному подключенному устройству
+по умолчанию:
+
+#+begin_src bash
+scrcpy -m1920 --v4l2-sink=/dev/video22 --video-source=camera --no-audio
+#+end_src
+
+Заходим в любое приложение, позволяющее протестировать камеру, и сидим
+довольные!
+
+Если выдается следующая ошибка:
+
+#+begin_src bash
+[server] ERROR: Encoding error: android.media.MediaCodec$CodecException: start
+failed WARN: Device disconnected [server] ERROR: Exception on thread
+Thread[video,5,main]
+#+end_src
+
+Это значит, что вам надо поставить меньшее разрешение. Сделать это можно
+напрямую через параметр ~--camera-size=1920x1080~ или используя =-m= /
+=--max-size= , например =-m1920= , =-m1080=
+
+***** Дополнительные настройки
+
+- Подключиться к телефону по его серийному номеру
+#+begin_src bash
+--serial=device_serial
+#+end_src
+
+- Убрать открывающееся окно с видео
+#+begin_src bash
+--no-video-playback
+#+end_src
+
+- Посмотреть доступные камеры:
+#+begin_src bash
+scrcpy --list-cameras scrcpy --list-camera-sizes
+#+end_src
+
+- Указать, с какой камеры будет браться поток:
+#+begin_src bash
+--camera-id=0
+#+end_src
+
+- Указать размер выходного потока:
+#+begin_src bash
+--camera-size=1840x444
+#+end_src
+
+#+begin_src bash
+-m1920 m1920 m1080
+#+end_src
+
+- Повернуть камеру на определенный угол:
+#+begin_src bash
+--orientation=90
+#+end_src
+
+- FPS
+#+begin_src bash
+--camera-fps=60
+#+end_src
+
 * Libraries
 - [[https://github.com/ajalt/clikt][ajalt/clikt: Multiplatform command line interface parsing for Kotlin]]
 
