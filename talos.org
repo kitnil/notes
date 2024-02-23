@@ -1,0 +1,159 @@
+* [[https://habr.com/ru/companies/flant/articles/440810/][Представлен Talos — «современный Linux-дистрибутив для Kubernetes»]]
+
+На днях американский инженер Andrew Rynhard [[https://www.reddit.com/r/kubernetes/comments/aqt0u9/talos_a_modern_linux_distribution_for_kubernetes/][представил]] интересный проект:
+компактный дистрибутив Linux, предназначенный специально для запуска
+Kubernetes-кластеров. Он получил название из древнегреческой мифологии —
+[[https://github.com/autonomy/talos][Talos]].
+
+Проект появился под вдохновением от [[https://twitter.com/kelseyhightower/status/650468942410989568][твита Kelsey Hightower'а]] ещё 2015 года, в
+котором он говорил, что нам осталось лишь дождаться появления условной KubeOS
+(после чего жизнь облачных окружений станет окончательно замечательной):
+
+[[https://habrastorage.org/r/w1560/webt/ct/ve/hu/ctvehuwa-3w4mimsjrdkig-ick4.png]]
+
+ /К слову, с появлением Talos эта история [[https://twitter.com/autonomyio/status/1096562962557394945][получила продолжение]]: некто ответил
+ на исторический твит, что такая система уже появилась, и автор Talos заявил,
+ что будет рад, если Kelsey посмотрит на проект. Реакции последнего, впрочем,
+ (пока) не последовало./
+
+Судя по [[https://github.com/autonomy/talos/graphs/contributors][всему]], разработкой Talos занимался один человек /(представляющий себя
+в рамках целой компании — [[https://www.autonomy.io/][Autonomy]])/ — ушло у него на это более года. И вот
+теперь, когда статус минимальной готовности достигнут, автор ожидает, что к
+нему присоединятся другие представители Kubernetes/cloud
+native-сообщества. Итак, в чём же суть проекта?
+
+** Принципы и особенности Talos
+Talos позиционируется как современный Linux-дистрибутив, созданный специально
+(и исключительно!) для Kubernetes. Для достижения поставленной цели в его
+реализации придерживаются следующих подходов:
+
+*** Минимализм
+Повсеместный минимализм — один из краеугольных камней архитектуры Talos. Одним
+из ярких примеров здесь является используемая [[https://talos.autonomy.io/components/init/][служба инициализации]], которая
+(вопреки современным тенденциям в этой области) следует философии UNIX, что
+«каждая программа делает одну вещь, но хорошо»:
+
+#+begin_quote
+Мы хотели сделать init ориентированным на единственную задачу — запуск
+Kubernetes. В нём попросту нет механизмов для каких-либо других действий.
+#+end_quote
+
+Разработчики пошли дальше и лишили свою операционную систему привычного
+системным администраторам пользовательского доступа к хосту: *в Talos нет ни
+командных оболочек, ни SSH-демона, ни даже возможности запускать собственные
+процессы* на хосте. И действительно: зачем всё это, если вам нужно запускать
+Kubernetes и только? Практически все процессы в Talos работают в рамках
+контейнеров.
+
+Однако, поскольку мир не так уж идеален (чтобы ОС полностью функционировала
+«сама»), инструменты для эксплуатации ОС всё же есть:
+
+- демон [[https://talos.autonomy.io/components/osd/][osd]], реализованный по принципу предоставления минимально необходимых
+  привилегий (Principle of Least Privilege) и предлагающий API (на базе gRPC)
+  для управления узлами;
+- CLI-утилита [[https://talos.autonomy.io/components/osctl/][osctl]], позволяющая общаться со службой osd, что запускается на
+  каждом узле.
+
+Так и реализован набор базовых возможностей по эксплуатации: перезагрузка
+служб и узлов кластера, получение логов ядра (dmesg) и из контейнеров, вставка
+данных в конфигурационные файлы узлов и т.п.
+
+Все перечисленные компоненты (init, osd, osctl…), как и [[https://github.com/autonomy/talos/tree/master/internal/app][некоторые другие]] в
+составе дистрибутива, *написаны на языке Go* . К слову, весь исходный код
+распространяется на условиях Open Source-лицензии Mozilla Public License 2.0.
+
+*** Безопасность
+Описанный выше минималистский подход (всё необходимое *только* для запуска
+Kubernetes) + принцип выдачи лишь минимальных привилегий уже сами по себе
+снижают потенциальную поверхность атаки. Кроме того, в Talos:
+- включённое в состав ядро настроено в соответствии с рекомендациями проекта
+  [[http://kernsec.org/wiki/index.php/Kernel_Self_Protection_Project][KSSP]] (Kernel Self Protection Project), фокусирующегося на возможностях ядра
+  к самостоятельной защите от потенциальных багов и уязвимостей (вместо
+  использования userspace-утилит для тех же целей);
+- корневая файловая система монтируется в read-only, что — в совокупности с
+  отсутствием shell'ов/SSH — делает систему неизменной (immutable);
+- используется двухсторонний TLS (mTLS) для взаимодействия с API;
+- настройки и конфигурации Kubernetes применяются в соответствии с [[https://www.cisecurity.org/benchmark/kubernetes/][указаниями
+  CIS]] (Center for Internet Security).
+
+Дополнительный плюс, вытекающий из минимализма и фокусировки на immutable, —
+*предсказуемость* системы в поведении (т.к. снижается число факторов, влияющих
+на окружение).
+
+*** Актуальность
+Авторы обещают базировать Talos на предпоследнем upstream-релизе Kubernetes
+(впрочем, прямо сейчас [[https://github.com/andrewrynhard/talos/commit/1219ae7][поддерживается]] K8s 1.13.3) и последнем доступном
+LTS-релизе ядра Linux (сейчас используется 4.19.10).
+
+*** Системные компоненты
+Основными составляющими дистрибутива (помимо ядра и «фирменных» утилит)
+являются:
+- musl-libc — как стандартная библиотека Си;
+- golang — для =init= и других своих инструментов;
+- gRPC — для API;
+- containerd — для запуска системных служб в контейнерах (используется с
+  плагином [[https://github.com/containerd/cri][CRI]] для Kubernetes);
+- kubeadm — для развёртывания кластеров.
+
+** Работа с Talos
+Примеры деплоя Talos для случаев использования AWS, KVM и Xen приведены в
+[[https://talos.autonomy.io/examples/][документации проекта]]. Для быстрой иллюстрации того, как это выглядит, вот
+алгоритм инсталляции с виртуальными машинами Linux KVM:
+
+1. Установка узла мастера на хост:
+#+begin_src bash
+docker run --rm --privileged --volume /dev:/dev \ autonomy/talos:latest image
+ -b /dev/sdb -f -p bare-metal \ -u http://${IP}:8080/master.yaml
+#+end_src
+
+2. Создание ВМ:
+#+begin_src bash
+virt-install -n master --description "Kubernetes master node." \
+--os-type=Linux --os-variant=generic --virt-type=kvm --cpu=host \ --vcpus=2
+--ram=4096 --disk path=/dev/sdb \ --network
+bridge=br0,model=e1000,mac=52:54:00:A8:4C:E1 \ --graphics none --boot hd --rng
+/dev/random
+#+end_src
+
+3. Аналогичные действия для создания рабочего узла:
+#+begin_src bash
+docker run --rm --privileged --volume /dev:/dev \ autonomy/talos:latest image
+ -b /dev/sdc -f -p bare-metal \ -u http://${IP}:8080/worker.yaml
+
+virt-install -n master --description "Kubernetes worker node." \
+--os-type=Linux --os-variant=generic --virt-type=kvm --cpu=host \ --vcpus=2
+--ram=4096 --disk path=/dev/sdc \ --network
+bridge=br0,model=e1000,mac=52:54:00:B9:5D:F2 \ --graphics none --boot hd --rng
+/dev/random
+#+end_src
+
+Настройка взаимодействия между osd и osctl по большому счёту сводится к
+генерации ключей для их аутентификации (уже упомянутый mTLS) и описана [[https://talos.autonomy.io/configuration/osd/][здесь]].
+
+Дальнейшая работа с ними сводится к командам вроде =osctl reboot=, =osctl
+stats= и =osctl logs=. Демонстрация вывода контейнеров в пространстве имён
+=k8s.io= :
+
+#+begin_src bash
+$ osctl ps -k NAMESPACE ID IMAGE PID STATUS k8s.io 0ca1…  sha256:da86…  2341
+RUNNING k8s.io 356f…  sha256:da86…  2342 RUNNING …  k8s.io e42e…  sha256:4ff8…
+2508 RUNNING k8s.io kubelet k8s.gcr.io/…  2068 RUNNING
+#+end_src
+
+Процесс конфигурации Kubernetes-кластера с Talos — доступен [[https://talos.autonomy.io/configuration/masters/][здесь]] (mater-узлы)
+и [[https://talos.autonomy.io/configuration/workers/][здесь]] (workers).
+
+** Статус и перспективы
+Проект находится в стадии альфа-версии (последний релиз — [[https://github.com/autonomy/talos/releases/tag/v0.1.0-alpha.18][v0.1.0-alpha.18]]) и,
+конечно, на данном этапе выглядит больше как занятный эксперимент, чем
+что-либо по-настоящему близкое к production.
+
+Однако всплеск интереса к Talos после его недавнего анонса (уже 600+ звёзд на
+GitHub) и призыв единственного автора к совместному творчеству могут послужить
+отличным стимулом для его развития.
+
+[[https://habrastorage.org/r/w1560/webt/gw/tz/l2/gwtzl2ri3yoyt-1rculmaeloxxe.png]]
+/Активность в [[https://github.com/autonomy/talos/issues][issues]] проекта Talos в последние дни/
+
+По меньшей мере, в дистрибутиве заложены актуальные для мира cloud native
+идеи, качественная реализация которых — дело времени.
