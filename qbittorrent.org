@@ -5,4 +5,6 @@ ovs-docker add-port br154-vlan154 eth2 qbittorrent --ipaddress=192.168.154.12/24
 - [[https://github.com/witalihirsch/qBitTorrent-fluent-theme][witalihirsch/qBitTorrent-fluent-theme: Fluent theme for qBitTorrent]]
 * Tools
 - [[https://github.com/caseyscarborough/qbittorrent-exporter][caseyscarborough/qbittorrent-exporter: A prometheus exporter for qBittorrent.]]
+- [[https://pypi.org/project/qbittorrent-api/][qbittorrent-api · PyPI]]
+  - [[https://github.com/rmartin16/qbittorrent-api][rmartin16/qbittorrent-api: Python client implementation for qBittorrent's Web API]]
 - [[https://github.com/sonalys/animeman][sonalys/animeman: A torrent manager for automatically downloading entries from your anime watch list]]
