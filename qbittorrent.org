@@ -5,6 +5,7 @@ ovs-docker add-port br154-vlan154 eth2 qbittorrent --ipaddress=192.168.154.12/24
 - [[https://github.com/witalihirsch/qBitTorrent-fluent-theme][witalihirsch/qBitTorrent-fluent-theme: Fluent theme for qBitTorrent]]
 * Tools
 - [[https://github.com/caseyscarborough/qbittorrent-exporter][caseyscarborough/qbittorrent-exporter: A prometheus exporter for qBittorrent.]]
+- [[https://github.com/ch3p4ll3/QBittorrentBot][ch3p4ll3/QBittorrentBot: This bot can control qbittorrent easily from Telegram! You can add magnet or torrent files, have a list of active downloads, delete, pause and restart downloads.]]
 - [[https://pypi.org/project/qbittorrent-api/][qbittorrent-api · PyPI]]
   - [[https://github.com/rmartin16/qbittorrent-api][rmartin16/qbittorrent-api: Python client implementation for qBittorrent's Web API]]
 - [[https://github.com/rmartin16/qbittorrentui][rmartin16/qbittorrentui: text user interface for qbittorrent]]
