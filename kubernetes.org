@@ -3695,6 +3695,7 @@ then redeploy with:
 - [[https://github.com/paralus/paralus][paralus/paralus: All-in-one Kubernetes access manager. User-level credentials, RBAC, SSO, audit logs.]]
 - [[https://github.com/parca-dev/parca][parca-dev/parca: Continuous profiling for analysis of CPU and memory usage, down to the line number and throughout time. Saving infrastructure cost, improving performance, and increasing reliability.]]
 - [[https://github.com/patrickdappollonio/kubectl-slice][patrickdappollonio/kubectl-slice: Split multiple Kubernetes files into smaller files with ease. Split multi-YAML files into individual files.]]
+- [[https://github.com/pete911/kubectl-image][pete911/kubectl-image: list container images running in kubernetes cluster]]
 - [[https://github.com/pete911/kubectl-prom][pete911/kubectl-prom: kubectl plugin to query prometheus]]
 - [[https://github.com/pete911/kubectl-rr][pete911/kubectl-rr: kubernetes resource recommendation]]
 - [[https://github.com/pete911/vault-auth-kubernetes][pete911/vault-auth-kubernetes: fully automated vault authentication backend for kubernetes service accounts]]
