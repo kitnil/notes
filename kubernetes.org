@@ -3697,6 +3697,7 @@ then redeploy with:
 - [[https://github.com/patrickdappollonio/kubectl-slice][patrickdappollonio/kubectl-slice: Split multiple Kubernetes files into smaller files with ease. Split multi-YAML files into individual files.]]
 - [[https://github.com/pete911/kubectl-prom][pete911/kubectl-prom: kubectl plugin to query prometheus]]
 - [[https://github.com/pete911/kubectl-rr][pete911/kubectl-rr: kubernetes resource recommendation]]
+- [[https://github.com/pete911/vault-auth-kubernetes][pete911/vault-auth-kubernetes: fully automated vault authentication backend for kubernetes service accounts]]
 - [[https://github.com/piraeusdatastore/linstor-csi][piraeusdatastore/linstor-csi: CSI plugin for LINSTOR]]
 - [[https://github.com/pixel-point/kube-forwarder][pixel-point/kube-forwarder: Easy to use Kubernetes port forwarding manager]]
 - [[https://github.com/pixie-io/pixie][pixie-io/pixie: Instant Kubernetes-Native Application Observability]]
