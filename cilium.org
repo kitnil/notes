@@ -33,6 +33,9 @@
 - dump all bpf network device programs that are attached
   : bpftool net
 
+- Quick overview of all BPF programs currently loaded on the host
+  : kubectl exec -n kube-system ds/cilium -- bpftool prog
+
 - cilium monitor
   : kubectl -n kube-system exec ds/cilium -- cilium monitor
 
