@@ -39,6 +39,11 @@
 - Overview of all active maps
   : kubectl exec -n kube-system ds/cilium -- bpftool map --json --pretty
 
+- Dump the post-verifier BPF instruction image of a specific BPF program, one
+  starting point could be to inspect a specific program, e.g. attached to the
+  tc ingress hook
+  : kubectl exec -n kube-system ds/cilium -- tc filter show dev cilium_host egress
+
 - cilium monitor
   : kubectl -n kube-system exec ds/cilium -- cilium monitor
 
