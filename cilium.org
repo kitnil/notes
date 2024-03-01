@@ -34,10 +34,10 @@
   : bpftool net
 
 - Quick overview of all BPF programs currently loaded on the host
-  : kubectl exec -n kube-system ds/cilium -- bpftool prog
+  : kubectl exec -n kube-system ds/cilium -- bpftool prog --json --pretty
 
 - Overview of all active maps
-  : kubectl exec -n kube-system ds/cilium -- bpftool map
+  : kubectl exec -n kube-system ds/cilium -- bpftool map --json --pretty
 
 - cilium monitor
   : kubectl -n kube-system exec ds/cilium -- cilium monitor
