@@ -43,6 +43,15 @@
   starting point could be to inspect a specific program, e.g. attached to the
   tc ingress hook
   : kubectl exec -n kube-system ds/cilium -- tc filter show dev cilium_host egress
+  #+begin_example
+    filter protocol all pref 1 bpf chain 0
+    filter protocol all pref 1 bpf chain 0 handle 0x1 cil_from_host-cilium_host direct-action not_in_hw id 1802 tag a59c69fff508adcf
+  #+end_example
+
+- The program from the object file bpf_host.o, section from-netdev has a BPF
+  program ID of 1802 as denoted in id 1802. Based on this information bpftool
+  can provide some high-level metadata specific to the program
+  : kubectl exec -n kube-system ds/cilium -- bpftool prog show id 1802
 
 - cilium monitor
   : kubectl -n kube-system exec ds/cilium -- cilium monitor
