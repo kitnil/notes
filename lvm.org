@@ -345,6 +345,39 @@ lvchange -ay -v lvm2/ntfsgames
   iostat -x -d 1
 #+end_example
 
+* [[https://mellowhost.com/billing/index.php?rp=/knowledgebase/68/How-to-Extend-meta-data-of-a-thin-pool.html][How to: Extend meta data of a thin pool - Knowledgebase - Mellowhost]]
+Thin pool meta data often gets overflown. It is possible to extend the thin
+pool metadata then the default valut that was set while setting up the thin
+pool. metadata volume is hidden normally from lvs output. One trick is to use
+the following command:
+
+#+begin_example
+  lvs -a
+#+end_example
+  
+This should show the meta data volume to be something like  
+
+#+begin_example
+  thinpool_tmeta
+#+end_example
+
+#+begin_example
+  [root@lvetest1 ~]# lvs -a  
+  LV VG Attr LSize Pool Origin Data% Meta% Move Log Cpy%Sync Convert  
+  [lvol0_pmspare] vg0 ewi------- 64.00m  
+  tp0 vg0 twi-aotz-- 64.00g 0.81 0.87  
+  [tp0_tdata] vg0 Twi-ao---- 64.00g  
+  [tp0_tmeta] vg0 ewi-ao---- 64.00m
+#+end_example
+
+Here it is tp0_tmeta. Now you can extend the tp0_tmeta as like any other
+logical volume:
+#+begin_example
+  lvextend -L+128M /dev/vg0/tp0_tmeta
+#+end_example
+  
+Done!
+
 * ChatGPT
 
 ** Why `lvcreate` sometimes does not add new logical volume as device to `/dev` directory?
