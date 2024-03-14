@@ -65,6 +65,11 @@ ovs-ofctl dump-flows ovsbr0
   : ovs-vsctl set interface vm41032 ingress_policing_rate=100000
   : ovs-vsctl set interface vm41032 ingress_policing_burst=10000
 
+- clean up qos and make max networking interface speed
+  : ovs-vsctl clear Port vm33043 qos
+  : ovs-vsctl set interface vm33043 ingress_policing_rate=1000000
+  : ovs-vsctl set interface vm33043 ingress_policing_burst=100000
+
 * OpenFlow Controlles
 ** Framework
 - [[https://en.wikipedia.org/wiki/ONOS][ONOS - Wikipedia]]
