@@ -818,6 +818,29 @@ Once running, the URL to the dashboard is https://2886795308-30000-simba08.envir
   virt-operator-5df564dc7c-q7mj2     1/1     Running   9 (101m ago)    6h56m
 #+end_example
 
+* kubelet
+** [[https://github.com/kubernetes/kubernetes/issues/42125][No way to configure ExternalIP addresses for a node with kubelet · Issue #42125 · kubernetes/kubernetes]]
+#+begin_example
+  If someone is still looking for a way to define ExternalIP in environment where you don't use any cloud provider, you can set ~--cloud-provider=external~  in Kubelets and update it with a PATCH request, the same way how the cloud providers does it.
+
+  ,#+begin_src bash
+  # (Add token or certificates, depending on how you authenticate to Kube)
+
+  curl -k -v -XPATCH \
+    -H "Accept: application/json" \
+    -H "Content-Type: application/json-patch+json" \
+    https://<YOUR KUBE ADDRESS>/api/v1/nodes/<YOUR NODE NAME>/status \
+    --data '[{"op":"add","path":"/status/addresses/-", "value": {"type": "ExternalIP", "address": "<ADDRESS HERE>"} }]' 
+
+  # Remove the uninitialized taint what external cloud provider set
+  kubectl taint node <YOUR NODE NAME> node.cloudprovider.kubernetes.io/uninitialized-
+  ,#+end_src
+
+  +edit: Actually above didn't work after removed the =--cloud-provider=  flag because then kubelet start to overwrite the addresses. Still looking a way to not use any cloud-provider (we're on bare-metal but configure the ExternalIP.+
+
+  edit2: ~--cloud-provider=external~  disables the kubelet to overwrite the address information
+#+end_example
+
 * kustomize
 
 #+begin_src bash
