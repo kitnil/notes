@@ -33,3 +33,51 @@
       };
     };
 #+end_src
+
+* 
+
+#+begin_example
+  #!/bin/bash
+
+  # Adopted from https://gist.github.com/vishvananda/7094676
+  #
+  # LOCAL_DEVICE=br0 REMOTE_DEVICE=eth0 bin/tunnel.sh xxx.xxx.xxx.xxx yyy.yyy.yyy.yyy 192.168.26.2 192.168.26.1
+
+  set -o nounset -o errexit -o pipefail
+
+  if [ "$4" == "" ]; then
+      echo "usage: $0 <local_ip> <remote_ip> <new_local_ip> <new_remote_ip>"
+      echo "creates an ipsec tunnel between two machines"
+      exit 1
+  fi
+
+  SRC="$1"; shift
+  DST="$1"; shift
+  LOCAL="$1"; shift
+  REMOTE="$1"; shift
+
+  KEY1=0x`dd if=/dev/urandom count=32 bs=1 2> /dev/null| xxd -p -c 64`
+  KEY2=0x`dd if=/dev/urandom count=32 bs=1 2> /dev/null| xxd -p -c 64`
+  ID=0x`dd if=/dev/urandom count=4 bs=1 2> /dev/null| xxd -p -c 8`
+
+  cat <<EOF
+  ip xfrm state flush
+  ip xfrm policy flush
+  ip xfrm state add src $SRC dst $DST proto esp spi $ID reqid $ID mode tunnel auth sha256 $KEY1 enc aes $KEY2
+  ip xfrm state add src $DST dst $SRC proto esp spi $ID reqid $ID mode tunnel auth sha256 $KEY1 enc aes $KEY2
+  ip xfrm policy add src $LOCAL dst $REMOTE dir out tmpl src $SRC dst $DST proto esp reqid $ID mode tunnel
+  ip xfrm policy add src $REMOTE dst $LOCAL dir in tmpl src $DST dst $SRC proto esp reqid $ID mode tunnel
+  ip addr add $LOCAL dev lo
+  ip route add $REMOTE dev ${LOCAL_DEVICE} src $LOCAL
+
+  ip xfrm state flush
+  ip xfrm policy flush
+  ip xfrm state add src $SRC dst $DST proto esp spi $ID reqid $ID mode tunnel auth sha256 $KEY1 enc aes $KEY2
+  ip xfrm state add src $DST dst $SRC proto esp spi $ID reqid $ID mode tunnel auth sha256 $KEY1 enc aes $KEY2
+  ip xfrm policy add src $REMOTE dst $LOCAL dir out tmpl src $DST dst $SRC proto esp reqid $ID mode tunnel
+  ip xfrm policy add src $LOCAL dst $REMOTE dir in tmpl src $SRC dst $DST proto esp reqid $ID mode tunnel
+  ip addr add $REMOTE dev lo
+  ip route add $LOCAL dev ${REMOTE_DEVICE} src $REMOTE
+  EOF
+
+#+end_example
