@@ -1,0 +1,50 @@
+  #+begin_example
+    Geneve tunnels using netlink examples
+    Scenario A - pointing to an interface as the next hop
+
+    Host A configuration (eth0 - 192.168.1.191):
+
+    # Remote Address is the IP of Host B eth0
+    sudo ip link add name geneve0 type geneve id 1000 remote 192.168.1.192
+    sudo ip link set geneve0 up
+    sudo ip addr add 10.200.1.1/32 dev geneve0
+    sudo ip route add 10.200.2.1/32 dev geneve0
+
+    Host B configuration (eth0 - 192.168.1.192):
+
+    # Remote Address is the IP of Host A eth0
+    sudo ip link add name geneve0 type geneve id 1000 remote 192.168.1.191
+    sudo ip link set geneve0 up
+    sudo ip addr add 10.200.2.1/32 dev geneve0
+    sudo ip route add 10.200.1.1/32 dev geneve0
+
+    Verify connectivity between geneve0 interfaces
+
+    # On host A
+    ping 10.200.2.1
+    # On host B
+    ping 10.200.1.1
+
+    Scenario B - pointing to an ip as the next hop with the geneve tunnels on the same broadcast domain
+
+    Host A configuration (eth0 - 192.168.1.191):
+
+    # Remote Address is the IP of Host B eth0
+    sudo ip link add name geneve0 type geneve id 1000 remote 192.168.1.192
+    sudo ip link set geneve0 up
+    sudo ip addr add 10.200.1.1/30 dev geneve0
+
+    Host B configuration (eth0 - 192.168.1.192):
+
+    # Remote Address is the IP of Host A eth0
+    sudo ip link add name geneve0 type geneve id 1000 remote 192.168.1.191
+    sudo ip link set geneve0 up
+    sudo ip addr add 10.200.1.2/30 dev geneve0
+
+    Verify connectivity between geneve0 interfaces
+
+    # On host A
+    ping 10.200.1.2
+    # On host B
+    ping 10.200.1.1
+  #+end_example
