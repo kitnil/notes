@@ -83,6 +83,7 @@ https://github.com/iovisor/bcc/blob/master/QUICKSTART.md
 - [[https://github.com/lizrice/ebpf-networking][lizrice/ebpf-networking: The Beginner's Guide to eBPF Programming for Networking]]
 - [[https://github.com/lizrice/libbpfgo-beginners][lizrice/libbpfgo-beginners: Basic eBPF examples in Golang using libbpfgo]]
 - [[https://github.com/mehrdadrad/tcpdog][mehrdadrad/tcpdog: eBPF based TCP observability.]]
+- [[https://github.com/Netflix/bpftop][Netflix/bpftop: bpftop provides a dynamic real-time view of running eBPF programs. It displays the average runtime, events per second, and estimated total CPU % for each program.]]
 - [[https://github.com/parca-dev/parca-agent][parca-dev/parca-agent: eBPF based always-on profiler auto-discovering targets in Kubernetes and systemd, zero code changes or restarts needed!]]
 - [[https://github.com/pchaigno/tail-call-bench][pchaigno/tail-call-bench: Benchmark tools to evaluate the cost of BPF tail calls]]
 - [[https://github.com/redsift/redbpf][redsift/redbpf: Rust library for building and running BPF/eBPF modules]]
