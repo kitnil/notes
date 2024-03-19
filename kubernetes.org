@@ -608,6 +608,23 @@ the following new units were started: containerd.service, kubelet.service
 - [[https://github.com/rancher/k3os][rancher/k3os: Purpose-built OS for Kubernetes, fully managed by Kubernetes.]]
 - [[https://github.com/techno-tim/k3s-ansible][techno-tim/k3s-ansible: A fully automated HA k3s etcd install with kube-vip, MetalLB, and more]]
 - [[https://balaskas.gr/blog/2022/08/31/creating-a-kubernetes-cluster-with-kubeadm-on-ubuntu-2204-lts/][Ευάγγελος Μπαλάσκας - Creating a kubernetes cluster with kubeadm on Ubuntu 22.04 LTS » Evaggelos Balaskas - System Engineer]]
+** Installation on Debian
+
+#+begin_example
+  sudo apt-get update
+
+  sudo apt-get install -y apt-transport-https ca-certificates curl gpg
+
+  # If the folder `/etc/apt/keyrings` does not exist, it should be created before the curl command, read the note below.
+  # sudo mkdir -p -m 755 /etc/apt/keyrings
+  curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.29/deb/Release.key | sudo gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg
+
+  # This overwrites any existing configuration in /etc/apt/sources.list.d/kubernetes.list
+  echo 'deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.29/deb/ /' | sudo tee /etc/apt/sources.list.d/kubernetes.list
+
+  sudo apt-get update
+  sudo apt-get install -y kubeadm kubelet kubectl
+#+end_example
 
 ** Rancher
 
