@@ -24,6 +24,9 @@
 
 - [[https://docs.cilium.io/en/stable/operations/troubleshooting/][Troubleshooting — Cilium 1.14.4 documentation]]
 
+- [[https://docs.cilium.io/en/stable/api/#get--cluster-nodes][API Reference — Cilium 1.15.2 documentation]]
+  : curl --unix-socket /var/run/cilium/cilium.sock http://localhost/v1/cluster/nodes
+
 - list all endpoints on a node, show if if has ingress and egress policy attached, and give endpoint id
   : cilium endpoint list
 
