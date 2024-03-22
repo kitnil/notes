@@ -3505,6 +3505,7 @@ then redeploy with:
 - [[https://github.com/eldadru/ksniff][eldadru/ksniff: Kubectl plugin to ease sniffing on kubernetes pods using tcpdump and wireshark]]
 - [[https://github.com/EmilyShepherd/kiOS][EmilyShepherd/kiOS: Slim Operating System for running Kubernetes with minimal overhead]]
 - [[https://github.com/emissary-ingress/emissary][emissary-ingress/emissary: open source Kubernetes-native API gateway for microservices built on the Envoy Proxy]]
+- [[https://github.com/enix/kube-image-keeper][enix/kube-image-keeper: kuik is a container image caching system for Kubernetes]]
 - [[https://github.com/enix/x509-certificate-exporter][enix/x509-certificate-exporter: A Prometheus exporter to monitor x509 certificates expiration in Kubernetes clusters or standalone]]
 - [[https://github.com/eraser-dev/eraser][eraser-dev/eraser: 🧹 Cleaning up images from Kubernetes nodes]]
 - [[https://github.com/estahn/k8s-image-swapper][estahn/k8s-image-swapper: Mirror images into your own registry and swap image references automatically.]]
