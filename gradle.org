@@ -3,20 +3,20 @@
 :END:
 #+title: Gradle
 
-- [[https://bmuschko.github.io/gradle-docker-plugin/][Gradle Docker Plugin User Guide & Examples]]
-- [[https://github.com/fabiomsr/drawable-optimizer][fabiomsr/drawable-optimizer: Gradle plugin to optimize png files and reduce resultant apk size within an Android project.]]
-- [[https://github.com/nebula-plugins/gradle-lint-plugin][nebula-plugins/gradle-lint-plugin: A pluggable and configurable linter tool for identifying and reporting on patterns of misuse or deprecations in Gradle scripts.]]
-- [[https://github.com/avast/gradle-docker-compose-plugin][avast/gradle-docker-compose-plugin: Simplifies usage of Docker Compose for integration testing in Gradle environment.]]
-- [[https://github.com/bmuschko/gradle-nexus-plugin][bmuschko/gradle-nexus-plugin: Gradle plugin for configuring and uploading artifacts to Sonatype Nexus]]
-- [[https://github.com/betamaxteam/betamax][betamaxteam/betamax: Betamax is a tool for mocking external HTTP resources such as web services and REST APIs in your tests. The project was inspired by the VCR library for Ruby.]]
-- [[https://github.com/rundeck/rundeck][rundeck/rundeck: Enable Self-Service Operations: Give specific users access to your existing tools, services, and scripts]]
-- [[https://github.com/geb/geb][geb/geb: Very Groovy Browser Automation]]
-- [[http://grokconstructor.appspot.com/do/match#result][Test grok patterns]]
 - [[https://github.com/android/gradle-recipes][android/gradle-recipes: Ready-to-use recipes for common build customizations that showcase the Android Gradle plugin's public APIs and DSL.]]
+- [[https://github.com/avast/gradle-docker-compose-plugin][avast/gradle-docker-compose-plugin: Simplifies usage of Docker Compose for integration testing in Gradle environment.]]
+- [[https://github.com/betamaxteam/betamax][betamaxteam/betamax: Betamax is a tool for mocking external HTTP resources such as web services and REST APIs in your tests. The project was inspired by the VCR library for Ruby.]]
+- [[https://github.com/bmuschko/gradle-nexus-plugin][bmuschko/gradle-nexus-plugin: Gradle plugin for configuring and uploading artifacts to Sonatype Nexus]]
+- [[https://github.com/fabiomsr/drawable-optimizer][fabiomsr/drawable-optimizer: Gradle plugin to optimize png files and reduce resultant apk size within an Android project.]]
+- [[https://github.com/geb/geb][geb/geb: Very Groovy Browser Automation]]
+- [[https://bmuschko.github.io/gradle-docker-plugin/][Gradle Docker Plugin User Guide & Examples]]
 - [[https://github.com/int128/gradle-ssh-plugin][int128/gradle-ssh-plugin: Gradle SSH Plugin]]
+- [[https://github.com/nebula-plugins/gradle-lint-plugin][nebula-plugins/gradle-lint-plugin: A pluggable and configurable linter tool for identifying and reporting on patterns of misuse or deprecations in Gradle scripts.]]
 - [[https://github.com/raphiz/buildGradleApplication][raphiz/buildGradleApplication: A Nix builder function for packaging Gradle applications.]]
+- [[https://github.com/rundeck/rundeck][rundeck/rundeck: Enable Self-Service Operations: Give specific users access to your existing tools, services, and scripts]]
+- [[http://grokconstructor.appspot.com/do/match#result][Test grok patterns]]
 
-- [[https://stackoverflow.com/questions/32143437/how-to-list-the-configured-repositories][gradle - How to list the configured repositories? - Stack Overflow]]
+* [[https://stackoverflow.com/questions/32143437/how-to-list-the-configured-repositories][gradle - How to list the configured repositories? - Stack Overflow]]
 #+begin_example
   task listrepos {
       doLast {
