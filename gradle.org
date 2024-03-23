@@ -7,6 +7,7 @@
 - [[https://github.com/avast/gradle-docker-compose-plugin][avast/gradle-docker-compose-plugin: Simplifies usage of Docker Compose for integration testing in Gradle environment.]]
 - [[https://github.com/betamaxteam/betamax][betamaxteam/betamax: Betamax is a tool for mocking external HTTP resources such as web services and REST APIs in your tests. The project was inspired by the VCR library for Ruby.]]
 - [[https://github.com/bmuschko/gradle-nexus-plugin][bmuschko/gradle-nexus-plugin: Gradle plugin for configuring and uploading artifacts to Sonatype Nexus]]
+- [[https://github.com/CrazyChaoz/gradle-dot-nix][CrazyChaoz/gradle-dot-nix: This flake can generate the full maven repo required to build a gradle app from gradle/verification-metadata.xml, without code generation.]]
 - [[https://github.com/fabiomsr/drawable-optimizer][fabiomsr/drawable-optimizer: Gradle plugin to optimize png files and reduce resultant apk size within an Android project.]]
 - [[https://github.com/geb/geb][geb/geb: Very Groovy Browser Automation]]
 - [[https://bmuschko.github.io/gradle-docker-plugin/][Gradle Docker Plugin User Guide & Examples]]
