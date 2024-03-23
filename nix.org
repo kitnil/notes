@@ -2101,6 +2101,7 @@ builtins.match "php([[:alnum:]])([[:alnum:]])" "php70"
 - [[https://github.com/chayleaf/notnft][notnft: Nix DSL for nftables]]
 - [[https://github.com/numtide/nar-serve][numtide/nar-serve: Unpack and serve NAR file content on the fly]]
 - [[https://github.com/numtide/nixos-anywhere][numtide/nixos-anywhere: install nixos everywhere via ssh]]
+- [[https://github.com/numtide/nix-vm-test][numtide/nix-vm-test: Re-use the NixOS VM test infrastructure to test Ubuntu, Debian, and Fedora machines.]]
 - [[https://github.com/numtide/srvos][numtide/srvos: NixOS profiles for servers]]
 - [[https://github.com/numtide/system-manager][numtide/system-manager: Manage system config using nix on any distro]]
 - [[https://github.com/oxalica/nil][oxalica/nil: NIx Language server, an incremental analysis assistent for writing in Nix.]]
