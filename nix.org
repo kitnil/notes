@@ -2059,6 +2059,7 @@ builtins.match "php([[:alnum:]])([[:alnum:]])" "php70"
 - [[https://floxdev.com/][flox: Manage and share development environments, package your projects for others, and publish artifacts anywhere. Harness the power of Nix. Develop, package, publish, run anywhere.]]
 - [[https://github.com/fooker/nftables.nix][fooker/nftables.nix: a NixOS module providing declarative configuration of firewall rules using nftables]]
 - [[https://github.com/fricklerhandwerk/attr-cmd][fricklerhandwerk/attr-cmd: Build shell commands from Nix attribute sets.]]
+- [[https://github.com/fricklerhandwerk/lazy-run][fricklerhandwerk/lazy-run: Build executables from Nix derivations on demand.]]
 - [[https://github.com/Gabriella439/nix-diff][Gabriella439/nix-diff: Explain why two Nix derivations differ]]
 - [[https://github.com/gmodena/nix-flatpak][gmodena/nix-flatpak: Install flatpaks declaratively]]
 - [[https://github.com/gvolpe/nmd][gvolpe/nmd: NixOS Module Documentation generator]]
