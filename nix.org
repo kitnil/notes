@@ -2081,6 +2081,7 @@ builtins.match "php([[:alnum:]])([[:alnum:]])" "php70"
 - [[https://github.com/Mic92/nix-update][Mic92/nix-update: Swiss-knife for updating nix packages.]]
 - [[https://github.com/mlieberman85/nixbom][mlieberman85/nixbom]]
 - [[https://mynixos.com/][MyNixOS - Graphical editor for Nix flakes. Create and manage configurations and modules for NixOS and Nix home-manager. Rather a Nix generator than a Nix editor, because it does not allow to import Nix files.]]
+- [[https://github.com/Naxdy/nix-bwrapper][Naxdy/nix-bwrapper: A user-friendly method of sandboxing applications using bubblewrap with portals support.]]
 - [[https://github.com/nikstur/nix-store-veritysetup-generator][nikstur/nix-store-veritysetup-generator: Systemd unit generator for a verity protected Nix Store]]
 - [[https://github.com/nix-community/nixago][nix-community/nixago: Generate configuration files using Nix maintainer=@jmgilman]]
 - [[https://github.com/nix-community/nixd][nix-community/nixd: Nix language server, based on nix libraries [maintainer=@inclyc]]]
