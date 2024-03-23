@@ -2111,6 +2111,7 @@ builtins.match "php([[:alnum:]])([[:alnum:]])" "php70"
 - [[https://github.com/purenix-org/purenix][purenix-org/purenix: Nix backend for PureScript. Transpile PureScript code to Nix.]]
 - [[https://github.com/railwayapp/nixpacks][railwayapp/nixpacks: App source + Nix packages + Docker = Image]]
 - [[https://github.com/RaitoBezarius/nixstorefs][RaitoBezarius/nixstorefs: A userspace Nix store filesystem implementation via FUSE]]
+- [[https://github.com/rasmus-kirk/nixarr][rasmus-kirk/nixarr: The Media Server Nixos Module]]
 - [[https://github.com/remi-dupre/pinix?tab=readme-ov-file][remi-dupre/pinix: Progress In Nix - Pacman inspired frontend for Nix]]
 - [[https://github.com/remi-gelinas/nix-ts-mode][remi-gelinas/nix-ts-mode: An Emacs major mode for editing Nix expressions, powered by tree-sitter.]]
 - [[https://github.com/rhelmot/nixbsd][rhelmot/nixbsd: NixBSD is an attempt to make a reproducible and declarable BSD, based on NixOS. Although theoretically much of this work could be copied to build other BSDs, all work thus far has been focused on building a FreeBSD distribution.]]
