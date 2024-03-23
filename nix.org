@@ -2108,6 +2108,7 @@ builtins.match "php([[:alnum:]])([[:alnum:]])" "php70"
 - [[https://github.com/pinpox/lollypops][pinpox/lollypops: Lollypop Operations - NixOS Deployment Tool]]
 - [[https://github.com/Platonic-Systems/process-compose-flake][Platonic-Systems/process-compose-flake: A `flake-parts` module to spin up processes for development by leveraging `process-compose`]]
 - [[https://github.com/Platonic-Systems/secrix][Platonic-Systems/secrix: Secrex is based on ideas in agenix, however is written from the ground up.]]
+- [[https://github.com/polygon/nix-buildproxy][polygon/nix-buildproxy: Providing reproducible HTTP/HTTPS responders to builds that just can not live without]]
 - [[https://github.com/purenix-org/purenix][purenix-org/purenix: Nix backend for PureScript. Transpile PureScript code to Nix.]]
 - [[https://github.com/railwayapp/nixpacks][railwayapp/nixpacks: App source + Nix packages + Docker = Image]]
 - [[https://github.com/RaitoBezarius/nixstorefs][RaitoBezarius/nixstorefs: A userspace Nix store filesystem implementation via FUSE]]
