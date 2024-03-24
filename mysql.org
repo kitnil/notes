@@ -20,6 +20,7 @@
 - [[https://github.com/dengjiawen8955/mysqldump][dengjiawen8955/mysqldump: A zero-dependency, high-performance, concurrent mysqldump tool implemented in golang. golang 中实现的零依赖、高性能、并发 mysqldump 工具。]]
 - [[https://github.com/JamesStewy/go-mysqldump][JamesStewy/go-mysqldump: Create SQL dumps in Go without external dependencies]]
 - [[https://github.com/flike/kingshard][flike/kingshard: A high-performance MySQL proxy]]
+- [[https://github.com/frisoft/flake-mysql][frisoft/flake-mysql: nix run for mysql server]]
 
 
 : mysqldump --master-data=2 --flush-logs --single-transaction --quick --all-databases
