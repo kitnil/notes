@@ -2123,6 +2123,7 @@ builtins.match "php([[:alnum:]])([[:alnum:]])" "php70"
 - [[https://github.com/serokell/update-daemon][serokell/update-daemon: Nix Flake Update daemon]]
 - [[https://github.com/shlevy/nix-plugins][shlevy/nix-plugins: Collection of miscellaneous plugins for the nix expression language]]
 - [[https://github.com/siraben/nix-lint][siraben/nix-lint: Semantic linter for Nix using tree-sitter 🌳 + ❄️]]
+- [[https://github.com/soltros/configbuilder][soltros/configbuilder: A configurator that allows for the automatic generation of configuration.nix with pluggable nix modules.]]
 - [[https://github.com/srid/devour-flake][srid/devour-flake: Devour all outputs in a Nix flake.]]
 - [[https://github.com/srid/nixpkgs-match][srid/nixpkgs-match: Update your nixpkgs flake input to the same rev as that of the given flake]]
 - [[https://github.com/symphorien/nix-du][symphorien/nix-du: Visualise which gc-roots to delete to free some space in your nix store]]
