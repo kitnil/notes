@@ -3556,6 +3556,7 @@ then redeploy with:
 - [[https://codeberg.org/hjacobs/kube-janitor][hjacobs/kube-janitor: Clean up (delete) Kubernetes resources after a configured TTL (time to live) - kube-janitor - Codeberg.org]]
 - [[https://github.com/homeport/havener][homeport/havener: /ˈheɪvənə/ - Think of it as a swiss army knife for Kubernetes tasks]]
 - [[https://github.com/hwameistor/hwameistor][hwameistor/hwameistor: Hwameistor is an HA local storage system for cloud-native stateful workloads.]]
+- [[https://github.com/idgenchev/namespace-node-affinity][idgenchev/namespace-node-affinity: Kubernetes Mutating Webhook for assigning node affinity and tolerations to all pods in a namespace]]
 - [[https://github.com/imuxin/kubectl-watch][imuxin/kubectl-watch: A kubectl plugin to provide a pretty delta change view of being watched kubernetes resources]]
 - [[https://github.com/indeedeng/harbor-container-webhook][indeedeng/harbor-container-webhook: mutating webhook which rewrites container images to use a Harbor proxy cache]]
 - [[https://github.com/inercia/k3x][inercia/k3x: A UI for local Kubernetes clusters created with k3d]]
