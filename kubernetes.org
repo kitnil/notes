@@ -3557,6 +3557,7 @@ then redeploy with:
 - [[https://github.com/homeport/havener][homeport/havener: /ˈheɪvənə/ - Think of it as a swiss army knife for Kubernetes tasks]]
 - [[https://github.com/hwameistor/hwameistor][hwameistor/hwameistor: Hwameistor is an HA local storage system for cloud-native stateful workloads.]]
 - [[https://github.com/imuxin/kubectl-watch][imuxin/kubectl-watch: A kubectl plugin to provide a pretty delta change view of being watched kubernetes resources]]
+- [[https://github.com/indeedeng/harbor-container-webhook][indeedeng/harbor-container-webhook: mutating webhook which rewrites container images to use a Harbor proxy cache]]
 - [[https://github.com/inercia/k3x][inercia/k3x: A UI for local Kubernetes clusters created with k3d]]
 - [[https://github.com/infracloudio/botkube][infracloudio/botkube: An app that helps you monitor your Kubernetes cluster, debug critical deployments & gives recommendations for standard practices]]
 - [[https://github.com/inlets/inlets-operator][inlets/inlets-operator: Get public LoadBalancers on your local Kubernetes clusters]]
