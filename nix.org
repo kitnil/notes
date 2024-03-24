@@ -1843,6 +1843,7 @@ builtins.match "php([[:alnum:]])([[:alnum:]])" "php70"
 - [[https://github.com/Sam1431/IdempotentDots][Sam1431/IdempotentDots: dots configured after setting up NixOS on tmpfs]]
 - [[https://github.com/gvolpe/nix-config][gvolpe/nix-config: NixOS configuration]]
 - [[https://www.tweag.io/blog/2022-08-18-nixos-specialisations/][Introduction to NixOS specialisations - Tweag]]
+- [[https://github.com/peter-marshall5/nixlet][peter-marshall5/nixlet: Mini Nix-based embedded OS]]
 
 ** Installers
 - [[https://github.com/samuela/nixos-up/blob/main/nixos-up.ml][nixos-up/nixos-up.ml at main · samuela/nixos-up]]
