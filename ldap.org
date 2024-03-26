@@ -8,5 +8,6 @@
 - [[https://pro-ldap.ru/tr/rfc/rfc4533.html][Pro-LDAP.ru - RFC 4533]]
 
 * Tools
+- [[https://github.com/jp-gouin/helm-openldap][jp-gouin/helm-openldap: Helm chart of Openldap in High availability with multi-master replication and PhpLdapAdmin and Ltb-Passwd]]
 - [[https://github.com/Macmod/godap][Macmod/godap: A complete TUI for LDAP written in Golang.]]
 - [[https://github.com/p0dalirius/ldap2json][p0dalirius/ldap2json: The ldap2json script allows you to extract the whole LDAP content of a Windows domain into a JSON file.]]
