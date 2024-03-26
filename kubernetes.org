@@ -3486,6 +3486,7 @@ then redeploy with:
 - [[https://github.com/databricks/click][databricks/click: The "Command Line Interactive Controller for Kubernetes"]]
 - [[https://github.com/databus23/helm-diff][databus23/helm-diff: A helm plugin that shows a diff explaining what a helm upgrade would change]]
 - [[https://github.com/datreeio/datree][datreeio/datree: Prevent Kubernetes misconfigurations from reaching production (again 😤 )! The CLI integration provides a policy enforcement solution to run automatic checks for rule violations. See our docs: https://hub.datree.io]]
+- [[https://github.com/deckhouse/k8s-image-availability-exporter?tab=readme-ov-file][deckhouse/k8s-image-availability-exporter: Alert if an image used in Kubernetes cannot be pulled from container registry]]
 - [[https://github.com/deepflowio/deepflow][deepflowio/deepflow: Application Observability using eBPF]]
 - [[https://github.com/deggja/netfetch][deggja/netfetch: Kubernetes tool for scanning clusters for network policies and identifying unprotected workloads.]]
 - [[https://github.com/deggja/serpent][deggja/serpent: snek in k8s create chaos]]
