@@ -2036,6 +2036,7 @@ builtins.match "php([[:alnum:]])([[:alnum:]])" "php70"
 #+END_SRC
 
 * Tools
+- [[https://github.com/abathur/resholve][abathur/resholve: a shell resolver? :) (find and resolve shell script dependencies)]]
 - [[https://github.com/AleXoundOS/mirror-nix][AleXoundOS/mirror-nix: mirror Nix binary cache for the offline workflow]]
 - [[https://github.com/aristanetworks/nix-serve-ng][aristanetworks/nix-serve-ng: A drop-in replacement for nix-serve that is faster and more reliable]]
 - [[https://github.com/astro/deadnix][astro/deadnix: Scan Nix files for dead code]]
