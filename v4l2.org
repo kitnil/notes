@@ -1,0 +1,216 @@
+#+title: v4l2
+
+: sudo v4l2-ctl --device /dev/video0 --set-fmt-video=width=1920,height=1080,pixelformat=MJPG
+: sudo modprobe v4l2loopback video_nr=3 card_label="Virtual Camera" exclusive_caps=1
+: ffmpeg -i /dev/video0 -f v4l2 -vcodec rawvideo -pix_fmt rgb24 /dev/video3
+
+* [[https://commandmasters.com/commands/v4l2-ctl-linux/][How to use the command 'v4l2-ctl' (with examples)]]
+
+The ‘v4l2-ctl’ command is used to control video devices. It provides a set of
+functionalities to interact with video devices such as listing devices,
+listing supported video formats, capturing photos and video streams, and
+setting video device controls.
+
+** Use case 1: List all video devices
+Code:
+#+begin_example
+  v4l2-ctl --list-devices
+#+end_example
+
+Motivation: This use case helps identify all the video devices present on the
+system. This information can be useful when working with applications that
+require video input from specific devices.
+
+Explanation: The ‘–list-devices’ argument is used to list all available video
+devices.
+
+Example output:
+
+#+begin_example
+HD Webcam (/dev/video0):
+	Dell HD Webcam (usb-0000:00:14.0-4):
+#+end_example
+
+** Use case 2: List supported video formats and resolutions of default video device ‘/dev/video0’
+Code:
+#+begin_example
+  v4l2-ctl --list-formats-ext
+#+end_example
+
+Motivation: This use case provides information about the video formats and
+resolutions supported by the default video device ‘/dev/video0’. It helps in
+understanding the capabilities of the video device and ensures that the
+desired format and resolution are compatible.
+
+Explanation: The ‘–list-formats-ext’ argument is used to list the supported
+video formats and resolutions of the default video device ‘/dev/video0’.
+
+Example output:
+#+begin_example
+  Pixel Format: 'YUYV'
+          Name: Planar YUV 4:2:2
+                  Size: Discrete 640x480
+                  Size: Discrete 160x120
+                  Size: Discrete 176x144
+                  ...
+  Pixel Format: 'MJPG' (compressed)
+          Name: MJPEG
+                  Size: Discrete 640x480
+                  Size: Discrete 160x120
+                  Size: Discrete 176x144
+                  ...
+#+end_example
+
+** Use case 3: List supported video formats and resolutions of a specific video device
+Code:
+#+begin_example
+  v4l2-ctl --list-formats-ext --device path/to/video_device
+#+end_example
+
+Motivation: This use case is similar to the previous one, but it allows
+specifying a specific video device using the ‘–device’ argument. It is helpful
+when working with multiple video devices and wanting to get information about
+a particular device.
+
+Explanation: The ‘–device’ argument followed by the path to the video device
+is used to specify a specific video device. The ‘–list-formats-ext’ argument
+lists the supported video formats and resolutions of the specified video
+device.
+
+Example output:
+#+begin_example
+  Pixel Format: 'YUYV'
+          Name: Planar YUV 4:2:2
+                  Size: Discrete 640x480
+                  Size: Discrete 320x240
+                  Size: Discrete 160x120
+                  ...
+  Pixel Format: 'MJPG' (compressed)
+          Name: MJPEG
+                  Size: Discrete 640x480
+                  Size: Discrete 320x240
+                  Size: Discrete 160x120
+                  ...
+#+end_example
+
+** Use case 4: Get all details of a video device
+Code:
+#+begin_example
+  v4l2-ctl --all --device path/to/video_device
+#+end_example
+
+Motivation: This use case provides comprehensive details of a video device,
+including its capabilities, controls, and settings. It is useful for
+understanding the capabilities and configuration options of the video device.
+
+Explanation: The ‘–device’ argument followed by the path to the video device
+is used to specify a specific video device. The ‘–all’ argument fetches all
+the details of the specified video device.
+
+Example output:
+#+begin_example
+  Driver Info (not using libv4l2):
+          Driver name   : uvcvideo
+          Card type     : Dell HD Webcam
+          Bus info      : usb-0000:00:14.0-4
+          Driver version: 5.8.15
+          Capabilities  : 0x84A00001
+                  Video Capture
+                  Streaming
+                  Extended Pix Format
+                  Device Capabilities
+  Device Caps   : 0x04200001
+                  Video Capture
+                  Streaming
+                  Extended Pix Format
+  Priority: 2
+#+end_example
+
+** Use case 5: Capture a JPEG photo with a specific resolution from video device
+Code:
+#+begin_example
+  v4l2-ctl --device path/to/video_device --set-fmt-video=width=width,height=height,pixelformat=MJPG --stream-mmap --stream-to=path/to/output.jpg --stream-count=1
+#+end_example
+
+Motivation: This use case allows capturing a JPEG photo from the specified
+video device with a specific resolution. It is useful when a single still
+image is required from the video device.
+
+Explanation: The ‘–device’ argument followed by the path to the video device
+is used to specify a specific video device. The ‘–set-fmt-video’ argument sets
+the desired width, height, and pixel format (MJPG for JPEG) for capturing a
+photo. The ‘–stream-mmap’ argument specifies the memory mapping method for
+streaming. The ‘–stream-to’ argument followed by the output file path
+determines where the photo will be saved. The ‘–stream-count’ argument sets
+the number of frames to capture, in this case, 1.
+
+Example output: A JPEG photo captured from the video device is saved at the
+specified output path.
+
+** Use case 6: Capture a raw video stream from video device
+Code:
+#+begin_example
+  v4l2-ctl --device path/to/video_device --set-fmt-video=width=width,height=height,pixelformat=format --stream-mmap --stream-to=path/to/output --stream-count=number_of_frames_to_capture
+#+end_example
+
+Motivation: This use case is similar to the previous one, but it captures a
+raw video stream instead of a JPEG photo. It is useful when a continuous video
+stream is required from the video device.
+
+Explanation: The ‘–device’ argument followed by the path to the video device
+is used to specify a specific video device. The ‘–set-fmt-video’ argument sets
+the desired width, height, and pixel format for capturing the video
+stream. The ‘–stream-mmap’ argument specifies the memory mapping method for
+streaming. The ‘–stream-to’ argument followed by the output file path
+determines where the video stream will be saved. The ‘–stream-count’ argument
+sets the number of frames to capture.
+
+Example output: A raw video stream captured from the video device is saved at
+the specified output path.
+
+** Use case 7: List all video device’s controls and their values
+Code:
+#+begin_example
+  v4l2-ctl --list-ctrls --device path/to/video_device
+#+end_example
+
+Motivation: This use case provides a comprehensive list of all the controls
+available on the specified video device along with their current values. It
+helps in understanding the available configuration options and their current
+settings.
+
+Explanation: The ‘–device’ argument followed by the path to the video device
+is used to specify a specific video device. The ‘–list-ctrls’ argument lists
+all the controls available on the specified video device.
+
+Example output:
+#+begin_example
+  brightness 0x00980900 (int)    : min=0 max=255 step=1 default=128 value=128
+  contrast 0x00980901 (int)    : min=0 max=255 step=1 default=128 value=128
+  saturation 0x00980902 (int)    : min=0 max=255 step=1 default=128 value=128
+  ...
+#+end_example
+
+** Use case 8: Set the value of a video device control
+Code:
+#+begin_example
+  v4l2-ctl --device path/to/video_device --set-ctrl=control_name=value
+#+end_example
+
+Motivation: This use case allows changing the value of a specific control on
+the specified video device. It helps in adjusting various settings of the
+video device programmatically.
+
+Explanation: The ‘–device’ argument followed by the path to the video device
+is used to specify a specific video device. The ‘–set-ctrl’ argument followed
+by the control name and its new value allows changing the value of the
+specified control.
+
+Example output: The control value is updated on the video device.
+
+** Conclusion:
+The ‘v4l2-ctl’ command provides a range of functionalities to interact with
+video devices. It helps in listing video devices, obtaining information about
+supported formats and resolutions, capturing photos and video streams, and
+setting video device controls. By using the command and its various arguments,
+users can configure and control video devices effectively.
