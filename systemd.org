@@ -14,6 +14,613 @@
 * Learning
 - [[https://habr.com/ru/company/ruvds/blog/724676/][Как отправлять и обрабатывать графические уведомления на bash / Хабр]]
 
+** [[https://gist.github.com/alexcpn/549074da9f16119de506af6c5a60ce1e][Running systemd inside a Container]]
+#+begin_src markdown
+  # Running systemd inside a Container
+
+  Some context here - https://developers.redhat.com/blog/2019/04/24/how-to-run-systemd-in-a-container
+
+  With Docker you need to mount the host volume `-v /sys/fs/cgroup:/sys/fs/cgroup:ro `
+  However this is not needed for podman
+
+  If Kubernetes cluster is still using Docker, this will not work in pod wihtout these mounts; but if using Containerd directly (kubelet--> Containerd-->runc) I am not sure
+
+  To test I tried running the container direclty in runc but some config seems to be missing
+
+  # For Podman
+  ```
+  podman  run --name=systemd  --rm -ti  -v /tmp/data:/data     --tmpfs /run     --tmpfs /tmp   registry.fedoraproject.org/fedora:31 /usr/sbin/init
+  ```
+
+  ```
+  alexpunnen@pop-os:~$ podman ps
+  CONTAINER ID  IMAGE                                 COMMAND         CREATED        STATUS            PORTS   NAMES
+  4c5386a85be7  registry.fedoraproject.org/fedora:31  /usr/sbin/init  8 minutes ago  Up 8 minutes ago          systemd
+  ```
+  ```
+  systemd v243.8-1.fc31 running in system mode. (+PAM +AUDIT +SELINUX +IMA -APPARMOR +SMACK +SYSVINIT +UTMP +LIBCRYPTSETUP +GCRYPT +GNUTLS +ACL +XZ +LZ4 +SECCOMP +BLKID +ELFUTILS +KMOD +IDN2 -IDN +PCRE2 default-hierarchy=unified)
+  Detected virtualization container-other.
+  Detected architecture x86-64.
+
+  Welcome to Fedora 31 (Container Image)!
+
+  Set hostname to <4c5386a85be7>.
+  Initializing machine ID from random generator.
+  [  OK  ] Started Dispatch Password Requests to Console Directory Watch.
+  [  OK  ] Started Forward Password Requests to Wall Directory Watch.
+  [  OK  ] Reached target Local File Systems.
+  [  OK  ] Reached target Paths.
+  [  OK  ] Reached target Remote File Systems.
+  [  OK  ] Reached target Slices.
+  [  OK  ] Reached target Swap.
+  [  OK  ] Listening on Process Core Dump Socket.
+  [  OK  ] Listening on initctl Compatibility Named Pipe.
+  [  OK  ] Listening on Journal Socket (/dev/log).
+  [  OK  ] Listening on Journal Socket.
+  ldconfig.service: unit configures an IP firewall, but the local system does not support BPF/cgroup firewalling.
+  (This warning is only shown for the first unit using IP firewalling.)
+           Starting Rebuild Dynamic Linker Cache...
+           Starting Journal Service...
+           Starting Create System Users...
+  [  OK  ] Started Create System Users.
+  [  OK  ] Started Rebuild Dynamic Linker Cache.
+  [  OK  ] Started Journal Service.
+           Starting Flush Journal to Persistent Storage...
+  [  OK  ] Started Flush Journal to Persistent Storage.
+           Starting Create Volatile Files and Directories...
+  [  OK  ] Started Create Volatile Files and Directories.
+           Starting Rebuild Journal Catalog...
+           Starting Update UTMP about System Boot/Shutdown...
+  [  OK  ] Started Update UTMP about System Boot/Shutdown.
+  [  OK  ] Started Rebuild Journal Catalog.
+           Starting Update is Completed...
+  [  OK  ] Started Update is Completed.
+  [  OK  ] Reached target System Initialization.
+  [  OK  ] Started Daily Cleanup of Temporary Directories.
+  [  OK  ] Reached target Timers.
+  [  OK  ] Listening on D-Bus System Message Bus Socket.
+  [  OK  ] Reached target Sockets.
+  [  OK  ] Reached target Basic System.
+           Starting Permit User Sessions...
+  [  OK  ] Started Permit User Sessions.
+  [  OK  ] Reached target Multi-User System.
+           Starting Update UTMP about System Runlevel Changes...
+  [  OK  ] Started Update UTMP about System Runlevel Changes.
+
+  ```
+
+  In another terminal
+  ```
+  [root@4c5386a85be7 /]# systemd-cgls
+  Control group /user.slice/user-1000.slice/user@1000.service/app.slice/app-org.gnome.Terminal.slice/vte-spawn-6b5b7d2a-28ac-49c9-ba04-fddc485d3faf.scope:
+  -.slice
+  ├─init.scope
+  │ └─1 /usr/sbin/init
+  └─system.slice
+    └─systemd-journald.service
+      └─13 /usr/lib/systemd/systemd-journald
+
+  ```
+
+  kill it in another terminal
+
+  ```
+  alexpunnen@pop-os:~$ podman ps
+  CONTAINER ID  IMAGE                                 COMMAND         CREATED        STATUS            PORTS   NAMES
+  4c5386a85be7  registry.fedoraproject.org/fedora:31  /usr/sbin/init  8 minutes ago  Up 8 minutes ago          systemd
+  alexpunnen@pop-os:~$ podman stop 4c5386a85be7
+  4c5386a85be793f0cddacf77f3e90046b771f142a00796e934d5919d58ff814d
+
+  ```
+
+  Proper death
+
+  ```
+  podman  run --name=systemd  --rm -ti  -v /tmp/data:/data     --tmpfs /run     --tmpfs /tmp   registry.fedoraproject.org/fedora:31 /usr/sbin/init
+  systemd v243.8-1.fc31 running in system mode. (+PAM +AUDIT +SELINUX +IMA -APPARMOR +SMACK +SYSVINIT +UTMP +LIBCRYPTSETUP +GCRYPT +GNUTLS +ACL +XZ +LZ4 +SECCOMP +BLKID +ELFUTILS +KMOD +IDN2 -IDN +PCRE2 default-hierarchy=unified)
+  Detected virtualization container-other.
+  Detected architecture x86-64.
+
+  Welcome to Fedora 31 (Container Image)!
+
+  Set hostname to <4c5386a85be7>.
+  Initializing machine ID from random generator.
+  [  OK  ] Started Dispatch Password Requests to Console Directory Watch.
+  [  OK  ] Started Forward Password Requests to Wall Directory Watch.
+  [  OK  ] Reached target Local File Systems.
+  [  OK  ] Reached target Paths.
+  [  OK  ] Reached target Remote File Systems.
+  [  OK  ] Reached target Slices.
+  [  OK  ] Reached target Swap.
+  [  OK  ] Listening on Process Core Dump Socket.
+  [  OK  ] Listening on initctl Compatibility Named Pipe.
+  [  OK  ] Listening on Journal Socket (/dev/log).
+  [  OK  ] Listening on Journal Socket.
+  ldconfig.service: unit configures an IP firewall, but the local system does not support BPF/cgroup firewalling.
+  (This warning is only shown for the first unit using IP firewalling.)
+           Starting Rebuild Dynamic Linker Cache...
+           Starting Journal Service...
+           Starting Create System Users...
+  [  OK  ] Started Create System Users.
+  [  OK  ] Started Rebuild Dynamic Linker Cache.
+  [  OK  ] Started Journal Service.
+           Starting Flush Journal to Persistent Storage...
+  [  OK  ] Started Flush Journal to Persistent Storage.
+           Starting Create Volatile Files and Directories...
+  [  OK  ] Started Create Volatile Files and Directories.
+           Starting Rebuild Journal Catalog...
+           Starting Update UTMP about System Boot/Shutdown...
+  [  OK  ] Started Update UTMP about System Boot/Shutdown.
+  [  OK  ] Started Rebuild Journal Catalog.
+           Starting Update is Completed...
+  [  OK  ] Started Update is Completed.
+  [  OK  ] Reached target System Initialization.
+  [  OK  ] Started Daily Cleanup of Temporary Directories.
+  [  OK  ] Reached target Timers.
+  [  OK  ] Listening on D-Bus System Message Bus Socket.
+  [  OK  ] Reached target Sockets.
+  [  OK  ] Reached target Basic System.
+           Starting Permit User Sessions...
+  [  OK  ] Started Permit User Sessions.
+  [  OK  ] Reached target Multi-User System.
+           Starting Update UTMP about System Runlevel Changes...
+  [  OK  ] Started Update UTMP about System Runlevel Changes.
+  [  OK  ] Stopped target Multi-User System.
+  [  OK  ] Stopped target Timers.
+  [  OK  ] Stopped Daily Cleanup of Temporary Directories.
+           Stopping Permit User Sessions...
+  [  OK  ] Stopped Permit User Sessions.
+  [  OK  ] Stopped target Basic System.
+  [  OK  ] Stopped target Paths.
+  [  OK  ] Stopped Dispatch Password Requests to Console Directory Watch.
+  [  OK  ] Stopped Forward Password Requests to Wall Directory Watch.
+  [  OK  ] Stopped target Remote File Systems.
+  [  OK  ] Stopped target Slices.
+  [  OK  ] Stopped target Sockets.
+  [  OK  ] Closed D-Bus System Message Bus Socket.
+  [  OK  ] Stopped target System Initialization.
+  [  OK  ] Stopped Update is Completed.
+  [  OK  ] Stopped Rebuild Dynamic Linker Cache.
+  [  OK  ] Stopped Rebuild Journal Catalog.
+           Stopping Update UTMP about System Boot/Shutdown...
+  [  OK  ] Stopped Update UTMP about System Boot/Shutdown.
+  [  OK  ] Stopped Create Volatile Files and Directories.
+  [  OK  ] Stopped target Local File Systems.
+           Unmounting /data...
+           Unmounting /etc/hostname...
+           Unmounting /etc/hosts...
+           Unmounting /etc/resolv.conf...
+           Unmounting /run/.containerenv...
+           Unmounting /run/lock...
+           Unmounting Temporary Directory (/tmp)...
+           Unmounting /var/log/journal...
+  [  OK  ] Stopped Create System Users.
+  [FAILED] Failed unmounting /data.
+  [FAILED] Failed unmounting /etc/hostname.
+  [FAILED] Failed unmounting /etc/hosts.
+  [FAILED] Failed unmounting /etc/resolv.conf.
+  [FAILED] Failed unmounting /run/.containerenv.
+  [FAILED] Failed unmounting /run/lock.
+  [FAILED] Failed unmounting Temporary Directory (/tmp).
+  [FAILED] Failed unmounting /var/log/journal.
+  [  OK  ] Stopped target Swap.
+  [  OK  ] Reached target Shutdown.
+  [  OK  ] Reached target Unmount All Filesystems.
+  [  OK  ] Reached target Final Step.
+           Starting Halt...
+  ```
+
+  # For Docker
+
+  For Docker we need to give  the volume mount
+
+  Below does not work
+  ```
+  $ docker  run --name=systemd  --rm -ti  -v /tmp/data:/data     --tmpfs /run     --tmpfs /tmp   registry.fedoraproject.org/fedora:31 /usr/sbin/init
+  systemd v243.8-1.fc31 running in system mode. (+PAM +AUDIT +SELINUX +IMA -APPARMOR +SMACK +SYSVINIT +UTMP +LIBCRYPTSETUP +GCRYPT +GNUTLS +ACL +XZ +LZ4 +SECCOMP +BLKID +ELFUTILS +KMOD +IDN2 -IDN +PCRE2 default-hierarchy=unified)
+  Detected virtualization container-other.
+  Detected architecture x86-64.
+
+  Welcome to Fedora 31 (Container Image)!
+
+  Set hostname to <29a7d16c75e6>.
+  Initializing machine ID from random generator.
+  Failed to create /docker/29a7d16c75e66c6bad8395b9318799a4e568eecbd6f1c5403d382437a9a4cfc4/init.scope control group: Read-only file system
+  Failed to allocate manager object: Read-only file system
+  [!!!!!!] Failed to allocate manager object.
+  Exiting PID 1...
+  ```
+  If we map the volume it works
+
+  ```
+  docker  run --name=systemd  --rm -ti  -v /tmp/data:/data     --tmpfs /run     --tmpfs /tmp   -v /sys/fs/cgroup:/sys/fs/cgroup:ro  registry.fedoraproject.org/fedora:31 /usr/sbin/init
+  ```
+  ```
+  alexpunnen@pop-os:~$ docker  exec -it systemd /bin/bash
+  [root@69373c649d4d /]# ls
+  bin  boot  data  dev  etc  home  lib  lib64  lost+found  media  mnt  opt  proc  root  run  sbin  srv  sys  tmp  usr  var
+  [root@69373c649d4d /]# systemd-clgs
+  bash: systemd-clgs: command not found
+  [root@69373c649d4d /]# systemd-cgls
+  Control group /system.slice/containerd.service:
+  -.slice
+  ├─init.scope
+  │ └─1 /usr/sbin/init
+  └─system.slice
+    └─systemd-journald.service
+      └─18 /usr/lib/systemd/systemd-journald
+
+  ```
+
+  Another example for Podman - from
+  https://blog.while-true-do.io/podman-systemd-in-containers/
+
+  vi Dockerfile
+  ```
+  # Use Fedora 33 as base image
+  FROM registry.fedoraproject.org/fedora:33
+
+  # Install systemd mariadb nginx php-fpm
+  RUN dnf install -y systemd mariadb-server nginx php-fpm && \
+      dnf clean all
+
+  # Enable the services
+  RUN systemctl enable mariadb.service && \
+      systemctl enable php-fpm.service && \
+      systemctl enable nginx.service
+
+  EXPOSE 80
+
+  # Use systemd as command
+  CMD [ "/usr/sbin/init" ]
+  ```
+  Build the image via podman
+  ```
+  /systemd-in-docker$ podman image build --rm -t localhost/fedora-web:latest .
+  ```
+  Run it and exec in
+  ```
+  podman container run -d --rm --name fedora-web01 localhost/fedora-web:latest
+   podman exec -it fedora-web01 /bin/bash
+  [root@eed94b6048bb /]# systemd-cgls
+  Control group /user.slice/user-1000.slice/user@1000.service/app.slice/app-org.gnome.Terminal.slice/vte-spawn-eeb2c1ef-3cd0-4b13-a734-fa379bb82daf.scope:
+  -.slice
+  ├─228 /bin/bash
+  ├─239 systemd-cgls
+  ├─240 (pager)
+  ├─init.scope 
+  │ └─1 /usr/sbin/init
+  └─system.slice 
+    ├─dbus-broker.service 
+    │ ├─28 /usr/bin/dbus-broker-launch --scope system --audit
+    │ └─36 dbus-broker --log 4 --controller 9 --machine-id 4f8851da4d8044e1b60ec904ab7d8beb --max-bytes 536870912 --max-fds 4096 --max-matches 16384 --audit
+    ├─systemd-homed.service 
+    │ └─24 /usr/lib/systemd/systemd-homed
+    ├─nginx.service 
+    │ ├─70 nginx: master process /usr/sbin/nginx
+    │ ├─71 nginx: worker process
+    │ ├─72 nginx: worker process
+    │ ├─73 nginx: worker process
+    │ ├─74 nginx: worker process
+    │ ├─75 nginx: worker process
+    │ ├─76 nginx: worker process
+    │ ├─77 nginx: worker process
+    │ └─79 nginx: worker process
+    ├─mariadb.service 
+    │ └─164 /usr/libexec/mysqld --basedir=/usr
+    ├─php-fpm.service 
+    │ ├─23 php-fpm: master process (/etc/php-fpm.conf)
+    │ ├─57 php-fpm: pool www
+    │ ├─61 php-fpm: pool www
+    │ ├─62 php-fpm: pool www
+    │ ├─63 php-fpm: pool www
+    │ └─64 php-fpm: pool www
+    ├─systemd-journald.service 
+    │ └─12 /usr/lib/systemd/systemd-journald
+    ├─systemd-resolved.service 
+    │ └─18 /usr/lib/systemd/systemd-resolved
+    └─systemd-logind.service 
+      └─25 /usr/lib/systemd/systemd-logind
+  ```
+  # Run in Kubernetes on CoreOS based system (with docker--> containerd--runc) 
+
+  The below works as CoreOS is based on systemd
+
+  ```
+  cat << EOF | kubectl apply -f -
+  apiVersion: batch/v1
+  kind: Job
+  metadata:
+    name: test
+    namespace: alex-test
+  spec:
+    template:
+      # This is the pod template
+      spec:
+        containers:
+        - name: test
+          image: registry.fedoraproject.org/fedora:31
+          #command: ['/usr/sbin/init']
+          command: ['sh', '-c', 'echo "Going to trigger /usr/sbin/init!" && /usr/sbin/init']
+          resources: {}
+          volumeMounts:
+          - mountPath: /sys/fs/cgroup
+            name: cgroups
+            readOnly: true
+          - mountPath: /run
+            name: run
+          - mountPath: /run/systemd
+            name: run-sysd
+          - mountPath: /tmp
+            name: tmp
+        volumes:
+        - hostPath:
+            path: /sys/fs/cgroup
+          name: cgroups
+        - emptyDir:
+            medium: Memory
+          name: run
+        - emptyDir:
+            medium: Memory
+          name: run-sysd
+        - emptyDir:
+            medium: Memory
+          name: tmp
+        restartPolicy: OnFailure
+      # The pod template ends here
+  EOF
+  ```
+
+
+
+  ```
+  $ kubectl -n alex-test logs test-n8zpd
+  Going to trigger /usr/sbin/init!
+  $ kubectl -n alex-test get pods
+  NAME         READY   STATUS    RESTARTS   AGE
+  test-n8zpd   1/1     Running   0          32s
+  $ kubectl -n alex-test exec -it test-n8zpd /bin/bash
+  kubectl exec [POD] [COMMAND] is DEPRECATED and will be removed in a future version. Use kubectl exec [POD] -- [COMMAND] instead.
+  [root@test-n8zpd /]# systemd-cgls
+  Control group /kubepods/besteffort/pod1431913f-f610-4328-92c2-8c47514faf6a/88d5ce22daa1fd278c2bba20db48315be3b36d607b6bf39c89fc156a25ff6cb4:
+  -.slice
+  ├─28 /bin/bash
+  ├─48 systemd-cgls
+  ├─49 more
+  ├─init.scope
+  │ └─1 /usr/sbin/init
+  └─system.slice
+    └─systemd-journald.service
+      └─19 /usr/lib/systemd/systemd-journald
+  [root@test-n8zpd /]#              
+  ```
+
+  # Invoke Systemd in a host OS (TalOs) that does not  use Systemd-
+
+  Note - The TalOS does not use CGroupsv2 (at least the version I used)
+
+  ```
+  TaloS has cgroupv1 - see - https://www.redhat.com/en/blog/world-domination-cgroups-rhel-8-welcome-cgroups-v2
+
+  ,*If /sys/fs/cgroup/cgroup.controllers is present on your system, you are using v2, otherwise you are using v1.
+  - https://podman.io/blogs/2019/10/29/podman-crun-f31.html*
+
+  ./talosctl --talosconfig ./green-mgmt-talos.cfg --nodes 10.X.X.X ls /sys/fs/cgroup/
+  NODE           NAME
+  10.254.3.132   .
+  10.254.3.132   blkio
+  10.254.3.132   cpu
+  10.254.3.132   cpuacct
+  10.254.3.132   cpuset
+  10.254.3.132   devices
+  10.254.3.132   freezer
+  10.254.3.132   hugetlb
+  10.254.3.132   memory
+  10.254.3.132   net_cls
+  10.254.3.132   net_prio
+  10.254.3.132   perf_event
+  10.254.3.132   pids
+  ```
+
+  It uses a custom stripped down init system called machined. And so has no host path /sys/fs/cgroup.
+  However as per the Podman expriment this  /sys/fs/cgroup volume mount is not needed. Not sure if podman is doing this internally
+
+  ```
+  cat << EOF | kubectl apply -f -
+  apiVersion: batch/v1
+  kind: Job
+  metadata:
+    name: test
+    namespace: alex-test
+  spec:
+    template:
+      # This is the pod template
+      spec:
+        containers:
+        - name: test
+          image: registry.fedoraproject.org/fedora:31
+          #command: ['/usr/sbin/init']
+          command: ['sh', '-c', 'echo "Going to trigger /usr/sbin/init!" && /usr/sbin/init']
+          resources: {}
+          volumeMounts:
+          - mountPath: /sys/fs/cgroup
+            name: cgroups
+            readOnly: true
+          - mountPath: /run
+            name: run
+          - mountPath: /run/systemd
+            name: run-sysd
+          - mountPath: /tmp
+            name: tmp
+        volumes:
+        - emptyDir:
+             medium: Memory
+          name: cgroups
+        - emptyDir:
+            medium: Memory
+          name: run
+        - emptyDir:
+            medium: Memory
+          name: run-sysd
+        - emptyDir:
+            medium: Memory
+          name: tmp
+        restartPolicy: OnFailure
+      # The pod template ends here
+  EOF
+  ```
+
+  Does not work
+
+  ```
+  $ kubectl -n alex-test get pods
+  NAME         READY   STATUS              RESTARTS   AGE
+  test-dp4cq   0/1     ContainerCreating   0          8s
+  $ kubectl -n alex-test get pods
+  NAME         READY   STATUS             RESTARTS   AGE
+  test-dp4cq   0/1     CrashLoopBackOff   1          15s
+  $ kubectl -n alex-test describe pod
+  Name:         test-dp4cq
+  Namespace:    alex-test
+  Priority:     0
+  Node:         da-cicd-r3-srv-21/10.254.3.121
+  Start Time:   Mon, 13 Sep 2021 19:28:06 +0530
+  Labels:       controller-uid=91968407-e115-4459-8b79-f2eea3127b24
+                job-name=test
+  Annotations:  cni.projectcalico.org/podIP: 10.2.1.94/32
+                k8s.v1.cni.cncf.io/networks-status:
+                  [{
+                      "name": "k8s-pod-network",
+                      "ips": [
+                          "10.2.1.94"
+                      ],
+                      "default": true,
+                      "dns": {}
+                  }]
+                kubernetes.io/psp: privileged
+  Status:       Running
+  IP:           10.2.1.94
+  IPs:
+    IP:           10.2.1.94
+  Controlled By:  Job/test
+  Containers:
+    test:
+      Container ID:  containerd://50a89d41142c6cb084d2f282302d92eb9eaad25c228073aeb14e3c5ecdb4ade4
+      Image:         registry.fedoraproject.org/fedora:31
+      Image ID:      registry.fedoraproject.org/fedora@sha256:60cd711615e0983c533420634ba530283c14a26d875ab310964e2a5666ba957f
+      Port:          <none>
+      Host Port:     <none>
+      Command:
+        sh
+        -c
+        echo "Going to trigger /usr/sbin/init!" && /usr/sbin/init
+      State:          Waiting
+        Reason:       CrashLoopBackOff
+      Last State:     Terminated
+        Reason:       Error
+        Exit Code:    255
+        Started:      Mon, 13 Sep 2021 19:28:14 +0530
+        Finished:     Mon, 13 Sep 2021 19:28:14 +0530
+      Ready:          False
+      Restart Count:  1
+      Environment:    <none>
+      Mounts:
+        /run from run (rw)
+        /run/systemd from run-sysd (rw)
+        /sys/fs/cgroup from cgroups (ro)
+        /tmp from tmp (rw)
+        /var/run/secrets/kubernetes.io/serviceaccount from default-token-82dmz (ro)
+  Conditions:
+    Type              Status
+    Initialized       True
+    Ready             False
+    ContainersReady   False
+    PodScheduled      True
+  Volumes:
+    cgroups:
+      Type:       EmptyDir (a temporary directory that shares a pod's lifetime)
+      Medium:     Memory
+      SizeLimit:  <unset>
+    run:
+      Type:       EmptyDir (a temporary directory that shares a pod's lifetime)
+      Medium:     Memory
+      SizeLimit:  <unset>
+    run-sysd:
+      Type:       EmptyDir (a temporary directory that shares a pod's lifetime)
+      Medium:     Memory
+      SizeLimit:  <unset>
+    tmp:
+      Type:       EmptyDir (a temporary directory that shares a pod's lifetime)
+      Medium:     Memory
+      SizeLimit:  <unset>
+    default-token-82dmz:
+      Type:        Secret (a volume populated by a Secret)
+      SecretName:  default-token-82dmz
+      Optional:    false
+  QoS Class:       BestEffort
+  Node-Selectors:  <none>
+  Tolerations:     node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
+                   node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
+  Events:
+    Type     Reason     Age                From               Message
+    ----     ------     ----               ----               -------
+    Normal   Scheduled  18s                default-scheduler  Successfully assigned alex-test/test-dp4cq to da-cicd-r3-srv-21
+    Normal   Pulled     11s (x2 over 12s)  kubelet            Container image "registry.fedoraproject.org/fedora:31" already present on machine
+    Normal   Created    11s (x2 over 12s)  kubelet            Created container test
+    Normal   Started    11s (x2 over 12s)  kubelet            Started container test
+    Warning  BackOff    9s (x2 over 10s)   kubelet            Back-off restarting failed container
+  ```  
+  There seems to be option to make TalOS use CGroupsV2
+
+  Set CGroupPath here  l
+  https://github.com/talos-systems/talos/blob/50a24104820e26bb99e66ab68be2bd9a6c17b0be/internal/app/machined/pkg/system/runner/runner.go#L68-L79 ike `CGgoupPath:              "user.slice.runc:test",`
+  so that it picks here 
+  https://github.com/talos-systems/talos/blob/50a24104820e26bb99e66ab68be2bd9a6c17b0be/internal/app/machined/pkg/system/runner/process/process.go#L131-L145
+
+  # Running this in Runc directly - WIP
+
+  https://blog.selectel.com/managing-containers-runc/
+  https://github.com/opencontainers/runc.io/blob/master/_includes/get-started.md
+  ```
+  podman export systemd > rootfs.tar
+  mkdir -p ./rootfs
+  tar -xf rootfs.tar -C ./rootfs
+  runc spec
+  vi config.json (and change path of rootfs to the above created rootfs folder)
+     "root": {
+                  "path": "./rootfs",
+                  "readonly": true
+          },
+
+  sudo runc start test
+  ```
+  does not work
+  To run in systemd made the configs as per below blow
+
+  https://frasertweedale.github.io/blog-redhat/posts/2021-05-27-oci-runtime-spec-runc.html
+
+  ```
+  sudo runc --systemd-cgroup run fedora2
+  systemd v246.15-1.fc33 running in system mode. (+PAM +AUDIT +SELINUX +IMA -APPARMOR +SMACK +SYSVINIT +UTMP +LIBCRYPTSETUP +GCRYPT +GNUTLS +ACL +XZ +LZ4 +ZSTD +SECCOMP +BLKID +ELFUTILS +KMOD +IDN2 -IDN +PCRE2 default-hierarchy=unified)
+  Detected virtualization container-other.
+  Detected architecture x86-64.
+
+  Welcome to Fedora 33 (Container Image)!
+
+  Failed to set hostname to <localhost.localdomain>: Operation not permitted
+  Failed to write /run/systemd/container, ignoring: Permission denied
+  Failed to create /user.slice/runc-fedora.scope/init.scope control group: Read-only file system
+  Failed to allocate manager object: Read-only file system
+  [!!!!!!] Failed to allocate manager object.
+  Exiting PID 1...
+  ```
+
+
+  ## Other References
+
+  https://frasertweedale.github.io/blog-redhat/posts/2021-06-09-systemd-cgroups-subuid.html
+#+end_src
+
 * journald
 - [[https://www.loggly.com/ultimate-guide/using-journalctl/][Using journalctl - The Ultimate Guide To Logging]]
 - journalctl -b -1  -p "emerg".."crit"
