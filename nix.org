@@ -2096,6 +2096,7 @@ builtins.match "php([[:alnum:]])([[:alnum:]])" "php70"
 - [[https://github.com/nix-community/trustix][nix-community/trustix: Trustix: Distributed trust and reproducibility tracking for binary caches [maintainer=@adisbladis]]]
 - [[https://github.com/nix-dot-dev/getting-started-nix-template][nix-dot-dev/getting-started-nix-template: Based on nix.dev tutorials, repository template to get you started with Nix.]]
 - [[https://github.com/nix-gui/nix-gui][nix-gui/nix-gui: Use NixOS Without Coding]]
+- [[https://github.com/nixops4/nixops4][nixops4/nixops4: Deploy with Nix and manage resources declaratively]]
 - [[https://lazamar.co.uk/nix-versions/][Nix Package Versions]]
 - [[https://github.com/nixpak/nixpak][nixpak/nixpak: Runtime sandboxing for Nix]]
 - [[https://nixos.wiki/wiki/Nix-writers][Nix-writers - NixOS Wiki]]
