@@ -3512,6 +3512,7 @@ then redeploy with:
 - [[https://github.com/enix/kube-image-keeper][enix/kube-image-keeper: kuik is a container image caching system for Kubernetes]]
 - [[https://github.com/enix/x509-certificate-exporter][enix/x509-certificate-exporter: A Prometheus exporter to monitor x509 certificates expiration in Kubernetes clusters or standalone]]
 - [[https://github.com/eraser-dev/eraser][eraser-dev/eraser: 🧹 Cleaning up images from Kubernetes nodes]]
+- [[https://github.com/Esonhugh/k8spider][Esonhugh/k8spider: Powerful+Fast Kubernetes service discovery tools via kubernetes DNS service. Currently supported IP-based BruteForce / AXFR Domain Transfer Dump / Coredns WildCard Dump]]
 - [[https://github.com/estahn/k8s-image-swapper][estahn/k8s-image-swapper: Mirror images into your own registry and swap image references automatically.]]
 - [[https://github.com/ExpediaGroup/container-startup-autoscaler][ExpediaGroup/container-startup-autoscaler: A Kubernetes controller that modifies the CPU and/or memory resources of containers depending on whether they're starting up, according to the startup/post-startup settings you supply.]]
 - [[https://github.com/explorium-ai/kube-auto-puller][explorium-ai/kube-auto-puller: A Kubernetes Image Puller and Cacher with Automatic Discovery]]
