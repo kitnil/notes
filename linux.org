@@ -242,6 +242,15 @@ Start the magic and boot to the new loaded kernel:
 
 Hope this post will be helpful and inspire others to some kexec experiments 🙂
 
+* Autogroups
+#+begin_example
+  echo -15 > /proc/$PID/autogroup
+  renice -15 $PID
+#+end_example
+
+See for more info:
+man 7 sched
+
 * Kill session by terminal
 
 #+begin_example
