@@ -1,0 +1,61 @@
+* Using distrobox/apx on Guix
+
+Subject: Using distrobox/apx on Guix
+Date: Fri, 19 Apr 2024 20:19:28 -0600
+Message-ID: <f3428cc2-2aa3-42f0-bcdc-35853443e82d@gmail.com>
+
+Just for the record and I hope this helps someone.
+
+I'm able to use distrobox/apx in Guix. I shared 4 files here that are required
+for the following script.
+
+You will require Podman as a system package (but I think adapting the script
+for Docker may be possible) and Nix as system service-type installed.
+
+sudo mkdir -p /usr/share/apx
+sudo cp config.json /usr/share/apx/.
+sudo mkdir -p /etc/containers
+sudo cp policy.json /etc/containers/.
+sudo cp subuid /etc/.
+sudo cp subgid /etc/.
+podman system reset
+podman system migrate
+nix-channel --add https://nixos.org/channels/nixos-23.05 nixpkgs
+sudo herd restart nix-daemon
+nix-channel --update
+nix-env -iA nixpkgs.distrobox nixpkgs.apx
+apx init --aur
+
+Please, take in count that inside the files attached here you may need to
+change my user gus to yours in your computer.
+
+And of course, even entering an apx container will break some executables in
+the host as well as in the guest and for that Guix Home is going to be
+required.
+
+Good luck!
+
+[2. application/json; config.json]
+{
+    "containername": "apx_managed",
+    "image": "docker.io/library/ubuntu",
+    "pkgmanager": "apt",
+    "distroboxpath": "/home/gus/.nix-profile/bin/distrobox"
+}
+
+
+[3. application/json; policy.json]
+{
+    "default": [
+        {
+            "type": "insecureAcceptAnything"
+        }
+    ]
+}
+
+[4. text/plain; subgid]
+gus:100000:65536
+
+[5. text/plain; subuid]
+gus:100000:65536
+
