@@ -635,6 +635,7 @@ curl -H 'Content-Type: application/json' -d '{"query": {"bool": {"must": {"term"
 - [[https://github.com/codenoid/elastis][codenoid/elastis: Tool for Export / Dump / Import / Copy Elastic/Open Search indexes data]]
 - [[https://github.com/Cyb3rWard0g/HELK][Cyb3rWard0g/HELK: The Hunting ELK]]
 - [[https://github.com/elastic/cloud-on-k8s][elastic/cloud-on-k8s: Elastic Cloud on Kubernetes]]
+- [[https://github.com/elastic/otel-profiling-agent][elastic/otel-profiling-agent: The production-scale datacenter profiler (C/C++, Go, Rust, Python, Java, NodeJS, PHP, Ruby, Perl, ...)]]
 - [[https://github.com/flant/elasticsearch-extractor][flant/elasticsearch-extractor: Simple web UI to extract any index from Elasticsearch snapshot into repository.]]
 - [[https://github.com/LGUG2Z/elasdx][LGUG2Z/elasdx: An ElasticSearch index template updating, reindexing and cleanup tool]]
 - [[https://github.com/medcl/esm][medcl/esm: An Elasticsearch Migration Tool.]]
