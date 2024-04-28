@@ -3,6 +3,9 @@
 :END:
 #+title: Terraform
 
+Terraform was replaced by [[https://github.com/opentofu][OpenTofu]] because of Hashicorp's decision switch to a
+proprietary license.
+
 - [[https://github.com/28mm/blast-radius][28mm/blast-radius: Interactive visualizations of Terraform dependency graphs using d3.js]]
 - [[https://github.com/aanderse/teraflops][aanderse/teraflops: a terraform ops tool which is sure to be a flop]]
 - [[https://github.com/alex067/tfstate][alex067/tfstate: A wrapper around terraform state commands to provide guard rails 🔒]]
