@@ -175,6 +175,9 @@ To fix the issue delete =guile= file and run =make= again.
 
 * Cheat sheet
 
+  - show home profile
+    : guix home describe --list-installed
+
   - Tmux in a container
   : tmux: need UTF-8 locale (LC_CTYPE) but have ANSI_X3.4-1968
 
