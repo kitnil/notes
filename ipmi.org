@@ -178,6 +178,10 @@ ipmitool -U <login> -P '<password>' -H <IP> power reset
 - host status
   : ipmipower --hostname=web16.ipmi.intr --username=ADMIN --password="$(pass show majordomo/public/ipmi/ADMIN)" --stat
 
+- reboot
+  : ipmipower --hostname=web16.ipmi.intr --username=ADMIN --password="$(pass show majordomo/public/ipmi/ADMIN)" --reset
+  : ipmitool -I lanplus -H web16.ipmi.intr -U ADMIN -P "$(pass show majordomo/public/ipmi/ADMIN)" power cycle 
+
 - print networking information
   : ipmitool -H web16.ipmi.intr -U ADMIN -P "$(pass show majordomo/public/ipmi/ADMIN)" lan print
 
