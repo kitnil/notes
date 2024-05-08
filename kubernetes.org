@@ -3719,6 +3719,7 @@ then redeploy with:
 - [[https://opensource.com/article/22/5/migrating-databases-kubernetes-using-konveyor][Migrate databases to Kubernetes using Konveyor | Opensource.com]]
   - [[https://github.com/konveyor/tackle-diva][konveyor/tackle-diva: Tackle Data-intensive Validity Analyzer]]
 - [[https://opensource.com/article/21/6/migrate-vms-kubernetes-forklift][Migrate virtual machines to Kubernetes with this new tool | Opensource.com]]
+- [[https://github.com/Mirantis/virtlet][Mirantis/virtlet: Kubernetes CRI implementation for running VM workloads]]
 - [[https://github.com/MoJo2600/pihole-kubernetes][MoJo2600/pihole-kubernetes: PiHole on kubernetes]]
 - [[https://artifacthub.io/packages/helm/si-gitops/mok][mok 0.9.7 · sheogorath/si-gitops: Mail on Kubernetes (MoK) is a project to deploy a functional mailserver that runs without a database server on Kubernetes, taking advantage of configmaps and secret.]]
 - [[https://github.com/MoserMichael/s9k][MoserMichael/s9k: dashboard/web app for managing kubernetes clusters, with similar functionality as k9s]]
