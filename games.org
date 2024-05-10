@@ -699,3 +699,45 @@
 
 * Racing
 - [[https://store.steampowered.com/app/1664220/TRAIL_OUT/][TRAIL OUT on Steam]]
+
+* Risen 3
+** [[https://steamcommunity.com/app/249230/discussions/0/528398719799479990/][Enhanced Edition fps issues]]
+
+What's that about?
+
+I myself alongside with many other people noticed that after EE update there
+were microstuttering and microfreezing and/or big fps loss.
+
+What was the problem?
+
+I had ~40 fps with ultra settings. Setting the game to lowest settings didn't
+improve fps not even by 1. Alongside with that there were microlags, which
+made 'smooth' experience stutter.
+
+Any fix?
+
+Here's the one thing that helped me, and it doesn't involve hardware/drivers
+tuning.
+
+1. Find *ConfigDefault.xml* in *Steam\SteamApps\common\Risen 3\data\ini\*
+
+2. Find this line (just search word 'fps'):
+: <Window Top="0" SafetyFramePercentage="0.0" Right="1024" RefreshRate="0" Name="Risen 3 - Titan Lords" Left="0" FullScreen="false" FPSLimitToRefreshRate="true" FPSLimit="0" Center="false" CaptureCursor="true" Bottom="768" AdapterNumber="0"></Window>
+
+3. Change this:
+: FPSLimitToRefreshRate="true"
+into this:
+: FPSLimitToRefreshRate="false"
+
+That solved the problem for me. Now on my midrange (i5 4430, GTX 770 2gb, 8gb
+ram) rig I get 70+ fps.
+
+** [[https://steamcommunity.com/app/249230/discussions/0/527273789696733262/][Weird Sound bug near waterfalls and when it rains]]
+*** [[https://steamcommunity.com/app/249230/discussions/0/527273452883157387/][Sound missing during dialogs and cutscenes]]
+It seems to be an issue on Antigua. here is an answer from a previous post i
+copied.  
+
+I did this and it seems to have helped..
+  
+Open the ConfigDefault.xml file in Risen3/Data/ini with notepad, and change
+maxchannels to 256, that will solve all your sound problems.
