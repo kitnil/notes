@@ -3797,6 +3797,7 @@ then redeploy with:
 - [[https://github.com/Shopify/kubeaudit][Shopify/kubeaudit: kubeaudit helps you audit your Kubernetes clusters against common security controls]]
 - [[https://github.com/sighupio/permission-manager][sighupio/permission-manager: Permission Manager is a project that brings sanity to Kubernetes RBAC and Users management, Web UI FTW]]
 - [[https://github.com/slok/simple-ingress-external-auth][slok/simple-ingress-external-auth: A very simple external authentication service for Kubernetes ingresses (ingress-nginx, traefik...)]]
+- [[https://github.com/smallstep/step-issuer][smallstep/step-issuer: ⚙️A certificate issuer for cert-manager using step certificates CA]]
 - [[https://github.com/soluble-ai/kubetap][soluble-ai/kubetap: Kubectl plugin to interactively proxy Kubernetes Services with ease]]
 - [[https://github.com/Soluto/kamus][Soluto/kamus: An open source, git-ops, zero-trust secret encryption and decryption solution for Kubernetes applications]]
 - [[https://github.com/sozercan/kubectl-ai][sozercan/kubectl-ai: ✨ Kubectl plugin for OpenAI GPT]]
