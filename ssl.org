@@ -42,6 +42,7 @@ your keyboard until you find mozilla/DST_Root_CA_X3.crt, press the space bar
 to deselect it (the [*] should turn into [ ]) and press Enter.
 
 * Tools
+- [[https://github.com/bakito/cert-fetcher][bakito/cert-fetcher: 📜 Fetch certificates from URL'd and store them in different formats]]
 - [[https://github.com/c3l3si4n/quickcert][c3l3si4n/quickcert: A better way of querying certificate transparency logs]]
 - [[https://github.com/citronneur/blindssl][citronneur/blindssl: Disable SSL certificate verification for all binaries that use libssl]]
 - [[https://github.com/crtsh/caissuer_monitor][crtsh/caissuer_monitor: CA Issuers Monitor (Authority Info Access)]]
