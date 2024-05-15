@@ -1844,6 +1844,7 @@ builtins.match "php([[:alnum:]])([[:alnum:]])" "php70"
 - [[https://github.com/gvolpe/nix-config][gvolpe/nix-config: NixOS configuration]]
 - [[https://www.tweag.io/blog/2022-08-18-nixos-specialisations/][Introduction to NixOS specialisations - Tweag]]
 - [[https://github.com/peter-marshall5/nixlet][peter-marshall5/nixlet: Mini Nix-based embedded OS]]
+- [[https://github.com/nix-community/nixos-cli][nix-community/nixos-cli: nixos is an experimental modern replacement for nixos-rebuild]]
 
 ** Installers
 - [[https://github.com/samuela/nixos-up/blob/main/nixos-up.ml][nixos-up/nixos-up.ml at main · samuela/nixos-up]]
