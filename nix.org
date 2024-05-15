@@ -1821,7 +1821,6 @@ builtins.match "php([[:alnum:]])([[:alnum:]])" "php70"
 - [[https://github.com/Athena-OS/athena-nix][Athena-OS/athena-nix: Athena OS is a NixOS-based distro focused on Cybersecurity. Learn, practice and enjoy with any hacking tool!]]
 - [[https://github.com/h4ckbs/lan-party-netboot][h4ckbs/lan-party-netboot: NixOS setup to boot a bunch of computers into the same desktop environment with games pre-installed]]
 
-* NixOS
   #+begin_src nix
     let
       nixos = import (pkgs.path + /nixos) {
