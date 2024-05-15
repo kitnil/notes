@@ -2051,6 +2051,7 @@ builtins.match "php([[:alnum:]])([[:alnum:]])" "php70"
 - [[https://github.com/cdepillabout/purenix-examples][cdepillabout/purenix-examples: Examples of common Nix things written in PureNix]]
 - [[https://github.com/chayleaf/nixos-router][chayleaf/nixos-router: A NixOS router framework]]
 - [[https://github.com/Cloudef/nix-autoenv][Cloudef/nix-autoenv: nix-direnv alternative that does not need a .direnv metafile]]
+- [[https://github.com/cynicsketch/nix-mineral][cynicsketch/nix-mineral: NixOS module for convenient system hardening.]]
 - [[https://github.com/dasJ/emergency-kexec][dasJ/emergency-kexec: Kexec into an in-memory emergency system]]
 - [[https://github.com/DavHau/drv-parts][DavHau/drv-parts: Configure packages like NixOS sytems]]
 - [[https://github.com/DavHau/nix-eval-cache][DavHau/nix-eval-cache: Cache evaluation of nix functions]]
