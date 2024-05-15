@@ -1260,6 +1260,7 @@ I hope that will be useful to you to use Vault as an OIDC provider for your serv
 - [[https://groups.google.com/g/vault-tool/c/ZTEb5ziRsng/m/du69_G7UAwAJ][Reniew token with Jenkins]]
 
 * Tools
+- [[https://github.com/bakito/vault-unsealer][bakito/vault-unsealer: Kubernetes controller that can auto unseal vault pods.]]
 - [[https://github.com/banzaicloud/bank-vaults][banzaicloud/bank-vaults: A Vault swiss-army knife: a K8s operator, Go client with automatic token renewal, automatic configuration, multiple unseal options and more. A CLI tool to init, unseal and configure Vault (auth methods, secret engines). Direct secret injection into Pods.]]
 - [[https://github.com/dkyanakiev/vaul7y][dkyanakiev/vaul7y: TUI for Hashicorp Vault]]
 
