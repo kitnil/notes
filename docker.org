@@ -102,6 +102,9 @@
   }
 #+end_example
 
+- run archlinux in a docker container with systemd and graphics and tty
+  : docker run --detach --device /dev/dri --device /dev/tty5 --entrypoint /sbin/init --privileged --name archlinux --env container=docker -v /sys/fs/cgroup:/sys/fs/cgroup --tmpfs /tmp --tmpfs /run --stop-signal SIGRTMIN+3 archlinux
+
 * Compose
 
 - [[https://github.com/nuxxapp/nuxx][nuxxapp/nuxx: Visual Docker composer for faster development. Discover, leverage, and launch community recipes.]]
