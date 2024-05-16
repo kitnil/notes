@@ -605,6 +605,15 @@ to see.
 
 - [[https://github.com/JonathonReinhart/linux-netns-sysctl-verify][JonathonReinhart/linux-netns-sysctl-verify: Linux network namespace sysctl safety verifier.]]
 
+** Container with a pid namespace from another running process
+#+begin_src bash
+  mount --bind / /mnt
+  nsenter -t 1051079 -p mount -t proc proc /mnt/proc
+  mount --rbind /sys /mnt/sys
+  mount --rbind /dev /mnt/dev
+  nsenter -t 1051079 -p chroot /mnt /bin/sh
+#+end_src
+
 * netconsole
 [[https://debamax.com/fr/blog/2019/01/03/debugging-with-netconsole/][Debugging with netconsole | DEBAMAX]]
 
