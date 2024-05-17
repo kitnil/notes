@@ -3401,6 +3401,7 @@ then redeploy with:
 - [[https://github.com/alexellis/registry-creds][alexellis/registry-creds: Replicate Kubernetes ImagePullSecrets to all namespaces]]
 - [[https://github.com/alexellis/run-job][alexellis/run-job: Run a Kubernetes Job and get the logs when it's done 🏃‍♂️]]
 - [[https://github.com/alibaba/open-local][alibaba/open-local: cloud-native local storage management system]]
+- [[https://github.com/andydunstall/piko][andydunstall/piko: An open-source alternative to Ngrok, designed to serve production traffic and be simple to host (particularly on Kubernetes)]]
 - [[https://blog.flant.com/announcing-shell-operator-to-simplify-creating-of-kubernetes-operators/][Announcing shell-operator to simplify creating of Kubernetes operators – Flant blog]]
   - [[https://github.com/flant/shell-operator][flant/shell-operator: Shell-operator is a tool for running event-driven scripts in a Kubernetes cluster]]
 - [[https://github.com/apecloud/kubeblocks][apecloud/kubeblocks: KubeBlocks helps developers and platform engineers manage database workloads (MySQL, PostgresSQL, Redis, MongoDB, Kafka and vector databases) on K8s inside your own cloud account. It supports multiple clouds, including AWS, Azure, GCP, and Alibaba Cloud.]]
