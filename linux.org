@@ -182,6 +182,11 @@ echo 3 > /proc/sys/vm/drop_caches
 * initram
 - [[https://github.com/anatol/booster][anatol/booster: Fast and secure initramfs generator]]
 
+* Input
+
+- list input devices (keyboard, mouse, etc)
+  : libinput list-devices
+
 * IO
 - [[https://github.com/osresearch/iomonitor][osresearch/iomonitor: Trace IO calls in a process]]
 - [[https://habr.com/ru/company/raidix/blog/578894/][NVMe-накопители: чем они хороши и как на них переходить. Часть первая / Хабр]]
