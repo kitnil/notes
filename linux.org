@@ -187,6 +187,9 @@ echo 3 > /proc/sys/vm/drop_caches
 - list input devices (keyboard, mouse, etc)
   : libinput list-devices
 
+- show input devices events
+  : libinput debug-events --show-keycodes --verbose
+
 * IO
 - [[https://github.com/osresearch/iomonitor][osresearch/iomonitor: Trace IO calls in a process]]
 - [[https://habr.com/ru/company/raidix/blog/578894/][NVMe-накопители: чем они хороши и как на них переходить. Часть первая / Хабр]]
