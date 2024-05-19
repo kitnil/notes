@@ -25,6 +25,7 @@
 - [[https://github.com/Fahrj/reverse-ssh][Fahrj/reverse-ssh: Statically-linked ssh server with reverse shell functionality for CTFs and such]]
 - [[https://github.com/fox-it/OpenSSH-Session-Key-Recovery][fox-it/OpenSSH-Session-Key-Recovery: Project containing several tools/ scripts to recover the OpenSSH session keys used to encrypt/ decrypt SSH traffic.]]
   - [[https://blog.fox-it.com/2020/11/11/decrypting-openssh-sessions-for-fun-and-profit/][Decrypting OpenSSH sessions for fun and profit – Fox-IT International blog]]
+- [[https://github.com/francoismichel/ssh3][francoismichel/ssh3: SSH3: faster and rich secure shell using HTTP/3, checkout our article here: https://arxiv.org/abs/2312.08396 and our Internet-Draft: https://datatracker.ietf.org/doc/draft-michel-ssh3/]]
 - [[https://github.com/gravitational/teleconsole][gravitational/teleconsole: Command line tool to share your UNIX terminal and forward local TCP ports to people you trust.]]
 - [[https://github.com/gravitational/teleport][gravitational/teleport: Secure Access for Developers that doesn't get in the way.]]
 - https://serverfault.com/questions/625641/how-can-i-run-arbitrarily-complex-command-using-sudo-over-ssh
