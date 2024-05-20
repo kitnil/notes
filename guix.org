@@ -3289,6 +3289,9 @@ precisely the closure of each package, as returned by ‘guix gc -R’.
 
 #+END_SRC
 
+* Tools
+- [[https://git.sr.ht/~fishinthecalculator/sops-guix][~fishinthecalculator/sops-guix - Safely deploy secrets with Guix and SOPS - sourcehut git]]
+
 * Translation
 
 [0]: <https://translationproject.org/domain/guix.html>
