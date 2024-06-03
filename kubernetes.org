@@ -3726,6 +3726,7 @@ then redeploy with:
 - [[https://github.com/Mirantis/virtlet][Mirantis/virtlet: Kubernetes CRI implementation for running VM workloads]]
 - [[https://github.com/MoJo2600/pihole-kubernetes][MoJo2600/pihole-kubernetes: PiHole on kubernetes]]
 - [[https://artifacthub.io/packages/helm/si-gitops/mok][mok 0.9.7 · sheogorath/si-gitops: Mail on Kubernetes (MoK) is a project to deploy a functional mailserver that runs without a database server on Kubernetes, taking advantage of configmaps and secret.]]
+- [[https://github.com/moonbeam-nyc/snorlax][moonbeam-nyc/snorlax: wake and sleep Kubernetes deployments on a schedule]]
 - [[https://github.com/MoserMichael/s9k][MoserMichael/s9k: dashboard/web app for managing kubernetes clusters, with similar functionality as k9s]]
 - [[https://github.com/msfidelis/kubedump][msfidelis/kubedump: :whale: :rocket: Simple tool to dump and restore kubernetes resources]]
 - [[https://github.com/mycrEEpy/failover-service-operator][mycrEEpy/failover-service-operator: Kubernetes operator for providing active-passive services on top of headless services for statefulsets.]]
