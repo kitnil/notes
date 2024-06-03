@@ -2,3 +2,8 @@
 :ID:       b53359c6-3918-4740-9492-73b0676d2146
 :END:
 - [[https://sr.ht/~hristoast/modding-openmw.com/][modding-openmw.com: A guide to modding and modernizing Morrowind with OpenMW!]]
+
+* Bugs
+** TODO OpenMW Crashes on Open (Segfault) (71218 at debbugs.gnu.org)
+Workaround is starting the launcher with:
+: MESA_EXTENSION_OVERRIDE=-GL_ARB_clip_control openmw-launcher
