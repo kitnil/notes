@@ -3527,6 +3527,7 @@ then redeploy with:
 - [[https://github.com/FairwindsOps/rbac-manager][FairwindsOps/rbac-manager: A Kubernetes operator that simplifies the management of Role Bindings and Service Accounts.]]
 - [[https://github.com/falcosecurity/falco][falcosecurity/falco: Cloud Native Runtime Security]]
 - [[https://github.com/farcaller/nix-kube-modules][farcaller/nix-kube-modules: A nixos module to configure helm charts to be installed into k3s]]
+- [[https://github.com/fenio/pv-mounter][fenio/pv-mounter: A tool to locally mount k8s PVs using SSHFS]]
 - [[https://github.com/flomesh-io/pipy][flomesh-io/pipy: Pipy is a programmable proxy for the cloud, edge and IoT.]]
 - [[https://github.com/fluxcd/flagger][fluxcd/flagger: Progressive delivery Kubernetes operator (Canary, A/B Testing and Blue/Green deployments)]]
 - [[https://github.com/fluxcd/flux2][fluxcd/flux2: Open and extensible continuous delivery solution for Kubernetes. Powered by GitOps Toolkit.]]
