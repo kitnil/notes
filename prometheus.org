@@ -22,6 +22,7 @@
 - [[https://github.com/cloudflare/pint][cloudflare/pint: Prometheus rule linter]]
 - [[https://github.com/containers/prometheus-podman-exporter#collectors][containers/prometheus-podman-exporter: Prometheus exporter for podman environments exposing containers, pods, images, volumes and networks information.]]
 - [[https://trstringer.com/quick-and-easy-prometheus-exporter/][Create a Quick and Easy Prometheus Exporter | Thomas Stringer]]
+- [[https://github.com/digitalocean-labs/ebpf_exporter][digitalocean-labs/ebpf_exporter: a pure-Go Prometheus exporter for the eBPF Linux subsystem]]
 - [[https://github.com/prometheus/docs/blob/master/content/docs/instrumenting/exporters.md][docs/exporters.md at master · prometheus/docs]]
 - [[https://github.com/DRuggeri/dhcpd_leases_exporter][DRuggeri/dhcpd_leases_exporter: A Prometheus exporter for the ISC dhcpd daemon's dhcpd.leases file]]
 - [[https://github.com/Drumato/promqlinter][Drumato/promqlinter: A PromQL parser/type-checker/linter in GitHub Actions/CLI]]
