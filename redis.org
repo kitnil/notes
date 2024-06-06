@@ -26,6 +26,32 @@
 : redis.intr:6379> GET mailboxUserData:test@example.org
 : redis.intr:6379> HGETALL 'mailboxes:test@example.org'
 
+* Redis is a proprietary software now, alternatives do exist
+** [[https://www.phoronix.com/news/Fedora-Replacing-Redis-Valkey][Fedora Moves Ahead In Replacing Redis With Valkey - Phoronix]]
+
+Back in April I noted that [[https://www.phoronix.com/news/Fedora-Evaluate-Replacing-Redis][Fedora was considering replacing Redis with Valkey]]
+given the upstream Redis software licensing changes. At yesterday's Fedora
+Engineering and Steering Committee (FESCo) they have now signed off on
+replacing Redis with Valkey.
+
+Valkey is [[https://www.phoronix.com/news/Linux-Foundation-Valkey][a Redis fork started by the Linux Foundation]] back in March following
+Redis moving to a dual source-available licensing policy for future
+releases. Valkey is maintaining a BSD 3-clause license for this fork from
+Redis 7.2.4. Valkey under the Linux Foundation stewardship is being backed by
+Amazon/AWS, Google Cloud, Oracle, Snap, and other large organizations.  
+
+[[https://www.phoronix.net/image.php?id=2024&image=valkey_logo]]
+
+After weeks of debate and testing of new Valkey RPM packages, Fedora's FESCo
+has now [[https://pagure.io/fesco/issue/3203][approved]] replacing Redis with Valkey. Beginning with Fedora 41, Redis
+will be replaced by Valkey. A "valkey-compat" compatibility package will make
+it largely transparent for Fedora users currently relying on Redis. The Valkey
+systemd units will also have aliases to ease the migration from Redis to
+Valkey.  
+
+Those wishing to learn more about the Valkey in-memory data store fork of
+Redis can do so at the project site via [[https://valkey.io/][Valkey.io]].
+
 * Alternatives
 - [[https://github.com/dragonflydb/dragonfly][dragonflydb/dragonfly: A modern replacement for Redis and Memcached]]
 - [[https://github.com/snapchat/keydb][Snapchat/KeyDB: A Multithreaded Fork of Redis]]
