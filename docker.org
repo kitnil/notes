@@ -105,6 +105,9 @@
 - run archlinux in a docker container with systemd and graphics and tty
   : docker run --detach --device /dev/dri --device /dev/tty5 --entrypoint /sbin/init --privileged --name archlinux --env container=docker -v /sys/fs/cgroup:/sys/fs/cgroup --tmpfs /tmp --tmpfs /run --stop-signal SIGRTMIN+3 archlinux
 
+- run alpine in a docker container with systemd and graphics and tty
+  : docker run --volume /dev/log:/dev/log --device /dev/dri --device /dev/tty3 --entrypoint /sbin/init --rm --detach --env container=docker --privileged --tmpfs /tmp --tmpfs /run --name alpine alpine-tty-1
+
 * Compose
 
 - [[https://github.com/nuxxapp/nuxx][nuxxapp/nuxx: Visual Docker composer for faster development. Discover, leverage, and launch community recipes.]]
