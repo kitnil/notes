@@ -3230,6 +3230,324 @@ spec:
 Стоит отметить, что под =P= не обязательно будет запущен на ноде, имя которой указано в поле =nominatedNodeName= - дело в том, что все поды имеют время для корректного завершения работы (graceful termination period). Если в течение этого периода на какой-либо другой ноде кластера появится достаточное количество ресурсов для запуска пода =P=, то он будет запущен на подходящей ноде, не дожидаясь вытеснения подов =p0,1,2-...= и освобождения ресурсов с ноды из поля =nominatedNodeName=. Второй случай когда имена узлов в полях =nominatedNodeName= и =nodeName= могут не совпадать - если в процессе освобождения ресурсов для пода =P=  в очереди планировщика появится под с еще более высоким приоритетом, то именно он будет запущен раньше.
 
 Напоследок замечу, что класс приоритета (PriorityClass) для пода и класс качества сервиса (Qos), который рассматривали в статьях о ресурсах в =Kubernetes=  ([[https://ealebed.github.io/posts/2019/ресурсы-в-kubernetes-часть-1-memory/][раз]], [[https://ealebed.github.io/posts/2019/ресурсы-в-kubernetes-часть-2-cpu/][два]]) это совершенно разные вещи, их необходимо различать.
+** [[https://gjhenrique.com/cgroups-k8s/][Who's killing my pods?]]
+
+[[https://gjhenrique.com/][*(blog 'zezin)*]]
+
+- [[https://github.com/gjhenrique][Github]]
+
+-----
+
+*** Who's killing my pods?
+
+In the past few days, I've been trying to deploy a Kubernetes cluster using kubeadm in Debian. After =kubeadm=  configured the control plane, something was killing the pods randomly after a while. This post follows the story of how I tried to fix this issue.
+
+*TL;DR;*  Always match the same cgroup driver of the container runtime with the one from the kubelet
+
+*** The setup
+
+Instead of using docker and avoiding the container inside the container rabbit hole, I wanted an actual virtual machine to mirror a production cluster as close to reality as possible. I had some experience with Libvirt and QEMU/KVM, but wasn't in the mood to configure my cluster in XML.
+
+I could use vagrant with libvirt plugin to manage these XML files for me but decided to go with [[https://github.com/dmacvicar/terraform-provider-libvirt][terraform-provider-libvirt]] instead. Mainly as an excuse to mess around with Terraform. You can see the result of the experiments in [[https://github.com/gjhenrique/k8s-experiments][this repo]].
+
+*** The problem and the (nonideal) solution
+
+The first challenge I had to tackle was not using containerd from the official Debian repository because it was too old.
+
+At first, the cluster initialized correctly, and I could see the pods. Then, after some minutes, something was restarting the pods until it was impossible to query the apiserver to fetch any information about it. At first, I thought an OOM trigger was the culprit, but the virtual machine wasn't memory-constrained. Besides, no logs in Kubernetes pointed to this fact. I looked at the logs and assumed the OS was terminating the etcd process for some reason, wreaking havoc on the apiserver and consequently all its dependencies.
+
+Luckily, searching on the Internet, I found the [[https://discuss.kubernetes.io/t/why-does-etcd-fail-with-debian-bullseye-kernel/19696/6][first clue]]:
+
+#+begin_quote
+
+
+\> What helped me was to add systemd.unified\_cgroup\_hierarchy=0 to my GRUB\_CMDLINE\_LINUX\_DEFAULT in the grub file (/etc/default/grub for Debian)
+
+
+#+end_quote
+
+I added this option, and it worked! This option tells systemd to fallback to cgroups v1. One thing that the original poster thought was weird is that he's using the latest containerd version, which should support cgroups v2 out of the box by default. But hold that thought for a moment.
+
+*** Difference between cgroups v1 and v2
+
+cgroups (control groups) is a Linux kernel mechanism to manage the resources a process can access. Together with namespaces, they are the technologies that containers use under the hood.
+
+Besides constraining resources, it also exposes data about the process resources. As an example, [[https://github.com/google/cadvisor][cadvisor]] heavily uses it to report the stats of the pods. So, whenever you're reading some beautiful Grafana panel about your pod memory or CPU, this data is probably coming from cgroups.
+
+The cgroups API, like a lot of Linux abstractions, uses files to interface with userspace. You can limit the amount of memory of a process, CPU usage and the number of children a process might have, for example. The different resources are called controllers or subsystems.
+
+#+begin_src bash
+# Notice how there is the cpu after cgroup
+> mkdir /sys/fs/cgroup/cpu/custom
+# Adding the shell pid to
+> echo $$ > /sys/fs/cgroup/cpu/custom/cgroup.procs
+# From 100000 quota
+> echo 10000 > /sys/fs/cgroup/cpu/custom/cpu.cfs_quota_us
+# Only uses 10% of the cpu
+> stress -c 1
+
+#+end_src
+
+A significant difference is that in v2, cgroups doesn't separate a different folder for each controller. Instead, they reside now inside the same directory. It's called unified for this reason.
+
+#+begin_src bash
+# No cpu folder. All controllers are the same
+> mkdir /sys/fs/cgroup/custom
+# Add the current shell session
+> echo $$ > /sys/fs/cgroup/custom/cgroup.procs
+# From 100000 quota
+> echo 10000 > /sys/fs/cgroup/custom/cpu.max
+# Same with before: it only uses 10% of the cpu
+> stress -c 1
+
+#+end_src
+
+One last important detail is that cgroups is also hierarchical. Therefore, the cgroup's children directories can inherit or change their behaviour based on the parent's values.
+
+If you have an hour to spare, do watch this talk from [[https://www.youtube.com/watch?v=kcnFQgg9ToY][Michael Kerrisk]] (from the "Linux Programming Interface" book fame) introducing cgroups v2.
+
+*** What's that systemd config doing under the hood?
+
+Coming back to the original issue and the fix with =systemd.unified_cgroup_hierarchy=. If you're curious, [[https://github.com/systemd/systemd/blob/551dd873b0bdfb9e7e47431b2933c8b910228f0c/src/core/mount-setup.c#L64][the code]] in systemd related to the option given in that thread is surprisingly easy to follow.
+
+This option impacts the return of =cg_is_unified_wanted= and =cg_is_legacy_wanted= functions. Based on both results, systemd will mount the entries of the =mount_table=  variable with the option from cgroups v1 or v2.
+
+By specifying 0, =cg_is_legacy_wanted= returns true and system mounts =cgroups=  with v1 options. In the end, systemd will perform roughly the following commands on boot time depending on the version:
+
+#+begin_src bash
+# When cg_is_legacy_wanted is true, it means the user wants v1
+> mount -t tmpfs /sys/fs/cgroup
+> mkdir /sys/fs/cgroup/{pids,memory}
+> mount -t cgroup -o pids cgroup /sys/fs/cgroup/pids
+> mount -t cgroup -o memory cgroup /sys/fs/cgroup/memory
+# Rest of the mount for all controllers
+
+# If cg_is_unified_wanted is true, it means the user wants v2
+> mount -t cgroup2 cgroup2 /sys/fs/cgroup
+
+#+end_src
+
+Obviously, systemd doesn't use shell commands but mounts via =sys/mount.h= . The result is the same, though.
+
+*** The better solution
+
+The cluster was up and running. But using the nonideal cgroups v1. Looking through a GitHub issue on containerd related to cgroups v2, someone recommended the usage of the =SystemdCgroup=  option.
+
+#+begin_src ini
+# Content of file /etc/containerd/config.toml
+version = 2
+[plugins]
+  [plugins."io.containerd.grpc.v1.cri"]
+   [plugins."io.containerd.grpc.v1.cri".containerd]
+      [plugins."io.containerd.grpc.v1.cri".containerd.runtimes]
+        [plugins."io.containerd.grpc.v1.cri".containerd.runtimes.runc]
+          runtime_type = "io.containerd.runc.v2"
+          [plugins."io.containerd.grpc.v1.cri".containerd.runtimes.runc.options]
+            SystemdCgroup = true
+
+#+end_src
+
+And voilá. After restarting containerd, nothing was killing the pods anymore. I don't need to fiddle with kernel arguments, and I can use the more recent cgroups v2. I'm happy with that.
+
+*** What's this config doing under the hood?
+
+kubelet doesn't create the container processes or set up the cgroups for them. It communicates with containerd via the [[https://kubernetes.io/docs/concepts/architecture/cri/][CRI (Container Runtime Interface)]] specification. =containerd= in turn delegates the heavy lifting of creating the container cgroups to =runc= via the =systemd-cgroup= option. =runc=, based on this option, sends a message to =systemd=  through D-Bus.
+
+[[https://gjhenrique.com/res/k8s-cgroup/cri.svg]]
+
+Figure 1: A lot of layers to create a directory, isn't it?!
+
+*** Okay, but who's killing your pods?
+
+What's a good detective story without revealing the real author of the crimes? We need to trace where the pods termination happens to have some closure.
+
+Turning on the kubelet log level visibility to =DEBUG=  and looking at the order of the events, I realised that it's indeed the kubelet that's the culprit, and it's telling containerd to kill the pod.
+
+**** Where?
+
+It all starts on the =Start=  method (Ha!). Something somewhere sends a value into the channel to conciliate the actual state of the pod with the desired state. I left out the code that sends this value because it's irrelevant to our investigation.
+
+#+begin_src go
+// in Start on status_manager.go
+go wait.Forever(func() {
+  for {
+    select {
+      case syncRequest := <-m.podStatusChannel:
+        klog.V(5).InfoS("Status Manager: syncing pod with status from podStatusChannel",
+          "podUID", syncRequest.podUID,
+          "statusVersion", syncRequest.status.version,
+          "status", syncRequest.status.status)
+        m.syncPod(syncRequest.podUID, syncRequest.status)
+     }
+  }
+}
+
+#+end_src
+
+#+begin_src go
+// in syncPod on kubelet.go
+// pcm is a podContainerManagerImpl struct
+if !pcm.Exists(pod) && !firstSync {
+  p := kubecontainer.ConvertPodStatusToRunningPod(kl.getRuntime().Type(), podStatus)
+  if err := kl.killPod(pod, p, nil); err == nil {
+    podKilled = true
+  } else {
+    klog.ErrorS(err, "KillPod failed", "pod", klog.KObj(pod), "podStatus", podStatus)
+  }
+}
+
+#+end_src
+
+Here, it checks if the pod still exists. If not, it calls =killPod= , telling containerd to kill it. Notice how there is no log here stating the exact reason why the pod was killed. This makes things challenging to troubleshoot.
+
+Here is the part where the check happens:
+
+#+begin_src go
+// in cgroup_manager_linux.go
+// pcm will call this method
+func (m *cgroupManagerImpl) Exists(name CgroupName) bool {
+        return m.Validate(name) == nil
+}
+
+func (m *cgroupManagerImpl) Validate(name CgroupName) error {
+
+  if libcontainercgroups.IsCgroup2UnifiedMode() {
+    cgroupPath := m.buildCgroupUnifiedPath(name)
+    neededControllers := getSupportedUnifiedControllers()
+    enabledControllers, err := readUnifiedControllers(cgroupPath)
+    if err != nil {
+      return fmt.Errorf("could not read controllers for cgroup %q: %w", name, err)
+    }
+    difference := neededControllers.Difference(enabledControllers)
+    if difference.Len() > 0 {
+      return fmt.Errorf("cgroup %q has some missing controllers: %v", name, strings.Join(difference.List(), ", "))
+    }
+    return nil // valid V2 cgroup
+  }
+  // Rest of cgroups v1 logic
+}
+
+#+end_src
+
+kubelet parsed the cgroup of this pod as =kubepods-burstable-<pod_id>.slice= inside =kubepods-burstable.slice=. I grepped the PID of the container in =/sys/fs/cgroup= and found that it was in cgroup =kubepods-besteffort-<pod_id>.slice:cri-containerd:<container_id>= inside =system.slice= . The container cgroup was not related at all to the pod cgroup.
+
+With the broken version, the best effort cgroup has the following configuration (same with burstable):
+
+#+begin_src bash
+/sys/fs/cgroup/
+├── kubepods.slice
+│   ├── kubepods-besteffort.slice
+│   │   └── kubepods-besteffort-pod<pod_id>.slice
+├── system.slice
+│   ├── kubepods-besteffort-pod<pod_id>.slice:cri-containerd:<container_id>
+
+#+end_src
+
+With the systemd option working correctly:
+
+#+begin_src bash
+/sys/fs/cgroup/kubepods.slice/
+├── kubepods-besteffort.slice
+│   └── kubepods-besteffort-pod<pod_id>.slice
+│       └── cri-containerd-<container_id>.scope
+
+
+#+end_src
+
+One thing that I thought it was strange is that the pod cgroup does exist in the v2 format. Putting a log with the error there surprised me with the following message:
+
+=cgroup [\"kubepods\" \"besteffort\" \"pod7149273f-1369-42ff-ae1f-79b1529bba7b\"] has some missing controllers: cpuset=
+
+Okay. kubelet identifies the cgroup as missing because it's missing a controller. Who's removing the =cpuset=  controller then?
+
+**** Kubernetes QoS
+
+Let's digress a bit. Kubernetes assigns a pod in one of the three [[https://kubernetes.io/docs/tasks/configure-pod-container/quality-service-pod/][Qualify of Service (QoS)]] classes. It sets different CPU scheduling and decides who will die first in case of memory pressure. The three types are:
+
+- *Guaranteed* : Pods that are strict about their CPU and memory limit and requests
+- *Burstable* : Pods that are less strict but still define at least one limit or request in one of its containers
+- *BestEffort* : Pods that don't specify any limit or requests
+
+kubelet uses the =cpu.weight= file to allocate CPU time for the given processes based on their QoS. This calculation happens every minute, and in the end, it will send a D-Bus message to systemd with the =CPUWeight= property to the *QoS cgroup* . kubelet sets the minimum share of one to the BestEffort cgroup and calculates the BestEffort shares based on the existing requests of active pods. As a good citizen, kubernetes rewards the pod with more CPU time. So, always specify a limit and request in your pod definition.
+
+What does this have to do with the previous error? I noticed that the pod died a couple of seconds after kubelet sent this =CPUWeight= request every minute. Looking at the files of the QoS cgroup, I could see that the =cgroup.subtree_control= was temporarily missing the =cpuset=  controller. cgroups uses this file to block or allow what controllers the children can access.
+
+#+begin_src bash
+> cd /sys/fs/cgroup
+> mkdir -p custom_parent/custom_child
+> ls -l custom_parent/custom_child/cpu*
+2
+> cat custom_parent/custom_child/cgroup.controllers
+# Nothing is returned
+> echo +cpu > custom_parent/cgroup.subtree_control
+> cat custom_parent/custom_child/cgroup.controllers
+cpu
+> ls -l custom_parent/custom_child/cpu* | wc -l
+5
+
+#+end_src
+
+The =cpu= files, like =cpu.weight= or =cpu.max= are only accessible when adding the =cpu= controller to =cgroup.subtree_control= .
+
+This is a demo of what's happening every minute. I called systemd directly, so it's more deterministic, but it's the same operations under the hood.
+
+[[https://gjhenrique.com/res/k8s-cgroup/recording.gif]]
+
+Notice how after a couple of seconds, kubelet will add the =cpuset= controller to get back to "normality". [[https://github.com/opencontainers/runc/blob/c0d44ea9fc076840b9794de3826dbf4494a58c84/libcontainer/cgroups/systemd/v2.go#L291][This happens]] because =runc= will try to create the cgroup via file API after sending the D-Bus messages to systemd. Not sure if it's just to guarantee that the cgroup is created correctly. By the way, it's the kubelet who uses =runc=  as a library to create the QoS cgroup, not containerd.
+
+**** WTF systemd?
+
+So, one crucial detail is that something removes the controller only when using the systemd API. It's still there when writing to =cpu.weight=  directly. So it's probably not the kernel messing up with the controller.
+
+Issuing a =strace -p 1=, I found out that systemd was the process removing the =cpuset= in the =cgroup.subtree_control=  file of the QoS cgroup.
+
+systemd doesn't remove the controller in the working setup because =runc= adds the cgroup via systemd with the =Delegate= option: This option, according to [[https://systemd.io/CGROUP_DELEGATION/][the docs]], does something relevant for us:
+
+#+begin_quote
+
+
+systemd won't fiddle with your sub-tree of the cgroup tree anymore. It won't change attributes of any cgroups below it, nor will it create or remove any cgroups thereunder, nor migrate processes across the boundaries of that sub-tree as it deems useful anymore.
+
+
+#+end_quote
+
+So, with =Delegate= as a children of the pod and Qos cgroups, =runc=  says: "Fuck off, systemd. I know what I'm doing. This cgroup and all its parents belong to me". systemd will reply: "Okay. Carry on. I will leave you alone". When there is no delegated cgroup, systemd will say: "Aha. All of these cgroups belong to me now. I will do whatever I want with it!".
+
+The tricky question nagging me is: "Why is systemd removing this controller in the first place?". Following what systemd is doing is unsurprisingly hard to follow. Linux introduced =cpuset= in v2, and the same feature was in the =cpu=  controller for v1. Perhaps it's not considering it when it restarts the controllers of non-delegated cgroup. I'm probably not seeing the forest for the trees and I leave it as an exercise for the reader to find out =P.
+
+In the end, this "bug" might be a feature; otherwise, kubelet wouldn't restart the pod, and I would think the control plane was healthy.
+
+**** Wrapping up
+
+A short summary of the broken version events:
+
+1. containerd will create the container cgroup outside of =kubepods-<qos>-<pod_id>.slice=
+2. kubelet sends a D-Bus message to systemd to change the =CPUWeight=  property of the QoS cgroup
+3. systemd writes this value to =cpu.weight=  file
+4. systemd removes the =cpuset=  controller for whatever reason
+5. kubelet will try to sync the pod and realize that a controller is missing
+6. kubelet kills the pod because it thinks the cgroup is "gone."
+7. kubelet "syncs" the QoS cgroup again and adds the =cpuset=  via file API
+8. the pod is up
+9. go back to 1. the control plane is broken
+
+The version with =SystemdCgroup=  in containerd config:
+
+1. containerd creates the container cgroup inside the pod cgroup with the =Delegate=  option
+2. kubelet sends a D-Bus message and systemd writes the value to =cpu.weight=  file
+3. systemd won't mess up with the parents of the delegated container cgroup
+4. kubelet doesn't kill the pod because the =cpuset=  controller is still there
+5. the control plane is healthy
+
+In my opinion, it's kubelet's responsibility to not allow the container manager and runtime to use a different cgroup driver. For instance, kubelet [[https://github.com/kubernetes/kubernetes/blob/cb303e613a121a29364f75cc67d3d580833a7479/pkg/kubelet/dockershim/docker_service.go#L274][returned an error]] when docker didn't match the driver. Since 1.22, kubelet removed the docker integration, and it only supports managers implementing the CRI now. Apparently, the [[https://github.com/kubernetes/cri-api/blob/master/pkg/apis/runtime/v1/api.proto][CRI specification]] doesn't provide an agnostic way to identify the cgroup driver of the container runtime. I'm still unable to see the whole picture yet, and the best way to avoid people shooting themselves in the foot.
+
+*** Conclusion
+
+It was fun to troubleshoot all of this. I made some wrong assumptions (as usual), and I couldn't imagine that I would need to go that deep to find out what was going on.
+
+I'm surprised at how libvirt-terraform-provider helped me. Investing some time to set up a declarative approach paid dividends. It was useful to run multiple hosts, try out new OSes and have multiple machines running simultaneously with different cgroup versions.
+
+Let's see what the future holds now that I can bootstrap my own cluster in an isolated environment =).
 * Misc
 - [[https://github.com/aquasecurity/kube-bench][aquasecurity/kube-bench: Checks whether Kubernetes is deployed according to security best practices as defined in the CIS Kubernetes Benchmark]]
 - [[https://github.com/kubevirt/kubevirt][kubevirt/kubevirt: Kubernetes Virtualization API and runtime in order to define and manage virtual machines.]]
