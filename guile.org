@@ -134,6 +134,50 @@ Guile Reference Manual.
 
 * Programms
 - [[https://github.com/b4284/guile-pastebin][b4284/guile-pastebin: A very simple pastebin written in Guile Scheme.]]
+** [[https://dthompson.us/projects/shroud.html][Shroud]]
+
+Shroud is a simple secret manager with a command line interface.
+
+The password database is stored as a Scheme s-expression and encrypted with a
+GnuPG key. Secrets consist of an arbitrary number of key/value pairs, making
+Shroud suitable for more than just password storage. For copying and pasting
+secrets into web browsers and other graphical applications, there is xclip
+integration.
+
+*** Usage
+
+First, create a .shroud file in your home directory to hold your configuration
+settings. All you really need to set here is your GPG user ID i.e. your email
+address:
+
+: '((user-id . "foo@example.com"))
+
+The .shroud file is Scheme source code, so any expression that evaluates to an
+alist of valid configuration settings is usable by Shroud.
+
+Once Shroud is configured, try out the following commands to get a feel for
+how things work:
+
+# Add a new secret:
+: shroud hide bank-account username=foobar password=hackme
+
+# Edit an existing secret:
+: shroud hide --edit bank-account password=hackmepls
+
+# List all secrets:
+: shroud list
+
+# Show all key/value pairs for a saved secret:
+: shroud show bank-account
+
+# Show a single value in a secret:
+: shroud show bank-account password
+
+# Copy a password directly to X clipboard:
+: shroud show -c bank-account password
+
+# Delete a secret:
+: shroud remove bank-account
 
 * Networking
 
