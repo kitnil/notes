@@ -3791,6 +3791,7 @@ then redeploy with:
 - [[https://github.com/cloudworkz/kube-eagle][cloudworkz/kube-eagle: A prometheus exporter created to provide a better overview of your resource allocation and utilization in a Kubernetes cluster.]]
 - [[https://github.com/clusternet/clusternet][clusternet/clusternet: Managing your Kubernetes clusters (including public, private, edge, etc) as easily as visiting the Internet ⎈]]
 - [[https://github.com/cnwizards/node-wizard][cnwizards/node-wizard: Node Wizard is a controller that monitors node readiness. It cordons and drains nodes that are not ready, and uncordons them when they become ready again.]]
+- [[https://github.com/config-syncer/config-syncer][config-syncer/config-syncer: 🛡️ Kubernetes Config Syncer (previously kubed)]]
 - [[https://github.com/containerd/stargz-snapshotter][containerd/stargz-snapshotter: Fast container image distribution plugin with lazy pulling]]
 - [[https://github.com/ContainerSolutions/kubernetes-examples][ContainerSolutions/kubernetes-examples: Minimal self-contained examples of standard Kubernetes features and patterns in YAML]]
 - [[https://github.com/containers/podman-desktop][containers/podman-desktop: Podman Desktop - A graphical tool for developing on containers and Kubernetes]]
