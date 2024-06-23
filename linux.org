@@ -750,6 +750,9 @@ sudo dmesg | grep netconsole
 
 In any case, it might be a good idea to also automate setting a sufficiently high console log level. Passing loglevel=8 on the kernel command line could be a way, or a tiny start-up script calling dmesg -n 8 or updating the /proc/sys/kernel/printk file. <p>Enjoy tracking down kernel bugs!
 
+** Run socat in a container
+: docker run --name netconsole --detach --network=host nixery.dev/socat socat UDP4-LISTEN:6666,fork -
+
 * Netflow
 - [[https://github.com/aabc/ipt-netflow][aabc/ipt-netflow: Netflow iptables module for Linux kernel (official)]]
 
