@@ -4168,6 +4168,7 @@ then redeploy with:
 - [[https://developers.redhat.com/blog/2020/11/18/using-multus-and-datavolume-in-kubevirt#using_multus_in_kubevirt][Using Multus and DataVolume in KubeVirt | Red Hat Developer]]
 - [[https://github.com/utkuozdemir/pv-migrate][utkuozdemir/pv-migrate: CLI tool to easily migrate Kubernetes persistent volumes]]
 - [[https://github.com/vfx1b/kubectl-really-get-all][vfx1b/kubectl-really-get-all: A kubectl get plugin that allows you to list every resource in your cluster]]
+- [[https://github.com/viaduct-ai/kustomize-sops][viaduct-ai/kustomize-sops: KSOPS - A Flexible Kustomize Plugin for SOPS Encrypted Resources]]
 - [[https://github.com/vmware-tanzu/octant][vmware-tanzu/octant: Highly extensible platform for developers to better understand the complexity of Kubernetes clusters.]]
 - [[https://github.com/vmware-tanzu/velero][vmware-tanzu/velero: Backup and migrate Kubernetes applications and their persistent volumes]]
 - [[https://github.com/wavyland/wavy/tree/main][wavyland/wavy: Wavy is a toolset for running GUI applications on Kubernetes]]
