@@ -104,6 +104,9 @@ https://github.com/iovisor/bcc/blob/master/QUICKSTART.md
 - run command from a host mount namespace
   : /usr/bin/nsenter -m/proc/1/ns/mnt -- /run/current-system/sw/bin/systemctl reboot
 
+- list current capabilities
+  : capa=`cat /proc/1/status | grep -i 'CapEff' | awk '{print $2}'`; capsh --decode=$capa
+
 * console
 #+begin_quote
 I think it would also be nice if the sysadmins could get
