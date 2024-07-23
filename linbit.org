@@ -695,6 +695,35 @@ If you get any output (there are lines with the “Remote failed to finish a req
   satellite nodes. The command that is supposed to reconnect satellite nodes
   that are currently offline is =node reconnect=.
 
+** Diskless and read-only after fixing not enough disk space in a LVM thin group
+#+begin_example
+  $ linstor v l -r pvc-f75da80a-2b8f-4ac4-b767-9d04a7c7dac8
+  ╭──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+  ┊ Node  ┊ Resource                                 ┊ StoragePool ┊ VolNr ┊ MinorNr ┊ DeviceName    ┊ Allocated ┊ InUse  ┊    State ┊
+  ╞══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╡
+  ┊ kube1 ┊ pvc-f75da80a-2b8f-4ac4-b767-9d04a7c7dac8 ┊ pool0       ┊     0 ┊    1002 ┊ /dev/drbd1002 ┊ 71.96 MiB ┊ Unused ┊ Diskless ┊
+  ╰──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+#+end_example
+
+#+begin_example
+  # drbdadm down pvc-f75da80a-2b8f-4ac4-b767-9d04a7c7dac8
+
+  # drbdadm status
+
+  # drbdadm up pvc-f75da80a-2b8f-4ac4-b767-9d04a7c7dac8
+  Marked additional 28 MB as out-of-sync based on AL.
+
+  # drbdadm status
+  pvc-f75da80a-2b8f-4ac4-b767-9d04a7c7dac8 role:Secondary
+    disk:Outdated
+
+  # drbdadm primary pvc-f75da80a-2b8f-4ac4-b767-9d04a7c7dac8
+
+  # drbdadm status
+  pvc-f75da80a-2b8f-4ac4-b767-9d04a7c7dac8 role:Primary
+    disk:UpToDate
+#+end_example
+
 ** API
 - [[https://app.swaggerhub.com/apis-docs/Linstor/Linstor/1.19.0#/developers/nodeList][Linstor | 1.19.0 | Linstor | SwaggerHub]]
 
