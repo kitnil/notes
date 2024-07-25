@@ -435,7 +435,6 @@ mssqlhelp
 - [[https://rutracker.org/forum/viewtopic.php?p=75274766#75274766][Обход блокировки bt*. трекеров (основные инструкции) :: RuTracker.org]]
 - [[https://rutracker.org/forum/viewtopic.php?t=5376074][Socks5 с X-Forwarded-For+privoxy :: RuTracker.org]]
 - [[https://steambuy.com/][STEAMBUY.COM - Интернет-магазин лицензионных игр]]
-- [[https://github.com/ValdikSS/GoodbyeDPI][ValdikSS/GoodbyeDPI: GoodbyeDPI — Deep Packet Inspection circumvention utility (for Windows)]]
 - [[https://97-fz.rkn.gov.ru/][Реестр организаторов распространения информации в сети «Интернет»]]
 - [[https://habr.com/ru/articles/777656/][GOST: швейцарский нож для туннелирования и обхода блокировок / Хабр]]
 - [[https://github.com/roskomsvoboda/censortracker][roskomsvoboda/censortracker: Censor Tracker is a censorship circumvention extension for Google Chrome and Mozilla Firefox.]]
@@ -445,6 +444,12 @@ mssqlhelp
 - [[https://antizapret.prostovpn.org/][АнтиЗапрет — скажи цензуре нет!]]
 - [[https://portal.noc.gov.ru/ru/lg][Looking Glass ЦМУ ССОП noc.gov.ru]]
 - [[https://github.com/freemedia-tech/iptables-rugov-block][freemedia-tech/iptables-rugov-block]]
+
+** [[https://github.com/ValdikSS/GoodbyeDPI][ValdikSS/GoodbyeDPI: GoodbyeDPI — Deep Packet Inspection circumvention utility (for Windows)]]
+В общем скачиваем GoodbyeDPI древнюю прогу для обхода бллокировок, прописываем
+в файл ==russia-blacklist.txt= строку ==googlevideo.com=, даем права
+пользователя на папку с прогой, иначе не сможете отредактировать файл, и
+запускаем =service_install_russia_blacklist.cmd= и YouTube летает.
 
 ** Censor
 *** Закон о суверенизации Рунета
