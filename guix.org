@@ -116,11 +116,36 @@ https://gitlab.com/janneke/guix.git
 - [[https://guix-forge.systemreboot.net/manual/dev/en/][guix-forge]]
 
 ** Substitutes
+- http://4zwzi66wwdaalbhgnix55ea3ab4pvvw66ll2ow53kjub6se4q2bclcyd.onion/
 - guix.cbaines.net
 - [[https://www.mail-archive.com/guix-devel@gnu.org/msg55848.html][https://mirrors.sjtug.sjtu.edu.cn/guix SJTUG's Guix mirror is online now]]
 - Made a guix site mirror/proxy. It's available both in clearnet and yggdrasil. 
   - http://167.172.37.172/
   - http://[204:cbf:3e07:e67a:424f:93bc:fc5c:b3dc]/
+*** cuirass.genenetwork.org North American based Guix Substitute Server
+https://mail.gnu.org/archive/html/guix-devel/2024-07/msg00033.html
+
+Using Substitutes from cuirass.genenetwork.org
+
+If you're using Guix System, you can use the cuirass.genenetwork.org substitute 
+server completing the following:
+
+1. Add =https://cuirass.genenetwork.org= to the list of substitute servers
+   (using the =substitute-urls= field of =guix-configuration= passed to the
+   =guix-daemon= service).
+2. Adjust guix-daemon ACLs to include the following public key (using the
+   =authorized-keys= field of =guix-configuration= passed to the =guix-daemon=
+   service).
+
+#+begin_src scheme
+  (public-key 
+   (ecc 
+    (curve Ed25519)
+    (q #9578AD6CDB23BA51F9C4185D5D5A32A7EEB47ACDD55F1CCB8CEE4E0570FBF961#)
+    )
+  )
+#+end_src
+
 
 * Build from Scheme expression
 
@@ -2792,31 +2817,6 @@ Ludo’.
 
 * Mirrors
 - [[https://github.com/guix-mirror/guix][guix-mirror/guix: Read-only mirror of GNU Guix — pull requests are ignored, see https://guix.gnu.org/en/manual/en/guix.html#Submitting-Patches instead]]
-- http://4zwzi66wwdaalbhgnix55ea3ab4pvvw66ll2ow53kjub6se4q2bclcyd.onion/
-
-** cuirass.genenetwork.org North American based Guix Substitute Server
-https://mail.gnu.org/archive/html/guix-devel/2024-07/msg00033.html
-
-Using Substitutes from cuirass.genenetwork.org
-
-If you're using Guix System, you can use the cuirass.genenetwork.org substitute 
-server completing the following:
-
-1. Add =https://cuirass.genenetwork.org= to the list of substitute servers
-   (using the =substitute-urls= field of =guix-configuration= passed to the
-   =guix-daemon= service).
-2. Adjust guix-daemon ACLs to include the following public key (using the
-   =authorized-keys= field of =guix-configuration= passed to the =guix-daemon=
-   service).
-
-#+begin_src scheme
-  (public-key 
-   (ecc 
-    (curve Ed25519)
-    (q #9578AD6CDB23BA51F9C4185D5D5A32A7EEB47ACDD55F1CCB8CEE4E0570FBF961#)
-    )
-  )
-#+end_src
 
 * Misc
 
