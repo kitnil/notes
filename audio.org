@@ -20,6 +20,7 @@
 - [[https://github.com/sonic-visualiser/sonic-visualiser][sonic-visualiser/sonic-visualiser: Visualisation, analysis, and annotation of music audio recordings]]
 - [[https://github.com/haileys/bark][haileys/bark: live sync audio streaming for local networks]]
 - [[https://github.com/Audio4Linux/JDSP4Linux][Audio4Linux/JDSP4Linux: An audio effect processor for PipeWire and PulseAudio clients]]
+- [[https://github.com/Rikorose/DeepFilterNet][Rikorose/DeepFilterNet: Noise supression using deep filtering]]
 
 - "Establishing connection to pulseaudio, please wait"
   : sudo fuser -v /dev/snd/*
