@@ -451,6 +451,312 @@ mssqlhelp
 пользователя на папку с прогой, иначе не сможете отредактировать файл, и
 запускаем =service_install_russia_blacklist.cmd= и YouTube летает.
 
+** [[https://habr.com/ru/articles/835602/][Как Orange Pi вернула мне Ютуб]]
+
+Время на прочтение5 мин
+
+Количество просмотров33K
+
+[[https://habr.com/ru/hubs/network_technologies/][Сетевые технологии\*]]
+
+[[https://habrastorage.org/r/w1560/getpro/habr/upload_files/9c2/e8a/29d/9c2e8a29dda42e6239c1f6f6c5c6f46d.png]]
+
+Обложка статьи
+
+Привет, /Хабр!/
+
+В связи с последними событиями вокруг видео хостинга YouTube, ситуация вынуждает искать технические решения для восстановления доступа к сервису. В этой статье я хочу поделиться своим техническим опытом по восстановлению доступа к сервису с помощью дешевого одноплатника */Orange Pi Zero 2/* от компании Xunlong Software *.*
+
+Получается так, что в ходе моих разработок в моем арсенале остаются "ненужные" железки, одной из этих железок оказалась плата */Orange Pi Zero 2,/*  ниже представлен внешний вид устройства и технические характеристики:
+
+[[https://habrastorage.org/r/w1560/getpro/habr/upload_files/f1a/70c/3c7/f1a70c3c7ff8a0d39d3271970983b040.png]]
+
+Внешний вид Orange Pi Zero 2
+
+Hardware specification
+
+| CPU                   | Allwinner H616 64-bit high-performance Quad-core Cortex-A53 processor                                                                                                              |
+| GPU                   | • Mali G31 MP2• Supports OpenGL ES 1.0/2.0/3.2、OpenCL 2.0                                                                                                                         |
+| Video decoding        | • H.265 Main10@L5.1 decoder up to 4K@60fps or 6K@30fps• VP9 Profile 2 decoder up to 4K@60fps• AVS2 JiZhun 10bit decoder up to 4K@60fps• H.264 BP/MP/HP@L4.2 decoder up to 4K@30fps |
+| Video encoding        | • H.264 BP/MP/HP encoder up to 4K@25fps or 1080p@60fps• JPEG snapshot performance of 1080p@60fps                                                                                   |
+| Memory(SDRAM)         | 512MB/1GB DDR3 (Shared with GPU）                                                                                                                                                  |
+| Onboard Storage       | • TF card slot• 2MB SPI Flash                                                                                                                                                      |
+| Onboard Network       | Support 1000M/100M/10M Ethernet                                                                                                                                                    |
+| Onboard WiFi+BT       | • 859 Chip• Support IEEE 802.11 a/b/g/n/ac• Support BT5.0                                                                                                                          |
+| Video Outputs         | • Micro HDMI 2.0a up to 4K@60fps• TV CVBS output, Support PAL/NTSC（Via 13pin interface board）                                                                                    |
+| Audio output          | • Micro HDMI• 3.5mm audio port (Via 13pin interface board)                                                                                                                         |
+| Power Source          | Type-C interface 5V3A input                                                                                                                                                        |
+| USB 2.0 Ports         | 3\*USB 2.0 HOST（Two of them are via 13pin interface board）                                                                                                                       |
+| Low-level peripherals | • 26pin header with I2C, SPI, UART and multiple GPIO ports• 13pin header with 2\*USB Host, IR pin, Tv-out、AUDIO (no MIC) and 3 GPIO ports                                         |
+| Debug serial port     | UART-TX、UART-RX and GND                                                                                                                                                           |
+| LED                   | Power led & Status led                                                                                                                                                             |
+| IR receiver           | Support IR remote control (via 13pin interface board)                                                                                                                              |
+| Supported OS          | Android10、Ubuntu、Debian                                                                                                                                                          |
+
+***** Appearance specification introduction
+
+| Dimension | 53mm×60mm |
+| Weight    | 30g       |
+
+Так как мои устройства, которые используют видеосервис YouTube, подключены через беспроводное соединение и исходя из спецификации платы, вырисовывается следующая концепция:
+
+Проводной сетевой интерфейс (Ethernet) мы будем использовать для (внешнего) подключения к сети интернет, в моем случае к сетевому роутеру, а на беспроводном модуле одноплатника мы реализуем Wi-Fi Хотспот для подключения наших устройств, и вся "магия" будет выполняться с помощью установленного на одноплатник ПО.
+
+*Установка программного обеспечения* 
+
+В качестве операционной системы используется Debian 12 без графической оболочки, скачать образ системы можно на официальном сайте Orange Pi.
+
+Wi-Fi хотспот в данном решении реализован с помощью пакета hostapd, перед дальнейшими действиями, рекомендуется обновить пакеты с помощью команды
+
+#+begin_src
+sudo apt-get update && apt-get upgrade
+#+end_src
+
+***** Установка и настройка hostapd
+
+#+begin_src
+sudo apt-get install hostapd
+#+end_src
+
+Редактируем файл конфигурации /etc/default/hostapd.conf.
+
+#+begin_src
+sudo nano /etc/default/hostapd.conf
+#+end_src
+
+В файле конфигурации раскомментируем следующую строку
+
+#+begin_src
+DAEMON_CONF="/etc/hostapd/hostapd.conf"
+#+end_src
+
+И на всякий случай остановим сервис hostapd
+
+#+begin_src
+service hostapd stop
+#+end_src
+
+Отредактируем файл конфигурации нашего Wi-Fi хотспота:
+
+#+begin_src
+sudo nano /etc/hostapd/hostapd.conf
+#+end_src
+
+Приведем файл к следующему содержанию
+
+#+begin_src
+interface=wlan0
+driver=nl80211
+country_code=RU
+ssid=INTERNETFORYOUTUBE     #Wi-Fi AP SSID
+hw_mode=a
+channel=36
+ieee80211n=1
+ieee80211ac=1
+vht_capab=[VHT80][SHORT-GI-80]
+wpa=2
+wpa_passphrase=YOUTUBE12345  #PASSWORD 
+wpa_key_mgmt=WPA-PSK
+wpa_pairwise=TKIP
+rsn_pairwise=CCMP
+auth_algs=1
+macaddr_acl=0
+#+end_src
+
+В данной конфигурации реализована Wi-Fi точка доступа 5 ГГц, стандарт 802.11n, 802.11ac, частотный канал 36, *wlan0*  - беспроводной сетевой интерфейс, определяется с помощью команды:
+
+#+begin_src
+ip a
+#+end_src
+
+Далее нам необходимо сконфигурировать беспроводной интерфейс, отредактировав следующий файл с помощью команды:
+
+#+begin_src
+sudo nano /etc/network/interfaces
+#+end_src
+
+Содержимое файла нужно привести к следующему
+
+#+begin_src
+source /etc/network/interfaces.d/*
+# Network is managed by Network manager
+auto lo
+iface lo inet loopback
+auto wlan0
+iface wlan0 inet static
+address 192.168.50.1
+netmask 255.255.255.0
+gateway 192.168.50.1
+#+end_src
+
+В данной файле мы прописали статическую конфигурацию адреса для беспроводного интерфейса.
+
+Теперь, для корректной работы нашего хотспота, необходимо настроить автоматическую раздачу адресов для клиентов. Для этого реализуем DHCP сервис с помощью dnsmasq.
+
+Установка dnsmasq:
+
+#+begin_src
+sudo apt-get install dnsmasq
+#+end_src
+
+И, на всякий случай, остановим сервис
+
+#+begin_src
+service dnsmasq stop
+#+end_src
+
+Конфигурируем dnsmasq
+
+#+begin_src
+sudo nano /etc/dnsmasq.conf
+#+end_src
+
+И приводим файл конфигурации к следующему содержимому
+
+#+begin_src
+interface=wlan0                                 # Use interface wlan0
+listen-address=192.168.50.1                     # Explicitly specify the address to>
+bind-interfaces                                 # Bind to the interface to make sur>
+server=8.8.8.8                                  # Forward DNS requests to Google DNS
+domain-needed                                   # Don't forward short names
+bogus-priv                                      # Never forward addresses
+dhcp-range=192.168.50.50,192.168.50.150,12h     # IP range DHCP
+#+end_src
+
+В своей магии мы будем использовать локальный прокси сервер Socks 5, и для возможности его использования, мы воспользуемся пакетом Redsocks
+
+Установка и настройка redsocks
+
+#+begin_src
+sudo apt-get install redsocks
+#+end_src
+
+Редактируем конфигурационный файл
+
+#+begin_src
+sudo nano /etc/redsocks.conf
+#+end_src
+
+Приведем файл конфигурации к следующему содержимому:
+
+#+begin_src
+base {
+    log_debug = off;
+    log_info = on;
+    log = "file:/var/log/redsocks.log";
+    daemon = on;
+    redirector = iptables;
+}
+
+redsocks {
+    local_ip = 0.0.0.0;
+    local_port = 12345;
+    ip = 127.0.0.1;   
+    port = 1080;    
+    type = socks5;
+}
+#+end_src
+
+Теперь нам необходимо завернуть весь трафик от клиентов хотспота в наш будущий socks 5 прокси. Реализуем данную задачу с помощью iptables:
+
+#+begin_src
+sudo iptables -t nat -N REDSOCKS
+sudo iptables -t nat -A REDSOCKS -d 192.168.50.0/24 -j RETURN        # Исключаем локальную сеть
+sudo iptables -t nat -A REDSOCKS -p tcp -j REDIRECT --to-ports 12345
+sudo iptables -t nat -A PREROUTING -i wlan0 -p tcp -j REDSOCKS
+#+end_src
+
+Далее нам желательно сохранить данные правила и реализовать их загрузку при старте системы:
+
+Сохранение текущих правил iptables в файл iptables.rules. Создаем файл и ограничиваем к нему доступ
+
+#+begin_src
+sudo touch /etc/iptables.rules
+sudo chmod 640 /etc/iptables.rules
+#+end_src
+
+Сохраняем текущие правила iptables в файл
+
+#+begin_src
+sudo iptables-save | sudo tee /etc/iptables.rules
+#+end_src
+
+Автозагрузка сохраненных правил. В /etc/network/if-pre-up.d/ создаём файл iptables, со следующим содержимым:
+
+#+begin_src
+#!/bin/sh
+iptables-restore < /etc/iptables.rules
+exit 0
+#+end_src
+
+Делаем созданный сценарий исполнимым
+
+#+begin_src
+sudo chmod +x  /etc/network/if-pre-up.d/iptables
+#+end_src
+
+Теперь немного магии, чтобы у нас все заработало, будем использовать "ciadpi"
+
+Создаем сервис ciadpi не под root пользователем, например orangepi. Входим под пользователем orangepi и клонируем репозиторий:
+
+#+begin_src
+git clone https://github.com/hufrea/byedpi
+#+end_src
+
+Переходим в папку с репозиторием и собираем
+
+#+begin_src
+сd byedpi
+make
+#+end_src
+
+Далее нам необходимо создать сервис для автозагрузки нашей магии:
+
+#+begin_src
+nano /etc/systemd/system/byedpi_orange_pi.service
+#+end_src
+
+И сохраняем следующее содержимое
+
+#+begin_src
+[Unit]
+Description=dpi port 1080
+After=network.target
+
+[Service]
+User=orangepi
+Group=orangepi
+ExecStart=/home/orangepi/byedpi/ciadpi --disorder 1 --auto=torst --tlsrec 1+s
+
+[Install]
+WantedBy=multi-user.target
+#+end_src
+
+Добавляем скрипт в автозагрузку
+
+#+begin_src
+systemctl enable byedpi_orange_pi
+#+end_src
+
+Перезагружаем систему и проверяем работу
+
+#+begin_src
+sudo shutdown -r now
+#+end_src
+
+*** Подведем итоги
+
+В данной статье я постарался доходчиво описать свой технический опыт восстановления доступа к YouTube с помощью отладочной платы Orange Pi zero 2.
+
+Если статья вам понравилась, то поддержите её стрелочкой вверх. Если есть что добавить или хотите поделиться подобным опытом, то добро пожаловать в комментарии! Всем добра, здоровья и спасибо за внимание!
+
+#+begin_quote
+
+
+Обратите внимание, что данная статья не популяризует и не склоняет пользователя к обходу блокировок. Здесь лишь описан частный технический случай, который является труднореализуемым со стороны обычного обывателя.
+
+
+#+end_quote
 ** Censor
 *** Закон о суверенизации Рунета
 - сенаторам Андреем Клишасом
