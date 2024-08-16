@@ -381,7 +381,55 @@ root@br1-mr14.intr> show system rollback 25 compare 28
   унифицируют управление инфраструктурами, безопасностью и службами, давая
   администраторам сети возможность планировать, настраиваеть, развертывать,
   отслеживать и оптимизировать беспроводные сети
+** juniper syslog_facility_code
+Avatar
+TheB.AI
 
+In Juniper devices, the syslog_facility_code specifies the facility code used for logging messages to a syslog server. This code helps to categorize the log messages and is part of the syslog protocol.
+
+Common facility codes include:
+
+    0: kernel messages
+    1: user-level messages
+    2: mail system
+    3: system daemons
+    4: security/authorization messages
+    5: messages generated internally by syslogd
+    6: line printer subsystem
+    7: network news subsystem
+    8: UUCP subsystem
+    9: clock daemon
+    10: security/authorization messages
+    11: FTP daemon
+    ... and more, up to 23.
+
+To configure the syslog facility code on a Juniper device, you would typically use the following command in the configuration mode:
+
+plaintext
+
+set system syslog host <hostname or IP> facility <facility_code>
+
+For example, if you want to set the facility to local6, the command would be:
+
+plaintext
+
+set system syslog host <hostname or IP> facility local6
+
+Feel free to ask if you need more detailed information or examples! 😊
+Avatar
+juniper syslog_facility_code 20
+Avatar
+TheB.AI
+
+In the context of Juniper devices and syslog, the facility code 20 corresponds to local0. This range (local0 to local7) is reserved for custom use, allowing administrators to categorize logs based on their specific needs.
+
+To configure your Juniper device to use the local0 facility for syslog messages, you would do it like this in configuration mode:
+
+plaintext
+
+set system syslog host <hostname or IP> facility local0
+
+You can replace <hostname or IP> with the actual address of your syslog server. If you have any more questions or need further assistance, just let me know! 😊
 ** [[https://www.juniper.net/documentation/us/en/software/junos/multicast-l2/topics/ref/statement/bridge-domains-edit.html][bridge-domains allows to merge VLANS | Junos OS | Juniper Networks]]
 Еще существует vepa - специально для виртуалок протокол с авто маршрутизацией,
 но наши h3c его тоже не держат, нужны подороже.
