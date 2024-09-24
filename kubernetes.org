@@ -3700,6 +3700,43 @@ then redeploy with:
 - [[https://vitobotta.com/2020/01/04/linstor-storage-the-kubernetes-way/][Linstor storage for Kubernetes, the Kubernetes way]]
 - [[https://github.com/piraeusdatastore/piraeus][piraeusdatastore/piraeus: High Available Datastore for Kubernetes]]
 - [[https://temofeev.ru/info/articles/sostoyanie-i-proizvoditelnost-resheniy-dlya-postoyannogo-khraneniya-dannykh-v-kubernetes/][Состояние и производительность решений для постоянного хранения данных в Kubernetes]]
+** Clone PVC
+Есть классная штука для этих целей от kubevirt - https://kubevirt.io/user-guide/operations/containerized_data_importer/
+сам kubevirt ей не нужен, можно независимо ставить
+
+Чтобы склонить PVC создаешь такой вот ресурс:
+#+begin_src yaml
+  apiVersion: cdi.kubevirt.io/v1beta1
+  kind: DataVolume
+  metadata:
+    name: clone-block-datavolume
+  spec:
+    source:
+      pvc:
+        namespace: "source-ns"
+        name: "source-datavolume"
+    pvc:
+      volumeMode: Block
+      accessModes:
+      - ReadWriteOnce
+      resources:
+        requests:
+          storage: 1Gi
+#+end_src
+
+И получаешь PVC clone-block-datavolume
+
+Из плюсов, поддерживает такое не только из pvc, но и из всяких iso, tar по url
+и так далее.
+
+https://github.com/kubevirt/containerized-data-importer/blob/main/doc/clone-block-datavolume.md
+https://github.com/kubevirt/containerized-data-importer/blob/main/doc/datavolumes.md#https3gcsregistry-source
+
+Пока клонирует - можно смотреть прогресс через =kubectl get dv= там будет
+статус где будет указано насколько процентов оно склонировано.
+
+Самое волшебное, что оно даже может склонить local-path-provosioner с ноды на
+ноду.
 
 * Tools
 - [[https://habr.com/ru/company/southbridge/blog/523358/][11 инструментов, делающих Kubernetes лучше / Блог компании Southbridge / Хабр]]
