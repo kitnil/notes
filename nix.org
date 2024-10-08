@@ -1851,6 +1851,268 @@ builtins.match "php([[:alnum:]])([[:alnum:]])" "php70"
 ** NixOS alternatives
  - [[https://ocelot-project.github.io/][λ Ocelot]]
 
+** Systemd Container
+*** Build
+The following shows how to build a container with NixOS and systemd as a
+PID 1.  Copy all example files and build a container with command:
+: nix develop --command nix build .#nixosConfigurations.nixos-systemd.config.system.build.tarball --show-trace
+
+flake.lock:
+#+begin_src json
+{
+  "nodes": {
+    "flake-utils": {
+      "inputs": {
+        "systems": "systems"
+      },
+      "locked": {
+        "lastModified": 1710146030,
+        "narHash": "sha256-SZ5L6eA7HJ/nmkzGG7/ISclqe6oZdOZTNoesiInkXPQ=",
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "rev": "b1d9ab70662946ef0850d488da1c9019f3a9752a",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "type": "github"
+      }
+    },
+    "nixpkgs": {
+      "locked": {
+        "lastModified": 1720368505,
+        "narHash": "sha256-5r0pInVo5d6Enti0YwUSQK4TebITypB42bWy5su3MrQ=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "ab82a9612aa45284d4adf69ee81871a389669a9e",
+        "type": "github"
+      },
+      "original": {
+        "id": "nixpkgs",
+        "type": "indirect"
+      }
+    },
+    "root": {
+      "inputs": {
+        "flake-utils": "flake-utils",
+        "nixpkgs": "nixpkgs"
+      }
+    },
+    "systems": {
+      "locked": {
+        "lastModified": 1681028828,
+        "narHash": "sha256-Vy1rq5AaRuLzOxct8nz4T6wlgyUR7zLU309k9mBC768=",
+        "owner": "nix-systems",
+        "repo": "default",
+        "rev": "da67096a3b9bf56a91d16901293e51ba5b49a27e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-systems",
+        "repo": "default",
+        "type": "github"
+      }
+    }
+  },
+  "root": "root",
+  "version": 7
+}
+#+end_src
+
+flake.nix:
+#+begin_src nix
+{
+  description = "";
+
+  inputs = {
+    flake-utils.url = "github:numtide/flake-utils";
+  };
+
+  outputs = { self, nixpkgs, flake-utils, ... }:
+    flake-utils.lib.eachDefaultSystem (system: {
+      devShell = with nixpkgs.legacyPackages."${system}"; mkShell {
+        buildInputs = [
+          nixFlakes
+          nixos-install-tools
+        ];
+        shellHook = ''
+          . ${nixFlakes}/share/bash-completion/completions/nix
+          export LANG=C
+        '';
+      };
+    })
+    // (let
+      system = "x86_64-linux";
+    in
+      {
+        nixosConfigurations = {
+          nixos-systemd = nixpkgs.lib.nixosSystem {
+            inherit system;
+            modules = [ ./hosts/nixos-systemd.nix ];
+          };
+        };
+      });
+}
+#+end_src
+
+hosts/nixos-systemd.nix:
+#+begin_src nix
+# Edit this configuration file to define what should be installed on
+# your system.  Help is available in the configuration.nix(5) man page
+# and in the NixOS manual (accessible by running ‘nixos-help’).
+
+{ config, lib, modulesPath, pkgs, ... }:
+
+{
+  imports = [
+    (modulesPath + "/virtualisation/docker-image.nix")
+  ];
+
+  boot.isContainer = true;
+  boot.loader.initScript.enable = true;
+
+  time.timeZone = "Europe/Moscow";
+
+  networking.hostName = ""; # empty
+  networking.useDHCP = false;
+  networking.useNetworkd = false;
+  networking.useHostResolvConf = false;
+  networking.firewall.enable = false;
+  networking.resolvconf.enable = false;
+  virtualisation.docker.enable = true;
+
+  security.sudo = {
+    enable = true;
+    wheelNeedsPassword = false;
+  };
+
+  nix.trustedUsers = [ "root" ];
+
+  # Enable the OpenSSH daemon.
+  services.openssh.enable = false;
+  services.openssh.permitRootLogin = "yes";
+
+  services.journald.console = "/dev/tty";
+
+  # Define a user account. Don't forget to set a password with ‘passwd’.
+
+  users.users.root.password = ""; # Empty password.
+
+  nix = {
+    package = pkgs.nixFlakes;
+    extraOptions = "experimental-features = nix-command flakes";
+  };
+
+  system.extraSystemBuilderCmds =
+    let
+      inherit (pkgs) bashInteractive util-linuxMinimal runtimeShell writeScript;
+      entrypoint = writeScript "entrypoint.sh" ''
+        #!${runtimeShell}
+        set -o nounset -o errexit -o pipefail -o xtrace
+
+        PATH=${util-linuxMinimal}/bin
+        export PATH
+
+        # Keyboard and mouse access are essential components for efficient operation
+        # within the Sway window manager environment. Running 'udevadm trigger' will
+        # grant access to the keyboard and mouse. You can verify their addition by
+        # using 'libinput list-devices'."
+        mount -o remount,rw /sys
+
+        umount /sys/fs/cgroup
+        mount -t cgroup2 -o rw,relatime,nsdelegate,memory_recursiveprot cgroup2 /sys/fs/cgroup
+
+        # https://lore.kernel.org/lkml/87tvsrjai0.fsf@xmission.com/T/
+        mount -t proc none /proc
+
+        exec /init
+      '';
+    in ''
+      ln -s ${entrypoint} $out/entrypoint.sh
+      ln -s ${bashInteractive}/bin/bash $out/bin/bash
+    '';
+
+  # This value determines the NixOS release from which the default
+  # settings for stateful data, like file locations and database versions
+  # on your system were taken. It‘s perfectly fine and recommended to leave
+  # this value at the release version of the first install of this system.
+  # Before changing this value read the documentation for this option
+  # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
+  system.stateVersion = "24.05"; # Did you read the comment?
+}
+#+end_src
+
+*** Running
+You can run the builded container in a Docker or in a Kubernetes Pod.
+Make sure to push the image in a container registry before runnning.
+#+begin_src yaml
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: nixos-systemd
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nixos-systemd
+  namespace: nixos-systemd
+spec:
+  automountServiceAccountToken: false
+  containers:
+  - command:
+    - /entrypoint.sh
+    env:
+    - name: container
+      value: docker
+    image: example.org/nixos/nixos-systemd:latest
+    livenessProbe:
+      exec:
+        command:
+        - /run/current-system/sw/bin/systemctl
+        - is-system-running
+      failureThreshold: 100
+      periodSeconds: 10
+      timeoutSeconds: 15
+    name: nixos-systemd
+    resources:
+      limits:
+        cpu: 8000m
+        memory: 8Gi
+      requests:
+        cpu: 1000m
+        memory: 1Gi
+    securityContext:
+      capabilities:
+        add:
+        - SETUID
+        - BLOCK_SUSPEND
+        - NET_ADMIN
+        - NET_BIND_SERVICE
+        - NET_RAW
+        - SYS_ADMIN
+        - SYS_CHROOT
+        - SYS_NICE
+        - SYS_PTRACE
+        - SYS_RESOURCE
+        - SYS_TIME
+    tty: true
+    volumeMounts:
+    - mountPath: /run
+      name: run
+    - mountPath: /tmp
+      name: tmp
+  volumes:
+  - emptyDir:
+      medium: Memory
+      sizeLimit: 512M
+    name: run
+  - emptyDir:
+      medium: Memory
+      sizeLimit: 2G
+    name: tmp
+#+end_src
+
 * Nixpkgs Source
 - pkgs/stdenv/generic/check-meta.nix
 
