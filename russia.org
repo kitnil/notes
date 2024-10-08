@@ -451,6 +451,17 @@ mssqlhelp
 пользователя на папку с прогой, иначе не сможете отредактировать файл, и
 запускаем =service_install_russia_blacklist.cmd= и YouTube летает.
 
+** Кратко
+- напримую tor, или tor browser, работает только tor бриджами
+- публичные v2ray https://openproxylist.com/v2ray/ через клиент https://github.com/MatsuriDayo/nekoray
+
+- byedpi https://github.com/hufrea/byedpi
+- виртуалка с openwrt с zapret которая в сети через бриджи и становится default gateway'ем
+  - https://openwrt.org/docs/guide-user/installation/openwrt_x86
+  - generic-ext4-combined-efi.img.gz из https://downloads.openwrt.org/releases/23.05.4/targets/x86/64/
+
+- softether, если есть тачка на винде, но медленно из-за того что серваки в Японии
+
 ** [[https://habr.com/ru/articles/835602/][Как Orange Pi вернула мне Ютуб]]
 
 Время на прочтение5 мин
