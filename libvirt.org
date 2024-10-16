@@ -379,6 +379,10 @@ Run:
 #+end_example
 
 * Sound
+
+: regedit
+: Computer\HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Scream\Options
+
 - scream -i br154.154 -u -p 16400
 
 * 
