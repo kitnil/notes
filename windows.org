@@ -194,6 +194,9 @@ cChocoPackageInstaller installs any Chocolatey package from the repository.
 - Allow =vagrant= user to listen 8080 port on all networking interfaces
   : etsh http add urlacl url = http://+:8080/ user=vagrant
 
+- Verify Windows installation
+  : sfc /scannow
+
 * Containers
 - [[https://github.com/dockur/windows-arm][dockur/windows-arm: Windows for ARM in a Docker container.]]
 - [[https://github.com/jsturtevant/dockerfiles-windows][jsturtevant/dockerfiles-windows: Docker files based on windows containers]]
