@@ -2332,6 +2332,661 @@ linstor storage-pool create lvmthin kube2 pool0 vg0/pool0
 ** [[https://habr.com/ru/companies/flant/articles/676678/][Снапшоты в Kubernetes: что это и как ими пользоваться / Хабр]]
 
 * Issues
+** Connectivity between nodes
+*** Issue
+
+Failed to connect =pvc-a1a0565e-f213-4a52-80f4-18f5409aa9b8= from kube2 to kube9.
+
+*** Note
+
+https://github.com/LINBIT/linstor-server/issues/302
+
+workaround is manually specify verify-alg for resource group:
+
+: linstor resource-group drbd-options --verify-alg crc32c my_verify_group
+
+*** 
+
+#+begin_example
+root@kube9:/# drbdadm up pvc-a1a0565e-f213-4a52-80f4-18f5409aa9b8
+pvc-a1a0565e-f213-4a52-80f4-18f5409aa9b8: Failure: (146) VERIFYAlgNotAvail
+additional info from kernel:
+failed to allocate crct10dif-pclmul for verify
+
+Command 'drbdsetup new-peer pvc-a1a0565e-f213-4a52-80f4-18f5409aa9b8 0 --_name=kube2 --verify-alg=crct10dif-pclmul --shared-secret=B3E6EGo0NHYaJm7JjRIW --cram-hmac-alg=sha1' terminated with exit code 10
+root@kube9:/# drbdadm status pvc-a1a0565e-f213-4a52-80f4-18f5409aa9b8
+pvc-a1a0565e-f213-4a52-80f4-18f5409aa9b8 role:Secondary
+  disk:Diskless
+#+end_example
+
+*** 
+
+#+begin_example
+$ diff -u <(ssh kube2.intr cat /proc/crypto) <(ssh kube9.intr cat /proc/crypto)
+
+--- /dev/fd/63	2024-11-29 10:42:14.520457096 +0300
++++ /dev/fd/62	2024-11-29 10:42:14.520457096 +0300
+@@ -1,297 +1,8 @@
+-name         : crc32
+-driver       : crc32-pclmul
+-module       : crc32_pclmul
+-priority     : 200
+-refcnt       : 1
+-selftest     : passed
+-internal     : no
+-type         : shash
+-blocksize    : 1
+-digestsize   : 4
+-
+-name         : ghash
+-driver       : ghash-clmulni
+-module       : ghash_clmulni_intel
+-priority     : 400
+-refcnt       : 1
+-selftest     : passed
+-internal     : no
+-type         : ahash
+-async        : yes
+-blocksize    : 16
+-digestsize   : 16
+-
+-name         : __ghash
+-driver       : __ghash-pclmulqdqni
+-module       : ghash_clmulni_intel
+-priority     : 0
+-refcnt       : 1
+-selftest     : passed
+-internal     : yes
+-type         : shash
+-blocksize    : 16
+-digestsize   : 16
+-
+-name         : gcm(aes)
+-driver       : generic-gcm-aesni
+-module       : aesni_intel
+-priority     : 400
+-refcnt       : 1
+-selftest     : passed
+-internal     : no
+-type         : aead
+-async        : yes
+-blocksize    : 1
+-ivsize       : 12
+-maxauthsize  : 16
+-geniv        : <none>
+-
+-name         : rfc4106(gcm(aes))
+-driver       : rfc4106-gcm-aesni
+-module       : aesni_intel
+-priority     : 400
+-refcnt       : 1
+-selftest     : passed
+-internal     : no
+-type         : aead
+-async        : yes
+-blocksize    : 1
+-ivsize       : 8
+-maxauthsize  : 16
+-geniv        : <none>
+-
+-name         : __gcm(aes)
+-driver       : __generic-gcm-aesni
+-module       : aesni_intel
+-priority     : 400
+-refcnt       : 1
+-selftest     : passed
+-internal     : yes
+-type         : aead
+-async        : no
+-blocksize    : 1
+-ivsize       : 12
+-maxauthsize  : 16
+-geniv        : <none>
+-
+-name         : __rfc4106(gcm(aes))
+-driver       : __rfc4106-gcm-aesni
+-module       : aesni_intel
+-priority     : 400
+-refcnt       : 1
+-selftest     : passed
+-internal     : yes
+-type         : aead
+-async        : no
+-blocksize    : 1
+-ivsize       : 8
+-maxauthsize  : 16
+-geniv        : <none>
+-
+-name         : xts(aes)
+-driver       : xts-aes-aesni
+-module       : aesni_intel
+-priority     : 401
+-refcnt       : 1
+-selftest     : passed
+-internal     : no
+-type         : skcipher
+-async        : yes
+-blocksize    : 16
+-min keysize  : 32
+-max keysize  : 64
+-ivsize       : 16
+-chunksize    : 16
+-walksize     : 16
+-
+-name         : ctr(aes)
+-driver       : ctr-aes-aesni
+-module       : aesni_intel
+-priority     : 400
+-refcnt       : 1
+-selftest     : passed
+-internal     : no
+-type         : skcipher
+-async        : yes
+-blocksize    : 1
+-min keysize  : 16
+-max keysize  : 32
+-ivsize       : 16
+-chunksize    : 16
+-walksize     : 16
+-
+-name         : cts(cbc(aes))
+-driver       : cts-cbc-aes-aesni
+-module       : aesni_intel
+-priority     : 400
+-refcnt       : 1
+-selftest     : passed
+-internal     : no
+-type         : skcipher
+-async        : yes
+-blocksize    : 16
+-min keysize  : 16
+-max keysize  : 32
+-ivsize       : 16
+-chunksize    : 16
+-walksize     : 16
+-
+-name         : cbc(aes)
+-driver       : cbc-aes-aesni
+-module       : aesni_intel
+-priority     : 400
+-refcnt       : 1
+-selftest     : passed
+-internal     : no
+-type         : skcipher
+-async        : yes
+-blocksize    : 16
+-min keysize  : 16
+-max keysize  : 32
+-ivsize       : 16
+-chunksize    : 16
+-walksize     : 16
+-
+-name         : ecb(aes)
+-driver       : ecb-aes-aesni
+-module       : aesni_intel
+-priority     : 400
+-refcnt       : 1
+-selftest     : passed
+-internal     : no
+-type         : skcipher
+-async        : yes
+-blocksize    : 16
+-min keysize  : 16
+-max keysize  : 32
+-ivsize       : 0
+-chunksize    : 16
+-walksize     : 16
+-
+-name         : __xts(aes)
+-driver       : __xts-aes-aesni
+-module       : aesni_intel
+-priority     : 401
+-refcnt       : 1
+-selftest     : passed
+-internal     : yes
+-type         : skcipher
+-async        : no
+-blocksize    : 16
+-min keysize  : 32
+-max keysize  : 64
+-ivsize       : 16
+-chunksize    : 16
+-walksize     : 32
+-
+-name         : __ctr(aes)
+-driver       : __ctr-aes-aesni
+-module       : aesni_intel
+-priority     : 400
+-refcnt       : 1
+-selftest     : passed
+-internal     : yes
+-type         : skcipher
+-async        : no
+-blocksize    : 1
+-min keysize  : 16
+-max keysize  : 32
+-ivsize       : 16
+-chunksize    : 16
+-walksize     : 16
+-
+-name         : __cts(cbc(aes))
+-driver       : __cts-cbc-aes-aesni
+-module       : aesni_intel
+-priority     : 400
+-refcnt       : 1
+-selftest     : passed
+-internal     : yes
+-type         : skcipher
+-async        : no
+-blocksize    : 16
+-min keysize  : 16
+-max keysize  : 32
+-ivsize       : 16
+-chunksize    : 16
+-walksize     : 32
+-
+-name         : __cbc(aes)
+-driver       : __cbc-aes-aesni
+-module       : aesni_intel
+-priority     : 400
+-refcnt       : 1
+-selftest     : passed
+-internal     : yes
+-type         : skcipher
+-async        : no
+-blocksize    : 16
+-min keysize  : 16
+-max keysize  : 32
+-ivsize       : 16
+-chunksize    : 16
+-walksize     : 16
+-
+-name         : __ecb(aes)
+-driver       : __ecb-aes-aesni
+-module       : aesni_intel
+-priority     : 400
+-refcnt       : 1
+-selftest     : passed
+-internal     : yes
+-type         : skcipher
+-async        : no
+-blocksize    : 16
+-min keysize  : 16
+-max keysize  : 32
+-ivsize       : 0
+-chunksize    : 16
+-walksize     : 16
+-
+-name         : aes
+-driver       : aes-aesni
+-module       : aesni_intel
+-priority     : 300
+-refcnt       : 1
+-selftest     : passed
+-internal     : no
+-type         : cipher
+-blocksize    : 16
+-min keysize  : 16
+-max keysize  : 32
+-
+-name         : zlib-deflate
+-driver       : zlib-deflate-scomp
+-module       : deflate
+-priority     : 0
+-refcnt       : 1
+-selftest     : passed
+-internal     : no
+-type         : scomp
+-
+-name         : deflate
+-driver       : deflate-scomp
+-module       : deflate
+-priority     : 0
+-refcnt       : 1
+-selftest     : passed
+-internal     : no
+-type         : scomp
+-
+-name         : deflate
+-driver       : deflate-generic
+-module       : deflate
+-priority     : 0
+-refcnt       : 2
+-selftest     : passed
+-internal     : no
+-type         : compression
+-
+ name         : crct10dif
+-driver       : crct10dif-pclmul
+-module       : crct10dif_pclmul
+-priority     : 200
+-refcnt       : 25
++driver       : crct10dif-generic
++module       : crct10dif_generic
++priority     : 100
++refcnt       : 6
+ selftest     : passed
+ internal     : no
+ type         : shash
+@@ -313,7 +24,7 @@
+ driver       : crc32c-intel
+ module       : crc32c_intel
+ priority     : 200
+-refcnt       : 4
++refcnt       : 6
+ selftest     : passed
+ internal     : no
+ type         : shash
+@@ -324,7 +35,7 @@
+ driver       : hmac(sha256-generic)
+ module       : kernel
+ priority     : 100
+-refcnt       : 17
++refcnt       : 25
+ selftest     : passed
+ internal     : no
+ type         : shash
+@@ -335,7 +46,7 @@
+ driver       : hmac(sha1-generic)
+ module       : kernel
+ priority     : 100
+-refcnt       : 160
++refcnt       : 35
+ selftest     : passed
+ internal     : no
+ type         : shash
+@@ -364,7 +75,7 @@
+ driver       : lzo-scomp
+ module       : kernel
+ priority     : 0
+-refcnt       : 33
++refcnt       : 17
+ selftest     : passed
+ internal     : no
+ type         : scomp
+@@ -393,7 +104,7 @@
+ driver       : sha256-generic
+ module       : kernel
+ priority     : 100
+-refcnt       : 136
++refcnt       : 32
+ selftest     : passed
+ internal     : no
+ type         : shash
+@@ -404,7 +115,7 @@
+ driver       : sha1-generic
+ module       : kernel
+ priority     : 100
+-refcnt       : 160
++refcnt       : 35
+ selftest     : passed
+ internal     : no
+ type         : shash
+
+,*** 
+
+
+name         : crct10dif
+driver       : crct10dif-generic
+module       : crct10dif_generic
+priority     : 100
+refcnt       : 6
+selftest     : passed
+internal     : no
+type         : shash
+blocksize    : 1
+digestsize   : 2
+
+name         : crc32c
+driver       : crc32c-generic
+module       : crc32c_generic
+priority     : 100
+refcnt       : 1
+selftest     : passed
+internal     : no
+type         : shash
+blocksize    : 1
+digestsize   : 4
+
+name         : crc32c
+driver       : crc32c-intel
+module       : crc32c_intel
+priority     : 200
+refcnt       : 6
+selftest     : passed
+internal     : no
+type         : shash
+blocksize    : 1
+digestsize   : 4
+
+name         : hmac(sha256)
+driver       : hmac(sha256-generic)
+module       : kernel
+priority     : 100
+refcnt       : 25
+selftest     : passed
+internal     : no
+type         : shash
+blocksize    : 64
+digestsize   : 32
+
+name         : hmac(sha1)
+driver       : hmac(sha1-generic)
+module       : kernel
+priority     : 100
+refcnt       : 35
+selftest     : passed
+internal     : no
+type         : shash
+blocksize    : 64
+digestsize   : 20
+
+name         : lzo-rle
+driver       : lzo-rle-scomp
+module       : kernel
+priority     : 0
+refcnt       : 1
+selftest     : passed
+internal     : no
+type         : scomp
+
+name         : lzo-rle
+driver       : lzo-rle-generic
+module       : kernel
+priority     : 0
+refcnt       : 1
+selftest     : passed
+internal     : no
+type         : compression
+
+name         : lzo
+driver       : lzo-scomp
+module       : kernel
+priority     : 0
+refcnt       : 17
+selftest     : passed
+internal     : no
+type         : scomp
+
+name         : lzo
+driver       : lzo-generic
+module       : kernel
+priority     : 0
+refcnt       : 1
+selftest     : passed
+internal     : no
+type         : compression
+
+name         : sha224
+driver       : sha224-generic
+module       : kernel
+priority     : 100
+refcnt       : 1
+selftest     : passed
+internal     : no
+type         : shash
+blocksize    : 64
+digestsize   : 28
+
+name         : sha256
+driver       : sha256-generic
+module       : kernel
+priority     : 100
+refcnt       : 32
+selftest     : passed
+internal     : no
+type         : shash
+blocksize    : 64
+digestsize   : 32
+
+name         : sha1
+driver       : sha1-generic
+module       : kernel
+priority     : 100
+refcnt       : 35
+selftest     : passed
+internal     : no
+type         : shash
+blocksize    : 64
+digestsize   : 20
+
+name         : md5
+driver       : md5-generic
+module       : kernel
+priority     : 0
+refcnt       : 1
+selftest     : passed
+internal     : no
+type         : shash
+blocksize    : 64
+digestsize   : 16
+
+name         : ecb(cipher_null)
+driver       : ecb-cipher_null
+module       : kernel
+priority     : 100
+refcnt       : 1
+selftest     : passed
+internal     : no
+type         : skcipher
+async        : no
+blocksize    : 1
+min keysize  : 0
+max keysize  : 0
+ivsize       : 0
+chunksize    : 1
+walksize     : 1
+
+name         : digest_null
+driver       : digest_null-generic
+module       : kernel
+priority     : 0
+refcnt       : 1
+selftest     : passed
+internal     : no
+type         : shash
+blocksize    : 1
+digestsize   : 0
+
+name         : compress_null
+driver       : compress_null-generic
+module       : kernel
+priority     : 0
+refcnt       : 1
+selftest     : passed
+internal     : no
+type         : compression
+
+name         : cipher_null
+driver       : cipher_null-generic
+module       : kernel
+priority     : 0
+refcnt       : 1
+selftest     : passed
+internal     : no
+type         : cipher
+blocksize    : 1
+min keysize  : 0
+max keysize  : 0
+
+name         : rsa
+driver       : rsa-generic
+module       : kernel
+priority     : 100
+refcnt       : 1
+selftest     : passed
+internal     : no
+type         : akcipher
+
+#+end_example
+name         : dh
+driver       : dh-generic
+module       : kernel
+priority     : 100
+refcnt       : 1
+selftest     : passed
+internal     : no
+type         : kpp
+
+*** Checked
+
+: for node in kube{1..21}; do if $(timeout 3 ssh $node.intr cat /proc/crypto |& grep -q crct10dif-pclmul); then :; else echo $node; fi; done
+
+: for node in kube{1..21}; do if $(timeout 3 ssh $node.intr cat /proc/crypto |& grep -q crc32c); then :; else echo $node; fi; done
+
+*** Executed
+
+#+begin_example
+[nix-shell:~/src/gitlab.intr/nixos/kubernetes]$ linstor v l -r pvc-a1a0565e-f213-4a52-80f4-18f5409aa9b8
+╭───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+┊ Node  ┊ Resource                                 ┊ StoragePool          ┊ VolNr ┊ MinorNr ┊ DeviceName    ┊ Allocated ┊ InUse  ┊    State ┊
+╞═══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╡
+┊ kube2 ┊ pvc-a1a0565e-f213-4a52-80f4-18f5409aa9b8 ┊ pool0                ┊     0 ┊    1054 ┊ /dev/drbd1054 ┊ 49.93 GiB ┊ Unused ┊ UpToDate ┊
+┊ kube9 ┊ pvc-a1a0565e-f213-4a52-80f4-18f5409aa9b8 ┊ DfltDisklessStorPool ┊     0 ┊    1054 ┊ None          ┊           ┊ Unused ┊ Diskless ┊
+╰───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+
+root@kube9:/# drbdadm status pvc-a1a0565e-f213-4a52-80f4-18f5409aa9b8
+pvc-a1a0565e-f213-4a52-80f4-18f5409aa9b8 role:Secondary
+  disk:Diskless
+  kube2 connection:StandAlone
+
+root@kube2:/# drbdadm status pvc-a1a0565e-f213-4a52-80f4-18f5409aa9b8
+pvc-a1a0565e-f213-4a52-80f4-18f5409aa9b8 role:Secondary
+  disk:UpToDate
+  kube9 connection:Connecting
+
+[nix-shell:~/src/gitlab.intr/nixos/kubernetes]$ linstor resource-group drbd-options --verify-alg crc32c sc-588068f6-aaa6-5419-a6be-69d27cce5d5d
+SUCCESS:
+    Successfully set property key(s): DrbdOptions/Net/verify-alg
+SUCCESS:
+Description:
+    Resource group 'sc-588068f6-aaa6-5419-a6be-69d27cce5d5d' modified.
+Details:
+    Resource group 'sc-588068f6-aaa6-5419-a6be-69d27cce5d5d' UUID is: 7befaa40-57a5-46ca-9321-f2505579c872
+
+root@kube9:/# drbdadm down pvc-a1a0565e-f213-4a52-80f4-18f5409aa9b8
+root@kube9:/# drbdadm up pvc-a1a0565e-f213-4a52-80f4-18f5409aa9b8
+
+[nix-shell:~/src/gitlab.intr/nixos/kubernetes]$ linstor v l -r pvc-a1a0565e-f213-4a52-80f4-18f5409aa9b8
+╭───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
+┊ Node  ┊ Resource                                 ┊ StoragePool          ┊ VolNr ┊ MinorNr ┊ DeviceName    ┊ Allocated ┊ InUse  ┊    State ┊
+╞═══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╡
+┊ kube2 ┊ pvc-a1a0565e-f213-4a52-80f4-18f5409aa9b8 ┊ pool0                ┊     0 ┊    1054 ┊ /dev/drbd1054 ┊ 49.93 GiB ┊ Unused ┊ UpToDate ┊
+┊ kube9 ┊ pvc-a1a0565e-f213-4a52-80f4-18f5409aa9b8 ┊ DfltDisklessStorPool ┊     0 ┊    1054 ┊ /dev/drbd1054 ┊           ┊ InUse  ┊ Diskless ┊
+╰───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+
+root@kube2:/# drbdadm status pvc-a1a0565e-f213-4a52-80f4-18f5409aa9b8
+pvc-a1a0565e-f213-4a52-80f4-18f5409aa9b8 role:Secondary
+  disk:UpToDate
+  kube9 role:Secondary
+    peer-disk:Diskless
+
+root@kube9:/# drbdadm status pvc-a1a0565e-f213-4a52-80f4-18f5409aa9b8
+pvc-a1a0565e-f213-4a52-80f4-18f5409aa9b8 role:Secondary
+  disk:Diskless
+  kube2 role:Secondary
+    peer-disk:UpToDate
+#+end_example
 
 ** Thin LVM 1Tb and more sync failure
 
