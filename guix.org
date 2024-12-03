@@ -122,6 +122,108 @@ https://gitlab.com/janneke/guix.git
 - Made a guix site mirror/proxy. It's available both in clearnet and yggdrasil. 
   - http://167.172.37.172/
   - http://[204:cbf:3e07:e67a:424f:93bc:fc5c:b3dc]/
+
+*** https://libreplanet.org/wiki/Group:Guix/Mirrors
+**** Substitutes
+
+The Guix project runs *two official build farms*  that continuously build
+binary substitutes, so users don't have to build everything at home. When
+installing Guix or Guix System for the first time, you'll be asked whether to
+trust their signatures and download their substitutes by default:
+
+- [[https://ci.guix.gnu.org][https://ci.guix.gnu.org]] (Germany)
+- [[https://bordeaux.guix.gnu.org][https://bordeaux.guix.gnu.org]] (France)
+
+For Guix users outside of Europe, connections to both of these can sometimes
+be slow or censored. Don't fret just yet: volunteers maintain unofficial
+*mirrors*  of the official servers that may be closer by:
+
+- People's Republic of China
+  - [[https://mirrors.sjtug.sjtu.edu.cn/guix][https://mirrors.sjtug.sjtu.edu.cn/guix]] (mirrors ci.guix.gnu.org)
+- Singapore
+  - [[https://bordeaux-singapore-mirror.cbaines.net][https://bordeaux-singapore-mirror.cbaines.net]]
+- United States of America
+  - [[https://bordeaux-us-east-mirror.cbaines.net][https://bordeaux-us-east-mirror.cbaines.net]] (mirrors bordeaux.guix.gnu.org)
+- Germany
+  - [[https://hydra-guix-129.guix.gnu.org][https://hydra-guix-129.guix.gnu.org]] (official mirror of bordeaux.guix.gnu.org in Berlin)
+
+To use one or more of these mirrors, simply add the URL(s) to the front of
+your *substitute-urls*  list.
+
+Mirrored substitutes are *signed* by the original builder, not the
+mirror. This means that mirror operators cannot add or modify binaries, as
+long as you trust only the [[https://git.savannah.gnu.org/cgit/guix.git/tree/etc/substitutes][signing keys published by the Guix project]].
+
+** [[https://lists.gnu.org/archive/html/guix-devel/2024-07/msg00033.html][New North American based Guix Substitute Server, cuirass.genenetwork.org]]
+
+Dear Guix Community,
+
+I am excited to announce that Guix substitutes (for x86_64) are now available 
+in North America, thanks to the generous contribution of server hardware and 
+infrastructure from GeneNetwork.org.
+
+This new server enhances the availability and redundancy of Guix substitutes, 
+ensuring a more robust and reliable experience for users in North America.
+
+We will be posting a detailed blog article about the setup of the build farm in 
+the coming weeks, but the Guix system configuration and notes about its setup 
+can be found at https://git.rekahsoft.ca/rekahsoft/guix-north-america/. Stay 
+tuned for more information!
+
+# Using Substitutes from cuirass.genenetwork.org
+
+If you're using Guix System, you can use the cuirass.genenetwork.org substitute 
+server completing the following:
+
+1. Add `https://cuirass.genenetwork.org` to the list of substitute servers 
+(using the `substitute-urls` field of `guix-configuration` passed to the 
+`guix-daemon` service).
+2. Adjust guix-daemon ACLs to include the following public key (using the 
+`authorized-keys` field of `guix-configuration` passed to the `guix-daemon` 
+service).
+
+```
+(public-key 
+ (ecc 
+  (curve Ed25519)
+  (q #9578AD6CDB23BA51F9C4185D5D5A32A7EEB47ACDD55F1CCB8CEE4E0570FBF961#)
+  )
+)
+```
+
+In the future, we hope to work with Guix maintainers to include this substitute 
+server as one of the provided Guix System defaults.
+
+When using Guix on a foreign distribution, you'll need to do the following to 
+enable substitutes from cuirass.genenetwork.org:
+
+1. Add the substitute url using the `--substitute-urls` option to guix-daemon. 
+Assuming your foreign distribution uses systemd, this can be done using the 
+following.
+
+```
+sudo systemctl edit --full guix-daemon
+sudo systemctl restart guix-daemon.service
+```
+
+2. Add the public key for cuirass.genenetwork.org to the guix-daemon ACLs.
+
+```
+guix archive --authorize < 
+/root/.config/guix/current/share/guix/cuirass.genenetwork.org.pub
+```
+
+If you want to just use ci.guix.gnu.org, or cuirass.genenetwork.org for that 
+matter, you'll need to adjust the substitute URLs configuration for the 
+guix-daemon to just refer to the substitute servers you want to use.
+
+**** Git
+
+The [[https://git.savannah.gnu.org/cgit/guix.git][official Git repository]] lives at GNU Savannah, and nowhere else. All commits are signed and *guix pull* verifies the signature of each new commit. This means that it is safe to *guix pull*  from other copies of the Guix repository during Savannah outages.
+
+  
+Other fine mirrors exist, but pay close attention to when they were last synchronised! *guix pull*  protects against unintentional downgrades and unauthorised commits, but not against stale mirrors.
+*** 
 *** cuirass.genenetwork.org North American based Guix Substitute Server
 https://mail.gnu.org/archive/html/guix-devel/2024-07/msg00033.html
 
