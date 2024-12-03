@@ -252,6 +252,18 @@ terminal length 0 	set cli screen-length 0 	sets the length for displaying comma
 - [[https://disnetern.ru/diff-sfp-sfp-xfp-qsfp-qsfp-cfp-qsfp28-xenpac-x2-gbic/][Различия между SFP, SFP+, XFP, QSFP/QSFP+, CFP, QSFP28 | IT Knowledge Base]]
 - [[https://habr.com/ru/articles/727868/][Современные технологии обхода блокировок: V2Ray, XRay, XTLS, Hysteria, Cloak и все-все-все / Хабр]]
 
+** Блокируем с помощью null route.
+При блокировке через iproute используется специальный тип роута — черная дыра
+(blackhole), а скрипт будет выглядеть следующим образом:
+#+begin_src bash
+  ip route flush type blackhole
+
+  for ip in $( cat ${WDIR}/${LNAME}.raw )
+  do 
+      ip route add blackhole ${ip}/32
+  done
+#+end_src
+
 * Mesh
 - [[https://github.com/jech/babeld][jech/babeld: The Babel routing daemon]]
 - [[https://github.com/slackhq/nebula][slackhq/nebula: A scalable overlay networking tool with a focus on performance, simplicity and security]]
