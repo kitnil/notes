@@ -71,6 +71,7 @@ rerere-train.sh [COMMIT][--all]
 #+end_src
 
 * Tools
+- [[https://github.com/abhinav/git-spice][abhinav/git-spice: Manage stacked Git branches]]
 - [[https://github.com/AGWA/git-crypt][AGWA/git-crypt: Transparent file encryption in git]]
 - [[https://github.com/alajmo/mani][alajmo/mani: CLI tool to help you manage repositories]]
 - [[https://github.com/alarsyo/lohr][alarsyo/lohr: Git mirroring daemon]]
