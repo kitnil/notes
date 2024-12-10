@@ -25,3 +25,6 @@
 - Checking data integrity
 : rsync -n -avxAHXS <src-subvol> <dst-subvol>
 from [[https://github.com/mwilck/btrfs-clone][mwilck/btrfs-clone: A tool for copying a btrfs file system with all its partitions to another btrfs file system]]
+
+- Sync a lot of data with small files
+  : rsync --info=progress2 --sparse -a -H -A -X --numeric-ids /mnt/ /backup/
