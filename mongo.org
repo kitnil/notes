@@ -54,6 +54,9 @@
 - get all your documents sorted from newest to oldest
   : db.getCollection('malwareReports').find({}).sort({_id:-1})
 
+- get all your documents sorted from newest to oldest with limit
+  : db.getCollection('malwareReports').find({}).sort({_id:-1}).limit(50)
+
 - search by date
 : db.getCollection('request').find({"created" : {$gte : new ISODate("2020-06-29T15:14:02.233Z")}})
 
