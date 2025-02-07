@@ -39,6 +39,7 @@
 - [[https://github.com/mlcsec/headi][mlcsec/headi: Customisable and automated HTTP header injection]]
 - [[https://github.com/mock-server/mockserver][mock-server/mockserver: MockServer enables easy mocking of any system you integrate with via HTTP or HTTPS with clients written in Java, JavaScript and Ruby. MockServer also includes a proxy that introspects all proxied traffic including encrypted SSL traffic and supports Port Forwarding, Web Proxying (i.e. HTTP proxy), HTTPS Tunneling Proxying (using HTTP CONNECT) and SOCKS Proxying (i.e. dynamic port forwarding).]]
   - [[https://artifacthub.io/packages/helm/veecode-platform/mockserver][mockserver 5.13.2 · veecode-platform/veecode-platform]]
+- [[https://github.com/monasticacademy/httptap][monasticacademy/httptap: View HTTP/HTTPS requests made by any Linux program]]
 - [[https://github.com/msoap/html2data][msoap/html2data: Library and cli for extracting data from HTML via CSS selectors]]
 - [[https://github.com/musana/fuzzuli][musana/fuzzuli: fuzzuli is a url fuzzing tool that aims to find critical backup files by creating a dynamic wordlist based on the domain.]]
 - [[https://github.com/nakabonne/ali][nakabonne/ali: Generate HTTP load and plot the results in real-time]]
