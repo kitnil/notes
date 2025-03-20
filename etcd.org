@@ -232,3 +232,6 @@ In a follow-up to this article, we’ll see how and what we can clean up and opt
 
 - health
   : etcdctl cluster-health
+
+- list kubernetes namespaces
+  : ETCDCTL_API=3 etcdctl --endpoints https://192.168.0.144:2379 --cert=/etc/kubernetes/pki/kubernetes.pem --key=/etc/kubernetes/pki/kubernetes-key.pem --cacert=/etc/kubernetes/pki/ca.crt get --keys-only --prefix=true "/registry/namespaces/"
