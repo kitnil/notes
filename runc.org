@@ -1,0 +1,395 @@
+#+begin_src markdown
+  # KVM in runc
+
+  Running a KVM virtual machine inside a runc contianer.
+
+  ## Requirements
+
+  - A host which can run KVM virtual machines using Vagrant.
+
+  ## Setting up a test VM
+
+  Vagrantfile:
+
+  ```ruby
+  Vagrant.configure("2") do |config|
+    config.vm.box = "generic/ubuntu1804"
+    config.vm.provider :libvirt do |libvirt|
+      libvirt.cpus = 4
+      libvirt.memory = 8000
+      libvirt.nested = true
+      libvirt.cpu_mode = "host-passthrough"
+      libvirt.driver = "kvm"
+    end
+  end
+  ```
+
+  ```
+  vagrant up
+  vagrant ssh
+  ```
+
+  ### Inside the test VM
+
+  ```
+  # Install runc
+  sudo apt-get update
+  sudo apt-get install runc
+
+  # Install Docker (required for generating a rootfs for runc)
+  curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+  sudo add-apt-repository \
+     "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
+     $(lsb_release -cs) \
+     stable"
+  sudo apt-get update
+  sudo apt-get install -y docker-ce
+  sudo gpasswd -a $USER docker
+  ```
+
+  Log out and back in to update permissions.
+
+  Create a `Dockerfile`:
+
+  ```Dockerfile
+  FROM ubuntu:18.04
+  RUN apt-get update -y && \
+      DEBIAN_FRONTEND=noninteractive apt-get install -y \
+      libvirt-bin libvirt-dev qemu-kvm virtinst gnupg2 vagrant && \
+      apt autoclean && \
+      apt autoremove
+  RUN vagrant plugin install vagrant-libvirt
+  ```
+
+  Build a Docker image:
+
+  ```
+  docker build -t kvm-in-runc .
+  ```
+
+  Generate a rootfs for runc:
+
+  ```
+  mkdir -p kvm/rootfs
+  cd kvm
+  docker export $(docker create kvm-in-runc) | sudo tar -C rootfs -xvf -
+  ```
+
+  Create a `config.json` file:
+
+  ```json
+  {
+      "ociVersion": "1.0.1-dev",
+      "process": {
+          "terminal": true,
+          "user": {
+              "uid": 0,
+              "gid": 0
+          },
+          "args": [
+              "bash"
+          ],
+          "env": [
+              "PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+              "TERM=xterm"
+          ],
+          "cwd": "/",
+          "capabilities": {
+              "bounding": [
+                  "CAP_AUDIT_WRITE",
+                  "CAP_KILL",
+                  "CAP_NET_BIND_SERVICE",
+                  "CAP_NET_ADMIN",
+                  "CAP_CHOWN",
+                  "CAP_DAC_OVERRIDE",
+                  "CAP_FSETID",
+                  "CAP_FOWNER",
+                  "CAP_MKNOD",
+                  "CAP_NET_RAW",
+                  "CAP_SETGID",
+                  "CAP_SETUID",
+                  "CAP_SETFCAP",
+                  "CAP_SETPCAP",
+                  "CAP_NET_BIND_SERVICE",
+                  "CAP_SYS_CHROOT",
+                  "CAP_KILL"
+              ],
+              "effective": [
+                  "CAP_AUDIT_WRITE",
+                  "CAP_KILL",
+                  "CAP_NET_BIND_SERVICE",
+                  "CAP_CHOWN",
+                  "CAP_DAC_OVERRIDE",
+                  "CAP_FSETID",
+                  "CAP_FOWNER",
+                  "CAP_NET_ADMIN",
+                  "CAP_CHOWN",
+                  "CAP_MKNOD",
+                  "CAP_NET_RAW",
+                  "CAP_SETGID",
+                  "CAP_SETUID",
+                  "CAP_SETFCAP",
+                  "CAP_SETPCAP",
+                  "CAP_NET_BIND_SERVICE",
+                  "CAP_SYS_CHROOT",
+                  "CAP_KILL"
+              ],
+              "inheritable": [
+                  "CAP_AUDIT_WRITE",
+                  "CAP_KILL",
+                  "CAP_NET_BIND_SERVICE",
+                  "CAP_CHOWN",
+                  "CAP_DAC_OVERRIDE",
+                  "CAP_FSETID",
+                  "CAP_FOWNER",
+                  "CAP_MKNOD",
+                  "CAP_NET_ADMIN",
+                  "CAP_CHOWN",
+                  "CAP_NET_RAW",
+                  "CAP_SETGID",
+                  "CAP_SETUID",
+                  "CAP_SETFCAP",
+                  "CAP_SETPCAP",
+                  "CAP_NET_BIND_SERVICE",
+                  "CAP_SYS_CHROOT",
+                  "CAP_KILL"
+              ],
+              "permitted": [
+                  "CAP_AUDIT_WRITE",
+                  "CAP_KILL",
+                  "CAP_NET_BIND_SERVICE",
+                  "CAP_CHOWN",
+                  "CAP_DAC_OVERRIDE",
+                  "CAP_FSETID",
+                  "CAP_FOWNER",
+                  "CAP_MKNOD",
+                  "CAP_NET_RAW",
+                  "CAP_SETGID",
+                  "CAP_NET_ADMIN",
+                  "CAP_CHOWN",
+                  "CAP_SETUID",
+                  "CAP_SETFCAP",
+                  "CAP_SETPCAP",
+                  "CAP_NET_BIND_SERVICE",
+                  "CAP_SYS_CHROOT",
+                  "CAP_KILL"
+              ],
+              "ambient": [
+                  "CAP_AUDIT_WRITE",
+                  "CAP_KILL",
+                  "CAP_NET_BIND_SERVICE",
+                  "CAP_CHOWN",
+                  "CAP_DAC_OVERRIDE",
+                  "CAP_FSETID",
+                  "CAP_FOWNER",
+                  "CAP_MKNOD",
+                  "CAP_NET_ADMIN",
+                  "CAP_CHOWN",
+                  "CAP_NET_RAW",
+                  "CAP_SETGID",
+                  "CAP_SETUID",
+                  "CAP_SETFCAP",
+                  "CAP_SETPCAP",
+                  "CAP_NET_BIND_SERVICE",
+                  "CAP_SYS_CHROOT",
+                  "CAP_KILL"
+              ]
+          },
+          "rlimits": [
+              {
+                  "type": "RLIMIT_NOFILE",
+                  "hard": 1024,
+                  "soft": 1024
+              }
+          ],
+          "noNewPrivileges": false
+      },
+      "root": {
+          "path": "rootfs",
+          "readonly": false
+      },
+      "hostname": "runc",
+      "mounts": [
+          {
+              "destination": "/proc",
+              "type": "proc",
+              "source": "proc"
+          },
+          {
+              "destination": "/dev",
+              "type": "tmpfs",
+              "source": "tmpfs",
+              "options": [
+                  "nosuid",
+                  "strictatime",
+                  "mode=755",
+                  "size=65536k"
+              ]
+          },
+          {
+              "destination": "/dev/pts",
+              "type": "devpts",
+              "source": "devpts",
+              "options": [
+                  "nosuid",
+                  "noexec",
+                  "newinstance",
+                  "ptmxmode=0666",
+                  "mode=0620",
+                  "gid=5"
+              ]
+          },
+          {
+              "destination": "/dev/shm",
+              "type": "tmpfs",
+              "source": "shm",
+              "options": [
+                  "nosuid",
+                  "noexec",
+                  "nodev",
+                  "mode=1777",
+                  "size=65536k"
+              ]
+          },
+          {
+              "destination": "/dev/mqueue",
+              "type": "mqueue",
+              "source": "mqueue",
+              "options": [
+                  "nosuid",
+                  "noexec",
+                  "nodev"
+              ]
+          },
+          {
+              "destination": "/sys",
+              "type": "sysfs",
+              "source": "sysfs",
+              "options": [
+                  "nosuid",
+                  "noexec",
+                  "nodev",
+                  "rw"
+              ]
+          },
+          {
+              "destination": "/sys/fs/cgroup",
+              "type": "cgroup",
+              "source": "cgroup",
+              "options": [
+                  "nosuid",
+                  "noexec",
+                  "nodev",
+                  "relatime",
+                  "rw"
+              ]
+          }
+      ],
+      "linux": {
+          "devices": [
+              {
+                  "path": "/dev/kvm",
+                  "type": "c",
+                  "major": 10,
+                  "minor": 232,
+                  "fileMode": 432,
+                  "uid": 0,
+                  "gid": 104
+              },
+              {
+                  "path": "/dev/net/tun",
+                  "type": "c",
+                  "major": 10,
+                  "minor": 200,
+                  "fileMode": 438,
+                  "uid": 0,
+                  "gid": 104
+              }
+          ],
+          "resources": {
+              "devices": [
+                  {
+                      "allow": true,
+                      "access": "rwm"
+                  }
+              ]
+          },
+          "namespaces": [
+              {
+                  "type": "pid"
+              },
+              {
+                  "type": "ipc"
+              },
+              {
+                  "type": "uts"
+              },
+              {
+                  "type": "mount"
+              }
+          ],
+          "maskedPaths": [
+              "/proc/kcore",
+              "/proc/latency_stats",
+              "/proc/timer_list",
+              "/proc/timer_stats",
+              "/proc/sched_debug",
+              "/sys/firmware",
+              "/proc/scsi"
+          ],
+          "readonlyPaths": [
+              "/proc/asound",
+              "/proc/bus",
+              "/proc/fs",
+              "/proc/irq",
+              "/proc/sysrq-trigger"
+          ],
+          "seccomp": {
+              "defaultAction": "SCMP_ACT_ALLOW"
+          }
+      }
+  }
+  ```
+
+  Ensure required kernel modules are loaded:
+
+  ```
+  sudo modprobe ip6_tables
+  sudo modprobe ip6table_filter
+  sudo modprobe kvm
+  ```
+
+  Start a runc container:
+
+  ```
+  sudo runc run test
+  ```
+
+  ### Inside the container
+
+  ```
+  echo "nameserver 8.8.8.8" > /etc/resolv.conf
+  service libvirtd start
+  service virtlogd start
+  ```
+
+  Create a Vagrantfile:
+
+  ```ruby
+  Vagrant.configure("2") do |config|
+    config.vm.box = "generic/alpine38"
+    config.vm.provider :libvirt do |libvirt|
+      libvirt.cpus = 1
+      libvirt.memory = 1000
+      libvirt.driver = "kvm"
+      libvirt.management_network_name = 'vagrant-libvirt-new'
+      libvirt.management_network_address = '192.168.124.0/24'
+    end
+  end
+  ```
+
+  ```
+  vagrant up
+  vagrant ssh
+  ```
+#+end_src
