@@ -1869,6 +1869,8 @@ with ‘--disable-chroot’ because the image lacks build users.
 It would be useful also to set the user under which commands run in the
 image, similar to the ‘USER’ directive in Dockerfiles.
 
+* Contribution
+- [[https://mail.gnu.org/archive/html/guix-devel/2025-05/msg00053.html][GCD 002 “Migrating repositories, issues, and patches to Codeberg” accept]]
 * Cuirass
 - [[https://ci.guix.gnu.org/eval/19534/dashboard][master dashboard]]
 - [[https://ci.guix.gnu.org/eval/19488/dashboard][staging dashboard]]
