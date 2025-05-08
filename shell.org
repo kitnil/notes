@@ -74,7 +74,9 @@
 - [[https://github.com/barthr/redo][barthr/redo: Redo is the ultimate tool to create reusable functions from your history in an interactive way]]
 - [[https://github.com/charmbracelet/gum?auto_subscribed=false&utm_campaign=explore-email&utm_medium=email&utm_source=newsletter&utm_term=weekly][charmbracelet/gum: A tool for glamorous shell scripts 🎀]]
 - [[https://github.com/ellie/atuin][ellie/atuin: Magical shell history]]
+- [[https://github.com/hackerschoice/hackshell][hackerschoice/hackshell: Make BASH stealthy and hacker friendly with lots of bash functions]]
 - [[https://github.com/iann0036/censor-shell][iann0036/censor-shell: Censors or hides shell / Bash / console output based on defined patterns - great for hiding secrets in demos!]]
+- [[https://github.com/innogames/polysh][innogames/polysh: Polysh, the remote shell multiplexer]]
 - install landiscover
   : wget https://github.com/aler9/landiscover/releases/download/v1.1.0/landiscover_v1.1.0_linux_amd64.tar.gz; tar xf landiscover_v1.1.0_linux_amd64.tar.gz landiscover; chown root: landiscover; chmod 0755 landiscover; mv -vi landiscover /usr/local/bin; rm -v landiscover_v1.1.0_linux_amd64.tar.gz
 - install restic
@@ -89,7 +91,6 @@
 - [[https://github.com/microsoft/inshellisense][microsoft/inshellisense: IDE style command line auto complete]]
 - [[https://github.com/o69mar/ramfetch][o69mar/ramfetch: A fetch which displays memory info using /proc/meminfo]]
 - [[https://github.com/srid/shell-completion-dump][srid/shell-completion-dump: Use Haskell to dump the gnarly mess that are shell completions (bash, zsh, fish)]]
-- [[https://github.com/innogames/polysh][innogames/polysh: Polysh, the remote shell multiplexer]]
 - [[https://github.com/Steven-Ireland/spam][Steven-Ireland/spam: Easy CLI tool to repeat a given command and output latency. Useful for load testing and synthetic traffic generation.]]
 - [[https://github.com/yasyf/gpt-do][yasyf/gpt-do: GPT-powered bash commands.]]
 - [[https://github.com/zahidkhawaja/rusty][zahidkhawaja/rusty: GPT-3 powered CLI tool to help you remember bash commands.]]
