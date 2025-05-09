@@ -1,2 +1,64 @@
 - [[https://github.com/angela-d/wifi-network-testing][angela-d/wifi-network-testing: Scan your wifi network and obtain troubleshooting details, with extreme granularity - using a colorful command-line tool.]]
 - [[https://fosdem.org/2023/schedule/event/network_wifi_mesh/][FOSDEM 2023 - prplMesh: open source Wi-Fi mesh]]
+
+* [[https://www.uni-koeln.de/~pbogusze/posts/Hash_for_wpa_supplicant_password.html][Hash for wpa supplicant password]]
+
+Configuring WLAN on a linux host there are 2 ways to configure a wireless
+access on a wireless host.
+
+First way is one can use an application like:
+- wicd
+- NM (network manager)
+
+which generates a working *wpa_supplicant.conf* file for your
+machine/laptop. Sometimes with hashes somtimes without. Generally speaking the
+configuring overhead is out of the scope and one barely to no possibility to
+control how the *working wpa_supplicant*  configuration is structured and
+where data is stored.
+
+Second way is to generate a *wpa_supplicant.conf*  file by yourself, which
+could look like this:
+
+#+begin_src
+network={
+    ssid="example"
+    key_mgmt=WPA-EAP
+    eap=PEAP
+    identity="user@example.com"
+    password="MySecretPassword"
+    ca_cert="/etc/cert/ca.pem"
+    phase1="peaplabel=1"
+    phase2="auth=MSCHAPV2"
+}
+#+end_src
+
+Instead of setting *password* in cleartext it is possible to generate a hash
+and use the keyword *hash*  in the password line. This kind of hash is also
+called NT-hash (sometimes). To generate a working hash use openssl/libressl
+library with following command:
+
+: user % echo -n MySecretPassword | iconv -t utf16le | openssl md4 (stdin)= f38de32ad5224f05be73c6f542266937
+
+The resulting *wpa_supplicant.conf*  configuration part:
+#+begin_src
+...
+    network={
+            ssid="example"
+            key_mgmt=WPA-EAP
+            eap=PEAP
+            identity="user@example.com"
+            password=hash:f38de32ad5224f05be73c6f542266937
+            ca_cert="/etc/cert/ca.pem"
+            phase1="peaplabel=1"
+            phase2="auth=MSCHAPV2"
+    }
+...
+#+end_src
+
+Finally, restrict file permissions and adjust the system file owner:
+
+: root # chmod 600 /etc/wpa_supplicant/wpa_supplicant.conf
+
+: root # chown root:root /etc/wpa_supplicant/wpa_supplicant.conf
+
+Finished.
