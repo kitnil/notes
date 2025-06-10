@@ -239,3 +239,127 @@ Just unmount the raid, encrypt the drive, add it back and delete the
 missing. Repeat for all drives in your array. Once the last drive is done,
 unmount the array and remount it without the =-o degraded= option. Now you
 have an encrypted RAID array.
+
+* Out of metadata issue
+
+=Device unallocated= has no space. Because of that more metadata cannot be
+allocated, which is required for new inodes. =btrfs balance= could be used to
+reclaim =Device unallocated== space.
+
+#+begin_example
+  root@guixsd ~# btrfs filesystem df /srv
+  Data, single: total=16.29TiB, used=14.72TiB
+  System, DUP: total=8.00MiB, used=1.77MiB
+  Metadata, DUP: total=42.50GiB, used=42.00GiB
+  GlobalReserve, single: total=512.00MiB, used=0.00B
+
+  [506392.403053] BTRFS info (device dm-42): balance: start -m -s
+  [506392.414609] BTRFS info (device dm-42): relocating block group 18886049136640 flags metadata|dup
+  [506392.415977] BTRFS info (device dm-42): relocating block group 18883901652992 flags metadata|dup
+  [506395.446594] BTRFS info (device dm-42): relocating block group 18882827911168 flags metadata|dup
+  [506398.365196] BTRFS info (device dm-42): relocating block group 18879606685696 flags metadata|dup
+  [506398.367490] BTRFS info (device dm-42): relocating block group 17149834821632 flags metadata|dup
+  [506398.681527] BTRFS info (device dm-42): relocating block group 12023791353856 flags metadata|dup
+  [506398.807190] BTRFS info (device dm-42): relocating block group 8876654067712 flags metadata|dup
+  [506398.814907] BTRFS info (device dm-42): relocating block group 3033351061504 flags metadata|dup
+  [506398.815813] BTRFS info (device dm-42): relocating block group 2224823468032 flags metadata|dup
+  [506399.000951] BTRFS info (device dm-42): relocating block group 1325027819520 flags metadata|dup
+  [506399.001662] BTRFS info (device dm-42): relocating block group 772050780160 flags metadata|dup
+  [506399.002608] BTRFS info (device dm-42): relocating block group 30408704 flags metadata|dup
+  [506400.503424] BTRFS info (device dm-42): relocating block group 22020096 flags system|dup
+  [506400.649861] BTRFS info (device dm-42): 52 enospc errors during balance
+  [506400.649875] BTRFS info (device dm-42): balance: ended with status: -28
+
+  Overall:
+      Device size:		  16.37TiB
+      Device allocated:		  16.37TiB
+      Device unallocated:		   1.00MiB
+      Device missing:		     0.00B
+      Device slack:		     0.00B
+      Used:			  14.81TiB
+      Free (estimated):		   1.56TiB	(min: 1.56TiB)
+      Free (statfs, df):		   1.56TiB
+      Data ratio:			      1.00
+      Metadata ratio:		      2.00
+      Global reserve:		 512.00MiB	(used: 48.00KiB)
+      Multiple profiles:		        no
+
+  Data,single: Size:16.29TiB, Used:14.72TiB (90.40%)
+     /dev/mapper/crypt-srv	  16.29TiB
+
+  Metadata,DUP: Size:42.50GiB, Used:42.00GiB (98.81%)
+     /dev/mapper/crypt-srv	  85.00GiB
+
+  System,DUP: Size:8.00MiB, Used:1.77MiB (22.07%)
+     /dev/mapper/crypt-srv	  16.00MiB
+
+  Unallocated:
+     /dev/mapper/crypt-srv	   1.00MiB
+  Overall:
+      Device size:		  16.37TiB
+      Device allocated:		  16.37TiB
+      Device unallocated:		   1.00MiB
+      Device missing:		     0.00B
+      Device slack:		     0.00B
+      Used:			  14.81TiB
+      Free (estimated):		   1.56TiB	(min: 1.56TiB)
+      Free (statfs, df):		   1.56TiB
+      Data ratio:			      1.00
+      Metadata ratio:		      2.00
+      Global reserve:		 512.00MiB	(used: 1.00MiB)
+      Multiple profiles:		        no
+
+  Data,single: Size:16.29TiB, Used:14.72TiB (90.40%)
+     /dev/mapper/crypt-srv	  16.29TiB
+
+  Metadata,DUP: Size:42.50GiB, Used:42.00GiB (98.81%)
+     /dev/mapper/crypt-srv	  85.00GiB
+
+  System,DUP: Size:8.00MiB, Used:1.77MiB (22.07%)
+     /dev/mapper/crypt-srv	  16.00MiB
+
+  Unallocated:
+     /dev/mapper/crypt-srv	   1.00MiB
+  Overall:
+      Device size:		  16.37TiB
+      Device allocated:		  16.37TiB
+      Device unallocated:		   1.00MiB
+      Device missing:		     0.00B
+      Device slack:		     0.00B
+      Used:			  14.81TiB
+      Free (estimated):		   1.56TiB	(min: 1.56TiB)
+      Free (statfs, df):		   1.56TiB
+      Data ratio:			      1.00
+      Metadata ratio:		      2.00
+      Global reserve:		 512.00MiB	(used: 0.00B)
+      Multiple profiles:		        no
+
+  Data,single: Size:16.29TiB, Used:14.72TiB (90.40%)
+     /dev/mapper/crypt-srv	  16.29TiB
+
+  Metadata,DUP: Size:42.50GiB, Used:42.00GiB (98.81%)
+     /dev/mapper/crypt-srv	  85.00GiB
+
+  System,DUP: Size:8.00MiB, Used:1.77MiB (22.07%)
+     /dev/mapper/crypt-srv	  16.00MiB
+
+  Unallocated:
+     /dev/mapper/crypt-srv	   1.00MiB
+
+  root@guixsd ~# btrfs balance status /srv
+  No balance found on '/srv'
+  root@guixsd ~# btrfs balance start -v /srv -dlimit=3
+  Dumping filters: flags 0x1, state 0x0, force is off
+    DATA (flags 0x20): balancing, limit=3
+  Done, had to relocate 3 out of 16733 chunks
+
+  root@guixsd ~# btrfs balance start -v /srv -dlimit=3
+  Dumping filters: flags 0x1, state 0x0, force is off
+    DATA (flags 0x20): balancing, limit=3
+  Done, had to relocate 3 out of 16733 chunks
+
+  root@guixsd ~# btrfs balance start -v -dusage=10 /srv/
+  Dumping filters: flags 0x1, state 0x0, force is off
+    DATA (flags 0x2): balancing, usage=10
+  Done, had to relocate 703 out of 16730 chunks
+#+end_example
