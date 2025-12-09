@@ -92,6 +92,7 @@ rerere-train.sh [COMMIT][--all]
 - [[https://github.com/carvel-dev/vendir][carvel-dev/vendir: Easy way to vendor portions of git repos, github releases, helm charts, docker image contents, etc. declaratively]]
 - [[https://github.com/charmbracelet/git-lfs-transfer][charmbracelet/git-lfs-transfer: Server-side implementation of the Git LFS pure-SSH protocol]]
 - [[https://github.com/chriswalz/bit][chriswalz/bit: Bit is a modern Git CLI]]
+- [[https://github.com/dinoDanic/diny][dinoDanic/diny: generate git commit messages]]
 - [[https://github.com/dirk/quickhook][dirk/quickhook: Faster Git hook (pre-commit, etc.) runner]]
 - [[https://github.com/dmfutcher/git-profile][dmfutcher/git-profile: Simple identity switching for git]]
 - emacs-git-email in Guix packages allows to send a patch via email similar to ==git send-email= format
