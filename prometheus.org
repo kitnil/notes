@@ -80,6 +80,7 @@
 - [[https://michael.stapelberg.ch/posts/2016-01-01-prometheus-blackbox-exporter/][Prometheus: Using the blackbox exporter (2016) - Michael Stapelberg]]
 - [[https://coralogix.com/blog/promql-tutorial-5-tricks-to-become-a-prometheus-god/][PromQL Tutorial: 5 Tricks to Become a Prometheus God - Coralogix]]
 - [[https://github.com/QubitProducts/exporter_exporter][QubitProducts/exporter_exporter: A reverse proxy designed for Prometheus exporters]]
+- [[https://github.com/quyxishi/whitebox][quyxishi/whitebox: whitebox is a Prometheus exporter that provides availability monitoring of external VPN services powered by VMESS, VLESS, TROJAN, WireGuard and Shadowsocks.]]
 - [[https://github.com/RamboRogers/layer2_exporter][RamboRogers/layer2_exporter: A Layer2 (ARP) Discovery and Exporter for Prometheus.io]]
 - [[https://github.com/ribbybibby/ssl_exporter][ribbybibby/ssl_exporter: Exports Prometheus metrics for TLS certificates]]
 - [[https://github.com/ricoberger/jaeger-exporter][ricoberger/jaeger-exporter: Create Prometheus metrics for the Jaeger Service Performance Monitoring]]
