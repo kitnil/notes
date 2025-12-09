@@ -2,5 +2,8 @@
 - [[https://www.haproxy.com/blog/how-to-enable-health-checks-in-haproxy/][How to Enable Health Checks in HAProxy - HAProxy Technologies]]
 - [[https://grafana.com/docs/grafana-cloud/data-configuration/integrations/integration-reference/integration-haproxy/][HAProxy integration | Grafana Cloud documentation]]
 
+* Kubernetes
+- [[https://github.com/haproxytech/haproxy-unified-gateway][haproxytech/haproxy-unified-gateway: Haproxy controller to handle K8s Gateway API]]
+
 * Learning
 - [[https://www.haproxy.com/blog/haproxy-exposes-a-prometheus-metrics-endpoint][HAProxy Exposes a Prometheus Metrics Endpoint]]
