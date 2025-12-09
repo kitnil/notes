@@ -26,6 +26,9 @@
 - Check certificate signed by CA
   : openssl verify -verbose -CAfile ca.pem kubelet-client-kube4.pem
 
+* Learning
+- [[https://github.com/go-monk/playing-with-tls][go-monk/playing-with-tls: Understanding basics of TLS by writing small programs in Go]]
+
 * Let's Encrypt
 
 [[https://superuser.com/questions/1679204/curl-on-ubuntu-14-all-lets-encrypt-certificates-are-expired-error-60][https - cURL on Ubuntu 14: all Let's Encrypt certificates are expired (error 60) - Super User]]
