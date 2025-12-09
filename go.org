@@ -332,6 +332,7 @@
 - [[https://github.com/MichaelMure/git-bug][MichaelMure/git-bug: Distributed, offline-first bug tracker embedded in git, with bridges]]
 - [[https://github.com/mvdan/gofumpt][mvdan/gofumpt: A stricter gofmt]]
 - [[https://github.com/ofabry/go-callvis][ofabry/go-callvis: Visualize call graph of a Go program using Graphviz]]
+- [[https://github.com/platacard/cacheprog][platacard/cacheprog: GOCACHEPROG implementation that uses S3/Minio-compatible storages as a remote storage backend for Go compiler cache.]]
 - [[https://github.com/praetorian-inc/gokart][praetorian-inc/gokart: A static analysis tool for securing Go code]]
 - pretty print
   #+begin_src go
