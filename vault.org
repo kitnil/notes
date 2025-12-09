@@ -1263,6 +1263,7 @@ I hope that will be useful to you to use Vault as an OIDC provider for your serv
 - [[https://github.com/bakito/vault-unsealer][bakito/vault-unsealer: Kubernetes controller that can auto unseal vault pods.]]
 - [[https://github.com/banzaicloud/bank-vaults][banzaicloud/bank-vaults: A Vault swiss-army knife: a K8s operator, Go client with automatic token renewal, automatic configuration, multiple unseal options and more. A CLI tool to init, unseal and configure Vault (auth methods, secret engines). Direct secret injection into Pods.]]
 - [[https://github.com/dkyanakiev/vaul7y][dkyanakiev/vaul7y: TUI for Hashicorp Vault]]
+- [[https://github.com/julienhmmt/vcv][julienhmmt/vcv: VaultCertsViewer is a Go application to list and manage certs in Vault, the easiest possible for SRE.]]
 - [[https://github.com/pbchekin/vault-sync][pbchekin/vault-sync: Synchronize secrets between HashiCorp Vault instances]]
 
 * Alternatives
