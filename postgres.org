@@ -28,6 +28,7 @@
 - [[https://www.zombodb.com/][Integrate Postgresql and Elasticsearch | ZomboDB]]
 - [[https://github.com/intgr/pg_journal][intgr/pg_journal: Log PostgreSQL messages to systemd journal]]
 - [[https://github.com/levkk/pgcat][levkk/pgcat: Meow. PgBouncer rewritten in Rust, with sharding, load balancing and failover support.]]
+- [[https://github.com/le-vlad/pgbranch][le-vlad/pgbranch: Simple, git style branching for local PostgreSQL]]
 - [[https://github.com/monacoremo/postgrest-sessions-example][monacoremo/postgrest-sessions-example: An example on how to implement session-based authentication with PostgREST]]
 - [[https://github.com/MovingLake/pg_webhook][MovingLake/pg_webhook: This repo plugs to a replication slot of a Postgres database, and sends webhooks for any change that happens in the database.]]
 - [[https://github.com/neondatabase/neon][neondatabase/neon: Neon: Serverless Postgres. We separated storage and compute to offer autoscaling, branching, and bottomless storage.]]
