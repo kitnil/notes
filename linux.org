@@ -123,6 +123,13 @@ can set up a tunnel from bayfront, or something like that.
 - [[https://github.com/genuinetools/amicontained][genuinetools/amicontained: Container introspection tool. Find out what container runtime is being used as well as features available.]]
 - [[https://github.com/prologic/box][prologic/box: 📦 A command-line utility (non-daemon) for creating Linux containers, sandboxing a processes written in Go.]]
 
+#+begin_example
+  oleg@pc0 ~$ cat /etc/subuid
+  oleg:10000:65536
+
+  oleg@pc0 ~$ unshare --user --map-auto --map-root-user --pid --mount --mount-proc --keep-caps --fork
+#+end_example
+
 * D
 
 - [[https://stackoverflow.com/questions/767551/how-to-stop-uninterruptible-process-on-linux][signals - How to stop 'uninterruptible' process on Linux? - Stack Overflow]]
