@@ -761,6 +761,7 @@ POSTROUTING. Это к слову тот случай, когда можно в�
 - [[https://github.com/alttch/latencymon][alttch/latencymon: TCP/UDP/ICMP latency monitoring]]
 - [[https://github.com/apernet/OpenGFW][apernet/OpenGFW: OpenGFW is a flexible, easy-to-use, open source implementation of GFW on Linux]]
 - [[https://arkime.com/][Arkime: Network Analysis & Packet Capture]]
+- [[https://github.com/AthenaNetworks/jsonping][AthenaNetworks/jsonping: Ping implement in Go that returns JSON]]
 - [[https://github.com/batfish/batfish][batfish/batfish: Batfish is a network configuration analysis tool that can find bugs and guarantee the correctness of (planned or current) network configurations. It enables network engineers to rapidly and safely evolve their network, without fear of outages or security breaches.]]
 - [[https://github.com/bschaatsbergen/cidr][bschaatsbergen/cidr: Simplifies IPv4/IPv6 CIDR network prefix management with counting, overlap checking, explanation, and subdivision.]]
 - [[https://github.com/c-grimshaw/gosniff][c-grimshaw/gosniff: A fancy-schmancy tcpdump-esque TUI, programmed in Go.]]
