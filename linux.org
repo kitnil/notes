@@ -127,6 +127,9 @@ can set up a tunnel from bayfront, or something like that.
   oleg@pc0 ~$ cat /etc/subuid
   oleg:10000:65536
 
+  oleg@pc0 ~$ cat /etc/subgid
+  oleg:10000:65536
+
   oleg@pc0 ~$ unshare --user --map-auto --map-root-user --pid --mount --mount-proc --keep-caps --fork
 #+end_example
 
