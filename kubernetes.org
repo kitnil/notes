@@ -4002,6 +4002,7 @@ https://github.com/kubevirt/containerized-data-importer/blob/main/doc/datavolume
 - [[https://github.com/idgenchev/namespace-node-affinity][idgenchev/namespace-node-affinity: Kubernetes Mutating Webhook for assigning node affinity and tolerations to all pods in a namespace]]
 - [[https://github.com/imuxin/kubectl-watch][imuxin/kubectl-watch: A kubectl plugin to provide a pretty delta change view of being watched kubernetes resources]]
 - [[https://github.com/indeedeng/harbor-container-webhook][indeedeng/harbor-container-webhook: mutating webhook which rewrites container images to use a Harbor proxy cache]]
+- [[https://github.com/InditexTech/k8s-overcommit-operator][InditexTech/k8s-overcommit-operator: A Kubernetes operator designed to intelligently manage resource overcommit on pod resource requests.]]
 - [[https://github.com/inercia/k3x][inercia/k3x: A UI for local Kubernetes clusters created with k3d]]
 - [[https://github.com/infracloudio/botkube][infracloudio/botkube: An app that helps you monitor your Kubernetes cluster, debug critical deployments & gives recommendations for standard practices]]
 - [[https://github.com/inlets/inlets-operator][inlets/inlets-operator: Get public LoadBalancers on your local Kubernetes clusters]]
