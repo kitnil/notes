@@ -3847,6 +3847,7 @@ https://github.com/kubevirt/containerized-data-importer/blob/main/doc/datavolume
 - [[https://github.com/appvia/krane][appvia/krane: Kubernetes RBAC static analysis & visualisation tool]]
 - [[https://github.com/aquasecurity/starboard][aquasecurity/starboard: Kubernetes-native security toolkit]]
 - [[https://github.com/aquasecurity/trivy-operator][aquasecurity/trivy-operator: Kubernetes-native security toolkit]]
+- [[https://github.com/archsyscall/restart-operator][archsyscall/restart-operator: A Kubernetes operator for scheduling recurring restarts of workloads running in a Kubernetes cluster]]
 - [[https://github.com/ArctarusLimited/Fractal][ArctarusLimited/Fractal: Zero-compromise Kubernetes resource generation with Nix, Jsonnet and Kustomize. Planned Helm support.]]
 - [[https://github.com/armosec/kubescape][armosec/kubescape: kubescape is the first tool for testing if Kubernetes is deployed securely as defined in Kubernetes Hardening Guidance by to NSA and CISA (https://www.nsa.gov/News-Features/Feature-Stories/Article-View/Article/2716980/nsa-cisa-release-kubernetes-hardening-guidance/)]]
 - [[https://github.com/arnehilmann/k8s-auto-updater][arnehilmann/k8s-auto-updater: auto-update your cluster: sync your docker images and restart pods running on outdated images]]
