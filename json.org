@@ -79,6 +79,7 @@ with =jc= utility, piped to =jq= to filter, and to =jtbl= generate a table:
 - json_pp
 
 * Tools
+- [[https://github.com/kaptinlin/jsonschema][kaptinlin/jsonschema: A powerful Go JSON Schema validator library aligned with the JSON Schema Draft 2020-12. It features enhanced validation outputs and supports internationalization, making it perfect for developers requiring comprehensive schema compliance and multilingual error messaging in modern applications.]]
 - [[https://github.com/lukas-krecan/JsonUnit][lukas-krecan/JsonUnit: Compare JSON in your Unit Tests]]
 - [[https://github.com/mikefarah/yq][mikefarah/yq: yq is a portable command-line YAML, JSON, XML, CSV, TOML and properties processor]]
 - [[https://github.com/Santiago-Labs/configtailor][Santiago-Labs/configtailor]]
