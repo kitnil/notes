@@ -85,8 +85,8 @@
 - "title": "cops", "description": "COPS links to your Calibre library database and allows downloading and emailing of books directly from a web browser and provides a OPDS feed to connect to your devices."
 - "title": "couchpotato", "description": "CouchPotato (CP) is an automatic NZB and torrent downloader. You can keep a \"movies I want\"-list and it will search for NZBs/torrents of these movies every X hours. Once a movie is found, it will send it to SABnzbd or download the torrent to a specified directory."
 - "title": "daapd", "description": "DAAP (iTunes) media server with support for AirPlay devices, Apple Remote (and compatibles), MPD and internet radio."
-
 - "title": "davos", "description": "davos is an FTP automation tool that periodically scans given host locations for new files. It can be configured for various purposes, including listening for specific files to appear in the host location, ready for it to download and then move, if required. It also supports completion notifications as well as downstream API calls, to further the workflow.\r\n\r\n/config : AppData Location\r\n/download : File Download Location"
+
 - "title": "deluge", "description": "Deluge is a lightweight, Free Software, cross-platform BitTorrent client providing: Full Encryption, WebUI, Plugin System, Much more..."
 - "title": "domoticz", "description": "Domoticz is a Home Automation System that lets you monitor and configure various devices like: Lights, Switches, various sensors/meters like Temperature, Rain, Wind, UV, Electra, Gas, Water and much more. Notifications/Alerts can be sent to any mobile device"
 - "title": "duckdns", "description": "Duck DNS is a free service which will point a DNS (sub domains of duckdns.org) to an IP of your choice. The service is completely free, and doesn't require reactivation or forum posts to maintain its existence. First, go to duckdns site, register your subdomain and retrieve your token. Then run the docker create command above with your subdomain(s) and token. It will update your IP with the DuckDNS service every 5 minutes."
@@ -148,6 +148,7 @@
 - [[https://github.com/Warp-net/warpnet][Warp-net/warpnet: WarpNet is a decentralized, peer-to-peer social network inspired by Twitter, built with Go. It runs without central servers, using Noise protocol for inter-node communication and built-in local storage. WarpNet is censorship-resistant, scalable, and fully open-source.]]
 - [[https://github.com/wirow-io/wirow-server][wirow-io/wirow-server: A full featured self-hosted video web-conferencing platform.]]
 - [[https://github.com/yourselfhosted/slash][yourselfhosted/slash: An open source, self-hosted bookmarks and link sharing platform. Save and share your links very easily]]
+- [[https://github.com/Zhoros/SuperBin][Zhoros/SuperBin: Super Bin - Pastebin, File Sharing and URL Shortener with Password, Curl and QR support]]
 - [[https://github.com/zserge/pennybase][zserge/pennybase: Poor man's Backend-as-a-Service (BaaS), similar to Firebase/Supabase/Pocketbase]]
 - [[https://github.com/zulip/zulip][zulip/zulip: Zulip server and web app—powerful open source team chat]]
 - [[https://serveradmin.ru/ustanovka-i-nastroyka-zulip/][Установка и настройка мессенджера Zulip — Server Admin]]
