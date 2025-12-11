@@ -4104,6 +4104,7 @@ https://github.com/kubevirt/containerized-data-importer/blob/main/doc/datavolume
 - [[https://github.com/kubernetes-sigs/cluster-api][kubernetes-sigs/cluster-api: Home for Cluster API, a subproject of sig-cluster-lifecycle]]
 - [[https://github.com/kubernetes-sigs/cluster-api-provider-kubevirt][kubernetes-sigs/cluster-api-provider-kubevirt: Cluster API Provider for KubeVirt]]
 - [[https://github.com/kubernetes-sigs/community-images][kubernetes-sigs/community-images: kubectl plugin that displays images running in a Kubernetes cluster that were pulled from community owned repositories and warn the user to switch repositories if needed]]
+- [[https://github.com/kubernetes-sigs/container-object-storage-interface][kubernetes-sigs/container-object-storage-interface: Container Object Storage Interface (COSI) responsible for defining COSI spec and APIs, interfacing with COSI drivers, and managing the lifecycle of COSI objects.]]
 - [[https://github.com/kubernetes-sigs/descheduler][kubernetes-sigs/descheduler: Descheduler for Kubernetes]]
 - [[https://github.com/kubernetes-sigs/hierarchical-namespaces][kubernetes-sigs/hierarchical-namespaces: Home of the Hierarchical Namespace Controller (HNC). Adds hierarchical policies and delegated creation to Kubernetes namespaces for improved in-cluster multitenancy.]]
 - [[https://github.com/kubernetes-sigs/hydrophone][kubernetes-sigs/hydrophone: Hydrophone is a lightweight Kubernetes conformance tests runner]]
