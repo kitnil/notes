@@ -49,6 +49,7 @@
   : ctr --namespace k8s.io images ls
 
 * Tools
+- [[https://github.com/knqyf263/sou][knqyf263/sou: A tool for exploring files in container image layers]]
 - [[https://github.com/negativa-ai/BLAFS?tab=MIT-1-ov-file#readme][negativa-ai/BLAFS: A tool for Container Debloating that removes bloat and improves performance.]]
 - [[https://github.com/project-machine/atomfs][project-machine/atomfs: Can be used to mount an OCI+squashfs image]]
 - [[https://github.com/project-machine/disko][project-machine/disko: Disk Operations API in Go]]
