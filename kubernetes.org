@@ -4123,6 +4123,7 @@ https://github.com/kubevirt/containerized-data-importer/blob/main/doc/datavolume
 - [[https://github.com/kubernetes-sigs/network-policy-api?tab=readme-ov-file][kubernetes-sigs/network-policy-api: This repo addresses further work involving Kubernetes network security beyond the initial NetworkPolicy resource]]
 - [[https://github.com/kubernetes-sigs/nfs-subdir-external-provisioner][kubernetes-sigs/nfs-subdir-external-provisioner: Dynamic sub-dir volume provisioner on a remote NFS server.]]
 - [[https://github.com/kubernetes-sigs/node-feature-discovery][kubernetes-sigs/node-feature-discovery: Node feature discovery for Kubernetes]]
+- [[https://github.com/kubernetes-sigs/node-readiness-controller][kubernetes-sigs/node-readiness-controller: This repository contains a reference implementation of NodeReadinessGates as a Kubernetes controller that manages node taints based on multiple readiness gate conditions, providing fine-grained control over when nodes are ready to accept workloads.]]
 - [[https://github.com/kubernetes-sigs/prometheus-adapter][kubernetes-sigs/prometheus-adapter: An implementation of the custom.metrics.k8s.io API using Prometheus]]
 - [[https://github.com/kubernetes-sigs/secrets-store-csi-driver][kubernetes-sigs/secrets-store-csi-driver: Secrets Store CSI driver for Kubernetes secrets - Integrates secrets stores with Kubernetes via a CSI volume.]]
 - [[https://github.com/kubernetes-sigs/security-profiles-operator][kubernetes-sigs/security-profiles-operator: The Kubernetes Security Profiles Operator]]
