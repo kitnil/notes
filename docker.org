@@ -1658,6 +1658,7 @@ Misc
 
 * Tools
 - [[https://github.com/0x7c13/docker-gc][0x7c13/docker-gc: docker-gc is a microservice to cleanup docker images automatically based on recycling strategy. Dockerfile and helm charts are provided for easy installation.]]
+- [[https://github.com/11notes/docker-socket-proxy][11notes/docker-socket-proxy: Access your docker socket safely as read-only, rootless and distroless]]
 - [[https://github.com/AkihiroSuda/buildkit-nix][AkihiroSuda/buildkit-nix: Nix derivations as Dockerfiles (`docker build -f default.nix .`)]]
 - [[https://github.com/alibaba/accelerated-container-image][alibaba/accelerated-container-image: accelerated-container-image]]
 - [[https://github.com/anchore/anchore-engine][anchore/anchore-engine: A service that analyzes docker images and applies user-defined acceptance policies to allow automated container image validation and certification]]
