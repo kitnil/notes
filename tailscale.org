@@ -2,3 +2,4 @@
 - [[https://github.com/jaxxstorm/tscli][jaxxstorm/tscli: A CLI tool to interact with the Tailscale API]]
 - [[https://github.com/jtdowney/tsbridge][jtdowney/tsbridge: A lightweight proxy manager built on Tailscale's tsnet library that enables multiple HTTPS services on a Tailnet]]
 - [[https://github.com/Yeeb1/SockTail][Yeeb1/SockTail: Lightweight binary that joins a device to a Tailscale network and exposes a local SOCKS5 proxy. Designed for red team operations and ephemeral access into restricted environments using Tailscale’s embedded client (tsnet). Zero config, no daemon, no persistence - just a fast way in.]]
+- [[https://github.com/almeidapaulopt/tsdproxy][almeidapaulopt/tsdproxy: Tailscale Docker Proxy]]
