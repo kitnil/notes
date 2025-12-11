@@ -8,6 +8,7 @@
 - [[https://github.com/alileza/alert-relabeller][alileza/alert-relabeller: alertmanager sidecar to help patch labels to your orgs needs]]
 - [[https://github.com/alxrem/prometheus-logstash-exporter][alxrem/prometheus-logstash-exporter: Prometheus exporter for Logstash metrics]]
 - [[https://rsmitty.github.io/Prometheus-Exporters/][A Noob's Guide to Custom Prometheus Exporters – Spencer's Blog]]
+- [[https://github.com/arianvp/cgroup-exporter][arianvp/cgroup-exporter: This is a lightweight Prometheus exporter for cgroups that only supports the unified cgroup v2 hierarchy. It exposes usage metrics for each cgroup in the hierarchy.]]
 - [[https://awesome-prometheus-alerts.grep.to/][Awesome Prometheus alerts | Collection of alerting rules]]
 - [[https://github.com/benjojo/alertmanager-discord][benjojo/alertmanager-discord: Take your alertmanager alerts, into discord]]
 - [[https://github.com/benjojo/sping][benjojo/sping: Split ping, see what direction the loss or latency is on]]
