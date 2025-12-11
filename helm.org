@@ -4,6 +4,7 @@
 - [[https://github.com/farcaller/nixhelm][farcaller/nixhelm: This is a collection of helm charts in a nix-digestable format.]]
 - [[https://github.com/helm/chart-releaser][helm/chart-releaser: Hosting Helm Charts via GitHub Pages and Releases]]
 - [[https://github.com/fluent/fluent-operator/issues/230][Helm chart tarball in release · Issue #230 · fluent/fluent-operator]]
+- [[https://github.com/idsulik/helm-cel][idsulik/helm-cel: A Helm plugin that uses Common Expression Language (CEL) to validate values. Instead of using JSON Schema in values.schema.json, you can write more expressive validation rules using CEL in values.cel.yaml.]]
 - [[https://github.com/pidanou/helm-tui][pidanou/helm-tui: A simple terminal UI for Helm]]
 - [[https://github.com/Praqma/helmsman][Praqma/helmsman: Helm Charts as Code]]
 - [[https://habr.com/ru/companies/innotech/articles/746132/][Нативный способ шифрования данных в Helm / Хабр]]
