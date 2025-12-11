@@ -16,6 +16,7 @@
   - [[https://www.bastillion.io/][Bastillion - Web-Based Bastion Host and SSH Key Management]]
 - [[https://github.com/benjojo/ssh-key-confirmer][benjojo/ssh-key-confirmer: Test ssh login key acceptance without having the private key]]
 - [[https://github.com/benjojo/totp-ssh-fluxer][benjojo/totp-ssh-fluxer: Take security by obscurity to the next level (this is a bad idea, don't really use this please)]]
+- [[https://github.com/byawitz/ggh][byawitz/ggh: Recall your SSH sessions (also search your SSH config file)]]
 - [[https://gist.github.com/canton7/5670788][C# class to convert OpenSSL private keys into PuTTY'-format private keys. Can't handle encryption or anything else funky]]
 - [[https://github.com/ContainerSSH/ContainerSSH][ContainerSSH/ContainerSSH: ContainerSSH: Launch containers on demand]]
 - [[https://github.com/coreos/ssh-key-dir][coreos/ssh-key-dir: sshd AuthorizedKeysCommand to read ~/.ssh/authorized_keys.d]]
