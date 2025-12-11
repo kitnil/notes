@@ -92,6 +92,7 @@ peer.
 https://git.zx2c4.com/WireGuard/tree/src/receive.c#n351
 
 * Tools
+- [[https://github.com/coder/wush][coder/wush: simplest & fastest way to transfer files between computers via WireGuard]]
 - [[https://github.com/dadevel/wg-netns][dadevel/wg-netns: WireGuard with Linux Network Namespaces]]
 - [[https://github.com/irctrakz/wgslirp][irctrakz/wgslirp: A user-space networking (tcp/udp) implementation leveraging wireguard-go]]
 - [[https://github.com/puzed/wrapguard][puzed/wrapguard: Userspace WireGuard proxy for transparent network tunneling]]
