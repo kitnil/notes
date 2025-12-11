@@ -108,7 +108,7 @@ https://github.com/iovisor/bcc/blob/master/QUICKSTART.md
   : capa=`cat /proc/1/status | grep -i 'CapEff' | awk '{print $2}'`; capsh --decode=$capa
 
 - ps
-  : ps -o pid,cmd:150,tty,stat,time,uid,gid,userns,netns,pidns,mntns,cgroupns -A --forest | less -S
+  : ps -o pid,tty,stat,time,uid,gid,userns,netns,pidns,mntns,cgroupns,cmd -A --forest
 
 * console
 #+begin_quote
