@@ -17,6 +17,7 @@
 - [[https://ubiq.co/tech-blog/disable-nginx-cache/][How To Disable NGINX Cache - Ubiq BI]]
 - [[https://github.com/jkroepke/access-log-exporter][jkroepke/access-log-exporter: A Prometheus exporter that receives access logs from nginx through the syslog protocol and converts them into metrics.]]
 - [[https://openresty-reference.readthedocs.io/en/latest/Lua_Nginx_API/][Lua Ngx API - OpenResty Reference]]
+- [[https://github.com/lucasdillmann/nginx-ignition][lucasdillmann/nginx-ignition: An user interface for the nginx web server, aimed at developers and enthusiasts that don't want to manage configuration files manually]]
 - [[https://github.com/NBPub/BeatLog][NBPub/BeatLog: BeatLog parses NGINX reverse proxy and fail2ban logs into readable tables and reports. Use BeatLog to assess server traffic and tailor fail2ban filters.]]
 - [[https://devdocs.io/nginx/][nginx documentation — DevDocs]]
 - [[https://github.com/nginxinc/crossplane][nginxinc/crossplane: Quick and reliable way to convert NGINX configurations into JSON and back.]]
