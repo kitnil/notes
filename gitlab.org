@@ -27,6 +27,7 @@
 - [[https://docs.gitlab.com/ee/user/project/push_options.html][Push Options | GitLab]]
 - [[https://github.com/spatecon/gitlab-review-bot][spatecon/gitlab-review-bot: Observes and modifies Merge Requests by Review&Approve Policy. Daily Slack notifications included.]]
 - sudo /home/gitlab-runner/.nix-profile/bin/gitlab-runner run --working-directory=/home/gitlab-runner --config=/etc/gitlab-runner/config.toml --service=gitlab-runner --user=gitlab-runner
+- [[https://github.com/timo-reymann/gitlab-ci-verify][timo-reymann/gitlab-ci-verify: Validate and lint your gitlab ci files using ShellCheck, the Gitlab API, curated checks or even build your own checks]]
 - [[https://gitlab-com.gitlab.io/support/toolbox/upgrade-path/][Upgrade Path]]
 - [[https://github.com/yurug/get-gitlab-forks][yurug / get-gitlab-forks]]
 - [[https://habr.com/ru/company/flant/blog/649551/][Запуск werf в GitLab CI/CD без Docker-сервера / Хабр]]
