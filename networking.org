@@ -758,6 +758,7 @@ POSTROUTING. Это к слову тот случай, когда можно в�
 - sshpass -p"$(pass show majordomo/private/ssh/router)" ssh sr1-dh507-508.intr -- tcpdump -w - -i ae113 -n -c 1000 | wireshark -k -i -
 
 * Tools
+- [[https://github.com/aceberg/WatchYourPorts][aceberg/WatchYourPorts: Open ports inventory for local servers. Exports data to InfluxDB2/Grafana]]
 - [[https://github.com/alttch/latencymon][alttch/latencymon: TCP/UDP/ICMP latency monitoring]]
 - [[https://github.com/apernet/OpenGFW][apernet/OpenGFW: OpenGFW is a flexible, easy-to-use, open source implementation of GFW on Linux]]
 - [[https://arkime.com/][Arkime: Network Analysis & Packet Capture]]
