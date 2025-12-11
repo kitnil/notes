@@ -28,6 +28,7 @@
 - [[https://smallstep.com/blog/diy-single-sign-on-for-ssh/][DIY Single Sign-On for SSH]]
 - [[https://github.com/drakkan/sftpgo][drakkan/sftpgo: Fully featured and highly configurable SFTP server with optional HTTP/S, FTP/S and WebDAV support - S3, Google Cloud Storage, Azure Blob]]
 - [[https://www.redhat.com/sysadmin/eight-ways-secure-ssh][Eight ways to protect SSH access on your system | Enable Sysadmin]]
+- [[https://github.com/engity-com/bifroest][engity-com/bifroest: Highly customizable SSH server with several ways to authorize a user and options where and how to execute a user's session.]]
 - [[https://github.com/Esonhugh/sshd_backdoor][Esonhugh/sshd_backdoor: /root/.ssh/authorized_keys evil file watchdog with ebpf tracepoint hook.]]
 - [[https://github.com/Fahrj/reverse-ssh][Fahrj/reverse-ssh: Statically-linked ssh server with reverse shell functionality for CTFs and such]]
 - [[https://github.com/fox-it/OpenSSH-Session-Key-Recovery][fox-it/OpenSSH-Session-Key-Recovery: Project containing several tools/ scripts to recover the OpenSSH session keys used to encrypt/ decrypt SSH traffic.]]
