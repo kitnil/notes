@@ -3627,7 +3627,177 @@ It was fun to troubleshoot all of this. I made some wrong assumptions (as usual)
 I'm surprised at how libvirt-terraform-provider helped me. Investing some time to set up a declarative approach paid dividends. It was useful to run multiple hosts, try out new OSes and have multiple machines running simultaneously with different cgroup versions.
 
 Let's see what the future holds now that I can bootstrap my own cluster in an isolated environment =).
-* Misc
+
+** [[https://habr.com/ru/companies/flant/articles/968314/][Завис PVC? Виноват финализатор / Хабр]]
+[[https://veducate.co.uk/kubernetes-finalizers-pvc-terminating/][Автор оригинала: Дин Льюис (Dean Lewis)]]
+
+Пять лет назад Дин Льюис написал материал «[[https://veducate.co.uk/kubernetes-pvc-terminating/][PVC в Kubernetes застрял в
+состоянии Terminating]]». В ней автор разбирает проблему, когда PVC не удаляется
+и остаётся в состоянии Terminating, а также причину и способы её решения.
+
+Эта статья является продолжением той публикации. Она будет полезна
+платформенным инженерам и операторам Kubernetes, которые хотят понять, почему
+ресурсы вроде PVC «зависают» в состоянии Terminating, как Kubernetes
+обрабатывает удаление на внутреннем уровне и почему финализатор иногда не
+удаляется.
+
+[[https://habrastorage.org/r/w1560/getpro/habr/upload_files/815/d58/b84/815d58b8473793b3b9691625752c0af2.png]]
+
+**** Что такое финализаторы и для чего они нужны
+В Kubernetes удаление ресурса — двухэтапная операция. Когда пользователь
+запускает =kubectl delete=, объект не удаляется из etcd сразу. Вместо этого
+Kubernetes устанавливает =deletionTimestamp=  и, если у объекта есть
+финализаторы, ожидает их исполнения, прежде чем окончательно удалить ресурс с
+API-сервера.
+
+Финализаторы — это строки, перечисленные в массиве =metadata.finalizers=
+. Каждая такая строка говорит о том, что некий контроллер должен выполнить
+логику очистки, прежде чем объект можно будет удалить. Это гарантирует
+согласованность данных и критически важно при работе с внешними ресурсами
+(облачными дисками, DNS-записями, правилами файрвола).
+
+#+begin_src
+metadata:
+    finalizers:
+        - example.com/cleanup-hook
+#+end_src
+
+Kubernetes удалит объект только после того, как пройдётся по всему списку. На
+этом поведении строятся вся сборка мусора и надёжное удаление ресурсов.
+
+**** Что происходит при удалении
+
+Вот что на самом деле происходит «под капотом»:
+
+1. Пользователь запрашивает удаление (например, командой =kubectl delete pvc
+   my-claim= ).
+2. Kubernetes устанавливает метку =metadata.deletionTimestamp= , но оставляет
+   сам объект в etcd.
+3. Если список =metadata.finalizers=  не пустой, удаление ставится на паузу.
+4. Каждый контроллер, ответственный за финализатор, должен согласовать
+   состояние объекта (reconcile), выполнить очистку, а затем убрать свою
+   запись из списка.
+5. Как только список опустеет, сборщик мусора удалит объект.
+  
+*Наглядная схема*
+
+#+begin_src
+[Запрос kubectl delete] → [Установлена метка deletionTimestamp]
+↓
+[Есть финализаторы?] → Нет → Ресурс удаляется
+↓
+Да
+↓
+[Контроллер проводит реконсиляцию → Выполняет очистку → Удаляет финализатор]
+↓
+[Все финализаторы удалены?] → Нет → Ждём
+↓
+Да
+↓
+[Объект удаляется из etcd]
+#+end_src
+
+**** PVC и финализатор kubernetes.io/pvc-protection
+Этот финализатор добавляется системным контроллером Kubernetes, который
+называется PVC Protection Controller. Он предотвращает удаление PVC, пока тот
+используется. Это своего рода предохранитель, который защищает от случайной
+потери данных. Чтобы посмотреть его на PVC, выполните:
+
+#+begin_src ocaml
+kubectl get pvc my-claim -o yaml
+#+end_src
+
+Вы увидите:
+#+begin_src
+metadata:
+    finalizers:
+        - kubernetes.io/pvc-protection
+#+end_src
+
+Пока хотя бы один под ссылается на PVC, Kubernetes не будет удалять
+финализатор — даже если этот под находится в состоянии Terminating. То же
+самое происходит, если удаление пода задерживается из-за наличия финализатора
+или недоступности узла.
+
+**** Почему финализаторы (и PVC) «зависают»
+Если контроллер, отвечающий за финализатор, упал или недоступен, он не может
+убрать свою запись. В результате ресурс навсегда застревает в состоянии
+Terminating. В случае PVC частые виновники — это:
+- поды, которые всё ещё ссылаются на PVC;
+- узлы, которые не отвечают (не получается завершить работу пода);
+- драйвер CSI, который не может отсоединить/отмонтировать тома;
+- зависшие устаревшие объекты =VolumeAttachment= .
+
+Для отладки:
+#+begin_src
+# Поищите ссылающиеся поды.
+kubectl get pods --all-namespaces -o json | jq -r '.items[] |
+select(.spec.volumes[]?.persistentVolumeClaim.claimName=="my-claim") |
+"\(.metadata.namespace)/\(.metadata.name)"'
+
+# Проверьте объекты VolumeAttachment.
+kubectl get volumeattachments
+
+# Выполните describe и проверьте последние события.
+kubectl describe pvc my-claim
+#+end_src
+
+**** vSphere CSI: финализаторы и процесс очистки
+Для иллюстрации воспользуемся vSphere CSI, так как я больше всего времени
+потратил на его отладку.
+
+Драйвер vSphere CSI использует финализатор
+=external-attacher/csi-vsphere-vmware-com= на объектах PersistentVolume
+(PV). Этот финализатор гарантирует, что external-attacher CSI выполнит
+необходимые операции по очистке перед удалением PV.
+
+Финализатор на PV может помешать полному удалению тома, особенно если
+соответствующий объект =VolumeAttachment=  всё ещё существует. В таких случаях
+может потребоваться ручное вмешательство для удаления финализатора и PV.
+
+Например, в [[https://github.com/kubernetes-sigs/vsphere-csi-driver/issues/266][Issue #266]] пользователь столкнулся с проблемой, когда PV не
+удалялся из-за «зависшего» финализатора. Рекомендованный костыль состоял в
+том, чтобы вручную отсоединить диск, удалить финализатор с =VolumeAttachment=
+и PV, а затем удалить сам PV.
+
+***** Пример: лог vSphere CSI при ошибке Unmap Volume
+#+begin_src
+E0324 04:21:58.987894 nestedpendingoperations.go:301]
+Operation for \"{volumeName:kubernetes.io/csi/csi.vsphere.vmware.com^pvc-1234...}\" failed.
+Error: \"UnmapVolume.UnmapBlockVolume failed: blkUtil.DetachFileDevice failed.\"
+#+end_src
+
+Эта строка лога показывает неудачную операцию =UnmapVolume= — одну из причин,
+почему удаление PVC может «зависнуть». Такие проблемы характерны для томов в
+режиме =block-mode=  и часто решаются принудительным отсоединением (force
+detach) или перезагрузкой узла.
+
+**** Пара советов и мыслей на заметку
+- Никогда не удаляйте финализаторы бездумно — они существуют не просто
+  так. Удалять их вручную можно, лишь убедившись, что это не вызовет проблем.
+- Используйте readiness/liveness-пробы для контроля за завершением работы
+  подов. Это поможет правильно отсоединить PVC.
+- Настройте мониторинг и алерты для объектов VolumeAttachment, чтобы
+  отслеживать, не остаются ли они в системе после удаления PVC.
+- Пишите автоматизированные сценарии для поиска «зависших» ресурсов. Для этого
+  можно передавать вывод команды =kubectl get all -o json=  кастомным
+  JQ-скриптам.
+
+**** Заключение
+Финализаторы играют ключевую роль в безопасности и консистентности
+Kubernetes. Они следят за тем, чтобы очистка произошла до удаления ресурса. Но
+если ими управлять неправильно или если контроллер упадет, ресурсы вроде PVC
+могут «зависнуть».
+
+Понимание того, как финализаторы взаимодействуют с процессами удаления,
+контроллерами и etcd, позволяет уверенно диагностировать и устранять подобные
+проблемы в сложных окружениях. А при работе с CSI-драйверами, такими как
+vSphere, понимание роли и поведения финализаторов для PVC и кастомных ресурсов
+(CRD) становится ключом к долгосрочной стабильности платформы.
+
+**** P. S.
+
+Читайте также в нашем блоге:
 - [[https://github.com/aquasecurity/kube-bench][aquasecurity/kube-bench: Checks whether Kubernetes is deployed according to security best practices as defined in the CIS Kubernetes Benchmark]]
 - [[https://github.com/kubevirt/kubevirt][kubevirt/kubevirt: Kubernetes Virtualization API and runtime in order to define and manage virtual machines.]]
 - [[https://github.com/kubernetes-sigs/kind][kubernetes-sigs/kind: Kubernetes IN Docker - local clusters for testing Kubernetes]]
@@ -3642,6 +3812,7 @@ Let's see what the future holds now that I can bootstrap my own cluster in an is
 - [[https://github.com/storax/kubedoom][storax/kubedoom: Kill Kubernetes pods by playing Id's DOOM!]]
 - [[https://opensource.com/article/21/6/kube-doom][Play Doom on Kubernetes | Opensource.com]]
 - [[https://github.com/kubernetes-sigs/sig-storage-lib-external-provisioner][kubernetes-sigs/sig-storage-lib-external-provisioner]]
+
 
 * Monitoring
 - [[https://habr.com/ru/post/586206/][Kubernetes monitoring от простого к сложному (Николай Храмчихин) / Хабр]]
