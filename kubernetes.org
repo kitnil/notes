@@ -4445,6 +4445,7 @@ https://github.com/kubevirt/containerized-data-importer/blob/main/doc/datavolume
 - [[https://shipwright.io/][Shipwright - extensible framework for building container images on Kubernetes]]
 - [[https://github.com/Shopify/kubeaudit][Shopify/kubeaudit: kubeaudit helps you audit your Kubernetes clusters against common security controls]]
 - [[https://github.com/siderolabs/booter][siderolabs/booter: A tool to easily boot Talos machines using PXE]]
+- [[https://github.com/siderolabs/cluster-api-bootstrap-provider-talos][siderolabs/cluster-api-bootstrap-provider-talos: A cluster-api bootstrap provider for deploying Talos clusters.]]
 - [[https://github.com/sighupio/permission-manager][sighupio/permission-manager: Permission Manager is a project that brings sanity to Kubernetes RBAC and Users management, Web UI FTW]]
 - [[https://github.com/SlinkyProject/slurm-operator?tab=readme-ov-file][SlinkyProject/slurm-operator: Run Slurm on Kubernetes. A Slinky project.]]
   - [[https://slurm.schedmd.com/overview.html][Slurm Workload Manager: Slurm is an open source, fault-tolerant, and highly scalable cluster management and job scheduling system for large and small Linux clusters.]]
