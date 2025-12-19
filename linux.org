@@ -110,6 +110,17 @@ https://github.com/iovisor/bcc/blob/master/QUICKSTART.md
 - ps
   : ps -o pid,tty,stat,time,uid,gid,userns,pidns,netns,mntns,cgroupns,utsns,ipcns,timens,cmd -A --forest | less -S
 
+- unshare everything
+  #+begin_example
+    $ cat /etc/subuid
+    oleg:10000:65536
+
+    $ cat /etc/subgid
+    oleg:10000:65536
+
+    $ unshare --user --map-auto --map-root-user --map-current-user --pid --mount --mount-proc --keep-caps --fork --net --cgroup --ipc --uts --time --setuid 0 --setgid 0
+  #+end_example
+
 * console
 #+begin_quote
 I think it would also be nice if the sysadmins could get
