@@ -121,6 +121,25 @@ https://github.com/iovisor/bcc/blob/master/QUICKSTART.md
     $ unshare --user --map-auto --map-root-user --map-current-user --pid --mount --mount-proc --keep-caps --fork --net --cgroup --ipc --uts --time --setuid 0 --setgid 0
   #+end_example
 
+- more unshare
+#+begin_example
+  $ unshare --user --map-users 0:10000:1000 --map-users 1000:1000:1 --map-groups 0:10000:1 --map-groups 998:998:1 --pid --mount --mount-proc --keep-caps --fork --net --cgroup --ipc --uts --time --setuid 0 --setgid 0
+
+  $ cat /etc/subuid
+  oleg:10000:65536
+
+  $ cat /etc/subgid
+  oleg:10000:65536
+
+  # cat /proc/self/uid_map
+           0      10000       1000
+        1000       1000          1
+
+  # cat /proc/self/gid_map
+           0      10000          1
+         998        998          1
+#+end_example
+
 * console
 #+begin_quote
 I think it would also be nice if the sysadmins could get
