@@ -741,3 +741,5 @@ I did this and it seems to have helped..
   
 Open the ConfigDefault.xml file in Risen3/Data/ini with notepad, and change
 maxchannels to 256, that will solve all your sound problems.
+* Tools
+- [[https://github.com/ruffsl/CtrlAssist][ruffsl/CtrlAssist: Controller Assist for gaming on Linux]]
