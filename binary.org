@@ -38,6 +38,7 @@
 - [[https://github.com/sweetbbak/hexxy][sweetbbak/hexxy: a modern and beautiful alternative to xxd and hexdump.]]
 - [[https://github.com/davidlattimore/wild][davidlattimore/wild: Linker with the goal of being very fast for iterative development]]
 - [[https://github.com/intoli/exodus][intoli/exodus: Painless relocation of Linux binaries–and all of their dependencies–without containers.]]
+- [[https://github.com/swananan/ghostscope][swananan/ghostscope: A DWARF-aware eBPF tracer with cgdb-like TUI - explore live processes at runtime]]
 
 #+begin_example
   $ addr2line -e  /gnu/store/m8afvcgwmrfhvjpd7b0xllk8vv5isd6j-glibc-cross-i586-pc-gnu-2.33/lib/ld.so.1 0x1000 0x11627 0x11bb
