@@ -8,5 +8,8 @@
 - [[https://github.com/obsidiandynamics/goharvest][obsidiandynamics/goharvest: Transactional outbox harvester for Postgres → Kafka, written in Go]]
 - [[https://github.com/obsidiandynamics/kafdrop][obsidiandynamics/kafdrop: Kafka Web UI]]
 
+* Alternatives
+- [[https://github.com/nubskr/walrus][nubskr/walrus: 🦭 High Performance kafka alternative written in rust]]
+
 * Learning
 - [[https://habr.com/ru/companies/otus/articles/790504/][Основы репликации в Kafka / Хабр]]
