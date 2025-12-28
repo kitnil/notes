@@ -18,6 +18,7 @@
 - [[https://github.com/benjojo/totp-ssh-fluxer][benjojo/totp-ssh-fluxer: Take security by obscurity to the next level (this is a bad idea, don't really use this please)]]
 - [[https://github.com/bryanpkc/corkscrew][bryanpkc/corkscrew: A tool for tunneling SSH through HTTP proxies]]
 - [[https://github.com/byawitz/ggh][byawitz/ggh: Recall your SSH sessions (also search your SSH config file)]]
+- [[https://github.com/caelansar/termirs][caelansar/termirs: A modern, async SSH terminal client]]
 - [[https://gist.github.com/canton7/5670788][C# class to convert OpenSSL private keys into PuTTY'-format private keys. Can't handle encryption or anything else funky]]
 - [[https://github.com/ContainerSSH/ContainerSSH][ContainerSSH/ContainerSSH: ContainerSSH: Launch containers on demand]]
 - [[https://github.com/coreos/ssh-key-dir][coreos/ssh-key-dir: sshd AuthorizedKeysCommand to read ~/.ssh/authorized_keys.d]]
