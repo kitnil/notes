@@ -1661,6 +1661,7 @@ Misc
 - [[https://github.com/11notes/docker-socket-proxy][11notes/docker-socket-proxy: Access your docker socket safely as read-only, rootless and distroless]]
 - [[https://github.com/AkihiroSuda/buildkit-nix][AkihiroSuda/buildkit-nix: Nix derivations as Dockerfiles (`docker build -f default.nix .`)]]
 - [[https://github.com/alibaba/accelerated-container-image][alibaba/accelerated-container-image: accelerated-container-image]]
+- [[https://github.com/amir20/dtop][amir20/dtop: Terminal dashboard for Docker monitoring across multiple hosts with Dozzle integration.]]
 - [[https://github.com/anchore/anchore-engine][anchore/anchore-engine: A service that analyzes docker images and applies user-defined acceptance policies to allow automated container image validation and certification]]
 - [[https://github.com/andrey-pohilko/registry-cli][andrey-pohilko/registry-cli: Scripts for easy manipulation of docker-registry from command line (and from scripts)]]
 - [[https://github.com/awakesecurity/hocker][awakesecurity/hocker: Utilities for interacting with the docker registry and generating nix build instructions]]
