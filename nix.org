@@ -2351,6 +2351,7 @@ spec:
 - [[https://github.com/LGUG2Z/nixos-multi-machine-starter][LGUG2Z/nixos-multi-machine-starter: A sane, batteries-included starter template for running NixOS on Multiple Machines]]
 - [[https://github.com/loophp/ci-detector][loophp/ci-detector: To detect whether we are in a CI or not]]
 - [[https://github.com/loophp/nix-auto-changelog][loophp/nix-auto-changelog: A Nix flake to generating changelog files based on your git tags and commit history.]]
+- [[https://github.com/LordGrimmauld/nix-check-deps][LordGrimmauld/nix-check-deps: scan nix packages for unused buildInputs]]
 - [[https://github.com/MatthewCroughan/NixThePlanet][MatthewCroughan/NixThePlanet: Run macOS, Windows and more via a single Nix command, or simple nixosModules]]
 - [[https://github.com/MercuryTechnologies/nix-your-shell][MercuryTechnologies/nix-your-shell: A `nix` and `nix-shell` wrapper for shells other than `bash`]]
 - [[https://github.com/Mic92/nix-update][Mic92/nix-update: Swiss-knife for updating nix packages.]]
