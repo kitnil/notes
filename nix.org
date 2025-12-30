@@ -2344,6 +2344,7 @@ spec:
 - [[https://github.com/jordanisaacs/kernel-module-flake][jordanisaacs/kernel-module-flake: Nix flake for linux kernel module development]]
 - [[https://github.com/jsoo1/nix-git-dir][jsoo1/nix-git-dir: Parse a git directory (HEAD) into nix values]]
 - [[https://github.com/juspay/services-flake?tab=readme-ov-file][juspay/services-flake: NixOS-like services for Nix flakes]]
+- [[https://github.com/jzbor/nix-sweep][jzbor/nix-sweep: Utility to clean up old Nix profile generations and left-over garbage collection roots]]
 - [[https://github.com/kamadorueda/alejandra][kamadorueda/alejandra: The Uncompromising Nix Code Formatter]]
 - [[https://github.com/Lassulus/nix-autobahn][Lassulus/nix-autobahn]]
 - [[https://github.com/lf-/nix-doc][lf-/nix-doc: An interactive Nix documentation tool providing a CLI for function search, a Nix plugin for docs in the REPL, and a ctags implementation for Nix script]]
