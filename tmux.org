@@ -47,3 +47,6 @@
 - =~= The window has been silent for the monitor-silence interval.
 - =M= The window contains the marked pane.
 - =Z= The window's active pane is zoomed.
+
+* Alternatives
+- [[https://github.com/richardscollin/tmux-rs][richardscollin/tmux-rs: A Rust port of tmux]]
