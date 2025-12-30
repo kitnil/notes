@@ -15,6 +15,7 @@
 - [[https://github.com/containers/crun-qemu][containers/crun-qemu: An OCI Runtime that enables Podman, Docker, and Kubernetes to run VM images.]]
 - [[https://github.com/containers/krunvm][containers/krunvm: Create microVMs from OCI images]]
 - [[https://github.com/deislabs/containerd-wasm-shims][deislabs/containerd-wasm-shims: containerd shims for running WebAssembly workloads in Kubernetes]]
+- [[https://github.com/edera-dev/am-i-isolated][edera-dev/am-i-isolated: Validate the isolation posture of your container environment.]]
 - [[https://github.com/exdx/dcp][exdx/dcp: docker cp made easy]]
 - [[https://github.com/felipecruz91/debug-ctr][felipecruz91/debug-ctr: Commandline tool for interactive container troubleshooting.]]
 - [[https://github.com/google/cadvisor][google/cadvisor: Analyzes resource usage and performance characteristics of running containers.]]
