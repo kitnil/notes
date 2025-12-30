@@ -2328,6 +2328,7 @@ spec:
 - [[https://github.com/divnix/nix-uncached][divnix/nix-uncached]]
 - [[https://github.com/divnix/quick-nix-registry][divnix/quick-nix-registry: Speed up the Nix registry by caching nixpkgs locally]]
 - [[https://dumpstack.io/1563582225_nixos_installing_software_from_pull_requests.html][dumpstack.io: NixOS: Installing software from pull requests]]
+- [[https://github.com/faukah/dix][faukah/dix: Diff Nix]]
 - [[https://flakestry.dev/][flakestry: find, install, and publish Nix Flakes]]
 - [[https://floxdev.com/][flox: Manage and share development environments, package your projects for others, and publish artifacts anywhere. Harness the power of Nix. Develop, package, publish, run anywhere.]]
 - [[https://github.com/fooker/nftables.nix][fooker/nftables.nix: a NixOS module providing declarative configuration of firewall rules using nftables]]
