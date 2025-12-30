@@ -1624,6 +1624,7 @@ builtins.match "php([[:alnum:]])([[:alnum:]])" "php70"
 - [[https://www.ryantm.com/blog/nixops-without-sharing/][Nixops without sharing]]
 
 * NixOS
+- [[https://github.com/km-clay/nixos-wizard][km-clay/nixos-wizard: A TUI installer for NixOS]]
 - [[https://github.com/mlyxshi/kexec-mini][mlyxshi/kexec-mini]]
 - [[https://github.com/blitz/lanzaboote][blitz/lanzaboote: Secure Boot for NixOS]]
 - [[https://github.com/fabaff/nix-security-box][fabaff/nix-security-box: Tool set for Information security professionals and all others]]
