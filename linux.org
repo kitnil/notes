@@ -1347,6 +1347,7 @@ Your computer reboots immediately.
   : [user1@host:~]$ machinectl shell user2@
 
 * Tools
+- [[https://github.com/al13n321/nnd][al13n321/nnd: A debugger for Linux]]
 - [[https://github.com/alexellis/fstail][alexellis/fstail: Scan a directory for changed files and tail them]]
 - [[https://github.com/BrenekH/smartreboot][BrenekH/smartreboot: Reboot a machine without interrupting ongoing work.]]
 - [[https://gitlab.com/coolercontrol/coolercontrol][CoolerControl / CoolerControl: Cooling device control for Linux. · GitLab]]
