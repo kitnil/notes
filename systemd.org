@@ -718,6 +718,7 @@ CPUQuota=50%
 
 * Tools
 - [[https://github.com/matheus-git/systemd-manager-tui][matheus-git/systemd-manager-tui: A program for managing systemd services through a TUI (Terminal User Interfaces).]]
+- [[https://github.com/plrigaux/sysd-manager][plrigaux/sysd-manager: A user-friendly GUI to manage systemd units]]
 - [[https://github.com/pop-os/system-updater][pop-os/system-updater: Systemd services for checking for and applying system updates.]]
 
 * [[https://declassed.art/en/blog/2022/06/19/running-systemd-without-systemd-syslogd][Running systemd without systemd-journald | Declassed Art]]
