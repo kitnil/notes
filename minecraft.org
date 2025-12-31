@@ -76,6 +76,9 @@
 - [[https://github.com/Woynert/nix-minecraft-server][Woynert/nix-minecraft-server: Reproducible minecraft server with Nix. Made to run on low performance VPSs.]]
 - [[https://github.com/xCollateral/VulkanMod][xCollateral/VulkanMod: Vulkan renderer mod for Minecraft.]]
 
+* Alternatives
+- [[https://github.com/c2i-junia/rustcraft][c2i-junia/rustcraft: Minecraft game clone written in Rust.]]
+
 * Kubernetes
 ** [[https://github.com/luksamuk/k8s][luksamuk/k8s: Config for utilitaries I run on Kubernetes]]
 minecraft-server.yml: Minecraft Server. Created as a Spigot server with Geyser
