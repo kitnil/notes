@@ -1,12 +1,12 @@
 :PROPERTIES:
 :ID:       c291d41a-1915-43b7-b694-03ca945824a0
 :END:
-- [[https://www.ovirt.org/][oVirt | oVirt is a free open-source virtualization solution for your entire enterprise]]
-- [[https://cloudinit.readthedocs.io/en/latest/][cloud-init Documentation — cloud-init 20.4.1 documentation]]
-- [[https://habr.com/en/post/474776/][Общая теория и археология виртуализации x86 / Habr]]
-- [[https://github.com/Bareflank/hypervisor][Bareflank/hypervisor: lightweight hypervisor SDK written in C++ with support for Windows, Linux and UEFI]]
-- [[https://github.com/retspen/webvirtcloud][retspen/webvirtcloud: WebVirtCloud is virtualization web interface for admins and users]]
-- [[https://github.com/copy/v86][copy/v86: x86 virtualization in your browser, recompiling x86 to wasm on the fly]]
 - [[https://www.youtube.com/watch?v=X4sLpGdGQjc][(1) Turtles all the way down - Thin LVM + KVM tips and Tricks - YouTube]]
+- [[https://github.com/Bareflank/hypervisor][Bareflank/hypervisor: lightweight hypervisor SDK written in C++ with support for Windows, Linux and UEFI]]
+- [[https://cloudinit.readthedocs.io/en/latest/][cloud-init Documentation — cloud-init 20.4.1 documentation]]
+- [[https://github.com/copy/v86][copy/v86: x86 virtualization in your browser, recompiling x86 to wasm on the fly]]
 - [[https://github.com/LINBIT/virter][LINBIT/virter: Virter is a command line tool for simple creation and cloning of virtual machines based on libvirt]]
+- [[https://www.ovirt.org/][oVirt | oVirt is a free open-source virtualization solution for your entire enterprise]]
 - [[https://github.com/pipelight/virshle][pipelight/virshle: Virtual machines from the command line and TOML files.]]
+- [[https://github.com/retspen/webvirtcloud][retspen/webvirtcloud: WebVirtCloud is virtualization web interface for admins and users]]
+- [[https://habr.com/en/post/474776/][Общая теория и археология виртуализации x86 / Habr]]
