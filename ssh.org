@@ -34,6 +34,7 @@
 - [[https://www.redhat.com/sysadmin/eight-ways-secure-ssh][Eight ways to protect SSH access on your system | Enable Sysadmin]]
 - [[https://github.com/engity-com/bifroest][engity-com/bifroest: Highly customizable SSH server with several ways to authorize a user and options where and how to execute a user's session.]]
 - [[https://github.com/Esonhugh/sshd_backdoor][Esonhugh/sshd_backdoor: /root/.ssh/authorized_keys evil file watchdog with ebpf tracepoint hook.]]
+- [[https://github.com/eznix86/mssh][eznix86/mssh: Enable SSH access to machines behind NAT without a VPN]]
 - [[https://github.com/Fahrj/reverse-ssh][Fahrj/reverse-ssh: Statically-linked ssh server with reverse shell functionality for CTFs and such]]
 - [[https://github.com/fox-it/OpenSSH-Session-Key-Recovery][fox-it/OpenSSH-Session-Key-Recovery: Project containing several tools/ scripts to recover the OpenSSH session keys used to encrypt/ decrypt SSH traffic.]]
   - [[https://blog.fox-it.com/2020/11/11/decrypting-openssh-sessions-for-fun-and-profit/][Decrypting OpenSSH sessions for fun and profit – Fox-IT International blog]]
