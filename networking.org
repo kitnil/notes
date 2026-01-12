@@ -264,6 +264,35 @@ terminal length 0 	set cli screen-length 0 	sets the length for displaying comma
   done
 #+end_src
 
+** Analysis of ICMP Packet Loss When Using MTR
+
+When diagnosing network issues with mtr, users may observe packet loss (the
+Loss column) that is not necessarily caused by actual network failures. A
+common reason is the system-level rate limiting of ICMP responses in Linux.
+
+By default, mtr sends probes at 1-second intervals. Reducing this interval
+requires root privileges.
+
+The net.ipv4.icmp_ratelimit parameter Linux includes a DDoS protection
+mechanism that throttles the rate of ICMP replies. The default value of 1000
+(milliseconds) means the system will respond to ICMP requests from a given
+source at most once per second.
+
+If mtr sends packets every second, and the ICMP reply is also limited to once
+per second, responses may be missed and reported as loss.
+
+This parameter is set per network namespace. To reduce packet loss,
+net.ipv4.icmp_ratelimit should be adjusted starting from the network namespace
+associated with the problematic hop, and potentially along the entire chain of
+interfaces linked to that IP address.
+
+For testing, you can temporarily lower net.ipv4.icmp_ratelimit (for example,
+to 100) on the virtual machine or host where the loss is observed. This should
+allow mtr to receive replies without loss at the default interval.
+
+However, making this change permanent purely to improve mtr statistics is not
+advisable—it weakens ICMP flood protection and may violate security policies.
+
 * Mesh
 - [[https://github.com/jech/babeld][jech/babeld: The Babel routing daemon]]
 - [[https://github.com/slackhq/nebula][slackhq/nebula: A scalable overlay networking tool with a focus on performance, simplicity and security]]
