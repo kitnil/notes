@@ -159,3 +159,4 @@ Basically, if we use UsePAM no and shadow file:
 
 * Alternatives
 - [[https://github.com/stealth/crash][stealth/crash: crypted admin shell: SSH-like strong crypto remote admin shell for Linux, BSD, Android, Solaris and OSX]]
+- [[https://github.com/stealth/psc][stealth/psc: E2E encryption for multi-hop tty sessions or portshells + TCP/UDP port forward]]
