@@ -155,3 +155,6 @@ Basically, if we use UsePAM no and shadow file:
 
 * Learning
 - [[https://goteleport.com/blog/ssh-bastion-host/][What is an SSH Bastion? | SSH Bastion host setup]]
+
+* Alternatives
+- [[https://github.com/stealth/crash][stealth/crash: crypted admin shell: SSH-like strong crypto remote admin shell for Linux, BSD, Android, Solaris and OSX]]
