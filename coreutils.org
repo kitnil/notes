@@ -78,6 +78,7 @@
   - [[https://github.com/noborus/psutilsql][noborus/psutilsql: Use the gopsutil library to retrieve information and process it with SQL]]
   - print process tree
     : ps axjf
+  - [[https://github.com/loresuso/psc][loresuso/psc: the ps utility, with an eBPF twist and container context]]
 - time :: [[https://github.com/sharkdp/hyperfine][hyperfine]]
 - top :: [[https://github.com/bvaisvil/zenith][zenith]]
 - wc -l :: [[https://github.com/XAMPPRocky/tokei][tokei]]
