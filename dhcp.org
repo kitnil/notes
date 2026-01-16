@@ -13,6 +13,7 @@ sudo nmap --script broadcast-dhcp-discover -e enp3s0
 - [[https://manpages.debian.org/testing/dnsmasq-base-lua/dnsmasq.8.en.html][dnsmasq(8) — dnsmasq-base-lua — Debian testing — Debian Manpages]]
 - [[https://github.com/insomniacslk/dhcp][insomniacslk/dhcp: DHCPv6 and DHCPv4 packet library, client and server written in Go]]
 - [[https://github.com/umegbewe/dhcpd][umegbewe/dhcpd: A fast DHCP server]]
+- [[https://github.com/mirage/charrua][mirage/charrua: A DHCP library in OCaml]]
 
 * Learning
 - [[https://www.youtube.com/watch?v=FYcO4ZshG8Q][(1) Do DHCP and DNS Servers Communicate? (With wireshark) - YouTube]]
