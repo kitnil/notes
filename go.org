@@ -576,3 +576,190 @@
           return
   }
 #+end_src
+
+* AI
+** Go concurrency
+Core Concepts
+1. Goroutines
+
+Lightweight threads managed by the Go runtime.
+go
+
+go func() {
+    // This runs concurrently
+    fmt.Println("Hello from goroutine")
+}()
+
+2. Channels
+
+Typed conduits for communication between goroutines.
+go
+
+ch := make(chan int)
+
+// Send data
+go func() { ch <- 42 }()
+
+// Receive data
+value := <-ch
+
+3. Select Statement
+
+Handles multiple channel operations.
+go
+
+select {
+case msg := <-ch1:
+    fmt.Println(msg)
+case ch2 <- data:
+    fmt.Println("Sent data")
+case <-time.After(1 * time.Second):
+    fmt.Println("Timeout")
+}
+
+Key Patterns
+Worker Pools
+go
+
+func worker(id int, jobs <-chan int, results chan<- int) {
+    for job := range jobs {
+        results <- job * 2
+    }
+}
+
+Fan-out/Fan-in
+
+    Fan-out: Multiple goroutines read from one channel
+
+    Fan-in: One goroutine reads from multiple channels
+
+Pipeline Pattern
+go
+
+func pipeline(in <-chan int) <-chan int {
+    out := make(chan int)
+    go func() {
+        for n := range in {
+            out <- n * 2
+        }
+        close(out)
+    }()
+    return out
+}
+
+Synchronization Primitives
+WaitGroup
+go
+
+var wg sync.WaitGroup
+wg.Add(1)
+go func() {
+    defer wg.Done()
+    // work
+}()
+wg.Wait()
+
+Mutex/RWMutex
+go
+
+var mu sync.Mutex
+mu.Lock()
+// critical section
+mu.Unlock()
+
+Once
+go
+
+var once sync.Once
+once.Do(initialize)
+
+Best Practices
+
+    "Do not communicate by sharing memory; instead, share memory by communicating"
+
+        Use channels rather than shared variables with mutexes when possible
+
+    Close channels from the sender only
+
+        Prevents panic from closing already closed channels
+
+    Use buffered channels carefully
+    go
+
+ch := make(chan int, 100) // Buffer of 100
+
+Prevent goroutine leaks
+
+    Always ensure goroutines can exit
+
+    Use context.Context for cancellation
+
+Limit concurrent goroutines
+go
+
+sem := make(chan struct{}, 10) // Max 10 goroutines
+
+Common Patterns
+Context for Cancellation
+go
+
+ctx, cancel := context.WithTimeout(context.Background(), 2*time.Second)
+defer cancel()
+
+select {
+case <-ctx.Done():
+    return ctx.Err()
+case result := <-ch:
+    return result
+}
+
+Rate Limiting
+go
+
+limiter := time.Tick(200 * time.Millisecond)
+for req := range requests {
+    <-limiter
+    go handle(req)
+}
+
+Error Handling in Concurrent Code
+
+    Use channels for error propagation:
+
+go
+
+errCh := make(chan error, 1)
+go func() { errCh <- doWork() }()
+
+    Use errgroup package:
+
+go
+
+g, ctx := errgroup.WithContext(ctx)
+g.Go(func() error { return doTask1() })
+g.Go(func() error { return doTask2() })
+err := g.Wait()
+
+Common Pitfalls
+
+    Race conditions - use go run -race to detect
+
+    Deadlocks
+
+    Channel deadlocks (unbuffered channels without receiver)
+
+    Goroutine leaks
+
+    Copying sync types (mutex, waitgroup)
+
+Advanced Topics
+
+    sync.Pool for object reuse
+
+    atomic package for low-level operations
+
+    runtime.GOMAXPROCS() for CPU core configuration
+
+    select with default for non-blocking operations
+
+Go's concurrency model is based on CSP (Communicating Sequential Processes) and provides simple, powerful primitives for writing concurrent programs that are easier to reason about than traditional threading approaches.
