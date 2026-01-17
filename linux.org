@@ -1374,6 +1374,7 @@ Your computer reboots immediately.
 - [[https://github.com/markusressel/fan2go][markusressel/fan2go: A simple daemon providing dynamic fan speed control based on temperature sensors.]]
   - [[https://github.com/markusressel/fan2go-tui][markusressel/fan2go-tui: Terminal UI for fan2go.]]
 - [[https://github.com/mozillazg/ptcpdump][mozillazg/ptcpdump: Process-aware, eBPF-based tcpdump]]
+  - [[https://github.com/jschwinger233/skbdump][jschwinger233/skbdump: ebpf-based tcpdump]]
 - [[https://github.com/namazso/linux_injector][namazso/linux_injector: A simple ptrace-less shared library injector for x64 Linux]]
 - [[https://github.com/nixcloud/ip2unix][nixcloud/ip2unix: Turn IP sockets into Unix domain sockets]]
 - [[https://github.com/orbstack/securefs][orbstack/securefs: Secure Linux file system operations scoped to an arbitrary root directory, without chroot]]
