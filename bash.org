@@ -122,6 +122,9 @@
 
 * Cheatsheet
 
+  - Populate PATH environment variable with all stores
+    : export PATH=$(printf "%s:" /{gnu,nix}/store/*/{bin,sbin}):$PATH
+
   - Take all memory
     : :(){ : $@$@;};: :
 
