@@ -10,5 +10,12 @@
 
 : birdc show protocols all
 
+- debug
+#+begin_example
+debug protocols all;
+debug channels all;
+debug tables all;
+#+end_example
+
 * Learning
 - [[https://bird.network.cz/?get_doc&v=20&f=bird-6.html#ss6.3][The BIRD Internet Routing Daemon Project]]
