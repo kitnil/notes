@@ -31,5 +31,28 @@ https://www.netdevconf.info/0.1/docs/ondrej-zajicek-slides-netdev01.pdf
 : enable | disable | restart ospf1
 : configure [timeout | undo | confirm]
 
+https://www.netnod.se/sites/default/files/2017-01/BIRD%20Internet%20routing%20daemon-ofilip.pdf
+#+begin_example
+  bird> show route for 127.0.0.1
+  127.0.0.0/8 dev lo [direct1 13:09] (240)
+
+  bird> show route filter bgp_out
+  192.175.48.0/24 dev dummy0 [direct1 Apr1] (240)
+
+  bird> show route count
+  1469 of 1469 routes for 849 networks
+
+  bird> show route export NIX_1
+  192.175.48.0/24 dev dummy0 [direct1 Apr1] (240)
+
+  bird> show route where 127.0.0.5 ~ net
+  0.0.0.0/0 via 195.47.235.1 on eth0 [static1 Apr1](200)
+  127.0.0.0/8 dev lo [direct1 Apr1] (240)
+
+  bird> show route filter {if 127.0.0.5 ~ net then accept;}
+  0.0.0.0/0 via 195.47.235.1 on eth0 [static1 Apr1](200)
+  127.0.0.0/8 dev lo [direct1 Apr1] (240)
+#+end_example
+
 * Learning
 - [[https://bird.network.cz/?get_doc&v=20&f=bird-6.html#ss6.3][The BIRD Internet Routing Daemon Project]]
