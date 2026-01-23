@@ -17,5 +17,19 @@ debug channels all;
 debug tables all;
 #+end_example
 
+https://www.netdevconf.info/0.1/docs/ondrej-zajicek-slides-netdev01.pdf
+: show route 192.168.1.0/24
+: show route for 192.168.1.10
+: show route protocol ospf1
+: show route where gw ∼ 192.168.0.0/16
+: show route where net.len ∼ [16..24, 32]
+: show route where bgp path.len > 4
+: show route where proto ∼ ”bpg*”
+: show route where ifname = ”eth0”
+: show route filter myfilter
+: show protocols
+: enable | disable | restart ospf1
+: configure [timeout | undo | confirm]
+
 * Learning
 - [[https://bird.network.cz/?get_doc&v=20&f=bird-6.html#ss6.3][The BIRD Internet Routing Daemon Project]]
