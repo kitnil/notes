@@ -286,3 +286,13 @@ ipmitool -U <login> -P '<password>' -H <IP> power reset
   4. https://wiki.hetzner.de/index.php/IPMI/en
   5. http://wiki.drewhess.com/wiki/IPMI_and_SOL_on_an_Intel_S3200SHV
 #+end_src
+
+https://gist.github.com/egernst/66febb5b95a1d303881db05c926e0b63?permalink_comment_id=4189594#gistcomment-4189594
+#+begin_src markdown
+  For whoever next stumbles upon this, I also had to set
+
+  admin sol set non-volatile-bit-rate 115.2
+  admin sol set volatile-bit-rate 115.2
+
+  BIOS settings (Asrock E3C236D2I) were apparently misleading
+#+end_src
