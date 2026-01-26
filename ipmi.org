@@ -190,3 +190,99 @@ ipmitool -U <login> -P '<password>' -H <IP> power reset
 * Tools
 - [[https://github.com/kontron/python-ipmi][kontron/python-ipmi: A pure python IPMI library]]
 - [[https://github.com/yinheli/ipmi-fan-control][yinheli/ipmi-fan-control: A tool to control the fan speed by monitoring the temperature of CPU via IPMI.]]
+
+* [[https://gist.github.com/egernst/66febb5b95a1d303881db05c926e0b63][ipmi serial over lan sol]]
+#+begin_src markdown
+  ## Pre-requisites
+
+  Install IPMItools using your package manager on laptop and target machine. Load the drivers on the target.
+
+  ```bash
+  modprobe ipmi_devintf
+  modprobe ipmi_si
+  ```
+
+  If you see the following, drivers are not loaded.
+
+  ```
+  Could not open device at /dev/ipmi0 or /dev/ipmi/0 or /dev/ipmidev/0: No such file or directory
+  ```
+
+  ## IPMI setup
+
+  On the target machine run below commands to setup access - 
+
+  ```bash
+  ipmitool lan print 1
+  ipmitool lan set 1 ipsrc dhcp
+  ipmitool lan print 1
+  ```
+
+  Make a note of the IP address from the above output. This will be used to connect from your laptop
+
+  ```bash
+  ipmitool user list 1
+  ipmitool user set name 3 rockstar
+  ipmitool user set password 3
+  ```
+
+  You'll get a password prompt. Set the password. `whatcouldgowrong` in our example. Next -
+
+  ```bash
+  ipmitool channel setaccess 1 3 link=on ipmi=on callin=on privilege=4
+  ipmitool user enable 3
+  ipmitool user list 1
+  ``` 
+
+  Now from your laptop you can execute commands, like so
+
+  ```bash
+  ipmitool -I lanplus -U rockstar -P whatcouldgowrong -H <IP address> chassis power (on|off|status)
+  ```
+
+  ## SOL setup
+
+  Enable SOL for root and above user. Enable SOL.
+
+  ```bash
+  ipmitool sol payload enable 1 2
+  ipmitool sol payload enable 1 3
+  ipmitool sol set enabled true 
+  # try the below command even if this command fails.
+  ```
+
+  Check links 2 and 5 for BIOS and OS configurations necessary.
+  In the BIOS, you can also set DHCP hostname for the BMC, frees you from tracking IP addresses.
+  To access the SOL console, on your local machine use the activate option as shown.
+  Check SOL session help by typing this `~?`. To kill a hung SOL session use deactivate.
+
+  ```bash
+  ipmitool -I lanplus -U rockstar -P whatcouldgowrong -H <IP address> sol (activate|deactivate)
+  ```
+
+  If everything works you will be able to remotely access the target machine's console and make selections in grub menu, etc.,
+  My NixOS config settings that worked
+
+  ```text
+  # Use the GRUB 2 boot loader.
+  boot = {
+   loader.grub = {
+   ...
+   extraConfig = "serial --speed=115200 --unit=0 --word=8 --parity=no --stop=1; terminal_input serial; terminal_output serial";
+   };
+  kernelModules=["lanplus" ... ];
+  }
+  boot.kernelParams = [
+   ...
+  "console=tty0" "console=ttyS0,115200n8"
+  ];
+  systemd.services."serial-getty@ttyS0".wantedBy = [ "multi-user.target" ];
+  ```
+
+  ## Appendix
+  1. http://www.openfusion.net/linux/ipmi_on_centos
+  2. http://tech.sid3windr.be/2016/02/configuring-ipmi-serial-over-lan-on-debian-8-jessie/
+  3. https://discuss.pivotal.io/hc/en-us/articles/206396927-How-to-work-on-IPMI-and-IPMITOOL
+  4. https://wiki.hetzner.de/index.php/IPMI/en
+  5. http://wiki.drewhess.com/wiki/IPMI_and_SOL_on_an_Intel_S3200SHV
+#+end_src
