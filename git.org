@@ -338,6 +338,12 @@ rerere-train.sh [COMMIT][--all]
   - external diff tool
     : GIT_EXTERNAL_DIFF=difft git log -p --ext-diff
 
+  - mark file as not changed
+    : git update-index --assume-unchanged <path to file>
+
+  - unmark file as not changed
+    : git update-index --no-assume-unchanged <path to file>
+
 * Learning
   - [[https://ssl.engineering.nyu.edu/papers/afzali_asiaccs_2018.pdf][le-git-imate: Towards Verifiable Web-based Git Repositories - afzali_asiaccs_2018.pdf]]
   - [[https://ohmygit.org/][Oh My Git!]]
