@@ -344,6 +344,88 @@ rerere-train.sh [COMMIT][--all]
   - unmark file as not changed
     : git update-index --no-assume-unchanged <path to file>
 
+** [[https://www.baeldung.com/ops/git-assume-unchanged-skip-worktree][Difference Between assume-unchanged and skip-worktree in Git]]
+
+Last updated: July 30, 2024
+Written by: Chrys Exaucet	
+
+    Git	
+
+1. Overview
+
+We use git update-index when we want to manually operate on files in Git staging area. This command supports two options that are often misused:  –assume-unchanged and –skip-worktree.
+
+In this tutorial, we’ll see how these two options differ and provide a use case for each.
+2. What Does the assume-unchanged Option Do?
+
+The –assume-unchanged option tells Git to temporarily assume that a tracked file has not been modified in the working tree. Therefore, changes made won’t be reflected in the staging area:
+
+$ git update-index --assume-unchanged assumeunchanged.txt
+
+We can verify the file status with git ls-files:
+
+$ git ls-files -v
+$ h assumeunchanged.txt 
+
+Here, the h tag indicates that assume-unchanged.txt is marked with the assumed-unchanged option.
+
+Although mainly used for that purpose, the assume-unchanged option was never meant to ignore changes to tracked files. It’s designed for cases where it’s expensive to check whether a group of files have been modified. What happens if we want to optimize resource usage on slow filesystems: git omits any checking against the target file and won’t compare its versions in the working directory and in the index.
+
+This feature is lost whenever the target file’s entry in the index changes. That can happen when the file is changed upstream. To unset this option, we can use –no-assume-unchanged:
+
+$ git update-index --no-assume-unchanged assumeunchanged.txt
+
+3. What Does the skip-worktree Option Do?
+
+The –skip-worktree option ignores uncommitted changes in a file that is already tracked. Regardless of any modification made in the working tree, git will always use the file content and attributes from the staging area. This is useful when we want to add local changes to a file without pushing them to the upstream:
+
+$ git update-index --skip-worktree skipworktree.txt
+
+We can verify the file status:
+
+$ git ls-files -v
+$ S skipworktree.txt 
+
+Here, the S indicates that skip-worktree.txt is marked with the skip-worktree option.
+
+This option is automatically unset when the file changes in the index i.e., if the file’s been changed upstream and we pull it.
+
+–no-skip-worktree is used to unset this option. It’s useful in case wrong files were flagged, or if the circumstances have changed and previously skipped files shouldn’t be ignored anymore:
+
+$ git update-index --no-skip-worktree skipworktree.txt
+
+4. Differences Between the Options
+4.1. Branch Switching
+
+There’s no issue when checking out a branch when a file has the –skip-worktree option on. But, –assume-unchanged will raise an error:
+
+$ git checkout  another-branch
+error: Your local changes to the following files would be overwritten by checkout:
+        assumeunchanged.txt
+Please commit your changes or stash them before you switch branches.
+Aborting
+
+We can unset the option to overcome this situation:
+
+$ git update-index --no-assume-unchanged assumeunchanged.txt 
+$ git checkout another-branch 
+Switched to branch 'another-branch'
+
+4.2. Precedence
+
+–skip-worktree takes precedence over —assume-unchanged bit when both are set.  Let’s try to set both options on a file:
+
+$ git update-index --assume-unchanged --skip-work-tree worktree-assumeunchanged.txt
+
+The file’s status confirms skip-wortkree precedence:
+
+$ git ls-files -v
+$ S worktree-assumeunchanged.txt
+
+5. Conclusion
+
+In this article, we discussed the difference in usage of Git’s  —assume-unchanged and —skip-worktree options. We also discussed their precedence and how they interact with local and upstream branches.
+
 * Learning
   - [[https://ssl.engineering.nyu.edu/papers/afzali_asiaccs_2018.pdf][le-git-imate: Towards Verifiable Web-based Git Repositories - afzali_asiaccs_2018.pdf]]
   - [[https://ohmygit.org/][Oh My Git!]]
