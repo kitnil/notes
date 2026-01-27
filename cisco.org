@@ -103,3 +103,6 @@ However most likely a Rcv-err is indicating a duplex mismatch.Xmit-Err and Rcv-E
   Switch(config-if)# switchport trunk allowed vlan remove 2
   Switch(config-if)# end
 #+end_example
+
+* Tools
+- [[https://github.com/Sveske-Juice/nixco][Sveske-Juice/nixco: Configuration and deployment tool for Cisco IOS devices using nix]]
