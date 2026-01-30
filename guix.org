@@ -257,6 +257,10 @@ server completing the following:
 #+end_src
 
 
+* Bootstraping
+- [[https://guix.gnu.org/en/blog/2023/the-full-source-bootstrap-building-from-source-all-the-way-down/][The Full-Source Bootstrap: Building from source all the way down — 2023 — Blog — GNU Guix]]
+  - [[https://github.com/oriansj/bootstrap-seeds][oriansj/bootstrap-seeds: The roots of trust for all architectures]]
+
 * Build from Scheme expression
 
   #+BEGIN_SRC sh
