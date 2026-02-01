@@ -3431,6 +3431,7 @@ precisely the closure of each package, as returned by ‘guix gc -R’.
 
 * Tools
 - [[https://git.sr.ht/~fishinthecalculator/sops-guix][~fishinthecalculator/sops-guix - Safely deploy secrets with Guix and SOPS - sourcehut git]]
+  - [[https://github.com/fishinthecalculator/sops-guix][fishinthecalculator/sops-guix: Secure secret provisioning with Guix and SOPS]]
 
 * Translation
 
