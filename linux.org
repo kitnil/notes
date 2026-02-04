@@ -1358,6 +1358,7 @@ Your computer reboots immediately.
 - [[https://gitlab.com/corectrl/corectrl][CoreCtrl: Profile based system control utility · GitLab]]
 - [[https://github.com/deshaw/procfd][deshaw/procfd: Linux lsof replacement to list open file descriptors for processes]]
 - [[https://github.com/gamozolabs/init][gamozolabs/init: A super simple /sbin/init for Linux which allows running one and only one program]]
+- [[https://github.com/gen0sec/jailer][gen0sec/jailer: Jailer is an eBPF-based process jailing system that provides mandatory access control (MAC) for Linux. It tracks processes using BPF task_storage maps and enforces role-based policies on file access, network operations, and process execution.]]
 - [[https://github.com/google/schedviz][google/schedviz: A tool for gathering and visualizing kernel scheduling traces on Linux machines]]
 - [[https://github.com/Gthulhu/Gthulhu][Gthulhu/Gthulhu: Gthulhu optimizes cloud-native workloads using the Linux Scheduler Extension for different application scenarios.]]
 - [[https://github.com/icculus/fatelf][icculus/fatelf: Universal binaries for Linux.]]
