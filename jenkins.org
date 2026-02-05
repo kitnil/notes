@@ -393,6 +393,13 @@ Jenkins is now one of the most widely used CI/CD tools and has a large and activ
       }
     #+END_SRC
 
+  - Delete a hang job when cannot stop, kill via Web UI
+    #+begin_src groovy
+      def jobname = "nixos/web/master"
+      def buildnum = 83
+      Jenkins.instance.getItemByFullName(jobname).getBuildByNumber(buildnum).delete()
+    #+end_src
+
   - Cancel queued tasks which starts with name =cd/fluxcd=
     #+begin_src groovy
       def q = Jenkins.instance.queue
