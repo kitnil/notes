@@ -618,3 +618,146 @@ show route summary показывает 7 маршрутов, и совсем д
 от вас решительных и верных действий. Это вам не фулвью принять.  Наконец,
 посмотреть, как выглядит полная таблица, можно и на любом публичном
 route-сервере (вам, кстати, придется это сделать, отлаживая свои анонсы).
+
+* AI answers
+** How to give a good number for bgp community?
+An effective BGP community numbering scheme should be consistent, documented,
+and scalable. Here's a structured approach:
+
+1. Standard Formats
+
+ASN:Function (Most Common)
+
+Format: ASN:Value (e.g., 64500:1234)
+
+    First part: Your AS number
+
+    Second part: Meaningful value
+
+    Example: 64500:1001 where 64500 is your AS, 1001 means "prefer transit A"
+
+Regional/Well-Known Communities
+
+    0:ASN for upstream coordination
+
+    Reserved ranges: 65535:X (RFC1997)
+
+    Standard communities like no-export, no-advertise
+
+2. Hierarchical Numbering Structure
+
+Example breakdown for AS64500:XYZZ:
+text
+
+AS64500 : X Y ZZ
+        |  |  |
+        |  |  +--- Specific action/route type (01-99)
+        |  +------ Location/POP code (1-9)
+        +--------- Function category (1-9)
+
+Categories (X):
+
+    1xxx: Traffic engineering (preference)
+
+    2xxx: Geographic tagging
+
+    3xxx: Security/blackholing
+
+    4xxx: QoS marking
+
+    5xxx: Administrative tagging
+
+    6xxx: Customer-specific
+
+    7xxx: Peer-specific
+
+    8xxx: Internal use
+
+    9xxx: Experimental
+
+3. Practical Examples
+Traffic Engineering:
+text
+
+64500:1101 - Prefer primary transit (priority 1)
+64500:1102 - Prefer secondary transit (priority 2)
+64500:1201 - Drop traffic at edge
+64500:1301 - Blackhole (RTBH)
+
+Geographic/Location:
+text
+
+64500:2101 - Routes in AMER
+64500:2201 - Routes in EMEA  
+64500:2301 - Routes in APAC
+
+Customer/Service Tagging:
+text
+
+64500:5101 - Gold customer
+64500:5102 - Silver customer
+64500:5201 - VoIP service route
+
+4. Best Practices
+
+    Start Simple: Begin with core functions
+
+    Document Religiously: Maintain a community dictionary
+
+    Leave Gaps: Number in blocks (1001, 1011, 1021) for future expansion
+
+    Coordinate with Peers: Agree on shared communities
+
+    Use Standard Communities: Leverage no-export, no-advertise when appropriate
+
+    Consider Extended Communities: For more complex needs (64-bit)
+
+5. Sample Scheme for Medium ISP
+yaml
+
+# AS64500 Community Plan
+
+## Traffic Preference (1xxx)
+1001: Prefer transit A (higher local pref)
+1002: Prefer transit B (medium local pref)
+1003: Use only as last resort (low local pref)
+1999: Drop/blackhole
+
+## Geographic (2xxx)  
+2101: North America
+2201: Europe
+2301: Asia
+
+## Customer Class (3xxx)
+3101: Enterprise Gold
+3102: Enterprise Silver  
+3103: Residential
+
+## Special Actions (9xxx)
+9901: Do not advertise to peers
+9902: Do not advertise to customers
+9999: Internal only
+
+6. Implementation Tips
+
+    Automate: Generate communities via config management
+
+    Validate: Test community propagation
+
+    Monitor: Track which communities are actually used
+
+    Peer Agreements: Document shared communities with each peer
+
+    Migration Path: Plan for renumbering if needed
+
+7. Tools & References
+
+    Use IRR/Aut-num objects to document
+
+    Consider using BGP large communities (32-bit ASN + 64-bit value)
+
+    Reference: RFC1997, RFC8092, RIPE-684
+
+The key is consistency - once deployed, changing communities is
+difficult. Start with a clear, documented standard even if you only need a few
+communities initially.
