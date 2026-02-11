@@ -1623,6 +1623,27 @@ dd if=/dev/drbd2665 of=/dev/drbd2665 status=progress bs=65536 conv=notrunc,spars
 
 : lvchange --refresh vg0/pvc-bd4517cb-24b3-4614-b8ff-3cb4e774713c_00000
 
+** Mount failure during pod start up
+#+begin_example
+  Warning  FailedMount  44m (x39 over 7h35m)   kubelet  Unable to attach or mount volumes: unmounted volumes=[database-data], unattached volumes=[shm-volume database-data]: timed out waiting for the condition
+  Warning  FailedMount  10m (x156 over 7h28m)  kubelet  Unable to attach or mount volumes: unmounted volumes=[database-data], unattached volumes=[database-data shm-volume]: timed out waiting for the condition
+  Warning  FailedMount  1s (x225 over 7h36m)   kubelet  MountVolume.SetUp failed for volume "pvc-e81af085-3cba-494c-b051-b1d4bf23915d" : rpc error: code = Internal desc = NodePublishVolume failed for pvc-e81af085-3cba-494c-b051-b1d4bf23915d: failed to stat source device: stat : no such file or directory
+#+end_example
+
+The
+
+: kubectl-linstor volume list
+
+shows pvc-e81af085-3cba-494c-b051-b1d4bf23915d with missing a =/dev/drbd1000= device
+
+To fix try the following:
+
+: kubectl-linstor resource deactivate kube1 pvc-e81af085-3cba-494c-b051-b1d4bf23915d
+: kubectl-linstor resource activate kube1 pvc-e81af085-3cba-494c-b051-b1d4bf23915d
+
+and wait until pod try to mount again (depending on configuration, maybe about
+5-10 minutes).
+
 * Components
 ** StorageLayer
 *** blockdev
