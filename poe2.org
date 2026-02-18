@@ -5,3 +5,8 @@
 =Grey= (=Silver=) means monster has a resist to the damage type.
 
 =Yellow= (=Gold=) means monster has a big resist to the damage type.
+* Regex
+- скорость передвижения
+- сопротивление холоду
+- максимум здоровья
+: "ск.+пер.|с.+хол.|макс.+здор."
