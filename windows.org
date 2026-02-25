@@ -236,6 +236,12 @@ cChocoPackageInstaller installs any Chocolatey package from the repository.
 * Fun
 - [[https://github.com/NSG650/BugCheck2Linux][NSG650/BugCheck2Linux: Windows crashed? Dropping you into a linux shell!]]
 
+* Git
+Fetch from Windows to a Linux machine with git fetch fails. On A linux machine
+run the following:
+: git config --local remote.origin.uploadpack "powershell git-upload-pack"
+: git config --local remote.origin.receivepack "powershell git-receive-pack"
+
 * Explorer
 - [[https://github.com/valinet/ExplorerPatcher][valinet/ExplorerPatcher: This project aims to enhance the working environment on Windows]]
 
