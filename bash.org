@@ -348,6 +348,13 @@
   - SSH version on remote host
     : timeout 1 cat </dev/tcp/192.168.0.10/22
 
+  - process substitution
+    : emacs -Q -nw <(ls -la)
+
+  - process substitution with an assigned file descriptor
+    : exec 10< <(tail -f file)
+    : read line <&10
+
 * Binary match
   #+BEGIN_EXAMPLE
       <koala_man> # printf '\x00\x01\x02\xAA\xBB' | LC_ALL=C grep -ao
