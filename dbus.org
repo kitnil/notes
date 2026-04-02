@@ -1,0 +1,14 @@
+* Send notification
+#+begin_src bash
+  dbus-send --session --print-reply --dest=org.freedesktop.Notifications \
+      /org/freedesktop/Notifications \
+      org.freedesktop.Notifications.Notify \
+      string:"app_name" \
+      uint32:0 \
+      string:"icon_name" \
+      string:"Summary Title" \
+      string:"This is the body text." \
+      array:string:"" \
+      dict:string:variant: \
+      int32:-1
+#+end_src
