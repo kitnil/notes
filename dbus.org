@@ -12,3 +12,11 @@
       dict:string:variant: \
       int32:-1
 #+end_src
+- app_name (string): The name of the application sending the notification (e.g., "my-script").
+- replaces_id (uint32): Use 0 to create a new notification, or a specific ID to update an existing one.
+- app_icon (string): The name of an icon in the theme (e.g., "dialog-information") or a full file path.
+- summary (string): The bold title of the notification.
+- body (string): The detailed message text.
+- actions (array of strings): Actions like buttons; pass array:string:"" for none.
+- hints (dictionary): Metadata like urgency or location; pass an empty dict using dict:string:variant:.
+- expire_timeout (int32): Time in milliseconds before the notification disappears. Use -1 for the system default or 0 for never. 
