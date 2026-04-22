@@ -428,6 +428,29 @@ $ S worktree-assumeunchanged.txt
 
 In this article, we discussed the difference in usage of Git’s  —assume-unchanged and —skip-worktree options. We also discussed their precedence and how they interact with local and upstream branches.
 
+** Better dotfiles
+[[https://www.youtube.com/watch?v=tBoLDpTWVOM][(44) Git Bare Repository - A Better Way To Manage Dotfiles - YouTube]]
+#+begin_example
+  ~$ mkdir ~/dotfiles
+  ~$ cd ~/dotfiles
+  ~/dotfiles$ git init --bare
+  Initialized empty Git repository in /home/oleg/dotfiles/
+  ~/dotfiles$ ls
+  config  description  HEAD  hooks/  info/  objects/  refs/
+  ~/dotfiles$ git config --local status.showUntrackedFiles no
+  ~/dotfiles$ git --git-dir=/home/oleg/dotfiles --work-tree=/ add /etc/hosts
+  ~/dotfiles$ (cd /; git --git-dir=/home/oleg/dotfiles --work-tree=/ status)
+  On branch master
+
+  No commits yet
+
+  Changes to be committed:
+    (use "git rm --cached <file>..." to unstage)
+  	new file:   etc/hosts
+
+  Untracked files not listed (use -u option to show untracked files)
+#+end_example
+
 * Learning
   - [[https://ssl.engineering.nyu.edu/papers/afzali_asiaccs_2018.pdf][le-git-imate: Towards Verifiable Web-based Git Repositories - afzali_asiaccs_2018.pdf]]
   - [[https://ohmygit.org/][Oh My Git!]]
