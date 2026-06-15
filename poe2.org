@@ -29,6 +29,9 @@
 
 - [[https://www.protondb.com/app/2694490#dMP9x4ccNG][Solved my issue with windowed mode not wanting to scale properly with niri desktop]]
   : __GL_SHADER_DISK_CACHE=1
+
+- wayland
+  : PROTON_ENABLE_WAYLAND=1
 * Forums
 ** English
 - [[https://www.pathofexile.com/forum/view-forum/2214][Early Access Bug Reports - Forum - Path of Exile]]
