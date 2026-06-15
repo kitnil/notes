@@ -38,6 +38,9 @@
 
 - disable logo
   : --nologo
+
+- waits for preload tasks to finish before continuing
+  : --waitforpreload
 * Forums
 ** English
 - [[https://www.pathofexile.com/forum/view-forum/2214][Early Access Bug Reports - Forum - Path of Exile]]
