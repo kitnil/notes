@@ -23,6 +23,9 @@
 ** Russian
 : "требуется: уровень 7.+" обычный
 : "Уровень предмета: 7.+" обычный
+* Linux
+- steam
+  : LD_PRELOAD= DISABLE_VK_LAYER_VALVE_steam_fossilize_1=1 MANGOHUD_CONFIG='cpu_temp,gpu_temp,position=bottom-right,height=500,font_size=32,offset_x=-1300,offset_y=-25,fps_metrics=avg+0.01,fps_limit_method=early,fps_limit=120' XKB_DEFAULT_LAYOUT=us,ru XKB_DEFAULT_OPTIONS=grp:win_space_toggle,grp_led:scroll PULSE_LATENCY_MSEC=60 OBS_VKCAPTURE=1 gamescope -W 3840 -H 2160 -w 3840 -h 2160 --fullscreen --force-grab-cursor --cursor-scale-height 1080 --adaptive-sync --backend=wayland -- mangohud %command%
 * Forums
 ** English
 - [[https://www.pathofexile.com/forum/view-forum/2214][Early Access Bug Reports - Forum - Path of Exile]]
