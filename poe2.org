@@ -41,6 +41,8 @@
 
 - Waits for preload tasks to finish before continuing
   : --waitforpreload
+
+- PROTON_USE_NTSYNC=1 ENABLE_VKSUMI=1
 * Forums
 ** English
 - [[https://www.pathofexile.com/forum/view-forum/2214][Early Access Bug Reports - Forum - Path of Exile]]
