@@ -35,6 +35,9 @@
 
 - poe2.exe binary arguments
   : -maxMem=32768 -USEALLAVAILABLECORES
+
+- disable logo
+  : --nologo
 * Forums
 ** English
 - [[https://www.pathofexile.com/forum/view-forum/2214][Early Access Bug Reports - Forum - Path of Exile]]
