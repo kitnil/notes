@@ -36,10 +36,10 @@
 - poe2.exe binary arguments
   : -maxMem=32768 -USEALLAVAILABLECORES
 
-- skips the startup logo
+- Skip the startup logo
   : --nologo
 
-- waits for preload tasks to finish before continuing
+- Waits for preload tasks to finish before continuing
   : --waitforpreload
 * Forums
 ** English
