@@ -1416,6 +1416,127 @@ Your computer reboots immediately.
 
 - [[https://www.youtube.com/playlist?list=PLypxmOPCOkHXbJhUgjRaV2pD9MJkIArhg][C Programming in Linux Tutorial - YouTube]]
 
+* Articles
+** [[https://etbe.coker.com.au/2026/05/29/zswap/][Zswap – etbe – Russell Coker]]
+*** Zswap vs Zram
+
+Last year I blogged about [[https://etbe.coker.com.au/2025/08/27/zram-vms/][using Zram for VMs (1)]]. That setup is still working well for VMs and for phones and laptops with no swap device.
+
+I have just read [[https://chrisdown.name/2026/03/24/zswap-vs-zram-when-to-use-what.html][Chris Down’s insightful blog post about Zswap vs Zram (2)]] which convinced me to setup Zswap on some systems. I have had some of the problems that were described in his blog post when trying to run Zram on workstation and server systems.
+
+One limitation of zswap is that it doesn’t allow specifying the compression level. For zram I can put the following in */etc/systemd/zram-generator.conf*  to set the zstd compression level (this works well on my Thinkpad X1 Carbon Gen6):
+
+#+begin_src
+[zram0]
+compression-algorithm=zstd(level=10)
+#+end_src
+
+For the BTRFS filesystem I can put “ *compress=zstd:13* ” in the mount options to specify the compression level. They really should support different compression levels in zswap. The ideal compression level depends on the speed of the CPU and new CPUs keep getting faster.
+
+*** Setup
+
+The documentation says to use something like the following on the kernel command-line to enable zswap:
+
+#+begin_src
+zswap.enabled=1 zswap.compressor=zstd zswap.max_pool_percent=20 zswap.shrinker_enabled=1
+#+end_src
+
+The max\_pool\_percent=20 setting is the default which means to use up to 20% of system RAM for compressed data. I’ve seen documentation sugesting up to 50% which seems a little excessive.
+
+Note that a lot of documentation says to use *zswap.zpool=z3fold*, but [[https://www.phoronix.com/news/Linux-Z3fold-Removal-Coming][z3fold is going to be removed and zsmalloc (the default) is recommended (3)]].
+
+There is documentation about changing the compression algorithm via command line parameters, on Debian only lzo is linked in to the kernel and zstd (my preferred option) is a module so the kernel command line can’t be used to set zstd, but the following command works:
+
+#+begin_src
+echo zstd > /sys/module/zswap/parameters/compressor
+#+end_src
+
+The shrinker\_enabled option is to allow the kernel to evict cold pages without waiting for memory pressure.
+
+You can enable zswap without rebooting by running commands like the following. You could even put them in */etc/rc.local*  or something, but I think putting it in the kernel command line is a good idea as it makes it obvious to the next sysadmin what is happening.
+
+#+begin_src
+echo 1 > /sys/module/zswap/parameters/enabled
+echo zstd > /sys/module/zswap/parameters/compressor
+echo 1 > /sys/module/zswap/parameters/shrinker_enabled
+#+end_src
+
+*** Monitoring
+
+The following command is documented as a way of finding out what zswap is doing:
+
+#+begin_src
+# grep -r . /sys/kernel/debug/zswap/
+/sys/kernel/debug/zswap/stored_pages:262541
+/sys/kernel/debug/zswap/pool_total_size:455266304
+/sys/kernel/debug/zswap/written_back_pages:384
+/sys/kernel/debug/zswap/reject_compress_poor:0
+/sys/kernel/debug/zswap/reject_compress_fail:160911
+/sys/kernel/debug/zswap/reject_kmemcache_fail:0
+/sys/kernel/debug/zswap/reject_alloc_fail:0
+/sys/kernel/debug/zswap/reject_reclaim_fail:0
+/sys/kernel/debug/zswap/pool_limit_hit:0
+#+end_src
+
+The following command gives the zswap compression level which gives a result of 2.36 for this example:
+
+#+begin_src
+echo "scale=2; " $(</sys/kernel/debug/zswap/stored_pages) " * $(getconf PAGESIZE) /" $(</sys/kernel/debug/zswap/pool_total_size) | bc
+#+end_src
+
+This table documents my current understanding of the debug values. The difference between reject\_compress\_fail and reject\_compress\_poor isn’t clear in a lot of the documentation, even reading the source didn’t make it easy to understand.
+
+| File                    | Meaning (LC is lifetime count)                                                    |
+| pool\_limit\_hit        | LC pool limit hit and pages are forced to the swap partition                      |
+| pool\_total\_size       | RAM used for zswap data                                                           |
+| reject\_alloc\_fail     | LC can’t allocate memory because max\_pool\_percent has been reached              |
+| reject\_compress\_fail  | LC of pages with a compression algorithm failure so go straight to swap partition |
+| reject\_compress\_poor  | LC of pages that can’t compress so go straight to swap partition                  |
+| reject\_kmemcache\_fail | LC kernel malloc failure (serious problem?)                                       |
+| reject\_reclaim\_fail   | LC failure to move a page from compressed RAM to disk – serious problem!          |
+| stored\_pages           | Swapped pages stored by zswap                                                     |
+| written\_back\_pages    | LC of pages written back to swap partition from zswap                             |
+
+All of this is not nearly as easy to understand as the following command for zram:
+
+#+begin_src
+# zramctl 
+NAME       ALGORITHM DISKSIZE  DATA COMPR TOTAL STREAMS MOUNTPOINT
+/dev/zram0 zstd          7.7G  2.1G  375M  386M       4 [SWAP]
+#+end_src
+
+*** Debian Wiki
+
+The [[https://wiki.debian.org/Zswap][Debian Wiki page about Zswap is very brief (4)]] and needs more description about this, I think a lot of Debian users will use zram instead of zswap because setting up zram is just a single apt command. I’m not planning to immediately add to that wiki page because I’m not an expert on this, I would appreciate comments on this blog post from others who have got zswap working. I will update the wiki if others report matching experiences to mine.
+
+*** Conclusion
+
+I’m now using zswap on a few systems including my main home workstation which had performed poorly with zram and a swap device in the past. If that goes well I’ll put it on other systems.
+
+I wrote the following shell script to display zswap stats, consider it GPL if you want to use it:
+
+#+begin_src
+#!/bin/bash
+
+if [ ! -f /sys/kernel/debug/zswap/stored_pages ]; then
+  echo "ZSwap not enabled"
+  exit 0
+fi
+PAGES=$(</sys/kernel/debug/zswap/stored_pages)
+PAGESIZE=$(getconf PAGESIZE)
+RAM=$(echo "$PAGESIZE * " $(getconf _PHYS_PAGES) | bc)
+POOL=$(</sys/kernel/debug/zswap/pool_total_size)
+if [ "$POOL" == "0" ]; then
+  echo "ZSwap not used yet"
+  exit 0
+fi
+COMP=$(</sys/module/zswap/parameters/compressor)
+echo -n "$COMP compression ratio: "
+echo "scale=2; $PAGES * $PAGESIZE / $POOL" | bc
+echo -n "RAM%: "
+echo "100 * $POOL / $RAM" | bc
+#+end_src
+
 * ChatGPT
 
 ** linux reset mtu cache
