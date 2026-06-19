@@ -12,3 +12,76 @@
 - [[https://github.com/gilbertchen/duplicacy][gilbertchen/duplicacy: A new generation cloud backup tool]]
 - [[https://github.com/miekg/rdup][miekg/rdup: The only backup program that doesn't make backups!]]
 - [[https://www.urbackup.org/][UrBackup - Client/Server Open Source Network Backup for Windows and Linux]]
+
+* mount namespace for backup jobs
+#+begin_src markdown
+  [jmtd → log → mount namespace for backup jobs (by hand)](https://jmtd.net/log/mount_namespace_backup/)
+
+  > # [jmtd](https://jmtd.net/) → [log](https://jmtd.net/log/) → [](https://jmtd.net/log/mount_namespace_backup/)mount namespace for backup jobs (by hand)
+  > 
+  > Tagged
+  > 
+  > -   [backups](https://jmtd.net/backups/)
+  > -   [linux](https://jmtd.net/linux/)
+  > 
+  >  
+  > 
+  >   
+  > 
+  > It's been ten years since I configured [mount on demand backups](https://jmtd.net/log/mount_on_demand_backups/) to reduce the risk of my backups being zapped by mistake. Way back then I wanted to go one step further and use dedicated [mount namespaces](https://jmtd.net/log/mount_namespaces/) for backup jobs, but systemd didn't provide the necessary support (and still doesn't, despite the promisingly-named `JoinsNameSpaceOf=` configuration option.)
+  > 
+  > I recently updated my setup to achieve this by hand. All backup jobs now have an extra pre-start instruction `ExecStartPre=mkbackupns` which runs a shell script to either set up a persistent mount namespace, or exit quietly if it already exists.
+  > 
+  >     #!/bin/bash
+  >     set -euo pipefail
+  >     
+  >     nsdir=/var/namespaces
+  >     nsfile=$nsdir/backup
+  >     nsfilex="$(echo $nsfile | sed 's#/#\\/#'g)"
+  >     
+  >     private_propagation() {
+  >         findmnt -o+PROPAGATION "$nsdir" | grep -q private
+  >     }
+  >     nsfs_is_mounted() {
+  >         test "nsfs" = "$(awk "/$nsfilex/ { print \$3 }" /proc/mounts)"
+  >     }
+  >     
+  >     if ! nsfs_is_mounted; then
+  >     
+  >         if ! private_propagation; then
+  >             mkdir -p "$nsdir"
+  >             mount --bind --make-private "$nsdir" "$nsdir"
+  >         fi
+  >     
+  >         touch "$nsfile"
+  >         unshare --mount="$nsfile" true
+  >     
+  >         nsenter --mount=/var/namespaces/backup mount /dev/phobos_backup/backup /backup
+  >     fi
+  >     
+  > 
+  > I should note that I don't have the backup filesystem described in `/etc/fstab` to reduce the risk of it being mounted errantly in the main namespace.
+  > 
+  > The other change is to prefix an invocation of `nsenter` for every backup job command. E.g.:
+  > 
+  >     ExecStart=/usr/bin/nsenter \
+  >             --mount=/var/namespaces/backup \
+  >             borgmatic -v 1 prune create
+  >     
+  > 
+  > ### next steps
+  > 
+  > My backup scheme has lasted a decade with few tweaks ([I moved it to Borg in 2020](https://jmtd.net/log/gtkpod/)) which I am very grateful for. I want reliable, boring and robust.
+  > 
+  > Persistent mount namespaces are a lot less convoluted if you have a persistent process to associate them with. I didn't, but a subsequent improvement I am making is introducing one, so I will likely simplify the above accordingly.
+  > 
+  > * * *
+  > 
+  > ## Comments
+  > 
+  > [✏ comment on this page](https://jmtd.net/cgi-bin/fnargh?do=comment&page=log%2Fmount_namespace_backup) ([Help on commenting](https://jmtd.net/commenting/)) ![⏳](https://jmtd.net//loading.gif)
+  > 
+  > -   [copyright ©](https://jmtd.net/copyright/) [Jonathan Dowland](https://jmtd.net/about/) 2026
+  > -   Created 2026-06-04
+  > -   Last edited 2026-06-04
+#+end_src
