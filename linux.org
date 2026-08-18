@@ -1322,6 +1322,16 @@ $ sudo echo c > /proc/sysrq-trigger
 
 Your computer reboots immediately.
 
+** Network
+Increase performance during high network activity:
+#+begin_example
+  # sysctl -w net.core.default_qdisc=fq
+  net.core.default_qdisc = fq
+
+  # sysctl -w net.ipv4.tcp_congestion_control=bbr
+  net.ipv4.tcp_congestion_control = bbr
+#+end_example
+
 * scsi
 - [[https://serverfault.com/questions/5336/how-do-i-make-linux-recognize-a-new-sata-dev-sda-drive-i-hot-swapped-in-without][How do I make Linux recognize a new SATA /dev/sda drive I hot swapped in without rebooting? - Server Fault]]
 - [[https://github.com/koct9i/ioping][koct9i/ioping: simple disk I/0 latency measuring tool]]
