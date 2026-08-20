@@ -1547,6 +1547,111 @@ echo -n "RAM%: "
 echo "100 * $POOL / $RAM" | bc
 #+end_src
 
+* [[https://enzuru.medium.com/developing-and-testing-the-linux-kernel-with-guix-and-nixos-5510915f6706][Developing the Linux kernel and running your patches with Guix and NixOS is dead easy.]]
+
+This tutorial presumes that you are patching a regular Linux kernel, and not a
+Linux-libre kernel.
+
+Clone the Linux kernel source code
+: git clone https://github.com/torvalds/linux.git
+
+** Setting up LSP
+You’ll need to setup a dev environment with LSP to give IDE-like features to
+your text editor. Ensure when you use make you use $(nproc) to scale your
+build process by the amount of CPU cores that you have.
+
+ccls and clangd are both good language servers for the Linux kernel, and
+you’ll need one of them installed.
+
+*** NixOS
+: nix develop nixpkgs#linux
+: make -j $(nproc) defconfig
+: make -j $(nproc)
+: scripts/clang-tools/gen_compile_commands.py
+
+*** Guix
+: guix environment linux
+: make -j $(nproc) CC=clang defconfig
+: make -j $(nproc) CC=clang
+: scripts/clang-tools/gen_compile_commands.py
+
+Emacs will then be able to use Eglot to run a language server against the Linux kernel codebase.
+
+** Creating a patch
+Go ahead and create your patch file in your Linux directory. Here is how you
+would do it from unstaged changes:
+
+: git diff --cached > changes.patch
+
+The rest of this tutorial will assume that this file is located at
+=/home/enzuru/src/linux/changes.patch=.
+
+** Building a new kernel
+
+Now that you have a patch, you just need to point to it to begin the build
+process.
+
+*** NixOS
+
+Modify your configuration.nix to look like below:
+
+#+begin_example
+  {
+    boot.kernelPackages = pkgs.linuxPackages.extend (self: super: {
+      kernel = super.kernel.overrideAttrs (oldAttrs: {
+        src = pkgs.lib.cleanSource /home/enzuru/src/linux;  # Point to your patched source
+        # Or if you want to apply patches to the existing kernel:
+        patches = (oldAttrs.patches or []) ++ [
+          /home/enzuru/src/linux/changes.patch
+        ];
+      });
+    });
+  ...
+  }
+#+end_example
+
+Now run sudo nixos-rebuild switch to add your patched kernel to your boot
+options.
+
+*** Guix
+
+Create a folder named linux-patch and inside it make a file named
+custom-kernel.scm. This tutorial presumes this folder and file is located in
+=/home/enzuru/src/linux-patch/custom-kernel.scm=.
+
+#+begin_src scheme
+  (define-module (custom-kernel)
+    #:use-module (gnu packages)
+    #:use-module (gnu packages linux)
+    #:use-module (nongnu packages linux)
+    #:use-module (guix packages)
+    #:use-module (guix download)
+    #:use-module (guix build-system)
+    #:use-module (guix gexp)
+    #:export (linux-with-ext4-strscpy))
+   ;; Define your custom kernel with the  patch
+   (define-public linux-with-patch
+     (package
+      (inherit linux) ;; Inheriting from nonguix's linux package
+        (name "linux-with-patch")
+        (source
+         (origin
+           (inherit (package-source linux))
+            (patches (append (origin-patches (package-source linux))
+                             (list (local-file "/home/enzuru/src/linux/changes.patch"
+                                               "changes.patch"))))))))
+#+end_src
+
+Then update your system’s config.scm like below:
+
+: (operating-system (kernel linux-with-patch))
+
+Then reconfigure Guix by pointing to the folder with the patch:
+
+: sudo guix system reconfigure -L /home/enzuru/src/linux-patch config.scm
+
+Now your patched Linux kernel will be available on boot.
+
 * ChatGPT
 
 ** linux reset mtu cache
