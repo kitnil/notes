@@ -229,3 +229,4 @@ The possibilities for automating ingestion and data-quality tools are endless. O
 * Tools
 - [[https://github.com/adaptive-scale/dbchaos][adaptive-scale/dbchaos: Stress-test your database with pre-defined queries. Validate slow and expensive queries that breaks your database.]]
 - [[https://github.com/clement-tourriere/dbcrust][clement-tourriere/dbcrust: The modern database CLI that speaks your language — PostgreSQL, MySQL, SQLite with zero compromises.]]
+- [[https://github.com/t8y2/dbx][t8y2/dbx: 20 MB lightweight cross-platform database client for 90+ databases, including MySQL, PostgreSQL, SQLite, Redis, MongoDB, DuckDB, SQL Server, and Dameng. Built-in AI, MCP Server, CLI, desktop and Docker. | 轻量级跨平台数据库管理工具，支持 MySQL、PostgreSQL、SQLite、Redis、MongoDB、达梦等 90+ 数据库，提供桌面端、Docker、CLI、内置 AI 助手和 MCP Server。]]
