@@ -230,3 +230,6 @@
   accelerate_timeout = 30
   accelerate_connect_timeout = 5.0
 #+end_example
+
+* Alternatives
+- [[https://github.com/flipbit03/rustible][flipbit03/rustible: Configuration management as real code. No more YAML hell.]]
