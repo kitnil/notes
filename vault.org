@@ -1039,7 +1039,7 @@ What are JWTs ?
 
 JWT, or JSON Web Tokens, are tokens that are signed by a central authority that encapsulate authorization information. This website can help debugging your tokens.
 
-A JWT is comprised of 3 parts
+A JWT is composed of 3 parts
 
     Header
     Payload
