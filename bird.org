@@ -9,6 +9,9 @@
 - show routes sended to a peer
   : birdc show route all export uplink1
 
+- show routes received from a peer
+  : show route protocol uplink1
+
 : birdc show protocols all
 
 - debug
@@ -21,7 +24,6 @@ debug tables all;
 https://www.netdevconf.info/0.1/docs/ondrej-zajicek-slides-netdev01.pdf
 : show route 192.168.1.0/24
 : show route for 192.168.1.10
-: show route protocol ospf1
 : show route where gw ∼ 192.168.0.0/16
 : show route where net.len ∼ [16..24, 32]
 : show route where bgp path.len > 4
